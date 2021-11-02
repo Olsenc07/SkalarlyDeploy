@@ -4,12 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd angular-SCHOLARLY && npm run build && cd .. && node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "@angular/fire": "^7.1.1",
+    "express": "^4.17.1",
+    "firebase": "^9.2.0"
   }
 }

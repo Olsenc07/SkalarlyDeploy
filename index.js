@@ -1,6 +1,8 @@
+// Express
 const express = require('express');
 const app = express();
 const path = require('path');
+// Change port to azure or Heroku...
 const port = 3000;
 const router = require('./routes/api')
 
