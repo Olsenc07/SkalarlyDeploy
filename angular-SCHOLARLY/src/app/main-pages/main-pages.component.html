@@ -1,0 +1,39 @@
+<form [formGroup]="mainForm" (ngSubmit)="onSubmit()" class="entire-page">
+  <!-- Entire page -->
+  <div class="entire-page">
+
+
+
+    <!-- Right wall -->
+    <div [ngClass]="feeds.length !== 0 ? 'rightWall_ ' : 'right-wall'">
+
+
+      <!-- General choice appears at top of feed and dissapears as user scrolls -->
+      <div class="top">
+
+        {{ category }}
+      </div>
+      <div class="column_" *ngIf="feeds.length == 0">
+        <div class="row"> No Posts At The Moment</div>
+        <!-- <i class="far fa-frown centerR"></i> -->
+
+        <div class="fill">
+          <div class="centerR">Post Now</div>
+          <!-- <div class="centerR"> <i class="far fa-grin-alt"></i></div> -->
+          <div class="icon-btn-fit center_">
+            <button mat-icon-button type="button" routerLink="/post-page" class="centerR_">
+              <mat-icon class="centerR_">add_circle</mat-icon>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="feed" *ngIf="feeds.length !== 0">
+        <app-card *ngFor=" let feed of feeds" class="fit">{{feed}}</app-card>
+      </div>
+
+    </div>
+
+  </div>
+</form>

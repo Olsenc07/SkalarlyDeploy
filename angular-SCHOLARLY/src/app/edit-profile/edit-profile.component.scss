@@ -1,0 +1,724 @@
+@media(min-width:1024px){
+.accounts {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-bottom: 3%;
+}}
+@media(max-width:1024px){
+  .accounts {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    
+  }}
+@media(min-width:1024px){
+.Accounts {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 45%;
+  margin-bottom: 3%;
+}}
+@media(max-width:1024px){
+  .Accounts {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 3%;
+  }}
+.asthetic-adds {
+  color: #418bba;
+  border-color: #707070;
+  display: flex;
+}
+.bio {
+  display: flex;
+  width: 100%;
+}
+.bio-box {
+  padding: 25px;
+  border: 1px solid gray;
+  border-radius: 16px;
+}
+.birthday-text {
+  width: 121px;
+  height: 35px;
+  color: #707070;
+  border-color: #418bba;
+}
+.button {
+  display: flex;
+  justify-self: center;
+  margin-bottom: 5%;
+  font-family: "Font Awesome 5 Free";
+}
+@media(min-width:1024px){
+.c_r{
+  display: flex;
+  flex-direction: row;
+}}
+@media(max-width:1024px){
+.c_r{
+  display: flex;
+  flex-direction: column;
+}}
+.centerD {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  font-size: large;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+    width: 100%;
+}
+.centerR{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 1%;
+}
+.counter{
+  display: flex;
+  padding: 0% 15%;
+  justify-content: center;
+  flex-direction: column;
+  font-size: large;
+}
+.counter_{
+  display: flex;
+  padding: 0% 5%;
+  justify-content: center;
+  flex-direction: column;
+  font-size: large;
+}
+.courses {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+@media(min-width:1024px){
+  .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0% 30%;
+    max-width: 50%;
+    
+  }}
+  @media(max-width:1024px)and(min-width:875px){
+  .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0% 25%;
+    
+  }}
+  @media(max-width:875px)and(min-width:500px){
+  .column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin: 0% 20%;
+   
+  }}
+  @media(max-width:500px){
+  .column {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+  }}
+  .Column{
+    display: flex;
+    flex-direction: column;
+  }
+  .Column_ {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+.column_ {  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 1%;
+}
+@media(min-width:1024px){
+.column1 {
+    display: flex;
+    justify-content: center;
+    color: #7e7171;
+    font-family: "Font Awesome 5 Free";
+    font-size: large;
+    flex-direction: column;
+}}
+@media(max-width:1024px){
+  .column1 {
+      display: flex;
+      justify-content: center;
+      color: #7e7171;
+      font-family: "Font Awesome 5 Free";
+      font-size: inherit;
+      flex-direction: column;
+  }}
+  @media(min-width:500px){
+.columnPlain{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 30%;
+}}
+@media(max-width:500px){
+  .columnPlain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 45%;
+  }}
+.cropper {
+  display: flex;
+// May need a max height
+}
+@media (min-width: 1024px) {
+  .display {
+    display: flex;
+    width: 90%;
+    justify-content: center;
+  }
+}
+@media (max-width: 1024px) {
+  .display {
+    display: flex;
+    width: 75%;
+  }
+}
+.display1 {
+  display: flex;
+  margin-left: 5%;
+  justify-content: center;
+}
+@media(min-width:1024px){
+  .done {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+  }}
+@media(max-width:1024px){
+.done {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+  margin-bottom: 13%;
+}}
+.entire-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+.fit{
+  display: flex;
+  width: 100%;
+}
+.full-name-text {
+  position: relative;
+  font-size: 30;
+  width: 143px;
+  height: 35px;
+  color: #707070;
+  border-color: #418bba;
+}
+
+.full-name-textfield {
+  position: relative;
+  width: 456.89px;
+  height: 75.74px;
+  border-radius: 7%;
+  border-color: #707070;
+}
+
+
+::ng-deep .mat-radio-label-content{
+  font-family: 'Font Awesome 5 Pro';
+
+}
+
+
+.gender {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .groups-jj {
+    display: flex;
+    justify-content: center;
+    margin: 3% 23%;
+    // border: ridge;
+    box-sizing: border-box;
+    flex-direction: column;
+    
+  }
+}
+@media (max-width: 1024px) {
+  .groups-jj {
+    display: flex;
+    justify-content: center;
+    margin: 5% 15%;
+    // border: ridge;
+    box-sizing: border-box;
+    flex-direction: column;
+  }
+}
+
+.far
+{ 
+  color: #7e7171;
+  font-size: x-large;
+}
+.fa-arrow-circle-left{
+  font-size: large;
+}
+.fa-arrow-circle-right{
+  font-size: large;
+}
+@media(min-width:1024px){
+.groups-j {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0% 32%;
+  max-width: 50%;
+}}
+@media(max-width:1024px)and(min-width:875px){
+.groups-j {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0% 29%;
+}}
+@media(max-width:875px)and(min-width:500px){
+.groups-j {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0% 25%;
+}}
+@media(max-width:500px){
+.groups-j {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin: 0% 10%;
+  box-sizing: border-box;
+}
+}
+.hide{
+  display: none !important;
+}
+
+
+
+::ng-deep .mat-tab-label{
+    font-family: "Font Awesome 5 Free";
+}
+
+// Allows smooth scroll for entire page
+::ng-deep .mat-tab-body-content{
+  overflow: unset !important;
+}
+
+
+
+::ng-deep .mat-option-text{
+  color: #7e7171;
+  font-family: "Font Awesome 5 Free";
+}
+
+::ng-deep .mat-form-field{
+  color: #7e7171;
+  font-family: "Font Awesome 5 Free";
+}
+
+.major-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: column;
+}
+.imagePreview {
+  display: flex;
+    width: 100%;
+}
+
+.recent-post-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: ridge;
+}
+.rowShow{
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin: 3% 0%;
+}
+  .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: #7e7171;
+    font-family: "Font Awesome 5 Free";
+  }
+
+  .rowE {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 100%;
+  }
+  .rowE_ {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+   
+  }
+
+.rowT{
+  display: flex;
+  flex-direction: row;
+}
+@media (min-width: 1024px) {
+  .rowP {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 2% 0%;
+    overflow-x: scroll;
+  }
+}
+@media (max-width: 1024px) {
+  .rowP {
+    display: none;
+   
+  }
+}
+.rowP_{
+  display: flex;
+  justify-content: center;
+  color: #418bba;
+}
+.right-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  .smaller {
+    width: 30%;
+  }
+}
+@media (max-width: 1024px) {
+  .smaller {
+    width: 50%;
+  }
+}
+.show{
+  display: flex;
+justify-content: center;
+}
+.show_{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+}
+.Show{
+  display: flex;
+}
+.style{
+  color: #7e7171;
+  font-family: "Font Awesome 5 Free";}
+  @media(min-width:900px){
+    .imageBox{
+      display: flex;
+      height: 100%;
+      max-width: 20%;
+    }}
+  @media(max-width:900px){
+.imageBox{
+  display: flex;
+  height: 100%;
+  max-width: 50%;
+}}
+.imageBox_{
+  display: flex;
+    width: 100%;
+    height: 75%;
+    flex-direction: row;
+justify-content: center;
+}
+
+
+@media(min-width:500px){
+.snapshot {
+  display: flex;
+  justify-content: center;
+  color: #7e7171;
+  font-family: "Font Awesome 5 Free";
+  font-size: large;
+  flex-direction: column;
+}}
+@media(max-width:500px){
+.snapshot {
+  display: flex;
+  justify-content: center;
+  color: #7e7171;
+  font-family: "Font Awesome 5 Free";
+  font-size: inherit;
+  flex-direction: column;
+}}
+.snapshotClear {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 5%;
+}
+.snapShot {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+@media(min-width:1024px){
+.personalizeLarge {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin: 1% 0% 3%;
+}}
+@media(max-width:1024px){
+  .personalizeLarge {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 1% 0% 3%;
+  }}
+
+.private-public {
+  display: flex;
+  flex-direction: row;
+}
+.pic-box {
+  display: flex;
+  justify-content: center;
+}
+.pic {
+  border-radius: 50%;
+  width: 90%;
+  height: 100%;
+}
+.pics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 250px;
+}
+.Preview{
+  display: flex;
+  justify-content: center;
+  color: #7e7171;
+  font-family: "Font Awesome 5 Free";
+  font-size: large;
+}
+
+.PreviewPic{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.previewPic{
+  border-radius: 50%;
+}
+.Photo{
+  font-size: xxx-large;
+}
+.layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Font Awesome 5 Pro';
+  color: #707070;
+}
+.text {
+  color: #7e7171;
+  font-family: "Font Awesome 5 Free";
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.top {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+}
+.tooltip{
+  color: #418bba;
+}
+.twoBoxs {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 1024px) {
+  ::ng-deep mat-form-field {
+    display: flex;
+    width: 40%;
+  }
+}
+@media (max-width: 1024px) {
+  ::ng-deep mat-form-field {
+    display: flex;
+    width: 100%;
+  }
+}
+.icon {
+  display: flex;
+  justify-content: center;
+  margin-right: 1%;
+  font-size: xx-large;
+  color: #418bba;
+}
+._icon {
+  display: flex;
+  justify-content: center;
+  margin-right: 1%;
+  font-size: xx-large;
+  flex-direction: column;
+  color: #418bba;
+}
+@media (min-width: 900px) {
+  ._icon2 {
+    display: flex;
+    justify-content: center;
+    font-size: 70px;
+    flex-direction: column;
+    color: #418bba;
+  }
+}
+@media (max-width: 900px) {
+  ._icon2 {
+    display: none;
+  }}
+
+.input {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 2%;
+  margin-top: inherit;
+}
+
+// .input {
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: row;
+//   width: 99%;
+// }
+
+.inputText {
+  display: flex;
+  
+}
+.img{
+  max-width: 50%;
+  max-height: 50%;
+}
+
+@media(min-width:900px){
+.img_{
+  max-width: 75%;
+  max-height: 100%;
+}}
+@media(max-width:900px){
+  .img_{
+    max-width: 100%;
+    max-height: fit-content;
+  }}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  position: relative;
+  color: #707070;
+  border-color: #418bba;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  color: #707070;
+  border-color: #418bba;
+}
+
+
+.text-field-gender {
+  position: relative;
+  width: 456.89px;
+  height: 75.74px;
+  border-radius: 7%;
+  border-color: #707070;
+}
+
+.text-field-relationship {
+  position: relative;
+  width: 456.89px;
+  height: 75.74px;
+  border-radius: 7%;
+  border-color: #707070;
+  font-size: 30;
+}
+
+.work {
+  display: flex;
+  margin-top: 2%;
+  width: 100%;
+  justify-content: center;
+}
+.words{
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  width: 100%;
+}

@@ -1,0 +1,129 @@
+<div class="entire-page">
+
+  <div class="left">
+    <label for="members" class="title">Members</label>
+
+    <!-- Idk if needed -->
+    <!-- <div class="searchM">
+      <form class="search">
+        <input type="text" class="search-input" placeholder="Search.." name="search" [formControl]="search">
+        <button type="submit"><span class="material-icons">search</span></button>
+      </form>
+    </div> -->
+
+    <!-- Filled by taking users id of those that joined this post group chat -->
+    <span class="membersBox">
+      <app-card-mutual *ngFor="let members of members" class="fit">
+        {{member}}
+      </app-card-mutual>
+
+
+    </span>
+
+  </div>
+  <div class="column">
+    <div class="row mobile">
+      <!-- For mobile icon button to display members in the chat room -->
+
+      <div class="columnM">
+
+        {{ (post | async)?.Title}}
+      </div>
+
+    </div>
+
+    <!-- Quick facts above chat-->
+    <div class="row_basic">
+      <!-- Icon indicators -->
+
+      <div class="basic">
+        <div class="info" *ngIf="(post | async)?.FirstFormGroup.locationEvent">
+          <!-- {{Specific}}Specific Page -->
+          {{ (post | async)?.FirstFormGroup.locationEvent}}
+        </div>
+
+
+
+
+        <div class="info " *ngIf=" (post | async)?.FirstFormGroup.date">
+          {{ (post | async)?.FirstFormGroup.date | date:"longDate"}}
+        </div>
+        <div class="info" *ngIf="(post | async)?.FirstFormGroup.time ">
+          {{ (post | async)?.FirstFormGroup.time}}</div>
+      </div>
+
+      <div class="booleans">
+        <div class="fas fa-venus " *ngIf="(post | async)?.SecondFormGroup.gender == 'female'"></div>
+        <div class="fas fa-transgender-alt " *ngIf="(post | async)?.SecondFormGroup.gender == 'all'">
+        </div>
+        <div class="fas fa-mars " *ngIf="(post | async)?.SecondFormGroup.gender == 'male'"></div>
+
+        <div class="fas fa-car " *ngIf="(post | async)?.ThirdFormGroup.driver"></div>
+        <div class="fas fa-dollar-sign " *ngIf=" (post | async)?.ThirdFormGroup.paymentService"></div>
+
+        <div class="fas fa-user-tie " *ngIf="(post | async)?.FourthFormGroup.event == 'formal'"></div>
+        <div class="fas fa-glass-cheers " *ngIf="(post | async)?.FourthFormGroup.event == 'relaxed'">
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+<mat-divider></mat-divider>
+    <!-- Message area -->
+    <div class="middle">
+      <!-- Where the conversation is held -->
+      <div class="messages"></div>
+
+    </div>
+
+<!-- Messagin -->
+<form [formGroup]="messageForm">
+<div class="message_box_container">
+    <div class="type_message">
+      <mat-form-field class="type_message_box">
+        <mat-label>Write a message...</mat-label>
+              <textarea matInput class="post"
+                [formControl]="message"></textarea>
+              </mat-form-field>
+      </div>
+      
+      <div class="assistance">
+      <div class="upload_options">
+          <button mat-icon-button (click)="uploadFile()">
+              <i class="fas fa-paperclip">
+<input #fileInput id="fileInput" type="file" [formControl]="fileUpload" class="uploadFile">
+              </i>
+          </button>
+         
+          <button mat-icon-button (click)="uploadPic()">
+          <i class="fas fa-camera">
+            <input #picInput id="picInput" type="file" [formControl]="photoUpload" class="uploadFile" accept="image/* video/*">
+          </i>
+          </button>
+      
+          <button mat-icon-button>
+             GIF
+          </button>
+              
+          <button mat-icon-button>
+              <i class="fas fa-grin-alt"></i>
+          </button>
+      </div>
+      
+      <div class="send_btn">
+          <mat-chip type="button" [disabled]="!messageForm.valid" class="send_btn_style"   (click)="sendMsg()">
+      Send
+          </mat-chip>
+          </div>
+      
+          
+      </div>
+    </div>
+</form>
+
+  </div>
+
+</div>

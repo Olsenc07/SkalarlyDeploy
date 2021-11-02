@@ -1,0 +1,238 @@
+.b {
+  padding: 1%;
+}
+.booleans {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin-top: 1%;
+  color: #7e7171;
+}
+
+.centerT {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.centerB {
+  display: flex;
+  justify-content: center;
+  flex-direction: row-reverse;
+  font-size: medium;
+}
+
+.center1 {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.column1 {
+  display: flex;
+  flex-direction: column;
+}
+.column_ {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-end;
+}
+.columnAttend {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.d {
+  font-family: "Font Awesome 5 Free";
+  color: #7e7171;
+}
+.description {
+  display: flex;
+}
+.displayT {
+  text-align: center;
+  color: #7e7171;
+}
+.hide {
+  display: none;
+}
+@media (min-width: 400px) {
+  .mat-card-avatar {
+    width: 50px;
+    height: 50px;
+  }
+}
+@media (max-width: 400px) {
+  .mat-card-avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.feed {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.fit_ {
+  display: flex;
+}
+.specifics-fill {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  // flex-direction: column;
+  box-sizing: border-box;
+}
+
+.row- {
+  display: flex;
+  flex-direction: row;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  // width: 100%;
+  // justify-content: space-evenly;
+}
+.rowM {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "Font Awesome 5 Free";
+  width: 100%;
+}
+.row2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.linkN {
+  color: #7e7171;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  // font-weight: 500;
+  text-align: center;
+}
+
+.p {
+  display: flex;
+  font-size: x-large;
+  justify-content: center;
+}
+.pic {
+  display: flex;
+  // flex-direction: column;
+  border-radius: 50%;
+  height: 70px;
+}
+.profilePic {
+  display: flex;
+  // border-radius: 50%;
+  // // border: groove;
+  // margin-right: 2%;
+  // margin-bottom: 1%;
+}
+.postTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #7e7171;
+  font-size: medium;
+  padding-bottom: 2%;
+}
+.postLocation {
+  display: flex;
+  font-weight: 400;
+  flex-direction: column;
+  justify-content: center;
+}
+.postTime {
+  display: flex;
+  font-weight: 400;
+  flex-direction: column;
+  justify-content: center;
+}
+.postText {
+  display: flex;
+  width: 100%;
+  overflow-y: visible;
+  height: fit-content;
+  justify-content: center;
+}
+
+::ng-deep .mat-radio-label {
+  justify-content: center;
+}
+.nameTitle {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 550px) {
+  .textSize {
+    font-size: inherit;
+    font-family: "Font Awesome 5 Free";
+  }
+}
+@media (min-width: 550px) {
+  .textSize_ {
+    // font-size: medium;
+    font-family: "Font Awesome 5 Free";
+    // color: cornflowerblue;
+  }
+}
+@media (max-width: 550px) {
+  .textSize_ {
+    font-size: inherit;
+    font-family: "Font Awesome 5 Free";
+    // color: cornflowerblue;
+  }
+}
+.t {
+  font-size: small;
+}
+.middle-card {
+  display: flex;
+  // border: groove;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4/3;
+  box-sizing: border-box;
+}
+.upload {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  // Optimize padding for all shapes... make sure top isnt to much of a push away
+
+  // padding: 0% 9% 3% 9%;
+  // padding: 0% 20%;
+
+  box-sizing: border-box;
+}
+.userName {
+  display: flex;
+  font-weight: 500;
+  margin-right: 1%;
+  flex-direction: column;
+  justify-content: center;
+}

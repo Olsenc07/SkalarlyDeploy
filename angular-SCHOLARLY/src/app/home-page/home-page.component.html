@@ -1,0 +1,46 @@
+<!-- Main logo -->
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div fxLayout="row ">
+    <div class="side-spacer"></div>
+    <div fxLayout="column" fxLayoutAlign="center center" class="pic">
+      <img Src="../../assets/Pics/ProperInAppLogo.jpeg" class="pic">
+      <div class="content" class="row">
+        <span class="main-text main-text-small">
+          <a>Enhance your University experience with Scholarly</a>
+        </span>
+        <!-- Container holding the log in form -->
+        <div class="log-in-box" fxLayout="column" fxLayoutAlign="center center">
+          <mat-form-field class="text-input">
+            <mat-label> Academic Email</mat-label>
+            <input matInput [formControl]="email" />
+            <span matSuffix class="hide"></span>
+            <!-- <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
+              (click)="clearEmail()">
+              <mat-icon>close</mat-icon>
+            </button> -->
+          </mat-form-field>
+          <mat-form-field class="text-input">
+            <mat-label>Password</mat-label>
+            <input matInput [formControl]="password" type="password" placeholder="Password" />
+            <!-- <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
+              (click)="clearPassword()">
+              <mat-icon>close</mat-icon>
+            </button> -->
+          </mat-form-field>
+          <button (click)="onSubmit()" [disabled]="!loginForm.valid" routerLink="/search" mat-raised-button
+            color="primary" class="action-button top">
+            Log In
+          </button>
+          <button type="button" mat-button disableRipple class="forgot-password" routerLink="/retrieve-password">
+            Forgot Password?
+          </button>
+          <p class="tag">Or</p>
+          <button type="button" mat-raised-button routerLink="/sign-up" color="primary" class="action-button">
+            Create New Account
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="side-spacer"></div>
+  </div>
+</form>

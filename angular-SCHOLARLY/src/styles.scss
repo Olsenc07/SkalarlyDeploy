@@ -1,0 +1,138 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+// // Text Field
+
+// // {
+// //     import {MDCTextField} from '@material/textfield';
+
+// // const textField = new MDCTextField(document.querySelector
+// // ('.mdc-text-field'));
+
+// // Example Filled text:
+// // <label class="mdc-text-field mdc-text-field--filled">
+// //   <span class="mdc-text-field__ripple"></span>
+// //   <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
+// //   <span class="mdc-floating-label" id="my-label-id">Hint text</span>
+// //   <span class="mdc-line-ripple"></span>
+// // </label>
+// //}
+
+// //Switches
+// // import {MDCSwitch} from '@material/switch';
+
+// // const switchControl = new MDCSwitch(document.querySelector
+// // ('.mdc-switch'));
+
+// //Scroll View for some text fields and places of recieved data
+
+// //World Logo (Search)
+// public public icon	<mat-icon>public</mat-icon>
+// style:"
+// color:#2699FB;
+// width:213.5px;
+// height:182px;"
+
+// //Info Logo
+// <mat-icon>info</mat-icon>
+// style:
+// "color:#2699FB;
+// width:137.96px;
+// height:132px;"
+
+// //Heart Logo (Profile)
+// <mat-icon>favorite</mat-icon>
+// style:
+// "color:#2699FB;
+// width:158.96px;
+// height:149.5px;"
+
+// //Search Icon
+// <mat-icon>search</mat-icon>
+// style:"
+// color: #244BCE;
+// width:111.24px;
+// height:90.09px;"
+
+// //Check Circle
+// <mat-icon>check_circle</mat-icon>
+// style:"
+// color:#2699FB;
+// width:37.5px;
+// height:40px;"
+
+// //X circle
+// <mat-icon>highlight_off</mat-icon>
+// style:"
+// color:#F1F9FF;
+// width:40px;
+// height:40px;"
+
+// //Person icon
+// <mat-icon>perm_identity</mat-icon>
+// style:"
+// color:#2699FB";
+
+// //Clock icon
+// <mat-icon>watch_later</mat-icon>
+// style:"
+// color:#2699FB";
+
+// //notification icon
+// <mat-icon>notification_important</mat-icon>
+// //Or
+// //bubbles, could chang to blue when being notified maybe
+// <mat-icon> bubble_chart</mat-icon>
+// //or
+// //message icon
+// <mat-icon> message</mat-icon>
+
+// // Plus circle
+// <mat-icon>add_circle</mat-icon>
+
+// //Minus circle
+// <mat-icon>remove_circle</mat-icon>
+
+// //Symbol for people looking to joing your group
+// //smily face
+// <mat-icon> insert_emoticon</mat-icon>
+
+// // + symbol or something to do with posting
+// <mat-icon>add</mat-icon>
+
+// // ^ symbol
+// <mat-icon>keyboard_arrow_up</mat-icon>
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: rgb(235, 235, 245);
+}
+
+.whole {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.specifics-text {
+  display: flex;
+  justify-content: center;
+  color: #0e3379;
+  font-size: large;
+}
+.overflowy {
+  display: flex;
+  overflow-y: scroll;
+  max-height: 40vh;
+}
+//  input:-internal-autofill-selected{
+//   background-color: black !important;
+
+//    font-family: "Font Awesome 5 Free";
+// }

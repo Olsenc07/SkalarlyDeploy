@@ -1,0 +1,121 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+// logo primary hex: #11173a
+
+// Colors chosen using: https://material.io/tools/color/#!/?view.left=0&view.right=0
+$primary: #11173a; // from main logo
+$secondary: #42a5f5;
+$warning: #ec4344;
+
+// Palette generated with: http://mcg.mbitson.com/#!?mcgpalette0=%2311173a&themename=mcgtheme
+
+$app-primary: (
+  50: #e2e3e7,
+  100: #b8b9c4,
+  200: #888b9d,
+  300: #585d75,
+  400: #353a58,
+  500: #11173a,
+  600: #0f1434,
+  700: #0c112c,
+  800: #0a0d25,
+  900: #050718,
+  A100: #5966ff,
+  A200: #2638ff,
+  A400: #0014f2,
+  A700: #0012d8,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #ffffff,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$app-secondary: (
+  50: #e8f4fe,
+  100: #c6e4fc,
+  200: #a1d2fa,
+  300: #7bc0f8,
+  400: #5eb3f7,
+  500: #42a5f5,
+  600: #3c9df4,
+  700: #3393f2,
+  800: #2b8af0,
+  900: #1d79ee,
+  A100: #ffffff,
+  A200: #f0f6ff,
+  A400: #bdd8ff,
+  A700: #a3c9ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$app-warning: (
+  50: #fde8e9,
+  100: #f9c7c7,
+  200: #f6a1a2,
+  300: #f27b7c,
+  400: #ef5f60,
+  500: #ec4344,
+  600: #ea3d3e,
+  700: #e73435,
+  800: #e42c2d,
+  900: #df1e1f,
+  A100: #ffffff,
+  A200: #ffe1e1,
+  A400: #ffaeaf,
+  A700: #ff9595,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$custom-primary: mat-palette($app-primary);
+$custom-accent: mat-palette($app-secondary);
+$custom-warn: mat-palette($app-warning);
+
+$custom-app-theme: mat-light-theme(
+  $custom-primary,
+  $custom-accent,
+  $custom-warn
+);
+@include angular-material-theme($custom-app-theme);

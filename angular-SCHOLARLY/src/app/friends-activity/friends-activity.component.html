@@ -1,0 +1,305 @@
+<div style="background-color: rgb(235, 235, 245)" class="entire-page">
+  <!-- Left column -->
+  <div class="column">
+    <div class="left-column">
+      <!-- Friend request box -->
+
+
+      <div class="row" *ngIf="requests.length !== 0">
+        <div class="title">Friend Requests</div>
+      </div>
+
+      <div class="fit" *ngIf="requests.length == 0">
+        <div class="noRequests">
+          No Current Requests
+          <i class="fas fa-users-slash icon"></i>
+        </div>
+      </div>
+
+      <div class="fit" *ngIf="requests.length !== 0 ">
+        <!-- If ids are on friend list -->
+        <app-card-request class="adds" *ngFor="let request of requests">
+          {{request}}
+        </app-card-request>
+      </div>
+
+
+
+      <!-- mutual friends -->
+      <div class="hide">
+        <!-- <div class="middle-middle">
+    <-- Search Bar Desktop --
+  <form class="search">
+    <input type="text" class="search-input" placeholder="Search.." name="search">
+    <button type="submit"><span class="material-icons">search</span></button>
+  </form>
+</div> -->
+        <div class="friend_count">
+          <div class="center">
+            Mutual Friends
+          </div>
+          <div class="center">
+
+            <!-- {{Value}} -->
+            {{mutuals.length}}
+
+          </div>
+        </div>
+
+
+
+
+        <div class="mutual-box">
+
+
+          <div class="follow-m" *ngIf="mutuals.length == 0">
+
+
+            <div class="message">
+              Click The Hand Shake Icon On Your Friends Lists To Display Mututal Friends
+              <i class="far fa-handshake messageIcon "></i>
+              <div class="remove_explained">
+           To remove a user from a list, click
+              <i class="fas fa-user-minus remove_icon"></i>
+            
+</div>
+
+            </div>
+
+
+          </div>
+
+
+          <div class="follow-m" *ngIf="mutuals.length !== 0">
+            <app-card-mutual *ngFor="let mutual of mutuals" class="width">{{mutual}}</app-card-mutual>
+          </div>
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+
+
+      <!-- Friends activity box -->
+      <!-- <div class="hide_">
+        <div class="friends-activity-box">
+          <div class="friends-activity">
+            <div class="row">Friends Activity</div>
+            <app-card-brief class="fit"></app-card-brief>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+
+
+
+    <!-- Tablet/Mobile search bar -->
+    <div class="search-friends">
+      <!-- <div class="hide1">
+        <div class="searchM">
+          <form class="search">
+            <input type="text" class="search-input" placeholder="Search.." name="search" [formControl]="search">
+            <button type="submit"><span class="material-icons">search</span></button>
+          </form>
+        </div>
+      </div> -->
+      <!-- Middle column -->
+      <div class="columnD columnM ">
+        <div class="row yo">
+          <div class="middle">
+            <div class="friend_count">
+              <div class="center">
+                Following
+              </div>
+              <div class="center">
+                <div>
+                  {{following.length}}
+                </div>
+              </div>
+            </div>
+
+            <div class="following-box">
+              <div class="structure">
+
+                <app-card-user *ngFor="let following of following" class="width"> {{following}}
+                </app-card-user>
+
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Right column -->
+          <div class="right">
+            <div class="friend_count">
+              <div class="center">
+                Followers
+              </div>
+              <div class="center">
+                <div>
+                  {{followers.length}}
+                </div>
+              </div>
+            </div>
+
+            <div class="following-box">
+              <div class="structure">
+                <app-card-user *ngFor="let follower of followers" class="width">{{follower}}</app-card-user>
+              </div>
+            </div>
+
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <div class=" column_">
+          <mat-tab-group mat-align-tabs="center">
+            <div class="row">
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  Followers
+                  <div class="p">
+                    {{followers.length}}
+                  </div>
+
+                </ng-template>
+
+                <div class="middle">
+                  <div class="following-box">
+                    <div class="follower-s">
+                      <div class="row" *ngIf="requests.length !== 0">
+                        <div class="title">Friend Requests</div>
+                      </div>
+
+
+                      <!-- Don't display for mobiel view -->
+                      <!-- <div class="fit" *ngIf="requests.length == 0">
+                        <div class="noRequests">
+                          No Current Requests
+                          <i class="fas fa-users-slash icon"></i>
+                        </div>
+                      </div> -->
+
+                      <div>
+                        <app-card-request class="adds background" *ngFor="let request of requests">
+                          {{request}}
+                        </app-card-request>
+
+                        <div class="p_"></div>
+
+
+                        <app-card-user *ngFor="let follower of followers" class="width adds">{{follower}}
+                        </app-card-user>
+                      </div>
+
+
+
+
+                    </div>
+                    <!-- <div class="followers"> -->
+                    <!-- <div class="center1">
+
+
+                    </div> -->
+                    <!-- </div> -->
+                  </div>
+
+                </div>
+              </mat-tab>
+
+              <!-- Right column -->
+              <mat-tab>
+                <ng-template mat-tab-label>
+                  Following
+                  <div class="p">
+                    {{following.length}}
+                  </div>
+
+                </ng-template>
+                <div class="right">
+
+                  <div class="following-box">
+
+                    <div class="followers">
+                      <div class="center1">
+
+                        <app-card-user *ngFor="let follow of following" class="width">{{follow}}</app-card-user>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+            </div>
+          </mat-tab-group>
+
+        </div>
+      </div>
+      <div class="bottomM">
+        <mat-tab-group mat-align-tabs="center">
+          <mat-tab>
+            <ng-template mat-tab-label>
+              Mutual Friends
+              <div class="p">
+                {{mutuals.length}}
+              </div>
+
+            </ng-template>
+            <div class="mutual-largest">
+              <div class="mutual-box">
+                <div class="center">
+
+                </div>
+                <div class="follow-m">
+                  <div class="center1">
+
+                    <div class="follow-m" *ngIf="mutuals.length == 0">
+                      <div class="message">
+                        Click The Hand Shake Icon On Your Friends Lists To Display Mututal Friends
+                        <i class="far fa-handshake messageIcon "></i>
+                        <div class="remove_explained">
+                     To remove a user from a list, click
+                        <i class="fas fa-user-minus remove_icon"></i>         
+                         </div>
+                      </div>
+                    </div>
+
+
+                    <div class="follow-m" *ngIf="mutuals.length !== 0">
+                      <app-card-mutual *ngFor="let mutual of mutuals" class="width">
+                        {{mutual}}
+                      </app-card-mutual>
+                    </div>
+                    <!-- Then cards keep getting filled in!! Jst was testing the overflow scroll -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <!-- <mat-tab label=" Friend's Activity">
+            <div class="friends-activity-box">
+              <div class="friends-activity">
+                <app-card-brief class="fit"></app-card-brief>
+                <app-card-brief class="fit"></app-card-brief>
+                !-- Then cards keep getting filled in!! Jst was testing the overflow scroll --
+      </div>
+    </div>
+    </mat-tab> -->
+        </mat-tab-group>
+      </div>
+    </div>
+
+  </div>
+</div>

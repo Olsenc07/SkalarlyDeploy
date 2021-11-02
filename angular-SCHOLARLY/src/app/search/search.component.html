@@ -1,0 +1,154 @@
+<div class="entire-page">
+  <!-- Entire page -->
+  <div class="main-layout">
+
+    <div class="left-column">
+
+      <div class="center"> Recommendations</div>
+      <!-- Reccomendations and adds -->
+      <!-- Limit load in amount at a time -->
+      <div [ngClass]="opt >=1 ? 'logo-layoutP' : 'logo-layout' ">
+        <!-- Then each card is filled uniquely passed off {{ }}  values in feed-->
+        <app-card-recommendation class="adds" *ngFor="let feed of feeds">
+          {{feed}}
+        </app-card-recommendation>
+      </div>
+
+
+      <div class="input-boxs_" *ngIf="opt >= 1">
+        <div class="center">Specific Search</div>
+        <mat-chip-list class="mat-list-text">
+          <mat-chip [multiple]="false" *ngFor="let opt of specificOptions" [value]="opt" (click)="navigateToPage(opt)">
+            {{ opt }}
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+
+    </div>
+
+    <!-- middle -->
+    <div class="middle-column-large">
+      <div class="center_">
+        <div class="label">What are you looking for?</div>
+      </div>
+      <!-- Category box -->
+      <div class="input-boxs">
+        <div class="center">Main Categories</div>
+
+        <mat-chip-list aria-label="First Choice">
+          <mat-chip (click)="onSearchSelection(opt.value)" (click)="displaySpecificSearch()" [selected]="opt.name"
+            [multiple]="false" *ngFor="let opt of searchOptions" [value]="opt.name">
+            <mat-radio-button class="horizontal_list">
+              {{ opt.name }}</mat-radio-button>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+    <!-- right -->
+    <div class="right-column">
+      <!-- Recents tetx -->
+      <div class="center" *ngIf="posts.length !== 0">
+        Recent Feed
+      </div>
+      <!-- Only load in so many at a time -->
+      <div class="recents_" *ngIf="posts.length == 0">
+        <div class="fill">
+          <div class="label_">Post Now</div>
+          <!-- <div class="centerR"> <i class="far fa-grin-alt"></i></div> -->
+          <div class="icon-btn-fit post ">
+            <button mat-icon-button type="button" routerLink="/post-page" class="fontSize">
+              <mat-icon class="fontSize">add_circle</mat-icon>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="recents" *ngIf="posts.length !== 0">
+        <app-card class="hide" *ngFor="let post of posts">
+          {{post}}
+        </app-card>
+
+      </div>
+    </div>
+
+
+
+
+
+    <!-- Mobile -->
+    <div class="hide1">
+      <div class="topM">
+        <div class="center"> Recommendations</div>
+        <!-- ADDDDDDSSSSSS!!-->
+
+        <div class="logo-layoutM">
+          <!-- Adds and recommecndations will be mixed into feed!!!!! -->
+          <div class="fit">
+            <!-- If user does not make in friend list -->
+            <app-card-recommendation class="adds" *ngFor="let feed of feeds">
+
+              {{feed}}
+
+            </app-card-recommendation>
+          </div>
+        </div>
+
+
+        <div class="column">
+          <div class="center_">
+            <div class="label">What are you looking for?</div>
+          </div>
+          <mat-selection-list #options [multiple]="false" class="second-list">
+            <mat-form-field appearance="fill">
+              <mat-label>Main Categories</mat-label>
+
+              <mat-select>
+                <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
+                  *ngFor="let opt of searchOptions" [value]="opt.name">
+
+                  {{ opt.name }}</mat-option>
+              </mat-select>
+
+            </mat-form-field>
+          </mat-selection-list>
+
+          <!-- Second choice -->
+          <div class="location-options">
+            <mat-chip-list class="mat-list-text">
+              <mat-chip [multiple]="false" *ngFor="let opt of specificOptions" [value]="opt"
+                (click)="navigateToPage(opt)">
+
+                {{ opt }}
+
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+
+
+        </div>
+        <div class="center" *ngIf="posts.length !== 0">
+          Recent Feed
+        </div>
+        <div class="recents" *ngIf="posts.length == 0">
+          <div class="fill">
+            <div class="label_">Post Now</div>
+            <!-- <div class="centerR"> <i class="far fa-grin-alt"></i></div> -->
+            <div class="icon-btn-fit post ">
+              <button mat-icon-button type="button" routerLink="/post-page" class="fontSize">
+                <mat-icon class="fontSize">add_circle</mat-icon>
+              </button>
+            </div>
+
+          </div>
+        </div>
+        <div class="recents" *ngIf="posts.length !== 0">
+          <app-card class="display" *ngFor="let post of posts">
+            {{post}}
+          </app-card>
+        </div>
+        <!-- Then cards keep getting filled in!! Just was testing the overflow scroll -->
+      </div>
+    </div>
+  </div>
+</div>

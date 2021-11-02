@@ -1,0 +1,163 @@
+.assistance {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 2%;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  border-top-left-radius: 25px;
+  background-color: #dfdfea;
+  overflow: hidden;
+}
+.list {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
+}
+@media (min-width: 1024px) {
+  .message_box {
+    display: flex;
+    height: 84vh;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 3% 10% 0% 10%;
+    border-radius: 25px;
+  }
+}
+@media (max-width: 1024px) {
+  .message_box {
+    display: flex;
+    height: 83vh;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 25px;
+  }
+}
+.messages {
+  display: flex;
+  height: 100%;
+  overflow-y: scroll;
+  background-color: #dfdfea;
+  border-top-right-radius: 25px;
+}
+.new_message_icon {
+  font-size: large;
+}
+.page {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+.post {
+  resize: none;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  //   height: 100%;
+  width: 100%;
+  position: static;
+}
+.scroll {
+  //   display: flex;
+  //   flex-direction: column;
+  //   overflow-y: scroll;
+  padding: 0% 15%;
+}
+.send_btn {
+  display: flex;
+  align-items: center;
+}
+.send_btn_style {
+  font-family: "Font Awesome 5 Free";
+  background-color: #add3ec;
+  color: white;
+}
+.search-box {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  // display: inline-block;
+  border-style: hidden;
+  justify-content: center;
+  align-items: center;
+  //   border: ridge;
+  border-color: azure;
+  background-color: white;
+  border-radius: 25px;
+  margin: 1% 5%;
+}
+.search-box__icon {
+  display: flex;
+  font-size: 26px;
+  right: 10%;
+  color: lightblue;
+  background-color: white;
+  padding: 1%;
+  // border: ridge;
+  border-color: azure;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+}
+.search-box__input {
+  // transition: right, 0.7s;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 1px;
+  // width: 20%;
+  font-size: initial;
+  float: right;
+  position: relative;
+  // border-radius: 5%;
+  // margin-right: 10%;
+  // opacity: 0.7%;
+  height: 25px;
+  // cursor: pointer;
+  outline: none;
+  border: none;
+  width: 100%;
+  font-family: "Font Awesome 5 Free";
+  font-weight: initial;
+  background-color: white;
+  // border: ridge;
+  border-color: azure;
+  display: flex;
+  color: rgb(126, 113, 113);
+  border-radius: 25px;
+}
+.style {
+  display: flex;
+  color: gray;
+  font-family: "Font Awesome 5 Free";
+  width: 100%;
+  font-size: large;
+  padding-left: 3%;
+  align-items: center;
+}
+.space {
+  padding: 1%;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #dfdfea;
+  border-top-left-radius: 25px;
+}
+
+.type_message_box {
+  width: 98%;
+}
+.upload_options {
+  margin-right: 1%;
+}
+.uploadFile {
+  display: none;
+}

@@ -1,0 +1,98 @@
+<div class="page">
+<div class="message_box">
+
+<div class="left">
+
+    <div class="title">
+<div class="style">Messages</div>
+<button mat-icon-button>
+    <i class="far fa-edit new_message_icon"></i>
+</button>
+</div>
+<mat-divider></mat-divider>
+<div class="search-box">
+    <i class="fas fa-search search-box__icon "></i>
+    <input matInput type="search" class="search-box__input" placeholder="Filter messages"
+      [formControl]="search" />
+    <cdk-virtual-scroll-viewport itemSize="10">
+      <mat-option *cdkVirtualFor="let user of filteredSearch | async" [value]="user">
+        {{user}}
+      </mat-option>
+    </cdk-virtual-scroll-viewport>
+  </div>
+  <mat-divider></mat-divider>
+<div class="list"> 
+<!-- <div class="scroll"> -->
+    
+        <app-card-message class="space" *ngFor="let chat of chats">
+        
+                {{chat}}
+        
+       </app-card-message>
+
+    
+<!-- </div> -->
+
+</div>
+
+
+
+
+</div>
+
+<mat-divider [vertical]="true"></mat-divider>
+
+
+<div class="right">
+
+<div class="messages">
+
+</div>
+
+<div class="type_message">
+<mat-form-field class="type_message_box">
+        <textarea matInput class="post" placeholder="Write a message..."
+          [formControl]="message"></textarea>
+        </mat-form-field>
+</div>
+
+<div class="assistance">
+<div class="upload_options">
+    <button mat-icon-button (click)="uploadFile()">
+        <i class="fas fa-paperclip">
+<input #fileInput id="fileInput" type="file" [formControl]="fileUploadM" class="uploadFile">
+        </i>
+    </button>
+   
+        
+    <button mat-icon-button (click)="uploadPic()">
+        <i class="fas fa-camera">
+          <input #picInput id="picInput" type="file" [formControl]="photoUploadM" class="uploadFile" accept="image/* video/*">
+        </i>
+        </button>
+
+    <button mat-icon-button>
+       GIF
+    </button>
+        
+    <button mat-icon-button>
+        <i class="fas fa-grin-alt"></i>
+    </button>
+</div>
+
+<div class="send_btn">
+    <mat-chip type="button" class="send_btn_style"   (click)="sendMsg()">
+Send
+    </mat-chip>
+    </div>
+
+    
+</div>
+
+
+
+</div>
+
+
+</div>
+</div>

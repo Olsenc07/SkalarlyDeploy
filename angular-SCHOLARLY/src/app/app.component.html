@@ -1,0 +1,196 @@
+<!-- Copy and paste these scripts into the bottom of your <body> tag, but before you use any Firebase services: -->
+<!-- <body>  -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!-- <script src="/__/firebase/8.1.2/firebase-app.js"></script> -->
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<!-- <script src="/__/firebase/8.1.2/firebase-analytics.js"></script> -->
+
+<!-- Initialize Firebase -->
+<!-- <script src="/__/firebase/init.js"></script>
+</body> -->
+
+
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <div class="root-container">
+    <router-outlet>
+    </router-outlet>
+  </div>
+
+  <div class="root-container">
+    <ng-container
+      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isRetrievePScreen$ | async )) === false ">
+      <mat-toolbar class="header" color="primary" id="nav-bar">
+        <!-- <div *ngIf=[routerLink]="['/app-home-page']" routerLinkActive=nav-bar></div> -->
+        <img class="toolbar-logo" Src="../assets/Pics/ProperInAppLogo.jpeg" />
+        <span class="fill-space"></span>
+
+
+
+        <!-- Small screens top nav -->
+
+        <div class="small-icons">
+          <div [ngClass]="searchPop === false  ? 'search-box' : 'search-box_' ">
+            <button mat-icon-button type="button" (click)="search_()">
+              <mat-icon class="material-icons  "
+                [ngClass]="searchPop === false  ? 'search-box__icon' : 'search-box__icon_' "> search</mat-icon>
+            </button>
+            <input placeholder="Search Fellow Scholars" class="standard"
+              [ngClass]="searchPop === false  ? 'searchHide' : 'search-box__input,fas' " />
+
+          </div>
+
+          <button mat-icon-button [matMenuTriggerFor]="settingsMenu" type="button">
+            <mat-icon class="settings">settings</mat-icon>
+          </button>
+        </div>
+
+
+
+
+        <!-- Desktop -->
+        <!--Icons autosize to sidenav  -->
+        <div class="large-screen-icons">
+          <!-- New -->
+          <div class="search-box">
+            <i class="fas fa-search search-box__icon "></i>
+            <input matInput type="search" class="search-box__input" placeholder="Search Fellow Scholars"
+              [formControl]="search" />
+            <cdk-virtual-scroll-viewport itemSize="10">
+              <mat-option *cdkVirtualFor="let user of filteredSearch | async" [value]="user">
+                {{user}}
+              </mat-option>
+            </cdk-virtual-scroll-viewport>
+          </div>
+          <!-- End -->
+          <div class="icon-top">
+            <div class="icon-btn-fit">
+              <button [disableRipple]="true" mat-icon-button type="button" routerLink="/search" class="a_up">
+                <mat-icon [ngClass]="(isSearchScreen$ | async ) === true
+               ? 'PublicOn' : 'public' ">public</mat-icon>
+              </button>
+            </div>
+
+            <div class="icon-btn-fit">
+              <button [disableRipple]="true" mat-icon-button type="button" routerLink="/friends-activity" class="a_up">
+                <mat-icon [ngClass]="(isFriendsActScreen$ | async ) === true
+            ? 'GroupsOn' : 'groups' ">groups</mat-icon>
+              </button>
+            </div>
+            <div class="icon-btn-fit">
+              <button [disableRipple]="true" mat-icon-button type="button" routerLink="/post-page" class="a_up">
+                <mat-icon [ngClass]="(isPostScreen$ | async ) === true
+                ? 'PostOn' : 'post' ">add_circle</mat-icon>
+              </button>
+            </div>
+
+            <div class="icon-btn-fit">
+              <button [disableRipple]="true" mat-icon-button type="button" routerLink="/messages" class="a_up">
+                <i [ngClass]="(isMessagesScreen$ | async ) === true
+                ? 'MessageOn' : 'message' 
+                " class="far fa-comment-dots"></i>
+              </button>
+            </div>
+
+            <div class="icon-btn-fit">
+              <button [disableRipple]="true" mat-icon-button type="button" routerLink="/profile" class="a_up">
+                <mat-icon [ngClass]="(isProfileScreen$ | async ) === true
+            ? 'ProfileOn' : 'profile'">account_circle</mat-icon>
+              </button>
+            </div>
+
+          </div>
+          <button mat-icon-button [matMenuTriggerFor]="settingsMenu" type="button" class="b_up">
+            <mat-icon class="settings">settings</mat-icon>
+          </button>
+        </div>
+      </mat-toolbar>
+    </ng-container>
+
+
+    <mat-menu #settingsMenu="matMenu">
+
+      <button mat-menu-item type="button" routerLink="/retrieve-password" style="border-bottom:solid #c6c9ea"
+        class="look-nice"><span class="material-icons d_settings" style="color: burlywood; ">
+          vpn_key
+        </span>
+        Change Password
+      </button>
+
+
+      <button mat-menu-item type="button" routerLink="/edit-profile" style="border-bottom:solid #c6c9ea"
+        class="look-nice"><span class="material-icons d_settings" style="color: cadetblue; ">
+          lock_open
+        </span>
+        Edit Profile
+      </button>
+
+
+      <button mat-menu-item type="button" routerLink="/login" class="look-nice"><span class="material-icons d_settings"
+          style="color: darkcyan;">
+          exit_to_app
+        </span>Log Out</button> <!-- TODO: wire up log out button -->
+    </mat-menu>
+
+
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- Bottom nav bar for small screens -->
+
+    <ng-container
+      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isRetrievePScreen$ | async)) === false ">
+      <mat-toolbar class="lower">
+        <div class="icon-top">
+          <div class="icon-btn-fit">
+            <button [disableRipple]="true" mat-icon-button type="button" routerLink="/search" class="a_up">
+              <mat-icon [ngClass]="(isSearchScreen$ | async ) === true
+    ? 'PublicOnM' : 'publicM' ">public</mat-icon>
+            </button>
+          </div>
+          <div class="icon-btn-fit">
+            <button [disableRipple]="true" mat-icon-button type="button" routerLink="/friends-activity" class="a_up">
+              <mat-icon [ngClass]="(isFriendsActScreen$ | async ) === true
+      ? 'GroupsOnM' : 'groupsM' ">groups</mat-icon>
+            </button>
+          </div>
+          <div class="icon-btn-fit">
+            <button [disableRipple]="true" mat-icon-button type="button" routerLink="/post-page" class="a_up">
+              <mat-icon [ngClass]="(isPostScreen$ | async ) === true
+              ? 'PostOnM' : 'postM' ">add_circle</mat-icon>
+            </button>
+          </div>
+
+          <div class="icon-btn-fit">
+            <button [disableRipple]="true" mat-icon-button type="button" routerLink="/messages" class="a_up">
+              <i [ngClass]="(isMessagesScreen$ | async ) === true
+              ? 'MessageOnM' : 'messageM' 
+              " class="far fa-comment-dots"></i>
+            </button>
+          </div>
+
+          <div class="icon-btn-fit">
+            <button [disableRipple]="true" mat-icon-button type="button" routerLink="/profile" class="a_up">
+              <mat-icon [ngClass]="(isProfileScreen$ | async ) === true
+      ? 'ProfileOnM' : 'profileM' ">account_circle</mat-icon>
+            </button>
+          </div>
+
+        </div>
+      </mat-toolbar>
+    </ng-container>
+  </div>
+
+
+
+  <ng-container *ngIf="(isHomeScreen$ | async) === false">
+    <div class="main-content"></div>
+  </ng-container>
+
+
+
+
+
+</form>

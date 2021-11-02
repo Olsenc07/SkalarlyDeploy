@@ -1,0 +1,80 @@
+<mat-card class="row1">
+    <div class="column">
+        <div class="row">
+            <div class="row_">
+                <div mat-card-avatar class="profilePic" *ngIf="(profile | async)?.profPic">
+                    <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
+                    <img class="fit" src="{{(profile | async)?.profPic}}">
+                </div>
+
+                <div mat-card-avatar class="profilePic" *ngIf="!(profile | async)?.profPic">
+                    <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="fit" />
+                </div>
+                <!-- <div class="column_"> -->
+                <div class="userName textSize" *ngIf="(profile | async)?.Name">
+                    <!-- {{ (profile | async)?.Pronouns}} -->
+                    {{ (profile | async)?.Name}}
+
+                </div>
+                <!-- <mat-card-subtitle class="gender textSize">
+                                    {{id.Gender}}
+                                </mat-card-subtitle> -->
+                <!-- </div> -->
+            </div>
+
+
+
+            <!-- Card is removed from list when follow is clicked -->
+            <!-- Only appears if user isn't already following this mutual friend -->
+            <mat-chip-list class="center_" aria-label="FollowBtn">
+                <!-- (click)="followClicked()" -->
+                <mat-chip class="messageM">
+                    Follow
+
+                    <!-- {{ following ? "Unfollow" : "Follow" }} -->
+
+
+
+                </mat-chip>
+            </mat-chip-list>
+
+
+
+            <!-- <div class="row1"><button mat-icon-button class="btn"><i class="far fa-check-circle green"></i></button>
+            
+                            <button mat-icon-button class="btn"> <i class="far fa-times-circle red"></i></button>
+                        </div> -->
+
+        </div>
+
+        <div class="row">
+            <div [ngClass]="(profile | async)?.Sport || (profile | async)?.Club ? 'center' : 'centerEmpty' "
+                *ngIf=" (profile | async)?.Major || (profile | async)?.Minor ">
+                <div class=" center1" *ngIf="(profile | async)?.Major">
+
+                    <i class="fas fa-star large">{{ (profile | async)?.Major}}</i>
+
+                </div>
+                <div class="center1" *ngIf="(profile | async)?.Minor">
+
+                    <i class="far fa-star large">{{ (profile | async)?.Minor}}</i>
+
+                </div>
+            </div>
+
+
+            <div [ngClass]="(profile | async)?.Major || (profile | async)?.Minor ? 'center' : 'centerEmpty' "
+                *ngIf="(profile | async)?.Sport || (profile | async)?.Club ">
+                <div class="center1" *ngIf="(profile | async)?.Sport">
+                    <!-- {{id.Sport}} -->
+                    {{ (profile | async)?.Sport}}
+                </div>
+                <div class="center1" *ngIf="(profile | async)?.Club">
+                    <!-- {{id.Club}} -->
+                    {{ (profile | async)?.Club}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</mat-card>

@@ -1,0 +1,157 @@
+<div class="feed">
+    <mat-card class="specifics-fill">
+        <!-- Profile Pic -->
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="centerT" *ngIf="(post | async)?.Title">
+
+                        <div class="postTitle ">
+                            {{ (post | async)?.Title}}
+
+                        </div>
+
+                    </div>
+                    <div class="row2">
+                        <div class="column">
+                           
+
+
+                            <div class="row-" >
+
+                                <div class="profilePic" *ngIf="(profile | async)?.profPic">
+                                    <!-- need to get croppeded value -->
+                                    <img class="pic" src="{{(profile | async)?.profPic}}" >
+                                    <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
+                                </div>
+
+                                <div class="profilePic" *ngIf="!(profile | async)?.profPic">
+                                    <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
+                                </div>
+
+
+                                <div class="column1">
+
+                                    <!-- <div class="linkN">
+                                        {{ (profile | async)?.Name}}
+                                    </div> -->
+
+
+                                    <!-- <div class="nameTitle"> -->
+                                    <!-- Button directs to that users profile -->
+                                    <!-- <button mat-button class="nameTitle">
+                                        <div class="userName  link">
+                                            <!\-- Olsen07 --
+                                           
+                                        </div>
+                                    </button> -->
+                                    <!-- </div> -->
+
+
+      <!-- Joins user to that group,make sure 
+                        that it doesn't create duplicates!!! -->
+                        <!-- <mat-card-title class="centerT"> -->
+                            <button mat-button routerLink="/groups" *ngIf="(id | async)?.UserName">
+                                <div class=" postLocation textSize">Join
+                                    {{( id | async)?.UserName}}'s Group
+                                </div>
+                            </button>
+
+
+
+
+                            <div class="column_">
+
+                                <!-- Idk If needed -->
+    
+                                <!-- <div class="postLocation textSize t">
+                        !-- Location --
+                        {{ (post | async)?.PostLocation}}
+                      </div> -->
+    
+                                <!-- <div class="textSize row1 t" *ngIf="(post | async)?.FirstFormGroup.locationEvent">
+                                    !-- {{Specific}}Specific Page --
+                                {{ (post | async)?.FirstFormGroup.locationEvent}}
+                            </div> -->
+                                <div class="row1" *ngIf=" (post | async)?.FirstFormGroup.date
+                          || (post | async)?.FirstFormGroup.time ">
+    
+    
+                                    <div class="postTime textSize column1">
+                                        <div class=" displayT t">
+                                            {{ (post | async)?.FirstFormGroup.date | date:"longDate"}}
+                                        </div>
+                                        <!-- <div class="displayT t">
+                                            {{ (post | async)?.FirstFormGroup.time}}</div> -->
+                                    </div>
+                                </div>
+    
+    
+    
+                                <!-- Import the boolean icons with no color originally then the what did user say.. if null then display="none" -->
+                                <div class="row" *ngIf="(post | async)?.SecondFormGroup">
+    
+    
+    
+    
+                                    <div class="booleans">
+                                        <div class="fas fa-venus b"
+                                            *ngIf="(post | async)?.SecondFormGroup.gender == 'female'">
+                                        </div>
+                                        <div class="fas fa-transgender-alt b"
+                                            *ngIf="(post | async)?.SecondFormGroup.gender == 'all'">
+                                        </div>
+                                        <div class="fas fa-mars b" *ngIf="(post | async)?.SecondFormGroup.gender == 'male'">
+                                        </div>
+    
+                                        <div class="fas fa-car b" *ngIf="(post | async)?.ThirdFormGroup.driver"></div>
+                                        <div class="fas fa-dollar-sign b"
+                                            *ngIf=" (post | async)?.ThirdFormGroup.paymentService"></div>
+    
+                                        <div class="fas fa-user-tie b"
+                                            *ngIf="(post | async)?.FourthFormGroup.event == 'formal'"></div>
+                                        <div class="fas fa-glass-cheers b"
+                                            *ngIf="(post | async)?.FourthFormGroup.event == 'relaxed'">
+                                        </div>
+    
+                                    </div>
+    
+    
+    
+                                </div>
+                            </div>
+    
+
+
+
+                        <!-- </mat-card-title> -->
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                     
+                        
+
+
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </mat-card>
+
+</div>
