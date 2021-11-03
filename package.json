@@ -1,7 +1,7 @@
 {
-  "name": "anglar_scholarly_test_jbl",
+  "name": "angular_scholarly_test_jbl",
   "version": "1.0.0",
-  "description": "",
+  "description": "firebase connection",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,6 +12,16 @@
   "license": "ISC",
   "dependencies": {
     "@angular/fire": "^7.1.1",
-    "express": "^4.17.1"
-  }
+    "express": "^4.17.1",
+    "firebase": "^9.2.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Olsenc07/SCHOLARLY-Fullstack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Olsenc07/SCHOLARLY-Fullstack/issues"
+  },
+  "homepage": "https://github.com/Olsenc07/SCHOLARLY-Fullstack#readme"
 }

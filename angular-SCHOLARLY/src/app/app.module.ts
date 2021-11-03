@@ -41,6 +41,12 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { initializeApp } from 'firebase/app';
+import { getAnalytics } from 'firebase/analytics';
+
+
+import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
+
 
 
 import { routingComponents } from './app-routing.module';
@@ -81,8 +87,23 @@ import { PostService } from './services/post.service';
 import { ClassListService } from './services/class.service';
 import { StoreService } from './services/store.service';
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: 'AIzaSyCzLJ9ei-1NCZmXX1O3s2s8AzYFsIzG6K0',
+  authDomain: 'scholarly-6e095.firebaseapp.com',
+  databaseURL: 'https://scholarly-6e095-default-rtdb.firebaseio.com',
+  projectId: 'scholarly-6e095',
+  storageBucket: 'scholarly-6e095.appspot.com',
+  messagingSenderId: '912551296803',
+  appId: '1:912551296803:web:6b91dfc90e0bee1ce45696',
+  measurementId: 'G-J5BHKT238R'
+};
 
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 @NgModule({
   declarations: [
@@ -155,7 +176,8 @@ import { StoreService } from './services/store.service';
     MatSnackBarModule,
     ScrollingModule,
     AngularFirestoreModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireAnalyticsModule, 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SearchListService, PostService, ClassListService, StoreService],

@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { StoreService } from '../services/store.service';
-import { FollowingService } from '../services/following.service';
-import { FollowerService } from '../services/followers.service';
 
 
 
@@ -39,11 +37,6 @@ export class ProfileComponent implements OnInit {
   // show cases, doesnt work when connected to service
   // showCases = StoreService.ShowCases;
 
-
-
-  // Friends
-  followers = FollowerService.Follower.length;
-  follow = FollowingService.Following.length;
 
 
 
