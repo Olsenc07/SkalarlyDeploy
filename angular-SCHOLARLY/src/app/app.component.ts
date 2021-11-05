@@ -4,7 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+
 
 
 
@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
     search: this.search,
   });
 
-  constructor(firestore: AngularFirestore,
+  constructor(
               private router: Router
   ) {
     this.filteredSearch = this.search.valueChanges.pipe(

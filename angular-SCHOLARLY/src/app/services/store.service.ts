@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
-import { AngularFirestore } from '@angular/fire/firestore';
+
 
 // Missing groups joined and posts made
 export interface Profile {
@@ -98,7 +98,7 @@ export class StoreService {
 
   // static profile$$: string[];
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore) { }
+  constructor(private http: HttpClient) { }
 
   setUser(userId: NewUserId): void {
     StoreService.userId$$.next(userId);
