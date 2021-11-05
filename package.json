@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/cli": "^13.0.1",
     "@angular/core": "^12.2.12",
     "@angular/fire": "^7.1.1",
     "express": "^4.17.1",
