@@ -44,6 +44,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
 
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 
@@ -177,7 +180,9 @@ const analytics = getAnalytics(app);
     ScrollingModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAnalyticsModule, 
+    AngularFireAnalyticsModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SearchListService, PostService, ClassListService, StoreService],
