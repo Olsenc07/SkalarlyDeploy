@@ -38,6 +38,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+
+
+import { initializeApp } from 'firebase/app';
+import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { environment } from 'src/environments/environment';
 
 
@@ -80,6 +84,12 @@ import { SearchListService } from './services/search.service';
 import { PostService } from './services/post.service';
 import { ClassListService } from './services/class.service';
 import { StoreService } from './services/store.service';
+
+    // Initialize Firebase
+const app = initializeApp(environment.firebaseConfig);
+const analytics = getAnalytics(app);
+
+
 
 
 @NgModule({
@@ -152,6 +162,8 @@ import { StoreService } from './services/store.service';
     MatExpansionModule,
     MatSnackBarModule,
     ScrollingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SearchListService, PostService, ClassListService, StoreService],
