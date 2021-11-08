@@ -41,7 +41,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 import { initializeApp } from 'firebase/app';
-import { AngularFirestoreModule } from "@angular/fire/firestore";
+
 import { environment } from 'src/environments/environment';
 
 
@@ -87,7 +87,7 @@ import { StoreService } from './services/store.service';
 
     // Initialize Firebase
 const app = initializeApp(environment.firebaseConfig);
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 
 
 
@@ -162,8 +162,6 @@ const analytics = getAnalytics(app);
     MatExpansionModule,
     MatSnackBarModule,
     ScrollingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SearchListService, PostService, ClassListService, StoreService],
