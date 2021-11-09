@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "scholarly-6e095": {
+      "hosting": {
+        "angular-SCHOLARLY": [
+          "scholarly-6e095"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "scholarly-6e095"
+  }
+}
