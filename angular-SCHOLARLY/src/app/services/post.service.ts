@@ -4,11 +4,11 @@ import { HttpClient } from '@angular/common/http';
 
 
 export interface Post {
-    Title: String;
-    PostDescription: String;
-    Upload: String;
-    PostLocation: String;
-    FriendCtrl: String[];
+    Title?: string;
+    PostDescription?: string;
+    Upload?: string;
+    PostLocation: string;
+    FriendCtrl?: string[];
     // Date: String;
     // Time: String;
     // LocationEvent: String;

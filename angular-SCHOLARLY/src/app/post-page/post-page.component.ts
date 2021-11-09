@@ -111,7 +111,8 @@ export class PostPageComponent implements OnInit {
 
 
 
-  constructor(public dialog: MatDialog, public searchListService: SearchListService, private fb: FormBuilder, private postService: PostService) {
+  constructor(public dialog: MatDialog, public searchListService: SearchListService,
+     private fb: FormBuilder, private postService: PostService) {
     this.Title.valueChanges.subscribe((v) => this.TitleLength.next(v.length));
     // Desktop tag friends
     this.filteredFriends = this.friendCtrl.valueChanges.pipe(
