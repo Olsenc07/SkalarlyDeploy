@@ -127,6 +127,16 @@
               "devServerTarget": "angular-SCHOLARLY:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "angular-SCHOLARLY:build:production",
+            "firebaseProject": "scholarly-6e095",
+            "firebaseHostingSite": "scholarly-6e095"
+          }
         }
       }
     },

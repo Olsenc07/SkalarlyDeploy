@@ -8,12 +8,19 @@ import { filter, map, tap } from 'rxjs/operators';
 
 
 
+
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+
+
+
+
   searchPop = false;
   faCoffee = faCoffee;
   title = 'angular-SCHOLARLY';
@@ -49,7 +56,7 @@ export class AppComponent implements OnInit {
   });
 
   constructor(
-              private router: Router
+              private router: Router,
   ) {
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) => user ? this._filter(user) : this.allUsers.slice()));

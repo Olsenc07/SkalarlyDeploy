@@ -40,9 +40,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
-import { initializeApp } from 'firebase/app';
+// import { initializeApp } from 'firebase/app';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 
 import { environment } from 'src/environments/environment';
+
 
 
 
@@ -84,10 +90,18 @@ import { SearchListService } from './services/search.service';
 import { PostService } from './services/post.service';
 import { ClassListService } from './services/class.service';
 import { StoreService } from './services/store.service';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { provideAnalytics, getAnalytics, ScreenTrackingService, UserTrackingService } from '@angular/fire/analytics';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideFunctions, getFunctions } from '@angular/fire/functions';
+import { provideMessaging, getMessaging } from '@angular/fire/messaging';
+import { providePerformance, getPerformance } from '@angular/fire/performance';
+import { provideRemoteConfig, getRemoteConfig } from '@angular/fire/remote-config';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 
-    // Initialize Firebase
-const app = initializeApp(environment.firebaseConfig);
-// const analytics = getAnalytics(app);
+
 
 
 
@@ -162,9 +176,23 @@ const app = initializeApp(environment.firebaseConfig);
     MatExpansionModule,
     MatSnackBarModule,
     ScrollingModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAnalytics(() => getAnalytics()),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
+    provideFunctions(() => getFunctions()),
+    provideMessaging(() => getMessaging()),
+    providePerformance(() => getPerformance()),
+    provideRemoteConfig(() => getRemoteConfig()),
+    provideStorage(() => getStorage()),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [SearchListService, PostService, ClassListService, StoreService],
+  providers: [SearchListService, PostService, ClassListService, StoreService, ScreenTrackingService, UserTrackingService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
