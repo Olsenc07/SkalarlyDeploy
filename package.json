@@ -15,7 +15,6 @@
     "@angular/core": "^13.0.0",
     "@angular/fire": "^7.1.1",
     "express": "^4.17.1",
-    "firebase": "^9.0.3-202181503543",
     "firebase-tools": "^9.22.0",
     "rxjs": "^7.4.0"
   },
