@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd angular-SCHOLARLY && npm run build && cd .. && node index.js"
+    "start": "cd angular-SCHOLARLY && npm run build && cd .. && node index.js",
+    "dev": "nodemon ./index.js"
   },
   "keywords": [],
   "author": "",
@@ -25,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/Olsenc07/SCHOLARLY-Fullstack/issues"
   },
-  "homepage": "https://github.com/Olsenc07/SCHOLARLY-Fullstack#readme"
+  "homepage": "https://github.com/Olsenc07/SCHOLARLY-Fullstack#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }

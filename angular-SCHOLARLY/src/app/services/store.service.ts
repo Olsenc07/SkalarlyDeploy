@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { MomentDateAdapter } from '@angular/material-moment-adapter';
 
@@ -32,7 +33,7 @@ export interface NewUserId {
 }
 
 export interface Cards {
-  UserName: String;
+  UserName: string;
   Major: String;
   Minor: String;
   Sport: String;
@@ -107,7 +108,7 @@ export class StoreService {
     StoreService.profile$$.next(profile);
   }
 
-
+=
 
 
 }
