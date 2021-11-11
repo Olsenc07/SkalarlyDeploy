@@ -1,9 +1,15 @@
-@media (max-width: 901px) {
-  .column {
-    display: flex;
-    flex-direction: column;
-  }
+.box {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 @media (max-width: 500px) {
   .content {
     display: flex;
@@ -22,74 +28,55 @@
     justify-content: center;
   }
 }
-@media (min-width: 767px) {
+@media (min-width: 500px) {
   .main-text {
     display: flex;
-    padding: 5% 0% 0% 0%;
-    font-size: 3vw;
+    font-size: x-large;
     line-height: initial;
-    color: #0e3379;
-    font-family: "Font Awesome 5 Free";
-  }
-}
-
-@media (max-width: 767px) {
-  .main-text-small {
-    display: flex;
-    padding: 5% 0% 0% 0%;
-    font-size: 4vw;
-    line-height: initial;
-    color: #0e3379;
+    justify-content: center;
+    margin: 1%;
+    color: #000000;
     font-family: "Font Awesome 5 Free";
   }
 }
 @media (max-width: 500px) {
-  .main-text-small {
-    padding: 5% 0% 0% 0%;
-    font-size: 4vw;
+  .main-text {
+    display: flex;
+    font-size: large;
     line-height: initial;
-    color: #0e3379;
+    justify-content: center;
+    margin: 1%;
+    color: #000000;
     font-family: "Font Awesome 5 Free";
   }
 }
-@media (min-width: 1024px) {
-  .pic {
-    width: 100%;
-    margin-top: 1%;
-    border-radius: 25px;
-  }
+.pic {
+  // width: 100%;
+  margin-top: 1%;
+  border-radius: 25px;
 }
-@media (max-width: 1024px) {
-  .pic {
-    width: 100%;
+
+@media (min-width: 500px) {
+  .log-in-box {
+    box-sizing: border-box;
+    padding: 2% 5% 5% 5%;
+    // border: 1px solid gray;
+    border-radius: 16px;
+    margin: 0% 25% 0% 25%;
+    background-image: linear-gradient(to top right, #abbdde, white);
   }
 }
 
-@media (min-width: 901px) {
+@media (max-width: 500px) {
   .log-in-box {
     box-sizing: border-box;
-    padding: 0% 5% 5% 5%;
-    border: 1px solid gray;
+    padding: 2% 5% 5% 5%;
+    // border: 1px solid gray;
     border-radius: 16px;
-    width: 100%;
-    margin-top: 2%;
-    display: flex;
-    background-image: linear-gradient(to top right, #0f3379, white);
+    background-image: linear-gradient(to top right, #abbdde, white);
   }
 }
-@media (max-width: 901px) {
-  .log-in-box {
-    box-sizing: border-box;
-    padding: 0% 5% 5% 5%;
-    border: 1px solid gray;
-    border-radius: 16px;
-    width: 100%;
-    height: 100%;
-    margin-top: 2%;
-    display: flex;
-    background-image: linear-gradient(to top right, #0f3379, white);
-  }
-}
+
 .forgot-password {
   margin: 8px 0;
   font-size: 16px;
@@ -100,23 +87,11 @@
 .action-button {
   font-family: "Font Awesome 5 Free", "Helvetic Neue";
 }
-@media (max-height: 545px) {
-  .top {
-    margin-top: 4%;
-  }
-}
-@media (min-width: 511px) {
-  .tag {
-    color: #0e3379;
-    font-family: "Font Awesome 5 Free", "Helvetic Neue";
-    margin: 3% 0;
-    font-size: 17px;
-  }
-}
-@media (max-width: 511px) {
-  .tag {
-    display: none;
-  }
+
+.tag {
+  color: #000000;
+  font-family: "Font Awesome 5 Free", "Helvetic Neue";
+  font-size: 17px;
 }
 
 .text-input {

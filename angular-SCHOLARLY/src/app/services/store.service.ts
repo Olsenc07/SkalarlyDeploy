@@ -95,6 +95,15 @@ export class StoreService {
 
 
   static profile$$: ReplaySubject<Profile> = new ReplaySubject<Profile>(1);
+  handleError: any;
+  // Put: update observable
+  // updateProfile(profile$$: Profile): Observable<Profile> {
+  //   return this.http.put<Profile>(this. , profile$$)
+  //   .pipe(
+  //     catchError(this.handleError('error', profile$$))
+  //   );
+  // }
+ 
   static userId$$: ReplaySubject<NewUserId> = new ReplaySubject<NewUserId>(1);
 
   // static profile$$: string[];
@@ -108,7 +117,7 @@ export class StoreService {
     StoreService.profile$$.next(profile);
   }
 
-=
+
 
 
 }
