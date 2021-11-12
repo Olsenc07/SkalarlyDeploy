@@ -79,7 +79,7 @@ export class PostPageComponent implements OnInit {
   // allFriends should filter through your friend list desktop
   allFriends: string[] = [''];
 
-
+  selectedIndexPost = 0;
   isLinear = false;
   Title: FormControl = new FormControl('');
   public TitleLength = new BehaviorSubject(0);
@@ -249,10 +249,10 @@ export class PostPageComponent implements OnInit {
 
 
   changeTab(): void {
-    this.selectedIndex = this.selectedIndex === 1 ? 0 : 1;
+    this.selectedIndexPost = this.selectedIndexPost === 1 ? 0 : 1;
   }
   changeTab1(): void {
-    this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
+    this.selectedIndexPost = this.selectedIndexPost === 0 ? 1 : 0;
   }
 }
 @Component({

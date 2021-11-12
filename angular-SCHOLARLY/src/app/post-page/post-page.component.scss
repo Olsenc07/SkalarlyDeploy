@@ -1,24 +1,11 @@
-@media (min-width: 1024px) {
-  .largest-page {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    flex-direction: row;
-    box-sizing: border-box;
-    position: fixed;
-  }
-}
-@media (max-width: 1024px) {
-  .largest-page {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    box-sizing: border-box;
-    overflow-y: scroll;
-  }
+.largest-page {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow-y: scroll;
 }
 
 .amount-peopleD {
@@ -75,6 +62,9 @@
   margin-left: 2%;
   margin-right: 2%;
 }
+.back_btn {
+  font-family: "Font Awesome 5 Free";
+}
 .btn {
   display: flex;
   height: 100%;
@@ -97,6 +87,7 @@
 .center {
   display: flex;
   justify-content: center;
+  margin-bottom: 5%;
 }
 .centerD {
   display: flex;
@@ -108,11 +99,20 @@
   color: #3a3232;
   font-family: "Font Awesome 5 Free";
 }
+.centerL {
+  display: flex;
+  justify-content: center;
+  margin-top: 20%;
+  margin-bottom: 1%;
+  flex-direction: row;
+  font-size: x-large;
+  color: #3a3232;
+  font-family: "Font Awesome 5 Free";
+}
 @media (min-width: 1024px) {
   .contents {
     display: flex;
     box-sizing: border-box;
-    padding: 0% 0% 35% 0%;
   }
 }
 @media (max-width: 1024px) and(min-width:700px) {
@@ -201,6 +201,7 @@
   color: #418bba;
   font-size: x-large;
   font-family: "Font Awesome 5 Free";
+  border: outset;
 }
 .friends-search {
   display: flex;
@@ -284,6 +285,7 @@
   display: flex;
   width: 100%;
   height: 100%;
+  justify-content: center;
 }
 .icon {
   font-size: large;
@@ -423,18 +425,13 @@ p {
   width: 100%;
   background-size: cover;
 }
-@media (min-width: 1024px) {
-  .post-descriptionD {
-    display: flex;
-    width: 100%;
-  }
+
+.post-descriptionD {
+  display: flex;
+  width: 100%;
+  margin: 10% 0%;
 }
-@media (max-width: 1024px) {
-  .post-descriptionD {
-    display: flex;
-    width: 100%;
-  }
-}
+
 .post-descriptionM {
   display: flex;
   width: 100%;
@@ -572,7 +569,9 @@ p {
   width: 100%;
   height: fit-content;
   justify-content: center;
-  aspect-ratio: 4/3;
+  // Might be good to use for post feed display..
+  /* aspect-ratio: 4/3; */
+  max-width: 250px;
 }
 .step_2 {
   display: flex;
@@ -649,11 +648,6 @@ p {
 }
 .text-input {
   width: 100%;
-}
-.textU {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
 .trash {
   display: flex;

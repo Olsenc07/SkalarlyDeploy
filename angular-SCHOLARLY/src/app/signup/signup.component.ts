@@ -156,7 +156,7 @@ export class SignupComponent implements OnInit {
     requiredForm: this.requiredForm,
     personalizeForm: this.personalizeForm,
   });
-  toggleContainWithinAspectRatio() {
+  toggleContainWithinAspectRatio(): void {
     this.containWithinAspectRatio = !this.containWithinAspectRatio;
   }
 
@@ -164,7 +164,7 @@ export class SignupComponent implements OnInit {
     this.imgChangeEvt = event;
   }
   // Passes value as base64 string of cropped area!! But where does form controller come into play?
-  cropImg(event: ImageCroppedEvent) {
+  cropImg(event: ImageCroppedEvent): void {
     this.cropImgPreview = event.base64;
     // console.log(event, base64ToFile(event.base64));
   }
@@ -174,10 +174,10 @@ export class SignupComponent implements OnInit {
     console.log('Image loaded');
   }
 
-  initCropper(sourceImageDimensions: Dimensions) {
+  initCropper(sourceImageDimensions: Dimensions): void {
     console.log('Cropper ready', sourceImageDimensions);
   }
-  imgFailed() {
+  imgFailed(): void {
     console.log('Load failed');
   }
   // Profiel Pic
@@ -265,10 +265,10 @@ export class SignupComponent implements OnInit {
 
   uploadFileP(): any {
     document.getElementById('fileInputP').click();
-  };
+  }
   uploadFile(): any {
     document.getElementById('showCase').click();
-  };
+  }
 
   // uploadFile3(): any {
   //   document.getElementById('fileInput3').click();

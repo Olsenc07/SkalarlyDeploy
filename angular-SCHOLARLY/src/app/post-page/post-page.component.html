@@ -2,8 +2,8 @@
 
 
 
-  <mat-tab-group>
-    <mat-tab label="Context"> 
+  <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
+    <mat-tab disabled label="Step 1"> 
 
 
       <div class="post-descriptionD">
@@ -19,11 +19,7 @@
       <!-- Upload pic/video -->
       <!-- <div class="column_"> -->
       <div class="centerD">
-
-        <div class="textU"> Upload Post</div>
-
-
-
+         Upload Post
         <div [ngClass]="upload.value ? 'Show' : 'hide' ">
           <button type="button" mat-icon-button class="trash" color="primary" (click)="clearUpload()">
             <div class=" far fa-trash-alt"></div>
@@ -54,7 +50,7 @@
 
 
 <!-- Step 1 -->
-    <div class="centerD">Where do you want your post?</div>
+    <div class="centerL">Where do you want your post?</div>
 
     <mat-selection-list #options [multiple]="false" >
       <mat-form-field appearance="fill">
@@ -84,7 +80,7 @@
     
       <div class="center" *ngIf="postLocation.value">
 <button mat-raised-button type="button" class="final_step_btn" 
-[disabled]="!postLocation.valid">
+[disabled]="!postLocation.valid" (click)="changeTab()">
   Next Step
 </button>
 </div>
@@ -92,7 +88,7 @@
 
       
     </mat-tab>
-    <mat-tab label="Details"> 
+    <mat-tab disabled label="Step 2"> 
       
     
       <div class="column">
@@ -267,6 +263,13 @@
     </mat-form-field>
     
     
+
+    <button mat-raised-button type="button" class="back_btn" 
+  (click)="changeTab1()">
+     Back
+    </button>
+
+
     </mat-tab>
     
   </mat-tab-group>
