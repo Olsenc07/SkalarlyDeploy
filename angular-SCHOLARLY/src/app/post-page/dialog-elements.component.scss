@@ -4,8 +4,17 @@
   height: 100%;
   flex-direction: column;
   justify-content: center;
+  font-family: "Font Awesome 5 Free";
 }
 .dialog-title {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  border: groove;
+  font-size: large;
+}
+.header {
   display: flex;
   justify-content: center;
 }

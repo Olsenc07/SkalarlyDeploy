@@ -5,7 +5,6 @@
   height: 100%;
   flex-direction: column;
   box-sizing: border-box;
-  overflow-y: scroll;
 }
 
 .amount-peopleD {
@@ -95,6 +94,7 @@
   margin-top: 3%;
   margin-bottom: 1%;
   flex-direction: row;
+  align-items: center;
   font-size: x-large;
   color: #3a3232;
   font-family: "Font Awesome 5 Free";
@@ -102,7 +102,7 @@
 .centerL {
   display: flex;
   justify-content: center;
-  margin-top: 20%;
+  margin-top: 7%;
   margin-bottom: 1%;
   flex-direction: row;
   font-size: x-large;
@@ -129,11 +129,11 @@
     padding: 0% 20% 0% 20%;
   }
 }
-.column {
+.column_text_counter {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
+  margin: 0% 30%;
 }
 .columnM {
   display: flex;
@@ -165,28 +165,17 @@
   flex-direction: column;
   justify-content: center;
 }
-@media (min-width: 1024px) {
-  .counter {
-    display: flex;
-    margin-top: 8%;
-  }
+
+.counter {
+  display: flex;
+  margin-top: 8%;
 }
-@media (max-width: 1024px) and (min-width: 420px) {
-  .counter {
-    display: flex;
-    margin-top: 3%;
-    margin-right: 3%;
-  }
-}
-@media (max-width: 420px) {
-  .counter {
-    display: flex;
-    margin-top: 5%;
-    margin-right: 5%;
-  }
-}
+
 .description-input {
   width: 75%;
+}
+.display {
+  display: flex;
 }
 .entire-page {
   display: flex;
@@ -195,7 +184,6 @@
   flex-direction: row;
   box-sizing: border-box;
   justify-content: center;
-  overflow-y: scroll;
 }
 .final_step_btn {
   color: #418bba;
@@ -290,6 +278,7 @@
 .icon {
   font-size: large;
   margin-right: 2%;
+  color: #7e7171;
 }
 @media (min-width: 1024px) {
   .imagePreview {
@@ -312,6 +301,9 @@
     display: flex;
     height: fit-content;
   }
+}
+::ng-deep .mat-option-text {
+  text-align: center;
 }
 mat-slide-toggle {
   width: fit-content;
@@ -429,7 +421,8 @@ p {
 .post-descriptionD {
   display: flex;
   width: 100%;
-  margin: 10% 0%;
+  margin: 2% 0% 0%;
+  justify-content: center;
 }
 
 .post-descriptionM {
@@ -439,8 +432,7 @@ p {
   margin-bottom: 5%;
 }
 .post {
-  display: flex;
-  width: 100%;
+  width: 35%;
   height: 100%;
   // resize: none;
 }
@@ -462,21 +454,14 @@ p {
   color: #418bba;
   justify-content: center;
 }
-@media (min-width: 1024px) {
-  .row {
-    display: flex;
-    flex-direction: row;
-    margin-top: 5%;
-  }
+
+.row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
 }
-@media (max-width: 1024px) {
-  .row {
-    display: flex;
-    flex-direction: row;
-    width: 97%;
-    margin-top: 2%;
-  }
-}
+
 .rowP {
   display: flex;
   flex-direction: row;
@@ -492,27 +477,13 @@ p {
   color: #7e7171;
   font-family: "Font Awesome 5 Free";
 }
-@media (min-width: 1024px) {
-  .right {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    width: 85%;
-    height: 100%;
-    margin-left: 2%;
-    position: relative;
-  }
-}
-@media (max-width: 1024px) {
-  .right {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    margin-bottom: 12%;
-    position: relative;
-  }
+
+.right {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 0% 15%;
+  position: relative;
 }
 
 .right-mid {
@@ -535,7 +506,12 @@ p {
   width: 50%;
   position: relative;
 }
-
+.selection_styles {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0% 27%;
+}
 .sliders {
   display: flex;
   flex-direction: column;
@@ -612,6 +588,7 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   color: #7e7171;
   font-family: "Font Awesome 5 Free";
 }
