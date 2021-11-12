@@ -1,162 +1,115 @@
 <form [formGroup]="postForm" class="entire-page" (ngSubmit)="onFormSubmit()">
 
-  <div class="largest-page">
-    <!-- LEFT DESKTOP VIEW -->
-    <div class="left">
-      <!-- Title of post input -->
-      <!-- back button idk if needed -->
-      <!-- <div class="back-button_">
-        <button type="button" mat-icon-button routerLink="/search" class="text-"><span class="material-icons">
-            arrow_back_ios
-          </span></button>
-      </div> -->
-      <div class="left_1">
-        <div class="column">
-          <div class="counter" matBadge="{{ 35 - (TitleLength | async) }}">
-          </div>
-          <mat-form-field class="text-input">
-            <mat-label>Title</mat-label>
-            <input matInput maxlength="35" [formControl]="Title">
-            <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearTitle()">
-              <mat-icon class="clear-button">close</mat-icon>
-            </button> -->
-
-          </mat-form-field>
 
 
+  <mat-tab-group>
+    <mat-tab label="Context"> 
 
 
-          <div class="post-descriptionD">
-            <mat-form-field>
-              <textarea matInput class="post" placeholder="What would you like to say?"
-                [formControl]="postDescription"></textarea>
-            </mat-form-field>
-          </div>
-        </div>
-        <!-- Description of Post -->
-        <div class="column_1">
-
-          <!-- Upload pic/video -->
-          <!-- <div class="column_"> -->
-          <div class="centerD">
-
-            <div class="textU"> Upload Post</div>
-
-
-
-            <div [ngClass]="upload.value ? 'Show' : 'hide' ">
-              <button type="button" mat-icon-button class="trash" color="primary" (click)="clearUpload()">
-                <div class=" far fa-trash-alt"></div>
-              </button>
-            </div>
-
-          </div>
-
-          <div class="row__"> Recommended Aspect Ratio 4:3</div>
-          <div class="rowP">
-            <button type="button" class="cameraIcon" mat-button (click)="uploadFile()">
-              <div class="material-icons Photo">
-                add_a_photo
-
-                <input #fileInput id="fileInput" class="uploadD" accept="image/* video/*" type="file"
-                  (change)="imagePreview($event)" [formControl]="upload" multiple>
-              </div>
-            </button>
-          </div>
-          <!-- Only when upload holds a value -->
-          <div class="contents">
-            <div class="imgBox">
-              <img [src]="url" id="upload" [ngClass]="upload.value ? 'show' : 'hide' ">
-            </div>
-          </div>
-
-        </div>
-        <!-- back button -->
-        <!-- <div class="back-button">
-          <button type="button" mat-raised-button routerLink="/search" class="text">Cancel</button>
-        </div> -->
+      <div class="post-descriptionD">
+        <mat-form-field>
+          <textarea matInput class="post" placeholder="What would you like to say?"
+            [formControl]="postDescription"></textarea>
+        </mat-form-field>
       </div>
+ 
+    <!-- Description of Post -->
+    <div class="column_1">
 
-    </div>
+      <!-- Upload pic/video -->
+      <!-- <div class="column_"> -->
+      <div class="centerD">
 
-    <!-- MIDDLE DESKTOP VIEW -->
-
-    <div class="middle">
-
-      <!-- Newest Box -->
-      <div class="column_2">
-        <!-- tag friends -->
-        <!-- Shows the friends you tagged, can click an x to easily remove them "angular material CHIPS!!
-    as well can tag where friend is on the pic" and include scroll  -->
+        <div class="textU"> Upload Post</div>
 
 
-        <div class="column_">
-          <mat-form-field appearance="fill">
-            <div class="centerD">Tag Friends: start typing...</div>
 
-            <mat-chip-list #chipList aria-label="Friends selection">
-              <mat-chip *ngFor="let friend of friends" [selectable]="selectable" [removable]="removable"
-                (removed)="remove(friend)">
-                {{friend}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-              <input matInput #friendInput [matAutocomplete]="auto" [matChipInputFor]="chipList" class="textT"
-                [formControl]="friendCtrl" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                (matChipInputTokenEnd)="add($event)">
-            </mat-chip-list>
-
-            <!-- Connect to friends list -->
-            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-              <mat-option *ngFor="let friend of filteredFriends | async" [value]="friend">
-                {{friend}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
+        <div [ngClass]="upload.value ? 'Show' : 'hide' ">
+          <button type="button" mat-icon-button class="trash" color="primary" (click)="clearUpload()">
+            <div class=" far fa-trash-alt"></div>
+          </button>
         </div>
 
       </div>
 
+      <div class="row__"> Recommended Aspect Ratio 4:3</div>
+      <div class="rowP">
+        <button type="button" class="cameraIcon" mat-button (click)="uploadFile()">
+          <div class="material-icons Photo">
+            add_a_photo
 
-      <div class="location">
-
-        <div class="centerD">Where do you want your post?</div>
-
-        <!-- <div class="textM"> Main Categories </div> -->
-
-
-        <mat-selection-list #options [multiple]="false" >
-          <mat-form-field appearance="fill">
-            <mat-label>Step 1: Choose from the main categories</mat-label>
-
-            <mat-select>
-
-              <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
-                *ngFor="let opt of searchOptions" [value]="opt.name">
-
-                {{ opt.name }}</mat-option>
-            </mat-select>
-
-          </mat-form-field>
-        </mat-selection-list>
-
-        <div class="location-options">
-          
-          <div class="step_2">Step 2: Select the specific page</div>
-          <mat-chip-list class="mat-list-text">
-            <mat-chip [multiple]="false" *ngFor="let opt of specificOptions">
-              <mat-radio-group formControlName="postLocation">
-                <mat-radio-button [value]="opt">
-                  {{ opt }}
-                </mat-radio-button>
-              </mat-radio-group>
-            </mat-chip>
-          </mat-chip-list>
+            <input #fileInput id="fileInput" class="uploadD" accept="image/* video/*" type="file"
+              (change)="imagePreview($event)" [formControl]="upload" multiple>
+          </div>
+        </button>
+      </div>
+      <!-- Only when upload holds a value -->
+      <div class="contents">
+        <div class="imgBox">
+          <img [src]="url" id="upload" [ngClass]="upload.value ? 'show' : 'hide' ">
         </div>
       </div>
 
     </div>
 
-    <!-- RIGHT DESKTOP VIEW -->
+
+<!-- Step 1 -->
+    <div class="centerD">Where do you want your post?</div>
+
+    <mat-selection-list #options [multiple]="false" >
+      <mat-form-field appearance="fill">
+        <mat-label>Step 1: Choose from the main categories</mat-label>
+        <mat-select [formControl]="postLocationMain">
+          <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
+            *ngFor="let opt of searchOptions" [value]="opt.name">
+            {{ opt.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-selection-list>
+
+    <!-- Step 2 -->
+    
+      <mat-selection-list #options2 class="mat-list-text" [multiple]="false" *ngIf="postLocationMain.value">
+<mat-form-field appearance="fill">
+  <mat-label> Step 2: Select the specific page </mat-label>
+
+<mat-select [formControl]="postLocation" > 
+  <mat-option [multiple]="false" *ngFor="let opt of specificOptions" [value]="opt">
+        {{ opt }}
+  </mat-option>
+</mat-select>
+
+</mat-form-field>
+      </mat-selection-list>
+    
+      <div class="center" *ngIf="postLocation.value">
+<button mat-raised-button type="button" class="final_step_btn" 
+[disabled]="!postLocation.valid">
+  Next Step
+</button>
+</div>
+
+
+      
+    </mat-tab>
+    <mat-tab label="Details"> 
+      
+    
+      <div class="column">
+        <div class="counter" matBadge="{{ 35 - (TitleLength | async) }}">
+        </div>
+        <mat-form-field class="text-input">
+          <mat-label>Title</mat-label>
+          <input matInput maxlength="35" [formControl]="Title">
+          <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearTitle()">
+            <mat-icon class="clear-button">close</mat-icon>
+          </button> -->
+
+        </mat-form-field>
+    </div>
+
+
+
     <div class="right">
 
       <!-- Step1 -->
@@ -288,12 +241,35 @@
           </div>
         </mat-step>
       </mat-vertical-stepper>
-
-
-
     </div>
-  </div>
 
+    <!-- Tag Friends and post -->
+    <mat-form-field appearance="fill">
+      <div class="centerD">Tag Friends: start typing...</div>
+
+      <mat-chip-list #chipList aria-label="Friends selection">
+        <mat-chip *ngFor="let friend of friends" [selectable]="selectable" [removable]="removable"
+          (removed)="remove(friend)">
+          {{friend}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input matInput #friendInput [matAutocomplete]="auto" [matChipInputFor]="chipList" class="textT"
+          [formControl]="friendCtrl" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+
+      <!-- Connect to friends list -->
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let friend of filteredFriends | async" [value]="friend">
+          {{friend}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    
+    
+    </mat-tab>
+    
+  </mat-tab-group>
 
 
 

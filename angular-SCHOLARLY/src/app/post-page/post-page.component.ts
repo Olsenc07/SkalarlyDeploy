@@ -84,11 +84,13 @@ export class PostPageComponent implements OnInit {
   Title: FormControl = new FormControl('');
   public TitleLength = new BehaviorSubject(0);
   upload: FormControl = new FormControl('');
+  postLocationMain: FormControl = new FormControl('');
   postLocation: FormControl = new FormControl('');
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
   value: FormControl = new FormControl('');
   date: FormControl = new FormControl('');
+
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -96,17 +98,13 @@ export class PostPageComponent implements OnInit {
   fourthFormGroup: FormGroup;
 
 
-
-
   postForm = new FormGroup({
     // Desktop
     Title: this.Title,
-    PostDescription: this.postDescription,
+    postDescription: this.postDescription,
     upload: this.upload,
     postLocation: this.postLocation,
     friendCtrl: this.friendCtrl,
-
-
   });
 
 

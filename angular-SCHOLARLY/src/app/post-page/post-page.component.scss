@@ -197,7 +197,11 @@
   justify-content: center;
   overflow-y: scroll;
 }
-
+.final_step_btn {
+  color: #418bba;
+  font-size: x-large;
+  font-family: "Font Awesome 5 Free";
+}
 .friends-search {
   display: flex;
   justify-content: center;
@@ -441,7 +445,7 @@ p {
   display: flex;
   width: 100%;
   height: 100%;
-  resize: none;
+  // resize: none;
 }
 .postM {
   display: flex;

@@ -200,9 +200,16 @@
 .existing-account-layout {
   display: flex;
   justify-content: center;
+}
+.existing-account-style {
   color: #418bba;
   border-color: #707070;
   font-family: "Font Awesome 5 Free";
+}
+.existing-account-style-btn {
+  border-color: #707070;
+  font-family: "Font Awesome 5 Free";
+  border: groove;
 }
 
 .existed-centered {
