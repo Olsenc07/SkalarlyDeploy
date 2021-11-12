@@ -7,10 +7,14 @@
 
 
       <div class="post-descriptionD">
+
+
         <mat-form-field class="post">
           <textarea matInput  placeholder="What would you like to say?"
             [formControl]="postDescription"></textarea>
         </mat-form-field>
+
+
       </div>
  
     <!-- Description of Post -->
@@ -92,8 +96,15 @@
     <!-- Next page -->
     <mat-tab disabled label="Step 2"> 
       
-    
-      <div class="column_text_counter">
+      
+
+      <div class="row">
+        <button mat-raised-button type="button" class="back_btn" 
+      (click)="changeTab1()">
+         Back
+        </button>
+
+        <div class="column_text_counter"> 
         <div class="counter" matBadge="{{ 50 - (TitleLength | async) }}">
         </div>
         <mat-form-field class="text-input">
@@ -104,9 +115,18 @@
           </button> -->
 
         </mat-form-field>
+      </div>
+
+        <button type="button" mat-raised-button color="primary" class="post_btn_top_right {
+          " routerLink="/search"
+        (click)="onFormSubmit()">Post
+        <span class="material-icons"> arrow_forward </span>
+      </button>
+
+
     </div>
 
-
+ 
 
     <div class="right">
 
@@ -183,6 +203,10 @@
                 <mat-checkbox [disableRipple]="true" class="btn" formControlName="driver"></mat-checkbox>
               </div>
 
+              <button type="button" mat-button (click)="openDialogServices()">
+                <mat-icon>info</mat-icon>
+              </button>
+
               <div class="row">
                 <div class="fas fa-dollar-sign icon"></div>
                 <div class="textP">Service involving payment </div>
@@ -232,7 +256,7 @@
         </mat-step>
         <!-- Step 5 -->
         <mat-step>
-          <ng-template matStepLabel>Time To Post</ng-template>
+          <ng-template matStepLabel>Time To Tag Friends and Post</ng-template>
           <div class="row_">
             <button type="button" mat-button matStepperPrevious>Back</button>
             <button type="button" mat-raised-button color="primary" class="text" routerLink="/search"
@@ -245,7 +269,8 @@
     </div>
 
     <!-- Tag Friends and post -->
-    <mat-form-field appearance="fill">
+    <div class="tag_friends_box">
+    <mat-form-field appearance="fill" >
       <div class="centerD">Tag Friends: start typing...</div>
 
       <mat-chip-list #chipList aria-label="Friends selection">
@@ -266,13 +291,9 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+    </div>
     
     
-
-    <button mat-raised-button type="button" class="back_btn" 
-  (click)="changeTab1()">
-     Back
-    </button>
 
 
     </mat-tab>

@@ -147,6 +147,10 @@ export class PostPageComponent implements OnInit {
   openDialog(): void {
     this.dialog.open(DialogElementsComponent);
   }
+  // Create new page for services popup
+  openDialogServices(): void {
+    this.dialog.open(DialogElementsComponent);
+  }
 
   imagePreview(event: any): void {
     if (event.target.files && event.target.files[0]) {
