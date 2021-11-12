@@ -4,10 +4,11 @@
 
     <div class="left-column">
 
+
       <div class="center"> Recommendations</div>
       <!-- Reccomendations and adds -->
       <!-- Limit load in amount at a time -->
-      <div [ngClass]="opt >=1 ? 'logo-layoutP' : 'logo-layout' ">
+      <div class= "logo-layout">
         <!-- Then each card is filled uniquely passed off {{ }}  values in feed-->
         <app-card-recommendation class="adds" *ngFor="let feed of feeds">
           {{feed}}
@@ -15,14 +16,7 @@
       </div>
 
 
-      <div class="input-boxs_" *ngIf="opt >= 1">
-        <div class="center">Specific Search</div>
-        <mat-chip-list class="mat-list-text">
-          <mat-chip [multiple]="false" *ngFor="let opt of specificOptions" [value]="opt" (click)="navigateToPage(opt)">
-            {{ opt }}
-          </mat-chip>
-        </mat-chip-list>
-      </div>
+    
 
     </div>
 
@@ -33,7 +27,7 @@
       </div>
       <!-- Category box -->
       <div class="input-boxs">
-        <div class="center">Main Categories</div>
+        <div class="center">Step 1: Choose from the main categories</div>
 
         <mat-chip-list aria-label="First Choice">
           <mat-chip (click)="onSearchSelection(opt.value)" (click)="displaySpecificSearch()" [selected]="opt.name"
@@ -42,6 +36,17 @@
               {{ opt.name }}</mat-radio-button>
           </mat-chip>
         </mat-chip-list>
+
+
+
+        <div class="input-boxs_" *ngIf="opt >= 1">
+          <div class="center">Step 2: Navigate to the specific page</div>
+          <mat-chip-list class="mat-list-text">
+            <mat-chip [multiple]="false" *ngFor="let opt of specificOptions" [value]="opt" (click)="navigateToPage(opt)">
+              {{ opt }}
+            </mat-chip>
+          </mat-chip-list>
+        </div>
       </div>
     </div>
     <!-- right -->

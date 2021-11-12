@@ -112,7 +112,7 @@ export class PostPageComponent implements OnInit {
 
 
   constructor(public dialog: MatDialog, public searchListService: SearchListService,
-     private fb: FormBuilder, private postService: PostService) {
+              private fb: FormBuilder, private postService: PostService) {
     this.Title.valueChanges.subscribe((v) => this.TitleLength.next(v.length));
     // Desktop tag friends
     this.filteredFriends = this.friendCtrl.valueChanges.pipe(
@@ -145,7 +145,7 @@ export class PostPageComponent implements OnInit {
 
   uploadFile(): any {
     document.getElementById('fileInput').click();
-  };
+  }
   openDialog(): void {
     this.dialog.open(DialogElementsComponent);
   }
@@ -226,7 +226,7 @@ export class PostPageComponent implements OnInit {
     console.log(this.postForm.value);
 
 
-    let post: Post = {
+    const post: Post = {
       Title: this.Title.value,
       PostDescription: this.postDescription.value,
       Upload: this.upload.value,
@@ -242,12 +242,12 @@ export class PostPageComponent implements OnInit {
       SecondFormGroup: this.secondFormGroup.value,
       ThirdFormGroup: this.thirdFormGroup.value,
       FourthFormGroup: this.fourthFormGroup.value,
-    }
+    };
 
     this.postService.setPost(post);
 
 
-  };
+  }
 
 
   changeTab(): void {

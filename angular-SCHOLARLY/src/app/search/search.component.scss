@@ -10,21 +10,23 @@
   overflow-x: hidden;
   overflow-y: hidden;
 }
-@media(min-width:1024px){
-.adds{
-  display: flex;
-  margin: 1% 0%;
-  justify-content: center;
-  flex-direction: column;
-}}
-@media(max-width:1024px){
-.adds{
-  display: flex;
-  margin: 0% 1%;
-  justify-content: center;
-  width: 100%;
-  min-width: fit-content;
-}}
+@media (min-width: 1024px) {
+  .adds {
+    display: flex;
+    margin: 1% 0%;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+@media (max-width: 1024px) {
+  .adds {
+    display: flex;
+    margin: 0% 1%;
+    justify-content: center;
+    width: 100%;
+    min-width: fit-content;
+  }
+}
 .category-box {
   padding: 16px;
   border: 1px solid gray;
@@ -37,10 +39,10 @@
   margin: 2% 0%;
   font-size: x-large;
   color: #7e7171;
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
 }
-.center_{
-  display: flex; 
+.center_ {
+  display: flex;
   justify-content: center;
   padding: 1%;
 }
@@ -50,41 +52,43 @@
   margin-top: 2%;
   font-size: x-large;
 }
-.column{
+.column {
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin-top: 4%;
 }
- 
-.display{
+
+.display {
   display: contents;
 }
-.fontSize{
-font-size: 65px;
-display: flex;
-justify-content: center;
-}
-.fit{
-  width: 100%;
-    display: flex;
-}
-@media(min-width:1024px){
-.fill{
+.fontSize {
+  font-size: 65px;
   display: flex;
-  height: 100%;
-  height: 50%;
   justify-content: center;
-  flex-direction: column;
-}}
-@media(max-width:1024px){
-  .fill{
+}
+.fit {
+  width: 100%;
+  display: flex;
+}
+@media (min-width: 1024px) {
+  .fill {
+    display: flex;
+    height: 100%;
+    height: 50%;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+@media (max-width: 1024px) {
+  .fill {
     display: flex;
     justify-content: center;
     height: 100%;
     height: 75%;
     flex-direction: column;
-  }}
+  }
+}
 .main-layout {
   display: flex;
   flex-direction: row;
@@ -92,22 +96,22 @@ justify-content: center;
   height: 100%;
   position: fixed;
 }
-.label{
+.label {
   display: contents;
   justify-content: center;
   font-size: xx-large;
-  color: #7e7171;
-  font-family: 'Font Awesome 5 Free';
+  color: #3a3232;
+  font-family: "Font Awesome 5 Free";
 }
-.label_{
+.label_ {
   display: flex;
   justify-content: center;
   font-size: xx-large;
   color: #7e7171;
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
   margin-top: 2%;
 }
-.logo-layoutM{
+.logo-layoutM {
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
@@ -128,7 +132,13 @@ justify-content: center;
     display: none;
   }
 }
-
+.mat-chip-list-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  flex-direction: row;
+  width: 100%;
+}
 .middle-column {
   display: flex;
   flex-direction: column;
@@ -149,7 +159,7 @@ justify-content: center;
     justify-content: center;
     width: 100%;
     height: 100%;
-    margin-top: 7%;
+    margin-top: 2%;
   }
 }
 @media (max-width: 1025px) {
@@ -168,22 +178,24 @@ justify-content: center;
     display: none;
   }
 }
-@media(min-width:1024px){
-.post{
-  display: flex;
-  justify-content: center;
-  font-size: 65px;
-  color: cornflowerblue;
-  margin-top: 20%;
-}}
-@media(max-width:1024px){
-.post{
-  display: flex;
-  justify-content: center;
-  font-size: 65px;
-  color: cornflowerblue;
-  margin-top: 7%;
-}}
+@media (min-width: 1024px) {
+  .post {
+    display: flex;
+    justify-content: center;
+    font-size: 65px;
+    color: cornflowerblue;
+    margin-top: 20%;
+  }
+}
+@media (max-width: 1024px) {
+  .post {
+    display: flex;
+    justify-content: center;
+    font-size: 65px;
+    color: cornflowerblue;
+    margin-top: 7%;
+  }
+}
 @media (min-width: 1025px) {
   .right-column {
     display: flex;
@@ -198,7 +210,6 @@ justify-content: center;
 @media (max-width: 1025px) {
   .right-column {
     display: none;
-  
   }
 }
 
@@ -222,17 +233,10 @@ justify-content: center;
     justify-content: center;
     margin-top: 2%;
   }
-  
 
   .logo-layout {
     justify-content: center;
     height: 100%;
-    flex-direction: column;
-    overflow-y: scroll;
-  }
-  .logo-layoutP {
-    justify-content: center;
-    height: 29%;
     flex-direction: column;
     overflow-y: scroll;
   }
@@ -249,7 +253,7 @@ justify-content: center;
     overflow-y: scroll;
   }
 }
-.recents_{
+.recents_ {
   display: flex;
   justify-content: center;
   height: 100%;
@@ -283,16 +287,6 @@ justify-content: center;
   }
 }
 
-.mat-chip-list-wrapper {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  flex-direction: row;
-  width: 100%;
-}
-
-
-
 .title-categories {
   display: flex;
   flex-direction: column;
@@ -301,43 +295,45 @@ justify-content: center;
   width: 100%;
 }
 @media (min-width: 1024px) {
-  .topM{
+  .topM {
     display: none;
   }
 }
-@media(max-width:1024px){
-.topM {
-  display: flex;
+@media (max-width: 1024px) {
+  .topM {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+.input-boxs {
+  background-color: rgb(235, 235, 245);
+  overflow: hidden;
+  scroll-behavior: smooth;
   flex-direction: column;
-  width: 100%;
-}}
-
-  .input-boxs {
-    background-color: rgb(235, 235, 245);
-    overflow: hidden;
-    scroll-behavior: smooth;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    margin: 16% 0%;
-  }
-  .input-boxs_ {
-    background-color: rgb(235, 235, 245);
-    overflow: hidden;
-    scroll-behavior: smooth;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-   
-  }
-
+  display: flex;
+  justify-content: center;
+  margin: 2% 0%;
+  padding-bottom: 0.5%;
+  border: double;
+  border-color: #c0bbc1;
+}
+.input-boxs_ {
+  background-color: rgb(235, 235, 245);
+  overflow: hidden;
+  scroll-behavior: smooth;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+}
 
 .mat-chip {
   background-color: rgb(65, 88, 165) !important;
   color: rgb(252, 252, 252) !important;
-  font-family: 'Font Awesome 5 Free';
+  font-family: "Font Awesome 5 Free";
 }
-.hideAll{
+.hideAll {
   display: none;
 }
 @media (max-width: 1024px) {
@@ -358,18 +354,18 @@ justify-content: center;
     display: none;
   }
 }
-@media (max-width: 1024px)and(min-width:650px) {
+@media (max-width: 1024px) and(min-width:650px) {
   .hide1 {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     padding: 0% 25%;
     overflow-y: scroll;
   }
 }
-@media (max-width:650px) {
+@media (max-width: 650px) {
   .hide1 {
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
     overflow-y: scroll;
   }
 }
@@ -392,7 +388,7 @@ justify-content: center;
     justify-content: center;
     flex-direction: column;
     flex: inherit;
-    height: 50vh;
+    height: 39vh;
     box-sizing: border-box;
     overflow-y: scroll;
   }
@@ -407,6 +403,7 @@ justify-content: center;
     box-sizing: border-box;
   }
 }
+
 .specific-layout {
   display: flex;
   flex-direction: column;
@@ -425,9 +422,7 @@ justify-content: center;
   justify-content: center;
   min-width: 15%;
 }
-.second-list{
-  padding-top: 0px;
-}
+
 .searchM {
   display: flex;
   width: 100%;
@@ -442,29 +437,27 @@ justify-content: center;
 mat-form-field {
   width: 100%;
 }
-::ng-deep .mat-form-field{
-  font-family: 'Font Awesome 5 Free';
+::ng-deep .mat-form-field {
+  font-family: "Font Awesome 5 Free";
 }
-::ng-deep .mat-radio-label-content{
-  font-family: 'Font Awesome 5 Free';
+::ng-deep .mat-radio-label-content {
+  font-family: "Font Awesome 5 Free";
 }
-::ng-deep .mat-chip-list-wrapper{
+::ng-deep .mat-chip-list-wrapper {
   justify-content: center;
 }
-::ng-deep .mat-select-value-text{
-  font-family: 'Font Awesome 5 Free';
+::ng-deep .mat-select-value-text {
+  font-family: "Font Awesome 5 Free";
 }
 ::ng-deep .mat-list-base {
- padding-top: 0px
+  padding-top: 0px;
 }
 @media (max-width: 1025px) {
   .mat-list-base .mat-list-item,
   .mat-list-base .mat-list-option {
     height: fit-content;
-    
   }
 }
-
 
 @media (max-width: 1025px) and (min-height: 830px) {
   .fix {
@@ -553,8 +546,8 @@ form.search::after {
   clear: both;
   display: table;
 }
-.optionsM{
-  display:flex;
-  width:100%;
-  overflow-x:scroll;
+.optionsM {
+  display: flex;
+  width: 100%;
+  overflow-x: scroll;
 }

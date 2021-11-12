@@ -428,9 +428,9 @@ export class SignupComponent implements OnInit {
   onSubmit(): void {
     // TODO: wire up to login request
     console.log(this.signupForm.value);
-    console.log(this.filteredCodes)
+    console.log(this.filteredCodes);
 
-    let userId: NewUserId = {
+    const userId: NewUserId = {
       Email: this.email.value,
       UserName: this.username.value,
       Password: this.password.value,
@@ -438,7 +438,7 @@ export class SignupComponent implements OnInit {
     };
 
 
-    let profile: Profile = {
+    const profile: Profile = {
       CodeCompleted: this.CodeCompleted.value,
       CodePursuing: this.CodePursuing.value,
       Name: this.name.value,

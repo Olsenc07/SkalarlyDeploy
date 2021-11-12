@@ -21,7 +21,11 @@ export class ReusableCardComponent {
     // booleans$ = PostService.booleans$;
     // event$ = PostService.event$;
 
-
+    selectedAttend = '';
+    attendances: any = [
+        'Attending', 'Maybe', 'Not Attending'
+    ];
+    panelOpenState = false;
     showCases = [
         // '../../assets/Pics/IMG-8413.PNG',
         // '../../assets/Pics/IMG-8619.PNG',
@@ -32,6 +36,9 @@ export class ReusableCardComponent {
         // '../../assets/Pics/IMG-8413.PNG'
     ];
 
+    radioChange(event: any): any {
+        this.selectedAttend = event.target.value;
+    }
 
     openAttendanceSheet(): void {
         this.bottomSheet.open(AttendanceComponent);
@@ -39,16 +46,7 @@ export class ReusableCardComponent {
     openTaggedSheet(): void {
         this.bottomSheet.open(TaggedComponent);
     }
-    selectedAttend: string = '';
-    attendances: any = [
-        'Attending', 'Maybe', 'Not Attending'
-    ];
-    radioChange(event: any) {
-        this.selectedAttend = event.target.value;
-    }
 
-
-    panelOpenState = false;
     constructor(private bottomSheet: MatBottomSheet) { }
 }
 

@@ -1,13 +1,28 @@
 .pop-up {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    font-family: "Font Awesome 5 Pro";
-    color: #707070;
-  }
-  .dialog-title {
-    display: flex;
-    justify-content: center;
-  }
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Font Awesome 5 Pro";
+  color: #707070;
+}
+.btn {
+  display: flex;
+  font-size: x-large;
+  border: groove;
+  justify-content: center;
+}
+.dialog-title {
+  display: flex;
+  justify-content: center;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  color: #3a3232;
+}
+.text {
+  display: flex;
+  justify-content: center;
+}

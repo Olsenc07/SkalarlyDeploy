@@ -182,12 +182,12 @@
             <button mat-raised-button [matMenuTriggerFor]="menu" class="row1">Attendance</button>
           </div>
 
-          <mat-menu #menu="matMenu" class="center">
+          <mat-menu #menu="matMenu" class="row1_">
 
             <div *ngFor="let attendance of attendances" class="centerB">
 
               <input type="radio" name="attend" value="{{attendance}}" class="center" (change)="radioChange($event)">
-              <div class="row1">{{attendance}}</div>
+              <div class="row1_">{{attendance}}</div>
 
 
             </div>

@@ -121,12 +121,12 @@
 
         <div class="centerD">Where do you want your post?</div>
 
-        <div class="textM"> Main Categories </div>
+        <!-- <div class="textM"> Main Categories </div> -->
 
 
-        <mat-selection-list #options [multiple]="false" class="second-list">
+        <mat-selection-list #options [multiple]="false" >
           <mat-form-field appearance="fill">
-            <mat-label>Page</mat-label>
+            <mat-label>Step 1: Choose from the main categories</mat-label>
 
             <mat-select>
 
@@ -140,6 +140,8 @@
         </mat-selection-list>
 
         <div class="location-options">
+          
+          <div class="step_2">Step 2: Select the specific page</div>
           <mat-chip-list class="mat-list-text">
             <mat-chip [multiple]="false" *ngFor="let opt of specificOptions">
               <mat-radio-group formControlName="postLocation">

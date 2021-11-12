@@ -23,16 +23,10 @@ export class SearchComponent implements OnInit {
   // Check mark could take you to that adds website, x could remove it from list
   // or just not be there.. course drop down display:none. bio could be ad info or whstever and logo in profile pic
   // Larger adds get main post cards filled.
-  feeds = [{
-    "profilePic": "", "userName": "", "Bio": "",
-    "Major": "", "Minor": "", "Sport": "", "Club": ""
-  },
+  feeds = [{}, { }, {}, {}, {}, { }, {}, {}, {}, { }, {}, {},
 
   ];
-  posts = [{
-    "profilePic": "", "Title": "",
-    "Specific": "", "Location": "", "Date": "", "Upload": ""
-  },
+  posts = [{}, { }, {}, {}, {}, { }, {}, {}, {}, { }, {}, {},
 
 
   ];
