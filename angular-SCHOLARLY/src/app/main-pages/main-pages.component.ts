@@ -20,7 +20,7 @@ export class MainPagesComponent implements OnInit {
   mainForm = new FormGroup({
     main: this.main,
   });
-  feeds = ['', ''];
+  feeds = ['', '', '', '', '', '', '', '', '', '', '', ''];
   constructor(
     private bottomSheet: MatBottomSheet,
     private route: ActivatedRoute

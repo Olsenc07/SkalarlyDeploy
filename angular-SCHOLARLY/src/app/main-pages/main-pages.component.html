@@ -3,16 +3,15 @@
   <div class="entire-page">
 
 
-
     <!-- Right wall -->
     <div [ngClass]="feeds.length !== 0 ? 'rightWall_ ' : 'right-wall'">
 
 
       <!-- General choice appears at top of feed and dissapears as user scrolls -->
-      <div class="top">
+      <h1 class="top">
 
         {{ category }}
-      </div>
+      </h1>
       <div class="column_" *ngIf="feeds.length == 0">
         <div class="row"> No Posts At The Moment</div>
         <!-- <i class="far fa-frown centerR"></i> -->

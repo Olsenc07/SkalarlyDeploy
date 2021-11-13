@@ -21,8 +21,7 @@
 
                                 <div class="profilePic" *ngIf="(profile | async)?.profPic">
                                     <!-- need to get croppeded value -->
-                                    <img class="pic" src="{{(profile | async)?.profPic}}" >
-                                    <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
+                                    <img class="pic" src="{{(profile | async)?.profPic}}" >                 <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
                                 </div>
 
                                 <div class="profilePic" *ngIf="!(profile | async)?.profPic">
