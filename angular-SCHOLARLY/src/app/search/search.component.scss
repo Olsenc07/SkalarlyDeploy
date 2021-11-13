@@ -10,7 +10,7 @@
   overflow-x: hidden;
   overflow-y: hidden;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .adds {
     display: flex;
     margin: 1% 0%;
@@ -18,7 +18,7 @@
     flex-direction: column;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
   .adds {
     display: flex;
     margin: 0% 1%;
@@ -74,7 +74,7 @@
   width: 100%;
   display: flex;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .fill {
     display: flex;
     height: 100%;
@@ -83,7 +83,7 @@
     flex-direction: column;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
   .fill {
     display: flex;
     justify-content: center;
@@ -181,7 +181,7 @@
     display: none;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .post {
     display: flex;
     justify-content: center;
@@ -190,7 +190,7 @@
     margin-top: 20%;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
   .post {
     display: flex;
     justify-content: center;
@@ -277,14 +277,14 @@
   width: 100%;
   height: 100%;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
   .specificM {
     display: flex;
     height: 100%;
     width: 100%;
   }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .specificM {
     display: none;
   }
@@ -297,12 +297,12 @@
   margin-bottom: 41%;
   width: 100%;
 }
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .topM {
     display: none;
   }
 }
-@media (max-width: 1024px) {
+@media (max-width: 1025px) {
   .topM {
     display: flex;
     flex-direction: column;
@@ -339,25 +339,19 @@
 .hideAll {
   display: none;
 }
-@media (max-width: 1024px) {
-  .hide {
-    display: none;
-  }
-}
-@media (min-width: 1024px) {
-  .hide {
-    display: flex;
-    width: 100%;
-    margin: 1% 0%;
-  }
+
+.hide {
+  display: flex;
+  width: 100%;
+  margin: 1% 0%;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .hide1 {
     display: none;
   }
 }
-@media (max-width: 1024px) and(min-width:650px) {
+@media (max-width: 1025px) and(min-width:650px) {
   .hide1 {
     width: 100%;
     height: 100%;

@@ -106,7 +106,7 @@
           </div>
           <mat-selection-list #options [multiple]="false" class="second-list">
             <mat-form-field appearance="fill">
-              <mat-label>Main Categories</mat-label>
+              <mat-label> Step 1: Choose from the main categories</mat-label>
 
               <mat-select>
                 <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
@@ -120,14 +120,17 @@
 
           <!-- Second choice -->
           <div class="location-options">
-            <mat-chip-list class="mat-list-text">
-              <mat-chip [multiple]="false" *ngFor="let opt of specificOptions" [value]="opt"
+            <mat-selection-list class="mat-list-text">
+              <mat-label> Step 2: Navigate to the specific page</mat-label>
+
+              <mat-select>
+              <mat-option [multiple]="false" *ngFor="let opt of specificOptions" [value]="opt"
                 (click)="navigateToPage(opt)">
 
                 {{ opt }}
-
-              </mat-chip>
-            </mat-chip-list>
+</mat-option>
+</mat-select>
+            </mat-selection-list>
           </div>
 
 
