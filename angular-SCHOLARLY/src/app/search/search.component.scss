@@ -45,7 +45,9 @@
 .center_ {
   display: flex;
   justify-content: center;
-  padding: 1%;
+  padding: 0% 0% 1% 0%;
+  text-align: center;
+  line-height: normal;
 }
 .centerM {
   display: flex;
