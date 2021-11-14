@@ -131,6 +131,7 @@ export class PostPageComponent implements OnInit {
     this.thirdFormGroup = this.fb.group({
       driver: new FormControl(''),
       paymentService: new FormControl(''),
+      virtual: new FormControl(''),
     });
     this.fourthFormGroup = this.fb.group({
       event: new FormControl(''),
@@ -147,9 +148,8 @@ export class PostPageComponent implements OnInit {
   openDialog(): void {
     this.dialog.open(DialogElementsComponent);
   }
-  // Create new page for services popup
-  openDialogServices(): void {
-    this.dialog.open(DialogElementsComponent);
+  openOtherServices(): void {
+    this.dialog.open(ServicesElementsComponent);
   }
 
   imagePreview(event: any): void {
@@ -265,6 +265,14 @@ export class PostPageComponent implements OnInit {
   styleUrls: ['./dialog-elements.component.scss'],
 })
 export class DialogElementsComponent { }
+
+@Component({
+  selector: 'app-post-page',
+  templateUrl: './services-elements.component.html',
+  styleUrls: ['./dialog-elements.component.scss'],
+})
+export class ServicesElementsComponent { }
+
 
 
 

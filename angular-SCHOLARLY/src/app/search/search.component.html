@@ -108,7 +108,7 @@
             <mat-form-field appearance="fill">
               <mat-label> Step 1: Choose from the main categories</mat-label>
 
-              <mat-select>
+              <mat-select [formControl]="postLocationMain">
                 <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
                   *ngFor="let opt of searchOptions" [value]="opt.name">
 
@@ -120,7 +120,8 @@
 
           <!-- Second choice -->
           <div class="location-options">
-            <mat-selection-list class="mat-list-text">
+            <mat-selection-list class="mat-list-text" *ngIf="postLocationMain.value">
+              <mat-form-field appearance="fill">
               <mat-label> Step 2: Navigate to the specific page</mat-label>
 
               <mat-select>
@@ -130,6 +131,7 @@
                 {{ opt }}
 </mat-option>
 </mat-select>
+</mat-form-field>
             </mat-selection-list>
           </div>
 

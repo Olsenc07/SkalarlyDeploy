@@ -1,32 +1,35 @@
-@media(min-width:1024px){
-.accounts {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  margin-bottom: 3%;
-}}
-@media(max-width:1024px){
+@media (min-width: 1024px) {
   .accounts {
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    
-  }}
-@media(min-width:1024px){
-.Accounts {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  max-width: 45%;
-  margin-bottom: 3%;
-}}
-@media(max-width:1024px){
+    margin-bottom: 3%;
+  }
+}
+@media (max-width: 1024px) {
+  .accounts {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+}
+@media (min-width: 1024px) {
+  .Accounts {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 45%;
+    margin-bottom: 3%;
+  }
+}
+@media (max-width: 1024px) {
   .Accounts {
     display: flex;
     justify-content: space-around;
     width: 100%;
     margin-bottom: 3%;
-  }}
+  }
+}
 .asthetic-adds {
   color: #418bba;
   border-color: #707070;
@@ -53,42 +56,44 @@
   margin-bottom: 5%;
   font-family: "Font Awesome 5 Free";
 }
-@media(min-width:1024px){
-.c_r{
-  display: flex;
-  flex-direction: row;
-}}
-@media(max-width:1024px){
-.c_r{
-  display: flex;
-  flex-direction: column;
-}}
+@media (min-width: 1024px) {
+  .c_r {
+    display: flex;
+    flex-direction: row;
+  }
+}
+@media (max-width: 1024px) {
+  .c_r {
+    display: flex;
+    flex-direction: column;
+  }
+}
 .centerD {
   display: flex;
   justify-content: center;
   flex-direction: row;
   font-size: large;
 }
-.center{
+.center {
   display: flex;
   justify-content: center;
   flex-direction: row;
-    width: 100%;
+  width: 100%;
 }
-.centerR{
+.centerR {
   display: flex;
   justify-content: center;
   flex-direction: row;
   margin-top: 1%;
 }
-.counter{
+.counter {
   display: flex;
   padding: 0% 15%;
   justify-content: center;
   flex-direction: column;
   font-size: large;
 }
-.counter_{
+.counter_ {
   display: flex;
   padding: 0% 5%;
   justify-content: center;
@@ -100,7 +105,7 @@
   width: 100%;
   flex-direction: column;
 }
-@media(min-width:1024px){
+@media (min-width: 1024px) {
   .column {
     display: flex;
     flex-direction: column;
@@ -108,83 +113,89 @@
     box-sizing: border-box;
     margin: 0% 30%;
     max-width: 50%;
-    
-  }}
-  @media(max-width:1024px)and(min-width:875px){
+  }
+}
+@media (max-width: 1024px) and(min-width:875px) {
   .column {
     display: flex;
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
     margin: 0% 25%;
-    
-  }}
-  @media(max-width:875px)and(min-width:500px){
+  }
+}
+@media (max-width: 875px) and(min-width:500px) {
   .column {
     display: flex;
     justify-content: center;
     flex-direction: column;
     box-sizing: border-box;
     margin: 0% 20%;
-   
-  }}
-  @media(max-width:500px){
+  }
+}
+@media (max-width: 500px) {
   .column {
     display: flex;
     justify-content: center;
     flex-direction: column;
     box-sizing: border-box;
-  }}
-  .Column{
-    display: flex;
-    flex-direction: column;
   }
-  .Column_ {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 100%;
-  }
-.column_ {  display: flex;
+}
+.Column {
+  display: flex;
+  flex-direction: column;
+}
+.Column_ {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.column_ {
+  display: flex;
   flex-direction: column;
   justify-content: center;
   margin-right: 1%;
 }
-@media(min-width:1024px){
-.column1 {
+@media (min-width: 1024px) {
+  .column1 {
     display: flex;
     justify-content: center;
     color: #7e7171;
     font-family: "Font Awesome 5 Free";
     font-size: large;
     flex-direction: column;
-}}
-@media(max-width:1024px){
+  }
+}
+@media (max-width: 1024px) {
   .column1 {
-      display: flex;
-      justify-content: center;
-      color: #7e7171;
-      font-family: "Font Awesome 5 Free";
-      font-size: inherit;
-      flex-direction: column;
-  }}
-  @media(min-width:500px){
-.columnPlain{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 30%;
-}}
-@media(max-width:500px){
-  .columnPlain{
+    display: flex;
+    justify-content: center;
+    color: #7e7171;
+    font-family: "Font Awesome 5 Free";
+    font-size: inherit;
+    flex-direction: column;
+  }
+}
+@media (min-width: 500px) {
+  .columnPlain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 30%;
+  }
+}
+@media (max-width: 500px) {
+  .columnPlain {
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 45%;
-  }}
+  }
+}
 .cropper {
   display: flex;
-// May need a max height
+  // May need a max height
 }
 @media (min-width: 1024px) {
   .display {
@@ -204,19 +215,21 @@
   margin-left: 5%;
   justify-content: center;
 }
-@media(min-width:1024px){
+@media (min-width: 1024px) {
   .done {
     justify-content: center;
     display: flex;
     width: 100%;
-  }}
-@media(max-width:1024px){
-.done {
-  justify-content: center;
-  display: flex;
-  width: 100%;
-  margin-bottom: 13%;
-}}
+  }
+}
+@media (max-width: 1024px) {
+  .done {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    margin-bottom: 13%;
+  }
+}
 .entire-page {
   display: flex;
   flex-direction: column;
@@ -225,7 +238,7 @@
   margin-bottom: 2%;
 }
 
-.fit{
+.fit {
   display: flex;
   width: 100%;
 }
@@ -246,12 +259,9 @@
   border-color: #707070;
 }
 
-
-::ng-deep .mat-radio-label-content{
-  font-family: 'Font Awesome 5 Pro';
-
+::ng-deep .mat-radio-label-content {
+  font-family: "Font Awesome 5 Pro";
 }
-
 
 .gender {
   display: flex;
@@ -266,7 +276,6 @@
     // border: ridge;
     box-sizing: border-box;
     flex-direction: column;
-    
   }
 }
 @media (max-width: 1024px) {
@@ -280,82 +289,80 @@
   }
 }
 
-.far
-{ 
+.far {
   color: #7e7171;
   font-size: x-large;
 }
-.fa-arrow-circle-left{
+.fa-arrow-circle-left {
   font-size: large;
 }
-.fa-arrow-circle-right{
+.fa-arrow-circle-right {
   font-size: large;
 }
-@media(min-width:1024px){
-.groups-j {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0% 32%;
-  max-width: 50%;
-}}
-@media(max-width:1024px)and(min-width:875px){
-.groups-j {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0% 29%;
-}}
-@media(max-width:875px)and(min-width:500px){
-.groups-j {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  margin: 0% 25%;
-}}
-@media(max-width:500px){
-.groups-j {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  margin: 0% 10%;
-  box-sizing: border-box;
+@media (min-width: 1024px) {
+  .groups-j {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0% 32%;
+    max-width: 50%;
+  }
 }
+@media (max-width: 1024px) and(min-width:875px) {
+  .groups-j {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0% 29%;
+  }
 }
-.hide{
+@media (max-width: 875px) and(min-width:500px) {
+  .groups-j {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0% 25%;
+  }
+}
+@media (max-width: 500px) {
+  .groups-j {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    margin: 0% 10%;
+    box-sizing: border-box;
+  }
+}
+.hide {
   display: none !important;
 }
 
-
-
-::ng-deep .mat-tab-label{
-    font-family: "Font Awesome 5 Free";
+::ng-deep .mat-tab-label {
+  font-family: "Font Awesome 5 Free";
 }
 
 // Allows smooth scroll for entire page
-::ng-deep .mat-tab-body-content{
+::ng-deep .mat-tab-body-content {
   overflow: unset !important;
 }
 
-
-
-::ng-deep .mat-option-text{
+::ng-deep .mat-option-text {
   color: #7e7171;
   font-family: "Font Awesome 5 Free";
 }
 
-::ng-deep .mat-form-field{
+::ng-deep .mat-form-field {
   color: #7e7171;
   font-family: "Font Awesome 5 Free";
 }
@@ -379,7 +386,7 @@
 }
 .imagePreview {
   display: flex;
-    width: 100%;
+  width: 100%;
 }
 
 .recent-post-layout {
@@ -388,34 +395,33 @@
   height: 100%;
   border: ridge;
 }
-.rowShow{
+.rowShow {
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
   margin: 3% 0%;
 }
-  .row {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    color: #7e7171;
-    font-family: "Font Awesome 5 Free";
-  }
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #7e7171;
+  font-family: "Font Awesome 5 Free";
+}
 
-  .rowE {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    width: 100%;
-  }
-  .rowE_ {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-   
-  }
+.rowE {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+.rowE_ {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
 
-.rowT{
+.rowT {
   display: flex;
   flex-direction: row;
 }
@@ -431,10 +437,9 @@
 @media (max-width: 1024px) {
   .rowP {
     display: none;
-   
   }
 }
-.rowP_{
+.rowP_ {
   display: flex;
   justify-content: center;
   color: #418bba;
@@ -454,60 +459,64 @@
     width: 50%;
   }
 }
-.show{
-  display: flex;
-justify-content: center;
-}
-.show_{
-  display: flex;
-flex-direction: column;
-justify-content: center;
-}
-.Show{
-  display: flex;
-}
-.style{
-  color: #7e7171;
-  font-family: "Font Awesome 5 Free";}
-  @media(min-width:900px){
-    .imageBox{
-      display: flex;
-      height: 100%;
-      max-width: 20%;
-    }}
-  @media(max-width:900px){
-.imageBox{
-  display: flex;
-  height: 100%;
-  max-width: 50%;
-}}
-.imageBox_{
-  display: flex;
-    width: 100%;
-    height: 75%;
-    flex-direction: row;
-justify-content: center;
-}
-
-
-@media(min-width:500px){
-.snapshot {
+.show {
   display: flex;
   justify-content: center;
-  color: #7e7171;
-  font-family: "Font Awesome 5 Free";
-  font-size: large;
-  flex-direction: column;
-}}
-@media(max-width:500px){
-.snapshot {
+}
+.show_ {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+.Show {
+  display: flex;
+}
+.style {
   color: #7e7171;
   font-family: "Font Awesome 5 Free";
-  font-size: inherit;
-  flex-direction: column;
-}}
+}
+@media (min-width: 900px) {
+  .imageBox {
+    display: flex;
+    height: 100%;
+    max-width: 20%;
+  }
+}
+@media (max-width: 900px) {
+  .imageBox {
+    display: flex;
+    height: 100%;
+    max-width: 50%;
+  }
+}
+.imageBox_ {
+  display: flex;
+  width: 100%;
+  height: 75%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+@media (min-width: 500px) {
+  .snapshot {
+    display: flex;
+    justify-content: center;
+    color: #7e7171;
+    font-family: "Font Awesome 5 Free";
+    font-size: large;
+    flex-direction: column;
+  }
+}
+@media (max-width: 500px) {
+  .snapshot {
+    display: flex;
+    justify-content: center;
+    color: #7e7171;
+    font-family: "Font Awesome 5 Free";
+    font-size: inherit;
+    flex-direction: column;
+  }
+}
 .snapshotClear {
   display: flex;
   width: 100%;
@@ -522,20 +531,22 @@ justify-content: center;
   flex-direction: column;
 }
 
-@media(min-width:1024px){
-.personalizeLarge {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: row;
-  margin: 1% 0% 3%;
-}}
-@media(max-width:1024px){
+@media (min-width: 1024px) {
+  .personalizeLarge {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 1% 0% 3%;
+  }
+}
+@media (max-width: 1024px) {
   .personalizeLarge {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     margin: 1% 0% 3%;
-  }}
+  }
+}
 
 .private-public {
   display: flex;
@@ -556,7 +567,7 @@ justify-content: center;
   justify-content: center;
   max-width: 250px;
 }
-.Preview{
+.Preview {
   display: flex;
   justify-content: center;
   color: #7e7171;
@@ -564,22 +575,22 @@ justify-content: center;
   font-size: large;
 }
 
-.PreviewPic{
+.PreviewPic {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.previewPic{
+.previewPic {
   border-radius: 50%;
 }
-.Photo{
+.Photo {
   font-size: xxx-large;
 }
 .layout {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Font Awesome 5 Pro';
+  font-family: "Font Awesome 5 Pro";
   color: #707070;
 }
 .text {
@@ -594,7 +605,7 @@ justify-content: center;
   justify-content: center;
   margin-top: 2%;
 }
-.tooltip{
+.tooltip {
   color: #418bba;
 }
 .twoBoxs {
@@ -641,7 +652,8 @@ justify-content: center;
 @media (max-width: 900px) {
   ._icon2 {
     display: none;
-  }}
+  }
+}
 
 .input {
   display: flex;
@@ -661,23 +673,24 @@ justify-content: center;
 
 .inputText {
   display: flex;
-  
 }
-.img{
+.img {
   max-width: 50%;
   max-height: 50%;
 }
 
-@media(min-width:900px){
-.img_{
-  max-width: 75%;
-  max-height: 100%;
-}}
-@media(max-width:900px){
-  .img_{
+@media (min-width: 900px) {
+  .img_ {
+    max-width: 75%;
+    max-height: 100%;
+  }
+}
+@media (max-width: 900px) {
+  .img_ {
     max-width: 100%;
     max-height: fit-content;
-  }}
+  }
+}
 
 .tooltip .tooltiptext {
   visibility: hidden;
@@ -691,7 +704,6 @@ justify-content: center;
   color: #707070;
   border-color: #418bba;
 }
-
 
 .text-field-gender {
   position: relative;
@@ -716,7 +728,7 @@ justify-content: center;
   width: 100%;
   justify-content: center;
 }
-.words{
+.words {
   display: flex;
   justify-content: space-between;
   background-color: white;

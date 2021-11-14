@@ -180,19 +180,19 @@ export class EditProfileComponent implements OnInit {
     this.removeShowCase = !this.removeShowCase;
 
     return this.removeShowCase;
-  };
+  }
   hideAdd(): boolean {
 
     this.clicked = !this.clicked;
     return this.clicked;
-  };
+  }
   uploadFile(): any {
     document.getElementById('fileInput').click();
 
-  };
+  }
   uploadFileP(): any {
     document.getElementById('fileInputP').click();
-  };
+  }
   onImgChange(event: any): void {
     this.imgChangeEvent = event;
   }
@@ -203,7 +203,7 @@ export class EditProfileComponent implements OnInit {
     // let File = base64ToFile(this.cropImgPreview)
     // this.profilePic = this.cropImgPreview
     // return this.profilePic
-    return this.cropImgPreview
+    return this.cropImgPreview;
   }
 
   imgLoad(): void {
@@ -221,9 +221,9 @@ export class EditProfileComponent implements OnInit {
   // After its added to the list. Click save and 
   // this becomes the updated array, sent back to the data base
   arrayAdd(event: any): any {
-    this.list.unshift(this.showCase.value)
+    this.list.unshift(this.showCase.value);
     console.log(this.list);
-    return this.list
+    return this.list;
   }
 
 
@@ -340,8 +340,8 @@ export class EditProfileComponent implements OnInit {
   previousGroupCard(): number {
     --this.g;
     if (0 > this.g) {
-      this.g = this.gList.length - 1
-      return this.g
+      this.g = this.gList.length - 1;
+      return this.g;
     }
     console.log(this.g);
 
@@ -356,10 +356,10 @@ export class EditProfileComponent implements OnInit {
     // go forward one card
   }
   leaveGroup(): number {
-    this.gList.splice(this.g, 1)
+    this.gList.splice(this.g, 1);
     console.log(this.gList.length);
-    if (this.g == this.gList.length) {
-      this.g = this.g - 1
+    if (this.g === this.gList.length) {
+      this.g = this.g - 1;
       return this.g
     }
   }
@@ -369,8 +369,8 @@ export class EditProfileComponent implements OnInit {
   previousPostCard(): number {
     --this.p;
     if (0 > this.p) {
-      this.p = this.pList.length - 1
-      return this.p
+      this.p = this.pList.length - 1;
+      return this.p;
     }
     console.log(this.p);
 
@@ -378,18 +378,18 @@ export class EditProfileComponent implements OnInit {
   nextPostCard(): number {
     ++this.p;
     if (this.p >= this.pList.length) {
-      this.p = 0
-      return this.p
+      this.p = 0;
+      return this.p;
     }
     console.log(this.p);
     // go forward one card
   }
   deletePost(): number {
-    this.pList.splice(this.p, 1)
+    this.pList.splice(this.p, 1);
     console.log(this.pList.length);
-    if (this.p == this.pList.length) {
-      this.p = this.p - 1
-      return this.p
+    if (this.p === this.pList.length) {
+      this.p = this.p - 1;
+      return this.p;
     }
   }
 

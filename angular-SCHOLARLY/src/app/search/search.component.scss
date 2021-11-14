@@ -99,12 +99,26 @@
   height: 100%;
   position: fixed;
 }
-.label {
-  display: contents;
-  justify-content: center;
-  font-size: xx-large;
-  color: #3a3232;
-  font-family: "Font Awesome 5 Free";
+::ng-deep .mat-option-text {
+  text-align: center;
+}
+@media (min-width: 400px) {
+  .label {
+    display: contents;
+    justify-content: center;
+    font-size: xx-large;
+    color: #3a3232;
+    font-family: "Font Awesome 5 Free";
+  }
+}
+@media (max-width: 400px) {
+  .label {
+    display: contents;
+    justify-content: center;
+    font-size: x-large;
+    color: #3a3232;
+    font-family: "Font Awesome 5 Free";
+  }
 }
 .label_ {
   display: flex;
@@ -351,21 +365,14 @@
     display: none;
   }
 }
-@media (max-width: 1025px) and(min-width:650px) {
-  .hide1 {
-    width: 100%;
-    height: 100%;
-    padding: 0% 25%;
-    overflow-y: scroll;
-  }
-}
-@media (max-width: 650px) {
+@media (max-width: 1025px) {
   .hide1 {
     width: 100%;
     height: 100%;
     overflow-y: scroll;
   }
 }
+
 @media (max-width: 1025px) {
   .horizontal_list {
     display: flex;

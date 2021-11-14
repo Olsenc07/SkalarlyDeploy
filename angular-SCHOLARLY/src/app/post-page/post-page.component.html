@@ -197,13 +197,24 @@
           <form [formGroup]="thirdFormGroup">
             <ng-template matStepLabel>Services</ng-template>
             <div class="display">
+
+
+<div class="column">
+              <div class="row">
+                <div class="fas fa-video icon"> </div>
+                <div class="textP"> Virtual event</div>
+                <mat-checkbox [disableRipple]="true" class="btn" formControlName="virtual"></mat-checkbox>
+              </div>
+          
               <div class="row">
                 <div class="fas fa-car icon"> </div>
                 <div class="textP"> Able to drive members</div>
                 <mat-checkbox [disableRipple]="true" class="btn" formControlName="driver"></mat-checkbox>
               </div>
+            </div>
 
-              <button type="button" mat-button (click)="openDialogServices()">
+
+              <button type="button" mat-button (click)="openOtherServices()">
                 <mat-icon>info</mat-icon>
               </button>
 

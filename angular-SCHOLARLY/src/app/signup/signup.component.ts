@@ -480,7 +480,7 @@ export class SignupComponent implements OnInit {
 export class TermsPopUpComponent { }
 
 @Component({
-  selector: 'app-accountText-page',
+  selector: 'app-accounttextpage',
   templateUrl: './account-popup.component.html',
   styleUrls: ['./account-popup.component.scss'],
 })

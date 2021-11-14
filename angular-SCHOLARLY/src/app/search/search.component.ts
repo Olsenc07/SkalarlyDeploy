@@ -34,6 +34,8 @@ export class SearchComponent implements OnInit {
   // Will be pulled from back end, but how does the selector know to fill???
 
 
+  postLocationMain: FormControl = new FormControl('');
+
 
   search: FormControl = new FormControl('');
   searchForm = new FormGroup({
@@ -47,7 +49,7 @@ export class SearchComponent implements OnInit {
   main = '';
 
   public opt = 0;
-  displaySpecificSearch() {
+  displaySpecificSearch(): void {
     this.opt++;
   }
 
@@ -68,7 +70,7 @@ export class SearchComponent implements OnInit {
     private router: Router
   ) { }
 
-  navigateToPage(value): void {
+  navigateToPage(value: string): void {
     this.router.navigate(['/main'], { queryParams: { category: value } });
   }
 

@@ -69,6 +69,7 @@ import { FriendsActivityComponent } from './friends-activity/friends-activity.co
 import { PostPageComponent } from './post-page/post-page.component';
 
 import { DialogElementsComponent } from './post-page/post-page.component';
+import { ServicesElementsComponent } from './post-page/post-page.component';
 
 
 import { ReusableCardComponent } from './reusable-card/reusable-card.component';
@@ -121,6 +122,7 @@ import { StoreService } from './services/store.service';
     TaggedComponent,
     AccountTextComponent,
     MessagingComponent,
+    ServicesElementsComponent,
   ],
   imports: [
     BrowserModule,
