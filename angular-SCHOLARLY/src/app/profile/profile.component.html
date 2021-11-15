@@ -17,6 +17,9 @@
     <div class="center">
       <div class="hide-input">
         <div class="uNameMsg">
+
+          
+
           <div class="centerR_">
             <!-- This is hard coded once user signs up -->
             {{(Id |async)?.UserName}}
@@ -29,6 +32,11 @@
               </span>
             </button>
           </div>
+         
+
+        
+
+
         </div>
         <div class="centerGD" *ngIf="(profile | async)?.Gender.name || (profile | async )?.Birthday  ">
           <div *ngIf="(profile | async)?.Gender.name">
@@ -80,7 +88,7 @@
       </div>
       <!-- [ngClass]="sport.value & club.value  ? 'hiden' : 'margin' " -->
       <mat-divider class="margin"></mat-divider>
-      <div class="major-minor">
+      <div class="friendsCount">
         <div class="centerR">
           Followers
           <!-- Counter -->
@@ -93,22 +101,9 @@
         </div>
       </div>
 
-      <mat-chip-list class="center_" aria-label="FollowBtn">
-        <mat-chip class="messageM" (click)="followClicked()">
-
-
-          {{ following ? "Unfollow" : "Follow" }}
-
-          <!-- Switches to Unfollow btn option  -->
-
-        </mat-chip>
-      </mat-chip-list>
+     
     </div>
-    <!-- <div class="conversations" *ngIf="id != id">
-      <button mat-raised-button (click)="openBottomSheet()" class="convo-text">
-        Conversations
-      </button>
-    </div> -->
+    
   </div>
   <!-- Middle -->
   <div class="middle">
@@ -122,9 +117,20 @@
 
 
           <div class="fName">
+           
             <!-- Chase Olsen -->
             {{ (profile | async)?.Pronouns}}
             {{ (profile | async)?.Name}}
+            <mat-chip-list class="center_" aria-label="FollowBtn">
+              <mat-chip class="messageM" (click)="followClicked()">
+      
+      
+                {{ following ? "Unfollow" : "Follow" }}
+      
+                <!-- Switches to Unfollow btn option  -->
+      
+              </mat-chip>
+            </mat-chip-list>
           </div>
 
         </div>

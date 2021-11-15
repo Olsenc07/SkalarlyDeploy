@@ -53,7 +53,7 @@
   justify-content: center;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  // height: 100%;
 }
 @media (min-width: 1024px) {
   .center_ {
@@ -86,7 +86,7 @@
     color: #7e7171;
     font-family: "Font Awesome 5 Free";
     height: 100%;
-    margin-top: 4%;
+    margin: 5% 0%;
     text-align: center;
     align-items: center;
   }
@@ -234,6 +234,11 @@
   display: flex;
   margin: 3% 9% 1% 5%;
 }
+.friendsCount {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .features {
   margin: 2% 5% 0% 5%;
 }
@@ -244,6 +249,7 @@
   display: flex;
   font-size: x-large;
   font-weight: 900;
+  align-items: center;
   color: #7e7171;
   font-family: "Font Awesome 5 Free";
 }
@@ -728,6 +734,7 @@ mat-tab-group {
   display: flex;
   justify-content: center;
 }
+
 @media (min-width: 450px) {
   .user-name {
     box-sizing: border-box;
