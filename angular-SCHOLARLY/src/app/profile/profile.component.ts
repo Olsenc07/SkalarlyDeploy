@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { StoreService } from '../services/store.service';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 
-
+/** @title Sidenav open & close behavior */
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -71,7 +72,7 @@ export class ProfileComponent implements OnInit {
     this.Pur = this.Pur.map(code => code.toUpperCase()).sort();
 
     // this.showCases = this.showCases.toString();
-    return this.Pur
+    return this.Pur;
     // this.Com
 
   }

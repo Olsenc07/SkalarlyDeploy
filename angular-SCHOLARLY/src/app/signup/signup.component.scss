@@ -128,26 +128,6 @@
   flex-direction: row;
   font-size: large;
 }
-//   @media(min-width:500px){
-// .centerD {
-//   display: flex;
-//   justify-content: center;
-//   margin-top: 3%;
-//   flex-direction: row;
-//   font-size: x-large;
-//   color: #7e7171;
-//   font-family: 'Font Awesome 5 Free';
-// }}
-// @media(max-width:500px){
-// .centerD {
-//   display: flex;
-//   justify-content: center;
-//   margin-top: 3%;
-//   flex-direction: row;
-//   font-size: inherit;
-//   color: #7e7171;
-//   font-family: 'Font Awesome 5 Free';
-// }}
 .centerR {
   display: flex;
   justify-content: center;
@@ -238,6 +218,9 @@
   display: flex;
   width: 100%;
   flex-direction: column;
+}
+::ng-deep .mat-option-text {
+  text-align: center;
 }
 
 @media (min-width: 1024px) {
@@ -627,6 +610,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   color: #7e7171;
   font-family: "Font Awesome 5 Free";
 }

@@ -12,7 +12,6 @@
 
 $box-shadow-color: rgba(0, 0, 0, 0.25);
 
-
 .header {
   position: sticky;
   top: 0;
@@ -59,8 +58,8 @@ h4:focus {
 // top nav icon
 .icon-btn-fit {
   display: flex;
- height: 100%;
- width: 100%;
+  height: 100%;
+  width: 100%;
   flex-direction: column;
   box-sizing: content-box;
 }
@@ -86,57 +85,57 @@ h4:focus {
   display: hide;
 }
 // New Add focus!!! hide input box until icon is focused and then is visbile and expands
-@media(min-width:1025px){
-.search-box {
-  position: relative;
-  width: 80%;
-  display: flex;
-  flex-direction: row;
-  // display: inline-block;
-  border-style: hidden;
-  justify-content: center;
-  align-items: center;
-  margin-right: 5%;
-  border: ridge;
-  border-color: azure;
-  background-color: white;
-}
-.search-box__icon {
- display: flex;
-  font-size: 26px;
-  right: 10%;
-  color: lightblue;
-  background-color: white;
-  padding: 1%;
-  // border: ridge;
-  border-color: azure;
-}
-.search-box__input {
-  // transition: right, 0.7s;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  padding: 1px;
-  // width: 20%;
-  font-size: initial;
-  float: right;
-  position: relative;
-  // border-radius: 5%;
-  // margin-right: 10%;
-  // opacity: 0.7%;
-  height: 25px;
-  // cursor: pointer;
-  outline: none;
-  border: none;
-  width: 100%;
-  font-family: 'Font Awesome 5 Free';
-  font-weight: initial;
-  background-color: white;
-  // border: ridge;
-  border-color: azure;
-  display: flex;
-  color: rgb(126, 113, 113);
-}
+@media (min-width: 1025px) {
+  .search-box {
+    position: relative;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    // display: inline-block;
+    border-style: hidden;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5%;
+    border: ridge;
+    border-color: azure;
+    background-color: white;
+  }
+  .search-box__icon {
+    display: flex;
+    font-size: 26px;
+    right: 10%;
+    color: lightblue;
+    background-color: white;
+    padding: 1%;
+    // border: ridge;
+    border-color: azure;
+  }
+  .search-box__input {
+    // transition: right, 0.7s;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1px;
+    // width: 20%;
+    font-size: initial;
+    float: right;
+    position: relative;
+    // border-radius: 5%;
+    // margin-right: 10%;
+    // opacity: 0.7%;
+    height: 25px;
+    // cursor: pointer;
+    outline: none;
+    border: none;
+    width: 100%;
+    font-family: "Font Awesome 5 Free";
+    font-weight: initial;
+    background-color: white;
+    // border: ridge;
+    border-color: azure;
+    display: flex;
+    color: rgb(126, 113, 113);
+  }
 }
 // transition to the left and have box initially invisible
 // .search-box__input:focus {
@@ -145,16 +144,17 @@ h4:focus {
 //   box-sizing: content-box;
 //   opacity: 1;
 // }
-@media(min-width:1025px){
-.large-screen-icons {
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  width: 70%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-}}
+@media (min-width: 1025px) {
+  .large-screen-icons {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    width: 70%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+}
 @media (max-width: 1025px) {
   .large-screen-icons {
     display: none;
@@ -166,15 +166,16 @@ h4:focus {
     display: none;
   }
 }
-@media(max-width:1025px){
-.small-icons {
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-  align-items: center;
-}}
+@media (max-width: 1025px) {
+  .small-icons {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+  }
+}
 // Bottom Nav
 @media (max-width: 1025px) {
   .lower {
@@ -216,17 +217,17 @@ h4:focus {
   color: cornflowerblue;
   font-size: 6vmax;
 }
-::ng-deep .mat-menu-content{
+::ng-deep .mat-menu-content {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
 }
-.messageM{
+.messageM {
   display: flex;
   color: #f5f5f5;
   justify-content: center;
   font-size: 5vmax;
 }
-.MessageOnM{
+.MessageOnM {
   font-size: 6vmax;
   display: flex;
   color: cornflowerblue;
@@ -265,77 +266,77 @@ h4:focus {
 .d_settings {
   margin-top: 8%;
 }
-  .icon-top {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
-  }
-  .public {
-    font-size: 3vmax;
-    display: flex;
-    color: #f5f5f5;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-  .PublicOn {
-    display: flex;
-    justify-content: center;
-    color: cornflowerblue;
-    font-size: 4vmax;
-  }
-  .groups {
-    color: #f5f5f5;
-    font-size: 3vmax;
-    display: flex;
-    justify-content: center;
-  }
-  .GroupsOn {
-    font-size: 4vmax;
-    display: flex;
-    color: cornflowerblue;
-    justify-content: center;
-  }
-  .profile {
-    color: #f5f5f5;
-    font-size: 3vmax;
-    display: flex;
-    justify-content: center;
-  }
-  .ProfileOn {
-    display: flex;
-    font-size: 4vmax;
-    color: cornflowerblue;
-    justify-content: center;
-  }
-  .post {
-    color: #f5f5f5;
-    font-size: 3vw;
-    display: flex;
-    justify-content: center;
-  }
-  .PostOn {
-    display: flex;
-    font-size: 4vw;
-    color: cornflowerblue;
-    justify-content: center;
-  }
-  .message{
-    color: #f5f5f5;
-    font-size: 3vw;
-    display: flex;
-    justify-content: center;
-  }
-  .MessageOn{
-    display: flex;
-    font-size: 4vw;
-    color: cornflowerblue;
-    justify-content: center;
-  }
+.icon-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+.public {
+  font-size: 3vmax;
+  display: flex;
+  color: #f5f5f5;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.PublicOn {
+  display: flex;
+  justify-content: center;
+  color: cornflowerblue;
+  font-size: 4vmax;
+}
+.groups {
+  color: #f5f5f5;
+  font-size: 3vmax;
+  display: flex;
+  justify-content: center;
+}
+.GroupsOn {
+  font-size: 4vmax;
+  display: flex;
+  color: cornflowerblue;
+  justify-content: center;
+}
+.profile {
+  color: #f5f5f5;
+  font-size: 3vmax;
+  display: flex;
+  justify-content: center;
+}
+.ProfileOn {
+  display: flex;
+  font-size: 4vmax;
+  color: cornflowerblue;
+  justify-content: center;
+}
+.post {
+  color: #f5f5f5;
+  font-size: 3vw;
+  display: flex;
+  justify-content: center;
+}
+.PostOn {
+  display: flex;
+  font-size: 4vw;
+  color: cornflowerblue;
+  justify-content: center;
+}
+.message {
+  color: #f5f5f5;
+  font-size: 3vw;
+  display: flex;
+  justify-content: center;
+}
+.MessageOn {
+  display: flex;
+  font-size: 4vw;
+  color: cornflowerblue;
+  justify-content: center;
+}
 
-  @media(max-width:1025px){
+@media (max-width: 1025px) {
   .search-box__input {
     // transition: left, 1.7s;
     right: 0;
@@ -345,73 +346,73 @@ h4:focus {
     float: right;
     position: absolute;
     border-radius: 5%;
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
     opacity: 0.7%;
     height: fit-content;
     cursor: pointer;
-    font-family: 'Font Awesome 5 Free';
-  font-weight: initial;
-     background-color: white;
-     color: rgb(126, 113, 113);
-    
+    font-family: "Font Awesome 5 Free";
+    font-weight: initial;
+    background-color: white;
+    color: rgb(126, 113, 113);
   }
-  .standard{
+  .standard {
     outline: none;
     color: rgb(126, 113, 113);
-    font-family: 'Font Awesome 5 Free';
-  font-weight: initial;
-  font-size: initial;
-  border: none;
+    font-family: "Font Awesome 5 Free";
+    font-weight: initial;
+    font-size: initial;
+    border: none;
   }
-  .searchHide{
+  .searchHide {
     display: none;
     outline: none;
   }
   .search-box__icon {
-     color: lightblue;
+    color: lightblue;
     display: flex;
     justify-content: center;
     width: auto;
-   }
-   .search-box__icon_ {
-   color: lightblue;
-   display: flex;
-   justify-content: center;
-   width: auto;
-   background: white;
-   height: 100%;
-   flex-direction: column;
-   font-size: 38px;
-   }
-  .search-box{
+  }
+  .search-box__icon_ {
+    color: lightblue;
     display: flex;
-    margin-right: 8%;
+    justify-content: center;
+    width: auto;
+    background: white;
+    height: 100%;
+    flex-direction: column;
+    font-size: 38px;
+  }
+  .search-box {
+    display: flex;
+    margin-right: 10%;
     position: absolute;
   }
-  @media(min-width:400px){
-  .search-box_{
-    display: flex;
-    margin-right: 8%;
-    font-family: 'Font Awesome 5 Free';
-    font-weight: initial;
-    position: absolute;
-    border: ridge;
-    border-color: azure;
-  }}
-  @media(max-width:400px){
-  .search-box_{
-    display: flex;
-    margin-right: 11%;
-    font-family: 'Font Awesome 5 Free';
-    font-weight: initial;
-    position: absolute;
-    border: ridge;
-    border-color: azure;
-  }}
-
+  @media (min-width: 400px) {
+    .search-box_ {
+      display: flex;
+      margin-right: 8%;
+      font-family: "Font Awesome 5 Free";
+      font-weight: initial;
+      position: absolute;
+      border: ridge;
+      border-color: azure;
+    }
+  }
+  @media (max-width: 400px) {
+    .search-box_ {
+      display: flex;
+      margin-right: 11%;
+      font-family: "Font Awesome 5 Free";
+      font-weight: initial;
+      position: absolute;
+      border: ridge;
+      border-color: azure;
+    }
+  }
 }
-  
-::ng-deep .mat-toolbar-single-row{
+
+::ng-deep .mat-toolbar-single-row {
   padding: 0px !important;
 }
