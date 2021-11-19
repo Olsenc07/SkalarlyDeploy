@@ -25,6 +25,7 @@
             <mat-form-field>
               <!-- only utoronto.ca should be excepted -->
               <input matInput placeholder="School Email" [formControl]="email" required />
+              <mat-error *ngIf="email.invalid">Please enter your academic email</mat-error>
               <!-- <button mat-button matSuffix mat-icon-button aria-label=" Clear" type="button" (click)="clearEmail()">
                 <mat-icon>close</mat-icon>
               </button> -->
@@ -37,7 +38,7 @@
             </span>
             <mat-form-field>
               <input matInput [formControl]="username" placeholder="Username" required autocomplete="on" />
-
+              <mat-error *ngIf="username.invalid">Please enter a unique username</mat-error>
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearUsername()">
                 <mat-icon>close</mat-icon>
               </button> -->
@@ -51,7 +52,8 @@
               <mat-form-field class="userName">
                 <mat-label>Password min 8 characters</mat-label>
                 <input matInput type="password" placeholder="Password" minlength="8" required [formControl]="password"
-                  autocomplete="on" />
+                  />
+                  <mat-error *ngIf="password.invalid">Please enter a valid password</mat-error>
                 <!-- <button mat-button matSuffix mat-icon-button color="primary" aria-label="Clear" type="button"
                   (click)="clearPassword()">
                   <mat-icon>close</mat-icon>
@@ -93,6 +95,7 @@
                 {{gender.name}}
               </mat-option>
             </mat-select>
+            <mat-error *ngIf="genderChoice.invalid">Select one of the four options</mat-error>
           </mat-form-field>
 
 

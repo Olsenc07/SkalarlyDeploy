@@ -1,5 +1,5 @@
 <!-- Main logo -->
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
   <div fxLayout="row">
     <div fxLayout="column" fxLayoutAlign="center center" class="box">
       <img Src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic">
@@ -13,6 +13,7 @@
             <mat-label> Academic Email</mat-label>
             <input matInput [formControl]="email" />
             <span matSuffix class="hide"></span>
+            <mat-error *ngIf="email.invalid">Please enter your academic email</mat-error>
             <!-- <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
               (click)="clearEmail()">
               <mat-icon>close</mat-icon>
@@ -21,12 +22,14 @@
           <mat-form-field class="text-input">
             <mat-label>Password</mat-label>
             <input matInput [formControl]="password" type="password" />
+            <mat-error *ngIf="password.invalid">Please enter a valid password</mat-error>
             <!-- <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
               (click)="clearPassword()">
               <mat-icon>close</mat-icon>
             </button> -->
           </mat-form-field>
-          <button (click)="onSubmit()" [disabled]="!loginForm.valid" routerLink="/search" mat-raised-button
+          <!-- [disabled]="loginForm.valid" but isn't needed -->
+          <button type="submit"  routerLink="/search" mat-raised-button
             color="primary" class="action-button top">
             Log In
           </button>

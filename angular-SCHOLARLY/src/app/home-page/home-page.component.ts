@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home-page',
@@ -8,7 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class HomePageComponent implements OnInit {
   email: FormControl = new FormControl('', Validators.email);
-  password: FormControl = new FormControl('');
+  password: FormControl = new FormControl('', Validators.minLength(8));
 
 
   loginForm = new FormGroup({
@@ -28,7 +28,7 @@ export class HomePageComponent implements OnInit {
     this.email.setValue('');
   }
 
-  onSubmit(): void {
+  onSubmit(form: NgForm): void {
     // TODO: wire up to login request
     console.log(this.loginForm.value);
   }

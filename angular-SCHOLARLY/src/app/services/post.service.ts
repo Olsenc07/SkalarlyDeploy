@@ -16,10 +16,10 @@ export interface Post {
     // Driver: Boolean;
     // PaymentService: Boolean;
     // Event: String;
-    FirstFormGroup: String;
-    SecondFormGroup: String;
-    ThirdFormGroup: String;
-    FourthFormGroup: String;
+    FirstFormGroup: string;
+    SecondFormGroup: string;
+    ThirdFormGroup: string;
+    FourthFormGroup: string;
 }
 
 @Injectable({
@@ -43,7 +43,7 @@ export class PostService {
     }
 
     setPost(post: Post): void {
-        PostService.post$$.next(post)
+        PostService.post$$.next(post);
     }
 
-}
+};

@@ -1,6 +1,4 @@
-<form [formGroup]="postForm" class="entire-page" (ngSubmit)="onFormSubmit()">
-
-
+<form  class="entire-page" (ngSubmit)="onFormSubmit(postForm)" #postForm="ngForm">
 
   <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
     <mat-tab disabled label="Step 1" > 
@@ -8,12 +6,17 @@
 
       <div class="post-descriptionD">
 
-
-        <mat-form-field class="post">
+        <div class="textB">
+          Write a message or upload an image to begin
+        </div>
+        
+<div class="center_">
+        <mat-form-field class="post" appearance="fill">
           <textarea matInput  placeholder="What would you like to say?"
-            [formControl]="postDescription"></textarea>
+            [formControl]="postDescription">
+          </textarea>
         </mat-form-field>
-
+      </div>
 
       </div>
  
@@ -54,9 +57,10 @@
 
 
 <!-- Step 1 -->
-    <div class="centerL">Where do you want your post?</div>
-    <div class="selection_styles">
-    <mat-selection-list #options [multiple]="false" >
+
+    <div class="centerL" *ngIf="postDescription.value || upload.value ">Where do you want your post?</div>
+    <div class="selection_styles" *ngIf="postDescription.value || upload.value ">
+    <mat-selection-list #options [multiple]="false">
       <mat-form-field appearance="fill">
         <mat-label>Step 1: Choose from the main categories</mat-label>
         <mat-select [formControl]="postLocationMain">
@@ -85,9 +89,9 @@
 
 
 
-      <div class="center" *ngIf="postLocation.value">
+      <div class="center" *ngIf="(postDescription.value || upload.value) && postLocation.value " >
 <button mat-raised-button type="button" class="final_step_btn" 
-[disabled]="!postLocation.valid" (click)="changeTab()">
+ (click)="changeTab()">
   Next Step
 </button>
 </div>
@@ -117,9 +121,8 @@
         </mat-form-field>
       </div>
 
-        <button type="button" mat-raised-button color="primary" class="post_btn_top_right {
-          " routerLink="/search"
-        (click)="onFormSubmit()">Post
+        <button type="button" mat-raised-button color="primary" class="post_btn_top_right" routerLink="/search"
+        type="submit">Post
         <span class="material-icons"> arrow_forward </span>
       </button>
 
@@ -271,7 +274,7 @@
           <div class="row_">
             <button type="button" mat-button matStepperPrevious>Back</button>
             <button type="button" mat-raised-button color="primary" class="text" routerLink="/search"
-              (click)="onFormSubmit()">Post
+              type="submit">Post
               <span class="material-icons"> arrow_forward </span>
             </button>
           </div>
