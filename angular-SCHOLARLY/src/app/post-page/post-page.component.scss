@@ -116,7 +116,8 @@
   flex-direction: row;
   align-items: center;
   font-size: x-large;
-  color: #3a3232;
+  // color: #3a3232;
+  color: #807070;
   font-family: "Font Awesome 5 Free";
 }
 .centerL {
@@ -126,7 +127,8 @@
   margin-bottom: 1%;
   flex-direction: row;
   font-size: x-large;
-  color: #3a3232;
+  // color: #3a3232;
+  color: #807070;
   font-family: "Font Awesome 5 Free";
 }
 @media (min-width: 1024px) {
@@ -655,10 +657,10 @@ p {
   display: flex;
   justify-content: center;
   font-family: "Font Awesome 5 Free";
-  color: #3a3232;
-  font-size: x-large;
-  text-align: center;
   font-weight: 700;
+  color: #807070;
+  font-size: xx-large;
+  text-align: center;
 }
 .text- {
   display: flex;

@@ -37,7 +37,7 @@
               account_circle
             </span>
             <mat-form-field>
-              <input matInput [formControl]="username" placeholder="Username" required autocomplete="on" />
+              <input matInput type="text" [formControl]="username" placeholder="Username" required  />
               <mat-error *ngIf="username.invalid">Please enter a unique username</mat-error>
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearUsername()">
                 <mat-icon>close</mat-icon>
@@ -210,6 +210,7 @@
               <i class="far fa-address-card _icon"></i>
               <mat-form-field>
                 <input matInput placeholder="Full Name" [formControl]="name" />
+                <mat-error *ngIf="name.invalid">Please enter your name</mat-error>
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                   <mat-icon class="asthetic-adds">close</mat-icon>
                 </button> -->
