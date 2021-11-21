@@ -46,4 +46,5 @@ export class PostService {
         PostService.post$$.next(post);
     }
 
-};
+}
+

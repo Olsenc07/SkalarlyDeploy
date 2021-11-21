@@ -25,7 +25,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ClassListService } from '../services/class.service';
 import { Profile, StoreService } from '../services/store.service';
-import { AccountTextComponent } from '../signup/signup.component'
+import { AccountTextComponent } from '../signup/signup.component';
 
 
 interface Gender {
@@ -101,8 +101,8 @@ export class EditProfileComponent implements OnInit {
 
   // I think each code input is a different form control, save into the array
   CodeCompleted: FormControl = new FormControl('');
-  // Need to push form controls from the users input, into this 
-  // Form Array, which gets passed 
+  // Need to push form controls from the users input, into this
+  // Form Array, which gets passed
   CodePursuing: FormControl = new FormControl('');
 
 
@@ -430,7 +430,7 @@ export class EditProfileComponent implements OnInit {
     console.log(this.editForm.value);
     // TODO: convert form fields to Profile
 
-    let profile: Profile = {
+    const profile: Profile = {
       CodeCompleted: this.CodeCompleted.value,
       CodePursuing: this.CodePursuing.value,
       Name: this.name.value,

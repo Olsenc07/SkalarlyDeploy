@@ -24,8 +24,10 @@
             </span>
             <mat-form-field>
               <!-- only utoronto.ca should be excepted -->
-              <input matInput placeholder="School Email" [formControl]="email" required />
-              <mat-error *ngIf="email.invalid">Please enter your academic email</mat-error>
+              <input matInput type="email" placeholder="School Email" [formControl]="email" required />
+              <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
+              <mat-error *ngIf="email.errors?.email && !email.errors?.noWhiteSpace">Please enter your academic email</mat-error>
+              
               <!-- <button mat-button matSuffix mat-icon-button aria-label=" Clear" type="button" (click)="clearEmail()">
                 <mat-icon>close</mat-icon>
               </button> -->
@@ -37,8 +39,10 @@
               account_circle
             </span>
             <mat-form-field>
-              <input matInput type="text" [formControl]="username" placeholder="Username" required  />
-              <mat-error *ngIf="username.invalid">Please enter a unique username</mat-error>
+              <input matInput  [formControl]="username" placeholder="Username" required  />
+              <mat-error *ngIf="username.errors?.noWhiteSpace"> Please remove white space </mat-error>
+              <!-- Once next is clicked and user name has been used -->
+              <mat-error *ngIf="username.invalid && !username.errors?.noWhiteSpace">Please enter a unique username</mat-error>
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearUsername()">
                 <mat-icon>close</mat-icon>
               </button> -->
@@ -53,7 +57,8 @@
                 <mat-label>Password min 8 characters</mat-label>
                 <input matInput type="password" placeholder="Password" minlength="8" required [formControl]="password"
                   />
-                  <mat-error *ngIf="password.invalid">Please enter a valid password</mat-error>
+                  <mat-error *ngIf="password.errors?.noWhiteSpace">White spaces aren't allowed in password</mat-error>
+                  <mat-error *ngIf="password.invalid && !password.errors?.noWhiteSpace">Please enter a valid password</mat-error>
                 <!-- <button mat-button matSuffix mat-icon-button color="primary" aria-label="Clear" type="button"
                   (click)="clearPassword()">
                   <mat-icon>close</mat-icon>
@@ -238,20 +243,7 @@
                 <mat-datepicker #dp></mat-datepicker>
               </mat-form-field>
             </div>
-            <!-- Decided no bio -->
-            <!-- <div class="input">
-              <div class="display">
-                <mat-form-field><input matInput placeholder="Bio" [(formControl)]="bio" class="bio" maxlength="100">
-                  <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearBio()">
-                    <mat-icon class="asthetic-adds">close</mat-icon>
-                  </button>
-
-                </mat-form-field>
-                <div matBadge="{{ 100 - (bioLength | async) }}">
-
-                </div>
-              </div>
-            </div> -->
+           
           </div>
           <div class="createBtn">
             <button mat-raised-button class="cBtnB" (click)="changeTab1R()">Back</button>

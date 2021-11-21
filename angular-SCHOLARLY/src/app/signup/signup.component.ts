@@ -1,5 +1,5 @@
-import { Component, OnInit, ElementRef, ViewChild, Input, NgModule } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, ValidatorFn, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -27,6 +27,10 @@ import { ImageCroppedEvent, Dimensions } from 'ngx-image-cropper';
 import { Profile, NewUserId, StoreService } from '../services/store.service';
 
 
+
+
+
+
 interface Gender {
   name: string;
 }
@@ -43,6 +47,10 @@ export const MY_FORMATS = {
   },
 };
 
+// Trimming white space for validators
+
+
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -57,11 +65,18 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
+
+
+
+
 export class SignupComponent implements OnInit {
   visible = true;
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
+
+
+
 
 
 
@@ -81,7 +96,8 @@ export class SignupComponent implements OnInit {
 
   ];
 
-  // Wont display because of security warning 
+
+  // Wont display because of security warning
   // But will be connected to abck end any way so dont worry rn
   url: string[];
 
@@ -91,8 +107,8 @@ export class SignupComponent implements OnInit {
   imgChangeEvt: any = '';
   showCropper = false;
   containWithinAspectRatio = false;
-  username: FormControl = new FormControl('', Validators.pattern('[a-zA-Z0-9_]*'));
-  password: FormControl = new FormControl('');
+  username: FormControl = new FormControl('', [Validators.pattern('[a-zA-Z0-9_]*'), this.noWhiteSpace]);
+  password: FormControl = new FormControl('', this.noWhiteSpace);
   major: FormControl = new FormControl('');
   minor: FormControl = new FormControl('');
   sport: FormControl = new FormControl('');
@@ -101,7 +117,7 @@ export class SignupComponent implements OnInit {
   pronouns: FormControl = new FormControl('');
   birthday: FormControl = new FormControl();
   genderChoice: FormControl = new FormControl('');
-  email: FormControl = new FormControl('', Validators.email);
+  email: FormControl = new FormControl('', [Validators.email, this.noWhiteSpace]);
   termsCheck: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
   profilePic: FormControl = new FormControl('');
@@ -156,9 +172,31 @@ export class SignupComponent implements OnInit {
     requiredForm: this.requiredForm,
     personalizeForm: this.personalizeForm,
   });
-  toggleContainWithinAspectRatio(): void {
-    this.containWithinAspectRatio = !this.containWithinAspectRatio;
-  }
+
+
+  public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
+    if ((control.value as string).indexOf(' ') >= 0){
+        return {noWhiteSpace: true};
+    }
+    return null;
+}
+
+
+  // public trimValidator: ValidatorFn = (email: FormControl) => {
+  //   if (email.value.startsWith(' ')) {
+  //     return {
+  //       trimError: { value: 'Input has leading whitespace' }
+  //     };
+  //   }
+  //   if (email.value.endsWith(' ')) {
+  //     return {
+  //       trimError: { value: 'Input has trailing whitespace' }
+  //     };
+  //   }
+  //   return null;
+  // }
+  // using oninput
+
 
   onImgChange(event: any): void {
     this.imgChangeEvt = event;

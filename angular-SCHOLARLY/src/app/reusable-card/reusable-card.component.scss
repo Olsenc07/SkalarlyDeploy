@@ -187,10 +187,10 @@
 .postText {
   display: flex;
   width: 100%;
+  border: ridge;
   overflow-y: visible;
   height: fit-content;
   justify-content: center;
-  border: groove;
   border-color: #ececee;
   text-align: center;
 }

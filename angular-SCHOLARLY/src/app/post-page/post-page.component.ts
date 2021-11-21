@@ -97,7 +97,13 @@ export class PostPageComponent implements OnInit {
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
 
-
+  // postForm = new FormGroup({
+  //   Title: this.Title,
+  //   postDescription: this.postDescription,
+  //   upload: this.upload,
+  //   postLocation: this.postLocation,
+  //   friendCtrl: this.friendCtrl,
+  // });
 
 
 
@@ -212,15 +218,13 @@ export class PostPageComponent implements OnInit {
     this.Title.setValue('');
   }
 
-  onFormSubmit(form: NgForm): void {
+  onFormSubmit(): void {
     // TODO: wire up to post request
     console.log(this.firstFormGroup.value);
     console.log(this.secondFormGroup.value);
     console.log(this.thirdFormGroup.value);
     console.log(this.fourthFormGroup.value);
     console.log(this.postDescription.value);
-    // Esc...
-
 
 
     const post: Post = {

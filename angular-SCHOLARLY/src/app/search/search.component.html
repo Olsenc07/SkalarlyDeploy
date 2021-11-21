@@ -6,6 +6,7 @@
 
 
       <div class="center"> Recommendations</div>
+      <mat-divider></mat-divider>
       <!-- Reccomendations and adds -->
       <!-- Limit load in amount at a time -->
       <div class= "logo-layout">
@@ -27,7 +28,7 @@
       </div>
       <!-- Category box -->
       <div class="input-boxs">
-        <div class="center">Step 1: Choose from the main categories</div>
+        <div class="center_single">Step 1: Choose from the main categories</div>
 
         <mat-chip-list aria-label="First Choice">
           <mat-chip (click)="onSearchSelection(opt.value)" (click)="displaySpecificSearch()" [selected]="opt.name"
@@ -40,7 +41,7 @@
 
 
         <div class="input-boxs_" *ngIf="opt >= 1">
-          <div class="center">Step 2: Navigate to the specific page</div>
+          <div class="center_single">Step 2: Navigate to the specific page</div>
           <mat-chip-list class="mat-list-text">
             <mat-chip [multiple]="false" *ngFor="let opt of specificOptions" [value]="opt" (click)="navigateToPage(opt)">
               {{ opt }}
@@ -55,6 +56,7 @@
       <div class="center" *ngIf="posts.length !== 0">
         Recent Feed
       </div>
+      <mat-divider></mat-divider>
       <!-- Only load in so many at a time -->
       <div class="recents_" *ngIf="posts.length == 0">
         <div class="fill">
