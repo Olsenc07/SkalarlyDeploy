@@ -1,5 +1,9 @@
 @import "../theme.scss";
-
+.allBox {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
 .root-container {
   display: flex;
   flex-direction: column;
@@ -415,4 +419,16 @@ h4:focus {
 
 ::ng-deep .mat-toolbar-single-row {
   padding: 0px !important;
+}
+.Text1box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 108vh;
+}
+.Text1 {
+  display: flex;
+  font-family: "Font Awesome 5 Free";
+  text-align: center;
+  justify-content: center;
 }

@@ -12,7 +12,8 @@
 </body> -->
 
 
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" >
+  <ng-container *ngIf="minHeight && minwidth">
   <div class="root-container">
     <router-outlet>
     </router-outlet>
@@ -20,7 +21,7 @@
 
   <div class="root-container">
     <ng-container
-      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isRetrievePScreen$ | async )) === false ">
+      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isRetrievePScreen$ | async )) === false  ">
       <mat-toolbar class="header" color="primary" id="nav-bar">
         <!-- <div *ngIf=[routerLink]="['/app-home-page']" routerLinkActive=nav-bar></div> -->
         <img class="toolbar-logo" Src="../assets/Pics/ProperInAppLogo.jpeg" />
@@ -141,7 +142,8 @@
     <!-- Bottom nav bar for small screens -->
 
     <ng-container
-      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isRetrievePScreen$ | async)) === false ">
+      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || 
+      (isRetrievePScreen$ | async)) === false ">
       <mat-toolbar class="lower">
         <div class="icon-top">
           <div class="icon-btn-fit">
@@ -191,6 +193,17 @@
 
 
 
+</ng-container>
 
+
+
+<ng-container *ngIf="!minHeight || !minwidth" class="allBox" >
+
+  <div class="Text1box">
+<div class="Text1">
+  Display isn't supported on this screen size.
+</div>
+</div>
+</ng-container>
 
 </form>

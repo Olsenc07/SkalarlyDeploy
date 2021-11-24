@@ -18,7 +18,8 @@ import { filter, map, tap } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
 
-
+  minHeight = true;
+  minwidth = true;
 
 
   searchPop = false;
@@ -112,7 +113,15 @@ export class AppComponent implements OnInit {
       map((event: NavigationEnd) => event.url === '/' || event.url === '/messages')
     );
 
+    if (window.screen.height < 400){
+  this.minHeight = false;
+}
+
+    if (window.screen.width < 320){
+  this.minwidth = false;
+}
   }
+
 
   // Missing link to fix search icon movement i hope
   // searchIcon.addEventListener("click", activateSearch);
