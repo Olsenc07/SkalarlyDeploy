@@ -653,14 +653,29 @@ p {
   font-size: medium;
   margin-top: 2%;
 }
-.textB {
-  display: flex;
-  justify-content: center;
-  font-family: "Font Awesome 5 Free";
-  font-weight: 700;
-  color: #807070;
-  font-size: xx-large;
-  text-align: center;
+@media (min-width: 550px) {
+  .textB {
+    display: flex;
+    justify-content: center;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    color: #807070;
+    font-size: xx-large;
+    text-align: center;
+    line-height: initial;
+  }
+}
+@media (max-width: 550px) {
+  .textB {
+    display: flex;
+    justify-content: center;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    color: #807070;
+    font-size: x-large;
+    text-align: center;
+    line-height: initial;
+  }
 }
 .text- {
   display: flex;

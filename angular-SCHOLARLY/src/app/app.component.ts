@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
 
   minHeight = true;
   minwidth = true;
+  aspectRatio = true;
 
 
   searchPop = false;
@@ -121,6 +122,7 @@ export class AppComponent implements OnInit {
   this.minwidth = false;
 }
   }
+
 
 
   // Missing link to fix search icon movement i hope
