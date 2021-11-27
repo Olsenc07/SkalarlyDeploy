@@ -1,16 +1,21 @@
 import { Component } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { OnInit } from '@angular/core';
 import { AttendanceComponent } from '../main-pages/main-pages.component';
 import { TaggedComponent } from '../main-pages/main-pages.component';
-import { PostService } from '../services/post.service';
 import { StoreService } from '../services/store.service';
+import { Post, PostService } from '../services/post.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-card',
     templateUrl: './reusable-card.component.html',
     styleUrls: ['./reusable-card.component.scss'],
 })
-export class ReusableCardComponent {
+export class ReusableCardComponent implements OnInit {
+    posts: Post[] = [];
+    private postsSub: Subscription;
+
 
     post = PostService.post$$;
     profile = StoreService.profile$$;
@@ -47,6 +52,15 @@ export class ReusableCardComponent {
         this.bottomSheet.open(TaggedComponent);
     }
 
-    constructor(private bottomSheet: MatBottomSheet) { }
+    constructor(private bottomSheet: MatBottomSheet,
+                public postService: PostService) { }
+
+    ngOnInit(): void {
+        this.postService.getPosts();
+        this.postsSub = this.postService.getPostUpdateListener()
+          .subscribe((posts: Post[]) => {
+          this.posts = posts;
+        });
+      }
 }
 

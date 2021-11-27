@@ -2,11 +2,11 @@
   "name": "angular_scholarly_test_jbl",
   "version": "1.0.0",
   "description": "firebase connection",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd angular-SCHOLARLY && npm run build && cd .. && node index.js",
-    "dev": "nodemon ./index.js"
+    "start": "cd angular-SCHOLARLY && npm run build && cd .. && node server.js",
+    "dev": "nodemon ./server.js"
   },
   "keywords": [],
   "author": "",
