@@ -154,14 +154,14 @@
                   <div>
                     <div class="centerD">
                       <div class="textU"> Upload Profile Picture</div>
-                      <button mat-icon-button *ngIf="profilePic.value " (click)="clearProfilePic()">
+                      <button mat-icon-button *ngIf="profilePic.value " (click)="clearProfilePic()" >
                         <div class=" far fa-trash-alt"></div>
                       </button>
                     </div>
 
                     <div class="rowP_">
-                      <button mat-button (click)="uploadFileP()">
-                        <div class="material-icons Photo">
+                      <button mat-fab  (click)="uploadFileP()">
+                        <div class="material-icons icon">
                           add_a_photo
                         </div>
                       </button>
@@ -326,7 +326,7 @@
 
 
               <div class="rowP_">
-                <button class="cameraIcon" mat-button (click)="uploadFile()">
+                <button class="cameraIcon" mat-fab  (click)="uploadFile()">
                   <span class="material-icons icon Photo">
                     photo_library
 

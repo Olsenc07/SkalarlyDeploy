@@ -344,9 +344,11 @@
   display: flex;
   justify-content: center;
   margin: 2% 0%;
-  padding-bottom: 0.5%;
+  padding-bottom: 1.5%;
   border: double;
+  border-radius: 25px;
   border-color: #c0bbc1;
+  box-shadow: 0px 5px 12px 7px #add3ec;
 }
 .input-boxs_ {
   background-color: rgb(235, 235, 245);

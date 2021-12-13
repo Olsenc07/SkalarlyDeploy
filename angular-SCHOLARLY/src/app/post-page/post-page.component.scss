@@ -462,7 +462,8 @@ p {
   .post {
     width: 35%;
     height: 100%;
-
+    border-radius: 5px;
+    box-shadow: 0px 5px 12px;
     // resize: none;
   }
 }
@@ -470,7 +471,8 @@ p {
   .post {
     width: 75%;
     height: 100%;
-
+    border-radius: 5px;
+    box-shadow: 0px 5px 12px;
     // resize: none;
   }
 }
@@ -487,10 +489,8 @@ p {
   flex-direction: row;
 }
 .Photo {
-  font-size: xxx-large;
   display: flex;
-  color: #418bba;
-  justify-content: center;
+  color: whitesmoke;
 }
 
 .row {

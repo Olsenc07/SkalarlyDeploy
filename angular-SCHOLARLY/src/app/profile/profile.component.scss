@@ -180,6 +180,12 @@
     margin-top: 17%;
   }
 }
+.columnCourses {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+}
 @media (max-width: 1025px) {
   .column1 {
     display: flex;

@@ -32,7 +32,7 @@
 
 
                   <div class="rowP_">
-                    <button mat-button (click)="uploadFileP()">
+                    <button mat-fab (click)="uploadFileP()">
                       <div class="material-icons Photo">
                         add_a_photo
                       </div>
@@ -208,7 +208,7 @@
               </div>
 
               <div class="tooltip">
-                <button mat-button (click)="openDialogAccount()">
+                <button mat-icon-button (click)="openDialogAccount()">
                   <span class="material-icons"> info </span>
                 </button>
               </div>
@@ -342,7 +342,7 @@
             </div>
 
             <div class="rowP_">
-              <button class="cameraIcon" mat-button (click)="uploadFile()">
+              <button class="cameraIcon" mat-fab  (click)="uploadFile()">
                 <div class="material-icons Photo">
                   add_a_photo
 
@@ -364,7 +364,7 @@
           <div [ngClass]="showCase.value ? 'hide' : 'show_' ">
             <div class="snapshot"> Remove Showcase</div>
             <div class="rowE">
-              <button class="rowE_" mat-button (click)="deleteShowCase()" (click)="hideAdd()">
+              <button class="rowE_" mat-fab (click)="deleteShowCase()" (click)="hideAdd()">
                 <i class="fas fa-minus-circle Photo"></i>
               </button>
             </div>

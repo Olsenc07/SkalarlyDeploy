@@ -34,7 +34,7 @@ private posts: Post[] = [];
 private postsUpdated = new Subject<Post[]>();
 
     getPosts(): void{
-    this.http.get<{message: string, posts: Post[]}>('https://localhost:3000/posts')
+    this.http.get<{message: string, posts: Post[]}>('https://localhost:3000/api/posts')
         .subscribe((postData) => {
             this.posts = postData.posts;
             this.postsUpdated.next([...this.posts]);
@@ -46,7 +46,7 @@ private postsUpdated = new Subject<Post[]>();
     }
     addPost(Title: string, PostDescription: string, PostLocation: string): any {
         const post: Post = { Title, PostDescription, PostLocation };
-        this.http.post<{ message: string}>('http://localhost:3000/posts', post)
+        this.http.post<{ message: string}>('http://localhost:3000/api/posts', post)
         .subscribe(responseData => {
             console.log(responseData.message);
             this.posts.push(post);
@@ -54,23 +54,13 @@ private postsUpdated = new Subject<Post[]>();
         });
     }
 
-    // gender$: Observable<Post> = new Observable;
-    // static gender$: string[];
-
-    // booleans$: Observable<Post> = new Observable;
-    // static booleans$: boolean;
-
-    // event$: Observable<Post> = new Observable;
-    // static event$: string[];
-
-
 
     constructor(private http: HttpClient) {
     }
 
-    setPost(post: Post): void {
-        PostService.post$$.next(post);
-    }
+    // setPost(post: Post): void {
+    //     PostService.post$$.next(post);
+    // }
 
 }
 

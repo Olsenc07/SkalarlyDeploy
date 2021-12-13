@@ -311,8 +311,7 @@
 .icon {
   display: flex;
   justify-content: center;
-  font-size: xx-large;
-  color: #418bba;
+  color: whitesmoke !important;
 }
 @media (min-width: 1024px) {
   .icon_ {
@@ -434,9 +433,6 @@
   flex-direction: column;
   justify-content: center;
   max-width: 250px;
-}
-.Photo {
-  font-size: xxx-large;
 }
 .showCropper {
   display: flex;

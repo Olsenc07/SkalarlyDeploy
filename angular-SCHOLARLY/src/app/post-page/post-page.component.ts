@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators, Form, NgForm } from '@angular/forms';
 
 import {
@@ -90,6 +90,7 @@ export class PostPageComponent implements OnInit {
   search: FormControl = new FormControl('');
   value: FormControl = new FormControl('');
   date: FormControl = new FormControl('');
+
 
 
   firstFormGroup: FormGroup;
@@ -218,7 +219,7 @@ export class PostPageComponent implements OnInit {
     this.Title.setValue('');
   }
 
-  onFormSubmit(): void {
+  onFormSubmit(form: NgForm): void {
     // TODO: wire up to post request
     console.log(this.firstFormGroup.value);
     console.log(this.secondFormGroup.value);
@@ -245,9 +246,12 @@ export class PostPageComponent implements OnInit {
       FourthFormGroup: this.fourthFormGroup.value,
     };
 
-    this.postService.setPost(post);
+    // this is old connection
+    // this.postService.setPost(post);
 
-
+    // New one
+    this.postService.addPost(this.Title.value, this.postDescription.value, this.postLocation.value);
+    form.resetForm();
   }
 
 

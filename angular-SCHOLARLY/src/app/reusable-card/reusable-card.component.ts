@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { OnInit } from '@angular/core';
 import { AttendanceComponent } from '../main-pages/main-pages.component';
@@ -12,12 +12,12 @@ import { Subscription } from 'rxjs';
     templateUrl: './reusable-card.component.html',
     styleUrls: ['./reusable-card.component.scss'],
 })
-export class ReusableCardComponent implements OnInit {
+export class ReusableCardComponent implements OnInit, OnDestroy {
     posts: Post[] = [];
     private postsSub: Subscription;
 
 
-    post = PostService.post$$;
+    // post = PostService.post$$;
     profile = StoreService.profile$$;
     id = StoreService.userId$$;
 
@@ -35,7 +35,7 @@ export class ReusableCardComponent implements OnInit {
         // '../../assets/Pics/IMG-8413.PNG',
         // '../../assets/Pics/IMG-8619.PNG',
         '../../assets/Pics/WhiteSquareInAppLogo.jpg',
-        // '../../assets/Pics/IMG-8413.PNG', 
+        // '../../assets/Pics/IMG-8413.PNG',
         // '../../assets/Pics/IMG-8619.PNG',
         // '../../assets/Pics/ProperInAppLogo.jpeg ',
         // '../../assets/Pics/IMG-8413.PNG'
@@ -62,5 +62,11 @@ export class ReusableCardComponent implements OnInit {
           this.posts = posts;
         });
       }
+
+
+      ngOnDestroy(): void{
+        this.postsSub.unsubscribe();
+      }
+
 }
 

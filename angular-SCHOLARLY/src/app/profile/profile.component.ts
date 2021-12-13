@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { StoreService } from '../services/store.service';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { Post, PostService } from '../services/post.service';
+import { Subscription } from 'rxjs';
 
 
 
@@ -22,6 +24,11 @@ export class ProfileComponent implements OnInit {
   ids = StoreService.ids;
 
 
+  storedPosts: Post[] = [];
+
+  posts: Post[] = [];
+  private postsSub: Subscription;
+
 
   // Course codes
   // Com_ = StoreService.CodeCompleted.length;
@@ -33,7 +40,7 @@ export class ProfileComponent implements OnInit {
   groups = StoreService.Groups;
 
   // Posts
-  posts = StoreService.Posts;
+  // posts = StoreService.Posts;
 
   // show cases, doesnt work when connected to service
   // showCases = StoreService.ShowCases;
@@ -51,7 +58,8 @@ export class ProfileComponent implements OnInit {
     '../../assets/Pics/ProperInAppLogo.jpeg ', '../../assets/Pics/IMG-8413.PNG'
   ];
 
-  constructor(private bottomSheet: MatBottomSheet) {
+  constructor(private bottomSheet: MatBottomSheet,
+    public postService: PostService) {
     // profile$$.profile$$.subscribe((profile) => {
     //   // this.profile$$ = profile;
     //   // return name;
@@ -67,13 +75,20 @@ export class ProfileComponent implements OnInit {
   }
   ngOnInit(): any {
     // this.Com = this.Com.map(code => code.toUpperCase()).sort();
-
-
     this.Pur = this.Pur.map(code => code.toUpperCase()).sort();
 
     // this.showCases = this.showCases.toString();
     return this.Pur;
     // this.Com
+
+
+
+
+    this.postService.getPosts();
+    this.postsSub = this.postService.getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+      this.posts = posts;
+    });
 
   }
 

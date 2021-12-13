@@ -180,16 +180,19 @@
         <div class="row_1">
           <!-- This ngIf to adjust to data stroage not hard code like Pur_
           but need to target observable length.. idk rn -->
-          <div class="column1" *ngIf=" !((profile | async)?.CodeCompleted  || (profile | async)?.filteredCodesP)">
-            <div class="row"> No Courses Added</div>
+          <!-- <div class="column1" *ngIf=" !((profile | async)?.CodeCompleted  || (profile | async)?.filteredCodesP)"> -->
+            <!-- <div class="row"> No Courses Added</div> -->
             <!-- <i class="far fa-frown centerR"></i> -->
-          </div>
+          <!-- </div> -->
           <!-- Hidden if neither are filled in -->
 
 
-          <div [ngClass]=" ((profile | async)?.CodeCompleted) ? 'completed-courses' : 'hide_' ">
+          <div [ngClass]=" ((profile | async)?.CodeCompleted) ? 'hide_' : 'completed-courses' ">
             <div class="words1">
-              Completed
+              <div class="columnCourses">
+                Completed Courses
+              </div>
+              
               <!-- Courses but need to target list length-->
               <div class="counter" matBadgePosition="after" matBadgeOverlap="false"
                 matBadge="{{ (profile | async)?.CodeCompleted.length  }}">
@@ -213,9 +216,12 @@
           </div>
 
           <!-- "!((profile | async)?.CodePursuing) ? 'hide_' : 'completed-courses' " -->
-          <div [ngClass]="(profile | async)?.CodePursuing  ? 'completed-courses ' : ' hide_' ">
+          <div [ngClass]="(profile | async)?.CodePursuing  ? 'hide_' : 'completed-courses' ">
             <div class="words1">
-              Pursuing
+              <div class="columnCourses">
+                Pursuing Courses
+              </div>
+
               <!-- Courses -->
               <div class="counter" matBadgePosition="after" matBadgeOverlap="false"
                 matBadge="{{  (profile | async)?.CodePursuing.length }}"></div>

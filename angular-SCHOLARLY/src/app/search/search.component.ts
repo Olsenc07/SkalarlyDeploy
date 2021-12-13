@@ -16,6 +16,8 @@ interface SearchOption {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
+  storedPosts: Post[] = [];
+
   posts: Post[] = [];
   private postsSub: Subscription;
 
@@ -57,6 +59,9 @@ export class SearchComponent implements OnInit {
   displaySpecificSearch(): void {
     this.opt++;
   }
+  onPostsAdded(post): any{
+    this.storedPosts.push(post);
+  }
 
   constructor(
     public dialog: MatDialog,
@@ -67,16 +72,14 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchOptions = this.searchListService.getSearchOptions();
-    // this.postService.getPosts();
-    // this.postsSub = this.postService.getPostUpdateListener()
-    //   .subscribe((posts: Post[]) => {
-    //   this.posts = posts;
-    // });
+    this.postService.getPosts();
+    this.postsSub = this.postService.getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+      this.posts = posts;
+    });
   }
 
-ngOnDestroy(): void{
-  this.postsSub.unsubscribe();
-}
+
 
   onSearchSelection(value: string): void {
     this.specificOptions = this.searchListService.onSearchSelection(value);
