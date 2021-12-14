@@ -128,6 +128,11 @@ export class AppComponent implements OnInit {
     this.searchBox.classList.toggle('active');
   }
 
+  // Search user
+  search_user(): void{
+
+  }
+
   search_(): void {
     this.searchPop = !this.searchPop;
   }

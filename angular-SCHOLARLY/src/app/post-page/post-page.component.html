@@ -61,7 +61,7 @@
     <div class="centerL" *ngIf="postDescription.value || upload.value ">Where do you want your post?</div>
     <div class="selection_styles" *ngIf="postDescription.value || upload.value ">
     <mat-selection-list #options [multiple]="false">
-      <mat-form-field appearance="fill">
+      <mat-form-field appearance="fill" class="shadow1">
         <mat-label>Step 1: Choose from the main categories</mat-label>
         <mat-select [formControl]="postLocationMain">
           <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
@@ -74,7 +74,7 @@
     <!-- Step 2 -->
     
       <mat-selection-list #options2 class="mat-list-text" [multiple]="false" *ngIf="postLocationMain.value">
-<mat-form-field appearance="fill">
+<mat-form-field appearance="fill" class="shadow2">
   <mat-label> Step 2: Select the specific page </mat-label>
 
 <mat-select [formControl]="postLocation" > 

@@ -55,7 +55,9 @@
         <div class="large-screen-icons">
           <!-- New -->
           <div class="search-box">
+<button mat-icon-button type="button" (click)="search_user()">
             <i class="fas fa-search search-box__icon "></i>
+          </button>
             <input matInput type="search" class="search-box__input" placeholder="Search Fellow Scholars"
               [formControl]="search" />
             <cdk-virtual-scroll-viewport itemSize="10">
