@@ -89,7 +89,7 @@
 
 
 
-      <div class="center" *ngIf="(postDescription.value || upload.value) && postLocation.value " >
+      <div class="btmPad" *ngIf="(postDescription.value || upload.value) && postLocation.value " >
 <button mat-raised-button type="button" class="final_step_btn" 
  (click)="changeTab()">
   Next Step
@@ -97,47 +97,63 @@
 </div>
 
     </mat-tab>
+
+
     <!-- Next page -->
     <mat-tab disabled label="Step 2"> 
       
       
+<div class="threeBox">
 
-      <div class="row">
+      <div *ngIf="minwidth" class="staticBtn">
         <button mat-raised-button type="button" class="back_btn" 
       (click)="changeTab1()">
-         Back
+      <span class="material-icons"> arrow_back </span> Back
         </button>
-
-        <div class="column_text_counter"> 
-        <div class="counter" matBadge="{{ 50 - (TitleLength | async) }}">
-        </div>
-        <mat-form-field class="text-input">
-          <mat-label>Title</mat-label>
-          <input matInput maxlength="50" [formControl]="Title">
-          <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearTitle()">
-            <mat-icon class="clear-button">close</mat-icon>
-          </button> -->
-
-        </mat-form-field>
-      </div>
-
-        <button type="button" mat-raised-button color="primary" class="post_btn_top_right" routerLink="/search"
-        type="submit" (click)="onFormSubmit(postForm)">Post
-        <span class="material-icons"> arrow_forward </span>
-      </button>
-
-
     </div>
 
  
 
     <div class="right">
 
+      <div *ngIf="!minwidth" class="butnBundle">
+      <div class="staticBtn">
+        <button mat-stroked-button type="button" class="back_btn" 
+      (click)="changeTab1()">
+      <span class="material-icons"> arrow_back </span> Back
+        </button>
+    </div>
+
+    <div class="staticBtn2">
+      <button type="button" mat-stroked-button color="primary" class="post_btn_top_right" routerLink="/search"
+      type="submit" (click)="onFormSubmit(postForm)">Post
+      <span class="material-icons"> arrow_forward </span>
+    </button>
+  </div>
+</div>
+
       <!-- Step1 -->
       <mat-vertical-stepper [linear]="isLinear" #stepper>
-        <mat-step [stepControl]="firstFormGroup" class="column_">
+
+
+<mat-step [stepControl]="firstFormGroup" class="column_">
           <form [formGroup]="firstFormGroup">
             <ng-template matStepLabel>When & Where</ng-template>
+            
+            <div class="column_text_counter"> 
+              
+              <mat-form-field class="text-input">
+                <mat-label >Title </mat-label>
+                <div matBadge="{{ 50 - (TitleLength | async) }}"></div>
+                <input matInput maxlength="50" formControlName="Title" >
+                <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearTitle()">
+                  <mat-icon class="clear-button">close</mat-icon>
+                </button> -->
+               
+              </mat-form-field>
+            </div>
+
+
             <mat-form-field appearance="fill">
               <mat-label>Choose a date:</mat-label>
               <input matInput [matDatepicker]="D" formControlName="date">
@@ -280,35 +296,43 @@
           </div>
         </mat-step>
       </mat-vertical-stepper>
+
+<!-- Tag Friends and post -->
+<div class="btmPad">
+  <mat-form-field appearance="fill" >
+    <div class="centerD">Tag Friends: start typing...</div>
+
+    <mat-chip-list #chipList aria-label="Friends selection">
+      <mat-chip *ngFor="let friend of friends" [selectable]="selectable" [removable]="removable"
+        (removed)="remove(friend)">
+        {{friend}}
+        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+      </mat-chip>
+      <input matInput #friendInput [matAutocomplete]="auto" [matChipInputFor]="chipList" class="textT"
+        [formControl]="friendCtrl" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)">
+    </mat-chip-list>
+
+    <!-- Connect to friends list -->
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+      <mat-option *ngFor="let friend of filteredFriends | async" [value]="friend">
+        {{friend}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  </div>
     </div>
 
-    <!-- Tag Friends and post -->
-    <div class="tag_friends_box">
-    <mat-form-field appearance="fill" >
-      <div class="centerD">Tag Friends: start typing...</div>
-
-      <mat-chip-list #chipList aria-label="Friends selection">
-        <mat-chip *ngFor="let friend of friends" [selectable]="selectable" [removable]="removable"
-          (removed)="remove(friend)">
-          {{friend}}
-          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-        </mat-chip>
-        <input matInput #friendInput [matAutocomplete]="auto" [matChipInputFor]="chipList" class="textT"
-          [formControl]="friendCtrl" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-          (matChipInputTokenEnd)="add($event)">
-      </mat-chip-list>
-
-      <!-- Connect to friends list -->
-      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-        <mat-option *ngFor="let friend of filteredFriends | async" [value]="friend">
-          {{friend}}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    </div>
     
-    
+    <div *ngIf="minwidth" class="staticBtn2">
+    <button type="button" mat-raised-button color="primary" class="post_btn_top_right" routerLink="/search"
+    type="submit" (click)="onFormSubmit(postForm)">Post
+    <span class="material-icons"> arrow_forward </span>
+  </button>
+</div>
 
+
+</div>
 
     </mat-tab>
     

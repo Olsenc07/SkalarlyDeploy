@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 
 export interface Post {
     // id: string;
-    Title: string;
     PostDescription: string;
     Upload?: string;
     PostLocation?: string;
@@ -44,8 +43,8 @@ private postsUpdated = new Subject<Post[]>();
     getPostUpdateListener(): any {
         return this.postsUpdated.asObservable();
     }
-    addPost(Title: string, PostDescription: string, PostLocation: string): any {
-        const post: Post = { Title, PostDescription, PostLocation };
+    addPost(PostDescription: string, PostLocation: string): any {
+        const post: Post = { PostDescription, PostLocation };
         this.http.post<{ message: string}>('http://localhost:3000/api/posts', post)
         .subscribe(responseData => {
             console.log(responseData.message);

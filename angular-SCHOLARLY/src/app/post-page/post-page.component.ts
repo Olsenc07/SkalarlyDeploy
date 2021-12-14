@@ -20,6 +20,7 @@ import { map } from 'rxjs/operators';
 import { SearchListService } from '../services/search.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Post, PostService } from '../services/post.service';
+import { Title } from '@angular/platform-browser';
 
 const moment = _moment;
 
@@ -56,6 +57,7 @@ interface SearchOption {
 })
 
 export class PostPageComponent implements OnInit {
+  minwidth = true;
   public selectedOption: string;
   public specificOptions: string[];
   public searchOptions: SearchOption[];
@@ -81,7 +83,7 @@ export class PostPageComponent implements OnInit {
 
   selectedIndexPost = 0;
   isLinear = false;
-  Title: FormControl = new FormControl('');
+  // Title: FormControl = new FormControl('');
   public TitleLength = new BehaviorSubject(0);
   upload: FormControl = new FormControl('');
   postLocationMain: FormControl = new FormControl('');
@@ -111,13 +113,14 @@ export class PostPageComponent implements OnInit {
   constructor(public dialog: MatDialog, public searchListService: SearchListService,
               private fb: FormBuilder, private postService: PostService) {
 
-    this.Title.valueChanges.subscribe((v) => this.TitleLength.next(v.length));
+    
     // Desktop tag friends
     this.filteredFriends = this.friendCtrl.valueChanges.pipe(
       map((friend: string | null) => friend ? this._filter(friend) : this.allFriends.slice()));
 
 
     this.firstFormGroup = this.fb.group({
+      Title: new FormControl(''),
       date: new FormControl(''),
       time: new FormControl(''),
       locationEvent: new FormControl(''),
@@ -172,7 +175,10 @@ export class PostPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchOptions = this.searchListService.getSearchOptions();
-
+    this.firstFormGroup.get('Title').valueChanges.subscribe((v) => this.TitleLength.next(v.length));
+    if (window.screen.width < 1025){
+      this.minwidth = false;
+    }
   }
   onSearchSelection(value): void {
     console.log(value);
@@ -215,9 +221,7 @@ export class PostPageComponent implements OnInit {
     }
     return value;
   }
-  clearTitle(): void {
-    this.Title.setValue('');
-  }
+
 
   onFormSubmit(form: NgForm): void {
     // TODO: wire up to post request
@@ -229,7 +233,6 @@ export class PostPageComponent implements OnInit {
 
 
     const post: Post = {
-      Title: this.Title.value,
       PostDescription: this.postDescription.value,
       Upload: this.upload.value,
       PostLocation: this.postLocation.value,
@@ -250,7 +253,7 @@ export class PostPageComponent implements OnInit {
     // this.postService.setPost(post);
 
     // New one
-    this.postService.addPost(this.Title.value, this.postDescription.value, this.postLocation.value);
+    this.postService.addPost(this.postDescription.value, this.postLocation.value);
     form.resetForm();
   }
 

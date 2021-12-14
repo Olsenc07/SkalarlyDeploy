@@ -65,17 +65,25 @@
   font-family: "Font Awesome 5 Free";
   display: flex;
   align-content: center;
-  width: 50%;
   justify-content: center;
-  height: 100%;
+  height: fit-content;
+}
+.btmPad {
+  display: flex;
+  margin-bottom: 15%;
+  justify-content: center;
+}
+.butnBundle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .post_btn_top_right {
   font-family: "Font Awesome 5 Free";
   display: flex;
   align-content: center;
-  width: 50%;
   justify-content: center;
-  height: 100%;
+  height: fit-content;
   background-color: #11173a;
 }
 .btn {
@@ -155,7 +163,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0% 3%;
   width: 100%;
 }
 .columnM {
@@ -515,22 +522,13 @@ p {
   color: #7e7171;
   font-family: "Font Awesome 5 Free";
 }
-@media (min-width: 800px) {
-  .right {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    margin: 0% 25%;
-    position: relative;
-  }
-}
-@media (max-width: 800px) {
-  .right {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    position: relative;
-  }
+
+.right {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: static;
+  margin-bottom: 11%;
 }
 
 .right-mid {
@@ -623,24 +621,31 @@ p {
   border-radius: 5px;
   margin-bottom: 2%;
 }
-@media (min-width: 800px) {
-  .tag_friends_box {
+@media (min-width: 1025px) {
+  .staticBtn {
     display: flex;
-    margin: 0% 25% 10% 25%;
+    position: fixed;
+    left: 7%;
   }
 }
-@media (max-width: 800px) and (min-width: 500px) {
-  .tag_friends_box {
+@media (max-width: 1025px) {
+  .staticBtn {
     display: flex;
-    margin: 0% 0% 10% 0%;
   }
 }
-@media (max-width: 500px) {
-  .tag_friends_box {
+@media (min-width: 1025px) {
+  .staticBtn2 {
     display: flex;
-    margin: 0% 0% 25% 0%;
+    position: fixed;
+    right: 7%;
   }
 }
+@media (max-width: 1025px) {
+  .staticBtn2 {
+    display: flex;
+  }
+}
+
 .tagged-friends {
   display: flex;
   scroll-behavior: smooth;
@@ -755,6 +760,11 @@ p {
   flex-direction: column;
   width: 100%;
   height: 100%;
+}
+.threeBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 @media (min-width: 1024px) {
   .uploadD {
