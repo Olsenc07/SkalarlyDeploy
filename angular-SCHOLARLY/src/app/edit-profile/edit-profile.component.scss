@@ -376,6 +376,9 @@
   justify-content: center;
   box-sizing: border-box;
 }
+.outline {
+  border: solid;
+}
 
 .left-column {
   display: flex;
@@ -385,7 +388,11 @@
   display: flex;
   width: 100%;
 }
-
+.rowBriefCard {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
 .recent-post-layout {
   display: flex;
   flex-direction: column;

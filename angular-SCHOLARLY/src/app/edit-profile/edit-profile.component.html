@@ -240,8 +240,8 @@
     <mat-tab label="Activity">
       <div class="entire-page">
 
-
-        <div class="groups-jj">
+        <div class="work">
+        <div class="groups-j ">
 
 
           <div class="column1" [ngClass]="gList.length == 0 ? 'show' : 'hide' ">
@@ -277,13 +277,17 @@
             </div>
 
           </div>
-
-          <app-card-brief *ngFor="let group of gList | slice:g:g+1; index as g">
+<!--gList | slice:g:g+1; index as g  if want displayed one at a time -->
+<div class="rowBriefCard">
+          <app-card-brief class="center" [ngClass]="gList.indexOf(group) === g ? 'outline' : '' "
+          *ngFor="let group of gList ">
 
             {{group}}
 
           </app-card-brief>
+        </div>
 
+        </div>
         </div>
         <!-- Recent Posts box-->
         <div class="work">

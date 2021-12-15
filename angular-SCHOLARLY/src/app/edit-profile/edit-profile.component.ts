@@ -137,7 +137,7 @@ export class EditProfileComponent implements OnInit {
   ];
 
   // Group list;
-  gList = ['', ''];
+  gList = [{}, {}];
 
   // Post list;
   pList = ['', ''];
@@ -218,7 +218,7 @@ export class EditProfileComponent implements OnInit {
   }
 
   // SnapShot
-  // After its added to the list. Click save and 
+  // After its added to the list. Click save and
   // this becomes the updated array, sent back to the data base
   arrayAdd(event: any): any {
     this.list.unshift(this.showCase.value);
@@ -349,8 +349,8 @@ export class EditProfileComponent implements OnInit {
   nextGroupCard(): number {
     ++this.g;
     if (this.g >= this.gList.length) {
-      this.g = 0
-      return this.g
+      this.g = 0;
+      return this.g;
     }
     console.log(this.g);
     // go forward one card
@@ -360,7 +360,7 @@ export class EditProfileComponent implements OnInit {
     console.log(this.gList.length);
     if (this.g === this.gList.length) {
       this.g = this.g - 1;
-      return this.g
+      return this.g;
     }
   }
 
@@ -398,26 +398,26 @@ export class EditProfileComponent implements OnInit {
   previousCard(): number {
     --this.i;
     if (0 > this.i) {
-      this.i = this.list.length - 1
-      return this.i
+      this.i = this.list.length - 1;
+      return this.i;
     }
     console.log(this.i);
   }
   nextCard(): number {
     ++this.i;
     if (this.i >= this.list.length) {
-      this.i = 0
-      return this.i
+      this.i = 0;
+      return this.i;
     }
     console.log(this.i);
     // go forward one card
   }
   deleteSnapShot(): number {
-    this.list.splice(this.i, 1)
+    this.list.splice(this.i, 1);
     console.log(this.list.length);
-    if (this.i == this.list.length) {
-      this.i = this.i - 1
-      return this.i
+    if (this.i === this.list.length) {
+      this.i = this.i - 1;
+      return this.i;
     }
   }
 
