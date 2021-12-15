@@ -6,8 +6,6 @@
       <mat-tab disabled>
 
 
-
-
         <!-- Messsage is sent to verify email once email is typed in and the option to verify this email
           pops up and when they click it, it then sends the verification email. Then when they verify it. The next button is un disabled and they
         can continue creating their account -->
@@ -115,7 +113,7 @@
             </div>
           </div>
           <div class="existing-account-layout">
-            <!-- [disabled]="!requiredForm.valid" -->
+           
             <button type="button" mat-raised-button class="existing-account-style" (click)="onSubmitPartOne()"
               (click)="changeTab()" [disabled]="!requiredForm.valid">
               Next

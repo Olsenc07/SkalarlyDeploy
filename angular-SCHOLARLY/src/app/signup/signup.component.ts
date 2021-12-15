@@ -77,9 +77,6 @@ export class SignupComponent implements OnInit {
 
 
 
-
-
-
   classes: string[] = [];
   classesP: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;

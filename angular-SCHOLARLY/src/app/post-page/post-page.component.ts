@@ -94,6 +94,10 @@ export class PostPageComponent implements OnInit {
   date: FormControl = new FormControl('');
 
 
+validateBtn = new FormGroup({
+  postLocation: this.postLocation,
+});
+
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -113,7 +117,6 @@ export class PostPageComponent implements OnInit {
   constructor(public dialog: MatDialog, public searchListService: SearchListService,
               private fb: FormBuilder, private postService: PostService) {
 
-    
     // Desktop tag friends
     this.filteredFriends = this.friendCtrl.valueChanges.pipe(
       map((friend: string | null) => friend ? this._filter(friend) : this.allFriends.slice()));
@@ -139,9 +142,6 @@ export class PostPageComponent implements OnInit {
     this.fourthFormGroup = this.fb.group({
       event: new FormControl(''),
     });
-
-
-
 
   }
 
@@ -173,6 +173,7 @@ export class PostPageComponent implements OnInit {
     document.getElementById('upload2').removeAttribute('src');
   }
 
+
   ngOnInit(): void {
     this.searchOptions = this.searchListService.getSearchOptions();
     this.firstFormGroup.get('Title').valueChanges.subscribe((v) => this.TitleLength.next(v.length));
@@ -183,6 +184,12 @@ export class PostPageComponent implements OnInit {
   onSearchSelection(value): void {
     console.log(value);
     this.specificOptions = this.searchListService.onSearchSelection(value);
+    const NextBtn2 = document.getElementById('nextBtn2');
+    NextBtn2.scrollIntoView();
+  }
+  adjustView(): void {
+    const NextBtn = document.getElementById('nextBtn');
+    NextBtn.scrollIntoView();
   }
   // Desktop tag friends
   add(event: MatChipInputEvent): void {
@@ -214,7 +221,6 @@ export class PostPageComponent implements OnInit {
   }
 
 
-
   formatLabel(value: number): any {
     if (value >= 100) {
       return Math.round(value / 1) + '+';
@@ -230,6 +236,7 @@ export class PostPageComponent implements OnInit {
     console.log(this.thirdFormGroup.value);
     console.log(this.fourthFormGroup.value);
     console.log(this.postDescription.value);
+    console.log(this.postLocation.value);
 
 
     const post: Post = {
@@ -242,7 +249,6 @@ export class PostPageComponent implements OnInit {
 
       // Date: this.date.value,
       // Time: this.time.value,
-      // PostLocation: this.postLocation.value,
 
       SecondFormGroup: this.secondFormGroup.value,
       ThirdFormGroup: this.thirdFormGroup.value,

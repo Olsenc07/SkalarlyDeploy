@@ -31,8 +31,7 @@ app.use((req, res, next) => {
  })
 
 // Post path
-app.use('/posts', (req, res, next) => {
-
+app.get('/api/posts', (req, res, next) => {
    // Dummy posts
    const posts = [
 { id: 'fsohchi1731', Title: 'I Love Scholarly',
@@ -49,8 +48,6 @@ PostDescription: 'Hey everyone come make an account. You will love it!! ',
  })
 
 })
-
-
 
 
 /**

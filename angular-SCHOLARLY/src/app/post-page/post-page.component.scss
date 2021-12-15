@@ -70,13 +70,14 @@
 }
 .btmPad {
   display: flex;
-  margin-bottom: 15%;
+  margin-bottom: 19%;
   justify-content: center;
 }
 .butnBundle {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  background-color: white;
 }
 .post_btn_top_right {
   font-family: "Font Awesome 5 Free";
@@ -566,6 +567,10 @@ p {
     flex-direction: column;
     margin: 0% 10%;
   }
+}
+.second_selection {
+  display: flex;
+  margin-bottom: 14%;
 }
 .sliders {
   display: flex;

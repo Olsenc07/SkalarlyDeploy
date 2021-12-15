@@ -58,7 +58,11 @@
 
 <!-- Step 1 -->
 
-    <div class="centerL" *ngIf="postDescription.value || upload.value ">Where do you want your post?</div>
+    <div class="centerL" *ngIf="postDescription.value || upload.value ">Where do you want your post?
+
+      
+
+    </div>
     <div class="selection_styles" *ngIf="postDescription.value || upload.value ">
     <mat-selection-list #options [multiple]="false">
       <mat-form-field appearance="fill" class="shadow1">
@@ -72,29 +76,28 @@
     </mat-selection-list>
 
     <!-- Step 2 -->
-    
-      <mat-selection-list #options2 class="mat-list-text" [multiple]="false" *ngIf="postLocationMain.value">
+      <mat-selection-list id="nextBtn2"  #options2 class="second_selection" [multiple]="false" >
 <mat-form-field appearance="fill" class="shadow2">
   <mat-label> Step 2: Select the specific page </mat-label>
 
-<mat-select [formControl]="postLocation" > 
-  <mat-option [multiple]="false" *ngFor="let opt of specificOptions" [value]="opt">
+<mat-select  [formControl]="postLocation" > 
+  <mat-option (click)="adjustView()" [multiple]="false" *ngFor="let opt of specificOptions"
+  [selected]="opt" [value]="opt">
         {{ opt }}
   </mat-option>
 </mat-select>
 
 </mat-form-field>
       </mat-selection-list>
+    
     </div>
 
-
-
-      <div class="btmPad" *ngIf="(postDescription.value || upload.value) && postLocation.value " >
-<button mat-raised-button type="button" class="final_step_btn" 
- (click)="changeTab()">
-  Next Step
-</button>
-</div>
+    <div id="nextBtn" class="btmPad" *ngIf="(postDescription.value || upload.value) && postLocationMain.value " >
+      <button [disabled]="!validateBtn.valid"  mat-raised-button type="button" class="final_step_btn" 
+       (click)="changeTab()">
+        Next Step
+      </button>
+      </div>
 
     </mat-tab>
 
@@ -118,7 +121,7 @@
 
       <div *ngIf="!minwidth" class="butnBundle">
       <div class="staticBtn">
-        <button mat-stroked-button type="button" class="back_btn" 
+        <button mat-flat-button type="button" class="back_btn" 
       (click)="changeTab1()">
       <span class="material-icons"> arrow_back </span> Back
         </button>
