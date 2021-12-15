@@ -204,7 +204,9 @@
     box-sizing: border-box;
   }
 }
-
+.counter {
+  padding-left: 2%;
+}
 .current {
   margin-left: 15%;
 }
@@ -732,10 +734,11 @@ mat-tab-group {
 .title1 {
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
   font-family: "Font Awesome 5 Free";
   font-weight: 500;
   color: #7e7171;
+  width: 100%;
 }
 
 .uNameMsg {

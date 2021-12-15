@@ -55,6 +55,7 @@
   justify-self: center;
   margin-bottom: 5%;
   font-family: "Font Awesome 5 Free";
+  background-color: #18214b;
 }
 @media (min-width: 1024px) {
   .c_r {
@@ -78,7 +79,6 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  width: 100%;
 }
 .centerR {
   display: flex;
@@ -88,7 +88,6 @@
 }
 .counter {
   display: flex;
-  padding: 0% 15%;
   justify-content: center;
   flex-direction: column;
   font-size: large;
@@ -280,7 +279,7 @@
   .groups-jj {
     display: flex;
     justify-content: center;
-    margin: 3% 23%;
+    margin: 0% 32%;
     // border: ridge;
     box-sizing: border-box;
     flex-direction: column;
@@ -295,6 +294,8 @@
     box-sizing: border-box;
     flex-direction: column;
   }
+}
+.groupsjj_box {
 }
 @media (min-width: 1024px) {
   .groups-j {
@@ -341,6 +342,13 @@
     box-sizing: border-box;
   }
 }
+.groupsj_box {
+  display: flex;
+  margin-top: 2%;
+  width: 100%;
+  justify-content: center;
+}
+
 .hide {
   display: none !important;
 }
@@ -377,7 +385,12 @@
   box-sizing: border-box;
 }
 .outline {
-  border: solid;
+  box-sizing: border-box;
+  display: flex;
+  border: groove;
+  margin: 0% 0.4%;
+  overflow-x: hidden;
+  box-shadow: 0px 5px 10px;
 }
 
 .left-column {
@@ -392,6 +405,12 @@
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
+  justify-content: center;
+  width: fit-content;
+}
+.rowBriefCardBox {
+  overflow-x: scroll;
+  box-sizing: border-box;
 }
 .recent-post-layout {
   display: flex;
@@ -727,12 +746,6 @@
   font-size: 30;
 }
 
-.work {
-  display: flex;
-  margin-top: 2%;
-  width: 100%;
-  justify-content: center;
-}
 .words {
   display: flex;
   justify-content: space-between;

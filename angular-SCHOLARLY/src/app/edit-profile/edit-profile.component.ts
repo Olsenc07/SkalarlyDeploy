@@ -137,7 +137,7 @@ export class EditProfileComponent implements OnInit {
   ];
 
   // Group list;
-  gList = [{}, {}];
+  gList = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
   // Post list;
   pList = ['', ''];
@@ -354,6 +354,8 @@ export class EditProfileComponent implements OnInit {
     }
     console.log(this.g);
     // go forward one card
+    // const NextG = document.getElementById('groupCard');
+    // NextG.scrollIntoView();
   }
   leaveGroup(): number {
     this.gList.splice(this.g, 1);

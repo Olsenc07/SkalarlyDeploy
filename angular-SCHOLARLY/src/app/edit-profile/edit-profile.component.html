@@ -240,8 +240,8 @@
     <mat-tab label="Activity">
       <div class="entire-page">
 
-        <div class="work">
-        <div class="groups-j ">
+        <div class="groupsjj_box">
+        <div class="groups-jj ">
 
 
           <div class="column1" [ngClass]="gList.length == 0 ? 'show' : 'hide' ">
@@ -257,14 +257,17 @@
                 <!-- button scrolls through posts and then user can delete what they wish -->
                 <button mat-icon-button (click)=previousGroupCard()><i class="fas fa-arrow-circle-left title1"></i>
                 </button>
-                <div class="column1">Groups Joined</div>
+                <div class="column1">Groups </div>
                 <button mat-icon-button (click)=nextGroupCard()> <i class="fas fa-arrow-circle-right title1"></i>
                 </button>
               </div>
 
               <div class="row">
-                <div class="counter">{{ g + 1 }}</div>
-                <div class="counter">Of</div>
+                <!-- <div class="counter">{{ g + 1 }}</div>
+                <div class="counter">Of</div> -->
+                <span class="material-icons counter">
+                  numbers
+                  </span>
                 <div class="counter">
                   {{ gList.length }}</div>
               </div>
@@ -277,20 +280,24 @@
             </div>
 
           </div>
+          <div class="rowBriefCardBox">
 <!--gList | slice:g:g+1; index as g  if want displayed one at a time -->
 <div class="rowBriefCard">
           <app-card-brief class="center" [ngClass]="gList.indexOf(group) === g ? 'outline' : '' "
+          
           *ngFor="let group of gList ">
 
             {{group}}
-
+            
           </app-card-brief>
+          
         </div>
+      </div>
 
         </div>
         </div>
         <!-- Recent Posts box-->
-        <div class="work">
+        <div class="groupsj_box">
           <div class="column1" [ngClass]="pList.length == 0 ? 'show' : 'hide' ">
             <div class="row"> No Posts Made</div><i class="far fa-frown centerR"></i>
           </div>
@@ -313,8 +320,11 @@
 
 
                 <div class="row">
-                  <div class="counter">{{ p + 1 }}</div>
-                  <div class="counter">Of</div>
+                  <!-- <div class="counter">{{ p + 1 }}</div>
+                  <div class="counter">Of</div> -->
+                  <span class="material-icons counter">
+                    numbers
+                    </span>
                   <div class="counter">
                     {{ pList.length }}</div>
                 </div>
