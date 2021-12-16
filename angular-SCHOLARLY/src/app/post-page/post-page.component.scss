@@ -227,6 +227,11 @@
   display: flex;
   justify-content: center;
 }
+.genderIcon_Name {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
 @media (min-width: 1024px) {
   .left {
     display: flex;
@@ -381,7 +386,6 @@ mat-chip .mat-list-text {
 }
 .margin {
   display: flex;
-  flex-direction: column;
 }
 
 @media (max-width: 1024px) {
@@ -505,7 +509,6 @@ p {
   display: flex;
   flex-direction: row;
   width: 100%;
-  justify-content: center;
 }
 
 .rowP {

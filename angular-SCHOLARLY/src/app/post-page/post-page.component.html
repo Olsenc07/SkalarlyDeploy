@@ -193,16 +193,31 @@
               <mat-radio-group aria-label="Select an option" formControlName="gender">
 
                 <div class="margin">
-                  <p class="fas fa-venus">Females</p>
-                  <mat-radio-button class="btn_" value="female"></mat-radio-button>
+                  <div class="genderIcon_Name">
+                  <span class="material-icons">
+                    female
+                    </span>
+                    <div class="textP">  Female</div>
+                  </div>
+                  <mat-radio-button [disableRipple]="true" class="btn_" value="female"></mat-radio-button>
                 </div>
                 <div class="margin">
-                  <p class="fas fa-transgender-alt">All</p>
-                  <mat-radio-button class="btn_" value="all"></mat-radio-button>
+                  <div class="genderIcon_Name">
+                  <span class="material-icons">
+                    transgender
+                    </span>
+                    <div class="textP"> All</div>
+                    </div>
+                  <mat-radio-button [disableRipple]="true" class="btn_" value="all"></mat-radio-button>
                 </div>
                 <div class="margin">
-                  <p class="fas fa-mars">Males</p>
-                  <mat-radio-button class="btn_" value="male"></mat-radio-button>
+                  <div class="genderIcon_Name">
+                  <span class="material-icons">
+                    male
+                    </span>
+                    <div class="textP"> Male</div>
+                  </div>
+                  <mat-radio-button [disableRipple]="true" class="btn_" value="male"></mat-radio-button>
                 </div>
 
               </mat-radio-group>
@@ -222,35 +237,53 @@
 
 
 <div class="column">
-              <div class="row">
-                <div class="fas fa-video icon"> </div>
+              <div class="margin">
+                <div class="genderIcon_Name">
+                <span class="material-icons display">
+                  videocam
+                  <mat-checkbox [disableRipple]="true"  formControlName="virtual"></mat-checkbox>
+                  </span>
                 <div class="textP"> Virtual event</div>
-                <mat-checkbox [disableRipple]="true" class="btn" formControlName="virtual"></mat-checkbox>
+                </div>
+
               </div>
           
-              <div class="row">
-                <div class="fas fa-car icon"> </div>
-                <div class="textP"> Able to drive members</div>
-                <mat-checkbox [disableRipple]="true" class="btn" formControlName="driver"></mat-checkbox>
+              <div class="margin">
+                <div class="genderIcon_Name">
+                <span class="material-icons display">
+                  directions_car
+                  <mat-checkbox [disableRipple]="true"  formControlName="driver"></mat-checkbox>
+                  </span>
+                  
+                <div class="textP"> Transportation available</div>
+              </div>
+                
+              </div>
+            
+
+
+        
+
+              <div class="margin">
+                <div class="genderIcon_Name">
+                <span class="material-icons display">
+                  attach_money
+                  <mat-checkbox [disableRipple]="true"  formControlName="paymentService"></mat-checkbox>
+                  </span>    
+                                
+                <div class="textP">Payment service</div>
+              </div>
+                
               </div>
             </div>
-
-
-              <button type="button" mat-button (click)="openOtherServices()">
-                <mat-icon>info</mat-icon>
-              </button>
-
-              <div class="row">
-                <div class="fas fa-dollar-sign icon"></div>
-                <div class="textP">Service involving payment </div>
-
-                <mat-checkbox [disableRipple]="true" class="btn" formControlName="paymentService"></mat-checkbox>
-              </div>
 
             </div>
             <div>
               <button type="button" mat-button matStepperPrevious>Back</button>
               <button type="button" mat-button matStepperNext>Next</button>
+              <button type="button" mat-button (click)="openOtherServices()">
+                <mat-icon>info</mat-icon>
+              </button>
             </div>
           </form>
         </mat-step>
@@ -263,20 +296,28 @@
               
 
               <div class="column">
-                <p class="fas fa-user-tie textP">Formal event</p>
-                <mat-radio-button value="formal" required>
+                <div class="btn_">
+                <span class="material-icons">
+                  work
+                  </span>
+                <div class="textP">Formal event</div>
+              </div>
+                <mat-radio-button [disableRipple]="true" value="formal" required>
 
                 </mat-radio-button>
               </div>
 
-              <button type="button" mat-button (click)="openDialog()">
-                <mat-icon>info</mat-icon>
-              </button>
+            
 
 
               <div class="column">
-                <p class="fas fa-glass-cheers textP">Relaxed event</p>
-                <mat-radio-button value="relaxed" required>
+                <div class="btn_">
+                <span class="material-icons">
+                  nightlife
+                  </span>
+                  <div class="textP">Relaxed event</div>
+                </div>
+                <mat-radio-button [disableRipple]="true" value="relaxed" required>
 
                 </mat-radio-button>
               </div>
@@ -284,6 +325,9 @@
             <div>
               <button mat-button matStepperPrevious>Back</button>
               <button mat-button matStepperNext>Next</button>
+              <button type="button" mat-button (click)="openDialog()">
+                <mat-icon>info</mat-icon>
+              </button>
             </div>
           </form>
         </mat-step>
