@@ -51,13 +51,13 @@
                 *ngIf=" (profile | async)?.Major || (profile | async)?.Minor ">
                 <div class=" center1" *ngIf="(profile | async)?.Major">
                     <!-- {{id.Major}} -->
-                    <i class="fas fa-star large">
+                    <i class="material-icons large">star
                         {{ (profile | async)?.Major}}</i>
 
                 </div>
                 <div class="center1" *ngIf="(profile | async)?.Minor">
                     <!-- {{id.Minor}} -->
-                    <i class="far fa-star large">
+                    <i class="material-icons large">star_outline
                         {{ (profile | async)?.Minor}}</i>
 
                 </div>

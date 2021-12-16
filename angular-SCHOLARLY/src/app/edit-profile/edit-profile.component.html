@@ -26,7 +26,7 @@
                   <div class="centerD">
                     <div class="text">Change Profile Picture</div>
                     <button mat-icon-button (click)="clearProfilePic()" *ngIf="cropImgPreview">
-                      <div class=" far fa-trash-alt"></div>
+                      <div class="material-icons">delete_forever</div>
                     </button>
                   </div>
 
@@ -59,7 +59,7 @@
 
             <div class="personalizeLarge" [ngClass]="profilePic.value ? 'show_' : 'hide' ">
               <div class="rowP">
-                <i class="fas fa-portrait _icon2"></i>
+                <i class="material-icons _icon2">portrait</i>
               </div>
             </div>
 
@@ -80,7 +80,7 @@
 
 
           <div class="input">
-            <i class="far fa-address-card _icon"></i>
+            <i class="material-icons _icon">badge</i>
 
             <mat-form-field>
               <input matInput placeholder="Full Name" [formControl]="name" class="inputText" />
@@ -168,7 +168,7 @@
 
           <div class="input">
             <div class="column_">
-              <i class="fas fa-birthday-cake icon"></i>
+              <i class="material-icons icon">cake</i>
               <!-- <div class="asthetic-adds">Birthday</div> -->
             </div>
             <!-- Birthday picker -->
@@ -255,10 +255,10 @@
 
 
                 <!-- button scrolls through posts and then user can delete what they wish -->
-                <button mat-icon-button (click)=previousGroupCard()><i class="fas fa-arrow-circle-left title1"></i>
+                <button mat-icon-button (click)=previousGroupCard()><i class="material-icons title1">arrow_circle_left</i>
                 </button>
                 <div class="column1">Groups </div>
-                <button mat-icon-button (click)=nextGroupCard()> <i class="fas fa-arrow-circle-right title1"></i>
+                <button mat-icon-button (click)=nextGroupCard()> <i class="material-icons title1">arrow_circle_right</i>
                 </button>
               </div>
 
@@ -299,7 +299,7 @@
         <!-- Recent Posts box-->
         <div class="groupsj_box">
           <div class="column1" [ngClass]="pList.length == 0 ? 'show' : 'hide' ">
-            <div class="row"> No Posts Made</div><i class="far fa-frown centerR"></i>
+            <div class="row"> No Posts Made</div><i class="material-icons centerR">sentiment_very_dissatisfied</i>
           </div>
           <div class="groups-j" [ngClass]="pList.length == 0 ? 'hide' : 'show' ">
 
@@ -310,11 +310,11 @@
                 <div class="row">
                   <!-- <div class="counter" [ngClass]="pList.length == 0 ? 'hide' : 'show' " matBadgePosition="above"
                     matBadge="{{ p + 1 }}"></div> -->
-                  <button mat-icon-button (click)=previousPostCard()><i class="fas fa-arrow-circle-left title1"></i>
+                  <button mat-icon-button (click)=previousPostCard()><i class="material-icons title1">arrow_circle_left</i>
                   </button>
                   <div class="column1">Posts</div>
                   <!-- button scrolls through posts and then user can delete what they wish -->
-                  <button mat-icon-button (click)=nextPostCard()><i class="fas fa-arrow-circle-right title1"></i>
+                  <button mat-icon-button (click)=nextPostCard()><i class="material-icons title1">arrow_circle_right</i>
                   </button>
                 </div>
 
@@ -351,7 +351,7 @@
               <div class="snapshot">Add Showcase</div>
               <button mat-icon-button class="trash" [ngClass]="showCase.value ? 'show' : 'hide' " color="primary"
                 (click)="clearPic1()">
-                <div class=" far fa-trash-alt"></div>
+                <div class="material-icons">delete_forever</div>
               </button>
             </div>
 
@@ -379,7 +379,7 @@
             <div class="snapshot"> Remove Showcase</div>
             <div class="rowE">
               <button class="rowE_" mat-fab (click)="deleteShowCase()" (click)="hideAdd()">
-                <i class="fas fa-minus Photo"></i>
+                <i class="material-icons Photo">remove</i>
               </button>
             </div>
           </div>
@@ -393,14 +393,14 @@
 
 
                 <!-- button scrolls through posts and then user can delete what they wish -->
-                <button mat-icon-button (click)=previousCard()><i class="fas fa-arrow-circle-left title1"></i>
+                <button mat-icon-button (click)=previousCard()><i class="material-icons title1">arrow_circle_left</i>
                 </button>
 
 
 
                 <div class="column1">Snap Shots</div>
 
-                <button mat-icon-button (click)=nextCard()> <i class="fas fa-arrow-circle-right title1"></i>
+                <button mat-icon-button (click)=nextCard()> <i class="material-icons title1">arrow_circle_right</i>
                 </button>
 
               </div>
@@ -413,7 +413,7 @@
 
                 <div class="style" [ngClass]="list.length == 0 ? 'hide' : 'show' ">
                   <button mat-icon-button (click)=deleteSnapShot() class="trash">
-                    <div class=" far fa-trash-alt"></div>
+                    <div class="material-icons">delete_forever</div>
                   </button>
                 </div>
 
@@ -443,7 +443,7 @@
           <!-- Completed Course -->
           <div class="courses">
             <div class="input">
-              <i class="fas fa-check _icon"></i>
+              <i class="material-icons _icon">check</i>
               <mat-form-field class="example-chip-list">
                 <mat-label>Completed Courses</mat-label>
                 <mat-chip-list #chipList aria-label="Class Code">
@@ -469,7 +469,7 @@
           <!-- Pursuing Courses -->
           <div class="courses">
             <div class="input">
-              <i class="fas fa-tasks _icon"></i>
+              <i class="material-icons _icon">checklist</i>
 
               <mat-form-field class="example-chip-list">
                 <mat-label>Pursuing Courses</mat-label>

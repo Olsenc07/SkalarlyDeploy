@@ -153,7 +153,7 @@
                     <div class="centerD">
                       <div class="textU"> Upload Profile Picture</div>
                       <button mat-icon-button *ngIf="profilePic.value " (click)="clearProfilePic()" >
-                        <div class=" far fa-trash-alt"></div>
+                        <div class="material-icons">delete_forever</div>
                       </button>
                     </div>
 
@@ -210,7 +210,7 @@
 
           <div class="personalize">
             <div class="input">
-              <i class="far fa-address-card _icon"></i>
+              <i class="material-icons _icon">badge</i>
               <mat-form-field>
                 <input matInput placeholder="Full Name" [formControl]="name" />
                 <mat-error *ngIf="name.invalid">Please enter your name</mat-error>
@@ -231,7 +231,7 @@
             <div class="input">
               <!-- Birthday picker -->
               <div class="column">
-                <i class="fas fa-birthday-cake icon"></i>
+                <i class="material-icons icon">cake</i>
                 <!-- <p class="asthetic-adds ">Birthday</p> -->
               </div>
               <mat-form-field appearance="fill">
@@ -317,7 +317,7 @@
                 <div class="textU"> Upload Photo</div>
                 <button mat-icon-button class="trash" [ngClass]="showCase.value ? 'show_' : 'hide' " color="primary"
                   (click)="clearPic()">
-                  <div class=" far fa-trash-alt"></div>
+                  <div class="material-icons">delete_forever</div>
                 </button>
 
               </div>
@@ -466,7 +466,7 @@
         <div class="row">
           <div class="courses">
             <div class="input">
-              <i class="fas fa-check _icon"></i>
+              <i class="material-icons _icon">check</i>
               <mat-form-field class="example-chip-list">
                 <mat-label>Completed Courses</mat-label>
                 <mat-chip-list #chipList aria-label="Class Code">
@@ -494,7 +494,7 @@
           <!-- Pursuing Courses -->
           <div class="courses">
             <div class="input">
-              <i class="fas fa-tasks _icon"></i>
+              <i class="material-icons _icon">checklist</i>
 
               <mat-form-field class="example-chip-list">
                 <mat-label>Pursuing Courses</mat-label>
@@ -524,7 +524,7 @@
 
         <div class="createBtn">
           <button mat-raised-button class="cBtnB" (click)="changeTab3()">Back</button>
-          <i class="fas fa-user-graduate cBtnI"></i>
+          <i class="material-icons cBtnI">school</i>
           <button mat-raised-button class="cBtn" routerLink="/search" type="button" (click)="onSubmit()">Create</button>
         </div>
       </mat-tab>

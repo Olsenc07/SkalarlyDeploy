@@ -94,24 +94,27 @@
     
     
                                     <div class="booleans">
-                                        <div class="fas fa-venus b"
+                                        <div class="fmaterial-icons b"
                                             *ngIf="(post | async)?.SecondFormGroup.gender == 'female'">
+                                            female
                                         </div>
-                                        <div class="fas fa-transgender-alt b"
+                                        <div class="material-icons b"
                                             *ngIf="(post | async)?.SecondFormGroup.gender == 'all'">
+                                            transgender
                                         </div>
-                                        <div class="fas fa-mars b" *ngIf="(post | async)?.SecondFormGroup.gender == 'male'">
+                                        <div class="material-icons b" *ngIf="(post | async)?.SecondFormGroup.gender == 'male'">
+                                            male
                                         </div>
     
-                                        <div class="fas fa-video b" *ngIf="(post | async)?.ThirdFormGroup.video"></div>
-                                        <div class="fas fa-car b" *ngIf="(post | async)?.ThirdFormGroup.driver"></div>
-                                        <div class="fas fa-dollar-sign b"
-                                            *ngIf=" (post | async)?.ThirdFormGroup.paymentService"></div>
+                                        <div class="material-icons b" *ngIf="(post | async)?.ThirdFormGroup.video">videocame</div>
+                                        <div class="material-icons b" *ngIf="(post | async)?.ThirdFormGroup.driver">directions_car</div>
+                                        <div class="material-icons b"
+                                            *ngIf=" (post | async)?.ThirdFormGroup.paymentService">attach_money</div>
     
-                                        <div class="fas fa-user-tie b"
-                                            *ngIf="(post | async)?.FourthFormGroup.event == 'formal'"></div>
-                                        <div class="fas fa-glass-cheers b"
-                                            *ngIf="(post | async)?.FourthFormGroup.event == 'relaxed'">
+                                        <div class="material-icons b"
+                                            *ngIf="(post | async)?.FourthFormGroup.event == 'formal'">work</div>
+                                        <div class="material-icons b"
+                                            *ngIf="(post | async)?.FourthFormGroup.event == 'relaxed'">nightife
                                         </div>
     
                                     </div>

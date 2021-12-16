@@ -6,12 +6,12 @@
     <div class="title">
 <div class="style">Messages</div>
 <button mat-icon-button>
-    <i class="far fa-edit new_message_icon"></i>
+    <i class="material-icons new_message_icon">edit_note</i>
 </button>
 </div>
 <mat-divider></mat-divider>
 <div class="search-box">
-    <i class="fas fa-search search-box__icon "></i>
+    <i class="material-icons search-box__icon ">search</i>
     <input matInput type="search" class="search-box__input" placeholder="Filter messages"
       [formControl]="search" />
     <cdk-virtual-scroll-viewport itemSize="10">
@@ -59,14 +59,14 @@
 <div class="assistance">
 <div class="upload_options">
     <button mat-icon-button (click)="uploadFile()">
-        <i class="fas fa-paperclip">
+        <i class="material-icons">attach_file
 <input #fileInput id="fileInput" type="file" [formControl]="fileUploadM" class="uploadFile">
         </i>
     </button>
    
         
     <button mat-icon-button (click)="uploadPic()">
-        <i class="fas fa-camera">
+        <i class="material-icons">photo_camera
           <input #picInput id="picInput" type="file" [formControl]="photoUploadM" class="uploadFile" accept="image/* video/*">
         </i>
         </button>
@@ -76,7 +76,7 @@
     </button>
         
     <button mat-icon-button>
-        <i class="fas fa-grin-alt"></i>
+        <i class="material-icons">mood</i>
     </button>
 </div>
 

@@ -32,11 +32,11 @@
             <!-- Mutual friends appear based of username following list comparison -->
 <div class="classes">
             <div class="center_">
-                <button mat-icon-button class="center__"><i class="far fa-handshake"></i></button>
+                <button mat-icon-button class="center__"><i class="material-icons">handshake</i></button>
             </div>
 
             <div>
-                <button mat-icon-button class="remove_friend">  <i class="fas fa-user-minus"></i></button>
+                <button mat-icon-button class="remove_friend">  <i class="material-icons">person_remove</i></button>
             </div>
             
 </div>
@@ -55,12 +55,12 @@
                 *ngIf=" (profile | async)?.Major || (profile | async)?.Minor ">
                 <div class=" center1" *ngIf="(profile | async)?.Major">
 
-                    <i class="fas fa-star large">{{ (profile | async)?.Major}}</i>
+                    <i class="material-icons large">star{{ (profile | async)?.Major}}</i>
 
                 </div>
                 <div class="center1" *ngIf="(profile | async)?.Minor">
 
-                    <i class="far fa-star large">
+                    <i class="material-icons large">star_outline
                         {{ (profile | async)?.Minor}}
                     </i>
 

@@ -2,92 +2,92 @@
 <div class="feed">
   <mat-card class="specifics-fill">
     <!-- Profile Pic -->
-    <!-- <div class="column"> -->
-      <!-- <div class="row"> -->
-        <!-- <div class="column"> -->
-          <!-- <div class="centerT" *ngIf="(posts | async)?.Title"> -->
+    <div class="column">
+      <div class="row">
+        <div class="column">
+          <div class="centerT" *ngIf="(posts | async)?.Title">
 
             <mat-card-title class="postTitle textSize"  *ngFor="let post of posts">
               {{ post.Title}}
 
             </mat-card-title>
-          <!-- </div> -->
-          <!-- <div class="row2"> -->
+          </div>
+          <div class="row2">
             <div class="column">
               <!-- *ngIf="posts.length > 0" -->
-              <!-- <div class="row-" *ngIf="(profile | async)?.profPic"> -->
-                <!-- <div class="profilePic"> -->
+              <div class="row-" *ngIf="(profile | async)?.profPic">
+                <div class="profilePic">
                   <!-- need to get croppeded value -->
-                  <!-- <img class="pic" src="{{(profile | async)?.profPic}}"> -->
-                  <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
-                <!-- </div> -->
+                  <img class="pic" src="{{(profile | async)?.profPic}}">
+                  <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" />
+                </div>
 
                 <div class="column1">
-                  <!-- <div class="linkN">
+                  <div class="linkN">
                     {{ (profile | async)?.Name}}
-                  </div> -->
+                  </div>
 
 
 
-                  <!-- <div class="nameTitle">
-                    !-- Button directs to that users profile --
+                  <div class="nameTitle">
+                    <!-- Button directs to that users profile -->
                     <button mat-button>
                       <div class="userName  link">
-                        <-- Olsen07 --
+                        <!-- Olsen07 -->
                         {{( id | async)?.UserName}}
                       </div>
                     </button>
-                  </div> -->
+                  </div>
                 </div>
 
 
-              <!-- </div> -->
+              </div>
 
 
-              <!-- <div class="row-" *ngIf="!(profile | async)?.profPic">
+           <div class="row-" *ngIf="!(profile | async)?.profPic">
 
 
                 <div class="profilePic">
                   <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
-                </div> -->
+                </div> 
 
 
-                <!-- <div class="column1">
+                 <div class="column1">
                   <div class="linkN">
                     {{ (profile | async)?.Name}}
                   </div>
 
                   <div class="nameTitle">
-                    !-- Button directs to that users profile --
+                    <!-- Button directs to that users profile -->
                     <button mat-button>
                       <div class="userName  link">
-                        !-- Olsen07 --
+                        <!-- Olsen07 -->
                         {{( id | async)?.UserName}}
                       </div>
                     </button>
                   </div>
-                </div> -->
+                </div> 
 
 
-              <!-- </div> -->
+              </div>
 
             </div>
 
 
 
-            <!-- <div class="row1"> -->
-            <!-- <div class="column_"> -->
+            <div class="row1">
+            <div class="column_">
 
 
               <!-- Idk If needed -->
 
-              <!-- <div class="postLocation textSize t">
-                  !-- Location --
-                  {{ (post | async)?.PostLocation}}
-                </div> -->
+               <div class="postLocation textSize t">
+                  <!-- Location -->
+                  {{ (posts | async)?.PostLocation}}
+                </div> 
 
-              <!-- <div class="textSize row1 t" *ngIf="(posts | async )?.FirstFormGroup.locationEvent  ">
-                !-- {{Specific}}Specific Page --
+         <div class="textSize row1 t" *ngIf="(posts | async )?.FirstFormGroup.locationEvent  ">
+                <!-- {{Specific}}Specific Page -->
                 {{ (posts | async)?.FirstFormGroup.locationEvent}}
               </div>
               <div class="row1" *ngIf=" (posts | async)?.FirstFormGroup.date
@@ -105,21 +105,21 @@
 
 
 
-              <-- Import the boolean icons with no color originally then the what did user say.. if null then display="none" --
+              <!-- Import the boolean icons with no color originally then the what did user say.. if null then display="none" -->
               <div class="row" *ngIf="(posts | async)?.SecondFormGroup.gender">
                 <div class="booleans">
 
-                  <div class="fas fa-venus b" *ngIf="(posts | async)?.SecondFormGroup.gender == 'female'"></div>
-                  <div class="fas fa-transgender-alt b" *ngIf="(posts | async)?.SecondFormGroup.gender == 'all'">
+                  <div class="material-icons b" *ngIf="(posts | async)?.SecondFormGroup.gender == 'female'">female</div>
+                  <div class="material-icons b" *ngIf="(posts | async)?.SecondFormGroup.gender == 'all'">transgender
                   </div>
-                  <div class="fas fa-mars b" *ngIf="(posts | async)?.SecondFormGroup.gender == 'male'"></div>
+                  <div class="material-icons b" *ngIf="(posts | async)?.SecondFormGroup.gender == 'male'">male</div>
 
-                  <div class="fas fa-car b" *ngIf="(posts | async)?.ThirdFormGroup.driver"></div>
-                  <div class="fas fa-dollar-sign b" *ngIf=" (posts | async)?.ThirdFormGroup.paymentService"></div>
-                  <div class="fas fa-video b" *ngIf=" (posts | async)?.ThirdFormGroup.virtual"></div>
+                  <div class="material-icons b" *ngIf="(posts | async)?.ThirdFormGroup.driver">directions_car</div>
+                  <div class="material-icons b" *ngIf=" (posts | async)?.ThirdFormGroup.paymentService">attach_money</div>
+                  <div class="material-icons b" *ngIf=" (posts | async)?.ThirdFormGroup.virtual">videocam</div>
 
-                  <div class="fas fa-user-tie b" *ngIf="(posts | async)?.FourthFormGroup.event == 'formal'"></div>
-                  <div class="fas fa-glass-cheers b" *ngIf="(posts | async)?.FourthFormGroup.event == 'relaxed'">
+                  <div class="material-icons b" *ngIf="(posts | async)?.FourthFormGroup.event == 'formal'">work</div>
+                  <div class="material-icons b" *ngIf="(posts | async)?.FourthFormGroup.event == 'relaxed'">nightlife
                   </div>
 
                 </div>
@@ -130,7 +130,7 @@
 
 
 
-            <-- </div> --
+       </div> 
           </div>
 
 
@@ -140,12 +140,12 @@
     </div>
 
 
-    <!- Takes upload img/video from post page {{Upload}} --
-    <!- *ngFor="let show of showCases" -->
-    <!-- <div class="upload" *ngIf="(posts|async)?.Upload  ">
+    <!---- Takes upload img/video from post page {{Upload}} -->
+    <!-- *ngFor="let show of showCases" -->
+    <div class="upload" *ngIf="(posts|async)?.Upload  ">
 
       <img class="middle-card" src="{ { (posts|async)?.Upload  } }">
-    </div> -->
+    </div> 
 
  
 
@@ -166,16 +166,17 @@
       <!-- Star button that takes you to that group chat. Attending, Maybe, Can't Attend with list from bottom which shows pp and username -->
       <div class="rowM">
         <div class="center1">
-          <!-- <div class="center">  -->
+          <div class="center"> 
           <button mat-icon-button (click)="openTaggedSheet()">
-            <div class="fas fa-user-tag p"></div>
+            <div class="material-icons p">loyalty</div>
           </button>
-          <!-- </div> -->
-          <!-- <div class="center">  -->
+          </div>
+          <div class="center"> 
           <button mat-icon-button>
-            <div class="far fa-comments center p" routerLink="/groups"></div>
+            
+            <div class="material-icons center p" routerLink="/groups">chat_bubble</div>
           </button>
-          <!-- </div> -->
+          </div>
         </div>
 
 
