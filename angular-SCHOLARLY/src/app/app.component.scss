@@ -74,11 +74,13 @@ h4:focus {
   height: 100%;
   width: 100%;
   align-items: center;
+  box-shadow: 0px 2px 3px;
 }
 .b_up {
   display: flex;
   justify-content: center;
   margin: 0% 2%;
+  box-shadow: 0px -2px 3px;
 }
 
 .look-nice {
@@ -100,9 +102,11 @@ h4:focus {
     justify-content: center;
     align-items: center;
     margin-right: 5%;
-    border: ridge;
-    border-color: azure;
+    // border: ridge;
+    // border-color: azure;
     background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 7px 3px;
   }
   .search-box__icon {
     display: flex;
@@ -206,7 +210,7 @@ h4:focus {
 .PublicOnM {
   display: flex;
   justify-content: center;
-  color: cornflowerblue;
+  color: #b8dde9;
   font-size: 6vmax;
 }
 
@@ -219,7 +223,7 @@ h4:focus {
 .PostOnM {
   display: flex;
   justify-content: center;
-  color: cornflowerblue;
+  color: #b8dde9;
   font-size: 6vmax;
 }
 ::ng-deep .mat-menu-content {
@@ -235,7 +239,7 @@ h4:focus {
 .MessageOnM {
   font-size: 6vmax;
   display: flex;
-  color: cornflowerblue;
+  color: #b8dde9;
   justify-content: center;
 }
 .groupsM {
@@ -247,7 +251,7 @@ h4:focus {
 .GroupsOnM {
   font-size: 6vmax;
   display: flex;
-  color: cornflowerblue;
+  color: #b8dde9;
   justify-content: center;
 }
 .profileM {
@@ -259,7 +263,7 @@ h4:focus {
 .ProfileOnM {
   display: flex;
   font-size: 6vmax;
-  color: cornflowerblue;
+  color: #b8dde9;
   justify-content: center;
 }
 .postM {
@@ -289,7 +293,7 @@ h4:focus {
 .PublicOn {
   display: flex;
   justify-content: center;
-  color: cornflowerblue;
+  color: #b8dde9;
   font-size: 4vmax;
 }
 .groups {
@@ -301,7 +305,7 @@ h4:focus {
 .GroupsOn {
   font-size: 4vmax;
   display: flex;
-  color: cornflowerblue;
+  color: #b8dde9;
   justify-content: center;
 }
 .profile {
@@ -313,7 +317,7 @@ h4:focus {
 .ProfileOn {
   display: flex;
   font-size: 4vmax;
-  color: cornflowerblue;
+  color: #b8dde9;
   justify-content: center;
 }
 .post {
@@ -325,7 +329,7 @@ h4:focus {
 .PostOn {
   display: flex;
   font-size: 4vw;
-  color: cornflowerblue;
+  color: #b8dde9;
   justify-content: center;
 }
 .message {
@@ -337,7 +341,7 @@ h4:focus {
 .MessageOn {
   display: flex;
   font-size: 4vw;
-  color: cornflowerblue;
+  color: #b8dde9;
   justify-content: center;
 }
 

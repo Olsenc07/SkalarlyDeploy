@@ -56,7 +56,9 @@
           <!-- New -->
           <div class="search-box">
 <button mat-icon-button type="button" (click)="search_user()">
-            <i class="fas fa-search search-box__icon "></i>
+            <span class="material-icons search-box__icon">
+              search
+              </span>
           </button>
             <input matInput type="search" class="search-box__input" placeholder="Search Fellow Scholars"
               [formControl]="search" />
@@ -69,35 +71,37 @@
           <!-- End -->
           <div class="icon-top">
             <div class="icon-btn-fit">
-              <button [disableRipple]="true" mat-icon-button type="button" routerLink="/search" class="a_up">
+              <button  mat-icon-button type="button" routerLink="/search" class="a_up">
                 <mat-icon [ngClass]="(isSearchScreen$ | async ) === true
                ? 'PublicOn' : 'public' ">public</mat-icon>
               </button>
             </div>
 
             <div class="icon-btn-fit">
-              <button [disableRipple]="true" mat-icon-button type="button" routerLink="/friends-activity" class="a_up">
+              <button  mat-icon-button type="button" routerLink="/friends-activity" class="a_up">
                 <mat-icon [ngClass]="(isFriendsActScreen$ | async ) === true
             ? 'GroupsOn' : 'groups' ">groups</mat-icon>
               </button>
             </div>
             <div class="icon-btn-fit">
-              <button [disableRipple]="true" mat-icon-button type="button" routerLink="/post-page" class="a_up">
+              <button  mat-icon-button type="button" routerLink="/post-page" class="a_up">
                 <mat-icon [ngClass]="(isPostScreen$ | async ) === true
                 ? 'PostOn' : 'post' ">add_circle</mat-icon>
               </button>
             </div>
 
             <div class="icon-btn-fit">
-              <button [disableRipple]="true" mat-icon-button type="button" routerLink="/messages" class="a_up">
-                <i [ngClass]="(isMessagesScreen$ | async ) === true
+              <button  mat-icon-button type="button" routerLink="/messages" class="a_up">
+                <span [ngClass]="(isMessagesScreen$ | async ) === true
                 ? 'MessageOn' : 'message' 
-                " class="far fa-comment-dots"></i>
+                "  class="material-icons">
+                  question_answer
+                  </span>
               </button>
             </div>
 
             <div class="icon-btn-fit">
-              <button [disableRipple]="true" mat-icon-button type="button" routerLink="/profile" class="a_up">
+              <button  mat-icon-button type="button" routerLink="/profile" class="a_up">
                 <mat-icon [ngClass]="(isProfileScreen$ | async ) === true
             ? 'ProfileOn' : 'profile'">account_circle</mat-icon>
               </button>
