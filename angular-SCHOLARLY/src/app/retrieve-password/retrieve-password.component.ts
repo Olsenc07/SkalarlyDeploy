@@ -20,10 +20,10 @@ export class RetrievePasswordComponent implements OnInit {
   retrievalForm = new FormGroup({
     emailRetrieval: this.emailRetrieval
   });
-  constructor(private _snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar) { }
 
-  openSnackBar() {
-    this._snackBar.open('Check your email and follow steps to reset your password', 'Got It!!');
+  openSnackBar(): void {
+    this.snackBar.open('Check your email and follow steps to reset your password', 'Got It!!');
   }
   ngOnInit(): void { }
 

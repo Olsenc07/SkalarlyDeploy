@@ -48,7 +48,7 @@
             {{ (profile | async )?.Birthday|date:"longDate" }}
           </div>
 
-          <!-- <div *ngIf="date equals bd input"> <i class="fas fa-birthday-cake icon"></i>
+          <!-- <div *ngIf="date equals bd input"> <i class="material-icons icon">cake</i>
           Happy Birthday
           </div> -->
 
@@ -256,7 +256,7 @@
         <mat-tab-group mat-align-tabs="center">
           <mat-tab label="Activity">
             <div class="column1" *ngIf="posts.length == 0">
-              <div class="row"> No Posts Made</div><i class="far fa-frown centerR"></i>
+              <div class="row"> No Posts Made</div><i class="material-icons centerR">sentiment_dissatisfied</i>
             </div>
             <div class="posts" *ngIf="posts.length !== 0">
               <app-card class="postCard" *ngFor="let post of posts">
@@ -266,7 +266,7 @@
           </mat-tab>
           <mat-tab label="Showcase">
             <div class="column1" *ngIf="!(profile|async)?.ShowCase">
-              <div class="row"> No Showcases Added</div> <i class="fas fa-eye-slash centerR"></i>
+              <div class="row"> No Showcases Added</div> <i class="material-icons centerR">visibility_off</i>
             </div>
 
             <div class="showCase" *ngIf="(profile|async)?.ShowCase">
