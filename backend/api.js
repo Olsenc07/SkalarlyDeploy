@@ -1,6 +1,5 @@
 const router = require('express').Router();
 
-
 // One function
 router.get('/someData', (req, res, next) => {
     //call database here and get data
@@ -24,4 +23,4 @@ router.get('/someData', (req, res, next) => {
 
 
 
-module.exports = router
+module.exports = router;

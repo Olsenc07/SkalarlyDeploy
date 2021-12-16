@@ -61,13 +61,13 @@ PostDescription: 'Hey everyone come make an account. You will love it!! ',
 
 // Express
 // Importing using node-js
-const http = require('http')
+const http = require('http');
 // Change port to azure or Heroku...
 
-const router = require('./backend/api')
+const routes = require('./backend/api')
 
 app.use(express.static(path.join(__dirname, '/angular-SCHOLARLY/static')))
-app.use('/api', router)
+app.use('/api', routes)
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/angular-SCHOLARLY/static/index.html'))
