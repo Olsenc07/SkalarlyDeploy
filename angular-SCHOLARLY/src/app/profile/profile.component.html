@@ -256,7 +256,7 @@
         <mat-tab-group mat-align-tabs="center">
           <mat-tab label="Activity">
             <div class="column1" *ngIf="posts.length == 0">
-              <div class="row"> No Posts Made</div><span class="material-icons centerR">sentiment_dissatisfied</span>
+              <div class="row"> No Posts Made</div><span class="far fa-frown  centerR"></span>
             </div>
             <div class="posts" *ngIf="posts.length !== 0">
               <app-card class="postCard" *ngFor="let post of posts">
@@ -266,7 +266,7 @@
           </mat-tab>
           <mat-tab label="Showcase">
             <div class="column1" *ngIf="!(profile|async)?.ShowCase">
-              <div class="row"> No Showcases Added</div> <span class="material-icons centerR">visibility_off</span>
+              <div class="row"> No Showcases Added</div> <span class="fas fa-eye-slash  centerR"></span>
             </div>
 
             <div class="showCase" *ngIf="(profile|async)?.ShowCase">
