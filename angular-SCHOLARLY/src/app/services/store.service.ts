@@ -34,11 +34,11 @@ export interface NewUserId {
 
 export interface Cards {
   UserName: string;
-  Major: String;
-  Minor: String;
-  Sport: String;
-  Club: String;
-  profPic: String;
+  Major: string;
+  Minor: string;
+  Sport: string;
+  Club: string;
+  profPic: string;
 }
 
 

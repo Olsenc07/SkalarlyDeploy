@@ -70,7 +70,7 @@ export class SearchComponent implements OnInit {
     public postService: PostService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.searchOptions = this.searchListService.getSearchOptions();
     this.postService.getPosts();
     this.postsSub = this.postService.getPostUpdateListener()

@@ -31,9 +31,10 @@ static post$$: ReplaySubject<Post> = new ReplaySubject<Post>(1);
 
 private posts: Post[] = [];
 private postsUpdated = new Subject<Post[]>();
+constructor(private http: HttpClient) {}
 
     getPosts(): void{
-    this.http.get<{message: string, posts: Post[]}>('https://localhost:3000/api/posts')
+    this.http.get<{message: string, posts: Post[]}>('http://localhost:3000/api/posts')
         .subscribe((postData) => {
             this.posts = postData.posts;
             this.postsUpdated.next([...this.posts]);
@@ -53,9 +54,6 @@ private postsUpdated = new Subject<Post[]>();
         });
     }
 
-
-    constructor(private http: HttpClient) {
-    }
 
     // setPost(post: Post): void {
     //     PostService.post$$.next(post);

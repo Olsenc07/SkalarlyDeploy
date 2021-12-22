@@ -19,7 +19,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
 
     // post = PostService.post$$;
     profile = StoreService.profile$$;
-    id = StoreService.userId$$;
+    ids = StoreService.userId$$;
 
 
     // gender$ = PostService.gender$;

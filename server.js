@@ -27,11 +27,10 @@ app.use((req, res, next) => {
  * Routes Definitions
  */
  app.get("/", (req, res) => {
-    res.status(200).send("Hello World");
- })
-
+   res.status(200).send("Hello World");
+})
 // Post path
-app.get('/api/posts', (req, res, next) => {
+ app.get('/api/posts', (req, res, next) => {
    // Dummy posts
    const posts = [
 { id: 'fsohchi1731', Title: 'I Love Scholarly',
@@ -44,10 +43,9 @@ PostDescription: 'Hey everyone come make an account. You will love it!! ',
 ];
  res.status(200).json({
      message: 'Posts fetched succesfully!',
-     posts: posts,
- })
-
-})
+     posts: posts
+ });
+});
 
 
 /**
