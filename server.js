@@ -34,6 +34,10 @@ app.use((req, res, next) => {
  app.get("/api/posts", (req, res, next) => {
    // Dummy posts
    const posts = [
+    { id:'jhvew87', Title: 'Virgin Post', LocationEvent: 'My bed babe', PostLocation: 'Dentistry',
+    PostDescription: 'You know whats going down!! I told you I was freaky!!', Gender: 'female', Time: '11:11 PM', Date: 'January 1, 2022',
+    PaymentService: 'True', Virtual: 'True', Event: 'relaxed'
+    },
 { id: 'fsohchi1731', Title: 'I Love Scholarly',
 PostDescription: 'Hey everyone come make an account. You will love it!! ',
  },
@@ -44,7 +48,21 @@ PostDescription: 'Hey everyone come make an account. You will love it!! ',
  {
     id:'jhvew87', Title: 'Join US', LocationEvent: 'Queens Park',
     PostDescription: 'Touch Football', Gender: 'female'
-}
+},
+{
+    id:'jhvew87', Title: 'Group Cuddle', LocationEvent: 'My House', PostLocation: 'Helping Hand',
+    PostDescription: 'Come be freaky', Gender: 'all', Time: '4:20 PM', Date: 'January 1, 2022',
+    PaymentService: 'True', 
+},
+{
+    id:'jhvew87', LocationEvent: 'Goldring', PostLocation: 'Varsity Sports',
+    PostDescription: 'Come be loud and cheer on the mens hockey team!!!', Gender: 'all', Time: '7:30 PM', Date: 'January 4, 2022',
+    PaymentService: 'True', Virtual: 'True', Event: 'relaxed'
+},
+{ id:'jhvew87', Title: 'Study Time', LocationEvent: 'Kelly Library', PostLocation: 'Tutoring',
+PostDescription: 'Group studying for MAT 334 if you wanna come bro down and crush some numericons.', Gender: 'male', Time: '5:15 PM', Date: 'January 10, 2022',
+PaymentService: 'True', Virtual: 'True', Event: 'formal', Driver: 'True',
+},
 ];
  res.status(200).json({
      message: 'Posts fetched succesfully!',

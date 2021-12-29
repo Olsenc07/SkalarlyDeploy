@@ -57,7 +57,7 @@
 }
 .d {
   font-family: "Font Awesome 5 Free";
-  color: #7e7171;
+  color: black;
 }
 .description {
   display: flex;
@@ -176,7 +176,7 @@
 .postLocation {
   display: flex;
   font-weight: 400;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: center;
 }
 .postTime {
@@ -205,6 +205,22 @@
   // flex-direction: column;
   // /* justify-content: center; */
   // align-items: center;
+}
+@media (min-width: 550px) {
+  .textSizeTit {
+    font-size: medium;
+    font-family: "Font Awesome 5 Free";
+    color: black;
+    font-weight: bold;
+  }
+}
+@media (max-width: 550px) {
+  .textSizeTit {
+    font-size: inherit;
+    font-family: "Font Awesome 5 Free";
+    color: black;
+    font-weight: bold;
+  }
 }
 @media (min-width: 550px) {
   .textSize {
