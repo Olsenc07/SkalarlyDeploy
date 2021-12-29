@@ -40,7 +40,11 @@ PostDescription: 'Hey everyone come make an account. You will love it!! ',
  {
      id:'vyf767trh', Title: 'Love and Live', 
      PostDescription: 'Wow I wanna share Scholaraly with everyone!'
- }
+ },
+ {
+    id:'jhvew87', Title: 'Join US', LocationEvent: 'Queens Park',
+    PostDescription: 'Touch Football', Gender: 'female'
+}
 ];
  res.status(200).json({
      message: 'Posts fetched succesfully!',

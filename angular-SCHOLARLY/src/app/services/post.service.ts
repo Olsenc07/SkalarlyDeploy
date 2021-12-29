@@ -14,7 +14,7 @@ export interface Post {
     Gender?: string;
     Driver?: boolean;
     PaymentService?: boolean;
-    Virtual?: boolean
+    Virtual?: boolean;
     Event?: string;
     Title?: string;
     SecondFormGroup?: string;

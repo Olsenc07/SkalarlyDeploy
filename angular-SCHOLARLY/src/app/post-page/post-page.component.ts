@@ -106,15 +106,7 @@ validateBtn = new FormGroup({
   thirdFormGroup: FormGroup;
   fourthFormGroup: FormGroup;
 
-  // postForm = new FormGroup({
-  //   Title: this.Title,
-  //   postDescription: this.postDescription,
-  //   upload: this.upload,
-  //   postLocation: this.postLocation,
-  //   friendCtrl: this.friendCtrl,
-  // });
-
-
+ 
 
   constructor(public dialog: MatDialog, public searchListService: SearchListService,
               private fb: FormBuilder, private postService: PostService) {
