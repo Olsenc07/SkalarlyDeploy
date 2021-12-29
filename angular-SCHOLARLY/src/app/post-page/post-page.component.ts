@@ -93,6 +93,8 @@ export class PostPageComponent implements OnInit {
   value: FormControl = new FormControl('');
   date: FormControl = new FormControl('');
 
+  // Temporary
+  id: FormControl = new FormControl('');
 
 validateBtn = new FormGroup({
   postLocation: this.postLocation,
@@ -240,16 +242,20 @@ validateBtn = new FormGroup({
 
 
     const post: Post = {
+      id: this.id.value,
       PostDescription: this.postDescription.value,
       Upload: this.upload.value,
       PostLocation: this.postLocation.value,
       FriendCtrl: this.friendCtrl.value,
-      FirstFormGroup: this.firstFormGroup.value,
-      // LocationEvent: this.locationEvent.value,
-
-      // Date: this.date.value,
-      // Time: this.time.value,
-
+      Title: this.firstFormGroup.controls.Title.value,
+      LocationEvent: this.firstFormGroup.controls.locationEvent.value,
+      Date: this.firstFormGroup.controls.date.value,
+      Time: this.firstFormGroup.controls.time.value,
+      Gender: this.secondFormGroup.controls.gender.value,
+      Driver: this.thirdFormGroup.controls.driver.value,
+      PaymentService: this.thirdFormGroup.controls.paymentService.value,
+      Virtual: this.thirdFormGroup.controls.Virtual.value,
+      Event: this.thirdFormGroup.controls.Event.value,
       SecondFormGroup: this.secondFormGroup.value,
       ThirdFormGroup: this.thirdFormGroup.value,
       FourthFormGroup: this.fourthFormGroup.value,
@@ -259,7 +265,8 @@ validateBtn = new FormGroup({
     // this.postService.setPost(post);
 
     // New one
-    this.postService.addPost(this.postDescription.value, this.postLocation.value);
+    this.postService.addPost(this.id.value, this.firstFormGroup.controls.Title.value,
+      this.postDescription.value, this.postLocation.value);
     form.resetForm();
   }
 

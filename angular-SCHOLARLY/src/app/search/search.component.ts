@@ -6,6 +6,7 @@ import { SearchListService } from '../services/search.service';
 import { Post, PostService } from '../services/post.service';
 import { Subscription } from 'rxjs';
 
+
 interface SearchOption {
   value: string;
   name: string;
@@ -32,7 +33,7 @@ export class SearchComponent implements OnInit {
   feeds = [{}, { }, {}, {}, {}, { }, {}, {}, {}, { }, {}, {},
 
   ];
-  // posts = [{}, { }, {}, {}, {}, { }, {}, {}, {}, { }, {}, {},  ];
+
 
 
 
@@ -67,7 +68,7 @@ export class SearchComponent implements OnInit {
     public dialog: MatDialog,
     public searchListService: SearchListService,
     private router: Router,
-    public postService: PostService
+    public postService: PostService,
   ) { }
 
   ngOnInit() {

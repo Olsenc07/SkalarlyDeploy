@@ -6,6 +6,7 @@
  * Required External Modules
  */
  const express = require('express');
+ const bodyParser = require('body-parser')
  const path = require('path');
 /**
  * App Variables
@@ -30,7 +31,7 @@ app.use((req, res, next) => {
    res.status(200).send("Hello World");
 })
 // Post path
- app.get('/api/posts', (req, res, next) => {
+ app.get("/api/posts", (req, res, next) => {
    // Dummy posts
    const posts = [
 { id: 'fsohchi1731', Title: 'I Love Scholarly',

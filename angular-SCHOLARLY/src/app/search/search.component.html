@@ -1,4 +1,4 @@
-<div class="entire-page">
+<div class="entire-page" >
   <!-- Entire page -->
   <div class="main-layout">
 
@@ -71,10 +71,31 @@
         </div>
       </div>
 
-      <div class="recents" *ngIf="posts.length !== 0">
-        <app-card class="hide" *ngFor="let post of posts">
-          {{post}}
-        </app-card>
+
+      <div class="recents" *ngIf="posts.length !== 0" [ngForOf]="posts">
+
+
+
+<app-card class="hide">
+
+</app-card>
+
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+       
 
       </div>
     </div>
@@ -156,7 +177,7 @@
         </div>
         <div class="recents" *ngIf="posts.length !== 0">
           <app-card class="display" *ngFor="let post of posts">
-            {{post}}
+           
           </app-card>
         </div>
         <!-- Then cards keep getting filled in!! Just was testing the overflow scroll -->

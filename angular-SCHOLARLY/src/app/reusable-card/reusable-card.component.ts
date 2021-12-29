@@ -5,14 +5,15 @@ import { AttendanceComponent } from '../main-pages/main-pages.component';
 import { TaggedComponent } from '../main-pages/main-pages.component';
 import { StoreService } from '../services/store.service';
 import { Post, PostService } from '../services/post.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 
 @Component({
     selector: 'app-card',
     templateUrl: './reusable-card.component.html',
     styleUrls: ['./reusable-card.component.scss'],
 })
-export class ReusableCardComponent implements OnInit, OnDestroy {
+export class ReusableCardComponent implements OnInit{
+    // Filling with Post info from post.service
     posts: Post[] = [];
     private postsSub: Subscription;
 
@@ -52,21 +53,24 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
         this.bottomSheet.open(TaggedComponent);
     }
 
+
+
     constructor(private bottomSheet: MatBottomSheet,
                 public postService: PostService) { }
 
     ngOnInit(): void {
-        this.postService.getPosts();
-        this.postsSub = this.postService.getPostUpdateListener()
+         this.postService.getPosts();
+         this.postsSub = this.postService.getPostUpdateListener()
           .subscribe((posts: Post[]) => {
           this.posts = posts;
+          console.log(this.posts);
         });
       }
 
 
-      ngOnDestroy(): void{
-        this.postsSub.unsubscribe();
-      }
+    //   ngOnDestroy(): void{
+    //     this.postsSub.unsubscribe();
+    //   }
 
 }
 

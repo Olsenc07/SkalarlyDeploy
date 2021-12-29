@@ -3,19 +3,20 @@ import { ReplaySubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 export interface Post {
-    // id: string;
-    PostDescription: string;
+    id: string;
+    PostDescription?: string;
     Upload?: string;
     PostLocation?: string;
     FriendCtrl?: string[];
-    // Date: String;
-    // Time: String;
-    // LocationEvent: String;
-    // Gender: String;
-    // Driver: Boolean;
-    // PaymentService: Boolean;
-    // Event: String;
-    FirstFormGroup?: string;
+    Date?: string;
+    Time?: string;
+    LocationEvent?: string;
+    Gender?: string;
+    Driver?: boolean;
+    PaymentService?: boolean;
+    Virtual?: boolean
+    Event?: string;
+    Title?: string;
     SecondFormGroup?: string;
     ThirdFormGroup?: string;
     FourthFormGroup?: string;
@@ -30,22 +31,23 @@ static post$$: ReplaySubject<Post> = new ReplaySubject<Post>(1);
 
 
 private posts: Post[] = [];
-private postsUpdated = new Subject<Post[]>();
+private postsUpdated = new ReplaySubject<Post[]>();
 constructor(private http: HttpClient) {}
 
-    getPosts(): void{
+getPosts(): void{
     this.http.get<{message: string, posts: Post[]}>('http://localhost:3000/api/posts')
         .subscribe((postData) => {
             this.posts = postData.posts;
             this.postsUpdated.next([...this.posts]);
 });
+    // console.log(this.posts);
     }
 
     getPostUpdateListener(): any {
         return this.postsUpdated.asObservable();
     }
-    addPost(PostDescription: string, PostLocation: string): any {
-        const post: Post = { PostDescription, PostLocation };
+    addPost(id: string, PostDescription: string, LocationEvent: string, Title: string): any {
+        const post: Post = {id, PostDescription, LocationEvent, Title };
         this.http.post<{ message: string}>('http://localhost:3000/api/posts', post)
         .subscribe(responseData => {
             console.log(responseData.message);

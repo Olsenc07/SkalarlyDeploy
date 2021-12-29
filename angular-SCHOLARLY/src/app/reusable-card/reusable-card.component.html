@@ -1,212 +1,209 @@
 <!-- Posts box which should be a scroll view -->
-<div class="feed">
-  <mat-card class="specifics-fill">
-    <!-- Profile Pic -->
-    <div class="column">
-      <div class="row">
-        <div class="column">
-          <div class="centerT" *ngIf="(posts | async)?.Title">
-
-            <mat-card-title class="postTitle textSize"  *ngFor="let post of posts">
-              {{ post.Title}}
-
-            </mat-card-title>
-          </div>
-          <div class="row2">
-            <div class="column">
-              <!-- *ngIf="posts.length > 0" -->
-              <div class="row-" *ngIf="(profile | async)?.profPic">
-                <div class="profilePic">
-                  <!-- need to get croppeded value -->
-                  <img class="pic" src="{{(profile | async)?.profPic}}">
-                  <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" />
-                </div>
-
-                <div class="column1">
-                  <div class="linkN">
-                    {{ (profile | async)?.Name}}
-                  </div>
-
-
-
-                  <div class="nameTitle">
-                    <!-- Button directs to that users profile -->
-                    <button mat-button>
-                      <div class="userName  link">
-                        <!-- Olsen07 -->
-                        {{( id | async)?.UserName}}
-                      </div>
-                    </button>
-                  </div>
-                </div>
-
-
-              </div>
-
-
-           <div class="row-" *ngIf="!(profile | async)?.profPic">
-
-
-                <div class="profilePic">
-                  <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
-                </div> 
-
-
-                 <div class="column1">
-                  <div class="linkN">
-                    {{ (profile | async)?.Name}}
-                  </div>
-
-                  <div class="nameTitle">
-                    <!-- Button directs to that users profile -->
-                    <button mat-button>
-                      <div class="userName  link">
-                        <!-- Olsen07 -->
-                        {{( id | async)?.UserName}}
-                      </div>
-                    </button>
-                  </div>
-                </div> 
-
-
-              </div>
-
-            </div>
-
-
-
-            <div class="row1">
-            <div class="column_">
-
-
-              <!-- Idk If needed -->
-
-               <div class="postLocation textSize t">
-                  <!-- Location -->
-                  {{ (posts | async)?.PostLocation}}
-                </div> 
-
-         <div class="textSize row1 t" *ngIf="(posts | async )?.FirstFormGroup.locationEvent  ">
-                <!-- {{Specific}}Specific Page -->
-                {{ (posts | async)?.FirstFormGroup.locationEvent}}
-              </div>
-              <div class="row1" *ngIf=" (posts | async)?.FirstFormGroup.date
-                    || (posts | async)?.FirstFormGroup.time ">
-
-
-                <div class="postTime textSize column1">
-                  <div class=" displayT t">
-                    {{ (posts | async)?.FirstFormGroup.date | date:"longDate"}}
-                  </div>
-                  <div class="displayT t">
-                    {{ (posts | async)?.FirstFormGroup.time}}</div>
-                </div>
-              </div>
-
-
-
-              <!-- Import the boolean icons with no color originally then the what did user say.. if null then display="none" -->
-              <div class="row" *ngIf="(posts | async)?.SecondFormGroup.gender">
-                <div class="booleans">
-
-                  <div class="material-icons b" *ngIf="(posts | async)?.SecondFormGroup.gender == 'female'">female</div>
-                  <div class="material-icons b" *ngIf="(posts | async)?.SecondFormGroup.gender == 'all'">transgender
-                  </div>
-                  <div class="material-icons b" *ngIf="(posts | async)?.SecondFormGroup.gender == 'male'">male</div>
-
-                  <div class="material-icons b" *ngIf="(posts | async)?.ThirdFormGroup.driver">directions_car</div>
-                  <div class="material-icons b" *ngIf=" (posts | async)?.ThirdFormGroup.paymentService">attach_money</div>
-                  <div class="material-icons b" *ngIf=" (posts | async)?.ThirdFormGroup.virtual">videocam</div>
-
-                  <div class="material-icons b" *ngIf="(posts | async)?.FourthFormGroup.event == 'formal'">work</div>
-                  <div class="material-icons b" *ngIf="(posts | async)?.FourthFormGroup.event == 'relaxed'">nightlife
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-
-
-
-
-       </div> 
-          </div>
-
-
-        </div>
-
-      </div>
-    </div>
-
-
-    <!---- Takes upload img/video from post page {{Upload}} -->
-    <!-- *ngFor="let show of showCases" -->
-    <div class="upload" *ngIf="(posts|async)?.Upload  ">
-
-      <img class="middle-card" src="{ { (posts|async)?.Upload  } }">
-    </div> 
-
+<div class="feed" *ngFor="let post of posts">
+    <mat-card class="specifics-fill" >
+      <!-- Profile Pic -->
+      <div class="column">
+        <div class="row">
+          <div class="column">
+          <div class="centerT" *ngIf="post.Title">
  
-
-    <!-- Description -->
-    <div class="description" *ngFor="let post of posts">
-
-      <div class="postText d">
-        {{post.PostDescription}}
-      </div>
-
-    </div>
-
-
-
-
-
-    <div>
-      <!-- Star button that takes you to that group chat. Attending, Maybe, Can't Attend with list from bottom which shows pp and username -->
-      <div class="rowM">
-        <div class="center1">
-          <div class="center"> 
-          <button mat-icon-button (click)="openTaggedSheet()">
-            <div class="material-icons-outlined p">loyalty</div>
-          </button>
-          </div>
-          <div class="center"> 
-          <button mat-icon-button>
-            
-            <div class="far fa-comments center p" routerLink="/groups"></div>
-          </button>
-          </div>
-        </div>
-
-
-        <div class="column1">
-          <div>
-            <button mat-raised-button [matMenuTriggerFor]="menu" class="row1">Attendance</button>
-          </div>
-
-          <mat-menu #menu="matMenu" class="row1_">
-
-            <div *ngFor="let attendance of attendances" class="centerB">
-
-              <input type="radio" name="attend" value="{{attendance}}" class="center" (change)="radioChange($event)">
-              <div class="row1_">{{attendance}}</div>
-
-
+  
+              <mat-card-title class="postTitle textSize">
+               
+                {{ post.Title}}
+              </mat-card-title>
             </div>
+            <div class="row2">
+              <div class="column">
+                <!-- *ngIf="posts.length > 0" -->
+                <div class="row-" >
+                  <div class="profilePic" *ngIf="profile.profPic">
+                    <!-- need to get croppeded value -->
+                    <img class="pic" src="{{profile.profPic}}">
+                  </div>
+  
+                  <div class="column1">
+                    <div class="linkN" *ngIf="profile.Name">
+                      {{ profile.Name}}
+                    </div>
+  
+  
+  
+                    <div class="nameTitle">
+                      <!-- Button directs to that users profile -->
+                      <button mat-button>
+                        <div class="userName  link">
+                          <!-- Olsen07 -->
+                          {{ids.UserName}}
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+  
+  
+                </div>
+  
+  
+             <div class="row-" *ngIf="!(profile.profPic)">
+  
+  
+                  <div class="profilePic">
+                    <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
+                  </div> 
+  
+  
+                   <div class="column1">
+                    <div class="linkN">
+              {{profile.Name}}
+                    </div>
+  
+                    <div class="nameTitle">
+                      <!-- Button directs to that users profile -->
+                      <button mat-button>
+                        <div class="userName  link">
+                          <!-- Olsen07 -->
+                         {{ids.UserName}}
+                        </div>
+                      </button>
+                    </div>
+                  </div> 
+  
+  
+                </div>
+  
+              </div>
+  
+  
+  
+              <div class="row1">
+              <div class="column_">
+  
+  
+                <!-- Idk If needed -->
+  
+                 <div class="postLocation textSize t" *ngIf="post.PostLocation">
+                    <!-- Location -->
+                    {{post.PostLocation}}
+                  </div> 
+  
+           <div class="textSize row1 t" *ngIf="post.LocationEvent">
+                  <!-- {{Specific}}Specific Page -->
+                  {{post.LocationEvent}}
+                </div>
+                <div class="row1" *ngIf="post.Date || post.Time" >
 
-          </mat-menu>
-          <!-- Displays your attending status -->
-          <div class="center1" *ngIf="selectedAttend">
-            <button (click)="openAttendanceSheet()" mat-button class="textSize_"> {{selectedAttend}}</button>
+                  <div class="postTime textSize column1">
+                    <div class=" displayT t">
+                      {{post.Date | date:"longDate"}}
+                    </div>
+                    <div class="displayT t">
+                      {{post.Time}}
+                      </div>
+                  </div>
+                </div>
+  
+  
+  
+                <!-- Import the boolean icons with no color originally then the what did user say.. if null then display="none" -->
+                <div class="row" *ngIf="posts.Gender">
+                  <div class="booleans">
+
+                    <div class="material-icons b" *ngIf="post.Gender == 'female' ">female</div>
+                    <div class="material-icons b" *ngIf="post.Gender == 'all'">transgender
+                    </div>
+                    <div class="material-icons b" *ngIf="post.Gender == 'male'">male</div>
+  
+                    <div class="material-icons b" *ngIf="post.Driver">directions_car</div>
+                    <div class="material-icons b" *ngIf="post.PaymentService">attach_money</div>
+                    <div class="material-icons b" *ngIf="post.Virtual">videocam</div>
+  
+                    <div class="material-icons b" *ngIf="post.Event == 'formal'">work</div>
+                    <div class="material-icons b" *ngIf="post.Event == 'relaxed'">nightlife
+                    </div>                 
+                </div>
+              </div>
+  
+  
+  
+  
+  
+         </div> 
+            </div>
+  
+  
           </div>
-
+  
         </div>
       </div>
-
-
-    </div>
-
-
-  </mat-card>
-</div>
+  
+  
+      <!---- Takes upload img/video from post page {{Upload}} -->
+      <!-- *ngFor="let show of showCases" -->
+      <div class="upload" *ngIf="post.Upload" >
+  
+        <img class="middle-card" src="{ { post.Upload  } }">
+      </div> 
+  
+   
+  
+      <!-- Description -->
+      <div class="description" >
+  
+        <div class="postText d">
+          {{post.PostDescription}}
+        </div>
+  
+      </div>
+  
+  
+  
+  
+  
+      <div>
+        <!-- Star button that takes you to that group chat. Attending, Maybe, Can't Attend with list from bottom which shows pp and username -->
+        <div class="rowM">
+          <div class="center1">
+            <div class="center"> 
+            <button mat-icon-button (click)="openTaggedSheet()">
+              <div class="material-icons-outlined p">loyalty</div>
+            </button>
+            </div>
+            <div class="center"> 
+            <button mat-icon-button>
+              
+              <div class="far fa-comments center p" routerLink="/groups"></div>
+            </button>
+            </div>
+          </div>
+  
+  
+          <div class="column1">
+            <div>
+              <button mat-raised-button [matMenuTriggerFor]="menu" class="row1">Attendance</button>
+            </div>
+  
+            <mat-menu #menu="matMenu" class="row1_">
+  
+              <div *ngFor="let attendance of attendances" class="centerB">
+  
+                <input type="radio" name="attend" value="{{attendance}}" class="center" (change)="radioChange($event)">
+                <div class="row1_">{{attendance}}</div>
+  
+  
+              </div>
+  
+            </mat-menu>
+            <!-- Displays your attending status -->
+            <div class="center1" *ngIf="selectedAttend">
+              <button (click)="openAttendanceSheet()" mat-button class="textSize_"> {{selectedAttend}}</button>
+            </div>
+  
+          </div>
+        </div>
+  
+  
+      </div>
+  
+  </div>
+    </mat-card>
+  </div>
