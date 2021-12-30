@@ -35,10 +35,21 @@ export class ReusableCardUserComponent implements OnInit {
     templateUrl: './reusable-card-message.component.html',
     styleUrls: ['./reusable-card-user.component.scss'],
 })
-export class ReusableCardMessageComponent {
+export class ReusableCardMessageComponent implements OnInit {
+    storeProfiles: Profile[] = [];
+    profiles: Profile[] = [];
+    private profilesSub: Subscription;
     // Gets the id == id to fill mutual friends list from data base
     profile = StoreService.profile$$;
-    constructor() { }
+    constructor(public storeService: StoreService) { }
+
+    ngOnInit() {
+        this.storeService.getProfiles();
+        this.profilesSub = this.storeService.getProfileUpdateListener()
+         .subscribe((profiles: Profile[]) => {
+             this.profiles = profiles;
+         });
+    }
 }
 
 
@@ -47,8 +58,19 @@ export class ReusableCardMessageComponent {
     templateUrl: './reusable-card-mutual.component.html',
     styleUrls: ['./reusable-card-user.component.scss'],
 })
-export class ReusableCardMutualComponent {
+export class ReusableCardMutualComponent implements OnInit{
+    storeProfiles: Profile[] = [];
+    profiles: Profile[] = [];
+    private profilesSub: Subscription;
     // Gets the id == id to fill mutual friends list from data base
     profile = StoreService.profile$$;
-    constructor() { }
+    constructor(public storeService: StoreService) { }
+
+    ngOnInit() {
+        this.storeService.getProfiles();
+        this.profilesSub = this.storeService.getProfileUpdateListener()
+         .subscribe((profiles: Profile[]) => {
+             this.profiles = profiles;
+         });
+    }
 }

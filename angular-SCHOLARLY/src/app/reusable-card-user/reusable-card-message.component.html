@@ -1,19 +1,19 @@
-<mat-card class="row1">
+<mat-card class="row1" *ngFor="let profile of profiles">
     <div class="column">
         <div class="row">
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="(profile | async)?.profPic">
                     <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
-                    <img class="fit" src="{{(profile | async)?.profPic}}">
+                    <img class="fit" src="{{profile.profPic}}">
                 </div>
 
-                <div mat-card-avatar class="profilePic" *ngIf="!(profile | async)?.profPic">
+                <div mat-card-avatar class="profilePic" *ngIf="!profile.profPic">
                     <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="fit" />
                 </div>
                 <!-- <div class="column_"> -->
-                <div class="userName textSize" *ngIf="(profile | async)?.Name">
+                <div class="userName textSize" *ngIf="profile.Name">
                     <!-- {{ (profile | async)?.Pronouns}} -->
-                    {{ (profile | async)?.Name}}
+                    {{ profile.Name}}
 
                 </div>
                 <!-- <mat-card-subtitle class="gender textSize">

@@ -38,15 +38,15 @@ app.use((req, res, next) => {
     PostDescription: 'You know whats going down!! I told you I was freaky!!', Gender: 'female', Time: '11:11 PM', Date: 'January 1, 2022',
     PaymentService: 'True', Virtual: 'True', Event: 'relaxed'
     },
-{ id: 'fsohchi1731', Title: 'I Love Scholarly',
+{ id: 'fsohchi1731', Title: 'I Love Scholarly', PostLocation: 'Miscelaneous',
 PostDescription: 'Hey everyone come make an account. You will love it!! ',
  },
  {
      id:'vyf767trh', Title: 'Love and Live', 
-     PostDescription: 'Wow I wanna share Scholaraly with everyone!'
+     PostDescription: 'Wow I wanna share Scholaraly with everyone!', PostLocation: 'Miscelaneous',
  },
  {
-    id:'jhvew87', Title: 'Join US', LocationEvent: 'Queens Park',
+    id:'jhvew87', Title: 'Join US', LocationEvent: 'Queens Park', PostLocation: 'Intramural Sports',
     PostDescription: 'Touch Football', Gender: 'female'
 },
 {
@@ -80,7 +80,7 @@ app.get("/api/profiles", (req, res, next) => {
             Sport:'Mens Varsity Hockey', Club:'Chess'
         },
         {
-            Name:'Erika Olsen', Major:'Chemistry and Biology', Minor: 'Accounting',
+            Name:'Erika Olsen', Major:'Biology', Minor: 'Accounting',
             Sport:'Womens Varsity Basketball', Club: 'Best Sister Club'
         },
         {
