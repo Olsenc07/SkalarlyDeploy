@@ -83,6 +83,8 @@ export class EditProfileComponent implements OnInit {
   url: string[];
   cropImgPreview: any = '';
   imgChangeEvent: any = '';
+  // username isn't connected to any formcontrol its just so the profile interface is happy
+  username: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
   profilePic: FormControl = new FormControl('');
   major: FormControl = new FormControl('');
@@ -433,6 +435,7 @@ export class EditProfileComponent implements OnInit {
     // TODO: convert form fields to Profile
 
     const profile: Profile = {
+      UserName: this.username.value,
       CodeCompleted: this.CodeCompleted.value,
       CodePursuing: this.CodePursuing.value,
       Name: this.name.value,

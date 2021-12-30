@@ -71,6 +71,40 @@ PaymentService: 'True', Virtual: 'True', Event: 'formal', Driver: 'True',
 });
 
 
+// Profile-Reccomend_request cards
+app.get("/api/profiles", (req, res, next) => {
+    // Dummy Profiles
+    const profiles = [
+        {
+            Name:'Chase Olsen', Major:'Physics and Math', Minor: 'History and Philosophy of Science',
+            Sport:'Mens Varsity Hockey', Club:'Chess'
+        },
+        {
+            Name:'Erika Olsen', Major:'Chemistry and Biology', Minor: 'Accounting',
+            Sport:'Womens Varsity Basketball', Club: 'Best Sister Club'
+        },
+        {
+            Name:'Wally Foss', Major:'Business', Minor: 'Rhetoric',
+             Club:'Clash Royal Club'
+        },
+        {
+            Name:'Alicia Ehret', Major:'Sport and Rec Management', Minor: 'Management and Physical Literacy',
+            Sport:'Womens Varsity Basketball', Club:'Cutie girl club'
+        },
+
+        {
+            Name:'Austin Ehret', Major:'Skills Coach', Minor: 'Electrician',
+            Sport:'Olds Grizzlys', Club:'Huge horn club'
+        },
+    ];
+    res.status(200).json({
+        message: 'Profiles fetched succesfully!',
+        profiles: profiles
+    });
+});
+
+
+
 /**
  * Server Activation
  */

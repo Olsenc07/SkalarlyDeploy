@@ -5,21 +5,21 @@
       <!-- Friend request box -->
 
 
-      <div class="row" *ngIf="requests.length !== 0">
+      <div class="row" *ngIf="profiles.length !== 0">
         <div class="title">Friend Requests</div>
       </div>
 
-      <div class="fit" *ngIf="requests.length == 0">
+      <div class="fit" *ngIf="profiles.length == 0">
         <div class="noRequests">
           No Current Requests
           <i class="fas fa-users-slash icon"></i>
         </div>
       </div>
 
-      <div class="fit" *ngIf="requests.length !== 0 ">
+      <div class="fit" *ngIf="profiles.length !== 0 ">
         <!-- If ids are on friend list -->
-        <app-card-request class="adds" *ngFor="let request of requests">
-          {{request}}
+        <app-card-request class="adds" [ngForOf]="profiles">
+        
         </app-card-request>
       </div>
 
@@ -180,7 +180,7 @@
                 <div class="middle">
                   <div class="following-box">
                     <div class="follower-s">
-                      <div class="row" *ngIf="requests.length !== 0">
+                      <div class="row" *ngIf="profiles.length !== 0">
                         <div class="title">Friend Requests</div>
                       </div>
 
@@ -194,8 +194,8 @@
                       </div> -->
 
                       <div>
-                        <app-card-request class="adds background" *ngFor="let request of requests">
-                          {{request}}
+                        <app-card-request class="adds background" [ngForOf]="profiles">
+                         
                         </app-card-request>
 
                         <div class="p_"></div>

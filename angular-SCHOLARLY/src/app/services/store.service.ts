@@ -9,11 +9,12 @@ import { MomentDateAdapter } from '@angular/material-moment-adapter';
 export interface Profile {
   // TODO: other profile fields
   // No connection to their subjects
+  UserName: string;
   CodeCompleted: string[];
   CodePursuing: string[];
   Name: string;
   Pronouns: string;
-  profilePic: string;
+  profilePic?: string;
   Gender: string;
   Major: string;
   Minor: string;
@@ -44,13 +45,13 @@ export interface Cards {
 
 
 export interface Ids {
-  profilePic: String;
-  Gender: String;
-  Major: String;
-  Minor: String;
-  Sport: String;
-  Club: String;
-  cropImgPreview: String;
+  profilePic: string;
+  Gender: string;
+  Major: string;
+  Minor: string;
+  Sport: string;
+  Club: string;
+  cropImgPreview: string;
 }
 
 
@@ -63,6 +64,9 @@ export interface Ids {
   providedIn: 'root',
 })
 export class StoreService {
+  // Used to fill reccomendation-card and profiles
+  private profiles: Profile[] = [];
+  private profilesUpdated = new ReplaySubject<Profile[]>();
   // Completed and pursing list...everything... should be filled from data base
   // These allow {{ }} to track length of list for badge display aswell
 
@@ -109,6 +113,20 @@ export class StoreService {
   // static profile$$: string[];
 
   constructor(private http: HttpClient) { }
+
+
+  getProfiles(): void{
+    this.http.get<{message: string, profiles: Profile[]}>('http://localhost:3000/api/profiles')
+      .subscribe((profileData) => {
+          this.profiles = profileData.profiles;
+          this.profilesUpdated.next([...this.profiles]);
+      });
+  }
+
+  getProfileUpdateListener(): any {
+    return this.profilesUpdated.asObservable();
+}
+
 
   setUser(userId: NewUserId): void {
     StoreService.userId$$.next(userId);

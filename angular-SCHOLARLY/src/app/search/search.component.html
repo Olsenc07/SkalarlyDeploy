@@ -6,13 +6,13 @@
 
 
       <div class="center"> Recommendations</div>
-      <mat-divider></mat-divider>
+      <!-- <mat-divider></mat-divider> -->
       <!-- Reccomendations and adds -->
       <!-- Limit load in amount at a time -->
-      <div class= "logo-layout">
+      <div class= "recents">
         <!-- Then each card is filled uniquely passed off {{ }}  values in feed-->
-        <app-card-recommendation class="adds" *ngFor="let feed of feeds">
-          {{feed}}
+        <app-card-recommendation class="hide" [ngForOf]="profiles">
+          
         </app-card-recommendation>
       </div>
 
@@ -56,7 +56,7 @@
       <div class="center" *ngIf="posts.length !== 0">
         Recent Feed
       </div>
-      <mat-divider></mat-divider>
+      <!-- <mat-divider></mat-divider> -->
       <!-- Only load in so many at a time -->
       <div class="recents_" *ngIf="posts.length == 0">
         <div class="fill">
@@ -80,23 +80,6 @@
 
 </app-card>
 
-
-
-       
-
-
-
-
-
-
-
-
-
-
-
-
-       
-
       </div>
     </div>
 
@@ -114,9 +97,7 @@
           <!-- Adds and recommecndations will be mixed into feed!!!!! -->
           <div class="fit">
             <!-- If user does not make in friend list -->
-            <app-card-recommendation class="adds" *ngFor="let feed of feeds">
-
-              {{feed}}
+            <app-card-recommendation class="hide" [ngForOf]="profiles">
 
             </app-card-recommendation>
           </div>

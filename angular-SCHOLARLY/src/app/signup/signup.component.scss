@@ -187,7 +187,7 @@
   font-family: "Font Awesome 5 Free";
 }
 .existing-account-style-btn {
-  background-color: #add3ec;
+  background-color: #428bba;
   font-family: "Font Awesome 5 Free";
 }
 
@@ -219,10 +219,13 @@
   width: 100%;
   flex-direction: column;
 }
+
 ::ng-deep .mat-option-text {
   text-align: center;
 }
-
+.matTitle {
+  color: black;
+}
 @media (min-width: 1024px) {
   ::ng-deep mat-form-field {
     display: flex;

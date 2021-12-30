@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SearchListService } from '../services/search.service';
 import { Post, PostService } from '../services/post.service';
+import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 
 
@@ -18,9 +19,15 @@ interface SearchOption {
 })
 export class SearchComponent implements OnInit {
   storedPosts: Post[] = [];
-
   posts: Post[] = [];
   private postsSub: Subscription;
+
+  storeProfiles: Profile[] = [];
+  profiles: Profile[] = [];
+  private profilesSub: Subscription;
+
+
+
 
   // Should pull in from data base(with the cards"reccomendations"), adds and reccomendations of whatever I decide
   // make sure they display nicely and one add doesnt get way more time then others
@@ -69,6 +76,7 @@ export class SearchComponent implements OnInit {
     public searchListService: SearchListService,
     private router: Router,
     public postService: PostService,
+    public storeService: StoreService,
   ) { }
 
   ngOnInit() {
@@ -78,6 +86,11 @@ export class SearchComponent implements OnInit {
       .subscribe((posts: Post[]) => {
       this.posts = posts;
     });
+    this.storeService.getProfiles();
+    this.profilesSub = this.storeService.getProfileUpdateListener()
+         .subscribe((profiles: Profile[]) => {
+             this.profiles = profiles;
+         });
   }
 
 

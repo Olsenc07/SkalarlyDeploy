@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { StoreService } from '../services/store.service';
+import { StoreService, Profile } from '../services/store.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-friends-activity',
@@ -8,7 +9,13 @@ import { StoreService } from '../services/store.service';
   styleUrls: ['./friends-activity.component.scss']
 })
 export class FriendsActivityComponent implements OnInit {
-  requests = [''];
+  storeProfiles: Profile[] = [];
+  profiles: Profile[] = [];
+  private profilesSub: Subscription;
+
+
+
+  
   feeds = [{
     "profilePic": "", "userName": "",
     "Major": "", "Minor": "", "Sport": "", "Club": ""
@@ -43,13 +50,14 @@ export class FriendsActivityComponent implements OnInit {
   // filters members, not entirely neeeded...
   search: FormControl = new FormControl('');
 
-  constructor() { }
+  constructor(public storeService: StoreService,) { }
 
   ngOnInit(): void {
-    // Creads appropriate number of cards to be displayed on
-    // Their appropraite area.. mutual, following.. esc
-
-    // this.feeds = StoreService.profile$$....
+    this.storeService.getProfiles();
+    this.profilesSub = this.storeService.getProfileUpdateListener()
+         .subscribe((profiles: Profile[]) => {
+             this.profiles = profiles;
+         });
   }
 
 }

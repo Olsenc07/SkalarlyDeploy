@@ -1,26 +1,26 @@
-.btn{
-    display: flex;
-    font-size: xx-large;
-    justify-content: center;
+.btn {
+  display: flex;
+  font-size: xx-large;
+  justify-content: center;
 }
-.center{
+.center {
   display: flex;
   width: 100%;
   flex-direction: column;
   text-align: center;
   justify-content: space-evenly;
 }
-.centerEmpty{
+.centerEmpty {
   display: flex;
   width: 100%;
   text-align: center;
   justify-content: space-evenly;
 }
-.center_{
+.center_ {
   display: flex;
   justify-content: center;
 }
-.center1{
+.center1 {
   display: flex;
   justify-content: center;
   margin: 4% 0%;
@@ -29,28 +29,26 @@
   text-align: center;
   width: 100%;
 }
-.column{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-.column_{
+.column {
   display: flex;
   flex-direction: column;
- 
+  width: 100%;
 }
-.classes{
-    display: flex;
-    flex-direction: row;
+.column_ {
+  display: flex;
+  flex-direction: column;
 }
-.large{
+.classes {
+  display: flex;
+  flex-direction: row;
+}
+.large {
   font-size: small;
 }
 
-
-.mat-card-avatar{
-    width: 50px;
-    height: 50px;
+.mat-card-avatar {
+  width: 50px;
+  height: 50px;
 }
 .messageM {
   display: flex;
@@ -58,64 +56,68 @@
   background-color: rgb(173, 211, 236);
   color: white;
 }
-.fit{
+.fit {
   border-radius: 50%;
 }
-.gender{display: flex;
-justify-content: center;}
-.green{
-    color: rgb(11, 179, 11);
+.gender {
+  display: flex;
+  justify-content: center;
 }
-.red{
-    color: rgb(196, 68, 68);
+.green {
+  color: rgb(11, 179, 11);
+}
+.red {
+  color: rgb(196, 68, 68);
 }
 .row {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    // justify-content: center;
-  }
-  .row1{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      box-sizing: border-box;
-      width:100%;
-  }
-  .row_{
-    display: flex;
-    flex-direction: row;
-
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  // justify-content: center;
 }
- 
-  .profilePic {
-    display: flex;
-    border-radius: 50%;
-    // border: groove;
-    margin-right: 2%;
-    // margin-bottom: 1%;
-  }
-  // @media (min-width: 500px) {
-    .textSize {
-      font-size: medium;
-      font-family: "Font Awesome 5 Free";
-      color: #7e7171;
-    }
-  // }
-  // @media (max-width: 500px) {
-    // .textSize {
-    //   font-size: smaller;
-    //   font-family: "Font Awesome 5 Free";
-    //   color: #7e7171;
-    // }
-  // }
-  .userName {
-    display: flex;
-    font-weight: 500;
-    text-align: center;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .width{
-      width: 100%;
-  }
+.row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  // border: ridge;
+  border-radius: 25px;
+  box-shadow: 0px 2px 16px 16px grey;
+}
+.row_ {
+  display: flex;
+  flex-direction: row;
+}
+
+.profilePic {
+  display: flex;
+  border-radius: 50%;
+  // border: groove;
+  margin-right: 2%;
+  // margin-bottom: 1%;
+}
+// @media (min-width: 500px) {
+.textSize {
+  font-size: medium;
+  font-family: "Font Awesome 5 Free";
+  color: #7e7171;
+}
+// }
+// @media (max-width: 500px) {
+// .textSize {
+//   font-size: smaller;
+//   font-family: "Font Awesome 5 Free";
+//   color: #7e7171;
+// }
+// }
+.userName {
+  display: flex;
+  font-weight: 500;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+}
+.width {
+  width: 100%;
+}
