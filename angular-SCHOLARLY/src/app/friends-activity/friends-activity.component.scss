@@ -166,7 +166,7 @@
     height: 70%;
     display: flex;
     flex-direction: column;
-    margin-top: 2%;
+    margin-top: 3%;
   }
 }
 .remove_explained {
@@ -218,6 +218,9 @@
     height: 100%;
     flex-direction: column;
     overflow-y: scroll;
+    border-radius: 25px;
+    box-shadow: 0px 4px 8px 7px grey;
+    margin-bottom: 25%;
   }
 }
 @media (max-width: 1024px) {
@@ -338,7 +341,6 @@
 }
 .structure {
   display: flex;
-  height: 86%;
   flex-direction: column;
   overflow-y: scroll;
 }
