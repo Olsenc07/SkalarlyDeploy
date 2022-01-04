@@ -169,13 +169,13 @@
               <div class="title1">Groups Joined
             
                 <div class="counter">
-                  {{ groups.length }}</div>
+                  {{ posts.length }}</div>
                 </div>
 
             </div>
             <div class="groups_">
-              <app-card-brief class="fit_" *ngFor="let group of groups">
-                {{group}}
+              <app-card-brief class="fit_" [ngForOf]="posts">
+               
               </app-card-brief>
             </div>
           </div>
@@ -258,9 +258,9 @@
             <div class="column1" *ngIf="posts.length == 0">
               <div class="row"> No Posts Made</div><span class="far fa-frown  centerR"></span>
             </div>
-            <div class="posts" *ngIf="posts.length !== 0">
-              <app-card class="postCard" *ngFor="let post of posts">
-                {{post}}
+            <div class="posts" *ngIf="posts.length !== 0" [ngForOf]="posts">
+              <app-card class="postCard">
+  
               </app-card>
             </div>
           </mat-tab>

@@ -9,7 +9,10 @@
   margin-top: 1%;
   color: #7e7171;
 }
-
+.button{
+  width:100%;
+  justify-content:center;
+}
 .centerT {
   display: flex;
   justify-content: center;
@@ -35,31 +38,27 @@
 .column {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  // width: 100%;
 }
-.column1 {
-  display: flex;
-  flex-direction: column;
+.columnInfo{
+  display:flex;
+  width:100%;
+  flex-direction:column;
+  text-align: center;
+  min-width: fit-content;
 }
-.column_ {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  justify-content: flex-end;
-}
-.columnAttend {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
+
+
 .d {
   font-family: "Font Awesome 5 Free";
-  color: #7e7171;
+  color: black;
 }
 .description {
   display: flex;
 }
 .displayT {
+  display:flex;
+  justify-content:center;
   text-align: center;
   color: #7e7171;
 }
@@ -81,7 +80,7 @@
 
 .feed {
   display: flex;
-  width: fit-content;
+  // width: 100%;
   height: 100%;
 }
 
@@ -90,10 +89,14 @@
 }
 .specifics-fill {
   display: flex;
-  width: 100%;
+  // width: 100%;
   height: 100%;
   // flex-direction: column;
   box-sizing: border-box;
+  border-radius: 25px;
+  border: groove;
+  border-color: #c0bbc1;
+  // box-shadow: 0px 0px 8px 16px grey;
 }
 
 .row- {
@@ -103,7 +106,7 @@
 .row {
   display: flex;
   flex-direction: row;
-  // width: 100%;
+  width: 100%;
   // justify-content: space-evenly;
 }
 .rowM {
@@ -114,9 +117,9 @@
 .row1 {
   display: flex;
   flex-direction: row;
-  justify-content: center;
   font-family: "Font Awesome 5 Free";
   width: 100%;
+  align-items: center;
 }
 .row2 {
   display: flex;
@@ -155,16 +158,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: #7e7171;
-  font-family: "Font Awesome 5 Free";
-  padding-bottom: 2%;
   text-align: center;
 }
 .postLocation {
   display: flex;
   font-weight: 400;
-  flex-direction: column;
+  width:auto;
   justify-content: center;
+  color: #7e7171;
 }
 .postTime {
   display: flex;
@@ -178,6 +179,7 @@
   overflow-y: visible;
   height: fit-content;
   justify-content: center;
+  text-align: center;
 }
 
 ::ng-deep .mat-radio-label {
@@ -185,7 +187,23 @@
 }
 .nameTitle {
   display: flex;
-  justify-content: center;
+  // justify-content: center;
+}
+@media (min-width: 550px) {
+  .textSizeTit {
+    font-size: medium;
+    font-family: "Font Awesome 5 Free";
+    color: black;
+    font-weight: bold;
+  }
+}
+@media (max-width: 550px) {
+  .textSizeTit {
+    font-size: inherit;
+    font-family: "Font Awesome 5 Free";
+    color: black;
+    font-weight: bold;
+  }
 }
 
 @media (max-width: 550px) {
@@ -198,18 +216,15 @@
   .textSize_ {
     // font-size: medium;
     font-family: "Font Awesome 5 Free";
-    // color: cornflowerblue;
+    color: #7e7171;
   }
 }
 @media (max-width: 550px) {
   .textSize_ {
     font-size: inherit;
     font-family: "Font Awesome 5 Free";
-    // color: cornflowerblue;
+    color: #7e7171;
   }
-}
-.t {
-  font-size: small;
 }
 .middle-card {
   display: flex;

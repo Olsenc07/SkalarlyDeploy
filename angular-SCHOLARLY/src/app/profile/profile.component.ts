@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { StoreService } from '../services/store.service';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { Post, PostService } from '../services/post.service';
+import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 
 
@@ -15,6 +15,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  storedPosts: Post[] = [];
+  posts: Post[] = [];
+  private postsSub: Subscription;
+
   // Sign up and edit profile connections
   profile = StoreService.profile$$;
   Id = StoreService.userId$$;
@@ -24,10 +28,7 @@ export class ProfileComponent implements OnInit {
   ids = StoreService.ids;
 
 
-  storedPosts: Post[] = [];
-
-  posts: Post[] = [];
-  private postsSub: Subscription;
+  
 
 
   // Course codes
@@ -59,7 +60,7 @@ export class ProfileComponent implements OnInit {
   ];
 
   constructor(private bottomSheet: MatBottomSheet,
-    public postService: PostService) {
+              public postService: PostService) {
     // profile$$.profile$$.subscribe((profile) => {
     //   // this.profile$$ = profile;
     //   // return name;
@@ -74,6 +75,12 @@ export class ProfileComponent implements OnInit {
     this.following = !this.following;
   }
   ngOnInit(): any {
+    this.postService.getPosts();
+    this.postsSub = this.postService.getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+      this.posts = posts;
+    });
+
     // this.Com = this.Com.map(code => code.toUpperCase()).sort();
     this.Pur = this.Pur.map(code => code.toUpperCase()).sort();
 
@@ -82,13 +89,6 @@ export class ProfileComponent implements OnInit {
     // this.Com
 
 
-
-
-    this.postService.getPosts();
-    this.postsSub = this.postService.getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-      this.posts = posts;
-    });
 
   }
 
