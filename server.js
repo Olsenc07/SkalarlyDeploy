@@ -17,6 +17,9 @@
  *  App Configuration
  */
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
+
 app.use((req, res, next) => {
    res.setHeader( "Access-Control-Allow-Origin", "*");
    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -104,6 +107,14 @@ app.get("/api/profiles", (req, res, next) => {
 });
 
 
+// Post requests
+app.post("/api/posts", (req, res, next) => {
+    const post = req.body;
+    console.log();
+    res.status(201).json({
+        message: 'Post added successfully'
+    })
+} );
 
 /**
  * Server Activation

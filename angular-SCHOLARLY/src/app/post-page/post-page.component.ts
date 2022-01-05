@@ -91,7 +91,8 @@ export class PostPageComponent implements OnInit {
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
   value: FormControl = new FormControl('');
-  date: FormControl = new FormControl('');
+  
+  
 
   // Temporary
   id: FormControl = new FormControl('');
@@ -101,10 +102,30 @@ validateBtn = new FormGroup({
 });
 
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
-  fourthFormGroup: FormGroup;
+firstFormGroup: FormGroup = new FormGroup({
+  Title:  new FormControl(''),
+  date: new FormControl(''),
+  time: new FormControl(''),
+  locationEvent:  new FormControl(''),
+})
+
+secondFormGroup: FormGroup = new FormGroup({
+  gender:  new FormControl(''),
+}) 
+
+thirdFormGroup: FormGroup = new FormGroup({
+  driver:  new FormControl(''),
+  paymentService:  new FormControl(''),
+  virtual:  new FormControl(''),
+})
+
+fourthFormGroup: FormGroup = new FormGroup({
+  event: new FormControl(''),
+})
+  // firstFormGroup: FormGroup;
+  // secondFormGroup: FormGroup;
+  // thirdFormGroup: FormGroup;
+  // fourthFormGroup: FormGroup;
 
  
 
@@ -116,26 +137,26 @@ validateBtn = new FormGroup({
       map((friend: string | null) => friend ? this._filter(friend) : this.allFriends.slice()));
 
 
-    this.firstFormGroup = this.fb.group({
-      Title: new FormControl(''),
-      date: new FormControl(''),
-      time: new FormControl(''),
-      locationEvent: new FormControl(''),
-    });
+    // this.firstFormGroup = this.fb.group({
+    //   Title: new FormControl(''),
+    //   date: new FormControl(''),
+    //   time: new FormControl(''),
+    //   locationEvent: new FormControl(''),
+    // });
 
-    this.secondFormGroup = this.fb.group({
-      gender: new FormControl(''),
-    });
+    // this.secondFormGroup = this.fb.group({
+    //   gender: new FormControl(''),
+    // });
 
-    this.thirdFormGroup = this.fb.group({
-      driver: new FormControl(''),
-      paymentService: new FormControl(''),
-      virtual: new FormControl(''),
-    });
+    // this.thirdFormGroup = this.fb.group({
+    //   driver: new FormControl(''),
+    //   paymentService: new FormControl(''),
+    //   virtual: new FormControl(''),
+    // });
 
-    this.fourthFormGroup = this.fb.group({
-      event: new FormControl(''),
-    });
+    // this.fourthFormGroup = this.fb.group({
+    //   event: new FormControl(''),
+    // });
 
   }
 
@@ -168,12 +189,15 @@ validateBtn = new FormGroup({
   }
 
 
-  ngOnInit(): void {
+  ngOnInit(): any {
     this.searchOptions = this.searchListService.getSearchOptions();
+    // Doesn't keep track of value
     this.firstFormGroup.get('Title').valueChanges.subscribe((v) => this.TitleLength.next(v.length));
+    // 
     if (window.screen.width < 1025){
       this.minwidth = false;
     }
+  
   }
   onSearchSelection(value): void {
     console.log(value);
@@ -225,41 +249,44 @@ validateBtn = new FormGroup({
 
   onFormSubmit(form: NgForm): void {
     // TODO: wire up to post request
-    console.log(this.firstFormGroup.value);
-    console.log(this.secondFormGroup.value);
-    console.log(this.thirdFormGroup.value);
-    console.log(this.fourthFormGroup.value);
-    console.log(this.postDescription.value);
-    console.log(this.postLocation.value);
+    // console.log(this.firstFormGroup.value);
+    // console.log(this.secondFormGroup.value);
+    // console.log(this.thirdFormGroup.value);
+    // console.log(this.fourthFormGroup.value);
+    // console.log(this.postDescription.value);
+    // console.log(this.postLocation.value);
 
 
     const post: Post = {
       id: this.id.value,
-      PostDescription: this.postDescription.value,
+      PostDescription: form.value.postDescription,
       Upload: this.upload.value,
-      PostLocation: this.postLocation.value,
+      PostLocation: form.value.postLocation,
       FriendCtrl: this.friendCtrl.value,
-      Title: this.firstFormGroup.controls.Title.value,
-      LocationEvent: this.firstFormGroup.controls.locationEvent.value,
-      Date: this.firstFormGroup.controls.date.value,
-      Time: this.firstFormGroup.controls.time.value,
-      Gender: this.secondFormGroup.controls.gender.value,
-      Driver: this.thirdFormGroup.controls.driver.value,
-      PaymentService: this.thirdFormGroup.controls.paymentService.value,
-      Virtual: this.thirdFormGroup.controls.Virtual.value,
-      Event: this.thirdFormGroup.controls.Event.value,
-      SecondFormGroup: this.secondFormGroup.value,
-      ThirdFormGroup: this.thirdFormGroup.value,
-      FourthFormGroup: this.fourthFormGroup.value,
+      Title: form.value.Title,
+      LocationEvent: form.value.locationEvent,
+      Date: form.value.date,
+      Time: form.value.time,
+      Gender: form.value.gender,
+      Driver: form.value.driver,
+      PaymentService: form.value.paymentService,
+      Virtual: form.value.virtual,
+      Event: form.value.Event,
+      // SecondFormGroup: this.secondFormGroup.value,
+      // ThirdFormGroup: this.thirdFormGroup.value,
+      // FourthFormGroup: this.fourthFormGroup.value,
     };
 
     // this is old connection
     // this.postService.setPost(post);
 
     // New one
-    this.postService.addPost(this.id.value, this.firstFormGroup.controls.Title.value,
+  // this.postService.addPost(form.value.Title)
+
+
+    this.postService.addPost(this.id.value, 
       this.postDescription.value, this.postLocation.value);
-    form.resetForm();
+    // form.resetForm();
   }
 
 

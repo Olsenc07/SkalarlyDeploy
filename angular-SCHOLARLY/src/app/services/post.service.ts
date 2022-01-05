@@ -3,7 +3,7 @@ import { ReplaySubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 export interface Post {
-    id: string;
+    id?: string;
     PostDescription?: string;
     Upload?: string;
     PostLocation?: string;
@@ -46,8 +46,8 @@ getPosts(): void{
     getPostUpdateListener(): any {
         return this.postsUpdated.asObservable();
     }
-    addPost(id: string, PostDescription: string, LocationEvent: string, Title: string): any {
-        const post: Post = {id, PostDescription, LocationEvent, Title };
+    addPost(id: string, PostDescription: string, LocationEvent: string): any {
+        const post: Post = {id, PostDescription, LocationEvent };
         this.http.post<{ message: string}>('http://localhost:3000/api/posts', post)
         .subscribe(responseData => {
             console.log(responseData.message);
