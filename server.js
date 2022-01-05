@@ -6,13 +6,26 @@
  * Required External Modules
  */
  const express = require('express');
- const bodyParser = require('body-parser')
+ const bodyParser = require('body-parser');
  const path = require('path');
+ const mongoose = require('mongoose');
+
+ const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post.js');
+
 /**
  * App Variables
  */
  const app = express();
  const port = 3000;
+
+mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+.then(()  => {
+    console.log('Connected to database!!');
+})
+.catch(( ) => {
+    console.log('Not connected');
+});
+
 /**
  *  App Configuration
  */
@@ -109,12 +122,23 @@ app.get("/api/profiles", (req, res, next) => {
 
 // Post requests
 app.post("/api/posts", (req, res, next) => {
-    const post = req.body;
-    console.log();
+    const post = new Post({
+        Title: req.body.Title,
+        PostDescription: req.body.PostDescription,
+        PostLocation: req.body.PostLocation,
+        LocationEvent: req.body.LocationEvent,
+        Time: req.body.Time,
+        Date: req.body.Date,
+        Gender: req.body.Gender,
+        Driver: req.body.Driver,
+        Virtual: req.body.Virtual,
+        Event: req.body.Event,
+    });
+    console.log(post);
     res.status(201).json({
         message: 'Post added successfully'
-    })
-} );
+    });
+});
 
 /**
  * Server Activation

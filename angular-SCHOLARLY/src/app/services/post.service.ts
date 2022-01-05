@@ -17,9 +17,9 @@ export interface Post {
     Virtual?: boolean;
     Event?: string;
     Title?: string;
-    SecondFormGroup?: string;
-    ThirdFormGroup?: string;
-    FourthFormGroup?: string;
+    // SecondFormGroup?: string;
+    // ThirdFormGroup?: string;
+    // FourthFormGroup?: string;
 }
 
 

@@ -5758,7 +5758,9 @@ class PostPageComponent {
     }
     ngOnInit() {
         this.searchOptions = this.searchListService.getSearchOptions();
+        // Doesn't keep track of value
         this.firstFormGroup.get('Title').valueChanges.subscribe((v) => this.TitleLength.next(v.length));
+        // 
         if (window.screen.width < 1025) {
             this.minwidth = false;
         }
