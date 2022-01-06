@@ -12,7 +12,7 @@
 </body> -->
 
 
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" >
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" [ngClass]="(isHomeScreen$ | async) === true ? 'background' : 'bacgkround_' "  >
   <ng-container *ngIf="minHeight && minwidth">
   <div class="root-container">
     <router-outlet>

@@ -134,7 +134,7 @@ app.post("/api/posts", (req, res, next) => {
         Virtual: req.body.Virtual,
         Event: req.body.Event,
     });
-    console.log(post);
+    post.save();
     res.status(201).json({
         message: 'Post added successfully'
     });
