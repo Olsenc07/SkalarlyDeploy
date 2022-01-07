@@ -28,8 +28,6 @@ export class ProfileComponent implements OnInit {
   ids = StoreService.ids;
 
 
-  
-
 
   // Course codes
   // Com_ = StoreService.CodeCompleted.length;

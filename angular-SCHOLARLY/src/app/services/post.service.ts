@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 
 export interface Post {
     id?: string;
-    PostDescription?: string;
+    PostDescription: string;
     Upload?: string;
     PostLocation?: string;
     FriendCtrl?: string[];
@@ -28,7 +28,7 @@ export interface Post {
     providedIn: 'root',
 })
 export class PostService {
-static post$$: ReplaySubject<Post> = new ReplaySubject<Post>(1);
+// static post$$: ReplaySubject<Post> = new ReplaySubject<Post>(1);
 
 
 private posts: Post[] = [];
@@ -64,8 +64,11 @@ getPosts(): void{
     getPostUpdateListener(): any {
         return this.postsUpdated.asObservable();
     }
-    addPost(id: string, PostDescription: string, LocationEvent: string): any {
-        const post: Post = {id, PostDescription, LocationEvent };
+    addPost(id: string, PostLocation: string, PostDescription?: string, LocationEvent?: string, Title?: string, Date?: string,
+            Time?: string, Gender?: string, Driver?: boolean, PaymentService?: boolean, Virtual?: boolean, Event?: string
+        ): any {
+        const post: Post = {id, PostDescription, LocationEvent, Title, PostLocation, Date,
+             Time, Gender, Driver, PaymentService, Virtual, Event };
         this.http.post<{ message: string}>('http://localhost:3000/api/posts', post)
         .subscribe(responseData => {
             console.log(responseData.message);
@@ -74,7 +77,12 @@ getPosts(): void{
         });
     }
 
-
+    deletePost(postId: string): any {
+        this.http.delete('http://localhost:3000/api/posts/' + postId)
+            .subscribe(() => {
+                console.log('Deleted!');
+            });
+    }
     // setPost(post: Post): void {
     //     PostService.post$$.next(post);
     // }

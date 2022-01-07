@@ -14,7 +14,7 @@ export class ReusableCardBriefComponent implements OnInit {
     private postsSub: Subscription;
 
     profile = StoreService.profile$$;
-    post = PostService.post$$;
+    // post = PostService.post$$;
     id = StoreService.userId$$;
 
     constructor(public postService: PostService) { }

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { PostService } from '../services/post.service';
+import { Post, PostService } from '../services/post.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-group-chats',
@@ -10,9 +11,13 @@ import { PostService } from '../services/post.service';
   styleUrls: ['./group-chats.component.scss']
 })
 export class GroupChatsComponent implements OnInit {
+  storedPosts: Post[] = [];
+  posts: Post[] = [];
+  private postsSub: Subscription;
+
   faCoffee = faCoffee;
   MatBadgeModule;
-  post = PostService.post$$;
+  // post = PostService.post$$;
 
   message: FormControl = new FormControl('');
   fileUpload: FormControl = new FormControl('');
@@ -21,7 +26,6 @@ export class GroupChatsComponent implements OnInit {
   messageForm = new FormGroup({
   message: this.message
 });
-  
 
   // Filled by members that join the group
   members = ['']
@@ -30,12 +34,12 @@ export class GroupChatsComponent implements OnInit {
   search: FormControl = new FormControl('');
 
 
-  
 
    // Sends message
-   sendMsg(){};
+   sendMsg(){}
 
-  constructor(private _bottomSheet: MatBottomSheet) { }
+  constructor(private _bottomSheet: MatBottomSheet,
+              public postService: PostService) { }
 
   uploadFile(): any {
     document.getElementById('fileInput').click();
@@ -45,8 +49,12 @@ export class GroupChatsComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.postService.getPosts();
+    this.postsSub = this.postService.getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+      this.posts = posts;
+  });
   }
-
 
 
 }

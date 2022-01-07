@@ -24,7 +24,9 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ClassListService } from '../services/class.service';
+import { Post, PostService } from '../services/post.service';
 import { Profile, StoreService } from '../services/store.service';
+import { Subscription } from 'rxjs';
 import { AccountTextComponent } from '../signup/signup.component';
 
 
@@ -58,6 +60,12 @@ export const MY_FORMATS = {
   ],
 })
 export class EditProfileComponent implements OnInit {
+  storedPosts: Post[] = [];
+  posts: Post[] = [];
+  private postsSub: Subscription;
+
+
+
   // Showcase
   i = 0;
   // Groups joined
@@ -142,7 +150,7 @@ export class EditProfileComponent implements OnInit {
   gList = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
 
   // Post list;
-  pList = ['', ''];
+  // pList = ['', ''];
 
   // Connects to save showcases in the data base
   list = ['../../assets/Pics/IMG-8413.PNG',
@@ -160,7 +168,8 @@ export class EditProfileComponent implements OnInit {
     public dialog: MatDialog,
     public classListService: ClassListService,
     private http: HttpClient,
-    private storeService: StoreService
+    private storeService: StoreService,
+    public postService: PostService,
   ) {
     // this.bio.valueChanges.subscribe((v) => this.bioLength.next(v.length));
 
@@ -304,7 +313,12 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
+    this.postService.getPosts();
+    this.postsSub = this.postService.getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+      this.posts = posts;
+  });
+}
 
   clearMajor(): void {
     this.major.setValue('');
@@ -342,7 +356,7 @@ export class EditProfileComponent implements OnInit {
   previousGroupCard(): number {
     --this.g;
     if (0 > this.g) {
-      this.g = this.gList.length - 1;
+      this.g = this.posts.length - 1;
       return this.g;
     }
     console.log(this.g);
@@ -350,7 +364,7 @@ export class EditProfileComponent implements OnInit {
   }
   nextGroupCard(): number {
     ++this.g;
-    if (this.g >= this.gList.length) {
+    if (this.g >= this.posts.length) {
       this.g = 0;
       return this.g;
     }
@@ -373,7 +387,7 @@ export class EditProfileComponent implements OnInit {
   previousPostCard(): number {
     --this.p;
     if (0 > this.p) {
-      this.p = this.pList.length - 1;
+      this.p = this.posts.length - 1;
       return this.p;
     }
     console.log(this.p);
@@ -381,20 +395,21 @@ export class EditProfileComponent implements OnInit {
   }
   nextPostCard(): number {
     ++this.p;
-    if (this.p >= this.pList.length) {
+    if (this.p >= this.posts.length) {
       this.p = 0;
       return this.p;
     }
     console.log(this.p);
     // go forward one card
   }
-  deletePost(): number {
-    this.pList.splice(this.p, 1);
-    console.log(this.pList.length);
-    if (this.p === this.pList.length) {
-      this.p = this.p - 1;
-      return this.p;
-    }
+  onDelete(postId: string): any {
+    // this.pList.splice(this.p, 1);
+    // console.log(this.pList.length);
+    // if (this.p === this.pList.length) {
+    //   this.p = this.p - 1;
+    //   return this.p;
+    // }
+    this.postService.deletePost(postId);
   }
 
 

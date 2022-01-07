@@ -244,12 +244,12 @@
         <div class="groups-jj ">
 
 
-          <div class="column1" [ngClass]="gList.length == 0 ? 'show' : 'hide' ">
-            <div class="row"> No Groups Joined</div><i class="far fa-frown centerR"></i>
+          <div class="column1" [ngClass]="posts.length == 0 ? 'show' : 'hide' ">
+            <div class="row"> No Groups Joined</div><i class="fas fa-ghost centerR"></i>
           </div>
 
 
-          <div class="row" [ngClass]="gList.length == 0 ? 'hide' : 'show' ">
+          <div class="row" [ngClass]="posts.length == 0 ? 'hide' : 'show' ">
             <div class="words">
               <div class="row">
 
@@ -269,7 +269,7 @@
                   numbers
                   </span>
                 <div class="counter">
-                  {{ gList.length }}</div>
+                  {{ posts.length }}</div>
               </div>
 
               <div class="style">
@@ -283,9 +283,9 @@
           <div class="rowBriefCardBox">
 <!--gList | slice:g:g+1; index as g  if want displayed one at a time -->
 <div class="rowBriefCard">
-          <app-card-brief class="center" [ngClass]="gList.indexOf(group) === g ? 'outline' : '' "
+          <app-card-brief class="center" [ngClass]="posts.indexOf(group) === g ? 'outline' : '' "
           
-          *ngFor="let group of gList ">
+          *ngFor="let group of posts ">
 
             {{group}}
             
@@ -298,14 +298,14 @@
         </div>
         <!-- Recent Posts box-->
         <div class="groupsj_box">
-          <div class="column1" [ngClass]="pList.length == 0 ? 'show' : 'hide' ">
-            <div class="row"> No Posts Made</div><i class="material-icons centerR">sentiment_very_dissatisfied</i>
+          <div class="column1" [ngClass]="posts.length == 0 ? 'show' : 'hide' ">
+            <div class="row"> No Posts Made</div><i class="fas fa-ghost  centerR"></i>
           </div>
-          <div class="groups-j" [ngClass]="pList.length == 0 ? 'hide' : 'show' ">
+          <div class="groups-j" [ngClass]="posts.length == 0 ? 'hide' : 'show' ">
 
 
 
-            <div class="row">
+            <div class="row" *ngFor="let post of posts">
               <div class="words">
                 <div class="row">
                   <!-- <div class="counter" [ngClass]="pList.length == 0 ? 'hide' : 'show' " matBadgePosition="above"
@@ -326,20 +326,20 @@
                     numbers
                     </span>
                   <div class="counter">
-                    {{ pList.length }}</div>
+                    {{ posts.length }}</div>
                 </div>
 
 
 
-                <div class="style">
+                <div class="style"  >
                   <!-- <div class="counter" matBadgePosition="above" matBadge="{{ pList.length }}"></div> -->
-                  <button mat-button (click)=deletePost()>Delete Post</button>
+                  <button mat-button (click)="onDelete(post.id)">Delete Post</button>
 
                 </div>
               </div>
             </div>
 
-            <app-card *ngFor="let post of pList | slice:p:p+1; index as p" class="fit">{{post}}</app-card>
+            <app-card *ngFor="let post of posts | slice:p:p+1; index as p" class="fit">{{post}}</app-card>
           </div>
         </div>
 

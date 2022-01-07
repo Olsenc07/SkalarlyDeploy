@@ -18,6 +18,7 @@
  const app = express();
  const port = 3000;
 
+//  DataBase connection
 mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
 .then(()  => {
     console.log('Connected to database!!');
@@ -125,6 +126,14 @@ app.get("/api/profiles", (req, res, next) => {
     });
 });
 
+// Deleting posts
+app.delete("/api/posts/:id", (req, res, next ) => {
+    Post.deleteOne({_id: req.params.id}).then(result => {
+        console.log(result);
+        res.status(200).json({message: 'Post deleted!!'});
+    });   
+});
+
 
 // Post requests
 app.post("/api/posts", (req, res, next) => {
@@ -160,7 +169,9 @@ app.post("/api/posts", (req, res, next) => {
 const http = require('http');
 // Change port to azure or Heroku...
 
-const routes = require('./backend/api')
+const routes = require('./backend/api');
+const req = require('express/lib/request');
+const res = require('express/lib/response');
 
 app.use(express.static(path.join(__dirname, '/angular-SCHOLARLY/static')))
 app.use('/api', routes)

@@ -1,4 +1,4 @@
-<div class="entire-page">
+<div class="entire-page" >
 
   <div class="left">
     <label for="members" class="title">Members</label>
@@ -21,13 +21,13 @@
     </span>
 
   </div>
-  <div class="column">
+  <div class="column" *ngFor="let post of posts">
     <div class="row mobile">
       <!-- For mobile icon button to display members in the chat room -->
 
       <div class="columnM">
 
-        {{ (post | async)?.Title}}
+        {{post.Title}}
       </div>
 
     </div>
@@ -37,32 +37,33 @@
       <!-- Icon indicators -->
 
       <div class="basic">
-        <div class="info" *ngIf="(post | async)?.FirstFormGroup.locationEvent">
+        <div class="info" *ngIf="post.LocationEvent">
           <!-- {{Specific}}Specific Page -->
-          {{ (post | async)?.FirstFormGroup.locationEvent}}
+          {{post.LocationEvent}}
         </div>
 
 
 
 
-        <div class="info " *ngIf=" (post | async)?.FirstFormGroup.date">
-          {{ (post | async)?.FirstFormGroup.date | date:"longDate"}}
+        <div class="info " *ngIf="post.Date ">
+          {{ post.Date  | date:"longDate"}}
         </div>
-        <div class="info" *ngIf="(post | async)?.FirstFormGroup.time ">
-          {{ (post | async)?.FirstFormGroup.time}}</div>
+        <div class="info" *ngIf="post.Time ">
+          {{ post.Time}}</div>
       </div>
 
       <div class="booleans">
-        <div class="fas fa-venus " *ngIf="(post | async)?.SecondFormGroup.gender == 'female'"></div>
-        <div class="fas fa-transgender-alt " *ngIf="(post | async)?.SecondFormGroup.gender == 'all'">
+        <div class="material-icons" *ngIf="post.Gender == 'female'">female</div>
+        <div class="material-icons" *ngIf="post.Gender == 'all'">transgender
         </div>
-        <div class="fas fa-mars " *ngIf="(post | async)?.SecondFormGroup.gender == 'male'"></div>
+        <div class="material-icons" *ngIf="post.Gender == 'male'">male</div>
 
-        <div class="fas fa-car " *ngIf="(post | async)?.ThirdFormGroup.driver"></div>
-        <div class="fas fa-dollar-sign " *ngIf=" (post | async)?.ThirdFormGroup.paymentService"></div>
+        <div class="material-icons" *ngIf="post.Driver">directions_car</div>
+        <div class="material-icons" *ngIf="post.PaymentService">attach_money</div>
+        <div class="material-icons" *ngIf="post.Virtual">videocam</div>
 
-        <div class="fas fa-user-tie " *ngIf="(post | async)?.FourthFormGroup.event == 'formal'"></div>
-        <div class="fas fa-glass-cheers " *ngIf="(post | async)?.FourthFormGroup.event == 'relaxed'">
+        <div class="fas fa-user-tie " *ngIf="post.event == 'formal'">work</div>
+        <div class="fas fa-glass-cheers " *ngIf="post.event == 'relaxed'">nightlife
         </div>
       </div>
 

@@ -112,9 +112,9 @@ secondFormGroup: FormGroup = new FormGroup({
 });
 
 thirdFormGroup: FormGroup = new FormGroup({
-  driver:  new FormControl(''),
-  paymentService:  new FormControl(''),
-  virtual:  new FormControl(''),
+  driver:  new FormControl(),
+  paymentService:  new FormControl(),
+  virtual:  new FormControl(),
 });
 
 fourthFormGroup: FormGroup = new FormGroup({
@@ -280,9 +280,14 @@ fourthFormGroup: FormGroup = new FormGroup({
   // this.postService.addPost(form.value.Title)
 
 
-    this.postService.addPost(this.id.value,
-      this.postDescription.value, this.postLocation.value);
-    // form.resetForm();
+    this.postService.addPost(this.id.value, this.firstFormGroup.controls.Title.value, this.firstFormGroup.controls.time.value,
+      this.firstFormGroup.controls.date.value, this.firstFormGroup.controls.locationEvent.value,
+      this.secondFormGroup.controls.gender.value,
+      this.postDescription.value, this.postLocation.value,
+       this.thirdFormGroup.controls.driver.value, this.thirdFormGroup.controls.paymentService.value,
+       this.thirdFormGroup.controls.virtual.value,
+        this.fourthFormGroup.controls.event.value);
+    form.resetForm();
   }
 
 
