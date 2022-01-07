@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 export interface Post {
     id?: string;
@@ -35,9 +36,26 @@ private postsUpdated = new ReplaySubject<Post[]>();
 constructor(private http: HttpClient) {}
 
 getPosts(): void{
-    this.http.get<{message: string, posts: Post[]}>('http://localhost:3000/api/posts')
-        .subscribe((postData) => {
-            this.posts = postData.posts;
+    this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts')
+        .pipe(map((postData) => {
+            return postData.posts.map( post => {
+                return {
+                    id: post._id,
+                    PostDescription: post.postDescription,
+                    PostLocation: post.postLocation,
+                    Title: post.title,
+                    Date: post.date,
+                    Time: post.time,
+                    Gender: post.gender,
+                    Driver: post.driver,
+                    PaymentService: post.paymentService,
+                    Virtual: post.virtual,
+                    Event: post.event,
+                 };
+        });
+    }))
+        .subscribe((transformedPosts) => {
+            this.posts = transformedPosts;
             this.postsUpdated.next([...this.posts]);
 });
     // console.log(this.posts);

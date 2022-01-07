@@ -91,8 +91,6 @@ export class PostPageComponent implements OnInit {
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
   value: FormControl = new FormControl('');
-  
-  
 
   // Temporary
   id: FormControl = new FormControl('');
@@ -107,27 +105,26 @@ firstFormGroup: FormGroup = new FormGroup({
   date: new FormControl(''),
   time: new FormControl(''),
   locationEvent:  new FormControl(''),
-})
+});
 
 secondFormGroup: FormGroup = new FormGroup({
   gender:  new FormControl(''),
-}) 
+});
 
 thirdFormGroup: FormGroup = new FormGroup({
   driver:  new FormControl(''),
   paymentService:  new FormControl(''),
   virtual:  new FormControl(''),
-})
+});
 
 fourthFormGroup: FormGroup = new FormGroup({
   event: new FormControl(''),
-})
+});
   // firstFormGroup: FormGroup;
   // secondFormGroup: FormGroup;
   // thirdFormGroup: FormGroup;
   // fourthFormGroup: FormGroup;
 
- 
 
   constructor(public dialog: MatDialog, public searchListService: SearchListService,
               private fb: FormBuilder, private postService: PostService) {
@@ -193,11 +190,10 @@ fourthFormGroup: FormGroup = new FormGroup({
     this.searchOptions = this.searchListService.getSearchOptions();
     // Doesn't keep track of value
     this.firstFormGroup.get('Title').valueChanges.subscribe((v) => this.TitleLength.next(v.length));
-    // 
+    //
     if (window.screen.width < 1025){
       this.minwidth = false;
     }
-  
   }
   onSearchSelection(value): void {
     console.log(value);
@@ -284,7 +280,7 @@ fourthFormGroup: FormGroup = new FormGroup({
   // this.postService.addPost(form.value.Title)
 
 
-    this.postService.addPost(this.id.value, 
+    this.postService.addPost(this.id.value,
       this.postDescription.value, this.postLocation.value);
     // form.resetForm();
   }
