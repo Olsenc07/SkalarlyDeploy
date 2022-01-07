@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   padding-bottom: 2%;
+  background-color: #dfdfea;
 }
 .left {
   display: flex;
@@ -19,6 +20,7 @@
   height: 100%;
   width: 100%;
 }
+
 @media (min-width: 1024px) {
   .message_box {
     display: flex;
@@ -76,8 +78,10 @@
 }
 .send_btn_style {
   font-family: "Font Awesome 5 Free";
-  background-color: #add3ec;
-  color: white;
+  // background-color: #add3ec;
+  // color: white;
+  color: #42a5f5;
+  background-color: white;
 }
 .search-box {
   position: relative;
@@ -151,7 +155,9 @@
   background-color: #dfdfea;
   border-top-left-radius: 25px;
 }
-
+.type_message {
+  background-color: #dfdfea;
+}
 .type_message_box {
   width: 98%;
 }

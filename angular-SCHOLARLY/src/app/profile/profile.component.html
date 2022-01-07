@@ -159,7 +159,7 @@
       <div class="highlights-layout">
 
         <div class="column1" *ngIf="groups.length == 0">
-          <div class="row"> No Groups Joined</div><i class="far fa-frown centerR"></i>
+          <div class="row"> No Groups Joined</div><i class="far fa-frown centerR iconEmpty"></i>
         </div>
 
         <div class="groups-j" *ngIf="groups.length != 0">
@@ -256,7 +256,7 @@
         <mat-tab-group mat-align-tabs="center">
           <mat-tab label="Activity">
             <div class="column1" *ngIf="posts.length == 0">
-              <div class="row"> No Posts Made</div><span class="far fa-frown  centerR"></span>
+              <div class="row"> No Posts Made</div><span class="fas fa-ghost centerR iconEmpty"></span>
             </div>
             <div class="posts" *ngIf="posts.length !== 0" [ngForOf]="posts">
               <app-card class="postCard">
@@ -266,7 +266,7 @@
           </mat-tab>
           <mat-tab label="Showcase">
             <div class="column1" *ngIf="!(profile|async)?.ShowCase">
-              <div class="row"> No Showcases Added</div> <span class="fas fa-eye-slash  centerR"></span>
+              <div class="row"> No Showcases Added</div> <span class="fas fa-eye-slash  centerR iconEmpty"></span>
             </div>
 
             <div class="showCase" *ngIf="(profile|async)?.ShowCase">
@@ -490,7 +490,7 @@
           <!-- Hightlight Input box -->
           <div class="highlights-layout">
             <div class="column1" *ngIf="groups.length == 0">
-              <div class="row"> No Groups Joined</div><i class="far fa-frown centerR"></i>
+              <div class="row"> No Groups Joined</div><i class="far fa-frown centerR iconEmpty"></i>
             </div>
 
             <div class="groups-j" *ngIf="groups.length != 0">
@@ -564,7 +564,7 @@
 
       <mat-tab label="Activity">
         <div class="column1" *ngIf="posts.length == 0">
-          <div class="row"> No Posts Made</div><i class="far fa-frown centerR"></i>
+          <div class="row"> No Posts Made</div><i class="far fa-frown centerR iconEmpty"></i>
         </div>
 
         <!-- Recent Posts text  -->

@@ -4,13 +4,24 @@
   height: 100%;
   justify-content: center;
 }
-.background{
-  background: linear-gradient(
-225deg
-, #273789, #6ca2d9, #e1f4f8);
-height:100%;
+.backgroundL {
+  background: linear-gradient(225deg, #273789, #6ca2d9, #e1f4f8);
+  height: 100%;
 }
-.bacgkround_{
+.backgroundR {
+  background: linear-gradient(45deg, #273789, #6ca2d9, #e1f4f8);
+  height: 100%;
+  overflow-y: hidden;
+}
+.backgroundS {
+  background: linear-gradient(0deg, #699dd8, #6ca2d9, #e1f4f8);
+  height: 100%;
+  overflow-y: hidden;
+}
+// background: linear-gradient(
+// 0deg
+// , #699dd8, #a7bfd8, #e1f4f8);
+.background_ {
 }
 .root-container {
   display: flex;

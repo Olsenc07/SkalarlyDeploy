@@ -203,21 +203,21 @@
   border-radius: 25px;
   box-shadow: 0px 4px 8px 7px grey;
 }
-.fit_{
+.fit_ {
   display: flex;
   height: 25%;
   border-radius: 25px;
   box-shadow: 0px 4px 8px 7px grey;
   width: 100%;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
 }
 .friend_count {
   display: flex;
   justify-content: center;
   font-size: large;
   flex-direction: row;
-  margin-bottom: 1%;
+  margin-bottom: 2%;
 }
 
 @media (min-width: 1024px) {
@@ -271,6 +271,65 @@
   width: 100%;
   flex-direction: column;
 }
+
+@media (min-width: 1024px) {
+  .friends-request-box {
+    display: flex;
+    flex-direction: column;
+    margin: 1% 0%;
+    width: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .friends-request {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    color: #7e7171;
+    font-family: "Font Awesome 5 Free";
+  }
+}
+
+@media (max-width: 1024px) {
+  .friends-request-box {
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .friends-activity {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+}
+@media (min-width: 1024px) {
+  .friends-activity {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+  }
+}
+@media (min-width: 1024px) {
+  .friends-activity-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    overflow-y: scroll;
+  }
+}
+@media (max-width: 1024px) {
+  .friends-activity-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+}
 @media (min-width: 1024px) {
   mat-tab-group {
     display: none;
@@ -280,7 +339,7 @@
   .middle {
     display: flex;
     flex-direction: column;
-    margin: 2%;
+    margin: 1%;
     height: 100%;
     width: 38%;
   }
@@ -326,7 +385,7 @@
   .right {
     display: flex;
     flex-direction: column;
-    margin: 2%;
+    margin: 1%;
     width: 38%;
     height: 100%;
   }
@@ -408,64 +467,6 @@
   }
 }
 
-@media (min-width: 1024px) {
-  .friends-request-box {
-    display: flex;
-    flex-direction: column;
-    margin: 1% 0%;
-    width: 100%;
-  }
-}
-@media (min-width: 1024px) {
-  .friends-request {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    color: #7e7171;
-    font-family: "Font Awesome 5 Free";
-  }
-}
-
-@media (max-width: 1024px) {
-  .friends-request-box {
-    display: none;
-  }
-}
-@media (max-width: 1024px) {
-  .friends-activity {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-  }
-}
-@media (min-width: 1024px) {
-  .friends-activity {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-  }
-}
-@media (min-width: 1024px) {
-  .friends-activity-box {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    height: fit-content;
-    width: 100%;
-    overflow-y: scroll;
-  }
-}
-@media (max-width: 1024px) {
-  .friends-activity-box {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    overflow-y: scroll;
-  }
-}
 .title {
   display: flex;
   justify-content: center;

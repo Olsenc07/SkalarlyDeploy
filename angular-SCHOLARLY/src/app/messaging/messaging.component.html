@@ -48,11 +48,15 @@
 <div class="messages">
 
 </div>
-
+<mat-divider></mat-divider>
 <div class="type_message">
 <mat-form-field class="type_message_box">
         <textarea matInput class="post" placeholder="Write a message..."
           [formControl]="message"></textarea>
+          <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
+          (click)="clearMessage()">
+          <mat-icon>close</mat-icon>
+        </button>
         </mat-form-field>
 </div>
 
@@ -81,9 +85,11 @@
 </div>
 
 <div class="send_btn">
-    <mat-chip type="button" class="send_btn_style"   (click)="sendMsg()">
+  <mat-chip-list>
+    <mat-chip  class="send_btn_style"  (click)="sendMsg()" color="primary">
 Send
     </mat-chip>
+  </mat-chip-list>
     </div>
 
     

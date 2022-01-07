@@ -36,13 +36,17 @@ export class MessagingComponent {
         const filterValue = value.toLowerCase();
         return this.allUsers.filter(user => user.toLowerCase().indexOf(filterValue) === 0);
               }
-           
-              
+
               uploadFile(): any {
                 document.getElementById('fileInput').click();
-              };
+              }
               uploadPic(): any {
                 document.getElementById('picInput').click();
-              };
+              }
+
+
+              clearMessage(): void {
+                this.message.setValue('');
+              }
 
 };
