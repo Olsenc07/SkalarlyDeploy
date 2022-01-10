@@ -146,12 +146,15 @@ app.post("/api/posts", (req, res, next) => {
         Date: req.body.Date,
         Gender: req.body.Gender,
         Driver: req.body.Driver,
+        PaymentService: req.body.PaymentService,
         Virtual: req.body.Virtual,
         Event: req.body.Event,
     });
-    post.save();
-    res.status(201).json({
-        message: 'Post added successfully'
+    post.save().then(createdPost => {
+        res.status(201).json({
+            message: 'Post added successfully',
+            postId: createdPost._id
+    });
     });
 });
 

@@ -100,24 +100,24 @@ validateBtn = new FormGroup({
 });
 
 
-firstFormGroup: FormGroup = new FormGroup({
+firstFormGroup: FormGroup  = new FormGroup({
   Title:  new FormControl(''),
   date: new FormControl(''),
   time: new FormControl(''),
   locationEvent:  new FormControl(''),
 });
 
-secondFormGroup: FormGroup = new FormGroup({
+secondFormGroup: FormGroup  = new FormGroup({
   gender:  new FormControl(''),
 });
 
-thirdFormGroup: FormGroup = new FormGroup({
-  driver:  new FormControl(),
-  paymentService:  new FormControl(),
-  virtual:  new FormControl(),
+thirdFormGroup: FormGroup  = new FormGroup({
+  driver:  new FormControl(false),
+  paymentService:  new FormControl(false),
+  virtual:  new FormControl(false),
 });
 
-fourthFormGroup: FormGroup = new FormGroup({
+fourthFormGroup: FormGroup  = new FormGroup({
   event: new FormControl(''),
 });
   // firstFormGroup: FormGroup;
@@ -146,9 +146,9 @@ fourthFormGroup: FormGroup = new FormGroup({
     // });
 
     // this.thirdFormGroup = this.fb.group({
-    //   driver: new FormControl(''),
-    //   paymentService: new FormControl(''),
-    //   virtual: new FormControl(''),
+    //   driver: new FormControl(false),
+    //   paymentService: new FormControl(false),
+    //   virtual: new FormControl(false),
     // });
 
     // this.fourthFormGroup = this.fb.group({
@@ -245,29 +245,30 @@ fourthFormGroup: FormGroup = new FormGroup({
 
   onFormSubmit(form: NgForm): void {
     // TODO: wire up to post request
-    // console.log(this.firstFormGroup.value);
-    // console.log(this.secondFormGroup.value);
-    // console.log(this.thirdFormGroup.value);
-    // console.log(this.fourthFormGroup.value);
-    // console.log(this.postDescription.value);
-    // console.log(this.postLocation.value);
+    console.log(this.firstFormGroup.value);
+    console.log(this.secondFormGroup.value);
+    console.log(this.thirdFormGroup.value);
+    console.log(this.fourthFormGroup.value);
+    console.log(this.postDescription.value);
+    console.log(this.postLocation.value);
+    // console.log(form.controls);
 
 
     const post: Post = {
-      id: this.id.value,
-      PostDescription: form.value.postDescription,
-      Upload: this.upload.value,
-      PostLocation: form.value.postLocation,
-      FriendCtrl: this.friendCtrl.value,
       Title: form.value.Title,
+      PostDescription: form.value.postDescription,
+      PostLocation: form.value.postDescription,
       LocationEvent: form.value.locationEvent,
-      Date: form.value.date,
       Time: form.value.time,
+      Date: form.value.date,
       Gender: form.value.gender,
       Driver: form.value.driver,
       PaymentService: form.value.paymentService,
       Virtual: form.value.virtual,
       Event: form.value.Event,
+      id: this.id.value,
+      Upload: this.upload.value,
+      FriendCtrl: this.friendCtrl.value,
       // SecondFormGroup: this.secondFormGroup.value,
       // ThirdFormGroup: this.thirdFormGroup.value,
       // FourthFormGroup: this.fourthFormGroup.value,
@@ -280,10 +281,12 @@ fourthFormGroup: FormGroup = new FormGroup({
   // this.postService.addPost(form.value.Title)
 
 
-    this.postService.addPost(this.id.value, this.firstFormGroup.controls.Title.value, this.firstFormGroup.controls.time.value,
-      this.firstFormGroup.controls.date.value, this.firstFormGroup.controls.locationEvent.value,
+    this.postService.addPost(this.postLocation.value,
+      this.postDescription.value, this.firstFormGroup.controls.locationEvent.value,
+      this.firstFormGroup.controls.Title.value,
+        this.firstFormGroup.controls.date.value,
+      this.firstFormGroup.controls.time.value,
       this.secondFormGroup.controls.gender.value,
-      this.postDescription.value, this.postLocation.value,
        this.thirdFormGroup.controls.driver.value, this.thirdFormGroup.controls.paymentService.value,
        this.thirdFormGroup.controls.virtual.value,
         this.fourthFormGroup.controls.event.value);

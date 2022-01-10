@@ -4,11 +4,12 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 export interface Post {
-    id?: string;
+    id: string;
     PostDescription: string;
     Upload?: string;
     PostLocation?: string;
     FriendCtrl?: string[];
+    Title?: string;
     Date?: string;
     Time?: string;
     LocationEvent?: string;
@@ -17,7 +18,6 @@ export interface Post {
     PaymentService?: boolean;
     Virtual?: boolean;
     Event?: string;
-    Title?: string;
     // SecondFormGroup?: string;
     // ThirdFormGroup?: string;
     // FourthFormGroup?: string;
@@ -35,22 +35,23 @@ private posts: Post[] = [];
 private postsUpdated = new ReplaySubject<Post[]>();
 constructor(private http: HttpClient) {}
 
-getPosts(): void{
+getPosts(){
     this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts')
         .pipe(map((postData) => {
             return postData.posts.map( post => {
                 return {
-                    id: post._id,
-                    PostDescription: post.postDescription,
-                    PostLocation: post.postLocation,
-                    Title: post.title,
-                    Date: post.date,
-                    Time: post.time,
-                    Gender: post.gender,
-                    Driver: post.driver,
-                    PaymentService: post.paymentService,
-                    Virtual: post.virtual,
-                    Event: post.event,
+                    Title: post.Title,
+                    PostDescription: post.PostDescription,
+                    PostLocation: post.PostLocation,
+                    LocationEvent: post.LocationEvent,
+                    Time: post.Time,
+                    Date: post.Date,
+                    Gender: post.Gender,
+                    Driver: post.Driver,
+                    PaymentService: post.PaymentService,
+                    Virtual: post.Virtual,
+                    Event: post.Event,
+                    id: post._id
                  };
         });
     }))
@@ -64,14 +65,15 @@ getPosts(): void{
     getPostUpdateListener(): any {
         return this.postsUpdated.asObservable();
     }
-    addPost(id: string, PostLocation: string, PostDescription?: string, LocationEvent?: string, Title?: string, Date?: string,
-            Time?: string, Gender?: string, Driver?: boolean, PaymentService?: boolean, Virtual?: boolean, Event?: string
+    addPost( PostLocation: string, PostDescription?: string, LocationEvent?: string, Title?: string, Date?: string,
+             Time?: string, Gender?: string, Driver?: boolean, PaymentService?: boolean, Virtual?: boolean, Event?: string
         ): any {
-        const post: Post = {id, PostDescription, LocationEvent, Title, PostLocation, Date,
-             Time, Gender, Driver, PaymentService, Virtual, Event };
-        this.http.post<{ message: string}>('http://localhost:3000/api/posts', post)
+        const post: Post = {id: null, Title, PostDescription, PostLocation, LocationEvent,
+             Time, Date, Gender, Driver, PaymentService, Virtual, Event };
+        this.http.post<{ message: string, postId: string}>('http://localhost:3000/api/posts', post)
         .subscribe(responseData => {
-            console.log(responseData.message);
+            const id = responseData.postId;
+            post.id = id;
             this.posts.push(post);
             this.postsUpdated.next([...this.posts]);
         });
@@ -80,7 +82,9 @@ getPosts(): void{
     deletePost(postId: string): any {
         this.http.delete('http://localhost:3000/api/posts/' + postId)
             .subscribe(() => {
-                console.log('Deleted!');
+                const updatedPosts = this.posts.filter(post => post.id !== postId );
+                this.posts = updatedPosts;
+                this.postsUpdated.next([...this.posts]);
             });
     }
     // setPost(post: Post): void {

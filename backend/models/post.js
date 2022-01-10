@@ -9,6 +9,7 @@ const postSchema = mongoose.Schema({
     Date: { type: String, require: false},
     Gender:  { type: String, require: false},
     Driver: { type: Boolean, require: false},
+    PaymentService: { type: Boolean, require: false},
     Virtual: { type: Boolean, require: false},
     Event: { type: String, require: false},
 });

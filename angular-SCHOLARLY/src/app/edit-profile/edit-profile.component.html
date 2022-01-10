@@ -282,12 +282,12 @@
           </div>
           <div class="rowBriefCardBox">
 <!--gList | slice:g:g+1; index as g  if want displayed one at a time -->
-<div class="rowBriefCard">
+<div class="rowBriefCard" *ngFor="let group of posts | slice:g:g+1; index as g ">
           <app-card-brief class="center" [ngClass]="posts.indexOf(group) === g ? 'outline' : '' "
           
-          *ngFor="let group of posts ">
+          >
 
-            {{group}}
+       
             
           </app-card-brief>
           
@@ -301,11 +301,11 @@
           <div class="column1" [ngClass]="posts.length == 0 ? 'show' : 'hide' ">
             <div class="row"> No Posts Made</div><i class="fas fa-ghost  centerR"></i>
           </div>
-          <div class="groups-j" [ngClass]="posts.length == 0 ? 'hide' : 'show' ">
+          <div class="groups-j" *ngFor="let post of posts | slice:p:p+1; index as p" [ngClass]="posts.length == 0 ? 'hide' : 'show' ">
 
 
 
-            <div class="row" *ngFor="let post of posts">
+            <div class="row" >
               <div class="words">
                 <div class="row">
                   <!-- <div class="counter" [ngClass]="pList.length == 0 ? 'hide' : 'show' " matBadgePosition="above"
@@ -339,7 +339,9 @@
               </div>
             </div>
 
-            <app-card *ngFor="let post of posts | slice:p:p+1; index as p" class="fit">{{post}}</app-card>
+            <app-card  class="fit"></app-card>
+            
+
           </div>
         </div>
 
