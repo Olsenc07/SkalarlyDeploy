@@ -1,5 +1,5 @@
 <form  class="entire-page" (ngSubmit)="onFormSubmit(postForm)" #postForm="ngForm" >
-<!-- [formGroup]="postForm" -->
+<!--  -->
   <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
     <mat-tab disabled label="Step 1" > 
 
@@ -59,9 +59,6 @@
 <!-- Step 1 -->
 
     <div class="centerL" *ngIf="postDescription.value || upload.value ">Where do you want your post?
-
-      
-
     </div>
     <div class="selection_styles" *ngIf="postDescription.value || upload.value ">
     <mat-selection-list #options [multiple]="false">
@@ -137,17 +134,15 @@
 
       <!-- Step1 -->
       <mat-vertical-stepper [linear]="isLinear" #stepper>
-
-
-  <mat-step [stepControl]="firstFormGroup" class="column_">
-          <form [formGroup]="firstFormGroup">
+  <mat-step  class="column_">
+          <form >
             <ng-template matStepLabel>When & Where</ng-template>
             <div class="column_text_counter"> 
               
               <mat-form-field class="text-input">
                 <mat-label >Title </mat-label>
                 <div matBadge="{{ 50 - (TitleLength | async) }}"></div>
-                <input matInput maxlength="50" formControlname="Title" >
+                <input matInput maxlength="50" [formControl]="Title" >
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearTitle()">
                   <mat-icon class="clear-button">close</mat-icon>
                 </button> -->
@@ -158,7 +153,7 @@
 
             <mat-form-field appearance="fill">
               <mat-label>Choose a date:</mat-label>
-              <input matInput [matDatepicker]="D" formControlname="date">
+              <input matInput [matDatepicker]="D" [formControl]="date">
               <mat-datepicker-toggle matSuffix [for]="D"></mat-datepicker-toggle>
               <mat-datepicker #D></mat-datepicker>
             </mat-form-field>
@@ -166,7 +161,7 @@
             <div class="default-time-example">
               <mat-form-field appearance="fill">
                 <mat-label>Time:</mat-label>
-                <input matInput formControlname="time" [ngxTimepicker]="toggleTimepicker">
+                <input matInput [formControl]="time" [ngxTimepicker]="toggleTimepicker">
                 <ngx-material-timepicker-toggle matSuffix [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
                 <ngx-material-timepicker #toggleTimepicker>
                 </ngx-material-timepicker>
@@ -175,7 +170,7 @@
 
             <mat-form-field appearance="fill">
               <mat-label>Location:</mat-label>
-              <input matInput formControlname="locationEvent">
+              <input matInput [formControl]="locationEvent">
 
             </mat-form-field>
             <div>
@@ -184,19 +179,19 @@
           </form>
         </mat-step>
         <!-- Step 2 -->
-        <mat-step [stepControl]="secondFormGroup" >
-          <form [formGroup]="secondFormGroup">
+        <mat-step  >
+          <form >
             <ng-template matStepLabel>Whos Welcome To Join</ng-template>
 
             <div class="trioD">
-              <mat-radio-group aria-label="Select an option" formControlname="gender">
+              <mat-radio-group aria-label="Select an option" [formControl]="gender">
 
                 <div class="margin">
                   <div class="genderIcon_Name">
                   <span class="material-icons">
                     female
                     </span>
-                    <div class="textP">  Female</div>
+                    <div class="textP"> Female</div>
                   </div>
                   <mat-radio-button [disableRipple]="true" class="btn_" value="female"></mat-radio-button>
                 </div>
@@ -229,8 +224,8 @@
           </form>
         </mat-step>
         <!-- Step3 -->
-        <mat-step [stepControl]="thirdFormGroup" >
-          <form [formGroup]="thirdFormGroup" >
+        <mat-step  >
+          <form >
             <ng-template matStepLabel>Services</ng-template>
             <div class="display">
 
@@ -240,7 +235,7 @@
                 <div class="genderIcon_Name">
                 <span class="material-icons display">
                   videocam
-                  <mat-checkbox [disableRipple]="true" formControlname="virtual"></mat-checkbox>
+                  <mat-checkbox [disableRipple]="true" [formControl]="virtual"></mat-checkbox>
                   </span>
                 <div class="textP"> Virtual event</div>
                 </div>
@@ -251,7 +246,7 @@
                 <div class="genderIcon_Name">
                 <span class="material-icons display">
                   directions_car
-                  <mat-checkbox [disableRipple]="true"  formControlname="driver"></mat-checkbox>
+                  <mat-checkbox [disableRipple]="true"  [formControl]="driver"></mat-checkbox>
                   </span>
                   
                 <div class="textP"> Transportation available</div>
@@ -263,7 +258,7 @@
                 <div class="genderIcon_Name">
                 <span class="material-icons display">
                   attach_money
-                  <mat-checkbox [disableRipple]="true" formControlname="paymentService"></mat-checkbox>
+                  <mat-checkbox [disableRipple]="true" [formControl]="paymentService"></mat-checkbox>
                   </span>    
                                 
                 <div class="textP">Payment service</div>
@@ -283,11 +278,11 @@
           </form>
         </mat-step>
         <!-- Step4 -->
-        <mat-step [stepControl]="fourthFormGroup">
-          <form [formGroup]="fourthFormGroup">
+        <mat-step >
+          <form>
             <ng-template matStepLabel>Type Of Event</ng-template>
 
-            <mat-radio-group aria-label="Select an option" formControlname="event">
+            <mat-radio-group aria-label="Select an option" [formControl]="event">
               
 
               <div class="column">

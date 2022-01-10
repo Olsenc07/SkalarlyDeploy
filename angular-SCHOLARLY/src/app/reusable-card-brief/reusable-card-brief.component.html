@@ -36,30 +36,19 @@
 
                         <mat-card-title class="postTitle textSizeTit">
                             {{ post.Title}}
-
                         </mat-card-title>
-
-                 
-    
                                     <div class="postLocation textSize" *ngIf="post.PostLocation">
                                     <!-- Location -->
                                     {{post.PostLocation}}
                                   </div>
-    
                                   <div class="postLocation textSize" *ngIf="post.LocationEvent">
-                                
                                     {{post.LocationEvent}}
                                   </div>
-                             
-    
                                         <div class="displayT t" *ngIf="post.Date">
                                             {{post.Date | date:"longDate"}}
                                         </div>
                                         <div class="displayT t" *ngIf="post.Time">
                                             {{post.Time}}</div>
-                                       
-    
-    
                                     <!-- Import the boolean icons with no color originally then the what did user say.. if null then display="none" -->
                                     <div class="row">
                                     <div class="booleans">

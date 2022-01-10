@@ -100,26 +100,26 @@ validateBtn = new FormGroup({
 });
 
 
-firstFormGroup: FormGroup  = new FormGroup({
-  Title:  new FormControl(''),
-  date: new FormControl(''),
-  time: new FormControl(''),
-  locationEvent:  new FormControl(''),
-});
+// firstFormGroup: FormGroup  = new FormGroup({
+  Title: FormControl =  new FormControl('');
+  date: FormControl =  new FormControl('');
+  time: FormControl =  new FormControl('');
+  locationEvent: FormControl =  new FormControl('');
+// });
 
-secondFormGroup: FormGroup  = new FormGroup({
-  gender:  new FormControl(''),
-});
+// secondFormGroup: FormGroup  = new FormGroup({
+  gender: FormControl =  new FormControl('');
+// });
 
-thirdFormGroup: FormGroup  = new FormGroup({
-  driver:  new FormControl(false),
-  paymentService:  new FormControl(false),
-  virtual:  new FormControl(false),
-});
+// thirdFormGroup: FormGroup  = new FormGroup({
+  driver: FormControl =  new FormControl(false);
+  paymentService: FormControl =  new FormControl(false);
+  virtual: FormControl =  new FormControl(false);
+// });
 
-fourthFormGroup: FormGroup  = new FormGroup({
-  event: new FormControl(''),
-});
+// fourthFormGroup: FormGroup  = new FormGroup({
+  event: FormControl = new FormControl('');
+// });
   // firstFormGroup: FormGroup;
   // secondFormGroup: FormGroup;
   // thirdFormGroup: FormGroup;
@@ -189,7 +189,7 @@ fourthFormGroup: FormGroup  = new FormGroup({
   ngOnInit(): any {
     this.searchOptions = this.searchListService.getSearchOptions();
     // Doesn't keep track of value
-    this.firstFormGroup.get('Title').valueChanges.subscribe((v) => this.TitleLength.next(v.length));
+    this.Title.valueChanges.subscribe((v) => this.TitleLength.next(v.length));
     //
     if (window.screen.width < 1025){
       this.minwidth = false;
@@ -243,12 +243,12 @@ fourthFormGroup: FormGroup  = new FormGroup({
   }
 
 
-  onFormSubmit(form: NgForm): void {
+  onFormSubmit(form: NgForm) {
     // TODO: wire up to post request
-    console.log(this.firstFormGroup.value);
-    console.log(this.secondFormGroup.value);
-    console.log(this.thirdFormGroup.value);
-    console.log(this.fourthFormGroup.value);
+    console.log(this.Title.value);
+    // console.log(this.secondFormGroup.value);
+    // console.log(this.thirdFormGroup.value);
+    // console.log(this.fourthFormGroup.value);
     console.log(this.postDescription.value);
     console.log(this.postLocation.value);
     // console.log(form.controls);
@@ -274,22 +274,16 @@ fourthFormGroup: FormGroup  = new FormGroup({
       // FourthFormGroup: this.fourthFormGroup.value,
     };
 
-    // this is old connection
-    // this.postService.setPost(post);
-
-    // New one
-  // this.postService.addPost(form.value.Title)
-
 
     this.postService.addPost(this.postLocation.value,
-      this.postDescription.value, this.firstFormGroup.controls.locationEvent.value,
-      this.firstFormGroup.controls.Title.value,
-        this.firstFormGroup.controls.date.value,
-      this.firstFormGroup.controls.time.value,
-      this.secondFormGroup.controls.gender.value,
-       this.thirdFormGroup.controls.driver.value, this.thirdFormGroup.controls.paymentService.value,
-       this.thirdFormGroup.controls.virtual.value,
-        this.fourthFormGroup.controls.event.value);
+      this.postDescription.value, this.locationEvent.value,
+      this.Title.value,
+      this.date.value,
+      this.time.value,
+      this.gender.value,
+       this.driver.value, this.paymentService.value,
+       this.virtual.value,
+        this.event.value);
     form.resetForm();
   }
 

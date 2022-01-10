@@ -238,7 +238,7 @@ export class SearchListService {
         break;
       case SearchValues.HOUSING:
         specificOptions = [
-          'Buy & Sell',
+          // 'Buy & Sell',
           'ISO Residence',
           'Questions & Advice',
           'Roomate Wanted',
@@ -246,7 +246,7 @@ export class SearchListService {
         ];
         break;
       case SearchValues.MISCELL_BUY_SELL:
-        specificOptions = ['Looking To Buy/Sell', 'Miscellaneous'];
+        specificOptions = ['Buy & Sell', 'Miscellaneous'];
         break;
       case SearchValues.SCHOOL_WORK:
         specificOptions = [

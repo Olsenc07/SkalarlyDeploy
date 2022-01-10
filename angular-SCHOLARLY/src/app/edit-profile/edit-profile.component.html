@@ -283,12 +283,7 @@
           <div class="rowBriefCardBox">
 <!--gList | slice:g:g+1; index as g  if want displayed one at a time -->
 <div class="rowBriefCard" *ngFor="let group of posts | slice:g:g+1; index as g ">
-          <app-card-brief class="center" [ngClass]="posts.indexOf(group) === g ? 'outline' : '' "
-          
-          >
-
-       
-            
+          <app-card-brief class="center" [ngClass]="posts.indexOf(group) === g ? 'outline' : '' " >
           </app-card-brief>
           
         </div>
@@ -338,10 +333,9 @@
                 </div>
               </div>
             </div>
-
+           
             <app-card  class="fit"></app-card>
-            
-
+         
           </div>
         </div>
 
