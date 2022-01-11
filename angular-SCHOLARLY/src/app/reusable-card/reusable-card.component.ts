@@ -17,6 +17,7 @@ export class ReusableCardComponent implements OnInit{
     posts: Post[] = [];
     private postsSub: Subscription;
 
+    isLoading = false;
 
     // post = PostService.post$$;
     profile = StoreService.profile$$;
@@ -59,10 +60,12 @@ export class ReusableCardComponent implements OnInit{
                 public postService: PostService) { }
 
     ngOnInit(): void {
+         this.isLoading = true;
          this.postService.getPosts();
          this.postsSub = this.postService.getPostUpdateListener()
           .subscribe((posts: Post[]) => {
           this.posts = posts;
+          this.isLoading = false;
           console.log(this.posts);
         });
       }

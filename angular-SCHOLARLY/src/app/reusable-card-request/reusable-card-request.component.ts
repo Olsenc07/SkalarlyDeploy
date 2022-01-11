@@ -12,7 +12,8 @@ export class ReusableCardRequestComponent implements OnInit {
     storeProfiles: Profile[] = [];
     profiles: Profile[] = [];
     private profilesSub: Subscription;
-
+    
+    isLoading = false;
 
    
     ids = StoreService.ids;
@@ -21,10 +22,12 @@ export class ReusableCardRequestComponent implements OnInit {
     constructor(public storeService: StoreService) { }
 
     ngOnInit() {
+        this.isLoading = true;
         this.storeService.getProfiles();
         this.profilesSub = this.storeService.getProfileUpdateListener()
          .subscribe((profiles: Profile[]) => {
-             this.profiles = profiles;
+            this.isLoading = false;
+            this.profiles = profiles;
          });
     }
 }
@@ -41,7 +44,7 @@ export class ReusableCardRecommendationComponent implements OnInit {
     profiles: Profile[] = [];
     private profilesSub: Subscription;
 
-
+    isLoading = false;
 
 
     ids = StoreService.ids;
@@ -50,10 +53,12 @@ export class ReusableCardRecommendationComponent implements OnInit {
     constructor(public storeService: StoreService) { }
 
     ngOnInit() {
+        this.isLoading = true;
         this.storeService.getProfiles();
         this.profilesSub = this.storeService.getProfileUpdateListener()
          .subscribe((profiles: Profile[]) => {
-             this.profiles = profiles;
+            this.isLoading = false;
+            this.profiles = profiles;
          });
     }
 }

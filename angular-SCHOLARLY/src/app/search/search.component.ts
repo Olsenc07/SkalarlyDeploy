@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { SearchListService } from '../services/search.service';
 import { Post, PostService } from '../services/post.service';
 import { StoreService, Profile } from '../services/store.service';
@@ -22,30 +22,13 @@ export class SearchComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription;
 
+  post: Post;
+
   storeProfiles: Profile[] = [];
   profiles: Profile[] = [];
   private profilesSub: Subscription;
 
-
-
-
-  // Should pull in from data base(with the cards"reccomendations"), adds and reccomendations of whatever I decide
-  // make sure they display nicely and one add doesnt get way more time then others
-  // cards will be 'https://.../..' etc from a database
-  // If needed make adds the same card format. So the same look its sidplayed
-  // just filled with either recomendations "friend request card style" or add in this style
-  // Check mark could take you to that adds website, x could remove it from list
-  // or just not be there.. course drop down display:none. bio could be ad info or whstever and logo in profile pic
-  // Larger adds get main post cards filled.
-  feeds = [{}, { }, {}, {}, {}, { }, {}, {}, {}, { }, {}, {},
-
-  ];
-
-
-
-
-  // Mock list but these are needed to fill app-card-request in ngFor
-  // Will be pulled from back end, but how does the selector know to fill???
+  isLoading = false;
 
 
   postLocationMain: FormControl = new FormControl('');
@@ -75,19 +58,22 @@ export class SearchComponent implements OnInit {
     public dialog: MatDialog,
     public searchListService: SearchListService,
     private router: Router,
+    public route: ActivatedRoute,
     public postService: PostService,
     public storeService: StoreService,
   ) { }
 
   ngOnInit() {
-    this.searchOptions = this.searchListService.getSearchOptions();
-    this.postService.getPosts();
-    this.postsSub = this.postService.getPostUpdateListener()
+        this.isLoading = true;
+        this.searchOptions = this.searchListService.getSearchOptions();
+        this.postService.getPosts();
+        this.postsSub = this.postService.getPostUpdateListener()
       .subscribe((posts: Post[]) => {
       this.posts = posts;
+      this.isLoading = false;
     });
-    this.storeService.getProfiles();
-    this.profilesSub = this.storeService.getProfileUpdateListener()
+        this.storeService.getProfiles();
+        this.profilesSub = this.storeService.getProfileUpdateListener()
          .subscribe((profiles: Profile[]) => {
              this.profiles = profiles;
          });

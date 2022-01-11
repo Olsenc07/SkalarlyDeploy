@@ -13,6 +13,8 @@ export class ReusableCardBriefComponent implements OnInit {
     posts: Post[] = [];
     private postsSub: Subscription;
 
+    isLoading = false;
+
     profile = StoreService.profile$$;
     // post = PostService.post$$;
     id = StoreService.userId$$;
@@ -20,10 +22,12 @@ export class ReusableCardBriefComponent implements OnInit {
     constructor(public postService: PostService) { }
 
     ngOnInit(): void {
+        this.isLoading = false;
         this.postService.getPosts();
         this.postsSub = this.postService.getPostUpdateListener()
          .subscribe((posts: Post[]) => {
          this.posts = posts;
+         this.isLoading = false;
          console.log(this.posts);
        });
      }

@@ -35,7 +35,7 @@ private posts: Post[] = [];
 private postsUpdated = new ReplaySubject<Post[]>();
 constructor(private http: HttpClient) {}
 
-getPosts(){
+getPosts(): any {
     this.http.get<{message: string, posts: any}>('http://localhost:3000/api/posts')
         .pipe(map((postData) => {
             return postData.posts.map( post => {

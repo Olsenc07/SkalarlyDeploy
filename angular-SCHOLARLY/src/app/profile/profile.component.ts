@@ -19,6 +19,8 @@ export class ProfileComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription;
 
+  isLoading = false;
+
   // Sign up and edit profile connections
   profile = StoreService.profile$$;
   Id = StoreService.userId$$;
@@ -73,10 +75,12 @@ export class ProfileComponent implements OnInit {
     this.following = !this.following;
   }
   ngOnInit(): any {
+    this.isLoading = true;
     this.postService.getPosts();
     this.postsSub = this.postService.getPostUpdateListener()
       .subscribe((posts: Post[]) => {
       this.posts = posts;
+      this.isLoading = false;
     });
 
     // this.Com = this.Com.map(code => code.toUpperCase()).sort();

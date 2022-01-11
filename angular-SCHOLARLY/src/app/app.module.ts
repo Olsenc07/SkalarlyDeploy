@@ -38,6 +38,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 import { environment } from 'src/environments/environment';
@@ -161,7 +162,8 @@ import { StoreService } from './services/store.service';
     MatCardModule,
     MatExpansionModule,
     MatSnackBarModule,
-    ScrollingModule
+    ScrollingModule,
+    MatProgressSpinnerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SearchListService, PostService, ClassListService, StoreService],

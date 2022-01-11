@@ -16,14 +16,16 @@ export class ReusableCardUserComponent implements OnInit {
     profile = StoreService.profile$$;
     id = StoreService.userId$$;
 
-
+    isLoading = false;
     constructor(public storeService: StoreService) { }
 
     ngOnInit() {
+        this.isLoading = true;
         this.storeService.getProfiles();
         this.profilesSub = this.storeService.getProfileUpdateListener()
          .subscribe((profiles: Profile[]) => {
-             this.profiles = profiles;
+            this.isLoading = false;
+            this.profiles = profiles;
          });
     }
 
@@ -39,14 +41,18 @@ export class ReusableCardMessageComponent implements OnInit {
     storeProfiles: Profile[] = [];
     profiles: Profile[] = [];
     private profilesSub: Subscription;
+
+    isLoading = false;
     // Gets the id == id to fill mutual friends list from data base
     profile = StoreService.profile$$;
     constructor(public storeService: StoreService) { }
 
     ngOnInit() {
+        this.isLoading = true;
         this.storeService.getProfiles();
         this.profilesSub = this.storeService.getProfileUpdateListener()
          .subscribe((profiles: Profile[]) => {
+             this.isLoading = false;
              this.profiles = profiles;
          });
     }
@@ -62,14 +68,18 @@ export class ReusableCardMutualComponent implements OnInit{
     storeProfiles: Profile[] = [];
     profiles: Profile[] = [];
     private profilesSub: Subscription;
+
+    isLoading = false;
     // Gets the id == id to fill mutual friends list from data base
     profile = StoreService.profile$$;
     constructor(public storeService: StoreService) { }
 
     ngOnInit() {
+        this.isLoading = true;
         this.storeService.getProfiles();
         this.profilesSub = this.storeService.getProfileUpdateListener()
          .subscribe((profiles: Profile[]) => {
+             this.isLoading = false;
              this.profiles = profiles;
          });
     }

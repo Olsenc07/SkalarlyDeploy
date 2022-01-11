@@ -292,7 +292,11 @@
     display: none;
   }
 }
-
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 7%;
+}
 .title-categories {
   display: flex;
   flex-direction: column;

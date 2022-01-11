@@ -1,6 +1,10 @@
-<mat-card class="row1" *ngFor="let profile of profiles">
+<div class="spinner" *ngIf="isLoading">
+    <mat-spinner ></mat-spinner>
+  </div>
 
-    <div class="column">
+  
+<mat-card class="row1" *ngFor="let profile of profiles">
+    <div class="column" *ngIf="!isLoading">
         <div class="row">
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="profile.profPic">
