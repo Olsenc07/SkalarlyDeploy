@@ -62,7 +62,7 @@ export class PostPageComponent implements OnInit {
   public specificOptions: string[];
   public searchOptions: SearchOption[];
 
-  url: string[];
+  url: string;
 
   selectedIndex = 0;
 
@@ -167,18 +167,21 @@ validateBtn = new FormGroup({
     this.dialog.open(ServicesElementsComponent);
   }
 
-  imagePreview(event: any): void {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
+  onImagePicked(event: Event): void {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.upload.updateValueAndValidity();
+    console.log(file);
+    console.log(this.upload.value);
+    const reader = new FileReader();
+    reader.onload = (Event: any) => {
+      this.url = reader.result as string;
+    };
+    reader.readAsDataURL(file);
 
-      reader.onload = (Event: any) => { // called once readAsDataURL is completed
-        console.log(Event);
-        this.url = Event.target.result;
-      };
-    }
   }
+
+
   clearUpload(): void {
     this.upload.setValue('');
     document.getElementById('upload').removeAttribute('src');

@@ -1,5 +1,5 @@
 <form  class="entire-page" (ngSubmit)="onFormSubmit(postForm)" #postForm="ngForm" >
-<!--  -->
+
   <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
     <mat-tab disabled label="Step 1" > 
 
@@ -40,16 +40,15 @@
         <button type="button" class="cameraIcon" mat-fab (click)="uploadFile()">
           <div class="material-icons Photo">
             add_a_photo
-
             <input #fileInput id="fileInput" class="uploadD" accept="image/* video/*" type="file"
-              (change)="imagePreview($event)" [formControl]="upload" multiple>
+              (change)="onImagePicked($event)" [formControl]="upload" multiple>
           </div>
         </button>
       </div>
       <!-- Only when upload holds a value -->
       <div class="contents">
         <div class="imgBox">
-          <img [src]="url" id="upload" [ngClass]="upload.value ? 'show' : 'hide' ">
+          <img [src]="url"  [ngClass]="upload.value ? 'show' : 'hide' ">
         </div>
       </div>
 
