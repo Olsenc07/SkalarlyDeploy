@@ -20,7 +20,7 @@ import { map } from 'rxjs/operators';
 import { SearchListService } from '../services/search.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Post, PostService } from '../services/post.service';
-import { Title } from '@angular/platform-browser';
+import { mimeType } from './mime-type.validator';
 
 const moment = _moment;
 
@@ -85,7 +85,10 @@ export class PostPageComponent implements OnInit {
   isLinear = false;
   // Title: FormControl = new FormControl('');
   public TitleLength = new BehaviorSubject(0);
-  upload: FormControl = new FormControl('');
+  upload: FormControl = new FormControl(null, {
+  validators: [Validators.required],
+  asyncValidators: [mimeType]
+});
   postLocationMain: FormControl = new FormControl('');
   postLocation: FormControl = new FormControl('');
   postDescription: FormControl = new FormControl('');
@@ -168,17 +171,16 @@ validateBtn = new FormGroup({
   }
 
 
-  onImagePicked(event: Event): void {
+  onImagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
     this.upload.updateValueAndValidity();
     console.log(file);
     console.log(this.upload.value);
     const reader = new FileReader();
-    reader.onload = (Event: any) => {
+    reader.onload = () => {
       this.url = reader.result as string;
     };
     reader.readAsDataURL(file);
-
   }
 
 
@@ -247,6 +249,9 @@ validateBtn = new FormGroup({
 
 
   onFormSubmit(form: NgForm) {
+    if (this.upload.invalid){
+      return;
+    }
     // TODO: wire up to post request
     console.log(this.Title.value);
     // console.log(this.secondFormGroup.value);
