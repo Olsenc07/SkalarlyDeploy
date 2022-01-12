@@ -79,7 +79,6 @@
   color: gray;
   font-size: large;
 }
-
 .row {
   display: flex;
   flex-direction: row;
@@ -99,7 +98,11 @@
   flex-direction: row;
   width: 100%;
 }
-
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 7%;
+}
 .profilePic {
   display: flex;
   border-radius: 50%;
