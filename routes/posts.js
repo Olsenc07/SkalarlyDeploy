@@ -41,7 +41,7 @@ router.get("", (req, res, next) => {
 });
 
 // Post additions
-router.post("", multer(stoarge).single('upload'), (req, res, next) => {
+router.post("", multer(storage).single('upload'), (req, res, next) => {
     const post = new Post({
         Title: req.body.Title,
         PostDescription: req.body.PostDescription,
