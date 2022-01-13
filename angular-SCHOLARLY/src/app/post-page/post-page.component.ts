@@ -98,9 +98,9 @@ export class PostPageComponent implements OnInit {
   // Temporary
   id: FormControl = new FormControl('');
 
-validateBtn = new FormGroup({
-  postLocation: this.postLocation,
-});
+// validateBtn = new FormGroup({
+//   postLocation: this.postLocation,
+// });
 
 
 // firstFormGroup: FormGroup  = new FormGroup({
@@ -115,9 +115,9 @@ validateBtn = new FormGroup({
 // });
 
 // thirdFormGroup: FormGroup  = new FormGroup({
-  driver: FormControl =  new FormControl(false);
-  paymentService: FormControl =  new FormControl(false);
-  virtual: FormControl =  new FormControl(false);
+  driver: FormControl =  new FormControl('');
+  paymentService: FormControl =  new FormControl('');
+  virtual: FormControl =  new FormControl('');
 // });
 
 // fourthFormGroup: FormGroup  = new FormGroup({
@@ -137,26 +137,7 @@ validateBtn = new FormGroup({
       map((friend: string | null) => friend ? this._filter(friend) : this.allFriends.slice()));
 
 
-    // this.firstFormGroup = this.fb.group({
-    //   Title: new FormControl(''),
-    //   date: new FormControl(''),
-    //   time: new FormControl(''),
-    //   locationEvent: new FormControl(''),
-    // });
-
-    // this.secondFormGroup = this.fb.group({
-    //   gender: new FormControl(''),
-    // });
-
-    // this.thirdFormGroup = this.fb.group({
-    //   driver: new FormControl(false),
-    //   paymentService: new FormControl(false),
-    //   virtual: new FormControl(false),
-    // });
-
-    // this.fourthFormGroup = this.fb.group({
-    //   event: new FormControl(''),
-    // });
+  
 
   }
 
@@ -252,20 +233,17 @@ validateBtn = new FormGroup({
     if (this.upload.invalid){
       return;
     }
-    // TODO: wire up to post request
     console.log(this.Title.value);
-    // console.log(this.secondFormGroup.value);
-    // console.log(this.thirdFormGroup.value);
-    // console.log(this.fourthFormGroup.value);
     console.log(this.postDescription.value);
     console.log(this.postLocation.value);
-    // console.log(form.controls);
+    console.log(this.upload.value);
+
 
 
     const post: Post = {
       Title: form.value.Title,
       PostDescription: form.value.postDescription,
-      PostLocation: form.value.postDescription,
+      PostLocation: form.value.postLocation,
       LocationEvent: form.value.locationEvent,
       Time: form.value.time,
       Date: form.value.date,
@@ -284,7 +262,8 @@ validateBtn = new FormGroup({
 
 
     this.postService.addPost(this.postLocation.value,
-      this.postDescription.value, this.locationEvent.value,
+      this.postDescription.value, this.upload.value,
+      this.locationEvent.value,
       this.Title.value,
       this.date.value,
       this.time.value,

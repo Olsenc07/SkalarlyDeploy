@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
         if (isValid){
             error = null;
         }
-        cb(error, 'backend/images');
+        cb(error, '/Users/chaseolsen/angular_scholarly_fs/backend/images');       
     },
     filename: (req, file, cb) => {
         const name = file.originalname.toLowerCase().split('').join('-');
@@ -41,7 +41,8 @@ router.get("", (req, res, next) => {
 });
 
 // Post additions
-router.post("", multer(storage).single('upload'), (req, res, next) => {
+router.post("", multer({storage: storage}).single('Upload'), (req, res, next) => {
+    const url = req.protocol + '://' + req.get('host');
     const post = new Post({
         Title: req.body.Title,
         PostDescription: req.body.PostDescription,
@@ -54,11 +55,29 @@ router.post("", multer(storage).single('upload'), (req, res, next) => {
         PaymentService: req.body.PaymentService,
         Virtual: req.body.Virtual,
         Event: req.body.Event,
+        ImagePath: url + '/images/' + req.file.filename
     });
     post.save().then(createdPost => {
         res.status(201).json({
             message: 'Post added successfully',
-            postId: createdPost._id
+            post: {
+                id: createdPost._id,
+                ...createdPost,
+                // Title: createdPost.Title,
+                // PostDescription: createdPost.PostDescription,
+                // PostLocation: createdPost.PostLocation,
+                // LocationEvent: createdPost.LocationEvent,
+                // Time: createdPost.Time,
+                // Date: createdPost.Date,
+                // Gender: createdPost.Gender,
+                // Driver: createdPost.Driver,
+                // PaymentService: createdPost.PaymentService,
+                // Virtual: createdPost.Virtual,
+                // Event: createdPost.Event,
+                // ImagePath: createdPost.ImagePath
+
+            }
+            
     });
     });
 });

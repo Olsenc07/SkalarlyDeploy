@@ -40,7 +40,7 @@
         <button type="button" class="cameraIcon" mat-fab (click)="uploadFile()">
           <div class="material-icons Photo">
             add_a_photo
-            <input #fileInput id="fileInput" class="uploadD" type="file"
+            <input #fileInput id="fileInput" class="uploadD" type="file" accept=".png, .jpg, .jpeg"
               (change)="onImagePicked($event)" [formControl]="upload" multiple>
           </div>
         </button>
@@ -89,7 +89,7 @@
     </div>
 
     <div id="nextBtn" class="btmPad" *ngIf="(postDescription.value || upload.value) && postLocationMain.value " >
-      <button [disabled]="!validateBtn.valid"  mat-raised-button type="button" class="final_step_btn" 
+      <button  mat-raised-button type="button" class="final_step_btn" 
        (click)="changeTab()">
         Next Step
       </button>

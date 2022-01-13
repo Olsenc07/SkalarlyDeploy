@@ -145,7 +145,7 @@
       <!-- *ngFor="let show of showCases" -->
       <div class="upload" *ngIf="post.Upload">
 
-        <img class="middle-card" src="{ { post.Upload  } }">
+        <img class="middle-card" [src]="post.ImagePath">
       </div>
 
 

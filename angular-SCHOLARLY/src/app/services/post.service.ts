@@ -14,10 +14,11 @@ export interface Post {
     Time?: string;
     LocationEvent?: string;
     Gender?: string;
-    Driver?: boolean;
-    PaymentService?: boolean;
-    Virtual?: boolean;
+    Driver?: string;
+    PaymentService?: string;
+    Virtual?: string;
     Event?: string;
+    ImagePath?: string;
     // SecondFormGroup?: string;
     // ThirdFormGroup?: string;
     // FourthFormGroup?: string;
@@ -51,7 +52,8 @@ getPosts(): any {
                     PaymentService: post.PaymentService,
                     Virtual: post.Virtual,
                     Event: post.Event,
-                    id: post._id
+                    id: post._id,
+                    ImagePath: post.ImagePath,
                  };
         });
     }))
@@ -65,15 +67,43 @@ getPosts(): any {
     getPostUpdateListener(): any {
         return this.postsUpdated.asObservable();
     }
-    addPost( PostLocation: string, PostDescription?: string, LocationEvent?: string, Title?: string, Date?: string,
-             Time?: string, Gender?: string, Driver?: boolean, PaymentService?: boolean, Virtual?: boolean, Event?: string
-        ): any {
-        const post: Post = {id: null, Title, PostDescription, PostLocation, LocationEvent,
-             Time, Date, Gender, Driver, PaymentService, Virtual, Event };
-        this.http.post<{ message: string, postId: string}>('http://localhost:3000/api/posts', post)
+    addPost( PostLocation: string, PostDescription?: string, Upload?: File, LocationEvent?: string, Title?: string, Date?: string,
+             Time?: string, Gender?: string, Driver?: string, PaymentService?: string, Virtual?: string, Event?: string): any {
+
+                const postData = new FormData();
+                postData.append('Title', Title);
+                postData.append('PostDescription', PostDescription);
+                postData.append('PostLocation', PostLocation);
+                postData.append('LocationEvent', LocationEvent);
+                postData.append('Time', Time);
+                postData.append('Date', Date);
+                postData.append('Gender', Gender);
+                postData.append('Driver', Driver);
+                postData.append('PaymentService', PaymentService);
+                postData.append('Virtual', Virtual);
+                postData.append('Event', Event);
+                postData.append('upload', Upload);
+
+                this.http.post<{ message: string, post: Post}>('http://localhost:3000/api/posts', postData)
         .subscribe(responseData => {
-            const id = responseData.postId;
-            post.id = id;
+            const post: Post = {
+                id: responseData.post.id,
+                Title,
+                PostDescription,
+                PostLocation,
+                LocationEvent,
+                Time,
+                Date,
+                Gender,
+                Driver,
+                PaymentService,
+                Virtual,
+                Event,
+                ImagePath: responseData.post.ImagePath,
+
+            };
+            // const id = responseData.postId;
+            // post.id = id;
             this.posts.push(post);
             this.postsUpdated.next([...this.posts]);
         });

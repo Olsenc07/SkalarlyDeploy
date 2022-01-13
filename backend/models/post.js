@@ -8,10 +8,11 @@ const postSchema = mongoose.Schema({
     Time:  { type: String, require: false},
     Date: { type: String, require: false},
     Gender:  { type: String, require: false},
-    Driver: { type: Boolean, require: false},
-    PaymentService: { type: Boolean, require: false},
-    Virtual: { type: Boolean, require: false},
+    Driver: { type: String, require: false},
+    PaymentService: { type: String, require: false},
+    Virtual: { type: String, require: false},
     Event: { type: String, require: false},
+    ImagePath: { type:String, require: false},
 });
 
 module.exports = mongoose.model('Post', postSchema);

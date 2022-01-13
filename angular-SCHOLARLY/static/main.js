@@ -5615,10 +5615,6 @@ function PostPageComponent_div_29_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Next Step ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", !ctx_r5.validateBtn.valid);
 } }
 function PostPageComponent_div_32_Template(rf, ctx) { if (rf & 1) {
     const _r35 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
@@ -5763,9 +5759,9 @@ class PostPageComponent {
         this.value = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         // Temporary
         this.id = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
-        this.validateBtn = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
-            postLocation: this.postLocation,
-        });
+        // validateBtn = new FormGroup({
+        //   postLocation: this.postLocation,
+        // });
         // firstFormGroup: FormGroup  = new FormGroup({
         this.Title = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         this.date = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
@@ -5776,31 +5772,14 @@ class PostPageComponent {
         this.gender = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         // });
         // thirdFormGroup: FormGroup  = new FormGroup({
-        this.driver = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](false);
-        this.paymentService = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](false);
-        this.virtual = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](false);
+        this.driver = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
+        this.paymentService = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
+        this.virtual = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         // });
         // fourthFormGroup: FormGroup  = new FormGroup({
         this.event = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         // Desktop tag friends
         this.filteredFriends = this.friendCtrl.valueChanges.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["map"])((friend) => friend ? this._filter(friend) : this.allFriends.slice()));
-        // this.firstFormGroup = this.fb.group({
-        //   Title: new FormControl(''),
-        //   date: new FormControl(''),
-        //   time: new FormControl(''),
-        //   locationEvent: new FormControl(''),
-        // });
-        // this.secondFormGroup = this.fb.group({
-        //   gender: new FormControl(''),
-        // });
-        // this.thirdFormGroup = this.fb.group({
-        //   driver: new FormControl(false),
-        //   paymentService: new FormControl(false),
-        //   virtual: new FormControl(false),
-        // });
-        // this.fourthFormGroup = this.fb.group({
-        //   event: new FormControl(''),
-        // });
     }
     uploadFile() {
         document.getElementById('fileInput').click();
@@ -5882,18 +5861,14 @@ class PostPageComponent {
         if (this.upload.invalid) {
             return;
         }
-        // TODO: wire up to post request
         console.log(this.Title.value);
-        // console.log(this.secondFormGroup.value);
-        // console.log(this.thirdFormGroup.value);
-        // console.log(this.fourthFormGroup.value);
         console.log(this.postDescription.value);
         console.log(this.postLocation.value);
-        // console.log(form.controls);
+        console.log(this.upload.value);
         const post = {
             Title: form.value.Title,
             PostDescription: form.value.postDescription,
-            PostLocation: form.value.postDescription,
+            PostLocation: form.value.postLocation,
             LocationEvent: form.value.locationEvent,
             Time: form.value.time,
             Date: form.value.date,
@@ -5906,7 +5881,7 @@ class PostPageComponent {
             Upload: this.upload.value,
             FriendCtrl: this.friendCtrl.value,
         };
-        this.postService.addPost(this.postLocation.value, this.postDescription.value, this.locationEvent.value, this.Title.value, this.date.value, this.time.value, this.gender.value, this.driver.value, this.paymentService.value, this.virtual.value, this.event.value);
+        this.postService.addPost(this.postLocation.value, this.postDescription.value, this.upload.value, this.locationEvent.value, this.Title.value, this.date.value, this.time.value, this.gender.value, this.driver.value, this.paymentService.value, this.virtual.value, this.event.value);
         form.resetForm();
     }
     changeTab() {
@@ -5931,7 +5906,7 @@ PostPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
                 deps: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MAT_DATE_LOCALE"], _angular_material_moment_adapter__WEBPACK_IMPORTED_MODULE_2__["MAT_MOMENT_DATE_ADAPTER_OPTIONS"]],
             },
             { provide: _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MAT_DATE_FORMATS"], useValue: MY_FORMATS },
-        ])], decls: 183, vars: 44, consts: [[1, "entire-page", 3, "ngSubmit"], ["postForm", "ngForm"], ["mat-align-tabs", "center", 1, "largest-page", 3, "selectedIndex"], ["disabled", "", "label", "Step 1"], [1, "post-descriptionD"], [1, "textB"], [1, "center_"], ["appearance", "fill", 1, "post"], ["matInput", "", "placeholder", "What would you like to say?", 3, "formControl"], [1, "column_1"], [1, "centerD"], [3, "ngClass"], ["type", "button", "mat-icon-button", "", "color", "primary", 1, "trash", 3, "click"], [1, "material-icons"], [1, "row__"], [1, "rowP"], ["type", "button", "mat-fab", "", 1, "cameraIcon", 3, "click"], [1, "material-icons", "Photo"], ["id", "fileInput", "type", "file", "multiple", "", 1, "uploadD", 3, "formControl", "change"], ["fileInput", ""], ["class", "contents", 4, "ngIf"], ["class", "centerL", 4, "ngIf"], ["class", "selection_styles", 4, "ngIf"], ["id", "nextBtn", "class", "btmPad", 4, "ngIf"], ["disabled", "", "label", "Step 2"], [1, "threeBox"], ["class", "staticBtn", 4, "ngIf"], [1, "right"], ["class", "butnBundle", 4, "ngIf"], [3, "linear"], ["stepper", ""], [1, "column_"], ["matStepLabel", ""], [1, "column_text_counter"], [1, "text-input"], [3, "matBadge"], ["matInput", "", "maxlength", "50", 3, "formControl"], ["appearance", "fill"], ["matInput", "", 3, "matDatepicker", "formControl"], ["matSuffix", "", 3, "for"], ["D", ""], [1, "default-time-example"], ["matInput", "", 3, "formControl", "ngxTimepicker"], ["toggleTimepicker", ""], ["matInput", "", 3, "formControl"], ["type", "button", "mat-button", "", "matStepperNext", ""], [1, "trioD"], ["aria-label", "Select an option", 3, "formControl"], [1, "margin"], [1, "genderIcon_Name"], [1, "textP"], ["value", "female", 1, "btn_", 3, "disableRipple"], ["value", "all", 1, "btn_", 3, "disableRipple"], ["value", "male", 1, "btn_", 3, "disableRipple"], ["type", "button", "mat-button", "", "matStepperPrevious", ""], [1, "display"], [1, "column"], [1, "material-icons", "display"], [3, "disableRipple", "formControl"], ["type", "button", "mat-button", "", 3, "click"], [1, "btn_"], ["value", "formal", "required", "", 3, "disableRipple"], ["value", "relaxed", "required", "", 3, "disableRipple"], ["mat-button", "", "matStepperPrevious", ""], ["mat-button", "", "matStepperNext", ""], [1, "row_"], ["mat-raised-button", "", "color", "primary", "routerLink", "/profile", "type", "submit", 1, "text", 3, "click"], [1, "btmPad"], ["aria-label", "Friends selection"], ["chipList", ""], [3, "selectable", "removable", "removed", 4, "ngFor", "ngForOf"], ["matInput", "", 1, "textT", 3, "matAutocomplete", "matChipInputFor", "formControl", "matChipInputSeparatorKeyCodes", "matChipInputTokenEnd"], ["friendInput", ""], [3, "optionSelected"], ["auto", "matAutocomplete"], [3, "value", 4, "ngFor", "ngForOf"], ["class", "staticBtn2", 4, "ngIf"], [1, "contents"], [1, "imgBox"], [3, "src", "ngClass"], [1, "centerL"], [1, "selection_styles"], [3, "multiple"], ["options", ""], ["appearance", "fill", 1, "shadow1"], [3, "formControl"], [3, "selected", "multiple", "value", "click", 4, "ngFor", "ngForOf"], ["id", "nextBtn2", 1, "second_selection", 3, "multiple"], ["options2", ""], ["appearance", "fill", 1, "shadow2"], [3, "multiple", "selected", "value", "click", 4, "ngFor", "ngForOf"], [3, "selected", "multiple", "value", "click"], [3, "multiple", "selected", "value", "click"], ["id", "nextBtn", 1, "btmPad"], ["mat-raised-button", "", "type", "button", 1, "final_step_btn", 3, "disabled", "click"], [1, "staticBtn"], ["mat-raised-button", "", "type", "button", 1, "back_btn", 3, "click"], [1, "butnBundle"], ["mat-flat-button", "", "type", "button", 1, "back_btn", 3, "click"], [1, "staticBtn2"], ["type", "button", "mat-stroked-button", "", "color", "primary", "routerLink", "/profile", "type", "submit", 1, "post_btn_top_right", 3, "click"], [3, "selectable", "removable", "removed"], ["matChipRemove", "", 4, "ngIf"], ["matChipRemove", ""], [3, "value"], ["type", "button", "mat-raised-button", "", "color", "primary", "routerLink", "/search", "type", "submit", 1, "post_btn_top_right", 3, "click"]], template: function PostPageComponent_Template(rf, ctx) { if (rf & 1) {
+        ])], decls: 183, vars: 44, consts: [[1, "entire-page", 3, "ngSubmit"], ["postForm", "ngForm"], ["mat-align-tabs", "center", 1, "largest-page", 3, "selectedIndex"], ["disabled", "", "label", "Step 1"], [1, "post-descriptionD"], [1, "textB"], [1, "center_"], ["appearance", "fill", 1, "post"], ["matInput", "", "placeholder", "What would you like to say?", 3, "formControl"], [1, "column_1"], [1, "centerD"], [3, "ngClass"], ["type", "button", "mat-icon-button", "", "color", "primary", 1, "trash", 3, "click"], [1, "material-icons"], [1, "row__"], [1, "rowP"], ["type", "button", "mat-fab", "", 1, "cameraIcon", 3, "click"], [1, "material-icons", "Photo"], ["id", "fileInput", "type", "file", "accept", ".png, .jpg, .jpeg", "multiple", "", 1, "uploadD", 3, "formControl", "change"], ["fileInput", ""], ["class", "contents", 4, "ngIf"], ["class", "centerL", 4, "ngIf"], ["class", "selection_styles", 4, "ngIf"], ["id", "nextBtn", "class", "btmPad", 4, "ngIf"], ["disabled", "", "label", "Step 2"], [1, "threeBox"], ["class", "staticBtn", 4, "ngIf"], [1, "right"], ["class", "butnBundle", 4, "ngIf"], [3, "linear"], ["stepper", ""], [1, "column_"], ["matStepLabel", ""], [1, "column_text_counter"], [1, "text-input"], [3, "matBadge"], ["matInput", "", "maxlength", "50", 3, "formControl"], ["appearance", "fill"], ["matInput", "", 3, "matDatepicker", "formControl"], ["matSuffix", "", 3, "for"], ["D", ""], [1, "default-time-example"], ["matInput", "", 3, "formControl", "ngxTimepicker"], ["toggleTimepicker", ""], ["matInput", "", 3, "formControl"], ["type", "button", "mat-button", "", "matStepperNext", ""], [1, "trioD"], ["aria-label", "Select an option", 3, "formControl"], [1, "margin"], [1, "genderIcon_Name"], [1, "textP"], ["value", "female", 1, "btn_", 3, "disableRipple"], ["value", "all", 1, "btn_", 3, "disableRipple"], ["value", "male", 1, "btn_", 3, "disableRipple"], ["type", "button", "mat-button", "", "matStepperPrevious", ""], [1, "display"], [1, "column"], [1, "material-icons", "display"], [3, "disableRipple", "formControl"], ["type", "button", "mat-button", "", 3, "click"], [1, "btn_"], ["value", "formal", "required", "", 3, "disableRipple"], ["value", "relaxed", "required", "", 3, "disableRipple"], ["mat-button", "", "matStepperPrevious", ""], ["mat-button", "", "matStepperNext", ""], [1, "row_"], ["mat-raised-button", "", "color", "primary", "routerLink", "/profile", "type", "submit", 1, "text", 3, "click"], [1, "btmPad"], ["aria-label", "Friends selection"], ["chipList", ""], [3, "selectable", "removable", "removed", 4, "ngFor", "ngForOf"], ["matInput", "", 1, "textT", 3, "matAutocomplete", "matChipInputFor", "formControl", "matChipInputSeparatorKeyCodes", "matChipInputTokenEnd"], ["friendInput", ""], [3, "optionSelected"], ["auto", "matAutocomplete"], [3, "value", 4, "ngFor", "ngForOf"], ["class", "staticBtn2", 4, "ngIf"], [1, "contents"], [1, "imgBox"], [3, "src", "ngClass"], [1, "centerL"], [1, "selection_styles"], [3, "multiple"], ["options", ""], ["appearance", "fill", 1, "shadow1"], [3, "formControl"], [3, "selected", "multiple", "value", "click", 4, "ngFor", "ngForOf"], ["id", "nextBtn2", 1, "second_selection", 3, "multiple"], ["options2", ""], ["appearance", "fill", 1, "shadow2"], [3, "multiple", "selected", "value", "click", 4, "ngFor", "ngForOf"], [3, "selected", "multiple", "value", "click"], [3, "multiple", "selected", "value", "click"], ["id", "nextBtn", 1, "btmPad"], ["mat-raised-button", "", "type", "button", 1, "final_step_btn", 3, "click"], [1, "staticBtn"], ["mat-raised-button", "", "type", "button", 1, "back_btn", 3, "click"], [1, "butnBundle"], ["mat-flat-button", "", "type", "button", 1, "back_btn", 3, "click"], [1, "staticBtn2"], ["type", "button", "mat-stroked-button", "", "color", "primary", "routerLink", "/profile", "type", "submit", 1, "post_btn_top_right", 3, "click"], [3, "selectable", "removable", "removed"], ["matChipRemove", "", 4, "ngIf"], ["matChipRemove", ""], [3, "value"], ["type", "button", "mat-raised-button", "", "color", "primary", "routerLink", "/search", "type", "submit", 1, "post_btn_top_right", 3, "click"]], template: function PostPageComponent_Template(rf, ctx) { if (rf & 1) {
         const _r46 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 0, 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function PostPageComponent_Template_form_ngSubmit_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r46); const _r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](1); return ctx.onFormSubmit(_r0); });
@@ -5979,7 +5954,7 @@ PostPageComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](27, PostPageComponent_div_27_Template, 2, 0, "div", 21);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](28, PostPageComponent_div_28_Template, 15, 6, "div", 22);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](29, PostPageComponent_div_29_Template, 3, 1, "div", 23);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](29, PostPageComponent_div_29_Template, 3, 0, "div", 23);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "mat-tab", 24);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 25);
@@ -6436,7 +6411,8 @@ class PostService {
                     PaymentService: post.PaymentService,
                     Virtual: post.Virtual,
                     Event: post.Event,
-                    id: post._id
+                    id: post._id,
+                    ImagePath: post.ImagePath,
                 };
             });
         }))
@@ -6449,13 +6425,39 @@ class PostService {
     getPostUpdateListener() {
         return this.postsUpdated.asObservable();
     }
-    addPost(PostLocation, PostDescription, LocationEvent, Title, Date, Time, Gender, Driver, PaymentService, Virtual, Event) {
-        const post = { id: null, Title, PostDescription, PostLocation, LocationEvent,
-            Time, Date, Gender, Driver, PaymentService, Virtual, Event };
-        this.http.post('http://localhost:3000/api/posts', post)
+    addPost(PostLocation, PostDescription, Upload, LocationEvent, Title, Date, Time, Gender, Driver, PaymentService, Virtual, Event) {
+        const postData = new FormData();
+        postData.append('Title', Title);
+        postData.append('PostDescription', PostDescription);
+        postData.append('PostLocation', PostLocation);
+        postData.append('LocationEvent', LocationEvent);
+        postData.append('Time', Time);
+        postData.append('Date', Date);
+        postData.append('Gender', Gender);
+        postData.append('Driver', Driver);
+        postData.append('PaymentService', PaymentService);
+        postData.append('Virtual', Virtual);
+        postData.append('Event', Event);
+        postData.append('upload', Upload);
+        this.http.post('http://localhost:3000/api/posts', postData)
             .subscribe(responseData => {
-            const id = responseData.postId;
-            post.id = id;
+            const post = {
+                id: responseData.post.id,
+                Title,
+                PostDescription,
+                PostLocation,
+                LocationEvent,
+                Time,
+                Date,
+                Gender,
+                Driver,
+                PaymentService,
+                Virtual,
+                Event,
+                ImagePath: responseData.post.ImagePath,
+            };
+            // const id = responseData.postId;
+            // post.id = id;
             this.posts.push(post);
             this.postsUpdated.next([...this.posts]);
         });
@@ -10830,12 +10832,16 @@ function ReusableCardComponent_div_1_mat_card_1_div_31_Template(rf, ctx) { if (r
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 52);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](1, "img", 53);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const post_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2).$implicit;
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", post_r2.ImagePath, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
 } }
 function ReusableCardComponent_div_1_mat_card_1_div_46_Template(rf, ctx) { if (rf & 1) {
-    const _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r29 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 54);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ReusableCardComponent_div_1_mat_card_1_div_46_Template_button_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r28); const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3); return ctx_r27.openAttendanceSheet(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ReusableCardComponent_div_1_mat_card_1_div_46_Template_button_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r29); const ctx_r28 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3); return ctx_r28.openAttendanceSheet(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -10845,24 +10851,24 @@ function ReusableCardComponent_div_1_mat_card_1_div_46_Template(rf, ctx) { if (r
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx_r20.selectedAttend, "");
 } }
 function ReusableCardComponent_div_1_mat_card_1_div_53_Template(rf, ctx) { if (rf & 1) {
-    const _r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 55);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "input", 56);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ReusableCardComponent_div_1_mat_card_1_div_53_Template_input_change_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r31); const ctx_r30 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3); return ctx_r30.radioChange($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("change", function ReusableCardComponent_div_1_mat_card_1_div_53_Template_input_change_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r32); const ctx_r31 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](3); return ctx_r31.radioChange($event); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 38);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
-    const attendance_r29 = ctx.$implicit;
+    const attendance_r30 = ctx.$implicit;
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", attendance_r29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate"]("value", attendance_r30);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](attendance_r29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](attendance_r30);
 } }
 function ReusableCardComponent_div_1_mat_card_1_Template(rf, ctx) { if (rf & 1) {
-    const _r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r34 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-card", 5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 6);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 7);
@@ -10907,7 +10913,7 @@ function ReusableCardComponent_div_1_mat_card_1_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](31, ReusableCardComponent_div_1_mat_card_1_div_31_Template, 2, 0, "div", 25);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](31, ReusableCardComponent_div_1_mat_card_1_div_31_Template, 2, 1, "div", 25);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "div", 26);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 27);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34);
@@ -10919,7 +10925,7 @@ function ReusableCardComponent_div_1_mat_card_1_Template(rf, ctx) { if (rf & 1) 
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "div", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "div", 30);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "button", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ReusableCardComponent_div_1_mat_card_1_Template_button_click_40_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r33); const ctx_r32 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r32.openTaggedSheet(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ReusableCardComponent_div_1_mat_card_1_Template_button_click_40_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r34); const ctx_r33 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2); return ctx_r33.openTaggedSheet(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "div", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "loyalty");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -11047,7 +11053,7 @@ class ReusableCardComponent {
     }
 }
 ReusableCardComponent.ɵfac = function ReusableCardComponent_Factory(t) { return new (t || ReusableCardComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_3__["MatBottomSheet"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_post_service__WEBPACK_IMPORTED_MODULE_4__["PostService"])); };
-ReusableCardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ReusableCardComponent, selectors: [["app-card"]], decls: 2, vars: 2, consts: [["class", "spinner", 4, "ngIf"], ["class", "feed", 4, "ngFor", "ngForOf"], [1, "spinner"], [1, "feed"], ["class", "specifics-fill", 4, "ngIf"], [1, "specifics-fill"], [1, "column"], [1, "row"], ["class", "centerT", 4, "ngIf"], [1, "row2"], [1, "row-"], ["class", "profilePic", 4, "ngIf"], [1, "column1"], ["class", "linkN", 4, "ngIf"], [1, "nameTitle"], ["mat-button", ""], [1, "userName", "link"], ["class", "row-", 4, "ngIf"], [1, "row1"], [1, "column_"], ["class", "postLocation textSize t", 4, "ngIf"], ["class", "textSize row1 t", 4, "ngIf"], ["class", "row1", 4, "ngIf"], [1, "booleans"], ["class", "material-icons b", 4, "ngIf"], ["class", "upload", 4, "ngIf"], [1, "description"], [1, "postText", "d"], [1, "rowM"], [1, "center1"], [1, "center"], ["mat-icon-button", "", 3, "click"], [1, "material-icons-outlined", "p"], ["mat-icon-button", ""], ["routerLink", "/groups", 1, "far", "fa-comments", "center", "p"], ["class", "center1", 4, "ngIf"], [2, "margin-top", "2%"], ["mat-flat-button", "", 1, "row1", 3, "matMenuTriggerFor"], [1, "row1_"], ["menu", "matMenu"], ["class", "centerB", 4, "ngFor", "ngForOf"], [1, "centerT"], [1, "postTitle", "textSizeTit"], [1, "profilePic"], [1, "pic", 3, "src"], [1, "linkN"], ["src", "../../assets/Pics/WhiteSquareInAppLogo.jpg", 1, "pic"], [1, "postLocation", "textSize", "t"], [1, "textSize", "row1", "t"], [1, "postTime", "textSize", "column1"], [1, "displayT", "t"], [1, "material-icons", "b"], [1, "upload"], ["src", "{ { post.Upload  } }", 1, "middle-card"], ["mat-button", "", 1, "textSize_", 3, "click"], [1, "centerB"], ["type", "radio", "name", "attend", 1, "center", 3, "value", "change"]], template: function ReusableCardComponent_Template(rf, ctx) { if (rf & 1) {
+ReusableCardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ReusableCardComponent, selectors: [["app-card"]], decls: 2, vars: 2, consts: [["class", "spinner", 4, "ngIf"], ["class", "feed", 4, "ngFor", "ngForOf"], [1, "spinner"], [1, "feed"], ["class", "specifics-fill", 4, "ngIf"], [1, "specifics-fill"], [1, "column"], [1, "row"], ["class", "centerT", 4, "ngIf"], [1, "row2"], [1, "row-"], ["class", "profilePic", 4, "ngIf"], [1, "column1"], ["class", "linkN", 4, "ngIf"], [1, "nameTitle"], ["mat-button", ""], [1, "userName", "link"], ["class", "row-", 4, "ngIf"], [1, "row1"], [1, "column_"], ["class", "postLocation textSize t", 4, "ngIf"], ["class", "textSize row1 t", 4, "ngIf"], ["class", "row1", 4, "ngIf"], [1, "booleans"], ["class", "material-icons b", 4, "ngIf"], ["class", "upload", 4, "ngIf"], [1, "description"], [1, "postText", "d"], [1, "rowM"], [1, "center1"], [1, "center"], ["mat-icon-button", "", 3, "click"], [1, "material-icons-outlined", "p"], ["mat-icon-button", ""], ["routerLink", "/groups", 1, "far", "fa-comments", "center", "p"], ["class", "center1", 4, "ngIf"], [2, "margin-top", "2%"], ["mat-flat-button", "", 1, "row1", 3, "matMenuTriggerFor"], [1, "row1_"], ["menu", "matMenu"], ["class", "centerB", 4, "ngFor", "ngForOf"], [1, "centerT"], [1, "postTitle", "textSizeTit"], [1, "profilePic"], [1, "pic", 3, "src"], [1, "linkN"], ["src", "../../assets/Pics/WhiteSquareInAppLogo.jpg", 1, "pic"], [1, "postLocation", "textSize", "t"], [1, "textSize", "row1", "t"], [1, "postTime", "textSize", "column1"], [1, "displayT", "t"], [1, "material-icons", "b"], [1, "upload"], [1, "middle-card", 3, "src"], ["mat-button", "", 1, "textSize_", 3, "click"], [1, "centerB"], ["type", "radio", "name", "attend", 1, "center", 3, "value", "change"]], template: function ReusableCardComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](0, ReusableCardComponent_div_0_Template, 2, 0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, ReusableCardComponent_div_1_Template, 2, 1, "div", 1);
     } if (rf & 2) {
