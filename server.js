@@ -33,7 +33,7 @@ mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFi
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
-app.use('/images', express.static(path.join('backend/images')));
+app.use('/posts', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/posts')));
 
 app.use((req, res, next) => {
    res.setHeader( "Access-Control-Allow-Origin", "*");

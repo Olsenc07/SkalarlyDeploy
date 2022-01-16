@@ -85,7 +85,7 @@ export class PostPageComponent implements OnInit {
   isLinear = false;
   // Title: FormControl = new FormControl('');
   public TitleLength = new BehaviorSubject(0);
-  upload: FormControl = new FormControl(null, {
+  upload: FormControl = new FormControl('', {
   validators: [Validators.required],
   asyncValidators: [mimeType]
 });
@@ -137,7 +137,6 @@ export class PostPageComponent implements OnInit {
       map((friend: string | null) => friend ? this._filter(friend) : this.allFriends.slice()));
 
 
-  
 
   }
 
@@ -154,9 +153,10 @@ export class PostPageComponent implements OnInit {
 
   onImagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
+    // this.upload.patchValue({Upload: file});
     this.upload.updateValueAndValidity();
-    console.log(file);
-    console.log(this.upload.value);
+    // console.log(file);
+    // console.log(this.upload.value);
     const reader = new FileReader();
     reader.onload = () => {
       this.url = reader.result as string;

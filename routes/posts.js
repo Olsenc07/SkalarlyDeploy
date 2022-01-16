@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 
-const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post.js');
+const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post');
 
 
 const router = express.Router()
@@ -14,20 +14,25 @@ const MIME_TYPE_MAP ={
 };
 
 
+
+
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const isValid = MIME_TYPE_MAP[file.mimetype];
         let error = new Error('Invalid mime type');
         if (isValid){
             error = null;
-        }
-        cb(error, '/Users/chaseolsen/angular_scholarly_fs/backend/images');       
+        }    
+        cb(null, './backend/posts');   
+  
     },
     filename: (req, file, cb) => {
         const name = file.originalname.toLowerCase().split('').join('-');
-        const ext = MIME_TYPE_MAP[file.mimetype];
-        cb(null, name + '-' + Date.now() + '.' + ext);
-    }
+        // const ext = MIME_TYPE_MAP[file.mimetype];
+        cb(null, name + '-' + Date.now() + '.' );
+    },
+    
 });
 
 // Post recieving
@@ -41,7 +46,7 @@ router.get("", (req, res, next) => {
 });
 
 // Post additions
-router.post("", multer({storage: storage}).single('Upload'), (req, res, next) => {
+router.post("", multer({storage: storage}).single('upload'), (req, res, next) => {
     const url = req.protocol + '://' + req.get('host');
     const post = new Post({
         Title: req.body.Title,
@@ -55,7 +60,8 @@ router.post("", multer({storage: storage}).single('Upload'), (req, res, next) =>
         PaymentService: req.body.PaymentService,
         Virtual: req.body.Virtual,
         Event: req.body.Event,
-        ImagePath: url + '/images/' + req.file.filename
+        ImagePath: url + '/images/' + req.file
+        
     });
     post.save().then(createdPost => {
         res.status(201).json({
@@ -76,9 +82,8 @@ router.post("", multer({storage: storage}).single('Upload'), (req, res, next) =>
                 // Event: createdPost.Event,
                 // ImagePath: createdPost.ImagePath
 
-            }
-            
-    });
+            } 
+        });
     });
 });
 

@@ -1,4 +1,4 @@
-<form  class="entire-page" (ngSubmit)="onFormSubmit(postForm)" #postForm="ngForm" >
+<form  class="entire-page" (ngSubmit)="onFormSubmit(postForm)" #postForm="ngForm" method='post' enctype="multipart/form-data">
 
   <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
     <mat-tab disabled label="Step 1" > 
@@ -41,7 +41,7 @@
           <div class="material-icons Photo">
             add_a_photo
             <input #fileInput id="fileInput" class="uploadD" type="file" accept=".png, .jpg, .jpeg"
-              (change)="onImagePicked($event)" [formControl]="upload" multiple>
+              (change)="onImagePicked($event)" [formControl]="upload"  name='upload'>
           </div>
         </button>
       </div>

@@ -82,7 +82,7 @@ getPosts(): any {
                 postData.append('PaymentService', PaymentService);
                 postData.append('Virtual', Virtual);
                 postData.append('Event', Event);
-                postData.append('upload', Upload);
+                postData.append('Upload', Upload);
 
                 this.http.post<{ message: string, post: Post}>('http://localhost:3000/api/posts', postData)
         .subscribe(responseData => {
