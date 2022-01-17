@@ -1,4 +1,4 @@
-<form  class="entire-page" (ngSubmit)="onFormSubmit(postForm)" #postForm="ngForm" method='post' enctype="multipart/form-data">
+<form  class="entire-page" (ngSubmit)="onFormSubmit(postForm)" action='/api/posts' #postForm="ngForm" method='post'  enctype="multipart/form-data">
 
   <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
     <mat-tab disabled label="Step 1" > 
@@ -27,7 +27,7 @@
       <!-- <div class="column_"> -->
       <div class="centerD">
          Upload Post
-        <div [ngClass]="upload.value ? 'Show' : 'hide' ">
+        <div [ngClass]="form.get('upload').value ? 'Show' : 'hide' ">
           <button type="button" mat-icon-button class="trash" color="primary" (click)="clearUpload()">
             <div class="material-icons">delete_forever</div>
           </button>
@@ -41,14 +41,14 @@
           <div class="material-icons Photo">
             add_a_photo
             <input #fileInput id="fileInput" class="uploadD" type="file" accept=".png, .jpg, .jpeg"
-              (change)="onImagePicked($event)" [formControl]="upload"  name='upload'>
+              (change)="onImagePicked($event)"   name='upload'>
           </div>
         </button>
       </div>
       <!-- Only when upload holds a value -->
-      <div class="contents" *ngIf="upload.valid">
+      <div class="contents" *ngIf="form.get('upload').valid">
         <div class="imgBox">
-          <img [src]="url"  [ngClass]="upload.value ? 'show' : 'hide' ">
+          <img [src]="url"  [ngClass]="form.get('upload').value ? 'show' : 'hide' ">
         </div>
       </div>
 
@@ -57,9 +57,9 @@
 
 <!-- Step 1 -->
 
-    <div class="centerL" *ngIf="postDescription.value || upload.value ">Where do you want your post?
+    <div class="centerL" *ngIf="postDescription.value || form.get('upload').value ">Where do you want your post?
     </div>
-    <div class="selection_styles" *ngIf="postDescription.value || upload.value ">
+    <div class="selection_styles" *ngIf="postDescription.value || form.get('upload').value ">
     <mat-selection-list #options [multiple]="false">
       <mat-form-field appearance="fill" class="shadow1">
         <mat-label>Step 1: Choose from the main categories</mat-label>
@@ -88,7 +88,7 @@
     
     </div>
 
-    <div id="nextBtn" class="btmPad" *ngIf="(postDescription.value || upload.value) && postLocationMain.value " >
+    <div id="nextBtn" class="btmPad" *ngIf="(postDescription.value || form.get('upload').value) && postLocationMain.value " >
       <button  mat-raised-button type="button" class="final_step_btn" 
        (click)="changeTab()">
         Next Step

@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 export interface Post {
     id: string;
     PostDescription: string;
-    Upload?: string;
+    upload?: string;
     PostLocation?: string;
     FriendCtrl?: string[];
     Title?: string;
@@ -53,7 +53,7 @@ getPosts(): any {
                     Virtual: post.Virtual,
                     Event: post.Event,
                     id: post._id,
-                    ImagePath: post.ImagePath,
+                    ImagePath: post.ImagePath
                  };
         });
     }))
@@ -67,7 +67,7 @@ getPosts(): any {
     getPostUpdateListener(): any {
         return this.postsUpdated.asObservable();
     }
-    addPost( PostLocation: string, PostDescription?: string, Upload?: File, LocationEvent?: string, Title?: string, Date?: string,
+    addPost( PostLocation: string, PostDescription?: string, upload?: File, LocationEvent?: string, Title?: string, Date?: string,
              Time?: string, Gender?: string, Driver?: string, PaymentService?: string, Virtual?: string, Event?: string): any {
 
                 const postData = new FormData();
@@ -82,7 +82,7 @@ getPosts(): any {
                 postData.append('PaymentService', PaymentService);
                 postData.append('Virtual', Virtual);
                 postData.append('Event', Event);
-                postData.append('Upload', Upload);
+                postData.append('upload', upload);
 
                 this.http.post<{ message: string, post: Post}>('http://localhost:3000/api/posts', postData)
         .subscribe(responseData => {

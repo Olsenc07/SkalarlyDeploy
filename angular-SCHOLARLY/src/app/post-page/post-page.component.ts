@@ -85,10 +85,6 @@ export class PostPageComponent implements OnInit {
   isLinear = false;
   // Title: FormControl = new FormControl('');
   public TitleLength = new BehaviorSubject(0);
-  upload: FormControl = new FormControl('', {
-  validators: [Validators.required],
-  asyncValidators: [mimeType]
-});
   postLocationMain: FormControl = new FormControl('');
   postLocation: FormControl = new FormControl('');
   postDescription: FormControl = new FormControl('');
@@ -122,6 +118,7 @@ export class PostPageComponent implements OnInit {
 
 // fourthFormGroup: FormGroup  = new FormGroup({
   event: FormControl = new FormControl('');
+  form: FormGroup;
 // });
   // firstFormGroup: FormGroup;
   // secondFormGroup: FormGroup;
@@ -153,8 +150,8 @@ export class PostPageComponent implements OnInit {
 
   onImagePicked(event: Event) {
     const file = (event.target as HTMLInputElement).files[0];
-    // this.upload.patchValue({Upload: file});
-    this.upload.updateValueAndValidity();
+    this.form.patchValue({upload: file});
+    this.form.get('upload').updateValueAndValidity();
     // console.log(file);
     // console.log(this.upload.value);
     const reader = new FileReader();
@@ -166,13 +163,21 @@ export class PostPageComponent implements OnInit {
 
 
   clearUpload(): void {
-    this.upload.setValue('');
+    this.form.get('upload').setValue('');
     document.getElementById('upload').removeAttribute('src');
     document.getElementById('upload2').removeAttribute('src');
   }
 
-
+  
   ngOnInit(): any {
+    this.form = new FormGroup({
+      upload: new FormControl('', {
+        validators: [Validators.required],
+        asyncValidators: [mimeType]
+      })
+    });
+
+
     this.searchOptions = this.searchListService.getSearchOptions();
     // Doesn't keep track of value
     this.Title.valueChanges.subscribe((v) => this.TitleLength.next(v.length));
@@ -230,13 +235,13 @@ export class PostPageComponent implements OnInit {
 
 
   onFormSubmit(form: NgForm) {
-    if (this.upload.invalid){
+    if (this.form.get('upload').invalid){
       return;
     }
     console.log(this.Title.value);
     console.log(this.postDescription.value);
     console.log(this.postLocation.value);
-    console.log(this.upload.value);
+    console.log(this.form.get('upload').value);
 
 
 
@@ -253,7 +258,7 @@ export class PostPageComponent implements OnInit {
       Virtual: form.value.virtual,
       Event: form.value.Event,
       id: this.id.value,
-      Upload: this.upload.value,
+      upload: this.form.get('upload').value,
       FriendCtrl: this.friendCtrl.value,
       // SecondFormGroup: this.secondFormGroup.value,
       // ThirdFormGroup: this.thirdFormGroup.value,
@@ -262,7 +267,7 @@ export class PostPageComponent implements OnInit {
 
 
     this.postService.addPost(this.postLocation.value,
-      this.postDescription.value, this.upload.value,
+      this.postDescription.value, this.form.get('upload').value,
       this.locationEvent.value,
       this.Title.value,
       this.date.value,
