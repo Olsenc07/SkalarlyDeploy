@@ -28,7 +28,7 @@ const storage  = multer.diskStorage({
   
     },
     filename: (req, file, cb) => {
-        const name = file.originalname.toLowerCase().split('').join('-');
+        const name = file.originalname.toLowerCase();
         const ext = MIME_TYPE_MAP[file.mimetype];
         cb(null, name + '-' + Date.now() + '.' + ext);
     },
@@ -61,7 +61,7 @@ router.post("", up.single('upload'), (req, res, next) => {
         PaymentService: req.body.PaymentService,
         Virtual: req.body.Virtual,
         Event: req.body.Event,
-        ImagePath: url + '/posts/' + req.file
+        ImagePath: url + '/posts/' + req.file.filename,
         
     });
     post.save().then(createdPost => {

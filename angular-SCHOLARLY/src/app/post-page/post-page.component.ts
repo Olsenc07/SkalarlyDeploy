@@ -168,14 +168,14 @@ export class PostPageComponent implements OnInit {
     document.getElementById('upload2').removeAttribute('src');
   }
 
-  
   ngOnInit(): any {
     this.form = new FormGroup({
-      upload: new FormControl('', {
+      upload: new FormControl(null, {
         validators: [Validators.required],
         asyncValidators: [mimeType]
       })
     });
+
 
 
     this.searchOptions = this.searchListService.getSearchOptions();
@@ -273,9 +273,9 @@ export class PostPageComponent implements OnInit {
       this.date.value,
       this.time.value,
       this.gender.value,
-       this.driver.value, this.paymentService.value,
-       this.virtual.value,
-        this.event.value);
+      this.driver.value, this.paymentService.value,
+      this.virtual.value,
+    this.event.value);
     form.resetForm();
   }
 
