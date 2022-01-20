@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home-page',
@@ -16,7 +17,7 @@ export class HomePageComponent implements OnInit {
     password: this.password,
   });
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit(): void { }
 
@@ -31,5 +32,7 @@ export class HomePageComponent implements OnInit {
   onSubmit(form: NgForm): void {
     // TODO: wire up to login request
     console.log(this.loginForm.value);
+
+    this.authService.login(this.email.value, this.password.value);
   }
 }

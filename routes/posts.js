@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('multer');
 
 const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post');
-
+const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 
 const router = express.Router()
 
@@ -46,7 +46,9 @@ router.get("", (req, res, next) => {
 });
 
 // Post additions
-router.post("", up.single('upload'), (req, res, next) => {
+router.post("", 
+    checkAuth,
+    up.single('upload'), (req, res, next) => {
     console.log(req.file)
     const url = req.protocol + '://' + req.get('host');
     const post = new Post({
@@ -89,7 +91,7 @@ router.post("", up.single('upload'), (req, res, next) => {
 });
 
 // Posts deleting
-router.delete("/api/posts/:id", (req, res, next ) => {
+router.delete("/api/posts/:id", checkAuth, (req, res, next ) => {
     Post.deleteOne({_id: req.params.id}).then(result => {
         console.log(result);
         res.status(200).json({message: 'Post deleted!!'});
