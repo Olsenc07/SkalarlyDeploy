@@ -25,7 +25,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 // import { base64ToFile } from '../../utils/blob.utils';
 import { ImageCroppedEvent, Dimensions } from 'ngx-image-cropper';
 import { Profile, NewUserId, StoreService } from '../services/store.service';
-
+import { AuthService } from '../services/auth.service';
 
 
 
@@ -270,7 +270,8 @@ export class SignupComponent implements OnInit {
     public dialog: MatDialog,
     public classListService: ClassListService,
     private http: HttpClient,
-    private storeService: StoreService
+    private storeService: StoreService,
+    public authService: AuthService
   ) {
     // this.bio.valueChanges.subscribe((v) => this.bioLength.next(v.length));
 
@@ -449,20 +450,22 @@ export class SignupComponent implements OnInit {
 
   onSubmitPartOne(): void {
     // TODO: wire up to login request
-    console.log(this.requiredForm.value);
+    // console.log(this.requiredForm.value);
   }
   onSubmitPartTwo(): void {
     // TODO: wire up to login request
-    console.log(this.personalizeForm.value);
+    // console.log(this.personalizeForm.value);
   }
   onSubmitPartThree(): void {
     // TODO: wire up to login request
-    console.log(this.CodeCompleted.value);
+    // console.log(this.CodeCompleted.value);
   }
   onSubmit(): void {
-    // TODO: wire up to login request
-    console.log(this.signupForm.value);
-    console.log(this.filteredCodes);
+    // if (this.email.invalid && this.password.invalid ){
+    //   return;
+    // }
+    this.authService.createUser(this.email.value, this.password.value);
+
 
     const userId: NewUserId = {
       Email: this.email.value,
@@ -495,7 +498,6 @@ export class SignupComponent implements OnInit {
   }
 
   ngOnInit(): void { }
-  // Image Preview
 
 
   openDialog(): void {

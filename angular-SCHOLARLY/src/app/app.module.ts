@@ -85,6 +85,8 @@ import { SearchListService } from './services/search.service';
 import { PostService } from './services/post.service';
 import { ClassListService } from './services/class.service';
 import { StoreService } from './services/store.service';
+import { AuthService } from './services/auth.service';
+
 
 
 
@@ -166,7 +168,7 @@ import { StoreService } from './services/store.service';
     MatProgressSpinnerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [SearchListService, PostService, ClassListService, StoreService],
+  providers: [SearchListService, PostService, ClassListService, StoreService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

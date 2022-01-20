@@ -1,16 +1,17 @@
 const express = require('express');
 const bcrypt = require('bcrypt')
 
-const User = require('../models/user');
+const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 
 const router = express.Router();
 
 
 router.post('/signup', (req, res, next) => {
-    bcrypt.hash(reg.body.password, 10).then(hash => {
-    const user = new User({
+    bcrypt.hash(req.body.password, 10)
+    .then(hash => {
+        const user = new User({
         email: req.body.email,
-        password: req.body.password,
+        password: hash,
 
     });
     user.save()
