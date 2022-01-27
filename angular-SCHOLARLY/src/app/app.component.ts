@@ -69,6 +69,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.autoAuthUser();
+
     document.getElementsByClassName('search-box__icon')[0]?.addEventListener('click', this.activateSearch);
     this.searchBox = document.getElementsByClassName('search-box')[0];
 

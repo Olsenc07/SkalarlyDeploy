@@ -13,6 +13,7 @@ import { SearchComponent } from './search/search.component';
 import { SignupComponent } from './signup/signup.component';
 import { MainPagesComponent } from './main-pages/main-pages.component';
 import { MessagingComponent } from './messaging/messaging.component';
+import {AuthGuard} from './signup/auth.guard';
 
 
 export const routingComponents = [
@@ -26,15 +27,15 @@ export const routingComponents = [
 const routes: Routes = [
   { path: 'login', component: HomePageComponent },
   { path: 'sign-up', component: SignupComponent },
-  { path: 'post-page', component: PostPageComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'post-page', component: PostPageComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'retrieve-password', component: RetrievePasswordComponent },
   { path: 'search', component: SearchComponent },
-  { path: 'edit-profile', component: EditProfileComponent },
-  { path: 'friends-activity', component: FriendsActivityComponent },
-  { path: 'groups', component: GroupChatsComponent },
+  { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },
+  { path: 'friends-activity', component: FriendsActivityComponent, canActivate: [AuthGuard] },
+  { path: 'groups', component: GroupChatsComponent, canActivate: [AuthGuard] },
   { path: 'main', component: MainPagesComponent },
-  { path: 'messages', component: MessagingComponent },
+  { path: 'messages', component: MessagingComponent, canActivate: [AuthGuard] },
   // Directs to search page if user is logged in.
   // Directs to log in page if user isn't logged in.
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -44,5 +45,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   bootstrap: [AppComponent],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
