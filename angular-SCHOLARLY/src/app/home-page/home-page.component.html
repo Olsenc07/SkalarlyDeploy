@@ -30,9 +30,10 @@
           </mat-form-field>
           <!-- [disabled]="loginForm.valid" but isn't needed -->
           <button type="submit"  routerLink="/search" mat-raised-button
-            color="primary" class="action-button top">
+            color="primary" class="action-button top" *ngIf="!isLoading">
             Log In
           </button>
+          <mat-spinner *ngIf="isLoading"></mat-spinner>
           <button type="button" mat-button disableRipple class="forgot-password" routerLink="/retrieve-password">
             Forgot Password?
           </button>

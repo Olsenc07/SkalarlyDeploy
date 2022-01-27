@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -56,6 +57,7 @@ export class AppComponent implements OnInit {
 
   constructor(
               private router: Router,
+              private authService: AuthService
   ) {
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) => user ? this._filter(user) : this.allUsers.slice()));
@@ -120,7 +122,9 @@ export class AppComponent implements OnInit {
 }
   }
 
-
+onLogout(){
+  this.authService.logout();
+}
 
   // Missing link to fix search icon movement i hope
   // searchIcon.addEventListener("click", activateSearch);

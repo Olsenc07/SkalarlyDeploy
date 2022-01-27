@@ -69,6 +69,7 @@ export const MY_FORMATS = {
 
 
 export class SignupComponent implements OnInit {
+  isLoading = false;
   visible = true;
   selectable = true;
   removable = true;
@@ -465,7 +466,7 @@ export class SignupComponent implements OnInit {
     //   return;
     // }
     this.authService.createUser(this.email.value, this.password.value);
-
+    this.isLoading = true;
 
     const userId: NewUserId = {
       Email: this.email.value,

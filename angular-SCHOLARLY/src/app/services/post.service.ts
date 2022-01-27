@@ -81,7 +81,6 @@ getPosts(): any {
                 postData.append('Virtual', Virtual);
                 postData.append('Event', Event);
                 postData.append('upload', upload);
-                
 
                 this.http.post<{ message: string, post: Post}>('http://localhost:3000/api/posts', postData)
         .subscribe(responseData => {
@@ -99,7 +98,6 @@ getPosts(): any {
                 Virtual,
                 Event,
                 ImagePath: responseData.post.ImagePath,
-
             };
             // const id = responseData.postId;
             // post.id = id;
@@ -116,7 +114,6 @@ getPosts(): any {
                 this.postsUpdated.next([...this.posts]);
             });
     }
-    
 
 }
 

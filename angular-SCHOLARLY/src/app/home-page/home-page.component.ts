@@ -11,6 +11,8 @@ export class HomePageComponent implements OnInit {
   email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
+  isLoading = false;
+
 
   loginForm = new FormGroup({
     email: this.email,
@@ -32,6 +34,7 @@ export class HomePageComponent implements OnInit {
   onSubmit(form: NgForm): void {
     // TODO: wire up to login request
     console.log(this.loginForm.value);
+    this.isLoading = true;
 
     this.authService.login(this.email.value, this.password.value);
   }

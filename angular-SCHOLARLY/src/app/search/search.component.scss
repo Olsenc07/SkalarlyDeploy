@@ -341,8 +341,9 @@
 }
 
 .mat-chip {
-  background-color: rgb(65, 88, 165) !important;
-  color: rgb(252, 252, 252) !important;
+  border: groove;
+  background-color: #ffffff !important;
+  color: #000000 !important;
   font-family: "Font Awesome 5 Free";
 }
 .hideAll {
