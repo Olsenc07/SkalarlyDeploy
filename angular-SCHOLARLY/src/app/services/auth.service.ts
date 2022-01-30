@@ -13,21 +13,21 @@ private authStatusListener = new Subject<boolean>();
 
 
 
-    constructor(private http: HttpClient){}
+    constructor(private http: HttpClient) {}
 
-    getToken() {
+    getToken(): string  {
         return this.token;
     }
 
-    getIsAuth(){
+    getIsAuth(): boolean {
         return this.isAuthenticated;
     }
 
-    getAuthStatusListener(){
+    getAuthStatusListener(): any {
         return this.authStatusListener.asObservable();
     }
 
-    createUser(email: string, password: string) {
+    createUser(email: string, password: string): any {
         const authData: AuthData = { email, password};
         this.http.post('http://localhost:3000/api/user/signup', authData)
             .subscribe(response => {
@@ -35,7 +35,7 @@ private authStatusListener = new Subject<boolean>();
             });
     }
 
-    login(email: string, password: string){
+    login(email: string, password: string): any  {
         const authData: AuthData = { email, password};
         this.http.post<{token: string, expiresIn: number }>('http://localhost:3000/api/user/login', authData)
             .subscribe(response => {
@@ -56,7 +56,7 @@ private authStatusListener = new Subject<boolean>();
                 });
             }
 
-        autoAuthUser(){
+        autoAuthUser(): any {
             const authInformation = this.getAuthData();
             if (!authInformation){
                 return;
@@ -71,7 +71,7 @@ private authStatusListener = new Subject<boolean>();
             }
         }
 
-            logout(){
+            logout(): any {
                 this.token = null;
                 this.isAuthenticated = false;
                 this.authStatusListener.next(false);
@@ -79,23 +79,23 @@ private authStatusListener = new Subject<boolean>();
                 clearTimeout(this.tokenTimer);
             }
 
-            private setAuthTimer(duration: number){
+            private setAuthTimer(duration: number): any {
                 this.tokenTimer = setTimeout(() => {
                     this.logout();
                 }, duration * 1000);
                 }
 
-            private saveAuthData(token: string, expirationDate: Date){
+            private saveAuthData(token: string, expirationDate: Date): any {
                 localStorage.setItem('token', token);
                 localStorage.setItem('expiration', expirationDate.toISOString());
             }
 
-            private clearAuthData(){
+            private clearAuthData(): any {
                 localStorage.removeItem('token');
                 localStorage.removeItem('expiration');
             }
 
-            private getAuthData(){
+            private getAuthData(): any {
                 const token = localStorage.getItem('token');
                 const expirationDate = localStorage.getItem('expiration');
                 if (!token || !expirationDate){
@@ -104,7 +104,7 @@ private authStatusListener = new Subject<boolean>();
                 return {
                     token,
                     expirationDate: new Date(expirationDate)
-                }
+                };
             }
 
 }

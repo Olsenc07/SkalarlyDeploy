@@ -148,7 +148,7 @@ export class PostPageComponent implements OnInit {
   }
 
 
-  onImagePicked(event: Event) {
+  onImagePicked(event: Event): any {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({upload: file});
     this.form.get('upload').updateValueAndValidity();
@@ -234,7 +234,7 @@ export class PostPageComponent implements OnInit {
   }
 
 
-  onFormSubmit(form: NgForm) {
+  onFormSubmit(form: NgForm): any {
     if (this.form.get('upload').invalid){
       return;
     }

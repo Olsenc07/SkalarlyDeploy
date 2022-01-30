@@ -12,8 +12,7 @@
 </body> -->
 
 
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" [ngClass]="(isHomeScreen$ | async) === true ? 'backgroundL' : 'background_' &&
-(isRetrievePScreen$ | async) === true ? 'backgroundR' : 'background_' && (isSignUpScreen$ | async) === true ? 'backgroundS' : 'background_'">
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" [ngClass]="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isRetrievePScreen$ | async)) === true ? 'background' : 'background_' ">
 
   <ng-container *ngIf="minHeight && minwidth" >
   <div class="root-container" >

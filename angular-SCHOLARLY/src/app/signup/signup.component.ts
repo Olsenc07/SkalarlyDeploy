@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn, Validators, AbstractControl, ValidationErrors, NgForm } from '@angular/forms';
 import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -461,7 +461,7 @@ export class SignupComponent implements OnInit {
     // TODO: wire up to login request
     // console.log(this.CodeCompleted.value);
   }
-  onSubmit(): void {
+  onSubmit(form: NgForm): any{
     // if (this.email.invalid && this.password.invalid ){
     //   return;
     // }
@@ -496,6 +496,7 @@ export class SignupComponent implements OnInit {
     };
     this.storeService.setProfile(profile);
     this.storeService.setUser(userId);
+    form.resetForm();
   }
 
   ngOnInit(): void { }

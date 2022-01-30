@@ -4,7 +4,7 @@ const multer = require('multer');
 const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post');
 const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 
-const router = express.Router()
+const router = express.Router();
 
 
 const MIME_TYPE_MAP ={
