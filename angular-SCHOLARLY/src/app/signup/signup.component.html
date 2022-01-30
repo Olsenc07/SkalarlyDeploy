@@ -1,4 +1,4 @@
-<form [formGroup]="signupForm"  (ngSubmit)="onSubmit(userForm)" #userForm="ngForm" action='/api/user/signup' method='post'>
+<form [formGroup]="signupForm"  (ngSubmit)="onSubmit()"  action='/api/user' method='post'>
   <div class="entire-page">
 
     <mat-tab-group [selectedIndex]="selectedIndex" mat-align-tabs="center">

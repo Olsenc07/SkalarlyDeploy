@@ -461,7 +461,7 @@ export class SignupComponent implements OnInit {
     // TODO: wire up to login request
     // console.log(this.CodeCompleted.value);
   }
-  onSubmit(form: NgForm): any{
+  onSubmit(): any{
     // if (this.email.invalid && this.password.invalid ){
     //   return;
     // }
@@ -496,7 +496,6 @@ export class SignupComponent implements OnInit {
     };
     this.storeService.setProfile(profile);
     this.storeService.setUser(userId);
-    form.resetForm();
   }
 
   ngOnInit(): void { }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -19,7 +20,8 @@ export class HomePageComponent implements OnInit {
     password: this.password,
   });
 
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService)
+  { }
 
   ngOnInit(): void { }
 
@@ -35,7 +37,6 @@ export class HomePageComponent implements OnInit {
     // TODO: wire up to login request
     console.log(this.loginForm.value);
     this.isLoading = true;
-
     this.authService.login(this.email.value, this.password.value);
   }
 }
