@@ -1,5 +1,5 @@
 <!-- Main logo -->
-<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="background">
+<form  (ngSubmit)="onSubmit()" class="background">
   <div fxLayout="row">
     <div fxLayout="column" fxLayoutAlign="center center" class="box">
       <img Src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic">
@@ -11,7 +11,7 @@
         <div class="log-in-box" fxLayout="column" fxLayoutAlign="center center">
           <mat-form-field class="text-input">
             <mat-label> Academic Email</mat-label>
-            <input matInput [formControl]="email" />
+            <input matInput type="email" [formControl]="email" required/>
             <span matSuffix class="hide"></span>
             <mat-error *ngIf="email.invalid">Please enter your academic email</mat-error>
             <!-- <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
@@ -21,15 +21,14 @@
           </mat-form-field>
           <mat-form-field class="text-input">
             <mat-label>Password</mat-label>
-            <input matInput [formControl]="password" type="password" />
+            <input matInput [formControl]="password" type="password" required/>
             <mat-error *ngIf="password.invalid">Please enter a valid password</mat-error>
             <!-- <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
               (click)="clearPassword()">
               <mat-icon>close</mat-icon>
             </button> -->
           </mat-form-field>
-          <!-- [disabled]="loginForm.valid" but isn't needed -->
-          <button type="submit" mat-raised-button
+          <button type="submit" mat-raised-button [disabled]="!email.valid || !password.valid"
             color="primary" class="action-button top" *ngIf="!isLoading">
             Log In
           </button>

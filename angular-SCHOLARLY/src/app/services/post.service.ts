@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 export interface Post {
+    Creator: string;
     id: string;
     PostDescription: string;
     upload?: File;
@@ -51,11 +52,13 @@ getPosts(): any {
                     Virtual: post.Virtual,
                     Event: post.Event,
                     id: post._id,
-                    ImagePath: post.ImagePath
+                    ImagePath: post.ImagePath,
+                    Creator: post.Creator
                  };
         });
     }))
         .subscribe((transformedPosts) => {
+
             this.posts = transformedPosts;
             this.postsUpdated.next([...this.posts]);
 });
@@ -65,7 +68,8 @@ getPosts(): any {
     getPostUpdateListener(): any {
         return this.postsUpdated.asObservable();
     }
-    addPost( PostLocation: string, PostDescription?: string, upload?: File, LocationEvent?: string, Title?: string, Date?: string,
+    addPost( Creator: string, PostLocation: string, PostDescription?: string, upload?: File,
+             LocationEvent?: string, Title?: string, Date?: string,
              Time?: string, Gender?: string, Driver?: string, PaymentService?: string, Virtual?: string, Event?: string): any {
 
                 const postData = new FormData();
@@ -98,6 +102,7 @@ getPosts(): any {
                 Virtual,
                 Event,
                 ImagePath: responseData.post.ImagePath,
+                Creator
             };
             // const id = responseData.postId;
             // post.id = id;

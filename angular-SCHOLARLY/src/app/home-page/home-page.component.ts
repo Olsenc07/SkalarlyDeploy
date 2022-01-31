@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
@@ -20,7 +21,7 @@ export class HomePageComponent implements OnInit {
     password: this.password,
   });
 
-  constructor(public authService: AuthService)
+  constructor(public authService: AuthService, private snackBar: MatSnackBar)
   { }
 
   ngOnInit(): void { }
@@ -32,11 +33,15 @@ export class HomePageComponent implements OnInit {
   clearEmail(): void {
     this.email.setValue('');
   }
+ failedLogin(): void {
+    this.snackBar.open('Failed to login. Please Try again', 'Will do!!');
+  }
 
-  onSubmit(form: NgForm): void {
+  onSubmit(): void {
     // TODO: wire up to login request
     console.log(this.loginForm.value);
     this.isLoading = true;
     this.authService.login(this.email.value, this.password.value);
+    // Trigger this.failedLogin() when login fails. 
   }
 }

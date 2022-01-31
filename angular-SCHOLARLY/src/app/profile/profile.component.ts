@@ -16,6 +16,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
@@ -80,13 +81,15 @@ export class ProfileComponent implements OnInit {
     this.following = !this.following;
   }
   ngOnInit(): any {
+    this.isLoading = true;
+    this.postService.getPosts();
+    this.userId = this.authService.getUserId();
     this.authListenerSubs = this.authService.getAuthStatusListener()
     .subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
+      this.userId = this.authService.getUserId();
       // Can add *ngIf="userIsAuthenticated" to hide items
     });
-    this.isLoading = true;
-    this.postService.getPosts();
     this.postsSub = this.postService.getPostUpdateListener()
       .subscribe((posts: Post[]) => {
       this.posts = posts;

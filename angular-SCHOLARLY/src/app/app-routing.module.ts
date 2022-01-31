@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'post-page', component: PostPageComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'retrieve-password', component: RetrievePasswordComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },
   { path: 'friends-activity', component: FriendsActivityComponent, canActivate: [AuthGuard] },
   { path: 'groups', component: GroupChatsComponent, canActivate: [AuthGuard] },

@@ -64,6 +64,7 @@ router.post("",
         Virtual: req.body.Virtual,
         Event: req.body.Event,
         ImagePath: url + '/posts/' + req.file.filename,
+        Creator: req.userData.userId
         
     });
     post.save().then(createdPost => {
@@ -92,9 +93,12 @@ router.post("",
 
 // Posts deleting
 router.delete("/api/posts/:id", checkAuth, (req, res, next ) => {
-    Post.deleteOne({_id: req.params.id}).then(result => {
-        console.log(result);
+    Post.deleteOne({_id: req.params.id, Creator: reg.userData.userId}).then(result => {
+        if (result.n > 0){
         res.status(200).json({message: 'Post deleted!!'});
+        } else {
+            res.status(401).json({message: 'Not authorized'});
+        }
     });   
 });
 
