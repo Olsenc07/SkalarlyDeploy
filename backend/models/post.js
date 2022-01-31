@@ -13,7 +13,7 @@ const postSchema = mongoose.Schema({
     Virtual: { type: String, require: false},
     Event: { type: String, require: false},
     ImagePath: { type:String, require: false},
-    Creator: { type: mongoose.Schema.Types, ref: 'User', required: true}
+    Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 
 module.exports = mongoose.model('Post', postSchema);

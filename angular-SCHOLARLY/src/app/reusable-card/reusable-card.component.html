@@ -12,9 +12,13 @@
           <div class="centerT" *ngIf="post.Title">
 
             <mat-card-title class="postTitle textSizeTit">
-
               {{ post.Title}}
             </mat-card-title>
+
+            
+            <button *ngIf='userIsAuthenticated && userId === post.Creator' mat-icon-button><span class="material-icons-two-tone">
+              delete_forever
+              </span></button>
 
           </div>
           <div class="row2">

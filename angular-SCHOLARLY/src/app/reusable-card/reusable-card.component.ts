@@ -5,6 +5,7 @@ import { AttendanceComponent } from '../main-pages/main-pages.component';
 import { TaggedComponent } from '../main-pages/main-pages.component';
 import { StoreService } from '../services/store.service';
 import { Post, PostService } from '../services/post.service';
+import { AuthService } from '../services/auth.service';
 import { Subscription, Subject } from 'rxjs';
 
 @Component({
@@ -16,6 +17,7 @@ export class ReusableCardComponent implements OnInit{
     // Filling with Post info from post.service
     posts: Post[] = [];
     private postsSub: Subscription;
+    userId: string;
 
     isLoading = false;
 
@@ -54,15 +56,18 @@ export class ReusableCardComponent implements OnInit{
         this.bottomSheet.open(TaggedComponent);
     }
 
+    onDelete(postId: string): any {
+        this.postService.deletePost(postId);
+      }
 
-
-    constructor(private bottomSheet: MatBottomSheet,
+    constructor(private bottomSheet: MatBottomSheet, private authService: AuthService,
                 public postService: PostService) { }
 
     ngOnInit(): void {
-         this.isLoading = true;
-         this.postService.getPosts();
-         this.postsSub = this.postService.getPostUpdateListener()
+        this.userId = this.authService.getUserId();
+        this.isLoading = true;
+        this.postService.getPosts();
+        this.postsSub = this.postService.getPostUpdateListener()
           .subscribe((posts: Post[]) => {
           this.posts = posts;
           this.isLoading = false;

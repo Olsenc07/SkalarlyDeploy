@@ -263,8 +263,7 @@
               <div class="row"> No Posts Made</div><span class="fas fa-ghost centerR iconEmpty"></span>
             </div>
             <div class="posts" *ngIf="posts.length !== 0" [ngForOf]="posts">
-              <app-card class="postCard">
-  
+              <app-card class="postCard" *ngIf='userIsAuthenticated && userId === post.Creator'>
               </app-card>
             </div>
           </mat-tab>
