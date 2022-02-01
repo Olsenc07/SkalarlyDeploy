@@ -59,7 +59,7 @@ getPosts(): any {
     }))
         .subscribe((transformedPosts) => {
 
-            this.posts = transformedPosts;
+            this.posts = transformedPosts.posts;
             this.postsUpdated.next([...this.posts]);
 });
     // console.log(this.posts);

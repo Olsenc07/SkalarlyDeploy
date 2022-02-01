@@ -72,6 +72,7 @@ import { ServicesElementsComponent } from './post-page/post-page.component';
 
 
 import { ReusableCardComponent } from './reusable-card/reusable-card.component';
+import { DeleteWarningComponent } from './reusable-card/reusable-card.component';
 import { ReusableCardBriefComponent } from './reusable-card-brief/reusable-card-brief.component';
 import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
 import { ReusableCardRecommendationComponent } from './reusable-card-request/reusable-card-request.component';
@@ -125,6 +126,7 @@ import { AuthInterceptor } from './signup/auth-interceptor';
     AccountTextComponent,
     MessagingComponent,
     ServicesElementsComponent,
+    DeleteWarningComponent,
   ],
   imports: [
     BrowserModule,

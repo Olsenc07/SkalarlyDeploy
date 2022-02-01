@@ -42,6 +42,6 @@ export class HomePageComponent implements OnInit {
     console.log(this.loginForm.value);
     this.isLoading = true;
     this.authService.login(this.email.value, this.password.value);
-    // Trigger this.failedLogin() when login fails. 
+    // Trigger this.failedLogin() when login fails.
   }
 }

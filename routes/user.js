@@ -47,7 +47,7 @@ router.post("/login", (reg, res, next) => {
             if (!result) {
                 return res.status(401).json({
                     message: "Auth failed :(("
-                })
+                });
             }
             const token = jwt.sign(
                 { email: fetchedUser.email, userId: fetchedUser._id },

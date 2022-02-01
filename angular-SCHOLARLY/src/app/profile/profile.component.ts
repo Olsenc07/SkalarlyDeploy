@@ -18,6 +18,7 @@ import { AuthService } from '../services/auth.service';
 export class ProfileComponent implements OnInit {
   userId: string;
   userIsAuthenticated = false;
+  // private authStatusSubs: Subscription;
   private authListenerSubs: Subscription;
 
   storedPosts: Post[] = [];
@@ -83,34 +84,40 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): any {
     this.isLoading = true;
     this.postService.getPosts();
+    this.postsSub = this.postService.getPostUpdateListener()
+    .subscribe((posts: Post[]) => {
+    this.posts = posts;
+    this.isLoading = false;
+  });
+
     this.userId = this.authService.getUserId();
-    this.authListenerSubs = this.authService.getAuthStatusListener()
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+    .getAuthStatusListener()
     .subscribe(isAuthenticated => {
       this.userIsAuthenticated = isAuthenticated;
       this.userId = this.authService.getUserId();
       // Can add *ngIf="userIsAuthenticated" to hide items
     });
-    this.postsSub = this.postService.getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-      this.posts = posts;
-      this.isLoading = false;
-    });
 
-    // this.Com = this.Com.map(code => code.toUpperCase()).sort();
+       // this.Com = this.Com.map(code => code.toUpperCase()).sort();
     this.Pur = this.Pur.map(code => code.toUpperCase()).sort();
 
-    // this.showCases = this.showCases.toString();
+  // this.showCases = this.showCases.toString();
     return this.Pur;
+    }
+
     // this.Com
+
+    ngOnDestroy() {
+      this.postsSub.unsubscribe();
+      this.authListenerSubs.unsubscribe();
+    }
   }
 
-ngOnDestroy(){
-  this.authListenerSubs.unsubscribe();
-}
 
 
 
-}
 @Component({
   selector: 'app-profile',
   templateUrl: './bottom-sheet.component.html',
@@ -124,4 +131,5 @@ export class BottomSheetComponent {
     event.preventDefault();
   }
 }
+
 

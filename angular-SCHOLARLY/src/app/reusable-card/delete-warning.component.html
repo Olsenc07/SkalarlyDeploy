@@ -1,0 +1,9 @@
+<div class='column'>
+
+    Are you sure you want to delete?
+<div class='row' *ngFor="let post of posts">
+<button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="onDelete(post.id)">Delete</button>
+</div>
+
+</div>

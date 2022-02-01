@@ -25,7 +25,7 @@ private authStatusListener = new Subject<boolean>();
     getIsAuth(): boolean {
         return this.isAuthenticated;
     }
-    getUserId(){
+    getUserId(): string {
         return this.userId;
     }
 
@@ -59,14 +59,16 @@ private authStatusListener = new Subject<boolean>();
                 this.authStatusListener.next(true);
                 const now = new Date();
                 const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+                console.log(expirationDate)
                 this.saveAuthData(token, expirationDate, this.userId);
                 }
+                console.log(this.token);
                 });
             }
 
         autoAuthUser(): any {
             const authInformation = this.getAuthData();
-            if (!authInformation){
+            if (!authInformation) {
                 return;
             }
             const now = new Date();
@@ -85,8 +87,10 @@ private authStatusListener = new Subject<boolean>();
                 this.isAuthenticated = false;
                 this.authStatusListener.next(false);
                 this.userId = null;
-                clearTimeout();
                 clearTimeout(this.tokenTimer);
+                this.clearAuthData();
+                this.router.navigate(['/login']);
+                console.log(this.token);
             }
 
             private setAuthTimer(duration: number): any {

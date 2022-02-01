@@ -7,6 +7,7 @@ import { StoreService } from '../services/store.service';
 import { Post, PostService } from '../services/post.service';
 import { AuthService } from '../services/auth.service';
 import { Subscription, Subject } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-card',
@@ -56,12 +57,12 @@ export class ReusableCardComponent implements OnInit{
         this.bottomSheet.open(TaggedComponent);
     }
 
-    onDelete(postId: string): any {
-        this.postService.deletePost(postId);
-      }
+    openDialog(): void {
+      this.dialog.open(DeleteWarningComponent);
+    }
 
     constructor(private bottomSheet: MatBottomSheet, private authService: AuthService,
-                public postService: PostService) { }
+                public postService: PostService, public dialog: MatDialog) { }
 
     ngOnInit(): void {
         this.userId = this.authService.getUserId();
@@ -81,4 +82,27 @@ export class ReusableCardComponent implements OnInit{
     //   }
 
 }
+@Component({
+  selector: 'app-deletewarning-page',
+  templateUrl: './delete-warning.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class DeleteWarningComponent implements OnInit {
+  storedPosts: Post[] = [];
+  posts: Post[] = [];
+  private postsSub: Subscription;
 
+  constructor(public postService: PostService){}
+
+  ngOnInit(): void{
+    this.postService.getPosts();
+    this.postsSub = this.postService.getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+      this.posts = posts;
+  });
+  }
+
+  onDelete(postId: string): any {
+    this.postService.deletePost(postId);
+  }
+ }

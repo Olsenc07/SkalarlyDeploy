@@ -18,6 +18,8 @@ interface SearchOption {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
+  userIsAuthenticated = false;
+
   storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;

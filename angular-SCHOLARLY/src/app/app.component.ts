@@ -2,7 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 
@@ -15,7 +15,6 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-
   minHeight = true;
   minwidth = true;
   aspectRatio = true;
@@ -124,7 +123,7 @@ export class AppComponent implements OnInit {
 }
   }
 
-onLogout(){
+onLogout(): void{
   this.authService.logout();
 }
 
