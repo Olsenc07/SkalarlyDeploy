@@ -80,7 +80,7 @@
 
 
 
-<app-card class="hide" *ngIf="!(userIsAuthenticated && userId === post.Creator)">
+<app-card class="hide" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">
 
 </app-card>
 

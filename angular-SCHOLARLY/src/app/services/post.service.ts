@@ -59,7 +59,7 @@ getPosts(): any {
     }))
         .subscribe((transformedPosts) => {
 
-            this.posts = transformedPosts.posts;
+            this.posts = transformedPosts;
             this.postsUpdated.next([...this.posts]);
 });
     // console.log(this.posts);
@@ -102,7 +102,7 @@ getPosts(): any {
                 Virtual,
                 Event,
                 ImagePath: responseData.post.ImagePath,
-                Creator
+                Creator,
             };
             // const id = responseData.postId;
             // post.id = id;

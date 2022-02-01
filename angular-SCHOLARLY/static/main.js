@@ -6459,7 +6459,7 @@ class PostService {
                 Virtual,
                 Event,
                 ImagePath: responseData.post.ImagePath,
-                Creator
+                Creator,
             };
             // const id = responseData.postId;
             // post.id = id;
@@ -7605,7 +7605,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 6, vars: 10, consts: [[3, "formGroup", "ngClass", "ngSubmit"], [4, "ngIf"], ["class", "allBox", 4, "ngIf"], [1, "root-container"], ["settingsMenu", "matMenu"], ["mat-menu-item", "", "type", "button", "routerLink", "/retrieve-password", 1, "look-nice", 2, "border-bottom", "solid #c6c9ea"], [1, "material-icons", "d_settings", 2, "color", "burlywood"], ["mat-menu-item", "", "type", "button", "routerLink", "/edit-profile", 1, "look-nice", 2, "border-bottom", "solid #c6c9ea"], [1, "material-icons", "d_settings", 2, "color", "cadetblue"], ["mat-menu-item", "", "type", "button", "routerLink", "/login", 1, "look-nice", 3, "click"], [1, "material-icons", "d_settings", 2, "color", "darkcyan"], [1, "main-content"], ["color", "primary", "id", "nav-bar", 1, "header"], ["Src", "../assets/Pics/ProperInAppLogo.jpeg", 1, "toolbar-logo"], [1, "fill-space"], [1, "small-icons"], [3, "ngClass"], ["mat-icon-button", "", "type", "button", 3, "click"], [1, "material-icons", 3, "ngClass"], ["placeholder", "Search Fellow Scholars", 1, "standard", 3, "ngClass"], ["mat-icon-button", "", "type", "button", 1, "lowerSettings", 3, "matMenuTriggerFor"], [1, "settings"], [1, "large-screen-icons"], [1, "search-box"], [1, "material-icons", "search-box__icon"], ["matInput", "", "type", "search", "placeholder", "Search Fellow Scholars", 1, "search-box__input", 3, "formControl"], ["itemSize", "10"], [3, "value", 4, "cdkVirtualFor", "cdkVirtualForOf"], [1, "icon-top"], [1, "icon-btn-fit"], ["mat-icon-button", "", "type", "button", "routerLink", "/search", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/friends-activity", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/post-page", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/messages", 1, "a_up"], [1, "far", "fa-comment-dots", 3, "ngClass"], ["mat-icon-button", "", "type", "button", "routerLink", "/profile", 1, "a_up"], ["mat-icon-button", "", "type", "button", 1, "b_up", 3, "matMenuTriggerFor"], [3, "value"], [1, "lower"], [1, "allBox"], [1, "Text1box"], [1, "Text1"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 6, vars: 10, consts: [[3, "formGroup", "ngClass", "ngSubmit"], [4, "ngIf"], ["class", "allBox", 4, "ngIf"], [1, "root-container"], ["settingsMenu", "matMenu"], ["mat-menu-item", "", "type", "button", "routerLink", "/retrieve-password", 1, "look-nice", 2, "border-bottom", "solid #c6c9ea"], [1, "material-icons", "d_settings", 2, "color", "burlywood"], ["mat-menu-item", "", "type", "button", "routerLink", "/edit-profile", 1, "look-nice", 2, "border-bottom", "solid #c6c9ea"], [1, "material-icons", "d_settings", 2, "color", "cadetblue"], ["mat-menu-item", "", "type", "button", 1, "look-nice", 3, "click"], [1, "material-icons", "d_settings", 2, "color", "darkcyan"], [1, "main-content"], ["color", "primary", "id", "nav-bar", 1, "header"], ["Src", "../assets/Pics/ProperInAppLogo.jpeg", 1, "toolbar-logo"], [1, "fill-space"], [1, "small-icons"], [3, "ngClass"], ["mat-icon-button", "", "type", "button", 3, "click"], [1, "material-icons", 3, "ngClass"], ["placeholder", "Search Fellow Scholars", 1, "standard", 3, "ngClass"], ["mat-icon-button", "", "type", "button", 1, "lowerSettings", 3, "matMenuTriggerFor"], [1, "settings"], [1, "large-screen-icons"], [1, "search-box"], [1, "material-icons", "search-box__icon"], ["matInput", "", "type", "search", "placeholder", "Search Fellow Scholars", 1, "search-box__input", 3, "formControl"], ["itemSize", "10"], [3, "value", 4, "cdkVirtualFor", "cdkVirtualForOf"], [1, "icon-top"], [1, "icon-btn-fit"], ["mat-icon-button", "", "type", "button", "routerLink", "/search", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/friends-activity", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/post-page", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/messages", 1, "a_up"], [1, "far", "fa-comment-dots", 3, "ngClass"], ["mat-icon-button", "", "type", "button", "routerLink", "/profile", 1, "a_up"], ["mat-icon-button", "", "type", "button", 1, "b_up", 3, "matMenuTriggerFor"], [3, "value"], [1, "lower"], [1, "allBox"], [1, "Text1box"], [1, "Text1"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function AppComponent_Template_form_ngSubmit_0_listener() { return ctx.onSubmit(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](1, "async");
@@ -8397,7 +8397,7 @@ function ProfileComponent_div_1_div_86_Template(rf, ctx) { if (rf & 1) {
     const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r13.posts);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r13.userIsAuthenticated && ctx_r13.userId === ctx_r13.post.Creator);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r13.userIsAuthenticated && ctx_r13.userId === ctx_r13.posts.Creator);
 } }
 function ProfileComponent_div_1_div_88_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 57);
@@ -8614,7 +8614,7 @@ function ProfileComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", (tmp_17_0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](80, 59, ctx_r1.profile)) == null ? null : tmp_17_0.CodePursuing, " ");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !(ctx_r1.userIsAuthenticated && ctx_r1.userId === ctx_r1.post.Creator));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !(ctx_r1.userIsAuthenticated && ctx_r1.userId === ctx_r1.posts.Creator));
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.posts.length !== 0);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
@@ -12164,6 +12164,7 @@ class AuthService {
                 this.authStatusListener.next(true);
                 const now = new Date();
                 const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+                console.log(expirationDate);
                 this.saveAuthData(token, expirationDate, this.userId);
             }
             console.log(this.token);
@@ -12189,8 +12190,9 @@ class AuthService {
         this.isAuthenticated = false;
         this.authStatusListener.next(false);
         this.userId = null;
-        clearTimeout();
         clearTimeout(this.tokenTimer);
+        this.clearAuthData();
+        this.router.navigate(['/login']);
         console.log(this.token);
     }
     setAuthTimer(duration) {
@@ -13986,7 +13988,7 @@ function SearchComponent_div_1_div_20_Template(rf, ctx) { if (rf & 1) {
     const ctx_r6 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r6.posts);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !(ctx_r6.userIsAuthenticated && ctx_r6.userId === ctx_r6.post.Creator));
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !(ctx_r6.userIsAuthenticated && ctx_r6.userId === ctx_r6.posts.Creator));
 } }
 function SearchComponent_div_1_mat_option_38_Template(rf, ctx) { if (rf & 1) {
     const _r24 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
