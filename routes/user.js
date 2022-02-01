@@ -52,7 +52,7 @@ router.post("/login", (reg, res, next) => {
             const token = jwt.sign(
                 { email: fetchedUser.email, userId: fetchedUser._id },
                 'And_Even_When_I_Cant_Say_I_Love_You_I_Love_You',
-                { expiresIn: '1h', }
+                { expiresIn: '1h' }
             );
             res.status(200).json({
                 token: token,

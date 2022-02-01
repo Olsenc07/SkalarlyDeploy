@@ -36,12 +36,18 @@ export class HomePageComponent implements OnInit {
  failedLogin(): void {
     this.snackBar.open('Failed to login. Please Try again', 'Will do!!');
   }
+  successfullLogin(): void {
+    this.snackBar.open('Welcome to the community', 'Thanks!');
+  }
 
   onSubmit(): void {
     // TODO: wire up to login request
     console.log(this.loginForm.value);
     this.isLoading = true;
     this.authService.login(this.email.value, this.password.value);
+
+
     // Trigger this.failedLogin() when login fails.
+    // Trigger this.successfullLogin() when login succeeds
   }
 }

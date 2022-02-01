@@ -47,22 +47,19 @@ private authStatusListener = new Subject<boolean>();
             .subscribe(response => {
                 const token = response.token;
                 this.token = token;
-                if (token){
+                if (token) {
                 this.router.navigate(['/search']);
                 const expiresInDuration = response.expiresIn;
                 this.setAuthTimer(expiresInDuration);
-                this.tokenTimer = setTimeout(() => {
-                    this.logout();
-                }, expiresInDuration * 1000);
                 this.isAuthenticated = true;
                 this.userId = response.userId;
                 this.authStatusListener.next(true);
                 const now = new Date();
                 const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-                console.log(expirationDate)
                 this.saveAuthData(token, expirationDate, this.userId);
-                }
+                console.log(expirationDate);
                 console.log(this.token);
+                }
                 });
             }
 

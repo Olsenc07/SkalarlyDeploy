@@ -6565,6 +6565,9 @@ class HomePageComponent {
     failedLogin() {
         this.snackBar.open('Failed to login. Please Try again', 'Will do!!');
     }
+    successfullLogin() {
+        this.snackBar.open('Welcome to the community', 'Thanks!');
+    }
     onSubmit() {
         // TODO: wire up to login request
         console.log(this.loginForm.value);
@@ -12156,18 +12159,18 @@ class AuthService {
                 this.router.navigate(['/search']);
                 const expiresInDuration = response.expiresIn;
                 this.setAuthTimer(expiresInDuration);
-                this.tokenTimer = setTimeout(() => {
-                    this.logout();
-                }, expiresInDuration * 1000);
                 this.isAuthenticated = true;
+                // this.tokenTimer = setTimeout(() => {
+                //     this.logout();
+                // }, expiresInDuration * 1000);
                 this.userId = response.userId;
                 this.authStatusListener.next(true);
                 const now = new Date();
                 const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
-                console.log(expirationDate);
                 this.saveAuthData(token, expirationDate, this.userId);
+                console.log(expirationDate);
+                console.log(this.token);
             }
-            console.log(this.token);
         });
     }
     autoAuthUser() {
