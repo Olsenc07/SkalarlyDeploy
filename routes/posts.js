@@ -42,6 +42,11 @@ router.get("", (req, res, next) => {
         message: 'Posts fetched succesfully!',
         posts: documents
         });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching posts failed!'
+        });
     });
 });
 
@@ -72,21 +77,13 @@ router.post("",
             message: 'Post added successfully',
             post: {
                 id: createdPost._id,
-                ...createdPost,
-                // Title: createdPost.Title,
-                // PostDescription: createdPost.PostDescription,
-                // PostLocation: createdPost.PostLocation,
-                // LocationEvent: createdPost.LocationEvent,
-                // Time: createdPost.Time,
-                // Date: createdPost.Date,
-                // Gender: createdPost.Gender,
-                // Driver: createdPost.Driver,
-                // PaymentService: createdPost.PaymentService,
-                // Virtual: createdPost.Virtual,
-                // Event: createdPost.Event,
-                // ImagePath: createdPost.ImagePath
-
+                ...createdPost
             } 
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Creating a post failed!'
         });
     });
 });
@@ -99,7 +96,12 @@ router.delete("/api/posts/:id", checkAuth, (req, res, next ) => {
         } else {
             res.status(401).json({message: 'Not authorized'});
         }
-    });   
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching posts failed!'
+        });
+    });
 });
 
 

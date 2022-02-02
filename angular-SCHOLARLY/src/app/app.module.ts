@@ -80,6 +80,7 @@ import { ReusableCardUserComponent } from './reusable-card-user/reusable-card-us
 import { ReusableCardMutualComponent } from './reusable-card-user/reusable-card-user.component';
 import { ReusableCardMessageComponent } from './reusable-card-user/reusable-card-user.component';
 import { ReusableCardConvoComponent } from './reusable-card-convo/reusable-card-convo.component';
+import { ErrorComponent } from './error/error.component';
 
 import { TaggedComponent } from './main-pages/main-pages.component';
 import { SearchListService } from './services/search.service';
@@ -128,6 +129,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MessagingComponent,
     ServicesElementsComponent,
     DeleteWarningComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
@@ -177,5 +179,6 @@ import { ErrorInterceptor } from './error-interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
+  entryComponents: [ErrorComponent]
 })
 export class AppModule { }
