@@ -114,8 +114,8 @@
           </div>
           <div class="existing-account-layout">
            
-            <button type="button" mat-raised-button class="existing-account-style" (click)="onSubmitPartOne()"
-              (click)="changeTab()" [disabled]="!requiredForm.valid">
+            <button type="submit" (click)="onSubmit()" mat-raised-button class="existing-account-style"   
+                 [disabled]="!requiredForm.valid">
               Next
             </button>
 
@@ -245,7 +245,7 @@
            
           </div>
           <div class="createBtn">
-            <button mat-raised-button class="cBtnB" (click)="changeTab1R()">Back</button>
+            <!-- <button mat-raised-button class="cBtnB" (click)="changeTab1R()">Back</button> -->
             <div class="skip1">
               <button mat-button class="cBtnBl" (click)="changeTab1()">Skip For Now</button>
             </div>
@@ -528,7 +528,7 @@
         <div class="createBtn">
           <button mat-raised-button class="cBtnB" (click)="changeTab3()">Back</button>
           
-          <button mat-raised-button class="cBtn" *ngIf="!isLoading"  type="submit" (click)="onSubmit()">Create</button>
+          <button mat-raised-button class="cBtn" *ngIf="!isLoading">Create</button>
           <mat-spinner *ngIf="isLoading"></mat-spinner>
         </div>
       </mat-tab>

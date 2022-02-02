@@ -428,9 +428,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   //   this.snapShot3.setValue('');
   //   document.getElementById('thirdP').removeAttribute('src');
   // }
-  changeTab(): void {
-    this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
-  }
+ 
   changeTab1(): void {
     this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
   }
@@ -454,11 +452,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.dialog.open(AccountTextComponent);
   }
 
-
-  onSubmitPartOne(): void {
-    // TODO: wire up to login request
-    // console.log(this.requiredForm.value);
-  }
   onSubmitPartTwo(): void {
     // TODO: wire up to login request
     // console.log(this.personalizeForm.value);
@@ -468,12 +461,10 @@ export class SignupComponent implements OnInit, OnDestroy {
     // console.log(this.CodeCompleted.value);
   }
   onSubmit(): any{
-    // if (this.email.invalid && this.password.invalid ){
-    //   return;
-    // }
+//  Email validation to continue
     this.isLoading = true;
     this.authService.createUser(this.email.value, this.password.value);
-   
+    this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
 
     const userId: NewUserId = {
       Email: this.email.value,

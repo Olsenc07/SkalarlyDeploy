@@ -1,0 +1,16 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+.columnC {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.entirePage {
+  display: flex;
+  flex-direction: column;
+  font-family: "Font Awesome 5 Free";
+}
