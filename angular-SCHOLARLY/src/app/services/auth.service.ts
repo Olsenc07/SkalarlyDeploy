@@ -35,10 +35,11 @@ private authStatusListener = new Subject<boolean>();
 
     createUser(email: string, password: string): any {
         const authData: AuthData = { email, password};
-        this.http.post('http://localhost:3000/api/user/signup', authData)
-            .subscribe(response => {
-                console.log(response);
-            });
+        this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(() => {
+            this.router.navigate['/search'];
+         }, error => {
+             this.authStatusListener.next(false);
+         });
     }
 
     login(email: string, password: string): any  {
@@ -60,7 +61,9 @@ private authStatusListener = new Subject<boolean>();
                 console.log(expirationDate);
                 console.log(this.token);
                 }
-                });
+                }, error => {
+                    this.authStatusListener.next(false);
+                 });
             }
 
         autoAuthUser(): any {

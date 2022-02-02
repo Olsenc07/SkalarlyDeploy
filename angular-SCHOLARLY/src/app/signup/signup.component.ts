@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn, Validators, AbstractControl, ValidationErrors, NgForm } from '@angular/forms';
 import {
   MomentDateAdapter,
@@ -21,7 +21,7 @@ import { ClassListService } from '../services/class.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 // import { base64ToFile } from '../../utils/blob.utils';
 import { ImageCroppedEvent, Dimensions } from 'ngx-image-cropper';
 import { Profile, NewUserId, StoreService } from '../services/store.service';
@@ -68,8 +68,9 @@ export const MY_FORMATS = {
 
 
 
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
+  private authStatusSub: Subscription;
   visible = true;
   selectable = true;
   removable = true;
@@ -446,7 +447,12 @@ export class SignupComponent implements OnInit {
     this.selectedIndex = this.selectedIndex === 3 ? 2 : 3;
   }
 
-
+  openDialog(): void {
+    this.dialog.open(TermsPopUpComponent);
+  }
+  openDialogAccount(): void {
+    this.dialog.open(AccountTextComponent);
+  }
 
 
   onSubmitPartOne(): void {
@@ -465,8 +471,9 @@ export class SignupComponent implements OnInit {
     // if (this.email.invalid && this.password.invalid ){
     //   return;
     // }
-    this.authService.createUser(this.email.value, this.password.value);
     this.isLoading = true;
+    this.authService.createUser(this.email.value, this.password.value);
+   
 
     const userId: NewUserId = {
       Email: this.email.value,
@@ -498,15 +505,19 @@ export class SignupComponent implements OnInit {
     this.storeService.setUser(userId);
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+   this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
+     authStatus => {
+       this.isLoading = false;
+     }
+   );
+  }
+
+  ngOnDestroy(): void {
+  this.authStatusSub.unsubscribe();
+  }
 
 
-  openDialog(): void {
-    this.dialog.open(TermsPopUpComponent);
-  }
-  openDialogAccount(): void {
-    this.dialog.open(AccountTextComponent);
-  }
 
 }
 

@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent implements OnInit, OnDestroy {
   email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
   isLoading = false;
+  private authStatusSub: Subscription;
 
 
   loginForm = new FormGroup({
@@ -24,8 +25,17 @@ export class HomePageComponent implements OnInit {
   constructor(public authService: AuthService, private snackBar: MatSnackBar)
   { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
+      authStatus => {
+        this.isLoading = false;
+      }
+    );
+   }
 
+   ngOnDestroy(): void {
+    this.authStatusSub.unsubscribe();
+    }
   clearPassword(): void {
     this.password.setValue('');
   }

@@ -88,6 +88,7 @@ import { ClassListService } from './services/class.service';
 import { StoreService } from './services/store.service';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './signup/auth-interceptor';
+import { ErrorInterceptor } from './error-interceptor';
 
 
 
@@ -172,7 +173,9 @@ import { AuthInterceptor } from './signup/auth-interceptor';
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SearchListService, PostService, ClassListService, StoreService, AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

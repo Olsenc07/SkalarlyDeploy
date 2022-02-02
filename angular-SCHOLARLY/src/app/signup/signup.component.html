@@ -528,7 +528,7 @@
         <div class="createBtn">
           <button mat-raised-button class="cBtnB" (click)="changeTab3()">Back</button>
           
-          <button mat-raised-button class="cBtn" *ngIf="!isLoading" routerLink="/search" type="submit" (click)="onSubmit()">Create</button>
+          <button mat-raised-button class="cBtn" *ngIf="!isLoading"  type="submit" (click)="onSubmit()">Create</button>
           <mat-spinner *ngIf="isLoading"></mat-spinner>
         </div>
       </mat-tab>
