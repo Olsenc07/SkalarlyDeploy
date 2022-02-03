@@ -114,7 +114,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   name: FormControl = new FormControl('');
   pronouns: FormControl = new FormControl('');
   birthday: FormControl = new FormControl();
-  genderChoice: FormControl = new FormControl('');
+  gender: FormControl = new FormControl('');
   email: FormControl = new FormControl('', [Validators.email, this.noWhiteSpace]);
   termsCheck: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
@@ -136,11 +136,9 @@ export class SignupComponent implements OnInit, OnDestroy {
 
 
   requiredForm = new FormGroup({
-    // verify email
     email: this.email,
     username: this.username,
     password: this.password,
-    genderChoice: this.genderChoice,
     accountType: new FormControl(''),
     termsCheck: this.termsCheck,
   });
@@ -148,6 +146,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   personalizeForm = new FormGroup({
     profilePic: this.profilePic,
     name: this.name,
+    gender: this.gender,
     pronouns: this.pronouns,
     birthday: this.birthday,
     bio: this.bio,
@@ -499,7 +498,8 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   onSubmit2(): any {
     this.isLoading = true;
-    this.authService.createUserInfo(this.genderChoice.value, this.name.value);
+    this.authService.createUserInfo( this.name.value, this.birthday.value);
+    // Trigers a message 'Login with your new account :)'
   }
 
   ngOnInit(): void {

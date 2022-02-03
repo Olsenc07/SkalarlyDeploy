@@ -5,6 +5,6 @@ export interface AuthData {
 }
 
 export interface AuthDataInfo {
-    genderChoice?: string;
-    name?: string;
+    name: string;
+    birthday: string;
 }

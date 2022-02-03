@@ -91,15 +91,7 @@
 
             </mat-radio-group>
           </div>
-          <mat-form-field appearance="fill" class="gender">
-            <mat-label>Gender</mat-label>
-            <mat-select [formControl]="genderChoice" required>
-              <mat-option *ngFor="let gender of genders" [value]="gender">
-                {{gender.name}}
-              </mat-option>
-            </mat-select>
-            <mat-error *ngIf="genderChoice.invalid">Select one of the four options</mat-error>
-          </mat-form-field>
+          
 
 
           <!-- Terms/Conditions text and button -->
@@ -221,25 +213,36 @@
               </mat-form-field>
             </div>
             <div class="inputP">
-              <mat-form-field class="inputP">
+              <div>
+              <mat-form-field appearance="fill" class="gender">
+                <mat-label>Gender</mat-label>
+                <mat-select [formControl]="gender">
+                  <mat-option *ngFor="let gender of genders" [value]="gender">
+                    {{gender.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="gender.invalid">Select one of the four options</mat-error>
+              </mat-form-field>
+            </div>
+              <div class="center">
+              <mat-form-field>
                 <input matInput placeholder="Prefered Pronouns" [formControl]="pronouns" />
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                   <mat-icon class="asthetic-adds">close</mat-icon>
                 </button> -->
               </mat-form-field>
+              </div>
             </div>
 
             <div class="input">
               <!-- Birthday picker -->
-              <div class="column">
-                <i class="material-icons _icon">cake</i>
-                <!-- <p class="asthetic-adds ">Birthday</p> -->
-              </div>
               <mat-form-field appearance="fill">
                 <mat-label>When's your birthday?</mat-label>
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
+               
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp></mat-datepicker>
+                <i class="material-icons _icon">cake</i>
               </mat-form-field>
             </div>
            
@@ -528,7 +531,8 @@
         <div class="createBtn">
           <button mat-raised-button class="cBtnB" *ngIf="!isLoading" (click)="changeTab3()">Back</button>
           
-          <button type="button" mat-raised-button class="cBtn" (click)="onSubmit2()" *ngIf="!isLoading">Create</button>
+          <button type="button" mat-raised-button class="cBtn" (click)="onSubmit2()"
+          routerLink="/search" *ngIf="!isLoading">Create</button>
           <mat-spinner *ngIf="isLoading"></mat-spinner>
         </div>
       </mat-tab>

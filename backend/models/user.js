@@ -11,8 +11,8 @@ userSchema.plugin(uniqueValidator);
 
 
 const userInfoSchema = mongoose.Schema({
-   genderChoice: { type: String, required: false},
-   name: { type: String, required: false }
+   name: { type: String },
+   birthday: { type: String},
 })
 
 

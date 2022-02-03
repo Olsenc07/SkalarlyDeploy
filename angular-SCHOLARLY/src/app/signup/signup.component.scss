@@ -139,7 +139,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-right: 1%;
 }
 .courses {
   display: flex;
@@ -150,6 +149,10 @@
   display: flex;
   margin-top: 1%;
   max-width: fit-content;
+}
+.center {
+  display: flex;
+  justify-content: center;
 }
 .display {
   display: flex;
@@ -359,7 +362,7 @@
 .inputP {
   display: flex;
   justify-content: center;
-  flex-direction: row;
+  flex-direction: column;
 }
 .input_ {
   display: flex;

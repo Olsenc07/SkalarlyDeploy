@@ -43,10 +43,9 @@ private authStatusListener = new Subject<boolean>();
          });
     }
 
-    createUserInfo(genderChoice: string, name: string): any {
-        const authDataInfo: AuthDataInfo = { genderChoice, name };
+    createUserInfo( name: string, birthday: string): any {
+        const authDataInfo: AuthDataInfo = { name, birthday };
         this.http.post('http://localhost:3000/api/user/info', authDataInfo).subscribe(() => {
-            this.router.navigate['/search'];
     }, error => {
         this.authStatusListener.next(false);
         });

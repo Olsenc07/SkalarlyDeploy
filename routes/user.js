@@ -33,8 +33,8 @@ router.post("/signup", (req, res, next) => {
 
     router.post("/info", (req, res, next) => {
             const userinfo = new UserInfo({
-                genderChoice: req.body.genderChoice,
                 name: req.body.name,
+                birthday: req.body.birthday
             });
             userinfo.save().then(result => {
                 res.status(201).json({
@@ -44,7 +44,7 @@ router.post("/signup", (req, res, next) => {
             })
                 .catch(err => {
                     res.status(500).json({
-                            message: 'Unable to create account'
+                            message: 'Unable to add information'
                     });
                 });
 });
