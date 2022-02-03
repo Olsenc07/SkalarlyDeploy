@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
-
+const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 
 
 
@@ -13,6 +13,7 @@ router.post("/signup", (req, res, next) => {
         .then(hash => {
             const user = new User({
                 email: req.body.email,
+                username: req.body.username,
                 password: hash,
             });
             user.save().then(result => {
@@ -23,12 +24,30 @@ router.post("/signup", (req, res, next) => {
             })
                 .catch(err => {
                     res.status(500).json({
-                            message: 'Email already in use, or invalid email'
+                            message: 'Email or Usernmae invalid'
                     });
                 });
         });
 });
 
+
+    router.post("/info", (req, res, next) => {
+            const userinfo = new UserInfo({
+                genderChoice: req.body.genderChoice,
+                name: req.body.name,
+            });
+            userinfo.save().then(result => {
+                res.status(201).json({
+                    message: 'Yay a user added info',
+                    result: result
+                });
+            })
+                .catch(err => {
+                    res.status(500).json({
+                            message: 'Unable to create account'
+                    });
+                });
+});
 
 
 router.post("/login", (reg, res, next) => {

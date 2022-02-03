@@ -171,7 +171,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     personalizeForm: this.personalizeForm,
   });
 
-
   public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
     if ((control.value as string).indexOf(' ') >= 0){
         return {noWhiteSpace: true};
@@ -428,9 +427,10 @@ export class SignupComponent implements OnInit, OnDestroy {
   //   this.snapShot3.setValue('');
   //   document.getElementById('thirdP').removeAttribute('src');
   // }
- 
+
   changeTab1(): void {
     this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
+    this.isLoading = false;
   }
   changeTab1R(): void {
     this.selectedIndex = this.selectedIndex === 1 ? 0 : 1;
@@ -463,37 +463,43 @@ export class SignupComponent implements OnInit, OnDestroy {
   onSubmit(): any{
 //  Email validation to continue
     this.isLoading = true;
-    this.authService.createUser(this.email.value, this.password.value);
+    this.authService.createUser(this.email.value, this.username.value, this.password.value);
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
 
-    const userId: NewUserId = {
-      Email: this.email.value,
-      UserName: this.username.value,
-      Password: this.password.value,
-      TermsCheck: this.termsCheck.value,
-    };
+    // const userId: NewUserId = {
+    //   Email: this.email.value,
+    //   UserName: this.username.value,
+    //   Password: this.password.value,
+    //   TermsCheck: this.termsCheck.value,
+    // };
 
 
-    const profile: Profile = {
-      UserName: this.username.value,
-      CodeCompleted: this.CodeCompleted.value,
-      CodePursuing: this.CodePursuing.value,
-      Name: this.name.value,
-      Pronouns: this.pronouns.value,
-      profilePic: this.profilePic.value,
-      Gender: this.genderChoice.value,
-      Major: this.major.value,
-      Minor: this.minor.value,
-      Sport: this.sport.value,
-      Club: this.club.value,
-      profPic: this.cropImgPreview,
-      // ShowCasse: this.url.value,
-      Birthday: this.birthday.value,
-      ShowCase: this.showCase.value,
+    // const profile: Profile = {
+    //   UserName: this.username.value,
+    //   CodeCompleted: this.CodeCompleted.value,
+    //   CodePursuing: this.CodePursuing.value,
+    //   Name: this.name.value,
+    //   Pronouns: this.pronouns.value,
+    //   profilePic: this.profilePic.value,
+    //   Gender: this.genderChoice.value,
+    //   Major: this.major.value,
+    //   Minor: this.minor.value,
+    //   Sport: this.sport.value,
+    //   Club: this.club.value,
+    //   profPic: this.cropImgPreview,
+    //   // ShowCasse: this.url.value,
+    //   Birthday: this.birthday.value,
+    //   ShowCase: this.showCase.value,
 
-    };
-    this.storeService.setProfile(profile);
-    this.storeService.setUser(userId);
+    // };
+    // this.storeService.setProfile(profile);
+    // this.storeService.setUser(userId);
+  }
+
+
+  onSubmit2(): any {
+    this.isLoading = true;
+    this.authService.createUserInfo(this.genderChoice.value, this.name.value);
   }
 
   ngOnInit(): void {

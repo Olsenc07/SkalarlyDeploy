@@ -1,4 +1,4 @@
-<form [formGroup]="signupForm"  (ngSubmit)="onSubmit()"  action='/api/user' method='post'>
+<form  action='/api/user' method='post'>
   <div class="entire-page">
 
     <mat-tab-group [selectedIndex]="selectedIndex" mat-align-tabs="center">
@@ -114,7 +114,7 @@
           </div>
           <div class="existing-account-layout">
            
-            <button type="submit" (click)="onSubmit()" mat-raised-button class="existing-account-style"   
+            <button type="button" (click)="onSubmit()" mat-raised-button class="existing-account-style"   
                  [disabled]="!requiredForm.valid">
               Next
             </button>
@@ -526,9 +526,9 @@
 
 
         <div class="createBtn">
-          <button mat-raised-button class="cBtnB" (click)="changeTab3()">Back</button>
+          <button mat-raised-button class="cBtnB" *ngIf="!isLoading" (click)="changeTab3()">Back</button>
           
-          <button mat-raised-button class="cBtn" *ngIf="!isLoading">Create</button>
+          <button type="button" mat-raised-button class="cBtn" (click)="onSubmit2()" *ngIf="!isLoading">Create</button>
           <mat-spinner *ngIf="isLoading"></mat-spinner>
         </div>
       </mat-tab>

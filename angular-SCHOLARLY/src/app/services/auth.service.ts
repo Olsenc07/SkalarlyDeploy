@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClient } from '@angular/common/http';
-import { AuthData } from '../signup/auth-data.model';
+import { AuthData, AuthDataInfo } from '../signup/auth-data.model';
 import { Subject } from 'rxjs';
 import {Router} from '@angular/router';
 import { AppRoutingModule } from '../app-routing.module';
+
 
 
 @Injectable({ providedIn: 'root'})
@@ -33,13 +34,22 @@ private authStatusListener = new Subject<boolean>();
         return this.authStatusListener.asObservable();
     }
 
-    createUser(email: string, password: string): any {
-        const authData: AuthData = { email, password};
+    createUser(email: string, username: string, password: string): any {
+        const authData: AuthData = { email, username, password};
         this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(() => {
-            this.router.navigate['/search'];
+            // this.router.navigate['/search'];
          }, error => {
              this.authStatusListener.next(false);
          });
+    }
+
+    createUserInfo(genderChoice: string, name: string): any {
+        const authDataInfo: AuthDataInfo = { genderChoice, name };
+        this.http.post('http://localhost:3000/api/user/info', authDataInfo).subscribe(() => {
+            this.router.navigate['/search'];
+    }, error => {
+        this.authStatusListener.next(false);
+        });
     }
 
     login(email: string, password: string): any  {
