@@ -110,7 +110,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   CodePursuing: FormControl = new FormControl('');
   filteredCodesP: Observable<string[]>;
 
-
   CodeCompleted: FormControl = new FormControl('');
   filteredCodes: Observable<string[]>;
 
@@ -487,7 +486,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   onSubmit2(): any {
     this.isLoading = true;
     this.authService.createUserInfo( this.name.value, this.gender.value, this.birthday.value,
-     this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value
+     this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value,
+     this.CodeCompleted.value, this.CodePursuing.value
       );
   }
 

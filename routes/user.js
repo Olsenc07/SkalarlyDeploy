@@ -41,6 +41,8 @@ router.post("/signup", (req, res, next) => {
                 sport: req.body.sport,
                 club: req.body.club,
                 pronouns: req.body.pronouns,
+                CodePursuing: req.body.CodePursuing,
+                CodeCompleted: req.body.CodeCompleted
             });
             userinfo.save().then(result => {
                 res.status(201).json({

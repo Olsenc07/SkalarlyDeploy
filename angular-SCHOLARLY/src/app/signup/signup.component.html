@@ -483,11 +483,11 @@
                     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                   </mat-chip>
                   <input placeholder="Choose completed courses" #codeInput [formControl]="CodeCompleted"
-                    [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                    [matAutocomplete]="autoC" [matChipInputFor]="chipList"
                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
                 </mat-chip-list>
                 <cdk-virtual-scroll-viewport itemSize="10">
-                  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                  <mat-autocomplete #autoC="matAutocomplete" (optionSelected)="selected($event)">
                     <mat-option *cdkVirtualFor="let code of filteredCodes | async" [value]="code">
                       {{code}}
                     </mat-option>

@@ -9,7 +9,10 @@ const userInfoSchema = mongoose.Schema({
     minor: { type: String},
     sport: { type: String},
     club: { type: String},
-    pronouns: { type: String}
+    pronouns: { type: String},
+    CodeCompleted: { type: String},
+    CodePursuing: { type: String},
+
  })
  
  
