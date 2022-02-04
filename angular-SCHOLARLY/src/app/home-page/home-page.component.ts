@@ -51,7 +51,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    // TODO: wire up to login request
     console.log(this.loginForm.value);
     this.isLoading = true;
     this.authService.login(this.email.value, this.password.value);

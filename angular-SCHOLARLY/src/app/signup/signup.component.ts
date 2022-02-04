@@ -30,10 +30,6 @@ import { AuthService } from '../services/auth.service';
 
 
 
-
-interface Gender {
-  name: string;
-}
 const moment = _rollupMoment || _moment;
 export const MY_FORMATS = {
   parse: {
@@ -86,15 +82,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
 
   selectedIndex = 0;
-  genders: Gender[] = [
-    { name: '' },
-    { name: 'Female' },
-    { name: 'Male' },
-    { name: 'Other' },
-
-  ];
-
-
+  genders: string[] = ['', 'Female', 'Male', 'Other'];
   // Wont display because of security warning
   // But will be connected to abck end any way so dont worry rn
   url: string[];
@@ -498,8 +486,9 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   onSubmit2(): any {
     this.isLoading = true;
-    this.authService.createUserInfo( this.name.value, this.birthday.value);
-    // Trigers a message 'Login with your new account :)'
+    this.authService.createUserInfo( this.name.value, this.gender.value, this.birthday.value,
+     this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value
+      );
   }
 
   ngOnInit(): void {

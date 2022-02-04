@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
-const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
+const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
 
 
 
@@ -34,7 +34,13 @@ router.post("/signup", (req, res, next) => {
     router.post("/info", (req, res, next) => {
             const userinfo = new UserInfo({
                 name: req.body.name,
-                birthday: req.body.birthday
+                gender: req.body.gender,
+                birthday: req.body.birthday,
+                major: req.body.major,
+                minor: req.body.minor,
+                sport: req.body.sport,
+                club: req.body.club,
+                pronouns: req.body.pronouns,
             });
             userinfo.save().then(result => {
                 res.status(201).json({

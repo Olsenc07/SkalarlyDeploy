@@ -5,6 +5,12 @@ export interface AuthData {
 }
 
 export interface AuthDataInfo {
-    name: string;
-    birthday: string;
+    name?: string;
+    gender?: string;
+    birthday?: string;
+    major?: string;
+    minor?: string;
+    sport?: string;
+    club?: string;
+    pronouns?: string;
 }
