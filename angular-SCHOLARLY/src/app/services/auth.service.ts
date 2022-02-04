@@ -45,9 +45,10 @@ private authStatusListener = new Subject<boolean>();
     }
 
     createUserInfo( name: string, gender: string, birthday: string, major: string, minor: string, sport: string,
-                    club: string, pronouns: string, CodeCompleted: string,  CodePursuing: string,
+                    club: string, pronouns: string, CodeCompleted: string,  CodePursuing: string, profilePic: File,
         ): any {
-        const authDataInfo: AuthDataInfo = { name, gender, birthday, major, minor, sport, club, pronouns, CodeCompleted, CodePursuing };
+        const authDataInfo: AuthDataInfo = { name, gender, birthday, major, minor,
+            sport, club, pronouns, CodeCompleted, CodePursuing, profilePic };
         this.http.post('http://localhost:3000/api/user/info', authDataInfo).subscribe(() => {
             this.snackBar.open('Sign in with your new account', 'Will do!!');
     }, error => {

@@ -8,6 +8,26 @@ const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/
 
 
 
+const storage  = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const isValid = MIME_TYPE_MAP[file.mimetype];
+        let error = new Error('Invalid mime type');
+        if (isValid){
+            error = null;
+        }    
+        cb(null, './backend/profilePics');   
+  
+    },
+    filename: (req, file, cb) => {
+        const name = file.originalname.toLowerCase();
+        const ext = MIME_TYPE_MAP[file.mimetype];
+        cb(null, name + '-' + Date.now() + '.' + ext);
+    },
+    
+});
+
+
+// Creating user
 router.post("/signup", (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
@@ -30,8 +50,11 @@ router.post("/signup", (req, res, next) => {
         });
 });
 
-
-    router.post("/info", (req, res, next) => {
+const pic = multer({ storage: storage})
+// User info
+    router.post("/info", 
+            pic.single('profilePic'), (req, res, next) => {
+            const url = req.protocol + '://' + req.get('host');
             const userinfo = new UserInfo({
                 name: req.body.name,
                 gender: req.body.gender,
@@ -42,7 +65,9 @@ router.post("/signup", (req, res, next) => {
                 club: req.body.club,
                 pronouns: req.body.pronouns,
                 CodePursuing: req.body.CodePursuing,
-                CodeCompleted: req.body.CodeCompleted
+                CodeCompleted: req.body.CodeCompleted,
+                ProfilePicPath: url + '/user/' + req.file.filename,
+
             });
             userinfo.save().then(result => {
                 res.status(201).json({

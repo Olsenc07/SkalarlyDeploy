@@ -15,5 +15,7 @@ export interface AuthDataInfo {
     pronouns?: string;
     CodeCompleted?: string;
     CodePursuing?: string;
+    profilePic?: File;
+    ProfilePicPath?: string;
 
 }

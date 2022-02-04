@@ -26,6 +26,7 @@ import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 import { ImageCroppedEvent, Dimensions } from 'ngx-image-cropper';
 import { Profile, NewUserId, StoreService } from '../services/store.service';
 import { AuthService } from '../services/auth.service';
+import {Courses} from 'nikel';
 
 
 
@@ -263,16 +264,16 @@ export class SignupComponent implements OnInit, OnDestroy {
     // this.bio.valueChanges.subscribe((v) => this.bioLength.next(v.length));
 
 
-    this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
-      map((code: string | null) =>
-        code ? this._filter(code) : this.classListService.allClasses().slice()
-      )
-    );
-    this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
-      map((codeP: string | null) =>
-        codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
-      )
-    );
+    // this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
+    //   map((code: string | null) =>
+    //     code ? this._filter(code) : this.classListService.allClasses().slice()
+    //   )
+    // );
+    // this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
+    //   map((codeP: string | null) =>
+    //     codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
+    //   )
+    // );
     // this.filteredCodesP.subscribe((r) => this.CodePursuing);
 
     // this.filteredCodes.subscribe((r) => this.CodeCompleted);
@@ -487,7 +488,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.authService.createUserInfo( this.name.value, this.gender.value, this.birthday.value,
      this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value,
-     this.CodeCompleted.value, this.CodePursuing.value
+     this.CodeCompleted.value, this.CodePursuing.value, this.profilePic.value
       );
   }
 

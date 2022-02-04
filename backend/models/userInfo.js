@@ -12,6 +12,7 @@ const userInfoSchema = mongoose.Schema({
     pronouns: { type: String},
     CodeCompleted: { type: String},
     CodePursuing: { type: String},
+    ProfilePicPath: { type: String},
 
  })
  
