@@ -95,6 +95,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   cropImgPreview: any = '';
   imgChangeEvent: any = '';
   // showCropper = false;
+  showCasePreview: any = '';
+
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [Validators.pattern('[a-zA-Z0-9_]*'), this.noWhiteSpace]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
@@ -109,7 +111,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   email: FormControl = new FormControl('', [Validators.email, this.noWhiteSpace]);
   termsCheck: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
-  profilePic: FormControl = new FormControl('');
   CodePursuing: FormControl = new FormControl('');
   filteredCodesP: Observable<string[]>;
 
@@ -120,7 +121,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   bio: FormControl = new FormControl('');
   public bioLength = new BehaviorSubject(0);
   // snapShot1: FormControl = new FormControl('');
-  showCase: FormControl = new FormControl('');
   public showCaseList = new Subject();
   // snapShot3: FormControl = new FormControl('');
 
@@ -135,13 +135,11 @@ export class SignupComponent implements OnInit, OnDestroy {
   });
 
   personalizeForm = new FormGroup({
-    profilePic: this.profilePic,
     name: this.name,
     gender: this.gender,
     pronouns: this.pronouns,
     birthday: this.birthday,
     bio: this.bio,
-    showCase: this.showCase,
   });
 
   // Maybe just upload one.. makes storing data with edit profile the same way...
@@ -227,16 +225,19 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   // SnapShot
   imagePreview(event: any): void {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({showCase: file});
+    this.form.get('showCase').updateValueAndValidity();
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
 
-      reader.onload = (Event: any) => { // called once readAsDataURL is completed
+    const reader = new FileReader();
+
+    reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+    reader.onload = (Event: any) => { // called once readAsDataURL is completed
         console.log(Event);
-        this.url = Event.target.result;
+        this.showCasePreview = Event.target.result;
       };
-    }
 
   }
   // imagePreview2(event: any): void {
@@ -408,15 +409,15 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.email.setValue('');
   }
   clearProfilePic(): void {
-    this.profilePic.setValue('');
-    document.getElementById('ProfilePic').removeAttribute('src');
+    this.form.get('profilePic').setValue('');
+    document.getElementById('profilePic').removeAttribute('src');
   }
   // clearPic1(): void {
   //   this.snapShot1.setValue('');
   //   document.getElementById('firstP').removeAttribute('src');
   // }
   clearPic(): void {
-    this.showCase.setValue('');
+    this.form.get('showCase').setValue('');
     document.getElementById('showCase').removeAttribute('src');
   }
   // clearPic3(): void {
@@ -497,7 +498,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.authService.createUserInfo( this.name.value, this.gender.value, this.birthday.value,
      this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value,
-     this.CodeCompleted.value, this.CodePursuing.value, this.form.get('profilePic').value
+     this.CodeCompleted.value, this.CodePursuing.value, this.form.get('profilePic').value, this.form.get('showCase').value
       );
   }
 
@@ -509,6 +510,10 @@ export class SignupComponent implements OnInit, OnDestroy {
    );
    this.form = new FormGroup({
     profilePic: new FormControl(null, {
+      validators: [Validators.required],
+      asyncValidators: [mimeType]
+    }),
+    showCase: new FormControl(null, {
       validators: [Validators.required],
       asyncValidators: [mimeType]
     })

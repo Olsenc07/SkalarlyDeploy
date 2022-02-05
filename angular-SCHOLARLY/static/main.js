@@ -12319,9 +12319,9 @@ class AuthService {
             this.authStatusListener.next(false);
         });
     }
-    createUserInfo(name, gender, birthday, major, minor, sport, club, pronouns, CodeCompleted, CodePursuing, profilePic) {
+    createUserInfo(name, gender, birthday, major, minor, sport, club, pronouns, CodeCompleted, CodePursuing, profilePic, showCase) {
         const authDataInfo = { name, gender, birthday, major, minor,
-            sport, club, pronouns, CodeCompleted, CodePursuing, profilePic };
+            sport, club, pronouns, CodeCompleted, CodePursuing, profilePic, showCase };
         const userData = new FormData();
         userData.append('name', name);
         userData.append('gender', gender);
@@ -12334,6 +12334,7 @@ class AuthService {
         userData.append('CodeCompleted', CodeCompleted);
         userData.append('CodePursuing', CodePursuing);
         userData.append('profilePic', profilePic);
+        userData.append('showCase', showCase);
         this.http
             .post('http://localhost:3000/api/user/info', userData)
             .subscribe(responseData => {
@@ -12349,7 +12350,8 @@ class AuthService {
                 pronouns,
                 CodeCompleted,
                 CodePursuing,
-                ProfilePicPath: responseData.post.ProfilePicPath
+                ProfilePicPath: responseData.post.ProfilePicPath,
+                ShowCasePath: responseData.post.ShowCasePath
             };
             this.snackBar.open('Sign in with your new account', 'Will do!!');
             // this.router.navigate['/search']
@@ -13206,6 +13208,7 @@ class SignupComponent {
         this.cropImgPreview = '';
         this.imgChangeEvent = '';
         // showCropper = false;
+        this.showCasePreview = '';
         this.containWithinAspectRatio = false;
         this.username = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].pattern('[a-zA-Z0-9_]*'), this.noWhiteSpace]);
         this.password = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', this.noWhiteSpace);
@@ -13220,13 +13223,11 @@ class SignupComponent {
         this.email = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].email, this.noWhiteSpace]);
         this.termsCheck = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
-        this.profilePic = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         this.CodePursuing = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         this.CodeCompleted = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         this.bio = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         this.bioLength = new rxjs__WEBPACK_IMPORTED_MODULE_6__["BehaviorSubject"](0);
         // snapShot1: FormControl = new FormControl('');
-        this.showCase = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
         this.showCaseList = new rxjs__WEBPACK_IMPORTED_MODULE_6__["Subject"]();
         this.requiredForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
             email: this.email,
@@ -13236,13 +13237,11 @@ class SignupComponent {
             termsCheck: this.termsCheck,
         });
         this.personalizeForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
-            profilePic: this.profilePic,
             name: this.name,
             gender: this.gender,
             pronouns: this.pronouns,
             birthday: this.birthday,
             bio: this.bio,
-            showCase: this.showCase,
         });
         // Maybe just upload one.. makes storing data with edit profile the same way...
         // showCase = new FormGroup({
@@ -13329,14 +13328,15 @@ class SignupComponent {
     }
     // SnapShot
     imagePreview(event) {
-        if (event.target.files && event.target.files[0]) {
-            const reader = new FileReader();
-            reader.readAsDataURL(event.target.files[0]); // read file as data url
-            reader.onload = (Event) => {
-                console.log(Event);
-                this.url = Event.target.result;
-            };
-        }
+        const file = event.target.files[0];
+        this.form.patchValue({ showCase: file });
+        this.form.get('showCase').updateValueAndValidity();
+        const reader = new FileReader();
+        reader.readAsDataURL(event.target.files[0]); // read file as data url
+        reader.onload = (Event) => {
+            console.log(Event);
+            this.showCasePreview = Event.target.result;
+        };
     }
     uploadFileP() {
         document.getElementById('fileInputP').click();
@@ -13432,15 +13432,15 @@ class SignupComponent {
         this.email.setValue('');
     }
     clearProfilePic() {
-        this.profilePic.setValue('');
-        document.getElementById('ProfilePic').removeAttribute('src');
+        this.form.get('profilePic').setValue('');
+        document.getElementById('profilePic').removeAttribute('src');
     }
     // clearPic1(): void {
     //   this.snapShot1.setValue('');
     //   document.getElementById('firstP').removeAttribute('src');
     // }
     clearPic() {
-        this.showCase.setValue('');
+        this.form.get('showCase').setValue('');
         document.getElementById('showCase').removeAttribute('src');
     }
     // clearPic3(): void {
@@ -13510,7 +13510,7 @@ class SignupComponent {
     }
     onSubmit2() {
         this.isLoading = true;
-        this.authService.createUserInfo(this.name.value, this.gender.value, this.birthday.value, this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value, this.CodeCompleted.value, this.CodePursuing.value, this.form.get('profilePic').value);
+        this.authService.createUserInfo(this.name.value, this.gender.value, this.birthday.value, this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value, this.CodeCompleted.value, this.CodePursuing.value, this.form.get('profilePic').value, this.form.get('showCase').value);
     }
     ngOnInit() {
         this.authStatusSub = this.authService.getAuthStatusListener().subscribe(authStatus => {
@@ -13518,6 +13518,10 @@ class SignupComponent {
         });
         this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
             profilePic: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, {
+                validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
+                asyncValidators: [_post_page_mime_type_validator__WEBPACK_IMPORTED_MODULE_7__["mimeType"]]
+            }),
+            showCase: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, {
                 validators: [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required],
                 asyncValidators: [_post_page_mime_type_validator__WEBPACK_IMPORTED_MODULE_7__["mimeType"]]
             })
@@ -13546,7 +13550,7 @@ SignupComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
                 deps: [_angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MAT_DATE_LOCALE"], _angular_material_moment_adapter__WEBPACK_IMPORTED_MODULE_2__["MAT_MOMENT_DATE_ADAPTER_OPTIONS"]],
             },
             { provide: _angular_material_core__WEBPACK_IMPORTED_MODULE_3__["MAT_DATE_FORMATS"], useValue: MY_FORMATS },
-        ])], decls: 221, vars: 62, consts: [["enctype", "multipart/form-data"], [1, "entire-page"], ["mat-align-tabs", "center", 3, "selectedIndex"], ["disabled", ""], [3, "formGroup"], ["mat-tab-label", ""], [1, "inputTop"], [1, "material-icons", "_icon"], ["matInput", "", "type", "email", "placeholder", "School Email", "required", "", 3, "formControl"], [4, "ngIf"], [1, "userIn"], ["matInput", "", "placeholder", "Username", "required", "", 3, "formControl"], [1, "twoPassword"], [1, "input"], [1, "userName"], ["matInput", "", "type", "password", "placeholder", "Password", "minlength", "8", "required", "", 3, "formControl"], [1, "accounts"], ["aria-label", "Select an option", "formControlName", "accountType", "required", "", 1, "Accounts"], [1, "layout"], [1, "center_"], ["value", "private", 3, "disableRipple"], [1, "tooltip"], ["mat-button", "", 3, "click"], [1, "material-icons", "material-icons_info"], ["value", "public", 3, "disableRipple"], [1, "btmText"], [1, "center-text"], [1, "checkBox"], ["required", "", 1, "displayB", 3, "formControl"], [1, "existing-account-layout"], ["type", "button", "mat-raised-button", "", 1, "existing-account-style", 3, "disabled", "click"], [1, "existed-centered"], ["mat-raised-button", "", "routerLink", "/login", 1, "existing-account-style-btn"], ["disabled", "", 1, "sndPage"], [1, "middle"], [1, "personalizeLarge"], [1, "centerR"], [1, "pics"], [1, "centerD"], [1, "textU"], ["mat-icon-button", "", 3, "click", 4, "ngIf"], [1, "rowP_"], ["mat-fab", "", 3, "click"], [1, "material-icons", "icon"], ["id", "fileInputP", "type", "file", "accept", ".png, .jpg, .jpeg", "name", "profilePic", 1, "hide", 3, "change"], ["fileInputP", ""], [1, "cropper"], ["format", "png", 3, "imageChangedEvent", "maintainAspectRatio", "aspectRatio", "containWithinAspectRatio", "resizeToWidth", "ngClass", "imageCropped", "imageLoaded", "cropperReady", "loadImageFailed"], [1, "personalizeLarge", 3, "ngClass"], [1, "rowP"], [1, "fas", "fa-portrait", "_icon2"], [1, "PreviewPic"], [1, "Preview"], [1, "center"], [1, "previewPic", 3, "src"], [1, "personalize"], ["matInput", "", "placeholder", "Full Name", 3, "formControl"], [1, "inputP"], ["appearance", "fill", "appearance", "fill", 1, "gender"], ["matInput", "", "type", "text", 3, "formControl", "matAutocomplete"], ["auto", "matAutocomplete"], [3, "value", 4, "ngFor", "ngForOf"], ["matInput", "", "placeholder", "Prefered Pronouns", 3, "formControl"], ["appearance", "fill"], ["matInput", "", 3, "matDatepicker", "formControl"], ["matSuffix", "", 3, "for"], ["dp", ""], [1, "createBtn"], [1, "skip1"], ["mat-button", "", 1, "cBtnBl", 3, "click"], ["type", "button", "mat-raised-button", "", 1, "cBtn", 3, "click"], [1, "skip2"], [1, "snapShots"], [1, "column_1"], ["mat-icon-button", "", "color", "primary", 1, "trash", 3, "ngClass", "click"], [1, "material-icons"], ["mat-fab", "", 1, "cameraIcon", 3, "click"], [1, "material-icons", "icon", "Photo"], ["id", "showCase", "accept", "image/* video/*", "type", "file", "multiple", "", 1, "uploadD", 3, "formControl", "change"], ["fileInput", ""], [1, "imgBox"], ["id", "firstP", 3, "src", "ngClass"], ["mat-raised-button", "", 1, "cBtnB", 3, "click"], [1, "major-layout"], ["matInput", "", "placeholder", "Major", 1, "major", 3, "formControl"], ["matInput", "", "placeholder", "Minor", 1, "major", 3, "formControl"], [1, "sport-layout"], ["matInput", "", "placeholder", "Do you play a sport?", 3, "formControl"], ["matInput", "", "placeholder", "Are you apart of a club?  ", 1, "major", 3, "formControl"], [1, "row"], [1, "courses"], [1, "example-chip-list"], ["aria-label", "Class Code"], ["chipList", ""], [3, "selectable", "removable", "removed", 4, "ngFor", "ngForOf"], ["placeholder", "Choose completed courses", 3, "formControl", "matAutocomplete", "matChipInputFor", "matChipInputSeparatorKeyCodes", "matChipInputTokenEnd"], ["codeInput", ""], ["itemSize", "10"], [3, "optionSelected"], ["autoC", "matAutocomplete"], [3, "value", 4, "cdkVirtualFor", "cdkVirtualForOf"], ["aria-label", "Class CodeP"], ["chipListP", ""], ["placeholder", "Choose pursuing courses", 3, "formControl", "matAutocomplete", "matChipInputFor", "matChipInputSeparatorKeyCodes", "matChipInputTokenEnd"], ["codeInputP", ""], ["autoP", "matAutocomplete"], [3, "valueP", 4, "cdkVirtualFor", "cdkVirtualForOf"], ["mat-raised-button", "", "class", "cBtnB", 3, "click", 4, "ngIf"], ["type", "button", "mat-raised-button", "", "class", "cBtn", "routerLink", "/search", 3, "click", 4, "ngIf"], [1, "material-icons-two-tone"], [1, "matTitle"], ["mat-icon-button", "", 3, "click"], [3, "value"], [1, ""], [3, "selectable", "removable", "removed"], ["matChipRemove", "", 4, "ngIf"], ["matChipRemove", ""], [3, "valueP"], ["type", "button", "mat-raised-button", "", "routerLink", "/search", 1, "cBtn", 3, "click"]], template: function SignupComponent_Template(rf, ctx) { if (rf & 1) {
+        ])], decls: 221, vars: 61, consts: [["enctype", "multipart/form-data"], [1, "entire-page"], ["mat-align-tabs", "center", 3, "selectedIndex"], ["disabled", ""], [3, "formGroup"], ["mat-tab-label", ""], [1, "inputTop"], [1, "material-icons", "_icon"], ["matInput", "", "type", "email", "placeholder", "School Email", "required", "", 3, "formControl"], [4, "ngIf"], [1, "userIn"], ["matInput", "", "placeholder", "Username", "required", "", 3, "formControl"], [1, "twoPassword"], [1, "input"], [1, "userName"], ["matInput", "", "type", "password", "placeholder", "Password", "minlength", "8", "required", "", 3, "formControl"], [1, "accounts"], ["aria-label", "Select an option", "formControlName", "accountType", "required", "", 1, "Accounts"], [1, "layout"], [1, "center_"], ["value", "private", 3, "disableRipple"], [1, "tooltip"], ["mat-button", "", 3, "click"], [1, "material-icons", "material-icons_info"], ["value", "public", 3, "disableRipple"], [1, "btmText"], [1, "center-text"], [1, "checkBox"], ["required", "", 1, "displayB", 3, "formControl"], [1, "existing-account-layout"], ["type", "button", "mat-raised-button", "", 1, "existing-account-style", 3, "disabled", "click"], [1, "existed-centered"], ["mat-raised-button", "", "routerLink", "/login", 1, "existing-account-style-btn"], ["disabled", "", 1, "sndPage"], [1, "middle"], [1, "personalizeLarge"], [1, "centerR"], [1, "pics"], [1, "centerD"], [1, "textU"], ["mat-icon-button", "", 3, "click", 4, "ngIf"], [1, "rowP_"], ["mat-fab", "", 3, "click"], [1, "material-icons", "icon"], ["id", "fileInputP", "type", "file", "accept", ".png, .jpg, .jpeg", "name", "profilePic", 1, "hide", 3, "change"], ["fileInputP", ""], [1, "cropper"], ["format", "png", 3, "imageChangedEvent", "maintainAspectRatio", "aspectRatio", "containWithinAspectRatio", "resizeToWidth", "ngClass", "imageCropped", "imageLoaded", "cropperReady", "loadImageFailed"], [1, "personalizeLarge", 3, "ngClass"], [1, "rowP"], [1, "fas", "fa-portrait", "_icon2"], [1, "PreviewPic"], [1, "Preview"], [1, "center"], ["id", "fileInputP", 1, "previewPic", 3, "src"], [1, "personalize"], ["matInput", "", "placeholder", "Full Name", 3, "formControl"], [1, "inputP"], ["appearance", "fill", "appearance", "fill", 1, "gender"], ["matInput", "", "type", "text", 3, "formControl", "matAutocomplete"], ["auto", "matAutocomplete"], [3, "value", 4, "ngFor", "ngForOf"], ["matInput", "", "placeholder", "Prefered Pronouns", 3, "formControl"], ["appearance", "fill"], ["matInput", "", 3, "matDatepicker", "formControl"], ["matSuffix", "", 3, "for"], ["dp", ""], [1, "createBtn"], [1, "skip1"], ["mat-button", "", 1, "cBtnBl", 3, "click"], ["type", "button", "mat-raised-button", "", 1, "cBtn", 3, "click"], [1, "skip2"], [1, "snapShots"], [1, "column_1"], ["mat-icon-button", "", "color", "primary", 1, "trash", 3, "ngClass", "click"], [1, "material-icons"], ["mat-fab", "", 1, "cameraIcon", 3, "click"], [1, "material-icons", "icon", "Photo"], ["id", "showCase", "accept", ".png, .jpg, .jpeg", "type", "file", "name", "showCase", 1, "uploadD", 3, "change"], ["fileInput", ""], [1, "imgBox"], [3, "src", "ngClass"], ["mat-raised-button", "", 1, "cBtnB", 3, "click"], [1, "major-layout"], ["matInput", "", "placeholder", "Major", 1, "major", 3, "formControl"], ["matInput", "", "placeholder", "Minor", 1, "major", 3, "formControl"], [1, "sport-layout"], ["matInput", "", "placeholder", "Do you play a sport?", 3, "formControl"], ["matInput", "", "placeholder", "Are you apart of a club?  ", 1, "major", 3, "formControl"], [1, "row"], [1, "courses"], [1, "example-chip-list"], ["aria-label", "Class Code"], ["chipList", ""], [3, "selectable", "removable", "removed", 4, "ngFor", "ngForOf"], ["placeholder", "Choose completed courses", 3, "formControl", "matAutocomplete", "matChipInputFor", "matChipInputSeparatorKeyCodes", "matChipInputTokenEnd"], ["codeInput", ""], ["itemSize", "10"], [3, "optionSelected"], ["autoC", "matAutocomplete"], [3, "value", 4, "cdkVirtualFor", "cdkVirtualForOf"], ["aria-label", "Class CodeP"], ["chipListP", ""], ["placeholder", "Choose pursuing courses", 3, "formControl", "matAutocomplete", "matChipInputFor", "matChipInputSeparatorKeyCodes", "matChipInputTokenEnd"], ["codeInputP", ""], ["autoP", "matAutocomplete"], [3, "valueP", 4, "cdkVirtualFor", "cdkVirtualForOf"], ["mat-raised-button", "", "class", "cBtnB", 3, "click", 4, "ngIf"], ["type", "button", "mat-raised-button", "", "class", "cBtn", "routerLink", "/search", 3, "click", 4, "ngIf"], [1, "material-icons-two-tone"], [1, "matTitle"], ["mat-icon-button", "", 3, "click"], [3, "value"], [1, ""], [3, "selectable", "removable", "removed"], ["matChipRemove", "", 4, "ngIf"], ["matChipRemove", ""], [3, "valueP"], ["type", "button", "mat-raised-button", "", "routerLink", "/search", 1, "cBtn", 3, "click"]], template: function SignupComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-tab-group", 2);
@@ -13950,7 +13954,7 @@ SignupComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formGroup", ctx.personalizeForm);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.profilePic.value);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.form.get("profilePic").value);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("imageChangedEvent", ctx.imgChangeEvent)("maintainAspectRatio", true)("aspectRatio", 1 / 1)("containWithinAspectRatio", ctx.containWithinAspectRatio)("resizeToWidth", 170)("ngClass", ctx.form.get("profilePic").value ? "showCropper" : "hide");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
@@ -13974,11 +13978,9 @@ SignupComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("for", _r13);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](24);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx.showCase.value ? "show_" : "hide");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx.showCase);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", ctx.url, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("ngClass", ctx.showCase.value ? "show" : "hide");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx.form.get("showCase").value ? "show_" : "hide");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", ctx.showCasePreview, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"])("ngClass", ctx.form.get("showCase").value ? "show" : "hide");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](21);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx.major);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
@@ -13992,13 +13994,13 @@ SignupComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCo
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx.CodeCompleted)("matAutocomplete", _r20)("matChipInputFor", _r17)("matChipInputSeparatorKeyCodes", ctx.separatorKeysCodes);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("cdkVirtualForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](199, 58, ctx.filteredCodes));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("cdkVirtualForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](199, 57, ctx.filteredCodes));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](11);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.classesP);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx.CodePursuing)("matAutocomplete", _r25)("matChipInputFor", _r22)("matChipInputSeparatorKeyCodes", ctx.separatorKeysCodes);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("cdkVirtualForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](216, 60, ctx.filteredCodesP));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("cdkVirtualForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](216, 59, ctx.filteredCodesP));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.isLoading);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);

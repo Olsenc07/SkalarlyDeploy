@@ -45,10 +45,10 @@ private authStatusListener = new Subject<boolean>();
     }
 
     createUserInfo( name: string, gender: string, birthday: string, major: string, minor: string, sport: string,
-                    club: string, pronouns: string, CodeCompleted: string,  CodePursuing: string, profilePic: File,
+                    club: string, pronouns: string, CodeCompleted: string,  CodePursuing: string, profilePic: File, showCase: File
         ): any {
         const authDataInfo: AuthDataInfo = { name, gender, birthday, major, minor,
-            sport, club, pronouns, CodeCompleted, CodePursuing, profilePic };
+            sport, club, pronouns, CodeCompleted, CodePursuing, profilePic, showCase };
         const userData = new FormData();
         userData.append('name', name);
         userData.append('gender', gender);
@@ -61,6 +61,8 @@ private authStatusListener = new Subject<boolean>();
         userData.append('CodeCompleted', CodeCompleted);
         userData.append('CodePursuing', CodePursuing);
         userData.append('profilePic', profilePic);
+        userData.append('showCase', showCase);
+
 
 
         this.http
@@ -78,7 +80,8 @@ private authStatusListener = new Subject<boolean>();
                 pronouns,
                 CodeCompleted,
                 CodePursuing,
-                ProfilePicPath: responseData.post.ProfilePicPath
+                ProfilePicPath: responseData.post.ProfilePicPath,
+                ShowCasePath: responseData.post.ShowCasePath
             };
             this.snackBar.open('Sign in with your new account', 'Will do!!');
             // this.router.navigate['/search']

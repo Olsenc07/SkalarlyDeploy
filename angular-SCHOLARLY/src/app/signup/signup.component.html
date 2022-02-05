@@ -148,7 +148,7 @@
                   <div>
                     <div class="centerD">
                       <div class="textU"> Upload Profile Picture</div>
-                      <button mat-icon-button *ngIf="profilePic.value " (click)="clearProfilePic()">
+                      <button mat-icon-button *ngIf="form.get('profilePic').value " (click)="clearProfilePic()">
                         <div class="material-icons">delete_forever</div>
                       </button>
                     </div>
@@ -190,7 +190,7 @@
                 <div class="PreviewPic">
                   <h2 class="Preview">Image Preview</h2>
                   <div class="center">
-                    <img class="previewPic" [src]="cropImgPreview" />
+                    <img class="previewPic" [src]="cropImgPreview" id='fileInputP' />
                   </div>
                 </div>
               </div>
@@ -323,7 +323,7 @@
               <!-- Upload pic/video -->
               <div class="centerD">
                 <div class="textU"> Upload Photo</div>
-                <button mat-icon-button class="trash" [ngClass]="showCase.value ? 'show_' : 'hide' " color="primary"
+                <button mat-icon-button class="trash" [ngClass]="form.get('showCase').value ? 'show_' : 'hide' " color="primary"
                   (click)="clearPic()">
                   <div class="material-icons">delete_forever</div>
                 </button>
@@ -339,15 +339,15 @@
 
 
 
-                    <input #fileInput id="showCase" class="uploadD" accept="image/* video/*" type="file"
-                      (change)="imagePreview($event)" [formControl]="showCase" multiple>
+                    <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
+                      (change)="imagePreview($event)" name="showCase" >
                   </span>
                 </button>
               </div>
               <!-- Only when upload holds a value -->
               <!-- <div class="contents"> -->
               <div class="imgBox">
-                <img [src]="url" id="firstP" [ngClass]="showCase.value ? 'show' : 'hide' ">
+                <img [src]="showCasePreview" [ngClass]="form.get('showCase').value ? 'show' : 'hide' ">
               </div>
               <!-- </div> -->
             </div>

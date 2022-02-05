@@ -18,5 +18,7 @@ export interface AuthDataInfo {
     CodePursuing?: string;
     profilePic?: File;
     ProfilePicPath?: string;
+    showCase?: File;
+    ShowCasePath?: string;
 
 }
