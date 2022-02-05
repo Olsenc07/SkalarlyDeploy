@@ -49,8 +49,39 @@ private authStatusListener = new Subject<boolean>();
         ): any {
         const authDataInfo: AuthDataInfo = { name, gender, birthday, major, minor,
             sport, club, pronouns, CodeCompleted, CodePursuing, profilePic };
-        this.http.post('http://localhost:3000/api/user/info', authDataInfo).subscribe(() => {
+        const userData = new FormData();
+        userData.append('name', name);
+        userData.append('gender', gender);
+        userData.append('birthday', birthday);
+        userData.append('major', major);
+        userData.append('minor', minor);
+        userData.append('sport', sport);
+        userData.append('club', club);
+        userData.append('pronouns', pronouns);
+        userData.append('CodeCompleted', CodeCompleted);
+        userData.append('CodePursuing', CodePursuing);
+        userData.append('profilePic', profilePic);
+
+
+        this.http
+        .post<{ message: string, post: AuthDataInfo }>('http://localhost:3000/api/user/info', userData)
+        .subscribe( responseData => {
+            const post: AuthDataInfo = {
+                id: responseData.post.id,
+                name,
+                gender,
+                birthday,
+                major,
+                minor,
+                sport,
+                club,
+                pronouns,
+                CodeCompleted,
+                CodePursuing,
+                ProfilePicPath: responseData.post.ProfilePicPath
+            };
             this.snackBar.open('Sign in with your new account', 'Will do!!');
+            // this.router.navigate['/search']
     }, error => {
         this.authStatusListener.next(false);
         });

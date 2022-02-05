@@ -5,6 +5,7 @@ export interface AuthData {
 }
 
 export interface AuthDataInfo {
+    id?: string;
     name?: string;
     gender?: string;
     birthday?: string;

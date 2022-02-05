@@ -13,8 +13,7 @@ const userInfoSchema = mongoose.Schema({
     CodeCompleted: { type: String},
     CodePursuing: { type: String},
     ProfilePicPath: { type: String},
-
- })
+ });
  
  
  

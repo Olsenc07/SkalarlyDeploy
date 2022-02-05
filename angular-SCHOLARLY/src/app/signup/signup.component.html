@@ -1,4 +1,4 @@
-<form>
+<form enctype="multipart/form-data">
   <div class="entire-page">
 
     <mat-tab-group [selectedIndex]="selectedIndex" mat-align-tabs="center">
@@ -41,7 +41,7 @@
               <input matInput [formControl]="username" placeholder="Username" required />
               <mat-error *ngIf="username.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <!-- Once next is clicked and user name has been used -->
-              <mat-error *ngIf="username.invalid && !username.errors?.noWhiteSpace">Please enter a unique username
+              <mat-error *ngIf="username.invalid && !username.errors?.noWhiteSpace">Please enter a unique username, no special characters
               </mat-error>
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearUsername()">
                 <mat-icon>close</mat-icon>
@@ -159,37 +159,38 @@
                           add_a_photo
                         </div>
                       </button>
-                      <input #fileInputP id="fileInputP" class="hide" accept="image/* video/*" type="file"
-                        (change)="imagePreviewP($event)" (change)="onImgChange($event)" [formControl]="profilePic"
-                        multiple>
+                      <input #fileInputP id="fileInputP" class="hide" type="file" accept=".png, .jpg, .jpeg"
+                        (change)="imagePreviewP($event)"  
+                        name='profilePic' 
+                        >
                     </div>
                   </div>
                   <!-- class="cropper" [ngClass]="profilePic.value ? 'show' : 'hide' " -->
 
                   <div class="cropper">
                     <!-- Only when upload holds a value -->
-                    <image-cropper [imageChangedEvent]="imgChangeEvt" [maintainAspectRatio]="true"
-                      [aspectRatio]=" 7 / 7" [containWithinAspectRatio]="containWithinAspectRatio" [resizeToWidth]="170"
+                    <image-cropper [imageChangedEvent]="imgChangeEvent" [maintainAspectRatio]="true"
+                      [aspectRatio]=" 1 / 1" [containWithinAspectRatio]="containWithinAspectRatio" [resizeToWidth]="170"
                       format="png" (imageCropped)="cropImg($event)" (imageLoaded)="imgLoad()"
                       (cropperReady)="initCropper($event)" (loadImageFailed)="imgFailed()"
-                      [ngClass]="profilePic.value ? 'showCropper' : 'hide' ">
+                      [ngClass]="form.get('profilePic').value ? 'showCropper' : 'hide' ">
                     </image-cropper>
                   </div>
 
                 </div>
               </div>
 
-              <div class="personalizeLarge" [ngClass]="profilePic.value ? 'show_' : 'hide' ">
+              <div class="personalizeLarge" [ngClass]="form.get('profilePic').value ? 'show_' : 'hide' ">
                 <div class="rowP">
                   <i class="fas fa-portrait _icon2"></i>
                 </div>
               </div>
 
-              <div class="personalizeLarge" [ngClass]="profilePic.value ? 'show_' : 'hide' ">
+              <div class="personalizeLarge" [ngClass]="form.get('profilePic').value ? 'show_' : 'hide' ">
                 <div class="PreviewPic">
                   <h2 class="Preview">Image Preview</h2>
                   <div class="center">
-                    <img class="previewPic" id="ProfilePic" [src]="cropImgPreview" />
+                    <img class="previewPic" [src]="cropImgPreview" />
                   </div>
                 </div>
               </div>

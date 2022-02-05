@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -6,7 +7,11 @@ const jwt = require('jsonwebtoken');
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
 
-
+const MIME_TYPE_MAP ={
+    'image/png': 'png',
+    'image/jpeg': 'jpg',
+    'image/jpg': 'jpg',
+};
 
 const storage  = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -72,7 +77,10 @@ const pic = multer({ storage: storage})
             userinfo.save().then(result => {
                 res.status(201).json({
                     message: 'Yay a user added info',
-                    result: result
+                    post: {
+                    id: result._id,
+                    ...result
+                    }
                 });
             })
                 .catch(err => {

@@ -25,6 +25,8 @@ import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 // import { base64ToFile } from '../../utils/blob.utils';
 import { ImageCroppedEvent, Dimensions } from 'ngx-image-cropper';
 import { Profile, NewUserId, StoreService } from '../services/store.service';
+import { mimeType } from '../post-page/mime-type.validator';
+
 import { AuthService } from '../services/auth.service';
 import {Courses} from 'nikel';
 
@@ -86,13 +88,13 @@ export class SignupComponent implements OnInit, OnDestroy {
   genders: string[] = ['', 'Female', 'Male', 'Other'];
   // Wont display because of security warning
   // But will be connected to abck end any way so dont worry rn
-  url: string[];
+  url: string;
 
   // url3: string;
   MatIconModule: any;
   cropImgPreview: any = '';
-  imgChangeEvt: any = '';
-  showCropper = false;
+  imgChangeEvent: any = '';
+  // showCropper = false;
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [Validators.pattern('[a-zA-Z0-9_]*'), this.noWhiteSpace]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
@@ -122,6 +124,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   public showCaseList = new Subject();
   // snapShot3: FormControl = new FormControl('');
 
+  form: FormGroup;
 
   requiredForm = new FormGroup({
     email: this.email,
@@ -182,9 +185,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   // using oninput
 
 
-  onImgChange(event: any): void {
-    this.imgChangeEvt = event;
-  }
+
   // Passes value as base64 string of cropped area!! But where does form controller come into play?
   cropImg(event: ImageCroppedEvent): void {
     this.cropImgPreview = event.base64;
@@ -192,7 +193,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   imgLoad(): void {
-    this.showCropper = true;
+    // this.showCropper = true;
     console.log('Image loaded');
   }
 
@@ -204,16 +205,24 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
   // Profiel Pic
   imagePreviewP(event: any): void {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
+    this.imgChangeEvent = event;
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({profilePic: file});
+    this.form.get('profilePic').updateValueAndValidity();
 
-      reader.onload = (Event: any) => { // called once readAsDataURL is completed
-        console.log(Event);
-        this.cropImgPreview = Event.target.result;
+    // if (event.target.files && event.target.files[0]) {
+    const reader = new FileReader();
+    reader.onload = () => {
+        this.url = reader.result as string;
       };
-    }
+    // reader.onload = (Event: any) => { // called once readAsDataURL is completed
+        // console.log(Event);
+        // this.cropImgPreview = Event.target.result;
+        // this.url = reader.result as string;
+      // };
+    reader.readAsDataURL(file); // read file as data url
+    // }
   }
 
   // SnapShot
@@ -488,7 +497,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.authService.createUserInfo( this.name.value, this.gender.value, this.birthday.value,
      this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value,
-     this.CodeCompleted.value, this.CodePursuing.value, this.profilePic.value
+     this.CodeCompleted.value, this.CodePursuing.value, this.form.get('profilePic').value
       );
   }
 
@@ -498,6 +507,13 @@ export class SignupComponent implements OnInit, OnDestroy {
        this.isLoading = false;
      }
    );
+   this.form = new FormGroup({
+    profilePic: new FormControl(null, {
+      validators: [Validators.required],
+      asyncValidators: [mimeType]
+    })
+  });
+
   }
 
   ngOnDestroy(): void {
