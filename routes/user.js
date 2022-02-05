@@ -31,23 +31,6 @@ const storage  = multer.diskStorage({
     
 });
 
-// const storage2  = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         const isValid = MIME_TYPE_MAP[file.mimetype];
-//         let error = new Error('Invalid mime type');
-//         if (isValid){
-//             error = null;
-//         }    
-//         cb(null, './backend/showCases');   
-  
-//     },
-//     filename: (req, file, cb) => {
-//         const name = file.originalname.toLowerCase();
-//         const ext = MIME_TYPE_MAP[file.mimetype];
-//         cb(null, name + '-' + Date.now() + '.' + ext);
-//     },
-    
-// });
 
 
 // Creating user
@@ -74,14 +57,12 @@ router.post("/signup", (req, res, next) => {
 });
 
 const pic = multer({ storage: storage});
-// const pic2 = multer({ storage: storage});
-
 
 
 // User info
     router.post("/info", 
-            pic.fields([{name: 'profilePic'},
-            {name: 'showCase'}
+            pic.fields([{name: 'profilePic', maxCount: 1},
+                        {name: 'showCase'}
         ]), (req, res, next) => {
             const url = req.protocol + '://' + req.get('host');
             const userinfo = new UserInfo({
@@ -95,8 +76,8 @@ const pic = multer({ storage: storage});
                 pronouns: req.body.pronouns,
                 CodePursuing: req.body.CodePursuing,
                 CodeCompleted: req.body.CodeCompleted,
-                ProfilePicPath: url + '/ProfilePic/' + req.file.filename,
-                ShowCasePath: url + '/ShowCase/' + req.file.filename,
+                ProfilePicPath: url + '/ProfilePic/' + req.files.filename,
+                ShowCasePath: url + '/ShowCase/' + req.files.filename,
 
             });
             userinfo.save().then(result => {
