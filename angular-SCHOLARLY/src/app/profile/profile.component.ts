@@ -6,6 +6,7 @@ import { Post, PostService } from '../services/post.service';
 import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { AuthDataInfo } from '../signup/auth-data.model';
 
 
 
@@ -16,6 +17,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit, OnDestroy {
+  isLoading = false;
+
   userId: string;
   userIsAuthenticated = false;
   // private authStatusSubs: Subscription;
@@ -25,7 +28,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   private postsSub: Subscription;
 
-  isLoading = false;
+  infos: AuthDataInfo[] = [];
+  private infosSub: Subscription;
+
+
 
   // Sign up and edit profile connections
   profile = StoreService.profile$$;
@@ -59,11 +65,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   // TODO: initial following value would need to be loaded from database - for now, always start with false
   following = false;
 
-  // Tempt hard code before data base
-  showCases = ['../../assets/Pics/IMG-8413.PNG', '../../assets/Pics/IMG-8619.PNG',
-    '../../assets/Pics/WhiteSquareInAppLogo.jpg', '../../assets/Pics/IMG-8413.PNG', '../../assets/Pics/IMG-8619.PNG',
-    '../../assets/Pics/ProperInAppLogo.jpeg ', '../../assets/Pics/IMG-8413.PNG'
-  ];
 
   constructor(private bottomSheet: MatBottomSheet,
               public postService: PostService,
@@ -83,6 +84,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): any {
     this.isLoading = true;
+    // Info
+    this.authService.getInfo();
+    this.infosSub = this.authService.getInfoUpdateListener()
+    .subscribe((infos: AuthDataInfo[]) => {
+    this.infos = infos;
+    this.isLoading = false;
+  });
+    // Posts
     this.postService.getPosts();
     this.postsSub = this.postService.getPostUpdateListener()
     .subscribe((posts: Post[]) => {

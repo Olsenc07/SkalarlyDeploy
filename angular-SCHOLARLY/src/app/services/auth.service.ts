@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient } from '@angular/common/http';
 import { AuthData, AuthDataInfo } from '../signup/auth-data.model';
-import { Subject } from 'rxjs';
+import { Subject, ReplaySubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import {Router} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppRoutingModule } from '../app-routing.module';
@@ -15,6 +16,10 @@ private token: string;
 private tokenTimer: any;
 private userId: string;
 private authStatusListener = new Subject<boolean>();
+
+private infos: AuthDataInfo[] = [];
+private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
+
 
 
 
@@ -35,6 +40,7 @@ private authStatusListener = new Subject<boolean>();
         return this.authStatusListener.asObservable();
     }
 
+    // User and their info
     createUser(email: string, username: string, password: string): any {
         const authData: AuthData = { email, username, password};
         this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(() => {
@@ -45,9 +51,10 @@ private authStatusListener = new Subject<boolean>();
     }
 
     createUserInfo( name: string, gender: string, birthday: string, major: string, minor: string, sport: string,
-                    club: string, pronouns: string, CodeCompleted: string,  CodePursuing: string, profilePic: File, showCase: File
+                    club: string, pronouns: string, CodeCompleted: string,  CodePursuing: string, profilePic: File, showCase: File, 
+                    Creator?: string,
         ): any {
-        const authDataInfo: AuthDataInfo = { name, gender, birthday, major, minor,
+        const authDataInfo: AuthDataInfo = {Creator, name, gender, birthday, major, minor,
             sport, club, pronouns, CodeCompleted, CodePursuing, profilePic, showCase };
         const userData = new FormData();
         userData.append('name', name);
@@ -81,15 +88,52 @@ private authStatusListener = new Subject<boolean>();
                 CodeCompleted,
                 CodePursuing,
                 ProfilePicPath: responseData.post.ProfilePicPath,
-                ShowCasePath: responseData.post.ShowCasePath
+                ShowCasePath: responseData.post.ShowCasePath,
+                Creator,
             };
+            this.infos.push(post);
+            this.infosUpdated.next([...this.infos]);
             this.snackBar.open('Sign in with your new account', 'Will do!!');
             // this.router.navigate['/search']
     }, error => {
         this.authStatusListener.next(false);
         });
     }
+    getInfoUpdateListener(): any {
+        return this.infosUpdated.asObservable();
+    }
+    getInfo(): any {
+        this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/info')
+            .pipe(map((infosData) => {
+                return infosData.infos.map ( info => {
+                    return {
+                        id: info._id,
+                        name: info.name,
+                        gender: info.gender,
+                        birthday: info.birthday,
+                        major: info.major,
+                        minor: info.minor,
+                        sport: info.sport,
+                        club: info.club,
+                        pronouns: info.pronouns,
+                        CodeCompleted: info.CodeCompleted,
+                        CodePursuing: info.CodePursuing,
+                        ProfilePicPath: info.ProfilePicPath,
+                        ShowCasePath: info.ShowCasePath,
+                        Creator: info.Creator
 
+                    };
+                });
+            }))
+                .subscribe((transformedInfos) => {
+                    this.infos = transformedInfos;
+                    this.infosUpdated.next([...this.infos]);
+
+                });
+            }
+
+
+// Login
     login(email: string, password: string): any  {
         const authData: AuthData = { email, password};
         this.http.post<{token: string, expiresIn: number, userId: string }>('http://localhost:3000/api/user/login', authData)

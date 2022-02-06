@@ -40,6 +40,7 @@ getPosts(): any {
         .pipe(map((postData) => {
             return postData.posts.map( post => {
                 return {
+                    id: post._id,
                     Title: post.Title,
                     PostDescription: post.PostDescription,
                     PostLocation: post.PostLocation,
@@ -51,14 +52,12 @@ getPosts(): any {
                     PaymentService: post.PaymentService,
                     Virtual: post.Virtual,
                     Event: post.Event,
-                    id: post._id,
                     ImagePath: post.ImagePath,
                     Creator: post.Creator
                  };
         });
     }))
         .subscribe((transformedPosts) => {
-
             this.posts = transformedPosts;
             this.postsUpdated.next([...this.posts]);
 });

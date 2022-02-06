@@ -2,17 +2,17 @@
   <mat-spinner ></mat-spinner>
 </div>
 
-<div class="main-content" *ngIf="!isLoading">
+<div class="main-content" *ngFor="let info of infos">
   <!-- input pic & has this default pic before-->
   <div class="left-side">
 
-    <div class="profile-pic" *ngIf="(profile | async)?.profPic">
+    <div class="profile-pic" *ngIf="info.profPic">
       <!-- need to get croppeded value -->
-      <img class="pic" src="{{(profile | async)?.profPic}}">
+      <img class="pic" src="{{info.profPic}}">
       <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
     </div>
 
-    <div class="profile-pic" *ngIf="!(profile | async)?.profPic">
+    <div class="profile-pic" *ngIf="!info.profPic">
       <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
     </div>
 
@@ -63,30 +63,30 @@
 
       <mat-divider class="margin"></mat-divider>
       <!-- Major/Minor -->
-      <div class="major-minor" *ngIf="(profile| async)?.Major || (profile| async)?.Minor ">
+      <div class="major-minor" *ngIf="info.Major || info.Minor ">
         <!-- *ngIf="major.value" -->
-        <div class="centerR" *ngIf="(profile| async)?.Major ">
+        <div class="centerR" *ngIf="info.Major ">
           <!-- Major -->
-          <i class="fas fa-star large">{{ (profile | async)?.Major}}</i>
+          <i class="fas fa-star large">{{ info.Major}}</i>
 
         </div>
-        <div class="centerR" *ngIf="(profile| async)?.Minor ">
+        <div class="centerR" *ngIf="info.Minor ">
           <!-- Minor -->
-          <i class="far fa-star large">{{ (profile | async)?.Minor}}</i>
+          <i class="far fa-star large">{{ info.Minor}}</i>
         </div>
 
       </div>
-      <mat-divider class="margin" *ngIf="(profile| async)?.Major  || (profile| async)?.Minor">
+      <mat-divider class="margin" *ngIf="info.Major  || info.Minor">
       </mat-divider>
       <!-- Sport/Club -->
-      <div class="major-minor" *ngIf="(profile| async)?.Sport  || (profile| async)?.Club">
-        <div class=" centerR" *ngIf="(profile| async)?.Sport ">
+      <div class="major-minor" *ngIf="info.Sport  || info.Club">
+        <div class=" centerR" *ngIf="info.Sport ">
           <!-- Sport -->
-          {{ (profile | async)?.Sport}}
+          {{ info.Sport}}
         </div>
-        <div class="centerR" *ngIf="(profile| async)?.Club ">
+        <div class="centerR" *ngIf="info.Club ">
           <!-- Club -->
-          {{ (profile | async)?.Club}}
+          {{ info.Club}}
         </div>
 
       </div>
@@ -134,8 +134,8 @@
         <div class="fName">
          
           <!-- Chase Olsen -->
-          {{ (profile | async)?.Pronouns}}
-          {{ (profile | async)?.Name}}
+          {{ info.Pronouns}}
+          {{ info.Name}}
           <mat-chip-list class="center_" aria-label="FollowBtn">
             <mat-chip class="messageM" (click)="followClicked()">
     
@@ -268,16 +268,16 @@
             </div>
           </mat-tab>
           <mat-tab label="Showcase">
-            <div class="column1" *ngIf="!(profile|async)?.ShowCase">
+            <div class="column1" *ngIf="!info.ShowCase">
               <div class="row"> No Showcases Added</div> <span class="fas fa-eye-slash  centerR iconEmpty"></span>
             </div>
 
-            <div class="showCase" *ngIf="(profile|async)?.ShowCase">
+            <div class="showCase" *ngIf="info.ShowCase">
 
 
               <div class="column">
 
-                <img class="img" src={{(profile|async)?.ShowCase}} />
+                <img class="img" src={{info.ShowCase}} />
                 <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
 
               </div>

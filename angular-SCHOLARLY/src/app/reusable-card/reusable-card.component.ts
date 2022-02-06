@@ -22,14 +22,6 @@ export class ReusableCardComponent implements OnInit{
 
     isLoading = false;
 
-    // post = PostService.post$$;
-    profile = StoreService.profile$$;
-    ids = StoreService.userId$$;
-
-
-    // gender$ = PostService.gender$;
-    // booleans$ = PostService.booleans$;
-    // event$ = PostService.event$;
 
     selectedAttend = '';
     attendances: any = [

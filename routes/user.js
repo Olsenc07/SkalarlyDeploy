@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
 
@@ -30,6 +31,8 @@ const storage  = multer.diskStorage({
     },
     
 });
+
+
 
 
 
@@ -60,7 +63,7 @@ const pic = multer({ storage: storage});
 
 
 // User info
-    router.post("/info", 
+    router.post("/info", checkAuth,
             pic.fields([{name: 'profilePic', maxCount: 1},
                         {name: 'showCase'}
         ]), (req, res, next) => {
@@ -78,6 +81,8 @@ const pic = multer({ storage: storage});
                 CodeCompleted: req.body.CodeCompleted,
                 ProfilePicPath: url + '/ProfilePic/' + req.files.filename,
                 ShowCasePath: url + '/ShowCase/' + req.files.filename,
+                Creator: req.userData.userId
+
 
             });
             userinfo.save().then(result => {
@@ -96,7 +101,23 @@ const pic = multer({ storage: storage});
                 });
 });
 
+// userInfo recieving
+router.get("/info", (req, res, next) => {
+    UserInfo.find().then(documents => {
+    res.status(200).json({
+        message: 'Infos fetched succesfully!',
+        infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching infos failed!'
+        });
+    });
+});
 
+
+// Login
 router.post("/login", (reg, res, next) => {
     let fetchedUser;
     User.findOne({ email: reg.body.email })

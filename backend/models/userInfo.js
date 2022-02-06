@@ -14,6 +14,8 @@ const userInfoSchema = mongoose.Schema({
     CodePursuing: { type: String},
     ProfilePicPath: { type: String},
     ShowCasePath: { type: String},
+    Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
+
 
  });
  
