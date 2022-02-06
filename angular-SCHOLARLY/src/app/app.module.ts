@@ -59,6 +59,7 @@ import { MainPagesComponent } from './main-pages/main-pages.component';
 import { SignupComponent } from './signup/signup.component';
 import { TermsPopUpComponent } from './signup/signup.component';
 import { AccountTextComponent } from './signup/signup.component';
+import { LoginPopUpComponent } from './signup/signup.component';
 
 import { AttendanceComponent } from './main-pages/main-pages.component';
 import { BottomSheetComponent } from './profile/profile.component';
@@ -129,7 +130,8 @@ import { ErrorInterceptor } from './error-interceptor';
     MessagingComponent,
     ServicesElementsComponent,
     DeleteWarningComponent,
-    ErrorComponent
+    ErrorComponent,
+    LoginPopUpComponent,
   ],
   imports: [
     BrowserModule,

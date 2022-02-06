@@ -1,5 +1,5 @@
 <!-- Main logo -->
-<form  (ngSubmit)="onSubmit()" class="background">
+<form  (ngSubmit)="onSubmit()" class="background" >
   <div fxLayout="row">
     <div fxLayout="column" fxLayoutAlign="center center" class="box">
       <img Src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic">
@@ -29,7 +29,7 @@
             </button> -->
           </mat-form-field>
           <button type="submit" mat-raised-button [disabled]="!email.valid || !password.valid"
-            color="primary" class="action-button top" *ngIf="!isLoading">
+            color="primary" class="action-button top" *ngIf="!isLoading" routerLink="/search">
             Log In
           </button>
           <mat-spinner *ngIf="isLoading"></mat-spinner>

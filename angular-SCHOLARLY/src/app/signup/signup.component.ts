@@ -462,6 +462,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.authService.createUser(this.email.value, this.username.value, this.password.value);
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
+    this.dialog.open(LoginPopUpComponent, { disableClose: true });
 
     // const userId: NewUserId = {
     //   Email: this.email.value,
@@ -542,3 +543,36 @@ export class TermsPopUpComponent { }
   styleUrls: ['./account-popup.component.scss'],
 })
 export class AccountTextComponent { }
+
+
+@Component({
+  templateUrl: './login-popup.component.html',
+  styleUrls: ['../home-page/home-page.component.scss'],
+})
+export class LoginPopUpComponent {
+  isLoading = false;
+
+
+  email: FormControl = new FormControl('', Validators.email);
+  password: FormControl = new FormControl('', Validators.minLength(8));
+
+  loginForm = new FormGroup({
+    email: this.email,
+    password: this.password,
+  });
+
+    constructor(public authService: AuthService,
+                public dialog: MatDialog,
+    ){}
+
+  onSubmit(): void {
+    console.log(this.loginForm.value);
+    this.isLoading = true;
+    this.authService.login(this.email.value, this.password.value);
+
+
+    // Trigger this.failedLogin() when login fails.
+    // Trigger this.successfullLogin() when login succeeds
+  }
+
+}

@@ -20,6 +20,7 @@
   text-align: center;
   line-height: 32px;
   color: #0e3379;
+  overflow-y: scroll;
 }
 
 .main-text {
@@ -27,6 +28,7 @@
   flex-direction: column;
   justify-content: center;
   color: #7e7171;
+  overflow-y: scroll;
 }
 .row {
   display: flex;

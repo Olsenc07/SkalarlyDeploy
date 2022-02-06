@@ -91,10 +91,11 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 ShowCasePath: responseData.post.ShowCasePath,
                 Creator,
             };
+            this.router.navigate(['/search']);
             this.infos.push(post);
             this.infosUpdated.next([...this.infos]);
-            this.snackBar.open('Sign in with your new account', 'Will do!!');
-            // this.router.navigate['/search']
+            // this.snackBar.open('Sign in with your new account', 'Will do!!');
+            this.router.navigate['/search']
     }, error => {
         this.authStatusListener.next(false);
         });
@@ -141,7 +142,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 const token = response.token;
                 this.token = token;
                 if (token) {
-                this.router.navigate(['/search']);
+                // this.router.navigate(['/search']);
                 this.snackBar.open('Welcome to the community', 'Thanks!!');
                 const expiresInDuration = response.expiresIn;
                 this.setAuthTimer(expiresInDuration);
