@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 
 const userInfoSchema = mongoose.Schema({
+    username: { type: String, required: true, unique: true},
     name: { type: String },
     gender: { type: String },
     birthday: { type: String},
@@ -15,7 +16,6 @@ const userInfoSchema = mongoose.Schema({
     ProfilePicPath: { type: String},
     ShowCasePath: { type: String},
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
-
 
  });
  

@@ -1,11 +1,11 @@
 export interface AuthData {
     email: string;
-    username?: string;
     password: string;
 }
 
 export interface AuthDataInfo {
     Creator: string;
+    username?: string;
     id?: string;
     name?: string;
     gender?: string;

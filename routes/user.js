@@ -42,7 +42,6 @@ router.post("/signup", (req, res, next) => {
         .then(hash => {
             const user = new User({
                 email: req.body.email,
-                username: req.body.username,
                 password: hash,
             });
             user.save().then(result => {
@@ -68,7 +67,8 @@ const pic = multer({ storage: storage});
                         {name: 'showCase'}
         ]), (req, res, next) => {
             const url = req.protocol + '://' + req.get('host');
-            const userinfo = new UserInfo({
+            const info = new UserInfo({
+                username: req.body.username,
                 name: req.body.name,
                 gender: req.body.gender,
                 birthday: req.body.birthday,
@@ -81,11 +81,11 @@ const pic = multer({ storage: storage});
                 CodeCompleted: req.body.CodeCompleted,
                 ProfilePicPath: url + '/ProfilePic/' + req.files.filename,
                 ShowCasePath: url + '/ShowCase/' + req.files.filename,
-                Creator: req.userData.userId
+                Creator: req.userData.userId,
 
 
             });
-            userinfo.save().then(result => {
+            info.save().then(result => {
                 res.status(201).json({
                     message: 'Yay a user added info',
                     post: {

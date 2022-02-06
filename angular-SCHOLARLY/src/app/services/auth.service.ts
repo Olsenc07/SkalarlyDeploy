@@ -41,8 +41,8 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
     }
 
     // User and their info
-    createUser(email: string, username: string, password: string): any {
-        const authData: AuthData = { email, username, password};
+    createUser(email: string,  password: string): any {
+        const authData: AuthData = { email,  password};
         this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(() => {
             this.snackBar.open('Account is made, time to personalize it!', 'Yay!!');
          }, error => {
@@ -50,13 +50,14 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
          });
     }
 
-    createUserInfo( name: string, gender: string, birthday: string, major: string, minor: string, sport: string,
+    createUserInfo( username: string, name: string, gender: string, birthday: string, major: string, minor: string, sport: string,
                     club: string, pronouns: string, CodeCompleted: string,  CodePursuing: string, profilePic: File, showCase: File, 
                     Creator?: string,
         ): any {
-        const authDataInfo: AuthDataInfo = {Creator, name, gender, birthday, major, minor,
+        const authDataInfo: AuthDataInfo = {Creator, username, name, gender, birthday, major, minor,
             sport, club, pronouns, CodeCompleted, CodePursuing, profilePic, showCase };
         const userData = new FormData();
+        userData.append('username', username);
         userData.append('name', name);
         userData.append('gender', gender);
         userData.append('birthday', birthday);
@@ -77,6 +78,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
         .subscribe( responseData => {
             const post: AuthDataInfo = {
                 id: responseData.post.id,
+                username,
                 name,
                 gender,
                 birthday,
@@ -109,6 +111,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 return infosData.infos.map ( info => {
                     return {
                         id: info._id,
+                        username: info.username,
                         name: info.name,
                         gender: info.gender,
                         birthday: info.birthday,
@@ -121,7 +124,8 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                         CodePursuing: info.CodePursuing,
                         ProfilePicPath: info.ProfilePicPath,
                         ShowCasePath: info.ShowCasePath,
-                        Creator: info.Creator
+                        Creator: info.Creator,
+
 
                     };
                 });

@@ -86,11 +86,10 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   selectedIndex = 0;
   genders: string[] = ['', 'Female', 'Male', 'Other'];
-  // Wont display because of security warning
-  // But will be connected to abck end any way so dont worry rn
+
   url: string;
 
-  // url3: string;
+ 
   MatIconModule: any;
   cropImgPreview: any = '';
   imgChangeEvent: any = '';
@@ -120,9 +119,8 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   bio: FormControl = new FormControl('');
   public bioLength = new BehaviorSubject(0);
-  // snapShot1: FormControl = new FormControl('');
   public showCaseList = new Subject();
-  // snapShot3: FormControl = new FormControl('');
+
 
   form: FormGroup;
 
@@ -142,12 +140,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     bio: this.bio,
   });
 
-  // Maybe just upload one.. makes storing data with edit profile the same way...
-  // showCase = new FormGroup({
-  //   snapShot1: this.snapShot1,
-  //   snapShot2: this.snapShot2,
-  //   snapShot3: this.snapShot3,
-  // });
+
   signupForm = new FormGroup({
     CodePursuing: this.CodePursuing,
     CodeCompleted: this.CodeCompleted,
@@ -460,7 +453,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   onSubmit(): any{
 //  Email validation to continue
     this.isLoading = true;
-    this.authService.createUser(this.email.value, this.username.value, this.password.value);
+    this.authService.createUser(this.email.value,  this.password.value);
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
     this.dialog.open(LoginPopUpComponent, { disableClose: true });
 
@@ -497,7 +490,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   onSubmit2(): any {
     this.isLoading = true;
-    this.authService.createUserInfo( this.name.value, this.gender.value, this.birthday.value,
+    this.authService.createUserInfo( this.username.value, this.name.value, this.gender.value, this.birthday.value,
      this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value,
      this.CodeCompleted.value, this.CodePursuing.value, this.form.get('profilePic').value, this.form.get('showCase').value
       );
