@@ -157,6 +157,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 }
                 }, error => {
                     this.authStatusListener.next(false);
+                    this.snackBar.open('Failed to login. Please Try again', 'Will do!!');
                  });
             }
 

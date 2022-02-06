@@ -16,7 +16,7 @@ import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { map } from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef  } from '@angular/material/dialog';
 import { ClassListService } from '../services/class.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
@@ -549,8 +549,12 @@ export class AccountTextComponent { }
   templateUrl: './login-popup.component.html',
   styleUrls: ['../home-page/home-page.component.scss'],
 })
-export class LoginPopUpComponent {
+export class LoginPopUpComponent implements OnDestroy {
   isLoading = false;
+
+  userId: string;
+  userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
 
 
   email: FormControl = new FormControl('', Validators.email);
@@ -563,16 +567,29 @@ export class LoginPopUpComponent {
 
     constructor(public authService: AuthService,
                 public dialog: MatDialog,
+                public dialogRef: MatDialogRef<LoginPopUpComponent>
     ){}
 
   onSubmit(): void {
     console.log(this.loginForm.value);
     this.isLoading = true;
     this.authService.login(this.email.value, this.password.value);
+    this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+    .getAuthStatusListener()
+    .subscribe(isAuthenticated => {
+      this.userIsAuthenticated = isAuthenticated;
+      this.userId = this.authService.getUserId();
+      this.dialogRef.close();
+    });
 
 
     // Trigger this.failedLogin() when login fails.
     // Trigger this.successfullLogin() when login succeeds
+  }
+  ngOnDestroy() {
+    this.authListenerSubs.unsubscribe();
   }
 
 }

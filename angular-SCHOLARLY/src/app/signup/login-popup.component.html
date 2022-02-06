@@ -1,5 +1,6 @@
 <form  (ngSubmit)="onSubmit()" class="background" >
-<div class="log-in-box" fxLayout="column" fxLayoutAlign="center center">
+  <div class="space">
+<div class="log-in-boxPop" fxLayout="column" fxLayoutAlign="center center">
     <mat-form-field class="text-input">
       <mat-label> Academic Email</mat-label>
       <input matInput type="email" [formControl]="email" required/>
@@ -20,7 +21,7 @@
       </button> -->
     </mat-form-field>
     <button type="submit" mat-raised-button [disabled]="!email.valid || !password.valid"
-      color="primary" class="action-button top" *ngIf="!isLoading" matDialogClose>
+      color="primary" class="action-button top" *ngIf="!isLoading" >
       Log In
     </button>
     <mat-spinner *ngIf="isLoading"></mat-spinner>
@@ -28,4 +29,5 @@
       Forgot Password?
     </button>
   </div>
+</div>
 </form>
