@@ -64,10 +64,9 @@
       <!-- Only load in so many at a time -->
       <div class="recents_" *ngIf="posts.length == 0">
         <div class="fill">
-          <div class="label_">Post Now</div>
-          <!-- <div class="centerR"> <i class="far fa-grin-alt"></i></div> -->
           <div class="icon-btn-fit post ">
-            <button mat-fab type="button" routerLink="/post-page" color="primary">
+              <button mat-button type="button" class="label_" routerLink="/post-page" color="primary"  >
+                  Post Now
               <mat-icon >add_circle</mat-icon>
             </button>
           </div>
@@ -154,7 +153,7 @@
             <!-- <div class="centerR"> <i class="far fa-grin-alt"></i></div> -->
             <div class="icon-btn-fit post ">
               <button mat-fab type="button" routerLink="/post-page" color="primary">
-                <mat-icon >add_circle</mat-icon>
+                <mat-icon-button >add_circle</mat-icon-button>
               </button>
             </div>
 

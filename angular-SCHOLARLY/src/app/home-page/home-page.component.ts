@@ -3,6 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
+import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-home-page',
@@ -22,7 +24,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     password: this.password,
   });
 
-  constructor(public authService: AuthService, private snackBar: MatSnackBar)
+  constructor(public authService: AuthService, private snackBar: MatSnackBar, private router: Router)
   { }
 
   ngOnInit(): void {
@@ -48,9 +50,5 @@ export class HomePageComponent implements OnInit, OnDestroy {
     console.log(this.loginForm.value);
     this.isLoading = true;
     this.authService.login(this.email.value, this.password.value);
-
-
-    // Trigger this.failedLogin() when login fails.
-    // Trigger this.successfullLogin() when login succeeds
   }
 }

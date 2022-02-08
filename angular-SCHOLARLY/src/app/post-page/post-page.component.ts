@@ -144,6 +144,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
 
   uploadFile(): any {
     document.getElementById('fileInput').click();
+    console.log('nice');
   }
   openDialog(): void {
     this.dialog.open(DialogElementsComponent);
@@ -157,7 +158,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({upload: file});
     this.form.get('upload').updateValueAndValidity();
-   
     const reader = new FileReader();
     reader.onload = () => {
       this.url = reader.result as string;

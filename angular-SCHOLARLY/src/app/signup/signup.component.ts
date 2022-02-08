@@ -502,7 +502,7 @@ export class LoginPopUpComponent implements OnDestroy {
   onSubmit(): void {
     console.log(this.loginForm.value);
     this.isLoading = true;
-    this.authService.login(this.email.value, this.password.value);
+    this.authService.loginFirst(this.email.value, this.password.value);
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService

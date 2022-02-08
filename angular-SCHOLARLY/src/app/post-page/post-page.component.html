@@ -50,8 +50,8 @@
       </div>
       <!-- Only when upload holds a value -->
       <div class="contents" *ngIf="form.get('upload').valid">
-        <div class="imgBox">
-          <img [src]="url"  [ngClass]="form.get('upload').value ? 'show' : 'hide' ">
+        <div class="imgBox" [ngClass]="form.get('upload').value ? 'show' : 'hide' ">
+          <img [src]="url"  >
         </div>
       </div>
 
