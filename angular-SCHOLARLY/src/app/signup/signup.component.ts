@@ -89,7 +89,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   url: string;
 
- 
+
   MatIconModule: any;
   cropImgPreview: any = '';
   imgChangeEvent: any = '';
@@ -134,6 +134,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   personalizeForm = new FormGroup({
     name: this.name,
+    username: this.username,
     gender: this.gender,
     pronouns: this.pronouns,
     birthday: this.birthday,
@@ -224,48 +225,21 @@ export class SignupComponent implements OnInit, OnDestroy {
 
 
     const reader = new FileReader();
-
     reader.readAsDataURL(event.target.files[0]); // read file as data url
-
     reader.onload = (Event: any) => { // called once readAsDataURL is completed
         console.log(Event);
         this.showCasePreview = Event.target.result;
       };
+    reader.readAsDataURL(file); // read file as data url
 
   }
-  // imagePreview2(event: any): void {
-  //   if (event.target.files && event.target.files[0]) {
-  //     const reader = new FileReader();
 
-  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-  //     reader.onload = (Event: any) => { // called once readAsDataURL is completed
-  //       console.log(Event);
-  //       this.url2 = Event.target.result;
-  //     };
-  //   }
-  // }
-  // imagePreview3(event: any): void {
-  //   if (event.target.files && event.target.files[0]) {
-  //     const reader = new FileReader();
-
-  //     reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-  //     reader.onload = (Event: any) => { // called once readAsDataURL is completed
-  //       console.log(Event);
-  //       this.url3 = Event.target.result;
-  //     };
-  //   }
-  // }
   constructor(
     public dialog: MatDialog,
     public classListService: ClassListService,
     private http: HttpClient,
     private storeService: StoreService,
-    public authService: AuthService
-  ) {
-    // this.bio.valueChanges.subscribe((v) => this.bioLength.next(v.length));
-
+    public authService: AuthService) {
 
     // this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
     //   map((code: string | null) =>
@@ -369,9 +343,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       .filter((code) => code.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  clearBio(): void {
-    this.bio.setValue('');
-  }
+
   clearUsername(): void {
     this.username.setValue('');
   }
@@ -442,49 +414,13 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.dialog.open(AccountTextComponent);
   }
 
-  onSubmitPartTwo(): void {
-    // TODO: wire up to login request
-    // console.log(this.personalizeForm.value);
-  }
-  onSubmitPartThree(): void {
-    // TODO: wire up to login request
-    // console.log(this.CodeCompleted.value);
-  }
   onSubmit(): any{
 //  Email validation to continue
     this.isLoading = true;
-    this.authService.createUser(this.email.value,  this.password.value);
+    this.authService.createUser(this.email.value, this.username.value, this.password.value);
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
     this.dialog.open(LoginPopUpComponent, { disableClose: true });
 
-    // const userId: NewUserId = {
-    //   Email: this.email.value,
-    //   UserName: this.username.value,
-    //   Password: this.password.value,
-    //   TermsCheck: this.termsCheck.value,
-    // };
-
-
-    // const profile: Profile = {
-    //   UserName: this.username.value,
-    //   CodeCompleted: this.CodeCompleted.value,
-    //   CodePursuing: this.CodePursuing.value,
-    //   Name: this.name.value,
-    //   Pronouns: this.pronouns.value,
-    //   profilePic: this.profilePic.value,
-    //   Gender: this.genderChoice.value,
-    //   Major: this.major.value,
-    //   Minor: this.minor.value,
-    //   Sport: this.sport.value,
-    //   Club: this.club.value,
-    //   profPic: this.cropImgPreview,
-    //   // ShowCasse: this.url.value,
-    //   Birthday: this.birthday.value,
-    //   ShowCase: this.showCase.value,
-
-    // };
-    // this.storeService.setProfile(profile);
-    // this.storeService.setUser(userId);
   }
 
 

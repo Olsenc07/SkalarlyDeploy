@@ -157,8 +157,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({upload: file});
     this.form.get('upload').updateValueAndValidity();
-    // console.log(file);
-    // console.log(this.upload.value);
+   
     const reader = new FileReader();
     reader.onload = () => {
       this.url = reader.result as string;
@@ -170,7 +169,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
   clearUpload(): void {
     this.form.get('upload').setValue('');
     document.getElementById('upload').removeAttribute('src');
-    document.getElementById('upload2').removeAttribute('src');
   }
 
   ngOnInit(): any {

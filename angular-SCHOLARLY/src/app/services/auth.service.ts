@@ -41,8 +41,8 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
     }
 
     // User and their info
-    createUser(email: string,  password: string): any {
-        const authData: AuthData = { email,  password};
+    createUser(email: string, username: string, password: string): any {
+        const authData: AuthData = { email, username,  password};
         this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(() => {
             this.snackBar.open('Account is made, time to personalize it!', 'Yay!!');
          }, error => {
@@ -51,7 +51,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
     }
 
     createUserInfo( username: string, name: string, gender: string, birthday: string, major: string, minor: string, sport: string,
-                    club: string, pronouns: string, CodeCompleted: string,  CodePursuing: string, profilePic: File, showCase: File, 
+                    club: string, pronouns: string, CodeCompleted: string,  CodePursuing: string, profilePic: File, showCase: File,
                     Creator?: string,
         ): any {
         const authDataInfo: AuthDataInfo = {Creator, username, name, gender, birthday, major, minor,

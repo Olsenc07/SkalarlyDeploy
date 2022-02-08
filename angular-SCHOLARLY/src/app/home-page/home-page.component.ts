@@ -43,7 +43,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   clearEmail(): void {
     this.email.setValue('');
   }
- 
 
   onSubmit(): void {
     console.log(this.loginForm.value);

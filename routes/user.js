@@ -42,6 +42,7 @@ router.post("/signup", (req, res, next) => {
         .then(hash => {
             const user = new User({
                 email: req.body.email,
+                username: req.body.username,
                 password: hash,
             });
             user.save().then(result => {
@@ -52,7 +53,7 @@ router.post("/signup", (req, res, next) => {
             })
                 .catch(err => {
                     res.status(500).json({
-                            message: 'Email or Usernmae invalid'
+                            message: 'Email or Username invalid!'
                     });
                 });
         });
