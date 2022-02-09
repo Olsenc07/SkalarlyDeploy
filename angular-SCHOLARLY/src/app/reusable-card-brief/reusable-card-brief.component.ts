@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StoreService} from '../services/store.service';
 import { Post, PostService } from '../services/post.service';
 import { Subscription, Subject } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { AuthDataInfo } from '../signup/auth-data.model';
 
 @Component({
     selector: 'app-card-brief',
@@ -15,11 +17,15 @@ export class ReusableCardBriefComponent implements OnInit {
 
     isLoading = false;
 
-    profile = StoreService.profile$$;
-    // post = PostService.post$$;
-    id = StoreService.userId$$;
+    userId: string;
+    userIsAuthenticated = false;
+    private authListenerSubs: Subscription;
 
-    constructor(public postService: PostService) { }
+    infos: AuthDataInfo[] = [];
+    private infosSub: Subscription;
+    
+
+    constructor(public postService: PostService, private authService: AuthService) { }
 
     ngOnInit(): void {
         this.isLoading = false;
@@ -30,5 +36,19 @@ export class ReusableCardBriefComponent implements OnInit {
          this.isLoading = false;
          console.log(this.posts);
        });
+        this.authService.getInfo();
+        this.infosSub = this.authService.getInfoUpdateListener()
+   .subscribe((infos: AuthDataInfo[]) => {
+   this.infos = infos;
+   this.isLoading = false;
+ });
+        this.userId = this.authService.getUserId();
+        this.userIsAuthenticated = this.authService.getIsAuth();
+        this.authListenerSubs = this.authService
+           .getAuthStatusListener()
+           .subscribe(isAuthenticated => {
+             this.userIsAuthenticated = isAuthenticated;
+             this.userId = this.authService.getUserId();
+           });
      }
 }

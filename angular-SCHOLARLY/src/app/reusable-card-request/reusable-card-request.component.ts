@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { AuthDataInfo } from '../signup/auth-data.model';
 
 @Component({
     selector: 'app-card-request',
@@ -9,26 +11,35 @@ import { Subscription } from 'rxjs';
 })
 
 export class ReusableCardRequestComponent implements OnInit {
-    storeProfiles: Profile[] = [];
-    profiles: Profile[] = [];
-    private profilesSub: Subscription;
-    
+    userId: string;
+    userIsAuthenticated = false;
+    private authListenerSubs: Subscription;
+
+    infos: AuthDataInfo[] = [];
+    private infosSub: Subscription;
+
     isLoading = false;
 
-   
-    ids = StoreService.ids;
 
 
-    constructor(public storeService: StoreService) { }
+    constructor(private authService: AuthService) { }
 
     ngOnInit() {
         this.isLoading = true;
-        this.storeService.getProfiles();
-        this.profilesSub = this.storeService.getProfileUpdateListener()
-         .subscribe((profiles: Profile[]) => {
-            this.isLoading = false;
-            this.profiles = profiles;
-         });
+        this.authService.getInfo();
+        this.infosSub = this.authService.getInfoUpdateListener()
+    .subscribe((infos: AuthDataInfo[]) => {
+    this.infos = infos;
+    this.isLoading = false;
+  });
+        this.userId = this.authService.getUserId();
+        this.userIsAuthenticated = this.authService.getIsAuth();
+        this.authListenerSubs = this.authService
+            .getAuthStatusListener()
+            .subscribe(isAuthenticated => {
+              this.userIsAuthenticated = isAuthenticated;
+              this.userId = this.authService.getUserId();
+            });
     }
 }
 
@@ -40,25 +51,38 @@ export class ReusableCardRequestComponent implements OnInit {
     styleUrls: ['./reusable-card-request.component.scss'],
 })
 export class ReusableCardRecommendationComponent implements OnInit {
-    storeProfiles: Profile[] = [];
-    profiles: Profile[] = [];
-    private profilesSub: Subscription;
+    userId: string;
+    userIsAuthenticated = false;
+    private authListenerSubs: Subscription;
+
+    infos: AuthDataInfo[] = [];
+    private infosSub: Subscription;
 
     isLoading = false;
 
 
-    ids = StoreService.ids;
 
 
-    constructor(public storeService: StoreService) { }
+
+    constructor(public storeService: StoreService, private authService: AuthService) { }
 
     ngOnInit() {
         this.isLoading = true;
-        this.storeService.getProfiles();
-        this.profilesSub = this.storeService.getProfileUpdateListener()
-         .subscribe((profiles: Profile[]) => {
-            this.isLoading = false;
-            this.profiles = profiles;
-         });
+        this.authService.getInfo();
+        this.infosSub = this.authService.getInfoUpdateListener()
+    .subscribe((infos: AuthDataInfo[]) => {
+    this.infos = infos;
+    this.isLoading = false;
+  });
+        this.userId = this.authService.getUserId();
+        this.userIsAuthenticated = this.authService.getIsAuth();
+        this.authListenerSubs = this.authService
+            .getAuthStatusListener()
+            .subscribe(isAuthenticated => {
+              this.userIsAuthenticated = isAuthenticated;
+              this.userId = this.authService.getUserId();
+              // Can add *ngIf="userIsAuthenticated" to hide items
+            });
     }
-}
+    }
+

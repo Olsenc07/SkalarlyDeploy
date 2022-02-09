@@ -3,22 +3,22 @@
   </div>
 
 
-<mat-card class="row1" *ngFor="let profile of profiles">
-    <div class="column" *ngIf="!isLoading" >
+<mat-card class="row1" *ngFor="let info of infos">
+    <div class="column" *ngIf="(userId !== info.Creator) && !isLoading" >
         <div class="row">
             <div class="row">
-                <div mat-card-avatar class="profilePic" *ngIf="profile.profPic">
+                <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPath">
                     <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
-                    <img class="fit" src="{{profile.profPic}}">
+                    <img class="fit" src="{{info.ProfilePicPath}}">
                 </div>
 
-                <div mat-card-avatar class="profilePic" *ngIf="!profile.profPic">
+                <div mat-card-avatar class="profilePic" *ngIf="!info.ProfilePicPath">
                     <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="fit" />
                 </div>
                 <!-- <div class="column_"> -->
-                <div class="userName textSize" *ngIf="profile.Name">
+                <div class="userName textSize" *ngIf="info.name">
                     <!-- {{ (profile | async)?.Pronouns}} -->
-                    {{profile.Name}}
+                    {{info.name}}
 
                 </div>
                 <!-- <mat-card-subtitle class="gender textSize">
@@ -45,30 +45,30 @@
         </div>
 
         <div class="row">
-            <div [ngClass]="profile.Sport || profile.Club ? 'center' : 'centerEmpty' "
-                *ngIf=" profile.Major || profile.Minor ">
-                <div class="center1" *ngIf="profile.Major">
+            <div [ngClass]="info.sport || info.club ? 'center' : 'centerEmpty' "
+                *ngIf=" info.major || info.minor ">
+                <div class="center1" *ngIf="info.major">
                     
-                    <i class="fas fa-star large"> {{ profile.Major}}</i>
+                    <i class="fas fa-star large"> {{info.major}}</i>
 
                 </div>
-                <div class="center1" *ngIf="profile.Minor">
+                <div class="center1" *ngIf="info.minor">
                   
-                    <i class="far fa-star large"> {{ profile.Minor}}</i>
+                    <i class="far fa-star large"> {{ info.minor }}</i>
 
                 </div>
             </div>
 
 
-            <div [ngClass]="profile.Major || profile.Minor ? 'center' : 'centerEmpty' "
-                *ngIf="profile.Sport || profile.Club ">
-                <div class="center1" *ngIf="profile.Sport">
+            <div [ngClass]="info.major || info.minor  ? 'center' : 'centerEmpty' "
+                *ngIf="info.sport || info.club ">
+                <div class="center1" *ngIf="info.sport">
                     
-                    {{ profile.Sport}}
+                    {{info.sport}}
                 </div>
-                <div class="center1" *ngIf="profile.Club">
+                <div class="center1" *ngIf="info.club">
                     
-                    {{ profile.Club}}
+                    {{info.club}}
                 </div>
             </div>
 

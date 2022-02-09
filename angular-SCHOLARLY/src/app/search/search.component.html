@@ -13,9 +13,9 @@
       <!-- <mat-divider></mat-divider> -->
       <!-- Reccomendations and adds -->
       <!-- Limit load in amount at a time -->
-      <div class= "recents">
+      <div class= "recents" *ngFor="let info of infos">
         <!-- Then each card is filled uniquely passed off {{ }}  values in feed-->
-        <app-card-recommendation class="hide" [ngForOf]="profiles">
+        <app-card-recommendation class="hide" *ngIf="(userId !== info.Creator) && !isLoading">
           
         </app-card-recommendation>
       </div>

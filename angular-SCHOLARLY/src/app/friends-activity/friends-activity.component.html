@@ -41,7 +41,7 @@
           <div class="center">
 
             <!-- {{Value}} -->
-            {{mutuals.length}}
+           
 
           </div>
         </div>
@@ -70,8 +70,8 @@
           </div>
 
 
-          <div class="follow-m" *ngIf="mutuals.length !== 0">
-            <app-card-mutual *ngFor="let mutual of mutuals" class="width">{{mutual}}</app-card-mutual>
+          <div class="follow-m" *ngFor="let info of infos" >
+            <app-card-mutual *ngIf=" (userId !== info.Creator)"  class="width"></app-card-mutual>
           </div>
         </div>
 

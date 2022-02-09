@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   // private authStatusSubs: Subscription;
   private authListenerSubs: Subscription;
 
-  storedPosts: Post[] = [];
+  // storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;
 

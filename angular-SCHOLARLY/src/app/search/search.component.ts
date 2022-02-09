@@ -6,6 +6,8 @@ import { SearchListService } from '../services/search.service';
 import { Post, PostService } from '../services/post.service';
 import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+
 
 
 interface SearchOption {
@@ -18,7 +20,10 @@ interface SearchOption {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
+  userId: string;
   userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
+
 
   storedPosts: Post[] = [];
   posts: Post[] = [];
@@ -63,6 +68,7 @@ export class SearchComponent implements OnInit {
     public route: ActivatedRoute,
     public postService: PostService,
     public storeService: StoreService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -79,6 +85,15 @@ export class SearchComponent implements OnInit {
          .subscribe((profiles: Profile[]) => {
              this.profiles = profiles;
          });
+        this.userId = this.authService.getUserId();
+        this.userIsAuthenticated = this.authService.getIsAuth();
+        this.authListenerSubs = this.authService
+            .getAuthStatusListener()
+            .subscribe(isAuthenticated => {
+              this.userIsAuthenticated = isAuthenticated;
+              this.userId = this.authService.getUserId();
+              // Can add *ngIf="userIsAuthenticated" to hide items
+            });
   }
 
 

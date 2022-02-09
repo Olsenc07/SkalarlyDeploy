@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { AuthDataInfo } from '../signup/auth-data.model';
+
 
 
 @Component({
@@ -9,25 +12,39 @@ import { Subscription } from 'rxjs';
     styleUrls: ['./reusable-card-user.component.scss'],
 })
 export class ReusableCardUserComponent implements OnInit {
-    storeProfiles: Profile[] = [];
-    profiles: Profile[] = [];
-    private profilesSub: Subscription;
-    // sends request to data base to get mutual friends list, by clicking on shaking hands emoji
-    profile = StoreService.profile$$;
-    id = StoreService.userId$$;
+    userId: string;
+    userIsAuthenticated = false;
+    private authListenerSubs: Subscription;
 
     isLoading = false;
-    constructor(public storeService: StoreService) { }
+
+
+    infos: AuthDataInfo[] = [];
+    private infosSub: Subscription;
+
+    constructor(private authService: AuthService) { }
 
     ngOnInit() {
         this.isLoading = true;
-        this.storeService.getProfiles();
-        this.profilesSub = this.storeService.getProfileUpdateListener()
-         .subscribe((profiles: Profile[]) => {
-            this.isLoading = false;
-            this.profiles = profiles;
-         });
+        this.userId = this.authService.getUserId();
+        this.userIsAuthenticated = this.authService.getIsAuth();
+        this.authListenerSubs = this.authService
+            .getAuthStatusListener()
+            .subscribe(isAuthenticated => {
+              this.userIsAuthenticated = isAuthenticated;
+              this.userId = this.authService.getUserId();
+              // Can add *ngIf="userIsAuthenticated" to hide items
+            });
+        //    Info
+        this.authService.getInfo();
+        this.infosSub = this.authService.getInfoUpdateListener()
+    .subscribe((infos: AuthDataInfo[]) => {
+    this.infos = infos;
+    this.isLoading = false;
+  });
     }
+
+
 
 }
 
@@ -38,23 +55,35 @@ export class ReusableCardUserComponent implements OnInit {
     styleUrls: ['./reusable-card-user.component.scss'],
 })
 export class ReusableCardMessageComponent implements OnInit {
-    storeProfiles: Profile[] = [];
-    profiles: Profile[] = [];
-    private profilesSub: Subscription;
-
+    userId: string;
+    userIsAuthenticated = false;
+    private authListenerSubs: Subscription;
+ 
     isLoading = false;
-    // Gets the id == id to fill mutual friends list from data base
-    profile = StoreService.profile$$;
-    constructor(public storeService: StoreService) { }
+
+    infos: AuthDataInfo[] = [];
+    private infosSub: Subscription;
+
+    constructor( private authService: AuthService) { }
 
     ngOnInit() {
         this.isLoading = true;
-        this.storeService.getProfiles();
-        this.profilesSub = this.storeService.getProfileUpdateListener()
-         .subscribe((profiles: Profile[]) => {
-             this.isLoading = false;
-             this.profiles = profiles;
-         });
+        this.userId = this.authService.getUserId();
+        this.userIsAuthenticated = this.authService.getIsAuth();
+        this.authListenerSubs = this.authService
+            .getAuthStatusListener()
+            .subscribe(isAuthenticated => {
+              this.userIsAuthenticated = isAuthenticated;
+              this.userId = this.authService.getUserId();
+              // Can add *ngIf="userIsAuthenticated" to hide items
+            });
+        //    Info
+        this.authService.getInfo();
+        this.infosSub = this.authService.getInfoUpdateListener()
+    .subscribe((infos: AuthDataInfo[]) => {
+    this.infos = infos;
+    this.isLoading = false;
+  });
     }
 }
 
@@ -65,22 +94,34 @@ export class ReusableCardMessageComponent implements OnInit {
     styleUrls: ['./reusable-card-user.component.scss'],
 })
 export class ReusableCardMutualComponent implements OnInit{
-    storeProfiles: Profile[] = [];
-    profiles: Profile[] = [];
-    private profilesSub: Subscription;
+    userId: string;
+    userIsAuthenticated = false;
+    private authListenerSubs: Subscription;
 
     isLoading = false;
-    // Gets the id == id to fill mutual friends list from data base
-    profile = StoreService.profile$$;
-    constructor(public storeService: StoreService) { }
+
+    infos: AuthDataInfo[] = [];
+    private infosSub: Subscription;
+
+    constructor( private authService: AuthService) { }
 
     ngOnInit() {
         this.isLoading = true;
-        this.storeService.getProfiles();
-        this.profilesSub = this.storeService.getProfileUpdateListener()
-         .subscribe((profiles: Profile[]) => {
-             this.isLoading = false;
-             this.profiles = profiles;
-         });
+        this.userId = this.authService.getUserId();
+        this.userIsAuthenticated = this.authService.getIsAuth();
+        this.authListenerSubs = this.authService
+            .getAuthStatusListener()
+            .subscribe(isAuthenticated => {
+              this.userIsAuthenticated = isAuthenticated;
+              this.userId = this.authService.getUserId();
+              // Can add *ngIf="userIsAuthenticated" to hide items
+            });
+        //    Info
+        this.authService.getInfo();
+        this.infosSub = this.authService.getInfoUpdateListener()
+    .subscribe((infos: AuthDataInfo[]) => {
+    this.infos = infos;
+    this.isLoading = false;
+  });
     }
 }

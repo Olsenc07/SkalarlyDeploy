@@ -2,22 +2,22 @@
     <mat-spinner ></mat-spinner>
   </div>
 
-<div class="feed" *ngFor="let post of posts">
-    <mat-card class="specifics-fill"  *ngIf="!isLoading">
+<div class="feed" *ngFor="let info of infos">
+    <mat-card class="specifics-fill"  *ngIf="(userId !== info.Creator) && !isLoading">
         <!-- Profile Pic -->
 
         <div class="row">
             <div class="column">
-            <div class="profilePic" *ngIf="profile.profPic">
+            <div class="profilePic" *ngIf="info.ProfilePicPath">
                 <!-- need to get croppeded value -->
-                <img class="pic" src="{{profile.profPic}}" >                
+                <img class="pic" src="{{info.ProfilePicPath}}" >                
             </div>
 
-            <div class="profilePic" *ngIf="!profile.profPic">
+            <div class="profilePic" *ngIf="!info.ProfilePicPath">
                 <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
             </div>
-         <div class="linkN" *ngIf="profile.Name">
-            {{ profile.Name}}
+         <div class="linkN" *ngIf="info.name">
+            {{info.name}}
           </div>
             </div>
 
@@ -35,7 +35,7 @@
 
            
         
-                <div class="columnInfo">
+                <div class="columnInfo" *ngFor="let post of posts">
          
 
                         <mat-card-title class="postTitle textSizeTit">

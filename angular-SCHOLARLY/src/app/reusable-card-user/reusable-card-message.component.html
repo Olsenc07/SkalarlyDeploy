@@ -3,22 +3,22 @@
   </div>
 
 
-<mat-card class="row1"  *ngFor="let profile of profiles">
-    <div class="column" *ngIf="!isLoading">
+<mat-card class="row1"  *ngFor="let info of infos">
+    <div class="column" *ngIf="(userId !== info.Creator) && !isLoading">
         <div class="row">
             <div class="row_">
-                <div mat-card-avatar class="profilePic" *ngIf="(profile | async)?.profPic">
+                <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPath">
                     <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
-                    <img class="fit" src="{{profile.profPic}}">
+                    <img class="fit" src="{{info.ProfilePicPath}}">
                 </div>
 
-                <div mat-card-avatar class="profilePic" *ngIf="!profile.profPic">
+                <div mat-card-avatar class="profilePic" *ngIf="!info.ProfilePicPath">
                     <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="fit" />
                 </div>
                 <!-- <div class="column_"> -->
-                <div class="userName textSize" *ngIf="profile.Name">
+                <div class="userName textSize" *ngIf="info.name">
                     <!-- {{ (profile | async)?.Pronouns}} -->
-                    {{ profile.Name}}
+                    {{ info.name }}
 
                 </div>
                 <!-- <mat-card-subtitle class="gender textSize">

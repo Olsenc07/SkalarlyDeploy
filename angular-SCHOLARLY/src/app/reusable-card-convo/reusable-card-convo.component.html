@@ -1,11 +1,14 @@
-<mat-card class="row1">
+<mat-card class="row1" *ngFor="let info of infos">
 
-    <div class="row">
-        <div mat-card-avatar class="profilePic">
+    <div class="row" *ngIf="(userId !== info.Creator) && !isLoading">
+        <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPath">
             <!-- {{profilePic}} -->
         </div>
 
         <!-- {{userName}}: -->
-        <mat-card-title class="userName textSize">Olsen07</mat-card-title>
+        <mat-card-title class="userName textSize">{{ info.username}}</mat-card-title>
+        <mat-card-subtitle class="userName textSize" *ngIf="info.name">
+            {{info.name}}
+        </mat-card-subtitle>
     </div>
 </mat-card>

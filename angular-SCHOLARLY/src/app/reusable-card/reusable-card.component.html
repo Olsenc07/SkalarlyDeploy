@@ -3,10 +3,10 @@
 </div>
 
 <!-- Posts box which should be a scroll view -->
-<div class="feed"   *ngFor="let post of posts">
+<div class="feed"   *ngFor="let post of posts" >
   <mat-card class="specifics-fill" *ngIf="!isLoading">
     <!-- Profile Pic -->
-    <div class="column">
+    <div class="column" >
       <div class="row">
         <div class="column">
           <div class="centerT" *ngIf="post.Title">

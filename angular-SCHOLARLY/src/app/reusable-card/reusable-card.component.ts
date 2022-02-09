@@ -6,6 +6,7 @@ import { TaggedComponent } from '../main-pages/main-pages.component';
 import { StoreService } from '../services/store.service';
 import { Post, PostService } from '../services/post.service';
 import { AuthService } from '../services/auth.service';
+import { AuthDataInfo } from '../signup/auth-data.model';
 import { Subscription, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -15,12 +16,15 @@ import { MatDialog } from '@angular/material/dialog';
     styleUrls: ['./reusable-card.component.scss'],
 })
 export class ReusableCardComponent implements OnInit{
+  isLoading = false;
+
     // Filling with Post info from post.service
     posts: Post[] = [];
     private postsSub: Subscription;
     userId: string;
 
-    isLoading = false;
+    infos: AuthDataInfo[] = [];
+    private infosSub: Subscription;
 
 
     selectedAttend = '';
@@ -59,6 +63,7 @@ export class ReusableCardComponent implements OnInit{
     ngOnInit(): void {
         this.userId = this.authService.getUserId();
         this.isLoading = true;
+        // Posts
         this.postService.getPosts();
         this.postsSub = this.postService.getPostUpdateListener()
           .subscribe((posts: Post[]) => {
@@ -66,6 +71,13 @@ export class ReusableCardComponent implements OnInit{
           this.isLoading = false;
           console.log(this.posts);
         });
+        // Info
+      //   this.authService.getInfo();
+      //   this.infosSub = this.authService.getInfoUpdateListener()
+      //   .subscribe((infos: AuthDataInfo[]) => {
+      //   this.infos = infos;
+      //   this.isLoading = false;
+      // });
       }
 
 
