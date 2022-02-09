@@ -38,13 +38,17 @@
 
       </div>
 
+
+
+  
+
       <div class="row__"> Recommended Aspect Ratio 4:3</div>
       <div class="rowP">
-        <button type="button" class="cameraIcon" mat-fab (click)="uploadFile()">
+        <button mat-fab type="button" class="cameraIcon" (click)="uploadFile()">
           <div class="material-icons Photo">
             add_a_photo
-            <input #fileInput id="fileInput" class="uploadD" type="file" accept=".png, .jpg, .jpeg"
-              (change)="onImagePicked($event)" name='upload'>
+            <input type="file" #fileInput id="fileInput" name='upload' class="uploadD"  accept=".png, .jpg, .jpeg"
+              (change)="onImagePicked($event)" >
           </div>
         </button>
       </div>
