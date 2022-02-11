@@ -86,7 +86,7 @@ export class SearchComponent implements OnInit {
             .subscribe(isAuthenticated => {
               this.userIsAuthenticated = isAuthenticated;
               this.userId = this.authService.getUserId();
-              // Can add *ngIf="userIsAuthenticated" to hide items
+              console.log(this.userId);
             });
                 //    Info
         this.authService.getInfo();

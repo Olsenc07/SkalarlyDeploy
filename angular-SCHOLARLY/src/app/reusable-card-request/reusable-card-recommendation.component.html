@@ -2,12 +2,12 @@
     <mat-spinner ></mat-spinner>
   </div>
 
-
-<mat-card class="row1" *ngFor="let info of infos">
-    <div class="column" >
+<div *ngFor="let info of infos">
+<mat-card class="row1"  *ngIf="(userId !== info.Creator) && !isLoading">
+    <div class="column"  >
         <div class="row">
             <div class="row">
-                <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPath">
+                <div mat-card-avatar class="profilePic" *ngIf="infos.ProfilePicPath">
                     <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
                     <img class="fit" src="{{info.ProfilePicPath}}">
                 </div>
@@ -83,3 +83,4 @@
         </div>
     </div>
 </mat-card>
+</div>

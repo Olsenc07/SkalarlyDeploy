@@ -4,7 +4,7 @@
 
 <div class="entire-page" *ngIf="!isLoading">
   <!-- Entire page -->
-  <div class="main-layout">
+  <div class="main-layout" >
 
     <div class="left-column">
 
@@ -13,9 +13,9 @@
       <!-- <mat-divider></mat-divider> -->
       <!-- Reccomendations and adds -->
       <!-- Limit load in amount at a time -->
-      <div class= "recents" [ngForOf]="infos">
+      <div class= "recents"  >
         <!-- Then each card is filled uniquely passed off {{ }}  values in feed-->
-        <app-card-recommendation *ngIf="(userId !== infos.Creator)" class="hide" >
+        <app-card-recommendation  class="hide" >
           
         </app-card-recommendation>
       </div>

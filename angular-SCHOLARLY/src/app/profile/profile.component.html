@@ -3,7 +3,7 @@
 </div>
 
 <div *ngFor="let info of infos">
-<div class="main-content"  *ngIf="(userIsAuthenticated && (userId === info.Creator))">
+<div class="main-content"  *ngIf="(userId === info.Creator)">
   <!-- input pic & has this default pic before-->
   <div class="left-side">
 
@@ -246,13 +246,13 @@
     <div class="activityM">
       <!-- Right side -->
       <!-- Recent Posts text  -->
-      <div class="right-side">
+      <div class="right-side" [ngForOf]="posts">
         <mat-tab-group mat-align-tabs="center">
           <mat-tab label="Activity">
             <div class="column1" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">
               <div class="row"> No Posts Made</div><span class="fas fa-ghost centerR iconEmpty"></span>
             </div>
-            <div class="posts" *ngIf="posts.length !== 0" [ngForOf]="posts">
+            <div class="posts" *ngIf="posts.length !== 0" >
               <app-card class="postCard" *ngIf='userIsAuthenticated && (userId === posts.Creator)'>
               </app-card>
             </div>
