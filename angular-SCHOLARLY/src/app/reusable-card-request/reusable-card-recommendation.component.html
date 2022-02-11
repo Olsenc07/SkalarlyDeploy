@@ -7,7 +7,7 @@
     <div class="column"  >
         <div class="row">
             <div class="row">
-                <div mat-card-avatar class="profilePic" *ngIf="infos.ProfilePicPath">
+                <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPath">
                     <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
                     <img class="fit" src="{{info.ProfilePicPath}}">
                 </div>
@@ -22,9 +22,9 @@
                     {{ info.username}}
 
                 </div>
-                <mat-card-subtitle class="gender textSize" *ngIf="info.name">
+                <div class="gender textSize" *ngIf="info.name">
                         {{info.name}}
-                    </mat-card-subtitle>
+                </div>
                 </div>
             </div>
 

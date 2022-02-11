@@ -2,9 +2,9 @@
     <mat-spinner ></mat-spinner>
   </div>
 
-
-<mat-card class="row1"  *ngFor="let info of infos">
-    <div class="column" *ngIf="(userId !== info.Creator) && !isLoading">
+<div  *ngFor="let info of infos">
+<mat-card class="row1" *ngIf="(userId !== info.Creator) && !isLoading">
+    <div class="column" >
         <div class="row">
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPath">
@@ -52,7 +52,6 @@
 
         </div>
 
-        
-       
     </div>
 </mat-card>
+</div>
