@@ -82,6 +82,8 @@ const pic = multer({ storage: storage});
                 CodeCompleted: req.body.CodeCompleted,
                 ProfilePicPath: url + '/ProfilePic/' + req.files.filename,
                 ShowCasePath: url + '/ShowCase/' + req.files.filename,
+                followers: null,
+                following: null,
                 Creator: req.userData.userId,
 
 

@@ -5,7 +5,7 @@ import { filter, map, tap } from 'rxjs/operators';
 
 
 @Component({
-    selector: 'messaging',
+    selector: 'app-card-messaging',
     templateUrl: './messaging.component.html',
     styleUrls: ['./messaging.component.scss'],
 })
@@ -13,7 +13,7 @@ export class MessagingComponent {
  // allUsers should filter through every user
  allUsers: string[] = [''];
 //  List of people you are talking to
- chats = [''];
+//  chats = [''];
 
     search: FormControl = new FormControl('');
     message: FormControl = new FormControl('');
@@ -25,7 +25,7 @@ export class MessagingComponent {
 
 
     // Sends message
-    sendMsg(){};
+    sendMsg(): any {}
 
     constructor( )
         {
@@ -49,4 +49,4 @@ export class MessagingComponent {
                 this.message.setValue('');
               }
 
-};
+}

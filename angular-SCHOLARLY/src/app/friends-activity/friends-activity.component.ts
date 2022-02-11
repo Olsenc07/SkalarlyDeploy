@@ -12,11 +12,6 @@ import { AuthDataInfo } from '../signup/auth-data.model';
   styleUrls: ['./friends-activity.component.scss']
 })
 export class FriendsActivityComponent implements OnInit {
-  storeProfiles: Profile[] = [];
-  profiles: Profile[] = [];
-  private profilesSub: Subscription;
-
-
     userId: string;
     userIsAuthenticated = false;
     private authListenerSubs: Subscription;
@@ -24,33 +19,8 @@ export class FriendsActivityComponent implements OnInit {
     infos: AuthDataInfo[] = [];
     private infosSub: Subscription;
 
-
-  
-  feeds = [{
-    "profilePic": "", "userName": "",
-    "Major": "", "Minor": "", "Sport": "", "Club": ""
-  },
-
-
-  ];
-
-  mutuals = [
-
-  ];
-
-  following = [{
-    "profilePic": "", "userName": "",
-    "Major": "", "Minor": "", "Sport": "", "Club": ""
-  },
-
-
-  ];
-  followers = [{
-    "profilePic": "", "userName": "",
-    "Major": "", "Minor": "", "Sport": "", "Club": ""
-  },
-  ];
-
+    mutuals = [
+    ];
   // Friend requests from the card...
   accept: FormControl = new FormControl('');
   deline: FormControl = new FormControl('');
@@ -80,11 +50,6 @@ export class FriendsActivityComponent implements OnInit {
      this.infos = infos;
    });
 
-    this.storeService.getProfiles();
-    this.profilesSub = this.storeService.getProfileUpdateListener()
-         .subscribe((profiles: Profile[]) => {
-             this.profiles = profiles;
-         });
   }
 
 }

@@ -4,9 +4,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { SearchListService } from '../services/search.service';
 import { Post, PostService } from '../services/post.service';
-import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { AuthDataInfo } from '../signup/auth-data.model';
+
 
 
 
@@ -31,9 +32,8 @@ export class SearchComponent implements OnInit {
 
   post: Post;
 
-  storeProfiles: Profile[] = [];
-  profiles: Profile[] = [];
-  private profilesSub: Subscription;
+  infos: AuthDataInfo[] = [];
+  private infosSub: Subscription;
 
   isLoading = false;
 
@@ -67,7 +67,6 @@ export class SearchComponent implements OnInit {
     private router: Router,
     public route: ActivatedRoute,
     public postService: PostService,
-    public storeService: StoreService,
     private authService: AuthService
   ) { }
 
@@ -80,11 +79,6 @@ export class SearchComponent implements OnInit {
       this.posts = posts;
       this.isLoading = false;
     });
-        this.storeService.getProfiles();
-        this.profilesSub = this.storeService.getProfileUpdateListener()
-         .subscribe((profiles: Profile[]) => {
-             this.profiles = profiles;
-         });
         this.userId = this.authService.getUserId();
         this.userIsAuthenticated = this.authService.getIsAuth();
         this.authListenerSubs = this.authService
@@ -94,6 +88,12 @@ export class SearchComponent implements OnInit {
               this.userId = this.authService.getUserId();
               // Can add *ngIf="userIsAuthenticated" to hide items
             });
+                //    Info
+        this.authService.getInfo();
+        this.infosSub = this.authService.getInfoUpdateListener()
+     .subscribe((infos: AuthDataInfo[]) => {
+     this.infos = infos;
+   });
   }
 
 
