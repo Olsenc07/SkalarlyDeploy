@@ -3,10 +3,27 @@ const multer = require('multer');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
+
+// mail sender details
+var transporter = nodemailer.createTransport({
+    service: 'outlook365',
+    auth: {
+        // gmail just change to gmail email and service to gmail
+        user: 'skalarly777@outlook.com',
+        pass: 'Hockey07'
+    },
+    tls: {
+        rejectUnauthorized: false,
+     },
+  
+})
+
+
 
 const MIME_TYPE_MAP ={
     'image/png': 'png',
@@ -42,22 +59,64 @@ router.post("/signup", (req, res, next) => {
         .then(hash => {
             const user = new User({
                 email: req.body.email,
+                emailToken: crypto.randomBytes(64).toString('hex'),
+                isVerified: false,
                 username: req.body.username,
                 password: hash,
             });
-            user.save().then(result => {
-                res.status(201).json({
-                    message: 'Yay a new User!!',
-                    result: result
-                });
+            const msg ={
+                from:' "Verify account"   <skalarly777@outlook.com>',
+                to: user.email,
+                subject: 'Skalarly - verify account',
+                text: `We are excited to welcome you to the community!
+                Please copy and paste the link below to verify your account.
+                http://${req.headers.host}/user/verify-email?token=${user.emailToken}`,
+                html: `
+                <div>We are excited to welcome you to the community!</div>
+                <div> Please click the link below to verify your account. </div>
+                <a href="http://${req.headers.host}/user/verify-email?token=${user.emailToken}">Verify account</a>
+                `
+            }
+            // Sending mail
+            transporter.sendMail(msg, (error, info) => {
+                if (error){
+                    console.log(error)
+                }
+                else {
+                    console.log('Verification has been sent to email')
+                }
+                
             })
-                .catch(err => {
-                    res.status(500).json({
-                            message: 'Email or Username invalid!'
-                    });
-                });
+
         });
 });
+
+router.get('/verify-email', async(req, res, next) => {
+    try {
+        const token = req.query.token;
+        const user = await User.findOne({ emailToken: req.emailToken.token});
+        if (!user) {
+            req.flash('error', 'Invalid authentication. Please try again.' );
+        }
+        user.emailToken = null;
+        user.isVerified = true;
+         await user.save().then(result => {
+            res.status(201).json({
+                message: 'Yay a new User!!',
+                result: result
+            });
+        })
+            .catch(err => {
+                res.status(500).json({
+                        message: 'Email or Username invalid!'
+                });
+            });
+
+    }finally {
+
+    }
+})
+
 
 const pic = multer({ storage: storage});
 

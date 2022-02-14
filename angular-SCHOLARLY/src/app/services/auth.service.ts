@@ -44,7 +44,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
     createUser(email: string, username: string, password: string): any {
         const authData: AuthData = { email, username,  password};
         this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(() => {
-            this.snackBar.open('Account is made, time to personalize it!', 'Yay!!');
+            this.snackBar.open('Check your email to verify your account', 'Will do!!');
          }, error => {
              this.authStatusListener.next(false);
          });
