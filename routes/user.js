@@ -54,7 +54,7 @@ const storage  = multer.diskStorage({
 
 
 // Creating user
-router.post("/signup", (req, res, next) => {
+router.post("/signup", async(req, res, next) => {
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
             const user = new User({
@@ -64,17 +64,32 @@ router.post("/signup", (req, res, next) => {
                 username: req.body.username,
                 password: hash,
             });
-            const msg ={
-                from:' "Verify account"   <skalarly777@outlook.com>',
+             user.save().then(result => {
+                res.status(201).json({
+                    message: 'Yay a new User!!',
+                    result: result
+                });
+            })
+                .catch(err => {
+                    // res.status(500).json({
+                    //         message: 'Email or Username invalid!'     
+                    // });
+                    res.redirect('/sign-up')
+                    
+                });
+            const msg = {
+                from:' "Verify account" <skalarly777@outlook.com>',
                 to: user.email,
                 subject: 'Skalarly - verify account',
-                text: `We are excited to welcome you to the community!
+                text: `We are excited to welcome you ${user.username} to the community!
                 Please copy and paste the link below to verify your account.
-                http://${req.headers.host}/user/verify-email?token=${user.emailToken}`,
+                http://${req.headers.host}/api/user/verify-email?token=${user.emailToken}
+                `,
                 html: `
-                <div>We are excited to welcome you to the community!</div>
+                <h2>We are excited to welcome you ${user.username} to the community!</h2>
                 <div> Please click the link below to verify your account. </div>
-                <a href="http://${req.headers.host}/user/verify-email?token=${user.emailToken}">Verify account</a>
+                <a href="http://${req.headers.host}/api/user/verify-email?token=${user.emailToken}">Verify account</a>
+                <div>If you have recieved this email by erorr, please disregard. </div>
                 `
             }
             // Sending mail
@@ -83,45 +98,54 @@ router.post("/signup", (req, res, next) => {
                     console.log(error)
                 }
                 else {
+                    
                     console.log('Verification has been sent to email')
                 }
                 
             })
 
         });
+       
 });
 
 router.get('/verify-email', async(req, res, next) => {
     try {
         const token = req.query.token;
-        const user = await User.findOne({ emailToken: req.emailToken.token});
-        if (!user) {
-            req.flash('error', 'Invalid authentication. Please try again.' );
-        }
-        user.emailToken = null;
-        user.isVerified = true;
-         await user.save().then(result => {
-            res.status(201).json({
-                message: 'Yay a new User!!',
-                result: result
-            });
-        })
-            .catch(err => {
-                res.status(500).json({
-                        message: 'Email or Username invalid!'
-                });
-            });
+        const user =  await User.findOne({ emailToken: token});
+        if (user) {
+            user.emailToken = null;
+            user.isVerified = true;
+            await user.save();
+            res.redirect('/verified')
+        }else{
+            res.redirect('/sign-up')
+            console.log('error', 'Invalid authentication. Please try again.' );
 
+        }
+       
     }finally {
 
     }
 })
 
-
-const pic = multer({ storage: storage});
+const verifyEmail = async(req, res, next) => {
+    try{
+        const user = await User.findOne({ email: req.body.email})
+        if(user.isVerified){
+            next()
+        }
+        else{
+            console.log('Please check email to verify your account.')
+        }
+    }
+    catch(err){
+        console.log(err)
+    }
+}
 
 
 // User info
+const pic = multer({ storage: storage});
     router.post("/info", checkAuth,
             pic.fields([{name: 'profilePic', maxCount: 1},
                         {name: 'showCase'}
@@ -180,7 +204,7 @@ router.get("/info", (req, res, next) => {
 
 
 // Login
-router.post("/login", (reg, res, next) => {
+router.post("/login", verifyEmail, (reg, res, next) => {
     let fetchedUser;
     User.findOne({ email: reg.body.email })
         .then(user => {
@@ -211,7 +235,8 @@ router.post("/login", (reg, res, next) => {
         })
         .catch(err => {
             return res.status(401).json({
-                message: "Invalid authentication credentials!"
+                message: "Invalid authentication credentials!",
+
             });
         });
 });

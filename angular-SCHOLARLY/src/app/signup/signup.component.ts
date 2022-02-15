@@ -458,6 +458,12 @@ export class SignupComponent implements OnInit, OnDestroy {
 
 
 }
+@Component({
+  selector: 'app-verified-page',
+  templateUrl: './verified-popup.component.html',
+  styleUrls: ['./terms-popup.component.scss'],
+})
+export class VerifiedPopUpComponent { }
 
 @Component({
   selector: 'app-terms-page',

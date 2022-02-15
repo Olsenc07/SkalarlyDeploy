@@ -7,6 +7,14 @@
   overflow-y: scroll;
   font-family: "Font Awesome 5 Free";
 }
+
+.center {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 1%;
+}
+
 .logo-layout {
   display: flex;
   flex-direction: column;

@@ -30,6 +30,8 @@ export class AppComponent implements OnInit {
 
   isSearchScreen$: Observable<boolean>;
 
+  isVerifiedScreen$: Observable<boolean>;
+
   isFriendsActScreen$: Observable<boolean>;
 
   isProfileScreen$: Observable<boolean>;
@@ -81,6 +83,11 @@ export class AppComponent implements OnInit {
     this.isSearchScreen$ = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map((event: NavigationEnd) => event.url === '/' || event.url === '/search')
+    );
+
+    this.isVerifiedScreen$ = this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map((event: NavigationEnd) => event.url === '/' || event.url === '/verified')
     );
 
     this.isFriendsActScreen$ = this.router.events.pipe(

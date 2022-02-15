@@ -5,7 +5,7 @@
       <mat-label> Academic Email</mat-label>
       <input matInput type="email" pattern=".+@mail.utoronto\.ca" [formControl]="email" required/>
       <span matSuffix class="hide"></span>
-      <mat-error *ngIf="email.invalid">Please enter your academic email</mat-error>
+      <mat-error *ngIf="email.invalid">Please enter your academic email after verifying it!!</mat-error>
       <!-- <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
         (click)="clearEmail()">
         <mat-icon>close</mat-icon>
