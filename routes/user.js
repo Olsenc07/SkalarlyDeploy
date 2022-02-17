@@ -3,13 +3,11 @@ const multer = require('multer');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-// const uuidv1 = require('uuid/v1')
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
-
 
 
 // mail sender details
@@ -26,7 +24,6 @@ var transporter = nodemailer.createTransport({
   
 })
 
-const JWT_SECRET = 'odbsvowbv984obs'
 
 const MIME_TYPE_MAP ={
     'image/png': 'png',
@@ -156,26 +153,21 @@ router.post('/forgot', async(req, res) => {
           message: 'This email does not exist, or is not verified.'
       })
     }
-    //    User exists and create one time link
-    const secret = JWT_SECRET + user.password
-    const payload = {
-        user: user.email,
-        id: user._id
-    }
-    const token = jwt.sign(payload, secret, {expiresIn: '15m'})
     const msg = {
         from:' "Reset Password" <skalarly777@outlook.com>',
         to: user.email,
         subject: 'Skalarly - reset password',
         text: `Hello ${user.username} we hear you forgot your password.
-        Please copy and paste the link below to reset it.
-        http://${req.headers.host}/api/user/reset-password/${user.id}/${token}
+        Here is your reset code ${user.password} then copy and paste the link below to navigate back
+        http://${req.headers.host}/api/user/reset-password?token=${user.password}
         If you have recieved this email by erorr, please disregard.
         `,
         html: `
         <h2>Hello ${user.username} we hear you forgot your password.</h2>
-        <div> Please click the link below to reset it. </div>
-        <a href="http://${req.headers.host}/api/user/reset-password/${user.id}/${token}">Reset Password</a>
+        <div> Here is your reset code </div>
+        ${user.password}
+        <div> Now follow the below link </div>
+        <a href="http://${req.headers.host}/api/user/reset-password?token=${user.password}"></a>
         <div>If you have recieved this email by erorr, please disregard. </div>
         `
     }
@@ -194,34 +186,49 @@ router.post('/forgot', async(req, res) => {
 
 })
 
-router.get('/reset-password/:id/:token', async(req, res, next) => {
-    const { id, token } = req.params;
-    console.log(req.params)
-   const user = await User.findOne( {users: req.body.email});
+router.get('/reset-password', async(req, res, next) => {
+ try{
+    const token = req.query.token;
+
+   const user = await User.findOne( {password: token});
    console.log(user)
 
 // Check if id exists in database
-if (id !== user._id ){
+if (user){
     res.status(500).json({
         message: 'User id does not exist.'
     })
 }
-// We gace valid id and user
-const secret = JWT_SECRET + user.password;
-try{
-    const payload = jwt.verify(token, secret)
 
-    res.redirect('/resetPassword')
-    
-}catch (error) {
-    console.log(error)
+res.redirect('/resetPassword')
+
+}finally {
+
 }
-//     bcrypt.hash(req.body.password, 10)
-//     .then(hash => {
-//     User.updateOne( {password: hash})
-//     res.redirect('/login')
-//     user.save();
-// })
+})
+
+router.post('/reset-password', async(req, res, next) => {
+    const user = await User.findOne( {users: req.body.email});
+
+    if (!secretCode == user.password ){
+        res.status(500).json({
+            message: 'This is not a valid reset code'
+        })
+    }
+    try{
+        bcrypt.hash(req.body.password, 10)
+            .then(hash => {
+                user.updateOne({password: hash});
+                user.save().then(result => {
+                    res.status(201).json({
+                        message: 'Password changed successfully',
+                        result: result
+                    });
+            })
+        })
+        }finally{
+            console.log('Complete')
+        }
 })
 
 

@@ -12,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class RetrievePasswordComponent implements OnInit {
   isLoading = false;
 
-  password: FormControl = new FormControl('');
+  password: FormControl = new FormControl('', Validators.email);
   // passwordRetrieval: FormControl = new FormControl('', Validators.email);
   email: FormControl = new FormControl('', Validators.email);
 
@@ -51,7 +51,24 @@ export class RetrievePasswordComponent implements OnInit {
 })
 export class ResetPasswordComponent implements OnInit {
 
+  password: FormControl = new FormControl('');
+  secretCode: FormControl = new FormControl('');
 
+  passwordForm = new FormGroup({
+    password: this.password,
+    secretCode: this.secretCode,
+
+  });
+
+  constructor(public authService: AuthService,
+     private snackBar: MatSnackBar) { }
+
+
+
+  onResetPassword(){
+    console.log('nice bush');
+    this.authService.updatePassword(this.password.value, this.secretCode.value);
+  }
   ngOnInit(): void { }
 
 }

@@ -11993,7 +11993,7 @@ class RetrievePasswordComponent {
         this.authService = authService;
         this.snackBar = snackBar;
         this.isLoading = false;
-        this.password = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
+        this.password = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].email);
         // passwordRetrieval: FormControl = new FormControl('', Validators.email);
         this.email = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('', _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].email);
         this.loginForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
@@ -12019,7 +12019,7 @@ class RetrievePasswordComponent {
     }
 }
 RetrievePasswordComponent.ɵfac = function RetrievePasswordComponent_Factory(t) { return new (t || RetrievePasswordComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"])); };
-RetrievePasswordComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: RetrievePasswordComponent, selectors: [["app-retrieve-password"]], decls: 41, vars: 5, consts: [[1, "entire-page"], [1, "top"], ["Src", "../../assets/Pics/WhiteSquareInAppLogo.jpg", 1, "pic"], [1, "middle"], [1, "plain-text"], [1, "text"], ["method", "POST"], [1, "email"], ["matInput", "", "type", "email", "placeholder", "name@mail.utoronto.ca", 3, "formControl"], [1, "beside"], ["mat-raised-button", "", "type", "sumbit", "color", "primary", 1, "action-button", 3, "click"], ["mat-raised-button", "", "type", "button", "routerLink", "/login", "color", "basic", 1, "action-button"], [1, "line"], [1, "bottom"], [3, "formGroup", "ngSubmit"], [1, "inputs"], [1, "email_"], [1, "text_"], ["matInput", "", "placeholder", "name@mail.utoronto.ca", "required", "", 3, "formControl"], [1, "password"], ["matInput", "", "placeholder", "Password:", "required", "", "type", "password", 3, "formControl"], [1, "login"], ["mat-raised-button", "", "type", "button", "routerLink", "/profile", "color", "primary", 1, "action-button", 3, "disabled", "click"]], template: function RetrievePasswordComponent_Template(rf, ctx) { if (rf & 1) {
+RetrievePasswordComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: RetrievePasswordComponent, selectors: [["app-retrieve-password"]], decls: 41, vars: 5, consts: [[1, "entire-page"], [1, "top"], ["Src", "../../assets/Pics/WhiteSquareInAppLogo.jpg", 1, "pic"], [1, "middle"], [1, "plain-text"], [1, "text"], ["method", "POST"], [1, "email"], ["matInput", "", "type", "email", "placeholder", "name@mail.utoronto.ca", 3, "formControl"], [1, "beside"], ["mat-raised-button", "", "type", "sumbit", "color", "primary", 1, "action-button", 3, "click"], ["mat-raised-button", "", "type", "button", "routerLink", "/login", "color", "basic", 1, "action-button"], [1, "line"], [1, "bottom"], [3, "formGroup", "ngSubmit"], [1, "inputs"], [1, "email_"], [1, "text_"], ["matInput", "", "placeholder", "name@mail.utoronto.ca", "required", "", 3, "formControl"], [1, "password"], ["matInput", "", "placeholder", "Password", "required", "", "type", "password", 3, "formControl"], [1, "login"], ["mat-raised-button", "", "type", "button", "routerLink", "/profile", "color", "primary", 1, "action-button", 3, "disabled", "click"]], template: function RetrievePasswordComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 2);
@@ -12085,7 +12085,7 @@ RetrievePasswordComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "div", 21);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "button", 22);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function RetrievePasswordComponent_Template_button_click_39_listener() { return ctx.onSubmit(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](40, " Log In ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](40, " Save New Password ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -12112,14 +12112,65 @@ RetrievePasswordComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵ
             }]
     }], function () { return [{ type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }, { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"] }]; }, null); })();
 class ResetPasswordComponent {
+    constructor(authService, snackBar) {
+        this.authService = authService;
+        this.snackBar = snackBar;
+        this.password = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
+        this.secretCode = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"]('');
+        this.passwordForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
+            password: this.password,
+            secretCode: this.secretCode,
+        });
+    }
+    onResetPassword() {
+        console.log('nice bush');
+        this.authService.updatePassword(this.password.value, this.secretCode.value);
+    }
     ngOnInit() { }
 }
-ResetPasswordComponent.ɵfac = function ResetPasswordComponent_Factory(t) { return new (t || ResetPasswordComponent)(); };
-ResetPasswordComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ResetPasswordComponent, selectors: [["app-reset-password"]], decls: 2, vars: 0, template: function ResetPasswordComponent_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Reset Me");
+ResetPasswordComponent.ɵfac = function ResetPasswordComponent_Factory(t) { return new (t || ResetPasswordComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"])); };
+ResetPasswordComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ResetPasswordComponent, selectors: [["app-reset-password"]], decls: 19, vars: 3, consts: [[1, "entire-page"], [1, "top"], ["Src", "../../assets/Pics/WhiteSquareInAppLogo.jpg", 1, "pic"], [1, "bottom"], [1, "password"], [1, "text_"], ["matInput", "", "placeholder", "Password", "required", "", "type", "password", 3, "formControl"], ["placeholder", "paste your reset code that was emailed to you", 3, "formControl"], [1, "login"], ["mat-raised-button", "", "type", "button", "color", "primary", 1, "action-button", 3, "disabled", "click"]], template: function ResetPasswordComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, styles: [_c0] });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "form");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "mat-form-field", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "New Password");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "input", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "mat-form-field", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "mat-label");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Reset Code");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "input", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "button", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ResetPasswordComponent_Template_button_click_17_listener() { return ctx.onResetPassword(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, " Save new password ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx.password);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx.secretCode);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("disabled", !ctx.passwordForm.valid);
+    } }, directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["ɵangular_packages_forms_forms_y"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatusGroup"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgForm"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__["MatFormField"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__["MatLabel"], _angular_material_input__WEBPACK_IMPORTED_MODULE_5__["MatInput"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["RequiredValidator"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControlDirective"], _angular_material_button__WEBPACK_IMPORTED_MODULE_6__["MatButton"]], styles: [_c0] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ResetPasswordComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -12127,7 +12178,7 @@ ResetPasswordComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵd
                 templateUrl: './reset-password.component.html',
                 styleUrls: ['./retrieve-password.component.scss'],
             }]
-    }], null, null); })();
+    }], function () { return [{ type: _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] }, { type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_3__["MatSnackBar"] }]; }, null); })();
 
 
 /***/ }),
@@ -12683,6 +12734,17 @@ class AuthService {
         this.snackBar.open('Check your email to reset your password', 'Will do!!');
         const authData = { email };
         this.http.post('http://localhost:3000/api/user/forgot', authData).subscribe(() => {
+        }, error => {
+            this.authStatusListener.next(false);
+        });
+    }
+    // Update Password
+    updatePassword(password, secretCode) {
+        this.router.navigate(['/login']);
+        const authData = { password, secretCode };
+        this.http.post('http://localhost:3000/api/user/reset-password', authData)
+            .subscribe(() => {
+            this.snackBar.open('Password has been changed', 'Thanks!!');
         }, error => {
             this.authStatusListener.next(false);
         });
