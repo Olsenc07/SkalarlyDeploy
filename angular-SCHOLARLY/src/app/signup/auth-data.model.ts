@@ -1,7 +1,7 @@
 export interface AuthData {
     email: string;
     username?: string;
-    password: string;
+    password?: string;
 }
 
 export interface AuthDataInfo {

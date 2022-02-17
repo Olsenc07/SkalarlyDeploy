@@ -42,6 +42,8 @@ export class AppComponent implements OnInit {
 
   isRetrievePScreen$: Observable<boolean>;
 
+  isResetPScreen$: Observable<boolean>;
+
   isMessagesScreen$: Observable<boolean>;
 
   searchBox: Element;
@@ -89,7 +91,10 @@ export class AppComponent implements OnInit {
       filter(event => event instanceof NavigationEnd),
       map((event: NavigationEnd) => event.url === '/' || event.url === '/verified')
     );
-
+    this.isResetPScreen$ = this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd),
+      map((event: NavigationEnd) => event.url === '/' || event.url === '/resetPassword')
+    );
     this.isFriendsActScreen$ = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map((event: NavigationEnd) => event.url === '/' || event.url === '/friends-activity')

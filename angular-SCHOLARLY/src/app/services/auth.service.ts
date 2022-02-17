@@ -250,4 +250,15 @@ loginFirst(email: string, password: string): any  {
                 };
             }
 
+// Reset Password
+resetPassword(email: string): any {
+    this.snackBar.open('Check your email to reset your password', 'Will do!!');
+    const authData: AuthData = { email };
+    this.http.post('http://localhost:3000/api/user/forgot', authData).subscribe(() => {
+    }, error => {
+        this.authStatusListener.next(false);
+    });
+
+}
+
 }

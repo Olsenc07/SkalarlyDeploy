@@ -12,7 +12,8 @@
 </body> -->
 
 
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" [ngClass]="((isHomeScreen$ | async) ||  (isVerifiedScreen$ | async) || (isSignUpScreen$ | async) || (isRetrievePScreen$ | async)) === true ? 'background' : 'background_' ">
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" [ngClass]="((isHomeScreen$ | async) ||  (isVerifiedScreen$ | async) || (isSignUpScreen$ | async) 
+|| (isResetPScreen$ | async) || (isRetrievePScreen$ | async)) === true ? 'background' : 'background_' ">
 
   <ng-container *ngIf="minHeight && minwidth" >
   <div class="root-container" >
@@ -22,7 +23,7 @@
 
   <div class="root-container">
     <ng-container
-      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isVerifiedScreen$ | async) || (isRetrievePScreen$ | async )) === false  ">
+      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isVerifiedScreen$ | async) || (isResetPScreen$ | async) || (isRetrievePScreen$ | async )) === false  ">
       <mat-toolbar class="header" color="primary" id="nav-bar">
         <!-- <div *ngIf=[routerLink]="['/app-home-page']" routerLinkActive=nav-bar></div> -->
         <img class="toolbar-logo" Src="../assets/Pics/ProperInAppLogo.jpeg" />
@@ -151,7 +152,7 @@
     <!-- Bottom nav bar for small screens -->
 
     <ng-container
-      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isVerifiedScreen$ | async) ||
+      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isResetPScreen$ | async) || (isVerifiedScreen$ | async) ||
       (isRetrievePScreen$ | async)) === false ">
       <mat-toolbar class="lower">
         <div class="icon-top">

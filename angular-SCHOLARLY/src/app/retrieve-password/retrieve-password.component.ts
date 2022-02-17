@@ -13,7 +13,7 @@ export class RetrievePasswordComponent implements OnInit {
   isLoading = false;
 
   password: FormControl = new FormControl('');
-  emailRetrieval: FormControl = new FormControl('', Validators.email);
+  // passwordRetrieval: FormControl = new FormControl('', Validators.email);
   email: FormControl = new FormControl('', Validators.email);
 
   loginForm = new FormGroup({
@@ -21,23 +21,14 @@ export class RetrievePasswordComponent implements OnInit {
     password: this.password,
   });
 
-  retrievalForm = new FormGroup({
-    emailRetrieval: this.emailRetrieval
-  });
   constructor(public authService: AuthService, private snackBar: MatSnackBar) { }
 
-  openSnackBar(): void {
-    this.snackBar.open('Check your email and follow steps to reset your password', 'Got It!!');
-  }
   ngOnInit(): void { }
 
   clearPassword(): void {
     this.password.setValue('');
   }
 
-  clearEmail(): void {
-    this.emailRetrieval.setValue('');
-  }
   clearEmail1(): void {
     this.email.setValue('');
   }
@@ -47,8 +38,20 @@ export class RetrievePasswordComponent implements OnInit {
     this.authService.login(this.email.value, this.password.value);
 
   }
-  onSubmit1(): void {
-    // TODO: wire up to send reset email
-    console.log(this.retrievalForm.value);
+  passwordReset(): void {
+    console.log(this.email.value);
+    this.authService.resetPassword(this.email.value);
   }
+}
+
+@Component({
+  selector: 'app-reset-password',
+  templateUrl: './reset-password.component.html',
+  styleUrls: ['./retrieve-password.component.scss'],
+})
+export class ResetPasswordComponent implements OnInit {
+
+
+  ngOnInit(): void { }
+
 }
