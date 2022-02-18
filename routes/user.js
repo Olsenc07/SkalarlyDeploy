@@ -55,6 +55,10 @@ const storage  = multer.diskStorage({
 
 // Creating user
 router.post("/signup", async(req, res, next) => {
+try{
+    const userEmail =  await User.findOne({ email: req.body.email});
+    const userName =  await User.findOne({ userName: req.body.username});
+    if(!(userEmail && userName)){
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
             const user = new User({
@@ -105,6 +109,13 @@ router.post("/signup", async(req, res, next) => {
             })
 
         });
+    }else{
+        res.status(500).json({
+            message: 'Email or Username is taken',
+        });
+        console.log('Username or email is taken!')
+    }
+}finally{}
        
 });
 
@@ -115,17 +126,19 @@ router.get('/verify-email', async(req, res, next) => {
         if (user) {
             user.emailToken = null;
             user.isVerified = true;
-            await user.save();
+            await user.save()
             res.redirect('/verified')
         }else{
             res.redirect('/sign-up')
             console.log('error', 'Invalid authentication. Please try again.' );
 
         }
-       
+    //    Runs regardless of result
     }finally {
 
     }
+
+
 })
 
 const verifyEmail = async(req, res, next) => {
@@ -159,15 +172,15 @@ router.post('/forgot', async(req, res) => {
         subject: 'Skalarly - reset password',
         text: `Hello ${user.username} we hear you forgot your password.
         Here is your reset code ${user.password} then copy and paste the link below to navigate back
-        http://${req.headers.host}/api/user/reset-password?token=${user.password}
+        http://${req.headers.host}/api/user/reset-password
         If you have recieved this email by erorr, please disregard.
         `,
         html: `
         <h2>Hello ${user.username} we hear you forgot your password.</h2>
-        <div> Here is your reset code. Copy this!! </div>
+        <div> Here is your reset code. Copy this and keep it a secret!! </div>
         ${user.password}
         <div> Now follow the below link </div>
-       <a href="http://${req.headers.host}/api/user/reset-password?token=${user.password}">Follow link</a>
+       <a href="http://${req.headers.host}/api/user/reset-password">Follow link</a>
         <div>If you have recieved this email by erorr, please disregard. </div>
         `
     }
@@ -188,14 +201,14 @@ router.post('/forgot', async(req, res) => {
 
 router.get('/reset-password', async(req, res, next) => {
  try{
-    const token = req.query.token;
-    const user = await User.findOne( {password: token});
-   console.log(user)
+    res.redirect('/resetPassword')
+    // const token = req.query.token;
+    // const user = await User.findOne( {password: token});
 
 // Check if id exists in database
-if (user){
-    res.redirect('/resetPassword')
-}
+// if (user){
+//     res.redirect('/resetPassword')
+// }
 
 
 }finally {
@@ -205,8 +218,8 @@ if (user){
 
 router.post('/reset-password', async(req, res, next) => {
     try{
-    const user = await User.findOne( {users: req.body.email});
-    const secretCode = await User.findOne({secret: req.body.secretCode} )
+    const user = await User.findOne( {email: req.body.email});
+    const secretCode = await User.findOne({secretCode: req.body.secretCode} )
     if (secretCode === user.password ){
         bcrypt.hash(req.body.password, 10)
             .then(hash => {

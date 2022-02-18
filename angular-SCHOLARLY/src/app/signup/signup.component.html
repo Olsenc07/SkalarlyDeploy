@@ -22,7 +22,7 @@
             </span>
             <mat-form-field>
               <!-- only utoronto.ca should be excepted pattern=".+@gmail\.com"  pattern=".+@mail.utoronto\.ca" -->
-              <input matInput type="email"  placeholder="School Email" pattern=".+@mail.utoronto\.ca" [formControl]="email" required />
+              <input matInput type="email"  placeholder="School Email"  [formControl]="email" required />
               <mat-error >Only U Of T emails are valid</mat-error>
               <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <mat-error *ngIf="email.errors?.email && !email.errors?.noWhiteSpace">Please enter your academic email

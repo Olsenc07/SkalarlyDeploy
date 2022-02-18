@@ -42,11 +42,16 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
     // User and their info
     createUser(email: string, username: string, password: string): any {
-        this.snackBar.open('Check your email to verify your account', 'Will do!!');
         const authData: AuthData = { email, username,  password};
         this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(() => {
+        this.snackBar.open('Check your email to verify your account', 'Will do!!');
          }, error => {
              this.authStatusListener.next(false);
+             const snackBarRef = this.snackBar.open('Email or Username is already taken -->', 'Retry!!');
+             snackBarRef.afterDismissed().subscribe(() => {
+            window.location.reload();
+            });
+
          });
     }
 
