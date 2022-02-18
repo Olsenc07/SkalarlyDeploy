@@ -35,11 +35,14 @@
     "ngx-image-cropper": "^6.1.0",
     "nikel": "^1.1.2",
     "node-fetch": "^3.2.0",
+    "node-forge": "^1.2.1",
     "nodejs-nodemailer-outlook": "^1.2.4",
     "nodemailer": "^6.7.2",
+    "nth-check": "^2.0.1",
     "postcss": "^8.4.6",
     "req-flash": "^0.0.3",
     "rxjs": "^7.4.0",
+    "url-parse": "^1.5.7",
     "uuid": "^8.3.2"
   },
   "repository": {
