@@ -164,10 +164,10 @@ router.post('/forgot', async(req, res) => {
         `,
         html: `
         <h2>Hello ${user.username} we hear you forgot your password.</h2>
-        <div> Here is your reset code </div>
+        <div> Here is your reset code. Copy this!! </div>
         ${user.password}
         <div> Now follow the below link </div>
-        <a href="http://${req.headers.host}/api/user/reset-password?token=${user.password}"></a>
+       <a href="http://${req.headers.host}/api/user/reset-password?token=${user.password}">Follow link</a>
         <div>If you have recieved this email by erorr, please disregard. </div>
         `
     }
@@ -189,18 +189,14 @@ router.post('/forgot', async(req, res) => {
 router.get('/reset-password', async(req, res, next) => {
  try{
     const token = req.query.token;
-
-   const user = await User.findOne( {password: token});
+    const user = await User.findOne( {password: token});
    console.log(user)
 
 // Check if id exists in database
 if (user){
-    res.status(500).json({
-        message: 'User id does not exist.'
-    })
+    res.redirect('/resetPassword')
 }
 
-res.redirect('/resetPassword')
 
 }finally {
 
@@ -208,14 +204,10 @@ res.redirect('/resetPassword')
 })
 
 router.post('/reset-password', async(req, res, next) => {
-    const user = await User.findOne( {users: req.body.email});
-
-    if (!secretCode == user.password ){
-        res.status(500).json({
-            message: 'This is not a valid reset code'
-        })
-    }
     try{
+    const user = await User.findOne( {users: req.body.email});
+    const secretCode = await User.findOne({secret: req.body.secretCode} )
+    if (secretCode === user.password ){
         bcrypt.hash(req.body.password, 10)
             .then(hash => {
                 user.updateOne({password: hash});
@@ -225,10 +217,13 @@ router.post('/reset-password', async(req, res, next) => {
                         result: result
                     });
             })
+            console.log(user.password)
         })
-        }finally{
-            console.log('Complete')
+        res.redirect('/sign-up')
         }
+    }finally{
+        console.log('Complete')
+    }
 })
 
 

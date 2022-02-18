@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
 
@@ -12,9 +12,12 @@ import { AuthService } from '../services/auth.service';
 export class RetrievePasswordComponent implements OnInit {
   isLoading = false;
 
-  password: FormControl = new FormControl('', Validators.email);
+  password: FormControl = new FormControl('', Validators.minLength(8));
   // passwordRetrieval: FormControl = new FormControl('', Validators.email);
   email: FormControl = new FormControl('', Validators.email);
+  emailForm = new FormGroup({
+    email: this.email,
+  });
 
   loginForm = new FormGroup({
     email: this.email,
@@ -59,7 +62,12 @@ export class ResetPasswordComponent implements OnInit {
     secretCode: this.secretCode,
 
   });
-
+  public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
+    if ((control.value as string).indexOf(' ') >= 0){
+        return {noWhiteSpace: true};
+    }
+    return null;
+}
   constructor(public authService: AuthService,
      private snackBar: MatSnackBar) { }
 
