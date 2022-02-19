@@ -3,7 +3,8 @@
 <div class="log-in-boxPop" fxLayout="column" fxLayoutAlign="center center">
     <mat-form-field class="text-input">
       <mat-label> Academic Email</mat-label>
-      <input matInput type="email" pattern=".+@mail.utoronto\.ca" [formControl]="email" required/>
+      <!-- pattern=".+@mail.utoronto\.ca" -->
+      <input matInput type="email"  [formControl]="email" required/>
       <span matSuffix class="hide"></span>
       <mat-error *ngIf="email.invalid">Please enter your academic email after verifying it!!</mat-error>
       <!-- <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"

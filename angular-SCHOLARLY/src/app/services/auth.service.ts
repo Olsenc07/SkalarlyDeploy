@@ -268,12 +268,15 @@ resetPassword(email: string): any {
 
 // Update Password
 updatePassword(password: string, secretCode: string): any {
-    this.router.navigate(['/login']);
     const authData: AuthData = { password, secretCode };
     this.http.post('http://localhost:3000/api/user/reset-password', authData)
     .subscribe(() => {
-        this.snackBar.open('Password has been changed', 'Thanks!!');
+        const snackBarRef = this.snackBar.open('Password has been changed', 'Thanks!!');
+        snackBarRef.afterDismissed().subscribe(() => {
+        this.router.navigate(['/login']);
+       });
     }, error => {
+        this.snackBar.open('Invalid reset code', 'Check your email');
         this.authStatusListener.next(false);
     });
 

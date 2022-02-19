@@ -157,9 +157,8 @@ const verifyEmail = async(req, res, next) => {
 }
 // Reset password
 router.post('/forgot', async(req, res) => {
-   const user = await User.findOne( {users: req.body.email});
-    console.log(user)
-
+    try {
+   const user = await User.findOne( {email: req.body.email});
 //    Check users existence
    if ( !user) {
       res.status(500).json({
@@ -195,7 +194,7 @@ router.post('/forgot', async(req, res) => {
             }
             
         })
-    
+} finally {}
 
 })
 
@@ -218,24 +217,22 @@ router.get('/reset-password', async(req, res, next) => {
 
 router.post('/reset-password', async(req, res, next) => {
     try{
-    const user = await User.findOne( {email: req.body.email});
     const secretCode = await User.findOne({secretCode: req.body.secretCode} )
-    if (secretCode === user.password ){
+    if (secretCode){
         bcrypt.hash(req.body.password, 10)
             .then(hash => {
-                user.updateOne({password: hash});
-                user.save().then(result => {
+                User.updateOne({password: hash})
+                .then(result => {
                     res.status(201).json({
                         message: 'Password changed successfully',
                         result: result
                     });
             })
-            console.log(user.password)
         })
-        res.redirect('/sign-up')
+        console.log('Password changed successfully');
         }
     }finally{
-        console.log('Complete')
+        // console.log('Complete')
     }
 })
 

@@ -43,7 +43,9 @@ export class RetrievePasswordComponent implements OnInit {
   }
   passwordReset(): void {
     console.log(this.email.value);
-    this.authService.resetPassword(this.email.value);
+    this.authService.resetPassword(this.email.value).then(() => {
+      this.email.setValue('');
+    });
   }
 }
 
@@ -74,7 +76,6 @@ export class ResetPasswordComponent implements OnInit {
 
 
   onResetPassword(){
-    console.log('nice bush');
     this.authService.updatePassword(this.password.value, this.secretCode.value);
   }
   ngOnInit(): void { }
