@@ -271,7 +271,7 @@ updatePassword(password: string, secretCode: string): any {
     const authData: AuthData = { password, secretCode };
     this.http.post('http://localhost:3000/api/user/reset-password', authData)
     .subscribe(() => {
-        const snackBarRef = this.snackBar.open('Password has been changed', 'Thanks!!');
+        const snackBarRef = this.snackBar.open('Password has been changed', 'Login!!');
         snackBarRef.afterDismissed().subscribe(() => {
         this.router.navigate(['/login']);
        });
