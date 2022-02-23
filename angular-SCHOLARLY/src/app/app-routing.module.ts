@@ -7,7 +7,7 @@ import { FriendsActivityComponent } from './friends-activity/friends-activity.co
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent, UserProfileComponent } from './profile/profile.component';
 import { RetrievePasswordComponent, ResetPasswordComponent } from './retrieve-password/retrieve-password.component';
 import { SearchComponent } from './search/search.component';
 import { SignupComponent, VerifiedPopUpComponent } from './signup/signup.component';
@@ -22,7 +22,8 @@ export const routingComponents = [
   PostPageComponent,
   ProfileComponent,
   EditProfileComponent,
-  VerifiedPopUpComponent
+  VerifiedPopUpComponent,
+  UserProfileComponent
 ];
 
 const routes: Routes = [
@@ -31,7 +32,8 @@ const routes: Routes = [
   { path: 'verified', component: VerifiedPopUpComponent},
   { path: 'resetPassword', component: ResetPasswordComponent},
   { path: 'post-page', component: PostPageComponent, canActivate: [AuthGuard] },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path:  'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile/:id', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'retrieve-password', component: RetrievePasswordComponent },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },

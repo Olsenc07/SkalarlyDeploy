@@ -31,16 +31,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
+    // Sign up and edit profile connections
+    profile = StoreService.profile$$;
+    Id = StoreService.userId$$;
 
 
-  // Sign up and edit profile connections
-  profile = StoreService.profile$$;
-  Id = StoreService.userId$$;
-
-
-
-  ids = StoreService.ids;
-
+    ids = StoreService.ids;
 
 
   // Course codes
@@ -123,6 +119,95 @@ export class ProfileComponent implements OnInit, OnDestroy {
       this.authListenerSubs.unsubscribe();
     }
   }
+
+
+
+
+
+/** @title Sidenav open & close behavior */
+@Component({
+  selector: 'app-userprofile',
+  templateUrl: './userProfile.component.html',
+  styleUrls: ['./profile.component.scss'],
+})
+export class UserProfileComponent implements OnInit, OnDestroy {
+
+
+  constructor(private bottomSheet: MatBottomSheet,
+              public postService: PostService,
+              private authService: AuthService) {
+    }
+  isLoading = false;
+
+  userId: string;
+  userIsAuthenticated = false;
+
+  private authListenerSubs: Subscription;
+
+
+  posts: Post[] = [];
+  private postsSub: Subscription;
+
+  infos: AuthDataInfo[] = [];
+  private infosSub: Subscription;
+
+
+  Pur_ = StoreService.Pur.length;
+  Pur = StoreService.Pur;
+
+
+  showFiller = false;
+  // TODO: initial following value would need to be loaded from database - for now, always start with false
+  following = false;
+      
+  
+
+
+    ngOnInit(): any {
+      this.isLoading = true;
+      // Info
+      this.authService.getInfo();
+      this.infosSub = this.authService.getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+      this.infos = infos;
+      this.isLoading = false;
+    });
+      // Posts
+      this.postService.getPosts();
+      this.postsSub = this.postService.getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+      this.posts = posts;
+      this.isLoading = false;
+    });
+      this.userId = this.authService.getUserId();
+      this.userIsAuthenticated = this.authService.getIsAuth();
+      this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
+        fetch(`/user/${this.userId}`);
+        console.log(this.userId);
+
+        // Can add *ngIf="userIsAuthenticated" to hide items
+      });
+  
+         // this.Com = this.Com.map(code => code.toUpperCase()).sort();
+      this.Pur = this.Pur.map(code => code.toUpperCase()).sort();
+  
+    // this.showCases = this.showCases.toString();
+      return this.Pur;
+      }
+
+
+
+    ngOnDestroy() {
+      this.postsSub.unsubscribe();
+      this.authListenerSubs.unsubscribe();
+    }
+
+}
+
 
 
 

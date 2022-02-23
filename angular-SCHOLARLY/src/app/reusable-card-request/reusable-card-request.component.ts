@@ -20,7 +20,7 @@ export class ReusableCardRequestComponent implements OnInit {
 
     isLoading = false;
 
-
+    
 
     constructor(private authService: AuthService) { }
 
@@ -61,7 +61,11 @@ export class ReusableCardRecommendationComponent implements OnInit {
     isLoading = false;
 
 
+    onOtherUser(info): any{
+    this.authService.OtherUser(info.id);
 
+        console.log(info.id);
+              }
 
 
     constructor(public storeService: StoreService, private authService: AuthService) { }

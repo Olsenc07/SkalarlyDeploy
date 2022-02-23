@@ -10,6 +10,7 @@ const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
 
 
+
 // mail sender details
 var transporter = nodemailer.createTransport({
     service: 'outlook365',
@@ -158,7 +159,7 @@ const verifyEmail = async(req, res, next) => {
 // Reset password
 router.post('/forgot', async(req, res) => {
     try {
-   const user = await User.findOne( {email: req.body.email});
+   const user = await User.findOne({email: req.body.email});
 //    Check users existence
    if ( !user) {
       res.status(500).json({
@@ -287,7 +288,9 @@ const pic = multer({ storage: storage});
 
 // userInfo recieving
 router.get("/info", (req, res, next) => {
-    UserInfo.find().then(documents => {
+    UserInfo.find()
+    // .select('-password') if i was fetching user info, dont want password passed on front end
+    .then(documents => {
     res.status(200).json({
         message: 'Infos fetched succesfully!',
         infos: documents
@@ -298,6 +301,48 @@ router.get("/info", (req, res, next) => {
             message: 'Fetching infos failed!'
         });
     });
+});
+
+
+
+
+// userInfo for going to others profile pages
+// router.post("/info/:id", async(req, res, next) => {
+//     UserInfo.findById(id).then(result => {
+
+//     })
+
+// })
+
+
+
+
+router.get("/info/:id", async(req, res, next) => {
+    try{
+
+    const id = req.query.id;
+    console.log(id);
+
+    const user = await UserInfo.findOne({ id: req.query.id})
+    // .select('-password') if i was fetching user info, dont want password passed on front end
+    .then(documents => {
+
+    res.status(200).json({
+        message: 'Info fetched succesfully!',
+        infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching info failed!'
+        });
+    });
+    // res.redirect('/profile/:id')
+
+    console.log(user);
+    } finally{
+
+    }
 });
 
 

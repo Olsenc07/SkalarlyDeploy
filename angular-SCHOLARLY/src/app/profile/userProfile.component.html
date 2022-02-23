@@ -1,0 +1,594 @@
+<div class="spinner" *ngIf="isLoading">
+  <mat-spinner ></mat-spinner>
+</div>
+
+<div *ngFor="let info of infos">
+<div class="main-content"  *ngIf="(userId === info.Creator)">
+  <!-- input pic & has this default pic before-->
+  <div class="left-side">
+
+    <div class="profile-pic" *ngIf="info.ProfilePicPath">
+      <!-- need to get croppeded value -->
+      <img class="pic" src="{{info.ProfilePicPath}}">
+      <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
+    </div>
+
+    <div class="profile-pic" *ngIf="!info.ProfilePicPath">
+      <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
+    </div>
+
+
+
+    <div class="center">
+      <div class="hide-input">
+        <div class="uNameMsg">
+
+          
+
+          <div  class="centerR_" >
+            <!-- This is hard coded once user signs up -->
+            {{info.username}}
+
+          </div>
+          <div>
+            <button class="icon" mat-icon-button routerLink="/messages">
+              <span class="material-icons">
+                chat
+              </span>
+            </button>
+          </div>
+         
+
+        
+
+
+        </div>
+        <div class="centerGD" *ngIf="info.gender || info.birthday  ">
+          <div *ngIf="info.gender">
+            <!--  Male -->
+            {{ info.gender}}
+          </div>
+          <div *ngIf="info.birthday">
+            <!-- Eventually just have the age calculated out...maybe -->
+            {{ info.birthday|date:"longDate" }}
+          </div>
+
+          <!-- <div *ngIf="date equals bd input"> <i class="material-icons icon">cake</i>
+          Happy Birthday
+          </div> -->
+
+
+        </div>
+
+      </div>
+
+      <mat-divider class="margin"></mat-divider>
+      <!-- Major/Minor -->
+      <div class="major-minor" *ngIf="info.major || info.minor ">
+        <!-- *ngIf="major.value" -->
+        <div class="centerR" *ngIf="info.major ">
+          <!-- Major -->
+          <i class="fas fa-star large">{{ info.major}}</i>
+
+        </div>
+        <div class="centerR" *ngIf="info.minor ">
+          <!-- Minor -->
+          <i class="far fa-star large">{{ info.minor}}</i>
+        </div>
+
+      </div>
+      <mat-divider class="margin" *ngIf="info.major  || info.minor">
+      </mat-divider>
+      <!-- Sport/Club -->
+      <div class="major-minor" *ngIf="info.sport  || info.club">
+        <div class=" centerR" *ngIf="info.sport ">
+          <!-- Sport -->
+          {{ info.sport}}
+        </div>
+        <div class="centerR" *ngIf="info.club ">
+          <!-- Club -->
+          {{ info.club}}
+        </div>
+
+      </div>
+      <!-- [ngClass]="sport.value & club.value  ? 'hiden' : 'margin' " -->
+      <mat-divider class="margin"></mat-divider>
+      <div class="friendsCount">
+        <div class="centerR">
+          Followers
+          <!-- Counter -->
+          <!-- {{followers}} -->
+        </div>
+        <div class="centerR">
+          Following
+          <!-- Counter -->
+          <!-- {{follow}} -->
+        </div>
+      </div>
+
+     
+    </div>
+    
+  </div>
+
+
+
+<!-- Middle -->
+<div class="middle hide">
+  
+  <!-- User-Name -->
+  <div class="top-middle">
+
+    <!-- No Bio -->
+    <!-- Pronouns Full name & age   *ngIf="fullname.value " -->
+    <div>
+      <div class="text-2">
+
+
+        <div class="fName">
+         
+          <!-- Chase Olsen -->
+          {{ info.pronouns}}
+          {{ info.name}}
+          <mat-chip-list *ngIf='userIsAuthenticated && !userId === info.Creator' class="center_" aria-label="FollowBtn">
+            <mat-chip class="messageM" (click)="followClicked()">
+    
+              {{ following ? "Unfollow" : "Follow" }}
+    
+              <!-- Switches to Unfollow btn option  -->
+    
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hide">
+    <div class="HighlightsM">
+      <!-- Hightlight Input box -->
+      <p class="text_cent" *ngIf="groups.length != 0">Highlights</p>
+      <div class="highlights-layout">
+
+        <div class="column1" *ngIf="groups.length == 0">
+          <div class="row"> No Groups Joined</div><i class="far fa-frown centerR iconEmpty"></i>
+        </div>
+
+        <div class="groups-j" *ngIf="groups.length != 0">
+          <div class="words">
+            <div class="title">
+
+              <div class="title1">Groups Joined
+            
+                <div class="counter">
+                  {{ posts.length }}</div>
+                </div>
+
+            </div>
+            <div class="groups_" [ngForOf]="posts">
+              <app-card-brief class="fit_" >
+               
+              </app-card-brief>
+            </div>
+          </div>
+        </div>
+
+        <div class="row_1">
+          <!-- This ngIf to adjust to data stroage not hard code like Pur_
+          but need to target observable length.. idk rn -->
+          <!-- <div class="column1" *ngIf=" !((profile | async)?.CodeCompleted  || (profile | async)?.filteredCodesP)"> -->
+            <!-- <div class="row"> No Courses Added</div> -->
+            <!-- <i class="far fa-frown centerR"></i> -->
+          <!-- </div> -->
+          <!-- Hidden if neither are filled in -->
+
+
+          <div [ngClass]=" ((profile | async)?.CodeCompleted) ? 'hide_' : 'completed-courses' ">
+            <div class="words1">
+              <div class="columnCourses">
+                Completed Courses
+              </div>
+              
+              <!-- Courses but need to target list length-->
+              <div class="counter" matBadgePosition="after" matBadgeOverlap="false"
+                matBadge="{{ (profile | async)?.CodeCompleted.length  }}">
+              </div>
+
+            </div>
+
+            <div class=" scroll">
+              <mat-chip-list>
+                <!-- *ngFor="let list of Com" -->
+                <div class="list">
+                  <div class="center__">
+                    <mat-chip class="style" disabled>
+                      <!-- {{list}} -->
+                      {{ (profile | async)?.CodeCompleted }}
+                    </mat-chip>
+                  </div>
+                </div>
+              </mat-chip-list>
+            </div>
+          </div>
+
+          <!-- "!((profile | async)?.CodePursuing) ? 'hide_' : 'completed-courses' " -->
+          <div [ngClass]="(profile | async)?.CodePursuing  ? 'hide_' : 'completed-courses' ">
+            <div class="words1">
+              <div class="columnCourses">
+                Pursuing Courses
+              </div>
+
+              <!-- Courses -->
+              <div class="counter" matBadgePosition="after" matBadgeOverlap="false"
+                matBadge="{{  (profile | async)?.CodePursuing.length }}"></div>
+            </div>
+            <div class="scroll">
+              <mat-chip-list>
+                <!-- *ngFor="let list of Pur" -->
+                <div class="list">
+                  <div class="center__">
+                    <mat-chip class="style" disabled>
+                      <!-- {{list}}-->
+                      {{ (profile | async)?.CodePursuing }}
+                    </mat-chip>
+                  </div>
+                </div>
+              </mat-chip-list>
+            </div>
+
+          </div>
+          <!-- </ng-container> -->
+        </div>
+      </div>
+    </div>
+    <div class="activityM">
+      <!-- Right side -->
+      <!-- Recent Posts text  -->
+      <div class="right-side" [ngForOf]="posts">
+        <mat-tab-group mat-align-tabs="center">
+          <mat-tab label="Activity">
+            <div class="column1" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">
+              <div class="row"> No Posts Made</div><span class="fas fa-ghost centerR iconEmpty"></span>
+            </div>
+            <div class="posts" *ngIf="posts.length !== 0" >
+              <app-card class="postCard" *ngIf='userIsAuthenticated && (userId === posts.Creator)'>
+              </app-card>
+            </div>
+          </mat-tab>
+          <mat-tab label="Showcase">
+            <div class="column1" *ngIf="!info.ShowCasePath">
+              <div class="row"> No Showcases Added</div> <span class="fas fa-eye-slash  centerR iconEmpty"></span>
+            </div>
+
+            <div class="showCase" *ngIf="info.ShowCasePath">
+
+
+              <div class="column">
+
+                <img class="img" src={{info.ShowCasePath}} />
+                <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
+
+              </div>
+
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  Mobile -->
+<!-- Side Info -->
+<div *ngIf="!isLoading">
+<mat-sidenav-container autosize class="side_nav_container">
+
+
+  <mat-sidenav #sidenav position="start" class="side_nav">
+
+
+    <div>
+      <button type="button" mat-icon-button (click)="sidenav.close()">
+      <i class="fas fa-angle-left"></i>
+    </button>
+    </div>
+  
+  
+
+
+
+
+    <div class="center">
+      <div class="hide-input">
+        <div class="uNameMsg">
+
+          
+
+          <div class="centerR_">
+            <!-- This is hard coded once user signs up -->
+            {{(Id |async)?.UserName}}
+
+          </div>
+          <div>
+            <button class="icon" mat-icon-button routerLink="/messages">
+              <span class="material-icons">
+                chat
+              </span>
+            </button>
+          </div>
+         
+
+        
+
+
+        </div>
+        <div class="centerGD" *ngIf="(profile | async)?.Gender.name || (profile | async )?.Birthday  ">
+          <div *ngIf="(profile | async)?.Gender.name">
+            <!--  Male -->
+            {{ (profile | async)?.Gender.name}}
+          </div>
+          <div *ngIf="(profile | async )?.Birthday">
+            <!-- Eventually just have the age calculated out...maybe -->
+            {{ (profile | async )?.Birthday|date:"longDate" }}
+          </div>
+
+          <!-- <div *ngIf="date equals bd input"> <i class="fas fa-birthday-cake icon"></i>
+          Happy Birthday
+          </div> -->
+
+
+        </div>
+
+      </div>
+
+      <mat-divider class="margin"></mat-divider>
+      <!-- Major/Minor -->
+      <div class="major-minor" *ngIf="(profile| async)?.Major || (profile| async)?.Minor ">
+        <!-- *ngIf="major.value" -->
+        <div class="centerR" *ngIf="(profile| async)?.Major ">
+          <!-- Major -->
+          <i class="fas fa-star large">{{ (profile | async)?.Major}}</i>
+
+        </div>
+        <div class="centerR" *ngIf="(profile| async)?.Minor ">
+          <!-- Minor -->
+          <i class="far fa-star large">{{ (profile | async)?.Minor}}</i>
+        </div>
+
+      </div>
+      <mat-divider class="margin" *ngIf="(profile| async)?.Major  || (profile| async)?.Minor">
+      </mat-divider>
+      <!-- Sport/Club -->
+      <div class="major-minor" *ngIf="(profile| async)?.Sport  || (profile| async)?.Club">
+        <div class=" centerR" *ngIf="(profile| async)?.Sport ">
+          <!-- Sport -->
+          {{ (profile | async)?.Sport}}
+        </div>
+        <div class="centerR" *ngIf="(profile| async)?.Club ">
+          <!-- Club -->
+          {{ (profile | async)?.Club}}
+        </div>
+
+      </div>
+      <!-- [ngClass]="sport.value & club.value  ? 'hiden' : 'margin' " -->
+      <mat-divider class="margin"></mat-divider>
+      <div class="friendsCount">
+        <div class="centerR">
+          Followers
+          <!-- Counter -->
+          <!-- {{followers}} -->
+        </div>
+        <div class="centerR">
+          Following
+          <!-- Counter -->
+          <!-- {{follow}} -->
+        </div>
+      </div>
+
+     
+    </div>
+
+
+
+
+
+
+
+
+
+  
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+  
+  <div class="middle">
+  
+
+    <!-- User-Name -->
+    <div class="top-middle">
+
+      <!-- No Bio -->
+      <!-- Pronouns Full name & age   *ngIf="fullname.value " -->
+   
+        <div class="text-2">
+
+
+          <div class="profile-pic" *ngIf="(profile | async)?.profPic">
+            <!-- need to get croppeded value -->
+            <img class="pic" src="{{(profile | async)?.profPic}}">
+            <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
+          </div>
+      
+          <div class="profile-pic" *ngIf="!(profile | async)?.profPic">
+            <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
+          </div>
+
+
+
+
+          <div class="fName">
+           
+            <!-- Chase Olsen -->
+            {{ (profile | async)?.Pronouns}}
+            {{ (profile | async)?.Name}}
+           
+          </div>
+
+        </div>
+  
+
+  
+
+    </div>
+    <div class="hideM info_btn_container">
+      <button type="button" mat-button (click)="sidenav.open()" class="info_btn">
+        More Info
+      <i class="fas fa-angle-right"></i>
+    </button>
+    <mat-chip-list class="center_" aria-label="FollowBtn">
+      <mat-chip class="messageM" (click)="followClicked()">
+
+
+        {{ following ? "Unfollow" : "Follow" }}
+
+        <!-- Switches to Unfollow btn option  -->
+
+      </mat-chip>
+    </mat-chip-list>
+    </div>
+    
+
+    <!-- MOBILE -->
+
+    <mat-tab-group dynamicHeight dynamicWidth mat-align-tabs="center" class="hideM">
+      <mat-tab label="Highlights">
+        <div class="HighlightsM">
+          <!-- Hightlight Input box -->
+          <div class="highlights-layout">
+            <div class="column1" *ngIf="groups.length == 0">
+              <div class="row"> No Groups Joined</div><i class="far fa-frown centerR iconEmpty"></i>
+            </div>
+
+            <div class="groups-j" *ngIf="groups.length != 0">
+              <div class="words">
+                <div class="title">
+                  <div class="title1">Groups Joined</div>
+
+                </div>
+                <div class="groups_">
+                  <app-card-brief class="fit_" *ngFor="let group of groups">
+                    {{group}}
+                  </app-card-brief>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row_1">
+              <div class="column1" *ngIf=" !((profile | async)?.CodeCompleted  || (profile | async)?.filteredCodesP)">
+                <div class="row"> No Courses Added</div>
+                <!-- <i class="far fa-frown centerR"></i> -->
+              </div>
+              <!-- Hidden if neither are filled in -->
+
+
+              <div [ngClass]="(profile | async)?.CodeCompleted  ?  'completed-courses': 'hide_' ">
+                <div class="words1">Completed
+
+                  <div class="counter" matBadgePosition="after" matBadgeOverlap="false"
+                    matBadge="{{(profile | async)?.CodeCompleted}}"></div>
+                </div>
+
+                <div class=" scroll">
+                  <mat-chip-list>
+                    <!-- *ngFor="let list of Com" -->
+                    <div class="list">
+                      <div class="center__">
+                        <mat-chip class="style" disabled>
+                          <!-- {{list}} -->
+                          {{ (profile | async)?.CodeCompleted}}
+                        </mat-chip>
+                      </div>
+                    </div>
+                  </mat-chip-list>
+                </div>
+
+              </div>
+              <div [ngClass]="(profile | async)?.CodePursuing ? 'completed-courses' : 'hide_' ">
+                <div class="words1">Pursuing
+                  <div class="counter" matBadgePosition="after" matBadgeOverlap="false"
+                    matBadge="{{  (profile | async)?.CodePursuing }}"></div>
+                </div>
+                <div class="scroll">
+                  <mat-chip-list>
+                    <!-- *ngFor="let list of Pur" -->
+                    <div class="list">
+                      <div class="center__">
+                        <mat-chip class="style" disabled>
+                          <!-- {{list}} -->
+                          {{ (profile | async)?.CodePursuing}}
+                        </mat-chip>
+                      </div>
+                    </div>
+                  </mat-chip-list>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Activity">
+        <div class="column1" *ngIf="posts.length == 0">
+          <div class="row"> No Posts Made</div><i class="far fa-frown centerR iconEmpty"></i>
+        </div>
+
+        <!-- Recent Posts text  -->
+        <div class="posts" *ngIf="posts.length !== 0">
+          <app-card *ngFor="let post of posts">
+            {{post}}
+          </app-card>
+        </div>
+      </mat-tab>
+      <!-- Snap shots -->
+      <mat-tab label="Showcase">
+        <div class="column1" *ngIf="!(profile|async)?.ShowCase">
+          <div class="row"> No Showcases Added</div><i class="fas fa-eye-slash centerR"></i>
+        </div>
+        <div class="showCase" *ngIf="(profile|async)?.ShowCase">
+
+          <div class="column">
+            <img class="img" src={{(profile|async)?.ShowCase}} />
+            <!-- *ngFor="let showCase of showCases" -->
+          </div>
+
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</mat-sidenav-content>
+
+ 
+</mat-sidenav-container>
+</div>

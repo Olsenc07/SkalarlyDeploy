@@ -17,11 +17,12 @@
                 </div>
 
                 <div class="column_">
-                <div class="userName textSize" >
+                
+                <button mat-button type="button" (click)="onOtherUser(info)" class="userName textSize" >
                     <!-- {{ (profile | async)?.Pronouns}} -->
                     {{ info.username}}
 
-                </div>
+                </button>
                 <div class="gender textSize" *ngIf="info.name">
                         {{info.name}}
                 </div>

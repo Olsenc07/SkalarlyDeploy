@@ -51,7 +51,7 @@ import { routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { RetrievePasswordComponent, ResetPasswordComponent } from './retrieve-password/retrieve-password.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ProfileComponent, UserProfileComponent } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { MessagingComponent } from './messaging/messaging.component';
@@ -105,6 +105,7 @@ import { ErrorInterceptor } from './error-interceptor';
     routingComponents,
     RetrievePasswordComponent,
     ProfileComponent,
+    UserProfileComponent,
     EditProfileComponent,
     GroupChatsComponent,
     MainPagesComponent,

@@ -6,7 +6,7 @@ export interface AuthData {
 }
 
 export interface AuthDataInfo {
-    Creator: string;
+    Creator?: string;
     username?: string;
     id?: string;
     name?: string;

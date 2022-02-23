@@ -6,11 +6,17 @@ import { map } from 'rxjs/operators';
 import {Router} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppRoutingModule } from '../app-routing.module';
+import { faInfo } from '@fortawesome/free-solid-svg-icons';
 
 
 
 @Injectable({ providedIn: 'root'})
 export class AuthService {
+
+
+
+
+    constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {}
 private isAuthenticated = false;
 private token: string;
 private tokenTimer: any;
@@ -19,11 +25,7 @@ private authStatusListener = new Subject<boolean>();
 
 private infos: AuthDataInfo[] = [];
 private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
-
-
-
-
-    constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {}
+        
 
     getToken(): string  {
         return this.token;
@@ -77,7 +79,6 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
         userData.append('showCase', showCase);
 
 
-
         this.http
         .post<{ message: string, post: AuthDataInfo }>('http://localhost:3000/api/user/info', userData)
         .subscribe( responseData => {
@@ -110,7 +111,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
         return this.infosUpdated.asObservable();
     }
     getInfo(): any {
-        this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/info')
+        this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/info' )
             .pipe(map((infosData) => {
                 return infosData.infos.map ( info => {
                     return {
@@ -142,6 +143,22 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
             }
 
 
+            OtherUser(info): any {
+               const ID = info;
+               console.log(info);
+            //    const authDataInfo: AuthDataInfo = { };
+               this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/info/' + ID)
+               .subscribe(() => {
+                console.log('boobies');
+               });
+
+
+
+
+            }
+
+
+
 // Login
     login(email: string, password: string): any  {
         const authData: AuthData = { email, password};
@@ -151,7 +168,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 this.token = token;
                 if (token) {
                 this.router.navigate(['/search']);
-                this.snackBar.open('Welcome fellow scholar', 'Thanks!!');
+                this.snackBar.open('Welcome Fellow Scholar!', 'Thanks');
                 const expiresInDuration = response.expiresIn;
                 this.setAuthTimer(expiresInDuration);
                 this.isAuthenticated = true;
