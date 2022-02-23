@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'verified', component: VerifiedPopUpComponent},
   { path: 'resetPassword', component: ResetPasswordComponent},
   { path: 'post-page', component: PostPageComponent, canActivate: [AuthGuard] },
-  { path:  'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'profile/:id', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'retrieve-password', component: RetrievePasswordComponent },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },

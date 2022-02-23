@@ -13674,12 +13674,12 @@ class AuthService {
         });
     }
     OtherUser(info) {
-        const ID = info;
+        const id = info;
         console.log(info);
-        //    const authDataInfo: AuthDataInfo = { };
-        this.http.get('http://localhost:3000/api/user/info/' + ID)
+        const authDataInfo = { id };
+        this.http.post('http://localhost:3000/api/user/info/' + id, authDataInfo)
             .subscribe(() => {
-            console.log('boobies');
+            console.log(id);
         });
     }
     // Login

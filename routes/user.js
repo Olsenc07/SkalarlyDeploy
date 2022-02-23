@@ -307,16 +307,21 @@ router.get("/info", (req, res, next) => {
 
 
 // userInfo for going to others profile pages
-// router.post("/info/:id", async(req, res, next) => {
-//     UserInfo.findById(id).then(result => {
+router.post("/info/:id", async(req, res, next) => {
+    // UserInfo.findById(id).then(result => {
 
-//     })
+    // })
+    const id = req.body.id;
+    res.redirect(`/profile/:${id}`)
 
-// })
+console.log('dick and balls');
+console.log(id, 'duhh');
+
+})
 
 
 
-
+// Triggered on profile/:id info page load
 router.get("/info/:id", async(req, res, next) => {
     try{
 

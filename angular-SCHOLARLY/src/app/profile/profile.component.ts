@@ -159,8 +159,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   showFiller = false;
   // TODO: initial following value would need to be loaded from database - for now, always start with false
   following = false;
-      
-  
 
 
     ngOnInit(): any {

@@ -144,12 +144,12 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
 
             OtherUser(info): any {
-               const ID = info;
+               const id = info;
                console.log(info);
-            //    const authDataInfo: AuthDataInfo = { };
-               this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/info/' + ID)
+               const authDataInfo: AuthDataInfo = { id };
+               this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/info/' + id, authDataInfo)
                .subscribe(() => {
-                console.log('boobies');
+                console.log(id);
                });
 
 
