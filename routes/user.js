@@ -8,6 +8,7 @@ const nodemailer = require('nodemailer');
 const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
+const user = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 
 
 
@@ -307,47 +308,55 @@ router.get("/info", (req, res, next) => {
 
 
 // userInfo for going to others profile pages
-router.post("/info/:id", async(req, res, next) => {
-    // UserInfo.findById(id).then(result => {
+router.get("/infos", async(req, res, next) => {
+
+    const id = req.body.id;
+    UserInfo.findById(id)
+    .then(documents => {
+        res.status(200).json({
+            message: 'Infos fetched succesfully!',
+            infos: documents
+            });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching infos failed!'
+            });
+        });
+    // const flower = await UserInfo.findById(iD).then(result => {
+    //     console.log(flower);
+        
 
     // })
-    const id = req.body.id;
-    res.redirect(`/profile/:${id}`)
 
-console.log('dick and balls');
-console.log(id, 'duhh');
-
+console.log(id, 'duhhhh');
+   
 })
 
 
 
 // Triggered on profile/:id info page load
-router.get("/info/:id", async(req, res, next) => {
-    try{
-
-    const id = req.query.id;
-    console.log(id);
-
-    const user = await UserInfo.findOne({ id: req.query.id})
-    // .select('-password') if i was fetching user info, dont want password passed on front end
+router.post("/info/:id", async(req, res, next) => {
+    const id = req.body.id;
+    UserInfo.findById(id)
     .then(documents => {
-
-    res.status(200).json({
-        message: 'Info fetched succesfully!',
-        infos: documents
+        res.status(200).json({
+            message: 'Infos fetched succesfully!',
+            infos: documents
+            });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching infos failed!'
+            });
         });
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Fetching info failed!'
-        });
-    });
-    // res.redirect('/profile/:id')
+    // const flower = await UserInfo.findById(iD).then(result => {
+    //     console.log(flower);
+        
 
-    console.log(user);
-    } finally{
+    // })
 
-    }
+console.log(id, 'duhh');
 });
 
 

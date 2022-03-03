@@ -10099,6 +10099,7 @@ class UserProfileComponent {
         this.infos = [];
         this.Pur_ = _services_store_service__WEBPACK_IMPORTED_MODULE_1__["StoreService"].Pur.length;
         this.Pur = _services_store_service__WEBPACK_IMPORTED_MODULE_1__["StoreService"].Pur;
+        this.groups = _services_store_service__WEBPACK_IMPORTED_MODULE_1__["StoreService"].Groups;
         this.showFiller = false;
         // TODO: initial following value would need to be loaded from database - for now, always start with false
         this.following = false;
@@ -10112,6 +10113,8 @@ class UserProfileComponent {
             this.infos = infos;
             this.isLoading = false;
         });
+        // Others Info
+        // this.authService.OtherUser(info);
         // Posts
         this.postService.getPosts();
         this.postsSub = this.postService.getPostUpdateListener()
@@ -13673,13 +13676,22 @@ class AuthService {
             this.infosUpdated.next([...this.infos]);
         });
     }
-    OtherUser(info) {
-        const id = info;
-        console.log(info);
+    OtherUser(Info) {
+        const id = Info;
+        console.log(Info);
         const authDataInfo = { id };
-        this.http.post('http://localhost:3000/api/user/info/' + id, authDataInfo)
-            .subscribe(() => {
-            console.log(id);
+        this.http.post('http://localhost:3000/api/user/info/:id', authDataInfo)
+            //    .pipe(map((infosData) => {
+            //        return infosData.infos.map( info => {
+            //            return {
+            //             id: info._id,
+            //            };
+            //        });
+            //        console.log(authDataInfo);
+            //    }))
+            .subscribe((data) => {
+            this.router.navigate(['profile/:id']);
+            console.log('chaz', authDataInfo);
         });
     }
     // Login

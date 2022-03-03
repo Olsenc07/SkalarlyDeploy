@@ -154,6 +154,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   Pur_ = StoreService.Pur.length;
   Pur = StoreService.Pur;
+  groups = StoreService.Groups;
+
 
 
   showFiller = false;
@@ -170,6 +172,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.infos = infos;
       this.isLoading = false;
     });
+    // Others Info
+      // this.authService.OtherUser(info);
       // Posts
       this.postService.getPosts();
       this.postsSub = this.postService.getPostUpdateListener()
@@ -184,8 +188,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
-        fetch(`/user/${this.userId}`);
-        console.log(this.userId);
+        // fetch(`/user/${this.userId}`);
+        // console.log(this.userId);
 
         // Can add *ngIf="userIsAuthenticated" to hide items
       });

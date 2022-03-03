@@ -63,9 +63,8 @@ export class ReusableCardRecommendationComponent implements OnInit {
 
     onOtherUser(info): any{
     this.authService.OtherUser(info.id);
-
-        console.log(info.id);
-              }
+    console.log(info.id);
+    }
 
 
     constructor(public storeService: StoreService, private authService: AuthService) { }
