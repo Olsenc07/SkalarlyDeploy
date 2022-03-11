@@ -306,11 +306,38 @@ router.get("/info", (req, res, next) => {
 
 
 
-
 // userInfo for going to others profile pages
+router.post("/info/:id", async(req, res, next) => {
+    const Id = req.body.id;
+    const id = await User.findOne({id: req.body.id});
+// set this users id in the url then 
+// query its value on pg load to get appropriate info
+
+
+    //  UserInfo.findById(id)
+    // .then(documents => {
+    //     res.status(200).json({
+    //         message: 'Infos fetched succesfully!',
+    //         infos: documents
+    //         });
+    //     })
+    //     .catch(error => {
+    //         res.status(500).json({
+    //             message: 'Fetching infos failed!'
+    //         });
+    //     });
+
+console.log(id, 'duhh');
+
+
+    res.redirect('/profile/id');
+
+});
+
+// Triggered on profile/:id info page load
 router.get("/infos", async(req, res, next) => {
 
-    const id = req.body.id;
+    const id = req.query.id;
     UserInfo.findById(id)
     .then(documents => {
         res.status(200).json({
@@ -333,31 +360,6 @@ console.log(id, 'duhhhh');
    
 })
 
-
-
-// Triggered on profile/:id info page load
-router.post("/info/:id", async(req, res, next) => {
-    const id = req.body.id;
-    UserInfo.findById(id)
-    .then(documents => {
-        res.status(200).json({
-            message: 'Infos fetched succesfully!',
-            infos: documents
-            });
-        })
-        .catch(error => {
-            res.status(500).json({
-                message: 'Fetching infos failed!'
-            });
-        });
-    // const flower = await UserInfo.findById(iD).then(result => {
-    //     console.log(flower);
-        
-
-    // })
-
-console.log(id, 'duhh');
-});
 
 
 // Login

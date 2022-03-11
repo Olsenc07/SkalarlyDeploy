@@ -57,12 +57,12 @@
     <!-- right -->
     <div class="right-column">
       <!-- Recents tetx -->
-      <div class="center" *ngIf="posts.length !== 0">
+      <div class="center" *ngIf="posts.length == 0">
         Recent Feed
       </div>
       <!-- <mat-divider></mat-divider> -->
       <!-- Only load in so many at a time -->
-      <div class="recents_" *ngIf="posts.length == 0">
+      <div class="recents_" *ngIf="posts.length !== 0">
         <div class="fill">
           <div class="icon-btn-fit post ">
               <button mat-button type="button" class="label_" routerLink="/post-page" color="primary"  >
@@ -75,7 +75,7 @@
       </div>
 
 
-      <div class="recents" *ngIf="posts.length !== 0" [ngForOf]="posts">
+      <div class="recents" *ngIf="posts.length == 0" [ngForOf]="posts">
 
 
 

@@ -145,25 +145,14 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
             OtherUser(Info): any {
                const id = Info;
-               console.log(Info);
                const authDataInfo: AuthDataInfo = { id };
-               this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/info/:id', authDataInfo )
-            //    .pipe(map((infosData) => {
-            //        return infosData.infos.map( info => {
-            //            return {
-            //             id: info._id,
+               console.log(authDataInfo);
+            //    this.router.navigate(['/profile/id']);
 
-            //            };
-            //        });
-            //        console.log(authDataInfo);
-            //    }))
-                .subscribe((data) => {
-                    this.router.navigate(['profile/:id']);
+               this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/info/:id', authDataInfo )
+                .subscribe(data => {
                     console.log('chaz', authDataInfo);
                 });
-
-
-
 
             }
 
