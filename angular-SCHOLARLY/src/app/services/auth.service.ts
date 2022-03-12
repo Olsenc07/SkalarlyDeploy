@@ -146,15 +146,48 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
             OtherUser(Info): any {
                const id = Info;
                const authDataInfo: AuthDataInfo = { id };
-               console.log(authDataInfo);
-            //    this.router.navigate(['/profile/id']);
-
                this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/info/:id', authDataInfo )
                 .subscribe(data => {
+                    if (data){
+                    // this.router.navigate(['/profile/:id']);
                     console.log('chaz', authDataInfo);
-                });
-
+                    }
+                }, error => {
+                        this.authStatusListener.next(false);
+                        });
             }
+
+
+            getOtherInfo(): any {
+                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/onOtherProfile' )
+                    .pipe(map((infosData) => {
+                        return infosData.infos.map ( info => {
+                            return {
+                                id: info._id,
+                                username: info.username,
+                                name: info.name,
+                                gender: info.gender,
+                                birthday: info.birthday,
+                                major: info.major,
+                                minor: info.minor,
+                                sport: info.sport,
+                                club: info.club,
+                                pronouns: info.pronouns,
+                                CodeCompleted: info.CodeCompleted,
+                                CodePursuing: info.CodePursuing,
+                                ProfilePicPath: info.ProfilePicPath,
+                                ShowCasePath: info.ShowCasePath,
+                                Creator: info.Creator,
+                            };
+                        });
+                    }))
+                        .subscribe((transformedInfos) => {
+                            this.infos = transformedInfos;
+                            this.infosUpdated.next([...this.infos]);
+        
+                        });
+                    }
+
 
 
 

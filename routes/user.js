@@ -308,58 +308,45 @@ router.get("/info", (req, res, next) => {
 
 // userInfo for going to others profile pages
 router.post("/info/:id", async(req, res, next) => {
-    const Id = req.body.id;
-    const id = await User.findOne({id: req.body.id});
-// set this users id in the url then 
-// query its value on pg load to get appropriate info
 
+    const id = await UserInfo.findOne({id: req.body.id});
+    const ID = id._id
 
-    //  UserInfo.findById(id)
-    // .then(documents => {
-    //     res.status(200).json({
-    //         message: 'Infos fetched succesfully!',
-    //         infos: documents
-    //         });
-    //     })
-    //     .catch(error => {
-    //         res.status(500).json({
-    //             message: 'Fetching infos failed!'
-    //         });
-    //     });
+res.redirect('http://localhost:3000/api/user/otherInfo' + req.body.id)
+console.log(req.body.id)
 
-console.log(id, 'duhh');
-
-
-    res.redirect('/profile/id');
+   console.log(ID)
 
 });
 
-// Triggered on profile/:id info page load
-router.get("/infos", async(req, res, next) => {
+// Redirected from the postinfo page load
+router.get("/otherInfo/:id", (req, res, next) => {
+// const id = req.params.id;
+    const Id = req.query.id;
+        console.log(Id);
+        res.redirect('/profile/:id');
+   
+ 
 
-    const id = req.query.id;
-    UserInfo.findById(id)
-    .then(documents => {
+})
+// Triggered on profile/:id info page load and actually gives the page the info
+router.get("/onOtherProfile", async(req, res, next) => {
+       await UserInfo.find()
+        // .select('-password') if i was fetching user info, dont want password passed on front end
+        .then(documents => {
         res.status(200).json({
             message: 'Infos fetched succesfully!',
             infos: documents
             });
+           
+            
         })
         .catch(error => {
             res.status(500).json({
                 message: 'Fetching infos failed!'
             });
-        });
-    // const flower = await UserInfo.findById(iD).then(result => {
-    //     console.log(flower);
-        
-
-    // })
-
-console.log(id, 'duhhhh');
-   
-})
-
+        });   
+    })
 
 
 // Login

@@ -10107,7 +10107,7 @@ class UserProfileComponent {
     ngOnInit() {
         this.isLoading = true;
         // Info
-        this.authService.getInfo();
+        this.authService.getOtherInfo();
         this.infosSub = this.authService.getInfoUpdateListener()
             .subscribe((infos) => {
             this.infos = infos;
@@ -13679,11 +13679,42 @@ class AuthService {
     OtherUser(Info) {
         const id = Info;
         const authDataInfo = { id };
-        console.log(authDataInfo);
-        //    this.router.navigate(['/profile/id']);
         this.http.post('http://localhost:3000/api/user/info/:id', authDataInfo)
             .subscribe(data => {
-            console.log('chaz', authDataInfo);
+            if (data) {
+                // this.router.navigate(['/profile/:id']);
+                console.log('chaz', authDataInfo);
+            }
+        }, error => {
+            this.authStatusListener.next(false);
+        });
+    }
+    getOtherInfo() {
+        this.http.get('http://localhost:3000/api/user/onOtherProfile')
+            .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["map"])((infosData) => {
+            return infosData.infos.map(info => {
+                return {
+                    id: info._id,
+                    username: info.username,
+                    name: info.name,
+                    gender: info.gender,
+                    birthday: info.birthday,
+                    major: info.major,
+                    minor: info.minor,
+                    sport: info.sport,
+                    club: info.club,
+                    pronouns: info.pronouns,
+                    CodeCompleted: info.CodeCompleted,
+                    CodePursuing: info.CodePursuing,
+                    ProfilePicPath: info.ProfilePicPath,
+                    ShowCasePath: info.ShowCasePath,
+                    Creator: info.Creator,
+                };
+            });
+        }))
+            .subscribe((transformedInfos) => {
+            this.infos = transformedInfos;
+            this.infosUpdated.next([...this.infos]);
         });
     }
     // Login

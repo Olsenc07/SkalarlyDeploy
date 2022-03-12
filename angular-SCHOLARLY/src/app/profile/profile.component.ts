@@ -166,7 +166,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     ngOnInit(): any {
       this.isLoading = true;
       // Info
-      this.authService.getInfo();
+      this.authService.getOtherInfo();
       this.infosSub = this.authService.getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
       this.infos = infos;
@@ -193,7 +193,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
-  
          // this.Com = this.Com.map(code => code.toUpperCase()).sort();
       this.Pur = this.Pur.map(code => code.toUpperCase()).sort();
   
