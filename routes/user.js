@@ -312,19 +312,23 @@ router.post("/info/:id", async(req, res, next) => {
     const id = await UserInfo.findOne({id: req.body.id});
     const ID = id._id
 
-res.redirect('http://localhost:3000/api/user/otherInfo' + req.body.id)
-console.log(req.body.id)
-
-   console.log(ID)
+res.redirect('http://localhost:3000/api/user/otherInfo/' + req.body.id)
+   console.log(req.body.id)
+   console.log(ID, 'wally')
+   console.log('http://localhost:3000/api/user/otherInfo/' + req.body.id)
 
 });
 
 // Redirected from the postinfo page load
 router.get("/otherInfo/:id", (req, res, next) => {
 // const id = req.params.id;
-    const Id = req.query.id;
-        console.log(Id);
-        res.redirect('/profile/:id');
+    const Id = req.params.id;
+        console.log(Id, 'donkey');
+        // window.location.href = 'profile/:id';
+
+
+        // Breaking point
+        res.redirect('http://localhost:3000/login')
    
  
 
