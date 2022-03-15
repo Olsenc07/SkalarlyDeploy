@@ -321,16 +321,11 @@ res.redirect('http://localhost:3000/api/user/otherInfo/' + req.body.id)
 
 // Redirected from the postinfo page load
 router.get("/otherInfo/:id", (req, res, next) => {
+
 // const id = req.params.id;
     const Id = req.params.id;
         console.log(Id, 'donkey');
         // window.location.href = 'profile/:id';
-
-
-        // Breaking point
-        res.redirect('http://localhost:3000/login')
-   
- 
 
 })
 // Triggered on profile/:id info page load and actually gives the page the info

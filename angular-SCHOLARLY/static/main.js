@@ -13594,7 +13594,9 @@ class AuthService {
             this.snackBar.open('Check your email to verify your account', 'Will do!!');
         }, error => {
             this.authStatusListener.next(false);
-            const snackBarRef = this.snackBar.open('Email or Username is already taken -->', 'Retry!!');
+            const snackBarRef = this.snackBar.open('Email or Username is already taken', 'Retry!!', {
+                duration: 3000
+            });
             snackBarRef.afterDismissed().subscribe(() => {
                 window.location.reload();
             });
@@ -13682,6 +13684,7 @@ class AuthService {
         this.http.post('http://localhost:3000/api/user/info/:id', authDataInfo)
             .subscribe(data => {
             if (data) {
+                this.router.navigate(['/profile']);
                 // this.router.navigate(['/profile/:id']);
                 console.log('chaz', authDataInfo);
             }
@@ -13726,7 +13729,9 @@ class AuthService {
             this.token = token;
             if (token) {
                 this.router.navigate(['/search']);
-                this.snackBar.open('Welcome Fellow Scholar!', 'Thanks');
+                this.snackBar.open('Welcome Fellow Scholar!', 'Thanks', {
+                    duration: 3000
+                });
                 const expiresInDuration = response.expiresIn;
                 this.setAuthTimer(expiresInDuration);
                 this.isAuthenticated = true;
@@ -13740,7 +13745,9 @@ class AuthService {
             }
         }, error => {
             this.authStatusListener.next(false);
-            this.snackBar.open('Failed to login. Please Try again', 'Will do!!');
+            this.snackBar.open('Failed to login. Please Try again', 'Will do!!', {
+                duration: 4000
+            });
         });
     }
     // Login first time
@@ -13752,7 +13759,9 @@ class AuthService {
             this.token = token;
             if (token) {
                 // this.router.navigate(['/search']);
-                this.snackBar.open('Welcome to the community', 'Thanks!!');
+                this.snackBar.open('Welcome to the community', 'Thanks!!', {
+                    duration: 3000
+                });
                 const expiresInDuration = response.expiresIn;
                 this.setAuthTimer(expiresInDuration);
                 this.isAuthenticated = true;
@@ -13766,7 +13775,9 @@ class AuthService {
             }
         }, error => {
             this.authStatusListener.next(false);
-            this.snackBar.open('Failed to login. Please Try again', 'Will do!!');
+            this.snackBar.open('Failed to login. Please Try again', 'Will do!!', {
+                duration: 4000
+            });
         });
     }
     autoAuthUser() {
@@ -13836,12 +13847,16 @@ class AuthService {
         const authData = { password, secretCode };
         this.http.post('http://localhost:3000/api/user/reset-password', authData)
             .subscribe(() => {
-            const snackBarRef = this.snackBar.open('Password has been changed', 'Login!!');
+            const snackBarRef = this.snackBar.open('Password has been changed', 'Login!!', {
+                duration: 2000
+            });
             snackBarRef.afterDismissed().subscribe(() => {
                 this.router.navigate(['/login']);
             });
         }, error => {
-            this.snackBar.open('Invalid reset code', 'Check your email');
+            this.snackBar.open('Invalid reset code', 'Check your email', {
+                duration: 3000
+            });
             this.authStatusListener.next(false);
         });
     }
