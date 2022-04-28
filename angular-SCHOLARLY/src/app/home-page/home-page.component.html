@@ -28,11 +28,20 @@
               <mat-icon>close</mat-icon>
             </button> -->
           </mat-form-field>
+       
           <button type="submit" mat-raised-button [disabled]="!email.valid || !password.valid"
             color="primary" class="action-button top" *ngIf="!isLoading" routerLink="/search" >
             Log In
           </button>
-          <mat-spinner *ngIf="isLoading"></mat-spinner>
+          <!-- <mat-spinner  *ngIf="isLoading"></mat-spinner> -->
+
+          <div  *ngIf="isLoading" color="primary" class="action-button top">
+                
+                  <div class="dot-pulse"></div>
+            
+              </div>
+       
+
           <button type="button" mat-button disableRipple class="forgot-password" routerLink="/retrieve-password">
             Forgot Password?
           </button>

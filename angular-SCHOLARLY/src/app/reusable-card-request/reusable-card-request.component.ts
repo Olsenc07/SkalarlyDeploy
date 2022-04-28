@@ -3,6 +3,8 @@ import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+
 
 @Component({
     selector: 'app-card-request',
@@ -20,7 +22,6 @@ export class ReusableCardRequestComponent implements OnInit {
 
     isLoading = false;
 
-    
 
     constructor(private authService: AuthService) { }
 
@@ -62,12 +63,15 @@ export class ReusableCardRecommendationComponent implements OnInit {
 
 
     onOtherUser(info): any{
-    this.authService.OtherUser(info.id);
-    console.log(info.id);
+    // this.authService.getOtherInfo();
+    this.authService.otherProfiles(info);
     }
 
 
-    constructor(public storeService: StoreService, private authService: AuthService) { }
+    constructor(public storeService: StoreService,
+                private authService: AuthService,
+                private router: Router,
+    ) { }
 
     ngOnInit() {
         this.isLoading = true;
@@ -87,5 +91,15 @@ export class ReusableCardRecommendationComponent implements OnInit {
               // Can add *ngIf="userIsAuthenticated" to hide items
             });
     }
+    navigateToPage(value: string): void {
+        this.router.navigate(['/profiles/:'], { queryParams: { user: value } });
+        this.authService.otherProfiles(value);
+        // this.authService.getOtherInfo();
+
+        // console.log(value);
+
+      }
+
+
     }
 

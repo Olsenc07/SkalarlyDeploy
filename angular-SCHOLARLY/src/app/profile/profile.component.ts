@@ -7,6 +7,7 @@ import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -135,9 +136,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   constructor(private bottomSheet: MatBottomSheet,
               public postService: PostService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private route: ActivatedRoute
+    ) {
     }
   isLoading = false;
+  user: string;
 
   userId: string;
   userIsAuthenticated = false;
@@ -165,13 +169,24 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
     ngOnInit(): any {
       this.isLoading = true;
+      this.route.queryParams.subscribe((params) => {
+        this.user = params?.user;
+        console.log(this.user, 'bunny');
+      });
+
+// Post this.user in the /:user then read that param and get info
+
       // Info
       this.authService.getOtherInfo();
       this.infosSub = this.authService.getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-      this.infos = infos;
-      this.isLoading = false;
-    });
+    .subscribe((infos: AuthDataInfo[]) => {
+    this.infos = infos;
+                        });
+    //   this.infosSub = this.authService.getInfoUpdateListener()
+    //   .subscribe((infos: AuthDataInfo[]) => {
+    //   this.infos = infos;
+    //   this.isLoading = false;
+    // });
     // Others Info
       // this.authService.OtherUser(info);
       // Posts
@@ -181,21 +196,20 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.posts = posts;
       this.isLoading = false;
     });
-      this.userId = this.authService.getUserId();
-      this.userIsAuthenticated = this.authService.getIsAuth();
-      this.authListenerSubs = this.authService
-      .getAuthStatusListener()
-      .subscribe(isAuthenticated => {
-        this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
+      // this.userId = this.authService.getUserId();
+      // this.userIsAuthenticated = this.authService.getIsAuth();
+      // this.authListenerSubs = this.authService
+      // .getAuthStatusListener()
+      // .subscribe(isAuthenticated => {
+      //   this.userIsAuthenticated = isAuthenticated;
+      //   this.userId = this.authService.getUserId();
         // fetch(`/user/${this.userId}`);
         // console.log(this.userId);
 
         // Can add *ngIf="userIsAuthenticated" to hide items
-      });
+      // });
          // this.Com = this.Com.map(code => code.toUpperCase()).sort();
       this.Pur = this.Pur.map(code => code.toUpperCase()).sort();
-  
     // this.showCases = this.showCases.toString();
       return this.Pur;
       }
@@ -204,7 +218,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
       this.postsSub.unsubscribe();
-      this.authListenerSubs.unsubscribe();
+      // this.authListenerSubs.unsubscribe();
     }
 
 }

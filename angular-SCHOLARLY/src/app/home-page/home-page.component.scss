@@ -4,6 +4,7 @@
   height: 100%;
 }
 
+
 .column {
   display: flex;
   flex-direction: column;
@@ -28,6 +29,88 @@
     justify-content: center;
   }
 }
+
+
+// Dot Pulse Loading 
+.dot-pulse {
+  display: flex;
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 9999px 0 0 -5px #ffffff;
+  animation: dotPulse 1.5s infinite linear;
+  animation-delay: .25s;
+}
+
+.dot-pulse::before, .dot-pulse::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: #ffffff;
+}
+
+.dot-pulse::before {
+  box-shadow: 9984px 0 0 -5px #ffffff;
+  animation: dotPulseBefore 1.5s infinite linear;
+  animation-delay: 0s;
+}
+
+.dot-pulse::after {
+  box-shadow: 10014px 0 0 -5px #ffffff;
+  animation: dotPulseAfter 1.5s infinite linear;
+  animation-delay: .5s;
+}
+
+@keyframes dotPulseBefore {
+  0% {
+    box-shadow: 9984px 0 0 -5px #ffffff;
+  }
+  30% {
+    box-shadow: 9984px 0 0 2px #ffffff;
+  }
+  60%,
+  100% {
+    box-shadow: 9984px 0 0 -5px #ffffff;
+  }
+}
+
+@keyframes dotPulse {
+  0% {
+    box-shadow: 9999px 0 0 -5px #ffffff;
+  }
+  30% {
+    box-shadow: 9999px 0 0 2px #ffffff;
+  }
+  60%,
+  100% {
+    box-shadow: 9999px 0 0 -5px #ffffff;
+  }
+}
+
+@keyframes dotPulseAfter {
+  0% {
+    box-shadow: 10014px 0 0 -5px #ffffff;
+  }
+  30% {
+    box-shadow: 10014px 0 0 2px #ffffff;
+  }
+  60%,
+  100% {
+    box-shadow: 10014px 0 0 -5px #ffffff;
+  }
+}
+
+
+
 @media (min-width: 500px) {
   .main-text {
     display: flex;
@@ -58,6 +141,7 @@
   display: flex;
   justify-content: center;
   border-radius: 50%;
+  border: outset;
   width: 18%;
   box-shadow: 0px 5px 10px;
 }
@@ -69,7 +153,8 @@
     // border: 1px solid gray;
     border-radius: 16px;
     margin: 0% 25% 0% 25%;
-    background-image: linear-gradient(to top right, #84b0ff, white);
+    // background-image: linear-gradient(to top right, #84b0ff, white);
+    border: inset;
     box-shadow: 0px 5px 10px;
   }
 }
@@ -97,7 +182,7 @@
 }
 
 .forgot-password {
-  margin: 8px 0;
+  margin: 4% 0% 0%;
   font-size: 16px;
   color: #7e7171;
   font-family: "Font Awesome 5 Free, ";
@@ -143,6 +228,7 @@
     margin-top: 1%;
   }
 }
+
 .space {
   width: 30vw;
 }

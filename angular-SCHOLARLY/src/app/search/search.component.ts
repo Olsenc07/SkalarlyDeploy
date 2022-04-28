@@ -106,6 +106,7 @@ export class SearchComponent implements OnInit {
 
   navigateToPage(value: string): void {
     this.router.navigate(['/main'], { queryParams: { category: value } });
+    console.log(value);
   }
 
 

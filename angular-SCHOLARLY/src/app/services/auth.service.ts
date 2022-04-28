@@ -25,7 +25,6 @@ private authStatusListener = new Subject<boolean>();
 
 private infos: AuthDataInfo[] = [];
 private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
-        
 
     getToken(): string  {
         return this.token;
@@ -132,8 +131,6 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                         ProfilePicPath: info.ProfilePicPath,
                         ShowCasePath: info.ShowCasePath,
                         Creator: info.Creator,
-
-
                     };
                 });
             }))
@@ -144,26 +141,49 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 });
             }
 
+            // Attempt at naviagting to user profile
 
-            OtherUser(Info): any {
-               const id = Info;
-               const authDataInfo: AuthDataInfo = { id };
-               this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/info/:id', authDataInfo )
+            // OtherUser(Info): any {
+            //    const id = Info;
+            //    const authDataInfo: AuthDataInfo = { id };
+            //    this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/otherInfo', authDataInfo )
+            //     .subscribe(data => {
+            //     }, error => {
+            //             this.authStatusListener.next(false);
+            //             });
+            // }
+
+
+            // Attempt at naviagting to user profile
+            // otherProfiles(info: string): any {
+            //    const username = info;
+            //    console.log('tities', username);
+
+            //    const authDataInfo: AuthDataInfo = { username };
+            //    this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/otherInfo', authDataInfo )
+            //    .subscribe(data => {
+            //     }, error => {
+            //             this.authStatusListener.next(false);
+            //             });
+            // }
+
+            otherProfiles(info: string): any {
+                const username = info;
+                console.log('tities', username);
+ 
+                const authDataInfo: AuthDataInfo = { username };
+                this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/otherInfo/' + username, authDataInfo )
                 .subscribe(data => {
-                    if (data){
-                            this.router.navigate(['/profile']);
+                 }, error => {
+                         this.authStatusListener.next(false);
+                         });
+                console.log('http://localhost:3000/api/user/otherInfo/' + username);
 
-                    // this.router.navigate(['/profile/:id']);
-                    console.log('chaz', authDataInfo);
-                    }
-                }, error => {
-                        this.authStatusListener.next(false);
-                        });
-            }
+             }
 
 
             getOtherInfo(): any {
-                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/onOtherProfile' )
+                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/profiles/:user' )
                     .pipe(map((infosData) => {
                         return infosData.infos.map ( info => {
                             return {
@@ -186,9 +206,8 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                         });
                     }))
                         .subscribe((transformedInfos) => {
-                            this.infos = transformedInfos;
+                            // this.infos = transformedInfos;
                             this.infosUpdated.next([...this.infos]);
-        
                         });
                     }
 

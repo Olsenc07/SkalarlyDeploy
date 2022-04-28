@@ -307,44 +307,90 @@ router.get("/info", (req, res, next) => {
 
 
 // userInfo for going to others profile pages
-router.post("/info/:id", async(req, res, next) => {
+router.post("/otherInfo/:username", async(req, res, next) => {
+    const userName = await UserInfo.findOne({userName: req.params.username});
+    // const user = User.find({userName});
+    // const userName = UserInfo.find({username: req.body.username});
+    // const ID = id._id
+    console.log('hey this is post route', );
+    // console.log('howdy', userName);
+    // console.log('britt', idHey);
 
-    const id = await UserInfo.findOne({id: req.body.id});
-    const ID = id._id
 
-res.redirect('http://localhost:3000/api/user/otherInfo/' + req.body.id)
-   console.log(req.body.id)
-   console.log(ID, 'wally')
-   console.log('http://localhost:3000/api/user/otherInfo/' + req.body.id)
 
+    // console.log(ID, 'wally')
+    // console.log('http://localhost:3000/api/user/onOtherProfile/' + user)
+    // console.log('http://localhost:3000/api/user/onOtherProfile/' + idHey)
+
+// res.redirect('http://localhost:3000/api/user/onOtherProfile/' + req.body.id)
+   
 });
 
 // Redirected from the postinfo page load
-router.get("/otherInfo/:id", (req, res, next) => {
+// router.get("/otherInfo/:id", async(req, res, next) => {
+//     UserInfo.find()
+//     // .select('-password') if i was fetching user info, dont want password passed on front end
+//     .then(documents => {
+//     res.status(200).json({
+//         message: 'Infos fetched succesfully!',
+//         infos: documents
+//         });
+//     })
+//     .catch(error => {
+//         res.status(500).json({
+//             message: 'Fetching infos failed!'
+//         });
+//     });
 
 // const id = req.params.id;
-    const Id = req.params.id;
-        console.log(Id, 'donkey');
-        // window.location.href = 'profile/:id';
+//     const Id = req.params.id;
+//         console.log(Id, 'donkey');
+//         // window.location.href = 'profile/:id';
 
-})
+// })
+
 // Triggered on profile/:id info page load and actually gives the page the info
-router.get("/onOtherProfile", async(req, res, next) => {
-       await UserInfo.find()
+router.get("/profiles/:user", (req, res, next) => {
+    // Testing how send works and if we can skip the post step
+    // want it to grab the param value, not :user as a string
+
+
+    const Uname = req.params.user;
+    
+    const userName = UserInfo.findOne({ username: Uname})
+
+console.log('LOVE', Uname)
+
+
+    // UserInfo.find()
+    // .then(documents => {
+    //     res.status(200).json({
+    //         message: 'Infos fetched succesfully!',
+    //         infos: documents
+    //         });
+    //     })
+    //     .catch(error => {
+    //         res.status(500).json({
+    //             message: 'Fetching infos failed!'
+    //         });
+    //     });
+
+    // Undefined but is getting to this path
+
+//    keaton = UserInfo.findOne({username: req.params.username})
         // .select('-password') if i was fetching user info, dont want password passed on front end
-        .then(documents => {
-        res.status(200).json({
-            message: 'Infos fetched succesfully!',
-            infos: documents
-            });
-           
-            
-        })
-        .catch(error => {
-            res.status(500).json({
-                message: 'Fetching infos failed!'
-            });
-        });   
+        // .then(documents => {
+        // res.status(200).json({
+        //     message: 'Infos fetched succesfully!',
+        //     infos: documents
+        //     });   
+        // })
+        // .catch(error => {
+        //     res.status(500).json({
+        //         message: 'Fetching infos failed!'
+        //     });
+        // });  
+        // console.log(keaton)
     })
 
 
