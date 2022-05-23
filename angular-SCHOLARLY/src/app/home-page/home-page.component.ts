@@ -12,11 +12,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit, OnDestroy {
+
+  constructor(public authService: AuthService, private snackBar: MatSnackBar, private router: Router)
+  { }
   email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
   isLoading = false;
   private authStatusSub: Subscription;
+
+visible = true;
+
 
 
   loginForm = new FormGroup({
@@ -24,8 +30,19 @@ export class HomePageComponent implements OnInit, OnDestroy {
     password: this.password,
   });
 
-  constructor(public authService: AuthService, private snackBar: MatSnackBar, private router: Router)
-  { }
+
+
+toggleVisibilty(): any {
+ const c = document.getElementById('passwordType');
+ console.log(typeof c);
+ if (c.getAttribute('type') === 'password'){
+  c.setAttribute('passwordType', 'text');
+ }else {
+  c.setAttribute('passwordType', 'password');
+}
+ this.visible = !this.visible;
+
+}
 
   ngOnInit(): void {
     this.authStatusSub = this.authService.getAuthStatusListener().subscribe(

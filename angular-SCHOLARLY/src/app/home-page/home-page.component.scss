@@ -180,6 +180,10 @@
     box-shadow: 0px 5px 10px;
   }
 }
+.loginBtn{
+  display: flex;
+  position: fixed;
+}
 
 .forgot-password {
   margin: 4% 0% 0%;
@@ -228,7 +232,12 @@
     margin-top: 1%;
   }
 }
-
+.row_{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
 .space {
   width: 30vw;
 }
+

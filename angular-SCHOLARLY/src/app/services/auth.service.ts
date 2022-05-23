@@ -167,8 +167,8 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
             //             });
             // }
 
-            otherProfiles(info: string): any {
-                const username = info;
+            otherProfiles(value: string): any {
+                const username = value;
                 console.log('tities', username);
  
                 const authDataInfo: AuthDataInfo = { username };
@@ -183,7 +183,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
 
             getOtherInfo(): any {
-                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/profiles/:user' )
+                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/profiles' )
                     .pipe(map((infosData) => {
                         return infosData.infos.map ( info => {
                             return {

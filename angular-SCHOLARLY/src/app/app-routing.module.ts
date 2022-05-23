@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'resetPassword', component: ResetPasswordComponent},
   { path: 'post-page', component: PostPageComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'profiles/:', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'profiles', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'retrieve-password', component: RetrievePasswordComponent },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },

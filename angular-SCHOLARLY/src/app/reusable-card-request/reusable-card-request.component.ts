@@ -92,11 +92,14 @@ export class ReusableCardRecommendationComponent implements OnInit {
             });
     }
     navigateToPage(value: string): void {
-        this.router.navigate(['/profiles/:'], { queryParams: { user: value } });
-        this.authService.otherProfiles(value);
-        // this.authService.getOtherInfo();
+        this.router.navigate(['/profiles'],
+        { queryParams: { user: value } });
+  
+        console.log(window.location.search);
+        this.authService.getOtherInfo();
 
         // console.log(value);
+        // this.authService.otherProfiles(value);
 
       }
 

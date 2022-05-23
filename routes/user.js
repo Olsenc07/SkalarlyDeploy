@@ -349,48 +349,16 @@ router.post("/otherInfo/:username", async(req, res, next) => {
 
 // })
 
-// Triggered on profile/:id info page load and actually gives the page the info
-router.get("/profiles/:user", (req, res, next) => {
-    // Testing how send works and if we can skip the post step
-    // want it to grab the param value, not :user as a string
+// Get user
+router.get("/profiles/:id", async (req, res, next) => {
+    try{
+        const user = await User.findById(req.params.id);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 
 
-    const Uname = req.params.user;
-    
-    const userName = UserInfo.findOne({ username: Uname})
 
-console.log('LOVE', Uname)
-
-
-    // UserInfo.find()
-    // .then(documents => {
-    //     res.status(200).json({
-    //         message: 'Infos fetched succesfully!',
-    //         infos: documents
-    //         });
-    //     })
-    //     .catch(error => {
-    //         res.status(500).json({
-    //             message: 'Fetching infos failed!'
-    //         });
-    //     });
-
-    // Undefined but is getting to this path
-
-//    keaton = UserInfo.findOne({username: req.params.username})
-        // .select('-password') if i was fetching user info, dont want password passed on front end
-        // .then(documents => {
-        // res.status(200).json({
-        //     message: 'Infos fetched succesfully!',
-        //     infos: documents
-        //     });   
-        // })
-        // .catch(error => {
-        //     res.status(500).json({
-        //         message: 'Fetching infos failed!'
-        //     });
-        // });  
-        // console.log(keaton)
     })
 
 
