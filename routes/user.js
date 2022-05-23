@@ -367,19 +367,19 @@ router.post("/login", verifyEmail, (reg, res, next) => {
     let fetchedUser;
     User.findOne({ email: reg.body.email })
         .then(user => {
-            if (!user) {
-                return res.status(401).json({
-                    message: "Authentication failed "
-                });
-            }
+            // if (!user) {
+            //     return res.status(401).json({
+            //         message: "Authentication failed "
+            //     });
+            // }
             fetchedUser = user;
             return bcrypt.compare(reg.body.password, user.password)
         })
         .then(result => {
             if (!result) {
-                return res.status(401).json({
-                    message: "Authentication failed "
-                });
+                // return res.status(401).json({
+                //     message: "Authentication failed "
+                // });
             }
             const token = jwt.sign(
                 { email: fetchedUser.email, userId: fetchedUser._id },

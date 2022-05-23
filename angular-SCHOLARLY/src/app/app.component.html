@@ -73,12 +73,11 @@
           <!-- End -->
           <div class="icon-top">
             <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/search" class="a_up">
+              <button  mat-icon-button type="button" routerLink="/search" class="a_up"
+              [ngClass]="router?.url === '/search' 
+                ? 'PublicOn' : 'public' ">
 
-                <mat-icon  [ngClass]="router?.url === '/search' 
-                ? 'PublicOn' : 'public' "
-            
-               >public</mat-icon>
+               <i class="fa-regular fa-book-atlas"></i>
               </button>
             </div>
 
@@ -91,7 +90,7 @@
             <div class="icon-btn-fit">
               <button  mat-icon-button type="button" routerLink="/post-page" class="a_up" [ngClass]="router?.url === '/post-page' 
               ? 'PostOn' : 'post' ">
-                <i class="fa-duotone fa-wand-sparkles" ></i>
+                <i class="fa-solid fa-wand-sparkles" ></i>
               </button>
             </div>
 
@@ -108,7 +107,7 @@
               <button  mat-icon-button type="button" routerLink="/profile" class="a_up"
               [ngClass]="router?.url === '/profile' 
             ? 'ProfileOn' : 'profile'">
-                <i class="fa-duotone fa-hat-wizard" ></i>
+                <i class="fa-solid fa-hat-wizard" ></i>
               </button>
             </div>
 

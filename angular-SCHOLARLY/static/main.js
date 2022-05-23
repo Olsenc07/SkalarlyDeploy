@@ -5388,31 +5388,29 @@ class ErrorComponent {
     }
 }
 ErrorComponent.ɵfac = function ErrorComponent_Factory(t) { return new (t || ErrorComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"])); };
-ErrorComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ErrorComponent, selectors: [["ng-component"]], decls: 13, vars: 1, consts: [[1, "entirePage"], [1, "columnC"], ["mat-card-title", ""], [1, "material-icons-two-tone"], ["mat-dialog-content", ""], ["mat-dialog-actions", "", 1, "center"], ["mat-raised-button", "", "color", "primary", "mat-dialog-close", ""]], template: function ErrorComponent_Template(rf, ctx) { if (rf & 1) {
+ErrorComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ErrorComponent, selectors: [["ng-component"]], decls: 12, vars: 1, consts: [[1, "entirePage"], [1, "columnC"], ["mat-card-title", ""], [1, "fa-duotone", "fa-book-skull"], ["mat-dialog-content", ""], ["mat-dialog-actions", "", 1, "center"], ["mat-raised-button", "", "color", "primary", "mat-dialog-close", ""]], template: function ErrorComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Aw Shucks! ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Cursid! ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " sentiment_dissatisfied\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "i", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "div");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "button", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12, "Try again");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "button", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Try again");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.data.message);
     } }, directives: [_angular_material_card__WEBPACK_IMPORTED_MODULE_2__["MatCardTitle"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogContent"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogActions"], _angular_material_button__WEBPACK_IMPORTED_MODULE_3__["MatButton"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogClose"]], styles: [".center[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n}\n\n.columnC[_ngcontent-%COMP%] {\n  display: flex;\n  justify-content: center;\n  flex-direction: column;\n  text-align: center;\n}\n\n.entirePage[_ngcontent-%COMP%] {\n  display: flex;\n  flex-direction: column;\n  font-family: \"Font Awesome 5 Free\";\n}\n\n  .mat-dialog-title {\n  font-family: \"Font Awesome 5 Free\";\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL2Vycm9yLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxhQUFBO0VBQ0EsdUJBQUE7RUFDQSxzQkFBQTtFQUNBLGtCQUFBO0FBRUY7O0FBQ0E7RUFDRSxhQUFBO0VBQ0Esc0JBQUE7RUFDQSxrQ0FBQTtBQUVGOztBQUFBO0VBQ0Usa0NBQUE7QUFHRiIsImZpbGUiOiJlcnJvci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jZW50ZXIge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cbi5jb2x1bW5DIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmVudGlyZVBhZ2Uge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBmb250LWZhbWlseTogXCJGb250IEF3ZXNvbWUgNSBGcmVlXCI7XG59XG46Om5nLWRlZXAgLm1hdC1kaWFsb2ctdGl0bGV7XG4gIGZvbnQtZmFtaWx5OiAnRm9udCBBd2Vzb21lIDUgRnJlZSc7XG59Il19 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ErrorComponent, [{
@@ -7453,7 +7451,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AppComponent_ng_container_6_ng_container_4_mat_option_20_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-option", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-option", 40);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -7501,37 +7499,35 @@ function AppComponent_ng_container_6_ng_container_4_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "div", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "div", 29);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](24, "button", 30);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "mat-icon", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "public");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](25, "i", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](26, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "button", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "mat-icon", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](29, "groups");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](28, "button", 31);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](29, "mat-icon", 16);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](30, "groups");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "button", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](32, "i", 34);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "button", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](35, "span", 36);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](36, "div", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "button", 37);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](38, "i", 38);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](31, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "button", 32);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](33, "i", 33);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](34, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](35, "button", 34);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](36, "span", 35);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](37, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](38, "button", 36);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](39, "i", 37);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "button", 38);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](41, "mat-icon", 21);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](42, "settings");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](39, "button", 39);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](40, "mat-icon", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](41, "settings");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -7553,7 +7549,7 @@ function AppComponent_ng_container_6_ng_container_4_Template(rf, ctx) { if (rf &
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("formControl", ctx_r2.search);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("cdkVirtualForOf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](21, 12, ctx_r2.filteredSearch));
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", (ctx_r2.router == null ? null : ctx_r2.router.url) === "/search" ? "PublicOn" : "public");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", (ctx_r2.router == null ? null : ctx_r2.router.url) === "/friends-activity" ? "GroupsOn" : "groups");
@@ -7568,36 +7564,36 @@ function AppComponent_ng_container_6_ng_container_4_Template(rf, ctx) { if (rf &
 } }
 function AppComponent_ng_container_6_ng_container_26_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-toolbar", 40);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-toolbar", 41);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 28);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "button", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "button", 42);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "mat-icon", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "public");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "button", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "button", 32);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "mat-icon", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "groups");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 41);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 43);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "mat-icon", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "add_circle");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "button", 34);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "i", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "button", 35);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "i", 36);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 29);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "button", 42);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "button", 44);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "mat-icon", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "account_circle");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -7631,7 +7627,7 @@ function AppComponent_ng_container_6_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "router-outlet");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, AppComponent_ng_container_6_ng_container_4_Template, 43, 14, "ng-container", 1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](4, AppComponent_ng_container_6_ng_container_4_Template, 42, 14, "ng-container", 1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](5, "async");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](6, "async");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](7, "async");
@@ -7681,9 +7677,9 @@ function AppComponent_ng_container_6_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](33, 23, ctx_r0.isHomeScreen$) === false);
 } }
 function AppComponent_ng_container_7_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0, 43);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 44);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](0, 45);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 46);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 47);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, " Display isn't supported on this screen size.\n");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -7756,7 +7752,7 @@ class AppComponent {
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"])); };
-AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 8, vars: 14, consts: [[3, "formGroup", "ngClass", "ngSubmit"], [4, "ngIf"], ["class", "allBox", 4, "ngIf"], [1, "root-container"], ["settingsMenu", "matMenu"], ["mat-menu-item", "", "type", "button", "routerLink", "/retrieve-password", 1, "look-nice", 2, "border-bottom", "solid #c6c9ea"], [1, "material-icons", "d_settings", 2, "color", "burlywood"], ["mat-menu-item", "", "type", "button", "routerLink", "/edit-profile", 1, "look-nice", 2, "border-bottom", "solid #c6c9ea"], [1, "material-icons", "d_settings", 2, "color", "cadetblue"], ["mat-menu-item", "", "type", "button", 1, "look-nice", 3, "click"], [1, "material-icons", "d_settings", 2, "color", "darkcyan"], [1, "main-content"], ["color", "primary", "id", "nav-bar", 1, "header"], ["Src", "../assets/Pics/ProperInAppLogo.jpeg", 1, "toolbar-logo"], [1, "fill-space"], [1, "small-icons"], [3, "ngClass"], ["mat-icon-button", "", "type", "button", 3, "click"], [1, "material-icons", 3, "ngClass"], ["placeholder", "Search Fellow Scholars", 1, "standard", 3, "ngClass"], ["mat-icon-button", "", "type", "button", 1, "lowerSettings", 3, "matMenuTriggerFor"], [1, "settings"], [1, "large-screen-icons"], [1, "search-box"], [1, "material-icons", "search-box__icon"], ["matInput", "", "type", "search", "placeholder", "Search Fellow Scholars", 1, "search-box__input", 3, "formControl"], ["itemSize", "10"], [3, "value", 4, "cdkVirtualFor", "cdkVirtualForOf"], [1, "icon-top"], [1, "icon-btn-fit"], ["mat-icon-button", "", "type", "button", "routerLink", "/search", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/friends-activity", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/post-page", 1, "a_up", 3, "ngClass"], [1, "fa-duotone", "fa-wand-sparkles"], ["mat-icon-button", "", "type", "button", "routerLink", "/messages", 1, "a_up"], [1, "far", "fa-comment-dots", 3, "ngClass"], ["mat-icon-button", "", "type", "button", "routerLink", "/profile", 1, "a_up", 3, "ngClass"], [1, "fa-solid", "fa-hat-wizard"], ["mat-icon-button", "", "type", "button", 1, "b_up", 3, "matMenuTriggerFor"], [3, "value"], [1, "lower"], ["mat-icon-button", "", "type", "button", "routerLink", "/post-page", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/profile", 1, "a_up"], [1, "allBox"], [1, "Text1box"], [1, "Text1"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
+AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AppComponent, selectors: [["app-root"]], decls: 8, vars: 14, consts: [[3, "formGroup", "ngClass", "ngSubmit"], [4, "ngIf"], ["class", "allBox", 4, "ngIf"], [1, "root-container"], ["settingsMenu", "matMenu"], ["mat-menu-item", "", "type", "button", "routerLink", "/retrieve-password", 1, "look-nice", 2, "border-bottom", "solid #c6c9ea"], [1, "material-icons", "d_settings", 2, "color", "burlywood"], ["mat-menu-item", "", "type", "button", "routerLink", "/edit-profile", 1, "look-nice", 2, "border-bottom", "solid #c6c9ea"], [1, "material-icons", "d_settings", 2, "color", "cadetblue"], ["mat-menu-item", "", "type", "button", 1, "look-nice", 3, "click"], [1, "material-icons", "d_settings", 2, "color", "darkcyan"], [1, "main-content"], ["color", "primary", "id", "nav-bar", 1, "header"], ["Src", "../assets/Pics/ProperInAppLogo.jpeg", 1, "toolbar-logo"], [1, "fill-space"], [1, "small-icons"], [3, "ngClass"], ["mat-icon-button", "", "type", "button", 3, "click"], [1, "material-icons", 3, "ngClass"], ["placeholder", "Search Fellow Scholars", 1, "standard", 3, "ngClass"], ["mat-icon-button", "", "type", "button", 1, "lowerSettings", 3, "matMenuTriggerFor"], [1, "settings"], [1, "large-screen-icons"], [1, "search-box"], [1, "material-icons", "search-box__icon"], ["matInput", "", "type", "search", "placeholder", "Search Fellow Scholars", 1, "search-box__input", 3, "formControl"], ["itemSize", "10"], [3, "value", 4, "cdkVirtualFor", "cdkVirtualForOf"], [1, "icon-top"], [1, "icon-btn-fit"], ["mat-icon-button", "", "type", "button", "routerLink", "/search", 1, "a_up", 3, "ngClass"], [1, "fa-regular", "fa-book-atlas"], ["mat-icon-button", "", "type", "button", "routerLink", "/friends-activity", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/post-page", 1, "a_up", 3, "ngClass"], [1, "fa-solid", "fa-wand-sparkles"], ["mat-icon-button", "", "type", "button", "routerLink", "/messages", 1, "a_up"], [1, "far", "fa-comment-dots", 3, "ngClass"], ["mat-icon-button", "", "type", "button", "routerLink", "/profile", 1, "a_up", 3, "ngClass"], [1, "fa-solid", "fa-hat-wizard"], ["mat-icon-button", "", "type", "button", 1, "b_up", 3, "matMenuTriggerFor"], [3, "value"], [1, "lower"], ["mat-icon-button", "", "type", "button", "routerLink", "/search", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/post-page", 1, "a_up"], ["mat-icon-button", "", "type", "button", "routerLink", "/profile", 1, "a_up"], [1, "allBox"], [1, "Text1box"], [1, "Text1"]], template: function AppComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngSubmit", function AppComponent_Template_form_ngSubmit_0_listener() { return ctx.onSubmit(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](1, "async");
