@@ -89,9 +89,9 @@
               </button>
             </div>
             <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/post-page" class="a_up">
-                <mat-icon [ngClass]="router?.url === '/post-page' 
-                ? 'PostOn' : 'post' ">add_circle</mat-icon>
+              <button  mat-icon-button type="button" routerLink="/post-page" class="a_up" [ngClass]="router?.url === '/post-page' 
+              ? 'PostOn' : 'post' ">
+                <i class="fa-duotone fa-wand-sparkles" ></i>
               </button>
             </div>
 
@@ -105,9 +105,10 @@
             </div>
 
             <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/profile" class="a_up">
-                <mat-icon [ngClass]="router?.url === '/profile' 
-            ? 'ProfileOn' : 'profile'">account_circle</mat-icon>
+              <button  mat-icon-button type="button" routerLink="/profile" class="a_up"
+              [ngClass]="router?.url === '/profile' 
+            ? 'ProfileOn' : 'profile'">
+                <i class="fa-duotone fa-hat-wizard" ></i>
               </button>
             </div>
 

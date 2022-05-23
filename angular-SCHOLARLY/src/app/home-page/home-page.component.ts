@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   isLoading = false;
   private authStatusSub: Subscription;
 
-visible = true;
+  visible = true;
 
 
 
@@ -33,9 +33,9 @@ visible = true;
 
 
 toggleVisibilty(): any {
- const c = document.getElementById('passwordType');
+const c = (document.getElementById('passwordType') as  HTMLInputElement);
  console.log(typeof c);
- if (c.getAttribute('type') === 'password'){
+if (c.getAttribute('type') === 'password'){
   c.setAttribute('passwordType', 'text');
  }else {
   c.setAttribute('passwordType', 'password');
