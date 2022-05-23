@@ -223,7 +223,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 this.token = token;
                 if (token) {
                 this.router.navigate(['/search']);
-                this.snackBar.open('Welcome Fellow Scholar!', 'Thanks', {
+                this.snackBar.open('Welcome Fellow Skalar!', 'Thanks', {
                     duration: 3000
                 });
                 const expiresInDuration = response.expiresIn;
@@ -239,9 +239,9 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 }
                 }, error => {
                     this.authStatusListener.next(false);
-                    this.snackBar.open('Failed to login. Please Try again', 'Will do!!', {
-                        duration: 4000
-                    });
+                    // this.snackBar.open('Failed to login, please try again', 'Will do!!', {
+                    //     duration: 4000
+                    // });
                  });
             }
 
