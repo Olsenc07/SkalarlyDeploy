@@ -5,7 +5,7 @@
   justify-content: center;
 }
 .background {
-  background: linear-gradient(225deg, #6ca2d9, #e2eaed, #6ca2d9);
+  // background: linear-gradient(225deg, #6ca2d9, #e2eaed, #6ca2d9);
   height: 100%;
 }
 
@@ -46,8 +46,9 @@ $box-shadow-color: rgba(0, 0, 0, 0.25);
   height: 100%;
 }
 ::ng-deep.mat-dialog-container {
-  background: linear-gradient(225deg, #6ca2d9, #e2eaed, #6ca2d9);
+  // background: linear-gradient(225deg, #6ca2d9, #e2eaed, #6ca2d9);
   height: 100%;
+  background-color: #ffffff;
 }
 .material-icons {
   color: white;
