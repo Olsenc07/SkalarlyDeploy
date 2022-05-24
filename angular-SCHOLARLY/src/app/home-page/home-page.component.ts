@@ -34,15 +34,20 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
 toggleVisibilty(): any {
 const c = (document.getElementById('passwordType') as  HTMLInputElement);
- console.log(typeof c);
-if (c.getAttribute('type') === 'password'){
-  c.setAttribute('passwordType', 'text');
- }else {
-  c.setAttribute('passwordType', 'password');
-}
- this.visible = !this.visible;
+
+c.type = 'text';
+this.visible = !this.visible;
 
 }
+
+toggleVisibilty_(): any {
+  const c = (document.getElementById('passwordType') as  HTMLInputElement);
+
+  c.type = 'password';
+  this.visible = !this.visible;
+
+  }
+
 
   ngOnInit(): void {
     this.authStatusSub = this.authService.getAuthStatusListener().subscribe(

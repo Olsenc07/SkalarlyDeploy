@@ -32,11 +32,14 @@
    
           </mat-form-field>
            
-            <button mat-icon-button type="button" (click)="toggleVisibilty()" >
-              <mat-icon class="material-symbols-sharp" *ngIf="!visible">visibility</mat-icon>
-              <mat-icon class="material-symbols-sharp" *ngIf="visible">visibility_off</mat-icon>
-              </button>
+            <button mat-icon-button type="button" *ngIf="visible" (click)="toggleVisibilty()" >
+              <mat-icon class="material-symbols-sharp" >visibility</mat-icon>
+            </button>
+            <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()" >
+              <mat-icon class="material-symbols-sharp" >visibility_off</mat-icon>
+            </button>
             
+
         </div>
 
           <!-- <div class="loginBtn"> -->
