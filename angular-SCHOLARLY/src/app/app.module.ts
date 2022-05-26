@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Location } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -134,7 +136,9 @@ import { ErrorInterceptor } from './error-interceptor';
     ErrorComponent,
     LoginPopUpComponent,
     VerifiedPopUpComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -176,7 +180,8 @@ import { ErrorInterceptor } from './error-interceptor';
     MatExpansionModule,
     MatSnackBarModule,
     ScrollingModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    Location
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SearchListService, PostService, ClassListService, StoreService, AuthService,

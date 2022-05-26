@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { Location } from '@angular/common';
+
 
 
 @Component({
@@ -24,24 +26,30 @@ export class RetrievePasswordComponent implements OnInit {
     password: this.password,
   });
 
-  constructor(public authService: AuthService, private snackBar: MatSnackBar) { }
+  constructor(public authService: AuthService, private snackBar: MatSnackBar,
+              private location: Location) { }
 
   ngOnInit(): void { }
 
-  clearPassword(): void {
+
+  backButton() {
+this.location.back();
+  }
+
+clearPassword(): void {
     this.password.setValue('');
   }
 
-  clearEmail1(): void {
+clearEmail1(): void {
     this.email.setValue('');
   }
-  onSubmit(): void {
+onSubmit(): void {
     console.log(this.loginForm.value);
     this.isLoading = true;
     this.authService.login(this.email.value, this.password.value);
 
   }
-  passwordReset(): void {
+passwordReset(): void {
     console.log(this.email.value);
     this.authService.resetPassword(this.email.value).then(() => {
       this.email.setValue('');
@@ -71,7 +79,7 @@ export class ResetPasswordComponent implements OnInit {
     return null;
 }
   constructor(public authService: AuthService,
-     private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar) { }
 
 
 
