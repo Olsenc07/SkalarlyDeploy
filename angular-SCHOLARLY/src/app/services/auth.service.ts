@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import {Router} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppRoutingModule } from '../app-routing.module';
-import { faInfo } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
