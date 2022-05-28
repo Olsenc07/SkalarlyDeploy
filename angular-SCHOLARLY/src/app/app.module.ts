@@ -182,7 +182,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatSnackBarModule,
     ScrollingModule,
     MatProgressSpinnerModule,
-  
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SearchListService, PostService, ClassListService, StoreService, AuthService,
