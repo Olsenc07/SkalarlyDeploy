@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { Location } from '@angular/common';
+// import { Location } from '@angular/common';
 
 
 import { FormsModule } from '@angular/forms';
@@ -182,7 +182,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MatSnackBarModule,
     ScrollingModule,
     MatProgressSpinnerModule,
-    Location
+  
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [SearchListService, PostService, ClassListService, StoreService, AuthService,
