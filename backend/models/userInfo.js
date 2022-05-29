@@ -16,6 +16,8 @@ const userInfoSchema = mongoose.Schema({
     CodePursuing: { type: String},
     ProfilePicPath: { type: String},
     ShowCasePath: { type: String},
+    followers: { type: Array},
+    followings: { type: Array},
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
 
  });
