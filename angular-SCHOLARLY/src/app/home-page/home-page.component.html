@@ -31,14 +31,15 @@
             <mat-error *ngIf="password.invalid">Please enter a valid password</mat-error>
    
           </mat-form-field>
-           
+
+          
             <button mat-icon-button type="button" *ngIf="visible" (click)="toggleVisibilty()" >
               <mat-icon class="material-symbols-sharp" >visibility</mat-icon>
             </button>
             <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()" >
               <mat-icon class="material-symbols-sharp" >visibility_off</mat-icon>
             </button>
-            
+          
 
         </div>
 

@@ -73,41 +73,46 @@
           <!-- End -->
           <div class="icon-top">
             <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/search" class="a_up"
-              [ngClass]="router?.url === '/search' 
+              <button  mat-icon-button type="button" routerLink="/search" class="a_up">
+                <span class="material-icons-sharp" [ngClass]="router?.url === '/search' 
                 ? 'PublicOn' : 'public' ">
-
-               <i class="fa-regular fa-book-atlas"></i>
-              </button>
-            </div>
-
-            <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/friends-activity" class="a_up ">
-                <mat-icon [ngClass]="router?.url === '/friends-activity' 
-            ? 'GroupsOn' : 'groups' ">groups</mat-icon>
-              </button>
-            </div>
-            <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/post-page" class="a_up" [ngClass]="router?.url === '/post-page' 
-              ? 'PostOn' : 'post' ">
-                <i class="fa-solid fa-wand-sparkles" ></i>
-              </button>
-            </div>
-
-            <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/messages" class="a_up">
-                <span [ngClass]="router?.url === '/messages' 
-                ? 'MessageOn' : 'message' 
-                "  class="fa-solid fa-comments">
+                  travel_explore
                   </span>
               </button>
             </div>
 
             <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/profile" class="a_up"
-              [ngClass]="router?.url === '/profile' 
+              <button  mat-icon-button type="button" routerLink="/friends-activity" class="a_up ">
+            <span class="material-icons-sharp" [ngClass]="router?.url === '/friends-activity' 
+            ? 'GroupsOn' : 'groups' ">
+              groups
+              </span>
+              </button>
+            </div>
+            <div class="icon-btn-fit">
+              <button  mat-icon-button type="button" routerLink="/post-page" class="a_up" >
+              <span class="material-icons-sharp" [ngClass]="router?.url === '/post-page' 
+              ? 'PostOn' : 'post' ">
+                add
+                </span>
+              </button>
+            </div>
+
+            <div class="icon-btn-fit">
+              <button  mat-icon-button type="button" routerLink="/messages" class="a_up">
+                <span class="material-icons-sharp" [ngClass]="router?.url === '/messages' 
+                ? 'MessageOn' : 'message' ">
+                  chat
+                  </span>
+              </button>
+            </div>
+
+            <div class="icon-btn-fit">
+              <button  mat-icon-button type="button" routerLink="/profile" class="a_up">
+            <span class="material-icons-sharp" [ngClass]="router?.url === '/profile' 
             ? 'ProfileOn' : 'profile'">
-                <i class="fa-solid fa-hat-wizard" ></i>
+              school
+              </span>
               </button>
             </div>
 
