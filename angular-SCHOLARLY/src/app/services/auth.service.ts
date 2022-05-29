@@ -183,7 +183,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
 
             getOtherInfo(): any {
-                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/profiles' )
+                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/id' )
                     .pipe(map((infosData) => {
                         return infosData.infos.map ( info => {
                             return {
@@ -223,7 +223,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 this.token = token;
                 if (token) {
                 this.router.navigate(['/search']);
-                this.snackBar.open('Welcome Fellow Skalar!', 'Thanks', {
+                this.snackBar.open('Welcome Fellow Skalar!', 'Thanks!! ' , {
                     duration: 3000
                 });
                 const expiresInDuration = response.expiresIn;
