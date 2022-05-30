@@ -23,5 +23,7 @@ export interface AuthDataInfo {
     ProfilePicPath?: string;
     showCase?: File;
     ShowCasePath?: string;
+    followers?: string;
+    followings?: string;
 
 }

@@ -107,6 +107,9 @@ export class SignupComponent implements OnInit, OnDestroy {
   pronouns: FormControl = new FormControl('');
   birthday: FormControl = new FormControl();
   gender: FormControl = new FormControl('');
+  followers: FormControl = new FormControl('');
+  followings: FormControl = new FormControl('');
+
   email: FormControl = new FormControl('', [Validators.email, this.noWhiteSpace]);
   termsCheck: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
@@ -427,7 +430,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   onSubmit2(): any {
     this.isLoading = true;
     this.authService.createUserInfo( this.username.value, this.name.value, this.gender.value, this.birthday.value,
-     this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value,
+     this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value,this.followers.value, this.followings.value,
      this.CodeCompleted.value, this.CodePursuing.value, this.form.get('profilePic').value, this.form.get('showCase').value
       );
   }

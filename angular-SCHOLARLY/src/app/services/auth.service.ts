@@ -57,13 +57,14 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
          });
     }
-
+// Create userinfo
     createUserInfo( username: string, name: string, gender: string, birthday: string, major: string, minor: string, sport: string,
                     club: string, pronouns: string, CodeCompleted: string,  CodePursuing: string, profilePic: File, showCase: File,
+                    followers: string, followings: string,
                     Creator?: string,
         ): any {
         const authDataInfo: AuthDataInfo = {Creator, username, name, gender, birthday, major, minor,
-            sport, club, pronouns, CodeCompleted, CodePursuing, profilePic, showCase };
+            sport, club, pronouns, CodeCompleted, CodePursuing, profilePic, showCase, followers, followings };
         const userData = new FormData();
         userData.append('username', username);
         userData.append('name', name);
@@ -78,6 +79,9 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
         userData.append('CodePursuing', CodePursuing);
         userData.append('profilePic', profilePic);
         userData.append('showCase', showCase);
+        userData.append('followers', followers);
+        userData.append('followings', followings);
+
 
 
         this.http
@@ -96,6 +100,8 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 pronouns,
                 CodeCompleted,
                 CodePursuing,
+                followers,
+                followings,
                 ProfilePicPath: responseData.post.ProfilePicPath,
                 ShowCasePath: responseData.post.ShowCasePath,
                 Creator,
@@ -111,6 +117,7 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
     getInfoUpdateListener(): any {
         return this.infosUpdated.asObservable();
     }
+    // Your info
     getInfo(): any {
         this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/info' )
             .pipe(map((infosData) => {
@@ -130,6 +137,8 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                         CodePursuing: info.CodePursuing,
                         ProfilePicPath: info.ProfilePicPath,
                         ShowCasePath: info.ShowCasePath,
+                        Followers: info.followers,
+                        Followings: info.followings,
                         Creator: info.Creator,
                     };
                 });
@@ -141,49 +150,22 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                 });
             }
 
-            // Attempt at naviagting to user profile
+        // Other users
 
-            // OtherUser(Info): any {
-            //    const id = Info;
-            //    const authDataInfo: AuthDataInfo = { id };
-            //    this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/otherInfo', authDataInfo )
-            //     .subscribe(data => {
-            //     }, error => {
-            //             this.authStatusListener.next(false);
-            //             });
-            // }
+        otherProfiles(value: string): any {
+            const username = value;
+            console.log('tities', username);
 
+            const authDataInfo: AuthDataInfo = { username };
+            this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/otherInfo/' + username, authDataInfo )
+            .subscribe(data => {
+             }, error => {
+                     this.authStatusListener.next(false);
+                     });
+            console.log('http://localhost:3000/api/user/otherInfo/' + username);
 
-            // Attempt at naviagting to user profile
-            // otherProfiles(info: string): any {
-            //    const username = info;
-            //    console.log('tities', username);
-
-            //    const authDataInfo: AuthDataInfo = { username };
-            //    this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/otherInfo', authDataInfo )
-            //    .subscribe(data => {
-            //     }, error => {
-            //             this.authStatusListener.next(false);
-            //             });
-            // }
-
-            otherProfiles(value: string): any {
-                const username = value;
-                console.log('tities', username);
- 
-                const authDataInfo: AuthDataInfo = { username };
-                this.http.post<{message: string, infos: any}>('http://localhost:3000/api/user/otherInfo/' + username, authDataInfo )
-                .subscribe(data => {
-                 }, error => {
-                         this.authStatusListener.next(false);
-                         });
-                console.log('http://localhost:3000/api/user/otherInfo/' + username);
-
-             }
-
-
-            getOtherInfo(id): any {
-
+         }
+        getOtherInfo(id): any {
                 this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/id', { params: { id: id}})
                     .pipe(map((infosData) => {
                         return infosData.infos.map ( info => {
@@ -202,6 +184,8 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                                 CodePursuing: info.CodePursuing,
                                 ProfilePicPath: info.ProfilePicPath,
                                 ShowCasePath: info.ShowCasePath,
+                                Followers: info.followers,
+                                Followings: info.followings,
                                 Creator: info.Creator,
                             };
                         });
