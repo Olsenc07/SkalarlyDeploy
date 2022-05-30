@@ -19,7 +19,7 @@
                 <div class="column_">
                 <!-- (click)="onOtherUser(info)" -->
                 <button mat-button type="button" 
-                class="userName textSize" [value]="info.username" (click)="navigateToPage(info.username)">
+                class="userName textSize" id="userName"  [value]=info.username  (click)="navigateToPage()" >
                     <!-- {{ (profile | async)?.Pronouns}} -->
                     
                     @{{ info.username}}

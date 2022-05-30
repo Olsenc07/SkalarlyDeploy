@@ -7,8 +7,7 @@ import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
-import { ActivatedRoute } from '@angular/router';
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 
 /** @title Sidenav open & close behavior */
@@ -170,25 +169,19 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     ngOnInit(): any {
       this.isLoading = true;
       this.route.queryParams.subscribe((params) => {
-        this.user = params?.user;
+        this.user = params.id;
+        const id = this.user;
         console.log(this.user, 'bunny');
+        console.log(id, 'rabbit');
+
+        this.authService.getOtherInfo(id);
+        this.infosSub = this.authService.getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+      this.infos = infos;
       });
-
-// Post this.user in the /:user then read that param and get info
-
-      // Info
-      this.authService.getOtherInfo();
-      this.infosSub = this.authService.getInfoUpdateListener()
-    .subscribe((infos: AuthDataInfo[]) => {
-    this.infos = infos;
                         });
-    //   this.infosSub = this.authService.getInfoUpdateListener()
-    //   .subscribe((infos: AuthDataInfo[]) => {
-    //   this.infos = infos;
-    //   this.isLoading = false;
-    // });
-    // Others Info
-      // this.authService.OtherUser(info);
+
+                        
       // Posts
       this.postService.getPosts();
       this.postsSub = this.postService.getPostUpdateListener()

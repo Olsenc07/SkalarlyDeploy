@@ -350,17 +350,22 @@ router.post("/otherInfo/:username", async(req, res, next) => {
 // })
 
 // Get user
-router.get("/id", async (req, res, next) => {
-    try{
-        const user = await UserInfo.findOne(req.params.id);
-        res.status(200).json(user);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-
-console.log('baseball', req.params.id)
-
-    })
+router.get("/id", (req, res, next) => {
+    console.log('baseball', req.params.id)
+    console.log('soccer', req.query.id)
+ UserInfo.findOne(req.query.id)
+        .then(documents => {
+            res.status(200).json({
+                message: 'Infos fetched succesfully!',
+                infos: documents
+                });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Fetching infos failed!'
+                });
+            });
+    });
 
 // Follow a user
 router.put("/:id/follow", async (req, res) => {
@@ -379,7 +384,7 @@ router.put("/:id/follow", async (req, res) => {
             res.status(500).json(err);
         }
     }else {
-        res.status(403).json("You can't follow yourslef")
+        res.status(403).json("You can't follow yourself")
     }
 })
 
@@ -400,7 +405,7 @@ router.put("/:id/unfollow", async (req, res) => {
             res.status(500).json(err);
         }
     }else {
-        res.status(403).json("You can't unfollow yourslef")
+        res.status(403).json("You can't unfollow yourself")
     }
 })
 

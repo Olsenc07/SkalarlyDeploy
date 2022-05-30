@@ -23,7 +23,7 @@ export class ReusableCardRequestComponent implements OnInit {
     isLoading = false;
 
 
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService, private route: ActivatedRoute,) { }
 
     ngOnInit() {
         this.isLoading = true;
@@ -91,18 +91,19 @@ export class ReusableCardRecommendationComponent implements OnInit {
               // Can add *ngIf="userIsAuthenticated" to hide items
             });
     }
-    navigateToPage(value: string): void {
-    
 
-        this.router.navigate(['/profiles/'],
-        { queryParams: { id: value } });
-        const params = new URLSearchParams(window.location.search);
-        const hey =  params.set('id', value);
-          console.log('string', hey);
-        this.authService.getOtherInfo();
+// 
 
-        // console.log(value);
-        // this.authService.otherProfiles(value);
+    navigateToPage(): any {
+   const ID = (document.getElementById('userName') as HTMLInputElement).value;
+   console.log(ID);
+  
+      // const params = new URLSearchParams(window.location.search);
+      // params.set('id', id);
+
+   this.router.navigate(['/profiles/:'], { queryParams: { id: ID } });
+  //  this.authService.getOtherInfo();
+        // this.authService.otherProfiles(id);
 
       }
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams } from '@angular/common/http';
 import { AuthData, AuthDataInfo } from '../signup/auth-data.model';
 import { Subject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -182,8 +182,8 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
              }
 
 
-            getOtherInfo(): any {
-                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/id' )
+            getOtherInfo(id): any {
+                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/id', { params: id})
                     .pipe(map((infosData) => {
                         return infosData.infos.map ( info => {
                             return {
@@ -206,9 +206,10 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                         });
                     }))
                         .subscribe((transformedInfos) => {
-                            // this.infos = transformedInfos;
+                            this.infos = transformedInfos;
                             this.infosUpdated.next([...this.infos]);
                         });
+                    console.log(id);
                     }
 
 

@@ -309,7 +309,8 @@ h4:focus {
 .PublicOn {
   display: flex;
   justify-content: center;
-  color: #b8dde9;
+  // color: #b8dde9;
+  color: gray;
   font-size: 4vmax;
 }
 .groups {
@@ -321,7 +322,9 @@ h4:focus {
 .GroupsOn {
   font-size: 4vmax;
   display: flex;
-  color: #b8dde9;
+  // color: #b8dde9;
+  color: gray;
+
   justify-content: center;
 }
 .profile {
@@ -333,7 +336,8 @@ h4:focus {
 .ProfileOn {
   display: flex;
   font-size: 4vmax;
-  color: #b8dde9;
+  // color: #b8dde9;
+  color: gray;
   justify-content: center;
 }
 .post {
@@ -345,7 +349,8 @@ h4:focus {
 .PostOn {
   display: flex;
   font-size: 4vw;
-  color: #b8dde9;
+  // color: #b8dde9;
+  color: gray;
   justify-content: center;
 }
 .message {
@@ -357,7 +362,8 @@ h4:focus {
 .MessageOn {
   display: flex;
   font-size: 4vw;
-  color: #b8dde9;
+  // color: #b8dde9;
+  color: gray;
   justify-content: center;
 }
 
