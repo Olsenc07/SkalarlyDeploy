@@ -351,9 +351,8 @@ router.post("/otherInfo/:username", async(req, res, next) => {
 
 // Get user
 router.get("/id", (req, res, next) => {
-    console.log('baseball', req.params.id)
     console.log('soccer', req.query.id)
- UserInfo.findOne(req.query.id)
+        UserInfo.find(req.query.id)
         .then(documents => {
             res.status(200).json({
                 message: 'Infos fetched succesfully!',

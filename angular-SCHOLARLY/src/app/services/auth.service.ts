@@ -183,7 +183,8 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
 
             getOtherInfo(id): any {
-                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/id', { params: id})
+
+                this.http.get<{message: string, infos: any}>('http://localhost:3000/api/user/id', { params: { id: id}})
                     .pipe(map((infosData) => {
                         return infosData.infos.map ( info => {
                             return {
@@ -209,7 +210,6 @@ private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
                             this.infos = transformedInfos;
                             this.infosUpdated.next([...this.infos]);
                         });
-                    console.log(id);
                     }
 
 

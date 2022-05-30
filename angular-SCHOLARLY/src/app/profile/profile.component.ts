@@ -180,8 +180,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.infos = infos;
       });
                         });
-
-                        
       // Posts
       this.postService.getPosts();
       this.postsSub = this.postService.getPostUpdateListener()
