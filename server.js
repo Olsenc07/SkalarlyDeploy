@@ -76,7 +76,7 @@ app.get("/api/profiles", (req, res, next) => {
         },
         {
             Name:'Alicia Ehret', Major:'Sport and Rec Management', Minor: 'Management and Physical Literacy',
-            Sport:'Womens Varsity Basketball', Club:'Cutie girl club'
+            Sport:'Womens Varsity Basketball'
         },
 
         {

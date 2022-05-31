@@ -9,6 +9,6 @@ module.exports = (reg, res, next) => {
     reg.userData = {email: decodedToken.email, userId: decodedToken.userId};
     next();
     } catch (error) {
-       res.status(401).json({ message: "You are not authenticated!"});
+       res.status(401).json({ message: "You are not authenticated! Please check your email!"});
     }
 };

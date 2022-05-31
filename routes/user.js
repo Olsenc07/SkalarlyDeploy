@@ -306,25 +306,7 @@ router.get("/info", (req, res, next) => {
 
 
 
-// userInfo for going to others profile pages
-router.post("/otherInfo/:username", async(req, res, next) => {
-    const userName = await UserInfo.findOne({userName: req.params.username});
-    // const user = User.find({userName});
-    // const userName = UserInfo.find({username: req.body.username});
-    // const ID = id._id
-    console.log('hey this is post route', );
-    // console.log('howdy', userName);
-    // console.log('britt', idHey);
 
-
-
-    // console.log(ID, 'wally')
-    // console.log('http://localhost:3000/api/user/onOtherProfile/' + user)
-    // console.log('http://localhost:3000/api/user/onOtherProfile/' + idHey)
-
-// res.redirect('http://localhost:3000/api/user/onOtherProfile/' + req.body.id)
-   
-});
 
 // Redirected from the postinfo page load
 // router.get("/otherInfo/:id", async(req, res, next) => {

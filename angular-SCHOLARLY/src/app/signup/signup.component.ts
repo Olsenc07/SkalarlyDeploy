@@ -1,5 +1,19 @@
-import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup, ValidatorFn, Validators, AbstractControl, ValidationErrors, NgForm } from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  OnDestroy,
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+  NgForm,
+} from '@angular/forms';
 import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -12,11 +26,14 @@ import {
 import * as _moment from 'moment';
 
 import { default as _rollupMoment } from 'moment';
-import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocomplete,
+} from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { map } from 'rxjs/operators';
-import { MatDialog, MatDialogRef  } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ClassListService } from '../services/class.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
@@ -28,10 +45,7 @@ import { Profile, NewUserId, StoreService } from '../services/store.service';
 import { mimeType } from '../post-page/mime-type.validator';
 
 import { AuthService } from '../services/auth.service';
-import {Courses} from 'nikel';
-
-
-
+import { Courses } from 'nikel';
 
 const moment = _rollupMoment || _moment;
 export const MY_FORMATS = {
@@ -48,8 +62,6 @@ export const MY_FORMATS = {
 
 // Trimming white space for validators
 
-
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -64,9 +76,6 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-
-
-
 export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
   private authStatusSub: Subscription;
@@ -74,8 +83,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
-
-
 
   classes: string[] = [];
   classesP: string[] = [];
@@ -85,10 +92,25 @@ export class SignupComponent implements OnInit, OnDestroy {
   @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
 
   selectedIndex = 0;
-  genders: string[] = ['', 'Female', 'Male', 'Other'];
+  genders: string[] = [
+    '',
+    'Female',
+    'Male',
+    'Transgender',
+    'Other',
+    'Agender',
+    'Bigender',
+    ' Intersex',
+    'Gender Fluid',
+    'Gender Queer',
+    'Non-Binary',
+    'Pangender',
+    'Trans Male',
+    'Trans Female',
+    'Two Spirit',
+  ];
 
   url: string;
-
 
   MatIconModule: any;
   cropImgPreview: any = '';
@@ -97,7 +119,10 @@ export class SignupComponent implements OnInit, OnDestroy {
   showCasePreview: any = '';
 
   containWithinAspectRatio = false;
-  username: FormControl = new FormControl('', [Validators.pattern('[a-zA-Z0-9_]*'), this.noWhiteSpace]);
+  username: FormControl = new FormControl('', [
+    Validators.pattern('[a-zA-Z0-9_]*'),
+    this.noWhiteSpace,
+  ]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
   major: FormControl = new FormControl('');
   minor: FormControl = new FormControl('');
@@ -110,7 +135,10 @@ export class SignupComponent implements OnInit, OnDestroy {
   followers: FormControl = new FormControl('');
   followings: FormControl = new FormControl('');
 
-  email: FormControl = new FormControl('', [Validators.email, this.noWhiteSpace]);
+  email: FormControl = new FormControl('', [
+    Validators.email,
+    this.noWhiteSpace,
+  ]);
   termsCheck: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
   CodePursuing: FormControl = new FormControl('');
@@ -119,11 +147,9 @@ export class SignupComponent implements OnInit, OnDestroy {
   CodeCompleted: FormControl = new FormControl('');
   filteredCodes: Observable<string[]>;
 
-
   bio: FormControl = new FormControl('');
   public bioLength = new BehaviorSubject(0);
   public showCaseList = new Subject();
-
 
   form: FormGroup;
 
@@ -144,7 +170,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     bio: this.bio,
   });
 
-
   signupForm = new FormGroup({
     CodePursuing: this.CodePursuing,
     CodeCompleted: this.CodeCompleted,
@@ -157,12 +182,11 @@ export class SignupComponent implements OnInit, OnDestroy {
   });
 
   public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
-    if ((control.value as string).indexOf(' ') >= 0){
-        return {noWhiteSpace: true};
+    if ((control.value as string).indexOf(' ') >= 0) {
+      return { noWhiteSpace: true };
     }
     return null;
-}
-
+  }
 
   // public trimValidator: ValidatorFn = (email: FormControl) => {
   //   if (email.value.startsWith(' ')) {
@@ -178,8 +202,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   //   return null;
   // }
   // using oninput
-
-
 
   // Passes value as base64 string of cropped area!! But where does form controller come into play?
   cropImg(event: ImageCroppedEvent): void {
@@ -203,19 +225,19 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.imgChangeEvent = event;
 
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({profilePic: file});
+    this.form.patchValue({ profilePic: file });
     this.form.get('profilePic').updateValueAndValidity();
 
     // if (event.target.files && event.target.files[0]) {
     const reader = new FileReader();
     reader.onload = () => {
-        this.url = reader.result as string;
-      };
+      this.url = reader.result as string;
+    };
     // reader.onload = (Event: any) => { // called once readAsDataURL is completed
-        // console.log(Event);
-        // this.cropImgPreview = Event.target.result;
-        // this.url = reader.result as string;
-      // };
+    // console.log(Event);
+    // this.cropImgPreview = Event.target.result;
+    // this.url = reader.result as string;
+    // };
     reader.readAsDataURL(file); // read file as data url
     // }
   }
@@ -223,18 +245,17 @@ export class SignupComponent implements OnInit, OnDestroy {
   // SnapShot
   imagePreview(event: any): void {
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({showCase: file});
+    this.form.patchValue({ showCase: file });
     this.form.get('showCase').updateValueAndValidity();
-
 
     const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]); // read file as data url
-    reader.onload = (Event: any) => { // called once readAsDataURL is completed
-        console.log(Event);
-        this.showCasePreview = Event.target.result;
-      };
+    reader.onload = (Event: any) => {
+      // called once readAsDataURL is completed
+      console.log(Event);
+      this.showCasePreview = Event.target.result;
+    };
     reader.readAsDataURL(file); // read file as data url
-
   }
 
   constructor(
@@ -242,8 +263,8 @@ export class SignupComponent implements OnInit, OnDestroy {
     public classListService: ClassListService,
     private http: HttpClient,
     private storeService: StoreService,
-    public authService: AuthService) {
-
+    public authService: AuthService
+  ) {
     // this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
     //   map((code: string | null) =>
     //     code ? this._filter(code) : this.classListService.allClasses().slice()
@@ -255,16 +276,8 @@ export class SignupComponent implements OnInit, OnDestroy {
     //   )
     // );
     // this.filteredCodesP.subscribe((r) => this.CodePursuing);
-
     // this.filteredCodes.subscribe((r) => this.CodeCompleted);
   }
-
-
-
-
-
-
-
 
   uploadFileP(): any {
     document.getElementById('fileInputP').click();
@@ -311,8 +324,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.CodeCompleted.setValue(null);
   }
 
-
-
   remove(code: string): void {
     const index = this.classes.indexOf(code);
     if (index >= 0) {
@@ -340,12 +351,10 @@ export class SignupComponent implements OnInit, OnDestroy {
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-
     return this.classListService
       .allClasses()
       .filter((code) => code.toLowerCase().indexOf(filterValue) === 0);
   }
-
 
   clearUsername(): void {
     this.username.setValue('');
@@ -417,71 +426,81 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.dialog.open(AccountTextComponent);
   }
 
-  onSubmit(): any{
-//  Email validation to continue
+  onSubmit(): any {
+    //  Email validation to continue
     this.isLoading = true;
-    this.authService.createUser(this.email.value, this.username.value, this.password.value);
-    this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
+    this.authService.createUser(
+      this.email.value,
+      this.username.value,
+      this.password.value
+    );
+    // this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
     this.dialog.open(LoginPopUpComponent, { disableClose: true });
-
   }
-
 
   onSubmit2(): any {
     this.isLoading = true;
-    this.authService.createUserInfo( this.username.value, this.name.value, this.gender.value, this.birthday.value,
-     this.major.value, this.minor.value, this.sport.value, this.club.value, this.pronouns.value,this.followers.value, this.followings.value,
-     this.CodeCompleted.value, this.CodePursuing.value, this.form.get('profilePic').value, this.form.get('showCase').value
-      );
+    this.authService.createUserInfo(
+      this.username.value,
+      this.name.value,
+      this.gender.value,
+      this.birthday.value,
+      this.major.value,
+      this.minor.value,
+      this.sport.value,
+      this.club.value,
+      this.pronouns.value,
+      this.followers.value,
+      this.followings.value,
+      this.CodeCompleted.value,
+      this.CodePursuing.value,
+      this.form.get('profilePic').value,
+      this.form.get('showCase').value
+    );
   }
 
   ngOnInit(): void {
-   this.authStatusSub = this.authService.getAuthStatusListener().subscribe(
-     authStatus => {
-       this.isLoading = false;
-     }
-   );
-   this.form = new FormGroup({
-    profilePic: new FormControl(null, {
-      validators: [Validators.required],
-      asyncValidators: [mimeType]
-    }),
-    showCase: new FormControl(null, {
-      validators: [Validators.required],
-      asyncValidators: [mimeType]
-    })
-  });
-
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe((authStatus) => {
+        this.isLoading = false;
+      });
+    this.form = new FormGroup({
+      profilePic: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+      showCase: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+    });
   }
 
   ngOnDestroy(): void {
-  this.authStatusSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
-
-
-
 }
 @Component({
   selector: 'app-verified-page',
   templateUrl: './verified-popup.component.html',
   styleUrls: ['../retrieve-password/retrieve-password.component.scss'],
 })
-export class VerifiedPopUpComponent { }
+export class VerifiedPopUpComponent {}
 
 @Component({
   selector: 'app-terms-page',
   templateUrl: './terms-popup.component.html',
   styleUrls: ['./terms-popup.component.scss'],
 })
-export class TermsPopUpComponent { }
+export class TermsPopUpComponent {}
 
 @Component({
   selector: 'app-accounttextpage',
   templateUrl: './account-popup.component.html',
   styleUrls: ['./account-popup.component.scss'],
 })
-export class AccountTextComponent { }
-
+export class AccountTextComponent {}
 
 @Component({
   templateUrl: './login-popup.component.html',
@@ -494,7 +513,6 @@ export class LoginPopUpComponent implements OnDestroy {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
-
   email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
@@ -503,10 +521,11 @@ export class LoginPopUpComponent implements OnDestroy {
     password: this.password,
   });
 
-    constructor(public authService: AuthService,
-                public dialog: MatDialog,
-                public dialogRef: MatDialogRef<LoginPopUpComponent>
-    ){}
+  constructor(
+    public authService: AuthService,
+    public dialog: MatDialog,
+    public dialogRef: MatDialogRef<LoginPopUpComponent>
+  ) {}
 
   onSubmit(): void {
     console.log(this.loginForm.value);
@@ -514,20 +533,22 @@ export class LoginPopUpComponent implements OnDestroy {
     this.authService.loginFirst(this.email.value, this.password.value);
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authListenerSubs = this.authService
-    .getAuthStatusListener()
-    .subscribe(isAuthenticated => {
-      this.userIsAuthenticated = isAuthenticated;
-      this.userId = this.authService.getUserId();
+    if (this.userIsAuthenticated === true) {
+      this.authListenerSubs = this.authService
+        .getAuthStatusListener()
+        .subscribe((isAuthenticated) => {
+          // Added the if else
+          this.userIsAuthenticated = isAuthenticated;
+          this.userId = this.authService.getUserId();
+          this.dialogRef.close();
+        });
+    } else {
       this.dialogRef.close();
-    });
-
-
-    // Trigger this.failedLogin() when login fails.
-    // Trigger this.successfullLogin() when login succeeds
+      this.dialog.open(LoginPopUpComponent, { disableClose: true });
+    }
   }
+
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();
   }
-
 }
