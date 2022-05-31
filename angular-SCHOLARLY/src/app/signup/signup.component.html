@@ -60,7 +60,7 @@
               <mat-form-field class="userName">
                 <mat-label>Password min 8 characters</mat-label>
                 <input matInput type="password" placeholder="Password" minlength="8" required
-                  [formControl]="password" />
+                  [formControl]="password" id='passwordType'/>
                 <mat-error *ngIf="password.errors?.noWhiteSpace">White spaces aren't allowed in password</mat-error>
                 <mat-error *ngIf="password.invalid && !password.errors?.noWhiteSpace">Please enter a valid password
                 </mat-error>
@@ -69,6 +69,12 @@
                   <mat-icon>close</mat-icon>
                 </button> -->
               </mat-form-field>
+              <button mat-icon-button type="button" *ngIf="visible" (click)="toggleVisibilty()" >
+                <mat-icon class="material-symbols-sharp" >visibility</mat-icon>
+              </button>
+              <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()" >
+                <mat-icon class="material-symbols-sharp" >visibility_off</mat-icon>
+              </button>
             </div>
 
           </div>

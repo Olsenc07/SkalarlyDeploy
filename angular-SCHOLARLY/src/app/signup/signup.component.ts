@@ -100,7 +100,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     'Other',
     'Agender',
     'Bigender',
-    ' Intersex',
+    'Intersex',
     'Gender Fluid',
     'Gender Queer',
     'Non-Binary',
@@ -186,6 +186,20 @@ export class SignupComponent implements OnInit, OnDestroy {
       return { noWhiteSpace: true };
     }
     return null;
+  }
+
+  toggleVisibilty(): any {
+    const c = document.getElementById('passwordType') as HTMLInputElement;
+
+    c.type = 'text';
+    this.visible = !this.visible;
+  }
+
+  toggleVisibilty_(): any {
+    const c = document.getElementById('passwordType') as HTMLInputElement;
+
+    c.type = 'password';
+    this.visible = !this.visible;
   }
 
   // public trimValidator: ValidatorFn = (email: FormControl) => {
@@ -434,7 +448,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.username.value,
       this.password.value
     );
-    // this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
+    this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
     this.dialog.open(LoginPopUpComponent, { disableClose: true });
   }
 
@@ -508,6 +522,7 @@ export class AccountTextComponent {}
 })
 export class LoginPopUpComponent implements OnDestroy {
   isLoading = false;
+  visible = true;
 
   userId: string;
   userIsAuthenticated = false;
@@ -527,13 +542,27 @@ export class LoginPopUpComponent implements OnDestroy {
     public dialogRef: MatDialogRef<LoginPopUpComponent>
   ) {}
 
+  toggleVisibilty(): any {
+    const c = document.getElementById('passwordType7') as HTMLInputElement;
+
+    c.type = 'text';
+    this.visible = !this.visible;
+  }
+
+  toggleVisibilty_(): any {
+    const c = document.getElementById('passwordType7') as HTMLInputElement;
+
+    c.type = 'password';
+    this.visible = !this.visible;
+  }
+
   onSubmit(): void {
     console.log(this.loginForm.value);
     this.isLoading = true;
     this.authService.loginFirst(this.email.value, this.password.value);
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
-    if (this.userIsAuthenticated === true) {
+    if (this.userIsAuthenticated) {
       this.authListenerSubs = this.authService
         .getAuthStatusListener()
         .subscribe((isAuthenticated) => {
