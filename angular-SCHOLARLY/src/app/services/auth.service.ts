@@ -14,7 +14,7 @@ export class AuthService {
     private router: Router,
     private snackBar: MatSnackBar
   ) {}
-  public isAuthenticated = false;
+  private isAuthenticated = false;
   private token: string;
   private tokenTimer: any;
   private userId: string;
