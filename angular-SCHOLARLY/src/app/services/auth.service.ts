@@ -302,23 +302,26 @@ export class AuthService {
         (response) => {
           const token = response.token;
           this.token = token;
-          if (token) {
-            // this.router.navigate(['/search']);
-            this.snackBar.open('Welcome to the community', 'Thanks!!', {
-              duration: 3000,
-            });
-            const expiresInDuration = response.expiresIn;
-            this.setAuthTimer(expiresInDuration);
-            this.isAuthenticated = true;
-            this.userId = response.userId;
-            this.authStatusListener.next(true);
-            const now = new Date();
-            const expirationDate = new Date(
-              now.getTime() + expiresInDuration * 1000
-            );
-            this.saveAuthData(token, expirationDate, this.userId);
-            console.log(expirationDate);
-            console.log(this.token);
+          if (this.isAuthenticated) {
+            console.log('woof', this.isAuthenticated);
+            if (token) {
+              // this.router.navigate(['/search']);
+              this.snackBar.open('Welcome to the community', 'Thanks!!', {
+                duration: 3000,
+              });
+              const expiresInDuration = response.expiresIn;
+              this.setAuthTimer(expiresInDuration);
+              this.isAuthenticated = true;
+              this.userId = response.userId;
+              this.authStatusListener.next(true);
+              const now = new Date();
+              const expirationDate = new Date(
+                now.getTime() + expiresInDuration * 1000
+              );
+              this.saveAuthData(token, expirationDate, this.userId);
+              console.log(expirationDate);
+              console.log(this.token);
+            }
           }
         },
         (error) => {
