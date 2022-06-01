@@ -17,8 +17,8 @@ var transporter = nodemailer.createTransport({
     service: 'outlook365',
     auth: {
         // gmail just change to gmail email and service to gmail
-        user: 'skalarly777@outlook.com',
-        pass: 'Hockey07'
+        user: 'skalarly77@outlook.com',
+        pass: 'Hockey#$07'
     },
     tls: {
         rejectUnauthorized: false,
@@ -84,7 +84,7 @@ try{
                     
                 });
             const msg = {
-                from:' "Verify account" <skalarly777@outlook.com>',
+                from:' "Verify account" <skalarly77@outlook.com>',
                 to: user.email,
                 subject: 'Skalarly - verify account',
                 text: `We are excited to welcome you ${user.username} to the community!
