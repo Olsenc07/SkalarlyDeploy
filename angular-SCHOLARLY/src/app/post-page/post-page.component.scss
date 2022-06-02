@@ -62,7 +62,7 @@
   margin-right: 2%;
 }
 .back_btn {
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -80,7 +80,7 @@
   background-color: white;
 }
 .post_btn_top_right {
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -127,7 +127,7 @@
   font-size: x-large;
   // color: #3a3232;
   color: #807070;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 .centerL {
   display: flex;
@@ -138,7 +138,7 @@
   font-size: x-large;
   // color: #3a3232;
   color: #807070;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 @media (min-width: 1024px) {
   .contents {
@@ -220,7 +220,7 @@
 .final_step_btn {
   color: #418bba;
   font-size: x-large;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
   border: outset;
 }
 .friends-search {
@@ -271,7 +271,7 @@
     scroll-behavior: smooth;
     overflow-y: scroll;
     align-items: center;
-    font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
     font-size: large;
   }
 }
@@ -285,7 +285,7 @@
     width: 100%;
     scroll-behavior: smooth;
     margin: 1% 0%;
-    font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
     font-size: large;
   }
 }
@@ -351,7 +351,7 @@ mat-chip .mat-list-text {
   display: flex;
   height: 100%;
   width: 100%;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 .mat-slide-toggle {
   margin: 8px 0;
@@ -367,14 +367,14 @@ mat-chip .mat-list-text {
   justify-content: center;
 }
 ::ng-deep .mat-raised-button {
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
 }
 ::ng-deep .mat-button {
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
 }
 ::ng-deep .mat-step-text-label {
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
 }
 ::ng-deep mat-form-field {
   display: flex;
@@ -422,7 +422,7 @@ mat-chip .mat-list-text {
 
 ::ng-deep .mat-form-field-infix {
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 
 .options {
@@ -524,7 +524,7 @@ p {
   display: flex;
   justify-content: center;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 
 .right {
@@ -673,7 +673,7 @@ p {
   font-size: large;
   margin: 4% 0% 0% 0%;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 .text_ {
   display: flex;
@@ -685,7 +685,7 @@ p {
   .textB {
     display: flex;
     justify-content: center;
-    font-family: "Font Awesome 5 Free";
+    font-family:  'Poppins', sans-serif;
     font-weight: 700;
     color: #807070;
     font-size: xx-large;
@@ -697,7 +697,7 @@ p {
   .textB {
     display: flex;
     justify-content: center;
-    font-family: "Font Awesome 5 Free";
+    font-family:  'Poppins', sans-serif;
     font-weight: 700;
     color: #807070;
     font-size: x-large;
@@ -716,7 +716,7 @@ p {
   justify-content: center;
   align-items: center;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 .text {
   display: flex;
@@ -725,7 +725,7 @@ p {
 }
 .textT {
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
   font-size: initial;
 }
 .tagged-friends-box {

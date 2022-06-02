@@ -54,7 +54,7 @@
   display: flex;
   justify-self: center;
   margin-bottom: 5%;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
   background-color: #18214b;
 }
 @media (min-width: 1024px) {
@@ -161,7 +161,7 @@
     display: flex;
     justify-content: center;
     color: #7e7171;
-    font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
     font-size: large;
     flex-direction: column;
   }
@@ -171,7 +171,7 @@
     display: flex;
     justify-content: center;
     color: #7e7171;
-    font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
     font-size: inherit;
     flex-direction: column;
   }
@@ -267,7 +267,7 @@
 }
 
 ::ng-deep .mat-radio-label-content {
-  font-family: "Font Awesome 5 Pro";
+  font-family: 'Cinzel', serif;
 }
 
 .gender {
@@ -354,7 +354,7 @@
 }
 
 ::ng-deep .mat-tab-label {
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
 }
 
 // Allows smooth scroll for entire page
@@ -364,12 +364,12 @@
 
 ::ng-deep .mat-option-text {
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 
 ::ng-deep .mat-form-field {
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 
 .major-layout {
@@ -429,7 +429,7 @@
   flex-direction: row;
   justify-content: center;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 
 .rowE {
@@ -497,7 +497,7 @@
 }
 .style {
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 @media (min-width: 900px) {
   .imageBox {
@@ -526,7 +526,7 @@
     display: flex;
     justify-content: center;
     color: #7e7171;
-    font-family: "Font Awesome 5 Free";
+    font-family:  'Poppins', sans-serif;
     font-size: large;
     flex-direction: column;
   }
@@ -536,7 +536,7 @@
     display: flex;
     justify-content: center;
     color: #7e7171;
-    font-family: "Font Awesome 5 Free";
+    font-family:  'Poppins', sans-serif;
     font-size: inherit;
     flex-direction: column;
   }
@@ -595,7 +595,7 @@
   display: flex;
   justify-content: center;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
   font-size: large;
 }
 
@@ -614,12 +614,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: "Font Awesome 5 Pro";
+  font-family:  'Poppins', sans-serif;
   color: #707070;
 }
 .text {
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
   display: flex;
   justify-content: center;
   flex-direction: column;

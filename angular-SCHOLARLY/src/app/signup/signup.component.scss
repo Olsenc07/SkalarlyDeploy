@@ -43,7 +43,7 @@
   overflow: visible;
   text-align: center;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 .center {
   display: flex;
@@ -69,7 +69,7 @@
   justify-content: center;
   flex-direction: column;
   font-size: x-large;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
 }
 .cBtnBl {
   display: flex;
@@ -88,7 +88,8 @@
   color: #418bba;
   flex-direction: column;
   font-size: x-large;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
+
 }
 .cBtnI {
   display: flex;
@@ -189,11 +190,11 @@
 .existing-account-style {
   color: #418bba;
   border-color: #707070;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
 }
 .existing-account-style-btn {
   background-color: white;
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
 }
 
 .existed-centered {
@@ -244,22 +245,23 @@
   }
 }
 ::ng-deep .mat-form-field {
-  font-family: "Font Awesome 5 Free", "Helvetic Neue";
+  font-family:  'Poppins', sans-serif;
 }
 ::ng-deep .mat-radio-button {
-  font-family: "Font Awesome 5 Free", "Helvetic Neue";
+  font-family: 'Cinzel', serif;
 }
 ::ng-deep .mat-button {
-  font-family: "Font Awesome 5 Free", "Helvetic Neue";
+  font-family: 'Cinzel', serif;
+
 }
 ::ng-deep .mat-flat-button {
-  font-family: "Font Awesome 5 Free", "Helvetic Neue";
+  font-family: 'Cinzel', serif;
 }
 ::ng-deep .mat-option {
-  font-family: "Font Awesome 5 Free", "Helvetic Neue";
+  font-family:  'Poppins', sans-serif;
 }
 ::ng-deep .mat-tab-label {
-  font-family: "Font Awesome 5 Free", "Helvetic Neue";
+  font-family: 'Cinzel', serif;
 }
 
 ::ng-deep .mat-tab-body-wrapper {
@@ -427,7 +429,7 @@
   display: flex;
   justify-content: center;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
   font-size: large;
 }
 .pP {
@@ -589,7 +591,7 @@
 .textU {
   display: flex;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
   justify-content: center;
   flex-direction: column;
 }
@@ -616,7 +618,7 @@
   justify-content: center;
   text-align: center;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 
 .text-layout {

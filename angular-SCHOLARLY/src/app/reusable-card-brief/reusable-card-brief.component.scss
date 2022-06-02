@@ -49,7 +49,7 @@
 }
 
 .d {
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
   color: black;
 }
 .description {
@@ -120,7 +120,7 @@
 .row1 {
   display: flex;
   flex-direction: row;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
   width: 100%;
   align-items: center;
 }
@@ -196,7 +196,7 @@
 @media (min-width: 550px) {
   .textSizeTit {
     font-size: medium;
-    font-family: "Font Awesome 5 Free";
+    font-family:  'Poppins', sans-serif;
     color: black;
     font-weight: bold;
   }
@@ -204,7 +204,7 @@
 @media (max-width: 550px) {
   .textSizeTit {
     font-size: inherit;
-    font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
     color: black;
     font-weight: bold;
   }
@@ -213,20 +213,20 @@
 @media (max-width: 550px) {
   .textSize {
     font-size: inherit;
-    font-family: "Font Awesome 5 Free";
+    font-family:  'Poppins', sans-serif;
   }
 }
 @media (min-width: 550px) {
   .textSize_ {
     // font-size: medium;
-    font-family: "Font Awesome 5 Free";
+    font-family:  'Poppins', sans-serif;
     color: #7e7171;
   }
 }
 @media (max-width: 550px) {
   .textSize_ {
     font-size: inherit;
-    font-family: "Font Awesome 5 Free";
+    font-family:  'Poppins', sans-serif;
     color: #7e7171;
   }
 }

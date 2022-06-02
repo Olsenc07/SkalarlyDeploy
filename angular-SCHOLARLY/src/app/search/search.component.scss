@@ -23,7 +23,7 @@
   font-size: xx-large;
   color: #7e7171;
   font-weight: 600;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
   text-align: center;
 }
 .center_single {
@@ -32,7 +32,7 @@
   margin: 2% 0%;
   font-size: x-large;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
   text-align: center;
 }
 .center_ {
@@ -103,7 +103,7 @@
     font-size: xx-large;
     font-weight: 700;
     color: #807070;
-    font-family: "Font Awesome 5 Free";
+    font-family:  'Poppins', sans-serif;
   }
 }
 @media (max-width: 400px) {
@@ -113,7 +113,7 @@
     font-size: x-large;
     font-weight: 700;
     color: #807070;
-    font-family: "Font Awesome 5 Free";
+    font-family:  'Poppins', sans-serif;
   }
 }
 .label_ {
@@ -121,7 +121,7 @@
   justify-content: center;
   font-size: xx-large;
   color: #7e7171;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
   margin-top: 2%;
 }
 .logo-layoutM {
@@ -343,7 +343,7 @@
   border: groove;
   background-color: #ffffff !important;
   color: #000000 !important;
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 .hideAll {
   display: none;
@@ -438,16 +438,16 @@ mat-form-field {
   width: 100%;
 }
 ::ng-deep .mat-form-field {
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 ::ng-deep .mat-radio-label-content {
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 ::ng-deep .mat-chip-list-wrapper {
   justify-content: center;
 }
 ::ng-deep .mat-select-value-text {
-  font-family: "Font Awesome 5 Free";
+  font-family:  'Poppins', sans-serif;
 }
 ::ng-deep .mat-list-base {
   padding-top: 0px;
