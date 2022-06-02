@@ -12,11 +12,23 @@
 .entirePage {
   display: flex;
   flex-direction: column;
-  font-family: "Font Awesome 5 Free";
+  // font-family: "Font Awesome 5 Free";
+  font-family: 'Cinzel', serif;
+
 }
 ::ng-deep .mat-dialog-title{
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Cinzel', serif;
+  font-size: x-large;
 }
+::ng-deep .mat-raised-button{
+  font-family:  'Poppins', sans-serif;
+
+}
+::ng-deep .mat-dialog-content{
+  font-family:  'Poppins', sans-serif;
+  font-size: '13.5px'
+}
+
 .icon{
   display: flex;
   font-size: xx-large;
