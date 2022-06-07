@@ -1,5 +1,6 @@
 // SERVER
-
+// Importing using node-js
+const http = require('http');
 // server.js
 
 /**
@@ -14,11 +15,39 @@
  const userRoutes = require('./routes/user');
  
 
+
+
 /**
  * App Variables
  */
  const app = express();
  const port = 3000;
+
+
+//  Socket.io
+const server =  http.createServer(app)
+const socketio = require('socket.io')
+const io = socketio(server)
+// Run when client connect
+io.on('connection', socket => {
+   console.log("New Connection");
+
+//    to the one user
+   socket.emit('message', 'Welcome to Chat Cord!',' User joined chat');
+
+//    Broadcase when a user connects
+// to all but the poster
+// socket.broadcast.emit() 
+
+// runs when client disco
+socket.on('disconnect', () => {
+    io.emit('message', 'user left chat')
+})
+
+// to all clients
+io.emit()
+});
+
 
 //  DataBase connection
 mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
@@ -103,8 +132,7 @@ app.get("/api/profiles", (req, res, next) => {
 
 
 // Express
-// Importing using node-js
-const http = require('http');
+
 // Change port to azure or Heroku...
 
 const routes = require('./backend/api');

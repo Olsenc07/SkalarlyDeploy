@@ -195,24 +195,25 @@ export class AuthService {
 
   // Other users
 
-  otherProfiles(value: string): any {
-    const username = value;
-    console.log('tities', username);
+  // otherProfiles(value: string): any {
+  //   const username = value;
+  //   console.log('tities', username);
 
-    const authDataInfo: AuthDataInfo = { username };
-    this.http
-      .post<{ message: string; infos: any }>(
-        'http://localhost:3000/api/user/otherInfo/' + username,
-        authDataInfo
-      )
-      .subscribe(
-        (data) => {},
-        (error) => {
-          this.authStatusListener.next(false);
-        }
-      );
-    console.log('http://localhost:3000/api/user/otherInfo/' + username);
-  }
+  //   const authDataInfo: AuthDataInfo = { username };
+  //   this.http
+  //     .post<{ message: string; infos: any }>(
+  //       'http://localhost:3000/api/user/otherInfo/' + username,
+  //       authDataInfo
+  //     )
+  //     .subscribe(
+  //       (data) => {},
+  //       (error) => {
+  //         this.authStatusListener.next(false);
+  //       }
+  //     );
+  //   console.log('http://localhost:3000/api/user/otherInfo/' + username);
+  // }
+
   getOtherInfo(id): any {
     this.http
       .get<{ message: string; infos: any }>(
@@ -258,8 +259,8 @@ export class AuthService {
         'http://localhost:3000/api/user/login',
         authData
       )
-      .subscribe(
-        (response) => {
+      .subscribe({
+        next: (response) => {
           const token = response.token;
           this.token = token;
           if (token) {
@@ -281,13 +282,13 @@ export class AuthService {
             console.log(this.token);
           }
         },
-        (error) => {
+        error: (error) => {
           this.authStatusListener.next(false);
           // this.snackBar.open('Failed to login, please try again', 'Will do!!', {
           //     duration: 4000
           // });
-        }
-      );
+        },
+      });
   }
 
   // Login first time
@@ -298,33 +299,32 @@ export class AuthService {
         'http://localhost:3000/api/user/login',
         authData
       )
-      .subscribe(
-        (response) => {
-          const token = response.token;
-          this.token = token;
+      .subscribe({
+        next: (response) => {
+          this.token = response.token;
           // if (this.isAuthenticated) {
           console.log('woof', this.isAuthenticated);
-          if (token) {
+
+          if ((this.token = null)) {
             // this.router.navigate(['/search']);
             this.snackBar.open('Welcome to the community', 'Thanks!!', {
               duration: 3000,
             });
-            const expiresInDuration = response.expiresIn;
-            this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;
-            this.userId = response.userId;
-            this.authStatusListener.next(true);
-            const now = new Date();
-            const expirationDate = new Date(
-              now.getTime() + expiresInDuration * 1000
-            );
-            this.saveAuthData(token, expirationDate, this.userId);
-            console.log(expirationDate);
-            console.log(this.token);
           }
-          // }
+          const expiresInDuration = response.expiresIn;
+
+          this.setAuthTimer(expiresInDuration);
+
+          this.userId = response.userId;
+          this.authStatusListener.next(true);
+          const now = new Date();
+          const expirationDate = new Date(
+            now.getTime() + expiresInDuration * 1000
+          );
+          this.saveAuthData(this.token, expirationDate, this.userId);
         },
-        (error) => {
+        error: (error) => {
           this.authStatusListener.next(false);
           this.snackBar.open(
             'Failed to login, make sure you verified yor email!',
@@ -333,8 +333,8 @@ export class AuthService {
               duration: 4000,
             }
           );
-        }
-      );
+        },
+      });
   }
 
   autoAuthUser(): any {
