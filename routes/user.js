@@ -17,7 +17,7 @@ var transporter = nodemailer.createTransport({
     service: 'outlook365',
     auth: {
         // gmail just change to gmail email and service to gmail
-        user: 'skalarly77@outlook.com',
+        user: 'skalarly7@outlook.com',
         pass: 'Hockey#$07'
     },
     tls: {
@@ -84,7 +84,7 @@ try{
                     
                 });
             const msg = {
-                from:' "Verify account" <skalarly77@outlook.com>',
+                from:' "Verify account" <skalarly7@outlook.com>',
                 to: user.email,
                 subject: 'Skalarly - verify account',
                 text: `We are excited to welcome you ${user.username} to the community!
@@ -168,7 +168,7 @@ router.post('/forgot', async(req, res) => {
       })
     }
     const msg = {
-        from:' "Reset Password" <skalarly777@outlook.com>',
+        from:' "Reset Password" <skalarly7@outlook.com>',
         to: user.email,
         subject: 'Skalarly - reset password',
         text: `Hello ${user.username} we hear you forgot your password.
@@ -403,33 +403,38 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
             }
             fetchedUser = user;
             return bcrypt.compare(reg.body.password, user.password)
-        }).catch (err => {
+
+            
+        
+        }); try {(User.findOne({isVerified: {$exists:true }}, {isVerified:'true'} )) 
+        console.log('dido',User.findOne({isVerified: {$exists:true }}, {isVerified:'true'} ))
+            // then(result => {
+            //         if (!result) {
+            //             return res.status(401).json({
+            //                 message: "Authentication failed "
+            //             });
+            //         }
+                    const token = jwt.sign(
+                        { email: fetchedUser.email, userId: fetchedUser._id },
+                        'And_Even_When_I_Cant_Say_I_Love_You_I_Love_You',
+                        { expiresIn: '1h' }
+                    );
+                    res.status(200).json({
+                        token: token,
+                        expiresIn: 3600,
+                        userId: fetchedUser._id
+                            });
+                // })
+            }catch (err) {
                 return res.status(401).json({
                     message: "Invalid authentication credentials!",
     
             })
-            });
-        
-        
-if(User.find({isVerified: {$exists:true }})) {
-    // then(result => {
-    //         if (!result) {
-    //             return res.status(401).json({
-    //                 message: "Authentication failed "
-    //             });
-    //         }
-            const token = jwt.sign(
-                { email: fetchedUser.email, userId: fetchedUser._id },
-                'And_Even_When_I_Cant_Say_I_Love_You_I_Love_You',
-                { expiresIn: '1h' }
-            );
-            res.status(200).json({
-                token: token,
-                expiresIn: 3600,
-                userId: fetchedUser._id
-                    });
-        // })
-    }
+            };
+            
+
+        console.log('Chaz')
+
 });
 
 

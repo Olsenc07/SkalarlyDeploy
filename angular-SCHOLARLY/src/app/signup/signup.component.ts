@@ -43,6 +43,7 @@ import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 import { ImageCroppedEvent, Dimensions } from 'ngx-image-cropper';
 import { Profile, NewUserId, StoreService } from '../services/store.service';
 import { mimeType } from '../post-page/mime-type.validator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../services/auth.service';
 import { Courses } from 'nikel';
@@ -277,7 +278,8 @@ export class SignupComponent implements OnInit, OnDestroy {
     public classListService: ClassListService,
     private http: HttpClient,
     private storeService: StoreService,
-    public authService: AuthService
+    public authService: AuthService,
+    private snackBar: MatSnackBar
   ) {
     // this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
     //   map((code: string | null) =>
@@ -539,7 +541,8 @@ export class LoginPopUpComponent implements OnDestroy {
   constructor(
     public authService: AuthService,
     public dialog: MatDialog,
-    public dialogRef: MatDialogRef<LoginPopUpComponent>
+    public dialogRef: MatDialogRef<LoginPopUpComponent>,
+    private snackBar: MatSnackBar
   ) {}
 
   toggleVisibilty(): any {
@@ -574,7 +577,8 @@ export class LoginPopUpComponent implements OnDestroy {
       });
     // }
     // else {
-    this.dialogRef.close();
+    // this.dialogRef.close();
+
     this.dialog.open(LoginPopUpComponent, { disableClose: true });
     // }
   }

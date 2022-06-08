@@ -44,7 +44,7 @@ export class AuthService {
     this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(
       () => {
         this.snackBar.open(
-          'Check your email to verify your account',
+          'Check your email and junk mail to verify your account',
           'Will do!!'
         );
       },
@@ -267,7 +267,7 @@ export class AuthService {
           this.token = token;
           if (token) {
             this.router.navigate(['/search']);
-            this.snackBar.open('Welcome Fellow Skalar!', 'Thanks!! ', {
+            this.snackBar.open('Welcome Fellow Skalar!', 'Thanks! ', {
               duration: 3000,
             });
             const expiresInDuration = response.expiresIn;
@@ -304,16 +304,10 @@ export class AuthService {
       .subscribe({
         next: (response) => {
           this.token = response.token;
-          // if (this.isAuthenticated) {
-          console.log('woof', this.isAuthenticated);
-          console.log('token', this.token);
-          // if ((this.token = null)) {
-          // this.router.navigate(['/search']);
+          this.isAuthenticated = true;
           this.snackBar.open('Welcome to the community', 'Thanks!', {
             duration: 3000,
           });
-          this.isAuthenticated = true;
-          // }
           const expiresInDuration = response.expiresIn;
 
           this.setAuthTimer(expiresInDuration);
