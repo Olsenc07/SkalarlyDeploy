@@ -39,13 +39,16 @@ io.on('connection', socket => {
 // to all but the poster
 // socket.broadcast.emit() 
 
-// runs when client disco
+// runs when client disconnect
 socket.on('disconnect', () => {
     io.emit('message', 'user left chat')
 })
 
-// to all clients
-io.emit()
+// Listen for chatMessage
+socket.on('chatMessage', msg => {
+    console.log(msg)
+    io.emit('message', msg);
+})
 });
 
 
