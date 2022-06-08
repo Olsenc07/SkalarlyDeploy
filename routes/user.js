@@ -403,15 +403,21 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
             }
             fetchedUser = user;
             return bcrypt.compare(reg.body.password, user.password)
-        })
-if(User.find({isVerified: {$exists:true }})){
-
-        then(result => {
-            if (!result) {
+        }).catch (err => {
                 return res.status(401).json({
-                    message: "Authentication failed "
-                });
-            }
+                    message: "Invalid authentication credentials!",
+    
+            })
+            });
+        
+        
+if(User.find({isVerified: {$exists:true }})) {
+    // then(result => {
+    //         if (!result) {
+    //             return res.status(401).json({
+    //                 message: "Authentication failed "
+    //             });
+    //         }
             const token = jwt.sign(
                 { email: fetchedUser.email, userId: fetchedUser._id },
                 'And_Even_When_I_Cant_Say_I_Love_You_I_Love_You',
@@ -422,20 +428,8 @@ if(User.find({isVerified: {$exists:true }})){
                 expiresIn: 3600,
                 userId: fetchedUser._id
                     });
-        })
-        .catch(err => {
-            return res.status(401).json({
-                message: "Invalid authentication credentials!",
-
-            });
-        });
-    }else{
-            return res.status(401).json({
-                message: "Invalid authentication credentials!",
-
-            });
-        };
-    
+        // })
+    }
 });
 
 

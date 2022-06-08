@@ -309,7 +309,7 @@ export class AuthService {
           console.log('token', this.token);
           // if ((this.token = null)) {
           // this.router.navigate(['/search']);
-          this.snackBar.open('Welcome to the community', 'Thanks!!', {
+          this.snackBar.open('Welcome to the community', 'Thanks!', {
             duration: 3000,
           });
           this.isAuthenticated = true;
@@ -330,7 +330,7 @@ export class AuthService {
           this.authStatusListener.next(false);
           this.snackBar.open(
             'Failed to login, make sure you verified yor email!',
-            'Will do!!',
+            'Will do!',
             {
               duration: 4000,
             }
@@ -404,7 +404,7 @@ export class AuthService {
 
   // Reset Password
   resetPassword(email: string): any {
-    this.snackBar.open('Check your email to reset your password', 'Will do!!');
+    this.snackBar.open('Check your email to reset your password', 'Will do!');
     const authData: AuthData = { email };
     this.http
       .post('http://localhost:3000/api/user/forgot', authData)
