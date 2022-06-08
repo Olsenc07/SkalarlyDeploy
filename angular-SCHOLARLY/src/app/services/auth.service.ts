@@ -63,6 +63,7 @@ export class AuthService {
       }
     );
   }
+
   // Create userinfo
   createUserInfo(
     username: string,
@@ -122,8 +123,8 @@ export class AuthService {
         'http://localhost:3000/api/user/info',
         userData
       )
-      .subscribe(
-        (responseData) => {
+      .subscribe({
+        next: (responseData) => {
           const post: AuthDataInfo = {
             id: responseData.post.id,
             username,
@@ -148,11 +149,12 @@ export class AuthService {
           this.infosUpdated.next([...this.infos]);
           // this.snackBar.open('Sign in with your new account', 'Will do!!');
         },
-        (error) => {
+        error: (error) => {
           this.authStatusListener.next(false);
-        }
-      );
+        },
+      });
   }
+
   getInfoUpdateListener(): any {
     return this.infosUpdated.asObservable();
   }
@@ -296,7 +298,7 @@ export class AuthService {
     const authData: AuthData = { email, password };
     this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
-        'http://localhost:3000/api/user/login',
+        'http://localhost:3000/api/user/login1',
         authData
       )
       .subscribe({
@@ -304,14 +306,14 @@ export class AuthService {
           this.token = response.token;
           // if (this.isAuthenticated) {
           console.log('woof', this.isAuthenticated);
-
-          if ((this.token = null)) {
-            // this.router.navigate(['/search']);
-            this.snackBar.open('Welcome to the community', 'Thanks!!', {
-              duration: 3000,
-            });
-            this.isAuthenticated = true;
-          }
+          console.log('token', this.token);
+          // if ((this.token = null)) {
+          // this.router.navigate(['/search']);
+          this.snackBar.open('Welcome to the community', 'Thanks!!', {
+            duration: 3000,
+          });
+          this.isAuthenticated = true;
+          // }
           const expiresInDuration = response.expiresIn;
 
           this.setAuthTimer(expiresInDuration);
@@ -404,12 +406,14 @@ export class AuthService {
   resetPassword(email: string): any {
     this.snackBar.open('Check your email to reset your password', 'Will do!!');
     const authData: AuthData = { email };
-    this.http.post('http://localhost:3000/api/user/forgot', authData).subscribe(
-      () => {},
-      (error) => {
-        this.authStatusListener.next(false);
-      }
-    );
+    this.http
+      .post('http://localhost:3000/api/user/forgot', authData)
+      .subscribe({
+        next: () => {},
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
   }
 
   // Update Password
@@ -417,8 +421,8 @@ export class AuthService {
     const authData: AuthData = { password, secretCode };
     this.http
       .post('http://localhost:3000/api/user/reset-password', authData)
-      .subscribe(
-        () => {
+      .subscribe({
+        next: () => {
           const snackBarRef = this.snackBar.open(
             'Password has been changed',
             'Login!!',
@@ -430,12 +434,12 @@ export class AuthService {
             this.router.navigate(['/login']);
           });
         },
-        (error) => {
+        error: (error) => {
           this.snackBar.open('Invalid reset code', 'Check your email', {
             duration: 3000,
           });
           this.authStatusListener.next(false);
-        }
-      );
+        },
+      });
   }
 }

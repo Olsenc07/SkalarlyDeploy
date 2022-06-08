@@ -391,6 +391,54 @@ router.put("/:id/unfollow", async (req, res) => {
 })
 
 
+// LoginFirst Time
+router.post("/login1", verifyEmail, (reg, res, next) => {
+    let fetchedUser;
+    User.findOne({ email: reg.body.email })
+        .then(user => {
+            if (!user) {
+                return res.status(401).json({
+                    message: "Authentication failed "
+                });
+            }
+            fetchedUser = user;
+            return bcrypt.compare(reg.body.password, user.password)
+        })
+if(User.find({isVerified: {$exists:true }})){
+
+        then(result => {
+            if (!result) {
+                return res.status(401).json({
+                    message: "Authentication failed "
+                });
+            }
+            const token = jwt.sign(
+                { email: fetchedUser.email, userId: fetchedUser._id },
+                'And_Even_When_I_Cant_Say_I_Love_You_I_Love_You',
+                { expiresIn: '1h' }
+            );
+            res.status(200).json({
+                token: token,
+                expiresIn: 3600,
+                userId: fetchedUser._id
+                    });
+        })
+        .catch(err => {
+            return res.status(401).json({
+                message: "Invalid authentication credentials!",
+
+            });
+        });
+    }else{
+            return res.status(401).json({
+                message: "Invalid authentication credentials!",
+
+            });
+        };
+    
+});
+
+
 // Login
 router.post("/login", verifyEmail, (reg, res, next) => {
     let fetchedUser;
