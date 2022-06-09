@@ -402,7 +402,7 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
                 });
             }
             fetchedUser = user;
-            console.log('name',fetchedUser)
+            // console.log('name',fetchedUser)
             return bcrypt.compare(reg.body.password, user.password)
            
         })

@@ -46,8 +46,8 @@ export class AuthService {
       .subscribe({
         next: () => {
           this.snackBar.open(
-            'Check your email and junk mail to verify your account',
-            'Will do!!'
+            'Check your email and junk mail to verify your account before logining in.',
+            'Will do!'
           );
         },
         error: (error) => {
@@ -286,13 +286,8 @@ export class AuthService {
         next: (response) => {
           this.token = response.token;
           this.isAuthenticated = true;
-          this.snackBar.open('Welcome to the community', 'Thanks!', {
-            duration: 3000,
-          });
           const expiresInDuration = response.expiresIn;
-
           this.setAuthTimer(expiresInDuration);
-
           this.userId = response.userId;
           this.authStatusListener.next(true);
           const now = new Date();
