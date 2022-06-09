@@ -44,7 +44,7 @@
   text-align: center;
   color: #7e7171;
   font-family:  'Poppins', sans-serif;
-  margin-top: 1%;
+  margin-top: 5%;
 }
 .center {
   display: flex;
@@ -595,6 +595,7 @@
   font-family:  'Poppins', sans-serif;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 7%;
 }
 @media (min-width: 500px) {
   .trash {
