@@ -560,20 +560,20 @@ export class LoginPopUpComponent implements OnDestroy {
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.value);
     this.isLoading = true;
     this.userId = this.authService.getUserId();
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    console.log('boolean?', this.userIsAuthenticated);
-    // if (this.userIsAuthenticated) {
     this.authService.loginFirst(this.email.value, this.password.value);
+    // this.userIsAuthenticated = this.authService.getIsAuth();
+    // console.log('boolean?', this.userIsAuthenticated);
+    // if (this.userIsAuthenticated) {
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
+      .subscribe((isAuthenticated: boolean) => {
         // Added the if else
+        console.log('hey chase :)');
+        this.dialogRef.close(LoginPopUpComponent);
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
-        this.dialogRef.close();
       });
     // }
     // else {

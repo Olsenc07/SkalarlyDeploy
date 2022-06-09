@@ -41,27 +41,29 @@ export class AuthService {
   // User and their info
   createUser(email: string, username: string, password: string): any {
     const authData: AuthData = { email, username, password };
-    this.http.post('http://localhost:3000/api/user/signup', authData).subscribe(
-      () => {
-        this.snackBar.open(
-          'Check your email and junk mail to verify your account',
-          'Will do!!'
-        );
-      },
-      (error) => {
-        this.authStatusListener.next(false);
-        const snackBarRef = this.snackBar.open(
-          'Email or Username is already taken',
-          'Retry!!',
-          {
-            duration: 3000,
-          }
-        );
-        snackBarRef.afterDismissed().subscribe(() => {
-          window.location.reload();
-        });
-      }
-    );
+    this.http
+      .post('http://localhost:3000/api/user/signup', authData)
+      .subscribe({
+        next: () => {
+          this.snackBar.open(
+            'Check your email and junk mail to verify your account',
+            'Will do!!'
+          );
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+          const snackBarRef = this.snackBar.open(
+            'Email or Username is already taken',
+            'Retry!!',
+            {
+              duration: 3000,
+            }
+          );
+          snackBarRef.afterDismissed().subscribe(() => {
+            window.location.reload();
+          });
+        },
+      });
   }
 
   // Create userinfo
@@ -194,27 +196,6 @@ export class AuthService {
         this.infosUpdated.next([...this.infos]);
       });
   }
-
-  // Other users
-
-  // otherProfiles(value: string): any {
-  //   const username = value;
-  //   console.log('tities', username);
-
-  //   const authDataInfo: AuthDataInfo = { username };
-  //   this.http
-  //     .post<{ message: string; infos: any }>(
-  //       'http://localhost:3000/api/user/otherInfo/' + username,
-  //       authDataInfo
-  //     )
-  //     .subscribe(
-  //       (data) => {},
-  //       (error) => {
-  //         this.authStatusListener.next(false);
-  //       }
-  //     );
-  //   console.log('http://localhost:3000/api/user/otherInfo/' + username);
-  // }
 
   getOtherInfo(id): any {
     this.http
