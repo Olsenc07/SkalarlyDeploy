@@ -2,6 +2,7 @@
   <meta charset="utf-8">
   <title>AngularSCHOLARLY</title>
   <base href="/">
+  
   <script src="https://kit.fontawesome.com/3b5f3d4144.js" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -19,10 +20,13 @@
 <style>@import"https://fonts.googleapis.com/icon?family=Material+Icons";html,body{height:100%}body{margin:0;background:white}.mat-typography{font:400 14px/20px Roboto,Helvetica Neue,sans-serif;letter-spacing:normal}</style><link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.css"></noscript></head>
 <body class="mat-typography igx-typography">
   <app-root>
-    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+
     <script>
       var socket = io();
     </script>
+
   </app-root>
 <script src="runtime.js" type="module"></script><script src="polyfills.js" type="module"></script><script src="scripts.js" defer></script><script src="main.js" type="module"></script>
 

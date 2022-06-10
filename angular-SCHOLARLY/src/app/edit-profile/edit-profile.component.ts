@@ -29,7 +29,6 @@ import { Profile, StoreService } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AccountTextComponent } from '../signup/signup.component';
 
-
 interface Gender {
   name: string;
 }
@@ -64,8 +63,6 @@ export class EditProfileComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription;
 
-
-
   // Showcase
   i = 0;
   // Groups joined
@@ -81,6 +78,24 @@ export class EditProfileComponent implements OnInit {
   // These show inputs in real time but arn't whats stored
   filteredCodes: Observable<string[]>;
   filteredCodesP: Observable<string[]>;
+
+  genders: string[] = [
+    '',
+    'Female',
+    'Male',
+    'Transgender',
+    'Other',
+    'Agender',
+    'Bigender',
+    'Intersex',
+    'Gender Fluid',
+    'Gender Queer',
+    'Non-Binary',
+    'Pangender',
+    'Trans Male',
+    'Trans Female',
+    'Two Spirit',
+  ];
 
   classes: string[] = [];
   classesP: string[] = [];
@@ -108,18 +123,15 @@ export class EditProfileComponent implements OnInit {
   birthday: FormControl = new FormControl('');
   genderChoice: FormControl = new FormControl('');
 
-
   // I think each code input is a different form control, save into the array
   CodeCompleted: FormControl = new FormControl('');
   // Need to push form controls from the users input, into this
   // Form Array, which gets passed
   CodePursuing: FormControl = new FormControl('');
 
-
   // Completed = new FormArray({
   //   CodeCompleted
   // })
-
 
   editForm = new FormGroup({
     major: this.major,
@@ -138,13 +150,6 @@ export class EditProfileComponent implements OnInit {
     showCase: this.showCase,
   });
   selectedIndex = 0;
-  genders: Gender[] = [
-    { name: '' },
-    { name: 'Female' },
-    { name: 'Male' },
-    { name: 'Other' },
-
-  ];
 
   // Group list;
   gList = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
@@ -153,7 +158,8 @@ export class EditProfileComponent implements OnInit {
   // pList = ['', ''];
 
   // Connects to save showcases in the data base
-  list = ['../../assets/Pics/IMG-8413.PNG',
+  list = [
+    '../../assets/Pics/IMG-8413.PNG',
     '../../assets/Pics/IMG-8619.PNG',
     '../../assets/Pics/WhiteSquareInAppLogo.jpg',
     '../../assets/Pics/ProperInAppLogo.jpeg ',
@@ -169,7 +175,7 @@ export class EditProfileComponent implements OnInit {
     public classListService: ClassListService,
     private http: HttpClient,
     private storeService: StoreService,
-    public postService: PostService,
+    public postService: PostService
   ) {
     // this.bio.valueChanges.subscribe((v) => this.bioLength.next(v.length));
 
@@ -178,7 +184,6 @@ export class EditProfileComponent implements OnInit {
         code ? this._filter(code) : this.classListService.allClasses().slice()
       )
     );
-
 
     this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
       map((codeP: string | null) =>
@@ -193,13 +198,11 @@ export class EditProfileComponent implements OnInit {
     return this.removeShowCase;
   }
   hideAdd(): boolean {
-
     this.clicked = !this.clicked;
     return this.clicked;
   }
   uploadFile(): any {
     document.getElementById('fileInput').click();
-
   }
   uploadFileP(): any {
     document.getElementById('fileInputP').click();
@@ -237,7 +240,6 @@ export class EditProfileComponent implements OnInit {
     return this.list;
   }
 
-
   imagePreview(event: any): void {
     if (event.target.files && event.target.files[0]) {
       const reader = new FileReader();
@@ -250,7 +252,6 @@ export class EditProfileComponent implements OnInit {
         this.url = Event.target.result;
       };
     }
-
   }
 
   add(event: MatChipInputEvent): void {
@@ -314,11 +315,12 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.postService.getPosts();
-    this.postsSub = this.postService.getPostUpdateListener()
+    this.postsSub = this.postService
+      .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
-      this.posts = posts;
-  });
-}
+        this.posts = posts;
+      });
+  }
 
   clearMajor(): void {
     this.major.setValue('');
@@ -344,7 +346,6 @@ export class EditProfileComponent implements OnInit {
     this.profilePic.setValue('');
     this.cropImgPreview = '';
     document.getElementById('ProfilePic').removeAttribute('src');
-
   }
 
   clearPic1(): void {
@@ -360,7 +361,6 @@ export class EditProfileComponent implements OnInit {
       return this.g;
     }
     console.log(this.g);
-
   }
   nextGroupCard(): number {
     ++this.g;
@@ -382,7 +382,6 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
-
   // Posts made
   previousPostCard(): number {
     --this.p;
@@ -391,7 +390,6 @@ export class EditProfileComponent implements OnInit {
       return this.p;
     }
     console.log(this.p);
-
   }
   nextPostCard(): number {
     ++this.p;
@@ -411,7 +409,6 @@ export class EditProfileComponent implements OnInit {
     // }
     this.postService.deletePost(postId);
   }
-
 
   // Showcase edit
   previousCard(): number {
@@ -445,7 +442,6 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSubmit(): void {
-
     console.log(this.editForm.value);
     // TODO: convert form fields to Profile
 
@@ -466,7 +462,6 @@ export class EditProfileComponent implements OnInit {
       ShowCase: this.showCase.value,
       // ShowCasse: this.url,
 
-
       // cropImgPreview: this.cropImgPreview,
       // Converted base64 url to a file
       // Trying to store this chosen cropped value in service
@@ -475,6 +470,5 @@ export class EditProfileComponent implements OnInit {
 
     // TODO: replace null with Profile object
     this.storeService.setProfile(profile);
-
   }
 }

@@ -1,9 +1,11 @@
+
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>AngularSCHOLARLY</title>
   <base href="/">
+  
   <script src="https://kit.fontawesome.com/3b5f3d4144.js" crossorigin="anonymous" ></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -21,10 +23,13 @@
 </head>
 <body class="mat-typography igx-typography">
   <app-root>
-    <script src="/socket.io/socket.io.js"></script>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <script src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" crossorigin="anonymous"></script>
+
     <script>
       var socket = io();
     </script>
+
   </app-root>
 </body>
 </html>

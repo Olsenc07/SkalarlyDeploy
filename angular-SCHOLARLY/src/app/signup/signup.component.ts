@@ -111,6 +111,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     'Two Spirit',
   ];
 
+  pronoun: string[] = ['', 'She/Her', 'He/His'];
   url: string;
 
   MatIconModule: any;

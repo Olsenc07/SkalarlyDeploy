@@ -3,6 +3,7 @@
 
     <mat-tab-group [selectedIndex]="selectedIndex" mat-align-tabs="center">
 
+      <!-- disabled -->
       <mat-tab disabled>
 
 
@@ -135,8 +136,8 @@
           </div>
         </form>
       </mat-tab>
-
-      <mat-tab class="sndPage" disabled>
+<!-- disabled -->
+      <mat-tab disabled class="sndPage" >
         <form [formGroup]="personalizeForm" enctype="multipart/form-data">
           <ng-template mat-tab-label>
             <mat-icon><span class="material-icons-two-tone">
@@ -236,12 +237,15 @@
                   </mat-autocomplete>
                 </mat-form-field>
               </div>
-              <div class="center">
-                <mat-form-field>
+              <!-- class="center" -->
+              <div >
+                <mat-form-field appearance="fill" class="gender">
                   <input matInput placeholder="Prefered Pronouns" [formControl]="pronouns" />
-                  <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
-                  <mat-icon class="asthetic-adds">close</mat-icon>
-                </button> -->
+                  <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let pronoun_ of pronoun" [value]="pronouns">
+                      {{pronoun_}}
+                    </mat-option>
+                  </mat-autocomplete>
                 </mat-form-field>
               </div>
             </div>
@@ -275,8 +279,8 @@
 
 
 
-      <!-- SnapShots -->
-      <mat-tab disabled>
+      <!-- SnapShots  disabled-->
+      <mat-tab disabled >
         <!-- <form [formGroup]="showCase"> -->
         <ng-template mat-tab-label>
           <mat-icon> <span class="material-icons-two-tone">
@@ -380,6 +384,11 @@
         </div>
         <!-- </form> -->
       </mat-tab>
+
+
+
+
+      <!-- disabled -->
       <mat-tab disabled>
         <ng-template mat-tab-label>
           <mat-icon class=""><span class="material-icons-two-tone">
