@@ -394,6 +394,8 @@ router.put("/:id/unfollow", async (req, res) => {
 // LoginFirst Time
 router.post("/login1", verifyEmail, (reg, res, next) => {
     let fetchedUser;
+//    if (User.findOne({emailToken: { $type:null}})){
+// is verified true
     User.findOne({ email: reg.body.email })
         .then(user => {
             if (!user) {
@@ -403,11 +405,9 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
             }
             fetchedUser = user;
             // console.log('name',fetchedUser)
-            return bcrypt.compare(reg.body.password, user.password)
-           
+            return bcrypt.compare(reg.body.password, user.password) 
         })
-            // (User.findOne({emailToken: {$exists:true }}, {emailToken: null} )) 
-        
+        // (User.findOne({emailToken: {$exists:true }}, {emailToken: null} )) 
             .then(result => {
                     if (!result) {
                         return res.status(401).json({
@@ -431,10 +431,12 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
     
             })
             });
-            
+        // }else{
+        //     return res.status(401).json({
+        //         message: "Make sure to verify your email!",
 
-   
-
+        // })
+        // }
 });
 
 

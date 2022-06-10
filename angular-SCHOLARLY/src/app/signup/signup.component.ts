@@ -568,21 +568,23 @@ export class LoginPopUpComponent implements OnDestroy {
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe((isAuthenticated: boolean) => {
-        // this.dialog.open(LoginPopUpComponent, { disableClose: true });
-        this.dialogRef.close();
+        // this.dialog.open(LoginPopUpComponent, { disableClose: true })
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
         // Added the if else
-        try {
-          this.snackBar.open('Welcome to the community', 'Thanks!', {
-            duration: 3000,
-          });
-        } catch (error) {
-          this.snackBar.open('Unable to login', 'Try again!', {
-            duration: 3000,
-          });
-        }
       });
+    if (this.userIsAuthenticated === true) {
+      console.log(this.userIsAuthenticated);
+      this.dialogRef.close();
+      this.snackBar.open('Welcome to the community', 'Thanks!', {
+        duration: 3000,
+      });
+    } else {
+      this.dialog.open(LoginPopUpComponent, { disableClose: true });
+      this.snackBar.open('Failed to login', 'Ok!', {
+        duration: 3000,
+      });
+    }
   }
 
   ngOnDestroy() {
