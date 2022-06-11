@@ -46,7 +46,7 @@ export class AuthService {
       .subscribe({
         next: () => {
           this.snackBar.open(
-            'Check your email and junk mail to verify your account before logining in',
+            'Check your email and junk mail to verify your account before logining in.',
             'Will do!'
           );
         },
@@ -374,7 +374,7 @@ export class AuthService {
 
   // Reset Password
   resetPassword(email: string): any {
-    this.snackBar.open('Check your email to reset your password', 'Will do!');
+    this.snackBar.open('Check your email to reset your password.', 'Will do!');
     const authData: AuthData = { email };
     this.http
       .post('http://localhost:3000/api/user/forgot', authData)
@@ -405,7 +405,7 @@ export class AuthService {
           });
         },
         error: (error) => {
-          this.snackBar.open('Invalid reset code', 'Check your email', {
+          this.snackBar.open('Invalid reset code.', 'Check your email', {
             duration: 3000,
           });
           this.authStatusListener.next(false);

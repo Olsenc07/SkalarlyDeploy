@@ -17,7 +17,7 @@ var transporter = nodemailer.createTransport({
     service: 'outlook365',
     auth: {
         // gmail just change to gmail email and service to gmail
-        user: 'skalarly7@outlook.com',
+        user: 'skalarly7777@outlook.com',
         pass: 'Hockey#$07'
     },
     tls: {
@@ -84,7 +84,7 @@ try{
                     
                 });
             const msg = {
-                from:' "Verify account" <skalarly7@outlook.com>',
+                from:' "Verify account" <skalarly7777@outlook.com>',
                 to: user.email,
                 subject: 'Skalarly - verify account',
                 text: `We are excited to welcome you ${user.username} to the community!
@@ -168,7 +168,7 @@ router.post('/forgot', async(req, res) => {
       })
     }
     const msg = {
-        from:' "Reset Password" <skalarly7@outlook.com>',
+        from:' "Reset Password" <skalarly7777@outlook.com>',
         to: user.email,
         subject: 'Skalarly - reset password',
         text: `Hello ${user.username} we hear you forgot your password.
@@ -394,7 +394,19 @@ router.put("/:id/unfollow", async (req, res) => {
 // LoginFirst Time
 router.post("/login1", verifyEmail, (reg, res, next) => {
     let fetchedUser;
-//    if (User.findOne({emailToken: { $type:null}})){
+   const test_1 =  User.findOne( { email: reg.body.email},
+      {$project: {isVerified: 'true'}}
+    // 'isVerified'
+      );
+    console.log('find username', test_1);
+    console.log('find me', test_1.projection());
+
+//    const test_2 =  User.findOne({isVerified: { $regex: 'true'}});
+
+   try 
+//    .projection() == 'true'
+   { if( test_1 ){
+    //    console.log('Chaz mataz',test_1, 'second test', test_1)
 // is verified true
     User.findOne({ email: reg.body.email })
         .then(user => {
@@ -404,7 +416,7 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
                 });
             }
             fetchedUser = user;
-            // console.log('name',fetchedUser)
+            console.log('name',fetchedUser)
             return bcrypt.compare(reg.body.password, user.password) 
         })
         // (User.findOne({emailToken: {$exists:true }}, {emailToken: null} )) 
@@ -436,7 +448,19 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
         //         message: "Make sure to verify your email!",
 
         // })
-        // }
+        }else{
+            console.log('kari')
+            return res.status(401).json({
+                message: "Remember to authenticate your email!"
+            })
+        }
+   }catch(error){
+       console.log('erika')
+    return res.status(401).json({
+        message: "Remember to authenticate your email!",
+
+})
+   }
 });
 
 

@@ -573,7 +573,7 @@ export class LoginPopUpComponent implements OnDestroy {
         this.userId = this.authService.getUserId();
         // Added the if else
       });
-    if (this.userIsAuthenticated === true) {
+    if (this.userIsAuthenticated) {
       console.log(this.userIsAuthenticated);
       this.dialogRef.close();
       this.snackBar.open('Welcome to the community', 'Thanks!', {
@@ -581,9 +581,13 @@ export class LoginPopUpComponent implements OnDestroy {
       });
     } else {
       this.dialog.open(LoginPopUpComponent, { disableClose: true });
-      this.snackBar.open('Failed to login', 'Ok!', {
-        duration: 3000,
-      });
+      this.snackBar.open(
+        'Failed to login. Remember to authenticate your email',
+        'Ok!',
+        {
+          duration: 3000,
+        }
+      );
     }
   }
 
