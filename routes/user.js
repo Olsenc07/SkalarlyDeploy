@@ -394,16 +394,21 @@ router.put("/:id/unfollow", async (req, res) => {
 // LoginFirst Time
 router.post("/login1", verifyEmail, (reg, res, next) => {
     let fetchedUser;
-  try { const Verified = User.findOne( { email: reg.body.email},
-      {isVerified: 'true'} );
-   
+  try {
+       User.findOne( { email: reg.body.email},
+      {isVerified: 'true'} )
+      .then(user => {
+        if (!user) {
+            return res.status(401).json({
+                message: "Authentication failed "
+            });
+        }
+        fetchedUser = user;
+        console.log('name',fetchedUser.isVerified)
+       
+    });
 
-
-
-//    const test_2 =  User.findOne({isVerified: { $regex: 'true'}});
-
-   
-//    .projection() == 'true'
+if (fetchedUser.isVerified){
    
    
     User.findOne({ email: reg.body.email })
@@ -418,7 +423,6 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
             console.log('name',fetchedUser.isVerified)
             return bcrypt.compare(reg.body.password, user.password) 
         })
-        // (User.findOne({emailToken: {$exists:true }}, {emailToken: null} )) 
             .then(result => {
                     if (!result) {
                         return res.status(401).json({
@@ -442,6 +446,12 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
     
             })
             });
+        }else{
+            return res.status(401).json({
+                message: "Remember to authenticate your email!"
+            })
+        }
+
     }catch{
         console.log('kari')
         return res.status(401).json({

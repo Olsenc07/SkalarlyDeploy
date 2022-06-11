@@ -565,21 +565,33 @@ export class LoginPopUpComponent implements OnDestroy {
     this.userId = this.authService.getUserId();
     this.authService.loginFirst(this.email.value, this.password.value);
     // this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authListenerSubs = this.authService
-      .getAuthStatusListener()
-      .subscribe((isAuthenticated: boolean) => {
-        // this.dialog.open(LoginPopUpComponent, { disableClose: true })
-        this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
-        // Added the if else
-      });
-    if (this.userIsAuthenticated) {
-      console.log(this.userIsAuthenticated);
-      this.dialogRef.close();
-      this.snackBar.open('Welcome to the community', 'Thanks!', {
-        duration: 3000,
-      });
-    } else {
+
+    try {
+      this.authListenerSubs = this.authService
+        .getAuthStatusListener()
+        .subscribe((isAuthenticated: boolean) => {
+          // this.dialog.open(LoginPopUpComponent, { disableClose: true })
+          this.userIsAuthenticated = isAuthenticated;
+          this.userId = this.authService.getUserId();
+          // Added the if else
+          if (this.userIsAuthenticated) {
+            console.log(this.userIsAuthenticated);
+            this.dialogRef.close();
+            this.snackBar.open('Welcome to the community', 'Thanks!', {
+              duration: 3000,
+            });
+          } else {
+            this.dialog.open(LoginPopUpComponent, { disableClose: true });
+            this.snackBar.open(
+              'Failed to login. Remember to authenticate your email',
+              'Ok!',
+              {
+                duration: 3000,
+              }
+            );
+          }
+        });
+    } catch {
       this.dialog.open(LoginPopUpComponent, { disableClose: true });
       this.snackBar.open(
         'Failed to login. Remember to authenticate your email',
