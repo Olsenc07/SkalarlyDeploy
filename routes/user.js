@@ -394,20 +394,18 @@ router.put("/:id/unfollow", async (req, res) => {
 // LoginFirst Time
 router.post("/login1", verifyEmail, (reg, res, next) => {
     let fetchedUser;
-   const test_1 =  User.findOne( { email: reg.body.email},
-      {$project: {isVerified: 'true'}}
-    // 'isVerified'
-      );
-    console.log('find username', test_1);
-    console.log('find me', test_1.projection());
+  try { const Verified = User.findOne( { email: reg.body.email},
+      {isVerified: 'true'} );
+   
+
+
 
 //    const test_2 =  User.findOne({isVerified: { $regex: 'true'}});
 
-   try 
+   
 //    .projection() == 'true'
-   { if( test_1 ){
-    //    console.log('Chaz mataz',test_1, 'second test', test_1)
-// is verified true
+   
+   
     User.findOne({ email: reg.body.email })
         .then(user => {
             if (!user) {
@@ -416,7 +414,8 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
                 });
             }
             fetchedUser = user;
-            console.log('name',fetchedUser)
+            // if (fetchedUser.isVerified)
+            console.log('name',fetchedUser.isVerified)
             return bcrypt.compare(reg.body.password, user.password) 
         })
         // (User.findOne({emailToken: {$exists:true }}, {emailToken: null} )) 
@@ -443,24 +442,12 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
     
             })
             });
-        // }else{
-        //     return res.status(401).json({
-        //         message: "Make sure to verify your email!",
-
-        // })
-        }else{
-            console.log('kari')
-            return res.status(401).json({
-                message: "Remember to authenticate your email!"
-            })
-        }
-   }catch(error){
-       console.log('erika')
-    return res.status(401).json({
-        message: "Remember to authenticate your email!",
-
-})
-   }
+    }catch{
+        console.log('kari')
+        return res.status(401).json({
+            message: "Remember to authenticate your email!"
+        })
+    }
 });
 
 
