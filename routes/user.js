@@ -393,35 +393,23 @@ router.put("/:id/unfollow", async (req, res) => {
 
 // LoginFirst Time
 router.post("/login1", verifyEmail, (reg, res, next) => {
-    let fetchedUser;
-  try {
-       User.findOne( { email: reg.body.email},
-      {isVerified: 'true'} )
-      .then(user => {
-        if (!user) {
-            return res.status(401).json({
-                message: "Authentication failed "
-            });
-        }
-        fetchedUser = user;
-        console.log('name',fetchedUser.isVerified)
-       
-    });
-
-if (fetchedUser.isVerified){
-   
-   
+    let fetchedUser;   
+ 
     User.findOne({ email: reg.body.email })
         .then(user => {
-            if (!user) {
+            if (!user) { 
                 return res.status(401).json({
                     message: "Authentication failed "
                 });
-            }
+            } if(user.isVerified){
+                console.log('First Check',user.isVerified)
             fetchedUser = user;
-            // if (fetchedUser.isVerified)
-            console.log('name',fetchedUser.isVerified)
             return bcrypt.compare(reg.body.password, user.password) 
+            }else{
+                return res.status(401).json({
+                    message: "Authenticate your account!",
+            })
+            }
         })
             .then(result => {
                     if (!result) {
@@ -445,20 +433,10 @@ if (fetchedUser.isVerified){
                     message: "Invalid authentication credentials!",
     
             })
-            });
-        }else{
-            return res.status(401).json({
-                message: "Remember to authenticate your email!"
-            })
-        }
-
-    }catch{
-        console.log('kari')
-        return res.status(401).json({
-            message: "Remember to authenticate your email!"
         })
-    }
-});
+    })
+    
+    
 
 
 // Login

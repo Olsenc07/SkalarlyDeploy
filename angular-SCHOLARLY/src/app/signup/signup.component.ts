@@ -561,12 +561,11 @@ export class LoginPopUpComponent implements OnDestroy {
   }
 
   onSubmit(): void {
-    this.isLoading = true;
-    this.userId = this.authService.getUserId();
-    this.authService.loginFirst(this.email.value, this.password.value);
-    // this.userIsAuthenticated = this.authService.getIsAuth();
-
     try {
+      this.isLoading = true;
+      this.userId = this.authService.getUserId();
+      this.authService.loginFirst(this.email.value, this.password.value);
+      this.userIsAuthenticated = this.authService.getIsAuth();
       this.authListenerSubs = this.authService
         .getAuthStatusListener()
         .subscribe((isAuthenticated: boolean) => {
