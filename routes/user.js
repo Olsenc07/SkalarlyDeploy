@@ -398,10 +398,7 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
     // const TRUE = 'true';
     User.findOne({ email: reg.body.email }).then(valid => {
         VALID = valid.isVerified
-        console.log('valid huuh?', typeof VALID)
-        console.log('valid huuh?', VALID)
-
-    })
+      
 
     if (VALID === 'true') {
         console.log('valid?', VALID)
@@ -415,11 +412,11 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
                     return res.status(401).json({
                         message: "Authentication failed "
                     });
-                } else {
+                } 
                     console.log('hannah love', user.isVerified)
                     fetchedUser = user;
                     return bcrypt.compare(reg.body.password, user.password)
-                }
+                
             })
             .then(result => {
                 if (!result) {
@@ -450,6 +447,7 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
 
         })
     }
+})
 });
 
 

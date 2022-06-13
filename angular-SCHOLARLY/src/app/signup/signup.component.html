@@ -217,7 +217,7 @@
           <div class="personalize">
             <div class="input">
               <i class="material-icons _icon">badge</i>
-              <mat-form-field appearance="fill">
+              <mat-form-field >
                 <input matInput placeholder="Full Name" [formControl]="name" />
                 <mat-error *ngIf="name.invalid">Please enter your name</mat-error>
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
@@ -227,7 +227,7 @@
             </div>
             <div class="inputP">
               <div>
-                <mat-form-field  class="gender" appearance="fill">
+                <mat-form-field  class="gender" >
                   <mat-label>Gender</mat-label>
                   <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto">
                   <mat-autocomplete #auto="matAutocomplete">
@@ -239,11 +239,11 @@
               </div>
               <!-- class="center" -->
               <div >
-                <mat-form-field appearance="fill" class="gender">
+                <mat-form-field  class="gender">
                   <input matInput placeholder="Prefered Pronouns" [formControl]="pronouns" />
                   <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor="let pronoun_ of pronoun" [value]="pronouns">
-                      {{pronoun_}}
+                    <mat-option *ngFor="let pronouns of pronoun" [value]="pronouns">
+                      {{pronouns}}
                     </mat-option>
                   </mat-autocomplete>
                 </mat-form-field>
