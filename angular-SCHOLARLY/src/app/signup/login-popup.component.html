@@ -1,5 +1,15 @@
 <form  (ngSubmit)="onSubmit()" class="background" >
   <div class="space">
+
+<mat-card-title class="title">
+Login after validating your account
+<span class="material-icons badge_icon">
+  badge
+  </span>
+  
+</mat-card-title>
+
+
 <div class="log-in-boxPop" fxLayout="column" fxLayoutAlign="center center">
     <mat-form-field class="text-input">
       <mat-label> Academic Email</mat-label>
@@ -35,9 +45,9 @@
     </button>
     <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
     <div *ngIf="isLoading" class="dot-pulse"></div>
-    <button type="button" mat-button disableRipple class="forgot-password" routerLink="/retrieve-password">
+    <!-- <button type="button" mat-button disableRipple class="forgot-password" routerLink="/retrieve-password">
       Forgot Password?
-    </button>
+    </button> -->
   </div>
 </div>
 </form>

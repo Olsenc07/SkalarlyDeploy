@@ -17,7 +17,7 @@ var transporter = nodemailer.createTransport({
     service: 'outlook365',
     auth: {
         // gmail just change to gmail email and service to gmail
-        user: 'skalarly7777@outlook.com',
+        user: 'skalarly77777@outlook.com',
         pass: 'Hockey#$07'
     },
     tls: {
@@ -84,7 +84,7 @@ try{
                     
                 });
             const msg = {
-                from:' "Verify account" <skalarly7777@outlook.com>',
+                from:' "Verify account" <skalarly77777@outlook.com>',
                 to: user.email,
                 subject: 'Skalarly - verify account',
                 text: `We are excited to welcome you ${user.username} to the community!
@@ -168,7 +168,7 @@ router.post('/forgot', async(req, res) => {
       })
     }
     const msg = {
-        from:' "Reset Password" <skalarly7777@outlook.com>',
+        from:' "Reset Password" <skalarly77777@outlook.com>',
         to: user.email,
         subject: 'Skalarly - reset password',
         text: `Hello ${user.username} we hear you forgot your password.
@@ -393,23 +393,32 @@ router.put("/:id/unfollow", async (req, res) => {
 
 // LoginFirst Time
 router.post("/login1", verifyEmail, (reg, res, next) => {
-    let fetchedUser;   
- 
+    let fetchedUser;
+    let VALID;   
+     User.findOne({ email: reg.body.email }).then(valid => {
+    VALID = valid.isVerified
+    console.log('valid huuh?',typeof 'true')
+    console.log('valid huuh?',VALID)
+
+    })
+
+if (VALID == 'true'){
+    console.log('valid?',VALID)
+    //  Two try with the one thats breaking happen second becase thatll show we don't want that
+    // user any ways! Maybe use switch!
     User.findOne({ email: reg.body.email })
         .then(user => {
-            if (!user) { 
+     
+            if ( !user ){
+                console.log(user.isVerified)
                 return res.status(401).json({
                     message: "Authentication failed "
                 });
-            } if(user.isVerified){
-                console.log('First Check',user.isVerified)
+            } else {
+            console.log('hannah love', user.isVerified)
             fetchedUser = user;
             return bcrypt.compare(reg.body.password, user.password) 
-            }else{
-                return res.status(401).json({
-                    message: "Authenticate your account!",
-            })
-            }
+        }
         })
             .then(result => {
                     if (!result) {
@@ -434,8 +443,15 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
     
             })
         })
+    }else{
+        return res.status(401).json({
+            message: "Non-validated account!",
+
     })
-    
+    }
+    });
+ 
+
     
 
 

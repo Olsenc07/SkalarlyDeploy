@@ -103,6 +103,13 @@ router.delete("/api/posts/:id", checkAuth, (req, res, next ) => {
     });
 });
 
+// Comment on post
+router.post('/comment', (req, res) =>{
+    if (!req.body.comment){
+        res
+    }
+})
+
 
 
 module.exports = router;
