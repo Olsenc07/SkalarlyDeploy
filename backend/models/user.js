@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const userSchema = mongoose.Schema({
    email: { type: String, required: true},
    emailToken: { type: String },
-   isVerified: { type: Boolean },
+   isVerified: { type: String },
    username: { type: String, required: true},
    password: { type: String, required: true},
 });

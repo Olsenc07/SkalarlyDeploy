@@ -66,7 +66,7 @@ router.post("/signup", async (req, res, next) => {
                     const user = new User({
                         email: req.body.email,
                         emailToken: crypto.randomBytes(64).toString('hex'),
-                        isVerified: false,
+                        isVerified: 'false',
                         username: req.body.username,
                         password: hash,
                     });
@@ -127,7 +127,7 @@ router.get('/verify-email', async (req, res, next) => {
         const user = await User.findOne({ emailToken: token });
         if (user) {
             user.emailToken = null;
-            user.isVerified = true;
+            user.isVerified = 'true';
             await user.save()
             res.redirect('/verified')
         } else {
@@ -395,6 +395,7 @@ router.put("/:id/unfollow", async (req, res) => {
 router.post("/login1", verifyEmail, (reg, res, next) => {
     let fetchedUser;
     let VALID;
+    // const TRUE = 'true';
     User.findOne({ email: reg.body.email }).then(valid => {
         VALID = valid.isVerified
         console.log('valid huuh?', typeof VALID)
@@ -402,7 +403,7 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
 
     })
 
-    if (VALID) {
+    if (VALID === 'true') {
         console.log('valid?', VALID)
         //  Two try with the one thats breaking happen second becase thatll show we don't want that
         // user any ways! Maybe use switch!
