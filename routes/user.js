@@ -144,19 +144,30 @@ router.get('/verify-email', async (req, res, next) => {
 })
 
 const verifyEmail = async (req, res, next) => {
-    try {
-        const user = await User.findOne({ email: req.body.email })
-        if (user.isVerified) {
-            next()
-        }
-        else {
-            console.log('Please check email to verify your account.')
-        }
+    try{
+    const test = await User.findOne({ email: req.body.email })
+console.log('boobs', test)
+if(test){
+         await User.findOne({ email: req.body.email })
+            if(user.isVerified){
+                next()
+
+            }else {
+                console.log('Please check email to verify your account.')
+            }
+        
+        
+    }else{
+        console.log('Boobies',test)
+        return res.status(401).json({
+            message: "No user matches our records!",
+    })
     }
-    catch (err) {
+    } catch (err) {
         console.log(err)
     }
 }
+
 // Reset password
 router.post('/forgot', async (req, res) => {
     try {
