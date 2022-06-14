@@ -34,13 +34,16 @@
       <div class="input-boxs">
         <div class="center_single">Step 1: Choose from the main categories</div>
 
-        <mat-chip-list aria-label="First Choice">
-          <mat-chip (click)="onSearchSelection(opt.value)" (click)="displaySpecificSearch()" [selected]="opt.name"
-            [multiple]="false" *ngFor="let opt of searchOptions" [value]="opt.name">
-            <mat-radio-button class="horizontal_list">
-              {{ opt.name }}</mat-radio-button>
-          </mat-chip>
-        </mat-chip-list>
+        <!-- <mat-chip-list aria-label="First Choice"> -->
+          <mat-form-field>
+          <mat-select [selected]="opt.name" 
+           class="center_step1" >
+            <mat-option class="horizontal_list" *ngFor="let opt of searchOptions" [value]="opt.name"
+            (click)="onSearchSelection(opt.value)" (click)="displaySpecificSearch()" >
+              {{ opt.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- </mat-chip-list> -->
 
 
 

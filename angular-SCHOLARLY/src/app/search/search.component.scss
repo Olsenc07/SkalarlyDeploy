@@ -30,7 +30,7 @@
   display: flex;
   justify-content: center;
   margin: 2% 0%;
-  font-size: x-large;
+  font-size: large;
   color: #7e7171;
   font-family:  'Poppins', sans-serif;
   text-align: center;
@@ -41,6 +41,10 @@
   padding: 0% 0% 1% 0%;
   text-align: center;
   line-height: normal;
+}
+.center_step1{
+  justify-content: center;
+  display: flex;
 }
 .centerM {
   display: flex;

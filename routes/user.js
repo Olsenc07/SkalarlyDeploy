@@ -395,9 +395,12 @@ router.put("/:id/unfollow", async (req, res) => {
 router.post("/login1", verifyEmail, (reg, res, next) => {
     let fetchedUser;
     let VALID;
-    // const TRUE = 'true';
+    
+   
+        
+
     User.findOne({ email: reg.body.email }).then(valid => {
-        VALID = valid.isVerified
+  VALID = valid.isVerified
       
 
     if (VALID === 'true') {
@@ -448,7 +451,16 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
         // })
         console.log('Thats weird...')
     }
-})
+
+}, reason => {
+    console.error(reason);
+    return res.status(401).json({
+        message: "No user matches our records!",
+
+    });
+}
+)
+    
 });
 
 
