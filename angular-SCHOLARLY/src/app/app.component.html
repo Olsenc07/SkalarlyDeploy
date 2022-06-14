@@ -62,7 +62,7 @@
               search
               </span>
           </button>
-            <input matInput type="search" class="search-box__input" placeholder="Search Fellow Scholars"
+            <input matInput type="search" class="search-box__input" placeholder="Search Fellow Skalars"
               [formControl]="search" />
             <cdk-virtual-scroll-viewport itemSize="10">
               <mat-option *cdkVirtualFor="let user of filteredSearch | async" [value]="user">

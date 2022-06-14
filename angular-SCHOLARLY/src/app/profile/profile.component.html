@@ -69,12 +69,21 @@
         <!-- *ngIf="major.value" -->
         <div class="centerR" *ngIf="info.major ">
           <!-- Major -->
-          <i class="fas fa-star large">{{ info.major}}</i>
+          <i class="fas fa-star">
+            <div class="large">
+              {{ info.major}}
+              </div>
+            </i>
 
         </div>
         <div class="centerR" *ngIf="info.minor ">
           <!-- Minor -->
-          <i class="far fa-star large">{{ info.minor}}</i>
+          <i class="far fa-star ">
+            <div class="large">
+            {{ info.minor}}
+
+            </div>
+          </i>
         </div>
 
       </div>

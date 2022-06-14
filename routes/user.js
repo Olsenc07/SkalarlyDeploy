@@ -413,7 +413,7 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
                         message: "Authentication failed "
                     });
                 } 
-                    console.log('hannah love', user.isVerified)
+                    console.log('hannah love chase a ton', user.isVerified)
                     fetchedUser = user;
                     return bcrypt.compare(reg.body.password, user.password)
                 
@@ -442,10 +442,11 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
                 })
             })
     } else {
-        return res.status(401).json({
-            message: "Non-validated account!",
+        // return res.status(401).json({
+        //     message: "Non-validated account!",
 
-        })
+        // })
+        console.log('Thats weird...')
     }
 })
 });

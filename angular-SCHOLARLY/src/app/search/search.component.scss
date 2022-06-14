@@ -20,7 +20,7 @@
   display: flex;
   justify-content: center;
   margin: 4% 0%;
-  font-size: xx-large;
+  font-size: x-large;
   color: #7e7171;
   font-weight: 600;
   font-family: 'Cinzel', serif;
@@ -100,10 +100,10 @@
   .label {
     display: contents;
     justify-content: center;
-    font-size: xx-large;
+    font-size: x-large;
     font-weight: 700;
     color: #807070;
-    font-family:  'Poppins', sans-serif;
+    font-family: 'Cinzel', serif;
   }
 }
 @media (max-width: 400px) {
@@ -113,7 +113,7 @@
     font-size: x-large;
     font-weight: 700;
     color: #807070;
-    font-family:  'Poppins', sans-serif;
+    font-family: 'Cinzel', serif;
   }
 }
 .label_ {
@@ -255,6 +255,7 @@
     flex-direction: column;
     overflow-y: scroll;
     border-radius: 25px;
+    padding: 0% 1%;
     // box-shadow: 0px 4px 8px 7px grey;
     box-shadow: 0px 0px 0px 0px grey;
   }
@@ -330,7 +331,7 @@
   border-radius: 25px;
   border-color: #c0bbc1;
   // box-shadow: 0px 5px 8px 5px grey;
-  box-shadow: 0 5px 7px 3px grey;
+  box-shadow: 0 1px 3px 2px grey;
 }
 .input-boxs_ {
   // background-color: rgb(235, 235, 245);

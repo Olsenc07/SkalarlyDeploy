@@ -59,14 +59,20 @@
                 *ngIf=" info.major || info.minor ">
                 <div class="center1" *ngIf="info.major">
             
-                    <i class="fas fa-star large">
-                        {{ info.major}}</i>
+                    <i class="fas fa-star">
+                        <div class="large">
+                        {{ info.major}}
+                        </div>
+                    </i>
 
                 </div>
                 <div class="center1" *ngIf="info.minor">
                     
-                    <i class="far fa-star large">
-                        {{info.minor}}</i>
+                    <i class="far fa-star ">
+                        <div class="large">
+                            {{info.minor}}
+                        </div>
+                        </i>
                 </div>
             </div>
 
