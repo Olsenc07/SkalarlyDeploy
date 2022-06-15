@@ -620,6 +620,12 @@ mat-tab-group {
   height: 100%;
   border: ridge;
 }
+.row_icon{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+margin-right: 1%;
+}
 .scroll {
   overflow-y: scroll;
   margin-top: 3%;
