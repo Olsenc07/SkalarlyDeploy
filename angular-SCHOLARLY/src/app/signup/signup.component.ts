@@ -112,7 +112,12 @@ export class SignupComponent implements OnInit, OnDestroy {
   ];
 
   pronoun: string[] = ['', 'She/Her', 'He/His'];
-  url: string;
+
+  // profile Picture
+  imageData: string;
+  image: FormControl = new FormControl('');
+
+  //
 
   MatIconModule: any;
   cropImgPreview: any = '';
@@ -170,6 +175,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     pronouns: this.pronouns,
     birthday: this.birthday,
     bio: this.bio,
+    image: this.image,
   });
 
   signupForm = new FormGroup({
@@ -241,13 +247,14 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.imgChangeEvent = event;
 
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ profilePic: file });
+    // this.form.patchValue({ profilePic: file });
+    this.form.patchValue({ image: file });
     this.form.get('profilePic').updateValueAndValidity();
 
     // if (event.target.files && event.target.files[0]) {
     const reader = new FileReader();
     reader.onload = () => {
-      this.url = reader.result as string;
+      this.imageData = reader.result as string;
     };
     // reader.onload = (Event: any) => { // called once readAsDataURL is completed
     // console.log(Event);

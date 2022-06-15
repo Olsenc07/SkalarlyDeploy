@@ -4,7 +4,6 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { Location } from '@angular/common';
 
-
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -41,25 +40,28 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { environment } from 'src/environments/environment';
-
-
-
-
 
 import { routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { RetrievePasswordComponent, ResetPasswordComponent } from './retrieve-password/retrieve-password.component';
-import { ProfileComponent, UserProfileComponent } from './profile/profile.component';
+import {
+  RetrievePasswordComponent,
+  ResetPasswordComponent,
+} from './retrieve-password/retrieve-password.component';
+import {
+  ProfileComponent,
+  UserProfileComponent,
+} from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { MainPagesComponent } from './main-pages/main-pages.component';
-import { SignupComponent, VerifiedPopUpComponent } from './signup/signup.component';
+import {
+  SignupComponent,
+  VerifiedPopUpComponent,
+} from './signup/signup.component';
 import { TermsPopUpComponent } from './signup/signup.component';
 import { AccountTextComponent } from './signup/signup.component';
 import { LoginPopUpComponent } from './signup/signup.component';
@@ -73,7 +75,6 @@ import { PostPageComponent } from './post-page/post-page.component';
 
 import { DialogElementsComponent } from './post-page/post-page.component';
 import { ServicesElementsComponent } from './post-page/post-page.component';
-
 
 import { ReusableCardComponent } from './reusable-card/reusable-card.component';
 import { DeleteWarningComponent } from './reusable-card/reusable-card.component';
@@ -94,13 +95,6 @@ import { StoreService } from './services/store.service';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './signup/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
-
-
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -138,8 +132,6 @@ import { ErrorInterceptor } from './error-interceptor';
     LoginPopUpComponent,
     VerifiedPopUpComponent,
     ResetPasswordComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -184,11 +176,16 @@ import { ErrorInterceptor } from './error-interceptor';
     MatProgressSpinnerModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  providers: [SearchListService, PostService, ClassListService, StoreService, AuthService,
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  providers: [
+    SearchListService,
+    PostService,
+    ClassListService,
+    StoreService,
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorComponent]
+  entryComponents: [ErrorComponent],
 })
-export class AppModule { }
+export class AppModule {}

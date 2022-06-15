@@ -159,7 +159,7 @@
                   <div>
                     <div class="centerD">
                       <div class="textU"> Upload Profile Picture</div>
-                      <button mat-icon-button *ngIf="form.get('profilePic').value " (click)="clearProfilePic()">
+                      <button class="garbage_icon" mat-icon-button *ngIf="form.get('profilePic').value " (click)="clearProfilePic()">
                         <div class="material-icons">delete_forever</div>
                       </button>
                     </div>
@@ -173,20 +173,21 @@
                       <input #fileInputP id="fileInputP" class="hide" type="file" accept=".png, .jpg, .jpeg"
                         (change)="imagePreviewP($event)"  
                         name='profilePic' 
+                        [formControl]="image"
                         >
                     </div>
                   </div>
                   <!-- class="cropper" [ngClass]="profilePic.value ? 'show' : 'hide' " -->
 
-                  <div class="cropper">
-                    <!-- Only when upload holds a value -->
+                   <!-- <div class="cropper">
+                    !-- Only when upload holds a value --
                     <image-cropper [imageChangedEvent]="imgChangeEvent" [maintainAspectRatio]="true"
                       [aspectRatio]=" 1 / 1" [containWithinAspectRatio]="containWithinAspectRatio" [resizeToWidth]="170"
                       format="png" (imageCropped)="cropImg($event)" (imageLoaded)="imgLoad()"
                       (cropperReady)="initCropper($event)" (loadImageFailed)="imgFailed()"
                       [ngClass]="form.get('profilePic').value ? 'showCropper' : 'hide' ">
                     </image-cropper>
-                  </div>
+                  </div>  -->
 
                 </div>
               </div>
@@ -201,7 +202,8 @@
                 <div class="PreviewPic">
                   <h2 class="Preview">Image Preview</h2>
                   <div class="center">
-                    <img class="previewPic" [src]="cropImgPreview" id='fileInputP' />
+                    <!-- [src]="cropImgPreview" -->
+                    <img class="previewPic" [src]="imageData" id='fileInputP' />
                   </div>
                 </div>
               </div>
@@ -305,7 +307,7 @@
 
               <!-- Upload pic/video -->
               <div class="centerD">
-                <div class="textU"> Upload Photo</div>
+                <div class="textU_"> Upload Photo</div>
                 <button mat-icon-button class="trash" [ngClass]="form.get('showCase').value ? 'show_' : 'hide' " color="primary"
                   (click)="clearPic()">
                   <div class="material-icons">delete_forever</div>
@@ -318,10 +320,6 @@
                 <button class="cameraIcon" mat-fab (click)="uploadFile()">
                   <span class="material-icons icon Photo">
                     photo_library
-
-
-
-
                     <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
                       (change)="imagePreview($event)" name="showCase" >
                   </span>

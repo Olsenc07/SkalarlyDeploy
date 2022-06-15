@@ -211,6 +211,9 @@
   color: #7e7171;
   font-size: x-large;
 }
+.garbage_icon{
+  margin-bottom: 7%;
+}
 .gender-layout {
   margin-right: 10%;
   margin-bottom: 2%;
@@ -598,6 +601,13 @@
   justify-content: center;
   flex-direction: column;
   margin-bottom: 7%;
+}
+.textU_ {
+  display: flex;
+  color: #7e7171;
+  font-family:  'Poppins', sans-serif;
+  justify-content: center;
+  flex-direction: column;
 }
 @media (min-width: 500px) {
   .trash {
