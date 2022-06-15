@@ -69,7 +69,7 @@
         <!-- *ngIf="major.value" -->
         <div class="centerR" *ngIf="info.major ">
           <!-- Major -->
-          <i class="fas fa-star">
+          <i class="fas fa-star row_icon">
             <div class="large">
               {{ info.major}}
               </div>
@@ -78,7 +78,7 @@
         </div>
         <div class="centerR" *ngIf="info.minor ">
           <!-- Minor -->
-          <i class="far fa-star ">
+          <i class="far fa-star row_icon">
             <div class="large">
             {{ info.minor}}
 
@@ -171,18 +171,22 @@
           <div class="words">
             <div class="title">
 
-              <div class="title1">Groups Joined
-            
-                <div class="counter">
-                  {{ posts.length }}</div>
-                </div>
+              <div class="title1">Chat rooms Joined
+            <!-- Maybe jst displays as a list of them -->
+
+                <!-- <div class="counter">
+                  {{ posts.length }}</div> -->
+                 </div> 
 
             </div>
-            <div class="groups_" [ngForOf]="posts">
+
+            <!-- below tagged out is where list of chat rooms hsould be added if decide -->
+
+            <!-- <div class="groups_" [ngForOf]="posts">
               <app-card-brief class="fit_" >
                
               </app-card-brief>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -259,7 +263,7 @@
       <!-- Recent Posts text  -->
       <div class="right-side" [ngForOf]="posts">
         <mat-tab-group mat-align-tabs="center">
-          <mat-tab label="Activity">
+          <mat-tab label="activity">
             <div class="column1" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">
               <div class="row"> No Posts Made</div><span class="fa fa-user-secret centerR iconEmpty"></span>
             </div>
@@ -268,7 +272,7 @@
               </app-card>
             </div>
           </mat-tab>
-          <mat-tab label="Showcase">
+          <mat-tab label="showcase">
             <div class="column1" *ngIf="!info.ShowCasePath">
               <div class="row"> No Showcases Added</div> <span class="fa fa-user-secret  centerR iconEmpty"></span>
             </div>

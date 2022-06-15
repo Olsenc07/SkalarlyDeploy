@@ -111,7 +111,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     'Two Spirit',
   ];
 
-  pronoun: string[] = ['', 'She/Her', 'He/His'];
+  pronouns: string[] = ['', 'She/Her', 'He/His'];
 
   // profile Picture
   imageData: string;
@@ -136,7 +136,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   sport: FormControl = new FormControl('');
   club: FormControl = new FormControl('');
   name: FormControl = new FormControl('');
-  pronouns: FormControl = new FormControl('');
+  pronoun: FormControl = new FormControl('');
   birthday: FormControl = new FormControl();
   gender: FormControl = new FormControl('');
   followers: FormControl = new FormControl('');
@@ -172,7 +172,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     name: this.name,
     username: this.username,
     gender: this.gender,
-    pronouns: this.pronouns,
+    pronoun: this.pronoun,
     birthday: this.birthday,
     bio: this.bio,
     image: this.image,
@@ -473,7 +473,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.minor.value,
       this.sport.value,
       this.club.value,
-      this.pronouns.value,
+      this.pronoun.value,
       this.followers.value,
       this.followings.value,
       this.CodeCompleted.value,

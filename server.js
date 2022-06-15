@@ -149,5 +149,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/angular-SCHOLARLY/static/index.html'))
 })
 
+
 module.exports = app
 
