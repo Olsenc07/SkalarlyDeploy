@@ -179,15 +179,15 @@
                   </div>
                   <!-- class="cropper" [ngClass]="profilePic.value ? 'show' : 'hide' " -->
 
-                   <!-- <div class="cropper">
-                    !-- Only when upload holds a value --
+                    <div class="cropper">
+                    <!-- Only when upload holds a value -->
                     <image-cropper [imageChangedEvent]="imgChangeEvent" [maintainAspectRatio]="true"
                       [aspectRatio]=" 1 / 1" [containWithinAspectRatio]="containWithinAspectRatio" [resizeToWidth]="170"
                       format="png" (imageCropped)="cropImg($event)" (imageLoaded)="imgLoad()"
                       (cropperReady)="initCropper($event)" (loadImageFailed)="imgFailed()"
                       [ngClass]="form.get('profilePic').value ? 'showCropper' : 'hide' ">
                     </image-cropper>
-                  </div>  -->
+                  </div>  
 
                 </div>
               </div>

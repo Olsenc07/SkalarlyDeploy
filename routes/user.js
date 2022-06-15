@@ -17,7 +17,7 @@ var transporter = nodemailer.createTransport({
     service: 'outlook365',
     auth: {
         // gmail just change to gmail email and service to gmail
-        user: 'skalarly77777@outlook.com',
+        user: 'skalarly_7@outlook.com',
         pass: 'Hockey#$07'
     },
     tls: {
@@ -84,7 +84,7 @@ router.post("/signup", async (req, res, next) => {
 
                         });
                     const msg = {
-                        from: ' "Verify account" <skalarly77777@outlook.com>',
+                        from: ' "Verify account" <skalarly_7@outlook.com>',
                         to: user.email,
                         subject: 'Skalarly - verify account',
                         text: `We are excited to welcome you ${user.username} to the community!
@@ -184,7 +184,7 @@ router.post('/forgot', async (req, res) => {
             })
         }
         const msg = {
-            from: ' "Reset Password" <skalarly77777@outlook.com>',
+            from: ' "Reset Password" <skalarly_7@outlook.com>',
             to: user.email,
             subject: 'Skalarly - reset password',
             text: `Hello ${user.username} we hear you forgot your password.
@@ -279,8 +279,8 @@ router.post("/info", checkAuth,
             pronouns: req.body.pronouns,
             CodePursuing: req.body.CodePursuing,
             CodeCompleted: req.body.CodeCompleted,
-            ProfilePicPath: url + '/assets/Pics/' + req.file.filename,
-            ShowCasePath: url + '/ShowCase/' + req.file.filename,
+            ProfilePicPath: url + '/assets/Pics/' + req.files.filename,
+            ShowCasePath: url + '/ShowCase/' + req.files.filename,
             followers: null,
             following: null,
             Creator: req.userData.userId,
