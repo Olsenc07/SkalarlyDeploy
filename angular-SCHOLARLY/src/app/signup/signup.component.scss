@@ -31,6 +31,9 @@
 .bd{
   margin-top: 2%;
 }
+.background_colour{
+  background-color: gray;
+}
 .cameraIcon {
   height: 100%;
   justify-content: center;
@@ -68,7 +71,7 @@
 
 .cBtnB {
   display: flex;
-  color: #418bba;
+  color: gray;
   justify-content: center;
   flex-direction: column;
   font-size: x-large;
@@ -76,7 +79,7 @@
 }
 .cBtnBl {
   display: flex;
-  background-color: rgb(138, 211, 240);
+  background-color: gray;
   justify-content: center;
   color: white;
   flex-direction: column;
@@ -88,7 +91,7 @@
   justify-content: center;
   // color: white;
   background-color: white;
-  color: #418bba;
+  color: gray;
   flex-direction: column;
   font-size: x-large;
   font-family: 'Cinzel', serif;
@@ -96,7 +99,7 @@
 }
 .cBtnI {
   display: flex;
-  color: #418bba;
+  color: gray;
   justify-content: center;
   flex-direction: column;
   margin-right: 1%;
@@ -154,10 +157,7 @@
   margin-top: 1%;
   max-width: fit-content;
 }
-.center {
-  display: flex;
-  justify-content: center;
-}
+
 .display {
   display: flex;
 }
@@ -307,7 +307,7 @@
     justify-content: center;
     font-size: 70px;
     flex-direction: column;
-    color: #418bba;
+    // color: #418bba;
   }
 }
 @media (max-width: 1024px) {
@@ -406,15 +406,15 @@
     display: flex;
     justify-content: space-around;
     flex-direction: row;
-    margin: 1% 0% 3%;
+    margin: 1% 0% 2%;
   }
 }
 @media (max-width: 1024px) {
   .personalizeLarge {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-direction: column;
-    margin: 1% 0% 3%;
+    margin: 1% 0% 2%;
   }
 }
 
@@ -429,7 +429,10 @@
   justify-content: center;
 }
 .previewPic {
-  border-radius: 50%;
+  // border-radius: 50%;
+  width: 100%;
+  display: flex;
+  border: groove;
 }
 .Preview {
   display: flex;
@@ -475,6 +478,7 @@
 .show_ {
   display: flex;
   justify-content: center;
+  max-width: 10%;
 }
 .sport-layout {
   display: flex;
@@ -588,7 +592,7 @@
 .rowP_ {
   display: flex;
   justify-content: center;
-  color: #418bba;
+  // color: #418bba;
 }
 .text {
   display: flex;

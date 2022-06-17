@@ -261,11 +261,11 @@ router.post('/reset-password', async (req, res, next) => {
 
 
 // User info
-const pic = multer({ storage: storage });
+const pic = multer({ storage: storage }).single('profilePic')
 router.post("/info", checkAuth,
-    pic.fields([{ name: 'profilePic', maxCount: 1 },
-    { name: 'showCase' }
-    ]), (req, res, next) => {
+    // pic.fields([{ name: 'profilePic', maxCount: 1 }
+    // ]), 
+    (req, res, next) => {
         const url = req.protocol + '://' + req.get('host');
         const info = new UserInfo({
             username: req.body.username,
@@ -279,8 +279,8 @@ router.post("/info", checkAuth,
             pronouns: req.body.pronouns,
             CodePursuing: req.body.CodePursuing,
             CodeCompleted: req.body.CodeCompleted,
-            ProfilePicPath: url + '/assets/Pics/' + req.files.filename,
-            ShowCasePath: url + '/ShowCase/' + req.files.filename,
+            ProfilePicPath: url + '/profilePics/' + req.files.filename,
+            showCasePath: url + '/ShowCase/' + req.files.filename,
             followers: null,
             following: null,
             Creator: req.userData.userId,
