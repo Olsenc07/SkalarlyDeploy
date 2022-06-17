@@ -3,7 +3,7 @@
   "version": 1,
   "cli": {
     "cache": {
-      "enabled": false
+      "enabled": true
       
     }
   },
