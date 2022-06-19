@@ -79,10 +79,10 @@ export class AuthService {
     pronouns: string,
     CodeCompleted: string,
     CodePursuing: string,
-    profilePic: File,
-    showCase: File,
     followers: string,
     followings: string,
+    profilePic?: File,
+    showCase?: File,
     Creator?: string
   ): any {
     const authDataInfo: AuthDataInfo = {
