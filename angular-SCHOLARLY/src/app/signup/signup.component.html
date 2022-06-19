@@ -137,7 +137,7 @@
         </form>
       </mat-tab>
 <!-- disabled -->
-      <mat-tab class="sndPage"  >
+      <mat-tab class="sndPage" disabled >
         <form [formGroup]="personalizeForm" enctype="multipart/form-data">
           <ng-template mat-tab-label>
             <mat-icon><span class="material-icons-two-tone">
@@ -173,7 +173,6 @@
                       <input #fileInputP id="fileInputP" class="hide" type="file" accept=".png, .jpg, .jpeg"
                         (change)="imagePreviewP($event)"  
                         name='profilePic' 
-                        
                         >
                     </div>
                   </div>
