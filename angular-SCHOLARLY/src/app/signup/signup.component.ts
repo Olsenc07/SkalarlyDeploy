@@ -111,7 +111,14 @@ export class SignupComponent implements OnInit, OnDestroy {
     'Two Spirit',
   ];
 
-  pronouns: string[] = ['', 'She/Her', 'He/His'];
+  pronouns: string[] = [
+    '',
+    'She/Her',
+    'He/His',
+    'Ze/Hirs',
+    'Ze/Zirs',
+    'Xe/Xyr',
+  ];
 
   // profile Picture preview display
   url: string;

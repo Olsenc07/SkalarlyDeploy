@@ -20,10 +20,10 @@ export interface AuthDataInfo {
   CodeCompleted?: string;
   CodePursuing?: string;
   //  Which one to grab for the view?
-  profilePic?: File;
+  // profilePic?: File;
   ProfilePicPath?: string;
   //
-  showCase?: File;
+  // showCase?: File;
   ShowCasePath?: string;
   followers?: string;
   followings?: string;

@@ -9,6 +9,7 @@ const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middle
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
 const user = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
+const { single } = require('rxjs');
 
 
 
@@ -44,9 +45,14 @@ const storage = multer.diskStorage({
 
     },
     filename: (req, file, cb) => {
+        if (file){
         const name = file.originalname.toLowerCase();
-        const ext = MIME_TYPE_MAP[file.mimetype];
-        cb(null, name + '-' + Date.now() + '.' + ext);
+        // const ext = MIME_TYPE_MAP[file.mimetype];
+        cb(null, name) 
+            // + '-' + Date.now() + '.' + ext);
+        }else{
+            console.log('No profile pic')
+        }
     },
 
 });
@@ -263,12 +269,12 @@ router.post('/reset-password', async (req, res, next) => {
 // User info
 const pic = multer({ storage: storage })
 router.post("/info", checkAuth, 
-    pic.fields([{ name: 'profilePic', maxCount: 1 }, {
-        name: 'showCase', maxCount: 1
-    }
-    ]), 
+    // pic.fields([{ name: 'profilePic', maxCount: 1 }, {
+    //     name: 'showCase', maxCount: 1
+    // }
+    // ]), 
+    pic.single('profilePic'), pic.single('showCase'), 
     (req, res, next) => {
-    console.log('fields log',req.fields)
     console.log('file log',req.file)
 
 
@@ -285,7 +291,7 @@ router.post("/info", checkAuth,
             pronouns: req.body.pronouns,
             CodePursuing: req.body.CodePursuing,
             CodeCompleted: req.body.CodeCompleted,
-            ProfilePicPath: url + '/profilePic/' + req.file.filename,
+            ProfilePicPath: url + '/profilePics/' + req.file.filename,
             ShowCasePath: url + '/showCase/' + req.file.filename,
             followers: null,
             following: null,

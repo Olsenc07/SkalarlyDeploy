@@ -233,8 +233,8 @@
               <div>
                 <mat-form-field  class="gender" >
                   <mat-label>Gender</mat-label>
-                  <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto">
-                  <mat-autocomplete #auto="matAutocomplete">
+                  <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
+                  <mat-autocomplete #auto_="matAutocomplete">
                     <mat-option *ngFor="let gender of genders" [value]="gender">
                       {{gender}}
                     </mat-option>
@@ -244,7 +244,8 @@
               <!-- class="center" -->
               <div >
                 <mat-form-field  class="gender">
-                  <input matInput placeholder="Prefered Pronouns" [formControl]="pronoun" />
+                  <mat-label>Prefered Pronouns</mat-label>
+                  <input matInput type='text' [formControl]="pronoun" [matAutocomplete]="auto"/>
                   <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let pronoun of pronouns" [value]="pronoun">
                       {{pronoun}}
