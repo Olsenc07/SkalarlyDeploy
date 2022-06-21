@@ -18,7 +18,7 @@ var transporter = nodemailer.createTransport({
     service: 'outlook365',
     auth: {
         // gmail just change to gmail email and service to gmail
-        user: 'skalarly_7@outlook.com',
+        user: 'skalarly_77@outlook.com',
         pass: 'Hockey#$07'
     },
     tls: {
@@ -34,6 +34,7 @@ const MIME_TYPE_MAP = {
     'image/jpg': 'jpg',
 };
 
+// Only this one is being accessed
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const isValid = MIME_TYPE_MAP[file.mimetype];
@@ -52,6 +53,28 @@ const storage = multer.diskStorage({
             // + '-' + Date.now() + '.' + ext);
         }else{
             console.log('No profile pic')
+        }
+    },
+});
+
+const storage_2 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const isValid = MIME_TYPE_MAP[file.mimetype];
+        let error = new Error('Invalid mime type');
+        if (isValid) {
+            error = null;
+        }
+        cb(null, './backend/showCase');
+
+    },
+    filename: (req, file, cb) => {
+        if (file){
+        const name = file.originalname.toLowerCase();
+        // const ext = MIME_TYPE_MAP[file.mimetype];
+        cb(null, name) 
+            // + '-' + Date.now() + '.' + ext);
+        }else{
+            console.log('No array of pics')
         }
     },
 
@@ -90,7 +113,7 @@ router.post("/signup", async (req, res, next) => {
 
                         });
                     const msg = {
-                        from: ' "Verify account" <skalarly_7@outlook.com>',
+                        from: ' "Verify account" <skalarly_77@outlook.com>',
                         to: user.email,
                         subject: 'Skalarly - verify account',
                         text: `We are excited to welcome you ${user.username} to the community!
@@ -190,7 +213,7 @@ router.post('/forgot', async (req, res) => {
             })
         }
         const msg = {
-            from: ' "Reset Password" <skalarly_7@outlook.com>',
+            from: ' "Reset Password" <skalarly_77@outlook.com>',
             to: user.email,
             subject: 'Skalarly - reset password',
             text: `Hello ${user.username} we hear you forgot your password.
@@ -268,17 +291,22 @@ router.post('/reset-password', async (req, res, next) => {
 
 // User info
 const pic = multer({ storage: storage })
+const pic_2 = multer({ storage: storage_2})
 router.post("/info", checkAuth, 
-    // pic.fields([{ name: 'profilePic', maxCount: 1 }, {
-    //     name: 'showCase', maxCount: 1
-    // }
-    // ]), 
-    pic.single('profilePic'), pic.single('showCase'), 
+    pic.fields([{ name: 'profilePic', maxCount: 1 }, {
+        name: 'showCase', maxCount: 1
+    }
+    ]), 
+    // pic.single('profilePic'),
+    // pic_2.single('showCase'), 
     (req, res, next) => {
-    console.log('file log',req.file)
+    console.log('files log',req.files)
+
+
 
 
         const url = req.protocol + '://' + req.get('host');
+        console.log(url)
         const info = new UserInfo({
             username: req.body.username,
             name: req.body.name,
@@ -288,11 +316,11 @@ router.post("/info", checkAuth,
             minor: req.body.minor,
             sport: req.body.sport,
             club: req.body.club,
-            pronouns: req.body.pronouns,
+            pronoun: req.body.pronoun,
             CodePursuing: req.body.CodePursuing,
             CodeCompleted: req.body.CodeCompleted,
-            ProfilePicPath: url + '/profilePics/' + req.file.filename,
-            ShowCasePath: url + '/showCase/' + req.file.filename,
+            ProfilePicPath: url + '/profilePics/' + req.files['profilePic'][0],
+            ShowCasePath: url + '/showCase/' + req.files['showCase'][1],
             followers: null,
             following: null,
             Creator: req.userData.userId,

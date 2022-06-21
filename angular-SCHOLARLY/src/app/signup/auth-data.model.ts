@@ -16,14 +16,14 @@ export interface AuthDataInfo {
   minor?: string;
   sport?: string;
   club?: string;
-  pronouns?: string;
+  pronoun?: string;
   CodeCompleted?: string;
   CodePursuing?: string;
   //  Which one to grab for the view?
-  // profilePic?: File;
+  profilePic?: File;
   ProfilePicPath?: string;
   //
-  // showCase?: File;
+  showCase?: File;
   ShowCasePath?: string;
   followers?: string;
   followings?: string;
