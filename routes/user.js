@@ -46,12 +46,12 @@ const storage = multer.diskStorage({
 
     },
     filename: (req, file, cb) => {
-        if (file){
-        const name = file.originalname.toLowerCase();
-        // const ext = MIME_TYPE_MAP[file.mimetype];
-        cb(null, name) 
+        if (file) {
+            const name = file.originalname.toLowerCase();
+            // const ext = MIME_TYPE_MAP[file.mimetype];
+            cb(null, name)
             // + '-' + Date.now() + '.' + ext);
-        }else{
+        } else {
             console.log('No profile pic')
         }
     },
@@ -68,12 +68,12 @@ const storage_2 = multer.diskStorage({
 
     },
     filename: (req, file, cb) => {
-        if (file){
-        const name = file.originalname.toLowerCase();
-        // const ext = MIME_TYPE_MAP[file.mimetype];
-        cb(null, name) 
+        if (file) {
+            const name = file.originalname.toLowerCase();
+            // const ext = MIME_TYPE_MAP[file.mimetype];
+            cb(null, name)
             // + '-' + Date.now() + '.' + ext);
-        }else{
+        } else {
             console.log('No array of pics')
         }
     },
@@ -173,30 +173,30 @@ router.get('/verify-email', async (req, res, next) => {
 })
 
 const verifyEmail = async (req, res, next) => {
-    try{
-    const test = await User.findOne({ email: req.body.email })
-// console.log('boobs', test)
-if(test){
-         await User.findOne({ email: req.body.email }).then(user => {
-            if(user.isVerified === 'true'){
-                next()
+    try {
+        const test = await User.findOne({ email: req.body.email })
+        // console.log('boobs', test)
+        if (test) {
+            await User.findOne({ email: req.body.email }).then(user => {
+                if (user.isVerified === 'true') {
+                    next()
 
-            }else {
-                console.log('Please check email to verify your account.')
-            }
-         })
-        // .catch(err => {
-        //     console.log('what up homie??')
-        //     return res.status(401).json({
-        //     message: "No user matches our records!",
-        //             })
-        //     });
-          
-    }else{
-        return res.status(401).json({
-            message: "No user matches our records!",
-    })
-    }
+                } else {
+                    console.log('Please check email to verify your account.')
+                }
+            })
+            // .catch(err => {
+            //     console.log('what up homie??')
+            //     return res.status(401).json({
+            //     message: "No user matches our records!",
+            //             })
+            //     });
+
+        } else {
+            return res.status(401).json({
+                message: "No user matches our records!",
+            })
+        }
     } catch (err) {
         console.log(err)
     }
@@ -291,22 +291,21 @@ router.post('/reset-password', async (req, res, next) => {
 
 // User info
 const pic = multer({ storage: storage })
-const pic_2 = multer({ storage: storage_2})
-router.post("/info", checkAuth, 
+const pic_2 = multer({ storage: storage_2 })
+router.post("/info", checkAuth,
     pic.fields([{ name: 'profilePic', maxCount: 1 }, {
         name: 'showCase', maxCount: 1
     }
-    ]), 
+    ]),
     // pic.single('profilePic'),
     // pic_2.single('showCase'), 
     (req, res, next) => {
-    console.log('files log',req.files)
+        console.log('files log', req.files)
 
 
 
 
         const url = req.protocol + '://' + req.get('host');
-        console.log(url)
         const info = new UserInfo({
             username: req.body.username,
             name: req.body.name,
@@ -319,8 +318,8 @@ router.post("/info", checkAuth,
             pronoun: req.body.pronoun,
             CodePursuing: req.body.CodePursuing,
             CodeCompleted: req.body.CodeCompleted,
-            ProfilePicPath: url + '/profilePics/' + req.files['profilePic'],
-            ShowCasePath: url + '/showCase/' + req.files['showCase'],
+            ProfilePicPath: url + '/profilePics/' + req.files['profilePic'][0].filename,
+            ShowCasePath: url + '/showCase/' + req.files['showCase'][0].filename,
             followers: null,
             following: null,
             Creator: req.userData.userId,
@@ -451,72 +450,72 @@ router.put("/:id/unfollow", async (req, res) => {
 router.post("/login1", verifyEmail, (reg, res, next) => {
     let fetchedUser;
     let VALID;
-    
-   
-        
+
+
+
 
     User.findOne({ email: reg.body.email }).then(valid => {
-  VALID = valid.isVerified
-      
+        VALID = valid.isVerified
 
-    if (VALID === 'true') {
-        console.log('valid?', VALID)
-        //  Two try with the one thats breaking happen second becase thatll show we don't want that
-        // user any ways! Maybe use switch!
-        User.findOne({ email: reg.body.email })
-            .then(user => {
 
-                if (!user) {
-                    console.log(user.isVerified)
-                    return res.status(401).json({
-                        message: "Authentication failed "
-                    });
-                } 
+        if (VALID === 'true') {
+            console.log('valid?', VALID)
+            //  Two try with the one thats breaking happen second becase thatll show we don't want that
+            // user any ways! Maybe use switch!
+            User.findOne({ email: reg.body.email })
+                .then(user => {
+
+                    if (!user) {
+                        console.log(user.isVerified)
+                        return res.status(401).json({
+                            message: "Authentication failed "
+                        });
+                    }
                     console.log('hannah love chase a ton', user.isVerified)
                     fetchedUser = user;
                     return bcrypt.compare(reg.body.password, user.password)
-                
-            })
-            .then(result => {
-                if (!result) {
-                    return res.status(401).json({
-                        message: "Authentication failed "
-                    });
-                }
-                const token = jwt.sign(
-                    { email: fetchedUser.email, userId: fetchedUser._id },
-                    'And_Even_When_I_Cant_Say_I_Love_You_I_Love_You',
-                    { expiresIn: '1h' }
-                );
-                res.status(200).json({
-                    token: token,
-                    expiresIn: 3600,
-                    userId: fetchedUser._id
-                });
-            })
-            .catch(err => {
-                return res.status(401).json({
-                    message: "Invalid authentication credentials!",
 
                 })
-            })
-    } else {
-        // return res.status(401).json({
-        //     message: "Non-validated account!",
+                .then(result => {
+                    if (!result) {
+                        return res.status(401).json({
+                            message: "Authentication failed "
+                        });
+                    }
+                    const token = jwt.sign(
+                        { email: fetchedUser.email, userId: fetchedUser._id },
+                        'And_Even_When_I_Cant_Say_I_Love_You_I_Love_You',
+                        { expiresIn: '1h' }
+                    );
+                    res.status(200).json({
+                        token: token,
+                        expiresIn: 3600,
+                        userId: fetchedUser._id
+                    });
+                })
+                .catch(err => {
+                    return res.status(401).json({
+                        message: "Invalid authentication credentials!",
 
-        // })
-        console.log('Thats weird...')
+                    })
+                })
+        } else {
+            // return res.status(401).json({
+            //     message: "Non-validated account!",
+
+            // })
+            console.log('Thats weird...')
+        }
+
+    }, reason => {
+        console.error(reason);
+        return res.status(401).json({
+            message: "No user matches our records!",
+
+        });
     }
+    )
 
-}, reason => {
-    console.error(reason);
-    return res.status(401).json({
-        message: "No user matches our records!",
-
-    });
-}
-)
-    
 });
 
 
