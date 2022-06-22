@@ -1,5 +1,18 @@
-import { Component, OnInit, ElementRef, ViewChild, OnDestroy} from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, Form, NgForm } from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  OnDestroy,
+} from '@angular/core';
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators,
+  Form,
+  NgForm,
+} from '@angular/forms';
 
 import {
   MomentDateAdapter,
@@ -14,7 +27,10 @@ import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatAutocompleteSelectedEvent, MatAutocomplete } from '@angular/material/autocomplete';
+import {
+  MatAutocompleteSelectedEvent,
+  MatAutocomplete,
+} from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { map } from 'rxjs/operators';
 import { SearchListService } from '../services/search.service';
@@ -56,7 +72,6 @@ interface SearchOption {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-
 export class PostPageComponent implements OnInit, OnDestroy {
   minwidth = true;
   public selectedOption: string;
@@ -98,48 +113,49 @@ export class PostPageComponent implements OnInit, OnDestroy {
   // Temporary
   id: FormControl = new FormControl('');
 
-// validateBtn = new FormGroup({
-//   postLocation: this.postLocation,
-// });
+  // validateBtn = new FormGroup({
+  //   postLocation: this.postLocation,
+  // });
 
+  // firstFormGroup: FormGroup  = new FormGroup({
+  Title: FormControl = new FormControl('');
+  date: FormControl = new FormControl('');
+  time: FormControl = new FormControl('');
+  locationEvent: FormControl = new FormControl('');
+  // });
 
-// firstFormGroup: FormGroup  = new FormGroup({
-  Title: FormControl =  new FormControl('');
-  date: FormControl =  new FormControl('');
-  time: FormControl =  new FormControl('');
-  locationEvent: FormControl =  new FormControl('');
-// });
+  // secondFormGroup: FormGroup  = new FormGroup({
+  gender: FormControl = new FormControl('');
+  // });
 
-// secondFormGroup: FormGroup  = new FormGroup({
-  gender: FormControl =  new FormControl('');
-// });
+  // thirdFormGroup: FormGroup  = new FormGroup({
+  driver: FormControl = new FormControl('');
+  paymentService: FormControl = new FormControl('');
+  virtual: FormControl = new FormControl('');
+  // });
 
-// thirdFormGroup: FormGroup  = new FormGroup({
-  driver: FormControl =  new FormControl('');
-  paymentService: FormControl =  new FormControl('');
-  virtual: FormControl =  new FormControl('');
-// });
-
-// fourthFormGroup: FormGroup  = new FormGroup({
+  // fourthFormGroup: FormGroup  = new FormGroup({
   event: FormControl = new FormControl('');
   form: FormGroup;
-// });
+  // });
   // firstFormGroup: FormGroup;
   // secondFormGroup: FormGroup;
   // thirdFormGroup: FormGroup;
   // fourthFormGroup: FormGroup;
 
-
-  constructor(public dialog: MatDialog, public searchListService: SearchListService,
-              private fb: FormBuilder, private postService: PostService,
-              private authService: AuthService) {
-
+  constructor(
+    public dialog: MatDialog,
+    public searchListService: SearchListService,
+    private fb: FormBuilder,
+    private postService: PostService,
+    private authService: AuthService
+  ) {
     // Desktop tag friends
     this.filteredFriends = this.friendCtrl.valueChanges.pipe(
-      map((friend: string | null) => friend ? this._filter(friend) : this.allFriends.slice()));
-
-
-
+      map((friend: string | null) =>
+        friend ? this._filter(friend) : this.allFriends.slice()
+      )
+    );
   }
 
   uploadFile(): any {
@@ -153,21 +169,18 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.dialog.open(ServicesElementsComponent);
   }
 
-
   onImagePicked(event: Event): any {
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({upload: file});
+    this.form.patchValue({ upload: file });
     this.form.get('upload').updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
       this.url = reader.result as string;
-       console.log(this.url);
-
+      console.log(this.url);
     };
     reader.readAsDataURL(file);
     console.log(file);
   }
-
 
   clearUpload(): void {
     this.form.get('upload').setValue('');
@@ -175,26 +188,26 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): any {
-    this.authStatusSub = this.authService.getAuthStatusListener()
-    .subscribe( authStatus => {
-      this.isLoading = false;
-    });
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe((authStatus) => {
+        this.isLoading = false;
+      });
     this.form = new FormGroup({
       upload: new FormControl(null, {
         validators: [Validators.required],
-        asyncValidators: [mimeType]
-      })
+        asyncValidators: [mimeType],
+      }),
     });
 
     this.searchOptions = this.searchListService.getSearchOptions();
     // Doesn't keep track of value
     this.Title.valueChanges.subscribe((v) => this.TitleLength.next(v.length));
     //
-    if (window.screen.width < 1025){
+    if (window.screen.width < 1025) {
       this.minwidth = false;
     }
   }
-
 
   ngOnDestroy() {
     this.authStatusSub.unsubscribe();
@@ -236,9 +249,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.allFriends.filter(friend => friend.toLowerCase().indexOf(filterValue) === 0);
+    return this.allFriends.filter(
+      (friend) => friend.toLowerCase().indexOf(filterValue) === 0
+    );
   }
-
 
   formatLabel(value: number): any {
     if (value >= 100) {
@@ -247,17 +261,14 @@ export class PostPageComponent implements OnInit, OnDestroy {
     return value;
   }
 
-
   onFormSubmit(form: NgForm): any {
-    if (this.form.get('upload').invalid){
+    if (this.form.get('upload').invalid) {
       return;
     }
     console.log(this.Title.value);
     console.log(this.postDescription.value);
     console.log(this.postLocation.value);
     console.log(this.form.get('upload').value);
-
-
 
     // const post: Post = {
     //   Title: form.value.Title,
@@ -274,25 +285,27 @@ export class PostPageComponent implements OnInit, OnDestroy {
     //   id: this.id.value,
     //   upload: this.form.get('upload').value,
     //   FriendCtrl: this.friendCtrl.value,
-      // SecondFormGroup: this.secondFormGroup.value,
-      // ThirdFormGroup: this.thirdFormGroup.value,
-      // FourthFormGroup: this.fourthFormGroup.value,
+    // SecondFormGroup: this.secondFormGroup.value,
+    // ThirdFormGroup: this.thirdFormGroup.value,
+    // FourthFormGroup: this.fourthFormGroup.value,
     // };
 
-
-    this.postService.addPost(this.postLocation.value,
-      this.postDescription.value, this.form.get('upload').value,
+    this.postService.addPost(
+      this.postLocation.value,
+      this.postDescription.value,
+      this.form.get('upload').value,
       this.locationEvent.value,
       this.Title.value,
       this.date.value,
       this.time.value,
       this.gender.value,
-      this.driver.value, this.paymentService.value,
+      this.driver.value,
+      this.paymentService.value,
       this.virtual.value,
-    this.event.value);
+      this.event.value
+    );
     form.resetForm();
   }
-
 
   changeTab(): void {
     this.selectedIndexPost = this.selectedIndexPost === 1 ? 0 : 1;
@@ -306,17 +319,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
   templateUrl: './dialog-elements.component.html',
   styleUrls: ['./dialog-elements.component.scss'],
 })
-export class DialogElementsComponent { }
+export class DialogElementsComponent {}
 
 @Component({
   selector: 'app-post-page',
   templateUrl: './services-elements.component.html',
   styleUrls: ['./dialog-elements.component.scss'],
 })
-export class ServicesElementsComponent { }
-
-
-
-
-
-
+export class ServicesElementsComponent {}

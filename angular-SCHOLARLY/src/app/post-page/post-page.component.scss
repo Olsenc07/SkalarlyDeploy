@@ -144,11 +144,14 @@
   .contents {
     display: flex;
     box-sizing: border-box;
+    justify-content: center;
+    margin-top: 3%;
   }
 }
 @media (max-width: 1024px) and(min-width:700px) {
   .contents {
     display: flex;
+    justify-content: center;
     box-sizing: border-box;
     padding: 0% 30% 0% 30%;
   }
