@@ -285,8 +285,15 @@ router.post('/reset-password', async (req, res, next) => {
 
 
 
+// U of T connection
+const fetch = require("node-fetch");
 
-
+fetch("https://nikel.ml/api/courses")
+    .then(response => response.json())
+    .then(data => {
+        console.log(data["response"][0]["name"])
+    })
+    .catch(error => console.error(error));
 
 
 // User info

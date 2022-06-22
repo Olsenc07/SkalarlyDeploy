@@ -69,7 +69,8 @@ router.post("",
         Virtual: req.body.Virtual,
         Event: req.body.Event,
         ImagePath: url + '/posts/' + req.file.filename,
-        Creator: req.userData.userId
+        // Creator: req.userData.
+        Creator: req.body.id
         
     });
     post.save().then(createdPost => {
