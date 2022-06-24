@@ -58,20 +58,18 @@ router.post("",
     const url = req.protocol + '://' + req.get('host');
     const post = new Post({
         Title: req.body.Title,
-        PostDescription: req.body.PostDescription,
-        PostLocation: req.body.PostLocation,
+        PostDescription: req.body.postDescription,
+        PostLocation: req.body.postLocation,
         LocationEvent: req.body.LocationEvent,
-        Time: req.body.Time,
-        Date: req.body.Date,
+        Time: req.body.time,
+        Date: req.body.date,
         Gender: req.body.Gender,
         Driver: req.body.Driver,
         PaymentService: req.body.PaymentService,
         Virtual: req.body.Virtual,
         Event: req.body.Event,
-        ImagePath: url + '/posts/' + req.file.filename,
-        // Creator: req.userData.
-        Creator: req.body.id
-        
+        ImagePath: url + '/posts/' + req.file,
+        Creator: req.userData._id
     });
     post.save().then(createdPost => {
         res.status(201).json({

@@ -5,13 +5,13 @@ import { map } from 'rxjs/operators';
 
 export interface Post {
   Creator: string;
-  id: string;
-  PostDescription: string;
-  PostLocation?: string;
+  _id: string;
+  postDescription: string;
+  postLocation?: string;
   FriendCtrl?: string[];
   Title?: string;
-  Date?: string;
-  Time?: string;
+  date?: string;
+  time?: string;
   LocationEvent?: string;
   Gender?: string;
   Driver?: string;
@@ -43,11 +43,11 @@ export class PostService {
             return {
               id: post._id,
               Title: post.Title,
-              PostDescription: post.PostDescription,
-              PostLocation: post.PostLocation,
+              PostDescription: post.postDescription,
+              PostLocation: post.postLocation,
               LocationEvent: post.LocationEvent,
-              Time: post.Time,
-              Date: post.Date,
+              Time: post.time,
+              Date: post.date,
               Gender: post.Gender,
               Driver: post.Driver,
               PaymentService: post.PaymentService,
@@ -70,14 +70,15 @@ export class PostService {
     return this.postsUpdated.asObservable();
   }
   addPost(
+    id: string,
     Creator: string,
-    PostLocation: string,
-    PostDescription?: string,
+    postLocation: string,
+    postDescription?: string,
     upload?: File,
     LocationEvent?: string,
     Title?: string,
-    Date?: string,
-    Time?: string,
+    date?: string,
+    time?: string,
     Gender?: string,
     Driver?: string,
     PaymentService?: string,
@@ -86,12 +87,13 @@ export class PostService {
   ): any {
     const postData = new FormData();
     postData.append('Creator', Creator);
+    postData.append('id', id);
     postData.append('Title', Title);
-    postData.append('PostDescription', PostDescription);
-    postData.append('PostLocation', PostLocation);
+    postData.append('postDescription', postDescription);
+    postData.append('postLocation', postLocation);
     postData.append('LocationEvent', LocationEvent);
-    postData.append('Time', Time);
-    postData.append('Date', Date);
+    postData.append('time', time);
+    postData.append('date', date);
     postData.append('Gender', Gender);
     postData.append('Driver', Driver);
     postData.append('PaymentService', PaymentService);
@@ -99,30 +101,30 @@ export class PostService {
     postData.append('Event', Event);
     postData.append('upload', upload);
     this.http
-      .post<{ message: string; post: Post }>(
+      .post<{ message: string; postId: Post }>(
         'http://localhost:3000/api/posts',
         postData
       )
       .subscribe((responseData) => {
-        const post: Post = {
-          id: responseData.post.id,
+        const postId: Post = {
+          _id: responseData.postId._id,
           Title,
-          PostDescription,
-          PostLocation,
+          postDescription,
+          postLocation,
           LocationEvent,
-          Time,
-          Date,
+          time,
+          date,
           Gender,
           Driver,
           PaymentService,
           Virtual,
           Event,
-          ImagePath: responseData.post.ImagePath,
+          ImagePath: responseData.postId.ImagePath,
           Creator,
         };
-        // const id = responseData.postId;
-        // post.id = id;
-        this.posts.push(post);
+        // const id_ = responseData.postId;
+        // postData.id = id_;
+        this.posts.push(postId);
         this.postsUpdated.next([...this.posts]);
       });
   }
@@ -131,7 +133,7 @@ export class PostService {
     this.http
       .delete('http://localhost:3000/api/posts/' + postId)
       .subscribe(() => {
-        const updatedPosts = this.posts.filter((post) => post.id !== postId);
+        const updatedPosts = this.posts.filter((post) => post._id !== postId);
         this.posts = updatedPosts;
         this.postsUpdated.next([...this.posts]);
       });

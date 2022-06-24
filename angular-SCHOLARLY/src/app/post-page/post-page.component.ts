@@ -262,9 +262,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
 
   onFormSubmit(form: NgForm): any {
-    if (this.form.get('upload').invalid) {
-      return;
-    }
+    // if (this.form.get('upload').invalid) {
+    //   return;
+    // }
     console.log(this.Title.value);
     console.log(this.postDescription.value);
     console.log(this.postLocation.value);
