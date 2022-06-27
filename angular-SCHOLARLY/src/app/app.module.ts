@@ -96,6 +96,14 @@ import { AuthService } from './services/auth.service';
 import { AuthInterceptor } from './signup/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 
+// Socekt.io
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = {
+  url: environment.socketUrl, // socket server url;
+  options: {
+    transports: ['websocket'],
+  },
+};
 @NgModule({
   declarations: [
     AppComponent,

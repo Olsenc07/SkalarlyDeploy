@@ -1,6 +1,6 @@
-
 export const environment = {
   production: false,
+  socketUrl: '',
   firebase: {
     projectId: 'scholarly-6e095',
     appId: '1:912551296803:web:6b91dfc90e0bee1ce45696',
@@ -11,7 +11,7 @@ export const environment = {
     authDomain: 'scholarly-6e095.firebaseapp.com',
     messagingSenderId: '912551296803',
     measurementId: 'G-J5BHKT238R',
-  }
+  },
 };
 /*
  * For easier debugging in development mode, you can import the following file

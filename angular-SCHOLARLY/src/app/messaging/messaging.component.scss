@@ -2,7 +2,10 @@
   display: flex;
   flex-direction: row;
   padding-bottom: 2%;
-  background-color: #dfdfea;
+  background-color: #ffffff;
+  border-bottom-right-radius: 25px;
+  justify-content: space-between;
+  margin-right: 2%;
 }
 .left {
   display: flex;
@@ -10,8 +13,9 @@
   height: 100%;
   width: 100%;
   border-top-left-radius: 25px;
-  background-color: #dfdfea;
+  background-color: white;
   overflow: hidden;
+  // border: inset;
 }
 .list {
   display: flex;
@@ -29,6 +33,7 @@
     box-sizing: border-box;
     margin: 3% 10% 0% 10%;
     border-radius: 25px;
+    border: outset;
   }
 }
 @media (max-width: 1024px) {
@@ -38,13 +43,14 @@
     width: 100%;
     box-sizing: border-box;
     border-radius: 25px;
+    border: outset;
   }
 }
 .message {
   display: flex;
   height: 100%;
   overflow-y: scroll;
-  background-color: #dfdfea;
+  background-color: #ffffff;
   border-top-right-radius: 25px;
 }
 .new_message_icon {
@@ -138,7 +144,7 @@
 }
 .style {
   display: flex;
-  color: gray;
+  // color: rgb(255, 255, 255);
   font-family:  'Poppins', sans-serif;
   width: 100%;
   font-size: large;
@@ -152,11 +158,11 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  background-color: #dfdfea;
+  background-color: #ffffff;
   border-top-left-radius: 25px;
 }
 .type_message {
-  background-color: #dfdfea;
+  background-color: #ffffff;
 }
 .type_message_box {
   width: 98%;

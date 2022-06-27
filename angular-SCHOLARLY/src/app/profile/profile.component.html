@@ -9,12 +9,12 @@
 
     <div class="profile-pic" *ngIf="info.ProfilePicPath">
       <!-- need to get croppeded value -->
-      <img class="pic" src="{{info.ProfilePicPath}}">
+      <img class="pic" src="http://localhost:3000/profilePics/{{info.ProfilePicPath}}">
       <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
     </div>
 
     <div class="profile-pic" *ngIf="!info.ProfilePicPath">
-      <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
+      <img src="../../assets/Pics/Skalarly 1.jpeg" class="pic" />
     </div>
 
 
