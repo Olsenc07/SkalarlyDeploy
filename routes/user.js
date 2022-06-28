@@ -304,6 +304,7 @@ router.post("/info", checkAuth,
 
 
         const url = req.protocol + '://' + req.get('host');
+        console.log(url)
         const info = new UserInfo({
             username: req.body.username,
             name: req.body.name,

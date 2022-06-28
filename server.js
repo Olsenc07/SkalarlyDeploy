@@ -70,6 +70,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use('/posts', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/posts')));
 app.use('/user', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/profilePics')));
+// Connecting to backend images for display
 
 
 app.use((req, res, next) => {
@@ -81,6 +82,8 @@ app.use((req, res, next) => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
+
+
 
 /**
  * Routes Definitions
@@ -138,7 +141,6 @@ app.get("/api/profiles", (req, res, next) => {
 // Express
 
 // Change port to azure or Heroku...
-
 const routes = require('./backend/api');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
