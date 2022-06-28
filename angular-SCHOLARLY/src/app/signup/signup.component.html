@@ -137,7 +137,7 @@
         </form>
       </mat-tab>
 <!-- disabled -->
-      <mat-tab class="sndPage" disabled >
+      <mat-tab class="sndPage"  disabled>
         <form [formGroup]="personalizeForm" enctype="multipart/form-data">
           <ng-template mat-tab-label>
             <mat-icon><span class="material-icons-two-tone">
@@ -271,13 +271,13 @@
           <div class="createBtn">
             <!-- <button mat-raised-button class="cBtnB" (click)="changeTab1R()">Back</button> -->
             <div class="skip1">
-              <button mat-button class="cBtnBl" (click)="changeTab1()">Skip For Now</button>
+              <button mat-raised-button class="cBtn" (click)="changeTab1()">Skip For Now</button>
             </div>
             <button type="button"  mat-raised-button class="cBtn"
               (click)="changeTab1()">Save</button>
           </div>
           <div class="skip2">
-            <button mat-button class="cBtnBl" (click)="changeTab1()">Skip For Now</button>
+            <button mat-raised-button class="cBtn" (click)="changeTab1()">Skip For Now</button>
           </div>
         </form>
       </mat-tab>
@@ -372,16 +372,16 @@
 
 
           <div class="createBtn">
-            <button mat-raised-button class="cBtnB" (click)="changeTab2R()">Back</button>
+            <button mat-raised-button class="cBtn" (click)="changeTab2R()">Back</button>
             <div class="skip1">
-              <button mat-button class="cBtnBl" (click)="changeTab3()">Skip For Now</button>
+              <button mat-button class="cBtn" (click)="changeTab3()">Skip For Now</button>
             </div>
             <button type="button" mat-raised-button class="cBtn"
               (click)="changeTab3()">Save</button>
           </div>
         </div>
         <div class="skip2">
-          <button mat-button class="cBtnBl" (click)="changeTab3()">Skip For Now</button>
+          <button mat-raised-button class="cBtn" (click)="changeTab3()">Skip For Now</button>
         </div>
         <!-- </form> -->
       </mat-tab>
@@ -520,7 +520,7 @@
 
 
         <div class="createBtn">
-          <button mat-raised-button class="cBtnB" *ngIf="!isLoading" (click)="changeTab3()">Back</button>
+          <button mat-raised-button class="cBtn" *ngIf="!isLoading" (click)="changeTab3()">Back</button>
 
           <button type="button" mat-raised-button class="cBtn" (click)="onSubmit2()" 
             *ngIf="!isLoading">Create</button>
