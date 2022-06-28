@@ -197,8 +197,8 @@
 
 .column {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
   width: 100%;
 }
 
@@ -212,6 +212,7 @@
 }
 .display {
   display: flex;
+  justify-content: center;
 }
 .entire-page {
   display: flex;
@@ -395,6 +396,7 @@ mat-chip .mat-list-text {
 }
 .margin {
   display: flex;
+  justify-content: center;
 }
 
 @media (max-width: 1024px) {
@@ -725,6 +727,7 @@ p {
   justify-content: center;
   align-items: center;
   color: #7e7171;
+
   font-family:  'Poppins', sans-serif;
 }
 .text {

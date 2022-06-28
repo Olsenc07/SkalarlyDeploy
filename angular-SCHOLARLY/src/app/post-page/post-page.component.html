@@ -145,7 +145,7 @@
             <ng-template matStepLabel>When & Where</ng-template>
             <div class="column_text_counter"> 
               
-              <mat-form-field class="text-input">
+              <mat-form-field class="text-input" appearance="fill">
                 <mat-label >Title </mat-label>
                 <div matBadge="{{ 50 - (TitleLength | async) }}"></div>
                 <input matInput maxlength="50" [formControl]="Title" >
@@ -297,10 +297,10 @@
                   work
                   </span>
                 <div class="textP">Formal event</div>
-              </div>
                 <mat-radio-button [disableRipple]="true" value="formal" required>
-
                 </mat-radio-button>
+              </div>
+           
               </div>
 
             
@@ -312,10 +312,10 @@
                   nightlife
                   </span>
                   <div class="textP">Relaxed event</div>
+                  <mat-radio-button [disableRipple]="true" value="relaxed" required>
+                  </mat-radio-button>
                 </div>
-                <mat-radio-button [disableRipple]="true" value="relaxed" required>
-
-                </mat-radio-button>
+          
               </div>
             </mat-radio-group>
             <div>
