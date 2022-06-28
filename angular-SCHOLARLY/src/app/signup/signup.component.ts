@@ -293,18 +293,18 @@ export class SignupComponent implements OnInit, OnDestroy {
     public authService: AuthService,
     private snackBar: MatSnackBar
   ) {
-    // this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
-    //   map((code: string | null) =>
-    //     code ? this._filter(code) : this.classListService.allClasses().slice()
-    //   )
-    // );
-    // this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
-    //   map((codeP: string | null) =>
-    //     codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
-    //   )
-    // );
-    // this.filteredCodesP.subscribe((r) => this.CodePursuing);
-    // this.filteredCodes.subscribe((r) => this.CodeCompleted);
+    this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
+      map((code: string | null) =>
+        code ? this._filter(code) : this.classListService.allClasses().slice()
+      )
+    );
+    this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
+      map((codeP: string | null) =>
+        codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
+      )
+    );
+    this.filteredCodesP.subscribe((r) => this.CodePursuing);
+    this.filteredCodes.subscribe((r) => this.CodeCompleted);
   }
 
   uploadFileP(): any {
