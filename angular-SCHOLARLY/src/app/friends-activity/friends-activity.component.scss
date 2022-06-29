@@ -72,6 +72,7 @@
   // margin-bottom: 2%;
   color: #7e7171;
   font-family: 'Cinzel', serif;
+  margin: 2% 0%;
 }
 
 .center1 {
@@ -110,7 +111,7 @@
 }
 .messageIcon {
   font-size: x-large;
-  color: cornflowerblue;
+  color: gray;
 }
 .icon {
   margin-top: 2%;
@@ -208,8 +209,8 @@
   display: flex;
   height: 25%;
   border-radius: 25px;
-  // box-shadow: 0px 2px 8px 7px grey;
-  box-shadow: 0 2px 2px 1px grey;
+  box-shadow: 0px 0px 11px grey;
+  margin-top: 1%;
   width: 100%;
   flex-direction: column;
   justify-content: center;
@@ -477,7 +478,7 @@
   justify-content: center;
   flex-direction: column;
   font-size: x-large;
-  margin-bottom: 2%;
+  margin: 2% 0%;
   color: #7e7171;
   font-family: 'Cinzel', serif;
 }

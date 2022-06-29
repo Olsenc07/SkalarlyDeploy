@@ -24,7 +24,9 @@
   height: 100%;
   width: 100%;
 }
-
+::ng-deep .mat-form-field-flex{
+  padding-left: 1%;
+}
 @media (min-width: 1024px) {
   .message_box {
     display: flex;
@@ -33,7 +35,7 @@
     box-sizing: border-box;
     margin: 3% 10% 0% 10%;
     border-radius: 25px;
-    border: outset;
+    box-shadow: 0px 0px 11px grey;
   }
 }
 @media (max-width: 1024px) {
@@ -43,7 +45,7 @@
     width: 100%;
     box-sizing: border-box;
     border-radius: 25px;
-    border: outset;
+    box-shadow: 0px 0px 11px grey;
   }
 }
 .message {
@@ -86,7 +88,7 @@
   font-family: 'Cinzel', serif;
   // background-color: #add3ec;
   // color: white;
-  color: #42a5f5;
+  color: #0c46b8a1;
   background-color: white;
 }
 .search-box {
@@ -145,14 +147,18 @@
 .style {
   display: flex;
   // color: rgb(255, 255, 255);
-  font-family:  'Poppins', sans-serif;
+  font-family:  'Cinzel', serif;
   width: 100%;
   font-size: large;
   padding-left: 3%;
   align-items: center;
+  justify-content: center;
 }
 .space {
   padding: 1%;
+}
+.space_icon{
+  padding-left: 8%;
 }
 .title {
   display: flex;

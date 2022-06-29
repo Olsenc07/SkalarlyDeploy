@@ -31,13 +31,16 @@
 .bd{
   margin-top: 2%;
 }
+.bd_picker{
+  font-size: large;
+}
 .background_colour{
-  background-color: gray;
+  background-color: #0c46b8a1;
 }
 .cameraIcon {
   height: 100%;
   justify-content: center;
-  background-color: gray;
+  background-color: #0c46b8a1;
 }
 .cameraIcon_ {
   height: 100%;
@@ -67,7 +70,6 @@
   display: flex;
   justify-content: center;
   flex-direction: row;
-  margin-right: 2%;
 }
 
 .cBtnB {
@@ -94,7 +96,7 @@
   background-color: white;
   color: gray;
   flex-direction: column;
-  font-size: x-large;
+  font-size: large;
   font-family: 'Cinzel', serif;
 
 }
@@ -193,13 +195,14 @@
   justify-content: center;
 }
 .existing-account-style {
-  color: #418bba;
+  color: #0c46b8a1;
   border-color: #707070;
   font-family: 'Cinzel', serif;
 }
 .existing-account-style-btn {
   background-color: white;
   font-family: 'Cinzel', serif;
+  box-shadow: 0px 0px 11px
 }
 
 .existed-centered {
@@ -239,6 +242,10 @@
 }
 .matTitle {
   color: black;
+}
+.mat-datepicker-toggle{
+  font-size: large;
+  font-size: 21px;
 }
 @media (min-width: 1024px) {
   ::ng-deep mat-form-field {
@@ -499,6 +506,9 @@
   margin: 2% 0%;
   flex-direction: column;
 }
+.space_{
+  margin-bottom: 1%;
+}
 @media (max-width: 800px) {
   .skip1 {
     display: none;
@@ -614,6 +624,7 @@
   font-family:  'Poppins', sans-serif;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 1%;
 }
 @media (min-width: 500px) {
   .trash {

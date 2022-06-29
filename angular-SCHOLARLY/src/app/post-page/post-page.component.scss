@@ -6,7 +6,9 @@
   flex-direction: column;
   box-sizing: border-box;
 }
-
+::ng-deep .mat-tab-label{
+  font-family:  'Poppins', sans-serif;
+}
 .amount-peopleD {
   display: flex;
   width: 100%;
@@ -105,7 +107,7 @@
 .cameraIcon {
   height: 100%;
   justify-content: center;
-  background-color: gray;
+  background-color: #0c46b8a1;
 }
 .center {
   display: flex;
@@ -178,6 +180,7 @@
   flex-direction: column;
   height: fit-content;
   overflow-y: scroll;
+  padding-bottom: 1%;
 }
 
 .column_ {
@@ -486,7 +489,6 @@ p {
     width: 35%;
     height: 100%;
     border-radius: 5px;
-    box-shadow: 0px 2px 4px;
     // resize: none;
   }
 }
@@ -495,7 +497,7 @@ p {
     width: 75%;
     height: 100%;
     border-radius: 5px;
-    box-shadow: 0px 2px 4px;
+
     // resize: none;
   }
 }
@@ -536,6 +538,7 @@ p {
   justify-content: center;
   color: #7e7171;
   font-family:  'Poppins', sans-serif;
+  margin-bottom: 1%;
 }
 
 .right {
@@ -632,13 +635,10 @@ p {
   display: none;
 }
 .shadow1 {
-  box-shadow: 0px 0px 0px 2px grey;
-  border-radius: 5px;
   margin-bottom: 2%;
 }
 .shadow2 {
-  box-shadow: 0px 0px 0px 2px #504e4e;
-  border-radius: 5px;
+ 
   margin-bottom: 2%;
 }
 @media (min-width: 1025px) {
@@ -699,7 +699,7 @@ p {
     font-family: 'Cinzel', serif;
     font-weight: 700;
     color: #807070;
-    font-size: xx-large;
+    font-size: x-large;
     text-align: center;
     line-height: initial;
   }

@@ -22,7 +22,6 @@ export interface Profile {
   profPic: string;
   Birthday: MomentDateAdapter;
   ShowCase: string[];
-  // ShowCasse: String[];
 }
 
 export interface NewUserId {

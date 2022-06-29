@@ -4,7 +4,7 @@
 <form  class="entire-page" (ngSubmit)="onFormSubmit(postForm)" action='/api/posts' #postForm="ngForm" method='post'  enctype="multipart/form-data" *ngIf="!isLoading">
 
   <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
-    <mat-tab disabled label="Step 1" > 
+    <mat-tab disabled label="Begin" > 
 
 
       <div class="post-descriptionD">
@@ -106,7 +106,7 @@
 
 
     <!-- Next page -->
-    <mat-tab disabled label="Step 2"> 
+    <mat-tab disabled label="Customize"> 
       
       
 <div class="threeBox">

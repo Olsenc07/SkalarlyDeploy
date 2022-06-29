@@ -613,7 +613,7 @@ export class LoginPopUpComponent implements OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): any {
     this.authListenerSubs.unsubscribe();
   }
 }
