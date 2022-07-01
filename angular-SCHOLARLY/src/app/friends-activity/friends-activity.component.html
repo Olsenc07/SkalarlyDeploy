@@ -123,7 +123,17 @@
                 </div>
               </div>
             </div>
-
+<!-- search bar filter-->
+<!-- <div class="search-box">
+  <button mat-icon-button type="button" (click)="search_user()">
+              <span class="material-icons search-box__icon">
+                search
+                </span>
+            </button>
+              <input matInput type="search" class="search-box__input" placeholder="Filter Following "
+                [formControl]="search" />
+            </div> -->
+<!--  -->
             <div class="following-box">
               <div class="structure">
 
@@ -147,7 +157,17 @@
                 </div>
               </div>
             </div>
-
+<!-- Search bar filter  -->
+<!-- <div class="search-box">
+  <button mat-icon-button type="button" (click)="search_user()">
+              <span class="material-icons search-box__icon">
+                search
+                </span>
+            </button>
+              <input matInput type="search" class="search-box__input" placeholder="Filter Followers "
+                [formControl]="search" />
+            </div> -->
+            <!--  -->
             <div class="following-box">
               <div class="structure">
                 <app-card-user  class="width"></app-card-user>
@@ -226,6 +246,8 @@
                   </div>
 
                 </ng-template>
+
+
                 <div class="right">
 
                   <div class="following-box">
