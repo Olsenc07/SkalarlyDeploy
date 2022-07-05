@@ -5,13 +5,25 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Observable, Subscription } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
-
+import { ChatService } from './services/chat.service';
+import { HttpClient } from '@angular/common/http';
+import { PostsService } from './services/posts.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  // socket.io
+  public roomId: string;
+  public messageText: string;
+  public messageArray: { username: string; message: string }[] = [];
+
+  public currentUser;
+  public selectedUser;
+
+  public userList = [];
+
   minHeight = true;
   minwidth = true;
   aspectRatio = true;
@@ -53,7 +65,12 @@ export class AppComponent implements OnInit {
     search: this.search,
   });
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(
+    private postsService: PostsService,
+    private router: Router,
+    private authService: AuthService,
+    private chatService: ChatService
+  ) {
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) =>
         user ? this._filter(user) : this.allUsers.slice()
@@ -165,7 +182,14 @@ export class AppComponent implements OnInit {
       this.minwidth = false;
     }
   }
+  // searching users
+  sendData(event: any): any {
+    let query: string = event.target.value;
 
+    this.postsService.searchUsers(query.trim()).subscribe((results) => {
+      console.log(results);
+    });
+  }
   onLogout(): void {
     this.authService.logout();
   }

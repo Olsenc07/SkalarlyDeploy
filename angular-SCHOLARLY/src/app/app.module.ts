@@ -93,6 +93,8 @@ import { PostService } from './services/post.service';
 import { ClassListService } from './services/class.service';
 import { StoreService } from './services/store.service';
 import { AuthService } from './services/auth.service';
+import { ChatService } from './services/chat.service';
+
 import { AuthInterceptor } from './signup/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 
@@ -191,6 +193,7 @@ const config: SocketIoConfig = {
     ClassListService,
     StoreService,
     AuthService,
+    ChatService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],

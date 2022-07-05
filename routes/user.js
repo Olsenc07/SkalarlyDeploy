@@ -8,6 +8,8 @@ const nodemailer = require('nodemailer');
 const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
+const UserNames = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/usernames');
+
 const user = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const { single } = require('rxjs');
 
@@ -558,5 +560,12 @@ router.post("/login", verifyEmail, (reg, res, next) => {
             });
         });
 });
+
+router.post('/getusers', (req, res) => {
+    let payload = req.body.payload;
+    
+res.send({payload: payload})
+});
+
 
 module.exports = router;
