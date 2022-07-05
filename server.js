@@ -25,33 +25,42 @@ const http = require('http');
  const port = 3000;
 
 
-//  Socket.io
-const server =  http.createServer(app)
-const socketio = require('socket.io')
-const io = socketio(server)
-// Run when client connect
+//  Socket.io attempt 1
+// const server =  http.createServer(app)
+// const socketio = require('socket.io')
+// const io = socketio(server)
+// // Run when client connect
+// io.on('connection', socket => {
+//    console.log("New Connection");
+
+// //    to the one user
+//    socket.emit('message', 'Welcome to Chat Cord!',' User joined chat');
+
+// //    Broadcase when a user connects
+// // to all but the poster
+// // socket.broadcast.emit() 
+
+// // runs when client disconnect
+// socket.on('disconnect', () => {
+//     io.emit('message', 'user left chat')
+// })
+
+// // Listen for chatMessage
+// socket.on('chatMessage', msg => {
+//     console.log(msg)
+//     io.emit('message', msg);
+// })
+// });
+// module.exports = { app, io };  
+
+
+// socket.io attempt 2
+const io = require('socket.io')(3000)
+
 io.on('connection', socket => {
-   console.log("New Connection");
-
-//    to the one user
-   socket.emit('message', 'Welcome to Chat Cord!',' User joined chat');
-
-//    Broadcase when a user connects
-// to all but the poster
-// socket.broadcast.emit() 
-
-// runs when client disconnect
-socket.on('disconnect', () => {
-    io.emit('message', 'user left chat')
+    console.log('New User')
+    socket.emit('chat-message', 'Hello Skalar')
 })
-
-// Listen for chatMessage
-socket.on('chatMessage', msg => {
-    console.log(msg)
-    io.emit('message', msg);
-})
-});
-
 
 //  DataBase connection
 mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')

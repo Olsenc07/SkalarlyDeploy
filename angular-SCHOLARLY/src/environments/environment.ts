@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  socketUrl: '',
+  socketUrl: 'http://localhost:3000',
   firebase: {
     projectId: 'scholarly-6e095',
     appId: '1:912551296803:web:6b91dfc90e0bee1ce45696',

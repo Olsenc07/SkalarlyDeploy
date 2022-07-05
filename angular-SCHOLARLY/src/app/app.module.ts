@@ -182,6 +182,7 @@ const config: SocketIoConfig = {
     MatSnackBarModule,
     ScrollingModule,
     MatProgressSpinnerModule,
+    SocketIoModule.forRoot(config),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

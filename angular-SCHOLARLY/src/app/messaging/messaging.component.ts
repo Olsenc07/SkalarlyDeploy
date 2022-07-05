@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { io } from 'socket.io-client';
+import { Socket } from 'ngx-socket-io';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-card-messaging',
@@ -35,7 +37,7 @@ export class MessagingComponent {
   //   const room = roomInput.value
   // })
 
-  constructor() {
+  constructor(private socketService: SocketService) {
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) =>
         user ? this._filter(user) : this.allUsers.slice()
