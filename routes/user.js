@@ -561,10 +561,14 @@ router.post("/login", verifyEmail, (reg, res, next) => {
         });
 });
 
-router.post('/getusers', (req, res) => {
+router.post('/getusers', async(req, res) => {
     let payload = req.body.payload;
-    
-res.send({payload: payload})
+    let search = await User.find({username: {$regex: new RegExp('^'+payload+'.*',
+    'i')}}).exec();
+search = search.slice(0,10);
+
+
+res.send({payload: search})
 });
 
 

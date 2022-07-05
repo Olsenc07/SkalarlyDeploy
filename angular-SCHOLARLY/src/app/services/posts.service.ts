@@ -15,7 +15,7 @@ export class PostsService {
 
   searchUsers(query: string) {
     return this.http
-      .post<{ payload: string }>(
+      .post<{ payload: Array<UserNames> }>(
         '/api/user/getusers',
         { payload: query },
         {

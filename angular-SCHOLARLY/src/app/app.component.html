@@ -11,227 +11,372 @@
 <!-- <script src="/__/firebase/init.js"></script>
 </body> -->
 
+<form
+  [formGroup]="searchForm"
+  (ngSubmit)="onSubmit()"
+  [ngClass]="
+    ((isHomeScreen$ | async) ||
+      (isVerifiedScreen$ | async) ||
+      (isSignUpScreen$ | async) ||
+      (isResetPScreen$ | async) ||
+      (isRetrievePScreen$ | async)) === true
+      ? 'background'
+      : 'background_'
+  "
+>
+  <ng-container *ngIf="minHeight && minwidth">
+    <div class="root-container">
+      <router-outlet> </router-outlet>
+    </div>
 
-<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" [ngClass]="((isHomeScreen$ | async) ||  (isVerifiedScreen$ | async) || (isSignUpScreen$ | async) 
-|| (isResetPScreen$ | async) || (isRetrievePScreen$ | async)) === true ? 'background' : 'background_' ">
+    <div class="root-container">
+      <ng-container
+        *ngIf="
+          ((isHomeScreen$ | async) ||
+            (isSignUpScreen$ | async) ||
+            (isVerifiedScreen$ | async) ||
+            (isResetPScreen$ | async) ||
+            (isRetrievePScreen$ | async)) === false
+        "
+      >
+        <mat-toolbar class="header" id="nav-bar">
+          <!-- <div *ngIf=[routerLink]="['/app-home-page']" routerLinkActive=nav-bar></div> -->
+          <img
+            class="toolbar-logo"
+            Src="../assets/Pics/2022-06-15 (6) (1).png"
+          />
+          <span class="fill-space"></span>
 
-  <ng-container *ngIf="minHeight && minwidth" >
-  <div class="root-container" >
-    <router-outlet>
-    </router-outlet>
-  </div>
+          <!-- Small screens top nav -->
 
-  <div class="root-container">
-    <ng-container
-      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isVerifiedScreen$ | async) || (isResetPScreen$ | async) || (isRetrievePScreen$ | async )) === false  ">
-      <mat-toolbar class="header"  id="nav-bar">
-        <!-- <div *ngIf=[routerLink]="['/app-home-page']" routerLinkActive=nav-bar></div> -->
-        <img class="toolbar-logo" Src="../assets/Pics/2022-06-15 (6) (1).png" />
-        <span class="fill-space"></span>
+          <div class="small-icons">
+            <div [ngClass]="searchPop === false ? 'search-box' : 'search-box_'">
+              <button mat-icon-button type="button" (click)="search_()">
+                <mat-icon
+                  class="material-icons"
+                  [ngClass]="
+                    searchPop === false
+                      ? 'search-box__icon'
+                      : 'search-box__icon_'
+                  "
+                >
+                  search</mat-icon
+                >
+              </button>
+              <input
+                placeholder="Search Fellow Scholars"
+                class="standard"
+                [ngClass]="
+                  searchPop === false ? 'searchHide' : 'search-box__input,fas'
+                "
+              />
+            </div>
 
-
-
-        <!-- Small screens top nav -->
-
-        <div class="small-icons">
-          <div [ngClass]="searchPop === false  ? 'search-box' : 'search-box_' ">
-            <button mat-icon-button type="button" (click)="search_()">
-              <mat-icon class="material-icons"
-                [ngClass]="searchPop === false  ? 'search-box__icon' : 'search-box__icon_' "> search</mat-icon>
+            <button
+              class="lowerSettings"
+              mat-icon-button
+              [matMenuTriggerFor]="settingsMenu"
+              type="button"
+            >
+              <mat-icon class="settings">settings</mat-icon>
             </button>
-            <input placeholder="Search Fellow Scholars" class="standard"
-              [ngClass]="searchPop === false  ? 'searchHide' : 'search-box__input,fas' " />
-
           </div>
 
-          <button class="lowerSettings" mat-icon-button [matMenuTriggerFor]="settingsMenu" type="button">
-            <mat-icon class="settings">settings</mat-icon>
-          </button>
-        </div>
+          <!-- Desktop -->
+          <!--Icons autosize to sidenav  -->
+          <div class="large-screen-icons">
+            <!-- New -->
+            <div class="search-box">
+              <button mat-icon-button type="button" (click)="search_user()">
+                <span class="material-icons search-box__icon"> search </span>
+              </button>
+              <input
+                matInput
+                type="search"
+                name="search-box"
+                (keyup)="sendData($event)"
+                class="search-box__input"
+                placeholder="Search Fellow Skalars"
+                [formControl]="search"
+              />
 
-
-
-
-        <!-- Desktop -->
-        <!--Icons autosize to sidenav  -->
-        <div class="large-screen-icons">
-          <!-- New -->
-          <div class="search-box">
-<button mat-icon-button type="button" (click)="search_user()">
-            <span class="material-icons search-box__icon">
-              search
-              </span>
-          </button>
-            <input matInput type="search" name="search-box" (keyup)="sendData($event)"
-             class="search-box__input" placeholder="Search Fellow Skalars"
-              [formControl]="search" />
-            <cdk-virtual-scroll-viewport itemSize="10">
-              <mat-option *cdkVirtualFor="let user of filteredSearch | async"  [value]="user">
-                {{user}}
-              </mat-option>
-            </cdk-virtual-scroll-viewport>
-          </div>
-          <!-- End -->
-          <div class="icon-top">
-            <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/search" class="a_up">
-                <span class="material-icons-sharp" [ngClass]="router?.url === '/search' 
-                ? 'PublicOn' : 'public' ">
-                  travel_explore
+              <cdk-virtual-scroll-viewport itemSize="10">
+                <p *ngIf="users.length < 1 && hasQuery">Sorry no skalar found</p>
+                <ng-template ngFor let-user [ngForOf]="users" let-i="index">
+                <hr *ngIf="i > 0" />
+                <p>
+                  {{user.username}}
+                </p>
+                </ng-template>
+                <!-- <mat-option 
+                  *cdkVirtualFor="let user of filteredSearch | async"
+                  [value]="user"
+                >
+                  {{ user }}
+                </mat-option> -->
+              </cdk-virtual-scroll-viewport>
+            </div>
+            <!-- End -->
+            <div class="icon-top">
+              <div class="icon-btn-fit">
+                <button
+                  mat-icon-button
+                  type="button"
+                  routerLink="/search"
+                  class="a_up"
+                >
+                  <span
+                    class="material-icons-sharp"
+                    [ngClass]="
+                      router?.url === '/search' ? 'PublicOn' : 'public'
+                    "
+                  >
+                    travel_explore
                   </span>
-              </button>
-            </div>
+                </button>
+              </div>
 
-            <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/friends-activity" class="a_up ">
-            <span class="material-icons-sharp" [ngClass]="router?.url === '/friends-activity' 
-            ? 'GroupsOn' : 'groups' ">
-              groups
-              </span>
-              </button>
-            </div>
-            <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/post-page" class="a_up" >
-              <span class="material-icons-sharp" [ngClass]="router?.url === '/post-page' 
-              ? 'PostOn' : 'post' ">
-                add
-                </span>
-              </button>
-            </div>
+              <div class="icon-btn-fit">
+                <button
+                  mat-icon-button
+                  type="button"
+                  routerLink="/friends-activity"
+                  class="a_up"
+                >
+                  <span
+                    class="material-icons-sharp"
+                    [ngClass]="
+                      router?.url === '/friends-activity'
+                        ? 'GroupsOn'
+                        : 'groups'
+                    "
+                  >
+                    groups
+                  </span>
+                </button>
+              </div>
+              <div class="icon-btn-fit">
+                <button
+                  mat-icon-button
+                  type="button"
+                  routerLink="/post-page"
+                  class="a_up"
+                >
+                  <span
+                    class="material-icons-sharp"
+                    [ngClass]="router?.url === '/post-page' ? 'PostOn' : 'post'"
+                  >
+                    add
+                  </span>
+                </button>
+              </div>
 
-            <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/messages" class="a_up">
-                <span class="material-icons-sharp" [ngClass]="router?.url === '/messages' 
-                ? 'MessageOn' : 'message' ">
-                  chat
+              <div class="icon-btn-fit">
+                <button
+                  mat-icon-button
+                  type="button"
+                  routerLink="/messages"
+                  class="a_up"
+                >
+                  <span
+                    class="material-icons-sharp"
+                    [ngClass]="
+                      router?.url === '/messages' ? 'MessageOn' : 'message'
+                    "
+                  >
+                    chat
                   </span>
                   <!-- <i class="fal fa-comments" [ngClass]="router?.url === '/messages' 
                   ? 'MessageOn' : 'message' "></i> -->
+                </button>
+              </div>
+
+              <div class="icon-btn-fit">
+                <button
+                  mat-icon-button
+                  type="button"
+                  routerLink="/profile"
+                  class="a_up"
+                >
+                  <span
+                    class="material-icons-sharp"
+                    [ngClass]="
+                      router?.url === '/profile' ? 'ProfileOn' : 'profile'
+                    "
+                  >
+                    school
+                  </span>
+                  <!-- <i class="fal fa-user-graduate" [ngClass]="router?.url === '/profile' 
+              ? 'ProfileOn' : 'profile'"></i> -->
+                </button>
+              </div>
+            </div>
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="settingsMenu"
+              type="button"
+              class="b_up"
+            >
+              <mat-icon class="settings">settings</mat-icon>
+            </button>
+          </div>
+        </mat-toolbar>
+      </ng-container>
+
+      <mat-menu #settingsMenu="matMenu">
+        <button
+          mat-menu-item
+          type="button"
+          routerLink="/retrieve-password"
+          style="border-bottom: solid #c6c9ea"
+          class="look-nice"
+        >
+          <span class="material-icons d_settings" style="color: burlywood">
+            vpn_key
+          </span>
+          Change Password
+        </button>
+
+        <button
+          mat-menu-item
+          type="button"
+          routerLink="/edit-profile"
+          style="border-bottom: solid #c6c9ea"
+          class="look-nice"
+        >
+          <span class="material-icons d_settings" style="color: cadetblue">
+            lock_open
+          </span>
+          Edit Profile
+        </button>
+
+        <button
+          mat-menu-item
+          type="button"
+          (click)="onLogout()"
+          class="look-nice"
+        >
+          <span class="material-icons d_settings" style="color: darkcyan">
+            exit_to_app </span
+          >Log Out
+        </button>
+        <!-- TODO: wire up log out button -->
+      </mat-menu>
+
+      <div class="main-content">
+        <router-outlet></router-outlet>
+      </div>
+
+      <!-- Bottom nav bar for small screens -->
+
+      <ng-container
+        *ngIf="
+          ((isHomeScreen$ | async) ||
+            (isSignUpScreen$ | async) ||
+            (isResetPScreen$ | async) ||
+            (isVerifiedScreen$ | async) ||
+            (isRetrievePScreen$ | async)) === false
+        "
+      >
+        <mat-toolbar class="lower">
+          <div class="icon-top">
+            <div class="icon-btn-fit">
+              <button
+                mat-icon-button
+                type="button"
+                routerLink="/search"
+                class="a_up"
+              >
+                <mat-icon
+                  [ngClass]="
+                    router?.url === '/search' ? 'PublicOnM' : 'publicM'
+                  "
+                  >public</mat-icon
+                >
+              </button>
+            </div>
+            <div class="icon-btn-fit">
+              <button
+                mat-icon-button
+                type="button"
+                routerLink="/friends-activity"
+                class="a_up"
+              >
+                <mat-icon
+                  [ngClass]="
+                    router?.url === '/friends-activity'
+                      ? 'GroupsOnM'
+                      : 'groupsM'
+                  "
+                  >groups</mat-icon
+                >
+              </button>
+            </div>
+            <div class="icon-btn-fit">
+              <button
+                mat-icon-button
+                type="button"
+                routerLink="/post-page"
+                class="a_up"
+              >
+                <mat-icon
+                  [ngClass]="router?.url === '/post-page' ? 'PostOnM' : 'postM'"
+                  >add_circle</mat-icon
+                >
               </button>
             </div>
 
             <div class="icon-btn-fit">
-              <button  mat-icon-button type="button" routerLink="/profile" class="a_up">
-            <span class="material-icons-sharp" [ngClass]="router?.url === '/profile' 
-            ? 'ProfileOn' : 'profile'">
-              school
-              </span>
-              <!-- <i class="fal fa-user-graduate" [ngClass]="router?.url === '/profile' 
-              ? 'ProfileOn' : 'profile'"></i> -->
-             
+              <button
+                mat-icon-button
+                type="button"
+                routerLink="/messages"
+                class="a_up"
+              >
+                <i
+                  [ngClass]="
+                    router?.url === '/messages' ? 'MessageOnM' : 'messageM'
+                  "
+                  class="far fa-comment-dots"
+                ></i>
               </button>
             </div>
 
+            <div class="icon-btn-fit">
+              <button
+                mat-icon-button
+                type="button"
+                routerLink="/profile"
+                class="a_up"
+              >
+                <mat-icon
+                  [ngClass]="
+                    router?.url === '/profile' ? 'ProfileOnM' : 'profileM'
+                  "
+                  >account_circle</mat-icon
+                >
+              </button>
+            </div>
           </div>
-          <button mat-icon-button [matMenuTriggerFor]="settingsMenu" type="button" class="b_up">
-            <mat-icon class="settings">settings</mat-icon>
-          </button>
-        </div>
-      </mat-toolbar>
-    </ng-container>
-
-
-    <mat-menu #settingsMenu="matMenu">
-
-      <button mat-menu-item type="button" routerLink="/retrieve-password" style="border-bottom:solid #c6c9ea"
-        class="look-nice"><span class="material-icons d_settings" style="color: burlywood; ">
-          vpn_key
-        </span>
-        Change Password
-      </button>
-
-
-      <button mat-menu-item type="button" routerLink="/edit-profile" style="border-bottom:solid #c6c9ea"
-        class="look-nice"><span class="material-icons d_settings" style="color: cadetblue; ">
-          lock_open
-        </span>
-        Edit Profile
-      </button>
-
-
-      <button mat-menu-item type="button" (click)="onLogout()"  class="look-nice"><span class="material-icons d_settings"
-          style="color: darkcyan;">
-          exit_to_app
-        </span>Log Out</button> <!-- TODO: wire up log out button -->
-    </mat-menu>
-
-
-    <div class="main-content">
-      <router-outlet></router-outlet>
+        </mat-toolbar>
+      </ng-container>
     </div>
 
-    <!-- Bottom nav bar for small screens -->
-
-    <ng-container
-      *ngIf="((isHomeScreen$ | async) || (isSignUpScreen$ | async) || (isResetPScreen$ | async) || (isVerifiedScreen$ | async) ||
-      (isRetrievePScreen$ | async)) === false ">
-      <mat-toolbar class="lower">
-        <div class="icon-top">
-          <div class="icon-btn-fit">
-            <button  mat-icon-button type="button" routerLink="/search" class="a_up">
-              <mat-icon [ngClass]="router?.url === '/search' 
-    ? 'PublicOnM' : 'publicM' ">public</mat-icon>
-            </button>
-          </div>
-          <div class="icon-btn-fit">
-            <button  mat-icon-button type="button" routerLink="/friends-activity" class="a_up">
-              <mat-icon [ngClass]="router?.url === '/friends-activity' 
-      ? 'GroupsOnM' : 'groupsM' ">groups</mat-icon>
-            </button>
-          </div>
-          <div class="icon-btn-fit">
-            <button  mat-icon-button type="button" routerLink="/post-page" class="a_up">
-              <mat-icon [ngClass]="router?.url === '/post-page'
-              ? 'PostOnM' : 'postM' ">add_circle</mat-icon>
-            </button>
-          </div>
-
-          <div class="icon-btn-fit">
-            <button  mat-icon-button type="button" routerLink="/messages" class="a_up">
-              <i [ngClass]="router?.url === '/messages'
-              ? 'MessageOnM' : 'messageM' 
-              " class="far fa-comment-dots"></i>
-            </button>
-          </div>
-
-          <div class="icon-btn-fit">
-            <button  mat-icon-button type="button" routerLink="/profile" class="a_up">
-              <mat-icon [ngClass]="router?.url === '/profile'
-      ? 'ProfileOnM' : 'profileM' ">account_circle</mat-icon>
-            </button>
-          </div>
-
-        </div>
-      </mat-toolbar>
+    <ng-container *ngIf="(isHomeScreen$ | async) === false">
+      <div class="main-content"></div>
     </ng-container>
-  </div>
-
-
-
-  <ng-container *ngIf="(isHomeScreen$ | async) === false">
-    <div class="main-content"></div>
   </ng-container>
 
-
-
-</ng-container>
-
-
-
-<ng-container *ngIf="!minHeight || !minwidth" class="allBox" >
-
-  <div class="Text1box">
-    <mat-card-title class="Text1_">
-Coming Soon!
-<span class="material-icons-outlined icon">
-  self_improvement
-  </span>
-<div class="Text1">
-  Currently display isn't supported on this screen size.
- For now please try again on a larger screen size.
-</div>
-</mat-card-title>
-</div>
-</ng-container>
-
+  <ng-container *ngIf="!minHeight || !minwidth" class="allBox">
+    <div class="Text1box">
+      <mat-card-title class="Text1_">
+        Coming Soon!
+        <span class="material-icons-outlined icon"> self_improvement </span>
+        <div class="Text1">
+          Currently display isn't supported on this screen size. For now please
+          try again on a larger screen size.
+        </div>
+      </mat-card-title>
+    </div>
+  </ng-container>
 </form>

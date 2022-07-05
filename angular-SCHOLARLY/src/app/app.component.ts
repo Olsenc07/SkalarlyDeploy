@@ -7,13 +7,15 @@ import { filter, map, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { ChatService } from './services/chat.service';
 import { HttpClient } from '@angular/common/http';
-import { PostsService } from './services/posts.service';
+import { PostsService, UserNames } from './services/posts.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  users: Array<UserNames> = [];
+  hasQuery: Boolean = false;
   // socket.io
   public roomId: string;
   public messageText: string;
@@ -185,9 +187,19 @@ export class AppComponent implements OnInit {
   // searching users
   sendData(event: any): any {
     let query: string = event.target.value;
+    // Will match if query is nothing or is only spaces
+    let matchSpaces: any = query.match(/\s*/);
+    if (matchSpaces[0] === query) {
+      this.users = [];
+      this.hasQuery = false;
+      return;
+    }
 
     this.postsService.searchUsers(query.trim()).subscribe((results) => {
+      this.users = results;
+      this.hasQuery = true;
       console.log(results);
+      console.log('users', this.users);
     });
   }
   onLogout(): void {
