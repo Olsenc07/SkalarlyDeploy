@@ -15,7 +15,7 @@ import { PostsService, UserNames } from './services/posts.service';
 })
 export class AppComponent implements OnInit {
   users: Array<UserNames> = [];
-  hasQuery: Boolean = false;
+  hasQuery = false;
   // socket.io
   public roomId: string;
   public messageText: string;
@@ -202,6 +202,19 @@ export class AppComponent implements OnInit {
       console.log('users', this.users);
     });
   }
+
+  navigateToPage(): any {
+    const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    console.log(ID);
+
+    // const params = new URLSearchParams(window.location.search);
+    // params.set('id', id);
+
+    this.router.navigate(['/profiles/:'], { queryParams: { id: ID } });
+    //  this.authService.getOtherInfo();
+    // this.authService.otherProfiles(id);
+  }
+
   onLogout(): void {
     this.authService.logout();
   }

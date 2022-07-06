@@ -86,7 +86,7 @@
           <!--Icons autosize to sidenav  -->
           <div class="large-screen-icons">
             <!-- New -->
-            <div class="search-box">
+            <div class="search-box" >
               <button mat-icon-button type="button" (click)="search_user()">
                 <span class="material-icons search-box__icon"> search </span>
               </button>
@@ -99,24 +99,21 @@
                 placeholder="Search Fellow Skalars"
                 [formControl]="search"
               />
+                <div class="text" *ngIf="users.length < 1 && hasQuery ">Sorry no skalar found 
+                  <i class="fas fa-user-secret"></i>
+                </div>
+                <div class="below_search" *ngIf="users.length >= 1">
 
-              <cdk-virtual-scroll-viewport itemSize="10">
-                <mat-option>
-                <p *ngIf="users.length < 1 && hasQuery">Sorry no skalar found</p>
-                <ng-template ngFor let-user [ngForOf]="users" let-i="index">
-                <hr *ngIf="i > 0" />
-                <p>
-                  {{user}}
-                </p>
-                </ng-template>
-              </mat-option>
-                <!-- <mat-option 
-                  *cdkVirtualFor="let user of filteredSearch | async"
-                  [value]="user"
-                >
-                  {{ user }}
-                </mat-option> -->
-              </cdk-virtual-scroll-viewport>
+                  <div *ngFor="let user of users">
+                    <button mat-button type="button" id="userName" [value]=user.username (click)="navigateToPage()" >
+                      @{{user.username}}
+                    </button>
+                  </div>
+                  
+            
+               
+                  </div>
+                
             </div>
             <!-- End -->
             <div class="icon-top">
