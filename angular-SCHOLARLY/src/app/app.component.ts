@@ -186,9 +186,9 @@ export class AppComponent implements OnInit {
   }
   // searching users
   sendData(event: any): any {
-    let query: string = event.target.value;
+    const query: string = event.target.value;
     // Will match if query is nothing or is only spaces
-    let matchSpaces: any = query.match(/\s*/);
+    const matchSpaces: any = query.match(/\s*/);
     if (matchSpaces[0] === query) {
       this.users = [];
       this.hasQuery = false;
