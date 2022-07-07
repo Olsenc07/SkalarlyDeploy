@@ -105,15 +105,18 @@
                 <div class="below_search" *ngIf="users.length >= 1">
 
                   <!-- But select works -->
-                  <!-- Wrap a button around this -->
-                  <mat-select  >
-                    <mat-option *ngFor="let user of users"  [value]="user.username">
-                      <button mat-button type="button" id="userName" [value]="user.username" (click)="navigateToPage()" >
+                  <!-- Wrap a button around this and add "click to view" -->
+                 
+                  <mat-label class="place_holder">Skalar(s)</mat-label>
+                  <mat-select id="trigger" >
+                    <mat-option *ngFor="let user of users" (click)="navigateToPage()" id="userName" [value]="user.username">
+                      <!-- <button mat-button type="button"  [value]="user.username"  > -->
+                        {{user.ProfilePicPath}} 
                         @{{user.username}}
-                      </button>
+                      <!-- </button> -->
                     </mat-option>
                   </mat-select>
-                  
+               
                   </div>
                 
             </div>
