@@ -15,6 +15,7 @@ import { PostsService, UserNames } from './services/posts.service';
 })
 export class AppComponent implements OnInit {
   users: Array<UserNames> = [];
+  filteredOptions: Observable<string[]>;
   hasQuery = false;
   // socket.io
   public roomId: string;
@@ -88,6 +89,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.filteredOptions = this.search.valueChanges.pipe(
+      map((value) => this._filter(value || ''))
+    );
+
     this.authService.autoAuthUser();
 
     document
@@ -184,6 +189,7 @@ export class AppComponent implements OnInit {
       this.minwidth = false;
     }
   }
+
   // searching users
   sendData(event: any): any {
     const query: string = event.target.value;

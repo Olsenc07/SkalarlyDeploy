@@ -16,6 +16,7 @@
   display: flex;
   justify-content: center;
   font-family:  'Poppins', sans-serif;
+  margin-right: 5% ;
 
 }
 .root-container {
@@ -167,9 +168,11 @@ h4:focus {
   }
 }
 .text{
-  font-family:  'Poppins', sans-serif;
-  padding-right: 5%;
-  color: #958a8a;
+  font-family: 'Poppins',sans-serif;
+    padding-right: 5%;
+    color: #958a8a;
+    font-size: small;
+    font-weight: lighter;
 }
 // transition to the left and have box initially invisible
 // .search-box__input:focus {

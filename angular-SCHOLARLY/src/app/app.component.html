@@ -104,14 +104,16 @@
                 </div>
                 <div class="below_search" *ngIf="users.length >= 1">
 
-                  <div *ngFor="let user of users">
-                    <button mat-button type="button" id="userName" [value]=user.username (click)="navigateToPage()" >
-                      @{{user.username}}
-                    </button>
-                  </div>
+                  <!-- But select works -->
+                  <!-- Wrap a button around this -->
+                  <mat-select  >
+                    <mat-option *ngFor="let user of users"  [value]="user.username">
+                      <button mat-button type="button" id="userName" [value]="user.username" (click)="navigateToPage()" >
+                        @{{user.username}}
+                      </button>
+                    </mat-option>
+                  </mat-select>
                   
-            
-               
                   </div>
                 
             </div>
