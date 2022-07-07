@@ -108,12 +108,16 @@
                   <!-- Wrap a button around this and add "click to view" -->
                  
                   <mat-label class="place_holder">Skalar(s)</mat-label>
-                  <mat-select id="trigger" >
+                  <mat-select  id="trigger" >
                     <mat-option *ngFor="let user of users" (click)="navigateToPage()" id="userName" [value]="user.username">
-                      <!-- <button mat-button type="button"  [value]="user.username"  > -->
-                        {{user.ProfilePicPath}} 
-                        @{{user.username}}
-                      <!-- </button> -->
+                     
+                        <div class="column">
+                         @{{user.username}}
+                   <div class="fas fa-star row_icon">
+                        {{user.major}} 
+                   </div>
+                           </div>
+                     
                     </mat-option>
                   </mat-select>
                

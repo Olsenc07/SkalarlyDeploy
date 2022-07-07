@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 export interface UserNames {
   _id: string;
   username: string;
+  major: string;
 }
 
 @Injectable({

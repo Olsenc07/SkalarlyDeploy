@@ -563,7 +563,7 @@ router.post("/login", verifyEmail, (reg, res, next) => {
 
 router.post('/getusers', async(req, res) => {
     let payload = req.body.payload;
-    let search = await User.find({username: {$regex: new RegExp('^'+payload+'.*',
+    let search = await UserInfo.find({username: {$regex: new RegExp('^'+payload+'.*',
     'i')}}).exec();
 search = search.slice(0,10);
 

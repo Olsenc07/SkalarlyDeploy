@@ -17,7 +17,14 @@
   justify-content: center;
   font-family:  'Poppins', sans-serif;
   margin-right: 5% ;
-
+  color: #928787;
+}
+.column{
+  flex-direction: row;
+  display: flex;
+  font-family: 'Poppins',sans-serif;
+  color: #928787;
+  justify-content: space-between;
 }
 .root-container {
   display: flex;
@@ -28,7 +35,12 @@
   left: 0;
   right: 0;
 }
-
+.row_icon{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+// margin-right: 1%;
+}
 $box-shadow-color: rgba(0, 0, 0, 0.25);
 
 .header {
@@ -464,6 +476,7 @@ h4:focus {
     }
   }
 }
+
 ::ng-deep .mat-toolbar-single-row {
   padding: 0px !important;
 }
