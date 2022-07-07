@@ -291,8 +291,9 @@ export class SignupComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private storeService: StoreService,
     public authService: AuthService,
-    private snackBar: MatSnackBar // public courses: Courses
-  ) {
+    private snackBar: MatSnackBar
+  ) // public courses: Courses
+  {
     this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
       map((code: string | null) =>
         code ? this._filter(code) : this.classListService.allClasses().slice()
