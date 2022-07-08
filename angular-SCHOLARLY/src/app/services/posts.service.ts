@@ -6,6 +6,7 @@ export interface UserNames {
   _id: string;
   username: string;
   major: string;
+  name: string;
 }
 
 @Injectable({

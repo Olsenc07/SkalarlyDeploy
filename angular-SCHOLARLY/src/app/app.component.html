@@ -109,18 +109,21 @@
                  
                   <mat-label class="place_holder">Skalars</mat-label>
                   <mat-select  id="trigger" >
-                    <div class="title">Fellow Skalars
-                      <div class="fas fa-user-graduate space"></div>
-                     </div>
+                    <!-- <div class="fas fa-user-graduate space_"></div> -->
+                    <div class="title">Fellow Skalars</div>
+                      <!-- <div class="fas fa-user-graduate space"></div> -->
+                    <mat-divider></mat-divider>
                     <mat-option class="options" *ngFor="let user of users" (click)="navigateToPage()" id="userName" [value]="user.username">
-                        <div class="column">
-                         @{{user.username}}
-                   <div *ngIf="user.major" class="fas fa-star row_icon">
-                        {{user.major}} 
-                   </div>
-                           </div>
-                     
+                        <!-- <div class="row"> -->
+                      <div class="row">
+                        <div>@{{user.username}}</div>
+                       <div>{{user.name}}</div>  
+                  </div>
+                  <mat-divider></mat-divider>
+                   
+               
                     </mat-option>
+                    
                   </mat-select>
                
                   </div>
