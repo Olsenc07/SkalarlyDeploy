@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { AuthData, AuthDataInfo } from '../signup/auth-data.model';
 import { Subject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -411,5 +411,31 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+  }
+
+  // Delete account
+  deleteAccount(usernameDel: string, passwordDel: string): any {
+    this.snackBar.open('We wish youu th best!', 'Skal!');
+    const del = { usernameDel, passwordDel };
+    this.http.post('http://localhost:3000/api/user/delete', del).subscribe({
+      next: () => {
+        const snackBarRef = this.snackBar.open(
+          'We wish you all the best',
+          'Skal friend!',
+          {
+            duration: 2000,
+          }
+        );
+        snackBarRef.afterDismissed().subscribe(() => {
+          this.router.navigate(['/login']);
+        });
+      },
+      error: (error) => {
+        this.snackBar.open('Invalid username', 'Try again!', {
+          duration: 3000,
+        });
+        this.authStatusListener.next(false);
+      },
+    });
   }
 }

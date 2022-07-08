@@ -451,10 +451,6 @@ router.put("/:id/unfollow", async (req, res) => {
 router.post("/login1", verifyEmail, (reg, res, next) => {
     let fetchedUser;
     let VALID;
-
-
-
-
     User.findOne({ email: reg.body.email }).then(valid => {
         VALID = valid.isVerified
 
@@ -560,7 +556,7 @@ router.post("/login", verifyEmail, (reg, res, next) => {
             });
         });
 });
-
+// Search users
 router.post('/getusers', async(req, res) => {
     let payload = req.body.payload;
     let search = await UserInfo.find({username: {$regex: new RegExp('^'+payload+'.*',
@@ -570,6 +566,40 @@ search = search.slice(0,10);
 
 res.send({payload: search})
 });
+
+
+// Deleting account
+router.post('/delete', (req,res) => {
+    let fetchedUser;
+    try{ 
+        User.findOne({ email: reg.body.email })
+        .then(user => {
+            if (!user) {
+                return res.status(401).json({
+                    message: "Authentication failed "
+                });
+            }
+            fetchedUser = user;
+            return bcrypt.compare(reg.body.password, user.password)
+        })
+        .then(
+    User.findOneAndDelete({email: req.body.email})
+    .then(
+        console.log('delete yo ass', req.body.email)
+    )
+    .catch(err => {
+        return res.status(401).json({
+            message: "Unable to delete account!",
+        });
+    })
+)
+}catch{err => {
+        return res.status(401).json({
+            message: "Invalid authentication credentials!",
+        });
+}}
+})
+
 
 
 module.exports = router;

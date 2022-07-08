@@ -18,6 +18,13 @@ import { Location } from '@angular/common';
 export class RetrievePasswordComponent implements OnInit {
   isLoading = false;
   visible = true;
+  passwordDel: FormControl = new FormControl('');
+  emailDel: FormControl = new FormControl('');
+
+  deleteForm = new FormGroup({
+    emailDel: this.emailDel,
+    passwordDel: this.passwordDel,
+  });
   password: FormControl = new FormControl('', Validators.minLength(8));
   // passwordRetrieval: FormControl = new FormControl('', Validators.email);
   email: FormControl = new FormControl('', Validators.email);
@@ -73,6 +80,15 @@ export class RetrievePasswordComponent implements OnInit {
     this.authService.resetPassword(this.email.value).then(() => {
       this.email.setValue('');
     });
+  }
+  DeleteAccount(): void {
+    console.log(this.emailDel.value, this.passwordDel.value);
+    this.authService
+      .deleteAccount(this.emailDel.value, this.passwordDel.value)
+      .then(() => {
+        this.emailDel.setValue('');
+        this.passwordDel.setValue('');
+      });
   }
 }
 
