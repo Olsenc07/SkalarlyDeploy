@@ -468,7 +468,7 @@ router.post("/login1", verifyEmail, (reg, res, next) => {
                             message: "Authentication failed "
                         });
                     }
-                    console.log('hannah love chase a ton', user.isVerified)
+                    console.log('verified', user.isVerified)
                     fetchedUser = user;
                     return bcrypt.compare(reg.body.password, user.password)
 
@@ -569,35 +569,18 @@ res.send({payload: search})
 
 
 // Deleting account
-router.post('/delete', (req,res) => {
-    let fetchedUser;
-    try{ 
-        User.findOne({ email: reg.body.email })
-        .then(user => {
-            if (!user) {
-                return res.status(401).json({
-                    message: "Authentication failed "
-                });
-            }
-            fetchedUser = user;
-            return bcrypt.compare(reg.body.password, user.password)
-        })
-        .then(
-    User.findOneAndDelete({email: req.body.email})
-    .then(
-        console.log('delete yo ass', req.body.email)
-    )
-    .catch(err => {
-        return res.status(401).json({
-            message: "Unable to delete account!",
-        });
-    })
-)
-}catch{err => {
-        return res.status(401).json({
-            message: "Invalid authentication credentials!",
-        });
-}}
+router.delete('/delete', async(req,res) => {
+    try{
+    hey = db.getCollection('users').find({username: req.body.username},{email: req.body.email})
+print('hey', hey)
+}catch{
+    return res.status(401).json({
+        message: "Invalid authentication credentials!",
+
+    });
+
+}
+
 })
 
 

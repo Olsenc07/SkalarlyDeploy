@@ -415,7 +415,7 @@ export class AuthService {
 
   // Delete account
   deleteAccount(usernameDel: string, passwordDel: string): any {
-    this.snackBar.open('We wish youu th best!', 'Skal!');
+    this.snackBar.open('We wish you the best!', 'Skal!');
     const del = { usernameDel, passwordDel };
     this.http.post('http://localhost:3000/api/user/delete', del).subscribe({
       next: () => {
