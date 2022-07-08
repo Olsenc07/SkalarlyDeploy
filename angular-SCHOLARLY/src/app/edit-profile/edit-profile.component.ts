@@ -142,7 +142,7 @@ export class EditProfileComponent implements OnInit {
     pronouns: this.pronouns,
     genderChoice: this.genderChoice,
     birthday: this.birthday,
-    accountType: new FormControl(''),
+    // accountType: new FormControl(''),
     profilePic: this.profilePic,
     CodeCompleted: this.CodeCompleted,
     CodePursuing: this.CodePursuing,
@@ -158,17 +158,7 @@ export class EditProfileComponent implements OnInit {
   // pList = ['', ''];
 
   // Connects to save showcases in the data base
-  list = [
-    '../../assets/Pics/IMG-8413.PNG',
-    '../../assets/Pics/IMG-8619.PNG',
-    '../../assets/Pics/WhiteSquareInAppLogo.jpg',
-    '../../assets/Pics/ProperInAppLogo.jpeg ',
-    '../../assets/Pics/IMG-8413.PNG',
-    '../../assets/Pics/IMG-8619.PNG',
-    '../../assets/Pics/IMG-8413.PNG',
-    '../../assets/Pics/IMG-8619.PNG',
-    '../../assets/Pics/IMG-8413.PNG',
-  ];
+  list = [];
 
   constructor(
     public dialog: MatDialog,
