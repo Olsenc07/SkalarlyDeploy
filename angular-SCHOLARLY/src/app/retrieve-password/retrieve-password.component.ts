@@ -18,7 +18,7 @@ import { Location } from '@angular/common';
 export class RetrievePasswordComponent implements OnInit {
   isLoading = false;
   visible = true;
-  passwordDel: FormControl = new FormControl('');
+  passwordDel: FormControl = new FormControl('', Validators.minLength(8));
   emailDel: FormControl = new FormControl('');
 
   deleteForm = new FormGroup({

@@ -448,10 +448,10 @@ router.put("/:id/unfollow", async (req, res) => {
 
 
 // LoginFirst Time
-router.post("/login1", verifyEmail, (reg, res, next) => {
+router.post("/login1", verifyEmail, (req, res, next) => {
     let fetchedUser;
     let VALID;
-    User.findOne({ email: reg.body.email }).then(valid => {
+    User.findOne({ email: req.body.email }).then(valid => {
         VALID = valid.isVerified
 
 
@@ -569,20 +569,30 @@ res.send({payload: search})
 
 
 // Deleting account
-router.delete('/delete', async(req,res) => {
-    try{
-    hey = db.getCollection('users').find({username: req.body.username},{email: req.body.email})
-print('hey', hey)
-}catch{
-    return res.status(401).json({
-        message: "Invalid authentication credentials!",
-
-    });
-
-}
+router.post('/delete', async(req,res) => {
+    let fetchedUser;
+ User.findOne({ email: req.body.emailDel })
+        .then(user => {
+            if (!user) {
+                return res.status(401).json({
+                    message: "Authentication failed "
+                });
+            }
+            fetchedUser = user;
+            return bcrypt.compare(req.body.passwordDel, user.password)
+        })
+        .then(result => {
+            if (!result) {
+                return res.status(401).json({
+                    message: "Authentication failed "
+                });
+            }else{
+                User.findOneAndDelete({ email: req.body.emailDel})
+                // UserInfo.findOneAndDelete({Creator:hey._id})
+            }
+                })
+            
 
 })
-
-
 
 module.exports = router;
