@@ -570,8 +570,9 @@ res.send({payload: search})
 
 // Deleting account
 router.post('/delete', async(req,res) => {
+    try{
     let fetchedUser;
- User.findOne({ email: req.body.emailDel })
+        await User.findOne({ email: req.body.emailDel })
         .then(user => {
             if (!user) {
                 return res.status(401).json({
@@ -586,11 +587,21 @@ router.post('/delete', async(req,res) => {
                 return res.status(401).json({
                     message: "Authentication failed "
                 });
-            }else{
+            }
+                // console.log('user',user)
                 User.findOneAndDelete({ email: req.body.emailDel})
                 // UserInfo.findOneAndDelete({Creator:hey._id})
-            }
+            
                 })
+                .catch(err => {
+                    return res.status(401).json({
+                        message: "Invalid authentication credentials!",
+        
+                    });
+                });
+            }finally{
+                // console.log('user', USER)
+            }
             
 
 })
