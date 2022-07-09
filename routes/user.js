@@ -570,10 +570,14 @@ res.send({payload: search})
 
 // Deleting account
 router.post('/delete', async(req,res) => {
-    try{
+  let username
     let fetchedUser;
         await User.findOne({ email: req.body.emailDel })
         .then(user => {
+            console.log('user',user)
+            username = user.username;
+            console.log('user_',username)
+
             if (!user) {
                 return res.status(401).json({
                     message: "Authentication failed "
@@ -583,15 +587,18 @@ router.post('/delete', async(req,res) => {
             return bcrypt.compare(req.body.passwordDel, user.password)
         })
         .then(result => {
+            console.log('user',result)
             if (!result) {
                 return res.status(401).json({
                     message: "Authentication failed "
                 });
-            }
-                // console.log('user',user)
-                User.findOneAndDelete({ email: req.body.emailDel})
+            }else{
+                // console.log('user1',req.body.emailDel)
+           User.dropUser({ username})
+           UserInfo.dropUser({ username})
+
                 // UserInfo.findOneAndDelete({Creator:hey._id})
-            
+            }
                 })
                 .catch(err => {
                     return res.status(401).json({
@@ -599,9 +606,7 @@ router.post('/delete', async(req,res) => {
         
                     });
                 });
-            }finally{
-                // console.log('user', USER)
-            }
+            
             
 
 })
