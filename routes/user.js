@@ -557,57 +557,83 @@ router.post("/login", verifyEmail, (reg, res, next) => {
         });
 });
 // Search users
-router.post('/getusers', async(req, res) => {
+router.post('/getusers', async (req, res) => {
     let payload = req.body.payload;
-    let search = await UserInfo.find({username: {$regex: new RegExp('^'+payload+'.*',
-    'i')}}).exec();
-search = search.slice(0,10);
+    let search = await UserInfo.find({
+        username: {
+            $regex: new RegExp('^' + payload + '.*',
+                'i')
+        }
+    }).exec();
+    search = search.slice(0, 10);
 
 
-res.send({payload: search})
+    res.send({ payload: search })
 });
 
 
 // Deleting account
-router.post('/delete', async(req,res) => {
-  let username
-    let fetchedUser;
-        await User.findOne({ email: req.body.emailDel })
-        .then(user => {
-            console.log('user',user)
-            username = user.username;
-            console.log('user_',username)
+router.post('/delete', verifyEmail, async (req, res) => {
+//     console.log('hey')
+      let username
+        let fetchedUser;
 
-            if (!user) {
-                return res.status(401).json({
-                    message: "Authentication failed "
-                });
-            }
-            fetchedUser = user;
-            return bcrypt.compare(req.body.passwordDel, user.password)
-        })
-        .then(result => {
-            console.log('user',result)
-            if (!result) {
-                return res.status(401).json({
-                    message: "Authentication failed "
-                });
-            }else{
-                // console.log('user1',req.body.emailDel)
-           User.dropUser({ username})
-           UserInfo.dropUser({ username})
+// const firstAsyncResponce = await User.findOne({ email: req.body.emailDel })
+// firstAsyncResponce.subscribe({
+//     next(user){
+//         username = user.username;
+//             if (!user) {
+//                 return res.status(401).json({
+//                     message: "Authentication failed "
+//     });
+// }
+// fetchedUser = user;
+//                 return bcrypt.compare(req.body.passwordDel, user.password)
+// },
+// next(result) {
+//         console.log('user',result)
+//         if (!result) {
+//             return res.status(401).json({
+//                 message: "Authentication failed! "
+//             });
 
-                // UserInfo.findOneAndDelete({Creator:hey._id})
-            }
-                })
-                .catch(err => {
+//         }
+//     }
+// });
+// console.log('username', username)
+//     const secondAsyncResponce = await User.findOneAndDelete( {username: username}).subscribe()
+//     const thirdAsyncResponce = await UserInfo.findOneAndDelete({username:username}).subscribe()
+             await User.findOne({ email: req.body.emailDel })
+            .then(user => {
+                username = user.username;
+                if (!user) {
                     return res.status(401).json({
-                        message: "Invalid authentication credentials!",
-        
+                        message: "Authentication failed "
                     });
-                });
-            
-            
+                }
+                fetchedUser = user;
+                return bcrypt.compare(req.body.passwordDel, user.password)
+            })
+            .then(result => {
+                console.log('user',result)
+                if (!result) {
+                    return res.status(401).json({
+                        message: "Authentication failed "
+                    });
+
+                }
+                    })
+                    .catch(err => {
+                        return res.status(401).json({
+                            message: "Invalid authentication credentials!",
+
+                        });
+                    });
+                 console.log('un',username)
+                    const secondAsyncResponce = await User.findOneAndDelete( {username: username})
+                    secondAsyncResponce.subscribe()
+                    const thirdAsyncResponce = await UserInfo.findOneAndDelete({username:username})
+                    thirdAsyncResponce.subscribe()
 
 })
 
