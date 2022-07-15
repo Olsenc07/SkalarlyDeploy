@@ -291,25 +291,22 @@ export class SignupComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private storeService: StoreService,
     public authService: AuthService,
-    private snackBar: MatSnackBar
-  ) // public courses: Courses
-  {
+    private snackBar: MatSnackBar // public courses: Courses
+  ) {
     this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
       map((code: string | null) =>
         code ? this._filter(code) : this.classListService.allClasses().slice()
       )
     );
 
-    // this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
-    //   map((codeP: string | null) =>
-    //     // new Courses is giving a promise i have to return to get coure values
-    //     // this._filter should be changed to have as a filter to before searchong allcourses
-    //     codeP ? this._filter(codeP) : this.courses.get()
-    //   )
-    // );
+    this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
+      map((codeP: string | null) =>
+        codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
+      )
+    );
 
     this.filteredCodesP.subscribe((r) => this.CodePursuing);
-    // this.filteredCodes.subscribe((r) => this.CodeCompleted);
+    this.filteredCodes.subscribe((r) => this.CodeCompleted);
   }
 
   uploadFileP(): any {

@@ -115,7 +115,7 @@ export class AuthService {
     userData.append('pronoun', pronoun);
     userData.append('CodeCompleted', CodeCompleted);
     userData.append('CodePursuing', CodePursuing);
-    userData.append('profilePic', profilePic, name);
+    userData.append('profilePic', profilePic);
     userData.append('showCase', showCase);
     userData.append('followers', followers);
     userData.append('followings', followings);

@@ -459,7 +459,7 @@ router.post("/login1", verifyEmail, (req, res, next) => {
             console.log('valid?', VALID)
             //  Two try with the one thats breaking happen second becase thatll show we don't want that
             // user any ways! Maybe use switch!
-            User.findOne({ email: reg.body.email })
+            User.findOne({ email: req.body.email })
                 .then(user => {
 
                     if (!user) {
@@ -470,7 +470,7 @@ router.post("/login1", verifyEmail, (req, res, next) => {
                     }
                     console.log('verified', user.isVerified)
                     fetchedUser = user;
-                    return bcrypt.compare(reg.body.password, user.password)
+                    return bcrypt.compare(req.body.password, user.password)
 
                 })
                 .then(result => {
