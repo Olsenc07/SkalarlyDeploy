@@ -20,7 +20,7 @@ var transporter = nodemailer.createTransport({
     service: 'outlook365',
     auth: {
         // gmail just change to gmail email and service to gmail
-        user: 'skalarly_77@outlook.com',
+        user: 'skalarly_777@outlook.com',
         pass: 'Hockey#$07'
     },
     tls: {
@@ -115,7 +115,7 @@ router.post("/signup", async (req, res, next) => {
 
                         });
                     const msg = {
-                        from: ' "Verify account" <skalarly_77@outlook.com>',
+                        from: ' "Verify account" <skalarly_777@outlook.com>',
                         to: user.email,
                         subject: 'Skalarly - verify account',
                         text: `We are excited to welcome you ${user.username} to the community!
@@ -215,7 +215,7 @@ router.post('/forgot', async (req, res) => {
             })
         }
         const msg = {
-            from: ' "Reset Password" <skalarly_77@outlook.com>',
+            from: ' "Reset Password" <skalarly_777@outlook.com>',
             to: user.email,
             subject: 'Skalarly - reset password',
             text: `Hello ${user.username} we hear you forgot your password.
@@ -388,20 +388,24 @@ router.get("/info", (req, res, next) => {
 // })
 
 // Get user
-router.get("/id", (req, res, next) => {
+router.get("/id", async(req, res, next) => {
     console.log('soccer', req.query.id)
-    UserInfo.find(req.query.id)
+    const hey =  await UserInfo.findOne({username: req.query.id})
         .then(documents => {
+            console.log(hey)
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
                 infos: documents
             });
         })
         .catch(error => {
+
             res.status(500).json({
                 message: 'Fetching infos failed!'
             });
         });
+        console.log(hey)
+
 });
 
 // Follow a user
@@ -573,68 +577,45 @@ router.post('/getusers', async (req, res) => {
 
 
 // Deleting account
-router.post('/delete', verifyEmail, async (req, res) => {
+router.post('/delete', async (req, res) => {
 //     console.log('hey')
       let username
         let fetchedUser;
+        await User.findOne({ email: req.body.emailDel })
+        .then(user => {
+            username = user.username;
+            if (!user) {
+                return res.status(401).json({
+                    message: "Authentication failed "
+                });
+            }
+            fetchedUser = user;
+            return bcrypt.compare(req.body.passwordDel, user.password)
+        })
+        .then(result => {
+            console.log('user',result)
+            if (!result) {
+                return res.status(401).json({
+                    message: "Authentication failed "
+                });
 
-// const firstAsyncResponce = await User.findOne({ email: req.body.emailDel })
-// firstAsyncResponce.subscribe({
-//     next(user){
-//         username = user.username;
-//             if (!user) {
-//                 return res.status(401).json({
-//                     message: "Authentication failed "
-//     });
-// }
-// fetchedUser = user;
-//                 return bcrypt.compare(req.body.passwordDel, user.password)
-// },
-// next(result) {
-//         console.log('user',result)
-//         if (!result) {
-//             return res.status(401).json({
-//                 message: "Authentication failed! "
-//             });
-
-//         }
-//     }
-// });
-// console.log('username', username)
-//     const secondAsyncResponce = await User.findOneAndDelete( {username: username}).subscribe()
-//     const thirdAsyncResponce = await UserInfo.findOneAndDelete({username:username}).subscribe()
-             await User.findOne({ email: req.body.emailDel })
-            .then(user => {
-                username = user.username;
-                if (!user) {
+            }
+                })
+                .catch(err => {
                     return res.status(401).json({
-                        message: "Authentication failed "
-                    });
-                }
-                fetchedUser = user;
-                return bcrypt.compare(req.body.passwordDel, user.password)
-            })
-            .then(result => {
-                console.log('user',result)
-                if (!result) {
-                    return res.status(401).json({
-                        message: "Authentication failed "
-                    });
+                        message: "Invalid authentication credentials!",
 
-                }
+                    });
+                });
+                try{
+              await User.findOneAndDelete( {username: username})
+            await UserInfo.findOneAndDelete({username:username})
+                }finally{
+                    res.status(200).json({
+                        message: 'Deleted Successful!',
                     })
-                    .catch(err => {
-                        return res.status(401).json({
-                            message: "Invalid authentication credentials!",
-
-                        });
-                    });
-                 console.log('un',username)
-                    const secondAsyncResponce = await User.findOneAndDelete( {username: username})
-                    secondAsyncResponce.subscribe()
-                    const thirdAsyncResponce = await UserInfo.findOneAndDelete({username:username})
-                    thirdAsyncResponce.subscribe()
-
+                }
+     
 })
 
 module.exports = router;

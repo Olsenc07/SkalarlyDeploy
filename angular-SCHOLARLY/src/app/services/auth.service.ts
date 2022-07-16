@@ -197,11 +197,11 @@ export class AuthService {
       });
   }
 
-  getOtherInfo(id): any {
+  getOtherInfo(id: string): any {
     this.http
       .get<{ message: string; infos: any }>(
         'http://localhost:3000/api/user/id',
-        { params: { id: id } }
+        { params: { id } }
       )
       .pipe(
         map((infosData) => {
@@ -422,7 +422,7 @@ export class AuthService {
           'We wish you all the best',
           'Skal friend!',
           {
-            duration: 2000,
+            duration: 3000,
           }
         );
         snackBarRef.afterDismissed().subscribe(() => {
