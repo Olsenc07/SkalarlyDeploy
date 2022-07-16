@@ -474,7 +474,7 @@
                   </mat-chip>
                   <input placeholder="Choose completed courses" #codeInput [formControl]="CodeCompleted"
                     [matAutocomplete]="autoC" [matChipInputFor]="chipList"
-                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)">
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)" multiple>
                 </mat-chip-list>
                 <cdk-virtual-scroll-viewport itemSize="10">
                   <mat-autocomplete #autoC="matAutocomplete" (optionSelected)="selected($event)">
@@ -503,7 +503,7 @@
                   </mat-chip>
                   <input placeholder="Choose pursuing courses" #codeInputP [formControl]="CodePursuing"
                     [matAutocomplete]="autoP" [matChipInputFor]="chipListP"
-                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addP($event)">
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addP($event)" multiple>
                 </mat-chip-list>
                 <cdk-virtual-scroll-viewport itemSize="10">
                   <mat-autocomplete #autoP="matAutocomplete" (optionSelected)="selectedP($event)">

@@ -200,15 +200,14 @@
           <!-- Hidden if neither are filled in -->
 
 
-          <div [ngClass]=" ((profile | async)?.CodeCompleted) ? 'hide_' : 'completed-courses' ">
+          <div >
             <div class="words1">
               <div class="columnCourses">
                 Completed Courses
               </div>
               
               <!-- Courses but need to target list length-->
-              <div class="counter" matBadgePosition="after" matBadgeOverlap="false"
-                matBadge="{{ (profile | async)?.CodeCompleted.length  }}">
+              <div class="counter" matBadgePosition="after" matBadgeOverlap="false">
               </div>
 
             </div>
@@ -217,38 +216,41 @@
               <mat-chip-list>
                 <!-- *ngFor="let list of Com" -->
                 <div class="list">
-                  <div class="center__">
+                  <ol class="center__">
                     <mat-chip class="style" disabled>
                       <!-- {{list}} -->
-                      {{ (profile | async)?.CodeCompleted }}
+                      <li>
+                      {{ info.CodeCompleted }}
+                    </li>
                     </mat-chip>
-                  </div>
+                  </ol>
                 </div>
               </mat-chip-list>
             </div>
           </div>
 
           <!-- "!((profile | async)?.CodePursuing) ? 'hide_' : 'completed-courses' " -->
-          <div [ngClass]="(profile | async)?.CodePursuing  ? 'hide_' : 'completed-courses' ">
+          <div >
             <div class="words1">
               <div class="columnCourses">
                 Pursuing Courses
               </div>
 
               <!-- Courses -->
-              <div class="counter" matBadgePosition="after" matBadgeOverlap="false"
-                matBadge="{{  (profile | async)?.CodePursuing.length }}"></div>
+              <div class="counter" matBadgePosition="after" matBadgeOverlap="false"></div>
             </div>
             <div class="scroll">
               <mat-chip-list>
                 <!-- *ngFor="let list of Pur" -->
                 <div class="list">
-                  <div class="center__">
+                  <ol class="center__">
                     <mat-chip class="style" disabled>
                       <!-- {{list}}-->
-                      {{ (profile | async)?.CodePursuing }}
+                      <li>
+                      {{ info.CodePursuing }}
+                      </li>
                     </mat-chip>
-                  </div>
+                  </ol>
                 </div>
               </mat-chip-list>
             </div>

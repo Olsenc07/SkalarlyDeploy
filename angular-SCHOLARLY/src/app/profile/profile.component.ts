@@ -144,7 +144,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   private postsSub: Subscription;
 
-  infos: AuthDataInfo[] = [];
+  infos_: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
   Pur_ = StoreService.Pur.length;
@@ -166,8 +166,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.authService.getOtherInfo(id);
       this.infosSub = this.authService
         .getInfoUpdateListener()
-        .subscribe((infos: AuthDataInfo[]) => {
-          this.infos = infos;
+        .subscribe((infos_: AuthDataInfo[]) => {
+          this.infos_ = infos_;
         });
     });
     // Posts
