@@ -293,8 +293,8 @@ router.post('/reset-password', async (req, res, next) => {
 const pic = multer({ storage: storage })
 const pic_2 = multer({ storage: storage_2 })
 router.post("/info", checkAuth,
-    pic.fields([{ name: 'profilePic', maxCount: 1 }, {
-        name: 'showCase', maxCount: 1
+    pic.fields([{ name: 'profilePic' }, {
+        name: 'showCase',
     }
     ]),
     // pic.single('profilePic'),
@@ -404,7 +404,7 @@ router.get("/id", async(req, res, next) => {
                 message: 'Fetching infos failed!'
             });
         });
-        console.log(hey)
+        console.log('usere',hey)
 
 });
 

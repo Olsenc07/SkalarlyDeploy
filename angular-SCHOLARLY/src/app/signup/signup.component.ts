@@ -487,6 +487,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.form.get('profilePic').value,
       this.form.get('showCase').value
     );
+    console.log('signup form', this.signupForm);
   }
 
   ngOnInit(): void {

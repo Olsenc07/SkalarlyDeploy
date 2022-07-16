@@ -3,7 +3,7 @@
 </div>
 
 <div *ngFor="let info of infos">
-<div class="main-content"  *ngIf="(userId === info.Creator)">
+<div class="main-content"  >
   <!-- input pic & has this default pic before-->
   <div class="left-side">
 
@@ -14,7 +14,7 @@
     </div>
 
     <div class="profile-pic" *ngIf="!info.ProfilePicPath">
-      <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
+      <img src="../../assets/Pics/Skalarly 1.jpeg" class="pic" />
     </div>
 
 
@@ -25,9 +25,10 @@
 
           
 
-          <div  class="centerR_" >
+          <div class="centerR_" >
             <!-- This is hard coded once user signs up -->
-            @{{user}}
+            
+            @{{info.username}}
 
           </div>
           <div>
@@ -68,12 +69,21 @@
         <!-- *ngIf="major.value" -->
         <div class="centerR" *ngIf="info.major ">
           <!-- Major -->
-          <i class="fas fa-star large">{{ info.major}}</i>
+          <i class="fas fa-star row_icon">
+            <div class="large">
+              {{ info.major}}
+              </div>
+            </i>
 
         </div>
         <div class="centerR" *ngIf="info.minor ">
           <!-- Minor -->
-          <i class="far fa-star large">{{ info.minor}}</i>
+          <i class="far fa-star row_icon">
+            <div class="large">
+            {{ info.minor}}
+
+            </div>
+          </i>
         </div>
 
       </div>
@@ -95,14 +105,15 @@
       <mat-divider class="margin"></mat-divider>
       <div class="friendsCount">
         <div class="centerR">
-          Followers
+          Followers 
           <!-- Counter -->
-          <!-- {{followers}} -->
+          {{info.followers}}
         </div>
         <div class="centerR">
           Following
           <!-- Counter -->
-          <!-- {{follow}} -->
+          {{info.followings}}
+    
         </div>
       </div>
 
@@ -149,31 +160,35 @@
   <div class="hide">
     <div class="HighlightsM">
       <!-- Hightlight Input box -->
-      <p class="text_cent" *ngIf="groups.length != 0">Highlights</p>
+      <!-- <p class="text_cent" *ngIf="groups.length != 0">Highlights</p> -->
       <div class="highlights-layout">
 
-        <div class="column1" *ngIf="groups.length == 0">
-          <div class="row"> No Groups Joined</div><i class="far fa-frown centerR iconEmpty"></i>
-        </div>
+        <!-- <div class="column1" *ngIf="groups.length == 0">
+          <div class="row"> No chat rooms Joined</div><i class="fa fa-user-secret centerR iconEmpty" aria-hidden="true"></i>
+        </div> -->
 
-        <div class="groups-j" *ngIf="groups.length != 0">
+        <!-- <div class="groups-j" *ngIf="groups.length != 0">
           <div class="words">
             <div class="title">
 
-              <div class="title1">Groups Joined
-            
-                <div class="counter">
-                  {{ posts.length }}</div>
-                </div>
+              <div class="title1">Chat rooms Joined -->
+            <!-- Maybe jst displays as a list of them -->
 
-            </div>
-            <div class="groups_" [ngForOf]="posts">
+                <!-- <div class="counter">
+                  {{ posts.length }}</div> -->
+                 <!-- </div>  -->
+
+            <!-- </div> -->
+
+            <!-- below tagged out is where list of chat rooms hsould be added if decide -->
+
+            <!-- <div class="groups_" [ngForOf]="posts">
               <app-card-brief class="fit_" >
                
               </app-card-brief>
-            </div>
-          </div>
-        </div>
+            </div> -->
+          <!-- </div>
+        </div> -->
 
         <div class="row_1">
           <!-- This ngIf to adjust to data stroage not hard code like Pur_
@@ -248,18 +263,18 @@
       <!-- Recent Posts text  -->
       <div class="right-side" [ngForOf]="posts">
         <mat-tab-group mat-align-tabs="center">
-          <mat-tab label="Activity">
+          <mat-tab label="activity">
             <div class="column1" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">
-              <div class="row"> No Posts Made</div><span class="fas fa-ghost centerR iconEmpty"></span>
+              <div class="row"> No Posts Made</div><span class="fa-duotone fa-hat-wizard centerR iconEmpty" ></span>
             </div>
             <div class="posts" *ngIf="posts.length !== 0" >
               <app-card class="postCard" *ngIf='userIsAuthenticated && (userId === posts.Creator)'>
               </app-card>
             </div>
           </mat-tab>
-          <mat-tab label="Showcase">
+          <mat-tab label="showcase">
             <div class="column1" *ngIf="!info.ShowCasePath">
-              <div class="row"> No Showcases Added</div> <span class="fas fa-eye-slash  centerR iconEmpty"></span>
+              <div class="row"> No Showcases Added</div> <span class="fa-solid fa-hat-wizard centerR iconEmpty" ></span>
             </div>
 
             <div class="showCase" *ngIf="info.ShowCasePath">
