@@ -16,10 +16,19 @@
                     <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="fit" />
                 </div>
                 <!-- <div class="column_"> -->
+                    <div class="column_">
+                        <!-- (click)="onOtherUser(info)" -->
+                        <button mat-button type="button" 
+                        class="userName textSize" id="userName"  [value]=info.username  (click)="navigateToPage()" >
+                            
+                            @{{ info.username}}
+        
+                        </button>
                 <div class="userName textSize" *ngIf="info.name">
                     <!-- {{ (profile | async)?.Pronouns}} -->
                     {{ info.name }}
 
+                </div>
                 </div>
                 <!-- <mat-card-subtitle class="gender textSize">
                                     {{id.Gender}}

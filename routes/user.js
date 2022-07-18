@@ -353,6 +353,8 @@ router.patch("/infoEd", checkAuth,
     }
     ]),
     async (req, res, next) => {
+        console.log('third1', req.body.name)
+
         let username
         let fetchedUser;
        const userName2 = await User.findOne({ email: req.body.email })
@@ -385,16 +387,17 @@ router.patch("/infoEd", checkAuth,
                 console.log('first',userName)
                 const userInfo = await UserInfo.findOne({username: userName.username})
                 console.log('second',userInfo)
-               await UserInfo.findOneAndUpdate({username: userName.username},
-                 {name: req.body.name})
+             const person = await UserInfo.updateOne({name: req.body.name})
                 .then(result => {
                     res.status(201).json({
                         message: 'Info changed successfully',
                         post: result
                     });
+
                 })
-                console.log('third', req.body.name),
                 console.log('fourth', req.body.gender)
+                console.log('fifth', person)
+
     });
 
 

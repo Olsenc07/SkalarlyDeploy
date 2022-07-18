@@ -38,11 +38,11 @@ io.on('connection', socket => {
 //    to the one user
    socket.emit('message', 'Welcome to Chat Cord!',' User joined chat');
 
-//    Broadcase when a user connects
+//    Broadcast when a user connects
 // to all but the poster
-io.on('connection', socket =>{
-    console.log('new ws connection..')
-})
+// io.on('connection', socket => {
+//     console.log('new ws connection..')
+// })
 
 
 // runs when client disconnect
@@ -78,7 +78,8 @@ mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFi
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use('/posts', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/posts')));
-app.use('/user', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/profilePics')));
+app.use('/profilePics', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/profilePics')));
+
 // Connecting to backend images for display
 
 
@@ -103,37 +104,6 @@ app.use("/api/posts", postRoutes);
 
 
 
-// Profile-Reccomend_request cards
-app.get("/api/profiles", (req, res, next) => {
-    // Dummy Profiles
-    const profiles = [
-        {
-            Name:'Chase Olsen', Major:'Physics and Math', Minor: 'History and Philosophy of Science',
-            Sport:'Mens Varsity Hockey', Club:'Chess'
-        },
-        {
-            Name:'Erika Olsen', Major:'Biology', Minor: 'Accounting',
-            Sport:'Womens Varsity Basketball', Club: 'Best Sister Club'
-        },
-        {
-            Name:'Wally Foss', Major:'Business', Minor: 'Rhetoric',
-             Club:'Clash Royal Club'
-        },
-        {
-            Name:'Alicia Ehret', Major:'Sport and Rec Management', Minor: 'Management and Physical Literacy',
-            Sport:'Womens Varsity Basketball'
-        },
-
-        {
-            Name:'Austin Ehret', Major:'Skills Coach', Minor: 'Electrician',
-            Sport:'Olds Grizzlys', Club:'Huge horn club'
-        },
-    ];
-    res.status(200).json({
-        message: 'Profiles fetched succesfully!',
-        profiles: profiles
-    });
-});
 
 
 
