@@ -161,7 +161,6 @@ export class AuthService {
   editUserInfo(
     email: string,
     password: string,
-    username: string,
     name: string,
     gender: string,
     birthday: string,
@@ -178,7 +177,6 @@ export class AuthService {
     showCase?: File
   ): any {
     const authDataInfo: AuthDataInfo = {
-      username,
       name,
       gender,
       birthday,
@@ -197,7 +195,6 @@ export class AuthService {
     const userData = new FormData();
     userData.append('email', email);
     userData.append('password', password);
-    userData.append('username', username);
     userData.append('name', name);
     userData.append('gender', gender);
     userData.append('birthday', birthday);
@@ -214,7 +211,7 @@ export class AuthService {
     userData.append('followings', followings);
 
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://localhost:3000/api/user/infoEd',
         userData
       )
@@ -222,7 +219,6 @@ export class AuthService {
         next: (responseData) => {
           const post: AuthDataInfo = {
             id: responseData.post.id,
-            username,
             name,
             gender,
             birthday,

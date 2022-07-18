@@ -472,7 +472,7 @@ export class EditProfileComponent implements OnInit {
       this.birthday.value,
       this.showCase.value
     );
-
+    console.log('name', this.name.value);
     // TODO: replace null with Profile object
     // this.storeService.setProfile(profile);
   }

@@ -347,7 +347,7 @@ router.post("/info", checkAuth,
 // edit info
 const pic_ = multer({ storage: storage })
 const pic_2_ = multer({ storage: storage_2 })
-router.post("/infoEd", checkAuth,
+router.patch("/infoEd", checkAuth,
     pic_.fields([{ name: 'profilePic' }, {
         name: 'showCase',
     }
@@ -385,10 +385,16 @@ router.post("/infoEd", checkAuth,
                 console.log('first',userName)
                 const userInfo = await UserInfo.findOne({username: userName.username})
                 console.log('second',userInfo)
-               const test1 = await UserInfo.updateOne({username: userName.username}, { name: req.body.name } )
-               console.log('third',test1, req.body.name)
-               console.log('fourth', req.body.name)
-
+               await UserInfo.findOneAndUpdate({username: userName.username},
+                 {name: req.body.name})
+                .then(result => {
+                    res.status(201).json({
+                        message: 'Info changed successfully',
+                        post: result
+                    });
+                })
+                console.log('third', req.body.name),
+                console.log('fourth', req.body.gender)
     });
 
 
