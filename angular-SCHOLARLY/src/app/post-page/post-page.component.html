@@ -329,7 +329,7 @@
         </mat-step>
         <!-- Step 5 -->
         <mat-step>
-          <ng-template matStepLabel>Time To Tag Friends and Post</ng-template>
+          <ng-template matStepLabel>Time To Post</ng-template>
           <div class="row_">
             <button type="button" mat-button matStepperPrevious>Back</button>
             <button mat-raised-button color="primary" class="text" routerLink="/profile"
@@ -341,7 +341,7 @@
       </mat-vertical-stepper>
 
 <!-- Tag Friends and post -->
-<div class="btmPad">
+<!-- <div class="btmPad">
   <mat-form-field appearance="fill" >
     <div class="centerD">Tag Friends: start typing...</div>
 
@@ -356,14 +356,14 @@
         (matChipInputTokenEnd)="add($event)">
     </mat-chip-list>
 
-    <!-- Connect to friends list -->
+    <!-- Connect to friends list --
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
       <mat-option *ngFor="let friend of filteredFriends | async" [value]="friend">
         {{friend}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  </div>
+  </div> -->
     </div>
 
     

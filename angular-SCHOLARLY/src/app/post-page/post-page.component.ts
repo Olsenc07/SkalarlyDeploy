@@ -262,49 +262,20 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
 
   onFormSubmit(form: NgForm): any {
-    // if (this.form.get('upload').invalid) {
-    //   return;
-    // }
-    console.log(this.Title.value);
-    console.log(this.postDescription.value);
-    console.log(this.postLocation.value);
-    console.log(this.form.get('upload').value);
-
-    // const post: Post = {
-    //   Title: form.value.Title,
-    //   PostDescription: form.value.postDescription,
-    //   PostLocation: form.value.postLocation,
-    //   LocationEvent: form.value.locationEvent,
-    //   Time: form.value.time,
-    //   Date: form.value.date,
-    //   Gender: form.value.gender,
-    //   Driver: form.value.driver,
-    //   PaymentService: form.value.paymentService,
-    //   Virtual: form.value.virtual,
-    //   Event: form.value.Event,
-    //   id: this.id.value,
-    //   upload: this.form.get('upload').value,
-    //   FriendCtrl: this.friendCtrl.value,
-    // SecondFormGroup: this.secondFormGroup.value,
-    // ThirdFormGroup: this.thirdFormGroup.value,
-    // FourthFormGroup: this.fourthFormGroup.value,
-    // };
-
     this.postService.addPost(
-      this.postLocation.value,
-      this.postDescription.value,
-      this.form.get('upload').value,
-      this.locationEvent.value,
       this.Title.value,
-      this.date.value,
+      this.postDescription.value,
+      this.postLocation.value,
+      this.locationEvent.value,
       this.time.value,
+      this.date.value,
       this.gender.value,
       this.driver.value,
       this.paymentService.value,
       this.virtual.value,
-      this.event.value
+      this.event.value,
+      this.form.get('upload').value
     );
-    form.resetForm();
   }
 
   changeTab(): void {

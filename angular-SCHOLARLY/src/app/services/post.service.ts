@@ -8,16 +8,16 @@ export interface Post {
   _id: string;
   postDescription: string;
   postLocation?: string;
-  FriendCtrl?: string[];
+  // FriendCtrl?: string[];
   Title?: string;
   date?: string;
   time?: string;
-  LocationEvent?: string;
-  Gender?: string;
-  Driver?: string;
-  PaymentService?: string;
-  Virtual?: string;
-  Event?: string;
+  locationEvent?: string;
+  gender?: string;
+  driver?: string;
+  paymentService?: string;
+  virtual?: string;
+  event?: string;
   upload?: File;
   ImagePath?: string;
 
@@ -45,14 +45,14 @@ export class PostService {
               Title: post.Title,
               PostDescription: post.postDescription,
               PostLocation: post.postLocation,
-              LocationEvent: post.LocationEvent,
+              LocationEvent: post.locationEvent,
               Time: post.time,
               Date: post.date,
-              Gender: post.Gender,
-              Driver: post.Driver,
-              PaymentService: post.PaymentService,
-              Virtual: post.Virtual,
-              Event: post.Event,
+              Gender: post.gender,
+              Driver: post.driver,
+              PaymentService: post.paymentService,
+              Virtual: post.virtual,
+              Event: post.event,
               ImagePath: post.ImagePath,
               Creator: post.Creator,
             };
@@ -69,63 +69,66 @@ export class PostService {
   getPostUpdateListener(): any {
     return this.postsUpdated.asObservable();
   }
+  // Adding post
   addPost(
     id: string,
     Creator: string,
     postLocation: string,
     postDescription?: string,
     upload?: File,
-    LocationEvent?: string,
+    locationEvent?: string,
     Title?: string,
     date?: string,
     time?: string,
-    Gender?: string,
-    Driver?: string,
-    PaymentService?: string,
-    Virtual?: string,
-    Event?: string
+    gender?: string,
+    driver?: string,
+    paymentService?: string,
+    virtual?: string,
+    event?: string
   ): any {
     const postData = new FormData();
-    postData.append('Creator', Creator);
-    postData.append('id', id);
     postData.append('Title', Title);
     postData.append('postDescription', postDescription);
     postData.append('postLocation', postLocation);
-    postData.append('LocationEvent', LocationEvent);
+    postData.append('locationEvent', locationEvent);
     postData.append('time', time);
     postData.append('date', date);
-    postData.append('Gender', Gender);
-    postData.append('Driver', Driver);
-    postData.append('PaymentService', PaymentService);
-    postData.append('Virtual', Virtual);
-    postData.append('Event', Event);
+    postData.append('gender', gender);
+    postData.append('driver', driver);
+    postData.append('paymentService', paymentService);
+    postData.append('virtual', virtual);
+    postData.append('event', event);
+    postData.append('id', id);
     postData.append('upload', upload);
+    postData.append('Creator', Creator);
     this.http
       .post<{ message: string; postId: Post }>(
         'http://localhost:3000/api/posts',
         postData
       )
-      .subscribe((responseData) => {
-        const postId: Post = {
-          _id: responseData.postId._id,
-          Title,
-          postDescription,
-          postLocation,
-          LocationEvent,
-          time,
-          date,
-          Gender,
-          Driver,
-          PaymentService,
-          Virtual,
-          Event,
-          ImagePath: responseData.postId.ImagePath,
-          Creator,
-        };
-        // const id_ = responseData.postId;
-        // postData.id = id_;
-        this.posts.push(postId);
-        this.postsUpdated.next([...this.posts]);
+      .subscribe({
+        next: (responseData) => {
+          const postId: Post = {
+            _id: responseData.postId._id,
+            Title,
+            postDescription,
+            postLocation,
+            locationEvent,
+            time,
+            date,
+            gender,
+            driver,
+            paymentService,
+            virtual,
+            event,
+            ImagePath: responseData.postId.ImagePath,
+            Creator,
+          };
+          // const id_ = responseData.postId;
+          // postData.id = id_;
+          this.posts.push(postId);
+          this.postsUpdated.next([...this.posts]);
+        },
       });
   }
 

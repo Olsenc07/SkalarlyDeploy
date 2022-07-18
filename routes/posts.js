@@ -54,7 +54,7 @@ const up = multer({ storage: storage})
 router.post("", 
     checkAuth,
     up.single('upload'), (req, res) => {
-    console.log(req.file)
+        console.log('description',req.body)
     const url = req.protocol + '://' + req.get('host');
     const post = new Post({
         Title: req.body.Title,
@@ -69,7 +69,7 @@ router.post("",
         Virtual: req.body.virtual,
         Event: req.body.event,
         ImagePath: url + '/posts/' + req.file,
-        Creator: req.userData._id
+        Creator: req.userData.userId
     });
     post.save().then(createdPost => {
         res.status(201).json({

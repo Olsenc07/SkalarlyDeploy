@@ -79,6 +79,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use('/posts', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/posts')));
 app.use('/profilePics', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/profilePics')));
+app.use('/showCase', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/showCase')));
+
 
 // Connecting to backend images for display
 
