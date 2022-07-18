@@ -352,7 +352,9 @@
 .hide {
   display: none !important;
 }
-
+.mat-datepicker-toggle{
+  font-size: 21px;
+}
 ::ng-deep .mat-tab-label {
   font-family: 'Cinzel', serif;
 }
@@ -396,6 +398,18 @@
 .left-column {
   display: flex;
   flex-direction: column;
+}
+.login{
+  display: flex;
+  justify-content: center;
+  margin: 0% 25%;
+}
+
+.loginWidth{
+  width: 350px;
+}
+.loginWidth_{
+  width: 300px;
 }
 .imagePreview {
   display: flex;
@@ -475,7 +489,7 @@
 
 @media (min-width: 1024px) {
   .smaller {
-    width: 30%;
+    width: 25%;
   }
 }
 @media (max-width: 1024px) {
@@ -498,6 +512,12 @@
 .style {
   color: #7e7171;
   font-family:  'Poppins', sans-serif;
+}
+.titleVal{
+  display: flex;
+  justify-content: center;
+  color: #7e7171;
+  font-family:  'Cinzel', serif;
 }
 @media (min-width: 900px) {
   .imageBox {
@@ -662,7 +682,7 @@
   margin-right: 1%;
   font-size: xx-large;
   flex-direction: column;
-  // color: #418bba;
+  color: grey;
 }
 @media (min-width: 900px) {
   ._icon2 {

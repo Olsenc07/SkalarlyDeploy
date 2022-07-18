@@ -53,28 +53,28 @@ const up = multer({ storage: storage})
 // Post additions
 router.post("", 
     checkAuth,
-    up.single('upload'), (req, res, next) => {
+    up.single('upload'), (req, res) => {
     console.log(req.file)
     const url = req.protocol + '://' + req.get('host');
     const post = new Post({
         Title: req.body.Title,
-        PostDescription: req.body.postDescription,
-        PostLocation: req.body.postLocation,
-        LocationEvent: req.body.LocationEvent,
-        Time: req.body.time,
-        Date: req.body.date,
-        Gender: req.body.Gender,
-        Driver: req.body.Driver,
-        PaymentService: req.body.PaymentService,
-        Virtual: req.body.Virtual,
-        Event: req.body.Event,
+        postDescription: req.body.postDescription,
+        postLocation: req.body.postLocation,
+        LocationEvent: req.body.locationEvent,
+        time: req.body.time,
+        date: req.body.date,
+        Gender: req.body.gender,
+        Driver: req.body.driver,
+        PaymentService: req.body.paymentService,
+        Virtual: req.body.virtual,
+        Event: req.body.event,
         ImagePath: url + '/posts/' + req.file,
         Creator: req.userData._id
     });
     post.save().then(createdPost => {
         res.status(201).json({
             message: 'Post added successfully',
-            post: {
+            postId: {
                 id: createdPost._id,
                 ...createdPost
             } 

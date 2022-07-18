@@ -343,6 +343,57 @@ router.post("/info", checkAuth,
             });
     });
 
+
+// edit info
+const pic_ = multer({ storage: storage })
+const pic_2_ = multer({ storage: storage_2 })
+router.post("/infoEd", checkAuth,
+    pic_.fields([{ name: 'profilePic' }, {
+        name: 'showCase',
+    }
+    ]),
+    async (req, res, next) => {
+        let username
+        let fetchedUser;
+       const userName2 = await User.findOne({ email: req.body.email })
+        .then(user => { 
+            username = user.username;
+            if (!user) {
+                return res.status(401).json({
+                    message: "Authentication failed "
+                });
+            }
+            fetchedUser = user;
+            return bcrypt.compare(req.body.password, user.password)
+        })
+        .then(result => {
+            console.log('user',result)
+            if (!result) {
+                return res.status(401).json({
+                    message: "Authentication failed "
+                });
+
+            }
+                })
+                .catch(err => {
+                    return res.status(401).json({
+                        message: "Invalid authentication credentials!",
+
+                    });
+                });
+                const userName = await User.findOne({ email: req.body.email })
+                console.log('first',userName)
+                const userInfo = await UserInfo.findOne({username: userName.username})
+                console.log('second',userInfo)
+               const test1 = await UserInfo.updateOne({username: userName.username}, { name: req.body.name } )
+               console.log('third',test1, req.body.name)
+               console.log('fourth', req.body.name)
+
+    });
+
+
+
+
 // userInfo recieving
 router.get("/info", (req, res, next) => {
     UserInfo.find()
@@ -360,33 +411,7 @@ router.get("/info", (req, res, next) => {
         });
 });
 
-
-
-
-
-// Redirected from the postinfo page load
-// router.get("/otherInfo/:id", async(req, res, next) => {
-//     UserInfo.find()
-//     // .select('-password') if i was fetching user info, dont want password passed on front end
-//     .then(documents => {
-//     res.status(200).json({
-//         message: 'Infos fetched succesfully!',
-//         infos: documents
-//         });
-//     })
-//     .catch(error => {
-//         res.status(500).json({
-//             message: 'Fetching infos failed!'
-//         });
-//     });
-
-// const id = req.params.id;
-//     const Id = req.params.id;
-//         console.log(Id, 'donkey');
-//         // window.location.href = 'profile/:id';
-
-// })
-
+ 
 // Get user
 router.get("/id", async(req, res) => {
     console.log('soccer', req.query.id)

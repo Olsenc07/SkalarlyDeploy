@@ -32,7 +32,7 @@ import {
 } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { map } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ClassListService } from '../services/class.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -294,12 +294,14 @@ export class SignupComponent implements OnInit, OnDestroy {
     private snackBar: MatSnackBar // public courses: Courses
   ) {
     this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
+      startWith(null),
       map((code: string | null) =>
         code ? this._filter(code) : this.classListService.allClasses().slice()
       )
     );
 
     this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
+      startWith(null),
       map((codeP: string | null) =>
         codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
       )

@@ -157,6 +157,98 @@ export class AuthService {
       });
   }
 
+  // edit userinfo
+  editUserInfo(
+    email: string,
+    password: string,
+    username: string,
+    name: string,
+    gender: string,
+    birthday: string,
+    major: string,
+    minor: string,
+    sport: string,
+    club: string,
+    pronoun: string,
+    CodeCompleted: string,
+    CodePursuing: string,
+    followers: string,
+    followings: string,
+    profilePic?: File,
+    showCase?: File
+  ): any {
+    const authDataInfo: AuthDataInfo = {
+      username,
+      name,
+      gender,
+      birthday,
+      major,
+      minor,
+      sport,
+      club,
+      pronoun,
+      CodeCompleted,
+      CodePursuing,
+      profilePic,
+      showCase,
+      followers,
+      followings,
+    };
+    const userData = new FormData();
+    userData.append('email', email);
+    userData.append('password', password);
+    userData.append('username', username);
+    userData.append('name', name);
+    userData.append('gender', gender);
+    userData.append('birthday', birthday);
+    userData.append('major', major);
+    userData.append('minor', minor);
+    userData.append('sport', sport);
+    userData.append('club', club);
+    userData.append('pronoun', pronoun);
+    userData.append('CodeCompleted', CodeCompleted);
+    userData.append('CodePursuing', CodePursuing);
+    userData.append('profilePic', profilePic);
+    userData.append('showCase', showCase);
+    userData.append('followers', followers);
+    userData.append('followings', followings);
+
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://localhost:3000/api/user/infoEd',
+        userData
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            username,
+            name,
+            gender,
+            birthday,
+            major,
+            minor,
+            sport,
+            club,
+            pronoun,
+            CodeCompleted,
+            CodePursuing,
+            followers,
+            followings,
+            ProfilePicPath: responseData.post.ProfilePicPath,
+            ShowCasePath: responseData.post.ShowCasePath,
+          };
+          this.router.navigate(['/profile']);
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+          // this.snackBar.open('Sign in with your new account', 'Will do!!');
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+
   getInfoUpdateListener(): any {
     return this.infosUpdated.asObservable();
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup } from '@angular/forms';
 import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -26,6 +26,7 @@ import { map, startWith } from 'rxjs/operators';
 import { ClassListService } from '../services/class.service';
 import { Post, PostService } from '../services/post.service';
 import { Profile, StoreService } from '../services/store.service';
+import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
 import { AccountTextComponent } from '../signup/signup.component';
 
@@ -97,6 +98,15 @@ export class EditProfileComponent implements OnInit {
     'Two Spirit',
   ];
 
+  pronounS: string[] = [
+    '',
+    'She/Her',
+    'He/His',
+    'Ze/Hirs',
+    'Ze/Zirs',
+    'Xe/Xyr',
+  ];
+
   classes: string[] = [];
   classesP: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
@@ -106,6 +116,13 @@ export class EditProfileComponent implements OnInit {
   url: string[];
   cropImgPreview: any = '';
   imgChangeEvent: any = '';
+  password: FormControl = new FormControl('', Validators.minLength(8));
+  email: FormControl = new FormControl('');
+
+  deleteForm = new FormGroup({
+    email: this.email,
+    password: this.password,
+  });
   // username isn't connected to any formcontrol its just so the profile interface is happy
   username: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
@@ -165,6 +182,7 @@ export class EditProfileComponent implements OnInit {
     public classListService: ClassListService,
     private http: HttpClient,
     private storeService: StoreService,
+    public authService: AuthService,
     public postService: PostService
   ) {
     // this.bio.valueChanges.subscribe((v) => this.bioLength.next(v.length));
@@ -397,6 +415,7 @@ export class EditProfileComponent implements OnInit {
     //   this.p = this.p - 1;
     //   return this.p;
     // }
+
     this.postService.deletePost(postId);
   }
 
@@ -435,30 +454,26 @@ export class EditProfileComponent implements OnInit {
     console.log(this.editForm.value);
     // TODO: convert form fields to Profile
 
-    const profile: Profile = {
-      UserName: this.username.value,
-      CodeCompleted: this.CodeCompleted.value,
-      CodePursuing: this.CodePursuing.value,
-      Name: this.name.value,
-      Pronouns: this.pronouns.value,
-      profilePic: this.profilePic.value,
-      Gender: this.genderChoice.value,
-      Major: this.major.value,
-      Minor: this.minor.value,
-      Sport: this.sport.value,
-      Club: this.club.value,
-      profPic: this.cropImgPreview,
-      Birthday: this.birthday.value,
-      ShowCase: this.showCase.value,
-      // ShowCasse: this.url,
-
-      // cropImgPreview: this.cropImgPreview,
-      // Converted base64 url to a file
-      // Trying to store this chosen cropped value in service
-      // cropPicChosen: File,
-    };
+    this.authService.editUserInfo(
+      this.email.value,
+      this.password.value,
+      this.username.value,
+      this.CodeCompleted.value,
+      this.CodePursuing.value,
+      this.name.value,
+      this.pronouns.value,
+      this.profilePic.value,
+      this.genderChoice.value,
+      this.major.value,
+      this.minor.value,
+      this.sport.value,
+      this.club.value,
+      this.cropImgPreview,
+      this.birthday.value,
+      this.showCase.value
+    );
 
     // TODO: replace null with Profile object
-    this.storeService.setProfile(profile);
+    // this.storeService.setProfile(profile);
   }
 }

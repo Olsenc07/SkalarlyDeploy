@@ -1,15 +1,15 @@
 <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
   <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Description">
+     <mat-tab label="Description">
       <div class="entire-page">
-        <!-- <div class="rowT">
+         <!-- <div class="rowT">
           <button mat-icon-button class="display1" routerLink="/profile">
             <span class="material-icons">
               arrow_back_ios
             </span>
           </button>
 
-        </div> -->
+         </div>   -->
 
         <!-- lower box -->
         <div class="middle">
@@ -73,7 +73,7 @@
               </div>
             </div>
 
-          </div>
+           </div>
 
 
 
@@ -83,25 +83,54 @@
             <i class="material-icons _icon">badge</i>
 
             <mat-form-field>
-              <input matInput placeholder="Full Name" [formControl]="name" class="inputText" />
+              <input matInput placeholder="Full Name" [formControl]="name" class="inputText"/>
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
             </mat-form-field>
-
           </div>
-          <div class="input">
-            <mat-form-field class="smaller">
-              <input matInput placeholder="Prefered Pronouns" [formControl]="pronouns" />
-              <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
-                <mat-icon class="asthetic-adds">close</mat-icon>
-              </button> -->
-            </mat-form-field>
+
+            <div class="input">
+              <!-- Birthday picker -->
+              <i class="material-icons _icon">cake</i>
+              <mat-form-field >
+                <mat-label>When's your birthday?</mat-label>
+                <input matInput [matDatepicker]="dp" [formControl]="birthday">
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp></mat-datepicker>
+              </mat-form-field>
+            </div>
+          
+
+
+
+           <!-- Gender -->
+      <div class="gender">
+        <mat-form-field class="smaller" >
+          <mat-label>Gender</mat-label>
+          <input matInput type='text' [formControl]="genderChoice" [matAutocomplete]="auto_">
+          <mat-autocomplete #auto_="matAutocomplete">
+            <mat-option *ngFor="let genderChoice of genders" [value]="genderChoice">
+              {{genderChoice}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+          <div class="gender">
+      <mat-form-field  class="smaller">
+        <mat-label>Prefered Pronouns</mat-label>
+        <input matInput type='text' [formControl]="pronouns" [matAutocomplete]="auto"/>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let pronoun of pronounS" [value]="pronoun">
+            {{pronoun}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
           </div>
           <!-- Bio, decided its not needed -->
           <!-- <div class="input">
             <div class="display">
-              <mat-form-field><input matInput [(formControl)]="bio" placeholder="Bio " class="bio" maxlength="100">
+              <mat-form-field><input matInput [formControl]="bio" placeholder="Bio " class="bio" maxlength="100">
                 <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearBio()">
                   <mat-icon class="asthetic-adds">close</mat-icon>
                 </button>
@@ -166,78 +195,38 @@
           </div>
 
 
-          <div class="input">
-            <div class="column_">
-              <i class="material-icons icon">cake</i>
-              <!-- <div class="asthetic-adds">Birthday</div> -->
+    
+         
+         <div class="titleVal">Required Validation!</div>
+         
+          <div class="login">
+            <mat-form-field class="loginWidth">
+              <input class="text_" matInput type="email" placeholder="Academic email" [formControl]="email" required>
+              <mat-error >Only U Of T emails are valid</mat-error>
+              </mat-form-field>
+            
             </div>
-            <!-- Birthday picker -->
-            <mat-form-field >
-              <mat-label>When's your birthday?</mat-label>
-              <input matInput [matDatepicker]="dp" [formControl]="birthday">
-              <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-              <mat-datepicker #dp></mat-datepicker>
-            </mat-form-field>
-          </div>
+            <div class="login">
+              <mat-form-field class="loginWidth">
+              <input class="text_" matInput placeholder="Password" [formControl]="password" required>
+              </mat-form-field>
+            </div>
+      
 
 
-
-
-          <!-- Gender -->
-          <div class="gender">
-            <mat-form-field appearance="fill" class="gender">
-              <mat-label>Gender</mat-label>
-              <input [formControl]="genderChoice">
-              <mat-autocomplete #auto="matAutocomplete">
-                <mat-option *ngFor="let genderChoice of genders" [value]="genderChoice">
-                  {{genderChoice}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-          </div>
-
-
-
-          <!-- Public or Private account -->
-          <!-- <div class="accounts">
-            <mat-radio-group aria-label="Select an option" formControlName="accountType" class="Accounts">
-
-              <div class="layout">
-                Private Account
-                <mat-radio-button [disableRipple]="true" value="private"></mat-radio-button>
-
-              </div>
-
-              <div class="tooltip">
-                <button mat-icon-button (click)="openDialogAccount()">
-                  <span class="material-icons"> info </span>
-                </button>
-              </div>
-
-
-              <div class="layout">
-                Public Account
-                <mat-radio-button [disableRipple]="true" value="public"></mat-radio-button>
-              </div>
-
-            </mat-radio-group>
-          </div> -->
-
-
-
-
+    
           <!-- done button -->
           <div class="done">
-            <button mat-raised-button color="primary" type="submit" routerLink="/profile" class="button"
+            <button mat-raised-button color="primary" [disabled]="!deleteForm.valid" type="submit" routerLink="/profile" class="button"
               (click)="onSubmit()">
               Save
             </button>
           </div>
 
 
-        </div>
-      </div>
-    </mat-tab>
+        </div> 
+      </div> 
+    </mat-tab> 
     <mat-tab label="Activity">
       <div class="entire-page">
 
@@ -245,9 +234,6 @@
         <div class="groups-jj ">
 
 
-          <div class="column1" [ngClass]="posts.length == 0 ? 'show' : 'hide' ">
-            <div class="row"> No Groups Joined</div><i class="fas fa-ghost centerR"></i>
-          </div>
 
 
           <div class="row" [ngClass]="posts.length == 0 ? 'hide' : 'show' ">
