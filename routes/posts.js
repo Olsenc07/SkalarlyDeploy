@@ -36,7 +36,8 @@ const storage  = multer.diskStorage({
 
 // Post recieving
 router.get("", (req, res, next) => {
-    Post.find().then(documents => {
+    Post.find()
+    .then(documents => {
     res.status(200).json({
         message: 'Posts fetched succesfully!',
         posts: documents

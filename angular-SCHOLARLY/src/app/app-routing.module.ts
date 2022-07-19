@@ -7,14 +7,22 @@ import { FriendsActivityComponent } from './friends-activity/friends-activity.co
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
-import { ProfileComponent, UserProfileComponent } from './profile/profile.component';
-import { RetrievePasswordComponent, ResetPasswordComponent } from './retrieve-password/retrieve-password.component';
+import {
+  ProfileComponent,
+  UserProfileComponent,
+} from './profile/profile.component';
+import {
+  RetrievePasswordComponent,
+  ResetPasswordComponent,
+} from './retrieve-password/retrieve-password.component';
 import { SearchComponent } from './search/search.component';
-import { SignupComponent, VerifiedPopUpComponent } from './signup/signup.component';
+import {
+  SignupComponent,
+  VerifiedPopUpComponent,
+} from './signup/signup.component';
 import { MainPagesComponent } from './main-pages/main-pages.component';
 import { MessagingComponent } from './messaging/messaging.component';
-import {AuthGuard} from './signup/auth.guard';
-
+import { AuthGuard } from './signup/auth.guard';
 
 export const routingComponents = [
   HomePageComponent,
@@ -23,21 +31,33 @@ export const routingComponents = [
   ProfileComponent,
   EditProfileComponent,
   VerifiedPopUpComponent,
-  UserProfileComponent
+  UserProfileComponent,
 ];
 
 const routes: Routes = [
   { path: 'login', component: HomePageComponent },
   { path: 'sign-up', component: SignupComponent },
-  { path: 'verified', component: VerifiedPopUpComponent},
-  { path: 'resetPassword', component: ResetPasswordComponent},
+  { path: 'verified', component: VerifiedPopUpComponent },
+  { path: 'resetPassword', component: ResetPasswordComponent },
   { path: 'post-page', component: PostPageComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'profiles/:id', component: UserProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'skalars/:id',
+    component: UserProfileComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'retrieve-password', component: RetrievePasswordComponent },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
-  { path: 'edit-profile', component: EditProfileComponent, canActivate: [AuthGuard] },
-  { path: 'friends-activity', component: FriendsActivityComponent, canActivate: [AuthGuard] },
+  {
+    path: 'edit-profile',
+    component: EditProfileComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'friends-activity',
+    component: FriendsActivityComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'groups', component: GroupChatsComponent, canActivate: [AuthGuard] },
   { path: 'main', component: MainPagesComponent },
   { path: 'messages', component: MessagingComponent, canActivate: [AuthGuard] },
@@ -50,6 +70,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   bootstrap: [AppComponent],
-  providers: [AuthGuard]
+  providers: [AuthGuard],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

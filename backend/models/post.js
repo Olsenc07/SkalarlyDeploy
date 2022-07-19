@@ -13,7 +13,6 @@ const postSchema = mongoose.Schema({
     Virtual: { type: String, require: false},
     Event: { type: String, require: false},
     ImagePath: { type:String, require: false},
-    // Comments and nested comments with replies
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 

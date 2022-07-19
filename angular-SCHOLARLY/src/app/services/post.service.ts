@@ -71,7 +71,6 @@ export class PostService {
   }
   // Adding post
   addPost(
-    id: string,
     Creator: string,
     postLocation: string,
     postDescription?: string,
@@ -98,7 +97,6 @@ export class PostService {
     postData.append('paymentService', paymentService);
     postData.append('virtual', virtual);
     postData.append('event', event);
-    postData.append('id', id);
     postData.append('upload', upload);
     postData.append('Creator', Creator);
     this.http

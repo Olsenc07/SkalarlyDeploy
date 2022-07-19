@@ -424,7 +424,7 @@ router.get("/info", (req, res, next) => {
 // Get user
 router.get("/id", async(req, res) => {
     console.log('soccer', req.query.id)
-     await UserInfo.find({username: req.query.id})
+    hey =  await UserInfo.findOne({username: req.query.id})
         .then(documents => {
             console.log(documents)
             res.status(200).json({
@@ -433,12 +433,11 @@ router.get("/id", async(req, res) => {
             });
         })
         .catch(error => {
-
             res.status(500).json({
                 message: 'Fetching infos failed!'
             });
         });
-
+console.log('hey', hey)
 
 });
 
