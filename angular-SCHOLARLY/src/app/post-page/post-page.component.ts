@@ -121,7 +121,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   Title: FormControl = new FormControl('');
   date: FormControl = new FormControl('');
   time: FormControl = new FormControl('');
-  locationEvent: FormControl = new FormControl('');
+  LocationEvent: FormControl = new FormControl('');
   // });
 
   // secondFormGroup: FormGroup  = new FormGroup({
@@ -261,12 +261,12 @@ export class PostPageComponent implements OnInit, OnDestroy {
     return value;
   }
 
-  onFormSubmit(form: NgForm): any {
+  onFormSubmit(): any {
     this.postService.addPost(
       this.Title.value,
       this.postDescription.value,
       this.postLocation.value,
-      this.locationEvent.value,
+      this.LocationEvent.value,
       this.time.value,
       this.date.value,
       this.gender.value,

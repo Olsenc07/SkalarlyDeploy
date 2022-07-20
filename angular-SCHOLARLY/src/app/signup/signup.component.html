@@ -390,7 +390,7 @@
 
 
       <!-- disabled -->
-      <mat-tab disabled>
+      <mat-tab >
         <ng-template mat-tab-label>
           <mat-icon class=""><span class="material-icons-two-tone">
               school
@@ -464,25 +464,28 @@
           <div class="courses">
             <div class="input">
               <i class="material-icons _icon">check</i>
+
               <mat-form-field class="example-chip-list">
                 <mat-label>Completed Courses</mat-label>
-                <mat-chip-list #chipList aria-label="Class Code">
-                  <mat-chip *ngFor="let code of classes" [selectable]="selectable" [removable]="removable"
-                    (removed)="remove(code)">
+                <mat-select placeholder="Choose completed courses" #codeInput [formControl]="CodeCompleted" multiple>
+                <mat-select-trigger>
+                <mat-chip-list>
+                  <mat-chip *ngFor="let code of CodeCompleted.value" 
+                  (removed)="onRemoved(code)" [removable]="true">
                     {{code}}
-                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    <mat-icon matChipRemove >cancel</mat-icon>
                   </mat-chip>
-                  <input placeholder="Choose completed courses" #codeInput [formControl]="CodeCompleted"
-                    [matAutocomplete]="autoC" [matChipInputFor]="chipList"
-                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add($event)" multiple>
+                  
                 </mat-chip-list>
-                <cdk-virtual-scroll-viewport itemSize="10">
-                  <mat-autocomplete #autoC="matAutocomplete" (optionSelected)="selected($event)">
-                    <mat-option *cdkVirtualFor="let code of filteredCodes | async" [value]="code">
+              </mat-select-trigger>
+                <!-- <cdk-virtual-scroll-viewport itemSize="10"> -->
+                  <!-- <mat-autocomplete #autoC="matAutocomplete" (optionSelected)="selected($event)"> -->
+                    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
                       {{code}}
                     </mat-option>
-                  </mat-autocomplete>
-                </cdk-virtual-scroll-viewport>
+                  <!-- </mat-autocomplete> -->
+                <!-- </cdk-virtual-scroll-viewport> -->
+              </mat-select>
               </mat-form-field>
             </div>
           </div>
@@ -495,16 +498,19 @@
 
               <mat-form-field class="example-chip-list">
                 <mat-label>Pursuing Courses</mat-label>
+                <mat-select placeholder="Choose pursuing courses" #codeInputP [formControl]="CodePursuing"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addP($event)" multiple>
+          
                 <mat-chip-list #chipListP aria-label="Class CodeP">
                   <mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
                     (removed)="removeP(codeP)">
                     {{codeP}}
                     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                   </mat-chip>
-                  <input placeholder="Choose pursuing courses" #codeInputP [formControl]="CodePursuing"
-                    [matAutocomplete]="autoP" [matChipInputFor]="chipListP"
-                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addP($event)" multiple>
+                
                 </mat-chip-list>
+       
+
                 <cdk-virtual-scroll-viewport itemSize="10">
                   <mat-autocomplete #autoP="matAutocomplete" (optionSelected)="selectedP($event)">
                     <mat-option *cdkVirtualFor="let codeP of filteredCodesP | async" [valueP]="codeP">
@@ -512,6 +518,8 @@
                     </mat-option>
                   </mat-autocomplete>
                 </cdk-virtual-scroll-viewport>
+              </mat-select>
+
               </mat-form-field>
             </div>
           </div>

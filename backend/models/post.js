@@ -1,18 +1,18 @@
 const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
-    Title:  { type: String, require: false},
-    postDescription:  { type: String, require: false},
-    postLocation: { type: String, require: true},
-    LocationEvent:  { type: String, require: false},
-    time:  { type: String, require: false},
-    date: { type: String, require: false},
-    Gender:  { type: String, require: false},
-    Driver: { type: String, require: false},
-    PaymentService: { type: String, require: false},
-    Virtual: { type: String, require: false},
-    Event: { type: String, require: false},
-    ImagePath: { type:String, require: false},
+    Title:  { type: String },
+    postDescription:  { type: String},
+    postLocation: { type: String},
+    LocationEvent:  { type: String},
+    time:  { type: String},
+    date: { type: String},
+    Gender:  { type: String},
+    Driver: { type: String},
+    PaymentService: { type: String},
+    Virtual: { type: String},
+    Event: { type: String},
+    ImagePath: { type:String},
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 

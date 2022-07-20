@@ -152,12 +152,12 @@ export class SignupComponent implements OnInit, OnDestroy {
   ]);
   termsCheck: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
-  CodePursuing: FormControl = new FormControl('');
+  CodePursuing: FormControl = new FormControl([]);
   filteredCodesP: Observable<string[]>;
 
-  CodeCompleted: FormControl = new FormControl('');
+  CodeCompleted: FormControl = new FormControl([]);
   filteredCodes: Observable<string[]>;
-
+  FilteredCodes: string[] = this.classListService.allClasses().slice();
   bio: FormControl = new FormControl('');
   public bioLength = new BehaviorSubject(0);
   public showCaseList = new Subject();
@@ -354,6 +354,17 @@ export class SignupComponent implements OnInit, OnDestroy {
     // event.chipInput!.clear();
 
     this.CodeCompleted.setValue(null);
+  }
+  onRemoved(code: string) {
+    const codes = this.CodeCompleted.value as string[];
+    this.removeFirst(codes, code);
+    this.CodeCompleted.setValue(codes);
+  }
+  private removeFirst<T>(array: T[], toRemove: T): void {
+    const index = array.indexOf(toRemove);
+    if (index !== -1) {
+      array.splice(index, 1);
+    }
   }
 
   remove(code: string): void {

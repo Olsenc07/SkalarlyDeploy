@@ -4,22 +4,21 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 export interface Post {
-  Creator: string;
   _id: string;
+  Title: string;
   postDescription: string;
-  postLocation?: string;
-  // FriendCtrl?: string[];
-  Title?: string;
-  date?: string;
-  time?: string;
-  locationEvent?: string;
-  gender?: string;
-  driver?: string;
-  paymentService?: string;
-  virtual?: string;
-  event?: string;
-  upload?: File;
-  ImagePath?: string;
+  postLocation: string;
+  LocationEvent: string;
+  time: string;
+  date: string;
+  gender: string;
+  driver: string;
+  paymentService: string;
+  virtual: string;
+  event: string;
+  upload: File;
+  ImagePath: string;
+  Creator: string;
 
   // SecondFormGroup?: string;
   // ThirdFormGroup?: string;
@@ -41,18 +40,18 @@ export class PostService {
         map((postData) => {
           return postData.posts.map((post) => {
             return {
-              id: post._id,
+              id: post.id,
               Title: post.Title,
-              PostDescription: post.postDescription,
-              PostLocation: post.postLocation,
-              LocationEvent: post.locationEvent,
-              Time: post.time,
-              Date: post.date,
-              Gender: post.gender,
-              Driver: post.driver,
-              PaymentService: post.paymentService,
-              Virtual: post.virtual,
-              Event: post.event,
+              postDescription: post.postDescription,
+              postLocation: post.postLocation,
+              LocationEvent: post.LocationEvent,
+              time: post.time,
+              date: post.date,
+              gender: post.gender,
+              driver: post.driver,
+              paymentService: post.paymentService,
+              virtual: post.virtual,
+              event: post.event,
               ImagePath: post.ImagePath,
               Creator: post.Creator,
             };
@@ -71,25 +70,42 @@ export class PostService {
   }
   // Adding post
   addPost(
-    Creator: string,
-    postLocation: string,
-    postDescription?: string,
-    upload?: File,
-    locationEvent?: string,
     Title?: string,
-    date?: string,
+    postDescription?: string,
+    postLocation?: string,
+    LocationEvent?: string,
     time?: string,
+    date?: string,
     gender?: string,
     driver?: string,
     paymentService?: string,
     virtual?: string,
-    event?: string
+    event?: string,
+    upload?: File,
+    Creator?: string
   ): any {
+    const post: Post = {
+      Title,
+      postDescription,
+      postLocation,
+      LocationEvent,
+      time,
+      date,
+      gender,
+      driver,
+      paymentService,
+      virtual,
+      event,
+      upload,
+      _id: '',
+      ImagePath: '',
+      Creator: '',
+    };
     const postData = new FormData();
     postData.append('Title', Title);
     postData.append('postDescription', postDescription);
     postData.append('postLocation', postLocation);
-    postData.append('locationEvent', locationEvent);
+    postData.append('LocationEvent', LocationEvent);
     postData.append('time', time);
     postData.append('date', date);
     postData.append('gender', gender);
@@ -99,6 +115,7 @@ export class PostService {
     postData.append('event', event);
     postData.append('upload', upload);
     postData.append('Creator', Creator);
+
     this.http
       .post<{ message: string; postId: Post }>(
         'http://localhost:3000/api/posts',
@@ -111,7 +128,7 @@ export class PostService {
             Title,
             postDescription,
             postLocation,
-            locationEvent,
+            LocationEvent,
             time,
             date,
             gender,
@@ -119,6 +136,7 @@ export class PostService {
             paymentService,
             virtual,
             event,
+            upload,
             ImagePath: responseData.postId.ImagePath,
             Creator,
           };

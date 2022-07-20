@@ -69,7 +69,7 @@ router.post("",
         PaymentService: req.body.paymentService,
         Virtual: req.body.virtual,
         Event: req.body.event,
-        ImagePath: url + '/posts/' + req.file,
+        ImagePath: url + '/posts/' + req.file.filename,
         Creator: req.userData.userId
     });
     post.save().then(createdPost => {

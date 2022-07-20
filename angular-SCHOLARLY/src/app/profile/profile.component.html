@@ -216,14 +216,14 @@
               <mat-chip-list>
                 <!-- *ngFor="let list of Com" -->
                 <div class="list">
-                  <ol class="center__">
+                  <div class="center__">
                     <mat-chip class="style" disabled>
                       <!-- {{list}} -->
-                      <li>
+                      
                       {{ info.CodeCompleted }}
-                    </li>
+                    
                     </mat-chip>
-                  </ol>
+                  </div>
                 </div>
               </mat-chip-list>
             </div>
@@ -318,7 +318,7 @@
 
 <!--  Mobile -->
 <!-- Side Info -->
-<div *ngIf="!isLoading">
+<!-- <div *ngIf="!isLoading">
 <mat-sidenav-container autosize class="side_nav_container">
 
 
@@ -343,7 +343,7 @@
           
 
           <div class="centerR_">
-            <!-- This is hard coded once user signs up -->
+            <!-- This is hard coded once user signs up --
             {{(Id |async)?.UserName}}
 
           </div>
@@ -362,17 +362,17 @@
         </div>
         <div class="centerGD" *ngIf="(profile | async)?.Gender.name || (profile | async )?.Birthday  ">
           <div *ngIf="(profile | async)?.Gender.name">
-            <!--  Male -->
+            <!--  Male --
             {{ (profile | async)?.Gender.name}}
           </div>
           <div *ngIf="(profile | async )?.Birthday">
-            <!-- Eventually just have the age calculated out...maybe -->
+            <!-- Eventually just have the age calculated out...maybe --
             {{ (profile | async )?.Birthday|date:"longDate" }}
           </div>
 
           <!-- <div *ngIf="date equals bd input"> <i class="fas fa-birthday-cake icon"></i>
           Happy Birthday
-          </div> -->
+          </div> --
 
 
         </div>
@@ -380,46 +380,46 @@
       </div>
 
       <mat-divider class="margin"></mat-divider>
-      <!-- Major/Minor -->
+      <!-- Major/Minor --
       <div class="major-minor" *ngIf="(profile| async)?.Major || (profile| async)?.Minor ">
-        <!-- *ngIf="major.value" -->
+        <!-- *ngIf="major.value" --
         <div class="centerR" *ngIf="(profile| async)?.Major ">
-          <!-- Major -->
+          <!-- Major --
           <i class="fas fa-star large">{{ (profile | async)?.Major}}</i>
 
         </div>
         <div class="centerR" *ngIf="(profile| async)?.Minor ">
-          <!-- Minor -->
+          <!-- Minor --
           <i class="far fa-star large">{{ (profile | async)?.Minor}}</i>
         </div>
 
       </div>
       <mat-divider class="margin" *ngIf="(profile| async)?.Major  || (profile| async)?.Minor">
       </mat-divider>
-      <!-- Sport/Club -->
+      <!-- Sport/Club --
       <div class="major-minor" *ngIf="(profile| async)?.Sport  || (profile| async)?.Club">
         <div class=" centerR" *ngIf="(profile| async)?.Sport ">
-          <!-- Sport -->
+          <!-- Sport --
           {{ (profile | async)?.Sport}}
         </div>
         <div class="centerR" *ngIf="(profile| async)?.Club ">
-          <!-- Club -->
+          <!-- Club --
           {{ (profile | async)?.Club}}
         </div>
 
       </div>
-      <!-- [ngClass]="sport.value & club.value  ? 'hiden' : 'margin' " -->
+      <!-- [ngClass]="sport.value & club.value  ? 'hiden' : 'margin' " --
       <mat-divider class="margin"></mat-divider>
       <div class="friendsCount">
         <div class="centerR">
           Followers
           <!-- Counter -->
-          <!-- {{followers}} -->
+          <!-- {{followers}} --
         </div>
         <div class="centerR">
           Following
           <!-- Counter -->
-          <!-- {{follow}} -->
+          <!-- {{follow}} --
         </div>
       </div>
 
@@ -442,19 +442,19 @@
   <div class="middle">
   
 
-    <!-- User-Name -->
+    <!-- User-Name --
     <div class="top-middle">
 
       <!-- No Bio -->
-      <!-- Pronouns Full name & age   *ngIf="fullname.value " -->
+      <!-- Pronouns Full name & age   *ngIf="fullname.value " --
    
         <div class="text-2">
 
 
           <div class="profile-pic" *ngIf="(profile | async)?.profPic">
-            <!-- need to get croppeded value -->
+            <!-- need to get croppeded value --
             <img class="pic" src="{{(profile | async)?.profPic}}">
-            <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
+            <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> --
           </div>
       
           <div class="profile-pic" *ngIf="!(profile | async)?.profPic">
@@ -466,7 +466,7 @@
 
           <div class="fName">
            
-            <!-- Chase Olsen -->
+            <!-- Chase Olsen --
             {{ (profile | async)?.Pronouns}}
             {{ (profile | async)?.Name}}
            
@@ -489,19 +489,19 @@
 
         {{ following ? "Unfollow" : "Follow" }}
 
-        <!-- Switches to Unfollow btn option  -->
+        <!-- Switches to Unfollow btn option  --
 
       </mat-chip>
     </mat-chip-list>
     </div>
     
 
-    <!-- MOBILE -->
+    <!-- MOBILE --
 
     <mat-tab-group dynamicHeight dynamicWidth mat-align-tabs="center" class="hideM">
       <mat-tab label="Highlights">
         <div class="HighlightsM">
-          <!-- Hightlight Input box -->
+          <!-- Hightlight Input box --
           <div class="highlights-layout">
             <div class="column1" *ngIf="groups.length == 0">
               <div class="row"> No Groups Joined</div><i class="far fa-frown centerR iconEmpty"></i>
@@ -525,9 +525,9 @@
             <div class="row_1">
               <div class="column1" *ngIf=" !((profile | async)?.CodeCompleted  || (profile | async)?.filteredCodesP)">
                 <div class="row"> No Courses Added</div>
-                <!-- <i class="far fa-frown centerR"></i> -->
+                <!-- <i class="far fa-frown centerR"></i> --
               </div>
-              <!-- Hidden if neither are filled in -->
+              <!-- Hidden if neither are filled in --
 
 
               <div [ngClass]="(profile | async)?.CodeCompleted  ?  'completed-courses': 'hide_' ">
@@ -539,11 +539,11 @@
 
                 <div class=" scroll">
                   <mat-chip-list>
-                    <!-- *ngFor="let list of Com" -->
+                    <!-- *ngFor="let list of Com" --
                     <div class="list">
                       <div class="center__">
                         <mat-chip class="style" disabled>
-                          <!-- {{list}} -->
+                          <!-- {{list}} --
                           {{ (profile | async)?.CodeCompleted}}
                         </mat-chip>
                       </div>
@@ -559,11 +559,11 @@
                 </div>
                 <div class="scroll">
                   <mat-chip-list>
-                    <!-- *ngFor="let list of Pur" -->
+                    <!-- *ngFor="let list of Pur" --
                     <div class="list">
                       <div class="center__">
                         <mat-chip class="style" disabled>
-                          <!-- {{list}} -->
+                          <!-- {{list}} --
                           {{ (profile | async)?.CodePursuing}}
                         </mat-chip>
                       </div>
@@ -581,14 +581,14 @@
           <div class="row"> No Posts Made</div><i class="far fa-frown centerR iconEmpty"></i>
         </div>
 
-        <!-- Recent Posts text  -->
+        <!-- Recent Posts text  --
         <div class="posts" *ngIf="posts.length !== 0">
           <app-card *ngFor="let post of posts">
             {{post}}
           </app-card>
         </div>
       </mat-tab>
-      <!-- Snap shots -->
+      <!-- Snap shots --
       <mat-tab label="Showcase">
         <div class="column1" *ngIf="!(profile|async)?.ShowCase">
           <div class="row"> No Showcases Added</div><i class="fas fa-eye-slash centerR"></i>
@@ -597,7 +597,7 @@
 
           <div class="column">
             <img class="img" src={{(profile|async)?.ShowCase}} />
-            <!-- *ngFor="let showCase of showCases" -->
+            <!-- *ngFor="let showCase of showCases" --
           </div>
 
         </div>
@@ -608,4 +608,4 @@
 
  
 </mat-sidenav-container>
-</div>
+</div> -->

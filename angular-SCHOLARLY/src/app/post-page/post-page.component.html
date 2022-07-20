@@ -1,7 +1,7 @@
 <div class="spinner" *ngIf="isLoading">
   <mat-spinner ></mat-spinner>
 </div>
-<form  class="entire-page" (ngSubmit)="onFormSubmit(postForm)" action='/api/posts' #postForm="ngForm" method='post'  enctype="multipart/form-data" *ngIf="!isLoading">
+<form  class="entire-page"  method='post'  enctype="multipart/form-data" *ngIf="!isLoading">
 
   <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
     <mat-tab disabled label="Begin" > 
@@ -176,7 +176,7 @@
 
             <mat-form-field appearance="fill">
               <mat-label>Location:</mat-label>
-              <input matInput [formControl]="locationEvent">
+              <input matInput [formControl]="LocationEvent">
 
             </mat-form-field>
             <div>
@@ -333,7 +333,7 @@
           <div class="row_">
             <button type="button" mat-button matStepperPrevious>Back</button>
             <button mat-raised-button color="primary" class="text" routerLink="/profile"
-              type="submit" (click)="onFormSubmit(postForm)">Post
+              type="button" (click)="onFormSubmit()">Post
               <span class="material-icons"> arrow_forward </span>
             </button>
           </div>
@@ -369,7 +369,7 @@
     
     <div *ngIf="minwidth" class="staticBtn2">
     <button type="button" mat-raised-button color="primary" class="post_btn_top_right" routerLink="/search"
-    type="submit" (click)="onFormSubmit(postForm)">Post
+  (click)="onFormSubmit()">Post
     <span class="material-icons"> arrow_forward </span>
   </button>
 </div>

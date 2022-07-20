@@ -85,6 +85,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
         this.isLoading = false;
+        console.log('infos', this.infos);
       });
     // Posts
     this.postService.getPosts();
