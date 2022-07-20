@@ -13,7 +13,7 @@
         <form [formGroup]="requiredForm">
           <ng-template mat-tab-label>
             <mat-icon><span class="material-icons-two-tone">
-                verified
+              account_circle
               </span></mat-icon>
             <div class="matTitle">Required</div>
           </ng-template>
@@ -136,6 +136,97 @@
           </div>
         </form>
       </mat-tab>
+
+
+
+      <mat-tab disabled>
+        
+          <ng-template mat-tab-label>
+            <mat-icon><span class="material-icons-two-tone">
+              verified
+              </span></mat-icon>
+            <div class="matTitle">Validation</div>
+          </ng-template>
+
+
+            <div class="space">
+          
+          <h2 class="titleV">
+          Login after validating your account
+          <div class="material-icons badge_icon">
+            badge
+          </div>
+            
+          </h2>
+          
+          
+          <div class="log-in-boxPop" fxLayout="column" fxLayoutAlign="center center">
+            <div class="inputTop">
+              <span class="material-icons _icon">
+                      school
+                    </span>
+                    <mat-form-field>
+                      <!-- only utoronto.ca should be excepted pattern=".+@gmail\.com"  pattern=".+@mail.utoronto\.ca" -->
+                      <input matInput type="email"  placeholder="School Email"  [formControl]="emailV" required />
+                      <mat-error >Only U Of T emails are valid</mat-error>
+                      <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
+                      <mat-error *ngIf="email.errors?.email && !email.errors?.noWhiteSpace">Please enter your academic email
+                      </mat-error>
+        
+                      <!-- <button mat-button matSuffix mat-icon-button aria-label=" Clear" type="button" (click)="clearEmail()">
+                        <mat-icon>close</mat-icon>
+                      </button> -->
+                    </mat-form-field>
+                  </div>
+                  <div class="twoPassword">
+                    <div class="input">
+                      <span class="material-icons _icon">
+                        lock
+                      </span>
+                      <mat-form-field class="userName">
+                        <mat-label>Password min 8 characters</mat-label>
+                        <input matInput type="password" placeholder="Password" minlength="8" required
+                          [formControl]="passwordV" id='passwordType'/>
+                        <mat-error *ngIf="passwordV.errors?.noWhiteSpace">White spaces aren't allowed in password</mat-error>
+                        <mat-error *ngIf="passwordV.invalid && !passwordV.errors?.noWhiteSpace">Please enter a valid password
+                        </mat-error>
+                        <!-- <button mat-button matSuffix mat-icon-button color="primary" aria-label="Clear" type="button"
+                          (click)="clearPassword()">
+                          <mat-icon>close</mat-icon>
+                        </button> -->
+                      </mat-form-field>
+                      <button mat-icon-button type="button" *ngIf="visible" (click)="toggleVisibilty()" >
+                        <mat-icon class="material-symbols-sharp" >visibility</mat-icon>
+                      </button>
+                      <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()" >
+                        <mat-icon class="material-symbols-sharp" >visibility_off</mat-icon>
+                      </button>
+                    </div>
+                   
+                  </div>
+                  <!-- (click)="changeTab1()" -->
+                  <button type="button" mat-raised-button (click)="onSubmitValidation()"
+                   [disabled]="!emailV.valid || !passwordV.valid"
+                  color="primary" class="action-button top"  >
+                  Log In
+                </button>
+              <!-- <mat-spinner *ngIf="isLoading"></mat-spinner> -->
+              <!-- <div *ngIf="isLoading" class="dot-pulse"></div> -->
+              <!-- <button type="button" mat-button disableRipple class="forgot-password" routerLink="/retrieve-password">
+                Forgot Password?
+              </button> -->
+            </div>
+          </div>
+     
+          
+
+
+      </mat-tab>
+
+
+
+
+
 <!-- disabled -->
       <mat-tab class="sndPage" disabled>
         <form [formGroup]="personalizeForm" enctype="multipart/form-data">
@@ -390,7 +481,7 @@
 
 
       <!-- disabled -->
-      <mat-tab >
+      <mat-tab disabled>
         <ng-template mat-tab-label>
           <mat-icon class=""><span class="material-icons-two-tone">
               school

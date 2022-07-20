@@ -79,6 +79,9 @@ export const MY_FORMATS = {
 })
 export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
+  userId: string;
+  userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
   private authStatusSub: Subscription;
   visible = true;
   selectable = true;
@@ -135,6 +138,8 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.noWhiteSpace,
   ]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
+  passwordV: FormControl = new FormControl('', this.noWhiteSpace);
+
   major: FormControl = new FormControl('');
   minor: FormControl = new FormControl('');
   sport: FormControl = new FormControl('');
@@ -147,6 +152,10 @@ export class SignupComponent implements OnInit, OnDestroy {
   followings: FormControl = new FormControl('');
 
   email: FormControl = new FormControl('', [
+    Validators.email,
+    this.noWhiteSpace,
+  ]);
+  emailV: FormControl = new FormControl('', [
     Validators.email,
     this.noWhiteSpace,
   ]);
@@ -446,20 +455,20 @@ export class SignupComponent implements OnInit, OnDestroy {
   // }
 
   changeTab1(): void {
-    this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
+    this.selectedIndex = this.selectedIndex === 2 ? 3 : 2;
     this.isLoading = false;
   }
   changeTab1R(): void {
-    this.selectedIndex = this.selectedIndex === 1 ? 0 : 1;
-  }
-  changeTab2(): void {
-    this.selectedIndex = this.selectedIndex === 2 ? 3 : 2;
-  }
-  changeTab2R(): void {
     this.selectedIndex = this.selectedIndex === 2 ? 1 : 2;
   }
-  changeTab3(): void {
+  changeTab2(): void {
+    this.selectedIndex = this.selectedIndex === 3 ? 4 : 3;
+  }
+  changeTab2R(): void {
     this.selectedIndex = this.selectedIndex === 3 ? 2 : 3;
+  }
+  changeTab3(): void {
+    this.selectedIndex = this.selectedIndex === 4 ? 3 : 4;
   }
 
   openDialog(): void {
@@ -478,7 +487,47 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.password.value
     );
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
-    this.dialog.open(LoginPopUpComponent, { disableClose: true });
+    // this.dialog.open(LoginPopUpComponent, { disableClose: true });
+  }
+
+  onSubmitValidation(): any {
+    try {
+      this.isLoading = true;
+      this.userId = this.authService.getUserId();
+      this.authService.loginFirst(this.email.value, this.password.value);
+      this.userIsAuthenticated = this.authService.getIsAuth();
+      this.authListenerSubs = this.authService
+        .getAuthStatusListener()
+        .subscribe((isAuthenticated: boolean) => {
+          // this.dialog.open(LoginPopUpComponent, { disableClose: true })
+          this.userIsAuthenticated = isAuthenticated;
+          this.userId = this.authService.getUserId();
+          // Added the if else
+          if (this.userIsAuthenticated) {
+            console.log(this.userIsAuthenticated);
+            this.snackBar.open('Welcome to the community', 'Thanks!', {
+              duration: 3000,
+            });
+            this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
+          } else {
+            this.snackBar.open(
+              'Failed to login. Remember to authenticate your email',
+              'Ok!',
+              {
+                duration: 3000,
+              }
+            );
+          }
+        });
+    } catch {
+      this.snackBar.open(
+        'Failed to login. Remember to authenticate your email',
+        'Ok!',
+        {
+          duration: 3000,
+        }
+      );
+    }
   }
 
   onSubmit2(): any {
