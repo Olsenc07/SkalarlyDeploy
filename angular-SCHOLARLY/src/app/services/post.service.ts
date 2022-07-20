@@ -40,7 +40,7 @@ export class PostService {
         map((postData) => {
           return postData.posts.map((post) => {
             return {
-              id: post.id,
+              id: post._id,
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
@@ -62,7 +62,6 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
-    // console.log(this.posts);
   }
 
   getPostUpdateListener(): any {

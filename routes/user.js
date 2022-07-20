@@ -490,8 +490,6 @@ router.post("/login1", verifyEmail, (req, res, next) => {
     let VALID;
     User.findOne({ email: req.body.email }).then(valid => {
         VALID = valid.isVerified
-
-
         if (VALID === 'true') {
             console.log('valid?', VALID)
             //  Two try with the one thats breaking happen second becase thatll show we don't want that
@@ -541,7 +539,8 @@ router.post("/login1", verifyEmail, (req, res, next) => {
             console.log('Thats weird...')
         }
 
-    }, reason => {
+    }, 
+    reason => {
         console.error(reason);
         return res.status(401).json({
             message: "No user matches our records!",
