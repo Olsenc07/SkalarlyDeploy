@@ -203,6 +203,38 @@ const verifyEmail = async (req, res, next) => {
         console.log(err)
     }
 }
+const verifyEmailV = async (req, res, next) => {
+    try {
+        const test = await User.findOne({ email: req.body.emailV })
+        // console.log('boobs', test)
+        if (test) {
+            await User.findOne({ email: req.body.emailV }).then(user => {
+                if (user.isVerified === 'true') {
+                    next()
+
+                } else {
+                    console.log('Please check email to verify your account.')
+                    return res.status(401).json({
+                        message: "No validated email matches our records! ",
+                    })
+                }
+            })
+            // .catch(err => {
+            //     console.log('what up homie??')
+            //     return res.status(401).json({
+            //     message: "No user matches our records!",
+            //             })
+            //     });
+
+        } else {
+            return res.status(401).json({
+                message: "No user matches our records!",
+            })
+        }
+    } catch (err) {
+        console.log(err)
+    }
+}
 
 // Reset password
 router.post('/forgot', async (req, res) => {
@@ -485,16 +517,16 @@ router.put("/:id/unfollow", async (req, res) => {
 
 
 // LoginFirst Time
-router.post("/login1", verifyEmail, (req, res, next) => {
+router.post("/login1", verifyEmailV, (req, res, next) => {
     let fetchedUser;
     let VALID;
-    User.findOne({ email: req.body.email }).then(valid => {
+    User.findOne({ email: req.body.emailV }).then(valid => {
         VALID = valid.isVerified
         if (VALID === 'true') {
             console.log('valid?', VALID)
             //  Two try with the one thats breaking happen second becase thatll show we don't want that
             // user any ways! Maybe use switch!
-            User.findOne({ email: req.body.email })
+            User.findOne({ email: req.body.emailV })
                 .then(user => {
 
                     if (!user) {
@@ -505,7 +537,7 @@ router.post("/login1", verifyEmail, (req, res, next) => {
                     }
                     console.log('verified', user.isVerified)
                     fetchedUser = user;
-                    return bcrypt.compare(req.body.password, user.password)
+                    return bcrypt.compare(req.body.passwordV, user.password)
 
                 })
                 .then(result => {

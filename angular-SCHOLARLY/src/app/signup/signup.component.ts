@@ -494,7 +494,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     try {
       this.isLoading = true;
       this.userId = this.authService.getUserId();
-      this.authService.loginFirst(this.email.value, this.password.value);
+      this.authService.loginFirst(this.emailV.value, this.passwordV.value);
       this.userIsAuthenticated = this.authService.getIsAuth();
       this.authListenerSubs = this.authService
         .getAuthStatusListener()
@@ -503,12 +503,12 @@ export class SignupComponent implements OnInit, OnDestroy {
           this.userIsAuthenticated = isAuthenticated;
           this.userId = this.authService.getUserId();
           // Added the if else
-          if (this.userIsAuthenticated) {
+          if (isAuthenticated) {
             console.log(this.userIsAuthenticated);
             this.snackBar.open('Welcome to the community', 'Thanks!', {
               duration: 3000,
             });
-            this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
+            this.selectedIndex = this.selectedIndex === 2 ? 3 : 2;
           } else {
             this.snackBar.open(
               'Failed to login. Remember to authenticate your email',

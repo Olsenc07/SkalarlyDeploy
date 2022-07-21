@@ -363,8 +363,8 @@ export class AuthService {
   }
 
   // Login first time
-  loginFirst(email: string, password: string): any {
-    const authData: AuthData = { email, password };
+  loginFirst(emailV: string, passwordV: string): any {
+    const authData = { emailV, passwordV };
     this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
         'http://localhost:3000/api/user/login1',
