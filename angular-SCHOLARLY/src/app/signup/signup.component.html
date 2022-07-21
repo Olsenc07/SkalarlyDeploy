@@ -589,9 +589,9 @@
 
               <mat-form-field class="example-chip-list">
                 <mat-label>Pursuing Courses</mat-label>
-                <mat-select placeholder="Choose pursuing courses" #codeInputP [formControl]="CodePursuing"
-                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="addP($event)" multiple>
-          
+                <mat-select placeholder="Choose pursuing courses" #codeInputP [formControl]="CodePursuing" multiple>
+  
+                  <mat-select-trigger>
                 <mat-chip-list #chipListP aria-label="Class CodeP">
                   <mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
                     (removed)="removeP(codeP)">
@@ -600,15 +600,13 @@
                   </mat-chip>
                 
                 </mat-chip-list>
-       
+              </mat-select-trigger>
 
-                <cdk-virtual-scroll-viewport itemSize="10">
-                  <mat-autocomplete #autoP="matAutocomplete" (optionSelected)="selectedP($event)">
-                    <mat-option *cdkVirtualFor="let codeP of filteredCodesP | async" [valueP]="codeP">
+                <!-- <cdk-virtual-scroll-viewport itemSize="10"> -->
+                    <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
                       {{codeP}}
                     </mat-option>
-                  </mat-autocomplete>
-                </cdk-virtual-scroll-viewport>
+                <!-- </cdk-virtual-scroll-viewport> -->
               </mat-select>
 
               </mat-form-field>

@@ -44,9 +44,8 @@ import { ImageCroppedEvent, Dimensions } from 'ngx-image-cropper';
 import { Profile, NewUserId, StoreService } from '../services/store.service';
 import { mimeType } from '../post-page/mime-type.validator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+// import {Courses} from 'nikel';
 import { AuthService } from '../services/auth.service';
-// import { Courses } from 'nikel';
 
 const moment = _rollupMoment || _moment;
 export const MY_FORMATS = {
@@ -167,6 +166,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   CodeCompleted: FormControl = new FormControl([]);
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
+  FilteredCodesP: string[] = this.classListService.allClasses().slice();
+
   bio: FormControl = new FormControl('');
   public bioLength = new BehaviorSubject(0);
   public showCaseList = new Subject();
@@ -302,22 +303,20 @@ export class SignupComponent implements OnInit, OnDestroy {
     public authService: AuthService,
     private snackBar: MatSnackBar // public courses: Courses
   ) {
-    this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
-      startWith(null),
-      map((code: string | null) =>
-        code ? this._filter(code) : this.classListService.allClasses().slice()
-      )
-    );
-
-    this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
-      startWith(null),
-      map((codeP: string | null) =>
-        codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
-      )
-    );
-
-    this.filteredCodesP.subscribe((r) => this.CodePursuing);
-    this.filteredCodes.subscribe((r) => this.CodeCompleted);
+    // this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
+    //   startWith(null),
+    //   map((code: string | null) =>
+    //     code ? this._filter(code) : this.classListService.allClasses().slice()
+    //   )
+    // );
+    // this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
+    //   startWith(null),
+    //   map((codeP: string | null) =>
+    //     codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
+    //   )
+    // );
+    // this.filteredCodesP.subscribe((r) => this.CodePursuing);
+    // this.filteredCodes.subscribe((r) => this.CodeCompleted);
   }
 
   uploadFileP(): any {
