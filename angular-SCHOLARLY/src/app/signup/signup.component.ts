@@ -203,8 +203,9 @@ export class SignupComponent implements OnInit, OnDestroy {
   CodeCompleted38: FormControl = new FormControl('');
   CodeCompleted39: FormControl = new FormControl('');
   CodeCompleted40: FormControl = new FormControl('');
+  CodeCompletedX: FormControl = new FormControl('');
 
-  // Code Pursuing 1-40
+  // Code Pursuing 1-12
   filteredCodesP: Observable<string[]>;
   CodePursuing: FormControl = new FormControl('');
   CodePursuing2: FormControl = new FormControl('');
@@ -218,35 +219,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   CodePursuing10: FormControl = new FormControl('');
   CodePursuing11: FormControl = new FormControl('');
   CodePursuing12: FormControl = new FormControl('');
-  CodePursuing13: FormControl = new FormControl('');
-  CodePursuing14: FormControl = new FormControl('');
-  CodePursuing15: FormControl = new FormControl('');
-  CodePursuing16: FormControl = new FormControl('');
-  CodePursuing17: FormControl = new FormControl('');
-  CodePursuing18: FormControl = new FormControl('');
-  CodePursuing19: FormControl = new FormControl('');
-  CodePursuing20: FormControl = new FormControl('');
-  CodePursuing21: FormControl = new FormControl('');
-  CodePursuing22: FormControl = new FormControl('');
-  CodePursuing23: FormControl = new FormControl('');
-  CodePursuing24: FormControl = new FormControl('');
-  CodePursuing25: FormControl = new FormControl('');
-  CodePursuing26: FormControl = new FormControl('');
-  CodePursuing27: FormControl = new FormControl('');
-  CodePursuing28: FormControl = new FormControl('');
-  CodePursuing29: FormControl = new FormControl('');
-  CodePursuing30: FormControl = new FormControl('');
-  CodePursuing31: FormControl = new FormControl('');
-  CodePursuing32: FormControl = new FormControl('');
-  CodePursuing33: FormControl = new FormControl('');
-  CodePursuing34: FormControl = new FormControl('');
-  CodePursuing35: FormControl = new FormControl('');
-  CodePursuing36: FormControl = new FormControl('');
-  CodePursuing37: FormControl = new FormControl('');
-  CodePursuing38: FormControl = new FormControl('');
-  CodePursuing39: FormControl = new FormControl('');
-  CodePursuing40: FormControl = new FormControl('');
-  CodePursuingX: FormControl = new FormControl('');
 
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   FilteredCodesP: string[] = this.classListService.allClasses().slice();
@@ -625,7 +597,60 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.club.value,
       this.pronoun.value,
       this.CodeCompleted.value,
+      this.CodeCompleted2.value,
+      this.CodeCompleted3.value,
+      this.CodeCompleted4.value,
+      this.CodeCompleted5.value,
+      this.CodeCompleted6.value,
+      this.CodeCompleted7.value,
+      this.CodeCompleted8.value,
+      this.CodeCompleted9.value,
+      this.CodeCompleted10.value,
+      this.CodeCompleted11.value,
+      this.CodeCompleted12.value,
+      this.CodeCompleted13.value,
+      this.CodeCompleted14.value,
+      this.CodeCompleted15.value,
+      this.CodeCompleted16.value,
+      this.CodeCompleted17.value,
+      this.CodeCompleted18.value,
+      this.CodeCompleted19.value,
+      this.CodeCompleted20.value,
+      this.CodeCompleted21.value,
+      this.CodeCompleted22.value,
+      this.CodeCompleted23.value,
+      this.CodeCompleted24.value,
+      this.CodeCompleted25.value,
+      this.CodeCompleted26.value,
+      this.CodeCompleted27.value,
+      this.CodeCompleted28.value,
+      this.CodeCompleted29.value,
+      this.CodeCompleted30.value,
+      this.CodeCompleted31.value,
+      this.CodeCompleted32.value,
+      this.CodeCompleted33.value,
+      this.CodeCompleted34.value,
+      this.CodeCompleted35.value,
+      this.CodeCompleted36.value,
+      this.CodeCompleted37.value,
+      this.CodeCompleted38.value,
+      this.CodeCompleted39.value,
+      this.CodeCompleted40.value,
+      this.CodeCompletedX.value,
+
       this.CodePursuing.value,
+      this.CodePursuing2.value,
+      this.CodePursuing3.value,
+      this.CodePursuing4.value,
+      this.CodePursuing5.value,
+      this.CodePursuing6.value,
+      this.CodePursuing7.value,
+      this.CodePursuing8.value,
+      this.CodePursuing9.value,
+      this.CodePursuing10.value,
+      this.CodePursuing11.value,
+      this.CodePursuing12.value,
+
       this.followers.value,
       this.followings.value,
       this.form.get('profilePic').value,

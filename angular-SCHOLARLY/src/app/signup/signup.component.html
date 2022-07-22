@@ -1487,15 +1487,13 @@
     <mat-label>Pursuing Course 2</mat-label>
     <mat-select placeholder="Choose pursuing course 2" #codeInputP [formControl]="CodePursuing2" >
 
-
-   
       <mat-option *ngFor="let codeP of CodePursuing.value" 
         (removed)="removeP(codeP)">
         {{codeP}}
       </mat-option>
     
 
-        <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
+        <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
           {{codeP}}
         </mat-option>
   </mat-select>
@@ -1507,20 +1505,16 @@
   <i class="material-icons _icon">checklist</i>
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Pursuing Courses</mat-label>
-    <mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing3" >
+    <mat-label>Pursuing Course 3</mat-label>
+    <mat-select placeholder="Choose pursuing course 3" #codeInputP [formControl]="CodePursuing3" >
 
-      <mat-select-trigger>
-    <mat-chip-list #chipListP aria-label="Class CodeP">
-      <mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
+      <mat-option *ngFor="let codeP of CodePursuing.value" 
         (removed)="removeP(codeP)">
         {{codeP}}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
+      </mat-option>
     
-    </mat-chip-list>
-  </mat-select-trigger>
-        <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
+
+        <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
           {{codeP}}
         </mat-option>
   </mat-select>
@@ -1532,25 +1526,18 @@
   <i class="material-icons _icon">checklist</i>
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Pursuing Courses</mat-label>
-    <mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing4" >
+    <mat-label>Pursuing Course 4</mat-label>
+    <mat-select placeholder="Choose pursuing course 4" #codeInputP [formControl]="CodePursuing4" >
 
-      <mat-select-trigger>
-    <mat-chip-list #chipListP aria-label="Class CodeP">
-      <mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
+      <mat-option *ngFor="let codeP of CodePursuing.value" 
         (removed)="removeP(codeP)">
         {{codeP}}
-        <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-      </mat-chip>
+      </mat-option>
     
-    </mat-chip-list>
-  </mat-select-trigger>
 
-    <!-- <cdk-virtual-scroll-viewport itemSize="10"> -->
-        <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
+        <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
           {{codeP}}
         </mat-option>
-    <!-- </cdk-virtual-scroll-viewport> -->
   </mat-select>
 
   </mat-form-field>
@@ -1559,212 +1546,176 @@
       <!-- 5 -->
       <div class="input" *ngIf="CodePursuing4.value">
         <i class="material-icons _icon">checklist</i>
-
+      
         <mat-form-field class="example-chip-list">
-          <mat-label>Pursuing Courses</mat-label>
-          <mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing5" >
-
-            <mat-select-trigger>
-          <mat-chip-list #chipListP aria-label="Class CodeP">
-            <mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
+          <mat-label>Pursuing Course 5</mat-label>
+          <mat-select placeholder="Choose pursuing course 5" #codeInputP [formControl]="CodePursuing5" >
+      
+            <mat-option *ngFor="let codeP of CodePursuing.value" 
               (removed)="removeP(codeP)">
               {{codeP}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
+            </mat-option>
           
-          </mat-chip-list>
-        </mat-select-trigger>
-              <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
+      
+              <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
                 {{codeP}}
               </mat-option>
         </mat-select>
-
+      
         </mat-form-field>
       </div>
 <!-- 6 -->
 <div class="input" *ngIf="CodePursuing5.value">
-<i class="material-icons _icon">checklist</i>
+  <i class="material-icons _icon">checklist</i>
 
-<mat-form-field class="example-chip-list">
-<mat-label>Pursuing Courses</mat-label>
-<mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing6" >
+  <mat-form-field class="example-chip-list">
+    <mat-label>Pursuing Course 6</mat-label>
+    <mat-select placeholder="Choose pursuing course 6" #codeInputP [formControl]="CodePursuing6" >
 
-<mat-select-trigger>
-<mat-chip-list #chipListP aria-label="Class CodeP">
-<mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
-  (removed)="removeP(codeP)">
-  {{codeP}}
-  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-</mat-chip>
+      <mat-option *ngFor="let codeP of CodePursuing.value" 
+        (removed)="removeP(codeP)">
+        {{codeP}}
+      </mat-option>
+    
 
-</mat-chip-list>
-</mat-select-trigger>
-  <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
-    {{codeP}}
-  </mat-option>
-</mat-select>
+        <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
+          {{codeP}}
+        </mat-option>
+  </mat-select>
 
-</mat-form-field>
+  </mat-form-field>
 </div>
 <!-- 7 -->
 <div class="input" *ngIf="CodePursuing6.value">
-<i class="material-icons _icon">checklist</i>
-
-<mat-form-field class="example-chip-list">
-<mat-label>Pursuing Courses</mat-label>
-<mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing7" >
-
-<mat-select-trigger>
-<mat-chip-list #chipListP aria-label="Class CodeP">
-<mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
-  (removed)="removeP(codeP)">
-  {{codeP}}
-  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-</mat-chip>
-
-</mat-chip-list>
-</mat-select-trigger>
-
-  <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
-    {{codeP}}
-  </mat-option>
-</mat-select>
-
-</mat-form-field>
-</div>
+  <div class="input" *ngIf="CodePursuing.value">
+    <i class="material-icons _icon">checklist</i>
+  
+    <mat-form-field class="example-chip-list">
+      <mat-label>Pursuing Course 7</mat-label>
+      <mat-select placeholder="Choose pursuing course 7" #codeInputP [formControl]="CodePursuing7" >
+  
+        <mat-option *ngFor="let codeP of CodePursuing.value" 
+          (removed)="removeP(codeP)">
+          {{codeP}}
+        </mat-option>
+      
+  
+          <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
+            {{codeP}}
+          </mat-option>
+    </mat-select>
+  
+    </mat-form-field>
+  </div>
 <!-- 8 -->
 <div class="input" *ngIf="CodePursuing7.value">
-<i class="material-icons _icon">checklist</i>
+  <i class="material-icons _icon">checklist</i>
 
-<mat-form-field class="example-chip-list">
-<mat-label>Pursuing Courses</mat-label>
-<mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing8" >
+  <mat-form-field class="example-chip-list">
+    <mat-label>Pursuing Course 8</mat-label>
+    <mat-select placeholder="Choose pursuing course 8" #codeInputP [formControl]="CodePursuing8" >
 
-<mat-select-trigger>
-<mat-chip-list #chipListP aria-label="Class CodeP">
-<mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
-  (removed)="removeP(codeP)">
-  {{codeP}}
-  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-</mat-chip>
+      <mat-option *ngFor="let codeP of CodePursuing.value" 
+        (removed)="removeP(codeP)">
+        {{codeP}}
+      </mat-option>
+    
 
-</mat-chip-list>
-</mat-select-trigger>
-  <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
-    {{codeP}}
-  </mat-option>
-</mat-select>
+        <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
+          {{codeP}}
+        </mat-option>
+  </mat-select>
 
-</mat-form-field>
+  </mat-form-field>
 </div>
 
       <!-- 9 -->
       <div class="input" *ngIf="CodePursuing8.value">
         <i class="material-icons _icon">checklist</i>
-
+      
         <mat-form-field class="example-chip-list">
-          <mat-label>Pursuing Courses</mat-label>
-          <mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing9" >
-
-            <mat-select-trigger>
-          <mat-chip-list #chipListP aria-label="Class CodeP">
-            <mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
+          <mat-label>Pursuing Course 2</mat-label>
+          <mat-select placeholder="Choose pursuing course 9" #codeInputP [formControl]="CodePursuing9" >
+      
+            <mat-option *ngFor="let codeP of CodePursuing.value" 
               (removed)="removeP(codeP)">
               {{codeP}}
-              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-            </mat-chip>
+            </mat-option>
           
-          </mat-chip-list>
-        </mat-select-trigger>
-              <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
+      
+              <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
                 {{codeP}}
               </mat-option>
         </mat-select>
-
+      
         </mat-form-field>
       </div>
 <!-- 10 -->
 <div class="input" *ngIf="CodePursuing9.value">
-<i class="material-icons _icon">checklist</i>
+  <i class="material-icons _icon">checklist</i>
 
-<mat-form-field class="example-chip-list">
-<mat-label>Pursuing Courses</mat-label>
-<mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing10" >
+  <mat-form-field class="example-chip-list">
+    <mat-label>Pursuing Course 10</mat-label>
+    <mat-select placeholder="Choose pursuing course 10" #codeInputP [formControl]="CodePursuing10" >
 
-<mat-select-trigger>
-<mat-chip-list #chipListP aria-label="Class CodeP">
-<mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
-  (removed)="removeP(codeP)">
-  {{codeP}}
-  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-</mat-chip>
+      <mat-option *ngFor="let codeP of CodePursuing.value" 
+        (removed)="removeP(codeP)">
+        {{codeP}}
+      </mat-option>
+    
 
-</mat-chip-list>
-</mat-select-trigger>
-  <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
-    {{codeP}}
-  </mat-option>
+        <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
+          {{codeP}}
+        </mat-option>
+  </mat-select>
 
-</mat-select>
-
-</mat-form-field>
+  </mat-form-field>
 </div>
 <!-- 11 -->
 <div class="input" *ngIf="CodePursuing10.value">
-<i class="material-icons _icon">checklist</i>
+  <i class="material-icons _icon">checklist</i>
 
-<mat-form-field class="example-chip-list">
-<mat-label>Pursuing Courses</mat-label>
-<mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing11" >
+  <mat-form-field class="example-chip-list">
+    <mat-label>Pursuing Course 11</mat-label>
+    <mat-select placeholder="Choose pursuing course 11" #codeInputP [formControl]="CodePursuing11" >
 
-<mat-select-trigger>
-<mat-chip-list #chipListP aria-label="Class CodeP">
-<mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
-  (removed)="removeP(codeP)">
-  {{codeP}}
-  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-</mat-chip>
+      <mat-option *ngFor="let codeP of CodePursuing.value" 
+        (removed)="removeP(codeP)">
+        {{codeP}}
+      </mat-option>
+    
 
-</mat-chip-list>
-</mat-select-trigger>
+        <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
+          {{codeP}}
+        </mat-option>
+  </mat-select>
 
-  <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
-    {{codeP}}
-  </mat-option>
-
-</mat-select>
-
-</mat-form-field>
+  </mat-form-field>
 </div>
 <!-- 12 -->
 <div class="input" *ngIf="CodePursuing11.value">
-<i class="material-icons _icon">checklist</i>
+  <i class="material-icons _icon">checklist</i>
 
-<mat-form-field class="example-chip-list">
-<mat-label>Pursuing Courses</mat-label>
-<mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing12" >
+  <mat-form-field class="example-chip-list">
+    <mat-label>Pursuing Course 12</mat-label>
+    <mat-select placeholder="Choose pursuing course 12" #codeInputP [formControl]="CodePursuing12" >
 
-<mat-select-trigger>
-<mat-chip-list #chipListP aria-label="Class CodeP">
-<mat-chip *ngFor="let codeP of classesP" [selectable]="selectable" [removable]="removable"
-  (removed)="removeP(codeP)">
-  {{codeP}}
-  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-</mat-chip>
+      <mat-option *ngFor="let codeP of CodePursuing.value" 
+        (removed)="removeP(codeP)">
+        {{codeP}}
+      </mat-option>
+    
 
-</mat-chip-list>
-</mat-select-trigger>
-  <mat-option *ngFor="let codeP of FilteredCodesP" [valueP]="codeP">
-    {{codeP}}
-  </mat-option>
+        <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
+          {{codeP}}
+        </mat-option>
+  </mat-select>
 
-</mat-select>
-
-</mat-form-field>
+  </mat-form-field>
 </div>
           </div>
         </div>
-
+</div>
 
 
         <div class="createBtn">

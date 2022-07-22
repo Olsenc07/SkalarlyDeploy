@@ -79,6 +79,8 @@ export class EditProfileComponent implements OnInit {
   // These show inputs in real time but arn't whats stored
   filteredCodes: Observable<string[]>;
   filteredCodesP: Observable<string[]>;
+  FilteredCodes: string[] = this.classListService.allClasses().slice();
+  FilteredCodesP: string[] = this.classListService.allClasses().slice();
 
   genders: string[] = [
     '',
@@ -142,9 +144,60 @@ export class EditProfileComponent implements OnInit {
 
   // I think each code input is a different form control, save into the array
   CodeCompleted: FormControl = new FormControl('');
+  CodeCompleted2: FormControl = new FormControl('');
+  CodeCompleted3: FormControl = new FormControl('');
+  CodeCompleted4: FormControl = new FormControl('');
+  CodeCompleted5: FormControl = new FormControl('');
+  CodeCompleted6: FormControl = new FormControl('');
+  CodeCompleted7: FormControl = new FormControl('');
+  CodeCompleted8: FormControl = new FormControl('');
+  CodeCompleted9: FormControl = new FormControl('');
+  CodeCompleted10: FormControl = new FormControl('');
+  CodeCompleted11: FormControl = new FormControl('');
+  CodeCompleted12: FormControl = new FormControl('');
+  CodeCompleted13: FormControl = new FormControl('');
+  CodeCompleted14: FormControl = new FormControl('');
+  CodeCompleted15: FormControl = new FormControl('');
+  CodeCompleted16: FormControl = new FormControl('');
+  CodeCompleted17: FormControl = new FormControl('');
+  CodeCompleted18: FormControl = new FormControl('');
+  CodeCompleted19: FormControl = new FormControl('');
+  CodeCompleted20: FormControl = new FormControl('');
+  CodeCompleted21: FormControl = new FormControl('');
+  CodeCompleted22: FormControl = new FormControl('');
+  CodeCompleted23: FormControl = new FormControl('');
+  CodeCompleted24: FormControl = new FormControl('');
+  CodeCompleted25: FormControl = new FormControl('');
+  CodeCompleted26: FormControl = new FormControl('');
+  CodeCompleted27: FormControl = new FormControl('');
+  CodeCompleted28: FormControl = new FormControl('');
+  CodeCompleted29: FormControl = new FormControl('');
+  CodeCompleted30: FormControl = new FormControl('');
+  CodeCompleted31: FormControl = new FormControl('');
+  CodeCompleted32: FormControl = new FormControl('');
+  CodeCompleted33: FormControl = new FormControl('');
+  CodeCompleted34: FormControl = new FormControl('');
+  CodeCompleted35: FormControl = new FormControl('');
+  CodeCompleted36: FormControl = new FormControl('');
+  CodeCompleted37: FormControl = new FormControl('');
+  CodeCompleted38: FormControl = new FormControl('');
+  CodeCompleted39: FormControl = new FormControl('');
+  CodeCompleted40: FormControl = new FormControl('');
+  CodeCompletedX: FormControl = new FormControl('');
   // Need to push form controls from the users input, into this
   // Form Array, which gets passed
   CodePursuing: FormControl = new FormControl('');
+  CodePursuing2: FormControl = new FormControl('');
+  CodePursuing3: FormControl = new FormControl('');
+  CodePursuing4: FormControl = new FormControl('');
+  CodePursuing5: FormControl = new FormControl('');
+  CodePursuing6: FormControl = new FormControl('');
+  CodePursuing7: FormControl = new FormControl('');
+  CodePursuing8: FormControl = new FormControl('');
+  CodePursuing9: FormControl = new FormControl('');
+  CodePursuing10: FormControl = new FormControl('');
+  CodePursuing11: FormControl = new FormControl('');
+  CodePursuing12: FormControl = new FormControl('');
 
   // Completed = new FormArray({
   //   CodeCompleted
@@ -459,7 +512,59 @@ export class EditProfileComponent implements OnInit {
       this.password.value,
       this.username.value,
       this.CodeCompleted.value,
+      this.CodeCompleted2.value,
+      this.CodeCompleted3.value,
+      this.CodeCompleted4.value,
+      this.CodeCompleted5.value,
+      this.CodeCompleted6.value,
+      this.CodeCompleted7.value,
+      this.CodeCompleted8.value,
+      this.CodeCompleted9.value,
+      this.CodeCompleted10.value,
+      this.CodeCompleted11.value,
+      this.CodeCompleted12.value,
+      this.CodeCompleted13.value,
+      this.CodeCompleted14.value,
+      this.CodeCompleted15.value,
+      this.CodeCompleted16.value,
+      this.CodeCompleted17.value,
+      this.CodeCompleted18.value,
+      this.CodeCompleted19.value,
+      this.CodeCompleted20.value,
+      this.CodeCompleted21.value,
+      this.CodeCompleted22.value,
+      this.CodeCompleted23.value,
+      this.CodeCompleted24.value,
+      this.CodeCompleted25.value,
+      this.CodeCompleted26.value,
+      this.CodeCompleted27.value,
+      this.CodeCompleted28.value,
+      this.CodeCompleted29.value,
+      this.CodeCompleted30.value,
+      this.CodeCompleted31.value,
+      this.CodeCompleted32.value,
+      this.CodeCompleted33.value,
+      this.CodeCompleted34.value,
+      this.CodeCompleted35.value,
+      this.CodeCompleted36.value,
+      this.CodeCompleted37.value,
+      this.CodeCompleted38.value,
+      this.CodeCompleted39.value,
+      this.CodeCompleted40.value,
+      this.CodeCompletedX.value,
+
       this.CodePursuing.value,
+      this.CodePursuing2.value,
+      this.CodePursuing3.value,
+      this.CodePursuing4.value,
+      this.CodePursuing5.value,
+      this.CodePursuing6.value,
+      this.CodePursuing7.value,
+      this.CodePursuing8.value,
+      this.CodePursuing9.value,
+      this.CodePursuing10.value,
+      this.CodePursuing11.value,
+      this.CodePursuing12.value,
       this.name.value,
       this.pronouns.value,
       this.profilePic.value,
