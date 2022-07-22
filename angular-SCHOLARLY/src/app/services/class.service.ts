@@ -4,11 +4,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ClassListService {
-  constructor() { }
+  constructor() {}
 
   // returns every U of T class code
   allClasses(): string[] {
     return [
+      '',
       'ABP100Y1',
       'ABP101Y1',
       'ABP102Y1',
