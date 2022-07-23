@@ -29,34 +29,48 @@ const http = require('http');
 
 //  Socket.io attempt 1
 const server =  http.createServer(app)
-const socketio = require('socket.io')
-const io = socketio(server)
+const { Server } = require("socket.io");
+const io = new Server(server);
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/messaging.component.html');
+    res.send('<h1>Hello world chase2.0</h1>');
+  });
+// const socketio = require('socket.io')
 // Run when client connect
-io.on('connection', socket => {
+io.on('connection', (socket) => {
    console.log("New Connection");
+   socket.on('disconnect', () => {
+    console.log('user disconnected');
+  });
+});
 
-//    to the one user
-   socket.emit('message', 'Welcome to Chat Cord!',' User joined chat');
+io.on('connection', (socket) => {
+  socket.on('chat message', (msg) => {
+    console.log('message: ' + msg);
+  });
+});
+// //    to the one user
+//    socket.emit('message', 'Welcome to Chat Cord!',' User joined chat');
 
-//    Broadcast when a user connects
-// to all but the poster
-// io.on('connection', socket => {
-//     console.log('new ws connection..')
+// //    Broadcast when a user connects
+// // to all but the poster
+// // io.on('connection', socket => {
+// //     console.log('new ws connection..')
+// // })
+
+
+// // runs when client disconnect
+// socket.on('disconnect', () => {
+//     io.emit('message', 'user left chat')
 // })
 
-
-// runs when client disconnect
-socket.on('disconnect', () => {
-    io.emit('message', 'user left chat')
-})
-
-// Listen for chatMessage
-socket.on('chatMessage', msg => {
-    console.log(msg)
-    io.emit('message', msg);
-})
-});
-module.exports = { app, io };  
+// // Listen for chatMessage
+// socket.on('chatMessage', msg => {
+//     console.log(msg)
+//     io.emit('message', msg);
+// })
+// });
+// module.exports = { app, io };  
 
 
 // socket.io attempt 2

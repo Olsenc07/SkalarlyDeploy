@@ -42,24 +42,21 @@
 
 <mat-divider [vertical]="true"></mat-divider>
 
+<body class="right">
+<!-- Message area -->
 
-<div class="right">
-
+  <ul id="messages"></ul>
 <div class="chat-messages" style="display: contents;" >
 <div class="message" id="message-container">
-
 </div>
-
-
 </div>
+<!--  -->
 <mat-divider></mat-divider>
-<!-- <script defer src ="http://localhost:3000/socket.io/
-socket.io.js"></script>
-<script defer src="script.js"></script> -->
+
 <div class="type_message">
-<mat-form-field class="type_message_box" id="chat-form">
+<mat-form-field class="type_message_box" id="form">
         <textarea matInput class="post" placeholder="Write a message..."
-          [formControl]="message" type="text" id="message-input"> </textarea>
+          [formControl]="message" type="text" id="input"> </textarea>
           <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
           (click)="clearMessage()">
           <mat-icon>close</mat-icon>
@@ -103,14 +100,26 @@ Send
     
 </div>
 
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+
+  var form = document.getElementById('form');
+  var input = document.getElementById('input');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (input.value) {
+      socket.emit('chat message', input.value);
+      input.value = '';
+    }
+  });
+</script>
+</body>
 
 
 </div>
 
-
-</div>
- <script src="/socket.io/socket.io.js"></script>
-<script src="/public/main.js"></script> 
 
 </div>
 
