@@ -23,17 +23,17 @@
 
           </div>
           <div class="row2">
-            <div class="column">
+            <div class="column" *ngFor="let info of infos">
               <!-- *ngIf="posts.length > 0" -->
               <div class="row-">
-                <div class="profilePic" *ngIf="profile.profPic">
+                <div class="profilePic" *ngIf="info.ProfilePicPath">
                   <!-- need to get croppeded value -->
-                  <img class="pic" src="{{profile.profPic}}">
+                  <img class="pic" src="{{info.ProfilePicPath}}">
                 </div>
 
                 <div class="column1">
-                  <div class="linkN" *ngIf="profile.Name">
-                    {{ profile.Name}}
+                  <div class="linkN" *ngIf="info.name">
+                    {{ info.name}}
                   </div>
 
 
@@ -43,7 +43,7 @@
                     <button mat-button>
                       <div class="userName  link">
                         <!-- Olsen07 -->
-                        {{ids.UserName}}
+                        @{{info.username}}
                       </div>
                     </button>
                   </div>
@@ -53,12 +53,12 @@
               </div>
 
 
-              <div class="row-" *ngIf="!(profile.profPic)">
+              <!-- <div class="row-" *ngIf="!(info.ProfilePicPath)">
 
 
-                <div class="profilePic">
+                <!-- <div class="profilePic">
                   <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
-                </div>
+                </div> --
 
 
                 <div class="column1">
@@ -67,10 +67,10 @@
                   </div>
 
                   <div class="nameTitle">
-                    <!-- Button directs to that users profile -->
+                    <!-- Button directs to that users profile --
                     <button mat-button>
                       <div class="userName  link">
-                        <!-- Olsen07 -->
+                        <!-- Olsen07 --
                         {{ids.UserName}}
                       </div>
                     </button>
@@ -78,7 +78,7 @@
                 </div>
 
 
-              </div>
+              </div> -->
 
             </div>
 
@@ -90,30 +90,30 @@
 
                 <!-- Idk If needed -->
 
-                <div class="postLocation textSize t" *ngIf="post.PostLocation">
+                <div class="postLocation textSize t" *ngIf="post.postLocation">
                   <!-- Location -->
-                  {{post.PostLocation}}
+                  {{post.postLocation}}
                 </div>
 
                 <div class="textSize row1 t" *ngIf="post.LocationEvent">
                  
                   {{post.LocationEvent}}
                 </div>
-                <div class="row1" *ngIf="post.Date || post.Time">
+                <div class="row1" *ngIf="post.date || post.time">
 
                   <div class="postTime textSize column1">
                     <div class=" displayT t">
-                      {{post.Date | date:"longDate"}}
+                      {{post.date | date:"longDate"}}
                     </div>
                     <div class="displayT t">
-                      {{post.Time}}
+                      {{post.time}}
                     </div>
                   </div>
                 </div>
 
 
 
-                <!-- Import the boolean icons with no color originally then the what did user say.. if null then display="none" -->
+                <!-- Not displaying properly-->
                 <div class="row">
                   <div class="booleans">
 
@@ -122,9 +122,9 @@
                     </div>
                     <div class="material-icons b" *ngIf="post.Gender == 'male'">male</div>
 
-                    <div class="material-icons b" *ngIf="post.Driver">directions_car</div>
-                    <div class="material-icons b" *ngIf="post.PaymentService">attach_money</div>
-                    <div class="material-icons b" *ngIf="post.Virtual">videocam</div>
+                    <div class="material-icons b" *ngIf="post.driver == 'true'">directions_car</div>
+                    <div class="material-icons b" *ngIf="post.PaymentService == 'true'">attach_money</div>
+                    <div class="material-icons b" *ngIf="post.virtual == 'true'">videocam</div>
 
                     <div class="material-icons b" *ngIf="post.Event == 'formal'">work</div>
                     <div class="material-icons b" *ngIf="post.Event == 'relaxed'">nightlife
@@ -148,9 +148,9 @@
 
       <!---- Takes upload img/video from post page {{Upload}} -->
       <!-- *ngFor="let show of showCases" -->
-      <div class="upload" *ngIf="post.ImagePath">
+      <div class="upload" >
 
-        <img class="middle-card" [src]="post.ImagePath">
+        <img class="middle-card" src="{{post.ImagePath}}">
       </div>
 
 
@@ -159,7 +159,7 @@
       <div class="description">
 
         <div class="postText d">
-          {{post.PostDescription}}
+          {{post.postDescription}}
         </div>
 
       </div>
@@ -170,7 +170,7 @@
 
         <div class="rowM">
           <mat-divider></mat-divider>
-          <div class="center1">
+          <!-- <div class="center1">
             <div class="center">
               <button mat-icon-button (click)="openTaggedSheet()">
                 <div class="material-icons-outlined p">loyalty</div>
@@ -183,14 +183,14 @@
               </button>
             </div>
 
-          </div>
+          </div> -->
 
            <!-- Displays your attending status in bottom middle of card -->
-           <div class="center1" *ngIf="selectedAttend">
+           <!-- <div class="center1" *ngIf="selectedAttend">
             <button (click)="openAttendanceSheet()" mat-button class="textSize_"> {{selectedAttend}}</button>
-          </div>
+          </div> -->
 
-          <div class="column1">
+          <!-- <div class="column1">
             <div style="margin-top: 2%;">
               <button mat-flat-button [matMenuTriggerFor]="menu" class="row1">Attendance</button>
             </div>
@@ -208,7 +208,7 @@
             </mat-menu>
 
 
-          </div>
+          </div> -->
         </div>
 
 

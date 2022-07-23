@@ -11,80 +11,81 @@ import { Subscription, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
-    selector: 'app-card',
-    templateUrl: './reusable-card.component.html',
-    styleUrls: ['./reusable-card.component.scss'],
+  selector: 'app-card',
+  templateUrl: './reusable-card.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
 })
-export class ReusableCardComponent implements OnInit{
+export class ReusableCardComponent implements OnInit {
   isLoading = false;
 
-    // Filling with Post info from post.service
-    posts: Post[] = [];
-    private postsSub: Subscription;
-    userId: string;
+  // Filling with Post info from post.service
+  posts: Post[] = [];
+  private postsSub: Subscription;
+  userId: string;
 
-    infos: AuthDataInfo[] = [];
-    private infosSub: Subscription;
+  infos: AuthDataInfo[] = [];
+  private infosSub: Subscription;
 
+  selectedAttend = '';
+  attendances: any = ['Attending', 'Maybe', 'Not Attending'];
+  panelOpenState = false;
+  showCases = [
+    // '../../assets/Pics/IMG-8413.PNG',
+    // '../../assets/Pics/IMG-8619.PNG',
+    '../../assets/Pics/WhiteSquareInAppLogo.jpg',
+    // '../../assets/Pics/IMG-8413.PNG',
+    // '../../assets/Pics/IMG-8619.PNG',
+    // '../../assets/Pics/ProperInAppLogo.jpeg ',
+    // '../../assets/Pics/IMG-8413.PNG'
+  ];
 
-    selectedAttend = '';
-    attendances: any = [
-        'Attending', 'Maybe', 'Not Attending'
-    ];
-    panelOpenState = false;
-    showCases = [
-        // '../../assets/Pics/IMG-8413.PNG',
-        // '../../assets/Pics/IMG-8619.PNG',
-        '../../assets/Pics/WhiteSquareInAppLogo.jpg',
-        // '../../assets/Pics/IMG-8413.PNG',
-        // '../../assets/Pics/IMG-8619.PNG',
-        // '../../assets/Pics/ProperInAppLogo.jpeg ',
-        // '../../assets/Pics/IMG-8413.PNG'
-    ];
+  radioChange(event: any): any {
+    this.selectedAttend = event.target.value;
+  }
 
-    radioChange(event: any): any {
-        this.selectedAttend = event.target.value;
-    }
+  openAttendanceSheet(): void {
+    this.bottomSheet.open(AttendanceComponent);
+  }
+  openTaggedSheet(): void {
+    this.bottomSheet.open(TaggedComponent);
+  }
 
-    openAttendanceSheet(): void {
-        this.bottomSheet.open(AttendanceComponent);
-    }
-    openTaggedSheet(): void {
-        this.bottomSheet.open(TaggedComponent);
-    }
+  openDialog(): void {
+    this.dialog.open(DeleteWarningComponent);
+  }
 
-    openDialog(): void {
-      this.dialog.open(DeleteWarningComponent);
-    }
+  constructor(
+    private bottomSheet: MatBottomSheet,
+    private authService: AuthService,
+    public postService: PostService,
+    public dialog: MatDialog
+  ) {}
 
-    constructor(private bottomSheet: MatBottomSheet, private authService: AuthService,
-                public postService: PostService, public dialog: MatDialog) { }
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    this.isLoading = true;
+    // Posts
+    this.postService.getPosts();
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log(this.posts);
+      });
+    // Info
+    this.authService.getInfo();
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        this.isLoading = false;
+      });
+  }
 
-    ngOnInit(): void {
-        this.userId = this.authService.getUserId();
-        this.isLoading = true;
-        // Posts
-        this.postService.getPosts();
-        this.postsSub = this.postService.getPostUpdateListener()
-          .subscribe((posts: Post[]) => {
-          this.posts = posts;
-          this.isLoading = false;
-          console.log(this.posts);
-        });
-        // Info
-      //   this.authService.getInfo();
-      //   this.infosSub = this.authService.getInfoUpdateListener()
-      //   .subscribe((infos: AuthDataInfo[]) => {
-      //   this.infos = infos;
-      //   this.isLoading = false;
-      // });
-      }
-
-
-    //   ngOnDestroy(): void{
-    //     this.postsSub.unsubscribe();
-    //   }
-
+  //   ngOnDestroy(): void{
+  //     this.postsSub.unsubscribe();
+  //   }
 }
 @Component({
   selector: 'app-deletewarning-page',
@@ -96,17 +97,18 @@ export class DeleteWarningComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription;
 
-  constructor(public postService: PostService){}
+  constructor(public postService: PostService) {}
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.postService.getPosts();
-    this.postsSub = this.postService.getPostUpdateListener()
+    this.postsSub = this.postService
+      .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
-      this.posts = posts;
-  });
+        this.posts = posts;
+      });
   }
 
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
   }
- }
+}

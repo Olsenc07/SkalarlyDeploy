@@ -95,7 +95,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
       });
-
+    // Validation
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService

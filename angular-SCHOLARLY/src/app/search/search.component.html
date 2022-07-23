@@ -77,12 +77,12 @@
         </div>
       </div>
 
+<!-- [ngForOf]="posts" -->
+      <div class="recents" *ngIf="posts.length !== 0" >
 
-      <div class="recents" *ngIf="posts.length !== 0" [ngForOf]="posts">
 
-
-
-<app-card class="hide" *ngIf="(userIsAuthenticated && (userId === posts.Creator))">
+<!-- *ngIf="(userIsAuthenticated && (userId === posts.Creator))" -->
+<app-card class="hide" >
 
 </app-card>
 
