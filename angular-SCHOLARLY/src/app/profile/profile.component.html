@@ -464,7 +464,7 @@
         <mat-tab-group mat-align-tabs="center">
           <mat-tab label="activity">
             <div class="column1" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">
-              <div class="row"> No Posts Made</div><span class="fa-duotone fa-hat-wizard centerR iconEmpty" ></span>
+              <div class="row"> No Posts Made</div><span class="far fa-mug-hot  iconEmpty" ></span>
             </div>
             <div class="posts" *ngIf="posts.length !== 0" >
               <app-card class="postCard" *ngIf='userIsAuthenticated && (userId === posts.Creator)'>
@@ -473,7 +473,7 @@
           </mat-tab>
           <mat-tab label="showcase">
             <div class="column1" *ngIf="!info.ShowCasePath">
-              <div class="row"> No Showcases Added</div> <span class="fa-solid fa-hat-wizard centerR iconEmpty" ></span>
+              <div class="row"> No Showcases Added</div> <span class="fa-solid fa-hat-wizard iconEmpty" ></span>
             </div>
 
             <div class="showCase" *ngIf="info.ShowCasePath">
