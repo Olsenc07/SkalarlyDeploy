@@ -829,6 +829,7 @@ export class AuthService {
               CodePursuing10: info.CodePursuing10,
               CodePursuing11: info.CodePursuing11,
               CodePursuing12: info.CodePursuing12,
+
               ProfilePicPath: info.ProfilePicPath,
               ShowCasePath: info.ShowCasePath,
               Followers: info.followers,
@@ -870,6 +871,7 @@ export class AuthService {
             const expirationDate = new Date(
               now.getTime() + expiresInDuration * 1000
             );
+
             this.saveAuthData(token, expirationDate, this.userId);
             console.log(expirationDate);
             console.log(this.token);
@@ -888,6 +890,7 @@ export class AuthService {
   loginFirst(emailV: string, passwordV: string): any {
     const authData = { emailV, passwordV };
     this.http
+      // expiresIn: number;
       .post<{ token: string; expiresIn: number; userId: string }>(
         'http://localhost:3000/api/user/login1',
         authData
@@ -904,6 +907,7 @@ export class AuthService {
           const expirationDate = new Date(
             now.getTime() + expiresInDuration * 1000
           );
+
           this.saveAuthData(this.token, expirationDate, this.userId);
         },
         error: (error) => {

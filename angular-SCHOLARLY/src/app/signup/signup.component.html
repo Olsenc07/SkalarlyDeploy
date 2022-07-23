@@ -538,7 +538,7 @@
 
 
 
-          <div class="input">
+          <div class="input_Btm">
             <span class="material-icons _icon">
               group
             </span>
@@ -551,9 +551,11 @@
           </div>
         </div>
         <!-- Completed Courses -->
-        <div class="row">
+
+        <mat-tab-group mat-align-tabs="center" class="columnTab">
           <!-- column -->
-          <div class="courses">
+
+  <mat-tab  label="Completed Courses" class="courses">
             <div class="input">
               <i class="material-icons _icon">check</i>
 <!-- 1 -->
@@ -581,7 +583,7 @@
 
               <mat-form-field class="example-chip-list">
                 <mat-label>Completed Course 2</mat-label>
-                <mat-select placeholder="Choose completed course 2" #codeInput [formControl]="CodeCompleted2" >
+                <mat-select placeholder="Choose completed course 2"  [formControl]="CodeCompleted2" >
 
                   <mat-option *ngFor="let code of CodeCompleted.value" 
                   (removed)="onRemoved(code)" [>
@@ -601,7 +603,7 @@
 
               <mat-form-field class="example-chip-list">
                 <mat-label>Completed Course 3</mat-label>
-                <mat-select placeholder="Choose completed course 3" #codeInput [formControl]="CodeCompleted3" >
+                <mat-select placeholder="Choose completed course 3"  [formControl]="CodeCompleted3" >
 
                   <mat-option *ngFor="let code of CodeCompleted.value" 
                   (removed)="onRemoved(code)" [removable]="true">
@@ -622,7 +624,7 @@
 
               <mat-form-field class="example-chip-list">
                 <mat-label>Completed Course 4</mat-label>
-                <mat-select placeholder="Choose completed course 4" #codeInput [formControl]="CodeCompleted4" >
+                <mat-select placeholder="Choose completed course 4"  [formControl]="CodeCompleted4" >
 
                   <mat-option *ngFor="let code of CodeCompleted.value" 
                   (removed)="onRemoved(code)" [removable]="true">
@@ -1448,21 +1450,22 @@
   <i class="material-icons _icon">check</i>
   <mat-form-field class="example-chip-list">
   <mat-label>Extras or Transfer Equivalents</mat-label>
-  <textarea matInput placeholder="Extras or Transfer Equivalents" #codeInput [formControl]="CodeCompletedX" ></textarea>
+  <textarea matInput placeholder="Extras or Transfer Equivalents"  [formControl]="CodeCompletedX" ></textarea>
   </mat-form-field>
   </div>
-          </div>
+</mat-tab>
 
 
           <!-- Pursuing Courses -->
-          <div class="courses">
+  <i class="material-icons _icon">checklist</i>
+          <mat-tab  label="Pursuing Courses" class="courses">
             <!-- 1 -->
             <div class="input">
               <i class="material-icons _icon">checklist</i>
 
               <mat-form-field class="example-chip-list">
                 <mat-label>Pursuing Course</mat-label>
-                <mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing" >
+                <mat-select placeholder="Choose pursuing course"  [formControl]="CodePursuing" >
                   <mat-option *ngFor="let codeP of CodePursuing.value" 
                   (removed)="removeP(codeP)">
                   {{codeP}}
@@ -1485,7 +1488,7 @@
 
   <mat-form-field class="example-chip-list">
     <mat-label>Pursuing Course 2</mat-label>
-    <mat-select placeholder="Choose pursuing course 2" #codeInputP [formControl]="CodePursuing2" >
+    <mat-select placeholder="Choose pursuing course 2" [formControl]="CodePursuing2" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
         (removed)="removeP(codeP)">
@@ -1506,7 +1509,7 @@
 
   <mat-form-field class="example-chip-list">
     <mat-label>Pursuing Course 3</mat-label>
-    <mat-select placeholder="Choose pursuing course 3" #codeInputP [formControl]="CodePursuing3" >
+    <mat-select placeholder="Choose pursuing course 3"  [formControl]="CodePursuing3" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
         (removed)="removeP(codeP)">
@@ -1527,7 +1530,7 @@
 
   <mat-form-field class="example-chip-list">
     <mat-label>Pursuing Course 4</mat-label>
-    <mat-select placeholder="Choose pursuing course 4" #codeInputP [formControl]="CodePursuing4" >
+    <mat-select placeholder="Choose pursuing course 4"  [formControl]="CodePursuing4" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
         (removed)="removeP(codeP)">
@@ -1712,9 +1715,10 @@
 
   </mat-form-field>
 </div>
-          </div>
-        </div>
+</mat-tab>
 
+        </mat-tab-group>
+        <mat-divider></mat-divider>
 
 
         <div class="createBtn">

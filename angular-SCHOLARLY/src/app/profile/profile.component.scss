@@ -198,6 +198,14 @@
     margin-bottom: 12%;
   }
 }
+.column_1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // height: 60%;
+  box-sizing: border-box;
+  justify-content: center;
+}
 @media (min-width: 410px) {
   .convo-text {
     display: flex;
@@ -595,14 +603,7 @@ mat-tab-group {
   font-size: 18px;
   width: 100%;
 }
-.row_1 {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 60%;
-  box-sizing: border-box;
-  justify-content: center;
-}
+
 
 .right-side {
   display: flex;
@@ -765,6 +766,14 @@ mat-tab-group {
   justify-content: center;
   flex-direction: row;
   background-color: white;
+}
+.titleC{
+  display: flex;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2%;
 }
 .title1 {
   display: flex;

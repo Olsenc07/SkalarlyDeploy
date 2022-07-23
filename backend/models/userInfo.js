@@ -52,6 +52,7 @@ const userInfoSchema = mongoose.Schema({
     CodeCompleted38: { type: String},
     CodeCompleted39: { type: String},
     CodeCompleted40: { type: String},
+    CodeCompletedX: { type: String},
 
     CodePursuing: { type: String},
     CodePursuing2: { type: String},

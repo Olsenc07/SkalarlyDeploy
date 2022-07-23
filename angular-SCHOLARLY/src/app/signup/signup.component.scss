@@ -151,6 +151,13 @@
   flex-direction: column;
   justify-content: center;
 }
+.columnTab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: scroll;
+  max-height: 250px;
+}
 .courses {
   display: flex;
   width: 100%;
@@ -373,7 +380,13 @@
   justify-content: center;
   flex-direction: row;
   width: 100%;
-  margin-bottom: 2%;
+  margin-top: 2%;
+}
+.input_Btm {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
 }
 .inputTop {
   display: flex;
