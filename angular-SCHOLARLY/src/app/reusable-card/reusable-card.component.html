@@ -148,7 +148,7 @@
 
       <!---- Takes upload img/video from post page {{Upload}} -->
       <!-- *ngFor="let show of showCases" -->
-      <div class="upload" >
+      <div class="upload" *ngIf="post.ImagePath" >
 
         <img class="middle-card" src="{{post.ImagePath}}">
       </div>

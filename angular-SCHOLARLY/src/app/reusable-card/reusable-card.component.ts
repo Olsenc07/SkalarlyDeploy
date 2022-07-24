@@ -37,17 +37,17 @@ export class ReusableCardComponent implements OnInit {
   private infosSub: Subscription;
 
   selectedAttend = '';
-  attendances: any = ['Attending', 'Maybe', 'Not Attending'];
-  panelOpenState = false;
-  showCases = [
-    // '../../assets/Pics/IMG-8413.PNG',
-    // '../../assets/Pics/IMG-8619.PNG',
-    '../../assets/Pics/WhiteSquareInAppLogo.jpg',
-    // '../../assets/Pics/IMG-8413.PNG',
-    // '../../assets/Pics/IMG-8619.PNG',
-    // '../../assets/Pics/ProperInAppLogo.jpeg ',
-    // '../../assets/Pics/IMG-8413.PNG'
-  ];
+  // attendances: any = ['Attending', 'Maybe', 'Not Attending'];
+  // panelOpenState = false;
+  // showCases = [
+  //   // '../../assets/Pics/IMG-8413.PNG',
+  //   // '../../assets/Pics/IMG-8619.PNG',
+  //   '../../assets/Pics/WhiteSquareInAppLogo.jpg',
+  //   // '../../assets/Pics/IMG-8413.PNG',
+  //   // '../../assets/Pics/IMG-8619.PNG',
+  //   // '../../assets/Pics/ProperInAppLogo.jpeg ',
+  //   // '../../assets/Pics/IMG-8413.PNG'
+  // ];
 
   radioChange(event: any): any {
     this.selectedAttend = event.target.value;
@@ -136,9 +136,9 @@ export class ReusableCommentsComponent implements OnInit {
   constructor(private commentsService: CommentsService) {}
 
   ngOnInit(): void {
-    this.commentsService.getComments().subscribe((comments) => {
-      console.log('comments', comments);
-      this.comments = comments;
-    });
+    // this.commentsService.getComments().subscribe((comments) => {
+    //   console.log('comments', comments);
+    //   this.comments = comments;
+    // });
   }
 }

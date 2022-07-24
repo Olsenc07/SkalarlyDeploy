@@ -85,6 +85,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   url: string;
   selectedIndex = 0;
 
+  text = false;
+  photo = false;
   visible = true;
   selectable = true;
   removable = true;
@@ -158,6 +160,13 @@ export class PostPageComponent implements OnInit, OnDestroy {
     );
   }
 
+  textPost(): any {
+    this.text = true;
+    console.log('camp fire', this.text);
+  }
+  photoPost(): any {
+    this.photo = true;
+  }
   uploadFile(): any {
     document.getElementById('fileInput').click();
     console.log('nice');

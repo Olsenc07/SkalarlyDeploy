@@ -7,9 +7,9 @@ import { CommentInterface } from '../reusable-card/reusable-card.component';
 export class CommentsService {
   constructor(private httpClient: HttpClient) {}
 
-  getComments(): Observable<CommentInterface[]> {
-    return this.httpClient.get<CommentInterface[]>(
-      'http://localhost:3000/comments'
-    );
-  }
+  getComments() {}
+  //  Observable<CommentInterface[]> {
+  // return this.httpClient.get<CommentInterface[]>(
+  // 'http://localhost:3000/comments'
+  // );
 }
