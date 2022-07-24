@@ -76,6 +76,7 @@ import { PostPageComponent } from './post-page/post-page.component';
 import { DialogElementsComponent } from './post-page/post-page.component';
 import { ServicesElementsComponent } from './post-page/post-page.component';
 
+import { ReusableCommentsComponent } from './reusable-card/reusable-card.component';
 import { ReusableCardComponent } from './reusable-card/reusable-card.component';
 import { DeleteWarningComponent } from './reusable-card/reusable-card.component';
 import { ReusableCardBriefComponent } from './reusable-card-brief/reusable-card-brief.component';
@@ -94,6 +95,7 @@ import { ClassListService } from './services/class.service';
 import { StoreService } from './services/store.service';
 import { AuthService } from './services/auth.service';
 import { ChatService } from './services/chat.service';
+import { CommentsService } from './services/comments.service';
 
 import { AuthInterceptor } from './signup/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
@@ -126,6 +128,7 @@ const config: SocketIoConfig = {
     AttendanceComponent,
     BottomSheetComponent,
     ReusableCardComponent,
+    ReusableCommentsComponent,
     ReusableCardBriefComponent,
     ReusableCardRequestComponent,
     ReusableCardRecommendationComponent,
@@ -194,6 +197,7 @@ const config: SocketIoConfig = {
     StoreService,
     AuthService,
     ChatService,
+    CommentsService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],

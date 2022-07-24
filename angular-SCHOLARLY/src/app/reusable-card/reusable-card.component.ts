@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Input } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { OnInit } from '@angular/core';
 import { AttendanceComponent } from '../main-pages/main-pages.component';
@@ -9,6 +9,16 @@ import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { Subscription, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
+import { CommentsService } from '../services/comments.service';
+
+export interface CommentInterface {
+  id: string;
+  body: string;
+  username: string;
+  userID: string;
+  parentId: string | null;
+  createdAt: string;
+}
 
 @Component({
   selector: 'app-card',
@@ -110,5 +120,25 @@ export class DeleteWarningComponent implements OnInit {
 
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
+  }
+}
+
+@Component({
+  selector: 'app-card-comments',
+  templateUrl: './comments.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class ReusableCommentsComponent implements OnInit {
+  @Input() currentUserId!: string;
+
+  comments: CommentInterface[] = [];
+
+  constructor(private commentsService: CommentsService) {}
+
+  ngOnInit(): void {
+    this.commentsService.getComments().subscribe((comments) => {
+      console.log('comments', comments);
+      this.comments = comments;
+    });
   }
 }
