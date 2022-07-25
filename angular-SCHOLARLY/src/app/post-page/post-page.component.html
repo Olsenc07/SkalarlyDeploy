@@ -13,26 +13,10 @@
           Write a message or upload an image to begin
         </div>
   
-        <div *ngIf="text == false && photo == false " class="center_">
-<div   >
-  <button mat-raised-button color="primary" (click)="textPost()"> 
-Text Post
-</button>
-</div>
-<div class="orText">
-  Or
-</div>
 
 
-<div >
-  <button mat-raised-button color="primary" (click)="photoPost()"> 
-  Photo Post
-  </button>
-</div>
-</div>
 
-
-<div class="center_" *ngIf="text == true">
+<div class="center_" >
         <mat-form-field class="post" appearance="fill">
           <textarea matInput  placeholder="What would you like to say?"
             [formControl]="postDescription">
@@ -43,7 +27,7 @@ Text Post
       </div>
  
     <!-- Description of Post -->
-    <div class="column_1"  *ngIf="photo == true">
+    <div class="column_1"  >
 
       <!-- Upload pic/video -->
       <!-- <div class="column_"> -->

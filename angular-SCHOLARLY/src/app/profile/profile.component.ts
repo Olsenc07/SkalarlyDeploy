@@ -105,12 +105,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
-
     // this.Com = this.Com.map(code => code.toUpperCase()).sort();
-    this.Pur = this.Pur.map((code) => code.toUpperCase()).sort();
+    // this.Pur = this.Pur.map((code) => code.toUpperCase()).sort();
 
     // this.showCases = this.showCases.toString();
-    return this.Pur;
+    // return this.Pur;
   }
 
   // this.Com
