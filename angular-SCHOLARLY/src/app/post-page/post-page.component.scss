@@ -315,9 +315,12 @@
   }
 }
 .image{
-
   max-width: 250px;
-
+}
+.img{    
+  display: flex;
+  max-width: 250px;
+  border: groove;
 }
 .imgBox {
   display: flex;

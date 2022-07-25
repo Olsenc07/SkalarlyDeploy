@@ -36,7 +36,7 @@ export class ReusableCardComponent implements OnInit {
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
-  selectedAttend = '';
+  // selectedAttend = '';
   // attendances: any = ['Attending', 'Maybe', 'Not Attending'];
   // panelOpenState = false;
   // showCases = [
@@ -49,9 +49,9 @@ export class ReusableCardComponent implements OnInit {
   //   // '../../assets/Pics/IMG-8413.PNG'
   // ];
 
-  radioChange(event: any): any {
-    this.selectedAttend = event.target.value;
-  }
+  // radioChange(event: any): any {
+  //   this.selectedAttend = event.target.value;
+  // }
 
   openAttendanceSheet(): void {
     this.bottomSheet.open(AttendanceComponent);

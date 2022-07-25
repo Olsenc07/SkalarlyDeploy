@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 export interface Post {
-  _id: string;
+  id: string;
   Title: string;
   postDescription: string;
   postLocation: string;
@@ -96,7 +96,7 @@ export class PostService {
       virtual,
       event,
       upload,
-      _id: '',
+      id: '',
       ImagePath: '',
       Creator: '',
     };
@@ -123,7 +123,7 @@ export class PostService {
       .subscribe({
         next: (responseData) => {
           const postId: Post = {
-            _id: responseData.postId._id,
+            id: responseData.postId.id,
             Title,
             postDescription,
             postLocation,
@@ -151,7 +151,7 @@ export class PostService {
     this.http
       .delete('http://localhost:3000/api/posts/' + postId)
       .subscribe(() => {
-        const updatedPosts = this.posts.filter((post) => post._id !== postId);
+        const updatedPosts = this.posts.filter((post) => post.id !== postId);
         this.posts = updatedPosts;
         this.postsUpdated.next([...this.posts]);
       });

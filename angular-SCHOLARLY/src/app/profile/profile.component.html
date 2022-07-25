@@ -464,8 +464,8 @@
         <mat-tab-group mat-align-tabs="center">
           <mat-tab label="activity" >
       
-            <div class="posts" >
-              <app-card class="postCard" *ngIf="(userIsAuthenticated && (userId === posts.Creator))"> 
+            <div class="posts" *ngFor="let post of posts" >
+              <app-card class="postCard" *ngIf="(userIsAuthenticated && (userId === post.Creator))"> 
               </app-card>
             </div>
             <div class="column1" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">

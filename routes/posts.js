@@ -75,8 +75,7 @@ if (req.file){
         ImagePath: url + '/posts/' + req.file.filename,
         Creator: req.userData.userId
     });
-}
-else{
+}else{
     var post = new Post({
         Title: req.body.Title,
         postDescription: req.body.postDescription,
