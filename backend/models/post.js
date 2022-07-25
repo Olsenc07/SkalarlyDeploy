@@ -7,11 +7,11 @@ const postSchema = mongoose.Schema({
     LocationEvent:  { type: String},
     time:  { type: String},
     date: { type: String},
-    Gender:  { type: String},
-    Driver: { type: String},
-    PaymentService: { type: String},
-    Virtual: { type: String},
-    Event: { type: String},
+    gender:  { type: String},
+    driver: { type: String},
+    paymentService: { type: String},
+    virtual: { type: String},
+    event: { type: String},
     ImagePath: { type:String},
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });

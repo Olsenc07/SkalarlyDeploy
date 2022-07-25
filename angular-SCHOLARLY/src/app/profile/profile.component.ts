@@ -144,7 +144,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   private postsSub: Subscription;
 
-  infos_: AuthDataInfo[] = [];
+  infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
   Pur_ = StoreService.Pur.length;
@@ -166,8 +166,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.authService.getOtherInfo(id);
       this.infosSub = this.authService
         .getInfoUpdateListener()
-        .subscribe((infos_: AuthDataInfo[]) => {
-          this.infos_ = infos_;
+        .subscribe((infos: AuthDataInfo[]) => {
+          this.infos = infos;
         });
     });
     // Posts
@@ -191,9 +191,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     // Can add *ngIf="userIsAuthenticated" to hide items
     // });
     // this.Com = this.Com.map(code => code.toUpperCase()).sort();
-    this.Pur = this.Pur.map((code) => code.toUpperCase()).sort();
+    // this.Pur = this.Pur.map((code) => code.toUpperCase()).sort();
     // this.showCases = this.showCases.toString();
-    return this.Pur;
+    // return this.Pur;
   }
 
   ngOnDestroy(): any {

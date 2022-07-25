@@ -2,8 +2,8 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<div *ngFor="let info of infos_">
-  <div class="main-content" *ngIf="(userId !== info.Creator)">
+<div *ngFor="let info of infos">
+  <div class="main-content" >
     <!-- input pic & has this default pic before-->
     <div class="left-side">
 
@@ -190,73 +190,273 @@
             </div> -->
             <!-- </div>
         </div> -->
-
-            <div class="row_1">
-              <!-- This ngIf to adjust to data stroage not hard code like Pur_
+        <mat-tab-group class="column_1">
+          <!-- This ngIf to adjust to data stroage not hard code like Pur_
           but need to target observable length.. idk rn -->
-              <!-- <div class="column1" *ngIf=" !((profile | async)?.CodeCompleted  || (profile | async)?.filteredCodesP)"> -->
-              <!-- <div class="row"> No Courses Added</div> -->
-              <!-- <i class="far fa-frown centerR"></i> -->
-              <!-- </div> -->
-              <!-- Hidden if neither are filled in -->
+          <!-- <div class="column1" *ngIf=" !((profile | async)?.CodeCompleted  || (profile | async)?.filteredCodesP)"> -->
+            <!-- <div class="row"> No Courses Added</div> -->
+            <!-- <i class="far fa-frown centerR"></i> -->
+          <!-- </div> -->
+          <!-- Hidden if neither are filled in -->
 
 
-              <div [ngClass]=" ((profile | async)?.CodeCompleted) ? 'hide_' : 'completed-courses' ">
-                <div class="words1">
-                  <div class="columnCourses">
-                    Completed Courses
-                  </div>
-
-                  <!-- Courses but need to target list length-->
-                  <div class="counter" matBadgePosition="after" matBadgeOverlap="false"
-                    matBadge="{{ (profile | async)?.CodeCompleted.length  }}">
-                  </div>
-
-                </div>
-
-                <div class=" scroll">
-                  <mat-chip-list>
-                    <!-- *ngFor="let list of Com" -->
-                    <div class="list">
-                      <div class="center__">
-                        <mat-chip class="style" disabled>
-                          <!-- {{list}} -->
-                          {{ (profile | async)?.CodeCompleted }}
-                        </mat-chip>
-                      </div>
-                    </div>
-                  </mat-chip-list>
-                </div>
+          <mat-tab label="Completed Courses">
+           <div class="titleC"> One Step Closer <i class="fas fa-graduation-cap"></i>
+           </div>
+            <div class="words1">
+              <!-- <div class="columnCourses">
+                Completed Courses
+              </div> -->
+              
+              <!-- Courses but need to target list length-->
+              <div class="counter" matBadgePosition="after" matBadgeOverlap="false">
               </div>
 
-              <!-- "!((profile | async)?.CodePursuing) ? 'hide_' : 'completed-courses' " -->
-              <div [ngClass]="(profile | async)?.CodePursuing  ? 'hide_' : 'completed-courses' ">
-                <div class="words1">
-                  <div class="columnCourses">
-                    Pursuing Courses
-                  </div>
-
-                  <!-- Courses -->
-                  <div class="counter" matBadgePosition="after" matBadgeOverlap="false"
-                    matBadge="{{  (profile | async)?.CodePursuing.length }}"></div>
-                </div>
-                <div class="scroll">
-                  <mat-chip-list>
-                    <!-- *ngFor="let list of Pur" -->
-                    <div class="list">
-                      <div class="center__">
-                        <mat-chip class="style" disabled>
-                          <!-- {{list}}-->
-                          {{ (profile | async)?.CodePursuing }}
-                        </mat-chip>
-                      </div>
-                    </div>
-                  </mat-chip-list>
-                </div>
-
-              </div>
-              <!-- </ng-container> -->
             </div>
+
+            <div class=" scroll">
+              <mat-chip-list>
+                <!-- *ngFor="let list of Com" -->
+                <div class="list">
+                  <mat-chip-list class="center__">
+<!-- disabled -->
+                    <mat-chip *ngIf="info.CodeCompleted" class="style" color="primary" selected >
+                      <!-- {{list}} -->
+                 
+                      {{ info.CodeCompleted }}
+                    </mat-chip>
+
+                      <mat-chip *ngIf="info.CodeCompleted2" class="style" color="primary" selected >
+                        {{ info.CodeCompleted2 }}
+                    </mat-chip>
+
+                        <mat-chip *ngIf="info.CodeCompleted3" class="style" color="primary" selected >
+                          {{ info.CodeCompleted3 }}
+                    </mat-chip>
+
+                          <mat-chip *ngIf="info.CodeCompleted4" class="style" color="primary" selected >
+                            {{ info.CodeCompleted4 }}
+                    </mat-chip>
+
+                            <mat-chip *ngIf="info.CodeCompleted5" class="style" color="primary" selected >
+                              {{ info.CodeCompleted5 }}
+                    </mat-chip>
+
+                              <mat-chip *ngIf="CodeCompleted6" class="style" color="primary" selected >
+                                {{ info.CodeCompleted6 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted7" class="style" color="primary" selected >
+                      {{ info.CodeCompleted7 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted8" class="style" color="primary" selected >
+                      {{ info.CodeCompleted8 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted9" class="style" color="primary" selected >
+                      {{ info.CodeCompleted9 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted10" class="style" color="primary" selected >
+                      {{ info.CodeCompleted10 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted11" class="style" color="primary" selected >
+                      {{ info.CodeCompleted11 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted12" class="style" color="primary" selected >
+                      {{ info.CodeCompleted12 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted13" class="style" color="primary" selected >
+                      {{ info.CodeCompleted13 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted14" class="style" color="primary" selected >
+                      {{ info.CodeCompleted14 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted15" class="style" color="primary" selected >
+                      {{ info.CodeCompleted15 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted16" class="style" color="primary" selected >
+                      {{ info.CodeCompleted16 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted17" class="style" color="primary" selected >
+                      {{ info.CodeCompleted17 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted18" class="style" color="primary" selected >
+                      {{ info.CodeCompleted18 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted19" class="style" color="primary" selected >
+                      {{ info.CodeCompleted19 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted20" class="style" color="primary" selected >
+                      {{ info.CodeCompleted20 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted21" class="style" color="primary" selected >
+                      {{ info.CodeCompleted21 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted22"  class="style" color="primary" selected >
+                      {{ info.CodeCompleted22 }}
+                    </mat-chip>
+
+                    <mat-chip  *ngIf="info.CodeCompleted23" class="style" color="primary" selected >
+                      {{ info.CodeCompleted23 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted24"  class="style" color="primary" selected >
+                      {{ info.CodeCompleted24 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted25" class="style" color="primary" selected >
+                      {{ info.CodeCompleted25 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted26"  class="style" color="primary" selected >
+                      {{ info.CodeCompleted26 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted27"  class="style" color="primary" selected >
+                      {{ info.CodeCompleted27 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted28"  class="style" color="primary" selected >
+                      {{ info.CodeCompleted28 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted29"  class="style" color="primary" selected >
+                      {{ info.CodeCompleted29 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted30"  class="style" color="primary" selected >
+                      {{ info.CodeCompleted30 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted31"  class="style" color="primary" selected >
+                      {{ info.CodeCompleted31 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted32" class="style" color="primary" selected >
+                      {{ info.CodeCompleted32 }}
+                    </mat-chip>
+
+                    <mat-chip  *ngIf="info.CodeCompleted33" class="style" color="primary" selected >
+                      {{ info.CodeCompleted33 }}
+                    </mat-chip>
+
+                    <mat-chip  *ngIf="info.CodeCompleted34" class="style" color="primary" selected >
+                      {{ info.CodeCompleted34 }}
+                    </mat-chip>
+
+                    <mat-chip  *ngIf="info.CodeCompleted35" class="style" color="primary" selected >
+                      {{ info.CodeCompleted35 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted36"  class="style" color="primary" selected >
+                      {{ info.CodeCompleted36 }}
+                    </mat-chip>
+
+                    <mat-chip  *ngIf="info.CodeCompleted37"  class="style" color="primary" selected >
+                      {{ info.CodeCompleted37 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted38"   class="style" color="primary" selected >
+                      {{ info.CodeCompleted38 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted39"   class="style" color="primary" selected >
+                      {{ info.CodeCompleted39 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompleted40"   class="style" color="primary" selected >
+                      {{ info.CodeCompleted40 }}
+                    </mat-chip>
+
+                    <mat-chip *ngIf="info.CodeCompletedX"  class="style" color="primary" selected >
+                      {{ info.CodeCompletedX }}
+                    </mat-chip>
+                    
+                  </mat-chip-list>
+                </div>
+              </mat-chip-list>
+            </div>
+          </mat-tab>
+
+          <!-- "!((profile | async)?.CodePursuing) ? 'hide_' : 'completed-courses' " -->
+          <mat-tab label="Pursuing Courses">
+           <div class="titleC"> In Progress <i class="fas fa-hourglass-half"></i>
+          </div>
+
+            <div class="words1">
+            
+
+              <!-- Courses -->
+              <div class="counter" matBadgePosition="after" matBadgeOverlap="false"></div>
+            </div>
+            <div class="scroll">
+              <mat-chip-list>
+                <!-- *ngFor="let list of Pur" -->
+                <div class="list">
+                  <mat-chip-list  class="center__">
+                    
+                      <!-- {{list}}-->
+                      <mat-chip *ngIf="info.CodePursuing" class="style" color="primary" selected >
+                      {{ info.CodePursuing }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing2" class="style" color="primary" selected >
+                      {{ info.CodePursuing2 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing3" class="style" color="primary" selected >
+                      {{ info.CodePursuing3 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing4" class="style" color="primary" selected >
+                      {{ info.CodePursuing4 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing5" class="style" color="primary" selected >
+                      {{ info.CodePursuing5 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing6" class="style" color="primary" selected >
+                      {{ info.CodePursuing6 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing7" class="style" color="primary" selected >
+                      {{ info.CodePursuing7 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing8" class="style" color="primary" selected >
+                      {{ info.CodePursuing8 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing9" class="style" color="primary" selected >
+                      {{ info.CodePursuing9 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing10" class="style" color="primary" selected >
+                      {{ info.CodePursuing10 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing11" class="style" color="primary" selected >
+                      {{ info.CodePursuing11 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing12" class="style" color="primary" selected >
+                      {{ info.CodePursuing12 }}
+                    </mat-chip>
+                 
+                  </mat-chip-list >
+                </div>
+              </mat-chip-list>
+            </div>
+
+          </mat-tab>
+          <!-- </ng-container> -->
+        </mat-tab-group>
+
+            
           </div>
         </div>
         <div class="activityM">
@@ -318,7 +518,7 @@
 
 <!--  Mobile -->
 <!-- Side Info -->
-<div *ngIf="!isLoading">
+<!-- <div *ngIf="!isLoading">
   <mat-sidenav-container autosize class="side_nav_container">
 
 
@@ -343,7 +543,7 @@
 
 
             <div class="centerR_">
-              <!-- This is hard coded once user signs up -->
+              <!-- This is hard coded once user signs up --
               {{(Id |async)?.UserName}}
 
             </div>
@@ -362,17 +562,17 @@
           </div>
           <div class="centerGD" *ngIf="(profile | async)?.Gender.name || (profile | async )?.Birthday  ">
             <div *ngIf="(profile | async)?.Gender.name">
-              <!--  Male -->
+              <!--  Male --
               {{ (profile | async)?.Gender.name}}
             </div>
             <div *ngIf="(profile | async )?.Birthday">
-              <!-- Eventually just have the age calculated out...maybe -->
+              <!-- Eventually just have the age calculated out...maybe --
               {{ (profile | async )?.Birthday|date:"longDate" }}
             </div>
 
             <!-- <div *ngIf="date equals bd input"> <i class="fas fa-birthday-cake icon"></i>
           Happy Birthday
-          </div> -->
+          </div> --
 
 
           </div>
@@ -380,46 +580,46 @@
         </div>
 
         <mat-divider class="margin"></mat-divider>
-        <!-- Major/Minor -->
+        <!-- Major/Minor --
         <div class="major-minor" *ngIf="(profile| async)?.Major || (profile| async)?.Minor ">
-          <!-- *ngIf="major.value" -->
+          <!-- *ngIf="major.value" --
           <div class="centerR" *ngIf="(profile| async)?.Major ">
-            <!-- Major -->
+            <!-- Major --
             <i class="fas fa-star large">{{ (profile | async)?.Major}}</i>
 
           </div>
           <div class="centerR" *ngIf="(profile| async)?.Minor ">
-            <!-- Minor -->
+            <!-- Minor --
             <i class="far fa-star large">{{ (profile | async)?.Minor}}</i>
           </div>
 
         </div>
         <mat-divider class="margin" *ngIf="(profile| async)?.Major  || (profile| async)?.Minor">
         </mat-divider>
-        <!-- Sport/Club -->
+        <!-- Sport/Club --
         <div class="major-minor" *ngIf="(profile| async)?.Sport  || (profile| async)?.Club">
           <div class=" centerR" *ngIf="(profile| async)?.Sport ">
-            <!-- Sport -->
+            <!-- Sport --
             {{ (profile | async)?.Sport}}
           </div>
           <div class="centerR" *ngIf="(profile| async)?.Club ">
-            <!-- Club -->
+            <!-- Club --
             {{ (profile | async)?.Club}}
           </div>
 
         </div>
-        <!-- [ngClass]="sport.value & club.value  ? 'hiden' : 'margin' " -->
+        <!-- [ngClass]="sport.value & club.value  ? 'hiden' : 'margin' " --
         <mat-divider class="margin"></mat-divider>
         <div class="friendsCount">
           <div class="centerR">
             Followers
             <!-- Counter -->
-            <!-- {{followers}} -->
+            <!-- {{followers}} --
           </div>
           <div class="centerR">
             Following
             <!-- Counter -->
-            <!-- {{follow}} -->
+            <!-- {{follow}} --
           </div>
         </div>
 
@@ -442,19 +642,19 @@
       <div class="middle">
 
 
-        <!-- User-Name -->
+        <!-- User-Name --
         <div class="top-middle">
 
           <!-- No Bio -->
-          <!-- Pronouns Full name & age   *ngIf="fullname.value " -->
+          <!-- Pronouns Full name & age   *ngIf="fullname.value " --
 
           <div class="text-2">
 
 
             <div class="profile-pic" *ngIf="(profile | async)?.profPic">
-              <!-- need to get croppeded value -->
+              <!-- need to get croppeded value --
               <img class="pic" src="{{(profile | async)?.profPic}}">
-              <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
+              <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> --
             </div>
 
             <div class="profile-pic" *ngIf="!(profile | async)?.profPic">
@@ -466,7 +666,7 @@
 
             <div class="fName">
 
-              <!-- Chase Olsen -->
+              <!-- Chase Olsen --
               {{ (profile | async)?.Pronouns}}
               {{ (profile | async)?.Name}}
 
@@ -489,19 +689,19 @@
 
               {{ following ? "Unfollow" : "Follow" }}
 
-              <!-- Switches to Unfollow btn option  -->
+              <!-- Switches to Unfollow btn option  --
 
             </mat-chip>
           </mat-chip-list>
         </div>
 
 
-        <!-- MOBILE -->
+        <!-- MOBILE --
 
         <mat-tab-group dynamicHeight dynamicWidth mat-align-tabs="center" class="hideM">
           <mat-tab label="Highlights">
             <div class="HighlightsM">
-              <!-- Hightlight Input box -->
+              <!-- Hightlight Input box --
               <div class="highlights-layout">
                 <div class="column1" *ngIf="groups.length == 0">
                   <div class="row"> No Groups Joined</div><i class="far fa-frown centerR iconEmpty"></i>
@@ -527,8 +727,8 @@
                     *ngIf=" !((profile | async)?.CodeCompleted  || (profile | async)?.filteredCodesP)">
                     <div class="row"> No Courses Added</div>
                     <!-- <i class="far fa-frown centerR"></i> -->
-                  </div>
-                  <!-- Hidden if neither are filled in -->
+                  <!-- </div> -->
+                  <!-- Hidden if neither are filled in --
 
 
                   <div [ngClass]="(profile | async)?.CodeCompleted  ?  'completed-courses': 'hide_' ">
@@ -540,11 +740,11 @@
 
                     <div class=" scroll">
                       <mat-chip-list>
-                        <!-- *ngFor="let list of Com" -->
+                        <!-- *ngFor="let list of Com" --
                         <div class="list">
                           <div class="center__">
                             <mat-chip class="style" disabled>
-                              <!-- {{list}} -->
+                              <!-- {{list}} --
                               {{ (profile | async)?.CodeCompleted}}
                             </mat-chip>
                           </div>
@@ -560,11 +760,11 @@
                     </div>
                     <div class="scroll">
                       <mat-chip-list>
-                        <!-- *ngFor="let list of Pur" -->
+                        <!-- *ngFor="let list of Pur" --
                         <div class="list">
                           <div class="center__">
                             <mat-chip class="style" disabled>
-                              <!-- {{list}} -->
+                              <!-- {{list}} --
                               {{ (profile | async)?.CodePursuing}}
                             </mat-chip>
                           </div>
@@ -582,14 +782,14 @@
               <div class="row"> No Posts Made</div><i class="far fa-frown centerR iconEmpty"></i>
             </div>
 
-            <!-- Recent Posts text  -->
+            <!-- Recent Posts text  --
             <div class="posts" *ngIf="posts.length !== 0">
               <app-card *ngFor="let post of posts">
                 {{post}}
               </app-card>
             </div>
           </mat-tab>
-          <!-- Snap shots -->
+          <!-- Snap shots --
           <mat-tab label="Showcase">
             <div class="column1" *ngIf="!(profile|async)?.ShowCase">
               <div class="row"> No Showcases Added</div><i class="fas fa-eye-slash centerR"></i>
@@ -598,7 +798,7 @@
 
               <div class="column">
                 <img class="img" src={{(profile|async)?.ShowCase}} />
-                <!-- *ngFor="let showCase of showCases" -->
+                <!-- *ngFor="let showCase of showCases" --
               </div>
 
             </div>
@@ -609,4 +809,4 @@
 
 
   </mat-sidenav-container>
-</div>
+</div> -->

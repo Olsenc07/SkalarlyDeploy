@@ -597,7 +597,7 @@ router.get("/id", async(req, res) => {
                 message: 'Fetching infos failed!'
             });
         });
-console.log('hey', hey)
+
 
 });
 

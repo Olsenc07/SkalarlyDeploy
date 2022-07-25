@@ -276,6 +276,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.event.value,
       this.form.get('upload').value
     );
+    console.log('gender', this.gender.value);
+    console.log('event', this.event.value);
   }
 
   changeTab(): void {

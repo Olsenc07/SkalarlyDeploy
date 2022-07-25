@@ -81,7 +81,7 @@ export class ReusableCardComponent implements OnInit {
       .subscribe((posts: Post[]) => {
         this.posts = posts;
         this.isLoading = false;
-        console.log(this.posts);
+        console.log('posts', this.posts);
       });
     // Info
     this.authService.getInfo();

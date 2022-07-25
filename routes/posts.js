@@ -67,11 +67,11 @@ if (req.file){
         LocationEvent: req.body.LocationEvent,
         time: req.body.time,
         date: req.body.date,
-        Gender: req.body.gender,
-        Driver: req.body.driver,
-        PaymentService: req.body.paymentService,
-        Virtual: req.body.virtual,
-        Event: req.body.event,
+        gender: req.body.gender,
+        driver: req.body.driver,
+        paymentService: req.body.paymentService,
+        virtual: req.body.virtual,
+        event: req.body.event,
         ImagePath: url + '/posts/' + req.file.filename,
         Creator: req.userData.userId
     });
@@ -83,11 +83,11 @@ if (req.file){
         LocationEvent: req.body.LocationEvent,
         time: req.body.time,
         date: req.body.date,
-        Gender: req.body.gender,
-        Driver: req.body.driver,
-        PaymentService: req.body.paymentService,
-        Virtual: req.body.virtual,
-        Event: req.body.event,
+        gender: req.body.gender,
+        driver: req.body.driver,
+        paymentService: req.body.paymentService,
+        virtual: req.body.virtual,
+        event: req.body.event,
         // ImagePath: url + '/posts/' + req.file,
         Creator: req.userData.userId
     });
