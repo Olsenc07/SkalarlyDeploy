@@ -504,8 +504,9 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.editForm.value);
+    // console.log(this.editForm.value);
     // TODO: convert form fields to Profile
+    console.log('name', this.name.value);
 
     this.authService.editUserInfo(
       this.email.value,
