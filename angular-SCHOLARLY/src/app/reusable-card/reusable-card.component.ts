@@ -98,6 +98,83 @@ export class ReusableCardComponent implements OnInit {
   //   }
 }
 @Component({
+  selector: 'app-card-personal',
+  templateUrl: './reusable-cardPersonal.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class ReusableCardPersonalComponent implements OnInit {
+  isLoading = false;
+
+  // Filling with Post info from post.service
+  posts: Post[] = [];
+  private postsSub: Subscription;
+  userId: string;
+
+  infos: AuthDataInfo[] = [];
+  private infosSub: Subscription;
+
+  // selectedAttend = '';
+  // attendances: any = ['Attending', 'Maybe', 'Not Attending'];
+  // panelOpenState = false;
+  // showCases = [
+  //   // '../../assets/Pics/IMG-8413.PNG',
+  //   // '../../assets/Pics/IMG-8619.PNG',
+  //   '../../assets/Pics/WhiteSquareInAppLogo.jpg',
+  //   // '../../assets/Pics/IMG-8413.PNG',
+  //   // '../../assets/Pics/IMG-8619.PNG',
+  //   // '../../assets/Pics/ProperInAppLogo.jpeg ',
+  //   // '../../assets/Pics/IMG-8413.PNG'
+  // ];
+
+  // radioChange(event: any): any {
+  //   this.selectedAttend = event.target.value;
+  // }
+
+  openAttendanceSheet(): void {
+    this.bottomSheet.open(AttendanceComponent);
+  }
+  openTaggedSheet(): void {
+    this.bottomSheet.open(TaggedComponent);
+  }
+
+  openDialog(): void {
+    this.dialog.open(DeleteWarningComponent);
+  }
+
+  constructor(
+    private bottomSheet: MatBottomSheet,
+    private authService: AuthService,
+    public postService: PostService,
+    public dialog: MatDialog
+  ) {}
+
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    this.isLoading = true;
+    // Posts
+    this.postService.getPosts();
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts', this.posts);
+      });
+    // Info
+    this.authService.getInfo();
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        this.isLoading = false;
+      });
+  }
+
+  //   ngOnDestroy(): void{
+  //     this.postsSub.unsubscribe();
+  //   }
+}
+@Component({
   selector: 'app-deletewarning-page',
   templateUrl: './delete-warning.component.html',
   styleUrls: ['./reusable-card.component.scss'],
@@ -142,3 +219,5 @@ export class ReusableCommentsComponent implements OnInit {
     // });
   }
 }
+
+

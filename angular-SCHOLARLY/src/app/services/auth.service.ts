@@ -576,7 +576,7 @@ export class AuthService {
     userData.append('followings', followings);
 
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .post<{ message: string; post: AuthDataInfo }>(
         'http://localhost:3000/api/user/infoEd',
         userData
       )

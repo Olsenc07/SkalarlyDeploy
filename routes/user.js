@@ -507,14 +507,13 @@ router.post("/info", checkAuth,
 // edit info
 const pic_ = multer({ storage: storage })
 const pic_2_ = multer({ storage: storage_2 })
-router.put("/infoEd", checkAuth,
+router.post("/infoEd", checkAuth,
     pic_.fields([{ name: 'profilePic' }, {
         name: 'showCase',
     }
     ]),
     async (req, res, next) => {
         console.log('third1', req.body.name)
-
         let username
         let fetchedUser;
        const userName2 = await User.findOne({ email: req.body.email })
@@ -543,10 +542,10 @@ router.put("/infoEd", checkAuth,
 
                     });
                 });
-                const userName = await User.findOne({ email: req.body.email })
-                console.log('first',userName)
-                const userInfo = await UserInfo.findOne({username: userName.username})
-                console.log('second',userInfo)
+                // const userName = await User.findOne({ email: req.body.email })
+                // console.log('first',userName)
+                // const userInfo = await UserInfo.findOne({username: userName.username})
+                // console.log('second',userInfo)
              const person = await UserInfo.updateOne({name: req.body.name})
                 .then(result => {
                     res.status(201).json({

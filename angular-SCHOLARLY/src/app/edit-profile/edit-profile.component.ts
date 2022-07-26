@@ -29,6 +29,7 @@ import { Profile, StoreService } from '../services/store.service';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
 import { AccountTextComponent } from '../signup/signup.component';
+import { AuthDataInfo } from '../signup/auth-data.model';
 
 interface Gender {
   name: string;
@@ -64,6 +65,8 @@ export class EditProfileComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription;
 
+  infos: AuthDataInfo[] = [];
+  private infosSub: Subscription;
   // Showcase
   i = 0;
   // Groups joined
@@ -100,7 +103,7 @@ export class EditProfileComponent implements OnInit {
     'Two Spirit',
   ];
 
-  pronounS: string[] = [
+  pronouns: string[] = [
     '',
     'She/Her',
     'He/His',
@@ -136,11 +139,11 @@ export class EditProfileComponent implements OnInit {
   // bio: FormControl = new FormControl('');
   // public bioLength = new BehaviorSubject(0);
   name: FormControl = new FormControl('');
-  pronouns: FormControl = new FormControl('');
+  pronoun: FormControl = new FormControl('');
   showCase: FormControl = new FormControl('');
   // removeShowCase: FormControl = new FormControl('');
   birthday: FormControl = new FormControl('');
-  genderChoice: FormControl = new FormControl('');
+  gender: FormControl = new FormControl('');
 
   // I think each code input is a different form control, save into the array
   CodeCompleted: FormControl = new FormControl('');
@@ -209,8 +212,8 @@ export class EditProfileComponent implements OnInit {
     sport: this.sport,
     club: this.club,
     name: this.name,
-    pronouns: this.pronouns,
-    genderChoice: this.genderChoice,
+    pronoun: this.pronoun,
+    gender: this.gender,
     birthday: this.birthday,
     // accountType: new FormControl(''),
     profilePic: this.profilePic,
@@ -381,6 +384,12 @@ export class EditProfileComponent implements OnInit {
       .subscribe((posts: Post[]) => {
         this.posts = posts;
       });
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
   }
 
   clearMajor(): void {
@@ -511,7 +520,15 @@ export class EditProfileComponent implements OnInit {
     this.authService.editUserInfo(
       this.email.value,
       this.password.value,
-      this.username.value,
+      // this.username.value,
+      this.name.value,
+      this.gender.value,
+      this.birthday.value,
+      this.major.value,
+      this.minor.value,
+      this.sport.value,
+      this.club.value,
+      this.pronoun.value,
       this.CodeCompleted.value,
       this.CodeCompleted2.value,
       this.CodeCompleted3.value,
@@ -566,16 +583,8 @@ export class EditProfileComponent implements OnInit {
       this.CodePursuing10.value,
       this.CodePursuing11.value,
       this.CodePursuing12.value,
-      this.name.value,
-      this.pronouns.value,
       this.profilePic.value,
-      this.genderChoice.value,
-      this.major.value,
-      this.minor.value,
-      this.sport.value,
-      this.club.value,
-      this.cropImgPreview,
-      this.birthday.value,
+      // this.cropImgPreview,
       this.showCase.value
     );
     console.log('name', this.name.value);

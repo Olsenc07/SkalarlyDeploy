@@ -4,7 +4,7 @@
 
 <!-- Posts box which should be a scroll view -->
 <div class="feed" *ngFor="let post of posts" >
-  <mat-card class="specifics-fill" *ngIf="!isLoading">
+  <mat-card class="specifics-fill" *ngIf="(userId !== post.Creator) && !isLoading">
     <!-- Profile Pic -->
     <div class="column" >
       <div class="row">
@@ -16,7 +16,7 @@
             </mat-card-title>
 
             
-            <button *ngIf='userIsAuthenticated && userId === post.Creator' mat-icon-button
+            <button *ngIf='userId === post.Creator' mat-icon-button
             (click)='openDialog()'><span class="material-icons-two-tone">
               delete_forever
               </span></button>

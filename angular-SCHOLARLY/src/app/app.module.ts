@@ -78,6 +78,8 @@ import { ServicesElementsComponent } from './post-page/post-page.component';
 
 import { ReusableCommentsComponent } from './reusable-card/reusable-card.component';
 import { ReusableCardComponent } from './reusable-card/reusable-card.component';
+import { ReusableCardPersonalComponent } from './reusable-card/reusable-card.component';
+
 import { DeleteWarningComponent } from './reusable-card/reusable-card.component';
 import { ReusableCardBriefComponent } from './reusable-card-brief/reusable-card-brief.component';
 import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
@@ -128,6 +130,7 @@ const config: SocketIoConfig = {
     AttendanceComponent,
     BottomSheetComponent,
     ReusableCardComponent,
+    ReusableCardPersonalComponent,
     ReusableCommentsComponent,
     ReusableCardBriefComponent,
     ReusableCardRequestComponent,

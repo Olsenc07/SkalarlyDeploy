@@ -1,4 +1,4 @@
-<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()" *ngFor="let info of infos">
   <mat-tab-group mat-align-tabs="center">
      <mat-tab label="Description">
       <div class="entire-page">
@@ -83,10 +83,11 @@
             <i class="material-icons _icon">badge</i>
 
             <mat-form-field>
-              <input matInput placeholder="Full Name" [formControl]="name" class="inputText"/>
+              <input matInput placeholder="Full Name" [formControl]="name"  class="inputText"/>
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
+              {{info.name}}
             </mat-form-field>
           </div>
 
@@ -108,10 +109,10 @@
       <div class="gender">
         <mat-form-field class="smaller" >
           <mat-label>Gender</mat-label>
-          <input matInput type='text' [formControl]="genderChoice" [matAutocomplete]="auto_">
+          <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
           <mat-autocomplete #auto_="matAutocomplete">
-            <mat-option *ngFor="let genderChoice of genders" [value]="genderChoice">
-              {{genderChoice}}
+            <mat-option *ngFor="let gender of genders" [value]="gender">
+              {{gender}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
@@ -119,9 +120,9 @@
           <div class="gender">
       <mat-form-field  class="smaller">
         <mat-label>Prefered Pronouns</mat-label>
-        <input matInput type='text' [formControl]="pronouns" [matAutocomplete]="auto"/>
+        <input matInput type='text' [formControl]="pronoun" [matAutocomplete]="auto"/>
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let pronoun of pronounS" [value]="pronoun">
+          <mat-option *ngFor="let pronoun of pronouns" [value]="pronoun">
             {{pronoun}}
           </mat-option>
         </mat-autocomplete>

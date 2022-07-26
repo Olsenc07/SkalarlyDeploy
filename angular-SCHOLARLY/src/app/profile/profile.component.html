@@ -464,15 +464,15 @@
         <mat-tab-group mat-align-tabs="center">
           <mat-tab label="activity" >
       
-            <div>
+       
             <div class="posts"  >
-              <app-card class="postCard" *ngIf="(userIsAuthenticated && (userId === posts.Creator))"> 
-              </app-card>
+              <app-card-personal class="postCard" > 
+              </app-card-personal>
             </div>
-            <div class="column1" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">
+            <!-- <div class="column1" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">
               <div class="row"> No Posts Made</div><span class="far fa-mug-hot  iconEmpty" ></span> 
-              </div>
-            </div>
+              </div> -->
+ 
 
           </mat-tab>
           <mat-tab label="showcase">
