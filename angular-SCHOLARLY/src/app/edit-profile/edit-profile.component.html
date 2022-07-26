@@ -83,9 +83,10 @@
             <i class="material-icons _icon">badge</i>
 
             <mat-form-field>
-              <label> {{info.name}}</label>
+              <mat-label>{{info.name}}</mat-label>
+
               <input matInput   
-               [formControl]="name"  class="inputText"/>
+               [formControl]="name" type="text" placeholder="Full name" class="inputText"/>
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
@@ -97,7 +98,7 @@
               <!-- Birthday picker -->
               <i class="material-icons _icon">cake</i>
               <mat-form-field >
-                <mat-label>When's your birthday?</mat-label>
+                <mat-label>{{info.birthday|date:"longDate"}}</mat-label>
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp></mat-datepicker>
@@ -110,7 +111,7 @@
            <!-- Gender -->
       <div class="gender">
         <mat-form-field class="smaller" >
-          <mat-label>Gender</mat-label>
+          <mat-label>{{info.gender}}</mat-label>
           <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
           <mat-autocomplete #auto_="matAutocomplete">
             <mat-option *ngFor="let gender of genders" [value]="gender">
@@ -121,7 +122,7 @@
       </div>
           <div class="gender">
       <mat-form-field  class="smaller">
-        <mat-label>Prefered Pronouns</mat-label>
+        <mat-label>{{info.pronouns}}</mat-label>
         <input matInput type='text' [formControl]="pronoun" [matAutocomplete]="auto"/>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let pronoun of pronouns" [value]="pronoun">
@@ -153,6 +154,8 @@
               </span>
 
               <mat-form-field>
+          <mat-label>{{info.major}}</mat-label>
+
                 <input class="major" matInput placeholder="Major" [formControl]="major" />
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
                   <mat-icon class="asthetic-adds">close</mat-icon>
@@ -165,6 +168,8 @@
                 looks_two
               </span>
               <mat-form-field>
+          <mat-label>{{info.minor}}</mat-label>
+
                 <input class="major" matInput placeholder="Minor" [formControl]="minor" />
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
                   <mat-icon class="asthetic-adds">close</mat-icon>
@@ -179,6 +184,8 @@
               emoji_events
             </span>
             <mat-form-field>
+          <mat-label>{{info.sport}}</mat-label>
+
               <input matInput placeholder="Do you play a sport?" [formControl]="sport" />
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearSport()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
@@ -190,6 +197,8 @@
               group
             </span>
             <mat-form-field>
+          <mat-label>{{info.club}}</mat-label>
+
               <input class="major" matInput placeholder="Are you apart of a club?" [formControl]="club" />
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearClub()">
                 <mat-icon class="asthetic-adds">close</mat-icon>

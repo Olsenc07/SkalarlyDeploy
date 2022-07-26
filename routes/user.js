@@ -542,20 +542,30 @@ router.post("/infoEd", checkAuth,
 
                     });
                 });
-                // const userName = await User.findOne({ email: req.body.email })
-                // console.log('first',userName)
-                // const userInfo = await UserInfo.findOne({username: userName.username})
-                // console.log('second',userInfo)
-             const person = await UserInfo.updateOne({name: req.body.name})
-                .then(result => {
-                    res.status(201).json({
-                        message: 'Info changed successfully',
-                        post: result
-                    });
-
-                })
-                console.log('fourth', req.body.gender)
-                console.log('fifth', person)
+             if(req.body.name){
+                     await UserInfo.updateOne({name: req.body.name})
+                 }
+            if(req.body.birthday){
+                await UserInfo.updateOne({birthday: req.body.birthday})
+                 }              
+            if(req.body.gender){
+                    await UserInfo.updateOne({gender: req.body.gender})
+                     }   
+             if(req.body.pronoun){
+                        await UserInfo.updateOne({pronouns: req.body.pronoun})
+                         }       
+            if(req.body.major){
+                            await UserInfo.updateOne({major: req.body.major})
+                             }    
+             if(req.body.minor){
+                                await UserInfo.updateOne({minor: req.body.minor})
+                                 }    
+             if(req.body.sport){
+                                await UserInfo.updateOne({sport: req.body.sport})
+                                     }    
+            if(req.body.club){
+                                     await UserInfo.updateOne({club: req.body.club})
+                                         }        
 
     });
 
