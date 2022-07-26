@@ -54,6 +54,7 @@
   justify-content: center;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 3%;
   // height: 100%;
 }
 @media (min-width: 1025px) {
@@ -398,6 +399,7 @@
   width: inherit;
   height: inherit;
   margin: 2% 0%;
+  max-height: 537px;
 }
 .icon {
   color: #0c46b8a1;
@@ -561,9 +563,11 @@ mat-tab-group {
   display: flex;
   flex-direction: column;
   // border-radius: 50%;
-  height: 100%;
+  height: 170px;
+  width: 170px;
+  border-radius: 50%;
   box-shadow: 0px 2px 3px;
-  max-width: 210px;
+  // max-width: 210px;
 }
 .pics {
   display: flex;

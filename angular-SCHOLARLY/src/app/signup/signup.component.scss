@@ -457,10 +457,12 @@
   justify-content: center;
 }
 .previewPic {
-  // border-radius: 50%;
   width: 100%;
   display: flex;
   border: groove;
+  height: 170px;
+  width: 170px;
+  border-radius: 50%;
 }
 .Preview {
   display: flex;
