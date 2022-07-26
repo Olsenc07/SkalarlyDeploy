@@ -507,7 +507,7 @@ router.post("/info", checkAuth,
 // edit info
 const pic_ = multer({ storage: storage })
 const pic_2_ = multer({ storage: storage_2 })
-router.patch("/infoEd", checkAuth,
+router.put("/infoEd", checkAuth,
     pic_.fields([{ name: 'profilePic' }, {
         name: 'showCase',
     }
