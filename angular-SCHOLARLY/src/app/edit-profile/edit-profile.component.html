@@ -83,11 +83,13 @@
             <i class="material-icons _icon">badge</i>
 
             <mat-form-field>
-              <input matInput placeholder="Full Name" [formControl]="name"  class="inputText"/>
+              <label> {{info.name}}</label>
+              <input matInput   
+               [formControl]="name"  class="inputText"/>
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
-              {{info.name}}
+              
             </mat-form-field>
           </div>
 
