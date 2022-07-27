@@ -145,7 +145,7 @@ export class EditProfileComponent implements OnInit {
   birthday: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
 
-  // I think each code input is a different form control, save into the array
+  // CodeCompleted 1-40X
   CodeCompleted: FormControl = new FormControl('');
   CodeCompleted2: FormControl = new FormControl('');
   CodeCompleted3: FormControl = new FormControl('');

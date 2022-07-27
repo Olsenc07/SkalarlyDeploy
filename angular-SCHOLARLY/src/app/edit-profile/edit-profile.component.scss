@@ -57,18 +57,14 @@
   font-family: 'Cinzel', serif;
   background-color: #18214b;
 }
-@media (min-width: 1024px) {
-  .c_r {
-    display: flex;
-    flex-direction: row;
-  }
-}
-@media (max-width: 1024px) {
+
   .c_r {
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
+  height: 350px;
   }
-}
+
 .centerD {
   display: flex;
   justify-content: center;
@@ -103,6 +99,8 @@
   display: flex;
   width: 100%;
   flex-direction: column;
+  margin-top: 2%;
+
 }
 @media (min-width: 1024px) {
   .column {
@@ -435,8 +433,9 @@
 .rowShow {
   display: flex;
   justify-content: space-evenly;
-  flex-direction: row;
+  flex-direction: column;
   margin: 3% 0%;
+  align-items: center;
 }
 .row {
   display: flex;
@@ -523,7 +522,8 @@
   .imageBox {
     display: flex;
     height: 100%;
-    max-width: 20%;
+    max-width: 40%;
+    margin-top: 3%;
   }
 }
 @media (max-width: 900px) {
@@ -531,6 +531,7 @@
     display: flex;
     height: 100%;
     max-width: 50%;
+    margin-top: 2%;
   }
 }
 .imageBox_ {
@@ -704,8 +705,7 @@
   justify-content: center;
   flex-direction: row;
   width: 100%;
-  margin-bottom: 2%;
-  margin-top: inherit;
+  margin-top: 2%;
 }
 
 // .input {
