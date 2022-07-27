@@ -46,6 +46,8 @@ import { mimeType } from '../post-page/mime-type.validator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 // import {Courses} from 'nikel';
 import { AuthService } from '../services/auth.service';
+import { ShowCaseService } from '../services/showCase.service';
+
 
 const moment = _rollupMoment || _moment;
 export const MY_FORMATS = {
@@ -356,6 +358,8 @@ export class SignupComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     private storeService: StoreService,
     public authService: AuthService,
+    public showCaseService: ShowCaseService,
+
     private snackBar: MatSnackBar // public courses: Courses
   ) {
     // this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
@@ -653,10 +657,15 @@ export class SignupComponent implements OnInit, OnDestroy {
 
       this.followers.value,
       this.followings.value,
-      this.form.get('profilePic').value,
-      this.form.get('showCase').value
+      this.form.get('profilePic').value
     );
     console.log('signup form', this.CodeCompleted2.value);
+  }
+
+  onSubmitShowCase(): any {
+    this.showCaseService.addShowCase(
+    this.form.get('showCase').value,
+    );
   }
 
   ngOnInit(): void {

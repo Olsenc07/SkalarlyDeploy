@@ -2,6 +2,8 @@ const express = require('express');
 const multer = require('multer');
 
 const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post');
+const showCase = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/showCases');
+
 const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 
 const router = express.Router();
@@ -32,6 +34,29 @@ const storage  = multer.diskStorage({
             // + '-' + Date.now() + '.' + ext);
     },
     
+});
+
+const storage_2 = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const isValid = MIME_TYPE_MAP[file.mimetype];
+        let error = new Error('Invalid mime type');
+        if (isValid) {
+            error = null;
+        }
+        cb(null, './backend/showCase');
+
+    },
+    filename: (req, file, cb) => {
+        if (file) {
+            const name = file.originalname.toLowerCase();
+            // const ext = MIME_TYPE_MAP[file.mimetype];
+            cb(null, name)
+            // + '-' + Date.now() + '.' + ext);
+        } else {
+            console.log('No array of pics')
+        }
+    },
+
 });
 
 // Post recieving
@@ -133,5 +158,75 @@ router.post('/comment', (req, res) =>{
 })
 
 
+// showCase recieving
+router.get("/showCases", (req, res, next) => {
+    showCase.find()
+    .then(documents => {
+    res.status(200).json({
+        message: 'showCases fetched succesfully!',
+        showCases: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching posts failed!'
+        });
+    });
+});
 
+const show = multer({ storage: storage_2})
+// showCase additions
+router.post("/showCases", 
+    checkAuth,
+    show.single('showCase'),
+    (req, res) => {
+    const url = req.protocol + '://' + req.get('host');
+
+if (req.file){
+
+        console.log('description',req.file)
+    // up.single('upload')
+    var ShowCase = new showCase({
+    
+        ShowCasePath: url + '/showCase/' + req.file.filename,
+        Creator: req.userData.userId
+    });
+}else{
+    var ShowCase = new showCase({
+    
+        ShowCasePath: url + '/showCase/' + req.file,
+        Creator: req.userData.userId
+    });
+ } ShowCase.save().then(createdPost => {
+        res.status(201).json({
+            message: 'showCase added successfully',
+            postId: {
+                id: createdPost._id,
+                ...createdPost
+            } 
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Creating a showCase failed!'
+        });
+    });
+});
+
+// showCase deleting
+router.delete("/showCases/:id", checkAuth, (req, res, next ) => {
+    console.log('id params', req.params.id )
+    showCase.deleteOne({_id: req.params.id}).then(result => {
+        if (result){
+        res.status(200).json({message: 'showCase deleted!!'});
+        } else {
+            res.status(401).json({message: 'Not authorized'});
+        }
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching showCases failed!'
+        });
+    });
+});
 module.exports = router;

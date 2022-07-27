@@ -252,7 +252,7 @@
                       <div class="textU"> Upload Profile Picture Required
                       </div>
                       <button class="garbage_icon" mat-icon-button *ngIf="form.get('profilePic').value " (click)="clearProfilePic()">
-                        <div class="material-icons">delete_forever</div>
+                        <div class="material-icons-two-tone">delete_forever</div>
                       </button>
                     </div>
 
@@ -391,9 +391,7 @@
           <h2 class="center-text">
             Showcase Yourself by Adding Your First Photo to Your Profile
           </h2>
-          <h2 class="center-text">
-            This can be the same as your profile picture
-          </h2>
+       
 
 
           <div class="rowP">
@@ -407,7 +405,7 @@
                 <div class="textU_"> Upload Photo</div>
                 <button mat-icon-button class="trash" [ngClass]="form.get('showCase').value ? 'show_' : 'hide' " color="primary"
                   (click)="clearPic()">
-                  <div class="material-icons">delete_forever</div>
+                  <div class="material-icons-two-tone">delete_forever</div>
                 </button>
 
               </div>
@@ -467,9 +465,9 @@
 
           <div class="createBtn">
             <button mat-raised-button class="cBtn" (click)="changeTab2R()">Back</button>
-            <!-- <div class="skip1">
+            <div class="skip1">
               <button mat-button class="cBtn" (click)="changeTab3()">Skip For Now</button>
-            </div> -->
+            </div>
             <button *ngIf="form.get('showCase').value" type="button" mat-raised-button class="cBtn"
               (click)="changeTab3()">Save</button>
           </div>
@@ -1728,7 +1726,7 @@
           <button mat-raised-button class="cBtn" *ngIf="!isLoading" (click)="changeTab3()">Back</button>
 
           <button type="button" mat-raised-button class="cBtn" (click)="onSubmit2()" 
-            *ngIf="!isLoading">Create</button>
+         (click)="onSubmitShowCase()"   *ngIf="!isLoading">Create</button>
           <mat-spinner *ngIf="isLoading"></mat-spinner>
         </div>
       </mat-tab>

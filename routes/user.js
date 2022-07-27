@@ -59,28 +59,7 @@ const storage = multer.diskStorage({
     },
 });
 
-const storage_2 = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const isValid = MIME_TYPE_MAP[file.mimetype];
-        let error = new Error('Invalid mime type');
-        if (isValid) {
-            error = null;
-        }
-        cb(null, './backend/showCase');
 
-    },
-    filename: (req, file, cb) => {
-        if (file) {
-            const name = file.originalname.toLowerCase();
-            // const ext = MIME_TYPE_MAP[file.mimetype];
-            cb(null, name)
-            // + '-' + Date.now() + '.' + ext);
-        } else {
-            console.log('No array of pics')
-        }
-    },
-
-});
 
 
 
@@ -323,12 +302,8 @@ router.post('/reset-password', async (req, res, next) => {
 
 // User info
 const pic = multer({ storage: storage })
-const pic_2 = multer({ storage: storage_2 })
 router.post("/info", checkAuth,
-    pic.fields([{ name: 'profilePic' }, {
-        name: 'showCase',
-    }
-    ]),
+    pic.single('profilePic'),
     // pic.single('profilePic'),
     // pic_2.single('showCase'), 
     (req, res, next) => {
@@ -405,8 +380,8 @@ router.post("/info", checkAuth,
             CodePursuing11: req.body.CodePursuing11,
             CodePursuing12: req.body.CodePursuing12,
 
-            ProfilePicPath: url + '/profilePics/' + req.files['profilePic'][0].filename,
-            ShowCasePath: url + '/profilePics/' + req.files['showCase'][0].filename,
+            ProfilePicPath: url + '/profilePics/' + req.file.filename,
+            // ShowCasePath: url + '/profilePics/' + req.files['showCase'][0].filename,
             followers: null,
             following: null,
             Creator: req.userData.userId,
@@ -506,7 +481,6 @@ router.post("/info", checkAuth,
 
 // edit info
 const pic_ = multer({ storage: storage })
-const pic_2_ = multer({ storage: storage_2 })
 router.post("/infoEd", checkAuth,
     pic_.fields([{ name: 'profilePic' }, {
         name: 'showCase',
@@ -641,12 +615,19 @@ router.post("/infoEd", checkAuth,
                                                                                                                                         }               if(req.body.CodeCompleted36){
                                                                                                                                             await UserInfo.updateOne({CodeCompleted36: req.body.CodeCompleted36})
                                                                                                                                                 }               if(req.body.CodeCompleted37){
-                                                                                                                                                    await UserInfo.updateOne({CodeComplete7: req.body.CodeCompleted27})
-                                                                                                                                                        }               if(req.body.CodeCompleted28){
-                                                                                                                                                            await UserInfo.updateOne({CodeCompleted28: req.body.CodeCompleted28})
-                                                                                                                                                                }               if(req.body.CodeCompleted29){
-                                                                                                                                                                    await UserInfo.updateOne({CodeCompleted29: req.body.CodeCompleted29})
+                                                                                                                                                    await UserInfo.updateOne({CodeCompleted37: req.body.CodeCompleted37})
+                                                                                                                                                        }               if(req.body.CodeCompleted38){
+                                                                                                                                                            await UserInfo.updateOne({CodeCompleted38: req.body.CodeCompleted38})
+                                                                                                                                                                }               if(req.body.CodeCompleted39){
+                                                                                                                                                                    await UserInfo.updateOne({CodeCompleted39: req.body.CodeCompleted39})
                                                                                                                                                                         }   
+                                                                                                                                                                        if(req.body.CodeCompleted40){
+                                                                                                                                                                            await UserInfo.updateOne({CodeCompleted40: req.body.CodeCompleted40})
+                                                                                                                                                                                }               if(req.body.CodeCompletedX){
+                                                                                                                                                                                    await UserInfo.updateOne({CodeCompletedX: req.body.CodeCompletedX})
+                                                                                                                                                                                        } 
+
+
                                                                                                                                                                         if(req.body.CodePursuing){
                                                                                                                                                                             await UserInfo.updateOne({CodePursuing: req.body.CodePursuing})
                                                                                                                                                                                 }    

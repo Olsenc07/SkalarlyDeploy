@@ -81,6 +81,7 @@ import { ReusableCardComponent } from './reusable-card/reusable-card.component';
 import { ReusableCardPersonalComponent } from './reusable-card/reusable-card.component';
 
 import { DeleteWarningComponent } from './reusable-card/reusable-card.component';
+import { ShowCaseComponent } from './reusable-card/reusable-card.component';
 import { ReusableCardBriefComponent } from './reusable-card-brief/reusable-card-brief.component';
 import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
 import { ReusableCardRecommendationComponent } from './reusable-card-request/reusable-card-request.component';
@@ -98,6 +99,7 @@ import { StoreService } from './services/store.service';
 import { AuthService } from './services/auth.service';
 import { ChatService } from './services/chat.service';
 import { CommentsService } from './services/comments.service';
+import { ShowCaseService } from './services/showCase.service';
 
 import { AuthInterceptor } from './signup/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
@@ -143,6 +145,7 @@ const config: SocketIoConfig = {
     AccountTextComponent,
     MessagingComponent,
     ServicesElementsComponent,
+    ShowCaseComponent,
     DeleteWarningComponent,
     ErrorComponent,
     LoginPopUpComponent,
@@ -201,6 +204,7 @@ const config: SocketIoConfig = {
     AuthService,
     ChatService,
     CommentsService,
+    ShowCaseService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],

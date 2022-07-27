@@ -6,9 +6,11 @@ import {
 } from '@angular/material/bottom-sheet';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { Post, PostService } from '../services/post.service';
+import { ShowCase } from '../services/showCase.service';
 import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { ShowCaseService } from '../services/showCase.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
@@ -32,6 +34,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
+
+  private showCases: ShowCase[] = [];
+  private infosSubShowCase: Subscription;
 
   // Sign up and edit profile connections
   profile = StoreService.profile$$;
@@ -61,7 +66,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   constructor(
     private bottomSheet: MatBottomSheet,
     public postService: PostService,
-    private authService: AuthService
+    private authService: AuthService,
+    private showCaseService: ShowCaseService
   ) {
     // profile$$.profile$$.subscribe((profile) => {
     //   // this.profile$$ = profile;
@@ -104,6 +110,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
+      });
+    // showCases
+    this.showCaseService.getShowCase();
+    this.infosSubShowCase = this.showCaseService
+      .getshowCaseUpdateListener()
+      .subscribe((infos: ShowCase[]) => {
+        this.showCases = infos;
+        this.isLoading = false;
+        console.log('infos', this.infos);
       });
     // this.Com = this.Com.map(code => code.toUpperCase()).sort();
     // this.Pur = this.Pur.map((code) => code.toUpperCase()).sort();

@@ -1,0 +1,8 @@
+const mongoose = require('mongoose');
+
+const showCaseSchema = mongoose.Schema({
+    ShowCasePath: { type: String},
+    Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
+});
+
+module.exports = mongoose.model('showCase', showCaseSchema);

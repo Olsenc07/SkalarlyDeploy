@@ -134,7 +134,7 @@ export class AuthService {
     followers: string,
     followings: string,
     profilePic?: File,
-    showCase?: File,
+    // showCase?: File,
     Creator?: string
   ): any {
     const authDataInfo: AuthDataInfo = {
@@ -203,7 +203,7 @@ export class AuthService {
       CodePursuing11,
       CodePursuing12,
       profilePic,
-      showCase,
+      // showCase,
       followers,
       followings,
     };
@@ -272,7 +272,7 @@ export class AuthService {
     userData.append('CodePursuing11', CodePursuing11);
     userData.append('CodePursuing12', CodePursuing12);
     userData.append('profilePic', profilePic);
-    userData.append('showCase', showCase);
+    // userData.append('showCase', showCase);
     userData.append('followers', followers);
     userData.append('followings', followings);
 
@@ -352,7 +352,7 @@ export class AuthService {
             followers,
             followings,
             ProfilePicPath: responseData.post.ProfilePicPath,
-            ShowCasePath: responseData.post.ShowCasePath,
+            // ShowCasePath: responseData.post.ShowCasePath,
             Creator,
           };
           this.router.navigate(['/search']);
@@ -435,7 +435,7 @@ export class AuthService {
     followers: string,
     followings: string,
     profilePic?: File,
-    showCase?: File
+    // showCase?: File
   ): any {
     const authDataInfo: AuthDataInfo = {
       name,
@@ -501,7 +501,7 @@ export class AuthService {
       CodePursuing11,
       CodePursuing12,
       profilePic,
-      showCase,
+      // showCase,
       followers,
       followings,
     };
@@ -571,7 +571,7 @@ export class AuthService {
     userData.append('CodePursuing11', CodePursuing11);
     userData.append('CodePursuing12', CodePursuing12);
     userData.append('profilePic', profilePic);
-    userData.append('showCase', showCase);
+    // userData.append('showCase', showCase);
     userData.append('followers', followers);
     userData.append('followings', followings);
 
@@ -649,7 +649,7 @@ export class AuthService {
             followers,
             followings,
             ProfilePicPath: responseData.post.ProfilePicPath,
-            ShowCasePath: responseData.post.ShowCasePath,
+            // ShowCasePath: responseData.post.ShowCasePath,
           };
           this.router.navigate(['/profile']);
           this.infos.push(post);
@@ -741,7 +741,7 @@ export class AuthService {
               CodePursuing12: info.CodePursuing12,
 
               ProfilePicPath: info.ProfilePicPath,
-              ShowCasePath: info.ShowCasePath,
+              // ShowCasePath: info.ShowCasePath,
               Followers: info.followers,
               Followings: info.followings,
               Creator: info.Creator,
@@ -831,7 +831,7 @@ export class AuthService {
               CodePursuing12: info.CodePursuing12,
 
               ProfilePicPath: info.ProfilePicPath,
-              ShowCasePath: info.ShowCasePath,
+              // ShowCasePath: info.ShowCasePath,
               Followers: info.followers,
               Followings: info.followings,
               Creator: info.Creator,

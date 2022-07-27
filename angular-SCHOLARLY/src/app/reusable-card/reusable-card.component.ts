@@ -5,11 +5,14 @@ import { AttendanceComponent } from '../main-pages/main-pages.component';
 import { TaggedComponent } from '../main-pages/main-pages.component';
 import { StoreService } from '../services/store.service';
 import { Post, PostService } from '../services/post.service';
+import { ShowCase } from '../services/showcase.service';
+
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { Subscription, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentsService } from '../services/comments.service';
+import { ShowCaseService } from '../services/showCase.service';
 
 export interface CommentInterface {
   id: string;
@@ -223,5 +226,35 @@ export class ReusableCommentsComponent implements OnInit {
     //   console.log('comments', comments);
     //   this.comments = comments;
     // });
+  }
+}
+@Component({
+  selector: 'app-showcase',
+  templateUrl: './showCase.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class ShowCaseComponent implements OnInit {
+  userId: string;
+  showCases: ShowCase[] = [];
+  private postsSub: Subscription;
+
+  constructor(
+    public showCase: ShowCaseService,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    this.showCase.getShowCase();
+    this.postsSub = this.showCase
+      .getshowCaseUpdateListener()
+      .subscribe((showcases: ShowCase[]) => {
+        this.showCases = showcases;
+      });
+  }
+
+  onDelete(postId: string): any {
+    this.showCase.deleteShowCase(postId);
+    console.log('chaz whats up homie g', postId);
   }
 }
