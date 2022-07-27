@@ -1,4 +1,4 @@
-<form   *ngFor="let info of infos">
+<form enctype="multipart/form-data"   *ngFor="let info of infos">
   <!-- (ngSubmit)="onSubmit()" [formGroup]="editForm" -->
   <mat-tab-group mat-align-tabs="center">
      <!-- <mat-tab label="Description">
@@ -356,9 +356,10 @@
                 <div class="material-icons Photo">
                   add_a_photo
 
-                  <input #fileInput id="fileInput" class="uploadD" accept="image/* video/*" type="file"
-                    (change)="imagePreview($event)" (change)="arrayAdd($event)" [formControl]="showCase" class="hide"
-                    multiple>
+                  <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
+                    (change)="imagePreview($event)"  [formControl]="showCase" name="showCase"  class="hide"
+                    >
+                    <!-- (change)="arrayAdd($event)" -->
                 </div>
               </button>
             </div>
@@ -1647,7 +1648,7 @@
         <!-- done button -->
         <div class="done">
           <button mat-raised-button color="primary" type="button" routerLink="/profile" class="button"
-            (click)="onSubmit()">
+            (click)="onSubmitShowCase()">
             Save
           </button>
         </div>

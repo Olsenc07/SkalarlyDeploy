@@ -48,7 +48,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
 
-
 const moment = _rollupMoment || _moment;
 export const MY_FORMATS = {
   parse: {
@@ -663,9 +662,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   onSubmitShowCase(): any {
-    this.showCaseService.addShowCase(
-    this.form.get('showCase').value,
-    );
+    this.showCaseService.addShowCase(this.form.get('showCase').value);
   }
 
   ngOnInit(): void {
@@ -676,10 +673,6 @@ export class SignupComponent implements OnInit, OnDestroy {
       });
     this.form = new FormGroup({
       profilePic: new FormControl(null, {
-        validators: [Validators.required],
-        asyncValidators: [mimeType],
-      }),
-      showCase: new FormControl(null, {
         validators: [Validators.required],
         asyncValidators: [mimeType],
       }),

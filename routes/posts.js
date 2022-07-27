@@ -192,6 +192,8 @@ if (req.file){
         Creator: req.userData.userId
     });
 }else{
+    console.log('description2',req.body.showCase)
+
     var ShowCase = new showCase({
     
         ShowCasePath: url + '/showCase/' + req.file,

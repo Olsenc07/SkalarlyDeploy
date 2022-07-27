@@ -30,6 +30,8 @@ import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
 import { AccountTextComponent } from '../signup/signup.component';
 import { AuthDataInfo } from '../signup/auth-data.model';
+import { ShowCaseService } from '../services/showCase.service';
+import { mimeType } from '../post-page/mime-type.validator';
 
 interface Gender {
   name: string;
@@ -68,6 +70,9 @@ export class EditProfileComponent implements OnInit {
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
   // Showcase
+  showCasePreview: any = '';
+  url: string[];
+
   i = 0;
   // Groups joined
   g = 0;
@@ -118,7 +123,6 @@ export class EditProfileComponent implements OnInit {
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
   @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
-  url: string[];
   cropImgPreview: any = '';
   imgChangeEvent: any = '';
   password: FormControl = new FormControl('', Validators.minLength(8));
@@ -144,6 +148,7 @@ export class EditProfileComponent implements OnInit {
   // removeShowCase: FormControl = new FormControl('');
   birthday: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
+  form: FormGroup;
 
   // CodeCompleted 1-40X
   CodeCompleted: FormControl = new FormControl('');
@@ -220,7 +225,7 @@ export class EditProfileComponent implements OnInit {
     CodeCompleted: this.CodeCompleted,
     CodePursuing: this.CodePursuing,
     // bio: this.bio,
-    showCase: this.showCase,
+    // showCase: this.showCase,
   });
   selectedIndex = 0;
 
@@ -239,6 +244,7 @@ export class EditProfileComponent implements OnInit {
     private http: HttpClient,
     private storeService: StoreService,
     public authService: AuthService,
+    public showCaseService: ShowCaseService,
     public postService: PostService
   ) {
     // this.bio.valueChanges.subscribe((v) => this.bioLength.next(v.length));
@@ -266,7 +272,7 @@ export class EditProfileComponent implements OnInit {
     return this.clicked;
   }
   uploadFile(): any {
-    document.getElementById('fileInput').click();
+    document.getElementById('showCase').click();
   }
   uploadFileP(): any {
     document.getElementById('fileInputP').click();
@@ -298,16 +304,19 @@ export class EditProfileComponent implements OnInit {
   // SnapShot
   // After its added to the list. Click save and
   // this becomes the updated array, sent back to the data base
-  arrayAdd(event: any): any {
-    this.list.unshift(this.showCase.value);
-    console.log(this.list);
-    return this.list;
-  }
+  // arrayAdd(event: any): any {
+  //   this.list.unshift(this.showCase.value);
+  //   console.log(this.list);
+  //   return this.list;
+  // }
 
+  // SnapShot
   imagePreview(event: any): void {
     if (event.target.files && event.target.files[0]) {
+      const file = (event.target as HTMLInputElement).files[0];
       const reader = new FileReader();
-
+      this.form.patchValue({ showCase: file });
+      this.form.get('showCase').updateValueAndValidity();
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
       reader.onload = (Event: any) => {
@@ -390,6 +399,12 @@ export class EditProfileComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.form = new FormGroup({
+      showCase: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+    });
   }
 
   clearMajor(): void {
@@ -420,7 +435,6 @@ export class EditProfileComponent implements OnInit {
 
   clearPic1(): void {
     this.showCase.setValue('');
-    this.list.shift();
     document.getElementById('firstP').removeAttribute('src');
   }
   // Groups joined
@@ -520,7 +534,7 @@ export class EditProfileComponent implements OnInit {
     this.authService.editUserInfo(
       this.email.value,
       this.password.value,
-      // this.username.value,
+      this.username.value,
       this.name.value,
       this.gender.value,
       this.birthday.value,
@@ -583,12 +597,16 @@ export class EditProfileComponent implements OnInit {
       this.CodePursuing10.value,
       this.CodePursuing11.value,
       this.CodePursuing12.value,
-      this.profilePic.value,
+      this.profilePic.value
       // this.cropImgPreview,
-      this.showCase.value
+      // this.showCase.value
     );
     console.log('name', this.name.value);
     // TODO: replace null with Profile object
     // this.storeService.setProfile(profile);
+  }
+  onSubmitShowCase(): any {
+    this.showCaseService.addShowCase(this.form.get('showCase').value);
+    console.log('sup brah', this.form.get('showCase').value);
   }
 }

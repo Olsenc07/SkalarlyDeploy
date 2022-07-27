@@ -307,7 +307,7 @@ router.post("/info", checkAuth,
     // pic.single('profilePic'),
     // pic_2.single('showCase'), 
     (req, res, next) => {
-        console.log('files log', req.files)
+        console.log('files log', req.file)
 
 
 
