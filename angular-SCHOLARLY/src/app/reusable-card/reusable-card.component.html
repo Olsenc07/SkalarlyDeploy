@@ -9,6 +9,12 @@
     <div class="column" >
       <div class="row">
         <div class="column">
+          <div class="trashCan">
+          <button *ngIf='userId === post.Creator' mat-icon-button
+            (click)='onDelete(post.id)'><span class="material-icons-two-tone">
+              delete_forever
+              </span></button>
+            </div>
           <div class="centerT" *ngIf="post.Title">
 
             <mat-card-title class="postTitle textSizeTit">
@@ -16,10 +22,7 @@
             </mat-card-title>
 
             
-            <button *ngIf='userId === post.Creator' mat-icon-button
-            (click)='openDialog()'><span class="material-icons-two-tone">
-              delete_forever
-              </span></button>
+          
 
           </div>
           <div class="row2">

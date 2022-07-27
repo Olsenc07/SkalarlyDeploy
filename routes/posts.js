@@ -109,9 +109,10 @@ if (req.file){
 });
 
 // Posts deleting
-router.delete("/api/posts/:id", checkAuth, (req, res, next ) => {
-    Post.deleteOne({_id: req.params.id, Creator: reg.userData.userId}).then(result => {
-        if (result.n > 0){
+router.delete("/:id", checkAuth, (req, res, next ) => {
+    console.log('id params', req.params.id )
+    Post.deleteOne({_id: req.params.id}).then(result => {
+        if (result){
         res.status(200).json({message: 'Post deleted!!'});
         } else {
             res.status(401).json({message: 'Not authorized'});

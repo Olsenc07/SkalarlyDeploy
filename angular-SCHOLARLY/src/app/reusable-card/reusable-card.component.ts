@@ -63,7 +63,10 @@ export class ReusableCardComponent implements OnInit {
   openDialog(): void {
     this.dialog.open(DeleteWarningComponent);
   }
-
+  onDelete(postId: string): any {
+    this.postService.deletePost(postId);
+    console.log('chaz whats up', postId);
+  }
   constructor(
     private bottomSheet: MatBottomSheet,
     private authService: AuthService,
@@ -137,10 +140,13 @@ export class ReusableCardPersonalComponent implements OnInit {
     this.bottomSheet.open(TaggedComponent);
   }
 
-  openDialog(): void {
-    this.dialog.open(DeleteWarningComponent);
+  // openDialog(postId): void {
+  //   this.dialog.open(DeleteWarningComponent);
+  // }
+  onDelete(postId: string): any {
+    this.postService.deletePost(postId);
+    // console.log('chaz whats up', postId);
   }
-
   constructor(
     private bottomSheet: MatBottomSheet,
     private authService: AuthService,
@@ -219,5 +225,3 @@ export class ReusableCommentsComponent implements OnInit {
     // });
   }
 }
-
-

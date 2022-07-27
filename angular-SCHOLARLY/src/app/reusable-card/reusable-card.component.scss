@@ -117,6 +117,11 @@
   // width: 100%;
   // justify-content: space-evenly;
 }
+.rowDelete{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .rowM {
   display: flex;
   flex-direction: row;
@@ -198,7 +203,7 @@
   // border: ridge;
   overflow-y: visible;
   height: fit-content;
-  justify-content: center;
+  // justify-content: center;
   // border-color: #ececee;
   text-align: center;
 }
@@ -259,6 +264,10 @@
 }
 .t {
   font-size: small;
+}
+.trashCan{
+  display: flex;
+  justify-content: flex-end;
 }
 .middle-card {
   display: flex;

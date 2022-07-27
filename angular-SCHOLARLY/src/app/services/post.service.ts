@@ -148,6 +148,7 @@ export class PostService {
   }
 
   deletePost(postId: string): any {
+    // console.log('hey chase postId', postId);
     this.http
       .delete('http://localhost:3000/api/posts/' + postId)
       .subscribe(() => {
