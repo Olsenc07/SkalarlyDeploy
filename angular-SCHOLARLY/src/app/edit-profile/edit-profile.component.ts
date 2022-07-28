@@ -72,6 +72,7 @@ export class EditProfileComponent implements OnInit {
   // Showcase
   showCasePreview: any = '';
   url: string[];
+  urlPP: string[];
 
   i = 0;
   // Groups joined
@@ -310,7 +311,22 @@ export class EditProfileComponent implements OnInit {
   //   console.log(this.list);
   //   return this.list;
   // }
+  // Profile Pic
+  imagePreviewPP(event: any): void {
+    if (event.target.files && event.target.files[0]) {
+      const file = (event.target as HTMLInputElement).files[0];
+      const reader = new FileReader();
+      this.form.patchValue({ profilePic: file });
+      this.form.get('profilePic').updateValueAndValidity();
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
 
+      reader.onload = (Event: any) => {
+        // called once readAsDataURL is completed
+        console.log(Event);
+        this.urlPP = Event.target.result;
+      };
+    }
+  }
   // SnapShot
   imagePreview(event: any): void {
     if (event.target.files && event.target.files[0]) {
@@ -604,12 +620,10 @@ export class EditProfileComponent implements OnInit {
       // this.cropImgPreview,
       // this.showCase.value
     );
-    console.log('profile', this.form.get('profilePic').value);
     // TODO: replace null with Profile object
     // this.storeService.setProfile(profile);
   }
   onSubmitShowCase(): any {
     this.showCaseService.addShowCase(this.form.get('showCase').value);
-    console.log('sup brah', this.form.get('showCase').value);
   }
 }

@@ -484,7 +484,6 @@ const pic_ = multer({ storage: storage })
 router.post("/infoEd", checkAuth,
     pic_.single('profilePic'),
     async (req, res, next) => {
-        console.log('third1', req.file)
         const url = req.protocol + '://' + req.get('host');
         let username
         let fetchedUser;
@@ -514,7 +513,6 @@ router.post("/infoEd", checkAuth,
 
                     });
                 });
-                console.log('sweet creature', req.file)
                 if(req.file){
                     await UserInfo.updateOne({ProfilePicPath: url + '/showCase/' + req.file.filename})
                 }

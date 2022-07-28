@@ -39,8 +39,8 @@
                       </div>
                     </button>
                     <input #fileInputP id="fileInputP" class="hide" accept="image/* video/*" type="file"
-                      (change)="imagePreview($event)" (change)="onImgChange($event)" [formControl]="profilePic"
-                      name="showCase">
+                      (change)="imagePreviewPP($event)" (change)="onImgChange($event)" [formControl]="profilePic"
+                      name="profilePic">
                   </div>
 
 
@@ -157,7 +157,7 @@
           
 
 
-    
+    <mat-divider></mat-divider>
          
          <div class="titleVal">Required validation to save changes for Personal and Academic!</div>
          
@@ -178,7 +178,7 @@
 
     
           <!-- done button -->
-          <div class="doneShowCase">
+          <div class="done">
             <button mat-raised-button color="primary" [disabled]="!deleteForm.valid" type="submit" routerLink="/profile" class="button"
               (click)="onSubmit()" >
               Save
@@ -1562,31 +1562,7 @@
       </div>
       </div>
 </div>
-<div class="titleVal">Required validation to save changes for Personal and Academic!</div>
-         
-<div class="login">
-  <mat-form-field class="loginWidth">
-    <input class="text_" matInput type="email" placeholder="Academic email" [formControl]="email" required>
-    <mat-error >Only U Of T emails are valid</mat-error>
-    </mat-form-field>
-  
-  </div>
-  <div class="login">
-    <mat-form-field class="loginWidth">
-    <input class="text_" matInput placeholder="Password" [formControl]="password" required>
-    </mat-form-field>
-  </div>
 
-
-
-
-<!-- done button -->
-<div class="doneShowCase">
-  <button mat-raised-button color="primary" [disabled]="!deleteForm.valid" type="submit" routerLink="/profile" class="button"
-    (click)="onSubmit()" >
-    Save
-  </button>
-</div>
     </mat-tab>
 
 <mat-tab label="Showcase">
