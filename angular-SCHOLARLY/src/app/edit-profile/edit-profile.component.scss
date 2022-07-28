@@ -277,7 +277,7 @@
   .groups-jj {
     display: flex;
     justify-content: center;
-    margin: 0% 32%;
+    // margin: 0% 32%;
     // border: ridge;
     box-sizing: border-box;
     flex-direction: column;
@@ -434,7 +434,7 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
-  margin: 3% 0%;
+  margin: 4% 0% 7% 0%;
   align-items: center;
 }
 .row {
@@ -517,6 +517,7 @@
   justify-content: center;
   color: #7e7171;
   font-family:  'Cinzel', serif;
+  margin-top: 3%;
 }
 @media (min-width: 900px) {
   .imageBox {
@@ -550,6 +551,7 @@
     font-family:  'Poppins', sans-serif;
     font-size: large;
     flex-direction: column;
+    margin-bottom: 5%;
   }
 }
 @media (max-width: 500px) {
@@ -627,6 +629,8 @@
 }
 .previewPic {
   border-radius: 50%;
+  box-shadow: 0 2px 3px;
+
 }
 .Photo {
   color: whitesmoke;
@@ -691,7 +695,7 @@
     justify-content: center;
     font-size: 70px;
     flex-direction: column;
-    color: #418bba;
+    // color: #418bba;
   }
 }
 @media (max-width: 900px) {

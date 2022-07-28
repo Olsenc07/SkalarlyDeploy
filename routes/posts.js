@@ -192,7 +192,7 @@ if (req.file){
         Creator: req.userData.userId
     });
 }else{
-    console.log('description2',req.body.showCase)
+    console.log('description2')
 
     var ShowCase = new showCase({
     

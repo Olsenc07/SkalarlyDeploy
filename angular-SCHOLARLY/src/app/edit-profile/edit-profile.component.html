@@ -1,7 +1,7 @@
 <form enctype="multipart/form-data"   *ngFor="let info of infos">
   <!-- (ngSubmit)="onSubmit()" [formGroup]="editForm" -->
   <mat-tab-group mat-align-tabs="center">
-     <!-- <mat-tab label="Description">
+     <mat-tab label="Personal">
       <div class="entire-page">
          <!-- <div class="rowT">
           <button mat-icon-button class="display1" routerLink="/profile">
@@ -12,22 +12,22 @@
 
          </div>   -->
 
-        <!-- lower box --
+        <!-- lower box -->
         <div class="middle">
 
 
 
           <!-- input pic & has this default pic before-->
-          <!-- Upload one profile pic --
+          <!-- Upload one profile pic -->
           <div class="personalizeLarge">
             <div class="centerR">
               <div class="pics">
-                <!-- Profile Pic is currently filled with pic being used rn --
+                <!-- Profile Pic is currently filled with pic being used rn -->
                 <div>
                   <div class="centerD">
                     <div class="text">Change Profile Picture</div>
                     <button mat-icon-button (click)="clearProfilePic()" *ngIf="cropImgPreview">
-                      <div class="material-icons">delete_forever</div>
+                      <div class="material-icons-two-tone">delete_forever</div>
                     </button>
                   </div>
 
@@ -60,7 +60,7 @@
 
             <div class="personalizeLarge" [ngClass]="profilePic.value ? 'show_' : 'hide' ">
               <div class="rowP">
-                <i class="material-icons _icon2">portrait</i>
+                <i class="material-icons-outlined _icon2">  arrow_right_alt</i>
               </div>
             </div>
 
@@ -68,7 +68,7 @@
               <div class="PreviewPic">
                 <h2 class="Preview">Image Preview</h2>
                 <div class="center">
-                  <!-- save this value for the form control --
+                  <!-- save this value for the form control -->
                   <img class="previewPic" id="ProfilePic" [src]="cropImgPreview" />
                 </div>
               </div>
@@ -84,22 +84,25 @@
             <i class="material-icons _icon">badge</i>
 
             <mat-form-field>
-              <mat-label>{{info.name}}</mat-label>
+              <mat-label *ngIf="info.name">{{info.name}}</mat-label>
+              <mat-label *ngIf="!info.name">Full name</mat-label>
 
               <input matInput   
                [formControl]="name" type="text" placeholder="Full name" class="inputText"/>
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
-              </button> --
+              </button> -->
               
             </mat-form-field>
           </div>
 
             <div class="input">
-              <!-- Birthday picker --
+              <!-- Birthday picker -->
               <i class="material-icons _icon">cake</i>
               <mat-form-field >
-                <mat-label>{{info.birthday|date:"longDate"}}</mat-label>
+                <mat-label *ngIf="info.birthday">{{info.birthday|date:"longDate"}}</mat-label>
+              <mat-label *ngIf="!info.birthday">When's your birthday?</mat-label>
+
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp></mat-datepicker>
@@ -109,10 +112,12 @@
 
 
 
-           <!-- Gender --
+           <!-- Gender -->
       <div class="gender">
         <mat-form-field class="smaller" >
-          <mat-label>{{info.gender}}</mat-label>
+          <mat-label *ngIf="info.gender">{{info.gender}}</mat-label>
+          <mat-label *ngIf="!info.gender">Gender</mat-label>
+
           <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
           <mat-autocomplete #auto_="matAutocomplete">
             <mat-option *ngFor="let gender of genders" [value]="gender">
@@ -123,7 +128,9 @@
       </div>
           <div class="gender">
       <mat-form-field  class="smaller">
-        <mat-label>{{info.pronouns}}</mat-label>
+        <mat-label *ngIf="info.pronoun">{{info.pronouns}}</mat-label>
+        <mat-label *ngIf="!info.pronoun">Prefered Pronouns</mat-label>
+
         <input matInput type='text' [formControl]="pronoun" [matAutocomplete]="auto"/>
         <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let pronoun of pronouns" [value]="pronoun">
@@ -147,70 +154,12 @@
             </div>
           </div> -->
 
-          <!-- Text Field Major/Minor --
-          <div class="major-layout">
-            <div class="input">
-              <span class="material-icons _icon">
-                looks_one
-              </span>
-
-              <mat-form-field>
-          <mat-label>{{info.major}}</mat-label>
-
-                <input class="major" matInput placeholder="Major" [formControl]="major" />
-                <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
-                  <mat-icon class="asthetic-adds">close</mat-icon>
-                </button> --
-              </mat-form-field>
-            </div>
-
-            <div class="input">
-              <span class="material-icons _icon">
-                looks_two
-              </span>
-              <mat-form-field>
-          <mat-label>{{info.minor}}</mat-label>
-
-                <input class="major" matInput placeholder="Minor" [formControl]="minor" />
-                <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
-                  <mat-icon class="asthetic-adds">close</mat-icon>
-                </button> --
-              </mat-form-field>
-            </div>
-          </div>
-
-          <!-- Text Field Sport/Club --
-          <div class="input">
-            <span class="material-icons _icon">
-              emoji_events
-            </span>
-            <mat-form-field>
-          <mat-label>{{info.sport}}</mat-label>
-
-              <input matInput placeholder="Do you play a sport?" [formControl]="sport" />
-              <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearSport()">
-                <mat-icon class="asthetic-adds">close</mat-icon>
-              </button> --
-            </mat-form-field>
-          </div>
-          <div class="input">
-            <span class="material-icons _icon">
-              group
-            </span>
-            <mat-form-field>
-          <mat-label>{{info.club}}</mat-label>
-
-              <input class="major" matInput placeholder="Are you apart of a club?" [formControl]="club" />
-              <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearClub()">
-                <mat-icon class="asthetic-adds">close</mat-icon>
-              </button> --
-            </mat-form-field>
-          </div>
+          
 
 
     
          
-         <div class="titleVal">Required Validation!</div>
+         <div class="titleVal">Required validation to save changes!</div>
          
           <div class="login">
             <mat-form-field class="loginWidth">
@@ -228,10 +177,10 @@
 
 
     
-          <!-- done button --
+          <!-- done button -->
           <div class="done">
             <button mat-raised-button color="primary" [disabled]="!deleteForm.valid" type="submit" routerLink="/profile" class="button"
-              (click)="onSubmit()">
+              (click)="onSubmit()" (click)="onSubmitShowCase()">
               Save
             </button>
           </div>
@@ -239,14 +188,72 @@
 
         </div> 
       </div> 
-    </mat-tab>  -->
-    <mat-tab label="Activity">
+    </mat-tab> 
+    <mat-tab label="Academic">
       <div class="entire-page">
 
         <div class="groupsjj_box">
         <div class="groups-jj ">
 
+<!-- Text Field Major/Minor -->
+<div class="major-layout">
+  <div class="input">
+    <span class="material-icons _icon">
+      looks_one
+    </span>
 
+    <mat-form-field>
+<mat-label *ngIf="info.major">{{info.major}}</mat-label>
+<mat-label *ngIf="!info.major">Major(s)</mat-label>
+      <input class="major" matInput placeholder="Major" [formControl]="major" />
+      <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
+        <mat-icon class="asthetic-adds">close</mat-icon>
+      </button> -->
+    </mat-form-field>
+  </div>
+
+  <div class="input">
+    <span class="material-icons _icon">
+      looks_two
+    </span>
+    <mat-form-field>
+<mat-label *ngIf="info.minor">{{info.minor}}</mat-label>
+<mat-label *ngIf="!info.minor">Minor(s)</mat-label>
+      <input class="major" matInput placeholder="Minor" [formControl]="minor" />
+      <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
+        <mat-icon class="asthetic-adds">close</mat-icon>
+      </button> -->
+    </mat-form-field>
+  </div>
+</div>
+
+<!-- Text Field Sport/Club -->
+<div class="input">
+  <span class="material-icons _icon">
+    emoji_events
+  </span>
+  <mat-form-field>
+<mat-label *ngIf="info.sport">{{info.sport}}</mat-label>
+<mat-label *ngIf="!info.sport">Do you play a sport?</mat-label>
+    <input matInput placeholder="Do you play a sport?" [formControl]="sport" />
+    <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearSport()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button> -->
+  </mat-form-field>
+</div>
+<div class="input">
+  <span class="material-icons _icon">
+    group
+  </span>
+  <mat-form-field>
+<mat-label *ngIf="info.club">{{info.club}}</mat-label>
+<mat-label *ngIf="!info.club">Are you apart of a club?</mat-label>
+    <input class="major" matInput placeholder="Are you apart of a club?" [formControl]="club" />
+    <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearClub()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button> -->
+  </mat-form-field>
+</div>
 
 
           <!-- <div class="row" [ngClass]="posts.length == 0 ? 'hide' : 'show' ">
@@ -254,8 +261,8 @@
               <div class="row">
 
 
-                <!-- button scrolls through posts and then user can delete what they wish --
-                <button mat-icon-button (click)=previousGroupCard()><i class="material-icons title1">arrow_circle_left</i>
+                <!-- button scrolls through posts and then user can delete what they wish -->
+                <!-- <button mat-icon-button (click)=previousGroupCard()><i class="material-icons title1">arrow_circle_left</i>
                 </button>
                 <div class="column1">Groups </div>
                 <button mat-icon-button (click)=nextGroupCard()> <i class="material-icons title1">arrow_circle_right</i>
@@ -279,7 +286,7 @@
               </div>
             </div>
 
-          </div> -->
+          </div> --> 
           <!-- <div class="rowBriefCardBox">
 <!--gList | slice:g:g+1; index as g  if want displayed one at a time --
 <div class="rowBriefCard" *ngFor="let group of posts | slice:g:g+1; index as g ">
@@ -339,102 +346,7 @@
           </div>
         </div> -->
 
-        <!-- Image Preview -->
-        <div class="rowShow">
-          <!-- <div class="column"> -->
-          <div *ngIf=" clicked == false">
-            <div class="row">
-              <div class="snapshot">Add Showcase</div>
-              <button mat-icon-button class="trash" [ngClass]="showCase.value ? 'show' : 'hide' " color="primary"
-                (click)="clearPic1()">
-                <div class="material-icons-two-tone">delete_forever</div>
-              </button>
-            </div>
-
-            <div class="rowP_">
-              <button class="cameraIcon" mat-fab  (click)="uploadFile()">
-                <div class="material-icons Photo">
-                  add_a_photo
-
-                  <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
-                    (change)="imagePreview($event)"  [formControl]="showCase" name="showCase"  class="hide"
-                    >
-                    <!-- (change)="arrayAdd($event)" -->
-                </div>
-              </button>
-            </div>
-          </div>
-
-
-
-
-          <div class="imageBox" [ngClass]="showCase.value ? 'show' : 'hide' ">
-            <img [src]="url" id="firstP" class="imagePreview" [ngClass]="showCase.value ? 'show' : 'hide' ">
-          </div>
-
-          <!-- <div [ngClass]="showCase.value ? 'hide' : 'show_' ">
-            <div class="snapshot"> Remove Showcase</div>
-            <div class="rowE">
-              <button class="rowE_" mat-fab (click)="deleteShowCase()" (click)="hideAdd()">
-                <i class="material-icons Photo">remove</i>
-              </button>
-            </div>
-          </div> -->
-
-
-          <!-- <div [ngClass]="clicked === true ? 'show' : 'hide' " class="columnPlain">
-            <div class="center">
-
-              <div class="row">
-                <!-- Counting badge --
-
-
-                <!-- button scrolls through posts and then user can delete what they wish --
-                <button mat-icon-button (click)=previousCard()><i class="material-icons title1">arrow_circle_left</i>
-                </button>
-
-
-
-                <div class="column1">Snap Shots</div>
-
-                <button mat-icon-button (click)=nextCard()> <i class="material-icons title1">arrow_circle_right</i>
-                </button>
-
-              </div>
-
-              <div class="row">
-                <div class="counter_">{{ i + 1 }}</div>
-                <div class="counter_">Of</div>
-                <div class="counter_">
-                  {{ list.length }}</div>
-
-                <div class="style" [ngClass]="list.length == 0 ? 'hide' : 'show' ">
-                  <button mat-icon-button (click)=deleteSnapShot() class="trash">
-                    <div class="material-icons">delete_forever</div>
-                  </button>
-                </div>
-
-
-
-              </div>
-
-
-            </div>
-
-
-            <div class="imageBox_">
-              <!-- <div class="counter" matBadgePosition="before" matBadge="{{ i + 1 }}"></div> --
-              <img class="img_" *ngFor="let show of list | slice:i:i+1; index as i" src="{{show}}" />
-              <!-- <div class="counter" matBadgePosition="after" matBadge="{{ list.length }}"></div> --
-            </div>
-
-
-
-          </div> -->
-
-
-          <!-- </div> -->
-        </div>
+       
 
         <mat-tab-group mat-align-tabs="center" class="c_r">
           <!-- Completed Course -->
@@ -1642,20 +1554,143 @@
 
   </mat-form-field>
 </div>
+
+<div class="titleVal">Required Validation!</div>
+         
+<div class="login">
+  <mat-form-field class="loginWidth">
+    <input class="text_" matInput type="email" placeholder="Academic email" [formControl]="email" required>
+    <mat-error >Only U Of T emails are valid</mat-error>
+    </mat-form-field>
+  
+  </div>
+  <div class="login">
+    <mat-form-field class="loginWidth">
+    <input class="text_" matInput placeholder="Password" [formControl]="password" required>
+    </mat-form-field>
+  </div>
+
+
+
+
+<!-- done button -->
+<div class="done">
+  <button mat-raised-button color="primary" [disabled]="!deleteForm.valid" type="submit" routerLink="/profile" class="button"
+    (click)="onSubmit()">
+    Save
+  </button>
+</div>
+
 </mat-tab>
         </mat-tab-group>
 
-        <!-- done button -->
-        <div class="done">
-          <button mat-raised-button color="primary" type="button" routerLink="/profile" class="button"
-            (click)="onSubmitShowCase()">
-            Save
-          </button>
-        </div>
+       
       </div>
       </div>
 </div>
     </mat-tab>
+
+<mat-tab label="Showcase">
+
+ <!-- Image Preview -->
+ <div class="rowShow">
+  <!-- <div class="column"> -->
+  <div *ngIf=" clicked == false">
+    <div class="row">
+      <div class="snapshot">Add Showcase</div>
+      <button mat-icon-button class="trash" [ngClass]="showCase.value ? 'show' : 'hide' " color="primary"
+        (click)="clearPic1()">
+        <div class="material-icons-two-tone">delete_forever</div>
+      </button>
+    </div>
+
+    <div class="rowP_">
+      <button class="cameraIcon" mat-fab  (click)="uploadFile()">
+        <div class="material-icons Photo">
+          add_a_photo
+
+          <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
+            (change)="imagePreview($event)"  [formControl]="showCase" name="showCase"  class="hide"
+            >
+            <!-- (change)="arrayAdd($event)" -->
+        </div>
+      </button>
+    </div>
+  </div>
+
+
+
+
+  <div class="imageBox" [ngClass]="showCase.value ? 'show' : 'hide' ">
+    <img [src]="url" id="firstP" class="imagePreview" [ngClass]="showCase.value ? 'show' : 'hide' ">
+  </div>
+
+  <!-- <div [ngClass]="showCase.value ? 'hide' : 'show_' ">
+    <div class="snapshot"> Remove Showcase</div>
+    <div class="rowE">
+      <button class="rowE_" mat-fab (click)="deleteShowCase()" (click)="hideAdd()">
+        <i class="material-icons Photo">remove</i>
+      </button>
+    </div>
+  </div> -->
+
+
+  <!-- <div [ngClass]="clicked === true ? 'show' : 'hide' " class="columnPlain">
+    <div class="center">
+
+      <div class="row">
+        <!-- Counting badge -->
+
+
+        <!-- button scrolls through posts and then user can delete what they wish --
+        <button mat-icon-button (click)=previousCard()><i class="material-icons title1">arrow_circle_left</i>
+        </button>
+
+
+
+        <div class="column1">Snap Shots</div>
+
+        <button mat-icon-button (click)=nextCard()> <i class="material-icons title1">arrow_circle_right</i>
+        </button>
+
+      </div>
+
+      <div class="row">
+        <div class="counter_">{{ i + 1 }}</div>
+        <div class="counter_">Of</div>
+        <div class="counter_">
+          {{ list.length }}</div>
+
+        <div class="style" [ngClass]="list.length == 0 ? 'hide' : 'show' ">
+          <button mat-icon-button (click)=deleteSnapShot() class="trash">
+            <div class="material-icons">delete_forever</div>
+          </button>
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+
+
+    <div class="imageBox_">
+      <!-- <div class="counter" matBadgePosition="before" matBadge="{{ i + 1 }}"></div> --
+      <img class="img_" *ngFor="let show of list | slice:i:i+1; index as i" src="{{show}}" />
+      <!-- <div class="counter" matBadgePosition="after" matBadge="{{ list.length }}"></div> --
+    </div>
+
+
+
+  </div> -->
+
+
+  <!-- </div> -->
+</div>
+
+</mat-tab>
+
 
   </mat-tab-group>
 

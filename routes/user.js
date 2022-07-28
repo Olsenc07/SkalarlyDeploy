@@ -482,12 +482,10 @@ router.post("/info", checkAuth,
 // edit info
 const pic_ = multer({ storage: storage })
 router.post("/infoEd", checkAuth,
-    pic_.fields([{ name: 'profilePic' }, {
-        name: 'showCase',
-    }
-    ]),
+    pic_.single('profilePic'),
     async (req, res, next) => {
-        console.log('third1', req.body.name)
+        console.log('third1', req.file)
+        const url = req.protocol + '://' + req.get('host');
         let username
         let fetchedUser;
        const userName2 = await User.findOne({ email: req.body.email })
@@ -516,6 +514,10 @@ router.post("/infoEd", checkAuth,
 
                     });
                 });
+                console.log('sweet creature', req.file)
+                if(req.file){
+                    await UserInfo.updateOne({ProfilePicPath: url + '/showCase/' + req.file.filename})
+                }
              if(req.body.name){
                      await UserInfo.updateOne({name: req.body.name})
                  }

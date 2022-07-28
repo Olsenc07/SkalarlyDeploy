@@ -132,6 +132,7 @@ export class EditProfileComponent implements OnInit {
     email: this.email,
     password: this.password,
   });
+
   // username isn't connected to any formcontrol its just so the profile interface is happy
   username: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
