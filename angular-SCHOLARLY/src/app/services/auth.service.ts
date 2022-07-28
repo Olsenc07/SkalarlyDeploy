@@ -432,9 +432,9 @@ export class AuthService {
     CodePursuing10: string,
     CodePursuing11: string,
     CodePursuing12: string,
-    followers: string,
-    followings: string,
-    profilePic?: File,
+    // followers: string,
+    // followings: string,
+    profilePic: File
     // showCase?: File
   ): any {
     const authDataInfo: AuthDataInfo = {
@@ -502,8 +502,8 @@ export class AuthService {
       CodePursuing12,
       profilePic,
       // showCase,
-      followers,
-      followings,
+      // followers,
+      // followings,
     };
     const userData = new FormData();
     userData.append('email', email);
@@ -572,8 +572,8 @@ export class AuthService {
     userData.append('CodePursuing12', CodePursuing12);
     userData.append('profilePic', profilePic);
     // userData.append('showCase', showCase);
-    userData.append('followers', followers);
-    userData.append('followings', followings);
+    // userData.append('followers', followers);
+    // userData.append('followings', followings);
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
@@ -646,8 +646,8 @@ export class AuthService {
             CodePursuing10,
             CodePursuing11,
             CodePursuing12,
-            followers,
-            followings,
+            // followers,
+            // followings,
             ProfilePicPath: responseData.post.ProfilePicPath,
             // ShowCasePath: responseData.post.ShowCasePath,
           };
@@ -660,6 +660,7 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    console.log('shroomizzzeee', profilePic);
   }
 
   getInfoUpdateListener(): any {

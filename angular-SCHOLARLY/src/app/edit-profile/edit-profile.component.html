@@ -40,7 +40,7 @@
                     </button>
                     <input #fileInputP id="fileInputP" class="hide" accept="image/* video/*" type="file"
                       (change)="imagePreview($event)" (change)="onImgChange($event)" [formControl]="profilePic"
-                      multiple>
+                      name="showCase">
                   </div>
 
 
@@ -159,7 +159,7 @@
 
     
          
-         <div class="titleVal">Required validation to save changes!</div>
+         <div class="titleVal">Required validation to save changes for Personal and Academic!</div>
          
           <div class="login">
             <mat-form-field class="loginWidth">
@@ -178,9 +178,9 @@
 
     
           <!-- done button -->
-          <div class="done">
+          <div class="doneShowCase">
             <button mat-raised-button color="primary" [disabled]="!deleteForm.valid" type="submit" routerLink="/profile" class="button"
-              (click)="onSubmit()" (click)="onSubmitShowCase()">
+              (click)="onSubmit()" >
               Save
             </button>
           </div>
@@ -1555,7 +1555,14 @@
   </mat-form-field>
 </div>
 
-<div class="titleVal">Required Validation!</div>
+</mat-tab>
+        </mat-tab-group>
+
+       
+      </div>
+      </div>
+</div>
+<div class="titleVal">Required validation to save changes for Personal and Academic!</div>
          
 <div class="login">
   <mat-form-field class="loginWidth">
@@ -1574,19 +1581,11 @@
 
 
 <!-- done button -->
-<div class="done">
+<div class="doneShowCase">
   <button mat-raised-button color="primary" [disabled]="!deleteForm.valid" type="submit" routerLink="/profile" class="button"
-    (click)="onSubmit()">
+    (click)="onSubmit()" >
     Save
   </button>
-</div>
-
-</mat-tab>
-        </mat-tab-group>
-
-       
-      </div>
-      </div>
 </div>
     </mat-tab>
 
@@ -1687,7 +1686,14 @@
 
 
   <!-- </div> -->
+  <div class="doneShowCase">
+    <button mat-raised-button color="primary" [disabled]="!showCase.value" type="submit" routerLink="/profile" class="button"
+      (click)="onSubmitShowCase()">
+     Add Showcase
+    </button>
+  </div>
 </div>
+<!-- done button -->
 
 </mat-tab>
 

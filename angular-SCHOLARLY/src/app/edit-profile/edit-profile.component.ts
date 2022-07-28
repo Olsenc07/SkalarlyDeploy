@@ -405,6 +405,10 @@ export class EditProfileComponent implements OnInit {
         validators: [Validators.required],
         asyncValidators: [mimeType],
       }),
+      profilePic: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
     });
   }
 
@@ -530,12 +534,10 @@ export class EditProfileComponent implements OnInit {
   onSubmit(): void {
     // console.log(this.editForm.value);
     // TODO: convert form fields to Profile
-    console.log('name', this.name.value);
-
     this.authService.editUserInfo(
       this.email.value,
       this.password.value,
-      this.username.value,
+      // this.username.value,
       this.name.value,
       this.gender.value,
       this.birthday.value,
@@ -598,11 +600,11 @@ export class EditProfileComponent implements OnInit {
       this.CodePursuing10.value,
       this.CodePursuing11.value,
       this.CodePursuing12.value,
-      this.profilePic.value
+      this.form.get('profilePic').value
       // this.cropImgPreview,
       // this.showCase.value
     );
-    console.log('name', this.name.value);
+    console.log('profile', this.form.get('profilePic').value);
     // TODO: replace null with Profile object
     // this.storeService.setProfile(profile);
   }
