@@ -676,6 +676,10 @@ export class SignupComponent implements OnInit, OnDestroy {
         validators: [Validators.required],
         asyncValidators: [mimeType],
       }),
+      showCase: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
     });
   }
 
