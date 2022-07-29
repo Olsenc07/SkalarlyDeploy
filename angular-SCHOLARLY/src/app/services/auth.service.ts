@@ -660,7 +660,6 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
-    console.log('shroomizzzeee', profilePic);
   }
 
   getInfoUpdateListener(): any {
