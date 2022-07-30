@@ -18,6 +18,8 @@ export class AuthService {
   private token: string;
   private tokenTimer: any;
   private userId: string;
+  private otheruserId: string;
+
   private authStatusListener = new Subject<boolean>();
 
   private infos: AuthDataInfo[] = [];

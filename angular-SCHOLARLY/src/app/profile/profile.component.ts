@@ -118,7 +118,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .subscribe((infos: ShowCase[]) => {
         this.showCases = infos;
         this.isLoading = false;
-        console.log('infos', this.infos);
+        console.log('showCases', this.showCases);
       });
     // this.Com = this.Com.map(code => code.toUpperCase()).sort();
     // this.Pur = this.Pur.map((code) => code.toUpperCase()).sort();
