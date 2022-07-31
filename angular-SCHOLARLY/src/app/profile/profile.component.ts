@@ -180,7 +180,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       const id = this.user;
       console.log(this.user, 'bunny');
       console.log(id, 'rabbit');
-
+      // Infos
       this.authService.getOtherInfo(id);
       this.infosSub = this.authService
         .getInfoUpdateListener()

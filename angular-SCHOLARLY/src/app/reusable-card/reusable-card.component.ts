@@ -13,6 +13,7 @@ import { Subscription, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentsService } from '../services/comments.service';
 import { ShowCaseService } from '../services/showCase.service';
+import { ActivatedRoute } from '@angular/router';
 
 export interface CommentInterface {
   id: string;
@@ -30,6 +31,7 @@ export interface CommentInterface {
 })
 export class ReusableCardComponent implements OnInit {
   isLoading = false;
+  user: string;
 
   // Filling with Post info from post.service
   posts: Post[] = [];
@@ -74,29 +76,35 @@ export class ReusableCardComponent implements OnInit {
     private bottomSheet: MatBottomSheet,
     private authService: AuthService,
     public postService: PostService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     this.isLoading = true;
-    // Posts
-    this.postService.getPosts();
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-        console.log('posts', this.posts);
-      });
-    // Info
-    this.authService.getInfo();
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        this.isLoading = false;
-      });
+    this.route.queryParams.subscribe((params) => {
+      this.user = params.id;
+      const id = this.user;
+
+      // Posts
+      this.postService.getOthersPosts(id);
+      this.postsSub = this.postService
+        .getPostUpdateListener()
+        .subscribe((posts: Post[]) => {
+          this.posts = posts;
+          this.isLoading = false;
+          console.log('posts yo homie', this.posts);
+        });
+      // Info
+      this.authService.getInfo();
+      this.infosSub = this.authService
+        .getInfoUpdateListener()
+        .subscribe((infos: AuthDataInfo[]) => {
+          this.infos = infos;
+          this.isLoading = false;
+        });
+    });
   }
 
   //   ngOnDestroy(): void{

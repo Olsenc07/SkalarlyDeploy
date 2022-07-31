@@ -157,7 +157,31 @@ router.post('/comment', (req, res) =>{
     }
 })
 
+// Get others posts
+router.get("/otherUsers", async(req, res) => {
+    console.log('BasketBall', req.query.id)
+        await Post.findOne({username: {$eq: req.query.id}})
+        .then(docs => {
+            console.log('night light', docs.Creator)
+            Post.find({Creator: docs.Creator})
+           .then(doc => {
+            console.log('doors unlock', doc)
+            res.status(200).json({
+                message: 'Infos fetched succesfully!',
+                posts: doc
+            });
+           })
+        })  
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching posts failed!'
+            });
+        });
 
+
+
+
+});
 // showCase recieving
 router.get("/showCases", (req, res, next) => {
     showCase.find()

@@ -465,9 +465,9 @@
           <mat-tab label="activity" >
       
        
-            <div class="posts"  >
+            <div class="posts" *ngFor="let post of posts" >
             
-              <app-card-personal class="postCard" > 
+              <app-card-personal class="postCard" *ngIf='(userId === post.Creator)'> 
               </app-card-personal>
             </div>
             <!-- <div class="column1" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">
@@ -480,7 +480,18 @@
             <!-- <div class="column1" *ngIf="!info.ShowCasePath">
               <div class="row"> No Showcases Added</div> <span class="fa-solid fa-hat-wizard iconEmpty" ></span>
             </div> -->
-            <app-showcase></app-showcase>
+   
+            <div class="showCase" *ngFor="let showCase of showCases">
+
+
+              <div class="column" *ngIf="(userId === showCase.Creator)">
+
+                <img class="img" src={{showCase.ShowCasePath}} />
+                <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
+
+              </div>
+
+            </div>
             <!-- <div class="showCase" *ngIf="info.ShowCasePath">
 
 

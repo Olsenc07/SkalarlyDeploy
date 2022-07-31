@@ -8,6 +8,9 @@ const nodemailer = require('nodemailer');
 const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
+const showCase = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/showCases');
+const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post');
+
 const UserNames = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/usernames');
 
 const user = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
@@ -680,9 +683,8 @@ router.get("/info", (req, res, next) => {
 // Get user
 router.get("/id", async(req, res) => {
     console.log('soccer', req.query.id)
-    const hey =  await UserInfo.find({username: {$eq: req.query.id}})
+ await UserInfo.find({username: {$eq: req.query.id}})
         .then(documents => {
-            console.log('day light', documents)
          
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
@@ -694,6 +696,27 @@ router.get("/id", async(req, res) => {
                 message: 'Fetching infos failed!'
             });
         });
+        // await UserInfo.findOne({username: {$eq: req.query.id}})
+        // .then(docs => {
+        //     console.log('day light', docs.Creator)
+        //     showCase.find({Creator: docs.Creator})
+        //    .then(doc => {
+        //     console.log('doc', doc)
+
+        //    })
+        // })
+        // await UserInfo.findOne({username: {$eq: req.query.id}})
+        // .then(docs => {
+        //     console.log('night light', docs.Creator)
+        //     Post.find({Creator: docs.Creator})
+        //    .then(doc => {
+        //     console.log('doors', doc)
+
+        //    })
+        // })
+
+
+
 
 });
 

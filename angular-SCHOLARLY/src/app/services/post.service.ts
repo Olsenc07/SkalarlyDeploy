@@ -64,6 +64,40 @@ export class PostService {
       });
   }
 
+  // getting others posts for their profiles display
+  getOthersPosts(id: string): any {
+    this.http
+      .get<{ message: string; posts: any }>(
+        'http://localhost:3000/api/posts/otherUsers',
+        { params: { id } }
+      )
+      .pipe(
+        map((postData) => {
+          return postData.posts.map((post) => {
+            return {
+              id: post._id,
+              Title: post.Title,
+              postDescription: post.postDescription,
+              postLocation: post.postLocation,
+              LocationEvent: post.LocationEvent,
+              time: post.time,
+              date: post.date,
+              gender: post.gender,
+              driver: post.driver,
+              paymentService: post.paymentService,
+              virtual: post.virtual,
+              event: post.event,
+              ImagePath: post.ImagePath,
+              Creator: post.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedPosts) => {
+        this.posts = transformedPosts;
+        this.postsUpdated.next([...this.posts]);
+      });
+  }
   getPostUpdateListener(): any {
     return this.postsUpdated.asObservable();
   }
