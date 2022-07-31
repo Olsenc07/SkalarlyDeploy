@@ -7,6 +7,7 @@ export interface UserNames {
   username: string;
   major: string;
   name: string;
+  Creator: string;
 }
 
 @Injectable({

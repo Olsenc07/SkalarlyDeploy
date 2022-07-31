@@ -20,7 +20,16 @@
   color: #928787;
 }
 
-
+.profilePic{
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+}
+.profilePic_{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
 .root-container {
   display: flex;
   flex-direction: column;
@@ -35,7 +44,7 @@
   display: flex;
   font-family: 'Poppins',sans-serif;
   color: #928787;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 $box-shadow-color: rgba(0, 0, 0, 0.25);
@@ -61,6 +70,9 @@ $box-shadow-color: rgba(0, 0, 0, 0.25);
     height: inherit;
     width: 53vw;
   }
+}
+.mat-divider{
+border-top-width: 2px;
 }
 .main-content {
   //padding: 72px 0px 16px;
@@ -192,7 +204,7 @@ h4:focus {
   justify-content: center;
   margin: 4%;
   font-size: larger;
-  color: #668ad2;
+  // color: #668ad2;
 }
 // transition to the left and have box initially invisible
 // .search-box__input:focus {

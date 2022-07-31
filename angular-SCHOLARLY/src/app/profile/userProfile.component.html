@@ -7,7 +7,7 @@
     <!-- input pic & has this default pic before-->
     <div class="left-side" >
 
-      <div class="profile-pic" *ngIf="(userId !== info.Creator)  && info.ProfilePicPath">
+      <div class="profile-pic" *ngIf="info.ProfilePicPath">
         <!-- need to get croppeded value -->
         <img class="pic" src="{{info.ProfilePicPath}}">
         <!-- <img *ngFor="let id of ids" src="{{id.profilePic}}" class="pic" /> -->
@@ -25,7 +25,7 @@
 
 
 
-            <div class="centerR_">
+            <div class="centerR_" *ngIf="info.username">
               <!-- This is hard coded once user signs up -->
 
               @{{info.username}}
@@ -44,7 +44,7 @@
 
 
           </div>
-          <div class="centerGD" *ngIf="info.gender || info.birthday  ">
+          <div class="centerGD" *ngIf=" info.gender || info.birthday  ">
             <div *ngIf="info.gender">
               <!--  Male -->
               {{ info.gender}}
@@ -67,7 +67,7 @@
         <!-- Major/Minor -->
         <div class="major-minor" *ngIf="info.major || info.minor ">
           <!-- *ngIf="major.value" -->
-          <div class="centerR" *ngIf="info.major ">
+          <div class="centerR" *ngIf=" info.major ">
             <!-- Major -->
             <i class="fas fa-star row_icon">
               <div class="large">
@@ -76,7 +76,7 @@
             </i>
 
           </div>
-          <div class="centerR" *ngIf="info.minor ">
+          <div class="centerR" *ngIf=" info.minor ">
             <!-- Minor -->
             <i class="far fa-star row_icon">
               <div class="large">
@@ -87,15 +87,15 @@
           </div>
 
         </div>
-        <mat-divider class="margin" *ngIf="info.major  || info.minor">
+        <mat-divider class="margin" *ngIf=" info.major  || info.minor">
         </mat-divider>
         <!-- Sport/Club -->
-        <div class="major-minor" *ngIf="info.sport  || info.club">
-          <div class=" centerR" *ngIf="info.sport ">
+        <div class="major-minor" *ngIf=" info.sport  || info.club">
+          <div class=" centerR" *ngIf=" info.sport ">
             <!-- Sport -->
             {{ info.sport}}
           </div>
-          <div class="centerR" *ngIf="info.club ">
+          <div class="centerR" *ngIf=" info.club ">
             <!-- Club -->
             {{ info.club}}
           </div>
@@ -103,7 +103,7 @@
         </div>
         <!-- [ngClass]="sport.value & club.value  ? 'hiden' : 'margin' " -->
         <mat-divider class="margin"></mat-divider>
-        <div class="friendsCount">
+        <div class="friendsCount" >
           <div class="centerR">
             Followers
             <!-- Counter -->
@@ -133,7 +133,7 @@
         <!-- No Bio -->
         <!-- Pronouns Full name & age   *ngIf="fullname.value " -->
         <div>
-          <div class="text-2">
+          <div class="text-2" >
 
 
             <div class="fName">
@@ -141,7 +141,7 @@
               <!-- Chase Olsen -->
               {{ info.pronouns}}
               {{ info.name}}
-              <mat-chip-list *ngIf='userIsAuthenticated && !userId === info.Creator' class="center_"
+              <mat-chip-list  class="center_"
                 aria-label="FollowBtn">
                 <mat-chip class="messageM" (click)="followClicked()">
 
@@ -190,7 +190,7 @@
             </div> -->
             <!-- </div>
         </div> -->
-        <mat-tab-group class="column_1">
+        <mat-tab-group class="column_1" >
           <!-- This ngIf to adjust to data stroage not hard code like Pur_
           but need to target observable length.. idk rn -->
           <!-- <div class="column1" *ngIf=" !((profile | async)?.CodeCompleted  || (profile | async)?.filteredCodesP)"> -->
@@ -200,7 +200,7 @@
           <!-- Hidden if neither are filled in -->
 
 
-          <mat-tab label="Completed Courses">
+          <mat-tab label="Completed Courses"  >
            <div class="titleC"> One Step Closer <i class="fas fa-graduation-cap"></i>
            </div>
             <div class="words1">
@@ -219,7 +219,7 @@
                 <!-- *ngFor="let list of Com" -->
                 <div class="list">
                   <mat-chip-list class="center__">
-<!-- disabled -->
+                    <!-- disabled -->
                     <mat-chip *ngIf="info.CodeCompleted" class="style" color="primary" selected >
                       <!-- {{list}} -->
                  
@@ -462,29 +462,29 @@
         <div class="activityM">
           <!-- Right side -->
           <!-- Recent Posts text  -->
-          <div class="right-side" [ngForOf]="posts">
+          <div class="right-side" >
             <mat-tab-group mat-align-tabs="center">
-              <mat-tab label="activity">
-                <div class="column1" *ngIf="!(userIsAuthenticated && (userId === posts.Creator))">
+              <mat-tab label="activity" >
+                <div class="column1" *ngIf=" (info.Creator !== posts.Creator) ">
                   <div class="row"> No Posts Made</div><span class="fa-duotone fa-hat-wizard centerR iconEmpty"></span>
                 </div>
                 <div class="posts" *ngIf="posts.length !== 0">
-                  <app-card class="postCard" *ngIf='userIsAuthenticated && (userId === posts.Creator)'>
+                  <app-card class="postCard" *ngIf='(info.Creator === posts.Creator)'>
                   </app-card>
                 </div>
               </mat-tab>
-              <mat-tab label="showcase">
-                <div class="column1" *ngIf="!info.ShowCasePath">
+              <mat-tab label="showcase" >
+                <!-- <div class="column1" *ngIf="!showCases.ShowCasePath">
                   <div class="row"> No Showcases Added</div> <span
                     class="fa-solid fa-hat-wizard centerR iconEmpty"></span>
-                </div>
+                </div> -->
 
-                <div class="showCase" *ngIf="info.ShowCasePath">
+                <div class="showCase" *ngFor="let showCase of showCases">
 
 
-                  <div class="column">
+                  <div class="column" *ngIf="(info.Creator === showCase.Creator)">
 
-                    <img class="img" src={{info.ShowCasePath}} />
+                    <img class="img" src={{showCase.ShowCasePath}} />
                     <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
 
                   </div>

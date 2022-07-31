@@ -14,7 +14,12 @@ import { PostsService, UserNames } from './services/posts.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  users: Array<UserNames> = [];
+  users: UserNames[] = [];
+
+  userId: string;
+  userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
+
   filteredOptions: Observable<string[]>;
   hasQuery = false;
   // socket.io
@@ -174,13 +179,16 @@ export class AppComponent implements OnInit {
       )
     );
 
-    //     if (window.screen.height < 400){
-    //   this.minHeight = false;
-    // }
-
-    //     if (window.screen.width < 320){
-    //   this.minwidth = false;
-    // }
+    // Validation
+    this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
+        // Can add *ngIf="userIsAuthenticated" to hide items
+      });
     if (window.screen.height < 768) {
       this.minHeight = false;
     }
@@ -209,16 +217,9 @@ export class AppComponent implements OnInit {
     });
   }
 
-  navigateToPage(): any {
-    const ID = (document.getElementById('userName') as HTMLInputElement).value;
-    console.log(ID);
-
-    // const params = new URLSearchParams(window.location.search);
-    // params.set('id', id);
-
-    this.router.navigate(['/profiles/:'], { queryParams: { id: ID } });
-    //  this.authService.getOtherInfo();
-    // this.authService.otherProfiles(id);
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
 
   onLogout(): void {

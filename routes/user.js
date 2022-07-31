@@ -680,9 +680,10 @@ router.get("/info", (req, res, next) => {
 // Get user
 router.get("/id", async(req, res) => {
     console.log('soccer', req.query.id)
-    hey =  await UserInfo.findOne({username: req.query.id})
+    const hey =  await UserInfo.find({username: {$eq: req.query.id}})
         .then(documents => {
-            console.log(documents)
+            console.log('day light', documents)
+         
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
                 infos: documents
@@ -693,7 +694,6 @@ router.get("/id", async(req, res) => {
                 message: 'Fetching infos failed!'
             });
         });
-
 
 });
 

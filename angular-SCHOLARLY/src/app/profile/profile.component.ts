@@ -146,15 +146,18 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     private bottomSheet: MatBottomSheet,
     public postService: PostService,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private showCaseService: ShowCaseService
   ) {}
   isLoading = false;
   user: string;
 
-  userId: string;
-  userIsAuthenticated = false;
+  private showCases: ShowCase[] = [];
+  private infosSubShowCase: Subscription;
+  // userId: string;
+  // userIsAuthenticated = false;
 
-  private authListenerSubs: Subscription;
+  // private authListenerSubs: Subscription;
 
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -209,6 +212,15 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     // this.Pur = this.Pur.map((code) => code.toUpperCase()).sort();
     // this.showCases = this.showCases.toString();
     // return this.Pur;
+    // showCases
+    this.showCaseService.getShowCase();
+    this.infosSubShowCase = this.showCaseService
+      .getshowCaseUpdateListener()
+      .subscribe((infos: ShowCase[]) => {
+        this.showCases = infos;
+        this.isLoading = false;
+        console.log('showCases', this.showCases);
+      });
   }
 
   ngOnDestroy(): any {

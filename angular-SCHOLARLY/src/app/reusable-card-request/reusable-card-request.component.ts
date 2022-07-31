@@ -91,17 +91,8 @@ export class ReusableCardRecommendationComponent implements OnInit {
       });
   }
 
-  //
-
-  navigateToPage(): any {
-    const ID = (document.getElementById('userName') as HTMLInputElement).value;
-    console.log('username', ID);
-
-    // const params = new URLSearchParams(window.location.search);
-    // params.set('id', id);
-
-    this.router.navigate(['/skalars/:'], { queryParams: { id: ID } });
-    //  this.authService.getOtherInfo();
-    // this.authService.otherProfiles(id);
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
 }
