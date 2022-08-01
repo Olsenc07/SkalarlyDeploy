@@ -93,14 +93,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         console.log('infos', this.infos);
       });
-    // Posts
-    this.postService.getPosts();
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-      });
+    // // Posts
+    // this.postService.getPosts();
+    // this.postsSub = this.postService
+    //   .getPostUpdateListener()
+    //   .subscribe((posts: Post[]) => {
+    //     this.posts = posts;
+    //     this.isLoading = false;
+    //   });
     // Validation
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -111,15 +111,15 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
-    // showCases
-    this.showCaseService.getShowCase();
-    this.infosSubShowCase = this.showCaseService
-      .getshowCaseUpdateListener()
-      .subscribe((infos: ShowCase[]) => {
-        this.showCases = infos;
-        this.isLoading = false;
-        console.log('showCases', this.showCases);
-      });
+    // // showCases
+    // this.showCaseService.getShowCasePersonal();
+    // this.infosSubShowCase = this.showCaseService
+    //   .getshowCaseUpdateListener()
+    //   .subscribe((infos: ShowCase[]) => {
+    //     this.showCases = infos;
+    //     this.isLoading = false;
+    //     console.log('showCases', this.showCases);
+    //   });
     // this.Com = this.Com.map(code => code.toUpperCase()).sort();
     // this.Pur = this.Pur.map((code) => code.toUpperCase()).sort();
 
@@ -187,15 +187,23 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         .subscribe((infos: AuthDataInfo[]) => {
           this.infos = infos;
         });
+      this.showCaseService.getShowCase(id);
+      this.infosSubShowCase = this.showCaseService
+        .getshowCaseUpdateListener()
+        .subscribe((infos: ShowCase[]) => {
+          this.showCases = infos;
+          this.isLoading = false;
+          console.log('showCases', this.showCases);
+        });
+      // // Posts
+      // this.postService.getOthersPosts(id);
+      // this.postsSub = this.postService
+      //   .getPostUpdateListener()
+      //   .subscribe((posts: Post[]) => {
+      //     this.posts = posts;
+      //     this.isLoading = false;
+      //   });
     });
-    // Posts
-    this.postService.getPosts();
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-      });
     // this.userId = this.authService.getUserId();
     // this.userIsAuthenticated = this.authService.getIsAuth();
     // this.authListenerSubs = this.authService
@@ -213,14 +221,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     // this.showCases = this.showCases.toString();
     // return this.Pur;
     // showCases
-    this.showCaseService.getShowCase();
-    this.infosSubShowCase = this.showCaseService
-      .getshowCaseUpdateListener()
-      .subscribe((infos: ShowCase[]) => {
-        this.showCases = infos;
-        this.isLoading = false;
-        console.log('showCases', this.showCases);
-      });
   }
 
   ngOnDestroy(): any {

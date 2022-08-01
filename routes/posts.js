@@ -3,6 +3,7 @@ const multer = require('multer');
 
 const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post');
 const showCase = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/showCases');
+const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
 
 const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 
@@ -75,6 +76,44 @@ router.get("", (req, res, next) => {
     });
 });
 
+// Post recieving Feed
+router.get("/feed", (req, res, next) => {
+     UserInfo.find()
+    .then(docs => {
+            console.log('doors unlock', docs)
+            res.status(200).json({
+                message: 'Posts personal fetched succesfully!',
+                infos: docs
+       });
+    })  
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching personal posts failed!'
+        });
+    });
+});
+
+// Post recieving personal
+router.get("/personal", async(req, res, next) => {
+    await UserInfo.findOne({Creator: {$eq: req.query.userId}})
+    .then(docs => {
+        console.log('night light', docs.Creator)
+        Post.find({Creator: docs.Creator})
+       .then(doc => {
+        console.log('doors unlock', doc)
+        res.status(200).json({
+            message: 'Posts personal fetched succesfully!',
+            posts: doc
+        });
+       })
+    })  
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching personal posts failed!'
+        });
+    });
+
+});
 const up = multer({ storage: storage})
 // Post additions
 router.post("", 
@@ -160,7 +199,7 @@ router.post('/comment', (req, res) =>{
 // Get others posts
 router.get("/otherUsers", async(req, res) => {
     console.log('BasketBall', req.query.id)
-        await Post.findOne({username: {$eq: req.query.id}})
+        await UserInfo.findOne({username: {$eq: req.query.id}})
         .then(docs => {
             console.log('night light', docs.Creator)
             Post.find({Creator: docs.Creator})
@@ -178,26 +217,69 @@ router.get("/otherUsers", async(req, res) => {
             });
         });
 
+});
 
-
+// Get others posts
+router.get("/otherUsersInfos", async(req, res) => {
+    console.log('BasketBall', req.query.id)
+        await UserInfo.findOne({username: {$eq: req.query.id}})
+        .then(docs => {
+            console.log('doors unlocked twice', docs)
+            res.status(200).json({
+                message: 'Infos fetched succesfully!',
+                infos: docs
+            });
+        })  
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching posts failed!'
+            });
+        });
 
 });
 // showCase recieving
-router.get("/showCases", (req, res, next) => {
-    showCase.find()
-    .then(documents => {
-    res.status(200).json({
-        message: 'showCases fetched succesfully!',
-        showCases: documents
+router.get("/showCases", async(req, res, next) => {
+    console.log('Sking', req.query.id)
+        await UserInfo.findOne({username: {$eq: req.query.id}})
+        .then(docs => {
+            console.log('midnight light', docs)
+            showCase.find({Creator: docs.Creator})
+           .then(doc => {
+            console.log('doors unlock', doc)
+            res.status(200).json({
+                message: 'Infos fetched succesfully!',
+                showCases: doc
+            });
+           })
+        })  
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching posts failed!'
+            });
         });
-    })
+});
+
+// showCase recieving Personal
+router.get("/showCasesPersonal", async(req, res, next) => {
+    console.log('Kicking rocks', req.query.userId)
+    await UserInfo.findOne({Creator: {$eq: req.query.userId}})
+    .then(docs => {
+        console.log('midnight light', docs)
+        showCase.find({Creator: docs.Creator})
+       .then(doc => {
+        console.log('doors unlock', doc)
+        res.status(200).json({
+            message: 'Infos fetched succesfully!',
+            showCases: doc
+        });
+       })
+    })  
     .catch(error => {
         res.status(500).json({
             message: 'Fetching posts failed!'
         });
     });
 });
-
 const show = multer({ storage: storage_2})
 // showCase additions
 router.post("/showCases", 

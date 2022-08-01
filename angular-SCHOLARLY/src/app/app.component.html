@@ -107,20 +107,23 @@
                   <!-- But select works -->
                   <!-- Wrap a button around this and add "click to view" -->
                  
-                  <mat-label class="place_holder">Skalar</mat-label>
+                  <mat-label class="place_holder">Skalar (s)</mat-label>
                   <mat-select  id="trigger" >
                     <!-- <div class="fas fa-user-graduate space_"></div> -->
                     <div class="title">Fellow Skalars</div>
                       <!-- <div class="fas fa-user-graduate space"></div> -->
                     <mat-divider></mat-divider>
                     <div *ngFor="let user of users">
-                    <mat-option class="options"  (click)="navigateToPage(info.username)" id="userName" >
+                    <mat-option class="options"  (click)="navigateToPage(user.username)" id="userName" >
                         <!-- <div class="row"> -->
                       <div *ngIf="user.Creator !== userId"  class="row" >
                         <div class="profilePic">
-                       <img class="profilePic_" src="{{user. ProfilePicPath}}"> 
+                       <img class="profilePic_" src="{{user.ProfilePicPath}}"> 
                       </div> 
+                      <div class="displayContents">
+                      <div>{{user.name}}</div>
                         <div>@{{user.username}}</div>
+                      </div>
                       </div>
          
                    

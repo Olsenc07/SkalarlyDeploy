@@ -1,8 +1,8 @@
 <div  *ngFor="let showCase of showCases">
 
-<div *ngIf="(userId == showCase.Creator) ">
+<div >
 
-    <div class="upload" *ngIf="showCase.ShowCasePath" >
+    <div class="upload" *ngIf="(userid == showCase.Creator) && showCase.ShowCasePath" >
         <div class="trashCan">
             <button *ngIf='userId === showCase.Creator' mat-icon-button
               (click)='onDelete(showCase.id)'><span class="material-icons-two-tone">

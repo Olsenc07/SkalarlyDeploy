@@ -18,10 +18,33 @@ export class ShowCaseService {
   private postsUpdated = new ReplaySubject<ShowCase[]>();
   constructor(private http: HttpClient) {}
 
-  getShowCase(): any {
+  getShowCasePersonal(userId: string): any {
     this.http
       .get<{ message: string; showCases: any }>(
-        'http://localhost:3000/api/posts/showCases'
+        'http://localhost:3000/api/posts/showCasesPersonal',
+        { params: { userId } }
+      )
+      .pipe(
+        map((showCaseData) => {
+          return showCaseData.showCases.map((showCase) => {
+            return {
+              id: showCase._id,
+              ShowCasePath: showCase.ShowCasePath,
+              Creator: showCase.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedshowCases) => {
+        this.showCases = transformedshowCases;
+        this.postsUpdated.next([...this.showCases]);
+      });
+  }
+  getShowCase(id: string): any {
+    this.http
+      .get<{ message: string; showCases: any }>(
+        'http://localhost:3000/api/posts/showCases',
+        { params: { id } }
       )
       .pipe(
         map((showCaseData) => {

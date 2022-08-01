@@ -465,24 +465,24 @@
           <div class="right-side" >
             <mat-tab-group mat-align-tabs="center">
               <mat-tab label="activity" >
-                <div class="column1" *ngIf=" (info.Creator !== posts.Creator) ">
+                <!-- <div class="column1" *ngIf=" posts.length == 0 ">
                   <div class="row"> No Posts Made</div><span class="fa-duotone fa-hat-wizard centerR iconEmpty"></span>
-                </div>
-                <div class="posts" *ngIf="posts.length !== 0">
-                  <app-card class="postCard" *ngIf='(info.Creator === posts.Creator)'>
+                </div> -->
+                <div class="posts" >
+                  <app-card class="postCard" >
                   </app-card>
                 </div>
               </mat-tab>
-              <mat-tab label="showcase" >
-                <!-- <div class="column1" *ngIf="!showCases.ShowCasePath">
+              <mat-tab label="showcase"  >
+                <!-- <div class="column1"  *ngIf="!showCase.ShowCasePath">
                   <div class="row"> No Showcases Added</div> <span
                     class="fa-solid fa-hat-wizard centerR iconEmpty"></span>
-                </div> -->
+                </div>  -->
 
-                <div class="showCase" *ngFor="let showCase of showCases">
+                 <div class="showCase" *ngFor="let showCase of showCases">
 
 
-                  <div class="column" *ngIf="(info.Creator === showCase.Creator)">
+                  <div class="column" >
 
                     <img class="img" src={{showCase.ShowCasePath}} />
                     <!-- *ngFor="let showCase of showCases {{ShowCase}} -->

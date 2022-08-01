@@ -13,7 +13,7 @@ import { Subscription, Subject } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentsService } from '../services/comments.service';
 import { ShowCaseService } from '../services/showCase.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface CommentInterface {
   id: string;
@@ -94,10 +94,10 @@ export class ReusableCardComponent implements OnInit {
         .subscribe((posts: Post[]) => {
           this.posts = posts;
           this.isLoading = false;
-          console.log('posts yo homie', this.posts);
+          console.log('posts yo', this.posts);
         });
       // Info
-      this.authService.getInfo();
+      this.postService.getOtherInfo(id);
       this.infosSub = this.authService
         .getInfoUpdateListener()
         .subscribe((infos: AuthDataInfo[]) => {
@@ -169,7 +169,7 @@ export class ReusableCardPersonalComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.isLoading = true;
     // Posts
-    this.postService.getPosts();
+    this.postService.getPostsPersonal(this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -178,7 +178,7 @@ export class ReusableCardPersonalComponent implements OnInit {
         console.log('posts', this.posts);
       });
     // Info
-    this.authService.getInfo();
+    this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
@@ -245,16 +245,18 @@ export class ShowCaseComponent implements OnInit {
   userId: string;
   showCases: ShowCase[] = [];
   private postsSub: Subscription;
+  user: string;
 
   constructor(
-    public showCase: ShowCaseService,
-    private authService: AuthService
+    public showCaseService: ShowCaseService,
+    private authService: AuthService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
-    this.showCase.getShowCase();
-    this.postsSub = this.showCase
+    this.showCaseService.getShowCasePersonal(this.userId);
+    this.postsSub = this.showCaseService
       .getshowCaseUpdateListener()
       .subscribe((showcases: ShowCase[]) => {
         this.showCases = showcases;
@@ -262,7 +264,54 @@ export class ShowCaseComponent implements OnInit {
   }
 
   onDelete(postId: string): any {
-    this.showCase.deleteShowCase(postId);
+    this.showCaseService.deleteShowCase(postId);
     console.log('chaz whats up homie g', postId);
+  }
+}
+@Component({
+  selector: 'app-card-feed',
+  templateUrl: './reusable-cardFeed.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class CardFeedComponent implements OnInit {
+  isLoading = false;
+
+  userId: string;
+  posts: Post[] = [];
+  private postsSub: Subscription;
+
+  infos: AuthDataInfo[] = [];
+  private infosSub: Subscription;
+
+  constructor(
+    public showCaseService: ShowCaseService,
+    private authService: AuthService,
+    public postService: PostService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    // Posts
+    this.postService.getPostsFeed();
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+    // Info
+    this.authService.getInfo();
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        this.isLoading = false;
+      });
+  }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
 }

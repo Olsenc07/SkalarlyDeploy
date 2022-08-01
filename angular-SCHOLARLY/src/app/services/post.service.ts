@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ReplaySubject, Subject } from 'rxjs';
+import { AuthData, AuthDataInfo } from '../signup/auth-data.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
@@ -33,6 +34,9 @@ export class PostService {
   private postsUpdated = new ReplaySubject<Post[]>();
   constructor(private http: HttpClient) {}
 
+  private infos: AuthDataInfo[] = [];
+  private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
+
   getPosts(): any {
     this.http
       .get<{ message: string; posts: any }>('http://localhost:3000/api/posts')
@@ -63,7 +67,71 @@ export class PostService {
         this.postsUpdated.next([...this.posts]);
       });
   }
-
+  getPostsFeed(): any {
+    this.http
+      .get<{ message: string; posts: any }>(
+        'http://localhost:3000/api/posts/feed'
+      )
+      .pipe(
+        map((postData) => {
+          return postData.posts.map((post) => {
+            return {
+              id: post._id,
+              Title: post.Title,
+              postDescription: post.postDescription,
+              postLocation: post.postLocation,
+              LocationEvent: post.LocationEvent,
+              time: post.time,
+              date: post.date,
+              gender: post.gender,
+              driver: post.driver,
+              paymentService: post.paymentService,
+              virtual: post.virtual,
+              event: post.event,
+              ImagePath: post.ImagePath,
+              Creator: post.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedPosts) => {
+        this.posts = transformedPosts;
+        this.postsUpdated.next([...this.posts]);
+      });
+  }
+  getPostsPersonal(userId: string): any {
+    this.http
+      .get<{ message: string; posts: any }>(
+        'http://localhost:3000/api/posts/personal',
+        { params: { userId } }
+      )
+      .pipe(
+        map((postData) => {
+          return postData.posts.map((post) => {
+            return {
+              id: post._id,
+              Title: post.Title,
+              postDescription: post.postDescription,
+              postLocation: post.postLocation,
+              LocationEvent: post.LocationEvent,
+              time: post.time,
+              date: post.date,
+              gender: post.gender,
+              driver: post.driver,
+              paymentService: post.paymentService,
+              virtual: post.virtual,
+              event: post.event,
+              ImagePath: post.ImagePath,
+              Creator: post.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedPosts) => {
+        this.posts = transformedPosts;
+        this.postsUpdated.next([...this.posts]);
+      });
+  }
   // getting others posts for their profiles display
   getOthersPosts(id: string): any {
     this.http
@@ -96,6 +164,30 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
+      });
+  }
+  getOtherInfo(id: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'http://localhost:3000/api/posts/otherUsersInfos',
+        { params: { id } }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
       });
   }
   getPostUpdateListener(): any {

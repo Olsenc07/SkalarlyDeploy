@@ -4,29 +4,25 @@
   
   <!-- Posts box which should be a scroll view -->
   <div class="feed" *ngFor="let post of posts" >
-    <mat-card class="specifics-fill" *ngIf="(userId == post.Creator) && !isLoading">
+    <mat-card class="specifics-fill" *ngIf="(userId !== post.Creator) && !isLoading">
       <!-- Profile Pic -->
       <div class="column" >
         <div class="row">
           <div class="column">
-            <div class="trashCan">
-              <button *ngIf='userId === post.Creator' mat-icon-button
-                (click)='onDelete(post.id)'><span class="material-icons-two-tone">
-                  delete_forever
-                  </span></button>
-                </div>
             <div class="centerT" *ngIf="post.Title">
   
               <mat-card-title class="postTitle textSizeTit">
                 {{ post.Title}}
               </mat-card-title>
   
+              
+            
+  
             </div>
-           
             <div class="row2">
-              <div class="column" *ngFor="let info of infos">
+              <div class="column" *ngFor="let info of infos" >
                 <!-- *ngIf="posts.length > 0" -->
-                <div class="row-" >
+                 <div class="row-" *ngIf="(post.Creator === info.Creator)">
                   <div class="profilePic" >
                     <!-- need to get croppeded value -->
                     <img class="pic" src="{{info.ProfilePicPath}}">
@@ -42,7 +38,7 @@
                     <div class="nameTitle">
                       <!-- Button directs to that users profile -->
                       <button mat-button>
-                        <div class="userName  link">
+                        <div class="userName link" id="userName" (click)="navigateToPage(info.username)">
                           <!-- Olsen07 -->
                           @{{info.username}}
                         </div>
@@ -51,7 +47,7 @@
                   </div>
   
   
-                </div>
+                </div> 
   
   
                 <!-- <div class="row-" *ngIf="!(info.ProfilePicPath)">

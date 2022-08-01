@@ -679,7 +679,25 @@ router.get("/info", (req, res, next) => {
         });
 });
 
- 
+
+// userInfo recieving
+router.get("/infoPersonal", async(req, res, next) => {
+    console.log('care bear', req.query.userId )
+     await UserInfo.find({Creator: {$eq: req.query.userId}})
+    .then(docs => {
+            console.log('doors unlock all night', docs)
+            res.status(200).json({
+                message: 'Posts personal fetched succesfully!',
+                infos: docs
+       });
+    })  
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching personal infos failed!'
+        });
+    });
+}); 
+
 // Get user
 router.get("/id", async(req, res) => {
     console.log('soccer', req.query.id)
