@@ -265,7 +265,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
     await UserInfo.findOne({Creator: {$eq: req.query.userId}})
     .then(docs => {
         console.log('midnight light', docs)
-        showCase.find({Creator: docs.Creator})
+        showCase.findOne({Creator: docs.Creator})
        .then(doc => {
         console.log('doors unlock', doc)
         res.status(200).json({
