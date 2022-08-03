@@ -153,6 +153,46 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Username: post.Username,
+              Name: post.Name,
+              ProfilePicPath: post.ProfilePicPath,
+              Title: post.Title,
+              postDescription: post.postDescription,
+              postLocation: post.postLocation,
+              LocationEvent: post.LocationEvent,
+              time: post.time,
+              date: post.date,
+              gender: post.gender,
+              driver: post.driver,
+              paymentService: post.paymentService,
+              virtual: post.virtual,
+              event: post.event,
+              ImagePath: post.ImagePath,
+              Creator: post.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedPosts) => {
+        this.posts = transformedPosts;
+        this.postsUpdated.next([...this.posts]);
+      });
+  }
+  // getting main page posts
+  getPostsMainPage(category: string): any {
+    this.http
+      .get<{ message: string; posts: any }>(
+        'http://localhost:3000/api/posts/mainPage',
+        { params: { category } }
+      )
+      .pipe(
+        map((postData) => {
+          return postData.posts.map((post) => {
+            return {
+              id: post._id,
+              Username: post.Username,
+              Name: post.Name,
+              ProfilePicPath: post.ProfilePicPath,
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,

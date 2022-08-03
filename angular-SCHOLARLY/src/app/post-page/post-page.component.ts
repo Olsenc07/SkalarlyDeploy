@@ -79,7 +79,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public searchOptions: SearchOption[];
 
   isLoading = false;
-  private postId: string;
+
   private authStatusSub: Subscription;
 
   userId: string;

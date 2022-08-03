@@ -354,3 +354,44 @@ export class CardInfoFeedComponent implements OnInit {
     //   });
   }
 }
+
+@Component({
+  selector: 'app-card-main-page',
+  templateUrl: './reusable-cardMainPage.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class CardInfoMainPageComponent implements OnInit {
+  category: string;
+  userId: string;
+  isLoading = false;
+  posts: Post[] = [];
+  private postsSub: Subscription;
+
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    public postService: PostService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+
+    this.route.queryParams.subscribe((params) => {
+      console.log('params main page', params);
+      this.category = params?.category;
+
+      this.postService.getPostsMainPage(this.category);
+      this.postsSub = this.postService
+        .getPostUpdateListener()
+        .subscribe((posts: Post[]) => {
+          this.posts = posts;
+          this.isLoading = false;
+        });
+    });
+  }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+}

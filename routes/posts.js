@@ -120,9 +120,6 @@ router.post("",
         console.log('userInfo', req.query.userId)
     const url = req.protocol + '://' + req.get('host');
 
-    
-
-
     UserInfo.findOne({Creator:req.query.userId })
     .then(documents => {
         if (req.file){
@@ -228,6 +225,19 @@ router.get("/otherUsers", async(req, res) => {
             });
         });
 
+});
+// Get main page posts
+router.get("/mainPage", async(req, res) => {
+    console.log('main page', req.query.category)
+    
+         await Post.find({postLocation: req.query.category})
+           .then(doc => {
+            console.log('doors unlock', doc)
+            res.status(200).json({
+                message: 'Infos fetched succesfully!',
+                posts: doc
+            });
+           });
 });
 
 // Get others posts

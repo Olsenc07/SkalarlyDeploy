@@ -8,9 +8,6 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 
-
-
-
 interface SearchOption {
   value: string;
   name: string;
@@ -25,8 +22,6 @@ export class SearchComponent implements OnInit {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
-
-  storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;
 
@@ -37,9 +32,7 @@ export class SearchComponent implements OnInit {
 
   isLoading = false;
 
-
   postLocationMain: FormControl = new FormControl('');
-
 
   search: FormControl = new FormControl('');
   searchForm = new FormGroup({
@@ -52,13 +45,9 @@ export class SearchComponent implements OnInit {
   public searchOptions: SearchOption[];
   main = '';
 
-
   public opt = 0;
   displaySpecificSearch(): void {
     this.opt++;
-  }
-  onPostsAdded(post): any{
-    this.storedPosts.push(post);
   }
 
   constructor(
@@ -68,47 +57,46 @@ export class SearchComponent implements OnInit {
     public route: ActivatedRoute,
     public postService: PostService,
     private authService: AuthService
-  ) { }
+  ) {}
 
   ngOnInit() {
-        this.isLoading = true;
-        this.searchOptions = this.searchListService.getSearchOptions();
-        this.postService.getPosts();
-        this.postsSub = this.postService.getPostUpdateListener()
+    this.isLoading = true;
+    this.searchOptions = this.searchListService.getSearchOptions();
+    // posts
+    this.postService.getPosts();
+    this.postsSub = this.postService
+      .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
-      this.posts = posts;
-      this.isLoading = false;
-    });
+        this.posts = posts;
+        this.isLoading = false;
+      });
+    // userId
+    this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
-        this.userIsAuthenticated = this.authService.getIsAuth();
-        this.authListenerSubs = this.authService
-            .getAuthStatusListener()
-            .subscribe(isAuthenticated => {
-              this.userIsAuthenticated = isAuthenticated;
-              this.userId = this.authService.getUserId();
-              console.log(this.userId);
-            });
-                //    Info
-        this.authService.getInfo();
-        this.infosSub = this.authService.getInfoUpdateListener()
-     .subscribe((infos: AuthDataInfo[]) => {
-     this.infos = infos;
-   });
+        console.log(this.userId);
+      });
+    //    Info
+    this.authService.getInfo();
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+      });
   }
-
-
 
   onSearchSelection(value: string): void {
     this.specificOptions = this.searchListService.onSearchSelection(value);
-
   }
-
 
   navigateToPage(value: string): void {
-    this.router.navigate(['/main'], { queryParams: { category: value } });
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log(value);
   }
-
 
   clearSearch(): void {
     this.search.setValue('');

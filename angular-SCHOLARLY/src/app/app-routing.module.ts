@@ -63,7 +63,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'groups', component: GroupChatsComponent, canActivate: [AuthGuard] },
-  { path: 'main', component: MainPagesComponent },
+  { path: 'main/:category', component: MainPagesComponent },
   { path: 'messages', component: MessagingComponent, canActivate: [AuthGuard] },
   // Directs to search page if user is logged in.
   // Directs to log in page if user isn't logged in.

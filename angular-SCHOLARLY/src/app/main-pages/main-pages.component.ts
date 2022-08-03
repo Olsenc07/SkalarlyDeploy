@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Post, PostService } from '../services/post.service';
+import { AuthService } from '../services/auth.service';
 import {
   MatBottomSheet,
   MatBottomSheetRef,
 } from '@angular/material/bottom-sheet';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-main-pages',
@@ -12,33 +15,46 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./main-pages.component.scss'],
 })
 export class MainPagesComponent implements OnInit {
+  userId: string;
+
   category: string;
   specific: string;
   specificOptions: string;
 
-  main: FormControl = new FormControl('');
-  mainForm = new FormGroup({
-    main: this.main,
-  });
-  feeds = ['', '', '', '', '', '', '', '', '', '', '', ''];
+  isLoading = false;
+  posts: Post[] = [];
+  private postsSub: Subscription;
+
   constructor(
     private bottomSheet: MatBottomSheet,
-    private route: ActivatedRoute
-  ) { }
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    public postService: PostService
+  ) {}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+
     this.route.queryParams.subscribe((params) => {
-      console.log(params);
+      console.log('params main page', params);
       this.category = params?.category;
+
+      this.postService.getPostsMainPage(this.category);
+      this.postsSub = this.postService
+        .getPostUpdateListener()
+        .subscribe((posts: Post[]) => {
+          this.posts = posts;
+          this.isLoading = false;
+        });
     });
   }
-
-  clearMain(): void {
-    this.main.setValue('');
-  }
-  onSubmit(): void {
-    // TODO: wire up to login request
-    console.log(this.mainForm.value);
+  // To post page with users id
+  navigateToPost(): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/post-page/:'], {
+      queryParams: { userId: this.userId },
+    });
   }
   // Fills same way just for different reasons
   // Each button opens this page by there should be 4 different functions with each
@@ -54,7 +70,7 @@ export class MainPagesComponent implements OnInit {
   styleUrls: ['./attendance.component.scss'],
 })
 export class AttendanceComponent {
-  constructor(private bottomSheetRef: MatBottomSheetRef<AttendanceComponent>) { }
+  constructor(private bottomSheetRef: MatBottomSheetRef<AttendanceComponent>) {}
 
   openLink(event: MouseEvent): void {
     this.bottomSheetRef.dismiss();
@@ -68,7 +84,7 @@ export class AttendanceComponent {
   styleUrls: ['./attendance.component.scss'],
 })
 export class TaggedComponent {
-  constructor(private bottomSheetRef: MatBottomSheetRef<AttendanceComponent>) { }
+  constructor(private bottomSheetRef: MatBottomSheetRef<AttendanceComponent>) {}
 
   openLink(event: MouseEvent): void {
     this.bottomSheetRef.dismiss();
