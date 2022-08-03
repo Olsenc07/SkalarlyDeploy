@@ -114,6 +114,7 @@
                       <!-- <div class="fas fa-user-graduate space"></div> -->
                     <mat-divider></mat-divider>
                     <div *ngFor="let user of users">
+                      <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"> -->
                     <mat-option class="options"  (click)="navigateToPage(user.username)" id="userName" >
                         <!-- <div class="row"> -->
                       <div *ngIf="user.Creator !== userId"  class="row" >
@@ -125,10 +126,8 @@
                         <div>@{{user.username}}</div>
                       </div>
                       </div>
-         
-                   
-               
                     </mat-option>
+                  <!-- </mat-autocomplete> -->
                   </div>
                   </mat-select>
                

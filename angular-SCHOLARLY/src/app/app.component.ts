@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
-  filteredOptions: Observable<string[]>;
+  // filteredOptions: Observable<string[]>;
   hasQuery = false;
   // socket.io
   public roomId: string;
@@ -94,9 +94,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.filteredOptions = this.search.valueChanges.pipe(
-      map((value) => this._filter(value || ''))
-    );
+    // this.filteredOptions = this.search.valueChanges.pipe(
+    //   map((value) => this._filter(value || ''))
+    // );
 
     this.authService.autoAuthUser();
 
