@@ -83,6 +83,8 @@ import { CardFeedComponent } from './reusable-card/reusable-card.component';
 
 import { DeleteWarningComponent } from './reusable-card/reusable-card.component';
 import { ShowCaseComponent } from './reusable-card/reusable-card.component';
+import { CardInfoFeedComponent } from './reusable-card/reusable-card.component';
+
 import { ReusableCardBriefComponent } from './reusable-card-brief/reusable-card-brief.component';
 import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
 import { ReusableCardRecommendationComponent } from './reusable-card-request/reusable-card-request.component';
@@ -148,6 +150,7 @@ const config: SocketIoConfig = {
     MessagingComponent,
     ServicesElementsComponent,
     ShowCaseComponent,
+    CardInfoFeedComponent,
     DeleteWarningComponent,
     ErrorComponent,
     LoginPopUpComponent,

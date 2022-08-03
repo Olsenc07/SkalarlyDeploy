@@ -157,11 +157,11 @@
           
 
 
-    <mat-divider></mat-divider>
+    <!-- <mat-divider></mat-divider> -->
          
-         <div class="titleVal">Required validation to save changes for Personal and Academic!</div>
+         <!-- <div class="titleVal">Required validation to save changes for Personal and Academic!</div> -->
          
-          <div class="login">
+          <!-- <div class="login">
             <mat-form-field class="loginWidth">
               <input class="text_" matInput type="email" placeholder="Academic email" [formControl]="email" required>
               <mat-error >Only U Of T emails are valid</mat-error>
@@ -172,14 +172,14 @@
               <mat-form-field class="loginWidth">
               <input class="text_" matInput placeholder="Password" [formControl]="password" required>
               </mat-form-field>
-            </div>
+            </div> -->
       
 
 
     
           <!-- done button -->
           <div class="done">
-            <button mat-raised-button color="primary" [disabled]="!deleteForm.valid" type="submit" routerLink="/profile" class="button"
+            <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
               (click)="onSubmit()" >
               Save
             </button>

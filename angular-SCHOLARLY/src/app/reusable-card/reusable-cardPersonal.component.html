@@ -4,7 +4,7 @@
   
   <!-- Posts box which should be a scroll view -->
   <div class="feed" *ngFor="let post of posts" >
-    <mat-card class="specifics-fill" *ngIf="(userId == post.Creator) && !isLoading">
+    <mat-card class="specifics-fill" *ngIf="!isLoading">
       <!-- Profile Pic -->
       <div class="column" >
         <div class="row">
@@ -24,17 +24,17 @@
             </div>
            
             <div class="row2">
-              <div class="column" *ngFor="let info of infos">
+              <div class="column" >
                 <!-- *ngIf="posts.length > 0" -->
                 <div class="row-" >
                   <div class="profilePic" >
                     <!-- need to get croppeded value -->
-                    <img class="pic" src="{{info.ProfilePicPath}}">
+                    <img class="pic" src="{{post.ProfilePicPath}}">
                   </div>
   
                   <div class="column1">
-                    <div class="linkN" *ngIf="info.name">
-                      {{ info.name}}
+                    <div class="linkN" *ngIf="post.Name">
+                      {{ post.Name}}
                     </div>
   
   
@@ -44,7 +44,7 @@
                       <button mat-button>
                         <div class="userName  link">
                           <!-- Olsen07 -->
-                          @{{info.username}}
+                          @{{post.Username}}
                         </div>
                       </button>
                     </div>

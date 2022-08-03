@@ -175,10 +175,12 @@
                 </button>
               </div>
               <div class="icon-btn-fit">
+                <!-- routerLink="/post-page" -->
                 <button
                   mat-icon-button
                   type="button"
-                  routerLink="/post-page"
+                  
+                  (click)="navigateToPost()"
                   class="a_up"
                 >
                   <span
@@ -260,7 +262,8 @@
         <button
           mat-menu-item
           type="button"
-          routerLink="/edit-profile"
+          (click)="navigateToEditProfile()"
+
           style="border-bottom: solid #c6c9ea"
           class="look-nice"
         >

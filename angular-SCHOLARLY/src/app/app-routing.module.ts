@@ -39,7 +39,11 @@ const routes: Routes = [
   { path: 'sign-up', component: SignupComponent },
   { path: 'verified', component: VerifiedPopUpComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
-  { path: 'post-page', component: PostPageComponent, canActivate: [AuthGuard] },
+  {
+    path: 'post-page/:userId',
+    component: PostPageComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   {
     path: 'skalars/:id',
@@ -49,7 +53,7 @@ const routes: Routes = [
   { path: 'retrieve-password', component: RetrievePasswordComponent },
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   {
-    path: 'edit-profile',
+    path: 'edit-profile/:userId',
     component: EditProfileComponent,
     canActivate: [AuthGuard],
   },

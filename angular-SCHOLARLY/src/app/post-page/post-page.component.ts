@@ -82,6 +82,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   private postId: string;
   private authStatusSub: Subscription;
 
+  userId: string;
+
   url: string;
   selectedIndex = 0;
 
@@ -188,6 +190,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe((authStatus) => {
@@ -263,6 +267,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
 
   onFormSubmit(): any {
     this.postService.addPost(
+      this.userId,
       this.Title.value,
       this.postDescription.value,
       this.postLocation.value,

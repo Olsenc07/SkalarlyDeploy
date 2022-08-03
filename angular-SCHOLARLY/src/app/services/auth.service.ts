@@ -370,8 +370,7 @@ export class AuthService {
 
   // edit userinfo
   editUserInfo(
-    email: string,
-    password: string,
+    userId: string,
     name: string,
     gender: string,
     birthday: string,
@@ -508,8 +507,6 @@ export class AuthService {
       // followings,
     };
     const userData = new FormData();
-    userData.append('email', email);
-    userData.append('password', password);
     userData.append('name', name);
     userData.append('gender', gender);
     userData.append('birthday', birthday);
@@ -580,7 +577,8 @@ export class AuthService {
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://localhost:3000/api/user/infoEd',
-        userData
+        userData,
+        { params: { userId } }
       )
       .subscribe({
         next: (responseData) => {
@@ -756,6 +754,7 @@ export class AuthService {
         this.infosUpdated.next([...this.infos]);
       });
   }
+
   // Your info
   getInfoPersonal(userId: string): any {
     this.http

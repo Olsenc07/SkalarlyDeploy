@@ -178,13 +178,13 @@ export class ReusableCardPersonalComponent implements OnInit {
         console.log('posts', this.posts);
       });
     // Info
-    this.authService.getInfoPersonal(this.userId);
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        this.isLoading = false;
-      });
+    // this.authService.getInfoPersonal(this.userId);
+    // this.infosSub = this.authService
+    //   .getInfoUpdateListener()
+    //   .subscribe((infos: AuthDataInfo[]) => {
+    //     this.infos = infos;
+    //     this.isLoading = false;
+    //   });
   }
 
   //   ngOnDestroy(): void{
@@ -313,5 +313,44 @@ export class CardFeedComponent implements OnInit {
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+}
+
+@Component({
+  selector: 'app-post-info-feed',
+  templateUrl: './reusable-cardFeed.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class CardInfoFeedComponent implements OnInit {
+  isLoading = false;
+
+  posts: Post[] = [];
+  private postsSub: Subscription;
+
+  infos: AuthDataInfo[] = [];
+  private infosSub: Subscription;
+
+  constructor(
+    private authService: AuthService,
+    public postService: PostService
+  ) {}
+  ngOnInit(): void {
+    // Posts
+    this.postService.getPostsFeed();
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+    // Info
+    // this.authService.getInfo();
+    // this.infosSub = this.authService
+    //   .getInfoUpdateListener()
+    //   .subscribe((infos: AuthDataInfo[]) => {
+    //     this.infos = infos;
+    //     this.isLoading = false;
+    //   });
   }
 }

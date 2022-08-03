@@ -45,6 +45,9 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Username: post.Username,
+              Name: post.Name,
+              ProfilePicPath: post.ProfilePicPath,
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
@@ -77,6 +80,9 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Username: post.Username,
+              Name: post.Name,
+              ProfilePicPath: post.ProfilePicPath,
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
@@ -110,6 +116,9 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Username: post.Username,
+              Name: post.Name,
+              ProfilePicPath: post.ProfilePicPath,
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
@@ -193,8 +202,10 @@ export class PostService {
   getPostUpdateListener(): any {
     return this.postsUpdated.asObservable();
   }
+
   // Adding post
   addPost(
+    userId: string,
     Title?: string,
     postDescription?: string,
     postLocation?: string,
@@ -244,7 +255,8 @@ export class PostService {
     this.http
       .post<{ message: string; postId: Post }>(
         'http://localhost:3000/api/posts',
-        postData
+        postData,
+        { params: { userId } }
       )
       .subscribe({
         next: (responseData) => {

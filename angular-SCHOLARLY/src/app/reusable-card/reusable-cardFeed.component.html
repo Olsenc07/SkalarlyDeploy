@@ -20,17 +20,19 @@
   
             </div>
             <div class="row2">
-              <div class="column" *ngFor="let info of infos" >
+<!-- <app-post-info-feed></app-post-info-feed> -->
+
+               <div class="column"  >
                 <!-- *ngIf="posts.length > 0" -->
-                 <div class="row-" *ngIf="(post.Creator === info.Creator)">
+                 <div class="row-" *ngIf="(post.Creator )">
                   <div class="profilePic" >
                     <!-- need to get croppeded value -->
-                    <img class="pic" src="{{info.ProfilePicPath}}">
+                    <img class="pic" src="{{post.ProfilePicPath}}">
                   </div>
   
                   <div class="column1">
-                    <div class="linkN" *ngIf="info.name">
-                      {{ info.name}}
+                    <div class="linkN" *ngIf="post.Name">
+                      {{ post.Name}}
                     </div>
   
   
@@ -38,9 +40,9 @@
                     <div class="nameTitle">
                       <!-- Button directs to that users profile -->
                       <button mat-button>
-                        <div class="userName link" id="userName" (click)="navigateToPage(info.username)">
+                        <div class="userName link" id="userName" (click)="navigateToPage(post.Username)">
                           <!-- Olsen07 -->
-                          @{{info.username}}
+                          @{{post.Username}}
                         </div>
                       </button>
                     </div>
@@ -48,36 +50,9 @@
   
   
                 </div> 
+
   
-  
-                <!-- <div class="row-" *ngIf="!(info.ProfilePicPath)">
-  
-  
-                  <!-- <div class="profilePic">
-                    <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
-                  </div> --
-  
-  
-                  <div class="column1">
-                    <div class="linkN">
-                      {{profile.Name}}
-                    </div>
-  
-                    <div class="nameTitle">
-                      <!-- Button directs to that users profile --
-                      <button mat-button>
-                        <div class="userName  link">
-                          <!-- Olsen07 --
-                          {{ids.UserName}}
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-  
-  
-                </div> -->
-  
-              </div>
+              </div> 
   
   
   

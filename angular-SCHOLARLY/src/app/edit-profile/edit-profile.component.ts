@@ -67,6 +67,8 @@ export class EditProfileComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription;
 
+  userId: string;
+
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
   // Showcase
@@ -126,13 +128,6 @@ export class EditProfileComponent implements OnInit {
   @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
   cropImgPreview: any = '';
   imgChangeEvent: any = '';
-  password: FormControl = new FormControl('', Validators.minLength(8));
-  email: FormControl = new FormControl('');
-
-  deleteForm = new FormGroup({
-    email: this.email,
-    password: this.password,
-  });
 
   // username isn't connected to any formcontrol its just so the profile interface is happy
   username: FormControl = new FormControl('');
@@ -404,12 +399,15 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+
     this.postService.getPosts();
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
         this.posts = posts;
       });
+    this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
@@ -551,9 +549,7 @@ export class EditProfileComponent implements OnInit {
     // console.log(this.editForm.value);
     // TODO: convert form fields to Profile
     this.authService.editUserInfo(
-      this.email.value,
-      this.password.value,
-      // this.username.value,
+      this.userId,
       this.name.value,
       this.gender.value,
       this.birthday.value,

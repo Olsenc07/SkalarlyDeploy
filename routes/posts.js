@@ -78,34 +78,31 @@ router.get("", (req, res, next) => {
 
 // Post recieving Feed
 router.get("/feed", (req, res, next) => {
-     UserInfo.find()
+     Post.find()
     .then(docs => {
             console.log('doors unlock', docs)
             res.status(200).json({
-                message: 'Posts personal fetched succesfully!',
-                infos: docs
+                message: 'Posts feed fetched succesfully!',
+                posts: docs
        });
     })  
     .catch(error => {
         res.status(500).json({
-            message: 'Fetching personal posts failed!'
+            message: 'Fetching feed posts failed!'
         });
     });
 });
 
 // Post recieving personal
-router.get("/personal", async(req, res, next) => {
-    await UserInfo.findOne({Creator: {$eq: req.query.userId}})
+router.get("/personal", (req, res, next) => {
+     Post.find({Creator: req.query.userId})
     .then(docs => {
-        console.log('night light', docs.Creator)
-        Post.find({Creator: docs.Creator})
-       .then(doc => {
-        console.log('doors unlock', doc)
+        console.log('night light', docs)
         res.status(200).json({
             message: 'Posts personal fetched succesfully!',
-            posts: doc
+            posts: docs
         });
-       })
+
     })  
     .catch(error => {
         res.status(500).json({
@@ -120,56 +117,70 @@ router.post("",
     checkAuth,
     up.single('upload'),
     (req, res) => {
-        console.log('description',req.file)
+        console.log('userInfo', req.query.userId)
     const url = req.protocol + '://' + req.get('host');
-if (req.file){
-    // up.single('upload')
-    var post = new Post({
-        Title: req.body.Title,
-        postDescription: req.body.postDescription,
-        postLocation: req.body.postLocation,
-        LocationEvent: req.body.LocationEvent,
-        time: req.body.time,
-        date: req.body.date,
-        gender: req.body.gender,
-        driver: req.body.driver,
-        paymentService: req.body.paymentService,
-        virtual: req.body.virtual,
-        event: req.body.event,
-        ImagePath: url + '/posts/' + req.file.filename,
-        Creator: req.userData.userId
-    });
-}else{
-    var post = new Post({
-        Title: req.body.Title,
-        postDescription: req.body.postDescription,
-        postLocation: req.body.postLocation,
-        LocationEvent: req.body.LocationEvent,
-        time: req.body.time,
-        date: req.body.date,
-        gender: req.body.gender,
-        driver: req.body.driver,
-        paymentService: req.body.paymentService,
-        virtual: req.body.virtual,
-        event: req.body.event,
-        // ImagePath: url + '/posts/' + req.file,
-        Creator: req.userData.userId
-    });
-}
-    post.save().then(createdPost => {
-        res.status(201).json({
-            message: 'Post added successfully',
-            postId: {
-                id: createdPost._id,
-                ...createdPost
-            } 
-        });
+
+    
+
+
+    UserInfo.findOne({Creator:req.query.userId })
+    .then(documents => {
+        if (req.file){
+            // up.single('upload')
+            var post = new Post({
+                Username: documents.username,
+                Name: documents.name,
+                ProfilePicPath: documents.ProfilePicPath,
+                Title: req.body.Title,
+                postDescription: req.body.postDescription,
+                postLocation: req.body.postLocation,
+                LocationEvent: req.body.LocationEvent,
+                time: req.body.time,
+                date: req.body.date,
+                gender: req.body.gender,
+                driver: req.body.driver,
+                paymentService: req.body.paymentService,
+                virtual: req.body.virtual,
+                event: req.body.event,
+                ImagePath: url + '/posts/' + req.file.filename,
+                Creator: req.userData.userId
+            });
+        }else{
+            var post = new Post({
+                Username: documents.username,
+                Name: documents.name,
+                ProfilePicPath: documents.ProfilePicPath,
+                Title: req.body.Title,
+                postDescription: req.body.postDescription,
+                postLocation: req.body.postLocation,
+                LocationEvent: req.body.LocationEvent,
+                time: req.body.time,
+                date: req.body.date,
+                gender: req.body.gender,
+                driver: req.body.driver,
+                paymentService: req.body.paymentService,
+                virtual: req.body.virtual,
+                event: req.body.event,
+                // ImagePath: url + '/posts/' + req.file,
+                Creator: req.userData.userId
+            });
+        }
+            post.save().then(createdPost => {
+                res.status(201).json({
+                    message: 'Post added successfully',
+                    postId: {
+                        id: createdPost._id,
+                        ...createdPost
+                    } 
+                });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Creating a post failed!'
+                });
+            });
     })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Creating a post failed!'
-        });
-    });
+
 });
 
 // Posts deleting
@@ -265,7 +276,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
     await UserInfo.findOne({Creator: {$eq: req.query.userId}})
     .then(docs => {
         console.log('midnight light', docs)
-        showCase.findOne({Creator: docs.Creator})
+        showCase.find({Creator: docs.Creator})
        .then(doc => {
         console.log('doors unlock', doc)
         res.status(200).json({

@@ -189,6 +189,7 @@ export class AppComponent implements OnInit {
         this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
+
     if (window.screen.height < 768) {
       this.minHeight = false;
     }
@@ -197,7 +198,18 @@ export class AppComponent implements OnInit {
       this.minwidth = false;
     }
   }
-
+  // To post page with users id
+  navigateToPost(): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/post-page/:'], {
+      queryParams: { userId: this.userId },
+    });
+  }
+  navigateToEditProfile(): any {
+    this.router.navigate(['/edit-profile/:'], {
+      queryParams: { userId: this.userId },
+    });
+  }
   // searching users
   sendData(event: any): any {
     const query: string = event.target.value;
