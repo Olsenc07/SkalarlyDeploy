@@ -391,80 +391,6 @@ router.post("/info", checkAuth,
 
 
         });
-    // }else{
-    //     var info = new UserInfo({
-    //         username: req.body.username,
-    //         name: req.body.name,
-    //         gender: req.body.gender,
-    //         birthday: req.body.birthday,
-    //         major: req.body.major,
-    //         minor: req.body.minor,
-    //         sport: req.body.sport,
-    //         club: req.body.club,
-    //         pronouns: req.body.pronoun,
-    //         CodeCompleted: req.body.CodeCompleted,
-    //         CodeCompleted2: req.body.CodeCompleted2,
-    //         CodeCompleted3: req.body.CodeCompleted3,
-    //         CodeCompleted4: req.body.CodeCompleted4,
-    //         CodeCompleted5: req.body.CodeCompleted5,
-    //         CodeCompleted6: req.body.CodeCompleted6,
-    //         CodeCompleted7: req.body.CodeCompleted7,
-    //         CodeCompleted8: req.body.CodeCompleted8,
-    //         CodeCompleted9: req.body.CodeCompleted9,
-    //         CodeCompleted10: req.body.CodeCompleted10,
-    //         CodeCompleted11: req.body.CodeCompleted11,
-    //         CodeCompleted12: req.body.CodeCompleted12,
-    //         CodeCompleted13: req.body.CodeCompleted13,
-    //         CodeCompleted14: req.body.CodeCompleted14,
-    //         CodeCompleted15: req.body.CodeCompleted15,
-    //         CodeCompleted16: req.body.CodeCompleted16,
-    //         CodeCompleted17: req.body.CodeCompleted17,
-    //         CodeCompleted18: req.body.CodeCompleted18,
-    //         CodeCompleted19: req.body.CodeCompleted19,
-    //         CodeCompleted20: req.body.CodeCompleted20,
-    //         CodeCompleted21: req.body.CodeCompleted21,
-    //         CodeCompleted22: req.body.CodeCompleted22,
-    //         CodeCompleted23: req.body.CodeCompleted23,
-    //         CodeCompleted24: req.body.CodeCompleted24,
-    //         CodeCompleted25: req.body.CodeCompleted25,
-    //         CodeCompleted26: req.body.CodeCompleted26,
-    //         CodeCompleted27: req.body.CodeCompleted27,
-    //         CodeCompleted28: req.body.CodeCompleted28,
-    //         CodeCompleted29: req.body.CodeCompleted29,
-    //         CodeCompleted30: req.body.CodeCompleted30,
-    //         CodeCompleted31: req.body.CodeCompleted31,
-    //         CodeCompleted32: req.body.CodeCompleted32,
-    //         CodeCompleted33: req.body.CodeCompleted33,
-    //         CodeCompleted34: req.body.CodeCompleted34,
-    //         CodeCompleted35: req.body.CodeCompleted35,
-    //         CodeCompleted36: req.body.CodeCompleted36,
-    //         CodeCompleted37: req.body.CodeCompleted37,
-    //         CodeCompleted38: req.body.CodeCompleted38,
-    //         CodeCompleted39: req.body.CodeCompleted39,
-    //         CodeCompleted40: req.body.CodeCompleted40,
-    //         CodeCompletedX: req.body.CodeCompletedX,
-          
-    //         CodePursuing: req.body.CodePursuing,
-    //         CodePursuing2: req.body.CodePursuing2,
-    //         CodePursuing3: req.body.CodePursuing3,
-    //         CodePursuing4: req.body.CodePursuing4,
-    //         CodePursuing5: req.body.CodePursuing5,
-    //         CodePursuing6: req.body.CodePursuing6,
-    //         CodePursuing7: req.body.CodePursuing7,
-    //         CodePursuing8: req.body.CodePursuing8,
-    //         CodePursuing9: req.body.CodePursuing9,
-    //         CodePursuing10: req.body.CodePursuing10,
-    //         CodePursuing11: req.body.CodePursuing11,
-    //         CodePursuing12: req.body.CodePursuing12,
-
-    //         ProfilePicPath: url + '/profilePics/' + req.files['profilePic'][0].filename,
-    //         // ShowCasePath: url + '/profilePics/' + req.files['showCase'][0].filename,
-    //         followers: null,
-    //         following: null,
-    //         Creator: req.userData.userId,
-
-
-    //     });
         info.save().then(result => {
             res.status(201).json({
                 message: 'Yay a user added info',
@@ -638,8 +564,8 @@ router.post("/infoEd", checkAuth,
 
 
 // userInfo recieving
-router.get("/info", (req, res, next) => {
-    UserInfo.find()
+router.get("/info", async(req, res, next) => {
+    await UserInfo.find()
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
             res.status(200).json({
@@ -757,10 +683,10 @@ router.put("/:id/unfollow", async (req, res) => {
 
 
 // LoginFirst Time
-router.post("/login1", verifyEmailV, (req, res, next) => {
+router.post("/login1", verifyEmailV, async (req, res, next) => {
     let fetchedUser;
     let VALID;
-    User.findOne({ email: req.body.emailV }).then(valid => {
+   await User.findOne({ email: req.body.emailV }).then(valid => {
         VALID = valid.isVerified
         if (VALID === 'true') {
             console.log('valid?', VALID)
@@ -828,9 +754,9 @@ router.post("/login1", verifyEmailV, (req, res, next) => {
 
 
 // Login
-router.post("/login", verifyEmail, (reg, res, next) => {
+router.post("/login", verifyEmail, async (reg, res, next) => {
     let fetchedUser;
-    User.findOne({ email: reg.body.email })
+   await User.findOne({ email: reg.body.email })
         .then(user => {
             if (!user) {
                 return res.status(401).json({

@@ -97,6 +97,13 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log(value);
   }
+  // To post page with users id
+  navigateToPost(): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/post-page/:'], {
+      queryParams: { userId: this.userId },
+    });
+  }
 
   clearSearch(): void {
     this.search.setValue('');

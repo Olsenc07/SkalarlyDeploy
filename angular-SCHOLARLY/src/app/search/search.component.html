@@ -63,17 +63,12 @@
       <div class="center" >
         Recent Feed
       </div>
-      <!-- <mat-divider></mat-divider> -->
-      <!-- Only load in so many at a time -->
-      <div class="recents_" *ngIf="posts.length == 0">
-        <div class="fill">
-          <div class="icon-btn-fit post ">
-              <button mat-button type="button" class="label_" routerLink="/post-page" color="primary"  >
-                  Be the first to post!
-              <!-- <mat-icon >add_circle</mat-icon> -->
-            </button>
-          </div>
+      <div class="column_" *ngIf="posts.length == 0">
+        <div class="row"> No Posts At The Moment</div>
+        <!-- <i class="far fa-frown centerR"></i> -->
 
+        <div class="fill_">
+          <button mat-raised-button class="centerR" type="button" (click)="navigateToPost()">Post Now</button>
         </div>
       </div>
 

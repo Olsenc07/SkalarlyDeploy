@@ -61,8 +61,8 @@ const storage_2 = multer.diskStorage({
 });
 
 // Post recieving
-router.get("", (req, res, next) => {
-    Post.find()
+router.get("", async(req, res, next) => {
+   await Post.find()
     .then(documents => {
     res.status(200).json({
         message: 'Posts fetched succesfully!',
@@ -77,10 +77,9 @@ router.get("", (req, res, next) => {
 });
 
 // Post recieving Feed
-router.get("/feed", (req, res, next) => {
-     Post.find()
+router.get("/feed", async(req, res, next) => {
+   await Post.find()
     .then(docs => {
-            console.log('doors unlock', docs)
             res.status(200).json({
                 message: 'Posts feed fetched succesfully!',
                 posts: docs
@@ -94,10 +93,9 @@ router.get("/feed", (req, res, next) => {
 });
 
 // Post recieving personal
-router.get("/personal", (req, res, next) => {
-     Post.find({Creator: req.query.userId})
+router.get("/personal", async(req, res, next) => {
+     await Post.find({Creator: req.query.userId})
     .then(docs => {
-        console.log('night light', docs)
         res.status(200).json({
             message: 'Posts personal fetched succesfully!',
             posts: docs
@@ -117,7 +115,6 @@ router.post("",
     checkAuth,
     up.single('upload'),
     (req, res) => {
-        console.log('userInfo', req.query.userId)
     const url = req.protocol + '://' + req.get('host');
 
     UserInfo.findOne({Creator:req.query.userId })
@@ -182,7 +179,6 @@ router.post("",
 
 // Posts deleting
 router.delete("/:id", checkAuth, (req, res, next ) => {
-    console.log('id params', req.params.id )
     Post.deleteOne({_id: req.params.id}).then(result => {
         if (result){
         res.status(200).json({message: 'Post deleted!!'});
@@ -206,13 +202,10 @@ router.post('/comment', (req, res) =>{
 
 // Get others posts
 router.get("/otherUsers", async(req, res) => {
-    console.log('BasketBall', req.query.id)
         await UserInfo.findOne({username: {$eq: req.query.id}})
         .then(docs => {
-            console.log('night light', docs.Creator)
             Post.find({Creator: docs.Creator})
            .then(doc => {
-            console.log('doors unlock', doc)
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
                 posts: doc
@@ -227,12 +220,9 @@ router.get("/otherUsers", async(req, res) => {
 
 });
 // Get main page posts
-router.get("/mainPage", async(req, res) => {
-    console.log('main page', req.query.category)
-    
+router.get("/mainPage", async(req, res) => {    
          await Post.find({postLocation: req.query.category})
            .then(doc => {
-            console.log('doors unlock', doc)
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
                 posts: doc
@@ -242,10 +232,8 @@ router.get("/mainPage", async(req, res) => {
 
 // Get others posts
 router.get("/otherUsersInfos", async(req, res) => {
-    console.log('BasketBall', req.query.id)
         await UserInfo.findOne({username: {$eq: req.query.id}})
         .then(docs => {
-            console.log('doors unlocked twice', docs)
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
                 infos: docs
@@ -260,10 +248,8 @@ router.get("/otherUsersInfos", async(req, res) => {
 });
 // showCase recieving
 router.get("/showCases", async(req, res, next) => {
-    console.log('Sking', req.query.id)
         await UserInfo.findOne({username: {$eq: req.query.id}})
         .then(docs => {
-            console.log('midnight light', docs)
             showCase.find({Creator: docs.Creator})
            .then(doc => {
             console.log('doors unlock', doc)
@@ -282,7 +268,6 @@ router.get("/showCases", async(req, res, next) => {
 
 // showCase recieving Personal
 router.get("/showCasesPersonal", async(req, res, next) => {
-    console.log('Kicking rocks', req.query.userId)
     await UserInfo.findOne({Creator: {$eq: req.query.userId}})
     .then(docs => {
         console.log('midnight light', docs)
@@ -308,25 +293,18 @@ router.post("/showCases",
     show.single('showCase'),
     (req, res) => {
     const url = req.protocol + '://' + req.get('host');
-
 if (req.file){
-
-        console.log('description',req.file)
-    // up.single('upload')
     var ShowCase = new showCase({
-    
         ShowCasePath: url + '/showCase/' + req.file.filename,
         Creator: req.userData.userId
     });
 }else{
-    console.log('description2')
-
     var ShowCase = new showCase({
-    
         ShowCasePath: url + '/showCase/' + req.file,
         Creator: req.userData.userId
     });
- } ShowCase.save().then(createdPost => {
+ } 
+ ShowCase.save().then(createdPost => {
         res.status(201).json({
             message: 'showCase added successfully',
             postId: {
