@@ -49,6 +49,8 @@
 .comment-form-tile{
   font-family:  'Cinzel', serif;
   margin-top: 2%;
+  font-size: 28px;
+  margin-bottom: 1%;
 }
 .comment-form-textarea{
   max-width: 400px;
@@ -141,7 +143,6 @@
   justify-content: center;
 }
 .rowM {
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
@@ -184,18 +185,19 @@
 }
 .pic {
   display: flex;
-  // flex-direction: column;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: auto;
 }
 .profilePic {
   display: flex;
   margin-bottom: 2%;
-  // border-radius: 50%;
-  // // border: groove;
-  // margin-right: 2%;
-  // margin-bottom: 1%;
+  box-shadow: 0 2px 3px;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 .postTitle {
   display: flex;

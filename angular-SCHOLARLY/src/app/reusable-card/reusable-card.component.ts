@@ -333,6 +333,7 @@ export class ReusableCommentComponent implements OnInit {
   styleUrls: ['./reusable-card.component.scss'],
 })
 export class ReusableCommentFormComponent implements OnInit {
+  open = false;
   @Input() submitLabel!: string;
   @Input() hasCancelButton = false;
   @Input() initialText = '';
@@ -354,7 +355,16 @@ export class ReusableCommentFormComponent implements OnInit {
     console.log('onSubmit', this.form.value);
     this.handleSubmit.emit(this.form.value.title);
   }
+
+  toggleComments(): void {
+    if (!this.open) {
+      this.open = true;
+    } else {
+      this.open = false;
+    }
+  }
 }
+
 @Component({
   selector: 'app-showcase',
   templateUrl: './showCase.component.html',

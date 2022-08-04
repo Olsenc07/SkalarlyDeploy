@@ -226,15 +226,6 @@ export class EditProfileComponent implements OnInit {
   });
   selectedIndex = 0;
 
-  // Group list;
-  gList = [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}];
-
-  // Post list;
-  // pList = ['', ''];
-
-  // Connects to save showcases in the data base
-  list = [];
-
   constructor(
     public dialog: MatDialog,
     public classListService: ClassListService,
@@ -282,8 +273,7 @@ export class EditProfileComponent implements OnInit {
   cropImg(e: ImageCroppedEvent): any {
     this.cropImgPreview = e.base64;
     // let File = base64ToFile(this.cropImgPreview)
-    // this.profilePic = this.cropImgPreview
-    // return this.profilePic
+
     return this.cropImgPreview;
   }
 
@@ -457,88 +447,46 @@ export class EditProfileComponent implements OnInit {
     document.getElementById('firstP').removeAttribute('src');
   }
   // Groups joined
-  previousGroupCard(): number {
-    --this.g;
-    if (0 > this.g) {
-      this.g = this.posts.length - 1;
-      return this.g;
-    }
-    console.log(this.g);
-  }
-  nextGroupCard(): number {
-    ++this.g;
-    if (this.g >= this.posts.length) {
-      this.g = 0;
-      return this.g;
-    }
-    console.log(this.g);
-    // go forward one card
-    // const NextG = document.getElementById('groupCard');
-    // NextG.scrollIntoView();
-  }
-  leaveGroup(): number {
-    this.gList.splice(this.g, 1);
-    console.log(this.gList.length);
-    if (this.g === this.gList.length) {
-      this.g = this.g - 1;
-      return this.g;
-    }
-  }
+  // previousGroupCard(): number {
+  //   --this.g;
+  //   if (0 > this.g) {
+  //     this.g = this.posts.length - 1;
+  //     return this.g;
+  //   }
+  //   console.log(this.g);
+  // }
+  // nextGroupCard(): number {
+  //   ++this.g;
+  //   if (this.g >= this.posts.length) {
+  //     this.g = 0;
+  //     return this.g;
+  //   }
+  //   console.log(this.g);
+  //   // go forward one card
+  //   // const NextG = document.getElementById('groupCard');
+  //   // NextG.scrollIntoView();
+  // }
 
   // Posts made
-  previousPostCard(): number {
-    --this.p;
-    if (0 > this.p) {
-      this.p = this.posts.length - 1;
-      return this.p;
-    }
-    console.log(this.p);
-  }
-  nextPostCard(): number {
-    ++this.p;
-    if (this.p >= this.posts.length) {
-      this.p = 0;
-      return this.p;
-    }
-    console.log(this.p);
-    // go forward one card
-  }
+  // previousPostCard(): number {
+  //   --this.p;
+  //   if (0 > this.p) {
+  //     this.p = this.posts.length - 1;
+  //     return this.p;
+  //   }
+  //   console.log(this.p);
+  // }
+  // nextPostCard(): number {
+  //   ++this.p;
+  //   if (this.p >= this.posts.length) {
+  //     this.p = 0;
+  //     return this.p;
+  //   }
+  //   console.log(this.p);
+  //   // go forward one card
+  // }
   onDelete(postId: string): any {
-    // this.pList.splice(this.p, 1);
-    // console.log(this.pList.length);
-    // if (this.p === this.pList.length) {
-    //   this.p = this.p - 1;
-    //   return this.p;
-    // }
-
     this.postService.deletePost(postId);
-  }
-
-  // Showcase edit
-  previousCard(): number {
-    --this.i;
-    if (0 > this.i) {
-      this.i = this.list.length - 1;
-      return this.i;
-    }
-    console.log(this.i);
-  }
-  nextCard(): number {
-    ++this.i;
-    if (this.i >= this.list.length) {
-      this.i = 0;
-      return this.i;
-    }
-    console.log(this.i);
-    // go forward one card
-  }
-  deleteSnapShot(): number {
-    this.list.splice(this.i, 1);
-    console.log(this.list.length);
-    if (this.i === this.list.length) {
-      this.i = this.i - 1;
-      return this.i;
-    }
   }
 
   openDialogAccount(): void {
@@ -612,10 +560,14 @@ export class EditProfileComponent implements OnInit {
       this.CodePursuing10.value,
       this.CodePursuing11.value,
       this.CodePursuing12.value,
+
       this.form.get('profilePic').value
       // this.cropImgPreview,
       // this.showCase.value
     );
+    console.log('cropped image', this.cropImgPreview);
+
+    console.log('uncropped image', this.form.get('profilePic').value);
     // TODO: replace null with Profile object
     // this.storeService.setProfile(profile);
   }

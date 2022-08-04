@@ -55,7 +55,7 @@
   flex-direction: column;
   justify-content: space-between;
   margin-top: 3%;
-  // height: 100%;
+width: 100%;
 }
 @media (min-width: 1025px) {
   .center_ {
@@ -420,6 +420,7 @@
     margin: 1% 0% 2% 1%;
     width: 35%;
     box-sizing: border-box;
+    align-items: center;
     position: relative;
   }
 }
@@ -564,10 +565,8 @@ mat-tab-group {
   display: flex;
   flex-direction: column;
   // border-radius: 50%;
-  height: 170px;
-  width: 170px;
-  border-radius: 50%;
-  box-shadow: 0px 2px 3px;
+  height: auto;
+  width: 100%;
   // max-width: 210px;
 }
 .pics {
@@ -577,8 +576,12 @@ mat-tab-group {
 @media (min-width: 1024px) {
   .profile-pic {
     display: flex;
-    height: 11vw;
+    box-shadow: 0 2px 3px;
     justify-content: center;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    overflow: hidden;
   }
 }
 @media (min-width: 825px) and (max-width: 1025px) {

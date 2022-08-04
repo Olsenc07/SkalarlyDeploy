@@ -1,8 +1,10 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <textarea class="comment-form-textarea" formControlName="title"></textarea>
+    <button mat-icon-button  class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button>
+
+    <textarea class="comment-form-textarea" formControlName="title" *ngIf="open"></textarea>
     <!-- {{submitLabel}}  -->
-    <mat-chip-list>
-        <mat-chip class="comment-form-buttton" type="submit" [disabled]="form.invalid" color="primary">
+    <mat-chip-list *ngIf="open">
+        <mat-chip color="primary" selected class="comment-form-buttton" type="submit" [disabled]="form.invalid" >
             Comment
     <i class="far fa-paper-plane "></i>
 </mat-chip>

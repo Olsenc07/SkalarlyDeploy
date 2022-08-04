@@ -310,14 +310,7 @@ router.post("/info", checkAuth,
     // pic.single('profilePic'),
     // pic_2.single('showCase'), 
     (req, res, next) => {
-        console.log('files log', req.file)
-
-
-
-
         const url = req.protocol + '://' + req.get('host');
-        console.log(url)
- 
         var info = new UserInfo({
             username: req.body.username,
             name: req.body.name,
@@ -418,7 +411,7 @@ router.post("/infoEd", checkAuth,
         let fetchedUser;
   
                 if(req.file){
-                    await UserInfo.updateOne({Creator:req.query.userId },{ProfilePicPath: url + '/showCase/' + req.file.filename})
+                    await UserInfo.updateOne({Creator:req.query.userId },{ProfilePicPath: url + '/profilePics/' + req.file.filename})
                 }
              if(req.body.name){
                      await UserInfo.updateOne({Creator:req.query.userId },{name: req.body.name})
@@ -583,10 +576,8 @@ router.get("/info", async(req, res, next) => {
 
 // userInfo recieving
 router.get("/infoPersonal", async(req, res, next) => {
-    console.log('care bear', req.query.userId )
      await UserInfo.find({Creator: req.query.userId})
     .then(docs => {
-            console.log('doors unlock all night', docs)
             res.status(200).json({
                 message: 'Posts personal fetched succesfully!',
                 infos: docs
@@ -601,7 +592,6 @@ router.get("/infoPersonal", async(req, res, next) => {
 
 // Get user
 router.get("/id", async(req, res) => {
-    console.log('soccer', req.query.id)
  await UserInfo.find({username: {$eq: req.query.id}})
         .then(documents => {
          
