@@ -1,7 +1,7 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <button mat-icon-button  class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button>
 
-    <textarea class="comment-form-textarea" formControlName="title" *ngIf="open"></textarea>
+    <textarea matInput  class="comment-form-textarea" formControlName="title" *ngIf="open"></textarea>
     <!-- {{submitLabel}}  -->
     <mat-chip-list *ngIf="open">
         <mat-chip color="primary" selected class="comment-form-buttton" type="submit" [disabled]="form.invalid" >

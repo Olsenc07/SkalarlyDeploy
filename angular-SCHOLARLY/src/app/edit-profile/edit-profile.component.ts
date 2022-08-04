@@ -73,8 +73,8 @@ export class EditProfileComponent implements OnInit {
   private infosSub: Subscription;
   // Showcase
   showCasePreview: any = '';
-  url: string[];
-  urlPP: string[];
+  url: string;
+  urlPP: string;
 
   i = 0;
   // Groups joined
@@ -308,7 +308,7 @@ export class EditProfileComponent implements OnInit {
       reader.onload = (Event: any) => {
         // called once readAsDataURL is completed
         console.log(Event);
-        this.urlPP = Event.target.result;
+        this.urlPP = reader.result as string;
       };
     }
   }
@@ -321,10 +321,10 @@ export class EditProfileComponent implements OnInit {
       this.form.get('showCase').updateValueAndValidity();
       reader.readAsDataURL(event.target.files[0]); // read file as data url
 
-      reader.onload = (Event: any) => {
+      reader.onload = () => {
         // called once readAsDataURL is completed
-        console.log(Event);
-        this.url = Event.target.result;
+
+        this.url = reader.result as string;
       };
     }
   }
@@ -565,7 +565,6 @@ export class EditProfileComponent implements OnInit {
       // this.cropImgPreview,
       // this.showCase.value
     );
-    console.log('cropped image', this.cropImgPreview);
 
     console.log('uncropped image', this.form.get('profilePic').value);
     // TODO: replace null with Profile object

@@ -38,20 +38,21 @@
                         add_a_photo
                       </div>
                     </button>
-                    <input #fileInputP id="fileInputP" class="hide" accept="image/* video/*" type="file"
-                      (change)="imagePreviewPP($event)" (change)="onImgChange($event)" [formControl]="profilePic"
+                    <input #fileInputP id="fileInputP" class="hide" accept=".png, .jpg, .jpeg" type="file"
+                      (change)="imagePreviewPP($event)"  [formControl]="profilePic"
                       name="profilePic">
+                      <!-- (change)="onImgChange($event)" -->
                   </div>
 
 
                 </div>
-                <div class="cropper">
+                <!-- <div class="cropper">
                   <image-cropper [imageChangedEvent]="imgChangeEvent" [maintainAspectRatio]="true"
                     [aspectRatio]=" 7 / 7" [resizeToWidth]="170" format="png" (imageCropped)="cropImg($event)"
                     (imageLoaded)="imgLoad()" (cropperReady)="initCropper()" (loadImageFailed)="imgFailed()"
                     [ngClass]="profilePic.value ? 'show' : 'hide' ">
                   </image-cropper>
-                </div>
+                </div> -->
 
               </div>
             </div>
@@ -69,7 +70,7 @@
                 <h2 class="Preview">Image Preview</h2>
                 <div class="center">
                   <!-- save this value for the form control -->
-                  <img class="previewPic" id="ProfilePic" [src]="cropImgPreview" />
+                  <img class="previewPic" id="ProfilePic" [src]="urlPP" />
                 </div>
               </div>
             </div>
