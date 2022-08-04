@@ -1,0 +1,31 @@
+<div class="comment">
+<div class="comment-right-part">
+<div class="comment-content">
+
+    <div class="comment-author">{{comment.username}}</div>
+</div>
+<div class="comment-text">{{comment.body}}</div>
+COMMENT FORM
+<div class="comment-actions">
+    <div *ngIf="canReply" class="comment-action" (click)="setActiveComment.
+    emit({id: comment.id, type: activeCommentType.replying})">Reply</div>
+</div>
+COMMENT FORM REPLYING FORM
+<app-card-comment-form *ngIf="isReplying()" submitLabel="Reply"
+[hasCancelButton]="true"
+(handleSubmit)="addComment.emit({text: $event, parentId: replyId })"
+(handleCancel)="setActiveComment.emit(null)"></app-card-comment-form>
+<div class="replies" *ngIf="replies.length > 0">
+    <comment *ngFor="let reply of replies" [comment]=""reply
+    [setActiveComment]="setActiveComment.emit($event)"
+    [activeComment]="activeComment"
+    (addComment)="addComment.emit($event)"
+    [parentId]="comment.id"
+    [replies]="[]"
+    [currentUserId]="currentUserId"
+    >
+
+    </comment>
+</div>
+</div>
+</div>

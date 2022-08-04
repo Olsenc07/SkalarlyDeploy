@@ -1,4 +1,10 @@
-import { Component, OnDestroy, Input } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { OnInit } from '@angular/core';
 import { AttendanceComponent } from '../main-pages/main-pages.component';
@@ -14,6 +20,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommentsService } from '../services/comments.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export interface CommentInterface {
   id: string;
@@ -22,6 +29,15 @@ export interface CommentInterface {
   userID: string;
   parentId: string | null;
   createdAt: string;
+}
+
+export interface ActiveCommentInterface {
+  id: string;
+  type: ActiveCommentTypeEnum;
+}
+export enum ActiveCommentTypeEnum {
+  replying = 'replying',
+  editing = 'editing',
 }
 
 @Component({
@@ -216,7 +232,7 @@ export class DeleteWarningComponent implements OnInit {
     this.postService.deletePost(postId);
   }
 }
-
+// Comments on posts
 @Component({
   selector: 'app-card-comments',
   templateUrl: './comments.component.html',
@@ -226,14 +242,117 @@ export class ReusableCommentsComponent implements OnInit {
   @Input() currentUserId!: string;
 
   comments: CommentInterface[] = [];
-
+  activeComment: ActiveCommentInterface | null = null;
   constructor(private commentsService: CommentsService) {}
 
   ngOnInit(): void {
-    // this.commentsService.getComments().subscribe((comments) => {
-    //   console.log('comments', comments);
-    //   this.comments = comments;
-    // });
+    this.commentsService.getComments().subscribe((comments) => {
+      console.log('comments', comments);
+      this.comments = comments;
+    });
+  }
+  addComment({
+    text,
+    parentId,
+  }: {
+    text: string;
+    parentId: null | string;
+  }): void {
+    console.log('addComment', text, parentId);
+    this.commentsService
+      .createComment(text, parentId)
+      .subscribe((createdComment) => {
+        this.comments = [...this.comments, createdComment];
+        this.activeComment = null;
+      });
+  }
+
+  getReplies(commentId: string): CommentInterface[] {
+    return this.comments
+      .filter((comment) => comment.parentId === commentId)
+      .sort(
+        (a, b) =>
+          new Date(a.createdAt).getMilliseconds() -
+          new Date(b.createdAt).getMilliseconds()
+      );
+  }
+
+  setActiveComment(activeComment: ActiveCommentInterface | null): void {
+    this.activeComment = activeComment;
+  }
+}
+
+// Comment on posts
+@Component({
+  selector: 'app-card-comment',
+  templateUrl: './comment.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class ReusableCommentComponent implements OnInit {
+  @Input() currentUserId!: string;
+  @Input() replies!: CommentInterface[];
+  @Input() activeComment: ActiveCommentInterface | null = null;
+  canReply: boolean = false;
+  activeCommentType = ActiveCommentTypeEnum;
+  replyId: string | null = null;
+
+  @Input() comment!: CommentInterface;
+  @Input() parentId: string | null = null;
+
+  @Output() setActiveComment =
+    new EventEmitter<ActiveCommentInterface | null>();
+  @Output() addComment = new EventEmitter<{
+    text: string;
+    parentId: string | null;
+  }>();
+  constructor(
+    private commentsService: CommentsService,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit(): void {
+    this.canReply = Boolean(this.currentUserId);
+    this.replyId = this.parentId ? this.parentId : this.comment.id;
+  }
+
+  isReplying(): boolean {
+    if (!this.activeComment) {
+      return false;
+    }
+    return (
+      this.activeComment.id === this.comment.id &&
+      this.activeComment.type === this.activeCommentType.replying
+    );
+  }
+}
+
+// Comment on posts form
+@Component({
+  selector: 'app-card-comment-form',
+  templateUrl: './commentForm.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class ReusableCommentFormComponent implements OnInit {
+  @Input() submitLabel!: string;
+  @Input() hasCancelButton = false;
+  @Input() initialText = '';
+
+  @Output() handleSubmit = new EventEmitter<string>();
+  @Output() handleCancel = new EventEmitter<void>();
+
+  form!: FormGroup;
+
+  constructor(private fb: FormBuilder) {}
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      title: [this.initialText, Validators.required],
+    });
+  }
+
+  onSubmit(): void {
+    console.log('onSubmit', this.form.value);
+    this.handleSubmit.emit(this.form.value.title);
   }
 }
 @Component({

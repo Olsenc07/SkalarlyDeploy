@@ -1,0 +1,15 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <textarea class="comment-form-textarea" formControlName="title"></textarea>
+    <!-- {{submitLabel}}  -->
+    <mat-chip-list>
+        <mat-chip class="comment-form-buttton" type="submit" [disabled]="form.invalid" color="primary">
+            Comment
+    <i class="far fa-paper-plane "></i>
+</mat-chip>
+    </mat-chip-list>
+<button *ngIf="hasCancelButton" type="button" 
+class="comment-form-button comment-form-cancel-button"
+(click)="handleCancel.emit()">
+    Cancel
+</button>
+</form>

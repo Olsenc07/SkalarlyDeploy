@@ -1,4 +1,20 @@
-<div currentUserId="1" *ngFor="let comment of comments"> 
+<div class="comments">
+<div class="comment-form-tile">Write comment</div>
+<!-- submitLabel="Comment" -->
+<app-card-comment-form  (handleSubmit)="addComment({text: $event, parentId: null})">
 
+</app-card-comment-form>
+<div class="comments-container">
+<app-card-comment *ngFor="let comment of comments" [comment]="comment" 
+[currentUserId]="currentUserId"
+[replies]="getReplies(comment.id)"
+[activeComment]="activeComment"
+(setActiveComment)="setActiveComment($event)"
+(addComment)="addComment($event)">
     {{comment.body}}
-</div> 
+</app-card-comment>
+
+</div>
+
+
+</div>
