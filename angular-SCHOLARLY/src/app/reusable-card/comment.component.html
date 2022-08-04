@@ -2,7 +2,7 @@
 <div class="comment-right-part">
 <div class="comment-content">
 
-    <div class="comment-author">{{comment.username}}</div>
+    <!-- <div class="comment-author">{{comment.username}}</div> -->
 </div>
 <div class="comment-text">{{comment.body}}</div>
 COMMENT FORM
@@ -11,7 +11,8 @@ COMMENT FORM
     emit({id: comment.id, type: activeCommentType.replying})">Reply</div>
 </div>
 COMMENT FORM REPLYING FORM
-<app-card-comment-form *ngIf="isReplying()" submitLabel="Reply"
+<!-- *ngIf="isReplying()" -->
+<app-card-comment-form  submitLabel="Reply"
 [hasCancelButton]="true"
 (handleSubmit)="addComment.emit({text: $event, parentId: replyId })"
 (handleCancel)="setActiveComment.emit(null)"></app-card-comment-form>

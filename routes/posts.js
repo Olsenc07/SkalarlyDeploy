@@ -4,6 +4,8 @@ const multer = require('multer');
 const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post');
 const showCase = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/showCases');
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
+const Comment = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/comment');
+
 
 const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 
@@ -194,12 +196,33 @@ router.delete("/:id", checkAuth, (req, res, next ) => {
 });
 
 // Comment on post
-router.post('/comment', (req, res) =>{
-    if (!req.body.comment){
-        res
-    }
+router.post('/comments', (req, res) =>{
+        console.log('hey chaz man', req.body.body)
+    
 })
+// get Comment on post
+router.get('/comments', async(req, res) =>{
+    console.log('hey chaz man again', req.body)
+    console.log('hey chaz man again userId', req.body.userId)
 
+    await UserInfo.findOne({Creator:req.body.userId })
+    .then(documents => {
+    var comment = new Comment({
+        body: documents,
+        username: documents.username,
+        ProfilePicPath: documents.ProfilePicPath
+    })
+    comment.save().then(createdComment => {
+        res.status(201).json({
+            message: 'Post added successfully',
+            messages: {
+                id: createdPost._id,
+                ...createdPost
+            } 
+        });
+    })
+    })
+})
 // Get others posts
 router.get("/otherUsers", async(req, res) => {
         await UserInfo.findOne({username: {$eq: req.query.id}})

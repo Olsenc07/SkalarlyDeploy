@@ -11,6 +11,7 @@ import { AttendanceComponent } from '../main-pages/main-pages.component';
 import { TaggedComponent } from '../main-pages/main-pages.component';
 import { StoreService } from '../services/store.service';
 import { Post, PostService } from '../services/post.service';
+
 import { ShowCase } from '../services/showcase.service';
 
 import { AuthService } from '../services/auth.service';
@@ -20,15 +21,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommentsService } from '../services/comments.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 
 export interface CommentInterface {
   id: string;
   body: string;
-  username: string;
-  userID: string;
-  parentId: string | null;
-  createdAt: string;
+  // username: string;
+  // userId: string;
+  // parentId: string | null;
+  // createdAt: string;
 }
 
 export interface ActiveCommentInterface {
@@ -252,30 +258,28 @@ export class ReusableCommentsComponent implements OnInit {
     });
   }
   addComment({
-    text,
-    parentId,
-  }: {
-    text: string;
-    parentId: null | string;
+    body,
+  }: // parentId,
+  {
+    body: string;
+    // parentId: null | string;
   }): void {
-    console.log('addComment', text, parentId);
-    this.commentsService
-      .createComment(text, parentId)
-      .subscribe((createdComment) => {
-        this.comments = [...this.comments, createdComment];
-        this.activeComment = null;
-      });
+    console.log('addComment', body);
+    this.commentsService.createComment(body).subscribe((createdComment) => {
+      this.comments = [...this.comments, createdComment];
+      this.activeComment = null;
+    });
   }
 
-  getReplies(commentId: string): CommentInterface[] {
-    return this.comments
-      .filter((comment) => comment.parentId === commentId)
-      .sort(
-        (a, b) =>
-          new Date(a.createdAt).getMilliseconds() -
-          new Date(b.createdAt).getMilliseconds()
-      );
-  }
+  // getReplies(commentId: string): CommentInterface[] {
+  //   return this.comments
+  //     .filter((comment) => comment.parentId === commentId)
+  //     .sort(
+  //       (a, b) =>
+  //         new Date(a.createdAt).getMilliseconds() -
+  //         new Date(b.createdAt).getMilliseconds()
+  //     );
+  // }
 
   setActiveComment(activeComment: ActiveCommentInterface | null): void {
     this.activeComment = activeComment;
@@ -312,18 +316,18 @@ export class ReusableCommentComponent implements OnInit {
 
   ngOnInit(): void {
     this.canReply = Boolean(this.currentUserId);
-    this.replyId = this.parentId ? this.parentId : this.comment.id;
+    // this.replyId = this.parentId ? this.parentId : this.comment.id;
   }
 
-  isReplying(): boolean {
-    if (!this.activeComment) {
-      return false;
-    }
-    return (
-      this.activeComment.id === this.comment.id &&
-      this.activeComment.type === this.activeCommentType.replying
-    );
-  }
+  // isReplying(): boolean {
+  //   if (!this.activeComment) {
+  //     return false;
+  //   }
+  //   return (
+  //     this.activeComment.id === this.comment.id &&
+  //     this.activeComment.type === this.activeCommentType.replying
+  //   );
+  // }
 }
 
 // Comment on posts form
@@ -334,6 +338,7 @@ export class ReusableCommentComponent implements OnInit {
 })
 export class ReusableCommentFormComponent implements OnInit {
   open = false;
+  userId: string;
   @Input() submitLabel!: string;
   @Input() hasCancelButton = false;
   @Input() initialText = '';
@@ -341,19 +346,28 @@ export class ReusableCommentFormComponent implements OnInit {
   @Output() handleSubmit = new EventEmitter<string>();
   @Output() handleCancel = new EventEmitter<void>();
 
-  form!: FormGroup;
+  comment: FormControl = new FormControl('');
 
-  constructor(private fb: FormBuilder) {}
+  form: FormGroup;
 
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      title: [this.initialText, Validators.required],
-    });
-  }
+  Comments = new FormGroup({
+    comment: this.comment,
+  });
 
-  onSubmit(): void {
-    console.log('onSubmit', this.form.value);
-    this.handleSubmit.emit(this.form.value.title);
+  constructor(
+    private fb: FormBuilder,
+    private commentsService: CommentsService
+  ) {}
+
+  ngOnInit(): void {}
+
+  // onSubmit(): void {
+  //   console.log('onSubmit', this.form.value);
+  //   this.handleSubmit.emit(this.form.value.title);
+  // }
+  CommentTrigger(): void {
+    this.commentsService.createComment(this.comment.value);
+    console.log('onComment', this.comment.value);
   }
 
   toggleComments(): void {

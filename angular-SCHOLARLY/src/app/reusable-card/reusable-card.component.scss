@@ -56,7 +56,7 @@
   max-width: 400px;
   width: 400px;
   font-family:  'Poppins', sans-serif;
-
+border: groove;
 }
 .comment-form-buttton{
   font-family:  'Cinzel', serif;
@@ -190,6 +190,7 @@
 }
 .profilePic {
   display: flex;
+  margin-right: 3%;
   margin-bottom: 2%;
   box-shadow: 0 2px 3px;
   justify-content: center;
