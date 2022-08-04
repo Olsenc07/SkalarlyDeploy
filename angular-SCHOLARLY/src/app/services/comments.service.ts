@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Subject, ReplaySubject } from 'rxjs';
 
 import { CommentInterface } from '../reusable-card/reusable-card.component';
 
 @Injectable()
 export class CommentsService {
-  private comments: CommentInterface[] = [];
+  private messages: CommentInterface[] = [];
   private commentsUpdated = new ReplaySubject<CommentInterface[]>();
 
   constructor(private http: HttpClient) {}
@@ -16,20 +16,36 @@ export class CommentsService {
   getAuthStatusListener(): any {
     return this.authStatusListener.asObservable();
   }
-  getComments(): Observable<CommentInterface[]> {
-    return this.http.get<CommentInterface[]>(
-      'http://localhost:3000/api/posts/comments'
-    );
+  getComments(): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'http://localhost:3000/api/posts/comments'
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((comment) => {
+            return {
+              id: comment._id,
+              body: comment.body,
+            };
+          });
+        })
+      )
+      .subscribe((transformedComment) => {
+        this.messages = transformedComment;
+        this.commentsUpdated.next([...this.messages]);
+      });
   }
 
   createComment(
-    body: string
+    body: string,
     // username: string,
-    // userId: string
+    userId: string
     // parentId: null | string
   ): any {
     const message = {
       body,
+      userId,
     };
     this.http
       .post<{ message: string; messages: CommentInterface }>(
@@ -44,8 +60,8 @@ export class CommentsService {
             // username,
             // userId
           };
-          this.comments.push(message);
-          this.commentsUpdated.next([...this.comments]);
+          this.messages.push(message);
+          this.commentsUpdated.next([...this.messages]);
         },
       });
   }

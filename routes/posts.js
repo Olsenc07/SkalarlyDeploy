@@ -195,33 +195,35 @@ router.delete("/:id", checkAuth, (req, res, next ) => {
     });
 });
 
-// Comment on post
-router.post('/comments', (req, res) =>{
+// get Comment on post
+router.get('/comments', (req, res) =>{
         console.log('hey chaz man', req.body.body)
     
 })
-// get Comment on post
-router.get('/comments', async(req, res) =>{
+//  Comment on post
+router.post('/comments', async(req, res) =>{
     console.log('hey chaz man again', req.body)
     console.log('hey chaz man again userId', req.body.userId)
-
+if(req.body.userId){
     await UserInfo.findOne({Creator:req.body.userId })
     .then(documents => {
     var comment = new Comment({
-        body: documents,
+        body: req.body.body,
         username: documents.username,
+        userId: req.body.userId,
         ProfilePicPath: documents.ProfilePicPath
     })
     comment.save().then(createdComment => {
         res.status(201).json({
-            message: 'Post added successfully',
+            message: 'Comment added successfully',
             messages: {
-                id: createdPost._id,
-                ...createdPost
+                id: createdComment._id,
+                ...createdComment
             } 
         });
     })
     })
+}
 })
 // Get others posts
 router.get("/otherUsers", async(req, res) => {

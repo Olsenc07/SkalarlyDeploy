@@ -259,16 +259,20 @@ export class ReusableCommentsComponent implements OnInit {
   }
   addComment({
     body,
+    userId,
   }: // parentId,
   {
     body: string;
+    userId: string;
     // parentId: null | string;
   }): void {
     console.log('addComment', body);
-    this.commentsService.createComment(body).subscribe((createdComment) => {
-      this.comments = [...this.comments, createdComment];
-      this.activeComment = null;
-    });
+    this.commentsService
+      .createComment(body, userId)
+      .subscribe((createdComment) => {
+        this.comments = [...this.comments, createdComment];
+        this.activeComment = null;
+      });
   }
 
   // getReplies(commentId: string): CommentInterface[] {
@@ -339,6 +343,9 @@ export class ReusableCommentComponent implements OnInit {
 export class ReusableCommentFormComponent implements OnInit {
   open = false;
   userId: string;
+  userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
+
   @Input() submitLabel!: string;
   @Input() hasCancelButton = false;
   @Input() initialText = '';
@@ -356,17 +363,28 @@ export class ReusableCommentFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
+    private authService: AuthService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
+        // Can add *ngIf="userIsAuthenticated" to hide items
+      });
+  }
 
   // onSubmit(): void {
   //   console.log('onSubmit', this.form.value);
   //   this.handleSubmit.emit(this.form.value.title);
   // }
   CommentTrigger(): void {
-    this.commentsService.createComment(this.comment.value);
+    this.commentsService.createComment(this.comment.value, this.userId);
     console.log('onComment', this.comment.value);
   }
 
