@@ -18,6 +18,8 @@ export class AuthService {
   private token: string;
   private tokenTimer: any;
   private userId: string;
+  private postId: string;
+
   private otheruserId: string;
 
   private authStatusListener = new Subject<boolean>();
@@ -34,6 +36,9 @@ export class AuthService {
   }
   getUserId(): string {
     return this.userId;
+  }
+  getPostId(): string {
+    return this.postId;
   }
 
   getAuthStatusListener(): any {

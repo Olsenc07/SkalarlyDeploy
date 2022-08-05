@@ -246,7 +246,8 @@ export class DeleteWarningComponent implements OnInit {
 })
 export class ReusableCommentsComponent implements OnInit {
   @Input() currentUserId!: string;
-
+  posts: Post[] = [];
+  private postsSub: Subscription;
   comments: CommentInterface[] = [];
   activeComment: ActiveCommentInterface | null = null;
   constructor(
@@ -259,6 +260,14 @@ export class ReusableCommentsComponent implements OnInit {
       console.log('comments', comments);
       this.comments = comments;
     });
+    this.postService.getPostsFeed();
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+
+        console.log('posts personal', this.posts);
+      });
   }
   addComment({
     body,
@@ -347,13 +356,14 @@ export class ReusableCommentComponent implements OnInit {
 })
 export class ReusableCommentFormComponent implements OnInit {
   open = false;
+  closed = true;
+
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
   postId: string;
-  posts: Post[] = [];
-  private postsSub: Subscription;
+
   @Input() submitLabel!: string;
   @Input() hasCancelButton = false;
   @Input() initialText = '';
@@ -378,21 +388,8 @@ export class ReusableCommentFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authListenerSubs = this.authService
-      .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
-        this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
-        // Can add *ngIf="userIsAuthenticated" to hide items
-      });
+
     // Post
-    // this.postService.getPosts();
-    // this.postsSub = this.postService
-    //   .getPostUpdateListener()
-    //   .subscribe((posts: Post[]) => {
-    //     this.posts = posts;
-    //   });
   }
 
   // onSubmit(): void {
@@ -408,13 +405,14 @@ export class ReusableCommentFormComponent implements OnInit {
     this.comment.setValue('');
     console.log('onComment', this.postId);
   }
-
+  clearComments(): void {
+    this.comment.setValue('');
+    this.closed = true;
+    this.open = false;
+  }
   toggleComments(): void {
-    if (!this.open) {
-      this.open = true;
-    } else {
-      this.open = false;
-    }
+    this.closed = false;
+    this.open = true;
   }
 }
 

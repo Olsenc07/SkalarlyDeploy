@@ -9,7 +9,14 @@
   margin-top: 1%;
   color: #7e7171;
 }
+.buttonsC{
+  display: flex;
+}
+.buttonsCWrapper{
+  display: flex;
+  justify-content: space-between;
 
+}
 .centerT {
   display: flex;
   justify-content: center;
@@ -50,11 +57,12 @@
   font-family:  'Cinzel', serif;
   margin-top: 2%;
   font-size: 28px;
-  margin-bottom: 1%;
 }
 .comment-form-textarea{
-  max-width: 400px;
-  width: 400px;
+  // max-width: 400px;
+  // width: 400px;
+  margin-top: 1%;
+  margin-bottom: 1%;
   font-family:  'Poppins', sans-serif;
 border: groove;
 }

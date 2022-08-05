@@ -1,18 +1,24 @@
-<form [formGroup]="Comments" >
-    <button mat-icon-button type="button" class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button>
+<form [formGroup]="Comments"  >
+    <button mat-icon-button type="button"  *ngIf="closed"
+     class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button>
 
-    <textarea  class="comment-form-textarea" [formControl]="comment" *ngIf="open"></textarea>
+    <textarea matInput class="comment-form-textarea" [formControl]="comment" *ngIf="open"></textarea>
     <!-- {{submitLabel}}  -->
-    <mat-chip-list *ngIf="open">
-        <mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger()"
-        type="button" [disabled]="!Comments.valid" >
-            Comment
-    <i class="far fa-paper-plane "></i>
+    <div class="buttonsCWrapper">
+    <mat-chip-list *ngIf="open" class="buttonsC">
+   
+<mat-chip  type="button" 
+class="comment-form-button comment-form-cancel-button"
+(click)="clearComments()">
+    Clear
+</mat-chip>
+</mat-chip-list>
+<mat-chip-list *ngIf="open" class="buttonsC">
+<mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger()"
+type="button" [disabled]="!Comments.valid" >
+    Comment
+<i class="far fa-paper-plane "></i>
 </mat-chip>
     </mat-chip-list>
-<!-- <button *ngIf="hasCancelButton" type="button" 
-class="comment-form-button comment-form-cancel-button"
-(click)="handleCancel.emit()">
-    Cancel
-</button> -->
+</div>
 </form>
