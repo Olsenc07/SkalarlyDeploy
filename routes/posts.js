@@ -201,17 +201,19 @@ router.get('/comments', (req, res) =>{
     
 })
 //  Comment on post
-router.post('/comments', async(req, res) =>{
-    console.log('hey chaz man again', req.body)
+router.post('/comments',
+ async(req, res) =>{
+    console.log('hey chaz man again', req.body.postId)
     console.log('hey chaz man again userId', req.body.userId)
-if(req.body.userId){
-    await UserInfo.findOne({Creator:req.body.userId })
+if (req.body.userId){
+    await UserInfo.findOne({Creator: req.body.userId })
     .then(documents => {
     var comment = new Comment({
         body: req.body.body,
         username: documents.username,
-        userId: req.body.userId,
-        ProfilePicPath: documents.ProfilePicPath
+        postId: req.body.postId,
+        ProfilePicPath: documents.ProfilePicPath,
+        Creator: req.body.userId
     })
     comment.save().then(createdComment => {
         res.status(201).json({

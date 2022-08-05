@@ -40,12 +40,15 @@ export class CommentsService {
   createComment(
     body: string,
     // username: string,
-    userId: string
+    userId: string,
+    postId: string
+
     // parentId: null | string
   ): any {
     const message = {
       body,
       userId,
+      postId,
     };
     this.http
       .post<{ message: string; messages: CommentInterface }>(

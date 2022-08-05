@@ -249,7 +249,10 @@ export class ReusableCommentsComponent implements OnInit {
 
   comments: CommentInterface[] = [];
   activeComment: ActiveCommentInterface | null = null;
-  constructor(private commentsService: CommentsService) {}
+  constructor(
+    private commentsService: CommentsService,
+    public postService: PostService
+  ) {}
 
   ngOnInit(): void {
     this.commentsService.getComments().subscribe((comments) => {
@@ -260,15 +263,17 @@ export class ReusableCommentsComponent implements OnInit {
   addComment({
     body,
     userId,
+    postId,
   }: // parentId,
   {
     body: string;
     userId: string;
+    postId: string;
     // parentId: null | string;
   }): void {
-    console.log('addComment', body);
+    console.log('addComment', postId);
     this.commentsService
-      .createComment(body, userId)
+      .createComment(body, userId, postId)
       .subscribe((createdComment) => {
         this.comments = [...this.comments, createdComment];
         this.activeComment = null;
@@ -346,6 +351,9 @@ export class ReusableCommentFormComponent implements OnInit {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
+  postId: string;
+  posts: Post[] = [];
+  private postsSub: Subscription;
   @Input() submitLabel!: string;
   @Input() hasCancelButton = false;
   @Input() initialText = '';
@@ -364,7 +372,8 @@ export class ReusableCommentFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private commentsService: CommentsService,
-    private authService: AuthService
+    private authService: AuthService,
+    private postService: PostService
   ) {}
 
   ngOnInit(): void {
@@ -377,6 +386,13 @@ export class ReusableCommentFormComponent implements OnInit {
         this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
+    // Post
+    // this.postService.getPosts();
+    // this.postsSub = this.postService
+    //   .getPostUpdateListener()
+    //   .subscribe((posts: Post[]) => {
+    //     this.posts = posts;
+    //   });
   }
 
   // onSubmit(): void {
@@ -384,8 +400,13 @@ export class ReusableCommentFormComponent implements OnInit {
   //   this.handleSubmit.emit(this.form.value.title);
   // }
   CommentTrigger(): void {
-    this.commentsService.createComment(this.comment.value, this.userId);
-    console.log('onComment', this.comment.value);
+    this.commentsService.createComment(
+      this.comment.value,
+      this.userId,
+      this.postId
+    );
+    this.comment.setValue('');
+    console.log('onComment', this.postId);
   }
 
   toggleComments(): void {
