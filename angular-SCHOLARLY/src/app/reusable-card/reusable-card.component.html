@@ -169,7 +169,8 @@
 
           <mat-divider></mat-divider>
 
-          <textarea matInput placeholder="Add to the discussion..." class="comment-form-textarea" [formControl]="comment" ></textarea>
+          <input matInput placeholder="Add to the discussion..." class="comment-form-textarea" 
+          maxlength="140" [formControl]="comment" >
           <!-- {{submitLabel}}  -->
           <div class="buttonsCWrapper">
 

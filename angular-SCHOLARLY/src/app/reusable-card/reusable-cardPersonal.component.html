@@ -165,7 +165,8 @@
         </div>
             <mat-divider></mat-divider>
 
-            <input matInput placeholder="Add to the discussion..." class="comment-form-textarea" [formControl]="comment">
+            <input matInput placeholder="Add to the discussion..." class="comment-form-textarea"
+            maxlength="140"  [formControl]="comment">
             <!-- <emoji-mart ></emoji-mart>
               <ngx-emoji  class="emoji-mart"   title="Choose your emoji">Hey emojis</ngx-emoji >  -->
 
@@ -202,6 +203,12 @@
               </div>
             </button>
               <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
+              <div *ngIf="userId == comment.Creator" class="trashCan">
+                <button  mat-icon-button
+                  (click)='onDeleteComment(comment.id)'><span class="material-icons-two-tone">
+                    delete_forever
+                    </span></button>
+                  </div>
       </div>
       <div class="commentText">{{comment.body}}</div>
       </div>

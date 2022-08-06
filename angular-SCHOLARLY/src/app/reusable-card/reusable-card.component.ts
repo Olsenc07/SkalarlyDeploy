@@ -85,6 +85,10 @@ export class ReusableCardComponent implements OnInit {
     this.postService.deletePost(postId);
     console.log('chaz whats up', postId);
   }
+  onDeleteComment(commentId: string): any {
+    this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
+  }
   constructor(
     private bottomSheet: MatBottomSheet,
     private authService: AuthService,
@@ -165,10 +169,10 @@ export class ReusableCardPersonalComponent implements OnInit {
   openTaggedSheet(): void {
     this.bottomSheet.open(TaggedComponent);
   }
-
-  // openDialog(postId): void {
-  //   this.dialog.open(DeleteWarningComponent);
-  // }
+  onDeleteComment(commentId: string): any {
+    this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
+  }
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
     // console.log('chaz whats up', postId);
@@ -580,6 +584,7 @@ export class CardInfoMainPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
+    private commentsService: CommentsService,
     public postService: PostService,
     private router: Router
   ) {}
@@ -603,5 +608,9 @@ export class CardInfoMainPageComponent implements OnInit {
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+  onDeleteComment(commentId: string): any {
+    this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
   }
 }

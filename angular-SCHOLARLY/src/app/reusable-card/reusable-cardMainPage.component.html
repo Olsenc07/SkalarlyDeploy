@@ -163,11 +163,72 @@
   
   
   
-        <div>
-  
-          <div class="rowM">
+      
             <mat-divider></mat-divider>
-            <app-card-comments></app-card-comments>
+            <input matInput placeholder="Add to the discussion..." class="comment-form-textarea"
+            maxlength="140" [formControl]="comment" >
+            <!-- {{submitLabel}}  -->
+            <div class="buttonsCWrapper">
+            <!-- <mat-chip-list *ngIf="open" class="buttonsC">
+           
+        <mat-chip  type="button" 
+        class="comment-form-button comment-form-cancel-button"
+        (click)="clearComments()">
+            Clear
+        </mat-chip>
+        </mat-chip-list> -->
+        <mat-chip-list class="buttonsC">
+          <mat-chip color="warn" selected (click)="loadComments(post.id)">
+          
+            Show Comments
+            <i class="far fa-comments"></i>
+          </mat-chip>
+          
+                      </mat-chip-list>
+                  
+        <mat-chip-list class="buttonsC">
+        <mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger(post.id)"
+        type="submit"  >
+        <!-- [disabled]="comment.value === '' " -->
+            Comment
+        <i class="far fa-paper-plane "></i>
+        </mat-chip>
+
+</mat-chip-list>
+</div>  
+      
+  
+<div *ngFor="let comment of comments; let even = even; let odd = odd">
+        <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
+         class="commentsDisplayWrapper">
+          
+            <div class="profilePic">
+<img src="{{comment.ProfilePicPath}}" class="pic">
+</div>
+<div class="commentsDisplay">
+  <div class="usernameBtn">
+<button mat-button *ngIf="userId !== comment.Creator" >
+  <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
+    </div>
+  </button>
+    <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}
+      </div>
+
+        <div *ngIf="userId == comment.Creator" class="trashCan">
+          <button  mat-icon-button
+            (click)='onDeleteComment(comment.id)'><span class="material-icons-two-tone">
+              delete_forever
+              </span></button>
+            </div>
+
+</div>
+<div class="commentText"> {{comment.body}}</div>
+
+</div>
+        </div>
+
+
+      </div>
             <!-- <div class="center1">
               <div class="center">
                 <button mat-icon-button (click)="openTaggedSheet()">
@@ -207,10 +268,7 @@
   
   
             </div> -->
-          </div>
-  
-  
-        </div>
+      
   
       </div>
     </mat-card>
