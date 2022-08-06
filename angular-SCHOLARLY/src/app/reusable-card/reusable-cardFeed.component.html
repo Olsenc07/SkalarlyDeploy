@@ -137,7 +137,7 @@
   
   
   
-        <div>
+   
   
 
             <mat-divider></mat-divider>
@@ -161,6 +161,7 @@
           <mat-chip color="warn" selected (click)="loadComments(post.id)">
           
             Show Comments
+            <i class="far fa-comments"></i>
           </mat-chip>
           
                       </mat-chip-list>
@@ -175,17 +176,26 @@
 
 </mat-chip-list>
 </div>  
-        </div>
+      
   
 <div *ngFor="let comment of comments">
-        <div>
-<div>{{comment.ProfilePicPath}}</div>
-<div>{{comment.username}}</div>
-<div>{{comment.body}}</div>
-
-Hey Chase good job :)
-
+        <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper">
+          
+            <div class="profilePic">
+<img src="{{comment.ProfilePicPath}}" class="pic">
+</div>
+<div class="commentsDisplay">
+  <div class="usernameBtn">
+<button mat-button >
+  <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
+    </div>
+  </button>
+</div>
+<div class="commentText">{{comment.body}}</div>
+</div>
         </div>
+        <mat-divider></mat-divider>
+
       </div>
 
 

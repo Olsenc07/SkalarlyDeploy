@@ -16,6 +16,9 @@ export class CommentsService {
   getAuthStatusListener(): any {
     return this.authStatusListener.asObservable();
   }
+  getMessagesUpdateListener(): any {
+    return this.commentsUpdated.asObservable();
+  }
   getComments(postId): any {
     this.http
       .get<{ message: string; messages: any }>(
@@ -28,6 +31,9 @@ export class CommentsService {
             return {
               id: comment._id,
               body: comment.body,
+              username: comment.username,
+              postId: comment.postId,
+              ProfilePicPath: comment.ProfilePicPath,
             };
           });
         })

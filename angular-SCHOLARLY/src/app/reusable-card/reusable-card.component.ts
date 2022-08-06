@@ -53,10 +53,13 @@ export enum ActiveCommentTypeEnum {
 export class ReusableCardComponent implements OnInit {
   isLoading = false;
   user: string;
+  open = true;
 
   // Filling with Post info from post.service
   posts: Post[] = [];
   private postsSub: Subscription;
+  comments: CommentInterface[] = [];
+  private commentsSub: Subscription;
   userId: string;
 
   infos: AuthDataInfo[] = [];
@@ -88,6 +91,7 @@ export class ReusableCardComponent implements OnInit {
     private bottomSheet: MatBottomSheet,
     private authService: AuthService,
     public postService: PostService,
+    private commentsService: CommentsService,
     public dialog: MatDialog,
     private route: ActivatedRoute
   ) {}
@@ -118,7 +122,15 @@ export class ReusableCardComponent implements OnInit {
         });
     });
   }
-
+  loadComments(postId: string): void {
+    console.log('hey logic fade away', postId);
+    this.commentsService.getComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: CommentInterface[]) => {
+        this.comments = comments;
+      });
+  }
   //   ngOnDestroy(): void{
   //     this.postsSub.unsubscribe();
   //   }
@@ -134,6 +146,8 @@ export class ReusableCardPersonalComponent implements OnInit {
   // Filling with Post info from post.service
   posts: Post[] = [];
   private postsSub: Subscription;
+  comments: CommentInterface[] = [];
+  private commentsSub: Subscription;
   userId: string;
 
   infos: AuthDataInfo[] = [];
@@ -165,6 +179,7 @@ export class ReusableCardPersonalComponent implements OnInit {
     private bottomSheet: MatBottomSheet,
     private authService: AuthService,
     public postService: PostService,
+    private commentsService: CommentsService,
     public dialog: MatDialog
   ) {}
 
@@ -188,6 +203,15 @@ export class ReusableCardPersonalComponent implements OnInit {
     //     this.infos = infos;
     //     this.isLoading = false;
     //   });
+  }
+  loadComments(postId: string): void {
+    console.log('hey logic fade away', postId);
+    this.commentsService.getComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: CommentInterface[]) => {
+        this.comments = comments;
+      });
   }
 
   //   ngOnDestroy(): void{
@@ -474,6 +498,7 @@ export class CardFeedComponent implements OnInit {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
+
   CommentTrigger(postId): void {
     this.commentsService.createComment(this.comment.value, this.userId, postId);
     this.comment.setValue('');
@@ -491,6 +516,11 @@ export class CardFeedComponent implements OnInit {
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: CommentInterface[]) => {
+        this.comments = comments;
+      });
   }
 }
 

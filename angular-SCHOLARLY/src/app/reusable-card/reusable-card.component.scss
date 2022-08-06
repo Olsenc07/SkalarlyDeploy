@@ -53,6 +53,22 @@
   flex-direction: column;
 
 }
+.commentsDisplay{
+  display: flex;
+  flex-direction: column;
+margin-top: 1%;
+}
+.commentsDisplayWrapper{
+  display: flex;
+  flex-direction: row;
+  font-family:  'Poppins', sans-serif;
+
+}
+.commentText{
+  display: flex;
+  align-items: center;
+
+}
 .comment-form-tile{
   font-family:  'Cinzel', serif;
   margin-top: 2%;
@@ -199,8 +215,7 @@ border: groove;
 }
 .profilePic {
   display: flex;
-  margin-right: 3%;
-  margin-bottom: 2%;
+  margin: 1% 3% 2% 0%;
   box-shadow: 0 2px 3px;
   justify-content: center;
   align-items: center;
@@ -320,4 +335,7 @@ border: groove;
   margin-right: 1%;
   flex-direction: column;
   justify-content: center;
+}
+.usernameBtn{
+  display: flex;
 }

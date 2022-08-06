@@ -32,7 +32,6 @@ export interface Post {
 export class PostService {
   private posts: Post[] = [];
   private postsUpdated = new ReplaySubject<Post[]>();
-  private messagessUpdated = new ReplaySubject<Post[]>();
 
   constructor(private http: HttpClient) {}
 
@@ -244,9 +243,7 @@ export class PostService {
   getPostUpdateListener(): any {
     return this.postsUpdated.asObservable();
   }
-  getMessagesUpdateListener(): any {
-    return this.messagessUpdated.asObservable();
-  }
+
   // Adding post
   addPost(
     userId: string,

@@ -170,7 +170,44 @@
   
           <div class="rowM">
             <mat-divider></mat-divider>
-            <app-card-comments></app-card-comments>
+            <textarea matInput placeholder="Add to the discussion.." class="comment-form-textarea" [formControl]="comment" *ngIf="open"></textarea>
+            <!-- {{submitLabel}}  -->
+            <div class="buttonsCWrapper">
+  
+            <mat-chip-list class="buttonsC">
+              <mat-chip color="warn" selected (click)="loadComments(post.id)">
+                Show Comments
+                <i class="far fa-comments"></i>
+              </mat-chip>
+                          </mat-chip-list>
+                          <mat-chip-list class="buttonsC">
+                            <mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger(post.id)"
+                            type="submit"  >
+                            <!-- [disabled]="comment.value === '' " -->
+                                Comment
+                            <i class="far fa-paper-plane "></i>
+                            </mat-chip>
+                    </mat-chip-list>
+  </div>
+            <div *ngFor="let comment of comments">
+              <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper">
+                
+                  <div class="profilePic">
+      <img src="{{comment.ProfilePicPath}}" class="pic">
+      </div>
+      <div class="commentsDisplay">
+        <div class="usernameBtn">
+      <button mat-button >
+        <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
+          </div>
+        </button>
+      </div>
+      <div class="commentText">{{comment.body}}</div>
+      </div>
+              </div>
+              <mat-divider></mat-divider>
+      
+            </div>
             <!-- <div class="center1">
               <div class="center">
                 <button mat-icon-button (click)="openTaggedSheet()">
