@@ -196,10 +196,11 @@
     </div>
     <div class="commentsDisplay">
       <div class="usernameBtn">
-    <button mat-button >
-      <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
-        </div>
-      </button>
+        <button mat-button *ngIf="userId !== comment.Creator" >
+          <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
+            </div>
+          </button>
+            <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
     </div>
     <div class="commentText">{{comment.body}}</div>
     </div>

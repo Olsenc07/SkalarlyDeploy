@@ -37,6 +37,7 @@
 .column_ {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .classes {
   display: flex;
@@ -47,7 +48,12 @@
   font-size: small;
   font-family:  'Poppins', sans-serif;
 }
+.link {
+  // color: cornflowerblue;
+  font-size: medium;
+  font-family:  'Poppins', sans-serif;
 
+}
 .mat-card-avatar {
   width: 50px;
   height: 50px;
@@ -119,6 +125,7 @@
 .textSize {
   font-size: medium;
   font-family:  'Poppins', sans-serif;
+  color: #7e7171;
   // color: #7e7171;
 }
 // }

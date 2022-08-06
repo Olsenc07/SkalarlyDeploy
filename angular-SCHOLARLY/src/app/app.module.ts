@@ -41,6 +41,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { environment } from 'src/environments/environment';
 
 import { routingComponents } from './app-routing.module';
@@ -113,13 +114,13 @@ import { AuthInterceptor } from './signup/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 
 // Socekt.io
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-const config: SocketIoConfig = {
-  url: environment.socketUrl, // socket server url;
-  options: {
-    transports: ['websocket'],
-  },
-};
+// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+// const config: SocketIoConfig = {
+//   url: environment.socketUrl, // socket server url;
+//   options: {
+//     transports: ['websocket'],
+//   },
+// };
 @NgModule({
   declarations: [
     AppComponent,
@@ -205,8 +206,9 @@ const config: SocketIoConfig = {
     MatExpansionModule,
     MatSnackBarModule,
     ScrollingModule,
+    PickerModule,
     MatProgressSpinnerModule,
-    SocketIoModule.forRoot(config),
+    // SocketIoModule.forRoot(config),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

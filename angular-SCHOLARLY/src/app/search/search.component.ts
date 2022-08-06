@@ -78,7 +78,6 @@ export class SearchComponent implements OnInit {
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
-        console.log(this.userId);
       });
     //    Info
     this.authService.getInfo();

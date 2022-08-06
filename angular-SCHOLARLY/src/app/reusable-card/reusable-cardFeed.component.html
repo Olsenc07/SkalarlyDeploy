@@ -39,12 +39,12 @@
   
                     <div class="nameTitle">
                       <!-- Button directs to that users profile -->
-                      <button mat-button>
-                        <div class="userName link" id="userName" (click)="navigateToPage(post.Username)">
-                          <!-- Olsen07 -->
-                          @{{post.Username}}
-                        </div>
-                      </button>
+                      
+                      <button mat-button *ngIf="userId !== post.Creator" >
+                        <div class="userName  link"  id="userName" (click)="navigateToPage(post.Username)">@{{post.Username}}
+                          </div>
+                        </button>
+                          <div class="userName  link"  *ngIf="userId == post.Creator"   id="userName">@{{post.Username}}</div>
                     </div>
                   </div>
   
@@ -143,7 +143,8 @@
             <!-- <button mat-icon-button type="button"  *ngIf="closed"
              class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button> -->
         
-            <input matInput placeholder="Add to the discussion..." class="comment-form-textarea" [formControl]="comment" >
+            <input matInput placeholder="Add to the discussion..." class="comment-form-textarea"
+            maxlength="140" [formControl]="comment" >
             <!-- {{submitLabel}}  -->
             <div class="buttonsCWrapper">
             <!-- <mat-chip-list *ngIf="open" class="buttonsC">
@@ -175,23 +176,35 @@
 </div>  
       
   
-<div *ngFor="let comment of comments">
-        <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper">
+<div *ngFor="let comment of comments; let even = even; let odd = odd">
+        <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
+         class="commentsDisplayWrapper">
           
             <div class="profilePic">
 <img src="{{comment.ProfilePicPath}}" class="pic">
 </div>
 <div class="commentsDisplay">
   <div class="usernameBtn">
-<button mat-button >
+<button mat-button *ngIf="userId !== comment.Creator" >
   <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
     </div>
   </button>
+    <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}
+      </div>
+
+        <div *ngIf="userId == comment.Creator" class="trashCan">
+          <button  mat-icon-button
+            (click)='onDeleteComment(comment.id)'><span class="material-icons-two-tone">
+              delete_forever
+              </span></button>
+            </div>
+
 </div>
-<div class="commentText">{{comment.body}}</div>
+<div class="commentText"> {{comment.body}}</div>
+
 </div>
         </div>
-        <mat-divider></mat-divider>
+
 
       </div>
 

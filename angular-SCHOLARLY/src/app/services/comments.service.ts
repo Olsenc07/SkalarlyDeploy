@@ -34,6 +34,7 @@ export class CommentsService {
               username: comment.username,
               postId: comment.postId,
               ProfilePicPath: comment.ProfilePicPath,
+              Creator: comment.Creator,
             };
           });
         })
@@ -71,6 +72,20 @@ export class CommentsService {
           this.messages.push(message);
           this.commentsUpdated.next([...this.messages]);
         },
+      });
+  }
+
+  // Delete comment
+  deleteComment(commentId: string): any {
+    // console.log('hey chase postId', postId);
+    this.http
+      .delete('http://localhost:3000/api/posts/comments/' + commentId)
+      .subscribe(() => {
+        const updatedPosts = this.messages.filter(
+          (post) => post.id !== commentId
+        );
+        this.messages = updatedPosts;
+        this.commentsUpdated.next([...this.messages]);
       });
   }
 }

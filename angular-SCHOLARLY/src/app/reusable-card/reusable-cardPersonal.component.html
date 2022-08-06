@@ -163,13 +163,17 @@
           </div>
   
         </div>
-  
-
             <mat-divider></mat-divider>
+
             <input matInput placeholder="Add to the discussion..." class="comment-form-textarea" [formControl]="comment">
+            <!-- <emoji-mart ></emoji-mart>
+              <ngx-emoji  class="emoji-mart"   title="Choose your emoji">Hey emojis</ngx-emoji >  -->
+
             <!-- {{submitLabel}}  -->
+
             <div class="buttonsCWrapper">
-  
+          
+
             <mat-chip-list class="buttonsC">
               <mat-chip color="warn" selected (click)="loadComments(post.id)">
                 Show Comments
@@ -193,10 +197,11 @@
       </div>
       <div class="commentsDisplay">
         <div class="usernameBtn">
-      <button mat-button >
-        <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
-          </div>
-        </button>
+          <button mat-button *ngIf="userId !== comment.Creator" >
+            <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
+              </div>
+            </button>
+              <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
       </div>
       <div class="commentText">{{comment.body}}</div>
       </div>

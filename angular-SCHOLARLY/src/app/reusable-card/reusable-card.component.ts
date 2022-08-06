@@ -11,9 +11,7 @@ import { AttendanceComponent } from '../main-pages/main-pages.component';
 import { TaggedComponent } from '../main-pages/main-pages.component';
 import { StoreService } from '../services/store.service';
 import { Post, PostService } from '../services/post.service';
-
 import { ShowCase } from '../services/showcase.service';
-
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { Subscription, Subject } from 'rxjs';
@@ -493,6 +491,10 @@ export class CardFeedComponent implements OnInit {
         this.infos = infos;
         this.isLoading = false;
       });
+  }
+  onDeleteComment(commentId: string): any {
+    this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
