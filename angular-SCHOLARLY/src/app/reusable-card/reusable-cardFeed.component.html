@@ -176,9 +176,13 @@
 </div>  
       
   
+<div  class="scroll">
 <div *ngFor="let comment of comments; let even = even; let odd = odd">
+  <!-- infinite-scroll -->
         <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
-         class="commentsDisplayWrapper">
+         class="commentsDisplayWrapper" 
+         (scrolled)="onScrollDown($event)" 
+         (scrolledUp)="onScrollUp($event)">
           
             <div class="profilePic">
 <img src="{{comment.ProfilePicPath}}" class="pic">
@@ -203,12 +207,12 @@
 <div class="commentText"> {{comment.body}}</div>
 
 </div>
-        </div>
 
 
+</div>
       </div>
 
-
+</div>
 
       </div>
     </mat-card>

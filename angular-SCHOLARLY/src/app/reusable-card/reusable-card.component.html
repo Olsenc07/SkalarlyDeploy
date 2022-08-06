@@ -189,6 +189,12 @@
                           </mat-chip>
                   </mat-chip-list>
 </div>
+
+
+
+
+<div  class="scroll">
+
           <div *ngFor="let comment of comments">
             <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper">
               
@@ -205,10 +211,9 @@
     </div>
     <div class="commentText">{{comment.body}}</div>
     </div>
-            </div>
-            <mat-divider></mat-divider>
-    
+            </div>    
           </div>
+</div>
           <!-- <div class="center1">
             <div class="center">
               <button mat-icon-button (click)="openTaggedSheet()">

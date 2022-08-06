@@ -190,6 +190,10 @@
                             </mat-chip>
                     </mat-chip-list>
   </div>
+
+
+
+  <div  class="scroll">
             <div *ngFor="let comment of comments">
               <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper">
                 
@@ -213,8 +217,8 @@
       <div class="commentText">{{comment.body}}</div>
       </div>
               </div>
-              <mat-divider></mat-divider>
       
+            </div>
             </div>
             <!-- <div class="center1">
               <div class="center">

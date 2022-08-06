@@ -41,6 +41,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
 import { environment } from 'src/environments/environment';
 
@@ -208,6 +209,7 @@ import { ErrorInterceptor } from './error-interceptor';
     ScrollingModule,
     PickerModule,
     MatProgressSpinnerModule,
+    InfiniteScrollModule,
     // SocketIoModule.forRoot(config),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

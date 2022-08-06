@@ -464,7 +464,10 @@ export class CardFeedComponent implements OnInit {
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
-  comments: CommentInterface[] = [];
+  comments: string[] = [];
+  // number of comments that load
+  sum = 5;
+  direction = '';
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
 
@@ -496,6 +499,40 @@ export class CardFeedComponent implements OnInit {
         this.isLoading = false;
       });
   }
+
+  // Loading in comments
+  onScrollDown(ev: any) {
+    console.log('scrolled down!!', ev);
+
+    this.sum += 5;
+    this.appendItems();
+
+    this.direction = 'scroll down';
+  }
+
+  onScrollUp(ev: any) {
+    console.log('scrolled up!', ev);
+    this.sum += 5;
+    this.prependItems();
+
+    this.direction = 'scroll up';
+  }
+  appendItems() {
+    this.addItems('push');
+  }
+  prependItems() {
+    this.addItems('unshift');
+  }
+  addItems(_method: string) {
+    for (let i = 0; i < this.sum; ++i) {
+      if (_method === 'push') {
+        this.comments.push([i].join(''));
+      } else if (_method === 'unshift') {
+        this.comments.unshift([i].join(''));
+      }
+    }
+  }
+  //
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
@@ -524,7 +561,7 @@ export class CardFeedComponent implements OnInit {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: CommentInterface[]) => {
+      .subscribe((comments: string[]) => {
         this.comments = comments;
       });
   }

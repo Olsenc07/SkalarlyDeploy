@@ -197,7 +197,7 @@
 </mat-chip-list>
 </div>  
       
-  
+<div  class="scroll">
 <div *ngFor="let comment of comments; let even = even; let odd = odd">
         <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
          class="commentsDisplayWrapper">
@@ -228,6 +228,7 @@
         </div>
 
 
+      </div>
       </div>
             <!-- <div class="center1">
               <div class="center">
