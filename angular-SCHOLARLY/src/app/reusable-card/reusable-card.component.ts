@@ -31,7 +31,6 @@ import {
 export interface CommentInterface {
   id: string;
   body: string;
-  // username: string;
   // userId: string;
   // parentId: string | null;
   // createdAt: string;
@@ -66,15 +65,6 @@ export class ReusableCardComponent implements OnInit {
   // selectedAttend = '';
   // attendances: any = ['Attending', 'Maybe', 'Not Attending'];
   // panelOpenState = false;
-  // showCases = [
-  //   // '../../assets/Pics/IMG-8413.PNG',
-  //   // '../../assets/Pics/IMG-8619.PNG',
-  //   '../../assets/Pics/WhiteSquareInAppLogo.jpg',
-  //   // '../../assets/Pics/IMG-8413.PNG',
-  //   // '../../assets/Pics/IMG-8619.PNG',
-  //   // '../../assets/Pics/ProperInAppLogo.jpeg ',
-  //   // '../../assets/Pics/IMG-8413.PNG'
-  // ];
 
   // radioChange(event: any): any {
   //   this.selectedAttend = event.target.value;
@@ -152,15 +142,6 @@ export class ReusableCardPersonalComponent implements OnInit {
   // selectedAttend = '';
   // attendances: any = ['Attending', 'Maybe', 'Not Attending'];
   // panelOpenState = false;
-  // showCases = [
-  //   // '../../assets/Pics/IMG-8413.PNG',
-  //   // '../../assets/Pics/IMG-8619.PNG',
-  //   '../../assets/Pics/WhiteSquareInAppLogo.jpg',
-  //   // '../../assets/Pics/IMG-8413.PNG',
-  //   // '../../assets/Pics/IMG-8619.PNG',
-  //   // '../../assets/Pics/ProperInAppLogo.jpeg ',
-  //   // '../../assets/Pics/IMG-8413.PNG'
-  // ];
 
   // radioChange(event: any): any {
   //   this.selectedAttend = event.target.value;
@@ -256,10 +237,6 @@ export class ReusableCommentsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.commentsService.getComments().subscribe((comments) => {
-      console.log('comments', comments);
-      this.comments = comments;
-    });
     this.postService.getPostsFeed();
     this.postsSub = this.postService
       .getPostUpdateListener()
@@ -396,12 +373,8 @@ export class ReusableCommentFormComponent implements OnInit {
   //   console.log('onSubmit', this.form.value);
   //   this.handleSubmit.emit(this.form.value.title);
   // }
-  CommentTrigger(): void {
-    this.commentsService.createComment(
-      this.comment.value,
-      this.userId,
-      this.postId
-    );
+  CommentTrigger(postId: string): void {
+    this.commentsService.createComment(this.comment.value, this.userId, postId);
     this.comment.setValue('');
     console.log('onComment', this.postId);
   }
@@ -455,6 +428,8 @@ export class ShowCaseComponent implements OnInit {
 })
 export class CardFeedComponent implements OnInit {
   isLoading = false;
+  open = true;
+  closed = true;
 
   userId: string;
   posts: Post[] = [];
@@ -463,9 +438,14 @@ export class CardFeedComponent implements OnInit {
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
+  comments: CommentInterface[] = [];
+  private commentsSub: Subscription;
+  comment: FormControl = new FormControl('');
+
   constructor(
     public showCaseService: ShowCaseService,
     private authService: AuthService,
+    private commentsService: CommentsService,
     public postService: PostService,
     private router: Router
   ) {}
@@ -493,6 +473,24 @@ export class CardFeedComponent implements OnInit {
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+  CommentTrigger(postId): void {
+    this.commentsService.createComment(this.comment.value, this.userId, postId);
+    this.comment.setValue('');
+    console.log('onComment', postId);
+  }
+  clearComments(): void {
+    this.comment.setValue('');
+    // this.closed = true;
+    // this.open = false;
+  }
+  toggleComments(): void {
+    this.closed = false;
+    this.open = true;
+  }
+  loadComments(postId: string): void {
+    console.log('hey logic fade away', postId);
+    this.commentsService.getComments(postId);
   }
 }
 

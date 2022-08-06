@@ -141,13 +141,55 @@
   
 
             <mat-divider></mat-divider>
-            <app-card-comments></app-card-comments>
+            <!-- <app-card-comments></app-card-comments> -->
+      
+            <!-- <button mat-icon-button type="button"  *ngIf="closed"
+             class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button> -->
+        
+            <textarea matInput placeholder="Add to the discussion.." class="comment-form-textarea" [formControl]="comment" *ngIf="open"></textarea>
+            <!-- {{submitLabel}}  -->
+            <div class="buttonsCWrapper">
+            <!-- <mat-chip-list *ngIf="open" class="buttonsC">
+           
+        <mat-chip  type="button" 
+        class="comment-form-button comment-form-cancel-button"
+        (click)="clearComments()">
+            Clear
+        </mat-chip>
+        </mat-chip-list> -->
+        <mat-chip-list class="buttonsC">
+          <mat-chip color="warn" selected (click)="loadComments(post.id)">
           
+            Show Comments
+          </mat-chip>
+          
+                      </mat-chip-list>
+                  
+        <mat-chip-list class="buttonsC">
+        <mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger(post.id)"
+        type="submit"  >
+        <!-- [disabled]="comment.value === '' " -->
+            Comment
+        <i class="far fa-paper-plane "></i>
+        </mat-chip>
 
-  
-  
+</mat-chip-list>
+</div>  
         </div>
   
+<div *ngFor="let comment of comments">
+        <div>
+<div>{{comment.ProfilePicPath}}</div>
+<div>{{comment.username}}</div>
+<div>{{comment.body}}</div>
+
+Hey Chase good job :)
+
+        </div>
+      </div>
+
+
+
       </div>
     </mat-card>
   </div>

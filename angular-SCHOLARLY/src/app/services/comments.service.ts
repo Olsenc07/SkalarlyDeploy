@@ -16,10 +16,11 @@ export class CommentsService {
   getAuthStatusListener(): any {
     return this.authStatusListener.asObservable();
   }
-  getComments(): any {
+  getComments(postId): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'http://localhost:3000/api/posts/comments'
+        'http://localhost:3000/api/posts/comments',
+        { params: { postId } }
       )
       .pipe(
         map((messageData) => {
@@ -39,7 +40,6 @@ export class CommentsService {
 
   createComment(
     body: string,
-    // username: string,
     userId: string,
     postId: string
 
@@ -60,7 +60,6 @@ export class CommentsService {
           const message: CommentInterface = {
             id: responseData.messages.id,
             body,
-            // username,
             // userId
           };
           this.messages.push(message);

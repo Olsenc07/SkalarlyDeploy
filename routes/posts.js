@@ -196,10 +196,22 @@ router.delete("/:id", checkAuth, (req, res, next ) => {
 });
 
 // get Comment on post
-router.get('/comments', (req, res) =>{
-        console.log('hey chaz man', req.body.body)
+router.get('/comments', async(req, res) =>{
+        await Comment.find({postId: req.query.postId})
+    .then(documents => {
+        console.log('hey chaz man man', documents);
+    res.status(200).json({
+        message: 'comments fetched succesfully!',
+        messages: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching comments failed!'
+        });
+    });
+});
     
-})
 //  Comment on post
 router.post('/comments',
  async(req, res) =>{

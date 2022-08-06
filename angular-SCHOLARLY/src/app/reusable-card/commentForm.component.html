@@ -14,11 +14,18 @@ class="comment-form-button comment-form-cancel-button"
 </mat-chip>
 </mat-chip-list>
 <mat-chip-list *ngIf="open" class="buttonsC">
-<mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger()"
+<mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger(post.id)"
 type="button" [disabled]="!Comments.valid" >
     Comment
 <i class="far fa-paper-plane "></i>
 </mat-chip>
     </mat-chip-list>
 </div>
+
+
+
+
 </form>
+
+<!-- <app-card-allcomments></app-card-allcomments> -->
+
