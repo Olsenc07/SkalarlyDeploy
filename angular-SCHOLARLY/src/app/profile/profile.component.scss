@@ -261,6 +261,7 @@ width: 100%;
     color: #7e7171;
   font-family:  'Poppins', sans-serif;
   margin: 1% 0%;
+  justify-content: space-evenly;
   }
 }
 @media (max-width: 1025px) {
@@ -734,7 +735,7 @@ mat-tab-group {
 }
 @media (min-width: 1025px) {
   .text-2 {
-    display: flex;
+    width: 100%;
   }
 }
 .text {

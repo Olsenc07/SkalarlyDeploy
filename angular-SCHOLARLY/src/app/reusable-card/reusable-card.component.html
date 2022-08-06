@@ -169,7 +169,7 @@
 
           <mat-divider></mat-divider>
 
-          <textarea matInput placeholder="Add to the discussion.." class="comment-form-textarea" [formControl]="comment" *ngIf="open"></textarea>
+          <textarea matInput placeholder="Add to the discussion..." class="comment-form-textarea" [formControl]="comment" ></textarea>
           <!-- {{submitLabel}}  -->
           <div class="buttonsCWrapper">
 
@@ -181,8 +181,8 @@
                         </mat-chip-list>
                         <mat-chip-list class="buttonsC">
                           <mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger(post.id)"
-                          type="submit"  >
-                          <!-- [disabled]="comment.value === '' " -->
+                          type="submit" [disabled]="comment.value === '' "  >
+               
                               Comment
                           <i class="far fa-paper-plane "></i>
                           </mat-chip>

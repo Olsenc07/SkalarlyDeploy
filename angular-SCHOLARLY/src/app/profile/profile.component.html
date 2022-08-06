@@ -139,8 +139,12 @@
         <div class="fName">
          
           <!-- Chase Olsen -->
+          <div>
           {{ info.pronouns}}
+            </div>
+              <div>
           {{ info.name}}
+        </div>
           <mat-chip-list *ngIf='userIsAuthenticated && !userId === info.Creator' class="center_" aria-label="FollowBtn">
             <mat-chip class="messageM" (click)="followClicked()">
     
