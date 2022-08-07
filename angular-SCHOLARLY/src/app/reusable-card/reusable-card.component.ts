@@ -88,11 +88,9 @@ export class ReusableCardComponent implements OnInit {
   }
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
-    console.log('chaz whats up', postId);
   }
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
-    console.log('chaz whats up', commentId);
   }
   constructor(
     private bottomSheet: MatBottomSheet,

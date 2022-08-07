@@ -20,7 +20,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit, OnDestroy {
+export class ProfileComponent implements OnInit {
   isLoading = false;
 
   userId: string;
@@ -39,25 +39,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private infosSubShowCase: Subscription;
 
   // Sign up and edit profile connections
-  profile = StoreService.profile$$;
-  Id = StoreService.userId$$;
-
-  ids = StoreService.ids;
-
-  // Course codes
-  // Com_ = StoreService.CodeCompleted.length;
-  // Com = StoreService.CodeCompleted
-  Pur_ = StoreService.Pur.length;
-  Pur = StoreService.Pur;
-
-  // Activity
-  groups = StoreService.Groups;
-
-  // Posts
-  // posts = StoreService.Posts;
-
-  // show cases, doesnt work when connected to service
-  // showCases = StoreService.ShowCases;
 
   showFiller = false;
   // TODO: initial following value would need to be loaded from database - for now, always start with false
@@ -93,14 +74,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         console.log('infos', this.infos);
       });
-    // // Posts
-    // this.postService.getPosts();
-    // this.postsSub = this.postService
-    //   .getPostUpdateListener()
-    //   .subscribe((posts: Post[]) => {
-    //     this.posts = posts;
-    //     this.isLoading = false;
-    //   });
     // Validation
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -117,28 +90,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .subscribe((showcases: ShowCase[]) => {
         this.showCases = showcases;
       });
-    // // showCases
-    // this.showCaseService.getShowCasePersonal();
-    // this.infosSubShowCase = this.showCaseService
-    //   .getshowCaseUpdateListener()
-    //   .subscribe((infos: ShowCase[]) => {
-    //     this.showCases = infos;
-    //     this.isLoading = false;
-    //     console.log('showCases', this.showCases);
-    //   });
-    // this.Com = this.Com.map(code => code.toUpperCase()).sort();
-    // this.Pur = this.Pur.map((code) => code.toUpperCase()).sort();
-
-    // this.showCases = this.showCases.toString();
-    // return this.Pur;
   }
 
   // this.Com
 
-  ngOnDestroy(): any {
-    this.postsSub.unsubscribe();
-    this.authListenerSubs.unsubscribe();
-  }
+  // ngOnDestroy(): any {
+  //   this.postsSub.unsubscribe();
+  //   this.authListenerSubs.unsubscribe();
+  // }
 }
 
 /** @title Sidenav open & close behavior */
@@ -147,7 +106,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   templateUrl: './userProfile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class UserProfileComponent implements OnInit, OnDestroy {
+export class UserProfileComponent implements OnInit {
   constructor(
     private bottomSheet: MatBottomSheet,
     public postService: PostService,
@@ -197,10 +156,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): any {
-    this.postsSub.unsubscribe();
-    // this.authListenerSubs.unsubscribe();
-  }
+  // ngOnDestroy(): any {
+  //   this.postsSub.unsubscribe();
+  //   // this.authListenerSubs.unsubscribe();
+  // }
 }
 
 @Component({
