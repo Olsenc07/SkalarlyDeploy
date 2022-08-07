@@ -26,17 +26,17 @@
 
           </div>
           <div class="row2">
-            <div class="column" *ngFor="let info of infos">
+            <div class="column" >
               <!-- *ngIf="posts.length > 0" -->
               <div class="row-">
-                <div class="profilePic" *ngIf="info.ProfilePicPath">
+                <div class="profilePic" *ngIf="post.ProfilePicPath">
                   <!-- need to get croppeded value -->
-                  <img class="pic" src="{{info.ProfilePicPath}}">
+                  <img class="pic" src="{{posts.ProfilePicPath}}">
                 </div>
 
                 <div class="column1">
-                  <div class="linkN" *ngIf="info.name">
-                    {{ info.name}}
+                  <div class="linkN" *ngIf="post.Name">
+                    {{ post.Name}}
                   </div>
 
 
@@ -46,7 +46,7 @@
               
                       <div class="userName  link"  id="userName" >
                         <!-- Olsen07 -->
-                        @{{info.username}}
+                        @{{post.Username}}
                       </div>
         
                   </div>
@@ -56,32 +56,7 @@
               </div>
 
 
-              <!-- <div class="row-" *ngIf="!(info.ProfilePicPath)">
-
-
-                <!-- <div class="profilePic">
-                  <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="pic" />
-                </div> --
-
-
-                <div class="column1">
-                  <div class="linkN">
-                    {{profile.Name}}
-                  </div>
-
-                  <div class="nameTitle">
-                    <!-- Button directs to that users profile --
-                    <button mat-button>
-                      <div class="userName  link">
-                        <!-- Olsen07 --
-                        {{ids.UserName}}
-                      </div>
-                    </button>
-                  </div>
-                </div>
-
-
-              </div> -->
+            
 
             </div>
 
@@ -182,8 +157,8 @@
                         </mat-chip-list>
                         <mat-chip-list class="buttonsC">
                           <mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger(post.id)"
-                          type="submit" [disabled]="comment.value === '' "  >
-               
+                          type="submit"   >
+               <!-- [disabled]="comment.value === '' " -->
                               Comment
                           <i class="far fa-paper-plane "></i>
                           </mat-chip>
@@ -195,8 +170,11 @@
 
 <div  class="scroll">
 
-          <div *ngFor="let comment of comments">
-            <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper">
+          <div *ngFor="let comment of comments; let even = even; let odd = odd">
+            <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
+             class="commentsDisplayWrapper"
+             (scrolled)="onScrollDown($event)" 
+         (scrolledUp)="onScrollUp($event)">
               
                 <div class="profilePic">
     <img src="{{comment.ProfilePicPath}}" class="pic">

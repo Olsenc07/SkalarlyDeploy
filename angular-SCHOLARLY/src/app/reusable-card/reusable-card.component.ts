@@ -50,15 +50,20 @@ export enum ActiveCommentTypeEnum {
 })
 export class ReusableCardComponent implements OnInit {
   isLoading = false;
+  userId: string;
+
   user: string;
   open = true;
 
   // Filling with Post info from post.service
   posts: Post[] = [];
   private postsSub: Subscription;
-  comments: CommentInterface[] = [];
+  comments: string[] = [];
   private commentsSub: Subscription;
-  userId: string;
+  comment: FormControl = new FormControl('');
+  // number of comments that load
+  sum = 5;
+  direction = '';
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
@@ -114,28 +119,56 @@ export class ReusableCardComponent implements OnInit {
           this.isLoading = false;
           console.log('posts yo', this.posts);
         });
-      // Info
-      this.postService.getOtherInfo(id);
-      this.infosSub = this.authService
-        .getInfoUpdateListener()
-        .subscribe((infos: AuthDataInfo[]) => {
-          this.infos = infos;
-          this.isLoading = false;
-        });
     });
+  }
+  CommentTrigger(postId: string): void {
+    this.commentsService.createComment(this.comment.value, this.userId, postId);
+    this.comment.setValue('');
+    console.log('onComment', postId);
   }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: CommentInterface[]) => {
+      .subscribe((comments: string[]) => {
         this.comments = comments;
       });
+  } // Loading in comments
+  onScrollDown(ev: any): any {
+    console.log('scrolled down!!', ev);
+
+    this.sum += 5;
+    this.appendItems();
+
+    this.direction = 'scroll down';
   }
-  //   ngOnDestroy(): void{
-  //     this.postsSub.unsubscribe();
-  //   }
+
+  onScrollUp(ev: any): any {
+    console.log('scrolled up!', ev);
+    this.sum += 5;
+    this.prependItems();
+
+    this.direction = 'scroll up';
+  }
+  appendItems(): any {
+    this.addItems('push');
+  }
+  prependItems(): any {
+    this.addItems('unshift');
+  }
+  addItems(_method: string): any {
+    for (let i = 0; i < this.sum; ++i) {
+      if (_method === 'push') {
+        this.comments.push([i].join(''));
+      } else if (_method === 'unshift') {
+        this.comments.unshift([i].join(''));
+      }
+    }
+  }
+  // ngOnDestroy(): void {
+  //   this.postsSub.unsubscribe();
+  // }
 }
 @Component({
   selector: 'app-card-personal',
@@ -144,13 +177,14 @@ export class ReusableCardComponent implements OnInit {
 })
 export class ReusableCardPersonalComponent implements OnInit {
   isLoading = false;
+  userId: string;
 
   // Filling with Post info from post.service
   posts: Post[] = [];
   private postsSub: Subscription;
   comments: CommentInterface[] = [];
   private commentsSub: Subscription;
-  userId: string;
+  comment: FormControl = new FormControl('');
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
@@ -197,14 +231,11 @@ export class ReusableCardPersonalComponent implements OnInit {
         this.isLoading = false;
         console.log('posts', this.posts);
       });
-    // Info
-    // this.authService.getInfoPersonal(this.userId);
-    // this.infosSub = this.authService
-    //   .getInfoUpdateListener()
-    //   .subscribe((infos: AuthDataInfo[]) => {
-    //     this.infos = infos;
-    //     this.isLoading = false;
-    //   });
+  }
+  CommentTrigger(postId: string): void {
+    this.commentsService.createComment(this.comment.value, this.userId, postId);
+    this.comment.setValue('');
+    console.log('onComment', postId);
   }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
@@ -215,10 +246,6 @@ export class ReusableCardPersonalComponent implements OnInit {
         this.comments = comments;
       });
   }
-
-  //   ngOnDestroy(): void{
-  //     this.postsSub.unsubscribe();
-  //   }
 }
 @Component({
   selector: 'app-deletewarning-page',
@@ -547,15 +574,15 @@ export class CardFeedComponent implements OnInit {
     this.comment.setValue('');
     console.log('onComment', postId);
   }
-  clearComments(): void {
-    this.comment.setValue('');
-    // this.closed = true;
-    // this.open = false;
-  }
-  toggleComments(): void {
-    this.closed = false;
-    this.open = true;
-  }
+  // clearComments(): void {
+  //   this.comment.setValue('');
+  //   // this.closed = true;
+  //   // this.open = false;
+  // }
+  // toggleComments(): void {
+  //   this.closed = false;
+  //   this.open = true;
+  // }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);

@@ -63,6 +63,7 @@ width: 100%;
     flex-direction: column;
     height: 100%;
     align-items: center;
+    margin-left: 4%;
   }
 }
 @media (max-width: 1025px) {
@@ -261,7 +262,6 @@ width: 100%;
     color: #7e7171;
   font-family:  'Poppins', sans-serif;
   margin: 1% 0%;
-  justify-content: space-evenly;
   }
 }
 @media (max-width: 1025px) {
@@ -599,7 +599,10 @@ mat-tab-group {
     justify-content: center;
   }
 }
-
+.pronouns{
+  display: flex;
+    margin-left: 4%;
+}
 .relationship {
   display: flex;
   justify-content: center;

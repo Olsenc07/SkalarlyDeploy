@@ -138,13 +138,13 @@
 
         <div class="fName">
          
-          <!-- Chase Olsen -->
           <div>
-          {{ info.pronouns}}
+            {{ info.name}}
+          </div>
+          <div class="pronouns">
+          ({{ info.pronouns}})
             </div>
-              <div>
-          {{ info.name}}
-        </div>
+         
           <mat-chip-list *ngIf='userIsAuthenticated && !userId === info.Creator' class="center_" aria-label="FollowBtn">
             <mat-chip class="messageM" (click)="followClicked()">
     
@@ -487,15 +487,17 @@
    
             <div class="showCase" >
 
-<app-showcase>
-  
-</app-showcase>
-              <!-- <div class="column" *ngIf="(userId === showCase.Creator)">
+              <div class="showCase" *ngFor="let showCase of showCases">
 
-                <img class="img" src={{showCase.ShowCasePath}} />
-                <!-- *ngFor="let showCase of showCases {{ShowCase}} --
 
-              </div> -->
+                <div class="column" >
+
+                  <img class="img" src={{showCase.ShowCasePath}} />
+                  <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
+
+                </div>
+
+              </div>
 
             </div>
             <!-- <div class="showCase" *ngIf="info.ShowCasePath">

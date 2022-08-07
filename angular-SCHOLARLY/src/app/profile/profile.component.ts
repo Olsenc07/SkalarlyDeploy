@@ -111,6 +111,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
+    this.showCaseService.getShowCasePersonal(this.userId);
+    this.postsSub = this.showCaseService
+      .getshowCaseUpdateListener()
+      .subscribe((showcases: ShowCase[]) => {
+        this.showCases = showcases;
+      });
     // // showCases
     // this.showCaseService.getShowCasePersonal();
     // this.infosSubShowCase = this.showCaseService
@@ -165,10 +171,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
-  Pur_ = StoreService.Pur.length;
-  Pur = StoreService.Pur;
-  groups = StoreService.Groups;
-
   showFiller = false;
   // TODO: initial following value would need to be loaded from database - for now, always start with false
   following = false;
@@ -178,8 +180,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.route.queryParams.subscribe((params) => {
       this.user = params.id;
       const id = this.user;
-      console.log(this.user, 'bunny');
-      console.log(id, 'rabbit');
       // Infos
       this.authService.getOtherInfo(id);
       this.infosSub = this.authService
@@ -193,34 +193,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         .subscribe((infos: ShowCase[]) => {
           this.showCases = infos;
           this.isLoading = false;
-          console.log('showCases', this.showCases);
         });
-      // // Posts
-      // this.postService.getOthersPosts(id);
-      // this.postsSub = this.postService
-      //   .getPostUpdateListener()
-      //   .subscribe((posts: Post[]) => {
-      //     this.posts = posts;
-      //     this.isLoading = false;
-      //   });
     });
-    // this.userId = this.authService.getUserId();
-    // this.userIsAuthenticated = this.authService.getIsAuth();
-    // this.authListenerSubs = this.authService
-    // .getAuthStatusListener()
-    // .subscribe(isAuthenticated => {
-    //   this.userIsAuthenticated = isAuthenticated;
-    //   this.userId = this.authService.getUserId();
-    // fetch(`/user/${this.userId}`);
-    // console.log(this.userId);
-
-    // Can add *ngIf="userIsAuthenticated" to hide items
-    // });
-    // this.Com = this.Com.map(code => code.toUpperCase()).sort();
-    // this.Pur = this.Pur.map((code) => code.toUpperCase()).sort();
-    // this.showCases = this.showCases.toString();
-    // return this.Pur;
-    // showCases
   }
 
   ngOnDestroy(): any {
