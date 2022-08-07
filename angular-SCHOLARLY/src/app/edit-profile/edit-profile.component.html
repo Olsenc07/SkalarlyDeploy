@@ -129,8 +129,8 @@
       </div>
           <div class="gender">
       <mat-form-field  class="smaller">
-        <mat-label *ngIf="info.pronoun">{{info.pronouns}}</mat-label>
-        <mat-label *ngIf="!info.pronoun">Prefered Pronouns</mat-label>
+        <mat-label *ngIf="info.pronouns">{{info.pronouns}}</mat-label>
+        <mat-label *ngIf="!info.pronouns">Prefered Pronouns</mat-label>
 
         <input matInput type='text' [formControl]="pronoun" [matAutocomplete]="auto"/>
         <mat-autocomplete #auto="matAutocomplete">

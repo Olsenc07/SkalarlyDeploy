@@ -657,9 +657,11 @@ export class AuthService {
             // ShowCasePath: responseData.post.ShowCasePath,
           };
           this.router.navigate(['/profile']);
+          this.snackBar.open('Profile edited!', 'Nice!', {
+            duration: 3000,
+          });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
-          // this.snackBar.open('Sign in with your new account', 'Will do!!');
         },
         error: (error) => {
           this.authStatusListener.next(false);

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Subject, ReplaySubject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CommentInterface } from '../reusable-card/reusable-card.component';
 
@@ -10,7 +11,7 @@ export class CommentsService {
   private messages: CommentInterface[] = [];
   private commentsUpdated = new ReplaySubject<CommentInterface[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   private authStatusListener = new Subject<boolean>();
   getAuthStatusListener(): any {
@@ -71,6 +72,9 @@ export class CommentsService {
           };
           this.messages.push(message);
           this.commentsUpdated.next([...this.messages]);
+          this.snackBar.open('Your comment added!', 'Yay!', {
+            duration: 3000,
+          });
         },
       });
   }

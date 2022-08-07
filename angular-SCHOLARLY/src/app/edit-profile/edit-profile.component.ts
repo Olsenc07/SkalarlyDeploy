@@ -390,13 +390,6 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
-
-    this.postService.getPosts();
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-      });
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
@@ -446,45 +439,7 @@ export class EditProfileComponent implements OnInit {
     this.showCase.setValue('');
     document.getElementById('firstP').removeAttribute('src');
   }
-  // Groups joined
-  // previousGroupCard(): number {
-  //   --this.g;
-  //   if (0 > this.g) {
-  //     this.g = this.posts.length - 1;
-  //     return this.g;
-  //   }
-  //   console.log(this.g);
-  // }
-  // nextGroupCard(): number {
-  //   ++this.g;
-  //   if (this.g >= this.posts.length) {
-  //     this.g = 0;
-  //     return this.g;
-  //   }
-  //   console.log(this.g);
-  //   // go forward one card
-  //   // const NextG = document.getElementById('groupCard');
-  //   // NextG.scrollIntoView();
-  // }
 
-  // Posts made
-  // previousPostCard(): number {
-  //   --this.p;
-  //   if (0 > this.p) {
-  //     this.p = this.posts.length - 1;
-  //     return this.p;
-  //   }
-  //   console.log(this.p);
-  // }
-  // nextPostCard(): number {
-  //   ++this.p;
-  //   if (this.p >= this.posts.length) {
-  //     this.p = 0;
-  //     return this.p;
-  //   }
-  //   console.log(this.p);
-  //   // go forward one card
-  // }
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
   }

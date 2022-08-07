@@ -3,6 +3,7 @@ import { ReplaySubject, Subject } from 'rxjs';
 import { AuthData, AuthDataInfo } from '../signup/auth-data.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Post {
   id: string;
@@ -33,7 +34,7 @@ export class PostService {
   private posts: Post[] = [];
   private postsUpdated = new ReplaySubject<Post[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
@@ -322,6 +323,9 @@ export class PostService {
           // postData.id = id_;
           this.posts.push(postId);
           this.postsUpdated.next([...this.posts]);
+          this.snackBar.open('Your post added!', 'Yay!', {
+            duration: 3000,
+          });
         },
       });
   }

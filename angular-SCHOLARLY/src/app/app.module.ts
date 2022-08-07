@@ -39,7 +39,6 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
@@ -206,7 +205,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatCardModule,
     MatExpansionModule,
     MatSnackBarModule,
-    ScrollingModule,
     PickerModule,
     MatProgressSpinnerModule,
     InfiniteScrollModule,

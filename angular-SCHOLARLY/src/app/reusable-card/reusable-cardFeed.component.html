@@ -156,12 +156,13 @@
         </mat-chip>
         </mat-chip-list> -->
         <mat-chip-list class="buttonsC">
-          <mat-chip color="warn" selected (click)="loadComments(post.id)">
+        
+          <mat-chip class="showCommentsBtn"  (click)="loadComments(post.id)">
           
             Show Comments
             <i class="far fa-comments"></i>
           </mat-chip>
-          
+  
                       </mat-chip-list>
                   
         <mat-chip-list class="buttonsC">
@@ -179,10 +180,14 @@
 <div  class="scroll">
 <div *ngFor="let comment of comments; let even = even; let odd = odd">
   <!-- infinite-scroll -->
+  <!--  infiniteScroll  -->
         <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
          class="commentsDisplayWrapper" 
+         infiniteScrollModule
+         [scrollWindow]="false"
          (scrolled)="onScrollDown($event)" 
-         (scrolledUp)="onScrollUp($event)">
+         (scrolledUp)="onScrollUp($event)"
+         >
           
             <div class="profilePic">
 <img src="{{comment.ProfilePicPath}}" class="pic">

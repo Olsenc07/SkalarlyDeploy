@@ -5,6 +5,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { OnInit } from '@angular/core';
 import { AttendanceComponent } from '../main-pages/main-pages.component';
@@ -132,7 +133,8 @@ export class ReusableCardComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments;
       });
-  } // Loading in comments
+  }
+  // Loading in comments
   onScrollDown(ev: any): any {
     console.log('scrolled down!!', ev);
 
@@ -155,11 +157,11 @@ export class ReusableCardComponent implements OnInit {
   prependItems(): any {
     this.addItems('unshift');
   }
-  addItems(_method: string): any {
+  addItems(Method: string): any {
     for (let i = 0; i < this.sum; ++i) {
-      if (_method === 'push') {
+      if (Method === 'push') {
         this.comments.push([i].join(''));
-      } else if (_method === 'unshift') {
+      } else if (Method === 'unshift') {
         this.comments.unshift([i].join(''));
       }
     }
