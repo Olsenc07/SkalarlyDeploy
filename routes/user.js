@@ -725,16 +725,26 @@ router.post("/login1", verifyEmailV, async (req, res, next) => {
 // Login
 router.post("/login", verifyEmail, async (reg, res, next) => {
     let fetchedUser;
-   await User.findOne({ email: reg.body.email })
-        .then(user => {
-            if (!user) {
+
+    await User.findOne({ email: reg.body.email })
+    .then(test1 => {
+        UserInfo.findOne({username: test1.username})
+        .then( userInfo => {
+            if (!userInfo) {
                 return res.status(401).json({
-                    message: "Authentication failed "
+                    message: "Your account was made improperly. Please delete it and try again!"
                 });
             }
-            fetchedUser = user;
-            return bcrypt.compare(reg.body.password, user.password)
-        })
+        
+
+
+if(userInfo){
+
+    User.findOne({ email: reg.body.email })
+        .then(user => {
+                fetchedUser = user;
+                return bcrypt.compare(reg.body.password, user.password)
+        })   
         .then(result => {
             if (!result) {
                 return res.status(401).json({
@@ -758,6 +768,11 @@ router.post("/login", verifyEmail, async (reg, res, next) => {
 
             });
         });
+        
+    }
+})
+})
+
 });
 // Search users
 router.post('/getusers', async (req, res) => {
