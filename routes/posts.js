@@ -373,7 +373,6 @@ if (req.file){
 
 // showCase deleting
 router.delete("/showCases/:id", checkAuth, (req, res, next ) => {
-    console.log('id params', req.params.id )
     showCase.deleteOne({_id: req.params.id}).then(result => {
         if (result){
         res.status(200).json({message: 'showCase deleted!!'});

@@ -3,7 +3,10 @@
   </div>
 
 <div *ngFor="let info of infos">
-<mat-card class="row1"  *ngIf="(userId !== info.Creator) && !isLoading">
+<mat-card class="row1"  *ngIf="(userId !== info.Creator) && !isLoading"
+ infiniteScrollModule
+(scrolled)="onScrollDown($event)" 
+(scrolledUp)="onScrollUp($event)">
     <div class="column"  >
         <div class="row_">
             <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPath">

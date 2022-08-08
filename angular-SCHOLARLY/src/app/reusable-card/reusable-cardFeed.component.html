@@ -184,7 +184,6 @@
         <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
          class="commentsDisplayWrapper" 
          infiniteScrollModule
-         [scrollWindow]="false"
          (scrolled)="onScrollDown($event)" 
          (scrolledUp)="onScrollUp($event)"
          >

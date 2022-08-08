@@ -605,28 +605,7 @@ router.get("/id", async(req, res) => {
                 message: 'Fetching infos failed!'
             });
         });
-        // await UserInfo.findOne({username: {$eq: req.query.id}})
-        // .then(docs => {
-        //     console.log('day light', docs.Creator)
-        //     showCase.find({Creator: docs.Creator})
-        //    .then(doc => {
-        //     console.log('doc', doc)
-
-        //    })
-        // })
-        // await UserInfo.findOne({username: {$eq: req.query.id}})
-        // .then(docs => {
-        //     console.log('night light', docs.Creator)
-        //     Post.find({Creator: docs.Creator})
-        //    .then(doc => {
-        //     console.log('doors', doc)
-
-        //    })
-        // })
-
-
-
-
+    
 });
 
 // Follow a user
