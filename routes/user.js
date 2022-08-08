@@ -85,7 +85,7 @@ router.post("/signup", async (req, res, next) => {
                     });
                     user.save().then(result => {
                         res.status(201).json({
-                            message: 'Yay a new User!!',
+                            message: 'Yay a new User!',
                             result: result
                         });
                     })
@@ -239,7 +239,7 @@ router.post('/forgot', async (req, res) => {
         `,
             html: `
         <h2>Hello ${user.username} we hear you forgot your password.</h2>
-        <div> Here is your reset code. Copy this and keep it a secret!! </div>
+        <div> Here is your reset code. Copy this and keep it a secret! </div>
         ${user.password}
         <div> Now follow the below link </div>
        <a href="http://${req.headers.host}/api/user/reset-password">Follow link</a>
