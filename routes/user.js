@@ -735,9 +735,6 @@ router.post("/login", verifyEmail, async (reg, res, next) => {
                     message: "Your account was made improperly. Please delete it and try again!"
                 });
             }
-        
-
-
 if(userInfo){
 
     User.findOne({ email: reg.body.email })
