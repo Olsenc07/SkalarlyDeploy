@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { StoreService, Profile } from '../services/store.service';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -61,8 +61,7 @@ export class ReusableCardRecommendationComponent implements OnInit {
   private infosSub: Subscription;
 
   // number of comments that load
-  sum = 2;
-  direction = '';
+
   // onOtherUser(info): any{
   // // this.authService.getOtherInfo();
   // this.authService.getOtherInfo(info);
@@ -93,38 +92,7 @@ export class ReusableCardRecommendationComponent implements OnInit {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
   }
-  // Loading in comments
-  onScrollDown(ev: any): any {
-    console.log('scrolled down!!', ev);
 
-    this.sum += 5;
-    this.appendItems();
-
-    this.direction = 'scroll down';
-  }
-
-  onScrollUp(ev: any): any {
-    console.log('scrolled up!', ev);
-    this.sum += 5;
-    this.prependItems();
-
-    this.direction = 'scroll up';
-  }
-  appendItems(): any {
-    this.addItems('push');
-  }
-  prependItems(): any {
-    this.addItems('unshift');
-  }
-  addItems(Method: string): any {
-    for (let i = 0; i < this.sum; ++i) {
-      if (Method === 'push') {
-        this.infos.push([i].join(''));
-      } else if (Method === 'unshift') {
-        this.infos.unshift([i].join(''));
-      }
-    }
-  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });

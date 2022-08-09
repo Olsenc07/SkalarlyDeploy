@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { Location } from '@angular/common';
 
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -40,9 +39,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 import { PickerModule } from '@ctrl/ngx-emoji-mart';
-import { environment } from 'src/environments/environment';
 
 import { routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -207,6 +207,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MatSnackBarModule,
     PickerModule,
     MatProgressSpinnerModule,
+    ScrollingModule,
     InfiniteScrollModule,
     // SocketIoModule.forRoot(config),
   ],

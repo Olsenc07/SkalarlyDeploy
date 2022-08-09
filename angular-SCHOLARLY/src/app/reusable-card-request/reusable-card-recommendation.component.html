@@ -2,12 +2,12 @@
     <mat-spinner ></mat-spinner>
   </div>
 
-<div *ngFor="let info of infos">
-<mat-card class="row1"  *ngIf="(userId !== info.Creator) && !isLoading"
- infiniteScrollModule
-(scrolled)="onScrollDown($event)" 
-(scrolledUp)="onScrollUp($event)">
-    <div class="column"  >
+
+  <cdk-virtual-scroll-viewport  itemSize="3" class="infiniteContainer">
+<div *cdkVirtualFor="let info of infos" >
+<mat-card  class="row1" *ngIf="(userId !== info.Creator) && !isLoading"
+ >
+    <div class="column" >
         <div class="row_">
             <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPath">
                 <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
@@ -97,3 +97,4 @@
     </div>
 </mat-card>
 </div>
+</cdk-virtual-scroll-viewport>
