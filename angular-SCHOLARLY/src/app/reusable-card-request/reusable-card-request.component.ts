@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { StoreService, Profile } from '../services/store.service';
-import { map, Subscription } from 'rxjs';
+import { filter, map, pairwise, Subscription, throttleTime } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-card-request',
@@ -59,8 +60,17 @@ export class ReusableCardRecommendationComponent implements OnInit {
 
   infos: string[] = [];
   private infosSub: Subscription;
-
+  list = Array.from({ length: 100000 }).map((_, i) => i);
   // number of comments that load
+  // @ViewChild('scroller') scroller: CdkVirtualScrollViewport;
+  // ngAfterViewinit(): any {
+  //   this.scroller.elementScrolled().pipe(
+  //     map(() => this.scroller.measureScrollOffset('bottom')),
+  //     pairwise(),
+  //     filter(([y1, y2]) => y2 < y1 && y2 < 140),
+  //     throttleTime(200)
+  //   );
+  // }
 
   // onOtherUser(info): any{
   // // this.authService.getOtherInfo();
@@ -88,7 +98,6 @@ export class ReusableCardRecommendationComponent implements OnInit {
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
   }
