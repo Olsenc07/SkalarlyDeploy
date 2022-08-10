@@ -3,9 +3,9 @@
   </div>
   
   <!-- Posts box which should be a scroll view -->
-  <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer">
+  <cdk-virtual-scroll-viewport [itemSize]="2000" class="infiniteContainer">
 
-  <div class="feed" *cdkVirtualFor="let post of posts.slice().reverse(); templateCacheSize: 10 " >
+  <div class="feed" *cdkVirtualFor="let post of posts.slice().reverse(); templateCacheSize: 20 " >
     <mat-card class="specifics-fill">
       <!-- Profile Pic -->
       <div class="column" >
@@ -199,8 +199,8 @@
 </mat-chip-list>
 </div>  
       
-<div  class="scroll">
-<div *ngFor="let comment of comments; let even = even; let odd = odd">
+<cdk-virtual-scroll-viewport [itemSize]="100"  class="scroll"> 
+<div *cdkVirtualFor="let comment of comments; let even = even; let odd = odd;; templateCacheSize: 2">
         <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
          class="commentsDisplayWrapper">
           
@@ -231,7 +231,7 @@
 
 
       </div>
-      </div>
+</cdk-virtual-scroll-viewport>
             <!-- <div class="center1">
               <div class="center">
                 <button mat-icon-button (click)="openTaggedSheet()">
