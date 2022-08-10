@@ -1,8 +1,9 @@
 <div  *ngFor="let showCase of showCases">
 
-<div >
+  <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer">
 
-    <div class="upload" *ngIf="(userid == showCase.Creator) && showCase.ShowCasePath" >
+
+    <div class="upload" *cdkVirtualFor="(userid == showCase.Creator) && showCase.ShowCasePath; templateCacheSize: 10" >
         <div class="trashCan">
             <button *ngIf='userId === showCase.Creator' mat-icon-button
               (click)='onDelete(showCase.id)'><span class="material-icons-two-tone">
@@ -11,7 +12,8 @@
               </div>
         <img class="middle-card" src="{{showCase.ShowCasePath}}">
       </div>
-</div>
+    </cdk-virtual-scroll-viewport>
+
 
 
 

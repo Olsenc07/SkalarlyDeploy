@@ -482,7 +482,7 @@
 
 
       <!-- disabled -->
-      <mat-tab disabled>
+      <mat-tab disabled >
         <ng-template mat-tab-label>
           <mat-icon class=""><span class="material-icons-two-tone">
               school
@@ -562,19 +562,19 @@
 <!-- 1 -->
               <mat-form-field class="example-chip-list">
                 <mat-label>Completed Course</mat-label>
-                <mat-select placeholder="Choose completed course" #codeInput [formControl]="CodeCompleted" >
+                <mat-select  placeholder="Choose completed course"
+                 #codeInput [formControl]="CodeCompleted" >
 
                   <mat-option *ngFor="let code of CodeCompleted.value" 
                   (removed)="onRemoved(code)" [removable]="true">
                     {{code}}
                   </mat-option>
-                <!-- <cdk-virtual-scroll-viewport itemSize="10"> -->
-                  <!-- <mat-autocomplete #autoC="matAutocomplete" (optionSelected)="selected($event)"> -->
+
+
                     <mat-option *ngFor="let code of FilteredCodes" [value]="code">
                       {{code}}
                     </mat-option>
-                  <!-- </mat-autocomplete> -->
-                <!-- </cdk-virtual-scroll-viewport> -->
+        
               </mat-select>
               </mat-form-field>
             </div>

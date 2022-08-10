@@ -282,7 +282,7 @@
     flex-direction: column;
     overflow-y: scroll;
     border-radius: 25px;
-    padding: 0% 1%;
+    // padding: 0% 1%;
     // box-shadow: 0px 4px 8px 7px grey;
     box-shadow: 0px 0px 0px 0px grey;
   }
@@ -383,7 +383,12 @@
   display: flex;
   width: 100%;
   height: 100%;
-  margin: 0% 0% 17% 0%;
+  flex-direction: column;
+}
+.hideFeed {
+  display: flex;
+  width: 100%;
+  height: 100%;
   flex-direction: column;
 }
 

@@ -268,7 +268,6 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
-
     c.type = 'text';
     this.visible = !this.visible;
   }

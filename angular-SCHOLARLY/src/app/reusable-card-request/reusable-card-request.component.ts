@@ -60,17 +60,6 @@ export class ReusableCardRecommendationComponent implements OnInit {
 
   infos: string[] = [];
   private infosSub: Subscription;
-  list = Array.from({ length: 100000 }).map((_, i) => i);
-  // number of comments that load
-  // @ViewChild('scroller') scroller: CdkVirtualScrollViewport;
-  // ngAfterViewinit(): any {
-  //   this.scroller.elementScrolled().pipe(
-  //     map(() => this.scroller.measureScrollOffset('bottom')),
-  //     pairwise(),
-  //     filter(([y1, y2]) => y2 < y1 && y2 < 140),
-  //     throttleTime(200)
-  //   );
-  // }
 
   // onOtherUser(info): any{
   // // this.authService.getOtherInfo();
