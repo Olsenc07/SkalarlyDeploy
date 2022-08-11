@@ -59,6 +59,14 @@ export class ReusableCardRecommendationComponent implements OnInit {
   private authListenerSubs: Subscription;
 
   infos: string[] = [];
+  // Trying to randomze the array for reco
+  // infos_: number;
+  // shuffle(infos: any): any {
+  //   this.infos_ = Math.floor(Math.random() * infos.length);
+  //   this.infos = infos[this.infos_];
+  //   console.log('random', this.infos);
+  // }
+  // Creates a randoma array
   private infosSub: Subscription;
 
   // onOtherUser(info): any{
@@ -72,13 +80,14 @@ export class ReusableCardRecommendationComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): any {
     this.isLoading = true;
     this.authService.getInfo();
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: string[]) => {
         this.infos = infos;
+        // this.infos = this.shuffle(infos);
         this.isLoading = false;
       });
     this.userId = this.authService.getUserId();
