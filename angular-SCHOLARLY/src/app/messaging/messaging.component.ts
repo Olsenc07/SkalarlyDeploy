@@ -19,7 +19,7 @@ export class MessagingComponent {
   // const socket = io('http://localhost:3000');
 
   // allUsers should filter through every user
-  allUsers: string[] = [''];
+  allUsers: string[] = [];
   //  List of people you are talking to
   //  chats = [''];
 
@@ -37,12 +37,12 @@ export class MessagingComponent {
   //   const room = roomInput.value
   // })
 
-  constructor(private socketService: SocketService) {
-    this.filteredSearch = this.search.valueChanges.pipe(
-      map((user: string | null) =>
-        user ? this._filter(user) : this.allUsers.slice()
-      )
-    );
+  constructor() {
+    // this.filteredSearch = this.search.valueChanges.pipe(
+    //   map((user: string | null) =>
+    //     user ? this._filter(user) : this.allUsers.slice()
+    //   )
+    // );
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();

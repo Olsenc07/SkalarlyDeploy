@@ -1,7 +1,17 @@
-// File where clinet side sicket.io server is working 
-// const socket = io('http://localhost:3000')
+// File where client side sicket.io server is working 
+const socket = io('http://localhost:4000')
+const messageForm = document.getElementById('send-container')
+const messageInput = document.getElementById('message-input')
 
-// socket.io('chat-message', data => {
-//     console.log(data)
-//     socket.emit('chat-message', 'Hello World' )
-// })
+
+
+socket.on('chat-message', data => {
+    console.log('sushi egg roll', data)
+})
+
+messageForm.addEventListener('submit', e => {
+    e.preventDefault()
+    const message = messageInput.value;
+    socket.emit('send-chat-message', message)
+    messageInput.value = ''
+})

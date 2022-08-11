@@ -28,27 +28,40 @@ const http = require('http');
 
 
 //  Socket.io attempt 1
-const server =  http.createServer(app)
-const { Server } = require("socket.io");
-const io = new Server(server);
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/messaging.component.html');
-    res.send('<h1>Hello world chase2.0</h1>');
-  });
-// const socketio = require('socket.io')
-// Run when client connect
-io.on('connection', (socket) => {
-   console.log("New Connection");
-   socket.on('disconnect', () => {
-    console.log('user disconnected');
-  });
+const server = app.listen(4000, () => {
+  console.log("Listening on the telephone: " + 4000);
+})
+const io = require('socket.io')(server);
+
+
+io.on("connection", (socket) => {
+  console.log('Cowboys', socket)
+  socket.emit('chat-message','Hellow my space cowboy ')
+
 });
 
-io.on('connection', (socket) => {
-  socket.on('chat message', (msg) => {
-    console.log('message: ' + msg);
-  });
-});
+
+app.get('/', (req, res) => {
+  res.send('Hello Cowboy');
+} )
+
+
+
+
+
+// app.get('/', (req, res) => {
+//     res.sendFile(__dirname + '/messaging.component.html');
+//     res.send('<h1>Hello world chase2.0</h1>');
+//   });
+// const socketio = require('socket.io')
+// Run when client connect
+
+
+// io.on('connection', (socket) => {
+//   socket.on('chat message', (msg) => {
+//     console.log('message: ' + msg);
+//   });
+// });
 // //    to the one user
 //    socket.emit('message', 'Welcome to Chat Cord!',' User joined chat');
 
@@ -73,7 +86,6 @@ io.on('connection', (socket) => {
 // module.exports = { app, io };  
 
 
-// socket.io attempt 2
 
 
 //  DataBase connection

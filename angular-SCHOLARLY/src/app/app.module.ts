@@ -116,7 +116,8 @@ import { ErrorInterceptor } from './error-interceptor';
 // Socekt.io
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 // const config: SocketIoConfig = {
-//   url: environment.socketUrl, // socket server url;
+//   url: 'http://localhost:3000',
+//   // socket server url;
 //   options: {
 //     transports: ['websocket'],
 //   },
