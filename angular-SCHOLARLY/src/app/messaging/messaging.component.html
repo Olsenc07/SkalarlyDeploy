@@ -44,6 +44,11 @@
 <app-showcase></app-showcase>
 
 <body class="right">
+  <script  src="/script.js">
+  </script>
+  <script>
+    const socket = io();
+  </script>
 <!-- Message area -->
 
   <ul id="messages"></ul>
@@ -54,8 +59,8 @@
 <!--  -->
 <mat-divider></mat-divider>
 
+<form id="send-container">
 <div class="type_message">
-  <form id="send-container">
 <mat-form-field class="type_message_box">
         <textarea matInput class="post" placeholder="Write a message..."
           [formControl]="message" type="text" id="message-input"> </textarea>
@@ -64,7 +69,6 @@
           <mat-icon>close</mat-icon>
         </button>
         </mat-form-field>
-      </form>
 </div>
 
 <div class="assistance">
@@ -99,24 +103,12 @@ Send
     </mat-chip>
   </mat-chip-list>
     </div>
-
     
 </div>
+</form>
+<script defer src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" 
+crossorigin="anonymous"></script>
 
-<script defer  src="http://localhost:4000/socket.io/socket.io.js"></script>
-<script defer src="/script.js">
-
-  // var form = document.getElementById('form');
-  // var input = document.getElementById('input');
-
-  // form.addEventListener('submit', function(e) {
-  //   e.preventDefault();
-  //   if (input.value) {
-  //     socket.emit('chat message', input.value);
-  //     input.value = '';
-  //   }
-  // });
-</script>
 </body>
 
 

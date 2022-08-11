@@ -28,18 +28,26 @@ const http = require('http');
 
 
 //  Socket.io attempt 1
-const server = app.listen(4000, () => {
-  console.log("Listening on the telephone: " + 4000);
+
+/**
+ * Server Activation
+ */
+
+ const hey = app.listen(port, () => {
+  console.log(`Listening to requests on http://localhost:${port}`);
 })
-const io = require('socket.io')(server);
+const io = require('socket.io')(hey);
 
 
-io.on("connection", (socket) => {
-  console.log('Cowboys', socket)
-  socket.emit('chat-message','Hellow my space cowboy ')
+io.on('connection', socket => {
+ console.log('Cowboys')
+ socket.emit('chat-message', 'hey world')
+ socket.on('send-chat-message', message => {
+   socket.broadcast.emit('chat-message', message)
+ });
+
 
 });
-
 
 app.get('/', (req, res) => {
   res.send('Hello Cowboy');
@@ -48,42 +56,6 @@ app.get('/', (req, res) => {
 
 
 
-
-// app.get('/', (req, res) => {
-//     res.sendFile(__dirname + '/messaging.component.html');
-//     res.send('<h1>Hello world chase2.0</h1>');
-//   });
-// const socketio = require('socket.io')
-// Run when client connect
-
-
-// io.on('connection', (socket) => {
-//   socket.on('chat message', (msg) => {
-//     console.log('message: ' + msg);
-//   });
-// });
-// //    to the one user
-//    socket.emit('message', 'Welcome to Chat Cord!',' User joined chat');
-
-// //    Broadcast when a user connects
-// // to all but the poster
-// // io.on('connection', socket => {
-// //     console.log('new ws connection..')
-// // })
-
-
-// // runs when client disconnect
-// socket.on('disconnect', () => {
-//     io.emit('message', 'user left chat')
-// })
-
-// // Listen for chatMessage
-// socket.on('chatMessage', msg => {
-//     console.log(msg)
-//     io.emit('message', msg);
-// })
-// });
-// module.exports = { app, io };  
 
 
 
@@ -136,13 +108,6 @@ app.use("/api/posts", postRoutes);
 
 
 
-/**
- * Server Activation
- */
-
- app.listen(port, () => {
-    console.log(`Listening to requests on http://localhost:${port}`);
- })
 
 
 // Express
@@ -151,6 +116,7 @@ app.use("/api/posts", postRoutes);
 const routes = require('./backend/api');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
+const { Socket } = require('socket.io');
 
 app.use(express.static(path.join(__dirname, '/angular-SCHOLARLY/static')))
 app.use('/api', routes)
