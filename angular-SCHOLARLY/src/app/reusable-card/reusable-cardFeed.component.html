@@ -3,7 +3,7 @@
   </div>
   
   <!-- Posts box which should be a scroll view -->
-  <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer">
+  <cdk-virtual-scroll-viewport [itemSize]="200" class="infiniteContainer">
 
   <div class="feed" *cdkVirtualFor="let post of posts.slice().reverse(); templateCacheSize: 20 " >
     <mat-card class="specifics-fill" *ngIf="!isLoading ">
@@ -64,10 +64,11 @@
   
                   <!-- Idk If needed -->
   
-                  <div class="postLocation textSize t" *ngIf="post.postLocation">
+                  <button mat-button class="postLocation textSizeLocation t"
+                  (click)="navigateToMainPage(post.postLocation)" *ngIf="post.postLocation">
                     <!-- Location -->
                     {{post.postLocation}}
-                  </div>
+                  </button>
   
                   <div class="textSize row1 t" *ngIf="post.LocationEvent">
                    

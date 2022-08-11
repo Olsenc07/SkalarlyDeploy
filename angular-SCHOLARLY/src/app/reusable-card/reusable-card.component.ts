@@ -63,8 +63,6 @@ export class ReusableCardComponent implements OnInit {
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
   // number of comments that load
-  sum = 5;
-  direction = '';
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
@@ -76,7 +74,11 @@ export class ReusableCardComponent implements OnInit {
   // radioChange(event: any): any {
   //   this.selectedAttend = event.target.value;
   // }
-
+  // Where the post was posted
+  navigateToMainPage(value: string): void {
+    this.route.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
+  }
   openAttendanceSheet(): void {
     this.bottomSheet.open(AttendanceComponent);
   }
@@ -99,13 +101,14 @@ export class ReusableCardComponent implements OnInit {
     public postService: PostService,
     private commentsService: CommentsService,
     public dialog: MatDialog,
-    private route: ActivatedRoute
+    private router: ActivatedRoute,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     this.isLoading = true;
-    this.route.queryParams.subscribe((params) => {
+    this.router.queryParams.subscribe((params) => {
       this.user = params.id;
       const id = this.user;
 
@@ -120,6 +123,11 @@ export class ReusableCardComponent implements OnInit {
         });
     });
   }
+  // Where the post was posted
+  navigateToPage(value: string): void {
+    this.route.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
+  }
   CommentTrigger(postId: string): void {
     this.commentsService.createComment(this.comment.value, this.userId, postId);
     this.comment.setValue('');
@@ -133,38 +141,6 @@ export class ReusableCardComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments;
       });
-  }
-  // Loading in comments
-  onScrollDown(ev: any): any {
-    console.log('scrolled down!!', ev);
-
-    this.sum += 5;
-    this.appendItems();
-
-    this.direction = 'scroll down';
-  }
-
-  onScrollUp(ev: any): any {
-    console.log('scrolled up!', ev);
-    this.sum += 5;
-    this.prependItems();
-
-    this.direction = 'scroll up';
-  }
-  appendItems(): any {
-    this.addItems('push');
-  }
-  prependItems(): any {
-    this.addItems('unshift');
-  }
-  addItems(Method: string): any {
-    for (let i = 0; i < this.sum; ++i) {
-      if (Method === 'push') {
-        this.comments.push([i].join(''));
-      } else if (Method === 'unshift') {
-        this.comments.unshift([i].join(''));
-      }
-    }
   }
   // ngOnDestroy(): void {
   //   this.postsSub.unsubscribe();
@@ -196,7 +172,11 @@ export class ReusableCardPersonalComponent implements OnInit {
   // radioChange(event: any): any {
   //   this.selectedAttend = event.target.value;
   // }
-
+  // Where the post was posted
+  navigateToMainPage(value: string): void {
+    this.route.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
+  }
   openAttendanceSheet(): void {
     this.bottomSheet.open(AttendanceComponent);
   }
@@ -216,7 +196,8 @@ export class ReusableCardPersonalComponent implements OnInit {
     private authService: AuthService,
     public postService: PostService,
     private commentsService: CommentsService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -563,6 +544,11 @@ export class CardFeedComponent implements OnInit {
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
+  }
+  // Where the post was posted
+  navigateToMainPage(value: string): void {
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;

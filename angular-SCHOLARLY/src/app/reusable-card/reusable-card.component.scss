@@ -269,28 +269,22 @@ margin-top: 1%;
   // /* justify-content: center; */
   // align-items: center;
 }
-@media (min-width: 550px) {
+
   .textSizeTit {
     font-size: medium;
-    font-family:  'Poppins', sans-serif;
-    color: black;
-    font-weight: bold;
+    font-family:  'Cinzel', sans-serif;
   }
-}
-@media (max-width: 550px) {
-  .textSizeTit {
-    font-size: inherit;
-    font-family:  'Poppins', sans-serif;
-    color: black;
-    font-weight: bold;
-  }
-}
+
 @media (min-width: 550px) {
   .textSize {
     font-size: medium;
     font-family:  'Poppins', sans-serif;
     color: #7e7171;
   }
+}
+.textSizeLocation{
+  font-size: medium;
+  font-family:  'Poppins', sans-serif;
 }
 @media (max-width: 550px) {
   .textSize {

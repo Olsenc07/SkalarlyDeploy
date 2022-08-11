@@ -68,12 +68,13 @@
 
                 <!-- Idk If needed -->
 
-                <div class="postLocation textSize t" *ngIf="post.postLocation">
+                <button mat-button class="postLocation textSizeLocation t" 
+                (click)="navigateToMainPage(post.postLocation)" *ngIf="post.postLocation">
                   <!-- Location -->
                   {{post.postLocation}}
-                </div>
+                </button>
 
-                <div class="textSize row1 t" *ngIf="post.LocationEvent">
+                <div class="textSize row1 t"  *ngIf="post.LocationEvent">
                  
                   {{post.LocationEvent}}
                 </div>

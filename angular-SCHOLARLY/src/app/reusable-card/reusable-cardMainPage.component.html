@@ -3,7 +3,7 @@
   </div>
   
   <!-- Posts box which should be a scroll view -->
-  <cdk-virtual-scroll-viewport [itemSize]="2000" class="infiniteContainer">
+  <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer">
 
   <div class="feed" *cdkVirtualFor="let post of posts.slice().reverse(); templateCacheSize: 20 " >
     <mat-card class="specifics-fill">
