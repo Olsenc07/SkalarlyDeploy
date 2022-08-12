@@ -27,7 +27,7 @@ const http = require('http');
  const port = 3000;
 
 
-//  Socket.io attempt 1
+//  Socket.io 
 
 /**
  * Server Activation
@@ -41,11 +41,13 @@ const io = require('socket.io')(hey);
 
 io.on('connection', socket => {
  console.log('Cowboys')
- socket.emit('chat-message', 'hey world')
- socket.on('send-chat-message', message => {
-   socket.broadcast.emit('chat-message', message)
- });
+ socket.emit('chat-message',
+  message => {
+ console.log('Cowboys Msg', message)
 
+   socket.broadcast.emit('chat-message', message)
+ }
+ );
 
 });
 

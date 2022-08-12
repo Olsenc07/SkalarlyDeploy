@@ -1,5 +1,5 @@
 // File where client side sicket.io server is working 
-const socket = io('http://localhost:4000')
+const socket = io(`http://localhost:3000`)
 const messageContainer = document.getElementById('message-container')
 
 const messageForm = document.getElementById('send-container')
@@ -7,15 +7,17 @@ const messageInput = document.getElementById('message-input')
 
 
 
-socket.on('chat-message', data => {
-   appendMessage(data)
+socket.on('chat-message', message => {
+//    appendMessage(message)
+   console.log('data brain', message)
 })
 
 messageForm.addEventListener('submit', e => {
-    e.preventDefault()
+    e.preventDefault();
     const message = messageInput.value;
-    socket.emit('send-chat-message', message)
-    messageInput.value = ''
+    console.log('message', message);
+    socket.emit('send-chat-message', message);
+    messageInput.value = '';
 })
 
 function appendMessage(message){

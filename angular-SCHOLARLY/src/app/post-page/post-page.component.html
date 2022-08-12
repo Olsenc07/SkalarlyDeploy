@@ -18,7 +18,7 @@
 
 <div class="center_" >
         <mat-form-field class="post" appearance="fill">
-          <textarea matInput  placeholder="What would you like to say?"
+          <textarea matInput maxlength="280" placeholder="What would you like to say?"
             [formControl]="postDescription">
           </textarea>
         </mat-form-field>
@@ -150,8 +150,8 @@
               
               <mat-form-field class="text-input" appearance="fill">
                 <mat-label >Title </mat-label>
-                <div matBadge="{{ 50 - (TitleLength | async) }}"></div>
-                <input matInput maxlength="50" [formControl]="Title" >
+                <div matBadge="{{ 20 - (TitleLength | async) }}"></div>
+                <input matInput maxlength="20" [formControl]="Title" >
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearTitle()">
                   <mat-icon class="clear-button">close</mat-icon>
                 </button> -->

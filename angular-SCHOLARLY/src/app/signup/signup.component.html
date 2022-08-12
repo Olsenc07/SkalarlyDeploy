@@ -315,7 +315,7 @@
             <div class="input">
               <i class="material-icons _icon">badge</i>
               <mat-form-field >
-                <input matInput placeholder="Full Name" [formControl]="name" />
+                <input matInput placeholder="Full Name" maxlength="60" [formControl]="name" />
                 <mat-error *ngIf="name.invalid">Please enter your name</mat-error>
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                   <mat-icon class="asthetic-adds">close</mat-icon>
@@ -396,9 +396,6 @@
 
 
           <div class="rowP">
-          
-
-      
             <div class="column_1">
 
               <!-- Upload pic/video -->
@@ -428,39 +425,6 @@
               </div>
               <!-- </div> -->
             </div>
-
-            <!-- 3 -->
-            <!-- <div class="column_1">
-
-                <!- Upload pic/video --
-                <div class="centerD">
-                  <div class="textU"> Add Photo</div>
-                  <button mat-icon-button class="trash" [ngClass]="snapShot3.value ? 'show_' : 'hide' " color="primary"
-                    (click)="clearPic3()">
-                    <div class=" far fa-trash-alt"></div>
-                  </button>
-
-                </div>
-
-
-                <div class="rowP_">
-                  <button class="cameraIcon" mat-button (click)="uploadFile3()">
-                    <div class="material-icons Photo">
-                      add_a_photo
-
-                      <input #fileInput id="fileInput3" class="uploadD" accept="image/* video/*" type="file"
-                        (change)="imagePreview3($event)" [formControl]="snapShot3" multiple>
-                    </div>
-                  </button>
-                </div>
-                <-- Only when upload holds a value --
-                <div class="contents">
-                  <div class="imgBox">
-                    <img [src]="url3" id="firstP" [ngClass]="snapShot3.value ? 'show' : 'hide' ">
-                  </div>
-                </div>
-
-              </div> -->
           </div>
 
 
@@ -503,7 +467,7 @@
               looks_one
             </span>
             <mat-form-field>
-              <input class="major" matInput placeholder="Major (s)" [formControl]="major" />
+              <input class="major" maxlength="50" matInput placeholder="Major (s)" [formControl]="major" />
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
@@ -515,7 +479,7 @@
               looks_two
             </span>
             <mat-form-field>
-              <input class="major" matInput placeholder="Minor (s)" [formControl]="minor" />
+              <input class="major"  maxlength="50" matInput placeholder="Minor (s)" [formControl]="minor" />
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
@@ -531,7 +495,7 @@
               emoji_events
             </span>
             <mat-form-field>
-              <input matInput placeholder="Do you play a sport?" [formControl]="sport" />
+              <input matInput  maxlength="50" placeholder="Do you play a sport?" [formControl]="sport" />
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearSport()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
@@ -545,7 +509,7 @@
               group
             </span>
             <mat-form-field>
-              <input class="major" matInput placeholder="Are you apart of a club? " [formControl]="club" />
+              <input class="major" maxlength="50" matInput placeholder="Are you apart of a club? " [formControl]="club" />
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearClub()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
