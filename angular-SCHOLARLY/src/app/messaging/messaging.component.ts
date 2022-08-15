@@ -13,10 +13,7 @@ import { SocketService } from 'src/app/services/socket.service';
 })
 export class MessagingComponent {
   // Chat messaging
-  messageContainer = document.getElementById('message-container');
-  messageForm = document.getElementById('send-container');
-  messageInput = document.getElementById('message-input') as HTMLInputElement;
-  messageSent = this.messageInput;
+  chatForm = document.getElementById('send-container');
   socket = io();
 
   // allUsers should filter through every user
@@ -31,11 +28,17 @@ export class MessagingComponent {
 
   filteredSearch: Observable<string[]>;
 
-  // joinRoomButton.addEventListener('click', () => {
-  //   const room = roomInput.value
-  // })
-
   constructor() {
+    // msg from server
+    this.socket.on('chat-messageSnd', (message) => {
+      console.log('server msg', message);
+      this.outputMessage(message);
+    });
+    // this.chatForm.addEventListener('submit', (e) => {
+    //   e.preventDefault();
+    //   const msg = this.message.value;
+    //   console.log('lucky 7', msg);
+    // });
     // this.filteredSearch = this.search.valueChanges.pipe(
     //   map((user: string | null) =>
     //     user ? this._filter(user) : this.allUsers.slice()
@@ -61,8 +64,16 @@ export class MessagingComponent {
   }
 
   trigger(): void {
-    console.log('message', this.message.value);
     this.socket.emit('chat-messageSnd', this.message.value);
     this.message.reset('');
+  }
+
+  outputMessage(message): void {
+    const div = document.createElement('div');
+    div.classList.add('message');
+    div.innerHTML = `<div class="message" id="message-container">
+    ${message}
+    </div>`;
+    document.getElementById('container').appendChild(div);
   }
 }
