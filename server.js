@@ -24,6 +24,7 @@ const http = require('http');
  * App Variables
  */
  const app = express();
+ const server = http.createServer(app)
  const port = 3000;
 
 
@@ -33,34 +34,29 @@ const http = require('http');
  * Server Activation
  */
 
- const hey = app.listen(port, () => {
+ server.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
 })
-const io = require('socket.io')(hey);
+const io = require('socket.io')(server);
 
 
-io.on('connection', socket => {
+io.on('connection', (socket) => {
  console.log('Cowboys')
- socket.emit('chat-message',
-  message => {
- console.log('Cowboys Msg', message)
+ socket.on('chat-message', (message) => {
+  console.log('message' + message)
+ })
 
-   socket.broadcast.emit('chat-message', message)
- }
- );
 
+ socket.on('chat-message', (message) => {
+    console.log('wild', message);
+ })
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello Cowboy');
-} )
 
-
-
-
-
-
-
+io.on('connection', (socket) => {
+    console.log('wildin out');
+socket.emit('chat-message', 'hey yall' )
+})
 
 //  DataBase connection
 mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')

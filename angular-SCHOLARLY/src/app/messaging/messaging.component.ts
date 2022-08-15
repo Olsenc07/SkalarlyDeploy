@@ -61,20 +61,19 @@ export class MessagingComponent {
   clearMessage(): void {
     this.message.setValue('');
   }
+  //     socket.io('connect', () => {
+  //       displayMessage('You connected with id: ${socket.id}');
 
-  //   socket.io('connect', () => {
-  //     displayMessage('You connected with id: ${socket.id}');
+  //   form.addEventListener('submit', e => {
+  //       e.preventDefault();
+  //       const message = messageInput.value;
+  //       const room = roomInput.value;
+
+  //       if (message === '') return;
+  //       displayMessage(message);
+
+  //       messageInput.value = '';
+
+  //   } );
   // })
-
-  // form.addEventListener('submit', e => {
-  //     e.preventDefault();
-  //     const message = messageInput.value;
-  //     const room = roomInput.value;
-
-  //     if (message === '') return;
-  //     displayMessage(message);
-
-  //     messageInput.value = '';
-
-  // } );
 }

@@ -1,3 +1,5 @@
+<form id="send-container">
+  <html>
 <div class="page">
 <div class="message_box">
 
@@ -49,7 +51,45 @@
   <script  src="/script.js">
   </script>
   <script>
-    const socket = io();
+
+   
+const messageContainer = document.getElementById('message-container').innerHTML;
+const messageForm = document.getElementById('send-container').innerHTML;
+const messageInput = document.getElementById('message-input').innerHTML;
+
+const socket = io();
+document.addEventListener('submit', (socket) => {
+    socket.preventDefault();
+    // socket.on('chat-message', (message) => {
+//    appendMessage(message)
+  //  console.log('data brain', message)
+      socket.emit('chat-message', messageForm.value);
+      messageForm.value = '';
+// })
+    
+
+    })
+
+    socket.io('chat-message', (message) => {
+      console.log('message', )
+    })
+
+
+
+messageForm.addEventListener('submit', (socket) => {
+    console.log('greg', messageInput)
+    socket.preventDefault();
+    const message = messageInput.value
+    console.log('message', message);
+    socket.emit('chat-message', message.value);
+    messageInput.value = '';
+})
+
+function appendMessage(message){
+    const messageElement = document.createElement('div')
+    messageElement.innerText = message;
+    messageContainer.append(messageElement)
+}
   </script>
 <!-- Message area -->
 
@@ -61,7 +101,7 @@
 <!--  -->
 <mat-divider></mat-divider>
 
-<form id="send-container">
+
 <div class="type_message">
 <mat-form-field class="type_message_box">
         <textarea matInput class="post" placeholder="Write a message..."
@@ -99,7 +139,7 @@
 
 <div class="send_btn">
   <mat-chip-list>
-    <mat-chip  class="send_btn_style" type="submit"  id="send-button" send-button (click)="sendMsg()" color="primary">
+    <mat-chip  class="send_btn_style" type="submit"  id="send-button" send-button color="primary">
 Send
 <i class="far fa-paper-plane space_icon"></i>
     </mat-chip>
@@ -107,15 +147,9 @@ Send
     </div>
     
 </div>
-</form>
-<script defer src="https://cdn.socket.io/4.5.0/socket.io.min.js" integrity="sha384-7EyYLQZgWBi67fBtVxw60/OWl1kjsfrPFcaU0pp0nAh+i8FD068QogUvg85Ewy1k" 
-crossorigin="anonymous"></script>
-
 </body>
-
-
 </div>
-
-
 </div>
+</html>
+</form>
 
