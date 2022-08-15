@@ -40,23 +40,24 @@ const http = require('http');
 
 const socketio = require('socket.io');
 const io = socketio(server);
-
+const botName = 'Skalarly User';
+const formatMessage =require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
 // welcome current user
 io.on('connection', (socket) => {
-socket.emit('server-message', 'Welcome to chat')
+socket.emit('server-message', formatMessage(botName, 'Welcome to chat'))
 
 // listen for chat msg
 socket.on('chat-messageSnd', message => {
     console.log('at work yo', message);
-    socket.emit('chat-messageSnd', message);
+    socket.emit('chat-messageSnd', formatMessage('USER',message));
 
 })
 // Broadcast when user connects
-socket.broadcast.emit('message', 'use has joined chat');
+socket.broadcast.emit('message', formatMessage(botName,'use has joined chat'));
 
 // runs when client disconnects
 socket.on('disconnect', () => {
-    io.emit('message', 'a user has left the chat')
+    io.emit('message', formatMessage(botName,'a user has left the chat'))
 })
 
 

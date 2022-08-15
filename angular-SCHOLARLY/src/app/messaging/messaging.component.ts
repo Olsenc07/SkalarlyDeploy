@@ -3,8 +3,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { io } from 'socket.io-client';
-import { Socket } from 'ngx-socket-io';
-import { SocketService } from 'src/app/services/socket.service';
+import { Subscription } from 'rxjs';
+
+import { AuthDataInfo } from '../signup/auth-data.model';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-card-messaging',
@@ -12,6 +14,8 @@ import { SocketService } from 'src/app/services/socket.service';
   styleUrls: ['./messaging.component.scss'],
 })
 export class MessagingComponent {
+  infos: AuthDataInfo[] = [];
+  private infosSub: Subscription;
   // Chat messaging
   chatForm = document.getElementById('send-container');
   socket = io();
@@ -28,11 +32,19 @@ export class MessagingComponent {
 
   filteredSearch: Observable<string[]>;
 
-  constructor() {
+  constructor(private authService: AuthService) {
+    this.authService.getInfo();
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+      });
     // msg from server
     this.socket.on('chat-messageSnd', (message) => {
       console.log('server msg', message);
       this.outputMessage(message);
+
+      // scroll down
     });
     // this.chatForm.addEventListener('submit', (e) => {
     //   e.preventDefault();
@@ -71,9 +83,17 @@ export class MessagingComponent {
   outputMessage(message): void {
     const div = document.createElement('div');
     div.classList.add('message');
-    div.innerHTML = `<div class="message" id="message-container">
-    ${message}
-    </div>`;
-    document.getElementById('container').appendChild(div);
+    div.innerHTML = `<div
+     class="chat-messages" id="container" style="background-color: #c1c0c0; margin-bottom:2%; border-radius:25px" >
+    <div class="message_ id="message-container" style="display:flex; flex-direction:row; ">
+   <div style="margin:0% 2% 0% 2%" > ${message.username} </div>
+   <div style="font-size:smaller">  ${message.time}  </div>
+   </div>
+   <div style="margin-left:4%">  ${message.text}  </div>
+   </div>
+    `;
+    document.getElementById('message-container').appendChild(div);
+    const element = document.getElementById('container');
+    element.scrollTop = element.scrollHeight;
   }
 }

@@ -27,9 +27,6 @@ export class SearchComponent implements OnInit {
 
   post: Post;
 
-  infos: AuthDataInfo[] = [];
-  private infosSub: Subscription;
-
   isLoading = false;
 
   postLocationMain: FormControl = new FormControl('');
@@ -78,13 +75,6 @@ export class SearchComponent implements OnInit {
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
-      });
-    //    Info
-    this.authService.getInfo();
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
       });
   }
 
