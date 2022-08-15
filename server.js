@@ -37,25 +37,14 @@ const http = require('http');
  server.listen(port, () => {
   console.log(`Listening to requests on http://localhost:${port}`);
 })
-const io = require('socket.io')(server);
 
-
-io.on('connection', (socket) => {
- console.log('Cowboys')
- socket.on('chat-message', (message) => {
-  console.log('message' + message)
- })
-
-
- socket.on('chat-message', (message) => {
-    console.log('wild', message);
- })
-});
-
+const socketio = require('socket.io');
+const io = socketio(server);
 
 io.on('connection', (socket) => {
-    console.log('wildin out');
-socket.emit('chat-message', 'hey yall' )
+socket.on('chat-messageSnd', message => {
+    console.log('at work yo', message)
+})
 })
 
 //  DataBase connection
@@ -76,6 +65,8 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use('/posts', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/posts')));
 app.use('/profilePics', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/profilePics')));
 app.use('/showCase', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/showCase')));
+app.use(express.static(path.join(__dirname, '/angular-SCHOLARLY/src/app/messaging')));
+
 
 
 // Connecting to backend images for display

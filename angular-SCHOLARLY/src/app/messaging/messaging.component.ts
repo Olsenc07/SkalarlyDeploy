@@ -12,11 +12,12 @@ import { SocketService } from 'src/app/services/socket.service';
   styleUrls: ['./messaging.component.scss'],
 })
 export class MessagingComponent {
-  // const joinRoomButton = document.getElementByID("room-button")
-  // const messageInput = document.getElementById('message-input');
-  // const roomInput = document.getElementById('room-input')
-  // const form = document.getElementById('form');
-  // const socket = io('http://localhost:3000');
+  // Chat messaging
+  messageContainer = document.getElementById('message-container');
+  messageForm = document.getElementById('send-container');
+  messageInput = document.getElementById('message-input') as HTMLInputElement;
+  messageSent = this.messageInput;
+  socket = io();
 
   // allUsers should filter through every user
   allUsers: string[] = [];
@@ -29,9 +30,6 @@ export class MessagingComponent {
   photoUploadM: FormControl = new FormControl('');
 
   filteredSearch: Observable<string[]>;
-
-  // Sends message
-  sendMsg(): any {}
 
   // joinRoomButton.addEventListener('click', () => {
   //   const room = roomInput.value
@@ -61,19 +59,10 @@ export class MessagingComponent {
   clearMessage(): void {
     this.message.setValue('');
   }
-  //     socket.io('connect', () => {
-  //       displayMessage('You connected with id: ${socket.id}');
 
-  //   form.addEventListener('submit', e => {
-  //       e.preventDefault();
-  //       const message = messageInput.value;
-  //       const room = roomInput.value;
-
-  //       if (message === '') return;
-  //       displayMessage(message);
-
-  //       messageInput.value = '';
-
-  //   } );
-  // })
+  trigger(): void {
+    console.log('message', this.message.value);
+    this.socket.emit('chat-messageSnd', this.message.value);
+    this.message.reset('');
+  }
 }

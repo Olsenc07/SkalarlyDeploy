@@ -1,4 +1,5 @@
-<form id="send-container">
+<!DOCTYPE html>
+<form id="send-container" >
   <html>
 <div class="page">
 <div class="message_box">
@@ -7,9 +8,9 @@
 
     <div class="title">
 <div class="style">Messages</div>
-<button mat-icon-button>
+<!-- <button mat-icon-button>
     <i class="material-icons new_message_icon">edit_note</i>
-</button>
+</button> -->
 </div>
 <mat-divider></mat-divider>
 <div class="search-box">
@@ -46,51 +47,11 @@
 <app-showcase></app-showcase>
 
 <body class="right">
-  <script  src="http://localhost:3000/socket.io/socket.io.js">
+  <script  src="/socket.io/socket.io.js">
   </script>
   <script  src="/script.js">
   </script>
-  <script>
 
-   
-const messageContainer = document.getElementById('message-container').innerHTML;
-const messageForm = document.getElementById('send-container').innerHTML;
-const messageInput = document.getElementById('message-input').innerHTML;
-
-const socket = io();
-document.addEventListener('submit', (socket) => {
-    socket.preventDefault();
-    // socket.on('chat-message', (message) => {
-//    appendMessage(message)
-  //  console.log('data brain', message)
-      socket.emit('chat-message', messageForm.value);
-      messageForm.value = '';
-// })
-    
-
-    })
-
-    socket.io('chat-message', (message) => {
-      console.log('message', )
-    })
-
-
-
-messageForm.addEventListener('submit', (socket) => {
-    console.log('greg', messageInput)
-    socket.preventDefault();
-    const message = messageInput.value
-    console.log('message', message);
-    socket.emit('chat-message', message.value);
-    messageInput.value = '';
-})
-
-function appendMessage(message){
-    const messageElement = document.createElement('div')
-    messageElement.innerText = message;
-    messageContainer.append(messageElement)
-}
-  </script>
 <!-- Message area -->
 
   <ul id="messages"></ul>
@@ -139,7 +100,7 @@ function appendMessage(message){
 
 <div class="send_btn">
   <mat-chip-list>
-    <mat-chip  class="send_btn_style" type="submit"  id="send-button" send-button color="primary">
+    <mat-chip  class="send_btn_style" type="button"  id="send-button" (click)="trigger()" color="primary">
 Send
 <i class="far fa-paper-plane space_icon"></i>
     </mat-chip>
