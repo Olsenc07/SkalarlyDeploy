@@ -13,10 +13,10 @@ const http = require('http');
 
  const postRoutes = require('./routes/posts');
  const userRoutes = require('./routes/user');
-//  const messageRoutes = require('/server')
+ const messageRoutes = require('./routes/messages')
 
 //  saving msgs
-const Msg = require('./backend/models/messages.js')
+const Msg = require('./backend/models/messages')
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 
  
@@ -45,59 +45,9 @@ const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user
 
 const socketio = require('socket.io');
 const io = socketio(server);
+app.set('socketio', io);
 const botName = 'Skalarly User';
-const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
-// welcome current user
-io.on('connection', (socket) => {
-    router.get("/OnetoOne", (req, res, next) => {
-        Msg.find({username: req.query.username})
-        .then(message => {
-console.log('message salad', message)
-        })
 
-    })
-
-
-
-
-
-    Msg.find().then((result) => {
-socket.emit('output-messages', result)
-    })
-socket.emit('server-message', formatMessage(botName, 'Welcome to chat'))
-
-// listen for chat msg
-socket.on('chat-messageSnd', (data) => {
-   
-const Message = data.message
-User.findById({_id: data.userId})
-.then(user => {
-User.findOne({username: user.username})
-.then(username => {
-
-    socket.emit('chat-messageSnd', formatMessage(username.username, Message, data.time));
-const MESSAGE = new Msg({username: username.username,
-                        message: Message,
-                        time: data.time
-                    })
-MESSAGE.save().then(createdMsg => {
-
-                            })
-                                })
-                                    }) 
-                                        })
-// Broadcast when user connects
-socket.broadcast.emit('message', formatMessage(botName,'user has joined chat'));
-
-// runs when client disconnects
-socket.on('disconnect', () => {
-    io.emit('message', formatMessage(botName,'a user has left the chat'))
-})
-
-
-
-
-})
 
 //  DataBase connection
 mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
@@ -133,7 +83,7 @@ app.use((req, res, next) => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
-// app.use("/api/messages", messageRoutes);
+app.use("/api/messages", messageRoutes);
 
 
 

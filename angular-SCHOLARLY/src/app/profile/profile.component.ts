@@ -157,10 +157,10 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  skalarMsg(username: string) {
+  skalarMsg(username: string): void {
     console.log('username', username);
     this.router.navigate(['/messages/:'], {
-      queryParams: { username: username },
+      queryParams: { username },
     });
   }
 
