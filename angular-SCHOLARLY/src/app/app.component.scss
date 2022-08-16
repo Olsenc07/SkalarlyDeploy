@@ -26,11 +26,14 @@
   display: flex;
   justify-content: center;
   margin-top: 1%;
-}
-.profilePic_{
-  border-radius: 50%;
   width: 50px;
   height: 50px;
+}
+
+.profilePic_{
+  border-radius: 50%;
+  width: 100%;
+  height: auto;
 }
 .root-container {
   display: flex;
@@ -273,6 +276,14 @@ h4:focus {
   .lower {
     display: none;
   }
+}
+.odd{
+  background-color: #5f5d5d;
+  padding: 1%;
+}
+.even{
+  padding: 1%;
+
 }
 // bottom nav
 .publicM {

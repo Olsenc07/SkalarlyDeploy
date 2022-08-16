@@ -113,9 +113,9 @@
                     <div class="title">Fellow Skalars</div>
                       <!-- <div class="fas fa-user-graduate space"></div> -->
                     <mat-divider></mat-divider>
-                    <div *ngFor="let user of users">
+                    <div *ngFor="let user of users;let even = even; let odd = odd">
                       <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"> -->
-                    <mat-option class="options"  (click)="navigateToPage(user.username)" id="userName" >
+                    <mat-option [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
                         <!-- <div class="row"> -->
                       <div *ngIf="user.Creator !== userId"  class="row" >
                         <div class="profilePic">
