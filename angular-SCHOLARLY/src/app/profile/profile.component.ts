@@ -112,6 +112,7 @@ export class UserProfileComponent implements OnInit {
     public postService: PostService,
     private authService: AuthService,
     private route: ActivatedRoute,
+    private router: Router,
     private showCaseService: ShowCaseService
   ) {}
   isLoading = false;
@@ -153,6 +154,13 @@ export class UserProfileComponent implements OnInit {
           this.showCases = infos;
           this.isLoading = false;
         });
+    });
+  }
+
+  skalarMsg(username: string) {
+    console.log('username', username);
+    this.router.navigate(['/messages/:'], {
+      queryParams: { username: username },
     });
   }
 

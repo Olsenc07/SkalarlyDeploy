@@ -29,6 +29,7 @@ const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user
  const app = express();
  const server = http.createServer(app)
  const port = 3000;
+ const router = express.Router();
 
 
 //  Socket.io 
@@ -47,13 +48,27 @@ const botName = 'Skalarly User';
 const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
 // welcome current user
 io.on('connection', (socket) => {
+    router.get("/OnetoOne", (req, res, next) => {
+        Msg.find(req.query.username)
+        .then(message => {
+console.log('message salad', message)
+        })
+
+    })
+
+
+
+
+
+    Msg.find().then((result) => {
+socket.emit('output-messages', result)
+    })
 socket.emit('server-message', formatMessage(botName, 'Welcome to chat'))
 
 // listen for chat msg
 socket.on('chat-messageSnd', (data) => {
    
 const Message = data.message
-console.log('userId yo', data.userId)
 User.findById({_id: data.userId})
 .then(user => {
 User.findOne({username: user.username})
@@ -66,11 +81,10 @@ const MESSAGE = new Msg({username: username.username,
                     })
 MESSAGE.save().then(createdMsg => {
 
-
-})
-})
-})
-})
+                            })
+                                })
+                                    }) 
+                                        })
 // Broadcast when user connects
 socket.broadcast.emit('message', formatMessage(botName,'user has joined chat'));
 
@@ -153,4 +167,5 @@ app.get('*', (req, res) => {
 
 
 module.exports = app
+
 

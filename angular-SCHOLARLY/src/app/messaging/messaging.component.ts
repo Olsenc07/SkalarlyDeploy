@@ -55,6 +55,26 @@ export class MessagingComponent implements OnInit {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
+
+    // Pulls all messages
+    this.socket.on('output-messages', (data) => {
+      console.log('loaded in msgs', data);
+      if (data.length) {
+        data.forEach((data) => {
+          this.appendMessages(data);
+        });
+      }
+    });
+
+    // Pulls specific convos msgs
+    this.socket.on('One-One', (data) => {
+      console.log('loaded in msgs', data);
+      if (data.length) {
+        data.forEach((data) => {
+          this.appendMessages(data);
+        });
+      }
+    });
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -92,8 +112,8 @@ export class MessagingComponent implements OnInit {
     div.innerHTML = `<div
      class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; border-radius:25px" >
     <div class="message_ id="message-container" style="display:flex; flex-direction:row; ">
-   <div style="margin:0% 2% 0% 2%" > ${message.username} </div>
-   <div style="font-size:small">  ${message.time}  </div>
+   <div style="margin:0% 2% 0% 2%" > @${message.username} </div>
+   <div style="font-size:small; color: #878581">  ${message.time}  </div>
    </div>
    <div style="margin-left:4%">  ${message.message}  </div>
    </div>
@@ -101,5 +121,19 @@ export class MessagingComponent implements OnInit {
     document.getElementById('message-container').appendChild(div);
     const element = document.getElementById('message-container');
     element.scrollTop = element.scrollHeight;
+  }
+  appendMessages(data) {
+    const div = document.createElement('div');
+    div.classList.add('message');
+    div.innerHTML = `<div
+     class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; border-radius:25px" >
+    <div class="message_ id="message-container" style="display:flex; flex-direction:row; ">
+   <div style="margin:0% 2% 0% 2%" > @${data.username} </div>
+   <div style="font-size:small; color: #878581">  ${data.time}  </div>
+   </div>
+   <div style="margin-left:4%">  ${data.message}  </div>
+   </div>
+    `;
+    document.getElementById('message-container').appendChild(div);
   }
 }
