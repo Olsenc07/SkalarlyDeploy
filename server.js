@@ -13,6 +13,7 @@ const http = require('http');
 
  const postRoutes = require('./routes/posts');
  const userRoutes = require('./routes/user');
+//  const messageRoutes = require('/server')
 
 //  saving msgs
 const Msg = require('./backend/models/messages.js')
@@ -49,7 +50,7 @@ const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SC
 // welcome current user
 io.on('connection', (socket) => {
     router.get("/OnetoOne", (req, res, next) => {
-        Msg.find(req.query.username)
+        Msg.find({username: req.query.username})
         .then(message => {
 console.log('message salad', message)
         })
@@ -132,6 +133,8 @@ app.use((req, res, next) => {
 
 app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
+// app.use("/api/messages", messageRoutes);
+
 
 
 

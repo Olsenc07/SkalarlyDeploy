@@ -13,4 +13,31 @@ export interface Message {
 @Injectable({
   providedIn: 'root',
 })
-export class MessageService {}
+export class MessageService {
+  private messages: Message[] = [];
+  private messagesUpdated = new ReplaySubject<Message[]>();
+
+  constructor(private http: HttpClient) {}
+
+  getMessages(username: string): any {
+    this.http
+      .get<{ message: string; messages: any }>('http://localhost:3000', {
+        params: { username },
+      })
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((message) => {
+            return {
+              username: message.username,
+              message: message.message,
+              time: message.time,
+            };
+          });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.messages = transformedMessage;
+        this.messagesUpdated.next([...this.messages]);
+      });
+  }
+}

@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { AuthService } from '../services/auth.service';
+import { MessageService } from '../services/messages.service';
 
 @Component({
   selector: 'app-card-messaging',
@@ -39,7 +40,10 @@ export class MessagingComponent implements OnInit {
 
   filteredSearch: Observable<string[]>;
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    public messagesService: MessageService
+  ) {
     this.authService.getInfo();
     this.infosSub = this.authService
       .getInfoUpdateListener()
@@ -55,6 +59,9 @@ export class MessagingComponent implements OnInit {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
+
+    // Pulls one to one msgs
+    this.messagesService.getMessages(this.userId);
 
     // Pulls all messages
     this.socket.on('output-messages', (data) => {
