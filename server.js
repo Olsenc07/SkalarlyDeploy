@@ -14,6 +14,9 @@ const http = require('http');
  const postRoutes = require('./routes/posts');
  const userRoutes = require('./routes/user');
 
+//  saving msgs
+const Msg = require('./backend/models/messages.js')
+const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 
  
 
@@ -41,19 +44,35 @@ const http = require('http');
 const socketio = require('socket.io');
 const io = socketio(server);
 const botName = 'Skalarly User';
-const formatMessage =require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
+const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
 // welcome current user
 io.on('connection', (socket) => {
 socket.emit('server-message', formatMessage(botName, 'Welcome to chat'))
 
 // listen for chat msg
-socket.on('chat-messageSnd', message => {
-    console.log('at work yo', message);
-    socket.emit('chat-messageSnd', formatMessage('USER',message));
+socket.on('chat-messageSnd', (data) => {
+   
+const Message = data.message
+console.log('userId yo', data.userId)
+User.findById({_id: data.userId})
+.then(user => {
+User.findOne({username: user.username})
+.then(username => {
+
+    socket.emit('chat-messageSnd', formatMessage(username.username, Message, data.time));
+const MESSAGE = new Msg({username: username.username,
+                        message: Message,
+                        time: data.time
+                    })
+MESSAGE.save().then(createdMsg => {
+
 
 })
+})
+})
+})
 // Broadcast when user connects
-socket.broadcast.emit('message', formatMessage(botName,'use has joined chat'));
+socket.broadcast.emit('message', formatMessage(botName,'user has joined chat'));
 
 // runs when client disconnects
 socket.on('disconnect', () => {

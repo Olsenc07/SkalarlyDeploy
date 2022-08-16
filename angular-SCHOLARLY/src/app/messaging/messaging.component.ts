@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
@@ -13,7 +13,14 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './messaging.component.html',
   styleUrls: ['./messaging.component.scss'],
 })
-export class MessagingComponent {
+export class MessagingComponent implements OnInit {
+  userId: string;
+
+  timeHour = new Date().getHours();
+  timeMinute = new Date().getMinutes();
+  text = this.timeHour >= 12 ? 'pm' : 'am';
+
+  time = this.timeHour + ':' + this.timeMinute + this.text;
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
   // Chat messaging
@@ -43,19 +50,11 @@ export class MessagingComponent {
     this.socket.on('chat-messageSnd', (message) => {
       console.log('server msg', message);
       this.outputMessage(message);
-
-      // scroll down
     });
-    // this.chatForm.addEventListener('submit', (e) => {
-    //   e.preventDefault();
-    //   const msg = this.message.value;
-    //   console.log('lucky 7', msg);
-    // });
-    // this.filteredSearch = this.search.valueChanges.pipe(
-    //   map((user: string | null) =>
-    //     user ? this._filter(user) : this.allUsers.slice()
-    //   )
-    // );
+  }
+
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
   }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -76,8 +75,15 @@ export class MessagingComponent {
   }
 
   trigger(): void {
-    this.socket.emit('chat-messageSnd', this.message.value);
-    this.message.reset('');
+    if (this.message.value) {
+      this.socket.emit('chat-messageSnd', {
+        message: this.message.value,
+        userId: this.userId,
+        time: this.time,
+      });
+      this.message.reset('');
+      console.log('time', this.time);
+    }
   }
 
   outputMessage(message): void {
@@ -87,9 +93,9 @@ export class MessagingComponent {
      class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; border-radius:25px" >
     <div class="message_ id="message-container" style="display:flex; flex-direction:row; ">
    <div style="margin:0% 2% 0% 2%" > ${message.username} </div>
-   <div style="font-size:smaller">  ${message.time}  </div>
+   <div style="font-size:small">  ${message.time}  </div>
    </div>
-   <div style="margin-left:4%">  ${message.text}  </div>
+   <div style="margin-left:4%">  ${message.message}  </div>
    </div>
     `;
     document.getElementById('message-container').appendChild(div);

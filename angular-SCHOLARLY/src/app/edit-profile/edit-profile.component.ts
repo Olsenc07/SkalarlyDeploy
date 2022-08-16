@@ -76,11 +76,6 @@ export class EditProfileComponent implements OnInit {
   url: string;
   urlPP: string;
 
-  i = 0;
-  // Groups joined
-  g = 0;
-  // Posts
-  p = 0;
   clicked = false;
   removeShowCase = false;
   visible = true;

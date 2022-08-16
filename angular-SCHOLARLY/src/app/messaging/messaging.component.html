@@ -98,8 +98,8 @@
 </div>
 
 <div class="send_btn">
-  <mat-chip-list>
-    <mat-chip  class="send_btn_style" type="submit"  id="send-button" (click)="trigger()" color="primary">
+  <mat-chip-list [disabled]="!message.value">
+    <mat-chip selected class="send_btn_style" type="submit"  id="send-button" (click)="trigger()" color="primary">
 Send
 <i class="far fa-paper-plane space_icon"></i>
     </mat-chip>
