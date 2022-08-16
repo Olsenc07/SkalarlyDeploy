@@ -84,7 +84,7 @@ export class MessagingComponent {
     const div = document.createElement('div');
     div.classList.add('message');
     div.innerHTML = `<div
-     class="chat-messages" id="container" style="background-color: #c1c0c0; margin-bottom:2%; border-radius:25px" >
+     class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; border-radius:25px" >
     <div class="message_ id="message-container" style="display:flex; flex-direction:row; ">
    <div style="margin:0% 2% 0% 2%" > ${message.username} </div>
    <div style="font-size:smaller">  ${message.time}  </div>

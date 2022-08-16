@@ -15,7 +15,7 @@ import { PostsService, UserNames } from './services/posts.service';
 })
 export class AppComponent implements OnInit {
   users: UserNames[] = [];
-
+  postClicked = false;
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -197,6 +197,14 @@ export class AppComponent implements OnInit {
     if (window.screen.width < 1024) {
       this.minwidth = false;
     }
+  }
+
+  // Post icon css changes
+  postClickedBtn(): boolean {
+    return (this.postClicked = true);
+  }
+  postUnClickedBtn(): boolean {
+    return (this.postClicked = false);
   }
   // To post page with users id
   navigateToPost(): any {

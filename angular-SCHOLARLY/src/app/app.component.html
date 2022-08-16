@@ -140,6 +140,7 @@
                 <button
                   mat-icon-button
                   type="button"
+                  (click)="postUnClickedBtn()"
                   routerLink="/search"
                   class="a_up"
                 >
@@ -158,6 +159,7 @@
                 <button
                   mat-icon-button
                   type="button"
+                  (click)="postUnClickedBtn()"
                   routerLink="/friends-activity"
                   class="a_up"
                 >
@@ -178,13 +180,13 @@
                 <button
                   mat-icon-button
                   type="button"
-                  
+                  (click)="postClickedBtn()"
                   (click)="navigateToPost()"
                   class="a_up"
                 >
                   <span
                     class="material-icons-sharp"
-                    [ngClass]="router?.url === 'post-page/:userId' ? 'PostOn' : 'post'"
+                    [ngClass]="postClicked == true ? 'PostOn' : 'post'"
                   >
                     add
                   </span>
@@ -195,6 +197,7 @@
                 <button
                   mat-icon-button
                   type="button"
+                  (click)="postUnClickedBtn()"
                   routerLink="/messages"
                   class="a_up"
                 >
@@ -215,6 +218,7 @@
                 <button
                   mat-icon-button
                   type="button"
+                  (click)="postUnClickedBtn()"
                   routerLink="/profile"
                   class="a_up"
                 >
@@ -272,6 +276,7 @@
         <button
           mat-menu-item
           type="button"
+          (click)="postUnClickedBtn()"
           (click)="onLogout()"
           class="look-nice"
         >
