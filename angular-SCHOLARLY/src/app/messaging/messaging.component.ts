@@ -93,7 +93,7 @@ export class MessagingComponent {
    </div>
     `;
     document.getElementById('message-container').appendChild(div);
-    const element = document.getElementById('container');
+    const element = document.getElementById('message-container');
     element.scrollTop = element.scrollHeight;
   }
 }
