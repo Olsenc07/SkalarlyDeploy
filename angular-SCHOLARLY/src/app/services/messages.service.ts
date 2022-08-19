@@ -44,4 +44,14 @@ export class MessageService {
         this.messagesUpdated.next([...this.messages]);
       });
   }
+
+  getInfoUpdateListener(): any {
+    return this.messagesUpdated.asObservable();
+  }
+
+  retrieveMessages(username, userId) {
+    this.http.get<{ message: string; messages: any }>(
+      'http://localhost:3000/api/messages/retrieveCards'
+    );
+  }
 }

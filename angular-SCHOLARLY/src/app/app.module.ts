@@ -58,6 +58,8 @@ import {
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { MessagingComponent } from './messaging/messaging.component';
+import { MessageCardComponent } from './messaging/messaging.component';
+
 import { MainPagesComponent } from './main-pages/main-pages.component';
 import {
   SignupComponent,
@@ -159,6 +161,7 @@ import { ErrorInterceptor } from './error-interceptor';
     TaggedComponent,
     AccountTextComponent,
     MessagingComponent,
+    MessageCardComponent,
     ServicesElementsComponent,
     ShowCaseComponent,
     CardInfoFeedComponent,

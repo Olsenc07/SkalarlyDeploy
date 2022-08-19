@@ -7,11 +7,17 @@ import { Subscription } from 'rxjs';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthDataInfo } from '../signup/auth-data.model';
+
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
 
+export interface Message {
+  username: string;
+  message: string;
+  time: string;
+}
 @Component({
-  selector: 'app-card-messaging',
+  selector: 'app-messaging',
   templateUrl: './messaging.component.html',
   styleUrls: ['./messaging.component.scss'],
 })
@@ -65,7 +71,6 @@ export class MessagingComponent implements OnInit {
     this.userId = this.authService.getUserId();
 
     // Pulls one to one msgs
-
     this.route.queryParams.subscribe((params) => {
       console.log('params main page', params?.username);
       this.username = params?.username;
@@ -75,6 +80,7 @@ export class MessagingComponent implements OnInit {
     this.socket.on('output-messages', (data) => {
       console.log('loaded in msgs', data);
       if (data.length) {
+        this.removeMessages();
         data.forEach((data) => {
           this.appendMessages(data);
         });
@@ -135,7 +141,7 @@ export class MessagingComponent implements OnInit {
     div.classList.add('message');
     div.innerHTML = `<div
      class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; border-radius:25px" >
-    <div class="message_ id="message-container" style="display:flex; flex-direction:row; ">
+    <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
    <div style="margin:0% 2% 0% 2%" > @${message.username} </div>
    <div style="font-size:small; color: #878581">  ${message.time}  </div>
    </div>
@@ -146,13 +152,18 @@ export class MessagingComponent implements OnInit {
     const element = document.getElementById('message-container');
     element.scrollTop = element.scrollHeight;
   }
-
+  removeMessages(): void {
+    const div = document.getElementById('container');
+    // div.remove();
+    // console.log('test', div.firstElementChild);
+    console.log('test 2', div);
+  }
   appendMessages(data): void {
     const div = document.createElement('div');
     div.classList.add('data');
     div.innerHTML = `<div
-     class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; border-radius:25px" >
-    <div class="message_ id="message-container" style="display:flex; flex-direction:row; ">
+     class="chat-messages" id="container_" style="background-color: #e7e7e7; margin-bottom:2%; border-radius:25px" >
+    <div class="message_" id="message-container_" style="display:flex; flex-direction:row; ">
    <div style="margin:0% 2% 0% 2%" > @${data.username} </div>
    <div style="font-size:small; color: #878581">  ${data.time}  </div>
    </div>
@@ -162,5 +173,41 @@ export class MessagingComponent implements OnInit {
     document.getElementById('message-container').appendChild(div);
     const element = document.getElementById('message-container');
     element.scrollTop = element.scrollHeight;
+  }
+}
+
+@Component({
+  selector: 'app-card-messaging',
+  templateUrl: './message-card.component.html',
+  styleUrls: ['./messaging.component.scss'],
+})
+export class MessageCardComponent implements OnInit {
+  userId: string;
+  username: string;
+
+  messages: Message[] = [];
+  private datasSub: Subscription;
+  constructor(
+    private authService: AuthService,
+    public messagesService: MessageService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+
+    // Pulls one to one msgs
+    this.route.queryParams.subscribe((params) => {
+      console.log('params main page homie ', params?.username);
+      this.username = params?.username;
+      this.messagesService.getMessages(this.userId, this.username);
+      this.datasSub = this.messagesService
+        .getInfoUpdateListener()
+        .subscribe((messages: Message[]) => {
+          this.messages = messages;
+          console.log('datas pulled', this.messages);
+        });
+    });
+    // this.messagesService.retrieveMessages(this.username, this.userId);
   }
 }

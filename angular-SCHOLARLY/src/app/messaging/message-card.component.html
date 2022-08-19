@@ -1,0 +1,9 @@
+
+
+<div *ngFor="let data of messages" class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; border-radius:25px" >
+    <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
+   <div style="margin:0% 2% 0% 2%" > {{data.username}} </div>
+   <div style="font-size:small; color: #878581">  {{data.time}}  </div>
+   </div>
+   <div style="margin-left:4%">  {{data.message}}  </div>
+   </div>

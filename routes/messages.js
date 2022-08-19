@@ -25,10 +25,13 @@ User.findOne({username: user.username})
 .then(username => {
 
 console.log('user Id you', username.username )
+
 const myURL = new URL(`http://localhost/3000/messages/:?username=${req.query.username}`)
 var myParams = new URLSearchParams(myURL.searchParams).get('username');
 console.log('hey searchParams ', myParams)
 console.log('req query username, other', req.query.username)
+
+
     Msg.find( { $or: [
            { $and: [{username: username.username}, 
                 {otherUser: myParams}]},
@@ -39,11 +42,16 @@ console.log('req query username, other', req.query.username)
          
     )        
     .then((result) => {
-socket.emit('output-messages', result)
+        socket.emit('output-messages', result)
+        // res.status(200).json({
+        //     message: 'Messages fetched succesfully!',
+        //     messages: result
+        //     })
 
-    })
 })
 })
+})
+
 // listen for chat msg
 socket.on('chat-messageSnd', (data) => {
     console.log('req.query.username, saving other', req.query.username)
@@ -81,8 +89,8 @@ socket.on('chat-messageSnd', (data) => {
 //     io.emit('message', formatMessage(botName,'a user has left the chat'))
 // })
 
-
 })
+
 })
 
 
