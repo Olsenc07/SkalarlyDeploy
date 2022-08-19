@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { io } from 'socket.io-client';
 import { Subscription } from 'rxjs';
 
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
@@ -20,8 +21,9 @@ export class MessagingComponent implements OnInit {
   timeHour = new Date().getHours();
   timeMinute = new Date().getMinutes();
   text = this.timeHour >= 12 ? 'pm' : 'am';
-
-  time = this.timeHour + ':' + this.timeMinute + this.text;
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  time =
+    this.timeHour + ':' + this.timeMinuteText + this.timeMinute + this.text;
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
   // Chat messaging
@@ -30,8 +32,7 @@ export class MessagingComponent implements OnInit {
 
   // allUsers should filter through every user
   allUsers: string[] = [];
-  //  List of people you are talking to
-  //  chats = [''];
+  username: string;
 
   search: FormControl = new FormControl('');
   message: FormControl = new FormControl('');
@@ -42,7 +43,9 @@ export class MessagingComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    public messagesService: MessageService
+    public messagesService: MessageService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.authService.getInfo();
     this.infosSub = this.authService
@@ -50,8 +53,9 @@ export class MessagingComponent implements OnInit {
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
       });
+
     // msg from server
-    this.socket.on('chat-messageSnd', (message) => {
+    this.socket.on('messageSnd', (message) => {
       console.log('server msg', message);
       this.outputMessage(message);
     });
@@ -61,8 +65,12 @@ export class MessagingComponent implements OnInit {
     this.userId = this.authService.getUserId();
 
     // Pulls one to one msgs
-    this.messagesService.getMessages(this.userId);
 
+    this.route.queryParams.subscribe((params) => {
+      console.log('params main page', params?.username);
+      this.username = params?.username;
+      this.messagesService.getMessages(this.userId, this.username);
+    });
     // Pulls all messages
     this.socket.on('output-messages', (data) => {
       console.log('loaded in msgs', data);
@@ -72,17 +80,26 @@ export class MessagingComponent implements OnInit {
         });
       }
     });
-
     // Pulls specific convos msgs
-    this.socket.on('One-One', (data) => {
-      console.log('loaded in msgs', data);
-      if (data.length) {
-        data.forEach((data) => {
-          this.appendMessages(data);
-        });
-      }
-    });
+    // this.socket.on('One-One', (data) => {
+    //   console.log('loaded in msgs', data);
+    //   if (data.length) {
+    //     data.forEach((data) => {
+    //       this.appendMessages(data);
+    //     });
+    //   }
+    // });
   }
+  // Fires after page is loaoded in ngOnInit
+  // ngAfterViewInit() {
+  //   // clears params
+  //   this.router.navigate([], {
+  //     queryParams: {
+  //       username: null,
+  //     },
+  //     queryParamsHandling: 'merge',
+  //   });
+  // }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.allUsers.filter(
@@ -129,9 +146,10 @@ export class MessagingComponent implements OnInit {
     const element = document.getElementById('message-container');
     element.scrollTop = element.scrollHeight;
   }
-  appendMessages(data) {
+
+  appendMessages(data): void {
     const div = document.createElement('div');
-    div.classList.add('message');
+    div.classList.add('data');
     div.innerHTML = `<div
      class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; border-radius:25px" >
     <div class="message_ id="message-container" style="display:flex; flex-direction:row; ">
@@ -142,5 +160,7 @@ export class MessagingComponent implements OnInit {
    </div>
     `;
     document.getElementById('message-container').appendChild(div);
+    const element = document.getElementById('message-container');
+    element.scrollTop = element.scrollHeight;
   }
 }

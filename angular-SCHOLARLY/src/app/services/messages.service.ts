@@ -19,11 +19,14 @@ export class MessageService {
 
   constructor(private http: HttpClient) {}
 
-  getMessages(username: string): any {
+  getMessages(userId: string, username: string): any {
     this.http
-      .get<{ message: string; messages: any }>('http://localhost:3000', {
-        params: { username },
-      })
+      .get<{ message: string; messages: any }>(
+        'http://localhost:3000/api/messages/OnetoOne',
+        {
+          params: { userId, username },
+        }
+      )
       .pipe(
         map((messageData) => {
           return messageData.messages.map((message) => {
@@ -31,6 +34,7 @@ export class MessageService {
               username: message.username,
               message: message.message,
               time: message.time,
+              otherUser: message.otherUser,
             };
           });
         })

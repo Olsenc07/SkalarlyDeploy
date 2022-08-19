@@ -129,9 +129,16 @@ export class ReusableCardComponent implements OnInit {
     console.log('hey chaz mataz', value);
   }
   CommentTrigger(postId: string): void {
-    this.commentsService.createComment(this.comment.value, this.userId, postId);
-    this.comment.setValue('');
-    console.log('onComment', postId);
+    if (this.comment.value) {
+      this.commentsService.createComment(
+        this.comment.value,
+        this.userId,
+        postId
+      );
+      console.log('searching for', this.comment.value);
+      this.comment.setValue('');
+      console.log('onComment', postId);
+    }
   }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
@@ -214,9 +221,15 @@ export class ReusableCardPersonalComponent implements OnInit {
       });
   }
   CommentTrigger(postId: string): void {
-    this.commentsService.createComment(this.comment.value, this.userId, postId);
-    this.comment.setValue('');
-    console.log('onComment', postId);
+    if (this.comment.value) {
+      this.commentsService.createComment(
+        this.comment.value,
+        this.userId,
+        postId
+      );
+      this.comment.setValue('');
+      console.log('onComment', postId);
+    }
   }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
@@ -408,9 +421,15 @@ export class ReusableCommentFormComponent implements OnInit {
   //   this.handleSubmit.emit(this.form.value.title);
   // }
   CommentTrigger(postId: string): void {
-    this.commentsService.createComment(this.comment.value, this.userId, postId);
-    this.comment.setValue('');
-    console.log('onComment', this.postId);
+    if (this.comment.value) {
+      this.commentsService.createComment(
+        this.comment.value,
+        this.userId,
+        postId
+      );
+      this.comment.setValue('');
+      console.log('onComment', this.postId);
+    }
   }
   clearComments(): void {
     this.comment.setValue('');
@@ -556,9 +575,15 @@ export class CardFeedComponent implements OnInit {
   }
 
   CommentTrigger(postId): void {
-    this.commentsService.createComment(this.comment.value, this.userId, postId);
-    this.comment.setValue('');
-    console.log('onComment', postId);
+    if (this.comment.value) {
+      this.commentsService.createComment(
+        this.comment.value,
+        this.userId,
+        postId
+      );
+      this.comment.setValue('');
+      console.log('onComment', postId);
+    }
   }
   // clearComments(): void {
   //   this.comment.setValue('');

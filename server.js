@@ -15,9 +15,7 @@ const http = require('http');
  const userRoutes = require('./routes/user');
  const messageRoutes = require('./routes/messages')
 
-//  saving msgs
-const Msg = require('./backend/models/messages')
-const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
+
 
  
 
@@ -46,7 +44,6 @@ const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user
 const socketio = require('socket.io');
 const io = socketio(server);
 app.set('socketio', io);
-const botName = 'Skalarly User';
 
 
 //  DataBase connection

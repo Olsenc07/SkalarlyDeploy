@@ -31,7 +31,7 @@
               <div class="row-">
                 <div class="profilePic" *ngIf="post.ProfilePicPath">
                   <!-- need to get croppeded value -->
-                  <img class="pic" src="{{posts.ProfilePicPath}}">
+                  <img class="pic" src="{{post.ProfilePicPath}}">
                 </div>
 
                 <div class="column1">
@@ -147,6 +147,7 @@
 
           <input matInput placeholder="Add to the discussion..." class="comment-form-textarea" 
           maxlength="140" [formControl]="comment" >
+
           <!-- {{submitLabel}}  -->
           <div class="buttonsCWrapper">
 
@@ -158,7 +159,7 @@
                         </mat-chip-list>
                         <mat-chip-list class="buttonsC">
                           <mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger(post.id)"
-                          type="submit"   >
+                          type="button"   >
                <!-- [disabled]="comment.value === '' " -->
                               Comment
                           <i class="far fa-paper-plane "></i>
