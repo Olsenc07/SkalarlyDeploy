@@ -51,14 +51,14 @@
 <!-- Message area -->
 <!-- Loads in new messages -->
 <div class="chat-messages" id="container" >
-<div class="message" id="message-container">
-  
+<div class="message" id="message-container" #scrollMe [scrollTop]="scrollMe.scrollHeight" >
+  <app-card-messaging >
+  </app-card-messaging>
 
 </div>
 
 </div>
-<app-card-messaging>
-</app-card-messaging>
+
 <!-- needs to load in old messages -->
 
 
@@ -103,7 +103,7 @@
 
 <div class="send_btn">
   <mat-chip-list [disabled]="!message.value">
-    <mat-chip selected class="send_btn_style" type="submit"  id="send-button" (click)="trigger()" color="primary">
+    <mat-chip selected class="send_btn_style" type="submit"  id="send-button" (click)="trigger(message.value)" color="primary">
 Send
 <i class="far fa-paper-plane space_icon"></i>
     </mat-chip>

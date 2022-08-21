@@ -59,11 +59,12 @@ export class MessagingComponent implements OnInit {
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
       });
+    this.messagesService.startMessages(this.userId, this.username);
 
     // msg from server
-    this.socket.on('messageSnd', (message) => {
-      console.log('server msg', message);
-      this.outputMessage(message);
+    this.socket.on('messageSnd', (data) => {
+      console.log('server msg', data);
+      this.outputMessage(data);
     });
   }
 
@@ -76,8 +77,9 @@ export class MessagingComponent implements OnInit {
       this.username = params?.username;
       this.messagesService.getMessages(this.userId, this.username);
     });
+
     // Pulls all messages
-    this.socket.on('output-messages', (data) => {
+    this.socket.on('messageSnd', (data) => {
       console.log('loaded in msgs', data);
       if (data.length) {
         this.removeMessages();
@@ -124,28 +126,31 @@ export class MessagingComponent implements OnInit {
     this.message.setValue('');
   }
 
-  trigger(): void {
-    if (this.message.value) {
+  trigger(MESSAGE): void {
+    this.messagesService.startMessages(this.userId, this.username);
+
+    if (MESSAGE) {
       this.socket.emit('chat-messageSnd', {
-        message: this.message.value,
+        message: MESSAGE,
         userId: this.userId,
         time: this.time,
       });
       this.message.reset('');
       console.log('time', this.time);
+      console.log('message', MESSAGE);
     }
   }
 
-  outputMessage(message): void {
+  outputMessage(data): void {
     const div = document.createElement('div');
-    div.classList.add('message');
+    div.classList.add('data');
     div.innerHTML = `<div
      class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; border-radius:25px" >
     <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
-   <div style="margin:0% 2% 0% 2%" > @${message.username} </div>
-   <div style="font-size:small; color: #878581">  ${message.time}  </div>
+   <div style="margin:0% 2% 0% 2%" > @${data.username} </div>
+   <div style="font-size:small; color: #878581">  ${data.time}  </div>
    </div>
-   <div style="margin-left:4%">  ${message.message}  </div>
+   <div style="margin-left:4%">  ${data.message}  </div>
    </div>
     `;
     document.getElementById('message-container').appendChild(div);

@@ -49,9 +49,29 @@ export class MessageService {
     return this.messagesUpdated.asObservable();
   }
 
-  retrieveMessages(username, userId) {
-    this.http.get<{ message: string; messages: any }>(
-      'http://localhost:3000/api/messages/retrieveCards'
-    );
+  startMessages(userId: string, username: string): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'http://localhost:3000/api/messages/OnetoOneSend',
+        {
+          params: { userId, username },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((data) => {
+            return {
+              username: data.username,
+              message: data.message,
+              time: data.time,
+              otherUser: data.otherUser,
+            };
+          });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.messages = transformedMessage;
+        this.messagesUpdated.next([...this.messages]);
+      });
   }
 }
