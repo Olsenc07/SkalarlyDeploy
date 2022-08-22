@@ -27,9 +27,9 @@
                     {{ info.name }}
 
                 </div>
-                <button mat-button type="button" (click)="navigateToPage(info.username)"
-                class="userName textSize_" id="userName"  [value]=info.username  (click)="navigateToPage()" >
-                    
+                <button 
+                mat-button  (click)="navigateToPage(info.username)"
+                class="userName textSize_" id="userName"  [value]=info.username  > 
                     @{{ info.username}}
 
                 </button>
