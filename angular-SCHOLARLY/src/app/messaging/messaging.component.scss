@@ -70,7 +70,15 @@
   overflow-y: scroll;
   border-top-right-radius: 25px;
 }
-
+.messageTitle{
+  display: flex;
+    justify-content: center;
+    font-family: 'Cinzel', sans-serif;
+    align-items: center;
+    font-size: large;
+    width: 100%;
+    color: #a0a1b0;
+}
 .new_message_icon {
   font-size: large;
 }

@@ -10,6 +10,7 @@ const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
 const showCase = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/showCases');
 const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post');
+const Msg = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/messages')
 
 const UserNames = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/usernames');
 
@@ -575,9 +576,13 @@ router.get("/info", async(req, res, next) => {
 
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
-await User.findById({_id: req.query.userId})
+    await Msg.find({you: req.query.userId})
+    .then(msg => {
+        console.log('msg',msg)
+     User.find({username: msg.username})
 .then(user => {
     // Won't display self
+    console.log('user', user)
         UserInfo.find({username: { $nin: user.username}})
         .then(documents => {
             console.log('best check yet', documents)
@@ -586,12 +591,14 @@ await User.findById({_id: req.query.userId})
                 infos: documents
             });
         })
+        
         .catch(error => {
             res.status(500).json({
                 message: 'Fetching infos failed!'
             });
         });
     })
+})
 });
 // userInfo recieving
 router.get("/infoPersonal", async(req, res, next) => {

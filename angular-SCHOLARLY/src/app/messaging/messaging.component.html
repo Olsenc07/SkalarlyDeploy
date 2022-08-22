@@ -98,7 +98,9 @@
         <i class="material-icons">mood</i>
     </button>
 </div> -->
-
+<div class="messageTitle">
+  Messaging {{username}}
+</div>
 <div class="send_btn">
   <mat-chip-list [disabled]="!message.value">
     <mat-chip selected class="send_btn_style" type="submit"  id="send-button" (click)="trigger(message.value)" color="primary">
