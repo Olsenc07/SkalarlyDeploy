@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { Subject, ReplaySubject } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { map } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
+import { AuthDataInfo } from '../signup/auth-data.model';
 export interface Message {
   username: string;
   message: string;
@@ -16,6 +15,9 @@ export interface Message {
 export class MessageService {
   private messages: Message[] = [];
   private messagesUpdated = new ReplaySubject<Message[]>();
+
+  private infos: AuthDataInfo[] = [];
+  private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
   constructor(private http: HttpClient) {}
 
@@ -87,20 +89,26 @@ export class MessageService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.messages.map((data) => {
+          return messageData.messages.map((info) => {
             return {
-              username: data.username,
-              message: data.message,
-              time: data.time,
-              otherUser: data.otherUser,
-              you: data.you,
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Followers: info.followers,
+              Followings: info.followings,
+              Creator: info.Creator,
             };
           });
         })
       )
       .subscribe((transformedMessage) => {
-        this.messages = transformedMessage;
-        this.messagesUpdated.next([...this.messages]);
+        this.infos = transformedMessage;
+        this.infosUpdated.next([...this.infos]);
       });
   }
 }

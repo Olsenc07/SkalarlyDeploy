@@ -78,7 +78,8 @@ export class ReusableCardMessageComponent implements OnInit {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
     //    Info
-    this.messageService.getMessageNotification(this.userId);
+    // this.messageService.getMessageNotification(this.userId);
+    this.authService.getInfo();
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
