@@ -35,6 +35,7 @@ export class MessageService {
               message: message.message,
               time: message.time,
               otherUser: message.otherUser,
+              you: message.you,
             };
           });
         })
@@ -65,6 +66,7 @@ export class MessageService {
               message: data.message,
               time: data.time,
               otherUser: data.otherUser,
+              you: data.you,
             };
           });
         })

@@ -17,6 +17,7 @@
   // height: 100%;
   overflow-y: scroll;
 }
+
 .left {
   display: flex;
   flex-direction: column;
@@ -68,10 +69,7 @@
   overflow-y: scroll;
   border-top-right-radius: 25px;
 }
-.message_{
-  padding-bottom: 2%;
 
-}
 .new_message_icon {
   font-size: large;
 }

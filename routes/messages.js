@@ -99,30 +99,32 @@ socket.on('chat-messageSnd', (data) => {
     .then(user => {
     User.findOne({username: user.username})
     .then(username => {
-     
-        const myURL = new URL(`http://localhost/3000/messages/:?username=${req.query.username}`)
-        var myParams = new URLSearchParams(myURL.searchParams).get('username');
-        console.log('hey searchParams 2', myParams)
+        console.log('hey searchParams 2', data.otherUser)
         console.log('hey Message', Message)
 
     // saving msg
+    
+    if (data.otherUser !== undefined ) {
     const MESSAGE = new Msg({username: username.username,
                             message: Message,
                             time: data.time,
-                            otherUser: myParams
+                            otherUser: data.otherUser,
+                            you: data.userId
                         })
     MESSAGE.save().then(createdMsg => {
-        socket.emit('messageSnd', formatMessage(username.username, Message, data.time, myParams ));
-        // socket.emit('output-messages', formatMessage(username.username, Message, data.time, myParams ))
-
-
-                                })
+        socket.emit('messageSnd', formatMessage(username.username, Message, data.time ))
+    
+        })
+                   }
                                     })
+   
                                         }) 
+                                        
                                             })
+     
+                                             })      
                                         })
-                                        })
-    // server msg
+                                      
 // socket.emit('server-message', formatMessage(botName, 'Welcome to chat'))
 
 
