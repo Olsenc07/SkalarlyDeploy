@@ -527,38 +527,6 @@ export class CardFeedComponent implements OnInit {
       });
   }
 
-  // Loading in comments
-  onScrollDown(ev: any) {
-    console.log('scrolled down!!', ev);
-
-    this.sum += 5;
-    this.appendItems();
-
-    this.direction = 'scroll down';
-  }
-
-  onScrollUp(ev: any) {
-    console.log('scrolled up!', ev);
-    this.sum += 5;
-    this.prependItems();
-
-    this.direction = 'scroll up';
-  }
-  appendItems() {
-    this.addItems('push');
-  }
-  prependItems() {
-    this.addItems('unshift');
-  }
-  addItems(_method: string) {
-    for (let i = 0; i < this.sum; ++i) {
-      if (_method === 'push') {
-        this.comments.push([i].join(''));
-      } else if (_method === 'unshift') {
-        this.comments.unshift([i].join(''));
-      }
-    }
-  }
   //
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
@@ -585,15 +553,7 @@ export class CardFeedComponent implements OnInit {
       console.log('onComment', postId);
     }
   }
-  // clearComments(): void {
-  //   this.comment.setValue('');
-  //   // this.closed = true;
-  //   // this.open = false;
-  // }
-  // toggleComments(): void {
-  //   this.closed = false;
-  //   this.open = true;
-  // }
+
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);

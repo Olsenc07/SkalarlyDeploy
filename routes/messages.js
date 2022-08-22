@@ -3,6 +3,8 @@ const router = express.Router();
 // Mongod
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const Msg = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/messages')
+const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
+
 // consts
 const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
 // const botName = 'Skalar';
@@ -126,18 +128,21 @@ socket.on('chat-messageSnd', (data) => {
                                              })      
                                         })
                                       
-// socket.emit('server-message', formatMessage(botName, 'Welcome to chat'))
+router.get('/Notifications', (req,res) => {
+    console.log('hey chaz midnight',req.query.userId)
 
+Msg.find({ $and:{
 
-// Broadcast when user connects
-// socket.broadcast.emit('message', formatMessage(botName,'user has joined chat'));
-
-// runs when client disconnects
-// socket.on('disconnect', () => {
-//     io.emit('message', formatMessage(botName,'a user has left the chat'))
-// })
-
-
+}
+})     
+ .then((messages) => {
+console.log('messages pulled', messages)
+res.status(200).json({
+ message: 'Messages fetched succesfully!',
+ messages: messages
+ })
+})
+              })
 
 
 

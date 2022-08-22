@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { Router } from '@angular/router';
+import { MessageService } from '../services/messages.service';
 
 @Component({
   selector: 'app-card-user',
@@ -59,7 +60,11 @@ export class ReusableCardMessageComponent implements OnInit {
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private messageService: MessageService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -73,7 +78,7 @@ export class ReusableCardMessageComponent implements OnInit {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
     //    Info
-    this.authService.getInfo();
+    this.messageService.getMessageNotification(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
@@ -84,7 +89,6 @@ export class ReusableCardMessageComponent implements OnInit {
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
-    console.log('tester 1', infoUser);
   }
   navigateToChat(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;

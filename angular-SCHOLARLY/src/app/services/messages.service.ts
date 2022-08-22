@@ -76,4 +76,31 @@ export class MessageService {
         this.messagesUpdated.next([...this.messages]);
       });
   }
+
+  getMessageNotification(userId: string): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'http://localhost:3000/api/messages/Notifications',
+        {
+          params: { userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((data) => {
+            return {
+              username: data.username,
+              message: data.message,
+              time: data.time,
+              otherUser: data.otherUser,
+              you: data.you,
+            };
+          });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.messages = transformedMessage;
+        this.messagesUpdated.next([...this.messages]);
+      });
+  }
 }
