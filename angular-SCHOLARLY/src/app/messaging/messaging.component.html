@@ -14,23 +14,21 @@
 <mat-divider></mat-divider>
 <div class="search-box">
     <i class="material-icons search-box__icon ">search</i>
-    <input matInput type="search" class="search-box__input" placeholder="Filter messages"
-      [formControl]="search" />
-    <cdk-virtual-scroll-viewport itemSize="10">
+    <div matInput type="search" class="search-box__input" 
+     >Message Notifications</div>
+    <!-- <cdk-virtual-scroll-viewport itemSize="10">
       <mat-option *cdkVirtualFor="let user of filteredSearch | async" [value]="user">
         {{user}}
       </mat-option>
-    </cdk-virtual-scroll-viewport>
+    </cdk-virtual-scroll-viewport> -->
   </div>
   <mat-divider></mat-divider>
-<div class="list"> 
-<!-- <div class="scroll"> -->
-    
-        <!-- <app-card-message class="space" >    
-       </app-card-message> -->
+<div class="list">
+     
+        <app-card-message class="space" >    
+       </app-card-message>
 
-    
-<!-- </div> -->
+
 
 </div>
 

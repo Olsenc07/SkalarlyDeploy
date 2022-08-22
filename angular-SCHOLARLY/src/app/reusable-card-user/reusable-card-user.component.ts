@@ -81,16 +81,17 @@ export class ReusableCardMessageComponent implements OnInit {
         this.isLoading = false;
       });
   }
-  navigateToPage(): any {
-    const ID = (document.getElementById('userName') as HTMLInputElement).value;
-    console.log(ID);
-
-    // const params = new URLSearchParams(window.location.search);
-    // params.set('id', id);
-
-    this.router.navigate(['/profiles/:'], { queryParams: { id: ID } });
-    //  this.authService.getOtherInfo();
-    // this.authService.otherProfiles(id);
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+    console.log('tester 1', infoUser);
+  }
+  navigateToChat(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/messages/:'], {
+      queryParams: { username: infoUser },
+    });
+    console.log('tester 2', infoUser);
   }
 }
 

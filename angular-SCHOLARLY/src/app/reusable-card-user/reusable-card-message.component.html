@@ -15,26 +15,26 @@
                 <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="fit" />
             </div>
             <div class="row_">
-                
+                <div class="messageText">
+                    Message From
+                 </div> 
                 <!-- <div class="column_"> -->
                     <div class="column_">
                         <!-- (click)="onOtherUser(info)" -->
-                        <button mat-button type="button" 
-                        class="userName textSize" id="userName"  [value]=info.username  (click)="navigateToPage()" >
-                            
-                            @{{ info.username}}
-        
-                        </button>
+              
                 <div class="userName textSize" *ngIf="info.name">
                     <!-- {{ (profile | async)?.Pronouns}} -->
                     {{ info.name }}
 
                 </div>
+                <button mat-button type="button" (click)="navigateToPage(info.username)"
+                class="userName textSize_" id="userName"  [value]=info.username  (click)="navigateToPage()" >
+                    
+                    @{{ info.username}}
+
+                </button>
                 </div>
-                <!-- <mat-card-subtitle class="gender textSize">
-                                    {{id.Gender}}
-                                </mat-card-subtitle> -->
-                <!-- </div> -->
+             
             </div>
 
 
@@ -43,8 +43,8 @@
             <!-- Only appears if user isn't already following this mutual friend -->
             <mat-chip-list class="center_" aria-label="FollowBtn">
                 <!-- (click)="followClicked()" -->
-                <mat-chip class="messageM">
-                    Message
+                <mat-chip class="messageM" (click)="navigateToChat(info.username)">
+                    Message 
                     <!-- Or -->
                     <!-- <i class="far fa-envelope"></i> -->
 

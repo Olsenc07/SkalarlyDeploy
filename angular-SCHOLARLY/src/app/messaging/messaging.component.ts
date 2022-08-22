@@ -66,8 +66,8 @@ export class MessagingComponent implements OnInit {
       console.log('server msg', data);
       this.outputMessage(data);
     });
-    this.socket.on('disconnect', (socket) => {
-      console.log('disconnect');
+    this.socket.on('disconnect', () => {
+      console.log('disconnected bro');
     });
   }
 
@@ -142,9 +142,6 @@ export class MessagingComponent implements OnInit {
 
   outputMessage(data): void {
     const div = document.createElement('div');
-    console.log('hey chaz 1', this.userId);
-    console.log('hey chaz 1__', data.you);
-
     div.classList.add('data');
     if (this.userId === data.you) {
       div.innerHTML = `

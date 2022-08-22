@@ -86,6 +86,7 @@ router.get('/OnetoOneSend', (req,res) => {
     console.log('connected to send')
 
 io.on('connection', (socket) => {
+    
     console.log('connected to send2')
 
 socket.on('chat-messageSnd', (data) => {
@@ -121,7 +122,7 @@ socket.on('chat-messageSnd', (data) => {
                                         }) 
                                         
                                             })
-     
+            
                                              })      
                                         })
                                       
