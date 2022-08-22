@@ -128,28 +128,25 @@ socket.on('chat-messageSnd', (data) => {
                                              })      
                                         })
                                       
-router.get('/Notifications', (req,res) => {
+router.get('/Notifications', async (req,res) => {
     console.log('hey chaz midnight',req.query.userId)
 
-Msg.find( {you: req.query.userId })
-.then(user => {
-    console.log('all user', user.forEach(users => {
-for (let key in users.username){
-console.log('lets go baby', key)
+    
+// await UserInfo.findOne({Creator: req.query.userId })
+// .then(user => {
+// console.log('user', user)
+// Msg.find( {$and: [{you: req.query.userId },
+//     {otherUser: user.username },
+// {$not: {username: user.username}}],
+// })
+// .then(documents => {
+// res.status(200).json({
+//     message: 'Notifications fetched succesfully!',
+//     messages: documents
+// });
+// })
+// })
 
-
-}
-    }))
-    // UserInfo.find({username: })
-})
-.then(userInfo => {
-    console.log('check 1',userInfo)
-   
-    res.status(200).json({
-        message: 'Messages fetched succesfully!',
-        messages: userInfo
-})
-})
 })
 
 

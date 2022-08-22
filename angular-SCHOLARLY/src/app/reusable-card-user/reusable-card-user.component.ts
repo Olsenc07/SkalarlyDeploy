@@ -79,7 +79,7 @@ export class ReusableCardMessageComponent implements OnInit {
       });
     //    Info
     // this.messageService.getMessageNotification(this.userId);
-    this.authService.getInfo();
+    this.authService.getInfoMessage(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {

@@ -573,7 +573,26 @@ router.get("/info", async(req, res, next) => {
         });
 });
 
-
+// userInfo Messages
+router.get("/infoMessage", async(req, res, next) => {
+await User.findById({_id: req.query.userId})
+.then(user => {
+    // Won't display self
+        UserInfo.find({username: { $nin: user.username}})
+        .then(documents => {
+            console.log('best check yet', documents)
+            res.status(200).json({
+                message: 'Infos fetched succesfully!',
+                infos: documents
+            });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching infos failed!'
+            });
+        });
+    })
+});
 // userInfo recieving
 router.get("/infoPersonal", async(req, res, next) => {
      await UserInfo.find({Creator: req.query.userId})

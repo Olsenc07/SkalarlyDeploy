@@ -89,26 +89,20 @@ export class MessageService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.messages.map((info) => {
+          return messageData.messages.map((data) => {
             return {
-              id: info._id,
-              username: info.username,
-              name: info.name,
-              major: info.major,
-              minor: info.minor,
-              sport: info.sport,
-              club: info.club,
-              ProfilePicPath: info.ProfilePicPath,
-              Followers: info.followers,
-              Followings: info.followings,
-              Creator: info.Creator,
+              username: data.username,
+              message: data.message,
+              time: data.time,
+              otherUser: data.otherUser,
+              you: data.you,
             };
           });
         })
       )
       .subscribe((transformedMessage) => {
-        this.infos = transformedMessage;
-        this.infosUpdated.next([...this.infos]);
+        this.messages = transformedMessage;
+        this.messagesUpdated.next([...this.messages]);
       });
   }
 }
