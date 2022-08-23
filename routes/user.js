@@ -576,34 +576,45 @@ router.get("/info", async(req, res, next) => {
 
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
-   await User.findById({_id: req.query.userId})
+
+    await User.findById({_id: req.query.userId})
    .then(user => {
     User.findOne({username: user.username})
     .then(username => {
-    Msg.find({ $and:
-    [{you: req.query.userId}, {username: username.username}]
-    }).then(final => {
-        finalName =  Object.values(final).map((val) => {
-            console.log('final should be non zombie or oslo77', val)
-        return(val)
-        })
-
-console.log('perfecto', finalName)
-docs =  Object.values(finalName).map((last) => {
-return(last)
-}) 
-console.log('best check yet', docs)
-UserInfo.find({username: docs})
-        .then(documents => {
+ Msg.find({$and: [{you: req.query.userId},
+                {username: username.username}]
+            }).then(documents => {
+            console.log('docs', documents)
             res.status(200).json({
-                message: 'Infos fetched succesfully!',
-                infos: documents
-            });
+              message: 'Infos fetched succesfully!',
+            messages: documents
+              });
+        })
     })
 })
-})
-   })
-})
+}) 
+//    await User.findById({_id: req.query.userId})
+//    .then(user => {
+//     User.findOne({username: user.username})
+//     .then(username => {
+//     Msg.find({ $and:
+//     [{you: req.query.userId}, {$nin: {username: username.username}}]
+//     }).then(final => {
+//         const finals = Object.values(final).map((val) => {
+//             return val
+//         })
+//         res.status(200).json({
+//                             message: 'Infos fetched succesfully!',
+//                             messages: finals
+//                         });
+// console.log('best check yet', finals)
+// UserInfo.find({username: docs})
+//         .then(documents => {
+//           
+//     })
+// })
+//    })
+// })
 
 
 

@@ -68,6 +68,14 @@
     font-family: 'Cinzel';
     text-align: center;
 }
+.odd{
+  background-color: #e7e7e7;
+  padding: 1%;
+}
+.even{
+  padding: 1%;
+
+}
 .fit {
   width: 100%;
   height: auto;
@@ -116,8 +124,8 @@
   display: flex;
   box-shadow: 0 2px 3px;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
 }
 
   .textSize {

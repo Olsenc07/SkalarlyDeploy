@@ -2,18 +2,18 @@
     <mat-spinner ></mat-spinner>
   </div>
 
-<div  *ngFor="let info of infos">
-<mat-card class="row1" >
+<div  *ngFor="let info of messages; let even = even; let odd = odd">
+<mat-card class="row1" [ngClass]="{ even: even, odd: odd }">
     <div class="column" >
         <div class="row">
-            <div  class="profilePic" *ngIf="info.ProfilePicPath">
-                <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
+            <!-- <div  class="profilePic" *ngIf="info.ProfilePicPath">
+                <!-- <img src="{{id.cropImgPreview}}" alt=""> --
                 <img class="fit" src="{{info.ProfilePicPath}}">
-            </div>
+            </div> -->
 
-            <div class="profilePic" *ngIf="!info.ProfilePicPath">
+            <!-- <div class="profilePic" *ngIf="!info.ProfilePicPath">
                 <img src="../../assets/Pics/Skalarly 1.jpeg" class="fit" />
-            </div>
+            </div> -->
             <div class="row_">
                 <div class="messageText">
                     Message From
@@ -22,19 +22,19 @@
                     <div class="column_">
                         <!-- (click)="onOtherUser(info)" -->
               
-                <div class="userName textSize" *ngIf="info.name">
-                    <!-- {{ (profile | async)?.Pronouns}} -->
-                    {{ info.name }}
-
-                </div>
+                
                 <button 
-                mat-button  (click)="navigateToPage(info.username)"
-                class="userName textSize_" id="userName"  [value]=info.username  > 
-                    @{{ info.username}}
+                mat-button  (click)="navigateToPage(info.otherUser)"
+                class="userName textSize_" id="userName"  [value]=info.otherUser  > 
+                    @{{ info.otherUser}}
 
                 </button>
                 </div>
-             
+             <div class="userName textSize" >
+                    <!-- {{ (profile | async)?.Pronouns}} -->
+                    at {{ info.time }}
+
+                </div>
             </div>
 
 
@@ -43,7 +43,8 @@
             <!-- Only appears if user isn't already following this mutual friend -->
             <mat-chip-list class="center_" aria-label="FollowBtn">
                 <!-- (click)="followClicked()" -->
-                <mat-chip class="messageM" (click)="navigateToChat(info.username)">
+                <mat-chip class="messageM" (click)="navigateToChat(info.otherUser)"
+                >
                     Message 
                     <!-- Or -->
                     <!-- <i class="far fa-envelope"></i> -->

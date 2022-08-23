@@ -6,6 +6,12 @@ import { AuthDataInfo } from '../signup/auth-data.model';
 import { Router } from '@angular/router';
 import { MessageService } from '../services/messages.service';
 
+export interface Message {
+  username: string;
+  message: string;
+  time: string;
+}
+
 @Component({
   selector: 'app-card-user',
   templateUrl: './reusable-card-user.component.html',
@@ -57,6 +63,9 @@ export class ReusableCardMessageComponent implements OnInit {
 
   isLoading = false;
 
+  messages: Message[] = [];
+  private messagesSub: Subscription;
+
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
@@ -79,11 +88,11 @@ export class ReusableCardMessageComponent implements OnInit {
       });
     //    Info
     // this.messageService.getMessageNotification(this.userId);
-    this.authService.getInfoMessage(this.userId);
-    this.infosSub = this.authService
+    this.messageService.getMessageNotification(this.userId);
+    this.messagesSub = this.messageService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
+      .subscribe((messages: Message[]) => {
+        this.messages = messages;
         this.isLoading = false;
       });
   }
@@ -91,12 +100,12 @@ export class ReusableCardMessageComponent implements OnInit {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
-  navigateToChat(infoUser: string): any {
+  navigateToChat(username: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/messages/:'], {
-      queryParams: { username: infoUser },
+      queryParams: { username },
     });
-    console.log('tester 2', infoUser);
+    console.log('tester 2', username);
   }
 }
 

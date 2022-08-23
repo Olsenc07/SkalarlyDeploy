@@ -82,7 +82,7 @@ export class MessageService {
   getMessageNotification(userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'http://localhost:3000/api/messages/Notifications',
+        'http://localhost:3000/api/user/infoMessage',
         {
           params: { userId },
         }
