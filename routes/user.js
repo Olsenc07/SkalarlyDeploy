@@ -576,7 +576,6 @@ router.get("/info", async(req, res, next) => {
 
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
-
     await User.findById({_id: req.query.userId})
    .then(user => {
     User.findOne({username: user.username})
@@ -587,7 +586,7 @@ router.get("/infoMessage", async(req, res, next) => {
             console.log('docs', documents)
             res.status(200).json({
               message: 'Infos fetched succesfully!',
-            messages: documents
+                 messages: documents
               });
         })
     })

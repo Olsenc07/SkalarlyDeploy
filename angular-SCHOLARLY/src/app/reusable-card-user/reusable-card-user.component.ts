@@ -66,9 +66,6 @@ export class ReusableCardMessageComponent implements OnInit {
   messages: Message[] = [];
   private messagesSub: Subscription;
 
-  infos: AuthDataInfo[] = [];
-  private infosSub: Subscription;
-
   constructor(
     private authService: AuthService,
     private messageService: MessageService,
@@ -105,7 +102,6 @@ export class ReusableCardMessageComponent implements OnInit {
     this.router.navigate(['/messages/:'], {
       queryParams: { username },
     });
-    console.log('tester 2', username);
   }
 }
 

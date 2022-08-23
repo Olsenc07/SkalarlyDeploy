@@ -250,9 +250,10 @@ export class MessageCardComponent implements OnInit {
 
     // Pulls one to one msgs
     this.route.queryParams.subscribe((params) => {
-      console.log('params main page homie ', params?.username);
       this.username = params?.username;
       this.messagesService.getMessages(this.userId, this.username);
+      this.messagesService.getMessageNotification(this.userId);
+
       this.datasSub = this.messagesService
         .getInfoUpdateListener()
         .subscribe((messages: Message[]) => {
