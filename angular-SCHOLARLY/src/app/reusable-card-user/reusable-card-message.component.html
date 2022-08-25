@@ -43,7 +43,7 @@
             <!-- Only appears if user isn't already following this mutual friend -->
             <mat-chip-list class="center_" aria-label="FollowBtn">
                 <!-- (click)="followClicked()" -->
-                <mat-chip class="messageM" (click)="navigateToChat(info.username)"
+                <mat-chip class="messageM" (click)="navigateToChat(info.otherUser)"
                 >
                     Message 
                     <!-- Or -->
@@ -53,13 +53,6 @@
 
                 </mat-chip>
             </mat-chip-list>
-
-
-
-            <!-- <div class="row1"><button mat-icon-button class="btn"><i class="far fa-check-circle green"></i></button>
-            
-                            <button mat-icon-button class="btn"> <i class="far fa-times-circle red"></i></button>
-                        </div> -->
 
         </div>
 

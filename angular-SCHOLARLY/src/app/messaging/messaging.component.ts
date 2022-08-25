@@ -75,7 +75,9 @@ export class MessagingComponent implements OnInit {
   }
 
   ngOnInit(): any {
+    console.log('hey chz');
     this.userId = this.authService.getUserId();
+
     this.route.queryParams.subscribe((params) => {
       console.log('params main page', params?.username);
       this.username = params?.username;
@@ -177,7 +179,7 @@ export class MessagingComponent implements OnInit {
       width: 100%;
 ">
       <div
-     class="chat-messages" id="container" style="background-color: #e7e7e7; width: fit-content;    padding: 0% 2%;
+     class="chat-messages" id="container" style="background-color: #e7e7e7; width: fit-content; padding: 0% 2%;
       margin-bottom:2%; border-radius:25px;background-color: #10173a;" >
     <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
    <div style="margin:2% 2% 0% 5%" > @${data.username} </div>
