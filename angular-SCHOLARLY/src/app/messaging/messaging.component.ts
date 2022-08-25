@@ -30,8 +30,7 @@ export class MessagingComponent implements OnInit {
   timeMinuteText = this.timeMinute < 10 ? '0' : '';
   time =
     this.timeHour + ':' + this.timeMinuteText + this.timeMinute + this.text;
-  infos: AuthDataInfo[] = [];
-  private infosSub: Subscription;
+
   // Chat messaging
   chatForm = document.getElementById('send-container');
   socket = io();
@@ -53,12 +52,6 @@ export class MessagingComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.authService.getInfo();
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-      });
     this.messagesService.startMessages(this.userId, this.username);
 
     // msg from server
@@ -73,14 +66,11 @@ export class MessagingComponent implements OnInit {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-
-    // Pulls one to one msgs
     this.route.queryParams.subscribe((params) => {
       console.log('params main page', params?.username);
       this.username = params?.username;
-      this.messagesService.getMessages(this.userId, this.username);
+      // this.messagesService.getMessages(this.userId, this.username);
     });
-
     // emits saved message
     this.socket.on('messageSnd', (data) => {
       console.log('loaded in msgs', data);
@@ -90,26 +80,8 @@ export class MessagingComponent implements OnInit {
         });
       }
     });
-    // Pulls specific convos msgs
-    // this.socket.on('One-One', (data) => {
-    //   console.log('loaded in msgs', data);
-    //   if (data.length) {
-    //     data.forEach((data) => {
-    //       this.appendMessages(data);
-    //     });
-    //   }
-    // });
   }
-  // Fires after page is loaoded in ngOnInit
-  // ngAfterViewInit() {
-  //   // clears params
-  //   this.router.navigate([], {
-  //     queryParams: {
-  //       username: null,
-  //     },
-  //     queryParamsHandling: 'merge',
-  //   });
-  // }
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.allUsers.filter(
@@ -251,9 +223,8 @@ export class MessageCardComponent implements OnInit {
     // Pulls one to one msgs
     this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
-      this.messagesService.getMessages(this.userId, this.username);
-      this.messagesService.getMessageNotification(this.userId);
 
+      this.messagesService.getMessages(this.userId, this.username);
       this.datasSub = this.messagesService
         .getInfoUpdateListener()
         .subscribe((messages: Message[]) => {

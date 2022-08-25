@@ -3,8 +3,8 @@ import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
-import { Router } from '@angular/router';
 import { MessageService } from '../services/messages.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface Message {
   username: string;
@@ -58,6 +58,8 @@ export class ReusableCardUserComponent implements OnInit {
 })
 export class ReusableCardMessageComponent implements OnInit {
   userId: string;
+  username: string;
+
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
 
@@ -69,7 +71,8 @@ export class ReusableCardMessageComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -80,18 +83,19 @@ export class ReusableCardMessageComponent implements OnInit {
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
     //    Info
-    // this.messageService.getMessageNotification(this.userId);
-    this.messageService.getMessageNotification(this.userId);
-    this.messagesSub = this.messageService
-      .getInfoUpdateListener()
-      .subscribe((messages: Message[]) => {
-        this.messages = messages;
-        this.isLoading = false;
-      });
+    this.route.queryParams.subscribe((params) => {
+      this.username = params?.username;
+      this.messageService.getMessageNotification(this.userId);
+      this.messagesSub = this.messageService
+        .getInfoUpdateListener()
+        .subscribe((messages: Message[]) => {
+          this.messages = messages;
+          this.isLoading = false;
+        });
+    });
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;

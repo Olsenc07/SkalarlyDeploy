@@ -62,6 +62,7 @@
   background-color: #0c46b8a1;
   color: white;
 }
+
 .messageText{
   display: flex;
     align-items: center;
@@ -69,7 +70,7 @@
     text-align: center;
 }
 .odd{
-  background-color: #e7e7e7;
+  background-color: #f2f0f0;
   padding: 1%;
 }
 .even{
@@ -107,7 +108,7 @@
   justify-content: space-between;
   box-sizing: border-box;
   border-radius: 25px;
-  box-shadow: 0 0 0 1px grey;
+  // box-shadow: 0 0 0 1px grey;
   margin-bottom: 1%;
 }
 .row_ {

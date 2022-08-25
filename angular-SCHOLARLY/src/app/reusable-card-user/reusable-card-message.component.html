@@ -2,8 +2,8 @@
     <mat-spinner ></mat-spinner>
   </div>
 
-<div  *ngFor="let info of messages; let even = even; let odd = odd">
-<mat-card class="row1" [ngClass]="{ even: even, odd: odd }">
+<div  *ngFor="let info of messages.slice().reverse(); let even = even; let odd = odd">
+<mat-card class="row1" [ngClass]="{ even: even, odd: odd }" *ngIf="userId !== info.you">
     <div class="column" >
         <div class="row">
             <!-- <div  class="profilePic" *ngIf="info.ProfilePicPath">
@@ -24,9 +24,9 @@
               
                 
                 <button 
-                mat-button  (click)="navigateToPage(info.otherUser)"
-                class="userName textSize_" id="userName"  [value]=info.otherUser  > 
-                    @{{ info.otherUser}}
+                mat-button  (click)="navigateToPage(info.username)"
+                class="userName textSize_" id="userName"  [value]=info.username  > 
+                    @{{ info.username}}
 
                 </button>
                 </div>
@@ -43,7 +43,7 @@
             <!-- Only appears if user isn't already following this mutual friend -->
             <mat-chip-list class="center_" aria-label="FollowBtn">
                 <!-- (click)="followClicked()" -->
-                <mat-chip class="messageM" (click)="navigateToChat(info.otherUser)"
+                <mat-chip class="messageM" (click)="navigateToChat(info.username)"
                 >
                     Message 
                     <!-- Or -->

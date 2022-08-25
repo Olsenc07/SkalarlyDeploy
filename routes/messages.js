@@ -16,53 +16,16 @@ const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SC
 router.get('/OnetoOne', (req,res) => {   
 // welcome current user
     // Load in old messages
-    User.findById({_id: req.query.userId})
-.then(user => {
-User.findOne({username: user.username})
-.then(username => {
-
-console.log('user Id you', username.username )
-
-const myURL = new URL(`http://localhost/3000/messages/:?username=${req.query.username}`)
-var myParams = new URLSearchParams(myURL.searchParams).get('username');
-console.log('hey searchParams ', myParams)
-console.log('req query username, other', req.query.username)
-
-
-    Msg.find( { $or: [
-           { $and: [{username: username.username}, 
-                {otherUser: myParams}]},
-
-               { $and: [{username: myParams}, 
-                {otherUser: username.username}]}
-               ]}
-         
-    )        
-    .then((result) => {
-       
-
-})
-})
-})
-
 User.findById({_id: req.query.userId})
 .then(user => {
 User.findOne({username: user.username})
 .then(username => {
-
-console.log('user Id you', username.username )
-
-const myURL = new URL(`http://localhost/3000/messages/:?username=${req.query.username}`)
-var myParams = new URLSearchParams(myURL.searchParams).get('username');
-console.log('hey searchParams 2', myParams)
-console.log('req query username, other 2', req.query.username)
-
-
     Msg.find( { $or: [
            { $and: [{username: username.username}, 
-                {otherUser: myParams}]},
+                {otherUser: req.query.username},
+            {you: req.query.userId}]},
 
-               { $and: [{username: myParams}, 
+               { $and: [{username: req.query.username}, 
                 {otherUser: username.username}]}
                ]}
          
@@ -128,28 +91,4 @@ socket.on('chat-messageSnd', (data) => {
                                              })      
                                         })
                                       
-router.get('/Notifications', async (req,res) => {
-    console.log('hey chaz midnight',req.query.userId)
-
-    
-// await UserInfo.findOne({Creator: req.query.userId })
-// .then(user => {
-// console.log('user', user)
-// Msg.find( {$and: [{you: req.query.userId },
-//     {otherUser: user.username },
-// {$not: {username: user.username}}],
-// })
-// .then(documents => {
-// res.status(200).json({
-//     message: 'Notifications fetched succesfully!',
-//     messages: documents
-// });
-// })
-// })
-
-})
-
-
-
-
 module.exports = router;

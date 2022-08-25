@@ -141,6 +141,7 @@
                   mat-icon-button
                   type="button"
                   (click)="postUnClickedBtn()"
+                  (click)="messagesUnClickedBtn()"
                   routerLink="/search"
                   class="a_up"
                 >
@@ -160,6 +161,7 @@
                   mat-icon-button
                   type="button"
                   (click)="postUnClickedBtn()"
+                  (click)="messagesUnClickedBtn()"
                   routerLink="/friends-activity"
                   class="a_up"
                 >
@@ -182,6 +184,7 @@
                   type="button"
                   (click)="postClickedBtn()"
                   (click)="navigateToPost()"
+                  (click)="messagesUnClickedBtn()"
                   class="a_up"
                 >
                   <span
@@ -198,13 +201,14 @@
                   mat-icon-button
                   type="button"
                   (click)="postUnClickedBtn()"
-                  routerLink="/messages"
+                  (click)="messagesClickedBtn()"
+                  routerLink="/messages/:username"
                   class="a_up"
                 >
                   <span
                     class="fas fa-comment-dots"
                     [ngClass]="
-                      router?.url === '/messages' ? 'MessageOn' : 'message'
+                      commentClicked == true ? 'MessageOn' : 'message'
                     "
                   >
                     <!-- chat -->
@@ -218,6 +222,7 @@
                 <button
                   mat-icon-button
                   type="button"
+                  (click)="messagesUnClickedBtn()"
                   (click)="postUnClickedBtn()"
                   routerLink="/profile"
                   class="a_up"

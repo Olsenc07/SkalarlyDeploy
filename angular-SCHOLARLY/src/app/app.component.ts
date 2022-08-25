@@ -16,6 +16,7 @@ import { PostsService, UserNames } from './services/posts.service';
 export class AppComponent implements OnInit {
   users: UserNames[] = [];
   postClicked = false;
+  commentClicked = false;
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -206,6 +207,14 @@ export class AppComponent implements OnInit {
   postUnClickedBtn(): boolean {
     return (this.postClicked = false);
   }
+
+  // Message icon css changes
+  messagesClickedBtn(): boolean {
+    return (this.commentClicked = true);
+  }
+  messagesUnClickedBtn(): boolean {
+    return (this.commentClicked = false);
+  }
   // To post page with users id
   navigateToPost(): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -213,6 +222,7 @@ export class AppComponent implements OnInit {
       queryParams: { userId: this.userId },
     });
   }
+
   navigateToEditProfile(): any {
     this.router.navigate(['/edit-profile/:'], {
       queryParams: { userId: this.userId },

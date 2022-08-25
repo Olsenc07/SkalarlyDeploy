@@ -576,71 +576,27 @@ router.get("/info", async(req, res, next) => {
 
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
-    await User.findById({_id: req.query.userId})
+    console.log('blue berry', req.query.username)
+        await User.findById({_id: req.query.userId})
    .then(user => {
     User.findOne({username: user.username})
     .then(username => {
- Msg.find({$and: [{you: req.query.userId},
-                {username: username.username}]
-            }).then(documents => {
-            console.log('docs', documents)
-            res.status(200).json({
-              message: 'Infos fetched succesfully!',
-                 messages: documents
-              });
-        })
+        // Problem lies here
+ Msg.find( {$and:[{you: req.query.userId},
+                {username: username.username}
+ ]}
+    )
+    .then(documents => {
+        console.log('docs', documents)
+        res.status(200).json({
+          message: 'Info messages fetched succesfully!',
+             messages: documents
+          });
     })
 })
-}) 
-//    await User.findById({_id: req.query.userId})
-//    .then(user => {
-//     User.findOne({username: user.username})
-//     .then(username => {
-//     Msg.find({ $and:
-//     [{you: req.query.userId}, {$nin: {username: username.username}}]
-//     }).then(final => {
-//         const finals = Object.values(final).map((val) => {
-//             return val
-//         })
-//         res.status(200).json({
-//                             message: 'Infos fetched succesfully!',
-//                             messages: finals
-//                         });
-// console.log('best check yet', finals)
-// UserInfo.find({username: docs})
-//         .then(documents => {
-//           
-//     })
-// })
-//    })
-// })
+   })
 
-
-
-
-//     await Msg.find({you: req.query.userId})
-//     .then(msg => {
-//         console.log('msg',msg)
-//      User.find({username: msg.username})
-// .then(user => {
-//     // Won't display self
-//     console.log('user', user)
-//         UserInfo.find({username: { $nin: user.username}})
-//         .then(documents => {
-//             console.log('best check yet', documents)
-//             res.status(200).json({
-//                 message: 'Infos fetched succesfully!',
-//                 infos: documents
-//             });
-//         })
-        
-//         .catch(error => {
-//             res.status(500).json({
-//                 message: 'Fetching infos failed!'
-//             });
-//         });
-//     })
-// })
+})
 
 // userInfo recieving
 router.get("/infoPersonal", async(req, res, next) => {
