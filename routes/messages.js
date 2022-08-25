@@ -42,7 +42,31 @@ res.status(200).json({
 })
 })
 })
+// userInfo Messages
+router.get("/infoMessage", async(req, res, next) => {
+    console.log('wanteing notifications')
+    await User.findById({_id: req.query.userId})
+.then(user => {
+User.findOne({username: user.username})
+.then(username => {
+    // Problem lies here
+Msg.find( {$and:[{you: req.query.userId},
+            {otherUser: username.username}
+]}
+)
+.then(documents => {
+    console.log('docs', documents)
+    console.log('wanting notifications 2')
 
+    res.status(200).json({
+      message: 'Info messages fetched succesfully!',
+         messages: documents
+      });
+})
+})
+})
+
+})
 
 
 // listen for chat msg sending

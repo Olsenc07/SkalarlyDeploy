@@ -80,9 +80,10 @@ export class MessageService {
   }
 
   getMessageNotification(userId: string): any {
+    console.log('get a call?');
     this.http
       .get<{ message: string; messages: any }>(
-        'http://localhost:3000/api/user/infoMessage',
+        'http://localhost:3000/api/messages/infoMessage',
         {
           params: { userId },
         }

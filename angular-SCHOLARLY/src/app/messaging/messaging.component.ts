@@ -15,6 +15,7 @@ export interface Message {
   username: string;
   message: string;
   time: string;
+  you: string;
 }
 @Component({
   selector: 'app-messaging',

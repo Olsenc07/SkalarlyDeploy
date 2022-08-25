@@ -574,29 +574,7 @@ router.get("/info", async(req, res, next) => {
         });
 });
 
-// userInfo Messages
-router.get("/infoMessage", async(req, res, next) => {
-    console.log('blue berry', req.query.username)
-        await User.findById({_id: req.query.userId})
-   .then(user => {
-    User.findOne({username: user.username})
-    .then(username => {
-        // Problem lies here
- Msg.find( {$and:[{you: req.query.userId},
-                {otherUser: username.username}
- ]}
-    )
-    .then(documents => {
-        console.log('docs', documents)
-        res.status(200).json({
-          message: 'Info messages fetched succesfully!',
-             messages: documents
-          });
-    })
-})
-   })
 
-})
 
 // userInfo recieving
 router.get("/infoPersonal", async(req, res, next) => {

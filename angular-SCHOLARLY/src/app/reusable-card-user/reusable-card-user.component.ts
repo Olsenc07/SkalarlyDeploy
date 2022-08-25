@@ -5,11 +5,13 @@ import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { MessageService } from '../services/messages.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 
 export interface Message {
   username: string;
   message: string;
   time: string;
+  you: string;
 }
 
 @Component({
@@ -66,7 +68,7 @@ export class ReusableCardMessageComponent implements OnInit {
   isLoading = false;
 
   messages: Message[] = [];
-  private messagesSub: Subscription;
+  public messagesSub: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -75,9 +77,16 @@ export class ReusableCardMessageComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): any {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
+    this.messageService.getMessageNotification(this.userId);
+    this.messagesSub = this.messageService
+      .getInfoUpdateListener()
+      .subscribe((messages: Message[]) => {
+        this.messages = messages;
+        this.isLoading = false;
+      });
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
@@ -88,15 +97,9 @@ export class ReusableCardMessageComponent implements OnInit {
     //    Info
     this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
-      this.messageService.getMessageNotification(this.userId);
-      this.messagesSub = this.messageService
-        .getInfoUpdateListener()
-        .subscribe((messages: Message[]) => {
-          this.messages = messages;
-          this.isLoading = false;
-        });
     });
   }
+
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
