@@ -28,8 +28,18 @@ export class MessagingComponent implements OnInit {
   timeMinute = new Date().getMinutes();
   text = this.timeHour >= 12 ? 'pm' : 'am';
   timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth() + 1;
   time =
-    this.timeHour + ':' + this.timeMinuteText + this.timeMinute + this.text;
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    this.text +
+    '\xa0' +
+    this.dateDay +
+    '/' +
+    this.dateMonth;
 
   // Chat messaging
   chatForm = document.getElementById('send-container');
@@ -122,7 +132,8 @@ export class MessagingComponent implements OnInit {
       width: 100%;
 ">
       <div
-     class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%;width: fit-content; border-radius:25px" >
+     class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%;padding: 0% 5% 0% 2%;
+     width: fit-content; border-radius:25px" >
     <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
    <div style="margin:2% 2% 0% 5%" > @${data.username} </div>
    <div style="font-size:small; color: #878581;margin-top: 2%;">  ${data.time}  </div>
@@ -141,7 +152,7 @@ export class MessagingComponent implements OnInit {
       class="chat-messages" id="container" style="background-color: #0056ba;padding: 0% 2%; 
       margin-bottom:2%; border-radius:25px;
       width: fit-content;padding:0% 5% 0% 2%; display: flex; flex-direction:column" >
-      <div class="message_" id="message-container" style="display:flex; flex-direction:row; justify-content: end; ">
+      <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
      <div style="margin:2% 5% 0% 2%;color:white" > @${data.username} </div>
      <div style="font-size:small; color: #878581;margin-top: 2%;">  ${data.time}  </div>
      </div>

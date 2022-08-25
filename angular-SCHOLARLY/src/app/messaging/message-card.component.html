@@ -4,10 +4,10 @@
 width: 100%;
 ">
 <div *ngIf="userId !== data.you"
-class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; padding: 0% 2%;
+class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; padding: 0% 5% 0% 2%;
  width: fit-content; border-radius:25px" >
 <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
-<div style="margin:2% 2% 0% 5%" > @{{data.username}} </div>
+<div style="margin:2% 5% 0% 2%" > @{{data.username}} </div>
 <div style="font-size:small; color: #878581;margin-top: 2%;">  {{data.time}}  </div>
 </div>
 <div style="text-align: center;margin-bottom: 2%;">  {{data.message}}  </div>
@@ -22,7 +22,7 @@ width: 100%;
     <div *ngIf="userId === data.you"
     class="chat-messages" id="container" style="background-color: #0056ba; margin-bottom:2%; border-radius:25px;
     width: fit-content;padding:0% 5% 0% 2%; display: flex; flex-direction:column" >
-    <div class="message_" id="message-container" style="display:flex; flex-direction:row; justify-content: end; ">
+    <div class="message_" id="message-container" style="display:flex; flex-direction:row;  ">
    <div style="margin:2% 5% 0% 2%;color:white" > @{{data.username}} </div>
    <div style="font-size:small; color: #b1acac;margin-top: 2%;">  {{data.time}}  </div>
    </div>

@@ -583,7 +583,7 @@ router.get("/infoMessage", async(req, res, next) => {
     .then(username => {
         // Problem lies here
  Msg.find( {$and:[{you: req.query.userId},
-                {username: username.username}
+                {otherUser: username.username}
  ]}
     )
     .then(documents => {
