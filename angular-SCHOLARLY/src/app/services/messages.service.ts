@@ -16,9 +16,6 @@ export class MessageService {
   private messages: Message[] = [];
   private messagesUpdated = new ReplaySubject<Message[]>();
 
-  private infos: AuthDataInfo[] = [];
-  private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
-
   constructor(private http: HttpClient) {}
 
   getMessages(userId: string, username: string): any {
@@ -52,12 +49,12 @@ export class MessageService {
     return this.messagesUpdated.asObservable();
   }
 
-  startMessages(userId: string, username: string): any {
+  startMessages(userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
         'http://localhost:3000/api/messages/OnetoOneSend',
         {
-          params: { userId, username },
+          params: { userId },
         }
       )
       .pipe(

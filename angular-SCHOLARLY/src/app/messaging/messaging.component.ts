@@ -63,7 +63,7 @@ export class MessagingComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {
-    this.messagesService.startMessages(this.userId, this.username);
+    this.messagesService.startMessages(this.userId);
 
     // msg from server
     this.socket.on('messageSnd', (data) => {

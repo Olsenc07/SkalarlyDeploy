@@ -223,6 +223,13 @@ export class AppComponent implements OnInit {
     });
   }
 
+  navigateToMessages(): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/messages/:'], {
+      queryParams: { username: this.userId },
+    });
+  }
+
   navigateToEditProfile(): any {
     this.router.navigate(['/edit-profile/:'], {
       queryParams: { userId: this.userId },

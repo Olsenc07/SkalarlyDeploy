@@ -44,45 +44,33 @@ res.status(200).json({
 })
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
-    console.log('wanteing notifications')
+    console.log('wanting notifications')
     await User.findById({_id: req.query.userId})
 .then(user => {
-User.findOne({username: user.username})
-.then(username => {
-    // Problem lies here
-Msg.find( {$and:[{you: req.query.userId},
-            {otherUser: username.username}
+    Msg.find( {$and:[{you: req.query.userId},
+        {otherUser: user.username}
 ]}
-)
+    )}
+    )
 .then(documents => {
     console.log('docs', documents)
     console.log('wanting notifications 2')
-
     res.status(200).json({
       message: 'Info messages fetched succesfully!',
          messages: documents
       });
 })
 })
-})
-
-})
-
 
 // listen for chat msg sending
 router.get('/OnetoOneSend', (req,res) => {
     var io = req.app.get('socketio');
-    console.log('connected to send')
+
 
 io.on('connection', (socket) => {
-    
-    console.log('connected to send2')
 
 socket.on('chat-messageSnd', (data) => {
-    console.log('connected to send3', data)
-    console.log('connected to send info', data.userId)
-
-    console.log('req.query.username, saving  yor man chase', req.query.username)
+   
     const Message = data.message
     console.log('message my love', Message)
      User.findById({_id: data.userId})
