@@ -269,6 +269,19 @@
         <button
           mat-menu-item
           type="button"
+                      [matMenuTriggerFor]="settingsMenuCourses"
+          class="look-nice"
+        >
+          <span class="material-icons d_settings" style="color: cadetblue">
+            lock_open
+          </span>
+          Edit Profile
+        </button>
+        <mat-menu #settingsMenuCourses="matMenu">
+          <button
+          mat-menu-item
+          type="button"
+                
           (click)="navigateToEditProfile()"
           class="look-nice"
         >
@@ -277,7 +290,6 @@
           </span>
           Edit Profile
         </button>
-
         <button
         mat-menu-item
         type="button"
@@ -333,6 +345,7 @@ class="look-nice"
 </span>
 Edit Pursuing Courses 
 </button>
+</mat-menu>
         <button
           mat-menu-item
           type="button"
