@@ -240,6 +240,11 @@ export class AppComponent implements OnInit {
       queryParams: { userId: this.userId },
     });
   }
+  navigateToEditCompW(): any {
+    this.router.navigate(['/edit-profileCompW/:'], {
+      queryParams: { userId: this.userId },
+    });
+  }
   navigateToEditComp2(): any {
     this.router.navigate(['/edit-profileComp2/:'], {
       queryParams: { userId: this.userId },

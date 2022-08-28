@@ -3,10 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { from } from 'rxjs';
 import { AppComponent } from './app.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { EditProfileComp1WComponent } from './edit-profile/edit-profile.component';
 import { EditProfileComp1Component } from './edit-profile/edit-profile.component';
 import { EditProfileComp2Component } from './edit-profile/edit-profile.component';
+import { EditProfileComp2WComponent } from './edit-profile/edit-profile.component';
+
 import { EditProfileComp3Component } from './edit-profile/edit-profile.component';
+import { EditProfileComp3WComponent } from './edit-profile/edit-profile.component';
+
 import { EditProfileComp4Component } from './edit-profile/edit-profile.component';
+import { EditProfileComp4WComponent } from './edit-profile/edit-profile.component';
+
 import { EditProfilePurComponent } from './edit-profile/edit-profile.component';
 
 import { FriendsActivityComponent } from './friends-activity/friends-activity.component';
@@ -37,9 +44,13 @@ export const routingComponents = [
   ProfileComponent,
   EditProfileComponent,
   EditProfileComp1Component,
+  EditProfileComp1WComponent,
   EditProfileComp2Component,
+  EditProfileComp2WComponent,
   EditProfileComp3Component,
+  EditProfileComp3WComponent,
   EditProfileComp4Component,
+  EditProfileComp4WComponent,
   EditProfilePurComponent,
   VerifiedPopUpComponent,
   UserProfileComponent,
@@ -74,8 +85,18 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'edit-profileCompW/:userId',
+    component: EditProfileComp1WComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'edit-profileComp2/:userId',
     component: EditProfileComp2Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-profileComp2W/:userId',
+    component: EditProfileComp2WComponent,
     canActivate: [AuthGuard],
   },
   {
@@ -84,8 +105,18 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: 'edit-profileComp3W/:userId',
+    component: EditProfileComp3WComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'edit-profileComp4/:userId',
     component: EditProfileComp4Component,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-profileComp4W/:userId',
+    component: EditProfileComp4WComponent,
     canActivate: [AuthGuard],
   },
   {

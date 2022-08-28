@@ -1,79 +1,14 @@
-<!-- 11 -->
+<!-- 16 -->
 <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Completed Courses Second Year Fall" class="courses" >
+    <mat-tab label="Completed Courses Second Year Winter" class="courses" >
 <div *ngFor="let info of infos">
-<div class="input" >
-    <i class="material-icons _icon">check</i>
-    <mat-form-field class="example-chip-list">
-            <mat-label>{{info.CodeCompleted11}}</mat-label>
-    <mat-select placeholder="Choose completed course 11" #codeInput [formControl]="CodeCompleted11" >
-    
-    <mat-option *ngFor="let code of CodeCompleted11.value" 
-    (removed)="onRemoved(code)" [removable]="true">
-    {{code}}
-    
-    </mat-option>
-    <!-- <cdk-virtual-scroll-viewport itemSize="10"> -->
-    <!-- <mat-autocomplete #autoC="matAutocomplete" (optionSelected)="selected($event)"> -->
-    <mat-option *ngFor="let code of FilteredCodes" >
-    {{code}}
-    </mat-option>
-    <!-- </mat-autocomplete> -->
-    <!-- </cdk-virtual-scroll-viewport> -->
-    </mat-select>
-    </mat-form-field>
-    </div>
-    <!-- 12 -->
-    <div class="input" *ngIf="info.CodeCompleted11 || CodeCompleted11.value">
+<div class="input" *ngIf="info.CodeCompleted15 ||CodeCompleted15.value">
     <i class="material-icons _icon">check</i>
     
     <mat-form-field class="example-chip-list">
-    <mat-label>{{info.CodeCompleted12}}</mat-label>
-    <mat-select placeholder="Choose completed course 12" #codeInput [formControl]="CodeCompleted12" >
+    <mat-label>{{info.CodeCompleted16}}</mat-label>
     
-    <mat-option *ngFor="let code of CodeCompleted11.value" 
-    (removed)="onRemoved(code)" [removable]="true">
-    {{code}}
-    
-    </mat-option>
-    
-    <mat-option *ngFor="let code of FilteredCodes" >
-    {{code}}
-    </mat-option>
-    
-    </mat-select>
-    </mat-form-field>
-    </div>
-    <!-- 13 -->
-    <div class="input" *ngIf="info.CodeCompleted12 ||CodeCompleted12.value">
-    <i class="material-icons _icon">check</i>
-    
-    <mat-form-field class="example-chip-list">
-    <mat-label>{{info.CodeCompleted13}}</mat-label>
-    
-    <mat-select placeholder="Choose completed course 13" #codeInput [formControl]="CodeCompleted13" >
-    
-    <mat-option *ngFor="let code of CodeCompleted11.value" 
-    (removed)="onRemoved(code)" [removable]="true">
-    {{code}}
-    
-    </mat-option>
-    
-    <mat-option *ngFor="let code of FilteredCodes" >
-    {{code}}
-    </mat-option>
-    
-    </mat-select>
-    </mat-form-field>
-    </div>
-    <!-- 14 -->
-    <div class="input" *ngIf="info.CodeCompleted13 ||CodeCompleted13.value">
-    <i class="material-icons _icon">check</i>
-    
-    <mat-form-field class="example-chip-list">
-    <mat-label>{{info.CodeCompleted14}}</mat-label>
-    
-    <mat-select placeholder="Choose completed course 14" #codeInput [formControl]="CodeCompleted14" >
+    <mat-select placeholder="Choose completed course 16" #codeInput [formControl]="CodeCompleted16" >
     
     <mat-option *ngFor="let code of CodeCompleted11.value" 
     (removed)="onRemoved(code)" [removable]="true">
@@ -89,14 +24,15 @@
     </mat-form-field>
     </div>
     
-    <!-- 15 -->
-    <div class="input" *ngIf="info.CodeCompleted14 ||CodeCompleted14.value">
+    
+    <!-- 17 -->
+    <div class="input" *ngIf="info.CodeCompleted16 ||CodeCompleted16.value">
     <i class="material-icons _icon">check</i>
     
     <mat-form-field class="example-chip-list">
-    <mat-label>{{info.CodeCompleted15}}</mat-label>
+    <mat-label>{{info.CodeCompleted17}}</mat-label>
     
-    <mat-select placeholder="Choose completed course 15" #codeInput [formControl]="CodeCompleted15" >
+    <mat-select placeholder="Choose completed course 17" #codeInput [formControl]="CodeCompleted17" >
     
     <mat-option *ngFor="let code of CodeCompleted11.value" 
     (removed)="onRemoved(code)" [removable]="true">
@@ -114,13 +50,84 @@
     
     
     
-    <!-- done button -->
+    <!-- 18 -->
+    <div class="input" *ngIf="info.CodeCompleted17 || CodeCompleted17.value">
+    <i class="material-icons _icon">check</i>
+    
+    <mat-form-field class="example-chip-list">
+    <mat-label>{{info.CodeCompleted18}}</mat-label>
+    
+    <mat-select placeholder="Choose completed course 18" #codeInput [formControl]="CodeCompleted18" >
+    
+    <mat-option *ngFor="let code of CodeCompleted11.value" 
+    (removed)="onRemoved(code)" [removable]="true">
+    {{code}}
+    
+    </mat-option>
+    
+    <mat-option *ngFor="let code of FilteredCodes" >
+    {{code}}
+    </mat-option>
+    
+    </mat-select>
+    </mat-form-field>
+    </div>
+    
+    
+    <!-- 19 -->
+    <div class="input" *ngIf="info.CodeCompleted18 || CodeCompleted18.value">
+    <i class="material-icons _icon">check</i>
+    
+    <mat-form-field class="example-chip-list">
+    <mat-label>{{info.CodeCompleted19}}</mat-label>
+    
+    <mat-select placeholder="Choose completed course 19" #codeInput [formControl]="CodeCompleted19" >
+    
+    <mat-option *ngFor="let code of CodeCompleted11.value" 
+    (removed)="onRemoved(code)" [removable]="true">
+    {{code}}
+    
+    </mat-option>
+    
+    <mat-option *ngFor="let code of FilteredCodes" >
+    {{code}}
+    </mat-option>
+    
+    </mat-select>
+    </mat-form-field>
+    </div>
+    
+    
+    <!-- 20 -->
+    <div class="input" *ngIf="info.CodeCompleted19 || CodeCompleted19.value">
+    <i class="material-icons _icon">check</i>
+    
+    <mat-form-field class="example-chip-list">
+    <mat-label>{{info.CodeCompleted20}}</mat-label>
+    
+    <mat-select placeholder="Choose completed course 20" #codeInput [formControl]="CodeCompleted20" >
+    
+    <mat-option *ngFor="let code of CodeCompleted11.value" 
+    (removed)="onRemoved(code)" [removable]="true">
+    {{code}}
+    
+    </mat-option>
+    
+    <mat-option *ngFor="let code of FilteredCodes" >
+    {{code}}
+    </mat-option>
+    
+    </mat-select>
+    </mat-form-field>
+    </div>
+
+        <!-- done button -->
  <div class="done">
-  <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
-    (click)="onSubmit()" >
-    Save
-  </button>
-</div>
+    <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
+      (click)="onSubmit()" >
+      Save
+    </button>
+  </div>
 </div>
 </mat-tab>
 </mat-tab-group>

@@ -57,9 +57,14 @@ import {
 } from './profile/profile.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EditProfileComp1Component } from './edit-profile/edit-profile.component';
+import { EditProfileComp1WComponent } from './edit-profile/edit-profile.component';
 import { EditProfileComp2Component } from './edit-profile/edit-profile.component';
+import { EditProfileComp2WComponent } from './edit-profile/edit-profile.component';
 import { EditProfileComp3Component } from './edit-profile/edit-profile.component';
+import { EditProfileComp3WComponent } from './edit-profile/edit-profile.component';
 import { EditProfileComp4Component } from './edit-profile/edit-profile.component';
+import { EditProfileComp4WComponent } from './edit-profile/edit-profile.component';
+
 import { EditProfilePurComponent } from './edit-profile/edit-profile.component';
 
 import { GroupChatsComponent } from './group-chats/group-chats.component';
@@ -142,9 +147,13 @@ import { ErrorInterceptor } from './error-interceptor';
     UserProfileComponent,
     EditProfileComponent,
     EditProfileComp1Component,
+    EditProfileComp1WComponent,
     EditProfileComp2Component,
+    EditProfileComp2WComponent,
     EditProfileComp3Component,
+    EditProfileComp3WComponent,
     EditProfileComp4Component,
+    EditProfileComp4WComponent,
     EditProfilePurComponent,
     GroupChatsComponent,
     MainPagesComponent,

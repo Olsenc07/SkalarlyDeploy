@@ -1,6 +1,6 @@
 <!-- 31 -->
 <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Completed Courses Fourth year" class="courses" >
+    <mat-tab label="Completed Courses Fourth Year Fall" class="courses" >
 <div *ngFor="let info of infos">
 <div class="input" >
     <i class="material-icons _icon">check</i>
@@ -114,133 +114,7 @@
     </div>
     
     
-    <!-- 36 -->
-    <div class="input" *ngIf="info.CodeCompleted35 || CodeCompleted35.value">
-    <i class="material-icons _icon">check</i>
     
-    <mat-form-field class="example-chip-list">
-    <mat-label>{{info.CodeCompleted36}}</mat-label>
-    
-    <mat-select placeholder="Choose completed course 36" #codeInput [formControl]="CodeCompleted36" >
-    
-    <mat-option *ngFor="let code of CodeCompleted31.value" 
-    (removed)="onRemoved(code)" [removable]="true">
-    {{code}}
-    <mat-icon matChipRemove >cancel</mat-icon>
-    </mat-option>
-    
-    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
-    {{code}}
-    </mat-option>
-    
-    </mat-select>
-    </mat-form-field>
-    </div>
-    
-    
-    <!-- 37 -->
-    <div class="input" *ngIf="info.CodeCompleted36 || CodeCompleted36.value">
-    <i class="material-icons _icon">check</i>
-    
-    <mat-form-field class="example-chip-list">
-    <mat-label>{{info.CodeCompleted37}}</mat-label>
-    
-    <mat-select placeholder="Choose completed course 37" #codeInput [formControl]="CodeCompleted37" >
-    
-    <mat-option *ngFor="let code of CodeCompleted31.value" 
-    (removed)="onRemoved(code)" [removable]="true">
-    {{code}}
-    <mat-icon matChipRemove >cancel</mat-icon>
-    </mat-option>
-    
-    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
-    {{code}}
-    </mat-option>
-    
-    </mat-select>
-    </mat-form-field>
-    </div>
-    
-    
-    
-    <!-- 38 -->
-    <div class="input" *ngIf="info.CodeCompleted37 || CodeCompleted37.value">
-    <i class="material-icons _icon">check</i>
-    
-    <mat-form-field class="example-chip-list">
-    <mat-label>{{info.CodeCompleted38}}</mat-label>
-    
-    <mat-select placeholder="Choose completed course 38" #codeInput [formControl]="CodeCompleted38" >
-    
-    <mat-option *ngFor="let code of CodeCompleted31.value" 
-    (removed)="onRemoved(code)" [removable]="true">
-    {{code}}
-    <mat-icon matChipRemove >cancel</mat-icon>
-    </mat-option>
-    
-    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
-    {{code}}
-    </mat-option>
-    
-    </mat-select>
-    </mat-form-field>
-    </div>
-    
-    
-    <!-- 39 -->
-    <div class="input" *ngIf="info.CodeCompleted38 || CodeCompleted38.value">
-    <i class="material-icons _icon">check</i>
-    
-    <mat-form-field class="example-chip-list">
-    <mat-label>{{info.CodeCompleted39}}</mat-label>
-    
-    <mat-select placeholder="Choose completed course 39" #codeInput [formControl]="CodeCompleted39" >
-    
-    <mat-option *ngFor="let code of CodeCompleted31.value" 
-    (removed)="onRemoved(code)" [removable]="true">
-    {{code}}
-    <mat-icon matChipRemove >cancel</mat-icon>
-    </mat-option>
-    
-    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
-    {{code}}
-    </mat-option>
-    
-    </mat-select>
-    </mat-form-field>
-    </div>
-    
-    
-    <!-- 40 -->
-    <div class="input" *ngIf="info.CodeCompleted39 || CodeCompleted39.value">
-    <i class="material-icons _icon">check</i>
-    
-    <mat-form-field class="example-chip-list">
-    <mat-label>{{info.CodeCompleted40}}</mat-label>
-    
-    <mat-select placeholder="Choose completed course 40" #codeInput [formControl]="CodeCompleted40" >
-    
-    <mat-option *ngFor="let code of CodeCompleted31.value" 
-    (removed)="onRemoved(code)" [removable]="true">
-    {{code}}
-    </mat-option>
-    
-    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
-    {{code}}
-    </mat-option>
-    
-    </mat-select>
-    </mat-form-field>
-    </div>
-    
-    <!-- extras/transfer courses -->
-    <div class="input" *ngIf="info.CodeCompleted40 || CodeCompleted40.value">
-    <i class="material-icons _icon">check</i>
-    <mat-form-field class="example-chip-list">
-    <mat-label>{{info.CodeCompletedX}}</mat-label>
-    <textarea matInput placeholder="Extras or Transfer Equivalents"  [formControl]="CodeCompletedX" ></textarea>
-    </mat-form-field>
-    </div>
     <!-- done button -->
  <div class="done">
     <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"

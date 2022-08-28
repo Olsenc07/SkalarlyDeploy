@@ -1,0 +1,134 @@
+<!-- 6 -->
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="Completed Courses First Year Winter" class="courses" >
+      <div *ngFor="let info of infos">
+<div class="input" >
+    <i class="material-icons _icon">check</i>
+    
+    <mat-form-field class="example-chip-list">
+    <mat-label>{{info.CodeCompleted6}}</mat-label>
+    
+    <mat-select placeholder="Choose completed course 6" #codeInput [formControl]="CodeCompleted6" >
+    
+    <mat-option *ngFor="let code of CodeCompleted6.value" 
+    (removed)="onRemoved(code)" [removable]="true">
+    {{code}}
+    
+    </mat-option>
+    
+    <mat-option *ngFor="let code of FilteredCodes" >
+      {{code}}
+    </mat-option>
+    
+    </mat-select>
+    </mat-form-field>
+    </div>
+    
+    
+    <!-- 7 -->
+    <div class="input" *ngIf="info.CodeCompleted6 || CodeCompleted6.value">
+    <i class="material-icons _icon">check</i>
+    
+    <mat-form-field class="example-chip-list">
+    <mat-label>{{info.CodeCompleted7}}</mat-label>
+    
+    <mat-select placeholder="Choose completed course 7" #codeInput [formControl]="CodeCompleted7" >
+    
+    <mat-option *ngFor="let code of CodeCompleted6.value" 
+    (removed)="onRemoved(code)" [removable]="true">
+    {{code}}
+    
+    </mat-option>
+    
+    <mat-option *ngFor="let code of FilteredCodes" >
+      {{code}}
+    </mat-option>
+    
+    </mat-select>
+    </mat-form-field>
+    </div>
+    
+    
+    
+    <!-- 8 -->
+    <div class="input" *ngIf="info.CodeCompleted7 || CodeCompleted7.value">
+    <i class="material-icons _icon">check</i>
+    
+    <mat-form-field class="example-chip-list">
+    <mat-label>{{info.CodeCompleted8}}</mat-label>
+    
+    <mat-select placeholder="Choose completed course 8" #codeInput [formControl]="CodeCompleted8" >
+    
+    <mat-option *ngFor="let code of CodeCompleted6.value" 
+    (removed)="onRemoved(code)" [removable]="true">
+    {{code}}
+    
+    </mat-option>
+    
+    <mat-option *ngFor="let code of FilteredCodes" >
+      {{code}}
+    </mat-option>
+    
+    </mat-select>
+    </mat-form-field>
+    </div>
+    
+    
+    <!-- 9 -->
+    <div class="input" *ngIf="info.CodeCompleted8 || CodeCompleted8.value">
+    <i class="material-icons _icon">check</i>
+    
+    <mat-form-field class="example-chip-list">
+    <mat-label>{{info.CodeCompleted9}}</mat-label>
+    
+    <mat-select placeholder="Choose completed course 9" #codeInput [formControl]="CodeCompleted9" >
+    
+    <mat-option *ngFor="let code of CodeCompleted6.value" 
+    (removed)="onRemoved(code)" [removable]="true">
+    {{code}}
+    
+    </mat-option>
+    
+    <mat-option *ngFor="let code of FilteredCodes" >
+      {{code}}
+    </mat-option>
+    
+    </mat-select>
+    </mat-form-field>
+    </div>
+    
+    
+    <!-- 10 -->
+    <div class="input" *ngIf="info.CodeCompleted9 || CodeCompleted9.value">
+    <i class="material-icons _icon">check</i>
+    
+    <mat-form-field class="example-chip-list">
+    <mat-label>{{info.CodeCompleted10}}</mat-label>
+    
+    <mat-select placeholder="Choose completed course 10" #codeInput [formControl]="CodeCompleted10" >
+    
+    <mat-option *ngFor="let code of CodeCompleted6.value" 
+    (removed)="onRemoved(code)" [removable]="true">
+    {{code}}
+    
+    </mat-option>
+    
+    <mat-option *ngFor="let code of FilteredCodes" >
+      {{code}}
+    </mat-option>
+</mat-select>
+</mat-form-field>
+</div>
+</div>
+
+
+ <!-- done button -->
+ <div class="done">
+    <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
+      (click)="onSubmit()" >
+      Save
+    </button>
+  </div>
+
+</mat-tab>
+</mat-tab-group>

@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+
 import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -416,6 +417,54 @@ export class EditProfileComp1Component implements OnInit {
     // this.CodeCompleted.setValue();
   }
 }
+@Component({
+  selector: 'app-complete1w',
+  templateUrl: './edit-ProfileComp1W.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfileComp1WComponent implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  classes: string[] = [];
+  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
+
+  filteredCodes: Observable<string[]>;
+  FilteredCodes: string[] = this.classListService.allClasses().slice();
+  private infosSub: Subscription;
+  // CodeCompleted 1-40X
+  CodeCompleted6: FormControl = new FormControl('');
+  CodeCompleted7: FormControl = new FormControl('');
+  CodeCompleted8: FormControl = new FormControl('');
+  CodeCompleted9: FormControl = new FormControl('');
+  CodeCompleted10: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+
+  onSubmit(): void {
+    // console.log(this.editForm.value);
+    // TODO: convert form fields to Profile
+    this.authService.editUserInfoCompW(
+      this.userId,
+      this.CodeCompleted6.value,
+      this.CodeCompleted7.value,
+      this.CodeCompleted8.value,
+      this.CodeCompleted9.value,
+      this.CodeCompleted10.value
+    );
+  }
+}
 
 // Complete 2
 
@@ -436,11 +485,7 @@ export class EditProfileComp2Component implements OnInit {
   CodeCompleted13: FormControl = new FormControl('');
   CodeCompleted14: FormControl = new FormControl('');
   CodeCompleted15: FormControl = new FormControl('');
-  CodeCompleted16: FormControl = new FormControl('');
-  CodeCompleted17: FormControl = new FormControl('');
-  CodeCompleted18: FormControl = new FormControl('');
-  CodeCompleted19: FormControl = new FormControl('');
-  CodeCompleted20: FormControl = new FormControl('');
+
   constructor(
     public authService: AuthService,
     public classListService: ClassListService
@@ -463,7 +508,46 @@ export class EditProfileComp2Component implements OnInit {
       this.CodeCompleted12.value,
       this.CodeCompleted13.value,
       this.CodeCompleted14.value,
-      this.CodeCompleted15.value,
+      this.CodeCompleted15.value
+    );
+  }
+}
+// Complete 2W
+
+@Component({
+  selector: 'app-complete2w',
+  templateUrl: './edit-ProfileComp2W.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfileComp2WComponent implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  filteredCodes: Observable<string[]>;
+  FilteredCodes: string[] = this.classListService.allClasses().slice();
+  private infosSub: Subscription;
+  CodeCompleted16: FormControl = new FormControl('');
+  CodeCompleted17: FormControl = new FormControl('');
+  CodeCompleted18: FormControl = new FormControl('');
+  CodeCompleted19: FormControl = new FormControl('');
+  CodeCompleted20: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+
+  onSubmit(): void {
+    this.authService.editUserInfoComp2W(
+      this.userId,
       this.CodeCompleted16.value,
       this.CodeCompleted17.value,
       this.CodeCompleted18.value,
@@ -472,8 +556,7 @@ export class EditProfileComp2Component implements OnInit {
     );
   }
 }
-// Complete 1
-
+// Complete 3
 @Component({
   selector: 'app-complete3',
   templateUrl: './edit-ProfileComp3.component.html',
@@ -491,11 +574,7 @@ export class EditProfileComp3Component implements OnInit {
   CodeCompleted23: FormControl = new FormControl('');
   CodeCompleted24: FormControl = new FormControl('');
   CodeCompleted25: FormControl = new FormControl('');
-  CodeCompleted26: FormControl = new FormControl('');
-  CodeCompleted27: FormControl = new FormControl('');
-  CodeCompleted28: FormControl = new FormControl('');
-  CodeCompleted29: FormControl = new FormControl('');
-  CodeCompleted30: FormControl = new FormControl('');
+
   constructor(
     public authService: AuthService,
     public classListService: ClassListService
@@ -518,7 +597,46 @@ export class EditProfileComp3Component implements OnInit {
       this.CodeCompleted22.value,
       this.CodeCompleted23.value,
       this.CodeCompleted24.value,
-      this.CodeCompleted25.value,
+      this.CodeCompleted25.value
+    );
+  }
+}
+// Complete 3W
+@Component({
+  selector: 'app-complete3w',
+  templateUrl: './edit-ProfileComp3.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfileComp3WComponent implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  filteredCodes: Observable<string[]>;
+  FilteredCodes: string[] = this.classListService.allClasses().slice();
+  private infosSub: Subscription;
+
+  CodeCompleted26: FormControl = new FormControl('');
+  CodeCompleted27: FormControl = new FormControl('');
+  CodeCompleted28: FormControl = new FormControl('');
+  CodeCompleted29: FormControl = new FormControl('');
+  CodeCompleted30: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+  ngOnInit() {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+
+  onSubmit(): void {
+    this.authService.editUserInfoComp3W(
+      this.userId,
       this.CodeCompleted26.value,
       this.CodeCompleted27.value,
       this.CodeCompleted28.value,
@@ -546,12 +664,7 @@ export class EditProfileComp4Component implements OnInit {
   CodeCompleted33: FormControl = new FormControl('');
   CodeCompleted34: FormControl = new FormControl('');
   CodeCompleted35: FormControl = new FormControl('');
-  CodeCompleted36: FormControl = new FormControl('');
-  CodeCompleted37: FormControl = new FormControl('');
-  CodeCompleted38: FormControl = new FormControl('');
-  CodeCompleted39: FormControl = new FormControl('');
-  CodeCompleted40: FormControl = new FormControl('');
-  CodeCompletedX: FormControl = new FormControl('');
+
   constructor(
     public authService: AuthService,
     public classListService: ClassListService
@@ -573,7 +686,46 @@ export class EditProfileComp4Component implements OnInit {
       this.CodeCompleted32.value,
       this.CodeCompleted33.value,
       this.CodeCompleted34.value,
-      this.CodeCompleted35.value,
+      this.CodeCompleted35.value
+    );
+  }
+}
+@Component({
+  selector: 'app-complete4w',
+  templateUrl: './edit-ProfileComp4W.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfileComp4WComponent implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  filteredCodes: Observable<string[]>;
+  FilteredCodes: string[] = this.classListService.allClasses().slice();
+  private infosSub: Subscription;
+
+  CodeCompleted36: FormControl = new FormControl('');
+  CodeCompleted37: FormControl = new FormControl('');
+  CodeCompleted38: FormControl = new FormControl('');
+  CodeCompleted39: FormControl = new FormControl('');
+  CodeCompleted40: FormControl = new FormControl('');
+  CodeCompletedX: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+  ngOnInit() {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+  onSubmit(): void {
+    this.authService.editUserInfoComp4W(
+      this.userId,
+
       this.CodeCompleted36.value,
       this.CodeCompleted37.value,
       this.CodeCompleted38.value,
