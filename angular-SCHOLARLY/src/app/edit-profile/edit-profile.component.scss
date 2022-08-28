@@ -64,7 +64,12 @@
     overflow-y: scroll;
      height: 237px;
   }
-
+  .c_r_ {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+     height: 100%;
+  }
 .centerD {
   display: flex;
   justify-content: center;

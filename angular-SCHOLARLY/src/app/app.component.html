@@ -279,6 +279,61 @@
         </button>
 
         <button
+        mat-menu-item
+        type="button"
+        (click)="navigateToEditComp()"
+        class="look-nice"
+      >
+        <span class="material-icons d_settings" style="color: cadetblue">
+     check
+        </span>
+        Edit Completed Courses First Year
+      </button>
+      <button
+      mat-menu-item
+      type="button"
+      (click)="navigateToEditComp2()"
+      class="look-nice"
+    >
+      <span class="material-icons d_settings" style="color: cadetblue">
+   check
+      </span>
+      Edit Completed Courses Second Year
+    </button>    
+     <button
+    mat-menu-item
+    type="button"
+    (click)="navigateToEditComp3()"
+    class="look-nice"
+  >
+    <span class="material-icons d_settings" style="color: cadetblue">
+ check
+    </span>
+    Edit Completed Courses Third Year
+  </button>    
+   <button
+  mat-menu-item
+  type="button"
+  (click)="navigateToEditComp4()"
+  class="look-nice"
+>
+  <span class="material-icons d_settings" style="color: cadetblue">
+check
+  </span>
+  Edit Completed Courses Fourth Year
+</button>
+<button
+mat-menu-item
+type="button"
+(click)="navigateToEditPur()"
+class="look-nice"
+>
+<span class="material-icons d_settings" style="color: cadetblue">
+  format_list_numbered
+</span>
+Edit Pursuing Courses 
+</button>
+        <button
           mat-menu-item
           type="button"
           (click)="postUnClickedBtn()"

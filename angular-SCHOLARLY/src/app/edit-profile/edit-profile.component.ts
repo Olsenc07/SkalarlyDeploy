@@ -83,10 +83,6 @@ export class EditProfileComponent implements OnInit {
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
   // These show inputs in real time but arn't whats stored
-  filteredCodes: Observable<string[]>;
-  filteredCodesP: Observable<string[]>;
-  FilteredCodes: string[] = this.classListService.allClasses().slice();
-  FilteredCodesP: string[] = this.classListService.allClasses().slice();
 
   genders: string[] = [
     '',
@@ -115,10 +111,6 @@ export class EditProfileComponent implements OnInit {
     'Xe/Xyr',
   ];
 
-  classes: string[] = [];
-  classesP: string[] = [];
-  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
-  @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
   @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
   cropImgPreview: any = '';
@@ -141,63 +133,6 @@ export class EditProfileComponent implements OnInit {
   birthday: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
   form: FormGroup;
-
-  // CodeCompleted 1-40X
-  CodeCompleted: FormControl = new FormControl('');
-  CodeCompleted2: FormControl = new FormControl('');
-  CodeCompleted3: FormControl = new FormControl('');
-  CodeCompleted4: FormControl = new FormControl('');
-  CodeCompleted5: FormControl = new FormControl('');
-  CodeCompleted6: FormControl = new FormControl('');
-  CodeCompleted7: FormControl = new FormControl('');
-  CodeCompleted8: FormControl = new FormControl('');
-  CodeCompleted9: FormControl = new FormControl('');
-  CodeCompleted10: FormControl = new FormControl('');
-  CodeCompleted11: FormControl = new FormControl('');
-  CodeCompleted12: FormControl = new FormControl('');
-  CodeCompleted13: FormControl = new FormControl('');
-  CodeCompleted14: FormControl = new FormControl('');
-  CodeCompleted15: FormControl = new FormControl('');
-  CodeCompleted16: FormControl = new FormControl('');
-  CodeCompleted17: FormControl = new FormControl('');
-  CodeCompleted18: FormControl = new FormControl('');
-  CodeCompleted19: FormControl = new FormControl('');
-  CodeCompleted20: FormControl = new FormControl('');
-  CodeCompleted21: FormControl = new FormControl('');
-  CodeCompleted22: FormControl = new FormControl('');
-  CodeCompleted23: FormControl = new FormControl('');
-  CodeCompleted24: FormControl = new FormControl('');
-  CodeCompleted25: FormControl = new FormControl('');
-  CodeCompleted26: FormControl = new FormControl('');
-  CodeCompleted27: FormControl = new FormControl('');
-  CodeCompleted28: FormControl = new FormControl('');
-  CodeCompleted29: FormControl = new FormControl('');
-  CodeCompleted30: FormControl = new FormControl('');
-  CodeCompleted31: FormControl = new FormControl('');
-  CodeCompleted32: FormControl = new FormControl('');
-  CodeCompleted33: FormControl = new FormControl('');
-  CodeCompleted34: FormControl = new FormControl('');
-  CodeCompleted35: FormControl = new FormControl('');
-  CodeCompleted36: FormControl = new FormControl('');
-  CodeCompleted37: FormControl = new FormControl('');
-  CodeCompleted38: FormControl = new FormControl('');
-  CodeCompleted39: FormControl = new FormControl('');
-  CodeCompleted40: FormControl = new FormControl('');
-  CodeCompletedX: FormControl = new FormControl('');
-  // Need to push form controls from the users input, into this
-  // Form Array, which gets passed
-  CodePursuing: FormControl = new FormControl('');
-  CodePursuing2: FormControl = new FormControl('');
-  CodePursuing3: FormControl = new FormControl('');
-  CodePursuing4: FormControl = new FormControl('');
-  CodePursuing5: FormControl = new FormControl('');
-  CodePursuing6: FormControl = new FormControl('');
-  CodePursuing7: FormControl = new FormControl('');
-  CodePursuing8: FormControl = new FormControl('');
-  CodePursuing9: FormControl = new FormControl('');
-  CodePursuing10: FormControl = new FormControl('');
-  CodePursuing11: FormControl = new FormControl('');
-  CodePursuing12: FormControl = new FormControl('');
 
   selectedIndex = 0;
 
@@ -300,57 +235,6 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
-
-    // Add our course code
-    if (value) {
-      this.classes.push(value);
-    }
-
-    // Clear the input value
-    // event.chipInput!.clear();
-    this.CodeCompleted.setValue(null);
-  }
-  // Pursuing Courses
-  addP(event: MatChipInputEvent): void {
-    const valueP = (event.value || '').trim();
-
-    // Add our course code
-    if (valueP) {
-      this.classesP.push(valueP);
-    }
-
-    // Clear the input value
-    // event.chipInput!.clear();
-    this.CodePursuing.setValue(null);
-  }
-
-  remove(code: string): void {
-    const index = this.classes.indexOf(code);
-    if (index >= 0) {
-      this.classes.splice(index, 1);
-    }
-  }
-  removeP(codeP: string): void {
-    const indexP = this.classesP.indexOf(codeP);
-    if (indexP >= 0) {
-      this.classesP.splice(indexP, 1);
-    }
-  }
-
-  // Completed Classes
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.classes.push(event.option.viewValue);
-    this.codeInput.nativeElement.value = '';
-    // this.CodeCompleted.setValue();
-  }
-  // Pursuing Classes
-  selectedP(event: MatAutocompleteSelectedEvent): void {
-    this.classesP.push(event.option.viewValue);
-    this.codeInputP.nativeElement.value = '';
-    // this.CodePursuing.setValue('');
-  }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 
@@ -432,61 +316,6 @@ export class EditProfileComponent implements OnInit {
       this.sport.value,
       this.club.value,
       this.pronoun.value,
-      this.CodeCompleted.value,
-      this.CodeCompleted2.value,
-      this.CodeCompleted3.value,
-      this.CodeCompleted4.value,
-      this.CodeCompleted5.value,
-      this.CodeCompleted6.value,
-      this.CodeCompleted7.value,
-      this.CodeCompleted8.value,
-      this.CodeCompleted9.value,
-      this.CodeCompleted10.value,
-      this.CodeCompleted11.value,
-      this.CodeCompleted12.value,
-      this.CodeCompleted13.value,
-      this.CodeCompleted14.value,
-      this.CodeCompleted15.value,
-      this.CodeCompleted16.value,
-      this.CodeCompleted17.value,
-      this.CodeCompleted18.value,
-      this.CodeCompleted19.value,
-      this.CodeCompleted20.value,
-      this.CodeCompleted21.value,
-      this.CodeCompleted22.value,
-      this.CodeCompleted23.value,
-      this.CodeCompleted24.value,
-      this.CodeCompleted25.value,
-      this.CodeCompleted26.value,
-      this.CodeCompleted27.value,
-      this.CodeCompleted28.value,
-      this.CodeCompleted29.value,
-      this.CodeCompleted30.value,
-      this.CodeCompleted31.value,
-      this.CodeCompleted32.value,
-      this.CodeCompleted33.value,
-      this.CodeCompleted34.value,
-      this.CodeCompleted35.value,
-      this.CodeCompleted36.value,
-      this.CodeCompleted37.value,
-      this.CodeCompleted38.value,
-      this.CodeCompleted39.value,
-      this.CodeCompleted40.value,
-      this.CodeCompletedX.value,
-
-      this.CodePursuing.value,
-      this.CodePursuing2.value,
-      this.CodePursuing3.value,
-      this.CodePursuing4.value,
-      this.CodePursuing5.value,
-      this.CodePursuing6.value,
-      this.CodePursuing7.value,
-      this.CodePursuing8.value,
-      this.CodePursuing9.value,
-      this.CodePursuing10.value,
-      this.CodePursuing11.value,
-      this.CodePursuing12.value,
-
       this.form.get('profilePic').value
       // this.cropImgPreview,
       // this.showCase.value
@@ -498,5 +327,349 @@ export class EditProfileComponent implements OnInit {
   }
   onSubmitShowCase(): any {
     this.showCaseService.addShowCase(this.form.get('showCase').value);
+  }
+}
+
+// Complete 1
+
+@Component({
+  selector: 'app-complete1',
+  templateUrl: './edit-ProfileComp1.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfileComp1Component implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  classes: string[] = [];
+  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
+
+  filteredCodes: Observable<string[]>;
+  FilteredCodes: string[] = this.classListService.allClasses().slice();
+  private infosSub: Subscription;
+  // CodeCompleted 1-40X
+  CodeCompleted: FormControl = new FormControl('');
+  CodeCompleted2: FormControl = new FormControl('');
+  CodeCompleted3: FormControl = new FormControl('');
+  CodeCompleted4: FormControl = new FormControl('');
+  CodeCompleted5: FormControl = new FormControl('');
+  CodeCompleted6: FormControl = new FormControl('');
+  CodeCompleted7: FormControl = new FormControl('');
+  CodeCompleted8: FormControl = new FormControl('');
+  CodeCompleted9: FormControl = new FormControl('');
+  CodeCompleted10: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+
+  onSubmit(): void {
+    // console.log(this.editForm.value);
+    // TODO: convert form fields to Profile
+    this.authService.editUserInfoComp(
+      this.userId,
+      this.CodeCompleted.value,
+      this.CodeCompleted2.value,
+      this.CodeCompleted3.value,
+      this.CodeCompleted4.value,
+      this.CodeCompleted5.value,
+      this.CodeCompleted6.value,
+      this.CodeCompleted7.value,
+      this.CodeCompleted8.value,
+      this.CodeCompleted9.value,
+      this.CodeCompleted10.value
+    );
+  }
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our course code
+    if (value) {
+      this.classes.push(value);
+    }
+
+    // Clear the input value
+    // event.chipInput!.clear();
+    this.CodeCompleted.setValue(null);
+  }
+  remove(code: string): void {
+    const index = this.classes.indexOf(code);
+    if (index >= 0) {
+      this.classes.splice(index, 1);
+    }
+  }
+
+  // Completed Classes
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.classes.push(event.option.viewValue);
+    this.codeInput.nativeElement.value = '';
+    // this.CodeCompleted.setValue();
+  }
+}
+
+// Complete 2
+
+@Component({
+  selector: 'app-complete2',
+  templateUrl: './edit-ProfileComp2.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfileComp2Component implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  filteredCodes: Observable<string[]>;
+  FilteredCodes: string[] = this.classListService.allClasses().slice();
+  private infosSub: Subscription;
+
+  CodeCompleted11: FormControl = new FormControl('');
+  CodeCompleted12: FormControl = new FormControl('');
+  CodeCompleted13: FormControl = new FormControl('');
+  CodeCompleted14: FormControl = new FormControl('');
+  CodeCompleted15: FormControl = new FormControl('');
+  CodeCompleted16: FormControl = new FormControl('');
+  CodeCompleted17: FormControl = new FormControl('');
+  CodeCompleted18: FormControl = new FormControl('');
+  CodeCompleted19: FormControl = new FormControl('');
+  CodeCompleted20: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+
+  onSubmit(): void {
+    this.authService.editUserInfoComp2(
+      this.userId,
+      this.CodeCompleted11.value,
+      this.CodeCompleted12.value,
+      this.CodeCompleted13.value,
+      this.CodeCompleted14.value,
+      this.CodeCompleted15.value,
+      this.CodeCompleted16.value,
+      this.CodeCompleted17.value,
+      this.CodeCompleted18.value,
+      this.CodeCompleted19.value,
+      this.CodeCompleted20.value
+    );
+  }
+}
+// Complete 1
+
+@Component({
+  selector: 'app-complete3',
+  templateUrl: './edit-ProfileComp3.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfileComp3Component implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  filteredCodes: Observable<string[]>;
+  FilteredCodes: string[] = this.classListService.allClasses().slice();
+  private infosSub: Subscription;
+
+  CodeCompleted21: FormControl = new FormControl('');
+  CodeCompleted22: FormControl = new FormControl('');
+  CodeCompleted23: FormControl = new FormControl('');
+  CodeCompleted24: FormControl = new FormControl('');
+  CodeCompleted25: FormControl = new FormControl('');
+  CodeCompleted26: FormControl = new FormControl('');
+  CodeCompleted27: FormControl = new FormControl('');
+  CodeCompleted28: FormControl = new FormControl('');
+  CodeCompleted29: FormControl = new FormControl('');
+  CodeCompleted30: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+  ngOnInit() {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+
+  onSubmit(): void {
+    this.authService.editUserInfoComp3(
+      this.userId,
+      this.CodeCompleted21.value,
+      this.CodeCompleted22.value,
+      this.CodeCompleted23.value,
+      this.CodeCompleted24.value,
+      this.CodeCompleted25.value,
+      this.CodeCompleted26.value,
+      this.CodeCompleted27.value,
+      this.CodeCompleted28.value,
+      this.CodeCompleted29.value,
+      this.CodeCompleted30.value
+    );
+  }
+}
+// Complete 4
+
+@Component({
+  selector: 'app-complete4',
+  templateUrl: './edit-ProfileComp4.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfileComp4Component implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  filteredCodes: Observable<string[]>;
+  FilteredCodes: string[] = this.classListService.allClasses().slice();
+  private infosSub: Subscription;
+
+  CodeCompleted31: FormControl = new FormControl('');
+  CodeCompleted32: FormControl = new FormControl('');
+  CodeCompleted33: FormControl = new FormControl('');
+  CodeCompleted34: FormControl = new FormControl('');
+  CodeCompleted35: FormControl = new FormControl('');
+  CodeCompleted36: FormControl = new FormControl('');
+  CodeCompleted37: FormControl = new FormControl('');
+  CodeCompleted38: FormControl = new FormControl('');
+  CodeCompleted39: FormControl = new FormControl('');
+  CodeCompleted40: FormControl = new FormControl('');
+  CodeCompletedX: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+  ngOnInit() {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+  onSubmit(): void {
+    this.authService.editUserInfoComp4(
+      this.userId,
+      this.CodeCompleted31.value,
+      this.CodeCompleted32.value,
+      this.CodeCompleted33.value,
+      this.CodeCompleted34.value,
+      this.CodeCompleted35.value,
+      this.CodeCompleted36.value,
+      this.CodeCompleted37.value,
+      this.CodeCompleted38.value,
+      this.CodeCompleted39.value,
+      this.CodeCompleted40.value,
+      this.CodeCompletedX.value
+    );
+  }
+}
+
+//Pursuing
+@Component({
+  selector: 'app-pursuing',
+  templateUrl: './edit-ProfilePur.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfilePurComponent implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  classesP: string[] = [];
+  @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
+
+  private infosSub: Subscription;
+
+  filteredCodesP: Observable<string[]>;
+  FilteredCodesP: string[] = this.classListService.allClasses().slice();
+  CodePursuing: FormControl = new FormControl('');
+  CodePursuing2: FormControl = new FormControl('');
+  CodePursuing3: FormControl = new FormControl('');
+  CodePursuing4: FormControl = new FormControl('');
+  CodePursuing5: FormControl = new FormControl('');
+  CodePursuing6: FormControl = new FormControl('');
+  CodePursuing7: FormControl = new FormControl('');
+  CodePursuing8: FormControl = new FormControl('');
+  CodePursuing9: FormControl = new FormControl('');
+  CodePursuing10: FormControl = new FormControl('');
+  CodePursuing11: FormControl = new FormControl('');
+  CodePursuing12: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+  onSubmit(): void {
+    // console.log(this.editForm.value);
+    // TODO: convert form fields to Profile
+    this.authService.editUserInfoPur(
+      this.userId,
+      this.CodePursuing.value,
+      this.CodePursuing2.value,
+      this.CodePursuing3.value,
+      this.CodePursuing4.value,
+      this.CodePursuing5.value,
+      this.CodePursuing6.value,
+      this.CodePursuing7.value,
+      this.CodePursuing8.value,
+      this.CodePursuing9.value,
+      this.CodePursuing10.value,
+      this.CodePursuing11.value,
+      this.CodePursuing12.value
+    );
+  }
+
+  removeP(codeP: string): void {
+    const indexP = this.classesP.indexOf(codeP);
+    if (indexP >= 0) {
+      this.classesP.splice(indexP, 1);
+    }
+  }
+  // Pursuing Classes
+  selectedP(event: MatAutocompleteSelectedEvent): void {
+    this.classesP.push(event.option.viewValue);
+    this.codeInputP.nativeElement.value = '';
+    // this.CodePursuing.setValue('');
+  }
+  // Pursuing Courses
+  addP(event: MatChipInputEvent): void {
+    const valueP = (event.value || '').trim();
+
+    // Add our course code
+    if (valueP) {
+      this.classesP.push(valueP);
+    }
+
+    // Clear the input value
+    // event.chipInput!.clear();
+    this.CodePursuing.setValue(null);
   }
 }
