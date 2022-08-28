@@ -525,7 +525,9 @@ mat-tab-group {
     width: 100%;
   }
 }
-
+.middleText{
+  text-align: center;
+}
 ::ng-deep .mat-chip-list-wrapper {
   margin: 0px !important;
   justify-content: center;
@@ -644,7 +646,6 @@ mat-tab-group {
 }
 .scroll {
   overflow-y: scroll;
-  margin-top: 3%;
 }
 .showCase {
   display: flex;
@@ -785,8 +786,8 @@ mat-tab-group {
   display: flex;
   justify-content: center;
   font-family: 'Cinzel', serif;
-  flex-direction: column;
-  align-items: center;
+  // flex-direction: column;
+  // align-items: center;
   margin-top: 2%;
 }
 .title1 {
@@ -839,7 +840,6 @@ mat-tab-group {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    margin-top: 4%;
     color: #7e7171;
     font-family: 'Cinzel',serif;
     font-size: large;
@@ -851,7 +851,6 @@ mat-tab-group {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    margin-top: 4%;
     color: #7e7171;
   font-family:  'Poppins', sans-serif;
     font-size: inherit;

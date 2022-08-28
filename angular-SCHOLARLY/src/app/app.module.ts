@@ -111,6 +111,8 @@ import { AuthService } from './services/auth.service';
 import { ChatService } from './services/chat.service';
 import { CommentsService } from './services/comments.service';
 import { MessageService } from './services/messages.service';
+import { MessageNotificationService } from './services/messagesNotifications.service';
+
 import { ShowCaseService } from './services/showCase.service';
 
 import { AuthInterceptor } from './signup/auth-interceptor';
@@ -226,6 +228,7 @@ import { ErrorInterceptor } from './error-interceptor';
     ChatService,
     CommentsService,
     MessageService,
+    MessageNotificationService,
     ShowCaseService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

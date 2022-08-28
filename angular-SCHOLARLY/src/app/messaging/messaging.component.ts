@@ -60,11 +60,9 @@ export class MessagingComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public messagesService: MessageService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) {
     this.messagesService.startMessages(this.userId);
-
     // msg from server
     this.socket.on('messageSnd', (data) => {
       console.log('server msg', data);
@@ -76,13 +74,11 @@ export class MessagingComponent implements OnInit {
   }
 
   ngOnInit(): any {
-    console.log('hey chz');
     this.userId = this.authService.getUserId();
 
     this.route.queryParams.subscribe((params) => {
       console.log('params main page', params?.username);
       this.username = params?.username;
-      // this.messagesService.getMessages(this.userId, this.username);
     });
     // emits saved message
     this.socket.on('messageSnd', (data) => {
@@ -228,16 +224,13 @@ export class MessageCardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public messagesService: MessageService,
-    private route: ActivatedRoute,
-    private router: Router
+    private route: ActivatedRoute
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-
     // Pulls one to one msgs
     this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
-
       this.messagesService.getMessages(this.userId, this.username);
       this.datasSub = this.messagesService
         .getInfoUpdateListener()

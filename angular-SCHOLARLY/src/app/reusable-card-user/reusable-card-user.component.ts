@@ -4,8 +4,9 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { MessageService } from '../services/messages.service';
+import { MessageNotificationService } from '../services/messagesNotifications.service';
+
 import { ActivatedRoute, Router } from '@angular/router';
-import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
 
 export interface Message {
   username: string;
@@ -39,7 +40,6 @@ export class ReusableCardUserComponent implements OnInit {
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
     //    Info
@@ -62,17 +62,18 @@ export class ReusableCardMessageComponent implements OnInit {
   userId: string;
   username: string;
 
-  userIsAuthenticated = false;
-  private authListenerSubs: Subscription;
+  // userIsAuthenticated = false;
+  // private authListenerSubs: Subscription;
 
   isLoading = false;
 
-  messages: Message[] = [];
-  public messagesSub: Subscription;
-
+  messagesNotif: Message[] = [];
+  private datasSub: Subscription;
   constructor(
     private authService: AuthService,
+    private messageNotificationService: MessageNotificationService,
     private messageService: MessageService,
+
     private router: Router,
     private route: ActivatedRoute
   ) {}
@@ -80,23 +81,21 @@ export class ReusableCardMessageComponent implements OnInit {
   ngOnInit(): any {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
-    this.messageService.getMessageNotification(this.userId);
-    this.messagesSub = this.messageService
-      .getInfoUpdateListener()
-      .subscribe((messages: Message[]) => {
-        this.messages = messages;
-        this.isLoading = false;
-      });
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authListenerSubs = this.authService
-      .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
-        this.userIsAuthenticated = isAuthenticated;
-        // Can add *ngIf="userIsAuthenticated" to hide items
-      });
     //    Info
+    this.messageNotificationService.getMessageNotification(
+      this.userId,
+      this.username
+    );
+    this.messageNotificationService
+      .getInfoUpdateListenerNotification()
+      .subscribe((messagesNotif) => {
+        this.isLoading = false;
+        this.messagesNotif = messagesNotif;
+      });
     this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
+
+      // Suscpion here!! Shouldnt show anything but it does!!!!!
     });
   }
 
@@ -106,9 +105,7 @@ export class ReusableCardMessageComponent implements OnInit {
   }
   navigateToChat(username: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
-    this.router.navigate(['/messages/:'], {
-      queryParams: { username },
-    });
+    this.router.navigate(['/messages/:'], { queryParams: { username } });
   }
 }
 

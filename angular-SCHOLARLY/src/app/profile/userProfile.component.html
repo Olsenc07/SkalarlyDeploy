@@ -169,24 +169,18 @@
         <mat-tab-group class="column_1" >
   
           <mat-tab label="Completed Courses"  >
-           <div class="titleC"> One Step Closer <i class="fas fa-graduation-cap"></i>
-           </div>
-            <div class="words1">
-              <!-- <div class="columnCourses">
-                Completed Courses
-              </div> -->
-              
-              <!-- Courses but need to target list length-->
-              <div class="counter" matBadgePosition="after" matBadgeOverlap="false">
-              </div>
-
-            </div>
+           
+       
 
             <div class=" scroll">
               <mat-chip-list>
                 <!-- *ngFor="let list of Com" -->
                 <div class="list">
                   <mat-chip-list class="center__">
+                    <div class="middleText">
+                    <div class="titleC" *ngIf="info.CodeCompleted "> First Year 
+                    </div>
+              
                     <!-- disabled -->
                     <mat-chip *ngIf="info.CodeCompleted" class="style" color="primary" selected >
                       <!-- {{list}} -->
@@ -210,7 +204,7 @@
                               {{ info.CodeCompleted5 }}
                     </mat-chip>
 
-                              <mat-chip *ngIf="CodeCompleted6" class="style" color="primary" selected >
+                              <mat-chip *ngIf="info.CodeCompleted6" class="style" color="primary" selected >
                                 {{ info.CodeCompleted6 }}
                     </mat-chip>
 
@@ -229,7 +223,10 @@
                     <mat-chip *ngIf="info.CodeCompleted10" class="style" color="primary" selected >
                       {{ info.CodeCompleted10 }}
                     </mat-chip>
-
+          </div>
+                    <div class="titleC" *ngIf="info.CodeCompleted11 "> Second Year
+                    </div>
+                    <div class="middleText">
                     <mat-chip *ngIf="info.CodeCompleted11" class="style" color="primary" selected >
                       {{ info.CodeCompleted11 }}
                     </mat-chip>
@@ -269,7 +266,10 @@
                     <mat-chip *ngIf="info.CodeCompleted20" class="style" color="primary" selected >
                       {{ info.CodeCompleted20 }}
                     </mat-chip>
-
+                  </div>
+                    <div class="titleC" *ngIf="info.CodeCompleted21 "> Third Year
+                    </div>
+                    <div class="middleText">
                     <mat-chip *ngIf="info.CodeCompleted21" class="style" color="primary" selected >
                       {{ info.CodeCompleted21 }}
                     </mat-chip>
@@ -309,7 +309,12 @@
                     <mat-chip *ngIf="info.CodeCompleted30"  class="style" color="primary" selected >
                       {{ info.CodeCompleted30 }}
                     </mat-chip>
+                  </div>
 
+
+                  <div class="middleText">
+                    <div class="titleC" *ngIf="info.CodeCompleted31 "> Fourth Year<i class="fas fa-graduation-cap"></i>
+                  </div>
                     <mat-chip *ngIf="info.CodeCompleted31"  class="style" color="primary" selected >
                       {{ info.CodeCompleted31 }}
                     </mat-chip>
@@ -353,7 +358,7 @@
                     <mat-chip *ngIf="info.CodeCompletedX"  class="style" color="primary" selected >
                       {{ info.CodeCompletedX }}
                     </mat-chip>
-                    
+                  </div>
                   </mat-chip-list>
                 </div>
               </mat-chip-list>
@@ -369,7 +374,7 @@
             
 
               <!-- Courses -->
-              <div class="counter" matBadgePosition="after" matBadgeOverlap="false"></div>
+
             </div>
             <div class="scroll">
               <mat-chip-list>

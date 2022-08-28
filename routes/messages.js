@@ -44,23 +44,45 @@ res.status(200).json({
 })
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
+if(req.query.username == req.query.userId ){
+    console.log('C.R.E.A.M')
+    await User.findById({_id: req.query.userId})
+    .then(user => {
+        console.log(user)
+        Msg.find( {you: user._id})
+        .then(documents => {
+            console.log('docs', documents)
+            console.log('wanting notifications blah')
+            res.status(200).json({
+              message: 'Info messages fetched succesfully!',
+            messages: documents
+              });
+        })
+    })
+
+}
+else{
     console.log('wanting notifications')
     await User.findById({_id: req.query.userId})
 .then(user => {
     Msg.find( {$and:[{you: req.query.userId},
         {otherUser: user.username}
 ]}
-    )}
     )
-.then(documents => {
-    console.log('docs', documents)
-    console.log('wanting notifications 2')
-    res.status(200).json({
-      message: 'Info messages fetched succesfully!',
-         messages: documents
-      });
+    .then(documents => {
+        console.log('docs', documents)
+        console.log('wanting notifications 2')
+        res.status(200).json({
+          message: 'Info messages fetched succesfully!',
+             messages: documents
+          });
+    })
+})}
 })
-})
+
+
+
+
 
 // listen for chat msg sending
 router.get('/OnetoOneSend', (req,res) => {

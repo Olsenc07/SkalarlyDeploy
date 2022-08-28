@@ -12,20 +12,20 @@ import {
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { MatDialog } from '@angular/material/dialog';
-import { ImageCroppedEvent, base64ToFile } from 'ngx-image-cropper';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { HttpClient } from '@angular/common/http';
 import {
   MatAutocompleteSelectedEvent,
   MatAutocomplete,
 } from '@angular/material/autocomplete';
 
-import { MatChipInputEvent, MatChipList } from '@angular/material/chips';
+import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ClassListService } from '../services/class.service';
 import { Post, PostService } from '../services/post.service';
-import { Profile, StoreService } from '../services/store.service';
+import { StoreService } from '../services/store.service';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
 import { AccountTextComponent } from '../signup/signup.component';
@@ -199,50 +199,26 @@ export class EditProfileComponent implements OnInit {
   CodePursuing11: FormControl = new FormControl('');
   CodePursuing12: FormControl = new FormControl('');
 
-  // Completed = new FormArray({
-  //   CodeCompleted
-  // })
-
-  editForm = new FormGroup({
-    major: this.major,
-    minor: this.minor,
-    sport: this.sport,
-    club: this.club,
-    name: this.name,
-    pronoun: this.pronoun,
-    gender: this.gender,
-    birthday: this.birthday,
-    // accountType: new FormControl(''),
-    profilePic: this.profilePic,
-    CodeCompleted: this.CodeCompleted,
-    CodePursuing: this.CodePursuing,
-    // bio: this.bio,
-    // showCase: this.showCase,
-  });
   selectedIndex = 0;
 
   constructor(
     public dialog: MatDialog,
     public classListService: ClassListService,
-    private http: HttpClient,
-    private storeService: StoreService,
     public authService: AuthService,
     public showCaseService: ShowCaseService,
     public postService: PostService
   ) {
     // this.bio.valueChanges.subscribe((v) => this.bioLength.next(v.length));
-
-    this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
-      map((code: string | null) =>
-        code ? this._filter(code) : this.classListService.allClasses().slice()
-      )
-    );
-
-    this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
-      map((codeP: string | null) =>
-        codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
-      )
-    );
+    // this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
+    //   map((code: string | null) =>
+    //     code ? this._filter(code) : this.classListService.allClasses().slice()
+    //   )
+    // );
+    // this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
+    //   map((codeP: string | null) =>
+    //     codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
+    //   )
+    // );
   }
 
   deleteShowCase(): boolean {

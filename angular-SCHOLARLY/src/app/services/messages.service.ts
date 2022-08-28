@@ -7,6 +7,7 @@ export interface Message {
   username: string;
   message: string;
   time: string;
+  you: string;
 }
 
 @Injectable({
@@ -14,7 +15,9 @@ export interface Message {
 })
 export class MessageService {
   private messages: Message[] = [];
+
   private messagesUpdated = new ReplaySubject<Message[]>();
+  // private messagesSent = new ReplaySubject<Message[]>();
 
   constructor(private http: HttpClient) {}
 
@@ -49,38 +52,14 @@ export class MessageService {
     return this.messagesUpdated.asObservable();
   }
 
+  // getInfoUpdateListenerSent(): any {
+  //   return this.messagesSent.asObservable();
+  // }
+
   startMessages(userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
         'http://localhost:3000/api/messages/OnetoOneSend',
-        {
-          params: { userId },
-        }
-      )
-      .pipe(
-        map((messageData) => {
-          return messageData.messages.map((data) => {
-            return {
-              username: data.username,
-              message: data.message,
-              time: data.time,
-              otherUser: data.otherUser,
-              you: data.you,
-            };
-          });
-        })
-      )
-      .subscribe((transformedMessage) => {
-        this.messages = transformedMessage;
-        this.messagesUpdated.next([...this.messages]);
-      });
-  }
-
-  getMessageNotification(userId: string): any {
-    console.log('get a call?');
-    this.http
-      .get<{ message: string; messages: any }>(
-        'http://localhost:3000/api/messages/infoMessage',
         {
           params: { userId },
         }

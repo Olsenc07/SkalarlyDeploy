@@ -140,45 +140,12 @@
         </mat-autocomplete>
       </mat-form-field>
           </div>
-          <!-- Bio, decided its not needed -->
-          <!-- <div class="input">
-            <div class="display">
-              <mat-form-field><input matInput [formControl]="bio" placeholder="Bio " class="bio" maxlength="100">
-                <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearBio()">
-                  <mat-icon class="asthetic-adds">close</mat-icon>
-                </button>
-
-              </mat-form-field>
-              <div matBadge="{{ 100 - (bioLength | async)}}">
-
-              </div>
-            </div>
-          </div> -->
-
-          
-
-
-    <!-- <mat-divider></mat-divider> -->
          
-         <!-- <div class="titleVal">Required validation to save changes for Personal and Academic!</div> -->
-         
-          <!-- <div class="login">
-            <mat-form-field class="loginWidth">
-              <input class="text_" matInput type="email" placeholder="Academic email" [formControl]="email" required>
-              <mat-error >Only U Of T emails are valid</mat-error>
-              </mat-form-field>
-            
-            </div>
-            <div class="login">
-              <mat-form-field class="loginWidth">
-              <input class="text_" matInput placeholder="Password" [formControl]="password" required>
-              </mat-form-field>
-            </div> -->
       
 
 
     
-          <!-- done button -->
+          <!-- Save button -->
           <div class="done">
             <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
               (click)="onSubmit()" >
@@ -255,98 +222,6 @@
     </button> -->
   </mat-form-field>
 </div>
-
-
-          <!-- <div class="row" [ngClass]="posts.length == 0 ? 'hide' : 'show' ">
-            <div class="words">
-              <div class="row">
-
-
-                <!-- button scrolls through posts and then user can delete what they wish -->
-                <!-- <button mat-icon-button (click)=previousGroupCard()><i class="material-icons title1">arrow_circle_left</i>
-                </button>
-                <div class="column1">Groups </div>
-                <button mat-icon-button (click)=nextGroupCard()> <i class="material-icons title1">arrow_circle_right</i>
-                </button>
-              </div>
-
-              <div class="row">
-                <!-- <div class="counter">{{ g + 1 }}</div>
-                <div class="counter">Of</div> --
-                <span class="material-icons counter">
-                  numbers
-                  </span>
-                <div class="counter">
-                  {{ posts.length }}</div>
-              </div>
-
-              <div class="style">
-                <!-- <div class="counter" matBadgePosition="above" matBadge="{{ gList.length }}"></div> --
-                <button mat-button (click)=leaveGroup()>Leave Group</button>
-
-              </div>
-            </div>
-
-          </div> --> 
-          <!-- <div class="rowBriefCardBox">
-<!--gList | slice:g:g+1; index as g  if want displayed one at a time --
-<div class="rowBriefCard" *ngFor="let group of posts | slice:g:g+1; index as g ">
-          <app-card-brief class="center" [ngClass]="posts.indexOf(group) === g ? 'outline' : '' " >
-          </app-card-brief>
-          
-        </div>
-      </div> -->
-
-        <!-- </div>
-        </div> -->
-        <!-- Recent Posts box-->
-        <!-- <div class="groupsj_box">
-          <div class="column1" [ngClass]="posts.length == 0 ? 'show' : 'hide' ">
-            <div class="row"> No Posts Made</div><i class="fas fa-ghost  centerR"></i>
-          </div>
-          <div class="groups-j" *ngFor="let post of posts | slice:p:p+1; index as p" [ngClass]="posts.length == 0 ? 'hide' : 'show' ">
-
-
-
-            <div class="row" >
-              <div class="words">
-                <div class="row">
-                  <!-- <div class="counter" [ngClass]="pList.length == 0 ? 'hide' : 'show' " matBadgePosition="above"
-                    matBadge="{{ p + 1 }}"></div> --
-                  <button mat-icon-button (click)=previousPostCard()><i class="material-icons title1">arrow_circle_left</i>
-                  </button>
-                  <div class="column1">Posts</div>
-                  <!-- button scrolls through posts and then user can delete what they wish --
-                  <button mat-icon-button (click)=nextPostCard()><i class="material-icons title1">arrow_circle_right</i>
-                  </button>
-                </div>
-
-
-                <div class="row">
-                  <!-- <div class="counter">{{ p + 1 }}</div>
-                  <div class="counter">Of</div> --
-                  <span class="material-icons counter">
-                    numbers
-                    </span>
-                  <div class="counter">
-                    {{ posts.length }}</div>
-                </div>
-
-
-
-                <div class="style"  >
-                  <!-- <div class="counter" matBadgePosition="above" matBadge="{{ pList.length }}"></div> --
-                  <button mat-button (click)="onDelete(post.id)">Delete Post</button>
-
-                </div>
-              </div>
-            </div>
-           
-            <app-card  class="fit"></app-card>
-         
-          </div>
-        </div> -->
-
        
 
         <mat-tab-group mat-align-tabs="center" class="c_r">
@@ -1559,7 +1434,13 @@
 </mat-tab>
         </mat-tab-group>
 
-       
+          <!-- done button -->
+          <div class="done">
+            <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
+              (click)="onSubmit()" >
+              Save
+            </button>
+          </div>
       </div>
       </div>
 </div>
