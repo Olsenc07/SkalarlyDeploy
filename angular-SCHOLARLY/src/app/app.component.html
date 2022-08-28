@@ -272,9 +272,9 @@
                       [matMenuTriggerFor]="settingsMenuCourses"
           class="look-nice"
         >
-          <span class="material-icons d_settings" style="color: cadetblue">
+          <!-- <span class="material-icons d_settings" style="color: cadetblue">
             lock_open
-          </span>
+          </span> -->
           Edit Profile
         </button>
         <mat-menu #settingsMenuCourses="matMenu">
@@ -293,58 +293,216 @@
         <button
         mat-menu-item
         type="button"
-        (click)="navigateToEditComp()"
+        [matMenuTriggerFor]="settingsMenuComp1"
+        class="look-nice"
+      >
+        <!-- <span class="material-icons d_settings" style="color: cadetblue">
+     check
+        </span> -->
+         Completed Courses 1st Year
+      </button>
+<mat-menu #settingsMenuComp1="matMenu">
+  <button
+        mat-menu-item
+        type="button"
+        (click)="navigateToEditCompF()"
         class="look-nice"
       >
         <span class="material-icons d_settings" style="color: cadetblue">
      check
         </span>
-        Edit Completed Courses First Year
+         Completed Courses 1st Year Fall
       </button>
+
+
       <button
       mat-menu-item
       type="button"
-      (click)="navigateToEditComp2()"
+      (click)="navigateToEditCompW()"
       class="look-nice"
     >
       <span class="material-icons d_settings" style="color: cadetblue">
    check
       </span>
-      Edit Completed Courses Second Year
-    </button>    
+       Completed Courses 1st Year Winter
+    </button>
+</mat-menu>
+
+
+
+      <button
+      mat-menu-item
+      type="button"
+      [matMenuTriggerFor]="settingsMenuComp2"
+      class="look-nice"
+    >
+      <!-- <span class="material-icons d_settings" style="color: cadetblue">
+   check
+      </span> -->
+       Completed Courses 2nd Year
+    </button>  
+    <mat-menu #settingsMenuComp2="matMenu">
+      <button
+            mat-menu-item
+            type="button"
+            (click)="navigateToEditCompF()"
+            class="look-nice"
+          >
+            <span class="material-icons d_settings" style="color: cadetblue">
+         check
+            </span>
+             Completed Courses 2nd Year Fall
+          </button>
+    
+    
+          <button
+          mat-menu-item
+          type="button"
+          (click)="navigateToEditCompW()"
+          class="look-nice"
+        >
+          <span class="material-icons d_settings" style="color: cadetblue">
+       check
+          </span>
+           Completed Courses 2nd Year Winter
+        </button>
+    </mat-menu>
+      
      <button
     mat-menu-item
     type="button"
-    (click)="navigateToEditComp3()"
+    [matMenuTriggerFor]="settingsMenuComp3"
     class="look-nice"
   >
-    <span class="material-icons d_settings" style="color: cadetblue">
+    <!-- <span class="material-icons d_settings" style="color: cadetblue">
  check
-    </span>
-    Edit Completed Courses Third Year
-  </button>    
+    </span> -->
+     Completed Courses 3rd Year
+  </button>   
+  <mat-menu #settingsMenuComp3="matMenu">
+    <button
+          mat-menu-item
+          type="button"
+        
+          (click)="navigateToEditComp3F()"
+          class="look-nice"
+        >
+          <span class="material-icons d_settings" style="color: cadetblue">
+       check
+          </span>
+           Completed Courses 3rd Year Fall
+        </button>
+  
+  
+        <button
+        mat-menu-item
+        type="button"
+        (click)="navigateToEditComp3W()"
+        class="look-nice"
+      >
+        <span class="material-icons d_settings" style="color: cadetblue">
+     check
+        </span>
+         Completed Courses 3rd Year Winter
+      </button>
+  </mat-menu> 
    <button
   mat-menu-item
   type="button"
-  (click)="navigateToEditComp4()"
+  [matMenuTriggerFor]="settingsMenuComp4"
   class="look-nice"
 >
-  <span class="material-icons d_settings" style="color: cadetblue">
+  <!-- <span class="material-icons d_settings" style="color: cadetblue">
 check
-  </span>
-  Edit Completed Courses Fourth Year
+  </span> -->
+   Completed Courses 4th Year
 </button>
+<mat-menu #settingsMenuComp4="matMenu">
+  <button
+        mat-menu-item
+        type="button"
+        class="look-nice"
+      >
+        <span class="material-icons d_settings" style="color: cadetblue">
+     check
+        </span>
+         Completed Courses 4th Year Fall
+      </button>
+
+
+      <button
+      mat-menu-item
+      type="button"
+      (click)="navigateToEditComp4W()"
+      class="look-nice"
+    >
+      <span class="material-icons d_settings" style="color: cadetblue">
+   check
+      </span>
+       Completed Courses 4th Year Winter
+    </button>
+</mat-menu> 
 <button
 mat-menu-item
 type="button"
-(click)="navigateToEditPur()"
+[matMenuTriggerFor]="settingsMenuPur"
 class="look-nice"
 >
-<span class="material-icons d_settings" style="color: cadetblue">
+<!-- <span class="material-icons d_settings" style="color: cadetblue">
   format_list_numbered
-</span>
-Edit Pursuing Courses 
+</span> -->
+ Pursuing Courses 
 </button>
+<mat-menu #settingsMenuPur="matMenu">
+  <button
+        mat-menu-item
+        type="button"
+        (click)="navigateToEditPurF()"
+        class="look-nice"
+      >
+        <span class="material-icons d_settings" style="color: cadetblue">
+          format_list_numbered
+        </span>
+        Pursuing Courses Fall
+      </button>
+
+
+      <button
+      mat-menu-item
+      type="button"
+      (click)="navigateToEditPurW()"
+      class="look-nice"
+    >
+      <span class="material-icons d_settings" style="color: cadetblue">
+        format_list_numbered
+      </span>
+      Pursuing Courses Winter
+    </button>
+    <button
+    mat-menu-item
+    type="button"
+    (click)="navigateToEditPurSp()"
+    class="look-nice"
+  >
+    <span class="material-icons d_settings" style="color: cadetblue">
+      format_list_numbered
+    </span>
+    Pursuing Courses Spring
+  </button>
+
+
+  <button
+  mat-menu-item
+  type="button"
+  (click)="navigateToEditPurSu()"
+  class="look-nice"
+>
+  <span class="material-icons d_settings" style="color: cadetblue">
+    format_list_numbered
+  </span>
+  Pursuing Courses Summer
+</button>
+</mat-menu>
 </mat-menu>
         <button
           mat-menu-item
