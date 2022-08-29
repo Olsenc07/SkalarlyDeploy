@@ -541,12 +541,7 @@ export class AuthService {
     CodeCompleted2: string,
     CodeCompleted3: string,
     CodeCompleted4: string,
-    CodeCompleted5: string,
-    CodeCompleted6: string,
-    CodeCompleted7: string,
-    CodeCompleted8: string,
-    CodeCompleted9: string,
-    CodeCompleted10: string
+    CodeCompleted5: string
   ): any {
     const authDataInfo = {
       CodeCompleted,
@@ -554,11 +549,6 @@ export class AuthService {
       CodeCompleted3,
       CodeCompleted4,
       CodeCompleted5,
-      CodeCompleted6,
-      CodeCompleted7,
-      CodeCompleted8,
-      CodeCompleted9,
-      CodeCompleted10,
     };
     const userData = new FormData();
     userData.append('CodeCompleted', CodeCompleted);
@@ -566,11 +556,6 @@ export class AuthService {
     userData.append('CodeCompleted3', CodeCompleted3);
     userData.append('CodeCompleted4', CodeCompleted4);
     userData.append('CodeCompleted5', CodeCompleted5);
-    userData.append('CodeCompleted6', CodeCompleted6);
-    userData.append('CodeCompleted7', CodeCompleted7);
-    userData.append('CodeCompleted8', CodeCompleted8);
-    userData.append('CodeCompleted9', CodeCompleted9);
-    userData.append('CodeCompleted10', CodeCompleted10);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://localhost:3000/api/user/infoEd',
@@ -586,11 +571,6 @@ export class AuthService {
             CodeCompleted3,
             CodeCompleted4,
             CodeCompleted5,
-            CodeCompleted6,
-            CodeCompleted7,
-            CodeCompleted8,
-            CodeCompleted9,
-            CodeCompleted10,
             CodePursuing2: '',
             CodePursuing3: '',
             CodePursuing4: '',

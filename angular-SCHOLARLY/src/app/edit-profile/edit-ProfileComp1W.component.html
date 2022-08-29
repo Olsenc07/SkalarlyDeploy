@@ -16,7 +16,7 @@
     
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
       {{code}}
     </mat-option>
     
@@ -34,13 +34,13 @@
     
     <mat-select placeholder="Choose completed course 7" #codeInput [formControl]="CodeCompleted7" >
     
-    <mat-option *ngFor="let code of CodeCompleted6.value" 
+    <mat-option *ngFor="let code of CodeCompleted7.value" 
     (removed)="onRemoved(code)" [removable]="true">
     {{code}}
     
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code" >
       {{code}}
     </mat-option>
     
@@ -65,7 +65,7 @@
     
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code" >
       {{code}}
     </mat-option>
     
@@ -89,7 +89,7 @@
     
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
       {{code}}
     </mat-option>
     
@@ -113,7 +113,7 @@
     
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
       {{code}}
     </mat-option>
 </mat-select>

@@ -15,7 +15,7 @@
           </mat-option>
         <!-- <cdk-virtual-scroll-viewport itemSize="10"> -->
           <!-- <mat-autocomplete #autoC="matAutocomplete" (optionSelected)="selected($event)"> -->
-            <mat-option *ngFor="let code of FilteredCodes" >
+            <mat-option *ngFor="let code of FilteredCodes" [value]="code" >
               {{code}}
             </mat-option>
           <!-- </mat-autocomplete> -->
@@ -29,14 +29,14 @@
 
       <mat-form-field class="example-chip-list">
         <mat-label>{{info.CodeCompleted2}}</mat-label>
-        <mat-select placeholder="Choose completed course 2"  [formControl]="CodeCompleted2" >
+        <mat-select placeholder="Choose completed course 2" #codeInput [formControl]="CodeCompleted2" >
 
           <mat-option *ngFor="let code of CodeCompleted.value" 
           (removed)="onRemoved(code)" [>
             {{code}}
           </mat-option>
         
-            <mat-option *ngFor="let code of FilteredCodes" >
+            <mat-option *ngFor="let code of FilteredCodes" [value]="code">
               {{code}}
             </mat-option>
       
@@ -49,7 +49,7 @@
 
       <mat-form-field class="example-chip-list">
         <mat-label>{{info.CodeCompleted3}}</mat-label>
-        <mat-select placeholder="Choose completed course 3"  [formControl]="CodeCompleted3" >
+        <mat-select placeholder="Choose completed course 3"  #codeInput  [formControl]="CodeCompleted3" >
 
           <mat-option *ngFor="let code of CodeCompleted.value" 
           (removed)="onRemoved(code)" [removable]="true">
@@ -57,7 +57,7 @@
            
           </mat-option>
         
-            <mat-option *ngFor="let code of FilteredCodes" >
+            <mat-option *ngFor="let code of FilteredCodes" [value]="code">
               {{code}}
             </mat-option>
       
@@ -70,7 +70,7 @@
 
       <mat-form-field class="example-chip-list">
         <mat-label>{{info.CodeCompleted4}}</mat-label>
-        <mat-select placeholder="Choose completed course 4"  [formControl]="CodeCompleted4" >
+        <mat-select placeholder="Choose completed course 4"  #codeInput  [formControl]="CodeCompleted4" >
 
           <mat-option *ngFor="let code of CodeCompleted.value" 
           (removed)="onRemoved(code)" [removable]="true">
@@ -78,7 +78,7 @@
        
           </mat-option>
         
-            <mat-option *ngFor="let code of FilteredCodes" >
+            <mat-option *ngFor="let code of FilteredCodes" [value]="code">
               {{code}}
             </mat-option>
       
@@ -100,7 +100,7 @@
 
 </mat-option>
 
-<mat-option *ngFor="let code of FilteredCodes" >
+<mat-option *ngFor="let code of FilteredCodes" [value]="code">
   {{code}}
 </mat-option>
 

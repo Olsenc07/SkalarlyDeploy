@@ -382,12 +382,7 @@ export class EditProfileComp1Component implements OnInit {
       this.CodeCompleted2.value,
       this.CodeCompleted3.value,
       this.CodeCompleted4.value,
-      this.CodeCompleted5.value,
-      this.CodeCompleted6.value,
-      this.CodeCompleted7.value,
-      this.CodeCompleted8.value,
-      this.CodeCompleted9.value,
-      this.CodeCompleted10.value
+      this.CodeCompleted5.value
     );
   }
 
@@ -464,6 +459,27 @@ export class EditProfileComp1WComponent implements OnInit {
       this.CodeCompleted10.value
     );
   }
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our course code
+    if (value) {
+      this.classes.push(value);
+    }
+  }
+  remove(code: string): void {
+    const index = this.classes.indexOf(code);
+    if (index >= 0) {
+      this.classes.splice(index, 1);
+    }
+  }
+
+  // Completed Classes
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.classes.push(event.option.viewValue);
+    this.codeInput.nativeElement.value = '';
+    // this.CodeCompleted.setValue();
+  }
 }
 
 // Complete 2
@@ -479,6 +495,8 @@ export class EditProfileComp2Component implements OnInit {
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  classes: string[] = [];
+  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
   CodeCompleted11: FormControl = new FormControl('');
   CodeCompleted12: FormControl = new FormControl('');
@@ -511,6 +529,30 @@ export class EditProfileComp2Component implements OnInit {
       this.CodeCompleted15.value
     );
   }
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our course code
+    if (value) {
+      this.classes.push(value);
+    }
+
+    // Clear the input value
+    // event.chipInput!.clear();
+  }
+  remove(code: string): void {
+    const index = this.classes.indexOf(code);
+    if (index >= 0) {
+      this.classes.splice(index, 1);
+    }
+  }
+
+  // Completed Classes
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.classes.push(event.option.viewValue);
+    this.codeInput.nativeElement.value = '';
+    // this.CodeCompleted.setValue();
+  }
 }
 // Complete 2W
 
@@ -524,6 +566,9 @@ export class EditProfileComp2WComponent implements OnInit {
   infos: AuthDataInfo[] = [];
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
+  classes: string[] = [];
+  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
+
   private infosSub: Subscription;
   CodeCompleted16: FormControl = new FormControl('');
   CodeCompleted17: FormControl = new FormControl('');
@@ -555,6 +600,30 @@ export class EditProfileComp2WComponent implements OnInit {
       this.CodeCompleted20.value
     );
   }
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our course code
+    if (value) {
+      this.classes.push(value);
+    }
+
+    // Clear the input value
+    // event.chipInput!.clear();
+  }
+  remove(code: string): void {
+    const index = this.classes.indexOf(code);
+    if (index >= 0) {
+      this.classes.splice(index, 1);
+    }
+  }
+
+  // Completed Classes
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.classes.push(event.option.viewValue);
+    this.codeInput.nativeElement.value = '';
+    // this.CodeCompleted.setValue();
+  }
 }
 // Complete 3
 @Component({
@@ -568,6 +637,8 @@ export class EditProfileComp3Component implements OnInit {
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  classes: string[] = [];
+  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
   CodeCompleted21: FormControl = new FormControl('');
   CodeCompleted22: FormControl = new FormControl('');
@@ -600,6 +671,30 @@ export class EditProfileComp3Component implements OnInit {
       this.CodeCompleted25.value
     );
   }
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our course code
+    if (value) {
+      this.classes.push(value);
+    }
+
+    // Clear the input value
+    // event.chipInput!.clear();
+  }
+  remove(code: string): void {
+    const index = this.classes.indexOf(code);
+    if (index >= 0) {
+      this.classes.splice(index, 1);
+    }
+  }
+
+  // Completed Classes
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.classes.push(event.option.viewValue);
+    this.codeInput.nativeElement.value = '';
+    // this.CodeCompleted.setValue();
+  }
 }
 // Complete 3W
 @Component({
@@ -613,6 +708,8 @@ export class EditProfileComp3WComponent implements OnInit {
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  classes: string[] = [];
+  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
   CodeCompleted26: FormControl = new FormControl('');
   CodeCompleted27: FormControl = new FormControl('');
@@ -644,6 +741,30 @@ export class EditProfileComp3WComponent implements OnInit {
       this.CodeCompleted30.value
     );
   }
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our course code
+    if (value) {
+      this.classes.push(value);
+    }
+
+    // Clear the input value
+    // event.chipInput!.clear();
+  }
+  remove(code: string): void {
+    const index = this.classes.indexOf(code);
+    if (index >= 0) {
+      this.classes.splice(index, 1);
+    }
+  }
+
+  // Completed Classes
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.classes.push(event.option.viewValue);
+    this.codeInput.nativeElement.value = '';
+    // this.CodeCompleted.setValue();
+  }
 }
 // Complete 4
 
@@ -658,6 +779,8 @@ export class EditProfileComp4Component implements OnInit {
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  classes: string[] = [];
+  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
   CodeCompleted31: FormControl = new FormControl('');
   CodeCompleted32: FormControl = new FormControl('');
@@ -689,6 +812,30 @@ export class EditProfileComp4Component implements OnInit {
       this.CodeCompleted35.value
     );
   }
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our course code
+    if (value) {
+      this.classes.push(value);
+    }
+
+    // Clear the input value
+    // event.chipInput!.clear();
+  }
+  remove(code: string): void {
+    const index = this.classes.indexOf(code);
+    if (index >= 0) {
+      this.classes.splice(index, 1);
+    }
+  }
+
+  // Completed Classes
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.classes.push(event.option.viewValue);
+    this.codeInput.nativeElement.value = '';
+    // this.CodeCompleted.setValue();
+  }
 }
 @Component({
   selector: 'app-complete4w',
@@ -701,6 +848,8 @@ export class EditProfileComp4WComponent implements OnInit {
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  classes: string[] = [];
+  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
   CodeCompleted36: FormControl = new FormControl('');
   CodeCompleted37: FormControl = new FormControl('');
@@ -733,6 +882,29 @@ export class EditProfileComp4WComponent implements OnInit {
       this.CodeCompleted40.value,
       this.CodeCompletedX.value
     );
+  }
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our course code
+    if (value) {
+      this.classes.push(value);
+    }
+
+    // Clear the input value
+  }
+  remove(code: string): void {
+    const index = this.classes.indexOf(code);
+    if (index >= 0) {
+      this.classes.splice(index, 1);
+    }
+  }
+
+  // Completed Classes
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.classes.push(event.option.viewValue);
+    this.codeInput.nativeElement.value = '';
+    // this.CodeCompleted.setValue();
   }
 }
 

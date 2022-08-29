@@ -272,9 +272,9 @@
                       [matMenuTriggerFor]="settingsMenuCourses"
           class="look-nice"
         >
-          <!-- <span class="material-icons d_settings" style="color: cadetblue">
+          <span class="material-icons d_settings" style="color: cadetblue">
             lock_open
-          </span> -->
+          </span>
           Edit Profile
         </button>
         <mat-menu #settingsMenuCourses="matMenu">
@@ -296,9 +296,9 @@
         [matMenuTriggerFor]="settingsMenuComp1"
         class="look-nice"
       >
-        <!-- <span class="material-icons d_settings" style="color: cadetblue">
+        <span class="material-icons d_settings" style="color: cadetblue">
      check
-        </span> -->
+        </span>
          Completed Courses 1st Year
       </button>
 <mat-menu #settingsMenuComp1="matMenu">
@@ -308,8 +308,7 @@
         (click)="navigateToEditComp()"
         class="look-nice"
       >
-        <span class="material-icons d_settings" style="color: cadetblue">
-     check
+        <span class="fas fa-leaf d_settings" style="color: saddlebrown">
         </span>
          Completed Courses 1st Year Fall
       </button>
@@ -321,8 +320,7 @@
       (click)="navigateToEditCompW()"
       class="look-nice"
     >
-      <span class="material-icons d_settings" style="color: cadetblue">
-   check
+      <span class="fas fa-snowflake d_settings" style="color: #88c4f9">
       </span>
        Completed Courses 1st Year Winter
     </button>
@@ -336,20 +334,19 @@
       [matMenuTriggerFor]="settingsMenuComp2"
       class="look-nice"
     >
-      <!-- <span class="material-icons d_settings" style="color: cadetblue">
+      <span class="material-icons d_settings" style="color: cadetblue">
    check
-      </span> -->
+      </span>
        Completed Courses 2nd Year
     </button>  
     <mat-menu #settingsMenuComp2="matMenu">
       <button
             mat-menu-item
             type="button"
-            (click)="navigateToEditComp()"
+            (click)="navigateToEditComp2()"
             class="look-nice"
           >
-            <span class="material-icons d_settings" style="color: cadetblue">
-         check
+            <span class="fas fa-leaf d_settings" style="color: saddlebrown">
             </span>
              Completed Courses 2nd Year Fall
           </button>
@@ -358,11 +355,10 @@
           <button
           mat-menu-item
           type="button"
-          (click)="navigateToEditCompW()"
+          (click)="navigateToEditComp2W()"
           class="look-nice"
         >
-          <span class="material-icons d_settings" style="color: cadetblue">
-       check
+          <span class="fas fa-snowflake d_settings" style="color: #88c4f9">
           </span>
            Completed Courses 2nd Year Winter
         </button>
@@ -374,9 +370,9 @@
     [matMenuTriggerFor]="settingsMenuComp3"
     class="look-nice"
   >
-    <!-- <span class="material-icons d_settings" style="color: cadetblue">
+    <span class="material-icons d_settings" style="color: cadetblue">
  check
-    </span> -->
+    </span>
      Completed Courses 3rd Year
   </button>   
   <mat-menu #settingsMenuComp3="matMenu">
@@ -387,8 +383,7 @@
           (click)="navigateToEditComp3()"
           class="look-nice"
         >
-          <span class="material-icons d_settings" style="color: cadetblue">
-       check
+          <span class="fas fa-leaf d_settings" style="color: saddlebrown">
           </span>
            Completed Courses 3rd Year Fall
         </button>
@@ -400,8 +395,7 @@
         (click)="navigateToEditComp3W()"
         class="look-nice"
       >
-        <span class="material-icons d_settings" style="color: cadetblue">
-     check
+        <span class="fas fa-snowflake d_settings" style="color: #88c4f9">
         </span>
          Completed Courses 3rd Year Winter
       </button>
@@ -412,19 +406,21 @@
   [matMenuTriggerFor]="settingsMenuComp4"
   class="look-nice"
 >
-  <!-- <span class="material-icons d_settings" style="color: cadetblue">
+  <span class="material-icons d_settings" style="color: cadetblue">
 check
-  </span> -->
+  </span>
    Completed Courses 4th Year
 </button>
 <mat-menu #settingsMenuComp4="matMenu">
   <button
         mat-menu-item
         type="button"
+        (click)="navigateToEditComp4()"
+
         class="look-nice"
       >
-        <span class="material-icons d_settings" style="color: cadetblue">
-     check
+        <span class="fas fa-leaf d_settings" style="color: saddlebrown">
+
         </span>
          Completed Courses 4th Year Fall
       </button>
@@ -436,8 +432,7 @@ check
       (click)="navigateToEditComp4W()"
       class="look-nice"
     >
-      <span class="material-icons d_settings" style="color: cadetblue">
-   check
+      <span class="fas fa-snowflake d_settings" style="color: #88c4f9">
       </span>
        Completed Courses 4th Year Winter
     </button>
@@ -448,9 +443,9 @@ type="button"
 [matMenuTriggerFor]="settingsMenuPur"
 class="look-nice"
 >
-<!-- <span class="material-icons d_settings" style="color: cadetblue">
+<span class="material-icons d_settings" style="color: cadetblue">
   format_list_numbered
-</span> -->
+</span>
  Pursuing Courses 
 </button>
 <mat-menu #settingsMenuPur="matMenu">
@@ -460,8 +455,7 @@ class="look-nice"
         (click)="navigateToEditPur()"
         class="look-nice"
       >
-        <span class="material-icons d_settings" style="color: cadetblue">
-          format_list_numbered
+        <span class="fas fa-leaf d_settings" style="color: saddlebrown">
         </span>
         Pursuing Courses Fall
       </button>
@@ -473,8 +467,7 @@ class="look-nice"
       (click)="navigateToEditPurW()"
       class="look-nice"
     >
-      <span class="material-icons d_settings" style="color: cadetblue">
-        format_list_numbered
+      <span class="fas fa-snowflake d_settings" style="color: #88c4f9">
       </span>
       Pursuing Courses Winter
     </button>
@@ -484,8 +477,7 @@ class="look-nice"
     (click)="navigateToEditPurSp()"
     class="look-nice"
   >
-    <span class="material-icons d_settings" style="color: cadetblue">
-      format_list_numbered
+    <span class="fas fa-seedling d_settings" style="color: cadetblue">
     </span>
     Pursuing Courses Spring
   </button>
@@ -497,8 +489,7 @@ class="look-nice"
   (click)="navigateToEditPurSu()"
   class="look-nice"
 >
-  <span class="material-icons d_settings" style="color: cadetblue">
-    format_list_numbered
+  <span class="fas fa-sun d_settings" style="color: #d89163">
   </span>
   Pursuing Courses Summer
 </button>
