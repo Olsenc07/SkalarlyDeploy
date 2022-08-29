@@ -250,13 +250,28 @@ export class AppComponent implements OnInit {
       queryParams: { userId: this.userId },
     });
   }
+  navigateToEditComp2W(): any {
+    this.router.navigate(['/edit-profileComp2W/:'], {
+      queryParams: { userId: this.userId },
+    });
+  }
   navigateToEditComp3(): any {
     this.router.navigate(['/edit-profileComp3/:'], {
       queryParams: { userId: this.userId },
     });
   }
+  navigateToEditComp3W(): any {
+    this.router.navigate(['/edit-profileComp3W/:'], {
+      queryParams: { userId: this.userId },
+    });
+  }
   navigateToEditComp4(): any {
     this.router.navigate(['/edit-profileComp4/:'], {
+      queryParams: { userId: this.userId },
+    });
+  }
+  navigateToEditComp4W(): any {
+    this.router.navigate(['/edit-profileComp4W/:'], {
       queryParams: { userId: this.userId },
     });
   }

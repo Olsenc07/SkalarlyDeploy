@@ -87,6 +87,13 @@
   border-radius: 50%;
   overflow: hidden;
 }
+.centerTitle{
+  display: flex;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  margin-top: 2%;
+  font-size: large;
+}
 .centerR {
   display: flex;
   justify-content: center;

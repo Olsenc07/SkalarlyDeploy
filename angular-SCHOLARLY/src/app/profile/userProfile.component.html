@@ -182,7 +182,8 @@
                     <div class="middleText">
                     <div class="titleC" *ngIf="info.CodeCompleted "> First Year 
                     </div>
-              
+                    <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted" style="color: saddlebrown; margin-top:4%">
+                    </span>
                     <!-- disabled -->
                     <mat-chip *ngIf="info.CodeCompleted" class="style" color="primary" selected >
                       <!-- {{list}} -->
@@ -205,7 +206,8 @@
                             <mat-chip *ngIf="info.CodeCompleted5" class="style" color="primary" selected >
                               {{ info.CodeCompleted5 }}
                     </mat-chip>
-
+                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted6" style="color: #88c4f9; margin-top:4%">
+                    </span>
                               <mat-chip *ngIf="info.CodeCompleted6" class="style" color="primary" selected >
                                 {{ info.CodeCompleted6 }}
                     </mat-chip>
@@ -225,9 +227,14 @@
                     <mat-chip *ngIf="info.CodeCompleted10" class="style" color="primary" selected >
                       {{ info.CodeCompleted10 }}
                     </mat-chip>
+                    <mat-divider *ngIf="info.CodeCompleted11 "></mat-divider>
           </div>
+          <div>
+          <div class="middleText">
                     <div class="titleC" *ngIf="info.CodeCompleted11 "> Second Year
                     </div>
+                    <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted11" style="color: saddlebrown; margin-top:4%">
+                    </span>
                     <div class="middleText">
                     <mat-chip *ngIf="info.CodeCompleted11" class="style" color="primary" selected >
                       {{ info.CodeCompleted11 }}
@@ -248,7 +255,8 @@
                     <mat-chip *ngIf="info.CodeCompleted15" class="style" color="primary" selected >
                       {{ info.CodeCompleted15 }}
                     </mat-chip>
-
+                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted16" style="color: #88c4f9; margin-top:4%">
+                    </span>
                     <mat-chip *ngIf="info.CodeCompleted16" class="style" color="primary" selected >
                       {{ info.CodeCompleted16 }}
                     </mat-chip>
@@ -269,8 +277,14 @@
                       {{ info.CodeCompleted20 }}
                     </mat-chip>
                   </div>
+                  </div>
+                  <mat-divider *ngIf="info.CodeCompleted21 "></mat-divider>
+                  <div class="middleText">
+
                     <div class="titleC" *ngIf="info.CodeCompleted21 "> Third Year
                     </div>
+                    <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted21" style="color: saddlebrown; margin-top:4%">
+                    </span>
                     <div class="middleText">
                     <mat-chip *ngIf="info.CodeCompleted21" class="style" color="primary" selected >
                       {{ info.CodeCompleted21 }}
@@ -291,7 +305,8 @@
                     <mat-chip *ngIf="info.CodeCompleted25" class="style" color="primary" selected >
                       {{ info.CodeCompleted25 }}
                     </mat-chip>
-
+                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted26" style="color: #88c4f9; margin-top:4%">
+                    </span>
                     <mat-chip *ngIf="info.CodeCompleted26"  class="style" color="primary" selected >
                       {{ info.CodeCompleted26 }}
                     </mat-chip>
@@ -312,11 +327,14 @@
                       {{ info.CodeCompleted30 }}
                     </mat-chip>
                   </div>
-
+                </div>
+                <mat-divider *ngIf="info.CodeCompleted31 "></mat-divider>
 
                   <div class="middleText">
                     <div class="titleC" *ngIf="info.CodeCompleted31 "> Fourth Year<i class="fas fa-graduation-cap"></i>
                   </div>
+                  <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted31" style="color: saddlebrown; margin-top:4%">
+                  </span>
                     <mat-chip *ngIf="info.CodeCompleted31"  class="style" color="primary" selected >
                       {{ info.CodeCompleted31 }}
                     </mat-chip>
@@ -336,7 +354,8 @@
                     <mat-chip  *ngIf="info.CodeCompleted35" class="style" color="primary" selected >
                       {{ info.CodeCompleted35 }}
                     </mat-chip>
-
+                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted36" style="color: #88c4f9; margin-top:4%">
+                    </span>
                     <mat-chip *ngIf="info.CodeCompleted36"  class="style" color="primary" selected >
                       {{ info.CodeCompleted36 }}
                     </mat-chip>
@@ -361,6 +380,7 @@
                       {{ info.CodeCompletedX }}
                     </mat-chip>
                   </div>
+                </div>
                   </mat-chip-list>
                 </div>
               </mat-chip-list>
@@ -386,7 +406,7 @@
                     <div class="columnCoursesBox">
                       <!-- {{list}}-->
                       <div>
-                      <span class="fas fa-leaf centerIcon" *ngIf="info.CodePursuing" style="color: saddlebrown">
+                      <span class="fas fa-leaf centerIcon" *ngIf="info.CodePursuing" style="color: saddlebrown; margin-top:4%">
                       </span>
                       <div class="centerIcon">
                       <mat-chip *ngIf="info.CodePursuing" class="style" color="primary" selected >
@@ -407,7 +427,7 @@
                     </div>
                     </div>
                     <div>
-                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodePursuing6" style="color: #88c4f9">
+                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodePursuing6" style="color: #88c4f9; margin-top:4%">
                     </span>
                     <div class="centerIcon">
                     <mat-chip *ngIf="info.CodePursuing6" class="style" color="primary" selected >
@@ -428,7 +448,7 @@
                   </div>
                 </div>
                 <div>
-                     <span class="fas fa-seedling centerIcon" *ngIf="info.CodePursuing11" style="color: cadetblue">
+                     <span class="fas fa-seedling centerIcon" *ngIf="info.CodePursuing11" style="color: cadetblue; margin-top:4%">
                     </span>
                     <div class="centerIcon">
                     <mat-chip *ngIf="info.CodePursuing11" class="style" color="primary" selected >
@@ -437,7 +457,7 @@
                     <mat-chip *ngIf="info.CodePursuing12" class="style" color="primary" selected >
                       {{ info.CodePursuing12 }}
                     </mat-chip>
-                    <span class="fas fa-sun" *ngIf="info.CodePursuing13" style="color: #d89163">
+                    <span class="fas fa-sun" *ngIf="info.CodePursuing13" style="color: #d89163; margin-top:4%">
                     </span>
                     <mat-chip *ngIf="info.CodePursuing13" class="style" color="primary" selected >
                       {{ info.CodePursuing13 }}

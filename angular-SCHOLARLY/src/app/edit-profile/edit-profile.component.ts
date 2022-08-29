@@ -699,7 +699,7 @@ export class EditProfileComp3Component implements OnInit {
 // Complete 3W
 @Component({
   selector: 'app-complete3w',
-  templateUrl: './edit-ProfileComp3.component.html',
+  templateUrl: './edit-ProfileComp3W.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComp3WComponent implements OnInit {

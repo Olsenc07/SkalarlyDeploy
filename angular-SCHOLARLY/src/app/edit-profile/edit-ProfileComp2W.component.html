@@ -1,8 +1,10 @@
 <!-- 16 -->
 <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Completed Courses Second Year Winter" class="courses" >
+  <div class="centerTitle">Winter Semester <div class="fas fa-snowflake" style="color: #88c4f9;"></div> </div>
+
 <div *ngFor="let info of infos">
-<div class="input" *ngIf="info.CodeCompleted15 ||CodeCompleted15.value">
+<div class="input" >
     <i class="material-icons _icon">check</i>
     
     <mat-form-field class="example-chip-list">
@@ -10,7 +12,7 @@
     
     <mat-select placeholder="Choose completed course 16" #codeInput [formControl]="CodeCompleted16" >
     
-    <mat-option *ngFor="let code of CodeCompleted11.value" 
+    <mat-option *ngFor="let code of CodeCompleted16.value" 
     (removed)="onRemoved(code)" [removable]="true">
     {{code}}
     
@@ -26,7 +28,7 @@
     
     
     <!-- 17 -->
-    <div class="input" *ngIf="info.CodeCompleted16 ||CodeCompleted16.value">
+    <div class="input" *ngIf="info.CodeCompleted16 || CodeCompleted16.value">
     <i class="material-icons _icon">check</i>
     
     <mat-form-field class="example-chip-list">
@@ -34,7 +36,7 @@
     
     <mat-select placeholder="Choose completed course 17" #codeInput [formControl]="CodeCompleted17" >
     
-    <mat-option *ngFor="let code of CodeCompleted11.value" 
+    <mat-option *ngFor="let code of CodeCompleted17.value" 
     (removed)="onRemoved(code)" [removable]="true">
     {{code}}
     
@@ -59,7 +61,7 @@
     
     <mat-select placeholder="Choose completed course 18" #codeInput [formControl]="CodeCompleted18" >
     
-    <mat-option *ngFor="let code of CodeCompleted11.value" 
+    <mat-option *ngFor="let code of CodeCompleted18.value" 
     (removed)="onRemoved(code)" [removable]="true">
     {{code}}
     
@@ -83,7 +85,7 @@
     
     <mat-select placeholder="Choose completed course 19" #codeInput [formControl]="CodeCompleted19" >
     
-    <mat-option *ngFor="let code of CodeCompleted11.value" 
+    <mat-option *ngFor="let code of CodeCompleted19.value" 
     (removed)="onRemoved(code)" [removable]="true">
     {{code}}
     
@@ -107,7 +109,7 @@
     
     <mat-select placeholder="Choose completed course 20" #codeInput [formControl]="CodeCompleted20" >
     
-    <mat-option *ngFor="let code of CodeCompleted11.value" 
+    <mat-option *ngFor="let code of CodeCompleted20.value" 
     (removed)="onRemoved(code)" [removable]="true">
     {{code}}
     

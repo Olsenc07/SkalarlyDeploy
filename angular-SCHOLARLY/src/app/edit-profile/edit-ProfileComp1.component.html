@@ -1,5 +1,6 @@
 <mat-tab-group mat-align-tabs="center">
-<mat-tab label="Completed Courses First Year Fall" class="courses" >
+<mat-tab label="Completed Courses First Year Fall"  class="courses fas fa-leaf" >
+  <div class="centerTitle">Fall Semester <div class="fas fa-leaf" style="color: saddlebrown;"></div> </div>
   <div *ngFor="let info of infos">
     <div class="input" >
       
@@ -32,7 +33,7 @@
         <mat-select placeholder="Choose completed course 2" #codeInput [formControl]="CodeCompleted2" >
 
           <mat-option *ngFor="let code of CodeCompleted.value" 
-          (removed)="onRemoved(code)" [>
+          (removed)="onRemoved(code)" >
             {{code}}
           </mat-option>
         

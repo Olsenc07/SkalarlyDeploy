@@ -1,6 +1,7 @@
 <!-- 26 -->
 <mat-tab-group mat-align-tabs="center">
     <mat-tab label="Completed Courses Third Year Winter" class="courses" >
+  <div class="centerTitle">Winter Semester <div class="fas fa-snowflake" style="color: #88c4f9;"></div> </div>
     <div *ngFor="let info of infos">
 <div class="input" >
     <i class="material-icons _icon">check</i>
@@ -34,7 +35,7 @@
     
     <mat-select placeholder="Choose completed course 27" #codeInput [formControl]="CodeCompleted27" >
     
-    <mat-option *ngFor="let code of CodeCompleted26.value" 
+    <mat-option *ngFor="let code of CodeCompleted27.value" 
     (removed)="onRemoved(code)" [removable]="true">
     {{code}}
     
@@ -59,7 +60,7 @@
     
     <mat-select placeholder="Choose completed course 28" #codeInput [formControl]="CodeCompleted28" >
     
-    <mat-option *ngFor="let code of CodeCompleted26.value" 
+    <mat-option *ngFor="let code of CodeCompleted28.value" 
     (removed)="onRemoved(code)" [removable]="true">
     {{code}}
     
@@ -83,7 +84,7 @@
     
     <mat-select placeholder="Choose completed course 29" #codeInput [formControl]="CodeCompleted29" >
     
-    <mat-option *ngFor="let code of CodeCompleted26.value" 
+    <mat-option *ngFor="let code of CodeCompleted29.value" 
     (removed)="onRemoved(code)" [removable]="true">
     {{code}}
     
@@ -107,7 +108,7 @@
     
     <mat-select placeholder="Choose completed course 30" #codeInput [formControl]="CodeCompleted30" >
     
-    <mat-option *ngFor="let code of CodeCompleted26.value" 
+    <mat-option *ngFor="let code of CodeCompleted30.value" 
     (removed)="onRemoved(code)" [removable]="true">
     {{code}}
     
