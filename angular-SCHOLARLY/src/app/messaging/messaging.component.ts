@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { io } from 'socket.io-client';
 import { Subscription } from 'rxjs';
-
+import { Picker } from 'emoji-picker-element';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthDataInfo } from '../signup/auth-data.model';
 
@@ -24,7 +24,8 @@ export interface Message {
 })
 export class MessagingComponent implements OnInit {
   userId: string;
-
+  picker = new Picker();
+  emojiInput: string = '';
   timeHour = new Date().getHours();
   timeMinute = new Date().getMinutes();
   text = this.timeHour >= 12 ? 'pm' : 'am';
@@ -49,7 +50,7 @@ export class MessagingComponent implements OnInit {
   // allUsers should filter through every user
   allUsers: string[] = [];
   username: string;
-
+  showEmojiPicker = false;
   search: FormControl = new FormControl('');
   message: FormControl = new FormControl('');
   fileUploadM: FormControl = new FormControl('');
@@ -97,14 +98,30 @@ export class MessagingComponent implements OnInit {
       (user) => user.toLowerCase().indexOf(filterValue) === 0
     );
   }
-
+  addEmoji(event: any) {
+    this.emojiInput += event?.detail?.unicode;
+  }
+  emojiPreventClose($event: any) {
+    $event.stopPropagation();
+  }
   uploadFile(): any {
     document.getElementById('fileInput').click();
   }
   uploadPic(): any {
     document.getElementById('picInput').click();
   }
+  toggleEmojiPicker() {
+    console.log(this.showEmojiPicker);
+    this.showEmojiPicker = !this.showEmojiPicker;
+  }
 
+  onFocus() {
+    console.log('focus');
+    this.showEmojiPicker = false;
+  }
+  onBlur() {
+    console.log('onblur');
+  }
   clearMessage(): void {
     this.message.setValue('');
   }

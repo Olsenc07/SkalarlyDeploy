@@ -82,16 +82,11 @@ export class ReusableCardMessageComponent implements OnInit {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     //    Info
-    this.messageNotificationService.getMessageNotification(
-      this.userId,
-      this.username
-    );
-    this.messageNotificationService
-      .getInfoUpdateListenerNotification()
-      .subscribe((messagesNotif) => {
-        this.isLoading = false;
-        this.messagesNotif = messagesNotif;
-      });
+    this.messageService.getMessages(this.userId, this.username);
+    this.messageService.getInfoUpdateListener().subscribe((messagesNotif) => {
+      this.isLoading = false;
+      this.messagesNotif = messagesNotif;
+    });
     this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
 

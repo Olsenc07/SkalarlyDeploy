@@ -100,7 +100,20 @@
 <div class="messageTitle" *ngIf="username !== userId">
   Messaging {{username}}
 </div>
+  
 <div class="send_btn">
+<!-- emoji -->
+  <!-- <button (click) ="toggleEmojiPicker()">😀</button><br>
+<emoji-mart class="emoji-mart" set="{{set}}" *ngIf="showEmojiPicker" (emojiSelect)="addEmoji($event)" title="Pick your emoji…"></emoji-mart> -->
+<!--  -->
+<mat-form-field appearance="outline">
+  <mat-label>Emoji Picker</mat-label>
+  <input matInput [(ngModel)]="emojiInput">
+  <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon">sentiment_very_satisfied</mat-icon>
+</mat-form-field>
+<mat-menu #emojiIcon="matMenu" class="emoji-menu">
+  <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
+</mat-menu>
   <mat-chip-list [disabled]="!message.value">
     <mat-chip selected class="send_btn_style" type="submit"  id="send-button" (click)="trigger(message.value)" color="primary">
 Send

@@ -42,8 +42,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import { PickerModule } from '@ctrl/ngx-emoji-mart';
-
 import { routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -69,9 +67,6 @@ import { EditProfilePurComponent } from './edit-profile/edit-profile.component';
 import { EditProfilePurWComponent } from './edit-profile/edit-profile.component';
 import { EditProfilePurSummerComponent } from './edit-profile/edit-profile.component';
 import { EditProfilePurSpringComponent } from './edit-profile/edit-profile.component';
-
-
-
 
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { MessagingComponent } from './messaging/messaging.component';
@@ -241,7 +236,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatCardModule,
     MatExpansionModule,
     MatSnackBarModule,
-    PickerModule,
     MatProgressSpinnerModule,
     ScrollingModule,
     InfiniteScrollModule,
