@@ -65,18 +65,20 @@
 
 <div class="type_message">
 <mat-form-field class="type_message_box">
-        <input matInput class="post" placeholder="Write a message..."
+        <input matInput class="post" placeholder="Write a message..." 
           [formControl]="message" type="text" id="messageInput"> 
           <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
           (click)="clearMessage()">
           <mat-icon>close</mat-icon>
         </button>
         </mat-form-field>
+
 </div>
 
 <div class="assistance">
-<!-- <div class="upload_options">
-    <button mat-icon-button (click)="uploadFile()">
+ <div class="upload_options">
+
+    <!-- <button mat-icon-button (click)="uploadFile()">
         <i class="material-icons">attach_file
 <input #fileInput id="fileInput" type="file" [formControl]="fileUploadM" class="uploadFile">
         </i>
@@ -87,30 +89,20 @@
         <i class="material-icons">photo_camera
           <input #picInput id="picInput" type="file" [formControl]="photoUploadM" class="uploadFile" accept="image/* video/*">
         </i>
-        </button>
+        </button> -->
 
-    <button mat-icon-button>
-       GIF
-    </button>
-        
-    <button mat-icon-button>
-        <i class="material-icons">mood</i>
-    </button>
-</div> -->
+
+</div> 
 <div class="messageTitle" *ngIf="username !== userId">
   Messaging {{username}}
 </div>
   
 <div class="send_btn">
-<!-- emoji -->
-  <!-- <button (click) ="toggleEmojiPicker()">😀</button><br>
-<emoji-mart class="emoji-mart" set="{{set}}" *ngIf="showEmojiPicker" (emojiSelect)="addEmoji($event)" title="Pick your emoji…"></emoji-mart> -->
-<!--  -->
-<mat-form-field appearance="outline">
-  <mat-label>Emoji Picker</mat-label>
-  <input matInput [(ngModel)]="emojiInput">
+
+<button mat-icon-button>
   <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon">sentiment_very_satisfied</mat-icon>
-</mat-form-field>
+</button>
+
 <mat-menu #emojiIcon="matMenu" class="emoji-menu">
   <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
 </mat-menu>

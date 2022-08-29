@@ -25,7 +25,6 @@ export interface Message {
 export class MessagingComponent implements OnInit {
   userId: string;
   picker = new Picker();
-  emojiInput: string = '';
   timeHour = new Date().getHours();
   timeMinute = new Date().getMinutes();
   text = this.timeHour >= 12 ? 'pm' : 'am';
@@ -99,7 +98,7 @@ export class MessagingComponent implements OnInit {
     );
   }
   addEmoji(event: any) {
-    this.emojiInput += event?.detail?.unicode;
+    this.message += event?.detail?.unicode;
   }
   emojiPreventClose($event: any) {
     $event.stopPropagation();
@@ -110,18 +109,7 @@ export class MessagingComponent implements OnInit {
   uploadPic(): any {
     document.getElementById('picInput').click();
   }
-  toggleEmojiPicker() {
-    console.log(this.showEmojiPicker);
-    this.showEmojiPicker = !this.showEmojiPicker;
-  }
 
-  onFocus() {
-    console.log('focus');
-    this.showEmojiPicker = false;
-  }
-  onBlur() {
-    console.log('onblur');
-  }
   clearMessage(): void {
     this.message.setValue('');
   }
