@@ -1692,7 +1692,8 @@ export class AuthService {
               CodePursuing10: info.CodePursuing10,
               CodePursuing11: info.CodePursuing11,
               CodePursuing12: info.CodePursuing12,
-
+              CodePursuing13: info.CodePursuing13,
+              CodePursuing14: info.CodePursuing14,
               ProfilePicPath: info.ProfilePicPath,
               // ShowCasePath: info.ShowCasePath,
               Followers: info.followers,
@@ -1875,6 +1876,8 @@ export class AuthService {
               CodePursuing10: info.CodePursuing10,
               CodePursuing11: info.CodePursuing11,
               CodePursuing12: info.CodePursuing12,
+              CodePursuing13: info.CodePursuing13,
+              CodePursuing14: info.CodePursuing14,
 
               ProfilePicPath: info.ProfilePicPath,
               // ShowCasePath: info.ShowCasePath,

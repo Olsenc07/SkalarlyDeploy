@@ -12,8 +12,7 @@
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodePursuing13}}</mat-label>
     
-    <mat-select placeholder="Choose pursuing course 1" #codeInputP [formControl]="CodePursuing13" >
-    
+    <mat-select placeholder="Choose pursuing course" #codeInputP [formControl]="CodePursuing13" >
     <mat-option *ngFor="let codeP of CodePursuing13.value" 
       (removed)="removeP(codeP)">
       {{codeP}}

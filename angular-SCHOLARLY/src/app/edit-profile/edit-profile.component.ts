@@ -1194,6 +1194,5 @@ export class EditProfilePurComponent implements OnInit {
 
     // Clear the input value
     // event.chipInput!.clear();
-    this.CodePursuing.setValue(null);
   }
 }
