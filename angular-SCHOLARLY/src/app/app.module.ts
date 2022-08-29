@@ -66,6 +66,12 @@ import { EditProfileComp4Component } from './edit-profile/edit-profile.component
 import { EditProfileComp4WComponent } from './edit-profile/edit-profile.component';
 
 import { EditProfilePurComponent } from './edit-profile/edit-profile.component';
+import { EditProfilePurWComponent } from './edit-profile/edit-profile.component';
+import { EditProfilePurSummerComponent } from './edit-profile/edit-profile.component';
+import { EditProfilePurSpringComponent } from './edit-profile/edit-profile.component';
+
+
+
 
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { MessagingComponent } from './messaging/messaging.component';
@@ -155,6 +161,9 @@ import { ErrorInterceptor } from './error-interceptor';
     EditProfileComp4Component,
     EditProfileComp4WComponent,
     EditProfilePurComponent,
+    EditProfilePurWComponent,
+    EditProfilePurSummerComponent,
+    EditProfilePurSpringComponent,
     GroupChatsComponent,
     MainPagesComponent,
     SignupComponent,

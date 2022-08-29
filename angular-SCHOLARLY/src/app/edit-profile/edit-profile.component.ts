@@ -910,6 +910,220 @@ export class EditProfileComp4WComponent implements OnInit {
 
 //Pursuing
 @Component({
+  selector: 'app-pursuing-winter',
+  templateUrl: './edit-ProfilePurW.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfilePurWComponent implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  classesP: string[] = [];
+  @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
+
+  private infosSub: Subscription;
+
+  filteredCodesP: Observable<string[]>;
+  FilteredCodesP: string[] = this.classListService.allClasses().slice();
+
+  CodePursuing6: FormControl = new FormControl('');
+  CodePursuing7: FormControl = new FormControl('');
+  CodePursuing8: FormControl = new FormControl('');
+  CodePursuing9: FormControl = new FormControl('');
+  CodePursuing10: FormControl = new FormControl('');
+
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+  onSubmit(): void {
+    // console.log(this.editForm.value);
+    // TODO: convert form fields to Profile
+    this.authService.editUserInfoPurW(
+      this.userId,
+      this.CodePursuing6.value,
+      this.CodePursuing7.value,
+      this.CodePursuing8.value,
+      this.CodePursuing9.value,
+      this.CodePursuing10.value
+    );
+  }
+
+  removeP(codeP: string): void {
+    const indexP = this.classesP.indexOf(codeP);
+    if (indexP >= 0) {
+      this.classesP.splice(indexP, 1);
+    }
+  }
+  // Pursuing Classes
+  selectedP(event: MatAutocompleteSelectedEvent): void {
+    this.classesP.push(event.option.viewValue);
+    this.codeInputP.nativeElement.value = '';
+    // this.CodePursuing.setValue('');
+  }
+  // Pursuing Courses
+  addP(event: MatChipInputEvent): void {
+    const valueP = (event.value || '').trim();
+
+    // Add our course code
+    if (valueP) {
+      this.classesP.push(valueP);
+    }
+
+    // Clear the input value
+    // event.chipInput!.clear();
+  }
+}
+
+// Pursuing
+@Component({
+  selector: 'app-pursuing-spring',
+  templateUrl: './edit-ProfilePurSpring.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfilePurSpringComponent implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  classesP: string[] = [];
+  @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
+
+  private infosSub: Subscription;
+
+  filteredCodesP: Observable<string[]>;
+  FilteredCodesP: string[] = this.classListService.allClasses().slice();
+
+  CodePursuing11: FormControl = new FormControl('');
+  CodePursuing12: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+  onSubmit(): void {
+    // console.log(this.editForm.value);
+    // TODO: convert form fields to Profile
+    this.authService.editUserInfoPurSp(
+      this.userId,
+      this.CodePursuing11.value,
+      this.CodePursuing12.value
+    );
+  }
+
+  removeP(codeP: string): void {
+    const indexP = this.classesP.indexOf(codeP);
+    if (indexP >= 0) {
+      this.classesP.splice(indexP, 1);
+    }
+  }
+  // Pursuing Classes
+  selectedP(event: MatAutocompleteSelectedEvent): void {
+    this.classesP.push(event.option.viewValue);
+    this.codeInputP.nativeElement.value = '';
+    // this.CodePursuing.setValue('');
+  }
+  // Pursuing Courses
+  addP(event: MatChipInputEvent): void {
+    const valueP = (event.value || '').trim();
+
+    // Add our course code
+    if (valueP) {
+      this.classesP.push(valueP);
+    }
+
+    // Clear the input value
+    // event.chipInput!.clear();
+  }
+}
+// Pursuing
+@Component({
+  selector: 'app-pursuing-summer',
+  templateUrl: './edit-ProfilePurSummer.component.html',
+  styleUrls: ['./edit-profile.component.scss'],
+})
+export class EditProfilePurSummerComponent implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+  classesP: string[] = [];
+  @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
+
+  private infosSub: Subscription;
+
+  filteredCodesP: Observable<string[]>;
+  FilteredCodesP: string[] = this.classListService.allClasses().slice();
+  CodePursuing13: FormControl = new FormControl('');
+  CodePursuing14: FormControl = new FormControl('');
+  constructor(
+    public authService: AuthService,
+    public classListService: ClassListService
+  ) {}
+
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
+  }
+  onSubmit(): void {
+    // console.log(this.editForm.value);
+    // TODO: convert form fields to Profile
+    this.authService.editUserInfoPurSu(
+      this.userId,
+      this.CodePursuing13.value,
+      this.CodePursuing14.value
+    );
+  }
+
+  removeP(codeP: string): void {
+    const indexP = this.classesP.indexOf(codeP);
+    if (indexP >= 0) {
+      this.classesP.splice(indexP, 1);
+    }
+  }
+  // Pursuing Classes
+  selectedP(event: MatAutocompleteSelectedEvent): void {
+    this.classesP.push(event.option.viewValue);
+    this.codeInputP.nativeElement.value = '';
+    // this.CodePursuing.setValue('');
+  }
+  // Pursuing Courses
+  addP(event: MatChipInputEvent): void {
+    const valueP = (event.value || '').trim();
+
+    // Add our course code
+    if (valueP) {
+      this.classesP.push(valueP);
+    }
+
+    // Clear the input value
+    // event.chipInput!.clear();
+  }
+}
+// /Pursuing
+@Component({
   selector: 'app-pursuing',
   templateUrl: './edit-ProfilePur.component.html',
   styleUrls: ['./edit-profile.component.scss'],
@@ -929,13 +1143,6 @@ export class EditProfilePurComponent implements OnInit {
   CodePursuing3: FormControl = new FormControl('');
   CodePursuing4: FormControl = new FormControl('');
   CodePursuing5: FormControl = new FormControl('');
-  CodePursuing6: FormControl = new FormControl('');
-  CodePursuing7: FormControl = new FormControl('');
-  CodePursuing8: FormControl = new FormControl('');
-  CodePursuing9: FormControl = new FormControl('');
-  CodePursuing10: FormControl = new FormControl('');
-  CodePursuing11: FormControl = new FormControl('');
-  CodePursuing12: FormControl = new FormControl('');
   constructor(
     public authService: AuthService,
     public classListService: ClassListService
@@ -960,14 +1167,7 @@ export class EditProfilePurComponent implements OnInit {
       this.CodePursuing2.value,
       this.CodePursuing3.value,
       this.CodePursuing4.value,
-      this.CodePursuing5.value,
-      this.CodePursuing6.value,
-      this.CodePursuing7.value,
-      this.CodePursuing8.value,
-      this.CodePursuing9.value,
-      this.CodePursuing10.value,
-      this.CodePursuing11.value,
-      this.CodePursuing12.value
+      this.CodePursuing5.value
     );
   }
 

@@ -16,7 +16,7 @@
     <mat-icon matChipRemove >cancel</mat-icon>
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
     {{code}}
     </mat-option>
     
@@ -40,7 +40,7 @@
     <mat-icon matChipRemove >cancel</mat-icon>
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
     {{code}}
     </mat-option>
     
@@ -65,7 +65,7 @@
     <mat-icon matChipRemove >cancel</mat-icon>
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
     {{code}}
     </mat-option>
     
@@ -89,7 +89,7 @@
     <mat-icon matChipRemove >cancel</mat-icon>
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
     {{code}}
     </mat-option>
     
@@ -112,7 +112,7 @@
     {{code}}
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes">
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
     {{code}}
     </mat-option>
     

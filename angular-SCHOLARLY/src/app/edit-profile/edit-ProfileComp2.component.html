@@ -15,7 +15,7 @@
     </mat-option>
     <!-- <cdk-virtual-scroll-viewport itemSize="10"> -->
     <!-- <mat-autocomplete #autoC="matAutocomplete" (optionSelected)="selected($event)"> -->
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
     {{code}}
     </mat-option>
     <!-- </mat-autocomplete> -->
@@ -37,7 +37,7 @@
     
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
     {{code}}
     </mat-option>
     
@@ -59,7 +59,7 @@
     
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
     {{code}}
     </mat-option>
     
@@ -81,7 +81,7 @@
     
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
     {{code}}
     </mat-option>
     
@@ -104,7 +104,7 @@
     
     </mat-option>
     
-    <mat-option *ngFor="let code of FilteredCodes" >
+    <mat-option *ngFor="let code of FilteredCodes" [value]="code">
     {{code}}
     </mat-option>
     

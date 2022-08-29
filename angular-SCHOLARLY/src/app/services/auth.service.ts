@@ -213,6 +213,8 @@ export class AuthService {
       // showCase,
       followers,
       followings,
+      CodePursuing13: '',
+      CodePursuing14: '',
     };
     const userData = new FormData();
     userData.append('username', username);
@@ -361,6 +363,8 @@ export class AuthService {
             ProfilePicPath: responseData.post.ProfilePicPath,
             // ShowCasePath: responseData.post.ShowCasePath,
             Creator,
+            CodePursuing13: '',
+            CodePursuing14: '',
           };
           this.router.navigate(['/search']);
           this.infos.push(post);
@@ -442,6 +446,8 @@ export class AuthService {
       CodePursuing10: '',
       CodePursuing11: '',
       CodePursuing12: '',
+      CodePursuing13: '',
+      CodePursuing14: '',
     };
     const userData = new FormData();
     userData.append('name', name);
@@ -521,6 +527,8 @@ export class AuthService {
             CodePursuing10: '',
             CodePursuing11: '',
             CodePursuing12: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
           };
           this.router.navigate(['/profile']);
           this.snackBar.open('Profile edited!', 'Nice!', {
@@ -613,6 +621,8 @@ export class AuthService {
             CodeCompleted39: '',
             CodeCompleted40: '',
             CodeCompletedX: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
           };
           this.router.navigate(['/profile']);
           this.snackBar.open('Profile edited!', 'Nice!', {
@@ -704,6 +714,8 @@ export class AuthService {
             CodeCompleted39: '',
             CodeCompleted40: '',
             CodeCompletedX: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
           };
           this.router.navigate(['/profile']);
           this.snackBar.open('Profile edited!', 'Nice!', {
@@ -792,6 +804,8 @@ export class AuthService {
             CodeCompleted18: '',
             CodeCompleted19: '',
             CodeCompleted20: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
           };
           this.router.navigate(['/profile']);
           this.snackBar.open('Profile edited!', 'Nice!', {
@@ -879,6 +893,8 @@ export class AuthService {
             CodeCompleted13: '',
             CodeCompleted14: '',
             CodeCompleted15: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
           };
           this.router.navigate(['/profile']);
           this.snackBar.open('Profile edited!', 'Nice!', {
@@ -967,6 +983,8 @@ export class AuthService {
             CodeCompleted28: '',
             CodeCompleted29: '',
             CodeCompleted30: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
           };
           this.router.navigate(['/profile']);
           this.snackBar.open('Profile edited!', 'Nice!', {
@@ -1054,6 +1072,8 @@ export class AuthService {
             CodeCompleted23: '',
             CodeCompleted24: '',
             CodeCompleted25: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
           };
           this.router.navigate(['/profile']);
           this.snackBar.open('Profile edited!', 'Nice!', {
@@ -1142,6 +1162,8 @@ export class AuthService {
             CodeCompleted39: '',
             CodeCompleted40: '',
             CodeCompletedX: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
           };
           this.router.navigate(['/profile']);
           this.snackBar.open('Profile edited!', 'Nice!', {
@@ -1233,6 +1255,8 @@ export class AuthService {
             CodeCompleted33: '',
             CodeCompleted34: '',
             CodeCompleted35: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
           };
           this.router.navigate(['/profile']);
           this.snackBar.open('Profile edited!', 'Nice!', {
@@ -1253,28 +1277,15 @@ export class AuthService {
     CodePursuing2: string,
     CodePursuing3: string,
     CodePursuing4: string,
-    CodePursuing5: string,
-    CodePursuing6: string,
-    CodePursuing7: string,
-    CodePursuing8: string,
-    CodePursuing9: string,
-    CodePursuing10: string,
-    CodePursuing11: string,
-    CodePursuing12: string
+    CodePursuing5: string
   ): any {
     const authDataInfo = {
+      userId,
       CodePursuing,
       CodePursuing2,
       CodePursuing3,
       CodePursuing4,
       CodePursuing5,
-      CodePursuing6,
-      CodePursuing7,
-      CodePursuing8,
-      CodePursuing9,
-      CodePursuing10,
-      CodePursuing11,
-      CodePursuing12,
     };
     const userData = new FormData();
     userData.append('CodePursuing', CodePursuing);
@@ -1282,13 +1293,6 @@ export class AuthService {
     userData.append('CodePursuing3', CodePursuing3);
     userData.append('CodePursuing4', CodePursuing4);
     userData.append('CodePursuing5', CodePursuing5);
-    userData.append('CodePursuing6', CodePursuing6);
-    userData.append('CodePursuing7', CodePursuing7);
-    userData.append('CodePursuing8', CodePursuing8);
-    userData.append('CodePursuing9', CodePursuing9);
-    userData.append('CodePursuing10', CodePursuing10);
-    userData.append('CodePursuing11', CodePursuing11);
-    userData.append('CodePursuing12', CodePursuing12);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://localhost:3000/api/user/infoEd',
@@ -1304,11 +1308,175 @@ export class AuthService {
             CodePursuing3,
             CodePursuing4,
             CodePursuing5,
+            CodeCompleted11: '',
+            CodeCompleted12: '',
+            CodeCompleted13: '',
+            CodeCompleted14: '',
+            CodeCompleted15: '',
+            CodeCompleted16: '',
+            CodeCompleted17: '',
+            CodeCompleted18: '',
+            CodeCompleted19: '',
+            CodeCompleted20: '',
+            CodeCompleted21: '',
+            CodeCompleted22: '',
+            CodeCompleted23: '',
+            CodeCompleted24: '',
+            CodeCompleted25: '',
+            CodeCompleted26: '',
+            CodeCompleted27: '',
+            CodeCompleted28: '',
+            CodeCompleted29: '',
+            CodeCompleted30: '',
+            CodeCompleted31: '',
+            CodeCompleted32: '',
+            CodeCompleted33: '',
+            CodeCompleted34: '',
+            CodeCompleted35: '',
+            CodeCompleted36: '',
+            CodeCompleted37: '',
+            CodeCompleted38: '',
+            CodeCompleted39: '',
+            CodeCompleted40: '',
+            CodeCompletedX: '',
+            CodePursuing6: '',
+            CodePursuing7: '',
+            CodePursuing8: '',
+            CodePursuing9: '',
+            CodePursuing10: '',
+            CodePursuing11: '',
+            CodePursuing12: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
+          };
+          this.router.navigate(['/profile']);
+          this.snackBar.open('Profile edited!', 'Nice!', {
+            duration: 3000,
+          });
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing winter
+  editUserInfoPurW(
+    userId: string,
+    CodePursuing6: string,
+    CodePursuing7: string,
+    CodePursuing8: string,
+    CodePursuing9: string,
+    CodePursuing10: string
+  ): any {
+    const authDataInfo = {
+      userId,
+      CodePursuing6,
+      CodePursuing7,
+      CodePursuing8,
+      CodePursuing9,
+      CodePursuing10,
+    };
+    const userData = new FormData();
+
+    userData.append('CodePursuing6', CodePursuing6);
+    userData.append('CodePursuing7', CodePursuing7);
+    userData.append('CodePursuing8', CodePursuing8);
+    userData.append('CodePursuing9', CodePursuing9);
+    userData.append('CodePursuing10', CodePursuing10);
+
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://localhost:3000/api/user/infoEd',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
             CodePursuing6,
             CodePursuing7,
             CodePursuing8,
             CodePursuing9,
             CodePursuing10,
+            CodeCompleted11: '',
+            CodeCompleted12: '',
+            CodeCompleted13: '',
+            CodeCompleted14: '',
+            CodeCompleted15: '',
+            CodeCompleted16: '',
+            CodeCompleted17: '',
+            CodeCompleted18: '',
+            CodeCompleted19: '',
+            CodeCompleted20: '',
+            CodeCompleted21: '',
+            CodeCompleted22: '',
+            CodeCompleted23: '',
+            CodeCompleted24: '',
+            CodeCompleted25: '',
+            CodeCompleted26: '',
+            CodeCompleted27: '',
+            CodeCompleted28: '',
+            CodeCompleted29: '',
+            CodeCompleted30: '',
+            CodeCompleted31: '',
+            CodeCompleted32: '',
+            CodeCompleted33: '',
+            CodeCompleted34: '',
+            CodeCompleted35: '',
+            CodeCompleted36: '',
+            CodeCompleted37: '',
+            CodeCompleted38: '',
+            CodeCompleted39: '',
+            CodeCompleted40: '',
+            CodeCompletedX: '',
+            CodePursuing2: '',
+            CodePursuing3: '',
+            CodePursuing4: '',
+            CodePursuing5: '',
+            CodePursuing11: '',
+            CodePursuing12: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
+          };
+          this.router.navigate(['/profile']);
+          this.snackBar.open('Profile edited!', 'Nice!', {
+            duration: 3000,
+          });
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing
+  editUserInfoPurSp(
+    userId: string,
+    CodePursuing11: string,
+    CodePursuing12: string
+  ): any {
+    const authDataInfo = {
+      userId,
+      CodePursuing11,
+      CodePursuing12,
+    };
+    const userData = new FormData();
+    userData.append('CodePursuing11', CodePursuing11);
+    userData.append('CodePursuing12', CodePursuing12);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://localhost:3000/api/user/infoEd',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
             CodePursuing11,
             CodePursuing12,
             CodeCompleted11: '',
@@ -1342,6 +1510,98 @@ export class AuthService {
             CodeCompleted39: '',
             CodeCompleted40: '',
             CodeCompletedX: '',
+            CodePursuing2: '',
+            CodePursuing3: '',
+            CodePursuing4: '',
+            CodePursuing5: '',
+            CodePursuing6: '',
+            CodePursuing7: '',
+            CodePursuing8: '',
+            CodePursuing9: '',
+            CodePursuing10: '',
+            CodePursuing13: '',
+            CodePursuing14: '',
+          };
+          this.router.navigate(['/profile']);
+          this.snackBar.open('Profile edited!', 'Nice!', {
+            duration: 3000,
+          });
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing
+  editUserInfoPurSu(
+    userId: string,
+    CodePursuing13: string,
+    CodePursuing14: string
+  ): any {
+    const authDataInfo = {
+      userId,
+      CodePursuing13,
+      CodePursuing14,
+    };
+    const userData = new FormData();
+    userData.append('CodePursuing13', CodePursuing13);
+    userData.append('CodePursuing14', CodePursuing14);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://localhost:3000/api/user/infoEd',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodePursuing13,
+            CodePursuing14,
+            CodeCompleted11: '',
+            CodeCompleted12: '',
+            CodeCompleted13: '',
+            CodeCompleted14: '',
+            CodeCompleted15: '',
+            CodeCompleted16: '',
+            CodeCompleted17: '',
+            CodeCompleted18: '',
+            CodeCompleted19: '',
+            CodeCompleted20: '',
+            CodeCompleted21: '',
+            CodeCompleted22: '',
+            CodeCompleted23: '',
+            CodeCompleted24: '',
+            CodeCompleted25: '',
+            CodeCompleted26: '',
+            CodeCompleted27: '',
+            CodeCompleted28: '',
+            CodeCompleted29: '',
+            CodeCompleted30: '',
+            CodeCompleted31: '',
+            CodeCompleted32: '',
+            CodeCompleted33: '',
+            CodeCompleted34: '',
+            CodeCompleted35: '',
+            CodeCompleted36: '',
+            CodeCompleted37: '',
+            CodeCompleted38: '',
+            CodeCompleted39: '',
+            CodeCompleted40: '',
+            CodeCompletedX: '',
+            CodePursuing2: '',
+            CodePursuing3: '',
+            CodePursuing4: '',
+            CodePursuing5: '',
+            CodePursuing6: '',
+            CodePursuing7: '',
+            CodePursuing8: '',
+            CodePursuing9: '',
+            CodePursuing10: '',
+            CodePursuing11: '',
+            CodePursuing12: '',
           };
           this.router.navigate(['/profile']);
           this.snackBar.open('Profile edited!', 'Nice!', {

@@ -57,6 +57,10 @@
   margin-top: 3%;
 width: 100%;
 }
+.centerIcon{
+  text-align: center;
+  width: 100%;
+}
 @media (min-width: 1025px) {
   .center_ {
     display: flex;
@@ -188,6 +192,10 @@ width: 100%;
   text-align: center;
   // width: 50%;
 }
+.columnCoursesBox{
+display: flex;
+flex-direction: column;
+}
 @media (max-width: 1025px) {
   .column1 {
     display: flex;
@@ -207,6 +215,7 @@ width: 100%;
   box-sizing: border-box;
   justify-content: center;
 }
+
 @media (min-width: 410px) {
   .convo-text {
     display: flex;

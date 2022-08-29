@@ -1,0 +1,61 @@
+<!-- 11 -->
+<mat-tab-group mat-align-tabs="center" class="c_r_">
+    <!-- Completed Course -->
+    
+    <!-- Pursuing Courses -->
+<mat-tab  label="Pursuing Courses Summer" class="courses">
+      <!-- 1 -->
+  <div *ngFor="let info of infos">
+<div class="input" >
+    <i class="material-icons _icon">checklist</i>
+    
+    <mat-form-field class="example-chip-list">
+    <mat-label>{{info.CodePursuing13}}</mat-label>
+    
+    <mat-select placeholder="Choose pursuing course 1" #codeInputP [formControl]="CodePursuing13" >
+    
+    <mat-option *ngFor="let codeP of CodePursuing13.value" 
+      (removed)="removeP(codeP)">
+      {{codeP}}
+    </mat-option>
+    
+    
+      <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
+        {{codeP}}
+      </mat-option>
+    </mat-select>
+    
+    </mat-form-field>
+    </div>
+    <!-- 12 -->
+    <div class="input" *ngIf="info.CodePursuing13 || CodePursuing13.value">
+    <i class="material-icons _icon">checklist</i>
+    
+    <mat-form-field class="example-chip-list">
+    <mat-label>{{info.CodePursuing14}}</mat-label>
+    
+    <mat-select placeholder="Choose pursuing course 2" #codeInputP [formControl]="CodePursuing14" >
+    
+    <mat-option *ngFor="let codeP of CodePursuing14.value" 
+      (removed)="removeP(codeP)">
+      {{codeP}}
+    </mat-option>
+    
+    
+      <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
+        {{codeP}}
+      </mat-option>
+    </mat-select>
+    
+    </mat-form-field>
+    </div>
+    <!-- done button -->
+<div class="done">
+    <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
+      (click)="onSubmit()" >
+      Save
+    </button>
+  </div>
+  </div>
+  </mat-tab>
+    </mat-tab-group>

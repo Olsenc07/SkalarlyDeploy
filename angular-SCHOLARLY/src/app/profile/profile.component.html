@@ -63,21 +63,21 @@
         <!-- *ngIf="major.value" -->
         <div class="centerR" *ngIf="info.major ">
           <!-- Major -->
-          <i class="fas fa-star row_icon">
+          <i class="fas fa-star row_icon" style="color: #d2cb3aa1"></i>
             <div class="large">
               {{ info.major}}
               </div>
-            </i>
+    
 
         </div>
         <div class="centerR" *ngIf="info.minor ">
           <!-- Minor -->
-          <i class="far fa-star row_icon">
+          <i class="far fa-star row_icon" style="color: silver"></i>
             <div class="large">
             {{ info.minor}}
 
             </div>
-          </i>
+          
         </div>
 
       </div>
@@ -86,11 +86,13 @@
       <!-- Sport/Club -->
       <div class="major-minor" *ngIf="info.sport  || info.club">
         <div class=" centerR" *ngIf="info.sport ">
+          <i class="fas fa-running" style="color: #bcbcee"></i>
           <!-- Sport -->
           {{ info.sport}}
         </div>
         <div class="centerR" *ngIf="info.club ">
           <!-- Club -->
+          <i class="fas fa-users" style="color: #99a7d2"></i>
           {{ info.club}}
         </div>
 
@@ -364,8 +366,8 @@
 
           <!-- "!((profile | async)?.CodePursuing) ? 'hide_' : 'completed-courses' " -->
           <mat-tab label="Pursuing Courses">
-           <div class="titleC"> In Progress <i class="fas fa-hourglass-half"></i>
-          </div>
+           <!-- <div class="titleC"> In Progress <i class="fas fa-hourglass-half"></i>
+          </div> -->
 
             <div class="words1">
             
@@ -377,8 +379,12 @@
                 <!-- *ngFor="let list of Pur" -->
                 <div class="list">
                   <mat-chip-list  class="center__">
-                    
+                    <div class="columnCoursesBox">
                       <!-- {{list}}-->
+                      <div>
+                      <span class="fas fa-leaf centerIcon" *ngIf="info.CodePursuing" style="color: saddlebrown;">
+                      </span>
+                      <div class="centerIcon">
                       <mat-chip *ngIf="info.CodePursuing" class="style" color="primary" selected >
                       {{ info.CodePursuing }}
                     </mat-chip>
@@ -394,6 +400,12 @@
                     <mat-chip *ngIf="info.CodePursuing5" class="style" color="primary" selected >
                       {{ info.CodePursuing5 }}
                     </mat-chip>
+                  </div>
+                  </div>
+                  <div>
+                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodePursuing6" style="color: #88c4f9">
+                    </span>
+                    <div class="centerIcon">
                     <mat-chip *ngIf="info.CodePursuing6" class="style" color="primary" selected >
                       {{ info.CodePursuing6 }}
                     </mat-chip>
@@ -409,13 +421,29 @@
                     <mat-chip *ngIf="info.CodePursuing10" class="style" color="primary" selected >
                       {{ info.CodePursuing10 }}
                     </mat-chip>
+                  </div>
+                  </div>
+                  <div>
+                    <span class="fas fa-seedling centerIcon" *ngIf="info.CodePursuing11" style="color: cadetblue">
+                    </span>
+                    <div class="centerIcon">
                     <mat-chip *ngIf="info.CodePursuing11" class="style" color="primary" selected >
                       {{ info.CodePursuing11 }}
                     </mat-chip>
                     <mat-chip *ngIf="info.CodePursuing12" class="style" color="primary" selected >
                       {{ info.CodePursuing12 }}
                     </mat-chip>
-                 
+                    <span class="fas fa-sun centerIcon" *ngIf="info.CodePursuing13" style="color: #d89163">
+                    </span>
+                    <mat-chip *ngIf="info.CodePursuing13" class="style" color="primary" selected >
+                      {{ info.CodePursuing13 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing14" class="style" color="primary" selected >
+                      {{ info.CodePursuing14 }}
+                    </mat-chip>
+                  </div>
+                  </div>
+                </div>
                   </mat-chip-list >
                 </div>
               </mat-chip-list>

@@ -70,6 +70,9 @@ export interface AuthDataInfo {
   CodePursuing10: string;
   CodePursuing11: string;
   CodePursuing12: string;
+  CodePursuing13: string;
+  CodePursuing14: string;
+
   //  Which one to grab for the view?
   profilePic?: File;
   ProfilePicPath?: string;

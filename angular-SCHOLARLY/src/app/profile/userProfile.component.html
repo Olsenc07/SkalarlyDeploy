@@ -367,8 +367,8 @@
 
           <!-- "!((profile | async)?.CodePursuing) ? 'hide_' : 'completed-courses' " -->
           <mat-tab label="Pursuing Courses">
-           <div class="titleC"> In Progress <i class="fas fa-hourglass-half"></i>
-          </div>
+           <!-- <div class="titleC"> In Progress <i class="fas fa-hourglass-half"></i>
+          </div> -->
 
             <div class="words1">
             
@@ -383,6 +383,8 @@
                   <mat-chip-list  class="center__">
                     
                       <!-- {{list}}-->
+                      <span class="fas fa-leaf" *ngIf="info.CodePursuing" style="color: saddlebrown">
+                      </span>
                       <mat-chip *ngIf="info.CodePursuing" class="style" color="primary" selected >
                       {{ info.CodePursuing }}
                     </mat-chip>
@@ -398,6 +400,8 @@
                     <mat-chip *ngIf="info.CodePursuing5" class="style" color="primary" selected >
                       {{ info.CodePursuing5 }}
                     </mat-chip>
+                    <span class="fas fa-snowflake " *ngIf="info.CodePursuing6" style="color: #88c4f9">
+                    </span>
                     <mat-chip *ngIf="info.CodePursuing6" class="style" color="primary" selected >
                       {{ info.CodePursuing6 }}
                     </mat-chip>
@@ -413,11 +417,21 @@
                     <mat-chip *ngIf="info.CodePursuing10" class="style" color="primary" selected >
                       {{ info.CodePursuing10 }}
                     </mat-chip>
+                     <span class="fas fa-seedling" *ngIf="info.CodePursuing11" style="color: cadetblue">
+                    </span>
                     <mat-chip *ngIf="info.CodePursuing11" class="style" color="primary" selected >
                       {{ info.CodePursuing11 }}
                     </mat-chip>
                     <mat-chip *ngIf="info.CodePursuing12" class="style" color="primary" selected >
                       {{ info.CodePursuing12 }}
+                    </mat-chip>
+                    <span class="fas fa-sun" *ngIf="info.CodePursuing13" style="color: #d89163">
+                    </span>
+                    <mat-chip *ngIf="info.CodePursuing13" class="style" color="primary" selected >
+                      {{ info.CodePursuing13 }}
+                    </mat-chip>
+                    <mat-chip *ngIf="info.CodePursuing14" class="style" color="primary" selected >
+                      {{ info.CodePursuing14 }}
                     </mat-chip>
                  
                   </mat-chip-list >

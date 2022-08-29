@@ -7,14 +7,15 @@ import { EditProfileComp1WComponent } from './edit-profile/edit-profile.componen
 import { EditProfileComp1Component } from './edit-profile/edit-profile.component';
 import { EditProfileComp2Component } from './edit-profile/edit-profile.component';
 import { EditProfileComp2WComponent } from './edit-profile/edit-profile.component';
-
 import { EditProfileComp3Component } from './edit-profile/edit-profile.component';
 import { EditProfileComp3WComponent } from './edit-profile/edit-profile.component';
-
 import { EditProfileComp4Component } from './edit-profile/edit-profile.component';
 import { EditProfileComp4WComponent } from './edit-profile/edit-profile.component';
 
 import { EditProfilePurComponent } from './edit-profile/edit-profile.component';
+import { EditProfilePurWComponent } from './edit-profile/edit-profile.component';
+import { EditProfilePurSpringComponent } from './edit-profile/edit-profile.component';
+import { EditProfilePurSummerComponent } from './edit-profile/edit-profile.component';
 
 import { FriendsActivityComponent } from './friends-activity/friends-activity.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
@@ -117,6 +118,26 @@ const routes: Routes = [
   {
     path: 'edit-profileComp4W/:userId',
     component: EditProfileComp4WComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-profilePur/:userId',
+    component: EditProfilePurComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-profilePurW/:userId',
+    component: EditProfilePurWComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-profilePurSu/:userId',
+    component: EditProfilePurSummerComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'edit-profilePurSp/:userId',
+    component: EditProfilePurSpringComponent,
     canActivate: [AuthGuard],
   },
   {
