@@ -7,6 +7,7 @@ export interface Message {
   username: string;
   message: string;
   time: string;
+  otherUser: string;
   you: string;
 }
 
@@ -48,6 +49,7 @@ export class MessageNotificationService {
       .subscribe((transformedMessage) => {
         this.messagesNotif = transformedMessage;
         this.messagesInfoUpdated.next([...this.messagesNotif]);
+        console.log('hey chaz man', this.messagesNotif);
       });
   }
 }

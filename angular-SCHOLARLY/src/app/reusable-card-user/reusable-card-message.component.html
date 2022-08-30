@@ -2,8 +2,11 @@
     <mat-spinner ></mat-spinner>
   </div>
 
+<!-- Message notifications with messages -->
+
+<div *ngIf=" userId != username">
 <div  *ngFor="let info of messagesNotif.slice().reverse(); let even = even; let odd = odd">
-<mat-card class="row1" [ngClass]="{ even: even, odd: odd }" *ngIf="userId !== info.you">
+<mat-card class="row1" [ngClass]="{ even: even, odd: odd }" >
     <div class="column" >
         <div class="row">
             <!-- <div  class="profilePic" *ngIf="info.ProfilePicPath">
@@ -59,3 +62,64 @@
     </div>
 </mat-card>
 </div>
+</div>
+
+
+<!-- Message notifications no messages -->
+<div *ngIf=" userId == username">
+
+<div  *ngFor="let info of messagesNotif.slice().reverse(); let even = even; let odd = odd">
+    <mat-card class="row1" [ngClass]="{ even: even, odd: odd }" *ngIf="userId !== info.you">
+        <div class="column" >
+            <div class="row">
+                <!-- <div  class="profilePic" *ngIf="info.ProfilePicPath">
+                    !-- <img src="{{id.cropImgPreview}}" alt=""> --
+                    <img class="fit" src="{{info.ProfilePicPath}}">
+                </div> -->
+    
+                <!-- <div class="profilePic" *ngIf="!info.ProfilePicPath">
+                    <img src="../../assets/Pics/Skalarly 1.jpeg" class="fit" />
+                </div> -->
+                <div class="row_">
+                    <div class="messageText">
+                        Message From
+                     </div> 
+                    <!-- <div class="column_"> -->
+                        <div class="column_">
+                            <!-- (click)="onOtherUser(info)" -->
+                  
+                    
+                    <button 
+                    mat-button  (click)="navigateToPage(info.username)"
+                    class="userName textSize_" id="userName"  [value]=info.username  > 
+                        @{{ info.username}}
+    
+                    </button>
+                    </div>
+                 <div class="userName textSize" >
+                        <!-- {{ (profile | async)?.Pronouns}} -->
+                        at {{ info.time }}
+    
+                    </div>
+                </div>
+    
+    
+    
+                <!-- Card is removed from list when follow is clicked -->
+                <!-- Only appears if user isn't already following this mutual friend -->
+                <mat-chip-list class="center_" aria-label="FollowBtn">
+                    <!-- (click)="followClicked()" -->
+                    <mat-chip class="messageM" (click)="navigateToChat(info.username)">
+                        Message 
+                        <!-- Or -->
+                        <!-- <i class="far fa-envelope"></i> -->
+                    </mat-chip>
+                </mat-chip-list>
+    
+            </div>
+    
+        </div>
+    </mat-card>
+    </div>
+</div>
+    

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
@@ -82,14 +81,19 @@ export class ReusableCardMessageComponent implements OnInit {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     //    Info
-    this.messageService.getMessages(this.userId, this.username);
-    this.messageService.getInfoUpdateListener().subscribe((messagesNotif) => {
-      this.isLoading = false;
-      this.messagesNotif = messagesNotif;
-    });
+
+    this.messageNotificationService
+      .getInfoUpdateListenerNotification()
+      .subscribe((messagesNotif: any) => {
+        this.isLoading = false;
+        this.messagesNotif = messagesNotif;
+      });
     this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
-
+      this.messageNotificationService.getMessageNotification(
+        this.userId,
+        this.username
+      );
       // Suscpion here!! Shouldnt show anything but it does!!!!!
     });
   }

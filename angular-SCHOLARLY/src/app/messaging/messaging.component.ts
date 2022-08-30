@@ -5,8 +5,7 @@ import { filter, map, tap } from 'rxjs/operators';
 import { io } from 'socket.io-client';
 import { Subscription } from 'rxjs';
 import { Picker } from 'emoji-picker-element';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AuthDataInfo } from '../signup/auth-data.model';
+import { ActivatedRoute } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
@@ -23,6 +22,7 @@ export interface Message {
   styleUrls: ['./messaging.component.scss'],
 })
 export class MessagingComponent implements OnInit {
+  isLoading = false;
   userId: string;
   picker = new Picker();
   timeHour = new Date().getHours();
@@ -75,7 +75,6 @@ export class MessagingComponent implements OnInit {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-
     this.route.queryParams.subscribe((params) => {
       console.log('params main page', params?.username);
       this.username = params?.username;
