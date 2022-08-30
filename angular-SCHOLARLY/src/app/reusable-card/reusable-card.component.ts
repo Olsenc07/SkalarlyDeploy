@@ -26,6 +26,7 @@ import {
   Validators,
   FormControl,
 } from '@angular/forms';
+import { Picker } from 'emoji-picker-element';
 
 export interface CommentInterface {
   id: string;
@@ -52,6 +53,7 @@ export enum ActiveCommentTypeEnum {
 export class ReusableCardComponent implements OnInit {
   isLoading = false;
   userId: string;
+  picker = new Picker();
 
   user: string;
   open = true;
@@ -75,6 +77,15 @@ export class ReusableCardComponent implements OnInit {
   //   this.selectedAttend = event.target.value;
   // }
   // Where the post was posted
+  // Adding emojis
+  addEmoji(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.comment.value + msgs;
+    this.comment.setValue(msg);
+  }
+  emojiPreventClose($event: any): any {
+    $event.stopPropagation();
+  }
   navigateToMainPage(value: string): void {
     this.route.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
@@ -483,7 +494,7 @@ export class CardFeedComponent implements OnInit {
   isLoading = false;
   open = true;
   closed = true;
-
+  picker = new Picker();
   userId: string;
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -526,7 +537,15 @@ export class CardFeedComponent implements OnInit {
         this.isLoading = false;
       });
   }
-
+  // Adding emojis
+  addEmoji(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.comment.value + msgs;
+    this.comment.setValue(msg);
+  }
+  emojiPreventClose($event: any): any {
+    $event.stopPropagation();
+  }
   //
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);

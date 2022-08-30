@@ -147,7 +147,13 @@
 
           <input matInput placeholder="Add to the discussion..." class="comment-form-textarea" 
           maxlength="140" [formControl]="comment" >
-
+           <button mat-icon-button>
+            <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon" class="emoji">😃
+            </mat-icon>
+          </button>
+            <mat-menu #emojiIcon="matMenu" class="emoji-menu">
+              <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
+            </mat-menu>
           <!-- {{submitLabel}}  -->
           <div class="buttonsCWrapper">
 
