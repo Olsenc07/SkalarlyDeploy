@@ -97,10 +97,13 @@ export class MessagingComponent implements OnInit {
       (user) => user.toLowerCase().indexOf(filterValue) === 0
     );
   }
-  addEmoji(event: any) {
-    this.message += event?.detail?.unicode;
+  // Adding emojis
+  addEmoji(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.message.value + msgs;
+    this.message.setValue(msg);
   }
-  emojiPreventClose($event: any) {
+  emojiPreventClose($event: any): any {
     $event.stopPropagation();
   }
   uploadFile(): any {

@@ -65,19 +65,27 @@
 
 <div class="type_message">
 <mat-form-field class="type_message_box">
-        <input matInput class="post" placeholder="Write a message..." 
-          [formControl]="message" type="text" id="messageInput"> 
-          <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
+        <input matInput class="post" placeholder="Write a message..." [formControl]="message"
+          type="text" id="messageInput"> 
+          <!-- <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
           (click)="clearMessage()">
           <mat-icon>close</mat-icon>
-        </button>
+        </button> -->
+   
+    
         </mat-form-field>
 
 </div>
 
-<div class="assistance">
+ <div class="assistance"> 
  <div class="upload_options">
-
+  <button mat-icon-button>
+  <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon" class="emoji">😃
+  </mat-icon>
+</button>
+  <mat-menu #emojiIcon="matMenu" class="emoji-menu">
+    <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
+  </mat-menu>
     <!-- <button mat-icon-button (click)="uploadFile()">
         <i class="material-icons">attach_file
 <input #fileInput id="fileInput" type="file" [formControl]="fileUploadM" class="uploadFile">
@@ -92,21 +100,18 @@
         </button> -->
 
 
-</div> 
+</div>  
 <div class="messageTitle" *ngIf="username !== userId">
   Messaging {{username}}
 </div>
   
 <div class="send_btn">
+  <!-- <mat-form-field appearance="outline">
+    <input matInput  >
+    <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon">sentiment_very_satisfied</mat-icon>
+  </mat-form-field> -->
 
-<button mat-icon-button>
-  <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon">sentiment_very_satisfied</mat-icon>
-</button>
-
-<mat-menu #emojiIcon="matMenu" class="emoji-menu">
-  <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
-</mat-menu>
-  <mat-chip-list [disabled]="!message.value">
+  <mat-chip-list [disabled]="!message.value  || (userId == username)">
     <mat-chip selected class="send_btn_style" type="submit"  id="send-button" (click)="trigger(message.value)" color="primary">
 Send
 <i class="far fa-paper-plane space_icon"></i>

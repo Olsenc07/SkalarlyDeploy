@@ -1,3 +1,6 @@
+::ng-deep .mat-menu-panel{
+  display: contents;
+}
 .assistance {
   display: flex;
   flex-direction: row;
@@ -5,8 +8,9 @@
   background-color: #ffffff;
   border-bottom-right-radius: 25px;
   // justify-content: space-between;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-right: 2%;
+  margin-left: 2%;
 }
 .chat-messages{
   font-family:  'Poppins', serif;
