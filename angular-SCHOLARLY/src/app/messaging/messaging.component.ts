@@ -103,6 +103,7 @@ export class MessagingComponent implements OnInit {
     const msg = this.message.value + msgs;
     this.message.setValue(msg);
   }
+
   emojiPreventClose($event: any): any {
     $event.stopPropagation();
   }

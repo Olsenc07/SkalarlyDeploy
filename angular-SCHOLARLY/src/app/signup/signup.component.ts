@@ -47,6 +47,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // import {Courses} from 'nikel';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
+import { Picker } from 'emoji-picker-element';
 
 const moment = _rollupMoment || _moment;
 export const MY_FORMATS = {
@@ -87,6 +88,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   selectable = true;
   removable = true;
   separatorKeysCodes: number[] = [ENTER, COMMA];
+  picker = new Picker();
 
   classes: string[] = [];
   classesP: string[] = [];
@@ -265,7 +267,30 @@ export class SignupComponent implements OnInit, OnDestroy {
     }
     return null;
   }
-
+  // Adding emojis
+  addEmojiMajor(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.major.value + msgs;
+    this.major.setValue(msg);
+  }
+  addEmojiMinor(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.minor.value + msgs;
+    this.minor.setValue(msg);
+  }
+  addEmojiSport(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.sport.value + msgs;
+    this.sport.setValue(msg);
+  }
+  addEmojiClub(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.club.value + msgs;
+    this.club.setValue(msg);
+  }
+  emojiPreventClose($event: any): any {
+    $event.stopPropagation();
+  }
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
     c.type = 'text';

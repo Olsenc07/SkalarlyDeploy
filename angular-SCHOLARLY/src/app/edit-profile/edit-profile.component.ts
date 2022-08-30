@@ -33,6 +33,7 @@ import { AccountTextComponent } from '../signup/signup.component';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { ShowCaseService } from '../services/showCase.service';
 import { mimeType } from '../post-page/mime-type.validator';
+import { Picker } from 'emoji-picker-element';
 
 interface Gender {
   name: string;
@@ -67,6 +68,7 @@ export class EditProfileComponent implements OnInit {
   storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;
+  picker = new Picker();
 
   userId: string;
 
@@ -156,7 +158,39 @@ export class EditProfileComponent implements OnInit {
     //   )
     // );
   }
-
+  // Adding emojis
+  addEmojiMajor(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.major.value + msgs;
+    this.major.setValue(msg);
+  }
+  addEmojiMinor(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.minor.value + msgs;
+    this.minor.setValue(msg);
+  }
+  addEmojiSport(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.sport.value + msgs;
+    this.sport.setValue(msg);
+  }
+  addEmojiClub(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.club.value + msgs;
+    this.club.setValue(msg);
+  }
+  emojiPreventCloseMajor($event: any): any {
+    $event.stopPropagation();
+  }
+  emojiPreventCloseMinor($event: any): any {
+    $event.stopPropagation();
+  }
+  emojiPreventCloseSport($event: any): any {
+    $event.stopPropagation();
+  }
+  emojiPreventCloseClub($event: any): any {
+    $event.stopPropagation();
+  }
   deleteShowCase(): boolean {
     this.removeShowCase = !this.removeShowCase;
 

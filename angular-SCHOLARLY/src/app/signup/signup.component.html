@@ -472,6 +472,13 @@
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
             </mat-form-field>
+            <button mat-icon-button>
+              <mat-icon matSuffix [matMenuTriggerFor]="emojiIconMajor" class="emoji">😃
+              </mat-icon>
+            </button>
+              <mat-menu #emojiIconMajor="matMenu" class="emoji-menu">
+                <emoji-picker class="light" (emoji-click)="addEmojiMajor($event)" (click)="emojiPreventClose($event);"></emoji-picker>
+              </mat-menu>
           </div>
 
           <div class="input">
@@ -484,6 +491,13 @@
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
             </mat-form-field>
+            <button mat-icon-button>
+              <mat-icon matSuffix [matMenuTriggerFor]="emojiIconMinor" class="emoji">😃
+              </mat-icon>
+            </button>
+              <mat-menu #emojiIconMinor="matMenu" class="emoji-menu">
+                <emoji-picker class="light" (emoji-click)="addEmojiMinor($event)" (click)="emojiPreventClose($event);"></emoji-picker>
+              </mat-menu>
           </div>
         </div>
         <div class="sport-layout">
@@ -500,6 +514,13 @@
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
             </mat-form-field>
+            <button mat-icon-button>
+              <mat-icon matSuffix [matMenuTriggerFor]="emojiIconSport" class="emoji">😃
+              </mat-icon>
+            </button>
+              <mat-menu #emojiIconSport="matMenu" class="emoji-menu">
+                <emoji-picker class="light" (emoji-click)="addEmojiSport($event)" (click)="emojiPreventClose($event);"></emoji-picker>
+              </mat-menu>
           </div>
 
 
@@ -514,6 +535,13 @@
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
             </mat-form-field>
+            <button mat-icon-button>
+              <mat-icon matSuffix [matMenuTriggerFor]="emojiIconClub" class="emoji">😃
+              </mat-icon>
+            </button>
+              <mat-menu #emojiIconClub="matMenu" class="emoji-menu">
+                <emoji-picker class="light" (emoji-click)="addEmojiClub($event)" (click)="emojiPreventClose($event);"></emoji-picker>
+              </mat-menu>
           </div>
         </div>
         <!-- Completed Courses -->
