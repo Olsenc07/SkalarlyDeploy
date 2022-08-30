@@ -38,6 +38,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { Post, PostService } from '../services/post.service';
 import { mimeType } from './mime-type.validator';
 import { AuthService } from '../services/auth.service';
+import { Picker } from 'emoji-picker-element';
 
 const moment = _moment;
 
@@ -77,6 +78,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public selectedOption: string;
   public specificOptions: string[];
   public searchOptions: SearchOption[];
+  picker = new Picker();
 
   isLoading = false;
 
@@ -159,7 +161,15 @@ export class PostPageComponent implements OnInit, OnDestroy {
       )
     );
   }
-
+  // Adding emojis
+  addEmoji(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.postDescription.value + msgs;
+    this.postDescription.setValue(msg);
+  }
+  emojiPreventClose($event: any): any {
+    $event.stopPropagation();
+  }
   uploadFile(): any {
     document.getElementById('fileInput').click();
     console.log('nice');

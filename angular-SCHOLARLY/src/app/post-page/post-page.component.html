@@ -21,6 +21,13 @@
           <textarea matInput maxlength="280" placeholder="What would you like to say?"
             [formControl]="postDescription">
           </textarea>
+          <button mat-icon-button>
+            <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon" class="emoji">😃
+            </mat-icon>
+          </button>
+            <mat-menu #emojiIcon="matMenu" class="emoji-menu">
+              <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
+            </mat-menu>
         </mat-form-field>
       </div>
 
