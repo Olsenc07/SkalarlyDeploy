@@ -89,7 +89,7 @@
     </mat-selection-list>
 
     <!-- Step 2 -->
-      <mat-selection-list id="nextBtn2"  #options2 class="second_selection" [multiple]="false" >
+      <mat-selection-list *ngIf="postLocationMain.value" id="nextBtn2"  #options2 class="second_selection" [multiple]="false" >
 <mat-form-field appearance="fill" class="shadow2">
   <mat-label> Step 2: Select the specific page </mat-label>
 
@@ -217,41 +217,45 @@
               <mat-radio-group aria-label="Select an option" [formControl]="gender">
                 <div class="margin">
                   <div class="genderIcon_Name">
-                    <span class="material-icons">
+                    <span class="material-icons display">
                       diversity_3
+                  <mat-radio-button [disableRipple]="true" class="btn_" value="all"></mat-radio-button>
+
                       </span>
                     <div class="textP"> All</div>
                     </div>
-                  <mat-radio-button [disableRipple]="true" class="btn_" value="all"></mat-radio-button>
                 </div>
                 <div class="margin">
                   <div class="genderIcon_Name">
-                  <span class="material-icons">
+                  <span class="material-icons display">
                     female
+                  <mat-radio-button [disableRipple]="true" class="btn_" value="female"></mat-radio-button>
+
                     </span>
                     <div class="textP"> Female</div>
                   </div>
-                  <mat-radio-button [disableRipple]="true" class="btn_" value="female"></mat-radio-button>
                 </div>
                 <div class="margin">
                   <div class="genderIcon_Name">
-                    <span class="material-icons">
+                    <span class="material-icons display">
                       transgender
+                  <mat-radio-button [disableRipple]="true" class="btn_" value="lgbtq2s+"></mat-radio-button>
+
                       </span>
                     <div class="textP"> LGBTQ2S+</div>
                     </div>
-                  <mat-radio-button [disableRipple]="true" class="btn_" value="lgbtq2s+"></mat-radio-button>
                 </div>
             
                
                 <div class="margin">
                   <div class="genderIcon_Name">
-                  <span class="material-icons">
+                  <span class="material-icons display">
                     male
+                  <mat-radio-button [disableRipple]="true" class="btn_" value="male"></mat-radio-button>
+
                     </span>
                     <div class="textP"> Male</div>
                   </div>
-                  <mat-radio-button [disableRipple]="true" class="btn_" value="male"></mat-radio-button>
                 </div>
 
               </mat-radio-group>
@@ -324,14 +328,14 @@
             <mat-radio-group aria-label="Select an option" [formControl]="event">
               
 
-              <div class="column">
-                <div class="btn_">
-                <span class="material-icons">
+              <div class="margin">
+                <div class="genderIcon_Name">
+                <span class="material-icons display">
                   work
+                <mat-radio-button [disableRipple]="true" class="btn_" value="formal" required>
+                </mat-radio-button>
                   </span>
                 <div class="textP">Formal event</div>
-                <mat-radio-button [disableRipple]="true" value="formal" required>
-                </mat-radio-button>
               </div>
            
               </div>
@@ -339,14 +343,15 @@
             
 
 
-              <div class="column">
-                <div class="btn_">
-                <span class="material-icons">
+              <div class="margin">
+                <div class="genderIcon_Name">
+                <span class="material-icons display">
                   nightlife
+                  <mat-radio-button [disableRipple]="true" class="btn_" value="relaxed" required>
+                  </mat-radio-button>
                   </span>
                   <div class="textP">Relaxed event</div>
-                  <mat-radio-button [disableRipple]="true" value="relaxed" required>
-                  </mat-radio-button>
+                
                 </div>
           
               </div>
