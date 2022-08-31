@@ -12,7 +12,9 @@ export interface Post {
   postLocation: string;
   LocationEvent: string;
   time: string;
+  timeE: string;
   date: string;
+  dateE: string;
   gender: string;
   driver: string;
   paymentService: string;
@@ -55,7 +57,9 @@ export class PostService {
               postLocation: post.postLocation,
               LocationEvent: post.LocationEvent,
               time: post.time,
+              timeE: post.timeE,
               date: post.date,
+              dateE: post.dateE,
               gender: post.gender,
               driver: post.driver,
               paymentService: post.paymentService,
@@ -90,7 +94,9 @@ export class PostService {
               postLocation: post.postLocation,
               LocationEvent: post.LocationEvent,
               time: post.time,
+              timeE: post.timeE,
               date: post.date,
+              dateE: post.dateE,
               gender: post.gender,
               driver: post.driver,
               paymentService: post.paymentService,
@@ -126,7 +132,9 @@ export class PostService {
               postLocation: post.postLocation,
               LocationEvent: post.LocationEvent,
               time: post.time,
+              timeE: post.timeE,
               date: post.date,
+              dateE: post.dateE,
               gender: post.gender,
               driver: post.driver,
               paymentService: post.paymentService,
@@ -163,7 +171,9 @@ export class PostService {
               postLocation: post.postLocation,
               LocationEvent: post.LocationEvent,
               time: post.time,
+              timeE: post.timeE,
               date: post.date,
+              dateE: post.dateE,
               gender: post.gender,
               driver: post.driver,
               paymentService: post.paymentService,
@@ -200,7 +210,9 @@ export class PostService {
               postLocation: post.postLocation,
               LocationEvent: post.LocationEvent,
               time: post.time,
+              timeE: post.timeE,
               date: post.date,
+              dateE: post.dateE,
               gender: post.gender,
               driver: post.driver,
               paymentService: post.paymentService,
@@ -253,7 +265,9 @@ export class PostService {
     postLocation?: string,
     LocationEvent?: string,
     time?: string,
+    timeE?: string,
     date?: string,
+    dateE?: string,
     gender?: string,
     driver?: string,
     paymentService?: string,
@@ -268,7 +282,9 @@ export class PostService {
       postLocation,
       LocationEvent,
       time,
+      timeE,
       date,
+      dateE,
       gender,
       driver,
       paymentService,
@@ -285,7 +301,9 @@ export class PostService {
     postData.append('postLocation', postLocation);
     postData.append('LocationEvent', LocationEvent);
     postData.append('time', time);
+    postData.append('timeE', timeE);
     postData.append('date', date);
+    postData.append('dateE', dateE);
     postData.append('gender', gender);
     postData.append('driver', driver);
     postData.append('paymentService', paymentService);
@@ -309,7 +327,9 @@ export class PostService {
             postLocation,
             LocationEvent,
             time,
+            timeE,
             date,
+            dateE,
             gender,
             driver,
             paymentService,

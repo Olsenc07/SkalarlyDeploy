@@ -121,16 +121,13 @@ export class PostPageComponent implements OnInit, OnDestroy {
   //   postLocation: this.postLocation,
   // });
 
-  // firstFormGroup: FormGroup  = new FormGroup({
   Title: FormControl = new FormControl('');
   date: FormControl = new FormControl('');
+  dateE: FormControl = new FormControl('');
   time: FormControl = new FormControl('');
+  timeE: FormControl = new FormControl('');
   LocationEvent: FormControl = new FormControl('');
-  // });
-
-  // secondFormGroup: FormGroup  = new FormGroup({
   gender: FormControl = new FormControl('');
-  // });
 
   // thirdFormGroup: FormGroup  = new FormGroup({
   driver: FormControl = new FormControl('');
@@ -283,7 +280,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.postLocation.value,
       this.LocationEvent.value,
       this.time.value,
+      this.timeE.value,
       this.date.value,
+      this.dateE.value,
       this.gender.value,
       this.driver.value,
       this.paymentService.value,
