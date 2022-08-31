@@ -79,31 +79,37 @@
                     <div class="postTime textSize column1">
                       <div class=" displayT t">
                         {{post.date | date:"longDate"}}
+                        <div *ngIf="post.timeE"> {{post.timeE}}
+                        </div>
+                        <div *ngIf="post.dateE">  /{{post.dateE | date:"longDate"}}
+                          </div>
                       </div>
                       <div class="displayT t">
-                        {{post.time}}
+                        {{post.time}} 
+                      
                       </div>
                     </div>
                   </div>
   
   
   
-                  <!-- Not displaying properly-->
+               
                   <div class="row">
                     <div class="booleans">
   
-                  
+                      <div class="material-icons b" matTooltip="Everyone's welcome to join"
+                      *ngIf="post.gender == 'all' ">diversity_3</div>
                       <div class="material-icons b" matTooltip="Females are welcome to join"
                        *ngIf="post.gender == 'male' ">female</div>
-                      <div class="material-icons b" matTooltip="Everyone's welcome to join"
-                       *ngIf="post.gender == 'all' ">transgender</div>
                       <div class="material-icons b" matTooltip="Males are welcome to join"
                       *ngIf="post.gender == 'male'">male</div>
+                      <div class="material-icons b" matTooltip="LGBTQ2S+ members are welcome to join"
+                      *ngIf="post.gender == 'lgbtq2s+'">transgender</div>
   
-                      <div class="material-icons b" *ngIf="post.driver">directions_car</div>
+                      <div class="material-icons b" matTooltip="This is a live event"  *ngIf="post.live">follow_the_signs</div>
                       <div class="material-icons b" matTooltip="This event has a cost" *ngIf="post.paymentService ">attach_money</div>
                       <div class="material-icons b" matTooltip="This is a virtual event" 
-                      *ngIf="post.virtual">videocam</div>
+                      *ngIf="post.virtual">photo_camera_front</div>
   
                       <div class="material-icons b" matTooltip="This is a professional event"
                       *ngIf="post.event == 'formal' ">work</div>

@@ -130,7 +130,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   gender: FormControl = new FormControl('');
 
   // thirdFormGroup: FormGroup  = new FormGroup({
-  driver: FormControl = new FormControl('');
+    live: FormControl = new FormControl('');
   paymentService: FormControl = new FormControl('');
   virtual: FormControl = new FormControl('');
   // });
@@ -284,7 +284,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.date.value,
       this.dateE.value,
       this.gender.value,
-      this.driver.value,
+      this.live.value,
       this.paymentService.value,
       this.virtual.value,
       this.event.value,

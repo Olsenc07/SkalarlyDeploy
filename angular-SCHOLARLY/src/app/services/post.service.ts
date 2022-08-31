@@ -16,7 +16,7 @@ export interface Post {
   date: string;
   dateE: string;
   gender: string;
-  driver: string;
+  live: string;
   paymentService: string;
   virtual: string;
   event: string;
@@ -61,7 +61,7 @@ export class PostService {
               date: post.date,
               dateE: post.dateE,
               gender: post.gender,
-              driver: post.driver,
+              live: post.live,
               paymentService: post.paymentService,
               virtual: post.virtual,
               event: post.event,
@@ -98,7 +98,7 @@ export class PostService {
               date: post.date,
               dateE: post.dateE,
               gender: post.gender,
-              driver: post.driver,
+              live: post.live,
               paymentService: post.paymentService,
               virtual: post.virtual,
               event: post.event,
@@ -136,7 +136,7 @@ export class PostService {
               date: post.date,
               dateE: post.dateE,
               gender: post.gender,
-              driver: post.driver,
+              live: post.live,
               paymentService: post.paymentService,
               virtual: post.virtual,
               event: post.event,
@@ -175,7 +175,7 @@ export class PostService {
               date: post.date,
               dateE: post.dateE,
               gender: post.gender,
-              driver: post.driver,
+              live: post.live,
               paymentService: post.paymentService,
               virtual: post.virtual,
               event: post.event,
@@ -214,7 +214,7 @@ export class PostService {
               date: post.date,
               dateE: post.dateE,
               gender: post.gender,
-              driver: post.driver,
+              live: post.live,
               paymentService: post.paymentService,
               virtual: post.virtual,
               event: post.event,
@@ -269,7 +269,7 @@ export class PostService {
     date?: string,
     dateE?: string,
     gender?: string,
-    driver?: string,
+    live?: string,
     paymentService?: string,
     virtual?: string,
     event?: string,
@@ -286,7 +286,7 @@ export class PostService {
       date,
       dateE,
       gender,
-      driver,
+      live,
       paymentService,
       virtual,
       event,
@@ -305,7 +305,7 @@ export class PostService {
     postData.append('date', date);
     postData.append('dateE', dateE);
     postData.append('gender', gender);
-    postData.append('driver', driver);
+    postData.append('live', live);
     postData.append('paymentService', paymentService);
     postData.append('virtual', virtual);
     postData.append('event', event);
@@ -331,7 +331,7 @@ export class PostService {
             date,
             dateE,
             gender,
-            driver,
+            live,
             paymentService,
             virtual,
             event,

@@ -166,7 +166,7 @@
               </mat-form-field>
             </div>
 
-<div>
+<div class="default-time-example">
             <mat-form-field appearance="fill">
               <mat-label>Starting date:</mat-label>
               <input matInput [matDatepicker]="D" [formControl]="date">
@@ -215,7 +215,15 @@
 
             <div class="trioD">
               <mat-radio-group aria-label="Select an option" [formControl]="gender">
-
+                <div class="margin">
+                  <div class="genderIcon_Name">
+                    <span class="material-icons">
+                      diversity_3
+                      </span>
+                    <div class="textP"> All</div>
+                    </div>
+                  <mat-radio-button [disableRipple]="true" class="btn_" value="all"></mat-radio-button>
+                </div>
                 <div class="margin">
                   <div class="genderIcon_Name">
                   <span class="material-icons">
@@ -227,13 +235,15 @@
                 </div>
                 <div class="margin">
                   <div class="genderIcon_Name">
-                  <span class="material-icons">
-                    transgender
-                    </span>
-                    <div class="textP"> All</div>
+                    <span class="material-icons">
+                      transgender
+                      </span>
+                    <div class="textP"> LGBTQ2S+</div>
                     </div>
-                  <mat-radio-button [disableRipple]="true" class="btn_" value="all"></mat-radio-button>
+                  <mat-radio-button [disableRipple]="true" class="btn_" value="lgbtq2s+"></mat-radio-button>
                 </div>
+            
+               
                 <div class="margin">
                   <div class="genderIcon_Name">
                   <span class="material-icons">
@@ -264,25 +274,24 @@
               <div class="margin">
                 <div class="genderIcon_Name">
                 <span class="material-icons display">
-                  videocam
+                  photo_camera_front
                   <mat-checkbox [disableRipple]="true" [formControl]="virtual"></mat-checkbox>
                   </span>
                 <div class="textP"> Virtual event</div>
                 </div>
 
               </div>
-          
               <div class="margin">
                 <div class="genderIcon_Name">
                 <span class="material-icons display">
-                  directions_car
-                  <mat-checkbox [disableRipple]="true"  [formControl]="driver"></mat-checkbox>
+                  follow_the_signs
+                  <mat-checkbox [disableRipple]="true" [formControl]="live"></mat-checkbox>
                   </span>
-                  
-                <div class="textP"> Transportation available</div>
+                <div class="textP"> Live event</div>
+                </div>
+
               </div>
-                
-              </div>
+            
 
               <div class="margin">
                 <div class="genderIcon_Name">

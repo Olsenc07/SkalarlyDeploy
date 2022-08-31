@@ -13,7 +13,7 @@ const postSchema = mongoose.Schema({
     date: { type: String},
     dateE: { type: String},
     gender:  { type: String},
-    driver: { type: String},
+    live: { type: String},
     paymentService: { type: String},
     virtual: { type: String},
     event: { type: String},
