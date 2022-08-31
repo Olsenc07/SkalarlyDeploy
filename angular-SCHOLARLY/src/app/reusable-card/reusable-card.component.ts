@@ -172,7 +172,7 @@ export class ReusableCardComponent implements OnInit {
 export class ReusableCardPersonalComponent implements OnInit {
   isLoading = false;
   userId: string;
-
+  picker = new Picker();
   // Filling with Post info from post.service
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -191,6 +191,15 @@ export class ReusableCardPersonalComponent implements OnInit {
   //   this.selectedAttend = event.target.value;
   // }
   // Where the post was posted
+  // Adding emojis
+  addEmoji(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.comment.value + msgs;
+    this.comment.setValue(msg);
+  }
+  emojiPreventClose($event: any): any {
+    $event.stopPropagation();
+  }
   navigateToMainPage(value: string): void {
     this.route.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);

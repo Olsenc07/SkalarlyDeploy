@@ -66,8 +66,7 @@
 
 
 <!-- Message notifications no messages -->
-<div *ngIf=" userId == username">
-
+<div *ngIf="userId == username">
 <div  *ngFor="let info of messagesNotif.slice().reverse(); let even = even; let odd = odd">
     <mat-card class="row1" [ngClass]="{ even: even, odd: odd }" *ngIf="userId !== info.you">
         <div class="column" >
