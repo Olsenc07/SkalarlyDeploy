@@ -115,9 +115,10 @@
                     <mat-divider></mat-divider>
                     <div *ngFor="let user of users;let even = even; let odd = odd">
                       <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"> -->
-                    <mat-option [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
+                    <mat-option *ngIf="user.Creator !== userId" 
+                     [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
                         <!-- <div class="row"> -->
-                      <div *ngIf="user.Creator !== userId"  class="row" >
+                      <div  class="row" >
                         <div class="profilePic">
                        <img class="profilePic_" src="{{user.ProfilePicPath}}"> 
                       </div> 
@@ -126,6 +127,7 @@
                         <div>@{{user.username}}</div>
                       </div>
                       </div>
+                      <mat-divider *ngIf="user"></mat-divider>
                     </mat-option>
                   <!-- </mat-autocomplete> -->
                   </div>

@@ -48,7 +48,7 @@
   flex-direction: row;
   display: flex;
   font-family: 'Poppins',sans-serif;
-  color: #928787;
+  color: black;
   justify-content: space-around;
 }
 
@@ -279,11 +279,11 @@ h4:focus {
     display: none;
   }
 }
-.odd{
-  background-color: #5f5d5d;
+.even{
+  background-color: whitesmoke;
   padding: 1%;
 }
-.even{
+.odd{
   padding: 1%;
 
 }
