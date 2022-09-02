@@ -32,7 +32,7 @@
 
             </div>
             <div>
-              <button class="icon" mat-icon-button (click)="skalarMsg(info.username)" routerLink="/messages">
+              <button class="icon" mat-icon-button matTooltip="Chat" (click)="skalarMsg(info.username)" routerLink="/messages">
                 <span class="material-icons">
                   chat
                 </span>
@@ -69,7 +69,7 @@
           <!-- *ngIf="major.value" -->
           <div class="centerR" *ngIf=" info.major ">
             <!-- Major -->
-          <i class="fas fa-star row_icon" style="color: #d2cb3aa1"></i>
+          <i class="fas fa-star row_icon" matTooltip="Major" style="color: #d2cb3aa1"></i>
               <div class="large">
                 {{ info.major}}
               </div>
@@ -78,7 +78,7 @@
           </div>
           <div class="centerR" *ngIf=" info.minor ">
             <!-- Minor -->
-            <i class="fas fa-star-half-alt row_icon" style="color: silver"></i>
+            <i class="fas fa-star-half-alt row_icon" matTooltip="Minor" style="color: silver"></i>
               <div class="large">
                 {{ info.minor}}
 
@@ -92,13 +92,13 @@
         <!-- Sport/Club -->
         <div class="major-minor" *ngIf=" info.sport  || info.club">
           <div class=" centerR" *ngIf=" info.sport ">
-          <i class="fas fa-running" style="color: #bcbcee"></i>
+          <i class="fas fa-running" matTooltip="Sport" style="color: #bcbcee"></i>
             <!-- Sport -->
             {{ info.sport}}
           </div>
           <div class="centerR" *ngIf=" info.club ">
             <!-- Club -->
-          <i class="fas fa-user-friends" style="color: #99a7d2"></i>
+          <i class="fas fa-user-friends" matTooltip="Club" style="color: #99a7d2"></i>
             {{ info.club}}
           </div>
 

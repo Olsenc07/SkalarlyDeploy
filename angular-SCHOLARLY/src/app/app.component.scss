@@ -23,15 +23,19 @@
   display: contents;
 }
 .profilePic{
+  margin-top: 1%;
+  box-shadow: 0 2px 3px;
+  margin-left: 5%;
   display: flex;
   justify-content: center;
-  margin-top: 1%;
+  align-items: center;
   width: 50px;
   height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .profilePic_{
-  border-radius: 50%;
   width: 100%;
   height: auto;
 }
