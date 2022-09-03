@@ -3,8 +3,8 @@
   </div>
 
   
-<mat-card class="row1" *ngFor="let info of infos">
-    <div class="column" *ngIf="(userId !== info.Creator) && !isLoading">
+<mat-card class="row1" *ngFor="let info of follow">
+    <div class="column" >
         <div class="row" >
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPath">
@@ -12,9 +12,6 @@
                     <img class="fit" src="{{info.ProfilePicPath}}">
                 </div>
 
-                <div mat-card-avatar class="profilePic" *ngIf="!info.ProfilePicPath">
-                    <img src="../../assets/Pics/WhiteSquareInAppLogo.jpg" class="fit" />
-                </div>
                 <div class="column_">
                     <div class="userName textSize" *ngIf="info.name">
                         <!-- {{ (profile | async)?.Pronouns}} -->
@@ -54,7 +51,7 @@
 
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div [ngClass]="info.sport || info.club ? 'center' : 'centerEmpty' "
                 *ngIf=" info.major || info.minor ">
                 <div class=" center1" *ngIf="info.major">
@@ -75,16 +72,16 @@
             <div [ngClass]="info.major || info.minor ? 'center' : 'centerEmpty' "
                 *ngIf="info.sport || info.club ">
                 <div class="center1" *ngIf="info.sport">
-                    <!-- {{id.Sport}} -->
+                    <!-- {{id.Sport}} --
                     {{info.sport}}
                 </div>
                 <div class="center1" *ngIf="info.club">
-                    <!-- {{id.Club}} -->
+                    <!-- {{id.Club}} --
                     {{info.club}}
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
 
 

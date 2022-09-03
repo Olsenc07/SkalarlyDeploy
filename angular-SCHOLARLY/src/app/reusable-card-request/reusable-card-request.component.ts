@@ -80,7 +80,6 @@ export class ReusableCardRecommendationComponent implements OnInit {
     public storeService: StoreService,
     private authService: AuthService,
     private followService: FollowService,
-
     private router: Router
   ) {}
 
@@ -110,6 +109,6 @@ export class ReusableCardRecommendationComponent implements OnInit {
   }
   followClicked(username: string): any {
     console.log('follow username', this.userId);
-    this.followService.getInfoFollow(this.userId, username);
+    this.followService.postInfoFollow(this.userId, username);
   }
 }

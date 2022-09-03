@@ -4,7 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { MessageService } from '../services/messages.service';
 import { MessageNotificationService } from '../services/messagesNotifications.service';
-
+import { FollowService } from '../services/follow.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 export interface Message {
@@ -13,7 +13,13 @@ export interface Message {
   time: string;
   you: string;
 }
-
+export interface Follow {
+  Follower: string;
+  Following: string;
+  name: string;
+  username: string;
+  ProfilePicPath: string;
+}
 @Component({
   selector: 'app-card-user',
   templateUrl: './reusable-card-user.component.html',
@@ -29,7 +35,13 @@ export class ReusableCardUserComponent implements OnInit {
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
-  constructor(private authService: AuthService) {}
+  follow: Follow[] = [];
+  private followSub: Subscription;
+
+  constructor(
+    private authService: AuthService,
+    private followService: FollowService
+  ) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -47,6 +59,14 @@ export class ReusableCardUserComponent implements OnInit {
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
+        this.isLoading = false;
+      });
+    // following info
+    this.followService.getMessageNotification(this.userId);
+    this.followSub = this.followService
+      .getInfoUpdateListener()
+      .subscribe((follow: Follow[]) => {
+        this.follow = follow;
         this.isLoading = false;
       });
   }
