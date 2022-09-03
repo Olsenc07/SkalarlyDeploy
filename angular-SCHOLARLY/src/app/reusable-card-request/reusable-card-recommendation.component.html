@@ -39,8 +39,8 @@
             <!-- Card is removed from list when follow is clicked -->
 
             <mat-chip-list class="center_" aria-label="FollowBtn">
-                <!-- (click)="followClicked()" -->
-                <mat-chip class="messageM">
+                <!--  -->
+                <mat-chip class="messageM" (click)="followClicked(info.username)">
                     Follow
 
                     <!-- {{ following ? "Unfollow" : "Follow" }} -->

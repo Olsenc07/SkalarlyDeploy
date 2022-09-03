@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { StoreService, Profile } from '../services/store.service';
 import { filter, map, pairwise, Subscription, throttleTime } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { FollowService } from '../services/follow.service';
+
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
@@ -77,6 +79,8 @@ export class ReusableCardRecommendationComponent implements OnInit {
   constructor(
     public storeService: StoreService,
     private authService: AuthService,
+    private followService: FollowService,
+
     private router: Router
   ) {}
 
@@ -103,5 +107,9 @@ export class ReusableCardRecommendationComponent implements OnInit {
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+  followClicked(username: string): any {
+    console.log('follow username', this.userId);
+    this.followService.getInfoFollow(this.userId, username);
   }
 }

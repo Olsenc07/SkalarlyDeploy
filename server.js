@@ -14,6 +14,8 @@ const http = require('http');
  const postRoutes = require('./routes/posts');
  const userRoutes = require('./routes/user');
  const messageRoutes = require('./routes/messages')
+ const followRoutes = require('./routes/follow')
+
 
 
 
@@ -81,6 +83,8 @@ app.use((req, res, next) => {
 app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/messages", messageRoutes);
+app.use("/api/follow", followRoutes);
+
 
 
 

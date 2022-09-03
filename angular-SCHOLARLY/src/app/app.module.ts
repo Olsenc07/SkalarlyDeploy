@@ -120,6 +120,7 @@ import { PostService } from './services/post.service';
 import { ClassListService } from './services/class.service';
 import { StoreService } from './services/store.service';
 import { AuthService } from './services/auth.service';
+import { FollowService } from './services/follow.service';
 import { ChatService } from './services/chat.service';
 import { CommentsService } from './services/comments.service';
 import { MessageService } from './services/messages.service';
@@ -245,6 +246,7 @@ import { ErrorInterceptor } from './error-interceptor';
   providers: [
     SearchListService,
     PostService,
+    FollowService,
     ClassListService,
     StoreService,
     AuthService,
