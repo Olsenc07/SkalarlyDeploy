@@ -40,7 +40,8 @@ export class ReusableCardUserComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private followService: FollowService
+    private followService: FollowService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -68,7 +69,12 @@ export class ReusableCardUserComponent implements OnInit {
       .subscribe((follow: Follow[]) => {
         this.follow = follow;
         this.isLoading = false;
+        console.log('lil e', follow);
       });
+  }
+  navigateToPage(Following: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: Following } });
   }
 }
 

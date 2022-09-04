@@ -8,6 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppRoutingModule } from '../app-routing.module';
 
 export interface Follow {
+  id: string;
   Follower: string;
   Following: string;
   name: string;
@@ -42,7 +43,7 @@ export class FollowService {
             return {
               id: info._id,
               Follower: info.Follower,
-              Followed: info.Followed,
+              Following: info.Following,
               name: info.name,
               username: info.username,
               ProfilePicPath: info.ProfilePicPath,
@@ -70,7 +71,7 @@ export class FollowService {
             return {
               id: data._id,
               Follower: data.Follower,
-              Followed: data.Followed,
+              Following: data.Following,
               name: data.name,
               username: data.username,
               ProfilePicPath: data.ProfilePicPath,

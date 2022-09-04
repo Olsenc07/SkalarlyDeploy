@@ -13,14 +13,14 @@
                 </div>
 
                 <div class="column_">
-                    <div class="userName textSize" *ngIf="info.name">
+                    <div class="userName textSize" *ngIf="info.username">
                         <!-- {{ (profile | async)?.Pronouns}} -->
-                        {{info.name}}
+                        {{info.username}}
                     </div>
                     <div>
                         <!-- Directs to users profile -->
-                        <button mat-button class="center-">
-                            {{ info.username }}
+                        <button mat-button class="center-" (click)="navigateToPage(info.Following)">
+                            @{{ info.Following }}
                         </button>
                     </div>
                     <!-- <mat-card-subtitle class="gender textSize">
