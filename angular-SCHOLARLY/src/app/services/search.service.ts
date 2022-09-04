@@ -40,7 +40,7 @@ export class SearchListService {
     { name: 'Upcoming Events', value: SearchValues.UPCOMING_EVENTS },
   ];
 
-  constructor() { }
+  constructor() {}
 
   getSearchOptions(): SearchOption[] {
     return this.searchOptions;
@@ -233,6 +233,7 @@ export class SearchListService {
           'Electronic Based',
           'Moving/Furniture',
           'Transportation',
+          'Volunteering',
           'Walking Home',
         ];
         break;
@@ -241,16 +242,17 @@ export class SearchListService {
           // 'Buy & Sell',
           'ISO Residence',
           'Questions & Advice',
-          'Roomate Wanted',
+          'Roommate Wanted',
           'Subleting',
         ];
         break;
       case SearchValues.MISCELL_BUY_SELL:
-        specificOptions = ['Buy & Sell', 'Miscellaneous'];
+        specificOptions = ['Items for Sale'];
         break;
       case SearchValues.SCHOOL_WORK:
         specificOptions = [
           'Study Groups',
+          'Textbooks Buy/Sell',
           'Tutors',
           'Buy/Sell School Supplies',
           'Instructor Review',
@@ -262,7 +264,6 @@ export class SearchListService {
           'Church Times & Locations',
           'Faith Based Activities',
           'Fundraisers',
-          'Need Support',
           'Prayer Groups',
           'Prayer Requests',
         ];

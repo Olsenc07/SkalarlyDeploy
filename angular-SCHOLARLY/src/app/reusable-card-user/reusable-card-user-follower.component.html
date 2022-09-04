@@ -7,22 +7,22 @@
     <div class="column" >
         <div class="row" >
             <div class="row_">
-                <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPathFollowing">
+                <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPathFollower">
                     <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
-                    <img class="fit" src="{{info.ProfilePicPathFollowing}}">
+                    <img class="fit" src="{{info.ProfilePicPathFollower}}">
                 </div>
 
              
             </div>
             <div class="column_">
-                <div class="userName textSize" *ngIf="info.nameFollowing">
+                <div class="userName textSize" *ngIf="info.nameFollower">
                     <!-- {{ (profile | async)?.Pronouns}} -->
-                    {{info.nameFollowing}}
+                    {{info.nameFollower}}
                 </div>
                 <div>
                     <!-- Directs to users profile -->
-                    <button mat-button class="center-" (click)="navigateToPage(info.Following)">
-                        @{{ info.Following }}
+                    <button mat-button class="center-" (click)="navigateToPage(info.usernameFollower)">
+                        @{{ info.usernameFollower }}
                     </button>
                 </div>
                 <!-- <mat-card-subtitle class="gender textSize">
@@ -37,7 +37,7 @@
             </div>
 
             <div>
-                <button mat-icon-button class="remove_friend" (click)='onDelete(info.id)'  matTooltip="Unfollow">  <i class="material-icons">person_remove</i></button>
+                <button mat-icon-button class="remove_friend" (click)='onDelete(info.id)'  matTooltip="Remove Follower">  <i class="material-icons">person_remove</i></button>
             </div>
             
 </div>

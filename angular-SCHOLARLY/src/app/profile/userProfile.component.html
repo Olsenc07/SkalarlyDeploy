@@ -499,8 +499,9 @@
                   <div class="row"> No Showcases Added</div> <span
                     class="fa-solid fa-hat-wizard centerR iconEmpty"></span>
                 </div>  -->
+                <div class="showCase" >
 
-                 <div class="showCase" *ngFor="let showCase of showCases">
+                 <div class="showCase_" *ngFor="let showCase of showCases">
 
 
                   <div class="column" *ngIf="showCase.ShowCasePath">
@@ -510,6 +511,7 @@
 
                   </div>
 
+                </div>
                 </div>
               </mat-tab>
             </mat-tab-group>

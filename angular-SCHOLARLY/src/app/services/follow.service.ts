@@ -10,15 +10,21 @@ import { AppRoutingModule } from '../app-routing.module';
 export interface Follow {
   id: string;
   Follower: string;
+  nameFollower: string;
+  usernameFollower: string;
+  ProfilePicPathFollower: string;
+
   Following: string;
-  name: string;
-  username: string;
-  ProfilePicPath: string;
+  nameFollowing: string;
+  ProfilePicPathFollowing: string;
 }
 @Injectable({ providedIn: 'root' })
 export class FollowService {
   private follow: Follow[] = [];
   private followPostUpdated = new ReplaySubject<Follow[]>();
+
+  private follower: Follow[] = [];
+  private followerPostUpdated = new ReplaySubject<Follow[]>();
 
   private userId: string;
 
@@ -42,10 +48,13 @@ export class FollowService {
           return infosData.infos.map((info) => {
             return {
               Follower: info.Follower,
+              nameFollower: info.nameFollower,
+              usernameFollower: info.usernameFollower,
+              ProfilePicPathFollower: info.ProfilePicPathFollower,
+
               Following: info.Following,
-              name: info.name,
-              username: info.username,
-              ProfilePicPath: info.ProfilePicPath,
+              nameFollowing: info.nameFollowing,
+              ProfilePicPathFollowing: info.ProfilePicPathFollowing,
             };
           });
         })
@@ -68,12 +77,14 @@ export class FollowService {
         map((messageData) => {
           return messageData.messages.map((data) => {
             return {
-              id: data._id,
               Follower: data.Follower,
+              nameFollower: data.nameFollower,
+              usernameFollower: data.usernameFollower,
+              ProfilePicPathFollower: data.ProfilePicPathFollower,
+
               Following: data.Following,
-              name: data.name,
-              username: data.username,
-              ProfilePicPath: data.ProfilePicPath,
+              nameFollowing: data.nameFollowing,
+              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
             };
           });
         })
@@ -81,6 +92,35 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         this.follow = transformedMessage;
         this.followPostUpdated.next([...this.follow]);
+      });
+  }
+  getMessageNotificationFollowed(userId: string): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'http://localhost:3000/api/follow/followerInfo',
+        {
+          params: { userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((data) => {
+            return {
+              Follower: data.Follower,
+              nameFollower: data.nameFollower,
+              usernameFollower: data.usernameFollower,
+              ProfilePicPathFollower: data.ProfilePicPathFollower,
+
+              Following: data.Following,
+              nameFollowing: data.nameFollowing,
+              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
+            };
+          });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.follower = transformedMessage;
+        this.followerPostUpdated.next([...this.follower]);
       });
   }
   deleteFollow(followId: string): any {
@@ -91,6 +131,18 @@ export class FollowService {
         const updatedPosts = this.follow.filter((post) => post.id !== followId);
         this.follow = updatedPosts;
         this.followPostUpdated.next([...this.follow]);
+      });
+  }
+  deleteFollowers(followId: string): any {
+    // console.log('hey chase postId', postId);
+    this.http
+      .delete('http://localhost:3000/api/follow/unFollower/' + followId)
+      .subscribe(() => {
+        const updatedPosts = this.follower.filter(
+          (post) => post.id !== followId
+        );
+        this.follower = updatedPosts;
+        this.followerPostUpdated.next([...this.follower]);
       });
   }
 }

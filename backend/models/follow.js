@@ -2,10 +2,13 @@ const mongoose = require('mongoose');
 
 const FollowSchema = mongoose.Schema({
     Follower: { type: String},
+    nameFollower: { type: String},
+    usernameFollower: { type: String},
+    ProfilePicPathFollower: { type: String},
+
     Following: { type: String},
-    name: { type: String},
-    username: { type: String},
-    ProfilePicPath: { type: String},
+    nameFollowing: { type: String},
+    ProfilePicPathFollowing: { type: String},
 
 });
 

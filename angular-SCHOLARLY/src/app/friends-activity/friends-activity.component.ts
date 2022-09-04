@@ -6,12 +6,17 @@ import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { FollowService } from '../services/follow.service';
 export interface Follow {
+  id: string;
   Follower: string;
+  nameFollower: string;
+  usernameFollower: string;
+  ProfilePicPathFollower: string;
+
   Following: string;
-  name: string;
-  username: string;
-  ProfilePicPath: string;
+  nameFollowing: string;
+  ProfilePicPathFollowing: string;
 }
+
 @Component({
   selector: 'app-friends-activity',
   templateUrl: './friends-activity.component.html',
@@ -22,7 +27,10 @@ export class FriendsActivityComponent implements OnInit {
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
   follow: Follow[] = [];
+  followers: Follow[] = [];
+
   private followSub: Subscription;
+  private followSubFollowers: Subscription;
 
   // infos: AuthDataInfo[] = [];
   // private infosSub: Subscription;
@@ -58,6 +66,13 @@ export class FriendsActivityComponent implements OnInit {
       .getInfoUpdateListener()
       .subscribe((follow: Follow[]) => {
         this.follow = follow;
+      });
+    // following info
+    this.followService.getMessageNotificationFollowed(this.userId);
+    this.followSubFollowers = this.followService
+      .getInfoUpdateListener()
+      .subscribe((followers: Follow[]) => {
+        this.followers = followers;
       });
   }
 }

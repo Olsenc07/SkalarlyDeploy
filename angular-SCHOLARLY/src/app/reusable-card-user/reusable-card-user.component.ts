@@ -14,11 +14,15 @@ export interface Message {
   you: string;
 }
 export interface Follow {
+  id: string;
   Follower: string;
+  nameFollower: string;
+  usernameFollower: string;
+  ProfilePicPathFollower: string;
+
   Following: string;
-  name: string;
-  username: string;
-  ProfilePicPath: string;
+  nameFollowing: string;
+  ProfilePicPathFollowing: string;
 }
 @Component({
   selector: 'app-card-user',
@@ -26,6 +30,67 @@ export interface Follow {
   styleUrls: ['./reusable-card-user.component.scss'],
 })
 export class ReusableCardUserComponent implements OnInit {
+  userId: string;
+  userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
+
+  isLoading = false;
+
+  // infos: AuthDataInfo[] = [];
+  // private infosSub: Subscription;
+
+  follow: Follow[] = [];
+  private followSub: Subscription;
+
+  constructor(
+    private authService: AuthService,
+    private followService: FollowService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.isLoading = true;
+    this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+        // Can add *ngIf="userIsAuthenticated" to hide items
+      });
+    // //    Info
+    // this.authService.getInfo();
+    // this.infosSub = this.authService
+    //   .getInfoUpdateListener()
+    //   .subscribe((infos: AuthDataInfo[]) => {
+    //     this.infos = infos;
+    //     this.isLoading = false;
+    //   });
+    // following info
+    this.followService.getMessageNotification(this.userId);
+    this.followSub = this.followService
+      .getInfoUpdateListener()
+      .subscribe((follow: Follow[]) => {
+        this.follow = follow;
+        this.isLoading = false;
+      });
+  }
+  navigateToPage(Following: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: Following } });
+  }
+
+  onDelete(followId: string): any {
+    this.followService.deleteFollow(followId);
+    console.log('chaz whats up homie g', followId);
+  }
+}
+@Component({
+  selector: 'app-card-user-follower',
+  templateUrl: './reusable-card-user-follower.component.html',
+  styleUrls: ['./reusable-card-user.component.scss'],
+})
+export class ReusableCardUserFollowerComponent implements OnInit {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -63,7 +128,7 @@ export class ReusableCardUserComponent implements OnInit {
         this.isLoading = false;
       });
     // following info
-    this.followService.getMessageNotification(this.userId);
+    this.followService.getMessageNotificationFollowed(this.userId);
     this.followSub = this.followService
       .getInfoUpdateListener()
       .subscribe((follow: Follow[]) => {
@@ -77,11 +142,10 @@ export class ReusableCardUserComponent implements OnInit {
   }
 
   onDelete(followId: string): any {
-    this.followService.deleteFollow(followId);
+    this.followService.deleteFollowers(followId);
     console.log('chaz whats up homie g', followId);
   }
 }
-
 @Component({
   selector: 'app-card-message',
   templateUrl: './reusable-card-message.component.html',

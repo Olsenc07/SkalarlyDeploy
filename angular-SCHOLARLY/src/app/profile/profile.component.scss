@@ -667,6 +667,12 @@ mat-tab-group {
   height: 100%;
   width: 99%;
   overflow-y: scroll;
+  flex-direction: column;
+}
+.showCase_ {
+  display: flex;
+  height: 100%;
+  width: 99%;
 }
 .show-case {
   display: flex;

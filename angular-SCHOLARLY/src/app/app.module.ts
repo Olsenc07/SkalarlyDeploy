@@ -109,6 +109,8 @@ import { ReusableCardBriefComponent } from './reusable-card-brief/reusable-card-
 import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
 import { ReusableCardRecommendationComponent } from './reusable-card-request/reusable-card-request.component';
 import { ReusableCardUserComponent } from './reusable-card-user/reusable-card-user.component';
+import { ReusableCardUserFollowerComponent } from './reusable-card-user/reusable-card-user.component';
+
 import { ReusableCardMutualComponent } from './reusable-card-user/reusable-card-user.component';
 import { ReusableCardMessageComponent } from './reusable-card-user/reusable-card-user.component';
 import { ReusableCardConvoComponent } from './reusable-card-convo/reusable-card-convo.component';
@@ -182,6 +184,7 @@ import { ErrorInterceptor } from './error-interceptor';
     ReusableCardRequestComponent,
     ReusableCardRecommendationComponent,
     ReusableCardUserComponent,
+    ReusableCardUserFollowerComponent,
     ReusableCardMutualComponent,
     ReusableCardMessageComponent,
     ReusableCardConvoComponent,
