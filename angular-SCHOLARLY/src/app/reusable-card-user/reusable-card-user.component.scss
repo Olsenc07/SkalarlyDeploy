@@ -21,6 +21,10 @@
   display: flex;
   justify-content: center;
 }
+.center-{
+  font-size: medium;
+    font-family: 'Poppins',sans-serif;
+}
 .center__ {
   color: cornflowerblue;
   font-size: x-large;
@@ -123,10 +127,14 @@
 
 .profilePic {
   display: flex;
+  margin: 1% 3% 2% 0%;
   box-shadow: 0 2px 3px;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  overflow: hidden;
 }
 
   .textSize {

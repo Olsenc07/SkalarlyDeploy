@@ -13,7 +13,15 @@ import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { FollowService } from '../services/follow.service';
 
+export interface Follow {
+  Follower: string;
+  Following: string;
+  name: string;
+  username: string;
+  ProfilePicPath: string;
+}
 /** @title Sidenav open & close behavior */
 @Component({
   selector: 'app-profile',
@@ -22,6 +30,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   isLoading = false;
+  follow: Follow[] = [];
+  private followSub: Subscription;
 
   userId: string;
   userIsAuthenticated = false;
@@ -48,7 +58,8 @@ export class ProfileComponent implements OnInit {
     private bottomSheet: MatBottomSheet,
     public postService: PostService,
     private authService: AuthService,
-    private showCaseService: ShowCaseService
+    private showCaseService: ShowCaseService,
+    private followService: FollowService
   ) {
     // profile$$.profile$$.subscribe((profile) => {
     //   // this.profile$$ = profile;
@@ -89,6 +100,13 @@ export class ProfileComponent implements OnInit {
       .getshowCaseUpdateListener()
       .subscribe((showcases: ShowCase[]) => {
         this.showCases = showcases;
+      });
+    // Following
+    this.followService.getMessageNotification(this.userId);
+    this.followSub = this.followService
+      .getInfoUpdateListener()
+      .subscribe((follow: Follow[]) => {
+        this.follow = follow;
       });
   }
 

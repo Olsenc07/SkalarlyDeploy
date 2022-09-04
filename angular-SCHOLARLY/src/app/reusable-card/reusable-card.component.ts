@@ -358,7 +358,7 @@ export class ReusableCommentComponent implements OnInit {
   @Input() currentUserId!: string;
   @Input() replies!: CommentInterface[];
   @Input() activeComment: ActiveCommentInterface | null = null;
-  canReply: boolean = false;
+  canReply = false;
   activeCommentType = ActiveCommentTypeEnum;
   replyId: string | null = null;
 

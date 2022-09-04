@@ -12,32 +12,32 @@
                     <img class="fit" src="{{info.ProfilePicPath}}">
                 </div>
 
-                <div class="column_">
-                    <div class="userName textSize" *ngIf="info.username">
-                        <!-- {{ (profile | async)?.Pronouns}} -->
-                        {{info.username}}
-                    </div>
-                    <div>
-                        <!-- Directs to users profile -->
-                        <button mat-button class="center-" (click)="navigateToPage(info.Following)">
-                            @{{ info.Following }}
-                        </button>
-                    </div>
-                    <!-- <mat-card-subtitle class="gender textSize">
-                                    {{id.Gender}}
-                                </mat-card-subtitle> -->
-                </div>
+             
             </div>
-
+            <div class="column_">
+                <div class="userName textSize" *ngIf="info.username">
+                    <!-- {{ (profile | async)?.Pronouns}} -->
+                    {{info.username}}
+                </div>
+                <div>
+                    <!-- Directs to users profile -->
+                    <button mat-button class="center-" (click)="navigateToPage(info.Following)">
+                        @{{ info.Following }}
+                    </button>
+                </div>
+                <!-- <mat-card-subtitle class="gender textSize">
+                                {{id.Gender}}
+                            </mat-card-subtitle> -->
+            </div>
 
             <!-- Mutual friends appear based of username following list comparison -->
 <div class="classes">
             <div class="center_">
-                <button mat-icon-button class="center__"><i class="material-icons">handshake</i></button>
+                <button mat-icon-button class="center__"  matTooltip="Mututal friends"><i class="material-icons">handshake</i></button>
             </div>
 
             <div>
-                <button mat-icon-button class="remove_friend">  <i class="material-icons">person_remove</i></button>
+                <button mat-icon-button class="remove_friend" (click)='onDelete(info.id)'  matTooltip="Unfollow">  <i class="material-icons">person_remove</i></button>
             </div>
             
 </div>

@@ -17,7 +17,7 @@ export interface Follow {
 }
 @Injectable({ providedIn: 'root' })
 export class FollowService {
-  private followPostNotif: Follow[] = [];
+  private follow: Follow[] = [];
   private followPostUpdated = new ReplaySubject<Follow[]>();
 
   private userId: string;
@@ -41,7 +41,6 @@ export class FollowService {
         map((infosData) => {
           return infosData.infos.map((info) => {
             return {
-              id: info._id,
               Follower: info.Follower,
               Following: info.Following,
               name: info.name,
@@ -52,8 +51,8 @@ export class FollowService {
         })
       )
       .subscribe((transformedInfos) => {
-        this.followPostNotif = transformedInfos;
-        this.followPostUpdated.next([...this.followPostNotif]);
+        this.follow = transformedInfos;
+        this.followPostUpdated.next([...this.follow]);
       });
   }
 
@@ -80,8 +79,18 @@ export class FollowService {
         })
       )
       .subscribe((transformedMessage) => {
-        this.followPostNotif = transformedMessage;
-        this.followPostUpdated.next([...this.followPostNotif]);
+        this.follow = transformedMessage;
+        this.followPostUpdated.next([...this.follow]);
+      });
+  }
+  deleteFollow(followId: string): any {
+    // console.log('hey chase postId', postId);
+    this.http
+      .delete('http://localhost:3000/api/follow/unFollow/' + followId)
+      .subscribe(() => {
+        const updatedPosts = this.follow.filter((post) => post.id !== followId);
+        this.follow = updatedPosts;
+        this.followPostUpdated.next([...this.follow]);
       });
   }
 }

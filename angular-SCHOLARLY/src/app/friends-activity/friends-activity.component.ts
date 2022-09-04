@@ -4,7 +4,14 @@ import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
-
+import { FollowService } from '../services/follow.service';
+export interface Follow {
+  Follower: string;
+  Following: string;
+  name: string;
+  username: string;
+  ProfilePicPath: string;
+}
 @Component({
   selector: 'app-friends-activity',
   templateUrl: './friends-activity.component.html',
@@ -14,11 +21,12 @@ export class FriendsActivityComponent implements OnInit {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
+  follow: Follow[] = [];
+  private followSub: Subscription;
 
-  infos: AuthDataInfo[] = [];
-  private infosSub: Subscription;
+  // infos: AuthDataInfo[] = [];
+  // private infosSub: Subscription;
 
-  mutuals = [];
   // Friend requests from the card...
   accept: FormControl = new FormControl('');
   decline: FormControl = new FormControl('');
@@ -30,7 +38,8 @@ export class FriendsActivityComponent implements OnInit {
 
   constructor(
     public storeService: StoreService,
-    private authService: AuthService
+    private authService: AuthService,
+    private followService: FollowService
   ) {}
 
   ngOnInit(): void {
@@ -44,12 +53,11 @@ export class FriendsActivityComponent implements OnInit {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
 
-    //    Info
-    this.authService.getInfo();
-    this.infosSub = this.authService
+    this.followService.getMessageNotification(this.userId);
+    this.followSub = this.followService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
+      .subscribe((follow: Follow[]) => {
+        this.follow = follow;
       });
   }
 }

@@ -1,4 +1,4 @@
-<div class="entire-page"  *ngFor="let info of infos">
+<div class="entire-page"  >
   <!-- Left column -->
   <div class="column">
     <div class="left-column">
@@ -52,7 +52,7 @@
         <div class="mutual-box">
 
 
-          <div class="follow-m" *ngIf="mutuals.length == 0">
+          <div class="follow-m" >
 
 
             <div class="message">
@@ -70,9 +70,9 @@
           </div>
 
 
-          <div class="follow-m" *ngIf=" (userId !== info.Creator)">
-            <!-- <app-card-mutual   class="width"></app-card-mutual> -->
-          </div>
+          <!-- <div class="follow-m" *ngIf=" (userId !== info.Creator)">
+            <-- <app-card-mutual   class="width"></app-card-mutual> --
+          </div> -->
         </div>
 
 
@@ -117,10 +117,10 @@
               <div class="center">
                 Following
               </div>
-              <div class="center">
-                <div>
-                  <!-- {{(user.following).length}} -->
-                </div>
+              <div class="centerNumber">
+               
+                  {{follow.length}}
+                
               </div>
             </div>
 <!-- search bar filter-->
@@ -137,7 +137,7 @@
             <div class="following-box">
               <div class="structure">
 
-                <app-card-user  class="width"> 
+                <app-card-user  > 
                 </app-card-user>
 
               </div>
@@ -279,7 +279,7 @@
                 </div>
                 <div class="follow-m">
                   <div class="center1">
-
+<!-- 
                     <div class="follow-m" *ngIf="mutuals.length == 0">
                       <div class="message">
                         Click The Hand Shake Icon On Your Friends Lists To Display Mututal Friends
@@ -289,14 +289,14 @@
                         <i class="fas fa-user-minus remove_icon"></i>         
                          </div>
                       </div>
-                    </div>
+                    </div> -->
 
 
-                    <div class="follow-m" *ngIf="mutuals.length !== 0">
+                    <!-- <div class="follow-m" *ngIf="mutuals.length !== 0"> -->
                       <!-- <app-card-mutual *ngFor="let mutual of mutuals" class="width">
                         {{mutual}}
                       </app-card-mutual> -->
-                    </div>
+                    <!-- </div> -->
                     <!-- Then cards keep getting filled in!! Jst was testing the overflow scroll -->
                   </div>
                 </div>
