@@ -132,6 +132,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   // thirdFormGroup: FormGroup  = new FormGroup({
     live: FormControl = new FormControl('');
   paymentService: FormControl = new FormControl('');
+  nopaymentService: FormControl = new FormControl('');
+
   virtual: FormControl = new FormControl('');
   // });
 
@@ -286,6 +288,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.gender.value,
       this.live.value,
       this.paymentService.value,
+      this.nopaymentService.value,
+
       this.virtual.value,
       this.event.value,
       this.form.get('upload').value

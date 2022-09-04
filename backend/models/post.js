@@ -15,6 +15,7 @@ const postSchema = mongoose.Schema({
     gender:  { type: String},
     live: { type: String},
     paymentService: { type: String},
+    nopaymentService: { type: String},
     virtual: { type: String},
     event: { type: String},
     ImagePath: { type:String},

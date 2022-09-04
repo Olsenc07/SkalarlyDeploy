@@ -18,6 +18,7 @@ export interface Post {
   gender: string;
   live: string;
   paymentService: string;
+  nopaymentService: string;
   virtual: string;
   event: string;
   upload: File;
@@ -63,6 +64,7 @@ export class PostService {
               gender: post.gender,
               live: post.live,
               paymentService: post.paymentService,
+              nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
               ImagePath: post.ImagePath,
@@ -100,6 +102,7 @@ export class PostService {
               gender: post.gender,
               live: post.live,
               paymentService: post.paymentService,
+              nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
               ImagePath: post.ImagePath,
@@ -138,6 +141,7 @@ export class PostService {
               gender: post.gender,
               live: post.live,
               paymentService: post.paymentService,
+              nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
               ImagePath: post.ImagePath,
@@ -177,6 +181,7 @@ export class PostService {
               gender: post.gender,
               live: post.live,
               paymentService: post.paymentService,
+              nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
               ImagePath: post.ImagePath,
@@ -216,6 +221,7 @@ export class PostService {
               gender: post.gender,
               live: post.live,
               paymentService: post.paymentService,
+              nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
               ImagePath: post.ImagePath,
@@ -271,6 +277,7 @@ export class PostService {
     gender?: string,
     live?: string,
     paymentService?: string,
+    nopaymentService?: string,
     virtual?: string,
     event?: string,
     upload?: File,
@@ -288,6 +295,7 @@ export class PostService {
       gender,
       live,
       paymentService,
+      nopaymentService,
       virtual,
       event,
       upload,
@@ -307,6 +315,7 @@ export class PostService {
     postData.append('gender', gender);
     postData.append('live', live);
     postData.append('paymentService', paymentService);
+    postData.append('nopaymentService', nopaymentService);
     postData.append('virtual', virtual);
     postData.append('event', event);
     postData.append('upload', upload);
@@ -333,6 +342,7 @@ export class PostService {
             gender,
             live,
             paymentService,
+            nopaymentService,
             virtual,
             event,
             upload,

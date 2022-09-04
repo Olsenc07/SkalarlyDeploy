@@ -106,6 +106,8 @@
   
                       <div class="material-icons b" matTooltip="This is a live event"  *ngIf="post.live">follow_the_signs</div>
                       <div class="material-icons b" matTooltip="This event has a cost" *ngIf="post.paymentService ">attach_money</div>
+                      <div class="material-icons b" matTooltip="This event is free" *ngIf="post.nopaymentService ">money_off</div>
+
                       <div class="material-icons b" matTooltip="This is a virtual event" 
                       *ngIf="post.virtual">photo_camera_front</div>
   
