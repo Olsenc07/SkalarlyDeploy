@@ -97,10 +97,10 @@ export class ReusableCardUserFollowerComponent implements OnInit {
 
   isLoading = false;
 
-  infos: AuthDataInfo[] = [];
-  private infosSub: Subscription;
+  // infos: AuthDataInfo[] = [];
+  // private infosSub: Subscription;
 
-  follow: Follow[] = [];
+  follower: Follow[] = [];
   private followSub: Subscription;
 
   constructor(
@@ -120,20 +120,21 @@ export class ReusableCardUserFollowerComponent implements OnInit {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
     //    Info
-    this.authService.getInfo();
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        this.isLoading = false;
-      });
+    // this.authService.getInfo();
+    // this.infosSub = this.authService
+    //   .getInfoUpdateListener()
+    //   .subscribe((infos: AuthDataInfo[]) => {
+    //     this.infos = infos;
+    //     this.isLoading = false;
+    //   });
     // following info
     this.followService.getMessageNotificationFollowed(this.userId);
     this.followSub = this.followService
-      .getInfoUpdateListener()
-      .subscribe((follow: Follow[]) => {
-        this.follow = follow;
+      .getInfoFollowUpdateListener()
+      .subscribe((follower: Follow[]) => {
+        this.follower = follower;
         this.isLoading = false;
+        console.log('smoke', follower);
       });
   }
   navigateToPage(Following: string): any {

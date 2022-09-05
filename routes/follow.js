@@ -18,7 +18,6 @@ const FOLLOW = new Follow({
     ProfilePicPathFollower: user.ProfilePicPath,
 
     Following: req.query.username,  
-    usernameFollowing: otherUser.name,
     nameFollowing: otherUser.name,
     ProfilePicPathFollowing: otherUser.ProfilePicPath
 })
@@ -35,11 +34,11 @@ FOLLOW.save().then(createdFollow => {
 router.get("/followInfo", async(req, res, next) => {
 await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
-    console.log('test 1_', user)
+   
 
- Follow.find({nameFollower: user.username})
+ Follow.find({usernameFollower: user.username})
 .then(follows => {
-    console.log('test 2_', user)
+    console.log('test 2_', follows)
 
     res.status(200).json({
         message: 'Follows fetched succesfully!',
@@ -75,8 +74,8 @@ router.delete("/unFollow/:id", (req, res, next ) => {
 router.get("/followerInfo", async(req, res, next) => {
     await userInfo.findOne({Creator: req.query.userId})
     .then(user => {
-        console.log('test 1', user)
-     Follow.find({nameFollower: user.name})
+
+     Follow.find({Following: user.username})
     .then(follows => {
         console.log('test 2', follows)
 

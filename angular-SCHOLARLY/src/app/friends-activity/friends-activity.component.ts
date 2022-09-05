@@ -70,7 +70,7 @@ export class FriendsActivityComponent implements OnInit {
     // following info
     this.followService.getMessageNotificationFollowed(this.userId);
     this.followSubFollowers = this.followService
-      .getInfoUpdateListener()
+      .getInfoFollowUpdateListener()
       .subscribe((followers: Follow[]) => {
         this.followers = followers;
       });

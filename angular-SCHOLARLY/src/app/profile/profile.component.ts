@@ -33,6 +33,9 @@ export class ProfileComponent implements OnInit {
   follow: Follow[] = [];
   private followSub: Subscription;
 
+  followers: Follow[] = [];
+  private followersSub: Subscription;
+
   userId: string;
   userIsAuthenticated = false;
   // private authStatusSubs: Subscription;
@@ -107,6 +110,13 @@ export class ProfileComponent implements OnInit {
       .getInfoUpdateListener()
       .subscribe((follow: Follow[]) => {
         this.follow = follow;
+      });
+    // Followers
+    this.followService.getMessageNotificationFollowed(this.userId);
+    this.followSub = this.followService
+      .getInfoFollowUpdateListener()
+      .subscribe((followers: Follow[]) => {
+        this.followers = followers;
       });
   }
 

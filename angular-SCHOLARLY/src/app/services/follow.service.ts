@@ -36,6 +36,9 @@ export class FollowService {
   getInfoUpdateListener(): any {
     return this.followPostUpdated.asObservable();
   }
+  getInfoFollowUpdateListener(): any {
+    return this.followerPostUpdated.asObservable();
+  }
   postInfoFollow(userId: string, username: string): any {
     console.log('chazzz', username);
     this.http
@@ -47,6 +50,7 @@ export class FollowService {
         map((infosData) => {
           return infosData.infos.map((info) => {
             return {
+              id: info._id,
               Follower: info.Follower,
               nameFollower: info.nameFollower,
               usernameFollower: info.usernameFollower,
@@ -77,6 +81,7 @@ export class FollowService {
         map((messageData) => {
           return messageData.messages.map((data) => {
             return {
+              id: data._id,
               Follower: data.Follower,
               nameFollower: data.nameFollower,
               usernameFollower: data.usernameFollower,
@@ -106,6 +111,7 @@ export class FollowService {
         map((messageData) => {
           return messageData.messages.map((data) => {
             return {
+              id: data._id,
               Follower: data.Follower,
               nameFollower: data.nameFollower,
               usernameFollower: data.usernameFollower,

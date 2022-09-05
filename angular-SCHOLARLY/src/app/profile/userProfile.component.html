@@ -110,6 +110,7 @@
             Followers
             <!-- Counter -->
             {{info.followers}}
+            
           </div>
           <div class="centerR">
             Following
@@ -354,6 +355,7 @@
                     <mat-chip  *ngIf="info.CodeCompleted35" class="style" color="primary" selected >
                       {{ info.CodeCompleted35 }}
                     </mat-chip>
+                    
                     <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted36" style="color: #88c4f9; margin-top:4%">
                     </span>
                     <mat-chip *ngIf="info.CodeCompleted36"  class="style" color="primary" selected >
@@ -425,6 +427,8 @@
                       {{ info.CodePursuing5 }}
                     </mat-chip>
                     </div>
+                  <mat-divider *ngIf="info.CodePursuing6 "></mat-divider>
+
                     </div>
                     <div>
                     <span class="fas fa-snowflake centerIcon" *ngIf="info.CodePursuing6" style="color: #88c4f9; margin-top:4%">
@@ -446,6 +450,8 @@
                       {{ info.CodePursuing10 }}
                     </mat-chip>
                   </div>
+                  <mat-divider *ngIf="info.CodePursuing11 "></mat-divider>
+
                 </div>
                 <div>
                      <span class="fas fa-seedling centerIcon" *ngIf="info.CodePursuing11" style="color: cadetblue; margin-top:4%">
@@ -457,6 +463,7 @@
                     <mat-chip *ngIf="info.CodePursuing12" class="style" color="primary" selected >
                       {{ info.CodePursuing12 }}
                     </mat-chip>
+                    <mat-divider *ngIf="info.CodePursuing13 "></mat-divider>
                     <span class="fas fa-sun" *ngIf="info.CodePursuing13" style="color: #d89163; margin-top:4%">
                     </span>
                     <mat-chip *ngIf="info.CodePursuing13" class="style" color="primary" selected >
