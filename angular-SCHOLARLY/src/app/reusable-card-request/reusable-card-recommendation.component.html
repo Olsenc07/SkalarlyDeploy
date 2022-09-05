@@ -26,12 +26,10 @@
                     {{info.name}}
             </div>
                 <button mat-button type="button" 
-                class="userName link" id="userName"  (click)="navigateToPage(info.username)" >
-                    
+                class="userName link" id="userName" matTooltip="View profile" 
+                (click)="navigateToPage(info.username)" >
                     @{{ info.username}}
-
                 </button>
-                
                 </div>
             </div>
 

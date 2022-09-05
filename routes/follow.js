@@ -53,7 +53,29 @@ await userInfo.findOne({Creator: req.query.userId})
     })
 })
 })
-
+// Get following other
+router.get("/followInfoOther", async(req, res, next) => {
+    await userInfo.findOne({username: req.query.id})
+    .then(user => {
+       
+    
+     Follow.find({usernameFollower: user.username})
+    .then(follows => {
+        console.log('test 2_', follows)
+    
+        res.status(200).json({
+            message: 'Follows fetched succesfully!',
+            messages: follows
+        });
+    })
+    })
+    .catch(err => {
+        return res.status(401).json({
+            message: "Invalid following error!",
+    
+        })
+    })
+    })
 // following deleting
 router.delete("/unFollow/:id", (req, res, next ) => {
     Follow.deleteOne({_id: req.params.id}).then(result => {
@@ -73,6 +95,28 @@ router.delete("/unFollow/:id", (req, res, next ) => {
 // Get follower
 router.get("/followerInfo", async(req, res, next) => {
     await userInfo.findOne({Creator: req.query.userId})
+    .then(user => {
+
+     Follow.find({Following: user.username})
+    .then(follows => {
+        console.log('test 2', follows)
+
+        res.status(200).json({
+            message: 'Follows fetched succesfully!',
+            messages: follows
+        });
+    })
+    })
+    .catch(err => {
+        return res.status(401).json({
+            message: "Invalid following error!",
+    
+        })
+    })
+    })
+    // Get follower Other
+router.get("/followerInfoOther", async(req, res, next) => {
+    await userInfo.findOne({username: req.query.id})
     .then(user => {
 
      Follow.find({Following: user.username})

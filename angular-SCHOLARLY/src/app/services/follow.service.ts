@@ -135,6 +135,66 @@ export class FollowService {
         this.followerPostUpdated.next([...this.follower]);
       });
   }
+  getMessageNotificationFollowedOther(id: string): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'http://localhost:3000/api/follow/followerInfoOther',
+        {
+          params: { id },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((data) => {
+            return {
+              id: data._id,
+              Follower: data.Follower,
+              nameFollower: data.nameFollower,
+              usernameFollower: data.usernameFollower,
+              ProfilePicPathFollower: data.ProfilePicPathFollower,
+
+              Following: data.Following,
+              nameFollowing: data.nameFollowing,
+              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
+            };
+          });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.follower = transformedMessage;
+        this.followerPostUpdated.next([...this.follower]);
+      });
+  }
+  getMessageNotificationOther(id: string): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'http://localhost:3000/api/follow/followInfoOther',
+        {
+          params: { id },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((data) => {
+            return {
+              id: data._id,
+              Follower: data.Follower,
+              nameFollower: data.nameFollower,
+              usernameFollower: data.usernameFollower,
+              ProfilePicPathFollower: data.ProfilePicPathFollower,
+
+              Following: data.Following,
+              nameFollowing: data.nameFollowing,
+              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
+            };
+          });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.follower = transformedMessage;
+        this.followerPostUpdated.next([...this.follower]);
+      });
+  }
   // and maybe add userId
   getFollowingNotification(id: string, userId: string): any {
     console.log('sleepy', id);

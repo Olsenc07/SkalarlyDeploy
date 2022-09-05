@@ -143,10 +143,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ) {}
   isLoading = false;
   userId: string;
+  follow: Follow[] = [];
+  private followSub: Subscription;
+
+  followers: Follow[] = [];
+  private followersSub: Subscription;
 
   user: string;
   following: Follow[] = [];
-  private followSub: Subscription;
 
   private showCases: ShowCase[] = [];
   private infosSubShowCase: Subscription;
@@ -185,7 +189,20 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             this.Following = false;
           }
         });
-
+      // Following
+      this.followService.getMessageNotificationOther(id);
+      this.followSub = this.followService
+        .getInfoUpdateListener()
+        .subscribe((follow: Follow[]) => {
+          this.follow = follow;
+        });
+      // Followers
+      this.followService.getMessageNotificationFollowedOther(id);
+      this.followersSub = this.followService
+        .getInfoFollowUpdateListener()
+        .subscribe((followers: Follow[]) => {
+          this.followers = followers;
+        });
       // Infos
       this.authService.getOtherInfo(id);
       this.infosSub = this.authService
