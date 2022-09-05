@@ -145,6 +145,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   userId: string;
   follow: Follow[] = [];
   private followSub: Subscription;
+  private followSubs: Subscription;
 
   followers: Follow[] = [];
   private followersSub: Subscription;
@@ -191,8 +192,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         });
       // Following
       this.followService.getMessageNotificationOther(id);
-      this.followSub = this.followService
-        .getInfoUpdateListener()
+      this.followSubs = this.followService
+        .getInfoFollowingUpdateListener()
         .subscribe((follow: Follow[]) => {
           this.follow = follow;
         });

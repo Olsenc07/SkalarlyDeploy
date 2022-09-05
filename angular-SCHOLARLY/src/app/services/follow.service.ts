@@ -29,6 +29,8 @@ export class FollowService {
   private following: Follow[] = [];
   private followingPostUpdated = new ReplaySubject<Follow[]>();
 
+  private followingInfoPostUpdated = new ReplaySubject<Follow[]>();
+
   private userId: string;
 
   constructor(
@@ -38,6 +40,9 @@ export class FollowService {
   ) {}
   getInfoUpdateListener(): any {
     return this.followPostUpdated.asObservable();
+  }
+  getInfoFollowingUpdateListener(): any {
+    return this.followingInfoPostUpdated.asObservable();
   }
   getInfoFollowUpdateListener(): any {
     return this.followerPostUpdated.asObservable();
@@ -192,7 +197,7 @@ export class FollowService {
       )
       .subscribe((transformedMessage) => {
         this.follower = transformedMessage;
-        this.followerPostUpdated.next([...this.follower]);
+        this.followingInfoPostUpdated.next([...this.follower]);
       });
   }
   // and maybe add userId
