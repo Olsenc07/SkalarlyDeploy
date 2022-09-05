@@ -26,6 +26,9 @@ export class FollowService {
   private follower: Follow[] = [];
   private followerPostUpdated = new ReplaySubject<Follow[]>();
 
+  private following: Follow[] = [];
+  private followingPostUpdated = new ReplaySubject<Follow[]>();
+
   private userId: string;
 
   constructor(
@@ -38,6 +41,9 @@ export class FollowService {
   }
   getInfoFollowUpdateListener(): any {
     return this.followerPostUpdated.asObservable();
+  }
+  getFollowingUpdateListener(): any {
+    return this.followingPostUpdated.asObservable();
   }
   postInfoFollow(userId: string, username: string): any {
     console.log('chazzz', username);
@@ -127,6 +133,40 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         this.follower = transformedMessage;
         this.followerPostUpdated.next([...this.follower]);
+      });
+  }
+  // and maybe add userId
+  getFollowingNotification(id: string, userId: string): any {
+    console.log('sleepy', id);
+    console.log('night', userId);
+
+    this.http
+      .get<{ message: string; messages: any }>(
+        'http://localhost:3000/api/follow/followingInfo',
+        {
+          params: { id, userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((data: any) => {
+            return {
+              id: data._id,
+              Follower: data.Follower,
+              nameFollower: data.nameFollower,
+              usernameFollower: data.usernameFollower,
+              ProfilePicPathFollower: data.ProfilePicPathFollower,
+
+              Following: data.Following,
+              nameFollowing: data.nameFollowing,
+              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
+            };
+          });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.following = transformedMessage;
+        this.followingPostUpdated.next([...this.following]);
       });
   }
   deleteFollow(followId: string): any {

@@ -16,11 +16,15 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FollowService } from '../services/follow.service';
 
 export interface Follow {
+  id: string;
   Follower: string;
+  nameFollower: string;
+  usernameFollower: string;
+  ProfilePicPathFollower: string;
+
   Following: string;
-  name: string;
-  username: string;
-  ProfilePicPath: string;
+  nameFollowing: string;
+  ProfilePicPathFollowing: string;
 }
 /** @title Sidenav open & close behavior */
 @Component({
@@ -113,19 +117,12 @@ export class ProfileComponent implements OnInit {
       });
     // Followers
     this.followService.getMessageNotificationFollowed(this.userId);
-    this.followSub = this.followService
+    this.followersSub = this.followService
       .getInfoFollowUpdateListener()
       .subscribe((followers: Follow[]) => {
         this.followers = followers;
       });
   }
-
-  // this.Com
-
-  // ngOnDestroy(): any {
-  //   this.postsSub.unsubscribe();
-  //   this.authListenerSubs.unsubscribe();
-  // }
 }
 
 /** @title Sidenav open & close behavior */
@@ -134,17 +131,22 @@ export class ProfileComponent implements OnInit {
   templateUrl: './userProfile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit, OnDestroy {
   constructor(
     private bottomSheet: MatBottomSheet,
     public postService: PostService,
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private showCaseService: ShowCaseService
+    private showCaseService: ShowCaseService,
+    private followService: FollowService
   ) {}
   isLoading = false;
+  userId: string;
+
   user: string;
+  following: Follow[] = [];
+  private followSub: Subscription;
 
   private showCases: ShowCase[] = [];
   private infosSubShowCase: Subscription;
@@ -161,13 +163,29 @@ export class UserProfileComponent implements OnInit {
 
   showFiller = false;
   // TODO: initial following value would need to be loaded from database - for now, always start with false
-  following = false;
+  Following: boolean;
 
   ngOnInit(): any {
+    this.userId = this.authService.getUserId();
     this.isLoading = true;
     this.route.queryParams.subscribe((params) => {
       this.user = params.id;
       const id = this.user;
+      // If following
+      this.followService.getFollowingNotification(id, this.userId);
+      this.followSub = this.followService
+        .getFollowingUpdateListener()
+        .subscribe((following: Follow[]) => {
+          this.isLoading = false;
+          console.log('loggin', this.following);
+          this.following = following;
+          if (this.following.length) {
+            this.Following = true;
+          } else {
+            this.Following = false;
+          }
+        });
+
       // Infos
       this.authService.getOtherInfo(id);
       this.infosSub = this.authService
@@ -184,7 +202,19 @@ export class UserProfileComponent implements OnInit {
         });
     });
   }
-
+  ngOnDestroy(): any {
+    this.infosSubShowCase.unsubscribe();
+    this.followSub.unsubscribe();
+    this.infosSub.unsubscribe();
+  }
+  followClicked(username: string): any {
+    this.Following = true;
+    this.followService.postInfoFollow(this.userId, username);
+  }
+  onUnfololow(followId: string): any {
+    this.Following = false;
+    this.followService.deleteFollowers(followId);
+  }
   skalarMsg(username: string): void {
     console.log('username', username);
     this.router.navigate(['/messages/:'], {

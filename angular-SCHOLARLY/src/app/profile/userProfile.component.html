@@ -147,16 +147,27 @@
               <div class="pronouns">
               ({{ info.pronouns}})
                 </div>
-              <mat-chip-list  class="center_"
+
+                <div class="center_" *ngIf="Following === false">
+              <mat-chip-list  class="center_" 
                 aria-label="FollowBtn">
-                <mat-chip class="messageM" (click)="followClicked()">
+                <mat-chip color='warn' selected class="messageM" matTooltip="Follow"
+                 (click)="followClicked(info.username)"  >
+                 Follow
+                </mat-chip>
+                </mat-chip-list>
+              </div>
 
-                  {{ following ? "Unfollow" : "Follow" }}
-
-                  <!-- Switches to Unfollow btn option  -->
+              <div class="center_" *ngIf="Following === true">
+                <mat-chip-list  class="center_" *ngFor="let follow of following"
+                aria-label="FollowBtn">
+                <mat-chip color='warn' selected class="messageM" matTooltip="Unfollow"
+                 (click)="onUnfololow(follow.id)" *ngIf="userId == follow.Follower" >
+                 Following
 
                 </mat-chip>
               </mat-chip-list>
+              </div>
             </div>
 
           </div>

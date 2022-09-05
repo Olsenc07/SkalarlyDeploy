@@ -134,7 +134,6 @@ export class ReusableCardUserFollowerComponent implements OnInit {
       .subscribe((follower: Follow[]) => {
         this.follower = follower;
         this.isLoading = false;
-        console.log('smoke', follower);
       });
   }
   navigateToPage(Following: string): any {

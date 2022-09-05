@@ -92,6 +92,27 @@ router.get("/followerInfo", async(req, res, next) => {
         })
     })
     })
+    // Get following notif
+router.get("/followingInfo", async(req, res, next) => {
+    console.log(req.query.userId)
+    console.log(req.query.id)
+
+    await Follow.find({ and: [ {Following: req.query.id}, 
+        {Follower: req.query.userId}]})
+    .then(following => {
+        console.log('test 2', following)
+        res.status(200).json({
+            message: 'Follows fetched succesfully!',
+            messages: following
+        });
+    })
+    .catch(err => {
+        return res.status(401).json({
+            message: "Invalid following error!",
+    
+        })
+    })
+    })
 // follower deleting
 router.delete("/unFollower/:id", (req, res, next ) => {
     Follow.deleteOne({_id: req.params.id}).then(result => {
