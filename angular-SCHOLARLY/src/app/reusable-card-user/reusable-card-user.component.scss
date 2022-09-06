@@ -47,6 +47,7 @@
 .column_ {
   display: flex;
   flex-direction: column;
+  margin-left: 2%;
 }
 .classes {
   display: flex;
@@ -113,7 +114,16 @@
   box-sizing: border-box;
   border-radius: 25px;
   // box-shadow: 0 0 0 1px grey;
-  box-shadow: 0 0 2px;
+  margin: 1% 2% 1%;;
+}
+.row1_ {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 25px;
+  // box-shadow: 0 0 0 1px grey;
+  box-shadow: 1px 0px 4px #c0cbe0;
   margin: 1% 2% 1%;;
 }
 .row_ {

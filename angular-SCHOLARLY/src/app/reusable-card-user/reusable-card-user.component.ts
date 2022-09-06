@@ -229,7 +229,8 @@ export class ReusableCardMutualComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private followService: FollowService
+    private followService: FollowService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -251,6 +252,10 @@ export class ReusableCardMutualComponent implements OnInit {
         this.isLoading = false;
       });
   }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
 }
 @Component({
   selector: 'app-card-mutuals',
@@ -269,7 +274,8 @@ export class ReusableCardMutualsComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private followService: FollowService
+    private followService: FollowService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -290,5 +296,9 @@ export class ReusableCardMutualsComponent implements OnInit {
         this.mutuals = mutuals;
         this.isLoading = false;
       });
+  }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
 }
