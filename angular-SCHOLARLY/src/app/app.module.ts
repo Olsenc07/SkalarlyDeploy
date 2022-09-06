@@ -112,6 +112,8 @@ import { ReusableCardUserComponent } from './reusable-card-user/reusable-card-us
 import { ReusableCardUserFollowerComponent } from './reusable-card-user/reusable-card-user.component';
 
 import { ReusableCardMutualComponent } from './reusable-card-user/reusable-card-user.component';
+import { ReusableCardMutualsComponent } from './reusable-card-user/reusable-card-user.component';
+
 import { ReusableCardMessageComponent } from './reusable-card-user/reusable-card-user.component';
 import { ReusableCardConvoComponent } from './reusable-card-convo/reusable-card-convo.component';
 import { ErrorComponent } from './error/error.component';
@@ -186,6 +188,7 @@ import { ErrorInterceptor } from './error-interceptor';
     ReusableCardUserComponent,
     ReusableCardUserFollowerComponent,
     ReusableCardMutualComponent,
+    ReusableCardMutualsComponent,
     ReusableCardMessageComponent,
     ReusableCardConvoComponent,
     TaggedComponent,

@@ -103,8 +103,8 @@
 .row {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  // justify-content: center;
+  // justify-content: space-around;
+  justify-content: center;
 }
 .row1 {
   display: flex;
@@ -113,8 +113,8 @@
   box-sizing: border-box;
   border-radius: 25px;
   // box-shadow: 0 0 0 1px grey;
-      box-shadow: 0 0 2px;
-      margin: 2% 2%;
+  box-shadow: 0 0 2px;
+  margin: 1% 2% 1%;;
 }
 .row_ {
   display: flex;

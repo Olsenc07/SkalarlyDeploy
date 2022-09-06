@@ -1,45 +1,42 @@
-<div class="spinner" *ngIf="isLoading">
-    <mat-spinner ></mat-spinner>
-  </div>
-
-  
-<mat-card class="row1" *ngFor="let info of follower">
+<mat-card class="row1"  *ngFor="let info of mutuals">
+    <div class="column" >
+        <div class="row">
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPathFollower">
                     <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
                     <img class="fit" src="{{info.ProfilePicPathFollower}}">
                 </div>
-
-        <div class="row" >
-             
-            
+            </div>
             <div class="column_">
                 <div class="userName textSize" *ngIf="info.nameFollower">
                     <!-- {{ (profile | async)?.Pronouns}} -->
                     {{info.nameFollower}}
                 </div>
+                <div>
                     <!-- Directs to users profile -->
                     <button mat-button class="center-" (click)="navigateToPage(info.usernameFollower)">
                         @{{ info.usernameFollower }}
                     </button>
-       
+                </div>
                 <!-- <mat-card-subtitle class="gender textSize">
                                 {{id.Gender}}
                             </mat-card-subtitle> -->
             </div>
-            </div>
-</div>
-            <!-- Mutual friends appear based of username following list comparison -->
-<div class="classes">
-            <div class="center_">
-                <button mat-icon-button class="center__" (click)='onMututal(info.usernameFollower)' matTooltip="Skalars Friends"><i class="material-icons">handshake</i></button>
-            </div>
 
-            <div>
-                <button mat-icon-button class="remove_friend" (click)='onDelete(info.id)'  matTooltip="Remove Follower">  <i class="material-icons">person_remove</i></button>
-            </div>
-            
-</div>
+
+            <!-- Card is removed from list when follow is clicked -->
+            <!-- Only appears if user isn't already following this mutual friend -->
+            <!-- <mat-chip-list class="center_" aria-label="FollowBtn">
+                <!-- (click)="followClicked()" --
+                <mat-chip class="messageM">
+                    Follow
+
+                    <!-- {{ following ? "Unfollow" : "Follow" }} --
+
+
+
+                </mat-chip>
+            </mat-chip-list> -->
 
 
 
@@ -48,20 +45,19 @@
                             <button mat-icon-button class="btn"> <i class="far fa-times-circle red"></i></button>
                         </div> -->
 
+        </div>
 
         <!-- <div class="row">
             <div [ngClass]="info.sport || info.club ? 'center' : 'centerEmpty' "
                 *ngIf=" info.major || info.minor ">
                 <div class=" center1" *ngIf="info.major">
 
-                    <i class="fas fa-star large">{{ info.major}}</i>
+                    <i class="fas fa-star large">{{info.major}}</i>
 
                 </div>
                 <div class="center1" *ngIf="info.minor">
 
-                    <i class="far fa-star large">
-                        {{ info.minor}}
-                    </i>
+                    <i class="far fa-star large">{{info.minor}}</i>
 
                 </div>
             </div>
@@ -80,10 +76,5 @@
             </div>
 
         </div> -->
-
-
-
-
-
-
+    </div>
 </mat-card>

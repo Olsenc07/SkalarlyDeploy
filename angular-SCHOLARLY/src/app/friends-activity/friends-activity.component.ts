@@ -28,7 +28,11 @@ export class FriendsActivityComponent implements OnInit {
   private authListenerSubs: Subscription;
   follow: Follow[] = [];
   followers: Follow[] = [];
+  mutual: Follow[] = [];
+  private mutualSub: Subscription;
 
+  mutuals: Follow[] = [];
+  private mutualsSub: Subscription;
   private followSub: Subscription;
   private followSubFollowers: Subscription;
 
@@ -73,6 +77,18 @@ export class FriendsActivityComponent implements OnInit {
       .getInfoFollowUpdateListener()
       .subscribe((followers: Follow[]) => {
         this.followers = followers;
+      });
+    // mutual info following
+    this.mutualSub = this.followService
+      .getInfoMutualUpdateListener()
+      .subscribe((mutual: Follow[]) => {
+        this.mutual = mutual;
+      });
+    // mutual info followers
+    this.mutualsSub = this.followService
+      .getInfoMutualsUpdateListener()
+      .subscribe((mutuals: Follow[]) => {
+        this.mutuals = mutuals;
       });
   }
 }

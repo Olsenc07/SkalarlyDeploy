@@ -6,7 +6,7 @@
 
 
       <div class="row" >
-        <div class="title">Other Skalars Friends</div>
+        <div class="title"> Skalars Following {{mutual.length}}</div> 
       </div>
 
       <div class="fit_"  >
@@ -28,40 +28,30 @@
     <button type="submit"><span class="material-icons">search</span></button>
   </form>
 </div> -->
-      
-        <div class="mutual-box">
-
-
-          <div class="follow-m" >
-
 
             <div class="message">
-              Click The Hand Shake Icon On Your Friends Lists To Display Other Skalars Friends
-              <i class="material-icons messageIcon ">handshake</i>
-              <div class="remove_explained">
+              Click <i class="material-icons messageIcon ">handshake</i>
+             Too Display Skalars Friends
+              <!-- <div class="remove_explained">
            To remove a user from a list, click
               <i class="material-icons remove_icon">person_remove</i>
             
-</div>
+</div> -->
 
             </div>
-
-
-          </div>
-
-
-          <!-- <div class="follow-m" *ngIf=" (userId !== info.Creator)">
-            <-- <app-card-mutual   class="width"></app-card-mutual> --
-          </div> -->
-        </div>
-
-
-
 
       </div>
 
 
+      <div class="row" >
+        <div class="title"> Skalars Followers {{mutuals.length}}</div> 
+      </div>
 
+      <div class="fit_"  >
+        <app-card-mutuals class="adds" >
+        
+        </app-card-mutuals>
+      </div>
 
 
 

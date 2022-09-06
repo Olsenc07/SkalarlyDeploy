@@ -4,8 +4,6 @@
 
   
 <mat-card class="row1" *ngFor="let info of follow">
-    <div class="column" >
-        <div class="row" >
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPathFollowing">
                     <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
@@ -13,27 +11,31 @@
                 </div>
 
              
-            </div>
+        <div class="row" >
+
             <div class="column_">
                 <div class="userName textSize" *ngIf="info.nameFollowing">
                     <!-- {{ (profile | async)?.Pronouns}} -->
                     {{info.nameFollowing}}
                 </div>
-                <div>
+                
                     <!-- Directs to users profile -->
                     <button mat-button class="center-" (click)="navigateToPage(info.Following)">
                         @{{ info.Following }}
                     </button>
-                </div>
+                
                 <!-- <mat-card-subtitle class="gender textSize">
                                 {{id.Gender}}
-                            </mat-card-subtitle> -->
+               
+                         </mat-card-subtitle> -->
             </div>
+            </div>
+        </div>
 
             <!-- Mutual friends appear based of username following list comparison -->
 <div class="classes">
             <div class="center_">
-                <button mat-icon-button class="center__" (click)='onMututal(info.Following)' matTooltip="Mututal friends"><i class="material-icons">handshake</i></button>
+                <button mat-icon-button class="center__" (click)='onMututal(info.Following)' matTooltip="Skalars Friends"><i class="material-icons">handshake</i></button>
             </div>
 
             <div>
@@ -44,48 +46,5 @@
 
 
 
-            <!-- <div class="row1"><button mat-icon-button class="btn"><i class="far fa-check-circle green"></i></button>
-            
-                            <button mat-icon-button class="btn"> <i class="far fa-times-circle red"></i></button>
-                        </div> -->
-
-        </div>
-
-        <!-- <div class="row">
-            <div [ngClass]="info.sport || info.club ? 'center' : 'centerEmpty' "
-                *ngIf=" info.major || info.minor ">
-                <div class=" center1" *ngIf="info.major">
-
-                    <i class="fas fa-star large">{{ info.major}}</i>
-
-                </div>
-                <div class="center1" *ngIf="info.minor">
-
-                    <i class="far fa-star large">
-                        {{ info.minor}}
-                    </i>
-
-                </div>
-            </div>
-
-
-            <div [ngClass]="info.major || info.minor ? 'center' : 'centerEmpty' "
-                *ngIf="info.sport || info.club ">
-                <div class="center1" *ngIf="info.sport">
-                    <!-- {{id.Sport}} --
-                    {{info.sport}}
-                </div>
-                <div class="center1" *ngIf="info.club">
-                    <!-- {{id.Club}} --
-                    {{info.club}}
-                </div>
-            </div>
-
-        </div> -->
-
-
-
-
-    </div>
 
 </mat-card>

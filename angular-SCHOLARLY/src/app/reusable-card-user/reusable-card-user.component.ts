@@ -87,6 +87,7 @@ export class ReusableCardUserComponent implements OnInit {
   onMututal(username: string): any {
     console.log('chaz whats up homie k', username);
     this.followService.mutualFollow(username, this.userId);
+    this.followService.mutualsFollow(username, this.userId);
   }
 }
 @Component({
@@ -148,6 +149,11 @@ export class ReusableCardUserFollowerComponent implements OnInit {
   onDelete(followId: string): any {
     this.followService.deleteFollowers(followId);
     console.log('chaz whats up homie g', followId);
+  }
+  onMututal(username: string): any {
+    console.log('chaz whats up homie n', username);
+    this.followService.mutualFollow(username, this.userId);
+    this.followService.mutualsFollow(username, this.userId);
   }
 }
 @Component({
@@ -219,7 +225,7 @@ export class ReusableCardMutualComponent implements OnInit {
   isLoading = false;
 
   mutual: Follow[] = [];
-  private infosSub: Subscription;
+  private mutualSub: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -236,6 +242,53 @@ export class ReusableCardMutualComponent implements OnInit {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
+      });
+    // following info
+    this.mutualSub = this.followService
+      .getInfoMutualUpdateListener()
+      .subscribe((mutual: Follow[]) => {
+        this.mutual = mutual;
+        this.isLoading = false;
+      });
+  }
+}
+@Component({
+  selector: 'app-card-mutuals',
+  templateUrl: './reusable-card-mutuals.component.html',
+  styleUrls: ['./reusable-card-user.component.scss'],
+})
+export class ReusableCardMutualsComponent implements OnInit {
+  userId: string;
+  userIsAuthenticated = false;
+  private authListenerSubs: Subscription;
+
+  isLoading = false;
+
+  mutuals: Follow[] = [];
+  private mutualsSub: Subscription;
+
+  constructor(
+    private authService: AuthService,
+    private followService: FollowService
+  ) {}
+
+  ngOnInit() {
+    this.isLoading = true;
+    this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
+        // Can add *ngIf="userIsAuthenticated" to hide items
+      });
+    // following info
+    this.mutualsSub = this.followService
+      .getInfoMutualsUpdateListener()
+      .subscribe((mutuals: Follow[]) => {
+        this.mutuals = mutuals;
+        this.isLoading = false;
       });
   }
 }

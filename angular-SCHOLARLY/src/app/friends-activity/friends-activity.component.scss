@@ -8,6 +8,7 @@
   display: flex;
   margin: 1% 0%;
   justify-content: center;
+  overflow-y: scroll;
   flex-direction: column;
 }
 .background {
@@ -108,8 +109,7 @@
 }
 .message {
   display: flex;
-  margin-top: 2%;
-  flex-direction: column;
+  margin: 1% 0%;
   justify-content: center;
   text-align: center;
   font-family:  'Poppins', sans-serif;
@@ -136,6 +136,8 @@
     margin: 1% 1% 1% 2%;
     box-sizing: border-box;
     width: 50%;
+    height: 100%;
+    align-items: center;
   }
 }
 @media (max-width: 1024px) {
@@ -171,7 +173,7 @@
   .hide {
     width: 100%;
     box-sizing: border-box;
-    height: 70%;
+    // height: 70%;
     display: flex;
     flex-direction: column;
     margin-top: 3%;
@@ -213,13 +215,14 @@
 }
 .fit_ {
   display: flex;
-  height: 25%;
+  height: 32%;
   border-radius: 25px;
   box-shadow: 0 0 11px grey;
   margin-top: 1%;
-  width: 100%;
+  align-content: center;
+  width: 75%;
   flex-direction: column;
-  justify-content: center;
+  // justify-content: center;
 }
 .friend_count {
   display: flex;

@@ -35,6 +35,9 @@ export class FollowService {
   private mutualInfo: Follow[] = [];
   private mutualInfoPostUpdated = new ReplaySubject<Follow[]>();
 
+  private mutualsInfo: Follow[] = [];
+  private mutualsInfoPostUpdated = new ReplaySubject<Follow[]>();
+
   private userId: string;
 
   constructor(
@@ -56,6 +59,9 @@ export class FollowService {
   }
   getInfoMutualUpdateListener(): any {
     return this.mutualInfoPostUpdated.asObservable();
+  }
+  getInfoMutualsUpdateListener(): any {
+    return this.mutualsInfoPostUpdated.asObservable();
   }
   postInfoFollow(userId: string, username: string): any {
     this.http
@@ -240,7 +246,7 @@ export class FollowService {
         this.followingInfoPostUpdated.next([...this.followingInfo]);
       });
   }
-
+  // skalars following
   mutualFollow(username: string, userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
@@ -267,11 +273,41 @@ export class FollowService {
         })
       )
       .subscribe((transformedMessage) => {
-        this.followingInfo = transformedMessage;
-        this.followingInfoPostUpdated.next([...this.followingInfo]);
+        this.mutualInfo = transformedMessage;
+        this.mutualInfoPostUpdated.next([...this.mutualInfo]);
       });
   }
+  // skalars followers
+  mutualsFollow(username: string, userId: string): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'http://localhost:3000/api/follow/mutualsFollow',
+        {
+          params: { username, userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((data: any) => {
+            return {
+              id: data._id,
+              Follower: data.Follower,
+              nameFollower: data.nameFollower,
+              usernameFollower: data.usernameFollower,
+              ProfilePicPathFollower: data.ProfilePicPathFollower,
 
+              Following: data.Following,
+              nameFollowing: data.nameFollowing,
+              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
+            };
+          });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.mutualsInfo = transformedMessage;
+        this.mutualsInfoPostUpdated.next([...this.mutualsInfo]);
+      });
+  }
   deleteFollow(followId: string): any {
     // console.log('hey chase postId', postId);
     this.http

@@ -96,6 +96,28 @@ router.get("/mutualFollow", async(req, res, next) => {
        })
    })
    })
+       // Get followers other
+router.get("/mutualsFollow", async(req, res, next) => {
+    console.log('Ones', req.query.username);
+    console.log('Twos', req.query.userId);
+
+    await Follow.find(
+         {Following: req.query.username}
+         )
+   .then(follows => {
+       console.log('test 4s', follows)
+       res.status(200).json({
+           message: 'Follows fetched succesfully!',
+           messages: follows
+       });
+   })
+   .catch(err => {
+       return res.status(401).json({
+           message: "Invalid following error!",
+   
+       })
+   })
+   })
 // following deleting
 router.delete("/unFollow/:id", (req, res, next ) => {
     Follow.deleteOne({_id: req.params.id}).then(result => {
