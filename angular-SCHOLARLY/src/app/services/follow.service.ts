@@ -32,6 +32,9 @@ export class FollowService {
   private followingInfo: Follow[] = [];
   private followingInfoPostUpdated = new ReplaySubject<Follow[]>();
 
+  private mutualInfo: Follow[] = [];
+  private mutualInfoPostUpdated = new ReplaySubject<Follow[]>();
+
   private userId: string;
 
   constructor(
@@ -50,6 +53,9 @@ export class FollowService {
   }
   getFollowingUpdateListener(): any {
     return this.followingPostUpdated.asObservable();
+  }
+  getInfoMutualUpdateListener(): any {
+    return this.mutualInfoPostUpdated.asObservable();
   }
   postInfoFollow(userId: string, username: string): any {
     this.http
@@ -234,6 +240,38 @@ export class FollowService {
         this.followingInfoPostUpdated.next([...this.followingInfo]);
       });
   }
+
+  mutualFollow(username: string, userId: string): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'http://localhost:3000/api/follow/mutualFollow',
+        {
+          params: { username, userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((data: any) => {
+            return {
+              id: data._id,
+              Follower: data.Follower,
+              nameFollower: data.nameFollower,
+              usernameFollower: data.usernameFollower,
+              ProfilePicPathFollower: data.ProfilePicPathFollower,
+
+              Following: data.Following,
+              nameFollowing: data.nameFollowing,
+              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
+            };
+          });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.followingInfo = transformedMessage;
+        this.followingInfoPostUpdated.next([...this.followingInfo]);
+      });
+  }
+
   deleteFollow(followId: string): any {
     // console.log('hey chase postId', postId);
     this.http

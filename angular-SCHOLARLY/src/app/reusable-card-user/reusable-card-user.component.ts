@@ -84,6 +84,10 @@ export class ReusableCardUserComponent implements OnInit {
     this.followService.deleteFollow(followId);
     console.log('chaz whats up homie g', followId);
   }
+  onMututal(username: string): any {
+    console.log('chaz whats up homie k', username);
+    this.followService.mutualFollow(username, this.userId);
+  }
 }
 @Component({
   selector: 'app-card-user-follower',
@@ -214,10 +218,13 @@ export class ReusableCardMutualComponent implements OnInit {
 
   isLoading = false;
 
-  infos: AuthDataInfo[] = [];
+  mutual: Follow[] = [];
   private infosSub: Subscription;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private followService: FollowService
+  ) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -229,14 +236,6 @@ export class ReusableCardMutualComponent implements OnInit {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
-      });
-    //    Info
-    this.authService.getInfo();
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        this.isLoading = false;
       });
   }
 }

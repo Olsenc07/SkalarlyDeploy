@@ -33,7 +33,7 @@
             <!-- Mutual friends appear based of username following list comparison -->
 <div class="classes">
             <div class="center_">
-                <button mat-icon-button class="center__"  matTooltip="Mututal friends"><i class="material-icons">handshake</i></button>
+                <button mat-icon-button class="center__" (click)='onMututal(info.Following)' matTooltip="Mututal friends"><i class="material-icons">handshake</i></button>
             </div>
 
             <div>
