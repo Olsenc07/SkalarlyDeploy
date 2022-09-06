@@ -29,6 +29,7 @@ export class FollowService {
   private following: Follow[] = [];
   private followingPostUpdated = new ReplaySubject<Follow[]>();
 
+  private followingInfo: Follow[] = [];
   private followingInfoPostUpdated = new ReplaySubject<Follow[]>();
 
   private userId: string;
@@ -51,7 +52,6 @@ export class FollowService {
     return this.followingPostUpdated.asObservable();
   }
   postInfoFollow(userId: string, username: string): any {
-    console.log('chazzz', username);
     this.http
       .get<{ message: string; infos: any }>(
         'http://localhost:3000/api/follow/infoFollow',
@@ -196,8 +196,8 @@ export class FollowService {
         })
       )
       .subscribe((transformedMessage) => {
-        this.follower = transformedMessage;
-        this.followingInfoPostUpdated.next([...this.follower]);
+        this.following = transformedMessage;
+        this.followingInfoPostUpdated.next([...this.following]);
       });
   }
   // and maybe add userId
@@ -230,8 +230,8 @@ export class FollowService {
         })
       )
       .subscribe((transformedMessage) => {
-        this.following = transformedMessage;
-        this.followingPostUpdated.next([...this.following]);
+        this.followingInfo = transformedMessage;
+        this.followingInfoPostUpdated.next([...this.followingInfo]);
       });
   }
   deleteFollow(followId: string): any {

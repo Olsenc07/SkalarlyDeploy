@@ -179,10 +179,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       // If following
       this.followService.getFollowingNotification(id, this.userId);
       this.followSub = this.followService
-        .getFollowingUpdateListener()
+        .getInfoFollowUpdateListener()
         .subscribe((following: Follow[]) => {
           this.isLoading = false;
-          console.log('loggin', this.following);
           this.following = following;
           if (this.following.length) {
             this.Following = true;
@@ -193,7 +192,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       // Following
       this.followService.getMessageNotificationOther(id);
       this.followSubs = this.followService
-        .getInfoFollowingUpdateListener()
+        .getFollowingUpdateListener()
         .subscribe((follow: Follow[]) => {
           this.follow = follow;
         });
@@ -224,6 +223,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.infosSubShowCase.unsubscribe();
     this.followSub.unsubscribe();
     this.infosSub.unsubscribe();
+    this.followersSub.unsubscribe();
   }
   followClicked(username: string): any {
     this.Following = true;

@@ -55,11 +55,7 @@ await userInfo.findOne({Creator: req.query.userId})
 })
 // Get following other
 router.get("/followInfoOther", async(req, res, next) => {
-    await userInfo.findOne({username: req.query.id})
-    .then(user => {
-       
-    
-     Follow.find({usernameFollower: user.username})
+     await Follow.findOne({usernameFollower: req.query.id})
     .then(follows => {
         console.log('test 2_', follows)
     
@@ -68,7 +64,7 @@ router.get("/followInfoOther", async(req, res, next) => {
             messages: follows
         });
     })
-    })
+
     .catch(err => {
         return res.status(401).json({
             message: "Invalid following error!",
