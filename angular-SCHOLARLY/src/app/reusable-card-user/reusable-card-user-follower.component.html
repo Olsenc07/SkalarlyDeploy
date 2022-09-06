@@ -3,7 +3,7 @@
   </div>
 
   
-<mat-card class="row1" *ngFor="let info of follower.slice().sort()">
+<mat-card class="row1" *ngFor="let info of follower.slice().reverse()">
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPathFollower">
                     <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
