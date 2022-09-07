@@ -74,9 +74,6 @@ router.get("/followInfoOther", async(req, res, next) => {
     })
     // Get following other
 router.get("/mutualFollow", async(req, res, next) => {
-    console.log('One', req.query.username);
-    console.log('Two', req.query.userId);
-
     await Follow.find(
          {usernameFollower: req.query.username}
          )
@@ -98,9 +95,6 @@ router.get("/mutualFollow", async(req, res, next) => {
    })
        // Get followers other
 router.get("/mutualsFollow", async(req, res, next) => {
-    console.log('Ones', req.query.username);
-    console.log('Twos', req.query.userId);
-
     await Follow.find(
          {Following: req.query.username}
          )

@@ -56,10 +56,9 @@ export class ReusableCardRequestComponent implements OnInit {
 export class ReusableCardRecommendationComponent implements OnInit {
   userId: string;
   isLoading = false;
-
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
-
+  recomCounter = 0;
   infos: string[] = [];
   // Trying to randomze the array for reco
   // infos_: number;
@@ -102,7 +101,24 @@ export class ReusableCardRecommendationComponent implements OnInit {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
   }
+  onScrollRecom(): any {
+    const scrollHeight = document.getElementById('infoRecomend').scrollHeight;
+    console.log('ni ni', document.getElementById('infoRecomend').offsetHeight);
+    console.log(
+      'hey you chaz',
+      document.getElementById('infoRecomend').clientTop
+    );
 
+    console.log('Hey dawgy', scrollHeight);
+
+    if (scrollHeight === document.getElementById('infoRecomend').clientHeight) {
+      console.log('yng gravy');
+      const counting = 2;
+      this.recomCounter += counting;
+      console.log(this.recomCounter);
+    }
+    // console.log(scrollHeight);
+  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });

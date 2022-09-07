@@ -9,7 +9,12 @@
   height: 100%;
   background: white;
 }
-
+ .mat-menu-item-highlighted:hover{
+   background: rgb(231, 230, 230) !important;
+}
+.mat-menu-item:hover{
+  background: rgb(231, 230, 230) !important;
+}
 .background_ {
 }
 .below_search{

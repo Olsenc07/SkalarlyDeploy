@@ -3,7 +3,8 @@
   </div>
 
 
-  <cdk-virtual-scroll-viewport [itemSize]="200" class="infiniteContainer">
+  <cdk-virtual-scroll-viewport  [itemSize]="150" (scroll)="onScrollRecom()"
+ class="infiniteContainer" id="infoRecomend">
 <div *cdkVirtualFor="let info of infos; templateCacheSize: 20"  >
 <mat-card  class="row1" *ngIf="(userId !== info.Creator) && !isLoading"
  >
@@ -16,8 +17,7 @@
 
             
             <div class="row">
-               
-
+            
                 <div class="column_">
                 <!-- (click)="onOtherUser(info)" -->
                 <div class="gender textSize" *ngIf="info.name">
@@ -100,4 +100,6 @@
     </div>
 </mat-card>
 </div>
+
 </cdk-virtual-scroll-viewport>
+

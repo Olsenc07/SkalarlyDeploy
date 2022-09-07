@@ -783,7 +783,6 @@ SOFTWARE.
 
 
 ngx-infinite-scroll
-MIT
 
 ngx-material-timepicker
 MIT
