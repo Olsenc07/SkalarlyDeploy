@@ -121,8 +121,15 @@ export class ReusableCardRecommendationComponent implements OnInit {
           this.isLoading = false;
         });
     }
-    // console.log(scrollHeight);
   }
+  // message user
+  skalarMsg(username: string): void {
+    console.log('username', username);
+    this.router.navigate(['/messages/:'], {
+      queryParams: { username },
+    });
+  }
+  // go to profile
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });

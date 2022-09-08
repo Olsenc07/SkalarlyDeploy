@@ -523,7 +523,12 @@
 
 
                 <div class="column" >
-
+                  <div class="trashCan" *ngIf='userId === showCase.Creator'>
+                    <button  mat-icon-button matTooltip="Delete ShowCase"
+                      (click)='onDelete(showCase.id)'><span class="material-icons-two-tone">
+                        delete_forever
+                        </span></button>
+                      </div>
                   <img class="img" src={{showCase.ShowCasePath}} />
                   <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
 

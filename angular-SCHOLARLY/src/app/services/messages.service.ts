@@ -4,6 +4,7 @@ import { map } from 'rxjs';
 import { ReplaySubject } from 'rxjs';
 import { AuthDataInfo } from '../signup/auth-data.model';
 export interface Message {
+  id: string;
   username: string;
   message: string;
   time: string;
@@ -34,6 +35,7 @@ export class MessageService {
         map((messageData) => {
           return messageData.messages.map((message) => {
             return {
+              id: message._id,
               username: message.username,
               message: message.message,
               time: message.time,
@@ -69,6 +71,7 @@ export class MessageService {
         map((messageData) => {
           return messageData.messages.map((data) => {
             return {
+              id: data._id,
               username: data.username,
               message: data.message,
               time: data.time,

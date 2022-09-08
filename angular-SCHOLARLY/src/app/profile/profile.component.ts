@@ -123,6 +123,10 @@ export class ProfileComponent implements OnInit {
         this.followers = followers;
       });
   }
+  onDelete(postId: string): any {
+    this.showCaseService.deleteShowCase(postId);
+    console.log('chaz whats up homie g', postId);
+  }
 }
 
 /** @title Sidenav open & close behavior */

@@ -820,7 +820,10 @@ mat-tab-group {
   color: #7e7171;
   width: 100%;
 }
-
+.trashCan{
+  display: flex;
+  justify-content: flex-end;
+}
 .uNameMsg {
   display: flex;
   justify-content: center;

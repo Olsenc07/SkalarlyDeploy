@@ -47,10 +47,10 @@
             </mat-chip-list> -->
 
 
-            <!-- <div class="row1"><button mat-icon-button class="btn"><i class="far fa-check-circle green"></i></button>
-
-                <button mat-icon-button class="btn"> <i class="far fa-times-circle red"></i></button>
-            </div> -->
+            <div >
+                <mat-chip  (click)="skalarMsg(info.username)" class="messageBtn"  matTooltip="Message Skalar"
+                routerLink="/messages" selected > Message <i class="far fa-paper-plane "></i> </mat-chip>
+            </div>
 
         </div>
 

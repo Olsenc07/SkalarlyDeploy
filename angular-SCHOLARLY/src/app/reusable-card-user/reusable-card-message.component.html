@@ -55,11 +55,16 @@
 
 
                 </mat-chip>
+
             </mat-chip-list>
+            
 
         </div>
 
+
     </div>
+    <i class="far fa-times-circle delete" (click)="deleteMsg(info.id)" matTooltip="Delete message for both skalars"></i>
+
 </mat-card>
 </div>
 </div>
@@ -89,7 +94,7 @@
                   
                     
                     <button 
-                    mat-button  (click)="navigateToPage(info.username)"
+                    mat-button  (click)="navigateToPage(info.username)"  matTooltip="View profile"
                     class="userName textSize_" id="userName"  [value]=info.username  > 
                         @{{ info.username}}
     
@@ -97,7 +102,7 @@
                     </div>
                  <div class="userName textSize" >
                         <!-- {{ (profile | async)?.Pronouns}} -->
-                        at {{ info.time }}
+                     {{ info.time }}
     
                     </div>
                 </div>
@@ -113,11 +118,16 @@
                         <!-- Or -->
                         <!-- <i class="far fa-envelope"></i> -->
                     </mat-chip>
+               
+
                 </mat-chip-list>
-    
+
             </div>
     
         </div>
+       
+        <i class="far fa-times-circle delete" (click)="deleteMsg(info.id)" matTooltip="Delete message for both skalars"></i>
+
     </mat-card>
     </div>
 </div>

@@ -210,6 +210,10 @@ export class ReusableCardMessageComponent implements OnInit {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/messages/:'], { queryParams: { username } });
   }
+  deleteMsg(msgId: string): any {
+    console.log('xanyx', msgId);
+    this.messageNotificationService.deleteMessage(msgId);
+  }
 }
 
 @Component({

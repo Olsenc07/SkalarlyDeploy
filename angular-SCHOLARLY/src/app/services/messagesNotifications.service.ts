@@ -4,6 +4,7 @@ import { map } from 'rxjs';
 import { ReplaySubject } from 'rxjs';
 import { AuthDataInfo } from '../signup/auth-data.model';
 export interface Message {
+  id: string;
   username: string;
   message: string;
   time: string;
@@ -37,6 +38,7 @@ export class MessageNotificationService {
         map((messageData) => {
           return messageData.messages.map((data) => {
             return {
+              id: data._id,
               username: data.username,
               message: data.message,
               time: data.time,
@@ -50,6 +52,19 @@ export class MessageNotificationService {
         this.messagesNotif = transformedMessage;
         this.messagesInfoUpdated.next([...this.messagesNotif]);
         console.log('hey chaz man', this.messagesNotif);
+      });
+  }
+
+  deleteMessage(msgId: string): any {
+    console.log('hey chase msgId', msgId);
+    this.http
+      .delete('http://localhost:3000/api/messages/deleteMsg/' + msgId)
+      .subscribe(() => {
+        const updatedPosts = this.messagesNotif.filter(
+          (msg) => msg.id !== msgId
+        );
+        this.messagesNotif = updatedPosts;
+        this.messagesInfoUpdated.next([...this.messagesNotif]);
       });
   }
 }

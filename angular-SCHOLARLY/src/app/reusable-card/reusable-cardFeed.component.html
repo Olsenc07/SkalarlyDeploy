@@ -192,11 +192,11 @@
                       </mat-chip-list>
                   
         <mat-chip-list class="buttonsC">
-        <mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger(post.id)"
+        <mat-chip color="primary" selected matTooltip="Add your comment"  class="comment-form-buttton" (click)="CommentTrigger(post.id)"
         type="submit"  >
         <!-- [disabled]="comment.value === '' " -->
             Comment
-        <i class="far fa-paper-plane "></i>
+            <i class="far fa-comment-dots"></i>
         </mat-chip>
 
 </mat-chip-list>

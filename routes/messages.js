@@ -4,6 +4,7 @@ const router = express.Router();
 const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 const Msg = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/messages')
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
+const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
 
 // consts
 const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
@@ -122,5 +123,25 @@ socket.on('chat-messageSnd', (data) => {
             
                                              })      
                                         })
+
+
+
+// Delete message 
+router.delete("/deleteMsg/:id", checkAuth, (req, res, next ) => {
+    console.log('hey chase msgId 2', req.params.id);
+
+    Msg.deleteOne({_id: req.params.id}).then(result => {
+        if (result){
+        res.status(200).json({message: 'Msg deleted!!'});
+        } else {
+            res.status(401).json({message: 'Not authorized'});
+        }
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching posts failed!'
+        });
+    });
+});
                                       
 module.exports = router;
