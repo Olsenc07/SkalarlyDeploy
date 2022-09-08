@@ -102,20 +102,24 @@ export class ReusableCardRecommendationComponent implements OnInit {
       });
   }
   onScrollRecom(): any {
+    const scrollTop = document.getElementById('bigScroll').scrollTop;
     const scrollHeight = document.getElementById('infoRecomend').scrollHeight;
-    console.log('ni ni', document.getElementById('infoRecomend').offsetHeight);
-    console.log(
-      'hey you chaz',
-      document.getElementById('infoRecomend').clientTop
-    );
-
+    console.log('Hey dog', scrollTop);
     console.log('Hey dawgy', scrollHeight);
 
-    if (scrollHeight === document.getElementById('infoRecomend').clientHeight) {
+    if (scrollTop === scrollHeight) {
       console.log('yng gravy');
       const counting = 2;
       this.recomCounter += counting;
       console.log(this.recomCounter);
+      this.authService.getInfo();
+      this.infosSub = this.authService
+        .getInfoUpdateListener()
+        .subscribe((infos: string[]) => {
+          this.infos = infos;
+          // this.infos = this.shuffle(infos);
+          this.isLoading = false;
+        });
     }
     // console.log(scrollHeight);
   }

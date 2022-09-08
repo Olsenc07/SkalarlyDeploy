@@ -11,8 +11,8 @@
       <div class="column" >
         <div class="row">
           <div class="column">
-            <div class="trashCan">
-              <button *ngIf='userId === post.Creator' mat-icon-button
+            <div class="trashCan" >
+              <button *ngIf='userId === post.Creator' mat-icon-button matTooltip="Delete Post"
                 (click)='onDelete(post.id)'><span class="material-icons-two-tone">
                   delete_forever
                   </span></button>

@@ -3,9 +3,9 @@
   </div>
 
 
-  <cdk-virtual-scroll-viewport  [itemSize]="150" (scroll)="onScrollRecom()"
- class="infiniteContainer" id="infoRecomend">
-<div *cdkVirtualFor="let info of infos; templateCacheSize: 20"  >
+  <cdk-virtual-scroll-viewport id="bigScroll"  [itemSize]="150" (scroll)="onScrollRecom()"
+ class="infiniteContainer" >
+<div id="infoRecomend" *cdkVirtualFor="let info of infos; templateCacheSize: 20"  >
 <mat-card  class="row1" *ngIf="(userId !== info.Creator) && !isLoading"
  >
     <div class="column" >

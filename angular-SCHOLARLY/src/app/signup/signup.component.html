@@ -252,7 +252,8 @@
                       <div class="textU"> Upload Profile Picture
                         <div class="required">Required</div> 
                       </div>
-                      <button class="garbage_icon" mat-icon-button *ngIf="form.get('profilePic').value " (click)="clearProfilePic()">
+                      <button class="garbage_icon" matTooltip="Clear Image" 
+                      mat-icon-button *ngIf="form.get('profilePic').value " (click)="clearProfilePic()">
                         <div class="material-icons-two-tone">delete_forever</div>
                       </button>
                     </div>
@@ -296,9 +297,9 @@
               <div class="personalizeLarge" [ngClass]="form.get('profilePic').value ? 'show_' : 'hide' ">
                 <div class="PreviewPic">
                   <h2 class="Preview">Image Preview</h2>
-                  <div class="center">
+                  <div class="profilePic">
                     <!-- [src]="cropImgPreview" -->
-                    <img class="previewPic" [src]="url" id='fileInputP' />
+                    <img class="fit" [src]="url" id='fileInputP' />
                   </div>
                 </div>
               </div>
@@ -401,7 +402,7 @@
               <!-- Upload pic/video -->
               <div class="centerD">
                 <div class="textU_"> Upload Photo</div>
-                <button mat-icon-button class="trash" [ngClass]="form.get('showCase').value ? 'show_' : 'hide' " color="primary"
+                <button mat-icon-button class="trash" matTooltip="Clear Image" [ngClass]="form.get('showCase').value ? 'show_' : 'hide' " color="primary"
                   (click)="clearPic()">
                   <div class="material-icons-two-tone">delete_forever</div>
                 </button>

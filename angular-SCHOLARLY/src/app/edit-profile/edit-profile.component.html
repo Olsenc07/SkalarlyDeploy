@@ -26,7 +26,7 @@
                 <div>
                   <div class="centerD">
                     <div class="text">Change Profile Picture</div>
-                    <button mat-icon-button (click)="clearProfilePic()" *ngIf="cropImgPreview">
+                    <button mat-icon-button matTooltip="Clear Image" (click)="clearProfilePic()" *ngIf="cropImgPreview">
                       <div class="material-icons-two-tone">delete_forever</div>
                     </button>
                   </div>
@@ -277,7 +277,7 @@
   <div *ngIf=" clicked == false">
     <div class="row">
       <div class="snapshot">Add Showcase</div>
-      <button mat-icon-button class="trash" [ngClass]="showCase.value ? 'show' : 'hide' " color="primary"
+      <button mat-icon-button class="trash" matTooltip="Clear Image" [ngClass]="showCase.value ? 'show' : 'hide' " color="primary"
         (click)="clearPic1()">
         <div class="material-icons-two-tone">delete_forever</div>
       </button>

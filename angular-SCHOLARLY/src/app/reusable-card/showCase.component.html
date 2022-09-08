@@ -5,7 +5,7 @@
 
     <div class="upload" *cdkVirtualFor="(userid == showCase.Creator) && showCase.ShowCasePath; templateCacheSize: 10" >
         <div class="trashCan">
-            <button *ngIf='userId === showCase.Creator' mat-icon-button
+            <button *ngIf='userId === showCase.Creator' mat-icon-button matTooltip="Delete ShowCase"
               (click)='onDelete(showCase.id)'><span class="material-icons-two-tone">
                 delete_forever
                 </span></button>
