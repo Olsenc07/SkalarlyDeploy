@@ -26,8 +26,8 @@
                 <div>
                   <div class="centerD">
                     <div class="text">Change Profile Picture</div>
-                    <button mat-icon-button matTooltip="Clear Image" (click)="clearProfilePic()" *ngIf="cropImgPreview">
-                      <div class="material-icons-two-tone">delete_forever</div>
+                    <button mat-icon-button matTooltip="Clear Image" class="trash" (click)="clearProfilePic()" *ngIf="profilePic.value">
+                      <i class="far fa-times-circle"></i>
                     </button>
                   </div>
 
@@ -188,9 +188,7 @@
   </div>
 
   <div class="input">
-    <span class="fas fa-star-half-alt _icon">
-   
-    </span>
+    
     <mat-form-field>
 <mat-label *ngIf="info.minor">{{info.minor}}</mat-label>
 <mat-label *ngIf="!info.minor">Minor(s)</mat-label>
@@ -277,9 +275,9 @@
   <div *ngIf=" clicked == false">
     <div class="row">
       <div class="snapshot">Add Showcase</div>
-      <button mat-icon-button class="trash" matTooltip="Clear Image" [ngClass]="showCase.value ? 'show' : 'hide' " color="primary"
+      <button mat-icon-button  matTooltip="Clear Image" [ngClass]="showCase.value ? 'show' : 'hide' " color="primary"
         (click)="clearPic1()">
-        <div class="material-icons-two-tone">delete_forever</div>
+        <i class="far fa-times-circle"></i>
       </button>
     </div>
 

@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { ReplaySubject } from 'rxjs';
-import { AuthDataInfo } from '../signup/auth-data.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 export interface Message {
   id: string;
   username: string;
@@ -20,7 +21,7 @@ export class MessageNotificationService {
 
   private messagesInfoUpdated = new ReplaySubject<Message[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   getInfoUpdateListenerNotification(): any {
     return this.messagesInfoUpdated.asObservable();
@@ -65,6 +66,9 @@ export class MessageNotificationService {
         );
         this.messagesNotif = updatedPosts;
         this.messagesInfoUpdated.next([...this.messagesNotif]);
+        this.snackBar.open('Message deleted', 'Ok!', {
+          duration: 3000,
+        });
       });
   }
 }

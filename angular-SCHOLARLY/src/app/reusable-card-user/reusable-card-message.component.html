@@ -51,9 +51,7 @@
                     Message 
                     <!-- Or -->
                     <!-- <i class="far fa-envelope"></i> -->
-
-
-
+                    <i class="fas fa-envelope-open-text iconSpace"></i>
                 </mat-chip>
 
             </mat-chip-list>
@@ -113,13 +111,13 @@
                 <!-- Only appears if user isn't already following this mutual friend -->
                 <mat-chip-list class="center_" aria-label="FollowBtn">
                     <!-- (click)="followClicked()" -->
-                    <mat-chip class="messageM" (click)="navigateToChat(info.username)">
+                    <mat-chip class="messageM" (click)="navigateToChat(info.username)" matTooltip="Display Messages">
                         Message 
                         <!-- Or -->
                         <!-- <i class="far fa-envelope"></i> -->
+                        <i class="fas fa-envelope-open-text iconSpace"></i>
                     </mat-chip>
-               
-
+    
                 </mat-chip-list>
 
             </div>

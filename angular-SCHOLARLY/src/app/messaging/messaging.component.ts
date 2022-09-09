@@ -6,7 +6,7 @@ import { io } from 'socket.io-client';
 import { Subscription } from 'rxjs';
 import { Picker } from 'emoji-picker-element';
 import { ActivatedRoute } from '@angular/router';
-
+import { MessageNotificationService } from '../services/messagesNotifications.service';
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
 
@@ -143,7 +143,7 @@ export class MessagingComponent implements OnInit {
      width: fit-content; border-radius:25px" >
     <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
    <div style="margin:2% 2% 0% 5%" > @${data.username} </div>
-   <div style="font-size:small; color: #878581;margin-top: 2%;">  ${data.time}  </div>
+   <div style="font-size:small; color: #878581;margin-top: 2%; justify-content: space-between;">  ${data.time}  </div>
    </div>
    <div style="text-align: center;margin-bottom: 2%; ">  ${data.message}  </div>
    </div>
@@ -151,7 +151,7 @@ export class MessagingComponent implements OnInit {
     `;
     } else {
       div.innerHTML = `   <div style="display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       height: 100%;
       width: 100%;
 ">
@@ -163,7 +163,9 @@ export class MessagingComponent implements OnInit {
      <div style="margin:2% 5% 0% 2%;color:white" > @${data.username} </div>
      <div style="font-size:small; color: #878581;margin-top: 2%;">  ${data.time}  </div>
      </div>
-     <div style="display: flex; color:white;margin-bottom: 2%;">  ${data.message}  </div>
+     <div style="display: flex; color:white;margin-bottom: 2%; justify-content: space-between; align-items: center;">  ${data.message}
+    <i class="far fa-times-circle delete_" (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
+     </div>
      </div>
      </div>
       `;
@@ -196,7 +198,7 @@ export class MessagingComponent implements OnInit {
     `;
     } else {
       div.innerHTML = `<div style="display: flex;
-      justify-content: end;
+      justify-content: flex-end;
       height: 100%;
       width: 100%;
 ">
@@ -207,7 +209,9 @@ export class MessagingComponent implements OnInit {
      <div style="margin:2% 5% 0% 2%; color:white" > @${data.username} </div>
      <div style="font-size:small; color: #b1acac;margin-top: 2%;">  ${data.time}  </div>
      </div>
-     <div style=" display: flex; color:whitemargin-bottom: 2%;">  ${data.message}  </div>
+     <div style=" display: flex; color:white; margin-bottom: 2%; justify-content: space-between; align-items: center;">  ${data.message}
+    <i class="far fa-times-circle delete_" (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
+     </div>
      </div>
      </div>
       `;
@@ -232,7 +236,8 @@ export class MessageCardComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public messagesService: MessageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messageNotificationService: MessageNotificationService
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -247,6 +252,9 @@ export class MessageCardComponent implements OnInit {
           console.log('datas pulled', this.messages);
         });
     });
-    // this.messagesService.retrieveMessages(this.username, this.userId);
+  }
+  deleteMsg(msgId: string): any {
+    console.log('jesse', msgId);
+    this.messageNotificationService.deleteMessage(msgId);
   }
 }

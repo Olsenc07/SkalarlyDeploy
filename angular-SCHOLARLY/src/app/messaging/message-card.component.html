@@ -26,7 +26,11 @@ width: 100%;
    <div style="margin:2% 5% 0% 2%;color:white" > @{{data.username}} </div>
    <div style="font-size:small; color: #b1acac;margin-top: 2%;">  {{data.time}}  </div>
    </div>
-   <div style="display: flex;color:white;margin-bottom: 2%;">  {{data.message}}  </div>
+   <div style="display: flex;color:white;margin-bottom: 2%; justify-content: space-between;">  {{data.message}} 
+    <i class="far fa-times-circle delete_" (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
+</div>
+   
+
        </div>
     </div>
 </div>

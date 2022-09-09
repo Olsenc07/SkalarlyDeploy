@@ -228,7 +228,7 @@
 
 
 <!-- disabled -->
-      <mat-tab class="sndPage" disabled >
+      <mat-tab class="sndPage"  >
         <form [formGroup]="personalizeForm" enctype="multipart/form-data">
           <ng-template mat-tab-label>
             <mat-icon><span class="material-icons-two-tone">
@@ -252,9 +252,9 @@
                       <div class="textU"> Upload Profile Picture
                         <div class="required">Required</div> 
                       </div>
-                      <button class="garbage_icon" matTooltip="Clear Image" 
+                      <button  matTooltip="Clear Image" 
                       mat-icon-button *ngIf="form.get('profilePic').value " (click)="clearProfilePic()">
-                        <div class="material-icons-two-tone">delete_forever</div>
+                        <i class="far fa-times-circle"></i>
                       </button>
                     </div>
 
@@ -379,7 +379,7 @@
 
 
       <!-- SnapShots  disabled-->
-      <mat-tab disabled >
+      <mat-tab  >
         <!-- <form [formGroup]="showCase"> -->
         <ng-template mat-tab-label>
           <mat-icon> <span class="material-icons-two-tone">
@@ -404,7 +404,7 @@
                 <div class="textU_"> Upload Photo</div>
                 <button mat-icon-button class="trash" matTooltip="Clear Image" [ngClass]="form.get('showCase').value ? 'show_' : 'hide' " color="primary"
                   (click)="clearPic()">
-                  <div class="material-icons-two-tone">delete_forever</div>
+                  <i class="far fa-times-circle"></i>
                 </button>
 
               </div>
@@ -448,7 +448,7 @@
 
 
       <!-- disabled -->
-      <mat-tab disabled >
+      <mat-tab  >
         <ng-template mat-tab-label>
           <mat-icon class=""><span class="material-icons-two-tone">
               school
@@ -464,8 +464,8 @@
         <!-- Text Field Major/Minor -->
         <div class="major-layout">
           <div class="input">
-            <span class="material-icons _icon">
-              looks_one
+            <span class="fas fa-star _icon">
+    
             </span>
             <mat-form-field>
               <input class="major" maxlength="50" matInput placeholder="Major (s)" [formControl]="major" />
@@ -483,8 +483,8 @@
           </div>
 
           <div class="input">
-            <span class="material-icons _icon">
-              looks_two
+            <span class="fas fa-star-half-alt _icon">
+   
             </span>
             <mat-form-field>
               <input class="major"  maxlength="50" matInput placeholder="Minor (s)" [formControl]="minor" />
@@ -506,8 +506,8 @@
 
 
           <div class="input">
-            <span class="material-icons _icon">
-              emoji_events
+            <span class="fas fa-running _icon">
+   
             </span>
             <mat-form-field>
               <input matInput  maxlength="50" placeholder="Do you play a sport?" [formControl]="sport" />
@@ -527,8 +527,8 @@
 
 
           <div class="input_Btm">
-            <span class="material-icons _icon">
-              group
+            <span class="fas fa-user-friends _icon">
+ 
             </span>
             <mat-form-field>
               <input class="major" maxlength="50" matInput placeholder="Are you apart of a club? " [formControl]="club" />
@@ -1453,13 +1453,13 @@
 
           <!-- Pursuing Courses -->
   <i class="material-icons _icon">checklist</i>
-          <mat-tab  label="Pursuing Courses" class="courses">
+          <mat-tab  label="Next Courses" class="courses">
             <!-- 1 -->
             <div class="input">
               <i class="material-icons _icon">checklist</i>
 
               <mat-form-field class="example-chip-list">
-                <mat-label>Pursuing Course</mat-label>
+                <mat-label>Next Course</mat-label>
                 <mat-select placeholder="Choose pursuing course"  [formControl]="CodePursuing" >
                   <mat-option *ngFor="let codeP of CodePursuing.value" 
                   (removed)="removeP(codeP)">
@@ -1482,7 +1482,7 @@
   <i class="material-icons _icon">checklist</i>
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Pursuing Course 2</mat-label>
+    <mat-label>Next Course 2</mat-label>
     <mat-select placeholder="Choose pursuing course 2" [formControl]="CodePursuing2" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1503,7 +1503,7 @@
   <i class="material-icons _icon">checklist</i>
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Pursuing Course 3</mat-label>
+    <mat-label>Next Course 3</mat-label>
     <mat-select placeholder="Choose pursuing course 3"  [formControl]="CodePursuing3" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1524,7 +1524,7 @@
   <i class="material-icons _icon">checklist</i>
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Pursuing Course 4</mat-label>
+    <mat-label>Next Course 4</mat-label>
     <mat-select placeholder="Choose pursuing course 4"  [formControl]="CodePursuing4" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1546,7 +1546,7 @@
         <i class="material-icons _icon">checklist</i>
       
         <mat-form-field class="example-chip-list">
-          <mat-label>Pursuing Course 5</mat-label>
+          <mat-label>Next Course 5</mat-label>
           <mat-select placeholder="Choose pursuing course 5" #codeInputP [formControl]="CodePursuing5" >
       
             <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1567,7 +1567,7 @@
   <i class="material-icons _icon">checklist</i>
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Pursuing Course 6</mat-label>
+    <mat-label>Next Course 6</mat-label>
     <mat-select placeholder="Choose pursuing course 6" #codeInputP [formControl]="CodePursuing6" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1588,7 +1588,7 @@
     <i class="material-icons _icon">checklist</i>
   
     <mat-form-field class="example-chip-list">
-      <mat-label>Pursuing Course 7</mat-label>
+      <mat-label>Next Course 7</mat-label>
       <mat-select placeholder="Choose pursuing course 7" #codeInputP [formControl]="CodePursuing7" >
   
         <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1609,7 +1609,7 @@
   <i class="material-icons _icon">checklist</i>
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Pursuing Course 8</mat-label>
+    <mat-label>Next Course 8</mat-label>
     <mat-select placeholder="Choose pursuing course 8" #codeInputP [formControl]="CodePursuing8" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1631,7 +1631,7 @@
         <i class="material-icons _icon">checklist</i>
       
         <mat-form-field class="example-chip-list">
-          <mat-label>Pursuing Course 9</mat-label>
+          <mat-label>Next Course 9</mat-label>
           <mat-select placeholder="Choose pursuing course 9" #codeInputP [formControl]="CodePursuing9" >
       
             <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1652,7 +1652,7 @@
   <i class="material-icons _icon">checklist</i>
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Pursuing Course 10</mat-label>
+    <mat-label>Next Course 10</mat-label>
     <mat-select placeholder="Choose pursuing course 10" #codeInputP [formControl]="CodePursuing10" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1673,7 +1673,7 @@
   <i class="material-icons _icon">checklist</i>
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Pursuing Course 11</mat-label>
+    <mat-label>Next Course 11</mat-label>
     <mat-select placeholder="Choose pursuing course 11" #codeInputP [formControl]="CodePursuing11" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1694,7 +1694,7 @@
   <i class="material-icons _icon">checklist</i>
 
   <mat-form-field class="example-chip-list">
-    <mat-label>Pursuing Course 12</mat-label>
+    <mat-label>Next Course 12</mat-label>
     <mat-select placeholder="Choose pursuing course 12" #codeInputP [formControl]="CodePursuing12" >
 
       <mat-option *ngFor="let codeP of CodePursuing.value" 
