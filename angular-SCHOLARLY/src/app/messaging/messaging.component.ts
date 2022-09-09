@@ -164,7 +164,7 @@ export class MessagingComponent implements OnInit {
      <div style="font-size:small; color: #878581;margin-top: 2%;">  ${data.time}  </div>
      </div>
      <div style="display: flex; color:white;margin-bottom: 2%; justify-content: space-between; align-items: center;">  ${data.message}
-    <i class="far fa-times-circle delete_" (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
+    <i class="far fa-times-circle style="color:black" delete_" (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
      </div>
      </div>
      </div>
@@ -210,7 +210,7 @@ export class MessagingComponent implements OnInit {
      <div style="font-size:small; color: #b1acac;margin-top: 2%;">  ${data.time}  </div>
      </div>
      <div style=" display: flex; color:white; margin-bottom: 2%; justify-content: space-between; align-items: center;">  ${data.message}
-    <i class="far fa-times-circle delete_" (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
+    <i class="far fa-times-circle delete_" style="color:black" (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
      </div>
      </div>
      </div>
