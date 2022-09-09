@@ -16,7 +16,9 @@ const http = require('http');
  const messageRoutes = require('./routes/messages')
  const followRoutes = require('./routes/follow')
 
-
+ const Msg = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/messages')
+ const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
+ const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 
 
  
@@ -47,6 +49,37 @@ const socketio = require('socket.io');
 const io = socketio(server);
 app.set('socketio', io);
 
+io.on('connection', (socket) => {
+
+    socket.on('chat-messageSnd', (data) => {
+       
+        const Message = data.message
+          User.findById({_id: data.userId})
+        .then(user => {
+        User.findOne({username: user.username})
+        .then(username => {
+            console.log('hey Message', Message)
+    
+        // saving msg
+        
+        if (data.otherUser !== undefined ) {
+        const MESSAGE = new Msg({username: username.username,
+                                message: Message,
+                                time: data.time,
+                                otherUser: data.otherUser,
+                                you: data.userId
+                            })
+        MESSAGE.save().then(createdMsg => {
+            socket.emit('messageSnd', formatMessage(username.username, Message, data.time ))
+        
+            })
+                       }
+                                        })
+       
+                                            }) 
+                                            
+                                                })
+                                            })
 
 //  DataBase connection
 mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')

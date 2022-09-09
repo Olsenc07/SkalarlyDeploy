@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 import { AuthDataInfo } from '../signup/auth-data.model';
 export interface Message {
   id: string;
@@ -18,10 +18,10 @@ export interface Message {
 export class MessageService {
   private messages: Message[] = [];
 
-  private messagesUpdated = new ReplaySubject<Message[]>();
+  private messagesUpdated = new Subject<Message[]>();
 
   private messageStart: Message[] = [];
-  private messageStartUpdated = new ReplaySubject<Message[]>();
+  private messageStartUpdated = new Subject<Message[]>();
   // private messagesSent = new ReplaySubject<Message[]>();
 
   constructor(private http: HttpClient) {}
@@ -86,7 +86,7 @@ export class MessageService {
       )
       .subscribe((transformedMessage) => {
         this.messageStart = transformedMessage;
-        this.messageStartUpdated.next([...this.messageStart]);
+        // this.messageStartUpdated.next([...this.messageStart]);
       });
   }
 }

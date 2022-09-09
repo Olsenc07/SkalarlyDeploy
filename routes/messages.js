@@ -14,10 +14,10 @@ const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SC
 
 
 // Wrap everything in here need to connect socket.io first
-router.get('/OnetoOne', (req,res) => {   
+router.get('/OnetoOne', async(req,res) => {   
 // welcome current user
     // Load in old messages
-User.findById({_id: req.query.userId})
+await User.findById({_id: req.query.userId})
 .then(user => {
 User.findOne({username: user.username})
 .then(username => {
@@ -84,45 +84,11 @@ else{
 
 
 // listen for chat msg sending
-router.get('/OnetoOneSend', (req,res) => {
+
+router.get('/OnetoOneSend', async(req,res) => {
     var io = req.app.get('socketio');
-
-
-io.on('connection', (socket) => {
-
-socket.on('chat-messageSnd', (data) => {
-   
-    const Message = data.message
-    console.log('message my love', Message)
-     User.findById({_id: data.userId})
-    .then(user => {
-    User.findOne({username: user.username})
-    .then(username => {
-        console.log('hey searchParams 2', data.otherUser)
-        console.log('hey Message', Message)
-
-    // saving msg
     
-    if (data.otherUser !== undefined ) {
-    const MESSAGE = new Msg({username: username.username,
-                            message: Message,
-                            time: data.time,
-                            otherUser: data.otherUser,
-                            you: data.userId
-                        })
-    MESSAGE.save().then(createdMsg => {
-        socket.emit('messageSnd', formatMessage(username.username, Message, data.time ))
-    
-        })
-                   }
                                     })
-   
-                                        }) 
-                                        
-                                            })
-            
-                                             })      
-                                        })
 
 
 

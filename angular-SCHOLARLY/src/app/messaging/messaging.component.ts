@@ -11,6 +11,7 @@ import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
 
 export interface Message {
+  id: string;
   username: string;
   message: string;
   time: string;
@@ -62,32 +63,27 @@ export class MessagingComponent implements OnInit {
     public messagesService: MessageService,
     private route: ActivatedRoute
   ) {
-    this.messagesService.startMessages(this.userId);
-    // msg from server
-    this.socket.on('messageSnd', (data) => {
-      console.log('server msg', data);
-      this.outputMessage(data);
-    });
-    this.socket.on('disconnect', () => {
-      console.log('disconnected bro');
-    });
+    // this.socket.on('disconnect', () => {
+    //   console.log('disconnected bro');
+    // });
   }
 
   ngOnInit(): any {
+    this.messagesService.startMessages(this.userId);
     this.userId = this.authService.getUserId();
     this.route.queryParams.subscribe((params) => {
       console.log('params main page', params?.username);
       this.username = params?.username;
     });
     // emits saved message
-    this.socket.on('messageSnd', (data) => {
-      console.log('loaded in msgs', data);
-      if (data.length) {
-        data.forEach((data) => {
-          this.appendMessages(data);
-        });
-      }
-    });
+    // this.socket.on('messageSnd', (data) => {
+    //   console.log('loaded in msgs', data);
+    //   if (data.length) {
+    //     data.forEach((data) => {
+    //       this.appendMessages(data);
+    //     });
+    //   }
+    // });
   }
 
   private _filter(value: string): string[] {
@@ -125,6 +121,11 @@ export class MessagingComponent implements OnInit {
         time: this.time,
         otherUser: this.username,
       });
+      // msg from server
+      this.socket.on('messageSnd', (data) => {
+        console.log('server msg', data);
+        this.outputMessage(data);
+      });
       this.message.reset('');
     }
   }
@@ -145,7 +146,7 @@ export class MessagingComponent implements OnInit {
    <div style="margin:2% 2% 0% 5%" > @${data.username} </div>
    <div style="font-size:small; color: #878581;margin-top: 2%; justify-content: space-between;">  ${data.time}  </div>
    </div>
-   <div style="text-align: center;margin-bottom: 2%; ">  ${data.message}  </div>
+   <div style="text-align: center; margin-bottom: 2%; ">  ${data.message}  </div>
    </div>
    </div>
     `;
@@ -164,7 +165,7 @@ export class MessagingComponent implements OnInit {
      <div style="font-size:small; color: #878581;margin-top: 2%;">  ${data.time}  </div>
      </div>
      <div style="display: flex; color:white;margin-bottom: 2%; justify-content: space-between; align-items: center;">  ${data.message}
-    <i class="far fa-times-circle"; style="color:grey" delete_"; (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
+    <i class="far fa-times-circle" style="color:#808080" delete_"; (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
      </div>
      </div>
      </div>
@@ -174,52 +175,54 @@ export class MessagingComponent implements OnInit {
     const element = document.getElementById('message-container');
     element.scrollTop = element.scrollHeight;
   }
-  appendMessages(data): void {
-    const div = document.createElement('div');
-    console.log('hey chaz 2', this.userId);
+  //   appendMessages(data): void {
+  //     const div = document.createElement('div');
+  //     console.log('hey chaz 2', this.userId);
 
-    div.classList.add('data');
-    if (this.userId === data.you) {
-      div.innerHTML = `
-      <div style="display: flex;
-      height: 100%;
-      width: 100%;
-">
-      <div
-     class="chat-messages" id="container" style="background-color: #e7e7e7; width: fit-content; padding: 0% 2%;
-      margin-bottom:2%; border-radius:25px;background-color: #10173a;" >
-    <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
-   <div style="margin:2% 2% 0% 5%" > @${data.username} </div>
-   <div style="font-size:small; color: #b1acac;margin-top: 2%;">  ${data.time}  </div>
-   </div>
-   <div style="text-align: center;margin-bottom: 2%;">  ${data.message}  </div>
-   </div>
-   </div>
-    `;
-    } else {
-      div.innerHTML = `<div style="display: flex;
-      justify-content: flex-end;
-      height: 100%;
-      width: 100%;
-">
-      <div
-      class="chat-messages" id="container" style="background-color: #0056ba; margin-bottom:2%; border-radius:25px;
-      width: fit-content;padding:0% 5% 0% 2%; display: flex; flex-direction:column" >
-      <div class="message_" id="message-container" style="display:flex; flex-direction:row; justify-content: end; ">
-     <div style="margin:2% 5% 0% 2%; color:white" > @${data.username} </div>
-     <div style="font-size:small; color: #b1acac;margin-top: 2%;">  ${data.time}  </div>
-     </div>
-     <div style=" display: flex; color:white; margin-bottom: 2%; justify-content: space-between; align-items: center;">  ${data.message}
-    <i class="far fa-times-circle delete_"; style="color:grey"; (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
-     </div>
-     </div>
-     </div>
-      `;
-    }
-    document.getElementById('message-container').appendChild(div);
-    const element = document.getElementById('message-container');
-    element.scrollTop = element.scrollHeight;
-  }
+  //     div.classList.add('data');
+  //     if (this.userId === data.you) {
+  //       div.innerHTML = `
+  //       <div style="display: flex;
+  //       height: 100%;
+  //       width: 100%;
+  // ">
+  //       <div
+  //      class="chat-messages" id="container" style="background-color: #e7e7e7; width: fit-content; padding: 0% 2%;
+  //       margin-bottom:2%; border-radius:25px;background-color: #10173a;" >
+  //     <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
+  //    <div style="margin:2% 2% 0% 5%" > @${data.username} </div>
+  //    <div style="font-size:small; color: #b1acac;margin-top: 2%;">  ${data.time}  </div>
+  //    </div>
+  //    <div style="text-align: center;margin-bottom: 2%;">  ${data.message}  </div>
+  //    </div>
+  //    </div>
+  //     `;
+  //     } else {
+  //       div.innerHTML = `<div style="display: flex;
+  //       justify-content: flex-end;
+  //       height: 100%;
+  //       width: 100%;
+  // ">
+  //       <div
+  //       class="chat-messages" id="container" style="background-color: #0056ba; margin-bottom:2%; border-radius:25px;
+  //       width: fit-content;padding:0% 5% 0% 2%; display: flex; flex-direction:column" >
+  //       <div class="message_" id="message-container" style="display:flex; flex-direction:row; justify-content: end; ">
+  //      <div style="margin:2% 5% 0% 2%; color:white" > @${data.username} </div>
+  //      <div style="font-size:small; color: #b1acac;margin-top: 2%;">  ${data.time}  </div>
+  //      </div>
+  //      <div style=" display: flex; color:white; margin-bottom: 2%;
+  //  justify-content: space-between; align-items: center;">  ${data.message}
+  //      <i class="far fa-times-circle delete_"; style="color: #808080";
+  //  (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
+  //      </div>
+  //      </div>
+  //      </div>
+  //       `;
+  //     }
+  //     document.getElementById('message-container').appendChild(div);
+  //     const element = document.getElementById('message-container');
+  //     element.scrollTop = element.scrollHeight;
+  //   }
 }
 
 @Component({

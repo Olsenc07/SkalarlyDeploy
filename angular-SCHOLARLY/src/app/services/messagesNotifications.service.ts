@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Message {
@@ -18,10 +18,10 @@ export interface Message {
 })
 export class MessageNotificationService {
   private messagesNotif: Message[] = [];
-  private messagesInfoUpdated = new ReplaySubject<Message[]>();
+  private messagesInfoUpdated = new Subject<Message[]>();
 
   private messagesDel: Message[] = [];
-  private messagesInfoDel = new ReplaySubject<Message[]>();
+  private messagesInfoDel = new Subject<Message[]>();
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   getInfoUpdateListenerNotification(): any {
@@ -66,7 +66,7 @@ export class MessageNotificationService {
         this.messagesDel = updatedPosts;
         this.messagesInfoDel.next([...this.messagesDel]);
         this.snackBar.open('Message deleted', 'Ok!', {
-          duration: 3000,
+          duration: 2000,
         });
       });
   }
