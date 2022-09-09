@@ -109,7 +109,7 @@ export class ReusableCardRecommendationComponent implements OnInit {
 
     if (scrollTop === scrollHeight) {
       console.log('yng gravy');
-      const counting = 2;
+      const counting = 6;
       this.recomCounter += counting;
       console.log(this.recomCounter);
       this.authService.getInfo();
