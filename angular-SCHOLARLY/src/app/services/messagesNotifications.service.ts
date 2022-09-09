@@ -18,9 +18,10 @@ export interface Message {
 })
 export class MessageNotificationService {
   private messagesNotif: Message[] = [];
-
   private messagesInfoUpdated = new ReplaySubject<Message[]>();
 
+  private messagesDel: Message[] = [];
+  private messagesInfoDel = new ReplaySubject<Message[]>();
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   getInfoUpdateListenerNotification(): any {
@@ -61,11 +62,9 @@ export class MessageNotificationService {
     this.http
       .delete('http://localhost:3000/api/messages/deleteMsg/' + msgId)
       .subscribe(() => {
-        const updatedPosts = this.messagesNotif.filter(
-          (msg) => msg.id !== msgId
-        );
-        this.messagesNotif = updatedPosts;
-        this.messagesInfoUpdated.next([...this.messagesNotif]);
+        const updatedPosts = this.messagesDel.filter((msg) => msg.id !== msgId);
+        this.messagesDel = updatedPosts;
+        this.messagesInfoDel.next([...this.messagesDel]);
         this.snackBar.open('Message deleted', 'Ok!', {
           duration: 3000,
         });

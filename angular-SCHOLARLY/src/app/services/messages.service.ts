@@ -19,6 +19,9 @@ export class MessageService {
   private messages: Message[] = [];
 
   private messagesUpdated = new ReplaySubject<Message[]>();
+
+  private messageStart: Message[] = [];
+  private messageStartUpdated = new ReplaySubject<Message[]>();
   // private messagesSent = new ReplaySubject<Message[]>();
 
   constructor(private http: HttpClient) {}
@@ -82,8 +85,8 @@ export class MessageService {
         })
       )
       .subscribe((transformedMessage) => {
-        this.messages = transformedMessage;
-        this.messagesUpdated.next([...this.messages]);
+        this.messageStart = transformedMessage;
+        this.messageStartUpdated.next([...this.messageStart]);
       });
   }
 }
