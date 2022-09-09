@@ -514,6 +514,8 @@ export class CardFeedComponent implements OnInit {
   comments: string[] = [];
   // number of comments that load
   sum = 5;
+  recomCounter = 0;
+
   direction = '';
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
@@ -538,7 +540,7 @@ export class CardFeedComponent implements OnInit {
         console.log('posts personal', this.posts);
       });
     // Info
-    this.authService.getInfo();
+    this.authService.getInfo(this.recomCounter);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {

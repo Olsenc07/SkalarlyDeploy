@@ -22,7 +22,7 @@ export class AuthService {
 
   private otheruserId: string;
 
-  private authStatusListener = new Subject<boolean>();
+  private authStatusListener = new ReplaySubject<boolean>();
 
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
@@ -44,7 +44,9 @@ export class AuthService {
   getAuthStatusListener(): any {
     return this.authStatusListener.asObservable();
   }
-
+  getInfoUpdateListener(): any {
+    return this.infosUpdated.asObservable();
+  }
   // User and their info
   createUser(email: string, username: string, password: string): any {
     const authData: AuthData = { email, username, password };
@@ -1615,14 +1617,13 @@ export class AuthService {
         },
       });
   }
-  getInfoUpdateListener(): any {
-    return this.infosUpdated.asObservable();
-  }
+
   // Your info
-  getInfo(): any {
+  getInfo(counter: number): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'http://localhost:3000/api/user/info'
+        'http://localhost:3000/api/user/info',
+        { params: { counter } }
       )
       .pipe(
         map((infosData) => {
