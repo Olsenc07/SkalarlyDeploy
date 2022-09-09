@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit {
   isLoading = false;
   follow: Follow[] = [];
   private followSub: Subscription;
-  recomCounter = 0;
+  recomCounter = 1;
 
   followers: Follow[] = [];
   private followersSub: Subscription;

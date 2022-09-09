@@ -564,7 +564,10 @@ router.post("/infoEd", checkAuth,
 // userInfo recieving
 router.get("/info", async(req, res, next) => {
     console.log('street crimes', req.query.counter)
-    await UserInfo.find().skip(req.query.counter).limit(6)
+    const counter = req.query.counter
+    console.log('street crimes 2 ', counter)
+
+    await UserInfo.find().limit(counter)
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
             res.status(200).json({

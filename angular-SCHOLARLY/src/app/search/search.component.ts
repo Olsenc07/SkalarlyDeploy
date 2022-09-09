@@ -74,7 +74,6 @@ export class SearchComponent implements OnInit {
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
       });
   }
 

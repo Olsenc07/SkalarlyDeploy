@@ -17,7 +17,7 @@ export class ReusableCardRequestComponent implements OnInit {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
-  recomCounter = 0;
+  recomCounter = 6;
 
   infos: string[] = [];
   private infosSub: Subscription;
@@ -59,7 +59,7 @@ export class ReusableCardRecommendationComponent implements OnInit {
   isLoading = false;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
-  recomCounter = 0;
+  recomCounter = 6;
   infos: string[] = [];
   // Trying to randomze the array for reco
   // infos_: number;
@@ -85,7 +85,7 @@ export class ReusableCardRecommendationComponent implements OnInit {
 
   ngOnInit(): any {
     this.isLoading = true;
-    this.authService.getInfo(this.recomCounter);
+    this.authService.getInfo(6);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: string[]) => {
@@ -102,33 +102,18 @@ export class ReusableCardRecommendationComponent implements OnInit {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
   }
-  onScrollRecom(): any {
-    const scrollTop = document.getElementById('bigScroll').scrollTop;
+  onClickRecom(): any {
+    console.log('yng gravy');
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
 
-    const clientHeight = document.getElementById('infoRecomend').clientHeight;
-
-    console.log('Hey dog', scrollTop);
-
-    console.log('Hey dog3', clientHeight);
-
-    console.log('Hey dawgy', scrollTop - clientHeight);
-
-    if (scrollTop < 102 && scrollTop > 100 && scrollTop != 0) {
-      console.log('yng gravy');
-      const counting = 6;
-      this.recomCounter += counting;
-      console.log(this.recomCounter);
-
-      this.authService.getInfo(this.recomCounter);
-      this.authService.getInfoUpdateListener().subscribe((infos: string[]) => {
-        console.log('perfect', infos);
-        console.log('original', this.infos);
-
-        this.infos = infos.concat(this.infos);
-        // this.infos = this.shuffle(infos);
-        this.isLoading = false;
-      });
-    }
+    this.authService.getInfo(this.recomCounter);
+    this.authService.getInfoUpdateListener().subscribe((infos: string[]) => {
+      this.infos = infos;
+      // this.infos = this.shuffle(infos);
+      this.isLoading = false;
+    });
   }
   // message user
   skalarMsg(username: string): void {

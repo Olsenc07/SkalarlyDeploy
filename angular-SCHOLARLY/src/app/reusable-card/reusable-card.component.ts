@@ -514,7 +514,7 @@ export class CardFeedComponent implements OnInit {
   comments: string[] = [];
   // number of comments that load
   sum = 5;
-  recomCounter = 0;
+  recomCounter = 6;
 
   direction = '';
   private commentsSub: Subscription;

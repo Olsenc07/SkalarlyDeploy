@@ -3,9 +3,9 @@
   </div>
 
 
-  <cdk-virtual-scroll-viewport id="bigScroll"  [itemSize]="150" (scroll)="onScrollRecom()"
+  <div id="bigScroll"   
  class="infiniteContainer" >
-<div id="infoRecomend" *cdkVirtualFor="let info of infos; templateCacheSize: 20"  >
+<div id="infoRecomend" *ngFor="let info of infos; "  >
 <mat-card  class="row1" *ngIf="(userId !== info.Creator) && !isLoading"
  >
     <div class="column" >
@@ -101,5 +101,12 @@
 </mat-card>
 </div>
 
-</cdk-virtual-scroll-viewport>
+<div class="showMore">
+<mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickRecom()">Show More
+    <!-- <i class="fas fa-chevron-circle-down"></i> -->
+    <i class="fas fa-caret-down"></i>
+</mat-chip>
+</div>
+
+</div>
 
