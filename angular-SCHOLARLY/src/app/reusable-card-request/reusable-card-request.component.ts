@@ -103,7 +103,6 @@ export class ReusableCardRecommendationComponent implements OnInit {
       });
   }
   onClickRecom(): any {
-    console.log('yng gravy');
     const counting = 6;
     this.recomCounter += counting;
     console.log('hey', this.recomCounter);

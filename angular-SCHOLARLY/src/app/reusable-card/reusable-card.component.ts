@@ -304,7 +304,7 @@ export class ReusableCommentsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.postService.getPostsFeed();
+    this.postService.getPostsFeed(6);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -506,6 +506,7 @@ export class CardFeedComponent implements OnInit {
   picker = new Picker();
   userId: string;
   posts: Post[] = [];
+
   private postsSub: Subscription;
 
   infos: AuthDataInfo[] = [];
@@ -531,7 +532,7 @@ export class CardFeedComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     // Posts
-    this.postService.getPostsFeed();
+    this.postService.getPostsFeed(6);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -571,7 +572,20 @@ export class CardFeedComponent implements OnInit {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
+  onClickFeed(): any {
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey2', this.recomCounter);
 
+    this.postService.getPostsFeed(this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+  }
   CommentTrigger(postId): void {
     if (this.comment.value) {
       this.commentsService.createComment(
@@ -604,7 +618,10 @@ export class CardInfoFeedComponent implements OnInit {
   isLoading = false;
 
   posts: Post[] = [];
+  postS = this.posts[Math.floor(Math.random() * this.posts.length)];
+
   private postsSub: Subscription;
+  recomCounter = 6;
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
@@ -615,7 +632,7 @@ export class CardInfoFeedComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     // Posts
-    this.postService.getPostsFeed();
+    this.postService.getPostsFeed(6);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -631,6 +648,21 @@ export class CardInfoFeedComponent implements OnInit {
     //     this.infos = infos;
     //     this.isLoading = false;
     //   });
+  }
+
+  onClickFeed(): any {
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+
+    this.postService.getPostsFeed(this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
   }
 }
 

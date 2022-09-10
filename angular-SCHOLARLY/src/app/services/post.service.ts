@@ -78,10 +78,11 @@ export class PostService {
         this.postsUpdated.next([...this.posts]);
       });
   }
-  getPostsFeed(): any {
+  getPostsFeed(counter): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'http://localhost:3000/api/posts/feed'
+        'http://localhost:3000/api/posts/feed',
+        { params: { counter } }
       )
       .pipe(
         map((postData) => {

@@ -3,9 +3,9 @@
   </div>
   
   <!-- Posts box which should be a scroll view -->
-  <cdk-virtual-scroll-viewport [itemSize]="200" class="infiniteContainer">
+  <div class="infiniteContainer">
 
-  <div class="feed" *cdkVirtualFor="let post of posts.slice().reverse(); templateCacheSize: 20 " >
+  <div class="feed" *ngFor="let post of posts; " >
     <mat-card class="specifics-fill" *ngIf="!isLoading ">
       <!-- Profile Pic -->
       <div class="column" >
@@ -223,7 +223,7 @@
   <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
     </div>
   </button>
-    <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}
+    <div class="userName link" *ngIf="userId == comment.Creator" id="userName">@{{comment.username}}
       </div>
 
         <div *ngIf="userId == comment.Creator" class="trashCan">
@@ -247,4 +247,10 @@
       </div>
     </mat-card>
   </div>
-</cdk-virtual-scroll-viewport>
+  <div class="showMore">
+    <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
+        <!-- <i class="fas fa-chevron-circle-down"></i> -->
+        <i class="fas fa-caret-down"></i>
+    </mat-chip>
+    </div>
+  </div>
