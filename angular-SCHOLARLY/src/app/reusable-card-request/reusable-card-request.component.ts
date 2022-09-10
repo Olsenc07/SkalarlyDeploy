@@ -17,7 +17,7 @@ export class ReusableCardRequestComponent implements OnInit {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
-  recomCounter = 6;
+  recomCounter = 0;
 
   infos: string[] = [];
   private infosSub: Subscription;
@@ -59,7 +59,8 @@ export class ReusableCardRecommendationComponent implements OnInit {
   isLoading = false;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
-  recomCounter = 6;
+  recomCounter = 0;
+  countVisibility = 0;
   infos: string[] = [];
   // Trying to randomze the array for reco
   // infos_: number;
@@ -85,7 +86,7 @@ export class ReusableCardRecommendationComponent implements OnInit {
 
   ngOnInit(): any {
     this.isLoading = true;
-    this.authService.getInfo(6);
+    this.authService.getInfo(0);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: string[]) => {
@@ -102,10 +103,30 @@ export class ReusableCardRecommendationComponent implements OnInit {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
   }
+  // Forward
   onClickRecom(): any {
+    const count = 1;
+    this.countVisibility += count;
     const counting = 6;
     this.recomCounter += counting;
     console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.authService.getInfo(this.recomCounter);
+    this.authService.getInfoUpdateListener().subscribe((infos: string[]) => {
+      this.infos = infos;
+      // this.infos = this.shuffle(infos);
+      this.isLoading = false;
+    });
+  }
+  // Back
+  onClickRecomBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
 
     this.authService.getInfo(this.recomCounter);
     this.authService.getInfoUpdateListener().subscribe((infos: string[]) => {

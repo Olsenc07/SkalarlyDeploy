@@ -514,10 +514,8 @@ export class CardFeedComponent implements OnInit {
 
   comments: string[] = [];
   // number of comments that load
-  sum = 5;
-  recomCounter = 6;
+  recomCounter = 0;
 
-  direction = '';
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
 
@@ -532,7 +530,7 @@ export class CardFeedComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     // Posts
-    this.postService.getPostsFeed(6);
+    this.postService.getPostsFeed(0);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {

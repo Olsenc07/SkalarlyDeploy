@@ -566,17 +566,17 @@ router.get("/info", async(req, res, next) => {
     const counter = req.query.counter;
     console.log('street crimes 2 ', counter);
 
-    await UserInfo.find().limit(counter)
+    await UserInfo.find().skip(counter).limit(6)
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
             res.status(200).json({
-                message: 'Infos fetched succesfully!',
+                message: 'Users fetched succesfully!',
                 infos: documents
             });
         })
         .catch(error => {
             res.status(500).json({
-                message: 'Fetching infos failed!'
+                message: 'Fetching users failed!'
             });
         });
 });

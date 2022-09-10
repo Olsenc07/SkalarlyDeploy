@@ -40,7 +40,7 @@ export class PostService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   private infos: AuthDataInfo[] = [];
-  private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
+  private infosUpdated = new Subject<AuthDataInfo[]>();
 
   getPosts(): any {
     this.http
@@ -352,7 +352,10 @@ export class PostService {
           };
           // const id_ = responseData.postId;
           // postData.id = id_;
+
           this.posts.push(postId);
+          // this.posts.unshift(postId);
+
           this.postsUpdated.next([...this.posts]);
           this.snackBar.open('Your post added!', 'Yay!', {
             duration: 3000,

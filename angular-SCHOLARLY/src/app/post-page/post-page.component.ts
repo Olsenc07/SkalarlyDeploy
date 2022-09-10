@@ -130,7 +130,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   gender: FormControl = new FormControl('');
 
   // thirdFormGroup: FormGroup  = new FormGroup({
-    live: FormControl = new FormControl('');
+  live: FormControl = new FormControl('');
   paymentService: FormControl = new FormControl('');
   nopaymentService: FormControl = new FormControl('');
 
