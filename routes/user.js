@@ -788,7 +788,7 @@ router.post('/getusers', async (req, res) => {
             $regex: new RegExp('^' + payload + '.*',
                 'i')
         }
-    }).exec();
+    }).limit(7).exec();
     search = search.slice(0, 10);
 
 
