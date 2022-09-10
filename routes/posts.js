@@ -81,7 +81,7 @@ router.get("", async(req, res, next) => {
 // Post recieving Feed
 router.get("/feed", async(req, res, next) => {
     const counter = req.query.counter
-   await Post.find().limit(counter)
+   await Post.find().skip(counter).limit(6)
     .then(docs => {
             res.status(200).json({
                 message: 'Posts feed fetched succesfully!',
@@ -204,7 +204,7 @@ router.delete("/:id", checkAuth, (req, res, next ) => {
 
 // get Comment on post
 router.get('/comments', async(req, res) =>{
-        await Comment.find({postId: req.query.postId})
+    await Comment.find({postId: req.query.postId})
     .then(documents => {
         console.log('hey chaz man man', documents);
     res.status(200).json({

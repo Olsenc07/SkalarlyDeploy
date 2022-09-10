@@ -36,7 +36,6 @@ export class ProfileComponent implements OnInit {
   isLoading = false;
   follow: Follow[] = [];
   private followSub: Subscription;
-  recomCounter = 1;
 
   followers: Follow[] = [];
   private followersSub: Subscription;
@@ -85,7 +84,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): any {
     this.isLoading = true;
     // Info
-    this.authService.getInfo(this.recomCounter);
+    this.authService.getInfo(0);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {

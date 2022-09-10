@@ -111,7 +111,8 @@ export class ReusableCardRecommendationComponent implements OnInit {
     this.recomCounter += counting;
     console.log('hey', this.recomCounter);
     console.log('howdy', this.countVisibility);
-
+    const NextBtn = document.getElementById('bigScroll');
+    NextBtn.scrollIntoView();
     this.authService.getInfo(this.recomCounter);
     this.authService.getInfoUpdateListener().subscribe((infos: string[]) => {
       this.infos = infos;

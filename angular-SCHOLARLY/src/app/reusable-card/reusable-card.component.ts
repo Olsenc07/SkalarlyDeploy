@@ -505,6 +505,8 @@ export class CardFeedComponent implements OnInit {
   closed = true;
   picker = new Picker();
   userId: string;
+  recomCounter = 0;
+  countVisibility = 0;
   posts: Post[] = [];
 
   private postsSub: Subscription;
@@ -514,8 +516,6 @@ export class CardFeedComponent implements OnInit {
 
   comments: string[] = [];
   // number of comments that load
-  recomCounter = 0;
-
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
 
@@ -547,6 +547,7 @@ export class CardFeedComponent implements OnInit {
         this.isLoading = false;
       });
   }
+
   // Adding emojis
   addEmoji(event: any): any {
     const msgs = event?.detail?.unicode;
@@ -570,10 +571,33 @@ export class CardFeedComponent implements OnInit {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
+  // Forward
   onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
     const counting = 6;
     this.recomCounter += counting;
-    console.log('hey2', this.recomCounter);
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    const NextBtn = document.getElementById('topScroll');
+    NextBtn.scrollIntoView();
+    this.postService.getPostsFeed(this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
 
     this.postService.getPostsFeed(this.recomCounter);
     this.postsSub = this.postService
@@ -582,6 +606,22 @@ export class CardFeedComponent implements OnInit {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+      });
+  }
+  onClickComments(postId: string): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    const NextBtn = document.getElementById('topScroll');
+    NextBtn.scrollIntoView();
+    this.commentsService.getComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        this.comments = comments;
       });
   }
   CommentTrigger(postId): void {
@@ -614,23 +654,34 @@ export class CardFeedComponent implements OnInit {
 })
 export class CardInfoFeedComponent implements OnInit {
   isLoading = false;
-
+  open = true;
+  closed = true;
+  picker = new Picker();
+  userId: string;
+  recomCounter = 0;
+  countVisibility = 0;
   posts: Post[] = [];
-  postS = this.posts[Math.floor(Math.random() * this.posts.length)];
 
   private postsSub: Subscription;
-  recomCounter = 6;
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
+  comments: string[] = [];
+  // number of comments that load
+  private commentsSub: Subscription;
+  comment: FormControl = new FormControl('');
   constructor(
+    public showCaseService: ShowCaseService,
     private authService: AuthService,
-    public postService: PostService
+    private commentsService: CommentsService,
+    public postService: PostService,
+    private router: Router
   ) {}
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     // Posts
-    this.postService.getPostsFeed(6);
+    this.postService.getPostsFeed(0);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -639,19 +690,46 @@ export class CardInfoFeedComponent implements OnInit {
         console.log('posts personal', this.posts);
       });
     // Info
-    // this.authService.getInfo();
-    // this.infosSub = this.authService
-    //   .getInfoUpdateListener()
-    //   .subscribe((infos: AuthDataInfo[]) => {
-    //     this.infos = infos;
-    //     this.isLoading = false;
-    //   });
+    this.authService.getInfo(this.recomCounter);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        this.isLoading = false;
+      });
   }
 
+  // Adding emojis
+  addEmoji(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.comment.value + msgs;
+    this.comment.setValue(msg);
+  }
+  emojiPreventClose($event: any): any {
+    $event.stopPropagation();
+  }
+  //
+  onDeleteComment(commentId: string): any {
+    this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
+  }
+  // Where the post was posted
+  navigateToMainPage(value: string): void {
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
+  }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+  // Forward
   onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
     const counting = 6;
     this.recomCounter += counting;
     console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
 
     this.postService.getPostsFeed(this.recomCounter);
     this.postsSub = this.postService
@@ -660,6 +738,45 @@ export class CardInfoFeedComponent implements OnInit {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.postService.getPostsFeed(this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+  }
+  CommentTrigger(postId): void {
+    if (this.comment.value) {
+      this.commentsService.createComment(
+        this.comment.value,
+        this.userId,
+        postId
+      );
+      this.comment.setValue('');
+      console.log('onComment', postId);
+    }
+  }
+
+  loadComments(postId: string): void {
+    console.log('hey logic fade away', postId);
+    this.commentsService.getComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        this.comments = comments;
       });
   }
 }
