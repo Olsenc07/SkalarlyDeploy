@@ -40,7 +40,7 @@ export class MainPagesComponent implements OnInit {
       console.log('params main page', params);
       this.category = params?.category;
 
-      this.postService.getPostsMainPage(this.category);
+      this.postService.getPostsMainPage(this.category, 0);
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {

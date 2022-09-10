@@ -790,9 +790,15 @@ export class CardInfoMainPageComponent implements OnInit {
   category: string;
   userId: string;
   isLoading = false;
+  recomCounter = 0;
+  picker = new Picker();
+  countVisibility = 0;
   posts: Post[] = [];
   private postsSub: Subscription;
-
+  comments: string[] = [];
+  // number of comments that load
+  private commentsSub: Subscription;
+  comment: FormControl = new FormControl('');
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
@@ -808,7 +814,7 @@ export class CardInfoMainPageComponent implements OnInit {
       console.log('params main page', params);
       this.category = params?.category;
 
-      this.postService.getPostsMainPage(this.category);
+      this.postService.getPostsMainPage(this.category, 0);
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
@@ -817,6 +823,50 @@ export class CardInfoMainPageComponent implements OnInit {
         });
     });
   }
+  // Adding emojis
+  addEmoji(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.comment.value + msgs;
+    this.comment.setValue(msg);
+  }
+  emojiPreventClose($event: any): any {
+    $event.stopPropagation();
+  }
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    const NextBtn = document.getElementById('topScroll');
+    NextBtn.scrollIntoView();
+    this.postService.getPostsMainPage(this.category, this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.postService.getPostsMainPage(this.category, this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+      });
+  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
@@ -824,5 +874,26 @@ export class CardInfoMainPageComponent implements OnInit {
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
+  }
+  CommentTrigger(postId): void {
+    if (this.comment.value) {
+      this.commentsService.createComment(
+        this.comment.value,
+        this.userId,
+        postId
+      );
+      this.comment.setValue('');
+      console.log('onComment', postId);
+    }
+  }
+
+  loadComments(postId: string): void {
+    console.log('hey logic fade away', postId);
+    this.commentsService.getComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        this.comments = comments;
+      });
   }
 }

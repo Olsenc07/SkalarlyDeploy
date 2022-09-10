@@ -197,11 +197,11 @@ export class PostService {
       });
   }
   // getting main page posts
-  getPostsMainPage(category: string): any {
+  getPostsMainPage(category: string, counter: number): any {
     this.http
       .get<{ message: string; posts: any }>(
         'http://localhost:3000/api/posts/mainPage',
-        { params: { category } }
+        { params: { category, counter } }
       )
       .pipe(
         map((postData) => {

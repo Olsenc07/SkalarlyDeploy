@@ -164,7 +164,8 @@ export class ReusableCardUserFollowerComponent implements OnInit {
 export class ReusableCardMessageComponent implements OnInit {
   userId: string;
   username: string;
-
+  recomCounter = 0;
+  countVisibility = 0;
   // userIsAuthenticated = false;
   // private authListenerSubs: Subscription;
 
@@ -213,6 +214,22 @@ export class ReusableCardMessageComponent implements OnInit {
   deleteMsg(msgId: string): any {
     console.log('xanyx', msgId);
     this.messageNotificationService.deleteMessage(msgId);
+  }
+  // Back
+  onClickMsgBack(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 5;
+    this.recomCounter += counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.messageNotificationService
+      .getInfoUpdateListenerNotification()
+      .subscribe((messagesNotif: any) => {
+        this.isLoading = false;
+        this.messagesNotif = messagesNotif;
+      });
   }
 }
 

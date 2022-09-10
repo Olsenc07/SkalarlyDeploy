@@ -141,7 +141,7 @@
     </div>
 
     <div class="staticBtn2">
-      <button type="button" mat-stroked-button color="primary" class="post_btn_top_right" routerLink="/profile"
+      <button type="button" mat-stroked-button color="primary" class="post_btn_top_right" 
       type="submit" (click)="onFormSubmit(postForm)">Post
       <span class="material-icons"> arrow_forward </span>
     </button>
@@ -416,7 +416,9 @@
 
     
     <div *ngIf="minwidth" class="staticBtn2">
-    <button type="button" mat-raised-button color="primary" class="post_btn_top_right" routerLink="/search"
+      <!-- routerLink="/search" -->
+    <button type="button" mat-raised-button color="primary" class="post_btn_top_right" 
+    
   (click)="onFormSubmit()">Post
     <span class="material-icons"> arrow_forward </span>
   </button>

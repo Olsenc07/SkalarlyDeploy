@@ -3,9 +3,15 @@
   </div>
   
   <!-- Posts box which should be a scroll view -->
-  <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer">
-
-  <div class="feed" *cdkVirtualFor="let post of posts.slice().reverse(); templateCacheSize: 20 " >
+  <div  class="infiniteContainer" id="topScroll">
+    <div class="showMore" *ngIf="countVisibility >= 1">
+      <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Show More
+          <!-- <i class="fas fa-chevron-circle-down"></i> -->
+          <i class="fas fa-caret-up"></i>
+  
+      </mat-chip>
+      </div>
+  <div class="feed" *ngFor="let post of posts.slice().reverse();" >
     <mat-card class="specifics-fill">
       <!-- Profile Pic -->
       <div class="column" >
@@ -169,6 +175,13 @@
             <mat-divider></mat-divider>
             <input matInput placeholder="Add to the discussion..." class="comment-form-textarea"
             maxlength="140" [formControl]="comment" >
+            <button mat-icon-button>
+              <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon" class="emoji">😃
+              </mat-icon>
+            </button>
+              <mat-menu #emojiIcon="matMenu" class="emoji-menu">
+                <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
+              </mat-menu>
             <!-- {{submitLabel}}  -->
             <div class="buttonsCWrapper">
             <!-- <mat-chip-list *ngIf="open" class="buttonsC">
@@ -199,8 +212,8 @@
 </mat-chip-list>
 </div>  
       
-<cdk-virtual-scroll-viewport [itemSize]="100"  class="scroll"> 
-<div *cdkVirtualFor="let comment of comments; let even = even; let odd = odd;; templateCacheSize: 2">
+<div   class="scroll"> 
+<div *ngFor="let comment of comments; let even = even; let odd = odd;; templateCacheSize: 2">
         <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
          class="commentsDisplayWrapper">
           
@@ -218,9 +231,9 @@
 
         <div *ngIf="userId == comment.Creator" class="trashCan">
           <button  mat-icon-button
-            (click)='onDeleteComment(comment.id)'><span class="material-icons-two-tone">
-              delete_forever
-              </span></button>
+            (click)='onDeleteComment(comment.id)'>
+            <i class="far fa-times-circle"></i>
+          </button>
             </div>
 
 </div>
@@ -231,7 +244,7 @@
 
 
       </div>
-</cdk-virtual-scroll-viewport>
+    </div>
             <!-- <div class="center1">
               <div class="center">
                 <button mat-icon-button (click)="openTaggedSheet()">
@@ -275,4 +288,12 @@
   
       </div>
     </mat-card>
+    
+  </div>
+  <div class="showMore" *ngIf="posts.length">
+    <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
+        <!-- <i class="fas fa-chevron-circle-down"></i> -->
+        <i class="fas fa-caret-down"></i>
+    </mat-chip>
+    </div>
   </div>

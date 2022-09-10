@@ -282,7 +282,9 @@ router.get("/otherUsers", async(req, res) => {
 });
 // Get main page posts
 router.get("/mainPage", async(req, res) => {    
-         await Post.find({postLocation: req.query.category})
+    const counter = req.query.counter;
+    console.log('street crimes 3 ', counter);
+         await Post.find({postLocation: req.query.category}).skip(counter).limit(6)
            .then(doc => {
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
