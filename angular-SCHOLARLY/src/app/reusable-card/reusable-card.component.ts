@@ -97,9 +97,6 @@ export class ReusableCardComponent implements OnInit {
     this.bottomSheet.open(TaggedComponent);
   }
 
-  openDialog(): void {
-    this.dialog.open(DeleteWarningComponent);
-  }
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
   }
@@ -261,31 +258,7 @@ export class ReusableCardPersonalComponent implements OnInit {
       });
   }
 }
-@Component({
-  selector: 'app-deletewarning-page',
-  templateUrl: './delete-warning.component.html',
-  styleUrls: ['./reusable-card.component.scss'],
-})
-export class DeleteWarningComponent implements OnInit {
-  storedPosts: Post[] = [];
-  posts: Post[] = [];
-  private postsSub: Subscription;
 
-  constructor(public postService: PostService) {}
-
-  ngOnInit(): void {
-    this.postService.getPosts();
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-      });
-  }
-
-  onDelete(postId: string): any {
-    this.postService.deletePost(postId);
-  }
-}
 // Comments on posts
 @Component({
   selector: 'app-card-comments',

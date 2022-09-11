@@ -100,8 +100,6 @@ import { ReusableCardPersonalComponent } from './reusable-card/reusable-card.com
 import { CardInfoMainPageComponent } from './reusable-card/reusable-card.component';
 
 import { CardFeedComponent } from './reusable-card/reusable-card.component';
-
-import { DeleteWarningComponent } from './reusable-card/reusable-card.component';
 import { ShowCaseComponent } from './reusable-card/reusable-card.component';
 import { CardInfoFeedComponent } from './reusable-card/reusable-card.component';
 
@@ -198,7 +196,6 @@ import { ErrorInterceptor } from './error-interceptor';
     ServicesElementsComponent,
     ShowCaseComponent,
     CardInfoFeedComponent,
-    DeleteWarningComponent,
     ErrorComponent,
     LoginPopUpComponent,
     VerifiedPopUpComponent,

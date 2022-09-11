@@ -85,7 +85,7 @@ export class SearchListService {
           'Pharmacy',
           'Public Health',
           'Social Work',
-          'St.Micheals College',
+          'St. Micheals College',
           'Innis College',
           'Theology',
           'Trinity College',

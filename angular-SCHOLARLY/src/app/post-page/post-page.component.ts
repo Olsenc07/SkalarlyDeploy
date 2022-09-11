@@ -27,6 +27,8 @@ import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { Router } from '@angular/router';
+
 import {
   MatAutocompleteSelectedEvent,
   MatAutocomplete,
@@ -150,6 +152,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     public searchListService: SearchListService,
     private fb: FormBuilder,
+    private router: Router,
     private postService: PostService,
     private authService: AuthService
   ) {
@@ -294,8 +297,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.event.value,
       this.form.get('upload').value
     );
-    console.log('gender', this.gender.value);
-    console.log('event', this.event.value);
+    this.router.navigate(['/main/:'], {
+      queryParams: { category: this.postLocation.value },
+    });
   }
 
   changeTab(): void {

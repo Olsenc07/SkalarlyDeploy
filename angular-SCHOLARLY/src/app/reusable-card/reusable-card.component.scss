@@ -119,6 +119,7 @@ margin-top: 1%;
 .infiniteContainer{
   height: 100%;
   width: 100%;
+  margin-top: 1%;
   // margin-bottom: 17%;
 }
 @media (min-width: 400px) {
@@ -137,7 +138,7 @@ margin-top: 1%;
 .feed {
   display: flex;
   // height: 100%;
-  padding: 1% 1% 1% 1%;
+  padding: 0% 1% 1% 1%;
 }
 
 .fit_ {
@@ -202,7 +203,7 @@ margin-top: 1%;
 .showMore{
   display: flex;
   justify-content: center;
-
+  margin-bottom: 1%;
 }
 .showMoreBtn{
   display: flex;
