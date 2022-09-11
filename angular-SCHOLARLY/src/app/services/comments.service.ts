@@ -33,6 +33,7 @@ export class CommentsService {
               id: comment._id,
               body: comment.body,
               username: comment.username,
+              time: comment.time,
               postId: comment.postId,
               ProfilePicPath: comment.ProfilePicPath,
               Creator: comment.Creator,
@@ -49,6 +50,7 @@ export class CommentsService {
   createComment(
     body: string,
     userId: string,
+    time: string,
     postId: string
 
     // parentId: null | string
@@ -56,6 +58,7 @@ export class CommentsService {
     const message = {
       body,
       userId,
+      time,
       postId,
     };
     this.http
@@ -68,6 +71,7 @@ export class CommentsService {
           const message: CommentInterface = {
             id: responseData.messages.id,
             body,
+            time,
             // userId
           };
           this.messages.push(message);

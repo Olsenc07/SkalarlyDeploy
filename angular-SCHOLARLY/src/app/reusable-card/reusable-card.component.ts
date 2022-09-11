@@ -31,6 +31,7 @@ import { Picker } from 'emoji-picker-element';
 export interface CommentInterface {
   id: string;
   body: string;
+  time: string;
   // userId: string;
   // parentId: string | null;
   // createdAt: string;
@@ -69,6 +70,23 @@ export class ReusableCardComponent implements OnInit {
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
+  timeHour = new Date().getHours();
+  timeMinute = new Date().getMinutes();
+  text = this.timeHour >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth() + 1;
+
+  time =
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    this.text +
+    '\xa0' +
+    this.dateDay +
+    '/' +
+    this.dateMonth;
   // selectedAttend = '';
   // attendances: any = ['Attending', 'Maybe', 'Not Attending'];
   // panelOpenState = false;
@@ -141,6 +159,7 @@ export class ReusableCardComponent implements OnInit {
       this.commentsService.createComment(
         this.comment.value,
         this.userId,
+        this.time,
         postId
       );
       this.comment.setValue('');
@@ -179,7 +198,23 @@ export class ReusableCardPersonalComponent implements OnInit {
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
+  timeHour = new Date().getHours();
+  timeMinute = new Date().getMinutes();
+  text = this.timeHour >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth() + 1;
 
+  time =
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    this.text +
+    '\xa0' +
+    this.dateDay +
+    '/' +
+    this.dateMonth;
   // selectedAttend = '';
   // attendances: any = ['Attending', 'Maybe', 'Not Attending'];
   // panelOpenState = false;
@@ -242,6 +277,7 @@ export class ReusableCardPersonalComponent implements OnInit {
       this.commentsService.createComment(
         this.comment.value,
         this.userId,
+        this.time,
         postId
       );
       this.comment.setValue('');
@@ -276,7 +312,23 @@ export class ReusableCommentsComponent implements OnInit {
     private commentsService: CommentsService,
     public postService: PostService
   ) {}
+  timeHour = new Date().getHours();
+  timeMinute = new Date().getMinutes();
+  text = this.timeHour >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth() + 1;
 
+  time =
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    this.text +
+    '\xa0' +
+    this.dateDay +
+    '/' +
+    this.dateMonth;
   ngOnInit(): void {
     this.postService.getPostsFeed(6);
     this.postsSub = this.postService
@@ -290,17 +342,19 @@ export class ReusableCommentsComponent implements OnInit {
   addComment({
     body,
     userId,
+    time,
     postId,
   }: // parentId,
   {
     body: string;
     userId: string;
+    time: string;
     postId: string;
     // parentId: null | string;
   }): void {
     console.log('addComment', postId);
     this.commentsService
-      .createComment(body, userId, postId)
+      .createComment(body, userId, time, postId)
       .subscribe((createdComment) => {
         this.comments = [...this.comments, createdComment];
         this.activeComment = null;
@@ -396,6 +450,23 @@ export class ReusableCommentFormComponent implements OnInit {
   Comments = new FormGroup({
     comment: this.comment,
   });
+  timeHour = new Date().getHours();
+  timeMinute = new Date().getMinutes();
+  text = this.timeHour >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth() + 1;
+
+  time =
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    this.text +
+    '\xa0' +
+    this.dateDay +
+    '/' +
+    this.dateMonth;
 
   constructor(
     private fb: FormBuilder,
@@ -419,6 +490,7 @@ export class ReusableCommentFormComponent implements OnInit {
       this.commentsService.createComment(
         this.comment.value,
         this.userId,
+        this.time,
         postId
       );
       this.comment.setValue('');
@@ -492,6 +564,24 @@ export class CardFeedComponent implements OnInit {
   // number of comments that load
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
+
+  timeHour = new Date().getHours();
+  timeMinute = new Date().getMinutes();
+  text = this.timeHour >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth() + 1;
+
+  time =
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    this.text +
+    '\xa0' +
+    this.dateDay +
+    '/' +
+    this.dateMonth;
 
   constructor(
     public showCaseService: ShowCaseService,
@@ -603,6 +693,7 @@ export class CardFeedComponent implements OnInit {
       this.commentsService.createComment(
         this.comment.value,
         this.userId,
+        this.time,
         postId
       );
       this.comment.setValue('');
@@ -645,6 +736,25 @@ export class CardInfoFeedComponent implements OnInit {
   // number of comments that load
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
+
+  timeHour = new Date().getHours();
+  timeMinute = new Date().getMinutes();
+  text = this.timeHour >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth() + 1;
+
+  time =
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    this.text +
+    '\xa0' +
+    this.dateDay +
+    '/' +
+    this.dateMonth;
+
   constructor(
     public showCaseService: ShowCaseService,
     private authService: AuthService,
@@ -737,6 +847,7 @@ export class CardInfoFeedComponent implements OnInit {
       this.commentsService.createComment(
         this.comment.value,
         this.userId,
+        this.time,
         postId
       );
       this.comment.setValue('');
@@ -773,6 +884,25 @@ export class CardInfoMainPageComponent implements OnInit {
   // number of comments that load
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
+
+  timeHour = new Date().getHours();
+  timeMinute = new Date().getMinutes();
+  text = this.timeHour >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth() + 1;
+
+  time =
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    this.text +
+    '\xa0' +
+    this.dateDay +
+    '/' +
+    this.dateMonth;
+
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
@@ -854,6 +984,7 @@ export class CardInfoMainPageComponent implements OnInit {
       this.commentsService.createComment(
         this.comment.value,
         this.userId,
+        this.time,
         postId
       );
       this.comment.setValue('');

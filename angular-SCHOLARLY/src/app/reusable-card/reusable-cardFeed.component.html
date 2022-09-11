@@ -227,13 +227,13 @@
   </button>
     <div class="userName link" *ngIf="userId == comment.Creator" id="userName">@{{comment.username}}
       </div>
-
         <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
           <button  mat-icon-button
             (click)='onDeleteComment(comment.id)'>
             <i class="far fa-times-circle"></i>
             </button>
             </div>
+            {{comment.time}}
 
 </div>
 <div class="commentText"> {{comment.body}}</div>
