@@ -5,7 +5,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Observable, Subscription } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
-import { ChatService } from './services/chat.service';
+
 import { HttpClient } from '@angular/common/http';
 import { PostsService, UserNames } from './services/posts.service';
 @Component({
@@ -77,8 +77,7 @@ export class AppComponent implements OnInit {
   constructor(
     private postsService: PostsService,
     private router: Router,
-    private authService: AuthService,
-    private chatService: ChatService
+    private authService: AuthService
   ) {
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) =>
