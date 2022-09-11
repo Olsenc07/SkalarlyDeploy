@@ -204,7 +204,7 @@ router.delete("/:id", checkAuth, (req, res, next ) => {
 
 // get Comment on post
 router.get('/comments', async(req, res) =>{
-    await Comment.find({postId: req.query.postId})
+    await Comment.find({postId: req.query.postId}).sort({_id:-1})
     .then(documents => {
         console.log('hey chaz man man', documents);
     res.status(200).json({
