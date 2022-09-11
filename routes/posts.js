@@ -81,7 +81,7 @@ router.get("", async(req, res, next) => {
 // Post recieving Feed
 router.get("/feed", async(req, res, next) => {
     const counter = req.query.counter
-   await Post.find().skip(counter).limit(6)
+   await Post.find().sort({_id:-1}).skip(counter).limit(6)
     .then(docs => {
             res.status(200).json({
                 message: 'Posts feed fetched succesfully!',
@@ -284,7 +284,7 @@ router.get("/otherUsers", async(req, res) => {
 router.get("/mainPage", async(req, res) => {    
     const counter = req.query.counter;
     console.log('street crimes 3 ', counter);
-         await Post.find({postLocation: req.query.category}).skip(counter).limit(6)
+         await Post.find({postLocation: req.query.category}).sort({_id:-1}).skip(counter).limit(6)
            .then(doc => {
             res.status(200).json({
                 message: 'Infos fetched succesfully!',

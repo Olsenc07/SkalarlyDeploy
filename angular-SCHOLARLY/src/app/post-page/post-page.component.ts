@@ -225,7 +225,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): any {
     this.authStatusSub.unsubscribe();
   }
 
