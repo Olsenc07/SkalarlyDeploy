@@ -143,11 +143,17 @@ export class ReusableCardComponent implements OnInit {
         this.userId,
         postId
       );
-      console.log('searching for', this.comment.value);
       this.comment.setValue('');
       console.log('onComment', postId);
+      this.commentsService.getComments(postId);
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          this.comments = comments;
+        });
     }
   }
+
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);
@@ -173,7 +179,7 @@ export class ReusableCardPersonalComponent implements OnInit {
   // Filling with Post info from post.service
   posts: Post[] = [];
   private postsSub: Subscription;
-  comments: CommentInterface[] = [];
+  comments: string[] = [];
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
 
@@ -246,14 +252,21 @@ export class ReusableCardPersonalComponent implements OnInit {
       );
       this.comment.setValue('');
       console.log('onComment', postId);
+      this.commentsService.getComments(postId);
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          this.comments = comments;
+        });
     }
   }
+
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: CommentInterface[]) => {
+      .subscribe((comments: string[]) => {
         this.comments = comments;
       });
   }
@@ -597,7 +610,7 @@ export class CardFeedComponent implements OnInit {
         this.comments = comments;
       });
   }
-  CommentTrigger(postId): void {
+  CommentTrigger(postId: string): void {
     if (this.comment.value) {
       this.commentsService.createComment(
         this.comment.value,
@@ -606,6 +619,12 @@ export class CardFeedComponent implements OnInit {
       );
       this.comment.setValue('');
       console.log('onComment', postId);
+      this.commentsService.getComments(postId);
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          this.comments = comments;
+        });
     }
   }
 
@@ -731,7 +750,7 @@ export class CardInfoFeedComponent implements OnInit {
         console.log('posts personal', this.posts);
       });
   }
-  CommentTrigger(postId): void {
+  CommentTrigger(postId: string): void {
     if (this.comment.value) {
       this.commentsService.createComment(
         this.comment.value,
@@ -740,6 +759,12 @@ export class CardInfoFeedComponent implements OnInit {
       );
       this.comment.setValue('');
       console.log('onComment', postId);
+      this.commentsService.getComments(postId);
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          this.comments = comments;
+        });
     }
   }
 
