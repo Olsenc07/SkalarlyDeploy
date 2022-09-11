@@ -145,12 +145,6 @@ export class ReusableCardComponent implements OnInit {
       );
       this.comment.setValue('');
       console.log('onComment', postId);
-      this.commentsService.getComments(postId);
-      this.commentsSub = this.commentsService
-        .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
-          this.comments = comments;
-        });
     }
   }
 
@@ -252,12 +246,6 @@ export class ReusableCardPersonalComponent implements OnInit {
       );
       this.comment.setValue('');
       console.log('onComment', postId);
-      this.commentsService.getComments(postId);
-      this.commentsSub = this.commentsService
-        .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
-          this.comments = comments;
-        });
     }
   }
 
@@ -619,12 +607,6 @@ export class CardFeedComponent implements OnInit {
       );
       this.comment.setValue('');
       console.log('onComment', postId);
-      this.commentsService.getComments(postId);
-      this.commentsSub = this.commentsService
-        .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
-          this.comments = comments;
-        });
     }
   }
 
@@ -759,12 +741,6 @@ export class CardInfoFeedComponent implements OnInit {
       );
       this.comment.setValue('');
       console.log('onComment', postId);
-      this.commentsService.getComments(postId);
-      this.commentsSub = this.commentsService
-        .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
-          this.comments = comments;
-        });
     }
   }
 

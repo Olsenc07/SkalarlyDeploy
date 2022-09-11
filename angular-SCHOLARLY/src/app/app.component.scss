@@ -388,6 +388,7 @@ h4:focus {
   width: 75%;
   height: 100%;
 }
+@media (max-width: 1700px) {
 .public {
   font-size: 3vmax;
   display: flex;
@@ -396,6 +397,18 @@ h4:focus {
   width: 100%;
   height: 100%;
 }
+}
+@media (min-width: 1700px) {
+  .public {
+    font-size: 2vmax;
+    display: flex;
+    color: #f5f5f5;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  }
+@media (max-width: 1700px) {
 .PublicOn {
   display: flex;
   justify-content: center;
@@ -403,26 +416,67 @@ h4:focus {
   color: #C0C0C0;
   font-size: 4vmax;
 }
+}
+@media (min-width: 1700px) {
+  .PublicOn {
+    display: flex;
+    justify-content: center;
+    // color: #b8dde9;
+    color: #C0C0C0;
+    font-size: 3vmax;
+  }
+  }
+@media (max-width: 1700px) {
 .groups {
   color: #f5f5f5;
   font-size: 3vmax;
   display: flex;
   justify-content: center;
 }
+}
+@media (min-width: 1700px) {
+  .groups {
+    color: #f5f5f5;
+    font-size: 2vmax;
+    display: flex;
+    justify-content: center;
+  }
+  }
+@media (max-width: 1700px) {
 .GroupsOn {
   font-size: 4vmax;
   display: flex;
   // color: #b8dde9;
   color: #C0C0C0;
-
   justify-content: center;
 }
+}
+@media (min-width: 1700px) {
+  .GroupsOn {
+    font-size: 3vmax;
+    display: flex;
+    // color: #b8dde9;
+    color: #C0C0C0;
+    justify-content: center;
+  }
+  }
+@media (max-width: 1700px) {
 .profile {
   color: #f5f5f5;
   font-size: 3vmax;
   display: flex;
   justify-content: center;
 }
+}
+@media (min-width: 1700px) {
+  .profile {
+    color: #f5f5f5;
+    font-size: 2vmax;
+    display: flex;
+    justify-content: center;
+  }
+  }
+@media (max-width: 1700px) {
 .ProfileOn {
   display: flex;
   font-size: 4vmax;
@@ -430,12 +484,33 @@ h4:focus {
   color: #C0C0C0;
   justify-content: center;
 }
+}
+@media (min-width: 1700px) {
+  .ProfileOn {
+    display: flex;
+    font-size: 3vmax;
+    // color: #b8dde9;
+    color: #C0C0C0;
+    justify-content: center;
+  }
+  }
+  @media (min-width: 1700px) {
+    .post {
+      color: #f5f5f5;
+      font-size: 2vw;
+      display: flex;
+      justify-content: center;
+    }
+    }
+@media (max-width: 1700px) {
 .post {
   color: #f5f5f5;
   font-size: 3vw;
   display: flex;
   justify-content: center;
 }
+}
+@media (max-width: 1700px) {
 .PostOn {
   display: flex;
   font-size: 4vw;
@@ -443,12 +518,33 @@ h4:focus {
   color: #C0C0C0;
   justify-content: center;
 }
+}
+@media (min-width: 1700px) {
+  .PostOn {
+    display: flex;
+    font-size: 3vw;
+    // color: #b8dde9;
+    color: #C0C0C0;
+    justify-content: center;
+  }
+  }
+@media (max-width: 1700px) {
 .message {
   color: #f5f5f5;
   font-size: 3vw;
   display: flex;
   justify-content: center;
 }
+}
+@media (min-width: 1700px) {
+  .message {
+    color: #f5f5f5;
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+  }
+  }
+@media (max-width: 1700px) {
 .MessageOn {
   display: flex;
   font-size: 4vw;
@@ -456,6 +552,16 @@ h4:focus {
   color: #C0C0C0;
   justify-content: center;
 }
+}
+@media (min-width: 1700px) {
+  .MessageOn {
+    display: flex;
+    font-size: 3vw;
+    // color: #b8dde9;
+    color: #C0C0C0;
+    justify-content: center;
+  }
+  }
 .options{
   display: flex;
   overflow-y: scroll visible;
