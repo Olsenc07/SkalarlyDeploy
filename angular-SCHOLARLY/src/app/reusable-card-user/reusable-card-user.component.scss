@@ -78,6 +78,7 @@
     align-items: center;
     font-family: 'Cinzel';
     text-align: center;
+    margin-left: 2%;
 }
 .odd{
   background-color: #f2f0f0;
@@ -155,17 +156,34 @@
   border-radius: 50%;
   overflow: hidden;
 }
+@media (min-width: 1150px) {
 
   .textSize {
     font-size: medium;
     font-family:  'Poppins', sans-serif;
     color: #7e7171;
   }
+}
+@media (max-width: 1150px) {
+  .textSize {
+    font-size: small;
+    font-family:  'Poppins', sans-serif;
+    color: #7e7171;
+  }
+}
+@media (min-width: 1025px) {
   .textSize_ {
     font-size: medium;
     font-family:  'Poppins', sans-serif;
+  }
+}
+@media (max-width: 1025px) {
+  .textSize_ {
+    font-size: small;
+    font-family:  'Poppins', sans-serif;
 
   }
+}
 .userName {
   display: flex;
   font-weight: 500;
