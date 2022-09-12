@@ -193,9 +193,7 @@
 
           <div *ngFor="let comment of comments; let even = even; let odd = odd">
             <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
-             class="commentsDisplayWrapper"
-             (scrolled)="onScrollDown($event)" 
-         (scrolledUp)="onScrollUp($event)">
+             class="commentsDisplayWrapper">
               
                 <div class="profilePic">
     <img src="{{comment.ProfilePicPath}}" class="pic">
@@ -208,6 +206,8 @@
           </button>
             <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
     </div>
+    {{comment.time}}
+
     <div class="commentText">{{comment.body}}</div>
     </div>
             </div>    

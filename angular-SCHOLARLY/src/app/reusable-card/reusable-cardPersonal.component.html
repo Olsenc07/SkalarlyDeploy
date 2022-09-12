@@ -5,17 +5,16 @@
   <!-- Posts box which should be a scroll view -->
   <!-- <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer"> -->
   
-  <div class="feed" *ngFor="let post of posts.slice().reverse()" >
-    <mat-card class="specifics-fill" *ngIf="!isLoading">
+  <div class="feed" *ngFor="let post of posts.slice().reverse();" >
+    <mat-card class="specifics-fill" *ngIf="!isLoading" >
       <!-- Profile Pic -->
       <div class="column" >
         <div class="row">
           <div class="column">
             <div class="trashCan" >
               <button *ngIf='userId === post.Creator' mat-icon-button matTooltip="Delete Post"
-                (click)='onDelete(post.id)'><span class="material-icons-two-tone">
-                  delete_forever
-                  </span></button>
+                (click)='onDelete(post.id)'> <i class="far fa-times-circle"></i>
+              </button>
                 </div>
             <div class="centerT" *ngIf="post.Title">
   
@@ -186,12 +185,18 @@
 
 
   <div  class="scroll">
-            <div *ngFor="let comment of comments">
-              <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper">
+            <div *ngFor="let comment of comments; let even = even; let odd = odd">
+              <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper" [ngClass]="{ even: even, odd: odd }">
                 
+                <div class="picTime">
                   <div class="profilePic">
       <img src="{{comment.ProfilePicPath}}" class="pic">
       </div>
+<div class="timeBox">
+      {{comment.time}}
+      </div>
+    </div>
+
       <div class="commentsDisplay">
         <div class="usernameBtn">
           <button mat-button *ngIf="userId !== comment.Creator" >
@@ -199,14 +204,19 @@
               </div>
             </button>
               <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
-              <div *ngIf="userId == comment.Creator" class="trashCan">
-                <button  mat-icon-button
-                  (click)='onDeleteComment(comment.id)'><span class="material-icons-two-tone">
-                    delete_forever
-                    </span></button>
+      <div style="flex-direction:row ;">
+
+      <div class="commentText">{{comment.body}}
+        <div *ngIf="userId == comment.Creator" class="trashCan">
+          <button  mat-icon-button
+            (click)='onDeleteComment(comment.id)'><i class="far fa-times-circle"></i>
+          </button>
+            </div>
+      </div>
+
+              
                   </div>
       </div>
-      <div class="commentText">{{comment.body}}</div>
       </div>
               </div>
       
