@@ -8,6 +8,32 @@ const http = require('http');
  */
  const express = require('express');
  const bodyParser = require('body-parser');
+ const webpush = require('web-push')
+
+const publicVapidKey = 'BD3BblVzyiaqnIYKfJHpaJ4Gil-BDYvUh5WlRmfMu5KULOb-TdMa0ZXdOqKHg56c3U36eUJZKlfuPLh-90cHgFE';
+const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
+
+webpush.setVapidDetails('mailto:Skalarly@Skalarly.com', publicVapidKey, privateVapidKey);
+// Subscribe route
+app.post('/subscribe', (req, res) => {
+    // Get pushSubscription object
+    const subscription = req.body;
+
+    // Send 201 - resource created
+    res.status(201).json({});
+
+    // Create payload 
+    const payload = JSON.stringify({ title: ' Push Test'});
+
+    // Pass object into sendNotification
+    webpush.sendNotification(subscription, payload)
+    .catch(err => console.error(err));
+
+
+})
+
+
+
  const path = require('path');
  const mongoose = require('mongoose');
 

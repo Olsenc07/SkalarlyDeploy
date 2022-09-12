@@ -61,7 +61,8 @@
     "socket.io-client": "^4.5.1",
     "tslib": "^2.4.0",
     "url-parse": "^1.5.10",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "web-push": "^3.5.0"
   },
   "repository": {
     "type": "git",
