@@ -97,6 +97,7 @@ export class SearchListService {
           // 'U Of T Scarborough',
           'Victoria College',
           'Woodsworth College',
+          'Wycliffe College',
         ];
         break;
       case SearchValues.BLUE_CLUBS:

@@ -26,10 +26,13 @@
 >
   <ng-container *ngIf="minHeight && minwidth">
     <div class="root-container">
-      <router-outlet> </router-outlet>
+      <router-outlet>
+       
+         </router-outlet>
     </div>
 
     <div class="root-container">
+      
       <ng-container
         *ngIf="
           ((isHomeScreen$ | async) ||

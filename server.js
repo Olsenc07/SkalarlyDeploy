@@ -10,6 +10,8 @@ const http = require('http');
  const bodyParser = require('body-parser');
  const webpush = require('web-push')
 
+
+
 const publicVapidKey = 'BD3BblVzyiaqnIYKfJHpaJ4Gil-BDYvUh5WlRmfMu5KULOb-TdMa0ZXdOqKHg56c3U36eUJZKlfuPLh-90cHgFE';
 const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
 
@@ -29,6 +31,8 @@ webpush.setVapidDetails('mailto:Skalarly@Skalarly.com', publicVapidKey, privateV
  const Msg = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/messages')
  const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
  const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
+//  const serviceWorkerRegister = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/worker.js');
+
 
 
  
@@ -123,6 +127,7 @@ mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFi
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use(express.static(path.join( '/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/js/client' )))
 app.use('/posts', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/posts')));
 app.use('/profilePics', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/profilePics')));
 app.use('/showCase', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/showCase')));
@@ -144,6 +149,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/follow", followRoutes);
+// app.use('/api/serviceWorker', serviceWorkerRegister);
 
 
 
