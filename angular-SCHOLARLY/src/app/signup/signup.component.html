@@ -228,7 +228,7 @@
 
 
 <!-- disabled -->
-      <mat-tab class="sndPage" disabled >
+      <mat-tab class="sndPage"  >
         <form [formGroup]="personalizeForm" enctype="multipart/form-data">
           <ng-template mat-tab-label>
             <mat-icon><span class="material-icons-two-tone">
@@ -323,6 +323,20 @@
                 </button> -->
               </mat-form-field>
             </div>
+
+
+            <div class="input bd">
+              <i class="material-icons _icon">cake</i>
+              <!-- Birthday picker -->
+              <mat-form-field >
+                <mat-label>When's your birthday?</mat-label>
+                <input matInput [matDatepicker]="dp" [formControl]="birthday">
+
+                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker class="bd_picker" #dp></mat-datepicker>
+              </mat-form-field>
+            </div>
+
             <div class="inputP">
               <div>
                 <mat-form-field  class="gender" >
@@ -347,19 +361,32 @@
                   </mat-autocomplete>
                 </mat-form-field>
               </div>
+    <!-- Bio -->
+ 
+    <div class="input">
+      <i class="far fa-heart  _icon"></i>
+      <mat-form-field>
+
+        <mat-label>Bio</mat-label>
+
+      <input matInput   
+         [formControl]="bio" type="text" placeholder="Bio" class="inputText"/>
+        <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
+          <mat-icon class="asthetic-adds">close</mat-icon>
+        </button> -->
+       
+          <mat-menu #emojiIconBio="matMenu" class="emoji-menu">
+            <emoji-picker class="light" (emoji-click)="addEmojiBio($event)" (click)="emojiPreventCloseBio($event);"></emoji-picker>
+          </mat-menu>
+      </mat-form-field>
+      <button mat-icon-button>
+        <mat-icon matSuffix [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
+        </mat-icon>
+      </button>
+    </div>
+  
             </div>
 
-            <div class="input bd">
-              <i class="material-icons _icon">cake</i>
-              <!-- Birthday picker -->
-              <mat-form-field >
-                <mat-label>When's your birthday?</mat-label>
-                <input matInput [matDatepicker]="dp" [formControl]="birthday">
-
-                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-                <mat-datepicker class="bd_picker" #dp></mat-datepicker>
-              </mat-form-field>
-            </div>
 
           </div>
           <div class="createBtn">

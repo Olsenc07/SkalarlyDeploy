@@ -268,6 +268,11 @@ export class SignupComponent implements OnInit, OnDestroy {
     return null;
   }
   // Adding emojis
+  addEmojiBio(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.bio.value + msgs;
+    this.bio.setValue(msg);
+  }
   addEmojiMajor(event: any): any {
     const msgs = event?.detail?.unicode;
     const msg = this.major.value + msgs;
@@ -287,6 +292,9 @@ export class SignupComponent implements OnInit, OnDestroy {
     const msgs = event?.detail?.unicode;
     const msg = this.club.value + msgs;
     this.club.setValue(msg);
+  }
+  emojiPreventCloseBio($event: any): any {
+    $event.stopPropagation();
   }
   emojiPreventClose($event: any): any {
     $event.stopPropagation();

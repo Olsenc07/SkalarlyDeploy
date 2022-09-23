@@ -143,8 +143,9 @@
           </div>
          
       <!-- Bio -->
+  
           <div class="input">
-            <i class="fab fa-readme  _icon"></i>
+            <i class="far fa-heart  _icon"></i>
             <mat-form-field>
               <mat-label *ngIf="info.bio">{{info.bio}}</mat-label>
               <mat-label *ngIf="!info.bio">Bio</mat-label>
@@ -154,17 +155,18 @@
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
-              <button mat-icon-button>
-                <mat-icon matSuffix [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
-                </mat-icon>
-              </button>
+   
                 <mat-menu #emojiIconBio="matMenu" class="emoji-menu">
                   <emoji-picker class="light" (emoji-click)="addEmojiBio($event)" (click)="emojiPreventCloseBio($event);"></emoji-picker>
                 </mat-menu>
             </mat-form-field>
+            <button mat-icon-button>
+              <mat-icon matSuffix [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
+              </mat-icon>
+            </button>
           </div>
-
-    
+          
+       
           <!-- Save button -->
           <div class="done">
             <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
