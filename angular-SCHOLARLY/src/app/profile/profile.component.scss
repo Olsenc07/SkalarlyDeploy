@@ -32,22 +32,31 @@
 .bio {
   font-size: large;
   margin-left: 2%;
+  font-family:  'Poppins', sans-serif;
 }
 .bioHeader{
+  font-family: 'Cinzel',serif;
+  flex-direction: row;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  align-items: baseline;
+}
+.bioHeaderFont{
+  display: flex;
   font-family: 'Cinzel', serif;
-
+  flex-direction: row;
+  align-items: baseline;
 }
-.bio-box {
+.bioUserName {
   display: flex;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  justify-content: center;
+  font-family:  'Poppins', sans-serif;
+  margin-left: 1%;
 }
-
+.bioStyles{
+  background-color: #e6e6e6;
+    border: groove;
+    border-radius: 25px;
+    padding: 1%;
+}
 .bio-input {
   width: 90%;
   height: 100%;
@@ -148,6 +157,7 @@ width: 100%;
   border-radius: 10% / 50%;
   opacity: 0.02;
 }
+
 .completed-courses {
   display: flex;
   flex-direction: column;
@@ -452,11 +462,9 @@ flex-direction: column;
   font-size: 26px;
 }
 .large {
-  // font-size: small;
-  // padding-right: 1%;
   font-family:  'Poppins', sans-serif;
-
 }
+
 
 @media (min-width: 1025px) {
   .left-side {
@@ -661,7 +669,11 @@ mat-tab-group {
   font-size: 18px;
   width: 100%;
 }
-
+.row_{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
 @media (max-height: 900px) {
 .right-side {
   display: flex;

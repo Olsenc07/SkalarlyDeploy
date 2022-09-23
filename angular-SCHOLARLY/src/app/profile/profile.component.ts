@@ -300,8 +300,4 @@ export class BioComponent implements OnInit {
         console.log('infos', this.infos);
       });
   }
-  // openLink(event: MouseEvent): void {
-  //   this.bottomSheetRef.dismiss();
-  //   event.preventDefault();
-  // }
 }

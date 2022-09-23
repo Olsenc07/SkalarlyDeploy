@@ -1,8 +1,13 @@
 <div *ngFor="let info of infos" class="bioHeader">
 <div *ngIf="(userId === info.Creator)" class="large">
-    <h2>
-    Bio: @{{info.username}}
+    <div class="row_">
+    <h2 class="bioHeaderFont" >
+    Bio: <div  class="bioUserName">@{{info.username}}</div>
     </h2>
-    {{info.bio}}
+    <button mat-icon-button mat-dialog-close matTooltip="Close Popup" >
+        <i class="far fa-times-circle"></i>
+    </button>
+</div>
+   <div class="bioStyles"> {{info.bio}}</div>
 </div>
 </div>
