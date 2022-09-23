@@ -315,6 +315,7 @@ router.post("/info", checkAuth,
         var info = new UserInfo({
             username: req.body.username,
             name: req.body.name,
+            bio: req.body.bio,
             gender: req.body.gender,
             birthday: req.body.birthday,
             major: req.body.major,
@@ -417,6 +418,9 @@ router.post("/infoEd", checkAuth,
              if(req.body.name){
                      await UserInfo.updateOne({Creator:req.query.userId },{name: req.body.name})
                  }
+                 if(req.body.bio){
+                    await UserInfo.updateOne({Creator:req.query.userId },{bio: req.body.bio})
+                }
             if(req.body.birthday){
                 await UserInfo.updateOne({Creator:req.query.userId },{birthday: req.body.birthday})
                  }              

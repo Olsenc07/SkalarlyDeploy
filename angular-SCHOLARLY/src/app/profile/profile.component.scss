@@ -29,10 +29,17 @@
   justify-content: center;
 }
 
-.bio-name-age {
-  display: flex;
+.bio {
+  font-size: large;
+  margin-left: 2%;
 }
+.bioHeader{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Cinzel', serif;
 
+}
 .bio-box {
   display: flex;
   width: 100%;

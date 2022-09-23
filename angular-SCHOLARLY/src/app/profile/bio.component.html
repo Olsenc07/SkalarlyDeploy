@@ -1,0 +1,8 @@
+<div *ngFor="let info of infos" class="bioHeader">
+<div *ngIf="(userId === info.Creator)" class="large">
+    <h2>
+    Bio: @{{info.username}}
+    </h2>
+    {{info.bio}}
+</div>
+</div>

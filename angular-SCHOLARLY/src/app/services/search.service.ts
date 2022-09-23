@@ -77,6 +77,7 @@ export class SearchListService {
           'Emmanuel College',
           'Information',
           'Kinesiology & Physical Education',
+          'Knox College',
           'Law',
           'Management',
           'Medicine',

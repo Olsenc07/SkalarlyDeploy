@@ -127,7 +127,7 @@ export class EditProfileComponent implements OnInit {
   minor: FormControl = new FormControl('');
   sport: FormControl = new FormControl('');
   club: FormControl = new FormControl('');
-  // bio: FormControl = new FormControl('');
+  bio: FormControl = new FormControl('');
   // public bioLength = new BehaviorSubject(0);
   name: FormControl = new FormControl('');
   pronoun: FormControl = new FormControl('');
@@ -159,6 +159,11 @@ export class EditProfileComponent implements OnInit {
     // );
   }
   // Adding emojis
+  addEmojiBio(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.bio.value + msgs;
+    this.bio.setValue(msg);
+  }
   addEmojiMajor(event: any): any {
     const msgs = event?.detail?.unicode;
     const msg = this.major.value + msgs;
@@ -178,6 +183,10 @@ export class EditProfileComponent implements OnInit {
     const msgs = event?.detail?.unicode;
     const msg = this.club.value + msgs;
     this.club.setValue(msg);
+  }
+
+  emojiPreventCloseBio($event: any): any {
+    $event.stopPropagation();
   }
   emojiPreventCloseMajor($event: any): any {
     $event.stopPropagation();
@@ -344,6 +353,7 @@ export class EditProfileComponent implements OnInit {
     this.authService.editUserInfo(
       this.userId,
       this.name.value,
+      this.bio.value,
       this.gender.value,
       this.birthday.value,
       this.major.value,

@@ -83,6 +83,7 @@ import { LoginPopUpComponent } from './signup/signup.component';
 
 import { AttendanceComponent } from './main-pages/main-pages.component';
 import { BottomSheetComponent } from './profile/profile.component';
+import { BioComponent } from './profile/profile.component';
 
 import { HomePageComponent } from './home-page/home-page.component';
 import { FriendsActivityComponent } from './friends-activity/friends-activity.component';
@@ -173,6 +174,7 @@ import { ErrorInterceptor } from './error-interceptor';
     TermsPopUpComponent,
     AttendanceComponent,
     BottomSheetComponent,
+    BioComponent,
     ReusableCardComponent,
     ReusableCardPersonalComponent,
     CardInfoMainPageComponent,

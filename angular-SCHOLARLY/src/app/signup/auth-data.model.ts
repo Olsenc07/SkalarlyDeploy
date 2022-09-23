@@ -10,6 +10,7 @@ export interface AuthDataInfo {
   username?: string;
   id?: string;
   name?: string;
+  bio?: string;
   gender?: string;
   birthday?: string;
   major?: string;

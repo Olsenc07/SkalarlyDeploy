@@ -79,6 +79,7 @@ export class AuthService {
   createUserInfo(
     username: string,
     name: string,
+    bio: string,
     gender: string,
     birthday: string,
     major: string,
@@ -150,6 +151,7 @@ export class AuthService {
       Creator,
       username,
       name,
+      bio,
       gender,
       birthday,
       major,
@@ -221,6 +223,7 @@ export class AuthService {
     const userData = new FormData();
     userData.append('username', username);
     userData.append('name', name);
+    userData.append('bio', bio);
     userData.append('gender', gender);
     userData.append('birthday', birthday);
     userData.append('major', major);
@@ -298,6 +301,7 @@ export class AuthService {
             id: responseData.post.id,
             username,
             name,
+            bio,
             gender,
             birthday,
             major,
@@ -383,6 +387,7 @@ export class AuthService {
   editUserInfo(
     userId: string,
     name: string,
+    bio: string,
     gender: string,
     birthday: string,
     major: string,
@@ -397,6 +402,7 @@ export class AuthService {
   ): any {
     const authDataInfo: AuthDataInfo = {
       name,
+      bio,
       gender,
       birthday,
       major,
@@ -453,6 +459,7 @@ export class AuthService {
     };
     const userData = new FormData();
     userData.append('name', name);
+    userData.append('bio', bio);
     userData.append('gender', gender);
     userData.append('birthday', birthday);
     userData.append('major', major);
@@ -476,6 +483,7 @@ export class AuthService {
           const post: AuthDataInfo = {
             id: responseData.post.id,
             name,
+            bio,
             gender,
             birthday,
             major,
@@ -1632,6 +1640,7 @@ export class AuthService {
               id: info._id,
               username: info.username,
               name: info.name,
+              bio: info.bio,
               gender: info.gender,
               birthday: info.birthday,
               major: info.major,
@@ -1725,6 +1734,7 @@ export class AuthService {
               id: info._id,
               username: info.username,
               name: info.name,
+              bio: info.bio,
               gender: info.gender,
               birthday: info.birthday,
               major: info.major,
@@ -1816,6 +1826,7 @@ export class AuthService {
               id: info._id,
               username: info.username,
               name: info.name,
+              bio: info.bio,
               gender: info.gender,
               birthday: info.birthday,
               major: info.major,
@@ -1907,6 +1918,7 @@ export class AuthService {
               id: info._id,
               username: info.username,
               name: info.name,
+              bio: info.bio,
               gender: info.gender,
               birthday: info.birthday,
               major: info.major,

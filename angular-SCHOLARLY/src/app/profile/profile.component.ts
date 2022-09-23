@@ -1,19 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormControl } from '@angular/forms';
+
 import {
   MatBottomSheet,
   MatBottomSheetRef,
 } from '@angular/material/bottom-sheet';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { Post, PostService } from '../services/post.service';
 import { ShowCase } from '../services/showCase.service';
-import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FollowService } from '../services/follow.service';
+import { MatDialog } from '@angular/material/dialog';
 
 export interface Follow {
   id: string;
@@ -66,12 +65,17 @@ export class ProfileComponent implements OnInit {
     public postService: PostService,
     private authService: AuthService,
     private showCaseService: ShowCaseService,
-    private followService: FollowService
+    private followService: FollowService,
+    public dialog: MatDialog
   ) {
     // profile$$.profile$$.subscribe((profile) => {
     //   // this.profile$$ = profile;
     //   // return name;
     // })
+  }
+
+  onBio(): void {
+    this.dialog.open(BioComponent);
   }
 
   openBottomSheet(): void {
@@ -143,7 +147,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private showCaseService: ShowCaseService,
-    private followService: FollowService
+    private followService: FollowService,
+    public dialog: MatDialog
   ) {}
   isLoading = false;
   userId: string;
@@ -193,6 +198,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             this.Following = false;
           }
         });
+
       // Following
       this.followService.getMessageNotificationOther(id);
       this.followSubs = this.followService
@@ -229,6 +235,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.infosSub.unsubscribe();
     this.followersSub.unsubscribe();
   }
+  // Bio
+  onBio(): void {
+    this.dialog.open(BioComponent);
+  }
   followClicked(username: string): any {
     this.Following = true;
     this.followService.postInfoFollow(this.userId, username);
@@ -264,4 +274,34 @@ export class BottomSheetComponent {
     this.bottomSheetRef.dismiss();
     event.preventDefault();
   }
+}
+
+@Component({
+  selector: 'app-bio',
+  templateUrl: './bio.component.html',
+  styleUrls: ['./profile.component.scss'],
+})
+export class BioComponent implements OnInit {
+  userId: string;
+  infos: AuthDataInfo[] = [];
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): any {
+    // Verfiy
+    this.userId = this.authService.getUserId();
+    // Info
+    this.authService.getInfo(0);
+    this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+
+        console.log('infos', this.infos);
+      });
+  }
+  // openLink(event: MouseEvent): void {
+  //   this.bottomSheetRef.dismiss();
+  //   event.preventDefault();
+  // }
 }
