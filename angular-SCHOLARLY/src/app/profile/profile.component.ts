@@ -88,16 +88,15 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): any {
     this.isLoading = true;
     // Info
-    this.authService.getInfo(0);
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoProfile(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
         this.isLoading = false;
-        console.log('infos', this.infos);
       });
     // Validation
-    this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
