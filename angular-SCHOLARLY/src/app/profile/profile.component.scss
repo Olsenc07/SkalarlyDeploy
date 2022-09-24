@@ -30,9 +30,22 @@
 }
 
 .bio {
-  font-size: large;
+  display: flex;
+  flex-direction: row;
+  font-size: small;
   margin-left: 2%;
   font-family:  'Poppins', sans-serif;
+  width: 100%;
+  margin-right: 5%;
+}
+.bio_{
+  margin-right: 2%;
+  font-size: large;
+
+}
+.bioHeart{
+  margin-right: 45%;
+  font-size: large;
 }
 .bioHeader{
   font-family: 'Cinzel',serif;
@@ -527,6 +540,10 @@ mat-grid-list {
     height: 70%;
   }
 }
+.name{
+  display: flex;
+  width: 100%;
+}
 ::ng-deep .mat-tab-body-wrapper {
   display: flex;
   height: 100%;
@@ -661,6 +678,7 @@ mat-tab-group {
 .pronouns{
   display: flex;
     margin-left: 4%;
+    font-size: medium;
 }
 .relationship {
   display: flex;

@@ -136,41 +136,35 @@
 
     <!-- No Bio -->
     <!-- Pronouns Full name & age   *ngIf="fullname.value " -->
-    <div>
+    
       <div class="text-2">
 
 
         <div class="fName">
-         
-          <div>
+       
+          <div *ngIf="info.name" class="name">
             {{ info.name}}
+           
           </div>
-          <div class="pronouns">
-          ({{ info.pronouns}})
-            </div>
-         
-          <mat-chip-list *ngIf='userIsAuthenticated && !userId === info.Creator' class="center_" aria-label="FollowBtn">
-            <mat-chip class="messageM" (click)="followClicked()">
-    
-              {{ following ? "Unfollow" : "Follow" }}
-    
-              <!-- Switches to Unfollow btn option  -->
-    
-            </mat-chip>
-          </mat-chip-list>
+          <div *ngIf="info.pronouns" class="pronouns" matTooltip="Proper Pronouns">
+            ({{ info.pronouns}})
+              </div>
+            
+          
 
-          <button *ngIf="info.bio.length > 50 " mat-icon-button (click)="onBio()" class="bio" matTooltip="Display Bio">
+          <button *ngIf="info.bio.length > 50 " mat-icon-button class='bioHeart' (click)="onBio()" matTooltip="Display Bio">
           <!-- <i class="fab fa-readme"></i> -->
           <i class="far fa-heart"></i>
         </button>
 
+        <div class="bio" *ngIf="info.bio.length <= 50" >
+        <div class="bio_">Bio:</div> <div>{{info.bio}}
+        </div> 
+        </div>
+        </div>
         
-        </div>
-        <div class="bio" *ngIf="info.bio.length <= 50 " >
-          {{info.bio}}
-        </div>
       </div>
-    </div>
+  
 
   </div>
 
@@ -530,19 +524,19 @@
 
               <div class="showCase_" *ngFor="let showCase of showCases">
 
-                <div class="trashCan" *ngIf='userId === showCase.Creator'>
-                  <button  mat-icon-button matTooltip="Delete ShowCase"
-                    (click)='onDelete(showCase.id)'>
-                    <i class="far fa-times-circle"></i>
-                    </button>
-                    </div>
+               
                 <div class="column" >
                   
                   <img class="img" src={{showCase.ShowCasePath}} />
                   <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
 
                 </div>
-
+                <div class="trashCan" *ngIf='userId === showCase.Creator'>
+                  <button  mat-icon-button matTooltip="Delete ShowCase"
+                    (click)='onDelete(showCase.id)'>
+                    <i class="far fa-times-circle"></i>
+                    </button>
+                    </div>
               </div>
 
             </div>

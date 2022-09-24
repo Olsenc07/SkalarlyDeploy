@@ -139,10 +139,10 @@
 
             <div class="fName">
 
-              <div>
+              <div *ngIf="info.name" class="name">
                 {{ info.name}}
               </div>
-              <div class="pronouns">
+              <div *ngIf="info.pronouns" class="pronouns"  matTooltip="Proper Pronouns">
               ({{ info.pronouns}})
                 </div>
 
@@ -165,7 +165,7 @@
                 </mat-chip>
               </mat-chip-list>
 
-              <button *ngIf="info.bio.length > 50 " mat-icon-button (click)="onBio()" class="bio" matTooltip="Display Bio">
+              <button *ngIf="info.bio.length > 50 " mat-icon-button class='bioHeart' (click)="onBio()"  matTooltip="Display Bio">
                 <!-- <i class="fab fa-readme"></i> -->
                 <i class="far fa-heart"></i>
               </button>
@@ -175,8 +175,9 @@
               </div>
 
               <div class="bio" *ngIf="info.bio.length <= 50 " >
-                {{info.bio}}
-              </div>
+                <div class="bio_">Bio:</div> <div>{{info.bio}}
+                </div> 
+                </div>
 
 
             </div>

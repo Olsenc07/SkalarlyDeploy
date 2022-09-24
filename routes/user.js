@@ -566,7 +566,7 @@ router.post("/infoEd", checkAuth,
 
 
 // userInfo recieving
-router.get("/info", async(req, res, next) => {
+router.get("/info", async(req, res) => {
     const counter = req.query.counter;
     console.log('street crimes 2 ', counter);
     await UserInfo.find().skip(counter).limit(6)
@@ -584,8 +584,8 @@ router.get("/info", async(req, res, next) => {
         });
 });
 // Prfoile
-router.get("/infoProfile", async(req, res, next) => {
-    await UserInfo.findOne({Creator: req.query.userId})
+router.get("/infoProfile", async(req, res) => {
+    await UserInfo.find({Creator: req.query.userId})
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
             res.status(200).json({
