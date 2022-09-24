@@ -228,7 +228,7 @@
 
 
 <!-- disabled -->
-      <mat-tab class="sndPage"  >
+      <mat-tab class="sndPage" disabled >
         <form [formGroup]="personalizeForm" enctype="multipart/form-data">
           <ng-template mat-tab-label>
             <mat-icon><span class="material-icons-two-tone">
@@ -378,11 +378,12 @@
           <mat-menu #emojiIconBio="matMenu" class="emoji-menu">
             <emoji-picker class="light" (emoji-click)="addEmojiBio($event)" (click)="emojiPreventCloseBio($event);"></emoji-picker>
           </mat-menu>
+          <button mat-icon-button>
+            <mat-icon matSuffix [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
+            </mat-icon>
+          </button>
       </mat-form-field>
-      <button mat-icon-button>
-        <mat-icon matSuffix [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
-        </mat-icon>
-      </button>
+    
     </div>
   
             </div>

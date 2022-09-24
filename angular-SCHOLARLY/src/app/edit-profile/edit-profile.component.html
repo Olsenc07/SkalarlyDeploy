@@ -159,11 +159,12 @@
                 <mat-menu #emojiIconBio="matMenu" class="emoji-menu">
                   <emoji-picker class="light" (emoji-click)="addEmojiBio($event)" (click)="emojiPreventCloseBio($event);"></emoji-picker>
                 </mat-menu>
+                <button mat-icon-button>
+                  <mat-icon matSuffix [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
+                  </mat-icon>
+                </button>
             </mat-form-field>
-            <button mat-icon-button>
-              <mat-icon matSuffix [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
-              </mat-icon>
-            </button>
+            
           </div>
           
        
