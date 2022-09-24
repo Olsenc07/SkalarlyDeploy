@@ -2,8 +2,8 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<div *ngFor="let info of infos " >
-  <div class="main-content"   >
+<div *ngFor="let info of infos" >
+  <div *ngIf="info.Creator !== userId" class="main-content"   >
     <!-- input pic & has this default pic before-->
     <div class="left-side" >
 
@@ -67,7 +67,7 @@
           <!-- *ngIf="major.value" -->
           <div class="centerR" *ngIf=" info.major ">
             <!-- Major -->
-          <i class="fas fa-star row_icon" matTooltip="Major" style="color: #d2cb3aa1"></i>
+          <i class="fas fa-star row_icon" matTooltip="Major" style="color: #f8e563a6"></i>
               <div class="large">
                 {{ info.major}}
               </div>
@@ -133,7 +133,7 @@
 
         <!-- No Bio -->
         <!-- Pronouns Full name & age   *ngIf="fullname.value " -->
-        <div>
+       
           <div class="text-2" >
 
 
@@ -159,7 +159,7 @@
               <div class="center_" *ngIf="Following === true">
                 <mat-chip-list  class="center_" *ngFor="let follow of following"
                 aria-label="FollowBtn">
-                <mat-chip color="primary" selected class="messageM" matTooltip="Unfollow"
+                <mat-chip  selected class=" followingColor" matTooltip="Unfollow"
                  (click)="onUnfololow(follow.id)" >
                  Following
                 </mat-chip>
@@ -170,19 +170,19 @@
                 <i class="far fa-heart"></i>
               </button>
 
+            
+
+              </div>
+
               <div class="bio" *ngIf="info.bio.length <= 50 " >
                 {{info.bio}}
               </div>
-
-              </div>
-
-
 
 
             </div>
 
           </div>
-        </div>
+        
 
       </div>
 

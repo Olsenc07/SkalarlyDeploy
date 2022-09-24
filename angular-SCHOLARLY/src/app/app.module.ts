@@ -134,15 +134,7 @@ import { ShowCaseService } from './services/showCase.service';
 import { AuthInterceptor } from './signup/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 
-// Socekt.io
-// import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-// const config: SocketIoConfig = {
-//   url: 'http://localhost:3000',
-//   // socket server url;
-//   options: {
-//     transports: ['websocket'],
-//   },
-// };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -245,7 +237,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatProgressSpinnerModule,
     ScrollingModule,
     InfiniteScrollModule,
-    // SocketIoModule.forRoot(config),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

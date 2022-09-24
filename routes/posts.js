@@ -311,7 +311,7 @@ router.get("/otherUsersInfos", async(req, res) => {
 });
 // showCase recieving
 router.get("/showCases", async(req, res, next) => {
-        await UserInfo.findOne({username: {$eq: req.query.id}})
+        await UserInfo.find({username: {$eq: req.query.id}})
         .then(docs => {
             showCase.find({Creator: docs.Creator})
            .then(doc => {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +6,6 @@ import { Observable, Subscription } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 
-import { HttpClient } from '@angular/common/http';
 import { PostsService, UserNames } from './services/posts.service';
 @Component({
   selector: 'app-root',
@@ -94,9 +93,19 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.filteredOptions = this.search.valueChanges.pipe(
-    //   map((value) => this._filter(value || ''))
-    // );
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/worker.js').then((registration) => {
+        console.log('Service worker registered!');
+        registration.addEventListener('updatefound', () => {
+          // If updatefound is fired, it means that there's
+          // a new service worker being installed.
+          const installingWorker = registration.installing;
+          console.log('A new service worker is being installed:');
+        });
+      });
+    } else {
+      console.error('Service workers are not supported.');
+    }
 
     this.authService.autoAuthUser();
 
