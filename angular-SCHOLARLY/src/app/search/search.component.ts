@@ -57,11 +57,6 @@ export class SearchComponent implements OnInit {
   ) {}
 
   ngOnInit(): any {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/worker.js').then(() => {
-        console.log('Service worker registered!');
-      });
-    }
     this.isLoading = true;
     this.searchOptions = this.searchListService.getSearchOptions();
     // posts

@@ -94,17 +94,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/worker.js').then((registration) => {
+      navigator.serviceWorker.register('/worker.js').then(() => {
         console.log('Service worker registered!');
-        registration.addEventListener('updatefound', () => {
-          // If updatefound is fired, it means that there's
-          // a new service worker being installed.
-          const installingWorker = registration.installing;
-          console.log('A new service worker is being installed:');
-        });
       });
-    } else {
-      console.error('Service workers are not supported.');
     }
 
     this.authService.autoAuthUser();

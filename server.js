@@ -8,14 +8,14 @@ const http = require('http');
  */
  const express = require('express');
  const bodyParser = require('body-parser');
- const webpush = require('web-push')
+//  const webpush = require('web-push')
 
 
 
 const publicVapidKey = 'BD3BblVzyiaqnIYKfJHpaJ4Gil-BDYvUh5WlRmfMu5KULOb-TdMa0ZXdOqKHg56c3U36eUJZKlfuPLh-90cHgFE';
 const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
 
-webpush.setVapidDetails('mailto:Skalarly@Skalarly.com', publicVapidKey, privateVapidKey);
+// webpush.setVapidDetails('mailto:Skalarly@Skalarly.com', publicVapidKey, privateVapidKey);
 
 
 
@@ -111,6 +111,7 @@ io.on('connection', (socket) => {
                                             
                                                 })
                                             })
+                                          
 
 //  DataBase connection
 mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
