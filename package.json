@@ -1,6 +1,9 @@
 {
   "name": "angular_scholarly_test_jbl",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.x"
+  },
   "description": "firebase connection",
   "main": "./backend/server.js",
   "scripts": {
