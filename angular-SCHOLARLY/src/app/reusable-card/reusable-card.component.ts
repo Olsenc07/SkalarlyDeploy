@@ -1,16 +1,8 @@
-import {
-  Component,
-  OnDestroy,
-  Input,
-  Output,
-  EventEmitter,
-} from '@angular/core';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { OnInit } from '@angular/core';
 import { AttendanceComponent } from '../main-pages/main-pages.component';
 import { TaggedComponent } from '../main-pages/main-pages.component';
-import { StoreService } from '../services/store.service';
 import { Post, PostService } from '../services/post.service';
 import { ShowCase } from '../services/showcase.service';
 import { AuthService } from '../services/auth.service';
@@ -20,12 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CommentsService } from '../services/comments.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Picker } from 'emoji-picker-element';
 
 export interface CommentInterface {
