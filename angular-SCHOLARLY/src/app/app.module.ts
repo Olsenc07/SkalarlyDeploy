@@ -40,7 +40,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -133,7 +132,6 @@ import { ShowCaseService } from './services/showCase.service';
 
 import { AuthInterceptor } from './signup/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
-
 
 @NgModule({
   declarations: [
@@ -236,7 +234,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     ScrollingModule,
-    InfiniteScrollModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
