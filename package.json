@@ -5,7 +5,7 @@
     "node": "16.x"
   },
   "description": "firebase connection",
-  "main": "./backend/server.js",
+  "main":  "./backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd angular-SCHOLARLY && npm run build && cd .. && node ./backend/server.js",
@@ -46,8 +46,6 @@
     "mongoose": "^6.5.1",
     "mongoose-unique-validator": "^3.1.0",
     "multer": "1.4.5-lts.1",
-    "ngx-image-cropper": "^6.2.2",
-    "ngx-infinite-scroll": "^13.1.0",
     "ngx-socket-io": "^4.3.0",
     "ngx-ui-scroll": "^3.0.0",
     "nikel": "^1.1.2",
@@ -77,6 +75,6 @@
   "homepage": "https://github.com/Olsenc07/SCHOLARLY-Fullstack#readme",
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.1.1",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.20"
   }
 }
