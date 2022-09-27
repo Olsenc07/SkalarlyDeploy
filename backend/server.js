@@ -23,13 +23,13 @@ const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
  const path = require('path');
  const mongoose = require('mongoose');
 
- const postRoutes = require('./routes/posts');
- const userRoutes = require('./routes/user');
- const messageRoutes = require('./routes/messages')
- const followRoutes = require('./routes/follow')
+ const postRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/posts.js');
+ const userRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/user');
+ const messageRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/messages')
+ const followRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/follow')
 
  const Msg = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/messages')
- const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
+ const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages')
  const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 //  const serviceWorkerRegister = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/worker.js');
 
@@ -62,7 +62,8 @@ app.post('/subscribe', (req, res) => {
 
 })
  const server = http.createServer(app)
- const port = 3000;
+ const port = process.env.port || 3000;
+//  const port = process.env.PORT || 5000
  const router = express.Router();
 
 
@@ -174,16 +175,16 @@ app.use("/api/follow", followRoutes);
 // Express
 
 // Change port to azure or Heroku...
-const routes = require('./backend/api');
+const routes = require('/Users/chaseolsen/angular_scholarly_fs/backend/api');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 const { Socket } = require('socket.io');
 
-app.use(express.static(path.join(__dirname, '/angular-SCHOLARLY/static')))
+app.use(express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/static')))
 app.use('/api', routes)
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/angular-SCHOLARLY/static/index.html'))
+    res.sendFile(path.join('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/static/index.html'))
 })
 
 

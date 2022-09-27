@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { ReplaySubject, Subject } from 'rxjs';
-import { AuthDataInfo } from '../signup/auth-data.model';
+import { Subject } from 'rxjs';
+
 export interface Message {
   id: string;
   username: string;

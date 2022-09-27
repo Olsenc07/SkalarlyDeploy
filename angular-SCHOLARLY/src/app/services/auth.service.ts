@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AuthData, AuthDataInfo } from '../signup/auth-data.model';
 import { Subject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AppRoutingModule } from '../app-routing.module';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
