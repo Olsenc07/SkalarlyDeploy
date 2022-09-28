@@ -1,7 +1,10 @@
 {
   "name": "angular_scholarly_test_jbl",
   "version": "1.0.0",
-  "description": "firebase connection",
+  "engines": {
+    "node": "16.x"
+  },
+  "description": "mongoose connection",
   "main": "./backend/server.js",
   "keywords": [],
   "author": "",
@@ -16,7 +19,7 @@
     "bcrypt": "^5.0.1",
     "body": "^5.1.0",
     "ejs": "^3.1.8",
-    "emoji-mart": "^3.0.1",
+    "emoji-mart": "5.2.2",
     "emoji-picker-element": "^1.12.1",
     "express": "^4.18.1",
     "follow-redirects": "^1.15.1",
@@ -32,8 +35,6 @@
     "mongoose-unique-validator": "^3.1.0",
     "multer": "1.4.5-lts.1",
     "ng-mat-select-infinite-scroll": "^3.0.1",
-    "ngx-image-cropper": "^6.2.2",
-    "ngx-infinite-scroll": "^13.1.0",
     "ngx-socket-io": "^4.3.0",
     "ngx-ui-scroll": "^3.0.0",
     "nikel": "^1.1.2",
@@ -61,7 +62,7 @@
   },
   "homepage": "https://github.com/Olsenc07/SCHOLARLY-Fullstack#readme",
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.1.1",
-    "nodemon": "^2.0.19"
+    "@angular-devkit/build-angular": "^14.2.3",
+    "nodemon": "^2.0.20"
   }
 }
