@@ -33,7 +33,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ImageCropperModule } from 'ngx-image-cropper';
+
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -227,7 +227,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatTreeModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    ImageCropperModule,
     NgxImageZoomModule,
     MatCardModule,
     MatExpansionModule,

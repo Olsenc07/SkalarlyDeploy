@@ -40,7 +40,6 @@ import { HttpClient } from '@angular/common/http';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 // import { base64ToFile } from '../../utils/blob.utils';
-import { ImageCroppedEvent, Dimensions } from 'ngx-image-cropper';
 import { Profile, NewUserId, StoreService } from '../services/store.service';
 import { mimeType } from '../post-page/mime-type.validator';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -328,19 +327,12 @@ export class SignupComponent implements OnInit, OnDestroy {
   // using oninput
 
   // Passes value as base64 string of cropped area!! But where does form controller come into play?
-  cropImg(event: ImageCroppedEvent): void {
-    this.cropImgPreview = event.base64;
-    // console.log(event, base64ToFile(event.base64));
-  }
 
   imgLoad(): void {
     // this.showCropper = true;
     console.log('Image loaded');
   }
 
-  initCropper(sourceImageDimensions: Dimensions): void {
-    console.log('Cropper ready', sourceImageDimensions);
-  }
   imgFailed(): void {
     console.log('Load failed');
   }

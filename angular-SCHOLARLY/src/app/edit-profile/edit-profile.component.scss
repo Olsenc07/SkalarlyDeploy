@@ -134,7 +134,7 @@
     max-width: 50%;
   }
 }
-@media (max-width: 1024px) and(min-width:875px) {
+@media (max-width: 1024px) and (min-width:875px) {
   .column {
     display: flex;
     flex-direction: column;
@@ -321,8 +321,7 @@
     flex-direction: column;
   }
 }
-.groupsjj_box {
-}
+
 @media (min-width: 1024px) {
   .groups-j {
     display: flex;
@@ -693,18 +692,18 @@
   flex-direction: column;
 }
 
-@media (min-width: 1024px) {
-  ::ng-deep mat-form-field {
-    display: flex;
-    width: 40%;
-  }
-}
-@media (max-width: 1024px) {
-  ::ng-deep mat-form-field {
-    display: flex;
-    width: 100%;
-  }
-}
+// @media (min-width: 1024px) {
+//   ::ng-deep mat-form-field {
+//     display: flex;
+//     width: 40%;
+//   }
+// }
+// @media (max-width: 1024px) {
+//   ::ng-deep mat-form-field {
+//     display: flex;
+//     width: 100%;
+//   }
+// }
 .icon {
   display: flex;
   justify-content: center;

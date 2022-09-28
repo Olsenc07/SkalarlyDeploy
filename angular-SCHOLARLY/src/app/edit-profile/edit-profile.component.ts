@@ -13,8 +13,6 @@ import {
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { MatDialog } from '@angular/material/dialog';
-import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { HttpClient } from '@angular/common/http';
 import {
   MatAutocompleteSelectedEvent,
   MatAutocomplete,
@@ -220,13 +218,6 @@ export class EditProfileComponent implements OnInit {
   }
   // Passes value as base64 string of cropped area!!
   //  But where does form controller come into play?
-  cropImg(e: ImageCroppedEvent): any {
-    this.cropImgPreview = e.base64;
-    // let File = base64ToFile(this.cropImgPreview)
-
-    return this.cropImgPreview;
-  }
-
   imgLoad(): void {
     // display cropper tool
   }
