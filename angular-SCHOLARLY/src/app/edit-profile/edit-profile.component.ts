@@ -1,16 +1,16 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 
-import {
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-} from '@angular/material-moment-adapter';
+// import {
+//   MomentDateAdapter,
+//   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+// } from '@angular/material-moment-adapter';
 import {
   DateAdapter,
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
-import * as _moment from 'moment';
+
 import { default as _rollupMoment } from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import {
@@ -21,10 +21,8 @@ import {
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { ClassListService } from '../services/class.service';
 import { Post, PostService } from '../services/post.service';
-import { StoreService } from '../services/store.service';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
 import { AccountTextComponent } from '../signup/signup.component';
@@ -36,7 +34,7 @@ import { Picker } from 'emoji-picker-element';
 interface Gender {
   name: string;
 }
-const moment = _moment;
+
 export const MY_FORMATS = {
   parse: {
     dateInput: 'LL',
@@ -52,15 +50,6 @@ export const MY_FORMATS = {
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss'],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
-
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-  ],
 })
 export class EditProfileComponent implements OnInit {
   storedPosts: Post[] = [];
@@ -685,7 +674,7 @@ export class EditProfileComp3Component implements OnInit {
     public authService: AuthService,
     public classListService: ClassListService
   ) {}
-  ngOnInit() {
+  ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
@@ -755,7 +744,7 @@ export class EditProfileComp3WComponent implements OnInit {
     public authService: AuthService,
     public classListService: ClassListService
   ) {}
-  ngOnInit() {
+  ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
@@ -827,7 +816,7 @@ export class EditProfileComp4Component implements OnInit {
     public authService: AuthService,
     public classListService: ClassListService
   ) {}
-  ngOnInit() {
+  ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
@@ -896,7 +885,7 @@ export class EditProfileComp4WComponent implements OnInit {
     public authService: AuthService,
     public classListService: ClassListService
   ) {}
-  ngOnInit() {
+  ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
@@ -943,7 +932,7 @@ export class EditProfileComp4WComponent implements OnInit {
   }
 }
 
-//Pursuing
+// Pursuing
 @Component({
   selector: 'app-pursuing-winter',
   templateUrl: './edit-ProfilePurW.component.html',

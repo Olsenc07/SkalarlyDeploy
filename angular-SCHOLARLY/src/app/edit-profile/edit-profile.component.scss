@@ -61,18 +61,18 @@
   background-color: #18214b;
 }
 
-  .c_r {
+.c_r {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-     height: 237px;
-  }
-  .c_r_ {
+    height: 237px;
+}
+.c_r_ {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
-     height: 100%;
-  }
+    height: 100%;
+}
 .centerD {
   display: flex;
   justify-content: center;
@@ -125,7 +125,7 @@
 
 }
 @media (min-width: 1024px) {
-  .column {
+.column {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -135,7 +135,7 @@
   }
 }
 @media (max-width: 1024px) and (min-width:875px) {
-  .column {
+.column {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -143,8 +143,8 @@
     margin: 0% 25%;
   }
 }
-@media (max-width: 875px) and(min-width:500px) {
-  .column {
+@media (max-width: 875px) and (min-width:500px) {
+.column {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -153,7 +153,7 @@
   }
 }
 @media (max-width: 500px) {
-  .column {
+.column {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -205,7 +205,7 @@
   }
 }
 @media (max-width: 500px) {
-  .columnPlain {
+.columnPlain {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -214,17 +214,16 @@
 }
 .cropper {
   display: flex;
-  // May need a max height
 }
 @media (min-width: 1024px) {
-  .display {
+.display {
     display: flex;
     width: 90%;
     justify-content: center;
   }
 }
 @media (max-width: 1024px) {
-  .display {
+.display {
     display: flex;
     width: 75%;
   }
@@ -235,14 +234,14 @@
   justify-content: center;
 }
 @media (min-width: 1024px) {
-  .done {
+.done {
     justify-content: center;
     display: flex;
     width: 100%;
   }
 }
 @media (max-width: 1024px) {
-  .done {
+.done {
     justify-content: center;
     display: flex;
     width: 100%;
@@ -251,9 +250,9 @@
 }
 .doneShowCase{
   justify-content: center;
-    display: flex;
-    width: 100%;
-    margin-top: 2%;
+  display: flex;
+  width: 100%;
+  margin-top: 2%;
 }
 .entire-page {
   display: flex;
@@ -334,7 +333,7 @@
     max-width: 50%;
   }
 }
-@media (max-width: 1024px) and(min-width:875px) {
+@media (max-width: 1024px) and (min-width:875px) {
   .groups-j {
     display: flex;
     flex-direction: column;
@@ -345,7 +344,7 @@
     margin: 0% 29%;
   }
 }
-@media (max-width: 875px) and(min-width:500px) {
+@media (max-width: 875px) and (min-width:500px) {
   .groups-j {
     display: flex;
     flex-direction: column;
@@ -692,7 +691,6 @@
   flex-direction: column;
 }
 
-
 ::ng-deep mat-form-field {
     display: flex;
     width: 40%;
@@ -703,7 +701,6 @@
   justify-content: center;
   margin-right: 1%;
   font-size: xx-large;
-  // color: #418bba;
 }
 ._icon {
   display: flex;
@@ -719,7 +716,6 @@
     justify-content: center;
     font-size: 70px;
     flex-direction: column;
-    // color: #418bba;
   }
 }
 @media (max-width: 900px) {
@@ -735,13 +731,6 @@
   width: 100%;
   margin-top: 2%;
 }
-
-// .input {
-//   display: flex;
-//   justify-content: center;
-//   flex-direction: row;
-//   width: 99%;
-// }
 
 .inputText {
   display: flex;

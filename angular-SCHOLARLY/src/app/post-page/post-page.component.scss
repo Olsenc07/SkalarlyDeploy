@@ -152,7 +152,7 @@
     margin-top: 3%;
   }
 }
-@media (max-width: 1024px) and(min-width:700px) {
+@media (max-width: 1024px) and (min-width:700px) {
   .contents {
     display: flex;
     justify-content: center;
@@ -508,7 +508,6 @@ p {
     width: 75%;
     height: 100%;
     border-radius: 5px;
-
     // resize: none;
   }
 }

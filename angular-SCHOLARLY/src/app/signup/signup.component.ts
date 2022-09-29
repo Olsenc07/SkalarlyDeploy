@@ -23,24 +23,19 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
-import * as _moment from 'moment';
 
-import { default as _rollupMoment } from 'moment';
 import {
   MatAutocompleteSelectedEvent,
   MatAutocomplete,
 } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { map, startWith } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ClassListService } from '../services/class.service';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
-import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 // import { base64ToFile } from '../../utils/blob.utils';
-import { Profile, NewUserId, StoreService } from '../services/store.service';
+import { StoreService } from '../services/store.service';
 import { mimeType } from '../post-page/mime-type.validator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 // import {Courses} from 'nikel';
@@ -48,7 +43,6 @@ import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { Picker } from 'emoji-picker-element';
 
-const moment = _rollupMoment || _moment;
 export const MY_FORMATS = {
   parse: {
     dateInput: 'LL',

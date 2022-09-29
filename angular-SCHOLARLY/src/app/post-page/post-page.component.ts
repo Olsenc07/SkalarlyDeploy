@@ -10,8 +10,6 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
-  Form,
-  NgForm,
 } from '@angular/forms';
 
 import {
@@ -23,7 +21,6 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
-import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
@@ -37,12 +34,10 @@ import { MatChipInputEvent } from '@angular/material/chips';
 import { map } from 'rxjs/operators';
 import { SearchListService } from '../services/search.service';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { Post, PostService } from '../services/post.service';
+import { PostService } from '../services/post.service';
 import { mimeType } from './mime-type.validator';
 import { AuthService } from '../services/auth.service';
 import { Picker } from 'emoji-picker-element';
-
-const moment = _moment;
 
 export const MY_FORMATS = {
   parse: {
