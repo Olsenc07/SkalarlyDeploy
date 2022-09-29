@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-
+    "@angular-devkit/build-angular": "^14.2.4",
     "@fortawesome/fontawesome-free": "^6.1.2",
     "@grpc/grpc-js": "^1.6.8",
     "angular-ui-scroll": "^1.8.2",
