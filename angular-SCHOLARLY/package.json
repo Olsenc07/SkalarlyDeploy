@@ -16,7 +16,6 @@
   "dependencies": {
     "@angular/animations": "14.2.4",
     "@angular/cdk": "^14.2.3",
-    "@angular/cli": "^14.2.4",
     "@angular/common": "14.2.4",
     "@angular/compiler": "14.2.4",
     "@angular/core": "14.2.4",
@@ -43,7 +42,6 @@
     "hammerjs": "^2.0.8",
     "jszip": "^3.10.1",
     "material-ui-chip-input": "^1.1.0",
-    "moment": "^2.29.4",
     "ngx-image-zoom": "1.0.1",
     "ngx-material-timepicker": "^5.5.3",
     "resize-observer-polyfill": "^1.5.1",
@@ -58,7 +56,7 @@
   "devDependencies": {
     "@angular-devkit/architect": "0.1402.4",
     "@angular-devkit/build-angular": "^14.2.4",
-    "@angular/cli": "14.2.4",
+    "@angular/cli": "^14.2.4",
     "@angular/compiler-cli": "14.2.4",
     "@igniteui/angular-schematics": "14.1.1005",
     "@types/hammerjs": "^2.0.41",
