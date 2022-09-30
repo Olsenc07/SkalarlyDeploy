@@ -8,21 +8,10 @@ import {
 import {
   FormControl,
   FormGroup,
-  ValidatorFn,
   Validators,
   AbstractControl,
   ValidationErrors,
-  NgForm,
 } from '@angular/forms';
-import {
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-} from '@angular/material-moment-adapter';
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
 
 import {
   MatAutocompleteSelectedEvent,
@@ -61,15 +50,6 @@ export const MY_FORMATS = {
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
-
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-  ],
 })
 export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;

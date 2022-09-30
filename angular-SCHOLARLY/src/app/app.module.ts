@@ -17,7 +17,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSliderModule } from '@angular/material/slider';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
+// import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -202,7 +202,7 @@ import { ErrorInterceptor } from './error-interceptor';
     FormsModule,
     MatInputModule,
     MatIconModule,
-    MatMomentDateModule,
+    // MatMomentDateModule,
     MatButtonModule,
     FlexLayoutModule,
     MatDatepickerModule,
