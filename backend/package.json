@@ -61,7 +61,7 @@
   },
   "homepage": "https://github.com/Olsenc07/SCHOLARLY-Fullstack#readme",
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.4",
+
     "nodemon": "^2.0.20"
   }
 }
