@@ -34,7 +34,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { NgxImageZoomModule } from 'ngx-image-zoom';
+// import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -227,7 +227,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MatTreeModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    NgxImageZoomModule,
+    // NgxImageZoomModule,
     MatCardModule,
     MatExpansionModule,
     MatSnackBarModule,
