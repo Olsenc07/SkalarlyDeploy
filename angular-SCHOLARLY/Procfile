@@ -1,1 +1,1 @@
-web: npm run start
+web: npm start node /Users/chaseolsen/angular_scholarly_fs/backend/server.js
