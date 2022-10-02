@@ -2,7 +2,8 @@
   "name": "angular-scholarly",
   "version": "0.0.0",
   "engines": {
-    "node": "16.x"
+    "node": "16.x",
+    "npm":"8.x"
   },
   "scripts": {
     "ng": "ng",
@@ -11,7 +12,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "npm start"
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
