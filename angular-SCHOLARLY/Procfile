@@ -1,1 +1,1 @@
-web: node angular_scholarly_fs/backend/server.js
+web: node ./angular_scholarly_fs/backend/server.js
