@@ -1,1 +1,1 @@
-web: node ./backend/server.js cd angular-SCHOLARLY && npm run build npm install
+web: node ./backend/server.js cd angular-SCHOLARLY && npm start
