@@ -61,6 +61,7 @@
     "ngx-material-timepicker": "^5.5.3",
     "nodemon": "^2.0.20",
     "open": "8.4.0",
+    "postinstall": "^0.7.4",
     "protractor": "7.0.0",
     "resize-observer-polyfill": "^1.5.1",
     "rxfire": "^6.0.3",
