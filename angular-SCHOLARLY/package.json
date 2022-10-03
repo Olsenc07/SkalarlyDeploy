@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node /Users/chaseolsen/angular_scholarly_fs/backend/server.js ",
+    "start": "ng start",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
