@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "private": false,
+  "private": true,
   "dependencies": {
     "@angular-devkit/build-angular": "^14.2.4",
     "@angular/animations": "14.2.4",
