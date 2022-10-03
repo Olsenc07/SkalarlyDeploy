@@ -1,1 +1,1 @@
-web: node /Users/chaseolsen/angular_scholarly_fs/backend/server.js
+web: cd angular-SCHOLARLY && npm run build && cd .. && node ./backend/server.js
