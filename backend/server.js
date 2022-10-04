@@ -23,7 +23,7 @@ const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
  const path = require('path');
  const mongoose = require('mongoose');
 
- const postRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/posts');
+ const postRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/posts.js');
  const userRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/user');
  const messageRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/messages')
  const followRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/follow')
