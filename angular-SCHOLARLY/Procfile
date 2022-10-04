@@ -1,1 +1,2 @@
 web: npm start
+# cd angular-SCHOLARLY && npm run build && cd .. && for start
