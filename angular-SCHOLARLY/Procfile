@@ -1,1 +1,1 @@
-web: npm start 3000 /Users/chaseolsen/angular_scholarly_fs/backend/server.js
+web: npm start 3000 angular_scholarly_fs/backend/server.js
