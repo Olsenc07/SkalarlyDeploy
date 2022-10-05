@@ -130,7 +130,7 @@ mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFi
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/js/client' )))
-app.use('/posts', express.static('/Users/chaseolsen/angular_scholarly_fs/backend/posts'));
+app.use('/posts', express.static('backend/posts'));
 app.use('/profilePics', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/profilePics')));
 app.use('/showCase', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/showCase')));
 
