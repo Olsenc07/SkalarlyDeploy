@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require('multer');
 
-const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post');
+const Post = require('/app/backend/models/post');
 const showCase = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/showCases');
 const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
 const Comment = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/comment');
