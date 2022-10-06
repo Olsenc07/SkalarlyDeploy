@@ -1,9 +1,9 @@
-const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
-const Follow = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/follow')
+const UserInfo = require('/app/backend/models/userInfo');
+const Follow = require('/app/backend/models/follow')
 
 const express = require('express');
-const userInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
-const { findOne } = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
+const userInfo = require('/app/backend/models/userInfo');
+const { findOne } = require('/app/backend/models/userInfo');
 const router = express.Router();
 // post
 router.get("/infoFollow", async(req, res, next) => {

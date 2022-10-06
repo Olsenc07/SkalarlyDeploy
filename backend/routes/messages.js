@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 // Mongod
-const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
-const Msg = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/messages')
-const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
-const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
+const User = require('/app/backend/models/user');
+const Msg = require('/app/backend/models/messages')
+const UserInfo = require('/app/backend/models/userInfo');
+const checkAuth = require('/app/backend/middleware/check-auth');
 
 // consts
-const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages.js')
+const formatMessage = require('/app/angular-SCHOLARLY/src/app/utils/messages.js')
 // const botName = 'Skalar';
 
 
