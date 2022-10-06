@@ -181,7 +181,7 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 const { Socket } = require('socket.io');
 
-app.use(express.static(path.join('angular-SCHOLARLY/static')))
+app.use(express.static(path.join(__dirname,'/angular-SCHOLARLY/static')))
 app.use('/api', routes)
 
 app.get('*', (req, res) => {
