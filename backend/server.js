@@ -27,10 +27,10 @@ const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
  const postRoutes = require('/app/backend/routes/posts.js');
  const userRoutes = require('/app/backend/routes/user');
  const messageRoutes = require('/app/backend/routes/messages')
- const followRoutes = require('angular_scholarly_fs/backend/routes/follow')
+ const followRoutes = require('/app/backend/routes/follow')
 
  const Msg = require('/app/backend/models/messages')
- const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages')
+ const formatMessage = require('/app/angular-SCHOLARLY/src/app/utils/messages')
  const User = require('/app/backend/models/user');
 //  const serviceWorkerRegister = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/worker.js');
 
@@ -130,10 +130,10 @@ mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFi
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
-app.use(express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/js/client' )))
-app.use('/posts', express.static('/Users/chaseolsen/angular_scholarly_fs/backend/posts'));
-app.use('/profilePics', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/profilePics')));
-app.use('/showCase', express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/backend/showCase')));
+app.use(express.static(path.join('/app/angular-SCHOLARLY/js/client' )))
+app.use('/posts', express.static('/app/backend/posts'));
+app.use('/profilePics', express.static(path.join('/app/backend/profilePics')));
+app.use('/showCase', express.static(path.join('/app/backend/showCase')));
 
 
 
@@ -181,11 +181,11 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 const { Socket } = require('socket.io');
 
-app.use(express.static(path.join('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/static')))
+app.use(express.static(path.join('/app/angular-SCHOLARLY/static')))
 app.use('/api', routes)
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/static/index.html'))
+    res.sendFile(path.join('/app/angular-SCHOLARLY/static/index.html'))
 })
 
 
