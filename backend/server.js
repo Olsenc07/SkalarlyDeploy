@@ -24,7 +24,7 @@ const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
  const mongoose = require('mongoose');
 
 //  inst being found when hosted
- const postRoutes = require('backend/routes/posts');
+ const postRoutes = require('./backend/routes/posts');
  const userRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/user');
  const messageRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/messages')
  const followRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/follow')
