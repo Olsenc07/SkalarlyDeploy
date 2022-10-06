@@ -29,9 +29,9 @@ const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
  const messageRoutes = require('/app/backend/routes/messages')
  const followRoutes = require('angular_scholarly_fs/backend/routes/follow')
 
- const Msg = require('angular_scholarly_fs/backend/models/messages')
+ const Msg = require('/app/backend/models/messages')
  const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages')
- const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
+ const User = require('/app/backend/models/user');
 //  const serviceWorkerRegister = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/worker.js');
 
 

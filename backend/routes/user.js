@@ -6,15 +6,15 @@ const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const checkAuth = require('/app/backend/middleware/check-auth');
-const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
-const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
-const showCase = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/showCases');
-const Post = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/post');
-const Msg = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/messages')
+const User = require('/app/backend/models/user');
+const UserInfo = require('/app/backend/models/userInfo');
+const showCase = require('/app/backend/models/showCases');
+const Post = require('/app/backend/models/post');
+const Msg = require('/app/backend/models/messages')
 
-const UserNames = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/usernames');
+const UserNames = require('/app/backend/models/usernames');
 
-const user = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
+const user = require('/app/backend/models/user');
 const { single } = require('rxjs');
 
 
