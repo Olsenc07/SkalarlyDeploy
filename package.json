@@ -2,11 +2,10 @@
   "name": "angular_scholarly_test_jbl_",
   "version": "1.0.0",
   "description": "firebase connection",
-  "main": "./backend/server.js",
+  "main": "/app/backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./backend/server.js ",
-    "heroku-postbuild": "ng build — prod",
+    "start": "node /app/backend/server.js ",
     "dev": "nodemon ./backend/server.js",
     "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points"
   },
