@@ -176,7 +176,7 @@ app.use("/api/follow", followRoutes);
 // Express
 
 // Change port to azure or Heroku...
-const routes = require('/Users/chaseolsen/angular_scholarly_fs/backend/api');
+const routes = require('/app/backend/api');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
 const { Socket } = require('socket.io');
