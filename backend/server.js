@@ -25,11 +25,11 @@ const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
 
 //  inst being found when hosted
  const postRoutes = require('./backend/routes/posts.js');
- const userRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/user');
- const messageRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/messages')
- const followRoutes = require('/Users/chaseolsen/angular_scholarly_fs/backend/routes/follow')
+ const userRoutes = require('./backend/routes/user');
+ const messageRoutes = require('./backend/routes/messages')
+ const followRoutes = require('./backend/routes/follow')
 
- const Msg = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/messages')
+ const Msg = require('./backend/models/messages')
  const formatMessage = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/utils/messages')
  const User = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/user');
 //  const serviceWorkerRegister = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/worker.js');
