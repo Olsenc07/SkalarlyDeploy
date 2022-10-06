@@ -25,8 +25,8 @@ const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
 
 //  inst being found when hosted
  const postRoutes = require('/app/backend/routes/posts.js');
- const userRoutes = require('angular_scholarly_fs/backend/routes/user');
- const messageRoutes = require('angular_scholarly_fs/backend/routes/messages')
+ const userRoutes = require('/app/backend/routes/user');
+ const messageRoutes = require('/app/backend/routes/messages')
  const followRoutes = require('angular_scholarly_fs/backend/routes/follow')
 
  const Msg = require('angular_scholarly_fs/backend/models/messages')
