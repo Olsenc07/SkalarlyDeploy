@@ -1,7 +1,7 @@
 {
   "name": "angular_scholarly_test_jbl_",
   "version": "1.0.0",
-  "description": "firebase connection",
+  "description": "connection",
   "main": "/app/backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
