@@ -2,12 +2,12 @@ const express = require('express');
 const multer = require('multer');
 
 const Post = require('/app/backend/models/post');
-const showCase = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/showCases');
-const UserInfo = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/userInfo');
-const Comment = require('/Users/chaseolsen/angular_scholarly_fs/backend/models/comment');
+const showCase = require('/app/backend/models/showCases');
+const UserInfo = require('/app/backend/models/userInfo');
+const Comment = require('/app/backend/models/comment');
 
 
-const checkAuth = require('/Users/chaseolsen/angular_scholarly_fs/backend/middleware/check-auth');
+const checkAuth = require('/app/backend/middleware/check-auth');
 
 const router = express.Router();
 
