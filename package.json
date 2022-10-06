@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./backend/server.js",
+    "heroku-postbuild": "webpack -p",
     "dev": "nodemon ./backend/server.js",
     "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points"
   },
