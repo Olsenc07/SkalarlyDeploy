@@ -181,11 +181,11 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 const { Socket } = require('socket.io');
 
-app.use(express.static(path.join(__dirname, '/app/angular-SCHOLARLY/static')))
+app.use(express.static(path.join(__dirname, './angular-SCHOLARLY/static')))
 app.use('/api', routes)
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/app/angular-SCHOLARLY/static/index.html'))
+    res.sendFile(path.join(__dirname, './angular-SCHOLARLY/static/index.html'))
 })
 
 
