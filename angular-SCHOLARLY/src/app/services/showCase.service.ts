@@ -21,7 +21,7 @@ export class ShowCaseService {
   getShowCasePersonal(userId: string): any {
     this.http
       .get<{ message: string; showCases: any }>(
-        'http://localhost:3000/api/posts/showCasesPersonal',
+        'https://skalarly.herokuapp.com/api/posts/showCasesPersonal',
         { params: { userId } }
       )
       .pipe(
@@ -43,7 +43,7 @@ export class ShowCaseService {
   getShowCase(id: string): any {
     this.http
       .get<{ message: string; showCases: any }>(
-        'http://localhost:3000/api/posts/showCases',
+        'https://skalarly.herokuapp.com/api/posts/showCases',
         { params: { id } }
       )
       .pipe(
@@ -74,7 +74,7 @@ export class ShowCaseService {
     postData.append('showCase', showCase);
     this.http
       .post<{ message: string; postId: ShowCase }>(
-        'http://localhost:3000/api/posts/showCases',
+        'https://skalarly.herokuapp.com/api/posts/showCases',
         postData
       )
       .subscribe({
@@ -95,7 +95,7 @@ export class ShowCaseService {
   deleteShowCase(postId: string): any {
     // console.log('hey chase postId', postId);
     this.http
-      .delete('http://localhost:3000/api/posts/showCases/' + postId)
+      .delete('https://skalarly.herokuapp.com/api/posts/showCases/' + postId)
       .subscribe(() => {
         const updatedPosts = this.showCases.filter(
           (post) => post.id !== postId

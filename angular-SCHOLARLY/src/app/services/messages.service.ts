@@ -29,7 +29,7 @@ export class MessageService {
   getMessages(userId: string, username: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'http://localhost:3000/api/messages/OnetoOne',
+        'https://skalarly.herokuapp.com/api/messages/OnetoOne',
         {
           params: { userId, username },
         }
@@ -65,7 +65,7 @@ export class MessageService {
   startMessages(userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'http://localhost:3000/api/messages/OnetoOneSend',
+        'https://skalarly.herokuapp.com/api/messages/OnetoOneSend',
         {
           params: { userId },
         }

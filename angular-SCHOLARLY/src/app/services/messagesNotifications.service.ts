@@ -31,7 +31,7 @@ export class MessageNotificationService {
   getMessageNotification(userId: string, username: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'http://localhost:3000/api/messages/infoMessage',
+        'https://skalarly.herokuapp.com/api/messages/infoMessage',
         {
           params: { userId, username },
         }
@@ -60,7 +60,7 @@ export class MessageNotificationService {
   deleteMessage(msgId: string): any {
     console.log('hey chase msgId', msgId);
     this.http
-      .delete('http://localhost:3000/api/messages/deleteMsg/' + msgId)
+      .delete('https://skalarly.herokuapp.com/api/messages/deleteMsg/' + msgId)
       .subscribe(() => {
         const updatedPosts = this.messagesDel.filter((msg) => msg.id !== msgId);
         this.messagesDel = updatedPosts;

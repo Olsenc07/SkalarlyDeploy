@@ -118,7 +118,7 @@ export class StoreService {
   getProfiles(): void {
     this.http
       .get<{ message: string; profiles: Profile[] }>(
-        'http://localhost:3000/api/profiles'
+        'https://skalarly.herokuapp.com/api/profiles'
       )
       .subscribe((profileData) => {
         this.profiles = profileData.profiles;

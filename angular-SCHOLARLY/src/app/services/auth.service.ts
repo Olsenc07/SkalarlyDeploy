@@ -50,7 +50,7 @@ export class AuthService {
   createUser(email: string, username: string, password: string): any {
     const authData: AuthData = { email, username, password };
     this.http
-      .post('http://localhost:3000/api/user/signup', authData)
+      .post('https://skalarly.herokuapp.com/api/user/signup', authData)
       .subscribe({
         next: () => {
           this.snackBar.open(
@@ -291,7 +291,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/info',
+        'https://skalarly.herokuapp.com/api/user/info',
         userData
       )
       .subscribe({
@@ -473,7 +473,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -575,7 +575,7 @@ export class AuthService {
     userData.append('CodeCompleted5', CodeCompleted5);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -668,7 +668,7 @@ export class AuthService {
     userData.append('CodeCompleted10', CodeCompleted10);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -763,7 +763,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -852,7 +852,7 @@ export class AuthService {
     userData.append('CodeCompleted20', CodeCompleted20);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -942,7 +942,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1031,7 +1031,7 @@ export class AuthService {
     userData.append('CodeCompleted30', CodeCompleted30);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1121,7 +1121,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1214,7 +1214,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1304,7 +1304,7 @@ export class AuthService {
     userData.append('CodePursuing5', CodePursuing5);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1397,7 +1397,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1478,7 +1478,7 @@ export class AuthService {
     userData.append('CodePursuing12', CodePursuing12);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1559,7 +1559,7 @@ export class AuthService {
     userData.append('CodePursuing14', CodePursuing14);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://localhost:3000/api/user/infoEd',
+        'https://skalarly.herokuapp.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1629,7 +1629,7 @@ export class AuthService {
   getInfo(counter: number): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'http://localhost:3000/api/user/info',
+        'https://skalarly.herokuapp.com/api/user/info',
         { params: { counter } }
       )
       .pipe(
@@ -1721,7 +1721,7 @@ export class AuthService {
   getInfoProfile(userId: string): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'http://localhost:3000/api/user/infoProfile',
+        'https://skalarly.herokuapp.com/api/user/infoProfile',
         { params: { userId } }
       )
       .pipe(
@@ -1813,7 +1813,7 @@ export class AuthService {
   getInfoMessage(userId): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'http://localhost:3000/api/user/infoMessage',
+        'https://skalarly.herokuapp.com/api/user/infoMessage',
         {
           params: { userId },
         }
@@ -1907,7 +1907,7 @@ export class AuthService {
   getInfoPersonal(userId: string): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'http://localhost:3000/api/user/infoPersonal',
+        'https://skalarly.herokuapp.com/api/user/infoPersonal',
         { params: { userId } }
       )
       .pipe(
@@ -1999,7 +1999,7 @@ export class AuthService {
   getOtherInfo(id: string): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'http://localhost:3000/api/user/id',
+        'https://skalarly.herokuapp.com/api/user/id',
         { params: { id } }
       )
       .pipe(
@@ -2092,7 +2092,7 @@ export class AuthService {
     const authData: AuthData = { email, password };
     this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
-        'http://localhost:3000/api/user/login',
+        'https://skalarly.herokuapp.com/api/user/login',
         authData
       )
       .subscribe({
@@ -2134,7 +2134,7 @@ export class AuthService {
     this.http
       // expiresIn: number;
       .post<{ token: string; expiresIn: number; userId: string }>(
-        'http://localhost:3000/api/user/login1',
+        'https://skalarly.herokuapp.com/api/user/login1',
         authData
       )
       .subscribe({
@@ -2233,7 +2233,7 @@ export class AuthService {
     this.snackBar.open('Check your email to reset your password.', 'Will do!');
     const authData: AuthData = { email };
     this.http
-      .post('http://localhost:3000/api/user/forgot', authData)
+      .post('https://skalarly.herokuapp.com/api/user/forgot', authData)
       .subscribe({
         next: () => {},
         error: (error) => {
@@ -2246,7 +2246,7 @@ export class AuthService {
   updatePassword(password: string, secretCode: string): any {
     const authData: AuthData = { password, secretCode };
     this.http
-      .post('http://localhost:3000/api/user/reset-password', authData)
+      .post('https://skalarly.herokuapp.com/api/user/reset-password', authData)
       .subscribe({
         next: () => {
           const snackBarRef = this.snackBar.open(
@@ -2272,7 +2272,7 @@ export class AuthService {
   // Delete account
   deleteAccount(emailDel: string, passwordDel: string): any {
     const del = { emailDel, passwordDel };
-    this.http.post('http://localhost:3000/api/user/delete', del).subscribe({
+    this.http.post('https://skalarly.herokuapp.com/api/user/delete', del).subscribe({
       next: () => {
         const snackBarRef = this.snackBar.open(
           'We wish you all the best',

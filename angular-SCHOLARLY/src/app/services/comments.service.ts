@@ -23,7 +23,7 @@ export class CommentsService {
   getComments(postId): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'http://localhost:3000/api/posts/comments',
+        'https://skalarly.herokuapp.com/api/posts/comments',
         { params: { postId } }
       )
       .pipe(
@@ -63,7 +63,7 @@ export class CommentsService {
     };
     this.http
       .post<{ message: string; messages: CommentInterface }>(
-        'http://localhost:3000/api/posts/comments',
+        'https://skalarly.herokuapp.com/api/posts/comments',
         message
       )
       .subscribe({
@@ -87,7 +87,7 @@ export class CommentsService {
   deleteComment(commentId: string): any {
     // console.log('hey chase postId', postId);
     this.http
-      .delete('http://localhost:3000/api/posts/comments/' + commentId)
+      .delete('https://skalarly.herokuapp.com/api/posts/comments/' + commentId)
       .subscribe(() => {
         const updatedPosts = this.messages.filter(
           (post) => post.id !== commentId
