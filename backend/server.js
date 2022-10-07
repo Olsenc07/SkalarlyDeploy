@@ -185,7 +185,7 @@ app.use(express.static(path.join('/app/angular-SCHOLARLY/static')))
 app.use('/api', routes)
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/static/index.html'))
+    res.sendFile(path.join('/app/angular-SCHOLARLY/static/index.html'))
 })
 
 
