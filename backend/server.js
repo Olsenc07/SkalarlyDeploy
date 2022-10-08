@@ -161,9 +161,9 @@ app.use("/api/follow", followRoutes);
 /**
  * Routes Definitions
  */
-//  app.get("/", (req, res) => {
-//    res.status(200).send("Hello World");
-// })
+ app.get("/", (req, res) => {
+   res.status(200).sendFile(path.join(__dirname, '/angular-SCHOLARLY/static/index.html'));
+})
 
 
 
@@ -184,7 +184,7 @@ const { Socket } = require('socket.io');
 app.use(express.static(path.join(__dirname, '/angular-SCHOLARLY/static')))
 app.use('/api', routes)
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '/angular-SCHOLARLY/static/index.html'))
 })
 
