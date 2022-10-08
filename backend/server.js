@@ -24,7 +24,7 @@ const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
  const mongoose = require('mongoose');
 
 //  inst being found when hosted
- const postRoutes = require('/app/backend/routes/posts.js');
+ const postRoutes = require('/app/backend/routes/posts');
  const userRoutes = require('/app/backend/routes/user');
  const messageRoutes = require('/app/backend/routes/messages')
  const followRoutes = require('/app/backend/routes/follow')
@@ -181,11 +181,11 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 const { Socket } = require('socket.io');
 
-app.use(express.static(path.join(__dirname, './angular-SCHOLARLY/static')))
+app.use(express.static(path.join(__dirname, '/angular-SCHOLARLY/static')))
 app.use('/api', routes)
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './angular-SCHOLARLY/static/index.html'))
+    res.sendFile(path.join(__dirname, '/angular-SCHOLARLY/static/index.html'))
 })
 
 
