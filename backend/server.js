@@ -177,8 +177,8 @@ app.use("/api/follow", followRoutes);
 
 // Change port to azure or Heroku...
 const routes = require('/app/backend/api');
-const req = require('/app/express/lib/request');
-const res = require('/app/express/lib/response');
+const req = require('express/lib/request');
+const res = require('express/lib/response');
 const { Socket } = require('socket.io');
 
 app.use(express.static(path.join(__dirname, '/angular-SCHOLARLY/static')))
