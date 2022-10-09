@@ -5,7 +5,7 @@
   "main": "/app/backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd angular-SCHOLARLY && npm install --force && npm run build && cd .. node /app/backend/server.js",
+    "start": "cd angular-SCHOLARLY && npm install --force && ng build && cd .. node /app/backend/server.js",
     "dev": "nodemon ./backend/server.js",
     "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points"
   },
