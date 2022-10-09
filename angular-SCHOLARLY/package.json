@@ -4,7 +4,6 @@
   "scripts": {
     "ng": "ng",
     "start": "ng start",
-    "build": "ng build",
     "heroku-postbuild": "ng build",
     "test": "ng test",
     "lint": "ng lint",
