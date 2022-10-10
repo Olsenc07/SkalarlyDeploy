@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng start",
-    "heroku-postbuild": "ng build",
+    "heroku-postbuild": "ng  --max-old-space-size=8192 build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
