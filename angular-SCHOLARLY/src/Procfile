@@ -1,1 +1,1 @@
-web: node npm start
+web: node --max-old-space-size=8192 npm start
