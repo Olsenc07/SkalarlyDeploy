@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng start",
-    "build": "ng build",
+    "build": "ng build --omit=dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
