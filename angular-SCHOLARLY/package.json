@@ -11,8 +11,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "14.2.5",
     "@angular-devkit/build-angular": "^14.2.5",
+    "@angular/animations": "14.2.5",
     "@angular/cli": "^14.2.5",
     "@angular/common": "14.2.5",
     "@angular/compiler": "14.2.5",
@@ -74,7 +74,6 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1402.5",
-    "@angular-devkit/build-angular": "^14.2.5",
     "@angular/cdk": "^14.2.4",
     "@angular/cli": "^14.2.5",
     "@angular/compiler-cli": "^14.2.5",
