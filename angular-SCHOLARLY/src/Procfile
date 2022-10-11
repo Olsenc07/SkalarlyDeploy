@@ -1,1 +1,1 @@
-web: node --max-old-space-size=8192 npm start
+web: node /app/backend/server.js
