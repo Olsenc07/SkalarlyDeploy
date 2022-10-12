@@ -17,7 +17,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSliderModule } from '@angular/material/slider';
-// import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -33,8 +32,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
-// import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -80,8 +77,6 @@ import { TermsPopUpComponent } from './signup/signup.component';
 import { AccountTextComponent } from './signup/signup.component';
 import { LoginPopUpComponent } from './signup/signup.component';
 
-import { AttendanceComponent } from './main-pages/main-pages.component';
-import { BottomSheetComponent } from './profile/profile.component';
 import { BioComponent } from './profile/profile.component';
 
 import { HomePageComponent } from './home-page/home-page.component';
@@ -116,7 +111,6 @@ import { ReusableCardMessageComponent } from './reusable-card-user/reusable-card
 import { ReusableCardConvoComponent } from './reusable-card-convo/reusable-card-convo.component';
 import { ErrorComponent } from './error/error.component';
 
-import { TaggedComponent } from './main-pages/main-pages.component';
 import { SearchListService } from './services/search.service';
 import { PostService } from './services/post.service';
 import { ClassListService } from './services/class.service';
@@ -162,8 +156,6 @@ import { ErrorInterceptor } from './error-interceptor';
     SearchComponent,
     DialogElementsComponent,
     TermsPopUpComponent,
-    AttendanceComponent,
-    BottomSheetComponent,
     BioComponent,
     ReusableCardComponent,
     ReusableCardPersonalComponent,
@@ -181,7 +173,6 @@ import { ErrorInterceptor } from './error-interceptor';
     ReusableCardMutualsComponent,
     ReusableCardMessageComponent,
     ReusableCardConvoComponent,
-    TaggedComponent,
     AccountTextComponent,
     MessagingComponent,
     MessageCardComponent,
@@ -202,7 +193,6 @@ import { ErrorInterceptor } from './error-interceptor';
     FormsModule,
     MatInputModule,
     MatIconModule,
-    // MatMomentDateModule,
     MatButtonModule,
     FlexLayoutModule,
     MatDatepickerModule,
@@ -227,7 +217,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatTreeModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    // NgxImageZoomModule,
     MatCardModule,
     MatExpansionModule,
     MatSnackBarModule,

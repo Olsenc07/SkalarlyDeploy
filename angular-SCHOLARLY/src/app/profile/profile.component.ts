@@ -259,22 +259,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './bottom-sheet.component.html',
-  styleUrls: ['./bottom-sheet.component.scss'],
-})
-export class BottomSheetComponent {
-  constructor(
-    private bottomSheetRef: MatBottomSheetRef<BottomSheetComponent>
-  ) {}
-
-  openLink(event: MouseEvent): void {
-    this.bottomSheetRef.dismiss();
-    event.preventDefault();
-  }
-}
-
-@Component({
   selector: 'app-bio',
   templateUrl: './bio.component.html',
   styleUrls: ['./profile.component.scss'],
