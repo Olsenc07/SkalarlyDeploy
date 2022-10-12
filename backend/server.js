@@ -75,7 +75,7 @@ app.post('/subscribe', (req, res) => {
  */
 
  server.listen(port, () => {
-  console.log(`Listening to requests on http://localhost:${port}`);
+  console.log(`Listening to requests on ${port}`);
 })
 
 const socketio = require('socket.io');
