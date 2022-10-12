@@ -24,7 +24,6 @@ import { ClassListService } from '../services/class.service';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 // import { base64ToFile } from '../../utils/blob.utils';
-import { StoreService } from '../services/store.service';
 import { mimeType } from '../post-page/mime-type.validator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 // import {Courses} from 'nikel';
@@ -353,7 +352,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     public dialog: MatDialog,
     public classListService: ClassListService,
     private http: HttpClient,
-    private storeService: StoreService,
     public authService: AuthService,
     public showCaseService: ShowCaseService,
 
@@ -699,97 +697,4 @@ export class VerifiedPopUpComponent {}
 })
 export class TermsPopUpComponent {}
 
-@Component({
-  selector: 'app-accounttextpage',
-  templateUrl: './account-popup.component.html',
-  styleUrls: ['./account-popup.component.scss'],
-})
-export class AccountTextComponent {}
 
-@Component({
-  templateUrl: './login-popup.component.html',
-  styleUrls: ['../home-page/home-page.component.scss'],
-})
-export class LoginPopUpComponent implements OnDestroy {
-  isLoading = false;
-  visible = true;
-
-  userId: string;
-  userIsAuthenticated = false;
-  private authListenerSubs: Subscription;
-
-  email: FormControl = new FormControl('', Validators.email);
-  password: FormControl = new FormControl('', Validators.minLength(8));
-
-  loginForm = new FormGroup({
-    email: this.email,
-    password: this.password,
-  });
-
-  constructor(
-    public authService: AuthService,
-    public dialog: MatDialog,
-    public dialogRef: MatDialogRef<LoginPopUpComponent>,
-    private snackBar: MatSnackBar
-  ) {}
-
-  toggleVisibilty(): any {
-    const c = document.getElementById('passwordType7') as HTMLInputElement;
-
-    c.type = 'text';
-    this.visible = !this.visible;
-  }
-
-  toggleVisibilty_(): any {
-    const c = document.getElementById('passwordType7') as HTMLInputElement;
-
-    c.type = 'password';
-    this.visible = !this.visible;
-  }
-
-  onSubmit(): void {
-    try {
-      this.isLoading = true;
-      this.userId = this.authService.getUserId();
-      this.authService.loginFirst(this.email.value, this.password.value);
-      this.userIsAuthenticated = this.authService.getIsAuth();
-      this.authListenerSubs = this.authService
-        .getAuthStatusListener()
-        .subscribe((isAuthenticated: boolean) => {
-          // this.dialog.open(LoginPopUpComponent, { disableClose: true })
-          this.userIsAuthenticated = isAuthenticated;
-          this.userId = this.authService.getUserId();
-          // Added the if else
-          if (this.userIsAuthenticated) {
-            console.log(this.userIsAuthenticated);
-            this.dialogRef.close();
-            this.snackBar.open('Welcome to the community', 'Thanks!', {
-              duration: 3000,
-            });
-          } else {
-            this.dialog.open(LoginPopUpComponent, { disableClose: true });
-            this.snackBar.open(
-              'Failed to login. Remember to authenticate your email',
-              'Ok!',
-              {
-                duration: 3000,
-              }
-            );
-          }
-        });
-    } catch {
-      this.dialog.open(LoginPopUpComponent, { disableClose: true });
-      this.snackBar.open(
-        'Failed to login. Remember to authenticate your email',
-        'Ok!',
-        {
-          duration: 3000,
-        }
-      );
-    }
-  }
-
-  ngOnDestroy(): any {
-    this.authListenerSubs.unsubscribe();
-  }
-}

@@ -1,12 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { StoreService, Profile } from '../services/store.service';
-import { filter, map, pairwise, Subscription, throttleTime } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { FollowService } from '../services/follow.service';
-
-import { AuthDataInfo } from '../signup/auth-data.model';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-card-request',
@@ -78,7 +74,6 @@ export class ReusableCardRecommendationComponent implements OnInit {
   // }
 
   constructor(
-    public storeService: StoreService,
     private authService: AuthService,
     private followService: FollowService,
     private router: Router

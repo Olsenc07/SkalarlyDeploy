@@ -74,9 +74,6 @@ import {
   VerifiedPopUpComponent,
 } from './signup/signup.component';
 import { TermsPopUpComponent } from './signup/signup.component';
-import { AccountTextComponent } from './signup/signup.component';
-import { LoginPopUpComponent } from './signup/signup.component';
-
 import { BioComponent } from './profile/profile.component';
 
 import { HomePageComponent } from './home-page/home-page.component';
@@ -98,7 +95,6 @@ import { CardFeedComponent } from './reusable-card/reusable-card.component';
 import { ShowCaseComponent } from './reusable-card/reusable-card.component';
 import { CardInfoFeedComponent } from './reusable-card/reusable-card.component';
 
-import { ReusableCardBriefComponent } from './reusable-card-brief/reusable-card-brief.component';
 import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
 import { ReusableCardRecommendationComponent } from './reusable-card-request/reusable-card-request.component';
 import { ReusableCardUserComponent } from './reusable-card-user/reusable-card-user.component';
@@ -114,7 +110,6 @@ import { ErrorComponent } from './error/error.component';
 import { SearchListService } from './services/search.service';
 import { PostService } from './services/post.service';
 import { ClassListService } from './services/class.service';
-import { StoreService } from './services/store.service';
 import { AuthService } from './services/auth.service';
 import { FollowService } from './services/follow.service';
 
@@ -164,7 +159,6 @@ import { ErrorInterceptor } from './error-interceptor';
     ReusableCommentComponent,
     ReusableCommentFormComponent,
     CardFeedComponent,
-    ReusableCardBriefComponent,
     ReusableCardRequestComponent,
     ReusableCardRecommendationComponent,
     ReusableCardUserComponent,
@@ -173,14 +167,12 @@ import { ErrorInterceptor } from './error-interceptor';
     ReusableCardMutualsComponent,
     ReusableCardMessageComponent,
     ReusableCardConvoComponent,
-    AccountTextComponent,
     MessagingComponent,
     MessageCardComponent,
     ServicesElementsComponent,
     ShowCaseComponent,
     CardInfoFeedComponent,
     ErrorComponent,
-    LoginPopUpComponent,
     VerifiedPopUpComponent,
     ResetPasswordComponent,
   ],
@@ -229,7 +221,6 @@ import { ErrorInterceptor } from './error-interceptor';
     PostService,
     FollowService,
     ClassListService,
-    StoreService,
     AuthService,
     CommentsService,
     MessageService,

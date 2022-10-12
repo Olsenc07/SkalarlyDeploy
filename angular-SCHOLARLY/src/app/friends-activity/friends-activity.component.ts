@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { StoreService, Profile } from '../services/store.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
@@ -49,7 +48,6 @@ export class FriendsActivityComponent implements OnInit {
   search: FormControl = new FormControl('');
 
   constructor(
-    public storeService: StoreService,
     private authService: AuthService,
     private followService: FollowService
   ) {}
