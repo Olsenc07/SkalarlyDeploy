@@ -160,6 +160,7 @@ const routes: Routes = [
   // Directs to search page if user is logged in.
   // Directs to log in page if user isn't logged in.
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '/', redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({
