@@ -11,7 +11,6 @@ import {
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
 
-import { default as _rollupMoment } from 'moment';
 import { MatDialog } from '@angular/material/dialog';
 import {
   MatAutocompleteSelectedEvent,
@@ -29,10 +28,6 @@ import { AuthDataInfo } from '../signup/auth-data.model';
 import { ShowCaseService } from '../services/showCase.service';
 import { mimeType } from '../post-page/mime-type.validator';
 import { Picker } from 'emoji-picker-element';
-
-interface Gender {
-  name: string;
-}
 
 export const MY_FORMATS = {
   parse: {
