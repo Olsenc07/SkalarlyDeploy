@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cd angular-SCHOLARLY && npm install && npm run build",
     "dev": "nodemon ./backend/server.js",
-    "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points node /app/backend/server.js"
+    "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points cd .. node /app/backend/server.js"
   },
   "keywords": [],
   "author": "",
