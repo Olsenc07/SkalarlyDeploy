@@ -1,8 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { OnInit } from '@angular/core';
-import { AttendanceComponent } from '../main-pages/main-pages.component';
-import { TaggedComponent } from '../main-pages/main-pages.component';
 import { Post, PostService } from '../services/post.service';
 import { ShowCase } from '../services/showcase.service';
 import { AuthService } from '../services/auth.service';
@@ -94,12 +92,6 @@ export class ReusableCardComponent implements OnInit {
   navigateToMainPage(value: string): void {
     this.route.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
-  }
-  openAttendanceSheet(): void {
-    this.bottomSheet.open(AttendanceComponent);
-  }
-  openTaggedSheet(): void {
-    this.bottomSheet.open(TaggedComponent);
   }
 
   onDelete(postId: string): any {
@@ -223,12 +215,7 @@ export class ReusableCardPersonalComponent implements OnInit {
     this.route.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
-  openAttendanceSheet(): void {
-    this.bottomSheet.open(AttendanceComponent);
-  }
-  openTaggedSheet(): void {
-    this.bottomSheet.open(TaggedComponent);
-  }
+
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
