@@ -322,10 +322,6 @@ export class EditProfileComponent implements OnInit {
     this.postService.deletePost(postId);
   }
 
-  openDialogAccount(): void {
-    this.dialog.open(AccountTextComponent);
-  }
-
   onSubmit(): void {
     // console.log(this.editForm.value);
     // TODO: convert form fields to Profile
