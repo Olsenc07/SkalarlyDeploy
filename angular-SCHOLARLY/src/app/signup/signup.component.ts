@@ -527,9 +527,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   openDialog(): void {
     this.dialog.open(TermsPopUpComponent);
   }
-  openDialogAccount(): void {
-    this.dialog.open(AccountTextComponent);
-  }
 
   onSubmit(): any {
     //  Email validation to continue
@@ -696,5 +693,3 @@ export class VerifiedPopUpComponent {}
   styleUrls: ['./terms-popup.component.scss'],
 })
 export class TermsPopUpComponent {}
-
-

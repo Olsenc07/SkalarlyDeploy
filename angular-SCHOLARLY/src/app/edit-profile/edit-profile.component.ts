@@ -25,7 +25,6 @@ import { ClassListService } from '../services/class.service';
 import { Post, PostService } from '../services/post.service';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
-import { AccountTextComponent } from '../signup/signup.component';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { ShowCaseService } from '../services/showCase.service';
 import { mimeType } from '../post-page/mime-type.validator';
