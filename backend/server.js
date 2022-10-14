@@ -161,10 +161,10 @@ app.use("/api/follow", followRoutes);
 /**
  * Routes Definitions
  */
- app.use(express.static('/app/angular-SCHOLARLY/src/app/app.component.html'))
+ app.use(express.static('/app/angular-SCHOLARLY/src/index.html'))
 
  app.get("/", (req, res) => {
-   res.status(200).sendFile('/app/angular-SCHOLARLY/src/app/app.component.html');
+   res.status(200).sendFile('/app/angular-SCHOLARLY/src/index.html');
 })
 app.get('*', (req, res) => {
     res.sendFile( '/app/angular-SCHOLARLY/src/index.html')
