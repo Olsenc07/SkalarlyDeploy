@@ -164,7 +164,10 @@ app.use("/api/follow", followRoutes);
  app.get("/", (req, res) => {
    res.status(200).sendFile( '/app/angular-SCHOLARLY/src/index.html');
 })
-
+app.get('*', (req, res) => {
+    res.sendFile( '/app/angular-SCHOLARLY/src/index.html')
+})
+app.use('/static', express.static('/app/angular-SCHOLARLY/static'))
 
 
 
@@ -176,12 +179,9 @@ const req = require('express/lib/request');
 const res = require('express/lib/response');
 const { Socket } = require('socket.io');
 
-app.use(express.static('/app/angular-SCHOLARLY/static'))
 app.use('/api', routes)
 
-app.get('*', (req, res) => {
-    res.sendFile( '/app/angular-SCHOLARLY/src/index.html')
-})
+
 
 
 module.exports = app
