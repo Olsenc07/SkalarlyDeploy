@@ -131,8 +131,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static('build'))
 app.use('/posts', express.static('/app/backend/posts'));
-app.use('/profilePics', express.static(path.join('/app/backend/profilePics')));
-app.use('/showCase', express.static(path.join('/app/backend/showCase')));
+app.use('/profilePics', express.static('/app/backend/profilePics'));
+app.use('/showCase', express.static('/app/backend/showCase'));
 
 
 
@@ -166,7 +166,7 @@ app.use("/api/follow", followRoutes);
    res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');
 })
 app.get('*', (req, res) => {
-    res.sendFile( '/app/angular-SCHOLARLY/src/index.html')
+    res.sendFile( '/app/angular-SCHOLARLY/src/app')
 })
 
 
