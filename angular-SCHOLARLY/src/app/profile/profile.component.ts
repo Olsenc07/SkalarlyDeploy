@@ -78,10 +78,6 @@ export class ProfileComponent implements OnInit {
     this.dialog.open(BioComponent);
   }
 
-  openBottomSheet(): void {
-    this.bottomSheet.open(BottomSheetComponent);
-  }
-
   followClicked(): void {
     this.following = !this.following;
   }
