@@ -2092,7 +2092,7 @@ export class AuthService {
     const authData: AuthData = { email, password };
     this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
-        'https://skalarly.herokuapp.com/api/user/login',
+        'https://www.skalarly.com/api/user/login',
         authData
       )
       .subscribe({
@@ -2272,25 +2272,27 @@ export class AuthService {
   // Delete account
   deleteAccount(emailDel: string, passwordDel: string): any {
     const del = { emailDel, passwordDel };
-    this.http.post('https://skalarly.herokuapp.com/api/user/delete', del).subscribe({
-      next: () => {
-        const snackBarRef = this.snackBar.open(
-          'We wish you all the best',
-          'Skal friend!',
-          {
+    this.http
+      .post('https://skalarly.herokuapp.com/api/user/delete', del)
+      .subscribe({
+        next: () => {
+          const snackBarRef = this.snackBar.open(
+            'We wish you all the best',
+            'Skal friend!',
+            {
+              duration: 3000,
+            }
+          );
+          snackBarRef.afterDismissed().subscribe(() => {
+            this.router.navigate(['/login']);
+          });
+        },
+        error: (error) => {
+          this.snackBar.open('Invalid username', 'Try again!', {
             duration: 3000,
-          }
-        );
-        snackBarRef.afterDismissed().subscribe(() => {
-          this.router.navigate(['/login']);
-        });
-      },
-      error: (error) => {
-        this.snackBar.open('Invalid username', 'Try again!', {
-          duration: 3000,
-        });
-        // this.authStatusListener.next(false);
-      },
-    });
+          });
+          // this.authStatusListener.next(false);
+        },
+      });
   }
 }
