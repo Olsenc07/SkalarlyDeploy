@@ -330,11 +330,9 @@
               <i class="material-icons _icon">cake</i>
 
               <!-- Birthday picker -->
-              <!-- Won't work with it -->
               <mat-form-field >
                 <mat-label>When's your birthday?</mat-label>
-                <!-- <input matInput [matDatepicker]="dp" [formControl]="birthday"> -->
-
+                <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker class="bd_picker" #dp></mat-datepicker>
               </mat-form-field>

@@ -1,10 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-
-// import {
-//   MomentDateAdapter,
-//   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-// } from '@angular/material-moment-adapter';
+import {
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
 import {
   DateAdapter,
   MAT_DATE_FORMATS,
@@ -44,6 +43,15 @@ export const MY_FORMATS = {
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss'],
+  providers: [
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
 })
 export class EditProfileComponent implements OnInit {
   storedPosts: Post[] = [];
