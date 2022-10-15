@@ -2092,7 +2092,7 @@ export class AuthService {
     const authData: AuthData = { email, password };
     this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
-        'https://www.skalarly.com/api/user/login',
+        'http://www.skalarly.com/api/user/login',
         authData
       )
       .subscribe({
