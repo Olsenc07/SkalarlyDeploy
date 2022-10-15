@@ -30,6 +30,7 @@ var transporter = nodemailer.createTransport({
         pass: 'boghip-qEbbe0-ryxvyq'
     },
     tls: {
+        ciphers: "SSLv3",
         rejectUnauthorized: false,
     },
 
