@@ -58,7 +58,7 @@ export const routingComponents = [
 ];
 
 const routes: Routes = [
-  { path: 'api/login', component: HomePageComponent },
+  { path: 'login', component: HomePageComponent },
   { path: 'sign-up', component: SignupComponent },
   { path: 'verified', component: VerifiedPopUpComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
