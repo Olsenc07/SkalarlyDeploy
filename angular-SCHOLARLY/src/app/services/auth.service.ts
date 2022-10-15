@@ -54,7 +54,7 @@ export class AuthService {
       .subscribe({
         next: () => {
           this.snackBar.open(
-            'Check your email and junk mail to verify your account before logining in.',
+            'Check your email and junk mail to verify your account before logining in. This may take a minute.',
             'Will do!'
           );
         },
