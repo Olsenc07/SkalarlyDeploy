@@ -24,8 +24,8 @@ var transporter = nodemailer.createTransport({
     service: 'outlook365',
     auth: {
         // gmail just change to gmail email and service to gmail
-        user: 'skalarly_77777@outlook.com',
-        pass: 'Hockey#$07'
+        user: 'skalarly@skalarly.com',
+        pass: 'boghip-qEbbe0-ryxvyq'
     },
     tls: {
         rejectUnauthorized: false,
@@ -98,7 +98,7 @@ router.post("/signup", async (req, res, next) => {
 
                         });
                     const msg = {
-                        from: ' "Verify account" <skalarly_77777@outlook.com>',
+                        from: ' "Verify account" <skalarly@skalarly.com>',
                         to: user.email,
                         subject: 'Skalarly - verify account',
                         text: `We are excited to welcome you ${user.username} to the community!
@@ -230,7 +230,7 @@ router.post('/forgot', async (req, res) => {
             })
         }
         const msg = {
-            from: ' "Reset Password" <skalarly_77777@outlook.com>',
+            from: ' "Reset Password" <skalarly@skalarly.com>',
             to: user.email,
             subject: 'Skalarly - reset password',
             text: `Hello ${user.username} we hear you forgot your password.
