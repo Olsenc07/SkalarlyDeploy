@@ -56,6 +56,7 @@
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "^2.0.0",
     "ngx-image-zoom": "1.0.1",
+    "ngx-mat-timepicker": "^14.0.2",
     "ngx-material-timepicker": "^5.5.3",
     "open": "8.4.0",
     "postinstall": "^0.7.4",

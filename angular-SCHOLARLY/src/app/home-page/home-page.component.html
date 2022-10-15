@@ -15,6 +15,7 @@
           <mat-form-field class="text-input">
             <mat-label> Academic Email</mat-label>
             <input matInput  [formControl]="email" required/>
+            <mat-hint>@mail.utoronto.ca</mat-hint>
             <span matSuffix class="hide"></span>
             <mat-error *ngIf="email.invalid">Please enter your academic email</mat-error>
             <!-- <button color="primary" mat-button matSuffix mat-icon-button aria-label="Clear" type="button"
