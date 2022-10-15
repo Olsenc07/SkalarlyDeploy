@@ -36,10 +36,10 @@
           </mat-form-field>
 
           
-            <button mat-icon-button type="button" *ngIf="visible" (click)="toggleVisibilty()" >
+            <button mat-icon-button type="button" *ngIf="visible" (click)="toggleVisibilty()" matTooltip="Show Password" >
               <mat-icon class="material-symbols-sharp" >visibility</mat-icon>
             </button>
-            <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()" >
+            <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()" matTooltip="Hide Password">
               <mat-icon class="material-symbols-sharp" >visibility_off</mat-icon>
             </button>
           
