@@ -21,7 +21,7 @@ const { single } = require('rxjs');
 
 // mail sender details
 var transporter = nodemailer.createTransport({
-    service: 'outlook365',
+    service: 'Microsoft365',
     auth: {
         // gmail just change to gmail email and service to gmail
         user: 'skalarly@skalarly.com',
