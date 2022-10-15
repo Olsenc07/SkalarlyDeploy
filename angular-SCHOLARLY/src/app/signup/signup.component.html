@@ -71,10 +71,10 @@
                   <mat-icon>close</mat-icon>
                 </button> -->
               </mat-form-field>
-              <button mat-icon-button type="button" *ngIf="visible" (click)="toggleVisibilty()" >
+              <button mat-icon-button type="button" *ngIf="visible" (click)="toggleVisibilty()" matTooltip="Show Password" >
                 <mat-icon class="material-symbols-sharp" >visibility</mat-icon>
               </button>
-              <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()" >
+              <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()" matTooltip="Hide Password" >
                 <mat-icon class="material-symbols-sharp" >visibility_off</mat-icon>
               </button>
             </div>
@@ -331,13 +331,13 @@
 
               <!-- Birthday picker -->
               <!-- Won't work with it -->
-              <!-- <mat-form-field >
+              <mat-form-field >
                 <mat-label>When's your birthday?</mat-label>
-                <input matInput [matDatepicker]="dp" [formControl]="birthday">
+                <!-- <input matInput [matDatepicker]="dp" [formControl]="birthday"> -->
 
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker class="bd_picker" #dp></mat-datepicker>
-              </mat-form-field> -->
+              </mat-form-field>
             </div>
 
             <div class="inputP">
