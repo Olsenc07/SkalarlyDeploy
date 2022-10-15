@@ -23,6 +23,7 @@ const { single } = require('rxjs');
 var transporter = nodemailer.createTransport({
     service: 'Outlook365',
     host: 'smtp.office365.com',
+    port: '587',
     auth: {
         // gmail just change to gmail email and service to gmail
         user: 'skalarly@skalarly.com',
