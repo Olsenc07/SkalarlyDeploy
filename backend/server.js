@@ -166,7 +166,7 @@ app.use("/api/follow", followRoutes);
    res.status(200).sendFile(path.join(__dirname,'/app/angular-SCHOLARLY/src/app'));
 })
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname,'/app/angular-SCHOLARLY/static/index.html'));
+    res.sendFile(path.join(__dirname,'/app/angular-SCHOLARLY/static'));
 })
 
 
