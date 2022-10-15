@@ -50,7 +50,7 @@ export class AuthService {
   createUser(email: string, username: string, password: string): any {
     const authData: AuthData = { email, username, password };
     this.http
-      .post('https://skalarly.herokuapp.com/api/user/signup', authData)
+      .post('http://www.skalarly.com/api/user/signup', authData)
       .subscribe({
         next: () => {
           this.snackBar.open(
@@ -291,7 +291,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/info',
+        'http://www.skalarly.com/api/user/info',
         userData
       )
       .subscribe({
@@ -473,7 +473,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -575,7 +575,7 @@ export class AuthService {
     userData.append('CodeCompleted5', CodeCompleted5);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -668,7 +668,7 @@ export class AuthService {
     userData.append('CodeCompleted10', CodeCompleted10);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -763,7 +763,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -852,7 +852,7 @@ export class AuthService {
     userData.append('CodeCompleted20', CodeCompleted20);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -942,7 +942,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1031,7 +1031,7 @@ export class AuthService {
     userData.append('CodeCompleted30', CodeCompleted30);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1121,7 +1121,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1214,7 +1214,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1304,7 +1304,7 @@ export class AuthService {
     userData.append('CodePursuing5', CodePursuing5);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1397,7 +1397,7 @@ export class AuthService {
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1478,7 +1478,7 @@ export class AuthService {
     userData.append('CodePursuing12', CodePursuing12);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1559,7 +1559,7 @@ export class AuthService {
     userData.append('CodePursuing14', CodePursuing14);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'https://skalarly.herokuapp.com/api/user/infoEd',
+        'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
@@ -1629,7 +1629,7 @@ export class AuthService {
   getInfo(counter: number): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'https://skalarly.herokuapp.com/api/user/info',
+        'http://www.skalarly.com/api/user/info',
         { params: { counter } }
       )
       .pipe(
@@ -1721,7 +1721,7 @@ export class AuthService {
   getInfoProfile(userId: string): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'https://skalarly.herokuapp.com/api/user/infoProfile',
+        'http://www.skalarly.com/api/user/infoProfile',
         { params: { userId } }
       )
       .pipe(
@@ -1813,7 +1813,7 @@ export class AuthService {
   getInfoMessage(userId): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'https://skalarly.herokuapp.com/api/user/infoMessage',
+        'http://www.skalarly.com/api/user/infoMessage',
         {
           params: { userId },
         }
@@ -1907,7 +1907,7 @@ export class AuthService {
   getInfoPersonal(userId: string): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'https://skalarly.herokuapp.com/api/user/infoPersonal',
+        'http://www.skalarly.com/api/user/infoPersonal',
         { params: { userId } }
       )
       .pipe(
@@ -1999,7 +1999,7 @@ export class AuthService {
   getOtherInfo(id: string): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'https://skalarly.herokuapp.com/api/user/id',
+        'http://www.skalarly.com/api/user/id',
         { params: { id } }
       )
       .pipe(
@@ -2134,7 +2134,7 @@ export class AuthService {
     this.http
       // expiresIn: number;
       .post<{ token: string; expiresIn: number; userId: string }>(
-        'https://skalarly.herokuapp.com/api/user/login1',
+        'http://www.skalarly.com/api/user/login1',
         authData
       )
       .subscribe({
@@ -2233,7 +2233,7 @@ export class AuthService {
     this.snackBar.open('Check your email to reset your password.', 'Will do!');
     const authData: AuthData = { email };
     this.http
-      .post('https://skalarly.herokuapp.com/api/user/forgot', authData)
+      .post('http://www.skalarly.com/api/user/forgot', authData)
       .subscribe({
         next: () => {},
         error: (error) => {
@@ -2246,7 +2246,7 @@ export class AuthService {
   updatePassword(password: string, secretCode: string): any {
     const authData: AuthData = { password, secretCode };
     this.http
-      .post('https://skalarly.herokuapp.com/api/user/reset-password', authData)
+      .post('http://www.skalarly.com/api/user/reset-password', authData)
       .subscribe({
         next: () => {
           const snackBarRef = this.snackBar.open(
@@ -2272,27 +2272,25 @@ export class AuthService {
   // Delete account
   deleteAccount(emailDel: string, passwordDel: string): any {
     const del = { emailDel, passwordDel };
-    this.http
-      .post('https://skalarly.herokuapp.com/api/user/delete', del)
-      .subscribe({
-        next: () => {
-          const snackBarRef = this.snackBar.open(
-            'We wish you all the best',
-            'Skal friend!',
-            {
-              duration: 3000,
-            }
-          );
-          snackBarRef.afterDismissed().subscribe(() => {
-            this.router.navigate(['/login']);
-          });
-        },
-        error: (error) => {
-          this.snackBar.open('Invalid username', 'Try again!', {
+    this.http.post('http://www.skalarly.com/api/user/delete', del).subscribe({
+      next: () => {
+        const snackBarRef = this.snackBar.open(
+          'We wish you all the best',
+          'Skal friend!',
+          {
             duration: 3000,
-          });
-          // this.authStatusListener.next(false);
-        },
-      });
+          }
+        );
+        snackBarRef.afterDismissed().subscribe(() => {
+          this.router.navigate(['/login']);
+        });
+      },
+      error: (error) => {
+        this.snackBar.open('Invalid username', 'Try again!', {
+          duration: 3000,
+        });
+        // this.authStatusListener.next(false);
+      },
+    });
   }
 }

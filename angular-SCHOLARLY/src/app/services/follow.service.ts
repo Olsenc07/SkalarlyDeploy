@@ -66,7 +66,7 @@ export class FollowService {
   postInfoFollow(userId: string, username: string): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'https://skalarly.herokuapp.com/api/follow/infoFollow',
+        'http://www.skalarly.com/api/follow/infoFollow',
         { params: { userId, username } }
       )
       .pipe(
@@ -95,7 +95,7 @@ export class FollowService {
   getMessageNotification(userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'https://skalarly.herokuapp.com/api/follow/followInfo',
+        'http://www.skalarly.com/api/follow/followInfo',
         {
           params: { userId },
         }
@@ -125,7 +125,7 @@ export class FollowService {
   getMessageNotificationFollowed(userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'https://skalarly.herokuapp.com/api/follow/followerInfo',
+        'http://www.skalarly.com/api/follow/followerInfo',
         {
           params: { userId },
         }
@@ -155,7 +155,7 @@ export class FollowService {
   getMessageNotificationFollowedOther(id: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'https://skalarly.herokuapp.com/api/follow/followerInfoOther',
+        'http://www.skalarly.com/api/follow/followerInfoOther',
         {
           params: { id },
         }
@@ -185,7 +185,7 @@ export class FollowService {
   getMessageNotificationOther(id: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'https://skalarly.herokuapp.com/api/follow/followInfoOther',
+        'http://www.skalarly.com/api/follow/followInfoOther',
         {
           params: { id },
         }
@@ -219,7 +219,7 @@ export class FollowService {
 
     this.http
       .get<{ message: string; messages: any }>(
-        'https://skalarly.herokuapp.com/api/follow/followingInfo',
+        'http://www.skalarly.com/api/follow/followingInfo',
         {
           params: { id, userId },
         }
@@ -250,7 +250,7 @@ export class FollowService {
   mutualFollow(username: string, userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'https://skalarly.herokuapp.com/api/follow/mutualFollow',
+        'http://www.skalarly.com/api/follow/mutualFollow',
         {
           params: { username, userId },
         }
@@ -281,7 +281,7 @@ export class FollowService {
   mutualsFollow(username: string, userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'https://skalarly.herokuapp.com/api/follow/mutualsFollow',
+        'http://www.skalarly.com/api/follow/mutualsFollow',
         {
           params: { username, userId },
         }
@@ -311,7 +311,7 @@ export class FollowService {
   deleteFollow(followId: string): any {
     // console.log('hey chase postId', postId);
     this.http
-      .delete('https://skalarly.herokuapp.com/api/follow/unFollow/' + followId)
+      .delete('http://www.skalarly.com/api/follow/unFollow/' + followId)
       .subscribe(() => {
         const updatedPosts = this.follow.filter((post) => post.id !== followId);
         this.follow = updatedPosts;
@@ -321,7 +321,7 @@ export class FollowService {
   deleteFollowers(followId: string): any {
     // console.log('hey chase postId', postId);
     this.http
-      .delete('https://skalarly.herokuapp.com/api/follow/unFollower/' + followId)
+      .delete('http://www.skalarly.com/api/follow/unFollower/' + followId)
       .subscribe(() => {
         const updatedPosts = this.follower.filter(
           (post) => post.id !== followId

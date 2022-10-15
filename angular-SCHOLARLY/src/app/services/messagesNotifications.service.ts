@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import {  Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Message {
@@ -31,7 +31,7 @@ export class MessageNotificationService {
   getMessageNotification(userId: string, username: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'https://skalarly.herokuapp.com/api/messages/infoMessage',
+        'http://www.skalarly.com/api/messages/infoMessage',
         {
           params: { userId, username },
         }
@@ -60,7 +60,7 @@ export class MessageNotificationService {
   deleteMessage(msgId: string): any {
     console.log('hey chase msgId', msgId);
     this.http
-      .delete('https://skalarly.herokuapp.com/api/messages/deleteMsg/' + msgId)
+      .delete('http://www.skalarly.com/api/messages/deleteMsg/' + msgId)
       .subscribe(() => {
         const updatedPosts = this.messagesDel.filter((msg) => msg.id !== msgId);
         this.messagesDel = updatedPosts;

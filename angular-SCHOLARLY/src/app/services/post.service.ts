@@ -44,7 +44,7 @@ export class PostService {
 
   getPosts(): any {
     this.http
-      .get<{ message: string; posts: any }>('https://skalarly.herokuapp.com/api/posts')
+      .get<{ message: string; posts: any }>('http://www.skalarly.com/api/posts')
       .pipe(
         map((postData) => {
           return postData.posts.map((post) => {
@@ -81,7 +81,7 @@ export class PostService {
   getPostsFeed(counter): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'https://skalarly.herokuapp.com/api/posts/feed',
+        'http://www.skalarly.com/api/posts/feed',
         { params: { counter } }
       )
       .pipe(
@@ -120,7 +120,7 @@ export class PostService {
   getPostsPersonal(userId: string): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'https://skalarly.herokuapp.com/api/posts/personal',
+        'http://www.skalarly.com/api/posts/personal',
         { params: { userId } }
       )
       .pipe(
@@ -160,7 +160,7 @@ export class PostService {
   getOthersPosts(id: string): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'https://skalarly.herokuapp.com/api/posts/otherUsers',
+        'http://www.skalarly.com/api/posts/otherUsers',
         { params: { id } }
       )
       .pipe(
@@ -200,7 +200,7 @@ export class PostService {
   getPostsMainPage(category: string, counter: number): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'https://skalarly.herokuapp.com/api/posts/mainPage',
+        'http://www.skalarly.com/api/posts/mainPage',
         { params: { category, counter } }
       )
       .pipe(
@@ -239,7 +239,7 @@ export class PostService {
   getOtherInfo(id: string): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'https://skalarly.herokuapp.com/api/posts/otherUsersInfos',
+        'http://www.skalarly.com/api/posts/otherUsersInfos',
         { params: { id } }
       )
       .pipe(
@@ -324,7 +324,7 @@ export class PostService {
 
     this.http
       .post<{ message: string; postId: Post }>(
-        'https://skalarly.herokuapp.com/api/posts',
+        'http://www.skalarly.com/api/posts',
         postData,
         { params: { userId } }
       )
@@ -367,7 +367,7 @@ export class PostService {
   deletePost(postId: string): any {
     // console.log('hey chase postId', postId);
     this.http
-      .delete('https://skalarly.herokuapp.com/api/posts/' + postId)
+      .delete('http://www.skalarly.com/api/posts/' + postId)
       .subscribe(() => {
         const updatedPosts = this.posts.filter((post) => post.id !== postId);
         this.posts = updatedPosts;
