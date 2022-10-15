@@ -27,6 +27,7 @@
             <mat-form-field>
               <!-- only utoronto.ca should be excepted pattern=".+@gmail\.com"  pattern=".+@mail.utoronto\.ca" -->
               <input matInput type="email"  placeholder="School Email" pattern=".+@mail.utoronto\.ca" [formControl]="email" required />
+              <mat-hint>@mail.utoronto.ca</mat-hint>
               <mat-error >Only U Of T emails are valid</mat-error>
               <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <mat-error *ngIf="email.errors?.email && !email.errors?.noWhiteSpace">Please enter your academic email
@@ -327,14 +328,16 @@
 
             <div class="input bd">
               <i class="material-icons _icon">cake</i>
+
               <!-- Birthday picker -->
-              <mat-form-field >
+              <!-- Won't work with it -->
+              <!-- <mat-form-field >
                 <mat-label>When's your birthday?</mat-label>
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
 
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker class="bd_picker" #dp></mat-datepicker>
-              </mat-form-field>
+              </mat-form-field> -->
             </div>
 
             <div class="inputP">

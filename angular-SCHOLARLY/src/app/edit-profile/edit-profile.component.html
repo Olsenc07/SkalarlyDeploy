@@ -100,14 +100,15 @@
             <div class="input">
               <!-- Birthday picker -->
               <i class="material-icons _icon">cake</i>
-              <mat-form-field >
+              <!-- Not working -->
+              <!-- <mat-form-field >
                 <mat-label *ngIf="info.birthday">{{info.birthday|date:"longDate"}}</mat-label>
               <mat-label *ngIf="!info.birthday">When's your birthday?</mat-label>
 
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp></mat-datepicker>
-              </mat-form-field>
+              </mat-form-field> -->
             </div>
           
 

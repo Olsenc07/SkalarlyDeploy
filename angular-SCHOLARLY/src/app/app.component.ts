@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   searchPop = false;
   faCoffee = faCoffee;
-  title = 'angular-SCHOLARLY';
+  title = 'Skalarly';
 
   isHomeScreen$: Observable<boolean>;
 
