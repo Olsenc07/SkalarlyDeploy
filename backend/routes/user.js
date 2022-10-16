@@ -21,11 +21,13 @@ const { single } = require('rxjs');
 
 // mail sender details
 var transporter = nodemailer.createTransport({
-    service: 'outlook365',
+    service: 'goDaddy',
+    host: 'smtp.office365.com',
+    port: 587,
     auth: {
         // gmail just change to gmail email and service to gmail
-        user: 'admin@skalarly.com',
-        pass: 'boghip-qEbbe0-ryxvyq'
+        user: process.env.user,
+        pass: process.env.pass
     },
     tls: {
         rejectUnauthorized: false,
@@ -189,7 +191,6 @@ const verifyEmail = async (req, res, next) => {
 const verifyEmailV = async (req, res, next) => {
     try {
         const test = await User.findOne({ email: req.body.emailV })
-        // console.log('boobs', test)
         if (test) {
             await User.findOne({ email: req.body.emailV }).then(user => {
                 if (user.isVerified === 'true') {
