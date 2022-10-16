@@ -14,7 +14,7 @@ const UserInfo = require('/app/backend/models/userInfo');
 
 // mail sender details
 var transporter = nodemailer.createTransport({
-    host: "smtpout.secureserver.net",
+    host: 'smtp.office365.com',
     port: 587,
     auth: {
         // gmail just change to gmail email and service to gmail
@@ -27,7 +27,15 @@ var transporter = nodemailer.createTransport({
 
 })
 
-
+// verify connection configuration
+transporter.verify(function (error, success) {
+    if (error) {
+      console.log('whats in the box?');
+    } else {
+      console.log("Server is ready to take our messages");
+    }
+  });
+  
 const MIME_TYPE_MAP = {
     'image/png': 'png',
     'image/jpeg': 'jpg',
