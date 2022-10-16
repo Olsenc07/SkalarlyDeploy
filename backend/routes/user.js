@@ -50,7 +50,7 @@ const storage = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(null, './backend/profilePics');
+        cb(null, '/app/backend/profilePics');
 
     },
     filename: (req, file, cb) => {
@@ -305,6 +305,8 @@ router.post("/info", checkAuth,
     // pic_2.single('showCase'), 
     (req, res, next) => {
         const url = req.protocol + '://' + req.get('host');
+        console.log('hey chaz hows football', url)
+
         var info = new UserInfo({
             username: req.body.username,
             name: req.body.name,

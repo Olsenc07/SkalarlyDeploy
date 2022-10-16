@@ -2439,6 +2439,7 @@ export class ClassListService {
       'HUN498H1',
       'IFP100H1',
       'IFP100Y1',
+      'IMC200H1',
       'IMM199H1',
       'IMM221H1',
       'IMM340H1',
