@@ -47,7 +47,7 @@
     "moment": "^2.29.4",
     "mongoose": "^6.6.2",
     "mongoose-unique-validator": "^3.1.0",
-    "multer": "1.4.5-lts.1",
+    "multer": "^1.4.5-lts.1",
     "ngx-mat-timepicker": "^14.0.2",
     "ngx-socket-io": "^4.3.0",
     "ngx-ui-scroll": "^3.0.0",
