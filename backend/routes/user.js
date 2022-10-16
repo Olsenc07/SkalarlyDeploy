@@ -14,7 +14,7 @@ const UserInfo = require('/app/backend/models/userInfo');
 
 // mail sender details
 var transporter = nodemailer.createTransport({
-    host: 'smtp.office365.com',
+    host: 'admin@skalarly.com',
     port: 587,
     auth: {
         // gmail just change to gmail email and service to gmail
@@ -99,7 +99,7 @@ router.post("/signup", async (req, res, next) => {
 
                         });
                     const msg = {
-                        from: ' "Verify account" <admin@skalarly.com>',
+                        from: 'admin@skalarly.com',
                         to: user.email,
                         subject: 'Skalarly - verify account',
                         text: `We are excited to welcome you ${user.username} to the community!
@@ -224,7 +224,7 @@ router.post('/forgot', async (req, res) => {
             })
         }
         const msg = {
-            from: ' "Reset Password" <admin@skalarly.com>',
+            from: 'admin@skalarly.com',
             to: user.email,
             subject: 'Skalarly - reset password',
             text: `Hello ${user.username} we hear you forgot your password.
