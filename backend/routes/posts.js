@@ -16,6 +16,7 @@ const MIME_TYPE_MAP ={
     'image/png': 'png',
     'image/jpeg': 'jpg',
     'image/jpg': 'jpg',
+    'image/JPG': 'JPG',
 };
 
 
@@ -27,7 +28,7 @@ const storage  = multer.diskStorage({
         if (isValid){
             error = null;
         }    
-        cb(null, './backend/posts');   
+        cb(null, '/app/backend/posts');   
   
     },
     filename: (req, file, cb) => {
@@ -46,7 +47,7 @@ const storage_2 = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(null, './backend/showCase');
+        cb(null, '/app/backend/showCase');
 
     },
     filename: (req, file, cb) => {
