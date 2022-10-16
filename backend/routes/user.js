@@ -14,6 +14,7 @@ const UserInfo = require('/app/backend/models/userInfo');
 
 // mail sender details
 var transporter = nodemailer.createTransport({
+    name: 'www.skalarly.com',
     service: 'outlook365',
     auth: {
         // gmail just change to gmail email and service to gmail
@@ -131,8 +132,7 @@ router.post("/signup", async (req, res, next) => {
             });
             console.log('Username or email is taken!')
         }
-     
-
+    
 });
 
 router.get('/verify-email', async (req, res, next) => {

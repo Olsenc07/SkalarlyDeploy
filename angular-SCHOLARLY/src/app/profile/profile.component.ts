@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-
 import {
   MatBottomSheet,
   MatBottomSheetRef,
@@ -62,6 +61,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private bottomSheet: MatBottomSheet,
+    private router: Router,
     public postService: PostService,
     private authService: AuthService,
     private showCaseService: ShowCaseService,
@@ -120,6 +120,11 @@ export class ProfileComponent implements OnInit {
       .subscribe((followers: Follow[]) => {
         this.followers = followers;
       });
+  }
+  navigateToEditProfile(): any {
+    this.router.navigate(['/edit-profile/:'], {
+      queryParams: { userId: this.userId },
+    });
   }
   onDelete(postId: string): any {
     this.showCaseService.deleteShowCase(postId);

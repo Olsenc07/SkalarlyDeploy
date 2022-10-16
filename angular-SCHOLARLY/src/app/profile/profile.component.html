@@ -524,14 +524,21 @@
 
               <div class="showCase_" *ngFor="let showCase of showCases">
 
-               
-                <div class="column" >
+               <div *ngIf="!showCase">
+
+<button (click)="navigateToEditProfile()">
+Add Showcase
+</button>
+               </div>
+
+
+                <div class="column" *ngIf="!showCase">
                   
                   <img class="img" src={{showCase.ShowCasePath}} />
                   <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
 
                 </div>
-                <div class="trashCan" *ngIf='userId === showCase.Creator'>
+                <div class="trashCan" *ngIf='(userId === showCase.Creator) && showCase'>
                   <button  mat-icon-button matTooltip="Delete ShowCase"
                     (click)='onDelete(showCase.id)'>
                     <i class="far fa-times-circle"></i>
