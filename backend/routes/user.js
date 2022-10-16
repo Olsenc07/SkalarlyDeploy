@@ -8,21 +8,13 @@ const nodemailer = require('nodemailer');
 const checkAuth = require('/app/backend/middleware/check-auth');
 const User = require('/app/backend/models/user');
 const UserInfo = require('/app/backend/models/userInfo');
-const showCase = require('/app/backend/models/showCases');
-const Post = require('/app/backend/models/post');
-const Msg = require('/app/backend/models/messages')
 
-const UserNames = require('/app/backend/models/usernames');
-
-const user = require('/app/backend/models/user');
-const { single } = require('rxjs');
 
 
 
 // mail sender details
 var transporter = nodemailer.createTransport({
-    service: 'goDaddy',
-    host: 'smtp.office365.com',
+    host: "smtpout.secureserver.net",
     port: 587,
     auth: {
         // gmail just change to gmail email and service to gmail
@@ -73,7 +65,6 @@ const storage = multer.diskStorage({
 
 // Creating user
 router.post("/signup", async (req, res, next) => {
-    try {
         const userEmail = await User.findOne({ email: req.body.email });
         const userName = await User.findOne({ userName: req.body.username });
         if (!(userEmail && userName)) {
@@ -133,12 +124,11 @@ router.post("/signup", async (req, res, next) => {
             });
             console.log('Username or email is taken!')
         }
-    } finally { }
+     
 
 });
 
 router.get('/verify-email', async (req, res, next) => {
-    try {
         const token = req.query.token;
         const user = await User.findOne({ emailToken: token });
         if (user) {
@@ -151,11 +141,6 @@ router.get('/verify-email', async (req, res, next) => {
             console.log('error', 'Invalid authentication. Please try again.');
 
         }
-        //    Runs regardless of result
-    } finally {
-
-    }
-
 
 })
 

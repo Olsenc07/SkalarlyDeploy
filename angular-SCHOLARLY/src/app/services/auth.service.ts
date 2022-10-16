@@ -67,9 +67,6 @@ export class AuthService {
               duration: 3000,
             }
           );
-          snackBarRef.afterDismissed().subscribe(() => {
-            window.location.reload();
-          });
         },
       });
   }

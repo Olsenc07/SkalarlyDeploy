@@ -115,7 +115,7 @@ io.on('connection', (socket) => {
                                           
 
 //  DataBase connection
-mongoose.connect('mongodb+srv://Olsen07:Hockey07@cluster0.rcx6w.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+mongoose.connect(process.env.mongodb)
 .then(()  => {
     console.log('Connected to database!!');
 })
