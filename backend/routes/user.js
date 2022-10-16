@@ -15,7 +15,7 @@ const UserInfo = require('/app/backend/models/userInfo');
 // mail sender details
 var transporter = nodemailer.createTransport({
     name: 'www.skalarly.com',
-    host: 'admin@skalarly.com',
+    host: 'smtp.skalarly.com',
     port: 587,
     auth: {
         // gmail just change to gmail email and service to gmail
