@@ -14,6 +14,7 @@ const UserInfo = require('/app/backend/models/userInfo');
 
 // mail sender details
 var transporter = nodemailer.createTransport({
+    name: 'www.skalarly.com',
     host: 'admin@skalarly.com',
     port: 587,
     auth: {

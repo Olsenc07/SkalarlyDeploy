@@ -12,10 +12,10 @@ const http = require('http');
 
 
 
-const publicVapidKey = 'BD3BblVzyiaqnIYKfJHpaJ4Gil-BDYvUh5WlRmfMu5KULOb-TdMa0ZXdOqKHg56c3U36eUJZKlfuPLh-90cHgFE';
-const privateVapidKey = '1zXzUpQkkPMygH5d00CmVwabGO6nzYUNEWXTRDwNBKI';
+const publicVapidKey = process.env.public ;
+const privateVapidKey = process.env.private;
 
-// webpush.setVapidDetails('mailto:Skalarly@Skalarly.com', publicVapidKey, privateVapidKey);
+// webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
 
 
 
