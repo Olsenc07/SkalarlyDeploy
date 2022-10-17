@@ -47,7 +47,7 @@ const storage_2 = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(null, '/Users/chaseolsen/angular_scholarly_fs/backend/showCase');
+        cb(null, 'www.skalarly.com/backend/showCase');
 
     },
     filename: (req, file, cb) => {
