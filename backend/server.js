@@ -161,6 +161,12 @@ app.use("/api/follow", followRoutes);
  * Routes Definitions
  */
  app.use(express.static('/app/angular-SCHOLARLY/static'))
+ app.use(express.static('/app/backend/showCase'))
+ app.use(express.static('/app/backend/profilePics'))
+ app.use(express.static('/app/backend/posts'))
+
+
+
 
  app.get("/", (req, res) => {
    res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');
