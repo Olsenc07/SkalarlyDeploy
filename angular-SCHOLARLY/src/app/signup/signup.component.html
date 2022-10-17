@@ -396,7 +396,7 @@
             <!-- <div class="skip1">
               <button mat-raised-button class="cBtn" (click)="changeTab1()">Skip For Now</button>
             </div> -->
-            <button *ngIf="form.get('profilePic').value" type="button"  mat-raised-button class="cBtn"
+            <button *ngIf="form.get('profilePic').value" type="button" color="primary"  mat-raised-button class="cBtn"
               (click)="changeTab1()">Save</button>
           </div>
           <!-- <div class="skip2">
@@ -464,7 +464,7 @@
               <button mat-button class="cBtn" (click)="changeTab3()">Skip For Now</button>
             </div>
             <button *ngIf="form.get('showCase').value" type="button" mat-raised-button class="cBtn"
-              (click)="changeTab3()">Save</button>
+              (click)="changeTab3()" (click)="onSubmitShowCase()" >Save</button>
           </div>
         </div>
         <div class="skip2">
@@ -1749,7 +1749,7 @@
           <button mat-raised-button class="cBtn" *ngIf="!isLoading" (click)="changeTab3()">Back</button>
 
           <button type="button" mat-raised-button class="cBtn" (click)="onSubmit2()" 
-         (click)="onSubmitShowCase()"   *ngIf="!isLoading">Create</button>
+           *ngIf="!isLoading">Create</button>
           <mat-spinner *ngIf="isLoading"></mat-spinner>
         </div>
       </mat-tab>
