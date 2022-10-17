@@ -298,7 +298,7 @@ router.post("/info", checkAuth,
     (req, res, next) => {
         const url = req.protocol + '://' + req.get('host');
         console.log('hey chaz hows football', req.file.filename)
-
+        if(req.file){
         var info = new UserInfo({
             username: req.body.username,
             name: req.body.name,
@@ -373,6 +373,7 @@ router.post("/info", checkAuth,
 
 
         });
+    }
         info.save().then(result => {
             res.status(201).json({
                 message: 'Yay a user added info',
