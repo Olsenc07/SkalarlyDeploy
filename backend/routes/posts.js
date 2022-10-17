@@ -28,7 +28,7 @@ const storage  = multer.diskStorage({
         if (isValid){
             error = null;
         }    
-        cb(null, './backend/posts');   
+        cb(null, 'backend/posts');   
   
     },
     filename: (req, file, cb) => {
@@ -47,7 +47,7 @@ const storage_2 = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(null, './backend/showCase');
+        cb(null, 'backend/showCase');
 
     },
     filename: (req, file, cb) => {
