@@ -668,7 +668,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.followings.value,
       this.form.get('profilePic').value
     );
-    console.log('signup form', this.CodeCompleted2.value);
+    console.log('i couldnt give you up', this.form.get('profilePic').value);
   }
 
   onSubmitShowCase(): any {

@@ -26,15 +26,6 @@ var transporter = nodemailer.createTransport({
     },
 
 })
-
-// verify connection configuration
-transporter.verify(function (error, success) {
-    if (error) {
-      console.log('whats in the box?');
-    } else {
-      console.log("Server is ready to take our messages");
-    }
-  });
   
 const MIME_TYPE_MAP = {
     'image/png': 'png',
@@ -306,7 +297,7 @@ router.post("/info", checkAuth,
     // pic_2.single('showCase'), 
     (req, res, next) => {
         const url = req.protocol + '://' + req.get('host');
-        console.log('hey chaz hows football', url)
+        console.log('hey chaz hows football', req.file.filename)
 
         var info = new UserInfo({
             username: req.body.username,
