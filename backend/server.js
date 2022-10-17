@@ -132,7 +132,7 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static('build'))
 app.use('/posts', express.static('./backend/posts'));
 app.use('/profilePics', express.static('./backend/profilePics'));
-app.use('/showCase', express.static('./backend/showCase'));
+app.use('/showCase', express.static('backend/showCase'));
 
 
 
