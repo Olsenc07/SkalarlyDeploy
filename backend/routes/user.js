@@ -296,9 +296,9 @@ router.post("/info", checkAuth,
     // pic.single('profilePic'),
     // pic_2.single('showCase'), 
     (req, res, next) => {
-        const url = req.protocol + '://' + req.get('host');
+        const url = 'http://www.skalarly.com';
         console.log('hey chaz hows football', req.file.filename)
-        if(req.file){
+ 
         var info = new UserInfo({
             username: req.body.username,
             name: req.body.name,
@@ -373,7 +373,6 @@ router.post("/info", checkAuth,
 
 
         });
-    }
         info.save().then(result => {
             res.status(201).json({
                 message: 'Yay a user added info',
