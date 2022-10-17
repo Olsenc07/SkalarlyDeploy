@@ -42,7 +42,7 @@ const storage = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(null, './backend/profilePics');
+        cb(null, '/app/backend/profilePics');
 
     },
     filename: (req, file, cb) => {
@@ -137,7 +137,7 @@ router.get('/verify-email', async (req, res, next) => {
             res.redirect('/verified')
         } else {
             res.redirect('/sign-up')
-            console.log('error', 'Invalid authentication. Please try again.');
+            console.log('Invalid authentication. Please try again.');
 
         }
 
