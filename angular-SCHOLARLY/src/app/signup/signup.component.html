@@ -266,9 +266,7 @@
                         </div>
                       </button>
                       <input #fileInputP id="fileInputP" class="hide" type="file" accept=".png, .jpg, .jpeg .JPG"
-                        (change)="imagePreviewP($event)"  
-                        name='profilePic' 
-                        >
+                        (change)="imagePreviewP($event)" name='profilePic'>
                     </div>
                   </div>
                   <!-- class="cropper" [ngClass]="profilePic.value ? 'show' : 'hide' " -->
@@ -300,7 +298,7 @@
                   <h2 class="Preview">Image Preview</h2>
                   <div class="profilePic">
                     <!-- [src]="cropImgPreview" -->
-                    <img class="fit" [src]="url" id='fileInputP' />
+                    <img class="fit" [src]="url" />
                   </div>
                 </div>
               </div>

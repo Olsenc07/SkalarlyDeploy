@@ -296,9 +296,9 @@ router.post("/info", checkAuth,
     // pic.single('profilePic'),
     // pic_2.single('showCase'), 
     (req, res, next) => {
-        const url = 'http://www.skalarly.com';
+        const url = req.protocol + '://' + req.get('host');
         console.log('hey chaz hows football', req.file.filename)
- 
+ if(req.file.filename){
         var info = new UserInfo({
             username: req.body.username,
             name: req.body.name,
@@ -373,6 +373,11 @@ router.post("/info", checkAuth,
 
 
         });
+    }else {
+        res.status(500).json({
+            message: req.file.filename
+        });
+    }
         info.save().then(result => {
             res.status(201).json({
                 message: 'Yay a user added info',
@@ -696,7 +701,7 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
                     }
                     const token = jwt.sign(
                         { email: fetchedUser.email, userId: fetchedUser._id },
-                        'And_Even_When_I_Cant_Say_I_Love_You_I_Love_You',
+                        process.env.love,
                         { expiresIn: '1h' }
                     );
                     res.status(200).json({
@@ -763,7 +768,7 @@ if(userInfo){
             }
             const token = jwt.sign(
                 { email: fetchedUser.email, userId: fetchedUser._id },
-                'And_Even_When_I_Cant_Say_I_Love_You_I_Love_You',
+                process.env.love,
                 // { expiresIn: '1h' }
             );
             res.status(200).json({
