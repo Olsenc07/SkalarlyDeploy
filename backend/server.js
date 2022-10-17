@@ -130,9 +130,9 @@ mongoose.connect(process.env.mongodb)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(express.static('build'))
-app.use('/posts', express.static('backend/posts'));
-app.use('/profilePics', express.static('backend/profilePics'));
-app.use('/showCase', express.static(path.join(__dirname,'backend/showCase')));
+app.use('/posts', express.static('/app/backend/posts'));
+app.use('/profilePics', express.static('/app/backend/profilePics'));
+app.use('/showCase', express.static('/app/backend/showCase'));
 
 
 
