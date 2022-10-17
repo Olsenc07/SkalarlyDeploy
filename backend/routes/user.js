@@ -42,7 +42,7 @@ const storage = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(null, path.join(__dirname,'/backend/profilePics'));
+        cb(null, './backend/profilePics');
 
     },
     filename: (req, file, cb) => {
@@ -699,8 +699,7 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
                     }
                     const token = jwt.sign(
                         { email: fetchedUser.email, userId: fetchedUser._id },
-                        process.env.love,
-                        { expiresIn: '1h' }
+                        process.env.love
                     );
                     res.status(200).json({
                         token: token,
