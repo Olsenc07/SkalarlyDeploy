@@ -371,7 +371,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     private http: HttpClient,
     public authService: AuthService,
     public showCaseService: ShowCaseService,
-
     private snackBar: MatSnackBar // public courses: Courses
   ) {
     // this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
@@ -575,7 +574,7 @@ export class SignupComponent implements OnInit, OnDestroy {
             this.snackBar.open('Welcome to the community', 'Thanks!', {
               duration: 3000,
             });
-            this.selectedIndex = this.selectedIndex === 2 ? 3 : 2;
+            this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
           } else {
             this.snackBar.open(
               'Failed to login. Remember to authenticate your email',
@@ -668,7 +667,6 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.followings.value,
       this.form.get('profilePic').value
     );
-    console.log('i couldnt give you up', this.form.get('profilePic').value);
   }
 
   onSubmitShowCase(): any {
