@@ -42,7 +42,7 @@ const storage = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(null, '/app/backend/profilePics');
+        cb(null, path.join(__dirname,'/backend/profilePics'));
 
     },
     filename: (req, file, cb) => {
