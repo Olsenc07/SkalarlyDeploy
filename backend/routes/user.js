@@ -34,7 +34,7 @@ const MIME_TYPE_MAP = {
     'image/JPG': 'JPG',
 };
 
-// Only this one is being accessed
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const isValid = MIME_TYPE_MAP[file.mimetype];

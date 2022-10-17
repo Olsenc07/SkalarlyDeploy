@@ -574,7 +574,7 @@ export class SignupComponent implements OnInit, OnDestroy {
             this.snackBar.open('Welcome to the community', 'Thanks!', {
               duration: 3000,
             });
-            this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
+            this.selectedIndex = this.selectedIndex === 2 ? 3 : 2;
           } else {
             this.snackBar.open(
               'Failed to login. Remember to authenticate your email',
