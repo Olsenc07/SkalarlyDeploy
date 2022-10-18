@@ -356,7 +356,7 @@ router.post("/showCases",
 // if (req.file){
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
-        showCase: req.file,
+        ShowCasePath: req.file.filename,
         Creator: req.userData.userId
     });
 // }else{
