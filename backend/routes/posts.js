@@ -5,7 +5,7 @@ const Post = require('/app/backend/models/post');
 const showCase = require('/app/backend/models/showCases');
 const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
-const cloudinary = require('cloudinary')
+const cloudinary = require('cloudinary').v2
 // cloudinary
 cloudinary.config({ 
     cloud_name: process.env.cloud_name, 
