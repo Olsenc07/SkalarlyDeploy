@@ -346,24 +346,25 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer({ storage: storage_2})
+// const show = multer({ storage: storage_2})
 // showCase additions
 router.post("/showCases", 
     checkAuth,
-    show.single('showCase'),
+    // show.single('showCase'),
     (req, res) => {
     const url = req.protocol + '://' + req.get('host');
-if (req.file){
+// if (req.file){
     var ShowCase = new showCase({
-        ShowCasePath: url + '/showCase/' + req.file.filename,
+        // ShowCasePath: url + '/showCase/' + req.file.filename,
+        showCase: req.body.showCase,
         Creator: req.userData.userId
     });
-}else{
-    var ShowCase = new showCase({
-        ShowCasePath: url + '/showCase/' + req.file,
-        Creator: req.userData.userId
-    });
- } 
+// }else{
+//     var ShowCase = new showCase({
+//         ShowCasePath: url + '/showCase/' + req.file,
+//         Creator: req.userData.userId
+//     });
+//  } 
  ShowCase.save().then(createdPost => {
         res.status(201).json({
             message: 'showCase added successfully',

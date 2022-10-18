@@ -81,7 +81,8 @@ export class ShowCaseService {
         next: (responseData) => {
           const postId: ShowCase = {
             id: responseData.postId.id,
-            ShowCasePath: responseData.postId.ShowCasePath,
+            // ShowCasePath: responseData.postId.ShowCasePath,
+            showCase,
             Creator,
           };
           // const id_ = responseData.postId;
