@@ -8,6 +8,7 @@ const nodemailer = require('nodemailer');
 const checkAuth = require('/app/backend/middleware/check-auth');
 const User = require('/app/backend/models/user');
 const UserInfo = require('/app/backend/models/userInfo');
+const cloudinary = require('/app/backend/server/cloudinary')
 
 
 

@@ -5,6 +5,7 @@ const Post = require('/app/backend/models/post');
 const showCase = require('/app/backend/models/showCases');
 const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
+const cloudinary = require('cloudinary')
 
 
 const checkAuth = require('/app/backend/middleware/check-auth');
@@ -41,12 +42,12 @@ const storage  = multer.diskStorage({
 
 const storage_2 = multer.diskStorage({
     destination: (req, file, cb) => {
-        const isValid = MIME_TYPE_MAP[file.mimetype];
-        let error = new Error('Invalid mime type');
-        if (isValid) {
-            error = null;
-        }
-        cb(null, './backend/showCase');
+        // const isValid = MIME_TYPE_MAP[file.mimetype];
+        // let error = new Error('Invalid mime type');
+        // if (isValid) {
+        //     error = null;
+        // }
+        // cb(null, './backend/showCase');
 
     },
     filename: (req, file, cb) => {
@@ -354,9 +355,11 @@ router.post("/showCases",
     (req, res) => {
     // const url = req.protocol + '://' + req.get('host');
 // if (req.file){
+    const showCaseImg =  cloudinary.v2.uploader.upload(req.file.path)
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
-        ShowCasePath: req.file.filename,
+        ShowCasePath: showCaseImg.secure_url,
+        cloudinary_id: showCaseImg.public_id,
         Creator: req.userData.userId
     });
 // }else{

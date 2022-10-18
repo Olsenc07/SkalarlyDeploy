@@ -22,6 +22,7 @@ const privateVapidKey = process.env.private;
 
  const path = require('path');
  const mongoose = require('mongoose');
+ const cloudinary = require('cloudinary')
 
  const postRoutes = require('/app/backend/routes/posts');
  const userRoutes = require('/app/backend/routes/user');
@@ -122,6 +123,14 @@ mongoose.connect(process.env.mongodb)
 .catch(( ) => {
     console.log('Not connected');
 });
+
+// cloudinary
+cloudinary.config({ 
+    cloud_name: process.env.cloud_name, 
+    api_key: process.env.api_key, 
+    api_secret: process.env.api_secret 
+  });
+
 
 /**
  *  App Configuration
