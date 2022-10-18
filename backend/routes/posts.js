@@ -6,7 +6,12 @@ const showCase = require('/app/backend/models/showCases');
 const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
 const cloudinary = require('cloudinary')
-
+// cloudinary
+cloudinary.config({ 
+    cloud_name: process.env.cloud_name, 
+    api_key: process.env.api_key, 
+    api_secret: process.env.api_secret 
+  });
 
 const checkAuth = require('/app/backend/middleware/check-auth');
 
@@ -354,7 +359,7 @@ router.post("/showCases",
     show.single('showCase'),
     (req, res) => {
     // const url = req.protocol + '://' + req.get('host');
-// if (req.file){
+if(req.file){console.log('big tits')}
     const showCaseImg =  cloudinary.v2.uploader.upload(req.file, {folder:'ShowCase'});
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
@@ -362,12 +367,6 @@ router.post("/showCases",
         cloudinary_id: showCaseImg.public_id,
         Creator: req.userData.userId
     });
-// }else{
-//     var ShowCase = new showCase({
-//         ShowCasePath: url + '/showCase/' + req.file,
-//         Creator: req.userData.userId
-//     });
-//  } 
  ShowCase.save().then(createdPost => {
         res.status(201).json({
             message: 'showCase added successfully',
