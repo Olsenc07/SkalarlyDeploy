@@ -338,21 +338,13 @@ router.post("/showCases",
     checkAuth,
     show.single('showCase'),
     (req, res) => {
-        let streamUpload = (req) => {
-        return new Promise((resolve, reject) => {
-            cloudinary.uploader.upload_stream(streamifier.
-            createReadStream(req.file.buffer),{folder: 'ShowCase' })
-            
-        });
-    };
-console.log('check this out', streamUpload)
-    // const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
-    //     createReadStream(req.file.buffer),
-    //     {folder: 'ShowCase' });
+
+    const showCaseImg =  streamifier.createReadStream(req.file.buffer);
+    console.log('hockey', showCaseImg)
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
-        ShowCasePath: streamUpload,
-        cloudinary_id: streamUpload,
+        ShowCasePath: showCaseImg.secure_url,
+        cloudinary_id: showCaseImg.public_id,
         Creator: req.userData.userId
     });
  ShowCase.save().then(createdPost => {
