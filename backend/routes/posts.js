@@ -359,7 +359,9 @@ router.post("/showCases",
     show.single('showCase'),
     (req, res) => {
     // const url = req.protocol + '://' + req.get('host');
-if(req.file){console.log('big tits')}
+if(req.file){req.file,console.log('big tits')}
+if(req.body){req.body,console.log('big tatters')}
+
     const showCaseImg =  cloudinary.uploader.upload(req.file, 
         {folder: 'ShowCase' });
     var ShowCase = new showCase({
