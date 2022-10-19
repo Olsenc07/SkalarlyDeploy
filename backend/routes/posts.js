@@ -45,6 +45,29 @@ const storage  = multer.diskStorage({
     
 });
 
+const storage_2 = multer.memoryStorage();
+// .({
+//     // destination: (req, file, cb) => {
+//     //     const isValid = MIME_TYPE_MAP[file.mimetype];
+//     //     let error = new Error('Invalid mime type');
+//     //     if (isValid) {
+//     //         error = null;
+//     //     }
+//     //     cb(null, './backend/showCase');
+
+//     // },
+//     filename: (req, file, cb) => {
+//         if (file) {
+//             const name = file.originalname.toLowerCase();
+//             // const ext = MIME_TYPE_MAP[file.mimetype];
+//             cb(null, name)
+//             // + '-' + Date.now() + '.' + ext);
+//         } else {
+//             console.log('No array of pics')
+//         }
+//     },
+
+// });
 
 // Post recieving
 router.get("", async(req, res, next) => {
@@ -330,7 +353,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer.memoryStorage()
+const show = multer({storage: storage_2})
 // showCase additions
 router.post("/showCases", 
     checkAuth,
@@ -339,7 +362,7 @@ router.post("/showCases",
     // const url = req.protocol + '://' + req.get('host');
 if(req.file){console.log(req.file)}
 if(req.file.buffer){req.body,console.log('big tits_')}
-if(req.body.showCase){req.body,console.log('big tatters')}
+if(req.body.Creator){req.body,console.log('big tatters')}
     const showCaseImg =  cloudinary.uploader.upload(req.file.buffer, 
         {folder: 'ShowCase' });
     var ShowCase = new showCase({
