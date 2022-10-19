@@ -360,11 +360,10 @@ router.post("/showCases",
     (req, res) => {
     // const url = req.protocol + '://' + req.get('host');
 if(req.file){req.file,console.log('big tits')}
-if(req.body){req.body,console.log('big tits')}
+if(req.body.showCase){req.body,console.log('big tits_')}
+if(req.body.Creator){req.body,console.log('big tatters')}
 
-if(req.body){req.body,console.log('big tatters')}
-
-    const showCaseImg =  cloudinary.uploader.upload(req.file.filename, 
+    const showCaseImg =  cloudinary.uploader.upload(file, 
         {folder: 'ShowCase' });
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
