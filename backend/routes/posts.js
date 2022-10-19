@@ -47,12 +47,12 @@ const storage  = multer.diskStorage({
 
 const storage_2 = multer.diskStorage({
     destination: (req, file, cb) => {
-        // const isValid = MIME_TYPE_MAP[file.mimetype];
-        // let error = new Error('Invalid mime type');
-        // if (isValid) {
-        //     error = null;
-        // }
-        // cb(null, './backend/showCase');
+        const isValid = MIME_TYPE_MAP[file.mimetype];
+        let error = new Error('Invalid mime type');
+        if (isValid) {
+            error = null;
+        }
+        cb(null, './backend/showCase');
 
     },
     filename: (req, file, cb) => {

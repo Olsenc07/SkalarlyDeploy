@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ReplaySubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface ShowCase {
   id?: string;
@@ -17,7 +18,7 @@ export interface ShowCase {
 export class ShowCaseService {
   private showCases: ShowCase[] = [];
   private postsUpdated = new ReplaySubject<ShowCase[]>();
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   getShowCasePersonal(userId: string): any {
     this.http
@@ -91,6 +92,9 @@ export class ShowCaseService {
           // postData.id = id_;
           this.showCases.push(postId);
           this.postsUpdated.next([...this.showCases]);
+          this.snackBar.open('Your showcase added!', 'Yay!', {
+            duration: 3000,
+          });
         },
       });
   }
