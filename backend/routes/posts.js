@@ -353,14 +353,14 @@ router.post("/showCases",
             {folder: 'ShowCase' }
         });
     };
-
+console.log('check this out', streamUpload)
     // const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
     //     createReadStream(req.file.buffer),
     //     {folder: 'ShowCase' });
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
-        ShowCasePath: streamUpload.secure_url,
-        cloudinary_id: streamUpload.public_id,
+        ShowCasePath: streamUpload,
+        cloudinary_id: streamUpload,
         Creator: req.userData.userId
     });
  ShowCase.save().then(createdPost => {
