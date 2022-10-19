@@ -5,6 +5,7 @@ const showCase = require('/app/backend/models/showCases');
 const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
 const cloudinary = require('cloudinary').v2
+const streamifier = require('streamifier')
 // cloudinary
 cloudinary.config({ 
     cloud_name: process.env.cloud_name, 
@@ -45,29 +46,7 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage_2 = multer.memoryStorage();
-// .({
-//     // destination: (req, file, cb) => {
-//     //     const isValid = MIME_TYPE_MAP[file.mimetype];
-//     //     let error = new Error('Invalid mime type');
-//     //     if (isValid) {
-//     //         error = null;
-//     //     }
-//     //     cb(null, './backend/showCase');
 
-//     // },
-//     filename: (req, file, cb) => {
-//         if (file) {
-//             const name = file.originalname.toLowerCase();
-//             // const ext = MIME_TYPE_MAP[file.mimetype];
-//             cb(null, name)
-//             // + '-' + Date.now() + '.' + ext);
-//         } else {
-//             console.log('No array of pics')
-//         }
-//     },
-
-// });
 
 // Post recieving
 router.get("", async(req, res, next) => {
@@ -353,17 +332,38 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer({storage: storage_2})
+const show = multer()
 // showCase additions
 router.post("/showCases", 
     checkAuth,
     show.single('showCase'),
     (req, res) => {
-    // const url = req.protocol + '://' + req.get('host');
-if(req.file){console.log(req.file)}
-if(req.file.buffer){req.body,console.log('big tits_')}
-if(req.body.Creator){req.body,console.log('big tatters')}
-    const showCaseImg =  cloudinary.uploader.upload(req.file.originalname, 
+        let streamUpload = (req) => {
+            return new Promise((resolve, reject) => {
+                let stream = cloudinary.uploader.upload_stream(
+                  (error, result) => {
+                    if (result) {
+                      resolve(result);
+                    } else {
+                      reject(error);
+                    }
+                  }
+                );
+    
+              streamifier.createReadStream(req.file.buffer).pipe(stream);
+            });
+        };
+        async function upload(req) {
+            let result = await streamUpload(req);
+            console.log(result);
+        }
+    
+        upload(req);
+        console.log('cheese', upload(req))
+        console.log('casino', streamUpload)
+
+    const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
+        createReadStream(req.file.buffer), 
         {folder: 'ShowCase' });
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
