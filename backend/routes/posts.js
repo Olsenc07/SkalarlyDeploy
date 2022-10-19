@@ -349,37 +349,34 @@ router.post("/showCases",
                 }
               }
             );
-            streamifier.createReadStream(req.file.buffer).pipe(stream);
+            streamifier.createReadStream(req.file.buffer).pipe(stream),
+            {folder: 'ShowCase' }
         });
     };
-     function upload(req) {
-        let result = streamUpload(req);
-        console.log('howdy jim', result);
-    }
-    upload(req);
-//     const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
-//         createReadStream(req.file.buffer).pipe(stream),
-//         {folder: 'ShowCase' });
-//     var ShowCase = new showCase({
-//         // ShowCasePath: url + '/showCase/' + req.file.filename,
-//         ShowCasePath: showCaseImg.secure_url,
-//         cloudinary_id: showCaseImg.public_id,
-//         Creator: req.userData.userId
-//     });
-//  ShowCase.save().then(createdPost => {
-//         res.status(201).json({
-//             message: 'showCase added successfully',
-//             postId: {
-//                 id: createdPost._id,
-//                 ...createdPost
-//             } 
-//         });
-//     })
-//     .catch(error => {
-//         res.status(500).json({
-//             message: 'Creating a showCase failed!'
-//         });
-//     });
+
+    const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
+        createReadStream(req.file.buffer).pipe(stream),
+        {folder: 'ShowCase' });
+    var ShowCase = new showCase({
+        // ShowCasePath: url + '/showCase/' + req.file.filename,
+        ShowCasePath: streamUpload.secure_url,
+        cloudinary_id: streamUpload.public_id,
+        Creator: req.userData.userId
+    });
+ ShowCase.save().then(createdPost => {
+        res.status(201).json({
+            message: 'showCase added successfully',
+            postId: {
+                id: createdPost._id,
+                ...createdPost
+            } 
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Creating a showCase failed!'
+        });
+    });
 });
 
 // showCase deleting
