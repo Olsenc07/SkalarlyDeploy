@@ -45,29 +45,6 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage_2 = multer();
-// .({
-//     // destination: (req, file, cb) => {
-//     //     const isValid = MIME_TYPE_MAP[file.mimetype];
-//     //     let error = new Error('Invalid mime type');
-//     //     if (isValid) {
-//     //         error = null;
-//     //     }
-//     //     cb(null, './backend/showCase');
-
-//     // },
-//     filename: (req, file, cb) => {
-//         if (file) {
-//             const name = file.originalname.toLowerCase();
-//             // const ext = MIME_TYPE_MAP[file.mimetype];
-//             cb(null, name)
-//             // + '-' + Date.now() + '.' + ext);
-//         } else {
-//             console.log('No array of pics')
-//         }
-//     },
-
-// });
 
 // Post recieving
 router.get("", async(req, res, next) => {
@@ -353,7 +330,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer({ storage: storage_2})
+const show = multer()
 // showCase additions
 router.post("/showCases", 
     checkAuth,
