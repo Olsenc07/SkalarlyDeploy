@@ -45,7 +45,7 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage_2 = multer.memoryStorage();
+const storage_2 = multer();
 // .({
 //     // destination: (req, file, cb) => {
 //     //     const isValid = MIME_TYPE_MAP[file.mimetype];
