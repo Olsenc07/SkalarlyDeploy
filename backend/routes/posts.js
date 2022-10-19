@@ -45,7 +45,7 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage_2 = multer();
+const storage_2 = multer.memoryStorage();
 // .({
 //     // destination: (req, file, cb) => {
 //     //     const isValid = MIME_TYPE_MAP[file.mimetype];
@@ -361,10 +361,10 @@ router.post("/showCases",
     (req, res) => {
     // const url = req.protocol + '://' + req.get('host');
 if(req.file){req.file,console.log('big tits')}
-if(req.body.showCase){req.body,console.log('big tits_')}
+if(req.file.buffer){req.body,console.log('big tits_')}
 if(req.body.Creator){req.body,console.log('big tatters')}
 
-    const showCaseImg =  cloudinary.uploader.upload(req.file, 
+    const showCaseImg =  cloudinary.uploader.upload(req.file.buffer, 
         {folder: 'ShowCase' });
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
