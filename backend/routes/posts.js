@@ -360,8 +360,8 @@ router.post("/showCases",
     (req, res) => {
     // const url = req.protocol + '://' + req.get('host');
 if(req.file){console.log('big tits')}
-    const showCaseImg =   cloudinary.uploader.upload(req.file, 
-        {folder: ShowCase});
+    const showCaseImg =  cloudinary.uploader.upload(req.file, 
+        {folder: 'ShowCase' });
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
         ShowCasePath: showCaseImg.secure_url,
