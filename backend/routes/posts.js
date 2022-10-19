@@ -338,33 +338,49 @@ router.post("/showCases",
     checkAuth,
     show.single('showCase'),
     (req, res) => {
-            
-    
-  
+        let streamUpload = (req) => {
+        return new Promise((resolve, reject) => {
+            let stream = cloudinary.uploader.upload_stream(
+              (error, result) => {
+                if (result) {
+                  resolve(result);
+                } else {
+                  reject(error);
+                }
+              }
+            );
+            streamifier.createReadStream(req.file.buffer).pipe(stream);
+        });
+    };
+    async function upload(req) {
+        let result = await streamUpload(req);
+        console.log(result);
+    }
 
-    const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
-        createReadStream(req.file.buffer),
-        {folder: 'ShowCase' });
-    var ShowCase = new showCase({
-        // ShowCasePath: url + '/showCase/' + req.file.filename,
-        ShowCasePath: showCaseImg.secure_url,
-        cloudinary_id: showCaseImg.public_id,
-        Creator: req.userData.userId
-    });
- ShowCase.save().then(createdPost => {
-        res.status(201).json({
-            message: 'showCase added successfully',
-            postId: {
-                id: createdPost._id,
-                ...createdPost
-            } 
-        });
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Creating a showCase failed!'
-        });
-    });
+    upload(req);
+//     const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
+//         createReadStream(req.file.buffer).pipe(stream),
+//         {folder: 'ShowCase' });
+//     var ShowCase = new showCase({
+//         // ShowCasePath: url + '/showCase/' + req.file.filename,
+//         ShowCasePath: showCaseImg.secure_url,
+//         cloudinary_id: showCaseImg.public_id,
+//         Creator: req.userData.userId
+//     });
+//  ShowCase.save().then(createdPost => {
+//         res.status(201).json({
+//             message: 'showCase added successfully',
+//             postId: {
+//                 id: createdPost._id,
+//                 ...createdPost
+//             } 
+//         });
+//     })
+//     .catch(error => {
+//         res.status(500).json({
+//             message: 'Creating a showCase failed!'
+//         });
+//     });
 });
 
 // showCase deleting
