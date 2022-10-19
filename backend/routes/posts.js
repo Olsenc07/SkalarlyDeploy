@@ -352,10 +352,11 @@ router.post("/showCases",
             streamifier.createReadStream(req.file.buffer).pipe(stream);
         });
     };
-  
+     function upload(req) {
         let result = streamUpload(req);
         console.log('howdy jim', result);
-
+    }
+    upload(req);
 //     const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
 //         createReadStream(req.file.buffer).pipe(stream),
 //         {folder: 'ShowCase' });
