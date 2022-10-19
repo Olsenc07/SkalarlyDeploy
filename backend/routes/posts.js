@@ -27,15 +27,15 @@ const MIME_TYPE_MAP ={
 
 
 const storage  = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const isValid = MIME_TYPE_MAP[file.mimetype];
-        let error = new Error('Invalid mime type');
-        if (isValid){
-            error = null;
-        }    
-        cb(null, './backend/posts');   
+    // destination: (req, file, cb) => {
+    //     const isValid = MIME_TYPE_MAP[file.mimetype];
+    //     let error = new Error('Invalid mime type');
+    //     if (isValid){
+    //         error = null;
+    //     }    
+    //     cb(null, './backend/posts');   
   
-    },
+    // },
     filename: (req, file, cb) => {
         const name = file.originalname.toLowerCase();
         // const ext = MIME_TYPE_MAP[file.mimetype];
@@ -52,7 +52,7 @@ const storage_2 = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(null, );
+        cb(null, './backend/showCase');
 
     },
     filename: (req, file, cb) => {
