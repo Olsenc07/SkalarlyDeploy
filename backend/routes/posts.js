@@ -1,6 +1,5 @@
 const express = require('express');
 const multer = require('multer');
-
 const Post = require('/app/backend/models/post');
 const showCase = require('/app/backend/models/showCases');
 const UserInfo = require('/app/backend/models/userInfo');
@@ -10,7 +9,8 @@ const cloudinary = require('cloudinary').v2
 cloudinary.config({ 
     cloud_name: process.env.cloud_name, 
     api_key: process.env.api_key, 
-    api_secret: process.env.api_secret 
+    api_secret: process.env.api_secret,
+    secure: true
   });
 
 const checkAuth = require('/app/backend/middleware/check-auth');
@@ -360,9 +360,11 @@ router.post("/showCases",
     (req, res) => {
     // const url = req.protocol + '://' + req.get('host');
 if(req.file){req.file,console.log('big tits')}
+if(req.body){req.body,console.log('big tits')}
+
 if(req.body){req.body,console.log('big tatters')}
 
-    const showCaseImg =  cloudinary.uploader.upload(req.file.path, 
+    const showCaseImg =  cloudinary.uploader.upload(req.file.filename, 
         {folder: 'ShowCase' });
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
