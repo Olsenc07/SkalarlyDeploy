@@ -353,14 +353,11 @@ router.post("/showCases",
               streamifier.createReadStream(req.file.buffer).pipe(stream);
             });
         };
-        async function upload(req) {
-            let result = await streamUpload(req);
-            console.log(result);
-        }
+        let result =  streamUpload(req);
+            console.log('hey snoopy', result);
     
-        upload(req);
-        console.log('cheese', upload(req))
-        console.log('casino', streamUpload)
+    
+  
 
     const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
         createReadStream(req.file.buffer), 
