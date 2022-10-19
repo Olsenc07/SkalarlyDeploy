@@ -52,7 +52,7 @@ const storage_2 = multer.diskStorage({
         if (isValid) {
             error = null;
         }
-        cb(null, './backend/showCase');
+        cb(null, );
 
     },
     filename: (req, file, cb) => {
