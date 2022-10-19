@@ -7,7 +7,7 @@ export interface ShowCase {
   id?: string;
   Creator?: string;
   showCase?: File;
-  ShowCasePath?: File;
+  ShowCasePath?: string;
   // ShowCasePath?: string;
 }
 
@@ -82,6 +82,7 @@ export class ShowCaseService {
         next: (responseData) => {
           const postId: ShowCase = {
             id: responseData.postId.id,
+            showCase,
             ShowCasePath: responseData.postId.ShowCasePath,
             // ShowCasePath,
             Creator,
