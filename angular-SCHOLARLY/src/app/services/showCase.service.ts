@@ -68,7 +68,7 @@ export class ShowCaseService {
     return this.postsUpdated.asObservable();
   }
   // Adding post
-  addShowCase(showCase: File, Creator: string): any {
+  addShowCase(showCase?: File, Creator?: string): any {
     console.log('unicorns exist', showCase);
     const postData = new FormData();
     postData.append('showCase', showCase);
