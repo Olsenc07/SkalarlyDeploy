@@ -362,7 +362,7 @@ router.post("/showCases",
 if(req.file){req.file,console.log('big tits')}
 if(req.body){req.body,console.log('big tatters')}
 
-    const showCaseImg =  cloudinary.uploader.upload(req.file, 
+    const showCaseImg =  cloudinary.uploader.upload(req.file.path, 
         {folder: 'ShowCase' });
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
