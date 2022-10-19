@@ -364,7 +364,7 @@ if(req.file){req.file,console.log('big tits')}
 if(req.body.showCase){req.body,console.log('big tits_')}
 if(req.body.Creator){req.body,console.log('big tatters')}
 
-    const showCaseImg =  cloudinary.uploader.upload(file, 
+    const showCaseImg =  cloudinary.uploader.upload(req.file, 
         {folder: 'ShowCase' });
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
