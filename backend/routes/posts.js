@@ -354,9 +354,9 @@ router.post("/showCases",
         });
     };
 
-    const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
-        createReadStream(req.file.buffer).pipe(stream),
-        {folder: 'ShowCase' });
+    // const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
+    //     createReadStream(req.file.buffer),
+    //     {folder: 'ShowCase' });
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
         ShowCasePath: streamUpload.secure_url,
