@@ -332,7 +332,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer();
+const show = multer.memoryStorage();
 // showCase additions
 router.post("/showCases", 
     checkAuth,
@@ -352,7 +352,10 @@ router.post("/showCases",
             streamifier.createReadStream(req.file.buffer).pipe(stream);
         });
     };
-  console.log('p.s', streamUpload)
+  
+        let result = streamUpload(req);
+        console.log('howdy jim', result);
+
 //     const showCaseImg =  cloudinary.uploader.upload_stream(streamifier.
 //         createReadStream(req.file.buffer).pipe(stream),
 //         {folder: 'ShowCase' });
