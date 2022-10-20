@@ -359,7 +359,7 @@ async function upload(req) {
     console.log('love',upload(req));
 
 }
-    console.log('hockey', showCaseImg)
+
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
         ShowCasePath: upload(req.url),
