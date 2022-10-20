@@ -24,7 +24,7 @@
       <span class="material-icons _icon" *ngIf="email.invalid">
               school
             </span>
-            <span class="material-icons show" *ngIf="email.valid">
+            <span class="material-icons check" *ngIf="email.valid">
               school
             </span>
             <mat-form-field>
@@ -176,7 +176,7 @@
               <span class="material-icons _icon" *ngIf="emailV.invalid">
                       school
                     </span>
-                    <span class="material-icons show" *ngIf="emailV.valid" >
+                    <span class="material-icons check" *ngIf="emailV.valid" >
                       school
                     </span>
                     <mat-form-field>
@@ -327,7 +327,9 @@
 
           <div class="personalise">
             <div class="input">
-              <i class="material-icons _icon">badge</i>
+              <i class="material-icons _icon" *ngIf="name.invalid">badge</i>
+              <i class="material-icons check" *ngIf="name.valid">badge</i>
+
               <mat-form-field >
                 <input matInput placeholder="Full Name" maxlength="60" [formControl]="name" />
                 <mat-error *ngIf="name.invalid">Please enter your name</mat-error>
@@ -339,7 +341,8 @@
 
 
             <div class="input bd">
-              <i class="material-icons _icon">cake</i>
+              <i class="material-icons _icon" *ngIf="birthday.invalid">cake</i>
+              <i class="material-icons check" *ngIf="birthday.valid">cake</i>
 
               <!-- Birthday picker -->
               <mat-form-field >
@@ -377,7 +380,9 @@
     <!-- Bio -->
  
     <div class="input">
-      <i class="far fa-heart  _icon"></i>
+      <i class="far fa-heart  _icon" *ngIf="bio.invalid"></i>
+      <i class="far fa-heart  check" *ngIf="bio.valid"></i>
+
       <mat-form-field>
 
         <mat-label>Bio</mat-label>
@@ -505,8 +510,9 @@
         <!-- Text Field Major/Minor -->
         <div class="major-layout">
           <div class="input">
-            <span class="fas fa-star _icon">
-    
+            <span class="fas fa-star _icon" *ngIf="major.invalid">
+            </span>
+            <span class="fas fa-star check" *ngIf="major.valid">
             </span>
             <mat-form-field>
               <input class="major" maxlength="50" matInput placeholder="Major (s)" [formControl]="major" />
@@ -524,8 +530,9 @@
           </div>
 
           <div class="input">
-            <span class="fas fa-star-half-alt _icon">
-   
+            <span class="fas fa-star-half-alt _icon" *ngIf="minor.invalid">
+            </span>
+            <span class="fas fa-star-half-alt check" *ngIf="minor.valid">
             </span>
             <mat-form-field>
               <input class="major"  maxlength="50" matInput placeholder="Minor (s)" [formControl]="minor" />
@@ -547,8 +554,9 @@
 
 
           <div class="input">
-            <span class="fas fa-running _icon">
-   
+            <span class="fas fa-running _icon" *ngIf="sport.invalid">
+            </span>
+            <span class="fas fa-running check" *ngIf="sport.valid">
             </span>
             <mat-form-field>
               <input matInput  maxlength="50" placeholder="Do you play a sport?" [formControl]="sport" />
@@ -568,8 +576,9 @@
 
 
           <div class="input_Btm">
-            <span class="fas fa-user-friends _icon">
- 
+            <span class="fas fa-user-friends _icon" *ngIf="club.invalid">
+            </span>
+            <span class="fas fa-user-friends check" *ngIf="club.valid">
             </span>
             <mat-form-field>
               <input class="major" maxlength="50" matInput placeholder="Are you apart of a club? " [formControl]="club" />
