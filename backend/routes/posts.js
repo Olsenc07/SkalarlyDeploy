@@ -342,20 +342,20 @@ router.post("/showCases",
     checkAuth,
     show.single('showCase'),
     (req, res) => {
-    
+        console.log(cloudinary.config());
         console.log('chase', req.file)
 
-img = cloudinary.uploader.upload(req.file.originalname,{folder: 'ShowCase'}
+        const upload = cloudinary.uploader.upload(`https://cloudinary.com/console/c-cae3d1deea5730fae1ea4cc0c06cd3/media_library/search?q=%7B%22searchByFolders%22%3A%5B%22ShowCase%22%5D%7D`+ req.file,{folder: 'ShowCase'}
         );
    
-
+console.log('kyra', upload)
     
 
 
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
-        ShowCasePath: img,
-        cloudinary_id: img,
+        ShowCasePath: upload.api_secret,
+        cloudinary_id: upload,
         Creator: req.userData.userId
     });
  ShowCase.save().then(createdPost => {
