@@ -336,7 +336,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer({storage: storage2, limits});
+const show = multer({ limits});
 // showCase additions
 router.post("/showCases", 
     checkAuth,
