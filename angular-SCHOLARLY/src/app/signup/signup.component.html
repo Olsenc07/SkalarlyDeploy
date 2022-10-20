@@ -185,7 +185,10 @@
                   </div>
                   <div class="twoPassword">
                     <div class="input">
-                      <span class="material-icons _icon">
+                      <span class="material-icons _icon" *ngIf="password.invalid">
+                        lock
+                      </span>
+                      <span class="material-icons _icon check" *ngIf="!password.invalid" matTooltip="Password Requirements Met">
                         lock
                       </span>
                       <mat-form-field class="userName">
@@ -203,9 +206,7 @@
                       <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()"  matTooltip="Hide Password"  >
                         <mat-icon class="material-symbols-sharp" >visibility_off</mat-icon>
                       </button>
-                      <div class="material-icons-sharp check" *ngIf="!password.invalid" matTooltip="Password Requirements Met">
-                        verified
-                      </div>
+            
                     </div>
                    
                   </div>
