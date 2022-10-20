@@ -66,6 +66,9 @@
                 <mat-error *ngIf="password.errors?.noWhiteSpace">White spaces aren't allowed in password</mat-error>
                 <mat-error *ngIf="password.invalid && !password.errors?.noWhiteSpace">Please enter a valid password
                 </mat-error>
+                <span class="material-icons-sharp check" *ngIf="!password.invalid" matTooltip="Password Requirements Met">
+                  verified
+                  </span>
                 <!-- <button mat-button matSuffix mat-icon-button color="primary" aria-label="Clear" type="button"
                   (click)="clearPassword()">
                   <mat-icon>close</mat-icon>
@@ -77,9 +80,7 @@
               <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()" matTooltip="Hide Password" >
                 <mat-icon class="material-symbols-sharp" >visibility_off</mat-icon>
               </button>
-              <span class="material-icons-sharp check" *ngIf="!password.invalid">
-                verified
-                </span>
+              
             </div>
 
           </div>
@@ -194,10 +195,9 @@
                         <mat-error *ngIf="passwordV.errors?.noWhiteSpace">White spaces aren't allowed in password</mat-error>
                         <mat-error *ngIf="passwordV.invalid && !passwordV.errors?.noWhiteSpace">Please enter a valid password
                         </mat-error>
-                        <!-- <button mat-button matSuffix mat-icon-button color="primary" aria-label="Clear" type="button"
-                          (click)="clearPassword()">
-                          <mat-icon>close</mat-icon>
-                        </button> -->
+                        <span class="material-icons-sharp check" *ngIf="!password.invalid" matTooltip="Password Requirements Met">
+                          verified
+                          </span>
                       </mat-form-field>
                       <button mat-icon-button type="button" *ngIf="visible" (click)="toggleVisibilty()"  matTooltip="Show Password" >
                         <mat-icon class="material-symbols-sharp" >visibility</mat-icon>
@@ -205,6 +205,7 @@
                       <button mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()"  matTooltip="Hide Password"  >
                         <mat-icon class="material-symbols-sharp" >visibility_off</mat-icon>
                       </button>
+                     
                     </div>
                    
                   </div>
