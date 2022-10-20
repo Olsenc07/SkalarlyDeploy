@@ -344,7 +344,7 @@ router.post("/showCases",
     (req, res) => {
         let streamUpload = (req) => {
         return new Promise((resolve, reject) => {
-        let stream = cloudinary.uploader.upload({folder: 'ShowCase'}, req.file,
+        let stream = cloudinary.uploader.upload_stream({folder: 'ShowCase'}, req.file,
             (error, result) => {
                 if (result) {
                   resolve(result);
@@ -369,8 +369,8 @@ async function upload(req) {
 upload(req)
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
-        ShowCasePath: upload(req.url),
-        cloudinary_id: upload(req.public_id),
+        ShowCasePath: result,
+        cloudinary_id: result,
         Creator: req.userData.userId
     });
  ShowCase.save().then(createdPost => {
