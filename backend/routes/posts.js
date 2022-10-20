@@ -352,7 +352,7 @@ router.post("/showCases",
                 }
               }
         );
-        streamifier.createReadStream(req.file.Buffer).pipe(stream);
+        streamifier.createReadStream(req.file.buffer).pipe(stream);
     });
 };
 
