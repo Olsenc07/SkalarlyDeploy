@@ -46,6 +46,8 @@ const storage  = multer.diskStorage({
     
 });
 
+const storage2  = multer.memoryStorage();
+
 
 
 // Post recieving
@@ -332,7 +334,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer();
+const show = multer({storage: storage2});
 // showCase additions
 router.post("/showCases", 
     checkAuth,
