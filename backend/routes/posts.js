@@ -343,11 +343,11 @@ router.post("/showCases",
     show.single('showCase'),
     (req, res) => {
     
+        console.log('chase', req.file)
 
-img = cloudinary.uploader.upload( req.file,{folder: 'ShowCase'}
+img = cloudinary.uploader.upload(req.file.url,{folder: 'ShowCase'}
         );
    
-        console.log('chase', img)
 
     
 
