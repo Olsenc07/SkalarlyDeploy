@@ -48,6 +48,7 @@ const storage  = multer.diskStorage({
 });
 
 const storage2  = multer.memoryStorage();
+const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
 
@@ -335,7 +336,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer({storage: storage2});
+const show = multer({storage: storage2, limits});
 // showCase additions
 router.post("/showCases", 
     checkAuth,
@@ -343,7 +344,7 @@ router.post("/showCases",
     (req, res) => {
         let streamUpload = (req) => {
         return new Promise((resolve, reject) => {
-        let stream = cloudinary.uploader.upload_stream(req.file,
+        let stream = cloudinary.uploader.upload_stream({folder: 'ShowCase'}, req.file,
             (error, result) => {
                 if (result) {
                   resolve(result);
@@ -352,7 +353,10 @@ router.post("/showCases",
                 }
               }
         );
-        streamifier.createReadStream(req.file).pipe(stream);
+        console.log('pete', stream)
+        console.log('chase', req.file)
+
+        streamifier.createReadStream(req.file.buffer).pipe(stream);
     });
 };
 
@@ -362,7 +366,7 @@ async function upload(req) {
     console.log('love',upload(req));
 
 }
-
+upload(req)
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
         ShowCasePath: upload(req.url),
