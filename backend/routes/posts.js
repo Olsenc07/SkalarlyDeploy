@@ -340,11 +340,11 @@ router.post("/showCases",
     (req, res) => {
 
     const showCaseImg =  streamifier.createReadStream(req.file.buffer);
-    console.log('hockey', showCaseImg._object)
+    console.log('hockey', showCaseImg)
     cloudinary.uploader.upload_stream(showCaseImg._object)
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
-        ShowCasePath: showCaseImg.secure_url,
+        ShowCasePath: showCaseImg.url,
         cloudinary_id: showCaseImg.public_id,
         Creator: req.userData.userId
     });
