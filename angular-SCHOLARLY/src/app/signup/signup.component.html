@@ -327,8 +327,8 @@
 
           <div class="personalise">
             <div class="input">
-              <i class="material-icons _icon" *ngIf="name.invalid">badge</i>
-              <i class="material-icons check" *ngIf="name.valid">badge</i>
+              <i class="material-icons _icon" *ngIf="!name.value">badge</i>
+              <i class="material-icons check" *ngIf="name.value">badge</i>
 
               <mat-form-field >
                 <input matInput placeholder="Full Name" maxlength="60" [formControl]="name" />
@@ -341,8 +341,8 @@
 
 
             <div class="input bd">
-              <i class="material-icons _icon" *ngIf="birthday.invalid">cake</i>
-              <i class="material-icons check" *ngIf="birthday.valid">cake</i>
+              <i class="material-icons _icon" *ngIf="!birthday.value">cake</i>
+              <i class="material-icons check" *ngIf="birthday.value">cake</i>
 
               <!-- Birthday picker -->
               <mat-form-field >
@@ -380,8 +380,8 @@
     <!-- Bio -->
  
     <div class="input">
-      <i class="far fa-heart  _icon" *ngIf="bio.invalid"></i>
-      <i class="far fa-heart  check" *ngIf="bio.valid"></i>
+      <i class="far fa-heart  _icon" *ngIf="!bio.value"></i>
+      <i class="far fa-heart  check" *ngIf="bio.value"></i>
 
       <mat-form-field>
 
@@ -510,9 +510,9 @@
         <!-- Text Field Major/Minor -->
         <div class="major-layout">
           <div class="input">
-            <span class="fas fa-star _icon" *ngIf="major.invalid">
+            <span class="fas fa-star _icon" *ngIf="!major.value">
             </span>
-            <span class="fas fa-star check" *ngIf="major.valid">
+            <span class="fas fa-star check" *ngIf="major.value">
             </span>
             <mat-form-field>
               <input class="major" maxlength="50" matInput placeholder="Major (s)" [formControl]="major" />
@@ -530,9 +530,9 @@
           </div>
 
           <div class="input">
-            <span class="fas fa-star-half-alt _icon" *ngIf="minor.invalid">
+            <span class="fas fa-star-half-alt _icon" *ngIf="!minor.value">
             </span>
-            <span class="fas fa-star-half-alt check" *ngIf="minor.valid">
+            <span class="fas fa-star-half-alt check" *ngIf="minor.value">
             </span>
             <mat-form-field>
               <input class="major"  maxlength="50" matInput placeholder="Minor (s)" [formControl]="minor" />
@@ -554,9 +554,9 @@
 
 
           <div class="input">
-            <span class="fas fa-running _icon" *ngIf="sport.invalid">
+            <span class="fas fa-running _icon" *ngIf="!sport.value">
             </span>
-            <span class="fas fa-running check" *ngIf="sport.valid">
+            <span class="fas fa-running check" *ngIf="sport.value">
             </span>
             <mat-form-field>
               <input matInput  maxlength="50" placeholder="Do you play a sport?" [formControl]="sport" />
@@ -576,9 +576,9 @@
 
 
           <div class="input_Btm">
-            <span class="fas fa-user-friends _icon" *ngIf="club.invalid">
+            <span class="fas fa-user-friends _icon" *ngIf="!club.value">
             </span>
-            <span class="fas fa-user-friends check" *ngIf="club.valid">
+            <span class="fas fa-user-friends check" *ngIf="club.value">
             </span>
             <mat-form-field>
               <input class="major" maxlength="50" matInput placeholder="Are you apart of a club? " [formControl]="club" />
@@ -602,7 +602,9 @@
 
   <mat-tab  label="Completed Courses" class="courses">
             <div class="input">
-              <i class="material-icons _icon">check</i>
+              <i class="material-icons _icon" *ngIf="!CodeCompleted.value">check</i>
+              <i class="material-icons check" *ngIf="CodeCompleted.value">check</i>
+              
 <!-- 1 -->
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>Completed Course</mat-label>
@@ -625,6 +627,7 @@
 <!-- 2 -->
             <div class="input" *ngIf="CodeCompleted.value" >
               <i class="material-icons _icon">check</i>
+              <i class="material-icons check" *ngIf="CodeCompleted2.valid">check</i>
 
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>Completed Course 2</mat-label>
@@ -645,6 +648,7 @@
 <!-- 3 -->
             <div class="input" *ngIf="CodeCompleted2.value">
               <i class="material-icons _icon">check</i>
+              <i class="material-icons check" *ngIf="CodeCompleted3.valid">check</i>
 
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>Completed Course 3</mat-label>
@@ -666,6 +670,7 @@
 <!-- 4 -->
             <div class="input" *ngIf="CodeCompleted3.value">
               <i class="material-icons _icon">check</i>
+              <i class="material-icons check" *ngIf="CodeCompleted4.valid">check</i>
 
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>Completed Course 4</mat-label>
@@ -688,6 +693,7 @@
 <!-- 5 -->
 <div class="input" *ngIf="CodeCompleted4.value">
   <i class="material-icons _icon">check</i>
+  <i class="material-icons check" *ngIf="CodeCompleted5.valid">check</i>
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>Completed Course 5</mat-label>
@@ -711,6 +717,7 @@
 <!-- 6 -->
 <div class="input" *ngIf="CodeCompleted5.value">
   <i class="material-icons _icon">check</i>
+  <i class="material-icons check" *ngIf="CodeCompleted6.valid">check</i>
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>Completed Course 6</mat-label>
@@ -734,6 +741,7 @@
 <!-- 7 -->
 <div class="input" *ngIf="CodeCompleted6.value">
   <i class="material-icons _icon">check</i>
+  <i class="material-icons check" *ngIf="CodeCompleted7.valid">check</i>
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>Completed Course 7</mat-label>
@@ -758,6 +766,7 @@
 <!-- 8 -->
 <div class="input" *ngIf="CodeCompleted7.value">
   <i class="material-icons _icon">check</i>
+  <i class="material-icons check" *ngIf="CodeCompleted8.valid">check</i>
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>Completed Course 8</mat-label>
@@ -781,6 +790,7 @@
 <!-- 9 -->
 <div class="input" *ngIf="CodeCompleted8.value">
   <i class="material-icons _icon">check</i>
+  <i class="material-icons check" *ngIf="CodeCompleted9.valid">check</i>
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>Completed Course 9</mat-label>
@@ -804,6 +814,7 @@
 <!-- 10 -->
 <div class="input" *ngIf="CodeCompleted9.value">
   <i class="material-icons _icon">check</i>
+  <i class="material-icons check" *ngIf="CodeCompleted10.valid">check</i>
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>Completed Course 10</mat-label>
@@ -826,6 +837,8 @@
 <!-- 11 -->
 <div class="input" *ngIf="CodeCompleted10.value">
   <i class="material-icons _icon">check</i>
+  <i class="material-icons check" *ngIf="CodeCompleted11.valid">check</i>
+
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>Completed Course 11</mat-label>
   <mat-select placeholder="Choose completed course 11" #codeInput [formControl]="CodeCompleted11" >
@@ -848,6 +861,7 @@
 <!-- 12 -->
 <div class="input" *ngIf="CodeCompleted11.value">
 <i class="material-icons _icon">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted12.valid">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>Completed Course 12</mat-label>
@@ -869,6 +883,7 @@
 <!-- 13 -->
 <div class="input" *ngIf="CodeCompleted12.value">
 <i class="material-icons _icon">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted13.valid">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>Completed Course 13</mat-label>
@@ -890,6 +905,7 @@
 <!-- 14 -->
 <div class="input" *ngIf="CodeCompleted13.value">
 <i class="material-icons _icon">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted14.valid">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>Completed Course 14</mat-label>
@@ -912,6 +928,7 @@
 <!-- 15 -->
 <div class="input" *ngIf="CodeCompleted14.value">
 <i class="material-icons _icon">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted15.valid">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>Completed Course 15</mat-label>
@@ -935,6 +952,7 @@
 <!-- 16 -->
 <div class="input" *ngIf="CodeCompleted15.value">
 <i class="material-icons _icon">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted16.valid">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>Completed Course 16</mat-label>
@@ -958,6 +976,7 @@
 <!-- 17 -->
 <div class="input" *ngIf="CodeCompleted16.value">
 <i class="material-icons _icon">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted17.valid">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>Completed Course 17</mat-label>
@@ -982,6 +1001,7 @@
 <!-- 18 -->
 <div class="input" *ngIf="CodeCompleted17.value">
 <i class="material-icons _icon">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted18.valid">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>Completed Course 18</mat-label>
@@ -1004,7 +1024,8 @@
 
 <!-- 19 -->
 <div class="input" *ngIf="CodeCompleted18.value">
-<i class="material-icons _icon">check</i>
+<i class="material-icons _icon" *ngIf="CodeCompleted19.invalid">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted19.valid">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>Completed Course 19</mat-label>
@@ -1027,7 +1048,8 @@
 
 <!-- 20 -->
 <div class="input" *ngIf="CodeCompleted19.value">
-<i class="material-icons _icon">check</i>
+<i class="material-icons _icon" *ngIf="CodeCompleted20.invalid">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted20.valid">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>Completed Course 20</mat-label>
@@ -1049,7 +1071,8 @@
 
 <!-- 21 -->
 <div class="input" *ngIf="CodeCompleted20.value">
-  <i class="material-icons _icon">check</i>
+  <i class="material-icons _icon" *ngIf="CodeCompleted21.invalid">check</i>
+  <i class="material-icons check" *ngIf="CodeCompleted21.valid">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>Completed Course 21</mat-label>

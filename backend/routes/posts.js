@@ -343,21 +343,14 @@ router.post("/showCases",
     show.single('showCase'),
     (req, res) => {
         let streamUpload = (req) => {
-        return new Promise((resolve, reject) => {
-        let stream = cloudinary.uploader.upload_stream({folder: 'ShowCase'}, req.file,
-            (error, result) => {
-                if (result) {
-                  resolve(result);
-                } else {
-                  reject(error);
-                }
-              }
+
+cloudinary.uploader.upload( req.file,{folder: 'ShowCase'}
         );
-        console.log('pete', stream)
+   
         console.log('chase', req.file)
 
-        streamifier.createReadStream(req.file).pipe(stream);
-    });
+    
+
 };
 
  function upload(req) {
