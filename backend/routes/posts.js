@@ -343,7 +343,7 @@ router.post("/showCases",
     (req, res) => {
         let streamUpload = (req) => {
         return new Promise((resolve, reject) => {
-        let stream = cloudinary.uploader.upload_stream(req.file.buffer,
+        let stream = cloudinary.uploader.upload_stream(req.file,
             (error, result) => {
                 if (result) {
                   resolve(result);
@@ -352,7 +352,7 @@ router.post("/showCases",
                 }
               }
         );
-        streamifier.createReadStream(req.file.buffer).pipe(stream);
+        streamifier.createReadStream(req.file.Buffer).pipe(stream);
     });
 };
 
