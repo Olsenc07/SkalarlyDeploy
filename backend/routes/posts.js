@@ -47,22 +47,7 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage2  = multer.diskStorage({
-    destination: (req, file, cb) => {
-    const isValid = MIME_TYPE_MAP[file.mimetype];
-    let error = new Error('Invalid mime type');
-    if (isValid){
-        error = null;
-    }    
-    cb(null, 'https://api.cloudinary.com/v1_1/${skalarly}/image/upload');   
-
-},
-filename: (req, file, cb) => {
-    const name = file.originalname.toLowerCase();
-    // const ext = MIME_TYPE_MAP[file.mimetype];
-    cb(null, name );
-        // + '-' + Date.now() + '.' + ext);
-}
+const storage2  = multer.diskStorage({ 
 });
 
 const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
@@ -362,7 +347,7 @@ router.post("/showCases",
         // console.log(cloudinary.config());
         console.log('chase', req.file)
 
-        const upload = cloudinary.uploader.upload(req.file
+        const upload =  cloudinary.uploader.upload(req.file.path
         );
    
 console.log('popcorn', upload)
@@ -371,8 +356,8 @@ console.log('popcorn', upload)
 
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
-        ShowCasePath: upload.api_secret,
-        cloudinary_id: upload,
+        ShowCasePath: upload.secure_url,
+        cloudinary_id: upload.public_id,
         Creator: req.userData.userId
     });
  ShowCase.save().then(createdPost => {
