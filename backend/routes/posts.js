@@ -332,7 +332,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer();
+const show = multer.memoryStorage();
 // showCase additions
 router.post("/showCases", 
     checkAuth,
