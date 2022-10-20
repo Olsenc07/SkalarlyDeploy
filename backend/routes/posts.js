@@ -43,11 +43,28 @@ const storage  = multer.diskStorage({
         // const ext = MIME_TYPE_MAP[file.mimetype];
         cb(null, name );
             // + '-' + Date.now() + '.' + ext);
-    },
+    }
     
 });
 
-const storage2  = multer.memoryStorage();
+const storage2  = multer.diskStorage({
+    destination: (req, file, cb) => {
+    const isValid = MIME_TYPE_MAP[file.mimetype];
+    let error = new Error('Invalid mime type');
+    if (isValid){
+        error = null;
+    }    
+    cb(null, 'https://api.cloudinary.com/v1_1/${skalarly}/image/upload');   
+
+},
+filename: (req, file, cb) => {
+    const name = file.originalname.toLowerCase();
+    // const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(null, name );
+        // + '-' + Date.now() + '.' + ext);
+}
+});
+
 const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
@@ -345,7 +362,7 @@ router.post("/showCases",
         // console.log(cloudinary.config());
         console.log('chase', req.file)
 
-        const upload = cloudinary.uploader.upload('https://api.cloudinary.com/v1_1/${skalarly}/image/upload',req.file.buffer
+        const upload = cloudinary.uploader.upload(req.file.buffer
         );
    
 console.log('popcorn', upload)
