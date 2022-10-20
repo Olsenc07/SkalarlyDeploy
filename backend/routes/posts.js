@@ -47,7 +47,7 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage2  = multer.memoryStorage();
+const storage2  = multer();
 const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
@@ -356,7 +356,7 @@ router.post("/showCases",
         console.log('pete', stream)
         console.log('chase', req.file)
 
-        streamifier.createReadStream(req.file.buffer).pipe(stream);
+        streamifier.createReadStream(req.file).pipe(stream);
     });
 };
 
