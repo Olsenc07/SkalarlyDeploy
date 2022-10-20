@@ -360,13 +360,13 @@ router.post("/showCases",
     });
 };
 
-async function upload(req) {
-    let result = await streamUpload(req);
+ upload((req) => {
+    let result = streamUpload(req);
     console.log('heart',result);
 
 
-}
-upload(req)
+})
+
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
         ShowCasePath: result,

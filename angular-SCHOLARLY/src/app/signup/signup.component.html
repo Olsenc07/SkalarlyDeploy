@@ -21,7 +21,10 @@
            Login Credentials
           </h2>
           <div class="inputTop">
-      <span class="material-icons _icon">
+      <span class="material-icons _icon" *ngIf="email.invalid">
+              school
+            </span>
+            <span class="material-icons show" *ngIf="email.valid">
               school
             </span>
             <mat-form-field>
@@ -40,7 +43,10 @@
           </div>
 
           <div class="userIn">
-            <span class="material-icons _icon">
+            <span class="material-icons _icon" *ngIf="username.invalid">
+              account_circle
+            </span>
+            <span class="material-icons check" *ngIf="username.valid">
               account_circle
             </span>
             <mat-form-field>
@@ -167,7 +173,10 @@
           
           <div class="log-in-boxPop" fxLayout="column" fxLayoutAlign="center center">
             <div class="inputTop">
-              <span class="material-icons _icon">
+              <span class="material-icons _icon" *ngIf="emailV.invalid">
+                      school
+                    </span>
+                    <span class="material-icons show" *ngIf="emailV.valid" >
                       school
                     </span>
                     <mat-form-field>
