@@ -59,7 +59,7 @@
               <span class="material-icons _icon" *ngIf="password.invalid">
                 lock
               </span>
-              <span class="material-icons check" *ngIf="!password.invalid" matTooltip="Password Requirements Met">
+              <span class="material-icons check" *ngIf="password.valid" matTooltip="Password Requirements Met">
                 lock
               </span>
               <mat-form-field class="userName">
@@ -188,7 +188,7 @@
                       <span class="material-icons _icon" *ngIf="password.invalid">
                         lock
                       </span>
-                      <span class="material-icons check" *ngIf="!password.invalid" matTooltip="Password Requirements Met">
+                      <span class="material-icons check" *ngIf="password.valid" matTooltip="Password Requirements Met">
                         lock
                       </span>
                       <mat-form-field class="userName">
