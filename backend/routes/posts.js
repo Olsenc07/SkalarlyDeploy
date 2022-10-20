@@ -47,7 +47,7 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage2  = multer();
+const storage2  = multer.memoryStorage();
 const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
@@ -336,7 +336,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer({ limits});
+const show = multer({storage:storage2, limits});
 // showCase additions
 router.post("/showCases", 
     checkAuth,
@@ -345,7 +345,8 @@ router.post("/showCases",
         // console.log(cloudinary.config());
         console.log('chase', req.file)
 
-        const upload = cloudinary.uploader.upload('https://api.cloudinary.com/v1_1/${skalarly}/upload'
+        const upload = cloudinary.uploader.upload('https://api.cloudinary.com/v1_1/${skalarly}/image/upload',
+        req.file
         );
    
 console.log('popcorn', upload)
