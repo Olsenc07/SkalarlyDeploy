@@ -345,10 +345,10 @@ router.post("/showCases",
         // console.log(cloudinary.config());
         console.log('chase', req.file)
 
-        const upload = cloudinary.uploader.upload(`https://cloudinary.com`, {folder: 'ShowCase'}
+        const upload = cloudinary.uploader.upload('https://api.cloudinary.com/v1_1/${skalarly}/upload'
         );
    
-console.log('kyra', upload)
+console.log('popcorn', upload)
     
 
 
