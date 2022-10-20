@@ -343,14 +343,14 @@ const show = multer({storage:storage2, limits});
 router.post("/showCases", 
     checkAuth,
     show.single('showCase'),
-    (req, res) => {
+    async(req, res) => {
         // console.log(cloudinary.config());
         console.log('chase', req.file)
 
-        const upload =  cloudinary.uploader.upload(req.file.path
+        const upload = await cloudinary.uploader.upload(req.file.path
         );
    
-console.log('popcorn', upload(req))
+console.log('popcorn', upload)
     
 
 
