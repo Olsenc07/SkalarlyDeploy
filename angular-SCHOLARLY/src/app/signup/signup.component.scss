@@ -176,6 +176,11 @@
   max-width: fit-content;
 }
 .check{
+  display: flex;
+  justify-content: center;
+  margin-right: 1%;
+  font-size: xx-large;
+  flex-direction: column;
   color: green;
 }
 .display {

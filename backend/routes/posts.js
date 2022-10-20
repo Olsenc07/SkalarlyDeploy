@@ -336,7 +336,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer();
+const show = multer({ limits});
 // showCase additions
 router.post("/showCases", 
     checkAuth,
@@ -363,7 +363,6 @@ router.post("/showCases",
 async function upload(req) {
     let result = await streamUpload(req);
     console.log('heart',result);
-    console.log('love',upload(req));
 
 }
 upload(req)
