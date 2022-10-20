@@ -342,28 +342,20 @@ router.post("/showCases",
     checkAuth,
     show.single('showCase'),
     (req, res) => {
-        let streamUpload = (req) => {
+    
 
-cloudinary.uploader.upload( req.file,{folder: 'ShowCase'}
+img = cloudinary.uploader.upload( req.file,{folder: 'ShowCase'}
         );
    
-        console.log('chase', req.file)
+        console.log('chase', img)
 
     
 
-};
 
- function upload(req) {
-    let result =  streamUpload(req);
-    console.log('heart',result);
-
-
-}
-upload(req)
     var ShowCase = new showCase({
         // ShowCasePath: url + '/showCase/' + req.file.filename,
-        ShowCasePath: result,
-        cloudinary_id: result,
+        ShowCasePath: img,
+        cloudinary_id: img,
         Creator: req.userData.userId
     });
  ShowCase.save().then(createdPost => {
