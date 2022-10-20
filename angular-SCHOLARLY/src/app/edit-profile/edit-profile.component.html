@@ -82,7 +82,9 @@
 
 
           <div class="input">
-            <i class="material-icons _icon">badge</i>
+            <i class="material-icons _icon" *ngIf="!name.value">badge</i>
+            <i class="material-icons check" *ngIf="name.value">badge</i>
+
 
             <mat-form-field>
               <mat-label *ngIf="info.name">{{info.name}}</mat-label>
@@ -99,7 +101,9 @@
 
             <div class="input">
               <!-- Birthday picker -->
-              <i class="material-icons _icon">cake</i>
+              <i class="material-icons _icon" *ngIf="!birthday.value">cake</i>
+              <i class="material-icons check"  *ngIf="birthday.value">cake</i>
+
               <mat-form-field >
                 <mat-label *ngIf="info.birthday">{{info.birthday|date:"longDate"}}</mat-label>
               <mat-label *ngIf="!info.birthday">When's your birthday?</mat-label>
@@ -146,7 +150,9 @@
       <!-- Bio -->
   
           <div class="input">
-            <i class="far fa-heart  _icon"></i>
+            <i class="far fa-heart  _icon" *ngIf="!bio.value"></i>
+            <i class="far fa-heart  check" *ngIf="bio.value"></i>
+
             <mat-form-field>
               <mat-label *ngIf="info.bio">{{info.bio}}</mat-label>
               <mat-label *ngIf="!info.bio">Bio</mat-label>
@@ -190,10 +196,10 @@
 <!-- Text Field Major/Minor -->
 <div class="major-layout">
   <div class="input">
-    <span class="fas fa-star _icon">
-    
+    <span class="fas fa-star _icon" *ngIf="!major.value">
     </span>
-
+    <span class="fas fa-star check" *ngIf="major.value">
+    </span>
     <mat-form-field>
 <mat-label *ngIf="info.major">{{info.major}}</mat-label>
 <mat-label *ngIf="!info.major">Major(s)</mat-label>
@@ -212,7 +218,10 @@
   </div>
 
   <div class="input">
-    
+    <span class="fas fa-star-half-alt _icon" *ngIf="!minor.value">
+    </span>
+    <span class="fas fa-star-half-alt check" *ngIf="minor.value">
+    </span>
     <mat-form-field>
 <mat-label *ngIf="info.minor">{{info.minor}}</mat-label>
 <mat-label *ngIf="!info.minor">Minor(s)</mat-label>
@@ -233,8 +242,9 @@
 
 <!-- Text Field Sport/Club -->
 <div class="input">
-  <span class="fas fa-running _icon">
-   
+  <span class="fas fa-running _icon" *ngIf="!sport.value">
+  </span>
+  <span class="fas fa-running check" *ngIf="sport.value">
   </span>
   <mat-form-field>
 <mat-label *ngIf="info.sport">{{info.sport}}</mat-label>
@@ -254,8 +264,9 @@
     </mat-menu>
 </div>
 <div class="input">
-  <span class="fas fa-user-friends _icon">
- 
+  <span class="fas fa-user-friends _icon" *ngIf="!club.value">
+  </span>
+  <span class="fas fa-user-friends check" *ngIf="club.value">
   </span>
   <mat-form-field>
 <mat-label *ngIf="info.club">{{info.club}}</mat-label>

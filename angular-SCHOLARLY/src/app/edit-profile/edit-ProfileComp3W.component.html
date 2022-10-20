@@ -4,7 +4,8 @@
   <div class="centerTitle">Winter Semester <div class="fas fa-snowflake" style="color: #88c4f9;"></div> </div>
     <div *ngFor="let info of infos">
 <div class="input" >
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="CodeCompleted26.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted26.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted26}}</mat-label>
@@ -28,7 +29,8 @@
     
     <!-- 27 -->
     <div class="input" *ngIf="info.CodeCompleted26 || CodeCompleted26.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted27.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted27.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted27}}</mat-label>
@@ -53,7 +55,8 @@
     
     <!-- 28 -->
     <div class="input" *ngIf="info.CodeCompleted27 || CodeCompleted27.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted28.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted28.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted28}}</mat-label>
@@ -77,7 +80,8 @@
     
     <!-- 29 -->
     <div class="input" *ngIf="info.CodeCompleted28 || CodeCompleted28.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted29.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted29.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted29}}</mat-label>
@@ -101,7 +105,8 @@
     
     <!-- 30 -->
     <div class="input" *ngIf="info.CodeCompleted29 || CodeCompleted29.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted30.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted30.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted30}}</mat-label>

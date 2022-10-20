@@ -5,7 +5,8 @@
 
       <div *ngFor="let info of infos">
 <div class="input" >
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted36.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted36.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted36}}</mat-label>
@@ -29,7 +30,8 @@
     
     <!-- 37 -->
     <div class="input" *ngIf="info.CodeCompleted36 || CodeCompleted36.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted37.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted37.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted37}}</mat-label>
@@ -54,7 +56,8 @@
     
     <!-- 38 -->
     <div class="input" *ngIf="info.CodeCompleted37 || CodeCompleted37.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted38.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted38.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted38}}</mat-label>
@@ -78,7 +81,8 @@
     
     <!-- 39 -->
     <div class="input" *ngIf="info.CodeCompleted38 || CodeCompleted38.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted39.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted39.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted39}}</mat-label>
@@ -102,7 +106,8 @@
     
     <!-- 40 -->
     <div class="input" *ngIf="info.CodeCompleted39 || CodeCompleted39.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted40.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted40.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted40}}</mat-label>
@@ -125,7 +130,9 @@
 
     <!-- extras/transfer courses -->
     <div class="input" *ngIf="info.CodeCompleted40 || CodeCompleted40.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompletedX.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompletedX.value">check</i>
+
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompletedX}}</mat-label>
     <textarea matInput placeholder="Extras or Transfer Equivalents"  [formControl]="CodeCompletedX" ></textarea>

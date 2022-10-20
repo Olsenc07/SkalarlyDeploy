@@ -8,7 +8,8 @@
       <!-- 1 -->
   <div *ngFor="let info of infos">
 <div class="input" >
-    <i class="material-icons _icon">checklist</i>
+    <i class="material-icons _icon" *ngIf="!CodePursuing6.value">checklist</i>
+  <i class="material-icons check" *ngIf="CodePursuing6.value">checklist</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodePursuing6}}</mat-label>
@@ -30,7 +31,8 @@
     </div>
     <!-- 7 -->
     <div class="input" *ngIf="info.CodePursuing6 || CodePursuing6.value">
-    <i class="material-icons _icon">checklist</i>
+    <i class="material-icons _icon" *ngIf="!CodePursuing7.value">checklist</i>
+  <i class="material-icons check" *ngIf="CodePursuing7.value">checklist</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodePursuing7}}</mat-label>
@@ -52,7 +54,8 @@
     </div>
     <!-- 8 -->
     <div class="input" *ngIf="info.CodePursuing7 || CodePursuing7.value">
-    <i class="material-icons _icon">checklist</i>
+    <i class="material-icons _icon" *ngIf="!CodePursuing8.value">checklist</i>
+  <i class="material-icons check" *ngIf="CodePursuing8.value">checklist</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodePursuing8}}</mat-label>
@@ -75,7 +78,8 @@
     
     <!-- 9 -->
     <div class="input" *ngIf="info.CodePursuing8 || CodePursuing8.value">
-      <i class="material-icons _icon">checklist</i>
+      <i class="material-icons _icon" *ngIf="!CodePursuing9.value">checklist</i>
+  <i class="material-icons check" *ngIf="CodePursuing9.value">checklist</i>
     
       <mat-form-field class="example-chip-list">
         <mat-label>{{info.CodePursuing9}}</mat-label>
@@ -97,7 +101,8 @@
     </div>
     <!-- 10 -->
     <div class="input" *ngIf="info.CodePursuing9 || CodePursuing9.value">
-    <i class="material-icons _icon">checklist</i>
+    <i class="material-icons _icon" *ngIf="!CodePursuing10.value">checklist</i>
+  <i class="material-icons check" *ngIf="CodePursuing10.value">checklist</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodePursuing10}}</mat-label>

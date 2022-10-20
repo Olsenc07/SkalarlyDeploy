@@ -4,7 +4,9 @@
   <div *ngFor="let info of infos">
     <div class="input" >
       
-      <i class="material-icons _icon">check</i>
+      <i class="material-icons _icon" *ngIf="!CodeCompleted.value">check</i>
+      <i class="material-icons check" *ngIf="CodeCompleted.value">check</i>
+
 <!-- 1 -->
       <mat-form-field class="example-chip-list">
         <mat-label>{{info.CodeCompleted}}</mat-label>
@@ -26,7 +28,9 @@
     </div>
 <!-- 2 -->
     <div class="input" *ngIf="info.CodeCompleted || CodeCompleted.value">
-      <i class="material-icons _icon">check</i>
+      <i class="material-icons _icon" *ngIf="!CodeCompleted2.value">check</i>
+      <i class="material-icons check" *ngIf="CodeCompleted2.value">check</i>
+
 
       <mat-form-field class="example-chip-list">
         <mat-label>{{info.CodeCompleted2}}</mat-label>
@@ -46,7 +50,8 @@
     </div>
 <!-- 3 -->
     <div class="input" *ngIf="info.CodeCompleted2 || CodeCompleted2.value">
-      <i class="material-icons _icon">check</i>
+      <i class="material-icons _icon" *ngIf="!CodeCompleted3.value">check</i>
+      <i class="material-icons check" *ngIf="CodeCompleted3.value">check</i>
 
       <mat-form-field class="example-chip-list">
         <mat-label>{{info.CodeCompleted3}}</mat-label>
@@ -67,7 +72,8 @@
     </div>
 <!-- 4 -->
     <div class="input" *ngIf="info.CodeCompleted3 || CodeCompleted3.value">
-      <i class="material-icons _icon">check</i>
+      <i class="material-icons _icon" *ngIf="!CodeCompleted4.value">check</i>
+      <i class="material-icons check" *ngIf="CodeCompleted4.value">check</i>
 
       <mat-form-field class="example-chip-list">
         <mat-label>{{info.CodeCompleted4}}</mat-label>
@@ -89,7 +95,8 @@
 
 <!-- 5 -->
 <div class="input" *ngIf="info.CodeCompleted4 ||CodeCompleted4.value">
-<i class="material-icons _icon">check</i>
+<i class="material-icons _icon" *ngIf="!CodeCompleted5.value">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted5.value">check</i>
 
 <mat-form-field class="example-chip-list">
 <mat-label>{{info.CodeCompleted5}}</mat-label>

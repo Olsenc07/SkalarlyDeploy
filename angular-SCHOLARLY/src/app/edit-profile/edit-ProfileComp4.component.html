@@ -5,7 +5,9 @@
 
 <div *ngFor="let info of infos">
 <div class="input" >
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted31.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted31.value">check</i>
+
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted31}}</mat-label>
     
@@ -27,7 +29,8 @@
     </div>
     <!-- 32 -->
     <div class="input" *ngIf="info.CodeCompleted31 || CodeCompleted31.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted32.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted32.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted32}}</mat-label>
@@ -49,7 +52,8 @@
     </div>
     <!-- 33 -->
     <div class="input" *ngIf="info.CodeCompleted32 || CodeCompleted32.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted33.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted33.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted33}}</mat-label>
@@ -71,7 +75,8 @@
     </div>
     <!-- 34 -->
     <div class="input" *ngIf="info.CodeCompleted33 || CodeCompleted33.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted34.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted34.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted34}}</mat-label>
@@ -94,7 +99,8 @@
     
     <!-- 35 -->
     <div class="input" *ngIf="info.CodeCompleted34 || CodeCompleted34.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted35.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted35.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted35}}</mat-label>

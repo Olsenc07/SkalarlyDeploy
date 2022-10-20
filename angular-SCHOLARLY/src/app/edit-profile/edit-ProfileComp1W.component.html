@@ -5,7 +5,8 @@
 
       <div *ngFor="let info of infos">
 <div class="input" >
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted6.value">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted6.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted6}}</mat-label>
@@ -29,7 +30,8 @@
     
     <!-- 7 -->
     <div class="input" *ngIf="info.CodeCompleted6 || CodeCompleted6.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted7.value">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted7.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted7}}</mat-label>
@@ -54,7 +56,8 @@
     
     <!-- 8 -->
     <div class="input" *ngIf="info.CodeCompleted7 || CodeCompleted7.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted8.value">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted8.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted8}}</mat-label>
@@ -78,7 +81,8 @@
     
     <!-- 9 -->
     <div class="input" *ngIf="info.CodeCompleted8 || CodeCompleted8.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted9.value">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted9.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted9}}</mat-label>
@@ -102,7 +106,8 @@
     
     <!-- 10 -->
     <div class="input" *ngIf="info.CodeCompleted9 || CodeCompleted9.value">
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted10.value">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted10.value">check</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodeCompleted10}}</mat-label>

@@ -9,7 +9,8 @@
   <div *ngFor="let info of infos">
 
       <div class="input">
-        <i class="material-icons _icon">checklist</i>
+        <i class="material-icons _icon" *ngIf="!CodePursuing.value">checklist</i>
+        <i class="material-icons check" *ngIf="CodePursuing.value">checklist</i>
 
         <mat-form-field class="example-chip-list">
           <mat-label>{{info.CodePursuing}}</mat-label>
@@ -33,7 +34,8 @@
       </div>
 <!-- 2 -->
 <div class="input" *ngIf="info.CodePursuing || CodePursuing.value">
-<i class="material-icons _icon">checklist</i>
+<i class="material-icons _icon" *ngIf="!CodePursuing2.value">checklist</i>
+<i class="material-icons check" *ngIf="CodePursuing2.value">checklist</i>
 
 <mat-form-field class="example-chip-list">
 <mat-label>{{info.CodePursuing2}}</mat-label>
@@ -55,7 +57,8 @@
 </div>
 <!-- 3 -->
 <div class="input" *ngIf="info.CodePursuing2 || CodePursuing2.value">
-<i class="material-icons _icon">checklist</i>
+<i class="material-icons _icon" *ngIf="!CodePursuing3.value">checklist</i>
+<i class="material-icons check" *ngIf="CodePursuing3.value">checklist</i>
 
 <mat-form-field class="example-chip-list">
 <mat-label>{{info.CodePursuing3}}</mat-label>
@@ -77,7 +80,8 @@
 </div>
 <!-- 4 -->
 <div class="input" *ngIf="info.CodePursuing3 || CodePursuing3.value">
-<i class="material-icons _icon">checklist</i>
+<i class="material-icons _icon" *ngIf="!CodePursuing4.value">checklist</i>
+<i class="material-icons check" *ngIf="CodePursuing4.value">checklist</i>
 
 <mat-form-field class="example-chip-list">
 <mat-label>{{info.CodePursuing4}}</mat-label>
@@ -100,7 +104,8 @@
 
 <!-- 5 -->
 <div class="input" *ngIf="info.CodePursuing4 || CodePursuing4.value">
-  <i class="material-icons _icon">checklist</i>
+  <i class="material-icons _icon" *ngIf="!CodePursuing5.value">checklist</i>
+  <i class="material-icons check" *ngIf="CodePursuing5.value">checklist</i>
 
   <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodePursuing5}}</mat-label>

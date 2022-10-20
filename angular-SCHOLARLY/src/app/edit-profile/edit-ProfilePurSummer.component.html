@@ -9,7 +9,8 @@
       <!-- 1 -->
   <div *ngFor="let info of infos">
 <div class="input" >
-    <i class="material-icons _icon">checklist</i>
+    <i class="material-icons _icon" *ngIf="!CodePursuing13.value">checklist</i>
+  <i class="material-icons check" *ngIf="CodePursuing13.value">checklist</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodePursuing13}}</mat-label>
@@ -30,7 +31,8 @@
     </div>
     <!-- 12 -->
     <div class="input" *ngIf="info.CodePursuing13 || CodePursuing13.value">
-    <i class="material-icons _icon">checklist</i>
+    <i class="material-icons _icon" *ngIf="!CodePursuing14.value">checklist</i>
+  <i class="material-icons check" *ngIf="CodePursuing14.value">checklist</i>
     
     <mat-form-field class="example-chip-list">
     <mat-label>{{info.CodePursuing14}}</mat-label>
