@@ -10,7 +10,9 @@ const streamifier = require('streamifier')
 cloudinary.config({ 
     cloud_name: process.env.cloud_name, 
     api_key: process.env.api_key, 
-    api_secret: process.env.api_secret
+    api_secret: process.env.api_secret,
+    // Untag when https
+    // secure: true
   });
 
 const checkAuth = require('/app/backend/middleware/check-auth');
@@ -341,7 +343,7 @@ router.post("/showCases",
     (req, res) => {
         let streamUpload = (req) => {
         return new Promise((resolve, reject) => {
-        let stream = cloudinary.uploader.upload_stream(
+        let stream = cloudinary.uploader.upload_stream(req.file.buffer,
             (error, result) => {
                 if (result) {
                   resolve(result);

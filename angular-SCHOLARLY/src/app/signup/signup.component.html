@@ -581,7 +581,7 @@
             <div class="input">
               <i class="material-icons _icon">check</i>
 <!-- 1 -->
-              <mat-form-field class="example-chip-list">
+              <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>Completed Course</mat-label>
                 <mat-select  placeholder="Choose completed course"
                  #codeInput [formControl]="CodeCompleted" >
@@ -600,7 +600,7 @@
               </mat-form-field>
             </div>
 <!-- 2 -->
-            <div class="input" *ngIf="CodeCompleted.value">
+            <div class="input" *ngIf="CodeCompleted.value" appearance="fill">
               <i class="material-icons _icon">check</i>
 
               <mat-form-field class="example-chip-list">
