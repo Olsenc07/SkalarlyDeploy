@@ -345,7 +345,7 @@ router.post("/showCases",
     
         console.log('chase', req.file)
 
-img = cloudinary.uploader.upload(req.file.url,{folder: 'ShowCase'}
+img = cloudinary.uploader.upload(req.file.originalname,{folder: 'ShowCase'}
         );
    
 
