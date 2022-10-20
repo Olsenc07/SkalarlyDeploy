@@ -345,7 +345,7 @@ router.post("/showCases",
         // console.log(cloudinary.config());
         console.log('chase', req.file)
 
-        const upload = cloudinary.uploader.upload(req.file,'https://api.cloudinary.com/v1_1/${skalarly}/image/upload'
+        const upload = cloudinary.uploader.upload('https://api.cloudinary.com/v1_1/${skalarly}/image/upload',req.file.buffer
         );
    
 console.log('popcorn', upload)
