@@ -332,7 +332,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer.memoryStorage();
+const show = multer;
 // showCase additions
 router.post("/showCases", 
     checkAuth,
@@ -349,7 +349,7 @@ router.post("/showCases",
                 }
               }
         )
-        streamifier.createReadStream(req.file.buffer).pipe(stream);
+        streamifier.createReadStream(req.file).pipe(stream);
     });
 };
 
