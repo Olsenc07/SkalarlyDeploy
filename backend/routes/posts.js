@@ -169,7 +169,13 @@ router.post("",
 });
 
 // Posts deleting
-router.delete("/:id", checkAuth, (req, res, next ) => {
+router.delete("/:id", checkAuth, async(req, res, next ) => {
+   await Creator.findOne({Creator: req.params.id})
+   .then(result => {
+    cloudinary.uploader.destroy(result.cloudinary_id)
+    .then(console.log());
+
+})
     Post.deleteOne({_id: req.params.id}).then(result => {
         if (result){
         res.status(200).json({message: 'Post deleted!!'});
@@ -363,7 +369,13 @@ router.post("/showCases",
 });
 
 // showCase deleting
-router.delete("/showCases/:id", checkAuth, (req, res, next ) => {
+router.delete("/showCases/:id", checkAuth, async(req, res, next ) => {
+   await showCase.findOne({Creator: req.params.id})
+   .then(result => {
+        cloudinary.uploader.destroy(result.cloudinary_id)
+        .then(console.log('it worked'));
+
+    })
     showCase.deleteOne({_id: req.params.id}).then(result => {
         if (result){
         res.status(200).json({message: 'showCase deleted!!'});

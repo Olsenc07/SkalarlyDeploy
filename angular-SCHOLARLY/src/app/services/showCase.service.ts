@@ -109,6 +109,9 @@ export class ShowCaseService {
         );
         this.showCases = updatedPosts;
         this.postsUpdated.next([...this.showCases]);
+        this.snackBar.open('Your showcase deleted!', 'Cool!', {
+          duration: 3000,
+        });
       });
   }
 }

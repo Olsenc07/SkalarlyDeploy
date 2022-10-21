@@ -282,9 +282,6 @@ router.post('/reset-password', async (req, res, next) => {
 })
 
 
-
-
-
 // User info
 const pic = multer({ storage: storage, limits })
 router.post("/info", checkAuth,
@@ -401,7 +398,7 @@ router.post("/infoEd", checkAuth,
                      await cloudinary.uploader.upload(req.file.path, {
                     folder:'ProfilePics'
                  }).then(result => {
-                     UserInfo.updateOne({Creator:req.query.userId },{ProfilePicPath: result.secure_url,})
+                     UserInfo.updateOne({Creator:req.query.userId },{ProfilePicPath: result.secure_url}, {cloudinary_id: result.public_id})
                 })
             }
              if(req.body.name){
