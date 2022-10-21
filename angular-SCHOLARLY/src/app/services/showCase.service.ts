@@ -109,7 +109,7 @@ export class ShowCaseService {
         );
         this.showCases = updatedPosts;
         this.postsUpdated.next([...this.showCases]);
-        this.snackBar.open('Your showcase deleted!', 'Cool!', {
+        this.snackBar.open('Your showcase deleted!', 'Thanks!', {
           duration: 3000,
         });
       });

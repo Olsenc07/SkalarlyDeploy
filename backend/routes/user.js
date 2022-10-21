@@ -287,7 +287,6 @@ const pic = multer({ storage: storage, limits })
 router.post("/info", checkAuth,
     pic.single('profilePic'),
     async(req, res, next) => {
- if(req.file){
         await cloudinary.uploader.upload(req.file.path, {
             folder:'ProfilePics'
          }).then(result => {
@@ -366,12 +365,6 @@ router.post("/info", checkAuth,
 
 
         });
-    })
-    }else {
-        res.status(500).json({
-            message: req.file.filename
-        });
-    }
         info.save().then(result => {
             res.status(201).json({
                 message: 'Yay a user added info',
@@ -386,6 +379,7 @@ router.post("/info", checkAuth,
                     message: 'Unable to add information'
                 });
             });
+    })
     });
 
 
@@ -393,7 +387,7 @@ router.post("/info", checkAuth,
 const pic_ = multer({ storage: storage, limits })
 router.post("/infoEd", checkAuth,
     pic_.single('profilePic'),
-    async (req, res, next) => {
+    async(req, res, next) => {
                 if(req.file){
                      await cloudinary.uploader.upload(req.file.path, {
                     folder:'ProfilePics'
