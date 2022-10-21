@@ -356,9 +356,9 @@ router.post("/showCases",
     show.single('showCase'),
     async(req, res) => {
         // console.log(cloudinary.config());
-        console.log('chase', req.files)
+        console.log('chase', req.file)
 
-        const upload = await cloudinary.uploader.upload(req.file.buffer, {
+        const upload = await cloudinary.uploader.upload(req.file, {
            folder:'ShowCase',
            
         })
