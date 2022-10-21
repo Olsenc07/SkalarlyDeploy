@@ -288,6 +288,7 @@ router.post("/info",
     checkAuth,
     pic.single('profilePic'),
     async(req, res) => {
+        if(req.files){ console.log('hey',req.files)}
         await cloudinary.uploader.upload(req.file.path, {
             folder:'ProfilePics'
          })

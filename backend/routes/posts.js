@@ -334,19 +334,18 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer({storage:storage, limits});
 // showCase additions
+const show = multer({storage:storage, limits});
 router.post("/showCases", 
     checkAuth,
     show.single('showCase'),
     async(req, res) => {
+        
         await cloudinary.uploader.upload(req.file.path, {
            folder:'ShowCase'
         })
         .then(result => {
-            console.log(result);
             var ShowCase = new showCase({
-                // ShowCasePath: url + '/showCase/' + req.file.filename,
                 ShowCasePath: result.secure_url,
                 cloudinary_id: result.public_id,
                 Creator: req.userData.userId
