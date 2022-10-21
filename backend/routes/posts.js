@@ -48,14 +48,7 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage2  = multer.diskStorage({   
-    filename: (req, file, cb) => {
-    const name = file.originalname.toLowerCase();
-    // const ext = MIME_TYPE_MAP[file.mimetype];
-    cb(null, name );
-        // + '-' + Date.now() + '.' + ext);
-    }
-});
+const storage2  = multer();
 const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
@@ -354,35 +347,31 @@ router.post("/showCases",
         console.log('chase', req.file)
 
         const upload = await cloudinary.uploader.upload(req.file.path, {
-           folder:'ShowCase',
-           
+           folder:'ShowCase'
         })
-        .then(result=>console.log(result));;
-   
-console.log('popcorn', upload)
-    
-
-
-    var ShowCase = new showCase({
-        // ShowCasePath: url + '/showCase/' + req.file.filename,
-        ShowCasePath: upload.secure_url,
-        cloudinary_id: upload.public_id,
-        Creator: req.userData.userId
-    });
- ShowCase.save().then(createdPost => {
-        res.status(201).json({
-            message: 'showCase added successfully',
-            postId: {
-                id: createdPost._id,
-                ...createdPost
-            } 
-        });
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Creating a showCase failed!'
-        });
-    });
+        .then(result => {
+            console.log(result);
+            var ShowCase = new showCase({
+                // ShowCasePath: url + '/showCase/' + req.file.filename,
+                ShowCasePath: result.secure_url,
+                cloudinary_id: result.public_id,
+                Creator: req.userData.userId
+            });
+         ShowCase.save().then(createdPost => {
+                res.status(201).json({
+                    message: 'showCase added successfully',
+                    postId: {
+                        id: createdPost._id,
+                        ...createdPost
+                    } 
+                });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Creating a showCase failed!'
+                });
+            });
+        } );
 });
 
 // showCase deleting
