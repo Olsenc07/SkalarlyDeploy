@@ -393,17 +393,17 @@ router.post("/info", checkAuth,
 
 
 // edit info
-const pic_ = multer({ storage: storage })
+const pic_ = multer({ storage: storage, limits })
 router.post("/infoEd", checkAuth,
     pic_.single('profilePic'),
     async (req, res, next) => {
-        const url = req.protocol + '://' + req.get('host');
-        let username
-        let fetchedUser;
-  
                 if(req.file){
-                    await UserInfo.updateOne({Creator:req.query.userId },{ProfilePicPath: url + '/profilePics/' + req.file.filename})
-                }
+                     await cloudinary.uploader.upload(req.file.path, {
+                    folder:'ProfilePics'
+                 }).then(result => {
+                     UserInfo.updateOne({Creator:req.query.userId },{ProfilePicPath: result.secure_url,})
+                })
+            }
              if(req.body.name){
                      await UserInfo.updateOne({Creator:req.query.userId },{name: req.body.name})
                  }
