@@ -48,19 +48,7 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage2  = multer.memoryStorage({
-    // destination: (req, file, cb) => {
-    //     const isValid = MIME_TYPE_MAP[file.mimetype];
-    //     let error = new Error('Invalid mime type');
-    //     if (isValid){
-    //         error = null;
-    //     }    
-    //     cb(null,'https://api.cloudinary.com/v1_1/skalarly/image/upload'
-    //     );   
-  
-    // },
-});
-
+const storage2  = multer.diskStorage()
 const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
@@ -358,7 +346,7 @@ router.post("/showCases",
         // console.log(cloudinary.config());
         console.log('chase', req.file)
 
-        const upload = await cloudinary.uploader.upload(req.file, {
+        const upload = await cloudinary.uploader.upload(req.file.path, {
            folder:'ShowCase',
            
         })
