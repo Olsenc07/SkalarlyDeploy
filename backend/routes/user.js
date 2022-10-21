@@ -43,7 +43,15 @@ const MIME_TYPE_MAP = {
 };
 
 
-const storage = multer.diskStorage();
+const storage = multer.diskStorage({   
+    filename: (req, file, cb) => {
+    const name = file.originalname.toLowerCase();
+    // const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(null, name );
+        // + '-' + Date.now() + '.' + ext);
+    }
+});
+const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
 
@@ -278,13 +286,14 @@ router.post('/reset-password', async (req, res, next) => {
 
 
 // User info
-const pic = multer({ storage: storage })
+const pic = multer({ storage: storage, limits })
 router.post("/info", checkAuth,
     pic.single('profilePic'),
-    (req, res, next) => {
-        const url = req.protocol + '://' + req.get('host');
-        console.log('hey chaz hows football', req.file.filename)
- if(req.file.filename){
+    async(req, res, next) => {
+ if(req.file){
+        await cloudinary.uploader.upload(req.file.path, {
+            folder:'ProfilePics'
+         }).then(result => {
         var info = new UserInfo({
             username: req.body.username,
             name: req.body.name,
@@ -351,7 +360,8 @@ router.post("/info", checkAuth,
             CodePursuing11: req.body.CodePursuing11,
             CodePursuing12: req.body.CodePursuing12,
 
-            ProfilePicPath: url + '/profilePics/' + req.file.filename,
+            ProfilePicPath: result.secure_url,
+            cloudinary_id: result.public_id,
             // ShowCasePath: url + '/profilePics/' + req.files['showCase'][0].filename,
             followers: null,
             following: null,
@@ -359,6 +369,7 @@ router.post("/info", checkAuth,
 
 
         });
+    })
     }else {
         res.status(500).json({
             message: req.file.filename

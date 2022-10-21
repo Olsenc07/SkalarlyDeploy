@@ -70,6 +70,7 @@ const userInfoSchema = mongoose.Schema({
     CodePursuing13: { type: String},
     CodePursuing14: { type: String},
     ProfilePicPath: { type: String},
+    cloudinary_id: { type: String},
     // ShowCasePath: { type: String},
     followers: { type: Array},
     followings: { type: Array},

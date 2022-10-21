@@ -350,9 +350,6 @@ router.post("/showCases",
     checkAuth,
     show.single('showCase'),
     async(req, res) => {
-        // console.log(cloudinary.config());
-        console.log('chase', req.file)
-
         const upload = await cloudinary.uploader.upload(req.file.path, {
            folder:'ShowCase'
         })
@@ -360,8 +357,8 @@ router.post("/showCases",
             console.log(result);
             var ShowCase = new showCase({
                 // ShowCasePath: url + '/showCase/' + req.file.filename,
-                ShowCasePath: result.secure_url,
-                cloudinary_id: result.public_id,
+                ShowCasePath: upload.secure_url,
+                cloudinary_id: upload.public_id,
                 Creator: req.userData.userId
             });
          ShowCase.save().then(createdPost => {
@@ -378,7 +375,13 @@ router.post("/showCases",
                     message: 'Creating a showCase failed!'
                 });
             });
-        } );
+        });
+   
+console.log('popcorn', upload)
+    
+
+
+  
 });
 
 // showCase deleting
