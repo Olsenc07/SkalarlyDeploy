@@ -19,6 +19,7 @@ const postSchema = mongoose.Schema({
     virtual: { type: String},
     event: { type: String},
     ImagePath: { type:String},
+    cloudinary_id: { type:String},
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 

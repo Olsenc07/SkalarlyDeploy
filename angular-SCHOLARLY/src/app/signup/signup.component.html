@@ -862,8 +862,8 @@
 </div>
 <!-- 12 -->
 <div class="input" *ngIf="CodeCompleted11.value">
-<i class="material-icons _icon">check</i>
-<i class="material-icons check" *ngIf="CodeCompleted12.valid">check</i>
+<i class="material-icons _icon" *ngIf="!CodeCompleted12.value">check</i>
+<i class="material-icons check" *ngIf="CodeCompleted12.value">check</i>
 
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>Completed Course 12</mat-label>
@@ -1582,7 +1582,7 @@
             </div>
 <!-- 2 -->
 <div class="input" *ngIf="CodePursuing.value">
-  <i class="material-icons _icon" *ngIf="CodePursuing2.value">checklist</i>
+  <i class="material-icons _icon" *ngIf="!CodePursuing2.value">checklist</i>
   <i class="material-icons check" *ngIf="CodePursuing2.value">checklist</i>
 
   <mat-form-field class="example-chip-list" appearance="fill">
@@ -1604,7 +1604,7 @@
 </div>
 <!-- 3 -->
 <div class="input" *ngIf="CodePursuing2.value">
-  <i class="material-icons _icon" *ngIf="CodePursuing3.value">checklist</i>
+  <i class="material-icons _icon" *ngIf="!CodePursuing3.value">checklist</i>
   <i class="material-icons check" *ngIf="CodePursuing3.value">checklist</i>
 
   <mat-form-field class="example-chip-list" appearance="fill">

@@ -27,28 +27,7 @@ const MIME_TYPE_MAP ={
     'image/jpg': 'jpg',
 };
 
-
-
-const storage  = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const isValid = MIME_TYPE_MAP[file.mimetype];
-        let error = new Error('Invalid mime type');
-        if (isValid){
-            error = null;
-        }    
-        cb(null, './backend/posts');   
-  
-    },
-    filename: (req, file, cb) => {
-        const name = file.originalname.toLowerCase();
-        // const ext = MIME_TYPE_MAP[file.mimetype];
-        cb(null, name );
-            // + '-' + Date.now() + '.' + ext);
-    }
-    
-});
-
-const storage2  = multer.diskStorage({   
+const storage  = multer.diskStorage({   
     filename: (req, file, cb) => {
     const name = file.originalname.toLowerCase();
     // const ext = MIME_TYPE_MAP[file.mimetype];
@@ -110,17 +89,20 @@ router.get("/personal", async(req, res, next) => {
     });
 
 });
-const up = multer({ storage: storage})
+const up = multer({ storage: storage, limits})
 // Post additions
 router.post("", 
     checkAuth,
     up.single('upload'),
-    (req, res) => {
-    const url = req.protocol + '://' + req.get('host');
-
+    async(req, res) => {
+     
     UserInfo.findOne({Creator:req.query.userId })
     .then(documents => {
         if (req.file){
+             cloudinary.uploader.upload(req.file.path, {
+                folder:'Posts'
+             })
+             .then(result => {
             // up.single('upload')
             var post = new Post({
                 Username: documents.username,
@@ -140,9 +122,11 @@ router.post("",
                 nopaymentService: req.body.nopaymentService,
                 virtual: req.body.virtual,
                 event: req.body.event,
-                ImagePath: url + '/posts/' + req.file.filename,
+                ImagePath: result.secure_url,
+                cloudinary_id: result.public_id,
                 Creator: req.userData.userId
             });
+             })
         }else{
             var post = new Post({
                 Username: documents.username,
@@ -344,7 +328,7 @@ router.get("/showCasesPersonal", async(req, res, next) => {
         });
     });
 });
-const show = multer({storage:storage2, limits});
+const show = multer({storage:storage, limits});
 // showCase additions
 router.post("/showCases", 
     checkAuth,
