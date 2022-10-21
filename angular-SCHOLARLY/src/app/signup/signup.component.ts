@@ -391,7 +391,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   uploadFileP(): any {
-    document.getElementById('fileInputP').click();
+    document.getElementById('profilePic').click();
   }
   uploadFile(): any {
     document.getElementById('showCase').click();
