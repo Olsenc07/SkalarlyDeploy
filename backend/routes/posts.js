@@ -48,7 +48,7 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage2  = multer.diskStorage({
+const storage2  = multer.memoryStorage({
     // destination: (req, file, cb) => {
     //     const isValid = MIME_TYPE_MAP[file.mimetype];
     //     let error = new Error('Invalid mime type');
@@ -356,9 +356,12 @@ router.post("/showCases",
     show.single('showCase'),
     async(req, res) => {
         // console.log(cloudinary.config());
-        console.log('chase', req.file)
+        console.log('chase', req.files)
 
-        const upload = await cloudinary.uploader.upload( req.file.path)
+        const upload = await cloudinary.uploader.upload(req.file.buffer, {
+           folder:'ShowCase',
+           
+        })
         .then(result=>console.log(result));;
    
 console.log('popcorn', upload)
