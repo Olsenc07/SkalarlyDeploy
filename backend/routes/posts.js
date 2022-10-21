@@ -353,7 +353,7 @@ router.post("/showCases",
         // console.log(cloudinary.config());
         console.log('chase', req.file)
 
-        const upload = await cloudinary.uploader.upload('https://api.cloudinary.com/v1_1/${skalarly}/upload',req.file, {
+        const upload = await cloudinary.uploader.upload(req.file.destination, {
            folder:'ShowCase'
         })
         .then(result=>console.log(result));;
