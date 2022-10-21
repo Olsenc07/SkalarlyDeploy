@@ -19,8 +19,6 @@ export class AuthService {
   private userId: string;
   private postId: string;
 
-  private otheruserId: string;
-
   private authStatusListener = new ReplaySubject<boolean>();
 
   private infos: AuthDataInfo[] = [];

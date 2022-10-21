@@ -335,12 +335,12 @@ router.get("/showCasesPersonal", async(req, res, next) => {
     });
 });
 // showCase additions
-const show = multer({storage:storage, limits});
+const show = multer({ storage: storage, limits});
 router.post("/showCases", 
     checkAuth,
     show.single('showCase'),
     async(req, res) => {
-        
+
         await cloudinary.uploader.upload(req.file.path, {
            folder:'ShowCase'
         })
