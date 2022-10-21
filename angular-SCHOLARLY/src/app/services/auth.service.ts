@@ -140,7 +140,6 @@ export class AuthService {
     followers: string,
     followings: string,
     profilePic?: File,
-    // showCase?: File,
     Creator?: string
   ): any {
     const authDataInfo: AuthDataInfo = {
@@ -285,6 +284,7 @@ export class AuthService {
     // userData.append('showCase', showCase);
     userData.append('followers', followers);
     userData.append('followings', followings);
+    userData.append('Creator', Creator);
 
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
@@ -359,14 +359,13 @@ export class AuthService {
             CodePursuing10,
             CodePursuing11,
             CodePursuing12,
-
-            followers,
-            followings,
-            ProfilePicPath: responseData.post.ProfilePicPath,
-            // ShowCasePath: responseData.post.ShowCasePath,
-            Creator,
             CodePursuing13: '',
             CodePursuing14: '',
+            followers,
+            followings,
+            profilePic,
+            ProfilePicPath: responseData.post.ProfilePicPath,
+            Creator,
           };
           this.router.navigate(['/search']);
           this.infos.push(post);

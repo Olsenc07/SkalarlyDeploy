@@ -286,7 +286,7 @@ router.post('/reset-password', async (req, res, next) => {
 const pic = multer({ storage: storage, limits })
 router.post("/info", checkAuth,
     pic.single('profilePic'),
-    async(req, res, next) => {
+    async(req, res) => {
         await cloudinary.uploader.upload(req.file.path, {
             folder:'ProfilePics'
          }).then(result => {
