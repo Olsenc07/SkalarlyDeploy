@@ -284,12 +284,14 @@ router.post('/reset-password', async (req, res, next) => {
 
 // User info
 const pic = multer({ storage: storage, limits })
-router.post("/info", checkAuth,
+router.post("/info", 
+    checkAuth,
     pic.single('profilePic'),
     async(req, res) => {
         await cloudinary.uploader.upload(req.file.path, {
             folder:'ProfilePics'
-         }).then(result => {
+         })
+         .then(result => {
         var info = new UserInfo({
             username: req.body.username,
             name: req.body.name,
@@ -361,9 +363,7 @@ router.post("/info", checkAuth,
             // ShowCasePath: url + '/profilePics/' + req.files['showCase'][0].filename,
             followers: null,
             following: null,
-            Creator: req.userData.userId,
-
-
+            Creator: req.userData.userId
         });
         info.save().then(result => {
             res.status(201).json({
@@ -384,7 +384,7 @@ router.post("/info", checkAuth,
 
 
 // edit info
-const pic_ = multer({ storage: storage, limits })
+const pic_ = multer({ storage: storage, limits})
 router.post("/infoEd", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {

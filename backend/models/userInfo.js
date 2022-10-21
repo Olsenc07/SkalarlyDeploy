@@ -71,8 +71,6 @@ const userInfoSchema = mongoose.Schema({
     CodePursuing14: { type: String},
     ProfilePicPath: { type: String},
     cloudinary_id: { type: String},
-    followers: { type: Array},
-    followings: { type: Array},
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
 
  });

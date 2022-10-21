@@ -662,9 +662,6 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.CodePursuing10.value,
       this.CodePursuing11.value,
       this.CodePursuing12.value,
-
-      this.followers.value,
-      this.followings.value,
       this.form.get('profilePic').value
     );
   }
