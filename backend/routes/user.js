@@ -392,7 +392,8 @@ router.post("/infoEd", checkAuth,
                      await cloudinary.uploader.upload(req.file.path, {
                     folder:'ProfilePics'
                  }).then(result => {
-                     UserInfo.updateOne({Creator:req.query.userId },{ProfilePicPath: result.secure_url}, {cloudinary_id: result.public_id})
+                     UserInfo.updateOne({Creator:req.query.userId },
+                        [{ProfilePicPath: result.secure_url}, {cloudinary_id: result.public_id}])
                 })
             }
              if(req.body.name){
