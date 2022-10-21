@@ -48,7 +48,14 @@ const storage  = multer.diskStorage({
     
 });
 
-const storage2  = multer.diskStorage();
+const storage2  = multer.diskStorage({   
+    filename: (req, file, cb) => {
+    const name = file.originalname.toLowerCase();
+    // const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(null, name );
+        // + '-' + Date.now() + '.' + ext);
+    }
+});
 const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
@@ -343,6 +350,9 @@ router.post("/showCases",
     checkAuth,
     show.single('showCase'),
     async(req, res) => {
+        // console.log(cloudinary.config());
+        console.log('chase', req.file)
+
         const upload = await cloudinary.uploader.upload(req.file.path, {
            folder:'ShowCase'
         })

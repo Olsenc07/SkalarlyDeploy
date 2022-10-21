@@ -8,7 +8,15 @@ const nodemailer = require('nodemailer');
 const checkAuth = require('/app/backend/middleware/check-auth');
 const User = require('/app/backend/models/user');
 const UserInfo = require('/app/backend/models/userInfo');
-
+const cloudinary = require('cloudinary').v2
+// cloudinary
+cloudinary.config({ 
+    cloud_name: process.env.cloud_name, 
+    api_key: process.env.api_key, 
+    api_secret: process.env.api_secret,
+    // Untag when https
+    // secure: true
+  });
 
 
 
@@ -35,27 +43,7 @@ const MIME_TYPE_MAP = {
 };
 
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        const isValid = MIME_TYPE_MAP[file.mimetype];
-        let error = new Error('Invalid mime type');
-        if (isValid) {
-            error = null;
-        }
-        cb(null, './backend/profilePics');
-
-    },
-    filename: (req, file, cb) => {
-        if (file) {
-            const name = file.originalname.toLowerCase();
-            // const ext = MIME_TYPE_MAP[file.mimetype];
-            cb(null, name)
-            // + '-' + Date.now() + '.' + ext);
-        } else {
-            console.log('No profile pic')
-        }
-    },
-});
+const storage = multer.diskStorage();
 
 
 
