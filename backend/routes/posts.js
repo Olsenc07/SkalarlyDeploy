@@ -170,7 +170,7 @@ router.post("",
 
 // Posts deleting
 router.delete("/:id", checkAuth, async(req, res, next ) => {
-   await Creator.findOne({Creator: req.params.id})
+   await Post.findOne({Creator: req.params.id})
    .then(result => {
     cloudinary.uploader.destroy(result.cloudinary_id)
     .then(console.log());
