@@ -337,6 +337,7 @@ export class SignupComponent implements OnInit, OnDestroy {
 
     // if (event.target.files && event.target.files[0]) {
     const reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
     reader.onload = () => {
       this.url = reader.result as string;
     };

@@ -279,8 +279,10 @@
                           add_a_photo
                         </div>
                       </button>
-                      <input #fileInputP id="fileInputP" class="hide" type="file" accept=".png, .jpg, .jpeg .JPG"
+                      <form enctype="multipart/form-data">
+                      <input #fileInputP id="fileInputP" class="hide" type="file" accept=".png, .jpg, .jpeg"
                         (change)="imagePreviewP($event)" name='profilePic'>
+                      </form>
                     </div>
                   </div>
                   <!-- class="cropper" [ngClass]="profilePic.value ? 'show' : 'hide' " -->
