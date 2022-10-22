@@ -135,7 +135,7 @@ export class AuthService {
     CodePursuing10: string,
     CodePursuing11: string,
     CodePursuing12: string,
-    profilePic?: File,
+    profilePic: File,
     Creator?: string
   ): any {
     const userData = new FormData();

@@ -51,6 +51,14 @@ const storage = multer.diskStorage({
         // + '-' + Date.now() + '.' + ext);
     }
 });
+const storage2 = multer.diskStorage({   
+    filename: (req, file, cb) => {
+    const name = file.originalname.toLowerCase();
+    // const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(null, name );
+        // + '-' + Date.now() + '.' + ext);
+    }
+});
 const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
@@ -365,8 +373,6 @@ router.post("/info",
             ProfilePicPath: result.secure_url,
             cloudinary_id: result.public_id,
             // ShowCasePath: url + '/profilePics/' + req.files['showCase'][0].filename,
-            followers: null,
-            following: null,
             Creator: req.userData.userId
         });
         info.save().then(result => {
@@ -388,7 +394,7 @@ router.post("/info",
 
 
 // edit info
-const pic_ = multer({ storage: storage, limits})
+const pic_ = multer({ storage: storage2, limits})
 router.post("/infoEd", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {
