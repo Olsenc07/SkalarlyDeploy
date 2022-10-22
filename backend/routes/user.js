@@ -365,7 +365,8 @@ router.post("/info",
             CodePursuing10: req.body.CodePursuing10,
             CodePursuing11: req.body.CodePursuing11,
             CodePursuing12: req.body.CodePursuing12,
-        
+            CodePursuing13: req.body.CodePursuing13,
+            CodePursuing14: req.body.CodePursuing14,
             ProfilePicPath: result.secure_url,
             cloudinary_id: result.public_id,
             Creator: req.userData.userId
