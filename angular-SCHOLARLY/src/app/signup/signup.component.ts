@@ -327,7 +327,7 @@ export class SignupComponent implements OnInit {
   // Profile Pic
   imagePreviewP(event: any): void {
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ profilePic: file });
+    this.profilePic.setValue(file);
     // this.form.patchValue({ image: file });
     this.profilePic.updateValueAndValidity();
 
