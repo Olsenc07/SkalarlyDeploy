@@ -115,7 +115,7 @@ export class SignupComponent implements OnInit {
   ];
 
   // profile Picture preview display
-  url: any = '';
+  url: string;
 
   MatIconModule: any;
   cropImgPreview: any = '';
@@ -329,14 +329,13 @@ export class SignupComponent implements OnInit {
   imagePreviewP(event: any): void {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ profilePic: file });
-    // this.form.patchValue({ image: file });
     this.form.get('profilePic').updateValueAndValidity();
 
     // if (event.target.files && event.target.files[0]) {
     const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (Event: any) => {
-      this.url = Event.target.result;
+      this.url = reader.result as string;
     };
     // reader.onload = (Event: any) => { // called once readAsDataURL is completed
     // console.log(Event);
