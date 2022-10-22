@@ -268,7 +268,7 @@
                         <div class="required">Required</div> 
                       </div>
                       <button  matTooltip="Clear Image" 
-                      mat-icon-button *ngIf="form.get('profilePic').value " (click)="clearProfilePic()">
+                      mat-icon-button *ngIf="profilePic.value " (click)="clearProfilePic()">
                         <i class="far fa-times-circle"></i>
                       </button>
                     </div>
@@ -300,7 +300,7 @@
                 </div>
               </div>
 
-              <div class="personalizeLarge" [ngClass]="form.get('profilePic').value ? 'show_' : 'hide' ">
+              <div class="personalizeLarge" [ngClass]="profilePic.value ? 'show_' : 'hide' ">
                 <div class="rowP">
                   <!-- <i class="fas fa-portrait _icon2"></i> -->
                   <span class="material-icons-outlined _icon2">
@@ -309,7 +309,7 @@
                 </div>
               </div>
 
-              <div class="personalizeLarge" [ngClass]="form.get('profilePic').value ? 'show_' : 'hide' ">
+              <div class="personalizeLarge" [ngClass]="profilePic.value ? 'show_' : 'hide' ">
                 <div class="PreviewPic">
                   <h2 class="Preview">Image Preview</h2>
                   <div class="profilePic">
