@@ -14,6 +14,10 @@
 .background {
   background-color: antiquewhite;
 }
+.basicColumn{
+  display: flex;
+  flex-direction: column;
+}
 @media (min-width: 1024px) {
   .entire-page {
     display: flex;
@@ -74,6 +78,7 @@
   color: #7e7171;
   font-family: 'Cinzel', serif;
   margin: 2% 0%;
+  font-weight: 900;
 }
 .centerNumber{
   margin-left: 2%;

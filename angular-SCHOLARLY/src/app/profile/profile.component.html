@@ -502,7 +502,7 @@
       <!-- Recent Posts text  -->
       <div class="right-side" >
         <mat-tab-group mat-align-tabs="center">
-          <mat-tab label="activity" >
+          <mat-tab label="Activity" >
                    
             <div class="posts" >
             
@@ -515,7 +515,7 @@
  
 
           </mat-tab>
-          <mat-tab label="showcase">
+          <mat-tab label="Showcase">
             <!-- <div class="column1" *ngIf="!info.ShowCasePath">
               <div class="row"> No Showcases Added</div> <span class="fa-solid fa-hat-wizard iconEmpty" ></span>
             </div> -->
@@ -524,13 +524,13 @@
 
               <div class="showCase_" *ngFor="let showCase of showCases">
 
-               <div *ngIf="showCases.length == 0">
-                <mat-chip-list >
+      
+                <mat-chip-list *ngIf="showCase.length == 0">
 <mat-chip color="primary" selected (click)="navigateToEditProfile()">
 Add Showcase
 </mat-chip>
 </mat-chip-list>
-               </div>
+         
 
 
                 <div class="column" *ngIf="!showCase">
