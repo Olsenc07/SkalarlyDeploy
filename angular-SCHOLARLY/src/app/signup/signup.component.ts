@@ -218,6 +218,7 @@ export class SignupComponent implements OnInit {
   public showCaseList = new Subject();
 
   form: FormGroup;
+  profilePic: FormControl = new FormControl('');
 
   requiredForm = new FormGroup({
     email: this.email,
@@ -594,6 +595,7 @@ export class SignupComponent implements OnInit {
     this.authService.createUserInfo(
       this.username.value,
       this.name.value,
+      this.bio.value,
       this.gender.value,
       this.birthday.value,
       this.major.value,
@@ -655,9 +657,9 @@ export class SignupComponent implements OnInit {
       this.CodePursuing10.value,
       this.CodePursuing11.value,
       this.CodePursuing12.value,
-      this.form.get('profilePic').value
+      this.profilePic.value
     );
-    console.log('unicorns exist 3', this.form.get('profilePic').value);
+    console.log('unicorns exist 3', this.profilePic.value);
   }
 
   onSubmitShowCase(): any {
@@ -671,10 +673,6 @@ export class SignupComponent implements OnInit {
         this.isLoading = false;
       });
     this.form = new FormGroup({
-      profilePic: new FormControl(null, {
-        validators: [Validators.required],
-        asyncValidators: [mimeType],
-      }),
       showCase: new FormControl(null, {
         validators: [Validators.required],
         asyncValidators: [mimeType],
