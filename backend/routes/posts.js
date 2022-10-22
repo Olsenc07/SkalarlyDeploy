@@ -384,6 +384,7 @@ router.post("/showCases",
 router.delete("/showCases/:id", checkAuth, async(req, res, next ) => {
    await showCase.findOne({Creator: req.params.id})
    .then(result => {
+    console.log('meeee', result)
         cloudinary.uploader.destroy(result.cloudinary_id)
         .then(console.log('it worked'));
 
