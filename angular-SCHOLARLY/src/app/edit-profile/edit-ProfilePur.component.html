@@ -13,9 +13,10 @@
         <i class="material-icons check" *ngIf="CodePursuing.value">checklist</i>
 
         <mat-form-field class="example-chip-list">
+      <mat-label *ngIf="info.CodePursuing.length == 0">Next Course</mat-label>
           <mat-label>{{info.CodePursuing}}</mat-label>
 
-          <mat-select placeholder="Choose pursuing course" #codeInputP  [formControl]="CodePursuing" >
+          <mat-select placeholder="Choose next course" #codeInputP  [formControl]="CodePursuing" >
             <mat-option *ngFor="let codeP of CodePursuing.value" 
             (removed)="removeP(codeP)">
             {{codeP}}
@@ -38,9 +39,10 @@
 <i class="material-icons check" *ngIf="CodePursuing2.value">checklist</i>
 
 <mat-form-field class="example-chip-list">
+  <mat-label *ngIf="info.CodePursuing2.length == 0">Next Course</mat-label>
 <mat-label>{{info.CodePursuing2}}</mat-label>
 
-<mat-select placeholder="Choose pursuing course 2" #codeInputP [formControl]="CodePursuing2" >
+<mat-select placeholder="Choose next course 2" #codeInputP [formControl]="CodePursuing2" >
 
 <mat-option *ngFor="let codeP of CodePursuing2.value" 
   (removed)="removeP(codeP)">
@@ -61,9 +63,10 @@
 <i class="material-icons check" *ngIf="CodePursuing3.value">checklist</i>
 
 <mat-form-field class="example-chip-list">
+  <mat-label *ngIf="info.CodePursuing3.length == 0">Next Course</mat-label>
 <mat-label>{{info.CodePursuing3}}</mat-label>
 
-<mat-select placeholder="Choose pursuing course 3" #codeInputP [formControl]="CodePursuing3" >
+<mat-select placeholder="Choose next course 3" #codeInputP [formControl]="CodePursuing3" >
 
 <mat-option *ngFor="let codeP of CodePursuing3.value" 
   (removed)="removeP(codeP)">
@@ -84,9 +87,10 @@
 <i class="material-icons check" *ngIf="CodePursuing4.value">checklist</i>
 
 <mat-form-field class="example-chip-list">
+  <mat-label *ngIf="info.CodePursuing4.length == 0">Next Course</mat-label>
 <mat-label>{{info.CodePursuing4}}</mat-label>
 
-<mat-select placeholder="Choose pursuing course 4" #codeInputP [formControl]="CodePursuing4" >
+<mat-select placeholder="Choose next course 4" #codeInputP [formControl]="CodePursuing4" >
 
 <mat-option *ngFor="let codeP of CodePursuing4.value" 
   (removed)="removeP(codeP)">
@@ -108,9 +112,10 @@
   <i class="material-icons check" *ngIf="CodePursuing5.value">checklist</i>
 
   <mat-form-field class="example-chip-list">
+  <mat-label *ngIf="info.CodePursuing5.length == 0">Next Course</mat-label>
     <mat-label>{{info.CodePursuing5}}</mat-label>
 
-    <mat-select placeholder="Choose pursuing course 5" #codeInputP [formControl]="CodePursuing5" >
+    <mat-select placeholder="Choose next course 5" #codeInputP [formControl]="CodePursuing5" >
 
       <mat-option *ngFor="let codeP of CodePursuing5.value" 
         (removed)="removeP(codeP)">
