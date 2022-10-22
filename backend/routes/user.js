@@ -296,14 +296,10 @@ router.post("/info",
     checkAuth,
     pic.single('profilePic'),
     (req, res) => {
-        if(req.files){ console.log('hey', req.files)}
-        if(req.file){ console.log('coushion', req.file)}
-
          cloudinary.uploader.upload(req.file.path, {
             folder:'ProfilePics'
          })
          .then(result => {
-            console.log('funny', result)
             var info = new UserInfo({
             username: req.body.username,
             name: req.body.name,
@@ -369,10 +365,9 @@ router.post("/info",
             CodePursuing10: req.body.CodePursuing10,
             CodePursuing11: req.body.CodePursuing11,
             CodePursuing12: req.body.CodePursuing12,
-
+        
             ProfilePicPath: result.secure_url,
             cloudinary_id: result.public_id,
-            // ShowCasePath: url + '/profilePics/' + req.files['showCase'][0].filename,
             Creator: req.userData.userId
         });
         info.save().then(result => {
