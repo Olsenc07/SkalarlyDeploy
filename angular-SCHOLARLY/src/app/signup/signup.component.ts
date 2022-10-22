@@ -336,7 +336,8 @@ export class SignupComponent implements OnInit {
     const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (Event: any) => {
-      this.url = reader.result as string;
+      // this.url = reader.result as string;
+      this.url = Event.target.result;
     };
     // reader.onload = (Event: any) => { // called once readAsDataURL is completed
     // console.log(Event);
