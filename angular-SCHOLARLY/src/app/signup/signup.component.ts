@@ -658,6 +658,8 @@ export class SignupComponent implements OnInit {
       this.CodePursuing10.value,
       this.CodePursuing11.value,
       this.CodePursuing12.value,
+      this.CodePursuing13.value,
+      this.CodePursuing14.value,
       this.form.get('profilePic').value
     );
     console.log('unicorns exist 3', this.form.get('profilePic').value);

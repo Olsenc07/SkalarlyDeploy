@@ -135,6 +135,8 @@ export class AuthService {
     CodePursuing10: string,
     CodePursuing11: string,
     CodePursuing12: string,
+    CodePursuing13: string,
+    CodePursuing14: string,
     profilePic: File,
     Creator?: string
   ): any {
@@ -204,6 +206,8 @@ export class AuthService {
     userData.append('CodePursuing10', CodePursuing10);
     userData.append('CodePursuing11', CodePursuing11);
     userData.append('CodePursuing12', CodePursuing12);
+    userData.append('CodePursuing13', CodePursuing13);
+    userData.append('CodePursuing14', CodePursuing14);
     userData.append('profilePic', profilePic);
     userData.append('Creator', Creator);
     this.http
@@ -279,8 +283,8 @@ export class AuthService {
             CodePursuing10,
             CodePursuing11,
             CodePursuing12,
-            CodePursuing13: '',
-            CodePursuing14: '',
+            CodePursuing13,
+            CodePursuing14,
             profilePic,
             ProfilePicPath: responseData.post.ProfilePicPath,
             Creator,
