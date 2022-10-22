@@ -220,7 +220,6 @@ export class SignupComponent implements OnInit {
   public showCaseList = new Subject();
 
   form: FormGroup;
-  profilePic: FormControl = new FormControl('');
 
   requiredForm = new FormGroup({
     email: this.email,
@@ -329,9 +328,9 @@ export class SignupComponent implements OnInit {
   // Profile Pic
   imagePreviewP(event: any): void {
     const file = (event.target as HTMLInputElement).files[0];
-    this.profilePic.setValue(file);
+    this.form.patchValue({ profilePic: file });
     // this.form.patchValue({ image: file });
-    this.profilePic.updateValueAndValidity();
+    this.form.get('profilePic').updateValueAndValidity();
 
     // if (event.target.files && event.target.files[0]) {
     const reader = new FileReader();
@@ -503,7 +502,7 @@ export class SignupComponent implements OnInit {
     this.email.setValue('');
   }
   clearProfilePic(): void {
-    this.profilePic.setValue('');
+    this.form.get('profilePic').setValue('');
     document.getElementById('profilePic').removeAttribute('src');
   }
   // clearPic1(): void {
@@ -659,9 +658,9 @@ export class SignupComponent implements OnInit {
       this.CodePursuing10.value,
       this.CodePursuing11.value,
       this.CodePursuing12.value,
-      this.profilePic.value
+      this.form.get('profilePic').value
     );
-    console.log('unicorns exist 3', this.profilePic.value);
+    console.log('unicorns exist 3', this.form.get('profilePic').value);
   }
 
   onSubmitShowCase(): any {
@@ -675,6 +674,10 @@ export class SignupComponent implements OnInit {
         this.isLoading = false;
       });
     this.form = new FormGroup({
+      profilePic: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
       showCase: new FormControl(null, {
         validators: [Validators.required],
         asyncValidators: [mimeType],
