@@ -2,6 +2,13 @@
   <mat-spinner ></mat-spinner>
 </div>
 
+<div *ngIf="posts.length == 0" class="noPosts_">
+  <i class="fas fa-ghost"></i>
+  <div class="noPosts">
+    No posts made
+     </div>
+    </div>
+
 <!-- Posts box which should be a scroll view -->
 <div class="feed" *ngFor="let post of posts.slice().reverse()" >
   <mat-card class="specifics-fill" *ngIf="(userId !== post.Creator) && !isLoading">

@@ -531,10 +531,13 @@
                     class="fa-solid fa-hat-wizard centerR iconEmpty"></span>
                 </div>  -->
                 <div class="showCase" >
-
+                  <div *ngIf="showCases.length == 0" class="noPosts_">
+                    <i class="fas fa-ghost"></i>
+                    <div class="noPosts">
+                   No showcases made
+                    </div>
+                  </div>
                  <div class="showCase_" *ngFor="let showCase of showCases">
-
-
                   <div class="column" *ngIf="showCase.ShowCasePath">
 
                     <img class="img" src={{showCase.ShowCasePath}} />

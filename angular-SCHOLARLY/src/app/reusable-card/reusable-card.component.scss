@@ -138,7 +138,17 @@ margin-top: 1%;
     height: 40px;
   }
 }
-
+.noPosts{
+  display: flex;
+  justify-content: center;
+  font-family:  'Poppins', sans-serif;
+font-size: large;
+}
+.noPosts_{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .feed {
   display: flex;
   // height: 100%;
