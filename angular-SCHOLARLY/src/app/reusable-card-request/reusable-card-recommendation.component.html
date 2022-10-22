@@ -6,14 +6,14 @@
   <div id="bigScroll"   
  class="infiniteContainer"  >
  <div class="showMore" *ngIf="countVisibility >= 1">
-    <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickRecomBack()">Show More
+    <mat-chip color="warn"  selected class="showMoreBtn" matTooltip="Display More" (click)="onClickRecomBack()">Show More
         <!-- <i class="fas fa-chevron-circle-down"></i> -->
         <i class="fas fa-caret-up"></i>
 
     </mat-chip>
     </div>
 <div id="infoRecomend" *ngFor="let info of infos; "  >
-<mat-card  class="row1" *ngIf="(userId !== info.Creator) && !isLoading"
+<mat-card  class="row1" selected *ngIf="(userId !== info.Creator) && !isLoading"
  >
     <div class="column" >
         <div class="row_">
@@ -110,7 +110,7 @@
 
 <div class="showMore">
 <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" 
-*ngIf="infos.length" (click)="onClickRecom()">Show More
+*ngIf="infos.length > 1" (click)="onClickRecom()">Show More
     <!-- <i class="fas fa-chevron-circle-down"></i> -->
     <i class="fas fa-caret-down"></i>
 </mat-chip>
