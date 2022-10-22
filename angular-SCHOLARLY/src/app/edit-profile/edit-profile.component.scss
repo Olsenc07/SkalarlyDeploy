@@ -1,6 +1,11 @@
 ::ng-deep .mat-menu-panel{
   display: contents;
 }
+/ scrollable mat group headers
+::ng-deep .mat-tab-header {
+  overflow-x: scroll !important;
+  background-color: #fafafa;
+}
 @media (min-width: 1024px) {
   .accounts {
     display: flex;
