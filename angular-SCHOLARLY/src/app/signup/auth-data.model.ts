@@ -73,13 +73,6 @@ export interface AuthDataInfo {
   CodePursuing12: string;
   CodePursuing13: string;
   CodePursuing14: string;
-
-  //  Which one to grab for the view?
   profilePic?: File;
   ProfilePicPath?: string;
-  //
-  // showCase?: File;
-  // ShowCasePath?: string;
-  followers?: string;
-  followings?: string;
 }
