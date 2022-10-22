@@ -295,7 +295,7 @@ router.post("/info",
             folder:'ProfilePics'
          })
          .then(result => {
-            console.log('funnt', result)
+            console.log('funny', result)
             var info = new UserInfo({
             username: req.body.username,
             name: req.body.name,

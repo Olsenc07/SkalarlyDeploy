@@ -139,8 +139,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   pronoun: FormControl = new FormControl('');
   birthday: FormControl = new FormControl();
   gender: FormControl = new FormControl('');
-  followers: FormControl = new FormControl('');
-  followings: FormControl = new FormControl('');
 
   email: FormControl = new FormControl('', [
     Validators.email,
@@ -326,10 +324,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   imgFailed(): void {
     console.log('Load failed');
   }
-  // Profiel Pic
+  // Profile Pic
   imagePreviewP(event: any): void {
-    this.imgChangeEvent = event;
-
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ profilePic: file });
     // this.form.patchValue({ image: file });
@@ -359,8 +355,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]); // read file as data url
     reader.onload = (Event: any) => {
-      // called once readAsDataURL is completed
-      console.log(Event);
       this.showCasePreview = Event.target.result;
     };
     reader.readAsDataURL(file); // read file as data url
@@ -687,10 +681,6 @@ export class SignupComponent implements OnInit, OnDestroy {
         asyncValidators: [mimeType],
       }),
     });
-  }
-
-  ngOnDestroy(): void {
-    this.authStatusSub.unsubscribe();
   }
 }
 @Component({

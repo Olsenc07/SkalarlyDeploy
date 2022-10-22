@@ -5,7 +5,8 @@ const showCase = require('/app/backend/models/showCases');
 const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
 const cloudinary = require('cloudinary').v2
-const streamifier = require('streamifier')
+const checkAuth = require('/app/backend/middleware/check-auth');
+const router = express.Router();
 
 // cloudinary
 cloudinary.config({ 
@@ -16,9 +17,7 @@ cloudinary.config({
     // secure: true
   });
 
-const checkAuth = require('/app/backend/middleware/check-auth');
 
-const router = express.Router();
 
 
 const MIME_TYPE_MAP ={
