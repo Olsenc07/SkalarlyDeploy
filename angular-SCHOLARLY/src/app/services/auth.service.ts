@@ -205,11 +205,10 @@ export class AuthService {
     userData.append('CodePursuing12', CodePursuing12);
     // userData.append('profilePic', profilePic);
     userData.append('Creator', Creator);
-    const profilePic_ = { profilePic };
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/info',
-        { userData, profilePic_ }
+        { userData, profilePic }
       )
       .subscribe({
         next: (responseData) => {
