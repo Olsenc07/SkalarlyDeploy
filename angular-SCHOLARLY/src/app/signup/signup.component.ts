@@ -501,7 +501,7 @@ export class SignupComponent implements OnInit {
     this.email.setValue('');
   }
   clearProfilePic(): void {
-    this.form.get('profilePic').setValue('');
+    this.profilePic.setValue('');
     document.getElementById('profilePic').removeAttribute('src');
   }
   // clearPic1(): void {
