@@ -329,7 +329,7 @@ export class SignupComponent implements OnInit {
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ profilePic: file });
     // this.form.patchValue({ image: file });
-    this.form.get('profilePic').updateValueAndValidity();
+    this.profilePic.updateValueAndValidity();
 
     // if (event.target.files && event.target.files[0]) {
     const reader = new FileReader();
