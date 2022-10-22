@@ -161,7 +161,6 @@ router.post("",
           
                 Creator: req.userData.userId
             });
-        }
             post.save().then(createdPost => {
                 res.status(201).json({
                     message: 'Post added successfully',
@@ -176,6 +175,8 @@ router.post("",
                     message: 'Creating a post failed!'
                 });
             });
+        }
+           
     })
 
 });
