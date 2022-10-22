@@ -29,7 +29,7 @@
   justify-content: center;
 }
 .addShowcase{
-  color: white;
+  color: white !important;
 }
 .bio {
   display: flex;
@@ -710,7 +710,8 @@ mat-tab-group {
   height: 600px;
   overflow-y: hidden;
   border-radius: 25px;
-  box-shadow: 0 5px 7px 3px grey;
+  // box-shadow: 0 5px 7px 3px grey;
+  border-top: groove;
 }
 }
 @media (min-height: 900px) {
