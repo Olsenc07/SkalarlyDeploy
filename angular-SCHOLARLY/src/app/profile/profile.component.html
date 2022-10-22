@@ -503,8 +503,7 @@
       <div class="right-side" >
         <mat-tab-group mat-align-tabs="center">
           <mat-tab label="activity" >
-      
-       
+                   
             <div class="posts" >
             
                <app-card-personal class="postCard" > 
@@ -525,7 +524,7 @@
 
               <div class="showCase_" *ngFor="let showCase of showCases">
 
-               <div *ngIf="!ShowCases">
+               <div *ngIf="!showCases">
                 <mat-chip-list >
 <mat-chip color="primary" selected (click)="navigateToEditProfile()">
 Add Showcase

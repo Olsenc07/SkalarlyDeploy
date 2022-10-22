@@ -2,6 +2,9 @@
     <mat-spinner ></mat-spinner>
   </div>
   
+  <mat-chip-list *ngIf="!posts">
+    <mat-chip color="primary" selected class="centerR" (click)="navigateToPost()">Post Now</mat-chip>
+    </mat-chip-list>
   <!-- Posts box which should be a scroll view -->
   <!-- <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer"> -->
   

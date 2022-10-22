@@ -214,7 +214,12 @@ export class ReusableCardPersonalComponent implements OnInit {
     this.route.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
-
+  navigateToPost(): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.route.navigate(['/post-page/:'], {
+      queryParams: { userId: this.userId },
+    });
+  }
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
