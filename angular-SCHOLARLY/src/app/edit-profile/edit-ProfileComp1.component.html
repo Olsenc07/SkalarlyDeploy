@@ -9,7 +9,7 @@
 
 <!-- 1 -->
       <mat-form-field class="example-chip-list">
-        <mat-label *ngIf="!info.CodeCompleted">Completed Course</mat-label>
+        <mat-label *ngIf="info.CodeCompleted.length == 0">Completed Course</mat-label>
         <mat-label>{{info.CodeCompleted}}</mat-label>
         <mat-select placeholder="Choose completed course" #codeInput [formControl]="CodeCompleted" >
 

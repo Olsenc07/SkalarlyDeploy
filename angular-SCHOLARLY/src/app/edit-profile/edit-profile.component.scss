@@ -5,6 +5,8 @@
 ::ng-deep .mat-tab-header {
   overflow-x: scroll !important;
   background-color: #fafafa;
+  border-top-left-radius: 25px;
+border-top-right-radius: 25px;
 }
 @media (min-width: 1024px) {
   .accounts {
