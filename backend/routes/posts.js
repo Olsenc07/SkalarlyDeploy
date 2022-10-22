@@ -93,8 +93,7 @@ const up = multer({ storage: storage, limits})
 router.post("", 
     checkAuth,
     up.single('upload'),
-    async(req, res) => {
-     
+    (req, res) => {
     UserInfo.findOne({Creator:req.query.userId })
     .then(documents => {
         if (req.file){
@@ -125,7 +124,21 @@ router.post("",
                 cloudinary_id: result.public_id,
                 Creator: req.userData.userId
             });
+            post.save().then(createdPost => {
+                res.status(201).json({
+                    message: 'Post added successfully',
+                    postId: {
+                        id: createdPost._id,
+                        ...createdPost
+                    } 
+                });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Creating a post failed!'
+                });
              })
+            })
         }else{
             var post = new Post({
                 Username: documents.username,
@@ -145,7 +158,7 @@ router.post("",
                 nopaymentService: req.body.nopaymentService,
                 virtual: req.body.virtual,
                 event: req.body.event,
-                // ImagePath: url + '/posts/' + req.file,
+          
                 Creator: req.userData.userId
             });
         }
