@@ -203,7 +203,7 @@ export class AuthService {
     userData.append('CodePursuing10', CodePursuing10);
     userData.append('CodePursuing11', CodePursuing11);
     userData.append('CodePursuing12', CodePursuing12);
-    // userData.append('profilePic', profilePic);
+    userData.append('profilePic', profilePic);
     userData.append('Creator', Creator);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
