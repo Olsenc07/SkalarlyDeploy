@@ -524,7 +524,7 @@
 
               <div class="showCase_" *ngFor="let showCase of showCases">
 
-               <div *ngIf="!showCases">
+               <div *ngIf="showCases.length == 0">
                 <mat-chip-list >
 <mat-chip color="primary" selected (click)="navigateToEditProfile()">
 Add Showcase
