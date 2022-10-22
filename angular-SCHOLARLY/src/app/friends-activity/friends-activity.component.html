@@ -107,8 +107,8 @@
             <div class="following-box">
               <div class="structure">
                 <div *ngIf="follow.length == 0" class="basicColumn" >
-                  <i class="fas fa-users-slash"></i>
-                  <div class="title">Not currently following anyone</div>
+                  <i class="fas fa-users-slash noFriends"></i>
+                  <div class="title_">Not currently following anyone</div>
                 </div>
                 <app-card-user  > 
                 </app-card-user>
@@ -134,8 +134,8 @@
             <div class="following-box">
               <div class="structure">
                 <div *ngIf="followers.length == 0" class="basicColumn">
-                <i class="fas fa-users-slash"></i>
-                <div class="title">No current followers</div>
+                <i class="fas fa-users-slash noFriends"></i>
+                <div class="title_">No current followers</div>
               </div>
                 <app-card-user-follower  ></app-card-user-follower>
               </div>

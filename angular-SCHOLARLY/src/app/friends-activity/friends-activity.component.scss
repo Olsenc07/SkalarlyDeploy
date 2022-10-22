@@ -17,6 +17,7 @@
 .basicColumn{
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 @media (min-width: 1024px) {
   .entire-page {
@@ -394,7 +395,11 @@
   font-family: 'Cinzel',serif;
   font-size: large;
 }
-
+.noFriends{
+  display: flex;
+  justify-content: center;
+  font-size: large;
+}
 .p {
   margin-left: 3%;
 }
@@ -495,6 +500,16 @@
   margin: 2% 0%;
   color: #7e7171;
   font-family: 'Cinzel', serif;
+}
+.title_ {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: large;
+  margin-top: 2%;
+  color: #7e7171;
+  width: 100%;
+  font-family: 'Poppins', serif;
 }
 // // Search bar
 // * {
