@@ -209,6 +209,8 @@ export class SignupComponent implements OnInit {
   CodePursuing10: FormControl = new FormControl('');
   CodePursuing11: FormControl = new FormControl('');
   CodePursuing12: FormControl = new FormControl('');
+  CodePursuing13: FormControl = new FormControl('');
+  CodePursuing14: FormControl = new FormControl('');
 
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   FilteredCodesP: string[] = this.classListService.allClasses().slice();
