@@ -95,7 +95,7 @@ router.post("/signup", async (req, res, next) => {
 
                         });
                     const msg = {
-                        from: 'admin@skalarly.com',
+                        from: ' "Verify account" <admin@skalarly.com>',
                         to: user.email,
                         subject: 'Skalarly - verify account',
                         text: `We are excited to welcome you ${user.username} to the community!
@@ -219,7 +219,7 @@ router.post('/forgot', async (req, res) => {
             })
         }
         const msg = {
-            from: 'admin@skalarly.com',
+            from: ' "Reset Password" <admin@skalarly.com>',
             to: user.email,
             subject: 'Skalarly - reset password',
             text: `Hello ${user.username} we hear you forgot your password.
