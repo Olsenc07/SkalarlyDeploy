@@ -139,7 +139,6 @@ export class AuthService {
     Creator?: string
   ): any {
     console.log('unicorns exist 2', profilePic);
-
     const userData = new FormData();
     userData.append('username', username);
     userData.append('name', name);

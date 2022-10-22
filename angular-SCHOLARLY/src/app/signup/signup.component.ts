@@ -115,7 +115,7 @@ export class SignupComponent implements OnInit {
   ];
 
   // profile Picture preview display
-  url: string;
+  url: any = '';
 
   MatIconModule: any;
   cropImgPreview: any = '';
@@ -223,7 +223,6 @@ export class SignupComponent implements OnInit {
     email: this.email,
     username: this.username,
     password: this.password,
-    accountType: new FormControl(''),
     termsCheck: this.termsCheck,
   });
 
@@ -363,7 +362,6 @@ export class SignupComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public classListService: ClassListService,
-    private http: HttpClient,
     public authService: AuthService,
     public showCaseService: ShowCaseService,
     private snackBar: MatSnackBar // public courses: Courses
@@ -659,6 +657,7 @@ export class SignupComponent implements OnInit {
       this.CodePursuing12.value,
       this.form.get('profilePic').value
     );
+    console.log('unicorns exist 3', this.form.get('profilePic').value);
   }
 
   onSubmitShowCase(): any {
