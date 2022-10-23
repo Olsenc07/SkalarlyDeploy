@@ -185,7 +185,7 @@ router.post("",
 router.delete("/:id", checkAuth, async(req, res, next ) => {
     console.log('howdy', req.params.id)
 
-   await Post.findOne({Creator: req.params.id})
+   await Post.findOne({_id: req.params.id})
    .then(result => {
     console.log('meeee', result)
     cloudinary.uploader.destroy(result.cloudinary_id)
