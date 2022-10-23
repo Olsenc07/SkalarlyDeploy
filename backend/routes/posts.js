@@ -189,22 +189,24 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
    .then(result => {
     console.log('meeee', result)
     cloudinary.uploader.destroy(result.cloudinary_id)
-    .then(console.log('great good!'));
-
-})
+    .then(() => {
+        console.log('great good!'),
     Post.deleteOne({_id: req.params.id}).then(result => {
         if (result){
         res.status(200).json({message: 'Post deleted!!'});
         } else {
             res.status(401).json({message: 'Not authorized'});
-        }
+        } 
     })
     .catch(error => {
         res.status(500).json({
             message: 'Fetching posts failed!'
         });
-    });
-});
+    })
+   })
+})
+})
+
 
 // get Comment on post
 router.get('/comments', async(req, res) =>{
