@@ -2127,7 +2127,7 @@ export class AuthService {
     if (!token || expirationDate === '0') {
       this.logout();
       this.snackBar.open('Authentication timed out', 'Please relogin!', {
-        duration: 3000,
+        // duration: 3000,
       });
       return;
     }
