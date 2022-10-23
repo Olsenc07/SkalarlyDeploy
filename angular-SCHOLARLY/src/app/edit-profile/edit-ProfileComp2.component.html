@@ -4,7 +4,9 @@
   <div class="centerTitle">Fall Semester <div class="fas fa-leaf" style="color: saddlebrown;"></div> </div>
 <div *ngFor="let info of infos">
 <div class="input" >
-    <i class="material-icons _icon">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted11.value">check</i>
+    <i class="material-icons check" *ngIf="CodeCompleted11.value">check</i>
+
     <mat-form-field class="example-chip-list">
       <mat-label *ngIf="info.CodeCompleted11.length == 0">Completed Course</mat-label>
             <mat-label>{{info.CodeCompleted11}}</mat-label>
