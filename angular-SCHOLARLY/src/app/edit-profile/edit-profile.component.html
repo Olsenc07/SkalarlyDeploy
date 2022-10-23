@@ -272,9 +272,9 @@
 <mat-label *ngIf="info.club">{{info.club}}</mat-label>
 <mat-label *ngIf="!info.club">Are you apart of a club?</mat-label>
     <input class="major"  matInput placeholder="Are you apart of a club?" [formControl]="club" />
-    <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearClub()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" matTooltip="Clear" (click)="clearClub()">
       <mat-icon class="asthetic-adds">close</mat-icon>
-    </button> -->
+    </button>
 
   </mat-form-field>
   <button mat-icon-button>

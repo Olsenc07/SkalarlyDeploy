@@ -301,6 +301,7 @@ export class EditProfileComponent implements OnInit {
   }
   clearClub(): void {
     this.club.setValue('');
+    console.log('booger aids', this.infos);
   }
 
   clearName(): void {
