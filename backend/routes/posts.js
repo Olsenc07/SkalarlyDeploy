@@ -185,25 +185,25 @@ router.post("",
 router.delete("/:id", checkAuth, async(req, res, next ) => {
     console.log('howdy', req.params.id)
 
-   await Post.find({Creator: req.params.id})
+   await Post.findOne({Creator: req.params.id})
    .then(result => {
     console.log('meeee', result)
     cloudinary.uploader.destroy(result.cloudinary_id)
     .then(() => {
-        console.log('great good!'),
-    Post.deleteOne({_id: req.params.id}).then(result => {
-        if (result){
-        res.status(200).json({message: 'Post deleted!!'});
-        } else {
-            res.status(401).json({message: 'Not authorized'});
-        } 
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Fetching posts failed!'
-        });
-    })
+        console.log('great good!')
    })
+})
+Post.deleteOne({_id: req.params.id}).then(result => {
+    if (result){
+    res.status(200).json({message: 'Post deleted!!'});
+    } else {
+        res.status(401).json({message: 'Not authorized'});
+    } 
+})
+.catch(error => {
+    res.status(500).json({
+        message: 'Fetching posts failed!'
+    });
 })
 })
 
