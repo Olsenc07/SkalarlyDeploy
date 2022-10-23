@@ -1981,7 +1981,8 @@ export class AuthService {
               CodePursuing10: info.CodePursuing10,
               CodePursuing11: info.CodePursuing11,
               CodePursuing12: info.CodePursuing12,
-
+              CodePursuing13: info.CodePursuing13,
+              CodePursuing14: info.CodePursuing14,
               ProfilePicPath: info.ProfilePicPath,
               // ShowCasePath: info.ShowCasePath,
               Creator: info.Creator,
@@ -1998,9 +1999,8 @@ export class AuthService {
   // Login
   login(email: string, password: string): any {
     const authData: AuthData = { email, password };
-    // expiresIn: number;
     this.http
-      .post<{ token: string; userId: string }>(
+      .post<{ token: string; expiresIn: number; userId: string }>(
         'http://www.skalarly.com/api/user/login',
         authData
       )
@@ -2013,20 +2013,19 @@ export class AuthService {
             this.snackBar.open('Welcome Fellow Skalar!', 'Thanks! ', {
               duration: 3000,
             });
-            // const expiresInDuration = response.expiresIn;
-            // this.setAuthTimer(expiresInDuration);
+            const expiresInDuration = response.expiresIn;
+            this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;
             this.userId = response.userId;
             this.authStatusListener.next(true);
-            // const now = new Date();
-            // const expirationDate = new Date(
-            //   now.getTime() + expiresInDuration * 1000
-            // );
-            //  expirationDate,
-            //
-            this.saveAuthData(token, this.userId);
-            // console.log(expirationDate);
-            // console.log(this.token);
+            const now = new Date();
+            const expirationDate = new Date(
+              now.getTime() + expiresInDuration * 1000
+            );
+
+            this.saveAuthData(token, expirationDate, this.userId);
+            console.log(expirationDate);
+            console.log(this.token);
           }
         },
         error: (error) => {
@@ -2043,7 +2042,7 @@ export class AuthService {
     const authData = { emailV, passwordV };
     this.http
       // expiresIn: number;
-      .post<{ token: string; userId: string }>(
+      .post<{ token: string; expiresIn: number; userId: string }>(
         'http://www.skalarly.com/api/user/login1',
         authData
       )
@@ -2051,16 +2050,16 @@ export class AuthService {
         next: (response) => {
           this.token = response.token;
           this.isAuthenticated = true;
-          // const expiresInDuration = response.expiresIn;
-          // this.setAuthTimer(expiresInDuration);
+          const expiresInDuration = response.expiresIn;
+          this.setAuthTimer(expiresInDuration);
           this.userId = response.userId;
           this.authStatusListener.next(true);
-          // const now = new Date();
-          // const expirationDate = new Date(
-          //   now.getTime() + expiresInDuration * 1000
-          // );
-          // expirationDate,
-          this.saveAuthData(this.token, this.userId);
+          const now = new Date();
+          const expirationDate = new Date(
+            now.getTime() + expiresInDuration * 1000
+          );
+
+          this.saveAuthData(this.token, expirationDate, this.userId);
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -2110,33 +2109,30 @@ export class AuthService {
 
   private saveAuthData(
     token: string,
-    // expirationDate: Date,
+    expirationDate: Date,
     userId: string
   ): any {
     localStorage.setItem('token', token);
-    // localStorage.setItem('expiration', expirationDate.toISOString());
+    localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('userId', userId);
   }
 
   private clearAuthData(): any {
     localStorage.removeItem('token');
-    // localStorage.removeItem('expiration');
+    localStorage.removeItem('expiration');
     localStorage.removeItem('userId');
   }
 
   private getAuthData(): any {
     const token = localStorage.getItem('token');
-    // const expirationDate = localStorage.getItem('expiration');
+    const expirationDate = localStorage.getItem('expiration');
     const userId = localStorage.getItem('userId');
-    // if (!token || !expirationDate) {
-    //   return;
-    // }
-    if (!token) {
+    if (!token || !expirationDate) {
       return;
     }
     return {
       token,
-      // expirationDate: new Date(expirationDate),
+      expirationDate: new Date(expirationDate),
       userId,
     };
   }
