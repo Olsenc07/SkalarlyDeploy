@@ -700,7 +700,7 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
                     );
                     res.status(200).json({
                         token: token,
-                        expiresIn: 3600,
+                        expiresIn: 360000,
                         userId: fetchedUser._id
                     });
                 })
@@ -763,11 +763,11 @@ if(userInfo){
             const token = jwt.sign(
                 { email: fetchedUser.email, userId: fetchedUser._id },
                 process.env.love,
-                { expiresIn: '3h' }
+                { expiresIn: '7h' }
             );
             res.status(200).json({
                 token: token,
-                expiresIn: 216000,
+                expiresIn: 360000,
                 userId: fetchedUser._id
             });
         })
