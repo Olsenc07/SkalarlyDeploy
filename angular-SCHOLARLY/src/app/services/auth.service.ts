@@ -2024,8 +2024,6 @@ export class AuthService {
             );
 
             this.saveAuthData(token, expirationDate, this.userId);
-            console.log(expirationDate);
-            console.log(this.token);
           }
         },
         error: (error) => {
@@ -2098,7 +2096,6 @@ export class AuthService {
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.router.navigate(['/login']);
-    console.log(this.token);
   }
 
   private setAuthTimer(duration: number): any {
@@ -2123,11 +2120,12 @@ export class AuthService {
     localStorage.removeItem('userId');
   }
 
-  private getAuthData(): any {
+  public getAuthData(): any {
     const token = localStorage.getItem('token');
     const expirationDate = localStorage.getItem('expiration');
     const userId = localStorage.getItem('userId');
-    if (!token || !expirationDate) {
+    if (!token || expirationDate === '0') {
+      this.logout();
       return;
     }
     return {

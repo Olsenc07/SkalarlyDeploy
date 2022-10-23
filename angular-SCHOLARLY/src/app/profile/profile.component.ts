@@ -82,6 +82,7 @@ export class ProfileComponent implements OnInit {
     this.following = !this.following;
   }
   ngOnInit(): any {
+    this.authService.getAuthData();
     this.isLoading = true;
     // Info
     this.userId = this.authService.getUserId();
