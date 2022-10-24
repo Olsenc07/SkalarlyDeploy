@@ -2,12 +2,12 @@
 <mat-tab label="Completed Courses First Year Fall"  class="courses fas fa-leaf" >
   <div class="centerTitle">Fall Semester <div class="fas fa-leaf" style="color: saddlebrown;"></div> </div>
   <div *ngFor="let info of infos">
+
+<!-- 1 -->
     <div class="input" >
-      
       <i class="material-icons _icon" *ngIf="!CodeCompleted.value">check</i>
       <i class="material-icons check" *ngIf="CodeCompleted.value">check</i>
 
-<!-- 1 -->
       <mat-form-field class="example-chip-list">
         <mat-label *ngIf="info.CodeCompleted.length == 0">Completed Course</mat-label>
         <mat-label>{{info.CodeCompleted}}</mat-label>
@@ -23,8 +23,9 @@
        
       </mat-select> -->
       <input matInput maxlength="8" [formControl]="CodeCompleted"> 
-      <mat-hint align="end" >ABC101H1</mat-hint>
+      <mat-hint align="start" >ABC101H1</mat-hint>
       </mat-form-field>
+    
     </div>
 <!-- 2 -->
     <div class="input" *ngIf="info.CodeCompleted || CodeCompleted.value">

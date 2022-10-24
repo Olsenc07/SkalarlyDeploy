@@ -464,6 +464,7 @@ router.post("/infoEd", checkAuth,
     });
     router.post("/infoEdComp1", checkAuth,
     async(req, res, next) => {
+        console.log('application', req.body.CodeCompleted)
     if(req.body.CodeCompleted){
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: req.body.CodeCompleted})
             }    
