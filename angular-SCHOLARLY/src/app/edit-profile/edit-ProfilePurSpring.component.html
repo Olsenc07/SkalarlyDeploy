@@ -16,7 +16,7 @@
   <mat-label *ngIf="info.CodePursuing11.length == 0">Next Course</mat-label>
     <mat-label>{{info.CodePursuing11}}</mat-label>
     
-    <mat-select placeholder="Choose next course 1" #codeInputP [formControl]="CodePursuing11" >
+    <!-- <mat-select placeholder="Choose next course 1" #codeInputP [formControl]="CodePursuing11" >
     
     <mat-option *ngFor="let codeP of CodePursuing11.value" 
       (removed)="removeP(codeP)">
@@ -27,8 +27,13 @@
       <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
         {{codeP}}
       </mat-option>
-    </mat-select>
-    
+    </mat-select> -->
+    <input matInput type="text" maxlength="8" [formControl]="CodePursuing11"> 
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearNext11()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button>
+    <mat-hint align="start" >Format: ABC101H1</mat-hint>
+    <mat-hint align="end" >{{ (CodePursuing11Length | async) }} / 8</mat-hint>
     </mat-form-field>
     </div>
     <!-- 12 -->

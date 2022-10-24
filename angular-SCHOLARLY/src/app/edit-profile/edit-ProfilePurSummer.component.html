@@ -16,7 +16,7 @@
   <mat-label *ngIf="info.CodePursuing13.length == 0">Next Course</mat-label>
     <mat-label>{{info.CodePursuing13}}</mat-label>
     
-    <mat-select placeholder="Choose next course" #codeInputP [formControl]="CodePursuing13" >
+    <!-- <mat-select placeholder="Choose next course" #codeInputP [formControl]="CodePursuing13" >
     <mat-option *ngFor="let codeP of CodePursuing13.value" 
       (removed)="removeP(codeP)">
       {{codeP}}
@@ -26,8 +26,13 @@
       <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
         {{codeP}}
       </mat-option>
-    </mat-select>
-    
+    </mat-select> -->
+    <input matInput type="text" maxlength="8" [formControl]="CodePursuing13"> 
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearNext13()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button>
+    <mat-hint align="start" >Format: ABC101H1</mat-hint>
+    <mat-hint align="end" >{{ (CodePursuing13Length | async) }} / 8</mat-hint>
     </mat-form-field>
     </div>
     <!-- 12 -->
@@ -39,7 +44,7 @@
   <mat-label *ngIf="info.CodePursuing14.length == 0">Next Course</mat-label>
     <mat-label>{{info.CodePursuing14}}</mat-label>
     
-    <mat-select placeholder="Choose next course 2" #codeInputP [formControl]="CodePursuing14" >
+    <!-- <mat-select placeholder="Choose next course 2" #codeInputP [formControl]="CodePursuing14" >
     
     <mat-option *ngFor="let codeP of CodePursuing14.value" 
       (removed)="removeP(codeP)">
@@ -50,8 +55,11 @@
       <mat-option *ngFor="let codeP of FilteredCodesP" [value]="codeP">
         {{codeP}}
       </mat-option>
-    </mat-select>
-    
+    </mat-select> -->
+    <input matInput type="text" maxlength="8" [formControl]="CodePursuing14"> 
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearNext14()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button>
     </mat-form-field>
     </div>
     <!-- done button -->

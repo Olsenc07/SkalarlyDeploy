@@ -30,6 +30,7 @@ import { ShowCaseService } from '../services/showCase.service';
 import { mimeType } from '../post-page/mime-type.validator';
 import { Picker } from 'emoji-picker-element';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthServiceEditNext } from '../services/editNextCourse.service';
 
 export const MY_FORMATS = {
   parse: {
@@ -1422,7 +1423,7 @@ export class EditProfilePurWComponent implements OnInit {
 
   filteredCodesP: Observable<string[]>;
   FilteredCodesP: string[] = this.classListService.allClasses().slice();
-
+  public CodePursuing6Length = new BehaviorSubject(0);
   CodePursuing6: FormControl = new FormControl('');
   CodePursuing7: FormControl = new FormControl('');
   CodePursuing8: FormControl = new FormControl('');
@@ -1431,6 +1432,8 @@ export class EditProfilePurWComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
+    public authServiceEditNext: AuthServiceEditNext,
+    private snackBar: MatSnackBar,
     public classListService: ClassListService
   ) {}
 
@@ -1443,6 +1446,59 @@ export class EditProfilePurWComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodePursuing6.valueChanges.subscribe((v) =>
+      this.CodePursuing6Length.next(v.length)
+    );
+  }
+  clearNext6(): void {
+    this.CodePursuing6.setValue('');
+    this.authServiceEditNext.editUserNext6(
+      this.userId,
+      this.CodePursuing6.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearNext7(): void {
+    this.CodePursuing7.setValue('');
+    this.authServiceEditNext.editUserNext7(
+      this.userId,
+      this.CodePursuing7.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearNext8(): void {
+    this.CodePursuing8.setValue('');
+    this.authServiceEditNext.editUserNext8(
+      this.userId,
+      this.CodePursuing8.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearNext9(): void {
+    this.CodePursuing9.setValue('');
+    this.authServiceEditNext.editUserNext9(
+      this.userId,
+      this.CodePursuing9.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearNext10(): void {
+    this.CodePursuing10.setValue('');
+    this.authServiceEditNext.editUserNext10(
+      this.userId,
+      this.CodePursuing10.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
   onSubmit(): void {
     // console.log(this.editForm.value);
@@ -1499,11 +1555,13 @@ export class EditProfilePurSpringComponent implements OnInit {
 
   filteredCodesP: Observable<string[]>;
   FilteredCodesP: string[] = this.classListService.allClasses().slice();
-
+  public CodePursuing11Length = new BehaviorSubject(0);
   CodePursuing11: FormControl = new FormControl('');
   CodePursuing12: FormControl = new FormControl('');
   constructor(
     public authService: AuthService,
+    public authServiceEditNext: AuthServiceEditNext,
+    private snackBar: MatSnackBar,
     public classListService: ClassListService
   ) {}
 
@@ -1516,6 +1574,29 @@ export class EditProfilePurSpringComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodePursuing11.valueChanges.subscribe((v) =>
+      this.CodePursuing11Length.next(v.length)
+    );
+  }
+  clearNext11(): void {
+    this.CodePursuing11.setValue('');
+    this.authServiceEditNext.editUserNext11(
+      this.userId,
+      this.CodePursuing11.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearNext12(): void {
+    this.CodePursuing12.setValue('');
+    this.authServiceEditNext.editUserNext12(
+      this.userId,
+      this.CodePursuing12.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
   onSubmit(): void {
     // console.log(this.editForm.value);
@@ -1568,10 +1649,13 @@ export class EditProfilePurSummerComponent implements OnInit {
 
   filteredCodesP: Observable<string[]>;
   FilteredCodesP: string[] = this.classListService.allClasses().slice();
+  public CodePursuing13Length = new BehaviorSubject(0);
   CodePursuing13: FormControl = new FormControl('');
   CodePursuing14: FormControl = new FormControl('');
   constructor(
     public authService: AuthService,
+    public authServiceEditNext: AuthServiceEditNext,
+    private snackBar: MatSnackBar,
     public classListService: ClassListService
   ) {}
 
@@ -1584,6 +1668,29 @@ export class EditProfilePurSummerComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodePursuing13.valueChanges.subscribe((v) =>
+      this.CodePursuing13Length.next(v.length)
+    );
+  }
+  clearNext13(): void {
+    this.CodePursuing13.setValue('');
+    this.authServiceEditNext.editUserNext13(
+      this.userId,
+      this.CodePursuing13.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearNext14(): void {
+    this.CodePursuing14.setValue('');
+    this.authServiceEditNext.editUserNext14(
+      this.userId,
+      this.CodePursuing14.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
   onSubmit(): void {
     // console.log(this.editForm.value);
@@ -1636,6 +1743,7 @@ export class EditProfilePurComponent implements OnInit {
 
   filteredCodesP: Observable<string[]>;
   FilteredCodesP: string[] = this.classListService.allClasses().slice();
+  public CodePursuingLength = new BehaviorSubject(0);
   CodePursuing: FormControl = new FormControl('');
   CodePursuing2: FormControl = new FormControl('');
   CodePursuing3: FormControl = new FormControl('');
@@ -1643,6 +1751,8 @@ export class EditProfilePurComponent implements OnInit {
   CodePursuing5: FormControl = new FormControl('');
   constructor(
     public authService: AuthService,
+    public authServiceEditNext: AuthServiceEditNext,
+    private snackBar: MatSnackBar,
     public classListService: ClassListService
   ) {}
 
@@ -1655,6 +1765,56 @@ export class EditProfilePurComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodePursuing.valueChanges.subscribe((v) =>
+      this.CodePursuingLength.next(v.length)
+    );
+  }
+  clearNext(): void {
+    this.CodePursuing.setValue('');
+    this.authServiceEditNext.editUserNext(this.userId, this.CodePursuing.value);
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearNext2(): void {
+    this.CodePursuing2.setValue('');
+    this.authServiceEditNext.editUserNext2(
+      this.userId,
+      this.CodePursuing2.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearNext3(): void {
+    this.CodePursuing3.setValue('');
+    this.authServiceEditNext.editUserNext3(
+      this.userId,
+      this.CodePursuing3.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearNext4(): void {
+    this.CodePursuing4.setValue('');
+    this.authServiceEditNext.editUserNext4(
+      this.userId,
+      this.CodePursuing4.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearNext5(): void {
+    this.CodePursuing5.setValue('');
+    this.authServiceEditNext.editUserNext5(
+      this.userId,
+      this.CodePursuing5.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
   onSubmit(): void {
     // console.log(this.editForm.value);

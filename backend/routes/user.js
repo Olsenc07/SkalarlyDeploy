@@ -624,7 +624,76 @@ async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompletedX: ''})
 })
 
-
+// edit Next Course
+router.post("/infoNext", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing: ''})
+})
+// edit Next Course
+router.post("/infoNext2", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing2: ''})
+})
+// edit Next Course
+router.post("/infoNext3", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing3: ''})
+})
+// edit Next Course
+router.post("/infoNext4", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing4: ''})
+})
+// edit Next Course
+router.post("/infoNext5", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing5: ''})
+})
+// edit Next Course
+router.post("/infoNext6", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing6: ''})
+})
+// edit Next Course
+router.post("/infoNext7", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing7: ''})
+})
+// edit Next Course
+router.post("/infoNext8", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing8: ''})
+})
+// edit Next Course
+router.post("/infoNext9", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing9: ''})
+})
+// edit Next Course
+router.post("/infoNext10", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing10: ''})
+})
+// edit Next Course
+router.post("/infoNext11", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing11: ''})
+})
+// edit Next Course
+router.post("/infoNext12", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing12: ''})
+})
+// edit Next Course
+router.post("/infoNext13", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing13: ''})
+})
+// edit Next Course
+router.post("/infoNext14", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing14: ''})
+})
 
 
 
