@@ -190,7 +190,8 @@
                   <mat-chip-list class="center__">
                     <div class="middleText">
                     <div class="titleC" *ngIf="info.CodeCompleted || info.CodeCompleted2 || info.CodeCompleted3|| info.CodeCompleted4|| info.CodeCompleted5
-                    "> First Year 
+                    || info.CodeCompleted6 || info.CodeCompleted7 || info.CodeCompleted8|| info.CodeCompleted9|| info.CodeCompleted10">
+                       First Year 
                     </div>
                     <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted || info.CodeCompleted2 || info.CodeCompleted3|| info.CodeCompleted4|| info.CodeCompleted5" style="color: saddlebrown; margin-top:4%">
                     </span>
@@ -216,7 +217,7 @@
                             <mat-chip *ngIf="info.CodeCompleted5" class="style" color="primary" selected >
                               {{ info.CodeCompleted5 }}
                     </mat-chip>
-                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted6" style="color: #88c4f9; margin-top:4%">
+                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted6 || info.CodeCompleted7 || info.CodeCompleted8|| info.CodeCompleted9|| info.CodeCompleted10" style="color: #88c4f9; margin-top:4%">
                     </span>
                               <mat-chip *ngIf="info.CodeCompleted6" class="style" color="primary" selected >
                                 {{ info.CodeCompleted6 }}
@@ -237,15 +238,17 @@
                     <mat-chip *ngIf="info.CodeCompleted10" class="style" color="primary" selected >
                       {{ info.CodeCompleted10 }}
                     </mat-chip>
-                    <mat-divider *ngIf="info.CodeCompleted11 "></mat-divider>
+                    <mat-divider *ngIf="info.CodeCompleted1 || info.CodeCompleted11 "></mat-divider>
 
                     </div>
 
                     <div>
                     <div class="middleText">
-                    <div class="titleC" *ngIf="info.CodeCompleted11 "> Second Year
+                    <div class="titleC"  *ngIf="info.CodeCompleted11 || info.CodeCompleted12 || info.CodeCompleted13|| info.CodeCompleted14 || info.CodeCompleted15
+                    || info.CodeCompleted16 || info.CodeCompleted17 || info.CodeCompleted18 || info.CodeCompleted19 || info.CodeCompleted20" > 
+                      Second Year
                     </div>
-                    <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted11" style="color: saddlebrown; margin-top:4%">
+                    <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted11 || info.CodeCompleted12 || info.CodeCompleted13|| info.CodeCompleted14|| info.CodeCompleted15" style="color: saddlebrown; margin-top:4%">
                     </span>
                     <div class="middleText">
                     <mat-chip *ngIf="info.CodeCompleted11" class="style" color="primary" selected >
@@ -267,7 +270,7 @@
                     <mat-chip *ngIf="info.CodeCompleted15" class="style" color="primary" selected >
                       {{ info.CodeCompleted15 }}
                     </mat-chip>
-                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted16" style="color: #88c4f9; margin-top:4%">
+                    <span class="fas fa-snowflake centerIcon"  *ngIf="info.CodeCompleted16 || info.CodeCompleted17 || info.CodeCompleted18|| info.CodeCompleted19|| info.CodeCompleted20"  style="color: #88c4f9; margin-top:4%">
                     </span>
                     <mat-chip *ngIf="info.CodeCompleted16" class="style" color="primary" selected >
                       {{ info.CodeCompleted16 }}
@@ -290,12 +293,14 @@
                     </mat-chip>
                   </div>
                   </div>
-                  <mat-divider *ngIf="info.CodeCompleted21 "></mat-divider>
+                  <mat-divider *ngIf="info.CodeCompleted16 || info.CodeCompleted21 "></mat-divider>
 
                   <div class="middleText">
-                    <div class="titleC" *ngIf="info.CodeCompleted21 "> Third Year
+                    <div class="titleC" *ngIf="info.CodeCompleted21 || info.CodeCompleted22 || info.CodeCompleted23 || info.CodeCompleted24 || info.CodeCompleted25
+                    || info.CodeCompleted26 || info.CodeCompleted27 || info.CodeCompleted28 || info.CodeCompleted29 || info.CodeCompleted30"> 
+                      Third Year
                     </div>
-                    <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted21" style="color: saddlebrown; margin-top:4%">
+                    <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted21 || info.CodeCompleted22 || info.CodeCompleted23 || info.CodeCompleted24 || info.CodeCompleted25" style="color: saddlebrown; margin-top:4%">
                     </span>
                     <div class="middleText">
                     <mat-chip *ngIf="info.CodeCompleted21" class="style" color="primary" selected >
@@ -317,7 +322,7 @@
                     <mat-chip *ngIf="info.CodeCompleted25" class="style" color="primary" selected >
                       {{ info.CodeCompleted25 }}
                     </mat-chip>
-                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted26" style="color: #88c4f9; margin-top:4%">
+                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted26 || info.CodeCompleted27 || info.CodeCompleted28 || info.CodeCompleted29 || info.CodeCompleted30" style="color: #88c4f9; margin-top:4%">
                     </span>
                     <mat-chip *ngIf="info.CodeCompleted26"  class="style" color="primary" selected >
                       {{ info.CodeCompleted26 }}
@@ -340,12 +345,14 @@
                     </mat-chip>
                   </div>
                 </div>
-                <mat-divider *ngIf="info.CodeCompleted31 "></mat-divider>
+                <mat-divider *ngIf="info.CodeCompleted31 || info.CodeCompleted40 "></mat-divider>
 
                     <div class="middleText">
-                    <div class="titleC" *ngIf="info.CodeCompleted31 "> Fourth Year<i class="fas fa-graduation-cap"></i>
+                    <div class="titleC" *ngIf="info.CodeCompleted31 || info.CodeCompleted32 || info.CodeComplete33 || info.CodeCompleted34 || info.CodeCompleted35 ||
+                    info.CodeCompleted36 || info.CodeCompleted37 || info.CodeComplete38 || info.CodeCompleted39 || info.CodeCompleted40 || info.CodeCompletedX"> 
+                      Fourth Year<i class="fas fa-graduation-cap"></i>
                   </div>
-                  <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted31" style="color: saddlebrown; margin-top:4%">
+                  <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted31 || info.CodeCompleted32 || info.CodeCompleted33 || info.CodeCompleted34 || info.CodeCompleted35" style="color: saddlebrown; margin-top:4%">
                   </span>
                     <mat-chip *ngIf="info.CodeCompleted31"  class="style" color="primary" selected >
                       {{ info.CodeCompleted31 }}
@@ -366,7 +373,8 @@
                     <mat-chip  *ngIf="info.CodeCompleted35" class="style" color="primary" selected >
                       {{ info.CodeCompleted35 }}
                     </mat-chip>
-                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted36" style="color: #88c4f9; margin-top:4%">
+                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodeCompleted36 || info.CodeCompleted37 || info.CodeCompleted38 || info.CodeCompleted39 || info.CodeCompleted40 || info.CodeCompletedX" 
+                    style="color: #88c4f9; margin-top:4%">
                     </span>
                     <mat-chip *ngIf="info.CodeCompleted36"  class="style" color="primary" selected >
                       {{ info.CodeCompleted36 }}
@@ -536,14 +544,13 @@
                     <i class="far fa-times-circle"></i>
                     </button>
                     </div>
-                     <!-- *ngIf="showCases.length == 0" -->
-              <mat-chip-list >
+              </div>
+               <!-- *ngIf="showCases.length == 0" -->
+               <mat-chip-list >
                 <mat-chip color="accent" class="addShowcase" selected (click)="navigateToEditProfile()">
                 Add Showcase
                 </mat-chip>
                 </mat-chip-list>
-              </div>
-             
             </div>
             <!-- <div class="showCase" *ngIf="info.ShowCasePath">
 
