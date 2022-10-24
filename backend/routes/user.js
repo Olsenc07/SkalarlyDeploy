@@ -437,37 +437,39 @@ router.post("/infoEd", checkAuth,
                 })
             }
              if(req.body.name){
-                      UserInfo.updateOne({Creator:req.query.userId },{name: req.body.name})
+                await UserInfo.updateOne({Creator:req.query.userId },{name: req.body.name})
                  }
                  if(req.body.bio){
-                     UserInfo.updateOne({Creator:req.query.userId },{bio: req.body.bio})
+                    await  UserInfo.updateOne({Creator:req.query.userId },{bio: req.body.bio})
                 }
             if(req.body.birthday){
-                 UserInfo.updateOne({Creator:req.query.userId },{birthday: req.body.birthday})
+                await UserInfo.updateOne({Creator:req.query.userId },{birthday: req.body.birthday})
                  }              
             if(req.body.gender){
-                     UserInfo.updateOne({Creator:req.query.userId },{gender: req.body.gender})
+                await UserInfo.updateOne({Creator:req.query.userId },{gender: req.body.gender})
                      }   
              if(req.body.pronoun){
-                         UserInfo.updateOne({Creator:req.query.userId },{pronouns: req.body.pronoun})
+                await UserInfo.updateOne({Creator:req.query.userId },{pronouns: req.body.pronoun})
                          }       
             if(req.body.major){
-                             UserInfo.updateOne({Creator:req.query.userId },{major: req.body.major})
+                await UserInfo.updateOne({Creator:req.query.userId },{major: req.body.major})
                              }    
              if(req.body.minor){
-                                 UserInfo.updateOne({Creator:req.query.userId },{minor: req.body.minor})
+                await UserInfo.updateOne({Creator:req.query.userId },{minor: req.body.minor})
                                  }    
              if(req.body.sport){
-                                 UserInfo.updateOne({Creator:req.query.userId },{sport: req.body.sport})
+                await UserInfo.updateOne({Creator:req.query.userId },{sport: req.body.sport})
                                      }    
             if(req.body.club){
-                                      UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
+                await UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
                                          }     
             
     });
     router.post("/infoEdComp1", checkAuth,
     (req, res, next) => {
-        console.log('application', req.body.CodeCompleted)
+        console.log('application chase', req.body.CodeCompleted)
+        console.log('snack chase', req.query.userId)
+
     if(req.body.CodeCompleted){
          UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: req.body.CodeCompleted})
             }    
