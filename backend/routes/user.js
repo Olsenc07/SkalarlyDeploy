@@ -387,19 +387,27 @@ router.post("/info",
             });
     })
     });
-
+// edit Majr
+router.post("/infoMajor", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{major: ''})
+})
+// edit sport
+router.post("/infoMinor", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{minor: ''})
+})
 // edit club
 router.post("/infoClub", checkAuth,
 async(req, res, next) => {
-    console.log('eminem', req.body.club )
-    console.log('logic', req.query.userId )
-
         await UserInfo.updateOne({Creator:req.query.userId },{club: ''})
-        .then((baby) =>
-console.log('j.cole', baby )
-)
 })
 
+// edit sport
+router.post("/infoSport", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{sport: ''})
+})
 // edit info
 const pic_ = multer({ storage: storage2, limits})
 router.post("/infoEd", checkAuth,

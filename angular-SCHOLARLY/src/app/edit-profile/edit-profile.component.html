@@ -204,9 +204,9 @@
 <mat-label *ngIf="info.major">{{info.major}}</mat-label>
 <mat-label *ngIf="!info.major">Major(s)</mat-label>
       <input class="major" maxlength="50" matInput placeholder="Major" [formControl]="major" />
-      <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
         <mat-icon class="asthetic-adds">close</mat-icon>
-      </button> -->
+      </button>
     </mat-form-field>
     <button mat-icon-button>
       <mat-icon matSuffix [matMenuTriggerFor]="emojiIconMajor" class="emoji">😃
@@ -226,9 +226,9 @@
 <mat-label *ngIf="info.minor">{{info.minor}}</mat-label>
 <mat-label *ngIf="!info.minor">Minor(s)</mat-label>
       <input class="major" maxlength="50" matInput placeholder="Minor" [formControl]="minor" />
-      <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
         <mat-icon class="asthetic-adds">close</mat-icon>
-      </button> -->
+      </button>
     </mat-form-field>
     <button mat-icon-button>
       <mat-icon matSuffix [matMenuTriggerFor]="emojiIconMinor" class="emoji">😃
@@ -250,9 +250,9 @@
 <mat-label *ngIf="info.sport">{{info.sport}}</mat-label>
 <mat-label *ngIf="!info.sport">Do you play a sport?</mat-label>
     <input matInput  placeholder="Do you play a sport?" [formControl]="sport" />
-    <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearSport()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearSport()">
       <mat-icon class="asthetic-adds">close</mat-icon>
-    </button> -->
+    </button>
 
   </mat-form-field>
   <button mat-icon-button>
