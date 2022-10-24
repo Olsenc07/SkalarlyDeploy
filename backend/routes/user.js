@@ -424,7 +424,8 @@ async(req, res, next) => {
 const pic_ = multer({ storage: storage2, limits})
 router.post("/infoEd", checkAuth,
     pic_.single('profilePic'),
-    (req, res, next) => {
+    async(req, res, next) => {
+        console.log('zoe', req.body.name)
                 if(req.file){
                       cloudinary.uploader.upload(req.file.path, {
                     folder:'ProfilePics'
@@ -462,7 +463,7 @@ router.post("/infoEd", checkAuth,
                                          }     
             
     });
-    router.post("/infoEdComp1",
+    router.post("/infoEdComp1", checkAuth,
     (req, res, next) => {
         console.log('application', req.body.CodeCompleted)
     if(req.body.CodeCompleted){
