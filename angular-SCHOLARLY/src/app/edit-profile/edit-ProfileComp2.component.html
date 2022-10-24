@@ -27,6 +27,8 @@
 <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearCode11()">
   <mat-icon class="asthetic-adds">close</mat-icon>
 </button>
+<mat-hint align="start" >Format: ABC101H1</mat-hint>
+<mat-hint align="end" >{{ (CodeCompleted11Length | async) }} / 8</mat-hint>
     </mat-form-field>
     </div>
     <!-- 12 -->
