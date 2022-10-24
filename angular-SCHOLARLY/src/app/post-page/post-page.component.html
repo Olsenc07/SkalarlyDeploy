@@ -159,7 +159,7 @@
                 <mat-label >Title </mat-label>
                 <!-- <div matBadge="{{ 20 - (TitleLength | async) }}"></div> -->
                 <input matInput maxlength="20" [formControl]="Title" >
-                <mat-hint> {{ (TitleLength | async) }} / 20</mat-hint>
+                <mat-hint align="end"> {{ (TitleLength | async) }} / 20</mat-hint>
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearTitle()">
                   <mat-icon class="clear-button">close</mat-icon>
                 </button> -->
