@@ -423,6 +423,213 @@ router.post("/infoCourse", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: ''})
 })
+// edit Complete 1
+router.post("/infoCourse2", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted2: ''})
+})
+// edit Complete 1
+router.post("/infoCourse3", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted3: ''})
+})
+// edit Complete 1
+router.post("/infoCourse4", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted4: ''})
+})
+// edit Complete 1
+router.post("/infoCourse5", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted5: ''})
+})
+// edit Complete 1
+router.post("/infoCourse6", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted6: ''})
+})
+// edit Complete 1
+router.post("/infoCourse7", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted7: ''})
+})
+// edit Complete 1
+router.post("/infoCourse8", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted8: ''})
+})
+// edit Complete 1
+router.post("/infoCourse9", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted9: ''})
+})
+// edit Complete 1
+router.post("/infoCourse10", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted10: ''})
+})
+// edit Complete 1
+router.post("/infoCourse11", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted11: ''})
+})
+// edit Complete 1
+router.post("/infoCourse12", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted12: ''})
+})
+// edit Complete 1
+router.post("/infoCourse13", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted13: ''})
+})
+// edit Complete 1
+router.post("/infoCourse14", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted14: ''})
+})
+// edit Complete 1
+router.post("/infoCourse15", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted15: ''})
+})
+// edit Complete 1
+router.post("/infoCourse16", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted16: ''})
+})
+// edit Complete 1
+router.post("/infoCourse17", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted17: ''})
+})
+// edit Complete 1
+router.post("/infoCourse18", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted18: ''})
+})
+// edit Complete 1
+router.post("/infoCourse19", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted19: ''})
+})
+// edit Complete 1
+router.post("/infoCourse20", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted20: ''})
+})
+// edit Complete 1
+router.post("/infoCourse21", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted21: ''})
+})
+// edit Complete 1
+router.post("/infoCourse22", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted22: ''})
+})
+// edit Complete 1
+router.post("/infoCourse23", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted23: ''})
+})
+// edit Complete 1
+router.post("/infoCourse24", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted24: ''})
+})
+// edit Complete 1
+router.post("/infoCourse25", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted25: ''})
+})
+// edit Complete 1
+router.post("/infoCourse26", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted26: ''})
+})
+// edit Complete 1
+router.post("/infoCourse27", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted27: ''})
+})
+// edit Complete 1
+router.post("/infoCourse28", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted28: ''})
+})
+// edit Complete 1
+router.post("/infoCourse29", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted29: ''})
+})
+// edit Complete 1
+router.post("/infoCourse30", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted30: ''})
+})
+// edit Complete 1
+router.post("/infoCourse31", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted31: ''})
+})
+// edit Complete 1
+router.post("/infoCourse32", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted32: ''})
+})
+// edit Complete 1
+router.post("/infoCourse33", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted33: ''})
+})
+// edit Complete 1
+router.post("/infoCourse34", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted34: ''})
+})
+// edit Complete 1
+router.post("/infoCourse35", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted35: ''})
+})
+// edit Complete 1
+router.post("/infoCourse36", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted36: ''})
+})
+// edit Complete 1
+router.post("/infoCourse37", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted37: ''})
+})
+// edit Complete 1
+router.post("/infoCourse38", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted38: ''})
+})
+// edit Complete 1
+router.post("/infoCourse39", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted39: ''})
+})
+// edit Complete 1
+router.post("/infoCourse40", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted40: ''})
+})
+// edit Complete 1
+router.post("/infoCourseX", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompletedX: ''})
+})
+
+
+
+
+
+
+
 // edit info
 // Break this up chase into different routes and edit.serivice.ts
 // infoEd broken up!!

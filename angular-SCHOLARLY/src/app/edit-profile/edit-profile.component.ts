@@ -428,10 +428,51 @@ export class EditProfileComp1Component implements OnInit {
       this.userId,
       this.CodeCompleted.value
     );
-    this.snackBar.open('Name cleared!', 'Nice!', {
+    this.snackBar.open('Course cleared!', 'Nice!', {
       duration: 2000,
     });
   }
+  clearCode2(): void {
+    this.CodeCompleted2.setValue('');
+    this.authServiceEditCourse.editUserCourse2(
+      this.userId,
+      this.CodeCompleted2.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode3(): void {
+    this.CodeCompleted3.setValue('');
+    this.authServiceEditCourse.editUserCourse3(
+      this.userId,
+      this.CodeCompleted3.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode4(): void {
+    this.CodeCompleted.setValue('');
+    this.authServiceEditCourse.editUserCourse4(
+      this.userId,
+      this.CodeCompleted4.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode5(): void {
+    this.CodeCompleted.setValue('');
+    this.authServiceEditCourse.editUserCourse5(
+      this.userId,
+      this.CodeCompleted5.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+
   onSubmit(): void {
     console.log(this.CodeCompleted.value);
     console.log(this.CodeCompleted2.value);
@@ -490,13 +531,16 @@ export class EditProfileComp1WComponent implements OnInit {
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
   // CodeCompleted 1-40X
+  public CodeCompleted6Length = new BehaviorSubject(0);
   CodeCompleted6: FormControl = new FormControl('');
   CodeCompleted7: FormControl = new FormControl('');
   CodeCompleted8: FormControl = new FormControl('');
   CodeCompleted9: FormControl = new FormControl('');
   CodeCompleted10: FormControl = new FormControl('');
   constructor(
+    private snackBar: MatSnackBar,
     public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
     public classListService: ClassListService
   ) {}
   ngOnInit(): void {
@@ -508,8 +552,62 @@ export class EditProfileComp1WComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodeCompleted6.valueChanges.subscribe((v) =>
+      this.CodeCompleted6Length.next(v.length)
+    );
   }
+  // clear course
 
+  clearCode6(): void {
+    this.CodeCompleted6.setValue('');
+    this.authServiceEditCourse.editUserCourse6(
+      this.userId,
+      this.CodeCompleted6.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode7(): void {
+    this.CodeCompleted7.setValue('');
+    this.authServiceEditCourse.editUserCourse7(
+      this.userId,
+      this.CodeCompleted7.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode8(): void {
+    this.CodeCompleted8.setValue('');
+    this.authServiceEditCourse.editUserCourse8(
+      this.userId,
+      this.CodeCompleted8.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode9(): void {
+    this.CodeCompleted9.setValue('');
+    this.authServiceEditCourse.editUserCourse9(
+      this.userId,
+      this.CodeCompleted9.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode10(): void {
+    this.CodeCompleted10.setValue('');
+    this.authServiceEditCourse.editUserCourse10(
+      this.userId,
+      this.CodeCompleted10.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
   onSubmit(): void {
     // console.log(this.editForm.value);
     // TODO: convert form fields to Profile
@@ -560,7 +658,7 @@ export class EditProfileComp2Component implements OnInit {
   private infosSub: Subscription;
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
-
+  public CodeCompleted11Length = new BehaviorSubject(0);
   CodeCompleted11: FormControl = new FormControl('');
   CodeCompleted12: FormControl = new FormControl('');
   CodeCompleted13: FormControl = new FormControl('');
@@ -568,7 +666,9 @@ export class EditProfileComp2Component implements OnInit {
   CodeCompleted15: FormControl = new FormControl('');
 
   constructor(
+    private snackBar: MatSnackBar,
     public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
     public classListService: ClassListService
   ) {}
   ngOnInit(): any {
@@ -580,8 +680,60 @@ export class EditProfileComp2Component implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodeCompleted11.valueChanges.subscribe((v) =>
+      this.CodeCompleted11Length.next(v.length)
+    );
   }
-
+  clearCode11(): void {
+    this.CodeCompleted11.setValue('');
+    this.authServiceEditCourse.editUserCourse11(
+      this.userId,
+      this.CodeCompleted11.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode12(): void {
+    this.CodeCompleted12.setValue('');
+    this.authServiceEditCourse.editUserCourse12(
+      this.userId,
+      this.CodeCompleted12.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode13(): void {
+    this.CodeCompleted13.setValue('');
+    this.authServiceEditCourse.editUserCourse13(
+      this.userId,
+      this.CodeCompleted13.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode14(): void {
+    this.CodeCompleted14.setValue('');
+    this.authServiceEditCourse.editUserCourse14(
+      this.userId,
+      this.CodeCompleted14.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode15(): void {
+    this.CodeCompleted15.setValue('');
+    this.authServiceEditCourse.editUserCourse15(
+      this.userId,
+      this.CodeCompleted15.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
   onSubmit(): void {
     this.authService.editUserInfoComp2(
       this.userId,
@@ -633,13 +785,16 @@ export class EditProfileComp2WComponent implements OnInit {
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
   private infosSub: Subscription;
+  public CodeCompleted16Length = new BehaviorSubject(0);
   CodeCompleted16: FormControl = new FormControl('');
   CodeCompleted17: FormControl = new FormControl('');
   CodeCompleted18: FormControl = new FormControl('');
   CodeCompleted19: FormControl = new FormControl('');
   CodeCompleted20: FormControl = new FormControl('');
   constructor(
+    private snackBar: MatSnackBar,
     public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
     public classListService: ClassListService
   ) {}
   ngOnInit(): any {
@@ -651,8 +806,60 @@ export class EditProfileComp2WComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodeCompleted16.valueChanges.subscribe((v) =>
+      this.CodeCompleted16Length.next(v.length)
+    );
   }
-
+  clearCode16(): void {
+    this.CodeCompleted16.setValue('');
+    this.authServiceEditCourse.editUserCourse16(
+      this.userId,
+      this.CodeCompleted16.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode17(): void {
+    this.CodeCompleted17.setValue('');
+    this.authServiceEditCourse.editUserCourse17(
+      this.userId,
+      this.CodeCompleted17.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode18(): void {
+    this.CodeCompleted18.setValue('');
+    this.authServiceEditCourse.editUserCourse18(
+      this.userId,
+      this.CodeCompleted18.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode19(): void {
+    this.CodeCompleted19.setValue('');
+    this.authServiceEditCourse.editUserCourse19(
+      this.userId,
+      this.CodeCompleted19.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode20(): void {
+    this.CodeCompleted20.setValue('');
+    this.authServiceEditCourse.editUserCourse20(
+      this.userId,
+      this.CodeCompleted20.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
   onSubmit(): void {
     this.authService.editUserInfoComp2W(
       this.userId,
@@ -702,7 +909,7 @@ export class EditProfileComp3Component implements OnInit {
   private infosSub: Subscription;
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
-
+  public CodeCompleted21Length = new BehaviorSubject(0);
   CodeCompleted21: FormControl = new FormControl('');
   CodeCompleted22: FormControl = new FormControl('');
   CodeCompleted23: FormControl = new FormControl('');
@@ -710,7 +917,9 @@ export class EditProfileComp3Component implements OnInit {
   CodeCompleted25: FormControl = new FormControl('');
 
   constructor(
+    private snackBar: MatSnackBar,
     public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
     public classListService: ClassListService
   ) {}
   ngOnInit(): any {
@@ -722,8 +931,60 @@ export class EditProfileComp3Component implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodeCompleted21.valueChanges.subscribe((v) =>
+      this.CodeCompleted21Length.next(v.length)
+    );
   }
-
+  clearCode21(): void {
+    this.CodeCompleted21.setValue('');
+    this.authServiceEditCourse.editUserCourse21(
+      this.userId,
+      this.CodeCompleted21.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode22(): void {
+    this.CodeCompleted22.setValue('');
+    this.authServiceEditCourse.editUserCourse22(
+      this.userId,
+      this.CodeCompleted22.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode23(): void {
+    this.CodeCompleted23.setValue('');
+    this.authServiceEditCourse.editUserCourse23(
+      this.userId,
+      this.CodeCompleted23.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode24(): void {
+    this.CodeCompleted24.setValue('');
+    this.authServiceEditCourse.editUserCourse24(
+      this.userId,
+      this.CodeCompleted24.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode25(): void {
+    this.CodeCompleted25.setValue('');
+    this.authServiceEditCourse.editUserCourse25(
+      this.userId,
+      this.CodeCompleted25.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
   onSubmit(): void {
     this.authService.editUserInfoComp3(
       this.userId,
@@ -773,14 +1034,16 @@ export class EditProfileComp3WComponent implements OnInit {
   private infosSub: Subscription;
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
-
+  public CodeCompleted26Length = new BehaviorSubject(0);
   CodeCompleted26: FormControl = new FormControl('');
   CodeCompleted27: FormControl = new FormControl('');
   CodeCompleted28: FormControl = new FormControl('');
   CodeCompleted29: FormControl = new FormControl('');
   CodeCompleted30: FormControl = new FormControl('');
   constructor(
+    private snackBar: MatSnackBar,
     public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
     public classListService: ClassListService
   ) {}
   ngOnInit(): any {
@@ -792,8 +1055,60 @@ export class EditProfileComp3WComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodeCompleted26.valueChanges.subscribe((v) =>
+      this.CodeCompleted26Length.next(v.length)
+    );
   }
-
+  clearCode26(): void {
+    this.CodeCompleted26.setValue('');
+    this.authServiceEditCourse.editUserCourse26(
+      this.userId,
+      this.CodeCompleted26.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode27(): void {
+    this.CodeCompleted27.setValue('');
+    this.authServiceEditCourse.editUserCourse27(
+      this.userId,
+      this.CodeCompleted27.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode28(): void {
+    this.CodeCompleted28.setValue('');
+    this.authServiceEditCourse.editUserCourse28(
+      this.userId,
+      this.CodeCompleted28.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode29(): void {
+    this.CodeCompleted29.setValue('');
+    this.authServiceEditCourse.editUserCourse29(
+      this.userId,
+      this.CodeCompleted29.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode30(): void {
+    this.CodeCompleted30.setValue('');
+    this.authServiceEditCourse.editUserCourse30(
+      this.userId,
+      this.CodeCompleted30.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
   onSubmit(): void {
     this.authService.editUserInfoComp3W(
       this.userId,
@@ -844,7 +1159,7 @@ export class EditProfileComp4Component implements OnInit {
   private infosSub: Subscription;
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
-
+  public CodeCompleted31Length = new BehaviorSubject(0);
   CodeCompleted31: FormControl = new FormControl('');
   CodeCompleted32: FormControl = new FormControl('');
   CodeCompleted33: FormControl = new FormControl('');
@@ -852,7 +1167,9 @@ export class EditProfileComp4Component implements OnInit {
   CodeCompleted35: FormControl = new FormControl('');
 
   constructor(
+    private snackBar: MatSnackBar,
     public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
     public classListService: ClassListService
   ) {}
   ngOnInit(): any {
@@ -864,6 +1181,59 @@ export class EditProfileComp4Component implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodeCompleted31.valueChanges.subscribe((v) =>
+      this.CodeCompleted31Length.next(v.length)
+    );
+  }
+  clearCode31(): void {
+    this.CodeCompleted31.setValue('');
+    this.authServiceEditCourse.editUserCourse31(
+      this.userId,
+      this.CodeCompleted31.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode32(): void {
+    this.CodeCompleted32.setValue('');
+    this.authServiceEditCourse.editUserCourse32(
+      this.userId,
+      this.CodeCompleted32.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode33(): void {
+    this.CodeCompleted33.setValue('');
+    this.authServiceEditCourse.editUserCourse33(
+      this.userId,
+      this.CodeCompleted33.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode34(): void {
+    this.CodeCompleted34.setValue('');
+    this.authServiceEditCourse.editUserCourse34(
+      this.userId,
+      this.CodeCompleted34.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode35(): void {
+    this.CodeCompleted35.setValue('');
+    this.authServiceEditCourse.editUserCourse35(
+      this.userId,
+      this.CodeCompleted35.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
   onSubmit(): void {
     this.authService.editUserInfoComp4(
@@ -913,7 +1283,7 @@ export class EditProfileComp4WComponent implements OnInit {
   private infosSub: Subscription;
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
-
+  public CodeCompleted36Length = new BehaviorSubject(0);
   CodeCompleted36: FormControl = new FormControl('');
   CodeCompleted37: FormControl = new FormControl('');
   CodeCompleted38: FormControl = new FormControl('');
@@ -921,7 +1291,9 @@ export class EditProfileComp4WComponent implements OnInit {
   CodeCompleted40: FormControl = new FormControl('');
   CodeCompletedX: FormControl = new FormControl('');
   constructor(
+    private snackBar: MatSnackBar,
     public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
     public classListService: ClassListService
   ) {}
   ngOnInit(): any {
@@ -933,6 +1305,69 @@ export class EditProfileComp4WComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodeCompleted36.valueChanges.subscribe((v) =>
+      this.CodeCompleted36Length.next(v.length)
+    );
+  }
+  clearCode36(): void {
+    this.CodeCompleted36.setValue('');
+    this.authServiceEditCourse.editUserCourse36(
+      this.userId,
+      this.CodeCompleted36.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode37(): void {
+    this.CodeCompleted37.setValue('');
+    this.authServiceEditCourse.editUserCourse37(
+      this.userId,
+      this.CodeCompleted37.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode38(): void {
+    this.CodeCompleted38.setValue('');
+    this.authServiceEditCourse.editUserCourse38(
+      this.userId,
+      this.CodeCompleted38.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode39(): void {
+    this.CodeCompleted39.setValue('');
+    this.authServiceEditCourse.editUserCourse39(
+      this.userId,
+      this.CodeCompleted39.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCode40(): void {
+    this.CodeCompleted40.setValue('');
+    this.authServiceEditCourse.editUserCourse40(
+      this.userId,
+      this.CodeCompleted40.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  clearCodeX(): void {
+    this.CodeCompletedX.setValue('');
+    this.authServiceEditCourse.editUserCourseX(
+      this.userId,
+      this.CodeCompletedX.value
+    );
+    this.snackBar.open('Course cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
   onSubmit(): void {
     this.authService.editUserInfoComp4W(

@@ -1020,7 +1020,7 @@ export class AuthServiceEditCourse {
     userData.append('CodeCompletedX', CodeCompletedX);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoCourse40',
+        'http://www.skalarly.com/api/user/infoCourseX',
         userData,
         { params: { userId } }
       )

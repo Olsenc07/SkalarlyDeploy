@@ -12,7 +12,7 @@
       <mat-label *ngIf="info.CodeCompleted36.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted36}}</mat-label>
     
-    <mat-select placeholder="Choose completed course 36" #codeInput [formControl]="CodeCompleted36" >
+    <!-- <mat-select placeholder="Choose completed course 36" #codeInput [formControl]="CodeCompleted36" >
     
     <mat-option *ngFor="let code of CodeCompleted36.value" 
     (removed)="onRemoved(code)" [removable]="true">
@@ -24,7 +24,12 @@
     {{code}}
     </mat-option>
     
-    </mat-select>
+    </mat-select> -->
+    <input matInput maxlength="8" [formControl]="CodeCompleted36"> 
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearCode36()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button>
+    
     </mat-form-field>
     </div>
     
@@ -38,7 +43,7 @@
       <mat-label *ngIf="info.CodeCompleted37.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted37}}</mat-label>
     
-    <mat-select placeholder="Choose completed course 37" #codeInput [formControl]="CodeCompleted37" >
+    <!-- <mat-select placeholder="Choose completed course 37" #codeInput [formControl]="CodeCompleted37" >
     
     <mat-option *ngFor="let code of CodeCompleted37.value" 
     (removed)="onRemoved(code)" [removable]="true">
@@ -50,7 +55,11 @@
     {{code}}
     </mat-option>
     
-    </mat-select>
+    </mat-select> -->
+    <input matInput maxlength="8" [formControl]="CodeCompleted37"> 
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearCode37()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button>
     </mat-form-field>
     </div>
     
@@ -65,7 +74,7 @@
       <mat-label *ngIf="info.CodeCompleted38.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted38}}</mat-label>
     
-    <mat-select placeholder="Choose completed course 38" #codeInput [formControl]="CodeCompleted38" >
+    <!-- <mat-select placeholder="Choose completed course 38" #codeInput [formControl]="CodeCompleted38" >
     
     <mat-option *ngFor="let code of CodeCompleted38.value" 
     (removed)="onRemoved(code)" [removable]="true">
@@ -77,7 +86,11 @@
     {{code}}
     </mat-option>
     
-    </mat-select>
+    </mat-select> -->
+    <input matInput maxlength="8" [formControl]="CodeCompleted38"> 
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearCode38()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button>
     </mat-form-field>
     </div>
     
@@ -91,7 +104,7 @@
       <mat-label *ngIf="info.CodeCompleted39.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted39}}</mat-label>
     
-    <mat-select placeholder="Choose completed course 39" #codeInput [formControl]="CodeCompleted39" >
+    <!-- <mat-select placeholder="Choose completed course 39" #codeInput [formControl]="CodeCompleted39" >
     
     <mat-option *ngFor="let code of CodeCompleted39.value" 
     (removed)="onRemoved(code)" [removable]="true">
@@ -103,7 +116,11 @@
     {{code}}
     </mat-option>
     
-    </mat-select>
+    </mat-select> -->
+    <input matInput maxlength="8" [formControl]="CodeCompleted39"> 
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearCode39()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button>
     </mat-form-field>
     </div>
     
@@ -117,7 +134,7 @@
       <mat-label *ngIf="info.CodeCompleted40.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted40}}</mat-label>
     
-    <mat-select placeholder="Choose completed course 40" #codeInput [formControl]="CodeCompleted40" >
+    <!-- <mat-select placeholder="Choose completed course 40" #codeInput [formControl]="CodeCompleted40" >
     
     <mat-option *ngFor="let code of CodeCompleted40.value" 
     (removed)="onRemoved(code)" [removable]="true">
@@ -128,7 +145,11 @@
     {{code}}
     </mat-option>
     
-    </mat-select>
+    </mat-select> -->
+    <input matInput maxlength="8" [formControl]="CodeCompleted40"> 
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearCode40()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button>
     </mat-form-field>
     </div>
     
@@ -141,7 +162,10 @@
     <mat-form-field class="example-chip-list">
       <mat-label *ngIf="info.CodeCompletedX.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompletedX}}</mat-label>
-    <textarea matInput placeholder="Extras or Transfer Equivalents"  [formControl]="CodeCompletedX" ></textarea>
+    <input matInput placeholder="Extras or Transfer Equivalents"  [formControl]="CodeCompletedX" >
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearCodeX()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
+    </button>
     </mat-form-field>
     </div>
 </div>
