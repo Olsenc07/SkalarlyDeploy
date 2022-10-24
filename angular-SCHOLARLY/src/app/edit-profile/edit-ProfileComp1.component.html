@@ -23,7 +23,9 @@
        
       </mat-select> -->
       <input matInput maxlength="8" [formControl]="CodeCompleted"> 
-      <mat-hint align="start" >ABC101H1</mat-hint>
+      <mat-hint align="start" >Format: ABC101H1</mat-hint>
+      <mat-hint align="end" >{{ (CodeCompletedLength | async) }} / 8</mat-hint>
+
       </mat-form-field>
     
     </div>

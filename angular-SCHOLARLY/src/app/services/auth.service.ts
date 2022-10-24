@@ -396,7 +396,7 @@ export class AuthService {
       .subscribe({
         next: (responseData) => {
           const post: AuthDataInfo = {
-            id: responseData.post.id,
+            // id: responseData.post.id,
             CodeCompleted,
             CodeCompleted2,
             CodeCompleted3,

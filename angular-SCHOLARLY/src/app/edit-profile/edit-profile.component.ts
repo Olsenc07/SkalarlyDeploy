@@ -18,7 +18,7 @@ import {
 
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ClassListService } from '../services/class.service';
 import { Post, PostService } from '../services/post.service';
 import { AuthService } from '../services/auth.service';
@@ -394,6 +394,7 @@ export class EditProfileComp1Component implements OnInit {
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
   // CodeCompleted 1-40X
+  public CodeCompletedLength = new BehaviorSubject(0);
   CodeCompleted: FormControl = new FormControl('');
   CodeCompleted2: FormControl = new FormControl('');
   CodeCompleted3: FormControl = new FormControl('');
@@ -404,6 +405,7 @@ export class EditProfileComp1Component implements OnInit {
   CodeCompleted8: FormControl = new FormControl('');
   CodeCompleted9: FormControl = new FormControl('');
   CodeCompleted10: FormControl = new FormControl('');
+
   constructor(
     public authService: AuthService,
     public classListService: ClassListService
@@ -417,6 +419,9 @@ export class EditProfileComp1Component implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
+    this.CodeCompleted.valueChanges.subscribe((v) =>
+      this.CodeCompletedLength.next(v.length)
+    );
   }
 
   onSubmit(): void {
