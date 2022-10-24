@@ -103,6 +103,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   isLinear = false;
   // Title: FormControl = new FormControl('');
   public TitleLength = new BehaviorSubject(0);
+  public LocationLength = new BehaviorSubject(0);
+
   postLocationMain: FormControl = new FormControl('');
   postLocation: FormControl = new FormControl('');
   postDescription: FormControl = new FormControl('');
@@ -212,6 +214,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.searchOptions = this.searchListService.getSearchOptions();
     // Doesn't keep track of value
     this.Title.valueChanges.subscribe((v) => this.TitleLength.next(v.length));
+    this.LocationEvent.valueChanges.subscribe((v) =>
+      this.LocationLength.next(v.length)
+    );
+
     //
     if (window.screen.width < 1025) {
       this.minwidth = false;

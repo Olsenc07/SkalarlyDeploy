@@ -201,8 +201,8 @@
 
             <mat-form-field appearance="fill">
               <mat-label>Location:</mat-label>
-              <input matInput [formControl]="LocationEvent">
-
+              <input matInput [formControl]="LocationEvent" maxlength="30">
+              <mat-hint align="end"> {{ (LocationLength | async) }} / 30</mat-hint>
             </mat-form-field>
             <div>
               <button type="button" mat-button matStepperNext>Next</button>
