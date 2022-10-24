@@ -379,14 +379,14 @@ export class AuthService {
     userData.append('CodeCompleted4', CodeCompleted4);
     userData.append('CodeCompleted5', CodeCompleted5);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .post<{ post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp1',
         userData,
         { params: { userId } }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
+          const post: any = {
             id: responseData.post.id,
             CodeCompleted,
             CodeCompleted2,
