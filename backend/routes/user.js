@@ -394,7 +394,7 @@ async(req, res, next) => {
     console.log('eminem', req.body.club )
     console.log('logic', req.query.userId )
 
-        await UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
+        await UserInfo.updateOne({Creator:req.query.userId },{club: ''})
         .then((baby) =>
 console.log('j.cole', baby )
 )
