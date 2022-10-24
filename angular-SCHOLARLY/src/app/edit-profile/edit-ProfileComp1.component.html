@@ -11,20 +11,19 @@
       <mat-form-field class="example-chip-list">
         <mat-label *ngIf="info.CodeCompleted.length == 0">Completed Course</mat-label>
         <mat-label>{{info.CodeCompleted}}</mat-label>
-        <mat-select placeholder="Choose completed course" #codeInput [formControl]="CodeCompleted" >
-
+        <!-- <mat-select placeholder="Choose completed course" #codeInput [formControl]="CodeCompleted" >
           <mat-option *ngFor="let code of CodeCompleted.value" 
           (removed)="onRemoved(code)" [removable]="true">
             {{code}}
           </mat-option>
-        <!-- <cdk-virtual-scroll-viewport itemSize="10"> -->
-          <!-- <mat-autocomplete #autoC="matAutocomplete" (optionSelected)="selected($event)"> -->
+
             <mat-option *ngFor="let code of FilteredCodes" [value]="code" >
               {{code}}
             </mat-option>
-          <!-- </mat-autocomplete> -->
-        <!-- </cdk-virtual-scroll-viewport> -->
-      </mat-select>
+       
+      </mat-select> -->
+      <input matInput maxlength="8" [formControl]="CodeCompleted"> 
+      <mat-hint>ABC101H1</mat-hint>
       </mat-form-field>
     </div>
 <!-- 2 -->
