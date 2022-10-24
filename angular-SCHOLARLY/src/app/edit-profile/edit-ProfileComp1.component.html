@@ -22,7 +22,10 @@
             </mat-option>
        
       </mat-select> -->
-      <input matInput maxlength="8" [formControl]="CodeCompleted"> 
+      <input matInput type="text" maxlength="8" [formControl]="CodeCompleted"> 
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearCode1()">
+        <mat-icon class="asthetic-adds">close</mat-icon>
+      </button>
       <mat-hint align="start" >Format: ABC101H1</mat-hint>
       <mat-hint align="end" >{{ (CodeCompletedLength | async) }} / 8</mat-hint>
 

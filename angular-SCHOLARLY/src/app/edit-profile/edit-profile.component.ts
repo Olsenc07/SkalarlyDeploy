@@ -420,8 +420,12 @@ export class EditProfileComp1Component implements OnInit {
   }
 
   onSubmit(): void {
-    // console.log(this.editForm.value);
-    // TODO: convert form fields to Profile
+    console.log(this.CodeCompleted.value);
+    console.log(this.CodeCompleted2.value);
+    console.log(this.CodeCompleted3.value);
+    console.log(this.CodeCompleted4.value);
+    console.log(this.CodeCompleted5.value);
+
     this.authService.editUserInfoComp(
       this.userId,
       this.CodeCompleted.value,

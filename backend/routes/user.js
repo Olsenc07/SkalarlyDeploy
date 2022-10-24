@@ -418,6 +418,11 @@ router.post("/infoSport", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{sport: ''})
 })
+// edit Complete 1
+router.post("/infoCourse", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: ''})
+})
 // edit info
 // Break this up chase into different routes and edit.serivice.ts
 // infoEd broken up!!

@@ -521,11 +521,7 @@
             </div> -->
    
             <div class="showCase" >
-              <mat-chip-list *ngIf="showCases.length == 0">
-                <mat-chip color="accent" class="addShowcase" selected (click)="navigateToEditProfile()">
-                Add Showcase
-                </mat-chip>
-                </mat-chip-list>
+  
               <div class="showCase_" *ngFor="let showCase of showCases">
                 <div class="column" >
                   
@@ -540,7 +536,12 @@
                     </button>
                     </div>
               </div>
-
+              <!-- *ngIf="showCases.length == 0" -->
+              <mat-chip-list >
+                <mat-chip color="accent" class="addShowcase" selected (click)="navigateToEditProfile()">
+                Add Showcase
+                </mat-chip>
+                </mat-chip-list>
             </div>
             <!-- <div class="showCase" *ngIf="info.ShowCasePath">
 
