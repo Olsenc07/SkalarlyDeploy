@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthData, AuthDataInfo } from '../signup/auth-data.model';
-import { Subject, ReplaySubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { AuthDataInfo } from '../signup/auth-data.model';
+import { ReplaySubject } from 'rxjs';
+
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -32,9 +32,7 @@ export class AuthServiceEdit {
             id: responseData.post.id,
             major,
           };
-          this.snackBar.open('Major cleared!', 'Nice!', {
-            duration: 3000,
-          });
+
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
         },
@@ -58,9 +56,6 @@ export class AuthServiceEdit {
             id: responseData.post.id,
             minor,
           };
-          this.snackBar.open('Minor cleared!', 'Nice!', {
-            duration: 3000,
-          });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
         },
@@ -84,9 +79,6 @@ export class AuthServiceEdit {
             id: responseData.post.id,
             club,
           };
-          this.snackBar.open('Club cleared!', 'Nice!', {
-            duration: 3000,
-          });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
         },
@@ -110,9 +102,6 @@ export class AuthServiceEdit {
             id: responseData.post.id,
             sport,
           };
-          this.snackBar.open('Sport cleared!', 'Nice!', {
-            duration: 3000,
-          });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
         },

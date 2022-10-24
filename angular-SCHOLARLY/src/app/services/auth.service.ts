@@ -328,10 +328,6 @@ export class AuthService {
     userData.append('club', club);
     userData.append('pronoun', pronoun);
     userData.append('profilePic', profilePic);
-    // userData.append('showCase', showCase);
-    // userData.append('followers', followers);
-    // userData.append('followings', followings);
-
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEd',
@@ -354,56 +350,13 @@ export class AuthService {
             // followers,
             // followings,
             ProfilePicPath: responseData.post.ProfilePicPath,
-            CodeCompleted11: '',
-            CodeCompleted12: '',
-            CodeCompleted13: '',
-            CodeCompleted14: '',
-            CodeCompleted15: '',
-            CodeCompleted16: '',
-            CodeCompleted17: '',
-            CodeCompleted18: '',
-            CodeCompleted19: '',
-            CodeCompleted20: '',
-            CodeCompleted21: '',
-            CodeCompleted22: '',
-            CodeCompleted23: '',
-            CodeCompleted24: '',
-            CodeCompleted25: '',
-            CodeCompleted26: '',
-            CodeCompleted27: '',
-            CodeCompleted28: '',
-            CodeCompleted29: '',
-            CodeCompleted30: '',
-            CodeCompleted31: '',
-            CodeCompleted32: '',
-            CodeCompleted33: '',
-            CodeCompleted34: '',
-            CodeCompleted35: '',
-            CodeCompleted36: '',
-            CodeCompleted37: '',
-            CodeCompleted38: '',
-            CodeCompleted39: '',
-            CodeCompleted40: '',
-            CodeCompletedX: '',
-            CodePursuing: '',
-            CodePursuing2: '',
-            CodePursuing3: '',
-            CodePursuing4: '',
-            CodePursuing5: '',
-            CodePursuing6: '',
-            CodePursuing7: '',
-            CodePursuing8: '',
-            CodePursuing9: '',
-            CodePursuing10: '',
-            CodePursuing11: '',
-            CodePursuing12: '',
-            CodePursuing13: '',
-            CodePursuing14: '',
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
+
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
         },

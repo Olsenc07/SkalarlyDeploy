@@ -29,6 +29,7 @@ import { AuthDataInfo } from '../signup/auth-data.model';
 import { ShowCaseService } from '../services/showCase.service';
 import { mimeType } from '../post-page/mime-type.validator';
 import { Picker } from 'emoji-picker-element';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export const MY_FORMATS = {
   parse: {
@@ -135,7 +136,7 @@ export class EditProfileComponent implements OnInit {
     public classListService: ClassListService,
     public authService: AuthService,
     public authServiceEdit: AuthServiceEdit,
-
+    private snackBar: MatSnackBar,
     public showCaseService: ShowCaseService,
     public postService: PostService
   ) {
@@ -297,19 +298,31 @@ export class EditProfileComponent implements OnInit {
   clearMajor(): void {
     this.major.setValue('');
     this.authServiceEdit.editUserMajor(this.userId, this.major.value);
+    this.snackBar.open('Major cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
   clearMinor(): void {
     this.minor.setValue('');
     this.authServiceEdit.editUserMinor(this.userId, this.minor.value);
+    this.snackBar.open('Minor cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
   clearSport(): void {
     this.sport.setValue('');
     this.authServiceEdit.editUserSport(this.userId, this.sport.value);
+    this.snackBar.open('Sport cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
   clearClub(): void {
     this.club.setValue('');
     console.log('brain2', this.club.value);
     this.authServiceEdit.editUserClub(this.userId, this.club.value);
+    this.snackBar.open('Club cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
 
   clearName(): void {
