@@ -326,14 +326,14 @@ export class AuthService {
     userData.append('pronoun', pronoun);
     userData.append('profilePic', profilePic);
     this.http
-      .post<{ message: string; post: any }>(
+      .post<{ post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
+          const post: AuthDataInfo = {
             id: responseData.post.id,
             name,
             bio,
