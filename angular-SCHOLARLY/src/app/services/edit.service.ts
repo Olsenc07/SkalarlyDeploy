@@ -110,4 +110,50 @@ export class AuthServiceEdit {
         },
       });
   }
+  editUserBio(userId: string, bio: string): any {
+    const userData = new FormData();
+    userData.append('sport', bio);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoBio',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            bio,
+          };
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserName(userId: string, name: string): any {
+    const userData = new FormData();
+    userData.append('sport', name);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoName',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            name,
+          };
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
 }

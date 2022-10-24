@@ -92,9 +92,9 @@
 
               <input matInput  maxlength="60" 
                [formControl]="name" type="text" placeholder="Full name" class="inputText"/>
-              <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
-              </button> -->
+              </button>
               
             </mat-form-field>
           </div>
@@ -159,9 +159,9 @@
 
             <input matInput   
                [formControl]="bio" type="text" placeholder="Bio" class="inputText"/>
-              <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearBio()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
-              </button> -->
+              </button>
    
                 <mat-menu #emojiIconBio="matMenu" class="emoji-menu">
                   <emoji-picker class="light" (emoji-click)="addEmojiBio($event)" (click)="emojiPreventCloseBio($event);"></emoji-picker>

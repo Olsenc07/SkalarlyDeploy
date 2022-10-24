@@ -387,7 +387,17 @@ router.post("/info",
             });
     })
     });
-// edit Majr
+        // edit Name
+router.post("/infoName", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{name: ''})
+})
+    // edit Bio
+router.post("/infoBio", checkAuth,
+async(req, res, next) => {
+        await UserInfo.updateOne({Creator:req.query.userId },{bio: ''})
+})
+// edit Major
 router.post("/infoMajor", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{major: ''})

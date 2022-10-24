@@ -80,7 +80,6 @@ export class EditProfileComponent implements OnInit {
   // These show inputs in real time but arn't whats stored
 
   genders: string[] = [
-    '',
     'Female',
     'Male',
     'Transgender',
@@ -97,14 +96,7 @@ export class EditProfileComponent implements OnInit {
     'Two Spirit',
   ];
 
-  pronouns: string[] = [
-    '',
-    'She/Her',
-    'He/His',
-    'Ze/Hirs',
-    'Ze/Zirs',
-    'Xe/Xyr',
-  ];
+  pronouns: string[] = ['She/Her', 'He/His', 'Ze/Hirs', 'Ze/Zirs', 'Xe/Xyr'];
 
   @ViewChild('auto') matAutocomplete: MatAutocomplete;
   @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
@@ -294,7 +286,13 @@ export class EditProfileComponent implements OnInit {
       }),
     });
   }
-
+  clearBio(): void {
+    this.bio.setValue('');
+    this.authServiceEdit.editUserMajor(this.userId, this.bio.value);
+    this.snackBar.open('Bio cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
   clearMajor(): void {
     this.major.setValue('');
     this.authServiceEdit.editUserMajor(this.userId, this.major.value);
@@ -327,6 +325,10 @@ export class EditProfileComponent implements OnInit {
 
   clearName(): void {
     this.name.setValue('');
+    this.authServiceEdit.editUserName(this.userId, this.name.value);
+    this.snackBar.open('Name cleared!', 'Nice!', {
+      duration: 2000,
+    });
   }
   // clearBio(): void {
   //   this.bio.setValue('');
