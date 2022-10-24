@@ -23,7 +23,7 @@ import { ClassListService } from '../services/class.service';
 import { Post, PostService } from '../services/post.service';
 import { AuthService } from '../services/auth.service';
 import { AuthServiceEdit } from '../services/edit.service';
-
+import { AuthServiceEditCourse } from '../services/editCourse.service';
 import { Subscription } from 'rxjs';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { ShowCaseService } from '../services/showCase.service';
@@ -402,7 +402,10 @@ export class EditProfileComp1Component implements OnInit {
   CodeCompleted5: FormControl = new FormControl('');
 
   constructor(
+    private snackBar: MatSnackBar,
     public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
+
     public classListService: ClassListService
   ) {}
   ngOnInit(): void {
@@ -418,7 +421,17 @@ export class EditProfileComp1Component implements OnInit {
       this.CodeCompletedLength.next(v.length)
     );
   }
-
+  // clear course
+  clearCode1(): void {
+    this.CodeCompleted.setValue('');
+    this.authServiceEditCourse.editUserCourse(
+      this.userId,
+      this.CodeCompleted.value
+    );
+    this.snackBar.open('Name cleared!', 'Nice!', {
+      duration: 2000,
+    });
+  }
   onSubmit(): void {
     console.log(this.CodeCompleted.value);
     console.log(this.CodeCompleted2.value);

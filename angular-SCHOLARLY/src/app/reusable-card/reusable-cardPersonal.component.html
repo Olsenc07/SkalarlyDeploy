@@ -3,7 +3,7 @@
   </div>
   
   <mat-chip-list *ngIf="posts.length == 0">
-    <mat-chip color="accent" selected class="centerR" (click)="navigateToPost()">Post Now</mat-chip>
+    <mat-chip color="accent" class="addPost" selected class="centerR" (click)="navigateToPost()">Post Now</mat-chip>
     </mat-chip-list>
   <!-- Posts box which should be a scroll view -->
   <!-- <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer"> -->
