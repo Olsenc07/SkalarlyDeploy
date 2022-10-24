@@ -189,9 +189,10 @@
                 <div class="list">
                   <mat-chip-list class="center__">
                     <div class="middleText">
-                    <div class="titleC" *ngIf="info.CodeCompleted "> First Year 
+                    <div class="titleC" *ngIf="info.CodeCompleted || info.CodeCompleted2 || info.CodeCompleted3|| info.CodeCompleted4|| info.CodeCompleted5
+                    "> First Year 
                     </div>
-                    <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted" style="color: saddlebrown; margin-top:4%">
+                    <span class="fas fa-leaf centerIcon" *ngIf="info.CodeCompleted || info.CodeCompleted2 || info.CodeCompleted3|| info.CodeCompleted4|| info.CodeCompleted5" style="color: saddlebrown; margin-top:4%">
                     </span>
                     <!-- disabled -->
                     <mat-chip *ngIf="info.CodeCompleted" class="style" color="primary" selected >

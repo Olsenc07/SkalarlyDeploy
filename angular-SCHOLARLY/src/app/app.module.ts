@@ -113,6 +113,7 @@ import { ClassListService } from './services/class.service';
 import { AuthService } from './services/auth.service';
 import { AuthServiceEdit } from './services/edit.service';
 import { AuthServiceEditCourse } from './services/editCourse.service';
+import { AuthServiceEditNext } from './services/editNextCourse.service';
 
 import { FollowService } from './services/follow.service';
 
@@ -227,6 +228,7 @@ import { ErrorInterceptor } from './error-interceptor';
     AuthService,
     AuthServiceEdit,
     AuthServiceEditCourse,
+    AuthServiceEditNext,
     CommentsService,
     MessageService,
     MessageNotificationService,
