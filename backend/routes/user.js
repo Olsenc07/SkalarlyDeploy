@@ -424,9 +424,9 @@ async(req, res, next) => {
 const pic_ = multer({ storage: storage2, limits})
 router.post("/infoEd", checkAuth,
     pic_.single('profilePic'),
-    async(req, res, next) => {
+    (req, res, next) => {
                 if(req.file){
-                     await cloudinary.uploader.upload(req.file.path, {
+                      cloudinary.uploader.upload(req.file.path, {
                     folder:'ProfilePics'
                  }).then(result => {
                      UserInfo.updateOne({Creator:req.query.userId },
@@ -434,35 +434,35 @@ router.post("/infoEd", checkAuth,
                 })
             }
              if(req.body.name){
-                     await UserInfo.updateOne({Creator:req.query.userId },{name: req.body.name})
+                      UserInfo.updateOne({Creator:req.query.userId },{name: req.body.name})
                  }
                  if(req.body.bio){
-                    await UserInfo.updateOne({Creator:req.query.userId },{bio: req.body.bio})
+                     UserInfo.updateOne({Creator:req.query.userId },{bio: req.body.bio})
                 }
             if(req.body.birthday){
-                await UserInfo.updateOne({Creator:req.query.userId },{birthday: req.body.birthday})
+                 UserInfo.updateOne({Creator:req.query.userId },{birthday: req.body.birthday})
                  }              
             if(req.body.gender){
-                    await UserInfo.updateOne({Creator:req.query.userId },{gender: req.body.gender})
+                     UserInfo.updateOne({Creator:req.query.userId },{gender: req.body.gender})
                      }   
              if(req.body.pronoun){
-                        await UserInfo.updateOne({Creator:req.query.userId },{pronouns: req.body.pronoun})
+                         UserInfo.updateOne({Creator:req.query.userId },{pronouns: req.body.pronoun})
                          }       
             if(req.body.major){
-                            await UserInfo.updateOne({Creator:req.query.userId },{major: req.body.major})
+                             UserInfo.updateOne({Creator:req.query.userId },{major: req.body.major})
                              }    
              if(req.body.minor){
-                                await UserInfo.updateOne({Creator:req.query.userId },{minor: req.body.minor})
+                                 UserInfo.updateOne({Creator:req.query.userId },{minor: req.body.minor})
                                  }    
              if(req.body.sport){
-                                await UserInfo.updateOne({Creator:req.query.userId },{sport: req.body.sport})
+                                 UserInfo.updateOne({Creator:req.query.userId },{sport: req.body.sport})
                                      }    
             if(req.body.club){
-                                     await UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
+                                      UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
                                          }     
             
     });
-    router.post("/infoEdComp1",
+    router.post("/infoEdComp1", checkAuth,
     async(req, res, next) => {
         console.log('application', req.body.CodeCompleted)
     if(req.body.CodeCompleted){

@@ -312,10 +312,7 @@ export class AuthService {
     sport: string,
     club: string,
     pronoun: string,
-    // followers: string,
-    // followings: string,
     profilePic: File
-    // showCase?: File
   ): any {
     const userData = new FormData();
     userData.append('name', name);
@@ -347,8 +344,6 @@ export class AuthService {
             sport,
             club,
             pronoun,
-            // followers,
-            // followings,
             ProfilePicPath: responseData.post.ProfilePicPath,
           };
           this.router.navigate(['/profile']).then(() => {
@@ -374,13 +369,7 @@ export class AuthService {
     CodeCompleted4: string,
     CodeCompleted5: string
   ): any {
-    const authDataInfo = {
-      CodeCompleted,
-      CodeCompleted2,
-      CodeCompleted3,
-      CodeCompleted4,
-      CodeCompleted5,
-    };
+    console.log('she loves me', CodeCompleted);
     const userData = new FormData();
     userData.append('CodeCompleted', CodeCompleted);
     userData.append('CodeCompleted2', CodeCompleted2);
@@ -388,7 +377,7 @@ export class AuthService {
     userData.append('CodeCompleted4', CodeCompleted4);
     userData.append('CodeCompleted5', CodeCompleted5);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .post<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp1',
         userData,
         { params: { userId } }
@@ -396,7 +385,7 @@ export class AuthService {
       .subscribe({
         next: (responseData) => {
           const post: AuthDataInfo = {
-            // id: responseData.post.id,
+            id: responseData.post.id,
             CodeCompleted,
             CodeCompleted2,
             CodeCompleted3,
