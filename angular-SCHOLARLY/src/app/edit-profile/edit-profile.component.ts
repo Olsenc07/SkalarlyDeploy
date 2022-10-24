@@ -288,7 +288,7 @@ export class EditProfileComponent implements OnInit {
   }
   clearBio(): void {
     this.bio.setValue('');
-    this.authServiceEdit.editUserMajor(this.userId, this.bio.value);
+    this.authServiceEdit.editUserBio(this.userId, this.bio.value);
     this.snackBar.open('Bio cleared!', 'Nice!', {
       duration: 2000,
     });

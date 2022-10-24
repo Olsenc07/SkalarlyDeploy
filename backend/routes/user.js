@@ -419,6 +419,8 @@ async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{sport: ''})
 })
 // edit info
+// Break this up chase into different routes and edit.serivice.ts
+// infoEd broken up!!
 const pic_ = multer({ storage: storage2, limits})
 router.post("/infoEd", checkAuth,
     pic_.single('profilePic'),
@@ -458,126 +460,177 @@ router.post("/infoEd", checkAuth,
             if(req.body.club){
                                      await UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
                                          }     
-            if(req.body.CodeCompleted){
-                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: req.body.CodeCompleted})
-                                                }    
-                                                if(req.body.CodeCompleted2){
-                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted2: req.body.CodeCompleted2})
-                                                        }               if(req.body.CodeCompleted3){
-                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted3: req.body.CodeCompleted3})
-                                                                }               if(req.body.CodeCompleted4){
-                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted4: req.body.CodeCompleted4})
-                                                                        }               if(req.body.CodeCompleted5){
-                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted5: req.body.CodeCompleted5})
-                                                                                }               if(req.body.CodeCompleted6){
-                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted6: req.body.CodeCompleted6})
-                                                                                        }               if(req.body.CodeCompleted7){
-                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted7: req.body.CodeCompleted7})
-                                                                                                }               if(req.body.CodeCompleted8){
-                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted8: req.body.CodeCompleted8})
-                                                                                                        }               if(req.body.CodeCompleted9){
-                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted9: req.body.CodeCompleted9})
-                                                                                                                }               if(req.body.CodeCompleted10){
-                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted10: req.body.CodeCompleted10})
-                                                                                                                        }               if(req.body.CodeCompleted11){
-                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted11: req.body.CodeCompleted11})
-                                                                                                                                }               if(req.body.CodeCompleted12){
-                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted12: req.body.CodeCompleted12})
-                                                                                                                                        }               if(req.body.CodeCompleted13){
-                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted13: req.body.CodeCompleted13})
-                                                                                                                                                }               if(req.body.CodeCompleted14){
-                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted14: req.body.CodeCompleted14})
-                                                                                                                                                        }               if(req.body.CodeCompleted15){
-                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted15: req.body.CodeCompleted15})
-                                                                                                                                                                }               if(req.body.CodeCompleted16){
-                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted16: req.body.CodeCompleted16})
-                                                                                                                                                                        }               if(req.body.CodeCompleted17){
-                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted17: req.body.CodeCompleted17})
-                                                                                                                                                                                }               if(req.body.CodeCompleted18){
-                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted18: req.body.CodeCompleted18})
-                                                                                                                                                                                        }               if(req.body.CodeCompleted19){
-                                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted19: req.body.CodeCompleted19})
-                                                                                                                                                                                                }               if(req.body.CodeCompleted20){
-                                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted20: req.body.CodeCompleted20})
-                                                                                                                                                                                                        }               if(req.body.CodeCompleted21){
-                                                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted21: req.body.CodeCompleted21})
-                                                                                                                                                                                                                }               if(req.body.CodeCompleted22){
-                                                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted22: req.body.CodeCompleted22})
-                                                                                                                                                                                                                        }               if(req.body.CodeCompleted23){
-                                                                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted23: req.body.CodeCompleted23})
-                                                                                                                                                                                                                                }               if(req.body.CodeCompleted24){
-                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted24: req.body.CodeCompleted24})
-                                                }               if(req.body.CodeCompleted25){
-                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted25: req.body.CodeCompleted25})
-                                                        }               if(req.body.CodeCompleted26){
-                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted26: req.body.CodeCompleted26})
-                                                                }               if(req.body.CodeCompleted27){
-                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted27: req.body.CodeCompleted27})
-                                                                        }               if(req.body.CodeCompleted28){
-                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted28: req.body.CodeCompleted28})
-                                                                                }               if(req.body.CodeCompleted29){
-                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted29: req.body.CodeCompleted29})
-                                                                                        }     if(req.body.CodeCompleted30){
-                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted30: req.body.CodeCompleted30})
-                                                                                                }               if(req.body.CodeCompleted31){
-                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted31: req.body.CodeCompleted31})
-                                                                                                        }               if(req.body.CodeCompleted32){
-                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted32: req.body.CodeCompleted32})
-                                                                                                                }               if(req.body.CodeCompleted33){
-                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted33: req.body.CodeCompleted33})
-                                                                                                                        }               if(req.body.CodeCompleted34){
-                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted34: req.body.CodeCompleted34})
-                                                                                                                                }   
-                                                                                                                                if(req.body.CodeCompleted35){
-                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted35: req.body.CodeCompleted35})
-                                                                                                                                        }               if(req.body.CodeCompleted36){
-                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted36: req.body.CodeCompleted36})
-                                                                                                                                                }               if(req.body.CodeCompleted37){
-                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted37: req.body.CodeCompleted37})
-                                                                                                                                                        }               if(req.body.CodeCompleted38){
-                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted38: req.body.CodeCompleted38})
-                                                                                                                                                                }               if(req.body.CodeCompleted39){
-                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted39: req.body.CodeCompleted39})
-                                                                                                                                                                        }   
-                                                                                                                                                                        if(req.body.CodeCompleted40){
-                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted40: req.body.CodeCompleted40})
-                                                                                                                                                                                }               if(req.body.CodeCompletedX){
-                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodeCompletedX: req.body.CodeCompletedX})
-                                                                                                                                                                                        } 
-
-
-                                                                                                                                                                        if(req.body.CodePursuing){
-                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing: req.body.CodePursuing})
-                                                                                                                                                                                }    
-                                                                                                                                                                                if(req.body.CodePursuing2){
-                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing2: req.body.CodePursuing2})
-                                                                                                                                                                                        }               if(req.body.CodePursuing3){
-                                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing3: req.body.CodePursuing3})
-                                                                                                                                                                                                }               if(req.body.CodePursuing4){
-                                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing4: req.body.CodePursuing4})
-                                                                                                                                                                                                        }               if(req.body.CodePursuing5){
-                                                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing5: req.body.CodePursuing5})
-                                                                                                                                                                                                                }               if(req.body.CodePursuing6){
-                                                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing6: req.body.CodePursuing6})
-                                                                                                                                                                                                                        }               if(req.body.CodePursuing7){
-                                                                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing7: req.body.CodePursuing7})
-                                                                                                                                                                                                                                }               if(req.body.CodePursuing8){
-                                                                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing8: req.body.CodePursuing8})
-                                                                                                                                                                                                                                        }               if(req.body.CodePursuing9){
-                                                                                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing9: req.body.CodePursuing9})
-                                                                                                                                                                                                                                                }               if(req.body.CodePursuing10){
-                                                                                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing10: req.body.CodePursuing10})
-                                                                                                                                                                                                                                                        }               if(req.body.CodePursuing11){
-                                                                                                                                                                                                                                                            await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing11: req.body.CodePursuing11})
-                                                                                                                                                                                                                                                                }               if(req.body.CodePursuing12){
-                                                                                                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing12: req.body.CodePursuing12})
-                                                                                                                                                                                                                                                                }         if(req.body.CodePursuing13){
-                                                                                                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing13: req.body.CodePursuing13})
-                                                                                                                                                                                                                                                                }         if(req.body.CodePursuing14){
-                                                                                                                                                                                                                                                                    await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing14: req.body.CodePursuing14})
-                                                                                                                                                                                                                                                                }
+            
     });
+    router.post("/infoEdComp1", checkAuth,
+    async(req, res, next) => {
+    if(req.body.CodeCompleted){
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: req.body.CodeCompleted})
+            }    
+            if(req.body.CodeCompleted2){
+                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted2: req.body.CodeCompleted2})
+                    }               if(req.body.CodeCompleted3){
+                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted3: req.body.CodeCompleted3})
+                            }               if(req.body.CodeCompleted4){
+                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted4: req.body.CodeCompleted4})
+                                    }               if(req.body.CodeCompleted5){
+                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted5: req.body.CodeCompleted5})
+                                            }               
+                                        })
 
+                                        router.post("/infoEdComp1W", checkAuth,
+                                        async(req, res, next) => {
+
+                                      if(req.body.CodeCompleted6){
+                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted6: req.body.CodeCompleted6})
+                                                    }               if(req.body.CodeCompleted7){
+                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted7: req.body.CodeCompleted7})
+                                                            }               if(req.body.CodeCompleted8){
+                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted8: req.body.CodeCompleted8})
+                                                                    }               if(req.body.CodeCompleted9){
+                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted9: req.body.CodeCompleted9})
+                                                                            }               if(req.body.CodeCompleted10){
+                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted10: req.body.CodeCompleted10})
+                                                                                    }     
+                                                                                    
+                                                                                });
+
+router.post("/infoEdComp2", checkAuth,
+ async(req, res, next) => {                                                                
+ if(req.body.CodeCompleted11){
+ await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted11: req.body.CodeCompleted11})
+ }               if(req.body.CodeCompleted12){
+                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted12: req.body.CodeCompleted12})
+                                                                                                    }               if(req.body.CodeCompleted13){
+                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted13: req.body.CodeCompleted13})
+                                                                                                            }               if(req.body.CodeCompleted14){
+                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted14: req.body.CodeCompleted14})
+                                                                                                                    }               if(req.body.CodeCompleted15){
+                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted15: req.body.CodeCompleted15})
+                                                                                                                            }        
+                                                                                                                        });
+                                                                                                                        router.post("/infoEdComp2W", checkAuth,
+ async(req, res, next) => {      
+                                                                                                                            if(req.body.CodeCompleted16){
+                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted16: req.body.CodeCompleted16})
+                                                                                                                                    }               if(req.body.CodeCompleted17){
+                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted17: req.body.CodeCompleted17})
+                                                                                                                                            }               if(req.body.CodeCompleted18){
+                                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted18: req.body.CodeCompleted18})
+                                                                                                                                                    }               if(req.body.CodeCompleted19){
+                                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted19: req.body.CodeCompleted19})
+                                                                                                                                                            }               if(req.body.CodeCompleted20){
+                                                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted20: req.body.CodeCompleted20})
+                                                                                                                                                                    }       
+                                                                                                                                                                });
+                                                                                                                                                                router.post("/infoEdComp3", checkAuth,
+                                                                                                                                                                async(req, res, next) => {  
+                                                                                                                                                                    if(req.body.CodeCompleted21){
+                                                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted21: req.body.CodeCompleted21})
+                                                                                                                                                                            }               if(req.body.CodeCompleted22){
+                                                                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted22: req.body.CodeCompleted22})
+                                                                                                                                                                                    }               if(req.body.CodeCompleted23){
+                                                                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted23: req.body.CodeCompleted23})
+                                                                                                                                                                                            }               if(req.body.CodeCompleted24){
+        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted24: req.body.CodeCompleted24})
+            }               if(req.body.CodeCompleted25){
+                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted25: req.body.CodeCompleted25})
+                    }   
+                })
+                router.post("/infoEdComp3W", checkAuth,
+ async(req, res, next) => {  
+                    if(req.body.CodeCompleted26){
+                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted26: req.body.CodeCompleted26})
+                            }               if(req.body.CodeCompleted27){
+                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted27: req.body.CodeCompleted27})
+                                    }               if(req.body.CodeCompleted28){
+                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted28: req.body.CodeCompleted28})
+                                            }               if(req.body.CodeCompleted29){
+                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted29: req.body.CodeCompleted29})
+                                                    }     if(req.body.CodeCompleted30){
+                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted30: req.body.CodeCompleted30})
+                                                            }          
+                                                        })
+                                                        router.post("/infoEdComp4", checkAuth,
+ async(req, res, next) => {  
+                                                            if(req.body.CodeCompleted31){
+                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted31: req.body.CodeCompleted31})
+                                                                    }               if(req.body.CodeCompleted32){
+                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted32: req.body.CodeCompleted32})
+                                                                            }               if(req.body.CodeCompleted33){
+                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted33: req.body.CodeCompleted33})
+                                                                                    }               if(req.body.CodeCompleted34){
+                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted34: req.body.CodeCompleted34})
+                                                                                            }   
+                                                                                            if(req.body.CodeCompleted35){
+                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted35: req.body.CodeCompleted35})
+                                                                                                    }         
+                                                                                                });
+                                                                                                
+                                                                                                router.post("/infoEdComp4W", checkAuth,
+ async(req, res, next) => {  
+                                                                                                    if(req.body.CodeCompleted36){
+                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted36: req.body.CodeCompleted36})
+                                                                                                            }               if(req.body.CodeCompleted37){
+                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted37: req.body.CodeCompleted37})
+                                                                                                                    }               if(req.body.CodeCompleted38){
+                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted38: req.body.CodeCompleted38})
+                                                                                                                            }               if(req.body.CodeCompleted39){
+                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted39: req.body.CodeCompleted39})
+                                                                                                                                    }   
+                                                                                                                                    if(req.body.CodeCompleted40){
+                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted40: req.body.CodeCompleted40})
+                                                                                                                                            }               if(req.body.CodeCompletedX){
+                                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompletedX: req.body.CodeCompletedX})
+                                                                                                                                                    } 
+
+                                                                                                                                                })
+
+                                                                                                                                                router.post("/infoEdPur", checkAuth,
+                                                                                                                                                        async(req, res, next) => {  
+                                                                                                                                    if(req.body.CodePursuing){
+                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing: req.body.CodePursuing})
+                                                                                                                                            }    
+                                                                                                                                            if(req.body.CodePursuing2){
+                                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing2: req.body.CodePursuing2})
+                                                                                                                                                    }               if(req.body.CodePursuing3){
+                                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing3: req.body.CodePursuing3})
+                                                                                                                                                            }               if(req.body.CodePursuing4){
+                                                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing4: req.body.CodePursuing4})
+                                                                                                                                                                    }               if(req.body.CodePursuing5){
+                                                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing5: req.body.CodePursuing5})
+                                                                                                                                                                            }    
+                                                                                                                                                                        })
+                                                                                                                                                                        router.post("/infoEdPurW", checkAuth,
+                                                                                                                                                                        async(req, res, next) => {  
+                                                                                                                                                                            if(req.body.CodePursuing6){
+                                                                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing6: req.body.CodePursuing6})
+                                                                                                                                                                                    }               if(req.body.CodePursuing7){
+                                                                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing7: req.body.CodePursuing7})
+                                                                                                                                                     }               if(req.body.CodePursuing8){
+                                                                                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing8: req.body.CodePursuing8})
+                                                                                                                                                                                                    }               if(req.body.CodePursuing9){
+                                                                                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing9: req.body.CodePursuing9})
+                                                                                                                                                                                                            }               if(req.body.CodePursuing10){
+                                                                                                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing10: req.body.CodePursuing10})
+                                                                                                                                                                                                                    }      
+                                                                                                                                                                                                                })
+                                                                                                                                                                                                                router.post("/infoEdPurSpring", checkAuth,
+                                                                                                                                                                                                                async(req, res, next) => {  
+                                                                                                                                                                                                                    if(req.body.CodePursuing11){
+                                                                                                                                                                                                                        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing11: req.body.CodePursuing11})
+                                                                                                                                                                                                                            }               if(req.body.CodePursuing12){
+                                                                                                                                                                                                                                await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing12: req.body.CodePursuing12})
+                                                                                                                                                                                                                            }     
+                                                                                                                                                                                                                        })
+                                                                                                                                                                                                                        router.post("/infoEdPurSummer", checkAuth,
+                                                                                                                                                                                                                        async(req, res, next) => {  
+                                                                                                                                                                                                                            if(req.body.CodePursuing13){
+await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing13: req.body.CodePursuing13})
+}         if(req.body.CodePursuing14){
+ await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing14: req.body.CodePursuing14})
+               }
+            })
 
 
 

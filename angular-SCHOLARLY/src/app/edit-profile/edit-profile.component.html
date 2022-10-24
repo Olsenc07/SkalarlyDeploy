@@ -92,7 +92,7 @@
 
               <input matInput  maxlength="60" 
                [formControl]="name" type="text" placeholder="Full name" class="inputText"/>
-              <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearName()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button>
               
@@ -159,7 +159,7 @@
 
             <input matInput   
                [formControl]="bio" type="text" placeholder="Bio" class="inputText"/>
-              <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearBio()">
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearBio()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button>
    
@@ -204,7 +204,7 @@
 <mat-label *ngIf="info.major">{{info.major}}</mat-label>
 <mat-label *ngIf="!info.major">Major(s)</mat-label>
       <input class="major" maxlength="50" matInput placeholder="Major" [formControl]="major" />
-      <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearMajor()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
     </mat-form-field>
@@ -226,7 +226,7 @@
 <mat-label *ngIf="info.minor">{{info.minor}}</mat-label>
 <mat-label *ngIf="!info.minor">Minor(s)</mat-label>
       <input class="major" maxlength="50" matInput placeholder="Minor" [formControl]="minor" />
-      <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearMinor()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
     </mat-form-field>
@@ -250,7 +250,7 @@
 <mat-label *ngIf="info.sport">{{info.sport}}</mat-label>
 <mat-label *ngIf="!info.sport">Do you play a sport?</mat-label>
     <input matInput  placeholder="Do you play a sport?" [formControl]="sport" />
-    <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearSport()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearSport()">
       <mat-icon class="asthetic-adds">close</mat-icon>
     </button>
 
@@ -272,7 +272,7 @@
 <mat-label *ngIf="info.club">{{info.club}}</mat-label>
 <mat-label *ngIf="!info.club">Are you apart of a club?</mat-label>
     <input class="major"  matInput placeholder="Are you apart of a club?" [formControl]="club" />
-    <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" matTooltip="Clear" (click)="clearClub()">
+    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" matTooltip="Clear" (click)="clearClub()">
       <mat-icon class="asthetic-adds">close</mat-icon>
     </button>
 
