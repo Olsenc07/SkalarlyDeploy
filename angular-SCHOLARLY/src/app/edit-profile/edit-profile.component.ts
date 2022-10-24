@@ -296,16 +296,17 @@ export class EditProfileComponent implements OnInit {
 
   clearMajor(): void {
     this.major.setValue('');
+    this.authServiceEdit.editUserMajor(this.userId, this.major.value);
   }
   clearMinor(): void {
     this.minor.setValue('');
+    this.authServiceEdit.editUserMinor(this.userId, this.minor.value);
   }
   clearSport(): void {
     this.sport.setValue('');
+    this.authServiceEdit.editUserSport(this.userId, this.sport.value);
   }
   clearClub(): void {
-    this.club.reset;
-    console.log('brain1', this.club.value);
     this.club.setValue('');
     console.log('brain2', this.club.value);
     this.authServiceEdit.editUserClub(this.userId, this.club.value);
