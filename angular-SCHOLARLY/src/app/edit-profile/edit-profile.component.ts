@@ -400,11 +400,6 @@ export class EditProfileComp1Component implements OnInit {
   CodeCompleted3: FormControl = new FormControl('');
   CodeCompleted4: FormControl = new FormControl('');
   CodeCompleted5: FormControl = new FormControl('');
-  CodeCompleted6: FormControl = new FormControl('');
-  CodeCompleted7: FormControl = new FormControl('');
-  CodeCompleted8: FormControl = new FormControl('');
-  CodeCompleted9: FormControl = new FormControl('');
-  CodeCompleted10: FormControl = new FormControl('');
 
   constructor(
     public authService: AuthService,

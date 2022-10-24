@@ -38,7 +38,7 @@
       <mat-form-field class="example-chip-list">
         <mat-label *ngIf="!info.CodeCompleted2">Completed Course</mat-label>
         <mat-label>{{info.CodeCompleted2}}</mat-label>
-        <mat-select placeholder="Choose completed course 2" #codeInput [formControl]="CodeCompleted2" >
+        <!-- <mat-select placeholder="Choose completed course 2" #codeInput [formControl]="CodeCompleted2" >
 
           <mat-option *ngFor="let code of CodeCompleted.value" 
           (removed)="onRemoved(code)" >
@@ -48,8 +48,10 @@
             <mat-option *ngFor="let code of FilteredCodes" [value]="code">
               {{code}}
             </mat-option>
-      
-      </mat-select>
+       -->
+      <!-- </mat-select> -->
+      <input matInput maxlength="8" [formControl]="CodeCompleted2"> 
+
       </mat-form-field>
     </div>
 <!-- 3 -->
@@ -61,7 +63,7 @@
         <mat-label *ngIf="!info.CodeCompleted3">Completed Course</mat-label>
 
         <mat-label>{{info.CodeCompleted3}}</mat-label>
-        <mat-select placeholder="Choose completed course 3"  #codeInput  [formControl]="CodeCompleted3" >
+        <!-- <mat-select placeholder="Choose completed course 3"  #codeInput  [formControl]="CodeCompleted3" >
 
           <mat-option *ngFor="let code of CodeCompleted.value" 
           (removed)="onRemoved(code)" [removable]="true">
@@ -73,7 +75,9 @@
               {{code}}
             </mat-option>
       
-      </mat-select>
+      </mat-select> -->
+      <input matInput maxlength="8" [formControl]="CodeCompleted3"> 
+
       </mat-form-field>
     </div>
 <!-- 4 -->
@@ -85,7 +89,7 @@
         <mat-label *ngIf="!info.CodeCompleted4">Completed Course</mat-label>
 
         <mat-label>{{info.CodeCompleted4}}</mat-label>
-        <mat-select placeholder="Choose completed course 4"  #codeInput  [formControl]="CodeCompleted4" >
+        <!-- <mat-select placeholder="Choose completed course 4"  #codeInput  [formControl]="CodeCompleted4" >
 
           <mat-option *ngFor="let code of CodeCompleted.value" 
           (removed)="onRemoved(code)" [removable]="true">
@@ -97,7 +101,9 @@
               {{code}}
             </mat-option>
       
-      </mat-select>
+      </mat-select> -->
+      <input matInput maxlength="8" [formControl]="CodeCompleted4"> 
+
       </mat-form-field>
     </div>
 
@@ -109,7 +115,7 @@
 <mat-form-field class="example-chip-list">
   <mat-label *ngIf="!info.CodeCompleted5">Completed Course</mat-label>
 <mat-label>{{info.CodeCompleted5}}</mat-label>
-<mat-select placeholder="Choose completed course 5" #codeInput [formControl]="CodeCompleted5" >
+<!-- <mat-select placeholder="Choose completed course 5" #codeInput [formControl]="CodeCompleted5" >
 
 <mat-option *ngFor="let code of CodeCompleted.value" 
 (removed)="onRemoved(code)" [removable]="true">
@@ -121,7 +127,9 @@
   {{code}}
 </mat-option>
 
-</mat-select>
+</mat-select> -->
+<input matInput maxlength="8" [formControl]="CodeCompleted5"> 
+
 </mat-form-field>
 </div>
 
