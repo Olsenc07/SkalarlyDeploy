@@ -309,6 +309,7 @@ export class EditProfileComponent implements OnInit {
       value.club = '';
       console.log('brain', value.club);
     }
+    this.club.reset;
   }
 
   clearName(): void {
