@@ -516,4 +516,527 @@ export class AuthServiceEditCourse {
         },
       });
   }
+  // Completed21
+  editUserCourse21(userId: string, CodeCompleted21: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted21', CodeCompleted21);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse21',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted21,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed22
+  editUserCourse22(userId: string, CodeCompleted22: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted22', CodeCompleted22);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse22',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted22,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed23
+  editUserCourse23(userId: string, CodeCompleted23: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted23', CodeCompleted23);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse23',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted23,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed24
+  editUserCourse24(userId: string, CodeCompleted24: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted24', CodeCompleted24);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse24',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted24,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed 25
+  editUserCourse25(userId: string, CodeCompleted25: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted25', CodeCompleted25);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse25',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted25,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  } // Completed26
+  editUserCourse26(userId: string, CodeCompleted26: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted26', CodeCompleted26);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse26',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted26,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  } // Completed27
+  editUserCourse27(userId: string, CodeCompleted27: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted27', CodeCompleted27);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse27',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted27,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed28
+  editUserCourse28(userId: string, CodeCompleted28: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted28', CodeCompleted28);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse28',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted28,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed29
+  editUserCourse29(userId: string, CodeCompleted29: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted29', CodeCompleted29);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse29',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted29,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed30
+  editUserCourse30(userId: string, CodeCompleted30: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted30', CodeCompleted30);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse30',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted30,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed31
+  editUserCourse31(userId: string, CodeCompleted31: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted31', CodeCompleted31);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse31',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted31,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed32
+  editUserCourse32(userId: string, CodeCompleted32: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted32', CodeCompleted32);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse32',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted32,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed33
+  editUserCourse33(userId: string, CodeCompleted33: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted33', CodeCompleted33);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse33',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted33,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed34
+  editUserCourse34(userId: string, CodeCompleted34: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted34', CodeCompleted34);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse34',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted34,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed35
+  editUserCourse35(userId: string, CodeCompleted35: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted35', CodeCompleted35);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse35',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted35,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed36
+  editUserCourse36(userId: string, CodeCompleted36: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted36', CodeCompleted36);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse36',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted36,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed37
+  editUserCourse37(userId: string, CodeCompleted37: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted37', CodeCompleted37);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse37',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted37,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed38
+  editUserCourse38(userId: string, CodeCompleted38: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted38', CodeCompleted38);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse38',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted38,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed39
+  editUserCourse39(userId: string, CodeCompleted39: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted39', CodeCompleted39);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse39',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted39,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Completed40
+  editUserCourse40(userId: string, CodeCompleted40: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompleted40', CodeCompleted40);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse40',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompleted40,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // CompletedX
+  editUserCourseX(userId: string, CodeCompletedX: string): any {
+    const userData = new FormData();
+    userData.append('CodeCompletedX', CodeCompletedX);
+    this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoCourse40',
+        userData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodeCompletedX,
+          };
+
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
 }
