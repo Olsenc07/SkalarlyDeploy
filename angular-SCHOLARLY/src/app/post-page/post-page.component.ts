@@ -228,6 +228,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     const NextBtn2 = document.getElementById('nextBtn2');
     NextBtn2.scrollIntoView();
   }
+
   adjustView(): void {
     const NextBtn = document.getElementById('nextBtn');
     NextBtn.scrollIntoView();
@@ -290,9 +291,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.event.value,
       this.form.get('upload').value
     );
-    this.router.navigate(['/main/:'], {
-      queryParams: { category: this.postLocation.value },
-    });
+    // this.router.navigate(['/main/:'], {
+    //   queryParams: { category: this.postLocation.value },
+    // });
+    this.router.navigate(['/profile']);
   }
 
   changeTab(): void {

@@ -301,7 +301,14 @@ export class EditProfileComponent implements OnInit {
   }
   clearClub(): void {
     this.club.setValue('');
-    console.log('booger aids', this.infos);
+    console.log('booger aids', this.infos.values());
+    const club = this.infos.values();
+    for (const value of club) {
+      console.log('4 pack', value);
+      console.log('six pack', value.club);
+      value.club = '';
+      console.log('brain', value.club);
+    }
   }
 
   clearName(): void {
