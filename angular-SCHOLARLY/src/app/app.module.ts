@@ -111,6 +111,8 @@ import { SearchListService } from './services/search.service';
 import { PostService } from './services/post.service';
 import { ClassListService } from './services/class.service';
 import { AuthService } from './services/auth.service';
+import { AuthServiceEdit } from './services/edit.service';
+
 import { FollowService } from './services/follow.service';
 
 import { CommentsService } from './services/comments.service';
@@ -222,6 +224,7 @@ import { ErrorInterceptor } from './error-interceptor';
     FollowService,
     ClassListService,
     AuthService,
+    AuthServiceEdit,
     CommentsService,
     MessageService,
     MessageNotificationService,

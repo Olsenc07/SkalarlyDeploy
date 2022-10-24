@@ -388,6 +388,17 @@ router.post("/info",
     })
     });
 
+// edit club
+router.post("/infoClub", checkAuth,
+async(req, res, next) => {
+    console.log('eminem', req.body.club )
+    console.log('logic', req.query.userId )
+
+        await UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
+        .then((baby) =>
+console.log('j.cole', baby )
+)
+})
 
 // edit info
 const pic_ = multer({ storage: storage2, limits})

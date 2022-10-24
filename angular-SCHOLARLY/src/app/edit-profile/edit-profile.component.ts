@@ -22,6 +22,8 @@ import { Observable } from 'rxjs';
 import { ClassListService } from '../services/class.service';
 import { Post, PostService } from '../services/post.service';
 import { AuthService } from '../services/auth.service';
+import { AuthServiceEdit } from '../services/edit.service';
+
 import { Subscription } from 'rxjs';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { ShowCaseService } from '../services/showCase.service';
@@ -132,6 +134,8 @@ export class EditProfileComponent implements OnInit {
     public dialog: MatDialog,
     public classListService: ClassListService,
     public authService: AuthService,
+    public authServiceEdit: AuthServiceEdit,
+
     public showCaseService: ShowCaseService,
     public postService: PostService
   ) {
@@ -300,16 +304,11 @@ export class EditProfileComponent implements OnInit {
     this.sport.setValue('');
   }
   clearClub(): void {
-    this.club.setValue('');
-    console.log('booger aids', this.infos.values());
-    const club = this.infos.values();
-    for (const value of club) {
-      console.log('4 pack', value);
-      console.log('six pack', value.club);
-      value.club = '';
-      console.log('brain', value.club);
-    }
     this.club.reset;
+    console.log('brain1', this.club.value);
+    this.club.setValue('');
+    console.log('brain2', this.club.value);
+    this.authServiceEdit.editUserClub(this.userId, this.club.value);
   }
 
   clearName(): void {
