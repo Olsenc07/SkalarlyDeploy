@@ -49,12 +49,12 @@
 
           <!-- <div class="loginBtn"> -->
          
-
-          <button type="submit" mat-raised-button [disabled]="!email.valid || !password.valid"
+          <mat-chip-list>
+          <mat-chip type="submit" mat-raised-button [disabled]="!email.valid || !password.valid"
             color="primary" class="action-button top" *ngIf="!isLoading" routerLink="/search" >
             Log In
-          </button>
-
+          </mat-chip>
+        </mat-chip-list>
           <!-- <mat-spinner  *ngIf="isLoading"></mat-spinner> -->
 
           <div  *ngIf="isLoading"  class=" top">
@@ -72,10 +72,11 @@
           </button>
           
           <p class="tag">Or</p>
-        
-          <button type="button" mat-raised-button routerLink="/sign-up" color="primary" class="action-button">
+        <mat-chip-list>
+          <mat-chip type="button" mat-raised-button routerLink="/sign-up" color="primary" class="action-button">
             Create New Account
-          </button>
+          </mat-chip>
+        </mat-chip-list>
         </div>
       </div>
     </div>
