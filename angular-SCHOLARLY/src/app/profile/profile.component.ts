@@ -87,6 +87,7 @@ export class ProfileComponent implements OnInit {
     this.modal.style.display = 'block';
     this.modalImg = this.img;
   }
+  modal.style.display = "none";
   onBio(): void {
     this.dialog.open(BioComponent);
   }
