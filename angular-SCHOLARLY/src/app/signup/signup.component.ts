@@ -130,7 +130,8 @@ export class SignupComponent implements OnInit {
   ]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
   passwordV: FormControl = new FormControl('', this.noWhiteSpace);
-
+  public CodeCompletedLength = new BehaviorSubject(0);
+  public CodePursuingLength = new BehaviorSubject(0);
   major: FormControl = new FormControl('');
   minor: FormControl = new FormControl('');
   sport: FormControl = new FormControl('');
@@ -686,6 +687,12 @@ export class SignupComponent implements OnInit {
         asyncValidators: [mimeType],
       }),
     });
+    this.CodeCompleted.valueChanges.subscribe((v) =>
+      this.CodeCompletedLength.next(v.length)
+    );
+    this.CodePursuing.valueChanges.subscribe((v) =>
+      this.CodePursuingLength.next(v.length)
+    );
   }
 }
 @Component({
