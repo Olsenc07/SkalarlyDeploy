@@ -958,9 +958,7 @@ mat-tab-group {
     margin-right: 2%;
   }
 }
-.white{
-  color: white;
-}
+
 .words {
   display: flex;
   flex-direction: column;
@@ -1050,6 +1048,12 @@ font-size: 40px;
 font-weight: 700;
 transition: .3s;
 color: white;
+
+left: 85%;
+font-size: 40px;
+font-weight: 700;
+transition: .3s;
+color: #fff;
 }
 
 .close:hover,

@@ -80,10 +80,8 @@ export class ProfileComponent implements OnInit {
     //   // return name;
     // })
   }
-  imgClick(showCase): any {
+  imgClick(): any {
     document.getElementById('myModal').style.display = 'block';
-    const IMG = document.getElementById('img01') as HTMLImageElement;
-    document.getElementById('myImg');
     console.log('hey good lookin', showCase);
   }
   close(): any {
