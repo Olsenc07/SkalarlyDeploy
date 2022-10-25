@@ -41,7 +41,14 @@ export class ProfileComponent implements OnInit {
   userId: string;
   userIsAuthenticated = false;
   //  Showcase Img popup
+  modal = document.getElementById('myModal');
 
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  img = document.getElementById('myImg');
+  modalImg = document.getElementById('img01');
+  captionText = document.getElementById('caption');
+  // Get the <span> element that closes the modal
+  span = document.getElementsByClassName('close')[0];
   // private authStatusSubs: Subscription;
   private authListenerSubs: Subscription;
 
@@ -75,7 +82,11 @@ export class ProfileComponent implements OnInit {
     //   // return name;
     // })
   }
-
+  imgClick() {
+    console.log('hey good lookin');
+    this.modal.style.display = 'block';
+    this.modalImg = this.img;
+  }
   onBio(): void {
     this.dialog.open(BioComponent);
   }
