@@ -40,8 +40,6 @@ export class ProfileComponent implements OnInit {
 
   userId: string;
   userIsAuthenticated = false;
-  //  Showcase Img popup
-  modal = document.getElementById('myModal');
 
   // Get the image and insert it inside the modal - use its "alt" text as a caption
   img = document.getElementById('myImg');
@@ -84,11 +82,11 @@ export class ProfileComponent implements OnInit {
   }
   imgClick() {
     console.log('hey good lookin');
-    this.modal.style.display = 'block';
+    document.getElementById('myModal').style.display = 'block';
     // this.modalImg = this.img;
   }
   close() {
-    this.modal.style.display = 'none';
+    document.getElementById('myModal').style.display = 'none';
     console.log('hey good lookin');
   }
   onBio(): void {
