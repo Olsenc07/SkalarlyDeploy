@@ -986,7 +986,10 @@ mat-tab-group {
   }
 }
 // Zoom in on photo
-
+#myImg {
+  cursor: pointer;
+  transition: 0.3s;
+}
 #myImg:hover {opacity: 0.7;}
 
 /* The Modal (background) */
