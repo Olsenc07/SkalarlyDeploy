@@ -359,8 +359,7 @@ font-family: 'Cinzel', serif;
 }
 .trashCan{
   display: flex;
-  // justify-content: flex-end;
-  position: absolute;
+  justify-content: flex-end;
 }
 .middle-card {
   display: flex;

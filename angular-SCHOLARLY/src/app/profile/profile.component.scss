@@ -927,7 +927,8 @@ mat-tab-group {
 }
 .trashCan{
   display: flex;
-  justify-content: flex-end;
+  // justify-content: flex-end;
+  position: absolute;
 }
 .uNameMsg {
   display: flex;
