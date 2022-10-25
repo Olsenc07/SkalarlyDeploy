@@ -537,10 +537,10 @@
   
               <div class="showCase_" *ngFor="let showCase of showCases">
                 <div class="column" >
-                  <button (click)="imgClick()">
-                  <img class="img" src={{showCase.ShowCasePath}} id="myImg" />
+   
+                  <input type="image" class="img" (click)="imgClick()" src={{showCase.ShowCasePath}} id="myImg" />
                   <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
-                </button>
+     
                 </div>
                 <div class="trashCan" *ngIf='(userId === showCase.Creator) && showCase'>
                   <button  mat-icon-button matTooltip="Delete ShowCase"
