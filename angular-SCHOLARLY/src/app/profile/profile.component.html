@@ -537,7 +537,7 @@
   
               <div class="showCase_" *ngFor="let showCase of showCases">
           
-                  <button mat-button (click)="imgClick()" class="column">
+                  <button mat-button (onclick)="imgClick()" class="column">
                   <img class="img" src={{showCase.ShowCasePath}} id="myImg" />
                   <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
                 </button>
@@ -572,7 +572,7 @@ var span = document.getElementsByClassName("close")[0];
      // pop up showcase
  function imgClick() {
     modal.style.display = 'block';
-    //  this.modalImg.src = this.src;
+    modalImg.src = this.src;
     console.log('hey good lookin');
   }
   // When the user clicks on <span> (x), close the modal
