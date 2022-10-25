@@ -51,7 +51,7 @@
          
           <mat-chip-list>
             <!-- mat-raised-button -->
-          <mat-chip type="submit"  [disabled]="!email.valid || !password.valid"
+          <mat-chip type="button"  [disabled]="!email.valid || !password.valid"
             color="primary" selected class="action-button top" *ngIf="!isLoading" routerLink="/search" >
             Log In
           </mat-chip>
