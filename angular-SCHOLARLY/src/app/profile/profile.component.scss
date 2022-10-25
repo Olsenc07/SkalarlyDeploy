@@ -998,7 +998,7 @@ mat-tab-group {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 10%; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -1042,9 +1042,9 @@ mat-tab-group {
 /* The Close Button */
 .close {
   position: absolute;
-  top: 15px;
+  // top: 15px;
   right: 35px;
-  color: #f1f1f1;
+  // color: #f1f1f1;
   font-size: 40px;
   font-weight: bold;
   transition: 0.3s;

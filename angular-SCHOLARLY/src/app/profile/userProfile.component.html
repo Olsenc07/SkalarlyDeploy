@@ -557,12 +557,27 @@
                  <div class="showCase_" *ngFor="let showCase of showCases">
                   <div class="column" *ngIf="showCase.ShowCasePath">
 
-                    <img class="img" src={{showCase.ShowCasePath}} />
+                    <img class="img" src={{showCase.ShowCasePath}} id="myImg"/>
                     <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
 
                   </div>
 
                 </div>
+                <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <button mat-icon-button class="close" (click)="close()">
+    <i class="far fa-times-circle"></i>
+  </button>
+
+  <!-- Modal Content (The Image) -->
+  <img class="modal-content" src={{showCase.ShowCasePath}} id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+
+</div>
                 </div>
               </mat-tab>
             </mat-tab-group>

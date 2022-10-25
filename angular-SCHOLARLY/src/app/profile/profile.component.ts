@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
   userId: string;
   userIsAuthenticated = false;
 
-  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  // img popup
   img = document.getElementById('myImg');
   modalImg = document.getElementById('img01');
   captionText = document.getElementById('caption');
@@ -80,14 +80,13 @@ export class ProfileComponent implements OnInit {
     //   // return name;
     // })
   }
-  imgClick() {
-    console.log('hey good lookin');
+  imgClick(): any {
     document.getElementById('myModal').style.display = 'block';
-    // this.modalImg = this.img;
-  }
-  close() {
-    document.getElementById('myModal').style.display = 'none';
     console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    console.log('bye good lookin');
   }
   onBio(): void {
     this.dialog.open(BioComponent);
@@ -189,6 +188,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
+  // img popup
+  img = document.getElementById('myImg');
+  modalImg = document.getElementById('img01');
+  captionText = document.getElementById('caption');
+  // Get the <span> element that closes the modal
+  span = document.getElementsByClassName('close')[0];
 
   showFiller = false;
   // TODO: initial following value would need to be loaded from database - for now, always start with false
@@ -244,11 +249,21 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         });
     });
   }
+
   ngOnDestroy(): any {
     this.infosSubShowCase.unsubscribe();
     this.followSub.unsubscribe();
     this.infosSub.unsubscribe();
     this.followersSub.unsubscribe();
+  }
+
+  imgClick(): any {
+    document.getElementById('myModal').style.display = 'block';
+    console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    console.log('bye good lookin');
   }
   // Bio
   onBio(): void {
