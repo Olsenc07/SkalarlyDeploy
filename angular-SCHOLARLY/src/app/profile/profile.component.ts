@@ -40,6 +40,17 @@ export class ProfileComponent implements OnInit {
 
   userId: string;
   userIsAuthenticated = false;
+  //  Showcase Img popup
+  // Get the modal
+  modal = document.getElementById('myModal');
+
+  // Get the image and insert it inside the modal - use its "alt" text as a caption
+  img = document.getElementById('myImg');
+  modalImg = document.getElementById('img01');
+  captionText = document.getElementById('caption');
+  // Get the <span> element that closes the modal
+  span = document.getElementsByClassName('close')[0];
+
   // private authStatusSubs: Subscription;
   private authListenerSubs: Subscription;
 
