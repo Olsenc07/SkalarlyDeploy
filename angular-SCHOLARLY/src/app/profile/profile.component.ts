@@ -51,6 +51,16 @@ export class ProfileComponent implements OnInit {
   // Get the <span> element that closes the modal
   span = document.getElementsByClassName('close')[0];
 
+  imgClick(): any {
+    this.modal.style.display = 'block';
+    //  this.modalImg.src = this.src;
+    console.log('hey good lookin');
+  }
+  // When the user clicks on <span> (x), close the modal
+  close(): any {
+    this.modal.style.display = 'none';
+    console.log('hey good gay guy');
+  }
   // private authStatusSubs: Subscription;
   private authListenerSubs: Subscription;
 
