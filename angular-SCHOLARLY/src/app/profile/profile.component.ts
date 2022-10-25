@@ -85,9 +85,12 @@ export class ProfileComponent implements OnInit {
   imgClick() {
     console.log('hey good lookin');
     this.modal.style.display = 'block';
-    this.modalImg = this.img;
+    // this.modalImg = this.img;
   }
-  modal.style.display = "none";
+  close() {
+    this.modal.style.display = 'none';
+    console.log('hey good lookin');
+  }
   onBio(): void {
     this.dialog.open(BioComponent);
   }
