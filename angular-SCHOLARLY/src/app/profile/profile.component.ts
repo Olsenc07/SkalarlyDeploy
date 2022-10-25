@@ -82,7 +82,7 @@ export class ProfileComponent implements OnInit {
   }
   imgClick(): any {
     document.getElementById('myModal').style.display = 'block';
-    console.log('hey good lookin', showCase);
+    console.log('hey good lookin');
   }
   close(): any {
     document.getElementById('myModal').style.display = 'none';
