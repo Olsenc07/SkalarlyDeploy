@@ -199,6 +199,7 @@ overflow-y: scroll;
     flex-direction: column;
     width: 99%;
     padding: 0% 15%;
+    margin-bottom: 5%;
     height: fit-content;
     box-sizing: border-box;
   }
@@ -927,8 +928,8 @@ mat-tab-group {
 }
 .trashCan{
   display: flex;
-  // justify-content: flex-end;
-  position: absolute;
+  justify-content: flex-end;
+  // position: absolute;
 }
 .uNameMsg {
   display: flex;
@@ -956,6 +957,9 @@ mat-tab-group {
     box-sizing: border-box;
     margin-right: 2%;
   }
+}
+.white{
+  color: white;
 }
 .words {
   display: flex;
