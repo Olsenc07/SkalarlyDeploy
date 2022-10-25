@@ -50,8 +50,9 @@
           <!-- <div class="loginBtn"> -->
          
           <mat-chip-list>
-          <mat-chip type="submit" mat-raised-button [disabled]="!email.valid || !password.valid"
-            color="primary" class="action-button top" *ngIf="!isLoading" routerLink="/search" >
+            <!-- mat-raised-button -->
+          <mat-chip type="submit"  [disabled]="!email.valid || !password.valid"
+            color="primary" selected class="action-button top" *ngIf="!isLoading" routerLink="/search" >
             Log In
           </mat-chip>
         </mat-chip-list>
@@ -73,7 +74,8 @@
           
           <p class="tag">Or</p>
         <mat-chip-list>
-          <mat-chip type="button" mat-raised-button routerLink="/sign-up" color="primary" class="action-button">
+          <!-- mat-raised-button -->
+          <mat-chip type="button" selected routerLink="/sign-up" color="primary" class="action-button">
             Create New Account
           </mat-chip>
         </mat-chip-list>
