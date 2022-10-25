@@ -427,7 +427,8 @@
                     <div class="columnCoursesBox">
                       <!-- {{list}}-->
                       <div>
-                      <span class="fas fa-leaf centerIcon" *ngIf="info.CodePursuing" style="color: saddlebrown;margin-top:4%">
+                      <span class="fas fa-leaf centerIcon" *ngIf="info.CodePursuing || info.CodePursuing2 || info.CodePursuing3 || info.CodePursuing4 || info.CodePursuing5"
+                       style="color: saddlebrown;margin-top:4%">
                       </span>
                       <div class="centerIcon">
                       <mat-chip *ngIf="info.CodePursuing" class="style" color="primary" selected >
@@ -446,10 +447,11 @@
                       {{ info.CodePursuing5 }}
                     </mat-chip>
                   </div>
-                  <mat-divider *ngIf="info.CodePursuing6 "></mat-divider>
+                  <mat-divider *ngIf="info.CodePursuing6  "></mat-divider>
                   </div>
                   <div>
-                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodePursuing6" style="color: #88c4f9; margin-top:4%">
+                    <span class="fas fa-snowflake centerIcon" *ngIf="info.CodePursuing6 || info.CodePursuing7 || info.CodePursuing8 || info.CodePursuing9 || info.CodePursuing10"
+                     style="color: #88c4f9; margin-top:4%">
                     </span>
                     <div class="centerIcon">
                     <mat-chip *ngIf="info.CodePursuing6" class="style" color="primary" selected >
@@ -472,7 +474,8 @@
                 
                   </div>
                   <div>
-                    <span class="fas fa-seedling centerIcon" *ngIf="info.CodePursuing11" style="color: cadetblue; margin-top:4%">
+                    <span class="fas fa-seedling centerIcon" *ngIf="info.CodePursuing11 || info.CodePursuing12" 
+                    style="color: cadetblue; margin-top:4%">
                     </span>
                     <div class="centerIcon">
                     <mat-chip *ngIf="info.CodePursuing11" class="style" color="primary" selected >
@@ -482,7 +485,8 @@
                       {{ info.CodePursuing12 }}
                     </mat-chip>
                     <mat-divider *ngIf="info.CodePursuing13 "></mat-divider>
-                    <span class="fas fa-sun centerIcon" *ngIf="info.CodePursuing13" style="color: #d89163; margin-top:4%">
+                    <span class="fas fa-sun centerIcon" *ngIf="info.CodePursuing13 || info.CodePursuing14" 
+                    style="color: #d89163; margin-top:4%">
                     </span>
                     <mat-chip *ngIf="info.CodePursuing13" class="style" color="primary" selected >
                       {{ info.CodePursuing13 }}
