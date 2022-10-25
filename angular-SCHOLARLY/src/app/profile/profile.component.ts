@@ -80,9 +80,11 @@ export class ProfileComponent implements OnInit {
     //   // return name;
     // })
   }
-  imgClick(): any {
+  imgClick(showCase): any {
     document.getElementById('myModal').style.display = 'block';
-    console.log('hey good lookin');
+    const IMG = document.getElementById('img01') as HTMLImageElement;
+    document.getElementById('myImg');
+    console.log('hey good lookin', showCase);
   }
   close(): any {
     document.getElementById('myModal').style.display = 'none';
@@ -95,6 +97,7 @@ export class ProfileComponent implements OnInit {
   followClicked(): void {
     this.following = !this.following;
   }
+
   ngOnInit(): any {
     this.authService.getAuthData();
     this.isLoading = true;
