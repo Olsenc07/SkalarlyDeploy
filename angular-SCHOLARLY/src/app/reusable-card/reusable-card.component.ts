@@ -134,8 +134,10 @@ export class ReusableCardComponent implements OnInit {
         });
     });
   }
-  imgClick(): any {
+  imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+
     console.log('hey good lookin');
   }
   close(): any {
@@ -272,8 +274,9 @@ export class ReusableCardPersonalComponent implements OnInit {
         console.log('posts', this.posts);
       });
   }
-  imgClick(): any {
+  imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
     console.log('hey good lookin');
   }
   close(): any {
@@ -956,8 +959,10 @@ export class CardInfoMainPageComponent implements OnInit {
         });
     });
   }
-  imgClick(): any {
+  imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+
     console.log('hey good lookin');
   }
   close(): any {

@@ -148,7 +148,7 @@
       <!-- *ngFor="let show of showCases" -->
       <div class="upload" *ngIf="post.ImagePath" >
 
-        <input type="image" (click)="imgClick()" class="middle-card" src="{{post.ImagePath}}" id="myImg">
+        <input type="image" (click)="imgClick(post.ImagePath)" class="middle-card" src="{{post.ImagePath}}" id="myImg">
       </div>
                    <!-- The Modal -->
                    <div id="myModal" class="modal">
@@ -160,7 +160,7 @@
                   
                     <!-- Modal Content (The Image) -->
                     
-                    <img class="modal-content" src={{post.ImagePath}} id="img01">
+                    <img class="modal-content" src='' id="img01">
                   
                     <!-- Modal Caption (Image Text) -->
                     <div id="caption"></div>
