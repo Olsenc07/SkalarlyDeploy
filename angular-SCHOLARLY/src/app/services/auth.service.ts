@@ -1515,9 +1515,9 @@ export class AuthService {
     const token = localStorage.getItem('token');
     const expirationDate = localStorage.getItem('expiration');
     const userId = localStorage.getItem('userId');
-    if (!token || expirationDate === '0') {
+    if (!token || !expirationDate) {
       this.logout();
-      this.snackBar.open('Authentication timed out', 'Please relogin!', {
+      this.snackBar.open('Welcome back', 'Please relogin!', {
         duration: 3000,
       });
       return;
