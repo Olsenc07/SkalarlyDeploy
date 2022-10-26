@@ -1515,14 +1515,14 @@ export class AuthService {
     const token = localStorage.getItem('token');
     const expirationDate = localStorage.getItem('expiration');
     const userId = localStorage.getItem('userId');
-    // if (expirationDate === '0') {
-    //   this.logout().then(() => {
-    //     this.snackBar.open('Validation expired', 'Please relogin!', {
-    //       duration: 3000,
-    //     });
-    //   });
-    // }
-    // else {
+    if (expirationDate === '0') {
+      this.logout().then(() => {
+        this.snackBar.open('Validation expired', 'Please relogin!', {
+          duration: 3000,
+        });
+      });
+    }
+    else {
     if (!token || !expirationDate) {
       this.logout().then(() => {
         this.snackBar.open('Welcome', 'Please Login!', {
@@ -1537,7 +1537,7 @@ export class AuthService {
       expirationDate: new Date(expirationDate),
       userId,
     };
-    // }
+    }
   }
 
   // Reset Password
