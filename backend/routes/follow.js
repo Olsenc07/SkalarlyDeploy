@@ -22,8 +22,18 @@ const FOLLOW = new Follow({
     ProfilePicPathFollowing: otherUser.ProfilePicPath
 })
 FOLLOW.save().then(createdFollow => {
+    res.status(200).json({
+        message: 'Follow succesfully!',
+        messages: createdFollow
+    });
 })
 })
+})
+.catch(err => {
+    return res.status(401).json({
+        message: "Invalid follow error!",
+
+    })
 })
 })
 
@@ -56,9 +66,7 @@ await userInfo.findOne({Creator: req.query.userId})
 // Get following other
 router.get("/followInfoOther", async(req, res, next) => {
      await Follow.findOne({usernameFollower: req.query.id})
-    .then(follows => {
-        console.log('test 2_', follows)
-    
+    .then(follows => {    
         res.status(200).json({
             message: 'Follows fetched succesfully!',
             messages: follows
