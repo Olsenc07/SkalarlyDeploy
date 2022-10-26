@@ -30,8 +30,7 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
-              "src/favicon.ico",
-              "angular-SCHOLARLY/src/favicon.ico",
+              "src/faviconH.ico",
               "src/assets"
             ],
             "styles": [
