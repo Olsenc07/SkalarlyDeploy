@@ -31,6 +31,7 @@
             "aot": true,
             "assets": [
               "src/faviconH.ico",
+              "faviconH.ico",
               "src/assets"
             ],
             "styles": [
