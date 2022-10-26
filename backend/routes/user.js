@@ -23,6 +23,7 @@ cloudinary.config({
 
 // mail sender details
 var transporter = nodemailer.createTransport({
+    host: 'smtp.office365.com',
     name: 'www.skalarly.com',
     service: 'outlook365',
     auth: {
@@ -97,6 +98,7 @@ router.post("/signup", async (req, res, next) => {
                     const msg = {
                         from: ' "Verify account" <admin@skalarly.com>',
                         to: user.email,
+                        replyTo: 'Do not reply',
                         subject: 'Skalarly - verify account',
                         text: `We are excited to welcome you ${user.username} to the community!
                 Please copy and paste the link below to verify your account.
@@ -221,6 +223,7 @@ router.post('/forgot', async (req, res) => {
         const msg = {
             from: ' "Reset Password" <admin@skalarly.com>',
             to: user.email,
+            replyTo: 'Do not reply',
             subject: 'Skalarly - reset password',
             text: `Hello ${user.username} we hear you forgot your password.
         Here is your reset code ${user.password} then copy and paste the link below to navigate back
