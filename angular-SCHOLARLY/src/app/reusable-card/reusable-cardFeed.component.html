@@ -146,9 +146,24 @@
         <!-- *ngFor="let show of showCases" -->
         <div class="upload" *ngIf="post.ImagePath" >
   
-          <img class="middle-card" src="{{post.ImagePath}}">
+          <input type="image" (click)="imgClick()" class="middle-card" src="{{post.ImagePath}}" id="myImg">
         </div>
+                  <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <button mat-icon-button class="close" (click)="close()">
+    <i class="far fa-times-circle"></i>
+  </button>
+
+  <!-- Modal Content (The Image) -->
   
+  <img class="modal-content" src={{post.ImagePath}} id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+
+</div>
   
   
         <!-- Description -->

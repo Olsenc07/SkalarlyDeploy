@@ -557,7 +557,7 @@
                  <div class="showCase_" *ngFor="let showCase of showCases">
                   <div class="column" *ngIf="showCase.ShowCasePath">
 
-                    <img class="img" src={{showCase.ShowCasePath}} id="myImg"/>
+                    <input type="image" (click)="imgClick()" class="img" src={{showCase.ShowCasePath}} id="myImg"/>
                     <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
 
                   </div>
@@ -572,10 +572,10 @@
   </button>
 
   <!-- Modal Content (The Image) -->
+  <div *ngFor="let showCase of showCases">
   <img class="modal-content" src={{showCase.ShowCasePath}} id="img01">
+  </div>
 
-  <!-- Modal Caption (Image Text) -->
-  <div id="caption"></div>
 
 </div>
                 </div>

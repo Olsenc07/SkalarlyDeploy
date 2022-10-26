@@ -71,6 +71,13 @@ export class ReusableCardComponent implements OnInit {
     this.dateDay +
     '/' +
     this.dateMonth;
+
+  // img popup
+  img = document.getElementById('myImg');
+  modalImg = document.getElementById('img01');
+  captionText = document.getElementById('caption');
+  // Get the <span> element that closes the modal
+  span = document.getElementsByClassName('close')[0];
   // selectedAttend = '';
   // attendances: any = ['Attending', 'Maybe', 'Not Attending'];
   // panelOpenState = false;
@@ -126,6 +133,14 @@ export class ReusableCardComponent implements OnInit {
           console.log('posts yo', this.posts);
         });
     });
+  }
+  imgClick(): any {
+    document.getElementById('myModal').style.display = 'block';
+    console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    console.log('bye good lookin');
   }
   // Where the post was posted
   navigateToPage(value: string): void {
@@ -193,6 +208,13 @@ export class ReusableCardPersonalComponent implements OnInit {
     this.dateDay +
     '/' +
     this.dateMonth;
+
+  // img popup
+  img = document.getElementById('myImg');
+  modalImg = document.getElementById('img01');
+  captionText = document.getElementById('caption');
+  // Get the <span> element that closes the modal
+  span = document.getElementsByClassName('close')[0];
   // selectedAttend = '';
   // attendances: any = ['Attending', 'Maybe', 'Not Attending'];
   // panelOpenState = false;
@@ -249,6 +271,14 @@ export class ReusableCardPersonalComponent implements OnInit {
         this.isLoading = false;
         console.log('posts', this.posts);
       });
+  }
+  imgClick(): any {
+    document.getElementById('myModal').style.display = 'block';
+    console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    console.log('bye good lookin');
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -533,6 +563,13 @@ export class CardFeedComponent implements OnInit {
   countVisibility = 0;
   posts: Post[] = [];
 
+  // img popup
+  img = document.getElementById('myImg');
+  modalImg = document.getElementById('img01');
+  captionText = document.getElementById('caption');
+  // Get the <span> element that closes the modal
+  span = document.getElementsByClassName('close')[0];
+
   private postsSub: Subscription;
 
   infos: AuthDataInfo[] = [];
@@ -589,7 +626,14 @@ export class CardFeedComponent implements OnInit {
         this.isLoading = false;
       });
   }
-
+  imgClick(): any {
+    document.getElementById('myModal').style.display = 'block';
+    console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    console.log('bye good lookin');
+  }
   // Adding emojis
   addEmoji(event: any): any {
     const msgs = event?.detail?.unicode;
@@ -881,6 +925,12 @@ export class CardInfoMainPageComponent implements OnInit {
     '/' +
     this.dateMonth;
 
+  // img popup
+  img = document.getElementById('myImg');
+  modalImg = document.getElementById('img01');
+  captionText = document.getElementById('caption');
+  // Get the <span> element that closes the modal
+  span = document.getElementsByClassName('close')[0];
   constructor(
     private route: ActivatedRoute,
     private authService: AuthService,
@@ -904,6 +954,14 @@ export class CardInfoMainPageComponent implements OnInit {
           this.isLoading = false;
         });
     });
+  }
+  imgClick(): any {
+    document.getElementById('myModal').style.display = 'block';
+    console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    console.log('bye good lookin');
   }
   // Adding emojis
   addEmoji(event: any): any {
