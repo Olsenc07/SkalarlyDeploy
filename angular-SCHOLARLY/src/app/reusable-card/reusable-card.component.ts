@@ -628,7 +628,7 @@ export class CardFeedComponent implements OnInit {
   }
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
-    document.getElementById('img01').src = imgPath;
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
     console.log('hey good lookin');
   }
   close(): any {
