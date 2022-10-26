@@ -49,9 +49,10 @@
 
           <!-- <div class="loginBtn"> -->
          
-  
+  <!-- pattern=".+@utoronto\.ca"  pattern=".+@mail.utoronto\.ca"  pattern=".+@skalarly\.com" pattern=".+@rotman.utoronto\.ca" -->
           <button mat-button type="button" mat-raised-button (click)="onSubmit()" [disabled]="!email.valid || !password.valid"
-            color="primary" class="action-button top" *ngIf="!isLoading" routerLink="/search" >
+           
+          color="primary" class="action-button top" *ngIf="!isLoading" routerLink="/search" >
             Log In
           </button>
     
