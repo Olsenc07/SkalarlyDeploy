@@ -80,8 +80,9 @@ export class ProfileComponent implements OnInit {
     //   // return name;
     // })
   }
-  imgClick(): any {
+  imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
     console.log('hey good lookin');
   }
   close(): any {
@@ -258,8 +259,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.followersSub.unsubscribe();
   }
 
-  imgClick(): any {
+  imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+
     console.log('hey good lookin');
   }
   close(): any {
