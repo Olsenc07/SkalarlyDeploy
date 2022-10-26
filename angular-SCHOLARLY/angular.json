@@ -97,7 +97,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
+              "src/faviconH.ico",
               "src/assets"
             ],
             "styles": [
@@ -167,7 +167,7 @@
             "tsConfig": "projects/HomePage/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/HomePage/src/favicon.ico",
+              "projects/HomePage/src/faviconH.ico",
               "projects/HomePage/src/assets"
             ],
             "styles": [
@@ -230,7 +230,7 @@
             "tsConfig": "projects/HomePage/tsconfig.spec.json",
             "karmaConfig": "projects/HomePage/karma.conf.js",
             "assets": [
-              "projects/HomePage/src/favicon.ico",
+              "projects/HomePage/src/faviconH.ico",
               "projects/HomePage/src/assets"
             ],
             "styles": [
@@ -287,7 +287,7 @@
             "tsConfig": "projects/search/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/search/src/favicon.ico",
+              "projects/search/src/faviconH.ico",
               "projects/search/src/assets"
             ],
             "styles": [
@@ -350,7 +350,7 @@
             "tsConfig": "projects/search/tsconfig.spec.json",
             "karmaConfig": "projects/search/karma.conf.js",
             "assets": [
-              "projects/search/src/favicon.ico",
+              "projects/search/src/faviconH.ico",
               "projects/search/src/assets"
             ],
             "styles": [
