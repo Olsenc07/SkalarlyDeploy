@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import {  ReplaySubject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -65,13 +65,13 @@ export class FollowService {
   }
   postInfoFollow(userId: string, username: string): any {
     this.http
-      .get<{ message: string; infos: any }>(
+      .get<{ message: string; messages: any }>(
         'http://www.skalarly.com/api/follow/infoFollow',
         { params: { userId, username } }
       )
       .pipe(
         map((infosData) => {
-          return infosData.infos.map((info) => {
+          return infosData.messages.map((info) => {
             return {
               id: info._id,
               Follower: info.Follower,

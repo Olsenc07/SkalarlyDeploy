@@ -79,7 +79,7 @@ router.get("/followInfoOther", async(req, res, next) => {
     
         })
     })
-    })
+    });
     // Get following other
 router.get("/mutualFollow", async(req, res, next) => {
     await Follow.find(

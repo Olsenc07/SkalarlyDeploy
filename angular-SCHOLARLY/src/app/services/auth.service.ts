@@ -48,7 +48,10 @@ export class AuthService {
   createUser(email: string, username: string, password: string): any {
     const authData: AuthData = { email, username, password };
     this.http
-      .post('http://www.skalarly.com/api/user/signup', authData)
+      .post<{ message: string; result: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/signup',
+        authData
+      )
       .subscribe({
         next: () => {
           this.snackBar.open(
@@ -140,7 +143,7 @@ export class AuthService {
     profilePic: File,
     Creator?: string
   ): any {
-    console.log('unicorns exist 2', profilePic);
+    console.log('unicorns exist 2');
     const userData = new FormData();
     userData.append('username', username);
     userData.append('name', name);

@@ -89,9 +89,9 @@ router.post("/signup", async (req, res, next) => {
                         });
                     })
                         .catch(err => {
-                            // res.status(500).json({
-                            //         message: 'Email or Username invalid!'     
-                            // });
+                            res.status(500).json({
+                                    message: 'Email or Username invalid!'     
+                            });
                             res.redirect('/sign-up')
 
                         });
@@ -141,8 +141,11 @@ router.get('/verify-email', async (req, res, next) => {
             user.isVerified = 'true';
             await user.save()
             res.redirect('/verified')
+            res.status(200)
+           
         } else {
             res.redirect('/sign-up')
+    
             console.log('Invalid authentication. Please try again.');
 
         }
@@ -154,24 +157,23 @@ const verifyEmail = async (req, res, next) => {
         const test = await User.findOne({ email: req.body.email })
         // console.log('boobs', test)
         if (test) {
-            await User.findOne({ email: req.body.email }).then(user => {
+            await User.findOne({ email: req.body.email })
+            .then(user => {
                 if (user.isVerified === 'true') {
                     next()
-
+                    res.status(200)
                 } else {
                     console.log('Please check email to verify your account.')
                 }
             })
-            // .catch(err => {
-            //     console.log('what up homie??')
-            //     return res.status(401).json({
-            //     message: "No user matches our records!",
-            //             })
-            //     });
+            .catch(err => {
+                console.log('what up homie??')
+                return res.status(401)
+                });
 
         } else {
             return res.status(401).json({
-                message: "No user matches our records!",
+                message: "No user matches our records 2!",
             })
         }
     } catch (err) {
@@ -212,7 +214,6 @@ const verifyEmailV = async (req, res, next) => {
 
 // Reset password
 router.post('/forgot', async (req, res) => {
-    try {
         const user = await User.findOne({ email: req.body.email });
         //    Check users existence
         if (!user) {
@@ -243,20 +244,25 @@ router.post('/forgot', async (req, res) => {
         transporter.sendMail(msg, (error, info) => {
             if (error) {
                 console.log(error)
+                res.status(500)
             }
             else {
-
-                console.log('Password reset has been sent to email')
+                console.log('Password reset has been sent to email');
+                res.status(200)
             }
 
         })
-    } finally { }
+    
 
 })
 
 router.get('/reset-password', async (req, res, next) => {
-    try {
+ 
         res.redirect('/resetPassword')
+        .then(() => {
+            res.status(200)
+            console.log('Reset password redirect!')
+        })
         // const token = req.query.token;
         // const user = await User.findOne( {password: token});
 
@@ -265,14 +271,9 @@ router.get('/reset-password', async (req, res, next) => {
         //     res.redirect('/resetPassword')
         // }
 
-
-    } finally {
-
-    }
 })
 
 router.post('/reset-password', async (req, res, next) => {
-    try {
         const secretCode = await User.findOne({ secretCode: req.body.secretCode })
         if (secretCode) {
             bcrypt.hash(req.body.password, 10)
@@ -285,11 +286,15 @@ router.post('/reset-password', async (req, res, next) => {
                             });
                         })
                 })
+                .catch(err => {
+                    return res.status(401).json({
+                        message: "Password changed error!",
+                
+                    })
+                })
             console.log('Password changed successfully');
         }
-    } finally {
-        // console.log('Complete')
-    }
+   
 })
 
 
@@ -755,7 +760,7 @@ router.post("/infoEd", checkAuth,
         console.log('application chase4', req.body.CodeCompleted4)
         console.log('application chase5', req.body.CodeCompleted5)
         console.log('snack chase', req.query.userId)
-
+try{
     if(req.body.CodeCompleted){
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: req.body.CodeCompleted})
             }    
@@ -768,11 +773,19 @@ router.post("/infoEd", checkAuth,
                                     }               if(req.body.CodeCompleted5){
                                         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted5: req.body.CodeCompleted5})
                                             }               
-                                        })
+                                    
+                                    
+                                    } catch (error){
+                                        console.error(error);
+                                        res.status(500).json({
+                                            message: 'Updating courses failed!'
+                                        });
+                                    }
+                                    })
 
                                         router.post("/infoEdComp1W", checkAuth,
                                         async(req, res, next) => {
-
+try{
                                       if(req.body.CodeCompleted6){
                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted6: req.body.CodeCompleted6})
                                                     }               if(req.body.CodeCompleted7){
@@ -784,11 +797,17 @@ router.post("/infoEd", checkAuth,
                                                                             }               if(req.body.CodeCompleted10){
                                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted10: req.body.CodeCompleted10})
                                                                                     }     
-                                                                                    
+                                                                                } catch (error){
+                                                                                    console.error(error);
+                                                                                    res.status(500).json({
+                                                                                        message: 'Updating courses failed!'
+                                                                                    });
+                                                                                }
                                                                                 });
 
 router.post("/infoEdComp2", checkAuth,
- async(req, res, next) => {                                                                
+ async(req, res, next) => {  
+    try{                                                              
  if(req.body.CodeCompleted11){
  await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted11: req.body.CodeCompleted11})
  }               if(req.body.CodeCompleted12){
@@ -799,10 +818,17 @@ router.post("/infoEdComp2", checkAuth,
                                                                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted14: req.body.CodeCompleted14})
                                                                                                                     }               if(req.body.CodeCompleted15){
                                                                                                                         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted15: req.body.CodeCompleted15})
-                                                                                                                            }        
+                                                                                                                            }  
+                                                                                                                        } catch (error){
+                                                                                                                            console.error(error);
+                                                                                                                            res.status(500).json({
+                                                                                                                                message: 'Updating courses failed!'
+                                                                                                                            });
+                                                                                                                        }      
                                                                                                                         });
                                                                                                                         router.post("/infoEdComp2W", checkAuth,
  async(req, res, next) => {      
+    try{
                                                                                                                             if(req.body.CodeCompleted16){
                                                                                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted16: req.body.CodeCompleted16})
                                                                                                                                     }               if(req.body.CodeCompleted17){
@@ -813,10 +839,17 @@ router.post("/infoEdComp2", checkAuth,
                                                                                                                                                         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted19: req.body.CodeCompleted19})
                                                                                                                                                             }               if(req.body.CodeCompleted20){
                                                                                                                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted20: req.body.CodeCompleted20})
-                                                                                                                                                                    }       
+                                                                                                                                                                    }  
+                                                                                                                                                                } catch (error){
+                                                                                                                                                                    console.error(error);
+                                                                                                                                                                    res.status(500).json({
+                                                                                                                                                                        message: 'Updating courses failed!'
+                                                                                                                                                                    });
+                                                                                                                                                                }     
                                                                                                                                                                 });
                                                                                                                                                                 router.post("/infoEdComp3", checkAuth,
                                                                                                                                                                 async(req, res, next) => {  
+                                                                                                                                                                    try{
                                                                                                                                                                     if(req.body.CodeCompleted21){
                                                                                                                                                                         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted21: req.body.CodeCompleted21})
                                                                                                                                                                             }               if(req.body.CodeCompleted22){
@@ -828,9 +861,16 @@ router.post("/infoEdComp2", checkAuth,
             }               if(req.body.CodeCompleted25){
                 await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted25: req.body.CodeCompleted25})
                     }   
+                } catch (error){
+                    console.error(error);
+                    res.status(500).json({
+                        message: 'Updating courses failed!'
+                    });
+                }
                 })
                 router.post("/infoEdComp3W", checkAuth,
  async(req, res, next) => {  
+    try{
                     if(req.body.CodeCompleted26){
                         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted26: req.body.CodeCompleted26})
                             }               if(req.body.CodeCompleted27){
@@ -841,10 +881,17 @@ router.post("/infoEdComp2", checkAuth,
                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted29: req.body.CodeCompleted29})
                                                     }     if(req.body.CodeCompleted30){
                                                         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted30: req.body.CodeCompleted30})
-                                                            }          
+                                                            }   
+                                                        } catch (error){
+                                                            console.error(error);
+                                                            res.status(500).json({
+                                                                message: 'Updating courses failed!'
+                                                            });
+                                                        }       
                                                         })
                                                         router.post("/infoEdComp4", checkAuth,
  async(req, res, next) => {  
+    try{
                                                             if(req.body.CodeCompleted31){
                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted31: req.body.CodeCompleted31})
                                                                     }               if(req.body.CodeCompleted32){
@@ -856,11 +903,18 @@ router.post("/infoEdComp2", checkAuth,
                                                                                             }   
                                                                                             if(req.body.CodeCompleted35){
                                                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted35: req.body.CodeCompleted35})
-                                                                                                    }         
+                                                                                                    }      
+                                                                                                } catch (error){
+                                                                                                    console.error(error);
+                                                                                                    res.status(500).json({
+                                                                                                        message: 'Updating courses failed!'
+                                                                                                    });
+                                                                                                }   
                                                                                                 });
                                                                                                 
                                                                                                 router.post("/infoEdComp4W", checkAuth,
  async(req, res, next) => {  
+    try{
                                                                                                     if(req.body.CodeCompleted36){
                                                                                                         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted36: req.body.CodeCompleted36})
                                                                                                             }               if(req.body.CodeCompleted37){
@@ -875,11 +929,17 @@ router.post("/infoEdComp2", checkAuth,
                                                                                                                                             }               if(req.body.CodeCompletedX){
                                                                                                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodeCompletedX: req.body.CodeCompletedX})
                                                                                                                                                     } 
-
+                                                                                                                                                } catch (error){
+                                                                                                                                                    console.error(error);
+                                                                                                                                                    res.status(500).json({
+                                                                                                                                                        message: 'Updating courses failed!'
+                                                                                                                                                    });
+                                                                                                                                                }
                                                                                                                                                 })
 
                                                                                                                                                 router.post("/infoEdPur", checkAuth,
                                                                                                                                                         async(req, res, next) => {  
+                                                                                                                                                            try{
                                                                                                                                     if(req.body.CodePursuing){
                                                                                                                                         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing: req.body.CodePursuing})
                                                                                                                                             }    
@@ -891,10 +951,17 @@ router.post("/infoEdComp2", checkAuth,
                                                                                                                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing4: req.body.CodePursuing4})
                                                                                                                                                                     }               if(req.body.CodePursuing5){
                                                                                                                                                                         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing5: req.body.CodePursuing5})
-                                                                                                                                                                            }    
+                                                                                                                                                                            } 
+                                                                                                                                                                        } catch (error){
+                                                                                                                                                                            console.error(error);
+                                                                                                                                                                            res.status(500).json({
+                                                                                                                                                                                message: 'Updating courses failed!'
+                                                                                                                                                                            });
+                                                                                                                                                                        }   
                                                                                                                                                                         })
                                                                                                                                                                         router.post("/infoEdPurW", checkAuth,
                                                                                                                                                                         async(req, res, next) => {  
+                                                                                                                                                                            try{
                                                                                                                                                                             if(req.body.CodePursuing6){
                                                                                                                                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing6: req.body.CodePursuing6})
                                                                                                                                                                                     }               if(req.body.CodePursuing7){
@@ -906,22 +973,42 @@ router.post("/infoEdComp2", checkAuth,
                                                                                                                                                                                                             }               if(req.body.CodePursuing10){
                                                                                                                                                                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing10: req.body.CodePursuing10})
                                                                                                                                                                                                                     }      
+                                                                                                                                                                                                                } catch (error){
+                                                                                                                                                                                                                    console.error(error);
+                                                                                                                                                                                                                    res.status(500).json({
+                                                                                                                                                                                                                        message: 'Updating courses failed!'
+                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                }
                                                                                                                                                                                                                 })
                                                                                                                                                                                                                 router.post("/infoEdPurSpring", checkAuth,
                                                                                                                                                                                                                 async(req, res, next) => {  
+                                                                                                                                                                                                                    try{
                                                                                                                                                                                                                     if(req.body.CodePursuing11){
                                                                                                                                                                                                                         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing11: req.body.CodePursuing11})
                                                                                                                                                                                                                             }               if(req.body.CodePursuing12){
                                                                                                                                                                                                                                 await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing12: req.body.CodePursuing12})
                                                                                                                                                                                                                             }     
+                                                                                                                                                                                                                        } catch (error){
+                                                                                                                                                                                                                            console.error(error);
+                                                                                                                                                                                                                            res.status(500).json({
+                                                                                                                                                                                                                                message: 'Updating courses failed!'
+                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                        }
                                                                                                                                                                                                                         })
                                                                                                                                                                                                                         router.post("/infoEdPurSummer", checkAuth,
-                                                                                                                                                                                                                        async(req, res, next) => {  
+                                                                                                                                                                                                                        async(req, res, next) => { 
+                                                                                                                                                                                                                            try{ 
                                                                                                                                                                                                                             if(req.body.CodePursuing13){
 await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing13: req.body.CodePursuing13})
 }         if(req.body.CodePursuing14){
  await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing14: req.body.CodePursuing14})
                }
+            } catch (error){
+                console.error(error);
+                res.status(500).json({
+                    message: 'Updating courses failed!'
+                });
+            }
             })
 
 
@@ -929,7 +1016,7 @@ await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing13: req.body.C
 // userInfo recieving
 router.get("/info", async(req, res) => {
     const counter = req.query.counter;
-    console.log('street crimes 2 ', counter);
+    console.log('street crimes 2 ');
     await UserInfo.find().skip(counter).limit(6)
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
@@ -1052,19 +1139,18 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
                 .then(user => {
 
                     if (!user) {
-                        console.log(user.isVerified)
                         return res.status(401).json({
                             message: "Authentication failed "
                         });
                     }
-                    console.log('verified', user.isVerified)
+                    console.log('verified')
                     fetchedUser = user;
                     return bcrypt.compare(req.body.passwordV, user.password)
 
                 })
                 .then(result => {
                     if (!result) {
-                        return res.status(401).json({
+                        return res.status(500).json({
                             message: "Authentication failed "
                         });
                     }
@@ -1087,10 +1173,10 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
                     })
                 })
         } else {
-            // return res.status(401).json({
-            //     message: "Non-validated account!",
+            return res.status(500).json({
+                message: "Non-validated account!",
 
-            // })
+            })
             console.log('Thats weird...')
         }
 
@@ -1176,8 +1262,7 @@ router.post('/getusers', async (req, res) => {
 
 
 // Deleting account
-router.post('/delete', async (req, res) => {
-//     console.log('hey')
+router.post('/delete', async(req, res) => {
       let username
         let fetchedUser;
         await User.findOne({ email: req.body.emailDel })
@@ -1208,7 +1293,7 @@ router.post('/delete', async (req, res) => {
                 });
                 try{
               await User.findOneAndDelete( {username: username})
-            await UserInfo.findOneAndDelete({username:username})
+            await UserInfo.findOneAndDelete({username: username})
                 }finally{
                     res.status(200).json({
                         message: 'Deleted Successful!',

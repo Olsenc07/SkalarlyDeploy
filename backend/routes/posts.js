@@ -183,11 +183,8 @@ router.post("",
 
 // Posts deleting
 router.delete("/:id", checkAuth, async(req, res, next ) => {
-    console.log('howdy', req.params.id)
-
    await Post.findOne({_id: req.params.id})
    .then(result => {
-    console.log('meeee', result)
     cloudinary.uploader.destroy(result.cloudinary_id)
     .then(() => {
         console.log('great good!')
@@ -195,7 +192,7 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
 })
 Post.deleteOne({_id: req.params.id}).then(result => {
     if (result){
-    res.status(200).json({message: 'Post deleted!!'});
+    res.status(200).json({message: 'Post deleted!'});
     } else {
         res.status(401).json({message: 'Not authorized'});
     } 
@@ -212,7 +209,7 @@ Post.deleteOne({_id: req.params.id}).then(result => {
 router.get('/comments', async(req, res) =>{
     await Comment.find({postId: req.query.postId}).sort({_id:-1})
     .then(documents => {
-        console.log('hey chaz man man', documents);
+        console.log('hey chaz man man');
     res.status(200).json({
         message: 'comments fetched succesfully!',
         messages: documents
@@ -250,6 +247,11 @@ if (req.body.userId){
         });
     })
     })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Comment added failed!'
+        });
+    });
 }
 })
 // Comments deleting
@@ -289,14 +291,20 @@ router.get("/otherUsers", async(req, res) => {
 // Get main page posts
 router.get("/mainPage", async(req, res) => {    
     const counter = req.query.counter;
-    console.log('street crimes 3 ', counter);
+    console.log('street crimes 3 ');
          await Post.find({postLocation: req.query.category}).sort({_id:-1}).skip(counter).limit(6)
            .then(doc => {
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
                 posts: doc
             });
-           });
+           }) 
+           .catch(error => {
+            res.status(500).json({
+                message: 'Fetching posts failed!'
+            });
+        });
+           
 });
 
 // Get others posts
@@ -389,7 +397,7 @@ router.post("/showCases",
 router.delete("/showCases/:id", checkAuth, async(req, res, next ) => {
    await showCase.findOne({Creator: req.params.id})
    .then(result => {
-    console.log('meeee', result)
+    console.log('meeee')
         cloudinary.uploader.destroy(result.cloudinary_id)
         .then(console.log('it worked'));
 
