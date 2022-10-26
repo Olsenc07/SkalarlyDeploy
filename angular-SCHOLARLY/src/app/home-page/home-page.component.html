@@ -50,10 +50,10 @@
           <!-- <div class="loginBtn"> -->
          
   
-          <mat-button type="button" mat-raised-button (click)="onSubmit()" [disabled]="!email.valid || !password.valid"
+          <button mat-button type="button" mat-raised-button (click)="onSubmit()" [disabled]="!email.valid || !password.valid"
             color="primary" class="action-button top" *ngIf="!isLoading" routerLink="/search" >
             Log In
-          </mat-button>
+          </button>
     
           <!-- <mat-spinner  *ngIf="isLoading"></mat-spinner> -->
 
@@ -74,9 +74,9 @@
           <p class="tag">Or</p>
 
           <!-- mat-raised-button -->
-          <mat-button type="button" mat-raised-button routerLink="/sign-up" color="primary" class="action-button">
+          <button mat-button type="button" mat-raised-button routerLink="/sign-up" color="primary" class="action-button">
             Create New Account
-          </mat-button>
+          </button>
        
         </div>
       </div>
