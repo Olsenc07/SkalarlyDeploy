@@ -98,7 +98,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): any {
-    this.authService.getAuthData();
+    this.authService.autoAuthUser();
     this.isLoading = true;
     // Info
     this.userId = this.authService.getUserId();
