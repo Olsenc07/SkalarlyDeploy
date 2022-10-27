@@ -48,10 +48,8 @@ router.get("/followInfo", async(req, res, next) => {
 await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
    
-
  Follow.find({usernameFollower: user.username})
 .then(follows => {
-    console.log('test 2_', follows)
 
     res.status(200).json({
         message: 'Follows fetched succesfully!',

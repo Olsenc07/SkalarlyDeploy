@@ -384,7 +384,7 @@ export class AuthService {
     this.http
       .post<{ post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp1',
-        userData,
+        CodeCompleted,
         { params: { userId } }
       )
       .subscribe({
