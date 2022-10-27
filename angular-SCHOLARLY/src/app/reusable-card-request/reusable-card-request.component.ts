@@ -143,8 +143,8 @@ export class ReusableCardRecommendationComponent implements OnInit {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
-  followClicked(username: string): any {
-    console.log('follow username', this.userId);
-    this.followService.postInfoFollow(this.userId, username);
-  }
+  // followClicked(username: string): any {
+  //   console.log('follow username', this.userId);
+  //   this.followService.postInfoFollow(this.userId, username);
+  // }
 }
