@@ -349,14 +349,11 @@ export class AuthService {
             pronoun,
             ProfilePicPath: responseData.post.ProfilePicPath,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
-
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          this.snackBar.open('Profile edited!', 'Nice!', {
+            duration: 3000,
+          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -394,17 +391,17 @@ export class AuthService {
             CodeCompleted4,
             CodeCompleted5,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
+          this.router.navigate(['/profile']);
+
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          this.snackBar.open('Profile edited!', 'Nice!', {
+            duration: 3000,
+          });
         },
-        error: (error) => {
-          this.authStatusListener.next(false);
-        },
+        // error: (error) => {
+        //   this.authStatusListener.next(false);
+        // },
       });
   }
   editUserInfoCompW(
@@ -704,13 +701,12 @@ export class AuthService {
             CodeCompleted40,
             CodeCompletedX,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
+          this.router.navigate(['/profile']);
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          this.snackBar.open('Profile edited!', 'Nice!', {
+            duration: 3000,
+          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
