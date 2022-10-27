@@ -6,7 +6,7 @@ const userInfo = require('/app/backend/models/userInfo');
 const { findOne } = require('/app/backend/models/userInfo');
 const router = express.Router();
 // post
-router.post("/infoFollow", async(req, res, next) => {
+router.get("/infoFollow", async(req, res, next) => {
     console.log('flash1', req.query.userId)
     console.log('flashq', req.query.FollowingId)
 
