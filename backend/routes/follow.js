@@ -9,6 +9,7 @@ const router = express.Router();
 router.post("/infoFollow", async(req, res, next) => {
 await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
+    console.log('flash', user)
     userInfo.findOne({username: req.query.username })
     .then( otherUser => {
 const FOLLOW = new Follow({
