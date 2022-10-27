@@ -277,9 +277,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.Following = true;
     this.route.queryParams.subscribe((params) => {
       this.user = params.id;
-      const id = this.user;
-      this.followService.postInfoFollow(this.userId, username, id);
-      console.log('this', id);
+      const FollowingId = this.user;
+      this.followService.postInfoFollow(this.userId, username, FollowingId);
+      console.log('this', FollowingId);
     });
   }
   onUnfololow(followId: string): any {
