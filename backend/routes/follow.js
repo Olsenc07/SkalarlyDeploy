@@ -1,4 +1,5 @@
-const UserInfo = require('/app/backend/models/userInfo');
+const User = require('/app/backend/models/user');
+
 const Follow = require('/app/backend/models/follow')
 
 const express = require('express');
@@ -7,30 +8,32 @@ const { findOne } = require('/app/backend/models/userInfo');
 const router = express.Router();
 // post
 router.get("/infoFollow", async(req, res, next) => {
-    console.log('flash1', req.query.userId)
-    console.log('flashq', req.query.FollowingId)
-
 await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
-    console.log('flash', user)
+
     userInfo.findOne({username: req.query.username })
     .then( otherUser => {
-const FOLLOW = new Follow({
-    Follower: req.query.userId,
-    nameFollower: user.name,
-    usernameFollower: user.username,
-    ProfilePicPathFollower: user.ProfilePicPath,
-    FollowingId: req.query.FollowingId,
-    Following: req.query.username,  
-    nameFollowing: otherUser.name,
-    ProfilePicPathFollowing: otherUser.ProfilePicPath
-})
-FOLLOW.save().then(createdFollow => {
-    res.status(200).json({
-        message: 'Follow succesfully!',
-        messages: createdFollow
-    });
-})
+    User.findOne({username: req.query.FollowingId })
+        .then( otherUserId => {
+            console.log('dick jokes', otherUser)
+            const FOLLOW = new Follow({
+                Follower: req.query.userId,
+                nameFollower: user.name,
+                usernameFollower: user.username,
+                ProfilePicPathFollower: user.ProfilePicPath,
+                FollowingId: otherUserId.id,
+                Following: req.query.username,  
+                nameFollowing: otherUser.name,
+                ProfilePicPathFollowing: otherUser.ProfilePicPath
+            })
+            FOLLOW.save().then(createdFollow => {
+                res.status(200).json({
+                    message: 'Follow succesfully!',
+                    messages: createdFollow
+                });
+            })
+        })
+
 })
 })
 .catch(err => {
