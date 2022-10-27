@@ -66,7 +66,7 @@ export class FollowService {
   postInfoFollow(userId: string, username: string, FollowingId: string): any {
     console.log('cowgirl', userId);
     this.http
-      .post<{ message: string; messages: any }>(
+      .get<{ message: string; messages: any }>(
         'http://www.skalarly.com/api/follow/infoFollow',
         { params: { userId, username, FollowingId } }
       )
