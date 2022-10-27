@@ -417,13 +417,6 @@ export class AuthService {
     CodeCompleted9: string,
     CodeCompleted10: string
   ): any {
-    const authDataInfo = {
-      CodeCompleted6,
-      CodeCompleted7,
-      CodeCompleted8,
-      CodeCompleted9,
-      CodeCompleted10,
-    };
     const userData = new FormData();
     userData.append('CodeCompleted6', CodeCompleted6);
     userData.append('CodeCompleted7', CodeCompleted7);

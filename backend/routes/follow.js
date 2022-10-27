@@ -1,10 +1,7 @@
 const User = require('/app/backend/models/user');
-
 const Follow = require('/app/backend/models/follow')
-
 const express = require('express');
 const userInfo = require('/app/backend/models/userInfo');
-const { findOne } = require('/app/backend/models/userInfo');
 const router = express.Router();
 // post
 router.get("/infoFollow", async(req, res, next) => {
@@ -15,7 +12,6 @@ await userInfo.findOne({Creator: req.query.userId})
     .then( otherUser => {
     User.findOne({username: req.query.FollowingId })
         .then( otherUserId => {
-            console.log('dick jokes', otherUser)
             const FOLLOW = new Follow({
                 Follower: req.query.userId,
                 nameFollower: user.name,
