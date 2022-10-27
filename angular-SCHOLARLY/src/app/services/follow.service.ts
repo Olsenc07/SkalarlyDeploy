@@ -64,6 +64,7 @@ export class FollowService {
     return this.mutualsInfoPostUpdated.asObservable();
   }
   postInfoFollow(userId: string, username: string, FollowingId: string): any {
+    console.log('cowgirl', userId);
     this.http
       .post<{ message: string; messages: any }>(
         'http://www.skalarly.com/api/follow/infoFollow',
