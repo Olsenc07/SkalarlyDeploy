@@ -5,7 +5,7 @@ const FollowSchema = mongoose.Schema({
     nameFollower: { type: String},
     usernameFollower: { type: String},
     ProfilePicPathFollower: { type: String},
-
+    FollowingId: {type: String},
     Following: { type: String},
     nameFollowing: { type: String},
     ProfilePicPathFollowing: { type: String},

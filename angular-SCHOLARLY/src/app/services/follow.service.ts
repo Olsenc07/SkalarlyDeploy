@@ -13,7 +13,7 @@ export interface Follow {
   nameFollower: string;
   usernameFollower: string;
   ProfilePicPathFollower: string;
-
+  FollowingId: string;
   Following: string;
   nameFollowing: string;
   ProfilePicPathFollowing: string;
@@ -63,11 +63,11 @@ export class FollowService {
   getInfoMutualsUpdateListener(): any {
     return this.mutualsInfoPostUpdated.asObservable();
   }
-  postInfoFollow(userId: string, username: string): any {
+  postInfoFollow(userId: string, username: string, FollowingId: string): any {
     this.http
-      .get<{ message: string; messages: any }>(
+      .post<{ message: string; messages: any }>(
         'http://www.skalarly.com/api/follow/infoFollow',
-        { params: { userId, username } }
+        { params: { userId, username, FollowingId } }
       )
       .pipe(
         map((infosData) => {
@@ -78,7 +78,7 @@ export class FollowService {
               nameFollower: info.nameFollower,
               usernameFollower: info.usernameFollower,
               ProfilePicPathFollower: info.ProfilePicPathFollower,
-
+              FollowingId: info.FollowingId,
               Following: info.Following,
               nameFollowing: info.nameFollowing,
               ProfilePicPathFollowing: info.ProfilePicPathFollowing,
@@ -109,7 +109,7 @@ export class FollowService {
               nameFollower: data.nameFollower,
               usernameFollower: data.usernameFollower,
               ProfilePicPathFollower: data.ProfilePicPathFollower,
-
+              FollowingId: data.FollowingId,
               Following: data.Following,
               nameFollowing: data.nameFollowing,
               ProfilePicPathFollowing: data.ProfilePicPathFollowing,
@@ -139,7 +139,7 @@ export class FollowService {
               nameFollower: data.nameFollower,
               usernameFollower: data.usernameFollower,
               ProfilePicPathFollower: data.ProfilePicPathFollower,
-
+              FollowingId: data.FollowingId,
               Following: data.Following,
               nameFollowing: data.nameFollowing,
               ProfilePicPathFollowing: data.ProfilePicPathFollowing,
@@ -169,6 +169,7 @@ export class FollowService {
               nameFollower: data.nameFollower,
               usernameFollower: data.usernameFollower,
               ProfilePicPathFollower: data.ProfilePicPathFollower,
+              FollowingId: data.FollowingId,
 
               Following: data.Following,
               nameFollowing: data.nameFollowing,
@@ -199,6 +200,7 @@ export class FollowService {
               nameFollower: data.nameFollower,
               usernameFollower: data.usernameFollower,
               ProfilePicPathFollower: data.ProfilePicPathFollower,
+              FollowingId: data.FollowingId,
 
               Following: data.Following,
               nameFollowing: data.nameFollowing,
@@ -214,9 +216,6 @@ export class FollowService {
   }
   // and maybe add userId
   getFollowingNotification(id: string, userId: string): any {
-    console.log('sleepy', id);
-    console.log('night', userId);
-
     this.http
       .get<{ message: string; messages: any }>(
         'http://www.skalarly.com/api/follow/followingInfo',
@@ -233,6 +232,7 @@ export class FollowService {
               nameFollower: data.nameFollower,
               usernameFollower: data.usernameFollower,
               ProfilePicPathFollower: data.ProfilePicPathFollower,
+              FollowingId: data.FollowingId,
 
               Following: data.Following,
               nameFollowing: data.nameFollowing,
@@ -264,6 +264,7 @@ export class FollowService {
               nameFollower: data.nameFollower,
               usernameFollower: data.usernameFollower,
               ProfilePicPathFollower: data.ProfilePicPathFollower,
+              FollowingId: data.FollowingId,
 
               Following: data.Following,
               nameFollowing: data.nameFollowing,
@@ -295,6 +296,7 @@ export class FollowService {
               nameFollower: data.nameFollower,
               usernameFollower: data.usernameFollower,
               ProfilePicPathFollower: data.ProfilePicPathFollower,
+              FollowingId: data.FollowingId,
 
               Following: data.Following,
               nameFollowing: data.nameFollowing,

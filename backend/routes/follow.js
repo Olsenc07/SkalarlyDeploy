@@ -6,7 +6,7 @@ const userInfo = require('/app/backend/models/userInfo');
 const { findOne } = require('/app/backend/models/userInfo');
 const router = express.Router();
 // post
-router.get("/infoFollow", async(req, res, next) => {
+router.post("/infoFollow", async(req, res, next) => {
 await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
     userInfo.findOne({username: req.query.username })
@@ -16,7 +16,7 @@ const FOLLOW = new Follow({
     nameFollower: user.name,
     usernameFollower: user.username,
     ProfilePicPathFollower: user.ProfilePicPath,
-
+    FollowingId: req.query.FollowingId,
     Following: req.query.username,  
     nameFollowing: otherUser.name,
     ProfilePicPathFollowing: otherUser.ProfilePicPath
@@ -182,9 +182,6 @@ router.get("/followerInfoOther", async(req, res, next) => {
     })
     // Get following notif
 router.get("/followingInfo", async(req, res, next) => {
-    console.log(req.query.userId)
-    console.log(req.query.id)
-
     await Follow.find({ and: [ {Following: req.query.id}, 
         {Follower: req.query.userId}]})
     .then(following => {
