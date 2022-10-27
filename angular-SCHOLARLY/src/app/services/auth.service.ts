@@ -372,15 +372,6 @@ export class AuthService {
     CodeCompleted4: string,
     CodeCompleted5: string
   ): any {
-    console.log('she loves me', CodeCompleted);
-    console.log('she loves me not ', userId);
-
-    const userData = new FormData();
-    userData.append('CodeCompleted', CodeCompleted);
-    userData.append('CodeCompleted2', CodeCompleted2);
-    userData.append('CodeCompleted3', CodeCompleted3);
-    userData.append('CodeCompleted4', CodeCompleted4);
-    userData.append('CodeCompleted5', CodeCompleted5);
     this.http
       .post<{ post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp1',
