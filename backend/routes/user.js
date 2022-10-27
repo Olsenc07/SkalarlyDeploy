@@ -778,9 +778,7 @@ try{
                                     
                                     } catch (error){
                                         console.error(error);
-                                        res.status(500).json({
-                                            message: 'Updating courses failed!'
-                                        });
+                                        res.status(500)
                                     }
                                     })
 
