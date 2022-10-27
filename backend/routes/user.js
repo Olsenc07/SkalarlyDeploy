@@ -751,7 +751,7 @@ router.post("/infoEd", checkAuth,
                                          }     
             
     });
-    router.post("/infoEdComp1", 
+    router.post("/infoEdComp1/:userId", 
     checkAuth,
     async(req, res, next) => {
 try{

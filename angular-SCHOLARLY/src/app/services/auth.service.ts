@@ -370,7 +370,7 @@ export class AuthService {
     CodeCompleted5: string
   ): any {
     this.http
-      .post<{ post: any }>(
+      .post<{ post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp1',
         {
           CodeCompleted,
@@ -383,7 +383,7 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
+          const post: AuthDataInfo = {
             id: responseData.post.id,
             CodeCompleted,
             CodeCompleted2,
@@ -399,9 +399,9 @@ export class AuthService {
             duration: 3000,
           });
         },
-        // error: (error) => {
-        //   this.authStatusListener.next(false);
-        // },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
       });
   }
   editUserInfoCompW(
