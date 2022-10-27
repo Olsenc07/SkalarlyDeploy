@@ -394,9 +394,10 @@ export class AuthService {
             CodeCompleted4,
             CodeCompleted5,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -414,16 +415,16 @@ export class AuthService {
     CodeCompleted9: string,
     CodeCompleted10: string
   ): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted6', CodeCompleted6);
-    userData.append('CodeCompleted7', CodeCompleted7);
-    userData.append('CodeCompleted8', CodeCompleted8);
-    userData.append('CodeCompleted9', CodeCompleted9);
-    userData.append('CodeCompleted10', CodeCompleted10);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp1W',
-        userData,
+        {
+          CodeCompleted6,
+          CodeCompleted7,
+          CodeCompleted8,
+          CodeCompleted9,
+          CodeCompleted10,
+        },
         { params: { userId } }
       )
       .subscribe({
@@ -436,9 +437,10 @@ export class AuthService {
             CodeCompleted9,
             CodeCompleted10,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -457,17 +459,16 @@ export class AuthService {
     CodeCompleted14: string,
     CodeCompleted15: string
   ): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted11', CodeCompleted11);
-    userData.append('CodeCompleted12', CodeCompleted12);
-    userData.append('CodeCompleted13', CodeCompleted13);
-    userData.append('CodeCompleted14', CodeCompleted14);
-    userData.append('CodeCompleted15', CodeCompleted15);
-
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp2',
-        userData,
+        {
+          CodeCompleted11,
+          CodeCompleted12,
+          CodeCompleted13,
+          CodeCompleted14,
+          CodeCompleted15,
+        },
         { params: { userId } }
       )
       .subscribe({
@@ -480,9 +481,10 @@ export class AuthService {
             CodeCompleted14,
             CodeCompleted15,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -501,16 +503,16 @@ export class AuthService {
     CodeCompleted19: string,
     CodeCompleted20: string
   ): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted16', CodeCompleted16);
-    userData.append('CodeCompleted17', CodeCompleted17);
-    userData.append('CodeCompleted18', CodeCompleted18);
-    userData.append('CodeCompleted19', CodeCompleted19);
-    userData.append('CodeCompleted20', CodeCompleted20);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp2W',
-        userData,
+        {
+          CodeCompleted16,
+          CodeCompleted17,
+          CodeCompleted18,
+          CodeCompleted19,
+          CodeCompleted20,
+        },
         { params: { userId } }
       )
       .subscribe({
@@ -523,9 +525,10 @@ export class AuthService {
             CodeCompleted19,
             CodeCompleted20,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -544,24 +547,16 @@ export class AuthService {
     CodeCompleted24: string,
     CodeCompleted25: string
   ): any {
-    const authDataInfo = {
-      CodeCompleted21,
-      CodeCompleted22,
-      CodeCompleted23,
-      CodeCompleted24,
-      CodeCompleted25,
-    };
-    const userData = new FormData();
-    userData.append('CodeCompleted21', CodeCompleted21);
-    userData.append('CodeCompleted22', CodeCompleted22);
-    userData.append('CodeCompleted23', CodeCompleted23);
-    userData.append('CodeCompleted24', CodeCompleted24);
-    userData.append('CodeCompleted25', CodeCompleted25);
-
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp3',
-        userData,
+        {
+          CodeCompleted21,
+          CodeCompleted22,
+          CodeCompleted23,
+          CodeCompleted24,
+          CodeCompleted25,
+        },
         { params: { userId } }
       )
       .subscribe({
@@ -574,9 +569,10 @@ export class AuthService {
             CodeCompleted24,
             CodeCompleted25,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -595,23 +591,16 @@ export class AuthService {
     CodeCompleted29: string,
     CodeCompleted30: string
   ): any {
-    const authDataInfo = {
-      CodeCompleted26,
-      CodeCompleted27,
-      CodeCompleted28,
-      CodeCompleted29,
-      CodeCompleted30,
-    };
-    const userData = new FormData();
-    userData.append('CodeCompleted26', CodeCompleted26);
-    userData.append('CodeCompleted27', CodeCompleted27);
-    userData.append('CodeCompleted28', CodeCompleted28);
-    userData.append('CodeCompleted29', CodeCompleted29);
-    userData.append('CodeCompleted30', CodeCompleted30);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp3W',
-        userData,
+        {
+          CodeCompleted26,
+          CodeCompleted27,
+          CodeCompleted28,
+          CodeCompleted29,
+          CodeCompleted30,
+        },
         { params: { userId } }
       )
       .subscribe({
@@ -624,9 +613,10 @@ export class AuthService {
             CodeCompleted29,
             CodeCompleted30,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -645,24 +635,16 @@ export class AuthService {
     CodeCompleted34: string,
     CodeCompleted35: string
   ): any {
-    const authDataInfo = {
-      CodeCompleted31,
-      CodeCompleted32,
-      CodeCompleted33,
-      CodeCompleted34,
-      CodeCompleted35,
-    };
-    const userData = new FormData();
-    userData.append('CodeCompleted31', CodeCompleted31);
-    userData.append('CodeCompleted32', CodeCompleted32);
-    userData.append('CodeCompleted33', CodeCompleted33);
-    userData.append('CodeCompleted34', CodeCompleted34);
-    userData.append('CodeCompleted35', CodeCompleted35);
-
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp4',
-        userData,
+        {
+          CodeCompleted31,
+          CodeCompleted32,
+          CodeCompleted33,
+          CodeCompleted34,
+          CodeCompleted35,
+        },
         { params: { userId } }
       )
       .subscribe({
@@ -675,9 +657,10 @@ export class AuthService {
             CodeCompleted34,
             CodeCompleted35,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -697,26 +680,17 @@ export class AuthService {
     CodeCompleted40: string,
     CodeCompletedX: string
   ): any {
-    const authDataInfo = {
-      CodeCompleted36,
-      CodeCompleted37,
-      CodeCompleted38,
-      CodeCompleted39,
-      CodeCompleted40,
-      CodeCompletedX,
-    };
-    const userData = new FormData();
-    userData.append('CodeCompleted36', CodeCompleted36);
-    userData.append('CodeCompleted37', CodeCompleted37);
-    userData.append('CodeCompleted38', CodeCompleted38);
-    userData.append('CodeCompleted39', CodeCompleted39);
-    userData.append('CodeCompleted40', CodeCompleted40);
-    userData.append('CodeCompletedX', CodeCompletedX);
-
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp4W',
-        userData,
+        {
+          CodeCompleted36,
+          CodeCompleted37,
+          CodeCompleted38,
+          CodeCompleted39,
+          CodeCompleted40,
+          CodeCompletedX,
+        },
         { params: { userId } }
       )
       .subscribe({
@@ -730,9 +704,10 @@ export class AuthService {
             CodeCompleted40,
             CodeCompletedX,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -751,24 +726,16 @@ export class AuthService {
     CodePursuing4: string,
     CodePursuing5: string
   ): any {
-    const authDataInfo = {
-      userId,
-      CodePursuing,
-      CodePursuing2,
-      CodePursuing3,
-      CodePursuing4,
-      CodePursuing5,
-    };
-    const userData = new FormData();
-    userData.append('CodePursuing', CodePursuing);
-    userData.append('CodePursuing2', CodePursuing2);
-    userData.append('CodePursuing3', CodePursuing3);
-    userData.append('CodePursuing4', CodePursuing4);
-    userData.append('CodePursuing5', CodePursuing5);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPur',
-        userData,
+        {
+          CodePursuing,
+          CodePursuing2,
+          CodePursuing3,
+          CodePursuing4,
+          CodePursuing5,
+        },
         { params: { userId } }
       )
       .subscribe({
@@ -781,9 +748,10 @@ export class AuthService {
             CodePursuing4,
             CodePursuing5,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -802,26 +770,16 @@ export class AuthService {
     CodePursuing9: string,
     CodePursuing10: string
   ): any {
-    const authDataInfo = {
-      userId,
-      CodePursuing6,
-      CodePursuing7,
-      CodePursuing8,
-      CodePursuing9,
-      CodePursuing10,
-    };
-    const userData = new FormData();
-
-    userData.append('CodePursuing6', CodePursuing6);
-    userData.append('CodePursuing7', CodePursuing7);
-    userData.append('CodePursuing8', CodePursuing8);
-    userData.append('CodePursuing9', CodePursuing9);
-    userData.append('CodePursuing10', CodePursuing10);
-
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurW',
-        userData,
+        {
+          CodePursuing6,
+          CodePursuing7,
+          CodePursuing8,
+          CodePursuing9,
+          CodePursuing10,
+        },
         { params: { userId } }
       )
       .subscribe({
@@ -834,9 +792,10 @@ export class AuthService {
             CodePursuing9,
             CodePursuing10,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -852,18 +811,10 @@ export class AuthService {
     CodePursuing11: string,
     CodePursuing12: string
   ): any {
-    const authDataInfo = {
-      userId,
-      CodePursuing11,
-      CodePursuing12,
-    };
-    const userData = new FormData();
-    userData.append('CodePursuing11', CodePursuing11);
-    userData.append('CodePursuing12', CodePursuing12);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurSpring',
-        userData,
+        { CodePursuing11, CodePursuing12 },
         { params: { userId } }
       )
       .subscribe({
@@ -873,9 +824,10 @@ export class AuthService {
             CodePursuing11,
             CodePursuing12,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
@@ -891,18 +843,10 @@ export class AuthService {
     CodePursuing13: string,
     CodePursuing14: string
   ): any {
-    const authDataInfo = {
-      userId,
-      CodePursuing13,
-      CodePursuing14,
-    };
-    const userData = new FormData();
-    userData.append('CodePursuing13', CodePursuing13);
-    userData.append('CodePursuing14', CodePursuing14);
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurSummer',
-        userData,
+        { CodePursuing13, CodePursuing14 },
         { params: { userId } }
       )
       .subscribe({
@@ -912,9 +856,10 @@ export class AuthService {
             CodePursuing13,
             CodePursuing14,
           };
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
+          this.router.navigate(['/profile']).then(() => {
+            this.snackBar.open('Profile edited!', 'Nice!', {
+              duration: 3000,
+            });
           });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);

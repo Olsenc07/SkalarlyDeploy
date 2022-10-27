@@ -754,13 +754,6 @@ router.post("/infoEd", checkAuth,
     router.post("/infoEdComp1", 
     checkAuth,
     async(req, res, next) => {
-
-        console.log('application chase', req.body)
-        console.log('application chase2', req.body.CodeCompleted2)
-        console.log('application chase3', req.body.CodeCompleted3)
-        console.log('application chase4', req.body.CodeCompleted4)
-        console.log('application chase5', req.body.CodeCompleted5)
-        console.log('snack chase', req.query)
 try{
     if(req.body.CodeCompleted){
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: req.body.CodeCompleted})
@@ -779,6 +772,9 @@ try{
                                     } catch (error){
                                         console.error(error);
                                         res.status(500)
+                                    } finally{
+                                        
+
                                     }
                                     })
 
