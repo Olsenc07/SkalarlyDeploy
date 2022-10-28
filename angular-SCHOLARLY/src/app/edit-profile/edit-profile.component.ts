@@ -475,11 +475,11 @@ export class EditProfileComp1Component implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.CodeCompleted.value);
-    console.log(this.CodeCompleted2.value);
-    console.log(this.CodeCompleted3.value);
-    console.log(this.CodeCompleted4.value);
-    console.log(this.CodeCompleted5.value);
+    console.log('1', this.CodeCompleted.value);
+    console.log('2', this.CodeCompleted2.value);
+    console.log('3', this.CodeCompleted3.value);
+    console.log('4', this.CodeCompleted4.value);
+    console.log('5', this.CodeCompleted5.value);
 
     this.authService.editUserInfoComp(
       this.userId,
