@@ -18,13 +18,10 @@ export class AuthServiceEdit {
   private authStatusListener = new ReplaySubject<boolean>();
   private infos: AuthDataInfo[] = [];
   editUserMajor(userId: string, major: string): any {
-    const userData = new FormData();
-    userData.append('major', major);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoMajor',
-        userData,
-        { params: { userId } }
+        { userId, major }
       )
       .subscribe({
         next: (responseData) => {
@@ -42,13 +39,10 @@ export class AuthServiceEdit {
       });
   }
   editUserMinor(userId: string, minor: string): any {
-    const userData = new FormData();
-    userData.append('minor', minor);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoMinor',
-        userData,
-        { params: { userId } }
+        { userId, minor }
       )
       .subscribe({
         next: (responseData) => {
@@ -65,13 +59,10 @@ export class AuthServiceEdit {
       });
   }
   editUserClub(userId: string, club: string): any {
-    const userData = new FormData();
-    userData.append('club', club);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoClub',
-        userData,
-        { params: { userId } }
+        { userId, club }
       )
       .subscribe({
         next: (responseData) => {
@@ -88,13 +79,10 @@ export class AuthServiceEdit {
       });
   }
   editUserSport(userId: string, sport: string): any {
-    const userData = new FormData();
-    userData.append('sport', sport);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoSport',
-        userData,
-        { params: { userId } }
+        { userId, sport }
       )
       .subscribe({
         next: (responseData) => {
@@ -111,13 +99,10 @@ export class AuthServiceEdit {
       });
   }
   editUserBio(userId: string, bio: string): any {
-    const userData = new FormData();
-    userData.append('sport', bio);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoBio',
-        userData,
-        { params: { userId } }
+        { userId, bio }
       )
       .subscribe({
         next: (responseData) => {
@@ -134,13 +119,10 @@ export class AuthServiceEdit {
       });
   }
   editUserName(userId: string, name: string): any {
-    const userData = new FormData();
-    userData.append('sport', name);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoName',
-        userData,
-        { params: { userId } }
+        { userId, name }
       )
       .subscribe({
         next: (responseData) => {

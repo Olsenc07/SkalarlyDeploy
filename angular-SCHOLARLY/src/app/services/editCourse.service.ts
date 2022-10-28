@@ -20,13 +20,10 @@ export class AuthServiceEditCourse {
 
   // Completed
   editUserCourse(userId: string, CodeCompleted: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted', CodeCompleted);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted }
       )
       .subscribe({
         next: (responseData) => {
@@ -45,13 +42,10 @@ export class AuthServiceEditCourse {
   }
   // Completed2
   editUserCourse2(userId: string, CodeCompleted2: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted2', CodeCompleted2);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse2',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted2 }
       )
       .subscribe({
         next: (responseData) => {
@@ -70,13 +64,10 @@ export class AuthServiceEditCourse {
   }
   // Completed3
   editUserCourse3(userId: string, CodeCompleted3: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted3', CodeCompleted3);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse3',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted3 }
       )
       .subscribe({
         next: (responseData) => {
@@ -95,13 +86,10 @@ export class AuthServiceEditCourse {
   }
   // Completed4
   editUserCourse4(userId: string, CodeCompleted4: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted4', CodeCompleted4);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse4',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted4 }
       )
       .subscribe({
         next: (responseData) => {
@@ -120,13 +108,10 @@ export class AuthServiceEditCourse {
   }
   // Completed 5
   editUserCourse5(userId: string, CodeCompleted5: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted5', CodeCompleted5);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse5',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted5 }
       )
       .subscribe({
         next: (responseData) => {
@@ -144,13 +129,10 @@ export class AuthServiceEditCourse {
       });
   } // Completed6
   editUserCourse6(userId: string, CodeCompleted6: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted6', CodeCompleted6);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse6',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted6 }
       )
       .subscribe({
         next: (responseData) => {
@@ -168,13 +150,10 @@ export class AuthServiceEditCourse {
       });
   } // Completed7
   editUserCourse7(userId: string, CodeCompleted7: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted7', CodeCompleted7);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse7',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted7 }
       )
       .subscribe({
         next: (responseData) => {
@@ -193,13 +172,10 @@ export class AuthServiceEditCourse {
   }
   // Completed8
   editUserCourse8(userId: string, CodeCompleted8: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted8', CodeCompleted8);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse8',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted8 }
       )
       .subscribe({
         next: (responseData) => {
@@ -218,13 +194,10 @@ export class AuthServiceEditCourse {
   }
   // Completed9
   editUserCourse9(userId: string, CodeCompleted9: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted9', CodeCompleted9);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse9',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted9 }
       )
       .subscribe({
         next: (responseData) => {
@@ -243,13 +216,10 @@ export class AuthServiceEditCourse {
   }
   // Completed10
   editUserCourse10(userId: string, CodeCompleted10: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted10', CodeCompleted10);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse10',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted10 }
       )
       .subscribe({
         next: (responseData) => {
@@ -268,13 +238,10 @@ export class AuthServiceEditCourse {
   }
   // Completed11
   editUserCourse11(userId: string, CodeCompleted11: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted11', CodeCompleted11);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse11',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted11 }
       )
       .subscribe({
         next: (responseData) => {
@@ -293,13 +260,10 @@ export class AuthServiceEditCourse {
   }
   // Completed12
   editUserCourse12(userId: string, CodeCompleted12: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted12', CodeCompleted12);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse12',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted12 }
       )
       .subscribe({
         next: (responseData) => {
@@ -318,13 +282,10 @@ export class AuthServiceEditCourse {
   }
   // Completed13
   editUserCourse13(userId: string, CodeCompleted13: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted13', CodeCompleted13);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse13',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted13 }
       )
       .subscribe({
         next: (responseData) => {
@@ -343,13 +304,10 @@ export class AuthServiceEditCourse {
   }
   // Completed14
   editUserCourse14(userId: string, CodeCompleted14: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted14', CodeCompleted14);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse14',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted14 }
       )
       .subscribe({
         next: (responseData) => {
@@ -368,13 +326,10 @@ export class AuthServiceEditCourse {
   }
   // Completed15
   editUserCourse15(userId: string, CodeCompleted15: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted15', CodeCompleted15);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse15',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted15 }
       )
       .subscribe({
         next: (responseData) => {
@@ -393,13 +348,10 @@ export class AuthServiceEditCourse {
   }
   // Completed16
   editUserCourse16(userId: string, CodeCompleted16: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted16', CodeCompleted16);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse16',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted16 }
       )
       .subscribe({
         next: (responseData) => {
@@ -418,13 +370,10 @@ export class AuthServiceEditCourse {
   }
   // Completed17
   editUserCourse17(userId: string, CodeCompleted17: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted17', CodeCompleted17);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse17',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted17 }
       )
       .subscribe({
         next: (responseData) => {
@@ -443,13 +392,10 @@ export class AuthServiceEditCourse {
   }
   // Completed18
   editUserCourse18(userId: string, CodeCompleted18: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted18', CodeCompleted18);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse18',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted18 }
       )
       .subscribe({
         next: (responseData) => {
@@ -468,13 +414,10 @@ export class AuthServiceEditCourse {
   }
   // Completed19
   editUserCourse19(userId: string, CodeCompleted19: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted19', CodeCompleted19);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse19',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted19 }
       )
       .subscribe({
         next: (responseData) => {
@@ -493,13 +436,10 @@ export class AuthServiceEditCourse {
   }
   // Completed20
   editUserCourse20(userId: string, CodeCompleted20: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted20', CodeCompleted20);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse20',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted20 }
       )
       .subscribe({
         next: (responseData) => {
@@ -518,13 +458,10 @@ export class AuthServiceEditCourse {
   }
   // Completed21
   editUserCourse21(userId: string, CodeCompleted21: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted21', CodeCompleted21);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse21',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted21 }
       )
       .subscribe({
         next: (responseData) => {
@@ -543,13 +480,10 @@ export class AuthServiceEditCourse {
   }
   // Completed22
   editUserCourse22(userId: string, CodeCompleted22: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted22', CodeCompleted22);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse22',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted22 }
       )
       .subscribe({
         next: (responseData) => {
@@ -568,13 +502,10 @@ export class AuthServiceEditCourse {
   }
   // Completed23
   editUserCourse23(userId: string, CodeCompleted23: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted23', CodeCompleted23);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse23',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted23 }
       )
       .subscribe({
         next: (responseData) => {
@@ -593,13 +524,10 @@ export class AuthServiceEditCourse {
   }
   // Completed24
   editUserCourse24(userId: string, CodeCompleted24: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted24', CodeCompleted24);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse24',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted24 }
       )
       .subscribe({
         next: (responseData) => {
@@ -623,8 +551,7 @@ export class AuthServiceEditCourse {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse25',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted25 }
       )
       .subscribe({
         next: (responseData) => {
@@ -642,13 +569,10 @@ export class AuthServiceEditCourse {
       });
   } // Completed26
   editUserCourse26(userId: string, CodeCompleted26: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted26', CodeCompleted26);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse26',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted26 }
       )
       .subscribe({
         next: (responseData) => {
@@ -666,13 +590,10 @@ export class AuthServiceEditCourse {
       });
   } // Completed27
   editUserCourse27(userId: string, CodeCompleted27: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted27', CodeCompleted27);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse27',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted27 }
       )
       .subscribe({
         next: (responseData) => {
@@ -691,13 +612,10 @@ export class AuthServiceEditCourse {
   }
   // Completed28
   editUserCourse28(userId: string, CodeCompleted28: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted28', CodeCompleted28);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse28',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted28 }
       )
       .subscribe({
         next: (responseData) => {
@@ -716,13 +634,10 @@ export class AuthServiceEditCourse {
   }
   // Completed29
   editUserCourse29(userId: string, CodeCompleted29: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted29', CodeCompleted29);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse29',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted29 }
       )
       .subscribe({
         next: (responseData) => {
@@ -741,13 +656,11 @@ export class AuthServiceEditCourse {
   }
   // Completed30
   editUserCourse30(userId: string, CodeCompleted30: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted30', CodeCompleted30);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse30',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted30 }
+
       )
       .subscribe({
         next: (responseData) => {
@@ -766,13 +679,10 @@ export class AuthServiceEditCourse {
   }
   // Completed31
   editUserCourse31(userId: string, CodeCompleted31: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted31', CodeCompleted31);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse31',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted31 }
       )
       .subscribe({
         next: (responseData) => {
@@ -791,13 +701,11 @@ export class AuthServiceEditCourse {
   }
   // Completed32
   editUserCourse32(userId: string, CodeCompleted32: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted32', CodeCompleted32);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse32',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted32 }
+
       )
       .subscribe({
         next: (responseData) => {
@@ -816,13 +724,11 @@ export class AuthServiceEditCourse {
   }
   // Completed33
   editUserCourse33(userId: string, CodeCompleted33: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted33', CodeCompleted33);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse33',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted33 }
+
       )
       .subscribe({
         next: (responseData) => {
@@ -841,13 +747,11 @@ export class AuthServiceEditCourse {
   }
   // Completed34
   editUserCourse34(userId: string, CodeCompleted34: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted34', CodeCompleted34);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse34',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted34 }
+
       )
       .subscribe({
         next: (responseData) => {
@@ -866,13 +770,11 @@ export class AuthServiceEditCourse {
   }
   // Completed35
   editUserCourse35(userId: string, CodeCompleted35: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted35', CodeCompleted35);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse35',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted35 }
+
       )
       .subscribe({
         next: (responseData) => {
@@ -891,13 +793,10 @@ export class AuthServiceEditCourse {
   }
   // Completed36
   editUserCourse36(userId: string, CodeCompleted36: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted36', CodeCompleted36);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse36',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted36 }
       )
       .subscribe({
         next: (responseData) => {
@@ -916,13 +815,11 @@ export class AuthServiceEditCourse {
   }
   // Completed37
   editUserCourse37(userId: string, CodeCompleted37: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted37', CodeCompleted37);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse37',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted37 }
+
       )
       .subscribe({
         next: (responseData) => {
@@ -941,13 +838,10 @@ export class AuthServiceEditCourse {
   }
   // Completed38
   editUserCourse38(userId: string, CodeCompleted38: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted38', CodeCompleted38);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse38',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted38 }
       )
       .subscribe({
         next: (responseData) => {
@@ -966,13 +860,11 @@ export class AuthServiceEditCourse {
   }
   // Completed39
   editUserCourse39(userId: string, CodeCompleted39: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted39', CodeCompleted39);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse39',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted39 }
+
       )
       .subscribe({
         next: (responseData) => {
@@ -991,13 +883,11 @@ export class AuthServiceEditCourse {
   }
   // Completed40
   editUserCourse40(userId: string, CodeCompleted40: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompleted40', CodeCompleted40);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourse40',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompleted40 }
+
       )
       .subscribe({
         next: (responseData) => {
@@ -1016,13 +906,11 @@ export class AuthServiceEditCourse {
   }
   // CompletedX
   editUserCourseX(userId: string, CodeCompletedX: string): any {
-    const userData = new FormData();
-    userData.append('CodeCompletedX', CodeCompletedX);
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoCourseX',
-        userData,
-        { params: { userId } }
+        { userId, CodeCompletedX }
+
       )
       .subscribe({
         next: (responseData) => {

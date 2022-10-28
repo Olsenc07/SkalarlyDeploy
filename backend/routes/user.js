@@ -398,7 +398,7 @@ router.post("/info",
         // edit Name
 router.patch("/infoName", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{name: ''}) .then(update => {
+        await UserInfo.updateOne({Creator:req.body.userId },{name: ''}) .then(update => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
@@ -408,7 +408,7 @@ async(req, res, next) => {
     // edit Bio
 router.patch("/infoBio", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{bio: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{bio: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -419,7 +419,7 @@ async(req, res, next) => {
 // edit Major
 router.patch("/infoMajor", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{major: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{major: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -430,7 +430,7 @@ async(req, res, next) => {
 // edit sport
 router.patch("/infoMinor", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{minor: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{minor: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -441,7 +441,7 @@ async(req, res, next) => {
 // edit club
 router.patch("/infoClub", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{club: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{club: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -453,7 +453,7 @@ async(req, res, next) => {
 // edit sport
 router.patch("/infoSport", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{sport: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{sport: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -464,7 +464,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -475,7 +475,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse2", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted2: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted2: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -486,7 +486,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse3", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted3: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted3: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -497,7 +497,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse4", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted4: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted4: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -508,7 +508,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse5", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted5: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted5: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -519,7 +519,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse6", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted6: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted6: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -530,7 +530,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse7", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted7: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted7: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -541,7 +541,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse8", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted8: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted8: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -552,7 +552,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse9", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted9: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted9: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -563,7 +563,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse10", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted10: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted10: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -574,7 +574,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse11", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted11: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted11: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -585,7 +585,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse12", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted12: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted12: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -596,7 +596,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse13", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted13: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted13: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -607,7 +607,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse14", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted14: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -618,7 +618,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse15", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted15: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted15: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -629,7 +629,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse16", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted16: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted16: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -640,7 +640,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse17", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted17: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted17: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -651,7 +651,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse18", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted18: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted18: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -662,7 +662,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse19", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted19: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted19: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -673,7 +673,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse20", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted20: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted20: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -684,7 +684,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse21", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted21: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted21: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -695,7 +695,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse22", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted22: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted22: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -706,7 +706,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse23", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted23: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted23: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -717,7 +717,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse24", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted24: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted24: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -728,7 +728,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse25", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted25: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted25: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -739,7 +739,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse26", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted26: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted26: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -750,7 +750,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse27", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted27: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted27: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -761,7 +761,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse28", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted28: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted28: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -772,7 +772,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse29", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted29: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted29: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -783,7 +783,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse30", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted30: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted30: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -794,7 +794,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse31", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted31: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted31: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -805,7 +805,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse32", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted32: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted32: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -816,7 +816,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse33", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted33: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted33: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -827,7 +827,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse34", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted34: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted34: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -838,7 +838,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse35", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted35: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted35: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -849,7 +849,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse36", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted36: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted36: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -860,7 +860,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse37", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted37: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted37: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -871,7 +871,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse38", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted38: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted38: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -882,7 +882,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse39", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted39: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted39: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -893,7 +893,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse40", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted40: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted40: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -904,7 +904,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourseX", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompletedX: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompletedX: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -916,7 +916,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -927,7 +927,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext2", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing2: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing2: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -938,7 +938,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext3", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing3: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing3: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -949,7 +949,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext4", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing4: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing4: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -960,7 +960,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext5", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing5: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing5: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -971,7 +971,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext6", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing6: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing6: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -982,7 +982,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext7", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing7: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing7: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -993,7 +993,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext8", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing8: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing8: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1004,7 +1004,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext9", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing9: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing9: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1026,7 +1026,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext11", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing11: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing11: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1037,7 +1037,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext12", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing12: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing12: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1048,7 +1048,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext13", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing13: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing13: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1059,7 +1059,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext14", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing14: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing14: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
