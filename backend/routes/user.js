@@ -766,9 +766,15 @@ console.log('5150', req.body)
                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted4: req.body.CodeCompleted4})
                                     }               if(req.body.CodeCompleted5){
                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted5: req.body.CodeCompleted5})
+                                        .then(() => {
+                                        res.status(201).json({
+                                            post: {
+                                                id: result._id,
+                                                ...result
+                                            }
+                                        });
+                                    });
                                             }               
-                                    
-                                    
                                     }) 
                                     
                                 
