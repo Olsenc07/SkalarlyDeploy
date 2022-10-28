@@ -370,7 +370,7 @@ export class AuthService {
     CodeCompleted5: string
   ): any {
     this.http
-      .post<{ post: AuthDataInfo }>(
+      .patch<{ post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp1',
         {
           userId,

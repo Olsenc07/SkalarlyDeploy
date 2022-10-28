@@ -751,13 +751,13 @@ router.post("/infoEd", checkAuth,
                                          }     
             
     });
-    router.post("/infoEdComp1", 
+    router.patch("/infoEdComp1", 
     checkAuth,
     async(req, res, next) => {
 console.log('5150', req.body)
-    if(req.body.CodeCompleted){
+    // if(req.body.CodeCompleted){
         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted: req.body.CodeCompleted})
-            }    
+            // }    
             if(req.body.CodeCompleted2){
                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted2: req.body.CodeCompleted2})
                     }               if(req.body.CodeCompleted3){
@@ -766,15 +766,8 @@ console.log('5150', req.body)
                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted4: req.body.CodeCompleted4})
                                     }               if(req.body.CodeCompleted5){
                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted5: req.body.CodeCompleted5})
-                                        .then(() => {
-                                        res.status(201).json({
-                                            post: {
-                                                id: result._id,
-                                                ...result
-                                            }
-                                        });
-                                    });
-                                            }               
+                                            }  
+                                            console.log('got this far')             
                                     }) 
                                     
                                 
