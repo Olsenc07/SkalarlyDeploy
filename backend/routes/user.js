@@ -751,10 +751,10 @@ router.post("/infoEd", checkAuth,
                                          }     
             
     });
-    router.post("/infoEdComp1/:userId", 
+    router.post("/infoEdComp1", 
     checkAuth,
     async(req, res, next) => {
-try{
+
     if(req.body.CodeCompleted){
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: req.body.CodeCompleted})
             }    
@@ -769,15 +769,9 @@ try{
                                             }               
                                     
                                     
-                                    } catch (error){
-                                        console.error(error);
-                                        res.status(500)
-                                    } finally{
-                                        
-
-                                    }
-                                    })
-
+                                    }) 
+                                    
+                                
                                         router.post("/infoEdComp1W", checkAuth,
                                         async(req, res, next) => {
 try{

@@ -371,7 +371,7 @@ export class AuthService {
   ): any {
     this.http
       .post<{ post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdComp1/',
+        'http://www.skalarly.com/api/user/infoEdComp1',
         {
           CodeCompleted,
           CodeCompleted2,
