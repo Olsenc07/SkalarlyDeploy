@@ -329,14 +329,14 @@ export class AuthService {
     userData.append('pronoun', pronoun);
     userData.append('profilePic', profilePic);
     this.http
-      .post<{ post: any }>(
+      .post<{ post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEd',
         userData,
         { params: { userId } }
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
+          const post: AuthDataInfo = {
             id: responseData.post.id,
             name,
             bio,
@@ -349,7 +349,7 @@ export class AuthService {
             pronoun,
             ProfilePicPath: responseData.post.ProfilePicPath,
           };
-          // this.infos.push(post);
+          this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
           this.snackBar.open('Profile edited!', 'Nice!', {
             duration: 3000,
@@ -370,14 +370,17 @@ export class AuthService {
     CodeCompleted5: string
   ): any {
     this.http
-      .patch<{ post: any }>('http://www.skalarly.com/api/user/infoEdComp1', {
-        userId,
-        CodeCompleted,
-        CodeCompleted2,
-        CodeCompleted3,
-        CodeCompleted4,
-        CodeCompleted5,
-      })
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp1',
+        {
+          userId,
+          CodeCompleted,
+          CodeCompleted2,
+          CodeCompleted3,
+          CodeCompleted4,
+          CodeCompleted5,
+        }
+      )
       .subscribe({
         next: (responseData) => {
           const post: any = {

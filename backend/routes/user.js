@@ -754,9 +754,14 @@ router.post("/infoEd", checkAuth,
     router.patch("/infoEdComp1", 
     checkAuth,
     (req, res, next) => {
-console.log('5150', req.body)
+try{
     if(req.body.CodeCompleted){
          UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted: req.body.CodeCompleted})
+         .then(update => {
+            res.status(200).json({
+                post: update
+            });
+        })
             }    
             if(req.body.CodeCompleted2){
                  UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted2: req.body.CodeCompleted2})
@@ -767,7 +772,13 @@ console.log('5150', req.body)
                                     }               if(req.body.CodeCompleted5){
                                      UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted5: req.body.CodeCompleted5})
                                             }  
-                                            console.log('got this far')             
+                                        }catch{
+                                            console.log('got this far')
+                                            return res.status(401).json({
+                                                message: "Invalid update error!",
+                                            })
+                                        
+                                        }             
                                     }) 
                                     
                                 
