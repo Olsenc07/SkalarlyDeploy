@@ -63,9 +63,10 @@ export class MessageService {
   // }
 
   startMessages(userId: string): any {
+    console.log('light', userId);
     this.http
       .get<{ message: string; messages: any }>(
-        'http://www.skalarly.com/api/messages/OnetoOneSend',
+        'http://www.skalarly.com/api/messages/OnetoOneSend/',
         {
           params: { userId },
         }
