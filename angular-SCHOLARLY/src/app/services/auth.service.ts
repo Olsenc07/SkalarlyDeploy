@@ -460,13 +460,13 @@ export class AuthService {
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp2',
         {
+          userId,
           CodeCompleted11,
           CodeCompleted12,
           CodeCompleted13,
           CodeCompleted14,
           CodeCompleted15,
-        },
-        { params: { userId } }
+        }
       )
       .subscribe({
         next: (responseData) => {
@@ -504,13 +504,13 @@ export class AuthService {
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp2W',
         {
+          userId,
           CodeCompleted16,
           CodeCompleted17,
           CodeCompleted18,
           CodeCompleted19,
           CodeCompleted20,
-        },
-        { params: { userId } }
+        }
       )
       .subscribe({
         next: (responseData) => {
@@ -548,13 +548,13 @@ export class AuthService {
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp3',
         {
+          userId,
           CodeCompleted21,
           CodeCompleted22,
           CodeCompleted23,
           CodeCompleted24,
           CodeCompleted25,
-        },
-        { params: { userId } }
+        }
       )
       .subscribe({
         next: (responseData) => {
@@ -592,13 +592,13 @@ export class AuthService {
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp3W',
         {
+          userId,
           CodeCompleted26,
           CodeCompleted27,
           CodeCompleted28,
           CodeCompleted29,
           CodeCompleted30,
-        },
-        { params: { userId } }
+        }
       )
       .subscribe({
         next: (responseData) => {
@@ -636,13 +636,13 @@ export class AuthService {
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp4',
         {
+          userId,
           CodeCompleted31,
           CodeCompleted32,
           CodeCompleted33,
           CodeCompleted34,
           CodeCompleted35,
-        },
-        { params: { userId } }
+        }
       )
       .subscribe({
         next: (responseData) => {
@@ -681,14 +681,14 @@ export class AuthService {
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp4W',
         {
+          userId,
           CodeCompleted36,
           CodeCompleted37,
           CodeCompleted38,
           CodeCompleted39,
           CodeCompleted40,
           CodeCompletedX,
-        },
-        { params: { userId } }
+        }
       )
       .subscribe({
         next: (responseData) => {
@@ -726,13 +726,13 @@ export class AuthService {
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPur',
         {
+          userId,
           CodePursuing,
           CodePursuing2,
           CodePursuing3,
           CodePursuing4,
           CodePursuing5,
-        },
-        { params: { userId } }
+        }
       )
       .subscribe({
         next: (responseData) => {
@@ -770,13 +770,13 @@ export class AuthService {
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurW',
         {
+          userId,
           CodePursuing6,
           CodePursuing7,
           CodePursuing8,
           CodePursuing9,
           CodePursuing10,
-        },
-        { params: { userId } }
+        }
       )
       .subscribe({
         next: (responseData) => {
@@ -810,8 +810,7 @@ export class AuthService {
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurSpring',
-        { CodePursuing11, CodePursuing12 },
-        { params: { userId } }
+        { userId, CodePursuing11, CodePursuing12 }
       )
       .subscribe({
         next: (responseData) => {
@@ -842,8 +841,7 @@ export class AuthService {
     this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurSummer',
-        { CodePursuing13, CodePursuing14 },
-        { params: { userId } }
+        { userId, CodePursuing13, CodePursuing14 }
       )
       .subscribe({
         next: (responseData) => {
