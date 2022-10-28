@@ -69,8 +69,8 @@ export class MessagingComponent implements OnInit {
   }
 
   ngOnInit(): any {
-    this.messagesService.startMessages(this.userId);
     this.userId = this.authService.getUserId();
+    this.messagesService.startMessages(this.userId);
     this.route.queryParams.subscribe((params) => {
       console.log('params main page', params?.username);
       this.username = params?.username;
