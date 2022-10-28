@@ -395,9 +395,6 @@ export class AuthService {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
-          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
