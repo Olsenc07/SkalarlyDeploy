@@ -370,20 +370,17 @@ export class AuthService {
     CodeCompleted5: string
   ): any {
     this.http
-      .patch<{ post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdComp1',
-        {
-          userId,
-          CodeCompleted,
-          CodeCompleted2,
-          CodeCompleted3,
-          CodeCompleted4,
-          CodeCompleted5,
-        }
-      )
+      .patch<{ post: any }>('http://www.skalarly.com/api/user/infoEdComp1', {
+        userId,
+        CodeCompleted,
+        CodeCompleted2,
+        CodeCompleted3,
+        CodeCompleted4,
+        CodeCompleted5,
+      })
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
+          const post: any = {
             id: responseData.post.id,
             CodeCompleted,
             CodeCompleted2,
@@ -395,6 +392,9 @@ export class AuthService {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          this.snackBar.open('Profile edited!', 'Nice!', {
+            duration: 3000,
+          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
