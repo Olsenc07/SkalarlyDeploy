@@ -98,7 +98,7 @@ if(req.query.username === req.query.userId ){
 
 // listen for chat msg sending
 
-router.get('/OnetoOneSend/:userId', async(req,res) => {
+router.get('/OnetoOneSend', async(req,res) => {
     console.log('made it')
     var io = req.app.get('socketio');
     
