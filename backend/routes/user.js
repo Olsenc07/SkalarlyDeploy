@@ -754,18 +754,18 @@ router.post("/infoEd", checkAuth,
     router.post("/infoEdComp1", 
     checkAuth,
     async(req, res, next) => {
-
+console.log('5150', req.body)
     if(req.body.CodeCompleted){
-        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: req.body.CodeCompleted})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted: req.body.CodeCompleted})
             }    
             if(req.body.CodeCompleted2){
-                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted2: req.body.CodeCompleted2})
+                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted2: req.body.CodeCompleted2})
                     }               if(req.body.CodeCompleted3){
-                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted3: req.body.CodeCompleted3})
+                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted3: req.body.CodeCompleted3})
                             }               if(req.body.CodeCompleted4){
-                                await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted4: req.body.CodeCompleted4})
+                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted4: req.body.CodeCompleted4})
                                     }               if(req.body.CodeCompleted5){
-                                        await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted5: req.body.CodeCompleted5})
+                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted5: req.body.CodeCompleted5})
                                             }               
                                     
                                     
