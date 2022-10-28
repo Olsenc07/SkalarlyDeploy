@@ -416,13 +416,13 @@ export class AuthService {
       .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdComp1W',
         {
+          userId,
           CodeCompleted6,
           CodeCompleted7,
           CodeCompleted8,
           CodeCompleted9,
           CodeCompleted10,
-        },
-        { params: { userId } }
+        }
       )
       .subscribe({
         next: (responseData) => {
