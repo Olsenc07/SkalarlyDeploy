@@ -1,5 +1,5 @@
 
-.mat-tab-label{
+mat-tab-label{
   border-top-right-radius: 25px;
   border-top-left-radius: 25px;
 }
@@ -203,7 +203,7 @@ overflow-y: scroll;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 99%;
+    width: 100%;
     padding: 0% 15%;
     margin-bottom: 5%;
     height: fit-content;
@@ -216,7 +216,7 @@ overflow-y: scroll;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 99%;
+    width: 100%;
     padding: 0% 15%;
     height: fit-content;
     box-sizing: border-box;
