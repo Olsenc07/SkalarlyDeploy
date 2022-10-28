@@ -4,7 +4,7 @@
   <div class="centerTitle">Winter Semester <div class="fas fa-snowflake" style="color: #88c4f9;"></div> </div>
     <div *ngFor="let info of infos">
 <div class="input" >
-    <i class="material-icons _icon" *ngIf="CodeCompleted26.value">check</i>
+    <i class="material-icons _icon" *ngIf="!CodeCompleted26.value">check</i>
     <i class="material-icons check" *ngIf="CodeCompleted26.value">check</i>
     
     <mat-form-field class="example-chip-list">
