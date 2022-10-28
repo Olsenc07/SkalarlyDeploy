@@ -179,10 +179,8 @@
 
         <mat-tab-group class="column_1" >
   
-          <mat-tab label="Completed Courses" #curves >
-           
-       
-
+          <mat-tab label="Completed Courses"  >
+  
             <div class=" scroll">
               <mat-chip-list>
                 <!-- *ngFor="let list of Com" -->
@@ -430,7 +428,9 @@
                 <div class="list">
                   <mat-chip-list  class="center__">
                     <div class="columnCoursesBox">
-                
+                      <div class="titleC">
+                        Upcoming Classes
+                      </div>
                       <div>
                       <span class="fas fa-leaf centerIcon"  matTooltip="Fall Semester"
                       *ngIf="info.CodePursuing || info.CodePursuing2 || info.CodePursuing3 || info.CodePursuing4 || info.CodePursuing5"
