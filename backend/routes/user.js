@@ -1338,9 +1338,10 @@ await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.C
 })
 }  
  } catch {
-res.status(500).json({
- message: 'Updating courses failed!'
-});
+    console.log('izzya')
+// res.status(500).json({
+//  message: 'Updating courses failed!'
+// });
 }      
 });
 router.patch("/infoEdComp2W", checkAuth,
