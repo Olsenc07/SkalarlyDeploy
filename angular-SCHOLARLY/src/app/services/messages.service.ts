@@ -62,32 +62,32 @@ export class MessageService {
   //   return this.messagesSent.asObservable();
   // }
 
-  startMessages(userId: string): any {
-    console.log('light', userId);
-    this.http
-      .get<{ message: string; messages: any }>(
-        'http://www.skalarly.com/api/messages/OnetoOneSend',
-        {
-          params: { userId },
-        }
-      )
-      .pipe(
-        map((messageData) => {
-          return messageData.messages.map((data) => {
-            return {
-              id: data._id,
-              username: data.username,
-              message: data.message,
-              time: data.time,
-              otherUser: data.otherUser,
-              you: data.you,
-            };
-          });
-        })
-      )
-      .subscribe((transformedMessage) => {
-        this.messageStart = transformedMessage;
-        // this.messageStartUpdated.next([...this.messageStart]);
-      });
-  }
+  // startMessages(userId: string): any {
+  //   console.log('light', userId);
+  //   this.http
+  //     .get<{ message: string; messages: any }>(
+  //       'http://www.skalarly.com/api/messages/OnetoOneSend',
+  //       {
+  //         params: { userId },
+  //       }
+  //     )
+  //     .pipe(
+  //       map((messageData) => {
+  //         return messageData.messages.map((data) => {
+  //           return {
+  //             id: data._id,
+  //             username: data.username,
+  //             message: data.message,
+  //             time: data.time,
+  //             otherUser: data.otherUser,
+  //             you: data.you,
+  //           };
+  //         });
+  //       })
+  //     )
+  //     .subscribe((transformedMessage) => {
+  //       this.messageStart = transformedMessage;
+  //       this.messageStartUpdated.next([...this.messageStart]);
+  //     });
+  // }
 }
