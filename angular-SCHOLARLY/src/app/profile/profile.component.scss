@@ -1,7 +1,7 @@
 
 mat-tab-label{
-  border-top-right-radius: 25px;
-  border-top-left-radius: 25px;
+  border-top-right-radius: 25px !important;
+  border-top-left-radius: 25px !important;
 }
 
 @media (min-width: 1025px) {
@@ -926,6 +926,7 @@ justify-content: center;
 background-color: rgb(166, 166, 166);
 font-family: Cinzel,serif;
 /* margin-top: 4%; */
+opacity: .5;
 color: white;
 box-shadow: 0px 2px 7px gray;
 }
