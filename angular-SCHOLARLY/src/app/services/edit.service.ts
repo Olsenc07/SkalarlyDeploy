@@ -21,7 +21,7 @@ export class AuthServiceEdit {
     const userData = new FormData();
     userData.append('major', major);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoMajor',
         userData,
         { params: { userId } }
@@ -45,7 +45,7 @@ export class AuthServiceEdit {
     const userData = new FormData();
     userData.append('minor', minor);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoMinor',
         userData,
         { params: { userId } }
@@ -68,7 +68,7 @@ export class AuthServiceEdit {
     const userData = new FormData();
     userData.append('club', club);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoClub',
         userData,
         { params: { userId } }
@@ -91,7 +91,7 @@ export class AuthServiceEdit {
     const userData = new FormData();
     userData.append('sport', sport);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoSport',
         userData,
         { params: { userId } }
@@ -114,7 +114,7 @@ export class AuthServiceEdit {
     const userData = new FormData();
     userData.append('sport', bio);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoBio',
         userData,
         { params: { userId } }
@@ -137,7 +137,7 @@ export class AuthServiceEdit {
     const userData = new FormData();
     userData.append('sport', name);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoName',
         userData,
         { params: { userId } }

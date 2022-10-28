@@ -23,7 +23,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing', CodePursuing);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext',
         userData,
         { params: { userId } }
@@ -48,7 +48,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing2', CodePursuing2);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext2',
         userData,
         { params: { userId } }
@@ -73,7 +73,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing3', CodePursuing3);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext3',
         userData,
         { params: { userId } }
@@ -98,7 +98,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing4', CodePursuing4);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext4',
         userData,
         { params: { userId } }
@@ -123,7 +123,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing5', CodePursuing5);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext5',
         userData,
         { params: { userId } }
@@ -148,7 +148,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing6', CodePursuing6);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext6',
         userData,
         { params: { userId } }
@@ -173,7 +173,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing7', CodePursuing7);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext7',
         userData,
         { params: { userId } }
@@ -198,7 +198,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing8', CodePursuing8);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext8',
         userData,
         { params: { userId } }
@@ -223,7 +223,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing9', CodePursuing9);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext9',
         userData,
         { params: { userId } }
@@ -248,7 +248,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing10', CodePursuing10);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext10',
         userData,
         { params: { userId } }
@@ -273,7 +273,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing11', CodePursuing11);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext11',
         userData,
         { params: { userId } }
@@ -298,7 +298,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing12', CodePursuing12);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext12',
         userData,
         { params: { userId } }
@@ -323,7 +323,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing13', CodePursuing13);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext13',
         userData,
         { params: { userId } }
@@ -348,7 +348,7 @@ export class AuthServiceEditNext {
     const userData = new FormData();
     userData.append('CodePursuing14', CodePursuing14);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoNext14',
         userData,
         { params: { userId } }

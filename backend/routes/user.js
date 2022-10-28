@@ -396,311 +396,676 @@ router.post("/info",
     })
     });
         // edit Name
-router.post("/infoName", checkAuth,
+router.patch("/infoName", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{name: ''})
+        await UserInfo.updateOne({Creator:req.query.userId },{name: ''}) .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
     // edit Bio
-router.post("/infoBio", checkAuth,
+router.patch("/infoBio", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{bio: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Major
-router.post("/infoMajor", checkAuth,
+router.patch("/infoMajor", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{major: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit sport
-router.post("/infoMinor", checkAuth,
+router.patch("/infoMinor", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{minor: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit club
-router.post("/infoClub", checkAuth,
+router.patch("/infoClub", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{club: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 
 // edit sport
-router.post("/infoSport", checkAuth,
+router.patch("/infoSport", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{sport: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse", checkAuth,
+router.patch("/infoCourse", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse2", checkAuth,
+router.patch("/infoCourse2", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted2: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse3", checkAuth,
+router.patch("/infoCourse3", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted3: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse4", checkAuth,
+router.patch("/infoCourse4", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted4: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse5", checkAuth,
+router.patch("/infoCourse5", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted5: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse6", checkAuth,
+router.patch("/infoCourse6", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted6: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse7", checkAuth,
+router.patch("/infoCourse7", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted7: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse8", checkAuth,
+router.patch("/infoCourse8", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted8: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse9", checkAuth,
+router.patch("/infoCourse9", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted9: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse10", checkAuth,
+router.patch("/infoCourse10", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted10: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse11", checkAuth,
+router.patch("/infoCourse11", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted11: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse12", checkAuth,
+router.patch("/infoCourse12", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted12: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse13", checkAuth,
+router.patch("/infoCourse13", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted13: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse14", checkAuth,
+router.patch("/infoCourse14", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted14: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse15", checkAuth,
+router.patch("/infoCourse15", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted15: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse16", checkAuth,
+router.patch("/infoCourse16", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted16: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse17", checkAuth,
+router.patch("/infoCourse17", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted17: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse18", checkAuth,
+router.patch("/infoCourse18", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted18: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse19", checkAuth,
+router.patch("/infoCourse19", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted19: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse20", checkAuth,
+router.patch("/infoCourse20", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted20: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse21", checkAuth,
+router.patch("/infoCourse21", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted21: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse22", checkAuth,
+router.patch("/infoCourse22", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted22: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse23", checkAuth,
+router.patch("/infoCourse23", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted23: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse24", checkAuth,
+router.patch("/infoCourse24", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted24: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse25", checkAuth,
+router.patch("/infoCourse25", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted25: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse26", checkAuth,
+router.patch("/infoCourse26", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted26: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse27", checkAuth,
+router.patch("/infoCourse27", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted27: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse28", checkAuth,
+router.patch("/infoCourse28", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted28: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse29", checkAuth,
+router.patch("/infoCourse29", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted29: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse30", checkAuth,
+router.patch("/infoCourse30", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted30: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse31", checkAuth,
+router.patch("/infoCourse31", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted31: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse32", checkAuth,
+router.patch("/infoCourse32", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted32: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse33", checkAuth,
+router.patch("/infoCourse33", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted33: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse34", checkAuth,
+router.patch("/infoCourse34", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted34: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse35", checkAuth,
+router.patch("/infoCourse35", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted35: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse36", checkAuth,
+router.patch("/infoCourse36", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted36: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse37", checkAuth,
+router.patch("/infoCourse37", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted37: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse38", checkAuth,
+router.patch("/infoCourse38", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted38: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse39", checkAuth,
+router.patch("/infoCourse39", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted39: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourse40", checkAuth,
+router.patch("/infoCourse40", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompleted40: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Complete 1
-router.post("/infoCourseX", checkAuth,
+router.patch("/infoCourseX", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodeCompletedX: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 
 // edit Next Course
-router.post("/infoNext", checkAuth,
+router.patch("/infoNext", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext2", checkAuth,
+router.patch("/infoNext2", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing2: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext3", checkAuth,
+router.patch("/infoNext3", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing3: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext4", checkAuth,
+router.patch("/infoNext4", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing4: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext5", checkAuth,
+router.patch("/infoNext5", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing5: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext6", checkAuth,
+router.patch("/infoNext6", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing6: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext7", checkAuth,
+router.patch("/infoNext7", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing7: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext8", checkAuth,
+router.patch("/infoNext8", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing8: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext9", checkAuth,
+router.patch("/infoNext9", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing9: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext10", checkAuth,
+router.patch("/infoNext10", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing10: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext11", checkAuth,
+router.patch("/infoNext11", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing11: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext12", checkAuth,
+router.patch("/infoNext12", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing12: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext13", checkAuth,
+router.patch("/infoNext13", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing13: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 // edit Next Course
-router.post("/infoNext14", checkAuth,
+router.patch("/infoNext14", checkAuth,
 async(req, res, next) => {
         await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing14: ''})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })
 })
 
 
@@ -711,7 +1076,7 @@ async(req, res, next) => {
 // Break this up chase into different routes and edit.serivice.ts
 // infoEd broken up!!
 const pic_ = multer({ storage: storage2, limits})
-router.post("/infoEd", checkAuth,
+router.patch("/infoEd", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {
         try{
@@ -873,7 +1238,7 @@ try{
                                         }             
                                     }) 
                                     
-router.post("/infoEdComp1W", checkAuth,
+router.patch("/infoEdComp1W", checkAuth,
     async(req, res, next) => {
           try{
         if(req.body.CodeCompleted6){
@@ -924,7 +1289,7 @@ router.post("/infoEdComp1W", checkAuth,
                                }
                              });
 
-router.post("/infoEdComp2", checkAuth,
+router.patch("/infoEdComp2", checkAuth,
  async(req, res, next) => {  
     try{                                                              
  if(req.body.CodeCompleted11){
@@ -978,7 +1343,7 @@ res.status(500).json({
 });
 }      
 });
-router.post("/infoEdComp2W", checkAuth,
+router.patch("/infoEdComp2W", checkAuth,
  async(req, res, next) => {      
     try{
                                                                                                                             if(req.body.CodeCompleted16){
@@ -1028,7 +1393,7 @@ router.post("/infoEdComp2W", checkAuth,
                                                                                                                                                                     });
                                                                                                                                                                 }     
                                                                                                                                                                 });
-                                                                                                                                                                router.post("/infoEdComp3", checkAuth,
+                                                                                                                                                                router.patch("/infoEdComp3", checkAuth,
                                                                                                                                                                 async(req, res, next) => {  
                                                                                                                                                                     try{
                                                                                                                                                                     if(req.body.CodeCompleted21){
@@ -1078,7 +1443,7 @@ router.post("/infoEdComp2W", checkAuth,
                     });
                 }
                 })
-                router.post("/infoEdComp3W", checkAuth,
+                router.patch("/infoEdComp3W", checkAuth,
  async(req, res, next) => {  
     try{
                     if(req.body.CodeCompleted26){
@@ -1128,7 +1493,7 @@ router.post("/infoEdComp2W", checkAuth,
                                                             });
                                                         }       
                                                         })
-                                                        router.post("/infoEdComp4", checkAuth,
+                                                        router.patch("/infoEdComp4", checkAuth,
  async(req, res, next) => {  
     try{
                                                             if(req.body.CodeCompleted31){
@@ -1173,15 +1538,14 @@ router.post("/infoEdComp2W", checkAuth,
                                                                                                     });
                                                                                                 })
                                                                                                     }      
-                                                                                                } catch (error){
-                                                                                                    console.error(error);
+                                                                                                } catch{
                                                                                                     res.status(500).json({
                                                                                                         message: 'Updating courses failed!'
                                                                                                     });
                                                                                                 }   
                                                                                                 });
                                                                                                 
-                                                                                                router.post("/infoEdComp4W", checkAuth,
+                                                                                                router.patch("/infoEdComp4W", checkAuth,
  async(req, res, next) => {  
     try{
                                                                                                     if(req.body.CodeCompleted36){
@@ -1241,7 +1605,7 @@ router.post("/infoEdComp2W", checkAuth,
                                                                                                                                                 }
                                                                                                                                                 })
 
-                                                                                                                                                router.post("/infoEdPur", checkAuth,
+                                                                                                                                                router.patch("/infoEdPur", checkAuth,
                                                                                                                                                         async(req, res, next) => {  
                                                                                                                                                             try{
                                                                                                                                     if(req.body.CodePursuing){
@@ -1292,7 +1656,7 @@ router.post("/infoEdComp2W", checkAuth,
                                                                                                                                                                             });
                                                                                                                                                                         }   
                                                                                                                                                                         })
-                                                                                                                                                                        router.post("/infoEdPurW", checkAuth,
+                                                                                                                                                                        router.patch("/infoEdPurW", checkAuth,
                                                                                                                                                                         async(req, res, next) => {  
                                                                                                                                                                             try{
                                                                                                                                                                             if(req.body.CodePursuing6){
@@ -1342,7 +1706,7 @@ router.post("/infoEdComp2W", checkAuth,
                                                                                                                                                                                                                     });
                                                                                                                                                                                                                 }
                                                                                                                                                                                                                 })
-                                                                                                                                                                                                                router.post("/infoEdPurSpring", checkAuth,
+                                                                                                                                                                                                                router.patch("/infoEdPurSpring", checkAuth,
                                                                                                                                                                                                                 async(req, res, next) => {  
                                                                                                                                                                                                                     try{
                                                                                                                                                                                                                     if(req.body.CodePursuing11){
@@ -1368,7 +1732,7 @@ router.post("/infoEdComp2W", checkAuth,
                                                                                                                                                                                                                             });
                                                                                                                                                                                                                         }
                                                                                                                                                                                                                         })
-                                                                                                                                                                                                                        router.post("/infoEdPurSummer", checkAuth,
+                                                                                                                                                                                                                        router.patch("/infoEdPurSummer", checkAuth,
                                                                                                                                                                                                                         async(req, res, next) => { 
                                                                                                                                                                                                                             try{ 
                                                                                                                                                                                                                             if(req.body.CodePursuing13){

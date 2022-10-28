@@ -258,7 +258,7 @@
                     <mat-chip *ngIf="info.CodeCompleted10" class="style" color="primary" selected >
                       {{ info.CodeCompleted10 | uppercase}}
                     </mat-chip>
-                    <mat-divider *ngIf="info.CodeCompleted1 || info.CodeCompleted11 "></mat-divider>
+                    <!-- <mat-divider *ngIf="info.CodeCompleted1 || info.CodeCompleted11 "></mat-divider> -->
           </div>
           <div>
           <div class="middleText">
@@ -315,7 +315,7 @@
                     </mat-chip>
                   </div>
                   </div>
-                  <mat-divider *ngIf="info.CodeCompleted16 || info.CodeCompleted21 "></mat-divider>
+                  <!-- <mat-divider *ngIf="info.CodeCompleted16 || info.CodeCompleted21 "></mat-divider> -->
                   <div class="middleText">
 
                     <div class="titleC" 
@@ -370,7 +370,7 @@
                     </mat-chip>
                   </div>
                 </div>
-                <mat-divider *ngIf="info.CodeCompleted31 || info.CodeCompleted40"></mat-divider>
+                <!-- <mat-divider *ngIf="info.CodeCompleted31 || info.CodeCompleted40"></mat-divider> -->
 
                   <div class="middleText">
                     <div class="titleC" *ngIf="info.CodeCompleted31 || info.CodeCompleted32 || info.CodeComplete33 || info.CodeCompleted34 || info.CodeCompleted35 ||
@@ -499,7 +499,7 @@
                       {{ info.CodePursuing10 | uppercase}}
                     </mat-chip>
                   </div>
-                  <mat-divider *ngIf="info.CodePursuing11 "></mat-divider>
+                  <mat-divider *ngIf="info.CodePursuing11 || info.CodePursuing12 "></mat-divider>
 
                 </div>
                 <div>
@@ -514,7 +514,7 @@
                     <mat-chip *ngIf="info.CodePursuing12" class="style" color="primary" selected >
                       {{ info.CodePursuing12 | uppercase}}
                     </mat-chip>
-                    <mat-divider *ngIf="info.CodePursuing13 "></mat-divider>
+                    <mat-divider *ngIf="info.CodePursuing13 || info.CodePursuing14"></mat-divider>
                     <span class="fas fa-sun" matTooltip="Summer Semester"
                     *ngIf="info.CodePursuing13 || info.CodePursuing14" 
                     style="color: #d89163; margin-top:4%">
