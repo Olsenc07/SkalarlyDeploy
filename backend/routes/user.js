@@ -1291,7 +1291,7 @@ router.patch("/infoEdComp1W", checkAuth,
 
 router.patch("/infoEdComp2", checkAuth,
  async(req, res, next) => {  
-    try{                                                              
+ if(reg.body){                                                          
  if(req.body.CodeCompleted11){
  await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted11: req.body.CodeCompleted11})
  .then(update => {
@@ -1337,11 +1337,11 @@ await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.C
     });
 })
 }  
- } catch {
+ } else {
     console.log('izzya')
-// res.status(500).json({
-//  message: 'Updating courses failed!'
-// });
+res.status(200).json({
+ message: 'Nothing to update!'
+});
 }      
 });
 router.patch("/infoEdComp2W", checkAuth,
