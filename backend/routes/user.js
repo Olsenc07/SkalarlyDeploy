@@ -1339,8 +1339,8 @@ await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.C
 }  
  } else {
     console.log('izzya')
-res.status(200).json({
- message: 'Nothing to update!'
+res.status(501).json({
+ message: 'Somethings funky!'
 });
 }      
 });
