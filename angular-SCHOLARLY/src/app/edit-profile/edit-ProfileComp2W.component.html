@@ -157,8 +157,9 @@
 
         <!-- done button -->
  <div class="done">
-    <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
-      (click)="onSubmit()" >
+    <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
+      (click)="onSubmit()" [disabled]="!CodeCompleted20.value && !CodeCompleted16.value &&
+      !CodeCompleted17.value && !CodeCompleted18.value && !CodeCompleted19.value">
       Save
     </button>
   </div>

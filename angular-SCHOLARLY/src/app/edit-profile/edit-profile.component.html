@@ -177,9 +177,10 @@
        
           <!-- Save button -->
           <div class="done">
-            <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
-              (click)="onSubmit()" >
-              Update
+            <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
+              (click)="onSubmit()" [disabled]="!profilePic.value && !name.value && !birthday.value
+              && !gender.value && !pronoun.value && !bio.value">
+              Save
             </button>
           </div>
 
@@ -291,8 +292,8 @@
 
           <!-- done button -->
           <div class="done">
-            <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
-              (click)="onSubmit()" >
+            <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
+              (click)="onSubmit()" [disabled]="!major.value && !minor.value && !sport.value && !club.value" >
               Save
             </button>
           </div>

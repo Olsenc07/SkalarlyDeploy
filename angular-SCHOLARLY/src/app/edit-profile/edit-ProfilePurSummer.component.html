@@ -64,8 +64,8 @@
     </div>
     <!-- done button -->
 <div class="done">
-    <button mat-raised-button color="primary"  type="submit" routerLink="/profile" class="button"
-      (click)="onSubmit()" >
+    <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
+      (click)="onSubmit()" [disabled]="!CodePursuing13.value && !CodePursuing14.value" >
       Save
     </button>
   </div>
