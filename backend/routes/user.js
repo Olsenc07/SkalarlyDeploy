@@ -1076,7 +1076,7 @@ async(req, res, next) => {
 // Break this up chase into different routes and edit.serivice.ts
 // infoEd broken up!!
 const pic_ = multer({ storage: storage2, limits})
-router.patch("/infoEd/:userId", checkAuth,
+router.patch("/infoEd", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {
         try{
