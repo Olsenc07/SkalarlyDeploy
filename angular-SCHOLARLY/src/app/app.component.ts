@@ -309,8 +309,6 @@ export class AppComponent implements OnInit {
     this.postsService.searchUsers(query.trim()).subscribe((results) => {
       this.users = results;
       this.hasQuery = true;
-      console.log(results);
-      console.log('users', this.users);
     });
   }
 
