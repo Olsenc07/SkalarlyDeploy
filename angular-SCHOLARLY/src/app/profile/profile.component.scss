@@ -244,6 +244,7 @@ overflow-y: scroll;
 .columnCoursesBox{
 display: flex;
 flex-direction: column;
+width: 100%;
 }
 @media (max-width: 1025px) {
   .column1 {
@@ -925,12 +926,12 @@ mat-tab-group {
   display: flex;
   justify-content: center;
   /* background-color: #a6a6a6; */
-  font-family: Cinzel,serif;
+  font-family: 'Cinzel',serif;
   opacity: .5;
   width: 100%;
   font-weight: 700;
   /* color: #fff; */
-  box-shadow: 0 2px 7px gray;
+  box-shadow: 0 4px 7px gray;
 }
 .title1 {
   display: flex;
