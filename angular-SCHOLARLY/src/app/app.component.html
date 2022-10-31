@@ -109,12 +109,12 @@
                 <div class="text" *ngIf="users.length < 1 && hasQuery && search.value">Sorry no skalar found 
                   <!-- <i class="fas fa-user-secret"></i> -->
                 </div>
-                <div class="below_search" *ngIf="users.length >= 1">
+                <div class="below_search" *ngIf="users.length >= 1 && search.value">
 
                   <!-- But select works -->
                   <!-- Wrap a button around this and add "click to view" -->
                  
-                  <mat-label class="place_holder" matTooltip="Click arrow to see Skalars">Skalar (s)</mat-label>
+                  <mat-label class="place_holder" matTooltip="Click arrow to see Skalars" >Skalar (s)</mat-label>
                   <mat-select  id="trigger" matTooltip="Click to see Skalars" >
                     <!-- <div class="fas fa-user-graduate space_"></div> -->
                     <div class="title">Fellow Skalars</div>
