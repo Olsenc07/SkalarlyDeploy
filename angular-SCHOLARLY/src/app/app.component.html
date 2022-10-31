@@ -54,7 +54,7 @@
 
           <div class="small-icons">
             <div [ngClass]="searchPop === false ? 'search-box' : 'search-box_'">
-              <button mat-icon-button type="button" (click)="search_()">
+              <!-- <button mat-icon-button type="button" (click)="search_()"> -->
                 <mat-icon
                   class="material-icons"
                   [ngClass]="
@@ -65,7 +65,7 @@
                 >
                   search</mat-icon
                 >
-              </button>
+              <!-- </button> -->
               <input
                 placeholder="Search Fellow Scholars"
                 class="standard"
@@ -73,6 +73,7 @@
                   searchPop === false ? 'searchHide' : 'search-box__input,fas'
                 "
               />
+        
             </div>
 
             <button
@@ -102,6 +103,9 @@
                 placeholder="Search Fellow Skalars"
                 [formControl]="search"
               />
+              <button type="button" mat-icon-button class="trash" matTooltip="Clear" color="primary" (click)="clearSearch()">
+                <i class="far fa-times-circle"></i>
+              </button>
                 <div class="text" *ngIf="users.length < 1 && hasQuery ">Sorry no skalar found 
                   <!-- <i class="fas fa-user-secret"></i> -->
                 </div>

@@ -663,6 +663,12 @@ h4:focus {
 ::ng-deep .mat-toolbar-single-row {
   padding: 0px !important;
 }
+.trash {
+  display: flex;
+  justify-content: center;
+  font-size: x-large;
+  color: #7e7171;
+}
 .Text1box {
   display: flex;
   flex-direction: column;

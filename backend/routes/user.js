@@ -1676,7 +1676,8 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                                                                                                 post: update
                                                                                                                                                                                             });
                                                                                                                                                                                         })
-                                                                                                                                                     }               if(req.body.CodePursuing8){
+                                                                                                                                                                                             }               
+                                                                                                                                                                                    if(req.body.CodePursuing8){
                                                                                                                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing8: req.body.CodePursuing8})
                                                                                                                                                                                                 .then(update => {
                                                                                                                                                                                                     res.status(200).json({

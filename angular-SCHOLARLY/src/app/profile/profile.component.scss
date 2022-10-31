@@ -778,7 +778,7 @@ mat-tab-group {
 }
 .scroll {
   overflow-y: scroll;
-  background-color: #a6a6a6;
+  // background-color: #a6a6a6;
 }
 .showCase {
   display: flex;
@@ -923,13 +923,14 @@ mat-tab-group {
 }
 .titleC{
   display: flex;
-justify-content: center;
-background-color: rgb(166, 166, 166);
-font-family: Cinzel,serif;
-/* margin-top: 4%; */
-opacity: .5;
-color: white;
-box-shadow: 0px 2px 7px gray;
+  justify-content: center;
+  /* background-color: #a6a6a6; */
+  font-family: Cinzel,serif;
+  opacity: .5;
+  width: 100%;
+  font-weight: 700;
+  /* color: #fff; */
+  box-shadow: 0 2px 7px gray;
 }
 .title1 {
   display: flex;
