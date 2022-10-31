@@ -103,7 +103,7 @@
                 placeholder="Search Fellow Skalars"
                 [formControl]="search"
               />
-              <button type="button" mat-icon-button class="trash" color="primary" (click)="clearSearch()">
+              <button type="button" mat-icon-button class="trash" color="primary" *ngIf="search.value" (click)="clearSearch()">
                 <i class="far fa-times-circle"></i>
               </button>
                 <div class="text" *ngIf="users.length < 1 && hasQuery ">Sorry no skalar found 

@@ -337,7 +337,7 @@ export class AppComponent implements OnInit {
   }
 
   clearSearch(): void {
-    this.search.setValue('');
+    this.search.reset();
   }
 
   onSubmit(): void {
