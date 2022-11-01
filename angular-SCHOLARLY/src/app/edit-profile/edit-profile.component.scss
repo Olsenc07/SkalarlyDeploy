@@ -255,12 +255,14 @@ border-top-right-radius: 25px;
 .done {
     justify-content: center;
     display: flex;
+    flex-direction: row;
     width: 100%;
   }
 }
 @media (max-width: 1024px) {
 .done {
     justify-content: center;
+    flex-direction: row;
     display: flex;
     width: 100%;
     margin-bottom: 13%;

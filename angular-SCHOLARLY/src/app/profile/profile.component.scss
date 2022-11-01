@@ -924,14 +924,11 @@ mat-tab-group {
 }
 .titleC{
   display: flex;
-  justify-content: center;
-  /* background-color: #a6a6a6; */
-  font-family: 'Cinzel',serif;
-  opacity: .5;
-  width: 100%;
-  font-weight: 700;
-  /* color: #fff; */
-  box-shadow: 0 4px 7px gray;
+justify-content: center;
+font-family: Cinzel,serif;
+opacity: .5;
+margin-top: 3%;
+width: 100%;
 }
 .title1 {
   display: flex;
