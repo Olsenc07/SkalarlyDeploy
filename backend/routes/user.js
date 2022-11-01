@@ -1241,7 +1241,7 @@ try{
 router.patch("/infoEdComp1W", checkAuth,
     async(req, res, next) => {
           try{
-        // if(req.body.CodeCompleted6){
+        if(req.body.CodeCompleted6){
         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted6: req.body.CodeCompleted6})
         .then(update => {
             res.status(200).json({
@@ -1249,8 +1249,8 @@ router.patch("/infoEdComp1W", checkAuth,
                 post: update
             });
         })
-    //    }  
-                    // if(req.body.CodeCompleted7){
+       }  
+                    if(req.body.CodeCompleted7){
             await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted7: req.body.CodeCompleted7})
             .then(update => {
                 res.status(200).json({
@@ -1258,8 +1258,8 @@ router.patch("/infoEdComp1W", checkAuth,
                     post: update
                 });
             })
-            // }       
-                    // if(req.body.CodeCompleted8){
+            }       
+                    if(req.body.CodeCompleted8){
               await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted8: req.body.CodeCompleted8})
               .then(update => {
                 res.status(200).json({
@@ -1267,8 +1267,8 @@ router.patch("/infoEdComp1W", checkAuth,
                     post: update
                 });
             })
-                //  }  
-                            //   if(req.body.CodeCompleted9){
+                 }  
+                              if(req.body.CodeCompleted9){
                           await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted9: req.body.CodeCompleted9})
                           .then(update => {
                             res.status(200).json({
@@ -1276,8 +1276,8 @@ router.patch("/infoEdComp1W", checkAuth,
                                 post: update
                             });
                         })
-    //    }              
-        // if(req.body.CodeCompleted10){
+       }              
+        if(req.body.CodeCompleted10){
       await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted10: req.body.CodeCompleted10})
       .then(update => {
         res.status(200).json({
@@ -1285,7 +1285,7 @@ router.patch("/infoEdComp1W", checkAuth,
             post: update
         });
     })
-                            // }     
+                            }     
                          } catch{
                             res.status(500).json({
                                 message: 'Updating courses failed!'
@@ -1664,7 +1664,7 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                                                                         router.patch("/infoEdPurW", checkAuth,
                                                                                                                                                                         async(req, res, next) => {  
                                                                                                                                                                             try{
-                                                                                                                                                                            // if(req.body.CodePursuing6){
+                                                                                                                                                                            if(req.body.CodePursuing6){
                                                                                                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing6: req.body.CodePursuing6})
                                                                                                                                                                                 .then(update => {
                                                                                                                                                                                     res.status(200).json({
@@ -1672,7 +1672,7 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                                                                                         post: update
                                                                                                                                                                                     });
                                                                                                                                                                                 })
-                                                                                                                                                                                    // }               if(req.body.CodePursuing7){
+                                                                                                                                                                                    }               if(req.body.CodePursuing7){
                                                                                                                                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing7: req.body.CodePursuing7})
                                                                                                                                                                                         .then(update => {
                                                                                                                                                                                             res.status(200).json({
@@ -1680,8 +1680,8 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                                                                                                 post: update
                                                                                                                                                                                             });
                                                                                                                                                                                         })
-                                                                                                                                                                                            //  }               
-                                                                                                                                                                                    // if(req.body.CodePursuing8){
+                                                                                                                                                                                             }               
+                                                                                                                                                                                    if(req.body.CodePursuing8){
                                                                                                                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing8: req.body.CodePursuing8})
                                                                                                                                                                                                 .then(update => {
                                                                                                                                                                                                     res.status(200).json({
@@ -1689,7 +1689,7 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                                                                                                         post: update
                                                                                                                                                                                                     });
                                                                                                                                                                                                 })
-                                                                                                                                                                                                    // }               if(req.body.CodePursuing9){
+                                                                                                                                                                                                    }               if(req.body.CodePursuing9){
                                                                                                                                                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing9: req.body.CodePursuing9})
                                                                                                                                                                                                         .then(update => {
                                                                                                                                                                                                             res.status(200).json({
@@ -1697,7 +1697,7 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                                                                                                                 post: update
                                                                                                                                                                                                             });
                                                                                                                                                                                                         })
-                                                                                                                                                                                                            // }               if(req.body.CodePursuing10){
+                                                                                                                                                                                                            }               if(req.body.CodePursuing10){
                                                                                                                                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing10: req.body.CodePursuing10})
                                                                                                                                                                                                                 .then(update => {
                                                                                                                                                                                                                     res.status(200).json({
@@ -1705,7 +1705,7 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                                                                                                                         post: update
                                                                                                                                                                                                                     });
                                                                                                                                                                                                                 })
-                                                                                                                                                                                                                    // }      
+                                                                                                                                                                                                                    }      
                                                                                                                                                                                                                 } catch{
                                                                                                                                                                                                                     res.status(500).json({
                                                                                                                                                                                                                         message: 'Updating courses failed!'

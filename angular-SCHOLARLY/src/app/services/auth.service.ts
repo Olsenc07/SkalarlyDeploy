@@ -787,13 +787,12 @@ export class AuthService {
             CodePursuing9,
             CodePursuing10,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          this.router.navigate(['/profile']);
+          this.snackBar.open('Profile edited!', 'Nice!', {
+            duration: 3000,
+          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
