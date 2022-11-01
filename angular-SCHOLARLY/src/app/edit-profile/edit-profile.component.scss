@@ -253,7 +253,7 @@ border-top-right-radius: 25px;
 }
 @media (min-width: 1024px) {
 .done {
-    justify-content: center;
+    justify-content: space-evenly;
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -261,7 +261,7 @@ border-top-right-radius: 25px;
 }
 @media (max-width: 1024px) {
 .done {
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: row;
     display: flex;
     width: 100%;
