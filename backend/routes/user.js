@@ -1015,7 +1015,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext10", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.query.userId },{CodePursuing10: ''})
+        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing10: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
