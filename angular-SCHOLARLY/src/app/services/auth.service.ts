@@ -1444,7 +1444,7 @@ export class AuthService {
     const expirationDate = localStorage.getItem('expiration');
     const userId = localStorage.getItem('userId');
     if (expirationDate === '0') {
-      this.logout;
+      this.logout();
       this.snackBar.open('Validation expired', 'Please relogin!', {
         duration: 3000,
       });
