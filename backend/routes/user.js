@@ -1610,57 +1610,56 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                                                 }
                                                                                                                                                 })
 
-                                                                                                                                                router.patch("/infoEdPur", checkAuth,
-                                                                                                                                                        async(req, res, next) => {  
-                                                                                                                                                            try{
-                                                                                                                                    if(req.body.CodePursuing){
-                                                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing})
-                                                                                                                                        .then(update => {
-                                                                                                                                            res.status(200).json({
-                                                                                                                                                message: 'Clean update',
-                                                                                                                                                post: update
-                                                                                                                                            });
-                                                                                                                                        })
-                                                                                                                                            }    
-                                                                                                                                            if(req.body.CodePursuing2){
-                                                                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing2: req.body.CodePursuing2})
-                                                                                                                                                .then(update => {
-                                                                                                                                                    res.status(200).json({
-                                                                                                                                                        message: 'Clean update',
-                                                                                                                                                        post: update
-                                                                                                                                                    });
-                                                                                                                                                })
-                                                                                                                                                    }               if(req.body.CodePursuing3){
-                                                                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing3: req.body.CodePursuing3})
-                                                                                                                                                        .then(update => {
-                                                                                                                                                            res.status(200).json({
-                                                                                                                                                                message: 'Clean update',
-                                                                                                                                                                post: update
-                                                                                                                                                            });
-                                                                                                                                                        })
-                                                                                                                                                            }               if(req.body.CodePursuing4){
-                                                                                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing4: req.body.CodePursuing4})
-                                                                                                                                                                .then(update => {
-                                                                                                                                                                    res.status(200).json({
-                                                                                                                                                                        message: 'Clean update',
-                                                                                                                                                                        post: update
-                                                                                                                                                                    });
-                                                                                                                                                                })
-                                                                                                                                                                    }               if(req.body.CodePursuing5){
-                                                                                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing5: req.body.CodePursuing5})
-                                                                                                                                                                        .then(update => {
-                                                                                                                                                                            res.status(200).json({
-                                                                                                                                                                                message: 'Clean update',
-                                                                                                                                                                                post: update
-                                                                                                                                                                            });
-                                                                                                                                                                        })
-                                                                                                                                                                            } 
-                                                                                                                                                                        } catch{
-                                                                                                                                                                            res.status(500).json({
-                                                                                                                                                                                message: 'Updating courses failed!'
-                                                                                                                                                                            });
-                                                                                                                                                                        }   
-                                                                                                                                                                        })
+router.patch("/infoEdPur", checkAuth,
+ async(req, res, next) => {                                                                                                                                                   
+if(req.body.CodePursuing){
+await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing})
+.then(update => {
+res.status(200).json({
+message: 'Clean update',
+ post: update
+});
+})} 
+router.patch("/infoEdPur2", checkAuth,
+ async(req, res, next) => {                                                                                                                                                   
+if(req.body.CodePursuing2){
+await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing2})
+.then(update => {
+res.status(200).json({
+message: 'Clean update',
+ post: update
+});
+})}                                                                                                                                                                                                                                                                                
+router.patch("/infoEdPur3", checkAuth,
+ async(req, res, next) => {                                                                                                                                                   
+if(req.body.CodePursuing3){
+await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing3})
+.then(update => {
+res.status(200).json({
+message: 'Clean update',
+ post: update
+});
+})}
+router.patch("/infoEdPur4", checkAuth,
+ async(req, res, next) => {                                                                                                                                                   
+if(req.body.CodePursuing4){
+await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing4})
+.then(update => {
+res.status(200).json({
+message: 'Clean update',
+ post: update
+});
+})}
+router.patch("/infoEdPur5", checkAuth,
+ async(req, res, next) => {                                                                                                                                                   
+if(req.body.CodePursuing){
+await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing5})
+.then(update => {
+res.status(200).json({
+message: 'Clean update',
+ post: update
+});
+})}                                                                                                                                                                     
 router.patch("/infoEdPurW6", checkAuth,
 (req, res, next) => {                                                          
 if(req.body.CodePursuing6){
@@ -1711,60 +1710,54 @@ if(req.body.CodePursuing7){
                post: update
            });
        })}})                                                                                                                                                                                                                    
-                                                                                                                                                                                                               
-                                                                                                                                                                                                                
-                                                                                                                                                                                                                router.patch("/infoEdPurSpring", checkAuth,
-                                                                                                                                                                                                                async(req, res, next) => {  
-                                                                                                                                                                                                                    try{
-                                                                                                                                                                                                                    if(req.body.CodePursuing11){
-                                                                                                                                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing11: req.body.CodePursuing11})
-                                                                                                                                                                                                                        .then(update => {
-                                                                                                                                                                                                                            res.status(200).json({
-                                                                                                                                                                                                                                message: 'Clean update',
-                                                                                                                                                                                                                                post: update
-                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                        })
-                                                                                                                                                                                                                            }               if(req.body.CodePursuing12){
-                                                                                                                                                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing12: req.body.CodePursuing12})
-                                                                                                                                                                                                                                .then(update => {
-                                                                                                                                                                                                                                    res.status(200).json({
-                                                                                                                                                                                                                                        message: 'Clean update',
-                                                                                                                                                                                                                                        post: update
-                                                                                                                                                                                                                                    });
-                                                                                                                                                                                                                                })
-                                                                                                                                                                                                                            }     
-                                                                                                                                                                                                                        } catch{
-                                                                                                                                                                                                                            res.status(500).json({
-                                                                                                                                                                                                                                message: 'Updating courses failed!'
-                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                        })
-                                                                                                                                                                                                                        router.patch("/infoEdPurSummer", checkAuth,
-                                                                                                                                                                                                                        async(req, res, next) => { 
-                                                                                                                                                                                                                            try{ 
-                                                                                                                                                                                                                            if(req.body.CodePursuing13){
+       router.patch("/infoEdPurSpring11", checkAuth,
+       async(req, res, next) => {  
+
+           if(req.body.CodePursuing11){
+               await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing11: req.body.CodePursuing11})
+               .then(update => {
+                   res.status(200).json({
+                       message: 'Clean update',
+                       post: update
+                   });
+               })
+                   }})                                                                                                                                                                                                        
+    router.patch("/infoEdPurSpring12", checkAuth,
+       async(req, res, next) => {  
+
+           if(req.body.CodePursuing12){
+               await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing12: req.body.CodePursuing12})
+               .then(update => {
+                   res.status(200).json({
+                       message: 'Clean update',
+                       post: update
+                   });
+               })
+                   }})                                                                                                                                                                                                             
+                                                                                                                                                                                                             
+                                                                                                                                                                                                                                 
+                                                                                                                                                                                                                      
+                                                                                                                                                                                                                        
+router.patch("/infoEdPurSummer13", checkAuth,
+  async(req, res, next) => { 
+if(req.body.CodePursuing13){                                                                                                                                                                                                                    
 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing13: req.body.CodePursuing13})     
  .then(update => {
     res.status(200).json({
         message: 'Clean update',
         post: update
     });
-})
-}         if(req.body.CodePursuing14){
+})}}) 
+router.patch("/infoEdPurSummer14", checkAuth,
+  async(req, res, next) => {        
+if(req.body.CodePursuing14){
  await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing14: req.body.CodePursuing14})
  .then(update => {
     res.status(200).json({
         message: 'Clean update',
         post: update
     });
-})
-               }
-            } catch{
-                res.status(500).json({
-                    message: 'Updating courses failed!'
-                });
-            }
-            })
+})}})    
 
 
 

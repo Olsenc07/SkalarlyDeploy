@@ -1628,14 +1628,23 @@ export class EditProfilePurSpringComponent implements OnInit {
       duration: 2000,
     });
   }
-  onSubmit(): void {
-    // console.log(this.editForm.value);
-    // TODO: convert form fields to Profile
-    this.authService.editUserInfoPurSp(
+  save11(): void {
+    this.authService.editUserInfoPurSp11(
       this.userId,
-      this.CodePursuing11.value,
+      this.CodePursuing11.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save12(): void {
+    this.authService.editUserInfoPurSp12(
+      this.userId,
       this.CodePursuing12.value
     );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
 
   removeP(codeP: string): void {
@@ -1722,14 +1731,23 @@ export class EditProfilePurSummerComponent implements OnInit {
       duration: 2000,
     });
   }
-  onSubmit(): void {
-    // console.log(this.editForm.value);
-    // TODO: convert form fields to Profile
-    this.authService.editUserInfoPurSu(
+  save13(): void {
+    this.authService.editUserInfoPurSu13(
       this.userId,
-      this.CodePursuing13.value,
+      this.CodePursuing13.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save14(): void {
+    this.authService.editUserInfoPurSu14(
+      this.userId,
       this.CodePursuing14.value
     );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
 
   removeP(codeP: string): void {
@@ -1846,17 +1864,35 @@ export class EditProfilePurComponent implements OnInit {
       duration: 2000,
     });
   }
-  onSubmit(): void {
-    // console.log(this.editForm.value);
-    // TODO: convert form fields to Profile
-    this.authService.editUserInfoPur(
-      this.userId,
-      this.CodePursuing.value,
-      this.CodePursuing2.value,
-      this.CodePursuing3.value,
-      this.CodePursuing4.value,
-      this.CodePursuing5.value
-    );
+  save(): any {
+    this.authService.editUserInfoPur(this.userId, this.CodePursuing.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save2(): void {
+    this.authService.editUserInfoPur2(this.userId, this.CodePursuing2.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save3(): void {
+    this.authService.editUserInfoPur3(this.userId, this.CodePursuing3.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save4(): void {
+    this.authService.editUserInfoPur4(this.userId, this.CodePursuing4.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save5(): void {
+    this.authService.editUserInfoPur5(this.userId, this.CodePursuing5.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
 
   removeP(codeP: string): void {

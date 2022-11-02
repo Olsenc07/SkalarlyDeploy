@@ -713,24 +713,13 @@ export class AuthService {
       });
   }
   // Edit Pursuing
-  editUserInfoPur(
-    userId: string,
-    CodePursuing: string,
-    CodePursuing2: string,
-    CodePursuing3: string,
-    CodePursuing4: string,
-    CodePursuing5: string
-  ): any {
+  editUserInfoPur(userId: string, CodePursuing: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPur',
         {
           userId,
           CodePursuing,
-          CodePursuing2,
-          CodePursuing3,
-          CodePursuing4,
-          CodePursuing5,
         }
       )
       .subscribe({
@@ -738,18 +727,95 @@ export class AuthService {
           const post: AuthDataInfo = {
             id: responseData.post.id,
             CodePursuing,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing
+  editUserInfoPur2(userId: string, CodePursuing2: string): any {
+    this.http
+      .patch<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPur2',
+        {
+          userId,
+          CodePursuing2,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
             CodePursuing2,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing
+  editUserInfoPur3(userId: string, CodePursuing3: string): any {
+    this.http
+      .patch<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPur3',
+        {
+          userId,
+          CodePursuing3,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
             CodePursuing3,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing
+  editUserInfoPur4(userId: string, CodePursuing4: string): any {
+    this.http
+      .patch<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPur4',
+        {
+          userId,
+          CodePursuing4,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
             CodePursuing4,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing
+  editUserInfoPur5(userId: string, CodePursuing5: string): any {
+    this.http
+      .patch<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPur5',
+        {
+          userId,
+          CodePursuing5,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
             CodePursuing5,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -772,8 +838,6 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing6,
           };
-          // this.infos.push(post);
-          // this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -796,11 +860,6 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing7,
           };
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
-          this.snackBar.open('Course Saved', 'Nice!', {
-            duration: 3000,
-          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -823,11 +882,6 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing8,
           };
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
-          this.snackBar.open('Course Saved', 'Nice!', {
-            duration: 3000,
-          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -850,11 +904,6 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing9,
           };
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
-          this.snackBar.open('Course Saved', 'Nice!', {
-            duration: 3000,
-          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -877,11 +926,6 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing10,
           };
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
-          this.snackBar.open('Course Saved', 'Nice!', {
-            duration: 3000,
-          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -890,30 +934,18 @@ export class AuthService {
   }
 
   // Edit Pursuing
-  editUserInfoPurSp(
-    userId: string,
-    CodePursuing11: string,
-    CodePursuing12: string
-  ): any {
+  editUserInfoPurSp11(userId: string, CodePursuing11: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdPurSpring',
-        { userId, CodePursuing11, CodePursuing12 }
+        'http://www.skalarly.com/api/user/infoEdPurSpring11',
+        { userId, CodePursuing11 }
       )
       .subscribe({
         next: (responseData) => {
           const post: AuthDataInfo = {
             id: responseData.post.id,
             CodePursuing11,
-            CodePursuing12,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -921,37 +953,62 @@ export class AuthService {
       });
   }
   // Edit Pursuing
-  editUserInfoPurSu(
-    userId: string,
-    CodePursuing13: string,
-    CodePursuing14: string
-  ): any {
+  editUserInfoPurSp12(userId: string, CodePursuing12: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdPurSummer',
-        { userId, CodePursuing13, CodePursuing14 }
+        'http://www.skalarly.com/api/user/infoEdPurSpring12',
+        { userId, CodePursuing12 }
       )
       .subscribe({
         next: (responseData) => {
           const post: AuthDataInfo = {
             id: responseData.post.id,
-            CodePursuing13,
-            CodePursuing14,
+            CodePursuing12,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
   }
-
+  // Edit Pursuing
+  editUserInfoPurSu13(userId: string, CodePursuing13: string): any {
+    this.http
+      .patch<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPurSummer13',
+        { userId, CodePursuing13 }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodePursuing13,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing
+  editUserInfoPurSu14(userId: string, CodePursuing14: string): any {
+    this.http
+      .patch<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPurSummer14',
+        { userId, CodePursuing14 }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodePursuing14,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
   // Your info
   getInfo(counter: number): any {
     this.http

@@ -10,8 +10,10 @@
   <div *ngFor="let info of infos">
 <div class="input" >
     <i class="material-icons _icon" *ngIf="!CodePursuing11.value">checklist</i>
+  <button mat-icon-button type="button" *ngIf="CodePursuing11.value" (click)="save11()" matTooltip="Save edit">
   <i class="material-icons check" *ngIf="CodePursuing11.value">checklist</i>
-    
+    </button>
+
     <mat-form-field class="example-chip-list">
   <mat-label *ngIf="info.CodePursuing11.length == 0">Next Course</mat-label>
     <mat-label>{{info.CodePursuing11}}</mat-label>
@@ -39,8 +41,9 @@
     <!-- 12 -->
     <div class="input" >
     <i class="material-icons _icon" *ngIf="!CodePursuing12.value">checklist</i>
+  <button mat-icon-button type="button" *ngIf="CodePursuing12.value" (click)="save12()" matTooltip="Save edit">
   <i class="material-icons check" *ngIf="CodePursuing12.value">checklist</i>
-    
+    </button>
     <mat-form-field class="example-chip-list">
   <mat-label *ngIf="info.CodePursuing12.length == 0">Next Course</mat-label>
     <mat-label>{{info.CodePursuing12}}</mat-label>
@@ -65,10 +68,11 @@
     </div>
   <!-- done button -->
 <div class="done">
-    <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
+  <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Done</button>
+    <!-- <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
       (click)="onSubmit()" [disabled]="!CodePursuing12.value && !CodePursuing11.value"  >
       Save
-    </button>
+    </button> -->
   </div>
   </div>
   </mat-tab>
