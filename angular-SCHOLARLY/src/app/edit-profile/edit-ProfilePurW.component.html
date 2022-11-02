@@ -35,11 +35,11 @@
     <mat-hint align="start" >Format: ABC101H1</mat-hint>
     <mat-hint align="end" >{{ (CodePursuing6Length | async) }} / 8</mat-hint>
     </mat-form-field>
-    <button mat-icon-button (click)="save6()" matTooltip="Save edit" *ngIf="CodePursuing6.value && !CodePursuing6Save">
+    <button mat-icon-button (click)="save6()" matTooltip="Save edit" *ngIf="CodePursuing6.value && (CodePursuing6Save === false)">
     <i class="fas fa-check-circle _icon_"  ></i>
   </button>
 <!-- clicked to save -->
-<i class="fas fa-check-circle check_" *ngIf="CodePursuing6Save"></i>
+<i class="fas fa-check-circle check_" *ngIf="CodePursuing6Save === true"></i>
 
     </div>
     <!-- 7 -->
