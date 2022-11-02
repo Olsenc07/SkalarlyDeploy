@@ -31,9 +31,16 @@
     <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearNext6()">
       <mat-icon class="asthetic-adds">close</mat-icon>
     </button>
+
     <mat-hint align="start" >Format: ABC101H1</mat-hint>
     <mat-hint align="end" >{{ (CodePursuing6Length | async) }} / 8</mat-hint>
     </mat-form-field>
+    <button mat-button (click)="save6()">
+    <i class="far fa-check-circle" *ngIf="CodePursuing6.value" ></i>
+  </button>
+<!-- clicked to save -->
+<i class="far fa-check-circle check" *ngIf="CodePursuing6Save"></i>
+
     </div>
     <!-- 7 -->
     <div class="input" >
@@ -151,7 +158,7 @@
     <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
       (click)="onSubmit()" [disabled]="!CodePursuing6.value && !CodePursuing7.value &&
       !CodePursuing8.value && !CodePursuing9.value && !CodePursuing10.value">
-      Save
+      Save All
     </button>
   </div>
   </div>

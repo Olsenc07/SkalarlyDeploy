@@ -757,24 +757,13 @@ export class AuthService {
       });
   }
   // Edit Pursuing winter
-  editUserInfoPurW(
-    userId: string,
-    CodePursuing6: string,
-    CodePursuing7: string,
-    CodePursuing8: string,
-    CodePursuing9: string,
-    CodePursuing10: string
-  ): any {
+  editUserInfoPurW6(userId: string, CodePursuing6: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdPurW',
+        'http://www.skalarly.com/api/user/infoEdPurW6',
         {
           userId,
           CodePursuing6,
-          CodePursuing7,
-          CodePursuing8,
-          CodePursuing9,
-          CodePursuing10,
         }
       )
       .subscribe({
@@ -782,15 +771,10 @@ export class AuthService {
           const post: AuthDataInfo = {
             id: responseData.post.id,
             CodePursuing6,
-            CodePursuing7,
-            CodePursuing8,
-            CodePursuing9,
-            CodePursuing10,
           };
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
-          this.router.navigate(['/profile']);
-          this.snackBar.open('Profile edited!', 'Nice!', {
+          this.snackBar.open('Course Saved', 'Nice!', {
             duration: 3000,
           });
         },
@@ -799,6 +783,115 @@ export class AuthService {
         },
       });
   }
+  // Edit Pursuing winter
+  editUserInfoPurW7(userId: string, CodePursuing7: string): any {
+    this.http
+      .patch<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPurW7',
+        {
+          userId,
+          CodePursuing7,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodePursuing7,
+          };
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+          this.snackBar.open('Course Saved', 'Nice!', {
+            duration: 3000,
+          });
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing winter
+  editUserInfoPurW8(userId: string, CodePursuing8: string): any {
+    this.http
+      .patch<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPurW8',
+        {
+          userId,
+          CodePursuing8,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodePursuing8,
+          };
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+          this.snackBar.open('Course Saved', 'Nice!', {
+            duration: 3000,
+          });
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing winter
+  editUserInfoPurW9(userId: string, CodePursuing9: string): any {
+    this.http
+      .patch<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPurW9',
+        {
+          userId,
+          CodePursuing9,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodePursuing9,
+          };
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+          this.snackBar.open('Course Saved', 'Nice!', {
+            duration: 3000,
+          });
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // Edit Pursuing winter
+  editUserInfoPurW10(userId: string, CodePursuing10: string): any {
+    this.http
+      .patch<{ message: string; post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPurW10',
+        {
+          userId,
+          CodePursuing10,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            CodePursuing10,
+          };
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+          this.snackBar.open('Course Saved', 'Nice!', {
+            duration: 3000,
+          });
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+
   // Edit Pursuing
   editUserInfoPurSp(
     userId: string,

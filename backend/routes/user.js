@@ -1661,54 +1661,58 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                                                                             });
                                                                                                                                                                         }   
                                                                                                                                                                         })
-                                                                                                                                                                        router.patch("/infoEdPurW", checkAuth,
-                                                                                                                                                                        (req, res, next) => {  
-                                                                                                                                                                          
-                                                                                                                                                                            if(req.body.CodePursuing6){
-                                                                                                                                                                                 UserInfo.updateOne({Creator:req.body.userId },{CodePursuing6: req.body.CodePursuing6})
-                                                                                                                                                                                // .then(update => {
-                                                                                                                                                                                //     res.status(200).json({
-                                                                                                                                                                                //         message: 'Clean update',
-                                                                                                                                                                                //         post: update
-                                                                                                                                                                                //     });
-                                                                                                                                                                                // })
-                                                                                                                                                                                    }             
-                                                                                                                                                                                      if(req.body.CodePursuing7){
-                                                                                                                                                                                         UserInfo.updateOne({Creator:req.body.userId },{CodePursuing7: req.body.CodePursuing7})
-                                                                                                                                                                                        // .then(update => {
-                                                                                                                                                                                        //     res.status(200).json({
-                                                                                                                                                                                        //         message: 'Clean update',
-                                                                                                                                                                                        //         post: update
-                                                                                                                                                                                        //     });
-                                                                                                                                                                                        // })
-                                                                                                                                                                                             }               
-                                                                                                                                                                                    if(req.body.CodePursuing8){
-                                                                                                                                                                                                 UserInfo.updateOne({Creator:req.body.userId },{CodePursuing8: req.body.CodePursuing8})
-                                                                                                                                                                                                // .then(update => {
-                                                                                                                                                                                                //     res.status(200).json({
-                                                                                                                                                                                                //         message: 'Clean update',
-                                                                                                                                                                                                //         post: update
-                                                                                                                                                                                                //     });
-                                                                                                                                                                                                // })
-                                                                                                                                                                                                    }               if(req.body.CodePursuing9){
-                                                                                                                                                                                                         UserInfo.updateOne({Creator:req.body.userId },{CodePursuing9: req.body.CodePursuing9})
-                                                                                                                                                                                                        // .then(update => {
-                                                                                                                                                                                                        //     res.status(200).json({
-                                                                                                                                                                                                        //         message: 'Clean update',
-                                                                                                                                                                                                        //         post: update
-                                                                                                                                                                                                        //     });
-                                                                                                                                                                                                        // })
-                                                                                                                                                                                                            }               if(req.body.CodePursuing10){
-                                                                                                                                                                                                                 UserInfo.updateOne({Creator:req.body.userId },{CodePursuing10: req.body.CodePursuing10})
-                                                                                                                                                                                                                // .then(update => {
-                                                                                                                                                                                                                //     res.status(200).json({
-                                                                                                                                                                                                                //         message: 'Clean update',
-                                                                                                                                                                                                                //         post: update
-                                                                                                                                                                                                                //     });
-                                                                                                                                                                                                                // })
-                                                                                                                                                                                                                    }      
+router.patch("/infoEdPurW6", checkAuth,
+(req, res, next) => {                                                          
+if(req.body.CodePursuing6){
+UserInfo.updateOne({Creator:req.body.userId },{CodePursuing6: req.body.CodePursuing6})
+.then(update => {
+res.status(200).json({
+message: 'Clean update',
+post: update });
+})
+ }})     
+router.patch("/infoEdPurW7", checkAuth,
+(req, res, next) => {       
+if(req.body.CodePursuing7){
+    UserInfo.updateOne({Creator:req.body.userId },{CodePursuing7: req.body.CodePursuing7})
+   .then(update => {
+       res.status(200).json({
+           message: 'Clean update',
+           post: update
+       });
+   })}   }) 
+   router.patch("/infoEdPurW8", checkAuth,
+(req, res, next) => {                                                                                                                                                                                           
+   if(req.body.CodePursuing8){
+    UserInfo.updateOne({Creator:req.body.userId },{CodePursuing8: req.body.CodePursuing8})
+   .then(update => {
+       res.status(200).json({
+           message: 'Clean update',
+           post: update
+       });
+   })}  })    
+   router.patch("/infoEdPurW9", checkAuth,
+   (req, res, next) => {                                                                                                                                                                                                   
+    if(req.body.CodePursuing9){
+        UserInfo.updateOne({Creator:req.body.userId },{CodePursuing9: req.body.CodePursuing9})                                                                                                                                                                                              
+     .then(update => {
+         res.status(200).json({
+             message: 'Clean update',
+             post: update
+         });
+     })}})
+     router.patch("/infoEdPurW10", checkAuth,
+     (req, res, next) => {                                                                                                                                                                                                   
+      if(req.body.CodePursuing10){
+          UserInfo.updateOne({Creator:req.body.userId },{CodePursuing10: req.body.CodePursuing10})                                                                                                                                                                                              
+       .then(update => {
+           res.status(200).json({
+               message: 'Clean update',
+               post: update
+           });
+       })}})                                                                                                                                                                                                                    
                                                                                                                                                                                                                
-                                                                                                                                                                                                                })
+                                                                                                                                                                                                                
                                                                                                                                                                                                                 router.patch("/infoEdPurSpring", checkAuth,
                                                                                                                                                                                                                 async(req, res, next) => {  
                                                                                                                                                                                                                     try{
