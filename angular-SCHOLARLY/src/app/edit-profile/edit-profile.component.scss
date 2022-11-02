@@ -740,6 +740,14 @@ border-top-right-radius: 25px;
   flex-direction: column;
   color: grey;
 }
+._icon_ {
+  display: flex;
+  justify-content: center;
+  margin-left: 1%;
+  font-size: xx-large;
+  flex-direction: column;
+  color: grey;
+}
 @media (min-width: 900px) {
   ._icon2 {
     display: flex;
