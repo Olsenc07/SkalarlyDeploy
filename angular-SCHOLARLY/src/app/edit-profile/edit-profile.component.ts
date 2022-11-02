@@ -1501,7 +1501,7 @@ export class EditProfilePurWComponent implements OnInit {
       duration: 2000,
     });
   }
-  save6(): void {
+  save6(): any {
     this.authService.editUserInfoPurW6(this.userId, this.CodePursuing6.value);
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
