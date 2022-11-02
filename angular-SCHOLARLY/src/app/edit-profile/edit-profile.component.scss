@@ -231,6 +231,16 @@ border-top-right-radius: 25px;
   // color: rgb(37, 168, 76);
   // color: #25a84c;
   color: #49b569;
+}
+.check_{
+  display: flex;
+  justify-content: center;
+  margin-left: 1%;
+  font-size: xx-large;
+  flex-direction: column;
+  // color: rgb(37, 168, 76);
+  // color: #25a84c;
+  color: rgb(255, 215, 0);
 
 }
 @media (min-width: 1024px) {
