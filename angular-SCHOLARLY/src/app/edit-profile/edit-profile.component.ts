@@ -1445,7 +1445,6 @@ export class EditProfilePurWComponent implements OnInit {
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
-        console.log('infos', this.infos);
       });
     this.CodePursuing6.valueChanges.subscribe((v) =>
       this.CodePursuing6Length.next(v.length)
