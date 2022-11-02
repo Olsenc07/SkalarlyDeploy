@@ -774,9 +774,6 @@ export class AuthService {
           };
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
-          this.snackBar.open('Course Saved', 'Nice!', {
-            duration: 3000,
-          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
