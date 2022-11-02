@@ -14,7 +14,7 @@
         <i class="material-icons check" *ngIf="CodePursuing.value">checklist</i>
 </button>
         <mat-form-field class="example-chip-list">
-      <mat-label *ngIf="info.CodePursuing.length == 0">Next Course</mat-label>
+      <mat-label *ngIf="!info.CodePursuing">Next Course</mat-label>
           <mat-label>{{info.CodePursuing}}</mat-label>
 
           <!-- <mat-select placeholder="Choose next course" #codeInputP  [formControl]="CodePursuing" >
@@ -47,7 +47,7 @@
 </button>
 
 <mat-form-field class="example-chip-list">
-  <mat-label *ngIf="info.CodePursuing2.length == 0">Next Course</mat-label>
+  <mat-label *ngIf="!info.CodePursuing2">Next Course</mat-label>
 <mat-label>{{info.CodePursuing2}}</mat-label>
 
 <!-- <mat-select placeholder="Choose next course 2" #codeInputP [formControl]="CodePursuing2" >
@@ -76,7 +76,7 @@
 </button>
 
 <mat-form-field class="example-chip-list">
-  <mat-label *ngIf="info.CodePursuing3.length == 0">Next Course</mat-label>
+  <mat-label *ngIf="!info.CodePursuing3">Next Course</mat-label>
 <mat-label>{{info.CodePursuing3}}</mat-label>
 
 <!-- <mat-select placeholder="Choose next course 3" #codeInputP [formControl]="CodePursuing3" >
@@ -105,7 +105,7 @@
 </button>
 
 <mat-form-field class="example-chip-list">
-  <mat-label *ngIf="info.CodePursuing4.length == 0">Next Course</mat-label>
+  <mat-label *ngIf="!info.CodePursuing4">Next Course</mat-label>
 <mat-label>{{info.CodePursuing4}}</mat-label>
 
 <!-- <mat-select placeholder="Choose next course 4" #codeInputP [formControl]="CodePursuing4" >
@@ -135,7 +135,7 @@
 </button>
 
   <mat-form-field class="example-chip-list">
-  <mat-label *ngIf="info.CodePursuing5.length == 0">Next Course</mat-label>
+  <mat-label *ngIf="!info.CodePursuing5">Next Course</mat-label>
     <mat-label>{{info.CodePursuing5}}</mat-label>
 
     <!-- <mat-select placeholder="Choose next course 5" #codeInputP [formControl]="CodePursuing5" >

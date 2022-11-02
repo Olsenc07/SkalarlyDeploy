@@ -5,8 +5,10 @@
 <div *ngFor="let info of infos">
 <div class="input" >
     <i class="material-icons _icon" *ngIf="!CodeCompleted21.value">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted21.value" (click)="save21()" matTooltip="Save edit">
     <i class="material-icons check" *ngIf="CodeCompleted21.value">check</i>
-    
+    </button>
+
     <mat-form-field class="example-chip-list">
       <mat-label *ngIf="info.CodeCompleted21.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted21}}</mat-label>
@@ -33,7 +35,9 @@
     <!-- 22 -->
     <div class="input" >
     <i class="material-icons _icon" *ngIf="!CodeCompleted22.value">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted22.value" (click)="save22()" matTooltip="Save edit">
     <i class="material-icons check" *ngIf="CodeCompleted22.value">check</i>
+    </button>
     
     <mat-form-field class="example-chip-list">
       <mat-label *ngIf="info.CodeCompleted22.length == 0">Completed Course</mat-label>
@@ -61,8 +65,10 @@
     <!-- 23 -->
     <div class="input" >
     <i class="material-icons _icon" *ngIf="!CodeCompleted23.value">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted23.value" (click)="save23()" matTooltip="Save edit">
     <i class="material-icons check" *ngIf="CodeCompleted23.value">check</i>
-    
+    </button>
+
     <mat-form-field class="example-chip-list">
       <mat-label *ngIf="info.CodeCompleted23.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted23}}</mat-label>
@@ -89,8 +95,9 @@
     <!-- 24 -->
     <div class="input" >
     <i class="material-icons _icon" *ngIf="!CodeCompleted24.value">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted24.value" (click)="save24()" matTooltip="Save edit">
     <i class="material-icons check" *ngIf="CodeCompleted24.value">check</i>
-    
+    </button>
     <mat-form-field class="example-chip-list">
       <mat-label *ngIf="info.CodeCompleted24.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted24}}</mat-label>
@@ -118,8 +125,10 @@
     <!-- 25 -->
     <div class="input" >
     <i class="material-icons _icon" *ngIf="!CodeCompleted25.value">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted25.value" (click)="save25()" matTooltip="Save edit">
     <i class="material-icons check" *ngIf="CodeCompleted25.value">check</i>
-    
+    </button>
+
     <mat-form-field class="example-chip-list">
       <mat-label *ngIf="info.CodeCompleted25.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted25}}</mat-label>
@@ -147,11 +156,12 @@
     
     <!-- done button -->
  <div class="done">
-    <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
+  <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Done</button>
+    <!-- <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
       (click)="onSubmit()" [disabled]="!CodeCompleted21.value && !CodeCompleted22.value &&
       !CodeCompleted23.value && !CodeCompleted24.value && !CodeCompleted25.value">
       Save
-    </button>
+    </button> -->
   </div>
 </div>
 </mat-tab>
