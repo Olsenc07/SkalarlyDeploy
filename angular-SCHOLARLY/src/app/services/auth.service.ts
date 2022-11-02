@@ -772,8 +772,8 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing6,
           };
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
+          // this.infos.push(post);
+          // this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
