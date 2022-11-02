@@ -308,7 +308,7 @@ export class AuthService {
     const userData = new FormData();
     userData.append('profilePic', profilePic);
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPic',
         {
           userData,
@@ -330,7 +330,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoMajor(userId: string, major: string): any {
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdMajor',
         {
           major,
@@ -352,7 +352,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoMinor(userId: string, minor: string): any {
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdMinor',
         {
           minor,
@@ -374,7 +374,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoSport(userId: string, sport: string): any {
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdSport',
         {
           sport,
@@ -396,7 +396,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoClub(userId: string, club: string): any {
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdClub',
         {
           club,
@@ -418,7 +418,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoName(userId: string, name: string): any {
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdName',
         {
           name,
@@ -439,7 +439,7 @@ export class AuthService {
   }
   editUserInfoBirthday(userId: string, birthday: string): any {
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdBirthday',
         {
           birthday,
@@ -460,7 +460,7 @@ export class AuthService {
   }
   editUserInfoPronoun(userId: string, pronoun: string): any {
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPronoun',
         {
           pronoun,
@@ -481,7 +481,7 @@ export class AuthService {
   }
   editUserInfoGender(userId: string, gender: string): any {
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdGender',
         {
           gender,
@@ -502,7 +502,7 @@ export class AuthService {
   }
   editUserInfoBio(userId: string, bio: string): any {
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .patch<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdBio',
         {
           bio,
