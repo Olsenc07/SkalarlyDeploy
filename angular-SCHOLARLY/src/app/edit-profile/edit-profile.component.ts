@@ -473,22 +473,35 @@ export class EditProfileComp1Component implements OnInit {
       duration: 2000,
     });
   }
-
-  onSubmit(): void {
-    console.log('1', this.CodeCompleted.value);
-    console.log('2', this.CodeCompleted2.value);
-    console.log('3', this.CodeCompleted3.value);
-    console.log('4', this.CodeCompleted4.value);
-    console.log('5', this.CodeCompleted5.value);
-
-    this.authService.editUserInfoComp(
-      this.userId,
-      this.CodeCompleted.value,
-      this.CodeCompleted2.value,
-      this.CodeCompleted3.value,
-      this.CodeCompleted4.value,
-      this.CodeCompleted5.value
-    );
+  save(): any {
+    this.authService.editUserInfoComp(this.userId, this.CodeCompleted.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save2(): void {
+    this.authService.editUserInfoComp2(this.userId, this.CodeCompleted2.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save3(): void {
+    this.authService.editUserInfoComp3(this.userId, this.CodeCompleted3.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save4(): void {
+    this.authService.editUserInfoComp4(this.userId, this.CodeCompleted4.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save5(): void {
+    this.authService.editUserInfoComp5(this.userId, this.CodeCompleted5.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
 
   add(event: MatChipInputEvent): void {
@@ -609,18 +622,38 @@ export class EditProfileComp1WComponent implements OnInit {
       duration: 2000,
     });
   }
-
-  onSubmit(): void {
-    // console.log(this.editForm.value);
-    // TODO: convert form fields to Profile
-    this.authService.editUserInfoCompW(
+  save6(): any {
+    this.authService.editUserInfoComp6(this.userId, this.CodeCompleted6.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save7(): void {
+    this.authService.editUserInfoComp7(this.userId, this.CodeCompleted7.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save8(): void {
+    this.authService.editUserInfoComp8(this.userId, this.CodeCompleted8.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save9(): void {
+    this.authService.editUserInfoComp9(this.userId, this.CodeCompleted9.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save10(): void {
+    this.authService.editUserInfoComp10(
       this.userId,
-      this.CodeCompleted6.value,
-      this.CodeCompleted7.value,
-      this.CodeCompleted8.value,
-      this.CodeCompleted9.value,
       this.CodeCompleted10.value
     );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -736,15 +769,50 @@ export class EditProfileComp2Component implements OnInit {
       duration: 2000,
     });
   }
-  onSubmit(): void {
-    this.authService.editUserInfoComp2(
+  save11(): any {
+    this.authService.editUserInfoComp11(
       this.userId,
-      this.CodeCompleted11.value,
-      this.CodeCompleted12.value,
-      this.CodeCompleted13.value,
-      this.CodeCompleted14.value,
+      this.CodeCompleted11.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save12(): void {
+    this.authService.editUserInfoComp12(
+      this.userId,
+      this.CodeCompleted12.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save13(): void {
+    this.authService.editUserInfoComp13(
+      this.userId,
+      this.CodeCompleted13.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save14(): void {
+    this.authService.editUserInfoComp14(
+      this.userId,
+      this.CodeCompleted14.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save15(): void {
+    this.authService.editUserInfoComp15(
+      this.userId,
       this.CodeCompleted15.value
     );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -862,15 +930,50 @@ export class EditProfileComp2WComponent implements OnInit {
       duration: 2000,
     });
   }
-  onSubmit(): void {
-    this.authService.editUserInfoComp2W(
+  save16(): any {
+    this.authService.editUserInfoComp16(
       this.userId,
-      this.CodeCompleted16.value,
-      this.CodeCompleted17.value,
-      this.CodeCompleted18.value,
-      this.CodeCompleted19.value,
+      this.CodeCompleted16.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save17(): void {
+    this.authService.editUserInfoComp17(
+      this.userId,
+      this.CodeCompleted17.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save18(): void {
+    this.authService.editUserInfoComp18(
+      this.userId,
+      this.CodeCompleted18.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save19(): void {
+    this.authService.editUserInfoComp19(
+      this.userId,
+      this.CodeCompleted19.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save20(): void {
+    this.authService.editUserInfoComp20(
+      this.userId,
       this.CodeCompleted20.value
     );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -987,15 +1090,50 @@ export class EditProfileComp3Component implements OnInit {
       duration: 2000,
     });
   }
-  onSubmit(): void {
-    this.authService.editUserInfoComp3(
+  save21(): any {
+    this.authService.editUserInfoComp21(
       this.userId,
-      this.CodeCompleted21.value,
-      this.CodeCompleted22.value,
-      this.CodeCompleted23.value,
-      this.CodeCompleted24.value,
+      this.CodeCompleted21.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save22(): void {
+    this.authService.editUserInfoComp22(
+      this.userId,
+      this.CodeCompleted22.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save23(): void {
+    this.authService.editUserInfoComp23(
+      this.userId,
+      this.CodeCompleted23.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save24(): void {
+    this.authService.editUserInfoComp24(
+      this.userId,
+      this.CodeCompleted24.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save25(): void {
+    this.authService.editUserInfoComp25(
+      this.userId,
       this.CodeCompleted25.value
     );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -1111,15 +1249,50 @@ export class EditProfileComp3WComponent implements OnInit {
       duration: 2000,
     });
   }
-  onSubmit(): void {
-    this.authService.editUserInfoComp3W(
+  save26(): any {
+    this.authService.editUserInfoComp26(
       this.userId,
-      this.CodeCompleted26.value,
-      this.CodeCompleted27.value,
-      this.CodeCompleted28.value,
-      this.CodeCompleted29.value,
+      this.CodeCompleted26.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save27(): void {
+    this.authService.editUserInfoComp27(
+      this.userId,
+      this.CodeCompleted27.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save28(): void {
+    this.authService.editUserInfoComp28(
+      this.userId,
+      this.CodeCompleted28.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save29(): void {
+    this.authService.editUserInfoComp29(
+      this.userId,
+      this.CodeCompleted29.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save30(): void {
+    this.authService.editUserInfoComp30(
+      this.userId,
       this.CodeCompleted30.value
     );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -1237,15 +1410,50 @@ export class EditProfileComp4Component implements OnInit {
       duration: 2000,
     });
   }
-  onSubmit(): void {
-    this.authService.editUserInfoComp4(
+  save31(): any {
+    this.authService.editUserInfoComp31(
       this.userId,
-      this.CodeCompleted31.value,
-      this.CodeCompleted32.value,
-      this.CodeCompleted33.value,
-      this.CodeCompleted34.value,
+      this.CodeCompleted31.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save32(): void {
+    this.authService.editUserInfoComp32(
+      this.userId,
+      this.CodeCompleted32.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save33(): void {
+    this.authService.editUserInfoComp33(
+      this.userId,
+      this.CodeCompleted33.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save34(): void {
+    this.authService.editUserInfoComp34(
+      this.userId,
+      this.CodeCompleted34.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save35(): void {
+    this.authService.editUserInfoComp35(
+      this.userId,
       this.CodeCompleted35.value
     );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
@@ -1371,17 +1579,56 @@ export class EditProfileComp4WComponent implements OnInit {
       duration: 2000,
     });
   }
-  onSubmit(): void {
-    this.authService.editUserInfoComp4W(
+  save36(): any {
+    this.authService.editUserInfoComp36(
       this.userId,
-
-      this.CodeCompleted36.value,
-      this.CodeCompleted37.value,
-      this.CodeCompleted38.value,
-      this.CodeCompleted39.value,
-      this.CodeCompleted40.value,
-      this.CodeCompletedX.value
+      this.CodeCompleted36.value
     );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save37(): void {
+    this.authService.editUserInfoComp37(
+      this.userId,
+      this.CodeCompleted37.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save38(): void {
+    this.authService.editUserInfoComp38(
+      this.userId,
+      this.CodeCompleted38.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save39(): void {
+    this.authService.editUserInfoComp39(
+      this.userId,
+      this.CodeCompleted39.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  save40(): void {
+    this.authService.editUserInfoComp40(
+      this.userId,
+      this.CodeCompleted40.value
+    );
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  saveX(): void {
+    this.authService.editUserInfoCompX(this.userId, this.CodeCompletedX.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();

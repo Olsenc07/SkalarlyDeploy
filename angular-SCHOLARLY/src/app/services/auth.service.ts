@@ -360,24 +360,13 @@ export class AuthService {
       });
   }
 
-  editUserInfoComp(
-    userId: string,
-    CodeCompleted: string,
-    CodeCompleted2: string,
-    CodeCompleted3: string,
-    CodeCompleted4: string,
-    CodeCompleted5: string
-  ): any {
+  editUserInfoComp(userId: string, CodeCompleted: string): any {
     this.http
       .patch<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp1',
         {
           userId,
           CodeCompleted,
-          CodeCompleted2,
-          CodeCompleted3,
-          CodeCompleted4,
-          CodeCompleted5,
         }
       )
       .subscribe({
@@ -385,61 +374,196 @@ export class AuthService {
           const post: any = {
             id: responseData.post.id,
             CodeCompleted,
-            CodeCompleted2,
-            CodeCompleted3,
-            CodeCompleted4,
-            CodeCompleted5,
           };
-          this.router.navigate(['/profile']);
-
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
-          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
   }
-  editUserInfoCompW(
-    userId: string,
-    CodeCompleted6: string,
-    CodeCompleted7: string,
-    CodeCompleted8: string,
-    CodeCompleted9: string,
-    CodeCompleted10: string
-  ): any {
+  editUserInfoComp2(userId: string, CodeCompleted2: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdComp1W',
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp2',
+        {
+          userId,
+          CodeCompleted2,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted2,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp3(userId: string, CodeCompleted3: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp3',
+        {
+          userId,
+          CodeCompleted3,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted3,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp4(userId: string, CodeCompleted4: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp4',
+        {
+          userId,
+          CodeCompleted4,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted4,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp5(userId: string, CodeCompleted5: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp5',
+        {
+          userId,
+          CodeCompleted5,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted5,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp6(userId: string, CodeCompleted6: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp6',
         {
           userId,
           CodeCompleted6,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted6,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp7(userId: string, CodeCompleted7: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp7',
+        {
+          userId,
           CodeCompleted7,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted7,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp8(userId: string, CodeCompleted8: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp8',
+        {
+          userId,
           CodeCompleted8,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted8,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp9(userId: string, CodeCompleted9: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp9',
+        {
+          userId,
           CodeCompleted9,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted9,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp10(userId: string, CodeCompleted10: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp10',
+        {
+          userId,
           CodeCompleted10,
         }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
+          const post: any = {
             id: responseData.post.id,
-            CodeCompleted6,
-            CodeCompleted7,
-            CodeCompleted8,
-            CodeCompleted9,
             CodeCompleted10,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -447,43 +571,105 @@ export class AuthService {
       });
   }
   // Edit comp 2
-  editUserInfoComp2(
-    userId: string,
-    CodeCompleted11: string,
-    CodeCompleted12: string,
-    CodeCompleted13: string,
-    CodeCompleted14: string,
-    CodeCompleted15: string
-  ): any {
+  editUserInfoComp11(userId: string, CodeCompleted11: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdComp2',
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp11',
         {
           userId,
           CodeCompleted11,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted11,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp12(userId: string, CodeCompleted12: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp12',
+        {
+          userId,
           CodeCompleted12,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted12,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp13(userId: string, CodeCompleted13: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp13',
+        {
+          userId,
           CodeCompleted13,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted13,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp14(userId: string, CodeCompleted14: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp14',
+        {
+          userId,
           CodeCompleted14,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted14,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp15(userId: string, CodeCompleted15: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp15',
+        {
+          userId,
           CodeCompleted15,
         }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
+          const post: any = {
             id: responseData.post.id,
-            CodeCompleted11,
-            CodeCompleted12,
-            CodeCompleted13,
-            CodeCompleted14,
             CodeCompleted15,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -491,43 +677,105 @@ export class AuthService {
       });
   }
   // Edit comp 2W
-  editUserInfoComp2W(
-    userId: string,
-    CodeCompleted16: string,
-    CodeCompleted17: string,
-    CodeCompleted18: string,
-    CodeCompleted19: string,
-    CodeCompleted20: string
-  ): any {
+  editUserInfoComp16(userId: string, CodeCompleted16: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdComp2W',
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp16',
         {
           userId,
           CodeCompleted16,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted16,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp17(userId: string, CodeCompleted17: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp17',
+        {
+          userId,
           CodeCompleted17,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted17,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp18(userId: string, CodeCompleted18: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp18',
+        {
+          userId,
           CodeCompleted18,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted18,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp19(userId: string, CodeCompleted19: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp19',
+        {
+          userId,
           CodeCompleted19,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted19,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp20(userId: string, CodeCompleted20: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp20',
+        {
+          userId,
           CodeCompleted20,
         }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
+          const post: any = {
             id: responseData.post.id,
-            CodeCompleted16,
-            CodeCompleted17,
-            CodeCompleted18,
-            CodeCompleted19,
             CodeCompleted20,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -535,43 +783,105 @@ export class AuthService {
       });
   }
   // Edit comp 3
-  editUserInfoComp3(
-    userId: string,
-    CodeCompleted21: string,
-    CodeCompleted22: string,
-    CodeCompleted23: string,
-    CodeCompleted24: string,
-    CodeCompleted25: string
-  ): any {
+  editUserInfoComp21(userId: string, CodeCompleted21: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdComp3',
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp21',
         {
           userId,
           CodeCompleted21,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted21,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp22(userId: string, CodeCompleted22: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp22',
+        {
+          userId,
           CodeCompleted22,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted22,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp23(userId: string, CodeCompleted23: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp23',
+        {
+          userId,
           CodeCompleted23,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted23,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp24(userId: string, CodeCompleted24: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp24',
+        {
+          userId,
           CodeCompleted24,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted24,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp25(userId: string, CodeCompleted25: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp25',
+        {
+          userId,
           CodeCompleted25,
         }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
+          const post: any = {
             id: responseData.post.id,
-            CodeCompleted21,
-            CodeCompleted22,
-            CodeCompleted23,
-            CodeCompleted24,
             CodeCompleted25,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -579,43 +889,105 @@ export class AuthService {
       });
   }
   // Edit comp 3
-  editUserInfoComp3W(
-    userId: string,
-    CodeCompleted26: string,
-    CodeCompleted27: string,
-    CodeCompleted28: string,
-    CodeCompleted29: string,
-    CodeCompleted30: string
-  ): any {
+  editUserInfoComp26(userId: string, CodeCompleted26: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdComp3W',
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp26',
         {
           userId,
           CodeCompleted26,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted26,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp27(userId: string, CodeCompleted27: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp27',
+        {
+          userId,
           CodeCompleted27,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted27,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp28(userId: string, CodeCompleted28: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp28',
+        {
+          userId,
           CodeCompleted28,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted28,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp29(userId: string, CodeCompleted29: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp29',
+        {
+          userId,
           CodeCompleted29,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted29,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp30(userId: string, CodeCompleted30: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp30',
+        {
+          userId,
           CodeCompleted30,
         }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
+          const post: any = {
             id: responseData.post.id,
-            CodeCompleted26,
-            CodeCompleted27,
-            CodeCompleted28,
-            CodeCompleted29,
             CodeCompleted30,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -623,43 +995,105 @@ export class AuthService {
       });
   }
   // Edit comp 4
-  editUserInfoComp4(
-    userId: string,
-    CodeCompleted31: string,
-    CodeCompleted32: string,
-    CodeCompleted33: string,
-    CodeCompleted34: string,
-    CodeCompleted35: string
-  ): any {
+  editUserInfoComp31(userId: string, CodeCompleted31: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdComp4',
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp31',
         {
           userId,
           CodeCompleted31,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted31,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp32(userId: string, CodeCompleted32: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp32',
+        {
+          userId,
           CodeCompleted32,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted32,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp33(userId: string, CodeCompleted33: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp33',
+        {
+          userId,
           CodeCompleted33,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted33,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp34(userId: string, CodeCompleted34: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp34',
+        {
+          userId,
           CodeCompleted34,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted34,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp35(userId: string, CodeCompleted35: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp35',
+        {
+          userId,
           CodeCompleted35,
         }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
+          const post: any = {
             id: responseData.post.id,
-            CodeCompleted31,
-            CodeCompleted32,
-            CodeCompleted33,
-            CodeCompleted34,
             CodeCompleted35,
           };
-          this.router.navigate(['/profile']).then(() => {
-            this.snackBar.open('Profile edited!', 'Nice!', {
-              duration: 3000,
-            });
-          });
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -667,45 +1101,126 @@ export class AuthService {
       });
   }
   // Edit comp 4W
-  editUserInfoComp4W(
-    userId: string,
-    CodeCompleted36: string,
-    CodeCompleted37: string,
-    CodeCompleted38: string,
-    CodeCompleted39: string,
-    CodeCompleted40: string,
-    CodeCompletedX: string
-  ): any {
+  editUserInfoComp36(userId: string, CodeCompleted36: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoEdComp4W',
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp36',
         {
           userId,
           CodeCompleted36,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted36,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp37(userId: string, CodeCompleted37: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp37',
+        {
+          userId,
           CodeCompleted37,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted37,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp38(userId: string, CodeCompleted38: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp38',
+        {
+          userId,
           CodeCompleted38,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted38,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp39(userId: string, CodeCompleted39: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp39',
+        {
+          userId,
           CodeCompleted39,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted39,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoComp40(userId: string, CodeCompleted40: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdComp40',
+        {
+          userId,
           CodeCompleted40,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: any = {
+            id: responseData.post.id,
+            CodeCompleted40,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoCompX(userId: string, CodeCompletedX: string): any {
+    this.http
+      .patch<{ message: string; post: any }>(
+        'http://www.skalarly.com/api/user/infoEdCompX',
+        {
+          userId,
           CodeCompletedX,
         }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
+          const post: any = {
             id: responseData.post.id,
-            CodeCompleted36,
-            CodeCompleted37,
-            CodeCompleted38,
-            CodeCompleted39,
-            CodeCompleted40,
             CodeCompletedX,
           };
-          this.router.navigate(['/profile']);
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
-          });
         },
         error: (error) => {
           this.authStatusListener.next(false);

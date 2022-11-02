@@ -1187,7 +1187,6 @@ router.patch("/infoEd", checkAuth,
     router.patch("/infoEdComp1", 
     checkAuth,
     (req, res, next) => {
-try{
     if(req.body.CodeCompleted){
          UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted: req.body.CodeCompleted})
          .then(update => {
@@ -1195,8 +1194,10 @@ try{
                 message: 'Clean update',
                 post: update
             });
-        })
-            }    
+        })}})   
+        router.patch("/infoEdComp2", 
+        checkAuth,
+        (req, res, next) => {
             if(req.body.CodeCompleted2){
                  UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted2: req.body.CodeCompleted2})
                  .then(update => {
@@ -1204,43 +1205,42 @@ try{
                         message: 'Clean update',
                         post: update
                     });
-                })
-                    }               if(req.body.CodeCompleted3){
+                })}})
+        router.patch("/infoEdComp3", 
+        checkAuth,
+        (req, res, next) => {
+        if(req.body.CodeCompleted3){
                          UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted3: req.body.CodeCompleted3})
                          .then(update => {
                             res.status(200).json({
                                 message: 'Clean update',
                                 post: update
                             });
-                        })
-                            }               if(req.body.CodeCompleted4){
-                                 UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted4: req.body.CodeCompleted4})
-                                 .then(update => {
-                                    res.status(200).json({
+                            })}})
+           router.patch("/infoEdComp4", 
+        checkAuth,
+        (req, res, next) => {                   
+         if(req.body.CodeCompleted4){
+        UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted4: req.body.CodeCompleted4})
+         .then(update => {
+                res.status(200).json({
                                         message: 'Clean update',
                                         post: update
                                     });
-                                })
-                                    }               if(req.body.CodeCompleted5){
+                                    })}})
+         router.patch("/infoEdComp5", checkAuth,
+           (req, res, next) => {
+           if(req.body.CodeCompleted5){
                                      UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted5: req.body.CodeCompleted5})
                                      .then(update => {
                                         res.status(200).json({
                                             message: 'Clean update',
                                             post: update
                                         });
-                                    })
-                                            }  
-                                        }catch{
-                                             res.status(500).json({
-                                                message: "Invalid update error!",
-                                            })
-                                        
-                                        }             
-                                    }) 
-                                    
-router.patch("/infoEdComp1W", checkAuth,
+                                            })}})  
+                                                                                                                   
+router.patch("/infoEdComp6", checkAuth,
     async(req, res, next) => {
-          try{
         if(req.body.CodeCompleted6){
         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted6: req.body.CodeCompleted6})
         .then(update => {
@@ -1248,8 +1248,9 @@ router.patch("/infoEdComp1W", checkAuth,
                 message: 'Clean update',
                 post: update
             });
-        })
-       }  
+        })}})  
+       router.patch("/infoEdComp7", checkAuth,
+    async(req, res, next) => { 
                     if(req.body.CodeCompleted7){
             await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted7: req.body.CodeCompleted7})
             .then(update => {
@@ -1257,8 +1258,9 @@ router.patch("/infoEdComp1W", checkAuth,
                     message: 'Clean update',
                     post: update
                 });
-            })
-            }       
+            })}})    
+            router.patch("/infoEdComp8", checkAuth,
+    async(req, res, next) => {    
                     if(req.body.CodeCompleted8){
               await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted8: req.body.CodeCompleted8})
               .then(update => {
@@ -1266,8 +1268,9 @@ router.patch("/infoEdComp1W", checkAuth,
                     message: 'Clean update',
                     post: update
                 });
-            })
-                 }  
+            })}}) 
+                 router.patch("/infoEdComp9", checkAuth,
+    async(req, res, next) => {  
                               if(req.body.CodeCompleted9){
                           await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted9: req.body.CodeCompleted9})
                           .then(update => {
@@ -1275,8 +1278,9 @@ router.patch("/infoEdComp1W", checkAuth,
                                 message: 'Clean update',
                                 post: update
                             });
-                        })
-       }              
+                        })}})  
+       router.patch("/infoEdComp10", checkAuth,
+    async(req, res, next) => {             
         if(req.body.CodeCompleted10){
       await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted10: req.body.CodeCompleted10})
       .then(update => {
@@ -1284,18 +1288,10 @@ router.patch("/infoEdComp1W", checkAuth,
             message: 'Clean update',
             post: update
         });
-    })
-                            }     
-                         } catch{
-                            res.status(500).json({
-                                message: 'Updating courses failed!'
-                                 });
-                               }
-                             });
+    })}})      
 
-router.patch("/infoEdComp2", checkAuth,
- async(req, res, next) => {  
- if(reg.body){                                                          
+router.patch("/infoEdComp11", checkAuth,
+ async(req, res, next) => {                                                   
  if(req.body.CodeCompleted11){
  await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted11: req.body.CodeCompleted11})
  .then(update => {
@@ -1303,8 +1299,9 @@ router.patch("/infoEdComp2", checkAuth,
         message: 'Clean update',
         post: update
     });
-})
- }              
+})}})
+router.patch("/infoEdComp12", checkAuth,
+ async(req, res, next) => {                 
 if(req.body.CodeCompleted12){
  await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted12: req.body.CodeCompleted12})
  .then(update => {
@@ -1312,8 +1309,9 @@ if(req.body.CodeCompleted12){
         message: 'Clean update',
         post: update
     });
-})
- }               
+})}}) 
+ router.patch("/infoEdComp13", checkAuth,
+ async(req, res, next) => {               
  if(req.body.CodeCompleted13){
  await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted13: req.body.CodeCompleted13})
  .then(update => {
@@ -1321,8 +1319,9 @@ if(req.body.CodeCompleted12){
         message: 'Clean update',
         post: update
     });
-})
-}               
+})}}) 
+router.patch("/infoEdComp14", checkAuth,
+ async(req, res, next) => {               
 if(req.body.CodeCompleted14){
 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.CodeCompleted14})
 .then(update => {
@@ -1330,8 +1329,9 @@ await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.C
         message: 'Clean update',
         post: update
     });
-})
-}              
+})}}) 
+router.patch("/infoEdComp15", checkAuth,
+ async(req, res, next) => {              
  if(req.body.CodeCompleted15){
  await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted15: req.body.CodeCompleted15})
  .then(update => {
@@ -1339,118 +1339,109 @@ await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.C
         message: 'Clean update',
         post: update
     });
-})
-}  
- } else {
-    console.log('izzya')
-res.status(501).json({
- message: 'Somethings funky!'
-});
-}      
-});
-router.patch("/infoEdComp2W", checkAuth,
+})}});
+router.patch("/infoEdComp16", checkAuth,
  async(req, res, next) => {      
-    try{
-                                                                                                                            if(req.body.CodeCompleted16){
-                                                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted16: req.body.CodeCompleted16})
-                                                                                                                                .then(update => {
-                                                                                                                                    res.status(200).json({
-                                                                                                                                        message: 'Clean update',
-                                                                                                                                        post: update
-                                                                                                                                    });
-                                                                                                                                })
-                                                                                                                                    }               if(req.body.CodeCompleted17){
-                                                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted17: req.body.CodeCompleted17})
-                                                                                                                                        .then(update => {
-                                                                                                                                            res.status(200).json({
-                                                                                                                                                message: 'Clean update',
-                                                                                                                                                post: update
-                                                                                                                                            });
-                                                                                                                                        })
-                                                                                                                                            }               if(req.body.CodeCompleted18){
-                                                                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted18: req.body.CodeCompleted18})
-                                                                                                                                                .then(update => {
-                                                                                                                                                    res.status(200).json({
-                                                                                                                                                        message: 'Clean update',
-                                                                                                                                                        post: update
-                                                                                                                                                    });
-                                                                                                                                                })
-                                                                                                                                                    }               if(req.body.CodeCompleted19){
-                                                                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted19: req.body.CodeCompleted19})
-                                                                                                                                                        .then(update => {
-                                                                                                                                                            res.status(200).json({
-                                                                                                                                                                message: 'Clean update',
-                                                                                                                                                                post: update
-                                                                                                                                                            });
-                                                                                                                                                        })
-                                                                                                                                                            }               if(req.body.CodeCompleted20){
-                                                                                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted20: req.body.CodeCompleted20})
-                                                                                                                                                                .then(update => {
-                                                                                                                                                                    res.status(200).json({
-                                                                                                                                                                        message: 'Clean update',
-                                                                                                                                                                        post: update
-                                                                                                                                                                    });
-                                                                                                                                                                })
-                                                                                                                                                                    }  
-                                                                                                                                                                } catch{
-                                                                                                                                                                    res.status(500).json({
-                                                                                                                                                                        message: 'Updating courses failed!'
-                                                                                                                                                                    });
-                                                                                                                                                                }     
-                                                                                                                                                                });
-                                                                                                                                                                router.patch("/infoEdComp3", checkAuth,
-                                                                                                                                                                async(req, res, next) => {  
-                                                                                                                                                                    try{
-                                                                                                                                                                    if(req.body.CodeCompleted21){
-                                                                                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted21: req.body.CodeCompleted21})
-                                                                                                                                                                        .then(update => {
-                                                                                                                                                                            res.status(200).json({
-                                                                                                                                                                                message: 'Clean update',
-                                                                                                                                                                                post: update
-                                                                                                                                                                            });
-                                                                                                                                                                        })
-                                                                                                                                                                            }               if(req.body.CodeCompleted22){
-                                                                                                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted22: req.body.CodeCompleted22})
-                                                                                                                                                                                .then(update => {
-                                                                                                                                                                                    res.status(200).json({
-                                                                                                                                                                                        message: 'Clean update',
-                                                                                                                                                                                        post: update
-                                                                                                                                                                                    });
-                                                                                                                                                                                })
-                                                                                                                                                                                    }               if(req.body.CodeCompleted23){
-                                                                                                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted23: req.body.CodeCompleted23})
-                                                                                                                                                                                        .then(update => {
-                                                                                                                                                                                            res.status(200).json({
-                                                                                                                                                                                                message: 'Clean update',
-                                                                                                                                                                                                post: update
-                                                                                                                                                                                            });
-                                                                                                                                                                                        })
-                                                                                                                                                                                            }               if(req.body.CodeCompleted24){
+    if(req.body.CodeCompleted16){
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted16: req.body.CodeCompleted16})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })}});
+router.patch("/infoEdComp17", checkAuth,
+async(req, res, next) => { 
+    if(req.body.CodeCompleted17){
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted17: req.body.CodeCompleted17})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })}});
+router.patch("/infoEdComp18", checkAuth,
+async(req, res, next) => { 
+    if(req.body.CodeCompleted18){
+        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted18: req.body.CodeCompleted18})
+        .then(update => {
+            res.status(200).json({
+                message: 'Clean update',
+                post: update
+            });
+        })}}); 
+        router.patch("/infoEdComp19", checkAuth,
+        async(req, res, next) => {                                                                                                                                          
+            if(req.body.CodeCompleted19){
+                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted19: req.body.CodeCompleted19})
+                .then(update => {
+                    res.status(200).json({
+                        message: 'Clean update',
+                        post: update
+                    });
+                })}});                                                                                                                                                 
+                router.patch("/infoEdComp20", checkAuth,
+                async(req, res, next) => {                                                                                                                                          
+                    if(req.body.CodeCompleted20){
+                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted20: req.body.CodeCompleted20})
+                        .then(update => {
+                            res.status(200).json({
+                                message: 'Clean update',
+                                post: update
+                            });
+                        })}});                                                                                                                                                                
+                        router.patch("/infoEdComp21", checkAuth,
+                        async(req, res, next) => {  
+                            if(req.body.CodeCompleted21){
+                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted21: req.body.CodeCompleted21})
+                                .then(update => {
+                                    res.status(200).json({
+                                        message: 'Clean update',
+                                        post: update
+                                    });
+                                })}});
+                        router.patch("/infoEdComp22", checkAuth,
+                                async(req, res, next) => {  
+                                    if(req.body.CodeCompleted22){
+                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted22: req.body.CodeCompleted22})
+                                        .then(update => {
+                                            res.status(200).json({
+                                                message: 'Clean update',
+                                                post: update
+                                            });
+                                        })}}); 
+                        router.patch("/infoEdComp23", checkAuth,
+                                async(req, res, next) => {                                                                                                                                                
+                                if(req.body.CodeCompleted23){
+                                    await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted23: req.body.CodeCompleted23})
+                                         .then(update => {
+                                         res.status(200).json({
+                                                    message: 'Clean update',
+                                                    post: update
+                                                });
+                                            })}});
+       router.patch("/infoEdComp24", checkAuth,
+            async(req, res, next) => {                                                                                                                                                                          if(req.body.CodeCompleted24){
         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted24: req.body.CodeCompleted24})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
             });
-        })
-            }               if(req.body.CodeCompleted25){
+        })}});
+        router.patch("/infoEdComp25", checkAuth,
+            async(req, res, next) => {              
+         if(req.body.CodeCompleted25){
                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted25: req.body.CodeCompleted25})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
                         post: update
                     });
-                })
-                    }   
-                } catch {
-                    res.status(500).json({
-                        message: 'Updating courses failed!'
-                    });
-                }
-                })
-                router.patch("/infoEdComp3W", checkAuth,
+                })}});   
+            
+                router.patch("/infoEdComp26", checkAuth,
  async(req, res, next) => {  
-    try{
                     if(req.body.CodeCompleted26){
                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted26: req.body.CodeCompleted26})
                         .then(update => {
@@ -1458,82 +1449,90 @@ router.patch("/infoEdComp2W", checkAuth,
                                 message: 'Clean update',
                                 post: update
                             });
-                        })
-                            }               if(req.body.CodeCompleted27){
+                        })}});
+                        router.patch("/infoEdComp27", checkAuth,
+                        async(req, res, next) => {
+                                        if(req.body.CodeCompleted27){
                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted27: req.body.CodeCompleted27})
                                 .then(update => {
                                     res.status(200).json({
                                         message: 'Clean update',
                                         post: update
                                     });
-                                })
-                                    }               if(req.body.CodeCompleted28){
+                                })}});                
+                                router.patch("/infoEdComp28", checkAuth,
+                                async(req, res, next) => {
+                                if(req.body.CodeCompleted28){
                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted28: req.body.CodeCompleted28})
                                         .then(update => {
                                             res.status(200).json({
                                                 message: 'Clean update',
                                                 post: update
                                             });
-                                        })
-                                            }               if(req.body.CodeCompleted29){
+                                        })}});
+                                        router.patch("/infoEdComp29", checkAuth,
+                                        async(req, res, next) => {
+                                                   if(req.body.CodeCompleted29){
                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted29: req.body.CodeCompleted29})
                                                 .then(update => {
                                                     res.status(200).json({
                                                         message: 'Clean update',
                                                         post: update
                                                     });
-                                                })
-                                                    }     if(req.body.CodeCompleted30){
+                                                })}});   
+                                                router.patch("/infoEdComp30", checkAuth,
+                                                async(req, res, next) => {  
+                                                if(req.body.CodeCompleted30){
                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted30: req.body.CodeCompleted30})
                                                         .then(update => {
                                                             res.status(200).json({
                                                                 message: 'Clean update',
                                                                 post: update
                                                             });
-                                                        })
-                                                            }   
-                                                        } catch{
-                                                            res.status(500).json({
-                                                                message: 'Updating courses failed!'
-                                                            });
-                                                        }       
-                                                        })
-                                                        router.patch("/infoEdComp4", checkAuth,
+                                                        })}});   
+                               
+router.patch("/infoEdComp31", checkAuth,
  async(req, res, next) => {  
-    try{
-                                                            if(req.body.CodeCompleted31){
+if(req.body.CodeCompleted31){
                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted31: req.body.CodeCompleted31})
                                                                 .then(update => {
                                                                     res.status(200).json({
                                                                         message: 'Clean update',
                                                                         post: update
                                                                     });
-                                                                })
-                                                                    }               if(req.body.CodeCompleted32){
+                                                                })}});
+                                                                router.patch("/infoEdComp32", checkAuth,
+ async(req, res, next) => {
+                                                                               if(req.body.CodeCompleted32){
                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted32: req.body.CodeCompleted32})
                                                                         .then(update => {
                                                                             res.status(200).json({
                                                                                 message: 'Clean update',
                                                                                 post: update
                                                                             });
-                                                                        })
-                                                                            }               if(req.body.CodeCompleted33){
+                                                                        })}});
+                                                                        router.patch("/infoEdComp33", checkAuth,
+ async(req, res, next) => {
+                                                                                       if(req.body.CodeCompleted33){
                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted33: req.body.CodeCompleted33})
                                                                                 .then(update => {
                                                                                     res.status(200).json({
                                                                                         message: 'Clean update',
                                                                                         post: update
                                                                                     });
-                                                                                })
-                                                                                    }               if(req.body.CodeCompleted34){
+                                                                                })}}); 
+                                                                                router.patch("/infoEdComp34", checkAuth,
+ async(req, res, next) => {
+                                                                                              if(req.body.CodeCompleted34){
                                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted34: req.body.CodeCompleted34})
                                                                                         .then(update => {
                                                                                             res.status(200).json({
                                                                                                 message: 'Clean update',
                                                                                                 post: update
                                                                                             });
-                                                                                        })
-                                                                                            }   
+                                                                                        })}});
+                                                                                        router.patch("/infoEdComp35", checkAuth,
+ async(req, res, next) => {   
                                                                                             if(req.body.CodeCompleted35){
                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted35: req.body.CodeCompleted35})
                                                                                                 .then(update => {
@@ -1541,18 +1540,12 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                         message: 'Clean update',
                                                                                                         post: update
                                                                                                     });
-                                                                                                })
-                                                                                                    }      
-                                                                                                } catch{
-                                                                                                    res.status(500).json({
-                                                                                                        message: 'Updating courses failed!'
-                                                                                                    });
-                                                                                                }   
-                                                                                                });
+                                                                                                })}});      
+                                                                                                  
+                                                                                   
                                                                                                 
-                                                                                                router.patch("/infoEdComp4W", checkAuth,
+                                                                                                router.patch("/infoEdComp36", checkAuth,
  async(req, res, next) => {  
-    try{
                                                                                                     if(req.body.CodeCompleted36){
                                                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted36: req.body.CodeCompleted36})
                                                                                                         .then(update => {
@@ -1560,32 +1553,39 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                 message: 'Clean update',
                                                                                                                 post: update
                                                                                                             });
-                                                                                                        })
-                                                                                                            }               if(req.body.CodeCompleted37){
+                                                                                                        })}}); 
+                                                                                                        router.patch("/infoEdComp37", checkAuth,
+ async(req, res, next) => {            
+                                                                                                          if(req.body.CodeCompleted37){
                                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted37: req.body.CodeCompleted37})
                                                                                                                 .then(update => {
                                                                                                                     res.status(200).json({
                                                                                                                         message: 'Clean update',
                                                                                                                         post: update
                                                                                                                     });
-                                                                                                                })
-                                                                                                                    }               if(req.body.CodeCompleted38){
+                                                                                                                })}});
+                                                                                                                router.patch("/infoEdComp38", checkAuth,
+ async(req, res, next) => {               
+                                                                                                                if(req.body.CodeCompleted38){
                                                                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted38: req.body.CodeCompleted38})
                                                                                                                         .then(update => {
                                                                                                                             res.status(200).json({
                                                                                                                                 message: 'Clean update',
                                                                                                                                 post: update
                                                                                                                             });
-                                                                                                                        })
-                                                                                                                            }               if(req.body.CodeCompleted39){
+                                                                                                                        })}});
+                                                                                                                        router.patch("/infoEdComp39", checkAuth,
+ async(req, res, next) => {
+                                                                                                                        if(req.body.CodeCompleted39){
                                                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted39: req.body.CodeCompleted39})
                                                                                                                                 .then(update => {
                                                                                                                                     res.status(200).json({
                                                                                                                                         message: 'Clean update',
                                                                                                                                         post: update
                                                                                                                                     });
-                                                                                                                                })
-                                                                                                                                    }   
+                                                                                                                                })}});
+                                                                                                                                router.patch("/infoEdComp40", checkAuth,
+ async(req, res, next) => {   
                                                                                                                                     if(req.body.CodeCompleted40){
                                                                                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted40: req.body.CodeCompleted40})
                                                                                                                                         .then(update => {
@@ -1593,22 +1593,19 @@ router.patch("/infoEdComp2W", checkAuth,
                                                                                                                                                 message: 'Clean update',
                                                                                                                                                 post: update
                                                                                                                                             });
-                                                                                                                                        })
-                                                                                                                                            }               if(req.body.CodeCompletedX){
+                                                                                                                                        })}});               
+                                                                                                                                        router.patch("/infoEdCompX", checkAuth,
+ async(req, res, next) => {
+                                                                                                                                        if(req.body.CodeCompletedX){
                                                                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompletedX: req.body.CodeCompletedX})
                                                                                                                                                 .then(update => {
                                                                                                                                                     res.status(200).json({
                                                                                                                                                         message: 'Clean update',
                                                                                                                                                         post: update
                                                                                                                                                     });
-                                                                                                                                                })
-                                                                                                                                                    } 
-                                                                                                                                                } catch{
-                                                                                                                                                    res.status(500).json({
-                                                                                                                                                        message: 'Updating courses failed!'
-                                                                                                                                                    });
-                                                                                                                                                }
-                                                                                                                                                })
+                                                                                                                                                })}}); 
+                                                                                                                                               
+                                                                                                                                            
 
 router.patch("/infoEdPur", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
