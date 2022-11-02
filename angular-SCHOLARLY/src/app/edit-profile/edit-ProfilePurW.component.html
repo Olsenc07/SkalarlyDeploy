@@ -9,7 +9,7 @@
   <div *ngFor="let info of infos">
 <div class="input" >
     <i class="material-icons _icon" *ngIf="!CodePursuing6.value">checklist</i>
-  <i class="material-icons check" *ngIf="CodePursuing6.value">checklist</i>
+  <button mat-icon-button class="material-icons check" *ngIf="CodePursuing6.value" (click)="save6()" matTooltip="Save edit">checklist</button>
     
     <mat-form-field class="example-chip-list">
   <mat-label *ngIf="info.CodePursuing6.length == 0">Next Course</mat-label>
@@ -35,11 +35,7 @@
     <mat-hint align="start" >Format: ABC101H1</mat-hint>
     <mat-hint align="end" >{{ (CodePursuing6Length | async) }} / 8</mat-hint>
     </mat-form-field>
-    <button mat-icon-button (click)="save6()" matTooltip="Save edit" *ngIf="CodePursuing6.value && (CodePursuing6Save === false)">
-    <i class="fas fa-check-circle _icon_"  ></i>
-  </button>
-<!-- clicked to save -->
-<i class="fas fa-check-circle check_" *ngIf="CodePursuing6Save === true"></i>
+
 
     </div>
     <!-- 7 -->

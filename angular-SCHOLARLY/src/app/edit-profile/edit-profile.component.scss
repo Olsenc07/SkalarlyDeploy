@@ -232,17 +232,7 @@ border-top-right-radius: 25px;
   // color: #25a84c;
   color: #49b569;
 }
-.check_{
-  display: flex;
-  justify-content: center;
-  margin-left: 1%;
-  font-size: large;
-  flex-direction: column;
-  // color: rgb(37, 168, 76);
-  // color: #25a84c;
-  color: rgba(0, 18, 219, 0.64);
 
-}
 @media (min-width: 1024px) {
 .display {
     display: flex;
@@ -740,14 +730,7 @@ border-top-right-radius: 25px;
   flex-direction: column;
   color: grey;
 }
-._icon_ {
-  display: flex;
-  justify-content: center;
-  margin-left: 1%;
-  font-size: large;
-  flex-direction: column;
-  color: grey;
-}
+
 @media (min-width: 900px) {
   ._icon2 {
     display: flex;

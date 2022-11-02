@@ -1419,11 +1419,7 @@ export class EditProfilePurWComponent implements OnInit {
   infos: AuthDataInfo[] = [];
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
-  CodePursuing6Save = false;
-  CodePursuing7Save = false;
-  CodePursuing8Save = false;
-  CodePursuing9Save = false;
-  CodePursuing10Save = false;
+
   private infosSub: Subscription;
 
   filteredCodesP: Observable<string[]>;
@@ -1506,26 +1502,19 @@ export class EditProfilePurWComponent implements OnInit {
     });
   }
   save6(): void {
-    this.authService.editUserInfoPurW6(this.userId, this.CodePursuing6.value)
-    .then(() => {
-      this.CodePursuing6Save = true;
-    });
+    this.authService.editUserInfoPurW6(this.userId, this.CodePursuing6.value);
   }
   save7(): void {
     this.authService.editUserInfoPurW7(this.userId, this.CodePursuing7.value);
-    this.CodePursuing7Save = true;
   }
   save8(): void {
     this.authService.editUserInfoPurW8(this.userId, this.CodePursuing8.value);
-    this.CodePursuing8Save = true;
   }
   save9(): void {
     this.authService.editUserInfoPurW9(this.userId, this.CodePursuing9.value);
-    this.CodePursuing9Save = true;
   }
   save10(): void {
     this.authService.editUserInfoPurW10(this.userId, this.CodePursuing10.value);
-    this.CodePursuing10Save = true;
   }
   // onSubmit(): void {
   //   // console.log(this.editForm.value);
