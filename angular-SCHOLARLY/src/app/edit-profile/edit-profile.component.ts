@@ -1509,15 +1509,27 @@ export class EditProfilePurWComponent implements OnInit {
   }
   save7(): void {
     this.authService.editUserInfoPurW7(this.userId, this.CodePursuing7.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   save8(): void {
     this.authService.editUserInfoPurW8(this.userId, this.CodePursuing8.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   save9(): void {
     this.authService.editUserInfoPurW9(this.userId, this.CodePursuing9.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   save10(): void {
     this.authService.editUserInfoPurW10(this.userId, this.CodePursuing10.value);
+    this.snackBar.open('Course Saved', 'Nice!', {
+      duration: 2000,
+    });
   }
   // onSubmit(): void {
   //   // console.log(this.editForm.value);
