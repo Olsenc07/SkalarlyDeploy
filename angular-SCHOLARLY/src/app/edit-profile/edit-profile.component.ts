@@ -350,29 +350,40 @@ export class EditProfileComponent implements OnInit {
     this.postService.deletePost(postId);
   }
 
-  onSubmit(): void {
-    // console.log(this.editForm.value);
-    // TODO: convert form fields to Profile
-    this.authService.editUserInfo(
+  savePic(): void {
+    this.authService.editUserInfoPic(
       this.userId,
-      this.name.value,
-      this.bio.value,
-      this.gender.value,
-      this.birthday.value,
-      this.major.value,
-      this.minor.value,
-      this.sport.value,
-      this.club.value,
-      this.pronoun.value,
       this.form.get('profilePic').value
-      // this.cropImgPreview,
-      // this.showCase.value
     );
-
-    console.log('uncropped image', this.form.get('profilePic').value);
-    // TODO: replace null with Profile object
-    // this.storeService.setProfile(profile);
   }
+  saveName(): void {
+    this.authService.editUserInfoName(this.userId, this.name.value);
+  }
+  saveBirthday(): void {
+    this.authService.editUserInfoBirthday(this.userId, this.birthday.value);
+  }
+  savePronoun(): void {
+    this.authService.editUserInfoPronoun(this.userId, this.pronoun.value);
+  }
+  saveGender(): void {
+    this.authService.editUserInfoGender(this.userId, this.gender.value);
+  }
+  saveBio(): void {
+    this.authService.editUserInfoBio(this.userId, this.bio.value);
+  }
+  saveMajor(): void {
+    this.authService.editUserInfoMajor(this.userId, this.major.value);
+  }
+  saveMinor(): void {
+    this.authService.editUserInfoMinor(this.userId, this.minor.value);
+  }
+  saveSport(): void {
+    this.authService.editUserInfoSport(this.userId, this.sport.value);
+  }
+  saveClub(): void {
+    this.authService.editUserInfoClub(this.userId, this.club.value);
+  }
+
   onSubmitShowCase(): any {
     this.showCaseService.addShowCase(this.form.get('showCase').value);
   }

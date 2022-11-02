@@ -43,8 +43,10 @@
                       name="profilePic">
                       <!-- (change)="onImgChange($event)" -->
                   </div>
-
-
+                  <button mat-raised-button color="primary"  type="button" class="button"
+                  (click)="savePic()">
+                  Save Picture
+                </button>
                 </div>
                 <!-- <div class="cropper">
                   <image-cropper [imageChangedEvent]="imgChangeEvent" [maintainAspectRatio]="true"
@@ -83,8 +85,9 @@
 
           <div class="input">
             <i class="material-icons _icon" *ngIf="!name.value">badge</i>
+  <button mat-icon-button type="button" *ngIf="name.value" (click)="saveName()" matTooltip="Save edit">
             <i class="material-icons check" *ngIf="name.value">badge</i>
-
+</button>
 
             <mat-form-field>
               <mat-label *ngIf="info.name">{{info.name}}</mat-label>
@@ -102,8 +105,9 @@
             <div class="input">
               <!-- Birthday picker -->
               <i class="material-icons _icon" *ngIf="!birthday.value">cake</i>
+  <button mat-icon-button type="button" *ngIf="birthday.value" (click)="saveBirthday()" matTooltip="Save edit">
               <i class="material-icons check"  *ngIf="birthday.value">cake</i>
-
+</button>
               <mat-form-field >
                 <mat-label *ngIf="info.birthday">{{info.birthday|date:"longDate"}}</mat-label>
               <mat-label *ngIf="!info.birthday">When's your birthday?</mat-label>
@@ -120,6 +124,10 @@
 
            <!-- Gender -->
       <div class="gender">
+        <i class="material-icons _icon" *ngIf="!gender.value">transgender</i>
+        <button mat-icon-button type="button" *ngIf="gender.value" (click)="saveGender()" matTooltip="Save edit">
+                    <i class="material-icons check"  *ngIf="gender.value">transgender</i>
+      </button>
         <mat-form-field class="smaller" >
           <mat-label *ngIf="info.gender">{{info.gender}}</mat-label>
           <mat-label *ngIf="!info.gender">Gender</mat-label>
@@ -134,6 +142,10 @@
       </div>
       <!-- Pronouns -->
           <div class="gender">
+            <i class="material-icons _icon" *ngIf="!pronouns.value">sentiment_satisfied</i>
+            <button mat-icon-button type="button" *ngIf="pronouns.value" (click)="savePronoun()" matTooltip="Save edit">
+                        <i class="material-icons check"  *ngIf="pronouns.value">sentiment_satisfied</i>
+          </button>
       <mat-form-field  class="smaller">
         <mat-label *ngIf="info.pronouns">{{info.pronouns}}</mat-label>
         <mat-label *ngIf="!info.pronouns">Prefered Pronouns</mat-label>
@@ -151,7 +163,9 @@
   
           <div class="input">
             <i class="far fa-heart  _icon" *ngIf="!bio.value"></i>
+  <button mat-icon-button type="button" *ngIf="bio.value" (click)="saveBio()" matTooltip="Save edit">
             <i class="far fa-heart  check" *ngIf="bio.value"></i>
+</button>
 
             <mat-form-field>
               <mat-label *ngIf="info.bio">{{info.bio}}</mat-label>
@@ -177,11 +191,7 @@
        
           <!-- Save button -->
           <div class="done">
-            <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
-              (click)="onSubmit()" [disabled]="!profilePic.value && !name.value && !birthday.value
-              && !gender.value && !pronoun.value && !bio.value">
-              Update
-            </button>
+  <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Done</button>
           </div>
 
 
@@ -199,8 +209,10 @@
   <div class="input">
     <span class="fas fa-star _icon" *ngIf="!major.value">
     </span>
+  <button mat-icon-button type="button" *ngIf="major.value" (click)="saveMajor()" matTooltip="Save edit">
     <span class="fas fa-star check" *ngIf="major.value">
     </span>
+    </button>
     <mat-form-field>
 <mat-label *ngIf="info.major">{{info.major}}</mat-label>
 <mat-label *ngIf="!info.major">Major(s)</mat-label>
@@ -221,8 +233,10 @@
   <div class="input">
     <span class="fas fa-star-half-alt _icon" *ngIf="!minor.value">
     </span>
+  <button mat-icon-button type="button" *ngIf="minor.value" (click)="saveMinor()" matTooltip="Save edit">
     <span class="fas fa-star-half-alt check" *ngIf="minor.value">
     </span>
+    </button>
     <mat-form-field>
 <mat-label *ngIf="info.minor">{{info.minor}}</mat-label>
 <mat-label *ngIf="!info.minor">Minor(s)</mat-label>
@@ -245,8 +259,10 @@
 <div class="input">
   <span class="fas fa-running _icon" *ngIf="!sport.value">
   </span>
+  <button mat-icon-button type="button" *ngIf="sport.value" (click)="saveSport()" matTooltip="Save edit">
   <span class="fas fa-running check" *ngIf="sport.value">
   </span>
+  </button>
   <mat-form-field>
 <mat-label *ngIf="info.sport">{{info.sport}}</mat-label>
 <mat-label *ngIf="!info.sport">Do you play a sport?</mat-label>
@@ -267,8 +283,10 @@
 <div class="input">
   <span class="fas fa-user-friends _icon" *ngIf="!club.value">
   </span>
+  <button mat-icon-button type="button" *ngIf="club.value" (click)="saveClub()" matTooltip="Save edit">
   <span class="fas fa-user-friends check" *ngIf="club.value">
   </span>
+  </button>
   <mat-form-field>
 <mat-label *ngIf="info.club">{{info.club}}</mat-label>
 <mat-label *ngIf="!info.club">Are you apart of a club?</mat-label>

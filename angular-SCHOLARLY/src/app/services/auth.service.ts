@@ -304,62 +304,223 @@ export class AuthService {
   }
 
   // edit userinfo
-  editUserInfo(
-    userId: string,
-    name: string,
-    bio: string,
-    gender: string,
-    birthday: string,
-    major: string,
-    minor: string,
-    sport: string,
-    club: string,
-    pronoun: string,
-    profilePic: File
-  ): any {
+  editUserInfoPic(userId: string, profilePic: File): any {
     const userData = new FormData();
-    userData.append('name', name);
-    userData.append('bio', bio);
-    userData.append('gender', gender);
-    userData.append('birthday', birthday);
-    userData.append('major', major);
-    userData.append('minor', minor);
-    userData.append('sport', sport);
-    userData.append('club', club);
-    userData.append('pronoun', pronoun);
     userData.append('profilePic', profilePic);
     this.http
-      .post<{ post: AuthDataInfo }>('http://www.skalarly.com/api/user/infoEd', {
-        userData,
-        userId,
-      })
+      .post<{ post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPic',
+        {
+          userData,
+          userId,
+        }
+      )
       .subscribe({
         next: (responseData) => {
           const post: AuthDataInfo = {
             id: responseData.post.id,
-            name,
-            bio,
-            gender,
-            birthday,
-            major,
-            minor,
-            sport,
-            club,
-            pronoun,
             ProfilePicPath: responseData.post.ProfilePicPath,
           };
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
-          this.snackBar.open('Profile edited!', 'Nice!', {
-            duration: 3000,
-          });
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
   }
-
+  // edit userinfo
+  editUserInfoMajor(userId: string, major: string): any {
+    this.http
+      .post<{ post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdMajor',
+        {
+          major,
+          userId,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            major,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // edit userinfo
+  editUserInfoMinor(userId: string, minor: string): any {
+    this.http
+      .post<{ post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdMinor',
+        {
+          minor,
+          userId,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            minor,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // edit userinfo
+  editUserInfoSport(userId: string, sport: string): any {
+    this.http
+      .post<{ post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdSport',
+        {
+          sport,
+          userId,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            sport,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // edit userinfo
+  editUserInfoClub(userId: string, club: string): any {
+    this.http
+      .post<{ post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdClub',
+        {
+          club,
+          userId,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            club,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  // edit userinfo
+  editUserInfoName(userId: string, name: string): any {
+    this.http
+      .post<{ post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdName',
+        {
+          name,
+          userId,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            name,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoBirthday(userId: string, birthday: string): any {
+    this.http
+      .post<{ post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdBirthday',
+        {
+          birthday,
+          userId,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            birthday,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoPronoun(userId: string, pronoun: string): any {
+    this.http
+      .post<{ post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdPronoun',
+        {
+          pronoun,
+          userId,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            pronoun,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoGender(userId: string, gender: string): any {
+    this.http
+      .post<{ post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdGender',
+        {
+          gender,
+          userId,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            gender,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoBio(userId: string, bio: string): any {
+    this.http
+      .post<{ post: AuthDataInfo }>(
+        'http://www.skalarly.com/api/user/infoEdBio',
+        {
+          bio,
+          userId,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            bio,
+          };
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
   editUserInfoComp(userId: string, CodeCompleted: string): any {
     this.http
       .patch<{ message: string; post: any }>(
