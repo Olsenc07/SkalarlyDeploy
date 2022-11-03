@@ -1179,7 +1179,7 @@ export class AuthService {
   }
   editUserInfoComp32(userId: string, CodeCompleted32: string): any {
     this.http
-      .paputtch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp32',
         {
           userId,
