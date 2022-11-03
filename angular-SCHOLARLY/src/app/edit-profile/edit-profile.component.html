@@ -87,7 +87,7 @@
 
           <div class="input">
             <i class="material-icons _icon" *ngIf="!name.value">badge</i>
-  <button mat-icon-button type="button" *ngIf="name.value" (click)="saveName()" matTooltip="Save edit">
+  <button mat-icon-button type="button" *ngIf="name.value" (click)="saveName()" matTooltip="Save Name">
             <i class="material-icons check" *ngIf="name.value">badge</i>
 </button>
 
@@ -107,7 +107,7 @@
             <div class="input">
               <!-- Birthday picker -->
               <i class="material-icons _icon" *ngIf="!birthday.value">cake</i>
-  <button mat-icon-button type="button" *ngIf="birthday.value" (click)="saveBirthday()" matTooltip="Save edit">
+  <button mat-icon-button type="button" *ngIf="birthday.value" (click)="saveBirthday()" matTooltip="Save Birthday">
               <i class="material-icons check"  *ngIf="birthday.value">cake</i>
 </button>
               <mat-form-field >
@@ -127,7 +127,7 @@
            <!-- Gender -->
       <div class="gender">
         <i class="material-icons _icon" *ngIf="!gender.value">transgender</i>
-        <button mat-icon-button type="button" *ngIf="gender.value" (click)="saveGender()" matTooltip="Save edit">
+        <button mat-icon-button type="button" *ngIf="gender.value" (click)="saveGender()" matTooltip="Save Gender">
                     <i class="material-icons check"  *ngIf="gender.value">transgender</i>
       </button>
         <mat-form-field class="smaller" >
@@ -145,7 +145,7 @@
       <!-- Pronouns -->
           <div class="gender">
             <i class="material-icons _icon" *ngIf="!pronoun.value">psychology</i>
-            <button mat-icon-button type="button" *ngIf="pronoun.value" (click)="savePronoun()" matTooltip="Save edit">
+            <button mat-icon-button type="button" *ngIf="pronoun.value" (click)="savePronoun()" matTooltip="Save Pronouns">
                         <i class="material-icons check"  *ngIf="pronoun.value">psychology</i>
           </button>
       <mat-form-field  class="smaller">
@@ -165,7 +165,7 @@
   
           <div class="input">
             <i class="far fa-heart  _icon" *ngIf="!bio.value"></i>
-  <button mat-icon-button type="button" *ngIf="bio.value" (click)="saveBio()" matTooltip="Save edit">
+  <button mat-icon-button type="button" *ngIf="bio.value" (click)="saveBio()" matTooltip="Save Bio">
             <i class="far fa-heart  check" *ngIf="bio.value"></i>
 </button>
 
@@ -211,7 +211,7 @@
   <div class="input">
     <span class="fas fa-star _icon" *ngIf="!major.value">
     </span>
-  <button mat-icon-button type="button" *ngIf="major.value" (click)="saveMajor()" matTooltip="Save edit">
+  <button mat-icon-button type="button" *ngIf="major.value" (click)="saveMajor()" matTooltip="Save Major">
     <span class="fas fa-star check" *ngIf="major.value">
     </span>
     </button>
@@ -235,7 +235,7 @@
   <div class="input">
     <span class="fas fa-star-half-alt _icon" *ngIf="!minor.value">
     </span>
-  <button mat-icon-button type="button" *ngIf="minor.value" (click)="saveMinor()" matTooltip="Save edit">
+  <button mat-icon-button type="button" *ngIf="minor.value" (click)="saveMinor()" matTooltip="Save Minor">
     <span class="fas fa-star-half-alt check" *ngIf="minor.value">
     </span>
     </button>
@@ -261,7 +261,7 @@
 <div class="input">
   <span class="fas fa-running _icon" *ngIf="!sport.value">
   </span>
-  <button mat-icon-button type="button" *ngIf="sport.value" (click)="saveSport()" matTooltip="Save edit">
+  <button mat-icon-button type="button" *ngIf="sport.value" (click)="saveSport()" matTooltip="Save Sport">
   <span class="fas fa-running check" *ngIf="sport.value">
   </span>
   </button>
@@ -285,7 +285,7 @@
 <div class="input">
   <span class="fas fa-user-friends _icon" *ngIf="!club.value">
   </span>
-  <button mat-icon-button type="button" *ngIf="club.value" (click)="saveClub()" matTooltip="Save edit">
+  <button mat-icon-button type="button" *ngIf="club.value" (click)="saveClub()" matTooltip="Save Club">
   <span class="fas fa-user-friends check" *ngIf="club.value">
   </span>
   </button>
