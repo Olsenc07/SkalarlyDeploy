@@ -1076,7 +1076,7 @@ async(req, res, next) => {
 // Break this up chase into different routes and edit.serivice.ts
 // infoEd broken up!!
 const pic_ = multer({ storage: storage2, limits})
-router.patch("/infoEdPic", checkAuth,
+router.put("/infoEdPic", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {
                 if(req.file){
@@ -1092,7 +1092,7 @@ router.patch("/infoEdPic", checkAuth,
                                 post: update
                             });
                         })})}});
-router.patch("/infoEdName", checkAuth,
+router.put("/infoEdName", checkAuth,
 async(req, res, next) => {    
              if(req.body.name){
                 await UserInfo.updateOne({Creator:req.body.userId },{name: req.body.name})
@@ -1102,7 +1102,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}})
-router.patch("/infoEdBio", checkAuth,
+router.put("/infoEdBio", checkAuth,
 async(req, res, next) => { 
                  if(req.body.bio){
                     await  UserInfo.updateOne({Creator:req.body.userId },{bio: req.body.bio})
@@ -1112,7 +1112,7 @@ async(req, res, next) => {
                             post: update
                         });
                     })}})
-router.patch("/infoEdBirthday", checkAuth,
+router.put("/infoEdBirthday", checkAuth,
 async(req, res, next) => {
             if(req.body.birthday){
                 await UserInfo.updateOne({Creator:req.body.userId },{birthday: req.body.birthday})
@@ -1122,7 +1122,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}})
-router.patch("/infoEdGender", checkAuth,
+router.put("/infoEdGender", checkAuth,
 async(req, res, next) => {              
             if(req.body.gender){
                 await UserInfo.updateOne({Creator:req.body.userId },{gender: req.body.gender})
@@ -1132,7 +1132,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}})
-router.patch("/infoEdPronoun", checkAuth,
+router.put("/infoEdPronoun", checkAuth,
 async(req, res, next) => {    
              if(req.body.pronoun){
                 await UserInfo.updateOne({Creator:req.query.userId },{pronouns: req.body.pronoun})
@@ -1142,7 +1142,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}})
-router.patch("/infoEdMajor", checkAuth,
+router.put("/infoEdMajor", checkAuth,
 async(req, res, next) => {        
             if(req.body.major){
                 await UserInfo.updateOne({Creator:req.query.userId },{major: req.body.major})
@@ -1152,7 +1152,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}}) 
-router.patch("/infoEdMinor", checkAuth,
+router.put("/infoEdMinor", checkAuth,
 async(req, res, next) => {   
              if(req.body.minor){
                 await UserInfo.updateOne({Creator:req.query.userId },{minor: req.body.minor})
@@ -1162,7 +1162,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}})
-router.patch("/infoEdSport", checkAuth,
+router.put("/infoEdSport", checkAuth,
 async(req, res, next) => {    
              if(req.body.sport){
                 await UserInfo.updateOne({Creator:req.query.userId },{sport: req.body.sport})
@@ -1172,7 +1172,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}})
-router.patch("/infoEdClub", checkAuth,
+router.put("/infoEdClub", checkAuth,
 async(req, res, next) => {     
             if(req.body.club){
                 await UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
@@ -1185,7 +1185,7 @@ async(req, res, next) => {
                        
             
   
-    router.patch("/infoEdComp1", 
+    router.put("/infoEdComp1", 
     checkAuth,
     (req, res, next) => {
     if(req.body.CodeCompleted){
@@ -1196,7 +1196,7 @@ async(req, res, next) => {
                 post: update
             });
         })}})   
-        router.patch("/infoEdComp2", 
+        router.put("/infoEdComp2", 
         checkAuth,
         (req, res, next) => {
             if(req.body.CodeCompleted2){
@@ -1207,7 +1207,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}})
-        router.patch("/infoEdComp3", 
+        router.put("/infoEdComp3", 
         checkAuth,
         (req, res, next) => {
         if(req.body.CodeCompleted3){
@@ -1218,7 +1218,7 @@ async(req, res, next) => {
                                 post: update
                             });
                             })}})
-           router.patch("/infoEdComp4", 
+           router.put("/infoEdComp4", 
         checkAuth,
         (req, res, next) => {                   
          if(req.body.CodeCompleted4){
@@ -1229,7 +1229,7 @@ async(req, res, next) => {
                                         post: update
                                     });
                                     })}})
-         router.patch("/infoEdComp5", checkAuth,
+         router.put("/infoEdComp5", checkAuth,
            (req, res, next) => {
            if(req.body.CodeCompleted5){
                                      UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted5: req.body.CodeCompleted5})
@@ -1240,7 +1240,7 @@ async(req, res, next) => {
                                         });
                                             })}})  
                                                                                                                    
-router.patch("/infoEdComp6", checkAuth,
+router.put("/infoEdComp6", checkAuth,
     async(req, res, next) => {
         if(req.body.CodeCompleted6){
         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted6: req.body.CodeCompleted6})
@@ -1250,7 +1250,7 @@ router.patch("/infoEdComp6", checkAuth,
                 post: update
             });
         })}})  
-       router.patch("/infoEdComp7", checkAuth,
+       router.put("/infoEdComp7", checkAuth,
     async(req, res, next) => { 
                     if(req.body.CodeCompleted7){
             await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted7: req.body.CodeCompleted7})
@@ -1260,7 +1260,7 @@ router.patch("/infoEdComp6", checkAuth,
                     post: update
                 });
             })}})    
-            router.patch("/infoEdComp8", checkAuth,
+            router.put("/infoEdComp8", checkAuth,
     async(req, res, next) => {    
                     if(req.body.CodeCompleted8){
               await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted8: req.body.CodeCompleted8})
@@ -1270,7 +1270,7 @@ router.patch("/infoEdComp6", checkAuth,
                     post: update
                 });
             })}}) 
-                 router.patch("/infoEdComp9", checkAuth,
+                 router.put("/infoEdComp9", checkAuth,
     async(req, res, next) => {  
                               if(req.body.CodeCompleted9){
                           await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted9: req.body.CodeCompleted9})
@@ -1280,7 +1280,7 @@ router.patch("/infoEdComp6", checkAuth,
                                 post: update
                             });
                         })}})  
-       router.patch("/infoEdComp10", checkAuth,
+       router.put("/infoEdComp10", checkAuth,
     async(req, res, next) => {             
         if(req.body.CodeCompleted10){
       await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted10: req.body.CodeCompleted10})
@@ -1291,7 +1291,7 @@ router.patch("/infoEdComp6", checkAuth,
         });
     })}})      
 
-router.patch("/infoEdComp11", checkAuth,
+router.put("/infoEdComp11", checkAuth,
  async(req, res, next) => {                                                   
  if(req.body.CodeCompleted11){
  await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted11: req.body.CodeCompleted11})
@@ -1301,7 +1301,7 @@ router.patch("/infoEdComp11", checkAuth,
         post: update
     });
 })}})
-router.patch("/infoEdComp12", checkAuth,
+router.put("/infoEdComp12", checkAuth,
  async(req, res, next) => {                 
 if(req.body.CodeCompleted12){
  await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted12: req.body.CodeCompleted12})
@@ -1311,7 +1311,7 @@ if(req.body.CodeCompleted12){
         post: update
     });
 })}}) 
- router.patch("/infoEdComp13", checkAuth,
+ router.put("/infoEdComp13", checkAuth,
  async(req, res, next) => {               
  if(req.body.CodeCompleted13){
  await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted13: req.body.CodeCompleted13})
@@ -1321,7 +1321,7 @@ if(req.body.CodeCompleted12){
         post: update
     });
 })}}) 
-router.patch("/infoEdComp14", checkAuth,
+router.put("/infoEdComp14", checkAuth,
  async(req, res, next) => {               
 if(req.body.CodeCompleted14){
 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.CodeCompleted14})
@@ -1331,7 +1331,7 @@ await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.C
         post: update
     });
 })}}) 
-router.patch("/infoEdComp15", checkAuth,
+router.put("/infoEdComp15", checkAuth,
  async(req, res, next) => {              
  if(req.body.CodeCompleted15){
  await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted15: req.body.CodeCompleted15})
@@ -1341,7 +1341,7 @@ router.patch("/infoEdComp15", checkAuth,
         post: update
     });
 })}});
-router.patch("/infoEdComp16", checkAuth,
+router.put("/infoEdComp16", checkAuth,
  async(req, res, next) => {      
     if(req.body.CodeCompleted16){
         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted16: req.body.CodeCompleted16})
@@ -1351,7 +1351,7 @@ router.patch("/infoEdComp16", checkAuth,
                 post: update
             });
         })}});
-router.patch("/infoEdComp17", checkAuth,
+router.put("/infoEdComp17", checkAuth,
 async(req, res, next) => { 
     if(req.body.CodeCompleted17){
         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted17: req.body.CodeCompleted17})
@@ -1361,7 +1361,7 @@ async(req, res, next) => {
                 post: update
             });
         })}});
-router.patch("/infoEdComp18", checkAuth,
+router.put("/infoEdComp18", checkAuth,
 async(req, res, next) => { 
     if(req.body.CodeCompleted18){
         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted18: req.body.CodeCompleted18})
@@ -1371,7 +1371,7 @@ async(req, res, next) => {
                 post: update
             });
         })}}); 
-        router.patch("/infoEdComp19", checkAuth,
+        router.put("/infoEdComp19", checkAuth,
         async(req, res, next) => {                                                                                                                                          
             if(req.body.CodeCompleted19){
                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted19: req.body.CodeCompleted19})
@@ -1381,7 +1381,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}});                                                                                                                                                 
-                router.patch("/infoEdComp20", checkAuth,
+                router.put("/infoEdComp20", checkAuth,
                 async(req, res, next) => {                                                                                                                                          
                     if(req.body.CodeCompleted20){
                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted20: req.body.CodeCompleted20})
@@ -1391,7 +1391,7 @@ async(req, res, next) => {
                                 post: update
                             });
                         })}});                                                                                                                                                                
-                        router.patch("/infoEdComp21", checkAuth,
+                        router.put("/infoEdComp21", checkAuth,
                         async(req, res, next) => {  
                             if(req.body.CodeCompleted21){
                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted21: req.body.CodeCompleted21})
@@ -1401,7 +1401,7 @@ async(req, res, next) => {
                                         post: update
                                     });
                                 })}});
-                        router.patch("/infoEdComp22", checkAuth,
+                        router.put("/infoEdComp22", checkAuth,
                                 async(req, res, next) => {  
                                     if(req.body.CodeCompleted22){
                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted22: req.body.CodeCompleted22})
@@ -1411,7 +1411,7 @@ async(req, res, next) => {
                                                 post: update
                                             });
                                         })}}); 
-                        router.patch("/infoEdComp23", checkAuth,
+                        router.put("/infoEdComp23", checkAuth,
                                 async(req, res, next) => {                                                                                                                                                
                                 if(req.body.CodeCompleted23){
                                     await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted23: req.body.CodeCompleted23})
@@ -1421,7 +1421,7 @@ async(req, res, next) => {
                                                     post: update
                                                 });
                                             })}});
-       router.patch("/infoEdComp24", checkAuth,
+       router.put("/infoEdComp24", checkAuth,
             async(req, res, next) => {                                                                                                                                                                          if(req.body.CodeCompleted24){
         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted24: req.body.CodeCompleted24})
         .then(update => {
@@ -1430,7 +1430,7 @@ async(req, res, next) => {
                 post: update
             });
         })}});
-        router.patch("/infoEdComp25", checkAuth,
+        router.put("/infoEdComp25", checkAuth,
             async(req, res, next) => {              
          if(req.body.CodeCompleted25){
                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted25: req.body.CodeCompleted25})
@@ -1441,7 +1441,7 @@ async(req, res, next) => {
                     });
                 })}});   
             
-                router.patch("/infoEdComp26", checkAuth,
+                router.put("/infoEdComp26", checkAuth,
  async(req, res, next) => {  
                     if(req.body.CodeCompleted26){
                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted26: req.body.CodeCompleted26})
@@ -1451,7 +1451,7 @@ async(req, res, next) => {
                                 post: update
                             });
                         })}});
-                        router.patch("/infoEdComp27", checkAuth,
+                        router.put("/infoEdComp27", checkAuth,
                         async(req, res, next) => {
                                         if(req.body.CodeCompleted27){
                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted27: req.body.CodeCompleted27})
@@ -1461,7 +1461,7 @@ async(req, res, next) => {
                                         post: update
                                     });
                                 })}});                
-                                router.patch("/infoEdComp28", checkAuth,
+                                router.put("/infoEdComp28", checkAuth,
                                 async(req, res, next) => {
                                 if(req.body.CodeCompleted28){
                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted28: req.body.CodeCompleted28})
@@ -1471,7 +1471,7 @@ async(req, res, next) => {
                                                 post: update
                                             });
                                         })}});
-                                        router.patch("/infoEdComp29", checkAuth,
+                                        router.put("/infoEdComp29", checkAuth,
                                         async(req, res, next) => {
                                                    if(req.body.CodeCompleted29){
                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted29: req.body.CodeCompleted29})
@@ -1481,7 +1481,7 @@ async(req, res, next) => {
                                                         post: update
                                                     });
                                                 })}});   
-                                                router.patch("/infoEdComp30", checkAuth,
+                                                router.put("/infoEdComp30", checkAuth,
                                                 async(req, res, next) => {  
                                                 if(req.body.CodeCompleted30){
                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted30: req.body.CodeCompleted30})
@@ -1492,7 +1492,7 @@ async(req, res, next) => {
                                                             });
                                                         })}});   
                                
-router.patch("/infoEdComp31", checkAuth,
+router.put("/infoEdComp31", checkAuth,
  async(req, res, next) => {  
 if(req.body.CodeCompleted31){
                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted31: req.body.CodeCompleted31})
@@ -1502,7 +1502,7 @@ if(req.body.CodeCompleted31){
                                                                         post: update
                                                                     });
                                                                 })}});
-                                                                router.patch("/infoEdComp32", checkAuth,
+                                                                router.put("/infoEdComp32", checkAuth,
  async(req, res, next) => {
                                                                                if(req.body.CodeCompleted32){
                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted32: req.body.CodeCompleted32})
@@ -1512,7 +1512,7 @@ if(req.body.CodeCompleted31){
                                                                                 post: update
                                                                             });
                                                                         })}});
-                                                                        router.patch("/infoEdComp33", checkAuth,
+                                                                        router.put("/infoEdComp33", checkAuth,
  async(req, res, next) => {
                                                                                        if(req.body.CodeCompleted33){
                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted33: req.body.CodeCompleted33})
@@ -1522,7 +1522,7 @@ if(req.body.CodeCompleted31){
                                                                                         post: update
                                                                                     });
                                                                                 })}}); 
-                                                                                router.patch("/infoEdComp34", checkAuth,
+                                                                                router.put("/infoEdComp34", checkAuth,
  async(req, res, next) => {
                                                                                               if(req.body.CodeCompleted34){
                                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted34: req.body.CodeCompleted34})
@@ -1532,7 +1532,7 @@ if(req.body.CodeCompleted31){
                                                                                                 post: update
                                                                                             });
                                                                                         })}});
-                                                                                        router.patch("/infoEdComp35", checkAuth,
+                                                                                        router.put("/infoEdComp35", checkAuth,
  async(req, res, next) => {   
                                                                                             if(req.body.CodeCompleted35){
                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted35: req.body.CodeCompleted35})
@@ -1545,7 +1545,7 @@ if(req.body.CodeCompleted31){
                                                                                                   
                                                                                    
                                                                                                 
-                                                                                                router.patch("/infoEdComp36", checkAuth,
+                                                                                                router.put("/infoEdComp36", checkAuth,
  async(req, res, next) => {  
                                                                                                     if(req.body.CodeCompleted36){
                                                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted36: req.body.CodeCompleted36})
@@ -1555,7 +1555,7 @@ if(req.body.CodeCompleted31){
                                                                                                                 post: update
                                                                                                             });
                                                                                                         })}}); 
-                                                                                                        router.patch("/infoEdComp37", checkAuth,
+                                                                                                        router.put("/infoEdComp37", checkAuth,
  async(req, res, next) => {            
                                                                                                           if(req.body.CodeCompleted37){
                                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted37: req.body.CodeCompleted37})
@@ -1565,7 +1565,7 @@ if(req.body.CodeCompleted31){
                                                                                                                         post: update
                                                                                                                     });
                                                                                                                 })}});
-                                                                                                                router.patch("/infoEdComp38", checkAuth,
+                                                                                                                router.put("/infoEdComp38", checkAuth,
  async(req, res, next) => {               
                                                                                                                 if(req.body.CodeCompleted38){
                                                                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted38: req.body.CodeCompleted38})
@@ -1575,7 +1575,7 @@ if(req.body.CodeCompleted31){
                                                                                                                                 post: update
                                                                                                                             });
                                                                                                                         })}});
-                                                                                                                        router.patch("/infoEdComp39", checkAuth,
+                                                                                                                        router.put("/infoEdComp39", checkAuth,
  async(req, res, next) => {
                                                                                                                         if(req.body.CodeCompleted39){
                                                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted39: req.body.CodeCompleted39})
@@ -1585,7 +1585,7 @@ if(req.body.CodeCompleted31){
                                                                                                                                         post: update
                                                                                                                                     });
                                                                                                                                 })}});
-                                                                                                                                router.patch("/infoEdComp40", checkAuth,
+                                                                                                                                router.put("/infoEdComp40", checkAuth,
  async(req, res, next) => {   
                                                                                                                                     if(req.body.CodeCompleted40){
                                                                                                                                         await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted40: req.body.CodeCompleted40})
@@ -1595,7 +1595,7 @@ if(req.body.CodeCompleted31){
                                                                                                                                                 post: update
                                                                                                                                             });
                                                                                                                                         })}});               
-                                                                                                                                        router.patch("/infoEdCompX", checkAuth,
+                                                                                                                                        router.put("/infoEdCompX", checkAuth,
  async(req, res, next) => {
                                                                                                                                         if(req.body.CodeCompletedX){
                                                                                                                                                 await UserInfo.updateOne({Creator:req.body.userId },{CodeCompletedX: req.body.CodeCompletedX})
@@ -1608,7 +1608,7 @@ if(req.body.CodeCompleted31){
                                                                                                                                                
                                                                                                                                             
 
-router.patch("/infoEdPur", checkAuth,
+router.put("/infoEdPur", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing){
 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing})
@@ -1618,7 +1618,7 @@ message: 'Clean update',
  post: update
 });
 })}});   
-router.patch("/infoEdPur2", checkAuth,
+router.put("/infoEdPur2", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing2){
 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing2})
@@ -1628,7 +1628,7 @@ message: 'Clean update',
  post: update
 });
 })}});                                                                                                                                                                                                                                                                                
-router.patch("/infoEdPur3", checkAuth,
+router.put("/infoEdPur3", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing3){
 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing3})
@@ -1638,7 +1638,7 @@ message: 'Clean update',
  post: update
 });
 })}});  
-router.patch("/infoEdPur4", checkAuth,
+router.put("/infoEdPur4", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing4){
 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing4})
@@ -1648,7 +1648,7 @@ message: 'Clean update',
  post: update
 });
 })}});  
-router.patch("/infoEdPur5", checkAuth,
+router.put("/infoEdPur5", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing){
 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing5})
@@ -1658,7 +1658,7 @@ message: 'Clean update',
  post: update
 });
 })}});                                                                                                                                                                      
-router.patch("/infoEdPurW6", checkAuth,
+router.put("/infoEdPurW6", checkAuth,
 (req, res, next) => {                                                          
 if(req.body.CodePursuing6){
 UserInfo.updateOne({Creator:req.body.userId },{CodePursuing6: req.body.CodePursuing6})
@@ -1667,7 +1667,7 @@ res.status(200).json({
 message: 'Clean update',
 post: update });
 })}});     
-router.patch("/infoEdPurW7", checkAuth,
+router.put("/infoEdPurW7", checkAuth,
 (req, res, next) => {       
 if(req.body.CodePursuing7){
     UserInfo.updateOne({Creator:req.body.userId },{CodePursuing7: req.body.CodePursuing7})
@@ -1677,7 +1677,7 @@ if(req.body.CodePursuing7){
            post: update
        });
    })}}) 
-   router.patch("/infoEdPurW8", checkAuth,
+   router.put("/infoEdPurW8", checkAuth,
 (req, res, next) => {                                                                                                                                                                                           
    if(req.body.CodePursuing8){
     UserInfo.updateOne({Creator:req.body.userId },{CodePursuing8: req.body.CodePursuing8})
@@ -1687,7 +1687,7 @@ if(req.body.CodePursuing7){
            post: update
        });
    })}})    
-   router.patch("/infoEdPurW9", checkAuth,
+   router.put("/infoEdPurW9", checkAuth,
    (req, res, next) => {                                                                                                                                                                                                   
     if(req.body.CodePursuing9){
         UserInfo.updateOne({Creator:req.body.userId },{CodePursuing9: req.body.CodePursuing9})                                                                                                                                                                                              
@@ -1697,7 +1697,7 @@ if(req.body.CodePursuing7){
              post: update
          });
      })}})
-     router.patch("/infoEdPurW10", checkAuth,
+     router.put("/infoEdPurW10", checkAuth,
      (req, res, next) => {                                                                                                                                                                                                   
       if(req.body.CodePursuing10){
           UserInfo.updateOne({Creator:req.body.userId },{CodePursuing10: req.body.CodePursuing10})                                                                                                                                                                                              
@@ -1707,7 +1707,7 @@ if(req.body.CodePursuing7){
                post: update
            });
        })}})                                                                                                                                                                                                                    
-       router.patch("/infoEdPurSpring11", checkAuth,
+       router.put("/infoEdPurSpring11", checkAuth,
        async(req, res, next) => {  
 
            if(req.body.CodePursuing11){
@@ -1719,7 +1719,7 @@ if(req.body.CodePursuing7){
                    });
                })
                    }})                                                                                                                                                                                                        
-    router.patch("/infoEdPurSpring12", checkAuth,
+    router.put("/infoEdPurSpring12", checkAuth,
        async(req, res, next) => {  
 
            if(req.body.CodePursuing12){
@@ -1731,7 +1731,7 @@ if(req.body.CodePursuing7){
                    });
                })}})                                                                                                                                                                                                             
                                                                                                                                                                                                                        
-router.patch("/infoEdPurSummer13", checkAuth,
+router.put("/infoEdPurSummer13", checkAuth,
   async(req, res, next) => { 
 if(req.body.CodePursuing13){                                                                                                                                                                                                                    
 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing13: req.body.CodePursuing13})     
@@ -1741,7 +1741,7 @@ await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing13: req.body.Co
         post: update
     });
 })}}) 
-router.patch("/infoEdPurSummer14", checkAuth,
+router.put("/infoEdPurSummer14", checkAuth,
   async(req, res, next) => {        
 if(req.body.CodePursuing14){
  await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing14: req.body.CodePursuing14})

@@ -308,7 +308,7 @@ export class AuthService {
     const userData = new FormData();
     userData.append('profilePic', profilePic);
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPic',
         {
           userData,
@@ -330,7 +330,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoMajor(userId: string, major: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdMajor',
         {
           major,
@@ -352,7 +352,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoMinor(userId: string, minor: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdMinor',
         {
           minor,
@@ -374,7 +374,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoSport(userId: string, sport: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdSport',
         {
           sport,
@@ -396,7 +396,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoClub(userId: string, club: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdClub',
         {
           club,
@@ -418,7 +418,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoName(userId: string, name: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdName',
         {
           name,
@@ -439,7 +439,7 @@ export class AuthService {
   }
   editUserInfoBirthday(userId: string, birthday: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdBirthday',
         {
           birthday,
@@ -460,7 +460,7 @@ export class AuthService {
   }
   editUserInfoPronoun(userId: string, pronoun: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPronoun',
         {
           pronoun,
@@ -481,7 +481,7 @@ export class AuthService {
   }
   editUserInfoGender(userId: string, gender: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdGender',
         {
           gender,
@@ -502,7 +502,7 @@ export class AuthService {
   }
   editUserInfoBio(userId: string, bio: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdBio',
         {
           bio,
@@ -523,7 +523,7 @@ export class AuthService {
   }
   editUserInfoComp(userId: string, CodeCompleted: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp1',
         {
           userId,
@@ -544,7 +544,7 @@ export class AuthService {
   }
   editUserInfoComp2(userId: string, CodeCompleted2: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp2',
         {
           userId,
@@ -565,7 +565,7 @@ export class AuthService {
   }
   editUserInfoComp3(userId: string, CodeCompleted3: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp3',
         {
           userId,
@@ -586,7 +586,7 @@ export class AuthService {
   }
   editUserInfoComp4(userId: string, CodeCompleted4: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp4',
         {
           userId,
@@ -607,7 +607,7 @@ export class AuthService {
   }
   editUserInfoComp5(userId: string, CodeCompleted5: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp5',
         {
           userId,
@@ -628,7 +628,7 @@ export class AuthService {
   }
   editUserInfoComp6(userId: string, CodeCompleted6: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp6',
         {
           userId,
@@ -649,7 +649,7 @@ export class AuthService {
   }
   editUserInfoComp7(userId: string, CodeCompleted7: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp7',
         {
           userId,
@@ -670,7 +670,7 @@ export class AuthService {
   }
   editUserInfoComp8(userId: string, CodeCompleted8: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp8',
         {
           userId,
@@ -691,7 +691,7 @@ export class AuthService {
   }
   editUserInfoComp9(userId: string, CodeCompleted9: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp9',
         {
           userId,
@@ -712,7 +712,7 @@ export class AuthService {
   }
   editUserInfoComp10(userId: string, CodeCompleted10: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp10',
         {
           userId,
@@ -734,7 +734,7 @@ export class AuthService {
   // Edit comp 2
   editUserInfoComp11(userId: string, CodeCompleted11: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp11',
         {
           userId,
@@ -755,7 +755,7 @@ export class AuthService {
   }
   editUserInfoComp12(userId: string, CodeCompleted12: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp12',
         {
           userId,
@@ -776,7 +776,7 @@ export class AuthService {
   }
   editUserInfoComp13(userId: string, CodeCompleted13: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp13',
         {
           userId,
@@ -797,7 +797,7 @@ export class AuthService {
   }
   editUserInfoComp14(userId: string, CodeCompleted14: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp14',
         {
           userId,
@@ -818,7 +818,7 @@ export class AuthService {
   }
   editUserInfoComp15(userId: string, CodeCompleted15: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp15',
         {
           userId,
@@ -840,7 +840,7 @@ export class AuthService {
   // Edit comp 2W
   editUserInfoComp16(userId: string, CodeCompleted16: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp16',
         {
           userId,
@@ -861,7 +861,7 @@ export class AuthService {
   }
   editUserInfoComp17(userId: string, CodeCompleted17: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp17',
         {
           userId,
@@ -882,7 +882,7 @@ export class AuthService {
   }
   editUserInfoComp18(userId: string, CodeCompleted18: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp18',
         {
           userId,
@@ -903,7 +903,7 @@ export class AuthService {
   }
   editUserInfoComp19(userId: string, CodeCompleted19: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp19',
         {
           userId,
@@ -924,7 +924,7 @@ export class AuthService {
   }
   editUserInfoComp20(userId: string, CodeCompleted20: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp20',
         {
           userId,
@@ -946,7 +946,7 @@ export class AuthService {
   // Edit comp 3
   editUserInfoComp21(userId: string, CodeCompleted21: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp21',
         {
           userId,
@@ -967,7 +967,7 @@ export class AuthService {
   }
   editUserInfoComp22(userId: string, CodeCompleted22: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp22',
         {
           userId,
@@ -988,7 +988,7 @@ export class AuthService {
   }
   editUserInfoComp23(userId: string, CodeCompleted23: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp23',
         {
           userId,
@@ -1009,7 +1009,7 @@ export class AuthService {
   }
   editUserInfoComp24(userId: string, CodeCompleted24: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp24',
         {
           userId,
@@ -1030,7 +1030,7 @@ export class AuthService {
   }
   editUserInfoComp25(userId: string, CodeCompleted25: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp25',
         {
           userId,
@@ -1052,7 +1052,7 @@ export class AuthService {
   // Edit comp 3
   editUserInfoComp26(userId: string, CodeCompleted26: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp26',
         {
           userId,
@@ -1073,7 +1073,7 @@ export class AuthService {
   }
   editUserInfoComp27(userId: string, CodeCompleted27: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp27',
         {
           userId,
@@ -1094,7 +1094,7 @@ export class AuthService {
   }
   editUserInfoComp28(userId: string, CodeCompleted28: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp28',
         {
           userId,
@@ -1115,7 +1115,7 @@ export class AuthService {
   }
   editUserInfoComp29(userId: string, CodeCompleted29: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp29',
         {
           userId,
@@ -1136,7 +1136,7 @@ export class AuthService {
   }
   editUserInfoComp30(userId: string, CodeCompleted30: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp30',
         {
           userId,
@@ -1158,7 +1158,7 @@ export class AuthService {
   // Edit comp 4
   editUserInfoComp31(userId: string, CodeCompleted31: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp31',
         {
           userId,
@@ -1179,7 +1179,7 @@ export class AuthService {
   }
   editUserInfoComp32(userId: string, CodeCompleted32: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .paputtch<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp32',
         {
           userId,
@@ -1200,7 +1200,7 @@ export class AuthService {
   }
   editUserInfoComp33(userId: string, CodeCompleted33: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp33',
         {
           userId,
@@ -1221,7 +1221,7 @@ export class AuthService {
   }
   editUserInfoComp34(userId: string, CodeCompleted34: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp34',
         {
           userId,
@@ -1242,7 +1242,7 @@ export class AuthService {
   }
   editUserInfoComp35(userId: string, CodeCompleted35: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp35',
         {
           userId,
@@ -1264,7 +1264,7 @@ export class AuthService {
   // Edit comp 4W
   editUserInfoComp36(userId: string, CodeCompleted36: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp36',
         {
           userId,
@@ -1285,7 +1285,7 @@ export class AuthService {
   }
   editUserInfoComp37(userId: string, CodeCompleted37: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp37',
         {
           userId,
@@ -1306,7 +1306,7 @@ export class AuthService {
   }
   editUserInfoComp38(userId: string, CodeCompleted38: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp38',
         {
           userId,
@@ -1327,7 +1327,7 @@ export class AuthService {
   }
   editUserInfoComp39(userId: string, CodeCompleted39: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp39',
         {
           userId,
@@ -1348,7 +1348,7 @@ export class AuthService {
   }
   editUserInfoComp40(userId: string, CodeCompleted40: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdComp40',
         {
           userId,
@@ -1369,7 +1369,7 @@ export class AuthService {
   }
   editUserInfoCompX(userId: string, CodeCompletedX: string): any {
     this.http
-      .patch<{ message: string; post: any }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdCompX',
         {
           userId,
@@ -1391,7 +1391,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPur(userId: string, CodePursuing: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPur',
         {
           userId,
@@ -1413,7 +1413,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPur2(userId: string, CodePursuing2: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPur2',
         {
           userId,
@@ -1435,7 +1435,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPur3(userId: string, CodePursuing3: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPur3',
         {
           userId,
@@ -1457,7 +1457,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPur4(userId: string, CodePursuing4: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPur4',
         {
           userId,
@@ -1479,7 +1479,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPur5(userId: string, CodePursuing5: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPur5',
         {
           userId,
@@ -1501,7 +1501,7 @@ export class AuthService {
   // Edit Pursuing winter
   editUserInfoPurW6(userId: string, CodePursuing6: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurW6',
         {
           userId,
@@ -1523,7 +1523,7 @@ export class AuthService {
   // Edit Pursuing winter
   editUserInfoPurW7(userId: string, CodePursuing7: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurW7',
         {
           userId,
@@ -1545,7 +1545,7 @@ export class AuthService {
   // Edit Pursuing winter
   editUserInfoPurW8(userId: string, CodePursuing8: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurW8',
         {
           userId,
@@ -1567,7 +1567,7 @@ export class AuthService {
   // Edit Pursuing winter
   editUserInfoPurW9(userId: string, CodePursuing9: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurW9',
         {
           userId,
@@ -1589,7 +1589,7 @@ export class AuthService {
   // Edit Pursuing winter
   editUserInfoPurW10(userId: string, CodePursuing10: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurW10',
         {
           userId,
@@ -1612,7 +1612,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPurSp11(userId: string, CodePursuing11: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurSpring11',
         { userId, CodePursuing11 }
       )
@@ -1631,7 +1631,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPurSp12(userId: string, CodePursuing12: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurSpring12',
         { userId, CodePursuing12 }
       )
@@ -1650,7 +1650,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPurSu13(userId: string, CodePursuing13: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurSummer13',
         { userId, CodePursuing13 }
       )
@@ -1669,7 +1669,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPurSu14(userId: string, CodePursuing14: string): any {
     this.http
-      .patch<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPurSummer14',
         { userId, CodePursuing14 }
       )
