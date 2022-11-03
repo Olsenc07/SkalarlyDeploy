@@ -396,11 +396,11 @@ export class AuthService {
   // edit userinfo
   editUserInfoClub(userId: string, club: string): any {
     this.http
-      .post<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdClub',
         {
-          club,
           userId,
+          club,
         }
       )
       .subscribe({
@@ -468,12 +468,6 @@ export class AuthService {
         }
       )
       .subscribe({
-        next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            pronoun,
-          };
-        },
         error: (error) => {
           this.authStatusListener.next(false);
         },

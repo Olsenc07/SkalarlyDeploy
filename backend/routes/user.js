@@ -1172,7 +1172,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}})
-router.post("/infoEdClub", checkAuth,
+router.put("/infoEdClub", checkAuth,
 async(req, res, next) => {     
             if(req.body.club){
                 await UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
