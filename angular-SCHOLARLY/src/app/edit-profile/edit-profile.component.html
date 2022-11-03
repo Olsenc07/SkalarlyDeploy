@@ -164,9 +164,9 @@
       <!-- Bio -->
   
           <div class="input">
-            <i class="far fa-heart  _icon" *ngIf="!bio.value"></i>
+            <i class="fas fa-heart  _icon" *ngIf="!bio.value"></i>
   <button mat-icon-button type="button" *ngIf="bio.value" (click)="saveBio()" matTooltip="Save Bio">
-            <i class="far fa-heart  check" *ngIf="bio.value"></i>
+            <i class="fas fa-heart  check" *ngIf="bio.value"></i>
 </button>
 
             <mat-form-field>
@@ -312,11 +312,8 @@
 
           <!-- done button -->
           <div class="done">
-            <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button"
-              (click)="onSubmit()" [disabled]="!major.value && !minor.value && !sport.value && !club.value" >
-              Update
-            </button>
-          </div>
+            <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Done</button>
+                    </div>
       </div>
       </div>
 </div>
