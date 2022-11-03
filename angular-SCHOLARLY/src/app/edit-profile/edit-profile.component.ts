@@ -316,7 +316,6 @@ export class EditProfileComponent implements OnInit {
   }
   clearClub(): void {
     this.club.setValue('');
-    console.log('brain2', this.club.value);
     this.authServiceEdit.editUserClub(this.userId, this.club.value);
     this.snackBar.open('Club Cleared!', 'Nice!', {
       duration: 2000,

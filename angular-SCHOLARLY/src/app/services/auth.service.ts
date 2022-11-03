@@ -396,7 +396,7 @@ export class AuthService {
   // edit userinfo
   editUserInfoClub(userId: string, club: string): any {
     this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .post<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdClub',
         {
           club,
