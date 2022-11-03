@@ -43,7 +43,7 @@
                       name="profilePic">
                       <!-- (change)="onImgChange($event)" -->
                   </div>
-          <div class="done">
+          <div class="doneShowCase">
                   <button mat-raised-button color="primary" *ngIf="profilePic.value" type="button" class="button"
                   (click)="savePic()">
                Upload
@@ -144,9 +144,9 @@
       </div>
       <!-- Pronouns -->
           <div class="gender">
-            <i class="material-icons _icon" *ngIf="!pronouns.value">psychology</i>
-            <button mat-icon-button type="button" *ngIf="pronouns.value" (click)="savePronoun()" matTooltip="Save edit">
-                        <i class="material-icons check"  *ngIf="pronouns.value">psychology</i>
+            <i class="material-icons _icon" *ngIf="!pronoun.value">psychology</i>
+            <button mat-icon-button type="button" *ngIf="pronoun.value" (click)="savePronoun()" matTooltip="Save edit">
+                        <i class="material-icons check"  *ngIf="pronoun.value">psychology</i>
           </button>
       <mat-form-field  class="smaller">
         <mat-label *ngIf="info.pronouns">{{info.pronouns}}</mat-label>

@@ -274,7 +274,6 @@ export class EditProfileComponent implements OnInit {
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
-        console.log('infos', this.infos);
       });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
@@ -290,28 +289,28 @@ export class EditProfileComponent implements OnInit {
   clearBio(): void {
     this.bio.setValue('');
     this.authServiceEdit.editUserBio(this.userId, this.bio.value);
-    this.snackBar.open('Bio cleared!', 'Nice!', {
+    this.snackBar.open('Bio Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
   clearMajor(): void {
     this.major.setValue('');
     this.authServiceEdit.editUserMajor(this.userId, this.major.value);
-    this.snackBar.open('Major cleared!', 'Nice!', {
+    this.snackBar.open('Major Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
   clearMinor(): void {
     this.minor.setValue('');
     this.authServiceEdit.editUserMinor(this.userId, this.minor.value);
-    this.snackBar.open('Minor cleared!', 'Nice!', {
+    this.snackBar.open('Minor Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
   clearSport(): void {
     this.sport.setValue('');
     this.authServiceEdit.editUserSport(this.userId, this.sport.value);
-    this.snackBar.open('Sport cleared!', 'Nice!', {
+    this.snackBar.open('Sport Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -319,7 +318,7 @@ export class EditProfileComponent implements OnInit {
     this.club.setValue('');
     console.log('brain2', this.club.value);
     this.authServiceEdit.editUserClub(this.userId, this.club.value);
-    this.snackBar.open('Club cleared!', 'Nice!', {
+    this.snackBar.open('Club Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -327,7 +326,7 @@ export class EditProfileComponent implements OnInit {
   clearName(): void {
     this.name.setValue('');
     this.authServiceEdit.editUserName(this.userId, this.name.value);
-    this.snackBar.open('Name cleared!', 'Nice!', {
+    this.snackBar.open('Name Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -358,34 +357,64 @@ export class EditProfileComponent implements OnInit {
   }
   saveName(): void {
     this.authService.editUserInfoName(this.userId, this.name.value);
+    this.snackBar.open('Name Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
   saveBirthday(): void {
     this.authService.editUserInfoBirthday(this.userId, this.birthday.value);
+    this.snackBar.open('Birthday Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
   savePronoun(): void {
     this.authService.editUserInfoPronoun(this.userId, this.pronoun.value);
+    this.snackBar.open('Pronouns Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
   saveGender(): void {
     this.authService.editUserInfoGender(this.userId, this.gender.value);
+    this.snackBar.open('Gender Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
   saveBio(): void {
     this.authService.editUserInfoBio(this.userId, this.bio.value);
+    this.snackBar.open('Bio Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
   saveMajor(): void {
     this.authService.editUserInfoMajor(this.userId, this.major.value);
+    this.snackBar.open('Major Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
   saveMinor(): void {
     this.authService.editUserInfoMinor(this.userId, this.minor.value);
+    this.snackBar.open('Minor Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
   saveSport(): void {
     this.authService.editUserInfoSport(this.userId, this.sport.value);
+    this.snackBar.open('Sport Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
   saveClub(): void {
     this.authService.editUserInfoClub(this.userId, this.club.value);
+    this.snackBar.open('Club Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
 
   onSubmitShowCase(): any {
     this.showCaseService.addShowCase(this.form.get('showCase').value);
+    this.snackBar.open('Showcase Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
 }
 
@@ -440,7 +469,7 @@ export class EditProfileComp1Component implements OnInit {
       this.userId,
       this.CodeCompleted.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -450,7 +479,7 @@ export class EditProfileComp1Component implements OnInit {
       this.userId,
       this.CodeCompleted2.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -460,7 +489,7 @@ export class EditProfileComp1Component implements OnInit {
       this.userId,
       this.CodeCompleted3.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -470,7 +499,7 @@ export class EditProfileComp1Component implements OnInit {
       this.userId,
       this.CodeCompleted4.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -480,7 +509,7 @@ export class EditProfileComp1Component implements OnInit {
       this.userId,
       this.CodeCompleted5.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -589,7 +618,7 @@ export class EditProfileComp1WComponent implements OnInit {
       this.userId,
       this.CodeCompleted6.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -599,7 +628,7 @@ export class EditProfileComp1WComponent implements OnInit {
       this.userId,
       this.CodeCompleted7.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -609,7 +638,7 @@ export class EditProfileComp1WComponent implements OnInit {
       this.userId,
       this.CodeCompleted8.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -619,7 +648,7 @@ export class EditProfileComp1WComponent implements OnInit {
       this.userId,
       this.CodeCompleted9.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -629,7 +658,7 @@ export class EditProfileComp1WComponent implements OnInit {
       this.userId,
       this.CodeCompleted10.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -736,7 +765,7 @@ export class EditProfileComp2Component implements OnInit {
       this.userId,
       this.CodeCompleted11.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -746,7 +775,7 @@ export class EditProfileComp2Component implements OnInit {
       this.userId,
       this.CodeCompleted12.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -766,7 +795,7 @@ export class EditProfileComp2Component implements OnInit {
       this.userId,
       this.CodeCompleted14.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -776,7 +805,7 @@ export class EditProfileComp2Component implements OnInit {
       this.userId,
       this.CodeCompleted15.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -897,7 +926,7 @@ export class EditProfileComp2WComponent implements OnInit {
       this.userId,
       this.CodeCompleted16.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -907,7 +936,7 @@ export class EditProfileComp2WComponent implements OnInit {
       this.userId,
       this.CodeCompleted17.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -917,7 +946,7 @@ export class EditProfileComp2WComponent implements OnInit {
       this.userId,
       this.CodeCompleted18.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -927,7 +956,7 @@ export class EditProfileComp2WComponent implements OnInit {
       this.userId,
       this.CodeCompleted19.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -937,7 +966,7 @@ export class EditProfileComp2WComponent implements OnInit {
       this.userId,
       this.CodeCompleted20.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1057,7 +1086,7 @@ export class EditProfileComp3Component implements OnInit {
       this.userId,
       this.CodeCompleted21.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1067,7 +1096,7 @@ export class EditProfileComp3Component implements OnInit {
       this.userId,
       this.CodeCompleted22.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1077,7 +1106,7 @@ export class EditProfileComp3Component implements OnInit {
       this.userId,
       this.CodeCompleted23.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1087,7 +1116,7 @@ export class EditProfileComp3Component implements OnInit {
       this.userId,
       this.CodeCompleted24.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1097,7 +1126,7 @@ export class EditProfileComp3Component implements OnInit {
       this.userId,
       this.CodeCompleted25.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1216,7 +1245,7 @@ export class EditProfileComp3WComponent implements OnInit {
       this.userId,
       this.CodeCompleted26.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1226,7 +1255,7 @@ export class EditProfileComp3WComponent implements OnInit {
       this.userId,
       this.CodeCompleted27.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1236,7 +1265,7 @@ export class EditProfileComp3WComponent implements OnInit {
       this.userId,
       this.CodeCompleted28.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1246,7 +1275,7 @@ export class EditProfileComp3WComponent implements OnInit {
       this.userId,
       this.CodeCompleted29.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1256,7 +1285,7 @@ export class EditProfileComp3WComponent implements OnInit {
       this.userId,
       this.CodeCompleted30.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1377,7 +1406,7 @@ export class EditProfileComp4Component implements OnInit {
       this.userId,
       this.CodeCompleted31.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1387,7 +1416,7 @@ export class EditProfileComp4Component implements OnInit {
       this.userId,
       this.CodeCompleted32.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1397,7 +1426,7 @@ export class EditProfileComp4Component implements OnInit {
       this.userId,
       this.CodeCompleted33.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1407,7 +1436,7 @@ export class EditProfileComp4Component implements OnInit {
       this.userId,
       this.CodeCompleted34.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1417,7 +1446,7 @@ export class EditProfileComp4Component implements OnInit {
       this.userId,
       this.CodeCompleted35.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1536,7 +1565,7 @@ export class EditProfileComp4WComponent implements OnInit {
       this.userId,
       this.CodeCompleted36.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1546,7 +1575,7 @@ export class EditProfileComp4WComponent implements OnInit {
       this.userId,
       this.CodeCompleted37.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1556,7 +1585,7 @@ export class EditProfileComp4WComponent implements OnInit {
       this.userId,
       this.CodeCompleted38.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1566,7 +1595,7 @@ export class EditProfileComp4WComponent implements OnInit {
       this.userId,
       this.CodeCompleted39.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1576,7 +1605,7 @@ export class EditProfileComp4WComponent implements OnInit {
       this.userId,
       this.CodeCompleted40.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1586,7 +1615,7 @@ export class EditProfileComp4WComponent implements OnInit {
       this.userId,
       this.CodeCompletedX.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1714,7 +1743,7 @@ export class EditProfilePurWComponent implements OnInit {
       this.userId,
       this.CodePursuing6.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1724,7 +1753,7 @@ export class EditProfilePurWComponent implements OnInit {
       this.userId,
       this.CodePursuing7.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1734,7 +1763,7 @@ export class EditProfilePurWComponent implements OnInit {
       this.userId,
       this.CodePursuing8.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1744,7 +1773,7 @@ export class EditProfilePurWComponent implements OnInit {
       this.userId,
       this.CodePursuing9.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1754,7 +1783,7 @@ export class EditProfilePurWComponent implements OnInit {
       this.userId,
       this.CodePursuing10.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1872,7 +1901,7 @@ export class EditProfilePurSpringComponent implements OnInit {
       this.userId,
       this.CodePursuing11.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1882,7 +1911,7 @@ export class EditProfilePurSpringComponent implements OnInit {
       this.userId,
       this.CodePursuing12.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1975,7 +2004,7 @@ export class EditProfilePurSummerComponent implements OnInit {
       this.userId,
       this.CodePursuing13.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1985,7 +2014,7 @@ export class EditProfilePurSummerComponent implements OnInit {
       this.userId,
       this.CodePursuing14.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2078,7 +2107,7 @@ export class EditProfilePurComponent implements OnInit {
   clearNext(): void {
     this.CodePursuing.setValue('');
     this.authServiceEditNext.editUserNext(this.userId, this.CodePursuing.value);
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2088,7 +2117,7 @@ export class EditProfilePurComponent implements OnInit {
       this.userId,
       this.CodePursuing2.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2098,7 +2127,7 @@ export class EditProfilePurComponent implements OnInit {
       this.userId,
       this.CodePursuing3.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2108,7 +2137,7 @@ export class EditProfilePurComponent implements OnInit {
       this.userId,
       this.CodePursuing4.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2118,7 +2147,7 @@ export class EditProfilePurComponent implements OnInit {
       this.userId,
       this.CodePursuing5.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
     });
   }

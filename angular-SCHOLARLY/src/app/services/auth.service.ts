@@ -2035,9 +2035,7 @@ export class AuthService {
               CodePursuing12: info.CodePursuing12,
               CodePursuing13: info.CodePursuing13,
               CodePursuing14: info.CodePursuing14,
-
               ProfilePicPath: info.ProfilePicPath,
-              // ShowCasePath: info.ShowCasePath,
               Creator: info.Creator,
             };
           });
