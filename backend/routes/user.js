@@ -1076,60 +1076,64 @@ async(req, res, next) => {
 // Break this up chase into different routes and edit.serivice.ts
 // infoEd broken up!!
 const pic_ = multer({ storage: storage2, limits})
-router.patch("/infoEd", checkAuth,
+router.patch("/infoEdPic", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {
-        try{
                 if(req.file){
                     await cloudinary.uploader.upload(req.file.path, {
                     folder:'ProfilePics'
-                 }).then(result => {
-                     UserInfo.updateOne({Creator:req.query.userId },
+                 })
+                 .then(result => {
+                     UserInfo.updateOne({Creator:req.body.userId },
                         [{ProfilePicPath: result.secure_url}, {cloudinary_id: result.public_id}])   
                          .then(update => {
                             res.status(200).json({
                                 message: 'Clean update',
                                 post: update
                             });
-                        })
-                })
-            }
+                        })})}});
+router.patch("/infoEdName", checkAuth,
+async(req, res, next) => {    
              if(req.body.name){
-                await UserInfo.updateOne({Creator:req.query.userId },{name: req.body.name})
+                await UserInfo.updateOne({Creator:req.body.userId },{name: req.body.name})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
                         post: update
                     });
-                })
-                 }
+                })}})
+router.patch("/infoEdBio", checkAuth,
+async(req, res, next) => { 
                  if(req.body.bio){
-                    await  UserInfo.updateOne({Creator:req.query.userId },{bio: req.body.bio})
+                    await  UserInfo.updateOne({Creator:req.body.userId },{bio: req.body.bio})
                     .then(update => {
                         res.status(200).json({
                             message: 'Clean update',
                             post: update
                         });
-                    })
-                }
+                    })}})
+router.patch("/infoEdBirthday", checkAuth,
+async(req, res, next) => {
             if(req.body.birthday){
-                await UserInfo.updateOne({Creator:req.query.userId },{birthday: req.body.birthday})
+                await UserInfo.updateOne({Creator:req.body.userId },{birthday: req.body.birthday})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
                         post: update
                     });
-                })
-                 }              
+                })}})
+router.patch("/infoEdGender", checkAuth,
+async(req, res, next) => {              
             if(req.body.gender){
-                await UserInfo.updateOne({Creator:req.query.userId },{gender: req.body.gender})
+                await UserInfo.updateOne({Creator:req.body.userId },{gender: req.body.gender})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
                         post: update
                     });
-                })
-                     }   
+                })}})
+router.patch("/infoEdPronoun", checkAuth,
+async(req, res, next) => {    
              if(req.body.pronoun){
                 await UserInfo.updateOne({Creator:req.query.userId },{pronouns: req.body.pronoun})
                 .then(update => {
@@ -1137,8 +1141,9 @@ router.patch("/infoEd", checkAuth,
                         message: 'Clean update',
                         post: update
                     });
-                })
-                         }       
+                })}})
+router.patch("/infoEdMajor", checkAuth,
+async(req, res, next) => {        
             if(req.body.major){
                 await UserInfo.updateOne({Creator:req.query.userId },{major: req.body.major})
                 .then(update => {
@@ -1146,8 +1151,9 @@ router.patch("/infoEd", checkAuth,
                         message: 'Clean update',
                         post: update
                     });
-                })
-                             }    
+                })}}) 
+router.patch("/infoEdMinor", checkAuth,
+async(req, res, next) => {   
              if(req.body.minor){
                 await UserInfo.updateOne({Creator:req.query.userId },{minor: req.body.minor})
                 .then(update => {
@@ -1155,8 +1161,9 @@ router.patch("/infoEd", checkAuth,
                         message: 'Clean update',
                         post: update
                     });
-                })
-                                 }    
+                })}})
+router.patch("/infoEdSport", checkAuth,
+async(req, res, next) => {    
              if(req.body.sport){
                 await UserInfo.updateOne({Creator:req.query.userId },{sport: req.body.sport})
                 .then(update => {
@@ -1164,8 +1171,9 @@ router.patch("/infoEd", checkAuth,
                         message: 'Clean update',
                         post: update
                     });
-                })
-                                     }    
+                })}})
+router.patch("/infoEdClub", checkAuth,
+async(req, res, next) => {     
             if(req.body.club){
                 await UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
                 .then(update => {
@@ -1173,17 +1181,10 @@ router.patch("/infoEd", checkAuth,
                         message: 'Clean update',
                         post: update
                     });
-                })
-                       }
-        }catch{
-        console.log('got this far ')
-                   return res.status(500).json({
-               message: "Invalid update error!",
-                })
-                                        
-       }       
+                })}})
+                       
             
-    });
+  
     router.patch("/infoEdComp1", 
     checkAuth,
     (req, res, next) => {
@@ -1616,7 +1617,7 @@ res.status(200).json({
 message: 'Clean update',
  post: update
 });
-})} 
+})}});   
 router.patch("/infoEdPur2", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing2){
@@ -1626,7 +1627,7 @@ res.status(200).json({
 message: 'Clean update',
  post: update
 });
-})}                                                                                                                                                                                                                                                                                
+})}});                                                                                                                                                                                                                                                                                
 router.patch("/infoEdPur3", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing3){
@@ -1636,7 +1637,7 @@ res.status(200).json({
 message: 'Clean update',
  post: update
 });
-})}
+})}});  
 router.patch("/infoEdPur4", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing4){
@@ -1646,7 +1647,7 @@ res.status(200).json({
 message: 'Clean update',
  post: update
 });
-})}
+})}});  
 router.patch("/infoEdPur5", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing){
@@ -1656,7 +1657,7 @@ res.status(200).json({
 message: 'Clean update',
  post: update
 });
-})}                                                                                                                                                                     
+})}});                                                                                                                                                                      
 router.patch("/infoEdPurW6", checkAuth,
 (req, res, next) => {                                                          
 if(req.body.CodePursuing6){
@@ -1665,8 +1666,7 @@ UserInfo.updateOne({Creator:req.body.userId },{CodePursuing6: req.body.CodePursu
 res.status(200).json({
 message: 'Clean update',
 post: update });
-})
- }})     
+})}});     
 router.patch("/infoEdPurW7", checkAuth,
 (req, res, next) => {       
 if(req.body.CodePursuing7){
@@ -1676,7 +1676,7 @@ if(req.body.CodePursuing7){
            message: 'Clean update',
            post: update
        });
-   })}   }) 
+   })}}) 
    router.patch("/infoEdPurW8", checkAuth,
 (req, res, next) => {                                                                                                                                                                                           
    if(req.body.CodePursuing8){
@@ -1686,7 +1686,7 @@ if(req.body.CodePursuing7){
            message: 'Clean update',
            post: update
        });
-   })}  })    
+   })}})    
    router.patch("/infoEdPurW9", checkAuth,
    (req, res, next) => {                                                                                                                                                                                                   
     if(req.body.CodePursuing9){
@@ -1729,12 +1729,8 @@ if(req.body.CodePursuing7){
                        message: 'Clean update',
                        post: update
                    });
-               })
-                   }})                                                                                                                                                                                                             
-                                                                                                                                                                                                             
-                                                                                                                                                                                                                                 
-                                                                                                                                                                                                                      
-                                                                                                                                                                                                                        
+               })}})                                                                                                                                                                                                             
+                                                                                                                                                                                                                       
 router.patch("/infoEdPurSummer13", checkAuth,
   async(req, res, next) => { 
 if(req.body.CodePursuing13){                                                                                                                                                                                                                    
@@ -1755,9 +1751,6 @@ if(req.body.CodePursuing14){
         post: update
     });
 })}})    
-
-
-
 // userInfo recieving
 router.get("/info", async(req, res) => {
     const counter = req.query.counter;
@@ -2042,8 +2035,7 @@ router.post('/delete', async(req, res) => {
                     res.status(200).json({
                         message: 'Deleted Successful!',
                     })
-                }
-     
+                }   
 })
-
+ 
 module.exports = router;
