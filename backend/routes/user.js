@@ -1078,9 +1078,12 @@ router.put("/infoEdPic", checkAuth,
                     folder:'ProfilePics'
                  })
                  .then(result => {
+                    console.log('result',result)
                      UserInfo.updateOne({Creator: req.body.userId },
                         {ProfilePicPath: result.secure_url})   
                          .then(updated => {
+                    console.log('updated',updated)
+
                             UserInfo.updateOne({Creator:req.body.userId },
                             {cloudinary_id: updated.public_id})
                          .then(update => {
