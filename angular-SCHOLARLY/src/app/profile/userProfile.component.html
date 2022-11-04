@@ -102,7 +102,7 @@
 
         </div>
         <!-- [ngClass]="sport.value & club.value  ? 'hiden' : 'margin' " -->
-        <mat-divider class="margin"></mat-divider>
+        <mat-divider class="margin" *ngIf="info.sport  || info.club"></mat-divider>
         <div class="friendsCount" >
           <div class="centerR">
             Followers
@@ -208,7 +208,7 @@
                       Accomplishments
                       </mat-card-title>
                       <mat-divider></mat-divider>
-                      
+
                     <div class="middleText">
                     <div class="titleC" *ngIf="info.CodeCompleted || info.CodeCompleted2 || info.CodeCompleted3|| info.CodeCompleted4|| info.CodeCompleted5
                     || info.CodeCompleted6 || info.CodeCompleted7 || info.CodeCompleted8|| info.CodeCompleted9|| info.CodeCompleted10"
@@ -263,7 +263,7 @@
                     <mat-chip *ngIf="info.CodeCompleted10" class="style" color="primary" selected >
                       {{ info.CodeCompleted10 | uppercase}}
                     </mat-chip>
-                    <!-- <mat-divider *ngIf="info.CodeCompleted1 || info.CodeCompleted11 "></mat-divider> -->
+                    <mat-divider *ngIf="info.CodeCompleted11 || info.CodeCompleted16 "></mat-divider>
           </div>
           <div>
           <div class="middleText">
@@ -320,7 +320,7 @@
                     </mat-chip>
                   </div>
                   </div>
-                  <!-- <mat-divider *ngIf="info.CodeCompleted16 || info.CodeCompleted21 "></mat-divider> -->
+                  <mat-divider *ngIf="info.CodeCompleted21 || info.CodeCompleted26 "></mat-divider>
                   <div class="middleText">
 
                     <div class="titleC" 
@@ -375,7 +375,7 @@
                     </mat-chip>
                   </div>
                 </div>
-                <!-- <mat-divider *ngIf="info.CodeCompleted31 || info.CodeCompleted40"></mat-divider> -->
+                <mat-divider *ngIf="info.CodeCompleted31 || info.CodeCompleted36 "></mat-divider>
 
                   <div class="middleText">
                     <div class="titleC" *ngIf="info.CodeCompleted31 || info.CodeCompleted32 || info.CodeComplete33 || info.CodeCompleted34 || info.CodeCompleted35 ||
