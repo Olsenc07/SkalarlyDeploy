@@ -1,6 +1,12 @@
 <!-- 26 -->
 <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Completed Courses Third Year Winter" class="courses" >
+    <mat-tab  class="courses" >
+      <ng-template mat-tab-label>
+        <mat-icon><span class="material-icons-two-tone">
+          workspace_premium
+          </span></mat-icon>
+        <div >Completed Courses Third Year Winter</div>
+      </ng-template>
   <div class="centerTitle">Winter Semester <div class="fas fa-snowflake" style="color: #88c4f9;"></div> </div>
     <div *ngFor="let info of infos">
 <div class="input" >
