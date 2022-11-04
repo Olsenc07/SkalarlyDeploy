@@ -1068,13 +1068,7 @@ async(req, res, next) => {
         })
 })
 
-
-
-
-
 // edit info
-// Break this up chase into different routes and edit.serivice.ts
-// infoEd broken up!!
 const pic_ = multer({ storage: storage2, limits})
 router.put("/infoEdPic", checkAuth,
     pic_.single('profilePic'),
