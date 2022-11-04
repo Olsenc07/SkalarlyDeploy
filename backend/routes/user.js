@@ -1650,7 +1650,7 @@ message: 'Clean update',
 })}});  
 router.put("/infoEdPur5", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
-if(req.body.CodePursuing){
+if(req.body.CodePursuing5){
 await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing5: req.body.CodePursuing5})
 .then(update => {
 res.status(200).json({
