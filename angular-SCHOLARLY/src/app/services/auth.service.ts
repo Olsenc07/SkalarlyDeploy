@@ -308,13 +308,11 @@ export class AuthService {
     const userData = new FormData();
     userData.append('userId', userId);
     userData.append('profilePic', profilePic);
-    console.log('up stairs', profilePic);
+    console.log('up stairs', userData);
     this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPic',
-        {
-          userData,
-        }
+        userData
       )
       .subscribe({
         next: (responseData) => {
