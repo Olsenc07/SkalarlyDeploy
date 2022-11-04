@@ -1079,6 +1079,7 @@ const pic_ = multer({ storage: storage2, limits})
 router.put("/infoEdPic", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {
+        console.log('down stairs', req.file)
                 if(req.file){
                     await cloudinary.uploader.upload(req.file.path, {
                     folder:'ProfilePics'

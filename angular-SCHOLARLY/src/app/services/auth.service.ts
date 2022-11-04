@@ -306,13 +306,14 @@ export class AuthService {
   // edit userinfo
   editUserInfoPic(userId: string, profilePic: File): any {
     const userData = new FormData();
+    userData.append('userId', userId);
     userData.append('profilePic', profilePic);
+    console.log('up stairs', profilePic);
     this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'http://www.skalarly.com/api/user/infoEdPic',
         {
           userData,
-          userId,
         }
       )
       .subscribe({
