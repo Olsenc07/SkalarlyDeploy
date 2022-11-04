@@ -1621,7 +1621,7 @@ message: 'Clean update',
 router.put("/infoEdPur2", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing2){
-await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing2})
+await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing2: req.body.CodePursuing2})
 .then(update => {
 res.status(200).json({
 message: 'Clean update',
@@ -1631,7 +1631,7 @@ message: 'Clean update',
 router.put("/infoEdPur3", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing3){
-await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing3})
+await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing3: req.body.CodePursuing3})
 .then(update => {
 res.status(200).json({
 message: 'Clean update',
@@ -1641,7 +1641,7 @@ message: 'Clean update',
 router.put("/infoEdPur4", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing4){
-await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing4})
+await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing4: req.body.CodePursuing4})
 .then(update => {
 res.status(200).json({
 message: 'Clean update',
@@ -1651,7 +1651,7 @@ message: 'Clean update',
 router.put("/infoEdPur5", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing){
-await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing5})
+await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing5: req.body.CodePursuing5})
 .then(update => {
 res.status(200).json({
 message: 'Clean update',
