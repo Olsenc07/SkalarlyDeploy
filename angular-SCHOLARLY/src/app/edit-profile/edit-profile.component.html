@@ -1,7 +1,13 @@
 <form enctype="multipart/form-data"   *ngFor="let info of infos">
   <!-- (ngSubmit)="onSubmit()" [formGroup]="editForm" -->
   <mat-tab-group mat-align-tabs="center">
-     <mat-tab label="Personal">
+     <mat-tab >
+      <ng-template mat-tab-label>
+        <mat-icon><span class="material-icons-two-tone">
+          account_circle
+          </span></mat-icon>
+        <div >Personal</div>
+      </ng-template>
       <div class="entire-page">
          <!-- <div class="rowT">
           <button mat-icon-button class="display1" routerLink="/profile">
@@ -193,7 +199,7 @@
        
           <!-- Save button -->
           <div class="done">
-  <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Done</button>
+  <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Go To Profile</button>
           </div>
 
 
@@ -312,7 +318,7 @@
 
           <!-- done button -->
           <div class="done">
-            <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Done</button>
+            <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Go To Profile</button>
                     </div>
       </div>
       </div>
@@ -320,8 +326,13 @@
 
     </mat-tab>
 
-<mat-tab label="Showcase">
-
+<mat-tab >
+  <ng-template mat-tab-label>
+    <mat-icon><span class="material-icons-two-tone">
+      photo_library
+      </span></mat-icon>
+    <div >Showcase</div>
+  </ng-template>
  <!-- Image Preview -->
  <div class="rowShow">
   <!-- <div class="column"> -->
