@@ -460,7 +460,7 @@ export class AuthService {
   }
   editUserInfoPronoun(userId: string, pronoun: string): any {
     this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdPronoun',
         {
           pronoun,
