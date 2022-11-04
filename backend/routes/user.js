@@ -1079,20 +1079,14 @@ const pic_ = multer({ storage: storage2, limits})
 router.put("/infoEdPic", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {
-        console.log('down stairs', req.file)
-        console.log('middle stairs', req.body)
-
                 if(req.file){
                     await cloudinary.uploader.upload(req.file.path, {
                     folder:'ProfilePics'
                  })
                  .then(result => {
-                    console.log('result bro',result)
                      UserInfo.updateOne({Creator: req.body.userId },
                         {ProfilePicPath: result.secure_url})   
                          .then(updated => {
-                    console.log('result bro',updated)
-
                             UserInfo.updateOne({Creator:req.body.userId },
                             {cloudinary_id: updated.public_id})
                          .then(update => {

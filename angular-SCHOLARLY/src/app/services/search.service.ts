@@ -27,7 +27,7 @@ export class SearchListService {
   public searchOptions: SearchOption[] = [
     { name: 'Blues Clubs', value: SearchValues.BLUE_CLUBS },
     { name: 'Buy & Sell', value: SearchValues.MISCELL_BUY_SELL },
-    { name: 'College Connection', value: SearchValues.COLLEGE_CONNECTION },
+    { name: 'College Connections', value: SearchValues.COLLEGE_CONNECTION },
     { name: 'Entrepreneurial Opportunities', value: SearchValues.ENTREP_IDEA },
     { name: 'Helping Hand', value: SearchValues.HELP_WANTED },
     { name: 'Housing', value: SearchValues.HOUSING },
