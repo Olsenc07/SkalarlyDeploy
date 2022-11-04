@@ -1080,11 +1080,14 @@ router.put("/infoEdPic", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {
         console.log('down stairs', req.file)
+        console.log('middle stairs', req.body)
+
                 if(req.file){
                     await cloudinary.uploader.upload(req.file.path, {
                     folder:'ProfilePics'
                  })
                  .then(result => {
+                    console.log('result bro',result)
                      UserInfo.updateOne({Creator:req.body.userId },
                         [{ProfilePicPath: result.secure_url}, {cloudinary_id: result.public_id}])   
                          .then(update => {
