@@ -353,6 +353,9 @@ export class EditProfileComponent implements OnInit {
       this.userId,
       this.form.get('profilePic').value
     );
+    this.snackBar.open('Profile Picture Saved!', 'Nice!', {
+      duration: 2000,
+    });
   }
   saveName(): void {
     this.authService.editUserInfoName(this.userId, this.name.value);

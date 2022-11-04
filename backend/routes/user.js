@@ -1088,7 +1088,7 @@ router.put("/infoEdPic", checkAuth,
                  })
                  .then(result => {
                     console.log('result bro',result)
-                     UserInfo.updateOne({Creator:req.body.userId },
+                     UserInfo.updateMany({Creator:req.body.userId },
                         [{ProfilePicPath: result.secure_url}, {cloudinary_id: result.public_id}])   
                          .then(update => {
                             res.status(200).json({
