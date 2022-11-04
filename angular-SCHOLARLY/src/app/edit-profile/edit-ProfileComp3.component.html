@@ -98,6 +98,7 @@
     <button mat-icon-button type="button" *ngIf="CodeCompleted24.value" (click)="save24()" matTooltip="Save Course">
       <i class="material-icons check" *ngIf="CodeCompleted24.value">check</i>
       </button>
+
     <mat-form-field class="example-chip-list">
       <mat-label *ngIf="info.CodeCompleted24.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted24}}</mat-label>
@@ -115,7 +116,7 @@
     </mat-option>
     
     </mat-select> -->
-    <input matInput maxlength="8" [formControl]="codeCompleted24"> 
+    <input matInput maxlength="8" [formControl]="CodeCompleted24"> 
 <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset value" type="button" (click)="clearCode24()">
   <mat-icon class="asthetic-adds">close</mat-icon>
 </button>
