@@ -1080,18 +1080,19 @@ router.put("/infoEdPic", checkAuth,
                  .then(result => {
                     console.log('result',result)
                      UserInfo.updateOne({Creator: req.body.userId },
-                        {ProfilePicPath: result.secure_url})   
-                         .then(updated => {
-                    console.log('updated',updated)
-
-                            UserInfo.updateOne({Creator:req.body.userId },
-                            {cloudinary_id: updated.public_id})
-                         .then(update => {
+                        {ProfilePicPath: result.secure_url});   
+                    UserInfo.updateOne({Creator:req.body.userId },
+                            {cloudinary_id: result.public_id})
                             res.status(200).json({
                                 message: 'Clean update',
-                                post: update
+                                post: Success
                             });
-                        })})})}});
+                        })}
+                    else{
+                        res.status(500).json({
+                            message: 'Broken update',
+                        })
+                    }});
 router.put("/infoEdName", checkAuth,
 async(req, res, next) => {    
              if(req.body.name){
@@ -2015,7 +2016,6 @@ router.post('/delete', async(req, res) => {
             return bcrypt.compare(req.body.passwordDel, user.password)
         })
         .then(result => {
-            console.log('user',result)
             if (!result) {
                 return res.status(401).json({
                     message: "Authentication failed "

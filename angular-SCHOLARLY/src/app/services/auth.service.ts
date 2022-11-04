@@ -310,7 +310,7 @@ export class AuthService {
     userData.append('profilePic', profilePic);
     console.log('up stairs', userData);
     this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: any }>(
         'http://www.skalarly.com/api/user/infoEdPic',
         userData
       )
@@ -1847,7 +1847,6 @@ export class AuthService {
               CodePursuing13: info.CodePursuing13,
               CodePursuing14: info.CodePursuing14,
               ProfilePicPath: info.ProfilePicPath,
-              // ShowCasePath: info.ShowCasePath,
               Creator: info.Creator,
             };
           });
