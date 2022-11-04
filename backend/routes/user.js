@@ -1088,18 +1088,23 @@ router.put("/infoEdPic", checkAuth,
                  })
                  .then(result => {
                     console.log('result bro',result)
-                     UserInfo.updateMany({Creator:req.body.userId },
-                        [{ProfilePicPath: result.secure_url}, {cloudinary_id: result.public_id}])   
+                     UserInfo.updateOne({Creator: req.body.userId },
+                        {ProfilePicPath: result.secure_url})   
+                         .then(updated => {
+                    console.log('result bro',updated)
+
+                            UserInfo.updateOne({Creator:req.body.userId },
+                            {cloudinary_id: updated.public_id})
                          .then(update => {
                             res.status(200).json({
                                 message: 'Clean update',
                                 post: update
                             });
-                        })})}});
+                        })})})}});
 router.put("/infoEdName", checkAuth,
 async(req, res, next) => {    
              if(req.body.name){
-                await UserInfo.updateOne({Creator:req.body.userId },{name: req.body.name})
+                await UserInfo.updateOne({Creator: req.body.userId },{name: req.body.name})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',

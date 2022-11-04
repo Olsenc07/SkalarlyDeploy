@@ -46,7 +46,7 @@
   
                     <div class="nameTitle">
                       <!-- Button directs to that users profile -->
-                      <button mat-button *ngIf="userId !== post.Creator">
+                      <button mat-button *ngIf="userId !== post.Creator"  matTooltip="View Profile">
                         <div class="userName  link"  id="userName" (click)="navigateToPage(post.Username)">
                           <!-- Olsen07 -->
                           @{{post.Username}}

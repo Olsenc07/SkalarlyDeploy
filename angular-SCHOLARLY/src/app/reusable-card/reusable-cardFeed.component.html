@@ -49,7 +49,7 @@
                       <!-- Button directs to that users profile -->
                       
                       <button mat-button *ngIf="userId !== post.Creator" >
-                        <div class="userName  link"  id="userName" matTooltip="View profile"
+                        <div class="userName  link"  id="userName" matTooltip="View Profile"
                          (click)="navigateToPage(post.Username)">@{{post.Username}}
                           </div>
                         </button>
