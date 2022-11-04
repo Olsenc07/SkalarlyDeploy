@@ -3,7 +3,13 @@
     <!-- Completed Course -->
     
     <!-- Pursuing Courses -->
-<mat-tab  label="Next Courses Winter" class="courses">
+<mat-tab class="courses">
+  <ng-template mat-tab-label>
+    <mat-icon><span class="material-icons-two-tone">
+      pending
+      </span></mat-icon>
+    <div >Next Courses Winter</div>
+  </ng-template>
   <div class="centerTitle">Winter Semester <div class="fas fa-snowflake" style="color: #88c4f9;"></div> </div>
       <!-- 1 -->
   <div *ngFor="let info of infos">
