@@ -1079,14 +1079,16 @@ router.put("/infoEdPic", checkAuth,
                  })
                  .then(result => {
                     console.log('result',result)
-                     UserInfo.updateOne({Creator: req.body.userId },
-                        {ProfilePicPath: result.secure_url});   
-                    UserInfo.updateOne({Creator:req.body.userId },
-                            {cloudinary_id: result.public_id})
+                 UserInfo.update({Creator: req.body.userId },
+                        {ProfilePicPath: result.secure_url})   
+                    // UserInfo.updateOne({Creator:req.body.userId },
+                    //         {cloudinary_id: result.public_id})
+                .then(results => {
                             res.status(200).json({
                                 message: 'Clean update',
-                                post: Success
+                                post: results
                             });
+                        })
                         })}
                     else{
                         res.status(500).json({
