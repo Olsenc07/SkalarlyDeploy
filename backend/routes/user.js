@@ -1133,9 +1133,10 @@ async(req, res, next) => {
                     });
                 })}})
 router.put("/infoEdPronoun", checkAuth,
-async(req, res, next) => {    
+async(req, res, next) => {   
+
              if(req.body.pronoun){
-                await UserInfo.updateOne({Creator:req.query.userId },{pronouns: req.body.pronoun})
+                await UserInfo.updateOne({Creator:req.body.userId },{pronouns: req.body.pronoun})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
@@ -1145,7 +1146,7 @@ async(req, res, next) => {
 router.put("/infoEdMajor", checkAuth,
 async(req, res, next) => {        
             if(req.body.major){
-                await UserInfo.updateOne({Creator:req.query.userId },{major: req.body.major})
+                await UserInfo.updateOne({Creator:req.body.userId },{major: req.body.major})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
@@ -1155,7 +1156,7 @@ async(req, res, next) => {
 router.put("/infoEdMinor", checkAuth,
 async(req, res, next) => {   
              if(req.body.minor){
-                await UserInfo.updateOne({Creator:req.query.userId },{minor: req.body.minor})
+                await UserInfo.updateOne({Creator:req.body.userId },{minor: req.body.minor})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
@@ -1165,7 +1166,7 @@ async(req, res, next) => {
 router.put("/infoEdSport", checkAuth,
 async(req, res, next) => {    
              if(req.body.sport){
-                await UserInfo.updateOne({Creator:req.query.userId },{sport: req.body.sport})
+                await UserInfo.updateOne({Creator:req.body.userId },{sport: req.body.sport})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
@@ -1175,7 +1176,7 @@ async(req, res, next) => {
 router.put("/infoEdClub", checkAuth,
 async(req, res, next) => {     
             if(req.body.club){
-                await UserInfo.updateOne({Creator:req.query.userId },{club: req.body.club})
+                await UserInfo.updateOne({Creator:req.body.userId },{club: req.body.club})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
