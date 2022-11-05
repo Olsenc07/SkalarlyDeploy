@@ -1947,11 +1947,12 @@ router.post("/login", verifyEmail, async (reg, res, next) => {
         UserInfo.findOne({username: test1.username})
         .then( userInfo => {
             if (!userInfo) {
-                User.findOneAndDelete( {email: reg.body.email})
-                return res.status(401).json({
-                    message: "Your account was made improperly. Please try again!"
+                 User.findOneAndDelete( {email: reg.body.email})
+                 .then(()=> {
+                 res.status(401).json({
+                    message: "Your account was not completed when it was made. Please make it again!"
                 });
-            }
+            })}
 if(userInfo){
     User.findOne({ email: reg.body.email })
         .then(user => {
