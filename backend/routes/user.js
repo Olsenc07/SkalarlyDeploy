@@ -163,7 +163,9 @@ const verifyEmail = async (req, res, next) => {
                     next()
                     res.status(200)
                 } else {
-                    console.log('Please check email to verify your account.')
+                    res.status(401).json({
+                        message: 'Please check your email to verify your account.',
+                    })
                 }
             })
             .catch(err => {
@@ -173,7 +175,7 @@ const verifyEmail = async (req, res, next) => {
 
         } else {
             return res.status(401).json({
-                message: "No user matches our records 2!",
+                message: "No user matches our records!",
             })
         }
     } catch (err) {
@@ -1963,7 +1965,7 @@ if(userInfo){
         .then(result => {
             if (!result) {
                 return res.status(401).json({
-                    message: "Authentication failed "
+                    message: "Authentication failed"
                 });
             }
             const token = jwt.sign(
