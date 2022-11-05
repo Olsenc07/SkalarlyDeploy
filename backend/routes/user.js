@@ -1944,6 +1944,7 @@ router.post("/login", verifyEmail, async (reg, res, next) => {
 
     await User.findOne({ email: reg.body.email })
     .then(test1 => {
+        console.log('mr.scrumbles',test1)
         UserInfo.findOne({username: test1.username})
         .then( userInfo => {
             if (!userInfo) {
