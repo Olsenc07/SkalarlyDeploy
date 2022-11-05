@@ -1078,7 +1078,6 @@ router.put("/infoEdPic", checkAuth,
                     folder:'ProfilePics'
                  })
                  .then(result => {
-                    console.log('result',result)
                  UserInfo.updateOne({Creator: req.body.userId },
                        { $set: {
                         ProfilePicPath: result.secure_url, 
@@ -1948,12 +1947,12 @@ router.post("/login", verifyEmail, async (reg, res, next) => {
         UserInfo.findOne({username: test1.username})
         .then( userInfo => {
             if (!userInfo) {
+                User.findOneAndDelete( {email: reg.body.email})
                 return res.status(401).json({
-                    message: "Your account was made improperly. Please delete it and try again!"
+                    message: "Your account was made improperly. Please try again!"
                 });
             }
 if(userInfo){
-
     User.findOne({ email: reg.body.email })
         .then(user => {
                 fetchedUser = user;
