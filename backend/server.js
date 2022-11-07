@@ -12,7 +12,7 @@ var options = {
 
  cert: process.env.crt,
 
- ca: fs.readFileSync ('/Users/chaseolsen/angular_scholarly_fs/skalarly.com.ca-bundle')
+ ca: fs.readFileSync ('skalarly.com.ca-bundle')
 
 };
 /**
