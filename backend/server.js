@@ -11,10 +11,19 @@ var options = {
  key: process.env.privateHTTPS,
 
  cert: process.env.crt,
-
-//  ca: fs.readFileSync ('/app/backend/skalarly.com.ca-bundle')
+//  ca = []
+//  chain = fs.readFileSync('/app/backend/skalarly.com.ca-bundle');
+//  chain = chain.split “n”
+//  cert = []
+//  for line in chain when line.length isnt 0
+//   cert.push line
+//   if line.match /-END CERTIFICATE-/
+//     ca.push cert.join “n”
+//     cert = []
+ ca: fs.readFileSync ('/app/backend/skalarly.com.ca-bundle')
 
 };
+
 /**
  * Required External Modules
  */
