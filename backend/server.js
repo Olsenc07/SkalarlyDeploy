@@ -1,8 +1,20 @@
 // SERVER
 // Importing using node-js
-const http = require('http');
+const https = require('https');
 // server.js
+var fs = require('fs');
 
+ 
+
+var options = {
+
+ key: process.env.privateHTTPS,
+
+ cert: process.env.crt,
+
+ ca: fs.readFileSync ('/Users/chaseolsen/angular_scholarly_fs/skalarly.com.ca-bundle')
+
+};
 /**
  * Required External Modules
  */
@@ -62,7 +74,7 @@ app.post('/subscribe', (req, res) => {
 
 
 })
- const server = http.createServer(app)
+ const server = https.createServer(options, app)
  const port = process.env.PORT || 3000;
 //  const port = process.env.PORT || 5000
  const router = express.Router();
