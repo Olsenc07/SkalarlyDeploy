@@ -9,8 +9,7 @@ var fs = require('fs');
 var options = {
  key: process.env.privateHTTPS,
  cert: process.env.crt,
- ca: process.env.bundle
-
+//  ca: process.env.bundle
 };
 
 /**
@@ -101,7 +100,7 @@ io.on('connection', (socket) => {
         .then(user => {
         User.findOne({username: user.username})
         .then(username => {
-            console.log('hey Message', Message)
+            console.log('Hey Message', Message)
     
         // saving msg
         
