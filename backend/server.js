@@ -7,9 +7,9 @@ var fs = require('fs');
  
 
 var options = {
- key: fs.readFileSync('/skalarly/skalarly.com_key.txt'),
- cert: fs.readFileSync('/skalarly/skalarly.com.crt'),
- ca: fs.readFileSync('/skalarly/skalarly.com.ca-bundle')
+ key: fs.readFileSync('/app/backend/skalarly.com_key.txt'),
+ cert: fs.readFileSync('/app/backend/skalarly.com.crt'),
+ ca: fs.readFileSync('/app/backend/skalarly.com.ca-bundle')
 };
 
 /**
