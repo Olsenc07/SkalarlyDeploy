@@ -31,7 +31,7 @@ export class MessageNotificationService {
   getMessageNotification(userId: string, username: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'http://www.skalarly.com/api/messages/infoMessage',
+        'https://www.skalarly.com/api/messages/infoMessage',
         {
           params: { userId, username },
         }
@@ -53,14 +53,12 @@ export class MessageNotificationService {
       .subscribe((transformedMessage) => {
         this.messagesNotif = transformedMessage;
         this.messagesInfoUpdated.next([...this.messagesNotif]);
-        console.log('hey chaz man', this.messagesNotif);
       });
   }
 
   deleteMessage(msgId: string): any {
-    console.log('hey chase msgId', msgId);
     this.http
-      .delete('http://www.skalarly.com/api/messages/deleteMsg/' + msgId)
+      .delete('https://www.skalarly.com/api/messages/deleteMsg/' + msgId)
       .subscribe(() => {
         const updatedPosts = this.messagesDel.filter((msg) => msg.id !== msgId);
         this.messagesDel = updatedPosts;

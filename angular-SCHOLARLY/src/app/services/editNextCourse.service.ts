@@ -22,7 +22,7 @@ export class AuthServiceEditNext {
   editUserNext(userId: string, CodePursuing: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext',
+        'https://www.skalarly.com/api/user/infoNext',
         { userId, CodePursuing }
       )
       .subscribe({
@@ -44,7 +44,7 @@ export class AuthServiceEditNext {
   editUserNext2(userId: string, CodePursuing2: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext2',
+        'https://www.skalarly.com/api/user/infoNext2',
         { userId, CodePursuing2 }
       )
       .subscribe({
@@ -66,7 +66,7 @@ export class AuthServiceEditNext {
   editUserNext3(userId: string, CodePursuing3: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext3',
+        'https://www.skalarly.com/api/user/infoNext3',
         { userId, CodePursuing3 }
       )
       .subscribe({
@@ -88,7 +88,7 @@ export class AuthServiceEditNext {
   editUserNext4(userId: string, CodePursuing4: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext4',
+        'https://www.skalarly.com/api/user/infoNext4',
         { userId, CodePursuing4 }
       )
       .subscribe({
@@ -110,7 +110,7 @@ export class AuthServiceEditNext {
   editUserNext5(userId: string, CodePursuing5: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext5',
+        'https://www.skalarly.com/api/user/infoNext5',
         { userId, CodePursuing5 }
       )
       .subscribe({
@@ -132,7 +132,7 @@ export class AuthServiceEditNext {
   editUserNext6(userId: string, CodePursuing6: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext6',
+        'https://www.skalarly.com/api/user/infoNext6',
         { userId, CodePursuing6 }
       )
       .subscribe({
@@ -154,7 +154,7 @@ export class AuthServiceEditNext {
   editUserNext7(userId: string, CodePursuing7: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext7',
+        'https://www.skalarly.com/api/user/infoNext7',
         { userId, CodePursuing7 }
       )
       .subscribe({
@@ -176,7 +176,7 @@ export class AuthServiceEditNext {
   editUserNext8(userId: string, CodePursuing8: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext8',
+        'https://www.skalarly.com/api/user/infoNext8',
         { userId, CodePursuing8 }
       )
       .subscribe({
@@ -198,7 +198,7 @@ export class AuthServiceEditNext {
   editUserNext9(userId: string, CodePursuing9: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext9',
+        'https://www.skalarly.com/api/user/infoNext9',
         { userId, CodePursuing9 }
       )
       .subscribe({
@@ -220,7 +220,7 @@ export class AuthServiceEditNext {
   editUserNext10(userId: string, CodePursuing10: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext10',
+        'https://www.skalarly.com/api/user/infoNext10',
         { userId, CodePursuing10 }
       )
       .subscribe({
@@ -242,7 +242,7 @@ export class AuthServiceEditNext {
   editUserNext11(userId: string, CodePursuing11: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext11',
+        'https://www.skalarly.com/api/user/infoNext11',
         { userId, CodePursuing11 }
       )
       .subscribe({
@@ -264,7 +264,7 @@ export class AuthServiceEditNext {
   editUserNext12(userId: string, CodePursuing12: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext12',
+        'https://www.skalarly.com/api/user/infoNext12',
         { userId, CodePursuing12 }
       )
       .subscribe({
@@ -286,7 +286,7 @@ export class AuthServiceEditNext {
   editUserNext13(userId: string, CodePursuing13: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext13',
+        'https://www.skalarly.com/api/user/infoNext13',
         { userId, CodePursuing13 }
       )
       .subscribe({
@@ -308,7 +308,7 @@ export class AuthServiceEditNext {
   editUserNext14(userId: string, CodePursuing14: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoNext14',
+        'https://www.skalarly.com/api/user/infoNext14',
         { userId, CodePursuing14 }
       )
       .subscribe({

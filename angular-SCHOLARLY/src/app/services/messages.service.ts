@@ -29,7 +29,7 @@ export class MessageService {
   getMessages(userId: string, username: string): any {
     this.http
       .get<{ message: string; messages: any }>(
-        'http://www.skalarly.com/api/messages/OnetoOne',
+        'https://www.skalarly.com/api/messages/OnetoOne',
         {
           params: { userId, username },
         }

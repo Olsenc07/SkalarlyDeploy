@@ -102,12 +102,12 @@ router.post("/signup", async (req, res, next) => {
                         subject: 'Skalarly - verify account',
                         text: `We are excited to welcome you ${user.username} to the community!
                 Please copy and paste the link below to verify your account.
-                http://www.skalarly.com/api/user/verify-email?token=${user.emailToken}
+                https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}
                 `,
                         html: `
                 <h2>We are excited to welcome you ${user.username} to the community!</h2>
                 <div> Please click the link below to verify your account. </div>
-                <a href="http://www.skalarly.com/api/user/verify-email?token=${user.emailToken}">Verify account</a>
+                <a href="https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}">Verify account</a>
                 <div>If you have recieved this email by erorr, please disregard. </div>
                 `
                     }
@@ -230,7 +230,7 @@ router.post('/forgot', async (req, res) => {
             subject: 'Skalarly - reset password',
             text: `Hello ${user.username} we hear you forgot your password.
         Here is your reset code ${user.password} then copy and paste the link below to navigate back
-        http://www.skalarly.com/api/user/reset-password
+        https://www.skalarly.com/api/user/reset-password
         If you have recieved this email by erorr, please disregard.
         `,
             html: `
@@ -238,7 +238,7 @@ router.post('/forgot', async (req, res) => {
         <div> Here is your reset code. Copy this and keep it a secret! </div>
         ${user.password}
         <div> Now follow the below link </div>
-       <a href="http://www.skalarly.com/api/user/reset-password">Follow link</a>
+       <a href="https://www.skalarly.com/api/user/reset-password">Follow link</a>
         <div>If you have recieved this email by erorr, please disregard. </div>
         `
         }

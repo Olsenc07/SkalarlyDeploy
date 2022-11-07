@@ -20,7 +20,7 @@ export class AuthServiceEdit {
   editUserMajor(userId: string, major: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoMajor',
+        'https://www.skalarly.com/api/user/infoMajor',
         { userId, major }
       )
       .subscribe({
@@ -41,7 +41,7 @@ export class AuthServiceEdit {
   editUserMinor(userId: string, minor: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoMinor',
+        'https://www.skalarly.com/api/user/infoMinor',
         { userId, minor }
       )
       .subscribe({
@@ -61,7 +61,7 @@ export class AuthServiceEdit {
   editUserClub(userId: string, club: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoClub',
+        'https://www.skalarly.com/api/user/infoClub',
         { userId, club }
       )
       .subscribe({
@@ -81,7 +81,7 @@ export class AuthServiceEdit {
   editUserSport(userId: string, sport: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoSport',
+        'https://www.skalarly.com/api/user/infoSport',
         { userId, sport }
       )
       .subscribe({
@@ -101,7 +101,7 @@ export class AuthServiceEdit {
   editUserBio(userId: string, bio: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoBio',
+        'https://www.skalarly.com/api/user/infoBio',
         { userId, bio }
       )
       .subscribe({
@@ -121,7 +121,7 @@ export class AuthServiceEdit {
   editUserName(userId: string, name: string): any {
     this.http
       .patch<{ message: string; post: AuthDataInfo }>(
-        'http://www.skalarly.com/api/user/infoName',
+        'https://www.skalarly.com/api/user/infoName',
         { userId, name }
       )
       .subscribe({

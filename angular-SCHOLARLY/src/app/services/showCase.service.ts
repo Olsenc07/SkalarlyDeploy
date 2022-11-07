@@ -23,7 +23,7 @@ export class ShowCaseService {
   getShowCasePersonal(userId: string): any {
     this.http
       .get<{ message: string; showCases: any }>(
-        'http://www.skalarly.com/api/posts/showCasesPersonal',
+        'https://www.skalarly.com/api/posts/showCasesPersonal',
         { params: { userId } }
       )
       .pipe(
@@ -45,7 +45,7 @@ export class ShowCaseService {
   getShowCase(id: string): any {
     this.http
       .get<{ message: string; showCases: any }>(
-        'http://www.skalarly.com/api/posts/showCases',
+        'https://www.skalarly.com/api/posts/showCases',
         { params: { id } }
       )
       .pipe(
@@ -70,13 +70,12 @@ export class ShowCaseService {
   }
   // Adding post
   addShowCase(showCase?: File, Creator?: string): any {
-    console.log('unicorns exist', showCase);
     const postData = new FormData();
     postData.append('showCase', showCase);
     postData.append('Creator', Creator);
     this.http
       .post<{ message: string; postId: ShowCase }>(
-        'http://www.skalarly.com/api/posts/showCases',
+        'https://www.skalarly.com/api/posts/showCases',
         postData
       )
       .subscribe({
@@ -102,7 +101,7 @@ export class ShowCaseService {
   deleteShowCase(postId: string): any {
     // console.log('hey chase postId', postId);
     this.http
-      .delete('http://www.skalarly.com/api/posts/showCases/' + postId)
+      .delete('https://www.skalarly.com/api/posts/showCases/' + postId)
       .subscribe(() => {
         const updatedPosts = this.showCases.filter(
           (post) => post.id !== postId

@@ -18,7 +18,7 @@ const postSchema = mongoose.Schema({
     nopaymentService: { type: String},
     virtual: { type: String},
     event: { type: String},
-    ImagePath: { type:String},
+    ImagePath: { type: String},
     cloudinary_id: { type:String},
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });

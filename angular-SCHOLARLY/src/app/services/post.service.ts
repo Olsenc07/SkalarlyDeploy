@@ -24,10 +24,10 @@ export interface Post {
   upload: File;
   ImagePath: string;
   Creator: string;
-
-  // SecondFormGroup?: string;
-  // ThirdFormGroup?: string;
-  // FourthFormGroup?: string;
+  // User info
+  Username: string;
+  Name: string;
+  ProfilePicPath: string;
 }
 
 @Injectable({
@@ -44,7 +44,9 @@ export class PostService {
 
   getPosts(): any {
     this.http
-      .get<{ message: string; posts: any }>('http://www.skalarly.com/api/posts')
+      .get<{ message: string; posts: any }>(
+        'https://www.skalarly.com/api/posts'
+      )
       .pipe(
         map((postData) => {
           return postData.posts.map((post) => {
@@ -81,7 +83,7 @@ export class PostService {
   getPostsFeed(counter): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'http://www.skalarly.com/api/posts/feed',
+        'https://www.skalarly.com/api/posts/feed',
         { params: { counter } }
       )
       .pipe(
@@ -120,7 +122,7 @@ export class PostService {
   getPostsPersonal(userId: string): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'http://www.skalarly.com/api/posts/personal',
+        'https://www.skalarly.com/api/posts/personal',
         { params: { userId } }
       )
       .pipe(
@@ -160,7 +162,7 @@ export class PostService {
   getOthersPosts(id: string): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'http://www.skalarly.com/api/posts/otherUsers',
+        'https://www.skalarly.com/api/posts/otherUsers',
         { params: { id } }
       )
       .pipe(
@@ -200,7 +202,7 @@ export class PostService {
   getPostsMainPage(category: string, counter: number): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'http://www.skalarly.com/api/posts/mainPage',
+        'https://www.skalarly.com/api/posts/mainPage',
         { params: { category, counter } }
       )
       .pipe(
@@ -239,7 +241,7 @@ export class PostService {
   getOtherInfo(id: string): any {
     this.http
       .get<{ message: string; infos: any }>(
-        'http://www.skalarly.com/api/posts/otherUsersInfos',
+        'https://www.skalarly.com/api/posts/otherUsersInfos',
         { params: { id } }
       )
       .pipe(
@@ -284,26 +286,26 @@ export class PostService {
     upload?: File,
     Creator?: string
   ): any {
-    const post: Post = {
-      Title,
-      postDescription,
-      postLocation,
-      LocationEvent,
-      time,
-      timeE,
-      date,
-      dateE,
-      gender,
-      live,
-      paymentService,
-      nopaymentService,
-      virtual,
-      event,
-      upload,
-      id: '',
-      ImagePath: '',
-      Creator: '',
-    };
+    // const post: Post = {
+    //   Title,
+    //   postDescription,
+    //   postLocation,
+    //   LocationEvent,
+    //   time,
+    //   timeE,
+    //   date,
+    //   dateE,
+    //   gender,
+    //   live,
+    //   paymentService,
+    //   nopaymentService,
+    //   virtual,
+    //   event,
+    //   upload,
+    //   id: '',
+    //   ImagePath: '',
+    //   Creator: '',
+    // };
     const postData = new FormData();
     postData.append('Title', Title);
     postData.append('postDescription', postDescription);
@@ -321,10 +323,9 @@ export class PostService {
     postData.append('event', event);
     postData.append('upload', upload);
     postData.append('Creator', Creator);
-
     this.http
       .post<{ message: string; postId: Post }>(
-        'http://www.skalarly.com/api/posts',
+        'https://www.skalarly.com/api/posts',
         postData,
         { params: { userId } }
       )
@@ -332,6 +333,11 @@ export class PostService {
         next: (responseData) => {
           const postId: Post = {
             id: responseData.postId.id,
+            // Test with these three
+            Username: responseData.postId.Username,
+            Name: responseData.postId.Name,
+            ProfilePicPath: responseData.postId.ProfilePicPath,
+            //
             Title,
             postDescription,
             postLocation,
@@ -366,7 +372,7 @@ export class PostService {
   deletePost(postId: string): any {
     // console.log('hey chase postId', postId);
     this.http
-      .delete('http://www.skalarly.com/api/posts/' + postId)
+      .delete('https://www.skalarly.com/api/posts/' + postId)
       .subscribe(() => {
         const updatedPosts = this.posts.filter((post) => post.id !== postId);
         this.posts = updatedPosts;
