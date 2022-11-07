@@ -7,9 +7,9 @@ var fs = require('fs');
  
 
 var options = {
- key: process.env.privateHTTPS,
- cert: process.env.crt,
-//  ca: process.env.bundle
+ key: fs.readFileSync('/skalarly/skalarly.com_key.txt'),
+ cert: fs.readFileSync('/skalarly/skalarly.com.crt'),
+ ca: fs.readFileSync('/skalarly/skalarly.com.ca-bundle')
 };
 
 /**
