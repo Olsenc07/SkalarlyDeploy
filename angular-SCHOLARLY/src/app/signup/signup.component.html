@@ -28,9 +28,12 @@
               school
             </span>
             <mat-form-field>
-              <!-- only utoronto.ca should be excepted pattern=".+@utoronto\.ca"  pattern=".+@mail.utoronto\.ca"  pattern=".+@skalarly\.com" pattern=".+@rotman.utoronto\.ca"-->
-              <input matInput type="email"  placeholder="School Email"  [formControl]="email" required />
-              <mat-hint>@mail.utoronto.ca</mat-hint>
+              <!-- only utoronto.ca should be excepted  -->
+              <input matInput type="email"  placeholder="School Email" [formControl]="email" required 
+              pattern=".+@utoronto\.ca"  pattern=".+@mail.utoronto\.ca"
+                  pattern=".+@skalarly\.com" pattern=".+@rotman.utoronto\.ca" pattern=".+@utsc.utoronto\.ca"
+                pattern=".+@uoftpharmacy\.com"/>
+              <!-- <mat-hint>@mail.utoronto.ca</mat-hint> -->
               <mat-error >Only U Of T emails are valid</mat-error>
               <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <mat-error *ngIf="email.errors?.email && !email.errors?.noWhiteSpace">Please enter your academic email
@@ -41,8 +44,8 @@
               </button> -->
             </mat-form-field>
             <div class="fas fa-info-circle" style="font-size: large;" matTooltip="You must use one of these email extensions.
-            @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca,
-            @utsc.utoronto.ca, @uoftpharmacy.com, "></div>
+            @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca
+            @utsc.utoronto.ca, @uoftpharmacy.com "></div>
           </div>
 
           <div class="userIn">
