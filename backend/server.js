@@ -65,7 +65,7 @@ app.post('/subscribe', (req, res) => {
 var options = {
     key: fs.readFileSync(path.join(__dirname, 'skalarly.com_key.txt')),
     cert: fs.readFileSync(path.join(__dirname, 'skalarly.com.crt')),
-    // ca: fs.readFileSync(path.join(__dirname, 'skalarly.com.ca-bundle'))
+    ca: fs.readFileSync(path.join(__dirname, 'skalarly.com.ca-bundle'))
    };
    
  const server = https.createServer(options, app)
