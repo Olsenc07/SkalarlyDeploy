@@ -14,9 +14,8 @@
           <mat-form-field class="text-input">
             <mat-label> Academic Email</mat-label>
             <input matInput  [formControl]="email" required
-            pattern=".+@utoronto\.ca"  pattern=".+@mail.utoronto\.ca"
-                  pattern=".+@skalarly\.com" pattern=".+@rotman.utoronto\.ca" pattern=".+@utsc.utoronto\.ca"
-                pattern=".+@uoftpharmacy\.com"/>
+            pattern=".+@utoronto\.ca | .+@mail.utoronto\.ca | .+@skalarly\.com | 
+            .+@utsc.utoronto\.ca | .+@rotman.utoronto\.ca | .+@uoftpharmacy\.com" />
             <!-- pattern=".+@mail.utoronto\.ca" -->
             <!-- <mat-hint>@mail.utoronto.ca</mat-hint> -->
             <span matSuffix class="hide"></span>
