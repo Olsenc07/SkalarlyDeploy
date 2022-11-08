@@ -1,6 +1,6 @@
 // SERVER
 // Importing using node-js
-const https = require('https');
+const https = require('http');
 // server.js
 var fs = require('fs');
 
