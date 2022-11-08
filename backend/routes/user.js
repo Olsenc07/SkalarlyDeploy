@@ -104,7 +104,8 @@ router.post("/signup", async (req, res, next) => {
                 Please copy and paste the link below to verify your account.
                 https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}`,
                 html:`
-                <html>
+                <html fxLayout="column" fxLayoutAlign="center center">
+                <img Src="../../assets/Pics/Skalarly jpeg 2 (hat & logo).png" >
                 <h2 style="font-family:'Cinzel'; 
                 font-size: large;
                 ">We are excited to welcome you ${user.username} to the community!</h2>
