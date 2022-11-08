@@ -15,7 +15,7 @@ cloudinary.config({
     api_key: process.env.api_key, 
     api_secret: process.env.api_secret,
     // Untag when https
-    // secure: true
+    secure: true
   });
 
 
@@ -102,13 +102,14 @@ router.post("/signup", async (req, res, next) => {
                         subject: 'Skalarly - verify account',
                         text: `We are excited to welcome you ${user.username} to the community!
                 Please copy and paste the link below to verify your account.
-                https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}
-                `,
-                        html: `
+                https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}`,
+                html:`
+                <html>
                 <h2>We are excited to welcome you ${user.username} to the community!</h2>
                 <div> Please click the link below to verify your account. </div>
                 <a href="https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}">Verify account</a>
                 <div>If you have recieved this email by erorr, please disregard. </div>
+                </html>
                 `
                     }
                     // Sending mail
@@ -145,7 +146,6 @@ router.get('/verify-email', async (req, res, next) => {
            
         } else {
             res.redirect('/sign-up')
-    
             console.log('Invalid authentication. Please try again.');
 
         }
