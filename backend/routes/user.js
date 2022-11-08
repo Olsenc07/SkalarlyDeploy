@@ -105,10 +105,17 @@ router.post("/signup", async (req, res, next) => {
                 https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}`,
                 html:`
                 <html>
-                <h2>We are excited to welcome you ${user.username} to the community!</h2>
-                <div> Please click the link below to verify your account. </div>
-                <a href="https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}">Verify account</a>
-                <div>If you have recieved this email by erorr, please disregard. </div>
+                <h2 style="font-family:'Cinzel'; 
+                font-size: large;
+                ">We are excited to welcome you ${user.username} to the community!</h2>
+                <div style="font-family:'Poppins';
+                font-size: medium;"> Please click the link below to verify your account. </div>
+                <mat-chip-list>
+                <mat-chip color="primary" href="https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}">Verify Account</mat-chip>
+                </mat-chip-list>
+                <div style="font-family:'Poppins';
+                font-size: small;
+                ">If you have recieved this email by erorr, please disregard. </div>
                 </html>
                 `
                     }
