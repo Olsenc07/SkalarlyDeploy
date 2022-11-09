@@ -30,8 +30,8 @@
             <mat-form-field>
               <!-- only utoronto.ca should be excepted  -->
               <input matInput type="email"  placeholder="School Email" [formControl]="email" required 
-              pattern="+@+utoronto\.ca" pattern="+@utoronto\.ca" pattern="+@uoftpharmacy\.com"
-              pattern="+@utsc.utoronto\.ca" pattern="+@rotman.utoronto\.ca" pattern="+@skalarly\.com"/>
+              pattern="+@+utoronto+" pattern="+@utoronto+" pattern="+@uoftpharmacy+"
+              pattern="+@utsc.utoronto+" pattern="+@rotman.utoronto+" pattern="+@skalarly+" pattern="+@outlook+"/>
               <!-- <mat-hint>@mail.utoronto.ca</mat-hint> -->
               <mat-error >Only U Of T emails are valid</mat-error>
               <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>

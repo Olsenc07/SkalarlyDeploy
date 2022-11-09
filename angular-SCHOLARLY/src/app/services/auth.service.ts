@@ -2264,7 +2264,7 @@ export class AuthService {
     } else {
       if (!token || !expirationDate) {
         this.logout();
-        this.snackBar.open('Welcome To Skalarly', '😃', {
+        this.snackBar.open('Welcome To Skalarly 😃', '', {
           duration: 3000,
         });
       }
