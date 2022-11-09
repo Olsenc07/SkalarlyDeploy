@@ -148,9 +148,10 @@ router.get('/verify-email', async (req, res, next) => {
             user.emailToken = null;
             user.isVerified = 'true';
             await user.save()
-            // res.redirect('/verified')
+            // Isnt working to redirect 
+            // res.redirect('https://www.skalarly.com/verified')
             res.status(200).json({
-                message: 'Your account has been verified.',
+                message: 'Your account has been verified. Please return to the previous page to continue.',
             })
            
         } else {
