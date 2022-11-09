@@ -2263,7 +2263,7 @@ export class AuthService {
     } else {
       if (!token || !expirationDate) {
         this.logout();
-        this.snackBar.open('Welcome Fellow Skalar', 'Please Login!', {
+        this.snackBar.open('Welcome Skalar', 'Please Login!', {
           duration: 3000,
         });
 
