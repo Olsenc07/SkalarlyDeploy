@@ -62,7 +62,7 @@ export class AuthService {
         error: (error) => {
           this.authStatusListener.next(false);
           this.snackBar
-            .open('Email or Username is already taken', 'Retry!')
+            .open('Click Here', 'Retry!')
             .afterDismissed()
             .subscribe(() => {
               // window.location.reload();
