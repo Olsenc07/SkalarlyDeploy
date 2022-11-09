@@ -62,9 +62,9 @@ export class AuthService {
         error: (error) => {
           // this.router.navigate(['/sign-up']);
           this.authStatusListener.next(false);
-          // this.snackBar.open('Email or Username is already taken', 'Retry!', {
-          //   duration: 5000,
-          // });
+          this.snackBar.open('Email or Username is already taken', 'Retry!', {
+            duration: 5000,
+          });
         },
       });
   }
