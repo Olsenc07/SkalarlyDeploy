@@ -101,7 +101,7 @@ router.post("/signup", async (req, res, next) => {
                         replyTo: 'Do not reply',
                         subject: 'Skalarly - verify account',
                         text: `We are excited to welcome you ${user.username} to the community!
-                Please copy and paste the link below to verify your account.
+                Please copy and paste the link below to verify your account. Then return to the original page and continue to login.
                 https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}`,
                 html:`
                 <html fxLayout="column" fxLayoutAlign="center center">
@@ -109,7 +109,7 @@ router.post("/signup", async (req, res, next) => {
                 font-size: large;
                 ">We are excited to welcome you ${user.username} to the community!</h2>
                 <div style="font-family:'Poppins';
-                font-size: medium;"> Please click the link below to verify your account. </div>
+                font-size: medium;"> Please click the link below to verify your account. Then return to the original page and continue to login. </div>
              
                 <a href="https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}">Verify Email</a>
                
@@ -149,10 +149,10 @@ router.get('/verify-email', async (req, res, next) => {
             user.isVerified = 'true';
             await user.save()
             // Isnt working to redirect 
-            res.redirect('https://www.skalarly.com/verified')
-            // res.status(200).json({
-            //     message: 'Your account has been verified. Please return to the previous page to continue.',
-            // })
+            // res.redirect(`https://www.skalarly.com/verified`)
+            res.status(200).json({
+                message: 'Your account has been verified. Please return to the previous page to continue.',
+            })
            
         } else {
             res.redirect('/sign-up')
