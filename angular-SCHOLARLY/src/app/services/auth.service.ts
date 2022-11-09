@@ -65,7 +65,9 @@ export class AuthService {
             .open('Email or Username is already taken', 'Retry!')
             .afterDismissed()
             .subscribe(() => {
-              window.location.reload();
+              // window.location.reload();
+              // Could make this a bit better but belllow just goes to homepage anyways
+              location.replace('https://www.skalarly.com/sign-up');
             });
         },
       });
