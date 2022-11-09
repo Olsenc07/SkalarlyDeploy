@@ -1930,7 +1930,7 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
                 message: "Non-validated account!",
 
             })
-            console.log('Thats weird...')
+           
         }
 
     }, 
