@@ -110,11 +110,9 @@ router.post("/signup", async (req, res, next) => {
                 ">We are excited to welcome you ${user.username} to the community!</h2>
                 <div style="font-family:'Poppins';
                 font-size: medium;"> Please click the link below to verify your account. </div>
-                <mat-chip-list>
-                <mat-chip color="primary">
+             
                 <a href="https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}">Verify Email</a>
-                </mat-chip>
-                </mat-chip-list>
+               
                 <div style="font-family:'Poppins';
                 font-size: small;
                 ">If you have recieved this email by erorr, please disregard. </div>
