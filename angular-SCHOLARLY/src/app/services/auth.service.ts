@@ -65,7 +65,6 @@ export class AuthService {
           // this.snackBar.open('Email or Username is already taken', 'Retry!', {
           //   duration: 5000,
           // });
-          window.location.replace('https://www.skalarly.com/sign-up');
         },
       });
   }
