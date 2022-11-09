@@ -148,8 +148,10 @@ router.get('/verify-email', async (req, res, next) => {
             user.emailToken = null;
             user.isVerified = 'true';
             await user.save()
-            res.redirect('/verified')
-            res.status(200)
+            // res.redirect('/verified')
+            res.status(200).json({
+                message: 'Your account has been verified.',
+            })
            
         } else {
             res.redirect('/sign-up')
