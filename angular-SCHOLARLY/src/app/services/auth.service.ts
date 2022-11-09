@@ -61,7 +61,7 @@ export class AuthService {
         },
         error: (error) => {
           this.authStatusListener.next(false);
-          this.snackBar.open('Email or Username is already taken', 'Retry!!', {
+          this.snackBar.open('Email or Username is already taken', 'Retry!', {
             duration: 3000,
           });
           this.router.navigate(['/sign-up']);
@@ -2254,17 +2254,15 @@ export class AuthService {
     const userId = localStorage.getItem('userId');
     if (expirationDate === '0') {
       this.logout();
-      this.snackBar.open('Validation expired', 'Please relogin!', {
+      this.snackBar.open('Validation Expired', 'Please Relogin!', {
         duration: 3000,
       });
     } else {
       if (!token || !expirationDate) {
         this.logout();
-        this.snackBar.open('Welcome Skalar', 'Please Login!', {
+        this.snackBar.open('Welcome To Skalarly', 'Please Login!', {
           duration: 3000,
         });
-
-        return;
       }
       return {
         token,
