@@ -61,14 +61,16 @@ export class AuthService {
         },
         error: (error) => {
           this.authStatusListener.next(false);
-          this.router.navigate(['/sign-up']).then((navigated: boolean) => {
-            if (navigated) {
-              this.snackBar.open(
-                'Email or Username is already taken',
-                'Retry!'
-              );
-            }
-          });
+          this.router
+            .navigate(['https://www.skalarly.com/sign-up'])
+            .then((navigated: boolean) => {
+              if (navigated) {
+                this.snackBar.open(
+                  'Email or Username is already taken',
+                  'Retry!'
+                );
+              }
+            });
         },
       });
   }
