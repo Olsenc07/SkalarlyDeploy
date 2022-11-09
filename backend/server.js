@@ -1,8 +1,8 @@
 // SERVER
 // Importing using node-js
-const https = require('http');
+const https = require('https');
 // server.js
-var fs = require('fs');
+
 
 /**
  * Required External Modules
