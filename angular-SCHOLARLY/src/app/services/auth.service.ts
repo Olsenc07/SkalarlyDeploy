@@ -60,11 +60,11 @@ export class AuthService {
           );
         },
         error: (error) => {
+          this.router.navigate(['/sign-up']);
           this.authStatusListener.next(false);
           this.snackBar.open('Email or Username is already taken', 'Retry!', {
             duration: 3000,
           });
-          this.router.navigate(['/sign-up']);
         },
       });
   }
