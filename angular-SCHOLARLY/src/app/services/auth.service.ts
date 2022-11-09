@@ -60,7 +60,8 @@ export class AuthService {
           );
         },
         error: (error) => {
-          this.router.navigate(['/sign-up']);
+          // this.router.navigate(['/sign-up']);
+          location.reload();
           this.authStatusListener.next(false);
           this.snackBar.open('Email or Username is already taken', 'Retry!', {
             duration: 3000,
