@@ -62,7 +62,7 @@ export class AuthService {
         error: (error) => {
           this.authStatusListener.next(false);
           this.snackBar
-            .open('Click Here', 'Retry!')
+            .open('Click Here', 'Retry')
             .afterDismissed()
             .subscribe(() => {
               // window.location.reload();
@@ -2258,13 +2258,13 @@ export class AuthService {
     const userId = localStorage.getItem('userId');
     if (expirationDate === '0') {
       this.logout();
-      this.snackBar.open('Validation Expired', 'Please Relogin!', {
+      this.snackBar.open('Validation Expired', 'Please Relogin', {
         duration: 3000,
       });
     } else {
       if (!token || !expirationDate) {
         this.logout();
-        this.snackBar.open('Welcome To Skalarly', 'Please Login!', {
+        this.snackBar.open('Welcome To Skalarly', 'Please Login', {
           duration: 3000,
         });
       }
@@ -2278,7 +2278,7 @@ export class AuthService {
 
   // Reset Password
   resetPassword(email: string): any {
-    this.snackBar.open('Check your email to reset your password.', 'Will do!');
+    this.snackBar.open('Check your email to reset your password.', 'Will do');
     const authData: AuthData = { email };
     this.http
       .post('https://www.skalarly.com/api/user/forgot', authData)
@@ -2299,7 +2299,7 @@ export class AuthService {
         next: () => {
           const snackBarRef = this.snackBar.open(
             'Password has been changed',
-            'Login!!',
+            'Login',
             {
               duration: 2000,
             }
