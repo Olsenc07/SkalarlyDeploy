@@ -1036,7 +1036,8 @@ width: 100%;
 .modal-content, #caption { 
   animation-name: zoom;
   animation-duration: 0.6s;
-  margin-bottom: 2%;
+  // was 2% below
+  margin-bottom: 12%;
 }
 
 @keyframes zoom {
