@@ -86,15 +86,12 @@ router.get("/mutualFollow", async(req, res, next) => {
     await Follow.find(
          {usernameFollower: req.query.username}
          )
-   .then(follows => {
-       console.log('test 4_', follows)
-   
+   .then(follows => {   
        res.status(200).json({
            message: 'Follows fetched succesfully!',
            messages: follows
        });
    })
-
    .catch(err => {
        return res.status(401).json({
            message: "Invalid following error!",
@@ -144,8 +141,6 @@ router.get("/followerInfo", async(req, res, next) => {
 
      Follow.find({Following: user.username})
     .then(follows => {
-        console.log('test 2', follows)
-
         res.status(200).json({
             message: 'Follows fetched succesfully!',
             messages: follows

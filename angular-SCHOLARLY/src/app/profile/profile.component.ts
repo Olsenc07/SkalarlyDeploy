@@ -279,7 +279,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.user = params.id;
       const FollowingId = this.user;
       this.followService.postInfoFollow(this.userId, username, FollowingId);
-      console.log('this', FollowingId);
     });
   }
   onUnfololow(followId: string): any {
@@ -319,8 +318,6 @@ export class BioComponent implements OnInit {
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
-
-        console.log('infos', this.infos);
       });
   }
 }
