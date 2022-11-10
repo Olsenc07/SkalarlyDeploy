@@ -244,12 +244,21 @@ router.post('/forgot', async (req, res) => {
         If you have recieved this email by erorr, please disregard.
         `,
             html: `
-        <h2>Hello ${user.username} we hear you forgot your password.</h2>
-        <div> Here is your reset code. Copy this and keep it a secret! </div>
+            <html fxLayout="column" fxLayoutAlign="center center">
+        <h2 style="font-family:'Cinzel'; 
+        font-size: large;
+        ">Hello ${user.username} we hear you forgot your password.</h2>
+        <div style="font-family:'Poppins';
+        font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
         ${user.password}
-        <div> Now follow the below link </div>
+        <div style="font-family:'Poppins';
+        font-size: medium;"> Now follow the link below </div>
        <a href="https://www.skalarly.com/api/user/reset-password">Follow link</a>
-        <div>If you have recieved this email by erorr, please disregard. </div>
+        <div style="font-family:'Poppins';
+        font-size: small;
+        ">If you have recieved this email by erorr, please disregard. </div>
+        </html>
+
         `
         }
         // Sending mail
@@ -271,10 +280,10 @@ router.post('/forgot', async (req, res) => {
 router.get('/reset-password', async (req, res, next) => {
  
         res.redirect('/resetPassword')
-        .then(() => {
-            res.status(200)
-            console.log('Reset password redirect!')
-        })
+        
+        res.status(200)
+        console.log('Reset password redirect!')
+        
         // const token = req.query.token;
         // const user = await User.findOne( {password: token});
 
