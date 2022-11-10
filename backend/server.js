@@ -47,17 +47,17 @@ const privateVapidKey = process.env.private;
  */
  const app = express();
 //  Force http requests to https
-//  app.use('/',(req,res) => {
-//     console.log('gst chase',req.get('X-Forwarded-Proto'))
-//     if (req.protocol === 'http') {
-//         res.redirect(301,'https://' +
-//     req.get('host') + req.originalUrl)
+ app.use('/',(req,res) => {
+    console.log('gst chase',req.get('X-Forwarded-Proto'))
+    if (req.protocol === 'http') {
+        res.redirect(301,'https://' +
+    req.get('host') + req.originalUrl)
     
-// }else{
-//     console.log('your already safe')
+}else{
+    console.log('your already safe')
     
-// }
-// })
+}
+})
  // Subscribe route for webpush 
 app.post('/subscribe', (req, res) => {
     // Get pushSubscription object
@@ -186,9 +186,9 @@ app.use("/api/follow", followRoutes);
  */
  app.use(express.static('/app/angular-SCHOLARLY/static'))
 
- app.get("/", (req, res) => {
-         res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
-})
+//  app.get("/", (req, res) => {
+//          res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
+// })
 app.get('*', (req, res, next) => {
     res.sendFile('/app/angular-SCHOLARLY/static/index.html')
 
