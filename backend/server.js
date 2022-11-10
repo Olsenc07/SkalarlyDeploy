@@ -173,18 +173,16 @@ app.use("/api/follow", followRoutes);
  app.use(express.static('/app/angular-SCHOLARLY/static'))
 
  app.get("/", (req, res) => {
-         res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
+    if (req.protocol == 'http') {
+        res.redirect('https://' +
+        req.get('host') + req.originalUrl)
+        console.log('redirected to the safe zone')
+}
+        //  res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
 })
 app.get('*', (req, res, next) => {
-        if (req.protocol == 'http') {
-            res.redirect('https://' +
-            req.get('host') + req.originalUrl)
-            // res.sendFile('/app/angular-SCHOLARLY/static/index.html')
-            console.log('redirected to the safe zone')
-}else{
-    console.log('Your already safe')
+res.sendFile('/app/angular-SCHOLARLY/static/index.html')
 
-}
 })
 
 // Express
