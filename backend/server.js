@@ -47,17 +47,17 @@ const privateVapidKey = process.env.private;
  */
  const app = express();
 //  Force http requests to https
- app.use('/',(req,res) => {
-    console.log('gst chase',req.get('X-Forwarded-Proto'))
-    if (req.protocol === 'http') {
-        res.redirect('https://' +
-    req.get('host') + req.originalUrl)
+//  app.use('/',(req,res) => {
+//     console.log('gst chase',req.get('X-Forwarded-Proto'))
+//     if (req.protocol === 'http') {
+//         res.redirect(301,'https://' +
+//     req.get('host') + req.originalUrl)
     
-}else{
-    console.log('your already safe')
+// }else{
+//     console.log('your already safe')
     
-}
-})
+// }
+// })
  // Subscribe route for webpush 
 app.post('/subscribe', (req, res) => {
     // Get pushSubscription object
@@ -153,7 +153,7 @@ mongoose.connect(process.env.mongodb)
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
-app.use(express.static('build'))
+app.use(express.static('build'));
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
