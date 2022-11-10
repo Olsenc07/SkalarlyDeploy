@@ -180,6 +180,7 @@ app.get('*', (req, res) => {
         if (req.protocol == 'http') {
             res.redirect('https://' +
             req.get('host') + req.originalUrl) 
+            console.log('redirected to the safe zone')
         }
 
 })
