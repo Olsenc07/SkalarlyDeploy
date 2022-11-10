@@ -47,19 +47,17 @@ const privateVapidKey = process.env.private;
  */
  const app = express();
 //  Force http requests to https
-const forceHTTPS = require("expressjs-force-https").forceHTTPS;
- app.use(forceHTTPS);
-//  app.use('/',(req,res) => {
-//     console.log('gst chase',req.get('X-Forwarded-Proto'))
-//     if (req.protocol === 'http') {
-//         res.redirect('https://' +
-//     req.get('host') + req.originalUrl)
+ app.use('/',(req,res) => {
+    console.log('gst chase',req.get('X-Forwarded-Proto'))
+    if (req.protocol === 'http') {
+        res.redirect('https://' +
+    req.get('host') + req.originalUrl)
     
-// }else{
-//     console.log('your already safe')
+}else{
+    console.log('your already safe')
     
-// }
-// })
+}
+})
  // Subscribe route for webpush 
 app.post('/subscribe', (req, res) => {
     // Get pushSubscription object
