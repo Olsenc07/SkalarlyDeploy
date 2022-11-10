@@ -173,22 +173,21 @@ app.use("/api/follow", followRoutes);
  app.use(express.static('/app/angular-SCHOLARLY/static'))
 
  app.get("/", (req, res) => {
+         res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');
+})
+app.get('*', (req, res) => {
     console.log('hey chaz', req.protocol)
     console.log('sup chaz', req.originalUrl)
 
         if (req.protocol == 'http') {
             res.redirect('https://' +
             req.get('host') + req.originalUrl).then(() => {
-                res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');
+    res.sendFile('/app/angular-SCHOLARLY/static/index.html');
+     
 
             })
 
         }
-    
-
-})
-app.get('*', (req, res) => {
-    res.sendFile('/app/angular-SCHOLARLY/static/index.html');
 })
 
 
