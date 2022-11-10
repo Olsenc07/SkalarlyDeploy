@@ -47,15 +47,12 @@ const privateVapidKey = process.env.private;
  */
  const app = express();
  app.use('/',(req,res,next) => {
-    if (req.protocol == 'http') {
-        res.redirect('https://' +
-        req.get('host') + req.originalUrl)
-        console.log('redirected to the safe zone','https://' +
-        req.get('host') + req.originalUrl)
-        next();
-}else{
+    if (req.protocol === 'https') {
     console.log('your already safe')
-    next();
+        
+}else{
+    res.redirect('https://' +
+    req.get('host') + req.originalUrl)
 }
 })
  // Subscribe route for webpush 
