@@ -176,14 +176,13 @@ app.use("/api/follow", followRoutes);
          res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');
 })
 app.get('*', (req, res) => {
-    console.log('hey chaz', req.protocol)
-    console.log('sup chaz', req.originalUrl)
 
         if (req.protocol == 'http') {
             res.redirect('https://' +
             req.get('host') + req.originalUrl) 
-             res.sendFile('/app/angular-SCHOLARLY/static/index.html');
         }
+        res.sendFile('/app/angular-SCHOLARLY/static/index.html');
+
 })
 
 
