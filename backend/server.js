@@ -181,12 +181,8 @@ app.get('*', (req, res) => {
 
         if (req.protocol == 'http') {
             res.redirect('https://' +
-            req.get('host') + req.originalUrl).then(() => {
-    res.sendFile('/app/angular-SCHOLARLY/static/index.html');
-     
-
-            })
-
+            req.get('host') + req.originalUrl) 
+             res.sendFile('/app/angular-SCHOLARLY/static/index.html');
         }
 })
 
