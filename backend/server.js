@@ -46,13 +46,14 @@ const privateVapidKey = process.env.private;
  * App Variables
  */
  const app = express();
- app.use('/',(req,res,next) => {
-    if (req.protocol === 'https') {
-    console.log('your already safe')
-        
-}else{
-    res.redirect('https://' +
+ app.use('/',(req,res) => {
+    if (req.get('X-Forwarded-Proto')!='https') {
+        res.redirect('https://' +
     req.get('host') + req.originalUrl)
+    
+}else{
+    console.log('your already safe')
+    
 }
 })
  // Subscribe route for webpush 
