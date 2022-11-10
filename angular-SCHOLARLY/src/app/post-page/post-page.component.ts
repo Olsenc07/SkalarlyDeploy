@@ -297,13 +297,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.event.value,
       this.form.get('upload').value
     );
-    this.router
-      .navigate(['/main/:'], {
-        queryParams: { category: this.postLocation.value },
-      })
-      .then(() => {
-        location.reload();
-      });
+    this.router.navigate(['/main/:'], {
+      queryParams: { category: this.postLocation.value },
+    });
 
     // this.router.navigate(['/profile']);
   }

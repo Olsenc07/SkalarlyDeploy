@@ -362,7 +362,13 @@ export class PostService {
           this.posts.push(postId);
           // this.posts.unshift(postId);
           this.postsUpdated.next([...this.posts]);
+          location.reload();
           this.snackBar.open('Your post added!', 'Yay!', {
+            duration: 3000,
+          });
+        },
+        error: (err) => {
+          this.snackBar.open('Your post failed to add!', 'Try again', {
             duration: 3000,
           });
         },
