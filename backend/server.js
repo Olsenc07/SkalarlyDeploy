@@ -69,6 +69,8 @@ app.post('/subscribe', (req, res) => {
 //    };
    
  const server = https.createServer(app)
+  
+
  const port = process.env.PORT || 3000;
 
 
@@ -143,7 +145,16 @@ app.use(express.static('build'))
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
+app.use((req,res,) => {
+    if (req.protocol == 'http') {
+        res.redirect('https://' +
+        req.get('host') + req.originalUrl)
+        console.log('redirected to the safe zone')
+}else{
+    console.log('your already safe')
 
+}
+})
 
 
 
@@ -173,16 +184,10 @@ app.use("/api/follow", followRoutes);
  app.use(express.static('/app/angular-SCHOLARLY/static'))
 
  app.get("/", (req, res) => {
-  
          res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
 })
 app.get('*', (req, res, next) => {
-    if (req.protocol == 'http') {
-        res.redirect('https://' +
-        req.get('host') + req.originalUrl)
-        console.log('redirected to the safe zone')
-}
-// res.sendFile('/app/angular-SCHOLARLY/static/index.html')
+res.sendFile('/app/angular-SCHOLARLY/static/index.html')
 
 })
 
