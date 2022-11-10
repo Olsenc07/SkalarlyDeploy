@@ -145,14 +145,17 @@ app.use(express.static('build'))
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
-app.use('/',(req,res,) => {
+app.use('/',(req,res,next) => {
     if (req.protocol == 'http') {
+        res.setHeader("Access-Control-Allow-Headers", "X-Forwarded-Proto");
         res.redirect('https://' +
         req.get('host') + req.originalUrl)
         console.log('redirected to the safe zone','https://' +
         req.get('host') + req.originalUrl)
+        next();
 }else{
     console.log('your already safe')
+    next();
 
 }
 })
