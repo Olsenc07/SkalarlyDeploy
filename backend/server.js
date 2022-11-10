@@ -37,10 +37,6 @@ const privateVapidKey = process.env.private;
 
 
 
- 
-
-
-
 
 /**
  * App Variables
@@ -157,6 +153,9 @@ app.use(express.static('build'));
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
+app.use('/worker.js', express.static('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/worker.js'));
+
+
 
 
 
