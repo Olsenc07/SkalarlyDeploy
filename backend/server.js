@@ -145,11 +145,12 @@ app.use(express.static('build'))
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
-app.use((req,res,) => {
+app.use('/',(req,res,) => {
     if (req.protocol == 'http') {
         res.redirect('https://' +
         req.get('host') + req.originalUrl)
-        console.log('redirected to the safe zone')
+        console.log('redirected to the safe zone','https://' +
+        req.get('host') + req.originalUrl)
 }else{
     console.log('your already safe')
 
@@ -187,7 +188,7 @@ app.use("/api/follow", followRoutes);
          res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
 })
 app.get('*', (req, res, next) => {
-res.sendFile('/app/angular-SCHOLARLY/static/index.html')
+    res.sendFile('/app/angular-SCHOLARLY/static/index.html')
 
 })
 
