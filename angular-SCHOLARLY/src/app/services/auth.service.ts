@@ -2142,7 +2142,7 @@ export class AuthService {
           this.token = token;
           if (token) {
             this.router.navigate(['/search']);
-            this.snackBar.open('Welcome Fellow Skalar!', 'Thanks! ', {
+            this.snackBar.open('Welcome Fellow Skalar!', '🎓', {
               duration: 3000,
             });
             const expiresInDuration = response.expiresIn;
