@@ -363,12 +363,12 @@ export class PostService {
           // this.posts.unshift(postId);
           this.postsUpdated.next([...this.posts]);
           location.reload();
-          this.snackBar.open('Your post added!', 'Yay!', {
+          this.snackBar.open('Post added', 'Yay!', {
             duration: 3000,
           });
         },
         error: (err) => {
-          this.snackBar.open('Your post failed to add!', 'Try again', {
+          this.snackBar.open('Post failed to add!', 'Try again', {
             duration: 3000,
           });
         },
@@ -383,6 +383,9 @@ export class PostService {
         const updatedPosts = this.posts.filter((post) => post.id !== postId);
         this.posts = updatedPosts;
         this.postsUpdated.next([...this.posts]);
+        this.snackBar.open('Post deleted', '🗑', {
+          duration: 3000,
+        });
       });
   }
 }

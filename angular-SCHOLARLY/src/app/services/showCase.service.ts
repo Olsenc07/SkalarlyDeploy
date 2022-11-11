@@ -91,7 +91,7 @@ export class ShowCaseService {
           // postData.id = id_;
           this.showCases.push(postId);
           this.postsUpdated.next([...this.showCases]);
-          this.snackBar.open('Your showcase added!', 'Yay!', {
+          this.snackBar.open('Showcase added', 'Yay!', {
             duration: 3000,
           });
         },
@@ -108,7 +108,7 @@ export class ShowCaseService {
         );
         this.showCases = updatedPosts;
         this.postsUpdated.next([...this.showCases]);
-        this.snackBar.open('Your showcase deleted!', 'Thanks!', {
+        this.snackBar.open('Showcase deleted', '🗑', {
           duration: 3000,
         });
       });

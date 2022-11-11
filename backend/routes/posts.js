@@ -405,7 +405,7 @@ router.delete("/showCases/:id", checkAuth, async(req, res, next ) => {
     })
     showCase.deleteOne({_id: req.params.id}).then(result => {
         if (result){
-        res.status(200).json({message: 'showCase deleted!!'});
+        res.status(200);
         } else {
             res.status(401).json({message: 'Not authorized'});
         }
