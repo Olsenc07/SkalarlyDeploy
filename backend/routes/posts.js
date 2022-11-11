@@ -395,6 +395,7 @@ router.post("/showCases",
 
 // showCase deleting
 router.delete("/showCases/:id", checkAuth, async(req, res, next ) => {
+    console.log('cereal', req.params.id)
    await showCase.findOne({Creator: req.params.id})
    .then(result => {
     console.log('meeee', result)

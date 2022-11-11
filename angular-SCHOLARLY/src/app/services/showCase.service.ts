@@ -99,7 +99,7 @@ export class ShowCaseService {
   }
 
   deleteShowCase(postId: string): any {
-    // console.log('hey chase postId', postId);
+    console.log('hey chase postId', postId);
     this.http
       .delete('https://www.skalarly.com/api/posts/showCases/' + postId)
       .subscribe(() => {
