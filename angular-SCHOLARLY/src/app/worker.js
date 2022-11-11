@@ -1,5 +1,3 @@
-// const express = require('express');
-// const router = express.Router();
 self.addEventListener('install', event => {
     console.log("Service Worker installing.", event);
   });
@@ -9,6 +7,10 @@ self.addEventListener('install', event => {
     return self.clients.claim();
   });
 
+  self.addEventListener('fetch', event => {
+    console.log("Service Worker fetching.", event);
+    event.respondWith(fetch(event.request));
+  });
 // self.addEventListener('push', e => {
 // const data = e.data.json();
 // console.log('Push Recieved...');
