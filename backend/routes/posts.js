@@ -185,7 +185,6 @@ router.post("",
 router.delete("/:id", checkAuth, async(req, res, next ) => {
    await Post.findOne({_id: req.params.id})
    .then(result => {
-    console.log('all life long',result)
     if(result.ImagePath) {
     cloudinary.uploader.destroy(result.cloudinary_id)
     }

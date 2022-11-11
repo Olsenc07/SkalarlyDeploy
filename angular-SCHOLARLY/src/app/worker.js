@@ -1,14 +1,12 @@
 // const express = require('express');
 // const router = express.Router();
-
-console.log("Service Worker installing....");
-
 self.addEventListener('install', event => {
-    console.log("Service Worker installing.");
+    console.log("Service Worker installing.", event);
   });
   
   self.addEventListener('activate', event => {
-    console.log("Service Worker activating.");
+    console.log("Service Worker activating.", event);
+    return self.clients.claim();
   });
 
 // self.addEventListener('push', e => {
