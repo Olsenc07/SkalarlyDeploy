@@ -200,6 +200,7 @@ h4:focus {
     padding: 1%;
     justify-content: center;
     border-color: azure;
+    border-radius: 25px;
   }
   .search-box__input {
     // transition: right, 0.7s;
@@ -226,6 +227,7 @@ h4:focus {
     display: flex;
     color: rgb(126, 113, 113);
     font-family: 'Poppins', sans-serif;
+  
   }
 }
 .text{

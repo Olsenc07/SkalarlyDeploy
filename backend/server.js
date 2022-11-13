@@ -188,7 +188,17 @@ app.use("/api/follow", followRoutes);
  app.get("/", (req, res) => {
          res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
 })
-app.get('*', (req, res, next) => {
+function requireHTTPS(req, res, next) {
+    // The 'x-forwarded-proto' check is for Heroku
+    if (
+      !req.secure &&
+      req.get("x-forwarded-proto") !== "https"
+    ) {
+      return res.redirect("https://" + req.get("host") + req.url);
+    }
+    next();
+  }
+app.get('*', requireHTTPS, (req, res, next) => {
     res.sendFile('/app/angular-SCHOLARLY/static/index.html')
 
 })
