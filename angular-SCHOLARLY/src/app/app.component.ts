@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
-
+  public href: string = '';
   // filteredOptions: Observable<string[]>;
   hasQuery = false;
   // socket.io
@@ -93,6 +93,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.href = this.router.url;
+    console.log('daddy dont', this.router.url);
+    // location.reload();
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/worker.js').then(() => {
         console.log('Service worker registered!');
