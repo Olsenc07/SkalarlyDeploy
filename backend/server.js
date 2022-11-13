@@ -185,7 +185,7 @@ app.use("/api/follow", followRoutes);
  */
  app.use(express.static('/app/angular-SCHOLARLY/static'))
 
- app.get("/", (req, res) => {
+ app.get("/", requireHTTPS, (req, res) => {
          res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
 })
 function requireHTTPS(req, res, next) {
