@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
     console.log('mairyn', url.protocol);
     if (mairyn === 'http:') {
       // Goes to https
-      const myURL = new URL('url');
+      const myURL = new URL(url);
       myURL.protocol = 'https';
       console.log('afte change', myURL.href);
     }
