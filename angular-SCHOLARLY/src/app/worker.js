@@ -1,4 +1,4 @@
-document.addEventListener('install', event => {
+self.addEventListener('install', event => {
     console.log("Service Worker installing.", event);
   });
   

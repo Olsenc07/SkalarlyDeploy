@@ -33,7 +33,7 @@ const privateVapidKey = process.env.private;
  const Msg = require('/app/backend/models/messages')
  const formatMessage = require('/app/angular-SCHOLARLY/src/app/utils/messages')
  const User = require('/app/backend/models/user');
- const serviceWorkerRegister = require('/app/angular-SCHOLARLY/src/worker');
+ const serviceWorkerRegister = require('/app/angular-SCHOLARLY/src/app/worker');
 
 
 
@@ -196,7 +196,7 @@ app.use('/api/worker', serviceWorkerRegister);
          res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
 })
 app.get("/worker.js", (req, res) => {
-    res.sendFile( '/app/angular-SCHOLARLY/src/worker.js');
+    res.sendFile( '/app/angular-SCHOLARLY/src/app/worker.js');
   });
 app.get('*', requireHTTPS, (req, res, next) => {
     res.sendFile('/app/angular-SCHOLARLY/static/index.html')
