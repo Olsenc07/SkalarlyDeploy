@@ -100,7 +100,8 @@ export class AppComponent implements OnInit {
     const mairyn = url.protocol;
     console.log('mairyn', url.protocol);
     if (mairyn === 'http:') {
-      location.reload();
+      // Goes to https
+      window.location.reload();
     }
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/worker.js').then(() => {
