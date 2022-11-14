@@ -103,7 +103,6 @@ export class AppComponent implements OnInit {
       // Goes to https
       const myURL = new URL(url);
       myURL.protocol = 'https:';
-      console.log('after change', myURL.href);
       location.href = myURL.href;
     }
     if ('serviceWorker' in navigator) {
