@@ -96,9 +96,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.href = this.router.url;
-    console.log('daddy dont', this.router.url);
-    const url = new URL('');
+    const url = new URL(window.location.href);
     console.log('mairyn', url.protocol);
     // if (this.href === '/') {
     // location.reload();
