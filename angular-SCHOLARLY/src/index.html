@@ -40,16 +40,16 @@
     })
     function askForNotificationPermission(){
     Notification.requestPermission(function(result){
-      console.log('tell the world i have arrived',result);
+      console.log('Permission granted',result);
       if (result !== 'granted'){
-      console.log('no permission granted');
+      console.log('Permission not granted');
 
       }
     })
   }
     if('Notification' in window){
     console.log('money')
-window.addEventListener('click', askForNotificationPermission);
+window.addEventListener('load', askForNotificationPermission);
 console.log('money2')
 
   }
