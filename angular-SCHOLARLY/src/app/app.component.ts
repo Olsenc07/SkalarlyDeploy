@@ -102,8 +102,9 @@ export class AppComponent implements OnInit {
     if (mairyn === 'http:') {
       // Goes to https
       const myURL = new URL(url);
-      myURL.protocol = 'https';
-      console.log('afte change', myURL.href);
+      myURL.protocol = 'https:';
+      console.log('after change', myURL.href);
+      window.location.reload()
     }
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('app/worker.js').then(() => {
