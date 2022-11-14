@@ -74,8 +74,8 @@ return;
         ),
       };
       const subscription =  reg.pushManager.subscribe(subscribeOptions);
-    
-    return swreg.pushManager.getSubscription(subscribeOptions);
+    console.log('subscription',subscription)
+    // return swreg.pushManager.getSubscription(subscribeOptions);
   }).then(function (pushSubscription) {
       console.log(
         'Received PushSubscription: ',
@@ -101,7 +101,7 @@ return;
     // Get notifcation permission
     function askForNotificationPermission(){
     Notification.requestPermission(function(result){
-      console.log('Permission granted',result);
+      console.log('Permission', result);
       if (result !== 'granted'){
       console.log('Permission not granted');
       }
