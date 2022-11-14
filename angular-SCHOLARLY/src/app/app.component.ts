@@ -104,7 +104,6 @@ export class AppComponent implements OnInit {
       myURL.protocol = 'https:';
       location.href = myURL.href;
     }
-  
 
     this.authService.autoAuthUser();
 
