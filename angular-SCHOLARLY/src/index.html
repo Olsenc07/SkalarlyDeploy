@@ -67,17 +67,26 @@ return;
   navigator.serviceWorker.ready
   .then(function(swreg) {
     reg = swreg;
-    return swreg.pushManager.getSubscription();
-  })
+    const subscribeOptions = {
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(
+          process.env.vapidPublic
+        ),
+      };
+      const subscription =  reg.pushManager.subscribe(subscribeOptions);
+    
+    return swreg.pushManager.getSubscription(subscribeOptions);
+  }).then(function (pushSubscription) {
+      console.log(
+        'Received PushSubscription: ',
+        JSON.stringify(pushSubscription),
+      )})
   .then(function(sub) {
     if (sub === null) {
       // Create new subscription
-      var vapidPublicKey ='BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
-      var convertedVapidPublicKey = urlBase64ToUint8Array(vapidPublicKey)
-      reg.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: convertedVapidPublicKey
-      });
+      
+    
+
     }else{
       // We have a subscription
 

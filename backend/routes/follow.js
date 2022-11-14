@@ -3,11 +3,45 @@ const Follow = require('/app/backend/models/follow')
 const express = require('express');
 const userInfo = require('/app/backend/models/userInfo');
 const router = express.Router();
+const webpush = require('web-push');
+publicVapidKey = process.env.vapidPublic;
+privateVapidKey = process.env.vapidPrivate
+// export interface PushSubscription {
+//     endpoint: string;
+//     keys: {
+//         p256dh: string;
+//         auth: string;
+//     };
+// }
+const options = {
+    vapidDetails: {
+        subject: 'mailto:admin@skalarly.com',
+        publicKey: publicVapidKey,
+        privateKey: privateVapidKey,
+    },
+    TTL: 60,
+  };
+  const payload = {
+    notification: {
+      body: 'You will now recieve notifations',
+      icon: '/angular-SCHOLARLY/src/faviconH.ico',
+      image: '../../assets/Pics/Skalarly jpeg 2 (hat & logo).png',
+      vibrate: [100, 50, 100],
+      badge: '/angular-SCHOLARLY/src/faviconH.ico',
+      tag: 'confirm-notification',
+      actions: [
+        {action: 'confirm', title: 'Okay', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+        {action: 'cancel', title: 'Cancel', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+    
+      ]
+    }
+    };
 // post
 router.get("/infoFollow", async(req, res, next) => {
+    const subscription = req.body;
+    console.log('follow occured',subscription)
 await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
-
     userInfo.findOne({username: req.query.username })
     .then( otherUser => {
     User.findOne({username: req.query.FollowingId })
@@ -27,6 +61,12 @@ await userInfo.findOne({Creator: req.query.userId})
                     message: 'Follow succesfully!',
                     messages: createdFollow
                 });
+                webpush.sendNotification(subscription, payload,options)
+                .catch(error => {
+                    console.error(error.stack);
+            })
+                
+                
             })
         })
 
