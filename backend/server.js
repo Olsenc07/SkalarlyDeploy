@@ -196,8 +196,9 @@ app.use("/api/follow", followRoutes);
          res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
 })
 app.get("/worker.js", (req, res) => {
-    res.sendFile( '/app/angular-SCHOLARLY/src/app/worker.js');
+    res.sendFile( '/app/angular-SCHOLARLY/src/worker.js');
   });
+
 app.get('*', requireHTTPS, (req, res, next) => {
     res.sendFile('/app/angular-SCHOLARLY/static/index.html')
 
