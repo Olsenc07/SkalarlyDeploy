@@ -28,6 +28,7 @@
     <script>
       var socket = io.connect();
       if ('serviceWorker' in navigator) {
+        console.log('hey ya')
       navigator.serviceWorker.register('/worker.js').then((registration) => {
         console.log('Service worker registered!');
         console.log(

@@ -152,7 +152,7 @@ app.use(express.static('build'));
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
-app.use('/worker', express.static('/app/angular-SCHOLARLY/src/worker'));
+app.use('/worker', express.static('/app/angular-SCHOLARLY/src/app/worker'));
 
 
 
@@ -195,9 +195,9 @@ app.use('/api/worker.js', serviceWorkerRegister);
  app.get("/", requireHTTPS, (req, res) => {
          res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
 })
-app.get("/worker.js", (req, res) => {
-    res.sendFile( '/app/angular-SCHOLARLY/src/app/worker.js');
-  });
+// app.get("/worker.js", (req, res) => {
+//     res.sendFile( '/app/angular-SCHOLARLY/src/app/worker.js');
+//   });
 app.get('*', requireHTTPS, (req, res, next) => {
     res.sendFile('/app/angular-SCHOLARLY/static/index.html')
 
