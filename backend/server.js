@@ -33,7 +33,7 @@ const privateVapidKey = process.env.private;
  const Msg = require('/app/backend/models/messages')
  const formatMessage = require('/app/angular-SCHOLARLY/src/app/utils/messages')
  const User = require('/app/backend/models/user');
- const serviceWorkerRegister = require('/app/angular-SCHOLARLY/src/app/worker');
+ const serviceWorkerRegister = require('/app/angular-SCHOLARLY/src/worker');
 
 
 
@@ -152,7 +152,7 @@ app.use(express.static('build'));
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
-app.use('/worker', express.static('/app/angular-SCHOLARLY/src/app/worker'));
+app.use('/worker', express.static('/app/angular-SCHOLARLY/src/worker'));
 
 
 
