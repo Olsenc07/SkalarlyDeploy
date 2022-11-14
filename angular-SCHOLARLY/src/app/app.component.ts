@@ -105,7 +105,6 @@ export class AppComponent implements OnInit {
       myURL.protocol = 'https:';
       console.log('after change', myURL.href);
       location.href = myURL.href;
-      window.location.reload();
     }
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('app/worker.js').then(() => {
