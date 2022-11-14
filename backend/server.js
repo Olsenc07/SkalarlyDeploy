@@ -33,8 +33,7 @@ const privateVapidKey = process.env.private;
  const Msg = require('/app/backend/models/messages')
  const formatMessage = require('/app/angular-SCHOLARLY/src/app/utils/messages')
  const User = require('/app/backend/models/user');
-//  const serviceWorkerRegister = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/worker.js');
-
+ const serviceWorkerRegister = require('/app/backend/worker');
 
 
 
@@ -153,9 +152,7 @@ app.use(express.static('build'));
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
-app.use('/worker', express.static('/app/angular-SCHOLARLY/src/app/worker.js'));
-
-
+app.use('/worker', express.static('/app/backend/worker'));
 
 
 
@@ -173,7 +170,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/follow", followRoutes);
-// app.use('/api/serviceWorker', serviceWorkerRegister);
+app.use('/api/worker.js', serviceWorkerRegister);
 
 
 
@@ -198,6 +195,9 @@ app.use("/api/follow", followRoutes);
  app.get("/", requireHTTPS, (req, res) => {
          res.status(200).sendFile('/app/angular-SCHOLARLY/src/app');   
 })
+app.get("/worker.js", (req, res) => {
+    res.sendFile( '/app/angular-SCHOLARLY/src/worker.js');
+  });
 app.get('*', requireHTTPS, (req, res, next) => {
     res.sendFile('/app/angular-SCHOLARLY/static/index.html')
 
