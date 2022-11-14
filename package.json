@@ -8,7 +8,8 @@
     "start": "node /app/backend/server.js ",
     "heroku-postbuild": "cd angular-SCHOLARLY && npm install && npm run build",
     "dev": "nodemon ./backend/server.js",
-    "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points "
+    "postinstall": "ngcc --properties es2015 es5 browser module main --first-only --create-ivy-entry-points ",
+    "web-push": "web-push"
   },
   "keywords": [],
   "author": "",

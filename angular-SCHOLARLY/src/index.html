@@ -39,6 +39,56 @@
         // );
       })}
     })
+
+
+// Web-Push
+// Public base64 to Uint
+function urlBase64ToUint8Array(base64String) {
+    var padding = '='.repeat((4 - base64String.length % 4) % 4);
+    var base64 = (base64String + padding)
+        .replace(/\-/g, '+')
+        .replace(/_/g, '/');
+
+    var rawData = window.atob(base64);
+    var outputArray = new Uint8Array(rawData.length);
+
+    for (var i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+}
+
+
+function configurePushSub(){
+  if(!('serviceWorker' in navigator)){
+return;
+  }
+  var reg;
+  navigator.serviceWorker.ready
+  .then(function(swreg) {
+    reg = swreg;
+    return swreg.pushManager.getSubscription();
+  })
+  .then(function(sub) {
+    if (sub === null) {
+      // Create new subscription
+      var vapidPublicKey ='BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
+      var convertedVapidPublicKey = urlBase64ToUint8Array(vapidPublicKey)
+      reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: convertedVapidPublicKey
+      });
+    }else{
+      // We have a subscription
+
+    }
+  })
+  .then(function(newSub){
+    // save to mongodb
+  })
+}
+
+
     // Get notifcation permission
     function askForNotificationPermission(){
     Notification.requestPermission(function(result){
@@ -47,7 +97,7 @@
       console.log('Permission not granted');
       }
       else{
-        displayConfirmNotification();
+        configurePushSub();
       }
     })
   }

@@ -12,9 +12,50 @@ const https = require('http');
 //  const webpush = require('web-push')
 
 
+const webpush = require('web-push');
+const subscription = {
+  endpoint: '',
+  expirationTime: null,
+  keys: {
+      auth: '',
+      p256dh: '',
+  },
+};
+const payload = {
+notification: {
+  body: 'You will now recieve notifations',
+  icon: '/angular-SCHOLARLY/src/faviconH.ico',
+  image: '../../assets/Pics/Skalarly jpeg 2 (hat & logo).png',
+  vibrate: [100, 50, 100],
+  badge: '/angular-SCHOLARLY/src/faviconH.ico',
+  tag: 'confirm-notification',
+  actions: [
+    {action: 'confirm', title: 'Okay', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+    {action: 'cancel', title: 'Cancel', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
 
-const publicVapidKey = process.env.public ;
-const privateVapidKey = process.env.private;
+  ]
+}
+};
+publicVapidKey = process.env.vapidPublic;
+privateVapidKey = process.env.vapidPrivate
+const options = {
+  vapidDetails: {
+      subject: 'mailto:admin@skalarly.com',
+      publicKey: publicVapidKey,
+      privateKey: privateVapidKey,
+  },
+  TTL: 60,
+};
+
+// send notification
+webpush.sendNotification(subscription, JSON.stringify(payload), options)
+    .then((_) => {
+        console.log('SENT!!!');
+        console.log(_);
+    })
+    .catch((_) => {
+        console.log(_);
+    });
 
 // webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
 
