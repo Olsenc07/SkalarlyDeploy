@@ -104,15 +104,7 @@ export class AppComponent implements OnInit {
       myURL.protocol = 'https:';
       location.href = myURL.href;
     }
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/worker.js').then((registration) => {
-        console.log('Service worker registered!');
-        console.log(
-          'Hooray. Registration successful, scope is:',
-          registration.scope
-        );
-      });
-    }
+  
 
     this.authService.autoAuthUser();
 
