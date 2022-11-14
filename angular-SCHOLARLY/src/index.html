@@ -54,7 +54,17 @@
   function displayConfirmNotification(){
     if('serviceWorker' in navigator){
       var options = {
-      body: 'You will now recieve notifations'
+      body: 'You will now recieve notifations',
+      icon: '/angular-SCHOLARLY/src/faviconH.ico',
+      image: '../../assets/Pics/Skalarly jpeg 2 (hat & logo).png',
+      vibrate: [100, 50, 100],
+      badge: '/angular-SCHOLARLY/src/faviconH.ico',
+      tag: 'confirm-notification',
+      actions: [
+        {action: 'confirm', title: 'Okay', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+        {action: 'cancel', title: 'Cancel', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+
+      ]
   };
       navigator.serviceWorker.ready
       .then(function(swreg) {
