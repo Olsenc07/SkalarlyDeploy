@@ -153,7 +153,7 @@ app.use(express.static('build'));
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
-app.use('/worker', express.static('/app/angular-SCHOLARLY/src/worker.js'));
+app.use('/worker', express.static('/app/angular-SCHOLARLY/worker.js'));
 
 
 
