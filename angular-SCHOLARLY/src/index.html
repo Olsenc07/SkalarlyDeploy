@@ -27,6 +27,7 @@
  
     <script>
       var socket = io.connect();
+      window.addEventListener('load', () => {
       if ('serviceWorker' in navigator) {
         console.log('hey ya')
       navigator.serviceWorker.register('/worker.js')
@@ -36,8 +37,9 @@
           'Hooray. Registration successful, scope is:',
           registration.scope
         );
-      });
-    }
+      })}
+    })
+    
     </script>
 
 
