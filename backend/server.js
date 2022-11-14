@@ -152,7 +152,7 @@ app.use(express.static('build'));
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
-app.use('/worker', express.static('/app/backend/worker'));
+app.use('/worker', express.static('/app/angular-SCHOLARLY/src/worker'));
 
 
 
@@ -170,7 +170,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/follow", followRoutes);
-app.use('/api/worker.js', serviceWorkerRegister);
+app.use('/api/worker', serviceWorkerRegister);
 
 
 
