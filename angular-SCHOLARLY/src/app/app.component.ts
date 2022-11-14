@@ -105,7 +105,7 @@ export class AppComponent implements OnInit {
       location.href = myURL.href;
     }
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('worker.js').then(() => {
+      navigator.serviceWorker.register('/worker.js').then(() => {
         console.log('Service worker registered!');
       });
     }
