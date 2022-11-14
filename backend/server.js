@@ -170,7 +170,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/follow", followRoutes);
-app.use('/api/worker', serviceWorkerRegister);
+app.use('/api/worker.js', serviceWorkerRegister);
 
 
 
