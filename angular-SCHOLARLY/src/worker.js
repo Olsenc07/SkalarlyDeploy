@@ -12,18 +12,11 @@ self.addEventListener('install', event => {
     event.respondWith(fetch(event.request));
   });
 
-  function askForNotificationPermission(){
-    Notification.requestPermission(function(result){
-      console.log('tell the world i have arrived',result);
-      if (result !== 'granted'){
-      console.log('no permission granted');
 
-      }
-    })
-  }
-  if('Notification' in window){
-self.addEventListener('click', askForNotificationPermission);
-  }
+//   if('Notification' in window){
+//     console.log('money')
+// self.addEventListener('click', askForNotificationPermission);
+//   }
 // self.addEventListener('push', e => {
 // const data = e.data.json();
 // console.log('Push Recieved...');

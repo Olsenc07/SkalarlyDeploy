@@ -38,7 +38,19 @@
         // );
       })}
     })
-    
+    function askForNotificationPermission(){
+    Notification.requestPermission(function(result){
+      console.log('tell the world i have arrived',result);
+      if (result !== 'granted'){
+      console.log('no permission granted');
+
+      }
+    })
+  }
+    if('Notification' in window){
+    console.log('money')
+self.addEventListener('click', askForNotificationPermission);
+  }
     </script>
 
 
