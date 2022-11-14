@@ -33,7 +33,7 @@ const privateVapidKey = process.env.private;
  const Msg = require('/app/backend/models/messages')
  const formatMessage = require('/app/angular-SCHOLARLY/src/app/utils/messages')
  const User = require('/app/backend/models/user');
- const serviceWorkerRegister = require('/app/backend/worker');
+ const serviceWorkerRegister = require('/app/angular-SCHOLARLY/src/worker');
 
 
 
