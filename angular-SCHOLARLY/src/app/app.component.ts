@@ -97,16 +97,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const url = new URL(window.location.href);
-    const mairyn = url.protocol;
-    console.log('mairyn', url.protocol);
-    if (mairyn === 'http:') {
+    const notSecure = url.protocol;
+    if (notSecure === 'http:') {
       // Goes to https
       const myURL = new URL(url);
       myURL.protocol = 'https:';
       location.href = myURL.href;
     }
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/worker.js').then(() => {
+      navigator.serviceWorker.register('worker.js').then(() => {
         console.log('Service worker registered!');
       });
     }
