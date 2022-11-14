@@ -52,10 +52,16 @@
     })
   }
   function displayConfirmNotification(){
-    var options = {
+    if('serviceWorker' in navigator){
+      var options = {
       body: 'You will now recieve notifations'
   };
-  new Notification('Successfully subscribed!' );
+      navigator.serviceWorker.ready
+      .then(function(swreg) {
+        swreg.showNotification('Successfully subscribed!', options);
+      });
+    }
+   
 }
     if('Notification' in window){
 window.addEventListener('load', askForNotificationPermission);
