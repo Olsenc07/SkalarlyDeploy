@@ -97,10 +97,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const url = new URL(window.location.href);
+    const mairyn = url.protocol;
     console.log('mairyn', url.protocol);
-    // if (this.href === '/') {
-    // location.reload();
-    // }
+    if (mairyn === 'http:') {
+      location.reload();
+    }
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/worker.js').then(() => {
         console.log('Service worker registered!');
