@@ -14,6 +14,7 @@ self.addEventListener('install', event => {
 
 
 self.addEventListener('notificationclick', function(event) {
+  console.log('know what it is')
   var notification = event.notification;
   var action = event.action;
   console.log(notification);
@@ -31,7 +32,7 @@ self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
 
  
-  const data = event.data.json();
+  const data = event.data;
   self.registration.showNotification(
       data.title,
       {
