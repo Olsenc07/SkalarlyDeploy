@@ -29,10 +29,10 @@ self.addEventListener('notificationclick', function(event) {
 
 self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
-  navigator.serviceWorker.ready.then((registration) => {
+
   console.log('pushinging notifications',registration);
 
-  registration.showNotification('1stPush Notification'
+  showNotification('1stPush Notification'
       // data.title, // title of the notification
       // {
       //     body: "Push notification from section.io", //the body of the push notification
@@ -40,6 +40,14 @@ self.addEventListener('push', (event) => {
       //     icon: "/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg" // icon 
       // }
   );
-  })
+  const data = event.data.json();
+  self.registration.showNotification(
+      data.title,
+      {
+            body: "Push notification from section.io", //the body of the push notification
+            image: "/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png",
+            icon: "/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg" // icon 
+        }
+  );
 });
 
