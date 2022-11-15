@@ -29,9 +29,10 @@ self.addEventListener('notificationclick', function(event) {
 
 self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
+  navigator.serviceWorker.ready.then((registration) => {
+  console.log('pushinging notifications',registration);
 
-  const data = event.data
-  var promise =  self.registration.showNotification('1stPush Notification'
+  registration.showNotification('1stPush Notification'
       // data.title, // title of the notification
       // {
       //     body: "Push notification from section.io", //the body of the push notification
@@ -39,6 +40,6 @@ self.addEventListener('push', (event) => {
       //     icon: "/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg" // icon 
       // }
   );
-  event.waitUntil(promise);
+  })
 });
 
