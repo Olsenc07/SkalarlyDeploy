@@ -63,29 +63,29 @@ function configurePushSub(){
   if(!('serviceWorker' in navigator)){
 return;
   }
-  var reg;
+  var req;
   navigator.serviceWorker.ready
   .then(function(swreg) {
-    reg = swreg;
+    req = swreg;
     const subscribeOptions = {
         userVisibleOnly: true,
         applicationServerKey: urlBase64ToUint8Array(
           'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
         ),
       };
-      const subscription =  reg.pushManager.subscribe(subscribeOptions)
+      req.pushManager.subscribe(subscribeOptions)
+    // sendSubscriptionToBackEnd(subscription)
       .then(
       (pushSubscription) => {
-        console.log('wally',pushSubscription);
-    console.log('subscription',subscription);
-    const subscriptionObject = {
-  endpoint: pushSubscription.endpoint,
-  keys: {
-    p256dh: pushSubscription.getKey('p256dh'),
-    auth: pushSubscription.getKey('auth'),
-  },
-};
-    sendSubscriptionToBackEnd(subscriptionObject);
+        console.log('PushSubscription: ', JSON.stringify(pushSubscription));
+    return pushSubscription;
+//     const subscriptionObject = {
+//   endpoint: pushSubscription.endpoint,
+//   keys: {
+//     p256dh: pushSubscription.getKey('p256dh'),
+//     auth: pushSubscription.getKey('auth'),
+//   },
+// };
       })
 })
 }

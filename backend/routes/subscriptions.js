@@ -14,33 +14,33 @@ privateVapidKey = process.env.vapidPrivate
 router.post("/follow", (req, res, next) => {
     console.log('route made it',req.body)
 
-      var subscription = new Subscription({
-        endpoint: req.body.endpoint,
-        keys: {
-            p256dh: req.body.keys,
-            auth: req.body.auth,
-          },
+    //   var subscription = new Subscription({
+    //     endpoint: req.body.endpoint,
+    //     keys: {
+    //         p256dh: req.body.keys,
+    //         auth: req.body.auth,
+    //       },
       
 
-    })
-    subscription.save()
-    .then( (subscriptionId) => {   
-          res.setHeader('Content-Type', 'application/json');
-          res.send(JSON.stringify({data: {success: true}}));
-        })
-        .catch( (err) => {
-          res.status(500);
-          res.setHeader('Content-Type', 'application/json');
-          res.send(
-            JSON.stringify({
-              error: {
-                id: 'unable-to-save-subscription',
-                message:
-                  'The subscription was received but we were unable to save it to our database.',
-              },
-            }),
-          );
-        });
+    // })
+    // subscription.save()
+    // .then( (subscriptionId) => {   
+    //       res.setHeader('Content-Type', 'application/json');
+    //       res.send(JSON.stringify({data: {success: true}}));
+    //     })
+    //     .catch( (err) => {
+    //       res.status(500);
+    //       res.setHeader('Content-Type', 'application/json');
+    //       res.send(
+    //         JSON.stringify({
+    //           error: {
+    //             id: 'unable-to-save-subscription',
+    //             message:
+    //               'The subscription was received but we were unable to save it to our database.',
+    //           },
+    //         }),
+    //       );
+    //     });
 
 })
 
