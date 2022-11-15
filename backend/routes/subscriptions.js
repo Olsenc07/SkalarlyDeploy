@@ -9,12 +9,14 @@ publicVapidKey = process.env.vapidPublic;
 privateVapidKey = process.env.vapidPrivate
 
 
-router.post("/subscription", (req, res, next) => {
-    var subscription = new Subscription({
-        userId: req.userData.userId,
-        endpoint: ,
+
+router.post("/follow", (req, res, next) => {
+    console.log('route made it')
+    // var subscription = new Subscription({
+    //     userId: req.userData.userId,
+    //     endpoint: ,
 
 
-    })
+    // })
 
 })

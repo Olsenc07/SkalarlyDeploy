@@ -70,6 +70,7 @@ webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapi
  const userRoutes = require('/app/backend/routes/user');
  const messageRoutes = require('/app/backend/routes/messages')
  const followRoutes = require('/app/backend/routes/follow')
+ const subscribeRoutes = require('/app/backend/routes/subscriptions')
 
  const Msg = require('/app/backend/models/messages')
  const formatMessage = require('/app/angular-SCHOLARLY/src/app/utils/messages')
@@ -207,6 +208,8 @@ app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/follow", followRoutes);
+app.use("/api/subscribe", subscribeRoutes);
+
 // app.use('/api/worker.js', serviceWorkerRegister);
 
 
