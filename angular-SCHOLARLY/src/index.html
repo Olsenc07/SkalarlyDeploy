@@ -122,8 +122,7 @@ return;
       }
     })
   }
-  function displayConfirmNotification(){
-    if('serviceWorker' in navigator){
+  function displayConfirmNotification() {
       var options = {
       body: 'You will now recieve notifations',
       icon: '/angular-SCHOLARLY/src/faviconH.ico',
@@ -139,9 +138,10 @@ return;
   };
       navigator.serviceWorker.ready
       .then(function(swreg) {
+        console.log('my hockey')
         swreg.showNotification('Successfully subscribed!', options);
       });
-    }
+    
    
 }
     if('Notification' in window){
