@@ -73,23 +73,19 @@ return;
           'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
         ),
       };
-   const subscription =  req.pushManager.subscribe(subscribeOptions);
-   console.log('N.Y', subscription);
-   console.log('route half way', subscription.pushSubscription);
-   console.log('A.B', subscription.PromiseResult);
-   console.log('B.C', subscription.endpoint);
-   
-  return fetch('https://www.skalarly.com/api/subscribe/follow', {
+ req.pushManager.subscribe(subscribeOptions)
+
+    // sendSubscriptionToBackEnd(subscription)
+      .then(
+      (pushSubscription) => {
+        return fetch('https://www.skalarly.com/api/subscribe/follow', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(subscription),
+    body: JSON.stringify(pushSubscription),
   })
-    // sendSubscriptionToBackEnd(subscription)
-      .then(
-      (pushSubscription) => {
-        console.log('PushSubscription: ', pushSubscription);
+        console.log('PushSubscription: ', pushSubscription.endpoint);
 //     const subscriptionObject = {
 //   endpoint: pushSubscription.endpoint,
 //   keys: {
