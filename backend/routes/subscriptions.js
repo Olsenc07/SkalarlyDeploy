@@ -11,7 +11,7 @@ privateVapidKey = process.env.vapidPrivate
 
 
 
-router.post("/api/subscribe/follow", (req, res, next) => {
+router.post("/follow", (req, res, next) => {
     console.log('route made it')
     // var subscription = new Subscription({
     //     userId: req.userData.userId,
