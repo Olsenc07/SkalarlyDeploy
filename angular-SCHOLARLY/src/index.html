@@ -73,8 +73,12 @@ return;
           'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
         ),
       };
-      const subscription =  reg.pushManager.subscribe(subscribeOptions);
+      const subscription =  reg.pushManager.subscribe(subscribeOptions)
+      .then(
+      (pushSubscription) => {
+        console.log('wally',pushSubscription.endpoint);
     console.log('subscription',subscription)
+      })
     // return swreg.pushManager.getSubscription(subscribeOptions);
   }).then(function (pushSubscription) {
       console.log(
