@@ -75,7 +75,16 @@ return;
       };
    const subscription =  req.pushManager.subscribe(subscribeOptions)
    console.log('brookyln',subscription)
-    sendSubscriptionToBackEnd(subscription)
+   console.log('route half way', subscription.endpoint);
+
+  return fetch('https://www.skalarly.com/api/subscribe/follow', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(subscription),
+  })
+    // sendSubscriptionToBackEnd(subscription)
       .then(
       (pushSubscription) => {
         console.log('PushSubscription: ', pushSubscription);
@@ -90,17 +99,17 @@ return;
 })
 }
 
-function sendSubscriptionToBackEnd(subscription) {
-  console.log('route half way', subscription);
+// function sendSubscriptionToBackEnd(subscription) {
+//   console.log('route half way', subscription.endpoint);
 
-  return fetch('https://www.skalarly.com/api/subscribe/follow', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(subscription),
-  })
-}
+//   return fetch('https://www.skalarly.com/api/subscribe/follow', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify(subscription),
+//   })
+// }
 
     // Get notifcation permission
     function askForNotificationPermission(){
