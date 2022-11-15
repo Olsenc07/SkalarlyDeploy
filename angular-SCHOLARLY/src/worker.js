@@ -30,16 +30,14 @@ self.addEventListener('notificationclick', function(event) {
 self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
 
-  const data = event.data.json({
-    title: 'New Follower'
-  });
-  self.registration.showNotification(
-      data.title, // title of the notification
-      {
-          body: "Push notification from section.io", //the body of the push notification
-          image: "/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png",
-          icon: "/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg" // icon 
-      }
+  const data = event.data
+  self.registration.showNotification('1stPush Notification'
+      // data.title, // title of the notification
+      // {
+      //     body: "Push notification from section.io", //the body of the push notification
+      //     image: "/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png",
+      //     icon: "/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg" // icon 
+      // }
   );
 });
 
