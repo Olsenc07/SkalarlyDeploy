@@ -76,13 +76,13 @@ return;
       const subscription =  reg.pushManager.subscribe(subscribeOptions)
       .then(
       (pushSubscription) => {
-        console.log('wally',pushSubscription.endpoint);
+        console.log('wally',pushSubscription);
     console.log('subscription',subscription);
     const subscriptionObject = {
   endpoint: pushSubscription.endpoint,
   keys: {
-    p256dh: pushSubscription.getKeys('p256dh'),
-    auth: pushSubscription.getKeys('auth'),
+    p256dh: pushSubscription.p256dh,
+    auth: pushSubscription.auth,
   },
 };
     sendSubscriptionToBackEnd(subscriptionObjectToo);
