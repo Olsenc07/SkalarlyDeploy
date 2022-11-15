@@ -30,9 +30,12 @@ self.addEventListener('notificationclick', function(event) {
 
 self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
+  console.log('pushinging notifications',event.data);
+
 
  
   const data = event.data;
+  event.waitUntil(
   self.registration.showNotification(
       data.title,
       {
@@ -40,6 +43,7 @@ self.addEventListener('push', (event) => {
             image: "/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png",
             icon: "/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg" // icon 
         }
-  );
+  )
+  )
 });
 
