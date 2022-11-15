@@ -28,10 +28,26 @@ router.post("/follow", (req, res, next) => {
     res.status(201).json({})
 
     //create paylod: specified the detals of the push notification
-    const payload = JSON.stringify({title: 'Section.io Push Notification' });
-
+    const payload = {
+        notification: {
+          body: 'You will now recieve notifations',
+          icon: '/angular-SCHOLARLY/src/faviconH.ico',
+          image: '../../assets/Pics/Skalarly jpeg 2 (hat & logo).png',
+          vibrate: [100, 50, 100],
+          badge: '/angular-SCHOLARLY/src/faviconH.ico',
+          tag: 'confirm-notification',
+          actions: [
+            {action: 'confirm', title: 'Okay', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+            {action: 'cancel', title: 'Cancel', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+        
+          ]
+        }
+        };
     //pass the object into sendNotification fucntion and catch any error
-    webpush.sendNotification(subscription, payload, options).catch(err=> console.error(err));
+    webpush.sendNotification(subscription, payload, options).then(()=> {
+        console.log('notification sent');
+    })
+    .catch(err=> console.error(err));
     
     
     

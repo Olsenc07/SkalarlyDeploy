@@ -28,6 +28,8 @@ self.addEventListener('notificationclick', function(event) {
 
 
 self.addEventListener('push', (event) => {
+  console.log('pushing notifications',event);
+
   const data = event.data.json({
     title: 'New Follower'
   });
