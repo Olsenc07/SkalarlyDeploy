@@ -13,7 +13,22 @@ privateVapidKey = process.env.vapidPrivate
 
 router.post("/follow", (req, res, next) => {
     console.log('route made it',req.body)
+    //get push subscription object from the request
+    const subscription = req.body;
 
+    //send status 201 for the request
+    res.status(201).json({})
+
+    //create paylod: specified the detals of the push notification
+    const payload = JSON.stringify({title: 'Section.io Push Notification' });
+
+    //pass the object into sendNotification fucntion and catch any error
+    webpush.sendNotification(subscription, payload).catch(err=> console.error(err));
+    
+    
+    
+    
+    
     //   var subscription = new Subscription({
     //     endpoint: req.body.endpoint,
     //     keys: {

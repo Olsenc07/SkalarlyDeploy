@@ -48,14 +48,14 @@ const options = {
 };
 
 // send notification
-webpush.sendNotification(subscription, JSON.stringify(payload), options)
-    .then((_) => {
-        console.log('SENT!!!');
-        console.log(_);
-    })
-    .catch((_) => {
-        console.log(_);
-    });
+// webpush.sendNotification(subscription, JSON.stringify(payload), options)
+//     .then((_) => {
+//         console.log('SENT!!!');
+//         console.log(_);
+//     })
+//     .catch((_) => {
+//         console.log(_);
+//     });
 
 webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
 
