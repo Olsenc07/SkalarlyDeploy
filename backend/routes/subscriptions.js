@@ -13,6 +13,8 @@ privateVapidKey = process.env.vapidPrivate
 
 router.post("/follow", (req, res, next) => {
     console.log('route made it',req.body)
+    console.log('route made it',req)
+
     //get push subscription object from the request
     const subscription = req.body;
 
