@@ -19,7 +19,6 @@ const options = {
   };
 
 router.post("/follow", (req, res, next) => {
-    console.log('route made ',res.body)
     console.log('route made it', req.body)
     //get push subscription object from the request
     const subscription = req.body;
