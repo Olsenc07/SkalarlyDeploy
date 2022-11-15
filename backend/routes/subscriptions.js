@@ -20,3 +20,5 @@ router.post("/follow", (req, res, next) => {
     // })
 
 })
+
+module.exports = router;
