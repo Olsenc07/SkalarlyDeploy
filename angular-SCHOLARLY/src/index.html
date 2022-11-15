@@ -77,7 +77,7 @@ return;
     sendSubscriptionToBackEnd(subscription)
       .then(
       (pushSubscription) => {
-        console.log('PushSubscription: ', JSON.stringify(pushSubscription));
+        console.log('PushSubscription: ', pushSubscription);
     return pushSubscription;
 //     const subscriptionObject = {
 //   endpoint: pushSubscription.endpoint,
@@ -98,7 +98,7 @@ function sendSubscriptionToBackEnd(subscription) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(subscription),
+    body: subscription,
   })
 }
 

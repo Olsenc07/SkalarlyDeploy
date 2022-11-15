@@ -28,7 +28,9 @@ self.addEventListener('notificationclick', function(event) {
 
 
 self.addEventListener('push', (event) => {
-  const data = event.data.json();
+  const data = event.data.json({
+    title: 'New Follower'
+  });
   self.registration.showNotification(
       data.title, // title of the notification
       {
