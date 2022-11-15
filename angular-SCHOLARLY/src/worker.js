@@ -32,18 +32,16 @@ self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
   console.log('pushinging notifications',event.data);
 
-
- 
-  const data = event.data;
-  event.waitUntil(
-  self.registration.showNotification(
-      data.title,
+  Notification.requestPermission((result) => {
+    if (result === 'granted') {
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.serviceWorker.showNotification(
+      'New Follower',
       {
             body: "Push notification from section.io", //the body of the push notification
             image: "/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png",
             icon: "/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg" // icon 
         }
-  )
-  )
+  )})}})
 });
 
