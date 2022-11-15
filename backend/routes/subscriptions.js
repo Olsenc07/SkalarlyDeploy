@@ -9,11 +9,20 @@ const req = require('express/lib/request');
 publicVapidKey = process.env.vapidPublic;
 privateVapidKey = process.env.vapidPrivate
 
-
+const options = {
+    vapidDetails: {
+        subject: 'mailto:admin@skalarly.com',
+        publicKey: publicVapidKey,
+        privateKey: privateVapidKey,
+    },
+    TTL: 60,
+  };
 
 router.post("/follow", (req, res, next) => {
+    console.log('route made ',res)
+
     console.log('route made it',req.body)
-    console.log('route made it',req)
+    console.log('route made it2',req)
 
     //get push subscription object from the request
     const subscription = req.body;
@@ -25,7 +34,7 @@ router.post("/follow", (req, res, next) => {
     const payload = JSON.stringify({title: 'Section.io Push Notification' });
 
     //pass the object into sendNotification fucntion and catch any error
-    webpush.sendNotification(subscription, payload).catch(err=> console.error(err));
+    webpush.sendNotification(subscription, payload, options).catch(err=> console.error(err));
     
     
     

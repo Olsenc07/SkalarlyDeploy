@@ -74,11 +74,11 @@ return;
         ),
       };
    const subscription =  req.pushManager.subscribe(subscribeOptions)
+   console.log('brookyln',subscription)
     sendSubscriptionToBackEnd(subscription)
       .then(
       (pushSubscription) => {
         console.log('PushSubscription: ', pushSubscription);
-    return pushSubscription;
 //     const subscriptionObject = {
 //   endpoint: pushSubscription.endpoint,
 //   keys: {
@@ -98,7 +98,7 @@ function sendSubscriptionToBackEnd(subscription) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: subscription,
+    body: JSON.stringify(subscription),
   })
 }
 
