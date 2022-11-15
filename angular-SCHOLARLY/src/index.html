@@ -77,10 +77,7 @@ return;
       .then(
       (pushSubscription) => {
         console.log('wally',pushSubscription.endpoint);
-    console.log('subscription',subscription)
-      })
-    // return swreg.pushManager.getSubscription(subscribeOptions);
-  }).then(function (pushSubscription) {
+    console.log('subscription',subscription);
     const subscriptionObject = {
   endpoint: pushSubscription.endpoint,
   keys: {
@@ -89,13 +86,8 @@ return;
   },
 };
     sendSubscriptionToBackEnd(subscriptionObjectToo);
-
-      console.log(
-        'Received PushSubscription: ',
-        JSON.stringify(pushSubscription),
-      )}
-      )
-
+      })
+})
 }
 
 function sendSubscriptionToBackEnd(subscription) {
