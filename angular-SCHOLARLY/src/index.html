@@ -81,7 +81,13 @@ return;
       })
     // return swreg.pushManager.getSubscription(subscribeOptions);
   }).then(function (pushSubscription) {
-    const subscriptionObjectToo = JSON.stringify(pushSubscription);
+    const subscriptionObject = {
+  endpoint: pushSubscription.endpoint,
+  keys: {
+    p256dh: pushSubscription.getKeys('p256dh'),
+    auth: pushSubscription.getKeys('auth'),
+  },
+};
     sendSubscriptionToBackEnd(subscriptionObjectToo);
 
       console.log(
