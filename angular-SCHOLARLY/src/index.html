@@ -81,8 +81,8 @@ return;
     const subscriptionObject = {
   endpoint: pushSubscription.endpoint,
   keys: {
-    p256dh: pushSubscription.p256dh,
-    auth: pushSubscription.auth,
+    p256dh: pushSubscription.getKey('p256dh'),
+    auth: pushSubscription.getKey('auth'),
   },
 };
     sendSubscriptionToBackEnd(subscriptionObjectToo);
