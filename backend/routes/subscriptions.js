@@ -15,7 +15,6 @@ router.post("/follow", (req, res, next) => {
     console.log('route made it',req.body)
 
       var subscription = new Subscription({
-        userId: req.userData.userId,
         endpoint: req.body.endpoint,
         keys: {
             p256dh: req.body.keys,
