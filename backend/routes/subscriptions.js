@@ -24,12 +24,12 @@ router.post("/follow", (req, res, next) => {
       
 
     })
-        .then(function (subscriptionId) {
-         subscription.save()
+    subscription.save()
+    .then( (subscriptionId) => {   
           res.setHeader('Content-Type', 'application/json');
           res.send(JSON.stringify({data: {success: true}}));
         })
-        .catch(function (err) {
+        .catch( (err) => {
           res.status(500);
           res.setHeader('Content-Type', 'application/json');
           res.send(
