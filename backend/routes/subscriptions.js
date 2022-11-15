@@ -25,7 +25,6 @@ router.post("/follow", (req, res, next) => {
     const subscription = req.body;
 
     //send status 201 for the request
-    res.status(201).json({})
 
     //create paylod: specified the detals of the push notification
     const payload = {
@@ -46,6 +45,8 @@ router.post("/follow", (req, res, next) => {
     //pass the object into sendNotification fucntion and catch any error
     webpush.sendNotification(subscription, payload, options).then(()=> {
         console.log('notification sent');
+    res.status(201)
+
     })
     .catch(err=> console.error(err));
     
