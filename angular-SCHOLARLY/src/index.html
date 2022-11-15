@@ -74,9 +74,12 @@ return;
         ),
       };
    const subscription =  req.pushManager.subscribe(subscribeOptions)
-   console.log('brookyln',subscription)
-   console.log('route half way', subscription.endpoint);
-
+   console.log('brookyln',subscription.pushSubscription.endpoint)
+   console.log('route half way', subscription.pushSubscription);
+   console.log('N.Y', subscription);
+   console.log('A.B', subscription.PromiseResult);
+   console.log('B.C', subscription.endpoint);
+   
   return fetch('https://www.skalarly.com/api/subscribe/follow', {
     method: 'POST',
     headers: {
