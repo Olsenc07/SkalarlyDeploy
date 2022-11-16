@@ -31,7 +31,8 @@ self.addEventListener('notificationclick', function(event) {
 self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
   console.log('pushinging notifications',event.data.text);
-const message = event.data.text
+const message = event.data.text();
+console.log('j', message)
     var options = {
     body: 'You will now recieve notifations',
     icon: '/app/angular-SCHOLARLY/src/faviconH.ico',
@@ -45,10 +46,8 @@ const message = event.data.text
 
     ]
   }
-  navigator.serviceWorker.getRegistration()
-  .then((registration) => {
-   registration.showNotification('Successfully subscribed!', options);
-  })
+  const promiseChain =  self.registration.showNotification('Successfully subscribed!', options);
+  event.waitUntil(promiseChain);
 });
 
 function displayNotification() {
