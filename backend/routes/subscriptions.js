@@ -19,9 +19,6 @@ const options = {
   };
 
 router.post("/follow", (req, res, next) => {
-    console.log('route made it', req.body);
-    console.log('route made it chase', res)
-
     //get push subscription object from the request
     const subscription = req.body;
     console.log('route made it s boys', subscription);
@@ -29,6 +26,7 @@ router.post("/follow", (req, res, next) => {
     //send status 201 for the request
 
     //create payload: specified the detals of the push notification
+    const payload = 'Hey Pete'
     // const payload = {
     //     notification: {
     //       body: 'You will now recieve notifations',
@@ -45,7 +43,7 @@ router.post("/follow", (req, res, next) => {
     //     }
     //     };
     //pass the object into sendNotification fucntion and catch any error
-    webpush.sendNotification(subscription, options).then(()=> {
+    webpush.sendNotification(subscription, payload, options).then(()=> {
         console.log('notification sent');
         res.status(201)
 
