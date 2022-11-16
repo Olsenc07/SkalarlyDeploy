@@ -47,7 +47,6 @@ self.addEventListener('push', (event) => {
   console.log('pushinging notifications',event.data.text);
   var data = { title: 'New Follower!', content: 'A fellow Skalar has followed you', openUrl:'/'};
 const data = JSON.parse(event.data.text());
-console.log('j', message)
     var options = {
     body: data.content,
     icon: '/app/angular-SCHOLARLY/src/faviconH.ico',
