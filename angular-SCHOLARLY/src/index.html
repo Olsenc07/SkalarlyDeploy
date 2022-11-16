@@ -65,8 +65,11 @@ return;
   }
   navigator.serviceWorker.getRegistration()
   .then((req) => {
+    console.log('hey chazzy', req)
+
     req.pushManager.subscribe({
-        userVisibleOnly: true
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(req)
     })
     .then(sub => {
       console.log('hey chaz', sub)
@@ -87,18 +90,6 @@ return;
 //  req.pushManager.subscribe(subscribeOptions)
 
     // sendSubscriptionToBackEnd(subscription)
-      .then(
-      (pushSubscription) => {
-  
-        console.log('PushSubscription: ', pushSubscription.endpoint);
-//     const subscriptionObject = {
-//   endpoint: pushSubscription.endpoint,
-//   keys: {
-//     p256dh: pushSubscription.getKey('p256dh'),
-//     auth: pushSubscription.getKey('auth'),
-//   },
-// };
-      })
 })
 }
 
