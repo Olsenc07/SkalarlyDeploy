@@ -86,13 +86,7 @@ var convertedVapidPublicKey = urlBase64ToUint8Array('BDNe3_EmHJwCDbzfy6BgJbboqVW
 req.pushManager.subscribe({
   userVisibleOnly: true,
   applicationServerKey: convertedVapidPublicKey
-});
-  }else{
-// We have a subscription
-
-  }
-})
-.then(newSub => {
+}).then(newSub => {
   console.log('keato', newSub)
   return fetch('https://www.skalarly.com/api/subscribe/follow', {
     method: 'POST',
@@ -107,6 +101,11 @@ req.pushManager.subscribe({
   displayConfirmNotification()
   }
 
+})
+  }else{
+// We have a subscription
+
+  }
 })
 .catch(err => {
   console.log(err)
