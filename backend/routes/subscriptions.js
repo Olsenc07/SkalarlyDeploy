@@ -21,10 +21,6 @@ const options = {
 router.post("/follow", (req, res, next) => {
     //get push subscription object from the request
     const subscription = req.body;
-    console.log('route made it s boys', subscription);
-    console.log('route made it s boyssss', subscription.endpoint);
-
-
     //send status 201 for the request
 
     //create payload: specified the detals of the push notification
@@ -45,7 +41,6 @@ router.post("/follow", (req, res, next) => {
     //     }
     //     };
     //pass the object into sendNotification fucntion and catch any error
-    webpush.sendNotification(subscription, payload, options);
     var subscription_ = new Subscription({
         endpoint: subscription.endpoint,
         keys: {
@@ -55,9 +50,16 @@ router.post("/follow", (req, res, next) => {
     })
     subscription_.save()
     .then( subscriptionId => {  
-        console.log('notification saving yo',subscriptionId);
-
         webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+    webpush.sendNotification(subscription, JSON.stringify({
+        title: 'New Follower',
+        content: 'A fellow Skalar has followed you',
+        openUrl: '/friends-activity'
+    }), options)
+    .catch( (err) => {
+        console.log('uh o',err)
+    })
+        console.log('notification saving yo',subscriptionId);
           res.setHeader('Content-Type', 'application/json');
           res.send(JSON.stringify({data: {success: true}}));
         })

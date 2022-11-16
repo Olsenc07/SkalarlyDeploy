@@ -77,7 +77,6 @@ req.pushManager.subscribe({
   userVisibleOnly: true,
   applicationServerKey: convertedVapidPublicKey
 }).then(newSub => {
-  console.log('keato', newSub)
   return fetch('https://www.skalarly.com/api/subscribe/follow', {
     method: 'POST',
     headers: {
