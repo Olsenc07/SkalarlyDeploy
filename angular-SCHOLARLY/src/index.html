@@ -60,13 +60,12 @@ function urlBase64ToUint8Array(base64String) {
 
 
 function configurePushSub(){
-  if(!('serviceWorker' in navigator)){
-return;
-  }
+  new Notification('Successfully subscribed')
   navigator.serviceWorker.ready
   .then((subscription) => {
     console.log('hey chazzy', subscription)
-    subscription.pushManager.subscribe({userVisibleOnly: true,
+    subscription.pushManager.subscribe(
+      {userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array(
           'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'),
       })
@@ -81,30 +80,17 @@ return;
 
     // sendSubscriptionToBackEnd(subscription)
 })
-.then((pushSubscription) => {
-          console.log('cookies', pushSubscription);
-        console.log('cookie', pushSubscription.endpoint);
-        return fetch('https://www.skalarly.com/api/subscribe/follow', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(pushSubscription.endpoint),
-  })
-    })
-}
-
-// function sendSubscriptionToBackEnd(subscription) {
-//   console.log('route half way', subscription.endpoint);
-
-//   return fetch('https://www.skalarly.com/api/subscribe/follow', {
+// .then((pushSubscription) => {
+//           console.log('cookies', pushSubscription);
+//         return fetch('https://www.skalarly.com/api/subscribe/follow', {
 //     method: 'POST',
 //     headers: {
 //       'Content-Type': 'application/json',
 //     },
-//     body: JSON.stringify(subscription),
+//     body: JSON.stringify(pushSubscription.endpoint),
 //   })
-// }
+//     })
+}
 
     // Get notifcation permission
     function askForNotificationPermission(){
@@ -115,7 +101,6 @@ return;
       }
       else{
         configurePushSub();
-        // displayConfirmNotification()
       }
     })
   }
