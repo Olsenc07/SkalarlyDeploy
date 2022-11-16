@@ -13,14 +13,6 @@ const https = require('http');
 
 
 const webpush = require('web-push');
-const subscription = {
-  endpoint: '',
-  expirationTime: null,
-  keys: {
-      auth: '',
-      p256dh: '',
-  },
-};
 const payload = {
 notification: {
   body: 'You will now recieve notifations',
@@ -47,15 +39,7 @@ const options = {
   TTL: 60,
 };
 
-// send notification
-// webpush.sendNotification(subscription, JSON.stringify(payload), options)
-//     .then((_) => {
-//         console.log('SENT!!!');
-//         console.log(_);
-//     })
-//     .catch((_) => {
-//         console.log(_);
-//     });
+
 
 
 

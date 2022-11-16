@@ -34,7 +34,7 @@ self.addEventListener('push', (event) => {
 const message = event.data.text();
 console.log('j', message)
     var options = {
-    body: 'You will now recieve notifations',
+    body: 'Connect with a new Skalar',
     icon: '/app/angular-SCHOLARLY/src/faviconH.ico',
     image: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png',
     vibrate: [100, 50, 100],
@@ -46,7 +46,7 @@ console.log('j', message)
 
     ]
   }
-  const promiseChain =  self.registration.showNotification('Successfully subscribed!', options);
+  const promiseChain =  self.registration.showNotification('New Follower', options);
   event.waitUntil(promiseChain);
 });
 
