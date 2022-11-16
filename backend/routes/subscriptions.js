@@ -20,11 +20,11 @@ const options = {
 
 router.post("/follow", (req, res, next) => {
     console.log('route made it', req.body);
-    console.log('route made it pete', req.body.endpoint);
     console.log('route made it chase', res)
 
     //get push subscription object from the request
-    const subscription = req.body.endpoint;
+    const subscription = req.body;
+    console.log('route made it s boys', subscription);
 
     //send status 201 for the request
 
