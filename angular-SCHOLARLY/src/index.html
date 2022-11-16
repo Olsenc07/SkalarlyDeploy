@@ -63,7 +63,7 @@ function configurePushSub(){
   if(!('serviceWorker' in navigator)){
 return;
   }
-  navigator.serviceWorker.getRegistration()
+  navigator.serviceWorker.ready
   .then((req) => {
     console.log('hey chazzy', req)
 
