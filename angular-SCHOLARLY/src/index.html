@@ -93,6 +93,7 @@ req.pushManager.subscribe({
   }
 })
 .then(newSub => {
+  console.log('keato', newSub)
   return fetch('https://www.skalarly.com/api/subscribe/follow', {
     method: 'POST',
     headers: {
@@ -101,7 +102,27 @@ req.pushManager.subscribe({
     body: JSON.stringify(newSub),
   })
 })
+.then(res => {
+  if(res.ok){
+  displayConfirmNotification()
+  }
+
+})
+.catch(err => {
+  console.log(err)
+})
 }
+
+// displayConfir notif
+function displayConfirmNotification(){
+  if('serviceWorker' in navigator) {
+    navigator.serviceWorker.ready
+    .then(swreq => {
+      swreq.showNotification('Successfully subscribed dawg!')
+    })
+  }
+}
+
 
     // Get notifcation permission
     function askForNotificationPermission(){

@@ -57,7 +57,7 @@ const options = {
 //         console.log(_);
 //     });
 
-webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+
 
 
 
