@@ -61,14 +61,12 @@ function urlBase64ToUint8Array(base64String) {
 
 function configurePushSub(){
   new Notification('Successfully subscribed')
+  if ('serviceWorker' in navigator) {
   navigator.serviceWorker.ready
-  .then((subscription) => {
-    console.log('hey chazzy', subscription)
-    subscription.pushManager.subscribe(
-      {userVisibleOnly: true,
-      applicationServerKey: urlBase64ToUint8Array(
-          'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'),
-      })
+  .then((swreq) => {
+    console.log('hey chazzy', swreq)
+    swreq.showNotification('successful subscrbed yo'
+     )
   
 //     const subscribeOptions = {
 //         userVisibleOnly: true,
@@ -90,7 +88,7 @@ function configurePushSub(){
 //     body: JSON.stringify(pushSubscription.endpoint),
 //   })
 //     })
-}
+}}
 
     // Get notifcation permission
     function askForNotificationPermission(){
