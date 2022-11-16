@@ -67,19 +67,29 @@ return;
   .then((req) => {
     console.log('hey chazzy', req)
 
-    req.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(req)
-    })
-    .then(sub => {
-      console.log('hey chaz', sub)
-      return fetch('https://www.skalarly.com/api/subscribe/follow', {
+    req.pushManager.getSubscription()
+    .then((subscription) => {
+      const options = subscription.options;
+    console.log('peanuts',options.applicationServerKey);
+    req.pushManager.subscribe({userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(options.applicationServerKey)
+      })
+        .then((pushSubscription) => {
+        console.log('cookie', pushSubscription.endpoint)
+        return fetch('https://www.skalarly.com/api/subscribe/follow', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(sub),
+    body: JSON.stringify(pushSubscription.endpoint),
   })
+    })
+    })
+
+
+    .then(sub => {
+      console.log('hey chaz', sub)
+   
     })
 //     const subscribeOptions = {
 //         userVisibleOnly: true,
