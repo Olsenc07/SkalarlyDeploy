@@ -43,48 +43,40 @@ router.post("/follow", (req, res, next) => {
     //     }
     //     };
     //pass the object into sendNotification fucntion and catch any error
-    webpush.sendNotification(subscription, payload, options).then(()=> {
+    webpush.sendNotification(subscription, payload, options)
+    .then(()=> {
         console.log('notification sent');
-        res.status(201)
-
-    })
-    .catch(err=> console.error(err));
-    
-    
-    
-    
-    
-      var subscription_ = new Subscription({
-        endpoint: req.body.endpoint,
-        keys: {
-            p256dh: req.body.keys,
-            auth: req.body.auth,
-          },
-      
-
-    })
-    subscription_.save()
-    .then( (subscriptionId) => {  
-        console.log('notification saving yo',subscriptionId);
-
-        webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
-          res.setHeader('Content-Type', 'application/json');
-          res.send(JSON.stringify({data: {success: true}}));
+        var subscription_ = new Subscription({
+            endpoint: req.body.endpoint,
+            keys: {
+                p256dh: req.body.keys,
+                auth: req.body.auth,
+              }
         })
-        .catch( (err) => {
-          res.status(500);
-          res.setHeader('Content-Type', 'application/json');
-          res.send(
-            JSON.stringify({
-              error: {
-                id: 'unable-to-save-subscription',
-                message:
-                  'The subscription was received but we were unable to save it to our database.',
-              },
-            }),
-          );
-        });
+        subscription_.save()
+        .then( subscriptionId => {  
+            console.log('notification saving yo',subscriptionId);
+    
+            webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+              res.setHeader('Content-Type', 'application/json');
+              res.send(JSON.stringify({data: {success: true}}));
+            })
+            .catch( (err) => {
+              res.status(500);
+              res.setHeader('Content-Type', 'application/json');
+              res.send(
+                JSON.stringify({
+                  error: {
+                    id: 'unable-to-save-subscription',
+                    message:
+                      'The subscription was received but we were unable to save it to our database.',
+                  },
+                }),
+              );
+            });
 
+    }) 
+ 
 })
 
 module.exports = router;
