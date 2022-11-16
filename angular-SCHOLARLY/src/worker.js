@@ -13,7 +13,7 @@ self.addEventListener('install', event => {
   });
 
 
-self.addEventListener('notificationclick', function(event) {
+self.addEventListener('notificationclick', (event) => {
   console.log('know what it is')
   var notification = event.notification;
   var action = event.action;
@@ -39,14 +39,16 @@ self.addEventListener('notificationclick', function(event) {
     );
 
   }
-})
+});
 
 
 self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
-  console.log('pushinging notifications',event.data.text);
+  console.log('pushinging notifications', event.data.text);
   var data = { title: 'New Follower!', content: 'A fellow Skalar has followed you', openUrl:'/'};
-const data = JSON.parse(event.data.text());
+  if (event.data) {
+     data = JSON.parse(event.data.text());
+  }
     var options = {
     body: data.content,
     icon: '/app/angular-SCHOLARLY/src/faviconH.ico',
