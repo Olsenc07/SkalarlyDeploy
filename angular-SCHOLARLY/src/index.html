@@ -64,15 +64,13 @@ function configurePushSub(){
 return;
   }
   navigator.serviceWorker.ready
-  .then((req) => {
-    console.log('hey chazzy', req)
-
-    req.pushManager.getSubscription()
-    .then((subscription) => {
+  .then((subscription) => {
+    console.log('hey chazzy', subscription)
       const options = subscription.options;
-    console.log('peanuts',options.applicationServerKey);
+    console.log('peanuts', options.applicationServerKey);
     req.pushManager.subscribe({userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(options.applicationServerKey)
+      applicationServerKey: urlBase64ToUint8Array(
+          'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'),
       })
         .then((pushSubscription) => {
         console.log('cookie', pushSubscription.endpoint)
@@ -84,7 +82,7 @@ return;
     body: JSON.stringify(pushSubscription.endpoint),
   })
     })
-    })
+  
 
 
     .then(sub => {
