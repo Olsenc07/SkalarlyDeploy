@@ -65,7 +65,7 @@ function configurePushSub(){
     var req
   navigator.serviceWorker.ready
   .then((swreq) => {
-    req = swreg
+    req = swreq
     console.log('hey chazzy', swreq);
     return swreq.pushManager.getSubscription()
   
