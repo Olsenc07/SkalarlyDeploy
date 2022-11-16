@@ -24,28 +24,28 @@ router.post("/follow", (req, res, next) => {
     console.log('route made it chase', res)
 
     //get push subscription object from the request
-    const subscription = req.body;
+    const subscription = req.body.endpoint;
 
     //send status 201 for the request
 
     //create payload: specified the detals of the push notification
-    const payload = {
-        notification: {
-          body: 'You will now recieve notifations',
-          icon: '/angular-SCHOLARLY/src/faviconH.ico',
-          image: '../../assets/Pics/Skalarly jpeg 2 (hat & logo).png',
-          vibrate: [100, 50, 100],
-          badge: '/angular-SCHOLARLY/src/faviconH.ico',
-          tag: 'confirm-notification',
-          actions: [
-            {action: 'confirm', title: 'Okay', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
-            {action: 'cancel', title: 'Cancel', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+    // const payload = {
+    //     notification: {
+    //       body: 'You will now recieve notifations',
+    //       icon: '/angular-SCHOLARLY/src/faviconH.ico',
+    //       image: '../../assets/Pics/Skalarly jpeg 2 (hat & logo).png',
+    //       vibrate: [100, 50, 100],
+    //       badge: '/angular-SCHOLARLY/src/faviconH.ico',
+    //       tag: 'confirm-notification',
+    //       actions: [
+    //         {action: 'confirm', title: 'Okay', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+    //         {action: 'cancel', title: 'Cancel', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
         
-          ]
-        }
-        };
+    //       ]
+    //     }
+    //     };
     //pass the object into sendNotification fucntion and catch any error
-    webpush.sendNotification(subscription, payload, options).then(()=> {
+    webpush.sendNotification(subscription, options).then(()=> {
         console.log('notification sent');
         res.status(201)
 
