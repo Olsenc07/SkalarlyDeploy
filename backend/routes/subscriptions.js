@@ -44,13 +44,13 @@ router.post("/follow", (req, res, next) => {
     //     };
     //pass the object into sendNotification fucntion and catch any error
     webpush.sendNotification(subscription, payload, options)
-    .then(()=> {
-        console.log('notification sent');
+    .then((save)=> {
+        console.log('notification sent',save);
         var subscription_ = new Subscription({
-            endpoint: req.body.endpoint,
+            endpoint: subscription.endpoint,
             keys: {
-                p256dh: req.body.keys,
-                auth: req.body.auth,
+                p256dh: subscription.keys,
+                auth: subscription.auth,
               }
         })
         subscription_.save()
