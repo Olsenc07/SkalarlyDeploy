@@ -63,11 +63,20 @@ function configurePushSub(){
   if(!('serviceWorker' in navigator)){
 return;
   }
-  navigator.serviceWorker.ready
+  navigator.serviceWorker.getRegistration()
   .then((req) => {
-    req.pushManager.getSubscription()
+    req.pushManager.subscribe({
+        userVisibleOnly: true
+    })
     .then(sub => {
       console.log('hey chaz', sub)
+      return fetch('https://www.skalarly.com/api/subscribe/follow', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(sub),
+  })
     })
 //     const subscribeOptions = {
 //         userVisibleOnly: true,
@@ -80,13 +89,7 @@ return;
     // sendSubscriptionToBackEnd(subscription)
       .then(
       (pushSubscription) => {
-        return fetch('https://www.skalarly.com/api/subscribe/follow', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(pushSubscription),
-  })
+  
         console.log('PushSubscription: ', pushSubscription.endpoint);
 //     const subscriptionObject = {
 //   endpoint: pushSubscription.endpoint,

@@ -44,15 +44,8 @@ self.addEventListener('push', (event) => {
       {action: 'cancel', title: 'Cancel', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
 
     ]
-};
-    navigator.serviceWorker.ready
-    .then((swreg) => {
-      console.log('my hockey', swreg)
-      swreg.showNotification('Successfully subscribed!', options);
-    });
-  
-  const promiseChain = self.registration.showNotification('Hello, World.');
-  event.waitUntil(promiseChain);
+  }
+   self.registration.showNotification('Successfully subscribed!', options);
 });
 
 function displayNotification() {
