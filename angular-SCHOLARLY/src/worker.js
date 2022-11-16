@@ -30,7 +30,7 @@ self.addEventListener('notificationclick', function(event) {
 
 self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
-  console.log('pushinging notifications',event.data);
+  console.log('pushinging notifications',event.data.text);
 
     var options = {
     body: 'You will now recieve notifations',
@@ -45,7 +45,9 @@ self.addEventListener('push', (event) => {
 
     ]
   }
-   self.registration.showNotification('Successfully subscribed!', options);
+  navigator.serviceWorker.ready.then((registration) => {
+   registration.showNotification('Successfully subscribed!', options);
+  })
 });
 
 function displayNotification() {

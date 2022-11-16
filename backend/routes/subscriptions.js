@@ -46,6 +46,8 @@ router.post("/follow", (req, res, next) => {
     webpush.sendNotification(subscription, payload, options)
     .then((save)=> {
         console.log('notification sent',save);
+        console.log('notification sent2',subscription);
+
         var subscription_ = new Subscription({
             endpoint: subscription.endpoint,
             keys: {
