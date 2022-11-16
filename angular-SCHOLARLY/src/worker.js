@@ -32,7 +32,35 @@ self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
   console.log('pushinging notifications',event.data);
 
+    var options = {
+    body: 'You will now recieve notifations',
+    icon: '/app/angular-SCHOLARLY/src/faviconH.ico',
+    image: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png',
+    vibrate: [100, 50, 100],
+    badge: '/app/angular-SCHOLARLY/src/faviconH.ico',
+    tag: 'confirm-notification',
+    actions: [
+      {action: 'confirm', title: 'Okay', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+      {action: 'cancel', title: 'Cancel', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
+
+    ]
+};
+    navigator.serviceWorker.ready
+    .then((swreg) => {
+      console.log('my hockey', swreg)
+      swreg.showNotification('Successfully subscribed!', options);
+    });
+  
   const promiseChain = self.registration.showNotification('Hello, World.');
   event.waitUntil(promiseChain);
 });
+
+function displayNotification() {
+  if (Notification.permission === 'granted'){
+    navigator.serviceWorker.getRegistration()
+    .then(req => {
+      req.showNotification('Hello World!')
+    })
+  }
+}
 
