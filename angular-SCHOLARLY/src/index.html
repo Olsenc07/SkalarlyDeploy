@@ -66,7 +66,7 @@ return;
   navigator.serviceWorker.ready
   .then((subscription) => {
     console.log('hey chazzy', subscription)
-    req.pushManager.subscribe({userVisibleOnly: true,
+    subscription.pushManager.subscribe({userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array(
           'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'),
       })
