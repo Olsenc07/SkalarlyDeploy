@@ -7,6 +7,7 @@ import { Post, PostService } from '../services/post.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
+import { constants } from 'perf_hooks';
 
 interface SearchOption {
   value: string;
@@ -54,28 +55,10 @@ export class SearchComponent implements OnInit {
     public route: ActivatedRoute,
     public postService: PostService,
     private authService: AuthService
-  ) {}
-
-  ngOnInit(): any {
-    this.isLoading = true;
-    this.searchOptions = this.searchListService.getSearchOptions();
-    // posts
-    this.postService.getPosts();
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-      });
-    // userId
+  ) {
     this.userId = this.authService.getUserId();
-    var Id = this.userId;
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authListenerSubs = this.authService
-      .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
-        this.userIsAuthenticated = isAuthenticated;
-      });
+    const Id = this.userId;
+    const Authservice = this.authService;
     // Service worker
     // Register service worker
     window.addEventListener('load', () => {
@@ -107,7 +90,7 @@ export class SearchComponent implements OnInit {
       if (!('serviceWorker' in navigator)) {
         return;
       }
-      var req;
+      let req;
       navigator.serviceWorker.ready
         .then((swreq) => {
           req = swreq;
@@ -117,7 +100,7 @@ export class SearchComponent implements OnInit {
         .then((sub) => {
           if (sub === null) {
             // Create a new subscription
-            var convertedVapidPublicKey = urlBase64ToUint8Array(
+            const convertedVapidPublicKey = urlBase64ToUint8Array(
               'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
             );
             req.pushManager
@@ -126,16 +109,15 @@ export class SearchComponent implements OnInit {
                 applicationServerKey: convertedVapidPublicKey,
               })
               .then((newSub) => {
-                console.log('W', newSub);
                 newSub.userId = Id;
-                console.log('WW', newSub);
-                return fetch('https://www.skalarly.com/api/subscribe/follow', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify(newSub),
-                });
+                Authservice.addSubscription(JSON.stringify(newSub));
+                // return fetch('https://www.skalarly.com/api/subscribe/follow', {
+                //   method: 'POST',
+                //   headers: {
+                //     'Content-Type': 'application/json',
+                //   },
+                //   body: JSON.stringify(newSub),
+                // });
               })
               .then((res) => {
                 if (res.ok) {
@@ -152,7 +134,7 @@ export class SearchComponent implements OnInit {
     }
 
     // displayConfir notif
-    function displayConfirmNotification() {
+    function displayConfirmNotification(): any {
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.ready.then((swreq) => {
           swreq.showNotification('Successfully subscribed dawg!');
@@ -161,8 +143,8 @@ export class SearchComponent implements OnInit {
     }
 
     // Get notifcation permission
-    function askForNotificationPermission() {
-      Notification.requestPermission(function (result) {
+    function askForNotificationPermission(): any {
+      Notification.requestPermission((result) => {
         console.log('Permission', result);
         if (result !== 'granted') {
           console.log('Permission not granted');
@@ -175,6 +157,28 @@ export class SearchComponent implements OnInit {
     if ('Notification' in window) {
       window.addEventListener('load', askForNotificationPermission);
     }
+  }
+
+  ngOnInit(): any {
+    this.isLoading = true;
+    this.searchOptions = this.searchListService.getSearchOptions();
+    // posts
+    this.postService.getPosts();
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+      });
+    // userId
+    this.userId = this.authService.getUserId();
+    var Id = this.userId;
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
   }
 
   onSearchSelection(value: string): void {

@@ -21,10 +21,13 @@ const options = {
 router.post("/follow", (req, res, next) => {
     //get push subscription object from the request
     const subscription = req.body;
+
     //send status 201 for the request
 
     //create payload: specified the detals of the push notification
     console.log('im good',subscription.endpoint)
+    console.log('im great',subscription.userId)
+
     // const payload = {
     //     notification: {
     //       body: 'You will now recieve notifations',

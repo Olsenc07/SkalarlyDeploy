@@ -2341,4 +2341,18 @@ export class AuthService {
       },
     });
   }
+  // Adding subscription to get notifcations
+  addSubscription(data: any): any {
+    console.log('iltdmtuk', data);
+    this.http
+      .post('https://www.skalarly.com/api/subscribe/follow', data)
+      .subscribe({
+        next: () => {
+          this.snackBar.open('You will now recieve notifications', '🔔');
+        },
+        error: (err) => {
+          console.log('Unable to add subscription for notifications!', err);
+        },
+      });
+  }
 }
