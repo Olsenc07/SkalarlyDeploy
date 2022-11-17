@@ -35,12 +35,8 @@ self.addEventListener('push', (event) => {
 
     ]
   }
-  if (Notification.permission === 'granted'){
-    navigator.serviceWorker.getRegistration()
-    .then(req => {
-      req.showNotification('Hello World!', options)
-    })
-  }
+ 
+  self.registration.showNotification('Did it', options)
 });
 
 function displayNotification() {
