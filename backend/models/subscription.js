@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const subscriptionSchema = mongoose.Schema({
-// userId: {type:String, required: true},
+Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
 endpoint: { type: String, unique: true},
 keys: {
  p256dh: {type: String},

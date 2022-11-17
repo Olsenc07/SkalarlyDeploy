@@ -24,7 +24,7 @@ router.post("/follow", (req, res, next) => {
     //send status 201 for the request
 
     //create payload: specified the detals of the push notification
-    const payload = 'You have a new Follower'
+    console.log('im good',subscription.endpoint)
     // const payload = {
     //     notification: {
     //       body: 'You will now recieve notifations',
@@ -42,7 +42,7 @@ router.post("/follow", (req, res, next) => {
     //     };
     //pass the object into sendNotification fucntion and catch any error
     var subscription_ = new Subscription({
-
+       Creator: req.userData.userId,
         endpoint: subscription.endpoint,
         keys: {
             p256dh: subscription.keys.p256dh,
