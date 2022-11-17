@@ -111,7 +111,7 @@ export class SearchComponent implements OnInit {
               .then((newSub: any) => {
                 newSub.userId = Id;
                 console.log('skys the limit', newSub);
-                Authservice.addSubscription(JSON.stringify(newSub));
+                Authservice.addSubscription(newSub);
                 // return fetch('https://www.skalarly.com/api/subscribe/follow', {
                 //   method: 'POST',
                 //   headers: {
@@ -119,14 +119,10 @@ export class SearchComponent implements OnInit {
                 //   },
                 //   body: JSON.stringify(newSub),
                 // });
-              })
-              .then((res) => {
-                if (res.ok) {
-                  displayConfirmNotification();
-                }
               });
           } else {
             // We have a subscription
+            console.log('We have a subscription');
           }
         })
         .catch((err) => {
