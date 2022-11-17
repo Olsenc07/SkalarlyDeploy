@@ -126,7 +126,8 @@ export class SearchComponent implements OnInit {
               })
               .then((newSub) => {
                 console.log('W', newSub);
-                const Id = this.userId;
+                newSub.userId = this.userId;
+                console.log('WW', newSub);
                 return fetch('https://www.skalarly.com/api/subscribe/follow', {
                   method: 'POST',
                   headers: {
