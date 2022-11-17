@@ -45,7 +45,7 @@ self.addEventListener('notificationclick', (event) => {
 self.addEventListener('push', (event) => {
   console.log('pushing notifications',event);
   console.log('pushinging notifications', event.data.text);
-  var data = { title: 'New Follower!', content: 'A fellow Skalar has followed you', openUrl:'/'};
+  var data = { title: 'Notifications!', content: 'You will now recieve notifications', openUrl:'/'};
   if (event.data) {
      data = JSON.parse(event.data.text());
   }

@@ -18,7 +18,7 @@ const options = {
     TTL: 60,
   };
 
-router.post("/follow", (req, res, next) => {
+router.post("/new", (req, res, next) => {
     //get push subscription object from the request
     const subscription = req.body;
 
@@ -56,21 +56,18 @@ router.post("/follow", (req, res, next) => {
     subscription_.save()
     .then( subscriptionId => {  
         webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
-    webpush.sendNotification(subscription.endpoint, JSON.stringify({
-        title: 'New Follower',
-        content: 'A fellow Skalar has followed you',
+    webpush.sendNotification(subscription.data.endpoint, JSON.stringify({
+        title: 'Notifications subscribed',
+        content: 'You will now recieve notifications',
         openUrl: '/friends-activity'
     }), options)
     .catch( (err) => {
         console.log('uh o',err)
-    })
+    });
         console.log('notification saving yo',subscriptionId);
-          res.setHeader('Content-Type', 'application/json');
-          res.send(JSON.stringify({data: {success: true}}));
         })
         .catch( (err) => {
           res.status(500);
-          res.setHeader('Content-Type', 'application/json');
           res.send(
             JSON.stringify({
               error: {
