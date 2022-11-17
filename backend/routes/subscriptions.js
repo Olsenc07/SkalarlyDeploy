@@ -31,6 +31,7 @@ router.post("/new", (req, res, next) => {
         p256dh: subscription.data.keys.p256dh
       }
     };
+
     // const payload = {
     //     notification: {
     //       body: 'You will now recieve notifations',
@@ -65,6 +66,10 @@ router.post("/new", (req, res, next) => {
         content: 'You will now recieve notifications',
         openUrl: '/friends-activity'
     }), options)
+    .then((_) => {
+      console.log('SENT!!!');
+      console.log(_);
+  })
     .catch( (err) => {
         console.log('uh o',err)
     });
