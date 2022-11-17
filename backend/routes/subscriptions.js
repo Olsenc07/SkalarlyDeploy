@@ -49,8 +49,8 @@ router.post("/follow", (req, res, next) => {
        Creator: subscription.userId,
         endpoint: subscription.data.endpoint,
         keys: {
-            p256dh: subscription.data.p256dh,
-            auth: subscription.data.auth,
+            p256dh: subscription.data.keys.p256dh,
+            auth: subscription.data.keys.auth,
           }
     })
     subscription_.save()
