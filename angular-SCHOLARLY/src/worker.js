@@ -13,6 +13,41 @@ self.addEventListener('install', event => {
   });
 
 
+self.addEventListener('push', (event) => {
+  var data = { title: 'Notifications!', content: 'You will now recieve notifications', openUrl:'/'};
+  if (event.data) {
+     data = JSON.parse(event.data.text());
+     console.log('blow', data)
+  }
+    var options = {
+    body: data.content,
+    icon: '/app/angular-SCHOLARLY/src/faviconH.ico',
+    image: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png',
+    // vibrate: [100, 50, 100],
+    badge: '/app/angular-SCHOLARLY/src/faviconH.ico',
+    data: {
+      url: data.openUrl
+    },
+    tag: 'confirm-notification',
+    actions: [
+      {action: 'confirm', title: 'Okay', icon:'/app/angular-SCHOLARLY/src/faviconH.ico'},
+      {action: 'cancel', title: 'Cancel', icon:'/app/angular-SCHOLARLY/src/faviconH.ico'},
+
+    ]
+  }
+   self.registration.showNotification('Notification rhinos', options);
+
+});
+
+function displayNotification() {
+  if (Notification.permission === 'granted'){
+    navigator.serviceWorker.getRegistration()
+    .then(req => {
+      req.showNotification('Hello World!')
+    })
+  }
+}
+
 self.addEventListener('notificationclick', (event) => {
   console.log('know what it is')
   var notification = event.notification;
@@ -40,45 +75,5 @@ self.addEventListener('notificationclick', (event) => {
 
   }
 });
-
-
-self.addEventListener('push', (event) => {
-  console.log('pushing notifications',event);
-  console.log('pushinging notifications', event.data);
-  var data = { title: 'Notifications!', content: 'You will now recieve notifications', openUrl:'/'};
-  if (event.data) {
-     data = JSON.parse(event.data.text());
-     console.log('blow', data)
-  }
-  //   var options = {
-  //   body: data.content,
-  //   icon: '/app/angular-SCHOLARLY/src/faviconH.ico',
-  //   image: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png',
-  //   // vibrate: [100, 50, 100],
-  //   badge: '/app/angular-SCHOLARLY/src/faviconH.ico',
-  //   data: {
-  //     url: data.openUrl
-  //   },
-  //   tag: 'confirm-notification',
-  //   actions: [
-  //     {action: 'confirm', title: 'Okay', icon:'/app/angular-SCHOLARLY/src/faviconH.ico'},
-  //     {action: 'cancel', title: 'Cancel', icon:'/app/angular-SCHOLARLY/src/faviconH.ico'},
-
-  //   ]
-  // }
-  const promiseChain = self.registration.showNotification('Notification rhinos');
-  event.waitUntil(promiseChain);
-});
-
-function displayNotification() {
-  if (Notification.permission === 'granted'){
-    navigator.serviceWorker.getRegistration()
-    .then(req => {
-      req.showNotification('Hello World!')
-    })
-  }
-}
-
-
 
 
