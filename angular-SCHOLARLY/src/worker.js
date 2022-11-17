@@ -48,25 +48,25 @@ self.addEventListener('push', (event) => {
   var data = { title: 'Notifications!', content: 'You will now recieve notifications', openUrl:'/'};
   if (event.data) {
      data = JSON.parse(event.data.text());
-     console.log('weed', data)
+     console.log('blow', data)
   }
-    var options = {
-    body: data.content,
-    icon: '/app/angular-SCHOLARLY/src/faviconH.ico',
-    image: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png',
-    // vibrate: [100, 50, 100],
-    badge: '/app/angular-SCHOLARLY/src/faviconH.ico',
-    data: {
-      url: data.openUrl
-    },
-    tag: 'confirm-notification',
-    actions: [
-      {action: 'confirm', title: 'Okay', icon:'/app/angular-SCHOLARLY/src/faviconH.ico'},
-      {action: 'cancel', title: 'Cancel', icon:'/app/angular-SCHOLARLY/src/faviconH.ico'},
+  //   var options = {
+  //   body: data.content,
+  //   icon: '/app/angular-SCHOLARLY/src/faviconH.ico',
+  //   image: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png',
+  //   // vibrate: [100, 50, 100],
+  //   badge: '/app/angular-SCHOLARLY/src/faviconH.ico',
+  //   data: {
+  //     url: data.openUrl
+  //   },
+  //   tag: 'confirm-notification',
+  //   actions: [
+  //     {action: 'confirm', title: 'Okay', icon:'/app/angular-SCHOLARLY/src/faviconH.ico'},
+  //     {action: 'cancel', title: 'Cancel', icon:'/app/angular-SCHOLARLY/src/faviconH.ico'},
 
-    ]
-  }
-  const promiseChain = self.registration.showNotification('Notification rhinos', options);
+  //   ]
+  // }
+  const promiseChain = self.registration.showNotification('Notification rhinos');
   event.waitUntil(promiseChain);
 });
 
