@@ -35,8 +35,9 @@ self.addEventListener('push', (event) => {
 
     ]
   }
-   self.registration.showNotification('Notification rhinos', options);
-
+  navigator.serviceWorker.ready.then((registration) => {
+   registration.showNotification('Notification rhinos', options);
+  })
 });
 
 function displayNotification() {
