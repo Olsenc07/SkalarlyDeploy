@@ -109,7 +109,7 @@ export class SearchComponent implements OnInit {
                 applicationServerKey: convertedVapidPublicKey,
               })
               .then((newSub: any) => {
-                Authservice.addSubscription(JSON.stringify(newSub), Id);
+                Authservice.addSubscription(newSub, Id);
                 // return fetch('https://www.skalarly.com/api/subscribe/follow', {
                 //   method: 'POST',
                 //   headers: {

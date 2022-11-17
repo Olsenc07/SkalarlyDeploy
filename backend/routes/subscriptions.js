@@ -25,12 +25,10 @@ router.post("/follow", (req, res, next) => {
     //send status 201 for the request
 
     //create payload: specified the detals of the push notification
-    console.log('in my head', req.body.userId)
-
     console.log('mgk',subscription)
+
+
     console.log('im good',subscription.endpoint)
-    keys = JSON.parse(subscription);
-    console.log('im great', keys)
     // const payload = {
     //     notification: {
     //       body: 'You will now recieve notifations',
@@ -51,8 +49,8 @@ router.post("/follow", (req, res, next) => {
        Creator: subscription.userId,
         endpoint: subscription.endpoint,
         keys: {
-            p256dh: keys.p256dh,
-            auth: keys.auth,
+            p256dh: subscription.p256dh,
+            auth: subscription.auth,
           }
     })
     subscription_.save()
