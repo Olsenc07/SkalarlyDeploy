@@ -2342,10 +2342,11 @@ export class AuthService {
     });
   }
   // Adding subscription to get notifcations
-  addSubscription(data: any): any {
+  addSubscription(data: any, userId: string): any {
     console.log('iltdmtuk', data);
+    console.log('league', userId);
     this.http
-      .post('https://www.skalarly.com/api/subscribe/follow', data)
+      .post('https://www.skalarly.com/api/subscribe/follow', { data, userId })
       .subscribe({
         next: () => {
           this.snackBar.open('You will now recieve notifications', '🔔');

@@ -25,6 +25,8 @@ router.post("/follow", (req, res, next) => {
     //send status 201 for the request
 
     //create payload: specified the detals of the push notification
+    console.log('in my head', req.body.userId)
+
     console.log('mgk',subscription)
     console.log('im good',subscription.endpoint)
     console.log('im great',subscription.userId)

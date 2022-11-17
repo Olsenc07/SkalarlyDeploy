@@ -110,8 +110,7 @@ export class SearchComponent implements OnInit {
               })
               .then((newSub: any) => {
                 newSub.userId = Id;
-                console.log('skys the limit', newSub);
-                Authservice.addSubscription(newSub);
+                Authservice.addSubscription(newSub, Id);
                 // return fetch('https://www.skalarly.com/api/subscribe/follow', {
                 //   method: 'POST',
                 //   headers: {
