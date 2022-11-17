@@ -35,16 +35,19 @@ self.addEventListener('push', (event) => {
 
     ]
   }
-  navigator.serviceWorker.ready.then((registration) => {
-   registration.showNotification('Notification rhinos', options);
-  })
+  if (Notification.permission === 'granted'){
+    navigator.serviceWorker.getRegistration()
+    .then(req => {
+      req.showNotification('Hello World!', options)
+    })
+  }
 });
 
 function displayNotification() {
   if (Notification.permission === 'granted'){
     navigator.serviceWorker.getRegistration()
     .then(req => {
-      req.showNotification('Hello World!')
+      req.showNotification('Hello World!', options)
     })
   }
 }
