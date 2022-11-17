@@ -36,8 +36,10 @@ self.addEventListener('push', (event) => {
     ]
   }
   console.log('weed', event)
- 
-  event.registration.showNotification('Did it', options)
+
+
+  // event.currentTarget.registration.showNotification('Did it', options)
+  event.currentTarget.showNotification('Skalarly', options)
 });
 
 function displayNotification() {
