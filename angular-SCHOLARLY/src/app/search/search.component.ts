@@ -108,8 +108,9 @@ export class SearchComponent implements OnInit {
                 userVisibleOnly: true,
                 applicationServerKey: convertedVapidPublicKey,
               })
-              .then((newSub) => {
+              .then((newSub: any) => {
                 newSub.userId = Id;
+                console.log('skys the limit', newSub);
                 Authservice.addSubscription(JSON.stringify(newSub));
                 // return fetch('https://www.skalarly.com/api/subscribe/follow', {
                 //   method: 'POST',
