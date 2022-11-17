@@ -42,6 +42,7 @@ router.post("/follow", (req, res, next) => {
     //     };
     //pass the object into sendNotification fucntion and catch any error
     var subscription_ = new Subscription({
+
         endpoint: subscription.endpoint,
         keys: {
             p256dh: subscription.keys.p256dh,
@@ -51,7 +52,7 @@ router.post("/follow", (req, res, next) => {
     subscription_.save()
     .then( subscriptionId => {  
         webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
-    webpush.sendNotification(subscription, JSON.stringify({
+    webpush.sendNotification(subscription.endpoint, JSON.stringify({
         title: 'New Follower',
         content: 'A fellow Skalar has followed you',
         openUrl: '/friends-activity'

@@ -65,7 +65,7 @@ self.addEventListener('push', (event) => {
 
     ]
   }
-  const promiseChain =  self.registration.showNotification('New Follower', options);
+  const promiseChain = self.registration.showNotification('New Follower', options);
   event.waitUntil(promiseChain);
 });
 
