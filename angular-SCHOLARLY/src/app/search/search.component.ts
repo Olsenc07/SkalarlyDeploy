@@ -69,6 +69,7 @@ export class SearchComponent implements OnInit {
       });
     // userId
     this.userId = this.authService.getUserId();
+    var Id = this.userId;
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
@@ -126,7 +127,7 @@ export class SearchComponent implements OnInit {
               })
               .then((newSub) => {
                 console.log('W', newSub);
-                newSub.userId = this.userId;
+                newSub.userId = Id;
                 console.log('WW', newSub);
                 return fetch('https://www.skalarly.com/api/subscribe/follow', {
                   method: 'POST',
