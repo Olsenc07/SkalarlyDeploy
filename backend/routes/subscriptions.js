@@ -64,7 +64,7 @@ router.post("/new", (req, res, next) => {
     .then( subscriptionId => {  
       publicVapidKey = process.env.vapidPublic;
       privateVapidKey = process.env.vapidPrivate
-        webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+    webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
     webpush.sendNotification(pushSubscription, JSON.stringify({
         title: 'Notifications subscribed',
         content: 'You will now recieve notifications',

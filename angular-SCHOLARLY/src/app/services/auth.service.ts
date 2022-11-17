@@ -2343,12 +2343,11 @@ export class AuthService {
   }
   // Adding subscription to get notifcations
   addSubscription(data: any, userId: string): any {
-    const Data = new FormData();
-    Data.append('data', data);
-    Data.append('userId', userId);
-    console.log('street yall', Data);
     this.http
-      .post('https://www.skalarly.com/api/subscribe/new', Data)
+      .post('https://www.skalarly.com/api/subscribe/new', {
+        data,
+        userId,
+      })
       .subscribe({
         next: () => {
           this.snackBar.open('You will now recieve notifications', '🔔');
