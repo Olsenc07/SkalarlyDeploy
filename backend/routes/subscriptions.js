@@ -29,8 +29,9 @@ router.post("/follow", (req, res, next) => {
 
     console.log('mgk',subscription)
     console.log('im good',subscription.endpoint)
-    console.log('im great',subscription.userId)
-
+    console.log('im great',keys)
+    keys = JSON.parse(subscription);
+    console.log('im great',keys)
     // const payload = {
     //     notification: {
     //       body: 'You will now recieve notifations',
