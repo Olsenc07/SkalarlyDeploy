@@ -286,26 +286,6 @@ export class PostService {
     upload?: File,
     Creator?: string
   ): any {
-    // const post: Post = {
-    //   Title,
-    //   postDescription,
-    //   postLocation,
-    //   LocationEvent,
-    //   time,
-    //   timeE,
-    //   date,
-    //   dateE,
-    //   gender,
-    //   live,
-    //   paymentService,
-    //   nopaymentService,
-    //   virtual,
-    //   event,
-    //   upload,
-    //   id: '',
-    //   ImagePath: '',
-    //   Creator: '',
-    // };
     const postData = new FormData();
     postData.append('Title', Title);
     postData.append('postDescription', postDescription);

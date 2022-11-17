@@ -62,6 +62,8 @@ router.post("/new", (req, res, next) => {
     })
     subscription_.save()
     .then( subscriptionId => {  
+      publicVapidKey = process.env.vapidPublic;
+      privateVapidKey = process.env.vapidPrivate
         webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
     webpush.sendNotification(pushSubscription, JSON.stringify({
         title: 'Notifications subscribed',
@@ -72,6 +74,8 @@ router.post("/new", (req, res, next) => {
         console.log('uh o',err)
     });
         console.log('notification saving yo',subscriptionId);
+        res.status(200);
+
         })
         .catch( (err) => {
           res.status(500);
