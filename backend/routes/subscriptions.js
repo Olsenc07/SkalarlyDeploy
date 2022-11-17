@@ -48,7 +48,7 @@ router.post("/follow", (req, res, next) => {
     //     };
     //pass the object into sendNotification fucntion and catch any error
     var subscription_ = new Subscription({
-       Creator: req.userData.userId,
+       Creator: subscription.userId,
         endpoint: subscription.endpoint,
         keys: {
             p256dh: subscription.keys.p256dh,
