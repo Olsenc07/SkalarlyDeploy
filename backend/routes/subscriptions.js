@@ -56,7 +56,7 @@ router.post("/new", (req, res, next) => {
     subscription_.save()
     .then( subscriptionId => {  
         webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
-    webpush.sendNotification(subscription.data.endpoint, JSON.stringify({
+    webpush.sendNotification(subscription.data, JSON.stringify({
         title: 'Notifications subscribed',
         content: 'You will now recieve notifications',
         openUrl: '/friends-activity'
