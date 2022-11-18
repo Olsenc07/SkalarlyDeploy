@@ -63,16 +63,16 @@ router.post("/new", (req, res, next) => {
     webpush.sendNotification(pushSubscription, JSON.stringify({
         title: 'Successful Connection',
         content: 'You will be notified when other users interact with you.',
-        openUrl: '/friends-activity'
+        // openUrl: '/friends-activity'
     }), options)
     .then((_) => {
-      console.log('SENT!!!');
+      console.log('SENT!');
       res.status(201).json({
         message: 'Registration complete'
       });
   })
     .catch( (err) => {
-        console.log('uh o',err)
+        console.log('uh ooo',err)
         res.status(501).json({
           message: 'Registration error'
         });;
