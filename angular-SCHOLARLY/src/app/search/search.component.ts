@@ -159,21 +159,12 @@ export class SearchComponent implements OnInit {
       });
     // userId
     this.userId = this.authService.getUserId();
-    var Id = this.userId;
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
       });
-    // Register service worker
-    window.addEventListener('load', () => {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/worker.js').then((registration) => {
-          console.log('Service worker registered!');
-        });
-      }
-    });
   }
 
   onSearchSelection(value: string): void {
