@@ -55,12 +55,30 @@ export class SearchComponent implements OnInit {
     public route: ActivatedRoute,
     public postService: PostService,
     private authService: AuthService
-  ) {
+  ) {}
+
+  ngOnInit(): any {
+    this.isLoading = true;
+    this.searchOptions = this.searchListService.getSearchOptions();
+    // posts
+    this.postService.getPosts();
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+      });
+    // userId
     this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+      });
+    // Service worker
     const Id = this.userId;
     const Authservice = this.authService;
-    // Service worker
-
     // Web-Push
     // Public base64 to Uint
     function urlBase64ToUint8Array(base64String): any {
@@ -144,27 +162,6 @@ export class SearchComponent implements OnInit {
     if ('Notification' in window) {
       window.addEventListener('load', askForNotificationPermission);
     }
-  }
-
-  ngOnInit(): any {
-    this.isLoading = true;
-    this.searchOptions = this.searchListService.getSearchOptions();
-    // posts
-    this.postService.getPosts();
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-      });
-    // userId
-    this.userId = this.authService.getUserId();
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authListenerSubs = this.authService
-      .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
-        this.userIsAuthenticated = isAuthenticated;
-      });
   }
 
   onSearchSelection(value: string): void {
