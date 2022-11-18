@@ -14,7 +14,6 @@ self.addEventListener('install', event => {
 
 
 self.addEventListener('push', (event) => {
-  var data = { title: 'Notifications!', content: 'You will now recieve notifications', openUrl:'/'};
   if (event.data) {
      data = JSON.parse(event.data.text());
   }
@@ -25,9 +24,9 @@ self.addEventListener('push', (event) => {
     requireInteraction: true,
     vibrate: [100, 50, 100],
     badge: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
-    // data: {
-    //   url: data.openUrl
-    // },
+    data: {
+      url: data.openUrl
+    },
     tag: 'confirm-notification',
     actions: [
       {action: 'confirm', title: 'Okay', icon: '👍' },

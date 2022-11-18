@@ -2,17 +2,12 @@ const User = require('/app/backend/models/user');
 const Follow = require('/app/backend/models/follow')
 const express = require('express');
 const userInfo = require('/app/backend/models/userInfo');
+const Subscription = require('/app/backend/models/subscription');
 const router = express.Router();
 const webpush = require('web-push');
 publicVapidKey = process.env.vapidPublic;
 privateVapidKey = process.env.vapidPrivate
-// export interface PushSubscription {
-//     endpoint: string;
-//     keys: {
-//         p256dh: string;
-//         auth: string;
-//     };
-// }
+
 const options = {
     vapidDetails: {
         subject: 'mailto:admin@skalarly.com',
@@ -58,28 +53,47 @@ await userInfo.findOne({Creator: req.query.userId})
             })
             FOLLOW.save().then(createdFollow => {
                 res.status(200).json({
-                    message: 'Follow succesfully!',
+                    message: 'Follow succesful!',
                     messages: createdFollow
                 });
-                webpush.sendNotification(subscription, payload,options)
-                .catch(error => {
-                    console.error(error.stack);
-            })
-                
-                
-            })
-        })
-
+// If user is subscribed then send notififaction S.W
+try{
+    Subscription.findOne({Creator: req.query.userId})
+    .then(subscriber =>{
+console.log('road is full',subscriber);
+const subscriber_ = subscriber
+const pushSubscription = {
+    endpoint: subscriber_.data.endpoint,
+    keys: {
+      auth: subscriber_.data.keys.auth,
+      p256dh: subscriber_.data.keys.p256dh
+    }
+  };
+webpush.sendNotification(pushSubscription, JSON.stringify({
+    title: 'New Follower!',
+    content: 'A fellow Skalar has connected with you.',
+    openUrl: '/friends-activity'
+}), options)
+.catch(error => {
+    console.error(error.stack);
 })
+    })
+} catch{
+    console.log('User does not have a subscription')
+}
 })
 .catch(err => {
     return res.status(401).json({
-        message: "Invalid follow error!",
-
+        message: "Invalid following error!"})
+            })
+})
+.catch(err => {
+    return res.status(401).json({
+        message: "Invalid follow error!"})
+            })
+         })
     })
 })
-})
-
 
 
 
