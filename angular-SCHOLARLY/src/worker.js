@@ -20,9 +20,10 @@ self.addEventListener('push', (event) => {
   }
     var options = {
     body: data.content,
-    // icon: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
+    icon: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
     // image: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
-    // vibrate: [100, 50, 100],
+    requireInteraction: true,
+    vibrate: [100, 50, 100],
     badge: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
     data: {
       url: data.openUrl
