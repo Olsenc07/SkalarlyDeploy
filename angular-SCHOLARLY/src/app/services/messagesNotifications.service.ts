@@ -63,7 +63,7 @@ export class MessageNotificationService {
         const updatedPosts = this.messagesDel.filter((msg) => msg.id !== msgId);
         this.messagesDel = updatedPosts;
         this.messagesInfoDel.next([...this.messagesDel]);
-        this.snackBar.open('Message deleted', '🗑', {
+        this.snackBar.open('Message Deleted', '🗑', {
           duration: 3000,
         });
       });

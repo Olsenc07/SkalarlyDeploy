@@ -40,12 +40,6 @@ const options = {
 };
 
 
-
-
-
-
-
-
  const path = require('path');
  const mongoose = require('mongoose');
  const cloudinary = require('cloudinary')
@@ -56,6 +50,8 @@ const options = {
  const followRoutes = require('/app/backend/routes/follow')
  const subscribeRoutes = require('/app/backend/routes/subscriptions')
 
+ const UserInfo = require('/app/backend/models/userInfo');
+ const Subscription = require('/app/backend/models/subscription');
  const Msg = require('/app/backend/models/messages')
  const formatMessage = require('/app/angular-SCHOLARLY/src/app/utils/messages')
  const User = require('/app/backend/models/user');
@@ -123,16 +119,45 @@ io.on('connection', (socket) => {
                                 you: data.userId
                             })
         MESSAGE.save().then(createdMsg => {
-            socket.emit('messageSnd', formatMessage(username.username, Message, data.time ))
-        
+            socket.emit('messageSnd', formatMessage(username.username, Message, data.time ));
+            // Send notification to subscription
+            try{
+              UserInfo.findOne({username: data.otherUser })
+              .then((user) => { 
+            console.log('road is open',user);
+                Subscription.findOne({Creator: user.id})
+                .then(subscriber =>{
+            console.log('road is fuller',subscriber);
+            const subscriber_ = subscriber
+            const pushSubscription = {
+                endpoint: subscriber_.data.endpoint,
+                keys: {
+                  auth: subscriber_.data.keys.auth,
+                  p256dh: subscriber_.data.keys.p256dh
+                }
+              };
+            webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+            webpush.sendNotification(pushSubscription, JSON.stringify({
+                title: 'New Message!',
+                content: ` ${data.otherUser} has messaged you.`,
+                openUrl: '/search'
+            }), options)
+            .catch(error => {
+                console.error(error.stack);
+            })})
+            .catch(err => {
+              console.log('No subscription for messages', err)
             })
-                       }
-                                        })
-       
-                                            }) 
-                                            
-                                                })
-                                            })
+            })
+            }catch{
+              console.log('User does not have a subscription for messages')
+                  } }).catch(err => {
+                    return res.status(401).json({
+                        message: "Invalid messaging error!"})
+                            })
+                }else{
+                  console.log('Message can not be saved or sent!')
+                }   })   })   }) })
                                           
 
 //  DataBase connection

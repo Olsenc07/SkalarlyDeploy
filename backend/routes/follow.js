@@ -69,9 +69,10 @@ const pushSubscription = {
       p256dh: subscriber_.data.keys.p256dh
     }
   };
+  webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
 webpush.sendNotification(pushSubscription, JSON.stringify({
     title: 'New Follower!',
-    content: 'A fellow Skalar has connected with you.',
+    content: `${user.name} has connected with you.`,
     openUrl: '/friends-activity'
 }), options)
 .catch(error => {
@@ -79,7 +80,7 @@ webpush.sendNotification(pushSubscription, JSON.stringify({
 })
     })
 } catch{
-    console.log('User does not have a subscription')
+    console.log('User does not have a subscription for followers')
 }
 })
 .catch(err => {

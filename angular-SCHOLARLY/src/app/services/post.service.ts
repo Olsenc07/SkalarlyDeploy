@@ -363,7 +363,7 @@ export class PostService {
         const updatedPosts = this.posts.filter((post) => post.id !== postId);
         this.posts = updatedPosts;
         this.postsUpdated.next([...this.posts]);
-        this.snackBar.open('Post deleted', '🗑', {
+        this.snackBar.open('Post Deleted', '🗑', {
           duration: 3000,
         });
       });

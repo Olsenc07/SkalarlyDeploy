@@ -236,7 +236,40 @@ if (req.body.userId){
         ProfilePicPath: documents.ProfilePicPath,
         Creator: req.body.userId
     })
-    comment.save().then(createdComment => {
+    comment.save()
+    .then(createdComment => {
+        try{
+            // Creator of post gets notified find them first...
+            Subscription.findOne({Creator: req.query.userId})
+            .then(subscriber =>{
+        publicVapidKey = process.env.vapidPublic;
+        privateVapidKey = process.env.vapidPrivate
+        const pushSubscription = {
+            endpoint: subscriber_.data.endpoint,
+            keys: {
+              auth: subscriber_.data.keys.auth,
+              p256dh: subscriber_.data.keys.p256dh
+            }
+          };
+      webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+      webpush.sendNotification(pushSubscription, JSON.stringify({
+          title: 'Successful Connection',
+          content: 'You will be notified when other users interact with you.',
+          openUrl: '/profile'
+      }), options)
+      .then((_) => {
+        console.log( 'Commented!');
+    })
+      .catch( (err) => {
+          console.log('uh ooo',err)
+          res.status(501).json({
+            message: 'Registration error'
+          });
+      });
+    })
+        }catch{
+        console.log('User does not have a subscription for comments')
+        }
         res.status(201).json({
             message: 'Comment added successfully',
             messages: {

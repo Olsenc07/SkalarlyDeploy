@@ -29,7 +29,7 @@ self.addEventListener('push', (event) => {
     },
     tag: 'confirm-notification',
     actions: [
-      {action: 'confirm', title: 'Okay', icon: '👍' },
+      {action: 'confirm', title: 'Confirm', icon: '👍' },
       {action: 'cancel', title: 'Cancel'},
 
     ]

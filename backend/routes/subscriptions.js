@@ -116,7 +116,7 @@ router.post("/follow", (req, res, next) => {
       console.log('notification saving yo',subscriptionId);
       res.status(201).json({
         message: 'Registration completed'
-      });;
+      });
 
       })
       .catch( (err) => {
