@@ -223,8 +223,7 @@ router.get('/comments', async(req, res) =>{
     
 //  Comment on post
 router.post('/comments',
- async(req, res) =>{
-  
+ async(req, res) =>{ 
 if (req.body.userId){
     await UserInfo.findOne({Creator: req.body.userId })
     .then(documents => {
@@ -240,33 +239,45 @@ if (req.body.userId){
     .then(createdComment => {
         try{
             // Creator of post gets notified find them first...
-            Subscription.findOne({Creator: req.query.userId})
-            .then(subscriber =>{
-        publicVapidKey = process.env.vapidPublic;
-        privateVapidKey = process.env.vapidPrivate
-        const pushSubscription = {
-            endpoint: subscriber_.data.endpoint,
-            keys: {
-              auth: subscriber_.data.keys.auth,
-              p256dh: subscriber_.data.keys.p256dh
-            }
-          };
-      webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
-      webpush.sendNotification(pushSubscription, JSON.stringify({
-          title: 'Successful Connection',
-          content: 'You will be notified when other users interact with you.',
-          openUrl: '/profile'
-      }), options)
-      .then((_) => {
-        console.log( 'Commented!');
-    })
-      .catch( (err) => {
-          console.log('uh ooo',err)
-          res.status(501).json({
-            message: 'Registration error'
+            Post.findOne({id: req.body.postId})
+            .then((user) => {
+                console.log('user 77', user)
+                Subscription.findOne({Creator: user.Creator})
+                .then(subscriber =>{
+            publicVapidKey = process.env.vapidPublic;
+            privateVapidKey = process.env.vapidPrivate
+            const subscriber_ = subscriber
+            const pushSubscription = {
+                endpoint: subscriber_.data.endpoint,
+                keys: {
+                  auth: subscriber_.data.keys.auth,
+                  p256dh: subscriber_.data.keys.p256dh
+                }
+              };
+          webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+          webpush.sendNotification(pushSubscription, JSON.stringify({
+              title: 'Post Comment',
+              content: `${documents.username} has commented on your post`,
+              openUrl: '/profile'
+          }), options)
+          .then((_) => {
+            console.log( 'Commented!');
+        })
+          .catch( (err) => {
+              console.log('uh ooo',err)
+              res.status(501).json({
+                message: 'Registration error'
+              });
           });
-      });
+        })
+        .catch(noSub => {
+                    console.log('User does not sub for comments')
+        })
+            }) 
+            .catch(noUser => {
+                console.log('User does not sub for comments, not good',noUser)
     })
+            
         }catch{
         console.log('User does not have a subscription for comments')
         }
