@@ -68,13 +68,14 @@ router.post("/new", (req, res, next) => {
     }), options)
     .then((_) => {
       console.log('SENT!!!');
-      console.log(_);
+      res.status(201);
   })
     .catch( (err) => {
         console.log('uh o',err)
+        res.status(501);
     });
         console.log('notification saving yo',subscriptionId);
-        res.status(200);
+        res.status(201);
 
         })
         .catch( (err) => {

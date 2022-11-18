@@ -35,8 +35,7 @@ self.addEventListener('push', (event) => {
 
     ]
   }
-  const promiseChain = self.registration.showNotification('Hello, World.');
-
+  const promiseChain = self.registration.showNotification(data.title, options);
   event.waitUntil(promiseChain);
 });
 function displayNotification() {
