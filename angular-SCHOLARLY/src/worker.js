@@ -17,14 +17,13 @@ self.addEventListener('push', (event) => {
   var data = { title: 'Notifications!', content: 'You will now recieve notifications', openUrl:'/'};
   if (event.data) {
      data = JSON.parse(event.data.text());
-     console.log('blow', data)
   }
     var options = {
     body: data.content,
-    icon: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
+    // icon: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
     // image: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
     // vibrate: [100, 50, 100],
-    // badge: '/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg',
+    badge: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
     data: {
       url: data.openUrl
     },
