@@ -47,30 +47,17 @@ function displayNotification() {
 }
 
 self.addEventListener('notificationclick', (event) => {
-  console.log('know what it is')
+  console.log('know what it is', event)
   var notification = event.notification;
   var action = event.action;
   console.log(notification);
   if (action === 'confirm'){
+    self.clients.openWindow(event.notification.data.url)
+
+}
     notification.close()
   }else{
-    console.log('closed notif', action);
-    // event.waitUntil(
-    //   clients.matchAll()
-    //   .then(clis => {
-    //     var client = clis.find(c => {
-    //       return c.visibilityState === 'visible';
-    //     });
-    //     if (client !== undefined){
-    //         client.navigate(notification.data.url);
-    //         client.focus();
-    //     }else{
-    //       client.openWindow(notification.data.url)
-    //     }
-    // notification.close()
-    //   })
-
-    // );
+    console.log('closed notification', action);
     notification.close()
 
   }

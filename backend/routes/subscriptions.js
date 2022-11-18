@@ -44,14 +44,13 @@ router.post("/new", (req, res, next) => {
     .then( subscriptionId => {  
       UserInfo.findOne({Creator: subscription.userId})
       .then(user => {
-          console.log('lover no', user)
         publicVapidKey = process.env.vapidPublic;
         privateVapidKey = process.env.vapidPrivate
       webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
       webpush.sendNotification(pushSubscription, JSON.stringify({
           title: 'Successful Connection',
           content: `${user.username} will be notified when other users interact with you.`,
-          // openUrl: '/friends-activity'
+          openUrl: '/friends-activity'
       }), options)
       .then((_) => {
         console.log( 'SENT!');
