@@ -38,12 +38,15 @@ self.addEventListener('push', (event) => {
   console.log('weed', event)
 
 
-  event.waitUntil(self.registration.pushManager.getSubscription());
-
+  Notification.requestPermission((result) => {
+    if (result === "granted") {
+      navigator.serviceWorker.ready.then((registration) => {
+        registration.showNotification("Vibration Sample", options
+        )
   // event.currentTarget.registration.showNotification('Did it', options)
-
-});
-
+      })
+}});
+    })
 function displayNotification() {
   if (Notification.permission === 'granted'){
     navigator.serviceWorker.getRegistration()
