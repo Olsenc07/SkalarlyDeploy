@@ -35,13 +35,9 @@ self.addEventListener('push', (event) => {
 
     ]
   }
-  console.log('weed', event)
+  const promiseChain = self.registration.showNotification('Hello, World.');
 
-      navigator.serviceWorker.ready.then((registration) => {
-        registration.showNotification("Vibration Sample", options
-        )
-  // event.currentTarget.registration.showNotification('Did it', options)
-      })
+  event.waitUntil(promiseChain);
 });
 function displayNotification() {
   if (Notification.permission === 'granted'){
