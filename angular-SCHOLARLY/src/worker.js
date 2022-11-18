@@ -52,9 +52,11 @@ self.addEventListener('notificationclick', (event) => {
   var action = event.action;
   console.log(notification);
   if (action === 'confirm'){
+    console.log('dad', event.notification.data.url)
+    if( event.notification.data.url ){
+    console.log('mom', event.notification.data.url)
     self.clients.openWindow(event.notification.data.url)
-
-}
+    }
     notification.close()
   }else{
     console.log('closed notification', action);
