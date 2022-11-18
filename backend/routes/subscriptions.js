@@ -31,22 +31,6 @@ router.post("/new", (req, res, next) => {
       }
     };
 
-    // const payload = {
-    //     notification: {
-    //       body: 'You will now recieve notifations',
-    //       icon: '/angular-SCHOLARLY/src/faviconH.ico',
-    //       image: '../../assets/Pics/Skalarly jpeg 2 (hat & logo).png',
-    //       vibrate: [100, 50, 100],
-    //       badge: '/angular-SCHOLARLY/src/faviconH.ico',
-    //       tag: 'confirm-notification',
-    //       actions: [
-    //         {action: 'confirm', title: 'Okay', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
-    //         {action: 'cancel', title: 'Cancel', icon:'/angular-SCHOLARLY/src/faviconH.ico'},
-        
-    //       ]
-    //     }
-    //     };
-    //pass the object into sendNotification fucntion and catch any error
     var subscription_ = new Subscription({
        Creator: subscription.userId,
         endpoint: subscription.data.endpoint,
@@ -66,10 +50,7 @@ router.post("/new", (req, res, next) => {
         // openUrl: '/friends-activity'
     }), options)
     .then((_) => {
-      console.log('SENT!');
-      res.status(201).json({
-        message: 'Registration complete'
-      });
+      console.log(_, 'SENT!');
   })
     .catch( (err) => {
         console.log('uh ooo',err)
