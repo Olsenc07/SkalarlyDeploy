@@ -60,33 +60,25 @@ export class SearchComponent implements OnInit {
     const Id = this.userId;
     const Authservice = this.authService;
     // Service worker
-    // Register service worker
-    window.addEventListener('load', () => {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/worker.js').then((registration) => {
-          console.log('Service worker registered!');
-        });
-      }
-    });
 
     // Web-Push
     // Public base64 to Uint
-    function urlBase64ToUint8Array(base64String) {
-      var padding = '='.repeat((4 - (base64String.length % 4)) % 4);
-      var base64 = (base64String + padding)
+    function urlBase64ToUint8Array(base64String): any {
+      const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+      const base64 = (base64String + padding)
         .replace(/\-/g, '+')
         .replace(/_/g, '/');
 
-      var rawData = window.atob(base64);
-      var outputArray = new Uint8Array(rawData.length);
+      const rawData = window.atob(base64);
+      const outputArray = new Uint8Array(rawData.length);
 
-      for (var i = 0; i < rawData.length; ++i) {
+      for (let i = 0; i < rawData.length; ++i) {
         outputArray[i] = rawData.charCodeAt(i);
       }
       return outputArray;
     }
 
-    function configurePushSub() {
+    function configurePushSub(): any {
       if (!('serviceWorker' in navigator)) {
         return;
       }
@@ -129,13 +121,13 @@ export class SearchComponent implements OnInit {
     }
 
     // displayConfir notif
-    function displayConfirmNotification(): any {
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.ready.then((swreq) => {
-          swreq.showNotification('Successfully subscribed dawg!');
-        });
-      }
-    }
+    // function displayConfirmNotification(): any {
+    //   if ('serviceWorker' in navigator) {
+    //     navigator.serviceWorker.ready.then((swreq) => {
+    //       swreq.showNotification('Successfully subscribed dawg!');
+    //     });
+    //   }
+    // }
 
     // Get notifcation permission
     function askForNotificationPermission(): any {
@@ -174,6 +166,14 @@ export class SearchComponent implements OnInit {
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
       });
+    // Register service worker
+    window.addEventListener('load', () => {
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/worker.js').then((registration) => {
+          console.log('Service worker registered!');
+        });
+      }
+    });
   }
 
   onSearchSelection(value: string): void {

@@ -61,7 +61,7 @@ router.post("/new", (req, res, next) => {
             message: 'Registration error'
           });;
       });
-          console.log('notification saving yo',subscriptionId);
+          console.log('notification saving yo');
           res.status(201).json({
             message: 'Registration completed'
           });
