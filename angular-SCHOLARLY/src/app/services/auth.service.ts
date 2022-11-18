@@ -2351,7 +2351,9 @@ export class AuthService {
       )
       .subscribe({
         next: () => {
-          this.snackBar.open('You will now recieve notifications', '🔔');
+          this.snackBar.open('You will now recieve notifications', '🔔', {
+            duration: 3000,
+          });
         },
         error: (err) => {
           console.log('Unable to add subscription for notifications!', err);

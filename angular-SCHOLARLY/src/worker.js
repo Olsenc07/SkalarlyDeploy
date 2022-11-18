@@ -24,13 +24,13 @@ self.addEventListener('push', (event) => {
     icon: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg',
     image: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png',
     // vibrate: [100, 50, 100],
-    badge: 'angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg',
+    badge: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg',
     data: {
       url: data.openUrl
     },
     tag: 'confirm-notification',
     actions: [
-      {action: 'confirm', title: 'Okay'},
+      {action: 'confirm', title: 'Okay', icon: '👍', timestamp: },
       {action: 'cancel', title: 'Cancel'},
 
     ]
