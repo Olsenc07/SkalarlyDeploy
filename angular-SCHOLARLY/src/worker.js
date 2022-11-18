@@ -21,10 +21,10 @@ self.addEventListener('push', (event) => {
   }
     var options = {
     body: data.content,
-    icon: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg',
-    image: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png',
+    icon: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
+    // image: 'https://res.cloudinary.com/skalarly/image/upload/v1666815580/Icon/Skalarly_1_qjx3tx.jpg',
     // vibrate: [100, 50, 100],
-    badge: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg',
+    // badge: '/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg',
     data: {
       url: data.openUrl
     },
