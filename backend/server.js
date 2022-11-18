@@ -36,7 +36,7 @@ const options = {
       publicKey: publicVapidKey,
       privateKey: privateVapidKey,
   },
-  // TTL: 60,
+  TTL: 60
 };
 
 
@@ -79,24 +79,7 @@ const options = {
     
 // }
 // })
- // Subscribe route for webpush 
-app.post('/subscribe', (req, res) => {
-    // Get pushSubscription object
-    const subscription = req.body;
-
-    // Send 201 - resource created
-    res.status(201).json({});
-
-    // Create payload 
-    const payload = JSON.stringify({ title: ' Push Test'});
-
-    // Pass object into sendNotification
-    webpush.sendNotification(subscription, payload)
-    .catch(err => console.error(err));
-})
-
-
-   
+    
  const server = https.createServer(app)
   
 
@@ -174,7 +157,7 @@ app.use(express.static('build'));
 app.use('/posts', express.static('/app/backend/posts'));
 app.use('/profilePics', express.static('/app/backend/profilePics'));
 app.use('/showCase', express.static('/app/backend/showCase'));
-// app.use('/worker', express.static('/app/angular-SCHOLARLY/src/worker'));
+
 
 
 

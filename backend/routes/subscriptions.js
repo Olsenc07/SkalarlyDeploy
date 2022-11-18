@@ -5,10 +5,9 @@ const express = require('express');
 const UserInfo = require('/app/backend/models/userInfo');
 const router = express.Router();
 const webpush = require('web-push');
-const req = require('express/lib/request');
+
 publicVapidKey = process.env.vapidPublic;
 privateVapidKey = process.env.vapidPrivate
-
 const options = {
     vapidDetails: {
         subject: 'mailto:admin@skalarly.com',
@@ -68,27 +67,26 @@ router.post("/new", (req, res, next) => {
     }), options)
     .then((_) => {
       console.log('SENT!!!');
-      res.status(201);
+      res.status(201).json({
+        message: 'Registration complete'
+      });
   })
     .catch( (err) => {
         console.log('uh o',err)
-        res.status(501);
+        res.status(501).json({
+          message: 'Registration error'
+        });;
     });
         console.log('notification saving yo',subscriptionId);
-        res.status(201);
+        res.status(201).json({
+          message: 'Registration completed'
+        });;
 
         })
         .catch( (err) => {
-          res.status(500);
-          res.send(
-            JSON.stringify({
-              error: {
-                id: 'unable-to-save-subscription',
-                message:
-                  'The subscription was received but we were unable to save it to our database.',
-              },
-            }),
-          );
+          res.status(500).json({
+            message: 'Registration error'
+          });
         });
 })
 
