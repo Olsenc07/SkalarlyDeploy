@@ -21,17 +21,17 @@ self.addEventListener('push', (event) => {
   }
     var options = {
     body: data.content,
-    icon: '/app/angular-SCHOLARLY/src/faviconH.ico',
+    icon: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg',
     image: '/app/angular-SCHOLARLY/src/assets/Pics/Skalarly jpeg 2 (hat & logo).png',
     // vibrate: [100, 50, 100],
-    badge: '/app/angular-SCHOLARLY/src/faviconH.ico',
+    badge: 'angular-SCHOLARLY/src/assets/Pics/Skalarly 1.jpeg',
     data: {
       url: data.openUrl
     },
     tag: 'confirm-notification',
     actions: [
-      {action: 'confirm', title: 'Okay', icon:'/app/angular-SCHOLARLY/src/faviconH.ico'},
-      {action: 'cancel', title: 'Cancel', icon:'/app/angular-SCHOLARLY/src/faviconH.ico'},
+      {action: 'confirm', title: 'Okay'},
+      {action: 'cancel', title: 'Cancel'},
 
     ]
   }

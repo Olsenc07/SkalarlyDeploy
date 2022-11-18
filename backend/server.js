@@ -36,7 +36,7 @@ const options = {
       publicKey: publicVapidKey,
       privateKey: privateVapidKey,
   },
-  TTL: 60,
+  // TTL: 60,
 };
 
 
