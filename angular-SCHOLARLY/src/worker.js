@@ -38,7 +38,7 @@ self.addEventListener('push', (event) => {
   console.log('weed', event)
 
 
-  event.waitUntil(self.registration.showNotification(data.title, options));
+  event.waitUntil(self.registration.pushManager.getSubscription());
 
   // event.currentTarget.registration.showNotification('Did it', options)
 
