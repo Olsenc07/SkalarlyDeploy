@@ -30,7 +30,7 @@ self.addEventListener('push', (event) => {
     },
     tag: 'confirm-notification',
     actions: [
-      {action: 'confirm', title: 'Okay', icon: '👍', timestamp: },
+      {action: 'confirm', title: 'Okay', icon: '👍' },
       {action: 'cancel', title: 'Cancel'},
 
     ]
