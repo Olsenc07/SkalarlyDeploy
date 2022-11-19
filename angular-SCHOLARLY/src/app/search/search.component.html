@@ -48,31 +48,57 @@
 
         <mat-chip-listbox>
           <mat-chip-option [value]="blue-clubs" (click)="onSearchSelection(value)" (click)="displaySpecificSearch()"
-           >Blues Clubs</mat-chip-option>
+           >
+           <i class="fas fa-cubes"></i>
+           Blues Clubs</mat-chip-option>
           <mat-chip-option [value]="buy-sell" 
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">Buy & Sell</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="fas fa-comment-dollar"></i>
+          Buy & Sell</mat-chip-option>
           <mat-chip-option [value]="college-connection" 
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">College Connections</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="fas fa-university"></i>
+          College Connections</mat-chip-option>
           <mat-chip-option [value]="entrep" 
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">Entrepreneurial Opportunities</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="far fa-lightbulb"></i>
+          Entrepreneurial Opportunities</mat-chip-option>
           <mat-chip-option [value]="help" 
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">Helping Hand</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="fas fa-hands-helping"></i>
+          Helping Hand</mat-chip-option>
           <mat-chip-option [value]="housing"
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">Housing</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="fas fa-home"></i>
+          Housing</mat-chip-option>
           <mat-chip-option [value]="course-a-e"
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">Programs A-E'</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="fas fa-feather-alt"></i>
+          Programs A-E'</mat-chip-option>
           <mat-chip-option [value]="course-f-m"
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">Programs F-M</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="fas fa-feather-alt"></i>
+          Programs F-M</mat-chip-option>
           <mat-chip-option [value]="course-n-z"
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">Programs N-Z</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="fas fa-feather-alt"></i>
+          Programs N-Z</mat-chip-option>
           <mat-chip-option [value]="school-work"
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">School Work</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="fas fa-book-reader"></i>
+          School Work</mat-chip-option>
           <mat-chip-option [value]="spiritituality"
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">Spirituality</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="fas fa-praying-hands"></i>
+          Spirituality</mat-chip-option>
           <mat-chip-option [value]="questions"
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">Questions</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="far fa-question-circle"></i>
+          Questions</mat-chip-option>
           <mat-chip-option [value]="upcoming-events"
-          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">Upcoming Events</mat-chip-option>
+          (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
+          <i class="fas fa-calendar-day"></i>
+          Upcoming Events</mat-chip-option>
           <!-- <mat-chip-option *ngFor="let opt of searchOptions" [value]="opt.name"
            (click)="onSearchSelection(opt.value)" color="primary" (click)="displaySpecificSearch()">
             {{ opt.name }}
