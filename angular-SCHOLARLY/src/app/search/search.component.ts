@@ -6,8 +6,6 @@ import { SearchListService } from '../services/search.service';
 import { Post, PostService } from '../services/post.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { AuthDataInfo } from '../signup/auth-data.model';
-import { constants } from 'perf_hooks';
 
 interface SearchOption {
   value: string;
