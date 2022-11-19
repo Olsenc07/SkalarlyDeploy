@@ -45,13 +45,14 @@
               {{ opt.name }}</mat-option>
           </mat-select>
         </mat-form-field> -->
+        <mat-chip-set>
         <mat-chip-listbox>
           <mat-chip-option *ngFor="let opt of searchOptions" [value]="opt.name"
            (click)="onSearchSelection(opt.value)" color="primary" (click)="displaySpecificSearch()">
             {{ opt.name }}
           </mat-chip-option>
         </mat-chip-listbox>
-
+      </mat-chip-set>
 
 
 
