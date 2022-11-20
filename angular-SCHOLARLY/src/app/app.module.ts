@@ -1,13 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ReactiveFormsModule } from '@angular/forms';
+// import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,7 +27,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatStepperModule } from '@angular/material/stepper';
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+// import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -181,12 +181,9 @@ import { ErrorInterceptor } from './error-interceptor';
     ResetPasswordComponent,
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     MatToolbarModule,
-    FormsModule,
     MatInputModule,
     MatIconModule,
     MatButtonModule,
@@ -196,7 +193,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatRadioModule,
     MatSlideToggleModule,
     MatMenuModule,
-    ReactiveFormsModule,
     MatSliderModule,
     FontAwesomeModule,
     MatListModule,
@@ -208,7 +204,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatCheckboxModule,
     MatTabsModule,
     MatStepperModule,
-    NgxMaterialTimepickerModule,
     MatChipsModule,
     MatTreeModule,
     MatAutocompleteModule,

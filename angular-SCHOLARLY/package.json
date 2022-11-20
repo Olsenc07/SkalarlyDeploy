@@ -77,8 +77,6 @@
   "devDependencies": {
     "@angular-devkit/architect": "^0.1500.0",
     "@angular/cdk": "^15.0.0",
-    "@angular/cli": "^15.0.0",
-    "@angular/compiler-cli": "^15.0.0",
     "@angular/core": "^15.0.0",
     "@igniteui/angular-schematics": "14.1.1010",
     "@types/hammerjs": "^2.0.41",
