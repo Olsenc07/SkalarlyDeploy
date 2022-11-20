@@ -69,7 +69,7 @@
           (click)="onSearchSelection('help')" (click)="displaySpecificSearch()">
           <i class="fas fa-hands-helping"></i>
           Helping Hand</mat-chip-option>
-          <mat-chip-option color="primary" selected class="searchBtn"
+          <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('housing')" (click)="displaySpecificSearch()">
           <i class="fas fa-home"></i>
           Housing</mat-chip-option>
@@ -113,12 +113,12 @@
 
         <div class="input-boxs_" *ngIf="opt >= 1">
           <div class="center_single">Step 2: Navigate to the specific page</div>
-          <mat-chip-list class="mat-list-text">
-            <mat-chip [multiple]="false" *ngFor="let opt of specificOptions"
-            color="warn" [value]="opt" class="searchBtn" (click)="navigateToPage(opt)" >
+          <mat-chip-listbox  class="mat-list-text">
+            <mat-chip-option color="primary" [multiple]="false" *ngFor="let opt of specificOptions"
+             [value]="opt" class="searchBtn" (click)="navigateToPage(opt)" >
               {{ opt }}
-            </mat-chip>
-          </mat-chip-list>
+            </mat-chip-option>
+          </mat-chip-listbox>
         </div>
       </div>
     </div>
