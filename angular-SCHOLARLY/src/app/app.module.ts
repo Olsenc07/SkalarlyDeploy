@@ -6,7 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-// import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AppRoutingModule } from './app-routing.module';
@@ -188,6 +188,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MatIconModule,
     MatButtonModule,
     MatDatepickerModule,
+    ReactiveFormsModule,
     MatTooltipModule,
     MatRadioModule,
     MatSlideToggleModule,
