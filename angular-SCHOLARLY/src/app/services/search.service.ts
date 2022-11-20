@@ -1,19 +1,19 @@
 import { Injectable, OnInit } from '@angular/core';
 
 enum SearchValues {
-  COLLEGE_CONNECTION = 'college-connection',
-  BLUE_CLUBS = 'blue-clubs',
-  COURSE_A_E = 'course-a-e',
-  COURSE_F_M = 'course-f-m',
-  COURSE_N_Z = 'course-n-z',
+  COLLEGE_CONNECTION = 'college_connection',
+  BLUE_CLUBS = 'blue_clubs',
+  COURSE_A_E = 'course_a_e',
+  COURSE_F_M = 'course_f_m',
+  COURSE_N_Z = 'course_n_z',
   ENTREP_IDEA = 'entrep',
   HELP_WANTED = 'help',
   HOUSING = 'housing',
-  MISCELL_BUY_SELL = 'buy-sell',
-  SCHOOL_WORK = 'school-work',
+  MISCELL_BUY_SELL = 'buy_sell',
+  SCHOOL_WORK = 'school_work',
   SPIRITUALITY = 'spiritituality',
   U_OF_T_QS = 'questions',
-  UPCOMING_EVENTS = 'upcoming-events',
+  UPCOMING_EVENTS = 'upcoming_events',
 }
 interface SearchOption {
   value: string;
