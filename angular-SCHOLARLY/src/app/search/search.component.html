@@ -46,52 +46,52 @@
           </mat-select>
         </mat-form-field> -->
 
-        <mat-chip-set>
+ 
         <mat-chip-listbox>
           <mat-chip [value]="blue-clubs" (click)="onSearchSelection(value)" (click)="displaySpecificSearch()"
-          color="primary" >
+          color="primary" selected>
            <i class="fas fa-cubes"></i>
            Blues Clubs</mat-chip>
-          <mat-basic-chip-option  [value]="buy-sell" 
+          <mat-chip  [value]="buy-sell" 
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="fas fa-comment-dollar"></i>
-          Buy & Sell</mat-basic-chip-option >
-          <mat-chip-option [value]="college-connection" 
+          Buy & Sell</mat-chip >
+          <mat-chip [value]="college-connection" 
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="fas fa-university"></i>
-          College Connections</mat-chip-option>
-          <mat-chip-option [value]="entrep" 
+          College Connections</mat-chip>
+          <mat-chip [value]="entrep" 
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="far fa-lightbulb"></i>
-          Entrepreneurial Opportunities</mat-chip-option>
-          <mat-chip-option [value]="help" 
+          Entrepreneurial Opportunities</mat-chip>
+          <mat-chip [value]="help" 
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="fas fa-hands-helping"></i>
-          Helping Hand</mat-chip-option>
-          <mat-chip-option [value]="housing"
+          Helping Hand</mat-chip>
+          <mat-chip [value]="housing"
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="fas fa-home"></i>
-          Housing</mat-chip-option>
-          <mat-chip-option [value]="course-a-e"
+          Housing</mat-chip>
+          <mat-chip [value]="course-a-e"
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="fas fa-feather-alt"></i>
-          Programs A-E'</mat-chip-option>
-          <mat-chip-option [value]="course-f-m"
+          Programs A-E'</mat-chip>
+          <mat-chip [value]="course-f-m"
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="fas fa-feather-alt"></i>
-          Programs F-M</mat-chip-option>
-          <mat-chip-option [value]="course-n-z"
+          Programs F-M</mat-chip>
+          <mat-chip [value]="course-n-z"
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="fas fa-feather-alt"></i>
-          Programs N-Z</mat-chip-option>
-          <mat-chip-option [value]="school-work"
+          Programs N-Z</mat-chip>
+          <mat-chip [value]="school-work"
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="fas fa-book-reader"></i>
-          School Work</mat-chip-option>
-          <mat-chip-option [value]="spiritituality"
+          School Work</mat-chip>
+          <mat-chip [value]="spiritituality"
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="fas fa-praying-hands"></i>
-          Spirituality</mat-chip-option>
+          Spirituality</mat-chip>
           <mat-chip-option [value]="questions"
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="far fa-question-circle"></i>
@@ -106,7 +106,7 @@
           </mat-chip-option> -->
 
         </mat-chip-listbox>
-      </mat-chip-set>
+
 
 
 
