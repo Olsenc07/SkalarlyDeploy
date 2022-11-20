@@ -47,10 +47,10 @@
         </mat-form-field> -->
 
         <mat-chip-listbox>
-          <mat-chip-option [value]="blue-clubs" (click)="onSearchSelection(value)" (click)="displaySpecificSearch()"
+          <mat-chip [value]="blue-clubs" (click)="onSearchSelection(value)" (click)="displaySpecificSearch()"
            >
            <i class="fas fa-cubes"></i>
-           Blues Clubs</mat-chip-option>
+           Blues Clubs</mat-chip>
           <mat-chip-option [value]="buy-sell" 
           (click)="onSearchSelection(value)" (click)="displaySpecificSearch()">
           <i class="fas fa-comment-dollar"></i>
