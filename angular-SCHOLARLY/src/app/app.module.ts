@@ -2,13 +2,12 @@
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MatTabsModule } from '@angular/material/tabs';
 // import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 // import { ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
+// import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AppRoutingModule } from './app-routing.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -188,7 +187,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatTabsModule,
     MatIconModule,
     MatButtonModule,
-    FlexLayoutModule,
     MatDatepickerModule,
     MatTooltipModule,
     MatRadioModule,
@@ -203,7 +201,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatSelectModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatTabsModule,
     MatStepperModule,
     MatChipsModule,
     MatTreeModule,
