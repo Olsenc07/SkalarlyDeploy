@@ -2,7 +2,7 @@
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { MatTabsModule } from '@angular/material/tabs';
 // import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
@@ -185,6 +185,7 @@ import { ErrorInterceptor } from './error-interceptor';
     HttpClientModule,
     MatToolbarModule,
     MatInputModule,
+    MatTabsModule,
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
