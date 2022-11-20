@@ -113,12 +113,12 @@
 
         <div class="input-boxs_" *ngIf="opt >= 1">
           <div class="center_single">Step 2: Navigate to the specific page</div>
-          <mat-chip-listbox  class="mat-list-text">
-            <mat-chip-option color="primary" [multiple]="false" *ngFor="let opt of specificOptions"
+          <mat-chip-list  class="mat-list-text">
+            <mat-chip color="primary" [multiple]="false" *ngFor="let opt of specificOptions"
              [value]="opt" class="searchBtn" (click)="navigateToPage(opt)" >
               {{ opt }}
-            </mat-chip-option>
-          </mat-chip-listbox>
+            </mat-chip>
+          </mat-chip-list>
         </div>
       </div>
     </div>

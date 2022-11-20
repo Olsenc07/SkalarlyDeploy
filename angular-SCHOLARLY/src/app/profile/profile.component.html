@@ -184,7 +184,7 @@
             <div class=" scroll">
                 <!-- *ngFor="let list of Com" -->
                 <div class="list">
-                  <mat-chip-list class="center__">
+                  <mat-chip-list class="center__" color="primary">
                     <div class="columnCoursesBox">
 
                     <mat-card-title class="titleC">
@@ -200,7 +200,7 @@
                     *ngIf="info.CodeCompleted || info.CodeCompleted2 || info.CodeCompleted3|| info.CodeCompleted4|| info.CodeCompleted5" style="color: saddlebrown; margin-top:4%">
                     </span>
                     <!-- disabled -->
-                    <mat-chip *ngIf="info.CodeCompleted" class="style" color="primary"  >
+                    <mat-chip *ngIf="info.CodeCompleted" class="style" color="primary" selected >
                       <!-- {{list}} -->
                  
                       {{ info.CodeCompleted | uppercase }}
@@ -580,7 +580,7 @@
 
               </div>
                <!-- *ngIf="showCases.length == 0" -->
-               <mat-chip-list >
+               <mat-chip-list class="centerChips">
                 <mat-chip color="accent" class="addShowcase" selected (click)="navigateToEditProfile()">
                 Add Showcase
                 </mat-chip>
