@@ -72,6 +72,11 @@ if(req.query.username === req.query.userId ){
               message: 'Info messages fetched succesfully!',
             messages: messagesNotif
               });
+        }).catch(err => {
+            return res.status(401).json({
+                message: "Fetching message error!",
+        
+            })
         })
     })
     .catch(err => {
