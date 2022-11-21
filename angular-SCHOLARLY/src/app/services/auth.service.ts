@@ -22,7 +22,7 @@ export class AuthService {
   private authStatusListener = new ReplaySubject<boolean>();
 
   private infos: AuthDataInfo[] = [];
-  private infosUpdated = new Subject<AuthDataInfo[]>();
+  private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
   getToken(): string {
     return this.token;
@@ -41,9 +41,12 @@ export class AuthService {
   getAuthStatusListener(): any {
     return this.authStatusListener.asObservable();
   }
+
+  // problem here so unsubscrbei somehow
   getInfoUpdateListener(): any {
     return this.infosUpdated.asObservable();
   }
+
   // User and their info
   createUser(email: string, username: string, password: string): any {
     const authData: AuthData = { email, username, password };
