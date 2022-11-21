@@ -2038,6 +2038,7 @@ export class AuthService {
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
+        console.log('life', this.infos);
         this.infosUpdated.next([...this.infos]);
       });
   }
@@ -2126,7 +2127,6 @@ export class AuthService {
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
-        console.log('life', this.infos);
         this.infosUpdated.next([...this.infos]);
       });
   }
