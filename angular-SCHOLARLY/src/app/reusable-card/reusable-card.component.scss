@@ -232,7 +232,7 @@ font-size: large;
     margin-left: 5%;
     background-color: #11173a;
 }
-.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
+::ng-deep .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
   color: #fff!important;
 }
 .showMore{
