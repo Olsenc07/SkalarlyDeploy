@@ -419,12 +419,17 @@ router.post("/info",
         // edit Name
 router.patch("/infoName", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{name: ''}) .then(update => {
+        await UserInfo.updateOne({Creator:req.body.userId },{name: ''}) 
+        .then(update => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
             });
-        })
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating name failed!'
+            });
+        });
 })
     // edit Bio
 router.patch("/infoBio", checkAuth,
@@ -434,6 +439,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating bio failed!'
             });
         })
 })
@@ -446,6 +455,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating major failed!'
+            });
         })
 })
 // edit sport
@@ -456,6 +469,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating minor failed!'
             });
         })
 })
@@ -468,6 +485,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating club failed!'
+            });
         })
 })
 
@@ -479,6 +500,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating sport failed!'
             });
         })
 })
