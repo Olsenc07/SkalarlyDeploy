@@ -248,12 +248,12 @@ export class MessageCardComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
       this.messagesService.getMessages(this.userId, this.username);
-      this.datasSub = this.messagesService
-        .getInfoUpdateListener()
-        .subscribe((messages: Message[]) => {
-          this.messages = messages;
-          console.log('datas pulled', this.messages);
-        });
+      // this.datasSub = this.messagesService
+      //   .getInfoUpdateListener()
+      //   .subscribe((messages: Message[]) => {
+      //     this.messages = messages;
+      //     console.log('datas pulled', this.messages);
+      //   });
     });
   }
   deleteMsg(msgId: string): any {
