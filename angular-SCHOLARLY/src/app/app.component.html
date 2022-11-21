@@ -269,10 +269,12 @@
           routerLink="/retrieve-password"
           class="look-nice"
         >
+        <div class="align">
           <span class="material-icons d_settings" style="color: burlywood">
             vpn_key
           </span>
           Account Settings
+          </div>
         </button>
 
         <button
@@ -296,7 +298,7 @@
           (click)="navigateToEditProfile()"
           class="look-nice"
         >
-        <div>
+        <div class="align">
           <span class="material-icons d_settings" style="color: #9c6f24">
             lock_open
           </span>
@@ -323,9 +325,11 @@
         (click)="navigateToEditComp()"
         class="look-nice"
       >
+      <div class="align">
         <span class="fas fa-leaf d_settings" style="color: saddlebrown">
         </span>
          Completed Courses 1st Year Fall
+         </div>
       </button>
 
 
@@ -337,9 +341,11 @@
       (click)="navigateToEditCompW()"
       class="look-nice"
     >
+    <div class="align">
       <span class="fas fa-snowflake d_settings" style="color: #88c4f9">
       </span>
        Completed Courses 1st Year Winter
+       </div>
     </button>
 </mat-menu>
 
@@ -351,10 +357,12 @@
       [matMenuTriggerFor]="settingsMenuComp2"
       class="look-nice"
     >
+    <div class="align">
       <span class="material-icons d_settings" style="color: cadetblue">
    check
       </span>
        Completed Courses 2nd Year
+       </div>
     </button>  
     <mat-menu #settingsMenuComp2="matMenu">
       <button
@@ -365,11 +373,12 @@
             (click)="navigateToEditComp2()"
             class="look-nice"
           >
+          <div class="align">
             <span class="fas fa-leaf d_settings" style="color: saddlebrown">
             </span>
              Completed Courses 2nd Year Fall
+             </div>
           </button>
-    
     
           <button
           mat-menu-item
@@ -379,9 +388,11 @@
           (click)="navigateToEditComp2W()"
           class="look-nice"
         >
+        <div class="align">
           <span class="fas fa-snowflake d_settings" style="color: #88c4f9">
           </span>
            Completed Courses 2nd Year Winter
+           </div>
         </button>
     </mat-menu>
       
@@ -391,10 +402,12 @@
     [matMenuTriggerFor]="settingsMenuComp3"
     class="look-nice"
   >
+  <div class="align">
     <span class="material-icons d_settings" style="color: cadetblue">
  check
     </span>
      Completed Courses 3rd Year
+     </div>
   </button>   
   <mat-menu #settingsMenuComp3="matMenu">
     <button
@@ -405,9 +418,11 @@
           (click)="navigateToEditComp3()"
           class="look-nice"
         >
+        <div class="align">
           <span class="fas fa-leaf d_settings" style="color: saddlebrown">
           </span>
            Completed Courses 3rd Year Fall
+           </div>
         </button>
   
   
@@ -419,9 +434,11 @@
         (click)="navigateToEditComp3W()"
         class="look-nice"
       >
+      <div class="align">
         <span class="fas fa-snowflake d_settings" style="color: #88c4f9">
         </span>
          Completed Courses 3rd Year Winter
+         </div>
       </button>
   </mat-menu> 
    <button
@@ -430,10 +447,12 @@
   [matMenuTriggerFor]="settingsMenuComp4"
   class="look-nice"
 >
+<div class="align">
   <span class="material-icons d_settings" style="color: cadetblue">
 check
   </span>
    Completed Courses 4th Year
+   </div>
 </button>
 <mat-menu #settingsMenuComp4="matMenu">
   <button
@@ -444,10 +463,11 @@ check
         (click)="navigateToEditComp4()"
         class="look-nice"
       >
+      <div class="align">
         <span class="fas fa-leaf d_settings" style="color: saddlebrown">
-
         </span>
          Completed Courses 4th Year Fall
+         </div>
       </button>
 
 
@@ -459,9 +479,11 @@ check
       (click)="navigateToEditComp4W()"
       class="look-nice"
     >
+    <div class="align">
       <span class="fas fa-snowflake d_settings" style="color: #88c4f9">
       </span>
        Completed Courses 4th Year Winter
+       </div>
     </button>
 </mat-menu> 
 <button
@@ -470,10 +492,12 @@ type="button"
 [matMenuTriggerFor]="settingsMenuPur"
 class="look-nice"
 >
+<div class="align">
 <span class="material-icons d_settings" style="color: #7474e6">
   format_list_numbered
 </span>
 Next Courses 
+</div>
 </button>
 <mat-menu #settingsMenuPur="matMenu">
   <button
@@ -484,9 +508,11 @@ Next Courses
         (click)="navigateToEditPur()"
         class="look-nice"
       >
+      <div class="align">
         <span class="fas fa-leaf d_settings" style="color: saddlebrown">
         </span>
         Next Courses Fall
+        </div>
       </button>
 
 
@@ -498,9 +524,11 @@ Next Courses
       (click)="navigateToEditPurW()"
       class="look-nice"
     >
+    <div class="align">
       <span class="fas fa-snowflake d_settings" style="color: #88c4f9">
       </span>
       Next Courses Winter
+      </div>
     </button>
     <button
     mat-menu-item
@@ -510,9 +538,11 @@ Next Courses
     (click)="navigateToEditPurSp()"
     class="look-nice"
   >
+  <div class="align">
     <span class="fas fa-seedling d_settings" style="color: cadetblue">
     </span>
     Next Courses Spring
+    </div>
   </button>
 
 
@@ -538,9 +568,11 @@ Next Courses
           (click)="messagesUnClickedBtn()"
           class="look-nice"
         >
+        <div class="align">
           <span class="material-icons d_settings" style="color: darkcyan">
-            exit_to_app </span
-          >Log Out
+            exit_to_app </span>
+            Log Out
+            </div>
         </button>
         <!-- TODO: wire up log out button -->
       </mat-menu>
