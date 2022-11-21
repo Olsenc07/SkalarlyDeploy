@@ -235,6 +235,9 @@ font-size: large;
 ::ng-deep .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
   color: #fff!important;
 }
+.mat-mdc-standard-chip {
+  --mdc-chip-disabled-label-text-color: white;
+}
 .showMore{
   display: flex;
   justify-content: center;
