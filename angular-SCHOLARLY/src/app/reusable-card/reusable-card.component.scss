@@ -17,6 +17,8 @@
 }
 .buttonsC{
   display: flex;
+  margin-right: 2%;
+    margin-bottom: 2%;
 }
 .buttonsCWrapper{
   display: flex;
@@ -91,12 +93,14 @@ margin-top: 1%;
   font-family: 'Poppins',sans-serif;
 }
 .comment-form-buttton{
-  font-family:  'Cinzel', serif;
+background-color: #f44336;
 }
+
 .column1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2%;
 }
 .column_ {
   display: flex;
@@ -224,6 +228,12 @@ font-size: large;
 }
 .showCommentsBtn{
   color: #11173a;
+  margin-bottom: 2%;
+    margin-left: 5%;
+    background-color: #11173a;
+}
+.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
+  color: #fff!important;
 }
 .showMore{
   display: flex;
@@ -283,6 +293,8 @@ font-family: 'Cinzel', serif;
   height: 55px;
   border-radius: 50%;
   overflow: hidden;
+  margin-left: 2%;
+  margin-top: 2%;
 }
 .postTitle {
   display: flex;
@@ -311,6 +323,7 @@ font-family: 'Cinzel', serif;
   // justify-content: center;
   // border-color: #ececee;
   text-align: center;
+  margin-left: 2%;
 }
 
 ::ng-deep .mat-radio-label {
@@ -392,6 +405,7 @@ font-family: 'Cinzel', serif;
   margin-top: 2%;
   flex-direction: column;
   box-sizing: border-box;
+  padding: 1%;
 }
 .userName {
   display: flex;
