@@ -283,10 +283,12 @@
                       [matMenuTriggerFor]="settingsMenuCourses"
           class="look-nice"
         >
+        <div class="align">
           <div class="material-icons d_settings" style="color: #9c6f24">
             lock
           </div>
           Edit Profile
+          </div>
         </button>
         <mat-menu #settingsMenuCourses="matMenu">
           <button
@@ -311,10 +313,12 @@
         [matMenuTriggerFor]="settingsMenuComp1"
         class="look-nice"
       >
+      <div class="align">
         <div class="material-icons d_settings" style="color: cadetblue">
      check
         </div>
          Completed Courses 1st Year
+         </div>
       </button>
 <mat-menu #settingsMenuComp1="matMenu">
   <button
@@ -554,9 +558,11 @@ Next Courses
   (click)="navigateToEditPurSu()"
   class="look-nice"
 >
+<div class="align">
   <span class="fas fa-sun d_settings" style="color: #d89163">
   </span>
   Next Courses Summer
+  </div>
 </button>
 </mat-menu>
 </mat-menu>
