@@ -414,6 +414,10 @@ router.post("/info",
                     message: 'Unable to add information'
                 });
             });
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Getting info failed!'
+        });
     })
     });
         // edit Name
@@ -516,6 +520,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -526,6 +534,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -538,6 +550,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -548,6 +564,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -560,6 +580,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -570,6 +594,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -582,6 +610,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -592,6 +624,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -604,6 +640,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -614,6 +654,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -626,6 +670,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -636,6 +684,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -648,6 +700,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -658,6 +714,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -681,6 +741,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -691,6 +755,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -703,6 +771,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -713,6 +785,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -725,6 +801,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -735,6 +815,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -747,6 +831,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -757,6 +845,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -769,6 +861,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -779,6 +875,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -791,6 +891,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -801,6 +905,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -813,6 +921,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -823,6 +935,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -835,6 +951,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -845,6 +965,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -857,6 +981,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -867,6 +995,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -879,6 +1011,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -889,6 +1025,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -901,6 +1041,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -911,6 +1055,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -923,6 +1071,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -933,6 +1085,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -945,6 +1101,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Complete 1
@@ -955,6 +1115,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -968,6 +1132,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Next Course
@@ -978,6 +1146,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -990,6 +1162,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Next Course
@@ -1000,6 +1176,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -1012,6 +1192,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Next Course
@@ -1022,6 +1206,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -1034,6 +1222,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Next Course
@@ -1044,6 +1236,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -1056,6 +1252,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Next Course
@@ -1066,6 +1266,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -1078,6 +1282,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Next Course
@@ -1088,6 +1296,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -1100,6 +1312,10 @@ async(req, res, next) => {
                 message: 'Clean update',
                 post: update
             });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
+            });
         })
 })
 // edit Next Course
@@ -1110,6 +1326,10 @@ async(req, res, next) => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Updating course failed!'
             });
         })
 })
@@ -1135,7 +1355,15 @@ router.put("/infoEdPic", checkAuth,
                                 message: 'Clean update',
                                 post: results
                             });
+                        }).catch(error => {
+                            res.status(500).json({
+                                message: 'Updating pic failed!'
+                            });
                         })
+                        }).catch(error => {
+                            res.status(500).json({
+                                message: 'Updating picture failed!'
+                            });
                         })}
                     else{
                         res.status(500).json({
@@ -1151,6 +1379,11 @@ async(req, res, next) => {
                         message: 'Clean update',
                         post: update
                     });
+                })
+                .catch(error => {
+                    res.status(500).json({
+                        message: 'Updating name failed!'
+                    });
                 })}})
 router.put("/infoEdBio", checkAuth,
 async(req, res, next) => { 
@@ -1160,6 +1393,11 @@ async(req, res, next) => {
                         res.status(200).json({
                             message: 'Clean update',
                             post: update
+                        });
+                    })
+                    .catch(error => {
+                        res.status(500).json({
+                            message: 'Updating course failed!'
                         });
                     })}})
 router.put("/infoEdBirthday", checkAuth,
@@ -1171,7 +1409,12 @@ async(req, res, next) => {
                         message: 'Clean update',
                         post: update
                     });
-                })}})
+                }).catch(error => {
+                    res.status(500).json({
+                        message: 'Updating course failed!'
+                    });
+                })
+            }})
 router.put("/infoEdGender", checkAuth,
 async(req, res, next) => {              
             if(req.body.gender){
@@ -1780,7 +2023,11 @@ if(req.body.CodePursuing7){
                        message: 'Clean update',
                        post: update
                    });
-               })}})                                                                                                                                                                                                             
+               }).catch(error => {
+                res.status(500).json({
+                    message: 'Updating course failed!'
+                });
+            })}})                                                                                                                                                                                                             
                                                                                                                                                                                                                        
 router.put("/infoEdPurSummer13", checkAuth,
   async(req, res, next) => { 
@@ -1791,7 +2038,12 @@ await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing13: req.body.Co
         message: 'Clean update',
         post: update
     });
-})}}) 
+}).catch(error => {
+    res.status(500).json({
+        message: 'Updating course failed!'
+    });
+})
+}}) 
 router.put("/infoEdPurSummer14", checkAuth,
   async(req, res, next) => {        
 if(req.body.CodePursuing14){
