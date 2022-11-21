@@ -20,7 +20,10 @@ interface SearchOption {
   value: string;
   name: string;
 }
-
+export interface specificOptions {
+  name: string;
+  color: ThemePalette;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -68,38 +71,38 @@ export class SearchListService {
     let specificOptions: string[];
     switch (value) {
       case SearchValues.COLLEGE_CONNECTION:
-        specificOptions: [
-          { name: 'Applied Science & Engineering', color: 'primary' },
-          { name: 'Architecture, Landscape & Design', color: 'primary' },
-          { name: 'Arts & Science', color: 'primary' },
-          { name: 'Continuing Studies', color: 'primary' },
-          { name: 'Dentistry', color: 'primary' },
-          { name: 'Education', color: 'primary' },
-          { name: 'Emmanuel College', color: 'primary' },
-          { name: 'Information', color: 'primary' },
-          { name: 'Kinesiology & Physical Education', color: 'primary' },
-          { name: 'Knox College', color: 'primary' },
-          { name: 'Law', color: 'primary' },
-          { name: 'Management', color: 'primary' },
-          { name: 'Medicine', color: 'primary' },
-          { name: 'Music', color: 'primary' },
-          { name: 'New College', color: 'primary' },
-          { name: 'Nursing', color: 'primary' },
-          { name: 'Pharmacy', color: 'primary' },
-          { name: 'Public Health', color: 'primary' },
-          { name: 'Regis College', color: 'primary' },
-          { name: 'Social Work', color: 'primary' },
-          { name: 'St. Micheals College', color: 'primary' },
-          { name: 'Innis College', color: 'primary' },
-          { name: 'Theology', color: 'primary' },
-          { name: 'Trinity College', color: 'primary' },
-          { name: 'University College', color: 'primary' },
+        specificOptions = [
+          'Applied Science & Engineering',
+          'Architecture, Landscape & Design',
+          'Arts & Science',
+          'Continuing Studies',
+          'Dentistry',
+          'Education',
+          'Emmanuel College',
+          'Information',
+          'Kinesiology & Physical Education',
+          'Knox College',
+          'Law',
+          'Management',
+          'Medicine',
+          'Music',
+          'New College',
+          'Nursing',
+          'Pharmacy',
+          'Public Health',
+          'Regis College',
+          'Social Work',
+          'St. Micheals College',
+          'Innis College',
+          'Theology',
+          'Trinity College',
+          'University College',
           // How would these work..
-          { name: 'U Of T Mississauga', color: 'primary' },
-          { name: 'U Of T Scarborough', color: 'primary' },
-          { name: 'Victoria College', color: 'primary' },
-          { name: 'Woodsworth College', color: 'primary' },
-          { name: 'Wycliffe College', color: 'primary' },
+          'U Of T Mississauga',
+          'U Of T Scarborough',
+          'Victoria College',
+          'Woodsworth College',
+          'Wycliffe College',
         ];
         break;
       case SearchValues.BLUE_CLUBS:

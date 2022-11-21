@@ -277,6 +277,11 @@
 .searchBtn{
   margin: 1%;
 }
+.searchBtn_{
+  margin: 1%;
+color: white !important;
+background-color: #11173a !important;
+}
 @media (min-width: 1025px) {
   .recents {
     display: flex;
