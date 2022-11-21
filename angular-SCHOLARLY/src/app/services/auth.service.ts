@@ -1959,7 +1959,7 @@ export class AuthService {
       )
       .pipe(
         map((infosData) => {
-          return infosData.infos.map((info) => {
+          return infosData.infos((info) => {
             return {
               id: info._id,
               username: info.username,
