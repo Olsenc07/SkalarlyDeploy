@@ -36,6 +36,7 @@
 }
 .addShowcase{
   color: white !important;
+  background-color: #ff4081 !important;
 }
 
 .bio {
@@ -853,7 +854,7 @@ mat-tab-group {
   margin-top: 7%;
 }
 .style {
-  color: black;
+  color: white !important;
   background-color: #3f51b5 !important;
   margin: 1%;
 }
@@ -943,6 +944,7 @@ font-family: 'Cinzel',serif;
 margin-top: 3%;
 width: 100%;
 font-weight: bold;
+background-color: #dfdfdf;
 }
 .title1 {
   display: flex;
