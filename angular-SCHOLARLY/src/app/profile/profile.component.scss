@@ -573,6 +573,9 @@ mat-grid-list {
     height: 70%;
   }
 }
+.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
+color: white !important;
+}
 .name{
   display: flex;
   width: 100%;
