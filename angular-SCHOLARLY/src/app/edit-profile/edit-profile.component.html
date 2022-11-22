@@ -1,6 +1,6 @@
-<!-- <form enctype="multipart/form-data"   *ngFor="let info of infos">
+<form enctype="multipart/form-data"   *ngFor="let info of infos">
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-     <mat-tab >
+     <!-- <mat-tab >
       <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
           account_circle
@@ -12,11 +12,10 @@
         <div class="middle">
 
 
-
-     
           <div class="personalizeLarge">
             <div class="centerR">
               <div class="pics">
+                <!-- Profile Pic is currently filled with pic being used rn --
                 <div>
                   <div class="centerD">
                     <div class="text">Change Profile Picture</div>
@@ -35,7 +34,6 @@
                     <input #fileInputP id="fileInputP" class="hide" accept=".png, .jpg, .jpeg .JPG" type="file"
                       (change)="imagePreviewPP($event)"  [formControl]="profilePic"
                       name="profilePic">
-               
                   </div>
           <div class="doneShowCase">
                   <button mat-raised-button color="primary" *ngIf="profilePic.value" type="button" class="button"
@@ -67,7 +65,7 @@
               <div class="PreviewPic">
                 <h2 class="Preview">Image Preview</h2>
                 <div class="center">
-                 
+                  <!-- save this value for the form control --
                   <img class="previewPic" id="ProfilePic" [src]="urlPP" />
                 </div>
               </div>
@@ -193,8 +191,8 @@
 
         </div> 
       </div> 
-    </mat-tab> 
-    <mat-tab label="">
+    </mat-tab>  -->
+    <mat-tab >
       <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
           interests
@@ -206,7 +204,7 @@
         <div class="groupsjj_box">
         <div class="groups-jj ">
 
-<!-- Text Field Major/Minor --
+<!-- Text Field Major/Minor -->
 <div class="major-layout">
   <div class="input">
     <span class="fas fa-star _icon" *ngIf="!major.value">
@@ -257,7 +255,7 @@
   </div>
 </div>
 
-<!-- Text Field Sport/Club --
+<!-- Text Field Sport/Club -->
 <div class="input">
   <span class="fas fa-running _icon" *ngIf="!sport.value">
   </span>
@@ -310,7 +308,7 @@
 
         
 
-          <!-- done button --
+          <!-- done button -->
           <div class="done">
             <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Go To Profile</button>
                     </div>
@@ -327,9 +325,9 @@
       </span></mat-icon>
     <div >Showcase</div>
   </ng-template>
- <!-- Image Preview --
+ <!-- Image Preview -->
  <div class="rowShow">
-  <!-- <div class="column"> --
+  <!-- <div class="column"> -->
   <div *ngIf=" clicked == false">
     <div class="row">
       <div class="snapshot">Add Showcase</div>
@@ -375,4 +373,4 @@
   </mat-tab-group>
 
 
-</form> -->
+</form>
