@@ -1,5 +1,4 @@
-<form enctype="multipart/form-data"   *ngFor="let info of infos">
-  <!-- (ngSubmit)="onSubmit()" [formGroup]="editForm" -->
+<!-- <form enctype="multipart/form-data"   *ngFor="let info of infos">
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
      <mat-tab >
       <ng-template mat-tab-label>
@@ -9,26 +8,15 @@
         <div >Personal</div>
       </ng-template>
       <div class="entire-page">
-         <!-- <div class="rowT">
-          <button mat-icon-button class="display1" routerLink="/profile">
-            <span class="material-icons">
-              arrow_back_ios
-            </span>
-          </button>
 
-         </div>   -->
-
-        <!-- lower box -->
         <div class="middle">
 
 
 
-          <!-- input pic & has this default pic before-->
-          <!-- Upload one profile pic -->
+     
           <div class="personalizeLarge">
             <div class="centerR">
               <div class="pics">
-                <!-- Profile Pic is currently filled with pic being used rn -->
                 <div>
                   <div class="centerD">
                     <div class="text">Change Profile Picture</div>
@@ -47,7 +35,7 @@
                     <input #fileInputP id="fileInputP" class="hide" accept=".png, .jpg, .jpeg .JPG" type="file"
                       (change)="imagePreviewPP($event)"  [formControl]="profilePic"
                       name="profilePic">
-                      <!-- (change)="onImgChange($event)" -->
+               
                   </div>
           <div class="doneShowCase">
                   <button mat-raised-button color="primary" *ngIf="profilePic.value" type="button" class="button"
@@ -62,7 +50,7 @@
                     (imageLoaded)="imgLoad()" (cropperReady)="initCropper()" (loadImageFailed)="imgFailed()"
                     [ngClass]="profilePic.value ? 'show' : 'hide' ">
                   </image-cropper>
-                </div> -->
+                </div> --
 
               </div>
             </div>
@@ -79,7 +67,7 @@
               <div class="PreviewPic">
                 <h2 class="Preview">Image Preview</h2>
                 <div class="center">
-                  <!-- save this value for the form control -->
+                 
                   <img class="previewPic" id="ProfilePic" [src]="urlPP" />
                 </div>
               </div>
@@ -111,7 +99,7 @@
           </div>
 
             <div class="input">
-              <!-- Birthday picker -->
+              <!-- Birthday picker --
               <i class="material-icons _icon" *ngIf="!birthday.value">cake</i>
   <button mat-icon-button type="button" *ngIf="birthday.value" (click)="saveBirthday()" matTooltip="Save Birthday">
               <i class="material-icons check"  *ngIf="birthday.value">cake</i>
@@ -130,7 +118,7 @@
 
 
 
-           <!-- Gender -->
+           <!-- Gender --
       <div class="gender">
         <i class="material-icons _icon" *ngIf="!gender.value">transgender</i>
         <button mat-icon-button type="button" *ngIf="gender.value" (click)="saveGender()" matTooltip="Save Gender">
@@ -148,7 +136,7 @@
           </mat-autocomplete>
         </mat-form-field>
       </div>
-      <!-- Pronouns -->
+      <!-- Pronouns --
           <div class="gender">
             <i class="material-icons _icon" *ngIf="!pronoun.value">psychology</i>
             <button mat-icon-button type="button" *ngIf="pronoun.value" (click)="savePronoun()" matTooltip="Save Pronouns">
@@ -167,7 +155,7 @@
       </mat-form-field>
           </div>
          
-      <!-- Bio -->
+      <!-- Bio --
   
           <div class="input">
             <i class="fas fa-heart  _icon" *ngIf="!bio.value"></i>
@@ -197,7 +185,7 @@
           </div>
           
        
-          <!-- Save button -->
+          <!-- Save button --
           <div class="done">
   <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Go To Profile</button>
           </div>
@@ -218,7 +206,7 @@
         <div class="groupsjj_box">
         <div class="groups-jj ">
 
-<!-- Text Field Major/Minor -->
+<!-- Text Field Major/Minor --
 <div class="major-layout">
   <div class="input">
     <span class="fas fa-star _icon" *ngIf="!major.value">
@@ -269,7 +257,7 @@
   </div>
 </div>
 
-<!-- Text Field Sport/Club -->
+<!-- Text Field Sport/Club --
 <div class="input">
   <span class="fas fa-running _icon" *ngIf="!sport.value">
   </span>
@@ -322,7 +310,7 @@
 
         
 
-          <!-- done button -->
+          <!-- done button --
           <div class="done">
             <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Go To Profile</button>
                     </div>
@@ -339,9 +327,9 @@
       </span></mat-icon>
     <div >Showcase</div>
   </ng-template>
- <!-- Image Preview -->
+ <!-- Image Preview --
  <div class="rowShow">
-  <!-- <div class="column"> -->
+  <!-- <div class="column"> --
   <div *ngIf=" clicked == false">
     <div class="row">
       <div class="snapshot">Add Showcase</div>
@@ -359,7 +347,7 @@
           <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
             (change)="imagePreview($event)"  [formControl]="showCase" name="showCase"  class="hide"
             >
-            <!-- (change)="arrayAdd($event)" -->
+           
         </div>
       </button>
     </div>
@@ -379,7 +367,7 @@
     </button>
   </div>
 </div>
-<!-- done button -->
+
 
 </mat-tab>
 
@@ -387,4 +375,4 @@
   </mat-tab-group>
 
 
-</form>
+</form> -->
