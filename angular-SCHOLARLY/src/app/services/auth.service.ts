@@ -2040,7 +2040,13 @@ export class AuthService {
         })
       )
       .subscribe((transformedInfos) => {
-        console.log('captured personal info');
+        next: () => {
+          console.log('captured personal info');
+    
+        },
+        error: (error) => {
+          console.log('clean up');
+        },
         // this.infos = transformedInfos;
         // console.log('life', this.infos);
         // for (const [key, value] of Object.entries(this.infos)) {
