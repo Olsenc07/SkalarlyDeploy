@@ -1,6 +1,6 @@
 <form enctype="multipart/form-data"   *ngFor="let info of infos">
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-     <!-- <mat-tab >
+     <mat-tab >
       <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
           account_circle
@@ -15,7 +15,7 @@
           <div class="personalizeLarge">
             <div class="centerR">
               <div class="pics">
-                <!-- Profile Pic is currently filled with pic being used rn --
+                <!-- Profile Pic is currently filled with pic being used rn -->
                 <div>
                   <div class="centerD">
                     <div class="text">Change Profile Picture</div>
@@ -48,7 +48,7 @@
                     (imageLoaded)="imgLoad()" (cropperReady)="initCropper()" (loadImageFailed)="imgFailed()"
                     [ngClass]="profilePic.value ? 'show' : 'hide' ">
                   </image-cropper>
-                </div> --
+                </div> -->
 
               </div>
             </div>
@@ -65,7 +65,7 @@
               <div class="PreviewPic">
                 <h2 class="Preview">Image Preview</h2>
                 <div class="center">
-                  <!-- save this value for the form control --
+                  <!-- save this value for the form control -->
                   <img class="previewPic" id="ProfilePic" [src]="urlPP" />
                 </div>
               </div>
@@ -97,7 +97,7 @@
           </div>
 
             <div class="input">
-              <!-- Birthday picker --
+              <!-- Birthday picker -->
               <i class="material-icons _icon" *ngIf="!birthday.value">cake</i>
   <button mat-icon-button type="button" *ngIf="birthday.value" (click)="saveBirthday()" matTooltip="Save Birthday">
               <i class="material-icons check"  *ngIf="birthday.value">cake</i>
@@ -116,7 +116,7 @@
 
 
 
-           <!-- Gender --
+           <!-- Gender -->
       <div class="gender">
         <i class="material-icons _icon" *ngIf="!gender.value">transgender</i>
         <button mat-icon-button type="button" *ngIf="gender.value" (click)="saveGender()" matTooltip="Save Gender">
@@ -134,7 +134,7 @@
           </mat-autocomplete>
         </mat-form-field>
       </div>
-      <!-- Pronouns --
+      <!-- Pronouns -->
           <div class="gender">
             <i class="material-icons _icon" *ngIf="!pronoun.value">psychology</i>
             <button mat-icon-button type="button" *ngIf="pronoun.value" (click)="savePronoun()" matTooltip="Save Pronouns">
@@ -153,7 +153,7 @@
       </mat-form-field>
           </div>
          
-      <!-- Bio --
+      <!-- Bio -->
   
           <div class="input">
             <i class="fas fa-heart  _icon" *ngIf="!bio.value"></i>
@@ -183,7 +183,7 @@
           </div>
           
        
-          <!-- Save button --
+          <!-- Save button -->
           <div class="done">
   <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Go To Profile</button>
           </div>
@@ -191,8 +191,8 @@
 
         </div> 
       </div> 
-    </mat-tab>  -->
-    <mat-tab >
+    </mat-tab> 
+    <!-- <mat-tab >
       <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
           interests
@@ -204,7 +204,7 @@
         <div class="groupsjj_box">
         <div class="groups-jj ">
 
-<!-- Text Field Major/Minor -->
+<!-- Text Field Major/Minor --
 <div class="major-layout">
   <div class="input">
     <span class="fas fa-star _icon" *ngIf="!major.value">
@@ -255,7 +255,7 @@
   </div>
 </div>
 
-<!-- Text Field Sport/Club -->
+<!-- Text Field Sport/Club --
 <div class="input">
   <span class="fas fa-running _icon" *ngIf="!sport.value">
   </span>
@@ -308,7 +308,7 @@
 
         
 
-          <!-- done button -->
+          <!-- done button --
           <div class="done">
             <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Go To Profile</button>
                     </div>
@@ -316,7 +316,7 @@
       </div>
 </div>
 
-    </mat-tab>
+    </mat-tab> -->
 
 <mat-tab >
   <ng-template mat-tab-label>
