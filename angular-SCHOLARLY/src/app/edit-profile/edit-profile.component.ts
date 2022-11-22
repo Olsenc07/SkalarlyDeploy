@@ -268,23 +268,23 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit(): any {
-    // this.userId = this.authService.getUserId();
-    // this.authService.getInfoPersonal(this.userId);
-    // this.infosSub = this.authService
-    //   .getInfoUpdateListener()
-    //   .subscribe((infos: AuthDataInfo[]) => {
-    //     this.infos = infos;
-    //   });
-    // this.form = new FormGroup({
-    //   showCase: new FormControl(null, {
-    //     validators: [Validators.required],
-    //     asyncValidators: [mimeType],
-    //   }),
-    //   profilePic: new FormControl(null, {
-    //     validators: [Validators.required],
-    //     asyncValidators: [mimeType],
-    //   }),
-    // });
+    this.userId = this.authService.getUserId();
+    this.authService.getInfoPersonal(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+      });
+    this.form = new FormGroup({
+      showCase: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+      profilePic: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+    });
   }
   clearBio(): void {
     this.bio.setValue('');
