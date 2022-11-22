@@ -439,7 +439,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   templateUrl: './edit-ProfileComp1.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComp1Component implements OnInit, OnDestroy {
+export class EditProfileComp1Component implements OnInit {
   userId: string;
   infos: AuthDataInfo[] = [];
   classes: string[] = [];
@@ -465,7 +465,7 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.infosSub = this.authService
+    this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
@@ -475,9 +475,7 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
       this.CodeCompletedLength.next(v.length)
     );
   }
-  ngOnDestroy(): any {
-    this.infosSub.unsubscribe();
-  }
+
   // clear course
   clearCode1(): void {
     this.CodeCompleted.setValue('');
