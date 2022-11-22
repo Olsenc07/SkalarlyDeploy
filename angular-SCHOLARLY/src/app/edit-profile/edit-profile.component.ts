@@ -268,13 +268,13 @@ export class EditProfileComponent implements OnInit {
   }
 
   ngOnInit(): any {
-    // this.userId = this.authService.getUserId();
+    this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-      });
+    // this.infosSub = this.authService
+    //   .getInfoUpdateListener()
+    //   .subscribe((infos: AuthDataInfo[]) => {
+    //     this.infos = infos;
+    //   });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
         validators: [Validators.required],
@@ -452,13 +452,13 @@ export class EditProfileComp1Component implements OnInit {
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    // this.authService.getInfoPersonal(this.userId);
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
-      });
+    this.authService.getInfoPersonal(this.userId);
+    // this.infosSub = this.authService
+    //   .getInfoUpdateListener()
+    //   .subscribe((infos: AuthDataInfo[]) => {
+    //     this.infos = infos;
+    //     console.log('infos', this.infos);
+    //   });
     this.CodeCompleted.valueChanges.subscribe((v) =>
       this.CodeCompletedLength.next(v.length)
     );
