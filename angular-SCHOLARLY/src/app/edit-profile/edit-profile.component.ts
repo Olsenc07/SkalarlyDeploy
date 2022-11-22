@@ -63,7 +63,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class EditProfileComponent implements OnInit, OnDestroy {
+export class EditProfileComponent implements OnInit {
   storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -276,14 +276,15 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.infosSub = this.authService.getInfoUpdateListener().subscribe({
-      next: (infos: AuthDataInfo[]) => {
-        this.infos = infos;
-      },
-      error: (error) => {
-        console.log('clean up');
-      },
-    });
+    this.infosSub = this.authService.getInfoUpdateListener();
+    // .subscribe({
+    //   next: (infos: AuthDataInfo[]) => {
+    //     this.infos = infos;
+    //   },
+    //   error: (error) => {
+    //     console.log('clean up');
+    //   },
+    // });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
         validators: [Validators.required],
@@ -295,9 +296,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
       }),
     });
   }
-  ngOnDestroy(): any {
-    this.infosSub.unsubscribe();
-  }
+
   clearBio(): void {
     this.bio.setValue('');
     this.authServiceEdit.editUserBio(this.userId, this.bio.value);
@@ -465,7 +464,7 @@ export class EditProfileComp1Component implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.authService
+    this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
