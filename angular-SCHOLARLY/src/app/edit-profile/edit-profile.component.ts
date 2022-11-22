@@ -275,13 +275,14 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
-    // this.authService
-    //   .getInfoUpdateListener()
-    //   .subscribe((infos: AuthDataInfo[]) => {
-    //     console.log('infoss', infos);
-    //     this.infos = infos;
-    //   });
+    const test = this.authService.getInfoPersonal(this.userId);
+    console.log('thomas', test);
+    this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        console.log('infoss', infos);
+        this.infos = infos;
+      });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
         validators: [Validators.required],
