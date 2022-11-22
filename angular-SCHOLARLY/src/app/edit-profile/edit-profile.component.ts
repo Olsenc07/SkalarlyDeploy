@@ -452,7 +452,7 @@ export class EditProfileComp1Component implements OnInit {
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    // this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
