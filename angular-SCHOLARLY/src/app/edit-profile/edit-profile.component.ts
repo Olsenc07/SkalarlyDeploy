@@ -270,11 +270,11 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    // this.infosSub = this.authService
-    //   .getInfoUpdateListener()
-    //   .subscribe((infos: AuthDataInfo[]) => {
-    //     this.infos = infos;
-    //   });
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+      });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
         validators: [Validators.required],
@@ -285,6 +285,9 @@ export class EditProfileComponent implements OnInit {
         asyncValidators: [mimeType],
       }),
     });
+  }
+  ngOnDestroy() {
+    this.infosSub.unsubscribe();
   }
   clearBio(): void {
     this.bio.setValue('');
@@ -453,15 +456,18 @@ export class EditProfileComp1Component implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    // this.infosSub = this.authService
-    //   .getInfoUpdateListener()
-    //   .subscribe((infos: AuthDataInfo[]) => {
-    //     this.infos = infos;
-    //     console.log('infos', this.infos);
-    //   });
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        this.infos = infos;
+        console.log('infos', this.infos);
+      });
     this.CodeCompleted.valueChanges.subscribe((v) =>
       this.CodeCompletedLength.next(v.length)
     );
+  }
+  ngOnDestroy() {
+    this.infosSub.unsubscribe();
   }
   // clear course
   clearCode1(): void {
