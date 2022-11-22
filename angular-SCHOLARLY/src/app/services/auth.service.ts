@@ -2038,22 +2038,7 @@ export class AuthService {
           //   };
           // });
         })
-      )
-      .subscribe({
-        next: () => {
-          console.log('captured personal info');
-        },
-        error: (error) => {
-          console.log('clean up', error);
-        },
-        // this.infos = transformedInfos;
-        // console.log('life', this.infos);
-        // for (const [key, value] of Object.entries(this.infos)) {
-        //   console.log('lifes', `${key}: ${value}`);
-        //   console.log('chzzy', Object.entries(this.infos));
-        //   this.infosUpdated.next([...this.infos]);
-        // }
-      });
+      );
   }
   getOtherInfo(id: string): any {
     this.http
