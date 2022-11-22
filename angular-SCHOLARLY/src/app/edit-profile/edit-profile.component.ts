@@ -276,10 +276,11 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.infosSub = this.authService.getInfoUpdateListener();
-    // .subscribe((infos: AuthDataInfo[]) => {
-    //   this.infos = infos;
-    // });
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: AuthDataInfo[]) => {
+        // this.infos = infos;
+      });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
         validators: [Validators.required],
