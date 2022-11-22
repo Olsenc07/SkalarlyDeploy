@@ -280,6 +280,7 @@ export class EditProfileComponent implements OnInit {
       .getInfoUpdateListener()
       .subscribe((infos) => {
         if (infos) {
+          console.log('infos', infos);
           this.infos = infos;
         }
       });
