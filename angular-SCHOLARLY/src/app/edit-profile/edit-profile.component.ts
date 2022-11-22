@@ -63,7 +63,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class EditProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit, OnDestroy {
   storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -295,7 +295,9 @@ export class EditProfileComponent implements OnInit {
       }),
     });
   }
-
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+  }
   clearBio(): void {
     this.bio.setValue('');
     this.authServiceEdit.editUserBio(this.userId, this.bio.value);
