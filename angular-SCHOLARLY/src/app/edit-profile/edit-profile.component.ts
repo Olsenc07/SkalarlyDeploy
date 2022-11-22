@@ -450,7 +450,7 @@ export class EditProfileComp1Component implements OnInit {
     public authServiceEditCourse: AuthServiceEditCourse,
     public classListService: ClassListService
   ) {}
-  ngOnInit(): void {
+  ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
