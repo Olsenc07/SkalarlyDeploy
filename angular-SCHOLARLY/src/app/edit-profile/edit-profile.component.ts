@@ -267,7 +267,7 @@ export class EditProfileComponent implements OnInit {
       .filter((code) => code.toLowerCase().indexOf(filterValue) === 0);
   }
 
-  ngOnInit(): void {
+  ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
@@ -448,7 +448,6 @@ export class EditProfileComp1Component implements OnInit {
     private snackBar: MatSnackBar,
     public authService: AuthService,
     public authServiceEditCourse: AuthServiceEditCourse,
-
     public classListService: ClassListService
   ) {}
   ngOnInit(): void {
