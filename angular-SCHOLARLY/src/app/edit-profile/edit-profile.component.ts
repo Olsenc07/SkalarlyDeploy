@@ -275,13 +275,7 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService
-      .getInfoPersonal(this.userId)
-      .subscribe((infos: AuthDataInfo[]) => {
-        console.log('infoss', infos);
-        this.infos = infos;
-      });
-    // console.log('test', test);
+    this.authService.getInfoPersonal(this.userId);
     // this.authService
     //   .getInfoUpdateListener()
     //   .subscribe((infos: AuthDataInfo[]) => {
