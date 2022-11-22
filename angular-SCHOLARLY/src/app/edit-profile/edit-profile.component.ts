@@ -279,7 +279,8 @@ export class EditProfileComponent implements OnInit {
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos) => {
-        if (infos) {
+        console.log('infosss', infos);
+        if (infos !== null) {
           console.log('infos', infos);
           this.infos = infos;
         }
