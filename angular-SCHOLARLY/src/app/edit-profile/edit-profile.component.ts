@@ -277,6 +277,7 @@ export class EditProfileComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService.getInfoUpdateListener();
+    console.log('ella', this.infosSub);
     // .subscribe({
     //   next: (infos: AuthDataInfo[]) => {
     //     this.infos = infos;
