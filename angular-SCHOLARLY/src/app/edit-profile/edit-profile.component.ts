@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import {
   MomentDateAdapter,
@@ -57,7 +57,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class EditProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit, OnDestroy {
   storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -286,7 +286,7 @@ export class EditProfileComponent implements OnInit {
       }),
     });
   }
-  ngOnDestroy() {
+  ngOnDestroy(): any {
     this.infosSub.unsubscribe();
   }
   clearBio(): void {
