@@ -2039,13 +2039,12 @@ export class AuthService {
           // });
         })
       )
-      .subscribe((transformedInfos) => {
+      .subscribe({
         next: () => {
           console.log('captured personal info');
-    
         },
         error: (error) => {
-          console.log('clean up');
+          console.log('clean up', error);
         },
         // this.infos = transformedInfos;
         // console.log('life', this.infos);
