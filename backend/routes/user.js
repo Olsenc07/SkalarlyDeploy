@@ -2103,7 +2103,6 @@ router.get("/infoPersonal", async(req, res, next) => {
         res.status(500).json({
             message: 'Fetching personal infos failed!'
         });
-        console.log('effective', error);
     });
 }); 
 

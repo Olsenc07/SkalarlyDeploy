@@ -265,13 +265,13 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
+  // private _filter(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
 
-    return this.classListService
-      .allClasses()
-      .filter((code) => code.toLowerCase().indexOf(filterValue) === 0);
-  }
+  //   return this.classListService
+  //     .allClasses()
+  //     .filter((code) => code.toLowerCase().indexOf(filterValue) === 0);
+  // }
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -592,7 +592,7 @@ export class EditProfileComp1WComponent implements OnInit {
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
   filteredCodes: Observable<string[]>;
-  FilteredCodes: string[] = this.classListService.allClasses().slice();
+  // FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
   // CodeCompleted 1-40X
   public CodeCompleted6Length = new BehaviorSubject(0);
