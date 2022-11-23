@@ -1,4 +1,5 @@
-<!-- <form enctype="multipart/form-data"  > -->
+<form *ngIf="infos.length !== 0"  >
+  
   <mat-tab-group  mat-align-tabs="center"  *ngFor="let info of infos">
      <mat-tab >
       <ng-template mat-tab-label>
@@ -329,7 +330,7 @@
  <!-- Image Preview -->
  <div class="rowShow">
   <!-- <div class="column"> -->
-  <div *ngIf=" clicked == false">
+  <div *ngIf="clicked === false">
     <div class="row">
       <div class="snapshot">Add Showcase</div>
       <button mat-icon-button  matTooltip="Clear Image" [ngClass]="showCase.value ? 'show' : 'hide' " color="primary"
