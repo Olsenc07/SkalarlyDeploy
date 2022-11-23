@@ -110,7 +110,7 @@
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-                <mat-datepicker #dp></mat-datepicker>
+                <mat-datepicker #dp startView="year" [startAt]="startDate"></mat-datepicker>
               </mat-form-field>
 
             </div>

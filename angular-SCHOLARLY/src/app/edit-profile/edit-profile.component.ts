@@ -6,15 +6,6 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-// import {
-//   MomentDateAdapter,
-//   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-// } from '@angular/material-moment-adapter';
-// import {
-//   DateAdapter,
-//   MAT_DATE_FORMATS,
-//   MAT_DATE_LOCALE,
-// } from '@angular/material/core';
 
 import { MatDialog } from '@angular/material/dialog';
 import {
@@ -64,6 +55,7 @@ import { AuthServiceEditNext } from '../services/editNextCourse.service';
   // ],
 })
 export class EditProfileComponent implements OnInit {
+  startDate = new Date(1997, 0, 1);
   storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;
