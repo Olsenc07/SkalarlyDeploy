@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRadioModule } from '@angular/material/radio';
@@ -188,6 +189,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MatIconModule,
     MatButtonModule,
     MatDatepickerModule,
+    MatNativeDateModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

@@ -81,7 +81,7 @@
         <mat-tab label="Step 1: Choose from the main categories">
           <mat-selection-list #options [multiple]="false">
             <mat-form-field appearance="fill" class="shadow1">
-
+              <mat-label> Main Categories</mat-label>
               <mat-select [formControl]="postLocationMain">
                 <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
                   *ngFor="let opt of searchOptions" [value]="opt.name">
@@ -94,6 +94,7 @@
   <!-- Step 2 -->
   <mat-selection-list   #options2 class="second_selection" [multiple]="false" >
     <mat-form-field appearance="fill" class="shadow2"  id="nextBtn2">
+      <mat-label> Specific Pages</mat-label>
     
     <mat-select  [formControl]="postLocation" > 
       <!-- (click)="adjustView()" -->
@@ -113,12 +114,11 @@
     </div>
 
     <div  class="btmPad" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value " >
-      <mat-chip-set>
-      <mat-chip id="nextBtn" type="button" color="primary" class="final_step_btn" 
+
+      <button id="nextBtn" mat-raised-button color="primary" type="button" class="final_step_btn" 
        (click)="changeTab()">
         Next Step
-      </mat-chip>
-    </mat-chip-set>
+    </button>
       </div>
 
     </mat-tab>
