@@ -108,18 +108,20 @@
           </mat-selection-list>
 
 </mat-tab>
+<mat-tab label="Step 3: Style Post">
+  <div  class="btmPad" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value " >
 
+    <button id="nextBtn" mat-raised-button color="primary" type="button" class="final_step_btn" 
+     (click)="changeTab()">
+      Next Step
+  </button>
+    </div>
+</mat-tab>
       </mat-tab-group>
 
     </div>
 
-    <div  class="btmPad" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value " >
-
-      <button id="nextBtn" mat-raised-button color="primary" type="button" class="final_step_btn" 
-       (click)="changeTab()">
-        Next Step
-    </button>
-      </div>
+    
 
     </mat-tab>
 
