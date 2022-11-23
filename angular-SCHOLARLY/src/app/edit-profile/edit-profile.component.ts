@@ -262,6 +262,7 @@ export class EditProfileComponent implements OnInit {
       .getInfoUpdateListener()
       .subscribe((imp: AuthDataInfo[]) => {
         this.infos = imp;
+        console.log('legend', this.infos);
       });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
