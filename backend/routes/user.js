@@ -2092,7 +2092,6 @@ router.get("/infoProfile", async(req, res) => {
 router.get("/infoPersonal", async(req, res) => {
      await UserInfo.find({Creator: req.query.userId})
     .then(infosData => {
-        console.log('infosData', infosData);
             res.status(200).json({
                 message: 'Posts personal fetched succesfully!',
                 infos: infosData
