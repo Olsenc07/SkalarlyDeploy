@@ -1,4 +1,4 @@
-<form enctype="multipart/form-data"  >
+<!-- <form enctype="multipart/form-data"  > -->
   <mat-tab-group  mat-align-tabs="center"  *ngFor="let info of infos">
      <mat-tab >
       <ng-template mat-tab-label>
@@ -96,8 +96,8 @@
             </mat-form-field>
           </div>
 
-            <!-- <div class="input">
-              <!-- Birthday picker --
+            <div class="input">
+              <!-- Birthday picker -->
               <i class="material-icons _icon" *ngIf="!birthday.value">cake</i>
   <button mat-icon-button type="button" *ngIf="birthday.value" (click)="saveBirthday()" matTooltip="Save Birthday">
               <i class="material-icons check"  *ngIf="birthday.value">cake</i>
@@ -107,11 +107,12 @@
               <mat-label *ngIf="!info.birthday">When's your birthday?</mat-label>
 
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
-                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp></mat-datepicker>
               </mat-form-field>
 
-            </div> -->
+            </div>
           
 
 
@@ -373,4 +374,4 @@
   </mat-tab-group>
 
 
-</form>
+<!-- </form> -->
