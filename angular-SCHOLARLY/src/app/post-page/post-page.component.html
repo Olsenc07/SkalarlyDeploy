@@ -185,17 +185,14 @@
             <div class="default-time-example">
               <mat-form-field appearance="fill">
                 <mat-label>Starting time:</mat-label>
-                <input matInput type="time" [formControl]="time" [ngxTimepicker]="toggleTimepicker">
-                <!-- <ngx-material-timepicker-toggle matSuffix [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
-                <ngx-material-timepicker #toggleTimepicker>
-                </ngx-material-timepicker> -->
+                <input matInput type="time" [formControl]="time" >
+                <mat-hint>12/00/PM</mat-hint>
               </mat-form-field>
               <mat-form-field appearance="fill">
                 <mat-label>Ending time:</mat-label>
-                <input matInput type="time" [formControl]="timeE" [ngxTimepicker]="toggleTimepickerE">
-                <!-- <ngx-material-timepicker-toggle matSuffix [for]="toggleTimepickerE"></ngx-material-timepicker-toggle>
-                <ngx-material-timepicker #toggleTimepickerE>
-                </ngx-material-timepicker> -->
+                <input matInput type="time" [formControl]="timeE" >
+                <mat-hint>12/00/AM</mat-hint>
+               
               </mat-form-field>
             </div>
 

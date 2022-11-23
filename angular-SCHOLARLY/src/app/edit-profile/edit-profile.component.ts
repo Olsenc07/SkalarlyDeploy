@@ -6,15 +6,15 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import {
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-} from '@angular/material-moment-adapter';
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
+// import {
+//   MomentDateAdapter,
+//   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+// } from '@angular/material-moment-adapter';
+// import {
+//   DateAdapter,
+//   MAT_DATE_FORMATS,
+//   MAT_DATE_LOCALE,
+// } from '@angular/material/core';
 
 import { MatDialog } from '@angular/material/dialog';
 import {
@@ -38,30 +38,30 @@ import { Picker } from 'emoji-picker-element';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthServiceEditNext } from '../services/editNextCourse.service';
 
-export const MY_FORMATS = {
-  parse: {
-    dateInput: 'LL',
-  },
-  display: {
-    dateInput: 'LL',
-    monthYearLabel: 'MMM YYYY',
-    dateA12yLabel: 'LL',
-    monthYearA12yLabel: 'MMMM YYYY',
-  },
-};
+// export const MY_FORMATS = {
+//   parse: {
+//     dateInput: 'LL',
+//   },
+//   display: {
+//     dateInput: 'LL',
+//     monthYearLabel: 'MMM YYYY',
+//     dateA12yLabel: 'LL',
+//     monthYearA12yLabel: 'MMMM YYYY',
+//   },
+// };
 @Component({
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss'],
-  providers: [
-    {
-      provide: DateAdapter,
-      useClass: MomentDateAdapter,
-      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-    },
+  // providers: [
+  //   {
+  //     provide: DateAdapter,
+  //     useClass: MomentDateAdapter,
+  //     deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+  //   },
 
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-  ],
+  //   { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  // ],
 })
 export class EditProfileComponent implements OnInit {
   storedPosts: Post[] = [];
