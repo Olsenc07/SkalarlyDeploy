@@ -259,7 +259,6 @@ export class EditProfileComponent implements OnInit {
 
       reader.onload = () => {
         // called once readAsDataURL is completed
-
         this.url = reader.result as string;
       };
     }
