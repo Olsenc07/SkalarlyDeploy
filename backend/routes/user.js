@@ -2090,7 +2090,7 @@ router.get("/infoProfile", async(req, res) => {
 
 // userInfo recieving
 router.get("/infoPersonal", async(req, res) => {
-     await UserInfo.find({Creator: req.query.userId})
+     await UserInfo.findOne({Creator: req.query.userId})
     .then(infosData => {
         console.log('infosData', infosData);
             res.status(200).json({
