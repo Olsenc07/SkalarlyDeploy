@@ -231,8 +231,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   onSearchSelection(value): void {
     console.log(value);
     this.specificOptions = this.searchListService.onSearchSelection(value);
-    const NextBtn2 = document.getElementById('nextBtn2');
-    NextBtn2.scrollIntoView();
+    // const NextBtn2 = document.getElementById('nextBtn2');
+    // NextBtn2.scrollIntoView();
   }
 
   adjustView(): void {
