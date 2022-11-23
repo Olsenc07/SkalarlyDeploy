@@ -22,7 +22,7 @@ export class AuthService {
   private authStatusListener = new ReplaySubject<boolean>();
 
   private infos: AuthDataInfo[] = [];
-  private infosUpdated = new Subject<AuthDataInfo[]>();
+  private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
   getToken(): string {
     return this.token;
@@ -1964,7 +1964,7 @@ export class AuthService {
         map((infosData) => {
           console.log('1', infosData);
           return infosData.infos.map((info) => {
-            console.log('2', infosData.infos);
+            console.log('2', infosData.infos.map());
             return {
               id: info._id,
               username: info.username,
