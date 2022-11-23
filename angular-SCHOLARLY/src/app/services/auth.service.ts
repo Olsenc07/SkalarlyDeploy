@@ -22,7 +22,7 @@ export class AuthService {
   private authStatusListener = new ReplaySubject<boolean>();
 
   private infos: AuthDataInfo[] = [];
-  private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
+  private infosUpdated = new Subject<AuthDataInfo[]>();
 
   getToken(): string {
     return this.token;
@@ -2039,6 +2039,7 @@ export class AuthService {
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
+        console.log('things', this.infos);
         this.infosUpdated.next([...this.infos]);
       });
   }
