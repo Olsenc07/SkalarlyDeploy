@@ -614,6 +614,10 @@ p {
   position: relative;
   width: 100%;
 }
+.space{
+  display: flex;
+  justify-content: space-around;
+}
 .specifics-box {
   padding: 16px;
   border: 1px solid gray;
