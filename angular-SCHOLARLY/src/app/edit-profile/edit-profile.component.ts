@@ -44,15 +44,6 @@ import { AuthServiceEditNext } from '../services/editNextCourse.service';
   selector: 'app-edit-profile',
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss'],
-  // providers: [
-  //   {
-  //     provide: DateAdapter,
-  //     useClass: MomentDateAdapter,
-  //     deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
-  //   },
-
-  //   { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
-  // ],
 })
 export class EditProfileComponent implements OnInit {
   startDate = new Date(1997, 0, 1);
@@ -97,8 +88,8 @@ export class EditProfileComponent implements OnInit {
 
   pronouns: string[] = ['She/Her', 'He/His', 'Ze/Hirs', 'Ze/Zirs', 'Xe/Xyr'];
 
-  @ViewChild('auto') matAutocomplete: MatAutocomplete;
-  @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
+  // @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  // @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
   cropImgPreview: any = '';
   imgChangeEvent: any = '';
 
@@ -429,7 +420,7 @@ export class EditProfileComp1Component implements OnInit {
   userId: string;
   infos: AuthDataInfo[] = [];
   classes: string[] = [];
-  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
+  // @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
@@ -564,11 +555,11 @@ export class EditProfileComp1Component implements OnInit {
   }
 
   // Completed Classes
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.classes.push(event.option.viewValue);
-    this.codeInput.nativeElement.value = '';
-    // this.CodeCompleted.setValue();
-  }
+  // selected(event: MatAutocompleteSelectedEvent): void {
+  //   this.classes.push(event.option.viewValue);
+  //   this.codeInput.nativeElement.value = '';
+  //   // this.CodeCompleted.setValue();
+  // }
 }
 @Component({
   selector: 'app-complete1w',
