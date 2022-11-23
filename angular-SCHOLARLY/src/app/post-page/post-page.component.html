@@ -77,7 +77,7 @@
     <div class="centerL" *ngIf="postDescription.value || form.get('upload').value ">Where do you want your post?
     </div>
     <div class="selection_styles" *ngIf="postDescription.value || form.get('upload').value ">
-      <mat-tab-group>
+      <mat-tab-group class="btmPad">
         <mat-tab label="Step 1: Choose from the main categories">
           <mat-selection-list #options [multiple]="false">
             <mat-form-field appearance="fill" class="shadow1">
@@ -108,8 +108,8 @@
           </mat-selection-list>
 
 </mat-tab>
-<mat-tab label="Step 3: Style Post">
-  <div  class="btmPad" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value " >
+<mat-tab label="Step 3: Style Post" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value ">
+  <div  class="btmPad"  >
 
     <button id="nextBtn" mat-raised-button color="primary" type="button" class="final_step_btn" 
      (click)="changeTab()">
