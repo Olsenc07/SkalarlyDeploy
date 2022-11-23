@@ -1,7 +1,7 @@
 <!-- <form enctype="multipart/form-data"  > -->
   
-  <mat-tab-group  mat-align-tabs="center"  *ngFor="let info of infos">
-     <mat-tab >
+  <mat-tab-group  mat-align-tabs="center" >
+     <mat-tab *ngFor="let info of infos">
       <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
           account_circle
@@ -194,7 +194,7 @@
         </div> 
       </div> 
     </mat-tab> 
-    <mat-tab >
+    <mat-tab *ngFor="let info of infos">
       <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
           interests
@@ -320,7 +320,7 @@
 
     </mat-tab>
 
-<mat-tab >
+<mat-tab *ngFor="let info of infos">
   <ng-template mat-tab-label>
     <mat-icon><span class="material-icons-two-tone">
       photo_library
