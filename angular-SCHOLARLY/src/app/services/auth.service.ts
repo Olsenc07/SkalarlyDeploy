@@ -1969,7 +1969,7 @@ export class AuthService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         console.log('things', this.infos);
-        this.infosUpdated.next([...this.infos]);
+        this.infosUpdated.next(this.infos);
       });
   }
   getOtherInfo(id: string): any {

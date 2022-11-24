@@ -54,7 +54,7 @@ export class EditProfileComponent implements OnInit {
 
   userId: string;
 
-  infos: AuthDataInfo[] = [];
+  infos = [];
   private infosSub: Subscription;
   // Showcase
   showCasePreview: any = '';
@@ -258,12 +258,10 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.authService
-      .getInfoUpdateListener()
-      .subscribe((imp: AuthDataInfo[]) => {
-        console.log('wow', imp);
-        this.infos = imp;
-      });
+    this.authService.getInfoUpdateListener().subscribe((imp) => {
+      console.log('wow', imp);
+      this.infos = JSON.parse(imp);
+    });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
         validators: [Validators.required],
