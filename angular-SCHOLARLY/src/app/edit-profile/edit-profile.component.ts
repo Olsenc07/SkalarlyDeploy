@@ -87,7 +87,7 @@ export class EditProfileComponent implements OnInit {
     'Two Spirit',
   ];
 
-  pronouns_: string[] = ['She/Her', 'He/His', 'Ze/Hirs', 'Ze/Zirs', 'Xe/Xyr'];
+  pronounS: string[] = ['She/Her', 'He/His', 'Ze/Hirs', 'Ze/Zirs', 'Xe/Xyr'];
 
   // @ViewChild('auto') matAutocomplete: MatAutocomplete;
   // @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
