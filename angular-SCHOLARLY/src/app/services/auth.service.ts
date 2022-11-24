@@ -1963,7 +1963,7 @@ export class AuthService {
       .pipe(
         map((infosData) => {
           console.log('1', typeof infosData.infos);
-          return infosData.infosmap((info) => {
+          return infosData.infos.map((info) => {
             return {
               id: info._id,
               username: info.username,
@@ -2035,6 +2035,7 @@ export class AuthService {
               ProfilePicPath: info.ProfilePicPath,
               Creator: info.Creator,
             };
+          });
         })
       )
       .subscribe((transformedInfos) => {
