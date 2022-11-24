@@ -14,7 +14,7 @@ import {
 } from '@angular/material/autocomplete';
 
 import { MatChipInputEvent } from '@angular/material/chips';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
+// import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ClassListService } from '../services/class.service';
 import { Post, PostService } from '../services/post.service';
@@ -66,7 +66,7 @@ export class EditProfileComponent implements OnInit {
   visible = true;
   selectable = true;
   removable = true;
-  separatorKeysCodes: number[] = [ENTER, COMMA];
+  // separatorKeysCodes: number[] = [ENTER, COMMA];
   // These show inputs in real time but arn't whats stored
 
   genders: string[] = [
@@ -261,6 +261,7 @@ export class EditProfileComponent implements OnInit {
     this.authService
       .getInfoUpdateListener()
       .subscribe((imp: AuthDataInfo[]) => {
+        imp.pipe();
         this.infos = imp;
         console.log('my waist', this.infos);
       });
