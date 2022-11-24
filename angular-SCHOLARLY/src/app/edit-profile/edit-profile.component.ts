@@ -261,6 +261,7 @@ export class EditProfileComponent implements OnInit {
     this.authService.getInfoUpdateListener().subscribe((imp) => {
       console.log('wow', imp);
       this.infos = JSON.parse(imp);
+      console.log('wowzers', this.infos);
     });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
