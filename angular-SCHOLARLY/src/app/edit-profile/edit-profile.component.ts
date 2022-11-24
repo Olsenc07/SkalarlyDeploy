@@ -261,9 +261,7 @@ export class EditProfileComponent implements OnInit {
     this.authService
       .getInfoUpdateListener()
       .subscribe((imp: AuthDataInfo[]) => {
-        imp.map((x) => console.log('love', x));
         this.infos = imp;
-        console.log('my waist', this.infos);
       });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
