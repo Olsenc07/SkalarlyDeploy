@@ -125,12 +125,12 @@
           <mat-label *ngIf="infos.gender">{{infos.gender}}</mat-label>
           <mat-label *ngIf="!infos.gender">Gender</mat-label>
 
-          <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
+          <!-- <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
           <mat-autocomplete #auto_="matAutocomplete">
             <mat-option *ngFor="let gender of genders" [value]="gender">
               {{gender}}
             </mat-option>
-          </mat-autocomplete>
+          </mat-autocomplete> -->
         </mat-form-field>
       </div>
       <!-- Pronouns -->
@@ -140,8 +140,8 @@
                         <i class="material-icons check"  *ngIf="pronoun.value">psychology</i>
           </button>
       <mat-form-field  class="smaller">
-        <mat-label *ngIf="infos.pronoun">{{infos.pronoun}}</mat-label>
-        <mat-label *ngIf="!infos.pronoun">Prefered Pronouns</mat-label>
+        <mat-label *ngIf="infos.pronouns">{{infos.pronouns}}</mat-label>
+        <mat-label *ngIf="!infos.pronouns">Prefered Pronouns</mat-label>
 
         <!-- <input matInput type='text' [formControl]="pronoun" [matAutocomplete]="auto"/> -->
         <!-- <mat-autocomplete #auto="matAutocomplete">

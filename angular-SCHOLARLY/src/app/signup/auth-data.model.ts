@@ -17,7 +17,7 @@ export interface AuthDataInfo {
   minor?: string;
   sport?: string;
   club?: string;
-  pronoun?: string;
+  pronouns?: string;
   CodeCompleted?: string;
   CodeCompleted2?: string;
   CodeCompleted3?: string;
