@@ -51,10 +51,11 @@ export class EditProfileComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription;
   picker = new Picker();
+  infos = {};
 
   userId: string;
 
-  infos: AuthDataInfo[] = [];
+  // infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
   // Showcase
   showCasePreview: any = '';
@@ -261,7 +262,7 @@ export class EditProfileComponent implements OnInit {
     this.authService.getInfoUpdateListener().subscribe((imp) => {
       console.log('wow', typeof imp);
       this.infos = imp;
-      console.log('wowzers', typeof this.infos);
+      console.log('wowzers', this.infos);
     });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
