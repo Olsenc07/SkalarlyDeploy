@@ -2097,6 +2097,8 @@ router.get("/infoPersonal", async(req, res) => {
                 message: 'Posts personal fetched succesfully!',
                 infos: infosData
        });
+       err => console.error(`Something went wrong: ${err}`);
+
     })  
     .catch(error => {
         res.status(500).json({
