@@ -1,5 +1,5 @@
 <!-- <form enctype="multipart/form-data"  > -->
-  <div >
+  <div *ngFor="let info of infos">
   <mat-tab-group  mat-align-tabs="center" >
      <mat-tab label="Personal">
       <!-- <ng-template mat-tab-label>
@@ -82,7 +82,7 @@
 </button>
 
             <mat-form-field>
-              <mat-label *ngIf="infos?.name">{{info.name}}</mat-label>
+              <mat-label *ngIf="info.name">{{info.name}}</mat-label>
               <mat-label *ngIf="!info.name">Full name</mat-label>
 
               <input matInput  maxlength="60" 
