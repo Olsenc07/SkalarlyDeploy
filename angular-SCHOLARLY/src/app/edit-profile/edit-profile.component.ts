@@ -259,9 +259,9 @@ export class EditProfileComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
     this.authService.getInfoUpdateListener().subscribe((imp) => {
-      console.log('wow', imp);
+      console.log('wow', typeof imp);
       this.infos = imp[0];
-      console.log('wowzers', this.infos);
+      console.log('wowzers', typeof this.infos);
     });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
