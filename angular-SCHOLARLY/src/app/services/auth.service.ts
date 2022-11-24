@@ -1965,7 +1965,7 @@ export class AuthService {
           console.log('1', infosData.infos);
           return infosData.infos.map((info) => {
             return {
-              id: info._id,
+              id: info.id,
               username: info.username,
               name: info.name,
               bio: info.bio,
@@ -1975,7 +1975,7 @@ export class AuthService {
               minor: info.minor,
               sport: info.sport,
               club: info.club,
-              pronouns: info.pronouns,
+              pronouns: info.pronoun,
               CodeCompleted: info.CodeCompleted,
               CodeCompleted2: info.CodeCompleted2,
               CodeCompleted3: info.CodeCompleted3,
