@@ -260,7 +260,7 @@ export class EditProfileComponent implements OnInit {
     this.authService.getInfoPersonal(this.userId);
     this.authService.getInfoUpdateListener().subscribe((imp) => {
       console.log('wow', imp);
-      this.infos = JSON.parse(imp);
+      this.infos = imp;
       console.log('wowzers', this.infos);
     });
     this.form = new FormGroup({
