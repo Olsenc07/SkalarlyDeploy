@@ -105,7 +105,7 @@ export class SignupComponent implements OnInit {
     'Two Spirit',
   ];
 
-  pronouns: string[] = [
+  pronouns_: string[] = [
     '',
     'She/Her',
     'He/His',
@@ -137,7 +137,7 @@ export class SignupComponent implements OnInit {
   sport: FormControl = new FormControl('');
   club: FormControl = new FormControl('');
   name: FormControl = new FormControl('');
-  pronoun: FormControl = new FormControl('');
+  pronouns: FormControl = new FormControl('');
   birthday: FormControl = new FormControl();
   gender: FormControl = new FormControl('');
 
@@ -233,7 +233,7 @@ export class SignupComponent implements OnInit {
     name: this.name,
     username: this.username,
     gender: this.gender,
-    pronoun: this.pronoun,
+    pronouns: this.pronouns,
     birthday: this.birthday,
     bio: this.bio,
     // image: this.image,
@@ -605,7 +605,7 @@ export class SignupComponent implements OnInit {
       this.minor.value,
       this.sport.value,
       this.club.value,
-      this.pronoun.value,
+      this.pronouns.value,
       this.CodeCompleted.value,
       this.CodeCompleted2.value,
       this.CodeCompleted3.value,

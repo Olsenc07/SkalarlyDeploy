@@ -87,7 +87,7 @@ export class EditProfileComponent implements OnInit {
     'Two Spirit',
   ];
 
-  pronouns: string[] = ['She/Her', 'He/His', 'Ze/Hirs', 'Ze/Zirs', 'Xe/Xyr'];
+  pronouns_: string[] = ['She/Her', 'He/His', 'Ze/Hirs', 'Ze/Zirs', 'Xe/Xyr'];
 
   // @ViewChild('auto') matAutocomplete: MatAutocomplete;
   // @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
@@ -105,7 +105,7 @@ export class EditProfileComponent implements OnInit {
   bio: FormControl = new FormControl('');
   // public bioLength = new BehaviorSubject(0);
   name: FormControl = new FormControl('');
-  pronoun: FormControl = new FormControl('');
+  pronouns: FormControl = new FormControl('');
   showCase: FormControl = new FormControl('');
   // removeShowCase: FormControl = new FormControl('');
   birthday: FormControl = new FormControl('');
@@ -361,7 +361,7 @@ export class EditProfileComponent implements OnInit {
     });
   }
   savePronoun(): void {
-    this.authService.editUserInfoPronoun(this.userId, this.pronoun.value);
+    this.authService.editUserInfoPronoun(this.userId, this.pronouns.value);
     this.snackBar.open('Pronouns Saved!', 'Nice!', {
       duration: 2000,
     });

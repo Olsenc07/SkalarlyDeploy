@@ -135,20 +135,20 @@
       </div>
       <!-- Pronouns -->
           <div class="gender">
-            <i class="material-icons _icon" *ngIf="!pronoun.value">psychology</i>
-            <button mat-icon-button type="button" *ngIf="pronoun.value" (click)="savePronoun()" matTooltip="Save Pronouns">
-                        <i class="material-icons check"  *ngIf="pronoun.value">psychology</i>
+            <i class="material-icons _icon" *ngIf="!pronouns.value">psychology</i>
+            <button mat-icon-button type="button" *ngIf="pronouns.value" (click)="savePronoun()" matTooltip="Save Pronouns">
+                        <i class="material-icons check"  *ngIf="pronouns.value">psychology</i>
           </button>
       <mat-form-field  class="smaller">
         <mat-label *ngIf="infos.pronouns">{{infos.pronouns}}</mat-label>
         <mat-label *ngIf="!infos.pronouns">Prefered Pronouns</mat-label>
 
-        <!-- <input matInput type='text' [formControl]="pronoun" [matAutocomplete]="auto"/> -->
-        <!-- <mat-autocomplete #auto="matAutocomplete">
+        <input matInput type='text' [formControl]="pronouns" [matAutocomplete]="auto"/>
+        <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let pronoun of pronouns" [value]="pronoun">
             {{pronoun}}
           </mat-option>
-        </mat-autocomplete> -->
+        </mat-autocomplete>
       </mat-form-field>
           </div>
          

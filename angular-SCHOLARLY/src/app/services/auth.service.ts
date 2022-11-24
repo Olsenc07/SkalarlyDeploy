@@ -87,7 +87,7 @@ export class AuthService {
     minor: string,
     sport: string,
     club: string,
-    pronoun: string,
+    pronouns: string,
     CodeCompleted: string,
     CodeCompleted2: string,
     CodeCompleted3: string,
@@ -158,7 +158,7 @@ export class AuthService {
     userData.append('minor', minor);
     userData.append('sport', sport);
     userData.append('club', club);
-    userData.append('pronoun', pronoun);
+    userData.append('pronouns', pronouns);
     userData.append('CodeCompleted', CodeCompleted);
     userData.append('CodeCompleted2', CodeCompleted2);
     userData.append('CodeCompleted3', CodeCompleted3);
@@ -235,7 +235,7 @@ export class AuthService {
             minor,
             sport,
             club,
-            pronoun,
+            pronouns,
             CodeCompleted,
             CodeCompleted2,
             CodeCompleted3,
