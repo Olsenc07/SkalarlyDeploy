@@ -54,7 +54,7 @@ export class EditProfileComponent implements OnInit {
 
   userId: string;
 
-  infos = [];
+  infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
   // Showcase
   showCasePreview: any = '';
@@ -260,7 +260,7 @@ export class EditProfileComponent implements OnInit {
     this.authService.getInfoPersonal(this.userId);
     this.authService.getInfoUpdateListener().subscribe((imp) => {
       console.log('wow', imp);
-      this.infos = imp.infos;
+      this.infos = imp[0];
       console.log('wowzers', this.infos);
     });
     this.form = new FormGroup({
