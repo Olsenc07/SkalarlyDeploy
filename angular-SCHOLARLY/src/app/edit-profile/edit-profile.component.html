@@ -1,5 +1,5 @@
 <!-- <form enctype="multipart/form-data"  > -->
-  <div *ngFor="let info of infos | async">
+  <div *ngFor="let info of infos">
   <mat-tab-group  mat-align-tabs="center" >
      <mat-tab label="Personal">
       <!-- <ng-template mat-tab-label>
@@ -144,11 +144,11 @@
         <mat-label *ngIf="!info.pronouns">Prefered Pronouns</mat-label>
 
         <input matInput type='text' [formControl]="pronoun" [matAutocomplete]="auto"/>
-        <mat-autocomplete #auto="matAutocomplete">
+        <!-- <mat-autocomplete #auto="matAutocomplete">
           <mat-option *ngFor="let pronoun of pronouns" [value]="pronoun">
             {{pronoun}}
           </mat-option>
-        </mat-autocomplete>
+        </mat-autocomplete> -->
       </mat-form-field>
           </div>
          
