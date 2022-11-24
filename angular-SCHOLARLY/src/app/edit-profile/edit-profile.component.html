@@ -82,8 +82,8 @@
 </button>
 
             <mat-form-field>
-              <mat-label *ngIf="infos?.name">{{infos.name}}</mat-label>
-              <mat-label *ngIf="!infos.name">Full name</mat-label>
+              <mat-label *ngIf="infos?.name">{{infos?.name}}</mat-label>
+              <mat-label *ngIf="!infos?.name">Full name</mat-label>
 
               <input matInput  maxlength="60" 
                [formControl]="name" type="text" placeholder="Full name" class="inputText"/>
