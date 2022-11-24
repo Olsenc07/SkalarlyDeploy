@@ -263,6 +263,7 @@ export class EditProfileComponent implements OnInit {
       console.log('wow', typeof imp);
       this.infos = imp;
       console.log('wowzers', this.infos);
+      console.log('wowzers', typeof this.infos);
     });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
