@@ -261,7 +261,7 @@ export class EditProfileComponent implements OnInit {
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((imp: AuthDataInfo[]) => {
-        this.infos = imp.map();
+        this.infos = Object.values(imp);
         console.log('legend', this.infos);
       });
     this.form = new FormGroup({
