@@ -1,6 +1,6 @@
-<form enctype="multipart/form-data" *ngFor="let info of infos" >
+<!-- <form enctype="multipart/form-data"  > -->
   
-  <mat-tab-group  mat-align-tabs="center" >
+  <mat-tab-group  mat-align-tabs="center" *ngFor="let info of infos">
      <mat-tab label="Personal">
       <!-- <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
@@ -372,4 +372,4 @@
   </mat-tab-group>
 
 
-</form>
+<!-- </form> -->
