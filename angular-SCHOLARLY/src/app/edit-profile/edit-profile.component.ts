@@ -261,7 +261,7 @@ export class EditProfileComponent implements OnInit {
     this.authService
       .getInfoUpdateListener()
       .subscribe((imp: AuthDataInfo[]) => {
-        imp.pipe();
+        imp.map((x) => console.log('love', x));
         this.infos = imp;
         console.log('my waist', this.infos);
       });
