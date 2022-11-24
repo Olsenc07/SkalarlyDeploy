@@ -51,7 +51,7 @@ export class EditProfileComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription;
   picker = new Picker();
-  infos = {};
+  infos: AuthDataInfo = {};
 
   userId: string;
 
