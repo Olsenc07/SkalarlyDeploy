@@ -1,6 +1,6 @@
-<!-- <form enctype="multipart/form-data"  > -->
+<form enctype="multipart/form-data" *ngFor="let info of infos" >
   
-  <mat-tab-group  mat-align-tabs="center" *ngFor="let info of infos">
+  <mat-tab-group  mat-align-tabs="center" >
      <mat-tab label="Personal">
       <!-- <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
@@ -9,10 +9,7 @@
         <div >Personal</div>
       </ng-template> -->
       <div class="entire-page">
-
         <div class="middle">
-
-
           <div class="personalizeLarge">
             <div class="centerR">
               <div class="pics">
@@ -375,4 +372,4 @@
   </mat-tab-group>
 
 
-<!-- </form> -->
+</form>
