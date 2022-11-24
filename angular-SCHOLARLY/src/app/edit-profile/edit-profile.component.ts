@@ -54,7 +54,7 @@ export class EditProfileComponent implements OnInit {
 
   userId: string;
 
-  infos: AuthDataInfo[] = [];
+  infos = [];
   private infosSub: Subscription;
   // Showcase
   showCasePreview: any = '';
