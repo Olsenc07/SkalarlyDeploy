@@ -259,6 +259,7 @@ export class EditProfileComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
     this.infos = this.authService.getInfoUpdateListener();
+    console.log('danny', this.infos);
     this.form = new FormGroup({
       showCase: new FormControl(null, {
         validators: [Validators.required],
