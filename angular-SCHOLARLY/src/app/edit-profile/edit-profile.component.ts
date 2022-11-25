@@ -267,7 +267,6 @@ export class EditProfileComponent implements OnInit {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
     this.authService.getInfoUpdateListener().subscribe((imp) => {
       this.Name = imp[0].name;
       this.Birthday = imp[0].birthday;
@@ -279,6 +278,7 @@ export class EditProfileComponent implements OnInit {
       this.Gender = imp[0].gender;
       this.Bio = imp[0].bio;
     });
+    this.authService.getInfoPersonal(this.userId);
     this.form = new FormGroup({
       showCase: new FormControl(null, {
         validators: [Validators.required],
