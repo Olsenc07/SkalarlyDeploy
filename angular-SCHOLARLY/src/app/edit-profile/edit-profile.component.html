@@ -77,11 +77,11 @@
 
           <div class="input">
             <i class="material-icons _icon" *ngIf="!name.value">badge</i>
-  <button mat-icon-button type="button" *ngIf="name.value" (click)="saveName()" matTooltip="Save Name">
+  <button mat-icon-button  *ngIf="name.value" (click)="saveName()" matTooltip="Save Name">
             <i class="material-icons check" *ngIf="name.value">badge</i>
 </button>
 
-            <mat-form-field>
+            <mat-form-field appearance="outline">
               <mat-label *ngIf="Name">{{Name}}</mat-label>
               <mat-label *ngIf="!Name">Full name</mat-label>
               <input matInput  maxlength="60" 
@@ -96,7 +96,7 @@
             <div class="input">
               <!-- Birthday picker -->
               <i class="material-icons _icon" *ngIf="!birthday.value">cake</i>
-          <button mat-icon-button type="button" *ngIf="birthday.value" (click)="saveBirthday()" matTooltip="Save Birthday">
+          <button mat-icon-button  *ngIf="birthday.value" (click)="saveBirthday()" matTooltip="Save Birthday">
               <i class="material-icons check"  *ngIf="birthday.value">cake</i>
           </button>
               <mat-form-field >
@@ -117,7 +117,7 @@
            <!-- Gender -->
       <div class="gender">
         <i class="material-icons _icon" *ngIf="!gender.value">transgender</i>
-        <button mat-icon-button type="button" *ngIf="gender.value" (click)="saveGender()" matTooltip="Save Gender">
+        <button mat-icon-button  *ngIf="gender.value" (click)="saveGender()" matTooltip="Save Gender">
                     <i class="material-icons check"  *ngIf="gender.value">transgender</i>
       </button>
         <mat-form-field class="smaller" >
@@ -126,7 +126,7 @@
 
           <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
           <mat-autocomplete #auto_="matAutocomplete">
-            <mat-option *ngFor="let gender of genders" >
+            <mat-option *ngFor="let gender of genders" [value]="gender">
               {{gender}}
             </mat-option>
           </mat-autocomplete>
@@ -135,7 +135,7 @@
       <!-- Pronouns -->
           <div class="gender">
             <i class="material-icons _icon" *ngIf="!pronouns.value">psychology</i>
-            <button mat-icon-button type="button" *ngIf="pronouns.value" (click)="savePronoun()" matTooltip="Save Pronouns">
+            <button mat-icon-button  *ngIf="pronouns.value" (click)="savePronoun()" matTooltip="Save Pronouns">
                         <i class="material-icons check"  *ngIf="pronouns.value">psychology</i>
           </button>
       <mat-form-field  class="smaller">
@@ -144,7 +144,7 @@
 
         <input matInput type='text' [formControl]="pronouns" [matAutocomplete]="auto"/>
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let pronoun of pronounS" >
+          <mat-option *ngFor="let pronoun of pronounS" [value]="pronoun">
             {{pronoun}}
           </mat-option>
         </mat-autocomplete>
@@ -155,8 +155,8 @@
   
           <div class="input">
             <i class="fas fa-heart  _icon" *ngIf="!bio.value"></i>
-  <button mat-icon-button type="button" *ngIf="bio.value" (click)="saveBio()" matTooltip="Save Bio">
-            <i class="fas fa-heart  check" *ngIf="bio.value"></i>
+  <button mat-icon-button  *ngIf="bio.value" (click)="saveBio()" matTooltip="Save Bio">
+            <i class="fas fa-heart check" *ngIf="bio.value"></i>
 </button>
 
             <mat-form-field>
@@ -165,7 +165,7 @@
 
             <input matInput   
                [formControl]="bio" type="text" placeholder="Bio" class="inputText"/>
-              <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearBio()">
+              <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearBio()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button>
    
@@ -183,7 +183,7 @@
        
           <!-- Save button -->
           <div class="done">
-  <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Go To Profile</button>
+  <button mat-raised-button color="primary"  routerLink="/profile" class="button">Go To Profile</button>
           </div>
 
 
@@ -207,7 +207,7 @@
   <div class="input">
     <span class="fas fa-star _icon" *ngIf="!major.value">
     </span>
-  <button mat-icon-button type="button" *ngIf="major.value" (click)="saveMajor()" matTooltip="Save Major">
+  <button mat-icon-button  *ngIf="major.value" (click)="saveMajor()" matTooltip="Save Major">
     <span class="fas fa-star check" *ngIf="major.value">
     </span>
     </button>
@@ -215,7 +215,7 @@
 <mat-label *ngIf="Major">{{Major}}</mat-label>
 <mat-label *ngIf="!Major">Major(s)</mat-label>
       <input class="major" maxlength="50" matInput placeholder="Major" [formControl]="major" />
-      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearMajor()">
+      <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" (click)="clearMajor()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
     </mat-form-field>
@@ -231,7 +231,7 @@
   <div class="input">
     <span class="fas fa-star-half-alt _icon" *ngIf="!minor.value">
     </span>
-  <button mat-icon-button type="button" *ngIf="minor.value" (click)="saveMinor()" matTooltip="Save Minor">
+  <button mat-icon-button *ngIf="minor.value" (click)="saveMinor()" matTooltip="Save Minor">
     <span class="fas fa-star-half-alt check" *ngIf="minor.value">
     </span>
     </button>
@@ -239,7 +239,7 @@
 <mat-label *ngIf="Minor">{{Minor}}</mat-label>
 <mat-label *ngIf="!Minor">Minor(s)</mat-label>
       <input class="major" maxlength="50" matInput placeholder="Minor" [formControl]="minor" />
-      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearMinor()">
+      <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value"  (click)="clearMinor()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
     </mat-form-field>
@@ -257,7 +257,7 @@
 <div class="input">
   <span class="fas fa-running _icon" *ngIf="!sport.value">
   </span>
-  <button mat-icon-button type="button" *ngIf="sport.value" (click)="saveSport()" matTooltip="Save Sport">
+  <button mat-icon-button  *ngIf="sport.value" (click)="saveSport()" matTooltip="Save Sport">
   <span class="fas fa-running check" *ngIf="sport.value">
   </span>
   </button>
@@ -265,7 +265,7 @@
 <mat-label *ngIf="Sport">{{Sport}}</mat-label>
 <mat-label *ngIf="!Sport">Do you play a sport?</mat-label>
     <input matInput  placeholder="Do you play a sport?" [formControl]="sport" />
-    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearSport()">
+    <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value"  (click)="clearSport()">
       <mat-icon class="asthetic-adds">close</mat-icon>
     </button>
 
@@ -281,7 +281,7 @@
 <div class="input">
   <span class="fas fa-user-friends _icon" *ngIf="!club.value">
   </span>
-  <button mat-icon-button type="button" *ngIf="club.value" (click)="saveClub()" matTooltip="Save Club">
+  <button mat-icon-button  *ngIf="club.value" (click)="saveClub()" matTooltip="Save Club">
   <span class="fas fa-user-friends check" *ngIf="club.value">
   </span>
   </button>
@@ -289,7 +289,7 @@
 <mat-label *ngIf="Club">{{Club}}</mat-label>
 <mat-label *ngIf="!Club">Are you apart of a club?</mat-label>
     <input class="major"  matInput placeholder="Are you apart of a club?" [formControl]="club" />
-    <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" matTooltip="Clear" (click)="clearClub()">
+    <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" (click)="clearClub()">
       <mat-icon class="asthetic-adds">close</mat-icon>
     </button>
 
@@ -357,7 +357,7 @@
   </div>
 
   <div class="doneShowCase">
-    <button mat-raised-button color="primary" [disabled]="!showCase.value" type="submit" routerLink="/profile" class="button"
+    <button mat-raised-button color="primary" [disabled]="!showCase.value" routerLink="/profile" class="button"
       (click)="onSubmitShowCase()">
    Update
     </button>
