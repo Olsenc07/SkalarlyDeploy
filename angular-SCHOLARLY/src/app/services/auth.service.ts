@@ -2033,6 +2033,7 @@ export class AuthService {
               CodePursuing13: info.CodePursuing13,
               CodePursuing14: info.CodePursuing14,
               ProfilePicPath: info.ProfilePicPath,
+              cloudinary_id: info.cloudinary_id,
               Creator: info.Creator,
             };
           });
