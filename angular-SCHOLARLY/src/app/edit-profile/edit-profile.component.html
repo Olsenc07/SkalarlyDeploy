@@ -81,7 +81,8 @@
             <i class="material-icons check" *ngIf="name.value">badge</i>
 </button>
 
-            <mat-form-field appearance="outline">
+<!-- appearance="outline" -->
+            <mat-form-field >
               <mat-label *ngIf="Name">{{Name}}</mat-label>
               <mat-label *ngIf="!Name">Full name</mat-label>
               <input matInput  maxlength="60" 
