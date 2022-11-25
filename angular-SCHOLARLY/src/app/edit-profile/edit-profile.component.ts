@@ -263,7 +263,7 @@ export class EditProfileComponent implements OnInit {
     this.authService.getInfoUpdateListener().subscribe((imp) => {
       console.log('wow', imp);
       console.log('wow', imp[0]);
-      this.Name = imp[1];
+      this.Name = imp[0].name;
       this.infos = imp[0];
       console.log('wowzers', this.infos);
       console.log('wowzers', typeof this.infos);
