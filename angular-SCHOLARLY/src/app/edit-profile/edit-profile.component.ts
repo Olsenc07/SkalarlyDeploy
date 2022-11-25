@@ -114,6 +114,14 @@ export class EditProfileComponent implements OnInit {
   form: FormGroup;
 
   Name = '';
+  Birthday = '';
+  Major = '';
+  Minor = '';
+  Sport = '';
+  Club = '';
+  Gender = '';
+  Pronouns = '';
+  Bio = '';
 
   constructor(
     public dialog: MatDialog,
@@ -261,13 +269,15 @@ export class EditProfileComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
     this.authService.getInfoUpdateListener().subscribe((imp) => {
-      console.log('wow', imp);
-      console.log('wow', imp[0]);
       this.Name = imp[0].name;
-      this.infos = imp[0];
-      console.log('wowzers', this.infos);
-      console.log('wowzers', typeof this.infos);
-      console.log('CEO', this.Name);
+      this.Birthday = imp[0].birthday;
+      this.Pronouns = imp[0].pronouns;
+      this.Major = imp[0].major;
+      this.Minor = imp[0].minor;
+      this.Sport = imp[0].sport;
+      this.Club = imp[0].club;
+      this.Gender = imp[0].gender;
+      this.Bio = imp[0].bio;
     });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
