@@ -11,7 +11,7 @@
         <!-- Container holding the log in form -->
         <div class="log-in-box" >
           <div class="row_">
-          <mat-form-field class="text-input">
+          <mat-form-field class="text-input" appearance="outline">
             <mat-label> Academic Email</mat-label>
             <input matInput  [formControl]="email" required
              />
@@ -33,7 +33,7 @@
 
 
           <div class="row_">
-          <mat-form-field class="text-input" >
+          <mat-form-field class="text-input" appearance="outline">
             <mat-label>Password</mat-label>
             <input matInput [formControl]="password" type="password" id='passwordType' required/>
             <mat-error *ngIf="password.invalid">Please enter a valid password</mat-error>
