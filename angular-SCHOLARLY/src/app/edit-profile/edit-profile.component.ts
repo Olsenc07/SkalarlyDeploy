@@ -281,18 +281,18 @@ export class EditProfileComponent implements OnInit, OnDestroy {
         this.Gender = imp[0].gender;
         this.Bio = imp[0].bio;
       });
-    this.form = new FormGroup({
-      showCase: new FormControl(null, {
-        validators: [Validators.required],
-        asyncValidators: [mimeType],
-      }),
-      profilePic: new FormControl(null, {
-        validators: [Validators.required],
-        asyncValidators: [mimeType],
-      }),
-    });
+    // this.form = new FormGroup({
+    //   showCase: new FormControl(null, {
+    //     validators: [Validators.required],
+    //     asyncValidators: [mimeType],
+    //   }),
+    //   profilePic: new FormControl(null, {
+    //     validators: [Validators.required],
+    //     asyncValidators: [mimeType],
+    //   }),
+    // });
   }
-  ngOnDestroy() {
+  ngOnDestroy(): any {
     this.postsSub.unsubscribe();
   }
   clearBio(): void {
@@ -505,7 +505,7 @@ export class EditProfileComp1Component implements OnInit {
     });
   }
   clearCode4(): void {
-    this.CodeCompleted.setValue('');
+    this.CodeCompleted4.setValue('');
     this.authServiceEditCourse.editUserCourse4(
       this.userId,
       this.CodeCompleted4.value
@@ -515,7 +515,7 @@ export class EditProfileComp1Component implements OnInit {
     });
   }
   clearCode5(): void {
-    this.CodeCompleted.setValue('');
+    this.CodeCompleted5.setValue('');
     this.authServiceEditCourse.editUserCourse5(
       this.userId,
       this.CodeCompleted5.value
