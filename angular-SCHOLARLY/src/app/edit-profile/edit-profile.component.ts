@@ -93,6 +93,7 @@ export class EditProfileComponent implements OnInit {
   // @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
   cropImgPreview: any = '';
   imgChangeEvent: any = '';
+  selectedIndex = 0;
 
   // username isn't connected to any formcontrol its just so the profile interface is happy
   username: FormControl = new FormControl('');
@@ -112,7 +113,7 @@ export class EditProfileComponent implements OnInit {
   gender: FormControl = new FormControl('');
   form: FormGroup;
 
-  selectedIndex = 0;
+  Name = '';
 
   constructor(
     public dialog: MatDialog,
@@ -259,10 +260,10 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.authService.getInfoUpdateListener().subscribe((imp: AuthDataInfo) => {
+    this.authService.getInfoUpdateListener().subscribe((imp) => {
       console.log('wow', imp);
       console.log('wow', imp[0]);
-
+      this.Name = imp[1];
       this.infos = imp[0];
       console.log('wowzers', this.infos);
       console.log('wowzers', typeof this.infos);
