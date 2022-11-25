@@ -30,8 +30,8 @@
             </mat-option>
        
       </mat-select> -->
-      <input matInput type="text" maxlength="8" [formControl]="CodeCompleted"> 
-      <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" (click)="clearCode1()">
+      <input matInput  maxlength="8" [formControl]="CodeCompleted"> 
+      <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearCode1()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
       <mat-hint align="start" >Format: ABC101H1</mat-hint>
@@ -48,7 +48,7 @@
 </button>
 
       <mat-form-field class="example-chip-list">
-        <mat-label *ngIf="!info.CodeCompleted2">Completed Course</mat-label>
+        <mat-label *ngIf="info.CodeCompleted2.length == 0">Completed Course</mat-label>
         <mat-label>{{info.CodeCompleted2}}</mat-label>
         <!-- <mat-select placeholder="Choose completed course 2" #codeInput [formControl]="CodeCompleted2" >
 
@@ -76,7 +76,7 @@
 </button>
 
       <mat-form-field class="example-chip-list">
-        <mat-label *ngIf="!info.CodeCompleted3">Completed Course</mat-label>
+        <mat-label *ngIf="info.CodeCompleted3.length == 0">Completed Course</mat-label>
 
         <mat-label>{{info.CodeCompleted3}}</mat-label>
         <!-- <mat-select placeholder="Choose completed course 3"  #codeInput  [formControl]="CodeCompleted3" >
@@ -106,7 +106,7 @@
 </button>
 
       <mat-form-field class="example-chip-list">
-        <mat-label *ngIf="!info.CodeCompleted4">Completed Course</mat-label>
+        <mat-label *ngIf="info.CodeCompleted4.length == 0">Completed Course</mat-label>
 
         <mat-label>{{info.CodeCompleted4}}</mat-label>
         <!-- <mat-select placeholder="Choose completed course 4"  #codeInput  [formControl]="CodeCompleted4" >
@@ -137,7 +137,7 @@
 </button>
 
 <mat-form-field class="example-chip-list">
-  <mat-label *ngIf="!info.CodeCompleted5">Completed Course</mat-label>
+  <mat-label *ngIf="info.CodeCompleted5.length == 0">Completed Course</mat-label>
 <mat-label>{{info.CodeCompleted5}}</mat-label>
 <!-- <mat-select placeholder="Choose completed course 5" #codeInput [formControl]="CodeCompleted5" >
 

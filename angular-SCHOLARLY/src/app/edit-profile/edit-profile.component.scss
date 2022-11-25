@@ -321,6 +321,12 @@ border-top-right-radius: 25px;
   justify-content: center;
   width: 100%;
 }
+.gender_ {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1%;
+}
 @media (min-width: 1024px) {
   .groups-jj {
     display: flex;
@@ -752,7 +758,7 @@ border-top-right-radius: 25px;
   justify-content: center;
   flex-direction: row;
   width: 100%;
-  margin-top: 2%;
+  // margin-top: 2%;
 }
 
 .inputText {
@@ -788,7 +794,9 @@ border-top-right-radius: 25px;
   color: #707070;
   border-color: #418bba;
 }
-
+.top{
+  margin-top: 2%;
+}
 .text-field-gender {
   position: relative;
   width: 456.89px;

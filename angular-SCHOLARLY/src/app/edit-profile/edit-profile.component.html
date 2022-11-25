@@ -1,13 +1,13 @@
 <!-- <form enctype="multipart/form-data"  > -->
 
   <mat-tab-group  mat-align-tabs="center" >
-     <mat-tab label="Personal">
-      <!-- <ng-template mat-tab-label>
+     <mat-tab >
+      <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
           account_circle
           </span></mat-icon>
         <div >Personal</div>
-      </ng-template> -->
+      </ng-template>
       <div class="entire-page">
         <div class="middle">
           <div class="personalizeLarge">
@@ -116,7 +116,7 @@
 
 
            <!-- Gender -->
-      <div class="gender">
+      <div class="gender_">
         <i class="material-icons _icon" *ngIf="!gender.value">transgender</i>
         <button mat-icon-button  *ngIf="gender.value" (click)="saveGender()" matTooltip="Save Gender">
                     <i class="material-icons check"  *ngIf="gender.value">transgender</i>
@@ -191,13 +191,13 @@
         </div> 
       </div> 
     </mat-tab> 
-    <mat-tab label="Academic">
-      <!-- <ng-template mat-tab-label>
+    <mat-tab >
+      <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
           interests
           </span></mat-icon>
         <div >Academic</div>
-      </ng-template> -->
+      </ng-template>
       <div class="entire-page">
 
         <div class="groupsjj_box">
@@ -205,7 +205,7 @@
 
 <!-- Text Field Major/Minor -->
 <div class="major-layout">
-  <div class="input">
+  <div class="input top">
     <span class="fas fa-star _icon" *ngIf="!major.value">
     </span>
   <button mat-icon-button  *ngIf="major.value" (click)="saveMajor()" matTooltip="Save Major">
@@ -317,13 +317,13 @@
 
     </mat-tab>
 
-<mat-tab label="Showcase">
-  <!-- <ng-template mat-tab-label>
+<mat-tab >
+  <ng-template mat-tab-label>
     <mat-icon><span class="material-icons-two-tone">
       photo_library
       </span></mat-icon>
     <div >Showcase</div>
-  </ng-template> -->
+  </ng-template>
  <!-- Image Preview -->
  <div class="rowShow">
   <!-- <div class="column"> -->
