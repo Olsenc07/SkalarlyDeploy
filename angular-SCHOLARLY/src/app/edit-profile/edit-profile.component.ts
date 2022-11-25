@@ -45,7 +45,7 @@ import { AuthServiceEditNext } from '../services/editNextCourse.service';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit, OnDestroy {
   startDate = new Date(1997, 0, 1);
   storedPosts: Post[] = [];
   posts: Post[] = [];
@@ -268,17 +268,19 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.authService.getInfoUpdateListener().subscribe((imp) => {
-      this.Name = imp[0].name;
-      this.Birthday = imp[0].birthday;
-      this.Pronouns = imp[0].pronouns;
-      this.Major = imp[0].major;
-      this.Minor = imp[0].minor;
-      this.Sport = imp[0].sport;
-      this.Club = imp[0].club;
-      this.Gender = imp[0].gender;
-      this.Bio = imp[0].bio;
-    });
+    this.postsSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((imp) => {
+        this.Name = imp[0].name;
+        this.Birthday = imp[0].birthday;
+        this.Pronouns = imp[0].pronouns;
+        this.Major = imp[0].major;
+        this.Minor = imp[0].minor;
+        this.Sport = imp[0].sport;
+        this.Club = imp[0].club;
+        this.Gender = imp[0].gender;
+        this.Bio = imp[0].bio;
+      });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
         validators: [Validators.required],
@@ -290,7 +292,9 @@ export class EditProfileComponent implements OnInit {
       }),
     });
   }
-
+  ngOnDestroy() {
+    this.postsSub.unsubscribe();
+  }
   clearBio(): void {
     this.bio.setValue('');
     this.authServiceEdit.editUserBio(this.userId, this.bio.value);
