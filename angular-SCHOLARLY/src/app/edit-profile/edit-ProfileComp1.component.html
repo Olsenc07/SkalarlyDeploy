@@ -31,7 +31,7 @@
        
       </mat-select> -->
       <input matInput type="text" maxlength="8" [formControl]="CodeCompleted"> 
-      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearCode1()">
+      <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" (click)="clearCode1()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
       <mat-hint align="start" >Format: ABC101H1</mat-hint>
@@ -43,7 +43,7 @@
 <!-- 2 -->
     <div class="input" >
       <i class="material-icons _icon" *ngIf="!CodeCompleted2.value">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted2.value" (click)="save2()" matTooltip="Save Course">
+  <button mat-icon-button *ngIf="CodeCompleted2.value" (click)="save2()" matTooltip="Save Course">
       <i class="material-icons check" *ngIf="CodeCompleted2.value">check</i>
 </button>
 
@@ -63,7 +63,7 @@
        -->
       <!-- </mat-select> -->
       <input matInput maxlength="8" [formControl]="CodeCompleted2"> 
-      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearCode2()">
+      <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value"  (click)="clearCode2()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
       </mat-form-field>
@@ -71,7 +71,7 @@
 <!-- 3 -->
     <div class="input" >
       <i class="material-icons _icon" *ngIf="!CodeCompleted3.value">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted3.value" (click)="save3()" matTooltip="Save Course">
+  <button mat-icon-button *ngIf="CodeCompleted3.value" (click)="save3()" matTooltip="Save Course">
       <i class="material-icons check" *ngIf="CodeCompleted3.value">check</i>
 </button>
 
@@ -93,7 +93,7 @@
       
       </mat-select> -->
       <input matInput maxlength="8" [formControl]="CodeCompleted3"> 
-      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearCode3()">
+      <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" (click)="clearCode3()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
       </mat-form-field>
@@ -123,7 +123,7 @@
       
       </mat-select> -->
       <input matInput maxlength="8" [formControl]="CodeCompleted4"> 
-      <button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearCode4()">
+      <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" \ (click)="clearCode4()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
       </mat-form-field>
@@ -153,7 +153,7 @@
 
 </mat-select> -->
 <input matInput maxlength="8" [formControl]="CodeCompleted5"> 
-<button mat-button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearCode5()">
+<button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearCode5()">
   <mat-icon class="asthetic-adds">close</mat-icon>
 </button>
 </mat-form-field>
