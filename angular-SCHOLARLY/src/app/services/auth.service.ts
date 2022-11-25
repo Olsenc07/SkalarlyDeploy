@@ -1956,7 +1956,7 @@ export class AuthService {
   // Your info
   getInfoPersonal(userId: string): any {
     this.http
-      .get<{ message: string; infos: AuthDataInfo[] }>(
+      .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/user/infoPersonal',
         { params: { userId } }
       )
