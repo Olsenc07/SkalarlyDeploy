@@ -555,24 +555,24 @@ export class EditProfileComp1Component implements OnInit {
     });
   }
 
-  add(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+  // add(event: MatChipInputEvent): void {
+  //   const value = (event.value || '').trim();
 
-    // Add our course code
-    if (value) {
-      this.classes.push(value);
-    }
+  //   // Add our course code
+  //   if (value) {
+  //     this.classes.push(value);
+  //   }
 
-    // Clear the input value
-    // event.chipInput!.clear();
-    this.CodeCompleted.setValue(null);
-  }
-  remove(code: string): void {
-    const index = this.classes.indexOf(code);
-    if (index >= 0) {
-      this.classes.splice(index, 1);
-    }
-  }
+  //   // Clear the input value
+  //   // event.chipInput!.clear();
+  //   this.CodeCompleted.setValue(null);
+  // }
+  // remove(code: string): void {
+  //   const index = this.classes.indexOf(code);
+  //   if (index >= 0) {
+  //     this.classes.splice(index, 1);
+  //   }
+  // }
 
   // Completed Classes
   // selected(event: MatAutocompleteSelectedEvent): void {
