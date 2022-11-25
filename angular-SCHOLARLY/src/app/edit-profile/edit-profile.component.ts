@@ -268,33 +268,29 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((imp) => {
-        this.Name = imp[0].name;
-        this.Birthday = imp[0].birthday;
-        this.Pronouns = imp[0].pronouns;
-        this.Major = imp[0].major;
-        this.Minor = imp[0].minor;
-        this.Sport = imp[0].sport;
-        this.Club = imp[0].club;
-        this.Gender = imp[0].gender;
-        this.Bio = imp[0].bio;
-      });
-    // this.form = new FormGroup({
-    //   showCase: new FormControl(null, {
-    //     validators: [Validators.required],
-    //     asyncValidators: [mimeType],
-    //   }),
-    //   profilePic: new FormControl(null, {
-    //     validators: [Validators.required],
-    //     asyncValidators: [mimeType],
-    //   }),
-    // });
+    this.authService.getInfoUpdateListener().subscribe((imp) => {
+      this.Name = imp[0].name;
+      this.Birthday = imp[0].birthday;
+      this.Pronouns = imp[0].pronouns;
+      this.Major = imp[0].major;
+      this.Minor = imp[0].minor;
+      this.Sport = imp[0].sport;
+      this.Club = imp[0].club;
+      this.Gender = imp[0].gender;
+      this.Bio = imp[0].bio;
+    });
+    this.form = new FormGroup({
+      showCase: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+      profilePic: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+    });
   }
-  ngOnDestroy(): any {
-    this.infosSub.unsubscribe();
-  }
+
   clearBio(): void {
     this.bio.setValue('');
     this.authServiceEdit.editUserBio(this.userId, this.bio.value);
