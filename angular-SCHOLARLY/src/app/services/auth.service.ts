@@ -1962,13 +1962,11 @@ export class AuthService {
       )
       .pipe(
         map((infosData) => {
-          console.log('1', infosData.infos);
           return infosData.infos;
         })
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
-        console.log('things', this.infos);
         this.infosUpdated.next([...this.infos]);
       });
   }

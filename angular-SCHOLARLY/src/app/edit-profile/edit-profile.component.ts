@@ -268,7 +268,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.postsSub = this.authService
+    this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((imp) => {
         this.Name = imp[0].name;
@@ -281,19 +281,19 @@ export class EditProfileComponent implements OnInit, OnDestroy {
         this.Gender = imp[0].gender;
         this.Bio = imp[0].bio;
       });
-    // this.form = new FormGroup({
-    //   showCase: new FormControl(null, {
-    //     validators: [Validators.required],
-    //     asyncValidators: [mimeType],
-    //   }),
-    //   profilePic: new FormControl(null, {
-    //     validators: [Validators.required],
-    //     asyncValidators: [mimeType],
-    //   }),
-    // });
+    this.form = new FormGroup({
+      showCase: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+      profilePic: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+    });
   }
   ngOnDestroy(): any {
-    this.postsSub.unsubscribe();
+    this.infosSub.unsubscribe();
   }
   clearBio(): void {
     this.bio.setValue('');
