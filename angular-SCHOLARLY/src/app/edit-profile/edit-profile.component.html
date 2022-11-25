@@ -103,10 +103,10 @@
                 <mat-label *ngIf="Birthday">{{Birthday|date:"longDate"}}</mat-label>
               <mat-label *ngIf="!Birthday">When's your birthday?</mat-label>
 
-                <!-- <input matInput [matDatepicker]="dp" [formControl]="birthday"> -->
+                <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-hint>MM/DD/YYYY</mat-hint>
-                <!-- <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-                <mat-datepicker #dp startView="year" [startAt]="startDate"></mat-datepicker> -->
+                <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker #dp startView="year" [startAt]="startDate"></mat-datepicker>
               </mat-form-field>
 
             </div>
