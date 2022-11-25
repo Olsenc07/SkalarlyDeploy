@@ -127,7 +127,7 @@
 
           <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
           <mat-autocomplete #auto_="matAutocomplete">
-            <mat-option *ngFor="let gender of genders" [value]="gender">
+            <mat-option *ngFor="let gender of genders" >
               {{gender}}
             </mat-option>
           </mat-autocomplete>
@@ -145,7 +145,7 @@
 
         <input matInput type='text' [formControl]="pronouns" [matAutocomplete]="auto"/>
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let pronoun of pronounS" [value]="pronoun">
+          <mat-option *ngFor="let pronoun of pronounS" >
             {{pronoun}}
           </mat-option>
         </mat-autocomplete>
