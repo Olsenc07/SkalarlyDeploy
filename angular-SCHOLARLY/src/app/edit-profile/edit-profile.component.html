@@ -99,15 +99,15 @@
           <button mat-icon-button type="button" *ngIf="birthday.value" (click)="saveBirthday()" matTooltip="Save Birthday">
               <i class="material-icons check"  *ngIf="birthday.value">cake</i>
           </button>
-              <!-- <mat-form-field >
+              <mat-form-field >
                 <mat-label *ngIf="Birthday">{{Birthday|date:"longDate"}}</mat-label>
               <mat-label *ngIf="!Birthday">When's your birthday?</mat-label>
 
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker #dp startView="year" [startAt]="startDate"></mat-datepicker>
-              </mat-form-field> -->
+              </mat-form-field>
 
             </div>
           
