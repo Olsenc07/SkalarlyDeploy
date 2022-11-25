@@ -464,7 +464,6 @@ export class EditProfileComp1Component implements OnInit {
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
-        console.log('infos', this.infos);
       });
     this.CodeCompleted.valueChanges.subscribe((v) =>
       this.CodeCompletedLength.next(v.length)
