@@ -19,15 +19,14 @@
             pattern="+@utsc.utoronto\.ca" pattern="+@rotman.utoronto\.ca" pattern="+@skalarly\.com" -->
             <!-- pattern=".+@mail.utoronto\.ca" -->
             <!-- <mat-hint>@mail.utoronto.ca</mat-hint> -->
-            <span matSuffix class="hide"></span>
             <mat-error *ngIf="email.invalid">Please enter your academic email</mat-error>
             <!-- <button color="primary" mat-button matSuffix mat-icon-button type="button"
               (click)="clearEmail()">
               <mat-icon>close</mat-icon>
             </button> -->
-            <div matSuffix mat-icon class="fas fa-info-circle" style="font-size: large; color: gray;" matTooltip="You must use one of these email extensions.
+            <button matSuffix mat-icon-button disabled class="fas fa-info-circle" style="font-size: large; color: gray;" matTooltip="You must use one of these email extensions.
           @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca,
-          @utsc.utoronto.ca, @uoftpharmacy.com "></div>
+          @utsc.utoronto.ca, @uoftpharmacy.com "></button>
           </mat-form-field>
           
         </div>
