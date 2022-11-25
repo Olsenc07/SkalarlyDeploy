@@ -1962,7 +1962,7 @@ export class AuthService {
       )
       .pipe(
         map((infosData) => {
-          console.log('1', typeof infosData.infos);
+          console.log('1', infosData.infos);
           return infosData.infos.map((info) => {
             return {
               // id: info._id,
