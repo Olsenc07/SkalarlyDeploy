@@ -45,7 +45,7 @@ import { AuthServiceEditNext } from '../services/editNextCourse.service';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComponent implements OnInit, OnDestroy {
+export class EditProfileComponent implements OnInit {
   startDate = new Date(1997, 0, 1);
   storedPosts: Post[] = [];
   posts: Post[] = [];
