@@ -206,16 +206,16 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   }
   // Passes value as base64 string of cropped area!!
   //  But where does form controller come into play?
-  imgLoad(): void {
-    // display cropper tool
-  }
+  // imgLoad(): void {
+  //   // display cropper tool
+  // }
 
-  initCropper(): void {
-    // init cropper
-  }
-  imgFailed(): void {
-    // error msg
-  }
+  // initCropper(): void {
+  //   // init cropper
+  // }
+  // imgFailed(): void {
+  //   // error msg
+  // }
 
   // SnapShot
   // After its added to the list. Click save and
