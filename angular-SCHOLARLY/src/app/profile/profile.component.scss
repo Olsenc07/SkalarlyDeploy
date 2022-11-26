@@ -533,8 +533,11 @@ margin-top: 2%;
     display: none;
   }
 }
-:ng-deep #leftCorncer {
-  border-top-left-radius: 25px;
+:ng-deep .leftCorncer {
+  border-top-left-radius: 25px !important;
+}
+:ng-deep .rightCorncer {
+  border-top-left-radius: 25px !important;
 }
 .list {
   display: flex;
