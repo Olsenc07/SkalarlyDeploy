@@ -223,7 +223,7 @@ border-top-right-radius: 25px;
 .cropper {
   display: flex;
 }
-::ng-deep .mat-tab-label{
+::ng-deep mat-tab-label{
   background-image: linear-gradient(#b2b0b0, whitesmoke);
 }
 .check{
@@ -238,14 +238,14 @@ border-top-right-radius: 25px;
   color: #4dc247;
   text-shadow: 0 0 5px #49b569;
   animation: glow 1s ease-in-out infinite alternate;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 @keyframes glow {
   from {
-    text-shadow: 0 0 10px #ffffff;
+    color: 0 0 10px #ffffff;
   }
   to {
-    text-shadow: 0 0 20px #49b569
+    color: 0 0 20px #49b569
   }
 }
 @media (min-width: 1024px) {
