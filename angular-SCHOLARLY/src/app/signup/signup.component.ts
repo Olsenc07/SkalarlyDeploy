@@ -68,6 +68,7 @@ export const MY_FORMATS = {
   ],
 })
 export class SignupComponent implements OnInit {
+  startDate = new Date(1997, 0, 1);
   isLoading = false;
   userId: string;
   userIsAuthenticated = false;
