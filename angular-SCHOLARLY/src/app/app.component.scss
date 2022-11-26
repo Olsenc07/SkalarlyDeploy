@@ -440,7 +440,7 @@ h4:focus {
   border-radius: 30px;
   padding: 5px 5px;
   margin: 0 40px;
-  animation: animate 8s linear infinite;
+  animation: animate 10s linear infinite;
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 4vmax;
@@ -448,7 +448,9 @@ h4:focus {
 }
 @keyframes animate {
   0% {color: #C0C0C0;}
+  25% {color: #4dc247;}
   50% {color: #3b70f7;}
+  75% { color: #ff4081}
   100% {color: #C0C0C0;}
 }
 // @keyframes animate {
@@ -494,9 +496,7 @@ h4:focus {
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
-animation: animate 3s linear infinite;
-text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
-  0 0 200px #0072ff;
+animation: animate 10s linear infinite;
 }
 }
 @media (min-width: 1700px) {
@@ -534,9 +534,7 @@ text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
     border-radius: 30px;
     padding: 5px 5px;
   margin: 0 40px;
-  animation: animate 3s linear infinite;
-  text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
-    0 0 200px #0072ff;
+  animation: animate 10s linear infinite;
 }
 }
 @media (min-width: 1700px) {
@@ -575,9 +573,7 @@ text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
-animation: animate 3s linear infinite;
-text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
-  0 0 200px #0072ff;
+animation: animate 10s linear infinite;
 }
 }
 @media (min-width: 1700px) {
@@ -616,9 +612,7 @@ text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
-animation: animate 3s linear infinite;
-text-shadow: 0 0 50px #0072ff, 0 0 100px #0072ff, 0 0 150px #0072ff,
-  0 0 200px #0072ff;
+animation: animate 10s linear infinite;
 }
 }
 @media (min-width: 1700px) {
