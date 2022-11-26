@@ -223,8 +223,8 @@ border-top-right-radius: 25px;
 .cropper {
   display: flex;
 }
-::ng-deep mat-tab-label{
-  background-image: linear-gradient(#b2b0b0, whitesmoke);
+::ng-deep .mat-mdc-tab-header{
+  background-image: linear-gradient(#b2b0b0, white);
 }
 .check{
   display: flex;
@@ -236,18 +236,18 @@ border-top-right-radius: 25px;
   // color: #25a84c;
   // color: #49b569;
   color: #4dc247;
-  text-shadow: 0 0 5px #49b569;
-  animation: glow 1s ease-in-out infinite alternate;
-  transition: all 1s ease;
+  // text-shadow: 0 0 5px #49b569;
+  // animation: glow 1s ease-in-out infinite alternate;
+  // transition: all 1s ease;
 }
-@keyframes glow {
-  from {
-    color: 0 0 10px #ffffff;
-  }
-  to {
-    color: 0 0 20px #49b569
-  }
-}
+// @keyframes glow {
+//   from {
+//     text-shadow: 0 0 10px #ffffff;
+//   }
+//   to {
+//     text-shadow: 0 0 20px #49b569
+//   }
+// }
 @media (min-width: 1024px) {
 .display {
     display: flex;
