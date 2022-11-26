@@ -1,8 +1,8 @@
 @import "../theme.scss";
 ::ng-deep .mat-mdc-tab-header{
   background-image: linear-gradient(#b2b0b0, whitesmoke);
-  border-top-left-radius: 25px ;
-  border-top-left-radius: 25px ;
+  border-top-left-radius: 25px !important;
+  border-top-left-radius: 25px !important;
 }
 .allBox {
   display: flex;
