@@ -553,6 +553,15 @@
           <div class="right-side" >
             <mat-tab-group mat-align-tabs="center">
               <mat-tab label="Activity" >
+                <ng-template mat-tab-label>
+                  <mat-icon> <span class="material-icons-two-tone">
+                     category
+                     <!-- apps -->
+                     </span>
+                   </mat-icon>
+                   <div >Activity</div>
+                 
+                 </ng-template>
                 <!-- <div class="column1" *ngIf=" posts.length == 0 ">
                   <div class="row"> No Posts Made</div><span class="fa-duotone fa-hat-wizard centerR iconEmpty"></span>
                 </div> -->
@@ -562,6 +571,13 @@
                 </div>
               </mat-tab>
               <mat-tab label="Showcase"  >
+                <ng-template mat-tab-label>
+                  <mat-icon><span class="material-icons-two-tone">
+                    photo_library
+                    </span></mat-icon>
+          <div >Showcase</div>
+    
+                 </ng-template>
                 <!-- <div class="column1"  *ngIf="!showCase.ShowCasePath">
                   <div class="row"> No Showcases Added</div> <span
                     class="fa-solid fa-hat-wizard centerR iconEmpty"></span>
