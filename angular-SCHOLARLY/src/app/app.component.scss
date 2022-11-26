@@ -440,7 +440,7 @@ h4:focus {
   border-radius: 30px;
   padding: 5px 5px;
   margin: 0 40px;
-  animation: animate 4s linear infinite;
+  animation: animate 8s linear infinite;
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 4vmax;
@@ -448,7 +448,7 @@ h4:focus {
 }
 @keyframes animate {
   0% {color: #C0C0C0;}
-  50% {color: #0072ff;}
+  50% {color: #3b70f7;}
   100% {color: #C0C0C0;}
 }
 // @keyframes animate {
