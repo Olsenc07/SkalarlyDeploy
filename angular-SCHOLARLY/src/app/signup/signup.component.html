@@ -11,7 +11,7 @@
           pops up and when they click it, it then sends the verification email. Then when they verify it. The next button is un disabled and they
         can continue creating their account -->
         <form [formGroup]="requiredForm">
-          <ng-template mat-tab-label class="backColour">
+          <ng-template mat-tab-label >
             <mat-icon><span class="material-icons-two-tone">
               account_circle
               </span></mat-icon>
@@ -33,11 +33,9 @@
               <!-- pattern="+@+utoronto+" pattern="+@utoronto+" pattern="+@uoftpharmacy+"
               pattern="+@utsc.utoronto+" pattern="+@rotman.utoronto+" pattern="+@skalarly+" pattern="+@outlook+" -->
               <!-- <mat-hint>@mail.utoronto.ca</mat-hint> -->
-              <button mat-icon-button disabled>
-              <mat-icon matSuffix class="material-icons-sharp" style="font-size: large; color: gray;" matTooltip="You must use one of these email extensions.
+              <button mat-icon-button  matSuffix disabled class="material-icons-sharp" style="font-size: large; color: gray;" matTooltip="You must use one of these email extensions.
               @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca,
-              @utsc.utoronto.ca, @uoftpharmacy.com ">info</mat-icon>
-            </button>
+              @utsc.utoronto.ca, @uoftpharmacy.com ">info</button>
               <mat-error >Only U Of T emails are valid</mat-error>
               <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <mat-error *ngIf="email.errors?.email && !email.errors?.noWhiteSpace">Please enter your academic email
