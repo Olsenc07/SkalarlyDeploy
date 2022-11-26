@@ -234,9 +234,17 @@ border-top-right-radius: 25px;
   // color: #49b569;
   color: #4dc247;
   text-shadow: 0 0 15px #4dc247;
+  animation: animate 3s linear infinite;
   transition: all 0.5s ease;
 }
-
+@keyframes animate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
 @media (min-width: 1024px) {
 .display {
     display: flex;
