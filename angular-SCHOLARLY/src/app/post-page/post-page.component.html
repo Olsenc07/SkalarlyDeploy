@@ -5,7 +5,15 @@
 
   <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
     <mat-tab disabled label="Begin" > 
-
+      <ng-template mat-tab-label>
+        <mat-icon> <span class="material-icons-two-tone">
+          flag
+           <!-- apps -->
+           </span>
+         </mat-icon>
+         <div >Begin</div>
+       
+       </ng-template>
 
       <div class="post-descriptionD">
 
@@ -128,7 +136,15 @@
 
     <!-- Next page -->
     <mat-tab disabled label="Customize"> 
-      
+      <ng-template mat-tab-label>
+        <mat-icon> <span class="material-icons-two-tone">
+          dashboard_customize
+           <!-- apps -->
+           </span>
+         </mat-icon>
+         <div >Customize</div>
+       
+       </ng-template>
       
 <div class="threeBox">
 
