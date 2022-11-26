@@ -231,7 +231,10 @@ border-top-right-radius: 25px;
   // flex-direction: column;
   // color: rgb(37, 168, 76);
   // color: #25a84c;
-  color: #49b569;
+  // color: #49b569;
+  color: #4dc247;
+  text-shadow: 0 0 15px #4dc247;
+  transition: all 0.5s ease;
 }
 
 @media (min-width: 1024px) {
