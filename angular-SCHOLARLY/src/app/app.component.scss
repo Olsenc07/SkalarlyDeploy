@@ -1,4 +1,7 @@
 @import "../theme.scss";
+::ng-deep .mat-mdc-tab-header{
+  background-image: linear-gradient(#b2b0b0, whitesmoke);
+}
 .allBox {
   display: flex;
   height: 100%;
@@ -440,7 +443,7 @@ h4:focus {
   border-radius: 30px;
   padding: 5px 5px;
   margin: 0 40px;
-  animation: animate 10s linear infinite;
+  animation: animate 8s linear infinite;
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 4vmax;
@@ -496,7 +499,7 @@ h4:focus {
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
-animation: animate 10s linear infinite;
+animation: animate 8s linear infinite;
 }
 }
 @media (min-width: 1700px) {
@@ -534,7 +537,7 @@ animation: animate 10s linear infinite;
     border-radius: 30px;
     padding: 5px 5px;
   margin: 0 40px;
-  animation: animate 10s linear infinite;
+  animation: animate 8s linear infinite;
 }
 }
 @media (min-width: 1700px) {
@@ -573,7 +576,7 @@ animation: animate 10s linear infinite;
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
-animation: animate 10s linear infinite;
+animation: animate 8s linear infinite;
 }
 }
 @media (min-width: 1700px) {
@@ -612,7 +615,7 @@ animation: animate 10s linear infinite;
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
-animation: animate 10s linear infinite;
+animation: animate 8s linear infinite;
 }
 }
 @media (min-width: 1700px) {
