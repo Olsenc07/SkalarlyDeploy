@@ -223,7 +223,7 @@ border-top-right-radius: 25px;
 .cropper {
   display: flex;
 }
-.mat-tab-label{
+::ng-deep .mat-tab-label{
   background-image: linear-gradient(#b2b0b0, whitesmoke);
 }
 .check{
@@ -236,16 +236,16 @@ border-top-right-radius: 25px;
   // color: #25a84c;
   // color: #49b569;
   color: #4dc247;
-  text-shadow: 0 0 15px #49b569;
+  text-shadow: 0 0 5px #49b569;
   animation: glow 1s ease-in-out infinite alternate;
   transition: all 0.5s ease;
 }
 @keyframes glow {
   from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #49b569, 0 0 40px #49b569;
+    text-shadow: 0 0 10px #ffffff;
   }
   to {
-    text-shadow: 0 0 20px #fff, 0 0 30px #49b569, 0 0 40px #49b569;
+    text-shadow: 0 0 20px #49b569
   }
 }
 @media (min-width: 1024px) {
