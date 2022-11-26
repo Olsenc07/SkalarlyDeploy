@@ -531,7 +531,12 @@
       <div class="right-side" >
         <mat-tab-group mat-align-tabs="center">
           <mat-tab label="Activity" >
-
+<ng-template mat-tab-label>
+ <mat-icon> <span class="material-icons-two-tone">
+    category
+    </span>
+  </mat-icon>
+</ng-template>
             <div class="posts" >
             
                <app-card-personal class="postCard" > 
@@ -544,8 +549,11 @@
 
           </mat-tab>
           <mat-tab  label="Showcase">
-            
-
+            <ng-template mat-tab-label>
+              <mat-icon><span class="material-icons-two-tone">
+                photo_library
+                </span></mat-icon>
+             </ng-template>
             <!-- <div class="column1" *ngIf="!info.ShowCasePath">
               <div class="row"> No Showcases Added</div> <span class="fa-solid fa-hat-wizard iconEmpty" ></span>
             </div> -->
@@ -582,6 +590,7 @@
                <!-- *ngIf="showCases.length == 0" -->
                <mat-chip-list class="centerChips">
                 <mat-chip color="accent" class="addShowcase" selected (click)="navigateToEditProfile()">
+                  
                 Add Showcase
                 </mat-chip>
                 </mat-chip-list>
