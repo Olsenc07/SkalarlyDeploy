@@ -80,12 +80,12 @@ export class SignupComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   picker = new Picker();
 
-  classes: string[] = [];
-  classesP: string[] = [];
-  @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
-  @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
-  @ViewChild('auto') matAutocomplete: MatAutocomplete;
-  @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
+  // classes: string[] = [];
+  // classesP: string[] = [];
+  // @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
+  // @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
+  // @ViewChild('auto') matAutocomplete: MatAutocomplete;
+  // @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
 
   selectedIndex = 0;
   genders: string[] = [
@@ -404,33 +404,33 @@ export class SignupComponent implements OnInit {
     }
   }
   // Pursuing Courses
-  add(event: MatChipInputEvent): void {
-    const valueP = (event.value || '').trim();
+  // add(event: MatChipInputEvent): void {
+  //   const valueP = (event.value || '').trim();
 
-    // Add our course code
-    if (valueP) {
-      this.classesP.push(valueP);
-    }
+  //   // Add our course code
+  //   if (valueP) {
+  //     this.classesP.push(valueP);
+  //   }
 
-    // Clear the input value
-    // event.chipInput!.clear();
+  //   // Clear the input value
+  //   // event.chipInput!.clear();
 
-    this.CodePursuing.setValue(null);
-  }
+  //   this.CodePursuing.setValue(null);
+  // }
   // Completeted Courses
-  addP(event: MatChipInputEvent): void {
-    const value = (event.value || '').trim();
+  // addP(event: MatChipInputEvent): void {
+  //   const value = (event.value || '').trim();
 
-    // Add our course code
-    if (value) {
-      this.classes.push(value);
-    }
+  //   // Add our course code
+  //   if (value) {
+  //     this.classes.push(value);
+  //   }
 
-    // Clear the input value
-    // event.chipInput!.clear();
+  //   // Clear the input value
+  //   // event.chipInput!.clear();
 
-    this.CodeCompleted.setValue(null);
-  }
+  //   this.CodeCompleted.setValue(null);
+  // }
   onRemoved(code: string) {
     const codes = this.CodeCompleted.value as string[];
     this.removeFirst(codes, code);
@@ -443,30 +443,30 @@ export class SignupComponent implements OnInit {
     }
   }
 
-  remove(code: string): void {
-    const index = this.classes.indexOf(code);
-    if (index >= 0) {
-      this.classes.splice(index, 1);
-    }
-  }
-  removeP(codeP: string): void {
-    const indexP = this.classesP.indexOf(codeP);
-    if (indexP >= 0) {
-      this.classesP.splice(indexP, 1);
-    }
-  }
+  // remove(code: string): void {
+  //   const index = this.classes.indexOf(code);
+  //   if (index >= 0) {
+  //     this.classes.splice(index, 1);
+  //   }
+  // }
+  // removeP(codeP: string): void {
+  //   const indexP = this.classesP.indexOf(codeP);
+  //   if (indexP >= 0) {
+  //     this.classesP.splice(indexP, 1);
+  //   }
+  // }
   // Pursuing Courses
-  selectedP(event: MatAutocompleteSelectedEvent): void {
-    this.classesP.push(event.option.viewValue);
-    this.codeInputP.nativeElement.value = '';
-    this.CodePursuing.setValue('');
-  }
-  // Completed Classes
-  selected(event: MatAutocompleteSelectedEvent): void {
-    this.classes.push(event.option.viewValue);
-    this.codeInput.nativeElement.value = '';
-    this.CodeCompleted.setValue('');
-  }
+  // selectedP(event: MatAutocompleteSelectedEvent): void {
+  //   this.classesP.push(event.option.viewValue);
+  //   this.codeInputP.nativeElement.value = '';
+  //   this.CodePursuing.setValue('');
+  // }
+  // // Completed Classes
+  // selected(event: MatAutocompleteSelectedEvent): void {
+  //   this.classes.push(event.option.viewValue);
+  //   this.codeInput.nativeElement.value = '';
+  //   this.CodeCompleted.setValue('');
+  // }
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
 

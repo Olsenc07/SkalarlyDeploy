@@ -11,7 +11,7 @@
           pops up and when they click it, it then sends the verification email. Then when they verify it. The next button is un disabled and they
         can continue creating their account -->
         <form [formGroup]="requiredForm">
-          <ng-template mat-tab-label >
+          <ng-template mat-tab-label  >
             <mat-icon><span class="material-icons-two-tone">
               account_circle
               </span></mat-icon>
@@ -69,14 +69,15 @@
           </div>
           <div class="twoPassword">
             <div class="input">
-              <span class="material-icons _icon" *ngIf="password.invalid">
-                lock
-              </span>
-              <span class="material-icons check" *ngIf="password.valid" matTooltip="Password Requirements Met">
-                lock
-              </span>
+              
               <mat-form-field class="userName">
                 <mat-label>Password min 8 characters</mat-label>
+                <span matIconPrefix class="material-icons _icon" *ngIf="password.invalid">
+                  lock
+                </span>
+                <span matIconPrefix class="material-icons check" *ngIf="password.valid" matTooltip="Password Requirements Met">
+                  lock
+                </span>
                 <input matInput type="password" placeholder="Password" minlength="8" required
                   [formControl]="password" id='passwordType'/>
                 <mat-error *ngIf="password.errors?.noWhiteSpace">White spaces aren't allowed in password</mat-error>

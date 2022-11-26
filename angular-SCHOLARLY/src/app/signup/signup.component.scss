@@ -40,10 +40,8 @@
 .background_colour{
   background-color: #0c46b8a1;
 }
-
-mat-tab-header {
-  background-color: whitesmoke;
-
+.mat-mdc-tab-labels {
+  background-color: whitesmoke !important;
 }
 .cameraIcon {
   height: 100%;
