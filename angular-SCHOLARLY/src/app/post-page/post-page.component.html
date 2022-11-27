@@ -82,7 +82,7 @@
       <mat-tab-group class="btmPad" [selectedIndex]="selectedIndex">
         <mat-tab label="Step 1: Choose from the main categories" >
           <mat-selection-list #options [multiple]="false">
-            <mat-form-field appearance="outline" class="shadow1">
+            <mat-form-field appearance="fill" class="shadow1">
               <mat-label> Main Categories</mat-label>
               <mat-select [formControl]="postLocationMain">
                 <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
@@ -92,13 +92,13 @@
             </mat-form-field>
           </mat-selection-list>
           
-          <button  type="button" color="primary"  mat-raised-button 
+          <button *ngIf="postLocationMain.value"  type="button" color="primary"  mat-raised-button 
           (click)="changeTab1()">Next</button>
         </mat-tab>
         <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value">
   <!-- Step 2 -->
-  <mat-selection-list   #options2 class="second_selection" [multiple]="false" >
-    <mat-form-field appearance="outline" class="shadow2"  id="nextBtn2">
+  <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
+    <mat-form-field  class="shadow2"  id="nextBtn2">
       <mat-label> Specific Pages</mat-label>
     
     <mat-select  [formControl]="postLocation" > 

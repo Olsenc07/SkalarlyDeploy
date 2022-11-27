@@ -82,6 +82,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
 
   url: string;
   selectedIndex = 0;
+  selectedIndexPost = 0;
 
   visible = true;
   selectable = true;
@@ -98,7 +99,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
   // allFriends should filter through your friend list desktop
   allFriends: string[] = [''];
 
-  selectedIndexPost = 0;
   isLinear = false;
   // Title: FormControl = new FormControl('');
   public TitleLength = new BehaviorSubject(0);
@@ -129,7 +129,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
   live: FormControl = new FormControl('');
   paymentService: FormControl = new FormControl('');
   nopaymentService: FormControl = new FormControl('');
-
   virtual: FormControl = new FormControl('');
   // });
 
@@ -307,13 +306,13 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.selectedIndexPost = this.selectedIndexPost === 1 ? 0 : 1;
   }
   changeTab1(): void {
-    this.selectedIndexPost = this.selectedIndexPost === 0 ? 1 : 0;
+    this.selectedIndex = this.selectedIndex === 1 ? 0 : 1;
   }
   changeTab2(): void {
-    this.selectedIndexPost = this.selectedIndexPost === 1 ? 2 : 1;
+    this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
   }
   changeTab3(): void {
-    this.selectedIndexPost = this.selectedIndexPost === 2 ? 1 : 2;
+    this.selectedIndex = this.selectedIndex === 2 ? 1 : 2;
   }
 }
 @Component({
