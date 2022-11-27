@@ -864,7 +864,6 @@ mat-tab-group {
   background-color: #11173a !important;
   margin: 1%;
   transition: 0.1s;
-  cursor: pointer;
 
 }
 .style :hover {
@@ -878,10 +877,12 @@ animation: animate 5s linear infinite;
   100% {background-color: #11173a !important;}
 }
 .winter:hover{
-  animation: winter 5s linear infinite;
+  // animation: winter 5s linear infinite;
+  background-color: #88c4f9 !important;
 }
 .fall:hover{
-  animation: winter 5s linear infinite;
+  // animation: winter 5s linear infinite;
+  background-color: saddlebrown !important;
 }
 @keyframes winter {
   0% {background-color: #11173a !important}
