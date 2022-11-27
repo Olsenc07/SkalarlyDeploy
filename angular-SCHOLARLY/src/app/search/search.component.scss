@@ -279,17 +279,17 @@
   margin: 1%;
   background-color: #393b48 !important;
 }
-.center_step1 :hover {
+.searchBtn :hover {
   margin: 1%;
   animation: animate 5s linear infinite;
-  cursor: pointer;
+  // cursor: pointer;
 }
 @keyframes animate {
-  0% {background-color: #11173a !important}
-  25% {background-color: #3b70f7 !important;}
-  50% {background-color: #4dc247 !important;}
+  0% {background-color: #393b48 !important}
+  25% {background-color: #3f51b5 !important;}
+  50% {background-color: #f44336 !important;}
   75% { background-color: #ff4081 !important}
-  100% {background-color: #11173a !important;}
+  100% {background-color: #393b48 !important;}
 }
 .searchBtn_{
   margin: 1%;

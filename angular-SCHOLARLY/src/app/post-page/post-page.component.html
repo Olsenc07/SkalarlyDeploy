@@ -85,14 +85,14 @@
             <mat-form-field appearance="fill" >
               <mat-label> Main Categories</mat-label>
               <mat-select [formControl]="postLocationMain">
-                <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
+                <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false" 
                   *ngFor="let opt of searchOptions" [value]="opt.name">
                   {{ opt.name }}</mat-option>
               </mat-select>
             </mat-form-field>
           </mat-selection-list>
           
-          <button *ngIf="postLocationMain.length > 0"  type="button" color="primary"  mat-raised-button 
+          <button *ngIf="postLocationMain"  type="button" color="primary"  mat-raised-button 
           (click)="changeTab1()">Next</button>
         </mat-tab>
         <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value" disabled>
@@ -101,7 +101,7 @@
     <mat-form-field  class="shadow2"  id="nextBtn2">
       <mat-label> Specific Pages</mat-label>
     
-    <mat-select  [formControl]="postLocation" > 
+    <mat-select  [formControl]="postLocation.value" > 
       <!-- (click)="adjustView()" -->
       <mat-option  [multiple]="false" *ngFor="let opt of specificOptions"
       [selected]="opt" [value]="opt">
@@ -113,7 +113,7 @@
           <div class="center__" >
           <button  type="button" color="primary"  mat-raised-button 
           (click)="changeTabB()">Back</button>
-          <button *ngIf="postLocation.value"  type="button" color="primary"  mat-raised-button 
+          <button *ngIf="postLocation"  type="button" color="primary"  mat-raised-button 
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>

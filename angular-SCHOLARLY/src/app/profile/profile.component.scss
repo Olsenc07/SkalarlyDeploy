@@ -864,6 +864,16 @@ mat-tab-group {
   background-color: #11173a !important;
   margin: 1%;
 }
+.style :hover {
+animation: animate 5s linear infinite;
+}
+@keyframes animate {
+  0% {background-color: #11173a !important}
+  25% {background-color: #3f51b5 !important;}
+  50% {background-color: #f44336 !important;}
+  75% { background-color: #ff4081 !important}
+  100% {background-color: #11173a !important;}
+}
 @media (max-width: 1025px) {
   .side_nav_container {
     // display: flex;

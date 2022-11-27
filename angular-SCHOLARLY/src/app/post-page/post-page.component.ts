@@ -313,6 +313,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   changeTabB(): void {
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
+    this.postLocation.setValue('');
   }
   changeTab2(): void {
     this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
