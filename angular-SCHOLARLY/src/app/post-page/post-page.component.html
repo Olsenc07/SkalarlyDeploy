@@ -23,11 +23,11 @@
           <textarea matInput maxlength="280" placeholder="What would you like to say?"
             [formControl]="postDescription">
           </textarea>
-          <button mat-icon-button>
-            <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon" class="emoji">😃
+          <button mat-icon-button matSuffix>
+            <mat-icon  [matMenuTriggerFor]="emojiIcon" class="emoji">😃
             </mat-icon>
           </button>
-            <mat-menu #emojiIcon="matMenu" class="emoji-menu">
+            <mat-menu  #emojiIcon="matMenu" class="emoji-menu">
               <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
             </mat-menu>
         </mat-form-field>
@@ -79,10 +79,10 @@
     <div class="centerL" *ngIf="postDescription.value || form.get('upload').value ">Where do you want your post?
     </div>
     <div class="selection_styles" *ngIf="postDescription.value || form.get('upload').value ">
-      <mat-tab-group class="btmPad">
-        <mat-tab label="Step 1: Choose from the main categories">
+      <mat-tab-group class="btmPad" [selectedIndex]="selectedIndex">
+        <mat-tab label="Step 1: Choose from the main categories" >
           <mat-selection-list #options [multiple]="false">
-            <mat-form-field appearance="fill" class="shadow1">
+            <mat-form-field appearance="outline" class="shadow1">
               <mat-label> Main Categories</mat-label>
               <mat-select [formControl]="postLocationMain">
                 <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
@@ -91,11 +91,14 @@
               </mat-select>
             </mat-form-field>
           </mat-selection-list>
+          
+          <button  type="button" color="primary"  mat-raised-button 
+          (click)="changeTab1()">Next</button>
         </mat-tab>
         <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value">
   <!-- Step 2 -->
   <mat-selection-list   #options2 class="second_selection" [multiple]="false" >
-    <mat-form-field appearance="fill" class="shadow2"  id="nextBtn2">
+    <mat-form-field appearance="outline" class="shadow2"  id="nextBtn2">
       <mat-label> Specific Pages</mat-label>
     
     <mat-select  [formControl]="postLocation" > 
@@ -105,14 +108,17 @@
             {{ opt }}
       </mat-option>
     </mat-select>
-    
     </mat-form-field>
           </mat-selection-list>
-
+          <button  type="button" color="primary"  mat-raised-button 
+          (click)="changeTab()">Back</button>
+          <button  type="button" color="primary"  mat-raised-button 
+          (click)="changeTab2()">Next</button>
 </mat-tab>
 <mat-tab label="Step 3: Style Post" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value ">
   <div  class="btmPad"  >
-
+    <button  type="button" color="primary"  mat-raised-button 
+    (click)="changeTab3()">Back</button>
     <button id="nextBtn" mat-raised-button color="primary" type="button" class="final_step_btn" 
      (click)="changeTab()">
       Next Step

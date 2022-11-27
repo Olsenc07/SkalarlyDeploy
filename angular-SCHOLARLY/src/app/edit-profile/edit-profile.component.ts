@@ -204,6 +204,19 @@ export class EditProfileComponent implements OnInit {
   onImgChange(event: any): void {
     this.imgChangeEvent = event;
   }
+
+  changeTab1(): void {
+    this.selectedIndex = this.selectedIndex === 2 ? 3 : 2;
+  }
+  changeTab1R(): void {
+    this.selectedIndex = this.selectedIndex === 2 ? 1 : 2;
+  }
+  changeTab2(): void {
+    this.selectedIndex = this.selectedIndex === 3 ? 4 : 3;
+  }
+  changeTab2R(): void {
+    this.selectedIndex = this.selectedIndex === 3 ? 2 : 3;
+  }
   // Passes value as base64 string of cropped area!!
   //  But where does form controller come into play?
   // imgLoad(): void {

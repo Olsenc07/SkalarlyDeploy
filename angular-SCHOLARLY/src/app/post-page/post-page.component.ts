@@ -74,7 +74,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public specificOptions: string[];
   public searchOptions: SearchOption[];
   picker = new Picker();
-
   isLoading = false;
 
   private authStatusSub: Subscription;
@@ -309,6 +308,12 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   changeTab1(): void {
     this.selectedIndexPost = this.selectedIndexPost === 0 ? 1 : 0;
+  }
+  changeTab2(): void {
+    this.selectedIndexPost = this.selectedIndexPost === 1 ? 2 : 1;
+  }
+  changeTab3(): void {
+    this.selectedIndexPost = this.selectedIndexPost === 2 ? 1 : 2;
   }
 }
 @Component({
