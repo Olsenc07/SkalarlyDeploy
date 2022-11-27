@@ -865,9 +865,9 @@ mat-tab-group {
   margin: 1%;
   transition: 0.1s;
 }
-// .style :hover {
-// animation: animate 5s linear infinite;
-// }
+.style :hover {
+animation: animate 5s linear infinite;
+}
 @keyframes animate {
   0% {background-color: #11173a !important}
   25% {background-color: #3f51b5 !important;}

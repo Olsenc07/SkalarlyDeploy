@@ -154,6 +154,7 @@ h4:focus {
   justify-content: center;
   flex-direction: column;
   box-sizing: content-box;
+  transition: .1s;
 }
 .icon-btn-fit:hover {
   display: flex;
