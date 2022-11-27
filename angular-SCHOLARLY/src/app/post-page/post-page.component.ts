@@ -226,7 +226,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.authStatusSub.unsubscribe();
   }
 
-  onSearchSelection(value): void {
+  onSearchSelection(value): any {
     console.log(value);
     this.specificOptions = this.searchListService.onSearchSelection(value);
     // const NextBtn2 = document.getElementById('nextBtn2');
