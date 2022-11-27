@@ -82,7 +82,7 @@
       <mat-tab-group class="btmPad" [selectedIndex]="selectedIndex">
         <mat-tab label="Step 1: Choose from the main categories" >
           <mat-selection-list #options [multiple]="false">
-            <mat-form-field appearance="fill" class="shadow1">
+            <mat-form-field appearance="fill" >
               <mat-label> Main Categories</mat-label>
               <mat-select [formControl]="postLocationMain">
                 <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false"
@@ -110,10 +110,12 @@
     </mat-select>
     </mat-form-field>
           </mat-selection-list>
+          <div class="center" >
           <button  type="button" color="primary"  mat-raised-button 
-          (click)="changeTab()">Back</button>
-          <button  type="button" color="primary"  mat-raised-button 
+          (click)="changeTabB()">Back</button>
+          <button *ngIf="postLocation.value"  type="button" color="primary"  mat-raised-button 
           (click)="changeTab2()">Next</button>
+        </div>
 </mat-tab>
 <mat-tab label="Step 3: Style Post" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value ">
   <div  class="btmPad"  >
