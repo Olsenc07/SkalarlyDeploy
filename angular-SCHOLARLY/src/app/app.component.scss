@@ -426,6 +426,16 @@ h4:focus {
   justify-content: center;
 }
 }
+@media (max-width: 1700px) {
+  .public :hover{
+    font-size: 3vmax;
+    display: flex;
+    color: #f5f5f5;
+    justify-content: center;
+    animation: animate 8s linear infinite;
+
+  }
+  }
 @media (min-width: 1700px) {
   .public {
     font-size: 2vmax;
@@ -436,8 +446,63 @@ h4:focus {
     height: 100%;
   }
   }
+
+@media (min-width: 1700px) {
+  .public :hover{
+    font-size: 2vmax;
+    display: flex;
+    color: #f5f5f5;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation: animate 8s linear infinite;
+  }
+  }
+  @media (min-width: 1700px) {
+    .PublicOn {
+      display: flex;
+      justify-content: center;
+      // color: #b8dde9;
+      // color: #fff;
+      border-radius: 30px;
+      padding: 5px 5px;
+      margin: 0 40px;
+      color: #C0C0C0;
+      // text-shadow: 0 0 50px #0072ff;
+      font-size: 3vmax;
+    }
+    }
+@media (min-width: 1700px) {
+.PublicOn :hover{
+  display: flex;
+  justify-content: center;
+  // color: #b8dde9;
+  // color: #fff;
+  border-radius: 30px;
+  padding: 5px 5px;
+  margin: 0 40px;
+  animation: animate 8s linear infinite;
+  color: #C0C0C0;
+  // text-shadow: 0 0 50px #0072ff;
+  font-size: 3vmax;
+}
+}
+  @media (max-width: 1700px) {
+    .PublicOn {
+      display: flex;
+      justify-content: center;
+      // color: #b8dde9;
+      // color: #fff;
+      border-radius: 30px;
+      padding: 5px 5px;
+      margin: 0 40px;
+      color: #C0C0C0;
+      // text-shadow: 0 0 50px #0072ff;
+      font-size: 4vmax;
+    }
+    }
 @media (max-width: 1700px) {
-.PublicOn {
+.PublicOn :hover{
   display: flex;
   justify-content: center;
   // color: #b8dde9;
@@ -466,15 +531,7 @@ h4:focus {
 //     filter: hue-rotate(360deg);
 //   }
 // }
-@media (min-width: 1700px) {
-  .PublicOn {
-    display: flex;
-    justify-content: center;
-    // color: #b8dde9;
-    color: #C0C0C0;
-    font-size: 3vmax;
-  }
-  }
+
 @media (max-width: 1700px) {
 .groups {
   color: #f5f5f5;
@@ -491,6 +548,24 @@ h4:focus {
     justify-content: center;
   }
   }
+  @media (max-width: 1700px) {
+    .groups :hover{
+      color: #f5f5f5;
+      font-size: 3vmax;
+      display: flex;
+      justify-content: center;
+  animation: animate 8s linear infinite;
+    }
+    }
+    @media (min-width: 1700px) {
+      .groups :hover {
+        color: #f5f5f5;
+        font-size: 2vmax;
+        display: flex;
+        justify-content: center;
+  animation: animate 8s linear infinite;
+      }
+      }
 @media (max-width: 1700px) {
 .GroupsOn {
   font-size: 4vmax;
@@ -501,7 +576,6 @@ h4:focus {
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
-animation: animate 8s linear infinite;
 }
 }
 @media (min-width: 1700px) {
@@ -513,6 +587,29 @@ animation: animate 8s linear infinite;
     justify-content: center;
   }
   }
+  @media (max-width: 1700px) {
+    .GroupsOn :hover{
+      font-size: 4vmax;
+      display: flex;
+      // color: #b8dde9;
+      color: #C0C0C0;
+      justify-content: center;
+      border-radius: 30px;
+      padding: 5px 5px;
+    margin: 0 40px;
+    animation: animate 8s linear infinite;
+    }
+    }
+    @media (min-width: 1700px) {
+      .GroupsOn :hover{
+        font-size: 3vmax;
+        display: flex;
+        // color: #b8dde9;
+        color: #C0C0C0;
+animation: animate 8s linear infinite;
+        justify-content: center;
+      }
+      }
 @media (max-width: 1700px) {
 .profile {
   color: #f5f5f5;
@@ -539,7 +636,6 @@ animation: animate 8s linear infinite;
     border-radius: 30px;
     padding: 5px 5px;
   margin: 0 40px;
-  animation: animate 8s linear infinite;
 }
 }
 @media (min-width: 1700px) {
@@ -552,6 +648,49 @@ animation: animate 8s linear infinite;
     
   }
   }
+  @media (max-width: 1700px) {
+    .profile :hover{
+      color: #f5f5f5;
+      font-size: 3vmax;
+      display: flex;
+      justify-content: center;
+animation: animate 8s linear infinite;
+    }
+    }
+    @media (min-width: 1700px) {
+      .profile :hover{
+        color: #f5f5f5;
+        font-size: 2vmax;
+        display: flex;
+        justify-content: center;
+animation: animate 8s linear infinite;
+
+      }
+      }
+    @media (max-width: 1700px) {
+    .ProfileOn :hover{
+      display: flex;
+      font-size: 4vmax;
+      // color: #b8dde9;
+      color: #C0C0C0;
+      justify-content: center;
+        border-radius: 30px;
+        padding: 5px 5px;
+      margin: 0 40px;
+    }
+    }
+    @media (min-width: 1700px) {
+      .ProfileOn :hover{
+        display: flex;
+        font-size: 3vmax;
+        // color: #b8dde9;
+        color: #C0C0C0;
+        justify-content: center;
+    animation: animate 8s linear infinite;
+
+        
+      }
+      }
   @media (min-width: 1700px) {
     .post {
       color: #f5f5f5;
@@ -578,7 +717,6 @@ animation: animate 8s linear infinite;
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
-animation: animate 8s linear infinite;
 }
 }
 @media (min-width: 1700px) {
@@ -589,6 +727,50 @@ animation: animate 8s linear infinite;
     color: #C0C0C0;
     justify-content: center;
    
+  }
+  }
+  @media (min-width: 1700px) {
+    .post :hover {
+      color: #f5f5f5;
+      font-size: 2vw;
+      display: flex;
+      justify-content: center;
+animation: animate 8s linear infinite;
+
+    }
+    }
+@media (max-width: 1700px) {
+.post :hover{
+  color: #f5f5f5;
+  font-size: 3vw;
+  display: flex;
+  justify-content: center;
+animation: animate 8s linear infinite;
+
+}
+}
+@media (max-width: 1700px) {
+.PostOn :hover{
+  display: flex;
+  font-size: 4vw;
+  // color: #b8dde9;
+  color: #C0C0C0;
+  justify-content: center;
+  border-radius: 30px;
+  padding: 5px 5px;
+margin: 0 40px;
+animation: animate 8s linear infinite;
+
+}
+}
+@media (min-width: 1700px) {
+  .PostOn :hover{
+    display: flex;
+    font-size: 3vw;
+    // color: #b8dde9;
+    color: #C0C0C0;
+    justify-content: center;
+animation: animate 8s linear infinite;
   }
   }
 @media (max-width: 1700px) {
@@ -617,7 +799,6 @@ animation: animate 8s linear infinite;
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
-animation: animate 8s linear infinite;
 }
 }
 @media (min-width: 1700px) {
@@ -627,9 +808,53 @@ animation: animate 8s linear infinite;
     // color: #b8dde9;
     color: #C0C0C0;
     justify-content: center;
- 
   }
   }
+  @media (max-width: 1700px) {
+    .message :hover{
+      color: #f5f5f5;
+      font-size: 3vw;
+      display: flex;
+      justify-content: center;
+animation: animate 8s linear infinite;
+
+    }
+    }
+    @media (min-width: 1700px) {
+      .message :hover{
+        color: #f5f5f5;
+        font-size: 2vw;
+        display: flex;
+        justify-content: center;
+animation: animate 8s linear infinite;
+
+      }
+      }
+    @media (max-width: 1700px) {
+    .MessageOn :hover{
+      display: flex;
+      font-size: 4vw;
+      // color: #b8dde9;
+      color: #C0C0C0;
+      justify-content: center;
+      border-radius: 30px;
+      padding: 5px 5px;
+    margin: 0 40px;
+animation: animate 8s linear infinite;
+
+    }
+    }
+    @media (min-width: 1700px) {
+      .MessageOn :hover{
+        display: flex;
+        font-size: 3vw;
+        // color: #b8dde9;
+        color: #C0C0C0;
+        justify-content: center;
+animation: animate 8s linear infinite;
+
+      }
+      }
 .options{
   display: flex;
   overflow-y: scroll visible;

@@ -92,7 +92,7 @@
             </mat-form-field>
           </mat-selection-list>
           
-          <button *ngIf="postLocationMain"  type="button" color="primary"  mat-raised-button 
+          <button *ngIf="postLocationMain.value"  type="button" color="primary"  mat-raised-button 
           (click)="changeTab1()">Next</button>
         </mat-tab>
         <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value" disabled>
