@@ -866,16 +866,6 @@ mat-tab-group {
   transition: 0.1s;
 
 }
-.style :hover {
-animation: animate 5s linear infinite;
-}
-@keyframes animate {
-  0% {background-color: #11173a !important}
-  25% {background-color: #3f51b5 !important;}
-  50% {background-color: #f44336 !important;}
-  75% { background-color: #ff4081 !important}
-  100% {background-color: #11173a !important;}
-}
 .winter:hover{
   // animation: winter 5s linear infinite;
   background-color: #88c4f9 !important;
@@ -884,15 +874,13 @@ animation: animate 5s linear infinite;
   // animation: winter 5s linear infinite;
   background-color: saddlebrown !important;
 }
-@keyframes winter {
-  0% {background-color: #11173a !important}
-  50% {background-color: #88c4f9 !important;}
-  100% {background-color: #11173a !important;}
+.spring:hover{
+  // animation: winter 5s linear infinite;
+  background-color: cadetblue !important;
 }
-@keyframes fall {
-  0% {background-color: #11173a !important}
-  50% {background-color: saddlebrown !important;}
-  100% {background-color: #11173a !important;}
+.summer:hover{
+  // animation: winter 5s linear infinite;
+  background-color: saddlebrown !important;
 }
 @media (max-width: 1025px) {
   .side_nav_container {
