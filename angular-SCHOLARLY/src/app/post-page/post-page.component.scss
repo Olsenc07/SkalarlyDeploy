@@ -81,10 +81,7 @@
   justify-content: space-between;
   background-color: white;
 }
-.center{
-  display: flex;
-  justify-content: space-between;
-}
+
 .post_btn_top_right {
   font-family: 'Cinzel', serif;
   display: flex;
@@ -119,6 +116,10 @@
   display: flex;
   justify-content: center;
   margin-bottom: 5%;
+}
+.center__{
+  display: flex;
+  justify-content: space-evenly;
 }
 .center_ {
   display: flex;
@@ -236,7 +237,7 @@
 }
 .final_step_btn {
   // color: #418bba;
-  font-size: x-large;
+  // font-size: x-large;
   font-family: 'Cinzel', serif;
   margin-top: 1%;
   // border: outset;

@@ -182,13 +182,14 @@
       
             <!-- <button mat-icon-button type="button"  *ngIf="closed"
              class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button> -->
-        
+             <mat-form-field>
             <input matInput placeholder="Add to the discussion..." class="comment-form-textarea"
             maxlength="140" [formControl]="comment" >
             <button mat-icon-button>
             <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon" class="emoji">😃
             </mat-icon>
           </button>
+        </mat-form-field>
             <mat-menu #emojiIcon="matMenu" class="emoji-menu">
               <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
             </mat-menu>

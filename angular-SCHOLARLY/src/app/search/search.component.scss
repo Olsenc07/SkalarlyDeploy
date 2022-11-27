@@ -279,12 +279,8 @@
   margin: 1%;
   background-color: #393b48 !important;
 }
-.searchBtn_{
+.searchBtn :hover {
   margin: 1%;
- color: white !important;
-background-color: #11173a !important;
-}
-.searchBtn:hover {
   animation: animate 5s linear infinite;
   cursor: pointer;
 }
@@ -295,6 +291,12 @@ background-color: #11173a !important;
   75% { background-color: #ff4081 !important}
   100% {background-color: #11173a !important;}
 }
+.searchBtn_{
+  margin: 1%;
+ color: white !important;
+background-color: #11173a !important;
+}
+
 @media (min-width: 1025px) {
   .recents {
     display: flex;
