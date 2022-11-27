@@ -162,7 +162,18 @@ h4:focus {
   height: 100%;
   width: 100%;
   align-items: center;
+  transition: all .1s; 
   // box-shadow: 0px 2px 3px;
+}
+.a_up:hover {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  animation: animate 8s linear infinite;
+
 }
 .b_up {
   display: flex;
@@ -654,49 +665,47 @@ animation: animate 8s linear infinite;
     
   }
   }
-  @media (max-width: 1700px) {
-    .profile :hover{
-      color: #f5f5f5;
-      font-size: 3vmax;
-      display: flex;
-      justify-content: center;
-animation: animate 8s linear infinite;
-    }
-    }
-    @media (min-width: 1700px) {
-      .profile :hover{
-        color: #f5f5f5;
-        font-size: 2vmax;
-        display: flex;
-        justify-content: center;
-animation: animate 8s linear infinite;
+//   @media (max-width: 1700px) {
+//     .profile :hover{
+//       color: #f5f5f5;
+//       font-size: 3vmax;
+//       display: flex;
+//       justify-content: center;
+// animation: animate 8s linear infinite;
+//     }
+//     }
+//     @media (min-width: 1700px) {
+//       .profile :hover{
+//         color: #f5f5f5;
+//         font-size: 2vmax;
+//         display: flex;
+//         justify-content: center;
+// animation: animate 8s linear infinite;
 
-      }
-      }
-    @media (max-width: 1700px) {
-    .ProfileOn :hover{
-      display: flex;
-      font-size: 4vmax;
-      // color: #b8dde9;
-      color: #C0C0C0;
-      justify-content: center;
-        border-radius: 30px;
-        padding: 5px 5px;
-      margin: 0 40px;
-    }
-    }
-    @media (min-width: 1700px) {
-      .ProfileOn :hover{
-        display: flex;
-        font-size: 3vmax;
-        // color: #b8dde9;
-        color: #C0C0C0;
-        justify-content: center;
-    animation: animate 8s linear infinite;
-
-        
-      }
-      }
+//       }
+//       }
+//     @media (max-width: 1700px) {
+//     .ProfileOn :hover{
+//       display: flex;
+//       font-size: 4vmax;
+//       // color: #b8dde9;
+//       color: #C0C0C0;
+//       justify-content: center;
+//         border-radius: 30px;
+//         padding: 5px 5px;
+//       margin: 0 40px;
+//     }
+//     }
+//     @media (min-width: 1700px) {
+//       .ProfileOn :hover{
+//         display: flex;
+//         font-size: 3vmax;
+//         // color: #b8dde9;
+//         color: #C0C0C0;
+//         justify-content: center;
+//     animation: animate 8s linear infinite;
+//       }
+//       }
   @media (min-width: 1700px) {
     .post {
       color: #f5f5f5;
