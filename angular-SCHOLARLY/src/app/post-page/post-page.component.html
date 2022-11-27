@@ -80,7 +80,7 @@
     </div>
     <div class="selection_styles" *ngIf="postDescription.value || form.get('upload').value ">
       <mat-tab-group class="btmPad" [selectedIndex]="selectedIndex">
-        <mat-tab label="Step 1: Choose from the main categories" >
+        <mat-tab label="Step 1: Choose from the main categories" disabled>
           <mat-selection-list #options [multiple]="false">
             <mat-form-field appearance="fill" >
               <mat-label> Main Categories</mat-label>
@@ -92,10 +92,10 @@
             </mat-form-field>
           </mat-selection-list>
           
-          <button *ngIf="postLocationMain.value"  type="button" color="primary"  mat-raised-button 
+          <button *ngIf="postLocationMain.length > 0"  type="button" color="primary"  mat-raised-button 
           (click)="changeTab1()">Next</button>
         </mat-tab>
-        <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value">
+        <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value" disabled>
   <!-- Step 2 -->
   <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
     <mat-form-field  class="shadow2"  id="nextBtn2">
@@ -117,7 +117,7 @@
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>
-<mat-tab label="Step 3: Style Post" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value ">
+<mat-tab label="Step 3: Style Post" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value" disabled>
   <div  class="center__"  >
     <button  type="button" color="primary"  mat-raised-button 
     (click)="changeTab3()">Back</button>
@@ -152,7 +152,7 @@
 
       <div *ngIf="minwidth" class="staticBtn">
         <button mat-raised-button type="button" class="back_btn" 
-      (click)="changeTab1()">
+      (click)="changeTab_()">
       <span class="material-icons"> arrow_back </span> Back
         </button>
     </div>

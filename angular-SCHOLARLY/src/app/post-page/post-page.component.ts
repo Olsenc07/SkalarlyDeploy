@@ -305,6 +305,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   changeTab(): void {
     this.selectedIndexPost = this.selectedIndexPost === 1 ? 0 : 1;
   }
+  changeTab_(): void {
+    this.selectedIndexPost = this.selectedIndexPost === 0 ? 1 : 0;
+  }
   changeTab1(): void {
     this.selectedIndex = this.selectedIndex === 1 ? 0 : 1;
   }
