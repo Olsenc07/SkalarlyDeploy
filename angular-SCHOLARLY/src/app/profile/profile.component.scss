@@ -874,6 +874,22 @@ animation: animate 5s linear infinite;
   75% { background-color: #ff4081 !important}
   100% {background-color: #11173a !important;}
 }
+.winter:hover{
+  animation: winter 5s linear infinite;
+}
+.fall:hover{
+  animation: winter 5s linear infinite;
+}
+@keyframes winter {
+  0% {background-color: #11173a !important}
+  50% {background-color: #88c4f9 !important;}
+  100% {background-color: #11173a !important;}
+}
+@keyframes fall {
+  0% {background-color: #11173a !important}
+  50% {background-color: saddlebrown !important;}
+  100% {background-color: #11173a !important;}
+}
 @media (max-width: 1025px) {
   .side_nav_container {
     // display: flex;
