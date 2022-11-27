@@ -216,13 +216,14 @@
 <mat-label *ngIf="Major">{{Major}}</mat-label>
 <mat-label *ngIf="!Major">Major(s)</mat-label>
       <input class="major" maxlength="50" matInput placeholder="Major" [formControl]="major" />
-      <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" (click)="clearMajor()">
-        <mat-icon class="asthetic-adds">close</mat-icon>
+      <button mat-icon-button>
+        <mat-icon matSuffix [matMenuTriggerFor]="emojiIconMajor" class="emoji">😃
+        </mat-icon>
       </button>
+     
     </mat-form-field>
-    <button mat-icon-button>
-      <mat-icon matSuffix [matMenuTriggerFor]="emojiIconMajor" class="emoji">😃
-      </mat-icon>
+    <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" (click)="clearMajor()">
+      <mat-icon class="asthetic-adds">close</mat-icon>
     </button>
       <mat-menu #emojiIconMajor="matMenu" class="emoji-menu">
         <emoji-picker class="light" (emoji-click)="addEmojiMajor($event)" (click)="emojiPreventCloseMajor($event);"></emoji-picker>
