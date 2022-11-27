@@ -3,7 +3,7 @@
 </div>
 <form  class="entire-page"  method='post'  enctype="multipart/form-data" *ngIf="!isLoading">
 
-  <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
+  <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-stretch-tabs="false" mat-align-tabs="center" class="largest-page">
     <mat-tab disabled label="Begin" > 
       <ng-template mat-tab-label>
         <mat-icon> <span class="material-icons-two-tone">
