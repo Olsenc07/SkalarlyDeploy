@@ -154,6 +154,7 @@ h4:focus {
   justify-content: center;
   flex-direction: column;
   box-sizing: content-box;
+  cursor: pointer;
   transition: .1s;
 }
 .icon-btn-fit:hover {
@@ -551,6 +552,7 @@ h4:focus {
   font-size: 3vmax;
   display: flex;
   justify-content: center;
+  transition: 0.1s;
 }
 }
 @media (min-width: 1700px) {
@@ -559,6 +561,8 @@ h4:focus {
     font-size: 2vmax;
     display: flex;
     justify-content: center;
+  transition: 0.1s;
+
   }
   }
   @media (max-width: 1700px) {
@@ -588,7 +592,7 @@ h4:focus {
   justify-content: center;
   border-radius: 30px;
   padding: 5px 5px;
-  transition: 0.3s;
+  transition: 0.1s;
 margin: 0 40px;
 }
 }
@@ -598,7 +602,7 @@ margin: 0 40px;
     display: flex;
     // color: #b8dde9;
     color: #C0C0C0;
-    transition: 0.3s;
+    transition: 0.1s;
     justify-content: center;
   }
   }
