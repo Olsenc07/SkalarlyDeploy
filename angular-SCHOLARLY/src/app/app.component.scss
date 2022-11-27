@@ -435,17 +435,15 @@ h4:focus {
   display: flex;
   color: #f5f5f5;
   justify-content: center;
-  transition: all .1s; 
+
 }
 }
 @media (max-width: 1700px) {
   .public:hover{
     font-size: 3vmax;
     display: flex;
-    color: #f5f5f5;
+    color: lightblue;
     justify-content: center;
-    animation: animate 8s linear infinite;
-    transition: all .1s; 
   }
   }
 @media (min-width: 1700px) {
@@ -456,7 +454,6 @@ h4:focus {
     justify-content: center;
     width: 100%;
     height: 100%;
-    transition: all .1s; 
   }
   }
 
@@ -464,13 +461,10 @@ h4:focus {
   .public:hover{
     font-size: 2vmax;
     display: flex;
-    color: #f5f5f5;
+    color: lightblue;
     justify-content: center;
     width: 100%;
     height: 100%;
-    animation: animate 8s linear infinite;
-    transition: all .1s; 
-
   }
   }
   @media (min-width: 1700px) {
@@ -557,7 +551,7 @@ h4:focus {
   font-size: 3vmax;
   display: flex;
   justify-content: center;
-  transition: 0.1s;
+
 }
 }
 @media (min-width: 1700px) {
@@ -566,26 +560,26 @@ h4:focus {
     font-size: 2vmax;
     display: flex;
     justify-content: center;
-  transition: 0.1s;
+
 
   }
   }
   @media (max-width: 1700px) {
     .groups:hover{
-      color: #f5f5f5;
+      color: #48e898;
       font-size: 3vmax;
       display: flex;
       justify-content: center;
-  animation: animate 8s linear infinite;
+
     }
     }
     @media (min-width: 1700px) {
       .groups:hover {
-        color: #f5f5f5;
+        color: #48e898;
         font-size: 2vmax;
         display: flex;
         justify-content: center;
-  animation: animate 8s linear infinite;
+
       }
       }
 @media (max-width: 1700px) {
@@ -673,47 +667,47 @@ animation: animate 8s linear infinite;
     
   }
   }
-//   @media (max-width: 1700px) {
-//     .profile :hover{
-//       color: #f5f5f5;
-//       font-size: 3vmax;
-//       display: flex;
-//       justify-content: center;
-// animation: animate 8s linear infinite;
-//     }
-//     }
-//     @media (min-width: 1700px) {
-//       .profile :hover{
-//         color: #f5f5f5;
-//         font-size: 2vmax;
-//         display: flex;
-//         justify-content: center;
-// animation: animate 8s linear infinite;
+  @media (max-width: 1700px) {
+    .profile :hover{
+      color: #f0f049;
+      font-size: 3vmax;
+      display: flex;
+      justify-content: center;
 
-//       }
-//       }
-//     @media (max-width: 1700px) {
-//     .ProfileOn :hover{
-//       display: flex;
-//       font-size: 4vmax;
-//       // color: #b8dde9;
-//       color: #C0C0C0;
-//       justify-content: center;
-//         border-radius: 30px;
-//         padding: 5px 5px;
-//       margin: 0 40px;
-//     }
-//     }
-//     @media (min-width: 1700px) {
-//       .ProfileOn :hover{
-//         display: flex;
-//         font-size: 3vmax;
-//         // color: #b8dde9;
-//         color: #C0C0C0;
-//         justify-content: center;
-//     animation: animate 8s linear infinite;
-//       }
-//       }
+    }
+    }
+    @media (min-width: 1700px) {
+      .profile :hover{
+        color: #f0f049;
+        font-size: 2vmax;
+        display: flex;
+        justify-content: center;
+
+
+      }
+      }
+    @media (max-width: 1700px) {
+    .ProfileOn :hover{
+      display: flex;
+      font-size: 4vmax;
+      // color: #b8dde9;
+      color: #C0C0C0;
+      justify-content: center;
+        border-radius: 30px;
+        padding: 5px 5px;
+      margin: 0 40px;
+    }
+    }
+    @media (min-width: 1700px) {
+      .ProfileOn :hover{
+        display: flex;
+        font-size: 3vmax;
+        // color: #b8dde9;
+        color: #C0C0C0;
+        justify-content: center;
+    animation: animate 8s linear infinite;
+      }
+      }
   @media (min-width: 1700px) {
     .post {
       color: #f5f5f5;
@@ -754,7 +748,7 @@ margin: 0 40px;
   }
   @media (min-width: 1700px) {
     .post :hover {
-      color: #f5f5f5;
+      color: #f44336;
       font-size: 2vw;
       display: flex;
       justify-content: center;
@@ -764,7 +758,7 @@ animation: animate 8s linear infinite;
     }
 @media (max-width: 1700px) {
 .post :hover{
-  color: #f5f5f5;
+  color: #f44336;
   font-size: 3vw;
   display: flex;
   justify-content: center;
@@ -835,21 +829,21 @@ margin: 0 40px;
   }
   @media (max-width: 1700px) {
     .message :hover{
-      color: #f5f5f5;
+      color: #cd13cd;
       font-size: 3vw;
       display: flex;
       justify-content: center;
-animation: animate 8s linear infinite;
+
 
     }
     }
     @media (min-width: 1700px) {
-      .message :hover{
+      .message #cd13cd{
         color: #f5f5f5;
         font-size: 2vw;
         display: flex;
         justify-content: center;
-animation: animate 8s linear infinite;
+
 
       }
       }
