@@ -510,7 +510,7 @@ h4:focus {
       color: #C0C0C0;
       // text-shadow: 0 0 50px #0072ff;
       font-size: 4vmax;
-    transition: all .1s; 
+    transition:  .1s; 
     }
     }
 @media (max-width: 1700px) {
@@ -523,7 +523,7 @@ h4:focus {
   padding: 5px 5px;
   margin: 0 40px;
   animation: animate 8s linear infinite;
-  transition: all .2s; 
+  transition:  .1s; 
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 4vmax;
@@ -734,6 +734,8 @@ animation: animate 8s linear infinite;
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
+transition: 0.1s;
+
 }
 }
 @media (min-width: 1700px) {
@@ -743,6 +745,7 @@ margin: 0 40px;
     // color: #b8dde9;
     color: #C0C0C0;
     justify-content: center;
+  transition: 0.1s;
    
   }
   }
@@ -752,7 +755,7 @@ margin: 0 40px;
       font-size: 2vw;
       display: flex;
       justify-content: center;
-animation: animate 8s linear infinite;
+
 
     }
     }
@@ -762,12 +765,12 @@ animation: animate 8s linear infinite;
   font-size: 3vw;
   display: flex;
   justify-content: center;
-animation: animate 8s linear infinite;
+
 
 }
 }
 @media (max-width: 1700px) {
-.PostOn :hover{
+.PostOn:hover{
   display: flex;
   font-size: 4vw;
   // color: #b8dde9;
@@ -781,7 +784,7 @@ animation: animate 8s linear infinite;
 }
 }
 @media (min-width: 1700px) {
-  .PostOn :hover{
+  .PostOn:hover{
     display: flex;
     font-size: 3vw;
     // color: #b8dde9;
