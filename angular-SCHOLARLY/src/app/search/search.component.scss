@@ -289,11 +289,11 @@ background-color: #11173a !important;
   cursor: pointer;
 }
 @keyframes animate {
-  0% {color: #C0C0C0;}
-  25% {color: #4dc247;}
-  50% {color: #3b70f7;}
-  75% { color: #ff4081}
-  100% {color: #C0C0C0;}
+  0% {background-color: #11173a !important}
+  25% {background-color: #3b70f7 !important;}
+  50% {background-color: #4dc247 !important;}
+  75% { background-color: #ff4081 !important}
+  100% {background-color: #11173a !important;}
 }
 @media (min-width: 1025px) {
   .recents {
