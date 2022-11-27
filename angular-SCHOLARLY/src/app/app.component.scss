@@ -468,6 +468,7 @@ h4:focus {
       padding: 5px 5px;
       margin: 0 40px;
       color: #C0C0C0;
+  transition: all .2s; 
       // text-shadow: 0 0 50px #0072ff;
       font-size: 3vmax;
     }
@@ -482,6 +483,7 @@ h4:focus {
   padding: 5px 5px;
   margin: 0 40px;
   animation: animate 8s linear infinite;
+  transition: all .2s; 
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 3vmax;
@@ -511,6 +513,7 @@ h4:focus {
   padding: 5px 5px;
   margin: 0 40px;
   animation: animate 8s linear infinite;
+  transition: all .2s; 
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 4vmax;
