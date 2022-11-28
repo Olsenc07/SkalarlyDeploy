@@ -50,11 +50,12 @@ export class MessagingComponent implements OnInit {
   selectionContainer = document.getElementById('selection-outer');
   emoji = document.getElementById('selection-emoji');
   name = document.getElementById('selection-name');
-  triggerEmoji = document.getElementById('trigger');
+  triggerEmoji = document.getElementById('triggerEmo');
+
   picker = createPopup(
     {},
     {
-      referenceElement: this.triggerEmoji,
+      // referenceElement: this.triggerEmoji,
       triggerElement: this.triggerEmoji,
       position: 'right-end',
     }
@@ -107,7 +108,7 @@ export class MessagingComponent implements OnInit {
 
   openEmoji(): void {
     this.picker.toggle();
-    console.log('star though');
+    console.log('star through');
   }
   // Adding emojis
   addEmoji(event: any): any {
