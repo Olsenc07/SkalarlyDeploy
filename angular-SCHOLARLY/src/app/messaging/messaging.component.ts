@@ -47,6 +47,27 @@ export class MessagingComponent implements OnInit {
   chatForm = document.getElementById('send-container');
   socket = io();
 
+  const selectionContainer = document.getElementById('selection-outer');
+  const emoji = document.getElementById('selection-emoji');
+  const name = document.getElementById('selection-name');
+  const triggerEmoji = document.getElementById('trigger');
+  const picker = createPopup(
+    {},
+    {
+      referenceElement: this.triggerEmoji,
+      triggerElement: this.triggerEmoji,
+      position: 'right-end',
+    }
+  );
+  this.triggerEmoji.addEventListener('click', () => {
+    picker.toggle();
+    console.log('for the low');
+  });
+  picker.addEventListener('emoji:select', (selection) => {
+    console.log('clicked double');
+    emoji.innerHTML = selection.emoji;
+    selectionContainer.classList.remove('empty');
+  });
   // allUsers should filter through every user
   allUsers: string[] = [];
   username: string;
@@ -66,29 +87,6 @@ export class MessagingComponent implements OnInit {
     // this.socket.on('disconnect', () => {
     //   console.log('disconnected bro');
     // });
-    document.addEventListener('load', () => {
-      const selectionContainer = document.getElementById('selection-outer');
-      const emoji = document.getElementById('selection-emoji');
-      const name = document.getElementById('selection-name');
-      const triggerEmoji = document.getElementById('trigger');
-      const picker = createPopup(
-        {},
-        {
-          referenceElement: triggerEmoji,
-          triggerElement: triggerEmoji,
-          position: 'right-end',
-        }
-      );
-      triggerEmoji.addEventListener('click', () => {
-        picker.toggle();
-        console.log('for the low');
-      });
-      picker.addEventListener('emoji:select', (selection) => {
-        console.log('clicked double');
-        emoji.innerHTML = selection.emoji;
-        selectionContainer.classList.remove('empty');
-      });
-    });
   }
 
   ngOnInit(): any {
@@ -115,6 +113,8 @@ export class MessagingComponent implements OnInit {
       (user) => user.toLowerCase().indexOf(filterValue) === 0
     );
   }
+
+  
 
   // Adding emojis
   addEmoji(event: any): any {
