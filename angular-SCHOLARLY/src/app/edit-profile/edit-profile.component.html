@@ -160,23 +160,17 @@
             <i class="fas fa-heart check" *ngIf="bio.value"></i>
 </button>
 
-            <mat-form-field>
+            <mat-form-field id="showEmojisBio">
               <mat-label *ngIf="Bio">{{Bio}}</mat-label>
               <mat-label *ngIf="!Bio">Bio</mat-label>
 
-            <input matInput   
+            <input matInput class="selection-emoji"
                [formControl]="bio" type="text" placeholder="Bio" class="inputText"/>
-               <button mat-icon-button matSuffix>
-                <mat-icon  [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
-                </mat-icon>
-              </button>
+               <button mat-icon-button matSuffix id="triggerEmoBio" (click)="openEmojiBio()">😃</button>
               <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearBio()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button>
    
-                <mat-menu #emojiIconBio="matMenu" class="emoji-menu">
-                  <emoji-picker class="light" (emoji-click)="addEmojiBio($event)" (click)="emojiPreventCloseBio($event);"></emoji-picker>
-                </mat-menu>
                
             </mat-form-field>
             
@@ -213,21 +207,17 @@
     <span class="fas fa-star check" *ngIf="major.value">
     </span>
     </button>
-    <mat-form-field>
+    <mat-form-field id="showEmojisMajor">
 <mat-label *ngIf="Major">{{Major}}</mat-label>
 <mat-label *ngIf="!Major">Major(s)</mat-label>
-      <input class="major" maxlength="50" matInput placeholder="Major" [formControl]="major" />
-      <button mat-icon-button matSuffix>
-        <mat-icon  [matMenuTriggerFor]="emojiIconMajor" class="emoji">😃
-        </mat-icon>
-      </button>
+      <input class="major selection-emoji" maxlength="50" matInput placeholder="Major" [formControl]="major" />
+      <button mat-icon-button matSuffix id="triggerEmoMajor" (click)="openEmojiMajor()">😃</button>
+
       <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" (click)="clearMajor()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
     </mat-form-field>
-      <mat-menu #emojiIconMajor="matMenu" class="emoji-menu">
-        <emoji-picker class="light" (emoji-click)="addEmojiMajor($event)" (click)="emojiPreventCloseMajor($event);"></emoji-picker>
-      </mat-menu>
+      
   </div>
 
   <div class="input">
@@ -237,22 +227,18 @@
     <span class="fas fa-star-half-alt check" *ngIf="minor.value">
     </span>
     </button>
-    <mat-form-field>
+    <mat-form-field id="showEmojisMinor">
 <mat-label *ngIf="Minor">{{Minor}}</mat-label>
 <mat-label *ngIf="!Minor">Minor(s)</mat-label>
-      <input class="major" maxlength="50" matInput placeholder="Minor" [formControl]="minor" />
-      <button mat-icon-button matSuffix>
-        <mat-icon  [matMenuTriggerFor]="emojiIconMinor" class="emoji">😃
-        </mat-icon>
-      </button>
+      <input class="major selection-emoji" maxlength="50" matInput placeholder="Minor" [formControl]="minor" />
+      <button mat-icon-button matSuffix id="triggerEmoMinor" (click)="openEmojiMinor()">😃</button>
+
       <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value"  (click)="clearMinor()">
         <mat-icon class="asthetic-adds">close</mat-icon>
       </button>
     </mat-form-field>
  
-      <mat-menu #emojiIconMinor="matMenu" class="emoji-menu">
-        <emoji-picker class="light" (emoji-click)="addEmojiMinor($event)" (click)="emojiPreventCloseMinor($event);"></emoji-picker>
-      </mat-menu>
+     
   </div>
 </div>
 
@@ -264,23 +250,19 @@
   <span class="fas fa-running check" *ngIf="sport.value">
   </span>
   </button>
-  <mat-form-field>
+  <mat-form-field id="showEmojisSport">
 <mat-label *ngIf="Sport">{{Sport}}</mat-label>
 <mat-label *ngIf="!Sport">Do you play a sport?</mat-label>
-    <input matInput  placeholder="Do you play a sport?" [formControl]="sport" />
-    <button mat-icon-button matSuffix>
-      <mat-icon  [matMenuTriggerFor]="emojiIconSport" class="emoji">😃
-      </mat-icon>
-    </button>
+    <input matInput  placeholder="Do you play a sport?" [formControl]="sport" class="major selection-emoji" />
+    <button mat-icon-button matSuffix id="triggerEmoSport" (click)="openEmojiSport()">😃</button>
+
     <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value"  (click)="clearSport()">
       <mat-icon class="asthetic-adds">close</mat-icon>
     </button>
 
   </mat-form-field>
  
-    <mat-menu #emojiIconSport="matMenu" class="emoji-menu">
-      <emoji-picker class="light" (emoji-click)="addEmojiSport($event)" (click)="emojiPreventCloseSport($event);"></emoji-picker>
-    </mat-menu>
+
 </div>
 <div class="input">
   <span class="fas fa-user-friends _icon" *ngIf="!club.value">
@@ -289,23 +271,19 @@
   <span class="fas fa-user-friends check" *ngIf="club.value">
   </span>
   </button>
-  <mat-form-field>
+  <mat-form-field id="showEmojisClub">
 <mat-label *ngIf="Club">{{Club}}</mat-label>
 <mat-label *ngIf="!Club">Are you apart of a club?</mat-label>
-    <input class="major"  matInput placeholder="Are you apart of a club?" [formControl]="club" />
-    <button mat-icon-button matSuffix>
-      <mat-icon  [matMenuTriggerFor]="emojiIconClub" class="emoji">😃
-      </mat-icon>
-    </button>
+    <input class="major selection-emoji"  matInput placeholder="Are you apart of a club?" [formControl]="club" />
+    <button mat-icon-button matSuffix id="triggerEmoClub" (click)="openEmojiClub()">😃</button>
+
     <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" (click)="clearClub()">
       <mat-icon class="asthetic-adds">close</mat-icon>
     </button>
 
   </mat-form-field>
  
-    <mat-menu #emojiIconClub="matMenu" class="emoji-menu">
-      <emoji-picker class="light" (emoji-click)="addEmojiClub($event)" (click)="emojiPreventCloseClub($event);"></emoji-picker>
-    </mat-menu>
+    
 </div>
        
 

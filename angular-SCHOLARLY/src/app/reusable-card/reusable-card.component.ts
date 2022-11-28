@@ -864,14 +864,28 @@ export class CardInfoFeedComponent implements OnInit {
   }
 
   // Adding emojis
-  addEmoji(event: any): any {
-    const msgs = event?.detail?.unicode;
-    const msg = this.comment.value + msgs;
-    this.comment.setValue(msg);
+  openEmoji(): void {
+    const selectionContainer = document.getElementById('showEmojis');
+    const triggerEmoji = document.getElementById('triggerEmo');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.comment.value + msgs;
+      this.comment.setValue(msg);
+    });
   }
-  emojiPreventClose($event: any): any {
-    $event.stopPropagation();
-  }
+  
   //
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);

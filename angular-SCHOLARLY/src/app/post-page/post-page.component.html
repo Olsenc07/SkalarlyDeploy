@@ -19,17 +19,13 @@
         </div>
   
 <div class="center_" >
-        <mat-form-field class="post" appearance="fill">
+        <mat-form-field class="post" appearance="fill" id="showEmojis">
           <textarea matInput maxlength="280" placeholder="What would you like to say?"
-            [formControl]="postDescription">
+            [formControl]="postDescription" id="selection-emoji">
           </textarea>
-          <button mat-icon-button matSuffix>
-            <mat-icon  [matMenuTriggerFor]="emojiIcon" class="emoji">😃
-            </mat-icon>
-          </button>
-            <mat-menu  #emojiIcon="matMenu" class="emoji-menu">
-              <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
-            </mat-menu>
+          <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
+
+    
         </mat-form-field>
       </div>
 

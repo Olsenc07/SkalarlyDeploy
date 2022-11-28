@@ -38,6 +38,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { Picker } from 'emoji-picker-element';
+import { createPopup } from '@picmo/popup-picker';
 
 export const MY_FORMATS = {
   parse: {
@@ -258,37 +259,110 @@ export class SignupComponent implements OnInit {
     return null;
   }
   // Adding emojis
-  addEmojiBio(event: any): any {
-    const msgs = event?.detail?.unicode;
-    const msg = this.bio.value + msgs;
-    this.bio.setValue(msg);
+  openEmojiBio(): void {
+    const selectionContainer = document.getElementById('showEmojisBio');
+    const triggerEmoji = document.getElementById('triggerEmoBio');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.bio.value + msgs;
+      this.bio.setValue(msg);
+    });
   }
-  addEmojiMajor(event: any): any {
-    const msgs = event?.detail?.unicode;
-    const msg = this.major.value + msgs;
-    this.major.setValue(msg);
+  openEmojiMajor(): void {
+    const selectionContainer = document.getElementById('showEmojisMajor');
+    const triggerEmoji = document.getElementById('triggerEmoMajor');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.major.value + msgs;
+      this.major.setValue(msg);
+    });
   }
-  addEmojiMinor(event: any): any {
-    const msgs = event?.detail?.unicode;
-    const msg = this.minor.value + msgs;
-    this.minor.setValue(msg);
+  openEmojiMinor(): void {
+    const selectionContainer = document.getElementById('showEmojisMinor');
+    const triggerEmoji = document.getElementById('triggerEmoMinor');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.minor.value + msgs;
+      this.minor.setValue(msg);
+    });
   }
-  addEmojiSport(event: any): any {
-    const msgs = event?.detail?.unicode;
-    const msg = this.sport.value + msgs;
-    this.sport.setValue(msg);
+  openEmojiSport(): void {
+    const selectionContainer = document.getElementById('showEmojisSport');
+    const triggerEmoji = document.getElementById('triggerEmoSport');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.sport.value + msgs;
+      this.sport.setValue(msg);
+    });
   }
-  addEmojiClub(event: any): any {
-    const msgs = event?.detail?.unicode;
-    const msg = this.club.value + msgs;
-    this.club.setValue(msg);
+
+  openEmojiClub(): void {
+    const selectionContainer = document.getElementById('showEmojisClub');
+    const triggerEmoji = document.getElementById('triggerEmoClub');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.club.value + msgs;
+      this.club.setValue(msg);
+    });
   }
-  emojiPreventCloseBio($event: any): any {
-    $event.stopPropagation();
-  }
-  emojiPreventClose($event: any): any {
-    $event.stopPropagation();
-  }
+
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
     c.type = 'text';

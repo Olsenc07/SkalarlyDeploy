@@ -392,23 +392,20 @@
       <i class="fas fa-heart _icon" *ngIf="!bio.value"></i>
       <i class="fas fa-heart check" *ngIf="bio.value"></i>
 
-      <mat-form-field>
+      <mat-form-field id="showEmojisBio">
 
         <mat-label>Bio</mat-label>
+   
 
-      <input matInput   
+      <input matInput class="selection-emoji"
          [formControl]="bio" type="text" placeholder="Bio" class="inputText"/>
         <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
           <mat-icon class="asthetic-adds">close</mat-icon>
         </button> -->
        
-          <mat-menu #emojiIconBio="matMenu" class="emoji-menu">
-            <emoji-picker class="light" (emoji-click)="addEmojiBio($event)" (click)="emojiPreventCloseBio($event);"></emoji-picker>
-          </mat-menu>
-          <button mat-icon-button>
-            <mat-icon matSuffix [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
-            </mat-icon>
-          </button>
+    
+          <button mat-icon-button matSuffix id="triggerEmoBio" (click)="openEmojiBio()">😃</button>
+
       </mat-form-field>
     
     </div>
@@ -525,19 +522,15 @@
             </span>
             <span class="fas fa-star check" *ngIf="major.value">
             </span>
-            <mat-form-field>
-              <input class="major" maxlength="50" matInput placeholder="Major (s)" [formControl]="major" />
+            <mat-form-field id="showEmojisMajor">
+              <input class="major selection-emoji" maxlength="50" matInput placeholder="Major (s)" [formControl]="major"  />
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
             </mat-form-field>
-            <button mat-icon-button>
-              <mat-icon matSuffix [matMenuTriggerFor]="emojiIconMajor" class="emoji">😃
-              </mat-icon>
-            </button>
-              <mat-menu #emojiIconMajor="matMenu" class="emoji-menu">
-                <emoji-picker class="light" (emoji-click)="addEmojiMajor($event)" (click)="emojiPreventClose($event);"></emoji-picker>
-              </mat-menu>
+            <button mat-icon-button matSuffix id="triggerEmoMajor" (click)="openEmojiMajor()">😃</button>
+
+      
           </div>
 
           <div class="input">
@@ -545,19 +538,15 @@
             </span>
             <span class="fas fa-star-half-alt check" *ngIf="minor.value">
             </span>
-            <mat-form-field>
-              <input class="major"  maxlength="50" matInput placeholder="Minor (s)" [formControl]="minor" />
+            <mat-form-field id="showEmojisMinor">
+              <input class="major selection-emoji"  maxlength="50" matInput placeholder="Minor (s)" [formControl]="minor" />
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
+            <button mat-icon-button matSuffix id="triggerEmoMinor" (click)="openEmojiMinor()">😃</button>
             </mat-form-field>
-            <button mat-icon-button>
-              <mat-icon matSuffix [matMenuTriggerFor]="emojiIconMinor" class="emoji">😃
-              </mat-icon>
-            </button>
-              <mat-menu #emojiIconMinor="matMenu" class="emoji-menu">
-                <emoji-picker class="light" (emoji-click)="addEmojiMinor($event)" (click)="emojiPreventClose($event);"></emoji-picker>
-              </mat-menu>
+             
+          
           </div>
         </div>
         <div class="sport-layout">
@@ -569,19 +558,16 @@
             </span>
             <span class="fas fa-running check" *ngIf="sport.value">
             </span>
-            <mat-form-field>
-              <input matInput  maxlength="50" placeholder="Do you play a sport?" [formControl]="sport" />
+            <mat-form-field id="showEmojisSport">
+              <input matInput class="selection-emoji" maxlength="50" placeholder="Do you play a sport?" [formControl]="sport" />
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearSport()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
+            <button mat-icon-button matSuffix id="triggerEmoSport" (click)="openEmojiSport()">😃</button>
+
             </mat-form-field>
-            <button mat-icon-button>
-              <mat-icon matSuffix [matMenuTriggerFor]="emojiIconSport" class="emoji">😃
-              </mat-icon>
-            </button>
-              <mat-menu #emojiIconSport="matMenu" class="emoji-menu">
-                <emoji-picker class="light" (emoji-click)="addEmojiSport($event)" (click)="emojiPreventClose($event);"></emoji-picker>
-              </mat-menu>
+
+              
           </div>
 
 
@@ -591,19 +577,14 @@
             </span>
             <span class="fas fa-user-friends check" *ngIf="club.value">
             </span>
-            <mat-form-field>
-              <input class="major" maxlength="50" matInput placeholder="Are you apart of a club? " [formControl]="club" />
+            <mat-form-field id="showEmojisClub">
+              <input class="major" class="selection-emoji" maxlength="50" matInput placeholder="Are you apart of a club? " [formControl]="club" />
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearClub()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button> -->
+            <button mat-icon-button matSuffix id="triggerEmoClub" (click)="openEmojiClub()">😃</button>
             </mat-form-field>
-            <button mat-icon-button>
-              <mat-icon matSuffix [matMenuTriggerFor]="emojiIconClub" class="emoji">😃
-              </mat-icon>
-            </button>
-              <mat-menu #emojiIconClub="matMenu" class="emoji-menu">
-                <emoji-picker class="light" (emoji-click)="addEmojiClub($event)" (click)="emojiPreventClose($event);"></emoji-picker>
-              </mat-menu>
+
           </div>
         </div>
         <!-- Completed Courses -->
