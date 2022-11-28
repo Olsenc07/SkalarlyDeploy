@@ -10,6 +10,7 @@ import { MessageNotificationService } from '../services/messagesNotifications.se
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
 import { createPopup } from '@picmo/popup-picker';
+import { createPicker } from 'picmo';
 
 export interface Message {
   id: string;
@@ -103,20 +104,22 @@ export class MessagingComponent implements OnInit {
       {
         referenceElement: selectionContainer,
         triggerElement: triggerEmoji,
-        position: 'right-end',
+        // position: 'right-end',
       }
     );
+
     picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+    });
+
     triggerEmoji.addEventListener('click', (selection) => {
       console.log('selection', selection);
-      const msgS = emoji;
-      const msG = this.message.value + msgS;
-      this.message.setValue(msG);
+      // const msgs = emoji?.detail?.unicode;
+      // const msg = this.message.value + msgs;
+      // this.message.setValue(msg);
+      // emoji.innerHTML = selection.emoji;
     });
-    console.log('selection2', emoji);
-    const msgs = emoji;
-    const msg = this.message.value + msgs;
-    this.message.setValue(msg);
   }
 
   // Adding emojis
