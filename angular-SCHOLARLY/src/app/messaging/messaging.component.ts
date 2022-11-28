@@ -93,7 +93,6 @@ export class MessagingComponent implements OnInit {
     );
   }
 
-  emojiSelected(): void {}
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
     const emoji = document.getElementById('selection-emoji');
@@ -108,13 +107,21 @@ export class MessagingComponent implements OnInit {
       }
     );
     picker.toggle();
+    emoji.addEventListener('click', (selection) => {
+      console.log('selection', selection);
+      // emoji.innerHTML = selection.emoji;
+      // const msgs = event?.detail?.unicode;
+      //   const msg = this.message.value + msgs;
+      //   this.message.setValue(msg);
+    });
   }
+
   // Adding emojis
-  addEmoji(event: any): any {
-    const msgs = event?.detail?.unicode;
-    const msg = this.message.value + msgs;
-    this.message.setValue(msg);
-  }
+  // addEmoji(event: any): any {
+  //   const msgs = event?.detail?.unicode;
+  //   const msg = this.message.value + msgs;
+  //   this.message.setValue(msg);
+  // }
 
   emojiPreventClose($event: any): any {
     $event.stopPropagation();
