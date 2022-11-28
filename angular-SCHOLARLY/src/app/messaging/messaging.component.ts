@@ -47,11 +47,11 @@ export class MessagingComponent implements OnInit {
   chatForm = document.getElementById('send-container');
   socket = io();
 
-  const selectionContainer = document.getElementById('selection-outer');
-  const emoji = document.getElementById('selection-emoji');
-  const name = document.getElementById('selection-name');
-  const triggerEmoji = document.getElementById('trigger');
-  const picker = createPopup(
+  selectionContainer = document.getElementById('selection-outer');
+  emoji = document.getElementById('selection-emoji');
+  name = document.getElementById('selection-name');
+  triggerEmoji = document.getElementById('trigger');
+  picker = createPopup(
     {},
     {
       referenceElement: this.triggerEmoji,
@@ -59,15 +59,6 @@ export class MessagingComponent implements OnInit {
       position: 'right-end',
     }
   );
-  this.triggerEmoji.addEventListener('click', () => {
-    picker.toggle();
-    console.log('for the low');
-  });
-  picker.addEventListener('emoji:select', (selection) => {
-    console.log('clicked double');
-    emoji.innerHTML = selection.emoji;
-    selectionContainer.classList.remove('empty');
-  });
   // allUsers should filter through every user
   allUsers: string[] = [];
   username: string;
@@ -114,8 +105,10 @@ export class MessagingComponent implements OnInit {
     );
   }
 
-  
-
+  openEmoji(): void {
+    this.picker.toggle();
+    console.log('star though');
+  }
   // Adding emojis
   addEmoji(event: any): any {
     const msgs = event?.detail?.unicode;
