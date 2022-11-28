@@ -47,19 +47,6 @@ export class MessagingComponent implements OnInit {
   chatForm = document.getElementById('send-container');
   socket = io();
 
-  selectionContainer = document.getElementById('selection-outer');
-  emoji = document.getElementById('selection-emoji');
-  name = document.getElementById('selection-name');
-  triggerEmoji = document.getElementById('trigger');
-  picker = createPopup(
-    {},
-    {
-      referenceElement: this.triggerEmoji,
-      triggerElement: this.triggerEmoji,
-      position: 'right-end',
-    }
-  );
-
   // allUsers should filter through every user
   allUsers: string[] = [];
   username: string;
@@ -79,6 +66,29 @@ export class MessagingComponent implements OnInit {
     // this.socket.on('disconnect', () => {
     //   console.log('disconnected bro');
     // });
+    document.addEventListener('load', () => {
+      const selectionContainer = document.getElementById('selection-outer');
+      const emoji = document.getElementById('selection-emoji');
+      const name = document.getElementById('selection-name');
+      const triggerEmoji = document.getElementById('trigger');
+      const picker = createPopup(
+        {},
+        {
+          referenceElement: triggerEmoji,
+          triggerElement: triggerEmoji,
+          position: 'right-end',
+        }
+      );
+      triggerEmoji.addEventListener('click', () => {
+        picker.toggle();
+        console.log('for the low');
+      });
+      picker.addEventListener('emoji:select', (selection) => {
+        console.log('clicked double');
+        emoji.innerHTML = selection.emoji;
+        selectionContainer.classList.remove('empty');
+      });
+    });
   }
 
   ngOnInit(): any {
@@ -97,16 +107,6 @@ export class MessagingComponent implements OnInit {
     //     });
     //   }
     // });
-    this.triggerEmoji.addEventListener('click', () => {
-      this.picker.toggle();
-      console.log('clicked');
-    });
-
-    this.picker.addEventListener('emoji:select', (selection) => {
-      console.log('clicked double');
-      this.emoji.innerHTML = selection.emoji;
-      this.selectionContainer.classList.remove('empty');
-    });
   }
 
   private _filter(value: string): string[] {
@@ -115,10 +115,7 @@ export class MessagingComponent implements OnInit {
       (user) => user.toLowerCase().indexOf(filterValue) === 0
     );
   }
-  openEmoji(): void {
-    this.picker.toggle();
-    console.log('clicked open Emoji');
-  }
+
   // Adding emojis
   addEmoji(event: any): any {
     const msgs = event?.detail?.unicode;
