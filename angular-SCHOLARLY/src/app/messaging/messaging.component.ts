@@ -89,7 +89,7 @@ export class MessagingComponent implements OnInit {
       const selectionContainer = document.querySelector('#selection-outer');
       const emoji = document.querySelector('#selection-emoji');
       const name = document.querySelector('#selection-name');
-      const trigger = document.querySelector('trigger');
+      const trigger = document.getElementById('trigger');
 
       const picker = createPopup(
         {},
