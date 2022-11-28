@@ -10,7 +10,6 @@ import { MessageNotificationService } from '../services/messagesNotifications.se
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
 import { createPopup } from '@picmo/popup-picker';
-import { createPicker } from 'picmo';
 
 export interface Message {
   id: string;

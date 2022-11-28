@@ -11,6 +11,7 @@ import { ShowCaseService, ShowCase } from '../services/showCase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Picker } from 'emoji-picker-element';
+import { createPopup } from '@picmo/popup-picker';
 
 export interface CommentInterface {
   id: string;
@@ -86,11 +87,28 @@ export class ReusableCardComponent implements OnInit {
   //   this.selectedAttend = event.target.value;
   // }
   // Where the post was posted
+
   // Adding emojis
-  addEmoji(event: any): any {
-    const msgs = event?.detail?.unicode;
-    const msg = this.comment.value + msgs;
-    this.comment.setValue(msg);
+  openEmoji(): void {
+    const selectionContainer = document.getElementById('showEmojis');
+    const triggerEmoji = document.getElementById('triggerEmo');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.comment.value + msgs;
+      this.comment.setValue(msg);
+    });
   }
   emojiPreventClose($event: any): any {
     $event.stopPropagation();
@@ -226,10 +244,27 @@ export class ReusableCardPersonalComponent implements OnInit {
   // }
   // Where the post was posted
   // Adding emojis
-  addEmoji(event: any): any {
-    const msgs = event?.detail?.unicode;
-    const msg = this.comment.value + msgs;
-    this.comment.setValue(msg);
+  // Adding emojis
+  openEmoji(): void {
+    const selectionContainer = document.getElementById('showEmojis');
+    const triggerEmoji = document.getElementById('triggerEmo');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.comment.value + msgs;
+      this.comment.setValue(msg);
+    });
   }
   emojiPreventClose($event: any): any {
     $event.stopPropagation();
@@ -629,6 +664,27 @@ export class CardFeedComponent implements OnInit {
         this.isLoading = false;
       });
   }
+  openEmoji(): void {
+    const selectionContainer = document.getElementById('showEmojis');
+    const triggerEmoji = document.getElementById('triggerEmo');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.comment.value + msgs;
+      this.comment.setValue(msg);
+    });
+  }
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
@@ -644,9 +700,7 @@ export class CardFeedComponent implements OnInit {
     const msg = this.comment.value + msgs;
     this.comment.setValue(msg);
   }
-  emojiPreventClose($event: any): any {
-    $event.stopPropagation();
-  }
+
   //
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
@@ -970,10 +1024,26 @@ export class CardInfoMainPageComponent implements OnInit {
     console.log('bye good lookin');
   }
   // Adding emojis
-  addEmoji(event: any): any {
-    const msgs = event?.detail?.unicode;
-    const msg = this.comment.value + msgs;
-    this.comment.setValue(msg);
+  openEmoji(): void {
+    const selectionContainer = document.getElementById('showEmojis');
+    const triggerEmoji = document.getElementById('triggerEmo');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.comment.value + msgs;
+      this.comment.setValue(msg);
+    });
   }
   emojiPreventClose($event: any): any {
     $event.stopPropagation();

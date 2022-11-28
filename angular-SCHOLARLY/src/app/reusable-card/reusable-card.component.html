@@ -179,16 +179,11 @@
 
 
           <mat-divider></mat-divider>
-
+<mat-form-field id="showEmojis">
           <input matInput placeholder="Add to the discussion..." class="comment-form-textarea" 
           maxlength="140" [formControl]="comment" >
-           <button mat-icon-button>
-            <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon" class="emoji">😃
-            </mat-icon>
-          </button>
-            <mat-menu #emojiIcon="matMenu" class="emoji-menu">
-              <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
-            </mat-menu>
+          <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
+        </mat-form-field>
           <!-- {{submitLabel}}  -->
           <div class="buttonsCWrapper">
 
