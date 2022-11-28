@@ -107,13 +107,16 @@ export class MessagingComponent implements OnInit {
       }
     );
     picker.toggle();
-    emoji.addEventListener('click', (selection) => {
+    triggerEmoji.addEventListener('click', (selection) => {
       console.log('selection', selection);
-      // emoji.innerHTML = selection.emoji;
-      // const msgs = event?.detail?.unicode;
-      //   const msg = this.message.value + msgs;
-      //   this.message.setValue(msg);
+      const msgS = emoji;
+      const msG = this.message.value + msgS;
+      this.message.setValue(msG);
     });
+    console.log('selection2', emoji);
+    const msgs = emoji;
+    const msg = this.message.value + msgs;
+    this.message.setValue(msg);
   }
 
   // Adding emojis
