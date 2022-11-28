@@ -239,23 +239,5 @@
   border: 1px solid #999;
   background: #fff;
 }
-#selection {
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-}
 
-#selection-outer {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: #eee;
-  padding: 0.5rem;
-  width: 360px;
-  margin-top: 2rem;
-  transition: opacity 200ms;
-}
-
-#selection-outer.empty {
-  opacity: 0;
-}
 
