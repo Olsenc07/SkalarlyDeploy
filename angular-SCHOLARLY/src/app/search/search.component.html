@@ -115,7 +115,7 @@
           <div class="center_single">Step 2: Navigate to the specific page</div>
           <mat-chip-list  class="mat-list-text" >
             <mat-chip  [multiple]="false" *ngFor="let opt of specificOptions"
-             [value]="opt" class="searchBtn_" (click)="navigateToPage(opt)"  >
+             [value]="opt" class="searchBtn" (click)="navigateToPage(opt)"  >
               {{ opt }}
             </mat-chip>
           </mat-chip-list>

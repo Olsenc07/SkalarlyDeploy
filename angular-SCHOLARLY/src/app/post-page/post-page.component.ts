@@ -150,11 +150,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
     private authService: AuthService
   ) {
     // Desktop tag friends
-    this.filteredFriends = this.friendCtrl.valueChanges.pipe(
-      map((friend: string | null) =>
-        friend ? this._filter(friend) : this.allFriends.slice()
-      )
-    );
+    // this.filteredFriends = this.friendCtrl.valueChanges.pipe(
+    //   map((friend: string | null) =>
+    //     friend ? this._filter(friend) : this.allFriends.slice()
+    //   )
+    // );
   }
   // Adding emojis
   addEmoji(event: any): any {

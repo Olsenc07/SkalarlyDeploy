@@ -166,6 +166,10 @@
 
             <input matInput   
                [formControl]="bio" type="text" placeholder="Bio" class="inputText"/>
+               <button mat-icon-button matSuffix>
+                <mat-icon  [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
+                </mat-icon>
+              </button>
               <button matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearBio()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button>
@@ -173,10 +177,7 @@
                 <mat-menu #emojiIconBio="matMenu" class="emoji-menu">
                   <emoji-picker class="light" (emoji-click)="addEmojiBio($event)" (click)="emojiPreventCloseBio($event);"></emoji-picker>
                 </mat-menu>
-                <button mat-icon-button matSuffix>
-                  <mat-icon  [matMenuTriggerFor]="emojiIconBio" class="emoji">😃
-                  </mat-icon>
-                </button>
+               
             </mat-form-field>
             
           </div>

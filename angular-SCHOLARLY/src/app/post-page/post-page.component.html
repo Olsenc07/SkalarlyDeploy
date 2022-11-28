@@ -101,7 +101,7 @@
     <mat-form-field  class="shadow2"  id="nextBtn2">
       <mat-label> Specific Pages</mat-label>
     
-    <mat-select  [formControl]="postLocation.value" > 
+    <mat-select  [formControl]="postLocation" > 
       <!-- (click)="adjustView()" -->
       <mat-option  [multiple]="false" *ngFor="let opt of specificOptions"
       [selected]="opt" [value]="opt">
