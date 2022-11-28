@@ -47,7 +47,7 @@ export class MessagingComponent implements OnInit {
   chatForm = document.getElementById('send-container');
   socket = io();
 
-  selectionContainer = document.getElementById('selection-outer');
+  selectionContainer = document.getElementById('showEmojis');
   emoji = document.getElementById('selection-emoji');
   name = document.getElementById('selection-name');
   triggerEmoji = document.getElementById('triggerEmo');
@@ -55,7 +55,7 @@ export class MessagingComponent implements OnInit {
   picker = createPopup(
     {},
     {
-      // referenceElement: this.triggerEmoji,
+      referenceElement: this.selectionContainer,
       triggerElement: this.triggerEmoji,
       position: 'right-end',
     }

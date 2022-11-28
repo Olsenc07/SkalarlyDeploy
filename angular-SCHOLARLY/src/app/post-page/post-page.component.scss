@@ -675,11 +675,13 @@ p {
     display: flex;
     position: fixed;
     left: 7%;
+    margin-top: 1%;
   }
 }
 @media (max-width: 1025px) {
   .staticBtn {
     display: flex;
+    margin-top: 1%;
   }
 }
 @media (min-width: 1025px) {
@@ -687,11 +689,13 @@ p {
     display: flex;
     position: fixed;
     right: 7%;
+    margin-top: 1%;
   }
 }
 @media (max-width: 1025px) {
   .staticBtn2 {
     display: flex;
+    margin-top: 1%;
   }
 }
 .spinner {
