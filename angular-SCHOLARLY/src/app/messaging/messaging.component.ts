@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
+
 import { io } from 'socket.io-client';
 import { Subscription } from 'rxjs';
 import { Picker } from 'emoji-picker-element';
@@ -47,19 +47,6 @@ export class MessagingComponent implements OnInit {
   chatForm = document.getElementById('send-container');
   socket = io();
 
-  selectionContainer = document.getElementById('showEmojis');
-  emoji = document.getElementById('selection-emoji');
-  name = document.getElementById('selection-name');
-  triggerEmoji = document.getElementById('triggerEmo');
-
-  picker = createPopup(
-    {},
-    {
-      referenceElement: this.selectionContainer,
-      triggerElement: this.triggerEmoji,
-      position: 'right-end',
-    }
-  );
   // allUsers should filter through every user
   allUsers: string[] = [];
   username: string;
@@ -106,9 +93,21 @@ export class MessagingComponent implements OnInit {
     );
   }
 
+  emojiSelected(): void {}
   openEmoji(): void {
-    this.picker.toggle();
+    const selectionContainer = document.getElementById('showEmojis');
+    const emoji = document.getElementById('selection-emoji');
+    const triggerEmoji = document.getElementById('triggerEmo');
     console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'right-end',
+      }
+    );
+    picker.toggle();
   }
   // Adding emojis
   addEmoji(event: any): any {
