@@ -35,7 +35,8 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { PostService } from '../services/post.service';
 import { mimeType } from './mime-type.validator';
 import { AuthService } from '../services/auth.service';
-import { Picker } from 'emoji-picker-element';
+
+import { createPopup } from '@picmo/popup-picker';
 
 export const MY_FORMATS = {
   parse: {
@@ -73,7 +74,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public selectedOption: string;
   public specificOptions: string[];
   public searchOptions: SearchOption[];
-  picker = new Picker();
+
   isLoading = false;
 
   private authStatusSub: Subscription;
@@ -225,7 +226,27 @@ export class PostPageComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.authStatusSub.unsubscribe();
   }
+  // Adding emojis
+  openEmoji(): void {
+    const selectionContainer = document.getElementById('showEmojis');
+    const triggerEmoji = document.getElementById('triggerEmo');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+      }
+    );
 
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.postDescription.value + msgs;
+      this.postDescription.setValue(msg);
+    });
+  }
   onSearchSelection(value): any {
     console.log(value);
     this.specificOptions = this.searchListService.onSearchSelection(value);

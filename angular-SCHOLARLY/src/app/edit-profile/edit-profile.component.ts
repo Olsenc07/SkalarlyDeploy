@@ -149,7 +149,6 @@ export class EditProfileComponent implements OnInit {
       {
         referenceElement: selectionContainer,
         triggerElement: triggerEmoji,
-        position: 'top',
       }
     );
 

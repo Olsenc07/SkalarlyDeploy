@@ -96,13 +96,11 @@ export class MessagingComponent implements OnInit {
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
     const triggerEmoji = document.getElementById('triggerEmo');
-    console.log('star through');
     const picker = createPopup(
       {},
       {
         referenceElement: selectionContainer,
         triggerElement: triggerEmoji,
-        position: 'top',
       }
     );
 
