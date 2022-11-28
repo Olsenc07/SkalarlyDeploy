@@ -96,7 +96,6 @@ export class MessagingComponent implements OnInit {
 
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
-    const emoji = document.getElementById('selection-emoji');
     const triggerEmoji = document.getElementById('triggerEmo');
     console.log('star through');
     const picker = createPopup(
@@ -104,21 +103,16 @@ export class MessagingComponent implements OnInit {
       {
         referenceElement: selectionContainer,
         triggerElement: triggerEmoji,
-        // position: 'right-end',
+        position: 'top',
       }
     );
 
     picker.toggle();
     picker.addEventListener('emoji:select', (selection) => {
       console.log('Selected emoji: ', selection.emoji);
-    });
-
-    triggerEmoji.addEventListener('click', (selection) => {
-      console.log('selection', selection);
-      // const msgs = emoji?.detail?.unicode;
-      // const msg = this.message.value + msgs;
-      // this.message.setValue(msg);
-      // emoji.innerHTML = selection.emoji;
+      const msgs = selection.emoji;
+      const msg = this.message.value + msgs;
+      this.message.setValue(msg);
     });
   }
 
