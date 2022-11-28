@@ -67,11 +67,8 @@
 <mat-form-field class="type_message_box">
         <input matInput class="post" placeholder="Write a message..." [formControl]="message"
           type="text" id="messageInput"> 
-          <button mat-icon-button matSuffix>
-            <mat-icon  [matMenuTriggerFor]="emojiIcon" class="emoji">
-              😃
-            </mat-icon>
-          </button>
+    <button mat-icon-button  matSuffix id="trigger"> 😃</button>
+
           <button color="primary" matSuffix mat-icon-button aria-label="Clear" type="button"
           (click)="clearMessage()">
           <mat-icon>close</mat-icon>
@@ -88,7 +85,6 @@
 
 
 
-    <button id="trigger"> 😃</button>
 
 
   <section id="selection-outer" class="empty">

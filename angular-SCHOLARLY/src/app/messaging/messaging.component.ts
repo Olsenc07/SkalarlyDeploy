@@ -86,9 +86,9 @@ export class MessagingComponent implements OnInit {
     // });
 
     document.addEventListener('load', () => {
-      const selectionContainer = document.querySelector('#selection-outer');
-      const emoji = document.querySelector('#selection-emoji');
-      const name = document.querySelector('#selection-name');
+      const selectionContainer = document.getElementById('selection-outer');
+      const emoji = document.getElementById('selection-emoji');
+      const name = document.getElementById('selection-name');
       const trigger = document.getElementById('trigger');
 
       const picker = createPopup(
@@ -102,9 +102,11 @@ export class MessagingComponent implements OnInit {
 
       trigger.addEventListener('click', () => {
         picker.toggle();
+        console.log('clicked');
       });
 
       picker.addEventListener('emoji:select', (selection) => {
+        console.log('clicked double');
         emoji.innerHTML = selection.emoji;
         name.textContent = selection.label;
 
