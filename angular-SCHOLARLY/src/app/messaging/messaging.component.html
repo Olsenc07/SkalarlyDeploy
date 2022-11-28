@@ -85,6 +85,20 @@
  <div class="assistance"> 
  <div class="upload_options">
 
+
+
+  <div class="pickerContainer">
+    <button id="triggerEmoji"></button>
+  </div>
+
+  <section id="selection-outer" class="empty">
+    <h2>Selected emoji!</h2>
+    <div id="selection">
+      <div id="selection-emoji" class="empty"></div>
+      <div id="selection-name" class="empty">Nothing selected</div>
+    </div>
+  </section>
+
   <mat-menu #emojiIcon="matMenu" class="emoji-menu">
     <emoji-picker class="light" (emoji-click)="addEmoji($event)" (click)="emojiPreventClose($event);"></emoji-picker>
   </mat-menu>

@@ -9,6 +9,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MessageNotificationService } from '../services/messagesNotifications.service';
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
+import { createPicker } from 'picmo';
+import { createPopup } from '@picmo/popup-picker';
 
 export interface Message {
   id: string;
@@ -25,7 +27,6 @@ export interface Message {
 export class MessagingComponent implements OnInit {
   isLoading = false;
   userId: string;
-  picker = new Picker();
   timeHour = new Date().getHours();
   timeMinute = new Date().getMinutes();
   text = this.timeHour >= 12 ? 'pm' : 'am';
@@ -84,6 +85,30 @@ export class MessagingComponent implements OnInit {
     //     });
     //   }
     // });
+    document.addEventListener('load', () => {
+      const selectionContainer = document.querySelector('#selection-outer');
+      const emoji = document.querySelector('#selection-emoji');
+      const name = document.querySelector('#selection-name');
+      const trigger = document.querySelector('#triggerEmoji');
+
+      const picker = createPopup(
+        {},
+        {
+          position: 'right-end',
+        }
+      );
+
+      trigger.addEventListener('click', () => {
+        picker.toggle();
+      });
+
+      picker.addEventListener('emoji:select', (selection) => {
+        emoji.innerHTML = selection.emoji;
+        name.textContent = selection.label;
+
+        selectionContainer.classList.remove('empty');
+      });
+    });
   }
 
   private _filter(value: string): string[] {
