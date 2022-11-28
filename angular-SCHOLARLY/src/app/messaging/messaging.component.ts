@@ -9,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
 import { MessageNotificationService } from '../services/messagesNotifications.service';
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
-import { createPicker } from 'picmo';
 import { createPopup } from '@picmo/popup-picker';
 
 export interface Message {
@@ -85,15 +84,18 @@ export class MessagingComponent implements OnInit {
     //     });
     //   }
     // });
+
     document.addEventListener('load', () => {
       const selectionContainer = document.querySelector('#selection-outer');
       const emoji = document.querySelector('#selection-emoji');
       const name = document.querySelector('#selection-name');
-      const trigger = document.querySelector('#triggerEmoji');
+      const trigger = document.querySelector('trigger');
 
       const picker = createPopup(
         {},
         {
+          referenceElement: trigger,
+          triggerElement: trigger,
           position: 'right-end',
         }
       );
