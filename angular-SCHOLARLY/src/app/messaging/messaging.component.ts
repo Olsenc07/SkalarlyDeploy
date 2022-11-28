@@ -47,6 +47,19 @@ export class MessagingComponent implements OnInit {
   chatForm = document.getElementById('send-container');
   socket = io();
 
+  selectionContainer = document.getElementById('selection-outer');
+  emoji = document.getElementById('selection-emoji');
+  name = document.getElementById('selection-name');
+  triggerEmoji = document.getElementById('trigger');
+  picker = createPopup(
+    {},
+    {
+      referenceElement: this.triggerEmoji,
+      triggerElement: this.triggerEmoji,
+      position: 'right-end',
+    }
+  );
+
   // allUsers should filter through every user
   allUsers: string[] = [];
   username: string;
@@ -84,34 +97,15 @@ export class MessagingComponent implements OnInit {
     //     });
     //   }
     // });
+    this.triggerEmoji.addEventListener('click', () => {
+      this.picker.toggle();
+      console.log('clicked');
+    });
 
-    document.addEventListener('load', () => {
-      const selectionContainer = document.getElementById('selection-outer');
-      const emoji = document.getElementById('selection-emoji');
-      const name = document.getElementById('selection-name');
-      const trigger = document.getElementById('trigger');
-
-      const picker = createPopup(
-        {},
-        {
-          referenceElement: trigger,
-          triggerElement: trigger,
-          position: 'right-end',
-        }
-      );
-
-      trigger.addEventListener('click', () => {
-        picker.toggle();
-        console.log('clicked');
-      });
-
-      picker.addEventListener('emoji:select', (selection) => {
-        console.log('clicked double');
-        emoji.innerHTML = selection.emoji;
-        name.textContent = selection.label;
-
-        selectionContainer.classList.remove('empty');
-      });
+    this.picker.addEventListener('emoji:select', (selection) => {
+      console.log('clicked double');
+      this.emoji.innerHTML = selection.emoji;
+      this.selectionContainer.classList.remove('empty');
     });
   }
 
@@ -120,6 +114,10 @@ export class MessagingComponent implements OnInit {
     return this.allUsers.filter(
       (user) => user.toLowerCase().indexOf(filterValue) === 0
     );
+  }
+  openEmoji(): void {
+    this.picker.toggle();
+    console.log('clicked open Emoji');
   }
   // Adding emojis
   addEmoji(event: any): any {
