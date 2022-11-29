@@ -467,17 +467,19 @@
 
               </div>
 
-<form enctype="multipart/form-data">
+
               <div class="rowP_">
                 <button mat-fab class="cameraIcon" mat-fab (click)="uploadFile()">
                   <span class="material-icons icon Photo">
                     photo_library
+                    <form enctype="multipart/form-data">
                     <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
                       (change)="imagePreview($event)" name="showCase" >
+                    </form>
                   </span>
                 </button>
               </div>
-</form>
+                
 
               <!-- Only when upload holds a value -->
               <!-- <div class="contents"> -->
@@ -548,7 +550,7 @@
             <mat-form-field id="showEmojisMinor">
               <input class="major selection-emoji"  maxlength="50" matInput placeholder="Minor (s)" [formControl]="minor" />
             <button mat-icon-button matSuffix id="triggerEmoMinor" (click)="openEmojiMinor()">😃</button>
-              <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
+              <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button>
             </mat-form-field>
@@ -597,7 +599,7 @@
         </div>
         <!-- Completed Courses -->
 
-        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="columnTab">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="columnTab white">
           <!-- column -->
 
   <mat-tab  label="Completed Courses" class="courses">
