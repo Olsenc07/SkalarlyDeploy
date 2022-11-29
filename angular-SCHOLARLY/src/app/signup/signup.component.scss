@@ -786,18 +786,8 @@
   width: 100%;
   height: 100%;
 }
- #white .white white{
-  background-color: white !important;
-  animation: 1s linear infinite forceWhite;
-}
-@keyframes forceWhite {
-  from {
-    background-color: white !important;
-  }
-  to {
-    background-color: white !important;
-  }
-}
+
+
 // Emoji pop up
 .selection-emoji {
   font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Segoe UI',

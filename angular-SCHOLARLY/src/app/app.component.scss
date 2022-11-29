@@ -983,6 +983,10 @@ animation: animate 8s linear infinite;
   margin-top: 2%;
   font-size: initial;
 }
+// Background on signup sheet
+::ng-deep #whiteChazBackground .whiteChazBackground whiteChazBackground{
+  background-color: white !important;
+}
 // Search box style
 ::ng-deep .mat-select-panel-wrap {
   width: 500px;
