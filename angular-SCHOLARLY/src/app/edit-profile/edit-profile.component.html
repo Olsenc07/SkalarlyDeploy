@@ -1,7 +1,7 @@
 <!-- <form enctype="multipart/form-data"  > -->
 
   <mat-tab-group  mat-align-tabs="center" >
-     <mat-tab >
+     <mat-tab class="index" id="showEmojisBio">
       <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
           account_circle
@@ -160,7 +160,7 @@
             <i class="fas fa-heart check" *ngIf="bio.value"></i>
 </button>
 
-            <mat-form-field id="showEmojisBio">
+            <mat-form-field >
               <mat-label *ngIf="Bio">{{Bio}}</mat-label>
               <mat-label *ngIf="!Bio">Bio</mat-label>
 
