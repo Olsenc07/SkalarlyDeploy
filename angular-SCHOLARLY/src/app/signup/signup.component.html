@@ -364,10 +364,11 @@
 
             <div class="inputP">
               <div>
+                <i class="material-icons check"  *ngIf="gender.value">transgender</i>
+                <i class="material-icons _icon" *ngIf="!gender.value">transgender</i>
                 <mat-form-field  class="gender" >
                   <mat-label>Gender</mat-label>
-                  <i class="material-icons check"  *ngIf="gender.value">transgender</i>
-                <i class="material-icons _icon" *ngIf="!gender.value">transgender</i>
+
                   <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
                   <mat-autocomplete #auto_="matAutocomplete">
                     <mat-option *ngFor="let gender of genders" [value]="gender">
@@ -378,9 +379,10 @@
               </div>
               <!-- class="center" -->
               <div >
-                <mat-form-field  class="gender">
-                  <i class="material-icons check"  *ngIf="pronouns.value">psychology</i>
+                <i class="material-icons check"  *ngIf="pronouns.value">psychology</i>
                  <i class="material-icons _icon" *ngIf="!pronouns.value">psychology</i>
+                <mat-form-field  class="gender">
+                  
                   <mat-label>Prefered Pronouns</mat-label>
                   <input matInput type='text' [formControl]="pronouns" [matAutocomplete]="auto"/>
                   <mat-autocomplete #auto="matAutocomplete">
@@ -566,8 +568,7 @@
             <mat-form-field id="showEmojisSport">
               <input matInput class="selection-emoji" maxlength="50" placeholder="Do you play a sport?" [formControl]="sport" />
             <button mat-icon-button matSuffix id="triggerEmoSport" (click)="openEmojiSport()">😃</button>
-              <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearSport()">
-                <mat-icon class="asthetic-adds">close</mat-icon>
+              <button mat-button matSuffix mat-icon-button aria-label="Clear" class="asthetic-adds" type="button" (click)="clearSport()">close
               </button>
 
             </mat-form-field>
@@ -594,7 +595,7 @@
         </div>
         <!-- Completed Courses -->
 
-        <mat-tab-group mat-align-tabs="center" class="columnTab">
+        <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" class="columnTab">
           <!-- column -->
 
   <mat-tab  label="Completed Courses" class="courses">
