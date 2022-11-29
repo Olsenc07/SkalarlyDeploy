@@ -141,7 +141,7 @@ export class EditProfileComponent implements OnInit {
     const triggerEmoji = document.getElementById('triggerEmoBio');
     console.log('star through');
     const picker = createPopup(
-      { className: 'div.my-picker' },
+      { className: 'my-picker' },
       {
         referenceElement: selectionContainer,
         triggerElement: triggerEmoji,
