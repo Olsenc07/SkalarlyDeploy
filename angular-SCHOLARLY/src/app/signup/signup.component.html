@@ -470,13 +470,13 @@
 
               <div class="rowP_">
                 <button mat-fab class="cameraIcon" mat-fab (click)="uploadFile()">
-                  <span class="material-icons icon Photo">
+                  <div class="material-icons icon">
                     photo_library
+                  </div>
                     <form enctype="multipart/form-data">
                     <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
                       (change)="imagePreview($event)" name="showCase" >
                     </form>
-                  </span>
                 </button>
               </div>
                 
