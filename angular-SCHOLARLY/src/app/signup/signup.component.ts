@@ -37,7 +37,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // import {Courses} from 'nikel';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
-import { Picker } from 'emoji-picker-element';
 import { createPopup } from '@picmo/popup-picker';
 
 export const MY_FORMATS = {
@@ -78,8 +77,6 @@ export class SignupComponent implements OnInit {
   visible = true;
   selectable = true;
   removable = true;
-  separatorKeysCodes: number[] = [ENTER, COMMA];
-  picker = new Picker();
 
   // classes: string[] = [];
   // classesP: string[] = [];

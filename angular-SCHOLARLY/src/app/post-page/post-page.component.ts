@@ -35,7 +35,6 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { PostService } from '../services/post.service';
 import { mimeType } from './mime-type.validator';
 import { AuthService } from '../services/auth.service';
-
 import { createPopup } from '@picmo/popup-picker';
 
 export const MY_FORMATS = {

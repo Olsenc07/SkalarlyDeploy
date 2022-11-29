@@ -2,13 +2,9 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 import { MatDialog } from '@angular/material/dialog';
-import {
-  MatAutocompleteSelectedEvent,
-  MatAutocomplete,
-} from '@angular/material/autocomplete';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 import { MatChipInputEvent } from '@angular/material/chips';
-// import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ClassListService } from '../services/class.service';
 import { Post, PostService } from '../services/post.service';
@@ -145,7 +141,7 @@ export class EditProfileComponent implements OnInit {
     const triggerEmoji = document.getElementById('triggerEmoBio');
     console.log('star through');
     const picker = createPopup(
-      {},
+      { className: 'my-picker' },
       {
         referenceElement: selectionContainer,
         triggerElement: triggerEmoji,

@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { io } from 'socket.io-client';
 import { Subscription } from 'rxjs';
-import { Picker } from 'emoji-picker-element';
 import { ActivatedRoute } from '@angular/router';
 import { MessageNotificationService } from '../services/messagesNotifications.service';
 import { AuthService } from '../services/auth.service';

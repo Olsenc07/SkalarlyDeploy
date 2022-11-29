@@ -10,7 +10,6 @@ import { CommentsService } from '../services/comments.service';
 import { ShowCaseService, ShowCase } from '../services/showCase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Picker } from 'emoji-picker-element';
 import { createPopup } from '@picmo/popup-picker';
 
 export interface CommentInterface {
@@ -39,8 +38,6 @@ export enum ActiveCommentTypeEnum {
 export class ReusableCardComponent implements OnInit {
   isLoading = false;
   userId: string;
-  picker = new Picker();
-
   user: string;
   open = true;
 
@@ -201,7 +198,6 @@ export class ReusableCardComponent implements OnInit {
 export class ReusableCardPersonalComponent implements OnInit {
   isLoading = false;
   userId: string;
-  picker = new Picker();
   // Filling with Post info from post.service
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -595,7 +591,6 @@ export class CardFeedComponent implements OnInit {
   isLoading = false;
   open = true;
   closed = true;
-  picker = new Picker();
   userId: string;
   recomCounter = 0;
   countVisibility = 0;
@@ -801,7 +796,6 @@ export class CardInfoFeedComponent implements OnInit {
   isLoading = false;
   open = true;
   closed = true;
-  picker = new Picker();
   userId: string;
   recomCounter = 0;
   countVisibility = 0;
@@ -885,7 +879,7 @@ export class CardInfoFeedComponent implements OnInit {
       this.comment.setValue(msg);
     });
   }
-  
+
   //
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
@@ -970,7 +964,6 @@ export class CardInfoMainPageComponent implements OnInit {
   userId: string;
   isLoading = false;
   recomCounter = 0;
-  picker = new Picker();
   countVisibility = 0;
   posts: Post[] = [];
   private postsSub: Subscription;

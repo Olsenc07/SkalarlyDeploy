@@ -840,3 +840,9 @@ border-top-right-radius: 25px;
     'Apple Color Emoji', 'Twemoji Mozilla', 'Noto Color Emoji', 'EmojiOne Color',
     'Android Emoji';
 }
+.my-picker {
+  opacity: 1;
+  z-index: 7;
+  position: relative;
+  
+}
