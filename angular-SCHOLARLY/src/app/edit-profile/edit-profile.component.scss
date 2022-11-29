@@ -854,3 +854,6 @@ div.my-picker {
   background-color: rgb(12, 11, 11) ;
   color: pink ;
 }
+::ng-deep .popupContainer{
+  z-index: 2;
+}
