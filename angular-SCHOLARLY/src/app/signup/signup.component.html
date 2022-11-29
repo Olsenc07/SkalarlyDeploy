@@ -363,7 +363,7 @@
             </div>
 
             <div class="inputP">
-              <div>
+              <div class="input">
                 <i class="material-icons check"  *ngIf="gender.value">transgender</i>
                 <i class="material-icons _icon" *ngIf="!gender.value">transgender</i>
                 <mat-form-field  class="gender" >
@@ -378,7 +378,7 @@
                 </mat-form-field>
               </div>
               <!-- class="center" -->
-              <div >
+              <div class="input">
                 <i class="material-icons check"  *ngIf="pronouns.value">psychology</i>
                  <i class="material-icons _icon" *ngIf="!pronouns.value">psychology</i>
                 <mat-form-field  class="gender">
@@ -469,7 +469,7 @@
 
 <form enctype="multipart/form-data">
               <div class="rowP_">
-                <button class="cameraIcon" mat-fab (click)="uploadFile()">
+                <button mat-fab class="cameraIcon" mat-fab (click)="uploadFile()">
                   <span class="material-icons icon Photo">
                     photo_library
                     <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
@@ -531,7 +531,7 @@
             <mat-form-field id="showEmojisMajor">
               <input class="major selection-emoji" maxlength="50" matInput placeholder="Major (s)" [formControl]="major"  />
             <button mat-icon-button matSuffix id="triggerEmoMajor" (click)="openEmojiMajor()">😃</button>
-              <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
+              <button  matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button>
               
@@ -568,7 +568,9 @@
             <mat-form-field id="showEmojisSport">
               <input matInput class="selection-emoji" maxlength="50" placeholder="Do you play a sport?" [formControl]="sport" />
             <button mat-icon-button matSuffix id="triggerEmoSport" (click)="openEmojiSport()">😃</button>
-              <button mat-button matSuffix mat-icon-button aria-label="Clear" class="asthetic-adds" type="button" (click)="clearSport()">close
+              <button  matSuffix mat-icon-button aria-label="Clear" class="asthetic-adds" type="button" (click)="clearSport()">
+                <mat-icon class="asthetic-adds">close</mat-icon>
+
               </button>
 
             </mat-form-field>
@@ -586,7 +588,7 @@
             <mat-form-field id="showEmojisClub">
               <input class="major" class="selection-emoji" maxlength="50" matInput placeholder="Are you apart of a club? " [formControl]="club" />
             <button mat-icon-button matSuffix id="triggerEmoClub" (click)="openEmojiClub()">😃</button>
-              <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearClub()">
+              <button  matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearClub()">
                 <mat-icon class="asthetic-adds">close</mat-icon>
               </button>
             </mat-form-field>
