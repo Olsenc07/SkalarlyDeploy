@@ -351,8 +351,8 @@ body {
 
 .pyro > .before, .pyro > .after {
   position: fixed;
-  width: 5px;
-  height: 5px;
+  width: 11px;
+  height: 11px;
   border-radius: 50%;
   box-shadow: $box-shadow2;
   @include animation((1s bang ease-out infinite backwards, 1s gravity ease-in infinite backwards, 5s position linear infinite backwards));
