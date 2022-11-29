@@ -1,7 +1,7 @@
 <!-- <form enctype="multipart/form-data"  > -->
 
   <mat-tab-group  mat-align-tabs="center" >
-     <mat-tab class="index" id="showEmojisBio">
+     <mat-tab class="index" >
       <ng-template mat-tab-label>
         <mat-icon><span class="material-icons-two-tone">
           account_circle
@@ -154,7 +154,7 @@
          
       <!-- Bio -->
   
-          <div class="input">
+          <div class="input" id="showEmojisBio">
             <i class="fas fa-heart  _icon" *ngIf="!bio.value"></i>
   <button mat-icon-button  *ngIf="bio.value" (click)="saveBio()" matTooltip="Save Bio">
             <i class="fas fa-heart check" *ngIf="bio.value"></i>
