@@ -271,7 +271,7 @@
   <span class="fas fa-user-friends check" *ngIf="club.value">
   </span>
   </button>
-  <mat-form-field id="showEmojisClub">
+  <mat-form-field >
 <mat-label *ngIf="Club">{{Club}}</mat-label>
 <mat-label *ngIf="!Club">Are you apart of a club?</mat-label>
     <input class="major selection-emoji"  matInput placeholder="Are you apart of a club?" [formControl]="club" />
@@ -290,7 +290,7 @@
         
 
           <!-- done button -->
-          <div class="done">
+          <div class="done" id="showEmojisClub">
             <button mat-raised-button color="primary"  type="button" routerLink="/profile" class="button">Go To Profile</button>
                     </div>
       </div>

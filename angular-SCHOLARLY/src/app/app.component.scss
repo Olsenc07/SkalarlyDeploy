@@ -4,6 +4,10 @@
   border-top-left-radius: 25px !important;
   border-top-right-radius: 25px !important;
 }
+// emoji popup
+::ng-deep .popupContainer{
+  z-index: 3;
+}
 .allBox {
   display: flex;
   height: 100%;
