@@ -273,7 +273,7 @@
 }
 
 // Birthday
-$particles: 500;
+$particles: 1000;
 $width: 500;
 $height: 500;
 
@@ -349,7 +349,7 @@ body {
 }
 
 .pyro > .before, .pyro > .after {
-  position: relative;
+  position: fixed;
   width: 5px;
   height: 5px;
   border-radius: 50%;
