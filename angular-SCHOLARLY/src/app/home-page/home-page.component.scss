@@ -129,7 +129,8 @@
     text-align: center;
     margin-bottom: 1.3%;
     color: #3a3232;
-   font-family:  'Poppins', sans-serif;
+  //  font-family:  'Poppins', sans-serif;
+  font-family: 'Cinzel';
     
   }
 }
@@ -143,6 +144,8 @@
     margin: 1%;
     color: #3a3232;
     font-family:  'Poppins', sans-serif;
+  font-family: 'Cinzel';
+
   }
 }
 .pic {
@@ -346,7 +349,7 @@ body {
 }
 
 .pyro > .before, .pyro > .after {
-  position: absolute;
+  position: relative;
   width: 5px;
   height: 5px;
   border-radius: 50%;
