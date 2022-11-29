@@ -841,9 +841,10 @@ border-top-right-radius: 25px;
     'Android Emoji';
 }
 .my-picker {
-  opacity: 1;
-  z-index: 7;
-  position: fixed;
-  display: flex;
-  background-color: rgb(12, 11, 11);
+  opacity: 1 !important;
+  z-index: 7 !important;
+  position: fixed !important;
+  display: flex !important;
+  background-color: rgb(12, 11, 11) !important;
+  color: pink !important;
 }
