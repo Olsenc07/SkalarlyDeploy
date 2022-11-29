@@ -842,6 +842,9 @@ border-top-right-radius: 25px;
   font-family: 'Segoe UI Emoji', 'Segoe UI Symbol', 'Segoe UI',
     'Apple Color Emoji', 'Twemoji Mozilla', 'Noto Color Emoji', 'EmojiOne Color',
     'Android Emoji';
+  z-index: 7 ;
+  color: pink ;
+  background-color: rgb(12, 11, 11) ;
 }
 div.my-picker {
   opacity: 1 ;
