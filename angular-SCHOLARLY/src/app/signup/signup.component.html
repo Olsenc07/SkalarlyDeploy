@@ -599,10 +599,10 @@
         </div>
         <!-- Completed Courses -->
 
-        <mat-tab-group mat-align-tabs="center" mat-stretch-tabs="false" #whiteChazBackground id="whiteChazBackground"  class="columnTab whiteChazBackground">
+        <mat-stepper linear mat-align-tabs="center" mat-stretch-tabs="false" #whiteChazBackground id="whiteChazBackground"  class="columnTab whiteChazBackground">
           <!-- column -->
 
-  <mat-tab  label="Completed Courses" class="courses">
+  <mat-step  label="Completed Courses" class="courses">
             <div class="input">
               <i class="material-icons _icon" *ngIf="!CodeCompleted.value">check</i>
               <i class="material-icons check" *ngIf="CodeCompleted.value">check</i>
@@ -1626,12 +1626,12 @@
   <input matInput placeholder="Extras or Transfer Equivalents"  [formControl]="CodeCompletedX" >
   </mat-form-field>
   </div>
-</mat-tab>
+</mat-step>
 
 
           <!-- Pursuing Courses -->
   <i class="material-icons _icon">checklist</i>
-          <mat-tab  label="Next Courses" class="courses">
+          <mat-step  label="Next Courses" class="courses">
             <!-- 1 -->
             <div class="input">
               <i class="material-icons _icon" *ngIf="!CodePursuing.value">checklist</i>
@@ -1958,9 +1958,9 @@
 
   </mat-form-field>
 </div>
-</mat-tab>
+</mat-step>
 
-        </mat-tab-group>
+        </mat-stepper>
         <mat-divider></mat-divider>
 
 
