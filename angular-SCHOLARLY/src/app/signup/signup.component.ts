@@ -104,7 +104,7 @@ export class SignupComponent implements OnInit {
     'Two Spirit',
   ];
 
-  pronouns_: string[] = [
+  pronounS: string[] = [
     '',
     'She/Her',
     'He/His',
@@ -538,13 +538,6 @@ export class SignupComponent implements OnInit {
   //   this.codeInput.nativeElement.value = '';
   //   this.CodeCompleted.setValue('');
   // }
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.classListService
-      .allClasses()
-      .filter((code) => code.toLowerCase().indexOf(filterValue) === 0);
-  }
 
   clearUsername(): void {
     this.username.setValue('');

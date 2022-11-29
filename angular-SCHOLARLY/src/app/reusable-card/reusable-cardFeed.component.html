@@ -183,7 +183,7 @@
             <!-- <button mat-icon-button type="button"  *ngIf="closed"
              class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button> -->
              <mat-form-field id="showEmojis">
-            <input matInput placeholder="Add to the discussion..." class="comment-form-textarea" id="selection-emoji"
+            <input matInput placeholder="Comment..." class="comment-form-textarea" id="selection-emoji"
             maxlength="140" [formControl]="comment" >
             <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
         </mat-form-field>
@@ -211,7 +211,7 @@
           matTooltip="Add your comment"  class="comment-form-buttton" (click)="CommentTrigger(post.id)"
         type="submit"  [disabled]="comment.value === '' " >
         <!-- [disabled]="comment.value === '' " -->
-            Comment
+            Add Comment
             <i class="far fa-comment-dots"></i>
         </mat-chip>
 
