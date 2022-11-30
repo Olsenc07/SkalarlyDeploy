@@ -110,26 +110,26 @@
                   <!-- <i class="fas fa-user-secret"></i> -->
                 </div>
                 <!-- Hide -->
-                <div class="showOptions" [ngClass]="
+                <div class="showOptions showSpace" [ngClass]="
                 (users.length >= 1 && search.value)
-                  ? 'showSpace'
+                  ? ''
                   : 'hideSpace'
               " >
 <!--  *ngIf="(users.length >= 1 && search.value)" -->
                   <!-- But select works -->
                   <!-- Wrap a button around this and add "click to view" -->
                   <!-- <mat-form-field appearance="fill"> -->
-                  <mat-label class="place_holder" >Skalar(s)</mat-label>
+                  <mat-label class="place_holder">Skalar (s)</mat-label>
                   <mat-select  id="trigger" disabled class="triggerContainer">
                   </mat-select>
                <!-- </mat-form-field> -->
                   </div>
                 <!-- Show -->
-                <div class="below_search showOptions"  [ngClass]="
+                <div [ngClass]="
                 (users.length >= 1 && search.value)
                   ? 'hideSpace'
                   : ''
-              " >
+              " >below_search showOptions
                   <!--  *ngIf="(users.length >= 1 && search.value)" -->
                                     <!-- But select works -->
                                     <!-- Wrap a button around this and add "click to view" -->
