@@ -3,6 +3,7 @@
 }
 .addPost{
   color: white !important;
+
 }
 .b {
   padding: 1%;
@@ -152,6 +153,14 @@ margin-top: 2%;
     width: 40px;
     height: 40px;
   }
+}
+.middle{
+  display: flex;
+  justify-content: center;
+}
+.needPost{
+  font-family: 'Cinzel',serif;
+    background-color: #212121;
 }
 .noPosts{
   display: flex;

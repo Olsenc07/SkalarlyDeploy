@@ -82,7 +82,7 @@
                 <mat-error *ngIf="password.errors?.noWhiteSpace">White spaces aren't allowed in password</mat-error>
                 <mat-error *ngIf="password.invalid && !password.errors?.noWhiteSpace">Please enter a valid password
                 </mat-error>
-                <button matSuffix mat-icon-button disabled type="button" *ngIf="visible" (click)="toggleVisibilty()" matTooltip="Show Password" >
+                <button matSuffix mat-icon-button  type="button" *ngIf="visible" (click)="toggleVisibilty()" matTooltip="Show Password" >
                   <mat-icon class="material-symbols-sharp" >visibility</mat-icon>
                 </button>
                 <button matSuffix mat-icon-button type="button" *ngIf="!visible" (click)="toggleVisibilty_()" matTooltip="Hide Password" >

@@ -71,6 +71,11 @@
   font-family: 'Cinzel';
   color: whitesmoke !important;
 }
+.msgContainer{
+  display: flex;
+  align-items: center;
+  margin-right: 2%;
+}
 .fit {
   width: 100%;
   height: auto;
@@ -94,6 +99,7 @@
   flex-direction: row;
   width: 100%;
   margin-left: 2%;
+  margin-top: 1%;
   // justify-content: center;
 }
 .row1 {
@@ -132,7 +138,8 @@ font-family: 'Cinzel', serif;
 }
 .profilePic {
   box-shadow: 0 2px 3px;
-  margin-left: 5%;
+  margin-left: 2%;
+  margin-top: 1%;
   display: flex;
   justify-content: center;
   align-items: center;
