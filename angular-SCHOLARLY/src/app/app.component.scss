@@ -250,7 +250,7 @@ h4:focus {
     // cursor: pointer;
     outline: none;
     border: none;
-    width: 100%;
+    width: 70%;
     font-weight: initial;
     background-color: white;
     // border: ridge;
@@ -952,6 +952,8 @@ animation: animate 8s linear infinite;
 .showOptions{
   display: flex;
   color: #48e898;
+  opacity: 1;
+  width: 500px;
 }
 ::ng-deep .mat-toolbar-single-row {
   padding: 0px !important;
