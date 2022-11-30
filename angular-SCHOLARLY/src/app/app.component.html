@@ -113,35 +113,18 @@
                 <div class="showOptions showSpace" [ngClass]="
                 (users.length >= 1 && search.value)
                   ? 'hideSpace'
-                  : ''
-              " >
-<!--  *ngIf="(users.length >= 1 && search.value)" -->
-                  <!-- But select works -->
-                  <!-- Wrap a button around this and add "click to view" -->
-                  <!-- <mat-form-field appearance="fill"> -->
-                  <!-- <mat-label class="place_holder">Skalar (s)</mat-label> -->
-                  <mat-select  id="trigger" placeholder="Skalar (s)" class="triggerContainer">
-                  </mat-select>
-               <!-- </mat-form-field> -->
+                  : '' " >
                   </div>
                 <!-- Show -->
                 <div [ngClass]="
                 (users.length >= 1 && search.value)
                   ? 'below_search showOptions'
-                  : 'hideSpace'
-              " >
-                  <!--  *ngIf="(users.length >= 1 && search.value)" -->
-                                    <!-- But select works -->
-                                    <!-- Wrap a button around this and add "click to view" -->
-                                    <!-- <mat-form-field appearance="fill"> -->
-                                    <mat-label class="place_holder" matTooltip="Click arrow to see Skalars" >Skalar(s)</mat-label>
-                                    <mat-select  id="trigger" matTooltip="Click to see Skalars" class="triggerContainer">
-                                      <!-- <div class="fas fa-user-graduate space_"></div> -->
+                  : 'hideSpace'" >
+                                    <mat-label class="place_holder" matTooltip="Click arrow to see Skalars" ></mat-label>
+                                    <mat-select  id="trigger" matTooltip="Click to see Skalars" class="triggerContainer" placeholder="Skalar (s)">
                                       <div class="title">Fellow Skalars</div>
-                                        <!-- <div class="fas fa-user-graduate space"></div> -->
                                       <mat-divider></mat-divider>
                                       <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
-                                        <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"> -->
                                       <mat-option *ngIf="user.Creator !== userId" 
                                        [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
                                           <!-- <div class="row"> -->
