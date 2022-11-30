@@ -109,7 +109,8 @@
                 <div class="text" *ngIf="users.length < 1 && hasQuery && search.value">Sorry no skalar found 
                   <!-- <i class="fas fa-user-secret"></i> -->
                 </div>
-                <div class="below_search" [ngClass]="(users.length > 1  && search.value) ? 'showOptions' : 'hide'">
+                <div class="below_search showOptions" 
+                  *ngIf="(users.length > 1  && search.value)">
 
                   <!-- But select works -->
                   <!-- Wrap a button around this and add "click to view" -->
@@ -125,12 +126,12 @@
                     <mat-option *ngIf="user.Creator !== userId" 
                      [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
                         <!-- <div class="row"> -->
-                      <div  class="row" >
+                      <div  class="rowInfo" >
                         <div class="profilePic">
                        <img class="profilePic_" src="{{user.ProfilePicPath}}"> 
                       </div> 
                       <div class="displayContents">
-                      <div>{{user.name}}</div>
+                      <div class="name">{{user.name}}</div>
                         <div>@{{user.username}}</div>
                       </div>
                       </div>

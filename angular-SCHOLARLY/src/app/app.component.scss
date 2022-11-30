@@ -47,7 +47,10 @@
     justify-content: center;
 }
 .displayContents{
-  display: contents;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
 }
 .pic {
   // border-radius: 25px;
@@ -62,12 +65,12 @@
 .profilePic{
   margin-top: 1%;
   box-shadow: 0 2px 3px;
-  margin-left: 5%;
+  // margin-left: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -93,7 +96,13 @@
   color: black;
   justify-content: space-around;
 }
-
+.rowInfo{
+  flex-direction: column;
+  display: flex;
+  font-family: 'Poppins',sans-serif;
+  color: black;
+align-items: center;
+}
 $box-shadow-color: rgba(0, 0, 0, 0.25);
 .sub_title{
   display: flex;
@@ -109,9 +118,7 @@ $box-shadow-color: rgba(0, 0, 0, 0.25);
   padding-left: 0;
   display: flex;
 }
-.hide{
-opacity: 0;
-}
+
 .toolbar-logo {
   height: inherit;
 }
@@ -202,6 +209,11 @@ h4:focus {
 }
 .nav-bar {
   display: hide;
+}
+.name{
+  font-size: medium;
+  font-family: 'Poppins',sans-serif;
+  color: #7e7171;
 }
 // New Add focus!!! hide input box until icon is focused and then is visbile and expands
 @media (min-width: 1025px) {
