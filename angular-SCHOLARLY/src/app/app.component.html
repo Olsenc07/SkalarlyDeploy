@@ -109,7 +109,7 @@
                 <div class="text" *ngIf="users.length < 1 && hasQuery && search.value">Sorry no skalar found 
                   <!-- <i class="fas fa-user-secret"></i> -->
                 </div>
-                <div class="below_search" *ngIf="users.length >= 1 && search.value">
+                <div class="below_search" [ngClass]="(users.length > 1  && search.value) ? 'showOptions' : 'hide'">
 
                   <!-- But select works -->
                   <!-- Wrap a button around this and add "click to view" -->

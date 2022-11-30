@@ -39,7 +39,6 @@
   justify-content: center;
   font-family:  'Poppins', sans-serif;
   margin-right: 5% ;
-  width: 700px;
   color: #928787;
 }
 .centerIcon{
@@ -110,7 +109,9 @@ $box-shadow-color: rgba(0, 0, 0, 0.25);
   padding-left: 0;
   display: flex;
 }
-
+.hide{
+opacity: 0;
+}
 .toolbar-logo {
   height: inherit;
 }
@@ -217,7 +218,8 @@ h4:focus {
     // border: ridge;
     // border-color: azure;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 20px;
+    padding-right: 2%;
     // box-shadow: 0px 0px 7px 3px;
   }
   .search-box__icon {
@@ -921,6 +923,8 @@ animation: animate 8s linear infinite;
     display: flex;
     margin-right: 16%;
     position: absolute;
+    border-radius: 20px;
+    padding-right: 2%;
   }
   @media (min-width: 400px) {
     .search-box_ {
@@ -945,7 +949,10 @@ animation: animate 8s linear infinite;
     }
   }
 }
-
+.showOptions{
+  display: flex;
+  color: #48e898;
+}
 ::ng-deep .mat-toolbar-single-row {
   padding: 0px !important;
 }
