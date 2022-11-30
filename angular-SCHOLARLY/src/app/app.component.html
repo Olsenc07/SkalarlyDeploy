@@ -120,14 +120,14 @@
                   <!-- Wrap a button around this and add "click to view" -->
                   <!-- <mat-form-field appearance="fill"> -->
                   <mat-label class="place_holder" >Skalar(s)</mat-label>
-                  <mat-select  id="trigger" disabled class="triggerContainer">
+                  <mat-select  id="trigger"  class="triggerContainer">
                     <!-- <div class="fas fa-user-graduate space_"></div> -->
                     <div class="title">Fellow Skalars</div>
                       <!-- <div class="fas fa-user-graduate space"></div> -->
                     <mat-divider></mat-divider>
                     <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
                       <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"> -->
-                    <mat-option *ngIf="user.Creator !== userId" disabled
+                    <mat-option *ngIf="user.Creator !== userId" 
                      [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
                         <!-- <div class="row"> -->
                       <div  class="rowInfo" >
@@ -156,31 +156,8 @@
                                     <!-- But select works -->
                                     <!-- Wrap a button around this and add "click to view" -->
                                     <!-- <mat-form-field appearance="fill"> -->
-                                    <mat-label class="place_holder" matTooltip="Click arrow to see Skalars" >Skalar(s)</mat-label>
-                                    <mat-select  id="trigger" matTooltip="Click to see Skalars" class="triggerContainer">
-                                      <!-- <div class="fas fa-user-graduate space_"></div> -->
-                                      <div class="title">Fellow Skalars</div>
-                                        <!-- <div class="fas fa-user-graduate space"></div> -->
-                                      <mat-divider></mat-divider>
-                                      <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
-                                        <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"> -->
-                                      <mat-option *ngIf="user.Creator !== userId" 
-                                       [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
-                                          <!-- <div class="row"> -->
-                                        <div  class="rowInfo" >
-                                          <div class="profilePic">
-                                         <img class="profilePic_" src="{{user.ProfilePicPath}}"> 
-                                        </div> 
-                                        <div class="displayContents">
-                                        <div class="name">{{user.name}}</div>
-                                          <div>@{{user.username}}</div>
-                                        </div>
-                                        </div>
-                                        <mat-divider *ngIf="user"></mat-divider>
-                                      </mat-option>
-                                    <!-- </mat-autocomplete> -->
-                                    </div>
-                                    </mat-select>
+                                    <mat-label class="place_holder"  >Skalar(s)</mat-label>
+                                
                                  <!-- </mat-form-field> -->
                                     </div>
             </div>
