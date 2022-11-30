@@ -39,6 +39,7 @@
   justify-content: center;
   font-family:  'Poppins', sans-serif;
   margin-right: 5% ;
+  width: 700px;
   color: #928787;
 }
 .centerIcon{
@@ -948,14 +949,14 @@ animation: animate 8s linear infinite;
 ::ng-deep .mat-toolbar-single-row {
   padding: 0px !important;
 }
-// .triggerContainer{
-//   display: flex;
-//   width: 500px;
-// }
-// .triggerContainer_{
-//   display: flex;
-//   width: 700px;
-// }
+.triggerContainer{
+  display: flex;
+  // width: 500px;
+}
+.triggerContainer_{
+  display: flex;
+  // width: 700px;
+}
 .trash {
   display: flex;
   justify-content: center;
