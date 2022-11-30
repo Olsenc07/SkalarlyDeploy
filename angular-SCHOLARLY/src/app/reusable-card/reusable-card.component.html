@@ -180,7 +180,7 @@
 
           <mat-divider></mat-divider>
 <mat-form-field id="showEmojis">
-          <input matInput placeholder="Add to the discussion..." class="comment-form-textarea" 
+          <input matInput placeholder="Comment..." class="comment-form-textarea" 
           maxlength="140" [formControl]="comment" >
           <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
         </mat-form-field>
@@ -197,7 +197,7 @@
                           <mat-chip color="primary" selected matTooltip="Add your comment" class="comment-form-buttton" (click)="CommentTrigger(post.id)"
                           type="button"   >
                <!-- [disabled]="comment.value === '' " -->
-                              Comment
+                             Add Comment
                               <i class="far fa-comment-dots"></i>
                           </mat-chip>
                   </mat-chip-list>
