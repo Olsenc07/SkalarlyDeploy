@@ -38,7 +38,7 @@
   display: flex;
   justify-content: center;
   font-family:  'Poppins', sans-serif;
-  margin-right: 5% ;
+  // margin-right: 5% ;
   color: #928787;
 }
 .centerIcon{
@@ -968,6 +968,9 @@ animation: animate 8s linear infinite;
   display: flex;
   opacity: 1;
   width: 500px;
+  background-color: #dedddd;
+  padding-right: 1%;
+  border-radius: 20px;
 }
 ::ng-deep .mat-toolbar-single-row {
   padding: 0px !important;
