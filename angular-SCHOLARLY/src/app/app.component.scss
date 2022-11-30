@@ -211,6 +211,8 @@ h4:focus {
   display: hide;
 }
 .name{
+  display: flex;
+  justify-content: center;
   font-size: medium;
   font-family: 'Poppins',sans-serif;
   color: #7e7171;
@@ -880,7 +882,8 @@ animation: animate 8s linear infinite;
       }
 .options{
   display: flex;
-  overflow-y: scroll visible;
+    justify-content: center;
+    width: 100%;
 }
 @media (max-width: 1025px) {
   .search-box__input {
@@ -963,7 +966,6 @@ animation: animate 8s linear infinite;
 }
 .showOptions{
   display: flex;
-  color: #48e898;
   opacity: 1;
   width: 500px;
 }
