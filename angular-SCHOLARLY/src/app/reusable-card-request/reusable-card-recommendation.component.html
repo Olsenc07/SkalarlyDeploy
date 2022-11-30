@@ -109,7 +109,7 @@
 </mat-card>
 </div>
 
-<div class="showMore">
+<div class="showMore" *ngIf="infos.length == 6">
     <mat-chip-list >
 <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" 
 *ngIf="infos.length > 1" (click)="onClickRecom()">Show More
