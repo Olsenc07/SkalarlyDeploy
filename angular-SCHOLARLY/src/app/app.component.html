@@ -115,12 +115,12 @@
                   <!-- Wrap a button around this and add "click to view" -->
                  
                   <mat-label class="place_holder" matTooltip="Click arrow to see Skalars" >Skalar (s)</mat-label>
-                  <mat-select  id="trigger" matTooltip="Click to see Skalars" >
+                  <mat-select  id="trigger" matTooltip="Click to see Skalars" class="triggerContainer">
                     <!-- <div class="fas fa-user-graduate space_"></div> -->
                     <div class="title">Fellow Skalars</div>
                       <!-- <div class="fas fa-user-graduate space"></div> -->
                     <mat-divider></mat-divider>
-                    <div *ngFor="let user of users;let even = even; let odd = odd">
+                    <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
                       <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"> -->
                     <mat-option *ngIf="user.Creator !== userId" 
                      [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
