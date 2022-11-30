@@ -844,7 +844,7 @@ margin: 0 40px;
     }
     @media (min-width: 1700px) {
       .message {
-        color: #cd13cd;
+        color: #C0C0C0;
         font-size: 2vw;
         display: flex;
         justify-content: center;
@@ -974,6 +974,8 @@ animation: animate 8s linear infinite;
   justify-content: center;
   height: 108vh;
   text-align: center;
+  font-family:  'Cinzel', sans-serif;
+  
 }
 .Text1 {
   display: flex;
@@ -983,6 +985,7 @@ animation: animate 8s linear infinite;
   margin-top: 2%;
   font-size: initial;
 }
+
 
 // Search box style
 ::ng-deep .mat-select-panel-wrap {
