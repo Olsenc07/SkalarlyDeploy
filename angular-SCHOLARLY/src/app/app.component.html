@@ -109,21 +109,25 @@
                 <div class="text" *ngIf="users.length < 1 && hasQuery && search.value">Sorry no skalar found 
                   <!-- <i class="fas fa-user-secret"></i> -->
                 </div>
-                <div class="below_search showOptions" 
-                  *ngIf="(users.length >= 1 && search.value)">
-
+                <!-- Hide -->
+                <div class="below_search showOptions" [ngClass]="
+                (users.length >= 1 && search.value)
+                  ? 'showSpace'
+                  : 'hideSpace'
+              " >
+<!--  *ngIf="(users.length >= 1 && search.value)" -->
                   <!-- But select works -->
                   <!-- Wrap a button around this and add "click to view" -->
                   <!-- <mat-form-field appearance="fill"> -->
-                  <mat-label class="place_holder" matTooltip="Click arrow to see Skalars" >Skalar(s)</mat-label>
-                  <mat-select  id="trigger" matTooltip="Click to see Skalars" class="triggerContainer">
+                  <mat-label class="place_holder" >Skalar(s)</mat-label>
+                  <mat-select  id="trigger" disabled class="triggerContainer">
                     <!-- <div class="fas fa-user-graduate space_"></div> -->
                     <div class="title">Fellow Skalars</div>
                       <!-- <div class="fas fa-user-graduate space"></div> -->
                     <mat-divider></mat-divider>
                     <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
                       <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"> -->
-                    <mat-option *ngIf="user.Creator !== userId" 
+                    <mat-option *ngIf="user.Creator !== userId" disabled
                      [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
                         <!-- <div class="row"> -->
                       <div  class="rowInfo" >
@@ -142,7 +146,43 @@
                   </mat-select>
                <!-- </mat-form-field> -->
                   </div>
-                
+                <!-- Show -->
+                <div class="below_search showOptions"  [ngClass]="
+                (users.length >= 1 && search.value)
+                  ? 'hideSpace'
+                  : 'showSpace'
+              " >
+                  <!--  *ngIf="(users.length >= 1 && search.value)" -->
+                                    <!-- But select works -->
+                                    <!-- Wrap a button around this and add "click to view" -->
+                                    <!-- <mat-form-field appearance="fill"> -->
+                                    <mat-label class="place_holder" matTooltip="Click arrow to see Skalars" >Skalar(s)</mat-label>
+                                    <mat-select  id="trigger" matTooltip="Click to see Skalars" class="triggerContainer">
+                                      <!-- <div class="fas fa-user-graduate space_"></div> -->
+                                      <div class="title">Fellow Skalars</div>
+                                        <!-- <div class="fas fa-user-graduate space"></div> -->
+                                      <mat-divider></mat-divider>
+                                      <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
+                                        <!-- <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete"> -->
+                                      <mat-option *ngIf="user.Creator !== userId" 
+                                       [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
+                                          <!-- <div class="row"> -->
+                                        <div  class="rowInfo" >
+                                          <div class="profilePic">
+                                         <img class="profilePic_" src="{{user.ProfilePicPath}}"> 
+                                        </div> 
+                                        <div class="displayContents">
+                                        <div class="name">{{user.name}}</div>
+                                          <div>@{{user.username}}</div>
+                                        </div>
+                                        </div>
+                                        <mat-divider *ngIf="user"></mat-divider>
+                                      </mat-option>
+                                    <!-- </mat-autocomplete> -->
+                                    </div>
+                                    </mat-select>
+                                 <!-- </mat-form-field> -->
+                                    </div>
             </div>
             <!-- End -->
             <div class="icon-top">

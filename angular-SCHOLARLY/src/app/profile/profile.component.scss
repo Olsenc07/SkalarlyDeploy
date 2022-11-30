@@ -628,7 +628,7 @@ mat-tab-group {
 .messageM {
   display: flex;
   font-family:  'Cinzel', sans-serif;
-  background-color: rgb(173, 211, 236);
+  background-color: rgb(173, 211, 236) !important;
   color: white;
 }
 @media (min-width: 1025px) {

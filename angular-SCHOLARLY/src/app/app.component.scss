@@ -288,6 +288,7 @@ h4:focus {
   justify-content: center;
   margin: 4%;
   font-size: larger;
+  text-align: center;
   // color: #668ad2;
 }
 // transition to the left and have box initially invisible
@@ -464,7 +465,7 @@ h4:focus {
   .public:hover{
     font-size: 3vmax;
     display: flex;
-    color: lightblue;
+    // color: lightblue;
     justify-content: center;
   }
   }
@@ -481,7 +482,7 @@ h4:focus {
   .public:hover{
     font-size: 2vmax;
     display: flex;
-    color: lightblue;
+    // color: lightblue;
     justify-content: center;
   }
   }
@@ -582,7 +583,7 @@ h4:focus {
   }
   @media (max-width: 1700px) {
     .groups:hover{
-      color: #48e898;
+      // color: #48e898;
       font-size: 3vmax;
       display: flex;
       justify-content: center;
@@ -591,7 +592,7 @@ h4:focus {
     }
     @media (min-width: 1700px) {
       .groups:hover {
-        color: #48e898;
+        // color: #48e898;
         font-size: 2vmax;
         display: flex;
         justify-content: center;
@@ -686,7 +687,7 @@ animation: animate 8s linear infinite;
   }
   @media (max-width: 1700px) {
     .profile:hover{
-      color: #f0f049;
+      // color: #f0f049;
       font-size: 3vmax;
       display: flex;
       justify-content: center;
@@ -694,7 +695,7 @@ animation: animate 8s linear infinite;
     }
     @media (min-width: 1700px) {
       .profile:hover{
-        color: #f0f049;
+        // color: #f0f049;
         font-size: 2vmax;
         display: flex;
         justify-content: center;
@@ -765,8 +766,8 @@ transition: 0.1s;
   }
   }
   @media (min-width: 1700px) {
-    .post :hover {
-      color: #f44336;
+    .post:hover {
+      // color: #f44336;
       font-size: 2vw;
       display: flex;
       justify-content: center;
@@ -775,8 +776,8 @@ transition: 0.1s;
     }
     }
 @media (max-width: 1700px) {
-.post :hover{
-  color: #f44336;
+.post:hover{
+  // color: #f44336;
   font-size: 3vw;
   display: flex;
   justify-content: center;
@@ -847,7 +848,7 @@ margin: 0 40px;
   }
   @media (max-width: 1700px) {
     .message:hover{
-      color: #cd13cd;
+      // color: #cd13cd;
       font-size: 3vw;
       display: flex;
       justify-content: center;
@@ -1011,4 +1012,11 @@ animation: animate 8s linear infinite;
 // Search box style
 ::ng-deep .mat-select-panel-wrap {
   width: 500px;
+}
+// Hiding and showing for search bar
+.showSpace{
+  opacity: 1;
+}
+.hideSpace{
+  opacity: 0;
 }
