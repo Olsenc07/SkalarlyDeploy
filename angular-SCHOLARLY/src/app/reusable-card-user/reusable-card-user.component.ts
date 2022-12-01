@@ -148,7 +148,7 @@ export class ReusableCardUserFollowerComponent implements OnInit {
 
   onDelete(followId: string): any {
     this.followService.deleteFollowers(followId);
-    console.log('chaz whats up homie g', followId);
+    console.log('chaz whats up homie gunit', followId);
   }
   onMututal(username: string): any {
     console.log('chaz whats up homie n', username);

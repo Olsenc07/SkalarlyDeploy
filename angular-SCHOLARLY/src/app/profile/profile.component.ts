@@ -283,7 +283,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
   onUnfololow(followId: string): any {
     this.Following = false;
-    this.followService.deleteFollowers(followId);
+    this.followService.deleteFollow(followId);
+    console.log('chaz whats up homie gg', followId);
   }
   skalarMsg(username: string): void {
     console.log('username', username);
