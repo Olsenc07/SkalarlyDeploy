@@ -71,19 +71,7 @@ export class FollowService {
       )
       .pipe(
         map((infosData) => {
-          return infosData.messages.map((info) => {
-            return {
-              id: info._id,
-              Follower: info.Follower,
-              nameFollower: info.nameFollower,
-              usernameFollower: info.usernameFollower,
-              ProfilePicPathFollower: info.ProfilePicPathFollower,
-              FollowingId: info.FollowingId,
-              Following: info.Following,
-              nameFollowing: info.nameFollowing,
-              ProfilePicPathFollowing: info.ProfilePicPathFollowing,
-            };
-          });
+          return infosData.messages;
         })
       )
       .subscribe((transformedInfos) => {

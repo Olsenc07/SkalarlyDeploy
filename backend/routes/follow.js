@@ -43,7 +43,10 @@ await userInfo.findOne({Creator: req.query.userId})
                 });
 // If user is subscribed then send notififaction S.W
 try{
-    if (Subscription.findOne({Creator: req.query.userId}) !== null){
+    let check
+    check = Subscription.findOne({Creator: req.query.userId})
+    console.log('check', check)
+    if (check !== null){
     Subscription.findOne({Creator: req.query.userId})
     .then(subscriber =>{
 console.log('road is full',subscriber);
