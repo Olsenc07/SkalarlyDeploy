@@ -50,13 +50,15 @@ if(checking !== null){
         Subscription.findOne({Creator: otherUserId.id})
         .then(subscriber => {
     console.log('road is full', subscriber);
+    console.log('road is full JSONS', JSON.parse(subscriber).keys);
+
     console.log('road is full JSON', JSON.parse(subscriber.keys));
 
 //   subscriber.data.keys.p256dh
     const pushSubscription = {
         keys: {
-          auth: JSON.parse(subscriber.keys).auth,
-          p256dh: JSON.parse(subscriber.keys).p256dh
+          p256dh: JSON.parse(subscriber).keys.p256dh,
+          auth: JSON.parse(subscriber).keys.auth
         },
         endpoint: JSON.parse(subscriber).endpoint,
       };
