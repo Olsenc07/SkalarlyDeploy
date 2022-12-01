@@ -178,21 +178,6 @@ router.get("/mutualsFollow", async(req, res, next) => {
        })
    })
    })
-// following deleting
-router.delete("/unFollow/:id", (req, res, next ) => {
-    Follow.deleteOne({_id: req.params.id}).then(result => {
-        if (result){
-        res.status(200).json({message: 'unfollowed!'});
-        } else {
-            res.status(401).json({message: 'Not unfollowed'});
-        }
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Fetching showCases failed!'
-        });
-    });
-});
 
 // Get follower
 router.get("/followerInfo", async(req, res, next) => {
@@ -269,5 +254,19 @@ router.delete("/unFollower/:id", (req, res, next ) => {
         });
     });
 });
-
+// following deleting
+router.delete("/unFollow/:id", (req, res, next ) => {
+    Follow.deleteOne({_id: req.params.id}).then(result => {
+        if (result){
+        res.status(200).json({message: 'unfollowed!'});
+        } else {
+            res.status(401).json({message: 'Not unfollowed'});
+        }
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching showCases failed!'
+        });
+    });
+});
 module.exports = router;
