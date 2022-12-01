@@ -59,7 +59,7 @@ export class RetrievePasswordComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  backButton() {
+  backButton(): void {
     this.location.back();
   }
 
@@ -113,7 +113,7 @@ export class ResetPasswordComponent implements OnInit {
   }
   constructor(public authService: AuthService, private snackBar: MatSnackBar) {}
 
-  onResetPassword() {
+  onResetPassword(): void {
     this.authService.updatePassword(this.password.value, this.secretCode.value);
   }
   ngOnInit(): void {}

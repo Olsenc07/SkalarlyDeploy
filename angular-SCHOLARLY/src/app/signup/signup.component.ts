@@ -502,17 +502,6 @@ export class SignupComponent implements OnInit {
 
   //   this.CodeCompleted.setValue(null);
   // }
-  onRemoved(code: string) {
-    const codes = this.CodeCompleted.value as string[];
-    this.removeFirst(codes, code);
-    this.CodeCompleted.setValue(codes);
-  }
-  private removeFirst<T>(array: T[], toRemove: T): void {
-    const index = array.indexOf(toRemove);
-    if (index !== -1) {
-      array.splice(index, 1);
-    }
-  }
 
   // remove(code: string): void {
   //   const index = this.classes.indexOf(code);
