@@ -67,6 +67,8 @@ if(checking !== null){
         },
         endpoint: endpoint,
       };
+      publicVapidKey = process.env.vapidPublic;
+      privateVapidKey = process.env.vapidPrivate
       webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
     webpush.sendNotification(pushSubscription, JSON.stringify({
         title: 'New Follower!',
