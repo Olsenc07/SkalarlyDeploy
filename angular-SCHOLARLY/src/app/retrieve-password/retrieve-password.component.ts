@@ -20,7 +20,7 @@ export class RetrievePasswordComponent implements OnInit {
   visible = true;
   passwordDel: FormControl = new FormControl('', Validators.minLength(8));
   emailDel: FormControl = new FormControl('');
-
+  DelVerify: FormControl = new FormControl('', [Validators.pattern('Delete')]);
   deleteForm = new FormGroup({
     emailDel: this.emailDel,
     passwordDel: this.passwordDel,

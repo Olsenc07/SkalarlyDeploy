@@ -8,6 +8,13 @@ const nodemailer = require('nodemailer');
 const checkAuth = require('/app/backend/middleware/check-auth');
 const User = require('/app/backend/models/user');
 const UserInfo = require('/app/backend/models/userInfo');
+const showCase = require('/app/backend/models/showCases');
+const Post = require('/app/backend/models/post');
+const Comment = require('/app/backend/models/comment');
+const Msg = require('/app/backend/models/messages')
+const Follow = require('/app/backend/models/follow')
+
+
 const cloudinary = require('cloudinary').v2
 // cloudinary
 cloudinary.config({ 
@@ -2309,10 +2316,13 @@ router.post('/getusers', async (req, res) => {
 // Deleting account
 router.post('/delete', async(req, res) => {
       let username
+      let id
         let fetchedUser;
         await User.findOne({ email: req.body.emailDel })
         .then(user => {
             username = user.username;
+            id = username._id
+            console.log('id',id)
             if (!user) {
                 return res.status(401).json({
                     message: "Authentication failed "
@@ -2336,8 +2346,57 @@ router.post('/delete', async(req, res) => {
                     });
                 });
                 try{
-              await User.findOneAndDelete( {username: username})
+            await UserInfo.findOne({username: username})
+            .then(user => {
+                cloudinary.uploader.destroy(user.cloudinary_id)
+            })
+            .catch(err => {
+                return res.status(401).json({
+                    message: "Invalid authentication credentials!!",
+
+                });
+            });
+            await User.findOneAndDelete( {username: username})
             await UserInfo.findOneAndDelete({username: username})
+            await Post.deleteMany({username: username}).then(() => {
+                console.log('posts deleted')
+            })
+            await Follow.deleteMany({usernameFollower: username}).then(() => {
+                console.log('Follower deleted')
+            })
+            await Follow.deleteMany({Following: username}).then(() => {
+                console.log('Following deleted')
+            })
+            await Comment.deleteMany({username: username}).then(() => {
+                console.log('Comment deleted')
+            })
+            await Msg.deleteMany({username: username}).then(() => {
+                console.log('posts deleted')
+            })
+            await Msg.deleteMany({otherUser: username}).then(() => {
+                console.log('Msgs deleted')
+            })
+            await showCase.find({Creator: id})
+                        .then(result => {
+                        console.log('meeee', result)
+                 cloudinary.uploader.destroy(result.cloudinary_id)
+                 .then(console.log('it worked'));
+         
+             })
+            await showCase.deleteMany({Creator: id}).then(result => {
+                if (result){
+                res.status(200);
+                console.log('it worked for showcases')
+                } else {
+                    res.status(401).json({message: 'Deletion error'});
+                    console.log('it did not work')
+                }
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Fetching showCases failed!'
+                });
+            });
                 }finally{
                     res.status(200).json({
                         message: 'Deleted Successful!',
