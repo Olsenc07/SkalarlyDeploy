@@ -75,8 +75,11 @@ if(checking !== null){
         content: `${user.name} has connected with you.`,
         openUrl: '/friends-activity'
     }), options)
+    .then((_) => {
+        console.log( 'SENT Follow');
+    })
     .catch(error => {
-        console.error(error.stack);
+        console.error(error);
     })
         })
     
