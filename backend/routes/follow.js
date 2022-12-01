@@ -50,17 +50,20 @@ if(checking !== null){
         Subscription.findOne({Creator: otherUserId.id})
         .then(subscriber => {
     console.log('road is full', subscriber);
-    console.log('road is full JSONS', JSON.parse(subscriber).keys);
+    console.log('p256dh', JSON.parse(subscriber).keys)
 
-    console.log('road is full JSON', JSON.parse(subscriber.keys));
+    const p256dh = JSON.parse(subscriber).keys.p256dh
+    const auth = JSON.parse(subscriber).keys.auth
+    const endpoint = JSON.parse(subscriber).endpoint
+
 
 //   subscriber.data.keys.p256dh
     const pushSubscription = {
         keys: {
-          p256dh: JSON.parse(subscriber).keys.p256dh,
-          auth: JSON.parse(subscriber).keys.auth
+          p256dh: p256dh,
+          auth: auth
         },
-        endpoint: JSON.parse(subscriber).endpoint,
+        endpoint: endpoint,
       };
       webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
     webpush.sendNotification(pushSubscription, JSON.stringify({
