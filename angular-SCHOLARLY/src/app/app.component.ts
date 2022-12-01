@@ -201,7 +201,7 @@ export class AppComponent implements OnInit {
       this.minHeight = false;
     }
 
-    if (window.screen.width < 1024) {
+    if (window.screen.width < 1170) {
       this.minwidth = false;
     }
   }

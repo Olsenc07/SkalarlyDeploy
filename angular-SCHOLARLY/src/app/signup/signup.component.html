@@ -57,7 +57,7 @@
               account_circle
             </span>
             <mat-form-field>
-              <input matInput [formControl]="username" placeholder="Username" required />
+              <input matInput [formControl]="username" placeholder="Username" required maxlength="22"/>
               <mat-error *ngIf="username.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <!-- Once next is clicked and user name has been used -->
               <mat-error *ngIf="username.invalid && !username.errors?.noWhiteSpace">Please enter a unique username, no special characters
