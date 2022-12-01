@@ -114,7 +114,7 @@ export class ReusableCardUserFollowerComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): any {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -137,7 +137,7 @@ export class ReusableCardUserFollowerComponent implements OnInit {
     this.followSub = this.followService
       .getInfoFollowUpdateListener()
       .subscribe((follower: Follow[]) => {
-        this.follower = follower;
+        this.follower = follower.reverse();
         this.isLoading = false;
       });
   }
