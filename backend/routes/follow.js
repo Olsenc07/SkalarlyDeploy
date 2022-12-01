@@ -51,12 +51,12 @@ if(checking !== null){
         .then(subscriber => {
     console.log('road is fuller', subscriber.keys);
 
-    console.log('road is full', subscriber);
+    console.log('road is full', subscriber.keys.p256dh);
 
 
-    const p256dh = JSON.parse(subscriber).keys.p256dh
-    const auth = JSON.parse(subscriber).keys.auth
-    const endpoint = JSON.parse(subscriber).endpoint
+    const p256dh = subscriber.keys.p256dh
+    const auth = subscriber.keys.auth
+    const endpoint = subscriber.endpoint
 
 
 //   subscriber.data.keys.p256dh
