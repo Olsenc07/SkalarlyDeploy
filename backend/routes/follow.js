@@ -43,6 +43,7 @@ await userInfo.findOne({Creator: req.query.userId})
                 });
 // If user is subscribed then send notififaction S.W
 try{
+    if (Subscription.findOne({Creator: req.query.userId}) !== null){
     Subscription.findOne({Creator: req.query.userId})
     .then(subscriber =>{
 console.log('road is full',subscriber);
@@ -64,7 +65,7 @@ webpush.sendNotification(pushSubscription, JSON.stringify({
     console.error(error.stack);
 })
     })
-} catch{
+}} catch{
     console.log('User does not have a subscription for followers')
 }
 })
