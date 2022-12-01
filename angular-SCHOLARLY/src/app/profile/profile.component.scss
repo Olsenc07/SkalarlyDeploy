@@ -290,7 +290,8 @@ width: 100%;
 }
 .followingColor{
 background-color: #183a7f !important;
-font-family: 'Cinzel', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-size: large;
 }
 .fit_ {
   display: flex;
@@ -627,9 +628,10 @@ mat-tab-group {
 }
 .messageM {
   display: flex;
-  font-family:  'Cinzel', sans-serif;
-  background-color: rgb(173, 211, 236) !important;
-  color: white;
+  font-family: 'Poppins',sans-serif; 
+  background-color: #add3ec!important;
+  color: #fff;
+  font-size: large;
 }
 @media (min-width: 1025px) {
   .middle {

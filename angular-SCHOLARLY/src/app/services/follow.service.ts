@@ -76,7 +76,7 @@ export class FollowService {
       )
       .subscribe((transformedInfos) => {
         this.follow = transformedInfos;
-        this.followPostUpdated.next([...this.follow]);
+        this.followPostUpdated.next(this.follow);
       });
   }
 
@@ -161,7 +161,7 @@ export class FollowService {
       )
       .subscribe((transformedMessage) => {
         this.following = transformedMessage;
-        this.followingInfoPostUpdated.next([...this.following]);
+        this.followingInfoPostUpdated.next(this.following);
       });
   }
   // and maybe add userId

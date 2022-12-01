@@ -45,11 +45,12 @@ await userInfo.findOne({Creator: req.query.userId})
 try{
     let check
     // otherUserId.id
-    check = Subscription.findOne({Creator: req.query.userId})
+    check = Subscription.findOne({Creator: req.query.userId}).then
+    ((checking) )
     console.log('check', check)
-    if (check !== null){
+    if (check){
     Subscription.findOne({Creator: req.query.userId})
-    .then(subscriber =>{
+    .then(subscriber => {
 console.log('road is full',subscriber);
 const subscriber_ = subscriber
 const pushSubscription = {
