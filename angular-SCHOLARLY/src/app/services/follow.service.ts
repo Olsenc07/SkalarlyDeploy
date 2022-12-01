@@ -76,7 +76,7 @@ export class FollowService {
       )
       .subscribe((transformedInfos) => {
         this.follow = transformedInfos;
-        this.followPostUpdated.next(this.follow);
+        this.followPostUpdated.next([...this.follow]);
         this.snackBar.open('Yay you made a new friend', 'Congrats!', {
           duration: 3000,
         });

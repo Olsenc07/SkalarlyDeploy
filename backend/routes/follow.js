@@ -49,14 +49,13 @@ try{
 if(checking !== null){
         Subscription.findOne({Creator: otherUserId.id})
         .then(subscriber => {
-    console.log('road is full',subscriber);
-    const subscriber_ = subscriber
+    console.log('road is full', subscriber);
     const pushSubscription = {
-        endpoint: subscriber_.data.endpoint,
         keys: {
-          auth: subscriber_.data.keys.auth,
-          p256dh: subscriber_.data.keys.p256dh
-        }
+          auth: subscriber.data.keys.auth,
+          p256dh: subscriber.data.keys.p256dh
+        },
+        endpoint: subscriber.data.endpoint,
       };
       webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
     webpush.sendNotification(pushSubscription, JSON.stringify({
