@@ -69,10 +69,7 @@ if(checking !== null){
     })
         })
     
-}
-
-    })
-
+} })
    } catch{
     console.log('User does not have a subscription for followers')
 }
