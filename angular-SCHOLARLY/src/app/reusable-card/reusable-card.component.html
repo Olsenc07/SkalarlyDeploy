@@ -10,7 +10,7 @@
     </div>
 
 <!-- Posts box which should be a scroll view -->
-<div class="feed" *ngFor="let post of posts.reverse()" >
+<div class="feed" *ngFor="let post of posts" >
   <mat-card class="specifics-fill" *ngIf="(userId !== post.Creator) && !isLoading">
     <!-- Profile Pic -->
     <div class="column" >

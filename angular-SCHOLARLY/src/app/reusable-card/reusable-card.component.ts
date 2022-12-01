@@ -143,9 +143,8 @@ export class ReusableCardComponent implements OnInit {
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
-          this.posts = posts;
+          this.posts = posts.reverse();
           this.isLoading = false;
-          console.log('posts yo', this.posts);
         });
     });
   }
@@ -300,7 +299,7 @@ export class ReusableCardPersonalComponent implements OnInit {
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
-        this.posts = posts;
+        this.posts = posts.reverse();
         this.isLoading = false;
         console.log('posts', this.posts);
       });

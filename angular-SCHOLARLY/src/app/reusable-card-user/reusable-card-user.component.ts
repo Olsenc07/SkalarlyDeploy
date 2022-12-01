@@ -71,7 +71,7 @@ export class ReusableCardUserComponent implements OnInit {
     this.followSub = this.followService
       .getInfoUpdateListener()
       .subscribe((follow: Follow[]) => {
-        this.follow = follow;
+        this.follow = follow.reverse();
         this.isLoading = false;
       });
   }
