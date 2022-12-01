@@ -43,38 +43,37 @@ await userInfo.findOne({Creator: req.query.userId})
                 });
 // If user is subscribed then send notififaction S.W
 try{
-    let check
     // otherUserId.id
-    check = Subscription.findOne({Creator: req.query.userId}).then
+     Subscription.findOne({Creator: req.query.userId}).then
     ((checking) => {
-        console.log('check', check)
+if(checking !== null){
+        Subscription.findOne({Creator: req.query.userId})
+        .then(subscriber => {
+    console.log('road is full',subscriber);
+    const subscriber_ = subscriber
+    const pushSubscription = {
+        endpoint: subscriber_.data.endpoint,
+        keys: {
+          auth: subscriber_.data.keys.auth,
+          p256dh: subscriber_.data.keys.p256dh
+        }
+      };
+      webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+    webpush.sendNotification(pushSubscription, JSON.stringify({
+        title: 'New Follower!',
+        content: `${user.name} has connected with you.`,
+        openUrl: '/friends-activity'
+    }), options)
+    .catch(error => {
+        console.error(error.stack);
+    })
+        })
+    
+}
 
     })
-    console.log('checking', check)
 
-    if (check){
-    Subscription.findOne({Creator: req.query.userId})
-    .then(subscriber => {
-console.log('road is full',subscriber);
-const subscriber_ = subscriber
-const pushSubscription = {
-    endpoint: subscriber_.data.endpoint,
-    keys: {
-      auth: subscriber_.data.keys.auth,
-      p256dh: subscriber_.data.keys.p256dh
-    }
-  };
-  webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
-webpush.sendNotification(pushSubscription, JSON.stringify({
-    title: 'New Follower!',
-    content: `${user.name} has connected with you.`,
-    openUrl: '/friends-activity'
-}), options)
-.catch(error => {
-    console.error(error.stack);
-})
-    })
-}} catch{
+   } catch{
     console.log('User does not have a subscription for followers')
 }
 })
