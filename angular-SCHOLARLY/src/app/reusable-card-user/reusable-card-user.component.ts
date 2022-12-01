@@ -48,7 +48,7 @@ export class ReusableCardUserComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): any {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -189,9 +189,9 @@ export class ReusableCardMessageComponent implements OnInit {
 
     this.messageNotificationService
       .getInfoUpdateListenerNotification()
-      .subscribe((messagesNotif: any) => {
+      .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
-        this.messagesNotif = messagesNotif;
+        this.messagesNotif = messagesNotif.reverse();
       });
     this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
@@ -226,9 +226,9 @@ export class ReusableCardMessageComponent implements OnInit {
 
     this.messageNotificationService
       .getInfoUpdateListenerNotification()
-      .subscribe((messagesNotif: any) => {
+      .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
-        this.messagesNotif = messagesNotif;
+        this.messagesNotif = messagesNotif.reverse();
       });
   }
 }
@@ -254,7 +254,7 @@ export class ReusableCardMutualComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): any {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -299,7 +299,7 @@ export class ReusableCardMutualsComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): any {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
