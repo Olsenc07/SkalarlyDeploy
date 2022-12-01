@@ -293,6 +293,7 @@ export class SearchListService {
           'Festivals',
           'Fraternities & Sororities',
           'Fundraisers',
+          'Happening Today',
           'Intramural Sports',
           'Miscellaneous',
           'Parties & Clubs',
