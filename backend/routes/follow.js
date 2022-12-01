@@ -46,8 +46,12 @@ try{
     let check
     // otherUserId.id
     check = Subscription.findOne({Creator: req.query.userId}).then
-    ((checking) )
-    console.log('check', check)
+    ((checking) => {
+        console.log('check', check)
+
+    })
+    console.log('checking', check)
+
     if (check){
     Subscription.findOne({Creator: req.query.userId})
     .then(subscriber => {
