@@ -49,9 +49,9 @@ try{
 if(checking !== null){
         Subscription.findOne({Creator: otherUserId.id})
         .then(subscriber => {
-    console.log('p256dh', JSON.parse(subscriber))
+    console.log('road is fuller', subscriber.keys);
+
     console.log('road is full', subscriber);
-    console.log('road is full', subscriber.keys);
 
 
     const p256dh = JSON.parse(subscriber).keys.p256dh
