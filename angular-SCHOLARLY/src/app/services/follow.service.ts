@@ -120,19 +120,7 @@ export class FollowService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.messages.map((data) => {
-            return {
-              id: data._id,
-              Follower: data.Follower,
-              nameFollower: data.nameFollower,
-              usernameFollower: data.usernameFollower,
-              ProfilePicPathFollower: data.ProfilePicPathFollower,
-              FollowingId: data.FollowingId,
-              Following: data.Following,
-              nameFollowing: data.nameFollowing,
-              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
-            };
-          });
+          return messageData.messages;
         })
       )
       .subscribe((transformedMessage) => {
@@ -150,20 +138,7 @@ export class FollowService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.messages.map((data) => {
-            return {
-              id: data._id,
-              Follower: data.Follower,
-              nameFollower: data.nameFollower,
-              usernameFollower: data.usernameFollower,
-              ProfilePicPathFollower: data.ProfilePicPathFollower,
-              FollowingId: data.FollowingId,
-
-              Following: data.Following,
-              nameFollowing: data.nameFollowing,
-              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
-            };
-          });
+          return messageData.messages;
         })
       )
       .subscribe((transformedMessage) => {
@@ -181,20 +156,7 @@ export class FollowService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.messages.map((data) => {
-            return {
-              id: data._id,
-              Follower: data.Follower,
-              nameFollower: data.nameFollower,
-              usernameFollower: data.usernameFollower,
-              ProfilePicPathFollower: data.ProfilePicPathFollower,
-              FollowingId: data.FollowingId,
-
-              Following: data.Following,
-              nameFollowing: data.nameFollowing,
-              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
-            };
-          });
+          return messageData.messages;
         })
       )
       .subscribe((transformedMessage) => {
@@ -213,20 +175,7 @@ export class FollowService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.messages.map((data: any) => {
-            return {
-              id: data._id,
-              Follower: data.Follower,
-              nameFollower: data.nameFollower,
-              usernameFollower: data.usernameFollower,
-              ProfilePicPathFollower: data.ProfilePicPathFollower,
-              FollowingId: data.FollowingId,
-
-              Following: data.Following,
-              nameFollowing: data.nameFollowing,
-              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
-            };
-          });
+          return messageData.messages;
         })
       )
       .subscribe((transformedMessage) => {
