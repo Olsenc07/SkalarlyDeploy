@@ -13,6 +13,8 @@ import { PostsService, UserNames } from './services/posts.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  ring = false;
+  Notification = false;
   users: UserNames[] = [];
   postClicked = false;
   commentClicked = false;
@@ -208,6 +210,7 @@ export class AppComponent implements OnInit {
 
   // Trigger Notifications
   Notifications(): any {
+    this.ring = true;
     // Service worker
     const Id = this.userId;
     const Authservice = this.authService;
@@ -283,6 +286,10 @@ export class AppComponent implements OnInit {
     function askForNotificationPermission(): any {
       Notification.requestPermission((result) => {
         console.log('Permission', result);
+        if (result === 'granted') {
+          this.Notification = true;
+        }
+
         if (result !== 'granted') {
           console.log('Permission not granted');
         } else {
