@@ -8,6 +8,7 @@ const Comment = require('/app/backend/models/comment');
 const webpush = require('web-push');
 const cloudinary = require('cloudinary').v2
 const checkAuth = require('/app/backend/middleware/check-auth');
+const { route } = require('./messages');
 const router = express.Router();
 publicVapidKey = process.env.vapidPublic;
 privateVapidKey = process.env.vapidPrivate
@@ -470,4 +471,19 @@ router.delete("/showCases/:id", checkAuth, async(req, res, next ) => {
         });
     });
 });
+
+// Check Notifications 
+router.get("/checkNotif", async (req, res) => {
+    await Subscription.findOne({Creator: req.query.id})
+    .then(documents => {
+        res.status(200).json({
+            message: 'Notifications are connected',
+            infos: documents
+        });
+    }).catch(() => {
+        res.status(500).json({
+            message: 'Notifications are not connected'
+        });
+    })
+})
 module.exports = router;

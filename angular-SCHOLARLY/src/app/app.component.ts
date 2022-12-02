@@ -5,7 +5,6 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Observable, Subscription } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
-
 import { PostsService, UserNames } from './services/posts.service';
 @Component({
   selector: 'app-root',
@@ -19,6 +18,8 @@ export class AppComponent implements OnInit {
   postClicked = false;
   commentClicked = false;
   userId: string;
+  notif: string;
+
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
   public href: string = '';
@@ -98,6 +99,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     const url = new URL(window.location.href);
     const notSecure = url.protocol;
     if (notSecure === 'http:') {
@@ -106,7 +108,8 @@ export class AppComponent implements OnInit {
       myURL.protocol = 'https:';
       location.href = myURL.href;
     }
-
+    this.notif = this.postsService.checkNotification(this.userId);
+    console.log('During the day', this.notif);
     this.authService.autoAuthUser();
 
     document
@@ -189,7 +192,6 @@ export class AppComponent implements OnInit {
     );
 
     // Validation
-    this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
