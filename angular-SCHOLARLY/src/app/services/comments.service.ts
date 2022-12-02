@@ -55,7 +55,7 @@ export class CommentsService {
 
     // parentId: null | string
   ): any {
-    const message = {
+    const messageOrg = {
       body,
       userId,
       time,
@@ -64,7 +64,7 @@ export class CommentsService {
     this.http
       .post<{ message: string; messages: CommentInterface }>(
         'https://www.skalarly.com/api/posts/comments',
-        message
+        messageOrg
       )
       .subscribe({
         next: (responseData) => {

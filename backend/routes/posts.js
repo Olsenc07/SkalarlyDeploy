@@ -233,7 +233,7 @@ router.get('/comments', async(req, res) =>{
     
 //  Comment on post
 router.post('/comments',
- async(req, res) =>{ 
+ async(req, res) => { 
 if (req.body.userId){
     await UserInfo.findOne({Creator: req.body.userId })
     .then(documents => {
@@ -267,13 +267,13 @@ if (req.body.userId){
                     const p256dh = subscriber.keys.p256dh
                     const auth = subscriber.keys.auth
                     const endpoint = subscriber.endpoint
-            const pushSubscription = {
-                keys: {
-                  p256dh: p256dh,
-                  auth: auth
-                },
-                endpoint: endpoint,
-              };
+                    const pushSubscription = {
+                        keys: {
+                         p256dh: p256dh,
+                         auth: auth
+                                },
+                         endpoint: endpoint,
+                        };
               publicVapidKey = process.env.vapidPublic;
               privateVapidKey = process.env.vapidPrivate
           webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
@@ -287,34 +287,25 @@ if (req.body.userId){
         })
           .catch( (err) => {
               console.log('uh ooo',err)
-              res.status(501).json({
-                message: 'Registration error'
-              });
           });
-                     }).catch(error => {
-                        res.status(500).json({
-                            message: 'Comment added failed!'
-                        });
-                    }); 
+                     })
                     }
-                    }).catch(error => {
-                        res.status(500).json({
-                            message: 'Notification failed!'
-                        });
-                    }); 
-                    }).catch(error => {
-                        res.status(500).json({
-                            message: 'Post not found!'
-                        });
-                    });
-            }catch{
-                console.log('User does not have a subscription for comments')
-            }  
+                    })
+        })
+                } catch{
+                        console.log('User does not have a subscription for followers')
+                    }
+                    })
+                    .catch(err => {
+                        return res.status(401).json({
+                            message: "Invalid following error!"})
+                                })
     })
-    })
-
-}
-})
+    .catch(err => {
+        return res.status(401).json({
+            message: "Invalid follow error!"})
+                })
+            }})
 // Comments deleting
 router.delete("/comments/:id", checkAuth, (req, res, next ) => {
     Comment.deleteOne({_id: req.params.id}).then(result => {
