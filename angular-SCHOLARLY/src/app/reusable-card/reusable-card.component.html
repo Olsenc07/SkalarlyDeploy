@@ -211,10 +211,14 @@
           <div *ngFor="let comment of comments; let even = even; let odd = odd">
             <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
              class="commentsDisplayWrapper">
-              
+         <div class="picTime">
                 <div class="profilePic">
     <img src="{{comment.ProfilePicPath}}" class="pic">
     </div>
+    <div class="timeBox">
+      {{comment.time}}
+      </div>
+      </div>
     <div class="commentsDisplay">
       <div class="usernameBtn">
         <button mat-button *ngIf="userId !== comment.Creator" >
@@ -223,7 +227,7 @@
           </button>
             <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
     </div>
-    {{comment.time}}
+
 
     <div class="commentText">{{comment.body}}</div>
     </div>
