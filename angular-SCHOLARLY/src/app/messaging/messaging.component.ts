@@ -173,7 +173,7 @@ export class MessagingComponent implements OnInit {
    </div>
     `;
     } else {
-      div.innerHTML = `   <div style="display: flex;
+      div.innerHTML = `  <div style="display: flex;
       justify-content: flex-end;
       height: 100%;
       width: 100%;
@@ -183,7 +183,7 @@ export class MessagingComponent implements OnInit {
       margin-bottom:2%; border-radius:25px;
       width: fit-content;padding:0% 5% 0% 2%; display: flex; flex-direction:column" >
       <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
-     <div style="margin:2% 5% 0% 2%;color:white;font-size: small;" > @${data.username} </div>
+     <div style="margin:2% 5% 0% 2%;color: #b1acac;font-size: small;" > @${data.username} </div>
      <div style="font-size:small; color: #878581;margin-top: 2%;">  ${data.time}  </div>
      </div>
      <div style="display: flex; color:white;margin-bottom: 2%; justify-content: space-between; align-items: center; font-size: smaller;">  ${data.message}
