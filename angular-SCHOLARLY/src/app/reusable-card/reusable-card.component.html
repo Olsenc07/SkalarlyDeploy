@@ -212,24 +212,27 @@
             <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
              class="commentsDisplayWrapper">
          <div class="picTime">
+          <div class="rowComment">
                 <div class="profilePic">
     <img src="{{comment.ProfilePicPath}}" class="pic">
     </div>
     <div class="timeBox">
       {{comment.time}}
+<div class="timeUser">
+  <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
+  <button mat-button *ngIf="userId !== comment.Creator" >
+    <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
+      </div>
+    </button>
+
       </div>
       </div>
-    <div class="commentsDisplay">
-      <div class="usernameBtn">
-        <button mat-button *ngIf="userId !== comment.Creator" >
-          <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
-            </div>
-          </button>
-            <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
+
     </div>
 
-
+    <div class="Comment">
     <div class="commentText">{{comment.body}}</div>
+    </div>
     </div>
             </div>    
           </div>

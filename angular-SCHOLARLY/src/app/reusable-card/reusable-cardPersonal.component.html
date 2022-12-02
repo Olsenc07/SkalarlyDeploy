@@ -204,81 +204,40 @@
               <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper" [ngClass]="{ even: even, odd: odd }">
                 
                 <div class="picTime">
+          <div class="rowComment">
                   <div class="profilePic">
       <img src="{{comment.ProfilePicPath}}" class="pic">
       </div>
 <div class="timeBox">
       {{comment.time}}
+      <div class="timeUser">
+
+        <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
+        <button mat-button *ngIf="userId !== comment.Creator" >
+          <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
+            </div>
+          </button>
+        </div>
       </div>
-    </div>
-
-      <div class="commentsDisplay">
-        <div class="usernameBtn">
-          <button mat-button *ngIf="userId !== comment.Creator" >
-            <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
-              </div>
-            </button>
-              <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
-      <div style="flex-direction:row ;">
-
-      <div class="commentText">{{comment.body}}
+    
         <div *ngIf="userId == comment.Creator" class="trashCan">
           <button  mat-icon-button matSuffix
             (click)='onDeleteComment(comment.id)'><i class="far fa-times-circle"></i>
           </button>
             </div>
-      </div>
+ 
+    </div>
 
-              
-                  </div>
-      </div>
+        <div class="Comment">
+          <div class="commentText">{{comment.body}}</div>
       </div>
               </div>
       
             </div>
             </div>
-            <!-- <div class="center1">
-              <div class="center">
-                <button mat-icon-button (click)="openTaggedSheet()">
-                  <div class="material-icons-outlined p">loyalty</div>
-                </button>
-              </div>
-              <div class="center">
-                <button mat-icon-button>
-  
-                  <div class="far fa-comments center p" routerLink="/groups"></div>
-                </button>
-              </div>
-  
-            </div> -->
-  
-             <!-- Displays your attending status in bottom middle of card -->
-             <!-- <div class="center1" *ngIf="selectedAttend">
-              <button (click)="openAttendanceSheet()" mat-button class="textSize_"> {{selectedAttend}}</button>
-            </div> -->
-  
-            <!-- <div class="column1">
-              <div style="margin-top: 2%;">
-                <button mat-flat-button [matMenuTriggerFor]="menu" class="row1">Attendance</button>
-              </div>
-  
-              <mat-menu #menu="matMenu" class="row1_">
-  
-                <div *ngFor="let attendance of attendances" class="centerB">
-  
-                  <input type="radio" name="attend" value="{{attendance}}" class="center" (change)="radioChange($event)">
-                  <div class="row1_">{{attendance}}</div>
-  
-  
-                </div>
-  
-              </mat-menu>
-  
-  
-            </div> -->
-        
-  
-  
+ 
+        </div>
+       
   
   
       </div>

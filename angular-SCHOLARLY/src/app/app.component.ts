@@ -109,10 +109,9 @@ export class AppComponent implements OnInit {
       myURL.protocol = 'https:';
       location.href = myURL.href;
     }
+    this.authService.autoAuthUser();
     this.notif = this.postsService.checkNotification(this.userId);
     console.log('During the day', this.notif);
-
-    this.authService.autoAuthUser();
 
     document
       .getElementsByClassName('search-box__icon')[0]

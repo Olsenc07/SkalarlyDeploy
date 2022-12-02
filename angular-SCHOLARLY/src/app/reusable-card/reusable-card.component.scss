@@ -230,6 +230,7 @@ font-size: large;
 .rowComment{
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 .scroll{
   max-height: 300px;
