@@ -223,7 +223,7 @@
 
       <div class="commentText">{{comment.body}}
         <div *ngIf="userId == comment.Creator" class="trashCan">
-          <button  mat-icon-button
+          <button  mat-icon-button matSuffix
             (click)='onDeleteComment(comment.id)'><i class="far fa-times-circle"></i>
           </button>
             </div>
