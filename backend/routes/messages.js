@@ -3,11 +3,8 @@ const router = express.Router();
 // Mongod
 const User = require('/app/backend/models/user');
 const Msg = require('/app/backend/models/messages')
-const UserInfo = require('/app/backend/models/userInfo');
 const checkAuth = require('/app/backend/middleware/check-auth');
-
 // consts
-const formatMessage = require('/app/angular-SCHOLARLY/src/app/utils/messages.js')
 // const botName = 'Skalar';
 
 

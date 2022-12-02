@@ -127,24 +127,35 @@ io.on('connection', (socket) => {
             console.log('road is open',user);
                 Subscription.findOne({Creator: user.id})
                 .then(subscriber =>{
-            console.log('road is fuller',subscriber);
-            const subscriber_ = subscriber
+if(subscriber !== null){
+
+  Subscription.findOne({Creator: user.id})
+  .then(subscriber => {
+    const p256dh = subscriber.keys.p256dh
+    const auth = subscriber.keys.auth
+    const endpoint = subscriber.endpoint
             const pushSubscription = {
-                endpoint: subscriber_.data.endpoint,
                 keys: {
-                  auth: subscriber_.data.keys.auth,
-                  p256dh: subscriber_.data.keys.p256dh
-                }
+                  auth: auth,
+                  p256dh: p256dh
+                },
+                endpoint: endpoint,
               };
+              publicVapidKey = process.env.vapidPublic;
+              privateVapidKey = process.env.vapidPrivate
             webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
             webpush.sendNotification(pushSubscription, JSON.stringify({
                 title: 'New Message!',
                 content: ` ${data.otherUser} has messaged you.`,
                 openUrl: '/search'
             }), options)
+            .then((_) => {
+              console.log( 'SENT Message');
+          })
             .catch(error => {
-                console.error(error.stack);
-            })})
+                console.error(error);
+            })}) 
+          }})
             .catch(err => {
               console.log('No subscription for messages', err)
             })
