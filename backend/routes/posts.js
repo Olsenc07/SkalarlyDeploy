@@ -7,7 +7,17 @@ const Comment = require('/app/backend/models/comment');
 const cloudinary = require('cloudinary').v2
 const checkAuth = require('/app/backend/middleware/check-auth');
 const router = express.Router();
+publicVapidKey = process.env.vapidPublic;
+privateVapidKey = process.env.vapidPrivate
 
+const options = {
+    vapidDetails: {
+        subject: 'mailto:admin@skalarly.com',
+        publicKey: publicVapidKey,
+        privateKey: privateVapidKey,
+    },
+    TTL: 60,
+  };
 // cloudinary
 cloudinary.config({ 
     cloud_name: process.env.cloud_name, 
@@ -237,27 +247,39 @@ if (req.body.userId){
     })
     comment.save()
     .then(createdComment => {
+        res.status(201).json({
+            message: 'Comment added successfully',
+            messages: {
+                id: createdComment._id,
+                ...createdComment
+            } 
+        });
         try{
             // Creator of post gets notified find them first...
             Post.findOne({id: req.body.postId})
             .then((user) => {
                 console.log('user 77', user)
                 Subscription.findOne({Creator: user.Creator})
+                .then(checking =>{
+                    if(checking !== null){
+                        Subscription.findOne({Creator: user.Creator})
                 .then(subscriber =>{
-            publicVapidKey = process.env.vapidPublic;
-            privateVapidKey = process.env.vapidPrivate
-            const subscriber_ = subscriber
+                    const p256dh = subscriber.keys.p256dh
+                    const auth = subscriber.keys.auth
+                    const endpoint = subscriber.endpoint
             const pushSubscription = {
-                endpoint: subscriber_.data.endpoint,
                 keys: {
-                  auth: subscriber_.data.keys.auth,
-                  p256dh: subscriber_.data.keys.p256dh
-                }
+                  p256dh: p256dh,
+                  auth: auth
+                },
+                endpoint: endpoint,
               };
+              publicVapidKey = process.env.vapidPublic;
+              privateVapidKey = process.env.vapidPrivate
           webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
           webpush.sendNotification(pushSubscription, JSON.stringify({
-              title: 'Post Comment',
-              content: `${documents.username} has commented on your post`,
+              title: 'Post Comment!',
+              content: `${documents.username} has commented on your post.`,
               openUrl: '/profile'
           }), options)
           .then((_) => {
@@ -269,32 +291,28 @@ if (req.body.userId){
                 message: 'Registration error'
               });
           });
-        })
-        .catch(noSub => {
-                    console.log('User does not sub for comments')
-        })
-            }) 
-            .catch(noUser => {
-                console.log('User does not sub for comments, not good',noUser)
+                     }).catch(error => {
+                        res.status(500).json({
+                            message: 'Comment added failed!'
+                        });
+                    }); 
+                    }
+                    }).catch(error => {
+                        res.status(500).json({
+                            message: 'Notification failed!'
+                        });
+                    }); 
+                    }).catch(error => {
+                        res.status(500).json({
+                            message: 'Post not found!'
+                        });
+                    });
+            }catch{
+                console.log('User does not have a subscription for comments')
+            }  
     })
-            
-        }catch{
-        console.log('User does not have a subscription for comments')
-        }
-        res.status(201).json({
-            message: 'Comment added successfully',
-            messages: {
-                id: createdComment._id,
-                ...createdComment
-            } 
-        });
     })
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Comment added failed!'
-        });
-    });
+
 }
 })
 // Comments deleting

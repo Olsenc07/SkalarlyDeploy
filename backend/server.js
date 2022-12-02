@@ -124,11 +124,10 @@ io.on('connection', (socket) => {
             try{
               UserInfo.findOne({username: data.otherUser })
               .then((user) => { 
-            console.log('road is open', user);
+            // console.log('road is open', user);
                 Subscription.findOne({Creator: user.Creator})
                 .then(subscriber =>{
-            console.log('road is opener', subscriber);
-
+            // console.log('road is opener', subscriber);
 if(subscriber !== null){
   Subscription.findOne({Creator: user.Creator})
   .then(subscriber => {

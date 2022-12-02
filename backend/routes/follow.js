@@ -49,17 +49,11 @@ try{
 if(checking !== null){
         Subscription.findOne({Creator: otherUserId.id})
         .then(subscriber => {
-    console.log('road is fuller', subscriber.keys);
-
-    console.log('road is full', subscriber.keys.p256dh);
-
-
+    // console.log('road is fuller', subscriber.keys);
+    // console.log('road is full', subscriber.keys.p256dh);
     const p256dh = subscriber.keys.p256dh
     const auth = subscriber.keys.auth
     const endpoint = subscriber.endpoint
-
-
-//   subscriber.data.keys.p256dh
     const pushSubscription = {
         keys: {
           p256dh: p256dh,
