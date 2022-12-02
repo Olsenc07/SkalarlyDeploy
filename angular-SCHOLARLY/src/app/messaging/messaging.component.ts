@@ -166,7 +166,7 @@ export class MessagingComponent implements OnInit {
      class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%;padding: 0% 5% 0% 2%;
      width: fit-content; border-radius:25px" >
     <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
-   <div style="margin:2% 2% 0% 5%" > @${data.username} </div>
+   <div style="margin:2% 2% 0% 5%;font-size: small;" > @${data.username} </div>
    <div style="font-size:small; color: #878581;margin-top: 2%; justify-content: space-between;">  ${data.time}  </div>
    </div>
    <div style="text-align: center; margin-bottom: 2%; ">  ${data.message}  </div>
@@ -184,7 +184,7 @@ export class MessagingComponent implements OnInit {
       margin-bottom:2%; border-radius:25px;
       width: fit-content;padding:0% 5% 0% 2%; display: flex; flex-direction:column" >
       <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
-     <div style="margin:2% 5% 0% 2%;color:white" > @${data.username} </div>
+     <div style="margin:2% 5% 0% 2%;color:white;font-size: small;" > @${data.username} </div>
      <div style="font-size:small; color: #878581;margin-top: 2%;">  ${data.time}  </div>
      </div>
      <div style="display: flex; color:white;margin-bottom: 2%; justify-content: space-between; align-items: center;">  ${data.message}
