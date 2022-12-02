@@ -100,6 +100,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
+    console.log('my way', this.userId);
     const url = new URL(window.location.href);
     const notSecure = url.protocol;
     if (notSecure === 'http:') {
@@ -198,7 +199,7 @@ export class AppComponent implements OnInit {
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
+        // this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
 
