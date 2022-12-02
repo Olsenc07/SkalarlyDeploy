@@ -1040,11 +1040,8 @@ color: white;
 
 // Bell ringing animation 
 .bell{
-  display:block;
-  width: 40px;
-  height: 40px;
-  font-size: 40px;
-  margin:50px auto 0;
+  display:flex;
+  font-size: x-large;
   color: #9e9e9e;
   -webkit-animation: ring 4s .7s ease-in-out ;
   -webkit-transform-origin: 50% 4px;
