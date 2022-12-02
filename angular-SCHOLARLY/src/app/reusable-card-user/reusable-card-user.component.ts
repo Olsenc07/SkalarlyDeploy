@@ -107,6 +107,8 @@ export class ReusableCardUserFollowerComponent implements OnInit {
 
   follower: Follow[] = [];
   private followSub: Subscription;
+  followers: Follow[] = [];
+  private followSubFollowers: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -139,6 +141,13 @@ export class ReusableCardUserFollowerComponent implements OnInit {
       .subscribe((follower: Follow[]) => {
         this.follower = follower.reverse();
         this.isLoading = false;
+      });
+    // followers info
+    this.followService.getMessageNotification(this.userId);
+    this.followSubFollowers = this.followService
+      .getInfoFollowUpdateListener()
+      .subscribe((followers: Follow[]) => {
+        this.followers = followers;
       });
   }
   navigateToPage(Following: string): any {
