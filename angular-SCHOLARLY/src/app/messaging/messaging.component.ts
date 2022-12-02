@@ -142,8 +142,9 @@ export class MessagingComponent implements OnInit {
         otherUser: this.username,
       });
       // msg from server
-      this.socket.on('messageSnd', (data) => {
+      this.socket.once('messageSnd', (data) => {
         console.log('server msg', data);
+        //Increases by one each send
         this.outputMessage(data);
       });
       this.message.reset('');
