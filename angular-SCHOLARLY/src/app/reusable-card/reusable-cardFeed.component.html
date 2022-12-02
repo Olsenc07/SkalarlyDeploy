@@ -233,22 +233,16 @@
 <div class="timeBox">
 {{comment.time}}
 </div>
-</div>
-   
-<div class="commentsDisplay">
-  
-  <div class="usernameBtn">
-    
-   
 <div>
-      <button mat-button *ngIf="userId !== comment.Creator" >
-        <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
-          </div>
-        </button>
-    
-      
-    <div class="userName link" *ngIf="userId == comment.Creator" id="userName">@{{comment.username}}
+  
+  <div class="userName link" *ngIf="userId == comment.Creator" id="userName">@{{comment.username}}
+  </div>
+  <button mat-button *ngIf="userId !== comment.Creator" >
+    <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
       </div>
+    </button>
+      
+  
       
       <div class="Comment">
       <div class="commentText"> {{comment.body}}
@@ -263,6 +257,14 @@
         
           </div>
           </div>
+</div>
+   
+<div class="commentsDisplay">
+  
+  <div class="usernameBtn">
+    
+   
+
 
 </div>
 </div>
