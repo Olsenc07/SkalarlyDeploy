@@ -281,6 +281,6 @@ export class MessageCardComponent implements OnInit {
   deleteMsg(msgId: string): any {
     console.log('jesse', msgId);
     this.messageNotificationService.deleteMessage(msgId);
-    this.messagesService.getMessages(this.userId, this.username);
+    location.reload();
   }
 }
