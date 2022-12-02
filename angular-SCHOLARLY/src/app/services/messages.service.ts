@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Subject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Message {
   id: string;
@@ -24,7 +25,7 @@ export class MessageService {
   private messageStartUpdated = new Subject<Message[]>();
   // private messagesSent = new ReplaySubject<Message[]>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   getMessages(userId: string, username: string): any {
     this.http
@@ -51,6 +52,9 @@ export class MessageService {
       .subscribe((transformedMessage) => {
         this.messages = transformedMessage;
         this.messagesUpdated.next([...this.messages]);
+        this.snackBar.open('Message sent', '✅', {
+          duration: 2000,
+        });
       });
   }
 

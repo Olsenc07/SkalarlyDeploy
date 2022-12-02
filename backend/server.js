@@ -125,11 +125,11 @@ io.on('connection', (socket) => {
               UserInfo.findOne({username: data.otherUser })
               .then((user) => { 
             console.log('road is open',user);
-                Subscription.findOne({Creator: user.id})
+                Subscription.findOne({Creator: user.Creator})
                 .then(subscriber =>{
 if(subscriber !== null){
 
-  Subscription.findOne({Creator: user.id})
+  Subscription.findOne({Creator: user.Creator})
   .then(subscriber => {
     const p256dh = subscriber.keys.p256dh
     const auth = subscriber.keys.auth
