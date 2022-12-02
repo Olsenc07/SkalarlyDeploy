@@ -227,6 +227,10 @@ font-size: large;
   justify-content: space-between;
   width: 100%;
 }
+.rowComment{
+  display: flex;
+  flex-direction: row;
+}
 .scroll{
   max-height: 300px;
   overflow-y: scroll;

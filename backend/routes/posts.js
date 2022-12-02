@@ -474,6 +474,7 @@ router.delete("/showCases/:id", checkAuth, async(req, res, next ) => {
 
 // Check Notifications 
 router.get("/checkNotif", async (req, res) => {
+    console.log('some kind of way', req.query.id )
     await Subscription.findOne({Creator: req.query.id})
     .then(documents => {
         console.log('Notifications are connected');

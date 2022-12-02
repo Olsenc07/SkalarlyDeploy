@@ -227,6 +227,7 @@
          class="commentsDisplayWrapper" 
          >
          <div class="picTime">
+          <div class="">
           <div class="profilePic">
 <img src="{{comment.ProfilePicPath}}" class="pic">
 </div>
@@ -241,16 +242,17 @@
       </div>
     </button>
           </div>
-       
+          <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
+            <button  mat-icon-button matSuffix class="trashCan_"
+              (click)='onDeleteComment(comment.id)'>
+              <i class="far fa-times-circle"></i>
+              </button>
+              </div>
+        </div>
 </div> 
 <div class="Comment">
   <div class="commentText"> {{comment.body}}
-    <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
-      <button  mat-icon-button matSuffix class="trashCan_"
-        (click)='onDeleteComment(comment.id)'>
-        <i class="far fa-times-circle"></i>
-        </button>
-        </div>
+  
   </div>
 
     
