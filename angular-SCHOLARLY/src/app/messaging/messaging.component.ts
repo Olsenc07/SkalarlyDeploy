@@ -147,9 +147,9 @@ export class MessagingComponent implements OnInit {
         this.outputMessage(data);
       });
       this.message.reset('');
+      this.messagesService.sentNotif();
     }
     // Show green check mark
-    this.messagesService.sentNotif();
   }
 
   outputMessage(data): void {
@@ -187,7 +187,6 @@ export class MessagingComponent implements OnInit {
      <div style="font-size:small; color: #878581;margin-top: 2%;">  ${data.time}  </div>
      </div>
      <div style="display: flex; color:white;margin-bottom: 2%; justify-content: space-between; align-items: center;">  ${data.message}
-    <i class="far fa-times-circle" style="color:#808080" delete_"; (click)="deleteMsg(data.id)" matTooltip="Delete message for both skalars"></i>
      </div>
      </div>
      </div>
