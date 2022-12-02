@@ -267,6 +267,7 @@ background-color: #ff4081;
   margin-left: 2%;
   align-items: center;
   font-size: x-small;
+  color: #b1acac;
 }
 .linkN {
   color: #7e7171;
@@ -397,6 +398,9 @@ background-color: #ff4081;
 .trashCan{
   display: flex;
   justify-content: flex-end;
+}
+.trashCan_{
+  font-size: medium;
 }
 .middle-card {
   display: flex;

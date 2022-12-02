@@ -49,7 +49,7 @@
             Src="../assets/Pics/2022-06-15 (6) (1).png"
           />
           <span class="fill-space">
-            <button mat-icon-button (click)="Notifications()" *ngIf="notif" matTooltip="Notifications">
+            <button mat-icon-button (click)="Notifications()" *ngIf="notif == undefined" matTooltip="Notifications">
             <i class="far fa-bell bellC" [ngClass]="ring === true ? '' : 'bell' " ></i>
           </button>
           </span>

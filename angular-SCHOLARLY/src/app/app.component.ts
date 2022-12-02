@@ -110,6 +110,7 @@ export class AppComponent implements OnInit {
     }
     this.notif = this.postsService.checkNotification(this.userId);
     console.log('During the day', this.notif);
+
     this.authService.autoAuthUser();
 
     document

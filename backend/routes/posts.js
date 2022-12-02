@@ -476,14 +476,15 @@ router.delete("/showCases/:id", checkAuth, async(req, res, next ) => {
 router.get("/checkNotif", async (req, res) => {
     await Subscription.findOne({Creator: req.query.id})
     .then(documents => {
+        console.log('Notifications are connected');
         res.status(200).json({
-            message: 'Notifications are connected',
             infos: documents
         });
+
     }).catch(() => {
-        res.status(500).json({
-            message: 'Notifications are not connected'
-        });
+        res.status(500)
+            console.log('Notifications are not connected')
+      
     })
 })
 module.exports = router;

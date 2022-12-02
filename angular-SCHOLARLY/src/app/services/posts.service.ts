@@ -31,10 +31,9 @@ export class PostsService {
 
   checkNotification(id: string): any {
     this.http
-      .get<{ message: string; infos: any }>(
-        'https://www.skalarly.com/api/posts/checkNotif',
-        { params: { id } }
-      )
+      .get<{ infos: any }>('https://www.skalarly.com/api/posts/checkNotif', {
+        params: { id },
+      })
       .pipe(
         map((infosData) => {
           return infosData.infos;
