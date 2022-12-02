@@ -266,12 +266,16 @@ background-color: #ff4081;
 
 .timeBox{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-end;
   margin-left: 2%;
   align-items: center;
   font-size: x-small;
   color: #b1acac;
+}
+.timeUser{
+  display: flex;
+  flex-direction: column;
 }
 .linkN {
   color: #7e7171;

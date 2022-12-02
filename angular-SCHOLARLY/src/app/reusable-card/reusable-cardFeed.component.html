@@ -227,13 +227,13 @@
          class="commentsDisplayWrapper" 
          >
          <div class="picTime">
-          <div class="">
+          <div class="rowComment">
           <div class="profilePic">
 <img src="{{comment.ProfilePicPath}}" class="pic">
 </div>
 <div class="timeBox">
 {{comment.time}}
-<div>
+<div class="timeUser">
   
   <div class="userName link" *ngIf="userId == comment.Creator" id="userName">@{{comment.username}}
   </div>

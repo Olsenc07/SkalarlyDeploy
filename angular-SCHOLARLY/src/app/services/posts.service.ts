@@ -17,7 +17,7 @@ export class PostsService {
   constructor(private http: HttpClient) {}
   private notifUpdated = new Subject();
   private infos = '';
-  searchUsers(query: string) {
+  searchUsers(query: string): any {
     return this.http
       .post<{ payload: Array<UserNames> }>(
         '/api/user/getusers',
@@ -30,6 +30,7 @@ export class PostsService {
   }
 
   checkNotification(id: string): any {
+    console.log('right here', id);
     this.http
       .get<{ infos: any }>('https://www.skalarly.com/api/posts/checkNotif', {
         params: { id },
