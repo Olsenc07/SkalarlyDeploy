@@ -52,9 +52,6 @@ export class MessageService {
       .subscribe((transformedMessage) => {
         this.messages = transformedMessage;
         this.messagesUpdated.next([...this.messages]);
-        this.snackBar.open('Message sent', '✅', {
-          duration: 2000,
-        });
       });
   }
 
@@ -62,6 +59,11 @@ export class MessageService {
     return this.messagesUpdated.asObservable();
   }
 
+  sentNotif(): any {
+    this.snackBar.open('Message sent', '✅', {
+      duration: 2000,
+    });
+  }
   // getInfoUpdateListenerSent(): any {
   //   return this.messagesSent.asObservable();
   // }

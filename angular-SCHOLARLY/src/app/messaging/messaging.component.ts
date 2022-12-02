@@ -148,6 +148,8 @@ export class MessagingComponent implements OnInit {
       });
       this.message.reset('');
     }
+    // Show green check mark
+    this.messagesService.sentNotif();
   }
 
   outputMessage(data): void {
@@ -279,5 +281,6 @@ export class MessageCardComponent implements OnInit {
   deleteMsg(msgId: string): any {
     console.log('jesse', msgId);
     this.messageNotificationService.deleteMessage(msgId);
+    this.messagesService.getMessages(this.userId, this.username);
   }
 }

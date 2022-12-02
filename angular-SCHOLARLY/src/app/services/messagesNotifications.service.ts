@@ -64,7 +64,7 @@ export class MessageNotificationService {
         this.messagesDel = updatedPosts;
         this.messagesInfoDel.next([...this.messagesDel]);
         this.snackBar.open('Message Deleted', '🗑', {
-          duration: 3000,
+          duration: 2000,
         });
       });
   }

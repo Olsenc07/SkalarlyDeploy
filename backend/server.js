@@ -42,7 +42,7 @@ const options = {
 
  const path = require('path');
  const mongoose = require('mongoose');
- const cloudinary = require('cloudinary')
+
 
  const postRoutes = require('/app/backend/routes/posts');
  const userRoutes = require('/app/backend/routes/user');
@@ -124,11 +124,12 @@ io.on('connection', (socket) => {
             try{
               UserInfo.findOne({username: data.otherUser })
               .then((user) => { 
-            console.log('road is open',user);
+            console.log('road is open', user);
                 Subscription.findOne({Creator: user.Creator})
                 .then(subscriber =>{
-if(subscriber !== null){
+            console.log('road is opener', subscriber);
 
+if(subscriber !== null){
   Subscription.findOne({Creator: user.Creator})
   .then(subscriber => {
     const p256dh = subscriber.keys.p256dh
