@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const Post = require('/app/backend/models/post');
 const showCase = require('/app/backend/models/showCases');
+const Subscription = require('/app/backend/models/subscription');
 const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
 const cloudinary = require('cloudinary').v2
