@@ -25,7 +25,9 @@ width: 100%;
     <div class="message_" id="message-container" style="display:flex; flex-direction:row;  ">
    <div style="margin:2% 5% 0% 2%;color:white" > @{{data.username}} </div>
    <div style="font-size:small; color: #b1acac;margin-top: 2%;">  {{data.time}}  </div>
-   <button mat-icon-button matSuffix class="far fa-times-circle delete_" (click)="deleteMsg(data.id)" matTooltip="Delete message for both Skalars"></button>
+   <button mat-icon-button matSuffix class="delete_" (click)="deleteMsg(data.id)" matTooltip="Delete message for both Skalars">
+    <mat-icon class="fas fa-times-circle"></mat-icon>
+   </button>
 
    </div>
    <div style="display: flex;color:white;margin-bottom: 2%; justify-content: space-between;">  {{data.message}} 
