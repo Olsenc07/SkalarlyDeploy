@@ -34,7 +34,6 @@ export class PostsService {
   }
 
   checkNotification(id: string): any {
-    console.log('right here', id);
     this.http
       .get<{ infos: any }>('https://www.skalarly.com/api/posts/checkNotif', {
         params: { id },
@@ -45,9 +44,9 @@ export class PostsService {
         })
       )
       .subscribe((transformedInfos) => {
-        console.log('trans', transformedInfos);
+        console.log('trans', transformedInfos.Creator);
 
-        this.notifId = transformedInfos;
+        this.notifId = transformedInfos.Creator;
         console.log('hello', this.notifId);
         this.notifUpdated.next(this.notifId);
       });
