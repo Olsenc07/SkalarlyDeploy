@@ -11,6 +11,9 @@
 <!-- <script src="/__/firebase/init.js"></script>
 </body> -->
 
+<!-- ||
+      (isRetrievePScreen$ | async) -->
+
 <form
   [formGroup]="searchForm"
   (ngSubmit)="onSubmit()"
@@ -18,8 +21,7 @@
     ((isHomeScreen$ | async) ||
       (isVerifiedScreen$ | async) ||
       (isSignUpScreen$ | async) ||
-      (isResetPScreen$ | async) ||
-      (isRetrievePScreen$ | async)) === true
+      (isResetPScreen$ | async) ) === true
       ? 'background'
       : 'background_'
   "
@@ -38,8 +40,7 @@
           ((isHomeScreen$ | async) ||
             (isSignUpScreen$ | async) ||
             (isVerifiedScreen$ | async) ||
-            (isResetPScreen$ | async) ||
-            (isRetrievePScreen$ | async)) === false
+            (isResetPScreen$ | async) ) === false
         "
       >
         <mat-toolbar class="header" id="nav-bar">
