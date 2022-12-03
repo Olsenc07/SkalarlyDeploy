@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 export interface UserNames {
   _id: string;
@@ -16,7 +16,7 @@ export interface UserNames {
 })
 export class PostsService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
-  private notifUpdated = new Subject();
+  private notifUpdated = new ReplaySubject();
   private notifId: string;
   getNotifId(): any {
     return this.notifId;
@@ -39,7 +39,8 @@ export class PostsService {
         params: { id },
       })
       .pipe(
-        map((infosData) => {
+        map((infosData) => { 
+          console.log('months', infosData.infos)
           return infosData.infos;
         })
       )
