@@ -42,7 +42,8 @@ export class PostsService {
       })
       .pipe(
         map((infosData) => {
-          console.log('dj', infosData.infos._id);
+          console.log('djs', infosData);
+          console.log('dj', infosData.infos);
           this.notifId = infosData.infos._id;
           return this.notifId;
         })
