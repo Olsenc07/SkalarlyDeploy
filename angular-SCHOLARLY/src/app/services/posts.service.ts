@@ -48,6 +48,7 @@ export class PostsService {
         next: (response) => {
           console.log('chlor', response);
           this.notifId = response.Creator;
+          this.notifUpdated.next(this.notifId);
         },
         // console.log('trans', transformedInfos.Creator);
 
