@@ -42,17 +42,14 @@ export class PostsService {
       })
       .pipe(
         map((infosData) => {
-          console.log('djs', infosData);
-          console.log('dj', infosData.infos);
-          this.notifId = infosData.infos._id;
-          return this.notifId;
+          return infosData.infos;
         })
       )
       .subscribe((transformedInfos) => {
         console.log('trans', transformedInfos);
 
-        this.infos = transformedInfos;
-        this.notifUpdated.next(this.infos);
+        this.notifId = transformedInfos;
+        this.notifUpdated.next(this.notifId);
       });
   }
   deleteNotif(id: string): any {
