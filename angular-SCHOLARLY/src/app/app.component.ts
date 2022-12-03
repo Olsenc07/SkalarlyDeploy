@@ -89,6 +89,8 @@ export class AppComponent implements OnInit {
         user ? this._filter(user) : this.allUsers.slice()
       )
     );
+    this.userId = this.authService.getUserId();
+    console.log('my way 2', this.userId);
   }
 
   private _filter(value: string): string[] {

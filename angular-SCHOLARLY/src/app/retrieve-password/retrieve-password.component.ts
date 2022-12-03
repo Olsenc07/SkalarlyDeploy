@@ -45,6 +45,14 @@ export class RetrievePasswordComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // Reset notifications
+  resetNotifs(): void {
+    console.log('working 1');
+  }
+  // Turn off notifications
+  offNotifs(): void {
+    console.log('working 2');
+  }
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
 
