@@ -32,6 +32,7 @@ export interface Follow {
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  notifType = '';
   ring = false;
   notif: string;
   Notification = false;
@@ -108,9 +109,10 @@ export class ProfileComponent implements OnInit {
     // Info
     this.userId = this.authService.getUserId();
     this.postsService.checkNotification(this.userId);
-    this.notif = this.postsService.getNotifId();
+    this.postsService.getNotifId();
     console.log('During the day', this.notif);
-
+    this.notifType = typeof this.notif;
+    console.log('type', this.notifType);
     this.authService.getInfoProfile(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
