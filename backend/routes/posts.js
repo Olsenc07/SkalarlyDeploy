@@ -487,4 +487,21 @@ router.get("/checkNotif", async (req, res) => {
       
     })
 })
+
+// Delete Notification 
+router.delete("/deleteNotif/:id", checkAuth, async(req, res, next ) => {
+    await Subscription.deleteOne({Creator: req.params.id})
+    .then((result) =>{
+        if (result){
+            res.status(200);
+            } else {
+                res.status(401).json({message: 'Not authorized'});
+            }
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Deleting notifications failed!'
+            });
+        });
+    })
 module.exports = router;

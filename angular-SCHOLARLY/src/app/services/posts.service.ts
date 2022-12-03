@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 export interface UserNames {
   _id: string;
   username: string;
@@ -14,7 +15,7 @@ export interface UserNames {
   providedIn: 'root',
 })
 export class PostsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
   private notifUpdated = new Subject();
   private infos = '';
   searchUsers(query: string): any {
@@ -37,13 +38,23 @@ export class PostsService {
       })
       .pipe(
         map((infosData) => {
-          console.log('dj', infosData.infos);
-          return infosData.infos;
+          console.log('dj', infosData.infos._id);
+          return infosData.infos._id;
         })
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.notifUpdated.next(this.infos);
+      });
+  }
+  deleteNotif(id: string): any {
+    console.log('right here', id);
+    this.http
+      .delete('https://www.skalarly.com/api/posts/deleteNotif/' + id)
+      .subscribe((transformedInfos) => {
+        this.snackBar.open('Notifications Off', '', {
+          duration: 3000,
+        });
       });
   }
 }

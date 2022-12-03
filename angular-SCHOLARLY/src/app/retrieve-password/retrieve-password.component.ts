@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Location } from '@angular/common';
+import { PostsService } from '../services/posts.service';
 
 @Component({
   selector: 'app-retrieve-password',
@@ -16,6 +17,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./retrieve-password.component.scss'],
 })
 export class RetrievePasswordComponent implements OnInit {
+  userId: string;
   isLoading = false;
   visible = true;
   passwordDel: FormControl = new FormControl('', Validators.minLength(8));
@@ -38,12 +40,15 @@ export class RetrievePasswordComponent implements OnInit {
   });
 
   constructor(
+    private postsService: PostsService,
     public authService: AuthService,
     private snackBar: MatSnackBar,
     private location: Location
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+  }
 
   // Reset notifications
   resetNotifs(): void {
@@ -51,7 +56,8 @@ export class RetrievePasswordComponent implements OnInit {
   }
   // Turn off notifications
   offNotifs(): void {
-    console.log('working 2');
+    console.log('working 2', this.userId);
+    this.postsService.deleteNotif(this.userId);
   }
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
