@@ -18,8 +18,9 @@ export class PostsService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
   private notifUpdated = new Subject();
   private infos = '';
+  private notifId: string;
   getNotifId(): any {
-    return this.notifUpdated;
+    return this.notifId;
   }
   searchUsers(query: string): any {
     return this.http
@@ -42,10 +43,13 @@ export class PostsService {
       .pipe(
         map((infosData) => {
           console.log('dj', infosData.infos._id);
-          return infosData.infos._id;
+          this.notifId = infosData.infos._id;
+          return this.notifId;
         })
       )
       .subscribe((transformedInfos) => {
+        console.log('trans', transformedInfos);
+
         this.infos = transformedInfos;
         this.notifUpdated.next(this.infos);
       });
