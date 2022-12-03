@@ -12,13 +12,10 @@ import { PostsService, UserNames } from './services/posts.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  ring = false;
-  Notification = false;
   users: UserNames[] = [];
   postClicked = false;
   commentClicked = false;
   userId: string;
-  notif: string;
 
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -89,8 +86,6 @@ export class AppComponent implements OnInit {
         user ? this._filter(user) : this.allUsers.slice()
       )
     );
-    this.userId = this.authService.getUserId();
-    console.log('my way 2', this.userId);
   }
 
   private _filter(value: string): string[] {
@@ -101,9 +96,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.getAuthData();
-    this.userId = this.authService.getUserId();
-    console.log('my way', this.userId);
     const url = new URL(window.location.href);
     const notSecure = url.protocol;
     if (notSecure === 'http:') {
@@ -113,8 +105,6 @@ export class AppComponent implements OnInit {
       location.href = myURL.href;
     }
     this.authService.autoAuthUser();
-    this.notif = this.postsService.checkNotification(this.userId);
-    console.log('During the day', this.notif);
 
     document
       .getElementsByClassName('search-box__icon')[0]
@@ -211,101 +201,6 @@ export class AppComponent implements OnInit {
 
     if (window.screen.width < 1170) {
       this.minwidth = false;
-    }
-  }
-
-  // Trigger Notifications
-  Notifications(): any {
-    this.ring = true;
-    // Service worker
-    const Id = this.userId;
-    const Authservice = this.authService;
-    // Web-Push
-    // Public base64 to Uint
-    function urlBase64ToUint8Array(base64String): any {
-      const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
-      const base64 = (base64String + padding)
-        .replace(/\-/g, '+')
-        .replace(/_/g, '/');
-
-      const rawData = window.atob(base64);
-      const outputArray = new Uint8Array(rawData.length);
-
-      for (let i = 0; i < rawData.length; ++i) {
-        outputArray[i] = rawData.charCodeAt(i);
-      }
-      return outputArray;
-    }
-
-    function configurePushSub(): any {
-      if (!('serviceWorker' in navigator)) {
-        return;
-      }
-      let req;
-      navigator.serviceWorker.ready
-        .then((swreq) => {
-          req = swreq;
-          console.log('hey chazzy', swreq);
-          return swreq.pushManager.getSubscription();
-        })
-        .then((sub) => {
-          if (sub === null) {
-            // Create a new subscription
-            const convertedVapidPublicKey = urlBase64ToUint8Array(
-              'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
-            );
-            req.pushManager
-              .subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: convertedVapidPublicKey,
-              })
-              .then((newSub: any) => {
-                Authservice.addSubscription(newSub, Id);
-                // return fetch('https://www.skalarly.com/api/subscribe/follow', {
-                //   method: 'POST',
-                //   headers: {
-                //     'Content-Type': 'application/json',
-                //   },
-                //   body: JSON.stringify(newSub),
-                // });
-              });
-          } else {
-            // We have a subscription
-            console.log('We have a subscription');
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-
-    // displayConfir notif
-    // function displayConfirmNotification(): any {
-    //   if ('serviceWorker' in navigator) {
-    //     navigator.serviceWorker.ready.then((swreq) => {
-    //       swreq.showNotification('Successfully subscribed dawg!');
-    //     });
-    //   }
-    // }
-
-    // Get notifcation permission
-    function askForNotificationPermission(): any {
-      Notification.requestPermission((result) => {
-        console.log('Permission', result);
-        if (result === 'granted') {
-          this.Notification = true;
-        }
-
-        if (result !== 'granted') {
-          console.log('Permission not granted');
-        } else {
-          configurePushSub();
-        }
-      });
-    }
-
-    if ('Notification' in window) {
-      window.addEventListener('load', askForNotificationPermission);
     }
   }
 

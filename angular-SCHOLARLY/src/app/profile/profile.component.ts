@@ -12,6 +12,7 @@ import { AuthDataInfo } from '../signup/auth-data.model';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FollowService } from '../services/follow.service';
 import { MatDialog } from '@angular/material/dialog';
+import { PostsService } from '../services/posts.service';
 
 export interface Follow {
   id: string;
@@ -31,6 +32,10 @@ export interface Follow {
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  ring = false;
+  notif: string;
+  Notification = false;
+
   isLoading = false;
   follow: Follow[] = [];
   private followSub: Subscription;
@@ -68,6 +73,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private bottomSheet: MatBottomSheet,
+    private postsService: PostsService,
     private router: Router,
     public postService: PostService,
     private authService: AuthService,
@@ -102,6 +108,8 @@ export class ProfileComponent implements OnInit {
     this.isLoading = true;
     // Info
     this.userId = this.authService.getUserId();
+    this.notif = this.postsService.checkNotification(this.userId);
+    console.log('During the day', this.notif);
     this.authService.getInfoProfile(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
@@ -138,6 +146,102 @@ export class ProfileComponent implements OnInit {
         this.followers = followers;
       });
   }
+
+  // Trigger Notifications
+  Notifications(): any {
+    this.ring = true;
+    // Service worker
+    const Id = this.userId;
+    const Authservice = this.authService;
+    // Web-Push
+    // Public base64 to Uint
+    function urlBase64ToUint8Array(base64String): any {
+      const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+      const base64 = (base64String + padding)
+        .replace(/\-/g, '+')
+        .replace(/_/g, '/');
+
+      const rawData = window.atob(base64);
+      const outputArray = new Uint8Array(rawData.length);
+
+      for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+      }
+      return outputArray;
+    }
+
+    function configurePushSub(): any {
+      if (!('serviceWorker' in navigator)) {
+        return;
+      }
+      let req;
+      navigator.serviceWorker.ready
+        .then((swreq) => {
+          req = swreq;
+          console.log('hey chazzy', swreq);
+          return swreq.pushManager.getSubscription();
+        })
+        .then((sub) => {
+          if (sub === null) {
+            // Create a new subscription
+            const convertedVapidPublicKey = urlBase64ToUint8Array(
+              'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
+            );
+            req.pushManager
+              .subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: convertedVapidPublicKey,
+              })
+              .then((newSub: any) => {
+                Authservice.addSubscription(newSub, Id);
+                // return fetch('https://www.skalarly.com/api/subscribe/follow', {
+                //   method: 'POST',
+                //   headers: {
+                //     'Content-Type': 'application/json',
+                //   },
+                //   body: JSON.stringify(newSub),
+                // });
+              });
+          } else {
+            // We have a subscription
+            console.log('We have a subscription');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    // displayConfir notif
+    // function displayConfirmNotification(): any {
+    //   if ('serviceWorker' in navigator) {
+    //     navigator.serviceWorker.ready.then((swreq) => {
+    //       swreq.showNotification('Successfully subscribed dawg!');
+    //     });
+    //   }
+    // }
+
+    // Get notifcation permission
+    function askForNotificationPermission(): any {
+      Notification.requestPermission((result) => {
+        console.log('Permission', result);
+        if (result === 'granted') {
+          this.Notification = true;
+        }
+
+        if (result !== 'granted') {
+          console.log('Permission not granted');
+        } else {
+          configurePushSub();
+        }
+      });
+    }
+
+    if ('Notification' in window) {
+      window.addEventListener('load', askForNotificationPermission);
+    }
+  }
+
   navigateToEditProfile(): any {
     this.router.navigate(['/edit-profile/:'], {
       queryParams: { userId: this.userId },
