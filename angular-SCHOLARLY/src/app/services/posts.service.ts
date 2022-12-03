@@ -39,9 +39,9 @@ export class PostsService {
         params: { id },
       })
       .pipe(
-        map((infosData) => { 
-          console.log('months', infosData.infos)
-          return infosData.infos;
+        map((infosData) => {
+          console.log('months', infosData.infos.Creator);
+          return infosData.infos.Creator;
         })
       )
       .subscribe((transformedInfos) => {
