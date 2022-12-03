@@ -37,6 +37,7 @@ export class PostsService {
       })
       .pipe(
         map((infosData) => {
+          console.log('dj', infosData.infos);
           return infosData.infos;
         })
       )
