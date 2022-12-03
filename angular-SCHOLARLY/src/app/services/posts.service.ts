@@ -44,12 +44,16 @@ export class PostsService {
           return infosData.infos.Creator;
         })
       )
-      .subscribe((transformedInfos) => {
-        console.log('trans', transformedInfos.Creator);
+      .subscribe({
+        next: (response) => {
+          console.log('chlor', response);
+          this.notifId = response.Creator;
+        },
+        // console.log('trans', transformedInfos.Creator);
 
-        this.notifId = transformedInfos.Creator;
-        console.log('hello', this.notifId);
-        this.notifUpdated.next(this.notifId);
+        // this.notifId = transformedInfos.Creator;
+        // console.log('hello', this.notifId);
+        // this.notifUpdated.next(this.notifId);
       });
   }
   deleteNotif(id: string): any {
