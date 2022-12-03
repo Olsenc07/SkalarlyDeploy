@@ -108,8 +108,10 @@ export class ProfileComponent implements OnInit {
     this.isLoading = true;
     // Info
     this.userId = this.authService.getUserId();
-    this.notif = this.postsService.checkNotification(this.userId);
+    this.postsService.checkNotification(this.userId);
+    this.notif = this.postsService.getNotifId();
     console.log('During the day', this.notif);
+
     this.authService.getInfoProfile(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()

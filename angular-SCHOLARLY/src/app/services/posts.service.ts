@@ -18,6 +18,9 @@ export class PostsService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
   private notifUpdated = new Subject();
   private infos = '';
+  getNotifId(): any {
+    return this.notifUpdated;
+  }
   searchUsers(query: string): any {
     return this.http
       .post<{ payload: Array<UserNames> }>(
