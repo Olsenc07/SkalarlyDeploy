@@ -99,6 +99,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.getAuthData();
     this.userId = this.authService.getUserId();
     console.log('my way', this.userId);
     const url = new URL(window.location.href);
