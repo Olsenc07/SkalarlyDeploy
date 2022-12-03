@@ -227,7 +227,12 @@
 
       </div>
       </div>
-
+      <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
+        <button  mat-icon-button matSuffix class="trashCan_"
+          (click)='onDeleteComment(comment.id)'>
+          <i class="far fa-times-circle"></i>
+          </button>
+          </div>
     </div>
 
     <div class="Comment">
