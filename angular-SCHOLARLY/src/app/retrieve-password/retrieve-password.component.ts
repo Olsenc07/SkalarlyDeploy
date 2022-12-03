@@ -18,7 +18,6 @@ import { PostsService } from '../services/posts.service';
 })
 export class RetrievePasswordComponent implements OnInit {
   userId: string;
-  notif: string;
   isLoading = false;
   visible = true;
   passwordDel: FormControl = new FormControl('', Validators.minLength(8));
@@ -49,19 +48,8 @@ export class RetrievePasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
-    this.notif = this.postsService.getNotifId();
-    console.log('During the day', this.notif);
   }
 
-  // Reset notifications
-  resetNotifs(): void {
-    console.log('working 1');
-  }
-  // Turn off notifications
-  offNotifs(): void {
-    console.log('working 2', this.userId);
-    this.postsService.deleteNotif(this.userId);
-  }
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
 

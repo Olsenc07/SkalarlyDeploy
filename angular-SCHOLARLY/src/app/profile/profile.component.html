@@ -31,11 +31,7 @@
             @{{info.username}}
 
           </div>
-          <div >
-            <button mat-icon-button (click)="Notifications()" *ngIf="notif !== String" matTooltip="Notifications">
-            <i class="far fa-bell bellC" [ngClass]="ring === true ? 'bell' : '' " ></i>
-          </button>
-        </div>
+        
          
 
         
@@ -150,6 +146,17 @@
             {{ info.name}}
            
           </div>
+
+          <div >
+            <button mat-icon-button (click)="Notifications()" *ngIf="(notif | typeof) !== 'string' " matTooltip="Turn Notifications On">
+            <i class="far fa-bell bellC" [ngClass]="ring === true ? 'bell' : '' " ></i>
+          </button>
+          <button mat-icon-button (click)="offNotifs()" *ngIf="(notif | typeof) === 'string' " matTooltip="Turn Notifications Off">
+            <i class="far fa-bell-slash bellC" ></i>
+          </button>
+        </div>
+
+
           <div *ngIf="info.pronouns" class="pronouns" matTooltip="Proper Pronouns">
             ({{ info.pronouns}})
               </div>

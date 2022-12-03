@@ -17,7 +17,6 @@ export interface UserNames {
 export class PostsService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
   private notifUpdated = new Subject();
-  private infos = '';
   private notifId: string;
   getNotifId(): any {
     return this.notifId;
@@ -49,6 +48,7 @@ export class PostsService {
         console.log('trans', transformedInfos);
 
         this.notifId = transformedInfos;
+        console.log('hello', this.notifId);
         this.notifUpdated.next(this.notifId);
       });
   }

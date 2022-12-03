@@ -72,7 +72,6 @@ export class ProfileComponent implements OnInit {
   following = false;
 
   constructor(
-    private bottomSheet: MatBottomSheet,
     private postsService: PostsService,
     private router: Router,
     public postService: PostService,
@@ -148,7 +147,11 @@ export class ProfileComponent implements OnInit {
         this.followers = followers;
       });
   }
-
+  // Turn off notifications
+  offNotifs(): void {
+    console.log('working 2', this.userId);
+    this.postsService.deleteNotif(this.userId);
+  }
   // Trigger Notifications
   Notifications(): any {
     this.ring = true;
