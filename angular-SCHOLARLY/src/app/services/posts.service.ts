@@ -40,8 +40,8 @@ export class PostsService {
       })
       .pipe(
         map((infosData) => {
-          console.log('months', infosData.infos.Creator);
-          return infosData.infos.Creator;
+          console.log('months', infosData.infos);
+          return infosData.infos;
         })
       )
       .subscribe({
