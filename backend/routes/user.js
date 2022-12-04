@@ -235,6 +235,7 @@ const verifyEmailV = async (req, res, next) => {
 router.post('/forgot', async (req, res) => {
          await User.findOne({email: req.body.email})
         .then((found) => {
+            if(found){
             let founded = found.email;
             User.findOne({id: req.body.id}).then((vertigo) => {
                 console.log('vert', vertigo.email)
@@ -249,7 +250,7 @@ router.post('/forgot', async (req, res) => {
                     })
                 }
             });
-           
+        }
         })
         //    Check users existence
         // if (!user) {
