@@ -242,23 +242,23 @@ router.post('/forgot', async (req, res) => {
                 console.log('coda', founded)
                 if(founded = vertigo.email){
                     console.log('danny is a cutie');
-                   return res.status(200).json({
-                        message: 'Check your email to reset your password'
+                    res.status(201).json({
+                        message: 'Check your email to reset your password.',
                     })
                 }else{
                     res.status(500).json({
-                        message: 'This email is not yours.'
+                        message: 'This email is not yours.',
                     })
                 }
             });
         }  else{
             res.status(500).json({
-                message: 'This email does not exist, or is not yours.'
+                message: 'This email does not exist, or is not yours.',
             })
         }
         }).catch(err => {
             return res.status(401).json({
-                message: "Email not found",
+                message: "Email not found.",
         
             })
         })
