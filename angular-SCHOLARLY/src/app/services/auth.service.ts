@@ -2213,7 +2213,7 @@ export class AuthService {
     this.http
       .post('https://www.skalarly.com/api/user/forgot', authData)
       .subscribe({
-        next: (info) => {},
+        next: () => {},
         error: (error) => {
           this.authStatusListener.next(false);
         },
