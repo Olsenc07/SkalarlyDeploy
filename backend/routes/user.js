@@ -241,6 +241,7 @@ router.post('/forgot', async (req, res) => {
                 console.log('vert', vertigo.email)
                 console.log('coda', founded)
                 if(founded = vertigo.email){
+                    console.log('danny is a cutie');
                     res.status(200).json({
                         message: 'Check your email to reset your password'
                     })

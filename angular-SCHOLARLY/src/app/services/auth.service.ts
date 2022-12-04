@@ -2211,7 +2211,10 @@ export class AuthService {
   resetPassword(email: string, id: string): any {
     const authData: AuthData = { email, id };
     this.http
-      .post('https://www.skalarly.com/api/user/forgot', authData)
+      .post<{ message: string }>(
+        'https://www.skalarly.com/api/user/forgot',
+        authData
+      )
       .subscribe({
         next: () => {},
         error: (error) => {
