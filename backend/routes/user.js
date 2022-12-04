@@ -233,53 +233,67 @@ const verifyEmailV = async (req, res, next) => {
 
 // Reset password
 router.post('/forgot', async (req, res) => {
-        const user = await User.findOne({ email: req.body.email });
-        //    Check users existence
-        if (!user) {
-            res.status(500).json({
-                message: 'This email does not exist, or is not verified.'
-            })
-        }
-        const msg = {
-            from: ' "Reset Password" <admin@skalarly.com>',
-            to: user.email,
-            replyTo: 'Do not reply',
-            subject: 'Skalarly - reset password',
-            text: `Hello ${user.username} we hear you forgot your password.
-        Here is your reset code ${user.password} then copy and paste the link below to navigate back
-        https://www.skalarly.com/api/user/reset-password
-        If you have recieved this email by erorr, please disregard.
-        `,
-            html: `
-            <html fxLayout="column" fxLayoutAlign="center center">
-        <h2 style="font-family:'Cinzel'; 
-        font-size: large;
-        ">Hello ${user.username} we hear you forgot your password.</h2>
-        <div style="font-family:'Poppins';
-        font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
-        ${user.password}
-        <div style="font-family:'Poppins';
-        font-size: medium;"> Now follow the link below </div>
-       <a href="https://www.skalarly.com/api/user/reset-password">Follow link</a>
-        <div style="font-family:'Poppins';
-        font-size: small;
-        ">If you have recieved this email by erorr, please disregard. </div>
-        </html>
-
-        `
-        }
-        // Sending mail
-        transporter.sendMail(msg, (error, info) => {
-            if (error) {
-                console.log(error)
-                res.status(500)
+        
+        const check = await User.findOne({_id: req.body.id})
+        .then((found) => {
+            console.log('found', found)
+            const user =  User.findOne({ email: req.body.email });
+            if(found.email = user){
+                res.status(500).json({
+                    message: 'Check your email to reset your password'
+                })
+            }else{
+                res.status(500).json({
+                    message: 'This email does not exist, or is not yours.'
+                })
             }
-            else {
-                console.log('Password reset has been sent to email');
-                res.status(200)
-            }
-
         })
+        //    Check users existence
+        // if (!user) {
+        //     res.status(500).json({
+        //         message: 'This email does not exist, or is not yours.'
+        //     })
+        // }
+    //     const msg = {
+    //         from: ' "Reset Password" <admin@skalarly.com>',
+    //         to: user.email,
+    //         replyTo: 'Do not reply',
+    //         subject: 'Skalarly - reset password',
+    //         text: `Hello ${user.username} we hear you forgot your password.
+    //     Here is your reset code ${user.password} then copy and paste the link below to navigate back
+    //     https://www.skalarly.com/api/user/reset-password
+    //     If you have recieved this email by erorr, please disregard.
+    //     `,
+    //         html: `
+    //         <html fxLayout="column" fxLayoutAlign="center center">
+    //     <h2 style="font-family:'Cinzel'; 
+    //     font-size: large;
+    //     ">Hello ${user.username} we hear you forgot your password.</h2>
+    //     <div style="font-family:'Poppins';
+    //     font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
+    //     ${user.password}
+    //     <div style="font-family:'Poppins';
+    //     font-size: medium;"> Now follow the link below </div>
+    //    <a href="https://www.skalarly.com/api/user/reset-password">Follow link</a>
+    //     <div style="font-family:'Poppins';
+    //     font-size: small;
+    //     ">If you have recieved this email by erorr, please disregard. </div>
+    //     </html>
+
+    //     `
+    //     }
+        // Sending mail
+        // transporter.sendMail(msg, (error, info) => {
+        //     if (error) {
+        //         console.log(error)
+        //         res.status(500)
+        //     }
+        //     else {
+        //         console.log('Password reset has been sent to email');
+        //         res.status(200)
+        //     }
+
+        // })
     
 
 })

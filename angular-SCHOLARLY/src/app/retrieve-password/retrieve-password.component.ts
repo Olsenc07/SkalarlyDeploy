@@ -81,8 +81,8 @@ export class RetrievePasswordComponent implements OnInit {
     this.authService.login(this.email.value, this.password.value);
   }
   passwordReset(): void {
-    console.log(this.email.value);
-    this.authService.resetPassword(this.email.value);
+    console.log(this.email.value, this.userId);
+    this.authService.resetPassword(this.email.value, this.userId);
     this.email.setValue('');
   }
   DeleteAccount(): void {

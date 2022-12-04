@@ -2208,13 +2208,12 @@ export class AuthService {
   }
 
   // Reset Password
-  resetPassword(email: string): any {
-    this.snackBar.open('Check your email to reset your password.', 'Will do');
-    const authData: AuthData = { email };
+  resetPassword(email: string, id: string): any {
+    const authData: AuthData = { email, id };
     this.http
       .post('https://www.skalarly.com/api/user/forgot', authData)
       .subscribe({
-        next: () => {},
+        next: (info) => {},
         error: (error) => {
           this.authStatusListener.next(false);
         },

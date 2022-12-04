@@ -109,7 +109,7 @@ export class ProfileComponent implements OnInit {
     // Info
     this.userId = this.authService.getUserId();
     this.postsService.checkNotification(this.userId);
-    this.postsService.getNotifId();
+    this.notif = this.postsService.getNotifId();
     console.log('During the day', this.notif);
     this.notifType = typeof this.notif;
     console.log('type', this.notifType);
