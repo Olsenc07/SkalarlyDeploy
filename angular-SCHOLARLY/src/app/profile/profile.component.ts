@@ -108,9 +108,7 @@ export class ProfileComponent implements OnInit {
     this.isLoading = true;
     // Info
     this.userId = this.authService.getUserId();
-    this.postsService.checkNotification(this.userId).subscribe((check) => {
-      console.log('check', check);
-    });
+    this.postsService.checkNotification(this.userId);
     this.notifsListenerSubs = this.postsService
       .getNotifId()
       .subscribe((value) => {
