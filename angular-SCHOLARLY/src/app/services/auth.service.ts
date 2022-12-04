@@ -2217,8 +2217,8 @@ export class AuthService {
       )
       .pipe(
         map((infosData) => {
-          console.log('axe', infosData.infos);
-          return infosData.infos;
+          console.log('axe', infosData);
+          return infosData;
         })
       )
       .subscribe({
