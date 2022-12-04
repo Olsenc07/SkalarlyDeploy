@@ -145,10 +145,10 @@
           <div *ngIf="info.name" class="name">
             {{ info.name}}
             <div >
-              <button mat-icon-button (click)="Notifications()" *ngIf="notifType !== 'string' " matTooltip="Turn Notifications On">
+              <button mat-icon-button (click)="Notifications()" *ngIf="notif !== userId " matTooltip="Turn Notifications On">
               <i class="far fa-bell bellC" [ngClass]="ring === true ? 'bell' : '' " ></i>
             </button>
-            <button mat-icon-button (click)="offNotifs()" *ngIf="notifType === 'string' " matTooltip="Turn Notifications Off">
+            <button mat-icon-button (click)="offNotifs()" *ngIf="notif === userId " matTooltip="Turn Notifications Off">
               <i class="far fa-bell-slash bellC" ></i>
             </button>
           </div>
