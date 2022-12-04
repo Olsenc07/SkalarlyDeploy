@@ -237,19 +237,19 @@ router.post('/forgot', async (req, res) => {
         .then((found) => {
             console.log('found', found);
             console.log('real', req.body.id);
-            const user =  User.findOne({id: req.body.id}).then((vertigo) => {
-                console.log('vert', vertigo)
+            User.findOne({id: req.body.id}).then((vertigo) => {
+                console.log('vert', vertigo.email)
+                if(found = vertigo.email){
+                    res.status(200).json({
+                        message: 'Check your email to reset your password'
+                    })
+                }else{
+                    res.status(500).json({
+                        message: 'This email does not exist, or is not yours.'
+                    })
+                }
             });
-            console.log('user', user);
-            if(found = user){
-                res.status(500).json({
-                    message: 'Check your email to reset your password'
-                })
-            }else{
-                res.status(500).json({
-                    message: 'This email does not exist, or is not yours.'
-                })
-            }
+           
         })
         //    Check users existence
         // if (!user) {

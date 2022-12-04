@@ -55,6 +55,7 @@ export class ProfileComponent implements OnInit {
   span = document.getElementsByClassName('close')[0];
   // private authStatusSubs: Subscription;
   private authListenerSubs: Subscription;
+  private notifsListenerSubs: Subscription;
 
   // storedPosts: Post[] = [];
   posts: Post[] = [];
@@ -109,11 +110,15 @@ export class ProfileComponent implements OnInit {
     // Info
     this.userId = this.authService.getUserId();
     this.postsService.checkNotification(this.userId);
-    this.postsService.getNotifId().subscribe((value) => {
-      console.log('shatter butter', value);
-      this.notif = value;
-    });
+    this.notifsListenerSubs = this.postsService
+      .getNotifId()
+      .subscribe((value) => {
+        console.log('shatter butter', value);
+        this.notif = value;
+      });
     console.log('During the day', this.notif);
+    console.log('During the night', this.notifsListenerSubs);
+
     this.notifType = typeof this.notif;
     console.log('type', this.notifType);
     this.authService.getInfoProfile(this.userId);
