@@ -237,9 +237,11 @@ router.post('/forgot', async (req, res) => {
         .then((found) => {
             console.log('found', found);
             console.log('real', req.body.id);
-            const user =  User.findOne({id: req.body.id});
-            console.log('user', user.email);
-            if(found = user.email){
+            const user =  User.findOne({id: req.body.id}).then((vertigo) => {
+                console.log('vert', vertigo)
+            });
+            console.log('user', user);
+            if(found = user){
                 res.status(500).json({
                     message: 'Check your email to reset your password'
                 })
