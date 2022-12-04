@@ -112,8 +112,8 @@ export class ProfileComponent implements OnInit {
     this.notifsListenerSubs = this.postsService
       .getNotifId()
       .subscribe((value) => {
-        console.log('shatter butter', value);
-        this.notif = value;
+        console.log('shatter butter', value.Creator);
+        this.notif = value.Creator;
         console.log('During the midday', this.notif);
       });
     console.log('During the day', this.notif);

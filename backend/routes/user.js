@@ -235,11 +235,11 @@ const verifyEmailV = async (req, res, next) => {
 router.post('/forgot', async (req, res) => {
          await User.findOne({email: req.body.email})
         .then((found) => {
-            let founded = found
+            let founded = found.email;
             User.findOne({id: req.body.id}).then((vertigo) => {
                 console.log('vert', vertigo.email)
-                console.log('coda', founded.email)
-                if(founded.email = vertigo.email){
+                console.log('coda', founded)
+                if(founded = vertigo.email){
                     res.status(200).json({
                         message: 'Check your email to reset your password'
                     })
