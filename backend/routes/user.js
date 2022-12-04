@@ -246,11 +246,20 @@ router.post('/forgot', async (req, res) => {
                     })
                 }else{
                     res.status(500).json({
-                        message: 'This email does not exist, or is not yours.'
+                        message: 'This email is not yours.'
                     })
                 }
             });
+        }  else{
+            res.status(500).json({
+                message: 'This email does not exist, or is not yours.'
+            })
         }
+        }).catch(err => {
+            return res.status(401).json({
+                message: "Email not found",
+        
+            })
         })
         //    Check users existence
         // if (!user) {
