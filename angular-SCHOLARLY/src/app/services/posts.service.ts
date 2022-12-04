@@ -47,7 +47,7 @@ export class PostsService {
       .subscribe({
         next: (response) => {
           console.log('chlor', response);
-          this.notifId = response.Creator;
+          this.notifId = response;
           this.notifUpdated.next(this.notifId);
         },
         // console.log('trans', transformedInfos.Creator);
