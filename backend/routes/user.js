@@ -235,8 +235,6 @@ const verifyEmailV = async (req, res, next) => {
 router.post('/forgot', async (req, res) => {
          await User.findOne({email: req.body.email})
         .then((found) => {
-            console.log('found', found);
-            console.log('real', req.body.id);
             User.findOne({id: req.body.id}).then((vertigo) => {
                 console.log('vert', vertigo.email)
                 if(found = vertigo.email){
