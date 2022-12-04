@@ -236,7 +236,8 @@ router.post('/forgot', async (req, res) => {
          await User.findOne({email: req.body.email})
         .then((found) => {
             console.log('found', found);
-            const user =  User.findOne({_id: req.body.id});
+            console.log('real', req.body.id);
+            const user =  User.findOne({id: req.body.id});
             console.log('user', user.email);
             if(found = user.email){
                 res.status(500).json({

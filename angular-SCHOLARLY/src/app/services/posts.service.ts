@@ -19,7 +19,7 @@ export class PostsService {
   private notifUpdated = new ReplaySubject();
   private notifId: string;
   getNotifId(): any {
-    return this.notifId;
+    return this.notifUpdated;
   }
   searchUsers(query: string): any {
     return this.http
