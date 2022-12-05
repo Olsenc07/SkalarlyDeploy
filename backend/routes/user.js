@@ -238,29 +238,29 @@ router.post('/forgot', async (req, res) => {
             if(found){
                 try{
             let founded = found.email;
-            User.findOne({id: req.body.id}).then((vertigo) => {
+            User.findOne({id: req.body.id})
+            .then((vertigo) => {
                 console.log('vert', vertigo.email)
                 console.log('coda', founded)
                 if(founded = vertigo.email){
                     res.status(201).json({
-                        message: 'Check your email to reset your password.',
+                        message: 'Check your email to reset your password.'
                     })
                     console.log('danny is a cutie');
                 }else{
                     res.status(500).json({
-                        message: 'This email is not yours.',
+                        message: 'This email is not yours.'
                     })
                 }
-               
             });
         }catch {
             res.status(500).json({
-                message: 'This email does not exist.',
+                message: 'This email does not exist.'
             })  
         }
         }  else{
-            res.status(500).json({
-                message: 'This email does not exist, or is not yours.',
+            res.status(501).json({
+                message: 'This email does not exist, or is not yours.'
             })
         }
         }).catch(err => {

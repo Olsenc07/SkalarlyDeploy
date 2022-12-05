@@ -2222,7 +2222,15 @@ export class AuthService {
         })
       )
       .subscribe({
-        next: () => {},
+        next: () => {
+          this.snackBar.open(
+            'Check your email to reset your password.',
+            'Will do',
+            {
+              duration: 2000,
+            }
+          );
+        },
         error: (error) => {
           this.authStatusListener.next(false);
         },
