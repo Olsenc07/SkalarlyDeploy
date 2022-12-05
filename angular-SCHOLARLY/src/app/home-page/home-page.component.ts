@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home-page',
@@ -11,11 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit, OnDestroy {
-  constructor(
-    public authService: AuthService,
-    private snackBar: MatSnackBar,
-    private router: Router
-  ) {}
+  constructor(public authService: AuthService, public dialog: MatDialog) {}
   email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
@@ -66,6 +61,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
     console.log(this.loginForm.value);
     this.isLoading = true;
     this.authService.login(this.email.value, this.password.value);
+  }
+
+  openDialog(): void {
+    this.dialog.open(ExplainedComponent);
   }
 }
 @Component({
