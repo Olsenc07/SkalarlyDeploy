@@ -99,7 +99,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #dee1e6;
+  background-color: #f2f2f2;
 }
 @keyframes dotPulseBefore {
   0% {
@@ -206,7 +206,7 @@
 @media (max-width: 700px) {
   .log-in-box {
     box-sizing: border-box;
-    padding: 2% 5% 5% 5%;
+    padding: 2% 5% 3% 5%;
     // border: 1px solid gray;
     border-radius: 16px;
     background-color: #fafafa;
