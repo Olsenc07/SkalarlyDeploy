@@ -68,3 +68,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.authService.login(this.email.value, this.password.value);
   }
 }
+@Component({
+  selector: 'app-explained-page',
+  templateUrl: './skalarly-explained.component.html',
+  styleUrls: ['./home-page.component.scss'],
+})
+export class ExplainedComponent {}

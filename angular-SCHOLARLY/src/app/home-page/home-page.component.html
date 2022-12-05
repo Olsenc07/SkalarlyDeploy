@@ -80,8 +80,12 @@
           <p class="tag">Or</p>
 
           <!-- mat-raised-button -->
-          <button mat-button type="button" mat-raised-button routerLink="/sign-up" color="primary" class="action-button">
+          <button type="button" mat-raised-button routerLink="/sign-up" color="primary" class="action-button">
             Create New Account
+          </button>
+
+          <button mat-raised-button (click)="openDialog()">
+            What is Skalarly?
           </button>
        </div>
         </div>

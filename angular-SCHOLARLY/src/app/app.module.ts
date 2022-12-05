@@ -76,6 +76,8 @@ import { TermsPopUpComponent } from './signup/signup.component';
 import { BioComponent } from './profile/profile.component';
 
 import { HomePageComponent } from './home-page/home-page.component';
+import { ExplainedComponent } from './home-page/home-page.component';
+
 import { FriendsActivityComponent } from './friends-activity/friends-activity.component';
 import { PostPageComponent } from './post-page/post-page.component';
 
@@ -149,6 +151,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MainPagesComponent,
     SignupComponent,
     HomePageComponent,
+    ExplainedComponent,
     FriendsActivityComponent,
     PostPageComponent,
     SearchComponent,
