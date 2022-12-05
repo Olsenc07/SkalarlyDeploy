@@ -193,7 +193,7 @@
 @media (min-width: 700px) {
   .log-in-box {
     box-sizing: border-box;
-    padding: 2% 5% 5% 5%;
+    padding: 2% 5% 3% 5%;
     // border: 1px solid gray;
     border-radius: 16px;
     margin: 0% 25% 0% 25%;
@@ -295,7 +295,7 @@ justify-content: center;
   width: 30vw;
 }
 .skalarly{
-  color: grey;
+  color: grey !important;
 }
 .university{
   font-size: medium;
