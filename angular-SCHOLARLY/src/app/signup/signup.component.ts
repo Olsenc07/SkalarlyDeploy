@@ -21,15 +21,10 @@ import {
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
 } from '@angular/material/core';
-import {
-  MatAutocompleteSelectedEvent,
-  MatAutocomplete,
-} from '@angular/material/autocomplete';
-import { MatChipInputEvent } from '@angular/material/chips';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+
+import { MatDialog } from '@angular/material/dialog';
 import { ClassListService } from '../services/class.service';
-import { HttpClient } from '@angular/common/http';
+
 import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 
 import { mimeType } from '../post-page/mime-type.validator';
