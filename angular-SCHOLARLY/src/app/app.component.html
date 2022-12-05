@@ -21,7 +21,8 @@
     ((isHomeScreen$ | async) ||
       (isVerifiedScreen$ | async) ||
       (isSignUpScreen$ | async) ||
-      (isResetPScreen$ | async) ) === true
+      (isResetPScreen$ | async) ||
+      (isRetrievePScreen$ | async)) === true
       ? 'background'
       : 'background_'
   "
@@ -40,7 +41,8 @@
           ((isHomeScreen$ | async) ||
             (isSignUpScreen$ | async) ||
             (isVerifiedScreen$ | async) ||
-            (isResetPScreen$ | async) ) === false
+            (isResetPScreen$ | async) ||
+            (isRetrievePScreen$ | async)) === false
         "
       >
         <mat-toolbar class="header" id="nav-bar">

@@ -11,10 +11,12 @@
 .bodyPopUp{
   display: flex;
   font-family:  'Poppins', sans-serif;
+  width: 50%;
 }
 .bodyBox{
   display: flex;
-  
+  width: 100%;
+  font-family: 'Poppins';
 }
 .bulletPoints{
   display: flex;
