@@ -240,12 +240,48 @@ router.post('/forgot', async (req, res) => {
             let founded = found.email;
             User.findOne({id: req.body.id})
             .then((vertigo) => {
-                console.log('vert', vertigo.email)
-                console.log('coda', founded)
                 if(founded = vertigo.email){
-                    res.status(201).json({
-                        message: 'Check your email to reset your password.'
-                    })
+                    //    Check users existence
+        const msg = {
+            from: ' "Reset Password" <admin@skalarly.com>',
+            to: founded,
+            replyTo: 'Do not reply',
+            subject: 'Skalarly - reset password',
+            text: `Hello ${vertigo.username} we hear you forgot your password.
+        Here is your reset code ${vertigo.password} then copy and paste the link below to navigate back
+        https://www.skalarly.com/api/user/reset-password
+        If you have recieved this email by erorr, please disregard.
+        `,
+            html: `
+            <html fxLayout="column" fxLayoutAlign="center center">
+        <h2 style="font-family:'Cinzel'; 
+        font-size: large;
+        ">Hello ${vertigo.username} we hear you forgot your password.</h2>
+        <div style="font-family:'Poppins';
+        font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
+        ${vertigo.password}
+        <div style="font-family:'Poppins';
+        font-size: medium;"> Now follow the link below </div>
+       <a href="https://www.skalarly.com/api/user/reset-password">Follow link</a>
+        <div style="font-family:'Poppins';
+        font-size: small;
+        ">If you have recieved this email by erorr, please disregard. </div>
+        </html>
+
+        `
+        }
+        // Sending mail
+        transporter.sendMail(msg, (error, info) => {
+            if (error) {
+                console.log(error)
+                res.status(500)
+            }
+            else {
+                console.log('Password reset has been sent to email');
+                res.status(200)
+            }
+
+        })
                     console.log('danny is a cutie');
                 }else{
                     res.status(500).json({
@@ -269,52 +305,7 @@ router.post('/forgot', async (req, res) => {
         
             })
         })
-        //    Check users existence
-        // if (!user) {
-        //     res.status(500).json({
-        //         message: 'This email does not exist, or is not yours.'
-        //     })
-        // }
-    //     const msg = {
-    //         from: ' "Reset Password" <admin@skalarly.com>',
-    //         to: user.email,
-    //         replyTo: 'Do not reply',
-    //         subject: 'Skalarly - reset password',
-    //         text: `Hello ${user.username} we hear you forgot your password.
-    //     Here is your reset code ${user.password} then copy and paste the link below to navigate back
-    //     https://www.skalarly.com/api/user/reset-password
-    //     If you have recieved this email by erorr, please disregard.
-    //     `,
-    //         html: `
-    //         <html fxLayout="column" fxLayoutAlign="center center">
-    //     <h2 style="font-family:'Cinzel'; 
-    //     font-size: large;
-    //     ">Hello ${user.username} we hear you forgot your password.</h2>
-    //     <div style="font-family:'Poppins';
-    //     font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
-    //     ${user.password}
-    //     <div style="font-family:'Poppins';
-    //     font-size: medium;"> Now follow the link below </div>
-    //    <a href="https://www.skalarly.com/api/user/reset-password">Follow link</a>
-    //     <div style="font-family:'Poppins';
-    //     font-size: small;
-    //     ">If you have recieved this email by erorr, please disregard. </div>
-    //     </html>
-
-    //     `
-    //     }
-        // Sending mail
-        // transporter.sendMail(msg, (error, info) => {
-        //     if (error) {
-        //         console.log(error)
-        //         res.status(500)
-        //     }
-        //     else {
-        //         console.log('Password reset has been sent to email');
-        //         res.status(200)
-        //     }
-
-        // })
+       
     
 
 })
@@ -2391,8 +2382,12 @@ router.post('/delete', async(req, res) => {
 
                 });
             });
-            await User.findOneAndDelete( {username: username})
-            await UserInfo.findOneAndDelete({username: username})
+            await User.findOneAndDelete( {username: username}).then(() => {
+                console.log('User deleted')
+            })
+            await UserInfo.findOneAndDelete({username: username}).then(() => {
+                console.log('user Info deleted')
+            })
             await Post.deleteMany({username: username}).then(() => {
                 console.log('posts deleted')
             })
