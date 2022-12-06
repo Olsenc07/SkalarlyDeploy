@@ -42,7 +42,7 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import {
   RetrievePasswordComponent,
-  ResetPasswordComponent,
+
 } from './retrieve-password/retrieve-password.component';
 import {
   ProfileComponent,
@@ -180,7 +180,6 @@ import { ErrorInterceptor } from './error-interceptor';
     CardInfoFeedComponent,
     ErrorComponent,
     VerifiedPopUpComponent,
-    ResetPasswordComponent,
   ],
   imports: [
     AppRoutingModule,

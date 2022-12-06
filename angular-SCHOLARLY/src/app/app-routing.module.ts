@@ -25,10 +25,7 @@ import {
   ProfileComponent,
   UserProfileComponent,
 } from './profile/profile.component';
-import {
-  RetrievePasswordComponent,
-  ResetPasswordComponent,
-} from './retrieve-password/retrieve-password.component';
+import { RetrievePasswordComponent } from './retrieve-password/retrieve-password.component';
 import { SearchComponent } from './search/search.component';
 import {
   SignupComponent,
@@ -61,7 +58,6 @@ const routes: Routes = [
   { path: 'login', component: HomePageComponent },
   { path: 'sign-up', component: SignupComponent },
   { path: 'verified', component: VerifiedPopUpComponent },
-  { path: 'resetPassword', component: ResetPasswordComponent },
   {
     path: 'post-page/:userId',
     component: PostPageComponent,

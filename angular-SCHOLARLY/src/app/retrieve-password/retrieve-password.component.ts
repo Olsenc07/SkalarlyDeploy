@@ -20,6 +20,8 @@ export class RetrievePasswordComponent implements OnInit {
   userId: string;
   isLoading = false;
   visible = true;
+  visible2 = true;
+
   passwordDel: FormControl = new FormControl('', Validators.minLength(8));
   emailDel: FormControl = new FormControl('');
   DelVerify: FormControl = new FormControl('');
@@ -28,17 +30,27 @@ export class RetrievePasswordComponent implements OnInit {
     passwordDel: this.passwordDel,
   });
   password: FormControl = new FormControl('', Validators.minLength(8));
+  passwordNew: FormControl = new FormControl('');
+  secretCode: FormControl = new FormControl('');
   // passwordRetrieval: FormControl = new FormControl('', Validators.email);
   email: FormControl = new FormControl('', Validators.email);
   emailForm = new FormGroup({
     email: this.email,
   });
-
+  passwordForm = new FormGroup({
+    passwordNew: this.passwordNew,
+    secretCode: this.secretCode,
+  });
   loginForm = new FormGroup({
     email: this.email,
     password: this.password,
   });
-
+  public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
+    if ((control.value as string).indexOf(' ') >= 0) {
+      return { noWhiteSpace: true };
+    }
+    return null;
+  }
   constructor(
     private postsService: PostsService,
     public authService: AuthService,
@@ -80,10 +92,27 @@ export class RetrievePasswordComponent implements OnInit {
     this.isLoading = true;
     this.authService.login(this.email.value, this.password.value);
   }
+
+  onResetPassword(): void {
+    this.authService.updatePassword(this.password.value, this.secretCode.value);
+  }
   passwordReset(): void {
     console.log(this.email.value, this.userId);
     this.authService.resetPassword(this.email.value, this.userId);
     this.email.setValue('');
+  }
+  toggleVisibilty2(): any {
+    const c = document.getElementById('passwordType2') as HTMLInputElement;
+
+    c.type = 'text';
+    this.visible2 = !this.visible2;
+  }
+
+  toggleVisibilty_2(): any {
+    const c = document.getElementById('passwordType2') as HTMLInputElement;
+
+    c.type = 'password';
+    this.visible2 = !this.visible2;
   }
   DeleteAccount(): void {
     console.log(this.emailDel.value, this.passwordDel.value);
@@ -92,48 +121,5 @@ export class RetrievePasswordComponent implements OnInit {
     //   this.emailDel.setValue('');
     //   this.passwordDel.setValue('');
     // });
-  }
-}
-
-@Component({
-  selector: 'app-reset-password',
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./retrieve-password.component.scss'],
-})
-export class ResetPasswordComponent implements OnInit {
-  visible = true;
-
-  password: FormControl = new FormControl('');
-  secretCode: FormControl = new FormControl('');
-
-  passwordForm = new FormGroup({
-    password: this.password,
-    secretCode: this.secretCode,
-  });
-  public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
-    if ((control.value as string).indexOf(' ') >= 0) {
-      return { noWhiteSpace: true };
-    }
-    return null;
-  }
-  constructor(public authService: AuthService, private snackBar: MatSnackBar) {}
-
-  onResetPassword(): void {
-    this.authService.updatePassword(this.password.value, this.secretCode.value);
-  }
-  ngOnInit(): void {}
-
-  toggleVisibilty(): any {
-    const c = document.getElementById('passwordType') as HTMLInputElement;
-
-    c.type = 'text';
-    this.visible = !this.visible;
-  }
-
-  toggleVisibilty_(): any {
-    const c = document.getElementById('passwordType') as HTMLInputElement;
-
-    c.type = 'password';
-    this.visible = !this.visible;
   }
 }

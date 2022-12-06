@@ -248,8 +248,9 @@ router.post('/forgot', async (req, res) => {
             replyTo: 'Do not reply',
             subject: 'Skalarly - reset password',
             text: `Hello ${vertigo.username} we hear you forgot your password.
-        Here is your reset code ${vertigo.password} then copy and paste the link below to navigate back
-        https://www.skalarly.com/api/user/reset-password
+        Here is your reset code ${vertigo.password} 
+        // then copy and paste the link below to navigate back
+        // https://www.skalarly.com/api/user/reset-password
         If you have recieved this email by erorr, please disregard.
         `,
             html: `
@@ -261,8 +262,8 @@ router.post('/forgot', async (req, res) => {
         font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
         ${vertigo.password}
         <div style="font-family:'Poppins';
-        font-size: medium;"> Now follow the link below </div>
-       <a href="https://www.skalarly.com/api/user/reset-password">Follow link</a>
+        // font-size: medium;"> Now follow the link below </div>
+    //    <a href="https://www.skalarly.com/api/user/reset-password">Follow link</a>
         <div style="font-family:'Poppins';
         font-size: small;
         ">If you have recieved this email by erorr, please disregard. </div>
