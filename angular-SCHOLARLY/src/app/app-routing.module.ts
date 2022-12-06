@@ -25,7 +25,10 @@ import {
   ProfileComponent,
   UserProfileComponent,
 } from './profile/profile.component';
-import { RetrievePasswordComponent } from './retrieve-password/retrieve-password.component';
+import {
+  RetrievePasswordComponent,
+  ForgotPasswordComponent,
+} from './retrieve-password/retrieve-password.component';
 import { SearchComponent } from './search/search.component';
 import {
   SignupComponent,
@@ -70,6 +73,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'retrieve-password', component: RetrievePasswordComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   {
     path: 'edit-profile/:userId',
