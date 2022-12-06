@@ -61,6 +61,8 @@ export class AppComponent implements OnInit {
 
   isRetrievePScreen$: Observable<boolean>;
 
+  isForgotPasswordScreen$: Observable<boolean>;
+
   isResetPScreen$: Observable<boolean>;
 
   isMessagesScreen$: Observable<boolean>;
@@ -176,6 +178,14 @@ export class AppComponent implements OnInit {
       map(
         (event: NavigationEnd) =>
           event.url === '/' || event.url === '/retrieve-password'
+      )
+    );
+
+    this.isForgotPasswordScreen$ = this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map(
+        (event: NavigationEnd) =>
+          event.url === '/' || event.url === '/forgot-password'
       )
     );
     this.isMessagesScreen$ = this.router.events.pipe(
