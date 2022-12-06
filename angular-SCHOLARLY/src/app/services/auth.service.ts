@@ -2236,7 +2236,35 @@ export class AuthService {
         },
       });
   }
-
+  // Forgot Password
+  forgotPassword(email: string): any {
+    const authData: AuthData = { email };
+    this.http
+      .post<{ message: string }>(
+        'https://www.skalarly.com/api/user/forgoted',
+        authData
+      )
+      .pipe(
+        map((infosData) => {
+          console.log('axe', infosData.message);
+          return infosData;
+        })
+      )
+      .subscribe({
+        next: () => {
+          this.snackBar.open(
+            'Check your email to reset your password.',
+            'Will do',
+            {
+              duration: 2000,
+            }
+          );
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
   // Update Password
   updatePassword(password: string, secretCode: string): any {
     const authData: AuthData = { password, secretCode };

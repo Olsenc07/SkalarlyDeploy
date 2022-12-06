@@ -42,7 +42,7 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import {
   RetrievePasswordComponent,
-
+  ForgotPasswordComponent,
 } from './retrieve-password/retrieve-password.component';
 import {
   ProfileComponent,
@@ -132,6 +132,7 @@ import { ErrorInterceptor } from './error-interceptor';
     AppComponent,
     routingComponents,
     RetrievePasswordComponent,
+    ForgotPasswordComponent,
     ProfileComponent,
     UserProfileComponent,
     EditProfileComponent,

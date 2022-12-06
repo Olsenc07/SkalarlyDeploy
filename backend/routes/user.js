@@ -311,6 +311,75 @@ router.post('/forgot', async (req, res) => {
 
 })
 
+
+
+// forgot password
+router.post('/forgoted', async (req, res) => {
+    await User.findOne({email: req.body.email})
+   .then((found) => {
+       if(found){
+           try{
+       let founded = found.email;
+               //    Check users existence
+   const msg = {
+       from: ' "Reset Password" <admin@skalarly.com>',
+       to: founded,
+       replyTo: 'Do not reply',
+       subject: 'Skalarly - reset password',
+       text: `Hello ${found.username} we hear you forgot your password.
+   Here is your reset code ${found.password} 
+   If you have recieved this email by erorr, please disregard.
+   `,
+       html: `
+       <html fxLayout="column" fxLayoutAlign="center center">
+   <h2 style="font-family:'Cinzel'; 
+   font-size: large;
+   ">Hello ${found.username} we hear you forgot your password.</h2>
+   <div style="font-family:'Poppins';
+   font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
+   ${found.password}
+   <div style="font-family:'Poppins';
+   font-size: small;
+   ">If you have recieved this email by erorr, please disregard. </div>
+   </html>
+   `
+   }
+   // Sending mail
+   transporter.sendMail(msg, (error, info) => {
+       if (error) {
+           console.log(error)
+           res.status(500)
+       }
+       else {
+           console.log('Password reset has been sent to email');
+           res.status(200)
+       }
+
+   })
+               console.log('danny is a cutie');
+          
+   }catch {
+       res.status(500).json({
+           message: 'This email does not exist.'
+       })  
+   }
+   }  else{
+       res.status(501).json({
+           message: 'This email does not exist, or is not yours.'
+       })
+   }
+   }).catch(err => {
+       return res.status(401).json({
+           message: "Email not found.",
+   
+       })
+   })
+  
+
+
+})
+
+
 router.get('/reset-password', async (req, res, next) => {
  
         res.redirect('/resetPassword')
