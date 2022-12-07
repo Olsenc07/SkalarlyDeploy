@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { CloudinaryImage } from '@cloudinary/url-gen';
+import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen';
 import { Transformation } from '@cloudinary/url-gen';
 import { thumbnail } from '@cloudinary/url-gen/actions/resize';
 import { fill } from '@cloudinary/url-gen/actions/resize';
@@ -310,6 +310,13 @@ export class EditProfileComponent implements OnInit {
         // called once readAsDataURL is completed
         console.log(Event);
         // this.urlPP = reader.result as string;
+
+        const cld = new Cloudinary({
+          cloud: {
+            cloudName: 'demo',
+          },
+        });
+        this.urlPP = cld.image('front_face');
         this.urlPP.resize(
           fill().width(55).height(55).gravity(focusOn(FocusOn.face()))
         );
