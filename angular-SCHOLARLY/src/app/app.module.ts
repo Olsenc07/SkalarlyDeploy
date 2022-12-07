@@ -191,6 +191,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MatIconModule,
     MatButtonModule,
     MatDatepickerModule,
+    CloudinaryModule,
     MatNativeDateModule,
     BrowserModule,
     BrowserAnimationsModule,
