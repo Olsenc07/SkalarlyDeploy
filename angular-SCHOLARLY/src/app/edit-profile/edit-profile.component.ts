@@ -308,7 +308,7 @@ export class EditProfileComponent implements OnInit {
       reader.onload = (Event: any) => {
         // called once readAsDataURL is completed
         console.log(Event);
-        // this.urlPP = reader.result as string;
+        this.urlPP = reader.result as string;
         console.log('gta', this.urlPP);
 
         const urlPPNew = new Cloudinary();
