@@ -319,6 +319,7 @@ export class EditProfileComponent implements OnInit {
           );
         console.log('gta2', this.urlPP);
         console.log('gta3', this.urlPPNew);
+        console.log('gta4', this.img);
 
         // this.urlPP = new CloudinaryImage('Proflile_Pic');
         // this.urlPP.resize(thumbnail().gravity(focusOn(FocusOn.face())));
