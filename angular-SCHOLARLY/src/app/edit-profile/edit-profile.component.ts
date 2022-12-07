@@ -311,7 +311,14 @@ export class EditProfileComponent implements OnInit {
         console.log(Event);
         this.urlPP = reader.result as string;
         console.log('gta', this.urlPP);
-
+        // this.urlPP = cloudinary.image(this.urlPP, {
+        //   transformation: {
+        //     gravity: 'face',
+        //     height: 55,
+        //     width: 55,
+        //     crop: 'crop',
+        //   },
+        // });
         // this.urlPP = new CloudinaryImage('Proflile_Pic');
         // this.urlPP.resize(thumbnail().gravity(focusOn(FocusOn.face())));
         // console.log('drums', this.urlPP);
