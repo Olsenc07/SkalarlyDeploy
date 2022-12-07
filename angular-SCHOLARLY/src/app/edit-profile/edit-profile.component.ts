@@ -57,7 +57,6 @@ export class EditProfileComponent implements OnInit {
   showCasePreview: any = '';
   url: string;
   urlPP: string;
-  urlPPNew: Cloudinary;
 
   clicked = false;
   removeShowCase = false;
@@ -312,11 +311,14 @@ export class EditProfileComponent implements OnInit {
         // this.urlPP = reader.result as string;
         console.log('gta', this.urlPP);
 
-        this.urlPPNew
+        const urlPPNew = new Cloudinary();
+        urlPPNew
           .image(this.urlPP)
           .resize(
             fill().width(170).height(170).gravity(focusOn(FocusOn.faces()))
           );
+        console.log('gta2', this.urlPP);
+
         // this.urlPP = new CloudinaryImage('Proflile_Pic');
         // this.urlPP.resize(thumbnail().gravity(focusOn(FocusOn.face())));
         // console.log('drums', this.urlPP);
