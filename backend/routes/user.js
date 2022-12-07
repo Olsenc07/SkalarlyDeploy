@@ -1443,11 +1443,12 @@ router.put("/infoEdPic", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {
                 if(req.file){
-                 let newPic =  cloudinary.image(req.file.path, {
+                 let newPic =  cloudinary.url(req.file.path, {
                         transformation: [
                             {gravity: "face", height: 55, width: 55, crop: "crop"},
                         ]
                     })
+                    console.log('pic', newPic)
                     await cloudinary.uploader.upload(newPic, {
                     folder:'ProfilePics'
                  })
@@ -1465,7 +1466,7 @@ router.put("/infoEdPic", checkAuth,
                             });
                         }).catch(error => {
                             res.status(500).json({
-                                message: 'Updating pic failed!'
+                                message: 'Updating pic failed!!'
                             });
                         })
                         }).catch(error => {
