@@ -57,7 +57,7 @@ export class EditProfileComponent implements OnInit {
   showCasePreview: any = '';
   url: string;
   urlPP: string;
-  // urlPP: CloudinaryImage;
+  urlPPNew: Cloudinary;
 
   clicked = false;
   removeShowCase = false;
@@ -309,16 +309,14 @@ export class EditProfileComponent implements OnInit {
       reader.onload = (Event: any) => {
         // called once readAsDataURL is completed
         console.log(Event);
-        this.urlPP = reader.result as string;
+        // this.urlPP = reader.result as string;
         console.log('gta', this.urlPP);
-        // this.urlPP = cloudinary.image(this.urlPP, {
-        //   transformation: {
-        //     gravity: 'face',
-        //     height: 55,
-        //     width: 55,
-        //     crop: 'crop',
-        //   },
-        // });
+
+        this.urlPPNew
+          .image(this.urlPP)
+          .resize(
+            fill().width(170).height(170).gravity(focusOn(FocusOn.faces()))
+          );
         // this.urlPP = new CloudinaryImage('Proflile_Pic');
         // this.urlPP.resize(thumbnail().gravity(focusOn(FocusOn.face())));
         // console.log('drums', this.urlPP);
