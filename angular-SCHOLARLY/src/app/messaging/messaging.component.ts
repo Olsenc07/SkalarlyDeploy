@@ -25,12 +25,14 @@ export interface Message {
 export class MessagingComponent implements OnInit {
   isLoading = false;
   userId: string;
-  timeHour = new Date().getHours();
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
-  text = this.timeHour >= 12 ? 'pm' : 'am';
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
   timeMinuteText = this.timeMinute < 10 ? '0' : '';
   dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth() + 1;
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
   time =
     this.timeHour +
     ':' +
@@ -38,9 +40,9 @@ export class MessagingComponent implements OnInit {
     this.timeMinute +
     this.text +
     '\xa0' +
-    this.dateDay +
-    '/' +
-    this.dateMonth;
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay;
 
   // Chat messaging
   chatForm = document.getElementById('send-container');
@@ -61,11 +63,7 @@ export class MessagingComponent implements OnInit {
     private authService: AuthService,
     public messagesService: MessageService,
     private route: ActivatedRoute
-  ) {
-    // this.socket.on('disconnect', () => {
-    //   console.log('disconnected bro');
-    // });
-  }
+  ) {}
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -74,15 +72,83 @@ export class MessagingComponent implements OnInit {
       console.log('params main page', params?.username);
       this.username = params?.username;
     });
-    // emits saved message
-    // this.socket.on('messageSnd', (data) => {
-    //   console.log('loaded in msgs', data);
-    //   if (data.length) {
-    //     data.forEach((data) => {
-    //       this.appendMessages(data);
-    //     });
-    //   }
-    // });
+  }
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial === 13) {
+      return 1;
+    }
+    if (timeHourInitial === 14) {
+      return 2;
+    }
+    if (timeHourInitial === 15) {
+      return 3;
+    }
+    if (timeHourInitial === 16) {
+      return 4;
+    }
+    if (timeHourInitial === 17) {
+      return 5;
+    }
+    if (timeHourInitial === 18) {
+      return 6;
+    }
+    if (timeHourInitial === 19) {
+      return 7;
+    }
+    if (timeHourInitial === 20) {
+      return 8;
+    }
+    if (timeHourInitial === 21) {
+      return 9;
+    }
+    if (timeHourInitial === 22) {
+      return 10;
+    }
+    if (timeHourInitial === 23) {
+      return 11;
+    }
+    if (timeHourInitial === 24) {
+      return 12;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
   }
 
   private _filter(value: string): string[] {
@@ -278,7 +344,6 @@ export class MessageCardComponent implements OnInit {
     });
   }
   deleteMsg(msgId: string): any {
-    console.log('jesse', msgId);
     this.messageNotificationService.deleteMessage(msgId);
     location.reload();
   }
