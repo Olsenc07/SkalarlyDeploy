@@ -69,7 +69,7 @@
 .messageM {
   display: flex;
   font-family:  'Poppins', sans-serif;
-  background-color: #0c5590 !important;
+  // background-color: #0c5590 !important;
   color: white !important;
   margin-right: 4%;
 }
@@ -111,6 +111,7 @@
 .row {
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin: 1%;
   justify-content: center;
 }
@@ -161,7 +162,7 @@
 @media (min-width: 1150px) {
 
   .textSize {
-    font-size: medium;
+   font-size: small;
     font-family:  'Poppins', sans-serif;
     color: #7e7171;
   }

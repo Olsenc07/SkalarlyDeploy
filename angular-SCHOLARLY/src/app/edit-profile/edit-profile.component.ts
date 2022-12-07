@@ -1,6 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-
+import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen';
+import { thumbnail } from '@cloudinary/url-gen/actions/resize';
+import { focusOn } from '@cloudinary/url-gen/qualifiers/gravity';
+import { FocusOn } from '@cloudinary/url-gen/qualifiers/focusOn';
 import { MatDialog } from '@angular/material/dialog';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
@@ -51,7 +54,8 @@ export class EditProfileComponent implements OnInit {
   // Showcase
   showCasePreview: any = '';
   url: string;
-  urlPP: string;
+  // urlPP: string;
+  urlPP: CloudinaryImage;
 
   clicked = false;
   removeShowCase = false;
@@ -303,7 +307,8 @@ export class EditProfileComponent implements OnInit {
       reader.onload = (Event: any) => {
         // called once readAsDataURL is completed
         console.log(Event);
-        this.urlPP = reader.result as string;
+        // this.urlPP = reader.result as string;
+        this.urlPP.resize(thumbnail().gravity(focusOn(FocusOn.face())));
       };
     }
   }
