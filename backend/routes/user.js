@@ -1445,7 +1445,7 @@ router.put("/infoEdPic", checkAuth,
                 if(req.file){
                     await cloudinary.uploader.upload(req.file.path, {
                         transformation: [
-                            { gravity: "face", width: 55, height: 55, crop: "fill"},
+                            { gravity: "face", width: 55, height: 55, crop: "lfill"},
                         ],
                     folder:'ProfilePics'
                  })
