@@ -65,11 +65,11 @@ export class ReusableCardComponent implements OnInit {
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.text +
+    this.dateMonthName +
     '\xa0' +
     this.dateDay +
     '\xa0' +
-    this.dateMonthName;
+    this.text;
 
   // img popup
   img = document.getElementById('myImg');
@@ -298,11 +298,11 @@ export class ReusableCardPersonalComponent implements OnInit {
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.text +
+    this.dateMonthName +
     '\xa0' +
     this.dateDay +
     '\xa0' +
-    this.dateMonthName;
+    this.text;
 
   // img popup
   img = document.getElementById('myImg');
@@ -525,11 +525,11 @@ export class ReusableCommentsComponent implements OnInit {
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.text +
+    this.dateMonthName +
     '\xa0' +
     this.dateDay +
     '\xa0' +
-    this.dateMonthName;
+    this.text;
 
   ngOnInit(): void {
     this.postService.getPostsFeed(6);
@@ -743,11 +743,11 @@ export class ReusableCommentFormComponent implements OnInit {
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.text +
+    this.dateMonthName +
     '\xa0' +
     this.dateDay +
     '\xa0' +
-    this.dateMonthName;
+    this.text;
 
   constructor(
     private fb: FormBuilder,
@@ -942,11 +942,11 @@ export class CardFeedComponent implements OnInit {
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.text +
+    this.dateMonthName +
     '\xa0' +
     this.dateDay +
     '\xa0' +
-    this.dateMonthName;
+    this.text;
 
   constructor(
     public showCaseService: ShowCaseService,
@@ -1220,11 +1220,11 @@ export class CardInfoFeedComponent implements OnInit {
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.text +
+    this.dateMonthName +
     '\xa0' +
     this.dateDay +
     '\xa0' +
-    this.dateMonthName;
+    this.text;
 
   constructor(
     public showCaseService: ShowCaseService,
@@ -1460,11 +1460,11 @@ export class CardInfoMainPageComponent implements OnInit {
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.text +
+    this.dateMonthName +
     '\xa0' +
     this.dateDay +
     '\xa0' +
-    this.dateMonthName;
+    this.text;
 
   // img popup
   img = document.getElementById('myImg');

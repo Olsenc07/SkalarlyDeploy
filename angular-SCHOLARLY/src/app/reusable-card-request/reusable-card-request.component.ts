@@ -104,8 +104,6 @@ export class ReusableCardRecommendationComponent implements OnInit {
     this.countVisibility += count;
     const counting = 6;
     this.recomCounter += counting;
-    console.log('hey', this.recomCounter);
-    console.log('howdy', this.countVisibility);
     const NextBtn = document.getElementById('bigScroll');
     NextBtn.scrollIntoView();
     this.authService.getInfo(this.recomCounter);

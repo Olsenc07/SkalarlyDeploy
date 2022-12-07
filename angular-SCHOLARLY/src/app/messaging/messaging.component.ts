@@ -38,11 +38,11 @@ export class MessagingComponent implements OnInit {
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.text +
+    this.dateMonthName +
     '\xa0' +
     this.dateDay +
     '\xa0' +
-    this.dateMonthName;
+    this.text;
 
   // Chat messaging
   chatForm = document.getElementById('send-container');
