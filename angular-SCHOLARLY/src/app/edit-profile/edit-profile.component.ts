@@ -119,6 +119,7 @@ export class EditProfileComponent implements OnInit {
   Gender = '';
   Pronouns = '';
   Bio = '';
+  urlPPShow: CloudinaryImage;
 
   constructor(
     public dialog: MatDialog,
@@ -310,7 +311,7 @@ export class EditProfileComponent implements OnInit {
         // called once readAsDataURL is completed
         console.log(Event);
         this.urlPP = reader.result as string;
-        new CloudinaryImage(this.urlPP).resize(
+        this.urlPPShow = new CloudinaryImage(this.urlPP).resize(
           thumbnail().gravity(focusOn(FocusOn.face()))
         );
       };
