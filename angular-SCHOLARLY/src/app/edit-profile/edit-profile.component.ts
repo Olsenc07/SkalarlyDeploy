@@ -311,15 +311,7 @@ export class EditProfileComponent implements OnInit {
         console.log(Event);
         // this.urlPP = reader.result as string;
 
-        const cld = new Cloudinary({
-          cloud: {
-            cloudName: 'demo',
-          },
-        });
-        this.urlPP = cld.image('front_face');
-        this.urlPP.resize(
-          fill().width(55).height(55).gravity(focusOn(FocusOn.face()))
-        );
+        this.urlPP.resize(thumbnail().gravity(focusOn(FocusOn.face())));
       };
     }
   }
