@@ -25,7 +25,7 @@ export class ReusableCardRequestComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.isLoading = true;
     this.authService.getInfo(this.recomCounter);
     this.infosSub = this.authService

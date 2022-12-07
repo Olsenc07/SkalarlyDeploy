@@ -20,7 +20,7 @@ export class ReusableCardConvoComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.isLoading = true;
     this.authService.getInfo(this.recomCounter);
     this.infosSub = this.authService

@@ -51,13 +51,14 @@ export class ReusableCardComponent implements OnInit {
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
-
-  timeHour = new Date().getHours();
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
-  text = this.timeHour >= 12 ? 'pm' : 'am';
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
   timeMinuteText = this.timeMinute < 10 ? '0' : '';
   dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth() + 1;
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
 
   time =
     this.timeHour +
@@ -67,8 +68,8 @@ export class ReusableCardComponent implements OnInit {
     this.text +
     '\xa0' +
     this.dateDay +
-    '/' +
-    this.dateMonth;
+    '\xa0' +
+    this.dateMonthName;
 
   // img popup
   img = document.getElementById('myImg');
@@ -148,6 +149,83 @@ export class ReusableCardComponent implements OnInit {
         });
     });
   }
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial === 13) {
+      return 1;
+    }
+    if (timeHourInitial === 14) {
+      return 2;
+    }
+    if (timeHourInitial === 15) {
+      return 3;
+    }
+    if (timeHourInitial === 16) {
+      return 4;
+    }
+    if (timeHourInitial === 17) {
+      return 5;
+    }
+    if (timeHourInitial === 18) {
+      return 6;
+    }
+    if (timeHourInitial === 19) {
+      return 7;
+    }
+    if (timeHourInitial === 20) {
+      return 8;
+    }
+    if (timeHourInitial === 21) {
+      return 9;
+    }
+    if (timeHourInitial === 22) {
+      return 10;
+    }
+    if (timeHourInitial === 23) {
+      return 11;
+    }
+    if (timeHourInitial === 24) {
+      return 12;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
+  }
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
@@ -206,12 +284,14 @@ export class ReusableCardPersonalComponent implements OnInit {
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
-  timeHour = new Date().getHours();
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
   text = this.timeHour >= 12 ? 'pm' : 'am';
   timeMinuteText = this.timeMinute < 10 ? '0' : '';
   dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth() + 1;
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
 
   time =
     this.timeHour +
@@ -221,8 +301,8 @@ export class ReusableCardPersonalComponent implements OnInit {
     this.text +
     '\xa0' +
     this.dateDay +
-    '/' +
-    this.dateMonth;
+    '\xa0' +
+    this.dateMonthName;
 
   // img popup
   img = document.getElementById('myImg');
@@ -304,6 +384,83 @@ export class ReusableCardPersonalComponent implements OnInit {
         console.log('posts', this.posts);
       });
   }
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial === 13) {
+      return 1;
+    }
+    if (timeHourInitial === 14) {
+      return 2;
+    }
+    if (timeHourInitial === 15) {
+      return 3;
+    }
+    if (timeHourInitial === 16) {
+      return 4;
+    }
+    if (timeHourInitial === 17) {
+      return 5;
+    }
+    if (timeHourInitial === 18) {
+      return 6;
+    }
+    if (timeHourInitial === 19) {
+      return 7;
+    }
+    if (timeHourInitial === 20) {
+      return 8;
+    }
+    if (timeHourInitial === 21) {
+      return 9;
+    }
+    if (timeHourInitial === 22) {
+      return 10;
+    }
+    if (timeHourInitial === 23) {
+      return 11;
+    }
+    if (timeHourInitial === 24) {
+      return 12;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
+  }
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
@@ -353,12 +510,15 @@ export class ReusableCommentsComponent implements OnInit {
     private commentsService: CommentsService,
     public postService: PostService
   ) {}
-  timeHour = new Date().getHours();
+
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
-  text = this.timeHour >= 12 ? 'pm' : 'am';
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
   timeMinuteText = this.timeMinute < 10 ? '0' : '';
   dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth() + 1;
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
 
   time =
     this.timeHour +
@@ -368,8 +528,9 @@ export class ReusableCommentsComponent implements OnInit {
     this.text +
     '\xa0' +
     this.dateDay +
-    '/' +
-    this.dateMonth;
+    '\xa0' +
+    this.dateMonthName;
+
   ngOnInit(): void {
     this.postService.getPostsFeed(6);
     this.postsSub = this.postService
@@ -379,6 +540,83 @@ export class ReusableCommentsComponent implements OnInit {
 
         console.log('posts personal', this.posts);
       });
+  }
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial === 13) {
+      return 1;
+    }
+    if (timeHourInitial === 14) {
+      return 2;
+    }
+    if (timeHourInitial === 15) {
+      return 3;
+    }
+    if (timeHourInitial === 16) {
+      return 4;
+    }
+    if (timeHourInitial === 17) {
+      return 5;
+    }
+    if (timeHourInitial === 18) {
+      return 6;
+    }
+    if (timeHourInitial === 19) {
+      return 7;
+    }
+    if (timeHourInitial === 20) {
+      return 8;
+    }
+    if (timeHourInitial === 21) {
+      return 9;
+    }
+    if (timeHourInitial === 22) {
+      return 10;
+    }
+    if (timeHourInitial === 23) {
+      return 11;
+    }
+    if (timeHourInitial === 24) {
+      return 12;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
   }
   addComment({
     body,
@@ -491,12 +729,14 @@ export class ReusableCommentFormComponent implements OnInit {
   Comments = new FormGroup({
     comment: this.comment,
   });
-  timeHour = new Date().getHours();
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
-  text = this.timeHour >= 12 ? 'pm' : 'am';
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
   timeMinuteText = this.timeMinute < 10 ? '0' : '';
   dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth() + 1;
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
 
   time =
     this.timeHour +
@@ -506,8 +746,8 @@ export class ReusableCommentFormComponent implements OnInit {
     this.text +
     '\xa0' +
     this.dateDay +
-    '/' +
-    this.dateMonth;
+    '\xa0' +
+    this.dateMonthName;
 
   constructor(
     private fb: FormBuilder,
@@ -521,7 +761,83 @@ export class ReusableCommentFormComponent implements OnInit {
 
     // Post
   }
-
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial === 13) {
+      return 1;
+    }
+    if (timeHourInitial === 14) {
+      return 2;
+    }
+    if (timeHourInitial === 15) {
+      return 3;
+    }
+    if (timeHourInitial === 16) {
+      return 4;
+    }
+    if (timeHourInitial === 17) {
+      return 5;
+    }
+    if (timeHourInitial === 18) {
+      return 6;
+    }
+    if (timeHourInitial === 19) {
+      return 7;
+    }
+    if (timeHourInitial === 20) {
+      return 8;
+    }
+    if (timeHourInitial === 21) {
+      return 9;
+    }
+    if (timeHourInitial === 22) {
+      return 10;
+    }
+    if (timeHourInitial === 23) {
+      return 11;
+    }
+    if (timeHourInitial === 24) {
+      return 12;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
+  }
   // onSubmit(): void {
   //   console.log('onSubmit', this.form.value);
   //   this.handleSubmit.emit(this.form.value.title);
@@ -612,12 +928,14 @@ export class CardFeedComponent implements OnInit {
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
 
-  timeHour = new Date().getHours();
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
-  text = this.timeHour >= 12 ? 'pm' : 'am';
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
   timeMinuteText = this.timeMinute < 10 ? '0' : '';
   dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth() + 1;
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
 
   time =
     this.timeHour +
@@ -627,8 +945,8 @@ export class CardFeedComponent implements OnInit {
     this.text +
     '\xa0' +
     this.dateDay +
-    '/' +
-    this.dateMonth;
+    '\xa0' +
+    this.dateMonthName;
 
   constructor(
     public showCaseService: ShowCaseService,
@@ -658,6 +976,84 @@ export class CardFeedComponent implements OnInit {
         this.isLoading = false;
       });
   }
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial === 13) {
+      return 1;
+    }
+    if (timeHourInitial === 14) {
+      return 2;
+    }
+    if (timeHourInitial === 15) {
+      return 3;
+    }
+    if (timeHourInitial === 16) {
+      return 4;
+    }
+    if (timeHourInitial === 17) {
+      return 5;
+    }
+    if (timeHourInitial === 18) {
+      return 6;
+    }
+    if (timeHourInitial === 19) {
+      return 7;
+    }
+    if (timeHourInitial === 20) {
+      return 8;
+    }
+    if (timeHourInitial === 21) {
+      return 9;
+    }
+    if (timeHourInitial === 22) {
+      return 10;
+    }
+    if (timeHourInitial === 23) {
+      return 11;
+    }
+    if (timeHourInitial === 24) {
+      return 12;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
+  }
+
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
     const triggerEmoji = document.getElementById('triggerEmo');
@@ -810,12 +1206,14 @@ export class CardInfoFeedComponent implements OnInit {
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
 
-  timeHour = new Date().getHours();
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
-  text = this.timeHour >= 12 ? 'pm' : 'am';
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
   timeMinuteText = this.timeMinute < 10 ? '0' : '';
   dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth() + 1;
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
 
   time =
     this.timeHour +
@@ -825,8 +1223,8 @@ export class CardInfoFeedComponent implements OnInit {
     this.text +
     '\xa0' +
     this.dateDay +
-    '/' +
-    this.dateMonth;
+    '\xa0' +
+    this.dateMonthName;
 
   constructor(
     public showCaseService: ShowCaseService,
@@ -854,6 +1252,83 @@ export class CardInfoFeedComponent implements OnInit {
         this.infos = infos;
         this.isLoading = false;
       });
+  }
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial === 13) {
+      return 1;
+    }
+    if (timeHourInitial === 14) {
+      return 2;
+    }
+    if (timeHourInitial === 15) {
+      return 3;
+    }
+    if (timeHourInitial === 16) {
+      return 4;
+    }
+    if (timeHourInitial === 17) {
+      return 5;
+    }
+    if (timeHourInitial === 18) {
+      return 6;
+    }
+    if (timeHourInitial === 19) {
+      return 7;
+    }
+    if (timeHourInitial === 20) {
+      return 8;
+    }
+    if (timeHourInitial === 21) {
+      return 9;
+    }
+    if (timeHourInitial === 22) {
+      return 10;
+    }
+    if (timeHourInitial === 23) {
+      return 11;
+    }
+    if (timeHourInitial === 24) {
+      return 12;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
   }
 
   // Adding emojis
@@ -971,12 +1446,14 @@ export class CardInfoMainPageComponent implements OnInit {
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
 
-  timeHour = new Date().getHours();
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
-  text = this.timeHour >= 12 ? 'pm' : 'am';
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
   timeMinuteText = this.timeMinute < 10 ? '0' : '';
   dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth() + 1;
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
 
   time =
     this.timeHour +
@@ -986,8 +1463,8 @@ export class CardInfoMainPageComponent implements OnInit {
     this.text +
     '\xa0' +
     this.dateDay +
-    '/' +
-    this.dateMonth;
+    '\xa0' +
+    this.dateMonthName;
 
   // img popup
   img = document.getElementById('myImg');
@@ -1019,6 +1496,84 @@ export class CardInfoMainPageComponent implements OnInit {
         });
     });
   }
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial === 13) {
+      return 1;
+    }
+    if (timeHourInitial === 14) {
+      return 2;
+    }
+    if (timeHourInitial === 15) {
+      return 3;
+    }
+    if (timeHourInitial === 16) {
+      return 4;
+    }
+    if (timeHourInitial === 17) {
+      return 5;
+    }
+    if (timeHourInitial === 18) {
+      return 6;
+    }
+    if (timeHourInitial === 19) {
+      return 7;
+    }
+    if (timeHourInitial === 20) {
+      return 8;
+    }
+    if (timeHourInitial === 21) {
+      return 9;
+    }
+    if (timeHourInitial === 22) {
+      return 10;
+    }
+    if (timeHourInitial === 23) {
+      return 11;
+    }
+    if (timeHourInitial === 24) {
+      return 12;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
+  }
+
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;

@@ -40,9 +40,9 @@ export class MessagingComponent implements OnInit {
     this.timeMinute +
     this.text +
     '\xa0' +
-    this.dateMonthName +
+    this.dateDay +
     '\xa0' +
-    this.dateDay;
+    this.dateMonthName;
 
   // Chat messaging
   chatForm = document.getElementById('send-container');
