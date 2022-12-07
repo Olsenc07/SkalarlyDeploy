@@ -195,7 +195,6 @@ import { ErrorInterceptor } from './error-interceptor';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-
     ReactiveFormsModule,
     MatTooltipModule,
     MatRadioModule,

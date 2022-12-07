@@ -56,8 +56,8 @@ export class EditProfileComponent implements OnInit {
   // Showcase
   showCasePreview: any = '';
   url: string;
-  urlPP: string;
-  // urlPP: CloudinaryImage;
+  // urlPP: string;
+  urlPP: CloudinaryImage;
 
   clicked = false;
   removeShowCase = false;
@@ -119,7 +119,6 @@ export class EditProfileComponent implements OnInit {
   Gender = '';
   Pronouns = '';
   Bio = '';
-  urlPPShow: CloudinaryImage;
 
   constructor(
     public dialog: MatDialog,
@@ -310,10 +309,12 @@ export class EditProfileComponent implements OnInit {
       reader.onload = (Event: any) => {
         // called once readAsDataURL is completed
         console.log(Event);
-        this.urlPP = reader.result as string;
-        this.urlPPShow = new CloudinaryImage(this.urlPP).resize(
-          thumbnail().gravity(focusOn(FocusOn.face()))
-        );
+        // this.urlPP = reader.result as string;
+        console.log('gta', this.urlPP);
+
+        this.urlPP = new CloudinaryImage('Proflile_Pic');
+        this.urlPP.resize(thumbnail().gravity(focusOn(FocusOn.face())));
+        console.log('drums', this.urlPP);
       };
     }
   }
