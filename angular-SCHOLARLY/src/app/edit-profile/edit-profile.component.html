@@ -30,7 +30,7 @@
                       </div>
                     </button>
                     <input #fileInputP id="fileInputP" class="hide" accept=".png, .jpg, .jpeg .JPG" type="file"
-                      (change)="imagePreviewPP($event)"  [formControl]="profilePic"
+                      (change)="imagePreviewPP($event)" [formControl]="profilePic"
                       name="profilePic">
                   </div>
           <div class="doneShowCase">
@@ -67,6 +67,8 @@
                   <!-- save this value for the form control -->
                   <!-- <img class="previewPic" id="ProfilePic" [src]="urlPP" /> -->
                   <img class="previewPic" id="ProfilePic" [src]="urlPP">
+                  <advanced-image class="previewPic" id="ProfilePicCloud"  [cldImg]="img"></advanced-image>
+
                 </div>
               </div>
             </div>

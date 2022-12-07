@@ -48,7 +48,8 @@ export class EditProfileComponent implements OnInit {
   private postsSub: Subscription;
   picker = new Picker();
   infos: AuthDataInfo[] = [];
-
+  urlPPNew = new Cloudinary();
+  img: CloudinaryImage;
   userId: string;
 
   // infos: AuthDataInfo[] = [];
@@ -311,14 +312,13 @@ export class EditProfileComponent implements OnInit {
         this.urlPP = reader.result as string;
         console.log('gta', this.urlPP);
 
-        const urlPPNew = new Cloudinary();
-        urlPPNew
+        this.img = this.urlPPNew
           .image(this.urlPP)
           .resize(
             fill().width(170).height(170).gravity(focusOn(FocusOn.faces()))
           );
         console.log('gta2', this.urlPP);
-        console.log('gta3', urlPPNew);
+        console.log('gta3', this.urlPPNew);
 
         // this.urlPP = new CloudinaryImage('Proflile_Pic');
         // this.urlPP.resize(thumbnail().gravity(focusOn(FocusOn.face())));
@@ -326,6 +326,7 @@ export class EditProfileComponent implements OnInit {
       };
     }
   }
+
   // SnapShot
   imagePreview(event: any): void {
     if (event.target.files && event.target.files[0]) {
