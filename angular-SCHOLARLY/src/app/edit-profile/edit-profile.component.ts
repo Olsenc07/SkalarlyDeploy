@@ -1,7 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { CloudinaryImage } from '@cloudinary/url-gen';
+import { Transformation } from '@cloudinary/url-gen';
 import { thumbnail } from '@cloudinary/url-gen/actions/resize';
+import { fill } from '@cloudinary/url-gen/actions/resize';
 import { focusOn } from '@cloudinary/url-gen/qualifiers/gravity';
 import { FocusOn } from '@cloudinary/url-gen/qualifiers/focusOn';
 import { MatDialog } from '@angular/material/dialog';
@@ -308,7 +310,9 @@ export class EditProfileComponent implements OnInit {
         // called once readAsDataURL is completed
         console.log(Event);
         // this.urlPP = reader.result as string;
-        this.urlPP.resize(thumbnail().gravity(focusOn(FocusOn.face())));
+        this.urlPP.resize(
+          fill().width(55).height(55).gravity(focusOn(FocusOn.face()))
+        );
       };
     }
   }
