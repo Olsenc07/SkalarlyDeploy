@@ -48,8 +48,6 @@ export class EditProfileComponent implements OnInit {
   private postsSub: Subscription;
   picker = new Picker();
   infos: AuthDataInfo[] = [];
-  urlPPNew = new Cloudinary();
-  img: CloudinaryImage;
   userId: string;
 
   // infos: AuthDataInfo[] = [];
@@ -58,7 +56,7 @@ export class EditProfileComponent implements OnInit {
   showCasePreview: any = '';
   url: string;
   urlPP: string;
-
+  img!: CloudinaryImage;
   clicked = false;
   removeShowCase = false;
   visible = true;
@@ -109,7 +107,7 @@ export class EditProfileComponent implements OnInit {
   birthday: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
   form: FormGroup;
-
+  src = '';
   Name = '';
   Birthday = '';
   Major = '';
@@ -311,14 +309,19 @@ export class EditProfileComponent implements OnInit {
         console.log(Event);
         this.urlPP = reader.result as string;
         console.log('gta', this.urlPP);
+        const cld = new Cloudinary({
+          cloud: {
+            cloudName: 'demo',
+          },
+        });
 
-        this.img = this.urlPPNew
-          .image(this.urlPP)
+        this.img = cld.image(this.urlPP);
+        this.src = this.img
           .resize(
             fill().width(170).height(170).gravity(focusOn(FocusOn.faces()))
-          );
+          )
+          .toURL();
         console.log('gta2', this.urlPP);
-        console.log('gta3', this.urlPPNew);
         console.log('gta4', this.img);
 
         // this.urlPP = new CloudinaryImage('Proflile_Pic');
