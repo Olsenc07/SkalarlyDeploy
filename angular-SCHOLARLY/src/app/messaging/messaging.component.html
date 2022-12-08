@@ -108,8 +108,8 @@
     <mat-icon matSuffix [matMenuTriggerFor]="emojiIcon">sentiment_very_satisfied</mat-icon>
   </mat-form-field> -->
 
-  <mat-chip-list [disabled]="!message.value  || (userId == username)" class="send_btn_style">
-    <mat-chip selected  type="submit"  id="send-button" (click)="trigger(message.value)">
+  <mat-chip-list [disabled]="!message.value  || (userId == username)" >
+    <mat-chip selected type="submit" id="send-button" (click)="trigger(message.value)" class="send_btn_style">
 Send
 <i class="far fa-paper-plane space_icon"></i>
     </mat-chip>

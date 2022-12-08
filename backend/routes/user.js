@@ -249,8 +249,6 @@ router.post('/forgot', async (req, res) => {
             subject: 'Skalarly - reset password',
             text: `Hello ${vertigo.username} we hear you forgot your password.
         Here is your reset code ${vertigo.password} 
-        // then copy and paste the link below to navigate back
-        // https://www.skalarly.com/api/user/reset-password
         If you have recieved this email by erorr, please disregard.
         `,
             html: `
@@ -261,9 +259,6 @@ router.post('/forgot', async (req, res) => {
         <div style="font-family:'Poppins';
         font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
         ${vertigo.password}
-        <div style="font-family:'Poppins';
-        // font-size: medium;"> Now follow the link below </div>
-    //    <a href="https://www.skalarly.com/api/user/reset-password">Follow link</a>
         <div style="font-family:'Poppins';
         font-size: small;
         ">If you have recieved this email by erorr, please disregard. </div>
@@ -444,12 +439,12 @@ router.post('/code', async (req, res) => {
 
 })
 
-router.get('/reset-password', async (req, res, next) => {
+// router.get('/reset-password', async (req, res, next) => {
  
-        res.redirect('/resetPassword')
+//         res.redirect('/resetPassword')
         
-        res.status(200)
-        console.log('Reset password redirect!')
+//         res.status(200)
+//         console.log('Reset password redirect!')
         
         // const token = req.query.token;
         // const user = await User.findOne( {password: token});
@@ -459,7 +454,7 @@ router.get('/reset-password', async (req, res, next) => {
         //     res.redirect('/resetPassword')
         // }
 
-})
+// })
 
 router.post('/reset-password', async (req, res, next) => {
         const secretCode = await User.findOne({ password: req.body.secretCode })
