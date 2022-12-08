@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen';
+import { URLConfig } from '@cloudinary/url-gen';
+import { CloudConfig } from '@cloudinary/url-gen';
 import { Transformation } from '@cloudinary/url-gen';
 import { thumbnail } from '@cloudinary/url-gen/actions/resize';
 import { fill } from '@cloudinary/url-gen/actions/resize';
@@ -314,13 +316,15 @@ export class EditProfileComponent implements OnInit {
             cloudName: 'skalarly',
           },
         });
-
+        imgNew: CloudinaryImage;
         this.img = cld.image(this.urlPP);
         this.src = this.img
           .resize(
             fill().width(170).height(170).gravity(focusOn(FocusOn.faces()))
           )
           .toURL();
+        const cloudConfig = new CloudConfig({ cloudName: 'skalarly' });
+        imgNew = new CloudinaryImage(this.src, cloudConfig);
         console.log('gta2', this.urlPP);
         console.log('gta4', this.img);
         console.log('gta8', this.src);
