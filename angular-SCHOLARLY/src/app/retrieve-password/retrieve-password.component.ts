@@ -120,7 +120,7 @@ export class RetrievePasswordComponent implements OnInit {
   }
   DeleteAccount(): void {
     console.log(this.emailDel.value, this.passwordDel.value);
-    this.authService.deleteAccount(this.emailDel.value, this.passwordDel.value);
+    this.authService.deleteAccount(this.emailDel.value, this.passwordDel.value, this.secretCode.value);
     // .then((value) => {
     //   this.emailDel.setValue('');
     //   this.passwordDel.setValue('');
@@ -231,7 +231,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
   DeleteAccount(): void {
     console.log(this.emailDel.value, this.passwordDel.value);
-    this.authService.deleteAccount(this.emailDel.value, this.passwordDel.value);
+    this.authService.deleteAccount(this.emailDel.value, this.passwordDel.value, this.secretCode.value);
     // .then((value) => {
     //   this.emailDel.setValue('');
     //   this.passwordDel.setValue('');
