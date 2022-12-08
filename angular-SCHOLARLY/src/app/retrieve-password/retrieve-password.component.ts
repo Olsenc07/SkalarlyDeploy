@@ -142,13 +142,6 @@ export class ForgotPasswordComponent implements OnInit {
   visible = true;
   visible2 = true;
 
-  passwordDel: FormControl = new FormControl('', Validators.minLength(8));
-  emailDel: FormControl = new FormControl('');
-  DelVerify: FormControl = new FormControl('');
-  deleteForm = new FormGroup({
-    emailDel: this.emailDel,
-    passwordDel: this.passwordDel,
-  });
   password: FormControl = new FormControl('', Validators.minLength(8));
   passwordNew: FormControl = new FormControl('');
   secretCode: FormControl = new FormControl('');
@@ -171,20 +164,6 @@ export class ForgotPasswordComponent implements OnInit {
       return { noWhiteSpace: true };
     }
     return null;
-  }
-
-  toggleVisibilty(): any {
-    const c = document.getElementById('passwordType') as HTMLInputElement;
-
-    c.type = 'text';
-    this.visible = !this.visible;
-  }
-
-  toggleVisibilty_(): any {
-    const c = document.getElementById('passwordType') as HTMLInputElement;
-
-    c.type = 'password';
-    this.visible = !this.visible;
   }
 
   backButton(): void {
@@ -232,17 +211,5 @@ export class ForgotPasswordComponent implements OnInit {
 
     c.type = 'password';
     this.visible2 = !this.visible2;
-  }
-  DeleteAccount(): void {
-    console.log(this.emailDel.value, this.passwordDel.value);
-    this.authService.deleteAccount(
-      this.emailDel.value,
-      this.passwordDel.value,
-      this.secretCode.value
-    );
-    // .then((value) => {
-    //   this.emailDel.setValue('');
-    //   this.passwordDel.setValue('');
-    // });
   }
 }
