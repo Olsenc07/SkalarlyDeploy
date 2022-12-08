@@ -462,7 +462,7 @@ router.get('/reset-password', async (req, res, next) => {
 })
 
 router.post('/reset-password', async (req, res, next) => {
-        const secretCode = await User.findOne({ secretCode: req.body.secretCode })
+        const secretCode = await User.findOne({ password: req.body.secretCode })
         if (secretCode) {
             bcrypt.hash(req.body.password, 10)
                 .then(hash => {
