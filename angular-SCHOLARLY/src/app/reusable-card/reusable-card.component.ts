@@ -61,13 +61,13 @@ export class ReusableCardComponent implements OnInit {
   dateMonthName = this.testMonth(this.dateMonth);
 
   time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
     this.timeHour +
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
     '\xa0' +
     this.text;
 
@@ -151,6 +151,7 @@ export class ReusableCardComponent implements OnInit {
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
+    if (timeHourInitial > 12) {
     if (timeHourInitial === 13) {
       return 1;
     }
@@ -187,6 +188,9 @@ export class ReusableCardComponent implements OnInit {
     if (timeHourInitial === 24) {
       return 12;
     }
+  } else {
+    return timeHourInitial;
+  }
   }
   testMonth(dateMonth: any): string {
     if (dateMonth === 0) {
