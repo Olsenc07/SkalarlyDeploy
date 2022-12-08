@@ -325,9 +325,11 @@ export class EditProfileComponent implements OnInit {
           )
           .toURL();
         const cloudConfig = new CloudConfig({ cloudName: 'skalarly' });
-        this.imgNew = new CloudinaryImage(this.src, cloudConfig);
+        const urlConfig = new URLConfig({ secure: true });
+        this.imgNew = new CloudinaryImage(this.src, cloudConfig, urlConfig);
         console.log('gta2', this.urlPP);
         console.log('gta4', this.img);
+        console.log('gta9', this.imgNew);
         console.log('gta8', this.src);
 
         // this.urlPP = new CloudinaryImage('Proflile_Pic');
