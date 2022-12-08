@@ -37,6 +37,7 @@ export class MessagingComponent implements OnInit {
     this.dateMonthName +
     '\xa0' +
     this.dateDay +
+    '\xa0' +
     this.timeHour +
     ':' +
     this.timeMinuteText +
