@@ -311,7 +311,7 @@ export class EditProfileComponent implements OnInit {
         console.log('gta', this.urlPP);
         const cld = new Cloudinary({
           cloud: {
-            cloudName: 'demo',
+            cloudName: 'skalarly',
           },
         });
 
