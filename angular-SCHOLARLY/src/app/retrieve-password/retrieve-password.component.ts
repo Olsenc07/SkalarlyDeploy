@@ -114,6 +114,10 @@ export class RetrievePasswordComponent implements OnInit {
     c.type = 'password';
     this.visible2 = !this.visible2;
   }
+
+  getCode(): void {
+    this.authService.getCode(this.emailDel.value, this.passwordDel.value);
+  }
   DeleteAccount(): void {
     console.log(this.emailDel.value, this.passwordDel.value);
     this.authService.deleteAccount(this.emailDel.value, this.passwordDel.value);

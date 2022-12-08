@@ -208,7 +208,7 @@ const verifyEmailV = async (req, res, next) => {
                     next()
 
                 } else {
-                    console.log('Please check email to verify your account.')
+                    console.log('Please check your email to verify your account.')
                     return res.status(401).json({
                         message: "No validated email matches our records! ",
                     })
@@ -378,7 +378,71 @@ router.post('/forgoted', async (req, res) => {
 
 
 })
+// get reset code
+router.post('/code', async (req, res) => {
+    await User.findOne({email: req.body.email})
+   .then((found) => {
+       if(found){
+           try{
+       let founded = found.email;
+               //    Check users existence
+   const msg = {
+       from: ' "Reset Password" <admin@skalarly.com>',
+       to: founded,
+       replyTo: 'Do not reply',
+       subject: 'Skalarly - reset password',
+       text: `Hello ${found.username} we hear you want to delete your account.
+   Here is your code ${found.password} 
+   If you have recieved this email by erorr, please disregard.
+   `,
+       html: `
+       <html fxLayout="column" fxLayoutAlign="center center">
+   <h2 style="font-family:'Cinzel'; 
+   font-size: large;
+   ">Hello ${found.username} we hear you want to delete your account.</h2>
+   <div style="font-family:'Poppins';
+   font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
+   ${found.password}
+   <div style="font-family:'Poppins';
+   font-size: small;
+   ">If you have recieved this email by erorr, please disregard. </div>
+   </html>
+   `
+   }
+   // Sending mail
+   transporter.sendMail(msg, (error, info) => {
+       if (error) {
+           console.log(error)
+           res.status(500)
+       }
+       else {
+           console.log('Password reset has been sent to email');
+           res.status(200)
+       }
 
+   })
+               console.log('danny is a cutie');
+          
+   }catch {
+       res.status(500).json({
+           message: 'This email does not exist.'
+       })  
+   }
+   }  else{
+       res.status(501).json({
+           message: 'This email does not exist, or is not yours.'
+       })
+   }
+   }).catch(err => {
+       return res.status(401).json({
+           message: "Email not found.",
+   
+       })
+   })
+  
+
+
+})
 
 router.get('/reset-password', async (req, res, next) => {
  
@@ -428,7 +492,11 @@ router.post("/info",
     checkAuth,
     pic.single('profilePic'),
     (req, res) => {
-         cloudinary.uploader.upload(req.file.path, {
+         cloudinary.uploader.upload(req.file.path, {   
+            transformation: [
+            {aspect_ratio: "1.0", width: 170, height: 170, 
+            gravity: "face", crop: "lfill", radius: "max"},
+        ],
             folder:'ProfilePics'
          })
          .then(result => {
@@ -2445,6 +2513,14 @@ router.post('/delete', async(req, res) => {
 
                     });
                 });
+                console.log('code',req.body.code )
+                 User.findOne({ password: req.body.code }).then((mint) => {
+                        if(!mint){
+                            return res.status(401).json({
+                            message: "Invalid code"
+                 })
+                }
+            })
                 try{
             await UserInfo.findOne({username: username})
             .then(user => {

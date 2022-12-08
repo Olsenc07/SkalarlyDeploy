@@ -2291,10 +2291,30 @@ export class AuthService {
         },
       });
   }
-
-  // Delete account
-  deleteAccount(emailDel: string, passwordDel: string): any {
+  // Get code
+  getCode(emailDel: string, passwordDel: string): any {
     const del = { emailDel, passwordDel };
+    this.http.post('https://www.skalarly.com/api/user/code', del).subscribe({
+      next: () => {
+        this.snackBar.open(
+          'Check your email to get your delete code',
+          'Will do',
+          {
+            duration: 3000,
+          }
+        );
+      },
+      error: (error) => {
+        this.snackBar.open('Invalid credentials', 'Try again!', {
+          duration: 3000,
+        });
+        // this.authStatusListener.next(false);
+      },
+    });
+  }
+  // Delete account
+  deleteAccount(emailDel: string, passwordDel: string, code: string): any {
+    const del = { emailDel, passwordDel, code };
     this.http.post('https://www.skalarly.com/api/user/delete', del).subscribe({
       next: () => {
         const snackBarRef = this.snackBar.open(

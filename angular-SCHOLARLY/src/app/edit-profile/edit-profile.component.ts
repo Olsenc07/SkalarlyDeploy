@@ -311,26 +311,26 @@ export class EditProfileComponent implements OnInit {
         // called once readAsDataURL is completed
         console.log(Event);
         this.urlPP = reader.result as string;
-        console.log('gta', this.urlPP);
-        const cld = new Cloudinary({
-          cloud: {
-            cloudName: 'skalarly',
-          },
-        });
+        // console.log('gta', this.urlPP);
+        // const cld = new Cloudinary({
+        //   cloud: {
+        //     cloudName: 'skalarly',
+        //   },
+        // });
 
-        this.img = cld.image(this.urlPP);
-        this.src = this.img
-          .resize(
-            fill().width(170).height(170).gravity(focusOn(FocusOn.faces()))
-          )
-          .toURL();
-        const cloudConfig = new CloudConfig({ cloudName: 'skalarly' });
-        const urlConfig = new URLConfig({ secure: true });
-        this.imgNew = new CloudinaryImage(this.src, cloudConfig, urlConfig);
-        console.log('gta2', this.urlPP);
-        console.log('gta4', this.img);
-        console.log('gta9', this.imgNew);
-        console.log('gta8', this.src);
+        // this.img = cld.image(this.urlPP);
+        // this.src = this.img
+        //   .resize(
+        //     fill().width(170).height(170).gravity(focusOn(FocusOn.faces()))
+        //   )
+        //   .toURL();
+        // const cloudConfig = new CloudConfig({ cloudName: 'skalarly' });
+        // const urlConfig = new URLConfig({ secure: true });
+        // this.imgNew = new CloudinaryImage(this.src, cloudConfig, urlConfig);
+        // console.log('gta2', this.urlPP);
+        // console.log('gta4', this.img);
+        // console.log('gta9', this.imgNew);
+        // console.log('gta8', this.src);
         // this.urlPP = new CloudinaryImage('Proflile_Pic');
         // this.urlPP.resize(thumbnail().gravity(focusOn(FocusOn.face())));
         // console.log('drums', this.urlPP);

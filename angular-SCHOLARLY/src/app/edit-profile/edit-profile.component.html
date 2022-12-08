@@ -55,21 +55,21 @@
 
             <div class="personalizeLarge" [ngClass]="profilePic.value ? 'show_' : 'hide' ">
               <div class="rowP">
-                Our algorithms will crop your image for you
-                <i class="material-icons-outlined _icon2">  arrow_right_alt</i>
+                We will crop your image for you
+                <!-- <i class="material-icons-outlined _icon2">  arrow_right_alt</i> -->
               </div>
             </div>
 
             <div class="personalizeLarge" [ngClass]="profilePic.value ? 'show_' : 'hide' ">
               <div class="PreviewPic">
-                <h2 class="Preview">Image Preview</h2>
+                <h2 class="Preview">Image Before Cropping</h2>
                 <div class="center">
                   <!-- save this value for the form control -->
-                  <!-- <img class="previewPic" id="ProfilePic" [src]="urlPP" /> -->
+                  <img class="previewPic" id="ProfilePic" [src]="urlPP" />
                   <!-- <img class="previewPic" id="ProfilePic" [src]="urlPP"> -->
-                  <advanced-image class="previewPic" id="ProfilePic" [cldImg]="src"></advanced-image>
-                  <!-- <advanced-image class="previewPic" [src]="src"></advanced-image>
-                  <advanced-image class="previewPic" [src]="urlPP"></advanced-image> -->
+                  <!-- <advanced-image class="previewPic" id="ProfilePic" [cldImg]="src"></advanced-image>
+                  <advanced-image class="previewPic" [src]="src"></advanced-image>
+                  <advanced-image class="previewPic" [src]="urlPP"></advanced-image>  -->
 
                 </div>
               </div>
