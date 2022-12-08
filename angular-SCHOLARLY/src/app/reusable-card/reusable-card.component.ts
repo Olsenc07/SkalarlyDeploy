@@ -64,6 +64,7 @@ export class ReusableCardComponent implements OnInit {
     this.dateMonthName +
     '\xa0' +
     this.dateDay +
+    '\xa0' +
     this.timeHour +
     ':' +
     this.timeMinuteText +
@@ -152,45 +153,45 @@ export class ReusableCardComponent implements OnInit {
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
     if (timeHourInitial > 12) {
-    if (timeHourInitial === 13) {
-      return 1;
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
     }
-    if (timeHourInitial === 14) {
-      return 2;
-    }
-    if (timeHourInitial === 15) {
-      return 3;
-    }
-    if (timeHourInitial === 16) {
-      return 4;
-    }
-    if (timeHourInitial === 17) {
-      return 5;
-    }
-    if (timeHourInitial === 18) {
-      return 6;
-    }
-    if (timeHourInitial === 19) {
-      return 7;
-    }
-    if (timeHourInitial === 20) {
-      return 8;
-    }
-    if (timeHourInitial === 21) {
-      return 9;
-    }
-    if (timeHourInitial === 22) {
-      return 10;
-    }
-    if (timeHourInitial === 23) {
-      return 11;
-    }
-    if (timeHourInitial === 24) {
-      return 12;
-    }
-  } else {
-    return timeHourInitial;
-  }
   }
   testMonth(dateMonth: any): string {
     if (dateMonth === 0) {
@@ -298,13 +299,14 @@ export class ReusableCardPersonalComponent implements OnInit {
   dateMonthName = this.testMonth(this.dateMonth);
 
   time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
+    '\xa0' +
     this.timeHour +
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
     '\xa0' +
     this.text;
 
@@ -390,41 +392,45 @@ export class ReusableCardPersonalComponent implements OnInit {
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
-    if (timeHourInitial === 13) {
-      return 1;
-    }
-    if (timeHourInitial === 14) {
-      return 2;
-    }
-    if (timeHourInitial === 15) {
-      return 3;
-    }
-    if (timeHourInitial === 16) {
-      return 4;
-    }
-    if (timeHourInitial === 17) {
-      return 5;
-    }
-    if (timeHourInitial === 18) {
-      return 6;
-    }
-    if (timeHourInitial === 19) {
-      return 7;
-    }
-    if (timeHourInitial === 20) {
-      return 8;
-    }
-    if (timeHourInitial === 21) {
-      return 9;
-    }
-    if (timeHourInitial === 22) {
-      return 10;
-    }
-    if (timeHourInitial === 23) {
-      return 11;
-    }
-    if (timeHourInitial === 24) {
-      return 12;
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
     }
   }
   testMonth(dateMonth: any): string {
@@ -525,13 +531,14 @@ export class ReusableCommentsComponent implements OnInit {
   dateMonthName = this.testMonth(this.dateMonth);
 
   time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
+    '\xa0' +
     this.timeHour +
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
     '\xa0' +
     this.text;
 
@@ -547,41 +554,45 @@ export class ReusableCommentsComponent implements OnInit {
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
-    if (timeHourInitial === 13) {
-      return 1;
-    }
-    if (timeHourInitial === 14) {
-      return 2;
-    }
-    if (timeHourInitial === 15) {
-      return 3;
-    }
-    if (timeHourInitial === 16) {
-      return 4;
-    }
-    if (timeHourInitial === 17) {
-      return 5;
-    }
-    if (timeHourInitial === 18) {
-      return 6;
-    }
-    if (timeHourInitial === 19) {
-      return 7;
-    }
-    if (timeHourInitial === 20) {
-      return 8;
-    }
-    if (timeHourInitial === 21) {
-      return 9;
-    }
-    if (timeHourInitial === 22) {
-      return 10;
-    }
-    if (timeHourInitial === 23) {
-      return 11;
-    }
-    if (timeHourInitial === 24) {
-      return 12;
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
     }
   }
   testMonth(dateMonth: any): string {
@@ -743,13 +754,14 @@ export class ReusableCommentFormComponent implements OnInit {
   dateMonthName = this.testMonth(this.dateMonth);
 
   time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
+    '\xa0' +
     this.timeHour +
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
     '\xa0' +
     this.text;
 
@@ -767,41 +779,45 @@ export class ReusableCommentFormComponent implements OnInit {
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
-    if (timeHourInitial === 13) {
-      return 1;
-    }
-    if (timeHourInitial === 14) {
-      return 2;
-    }
-    if (timeHourInitial === 15) {
-      return 3;
-    }
-    if (timeHourInitial === 16) {
-      return 4;
-    }
-    if (timeHourInitial === 17) {
-      return 5;
-    }
-    if (timeHourInitial === 18) {
-      return 6;
-    }
-    if (timeHourInitial === 19) {
-      return 7;
-    }
-    if (timeHourInitial === 20) {
-      return 8;
-    }
-    if (timeHourInitial === 21) {
-      return 9;
-    }
-    if (timeHourInitial === 22) {
-      return 10;
-    }
-    if (timeHourInitial === 23) {
-      return 11;
-    }
-    if (timeHourInitial === 24) {
-      return 12;
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
     }
   }
   testMonth(dateMonth: any): string {
@@ -942,13 +958,14 @@ export class CardFeedComponent implements OnInit {
   dateMonthName = this.testMonth(this.dateMonth);
 
   time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
+    '\xa0' +
     this.timeHour +
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
     '\xa0' +
     this.text;
 
@@ -982,41 +999,45 @@ export class CardFeedComponent implements OnInit {
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
-    if (timeHourInitial === 13) {
-      return 1;
-    }
-    if (timeHourInitial === 14) {
-      return 2;
-    }
-    if (timeHourInitial === 15) {
-      return 3;
-    }
-    if (timeHourInitial === 16) {
-      return 4;
-    }
-    if (timeHourInitial === 17) {
-      return 5;
-    }
-    if (timeHourInitial === 18) {
-      return 6;
-    }
-    if (timeHourInitial === 19) {
-      return 7;
-    }
-    if (timeHourInitial === 20) {
-      return 8;
-    }
-    if (timeHourInitial === 21) {
-      return 9;
-    }
-    if (timeHourInitial === 22) {
-      return 10;
-    }
-    if (timeHourInitial === 23) {
-      return 11;
-    }
-    if (timeHourInitial === 24) {
-      return 12;
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
     }
   }
   testMonth(dateMonth: any): string {
@@ -1220,13 +1241,14 @@ export class CardInfoFeedComponent implements OnInit {
   dateMonthName = this.testMonth(this.dateMonth);
 
   time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
+    '\xa0' +
     this.timeHour +
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
     '\xa0' +
     this.text;
 
@@ -1259,41 +1281,45 @@ export class CardInfoFeedComponent implements OnInit {
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
-    if (timeHourInitial === 13) {
-      return 1;
-    }
-    if (timeHourInitial === 14) {
-      return 2;
-    }
-    if (timeHourInitial === 15) {
-      return 3;
-    }
-    if (timeHourInitial === 16) {
-      return 4;
-    }
-    if (timeHourInitial === 17) {
-      return 5;
-    }
-    if (timeHourInitial === 18) {
-      return 6;
-    }
-    if (timeHourInitial === 19) {
-      return 7;
-    }
-    if (timeHourInitial === 20) {
-      return 8;
-    }
-    if (timeHourInitial === 21) {
-      return 9;
-    }
-    if (timeHourInitial === 22) {
-      return 10;
-    }
-    if (timeHourInitial === 23) {
-      return 11;
-    }
-    if (timeHourInitial === 24) {
-      return 12;
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
     }
   }
   testMonth(dateMonth: any): string {
@@ -1460,13 +1486,14 @@ export class CardInfoMainPageComponent implements OnInit {
   dateMonthName = this.testMonth(this.dateMonth);
 
   time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
+    '\xa0' +
     this.timeHour +
     ':' +
     this.timeMinuteText +
     this.timeMinute +
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
     '\xa0' +
     this.text;
 
@@ -1502,41 +1529,45 @@ export class CardInfoMainPageComponent implements OnInit {
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
-    if (timeHourInitial === 13) {
-      return 1;
-    }
-    if (timeHourInitial === 14) {
-      return 2;
-    }
-    if (timeHourInitial === 15) {
-      return 3;
-    }
-    if (timeHourInitial === 16) {
-      return 4;
-    }
-    if (timeHourInitial === 17) {
-      return 5;
-    }
-    if (timeHourInitial === 18) {
-      return 6;
-    }
-    if (timeHourInitial === 19) {
-      return 7;
-    }
-    if (timeHourInitial === 20) {
-      return 8;
-    }
-    if (timeHourInitial === 21) {
-      return 9;
-    }
-    if (timeHourInitial === 22) {
-      return 10;
-    }
-    if (timeHourInitial === 23) {
-      return 11;
-    }
-    if (timeHourInitial === 24) {
-      return 12;
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
     }
   }
   testMonth(dateMonth: any): string {
