@@ -51,6 +51,7 @@ export class EditProfileComponent implements OnInit {
   picker = new Picker();
   infos: AuthDataInfo[] = [];
   userId: string;
+  imgNew: CloudinaryImage;
 
   // infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
@@ -316,7 +317,7 @@ export class EditProfileComponent implements OnInit {
             cloudName: 'skalarly',
           },
         });
-        imgNew: CloudinaryImage;
+
         this.img = cld.image(this.urlPP);
         this.src = this.img
           .resize(
@@ -324,7 +325,7 @@ export class EditProfileComponent implements OnInit {
           )
           .toURL();
         const cloudConfig = new CloudConfig({ cloudName: 'skalarly' });
-        imgNew = new CloudinaryImage(this.src, cloudConfig);
+        this.imgNew = new CloudinaryImage(this.src, cloudConfig);
         console.log('gta2', this.urlPP);
         console.log('gta4', this.img);
         console.log('gta8', this.src);
