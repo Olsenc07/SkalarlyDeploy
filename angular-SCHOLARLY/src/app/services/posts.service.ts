@@ -60,7 +60,7 @@ export class PostsService {
   deleteNotif(id: string): any {
     console.log('right here', id);
     this.http
-      .delete<{ message: string }>(
+      .delete<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/posts/deleteNotif/' + id
       )
       .subscribe((transformedInfos) => {
