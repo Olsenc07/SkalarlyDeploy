@@ -73,6 +73,7 @@ export class MessagingComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       console.log('params main page', params?.username);
       this.username = params?.username;
+      console.log('username', this.username);
     });
   }
   // Am Pm instead of 24hr clock
