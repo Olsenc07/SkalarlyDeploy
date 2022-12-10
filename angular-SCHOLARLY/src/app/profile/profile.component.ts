@@ -224,6 +224,7 @@ export class ProfileComponent implements OnInit {
         return swreq.pushManager.getSubscription();
       })
       .then((sub) => {
+        console.log('simp', sub);
         if (sub === null) {
           // Create a new subscription
           const convertedVapidPublicKey = this.urlBase64ToUint8Array(

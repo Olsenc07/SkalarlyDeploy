@@ -477,7 +477,7 @@ router.get("/checkNotif", async (req, res) => {
     console.log('hey night owl', req.query.id)
     await Subscription.findOne({Creator: req.query.id})
     .then(documents => {
-        console.log('Notifications are connected!');
+        console.log('Notifications are connected!', documents);
         res.status(200).json({
             infos: documents
         });
