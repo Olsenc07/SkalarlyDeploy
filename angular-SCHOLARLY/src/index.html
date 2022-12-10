@@ -33,10 +33,12 @@
       const swRegistration = navigator.serviceWorker.register('/worker.js').then((registration) => {
           console.log('Service worker registered!');
         });
+        console.log('Hey hottie', swRegistration)
           // Re Register when enpoints expired
     self.addEventListener(
       'pushsubscriptionchange',
       (event) => {
+        console.log('subscription changed 1')
         const subscription = swRegistration.pushManager
           .subscribe(event.oldSubscription.options)
           .then((subscription) =>
@@ -51,6 +53,7 @@
             })
           );
         event.waitUntil(subscription);
+        console.log('subscription changed 2')
       },
       false
     );
