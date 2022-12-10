@@ -117,6 +117,7 @@ export class ProfileComponent implements OnInit {
         console.log('value', value);
         if (value.Creator) {
           this.notif = value.Creator;
+          this.off = true;
           console.log('During the midday', this.notif);
         }
       });
