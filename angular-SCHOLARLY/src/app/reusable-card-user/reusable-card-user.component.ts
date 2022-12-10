@@ -216,6 +216,7 @@ export class ReusableCardMessageComponent implements OnInit {
   deleteMsg(msgId: string): any {
     console.log('xanyx', msgId);
     this.messageNotificationService.deleteMessage(msgId);
+    location.reload();
   }
   // Back
   onClickMsgBack(): any {
