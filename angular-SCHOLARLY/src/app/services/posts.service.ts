@@ -64,7 +64,7 @@ export class PostsService {
         'https://www.skalarly.com/api/posts/deleteNotif/' + id
       )
       .subscribe((transformedInfos) => {
-        this.snackBar.open('Notifications Off', '', {
+        this.snackBar.open('Notifications Off', '🔕', {
           duration: 3000,
         });
       });

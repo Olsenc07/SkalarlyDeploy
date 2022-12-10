@@ -32,6 +32,7 @@ export interface Follow {
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  off = false;
   notification = false;
   ring = false;
   show = true;
@@ -159,11 +160,14 @@ export class ProfileComponent implements OnInit {
   }
   // Turn off notifications
   offNotifs(): void {
+    this.off = false;
     console.log('working 2', this.userId);
     this.postsService.deleteNotif(this.userId);
   }
   // Trigger Notifications
   Notifications(): any {
+    this.off = true;
+
     this.ring = true;
     this.show = false;
     // Web-Push
