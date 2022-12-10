@@ -32,9 +32,9 @@ export interface Follow {
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+  notification = false;
   ring = false;
-  notif: string;
-  Notification = false;
+  notif = '';
 
   isLoading = false;
   follow: Follow[] = [];
@@ -164,68 +164,8 @@ export class ProfileComponent implements OnInit {
   // Trigger Notifications
   Notifications(): any {
     this.ring = true;
-    // Service worker
-    const Id = this.userId;
-    const Authservice = this.authService;
+
     // Web-Push
-    // Public base64 to Uint
-    function urlBase64ToUint8Array(base64String): any {
-      const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
-      const base64 = (base64String + padding)
-        .replace(/\-/g, '+')
-        .replace(/_/g, '/');
-
-      const rawData = window.atob(base64);
-      const outputArray = new Uint8Array(rawData.length);
-
-      for (let i = 0; i < rawData.length; ++i) {
-        outputArray[i] = rawData.charCodeAt(i);
-      }
-      return outputArray;
-    }
-
-    function configurePushSub(): any {
-      console.log('here I am 5');
-      if (!('serviceWorker' in navigator)) {
-        return;
-      }
-      let req;
-      navigator.serviceWorker.ready
-        .then((swreq) => {
-          req = swreq;
-          console.log('hey chazzy', swreq);
-          return swreq.pushManager.getSubscription();
-        })
-        .then((sub) => {
-          if (sub === null) {
-            // Create a new subscription
-            const convertedVapidPublicKey = urlBase64ToUint8Array(
-              'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
-            );
-            req.pushManager
-              .subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: convertedVapidPublicKey,
-              })
-              .then((newSub: any) => {
-                Authservice.addSubscription(newSub, Id);
-                // return fetch('https://www.skalarly.com/api/subscribe/follow', {
-                //   method: 'POST',
-                //   headers: {
-                //     'Content-Type': 'application/json',
-                //   },
-                //   body: JSON.stringify(newSub),
-                // });
-              });
-          } else {
-            // We have a subscription
-            console.log('We have a subscription');
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
 
     // displayConfir notif
     // function displayConfirmNotification(): any {
@@ -236,28 +176,9 @@ export class ProfileComponent implements OnInit {
     //   }
     // }
 
-    // Get notifcation permission
-    function askForNotificationPermission(): any {
-      console.log('here I am z');
-      Notification.requestPermission((result) => {
-        console.log('Permission', result);
-        if (result === 'granted') {
-          this.Notification = true;
-          console.log('here I am 3');
-        }
-
-        if (result !== 'granted') {
-          console.log('Permission not granted');
-        } else {
-          configurePushSub();
-          console.log('here I am');
-        }
-      });
-    }
-
     if ('Notification' in window) {
       // window.addEventListener('load', askForNotificationPermission);
-      askForNotificationPermission();
+      this.askForNotificationPermission();
       console.log('here I am 2');
     }
   }
@@ -270,6 +191,86 @@ export class ProfileComponent implements OnInit {
   onDelete(postId: string): any {
     this.showCaseService.deleteShowCase(postId);
     console.log('chaz whats up homie g', postId);
+  }
+
+  // Public base64 to Uint
+  urlBase64ToUint8Array(base64String): any {
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+    const base64 = (base64String + padding)
+      .replace(/\-/g, '+')
+      .replace(/_/g, '/');
+
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+  }
+  configurePushSub(): any {
+    // Service worker
+    const Id = this.userId;
+    const Authservice = this.authService;
+    console.log('here I am 5');
+    if (!('serviceWorker' in navigator)) {
+      return;
+    }
+    let req;
+    navigator.serviceWorker.ready
+      .then((swreq) => {
+        req = swreq;
+        console.log('hey chazzy', swreq);
+        return swreq.pushManager.getSubscription();
+      })
+      .then((sub) => {
+        if (sub === null) {
+          // Create a new subscription
+          const convertedVapidPublicKey = this.urlBase64ToUint8Array(
+            'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
+          );
+          req.pushManager
+            .subscribe({
+              userVisibleOnly: true,
+              applicationServerKey: convertedVapidPublicKey,
+            })
+            .then((newSub: any) => {
+              Authservice.addSubscription(newSub, Id);
+              // return fetch('https://www.skalarly.com/api/subscribe/follow', {
+              //   method: 'POST',
+              //   headers: {
+              //     'Content-Type': 'application/json',
+              //   },
+              //   body: JSON.stringify(newSub),
+              // });
+            });
+        } else {
+          // We have a subscription
+          console.log('We have a subscription');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  // Get notifcation permission
+  askForNotificationPermission(): any {
+    console.log('here I am z');
+    Notification.requestPermission((result) => {
+      console.log('Permission', result);
+      if (result === 'granted') {
+        this.notification = true;
+        console.log('here I am 3');
+      }
+
+      if (result !== 'granted') {
+        console.log('Permission not granted');
+      } else {
+        this.configurePushSub();
+        console.log('here I am');
+      }
+    });
   }
 }
 
