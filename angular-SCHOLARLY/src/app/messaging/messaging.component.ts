@@ -51,7 +51,8 @@ export class MessagingComponent implements OnInit {
 
   // allUsers should filter through every user
   allUsers: string[] = [];
-  username: string;
+  // username: string;
+  username = '';
   showEmojiPicker = false;
   search: FormControl = new FormControl('');
   message: FormControl = new FormControl('');
