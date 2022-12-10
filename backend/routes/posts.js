@@ -490,6 +490,7 @@ router.get("/checkNotif", async (req, res) => {
 
 // Delete Notification 
 router.delete("/deleteNotif/:id", checkAuth, async(req, res, next ) => {
+    console.log('thank', req.params.id)
     await Subscription.deleteOne({Creator: req.params.id})
     .then((result) =>{
         if (result){
