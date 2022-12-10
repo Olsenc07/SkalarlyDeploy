@@ -218,7 +218,7 @@ export class MessagingComponent implements OnInit {
         this.outputMessage(data);
       });
       this.message.reset('');
-      this.messagesService.sentNotif();
+      // this.messagesService.sentNotif();
     }
     // Show green check mark
   }
