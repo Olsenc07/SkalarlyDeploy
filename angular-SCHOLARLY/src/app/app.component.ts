@@ -88,27 +88,6 @@ export class AppComponent implements OnInit {
         user ? this._filter(user) : this.allUsers.slice()
       )
     );
-
-    // self.addEventListener(
-    //   'pushsubscriptionchange',
-    //   (event) => {
-    //     const subscription = swRegistration.pushManager
-    //       .subscribe(event.oldSubscription.options)
-    //       .then((subscription) =>
-    //         fetch('register', {
-    //           method: 'post',
-    //           headers: {
-    //             'Content-type': 'application/json',
-    //           },
-    //           body: JSON.stringify({
-    //             endpoint: subscription.endpoint,
-    //           }),
-    //         })
-    //       );
-    //     event.waitUntil(subscription);
-    //   },
-    //   false
-    // );
   }
 
   private _filter(value: string): string[] {

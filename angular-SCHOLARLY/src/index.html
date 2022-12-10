@@ -30,11 +30,35 @@
  // Register service worker
  window.addEventListener('load', () => {
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/worker.js').then((registration) => {
+      const swRegistration = navigator.serviceWorker.register('/worker.js').then((registration) => {
           console.log('Service worker registered!');
         });
+          // Re Register when enpoints expire
+    self.addEventListener(
+      'pushsubscriptionchange',
+      (event) => {
+        const subscription = swRegistration.pushManager
+          .subscribe(event.oldSubscription.options)
+          .then((subscription) =>
+            fetch('register', {
+              method: 'post',
+              headers: {
+                'Content-type': 'application/json',
+              },
+              body: JSON.stringify({
+                endpoint: subscription.endpoint,
+              }),
+            })
+          );
+        event.waitUntil(subscription);
+      },
+      false
+    );
       }
+      
     });
+
+  
     </script>
 
 
