@@ -183,6 +183,7 @@ export class ProfileComponent implements OnInit {
     }
 
     function configurePushSub(): any {
+      console.log('here I am 5');
       if (!('serviceWorker' in navigator)) {
         return;
       }
@@ -239,18 +240,21 @@ export class ProfileComponent implements OnInit {
         console.log('Permission', result);
         if (result === 'granted') {
           this.Notification = true;
+          console.log('here I am 3');
         }
 
         if (result !== 'granted') {
           console.log('Permission not granted');
         } else {
           configurePushSub();
+          console.log('here I am');
         }
       });
     }
 
     if ('Notification' in window) {
       window.addEventListener('load', askForNotificationPermission);
+      console.log('here I am 2');
     }
   }
 
