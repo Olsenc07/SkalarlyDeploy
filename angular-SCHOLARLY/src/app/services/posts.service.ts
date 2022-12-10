@@ -40,7 +40,7 @@ export class PostsService {
       })
       .pipe(
         map((infosData) => {
-          console.log('months', infosData.infos);
+          console.log('months', infosData);
           return infosData.infos;
         })
       )
