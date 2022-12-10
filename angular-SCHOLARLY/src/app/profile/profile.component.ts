@@ -238,6 +238,7 @@ export class ProfileComponent implements OnInit {
 
     // Get notifcation permission
     function askForNotificationPermission(): any {
+      console.log('here I am z');
       Notification.requestPermission((result) => {
         console.log('Permission', result);
         if (result === 'granted') {
@@ -255,7 +256,8 @@ export class ProfileComponent implements OnInit {
     }
 
     if ('Notification' in window) {
-      window.addEventListener('load', askForNotificationPermission);
+      // window.addEventListener('load', askForNotificationPermission);
+      askForNotificationPermission();
       console.log('here I am 2');
     }
   }
