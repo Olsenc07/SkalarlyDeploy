@@ -60,7 +60,9 @@ export class PostsService {
   deleteNotif(id: string): any {
     console.log('right here', id);
     this.http
-      .delete('https://www.skalarly.com/api/posts/deleteNotif/' + id)
+      .delete<{ message: string }>(
+        'https://www.skalarly.com/api/posts/deleteNotif/' + id
+      )
       .subscribe((transformedInfos) => {
         this.snackBar.open('Notifications Off', '', {
           duration: 3000,

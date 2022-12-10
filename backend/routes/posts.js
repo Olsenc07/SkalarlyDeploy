@@ -494,11 +494,10 @@ router.delete("/deleteNotif/:id", checkAuth, async(req, res, next ) => {
     console.log('thank', req.params.id)
     await Subscription.deleteOne({Creator: req.params.id})
     .then((result) =>{
+        console.log('result', result)
         if (result){
             res.status(200);
-            } else {
-                res.status(401).json({message: 'Not authorized'});
-            }
+            } 
         })
         .catch(error => {
             res.status(500).json({
