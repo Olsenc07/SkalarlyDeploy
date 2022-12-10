@@ -34,6 +34,7 @@ export interface Follow {
 export class ProfileComponent implements OnInit {
   notification = false;
   ring = false;
+  show = true;
   notif = '';
 
   isLoading = false;
@@ -164,7 +165,7 @@ export class ProfileComponent implements OnInit {
   // Trigger Notifications
   Notifications(): any {
     this.ring = true;
-
+    this.show = false;
     // Web-Push
 
     // displayConfir notif
