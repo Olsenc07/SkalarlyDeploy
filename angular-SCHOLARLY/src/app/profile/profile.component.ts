@@ -225,30 +225,30 @@ export class ProfileComponent implements OnInit {
       })
       .then((sub) => {
         console.log('simp', sub);
-        if (sub === null) {
-          // Create a new subscription
-          const convertedVapidPublicKey = this.urlBase64ToUint8Array(
-            'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
-          );
-          req.pushManager
-            .subscribe({
-              userVisibleOnly: true,
-              applicationServerKey: convertedVapidPublicKey,
-            })
-            .then((newSub: any) => {
-              Authservice.addSubscription(newSub, Id);
-              // return fetch('https://www.skalarly.com/api/subscribe/follow', {
-              //   method: 'POST',
-              //   headers: {
-              //     'Content-Type': 'application/json',
-              //   },
-              //   body: JSON.stringify(newSub),
-              // });
-            });
-        } else {
-          // We have a subscription
-          console.log('We have a subscription');
-        }
+        // if (sub === null) {
+        // Create a new subscription
+        const convertedVapidPublicKey = this.urlBase64ToUint8Array(
+          'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
+        );
+        req.pushManager
+          .subscribe({
+            userVisibleOnly: true,
+            applicationServerKey: convertedVapidPublicKey,
+          })
+          .then((newSub: any) => {
+            Authservice.addSubscription(newSub, Id);
+            // return fetch('https://www.skalarly.com/api/subscribe/follow', {
+            //   method: 'POST',
+            //   headers: {
+            //     'Content-Type': 'application/json',
+            //   },
+            //   body: JSON.stringify(newSub),
+            // });
+          });
+        // } else {
+        // We have a subscription
+        // console.log('We have a subscription');
+        // }
       })
       .catch((err) => {
         console.log(err);
