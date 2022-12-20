@@ -34,12 +34,17 @@
           console.log('Service worker registered!');
         });
         console.log('Hey hottie', swRegistration)
+      }
+      });
+  
+
           // Re Register when enpoints expired
     self.addEventListener(
       'pushsubscriptionchange',
       (event) => {
-        console.log('subscription changed 1')
-        const subscription = swRegistration.pushManager
+        if ('serviceWorker' in navigator) {
+        console.log('subscription changed 1', event);
+        navigator.serviceWorker.ready.pushManager
           .subscribe(event.oldSubscription.options)
           .then((subscription) =>
             fetch('register', {
@@ -51,15 +56,16 @@
                 endpoint: subscription.endpoint,
               }),
             })
+          
           );
         event.waitUntil(subscription);
         console.log('subscription changed 2')
+          }
       },
       false
     );
-      }
       
-    });
+      
 
   
     </script>

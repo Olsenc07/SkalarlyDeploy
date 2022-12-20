@@ -118,6 +118,7 @@ export class SearchListService {
           'Leadership',
           'Media',
           'Other',
+          'Outdoor Activities',
           'Politics',
           'Social Justice & Advocacy',
           'Social',
