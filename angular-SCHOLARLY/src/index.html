@@ -39,7 +39,7 @@
   
 
           // Re Register when enpoints expired
-    self.addEventListener(
+    window.addEventListener(
       'pushsubscriptionchange',
       (event) => {
         if ('serviceWorker' in navigator) {
