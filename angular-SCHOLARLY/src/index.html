@@ -42,6 +42,8 @@
     window.addEventListener(
       'pushsubscriptionchange',
       (event) => {
+        console.log('subscription changed', event);
+
         if ('serviceWorker' in navigator) {
         console.log('subscription changed 1', event);
         navigator.serviceWorker.ready.pushManager
