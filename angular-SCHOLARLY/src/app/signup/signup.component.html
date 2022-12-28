@@ -190,10 +190,10 @@
           
           <div class="log-in-boxPop" fxLayout="column" fxLayoutAlign="center center">
             <div class="inputTop">
-              <span class="material-icons _icon" *ngIf="emailV.invalid">
+              <span class="material-icons " *ngIf="emailV.invalid">
                       school
                     </span>
-                    <span class="material-icons check" *ngIf="emailV.valid" >
+                    <span class="material-icons check_" *ngIf="emailV.valid" >
                       school
                     </span>
                     <mat-form-field>
@@ -211,7 +211,7 @@
                   </div>
                   <div class="twoPassword">
                     <div class="input">
-                      <span class="material-icons _icon" *ngIf="passwordV.invalid">
+                      <span class="material-icons " *ngIf="passwordV.invalid">
                         lock
                       </span>
                       <span class="material-icons check" *ngIf="passwordV.valid" matTooltip="Password Requirements Met">
@@ -351,8 +351,8 @@
 
               <mat-form-field >
                 <mat-label>
-                  <i class="material-icons " *ngIf="!name.value">badge</i>
-                  <i class="material-icons check_" *ngIf="name.value">badge</i>
+                  <i class="fas fa-address-card " *ngIf="!name.value"></i>
+                  <i class="fas fa-address-card check_" *ngIf="name.value"></i>
                   Full Name
                 </mat-label>
                 <input matInput placeholder="Full Name" maxlength="60" [formControl]="name" />
@@ -371,8 +371,8 @@
               <!-- Birthday picker -->
               <mat-form-field >
                 <mat-label>
-                  <i class="material-icons " *ngIf="!birthday.value">cake</i>
-                  <i class="material-icons check_" *ngIf="birthday.value">cake</i>
+                  <i class="fas fa-birthday-cake " *ngIf="!birthday.value"></i>
+                  <i class="fas fa-birthday-cake check_" *ngIf="birthday.value"></i>
                   When's your birthday?</mat-label>
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
@@ -386,8 +386,8 @@
                 <i class="material-icons _icon" *ngIf="!gender.value">transgender</i> -->
                 <mat-form-field  class="gender" >
                   <mat-label>
-                    <i class="material-icons check_"  *ngIf="gender.value">transgender</i>
-                    <i class="material-icons " *ngIf="!gender.value">transgender</i>
+                    <i class="fas fa-transgender-alt check_"  *ngIf="gender.value"></i>
+                    <i class="fas fa-transgender-alt " *ngIf="!gender.value"></i>
                     Gender</mat-label>
 
                   <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
