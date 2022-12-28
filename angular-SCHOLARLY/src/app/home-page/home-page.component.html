@@ -14,8 +14,9 @@
         <div class="log-in-box" >
           <div class="row_ ">
           <mat-form-field class="text-input" appearance="outline">
-            <mat-label> Academic Email</mat-label>
+            <mat-label> 
             <i matPrefix class="fas fa-user"></i>
+               Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"
              />
              <!-- pattern="+@+utoronto\.ca" pattern="+@utoronto\.ca" pattern="+@uoftpharmacy\.com"
@@ -37,8 +38,9 @@
 
           <div class="row_ ">
           <mat-form-field class="text-input" appearance="outline">
-            <mat-label>Password</mat-label>
+            <mat-label>
             <i matPrefix class="fas fa-key"></i>
+              Password</mat-label>
             <input matInput [formControl]="password" type="password" id='passwordType' required/>
             <mat-error *ngIf="password.invalid">Please enter a valid password</mat-error>
             <button matSuffix mat-icon-button type="button"  *ngIf="visible" (click)="toggleVisibilty()" matTooltip="Show Password" >
