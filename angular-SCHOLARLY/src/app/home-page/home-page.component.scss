@@ -141,7 +141,10 @@
 }
 
 
-
+.matdiv{
+  display: flex;
+  flex-direction: row;
+}
 @media (min-width: 500px) {
   .main-text {
     display: flex;

@@ -87,11 +87,13 @@
           <button mat-button (click)="openDialog()" class="skalarly">
             What is Skalarly?
           </button>
-          <mat-list style="flex-direction:column">
+          <div class="matdiv">
+          <mat-list >
           <mat-divider></mat-divider>
           <p class="tag">Or</p>
           <mat-divider></mat-divider>
         </mat-list>
+      </div>
           <!-- mat-raised-button -->
           <button type="button" mat-raised-button routerLink="/sign-up" color="primary" class="action-button newaccount">
             Create New Account

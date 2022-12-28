@@ -346,10 +346,15 @@
 
           <div class="personalise">
             <div class="input">
-              <i class="material-icons _icon" *ngIf="!name.value">badge</i>
-              <i class="material-icons check" *ngIf="name.value">badge</i>
+              <!-- <i class="material-icons _icon" *ngIf="!name.value">badge</i>
+              <i class="material-icons check" *ngIf="name.value">badge</i> -->
 
               <mat-form-field >
+                <mat-label>
+                  <i class="material-icons " *ngIf="!name.value">badge</i>
+                  <i class="material-icons check_" *ngIf="name.value">badge</i>
+                  Full Name
+                </mat-label>
                 <input matInput placeholder="Full Name" maxlength="60" [formControl]="name" />
                 <mat-error *ngIf="name.invalid">Please enter your name</mat-error>
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
@@ -360,12 +365,15 @@
 
 
             <div class="input bd">
-              <i class="material-icons _icon" *ngIf="!birthday.value">cake</i>
-              <i class="material-icons check" *ngIf="birthday.value">cake</i>
+              <!-- <i class="material-icons _icon" *ngIf="!birthday.value">cake</i>
+              <i class="material-icons check" *ngIf="birthday.value">cake</i> -->
 
               <!-- Birthday picker -->
               <mat-form-field >
-                <mat-label>When's your birthday?</mat-label>
+                <mat-label>
+                  <i class="material-icons " *ngIf="!birthday.value">cake</i>
+                  <i class="material-icons check_" *ngIf="birthday.value">cake</i>
+                  When's your birthday?</mat-label>
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker class="bd_picker" #dp startView="year" [startAt]="startDate"></mat-datepicker>
@@ -374,10 +382,13 @@
 
             <div class="inputP">
               <div class="inputFine">
-                <i class="material-icons check"  *ngIf="gender.value">transgender</i>
-                <i class="material-icons _icon" *ngIf="!gender.value">transgender</i>
+                <!-- <i class="material-icons check"  *ngIf="gender.value">transgender</i>
+                <i class="material-icons _icon" *ngIf="!gender.value">transgender</i> -->
                 <mat-form-field  class="gender" >
-                  <mat-label>Gender</mat-label>
+                  <mat-label>
+                    <i class="material-icons check_"  *ngIf="gender.value">transgender</i>
+                    <i class="material-icons " *ngIf="!gender.value">transgender</i>
+                    Gender</mat-label>
 
                   <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
                   <mat-autocomplete #auto_="matAutocomplete">
@@ -389,11 +400,14 @@
               </div>
               <!-- class="center" -->
               <div class="inputFine">
-                <i class="material-icons check"  *ngIf="pronouns.value">psychology</i>
-                 <i class="material-icons _icon" *ngIf="!pronouns.value">psychology</i>
+                <!-- <i class="material-icons check"  *ngIf="pronouns.value">psychology</i>
+                 <i class="material-icons _icon" *ngIf="!pronouns.value">psychology</i> -->
                 <mat-form-field  class="gender">
                   
-                  <mat-label>Prefered Pronouns</mat-label>
+                  <mat-label>
+                    <i class="material-icons check_"  *ngIf="pronouns.value">psychology</i>
+                    <i class="material-icons " *ngIf="!pronouns.value">psychology</i>
+                    Prefered Pronouns</mat-label>
                   <input matInput type='text' [formControl]="pronouns" [matAutocomplete]="auto"/>
                   <mat-autocomplete #auto="matAutocomplete">
                     <mat-option *ngFor="let pronoun of pronounS" [value]="pronoun">
@@ -405,12 +419,15 @@
     <!-- Bio -->
  
     <div class="input">
-      <i class="fas fa-heart _icon" *ngIf="!bio.value"></i>
-      <i class="fas fa-heart check" *ngIf="bio.value"></i>
+      <!-- <i class="fas fa-heart _icon" *ngIf="!bio.value"></i>
+      <i class="fas fa-heart check" *ngIf="bio.value"></i> -->
 
       <mat-form-field id="showEmojisBio">
 
-        <mat-label>Bio</mat-label>
+        <mat-label>
+          <i class="fas fa-heart " *ngIf="!bio.value"></i>
+          <i class="fas fa-heart check_" *ngIf="bio.value"></i>
+          Bio</mat-label>
    
 
       <input matInput class="selection-emoji"
