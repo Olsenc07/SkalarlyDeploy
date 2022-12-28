@@ -52,13 +52,17 @@
           </div>
 
           <div class="userIn">
-            <i class="fas fa-user-circle" *ngIf="username.invalid">
-          
-            </i>
-            <i class="fas fa-user-circle check" *ngIf="username.valid">
-    
-            </i>
+           
             <mat-form-field>
+            <mat-label>
+              <i class="fas fa-user-circle" *ngIf="username.invalid">
+          
+              </i>
+              <i class="fas fa-user-circle check" *ngIf="username.valid">
+      
+              </i>
+</mat-label>
+
               <input matInput [formControl]="username" placeholder="Username" required maxlength="22"/>
               <mat-error *ngIf="username.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <!-- Once next is clicked and user name has been used -->
@@ -78,7 +82,7 @@
                   <i matSuffix class="fas fa-lock" *ngIf="password.invalid">
                     lock
                   </i>
-                  <i matSuffix class="fas fa-lock check" *ngIf="password.valid" matTooltip="Password Requirements Met">
+                  <i matSuffix class="fas fa-lock check_" *ngIf="password.valid" matTooltip="Password Requirements Met">
                     lock
                   </i>
                   Password min 8 characters</mat-label>
