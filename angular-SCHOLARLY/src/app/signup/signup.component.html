@@ -76,13 +76,15 @@
                 lock
               </span> -->
               <mat-form-field class="userName">
-                <span matSuffix class="material-icons _icon" *ngIf="password.invalid">
-                  lock
-                </span>
-                <span matSuffix class="material-icons check" *ngIf="password.valid" matTooltip="Password Requirements Met">
-                  lock
-                </span>
-                <mat-label>Password min 8 characters</mat-label>
+           
+                <mat-label>
+                  <span matSuffix class="material-icons _icon" *ngIf="password.invalid">
+                    lock
+                  </span>
+                  <span matSuffix class="material-icons check" *ngIf="password.valid" matTooltip="Password Requirements Met">
+                    lock
+                  </span>
+                  Password min 8 characters</mat-label>
                 <input matInput type="password" placeholder="Password" minlength="8" required
                   [formControl]="password" id='passwordType'/>
                 <mat-error *ngIf="password.errors?.noWhiteSpace">White spaces aren't allowed in password</mat-error>
@@ -256,7 +258,7 @@
 
 
 <!-- disabled -->
-      <mat-tab class="sndPage"  >
+      <mat-tab class="sndPage" disabled >
         <form [formGroup]="personalizeForm" enctype="multipart/form-data">
           <ng-template mat-tab-label class="backColour">
             <mat-icon><span class="material-icons-two-tone">
@@ -443,7 +445,7 @@
 
 
       <!-- SnapShots  disabled-->
-      <mat-tab  >
+      <mat-tab  disabled>
         <!-- <form [formGroup]="showCase"> -->
         <ng-template mat-tab-label class="backColour">
           <mat-icon> <span class="material-icons-two-tone">
@@ -516,7 +518,7 @@
 
 
       <!-- disabled -->
-      <mat-tab  >
+      <mat-tab  disabled>
         <ng-template mat-tab-label class="backColour">
           <mat-icon class=""><span class="material-icons-two-tone">
               school
