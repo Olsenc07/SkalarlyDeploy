@@ -575,7 +575,7 @@
           <div class="input">
             <span class="fas fa-running _icon" *ngIf="!sport.value">
             </span>
-            <span class="fas fa-running check" *ngIf="sport.value">
+            <span class="fas fa-running check_" *ngIf="sport.value">
             </span>
             <mat-form-field id="showEmojisSport">
               <input matInput class="selection-emoji" maxlength="50" placeholder="Do you play a sport?" [formControl]="sport" />
@@ -593,11 +593,15 @@
 
 
           <div class="input_Btm">
-            <span class="fas fa-user-friends _icon" *ngIf="!club.value">
-            </span>
-            <span class="fas fa-user-friends check" *ngIf="club.value">
-            </span>
+           
             <mat-form-field id="showEmojisClub">
+              <mat-label> 
+
+                <i class="fas fa-user-friends _icon" *ngIf="!club.value">
+                </i>
+                <i class="fas fa-user-friends check_" *ngIf="club.value">
+                </i>
+              </mat-label>
               <input class="major" class="selection-emoji" maxlength="50" matInput placeholder="Are you apart of a club? " [formControl]="club" />
             <button mat-icon-button matSuffix id="triggerEmoClub" (click)="openEmojiClub()">😃</button>
               <button  matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearClub()">

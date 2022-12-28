@@ -100,7 +100,6 @@
   flex-direction: column;
   justify-content: center;
   background-color: #f2f2f2;
-  background-image: radial-gradient( #009cff , #616fb5);
 }
 @keyframes dotPulseBefore {
   0% {
@@ -186,9 +185,7 @@
 .newaccount{
   background-image: linear-gradient(to right, #009cff , #616fb5);
 }
-.knowbtn{
-  color: white;
-}
+
 @media (min-width: 700px) {
   .log-in-boxPop {
     box-sizing: border-box;
