@@ -61,6 +61,7 @@
               <i class="fas fa-user-circle check" *ngIf="username.valid">
       
               </i>
+              Username
 </mat-label>
 
               <input matInput [formControl]="username" placeholder="Username" required maxlength="22"/>
@@ -80,10 +81,10 @@
            
                 <mat-label>
                   <i matSuffix class="fas fa-lock" *ngIf="password.invalid">
-                    lock
+                 
                   </i>
                   <i matSuffix class="fas fa-lock check_" *ngIf="password.valid" matTooltip="Password Requirements Met">
-                    lock
+                
                   </i>
                   Password min 8 characters</mat-label>
                 <input matInput type="password" placeholder="Password" minlength="8" required
@@ -259,7 +260,7 @@
 
 
 <!-- disabled -->
-      <mat-tab class="sndPage" disabled >
+      <mat-tab class="sndPage"  >
         <form [formGroup]="personalizeForm" enctype="multipart/form-data">
           <ng-template mat-tab-label class="backColour">
             <mat-icon><span class="material-icons-two-tone">
@@ -446,7 +447,7 @@
 
 
       <!-- SnapShots  disabled-->
-      <mat-tab  disabled>
+      <mat-tab  >
         <!-- <form [formGroup]="showCase"> -->
         <ng-template mat-tab-label class="backColour">
           <mat-icon> <span class="material-icons-two-tone">
@@ -519,7 +520,7 @@
 
 
       <!-- disabled -->
-      <mat-tab  disabled>
+      <mat-tab  >
         <ng-template mat-tab-label class="backColour">
           <mat-icon class=""><span class="material-icons-two-tone">
               school
