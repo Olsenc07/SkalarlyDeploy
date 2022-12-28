@@ -536,11 +536,18 @@
         <!-- Text Field Major/Minor -->
         <div class="major-layout">
           <div class="input">
-            <span class="fas fa-star _icon" *ngIf="!major.value">
+            <!-- <span class="fas fa-star _icon" *ngIf="!major.value">
             </span>
             <span class="fas fa-star check" *ngIf="major.value">
-            </span>
+            </span> -->
             <mat-form-field id="showEmojisMajor">
+              <mat-label>
+                <i class="fas fa-star " *ngIf="!major.value">
+                </i>
+                <i class="fas fa-star check_" *ngIf="major.value">
+                </i>
+                Major (s)
+              </mat-label>
               <input class="major selection-emoji" maxlength="50" matInput placeholder="Major (s)" [formControl]="major"  />
             <button mat-icon-button matSuffix id="triggerEmoMajor" (click)="openEmojiMajor()">😃</button>
               <button  matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMajor()">
@@ -553,11 +560,18 @@
           </div>
 
           <div class="input">
-            <span class="fas fa-star-half-alt _icon" *ngIf="!minor.value">
+            <!-- <span class="fas fa-star-half-alt _icon" *ngIf="!minor.value">
             </span>
             <span class="fas fa-star-half-alt check" *ngIf="minor.value">
-            </span>
+            </span> -->
             <mat-form-field id="showEmojisMinor">
+              <mat-label>
+                <i class="fas fa-star-half-alt " *ngIf="!minor.value">
+                </i>
+                <i class="fas fa-star-half-alt check_" *ngIf="minor.value">
+                </i>
+                Minor (s)
+              </mat-label>
               <input class="major selection-emoji"  maxlength="50" matInput placeholder="Minor (s)" [formControl]="minor" />
             <button mat-icon-button matSuffix id="triggerEmoMinor" (click)="openEmojiMinor()">😃</button>
               <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearMinor()">
@@ -573,11 +587,18 @@
 
 
           <div class="input">
-            <span class="fas fa-running _icon" *ngIf="!sport.value">
+            <!-- <span class="fas fa-running _icon" *ngIf="!sport.value">
             </span>
             <span class="fas fa-running check_" *ngIf="sport.value">
-            </span>
+            </span> -->
             <mat-form-field id="showEmojisSport">
+              <mat-label>
+                <i class="fas fa-running " *ngIf="!sport.value">
+                </i>
+                <i class="fas fa-running check_" *ngIf="sport.value">
+                </i>
+                Sport
+              </mat-label>
               <input matInput class="selection-emoji" maxlength="50" placeholder="Do you play a sport?" [formControl]="sport" />
             <button mat-icon-button matSuffix id="triggerEmoSport" (click)="openEmojiSport()">😃</button>
               <button  matSuffix mat-icon-button aria-label="Clear" class="asthetic-adds" type="button" (click)="clearSport()">
@@ -597,10 +618,11 @@
             <mat-form-field id="showEmojisClub">
               <mat-label> 
 
-                <i class="fas fa-user-friends _icon" *ngIf="!club.value">
+                <i class="fas fa-user-friends " *ngIf="!club.value">
                 </i>
                 <i class="fas fa-user-friends check_" *ngIf="club.value">
                 </i>
+                Club
               </mat-label>
               <input class="major" class="selection-emoji" maxlength="50" matInput placeholder="Are you apart of a club? " [formControl]="club" />
             <button mat-icon-button matSuffix id="triggerEmoClub" (click)="openEmojiClub()">😃</button>
