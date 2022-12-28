@@ -180,10 +180,10 @@
 }
 
 .login{
-  background-image: linear-gradient(to right, #10173b , #009cff);
+  background-image: linear-gradient(to right,#2b3e9b,#009cff);
 }
 .newaccount{
-  background-image: linear-gradient(to right, #009cff , #10173b);
+  background-image: linear-gradient(to right, #009cff , #2b3e9b);
 }
 @media (min-width: 700px) {
   .log-in-boxPop {
@@ -207,7 +207,7 @@
     border-color: #418be714;
     // background-image: linear-gradient(to top right, #84b0ff, white);
     border: outset;
-    box-shadow: 0 5px 4px;
+    box-shadow: 0 5px 4px #265598;
   }
 }
 @media (max-width: 700px) {
@@ -218,7 +218,7 @@
     border-radius: 16px;
     background-color: #fafafa;
     border-color: #418be714;
-    box-shadow: 0px 5px 10px;
+    box-shadow: 0px 5px 10px #265598;
   }
 }
 .loginBtn{
