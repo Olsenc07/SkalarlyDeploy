@@ -69,13 +69,19 @@
           </div>
           <div class="twoPassword">
             <div class="input">
-              <span class="material-icons _icon" *ngIf="password.invalid">
+              <!-- <span matSuffix class="material-icons _icon" *ngIf="password.invalid">
                 lock
               </span>
-              <span class="material-icons check" *ngIf="password.valid" matTooltip="Password Requirements Met">
+              <span matSuffix class="material-icons check" *ngIf="password.valid" matTooltip="Password Requirements Met">
                 lock
-              </span>
+              </span> -->
               <mat-form-field class="userName">
+                <span matSuffix class="material-icons _icon" *ngIf="password.invalid">
+                  lock
+                </span>
+                <span matSuffix class="material-icons check" *ngIf="password.valid" matTooltip="Password Requirements Met">
+                  lock
+                </span>
                 <mat-label>Password min 8 characters</mat-label>
                 <input matInput type="password" placeholder="Password" minlength="8" required
                   [formControl]="password" id='passwordType'/>
