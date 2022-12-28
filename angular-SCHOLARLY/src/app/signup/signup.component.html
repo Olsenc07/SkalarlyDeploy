@@ -26,14 +26,12 @@
             @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca,
             @utsc.utoronto.ca, @uoftpharmacy.com ">
             <mat-label>
-              <i class="material-icons " *ngIf="email.invalid">
-                school
+              <i class="fas fa-graduation-cap" *ngIf="email.invalid">
         </i>
-              <i class="material-icons check_" *ngIf="email.valid">
-                school
+              <i class="fas fa-graduation-cap check_" *ngIf="email.valid">
               </i>
               Academic Email
-</mat-label>
+            </mat-label>
               <!-- only utoronto.ca should be excepted  -->
               <input matInput type="email"  placeholder="Academic Email" [formControl]="email" required />
               <!-- pattern="+@+utoronto+" pattern="+@utoronto+" pattern="+@uoftpharmacy+"
@@ -54,12 +52,12 @@
           </div>
 
           <div class="userIn">
-            <span class="material-icons _icon" *ngIf="username.invalid">
-              account_circle
-            </span>
-            <span class="material-icons check" *ngIf="username.valid">
-              account_circle
-            </span>
+            <i class="fas fa-user-circle" *ngIf="username.invalid">
+          
+            </i>
+            <i class="fas fa-user-circle check" *ngIf="username.valid">
+    
+            </i>
             <mat-form-field>
               <input matInput [formControl]="username" placeholder="Username" required maxlength="22"/>
               <mat-error *ngIf="username.errors?.noWhiteSpace"> Please remove white space </mat-error>
@@ -73,15 +71,16 @@
           </div>
           <div class="twoPassword">
             <div class="input">
-              <span matSuffix class="material-icons _icon" *ngIf="password.invalid">
-                lock
-              </span>
-              <span matSuffix class="material-icons check" *ngIf="password.valid" matTooltip="Password Requirements Met">
-                lock
-              </span>
+            
               <mat-form-field class="userName">
            
                 <mat-label>
+                  <i matSuffix class="fas fa-lock" *ngIf="password.invalid">
+                    lock
+                  </i>
+                  <i matSuffix class="fas fa-lock check" *ngIf="password.valid" matTooltip="Password Requirements Met">
+                    lock
+                  </i>
                   Password min 8 characters</mat-label>
                 <input matInput type="password" placeholder="Password" minlength="8" required
                   [formControl]="password" id='passwordType'/>
