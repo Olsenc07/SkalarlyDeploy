@@ -10,7 +10,8 @@
 }
 .bodyPopUp{
   display: flex;
-  font-family: 'Poppins',sans-serif;
+  // font-family: 'Poppins',sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   padding: 1%;
   text-align: center;
 }
@@ -22,7 +23,8 @@
 }
 .bulletPoints{
   display: flex;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   align-items: center;
   flex-direction: column;
 }
@@ -156,7 +158,8 @@
     margin-bottom: 1.3%;
     color: #3a3232;
   //  font-family:  'Poppins', sans-serif;
-  font-family: 'Cinzel';
+  // font-family: 'Cinzel';
+  font-family: 'Cormorant Garamond', serif;
     
   }
 }
@@ -169,8 +172,9 @@
     text-align: center;
     margin: 1%;
     color: #3a3232;
-    font-family:  'Poppins', sans-serif;
-  font-family: 'Cinzel';
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
+  // font-family: 'Cinzel';
 
   }
 }
@@ -183,10 +187,12 @@
 }
 
 .login{
-  background-image: linear-gradient(to right,#616fb5,#009cff);
+  // background-image: linear-gradient(to right,#616fb5,#009cff);
+  background-image: linear-gradient(to right,navy,black);
 }
 .newaccount{
-  background-image: linear-gradient(to right, #009cff , #616fb5);
+  // background-image: linear-gradient(to right, #009cff , #616fb5);
+  background-image: linear-gradient(to right,black,navy);
 }
 
 @media (min-width: 700px) {
@@ -211,7 +217,8 @@
     border-color: #418be714;
     // background-image: linear-gradient(to top right, #84b0ff, white);
     border: outset;
-    box-shadow: 0 2px 4px #0069ff;
+    // box-shadow: 0 2px 4px #0069ff;
+    box-shadow: 0 2px 4px navy;
     // box-shadow: 0 4px 0px 3px #0069ff;
   }
 }
@@ -223,7 +230,8 @@
     border-radius: 16px;
     background-color: #fafafa;
     border-color: #418be714;
-    box-shadow: 0px 2px 4px #0069ff;
+    // box-shadow: 0px 2px 4px #0069ff;
+    box-shadow: 0 2px 4px navy;
   }
 }
 .loginBtn{
@@ -236,12 +244,13 @@
   font-size: 16px;
   color: #7e7171;
   // font-family:  'Poppins', sans-serif;
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
 
 }
 
 .action-button {
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: larger;
   // background-color: white;
   // color: gray;
@@ -250,20 +259,23 @@
 
 .tag {
   color: #000000;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: 15px;
 }
 
 .text-input {
   width: 100%;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   height: 9vh;
   font-size: medium;
 }
 @media (max-width: 700px) and (min-width: 402px) {
   .text-input {
     width: 100%;
-    font-family:  'Poppins', sans-serif;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     height: 9vh;
     font-size: medium;
   }
@@ -271,7 +283,8 @@
 @media (max-width: 401px) {
   .text-input {
     width: 100%;
-    font-family:  'Poppins', sans-serif;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     height: 9vh;
     font-size: small;
   }
@@ -281,11 +294,13 @@
   justify-content: center;
   text-align: center;
   flex-direction: column;
-  font-family: 'Cinzel';
+  // font-family: 'Cinzel';
+  font-family: 'Cormorant Garamond', serif;
   line-height: 25px;
 }
 .titlePopUp{
-  font-family: 'Cinzel',sans-serif;
+  // font-family: 'Cinzel',sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 display: flex;
 justify-content: center;
 }
@@ -312,7 +327,8 @@ justify-content: center;
 .university{
   font-size: medium;
   margin-top: 1%;
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 // Birthday
