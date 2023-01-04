@@ -63,7 +63,7 @@
         <!-- *ngIf="major.value" -->
         <div class="centerR" *ngIf="info.major ">
           <!-- Major -->
-          <i class="fas fa-star row_icon" matTooltip="Major" style="color: #f8e563a6"></i>
+          <i class="fas fa-star row_icon" matTooltip="Major" style="color: #99a7d2"></i>
             <div class="large">
               {{ info.major}}
               </div>
@@ -72,7 +72,7 @@
         </div>
         <div class="centerR" *ngIf="info.minor ">
           <!-- Minor -->
-          <i class="fas fa-star-half-alt row_icon" matTooltip="Minor" style="color: silver"></i>
+          <i class="fas fa-star-half-alt row_icon" matTooltip="Minor" style="color: 99a7d2"></i>
             <div class="large">
             {{ info.minor}}
 
@@ -86,7 +86,7 @@
       <!-- Sport/Club -->
       <div class="major-minor" *ngIf="info.sport  || info.club">
         <div class=" centerR" *ngIf="info.sport ">
-          <i class="fas fa-running" matTooltip="Sport" style="color: #bcbcee"></i>
+          <i class="fas fa-running" matTooltip="Sport" style="color: #99a7d2"></i>
           <!-- Sport -->
           {{ info.sport}}
         </div>
@@ -201,10 +201,10 @@
                   <mat-chip-list class="center__" color="primary">
                     <div class="columnCoursesBox">
 
-                    <mat-card-title class="titleC_">
+                    <!-- <mat-card-title class="titleC_">
                       Accomplishments
-                      </mat-card-title>
-                      <mat-divider></mat-divider>
+                      </mat-card-title> -->
+                      <!-- <mat-divider></mat-divider> -->
                     <div class="middleText">
                     <div class="titleC" *ngIf="info.CodeCompleted || info.CodeCompleted2 || info.CodeCompleted3|| info.CodeCompleted4|| info.CodeCompleted5
                     || info.CodeCompleted6 || info.CodeCompleted7 || info.CodeCompleted8|| info.CodeCompleted9|| info.CodeCompleted10">
@@ -445,10 +445,10 @@
                 <div class="list">
                   <mat-chip-list  class="center__">
                     <div class="columnCoursesBox">
-                        <mat-card-title class="titleC_">
+                        <!-- <mat-card-title class="titleC_">
                         Seasonal Semesters
-                        </mat-card-title>
-                        <mat-divider></mat-divider>
+                        </mat-card-title> -->
+                        <!-- <mat-divider></mat-divider> -->
                       <div>
                       <span class="fas fa-leaf centerIcon"  matTooltip="Fall Semester"
                       *ngIf="info.CodePursuing || info.CodePursuing2 || info.CodePursuing3 || info.CodePursuing4 || info.CodePursuing5"
