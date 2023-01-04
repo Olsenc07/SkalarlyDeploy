@@ -44,7 +44,8 @@
 .below_search{
   display: flex;
   justify-content: center;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   // margin-right: 5% ;
   color: white;
 }
@@ -99,14 +100,16 @@
 .row{
   flex-direction: row;
   display: flex;
-  font-family: 'Poppins',sans-serif;
+  // font-family: 'Poppins',sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   color: black;
   justify-content: space-around;
 }
 .rowInfo{
   flex-direction: column;
   display: flex;
-  font-family: 'Poppins',sans-serif;
+  // font-family: 'Poppins',sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   color: black;
 align-items: center;
 }
@@ -213,8 +216,7 @@ h4:focus {
   border-bottom: solid #808080;
   align-items: center;
   background: white;
-  text-align: center;
-    
+  text-align: center;  
 }
 .nav-bar {
   display: hide;
@@ -223,7 +225,8 @@ h4:focus {
   display: flex;
   justify-content: center;
   font-size: medium;
-  font-family: 'Poppins',sans-serif;
+  // font-family: 'Poppins',sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   color: #7e7171;
   text-align: center;
 }
@@ -281,19 +284,21 @@ h4:focus {
     border-color: azure;
     display: flex;
     color: rgb(126, 113, 113);
-    font-family: 'Poppins', sans-serif;
-  
+    // font-family: 'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
   }
 }
 .text{
-  font-family: 'Poppins',sans-serif;
+  // font-family: 'Poppins',sans-serif;
+  font-family: 'Cormorant Garamond', serif;
     padding-right: 5%;
     color: #958a8a;
     font-size: small;
     font-weight: lighter;
 }
 .title{
-  font-family: 'Cinzel',serif;
+  // font-family: 'Cinzel',serif;
+  font-family: 'Cormorant Garamond', serif;
   display: flex;
   justify-content: center;
   margin: 4%;
@@ -911,7 +916,8 @@ animation: animate 8s linear infinite;
     opacity: 0.7%;
     height: fit-content;
     cursor: pointer;
-    font-family:  'Poppins', sans-serif;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: initial;
     background-color: white;
     color: rgb(126, 113, 113);
@@ -919,7 +925,8 @@ animation: animate 8s linear infinite;
   .standard {
     outline: none;
     color: rgb(126, 113, 113);
-    font-family:  'Poppins', sans-serif;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     font-weight: initial;
     font-size: initial;
     border: none;
@@ -956,7 +963,8 @@ animation: animate 8s linear infinite;
     .search-box_ {
       display: flex;
       margin-right: 8%;
-      font-family:  'Poppins', sans-serif;
+      // font-family:  'Poppins', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: initial;
       position: absolute;
       border: ridge;
@@ -967,7 +975,8 @@ animation: animate 8s linear infinite;
     .search-box_ {
       display: flex;
       margin-right: 11%;
-      font-family:  'Poppins', sans-serif;
+      // font-family:  'Poppins', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: initial;
       position: absolute;
       border: ridge;
@@ -981,7 +990,8 @@ animation: animate 8s linear infinite;
     width: 425px;
     background-color: #f2efef;
     padding-right: 1%;
-    font-family: Cinzel;
+    // font-family: Cinzel;
+    font-family: 'Cormorant Garamond', serif;
     border-radius: 20px;
     box-shadow: 0px 0px 1px 0px #0f0f0f;
     border: solid;
@@ -1010,12 +1020,13 @@ color: white;
   justify-content: center;
   height: 108vh;
   text-align: center;
-  font-family:  'Cinzel', sans-serif;
-  
+  // font-family:  'Cinzel', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 .Text1 {
   display: flex;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   text-align: center;
   justify-content: center;
   margin-top: 2%;

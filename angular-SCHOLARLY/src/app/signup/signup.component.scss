@@ -56,7 +56,8 @@
   overflow: visible;
   text-align: center;
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   margin-top: 3%;
 }
 .center {
@@ -85,7 +86,8 @@
   justify-content: center;
   flex-direction: column;
   font-size: x-large;
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 .cBtnBl {
   display: flex;
@@ -104,8 +106,8 @@
   // color: gray;
   flex-direction: column;
   font-size: large;
-  font-family: 'Cinzel', serif;
-
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 .cBtnI {
   display: flex;
@@ -227,11 +229,13 @@
 .existing-account-style {
   color: white;
   border-color: #707070;
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 .existing-account-style-btn {
   // background-color: white;
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   box-shadow: 0px 0px 11px
 }
 
@@ -294,23 +298,28 @@
   }
 }
 ::ng-deep .mat-form-field {
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 ::ng-deep .mat-radio-button {
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 ::ng-deep .mat-button {
-  font-family: 'Cinzel', serif;
-
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 ::ng-deep .mat-flat-button {
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 ::ng-deep .mat-option {
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 ::ng-deep .mat-tab-label {
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 ::ng-deep .mat-tab-body-wrapper {
@@ -509,7 +518,8 @@
   display: flex;
   justify-content: center;
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: large;
 }
 .pP {
@@ -642,7 +652,8 @@
   justify-content: space-around;
   flex-direction: row;
   margin: 2% 0%;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 // }
 // @media (max-width: 1024px) {
@@ -679,7 +690,8 @@
 .textU {
   display: flex;
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   justify-content: center;
   flex-direction: column;
   margin-bottom: 7%;
@@ -688,7 +700,8 @@
 .textU_ {
   display: flex;
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   justify-content: center;
   flex-direction: column;
   margin-bottom: 1%;
@@ -713,11 +726,12 @@
 .titleV{
   display: flex;
   justify-content: center;
-  font-family:  'Cinzel', serif;
+  // font-family:  'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   color: #7e7171;
   margin-top: 5%;
   flex-direction: column;
-    align-items: center;
+  align-items: center;
 }
 .layout {
   display: flex;
@@ -725,7 +739,8 @@
   justify-content: center;
   text-align: center;
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .text-layout {

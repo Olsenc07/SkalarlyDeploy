@@ -25,7 +25,8 @@
   display: flex;
   justify-content: center;
   margin: 4% 0%;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   color: #7e7171;
   text-align: center;
   width: 100%;
@@ -47,13 +48,15 @@
 
 .large {
   font-size: small;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+
 }
 .link {
   // color: cornflowerblue;
   font-size: medium;
-  font-family:  'Poppins', sans-serif;
-
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 .mat-card-avatar {
   width: 50px;
@@ -61,14 +64,17 @@
 }
 .messageM {
   display: flex;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   // background-color: rgb(173, 211, 236);
   background-color: #0c46b8a1;
   color: white;
 }
 .messageBtn{
-  background-color: #0c5590 !important;
-  font-family: 'Poppins', sans-serif;
+  // background-color: #0c5590 !important;
+  background-color: #10173a!important;
+  // font-family: 'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   color: whitesmoke !important;
 }
 .msgContainer{
@@ -134,8 +140,9 @@
 .showMoreBtn{
   display: flex;
   justify-content: center;
-font-family: 'Cinzel', serif;
-background-color: #ff4081 !important;
+// font-family: 'Cinzel', serif;
+font-family: 'Cormorant Garamond', serif;
+background-color: #10173a !important;
 
 }
 .profilePic {
@@ -153,7 +160,8 @@ background-color: #ff4081 !important;
 // @media (min-width: 500px) {
 .textSize {
   font-size: medium;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   color: #7e7171;
   text-align: center;
   // color: #7e7171;

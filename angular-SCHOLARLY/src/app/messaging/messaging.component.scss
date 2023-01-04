@@ -13,12 +13,14 @@
   margin-left: 2%;
 }
 .chat-messages{
-  font-family:  'Poppins', serif;
+  // font-family:  'Poppins', serif;
+  font-family: 'Cormorant Garamond', serif;
   height: 100%;
   overflow-y: scroll;
 }
 .chat-messages_{
-  font-family:  'Poppins', serif;
+  // font-family:  'Poppins', serif;
+  font-family: 'Cormorant Garamond', serif;
   // height: 100%;
   overflow-y: scroll;
 }
@@ -83,7 +85,8 @@
 .messageTitle{
   display: flex;
     justify-content: center;
-    font-family: 'Cinzel', sans-serif;
+    // font-family: 'Cinzel', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     align-items: center;
     font-size: large;
     width: 100%;
@@ -125,7 +128,8 @@
   color: white !important;
 }
 .send_btn_style {
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   // background-color: #add3ec;
   // color: white;
   color: white !important;
@@ -175,7 +179,8 @@
   outline: none;
   border: none;
   width: 100%;
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: initial;
   background-color: white;
   // border: ridge;
@@ -187,7 +192,8 @@
 .style {
   display: flex;
   // color: rgb(255, 255, 255);
-  font-family:  'Cinzel', serif;
+  // font-family:  'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   width: 100%;
   font-size: large;
   padding-left: 3%;

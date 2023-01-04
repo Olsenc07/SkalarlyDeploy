@@ -182,7 +182,8 @@
   flex-direction: row;
   justify-content: center;
   font-size: xx-large;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   color: white;
   margin: 2% 0%;
 }
@@ -190,7 +191,8 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   color: white;
 }
 .row-icons {
@@ -250,7 +252,8 @@ form.search::after {
   align-items: center;
 }
 .send_btn_style {
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   background-color: #add3ec;
   color: white;
 }
@@ -282,7 +285,8 @@ form.search::after {
     flex-direction: row;
     font-size: xx-large;
     margin-bottom: 3%;
-   font-family:  'Poppins', sans-serif;
+  //  font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     color: #7e7171;
   }
 }
@@ -293,7 +297,8 @@ form.search::after {
     flex-direction: row;
     font-size: xx-large;
     margin-bottom: 1%;
-    font-family:  'Poppins', sans-serif;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     color: #7e7171;
   }
 }

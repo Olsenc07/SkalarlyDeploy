@@ -6,7 +6,7 @@
   overflow-x: scroll !important;
   background-color: #fafafa;
   border-top-left-radius: 25px;
-border-top-right-radius: 25px;
+  border-top-right-radius: 25px;
 }
 @media (min-width: 1024px) {
   .accounts {
@@ -64,7 +64,8 @@ border-top-right-radius: 25px;
   display: flex;
   justify-self: center;
   margin-bottom: 5%;
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   background-color: #18214b;
   color: white;
 }
@@ -102,7 +103,8 @@ border-top-right-radius: 25px;
 .centerTitle{
   display: flex;
   justify-content: center;
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   margin-top: 2%;
   font-size: large;
 }
@@ -189,7 +191,8 @@ border-top-right-radius: 25px;
     display: flex;
     justify-content: center;
     color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: large;
     flex-direction: column;
   }
@@ -199,7 +202,8 @@ border-top-right-radius: 25px;
     display: flex;
     justify-content: center;
     color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: inherit;
     flex-direction: column;
   }
@@ -325,7 +329,8 @@ border-top-right-radius: 25px;
 }
 
 ::ng-deep .mat-radio-label-content {
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .gender {
@@ -419,7 +424,8 @@ border-top-right-radius: 25px;
   font-size: 21px;
 }
 ::ng-deep .mat-tab-label {
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 // Allows smooth scroll for entire page
@@ -429,12 +435,14 @@ border-top-right-radius: 25px;
 
 ::ng-deep .mat-option-text {
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 ::ng-deep .mat-form-field {
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .major-layout {
@@ -508,7 +516,8 @@ border-top-right-radius: 25px;
   justify-content: center;
   color: #7e7171;
   align-items: baseline;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .rowE {
@@ -534,7 +543,8 @@ border-top-right-radius: 25px;
     flex-direction: row;
     margin: 2% 0%;
     overflow-x: scroll;
-    font-family:  'Cinzel', sans-serif;
+    // font-family:  'Cinzel', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     align-items: center;
   }
 }
@@ -580,13 +590,15 @@ border-top-right-radius: 25px;
 }
 .style {
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 .titleVal{
   display: flex;
   justify-content: center;
   color: #7e7171;
-  font-family:  'Cinzel', serif;
+  // font-family:  'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   margin-top: 1%;
 }
 @media (min-width: 900px) {
@@ -618,7 +630,8 @@ border-top-right-radius: 25px;
     display: flex;
     justify-content: center;
     color: #7e7171;
-    font-family:  'Poppins', sans-serif;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: large;
     flex-direction: column;
     margin-bottom: 5%;
@@ -629,7 +642,8 @@ border-top-right-radius: 25px;
     display: flex;
     justify-content: center;
     color: #7e7171;
-    font-family:  'Poppins', sans-serif;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     font-size: inherit;
     flex-direction: column;
   }
@@ -688,7 +702,8 @@ border-top-right-radius: 25px;
   display: flex;
   justify-content: center;
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: large;
 }
 
@@ -709,12 +724,14 @@ border-top-right-radius: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   color: #707070;
 }
 .text {
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   display: flex;
   margin-bottom: 5%;
   justify-content: center;

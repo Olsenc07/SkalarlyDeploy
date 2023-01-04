@@ -13,25 +13,29 @@
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  font-family: 'Poppins', sans-serif;
+  // font-family: 'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 
 .entirePage {
   display: flex;
   flex-direction: column;
-  // font-family: "Font Awesome 5 Free";
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 
 }
 ::ng-deep .mat-dialog-title{
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: x-large;
 }
 ::ng-deep .mat-raised-button{
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 ::ng-deep .mat-dialog-content{
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: '13.5px'
 }
 
@@ -46,5 +50,6 @@
   justify-content: center;
   font-size: large;
   margin-top: 3%;
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
 }

@@ -1,13 +1,15 @@
    @media (min-width: 500px) {
     .textSize {
       font-size: medium;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
     }
   }
   @media (max-width: 500px) {
     .textSize {
       font-size: smaller;
-      font-family:  'Poppins', sans-serif;
+      // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
     }
   }
   .profilePic {
