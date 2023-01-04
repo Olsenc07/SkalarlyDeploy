@@ -23,7 +23,8 @@
   font-size: x-large;
   color: #7e7171;
   font-weight: 600;
-  font-family: 'Cinzel', serif;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   text-align: center;
 }
 .centerR {
@@ -32,7 +33,8 @@
   margin-bottom: 1%;
   justify-content: center;
   // color: #7e7171;
-  font-family: 'Cinzel',serif;
+  // font-family: 'Cinzel',serif;
+  font-family: 'Cormorant Garamond', serif;
   //  font-weight: 700;
 }
 .center_single {
@@ -41,7 +43,8 @@
   margin: 2% 0%;
   font-size: large;
   color: #7e7171;
-  font-family:  'Cinzel', sans-serif;
+  // font-family:  'Cinzel', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   text-align: center;
 }
 .center_ {
@@ -127,7 +130,8 @@
     font-size: x-large;
     font-weight: 700;
     color: #807070;
-    font-family: 'Cinzel', serif;
+    // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   }
 }
 @media (max-width: 400px) {
@@ -137,7 +141,8 @@
     font-size: x-large;
     font-weight: 700;
     color: #807070;
-    font-family: 'Cinzel', serif;
+    // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
   }
 }
 .label_ {
@@ -145,7 +150,8 @@
   justify-content: center;
   font-size: xx-large;
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
   margin-top: 2%;
 }
 .logo-layoutM {
@@ -253,7 +259,8 @@
   width: 100%;
   justify-content: space-evenly;
   color: #7e7171;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 // Reacting to mobile and tablet sizes
 @media (max-width: 1025px) {
@@ -400,7 +407,8 @@
   // border: groove;
   // background-color: #ffffff !important;
   // color: #000000 !important;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 .hideAll {
   display: none;
@@ -502,16 +510,19 @@ mat-form-field {
   width: 100%;
 }
 ::ng-deep .mat-form-field {
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 ::ng-deep .mat-radio-label-content {
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 ::ng-deep .mat-chip-list-wrapper {
   justify-content: center;
 }
 ::ng-deep .mat-select-value-text {
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 ::ng-deep .mat-list-base {
   padding-top: 0px;
