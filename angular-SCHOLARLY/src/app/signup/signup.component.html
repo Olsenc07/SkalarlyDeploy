@@ -657,12 +657,14 @@
 
   <mat-step  label="Completed Courses" class="courses">
             <div class="input">
-              <i class="material-icons _icon" *ngIf="!CodeCompleted.value">check</i>
-              <i class="material-icons check" *ngIf="CodeCompleted.value">check</i>
+             
               
 <!-- 1 -->
               <mat-form-field class="example-chip-list" appearance="fill">
-                <mat-label>Completed Course</mat-label>
+                <mat-label>
+                  <i class="material-icons _icon" *ngIf="!CodeCompleted.value">check</i>
+                  <i class="material-icons check" *ngIf="CodeCompleted.value">check</i>
+                  Completed Course</mat-label>
                 <!-- <mat-select  placeholder="Choose completed course"
                  #codeInput [formControl]="CodeCompleted" >
 
