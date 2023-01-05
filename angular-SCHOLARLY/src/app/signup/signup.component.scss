@@ -173,6 +173,9 @@
   width: 100%;
   flex-direction: column;
 }
+.courses_{
+  overflow-y: scroll;
+}
 .cropper {
   display: flex;
   margin-top: 1%;
