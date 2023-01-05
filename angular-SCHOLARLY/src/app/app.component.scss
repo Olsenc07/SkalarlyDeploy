@@ -191,7 +191,6 @@ h4:focus {
   justify-content: center;
   flex-direction: column;
   box-sizing: content-box;
-  animation: animate 8s linear infinite;
 }
 .a_up {
   display: flex;
@@ -566,11 +565,11 @@ h4:focus {
 }
 }
 @keyframes animate {
-  0% {background: linear-gradient(to right, orange, #4dc247 ) }
-  25% {background: linear-gradient(to right, #4dc247, #3b70f7)}
-  50% {background: linear-gradient(to right, #3b70f7, #ff4081)}
-  75% { background: linear-gradient(to right, #ff4081, purple)}
-  100% {background: linear-gradient(to right, purple, orange) }
+  0% {background: linear-gradient(45deg, #C0C0C0, #4dc247 ) }
+  25% {background: linear-gradient(90deg, #4dc247, #3b70f7)}
+  50% {background: linear-gradient(135deg, #3b70f7, #ff4081)}
+  75% { background: linear-gradient(180deg, #ff4081, purple)}
+  100% {background: linear-gradient(225deg, purple, #C0C0C0) }
 }
 // @keyframes animate {
 //   from {
@@ -689,7 +688,7 @@ animation: animate 8s linear infinite;
     border-radius: 30px;
     padding: 5px 5px;
   margin: 0 40px;
-  transition: 0.1s;
+  
 }
 }
 @media (min-width: 1700px) {
@@ -699,7 +698,6 @@ animation: animate 8s linear infinite;
     // color: #b8dde9;
     color: #C0C0C0;
     justify-content: center;
-  transition: 0.1s;
   }
   }
   @media (max-width: 1700px) {
