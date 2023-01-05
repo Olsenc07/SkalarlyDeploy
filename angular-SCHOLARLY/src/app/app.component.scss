@@ -566,10 +566,10 @@ h4:focus {
 }
 }
 @keyframes animate {
-  0% {color: #C0C0C0;}
-  25% {color: #4dc247;}
-  50% {color: #3b70f7;}
-  75% { color: #ff4081}
+  0% {background-color: linear-gradient(to right, #C0C0C0, #4dc247 ) }
+  25% {background-color: linear-gradient(to right, #4dc247, #3b70f7)}
+  50% {background-color: linear-gradient(to right, #3b70f7, #ff4081)}
+  75% { background-color: linear-gradient(to right, #ff4081, #C0C0C0)}
   100% {color: #C0C0C0;}
 }
 // @keyframes animate {
