@@ -661,7 +661,7 @@
 <!-- 1 -->
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>
-                  <i class="material-icons " *ngIf="!CodeCompleted.value">check</i>
+                  <i class="material-icons " *ngIf="CodeCompleted.value.length < 8">check</i>
                   <i class="material-icons check_" *ngIf="CodeCompleted.value.length == 8">check</i>
                   Completed Course</mat-label>
                 <!-- <mat-select  placeholder="Choose completed course"
@@ -687,8 +687,8 @@
             <div class="input" *ngIf="CodeCompleted.value.length == 8" >
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>
-                  <i class="material-icons " *ngIf="!CodeCompleted2.value">check</i>
-                  <i class="material-icons check_" *ngIf="CodeCompleted2.value">check</i>
+                  <i class="material-icons " *ngIf="!CodeCompleted2.value.length < 8">check</i>
+                  <i class="material-icons check_" *ngIf="CodeCompleted2.value.length == 8">check</i>
                   Completed Course 2</mat-label>
                 <!-- <mat-select placeholder="Choose completed course 2"  [formControl]="CodeCompleted2" >
 
