@@ -23,7 +23,8 @@
 }
 .center-{
   font-size: medium;
-    font-family: 'Poppins',sans-serif;
+    // font-family: 'Poppins',sans-serif;
+    font-family: 'Cormorant Garamond',serif;
 }
 .center__ {
   color: cornflowerblue;
@@ -34,7 +35,8 @@
   display: flex;
   justify-content: center;
   margin: 4% 0%;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond',serif;
   color: #7e7171;
   text-align: center;
   width: 100%;
@@ -68,7 +70,8 @@
 }
 .messageM {
   display: flex;
-  font-family:  'Poppins', sans-serif;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond',serif;
   // background-color: #0c5590 !important;
   color: white !important;
   margin-right: 4%;
@@ -163,28 +166,31 @@
 
   .textSize {
    font-size: small;
-    font-family:  'Poppins', sans-serif;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond',serif;
     color: #7e7171;
   }
 }
 @media (max-width: 1150px) {
   .textSize {
     font-size: small;
-    font-family:  'Poppins', sans-serif;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond',serif;
     color: #7e7171;
   }
 }
 @media (min-width: 1025px) {
   .textSize_ {
     font-size: medium;
-    font-family:  'Poppins', sans-serif;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond',serif;
   }
 }
 @media (max-width: 1025px) {
   .textSize_ {
     font-size: small;
-    font-family:  'Poppins', sans-serif;
-
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond',serif;
   }
 }
 .userName {

@@ -687,7 +687,7 @@
             <div class="input" *ngIf="CodeCompleted.value.length == 8" >
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>
-                  <i class="material-icons " *ngIf="!CodeCompleted2.value.length < 8">check</i>
+                  <i class="material-icons " *ngIf="CodeCompleted2.value.length < 8">check</i>
                   <i class="material-icons check_" *ngIf="CodeCompleted2.value.length == 8">check</i>
                   Completed Course 2</mat-label>
                 <!-- <mat-select placeholder="Choose completed course 2"  [formControl]="CodeCompleted2" >
@@ -711,8 +711,8 @@
             
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>
-                  <i class="material-icons" *ngIf="!CodeCompleted3.value">check</i>
-              <i class="material-icons check_" *ngIf="CodeCompleted3.value">check</i>
+                  <i class="material-icons" *ngIf="CodeCompleted3.value.length < 8">check</i>
+              <i class="material-icons check_" *ngIf="CodeCompleted3.value.length == 8">check</i>
                   Completed Course 3</mat-label>
                 <!-- <mat-select placeholder="Choose completed course 3"  [formControl]="CodeCompleted3" >
 
@@ -737,8 +737,8 @@
 
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>
-                  <i class="material-icons " *ngIf="!CodeCompleted4.value">check</i>
-              <i class="material-icons check_" *ngIf="CodeCompleted4.value">check</i>
+                  <i class="material-icons " *ngIf="CodeCompleted4.value.length < 8">check</i>
+              <i class="material-icons check_" *ngIf="CodeCompleted4.value.length == 8">check</i>
                   Completed Course 4</mat-label>
                 <!-- <mat-select placeholder="Choose completed course 4"  [formControl]="CodeCompleted4" >
 
@@ -764,8 +764,8 @@
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons " *ngIf="!CodeCompleted5.value">check</i>
-  <i class="material-icons check_" *ngIf="CodeCompleted5.value">check</i>
+      <i class="material-icons " *ngIf="CodeCompleted5.value.length < 8">check</i>
+  <i class="material-icons check_" *ngIf="CodeCompleted5.value.length == 8">check</i>
       Completed Course 5</mat-label>
     <!-- <mat-select placeholder="Choose completed course 5" #codeInput [formControl]="CodeCompleted5" >
 
@@ -792,8 +792,8 @@
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodeCompleted6.value">check</i>
-      <i class="material-icons check_" *ngIf="CodeCompleted6.value">check</i>
+      <i class="material-icons" *ngIf="CodeCompleted6.value.length < 8">check</i>
+      <i class="material-icons check_" *ngIf="CodeCompleted6.value.length == 8">check</i>
       Completed Course 6</mat-label>
     <!-- <mat-select placeholder="Choose completed course 6" #codeInput [formControl]="CodeCompleted6" >
 
@@ -820,8 +820,8 @@
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodeCompleted7.value">check</i>
-      <i class="material-icons check_" *ngIf="CodeCompleted7.value">check</i>
+      <i class="material-icons" *ngIf="CodeCompleted7.value.length < 8">check</i>
+      <i class="material-icons check_" *ngIf="CodeCompleted7.value.length == 8">check</i>
       Completed Course 7</mat-label>
     <!-- <mat-select placeholder="Choose completed course 7" #codeInput [formControl]="CodeCompleted7" >
 
@@ -847,8 +847,8 @@
 <div class="input" *ngIf="CodeCompleted7.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodeCompleted8.value">check</i>
-  <i class="material-icons check_" *ngIf="CodeCompleted8.value">check</i>
+      <i class="material-icons" *ngIf="CodeCompleted8.value.length < 8">check</i>
+  <i class="material-icons check_" *ngIf="CodeCompleted8.value.length == 8">check</i>
       Completed Course 8</mat-label>
     <!-- <mat-select placeholder="Choose completed course 8" #codeInput [formControl]="CodeCompleted8" >
 
@@ -874,8 +874,8 @@
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodeCompleted9.value">check</i>
-      <i class="material-icons check_" *ngIf="CodeCompleted9.value">check</i>
+      <i class="material-icons" *ngIf="CodeCompleted9.value.length < 8">check</i>
+      <i class="material-icons check_" *ngIf="CodeCompleted9.value.length == 8">check</i>
       Completed Course 9</mat-label>
     <!-- <mat-select placeholder="Choose completed course 9" #codeInput [formControl]="CodeCompleted9" >
 
@@ -900,8 +900,8 @@
 <div class="input" *ngIf="CodeCompleted9.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodeCompleted10.value">check</i>
-  <i class="material-icons check_" *ngIf="CodeCompleted10.value">check</i>
+      <i class="material-icons" *ngIf="CodeCompleted10.value.length < 8">check</i>
+  <i class="material-icons check_" *ngIf="CodeCompleted10.value.length == 8">check</i>
       Completed Course 10</mat-label>
     <!-- <mat-select placeholder="Choose completed course 10" #codeInput [formControl]="CodeCompleted10" >
 
@@ -925,8 +925,8 @@
 <div class="input" *ngIf="CodeCompleted10.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted11.value">check</i>
-    <i class="material-icons check_" *ngIf="CodeCompleted11.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted11.value.length < 8">check</i>
+    <i class="material-icons check_" *ngIf="CodeCompleted11.value.length == 8">check</i>
     Completed Course 11</mat-label>
   <!-- <mat-select placeholder="Choose completed course 11" #codeInput [formControl]="CodeCompleted11" >
 
@@ -949,8 +949,8 @@
 <div class="input" *ngIf="CodeCompleted11.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted12.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted12.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted12.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted12.value.length == 8">check</i>
     Completed Course 12</mat-label>
   <!-- <mat-select placeholder="Choose completed course 12" #codeInput [formControl]="CodeCompleted12" >
 
@@ -973,8 +973,8 @@
 <div class="input" *ngIf="CodeCompleted12.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted13.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted13.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted13.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted13.value.length == 8">check</i>
     Completed Course 13</mat-label>
   <!-- <mat-select placeholder="Choose completed course 13" #codeInput [formControl]="CodeCompleted13" >
 
@@ -997,8 +997,8 @@
 <div class="input" *ngIf="CodeCompleted13.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted14.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted14.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted14.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted14.value.length == 8">check</i>
     Completed Course 14</mat-label>
   <!-- <mat-select placeholder="Choose completed course 14" #codeInput [formControl]="CodeCompleted14" >
 
@@ -1022,8 +1022,8 @@
 <div class="input" *ngIf="CodeCompleted14.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted15.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted15.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted15.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted15.value.length == 8">check</i>
   Completed Course 15</mat-label>
 <!-- <mat-select placeholder="Choose completed course 15" #codeInput [formControl]="CodeCompleted15" >
 
@@ -1048,8 +1048,8 @@
 <div class="input" *ngIf="CodeCompleted15.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted16.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted16.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted16.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted16.value.length == 8">check</i>
   Completed Course 16</mat-label>
 <!-- <mat-select placeholder="Choose completed course 16" #codeInput [formControl]="CodeCompleted16" >
 
@@ -1074,8 +1074,8 @@
 <div class="input" *ngIf="CodeCompleted16.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted17.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted17.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted17.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted17.value.length == 8">check</i>
   Completed Course 17</mat-label>
 <!-- <mat-select placeholder="Choose completed course 17" #codeInput [formControl]="CodeCompleted17" >
 
@@ -1101,8 +1101,8 @@
 <div class="input" *ngIf="CodeCompleted17.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted18.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted18.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted18.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted18.value.length == 8">check</i>
   Completed Course 18</mat-label>
 <!-- <mat-select placeholder="Choose completed course 18" #codeInput [formControl]="CodeCompleted18" >
 
@@ -1127,8 +1127,8 @@
 <div class="input" *ngIf="CodeCompleted18.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted19.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted19.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted19.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted19.value.length == 8">check</i>
   Completed Course 19</mat-label>
 <!-- <mat-select placeholder="Choose completed course 19" #codeInput [formControl]="CodeCompleted19" >
 
@@ -1153,8 +1153,8 @@
 <div class="input" *ngIf="CodeCompleted19.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted20.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted20.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted20.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted20.value.length == 8">check</i>
   Completed Course 20</mat-label>
 <!-- <mat-select placeholder="Choose completed course 20" #codeInput [formControl]="CodeCompleted20" >
 
@@ -1178,8 +1178,8 @@
 <div class="input" *ngIf="CodeCompleted20.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted21.value">check</i>
-    <i class="material-icons check_" *ngIf="CodeCompleted21.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted21.value.length < 8">check</i>
+    <i class="material-icons check_" *ngIf="CodeCompleted21.value.length == 8">check</i>
     Completed Course 21</mat-label>
   <!-- <mat-select placeholder="Choose completed course 21" #codeInput [formControl]="CodeCompleted21" >
 
@@ -1200,8 +1200,8 @@
 <div class="input" *ngIf="CodeCompleted21.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted22.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted22.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted22.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted22.value.length == 8">check</i>
     Completed Course 22</mat-label>
   <!-- <mat-select placeholder="Choose completed course 22" #codeInput [formControl]="CodeCompleted22" >
 
@@ -1224,8 +1224,8 @@
 <div class="input" *ngIf="CodeCompleted22.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted23.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted23.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted23.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted23.value.length == 8">check</i>
     Completed Course 23</mat-label>
   <!-- <mat-select placeholder="Choose completed course 23" #codeInput [formControl]="CodeCompleted23" >
 
@@ -1248,8 +1248,8 @@
 <div class="input" *ngIf="CodeCompleted23.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted24.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted24.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted24.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted24.value.length == 8">check</i>
     Completed Course 24</mat-label>
   <!-- <mat-select placeholder="Choose completed course 24" #codeInput [formControl]="CodeCompleted24" >
 
@@ -1273,8 +1273,8 @@
 <div class="input" *ngIf="CodeCompleted24.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted25.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted25.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted25.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted25.value.length == 8">check</i>
   Completed Course 25</mat-label>
 <!-- <mat-select placeholder="Choose completed course 25" #codeInput [formControl]="CodeCompleted25" >
 
@@ -1299,8 +1299,8 @@
 <div class="input" *ngIf="CodeCompleted25.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted26.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted26.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted26.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted26.value.length == 8">check</i>
   Completed Course 26</mat-label>
 <!-- <mat-select placeholder="Choose completed course 26" #codeInput [formControl]="CodeCompleted26" >
 
@@ -1327,8 +1327,8 @@
 
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted27.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted27.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted27.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted27.value.length == 8">check</i>
   Completed Course 27</mat-label>
 <!-- <mat-select placeholder="Choose completed course 27" #codeInput [formControl]="CodeCompleted27" >
 
@@ -1354,8 +1354,8 @@
 <div class="input" *ngIf="CodeCompleted27.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted28.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted28.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted28.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted28.value.length == 8">check</i>
   Completed Course 28</mat-label>
 <!-- <mat-select placeholder="Choose completed course 28" #codeInput [formControl]="CodeCompleted28" >
 
@@ -1380,8 +1380,8 @@
 <div class="input" *ngIf="CodeCompleted28.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted29.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted29.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted29.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted29.value.length == 8">check</i>
   Completed Course 29</mat-label>
 <!-- <mat-select placeholder="Choose completed course 29" #codeInput [formControl]="CodeCompleted29" >
 
@@ -1406,8 +1406,8 @@
 <div class="input" *ngIf="CodeCompleted29.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted30.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted30.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted30.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted30.value.length == 8">check</i>
   Completed Course 30</mat-label>
 <!-- <mat-select placeholder="Choose completed course 30" #codeInput [formControl]="CodeCompleted30" >
 
@@ -1431,8 +1431,8 @@
 <div class="input" *ngIf="CodeCompleted30.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted31.value">check</i>
-    <i class="material-icons check_" *ngIf="CodeCompleted31.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted31.value.length < 8">check</i>
+    <i class="material-icons check_" *ngIf="CodeCompleted31.value.length == 8">check</i>
     Completed Course 31</mat-label>
   <!-- <mat-select placeholder="Choose completed course 31" #codeInput [formControl]="CodeCompleted31" >
 
@@ -1454,8 +1454,8 @@
 <div class="input" *ngIf="CodeCompleted31.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted32.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted32.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted32.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted32.value.length == 8">check</i>
     Completed Course 32</mat-label>
   <!-- <mat-select placeholder="Choose completed course 32" #codeInput [formControl]="CodeCompleted32" >
 
@@ -1478,8 +1478,8 @@
 <div class="input" *ngIf="CodeCompleted32.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted33.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted33.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted33.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted33.value.length == 8">check</i>
     Completed Course 33</mat-label>
   <!-- <mat-select placeholder="Choose completed course 33" #codeInput [formControl]="CodeCompleted33" >
 
@@ -1502,8 +1502,8 @@
 <div class="input" *ngIf="CodeCompleted33.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompleted34.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted34.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompleted34.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted34.value.length == 8">check</i>
     Completed Course 34</mat-label>
   <!-- <mat-select placeholder="Choose completed course 34" #codeInput [formControl]="CodeCompleted34" >
 
@@ -1527,8 +1527,8 @@
 <div class="input" *ngIf="CodeCompleted34.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted35.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted35.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted35.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted35.value.length == 8">check</i>
   Completed Course 35</mat-label>
 <!-- <mat-select placeholder="Choose completed course 35" #codeInput [formControl]="CodeCompleted35" >
 
@@ -1553,8 +1553,8 @@
 <div class="input" *ngIf="CodeCompleted35.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted36.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted36.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted36.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted36.value.length == 8">check</i>
   Completed Course 36</mat-label>
 <!-- <mat-select placeholder="Choose completed course 36" #codeInput [formControl]="CodeCompleted36" >
 
@@ -1579,8 +1579,8 @@
 <div class="input" *ngIf="CodeCompleted36.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted37.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted37.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted37.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted37.value.length == 8">check</i>
   Completed Course 37</mat-label>
 <!-- <mat-select placeholder="Choose completed course 37" #codeInput [formControl]="CodeCompleted37" >
 
@@ -1606,8 +1606,8 @@
 <div class="input" *ngIf="CodeCompleted37.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons " *ngIf="!CodeCompleted38.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted38.value">check</i>
+  <i class="material-icons " *ngIf="CodeCompleted38.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted38.value.length == 8">check</i>
   Completed Course 38</mat-label>
 <!-- <mat-select placeholder="Choose completed course 38" #codeInput [formControl]="CodeCompleted38" >
 
@@ -1632,8 +1632,8 @@
 <div class="input" *ngIf="CodeCompleted38.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted39.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted39.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted39.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted39.value.length == 8">check</i>
   Completed Course 39</mat-label>
 <!-- <mat-select placeholder="Choose completed course 39" #codeInput [formControl]="CodeCompleted39" >
 
@@ -1658,8 +1658,8 @@
 <div class="input" *ngIf="CodeCompleted39.value.length == 8">
 <mat-form-field class="example-chip-list" appearance="fill">
 <mat-label>
-  <i class="material-icons" *ngIf="!CodeCompleted40.value">check</i>
-<i class="material-icons check_" *ngIf="CodeCompleted40.value">check</i>
+  <i class="material-icons" *ngIf="CodeCompleted40.value.length < 8">check</i>
+<i class="material-icons check_" *ngIf="CodeCompleted40.value.length == 8">check</i>
   Completed Course 40</mat-label>
 <!-- <mat-select placeholder="Choose completed course 40" #codeInput [formControl]="CodeCompleted40" >
 
@@ -1682,8 +1682,8 @@
 <div class="input" *ngIf="CodeCompleted40.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
   <mat-label>
-    <i class="material-icons" *ngIf="!CodeCompletedX.value">check</i>
-    <i class="material-icons check_" *ngIf="CodeCompletedX.value">check</i>
+    <i class="material-icons" *ngIf="CodeCompletedX.value.length < 8">check</i>
+    <i class="material-icons check_" *ngIf="CodeCompletedX.value.length == 8">check</i>
     Extras or Transfer Equivalents</mat-label>
   <input matInput placeholder="Extras or Transfer Equivalents"  [formControl]="CodeCompletedX" >
   </mat-form-field>
@@ -1700,8 +1700,8 @@
             <div class="input">
               <mat-form-field class="example-chip-list" appearance="fill">
                 <mat-label>
-                  <i class="material-icons" *ngIf="!CodePursuing.value">checklist</i>
-                  <i class="material-icons check_" *ngIf="CodePursuing.value">checklist</i>
+                  <i class="material-icons" *ngIf="CodePursuing.value.length < 8">checklist</i>
+                  <i class="material-icons check_" *ngIf="CodePursuing.value.length == 8">checklist</i>
                   Next Course</mat-label>
                 <!-- <mat-select placeholder="Choose pursuing course"  [formControl]="CodePursuing" >
                   <mat-option *ngFor="let codeP of CodePursuing.value" 
@@ -1726,8 +1726,8 @@
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodePursuing2.value">checklist</i>
-      <i class="material-icons check_" *ngIf="CodePursuing2.value">checklist</i>
+      <i class="material-icons" *ngIf="CodePursuing2.value.length < 8">checklist</i>
+      <i class="material-icons check_" *ngIf="CodePursuing2.value.length == 8">checklist</i>
       Next Course 2</mat-label>
     <!-- <mat-select placeholder="Choose pursuing course 2" [formControl]="CodePursuing2" >
 
@@ -1749,8 +1749,8 @@
 <div class="input" *ngIf="CodePursuing2.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons " *ngIf="!CodePursuing3.value">checklist</i>
-      <i class="material-icons check_" *ngIf="CodePursuing3.value">checklist</i>
+      <i class="material-icons " *ngIf="CodePursuing3.value.length < 8">checklist</i>
+      <i class="material-icons check_" *ngIf="CodePursuing3.value.length == 8">checklist</i>
       Next Course 3</mat-label>
     <!-- <mat-select placeholder="Choose pursuing course 3"  [formControl]="CodePursuing3" >
 
@@ -1773,8 +1773,8 @@
 
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons " *ngIf="!CodePursuing4.value">checklist</i>
-  <i class="material-icons check_" *ngIf="CodePursuing4.value">checklist</i>
+      <i class="material-icons " *ngIf="CodePursuing4.value.length < 8">checklist</i>
+  <i class="material-icons check_" *ngIf="CodePursuing4.value.length == 8">checklist</i>
       Next Course 4</mat-label>
     <!-- <mat-select placeholder="Choose pursuing course 4"  [formControl]="CodePursuing4" >
 
@@ -1797,8 +1797,8 @@
       <div class="input" *ngIf="CodePursuing4.value.length == 8">
         <mat-form-field class="example-chip-list" appearance="fill">
           <mat-label>
-            <i class="material-icons" *ngIf="!CodePursuing5.value">checklist</i>
-            <i class="material-icons check_" *ngIf="CodePursuing5.value">checklist</i>
+            <i class="material-icons" *ngIf="CodePursuing5.value.length < 8">checklist</i>
+            <i class="material-icons check_" *ngIf="CodePursuing5.value.length == 8">checklist</i>
             Next Course 5</mat-label>
           <!-- <mat-select placeholder="Choose pursuing course 5" #codeInputP [formControl]="CodePursuing5" >
       
@@ -1820,8 +1820,8 @@
 <div class="input" *ngIf="CodePursuing5.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodePursuing6.value">checklist</i>
-      <i class="material-icons check_" *ngIf="CodePursuing6.value">checklist</i>
+      <i class="material-icons" *ngIf="CodePursuing6.value.length < 8">checklist</i>
+      <i class="material-icons check_" *ngIf="CodePursuing6.value.length == 8">checklist</i>
       Next Course 6</mat-label>
     <!-- <mat-select placeholder="Choose pursuing course 6" #codeInputP [formControl]="CodePursuing6" >
 
@@ -1843,8 +1843,8 @@
 <div class="input" *ngIf="CodePursuing6.value.length == 8">  
     <mat-form-field class="example-chip-list" appearance="fill">
       <mat-label>
-        <i class="material-icons"  *ngIf="!CodePursuing7.value">checklist</i>
-        <i class="material-icons check_" *ngIf="CodePursuing7.value">checklist</i>
+        <i class="material-icons"  *ngIf="CodePursuing7.value.length < 8">checklist</i>
+        <i class="material-icons check_" *ngIf="CodePursuing7.value.length == 8">checklist</i>
         Next Course 7</mat-label>
       <!-- <mat-select placeholder="Choose pursuing course 7" #codeInputP [formControl]="CodePursuing7" >
   
@@ -1866,8 +1866,8 @@
 <div class="input" *ngIf="CodePursuing7.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodePursuing8.value">checklist</i>
-  <i class="material-icons check_" *ngIf="CodePursuing8.value">checklist</i>
+      <i class="material-icons" *ngIf="CodePursuing8.value.length < 8">checklist</i>
+  <i class="material-icons check_" *ngIf="CodePursuing8.value.length == 8">checklist</i>
       Next Course 8</mat-label>
     <!-- <mat-select placeholder="Choose pursuing course 8" #codeInputP [formControl]="CodePursuing8" >
 
@@ -1890,8 +1890,8 @@
       <div class="input" *ngIf="CodePursuing8.value.length == 8">
         <mat-form-field class="example-chip-list" appearance="fill">
           <mat-label>
-            <i class="material-icons" *ngIf="!CodePursuing9.value">checklist</i>
-            <i class="material-icons check_" *ngIf="CodePursuing9.value">checklist</i>
+            <i class="material-icons" *ngIf="CodePursuing9.value.length < 8">checklist</i>
+            <i class="material-icons check_" *ngIf="CodePursuing9.value.length == 8">checklist</i>
             Next Course 9</mat-label>
           <!-- <mat-select placeholder="Choose pursuing course 9" #codeInputP [formControl]="CodePursuing9" >
       
@@ -1913,8 +1913,8 @@
 <div class="input" *ngIf="CodePursuing9.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodePursuing10.value">checklist</i>
-  <i class="material-icons check_" *ngIf="CodePursuing10.value">checklist</i>
+      <i class="material-icons" *ngIf="CodePursuing10.value.length < 8">checklist</i>
+  <i class="material-icons check_" *ngIf="CodePursuing10.value.length == 8">checklist</i>
       Next Course 10</mat-label>
     <!-- <mat-select placeholder="Choose pursuing course 10" #codeInputP [formControl]="CodePursuing10" >
 
@@ -1936,8 +1936,8 @@
 <div class="input" *ngIf="CodePursuing10.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodePursuing11.value">checklist</i>
-      <i class="material-icons check_" *ngIf="CodePursuing11.value">checklist</i>
+      <i class="material-icons" *ngIf="CodePursuing11.value.length < 8">checklist</i>
+      <i class="material-icons check_" *ngIf="CodePursuing11.value.length == 8">checklist</i>
       Next Course 11</mat-label>
     <!-- <mat-select placeholder="Choose pursuing course 11" #codeInputP [formControl]="CodePursuing11" >
 
@@ -1959,8 +1959,8 @@
 <div class="input" *ngIf="CodePursuing11.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons " *ngIf="!CodePursuing12.value">checklist</i>
-      <i class="material-icons check_" *ngIf="CodePursuing12.value">checklist</i>
+      <i class="material-icons " *ngIf="CodePursuing12.value.length < 8">checklist</i>
+      <i class="material-icons check_" *ngIf="CodePursuing12.value.length == 8">checklist</i>
       Next Course 12</mat-label>
     <!-- <mat-select placeholder="Choose pursuing course 12" #codeInputP [formControl]="CodePursuing12" >
 
@@ -1982,8 +1982,8 @@
 <div class="input" *ngIf="CodePursuing12.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons" *ngIf="!CodePursuing13.value">checklist</i>
-  <i class="material-icons check_" *ngIf="CodePursuing13.value">checklist</i>
+      <i class="material-icons" *ngIf="CodePursuing13.value.length < 8">checklist</i>
+  <i class="material-icons check_" *ngIf="CodePursuing13.value.length == 8">checklist</i>
       Next Course 13</mat-label>
     <!-- <mat-select placeholder="Choose pursuing course 13" #codeInputP [formControl]="CodePursuing13" >
 
@@ -2005,8 +2005,8 @@
 <div class="input" *ngIf="CodePursuing13.value.length == 8">
   <mat-form-field class="example-chip-list" appearance="fill">
     <mat-label>
-      <i class="material-icons " *ngIf="!CodePursuing14.value">checklist</i>
-      <i class="material-icons check_" *ngIf="CodePursuing14.value">checklist</i>
+      <i class="material-icons " *ngIf="CodePursuing14.value.length < 8">checklist</i>
+      <i class="material-icons check_" *ngIf="CodePursuing14.value.length == 8">checklist</i>
       Next Course 14</mat-label>
     <!-- <mat-select placeholder="Choose pursuing course 14" #codeInputP [formControl]="CodePursuing14" >
 

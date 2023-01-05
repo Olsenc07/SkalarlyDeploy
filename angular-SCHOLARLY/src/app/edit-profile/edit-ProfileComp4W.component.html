@@ -11,9 +11,9 @@
 
       <div *ngFor="let info of infos">
 <div class="input" >
-    <i class="material-icons _icon" *ngIf="!CodeCompleted36.value">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted36.value" (click)="save36()" matTooltip="Save Course">
-    <i class="material-icons check" *ngIf="CodeCompleted36.value">check</i>
+    <i class="material-icons _icon" *ngIf="CodeCompleted36.value.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted36.value.length == 8" (click)="save36()" matTooltip="Save Course">
+    <i class="material-icons check">check</i>
     </button>
 
     <mat-form-field class="example-chip-list">
@@ -45,9 +45,9 @@
     
     <!-- 37 -->
     <div class="input" >
-    <i class="material-icons _icon" *ngIf="!CodeCompleted37.value">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted37.value" (click)="save37()" matTooltip="Save Course">
-    <i class="material-icons check" *ngIf="CodeCompleted37.value">check</i>
+    <i class="material-icons _icon" *ngIf="CodeCompleted37.value.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted37.value.length == 8" (click)="save37()" matTooltip="Save Course">
+    <i class="material-icons check" >check</i>
     </button>
 
     <mat-form-field class="example-chip-list">
@@ -78,9 +78,9 @@
     
     <!-- 38 -->
     <div class="input" >
-    <i class="material-icons _icon" *ngIf="!CodeCompleted38.value">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted38.value" (click)="save38()" matTooltip="Save Course">
-    <i class="material-icons check" *ngIf="CodeCompleted38.value">check</i>
+    <i class="material-icons _icon" *ngIf="CodeCompleted38.value.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted38.value.length == 8" (click)="save38()" matTooltip="Save Course">
+    <i class="material-icons check" >check</i>
     </button>
 
     <mat-form-field class="example-chip-list">
@@ -110,9 +110,9 @@
     
     <!-- 39 -->
     <div class="input" >
-    <i class="material-icons _icon" *ngIf="!CodeCompleted39.value">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted39.value" (click)="save39()" matTooltip="Save Course">
-    <i class="material-icons check" *ngIf="CodeCompleted39.value">check</i>
+    <i class="material-icons _icon" *ngIf="CodeCompleted39.value.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted39.value.length == 8" (click)="save39()" matTooltip="Save Course">
+    <i class="material-icons check" >check</i>
     </button>
 
     <mat-form-field class="example-chip-list">
@@ -142,9 +142,9 @@
     
     <!-- 40 -->
     <div class="input" >
-    <i class="material-icons _icon" *ngIf="!CodeCompleted40.value">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted40.value" (click)="save40()" matTooltip="Save Course">
-    <i class="material-icons check" *ngIf="CodeCompleted40.value">check</i>
+    <i class="material-icons _icon" *ngIf="CodeCompleted40.value.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted40.value.length == 8" (click)="save40()" matTooltip="Save Course">
+    <i class="material-icons check" >check</i>
     </button>
     <mat-form-field class="example-chip-list">
       <mat-label *ngIf="info.CodeCompleted40.length == 0">Completed Course</mat-label>
@@ -172,9 +172,9 @@
 
     <!-- extras/transfer courses -->
     <div class="input">
-    <i class="material-icons _icon" *ngIf="!CodeCompletedX.value">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompletedX.value" (click)="saveX()" matTooltip="Save Course">
-    <i class="material-icons check" *ngIf="CodeCompletedX.value">check</i>
+    <i class="material-icons _icon" *ngIf="CodeCompletedX.value.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompletedX.value.length == 8" (click)="saveX()" matTooltip="Save Course">
+    <i class="material-icons check" >check</i>
 </button>
 
     <mat-form-field class="example-chip-list">
