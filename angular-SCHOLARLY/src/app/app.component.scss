@@ -558,18 +558,22 @@ h4:focus {
   padding: 5px 5px;
   margin: 0 40px;
   animation: animate 8s linear infinite;
-  transition:  .1s; 
+  transition:  1s; 
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 4vmax;
 }
 }
 @keyframes animate {
-  0% {background: linear-gradient(45deg, #C0C0C0, #4dc247 ) }
+  0% {background: linear-gradient(45deg, #282828, #4dc247 ) }
+  5% {background: linear-gradient(55deg, #282828, #4dc247 ) }
+  10% {background: linear-gradient(65deg, #282828, #4dc247 ) }
+  15% {background: linear-gradient(75deg, #282828, #4dc247 ) }
+  20% {background: linear-gradient(85deg, #282828, #4dc247 ) }
   25% {background: linear-gradient(90deg, #4dc247, #3b70f7)}
   50% {background: linear-gradient(135deg, #3b70f7, #ff4081)}
   75% { background: linear-gradient(180deg, #ff4081, purple)}
-  100% {background: linear-gradient(225deg, purple, #C0C0C0) }
+  100% {background: linear-gradient(225deg, purple, #282828) }
 }
 // @keyframes animate {
 //   from {
