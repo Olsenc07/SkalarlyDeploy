@@ -430,6 +430,7 @@
   flex-direction: row;
   width: 100%;
   margin-top: 2%;
+  font-family: 'Cormorant Garamond', serif;
 }
 .inputFine {
   display: flex;
@@ -455,6 +456,8 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  font-family: 'Cormorant Garamond', serif;
+
 }
 .input_ {
   display: flex;
@@ -778,6 +781,7 @@
     margin: 2% 0%;
     width: 100%;
     justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
   }
 }
 @media (max-width: 1024px) {
@@ -785,6 +789,7 @@
     display: flex;
     margin: 1% 0%;
     width: 100%;
+  font-family: 'Cormorant Garamond', serif;
   }
 }
 .username-layout {
