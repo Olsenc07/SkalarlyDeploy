@@ -712,11 +712,12 @@
             </div>
 <!-- 3 -->
             <div class="input" *ngIf="CodeCompleted2.value">
-              <i class="material-icons _icon" *ngIf="!CodeCompleted3.value">check</i>
-              <i class="material-icons check" *ngIf="CodeCompleted3.value">check</i>
-
+            
               <mat-form-field class="example-chip-list" appearance="fill">
-                <mat-label>Completed Course 3</mat-label>
+                <mat-label>
+                  <i class="material-icons" *ngIf="!CodeCompleted3.value">check</i>
+              <i class="material-icons check" *ngIf="CodeCompleted3.value">check</i>
+                  Completed Course 3</mat-label>
                 <!-- <mat-select placeholder="Choose completed course 3"  [formControl]="CodeCompleted3" >
 
                   <mat-option *ngFor="let code of CodeCompleted.value" 
@@ -736,11 +737,13 @@
             </div>
 <!-- 4 -->
             <div class="input" *ngIf="CodeCompleted3.value">
-              <i class="material-icons _icon" *ngIf="!CodeCompleted4.value">check</i>
-              <i class="material-icons check" *ngIf="CodeCompleted4.value">check</i>
+              
 
               <mat-form-field class="example-chip-list" appearance="fill">
-                <mat-label>Completed Course 4</mat-label>
+                <mat-label>
+                  <i class="material-icons " *ngIf="!CodeCompleted4.value">check</i>
+              <i class="material-icons check" *ngIf="CodeCompleted4.value">check</i>
+                  Completed Course 4</mat-label>
                 <!-- <mat-select placeholder="Choose completed course 4"  [formControl]="CodeCompleted4" >
 
                   <mat-option *ngFor="let code of CodeCompleted.value" 
