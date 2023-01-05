@@ -12,8 +12,8 @@
 <!-- 1 -->
     <div class="input" >
       <i class="material-icons _icon" *ngIf="!CodeCompleted.value">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted.value" (click)="save()" matTooltip="Save Course">
-      <i class="material-icons check" *ngIf="CodeCompleted.value">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted.value.length == 8" (click)="save()" matTooltip="Save Course">
+      <i class="material-icons check">check</i>
       </button>
 
       <mat-form-field class="example-chip-list">
