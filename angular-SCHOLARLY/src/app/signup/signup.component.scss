@@ -164,9 +164,6 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow-y: scroll;
-  max-height: 250px;
-  // background-color: #fafafa;
 }
 .courses {
   display: flex;
@@ -175,6 +172,9 @@
 }
 .courses_{
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  max-height: 250px;
 }
 .cropper {
   display: flex;
