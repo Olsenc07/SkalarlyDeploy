@@ -512,7 +512,7 @@ h4:focus {
       padding: 5px 5px;
       margin: 0 40px;
       color: #C0C0C0;
-    transition: all .1s; 
+    transition: all 1s; 
       // text-shadow: 0 0 50px #0072ff;
       font-size: 3vmax;
     }
@@ -527,7 +527,7 @@ h4:focus {
   padding: 5px 5px;
   margin: 0 40px;
   animation: animate 8s linear infinite;
-  transition: all .1s; 
+  transition: all 1s; 
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 3vmax;
@@ -545,7 +545,7 @@ h4:focus {
       color: #C0C0C0;
       // text-shadow: 0 0 50px #0072ff;
       font-size: 4vmax;
-    transition:  .1s; 
+    transition:  1s; 
     }
     }
 @media (max-width: 1700px) {
@@ -584,7 +584,7 @@ h4:focus {
   to {
   transition:  1s; 
     filter: hue-rotate(360deg);
-    background: linear-gradient(225deg, #282828,purple)
+    background: linear-gradient(225deg, #282828,#4dc247)
   }
 }
 
