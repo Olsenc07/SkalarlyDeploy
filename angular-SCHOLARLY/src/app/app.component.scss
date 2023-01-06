@@ -526,8 +526,8 @@ h4:focus {
   border-radius: 30px;
   padding: 5px 5px;
   margin: 0 40px;
-  transition: background 3s ease; 
-  animation: fadeIn animate 8s linear infinite;
+  transition:  3s ease; 
+  animation:  animate 8s linear infinite;
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 3vmax;
@@ -558,8 +558,8 @@ h4:focus {
   padding: 5px 5px;
   margin: 0 40px;
   
-animation:fadeIn animate 8s linear infinite;
-  transition: background 3s ease;
+animation: animate 8s linear infinite;
+  transition:  3s ease;
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 4vmax;
@@ -576,13 +576,12 @@ animation:fadeIn animate 8s linear infinite;
 //   75% { background: linear-gradient(180deg, #ff4081, purple)}
 //   100% {background: linear-gradient(225deg, purple, #282828) }
 // }
-@keyframes fadeIn {
+
+@keyframes animate {
   0% { opacity: 0; }
   100% { opacity: 1; }
-}
-@keyframes animate {
-  from {
 
+  from {
     filter: hue-rotate(0deg);
     background: linear-gradient(45deg, #282828, #3b70f7 );
   }
