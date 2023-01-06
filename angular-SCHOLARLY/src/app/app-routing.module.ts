@@ -16,7 +16,7 @@ import { EditProfilePurComponent } from './edit-profile/edit-profile.component';
 import { EditProfilePurWComponent } from './edit-profile/edit-profile.component';
 import { EditProfilePurSpringComponent } from './edit-profile/edit-profile.component';
 import { EditProfilePurSummerComponent } from './edit-profile/edit-profile.component';
-
+import { ActivityHistoryComponent } from './activity-history/history.component';
 import { FriendsActivityComponent } from './friends-activity/friends-activity.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -149,6 +149,11 @@ const routes: Routes = [
   {
     path: 'friends-activity',
     component: FriendsActivityComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'activity-history',
+    component: ActivityHistoryComponent,
     canActivate: [AuthGuard],
   },
   { path: 'groups', component: GroupChatsComponent, canActivate: [AuthGuard] },
