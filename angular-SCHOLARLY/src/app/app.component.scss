@@ -512,7 +512,6 @@ h4:focus {
       padding: 5px 5px;
       margin: 0 40px;
       color: #C0C0C0;
-      transition: all 3s ease; 
       // text-shadow: 0 0 50px #0072ff;
       font-size: 3vmax;
     }
@@ -545,7 +544,6 @@ h4:focus {
       color: #C0C0C0;
       // text-shadow: 0 0 50px #0072ff;
       font-size: 4vmax;
-      transition: all 3s ease; 
     }
     }
 @media (max-width: 1700px) {
@@ -579,11 +577,11 @@ h4:focus {
 @keyframes animate {
   from {
     filter: hue-rotate(0deg);
-    background: linear-gradient(45deg, #282828, #413f3f);
+    background: linear-gradient(45deg, #282828, #3b70f7);
   }
   to {
     filter: hue-rotate(360deg);
-    background: linear-gradient(225deg, #413f3f, #282828);
+    background: linear-gradient(225deg, #3b70f7, #282828);
   }
 }
 
