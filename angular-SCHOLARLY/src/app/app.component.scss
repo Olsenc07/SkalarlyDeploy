@@ -579,11 +579,11 @@ animation: fadeIn 3s animate 8s linear infinite;
 @keyframes animate {
   from {
     filter: hue-rotate(0deg);
-    background: linear-gradient(45deg, #add8e6, #3b70f7 );
+    background: linear-gradient(45deg, #282828, #3b70f7 );
   }
   to {
     filter: hue-rotate(360deg);
-    background: linear-gradient(225deg, #3b70f7, #add8e6)
+    background: linear-gradient(225deg, #3b70f7, #282828)
   }
 }
 
