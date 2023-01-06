@@ -253,7 +253,7 @@ font-size: large;
   color: #11173a;
   margin-bottom: 2%;
     margin-left: 5%;
-    background-color: #11173a;
+    background-color: #11173a !important;
 }
 ::ng-deep .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
   color: #fff!important;
