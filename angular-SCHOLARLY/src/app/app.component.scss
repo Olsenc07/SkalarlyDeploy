@@ -526,7 +526,7 @@ h4:focus {
   border-radius: 30px;
   padding: 5px 5px;
   margin: 0 40px;
-  transition: all 3s ease; 
+  transition: background 3s ease; 
   animation:  3s animate 8s linear infinite;
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
@@ -559,7 +559,7 @@ h4:focus {
   margin: 0 40px;
   
 animation: animate 8s linear infinite;
-  transition: all 3s ease;
+  transition: background 3s ease;
   color: #C0C0C0;
   // text-shadow: 0 0 50px #0072ff;
   font-size: 4vmax;
@@ -578,7 +578,7 @@ animation: animate 8s linear infinite;
 // }
 @keyframes animate {
   from {
-    transition: background 3s ease;
+
     filter: hue-rotate(0deg);
     background: linear-gradient(45deg, #282828, #3b70f7 );
   }
