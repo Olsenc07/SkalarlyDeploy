@@ -579,11 +579,11 @@ h4:focus {
 @keyframes animate {
   from {
     filter: hue-rotate(0deg);
-    background: linear-gradient(45deg, #282828, #3b70f7);
+    background: linear-gradient(45deg, #282828, #413f3f);
   }
   to {
     filter: hue-rotate(360deg);
-    background: linear-gradient(225deg, #3b70f7, #282828);
+    background: linear-gradient(225deg, #413f3f, #282828);
   }
 }
 
@@ -610,7 +610,6 @@ h4:focus {
       font-size: 3vmax;
       display: flex;
       justify-content: center;
-
     }
     }
     @media (min-width: 1700px) {
@@ -664,7 +663,6 @@ margin: 0 40px;
         display: flex;
         // color: #b8dde9;
         color: #C0C0C0;
-        transition: 0.3s;
 animation: animate 8s linear infinite;
         justify-content: center;
       }
@@ -772,7 +770,6 @@ animation: animate 8s linear infinite;
   border-radius: 30px;
   padding: 5px 5px;
 margin: 0 40px;
-transition: 0.1s;
 
 }
 }
