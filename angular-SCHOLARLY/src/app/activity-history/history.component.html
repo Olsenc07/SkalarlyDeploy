@@ -1,0 +1,90 @@
+<div class="entire-page"  >
+    <!-- Left column -->
+    <div class="column">
+
+  
+  
+  
+  
+      <!-- Tablet/Mobile search bar -->
+      <div class="search-friends">
+     
+        <div class="columnD columnM ">
+          <div class="row yo">
+            <div class="middle">
+              <div class="friend_count">
+                <div class="center">
+                  Comments on your posts:
+                </div>
+              
+              </div>
+ 
+              <div class="following-box">
+                <div class="structure">
+                    <!-- *ngIf="comments.length == 0" -->
+                  <div  class="basicColumn" >
+                    <i class="fas fa-users-slash noFriends"></i>
+                    <div class="title_">Not currently following anyone</div>
+                  </div>
+                  <app-card-user  > 
+                  </app-card-user>
+  
+                </div>
+              </div>
+            </div>
+  
+  
+            <!-- Right column -->
+            <div class="right">
+                <div class="center">
+                    Followed you:
+                  </div>
+  
+              <div class="following-box">
+                <div class="structure">
+                    <!--  *ngIf="followers.length == 0" -->
+                  <div class="basicColumn">
+                  <i class="fas fa-users-slash noFriends"></i>
+                  <div class="title_">No current followers</div>
+                </div>
+                  <app-card-user-follower  ></app-card-user-follower>
+                </div>
+              </div>
+  
+            </div>
+  
+          </div>
+  
+  
+
+        </div>
+        <div class="bottomM">
+          <mat-tab-group mat-align-tabs="center">
+            <mat-tab>
+              <ng-template mat-tab-label>
+                Mutual Friends
+                <div class="p">
+                  <!-- {{mutuals.length}} -->
+                </div>
+  
+              </ng-template>
+              <div class="mutual-largest">
+                <div class="mutual-box">
+                  <div class="center">
+  
+                  </div>
+                  <div class="follow-m">
+                    <div class="center1">
+    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+        
+          </mat-tab-group>
+        </div>
+      </div>
+  
+    </div>
+  </div>
