@@ -82,7 +82,8 @@ margin-top: 1%;
 .commentText{
   display: flex;
   align-items: center;
-
+  padding-left: 2%;
+  padding-top: 1%;
 }
 .comment-form-tile{
   // font-family:  'Cinzel', serif;
@@ -280,8 +281,8 @@ background-color: #10173a;
   justify-content: flex-end;
   margin-left: 2%;
   align-items: center;
-  font-size: x-small;
-  color: #b1acac;
+  font-size: small;
+  color: #4a4848;
 }
 .timeUser{
   display: flex;

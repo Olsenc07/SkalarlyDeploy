@@ -125,16 +125,26 @@
                   <div class="row">
                     <div class="booleans">
   
-                      <div class="material-icons b" *ngIf="post.gender == 'male' ">female</div>
-                      <div class="material-icons b" *ngIf="post.gender == 'all' ">transgender</div>
-                      <div class="material-icons b" *ngIf="post.gender == 'male'">male</div>
+                      <div class="material-icons b" matTooltip="Everyone's welcome to join"
+                      *ngIf="post.gender == 'all' ">diversity_3</div>
+                      <div class="material-icons b" matTooltip="Females are welcome to join"
+                       *ngIf="post.gender == 'female' ">female</div>
+                      <div class="material-icons b" matTooltip="Males are welcome to join"
+                      *ngIf="post.gender == 'male'">male</div>
+                      <div class="material-icons b" matTooltip="LGBTQ2S+ members are welcome to join"
+                      *ngIf="post.gender == 'lgbtq2s+'">transgender</div>
   
-                      <div class="material-icons b" *ngIf="post.driver">directions_car</div>
-                      <div class="material-icons b" *ngIf="post.paymentService ">attach_money</div>
-                      <div class="material-icons b" *ngIf="post.virtual">videocam</div>
+                      <div class="material-icons b" matTooltip="This is a live event"  *ngIf="post.live">follow_the_signs</div>
+                      <div class="material-icons b" matTooltip="This event has a cost" *ngIf="post.paymentService ">attach_money</div>
+                      <div class="material-icons b" matTooltip="This event is free" *ngIf="post.nopaymentService ">money_off</div>
+
+                      <div class="material-icons b" matTooltip="This is a virtual event" 
+                      *ngIf="post.virtual">photo_camera_front</div>
   
-                      <div class="material-icons b" *ngIf="post.event == 'formal' ">work</div>
-                      <div class="material-icons b" *ngIf="post.event == 'relaxed' ">nightlife
+                      <div class="material-icons b" matTooltip="This is a professional event"
+                      *ngIf="post.event == 'formal' ">work</div>
+                      <div class="material-icons b" matTooltip="This is a relaxed event"
+                       *ngIf="post.event == 'relaxed' ">nightlife
                       </div>
                     </div>
                   </div>
