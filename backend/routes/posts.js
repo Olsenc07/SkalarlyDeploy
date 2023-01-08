@@ -237,9 +237,8 @@ router.get('/comments', async(req, res) =>{
     router.get('/commentsHistory', async(req, res) =>{
         await Post.find({Creator: req.query.userId})
         .then(postId => {
-            console.log('chaz man', postId);
-            console.log('chaz man', postId._id);
-            Comment.find({postId: postId._id})
+            console.log('chaz man', postId.id);
+            Comment.find({postId: postId.id})
             .then(documents => {
             console.log('chaz man 2', documents);
                 res.status(200).json({

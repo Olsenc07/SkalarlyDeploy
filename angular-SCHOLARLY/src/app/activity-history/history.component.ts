@@ -11,7 +11,20 @@ import { Post, PostService } from '../services/post.service';
   styleUrls: ['../friends-activity/friends-activity.component.scss'],
 })
 export class ActivityHistoryComponent implements OnInit {
-  ngOnInit(): any {}
+  comments: string[] = [];
+
+  constructor(
+    private commentsService: CommentsService,
+    public postService: PostService
+  ) {}
+  ngOnInit(): any {
+    this.commentsService
+      .getMessagesUpdateListenerHistory()
+      .subscribe((comments: string[]) => {
+        this.comments = comments;
+        console.log('kristina 1', this.comments);
+      });
+  }
 }
 
 @Component({
