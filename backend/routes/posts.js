@@ -237,8 +237,9 @@ router.get('/comments', async(req, res) =>{
     router.get('/commentsHistory', async(req, res) =>{
         await Post.find({Creator: req.query.userId})
         .then(postId => {
-            console.log('chaz man', postId.values(_id));
             let result = objArray.map( ({postId})  => postId)
+            // May need to create a loop of postId values 
+            // for Comment.find to search and return
             console.log('hey sun', result)
             Comment.find({postId: result})
             .then(documents => {
@@ -248,6 +249,11 @@ router.get('/comments', async(req, res) =>{
                     messages: documents
                     });
             })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Fetching comments failed 1'
+                });
+            });
         })
         .catch(error => {
             res.status(500).json({
