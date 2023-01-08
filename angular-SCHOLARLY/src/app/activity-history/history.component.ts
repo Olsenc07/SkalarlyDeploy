@@ -49,7 +49,7 @@ export class CommentHistoryComponent implements OnInit {
 
 @Component({
   selector: 'followed-history',
-  templateUrl: './comment-history.component.html',
+  templateUrl: './followed-history.component.html',
   styleUrls: ['../friends-activity/friends-activity.component.scss'],
 })
 export class FollowedHistoryComponent implements OnInit {
