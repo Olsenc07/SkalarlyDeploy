@@ -4,7 +4,19 @@ import { AuthService } from '../services/auth.service';
 import { CommentsService } from '../services/comments.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post, PostService } from '../services/post.service';
+import { FollowService } from '../services/follow.service';
 
+export interface Follow {
+  id: string;
+  Follower: string;
+  nameFollower: string;
+  usernameFollower: string;
+  ProfilePicPathFollower: string;
+
+  Following: string;
+  nameFollowing: string;
+  ProfilePicPathFollowing: string;
+}
 @Component({
   selector: 'activity-history',
   templateUrl: './history.component.html',
@@ -66,5 +78,24 @@ export class CommentHistoryComponent implements OnInit {
   styleUrls: ['../friends-activity/friends-activity.component.scss'],
 })
 export class FollowedHistoryComponent implements OnInit {
-  ngOnInit(): any {}
+  userId: string;
+  followers: Follow[] = [];
+  private followSubFollowers: Subscription;
+  // Have it the same as followers or
+  // Create new data model for when user clicks follow or unfollow and save that
+  // Just have username, followed/unfollowed you in the model
+  constructor(
+    private authService: AuthService,
+    private followService: FollowService
+  ) {}
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+    // following info
+    this.followService.getMessageNotificationFollowed(this.userId);
+    this.followSubFollowers = this.followService
+      .getInfoFollowUpdateListener()
+      .subscribe((followers: Follow[]) => {
+        this.followers = followers;
+      });
+  }
 }

@@ -2,7 +2,7 @@
     <div *ngFor="let comment of comments; let even = even; let odd = odd">
       <!-- infinite-scroll -->
       <!--  infiniteScroll  -->
-            <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
+            <div  [ngClass]="{ even: even, odd: odd }"
              class="commentsDisplayWrapper" 
              >
              <div class="picTime">
