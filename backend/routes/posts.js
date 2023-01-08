@@ -237,7 +237,7 @@ router.get('/comments', async(req, res) =>{
     router.get('/commentsHistory', async(req, res) =>{
         await Post.find({Creator: req.query.userId})
         .then(postId => {
-            let result = postId.map( postId  => postId)
+            let result = postId.map( postId  => postId._id)
             // May need to create a loop of postId values 
             // for Comment.find to search and return
 
