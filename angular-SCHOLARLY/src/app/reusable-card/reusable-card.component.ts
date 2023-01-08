@@ -4,7 +4,7 @@ import { OnInit } from '@angular/core';
 import { Post, PostService } from '../services/post.service';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
-import { Subscription, Subject } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentsService } from '../services/comments.service';
 import { ShowCaseService, ShowCase } from '../services/showCase.service';

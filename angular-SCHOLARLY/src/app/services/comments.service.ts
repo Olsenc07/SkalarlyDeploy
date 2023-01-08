@@ -10,6 +10,7 @@ import { CommentInterface } from '../reusable-card/reusable-card.component';
 export class CommentsService {
   private messages: CommentInterface[] = [];
   private commentsUpdated = new ReplaySubject<CommentInterface[]>();
+  private commentsUpdatedHistory = new ReplaySubject<CommentInterface[]>();
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
@@ -19,6 +20,9 @@ export class CommentsService {
   }
   getMessagesUpdateListener(): any {
     return this.commentsUpdated.asObservable();
+  }
+  getMessagesUpdateListenerHistory(): any {
+    return this.commentsUpdatedHistory.asObservable();
   }
   getComments(postId): any {
     this.http
@@ -46,7 +50,33 @@ export class CommentsService {
         this.commentsUpdated.next([...this.messages]);
       });
   }
-
+  // Get all comments history
+  getCommentsHistory(userId): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/posts/commentsHistory',
+        { params: { userId } }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((comment) => {
+            return {
+              id: comment._id,
+              body: comment.body,
+              username: comment.username,
+              time: comment.time,
+              postId: comment.postId,
+              ProfilePicPath: comment.ProfilePicPath,
+              Creator: comment.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedComment) => {
+        this.messages = transformedComment;
+        this.commentsUpdatedHistory.next([...this.messages]);
+      });
+  }
   createComment(
     body: string,
     userId: string,

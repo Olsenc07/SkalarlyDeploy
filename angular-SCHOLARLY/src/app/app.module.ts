@@ -62,7 +62,11 @@ import { EditProfilePurComponent } from './edit-profile/edit-profile.component';
 import { EditProfilePurWComponent } from './edit-profile/edit-profile.component';
 import { EditProfilePurSummerComponent } from './edit-profile/edit-profile.component';
 import { EditProfilePurSpringComponent } from './edit-profile/edit-profile.component';
-import { ActivityHistoryComponent } from './activity-history/history.component'
+import {
+  ActivityHistoryComponent,
+  CommentHistoryComponent,
+  FollowedHistoryComponent,
+} from './activity-history/history.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { MessageCardComponent } from './messaging/messaging.component';
@@ -149,6 +153,8 @@ import { ErrorInterceptor } from './error-interceptor';
     EditProfilePurSummerComponent,
     EditProfilePurSpringComponent,
     ActivityHistoryComponent,
+    CommentHistoryComponent,
+    FollowedHistoryComponent,
     GroupChatsComponent,
     MainPagesComponent,
     SignupComponent,

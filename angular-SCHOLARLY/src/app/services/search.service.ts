@@ -298,6 +298,7 @@ export class SearchListService {
           'Intramural Sports',
           'Miscellaneous',
           'Parties & Clubs',
+          'Study Abroad',
           'Varsity Sports',
           'Video & Board Games',
         ];
