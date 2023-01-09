@@ -237,13 +237,16 @@ router.get('/comments', async(req, res) =>{
     router.get('/commentsHistory', async(req, res) =>{
         await Post.find({Creator: req.query.userId})
         .then(postId => {
-         postId.map( postId  => postId._id)
+            const result = postId.map( postId  => 
+                
+                
+                postId._id)
             // May need to create a loop of postId values 
             // for Comment.find to search and return
 
             // Then iterate through those values supplying the find with each
-            console.log('hey sun', postId._id)
-            Comment.find({postId: postId._id})
+            console.log('hey sun', result)
+            Comment.find({postId: result})
             .then(documents => {
             console.log('chaz man 2', documents);
                 res.status(200).json({
