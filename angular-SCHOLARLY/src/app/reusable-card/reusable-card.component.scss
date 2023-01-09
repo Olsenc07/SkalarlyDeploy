@@ -59,6 +59,15 @@
   // font-family:  'Poppins', sans-serif;
   font-family: 'Cormorant Garamond', serif;
 }
+.columnTopLayer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+  z-index: 2;
+  position: inherit;
+}
 .Comment{
   display: flex;
   flex-direction: row;
@@ -244,6 +253,13 @@ font-size: large;
 .scroll{
   max-height: 300px;
   overflow-y: scroll;
+  position: inherit;
+  z-index: 1;
+}
+.scrollHistory{
+  overflow-y: scroll;
+  position: inherit;
+  z-index: 1;
 }
 .spinner {
   display: flex;
@@ -440,10 +456,10 @@ background-color: #10173a;
 .odd{
   background-color: #f5f5f5;
   padding: 1%;
+  border-radius: 25px;
 }
 .even{
   padding: 1%;
-
 }
 .upload {
   display: flex;
