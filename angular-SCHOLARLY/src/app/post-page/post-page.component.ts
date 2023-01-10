@@ -160,9 +160,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
 
   // editing time
   timeEditFunc(timeEdit: any): any {
-    console.log('symmetry', timeEdit[0]);
-    if (timeEdit[0] === 0) {
-      timeEdit[0] = '';
+    console.log('symmetry', this.timeEdit[0]);
+    if (this.timeEdit[0] === 0) {
+      this.timeEdit[0] = '';
     }
   }
 
