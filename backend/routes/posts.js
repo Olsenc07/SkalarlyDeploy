@@ -396,6 +396,7 @@ router.get("/singlePage", async(req, res) => {
     console.log('love in the air 7 ',req.query.postId);
          await Post.find({_id: req.query.postId})
            .then(doc => {
+            console.log('dogs', doc)
             res.status(200).json({
                 message: 'Single post fetched succesfully!',
                 posts: doc

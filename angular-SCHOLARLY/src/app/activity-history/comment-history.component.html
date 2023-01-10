@@ -7,6 +7,7 @@
              >
              <div class="picTime">
               <div class="rowComment">
+                <div>
               <div class="profilePic">
     <img src="{{comment.ProfilePicPath}}" class="pic">
     </div>
@@ -23,6 +24,7 @@
           </div>
         </button>
 
+      </div>
               
         
             <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
@@ -31,9 +33,8 @@
                 <i class="far fa-times-circle"></i>
                 </button>
                 </div>
-              </div>
             </div>
-  
+          </div>
               <button mat-stroked-button class="textFont"
               (click)="navToPost(comment.postId)">Go to post</button>
 
