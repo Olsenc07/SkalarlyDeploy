@@ -6,14 +6,12 @@
   <mat-tab-group  [selectedIndex]="selectedIndexPost" mat-align-tabs="center" class="largest-page">
     <mat-tab disabled label="Begin" > 
       <ng-template mat-tab-label>
-      
-         <div>
-          <mat-icon> <i class="material-icons-two-tone">
-            flag
-             <!-- apps -->
-          </i>
-           </mat-icon>
-          Begin</div>
+        <mat-icon> <span class="material-icons-two-tone">
+          flag
+           <!-- apps -->
+           </span>
+         </mat-icon>
+         <div >Begin</div>
        </ng-template>
       <div class="post-descriptionD">
         <div class="textB">
@@ -89,7 +87,7 @@
           </mat-selection-list>
           
           <button *ngIf="postLocationMain.value"  type="button" color="primary"  mat-raised-button 
-          (click)="changeTab1()">Next</button>
+          class="final_step_btn" (click)="changeTab1()">Next</button>
         </mat-tab>
         <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value" disabled>
   <!-- Step 2 -->

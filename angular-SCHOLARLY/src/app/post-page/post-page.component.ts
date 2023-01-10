@@ -161,6 +161,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   // editing time
   timeEditFunc(timeEdit: any): any {
     console.log('symmetry', timeEdit[0]);
+    if (timeEdit[0] === 0) {
+      timeEdit[0] = '';
+    }
   }
 
   // Adding emojis
