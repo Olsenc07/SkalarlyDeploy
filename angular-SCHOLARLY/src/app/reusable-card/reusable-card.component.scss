@@ -137,6 +137,9 @@ background-color: #10173a;
 .description {
   display: flex;
 }
+.display{
+  display: flex;
+}
 .displayT {
   text-align: center;
 }
@@ -250,6 +253,12 @@ font-size: large;
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.rowComment_{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 .scroll{
   max-height: 300px;

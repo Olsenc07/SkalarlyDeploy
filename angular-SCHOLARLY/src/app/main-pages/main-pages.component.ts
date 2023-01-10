@@ -83,7 +83,11 @@ export class SinglePageTemplateComponent implements OnInit {
   postId: string;
   private postsSub: Subscription;
 
-  constructor(private route: ActivatedRoute, public postService: PostService) {}
+  constructor(
+    private route: ActivatedRoute,
+    public postService: PostService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -99,5 +103,14 @@ export class SinglePageTemplateComponent implements OnInit {
           this.isLoading = false;
         });
     });
+  }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+  // Where the post was posted
+  navigateToMainPage(value: string): void {
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
   }
 }
