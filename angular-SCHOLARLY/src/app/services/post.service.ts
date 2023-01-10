@@ -11,10 +11,10 @@ export interface Post {
   postDescription: string;
   postLocation: string;
   LocationEvent: string;
-  // time: string;
-  // timeE: string;
-  timeEditAfter: string;
-  timeEditAfter2: string;
+  time: string;
+  timeE: string;
+  // timeEditAfter: string;
+  // timeEditAfter2: string;
   date: string;
   dateE: string;
   gender: string;
@@ -275,10 +275,10 @@ export class PostService {
     postDescription?: string,
     postLocation?: string,
     LocationEvent?: string,
-    // time?: string,
-    // timeE?: string,
-    timeEditAfter?: string,
-    timeEditAfter2?: string,
+    time?: string,
+    timeE?: string,
+    // timeEditAfter?: string,
+    // timeEditAfter2?: string,
 
     date?: string,
     dateE?: string,
@@ -296,10 +296,10 @@ export class PostService {
     postData.append('postDescription', postDescription);
     postData.append('postLocation', postLocation);
     postData.append('LocationEvent', LocationEvent);
-    // postData.append('time', time);
-    // postData.append('timeE', timeE);
-    postData.append('timeEditAfter', timeEditAfter);
-    postData.append('timeEditAfter2', timeEditAfter2);
+    postData.append('time', time);
+    postData.append('timeE', timeE);
+    // postData.append('timeEditAfter', timeEditAfter);
+    // postData.append('timeEditAfter2', timeEditAfter2);
     postData.append('date', date);
     postData.append('dateE', dateE);
     postData.append('gender', gender);
@@ -329,10 +329,10 @@ export class PostService {
             postDescription,
             postLocation,
             LocationEvent,
-            // time,
-            // timeE,
-            timeEditAfter,
-            timeEditAfter2,
+            time,
+            timeE,
+            // timeEditAfter,
+            // timeEditAfter2,
             date,
             dateE,
             gender,
@@ -352,9 +352,6 @@ export class PostService {
           // this.posts.unshift(postId);
           this.postsUpdated.next([...this.posts]);
           location.reload();
-          this.snackBar.open('Post added', 'Yay!', {
-            duration: 3000,
-          });
         },
         error: (err) => {
           this.snackBar.open('Post failed to add!', 'Try again', {

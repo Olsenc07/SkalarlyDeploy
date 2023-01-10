@@ -36,7 +36,7 @@ import { PostService } from '../services/post.service';
 import { mimeType } from './mime-type.validator';
 import { AuthService } from '../services/auth.service';
 import { createPopup } from '@picmo/popup-picker';
-
+import { PickerInteractionMode } from 'igniteui-angular';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'LL',
@@ -322,8 +322,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.postDescription.value,
       this.postLocation.value,
       this.LocationEvent.value,
-      this.timeEditAfter,
-      this.timeEditAfter2,
+      this.time.value,
+      this.timeE.value,
+      // this.timeEditAfter,
+      // this.timeEditAfter2,
       this.date.value,
       this.dateE.value,
       this.gender.value,
