@@ -279,7 +279,7 @@ export class PostService {
       )
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
-        this.postsUpdated.next([...this.posts]);
+        this.postsUpdated.next(this.posts);
       });
   }
   getOtherInfo(id: string): any {
