@@ -120,7 +120,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   date: FormControl = new FormControl('');
   dateE: FormControl = new FormControl('');
   time: FormControl = new FormControl('');
-
+  timeEdit = this.time.value;
+  timeEditAfter = this.timeEditFunc(this.timeEdit);
   timeE: FormControl = new FormControl('');
   LocationEvent: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
@@ -156,6 +157,12 @@ export class PostPageComponent implements OnInit, OnDestroy {
     //   )
     // );
   }
+
+  // editing time
+  timeEditFunc(timeEdit: any): any {
+    console.log('symmetry', timeEdit[0]);
+  }
+
   // Adding emojis
   addEmoji(event: any): any {
     const msgs = event?.detail?.unicode;
@@ -315,6 +322,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.event.value,
       this.form.get('upload').value
     );
+    console.log('energy', this.timeEdit.split());
+    console.log('energy 2', this.timeEditAfter);
+
     this.router.navigate(['/main/:'], {
       queryParams: { category: this.postLocation.value },
     });
