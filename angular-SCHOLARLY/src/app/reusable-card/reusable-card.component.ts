@@ -993,7 +993,7 @@ export class CardFeedComponent implements OnInit {
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
+        this.infos = infos.reverse();
         this.isLoading = false;
       });
   }
