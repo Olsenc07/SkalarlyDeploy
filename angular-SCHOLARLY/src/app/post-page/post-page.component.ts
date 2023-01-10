@@ -121,8 +121,12 @@ export class PostPageComponent implements OnInit, OnDestroy {
   dateE: FormControl = new FormControl('');
   time: FormControl = new FormControl('');
   timeEdit = this.time.value;
+
   timeEditAfter = this.timeEditFunc(this.timeEdit);
   timeE: FormControl = new FormControl('');
+  timeEdit2 = this.timeE.value;
+  timeEditAfter2 = this.timeEditFunc2(this.timeEdit2);
+
   LocationEvent: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
 
@@ -163,6 +167,12 @@ export class PostPageComponent implements OnInit, OnDestroy {
     console.log('symmetry', this.timeEdit[0]);
     if (this.timeEdit[0] === 0) {
       this.timeEdit[0] = '';
+    }
+  }
+  timeEditFunc2(timeEdit: any): any {
+    console.log('symmetry2', this.timeEdit2[0]);
+    if (this.timeEdit2[0] === 0) {
+      this.timeEdit2[0] = '';
     }
   }
 
@@ -312,8 +322,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.postDescription.value,
       this.postLocation.value,
       this.LocationEvent.value,
-      this.time.value,
-      this.timeE.value,
+      this.timeEditAfter,
+      this.timeEditAfter2,
       this.date.value,
       this.dateE.value,
       this.gender.value,

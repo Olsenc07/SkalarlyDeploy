@@ -125,7 +125,7 @@ export class ProfileComponent implements OnInit {
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos.reverse();
+        this.infos = infos;
         this.isLoading = false;
       });
     // Validation
@@ -367,7 +367,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.infosSub = this.authService
         .getInfoUpdateListener()
         .subscribe((infos: AuthDataInfo[]) => {
-          this.infos = infos.reverse();
+          this.infos = infos;
         });
       this.showCaseService.getShowCase(id);
       this.infosSubShowCase = this.showCaseService
