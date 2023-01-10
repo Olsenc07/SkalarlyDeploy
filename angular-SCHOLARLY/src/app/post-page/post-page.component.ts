@@ -73,7 +73,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public selectedOption: string;
   public specificOptions: string[];
   public searchOptions: SearchOption[];
-
   isLoading = false;
 
   private authStatusSub: Subscription;
@@ -121,6 +120,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   date: FormControl = new FormControl('');
   dateE: FormControl = new FormControl('');
   time: FormControl = new FormControl('');
+
   timeE: FormControl = new FormControl('');
   LocationEvent: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
