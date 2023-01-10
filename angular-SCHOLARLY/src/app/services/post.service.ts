@@ -250,30 +250,31 @@ export class PostService {
       )
       .pipe(
         map((postData) => {
-          return postData.posts.map((post) => {
-            return {
-              id: post._id,
-              Username: post.Username,
-              Name: post.Name,
-              ProfilePicPath: post.ProfilePicPath,
-              Title: post.Title,
-              postDescription: post.postDescription,
-              postLocation: post.postLocation,
-              LocationEvent: post.LocationEvent,
-              time: post.time,
-              timeE: post.timeE,
-              date: post.date,
-              dateE: post.dateE,
-              gender: post.gender,
-              live: post.live,
-              paymentService: post.paymentService,
-              nopaymentService: post.nopaymentService,
-              virtual: post.virtual,
-              event: post.event,
-              ImagePath: post.ImagePath,
-              Creator: post.Creator,
-            };
-          });
+          return postData.posts;
+          // .posts.map((post) => {
+          //   return {
+          //     id: post._id,
+          //     Username: post.Username,
+          //     Name: post.Name,
+          //     ProfilePicPath: post.ProfilePicPath,
+          //     Title: post.Title,
+          //     postDescription: post.postDescription,
+          //     postLocation: post.postLocation,
+          //     LocationEvent: post.LocationEvent,
+          //     time: post.time,
+          //     timeE: post.timeE,
+          //     date: post.date,
+          //     dateE: post.dateE,
+          //     gender: post.gender,
+          //     live: post.live,
+          //     paymentService: post.paymentService,
+          //     nopaymentService: post.nopaymentService,
+          //     virtual: post.virtual,
+          //     event: post.event,
+          //     ImagePath: post.ImagePath,
+          //     Creator: post.Creator,
+          //   };
+          // });
         })
       )
       .subscribe((transformedPosts) => {
