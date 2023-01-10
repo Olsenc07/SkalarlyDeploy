@@ -70,7 +70,9 @@ export class CommentHistoryComponent implements OnInit {
         console.log('kristina', this.comments);
       });
   }
-
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
