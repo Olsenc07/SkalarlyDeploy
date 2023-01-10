@@ -21,6 +21,7 @@
           </div>
         </button>
               </div>
+              <button mat-raised-button (click)="navToPost(comment.postId)">Go to post</button>
             </div>
     
             <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">

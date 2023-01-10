@@ -113,9 +113,14 @@
                     <div class="postTime textSize column1">
                       <div class=" displayT t">
                         {{post.date | date:"longDate"}}
+                        <div *ngIf="post.timeE"> {{post.timeE}}
+                        </div>
+                        <div *ngIf="post.dateE">  /{{post.dateE | date:"longDate"}}
+                          </div>
                       </div>
                       <div class="displayT t">
-                        {{post.time}}
+                        {{post.time}} 
+                      
                       </div>
                     </div>
                   </div>
@@ -250,8 +255,10 @@
 <div class="timeBox">
   {{comment.time}}
   <div class="timeUser">
-    <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}
-    </div>
+    <button mat-button *ngIf="userId == comment.Creator" disabled>
+      <div class="userName link"  id="userName">@{{comment.username}}
+      </div>
+      </button>
     <button mat-button *ngIf="userId !== comment.Creator" >
       <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
         </div>

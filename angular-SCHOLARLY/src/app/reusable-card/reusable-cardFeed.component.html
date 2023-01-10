@@ -236,9 +236,10 @@
 <div class="timeBox">
 {{comment.time}}
 <div class="timeUser">
-  
-  <div class="userName link" *ngIf="userId == comment.Creator" id="userName">@{{comment.username}}
+  <button mat-button *ngIf="userId == comment.Creator" disabled>
+  <div class="userName link"  id="userName">@{{comment.username}}
   </div>
+  </button>
   <button mat-button *ngIf="userId !== comment.Creator" >
     <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
       </div>
