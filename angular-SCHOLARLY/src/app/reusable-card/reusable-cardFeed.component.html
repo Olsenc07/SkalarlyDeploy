@@ -53,7 +53,9 @@
                          (click)="navigateToPage(post.Username)">@{{post.Username}}
                           </div>
                         </button>
-                          <div class="userName  link"  *ngIf="userId == post.Creator"   id="userName">@{{post.Username}}</div>
+                      <button mat-button *ngIf="userId == post.Creator" disabled>
+                          <div class="userName  link"     id="userName">@{{post.Username}}</div>
+                          </button>
                     </div>
                   </div>
   
