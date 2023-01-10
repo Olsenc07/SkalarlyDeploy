@@ -7,13 +7,14 @@
              >
              <div class="picTime">
               <div class="rowComment">
+                <div>
               <div class="profilePic">
     <img src="{{comment.ProfilePicPath}}" class="pic">
     </div>
     <div class="timeBox">
     {{comment.time}}
     <div class="timeUser">
-        <button mat-button *ngIf="userId == comment.Creator" >
+        <button mat-button *ngIf="userId == comment.Creator" disabled >
       <div class="userName link"  id="userName">@{{comment.username}}
       </div>
       </button>
@@ -23,14 +24,15 @@
         </button>
               </div>
             </div>
-    
+        </div>
             <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
               <button  mat-icon-button matSuffix class="trashCan_"
                 (click)='onDeleteComment(comment.id)'>
                 <i class="far fa-times-circle"></i>
                 </button>
                 </div>
-              <button mat-stroked-button (click)="navToPost(comment.postId)">Go to post</button>
+              <button mat-stroked-button class="textFont"
+              (click)="navToPost(comment.postId)">Go to post</button>
 
     </div> 
     <div class="Comment">
