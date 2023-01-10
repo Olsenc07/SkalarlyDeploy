@@ -26,6 +26,7 @@
 
       </div>
               
+    </div>
         
             <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
               <button  mat-icon-button matSuffix class="trashCan_"
@@ -33,7 +34,6 @@
                 <i class="far fa-times-circle"></i>
                 </button>
                 </div>
-            </div>
           </div>
               <button mat-stroked-button class="textFont"
               (click)="navToPost(comment.postId)">Go to post</button>
