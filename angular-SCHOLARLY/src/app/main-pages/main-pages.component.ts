@@ -95,6 +95,7 @@ export class SinglePageTemplateComponent implements OnInit {
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
           this.posts = posts;
+          console.log('pats', this.posts);
           this.isLoading = false;
         });
     });

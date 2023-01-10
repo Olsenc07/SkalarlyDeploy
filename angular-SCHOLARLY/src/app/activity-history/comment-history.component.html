@@ -18,19 +18,23 @@
       <div class="userName link"  id="userName">@{{comment.username}}
       </div>
       </button>
+ 
       <button mat-button *ngIf="userId !== comment.Creator" >
         <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
           </div>
         </button>
-              </div>
-            </div>
-        </div>
+
+              
+        
             <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
               <button  mat-icon-button matSuffix class="trashCan_"
                 (click)='onDeleteComment(comment.id)'>
                 <i class="far fa-times-circle"></i>
                 </button>
                 </div>
+              </div>
+            </div>
+          </div>
               <button mat-stroked-button class="textFont"
               (click)="navToPost(comment.postId)">Go to post</button>
 
