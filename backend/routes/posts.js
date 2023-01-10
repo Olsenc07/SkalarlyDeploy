@@ -391,7 +391,23 @@ router.get("/mainPage", async(req, res) => {
         });
            
 });
-
+// Get single page post
+router.get("/singlePage", async(req, res) => {    
+    console.log('love in the air 7 ',req.query.postId);
+         await Post.find({_id: req.query.postId})
+           .then(doc => {
+            res.status(200).json({
+                message: 'Single post fetched succesfully!',
+                posts: doc
+            });
+           }) 
+           .catch(error => {
+            res.status(500).json({
+                message: 'Fetching posts failed!'
+            });
+        });
+           
+});
 // Get others posts
 router.get("/otherUsersInfos", async(req, res) => {
         await UserInfo.findOne({username: {$eq: req.query.id}})

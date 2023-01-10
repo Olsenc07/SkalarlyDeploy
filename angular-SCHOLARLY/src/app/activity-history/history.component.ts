@@ -72,6 +72,7 @@ export class CommentHistoryComponent implements OnInit {
   }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;

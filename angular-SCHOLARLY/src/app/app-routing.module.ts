@@ -34,7 +34,10 @@ import {
   SignupComponent,
   VerifiedPopUpComponent,
 } from './signup/signup.component';
-import { MainPagesComponent } from './main-pages/main-pages.component';
+import {
+  MainPagesComponent,
+  SinglePageComponent,
+} from './main-pages/main-pages.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { AuthGuard } from './signup/auth.guard';
 
@@ -158,6 +161,8 @@ const routes: Routes = [
   },
   { path: 'groups', component: GroupChatsComponent, canActivate: [AuthGuard] },
   { path: 'main/:category', component: MainPagesComponent },
+  { path: 'single/:postId', component: SinglePageComponent },
+
   {
     path: 'messages/:username',
     component: MessagingComponent,

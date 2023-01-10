@@ -60,3 +60,43 @@ export class MainPagesComponent implements OnInit {
   // Each button opens this page by there should be 4 different functions with each
   // sharin the open attendence comp, but each sends diff values/reasoning
 }
+
+@Component({
+  selector: 'app-single-page',
+  templateUrl: './single-page.component.html',
+  styleUrls: ['./main-pages.component.scss'],
+})
+export class SinglePageComponent implements OnInit {
+  isLoading = false;
+
+  ngOnInit(): void {}
+}
+
+@Component({
+  selector: 'app-card-single-page ',
+  templateUrl: './template-single-post.component.html',
+  styleUrls: ['../reusable-card/reusable-card.component.scss'],
+})
+export class SinglePageTemplateComponent implements OnInit {
+  isLoading = false;
+  posts: Post[] = [];
+  postId: string;
+  private postsSub: Subscription;
+
+  constructor(private route: ActivatedRoute, public postService: PostService) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      console.log('params single page', params);
+      this.postId = params?.postId;
+
+      this.postService.getPostSinglePage(this.postId);
+      this.postsSub = this.postService
+        .getPostUpdateListener()
+        .subscribe((posts: Post[]) => {
+          this.posts = posts;
+          this.isLoading = false;
+        });
+    });
+  }
+}

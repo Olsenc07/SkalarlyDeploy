@@ -75,7 +75,11 @@ import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { MessageCardComponent } from './messaging/messaging.component';
 
-import { MainPagesComponent } from './main-pages/main-pages.component';
+import {
+  MainPagesComponent,
+  SinglePageComponent,
+  SinglePageTemplateComponent,
+} from './main-pages/main-pages.component';
 import {
   SignupComponent,
   VerifiedPopUpComponent,
@@ -161,6 +165,8 @@ import { ErrorInterceptor } from './error-interceptor';
     FollowedHistoryComponent,
     GroupChatsComponent,
     MainPagesComponent,
+    SinglePageComponent,
+    SinglePageTemplateComponent,
     SignupComponent,
     HomePageComponent,
     ExplainedComponent,
