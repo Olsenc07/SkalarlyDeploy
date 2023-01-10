@@ -122,10 +122,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
   time: FormControl = new FormControl('');
   timeEdit = this.time.value;
 
-  timeEditAfter = this.timeEditFunc(this.timeEdit);
+  timeEditAfter = this.timeEditFunc(this.timeEdit.split());
   timeE: FormControl = new FormControl('');
   timeEdit2 = this.timeE.value;
-  timeEditAfter2 = this.timeEditFunc2(this.timeEdit2);
+  timeEditAfter2 = this.timeEditFunc2(this.timeEdit2.split());
 
   LocationEvent: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
