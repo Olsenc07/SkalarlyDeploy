@@ -12,10 +12,10 @@
         <div class="row">
           <div class="column">
             
-            <div class="centerT" *ngIf="posts.Title">
+            <div class="centerT" *ngIf="post.Title">
   
               <mat-card-title class="postTitle textSizeTit">
-                {{ posts.Title}}
+                {{ post.Title}}
               </mat-card-title>
   
               
@@ -26,28 +26,28 @@
               <div class="column" >
                 <!-- *ngIf="posts.length > 0" -->
                 <div class="row-">
-                  <div class="profilePic" *ngIf="posts.ProfilePicPath">
+                  <div class="profilePic" *ngIf="post.ProfilePicPath">
                     <!-- need to get croppeded value -->
-                    <img class="pic" src="{{posts.ProfilePicPath}}">
+                    <img class="pic" src="{{post.ProfilePicPath}}">
                   </div>
   
                   <div class="column1">
-                    <div class="linkN" *ngIf="posts.Name">
-                      {{ posts.Name}}
+                    <div class="linkN" *ngIf="post.Name">
+                      {{ post.Name}}
                     </div>
   
   
   
                     <div class="nameTitle">
                       <!-- Button directs to that users profile -->
-                      <button mat-button *ngIf="userId !== posts.Creator"  matTooltip="View Profile">
-                        <div class="userName  link"  id="userName" (click)="navigateToPage(posts.Username)">
+                      <button mat-button *ngIf="userId !== post.Creator"  matTooltip="View Profile">
+                        <div class="userName  link"  id="userName" (click)="navigateToPage(post.Username)">
                           <!-- Olsen07 -->
-                          @{{posts.Username}}
+                          @{{post.Username}}
                         </div>
                       </button>
-                      <button mat-button *ngIf="userId == posts.Creator" disabled>
-                      <div class="userName  link"     id="userName">@{{posts.Username}}</div>
+                      <button mat-button *ngIf="userId == post.Creator" disabled>
+                      <div class="userName  link"     id="userName">@{{post.Username}}</div>
                       </button>
                     </div>
                   </div>
@@ -66,29 +66,27 @@
   
                   <!-- Idk If needed -->
   
-                  <div class="postLocation textSize t"
-                  matTooltip="Click to see more like this"
-                  (click)="navigateToMainPage(posts.postLocation)" *ngIf="posts.postLocation">
+                  <div class="postLocation textSize t" *ngIf="post.postLocation">
                     <!-- Location -->
-                    {{posts.postLocation}}
+                    {{post.postLocation}}
                   </div>
   
-                  <div class="textSize row1 t" *ngIf="posts.LocationEvent">
+                  <div class="textSize row1 t" *ngIf="post.LocationEvent">
                    
-                    {{posts.LocationEvent}}
+                    {{post.LocationEvent}}
                   </div>
-                  <div class="row1" *ngIf="posts.date || posts.time">
+                  <div class="row1" *ngIf="post.date || post.time">
   
                     <div class="postTime textSize column1">
                       <div class=" displayT t">
                         {{post.date | date:"longDate"}}
-                        <div *ngIf="posts.timeE"> {{posts.timeE}}
+                        <div *ngIf="post.timeE"> {{post.timeE}}
                         </div>
-                        <div *ngIf="posts.dateE">  /{{posts.dateE | date:"longDate"}}
+                        <div *ngIf="post.dateE">  /{{post.dateE | date:"longDate"}}
                           </div>
                       </div>
                       <div class="displayT t">
-                        {{posts.time}} 
+                        {{post.time}} 
                       
                       </div>
                     </div>
@@ -100,25 +98,25 @@
                     <div class="booleans">
   
                       <div class="material-icons b" matTooltip="Everyone's welcome to join"
-                      *ngIf="posts.gender == 'all' ">diversity_3</div>
+                      *ngIf="post.gender == 'all' ">diversity_3</div>
                       <div class="material-icons b" matTooltip="Females are welcome to join"
-                       *ngIf="posts.gender == 'female' ">female</div>
+                       *ngIf="post.gender == 'female' ">female</div>
                       <div class="material-icons b" matTooltip="Males are welcome to join"
-                      *ngIf="posts.gender == 'male'">male</div>
+                      *ngIf="post.gender == 'male'">male</div>
                       <div class="material-icons b" matTooltip="LGBTQ2S+ members are welcome to join"
-                      *ngIf="posts.gender == 'lgbtq2s+'">transgender</div>
+                      *ngIf="post.gender == 'lgbtq2s+'">transgender</div>
   
-                      <div class="material-icons b" matTooltip="This is a live event"  *ngIf="posts.live">follow_the_signs</div>
-                      <div class="material-icons b" matTooltip="This event has a cost" *ngIf="posts.paymentService ">attach_money</div>
-                      <div class="material-icons b" matTooltip="This event is free" *ngIf="posts.nopaymentService ">money_off</div>
+                      <div class="material-icons b" matTooltip="This is a live event"  *ngIf="post.live">follow_the_signs</div>
+                      <div class="material-icons b" matTooltip="This event has a cost" *ngIf="post.paymentService ">attach_money</div>
+                      <div class="material-icons b" matTooltip="This event is free" *ngIf="post.nopaymentService ">money_off</div>
 
                       <div class="material-icons b" matTooltip="This is a virtual event" 
-                      *ngIf="posts.virtual">photo_camera_front</div>
+                      *ngIf="post.virtual">photo_camera_front</div>
   
                       <div class="material-icons b" matTooltip="This is a professional event"
-                      *ngIf="posts.event == 'formal' ">work</div>
+                      *ngIf="post.event == 'formal' ">work</div>
                       <div class="material-icons b" matTooltip="This is a relaxed event"
-                       *ngIf="posts.event == 'relaxed' ">nightlife
+                       *ngIf="post.event == 'relaxed' ">nightlife
                       </div>
                     </div>
                   </div>
@@ -139,9 +137,9 @@
   
         <!---- Takes upload img/video from post page {{Upload}} -->
         <!-- *ngFor="let show of showCases" -->
-        <div class="upload" *ngIf="posts.ImagePath" >
+        <div class="upload" *ngIf="post.ImagePath" >
   
-          <input type="image" (click)="imgClick(posts.ImagePath)" class="middle-card" src="{{posts.ImagePath}}" id="myImg">
+          <input type="image" (click)="imgClick(post.ImagePath)" class="middle-card" src="{{post.ImagePath}}" id="myImg">
         </div>
   
                           <!-- The Modal -->
@@ -163,10 +161,10 @@
   
   
         <!-- Description -->
-        <div class="description" *ngIf="posts.postDescription">
+        <div class="description" *ngIf="post.postDescription">
   
           <div class="postText d">
-            {{posts.postDescription}}
+            {{post.postDescription}}
           </div>
   
         </div>
@@ -192,7 +190,7 @@
         </mat-chip>
         </mat-chip-list> -->
         <mat-chip-list class="buttonsC">
-          <mat-chip class="showCommentsBtn" matTooltip="Click to show comments" (click)="loadComments(posts.id)">
+          <mat-chip class="showCommentsBtn" matTooltip="Click to show comments" (click)="loadComments(post.id)">
           
             Comments
             <i class="far fa-comments"></i>
@@ -251,6 +249,8 @@
       </div>
     </div>
          
+      
+  
       </div>
     </mat-card>
     
