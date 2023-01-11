@@ -107,3 +107,26 @@ export class FollowedHistoryComponent implements OnInit {
       });
   }
 }
+
+@Component({
+  selector: 'followed-history-template',
+  templateUrl: './followed-template-history.component.html',
+  styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
+})
+export class FollowedTemplateComponent implements OnInit {
+  userId: string;
+  mutuals: Follow[] = [];
+
+  constructor(
+    private authService: AuthService,
+    private followService: FollowService
+  ) {}
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+    this.followService
+      .getInfoMutualsUpdateListener()
+      .subscribe((mutuals: Follow[]) => {
+        this.mutuals = mutuals;
+      });
+  }
+}

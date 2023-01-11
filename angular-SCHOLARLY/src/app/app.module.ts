@@ -70,6 +70,7 @@ import {
   ActivityHistoryComponent,
   CommentHistoryComponent,
   FollowedHistoryComponent,
+  FollowedTemplateComponent,
 } from './activity-history/history.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { MessagingComponent } from './messaging/messaging.component';
@@ -163,6 +164,7 @@ import { ErrorInterceptor } from './error-interceptor';
     ActivityHistoryComponent,
     CommentHistoryComponent,
     FollowedHistoryComponent,
+    FollowedTemplateComponent,
     GroupChatsComponent,
     MainPagesComponent,
     SinglePageComponent,

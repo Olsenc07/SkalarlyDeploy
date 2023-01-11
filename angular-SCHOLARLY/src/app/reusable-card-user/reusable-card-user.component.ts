@@ -310,7 +310,6 @@ export class ReusableCardMutualsComponent implements OnInit {
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
     // following info
