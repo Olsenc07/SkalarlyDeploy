@@ -9,6 +9,7 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommentsService } from '../services/comments.service';
+import { createPopup } from '@picmo/popup-picker';
 
 @Component({
   selector: 'app-main-pages',
@@ -222,6 +223,31 @@ export class SinglePageTemplateComponent implements OnInit {
   navigateToMainPage(value: string): void {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
+  }
+  // Adding emojis
+  openEmoji(): void {
+    const selectionContainer = document.getElementById('showEmojis');
+    const triggerEmoji = document.getElementById('triggerEmo');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.comment.value + msgs;
+      this.comment.setValue(msg);
+    });
+  }
+  emojiPreventClose($event: any): any {
+    $event.stopPropagation();
   }
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
