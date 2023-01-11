@@ -227,7 +227,7 @@ export class SinglePageTemplateComponent implements OnInit {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
   }
-  CommentTrigger(postId): void {
+  CommentTrigger(postId: string): void {
     if (this.comment.value) {
       this.commentsService.createComment(
         this.comment.value,
@@ -242,7 +242,7 @@ export class SinglePageTemplateComponent implements OnInit {
 
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
-    this.commentsService.getComments(postId);
+    this.commentsService.getComments(this.postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
