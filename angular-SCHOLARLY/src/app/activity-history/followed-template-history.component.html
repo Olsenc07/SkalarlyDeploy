@@ -3,13 +3,12 @@
         <div class="row">
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPathFollower">
-                    <!-- <img src="{{id.cropImgPreview}}" alt=""> -->
                     <img class="fit" src="{{info.ProfilePicPathFollower}}">
                 </div>
             </div>
             <div class="column_">
                 <div class="userName textSize" *ngIf="info.nameFollower">
-                    <!-- {{ (profile | async)?.Pronouns}} -->
+    
                     {{info.nameFollower}}
                 </div>
                 <div>
@@ -21,9 +20,7 @@
                     <div class="center-" >  @{{ info.usernameFollower }} </div>
                     </button>
                 </div>
-                <!-- <mat-card-subtitle class="gender textSize">
-                                {{id.Gender}}
-                            </mat-card-subtitle> -->
+           
             </div>
 
             <div class="center-">
@@ -32,7 +29,7 @@
 
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div [ngClass]="info.sport || info.club ? 'center' : 'centerEmpty' "
                 *ngIf=" info.major || info.minor ">
                 <div class=" center1" *ngIf="info.major">
@@ -45,10 +42,10 @@
                     <i class="far fa-star large">{{info.minor}}</i>
 
                 </div>
-            </div>
+            </div> -->
 
 
-            <div [ngClass]="info.major || info.minor ? 'center' : 'centerEmpty' "
+            <!-- <div [ngClass]="info.major || info.minor ? 'center' : 'centerEmpty' "
                 *ngIf="info.sport || info.club ">
                 <div class="center1" *ngIf="info.sport">
 
@@ -58,8 +55,8 @@
               
                     {{info.club}}
                 </div>
-            </div>
+            </div> -->
 
-        </div>
+        <!-- </div> -->
     </div>
 </mat-card>

@@ -41,12 +41,12 @@
   
               <div class="following-box">
                 <div class="structure">
-                    <!--  *ngIf="followers.length == 0" -->
-                  <div class="basicColumn">
+                     *ngIf="followers.length == 0"
+                     <div class="basicColumn" >
                   <i class="fas fa-users-slash noFriends"></i>
                   <div class="title_">No current followers</div>
                 </div>
-                  <!-- <followed-history></followed-history> -->
+                  <followed-history></followed-history>
                 </div>
               </div>
   
@@ -57,32 +57,7 @@
   
 
         </div>
-        <div class="bottomM">
-          <mat-tab-group mat-align-tabs="center">
-            <mat-tab>
-              <ng-template mat-tab-label>
-                Mutual Friends
-                <div class="p">
-                  <!-- {{mutuals.length}} -->
-                </div>
-  
-              </ng-template>
-              <div class="mutual-largest">
-                <div class="mutual-box">
-                  <div class="center">
-  
-                  </div>
-                  <div class="follow-m">
-                    <div class="center1">
-    
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </mat-tab>
-        
-          </mat-tab-group>
-        </div>
+
       </div>
   
     </div>

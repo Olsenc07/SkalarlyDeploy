@@ -127,6 +127,7 @@ export class FollowedTemplateComponent implements OnInit {
       .getInfoMutualsUpdateListener()
       .subscribe((mutuals: Follow[]) => {
         this.mutuals = mutuals;
+        console.log('wanderer', this.mutuals);
       });
   }
 }
