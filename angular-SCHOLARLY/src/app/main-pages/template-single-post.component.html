@@ -66,7 +66,7 @@
   
                   <!-- Idk If needed -->
   
-                  <button mat-button class="postLocation textSize t" (click)="navigateToMainPage(post.postLocation)"
+                  <button mat-button class="postLocation textSizeLocation t" (click)="navigateToMainPage(post.postLocation)"
                    *ngIf="post.postLocation">
                     <!-- Location -->
                     {{post.postLocation}}
@@ -191,7 +191,7 @@
         </mat-chip>
         </mat-chip-list> -->
         <mat-chip-list class="buttonsC">
-          <mat-chip class="showCommentsBtn" matTooltip="Click to show comments" (click)="loadComments(post.id)">
+          <mat-chip class="showCommentsBtn" matTooltip="Click to show comments" (click)="loadComments()">
           
             Comments
             <i class="far fa-comments"></i>
@@ -212,7 +212,8 @@
       
 <div   class="scroll"> 
 <div *ngFor="let comment of comments; let even = even; let odd = odd;; templateCacheSize: 2">
-        <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
+    <!-- *ngIf="post.id == comment.postId" -->
+        <div  [ngClass]="{ even: even, odd: odd }"
          class="commentsDisplayWrapper">
          <div class="picTime">
           <div class="rowComment">

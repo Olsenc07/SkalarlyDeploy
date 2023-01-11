@@ -240,18 +240,14 @@ export class SinglePageTemplateComponent implements OnInit {
     }
   }
 
-  loadComments(postId: string): void {
+  loadComments(): void {
     console.log('hey logic fade away', this.postId);
-    this.route.queryParams.subscribe((params) => {
-      console.log('params single page', params);
-      this.postId = params?.postId;
-      console.log('hey logic fade away2', this.postId);
-      this.commentsService.getComments(this.postId);
-      this.commentsSub = this.commentsService
-        .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
-          this.comments = comments;
-        });
-    });
+    console.log('hey logic fade away2', this.postId);
+    this.commentsService.getComments(this.postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        this.comments = comments;
+      });
   }
 }
