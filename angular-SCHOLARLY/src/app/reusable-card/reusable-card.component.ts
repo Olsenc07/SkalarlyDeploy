@@ -265,7 +265,7 @@ export class ReusableCardComponent implements OnInit {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments;
+        this.comments = comments.reverse();
       });
   }
   // ngOnDestroy(): void {
@@ -499,7 +499,7 @@ export class ReusableCardPersonalComponent implements OnInit {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments;
+        this.comments = comments.reverse();
       });
   }
 }
@@ -1202,7 +1202,7 @@ export class CardFeedComponent implements OnInit {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments;
+        this.comments = comments.reverse();
       });
   }
 }
@@ -1453,7 +1453,7 @@ export class CardInfoFeedComponent implements OnInit {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments;
+        this.comments = comments.reverse();
       });
   }
 }
@@ -1706,7 +1706,7 @@ export class CardInfoMainPageComponent implements OnInit {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments;
+        this.comments = comments.reverse();
       });
   }
 }

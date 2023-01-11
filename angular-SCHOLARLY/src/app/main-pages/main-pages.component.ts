@@ -241,13 +241,11 @@ export class SinglePageTemplateComponent implements OnInit {
   }
 
   loadComments(): void {
-    console.log('hey logic fade away', this.postId);
-    console.log('hey logic fade away2', this.postId);
     this.commentsService.getComments(this.postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments;
+        this.comments = comments.reverse();
       });
   }
 }
