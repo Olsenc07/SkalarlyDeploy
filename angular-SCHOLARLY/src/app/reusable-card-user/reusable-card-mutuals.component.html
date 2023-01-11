@@ -17,8 +17,9 @@
                     <button mat-button class="center-" *ngIf="userId !== info.Follower" (click)="navigateToPage(info.usernameFollower)">
                         @{{ info.usernameFollower }}
                     </button>
-                    <div class="center-" *ngIf="userId == info.Follower">  @{{ info.usernameFollower }} </div>
-
+                    <button mat-button *ngIf="userId == info.Follower" disabled>
+                    <div class="center-" >  @{{ info.usernameFollower }} </div>
+                    </button>
                 </div>
                 <!-- <mat-card-subtitle class="gender textSize">
                                 {{id.Gender}}
