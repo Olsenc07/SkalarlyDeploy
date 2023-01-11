@@ -227,16 +227,16 @@ export class SinglePageTemplateComponent implements OnInit {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
   }
-  CommentTrigger(postId: string): void {
+  CommentTrigger(): void {
     if (this.comment.value) {
       this.commentsService.createComment(
         this.comment.value,
         this.userId,
         this.time,
-        postId
+        this.postId
       );
       this.comment.setValue('');
-      console.log('onComment', postId);
+      console.log('onComment', this.postId);
     }
   }
 
