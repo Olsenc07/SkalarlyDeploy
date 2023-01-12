@@ -78,7 +78,7 @@ export class CommentHistoryComponent implements OnInit {
     this.userId = this.authService.getUserId();
     // Then track all posts under this Creator get _id then get Comments postId
     console.log('chaz', this.userId);
-    this.commentsService.getCommentsHistory(this.userId);
+    this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
@@ -95,7 +95,7 @@ export class CommentHistoryComponent implements OnInit {
     console.log('hey', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.commentsService.getCommentsHistory(this.recomCounter);
+    this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
@@ -112,7 +112,7 @@ export class CommentHistoryComponent implements OnInit {
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.commentsService.getCommentsHistory(this.recomCounter);
+    this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
