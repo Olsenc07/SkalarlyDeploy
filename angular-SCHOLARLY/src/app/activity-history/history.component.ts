@@ -24,17 +24,31 @@ export interface Follow {
 })
 export class ActivityHistoryComponent implements OnInit {
   comments: string[] = [];
+  userId: string;
+  followers: Follow[] = [];
+  private followSubFollowers: Subscription;
 
   constructor(
     private commentsService: CommentsService,
-    public postService: PostService
+    public postService: PostService,
+    private authService: AuthService,
+    private followService: FollowService
   ) {}
   ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+
     this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
         this.comments = comments;
         console.log('kristina 1', this.comments);
+      });
+    // following info
+    this.followService.getMessageNotificationFollowed(this.userId);
+    this.followSubFollowers = this.followService
+      .getInfoFollowUpdateListener()
+      .subscribe((followers: Follow[]) => {
+        this.followers = followers;
       });
   }
 }
