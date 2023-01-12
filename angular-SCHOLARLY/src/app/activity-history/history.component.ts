@@ -62,6 +62,8 @@ export class CommentHistoryComponent implements OnInit {
   private commentsSub: Subscription;
   comments: string[] = [];
   userId: string;
+  recomCounter = 0;
+  countVisibility = 0;
 
   constructor(
     private authService: AuthService,
@@ -82,6 +84,41 @@ export class CommentHistoryComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
         console.log('kristina', this.comments);
+      });
+  }
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.commentsService.getCommentsHistory(this.recomCounter);
+    this.commentsService
+      .getMessagesUpdateListenerHistory()
+      .subscribe((comments: string[]) => {
+        this.comments = comments.reverse();
+        console.log('posts personal', this.comments);
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.commentsService.getCommentsHistory(this.recomCounter);
+    this.commentsService
+      .getMessagesUpdateListenerHistory()
+      .subscribe((comments: string[]) => {
+        this.comments = comments.reverse();
+
+        console.log('comments', this.comments);
       });
   }
   navToPost(postId: string): any {

@@ -51,11 +51,11 @@ export class CommentsService {
       });
   }
   // Get all comments history
-  getCommentsHistory(userId): any {
+  getCommentsHistory(userId, counter): any {
     this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/posts/commentsHistory',
-        { params: { userId } }
+        { params: { userId, counter } }
       )
       .pipe(
         map((messageData) => {

@@ -239,12 +239,13 @@ router.get('/comments', async(req, res) =>{
 });
     // get Comments history
     router.get('/commentsHistory', async(req, res) =>{
+    const counter = req.query.counter
         await Post.find({Creator: req.query.userId})
         .then(postId => {
             const result = postId.map( postId  =>      
                 postId._id)
             console.log('hey sun', result)
-            Comment.find({postId: result})
+            Comment.find({postId: result}).sort({_id:-1}).skip(counter).limit(6)
             .then(documents => {
             console.log('chaz man 2', documents);
                 res.status(200).json({
