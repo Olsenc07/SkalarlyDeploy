@@ -301,7 +301,7 @@ export class FollowService {
       });
   }
   deleteFollow(followId: string): any {
-    // console.log('hey chase postId', postId);
+    console.log('hey chase followId', followId);
     this.http
       .delete('https://www.skalarly.com/api/follow/unFollow/' + followId)
       .subscribe(() => {
