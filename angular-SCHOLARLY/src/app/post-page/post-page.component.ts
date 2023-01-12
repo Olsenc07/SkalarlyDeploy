@@ -80,6 +80,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   userId: string;
 
   url: string;
+  urlVideo: string;
+
   selectedIndex = 0;
   selectedIndexPost = 0;
 
@@ -189,6 +191,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
     document.getElementById('fileInput').click();
     console.log('nice');
   }
+  uploadFileVideo(): any {
+    document.getElementById('fileInputVideo').click();
+    console.log('nice');
+  }
   openDialog(): void {
     this.dialog.open(DialogElementsComponent);
   }
@@ -208,12 +214,26 @@ export class PostPageComponent implements OnInit, OnDestroy {
     reader.readAsDataURL(file);
     console.log(file);
   }
-
+  onImagePickedVideo(event: Event): any {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({ upload: file });
+    this.form.get('video').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.urlVideo = reader.result as string;
+      console.log(this.urlVideo);
+    };
+    reader.readAsDataURL(file);
+    console.log(file);
+  }
   clearUpload(): void {
     this.form.get('upload').setValue('');
     document.getElementById('upload').removeAttribute('src');
   }
-
+  clearUploadVideo(): void {
+    this.form.get('video').setValue('');
+    document.getElementById('video').removeAttribute('src');
+  }
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
 
