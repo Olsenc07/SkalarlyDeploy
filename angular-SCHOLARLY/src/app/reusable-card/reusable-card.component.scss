@@ -80,7 +80,7 @@
 .commentsDisplay{
   display: flex;
   flex-direction: column;
-margin-top: 1%;
+  margin-top: 1%;
 }
 .commentsDisplayWrapper{
   display: flex;
@@ -224,6 +224,12 @@ font-size: large;
   flex-direction: row;
   // width: 100%;
   // justify-content: space-evenly;
+}
+.rowSpace {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-evenly;
 }
 .rowDelete{
   display: flex;

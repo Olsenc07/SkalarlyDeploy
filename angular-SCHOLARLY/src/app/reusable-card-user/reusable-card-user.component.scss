@@ -24,6 +24,7 @@
 .center-{
   font-size: medium;
     // font-family: 'Poppins',sans-serif;
+    flex-direction: column;
     font-family: 'Cormorant Garamond',serif;
 }
 .center__ {
@@ -55,6 +56,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.display{
+  display: flex;
 }
 .delete{
   display: flex;

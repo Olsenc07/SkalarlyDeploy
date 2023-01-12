@@ -102,7 +102,6 @@ export class CommentHistoryComponent implements OnInit {
 export class FollowedTemplateComponent implements OnInit {
   userId: string;
   mutuals: Follow[] = [];
-  private followSubFollowers: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -112,9 +111,9 @@ export class FollowedTemplateComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     // following info
-    this.followService.getMessageNotificationFollowed(this.userId);
-    this.followSubFollowers = this.followService
-      .getInfoFollowUpdateListener()
+    this.followService.getMessageNotificationFollowedHistory(this.userId);
+    this.followService
+      .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
         console.log('my secret', this.mutuals);

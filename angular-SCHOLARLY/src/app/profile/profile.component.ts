@@ -327,7 +327,106 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   showFiller = false;
   // TODO: initial following value would need to be loaded from database - for now, always start with false
   Following: boolean;
-
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
+  timeMinute = new Date().getMinutes();
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
+  time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
+    '\xa0' +
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    '\xa0' +
+    this.text;
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
+  }
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.isLoading = true;
@@ -406,6 +505,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.user = params.id;
       const FollowingId = this.user;
       this.followService.postInfoFollow(this.userId, username, FollowingId);
+      this.followService.postInfoFollowHistory(
+        this.userId,
+        username,
+        FollowingId,
+        this.time
+      );
     });
   }
   onUnfololow(followId: string): any {

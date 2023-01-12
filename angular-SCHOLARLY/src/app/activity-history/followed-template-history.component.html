@@ -1,6 +1,6 @@
 <mat-card class="row1_"  *ngFor="let info of mutuals">
     <div class="column" >
-        <div class="row">
+        <div class="rowSpace">
             <div>
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPathFollower">
@@ -12,7 +12,7 @@
     
                     {{info.nameFollower}}
                 </div>
-                <div>
+                <div class="display">
                     <!-- Directs to users profile -->
                     <button mat-button class="center-" *ngIf="userId !== info.Follower" (click)="navigateToPage(info.usernameFollower)">
                         @{{ info.usernameFollower }}
@@ -26,6 +26,7 @@
         </div>
             <div class="center-">
          Followed You
+         {{info.Time}}
         </div>
 
         </div>

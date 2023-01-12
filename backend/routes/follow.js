@@ -1,5 +1,7 @@
 const User = require('/app/backend/models/user');
 const Follow = require('/app/backend/models/follow')
+const followHistory = require('/app/backend/models/follow-history')
+
 const express = require('express');
 const userInfo = require('/app/backend/models/userInfo');
 const Subscription = require('/app/backend/models/subscription');
@@ -94,7 +96,44 @@ if(checking !== null){
          })
     })
 })
+// Followed history
+router.get("/infoFollowHistory", async(req, res, next) => {
 
+await userInfo.findOne({Creator: req.query.userId})
+.then(user => {
+    userInfo.findOne({username: req.query.username })
+    .then( otherUser => {
+    User.findOne({username: req.query.FollowingId })
+        .then( otherUserId => {
+            const FOLLOW = new followHistory({
+                Follower: req.query.userId,
+                nameFollower: user.name,
+                usernameFollower: user.username,
+                ProfilePicPathFollower: user.ProfilePicPath,
+                FollowingId: otherUserId.id,
+                Following: req.query.username,  
+                nameFollowing: otherUser.name,
+                ProfilePicPathFollowing: otherUser.ProfilePicPath,
+                Time: req.query.time
+            })
+            FOLLOW.save().then(createdFollow => {
+                res.status(200).json({
+                    message: 'Follow succesful!',
+                    messages: createdFollow
+                });
+})
+.catch(err => {
+    return res.status(401).json({
+        message: "Invalid following error!"})
+            })
+})
+.catch(err => {
+    return res.status(401).json({
+        message: "Invalid follow error!"})
+            })
+         })
+    })
+})
 
 
 // Get following
@@ -179,6 +218,26 @@ router.get("/followerInfo", async(req, res, next) => {
     .then(user => {
 
      Follow.find({Following: user.username})
+    .then(follows => {
+        res.status(200).json({
+            message: 'Follows fetched succesfully!',
+            messages: follows
+        });
+    })
+    })
+    .catch(err => {
+        return res.status(401).json({
+            message: "Invalid following error!",
+    
+        })
+    })
+    })
+    // Get follower history
+router.get("/followerInfoHistory", async(req, res, next) => {
+    await userInfo.findOne({Creator: req.query.userId})
+    .then(user => {
+
+        followHistory.find({Following: user.username})
     .then(follows => {
         res.status(200).json({
             message: 'Follows fetched succesfully!',
