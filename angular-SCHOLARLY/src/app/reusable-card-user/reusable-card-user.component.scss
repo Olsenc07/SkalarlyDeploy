@@ -29,7 +29,7 @@
 .center-Space{
   font-size: medium;
   display: flex;
-  // font-family: 'Poppins',sans-serif;
+  justify-content: center;
   flex-direction: column;
   font-family: 'Cormorant Garamond',serif;
 }
@@ -132,6 +132,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  padding: 1%;
 }
 .row1 {
   display: flex;

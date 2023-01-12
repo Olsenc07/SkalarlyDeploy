@@ -293,7 +293,7 @@ if (req.body.userId){
             .then((user) => {
                 console.log('user 77', user)
                 Subscription.findOne({Creator: user.Creator})
-                .then(checking =>{
+                .then(checking => {
                     if(checking !== null){
                         Subscription.findOne({Creator: user.Creator})
                 .then(subscriber =>{

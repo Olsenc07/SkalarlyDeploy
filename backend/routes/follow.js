@@ -66,7 +66,7 @@ if(checking !== null){
       publicVapidKey = process.env.vapidPublic;
       privateVapidKey = process.env.vapidPrivate
       webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
-    webpush.sendNotification(pushSubscription, JSON.stringify({
+      webpush.sendNotification(pushSubscription, JSON.stringify({
         title: 'New Follower!',
         content: `${user.name} has connected with you.`,
         openUrl: '/friends-activity'
