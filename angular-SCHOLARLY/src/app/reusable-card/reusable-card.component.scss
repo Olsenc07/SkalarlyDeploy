@@ -297,9 +297,9 @@ font-size: large;
 .showMoreBtn{
   display: flex;
   justify-content: center;
-// font-family: 'Cinzel', serif;
 font-family: 'Cormorant Garamond', serif;
-background-color: #10173a;
+background-color: #10173a !important;
+margin-top: 1%;
 }
 
 .timeBox{

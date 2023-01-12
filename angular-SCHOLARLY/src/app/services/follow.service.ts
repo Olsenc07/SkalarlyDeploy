@@ -163,12 +163,12 @@ export class FollowService {
       });
   }
   // Followed history
-  getMessageNotificationFollowedHistory(userId: string): any {
+  getMessageNotificationFollowedHistory(userId: string, counter: number): any {
     this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/followerInfoHistory',
         {
-          params: { userId },
+          params: { userId, counter },
         }
       )
       .pipe(

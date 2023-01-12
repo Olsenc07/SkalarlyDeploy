@@ -234,10 +234,11 @@ router.get("/followerInfo", async(req, res, next) => {
     })
     // Get follower history
 router.get("/followerInfoHistory", async(req, res, next) => {
+    const counter = req.query.counter
     await userInfo.findOne({Creator: req.query.userId})
     .then(user => {
 
-        followHistory.find({Following: user.username})
+        followHistory.find({Following: user.username}).sort({_id:-1}).skip(counter).limit(6)
     .then(follows => {
         res.status(200).json({
             message: 'Follows fetched succesfully!',

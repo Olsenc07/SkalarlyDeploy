@@ -139,7 +139,9 @@ export class CommentHistoryComponent implements OnInit {
 export class FollowedTemplateComponent implements OnInit {
   userId: string;
   mutuals: Follow[] = [];
-
+  recomCounter = 0;
+  countVisibility = 0;
+  
   constructor(
     private authService: AuthService,
     private followService: FollowService,
@@ -148,12 +150,47 @@ export class FollowedTemplateComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     // following info
-    this.followService.getMessageNotificationFollowedHistory(this.userId);
+    this.followService.getMessageNotificationFollowedHistory(this.userId,this.recomCounter);
     this.followService
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
         console.log('my secret', this.mutuals);
+      });
+  }
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.followService.getMessageNotificationFollowedHistory(this.userId,this.recomCounter);
+    this.followService
+      .getInfoFollowUpdateListenerHistory()
+      .subscribe((followers: Follow[]) => {
+        this.mutuals = followers;
+        console.log('posts personal', this.mutuals);
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.followService.getMessageNotificationFollowedHistory(this.userId, this.recomCounter);
+    this.followService
+      .getInfoFollowUpdateListenerHistory()
+      .subscribe((followers: Follow[]) => {
+        this.mutuals = followers;
+
+        console.log('comments', this.mutuals);
       });
   }
   navigateToPage(infoUser: string): any {
