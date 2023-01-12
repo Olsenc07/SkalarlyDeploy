@@ -141,7 +141,7 @@ export class FollowedTemplateComponent implements OnInit {
   mutuals: Follow[] = [];
   recomCounter = 0;
   countVisibility = 0;
-  
+
   constructor(
     private authService: AuthService,
     private followService: FollowService,
@@ -150,7 +150,10 @@ export class FollowedTemplateComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     // following info
-    this.followService.getMessageNotificationFollowedHistory(this.userId,this.recomCounter);
+    this.followService.getMessageNotificationFollowedHistory(
+      this.userId,
+      this.recomCounter
+    );
     this.followService
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
@@ -167,7 +170,10 @@ export class FollowedTemplateComponent implements OnInit {
     console.log('hey', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.followService.getMessageNotificationFollowedHistory(this.userId,this.recomCounter);
+    this.followService.getMessageNotificationFollowedHistory(
+      this.userId,
+      this.recomCounter
+    );
     this.followService
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
@@ -184,7 +190,10 @@ export class FollowedTemplateComponent implements OnInit {
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.followService.getMessageNotificationFollowedHistory(this.userId, this.recomCounter);
+    this.followService.getMessageNotificationFollowedHistory(
+      this.userId,
+      this.recomCounter
+    );
     this.followService
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {

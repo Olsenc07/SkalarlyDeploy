@@ -53,7 +53,7 @@
         <button mat-fab  class="cameraIcon" (click)="uploadFile()">
           <div class="material-icons Photo">
             add_a_photo
-            <input type="file" #fileInput id="fileInput" name='upload' class="uploadD"  accept=".png, .jpg, .jpeg"
+            <input type="file" #fileInput id="fileInput" name='upload' class="uploadD"  accept=".png, .jpg, .jpeg, video/*"
               (change)="onImagePicked($event)" >
           </div>
         </button>
