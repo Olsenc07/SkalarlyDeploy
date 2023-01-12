@@ -106,7 +106,8 @@ export class FollowedTemplateComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private followService: FollowService
+    private followService: FollowService,
+    private router: Router
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -118,5 +119,9 @@ export class FollowedTemplateComponent implements OnInit {
         this.mutuals = followers;
         console.log('my secret', this.mutuals);
       });
+  }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
 }
