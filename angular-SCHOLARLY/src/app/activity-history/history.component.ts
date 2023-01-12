@@ -95,34 +95,6 @@ export class CommentHistoryComponent implements OnInit {
 }
 
 @Component({
-  selector: 'followed-history',
-  templateUrl: './followed-history.component.html',
-  styleUrls: ['../friends-activity/friends-activity.component.scss'],
-})
-export class FollowedHistoryComponent implements OnInit {
-  userId: string;
-  followers: Follow[] = [];
-  private followSubFollowers: Subscription;
-  // Have it the same as followers or
-  // Create new data model for when user clicks follow or unfollow and save that
-  // Just have username, followed/unfollowed you in the model
-  constructor(
-    private authService: AuthService,
-    private followService: FollowService
-  ) {}
-  ngOnInit(): any {
-    this.userId = this.authService.getUserId();
-    // following info
-    this.followService.getMessageNotificationFollowed(this.userId);
-    this.followSubFollowers = this.followService
-      .getInfoFollowUpdateListener()
-      .subscribe((followers: Follow[]) => {
-        this.followers = followers;
-      });
-  }
-}
-
-@Component({
   selector: 'followed-history-template',
   templateUrl: './followed-template-history.component.html',
   styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
@@ -138,7 +110,7 @@ export class FollowedTemplateComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.followService
-      .getInfoMutualsUpdateListener()
+      .getInfoMutualUpdateListener()
       .subscribe((mutuals: Follow[]) => {
         this.mutuals = mutuals;
         console.log('wanderer', this.mutuals);

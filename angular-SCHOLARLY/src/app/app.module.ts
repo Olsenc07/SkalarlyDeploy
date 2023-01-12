@@ -36,11 +36,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import {
-  IgxTimePickerModule,
-  IgxInputGroupModule,
-  IgxIconModule,
-} from 'igniteui-angular';
+
 import { routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -69,7 +65,6 @@ import { EditProfilePurSpringComponent } from './edit-profile/edit-profile.compo
 import {
   ActivityHistoryComponent,
   CommentHistoryComponent,
-  FollowedHistoryComponent,
   FollowedTemplateComponent,
 } from './activity-history/history.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
@@ -163,7 +158,6 @@ import { ErrorInterceptor } from './error-interceptor';
     EditProfilePurSpringComponent,
     ActivityHistoryComponent,
     CommentHistoryComponent,
-    FollowedHistoryComponent,
     FollowedTemplateComponent,
     GroupChatsComponent,
     MainPagesComponent,
@@ -239,9 +233,6 @@ import { ErrorInterceptor } from './error-interceptor';
     MatSnackBarModule,
     MatProgressSpinnerModule,
     ScrollingModule,
-    IgxTimePickerModule,
-    IgxInputGroupModule,
-    IgxIconModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
