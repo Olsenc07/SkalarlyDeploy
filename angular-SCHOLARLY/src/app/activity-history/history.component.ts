@@ -116,6 +116,7 @@ export class FollowedTemplateComponent implements OnInit {
       .getInfoFollowUpdateListener()
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
+        console.log('my secret', this.mutuals);
       });
   }
 }
