@@ -45,9 +45,9 @@ await userInfo.findOne({Creator: req.query.userId})
                 });
 // If user is subscribed then send notififaction S.W
 try{
-    // 
-     Subscription.findOne({Creator: otherUserId.id}).then
-    ((checking) => {
+    console.log('better off with her', otherUserId.id)
+     Subscription.findOne({Creator: otherUserId.id})
+     .then((checking) => {
 if(checking !== null){
         Subscription.findOne({Creator: otherUserId.id})
         .then(subscriber => {

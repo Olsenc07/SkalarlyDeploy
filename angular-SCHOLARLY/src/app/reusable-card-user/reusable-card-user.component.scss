@@ -24,8 +24,14 @@
 .center-{
   font-size: medium;
     // font-family: 'Poppins',sans-serif;
-    flex-direction: column;
     font-family: 'Cormorant Garamond',serif;
+}
+.center-Space{
+  font-size: medium;
+  display: flex;
+  // font-family: 'Poppins',sans-serif;
+  flex-direction: column;
+  font-family: 'Cormorant Garamond',serif;
 }
 .center__ {
   color: cornflowerblue;
@@ -121,6 +127,11 @@
   align-items: center;
   margin: 1%;
   justify-content: center;
+}
+.rowSpace {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 .row1 {
   display: flex;
