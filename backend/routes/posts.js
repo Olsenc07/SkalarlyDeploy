@@ -115,8 +115,8 @@ router.post("",
     .then(documents => {
         console.log('home1 ', req.files)
 
-        if (req.files.upload){
-             cloudinary.uploader.upload(req.files.upload, {
+        if (req.files['upload'][0]){
+             cloudinary.uploader.upload(req.files['upload'][0], {
                 folder:'Posts'
              })
              .then(result => {
@@ -163,8 +163,8 @@ router.post("",
             })
         } 
         
-        if (req.files.video){
-            cloudinary.uploader.upload(req.files.video, {
+        if (req.files['video'][0]){
+            cloudinary.uploader.upload(req.files['video'][0], {
                folder:'Posts'
             })
             .then(result => {
