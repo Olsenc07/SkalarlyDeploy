@@ -105,7 +105,11 @@ const up = multer({ storage: storage, limits})
 // Post additions
 router.post("", 
     checkAuth,
-    up.single('upload'),
+    up.fields
+    [
+        { name: 'upload', maxCount: 3 },
+        { name: 'video', maxCount: 3 }
+      ],
     (req, res) => {
     UserInfo.findOne({Creator:req.query.userId })
     .then(documents => {
