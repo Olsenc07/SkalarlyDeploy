@@ -81,7 +81,7 @@
       </div>
       <!-- When video has value -->
       <div class="contents" *ngIf="form.get('video').valid" >
-        <video class="imgBox" [ngClass]="form.get('video').value ? 'show' : 'hide' " controls muted>
+        <video class="imgBox" [ngClass]="form.get('video').value ? 'show' : 'hide' " autoplay controls muted>
           <source [src]="urlVideo" class="img" >
         </video>
       </div>
@@ -90,9 +90,9 @@
 
 <!-- Step 1 -->
 
-    <div class="centerL" *ngIf="postDescription.value || form.get('upload').value ">Where do you want your post?
+    <div class="centerL" *ngIf="postDescription.value || form.get('upload').value || form.get('video').value ">Where do you want your post?
     </div>
-    <div class="selection_styles" *ngIf="postDescription.value || form.get('upload').value ">
+    <div class="selection_styles" *ngIf="postDescription.value || form.get('upload').value || form.get('video').value">
       <mat-tab-group class="btmPad" [selectedIndex]="selectedIndex">
         <mat-tab label="Step 1: Choose from the main categories" disabled>
           <mat-selection-list #options [multiple]="false">
