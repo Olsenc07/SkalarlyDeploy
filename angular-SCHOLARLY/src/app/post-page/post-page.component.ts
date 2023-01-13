@@ -217,11 +217,12 @@ export class PostPageComponent implements OnInit, OnDestroy {
   onImagePickedVideo(event: Event): any {
     const reader = new FileReader();
     reader.onload = () => {
+      const file = (event.target as HTMLInputElement).files[0];
+      this.form.patchValue({ video: file });
       this.urlVideo = reader.result as string;
       console.log('watch it', this.urlVideo);
-      const file = (event.target as HTMLInputElement).files[0];
       document.getElementById('fileInputVideo');
-      this.form.patchValue({ video: file });
+
       this.form.get('video').updateValueAndValidity();
       const blobURL = URL.createObjectURL(file);
       document.querySelector('video').src = blobURL;
