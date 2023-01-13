@@ -102,66 +102,67 @@ router.get("/personal", async(req, res, next) => {
 
 });
 const up = multer({ storage: storage, limits})
+const cpUpload = up.fields
+[
+    { name: 'upload', maxCount: 1 },
+    { name: 'video', maxCount: 1 }
+  ]
 // Post additions
 router.post("", 
     checkAuth,
-    up.fields
-    [
-        { name: 'upload', maxCount: 1 },
-        { name: 'video', maxCount: 1 }
-      ],
+    cpUpload,
     (req, res) => {
     UserInfo.findOne({Creator:req.query.userId })
     .then(documents => {
         console.log('home1 ', req.files)
 
-        // if (req.files['upload'][0]){
-        //      cloudinary.uploader.upload(req.files['upload'][0], {
-        //         folder:'Posts'
-        //      })
-        //      .then(result => {
-        //     // up.single('upload')
-        //     var post = new Post({
-        //         Username: documents.username,
-        //         Name: documents.name,
-        //         ProfilePicPath: documents.ProfilePicPath,
-        //         Title: req.body.Title,
-        //         postDescription: req.body.postDescription,
-        //         postLocation: req.body.postLocation,
-        //         LocationEvent: req.body.LocationEvent,
-        //         time: req.body.time,
-        //         timeE: req.body.timeE,
-        //         // timeEditAfter: req.body.timeEditAfter,
-        //         // timeEditAfter2: req.body.timeEditAfter2,
-        //         date: req.body.date,
-        //         dateE: req.body.dateE,
-        //         gender: req.body.gender,
-        //         live: req.body.live,
-        //         paymentService: req.body.paymentService,
-        //         nopaymentService: req.body.nopaymentService,
-        //         virtual: req.body.virtual,
-        //         event: req.body.event,
-        //         ImagePath: result.secure_url,
-        //         VideoPath: '',
-        //         cloudinary_id: result.public_id,
-        //         Creator: req.userData.userId
-        //     });
-        //     post.save().then(createdPost => {
-        //         res.status(201).json({
-        //             message: 'Post added successfully',
-        //             postId: {
-        //                 id: createdPost._id,
-        //                 ...createdPost
-        //             } 
-        //         });
-        //     })
-        //     .catch(error => {
-        //         res.status(500).json({
-        //             message: 'Creating a post failed!'
-        //         });
-        //      })
-        //     })
-        // } 
+        if (req.files['upload'][0]){
+             cloudinary.uploader.upload(req.files['upload'][0], {
+                folder:'Posts'
+             })
+             .then(result => {
+            // up.single('upload')
+            var post = new Post({
+                Username: documents.username,
+                Name: documents.name,
+                ProfilePicPath: documents.ProfilePicPath,
+                Title: req.body.Title,
+                postDescription: req.body.postDescription,
+                postLocation: req.body.postLocation,
+                LocationEvent: req.body.LocationEvent,
+                time: req.body.time,
+                timeE: req.body.timeE,
+                // timeEditAfter: req.body.timeEditAfter,
+                // timeEditAfter2: req.body.timeEditAfter2,
+                date: req.body.date,
+                dateE: req.body.dateE,
+                gender: req.body.gender,
+                live: req.body.live,
+                paymentService: req.body.paymentService,
+                nopaymentService: req.body.nopaymentService,
+                virtual: req.body.virtual,
+                event: req.body.event,
+                ImagePath: result.secure_url,
+                VideoPath: '',
+                cloudinary_id: result.public_id,
+                Creator: req.userData.userId
+            });
+            post.save().then(createdPost => {
+                res.status(201).json({
+                    message: 'Post added successfully',
+                    postId: {
+                        id: createdPost._id,
+                        ...createdPost
+                    } 
+                });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Creating a post failed!'
+                });
+             })
+            })
+        } 
         
         if (req.files['video'][0]){
             cloudinary.uploader.upload(req.files['video'][0], {
