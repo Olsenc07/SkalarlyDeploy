@@ -101,13 +101,12 @@ router.get("/personal", async(req, res, next) => {
 
 });
 const up = multer({ storage: storage, limits})
-// const cpUpload = up.fields
-// [
-//     { name: 'upload', maxCount: 1 },
-//     { name: 'video', maxCount: 1 }
-//   ]
 // Post additions
-router.post("", checkAuth,
+router.post("", checkAuth, up.fields
+[
+    { name: 'upload', maxCount: 1 },
+    { name: 'video', maxCount: 1 }
+  ],
     async(req, res) => {
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
