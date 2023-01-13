@@ -80,7 +80,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   userId: string;
 
   url: string;
-  urlVideo: string;
+  urlVideo;
 
   selectedIndex = 0;
   selectedIndexPost = 0;
@@ -216,17 +216,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   onImagePickedVideo(event: Event): any {
     const reader = new FileReader();
+    const file = (event.target as HTMLInputElement).files[0];
     reader.onload = () => {
-      const file = (event.target as HTMLInputElement).files[0];
-      this.form.patchValue({ video: file });
-      this.urlVideo = reader.result as string;
+      reader.readAsDataURL(file);
+      this.urlVideo = (event.target as FileReader).result;
       console.log('watch it', this.urlVideo);
-      document.getElementById('fileInputVideo');
-
-      this.form.get('video').updateValueAndValidity();
-      const blobURL = URL.createObjectURL(file);
-      document.querySelector('video').src = blobURL;
-      console.log('living it up', blobURL);
     };
     // reader.readAsDataURL(file);
   }

@@ -71,14 +71,7 @@
               (change)="onImagePickedVideo($event)" >
           </div>
         </button>
-        <script>
-          document.getElementById("fileInputVideo")
-          .onchange = function(event) {
-            let file = event.target.files[0];
-            let blobURL = URL.createObjectURL(file);
-            document.querySelector("video").src = blobURL;
-          }
-          </script>
+
       </div>
     </div>
       <!-- Only when upload holds a value -->
