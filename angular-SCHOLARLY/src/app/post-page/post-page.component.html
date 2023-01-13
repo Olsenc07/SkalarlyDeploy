@@ -80,7 +80,7 @@
         </div>
       </div>
       <!-- When video has value -->
-      <video class="contents" *ngIf="form.get('video').valid"  autoplay muted>
+      <video class="contents" *ngIf="form.get('video').valid" controls muted>
         <div class="imgBox" [ngClass]="form.get('video').value ? 'show' : 'hide' ">
           <source [src]="urlVideo" class="img" >
         </div>
