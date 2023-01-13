@@ -110,7 +110,6 @@ router.post("", checkAuth, files,
     async(req, res) => {
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home1 ', req.files['upload'][0])
         console.log('home2 ', req.files['video'][0])
         console.log('home3 ', req.files['video'])
 
@@ -121,7 +120,7 @@ router.post("", checkAuth, files,
                 folder:'Posts'
              })
              .then(result => {
-            // up.single('upload')
+console.log('upload',result)
             var post = new Post({
                 Username: documents.username,
                 Name: documents.name,
@@ -170,7 +169,8 @@ router.post("", checkAuth, files,
                folder:'Posts'
             })
             .then(result => {
-           // up.single('upload')
+                console.log('video',result)
+
            var post = new Post({
                Username: documents.username,
                Name: documents.name,
