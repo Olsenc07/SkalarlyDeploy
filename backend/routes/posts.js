@@ -111,8 +111,8 @@ const cpUpload = up.fields
 router.post("", 
     checkAuth,
     cpUpload,
-    (req, res) => {
-    UserInfo.findOne({Creator:req.query.userId })
+    async(req, res) => {
+    await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
         console.log('home1 ', req.files)
 
