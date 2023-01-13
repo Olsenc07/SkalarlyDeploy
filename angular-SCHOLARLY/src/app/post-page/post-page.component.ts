@@ -247,6 +247,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
         validators: [Validators.required],
         asyncValidators: [mimeType],
       }),
+      video: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
     });
 
     this.searchOptions = this.searchListService.getSearchOptions();
@@ -355,11 +359,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
 
       this.virtual.value,
       this.event.value,
-      this.form.get('upload').value
-    );
-    console.log('energy', this.timeEdit.split());
-    console.log('energy 2', this.timeEditAfter);
+      this.form.get('upload').value,
+      this.form.get('video').value
 
+    );
     this.router.navigate(['/main/:'], {
       queryParams: { category: this.postLocation.value },
     });

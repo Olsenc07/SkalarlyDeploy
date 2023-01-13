@@ -24,7 +24,9 @@ export interface Post {
   virtual: string;
   event: string;
   upload: File;
+  video: File;
   ImagePath: string;
+  VideoPath: string;
   Creator: string;
   // User info
   Username: string;
@@ -72,6 +74,7 @@ export class PostService {
               virtual: post.virtual,
               event: post.event,
               ImagePath: post.ImagePath,
+              VideoPath: post.VideoPath,
               Creator: post.Creator,
             };
           });
@@ -111,6 +114,7 @@ export class PostService {
               virtual: post.virtual,
               event: post.event,
               ImagePath: post.ImagePath,
+              VideoPath: post.VideoPath,
               Creator: post.Creator,
             };
           });
@@ -150,6 +154,7 @@ export class PostService {
               virtual: post.virtual,
               event: post.event,
               ImagePath: post.ImagePath,
+              VideoPath: post.VideoPath,
               Creator: post.Creator,
             };
           });
@@ -190,6 +195,7 @@ export class PostService {
               virtual: post.virtual,
               event: post.event,
               ImagePath: post.ImagePath,
+              VideoPath: post.VideoPath,
               Creator: post.Creator,
             };
           });
@@ -230,6 +236,7 @@ export class PostService {
               virtual: post.virtual,
               event: post.event,
               ImagePath: post.ImagePath,
+              VideoPath: post.VideoPath,
               Creator: post.Creator,
             };
           });
@@ -331,6 +338,7 @@ export class PostService {
     virtual?: string,
     event?: string,
     upload?: File,
+    video?: File,
     Creator?: string
   ): any {
     const postData = new FormData();
@@ -351,6 +359,7 @@ export class PostService {
     postData.append('virtual', virtual);
     postData.append('event', event);
     postData.append('upload', upload);
+    postData.append('video', video);
     postData.append('Creator', Creator);
     this.http
       .post<{ message: string; postId: Post }>(
@@ -384,7 +393,9 @@ export class PostService {
             virtual,
             event,
             upload,
+            video,
             ImagePath: responseData.postId.ImagePath,
+            VideoPath: responseData.postId.VideoPath,
             Creator,
           };
           // const id_ = responseData.postId;
