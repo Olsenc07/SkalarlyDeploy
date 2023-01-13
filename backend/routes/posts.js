@@ -110,7 +110,11 @@ router.post("", checkAuth, files,
     async(req, res) => {
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home1 ', req.files)
+        console.log('home1 ', req.files['upload'][0])
+        console.log('home2 ', req.files['video'][0])
+        console.log('home3 ', req.files['video'])
+
+
 
         if (req.files['upload'][0]){
              cloudinary.uploader.upload(req.files['upload'][0], {
@@ -161,6 +165,7 @@ router.post("", checkAuth, files,
         } 
         
         if (req.files['video'][0]){
+            console.log('wasted',req.files['video'][0]);
             cloudinary.uploader.upload(req.files['video'][0], {
                folder:'Posts'
             })
