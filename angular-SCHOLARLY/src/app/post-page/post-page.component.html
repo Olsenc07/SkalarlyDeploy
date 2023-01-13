@@ -67,7 +67,7 @@
         <button mat-fab  class="cameraIcon" (click)="uploadFileVideo()">
           <div class="material-icons Photo">
             video_call
-            <input type="file" #fileInputVideo id="fileInputVideo" name='video' class="uploadD"  accept="video/*"
+            <input type="file" #fileInputVideo id="fileInputVideo" name='video' class="uploadD"  accept=".mp4, .webm, .ogg"
               (change)="onImagePickedVideo($event)" >
           </div>
         </button>
@@ -82,7 +82,7 @@
       <!-- When video has value -->
       <div class="contents" *ngIf="form.get('video').valid" >
         <video class="imgBox" [ngClass]="form.get('video').value ? 'show' : 'hide' " autoplay controls muted>
-          <source [src]="urlVideo" class="img" type="video/*" >
+          <source [src]="urlVideo" class="img"  >
         </video>
       </div>
     </div>
@@ -124,7 +124,7 @@
     </mat-select>
     </mat-form-field>
           </mat-selection-list>
-          <div class="center__" >
+          <div class="center__">
           <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
           (click)="changeTabB()">Back</button>
           <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
@@ -132,7 +132,7 @@
         </div>
 </mat-tab>
 <mat-tab label="Step 3: Style Post" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value" disabled>
-  <div  class="center__"  >
+  <div  class="center__">
     <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
     (click)="changeTab3()">Back</button>
     <button id="nextBtn" mat-raised-button color="primary" type="button" class="final_step_btn" 

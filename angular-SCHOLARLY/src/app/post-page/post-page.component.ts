@@ -369,6 +369,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
 
   changeTab(): void {
     this.selectedIndexPost = this.selectedIndexPost === 1 ? 0 : 1;
+    console.log('math class', this.selectedIndexPost);
   }
   changeTab_(): void {
     this.selectedIndexPost = this.selectedIndexPost === 0 ? 1 : 0;
