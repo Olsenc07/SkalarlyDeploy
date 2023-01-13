@@ -216,7 +216,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   onImagePickedVideo(event: Event): any {
     const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ upload: file });
+    this.form.patchValue({ video: file });
     this.form.get('video').updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
@@ -224,7 +224,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       console.log(this.urlVideo);
     };
     reader.readAsDataURL(file);
-    console.log(file);
+    console.log('living it up', file);
   }
   clearUpload(): void {
     this.form.get('upload').setValue('');
@@ -361,7 +361,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.event.value,
       this.form.get('upload').value,
       this.form.get('video').value
-
     );
     this.router.navigate(['/main/:'], {
       queryParams: { category: this.postLocation.value },

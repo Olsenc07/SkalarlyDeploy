@@ -109,7 +109,7 @@ router.post("",
     (req, res) => {
     UserInfo.findOne({Creator:req.query.userId })
     .then(documents => {
-        console.timeLog('home', req.file)
+        console.log('home', req.file)
         if (req.file){
              cloudinary.uploader.upload(req.file.path, {
                 folder:'Posts'
