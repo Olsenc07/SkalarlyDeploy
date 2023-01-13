@@ -107,15 +107,16 @@ router.post("",
     checkAuth,
     up.fields
     [
-        { name: 'upload', maxCount: 3 },
-        { name: 'video', maxCount: 3 }
+        { name: 'upload', maxCount: 1 },
+        { name: 'video', maxCount: 1 }
       ],
     (req, res) => {
     UserInfo.findOne({Creator:req.query.userId })
     .then(documents => {
-        console.log('home', req.file)
-        if (req.file){
-             cloudinary.uploader.upload(req.file.path, {
+        console.log('home1 ', req.files)
+
+        if (req.files.upload){
+             cloudinary.uploader.upload(req.files.upload, {
                 folder:'Posts'
              })
              .then(result => {
@@ -141,6 +142,7 @@ router.post("",
                 virtual: req.body.virtual,
                 event: req.body.event,
                 ImagePath: result.secure_url,
+                VideoPath: '',
                 cloudinary_id: result.public_id,
                 Creator: req.userData.userId
             });
@@ -159,7 +161,56 @@ router.post("",
                 });
              })
             })
-        }else{
+        } 
+        
+        if (req.files.video){
+            cloudinary.uploader.upload(req.files.video, {
+               folder:'Posts'
+            })
+            .then(result => {
+           // up.single('upload')
+           var post = new Post({
+               Username: documents.username,
+               Name: documents.name,
+               ProfilePicPath: documents.ProfilePicPath,
+               Title: req.body.Title,
+               postDescription: req.body.postDescription,
+               postLocation: req.body.postLocation,
+               LocationEvent: req.body.LocationEvent,
+               time: req.body.time,
+               timeE: req.body.timeE,
+               // timeEditAfter: req.body.timeEditAfter,
+               // timeEditAfter2: req.body.timeEditAfter2,
+               date: req.body.date,
+               dateE: req.body.dateE,
+               gender: req.body.gender,
+               live: req.body.live,
+               paymentService: req.body.paymentService,
+               nopaymentService: req.body.nopaymentService,
+               virtual: req.body.virtual,
+               event: req.body.event,
+               ImagePath: '',
+               VideoPath: result.secure_url,
+               cloudinary_id: result.public_id,
+               Creator: req.userData.userId
+           });
+           post.save().then(createdPost => {
+               res.status(201).json({
+                   message: 'Post added successfully',
+                   postId: {
+                       id: createdPost._id,
+                       ...createdPost
+                   } 
+               });
+           })
+           .catch(error => {
+               res.status(500).json({
+                   message: 'Creating a post failed!'
+               });
+            })
+           })
+       }
+        else{
             var post = new Post({
                 Username: documents.username,
                 Name: documents.name,
