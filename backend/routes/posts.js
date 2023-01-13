@@ -8,7 +8,6 @@ const Comment = require('/app/backend/models/comment');
 const webpush = require('web-push');
 const cloudinary = require('cloudinary').v2
 const checkAuth = require('/app/backend/middleware/check-auth');
-const { route } = require('./messages');
 const router = express.Router();
 publicVapidKey = process.env.vapidPublic;
 privateVapidKey = process.env.vapidPrivate
@@ -27,7 +26,7 @@ cloudinary.config({
     api_key: process.env.api_key, 
     api_secret: process.env.api_secret,
     // Untag when https
-    // secure: true
+    secure: true
   });
 
 
@@ -252,7 +251,11 @@ router.post("",
         }
            
     })
-
+    .catch(error => {
+        res.status(500).json({
+            message: 'Posting failed!'
+        });
+    });
 });
 
 // Posts deleting
