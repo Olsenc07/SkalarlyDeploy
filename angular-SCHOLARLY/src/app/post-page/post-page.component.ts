@@ -376,6 +376,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   changeTab1(): void {
     this.selectedIndex = this.selectedIndex === 1 ? 0 : 1;
+    console.log('physics class1', this.selectedIndex);
   }
   changeTabB(): void {
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
@@ -383,6 +384,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   changeTab2(): void {
     this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
+    console.log('physics class', this.selectedIndex);
   }
   changeTab3(): void {
     this.selectedIndex = this.selectedIndex === 2 ? 1 : 2;

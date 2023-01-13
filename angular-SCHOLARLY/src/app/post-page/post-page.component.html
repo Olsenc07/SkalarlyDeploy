@@ -81,8 +81,8 @@
       </div>
       <!-- When video has value -->
       <div class="contents" *ngIf="form.get('video').valid" >
-        <video class="imgBox" [ngClass]="form.get('video').value ? 'show' : 'hide' " autoplay controls muted>
-          <source [src]="urlVideo" class="img"  >
+        <video class="imgBox" [ngClass]="form.get('video').value ? 'show' : 'hide' " autoplay controls muted playsinline>
+          <source [src]="urlVideo" class="img" type="video/*" >
         </video>
       </div>
     </div>
@@ -131,7 +131,7 @@
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>
-<mat-tab label="Step 3: Style Post" *ngIf="(postDescription.value || form.get('upload').value) && postLocation.value" disabled>
+<mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && postLocation.value" disabled>
   <div  class="center__">
     <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
     (click)="changeTab3()">Back</button>
