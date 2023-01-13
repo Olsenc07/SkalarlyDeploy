@@ -150,6 +150,11 @@
   
           <input type="image" (click)="imgClick(post.ImagePath)" class="middle-card" src="{{post.ImagePath}}" id="myImg">
         </div>
+        <!-- video -->
+        <video class="upload" *ngIf="post.VideoPath" autoplay muted>
+  
+          <source class="middle-card" src="{{post.VideoPath}}" id="myImg">
+        </video>
                   <!-- The Modal -->
 <div id="myModal" class="modal">
 

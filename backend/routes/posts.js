@@ -101,15 +101,13 @@ router.get("/personal", async(req, res, next) => {
 
 });
 const up = multer({ storage: storage, limits})
-const cpUpload = up.fields
-[
-    { name: 'upload', maxCount: 1 },
-    { name: 'video', maxCount: 1 }
-  ]
+// const cpUpload = up.fields
+// [
+//     { name: 'upload', maxCount: 1 },
+//     { name: 'video', maxCount: 1 }
+//   ]
 // Post additions
-router.post("", 
-    checkAuth,
-    cpUpload,
+router.post("", checkAuth,
     async(req, res) => {
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
@@ -231,7 +229,9 @@ router.post("",
                 nopaymentService: req.body.nopaymentService,
                 virtual: req.body.virtual,
                 event: req.body.event,
-          
+                ImagePath: '',
+                VideoPath: '',
+                cloudinary_id: '',
                 Creator: req.userData.userId
             });
             post.save().then(createdPost => {
