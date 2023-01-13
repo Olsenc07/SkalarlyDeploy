@@ -219,10 +219,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
     const file = (event.target as HTMLInputElement).files[0];
     reader.onload = () => {
       reader.readAsDataURL(file);
-      this.urlVideo = (event.target as FileReader).result;
+      this.urlVideo = reader.result as string;
       console.log('watch it', this.urlVideo);
     };
-    // reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
+    console.log(file);
   }
   clearUpload(): void {
     this.form.get('upload').setValue('');
