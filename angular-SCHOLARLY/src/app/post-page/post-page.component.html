@@ -54,6 +54,7 @@
 
       <div class="row__"> Recommended Aspect Ratio 4:3</div>
       <div class="rowP">
+      <div class="rowP">
         <button mat-fab  class="cameraIcon" (click)="uploadFile()">
           <div class="material-icons Photo">
             add_a_photo
@@ -71,6 +72,7 @@
           </div>
         </button>
       </div>
+    </div>
       <!-- Only when upload holds a value -->
       <div class="contents" *ngIf="form.get('upload').valid">
         <div class="imgBox" [ngClass]="form.get('upload').value ? 'show' : 'hide' ">
@@ -78,9 +80,9 @@
         </div>
       </div>
       <!-- When video has value -->
-      <video class="contents" *ngIf="form.get('video').valid">
+      <video class="contents" *ngIf="form.get('video').valid" controls autoplay muted>
         <div class="imgBox" [ngClass]="form.get('video').value ? 'show' : 'hide' ">
-          <img [src]="urlVideo" class="img" >
+          <source [src]="urlVideo" class="img" >
         </div>
       </video>
     </div>
