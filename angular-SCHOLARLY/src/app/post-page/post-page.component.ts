@@ -215,16 +215,21 @@ export class PostPageComponent implements OnInit, OnDestroy {
     console.log(file);
   }
   onImagePickedVideo(event: Event): any {
-    const file = (event.target as HTMLInputElement).files[0];
-    this.form.patchValue({ video: file });
-    this.form.get('video').updateValueAndValidity();
-    const reader = new FileReader();
-    reader.onload = () => {
-      this.urlVideo = reader.result as string;
-      console.log(this.urlVideo);
+    // const file = (event.target as HTMLInputElement).files[0];
+    // this.form.patchValue({ video: file });
+    // this.form.get('video').updateValueAndValidity();
+    // const reader = new FileReader();
+    // reader.onload = () => {
+    //   this.urlVideo = reader.result as string;
+    //   console.log(this.urlVideo);
+    // };
+    // reader.readAsDataURL(file);
+    // console.log('living it up', file);
+    document.getElementById('video-preview').onchange = function (event) {
+      const file = (event.target as HTMLInputElement).files[0];
+      const blobURL = URL.createObjectURL(file);
+      document.querySelector('video').src = blobURL;
     };
-    reader.readAsDataURL(file);
-    console.log('living it up', file);
   }
   clearUpload(): void {
     this.form.get('upload').setValue('');
