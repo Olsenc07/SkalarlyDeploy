@@ -37,12 +37,15 @@
       <div class="centerD">
          Upload Post
         <div [ngClass]="form.get('upload').value ? 'Show' : 'hide' ">
-          <button type="button" mat-icon-button class="trash" color="primary" (click)="clearUpload()">
+          <button type="button" mat-icon-button class="trash" 
+          color="primary" (click)="clearUpload()" matTooltip="Clear Image">
             <i class="far fa-times-circle"></i>
           </button>
         </div>
+      <div class="Or">Or</div>  
         <div [ngClass]="form.get('video').value ? 'Show' : 'hide' ">
-          <button type="button" mat-icon-button class="trash" color="primary" (click)="clearUploadVideo()">
+          <button type="button" mat-icon-button class="trash" 
+          color="primary" (click)="clearUploadVideo()" matTooltip="Clear Video">
             <i class="far fa-times-circle"></i>
           </button>
         </div>

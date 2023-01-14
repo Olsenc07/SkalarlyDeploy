@@ -209,10 +209,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     const reader = new FileReader();
     reader.onload = () => {
       this.url = reader.result as string;
-      console.log(this.url);
     };
-    reader.readAsDataURL(file);
-    console.log(file);
   }
   onImagePickedVideo(event: Event): any {
     const reader = new FileReader();
@@ -222,8 +219,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
     reader.onload = () => {
       this.urlVideo = reader.result as string;
     };
-    reader.readAsDataURL(file);
-    console.log('preaching it', file);
   }
   clearUpload(): void {
     this.form.get('upload').setValue('');
