@@ -534,6 +534,9 @@ export class SignupComponent implements OnInit {
   //   this.codeInput.nativeElement.value = '';
   //   this.CodeCompleted.setValue('');
   // }
+  uploadFileVideo(): any {
+    document.getElementById('fileInputVideo').click();
+  }
   clearUploadVideo(): void {
     this.form.get('video').setValue('');
   }

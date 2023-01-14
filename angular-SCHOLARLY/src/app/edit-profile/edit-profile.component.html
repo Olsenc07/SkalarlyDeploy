@@ -331,7 +331,7 @@
     </div>
 
     <div class="rowPSpace">
-    <div class="rowP_" *ngIf="!form.get('video').value">
+    <div class="rowP__" *ngIf="!form.get('video').value" matTooltip="Max 10MB Image">
       <button class="cameraIcon" mat-fab  (click)="uploadFile()">
         <div class="material-icons Photo">
           add_a_photo
@@ -342,7 +342,7 @@
       </button>
     </div>
 
-    <div class="rowP_" *ngIf="!showCase.value">
+    <div class="rowP__" *ngIf="!showCase.value" matTooltip="Max 100MB Video">
     <button mat-fab  class="cameraIcon" (click)="uploadFileVideo()">
       <div class="material-icons Photo">
         video_call
@@ -369,14 +369,14 @@
     </video>
   </div>
 </div>
-  <div class="doneShowCase" *ngIf="!form.get('video').value">
+  <div class="doneShowCase" *ngIf="showCase.value">
     <button mat-raised-button color="primary" [disabled]="!showCase.value" routerLink="/profile" class="button"
       (click)="onSubmitShowCase()">
    Update
     </button>
   </div>
   <!-- Video -->
-  <div class="doneShowCase" *ngIf="!showCase.value">
+  <div class="doneShowCase" *ngIf="form.get('video').value">
     <button mat-raised-button color="primary" [disabled]="!form.get('video').value" routerLink="/profile" class="button"
       (click)="onSubmitVideo()">
    Update

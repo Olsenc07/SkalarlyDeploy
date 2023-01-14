@@ -564,8 +564,15 @@
 .rowP_ {
   display: flex;
   justify-content: center;
-  color: #418bba;
+  // color: #418bba;
+  background-color: #0c46b8a1;
   margin-bottom: 1%;
+}
+.rowP__ {
+  display: flex;
+  justify-content: center;
+  margin:0% 1%;
+  background-color: #0c46b8a1;
 }
 .right-column {
   display: flex;
