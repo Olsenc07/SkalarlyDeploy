@@ -101,22 +101,22 @@ router.get("/personal", async(req, res, next) => {
 
 });
 const up = multer({ storage: storage, limits})
-const files = up.fields([
+const filesUp = up.fields([
     { name: 'upload', maxCount: 1 },
     { name: 'video', maxCount: 1 }
   ])
 // Post additions
-router.post("", checkAuth, files,
+router.post("", checkAuth, filesUp,
     async(req, res) => {
         console.log('in line', req.query.userId)
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home2 ',req.files['video'][0].destination)
+        console.log('home2 ',req.files['video'][0].path)
 
 
 
         if (req.files['upload'] !== undefined){
-             cloudinary.uploader.upload(req.files['upload'][0].destination, {
+             cloudinary.uploader.upload(req.files['upload'][0].path, {
                 folder:'Posts'
              })
              .then(result => {
@@ -167,7 +167,8 @@ console.log('upload',result)
         
         if (req.files['video'] !== undefined){
             console.log('wasted',req.files['video'][0].path);
-            cloudinary.uploader.upload(req.files['video'][0].destination, {
+            cloudinary.uploader.upload(req.files['video'][0].path, 
+            ObjectUtils.asMap("resource_type", "video"), {
                folder:'Posts'
             })
             .then(result => {
