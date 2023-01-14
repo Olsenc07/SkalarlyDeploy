@@ -108,11 +108,10 @@ const files = up.fields([
 // Post additions
 router.post("", checkAuth, files,
     async(req, res) => {
+        console.log('in line', req.query.userId)
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home2 ', req.files['video'][0].originalname)
-        console.log('home3 ', req.files['video'][0].path)
-
+        console.log('home2 ', req.files['video'][0])
         if (req.files['upload'][0]){
              cloudinary.uploader.upload(req.files['upload'][0], {
                 folder:'Posts'
