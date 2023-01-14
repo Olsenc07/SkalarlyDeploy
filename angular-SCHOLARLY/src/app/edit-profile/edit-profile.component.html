@@ -321,35 +321,65 @@
         (click)="clearPic1()">
         <i class="far fa-times-circle"></i>
       </button>
+      <div *ngIf="form.get('video').value && showCase.value" class="Or">Or</div>
+      <div [ngClass]="form.get('video').value ? 'show' : 'hide' ">
+        <button type="button" mat-icon-button class="trash" 
+        color="primary" (click)="clearUploadVideo()" matTooltip="Clear Video">
+          <i class="far fa-times-circle"></i>
+        </button>
+      </div>
     </div>
 
     <div class="rowP_">
       <button class="cameraIcon" mat-fab  (click)="uploadFile()">
         <div class="material-icons Photo">
           add_a_photo
-
           <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
-            (change)="imagePreview($event)"  [formControl]="showCase" name="showCase"  class="hide"
+            (change)="imagePreview($event)"  [formControl]="showCase" name="showCase"  
             >
-           
         </div>
       </button>
+    </div>
+    <div>Or</div>
+    <div class="rowP_">
+    <button mat-fab  class="cameraIcon" (click)="uploadFileVideo()">
+      <div class="material-icons Photo">
+        video_call
+        <input type="file" #fileInputVideo id="fileInputVideo" name='video' class="uploadD"  accept=".mp4, .webm, .ogg"
+          (change)="onImagePickedVideo($event)" >
+      </div>
+    </button>
     </div>
   </div>
 
 
 
-
+<!-- Image preview -->
+<div class="rowPSpace">
   <div class="imageBox" [ngClass]="showCase.value ? 'show' : 'hide' ">
     <img [src]="url" id="firstP" class="imagePreview" [ngClass]="showCase.value ? 'show' : 'hide' ">
   </div>
 
+  <!-- Video preview -->
+  <div class="imageBox" *ngIf="form.get('video').valid" >
+    <video controls autoplay muted [src]="urlVideo"
+    class="imagePreview" id="video-preview" [ngClass]="form.get('video').value ? 'show' : 'hide' "  >
+    </video>
+  </div>
+</div>
   <div class="doneShowCase">
-    <button mat-raised-button color="primary" [disabled]="!showCase.value" routerLink="/profile" class="button"
+    <button mat-raised-button color="primary" [disabled]="!showCase.value && !form.get('video').value" routerLink="/profile" class="button"
       (click)="onSubmitShowCase()">
    Update
     </button>
   </div>
+  <!-- Video -->
+  <!-- <div class="doneShowCase">
+    <button mat-raised-button color="primary" [disabled]="!video.value" routerLink="/profile" class="button"
+      (click)="onSubmitVideo()">
+   Update
+    </button>
+  </div> -->
 </div>
 
 

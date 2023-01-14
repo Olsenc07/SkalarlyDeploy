@@ -42,7 +42,7 @@
             <i class="far fa-times-circle"></i>
           </button>
         </div>
-      <div class="Or">Or</div>  
+      <div class="Or" *ngIf="form.get('video').value && form.get('upload').value">Or</div>  
         <div [ngClass]="form.get('video').value ? 'Show' : 'hide' ">
           <button type="button" mat-icon-button class="trash" 
           color="primary" (click)="clearUploadVideo()" matTooltip="Clear Video">
@@ -66,6 +66,7 @@
           </div>
         </button>
       </div>
+      <div class="Or">Or</div>  
       <div class="rowP_">
         <button mat-fab  class="cameraIcon" (click)="uploadFileVideo()">
           <div class="material-icons Photo">

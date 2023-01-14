@@ -58,6 +58,7 @@ export class EditProfileComponent implements OnInit {
   // Showcase
   showCasePreview: any = '';
   url: string;
+  urlVideo: string;
   urlPP: string;
   img!: CloudinaryImage;
   clicked = false;
@@ -261,6 +262,9 @@ export class EditProfileComponent implements OnInit {
   uploadFileP(): any {
     document.getElementById('fileInputP').click();
   }
+  uploadFileVideo(): any {
+    document.getElementById('fileInputVideo').click();
+  }
   onImgChange(event: any): void {
     this.imgChangeEvent = event;
   }
@@ -353,7 +357,16 @@ export class EditProfileComponent implements OnInit {
       };
     }
   }
-
+  // Video
+  onImagePickedVideo(event: Event): any {
+    const reader = new FileReader();
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({ video: file });
+    this.form.get('video').updateValueAndValidity();
+    reader.onload = () => {
+      this.urlVideo = reader.result as string;
+    };
+  }
   // private _filter(value: string): string[] {
   //   const filterValue = value.toLowerCase();
 
@@ -384,6 +397,10 @@ export class EditProfileComponent implements OnInit {
         asyncValidators: [mimeType],
       }),
       profilePic: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+      video: new FormControl(null, {
         validators: [Validators.required],
         asyncValidators: [mimeType],
       }),
@@ -445,9 +462,10 @@ export class EditProfileComponent implements OnInit {
 
   clearPic1(): void {
     this.showCase.setValue('');
-    document.getElementById('firstP').removeAttribute('src');
   }
-
+  clearUploadVideo(): void {
+    this.form.get('video').setValue('');
+  }
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
   }
@@ -517,7 +535,10 @@ export class EditProfileComponent implements OnInit {
   }
 
   onSubmitShowCase(): any {
-    this.showCaseService.addShowCase(this.form.get('showCase').value);
+    this.showCaseService.addShowCase(
+      this.form.get('showCase').value,
+      this.form.get('video').value
+    );
     this.snackBar.open('Showcase Saved!', 'Nice!', {
       duration: 2000,
     });

@@ -526,18 +526,23 @@ router.get("/showCasesPersonal", async(req, res, next) => {
     });
 });
 // showCase additions
-const show = multer({ storage: storage, limits});
+const show = multer({ storage: storage, limits})
+const files_ = show.fields([
+    { name: 'showCase', maxCount: 1 },
+    { name: 'video', maxCount: 1 }
+  ])
 router.post("/showCases", 
     checkAuth,
-    show.single('showCase'),
+    files_,
     async(req, res) => {
-
-        await cloudinary.uploader.upload(req.file.path, {
+        if (req.files['showCase'][0]){
+        await cloudinary.uploader.upload(req.files['showCase'][0], {
            folder:'ShowCase'
         })
         .then(result => {
             var ShowCase = new showCase({
                 ShowCasePath: result.secure_url,
+                VideoPath:'',
                 cloudinary_id: result.public_id,
                 Creator: req.userData.userId
             });
@@ -556,6 +561,34 @@ router.post("/showCases",
                 });
             });
         }); 
+    }
+    if (req.files['video'][0]){
+        await cloudinary.uploader.upload(req.files['video'][0], {
+           folder:'ShowCase'
+        })
+        .then(result => {
+            var ShowCase = new showCase({
+                ShowCasePath: '',
+                VideoPath: result.secure_url,
+                cloudinary_id: result.public_id,
+                Creator: req.userData.userId
+            });
+         ShowCase.save().then(createdPost => {
+                res.status(201).json({
+                    message: 'showCase added successfully',
+                    postId: {
+                        id: createdPost._id,
+                        ...createdPost
+                    } 
+                });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Creating a showCase failed!'
+                });
+            });
+        }); 
+    }
 });
 
 // showCase deleting

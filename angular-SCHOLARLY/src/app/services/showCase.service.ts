@@ -8,7 +8,10 @@ export interface ShowCase {
   id?: string;
   Creator?: string;
   showCase?: File;
+  video?: File;
   ShowCasePath?: string;
+  VideoPath?: string;
+
   // ShowCasePath?: string;
 }
 
@@ -32,6 +35,7 @@ export class ShowCaseService {
             return {
               id: showCase._id,
               ShowCasePath: showCase.ShowCasePath,
+              VideoPath: showCase.VideoPath,
               Creator: showCase.Creator,
             };
           });
@@ -54,6 +58,7 @@ export class ShowCaseService {
             return {
               id: showCase._id,
               ShowCasePath: showCase.ShowCasePath,
+              VideoPath: showCase.VideoPath,
               Creator: showCase.Creator,
             };
           });
@@ -69,9 +74,10 @@ export class ShowCaseService {
     return this.postsUpdated.asObservable();
   }
   // Adding post
-  addShowCase(showCase?: File, Creator?: string): any {
+  addShowCase(showCase?: File, video?: File, Creator?: string): any {
     const postData = new FormData();
     postData.append('showCase', showCase);
+    postData.append('video', video);
     postData.append('Creator', Creator);
     this.http
       .post<{ message: string; postId: ShowCase }>(
@@ -83,7 +89,10 @@ export class ShowCaseService {
           const postId: ShowCase = {
             id: responseData.postId.id,
             showCase,
+            video,
             ShowCasePath: responseData.postId.ShowCasePath,
+            VideoPath: responseData.postId.VideoPath,
+
             // ShowCasePath,
             Creator,
           };
