@@ -115,7 +115,7 @@ router.post("", checkAuth, files,
         console.log('home3 ', req.files['upload'])
 
         if (req.files['upload'] !== undefined){
-             cloudinary.uploader.upload(req.files['upload'][0], {
+             cloudinary.uploader.upload(req.files['upload'][0].path, {
                 folder:'Posts'
              })
              .then(result => {
@@ -165,8 +165,8 @@ console.log('upload',result)
         }
         
         if (req.files['video'] !== undefined){
-            console.log('wasted',req.files['video'][0].path);
-            cloudinary.uploader.upload(req.files['video'][0].path, {
+            console.log('wasted',req.files['video']);
+            cloudinary.uploader.upload(req.files['video'], {
                folder:'Posts'
             })
             .then(result => {

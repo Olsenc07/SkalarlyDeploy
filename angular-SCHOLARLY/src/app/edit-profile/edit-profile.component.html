@@ -331,7 +331,7 @@
     </div>
 
     <div class="rowPSpace">
-    <div class="rowP_">
+    <div class="rowP_" *ngIf="!form.get('video').value">
       <button class="cameraIcon" mat-fab  (click)="uploadFile()">
         <div class="material-icons Photo">
           add_a_photo
@@ -341,8 +341,8 @@
         </div>
       </button>
     </div>
-    <div>Or</div>
-    <div class="rowP_">
+
+    <div class="rowP_" *ngIf="!showCase.value">
     <button mat-fab  class="cameraIcon" (click)="uploadFileVideo()">
       <div class="material-icons Photo">
         video_call
