@@ -166,9 +166,11 @@ console.log('upload',result)
         }
         
         if (req.files['video'] !== undefined){
-            console.log('wasted',req.files['video'][0].diskStorage);
+            console.log('wasted',req.file.path);
+            console.log('wasted',req.files['video'][0].destination);
+
             
-            cloudinary.uploader.upload(req.files['video'][0].diskStorage, 
+            cloudinary.uploader.upload(req.files['video'][0].destination, 
             ObjectUtils.asMap("resource_type", "video"), {
                folder:'Posts'
             })
