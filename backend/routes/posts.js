@@ -109,7 +109,7 @@ const video = multer({ storage: storage, limitsLarge})
 //   ])
   
 // Post additions
-router.post("", checkAuth, filesUp,
+router.post("", checkAuth,
 image.single('upload'),video.single('video'),
     async(req, res) => {
         console.log('in line', req.query.userId)
