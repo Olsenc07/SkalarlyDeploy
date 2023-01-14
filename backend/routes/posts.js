@@ -111,7 +111,7 @@ router.post("", checkAuth, filesUp,
         console.log('in line', req.query.userId)
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home2 ',req.files['video'][0].path)
+        console.log('home2 ',req.files['video'][0])
 
 
 
@@ -166,8 +166,10 @@ console.log('upload',result)
         }
         
         if (req.files['video'] !== undefined){
-            console.log('wasted',req.files['video'][0]);
-            cloudinary.uploader.upload(req.files['video'][0], 
+            console.log('wasted',req.files[0].path);
+            console.log('wasted',req.files.path);
+
+            cloudinary.uploader.upload(req.files[0].path, 
             ObjectUtils.asMap("resource_type", "video"), {
                folder:'Posts'
             })
