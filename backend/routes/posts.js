@@ -111,11 +111,12 @@ router.post("", checkAuth, files,
         console.log('in line', req.query.userId)
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-      
+        console.log('home2 ',req.files['video'][0].destination)
+
+
+
         if (req.files['upload'] !== undefined){
-            req.files.map ( data => {
-                console.log('bub', data)
-             cloudinary.uploader.upload(data.path, {
+             cloudinary.uploader.upload(req.files['upload'][0].destination, {
                 folder:'Posts'
              })
              .then(result => {
@@ -160,12 +161,13 @@ console.log('upload',result)
                 });
              })
             })
-        })
-    }
+        } else{
+            console.log('No Image')
+        }
+        
         if (req.files['video'] !== undefined){
-            req.files.map ( data => {
-                console.log('bub', data)
-            cloudinary.uploader.upload(data.path, {
+            console.log('wasted',req.files['video'][0].path);
+            cloudinary.uploader.upload(req.files['video'][0].destination, {
                folder:'Posts'
             })
             .then(result => {
@@ -211,7 +213,6 @@ console.log('upload',result)
                });
             })
            })
-            })
        }
        if ((req.files['upload'] && req.files['video']) === undefined){
             var post = new Post({
@@ -256,7 +257,7 @@ console.log('upload',result)
         }else{
             console.log('There was an image or video')
         }
-    
+           
     })
     .catch(error => {
         res.status(500).json({
