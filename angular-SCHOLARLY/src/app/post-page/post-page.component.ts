@@ -222,6 +222,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
     reader.onload = () => {
       const blobURL = URL.createObjectURL(file);
       document.querySelector('video').src = blobURL;
+      this.urlVideo = reader.result as string;
+
       console.log('watch it', blobURL);
     };
     reader.readAsDataURL(file);
