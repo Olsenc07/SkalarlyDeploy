@@ -57,7 +57,7 @@
 
       <div class="row__"> Recommended Aspect Ratio 4:3</div>
       <div class="rowPSpace">
-      <div class="rowP_" *ngIf="!form.get('video').value" matTooltip="Max 10MB">
+      <div class="rowP_" *ngIf="!form.get('video').value" matTooltip="Max 10MB Image">
         <button mat-fab  class="cameraIcon" (click)="uploadFile()">
           <div class="material-icons Photo">
             add_a_photo
@@ -67,7 +67,7 @@
         </button>
       </div>
 
-      <div class="rowP_" *ngIf="!form.get('upload').value" matTooltip="Max 100MB">
+      <div class="rowP_" *ngIf="!form.get('upload').value" matTooltip="Max 100MB Video">
         <button mat-fab  class="cameraIcon" (click)="uploadFileVideo()">
           <div class="material-icons Photo">
             video_call

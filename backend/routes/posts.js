@@ -114,7 +114,7 @@ image.single('upload'),
     async(req, res) => {
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home2 ',image.single('upload'))            
+         
             if(req.file){
              cloudinary.uploader.upload(req.file.path, {
                 folder:'Posts'
@@ -217,16 +217,10 @@ video.single('video'),
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
         console.log('home3 ',req.file.path)
-     
-        
-        // if (req.files['video'] !== undefined){
-            if (req.file) {
             console.log('wasted',req.file.path);
             cloudinary.uploader.upload(req.file.path, 
-                { resource_type: "video" },
-            {
-               folder:'Posts'
-            })
+                { resource_type: "video", folder:'Posts' }
+          )
             .then(result => {
                 console.log('video',result)
 
@@ -275,48 +269,7 @@ video.single('video'),
                 message: 'uploading video failed!'
             });
         })
-       }else{
-
-            var post = new Post({
-                Username: documents.username,
-                Name: documents.name,
-                ProfilePicPath: documents.ProfilePicPath,
-                Title: req.body.Title,
-                postDescription: req.body.postDescription,
-                postLocation: req.body.postLocation,
-                LocationEvent: req.body.LocationEvent,
-                time: req.body.time,
-                timeE: req.body.timeE,
-                // timeEditAfter: req.body.timeEditAfter,
-                // timeEditAfter2: req.body.timeEditAfter2,
-                date: req.body.date,
-                dateE: req.body.dateE,
-                gender: req.body.gender,
-                live: req.body.live,
-                paymentService: req.body.paymentService,
-                nopaymentService: req.body.nopaymentService,
-                virtual: req.body.virtual,
-                event: req.body.event,
-                ImagePath: '',
-                VideoPath: '',
-                cloudinary_id: '',
-                Creator: req.userData.userId
-            });
-            post.save().then(createdPost => {
-                res.status(201).json({
-                    message: 'Post added successfully',
-                    postId: {
-                        id: createdPost._id,
-                        ...createdPost
-                    } 
-                });
-            })
-            .catch(error => {
-                res.status(500).json({
-                    message: 'Creating a post failed!'
-                });
-            });
-        }
+     
            
     })
     .catch(error => {
