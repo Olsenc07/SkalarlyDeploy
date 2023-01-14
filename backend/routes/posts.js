@@ -223,6 +223,7 @@ video.single('video'),
             if (req.file) {
             console.log('wasted',req.file.path);
             cloudinary.uploader.upload(req.file.path, 
+                { resource_type: "video" },
             {
                folder:'Posts'
             })
