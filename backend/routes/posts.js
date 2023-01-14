@@ -112,7 +112,9 @@ router.post("", checkAuth, files,
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
         console.log('home2 ', req.files['video'][0])
-        if (req.files['upload']){
+        console.log('home3 ', req.files['upload'][0])
+
+        if (req.files['upload'][0]){
              cloudinary.uploader.upload(req.files['upload'][0], {
                 folder:'Posts'
              })
@@ -158,9 +160,11 @@ console.log('upload',result)
                 });
              })
             })
-        } 
+        } else{
+            console.log('No Image')
+        }
         
-        if (req.files['video']){
+        if (req.files['video'][0]){
             console.log('wasted',req.files['video'][0]);
             cloudinary.uploader.upload(req.files['video'][0], {
                folder:'Posts'
