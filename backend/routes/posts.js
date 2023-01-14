@@ -553,7 +553,7 @@ const video_ = multer({ storage: storage, limitsLarge})
 //   ])
 router.post("/showCases", 
     checkAuth,
-    image_,
+    image_.single('showCase'),
     async(req, res) => {
         if (req.file){
         await cloudinary.uploader.upload(req.file.path, {
@@ -588,11 +588,11 @@ router.post("/showCases",
 });
 router.post("/showCases/video", 
     checkAuth,
-    video_,
+    video_.single('video'),
     async(req, res) => {
         if (req.file){
         await cloudinary.uploader.upload(req.file.path, {
-           folder:'ShowCase'
+            resource_type: "video", folder:'ShowCase'
         })
         .then(result => {
             var ShowCase = new showCase({

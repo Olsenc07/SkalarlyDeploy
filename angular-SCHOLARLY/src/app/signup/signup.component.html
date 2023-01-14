@@ -486,19 +486,25 @@
 
               <!-- Upload pic/video -->
               <div class="centerD">
-                <div class="textU_"> Upload Photo</div>
+                <div class="textU_"> Upload Showcase</div>
+                <!-- Image -->
                 <button mat-icon-button class="trash" matTooltip="Clear Image" [ngClass]="form.get('showCase').value ? 'show_' : 'hide' " color="primary"
                   (click)="clearPic()">
                   <i class="far fa-times-circle"></i>
                 </button>
-
+                <!-- video -->
+                <button mat-icon-button class="trash" matTooltip="Clear Image" [ngClass]="form.get('video').value ? 'show_' : 'hide' " color="primary"
+                (click)="clearUploadVideo()">
+                <i class="far fa-times-circle"></i>
+              </button>
               </div>
 
+              <div class="rowPSpace">
 
-              <div class="rowP_">
+              <div class="rowP_" *ngIf="!form.get('video').value">
                 <button mat-fab class="background_colour" mat-fab (click)="uploadFile()">
                   <div class="material-icons icon">
-                    photo_library
+                    add_a_photo
                   </div>
                     <form enctype="multipart/form-data">
                     <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
@@ -506,14 +512,29 @@
                     </form>
                 </button>
               </div>
-                
-
-              <!-- Only when upload holds a value -->
-              <!-- <div class="contents"> -->
-              <div class="imgBox">
+              <div class="rowP_"  *ngIf="!form.get('showCase').value">
+                <button mat-fab class="background_colour" mat-fab (click)="uploadFileVideo()">
+                  <div class="material-icons icon">
+                    video_call
+                  </div>
+                    <form enctype="multipart/form-data">
+                    <input #fileInput id="showCase" class="uploadD" accept=".mp4, .webm, .ogg" type="file"
+                      (change)="imagePreview($event)" name="showCase" >
+                    </form>
+                </button>
+              </div>
+              </div>
+              <!-- Image preview -->      
+              <div class="imgBox"  *ngIf="form.get('showCase').valid">
                 <img [src]="showCasePreview" [ngClass]="form.get('showCase').value ? 'show' : 'hide' ">
               </div>
-              <!-- </div> -->
+              <!-- Video preview -->
+  <div class="imgBox" *ngIf="form.get('video').valid" >
+    <video controls autoplay muted [src]="urlVideo"
+    class="imagePreview" id="video-preview" [ngClass]="form.get('video').value ? 'show' : 'hide' "  >
+    </video>
+  </div>
+
             </div>
           </div>
 

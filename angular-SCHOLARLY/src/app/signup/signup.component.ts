@@ -110,6 +110,7 @@ export class SignupComponent implements OnInit {
 
   // profile Picture preview display
   url: string;
+  urlVideo: string;
 
   MatIconModule: any;
   cropImgPreview: any = '';
@@ -415,7 +416,16 @@ export class SignupComponent implements OnInit {
     reader.readAsDataURL(file); // read file as data url
     // }
   }
-
+  // Video
+  onImagePickedVideo(event: Event): any {
+    const reader = new FileReader();
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({ video: file });
+    this.form.get('video').updateValueAndValidity();
+    reader.onload = () => {
+      this.urlVideo = reader.result as string;
+    };
+  }
   // SnapShot
   imagePreview(event: any): void {
     const file = (event.target as HTMLInputElement).files[0];
@@ -459,7 +469,9 @@ export class SignupComponent implements OnInit {
   uploadFile(): any {
     document.getElementById('showCase').click();
   }
-
+  uploadFileVideo(): any {
+    document.getElementById('fileInputVideo').click();
+  }
   // uploadFile3(): any {
   //   document.getElementById('fileInput3').click();
   // };
@@ -522,7 +534,9 @@ export class SignupComponent implements OnInit {
   //   this.codeInput.nativeElement.value = '';
   //   this.CodeCompleted.setValue('');
   // }
-
+  clearUploadVideo(): void {
+    this.form.get('video').setValue('');
+  }
   clearUsername(): void {
     this.username.setValue('');
   }
@@ -717,9 +731,17 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmitShowCase(): any {
-    this.showCaseService.addShowCase(this.form.get('showCase').value);
+    this.showCaseService.addShowCase(
+      this.form.get('showCase').value,
+      this.form.get('video').value
+    );
   }
-
+  onSubmitVideo(): any {
+    this.showCaseService.addShowCaseVideo(
+      this.form.get('showCase').value,
+      this.form.get('video').value
+    );
+  }
   ngOnInit(): void {
     this.authStatusSub = this.authService
       .getAuthStatusListener()
@@ -732,6 +754,10 @@ export class SignupComponent implements OnInit {
         asyncValidators: [mimeType],
       }),
       showCase: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+      video: new FormControl(null, {
         validators: [Validators.required],
         asyncValidators: [mimeType],
       }),
