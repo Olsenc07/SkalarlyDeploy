@@ -111,11 +111,13 @@ router.post("", checkAuth, files,
         console.log('in line', req.query.userId)
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home2 ', req.files['video'])
-        console.log('home3 ', req.files['upload'])
+        console.log('home2 ', req.files)
+        console.log('home3 ', req.files['video'])
+        console.log('home4 ', req.files[0].path)
+
 
         if (req.files['upload'] !== undefined){
-             cloudinary.uploader.upload(req.files['upload'][0].path, {
+             cloudinary.uploader.upload(req.files[0].path, {
                 folder:'Posts'
              })
              .then(result => {
