@@ -59,6 +59,7 @@
       <div class="rowPSpace">
       <div class="rowP_" *ngIf="!form.get('video').value">
         <button mat-fab  class="cameraIcon" (click)="uploadFile()">
+          Max 10MB
           <div class="material-icons Photo">
             add_a_photo
             <input type="file" #fileInput id="fileInput" name='upload' class="uploadD"  accept=".png, .jpg, .jpeg"
@@ -69,6 +70,7 @@
 
       <div class="rowP_" *ngIf="!form.get('upload').value">
         <button mat-fab  class="cameraIcon" (click)="uploadFileVideo()">
+          Max 100MB
           <div class="material-icons Photo">
             video_call
             <input type="file" #fileInputVideo id="fileInputVideo" name='video' class="uploadD"  accept=".mp4, .webm, .ogg"
@@ -187,13 +189,20 @@
       <span class="material-icons"> arrow_back </span> Back
         </button>
     </div>
-
-    <div class="staticBtn2">
+<!-- Image -->
+    <div class="staticBtn2" *ngIf="form.get('upload').value">
       <button type="button" mat-stroked-button color="primary" class="post_btn_top_right" 
-      type="submit" (click)="onFormSubmit(postForm)">Post
+      type="submit" (click)="onFormSubmit()">Post
       <span class="material-icons"> arrow_forward </span>
     </button>
   </div>
+  <!-- Video -->
+  <div class="staticBtn2" *ngIf="form.get('video').value">
+    <button type="button" mat-stroked-button color="primary" class="post_btn_top_right" 
+    type="submit" (click)="onFormSubmitVideo()">Post
+    <span class="material-icons"> arrow_forward </span>
+  </button>
+</div>
   </div>
 
       <!-- Step1 -->
@@ -434,8 +443,14 @@
           <ng-template matStepLabel>Time To Post</ng-template>
           <div class="row_">
             <button type="button" mat-button matStepperPrevious>Back</button>
+            <!-- Image -->
             <button mat-raised-button color="primary" class="text" routerLink="/profile"
-              type="button" (click)="onFormSubmit()">Post
+              type="button" (click)="onFormSubmit()" *ngIf="form.get('upload').value">Post
+              <span class="material-icons"> arrow_forward </span>
+            </button>
+            <!-- Video -->
+            <button mat-raised-button color="primary" class="text" routerLink="/profile"
+              type="button" (click)="onFormSubmitVideo()" *ngIf="form.get('video').value">Post
               <span class="material-icons"> arrow_forward </span>
             </button>
           </div>
@@ -468,17 +483,22 @@
   </div> -->
     </div>
 
-    
-    <div *ngIf="minwidth" class="staticBtn2">
-      <!-- routerLink="/search" -->
+    <!-- Image -->
+    <div class="staticBtn2" *ngIf="form.get('upload').value">
     <button type="button" mat-raised-button color="primary" class="post_btn_top_right" 
     
   (click)="onFormSubmit()">Post
     <span class="material-icons"> arrow_forward </span>
   </button>
 </div>
-
-
+<!-- Video -->
+<div class="staticBtn2" *ngIf="form.get('video').value">
+  <button type="button" mat-raised-button color="primary" class="post_btn_top_right" 
+  
+(click)="onFormSubmitVideo()">Post
+  <span class="material-icons"> arrow_forward </span>
+</button>
+</div>
 </div>
 
     </mat-tab>

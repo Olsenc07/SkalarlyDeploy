@@ -363,6 +363,36 @@ export class PostPageComponent implements OnInit, OnDestroy {
     // this.router.navigate(['/profile']);
   }
 
+  onFormSubmitVideo(): any {
+    this.postService.addPostVideo(
+      this.userId,
+      this.Title.value,
+      this.postDescription.value,
+      this.postLocation.value,
+      this.LocationEvent.value,
+      this.time.value,
+      this.timeE.value,
+      // this.timeEditAfter,
+      // this.timeEditAfter2,
+      this.date.value,
+      this.dateE.value,
+      this.gender.value,
+      this.live.value,
+      this.paymentService.value,
+      this.nopaymentService.value,
+
+      this.virtual.value,
+      this.event.value,
+      this.form.get('upload').value,
+      this.form.get('video').value
+    );
+    this.router.navigate(['/main/:'], {
+      queryParams: { category: this.postLocation.value },
+    });
+
+    // this.router.navigate(['/profile']);
+  }
+
   changeTab(): void {
     this.selectedIndexPost = this.selectedIndexPost === 1 ? 0 : 1;
     console.log('math class', this.selectedIndexPost);

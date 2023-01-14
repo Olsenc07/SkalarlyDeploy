@@ -413,7 +413,102 @@ export class PostService {
         },
       });
   }
+  // Adding post
+  addPostVideo(
+    userId: string,
+    Title?: string,
+    postDescription?: string,
+    postLocation?: string,
+    LocationEvent?: string,
+    time?: string,
+    timeE?: string,
+    // timeEditAfter?: string,
+    // timeEditAfter2?: string,
 
+    date?: string,
+    dateE?: string,
+    gender?: string,
+    live?: string,
+    paymentService?: string,
+    nopaymentService?: string,
+    virtual?: string,
+    event?: string,
+    upload?: File,
+    video?: File,
+    Creator?: string
+  ): any {
+    const postData = new FormData();
+    postData.append('Title', Title);
+    postData.append('postDescription', postDescription);
+    postData.append('postLocation', postLocation);
+    postData.append('LocationEvent', LocationEvent);
+    postData.append('time', time);
+    postData.append('timeE', timeE);
+    // postData.append('timeEditAfter', timeEditAfter);
+    // postData.append('timeEditAfter2', timeEditAfter2);
+    postData.append('date', date);
+    postData.append('dateE', dateE);
+    postData.append('gender', gender);
+    postData.append('live', live);
+    postData.append('paymentService', paymentService);
+    postData.append('nopaymentService', nopaymentService);
+    postData.append('virtual', virtual);
+    postData.append('event', event);
+    postData.append('upload', upload);
+    postData.append('video', video);
+    postData.append('Creator', Creator);
+    this.http
+      .post<{ message: string; postId: Post }>(
+        'https://www.skalarly.com/api/posts/videos',
+        postData,
+        { params: { userId } }
+      )
+      .subscribe({
+        next: (responseData) => {
+          const postId: Post = {
+            id: responseData.postId.id,
+            // Test with these three
+            Username: responseData.postId.Username,
+            Name: responseData.postId.Name,
+            ProfilePicPath: responseData.postId.ProfilePicPath,
+            //
+            Title,
+            postDescription,
+            postLocation,
+            LocationEvent,
+            time,
+            timeE,
+            // timeEditAfter,
+            // timeEditAfter2,
+            date,
+            dateE,
+            gender,
+            live,
+            paymentService,
+            nopaymentService,
+            virtual,
+            event,
+            upload,
+            video,
+            ImagePath: responseData.postId.ImagePath,
+            VideoPath: responseData.postId.VideoPath,
+            Creator,
+          };
+          // const id_ = responseData.postId;
+          // postData.id = id_;
+
+          this.posts.push(postId);
+          // this.posts.unshift(postId);
+          this.postsUpdated.next([...this.posts]);
+          location.reload();
+        },
+        error: (err) => {
+          this.snackBar.open('Post failed to add!', 'Try again', {
+            duration: 3000,
+          });
+        },
+      });
+  }
   deletePost(postId: string): any {
     // console.log('hey chase postId', postId);
     this.http

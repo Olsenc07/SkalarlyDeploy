@@ -110,20 +110,17 @@ const video = multer({ storage: storage, limitsLarge})
   
 // Post additions
 router.post("", checkAuth,
-image.single('upload'),video.single('video'),
+image.single('upload'),
     async(req, res) => {
-        console.log('in line', req.query.userId)
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home2 ',image.single('upload'))
-        console.log('home3 ',video.single('video'))
-        // if (req.files['upload'] !== undefined){
-            if(image.single('upload')){
+        console.log('home2 ',image.single('upload'))            
+            if(req.file){
              cloudinary.uploader.upload(req.file.path, {
                 folder:'Posts'
              })
              .then(result => {
-console.log('upload',result)
+            console.log('upload',result)
             var post = new Post({
                 Username: documents.username,
                 Name: documents.name,
@@ -164,9 +161,63 @@ console.log('upload',result)
                 });
              })
             })
-        } else{
-            console.log('No Image')
+                }else{
+             var post = new Post({
+                Username: documents.username,
+                Name: documents.name,
+                ProfilePicPath: documents.ProfilePicPath,
+                Title: req.body.Title,
+                postDescription: req.body.postDescription,
+                postLocation: req.body.postLocation,
+                LocationEvent: req.body.LocationEvent,
+                time: req.body.time,
+                timeE: req.body.timeE,
+                // timeEditAfter: req.body.timeEditAfter,
+                // timeEditAfter2: req.body.timeEditAfter2,
+                date: req.body.date,
+                dateE: req.body.dateE,
+                gender: req.body.gender,
+                live: req.body.live,
+                paymentService: req.body.paymentService,
+                nopaymentService: req.body.nopaymentService,
+                virtual: req.body.virtual,
+                event: req.body.event,
+                ImagePath: '',
+                VideoPath: '',
+                cloudinary_id: '',
+                Creator: req.userData.userId
+            });
+            post.save().then(createdPost => {
+                res.status(201).json({
+                    message: 'Post added successfully',
+                    postId: {
+                        id: createdPost._id,
+                        ...createdPost
+                    } 
+                });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Creating a post failed!'
+                });
+            });
         }
+           
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Posting failed!'
+        });
+    });
+});
+// Post videos
+router.post("/videos", checkAuth,
+video.single('video'),
+    async(req, res) => {
+    await UserInfo.findOne({Creator: req.query.userId })
+    .then(documents => {
+        console.log('home3 ',video.single('video'))
+     
         
         // if (req.files['video'] !== undefined){
             if (video.single('video')) {
@@ -218,8 +269,8 @@ console.log('upload',result)
                });
             })
            })
-       }
-       if ((req.files['upload'] && req.files['video']) === undefined){
+       }else{
+
             var post = new Post({
                 Username: documents.username,
                 Name: documents.name,
@@ -259,8 +310,6 @@ console.log('upload',result)
                     message: 'Creating a post failed!'
                 });
             });
-        }else{
-            console.log('There was an image or video')
         }
            
     })
