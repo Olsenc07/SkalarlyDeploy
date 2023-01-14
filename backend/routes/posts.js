@@ -216,14 +216,14 @@ video.single('video'),
     async(req, res) => {
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home3 ',video.single('video'))
+        console.log('home3 ',req.file.path)
      
         
         // if (req.files['video'] !== undefined){
-            if (video.single('video')) {
+            if (req.file) {
             console.log('wasted',req.file.path);
             cloudinary.uploader.upload(req.file.path, 
-            ObjectUtils.asMap("resource_type", "video"), {
+            {
                folder:'Posts'
             })
             .then(result => {
@@ -269,6 +269,11 @@ video.single('video'),
                });
             })
            })
+           .catch(error => {
+            res.status(500).json({
+                message: 'uploading video failed!'
+            });
+        })
        }else{
 
             var post = new Post({

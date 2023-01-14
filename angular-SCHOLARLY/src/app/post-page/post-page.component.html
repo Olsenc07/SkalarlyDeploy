@@ -445,7 +445,7 @@
             <button type="button" mat-button matStepperPrevious>Back</button>
             <!-- Image -->
             <button mat-raised-button color="primary" class="text" routerLink="/profile"
-              type="button" (click)="onFormSubmit()" *ngIf="form.get('upload').value">Post
+              type="button" (click)="onFormSubmit()" *ngIf="form.get('upload').value || postDescription.value">Post
               <span class="material-icons"> arrow_forward </span>
             </button>
             <!-- Video -->
@@ -484,7 +484,7 @@
     </div>
 
     <!-- Image -->
-    <div class="staticBtn2" *ngIf="form.get('upload').value">
+    <div class="staticBtn2" *ngIf="form.get('upload').value || postDescription.value">
     <button type="button" mat-raised-button color="primary" class="post_btn_top_right" 
     
   (click)="onFormSubmit()">Post
