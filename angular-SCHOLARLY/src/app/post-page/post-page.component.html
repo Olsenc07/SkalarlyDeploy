@@ -36,14 +36,14 @@
       <!-- <div class="column_"> -->
       <div class="centerD">
          Upload Post
-        <div [ngClass]="form.get('upload').value && !form.get('video').value? 'Show' : 'hide' ">
+        <div [ngClass]="form.get('upload').value ? 'Show' : 'hide' ">
           <button type="button" mat-icon-button class="trash" 
           color="primary" (click)="clearUpload()" matTooltip="Clear Image">
             <i class="far fa-times-circle"></i>
           </button>
         </div>
       <!-- <div class="Or" *ngIf="form.get('video').value && form.get('upload').value">Or</div>   -->
-        <div [ngClass]="form.get('video').value && !form.get('upload').value ? 'Show' : 'hide' ">
+        <div [ngClass]="form.get('video').value  ? 'Show' : 'hide' ">
           <button type="button" mat-icon-button class="trash" 
           color="primary" (click)="clearUploadVideo()" matTooltip="Clear Video">
             <i class="far fa-times-circle"></i>
@@ -57,7 +57,7 @@
 
       <div class="row__"> Recommended Aspect Ratio 4:3</div>
       <div class="rowPSpace">
-      <div class="rowP_">
+      <div class="rowP_" *ngIf="!form.get('video').value">
         <button mat-fab  class="cameraIcon" (click)="uploadFile()">
           <div class="material-icons Photo">
             add_a_photo
@@ -67,7 +67,7 @@
         </button>
       </div>
 
-      <div class="rowP_">
+      <div class="rowP_" *ngIf="!form.get('upload').value">
         <button mat-fab  class="cameraIcon" (click)="uploadFileVideo()">
           <div class="material-icons Photo">
             video_call
