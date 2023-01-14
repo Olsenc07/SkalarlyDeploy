@@ -165,8 +165,8 @@ console.log('upload',result)
         }
         
         if (req.files['video'] !== undefined){
-            console.log('wasted',req.files['video'][0]);
-            cloudinary.uploader.upload(req.files['video'][0], {
+            console.log('wasted',req.files['video'][0].path);
+            cloudinary.uploader.upload(req.files['video'][0].path, {
                folder:'Posts'
             })
             .then(result => {
@@ -213,7 +213,7 @@ console.log('upload',result)
             })
            })
        }
-        else{
+       if ((req.files['upload'] && req.files['video']) === undefined){
             var post = new Post({
                 Username: documents.username,
                 Name: documents.name,
@@ -253,6 +253,8 @@ console.log('upload',result)
                     message: 'Creating a post failed!'
                 });
             });
+        }else{
+            console.log('There was an image or video')
         }
            
     })
