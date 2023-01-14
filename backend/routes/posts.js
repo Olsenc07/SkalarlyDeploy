@@ -46,8 +46,8 @@ const storage  = multer.diskStorage({
         // + '-' + Date.now() + '.' + ext);
     }
 });
-const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
-
+const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb images
+const limitsLarge = { fileSize: 1000 * 1000 * 100}; // limit to 100mb videos
 
 
 // Post recieving
@@ -100,23 +100,26 @@ router.get("/personal", async(req, res, next) => {
     });
 
 });
-const up = multer({ storage: storage, limits})
-const filesUp = up.fields([
-    { name: 'upload', maxCount: 1 },
-    { name: 'video', maxCount: 1 }
-  ])
+const image = multer({ storage: storage, limits})
+const video = multer({ storage: storage, limitsLarge})
+
+// const filesUp = up.fields([
+//     { name: 'upload', maxCount: 1 },
+//     { name: 'video', maxCount: 1 }
+//   ])
+  
 // Post additions
 router.post("", checkAuth, filesUp,
+image.single('upload'),video.single('video'),
     async(req, res) => {
         console.log('in line', req.query.userId)
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home2 ',req.files['video'][0])
-
-
-
-        if (req.files['upload'] !== undefined){
-             cloudinary.uploader.upload(req.files['upload'][0].path, {
+        console.log('home2 ',image.single('upload'))
+        console.log('home3 ',video.single('video'))
+        // if (req.files['upload'] !== undefined){
+            if(image.single('upload')){
+             cloudinary.uploader.upload(req.file.path, {
                 folder:'Posts'
              })
              .then(result => {
@@ -165,12 +168,10 @@ console.log('upload',result)
             console.log('No Image')
         }
         
-        if (req.files['video'] !== undefined){
-            console.log('wasted',req.files.path);
-            console.log('wasted',req.files['video'][0].destination);
-
-            
-            cloudinary.uploader.upload(req.files.path, 
+        // if (req.files['video'] !== undefined){
+            if (video.single('video')) {
+            console.log('wasted',req.file.path);
+            cloudinary.uploader.upload(req.file.path, 
             ObjectUtils.asMap("resource_type", "video"), {
                folder:'Posts'
             })
