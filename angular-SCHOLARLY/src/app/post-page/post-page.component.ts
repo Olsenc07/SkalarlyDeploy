@@ -220,11 +220,12 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.form.patchValue({ video: file });
     this.form.get('video').updateValueAndValidity();
     reader.onload = () => {
-      this.urlVideo = reader.result as string;
-      console.log('watch it', this.urlVideo);
+      const blobURL = URL.createObjectURL(file);
+      document.querySelector('video').src = blobURL;
+      console.log('watch it', blobURL);
     };
     reader.readAsDataURL(file);
-    console.log(file);
+    console.log('preaching it', file);
   }
   clearUpload(): void {
     this.form.get('upload').setValue('');
