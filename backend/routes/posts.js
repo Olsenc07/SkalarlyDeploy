@@ -165,8 +165,8 @@ console.log('upload',result)
         }
         
         if (req.files['video'] !== undefined){
-            console.log('wasted',req.files['video']);
-            cloudinary.uploader.upload(req.files['video'], {
+            console.log('wasted',req.files['video'][0].path);
+            cloudinary.uploader.upload(req.files['video'][0].path, {
                folder:'Posts'
             })
             .then(result => {
