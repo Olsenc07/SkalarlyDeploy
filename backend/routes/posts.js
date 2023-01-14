@@ -117,7 +117,9 @@ router.post("", checkAuth, files,
 
 
         if (req.files['upload'] !== undefined){
-             cloudinary.uploader.upload(req.files[0].path, {
+            req.files.map ( data => {
+                console.log('bub', data)
+             cloudinary.uploader.upload(data.path, {
                 folder:'Posts'
              })
              .then(result => {
@@ -162,10 +164,8 @@ console.log('upload',result)
                 });
              })
             })
-        } else{
-            console.log('No Image')
-        }
-        
+        })
+    }
         if (req.files['video'] !== undefined){
             console.log('wasted',req.files['video'][0].path);
             cloudinary.uploader.upload(req.files['video'][0].path, {
@@ -258,7 +258,7 @@ console.log('upload',result)
         }else{
             console.log('There was an image or video')
         }
-           
+    
     })
     .catch(error => {
         res.status(500).json({
