@@ -220,7 +220,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.form.patchValue({ video: file });
     this.form.get('video').updateValueAndValidity();
     reader.onload = () => {
-      reader.readAsDataURL(file);
       this.urlVideo = reader.result as string;
       console.log('watch it', this.urlVideo);
     };
