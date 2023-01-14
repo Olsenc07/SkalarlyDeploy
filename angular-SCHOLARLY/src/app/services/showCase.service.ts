@@ -73,7 +73,7 @@ export class ShowCaseService {
   getshowCaseUpdateListener(): any {
     return this.postsUpdated.asObservable();
   }
-  // Adding post
+  // Adding image
   addShowCase(showCase?: File, video?: File, Creator?: string): any {
     const postData = new FormData();
     postData.append('showCase', showCase);
@@ -106,7 +106,39 @@ export class ShowCaseService {
         },
       });
   }
+  // Adding video
+  addShowCaseVideo(showCase?: File, video?: File, Creator?: string): any {
+    const postData = new FormData();
+    postData.append('showCase', showCase);
+    postData.append('video', video);
+    postData.append('Creator', Creator);
+    this.http
+      .post<{ message: string; postId: ShowCase }>(
+        'https://www.skalarly.com/api/posts/showCases/video',
+        postData
+      )
+      .subscribe({
+        next: (responseData) => {
+          const postId: ShowCase = {
+            id: responseData.postId.id,
+            showCase,
+            video,
+            ShowCasePath: responseData.postId.ShowCasePath,
+            VideoPath: responseData.postId.VideoPath,
 
+            // ShowCasePath,
+            Creator,
+          };
+          // const id_ = responseData.postId;
+          // postData.id = id_;
+          this.showCases.push(postId);
+          this.postsUpdated.next([...this.showCases]);
+          this.snackBar.open('Showcase added', 'Yay!', {
+            duration: 3000,
+          });
+        },
+      });
+  }
   deleteShowCase(postId: string): any {
     console.log('hey chase postId', postId);
     this.http

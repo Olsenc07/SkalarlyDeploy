@@ -539,9 +539,12 @@ export class EditProfileComponent implements OnInit {
       this.form.get('showCase').value,
       this.form.get('video').value
     );
-    this.snackBar.open('Showcase Saved!', 'Nice!', {
-      duration: 2000,
-    });
+  }
+  onSubmitVideo(): any {
+    this.showCaseService.addShowCaseVideo(
+      this.form.get('showCase').value,
+      this.form.get('video').value
+    );
   }
 }
 

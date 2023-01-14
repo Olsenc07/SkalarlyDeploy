@@ -545,17 +545,18 @@ router.get("/showCasesPersonal", async(req, res, next) => {
     });
 });
 // showCase additions
-const show = multer({ storage: storage, limits})
-const files_ = show.fields([
-    { name: 'showCase', maxCount: 1 },
-    { name: 'video', maxCount: 1 }
-  ])
+const image_ = multer({ storage: storage, limits})
+const video_ = multer({ storage: storage, limitsLarge})
+// const files_ = show.fields([
+//     { name: 'showCase', maxCount: 1 },
+//     { name: 'video', maxCount: 1 }
+//   ])
 router.post("/showCases", 
     checkAuth,
-    files_,
+    image_,
     async(req, res) => {
-        if (req.files['showCase'][0]){
-        await cloudinary.uploader.upload(req.files['showCase'][0], {
+        if (req.file){
+        await cloudinary.uploader.upload(req.file.path, {
            folder:'ShowCase'
         })
         .then(result => {
@@ -580,9 +581,17 @@ router.post("/showCases",
                 });
             });
         }); 
-    }
-    if (req.files['video'][0]){
-        await cloudinary.uploader.upload(req.files['video'][0], {
+    }else{ res.status(500).json({
+        message: 'Creating a showCase failed!'
+    });
+}
+});
+router.post("/showCases/video", 
+    checkAuth,
+    video_,
+    async(req, res) => {
+        if (req.file){
+        await cloudinary.uploader.upload(req.file.path, {
            folder:'ShowCase'
         })
         .then(result => {
@@ -607,7 +616,10 @@ router.post("/showCases",
                 });
             });
         }); 
-    }
+    }else{ res.status(500).json({
+        message: 'Creating a showCase failed!'
+    });
+}
 });
 
 // showCase deleting

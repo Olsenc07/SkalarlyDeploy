@@ -25,9 +25,12 @@
   </button>
 
   <!-- Modal Content (The Image) -->
-  <div *ngFor="let showCase of showCases">
-  <img class="modal-content" src='{{showCase.ShowCasePath}}' id="img01">
-</div>
+  <!-- <div *ngFor="let showCase of showCases"> -->
+  <img *ngIf="showCase.ShowCasePath" class="modal-content" src='{{showCase.ShowCasePath}}' id="img01">
+  <video *ngIf="showCase.VideoPath" class="modal-content" src='{{showCase.VideoPath}}' id="img02"
+  controls autoload></video>
+
+<!-- </div> -->
 </div>
 
 </div>

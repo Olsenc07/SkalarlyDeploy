@@ -321,7 +321,7 @@
         (click)="clearPic1()">
         <i class="far fa-times-circle"></i>
       </button>
-      <div *ngIf="form.get('video').value && showCase.value" class="Or">Or</div>
+      <!-- <div *ngIf="form.get('video').value && showCase.value" class="Or">Or</div> -->
       <div [ngClass]="form.get('video').value ? 'show' : 'hide' ">
         <button type="button" mat-icon-button class="trash" 
         color="primary" (click)="clearUploadVideo()" matTooltip="Clear Video">
@@ -369,19 +369,19 @@
     </video>
   </div>
 </div>
-  <div class="doneShowCase">
-    <button mat-raised-button color="primary" [disabled]="!showCase.value && !form.get('video').value" routerLink="/profile" class="button"
+  <div class="doneShowCase" *ngIf="!form.get('video').value">
+    <button mat-raised-button color="primary" [disabled]="!showCase.value" routerLink="/profile" class="button"
       (click)="onSubmitShowCase()">
    Update
     </button>
   </div>
   <!-- Video -->
-  <!-- <div class="doneShowCase">
-    <button mat-raised-button color="primary" [disabled]="!video.value" routerLink="/profile" class="button"
+  <div class="doneShowCase" *ngIf="!showCase.value">
+    <button mat-raised-button color="primary" [disabled]="!form.get('video').value" routerLink="/profile" class="button"
       (click)="onSubmitVideo()">
    Update
     </button>
-  </div> -->
+  </div>
 </div>
 
 
