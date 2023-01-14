@@ -80,7 +80,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   userId: string;
 
   url: string;
-  urlVideo;
+  urlVideo: string;
 
   selectedIndex = 0;
   selectedIndexPost = 0;
@@ -217,6 +217,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   onImagePickedVideo(event: Event): any {
     const reader = new FileReader();
     const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({ video: file });
+    this.form.get('video').updateValueAndValidity();
     reader.onload = () => {
       reader.readAsDataURL(file);
       this.urlVideo = reader.result as string;

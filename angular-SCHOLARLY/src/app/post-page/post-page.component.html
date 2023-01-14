@@ -83,12 +83,8 @@
       <!-- When video has value -->
       <div class="contents" *ngIf="form.get('video').valid" >
         <video controls autoplay muted 
-        
         class="imgBox" id="video-preview" [ngClass]="form.get('video').value ? 'show' : 'hide' "  >
-          <source [src]="urlVideo" class="img" type="video/mp4" >
-          <source [src]="urlVideo" class="img" type="video/webm" >
-          <source [src]="urlVideo" class="img" type="video/ogg" >
-
+          <source [src]="urlVideo" class="img" type="video/*" >
         </video>
       </div>
     </div>
