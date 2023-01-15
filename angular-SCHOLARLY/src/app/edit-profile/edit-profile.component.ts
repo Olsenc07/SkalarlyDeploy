@@ -360,8 +360,8 @@ export class EditProfileComponent implements OnInit {
   }
   // Video
   onImagePickedVideo(event: Event): any {
-    const reader = new FileReader();
     const file = (event.target as HTMLInputElement).files[0];
+    const reader = new FileReader();
     this.form.patchValue({ video: file });
     this.form.get('video').updateValueAndValidity();
     reader.onload = () => {
@@ -466,7 +466,8 @@ export class EditProfileComponent implements OnInit {
     this.showCase.setValue('');
   }
   clearUploadVideo(): void {
-    this.form.get('video').setValue('');
+    this.form.get('video').reset('');
+
     console.log('cleared video');
   }
   onDelete(postId: string): any {

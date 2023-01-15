@@ -624,18 +624,17 @@
   .imageBox {
     display: flex;
     height: 100%;
-    max-width: 40%;
-    margin-top: 3%;
-    margin: 0% 1%;
+    // max-width: 40%;
+    margin: 7% 1% 0%;
   }
 }
 @media (max-width: 900px) {
   .imageBox {
     display: flex;
     height: 100%;
-    max-width: 50%;
-    margin-top: 2%;
-    margin: 0% 1%;
+    // max-width: 50%;
+
+    margin: 7% 1% 0%;
   }
 }
 .imageBox_ {

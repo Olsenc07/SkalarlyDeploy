@@ -318,16 +318,15 @@
     <div class="row">
       <div class="snapshot">Add Showcase</div>
       <button mat-icon-button  matTooltip="Clear Image" [ngClass]="showCase.value ? 'show' : 'hide' " color="primary"
-        (click)="clearPic1()">
+        (click)="clearPic1()" type="button">
         <i class="far fa-times-circle"></i>
       </button>
       <!-- <div *ngIf="form.get('video').value && showCase.value" class="Or">Or</div> -->
-      <div [ngClass]="form.get('video').value ? 'show' : 'hide' ">
-        <button type="button" mat-icon-button class="trash" 
+        <button type="button" mat-icon-button class="trash"  [ngClass]="form.get('video').value ? 'show' : 'hide' "
         color="primary" (click)="clearUploadVideo()" matTooltip="Clear Video">
           <i class="far fa-times-circle"></i>
         </button>
-      </div>
+    ]
     </div>
 
     <div class="rowPSpace">
