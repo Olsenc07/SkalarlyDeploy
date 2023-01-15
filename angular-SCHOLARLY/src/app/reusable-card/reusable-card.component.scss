@@ -1,6 +1,9 @@
 ::ng-deep .mat-menu-panel{
   display: contents;
 }
+.mat-mdc-form-field {
+  width: 100% !important;
+}
 .addPost{
   color: white !important;
 

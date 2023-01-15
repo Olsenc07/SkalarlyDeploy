@@ -434,7 +434,6 @@ export class SignupComponent implements OnInit {
     this.form.get('showCase').updateValueAndValidity();
 
     const reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]); // read file as data url
     reader.onload = (Event: any) => {
       this.showCasePreview = Event.target.result;
     };
@@ -568,6 +567,8 @@ export class SignupComponent implements OnInit {
   clearUploadVideo(): void {
     this.form.get('video').setValue('');
     document.getElementById('video-preview').removeAttribute('src');
+    this.form.patchValue({ video: '' });
+    this.form.get('video').updateValueAndValidity();
   }
   clearProfilePic(): void {
     this.form.get('profilePic').setValue('');
