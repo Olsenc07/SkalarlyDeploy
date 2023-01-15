@@ -466,8 +466,11 @@ export class EditProfileComponent implements OnInit {
     this.showCase.setValue('');
   }
   clearUploadVideo(): void {
+    document.getElementById('video-preview').removeAttribute('video');
+    (document.getElementById('fileInputVideo') as HTMLInputElement).value = '';
     this.form.get('video').reset();
-    console.log('cleared video');
+    this.form.get('video').updateValueAndValidity();
+    console.log('hey hot stuff');
   }
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
