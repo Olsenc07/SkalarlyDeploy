@@ -264,6 +264,7 @@ export class EditProfileComponent implements OnInit {
   }
   uploadFileVideo(): any {
     document.getElementById('fileInputVideo').click();
+    console.log('nice');
   }
   onImgChange(event: any): void {
     this.imgChangeEvent = event;
@@ -366,6 +367,7 @@ export class EditProfileComponent implements OnInit {
     reader.onload = () => {
       this.urlVideo = reader.result as string;
     };
+    reader.readAsDataURL(file);
   }
   // private _filter(value: string): string[] {
   //   const filterValue = value.toLowerCase();
@@ -465,6 +467,7 @@ export class EditProfileComponent implements OnInit {
   }
   clearUploadVideo(): void {
     this.form.get('video').setValue('');
+    console.log('cleared video');
   }
   onDelete(postId: string): any {
     this.postService.deletePost(postId);

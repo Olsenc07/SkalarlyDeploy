@@ -363,7 +363,7 @@
   </div>
 
   <!-- Video preview -->
-  <div class="imageBox" *ngIf="form.get('video').valid" >
+  <div class="imageBox" *ngIf="form.get('video').value" >
     <video controls autoplay muted [src]="urlVideo"
     class="imagePreview" id="video-preview" [ngClass]="form.get('video').value ? 'show' : 'hide' "  >
     </video>
