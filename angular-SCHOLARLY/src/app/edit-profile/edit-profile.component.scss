@@ -69,7 +69,11 @@
   background-color: #18214b;
   color: white;
 }
-
+.cameraIcon {
+  // height: 100%;
+  justify-content: center;
+  background-color: #0c46b8a1;
+}
 .c_r {
     display: flex;
     flex-direction: column;

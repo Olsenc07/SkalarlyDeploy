@@ -370,14 +370,14 @@
   </div>
 </div>
   <div class="doneShowCase" *ngIf="showCase.value">
-    <button mat-raised-button color="primary" [disabled]="!showCase.value" routerLink="/profile" class="button"
+    <button mat-raised-button class="cameraIcon"  [disabled]="!showCase.value" routerLink="/profile" class="button"
       (click)="onSubmitShowCase()">
    Update
     </button>
   </div>
   <!-- Video -->
   <div class="doneShowCase" *ngIf="form.get('video').value">
-    <button mat-raised-button color="primary" [disabled]="!form.get('video').value" routerLink="/profile" class="button"
+    <button mat-raised-button class="cameraIcon" [disabled]="!form.get('video').value" routerLink="/profile" class="button"
       (click)="onSubmitVideo()">
    Update
     </button>
