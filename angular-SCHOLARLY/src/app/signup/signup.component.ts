@@ -568,14 +568,14 @@ export class SignupComponent implements OnInit {
     document.getElementById('video-preview').removeAttribute('video');
     (document.getElementById('fileInputVideo') as HTMLInputElement).value = '';
     // this.form.patchValue({ video: '' });
-    // this.form.get('video').reset();
-    // this.form.get('video').updateValueAndValidity();
+    this.form.get('video').reset();
+    this.form.get('video').updateValueAndValidity();
     // const reader = new FileReader();
     // reader.onload = () => {
     //   reader.abort();
     //   console.log('DONE', reader.readyState);
     // };
-    // document.getElementById('fileInputVideo').removeAttribute('video');
+    document.getElementById('fileInputVideo').removeAttribute('video');
     console.log('hey hot stuff');
   }
   clearProfilePic(): void {
