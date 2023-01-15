@@ -506,7 +506,7 @@
                   <div class="material-icons icon">
                     add_a_photo
                   </div>
-                    <form enctype="multipart/form-data">
+                    <form >
                     <input #fileInput id="showCase" class="uploadD" accept=".png, .jpg, .jpeg" type="file"
                       (change)="imagePreview($event)" name="showCase" >
                     </form>
@@ -517,7 +517,7 @@
                   <div class="material-icons icon">
                     video_call
                   </div>
-                    <form enctype="multipart/form-data">
+                    <form >
                     <input #fileInputVideo id="fileInputVideo" class="uploadD" accept=".mp4, .webm, .ogg" type="file"
                       (change)="onImagePickedVideo($event)" name="video" >
                     </form>

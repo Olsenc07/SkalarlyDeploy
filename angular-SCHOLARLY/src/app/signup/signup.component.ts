@@ -565,8 +565,9 @@ export class SignupComponent implements OnInit {
     this.email.setValue('');
   }
   clearUploadVideo(): void {
-    this.form.get('video').setValue('');
-    document.getElementById('video-preview').removeAttribute('src');
+    this.form.get('fileUploader').setValue('');
+    document.getElementById('video-preview').removeAttribute('video');
+    (document.getElementById('fileInputVideo') as HTMLInputElement).value = '';
     this.form.patchValue({ video: '' });
     this.form.get('video').reset();
     this.form.get('video').updateValueAndValidity();
@@ -575,6 +576,7 @@ export class SignupComponent implements OnInit {
       reader.abort();
       console.log('DONE', reader.readyState);
     };
+    document.getElementById('fileInputVideo').removeAttribute('video');
   }
   clearProfilePic(): void {
     this.form.get('profilePic').setValue('');
