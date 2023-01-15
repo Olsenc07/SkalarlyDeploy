@@ -226,7 +226,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.form.get('upload').setValue('');
   }
   clearUploadVideo(): void {
-    this.form.get('video').setValue('');
+    document.getElementById('video-preview').removeAttribute('video');
+    (document.getElementById('fileInputVideo') as HTMLInputElement).value = '';
+    this.form.get('video').reset();
+    this.form.get('video').updateValueAndValidity();
+    console.log('hey hot stuff');
   }
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
