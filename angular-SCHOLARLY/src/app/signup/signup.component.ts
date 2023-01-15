@@ -568,7 +568,10 @@ export class SignupComponent implements OnInit {
     this.form.get('video').setValue('');
     document.getElementById('video-preview').removeAttribute('src');
     this.form.patchValue({ video: '' });
+    this.form.get('video').reset();
     this.form.get('video').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.abort();
   }
   clearProfilePic(): void {
     this.form.get('profilePic').setValue('');
