@@ -536,9 +536,6 @@ export class SignupComponent implements OnInit {
   //   this.CodeCompleted.setValue('');
   // }
 
-  clearUploadVideo(): void {
-    this.form.get('video').setValue('');
-  }
   clearUsername(): void {
     this.username.setValue('');
   }
@@ -567,6 +564,10 @@ export class SignupComponent implements OnInit {
 
   clearEmail(): void {
     this.email.setValue('');
+  }
+  clearUploadVideo(): void {
+    this.form.get('video').setValue('');
+    document.getElementById('video-preview').removeAttribute('src');
   }
   clearProfilePic(): void {
     this.form.get('profilePic').setValue('');
