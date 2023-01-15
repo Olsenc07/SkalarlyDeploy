@@ -425,6 +425,7 @@ export class SignupComponent implements OnInit {
     reader.onload = () => {
       this.urlVideo = reader.result as string;
     };
+    reader.readAsDataURL(file);
   }
   // SnapShot
   imagePreview(event: any): void {
