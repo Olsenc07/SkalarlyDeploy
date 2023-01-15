@@ -571,7 +571,10 @@ export class SignupComponent implements OnInit {
     this.form.get('video').reset();
     this.form.get('video').updateValueAndValidity();
     const reader = new FileReader();
-    reader.abort();
+    reader.onload = () => {
+      reader.abort();
+      console.log('DONE', reader.readyState);
+    };
   }
   clearProfilePic(): void {
     this.form.get('profilePic').setValue('');
