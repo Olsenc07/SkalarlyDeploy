@@ -296,11 +296,20 @@ Post.deleteOne({_id: req.params.id}).then(result => {
 })
 .catch(error => {
     res.status(500).json({
-        message: 'Fetching posts failed!'
+        message: 'Deleting post failed!'
+    });
+})
+
+Comment.delete({
+    postId: req.params.id}).then(result => {
+        console.log('comments deleted',result)
+
+}).catch(error => {
+    res.status(500).json({
+        message: 'Deleting posts comments failed!'
     });
 })
 })
-
 
 // get Comment on post
 router.get('/comments', async(req, res) =>{
