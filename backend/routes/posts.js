@@ -384,14 +384,13 @@ if (req.body.userId){
             // Creator of post gets notified find them first...
             Post.findOne({id: req.body.postId})
             .then((user) => {
-
                 console.log('user 77', user)
                 Subscription.findOne({Creator: user.Creator})
                 .then(checking => {
-                    console.log('I wanna say I love you', user.Creator);
+                    console.log('I wanna say I love you', user.Creator.valueOf());
                     console.log('I wanna say I love you 2', req.body.userId);
 
-                    if((checking !== null) && (user.Creator !== req.body.userId)){
+                    if((checking !== null) && (user.Creator.valueOf() !== req.body.userId)){
                         Subscription.findOne({Creator: user.Creator})
                 .then(subscriber =>{
                     const p256dh = subscriber.keys.p256dh
