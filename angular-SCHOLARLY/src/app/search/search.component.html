@@ -128,21 +128,20 @@
       <div class="center" >
         Recent Feed
       </div>
-      <div class="column_" *ngIf="posts.length == 0">
+      <!-- <div class="column_" *ngIf="posts.length == 0">
         <div class="row"> No Posts At The Moment</div>
-        <!-- <i class="far fa-frown centerR"></i> -->
+
 
         <div class="fill_">
     <mat-chip-list >
           <mat-chip color="primary" selected class="centerR" (click)="navigateToPost()">Post Now</mat-chip>
           </mat-chip-list>
         </div>
-        <!-- <div class="row"> Or try refreshing the page</div> -->
 
-      </div>
+      </div> -->
 
-<!-- [ngForOf]="posts" -->
-      <div class="recents" *ngIf="posts.length !== 0" >
+<!-- *ngIf="posts.length !== 0" -->
+      <div class="recents"  >
 
 
 <!-- *ngIf="(userIsAuthenticated && (userId === posts.Creator))" -->

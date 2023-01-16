@@ -59,13 +59,13 @@ export class SearchComponent implements OnInit {
     this.isLoading = true;
     this.searchOptions = this.searchListService.getSearchOptions();
     // posts
-    this.postService.getPosts();
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-      });
+    // this.postService.getPosts();
+    // this.postsSub = this.postService
+    //   .getPostUpdateListener()
+    //   .subscribe((posts: Post[]) => {
+    //     this.posts = posts;
+    //     this.isLoading = false;
+    //   });
     // userId
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
