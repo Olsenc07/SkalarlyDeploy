@@ -98,7 +98,7 @@ export class ReusableCardComponent implements OnInit {
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
-        this.posts = posts.reverse();
+        this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
@@ -116,7 +116,7 @@ export class ReusableCardComponent implements OnInit {
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
-        this.posts = posts.reverse();
+        this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
@@ -179,7 +179,7 @@ export class ReusableCardComponent implements OnInit {
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
-          this.posts = posts.reverse();
+          this.posts = posts;
           this.isLoading = false;
         });
     });

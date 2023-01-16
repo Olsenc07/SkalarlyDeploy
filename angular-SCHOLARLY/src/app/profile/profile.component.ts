@@ -460,7 +460,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         .getInfoFollowUpdateListener()
         .subscribe((followers: Follow[]) => {
           this.followers = followers;
-          console.log('lucky lucky you', this.follow);
+          console.log('lucky lucky you', this.followers);
         });
       // Infos
       this.authService.getOtherInfo(id);
