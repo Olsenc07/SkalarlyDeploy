@@ -452,9 +452,9 @@ router.delete("/comments/:id", checkAuth, (req, res, next ) => {
 // Get others posts
 router.get("/otherUsers", async(req, res) => {
     const counter = req.query.counter
-        await UserInfo.findOne({username: {$eq: req.query.id}}).sort({_id:-1}).skip(counter).limit(6)
+        await UserInfo.findOne({username: {$eq: req.query.id}})
         .then(docs => {
-            Post.find({Creator: docs.Creator})
+            Post.find({Creator: docs.Creator}).sort({_id:-1}).skip(counter).limit(6)
            .then(doc => {
             res.status(200).json({
                 message: 'Infos fetched succesfully!',

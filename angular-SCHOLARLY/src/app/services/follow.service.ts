@@ -214,7 +214,7 @@ export class FollowService {
       )
       .subscribe((transformedMessage) => {
         this.following = transformedMessage;
-        this.followingInfoPostUpdated.next(this.following);
+        this.followingPostUpdated.next(this.following);
       });
   }
   // and maybe add userId
