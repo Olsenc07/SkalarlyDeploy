@@ -300,7 +300,7 @@ Post.deleteOne({_id: req.params.id}).then(result => {
     });
 })
 
-Comment.delete({
+await Comment.deleteMany({
     postId: req.params.id}).then(result => {
         console.log('comments deleted',result)
 
@@ -387,9 +387,6 @@ if (req.body.userId){
                 console.log('user 77', user)
                 Subscription.findOne({Creator: user.Creator})
                 .then(checking => {
-                    console.log('I wanna say I love you', user.Creator.valueOf());
-                    console.log('I wanna say I love you 2', req.body.userId);
-
                     if((checking !== null) && (user.Creator.valueOf() !== req.body.userId)){
                         Subscription.findOne({Creator: user.Creator})
                 .then(subscriber =>{
