@@ -46,11 +46,10 @@ export class PostService {
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new Subject<AuthDataInfo[]>();
 
-  getPosts(counter): any {
+  getPosts(): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'https://www.skalarly.com/api/posts',
-        { params: { counter } }
+        'https://www.skalarly.com/api/posts'
       )
       .pipe(
         map((postData) => {
