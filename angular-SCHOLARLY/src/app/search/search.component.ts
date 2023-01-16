@@ -20,12 +20,7 @@ export class SearchComponent implements OnInit {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
-
-  posts: Post[] = [];
   private postsSub: Subscription;
-
-  post: Post;
-
   isLoading = false;
 
   postLocationMain: FormControl = new FormControl('');
@@ -51,21 +46,13 @@ export class SearchComponent implements OnInit {
     public searchListService: SearchListService,
     private router: Router,
     public route: ActivatedRoute,
-    public postService: PostService,
     private authService: AuthService
   ) {}
 
   ngOnInit(): any {
     this.isLoading = true;
     this.searchOptions = this.searchListService.getSearchOptions();
-    // posts
-    // this.postService.getPosts();
-    // this.postsSub = this.postService
-    //   .getPostUpdateListener()
-    //   .subscribe((posts: Post[]) => {
-    //     this.posts = posts;
-    //     this.isLoading = false;
-    //   });
+
     // userId
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -73,6 +60,7 @@ export class SearchComponent implements OnInit {
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
+        this.isLoading = false;
       });
   }
 
