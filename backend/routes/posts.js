@@ -451,7 +451,8 @@ router.delete("/comments/:id", checkAuth, (req, res, next ) => {
 });
 // Get others posts
 router.get("/otherUsers", async(req, res) => {
-        await UserInfo.findOne({username: {$eq: req.query.id}})
+    const counter = req.query.counter
+        await UserInfo.findOne({username: {$eq: req.query.id}}).sort({_id:-1}).skip(counter).limit(6)
         .then(docs => {
             Post.find({Creator: docs.Creator})
            .then(doc => {

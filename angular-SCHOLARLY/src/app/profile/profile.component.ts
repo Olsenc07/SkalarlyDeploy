@@ -452,6 +452,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         .getFollowingUpdateListener()
         .subscribe((follow: Follow[]) => {
           this.follow = follow;
+          console.log('lucky you', this.follow);
         });
       // Followers
       this.followService.getMessageNotificationFollowedOther(id);
