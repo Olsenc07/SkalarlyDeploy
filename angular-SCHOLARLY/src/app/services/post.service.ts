@@ -46,10 +46,11 @@ export class PostService {
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new Subject<AuthDataInfo[]>();
 
-  getPosts(): any {
+  getPosts(counter): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'https://www.skalarly.com/api/posts'
+        'https://www.skalarly.com/api/posts',
+        { params: { counter } }
       )
       .pipe(
         map((postData) => {
@@ -85,7 +86,7 @@ export class PostService {
         this.postsUpdated.next([...this.posts]);
       });
   }
-  getPostsFeed(counter): any {
+  getPostsFeed(counter: number): any {
     this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/feed',
@@ -125,11 +126,11 @@ export class PostService {
         this.postsUpdated.next([...this.posts]);
       });
   }
-  getPostsPersonal(userId: string): any {
+  getPostsPersonal(userId: string, counter: number): any {
     this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/personal',
-        { params: { userId } }
+        { params: { userId, counter } }
       )
       .pipe(
         map((postData) => {
@@ -166,11 +167,11 @@ export class PostService {
       });
   }
   // getting others posts for their profiles display
-  getOthersPosts(id: string): any {
+  getOthersPosts(id: string, counter: number): any {
     this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/otherUsers',
-        { params: { id } }
+        { params: { id, counter } }
       )
       .pipe(
         map((postData) => {

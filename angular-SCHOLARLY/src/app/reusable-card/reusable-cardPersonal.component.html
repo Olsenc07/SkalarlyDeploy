@@ -7,7 +7,14 @@
     </mat-chip-list>
   <!-- Posts box which should be a scroll view -->
   <!-- <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer"> -->
-  
+    <div class="infiniteContainer" id="topScroll">
+      <div class="showMore" *ngIf="countVisibility >= 1">
+        <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Previous
+            <!-- <i class="fas fa-chevron-circle-down"></i> -->
+            <i class="fas fa-caret-up"></i>
+    
+        </mat-chip>
+        </div>
   <div class="feed" *ngFor="let post of posts" >
     <mat-card class="specifics-fill" *ngIf="!isLoading" >
       <!-- Profile Pic -->
@@ -246,5 +253,12 @@
   
       </div>
     </mat-card>
+  </div>
+  <div class="showMore" *ngIf="posts.length == 6">
+    <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
+        <!-- <i class="fas fa-chevron-circle-down"></i> -->
+        <i class="fas fa-caret-down"></i>
+    </mat-chip>
+    </div>
   </div>
 <!-- </cdk-virtual-scroll-viewport> -->

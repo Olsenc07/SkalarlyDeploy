@@ -87,6 +87,7 @@ export class ProfileComponent implements OnInit {
     //   // return name;
     // })
   }
+
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
@@ -119,8 +120,6 @@ export class ProfileComponent implements OnInit {
           console.log('During the midday', this.notif);
         }
       });
-    console.log('During the day', this.notif);
-    console.log('During the night', this.notifsListenerSubs);
     this.authService.getInfoProfile(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()

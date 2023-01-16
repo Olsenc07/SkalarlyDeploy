@@ -52,7 +52,8 @@ const limitsLarge = { fileSize: 1000 * 1000 * 100}; // limit to 100mb videos
 
 // Post recieving
 router.get("", async(req, res, next) => {
-   await Post.find()
+    const counter = req.query.counter
+    await Post.find().sort({_id:-1}).skip(counter).limit(6)
     .then(documents => {
     res.status(200).json({
         message: 'Posts fetched succesfully!',
@@ -85,7 +86,8 @@ router.get("/feed", async(req, res, next) => {
 
 // Post recieving personal
 router.get("/personal", async(req, res, next) => {
-     await Post.find({Creator: req.query.userId})
+    const counter = req.query.counter
+     await Post.find({Creator: req.query.userId}).sort({_id:-1}).skip(counter).limit(6)
     .then(docs => {
         res.status(200).json({
             message: 'Posts personal fetched succesfully!',

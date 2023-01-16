@@ -48,7 +48,8 @@ export class ReusableCardComponent implements OnInit {
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
   // number of comments that load
-
+  recomCounter = 0;
+  countVisibility = 0;
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
   timeHourInitial = new Date().getHours();
@@ -86,7 +87,40 @@ export class ReusableCardComponent implements OnInit {
   //   this.selectedAttend = event.target.value;
   // }
   // Where the post was posted
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
 
+    this.postService.getOthersPosts(this.userId, this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts.reverse();
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.postService.getOthersPosts(this.userId, this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts.reverse();
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+  }
   // Adding emojis
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
@@ -141,7 +175,7 @@ export class ReusableCardComponent implements OnInit {
       const id = this.user;
 
       // Posts
-      this.postService.getOthersPosts(id);
+      this.postService.getOthersPosts(id, 0);
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
@@ -282,6 +316,8 @@ export class ReusableCardPersonalComponent implements OnInit {
   userId: string;
   // Filling with Post info from post.service
   posts: Post[] = [];
+  recomCounter = 0;
+  countVisibility = 0;
   private postsSub: Subscription;
   comments: string[] = [];
   private commentsSub: Subscription;
@@ -324,7 +360,40 @@ export class ReusableCardPersonalComponent implements OnInit {
   //   this.selectedAttend = event.target.value;
   // }
   // Where the post was posted
-  // Adding emojis
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+
+    this.postService.getPostsPersonal(this.userId, this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts.reverse();
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.postService.getPostsPersonal(this.userId, this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts.reverse();
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+  }
   // Adding emojis
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
@@ -381,7 +450,7 @@ export class ReusableCardPersonalComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.isLoading = true;
     // Posts
-    this.postService.getPostsPersonal(this.userId);
+    this.postService.getPostsPersonal(this.userId, 0);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
