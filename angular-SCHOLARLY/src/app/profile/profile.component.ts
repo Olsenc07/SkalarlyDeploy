@@ -449,10 +449,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       // Following
       this.followService.getMessageNotificationOther(id);
       this.followSubs = this.followService
-        .getFollowingUpdateListener()
+        .getInfoUpdateListener()
         .subscribe((follow: Follow[]) => {
           this.follow = follow;
           console.log('lucky you', this.follow);
+          console.log('lucky you', this.follow.length);
         });
       // Followers
       this.followService.getMessageNotificationFollowedOther(id);
