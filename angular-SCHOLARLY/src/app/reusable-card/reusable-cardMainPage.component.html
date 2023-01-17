@@ -118,7 +118,7 @@
                         </div>
                       </div>
                         <div *ngIf="post.dateE || post.timeE" class="displayT t ">  {{post.dateE | date:"longDate"}}
-                      <div class="displayT t">
+                      <div class="displayT t" *ngIf="post.timeE">
                        End {{post.timeE}} 
                       </div>
                       </div>
