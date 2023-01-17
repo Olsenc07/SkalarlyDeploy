@@ -92,7 +92,7 @@
                  
                   {{post.LocationEvent}}
                 </div>
-                <div class="row1" *ngIf="post.date || post.time">
+                <div class="row1"*ngIf="post.date || post.time || post.dateE || post.timeE">
   
                   <div class="postTime textSize column1">
                     <div class=" displayT t">
@@ -102,7 +102,7 @@
                       </div>
                       
                     </div>
-                    <div *ngIf="post.dateE" class="displayT t spaceTime">  {{post.dateE | date:"longDate"}}
+                    <div *ngIf="post.dateE || post.timeE" class="displayT t ">  {{post.dateE | date:"longDate"}}
                     <div class="displayT t">
                     End {{post.timeE}} 
                     </div>
