@@ -81,6 +81,7 @@ export class SinglePageComponent implements OnInit {
 })
 export class SinglePageTemplateComponent implements OnInit {
   isLoading = false;
+  hide = true;
   userId: string;
   posts: Post[] = [];
   postId: string;
@@ -273,5 +274,18 @@ export class SinglePageTemplateComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
       });
+  }
+  imgClick(imgPath): any {
+    document.getElementById('myModal').style.display = 'block';
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+    this.hide = false;
+
+    console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    this.hide = true;
+
+    console.log('bye good lookin');
   }
 }

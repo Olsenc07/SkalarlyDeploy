@@ -8,7 +8,7 @@
   <div class="feed" *ngFor="let post of posts" >
     <mat-card class="specifics-fill">
       <!-- Profile Pic -->
-      <div class="columnTopLayer" >
+      <div class="columnTopLayer" *ngIf="hide">
         <div class="row">
           <div class="column">
             
@@ -142,23 +142,7 @@
   
           <input type="image" (click)="imgClick(post.ImagePath)" class="middle-card" src="{{post.ImagePath}}" id="myImg">
         </div>
-  
-                          <!-- The Modal -->
-<div id="myModal" class="modal">
 
-  <!-- The Close Button -->
-  <button mat-icon-button class="close" (click)="close()">
-    <i class="far fa-times-circle"></i>
-  </button>
-
-  <!-- Modal Content (The Image) -->
-  
-  <img class="modal-content" src='' id="img01">
-
-  <!-- Modal Caption (Image Text) -->
-  <div id="caption"></div>
-
-</div>
   
   
         <!-- Description -->
@@ -254,6 +238,23 @@
       
   
       </div>
+        
+                          <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <button mat-icon-button class="close" (click)="close()">
+    <i class="far fa-times-circle"></i>
+  </button>
+
+  <!-- Modal Content (The Image) -->
+  
+  <img class="modal-content" src='' id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+
+</div>
     </mat-card>
     
   </div>

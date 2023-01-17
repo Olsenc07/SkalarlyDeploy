@@ -363,7 +363,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.router.navigate(['/main/:'], {
       queryParams: { category: this.postLocation.value },
     });
-
+    console.log('start', this.time.value, 'end', this.timeE.value);
     // this.router.navigate(['/profile']);
   }
 
