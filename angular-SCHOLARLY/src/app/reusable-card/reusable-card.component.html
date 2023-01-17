@@ -97,14 +97,15 @@
                   <div class="postTime textSize column1">
                     <div class=" displayT t">
                       {{post.date | date:"longDate"}}
-                      <div *ngIf="post.timeE"> {{post.timeE}}
+                      <div *ngIf="post.time"> 
+                        {{post.time}}
                       </div>
-                      <div *ngIf="post.dateE">  /{{post.dateE | date:"longDate"}}
-                        </div>
+                      
                     </div>
+                    <div *ngIf="post.dateE">  /{{post.dateE | date:"longDate"}}
                     <div class="displayT t">
-                      {{post.time}} 
-                    
+                      End {{post.timeE}} 
+                    </div>
                     </div>
                   </div>
                 </div>

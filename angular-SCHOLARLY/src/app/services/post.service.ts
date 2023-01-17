@@ -404,7 +404,7 @@ export class PostService {
           this.posts.push(postId);
           // this.posts.unshift(postId);
           this.postsUpdated.next([...this.posts]);
-          location.reload();
+          // location.reload();
           console.log('kristy', time, timeE);
         },
         error: (err) => {
