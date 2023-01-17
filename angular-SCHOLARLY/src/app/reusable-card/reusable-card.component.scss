@@ -163,6 +163,10 @@ margin-top: 2%;
   margin-top: 1%;
   // margin-bottom: 17%;
 }
+.imageBox{
+  display: flex;
+  justify-content: center;
+}
 @media (min-width: 400px) {
   .mat-card-avatar {
     width: 50px;

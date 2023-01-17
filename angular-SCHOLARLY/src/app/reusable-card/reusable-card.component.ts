@@ -93,6 +93,8 @@ export class ReusableCardComponent implements OnInit {
     this.countVisibility += count;
     const counting = 6;
     this.recomCounter += counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
     this.router.queryParams.subscribe((params) => {
       this.user = params.id;
       const id = this.user;
@@ -102,7 +104,7 @@ export class ReusableCardComponent implements OnInit {
         .subscribe((posts: Post[]) => {
           this.posts = posts;
           this.isLoading = false;
-          console.log('posts personal', this.posts);
+          console.log('posts personal forward', this.posts);
         });
     });
   }
@@ -123,7 +125,7 @@ export class ReusableCardComponent implements OnInit {
         .subscribe((posts: Post[]) => {
           this.posts = posts;
           this.isLoading = false;
-          console.log('posts personal', this.posts);
+          console.log('posts personal back', this.posts);
         });
     });
   }

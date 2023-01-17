@@ -452,19 +452,29 @@ router.delete("/comments/:id", checkAuth, (req, res, next ) => {
 // Get others posts
 router.get("/otherUsers", async(req, res) => {
     const counter = req.query.counter
+    console.log('grow', counter)
+    console.log('growing', req.query.id)
+
         await UserInfo.findOne({username: {$eq: req.query.id}})
         .then(docs => {
+    console.log('dolla', docs)
+
             Post.find({Creator: docs.Creator}).sort({_id:-1}).skip(counter).limit(6)
            .then(doc => {
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
                 posts: doc
             });
-           })
+           })  
+           .catch(error => {
+            res.status(500).json({
+                message: 'Fetching posts failed!'
+            });
+        });
         })  
         .catch(error => {
             res.status(500).json({
-                message: 'Fetching posts failed!'
+                message: 'Fetching user failed!'
             });
         });
 
