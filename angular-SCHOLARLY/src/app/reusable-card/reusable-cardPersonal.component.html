@@ -19,7 +19,7 @@
     <mat-card class="specifics-fill" *ngIf="!isLoading" >
       <!-- Profile Pic -->
       <div class="columnTopLayer" >
-        <div class="row">
+        <div class="row" *ngIf="hide">
           <div class="column">
             <div class="trashCan" >
               <button *ngIf='userId === post.Creator' mat-icon-button matTooltip="Delete Post"
@@ -145,7 +145,7 @@
   
         <!---- Takes upload img/video from post page {{Upload}} -->
         <!-- *ngFor="let show of showCases" -->
-        <div class="upload" *ngIf="post.ImagePath" >
+        <div class="upload" *ngIf="post.ImagePath || hide" >
   <div class="imageBox">
           <input type="image" (click)="imgClick(post.ImagePath)" class="middle-card" src="{{post.ImagePath}}" id="myImg">
         </div>
@@ -171,7 +171,7 @@
   
   
         <!-- Description -->
-        <div class="description" *ngIf="post.postDescription">
+        <div class="description" *ngIf="post.postDescription || hide">
   
           <div class="postText d">
             {{post.postDescription}}
@@ -179,7 +179,7 @@
   
         </div>
             <mat-divider></mat-divider>
-            <mat-form-field id="showEmojis">
+            <mat-form-field id="showEmojis" *ngIf="hide">
             <input matInput placeholder="Comment..." class="comment-form-textarea"
             maxlength="140"  [formControl]="comment" id="selection-emoji">
             <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
@@ -187,7 +187,7 @@
             
             <!-- {{submitLabel}}  -->
 
-            <div class="buttonsCWrapper">
+            <div class="buttonsCWrapper" *ngIf="hide">
           
 
             <mat-chip-list class="buttonsC">
@@ -209,7 +209,7 @@
 
 
 
-  <div  class="scroll">
+  <div  class="scroll" *ngIf="hide">
             <div *ngFor="let comment of comments; let even = even; let odd = odd">
               <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper" [ngClass]="{ even: even, odd: odd }">
                 

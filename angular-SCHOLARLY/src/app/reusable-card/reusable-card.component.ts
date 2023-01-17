@@ -321,6 +321,7 @@ export class ReusableCardComponent implements OnInit {
 })
 export class ReusableCardPersonalComponent implements OnInit {
   isLoading = false;
+  hide = true;
   userId: string;
   // Filling with Post info from post.service
   posts: Post[] = [];
@@ -551,10 +552,13 @@ export class ReusableCardPersonalComponent implements OnInit {
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+    this.hide = false;
     console.log('hey good lookin');
   }
   close(): any {
     document.getElementById('myModal').style.display = 'none';
+    this.hide = true;
+
     console.log('bye good lookin');
   }
   CommentTrigger(postId: string): void {
