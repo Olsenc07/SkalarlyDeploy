@@ -37,6 +37,7 @@ export enum ActiveCommentTypeEnum {
 })
 export class ReusableCardComponent implements OnInit {
   isLoading = false;
+  hide = true;
   userId: string;
   user: string;
   open = true;
@@ -276,11 +277,14 @@ export class ReusableCardComponent implements OnInit {
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+    this.hide = false;
 
     console.log('hey good lookin');
   }
   close(): any {
     document.getElementById('myModal').style.display = 'none';
+    this.hide = true;
+
     console.log('bye good lookin');
   }
   // Where the post was posted
@@ -1007,6 +1011,7 @@ export class CardFeedComponent implements OnInit {
   isLoading = false;
   open = true;
   closed = true;
+  hide = true;
   userId: string;
   recomCounter = 0;
   countVisibility = 0;
@@ -1184,10 +1189,14 @@ export class CardFeedComponent implements OnInit {
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+    this.hide = false;
+
     console.log('hey good lookin');
   }
   close(): any {
     document.getElementById('myModal').style.display = 'none';
+    this.hide = true;
+
     console.log('bye good lookin');
   }
   // Adding emojis
@@ -1547,6 +1556,7 @@ export class CardInfoFeedComponent implements OnInit {
 export class CardInfoMainPageComponent implements OnInit {
   category: string;
   userId: string;
+  hide = true;
   isLoading = false;
   recomCounter = 0;
   countVisibility = 0;
@@ -1693,11 +1703,12 @@ export class CardInfoMainPageComponent implements OnInit {
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
-
+    this.hide = false;
     console.log('hey good lookin');
   }
   close(): any {
     document.getElementById('myModal').style.display = 'none';
+    this.hide = true;
     console.log('bye good lookin');
   }
   // Adding emojis
