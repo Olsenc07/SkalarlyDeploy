@@ -93,15 +93,18 @@ export class ReusableCardComponent implements OnInit {
     this.countVisibility += count;
     const counting = 6;
     this.recomCounter += counting;
-
-    this.postService.getOthersPosts(this.userId, this.recomCounter);
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-        console.log('posts personal', this.posts);
-      });
+    this.router.queryParams.subscribe((params) => {
+      this.user = params.id;
+      const id = this.user;
+      this.postService.getOthersPosts(id, this.recomCounter);
+      this.postsSub = this.postService
+        .getPostUpdateListener()
+        .subscribe((posts: Post[]) => {
+          this.posts = posts;
+          this.isLoading = false;
+          console.log('posts personal', this.posts);
+        });
+    });
   }
   // Back
   onClickFeedBack(): any {
@@ -111,15 +114,18 @@ export class ReusableCardComponent implements OnInit {
     this.recomCounter -= counting;
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
-
-    this.postService.getOthersPosts(this.userId, this.recomCounter);
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-        console.log('posts personal', this.posts);
-      });
+    this.router.queryParams.subscribe((params) => {
+      this.user = params.id;
+      const id = this.user;
+      this.postService.getOthersPosts(id, this.recomCounter);
+      this.postsSub = this.postService
+        .getPostUpdateListener()
+        .subscribe((posts: Post[]) => {
+          this.posts = posts;
+          this.isLoading = false;
+          console.log('posts personal', this.posts);
+        });
+    });
   }
   // Adding emojis
   openEmoji(): void {
