@@ -370,7 +370,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       'end',
       this.timeE.value.split(':')
     );
-
+    console.log('start', this.time.value.split(':')[0]);
     // this.router.navigate(['/profile']);
   }
 
