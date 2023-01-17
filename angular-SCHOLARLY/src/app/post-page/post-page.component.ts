@@ -37,6 +37,7 @@ import { mimeType } from './mime-type.validator';
 import { AuthService } from '../services/auth.service';
 import { createPopup } from '@picmo/popup-picker';
 import { PickerInteractionMode } from 'igniteui-angular';
+import { text } from 'stream/consumers';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'LL',
@@ -122,12 +123,14 @@ export class PostPageComponent implements OnInit, OnDestroy {
   date: FormControl = new FormControl('');
   dateE: FormControl = new FormControl('');
   time: FormControl = new FormControl('');
-  timeEdit = this.time.value;
-
-  timeEditAfter = this.timeEditFunc(this.timeEdit.split());
+  timeEdit = this.testNum(this.time.value.split(':')[0]);
+  text = this.time.value.split(':')[0] >= 12 ? 'pm' : 'am';
+  startTime = this.timeEdit + ':' + this.time.value.split(':')[1] + this.text;
   timeE: FormControl = new FormControl('');
-  timeEdit2 = this.timeE.value;
-  timeEditAfter2 = this.timeEditFunc2(this.timeEdit2.split());
+  timeEditEnd = this.testNum(this.timeE.value.split(':')[0]);
+  textEnd = this.timeE.value.split(':')[0] >= 12 ? 'pm' : 'am';
+  endTime =
+    this.timeEditEnd + ':' + this.timeE.value.split(':')[1] + this.textEnd;
 
   LocationEvent: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
@@ -163,18 +166,47 @@ export class PostPageComponent implements OnInit, OnDestroy {
     //   )
     // );
   }
-
-  // editing time
-  timeEditFunc(timeEdit: any): any {
-    console.log('symmetry', this.timeEdit[0]);
-    if (this.timeEdit[0] === 0) {
-      this.timeEdit[0] = '';
-    }
-  }
-  timeEditFunc2(timeEdit: any): any {
-    console.log('symmetry2', this.timeEdit2[0]);
-    if (this.timeEdit2[0] === 0) {
-      this.timeEdit2[0] = '';
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
     }
   }
 
@@ -344,8 +376,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.postDescription.value,
       this.postLocation.value,
       this.LocationEvent.value,
-      this.time.value,
-      this.timeE.value,
+      this.startTime,
+      this.endTime,
       // this.timeEditAfter,
       // this.timeEditAfter2,
       this.date.value,
@@ -364,13 +396,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
       queryParams: { category: this.postLocation.value },
     });
     console.log('start', this.time.value, 'end', this.timeE.value);
-    console.log(
-      'start',
-      this.time.value.split(':'),
-      'end',
-      this.timeE.value.split(':')
-    );
-    console.log('start', this.time.value.split(':')[0]);
+    console.log('start', this.startTime);
+    console.log('end', this.endTime);
+
     // this.router.navigate(['/profile']);
   }
 

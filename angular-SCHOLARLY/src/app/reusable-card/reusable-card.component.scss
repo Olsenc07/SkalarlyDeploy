@@ -290,9 +290,7 @@ font-size: large;
     margin-left: 5%;
     background-color: #11173a !important;
 }
-.spaceTime{
-margin-left: 1%;
-}
+
 .spaceTime
 ::ng-deep .mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) .mdc-evolution-chip__text-label {
   color: #fff!important;
@@ -387,7 +385,7 @@ margin-top: 1%;
   font-weight: 400;
   // flex-direction: column;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 .postText {
   display: flex;
