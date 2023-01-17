@@ -18,8 +18,8 @@
   <div class="feed" *ngFor="let post of posts" >
     <mat-card class="specifics-fill" *ngIf="!isLoading" >
       <!-- Profile Pic -->
-      <div class="columnTopLayer" >
-        <div class="row" *ngIf="hide">
+      <div class="columnTopLayer" *ngIf="hide">
+        <div class="row" >
           <div class="column">
             <div class="trashCan" >
               <button *ngIf='userId === post.Creator' mat-icon-button matTooltip="Delete Post"
@@ -145,33 +145,18 @@
   
         <!---- Takes upload img/video from post page {{Upload}} -->
         <!-- *ngFor="let show of showCases" -->
-        <div class="upload" *ngIf="post.ImagePath || hide" >
+        <div class="upload" *ngIf="post.ImagePath " >
   <div class="imageBox">
           <input type="image" (click)="imgClick(post.ImagePath)" class="middle-card" src="{{post.ImagePath}}" id="myImg">
         </div>
         </div>
         <video class="upload"  src="{{post.VideoPath}}" *ngIf="post.VideoPath" controls autoload>
         </video>
-                    <!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- The Close Button -->
-  <button mat-icon-button class="close" (click)="close()">
-    <i class="far fa-times-circle"></i>
-  </button>
-
-  <!-- Modal Content (The Image) -->
-  
-  <img class="modal-content" src='' id="img01">
-
-  <!-- Modal Caption (Image Text) -->
-  <div id="caption"></div>
-
-</div>
+ 
   
   
         <!-- Description -->
-        <div class="description" *ngIf="post.postDescription || hide">
+        <div class="description" *ngIf="post.postDescription ">
   
           <div class="postText d">
             {{post.postDescription}}
@@ -209,7 +194,7 @@
 
 
 
-  <div  class="scroll" *ngIf="hide">
+  <div  class="scroll" >
             <div *ngFor="let comment of comments; let even = even; let odd = odd">
               <div *ngIf="post.id == comment.postId" class="commentsDisplayWrapper" [ngClass]="{ even: even, odd: odd }">
                 
@@ -250,7 +235,22 @@
  
         </div>
        
+                     <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <button mat-icon-button class="close" (click)="close()">
+    <i class="far fa-times-circle"></i>
+  </button>
+
+  <!-- Modal Content (The Image) -->
   
+  <img class="modal-content" src='' id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+
+</div>
   
       </div>
     </mat-card>
