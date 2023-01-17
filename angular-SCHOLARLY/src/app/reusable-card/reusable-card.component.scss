@@ -376,13 +376,12 @@ margin-top: 1%;
 }
 .postLocation {
   display: flex;
-  font-weight: 400;
   // flex-direction: column;
   justify-content: center;
 }
 .postTime {
   display: flex;
-  font-weight: 400;
+  width: 100%;
   // flex-direction: column;
   flex-direction: row;
   justify-content: space-evenly;

@@ -124,13 +124,19 @@ export class PostPageComponent implements OnInit, OnDestroy {
   dateE: FormControl = new FormControl('');
   time: FormControl = new FormControl('');
   timeEdit = this.testNum(this.time.value.split(':')[0]);
-  text = this.time.value.split(':')[0] >= 12 ? 'pm' : 'am';
-  startTime = this.timeEdit + ':' + this.time.value.split(':')[1] + this.text;
+  firstNumbers = this.time.value.split(':')[0];
+  secondNumbers = this.time.value.split(':')[1];
+  text = this.firstNumbers >= 12 ? 'pm' : 'am';
+  startTime = this.timeEdit + ':' + this.secondNumbers + '\xa0' + this.text;
   timeE: FormControl = new FormControl('');
   timeEditEnd = this.testNum(this.timeE.value.split(':')[0]);
   textEnd = this.timeE.value.split(':')[0] >= 12 ? 'pm' : 'am';
   endTime =
-    this.timeEditEnd + ':' + this.timeE.value.split(':')[1] + this.textEnd;
+    this.timeEditEnd +
+    ':' +
+    this.timeE.value.split(':')[1] +
+    '\xa0' +
+    this.textEnd;
 
   LocationEvent: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
@@ -398,6 +404,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
     console.log('start', this.time.value, 'end', this.timeE.value);
     console.log('start', this.startTime);
     console.log('end', this.endTime);
+    console.log('laugh', this.time.value.split(':')[0]);
+    console.log('laugh2', this.time.value.split(':')[1]);
+    console.log('pac', this.firstNumbers);
+    console.log('biggie', this.secondNumbers);
 
     // this.router.navigate(['/profile']);
   }
