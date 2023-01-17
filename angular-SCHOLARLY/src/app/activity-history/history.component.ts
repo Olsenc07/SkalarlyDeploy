@@ -82,7 +82,7 @@ export class CommentHistoryComponent implements OnInit {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
-        this.comments = comments.reverse();
+        this.comments = comments;
         console.log('kristina', this.comments);
       });
   }

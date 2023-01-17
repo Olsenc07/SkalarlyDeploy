@@ -149,6 +149,7 @@ image.single('upload'),
                 Creator: req.userData.userId
             });
             post.save().then(createdPost => {
+                console.log('hey babe',req.body.time, 'luv u', req.body.timeE )
                 res.status(201).json({
                     message: 'Post added successfully',
                     postId: {
