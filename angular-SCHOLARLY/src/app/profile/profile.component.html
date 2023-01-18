@@ -577,15 +577,15 @@
             </div> -->
    
             <div class="showCase" >
-  
+              <div class="showMore" *ngIf="countVisibility >= 1">
+                <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Previous
+                    <!-- <i class="fas fa-chevron-circle-down"></i> -->
+                    <i class="fas fa-caret-up"></i>
+              
+                </mat-chip>
+                </div>
               <div class="showCase_" *ngFor="let showCase of showCases">
-                <div class="showMore" *ngIf="countVisibility >= 1">
-                  <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Previous
-                      <!-- <i class="fas fa-chevron-circle-down"></i> -->
-                      <i class="fas fa-caret-up"></i>
-                
-                  </mat-chip>
-                  </div>
+             
                   <div class="column" *ngIf="showCase.ShowCasePath">
                   <input type="image" class="img" (click)="imgClick(showCase.ShowCasePath)" src={{showCase.ShowCasePath}} id="myImg" />
                   <div class="trashCan" *ngIf='(userId === showCase.Creator) && showCase'>
@@ -624,24 +624,24 @@
   <!-- Modal Content (The Image) -->
   <img class="modal-content" src='' id="img01">
 </div>
-<div class="column_">
-  <div class="showMore" *ngIf="showCase.length == 6">
-    <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
-        <!-- <i class="fas fa-chevron-circle-down"></i> -->
-        <i class="fas fa-caret-down"></i>
-    </mat-chip>
-    </div>
-     <mat-chip-list class="centerChips">
-      <mat-chip color="accent" class="addShowcase" selected (click)="navigateToEditProfile()">
-        
-      Add Showcase
-      </mat-chip>
-      </mat-chip-list>
-      
-      </div>
+
               </div>
-
-
+              <div class="column_">
+                <div class="showMore" *ngIf="showCases.length == 6">
+                  <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
+                      <!-- <i class="fas fa-chevron-circle-down"></i> -->
+                      <i class="fas fa-caret-down"></i>
+                  </mat-chip>
+                  </div>
+                 
+                  <mat-chip-list class="centerChips">
+                    <mat-chip color="accent" class="addShowcase" selected (click)="navigateToEditProfile()">
+                      
+                    Add Showcase
+                    </mat-chip>
+                    </mat-chip-list>
+                    </div>
+              
               
          
             </div>
