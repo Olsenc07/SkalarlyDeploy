@@ -22,7 +22,9 @@ export class ShowCaseService {
   private showCases: ShowCase[] = [];
   private postsUpdated = new ReplaySubject<ShowCase[]>();
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
-
+  getshowCaseUpdateListener(): any {
+    return this.postsUpdated.asObservable();
+  }
   getShowCasePersonal(userId: string, counter: number): any {
     this.http
       .get<{ message: string; showCases: any }>(
@@ -70,9 +72,6 @@ export class ShowCaseService {
       });
   }
 
-  getshowCaseUpdateListener(): any {
-    return this.postsUpdated.asObservable();
-  }
   // Adding image
   addShowCase(showCase?: File, video?: File, Creator?: string): any {
     const postData = new FormData();

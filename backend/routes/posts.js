@@ -531,6 +531,7 @@ router.get("/showCases", async(req, res, next) => {
         const counter = req.query.counter
         await UserInfo.find({username: {$eq: req.query.id}})
         .then(docs => {
+            console.log('mine', docs)
             showCase.find({Creator: docs.Creator}).sort({_id:-1}).skip(counter).limit(6)
            .then(doc => {
             res.status(200).json({
