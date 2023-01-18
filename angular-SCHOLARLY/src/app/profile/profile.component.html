@@ -624,25 +624,26 @@
   <!-- Modal Content (The Image) -->
   <img class="modal-content" src='' id="img01">
 </div>
+<div class="column_">
+  <div class="showMore" *ngIf="showCase.length == 6">
+    <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
+        <!-- <i class="fas fa-chevron-circle-down"></i> -->
+        <i class="fas fa-caret-down"></i>
+    </mat-chip>
+    </div>
+     <mat-chip-list class="centerChips">
+      <mat-chip color="accent" class="addShowcase" selected (click)="navigateToEditProfile()">
+        
+      Add Showcase
+      </mat-chip>
+      </mat-chip-list>
+      
+      </div>
               </div>
 
 
               
-          <div class="column_">
-            <div class="showMore" *ngIf="showCase.length == 6">
-              <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
-                  <!-- <i class="fas fa-chevron-circle-down"></i> -->
-                  <i class="fas fa-caret-down"></i>
-              </mat-chip>
-              </div>
-               <mat-chip-list class="centerChips">
-                <mat-chip color="accent" class="addShowcase" selected (click)="navigateToEditProfile()">
-                  
-                Add Showcase
-                </mat-chip>
-                </mat-chip-list>
-                
-                </div>
+         
             </div>
             <!-- <div class="showCase" *ngIf="info.ShowCasePath">
 

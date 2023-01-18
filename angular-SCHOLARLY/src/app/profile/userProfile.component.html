@@ -589,6 +589,13 @@
                     </div>
                   </div>
                  <div class="showCase_" *ngFor="let showCase of showCases">
+                  <div class="showMore" *ngIf="countVisibility >= 1">
+                    <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Previous
+                        <!-- <i class="fas fa-chevron-circle-down"></i> -->
+                        <i class="fas fa-caret-up"></i>
+                  
+                    </mat-chip>
+                    </div>
                   <div class="column" *ngIf="showCase.ShowCasePath">
                     <input type="image" (click)="imgClick(showCase.ShowCasePath)" class="img" src={{showCase.ShowCasePath}} id="myImg"/>
                     <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
@@ -599,7 +606,12 @@
                   <video *ngIf="showCase.VideoPath" class="column"  src="{{showCase.VideoPath}}"  controls autoload>
                   </video>
 
-
+                  <div class="showMore" *ngIf="showCase.length == 6">
+                    <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
+                        <!-- <i class="fas fa-chevron-circle-down"></i> -->
+                        <i class="fas fa-caret-down"></i>
+                    </mat-chip>
+                    </div>
 
                 </div>
                 <!-- The Modal -->
