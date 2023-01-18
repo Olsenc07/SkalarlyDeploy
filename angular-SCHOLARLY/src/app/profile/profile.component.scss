@@ -530,7 +530,7 @@ margin-top: 2%;
   width: 12vw;
   // height: inherit;
   margin: 2% 0%;
-  // max-height: 537px;
+  max-height: 350px;
   cursor: pointer;
 }
 .icon {
@@ -1016,6 +1016,12 @@ background-color: #f5f2f2;
 .trashCan{
   display: flex;
   justify-content: flex-end;
+  // position: absolute;
+}
+.trashCan_{
+visibility: hidden;
+display: flex;
+justify-content: flex-end;
   // position: absolute;
 }
 .uNameMsg {

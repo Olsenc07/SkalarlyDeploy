@@ -383,8 +383,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.postDescription.value,
       this.postLocation.value,
       this.LocationEvent.value,
-      this.startTime,
-      this.endTime,
+      this.time.value,
+      this.timeE.value,
+      // this.startTime,
+      // this.endTime,
       // this.timeEditAfter,
       // this.timeEditAfter2,
       this.date.value,
@@ -408,7 +410,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     console.log('laugh', typeof Number(this.time.value.split(':')[0]));
     console.log('laugh2', typeof Number(this.time.value.split(':')[1]));
     console.log('pac0', this.firstNumber);
-    console.log('pac1', this.firstNumbers[1]);
+    console.log('pac1', this.firstNumbers);
 
     console.log('biggie', Number(this.secondNumbers));
 
