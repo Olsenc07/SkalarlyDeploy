@@ -124,15 +124,17 @@ export class PostPageComponent implements OnInit, OnDestroy {
   dateE: FormControl = new FormControl('');
   time: FormControl = new FormControl('');
   firstNumbers = this.time.value.split(':');
-  timeEdit = this.testNum(Number(this.firstNumbers[0]));
+  firstNumber = Number(this.firstNumbers[0]);
+  timeEdit = this.testNum(this.firstNumber);
   secondNumbers = this.firstNumbers[1];
   text = Number(this.time.value.split(':')[0]) >= 12 ? 'pm' : 'am';
   startTime = this.timeEdit + ':' + this.secondNumbers + '\xa0' + this.text;
   timeE: FormControl = new FormControl('');
   firstNumbersEnd = this.timeE.value.split(':');
-  timeEditEnd = this.testNum(Number(this.firstNumbersEnd[0]));
+  firstNumberEnd = Number(this.firstNumbersEnd[0]);
+  timeEditEnd = this.testNum(this.firstNumberEnd);
   secondNumbersEnd = this.firstNumbersEnd[1];
-  textEnd = Number(this.firstNumbersEnd[0]) >= 12 ? 'pm' : 'am';
+  textEnd = this.firstNumberEnd >= 12 ? 'pm' : 'am';
   endTime =
     this.timeEditEnd + ':' + this.secondNumbersEnd + '\xa0' + this.textEnd;
 
@@ -404,10 +406,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
     console.log('end', this.endTime);
     console.log('laugh', typeof Number(this.time.value.split(':')[0]));
     console.log('laugh2', typeof Number(this.time.value.split(':')[1]));
-    console.log('pac0', Number(this.firstNumbers[0]));
+    console.log('pac0', this.firstNumber);
     console.log('pac1', Number(this.firstNumbers[1]));
 
-    console.log('biggie', this.secondNumbers);
+    console.log('biggie', Number(this.secondNumbers));
 
     // this.router.navigate(['/profile']);
   }

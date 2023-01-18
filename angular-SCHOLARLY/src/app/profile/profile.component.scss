@@ -225,6 +225,18 @@ overflow-y: scroll;
     box-sizing: border-box;
   }
 }
+.column_ {
+  // margin-right: 2%;
+  display: flex;
+  justify-content: center;
+  // flex-direction: column;
+  width: 100%;
+  // padding: 0% 15%;
+
+  // margin-bottom: 5%;
+  height: auto;
+  box-sizing: border-box;
+}
 @media (max-width: 1025px) {
   .column {
     // margin-right: 2%;

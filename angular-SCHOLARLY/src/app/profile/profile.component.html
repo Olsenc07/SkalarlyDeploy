@@ -589,9 +589,9 @@
                       </div>
                   </div>
 
-                  <div class="column" *ngIf="showCase.VideoPath">
+                  <div class="column_" *ngIf="showCase.VideoPath">
 
-                  <video *ngIf="showCase.VideoPath" class="column"  src="{{showCase.VideoPath}}"  controls autoload>
+                  <video *ngIf="showCase.VideoPath"   src="{{showCase.VideoPath}}"  controls autoload>
       
                   </video>
  <div class="trashCan" *ngIf='(userId === showCase.Creator) && showCase'>
