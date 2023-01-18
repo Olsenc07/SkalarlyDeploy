@@ -106,7 +106,7 @@ overflow-y: scroll;
 .centerChips{
   display: flex;
   justify-content: center;
-  margin-top: 2%;
+  margin-top: 1%;
 }
 .centerNumber{
   margin-left: 2%;
@@ -240,7 +240,7 @@ overflow-y: scroll;
 .column__ {
   // margin-right: 2%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   // flex-direction: column;
   width: 100%;
   // padding: 0% 15%;
@@ -906,14 +906,14 @@ mat-tab-group {
 .showMore{
   display: flex;
   justify-content: center;
-  margin-bottom: 1%;
+  margin: 1% 0%;
 }
 .showMoreBtn{
   display: flex;
   justify-content: center;
 font-family: 'Cormorant Garamond', serif;
 background-color: #10173a !important;
-margin-top: 1%;
+// margin-top: 1%;
 }
 .style {
   color: white !important;
