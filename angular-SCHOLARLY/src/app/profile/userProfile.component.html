@@ -590,11 +590,13 @@
                   </div>
                  <div class="showCase_" *ngFor="let showCase of showCases">
                   <div class="column" *ngIf="showCase.ShowCasePath">
-
                     <input type="image" (click)="imgClick(showCase.ShowCasePath)" class="img" src={{showCase.ShowCasePath}} id="myImg"/>
                     <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
-
                   </div>
+                  <video *ngIf="showCase.VideoPath" class="column"  src="{{showCase.VideoPath}}"  controls autoload>
+                  </video>
+
+
 
                 </div>
                 <!-- The Modal -->

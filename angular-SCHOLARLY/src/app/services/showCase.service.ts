@@ -136,6 +136,7 @@ export class ShowCaseService {
           this.snackBar.open('Showcase added', 'Yay!', {
             duration: 3000,
           });
+          location.reload();
         },
       });
   }
