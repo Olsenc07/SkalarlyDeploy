@@ -977,6 +977,7 @@ export class ReusableCommentFormComponent implements OnInit {
 })
 export class ShowCaseComponent implements OnInit {
   userId: string;
+  hide = true;
   showCases: ShowCase[] = [];
   private postsSub: Subscription;
   user: string;
@@ -996,7 +997,19 @@ export class ShowCaseComponent implements OnInit {
         this.showCases = showcases;
       });
   }
+  imgClick(imgPath): any {
+    document.getElementById('myModal').style.display = 'block';
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+    this.hide = false;
 
+    console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    this.hide = true;
+
+    console.log('bye good lookin');
+  }
   onDelete(postId: string): any {
     this.showCaseService.deleteShowCase(postId);
     console.log('chaz whats up homie g', postId);

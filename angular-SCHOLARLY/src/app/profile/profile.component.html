@@ -581,18 +581,30 @@
           
                   <div class="column" *ngIf="showCase.ShowCasePath">
                   <input type="image" class="img" (click)="imgClick(showCase.ShowCasePath)" src={{showCase.ShowCasePath}} id="myImg" />
-                  <!-- *ngFor="let showCase of showCases {{ShowCase}} -->
+                  <div class="trashCan" *ngIf='(userId === showCase.Creator) && showCase'>
+                    <button  mat-icon-button matTooltip="Delete ShowCase"
+                      (click)='onDelete(showCase.id)'>
+                      <i class="far fa-times-circle"></i>
+                      </button>
+                      </div>
                   </div>
+
+                  <div class="column" *ngIf="showCase.VideoPath">
+
                   <video *ngIf="showCase.VideoPath" class="column"  src="{{showCase.VideoPath}}"  controls autoload>
+      
                   </video>
+ <div class="trashCan" *ngIf='(userId === showCase.Creator) && showCase'>
+  <button  mat-icon-button matTooltip="Delete ShowCase"
+    (click)='onDelete(showCase.id)'>
+    <i class="far fa-times-circle"></i>
+    </button>
+    </div>
+  </div>
+
+                
 
 
-                <div class="trashCan" *ngIf='(userId === showCase.Creator) && showCase'>
-                  <button  mat-icon-button matTooltip="Delete ShowCase"
-                    (click)='onDelete(showCase.id)'>
-                    <i class="far fa-times-circle"></i>
-                    </button>
-                    </div>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">

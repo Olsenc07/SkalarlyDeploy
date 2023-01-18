@@ -216,11 +216,11 @@ overflow-y: scroll;
     margin-right: 2%;
     display: flex;
     justify-content: center;
-    flex-direction: column;
+    // flex-direction: column;
     width: 100%;
-    padding: 0% 15%;
+    // padding: 0% 15%;
     margin-bottom: 5%;
-    height: fit-content;
+    height: auto;
     box-sizing: border-box;
   }
 }
@@ -231,7 +231,7 @@ overflow-y: scroll;
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    padding: 0% 15%;
+    // padding: 0% 15%;
     height: fit-content;
     box-sizing: border-box;
     margin-bottom: 22%;
@@ -513,10 +513,10 @@ margin-top: 2%;
   justify-content: center;
 }
 .img {
-  width: inherit;
-  height: inherit;
+  width: 12vw;
+  // height: inherit;
   margin: 2% 0%;
-  max-height: 537px;
+  // max-height: 537px;
   cursor: pointer;
 }
 .icon {
@@ -820,7 +820,7 @@ mat-tab-group {
 .showCase_ {
   display: flex;
   height: 100%;
-  width: 99%;
+  max-width: 90%;
 }
 .show-case {
   display: flex;

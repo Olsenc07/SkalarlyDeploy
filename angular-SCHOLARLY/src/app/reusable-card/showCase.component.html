@@ -1,6 +1,6 @@
 <div  *ngFor="let showCase of showCases">
-
-  <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer">
+<div *ngIf="hide">
+  <!-- <cdk-virtual-scroll-viewport [itemSize]="500" class="infiniteContainer"> -->
 
 
     <div class="upload" >
@@ -12,10 +12,14 @@
               </div>
         <input type="image" class="img" (click)="imgClick(showCase.ShowCasePath)" class="middle-card" src="{{showCase.ShowCasePath}}" id="myImg">
       </div>
-    </cdk-virtual-scroll-viewport>
+ 
 
 
 
+
+</div>
+
+</div>
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
@@ -26,11 +30,8 @@
 
   <!-- Modal Content (The Image) -->
   <!-- <div *ngFor="let showCase of showCases"> -->
-  <img *ngIf="showCase.ShowCasePath" class="modal-content" src='{{showCase.ShowCasePath}}' id="img01">
-  <video *ngIf="showCase.VideoPath" class="modal-content" src='{{showCase.VideoPath}}' id="img02"
-  controls autoload></video>
+  <img  class="modal-content" src='' id="img01">
+
 
 <!-- </div> -->
-</div>
-
 </div>
