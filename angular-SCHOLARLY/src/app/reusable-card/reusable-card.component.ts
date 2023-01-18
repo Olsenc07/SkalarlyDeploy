@@ -990,7 +990,7 @@ export class ShowCaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
-    this.showCaseService.getShowCasePersonal(this.userId);
+    this.showCaseService.getShowCasePersonal(this.userId, 0);
     this.postsSub = this.showCaseService
       .getshowCaseUpdateListener()
       .subscribe((showcases: ShowCase[]) => {
