@@ -125,7 +125,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   time: FormControl = new FormControl('');
   firstNumbers = this.time.value.split(':');
   timeEdit = this.testNum(Number(this.firstNumbers[0]));
-  secondNumbers = this.firstNumbers.split('')[1];
+  secondNumbers = this.firstNumbers[1];
   text = Number(this.time.value.split(':')[0]) >= 12 ? 'pm' : 'am';
   startTime = this.timeEdit + ':' + this.secondNumbers + '\xa0' + this.text;
   timeE: FormControl = new FormControl('');

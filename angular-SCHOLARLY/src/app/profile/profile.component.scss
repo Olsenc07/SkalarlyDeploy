@@ -213,25 +213,27 @@ overflow-y: scroll;
 }
 @media (min-width: 1025px) {
   .column {
-    margin-right: 2%;
+    // margin-right: 2%;
     display: flex;
     justify-content: center;
     // flex-direction: column;
     width: 100%;
     // padding: 0% 15%;
-    margin-bottom: 5%;
+    padding: 0% 1%;
+    // margin-bottom: 5%;
     height: auto;
     box-sizing: border-box;
   }
 }
 @media (max-width: 1025px) {
   .column {
-    margin-right: 2%;
+    // margin-right: 2%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 100%;
     // padding: 0% 15%;
+    padding: 0% 1%;
     height: fit-content;
     box-sizing: border-box;
     margin-bottom: 22%;
@@ -816,6 +818,7 @@ mat-tab-group {
   width: 100%;
   overflow-y: scroll;
   flex-direction: column;
+  padding: 0% 3%;
 }
 .showCase_ {
   display: flex;
