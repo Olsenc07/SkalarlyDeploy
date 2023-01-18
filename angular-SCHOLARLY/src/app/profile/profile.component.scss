@@ -237,6 +237,18 @@ overflow-y: scroll;
   height: auto;
   box-sizing: border-box;
 }
+.column__ {
+  // margin-right: 2%;
+  display: flex;
+  justify-content: space-between;
+  // flex-direction: column;
+  width: 100%;
+  // padding: 0% 15%;
+  max-height: 350px;
+  // margin-bottom: 5%;
+  height: auto;
+  box-sizing: border-box;
+}
 @media (max-width: 1025px) {
   .column {
     // margin-right: 2%;
@@ -890,6 +902,18 @@ mat-tab-group {
   display: flex;
   justify-content: center;
   margin-top: 7%;
+}
+.showMore{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1%;
+}
+.showMoreBtn{
+  display: flex;
+  justify-content: center;
+font-family: 'Cormorant Garamond', serif;
+background-color: #10173a !important;
+margin-top: 1%;
 }
 .style {
   color: white !important;

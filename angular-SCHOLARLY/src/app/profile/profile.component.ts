@@ -509,6 +509,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         .getshowCaseUpdateListener()
         .subscribe((showcases: ShowCase[]) => {
           this.showCases = showcases;
+          console.log('showcases yo', this.showCases);
           this.isLoading = false;
         });
     });
