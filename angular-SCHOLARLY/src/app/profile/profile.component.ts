@@ -36,7 +36,8 @@ export class ProfileComponent implements OnInit {
   ring = false;
   show = true;
   notif = '';
-
+  recomCounter = 0;
+  countVisibility = 0;
   isLoading = false;
   follow: Follow[] = [];
   private followSub: Subscription;
@@ -135,7 +136,7 @@ export class ProfileComponent implements OnInit {
         this.userIsAuthenticated = isAuthenticated;
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
-    this.showCaseService.getShowCasePersonal(this.userId);
+    this.showCaseService.getShowCasePersonal(this.userId, 0);
     this.postsSub = this.showCaseService
       .getshowCaseUpdateListener()
       .subscribe((showcases: ShowCase[]) => {
@@ -254,7 +255,38 @@ export class ProfileComponent implements OnInit {
         console.log(err);
       });
   }
-
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    this.showCaseService.getShowCasePersonal(this.userId, this.recomCounter);
+    this.postsSub = this.showCaseService
+      .getshowCaseUpdateListener()
+      .subscribe((showcases: ShowCase[]) => {
+        this.showCases = showcases;
+        this.isLoading = false;
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    this.showCaseService.getShowCasePersonal(this.userId, this.recomCounter);
+    this.postsSub = this.showCaseService
+      .getshowCaseUpdateListener()
+      .subscribe((showcases: ShowCase[]) => {
+        this.showCases = showcases;
+        this.isLoading = false;
+      });
+  }
   // Get notifcation permission
   askForNotificationPermission(): any {
     console.log('here I am z');
@@ -294,6 +326,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ) {}
   isLoading = false;
   userId: string;
+  recomCounter = 0;
+  countVisibility = 0;
   follow: Follow[] = [];
   private followSub: Subscription;
   private followSubs: Subscription;
@@ -470,11 +504,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         .subscribe((infos: AuthDataInfo[]) => {
           this.infos = infos;
         });
-      this.showCaseService.getShowCase(id);
+      this.showCaseService.getShowCase(id, 0);
       this.infosSubShowCase = this.showCaseService
         .getshowCaseUpdateListener()
-        .subscribe((infos: ShowCase[]) => {
-          this.showCases = infos;
+        .subscribe((showcases: ShowCase[]) => {
+          this.showCases = showcases;
           this.isLoading = false;
         });
     });
@@ -526,7 +560,48 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       queryParams: { username },
     });
   }
-
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    this.route.queryParams.subscribe((params) => {
+      this.user = params.id;
+      const id = this.user;
+      this.showCaseService.getShowCase(id, this.recomCounter);
+      this.postsSub = this.showCaseService
+        .getshowCaseUpdateListener()
+        .subscribe((showcases: ShowCase[]) => {
+          this.showCases = showcases;
+          this.isLoading = false;
+          console.log('posts personal back', this.posts);
+        });
+    });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    this.route.queryParams.subscribe((params) => {
+      this.user = params.id;
+      const id = this.user;
+      this.showCaseService.getShowCase(id, this.recomCounter);
+      this.postsSub = this.showCaseService
+        .getshowCaseUpdateListener()
+        .subscribe((showcases: ShowCase[]) => {
+          this.showCases = showcases;
+          this.isLoading = false;
+          console.log('posts personal back', this.posts);
+        });
+    });
+  }
   // ngOnDestroy(): any {
   //   this.postsSub.unsubscribe();
   //   // this.authListenerSubs.unsubscribe();

@@ -534,9 +534,10 @@ router.get("/otherUsersInfos", async(req, res) => {
 });
 // showCase recieving
 router.get("/showCases", async(req, res, next) => {
+        const counter = req.query.counter
         await UserInfo.find({username: {$eq: req.query.id}})
         .then(docs => {
-            showCase.find({Creator: docs.Creator})
+            showCase.find({Creator: docs.Creator}).sort({_id:-1}).skip(counter).limit(6)
            .then(doc => {
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
@@ -553,9 +554,10 @@ router.get("/showCases", async(req, res, next) => {
 
 // showCase recieving Personal
 router.get("/showCasesPersonal", async(req, res, next) => {
+    const counter = req.query.counter
     await UserInfo.findOne({Creator: {$eq: req.query.userId}})
     .then(docs => {
-        showCase.find({Creator: docs.Creator})
+        showCase.find({Creator: docs.Creator}).sort({_id:-1}).skip(counter).limit(6)
        .then(doc => {
         res.status(200).json({
             message: 'Infos fetched succesfully!',

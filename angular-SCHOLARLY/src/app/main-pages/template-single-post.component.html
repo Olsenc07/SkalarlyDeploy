@@ -82,13 +82,13 @@
                       <div class=" displayT t">
                         {{post.date | date:"longDate"}}
                         <div *ngIf="post.time"> 
-                         Start {{post.time}}
+                         Start {{post.time  | date:"longDate"}}}
                         </div>
                         
                       </div>
                       <div *ngIf="post.dateE || post.timeE" class="displayT t ">  {{post.dateE | date:"longDate"}}
                       <div class="displayT t" *ngIf="post.timeE">
-                      End {{post.timeE}} 
+                      End {{post.timeE | date:'MMM d, y, h:mm a'}}} 
                       </div>
                       </div>
                     </div>

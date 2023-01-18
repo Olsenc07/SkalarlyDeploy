@@ -232,7 +232,7 @@ overflow-y: scroll;
   // flex-direction: column;
   width: 100%;
   // padding: 0% 15%;
-
+  max-height: 350px;
   // margin-bottom: 5%;
   height: auto;
   box-sizing: border-box;
@@ -1018,12 +1018,7 @@ background-color: #f5f2f2;
   justify-content: flex-end;
   // position: absolute;
 }
-.trashCan_{
-visibility: hidden;
-display: flex;
-justify-content: flex-end;
-  // position: absolute;
-}
+
 .uNameMsg {
   display: flex;
   justify-content: center;

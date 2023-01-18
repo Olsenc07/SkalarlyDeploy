@@ -1,6 +1,13 @@
  <div class="spinner" *ngIf="isLoading">
   <mat-spinner ></mat-spinner>
 </div>
+<div class="showMore" *ngIf="countVisibility >= 1">
+  <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Previous
+      <!-- <i class="fas fa-chevron-circle-down"></i> -->
+      <i class="fas fa-caret-up"></i>
+
+  </mat-chip>
+  </div>
 
 <div *ngFor="let info of infos">
 <div class="main-content"  *ngIf="(userId === info.Creator)">
@@ -594,12 +601,6 @@
                   <video *ngIf="showCase.VideoPath" class="column"  src="{{showCase.VideoPath}}"  controls autoload>
       
                   </video>
- <div class="trashCan" *ngIf='(userId === showCase.Creator) && showCase'>
-  <button  mat-icon-button matTooltip="Delete ShowCase"
-    (click)='onDelete(showCase.id)'>
-    <i class="far fa-times-circle"></i>
-    </button>
-    </div>
   </div>
 
                 
@@ -654,7 +655,12 @@
 </div>
 </div>
 </div>
-
+<div class="showMore" *ngIf="posts.length == 6">
+  <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
+      <!-- <i class="fas fa-chevron-circle-down"></i> -->
+      <i class="fas fa-caret-down"></i>
+  </mat-chip>
+  </div>
 
 
 

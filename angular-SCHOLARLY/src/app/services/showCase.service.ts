@@ -23,11 +23,11 @@ export class ShowCaseService {
   private postsUpdated = new ReplaySubject<ShowCase[]>();
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
-  getShowCasePersonal(userId: string): any {
+  getShowCasePersonal(userId: string, counter: number): any {
     this.http
       .get<{ message: string; showCases: any }>(
         'https://www.skalarly.com/api/posts/showCasesPersonal',
-        { params: { userId } }
+        { params: { userId, counter } }
       )
       .pipe(
         map((showCaseData) => {
@@ -46,11 +46,11 @@ export class ShowCaseService {
         this.postsUpdated.next([...this.showCases]);
       });
   }
-  getShowCase(id: string): any {
+  getShowCase(id: string, counter: number): any {
     this.http
       .get<{ message: string; showCases: any }>(
         'https://www.skalarly.com/api/posts/showCases',
-        { params: { id } }
+        { params: { id, counter } }
       )
       .pipe(
         map((showCaseData) => {
