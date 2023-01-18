@@ -92,19 +92,19 @@
                  
                   {{post.LocationEvent}}
                 </div>
-                <div class="row1"*ngIf="post.date || post.time || post.dateE || post.timeE">
+                <div class="row1"*ngIf=" post.time  || post.timeE">
   
                   <div class="postTime textSize column1">
-                    <div class=" displayT t">
-                      {{post.date | date:"longDate"}}
-                      <div *ngIf="post.time"> 
-                       Start {{post.time}}
+                    <div class=" displayT t" *ngIf="post.time">
+          
+                      <div > 
+                       Starts {{post.time  | date:'MMM d, y, h:mm a'}}
                       </div>
                       
                     </div>
-                    <div *ngIf="post.dateE || post.timeE" class="displayT t ">  {{post.dateE | date:"longDate"}}
+                    <div *ngIf=" post.timeE" class="displayT t ">  
                     <div class="displayT t" *ngIf="post.timeE">
-                    End {{post.timeE}} 
+                    Ends {{post.timeE | date:'MMM d, y, h:mm a'}} 
                     </div>
                     </div>
                   </div>

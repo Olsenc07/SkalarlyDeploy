@@ -1,13 +1,7 @@
  <div class="spinner" *ngIf="isLoading">
   <mat-spinner ></mat-spinner>
 </div>
-<div class="showMore" *ngIf="countVisibility >= 1">
-  <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Previous
-      <!-- <i class="fas fa-chevron-circle-down"></i> -->
-      <i class="fas fa-caret-up"></i>
 
-  </mat-chip>
-  </div>
 
 <div *ngFor="let info of infos">
 <div class="main-content"  *ngIf="(userId === info.Creator)">
@@ -585,7 +579,13 @@
             <div class="showCase" >
   
               <div class="showCase_" *ngFor="let showCase of showCases">
-          
+                <div class="showMore" *ngIf="countVisibility >= 1">
+                  <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Previous
+                      <!-- <i class="fas fa-chevron-circle-down"></i> -->
+                      <i class="fas fa-caret-up"></i>
+                
+                  </mat-chip>
+                  </div>
                   <div class="column" *ngIf="showCase.ShowCasePath">
                   <input type="image" class="img" (click)="imgClick(showCase.ShowCasePath)" src={{showCase.ShowCasePath}} id="myImg" />
                   <div class="trashCan" *ngIf='(userId === showCase.Creator) && showCase'>
@@ -601,6 +601,12 @@
                   <video *ngIf="showCase.VideoPath" class="column"  src="{{showCase.VideoPath}}"  controls autoload>
       
                   </video>
+                  <div class="trashCan" *ngIf='(userId === showCase.Creator) && showCase'>
+                    <button  mat-icon-button matTooltip="Delete ShowCase"
+                      (click)='onDelete(showCase.id)'>
+                      <i class="far fa-times-circle"></i>
+                      </button>
+                      </div>
   </div>
 
                 
@@ -618,21 +624,24 @@
   <!-- Modal Content (The Image) -->
   <img class="modal-content" src='' id="img01">
 </div>
-
               </div>
+
+
+              
           <div class="column_">
+            <div class="showMore" *ngIf="showCase.length == 6">
+              <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
+                  <!-- <i class="fas fa-chevron-circle-down"></i> -->
+                  <i class="fas fa-caret-down"></i>
+              </mat-chip>
+              </div>
                <mat-chip-list class="centerChips">
                 <mat-chip color="accent" class="addShowcase" selected (click)="navigateToEditProfile()">
                   
                 Add Showcase
                 </mat-chip>
                 </mat-chip-list>
-                <div class="trashCan_" >
-                  <button  mat-icon-button 
-                    >
-                    <i class="far fa-times-circle"></i>
-                    </button>
-                    </div>
+                
                 </div>
             </div>
             <!-- <div class="showCase" *ngIf="info.ShowCasePath">
@@ -655,12 +664,12 @@
 </div>
 </div>
 </div>
-<div class="showMore" *ngIf="posts.length == 6">
+<!-- <div class="showMore" *ngIf="infos.length == 6">
   <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
-      <!-- <i class="fas fa-chevron-circle-down"></i> -->
+      <-- <i class="fas fa-chevron-circle-down"></i> --
       <i class="fas fa-caret-down"></i>
   </mat-chip>
-  </div>
+  </div> -->
 
 
 

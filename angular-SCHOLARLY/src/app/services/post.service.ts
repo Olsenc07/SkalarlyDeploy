@@ -13,10 +13,9 @@ export interface Post {
   LocationEvent: string;
   time: string;
   timeE: string;
-  // timeEditAfter: string;
-  // timeEditAfter2: string;
-  date: string;
-  dateE: string;
+
+  // date: string;
+  // dateE: string;
   gender: string;
   live: string;
   paymentService: string;
@@ -65,8 +64,8 @@ export class PostService {
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
-              date: post.date,
-              dateE: post.dateE,
+              // date: post.date,
+              // dateE: post.dateE,
               gender: post.gender,
               live: post.live,
               paymentService: post.paymentService,
@@ -105,8 +104,8 @@ export class PostService {
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
-              date: post.date,
-              dateE: post.dateE,
+              // date: post.date,
+              // dateE: post.dateE,
               gender: post.gender,
               live: post.live,
               paymentService: post.paymentService,
@@ -145,8 +144,8 @@ export class PostService {
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
-              date: post.date,
-              dateE: post.dateE,
+              // date: post.date,
+              // dateE: post.dateE,
               gender: post.gender,
               live: post.live,
               paymentService: post.paymentService,
@@ -186,8 +185,8 @@ export class PostService {
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
-              date: post.date,
-              dateE: post.dateE,
+              // date: post.date,
+              // dateE: post.dateE,
               gender: post.gender,
               live: post.live,
               paymentService: post.paymentService,
@@ -227,8 +226,8 @@ export class PostService {
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
-              date: post.date,
-              dateE: post.dateE,
+              // date: post.date,
+              // dateE: post.dateE,
               gender: post.gender,
               live: post.live,
               paymentService: post.paymentService,
@@ -326,11 +325,8 @@ export class PostService {
     LocationEvent?: string,
     time?: string,
     timeE?: string,
-    // timeEditAfter?: string,
-    // timeEditAfter2?: string,
-
-    date?: string,
-    dateE?: string,
+    // date?: string,
+    // dateE?: string,
     gender?: string,
     live?: string,
     paymentService?: string,
@@ -348,10 +344,8 @@ export class PostService {
     postData.append('LocationEvent', LocationEvent);
     postData.append('time', time);
     postData.append('timeE', timeE);
-    // postData.append('timeEditAfter', timeEditAfter);
-    // postData.append('timeEditAfter2', timeEditAfter2);
-    postData.append('date', date);
-    postData.append('dateE', dateE);
+    // postData.append('date', date);
+    // postData.append('dateE', dateE);
     postData.append('gender', gender);
     postData.append('live', live);
     postData.append('paymentService', paymentService);
@@ -382,10 +376,8 @@ export class PostService {
             LocationEvent,
             time,
             timeE,
-            // timeEditAfter,
-            // timeEditAfter2,
-            date,
-            dateE,
+            // date,
+            // dateE,
             gender,
             live,
             paymentService,
@@ -422,11 +414,8 @@ export class PostService {
     LocationEvent?: string,
     time?: string,
     timeE?: string,
-    // timeEditAfter?: string,
-    // timeEditAfter2?: string,
-
-    date?: string,
-    dateE?: string,
+    // date?: string,
+    // dateE?: string,
     gender?: string,
     live?: string,
     paymentService?: string,
@@ -444,10 +433,8 @@ export class PostService {
     postData.append('LocationEvent', LocationEvent);
     postData.append('time', time);
     postData.append('timeE', timeE);
-    // postData.append('timeEditAfter', timeEditAfter);
-    // postData.append('timeEditAfter2', timeEditAfter2);
-    postData.append('date', date);
-    postData.append('dateE', dateE);
+    // postData.append('date', date);
+    // postData.append('dateE', dateE);
     postData.append('gender', gender);
     postData.append('live', live);
     postData.append('paymentService', paymentService);
@@ -478,10 +465,8 @@ export class PostService {
             LocationEvent,
             time,
             timeE,
-            // timeEditAfter,
-            // timeEditAfter2,
-            date,
-            dateE,
+            // date,
+            // dateE,
             gender,
             live,
             paymentService,
