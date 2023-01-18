@@ -171,7 +171,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     // );
   }
   // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
+  testNum(timeHourInitial: any): any {
     if (timeHourInitial > 12) {
       if (timeHourInitial === 13) {
         return 1;
@@ -402,8 +402,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
     console.log('start', this.time.value, 'end', this.timeE.value);
     console.log('start', this.startTime);
     console.log('end', this.endTime);
-    console.log('laugh', this.time.value.split(':')[0]);
-    console.log('laugh2', this.time.value.split(':')[1]);
+    console.log('laugh', typeof this.time.value.split(':')[0]);
+    console.log('laugh2', typeof this.time.value.split(':')[1]);
     console.log('pac', this.firstNumbers);
     console.log('pac0', this.firstNumbers[0]);
     console.log('pac1', this.firstNumbers[1]);
