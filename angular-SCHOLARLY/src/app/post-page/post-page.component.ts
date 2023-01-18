@@ -127,7 +127,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   firstNumber = Number(this.firstNumbers[0]);
   timeEdit = this.testNum(this.firstNumber);
   secondNumbers = this.firstNumbers[1];
-  text = Number(this.time.value.split(':')[0]) >= 12 ? 'pm' : 'am';
+  text = this.firstNumber >= 12 ? 'pm' : 'am';
   startTime = this.timeEdit + ':' + this.secondNumbers + '\xa0' + this.text;
   timeE: FormControl = new FormControl('');
   firstNumbersEnd = this.timeE.value.split(':');
@@ -174,6 +174,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): any {
+    console.log('tities', timeHourInitial);
     if (timeHourInitial > 12) {
       if (timeHourInitial === 13) {
         return 1;
@@ -407,7 +408,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     console.log('laugh', typeof Number(this.time.value.split(':')[0]));
     console.log('laugh2', typeof Number(this.time.value.split(':')[1]));
     console.log('pac0', this.firstNumber);
-    console.log('pac1', Number(this.firstNumbers[1]));
+    console.log('pac1', this.firstNumbers[1]);
 
     console.log('biggie', Number(this.secondNumbers));
 
