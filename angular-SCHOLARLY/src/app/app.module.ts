@@ -97,13 +97,15 @@ import { ReusableCommentsComponent } from './reusable-card/reusable-card.compone
 import { ReusableCommentComponent } from './reusable-card/reusable-card.component';
 import { ReusableCommentFormComponent } from './reusable-card/reusable-card.component';
 
-import { ReusableCardComponent } from './reusable-card/reusable-card.component';
-import { ReusableCardPersonalComponent } from './reusable-card/reusable-card.component';
-import { CardInfoMainPageComponent } from './reusable-card/reusable-card.component';
-
-import { CardFeedComponent } from './reusable-card/reusable-card.component';
-import { ShowCaseComponent } from './reusable-card/reusable-card.component';
-import { CardInfoFeedComponent } from './reusable-card/reusable-card.component';
+import {
+  ReusableCardPersonalComponent,
+  CardFeedComponent,
+  CardFriendsComponent,
+  CardInfoFeedComponent,
+  ShowCaseComponent,
+  ReusableCardComponent,
+  CardInfoMainPageComponent,
+} from './reusable-card/reusable-card.component';
 
 import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
 import { ReusableCardRecommendationComponent } from './reusable-card-request/reusable-card-request.component';
@@ -176,6 +178,7 @@ import { ErrorInterceptor } from './error-interceptor';
     BioComponent,
     ReusableCardComponent,
     ReusableCardPersonalComponent,
+    CardFriendsComponent,
     CardInfoMainPageComponent,
     ReusableCommentsComponent,
     ReusableCommentComponent,

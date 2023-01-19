@@ -7,6 +7,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Post {
   id: string;
+  SharerUsername: string;
+  SharerName: string;
+  SharerProfilePicPath: string;
   Title: string;
   postDescription: string;
   postLocation: string;
@@ -55,6 +58,9 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              SharerUsername: post.SharerUsername,
+              SharerName: post.SharerName,
+              SharerProfilePicPath: post.SharerProfilePicPath,
               Username: post.Username,
               Name: post.Name,
               ProfilePicPath: post.ProfilePicPath,
@@ -95,6 +101,53 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              SharerUsername: post.SharerUsername,
+              SharerName: post.SharerName,
+              SharerProfilePicPath: post.SharerProfilePicPath,
+              Username: post.Username,
+              Name: post.Name,
+              ProfilePicPath: post.ProfilePicPath,
+              Title: post.Title,
+              postDescription: post.postDescription,
+              postLocation: post.postLocation,
+              LocationEvent: post.LocationEvent,
+              time: post.time,
+              timeE: post.timeE,
+              // date: post.date,
+              // dateE: post.dateE,
+              gender: post.gender,
+              live: post.live,
+              paymentService: post.paymentService,
+              nopaymentService: post.nopaymentService,
+              virtual: post.virtual,
+              event: post.event,
+              ImagePath: post.ImagePath,
+              VideoPath: post.VideoPath,
+              Creator: post.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedPosts) => {
+        this.posts = transformedPosts;
+        this.postsUpdated.next([...this.posts]);
+      });
+  }
+  // Friends
+  getPostsFriends(userId: string, counter: number): any {
+    this.http
+      .get<{ message: string; posts: any }>(
+        'https://www.skalarly.com/api/posts/friends',
+        { params: { userId, counter } }
+      )
+      .pipe(
+        map((postData) => {
+          return postData.posts.map((post) => {
+            return {
+              id: post._id,
+              SharerUsername: post.SharerUsername,
+              SharerName: post.SharerName,
+              SharerProfilePicPath: post.SharerProfilePicPath,
               Username: post.Username,
               Name: post.Name,
               ProfilePicPath: post.ProfilePicPath,
@@ -135,6 +188,9 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              SharerUsername: post.SharerUsername,
+              SharerName: post.SharerName,
+              SharerProfilePicPath: post.SharerProfilePicPath,
               Username: post.Username,
               Name: post.Name,
               ProfilePicPath: post.ProfilePicPath,
@@ -176,6 +232,9 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              SharerUsername: post.SharerUsername,
+              SharerName: post.SharerName,
+              SharerProfilePicPath: post.SharerProfilePicPath,
               Username: post.Username,
               Name: post.Name,
               ProfilePicPath: post.ProfilePicPath,
@@ -217,6 +276,9 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              SharerUsername: post.SharerUsername,
+              SharerName: post.SharerName,
+              SharerProfilePicPath: post.SharerProfilePicPath,
               Username: post.Username,
               Name: post.Name,
               ProfilePicPath: post.ProfilePicPath,
@@ -389,6 +451,9 @@ export class PostService {
             ImagePath: responseData.postId.ImagePath,
             VideoPath: responseData.postId.VideoPath,
             Creator,
+            SharerUsername: '',
+            SharerName: '',
+            SharerProfilePicPath: '',
           };
           // const id_ = responseData.postId;
           // postData.id = id_;
@@ -477,6 +542,9 @@ export class PostService {
             ImagePath: responseData.postId.ImagePath,
             VideoPath: responseData.postId.VideoPath,
             Creator,
+            SharerUsername: '',
+            SharerName: '',
+            SharerProfilePicPath: '',
           };
           // const id_ = responseData.postId;
           // postData.id = id_;

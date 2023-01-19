@@ -1039,7 +1039,7 @@ export class CardFeedComponent implements OnInit {
 
   private postsSub: Subscription;
 
-  infos: AuthDataInfo[] = [];
+  // infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
   comments: string[] = [];
@@ -1088,13 +1088,13 @@ export class CardFeedComponent implements OnInit {
         console.log('posts personal', this.posts);
       });
     // Info
-    this.authService.getInfo(this.recomCounter);
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos.reverse();
-        this.isLoading = false;
-      });
+    // this.authService.getInfo(this.recomCounter);
+    // this.infosSub = this.authService
+    //   .getInfoUpdateListener()
+    //   .subscribe((infos: AuthDataInfo[]) => {
+    //     this.infos = infos.reverse();
+    //     this.isLoading = false;
+    //   });
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -1309,7 +1309,301 @@ export class CardFeedComponent implements OnInit {
       });
   }
 }
+// Friends
+@Component({
+  selector: 'app-card-friends',
+  templateUrl: './reusable-cardFriends.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class CardFriendsComponent implements OnInit {
+  isLoading = false;
+  open = true;
+  closed = true;
+  hide = true;
+  userId: string;
+  recomCounter = 0;
+  countVisibility = 0;
+  posts: Post[] = [];
 
+  // img popup
+  img = document.getElementById('myImg');
+  modalImg = document.getElementById('img01');
+  captionText = document.getElementById('caption');
+  // Get the <span> element that closes the modal
+  span = document.getElementsByClassName('close')[0];
+
+  private postsSub: Subscription;
+
+  infos: AuthDataInfo[] = [];
+  private infosSub: Subscription;
+
+  comments: string[] = [];
+  // number of comments that load
+  private commentsSub: Subscription;
+  comment: FormControl = new FormControl('');
+
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
+  timeMinute = new Date().getMinutes();
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
+
+  time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
+    '\xa0' +
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    '\xa0' +
+    this.text;
+
+  constructor(
+    public showCaseService: ShowCaseService,
+    private authService: AuthService,
+    private commentsService: CommentsService,
+    public postService: PostService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    // Posts
+    this.postService.getPostsFriends(this.userId, 0);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+    // Info
+    // this.authService.getInfo(this.recomCounter);
+    // this.infosSub = this.authService
+    //   .getInfoUpdateListener()
+    //   .subscribe((infos: AuthDataInfo[]) => {
+    //     this.infos = infos.reverse();
+    //     this.isLoading = false;
+    //   });
+  }
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
+  }
+
+  openEmoji(): void {
+    const selectionContainer = document.getElementById('showEmojis');
+    const triggerEmoji = document.getElementById('triggerEmo');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.comment.value + msgs;
+      this.comment.setValue(msg);
+    });
+  }
+  imgClick(imgPath): any {
+    document.getElementById('myModal').style.display = 'block';
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+    this.hide = false;
+
+    console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    this.hide = true;
+
+    console.log('bye good lookin');
+  }
+  // Adding emojis
+  addEmoji(event: any): any {
+    const msgs = event?.detail?.unicode;
+    const msg = this.comment.value + msgs;
+    this.comment.setValue(msg);
+  }
+
+  //
+  onDeleteComment(commentId: string): any {
+    this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
+  }
+  // Where the post was posted
+  navigateToMainPage(value: string): void {
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
+  }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    const NextBtn = document.getElementById('topScroll');
+    NextBtn.scrollIntoView();
+    this.postService.getPostsFriends(this.userId, this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts friends', this.posts);
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.postService.getPostsFriends(this.userId, this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts friends', this.posts);
+      });
+  }
+  onClickComments(postId: string): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    const NextBtn = document.getElementById('topScroll');
+    NextBtn.scrollIntoView();
+    this.commentsService.getComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        this.comments = comments;
+      });
+  }
+  CommentTrigger(postId: string): void {
+    if (this.comment.value) {
+      this.commentsService.createComment(
+        this.comment.value,
+        this.userId,
+        this.time,
+        postId
+      );
+      this.comment.setValue('');
+      console.log('onComment', postId);
+    }
+  }
+
+  loadComments(postId: string): void {
+    console.log('hey logic fade away', postId);
+    this.commentsService.getComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        this.comments = comments.reverse();
+      });
+  }
+}
 @Component({
   selector: 'app-post-info-feed',
   templateUrl: './reusable-cardFeed.component.html',
