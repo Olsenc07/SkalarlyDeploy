@@ -19,8 +19,8 @@
       <div class="columnTopLayer" *ngIf="hide">
         <div class="row">
           <div class="repostBox">
-          <div class="repost">
-          <div class="font" *ngIf="post.SharerUsername">
+          <div class="repost" *ngIf="post.SharerUsername">
+          <div class="font" >
           Reposted By: 
           <div class="profilePic" >
             <!-- need to get croppeded value -->
@@ -29,7 +29,7 @@
 
           <div class="column1">
             <div class="linkN" *ngIf="post.SharerName">
-              {{ post.Name}}
+              {{ post.SharerName}}
             </div>
 
 
