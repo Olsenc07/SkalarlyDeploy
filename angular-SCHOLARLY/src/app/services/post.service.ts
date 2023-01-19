@@ -607,7 +607,10 @@ export class PostService {
 
           // this.posts.push(postId);
           this.postsUpdated.next([...this.posts]);
-          location.reload();
+          this.snackBar.open('Post has been shared', '✅', {
+            duration: 3000,
+          });
+          // location.reload();
         },
         error: (err) => {
           this.snackBar.open('Post failed to add!', 'Try again', {

@@ -1603,6 +1603,11 @@ export class CardFriendsComponent implements OnInit {
         this.comments = comments.reverse();
       });
   }
+  spreadWord(postId: string): void {
+    console.log('for me baby', postId);
+    console.log('for me baby 2', this.userId);
+    this.postService.addPostShared(this.userId, postId);
+  }
 }
 @Component({
   selector: 'app-post-info-feed',

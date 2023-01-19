@@ -59,6 +59,11 @@ export class MainPagesComponent implements OnInit {
       queryParams: { userId: this.userId },
     });
   }
+  spreadWord(postId: string): void {
+    console.log('for me baby', postId);
+    console.log('for me baby 2', this.userId);
+    this.postService.addPostShared(this.userId, postId);
+  }
   // Fills same way just for different reasons
   // Each button opens this page by there should be 4 different functions with each
   // sharin the open attendence comp, but each sends diff values/reasoning
