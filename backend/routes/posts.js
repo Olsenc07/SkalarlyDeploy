@@ -149,6 +149,9 @@ image.single('upload'),
              .then(result => {
             console.log('upload',result)
             var post = new Post({
+                SharerUsername: '',
+                SharerName: '',
+                SharerProfilePicPath: '',
                 Username: documents.username,
                 Name: documents.name,
                 ProfilePicPath: documents.ProfilePicPath,
@@ -189,6 +192,9 @@ image.single('upload'),
             })
                 }else{
              var post = new Post({
+                SharerUsername: '',
+                SharerName: '',
+                SharerProfilePicPath: '',
                 Username: documents.username,
                 Name: documents.name,
                 ProfilePicPath: documents.ProfilePicPath,
@@ -249,6 +255,9 @@ video.single('video'),
                 console.log('video',result)
 
            var post = new Post({
+            SharerUsername: '',
+                SharerName: '',
+                SharerProfilePicPath: '',
                Username: documents.username,
                Name: documents.name,
                ProfilePicPath: documents.ProfilePicPath,
