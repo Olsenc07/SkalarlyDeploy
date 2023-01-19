@@ -85,6 +85,23 @@ router.get("/feed", async(req, res, next) => {
         });
     });
 });
+// Post recieving Feed
+router.get("/friends", async(req, res, next) => {
+    const counter = req.query.counter
+    // search for this users friends then get those posts
+//    await Post.find().sort({_id:-1}).skip(counter).limit(6)
+//     .then(docs => {
+//             res.status(200).json({
+//                 message: 'Posts feed fetched succesfully!',
+//                 posts: docs
+//        });
+//     })  
+//     .catch(error => {
+//         res.status(500).json({
+//             message: 'Fetching feed posts failed!'
+//         });
+//     });
+});
 
 // Post recieving personal
 router.get("/personal", async(req, res, next) => {
