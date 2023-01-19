@@ -5,6 +5,7 @@ const showCase = require('/app/backend/models/showCases');
 const Subscription = require('/app/backend/models/subscription');
 const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
+const Follow = require('/app/backend/models/follow')
 
 
 const webpush = require('web-push');
@@ -87,7 +88,16 @@ router.get("/feed", async(req, res, next) => {
 });
 // Post recieving Feed
 router.get("/friends", async(req, res, next) => {
-    const counter = req.query.counter
+    const counter = req.query.counter;
+    await Follow.find({Follower :req.query.userId})
+    .then(Following => {
+        console.log('following', Following);
+        console.log('followingIds', Following.FollowingId);
+        Post.find({Creator: Following.FollowingId})
+        .then(FollowingPosts => {
+            console.log('ryhmes', FollowingPosts )
+        })
+    })
     // search for this users friends then get those posts
 //    await Post.find().sort({_id:-1}).skip(counter).limit(6)
 //     .then(docs => {
@@ -105,7 +115,7 @@ router.get("/friends", async(req, res, next) => {
 
 // Post recieving personal
 router.get("/personal", async(req, res, next) => {
-    const counter = req.query.counter
+    const counter = req.query.counter;
      await Post.find({Creator: req.query.userId}).sort({_id:-1}).skip(counter).limit(6)
     .then(docs => {
         res.status(200).json({

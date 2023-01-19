@@ -1,27 +1,23 @@
-<div class="right-column">
+<div class="entire-page">
     <!-- Recents tetx -->
-    <div class="center" >
+    <h1 class="top" >
       Recent Feed
-    </div>
-    <!-- <div class="column_" *ngIf="posts.length == 0">
-      <div class="row"> No Posts At The Moment</div>
+    </h1>
 
+    <div class="column_" *ngIf="posts.length == 0">
+        <div class="row"> No Posts At The Moment</div>
+        <!-- <i class="far fa-frown centerR"></i> -->
 
-      <div class="fill_">
-  <mat-chip-list >
-        <mat-chip color="primary" selected class="centerR" (click)="navigateToPost()">Post Now</mat-chip>
-        </mat-chip-list>
+        <div class="fill">
+    <mat-chip-list >
+          <mat-chip color="primary" selected class="centerR"  (click)="navigateToPost()">Post Now</mat-chip>
+</mat-chip-list>
+        </div>
+
       </div>
+    <div class="feed"  >
 
-    </div> -->
-
-<!-- *ngIf="posts.length !== 0" -->
-    <div class="recents"  >
-
-
-<!-- *ngIf="(userIsAuthenticated && (userId === posts.Creator))" -->
-
-<app-card-feed  class="hideFeed" >
+<app-card-feed  class="fit" >
 </app-card-feed>
 
     </div>
