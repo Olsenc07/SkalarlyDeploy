@@ -395,8 +395,7 @@ export class PostService {
 
           this.posts.push(postId);
           this.postsUpdated.next([...this.posts]);
-          // location.reload();
-          console.log('kristy', time, timeE);
+          location.reload();
         },
         error: (err) => {
           this.snackBar.open('Post failed to add!', 'Try again', {
