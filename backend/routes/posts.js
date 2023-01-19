@@ -5,7 +5,7 @@ const showCase = require('/app/backend/models/showCases');
 const Subscription = require('/app/backend/models/subscription');
 const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
-const Shared = require('/app/backend/models/shared');
+
 
 const webpush = require('web-push');
 const cloudinary = require('cloudinary').v2
