@@ -94,7 +94,7 @@ router.get("/friends", async(req, res, next) => {
         console.log('following', Following);
         let Ids =  Following.filter(obj => {
             console.log('tits', obj)
-             obj.FollowingId })
+             return obj.FollowingId })
         console.log('followingIds', Ids);
         Post.find({Creator: Ids})
         .then(FollowingPosts => {
