@@ -13,8 +13,6 @@ const postSchema = mongoose.Schema({
     LocationEvent:  { type: String},
     time:  { type: String},
     timeE:  { type: String},
-    // date: { type: String},
-    // dateE: { type: String},
     gender:  { type: String},
     live: { type: String},
     paymentService: { type: String},

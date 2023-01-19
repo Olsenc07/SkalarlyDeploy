@@ -377,6 +377,9 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
     if(result.ImagePath) {
     cloudinary.uploader.destroy(result.cloudinary_id)
     }
+    if(result.VideoPath) {
+        cloudinary.uploader.destroy(result.cloudinary_id)
+        }
 })
 Post.deleteOne({_id: req.params.id}).then(result => {
     if (result){

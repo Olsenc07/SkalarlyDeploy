@@ -1,10 +1,12 @@
 <div class="spinner" *ngIf="isLoading">
     <mat-spinner ></mat-spinner>
   </div>
-  <div class="middle">
+  <div class="middle" *ngIf="posts.length === 0">
+    <div class="column">
   <i class="fas fa-ghost ghost"></i>
   <div class="noPosts">
  No Posts 
+  </div>
   </div>
 </div>
   <!-- Posts box which should be a scroll view -->
