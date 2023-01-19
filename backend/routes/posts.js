@@ -93,15 +93,12 @@ router.get("/friends", async(req, res, next) => {
     .then(Following => {
         console.log('following', Following);
         let first = [];
-     let hey =   Following.forEach((e)=>{
+          Following.forEach((e)=>{
         console.log('away', e.FollowingId)
-        return first.push(e.FollowingId);
+         first.push(e.FollowingId);
                 })
-   
         console.log('followingIds', first);
-        console.log('followingIds', hey);
-
-        Post.find({Creator: first})
+        Post.find({Creator: first}).sort({_id:-1}).skip(counter).limit(6)
         .then(FollowingPosts => {
             console.log('ryhmes', FollowingPosts )
             res.status(200).json({
