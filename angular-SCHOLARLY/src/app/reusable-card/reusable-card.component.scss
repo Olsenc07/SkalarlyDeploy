@@ -276,6 +276,10 @@ font-size: large;
   align-items: center;
   justify-content: space-between;
 }
+.repostBox{
+  display: flex;
+  flex-direction: column;
+}
 .repost{
   display: flex;
   justify-content: end;

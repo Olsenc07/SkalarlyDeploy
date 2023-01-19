@@ -318,6 +318,7 @@ router.post("/Shared", checkAuth,
         then(POST => {
                  UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
+        console.log('ocs', documents);
              var post = new Post({
                 SharerUsername: documents.username,
                 SharerName: documents.name,
