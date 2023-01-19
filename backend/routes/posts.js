@@ -89,11 +89,11 @@ router.get("/feed", async(req, res, next) => {
 // Post recieving Feed
 router.get("/friends", async(req, res, next) => {
     const counter = req.query.counter;
-    await Follow.find({Follower :req.query.userId})
+    await Follow.find({Follower:req.query.userId})
     .then(Following => {
         console.log('following', Following);
-        console.log('followingIds', Following.FollowingId);
-        Post.find({Creator: Following.FollowingId})
+        console.log('followingIds', Object.values(Following.FollowingId));
+        Post.find({Creator: Object.values(Following.FollowingId)})
         .then(FollowingPosts => {
             console.log('ryhmes', FollowingPosts )
         })

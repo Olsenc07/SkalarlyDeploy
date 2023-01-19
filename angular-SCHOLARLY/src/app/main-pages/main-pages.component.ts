@@ -294,7 +294,7 @@ export class SinglePageTemplateComponent implements OnInit {
 @Component({
   selector: 'app-card-recent-feed ',
   templateUrl: './recent-feed.component.html',
-  styleUrls: ['../reusable-card/reusable-card.component.scss'],
+  styleUrls: ['./main-pages.component.scss'],
 })
 export class RecentComponent implements OnInit {
   isLoading = false;
