@@ -1549,7 +1549,9 @@ export class CardInfoFeedComponent implements OnInit {
       console.log('onComment', postId);
     }
   }
-
+  spreadWord(postId: string): void {
+    console.log('for me baby', postId);
+  }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);
