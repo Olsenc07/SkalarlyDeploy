@@ -8,6 +8,9 @@
   color: white !important;
 
 }
+.align{
+  align-items: center;
+}
 .b {
   padding: 1%;
 }
@@ -212,8 +215,11 @@ font-size: large;
   padding: 0% 1% 1% 1%;
 }
 .font{
-  font-family: 'Cormorant Garamond', serif;
-
+  font-family: 'Cormorant Garamond',serif;
+    display: flex;
+    width: 100%;
+    justify-content: end;
+    padding: 1%;
 }
 .fit_ {
   display: flex;
@@ -235,7 +241,7 @@ font-size: large;
   flex-direction: row;
 }
 .row {
-  display: flex;
+  // display: flex;
   flex-direction: row;
   width: 100%;
   // justify-content: space-evenly;
