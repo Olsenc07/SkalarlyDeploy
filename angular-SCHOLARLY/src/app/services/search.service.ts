@@ -8,6 +8,7 @@ enum SearchValues {
   COURSE_F_M = 'course_f_m',
   COURSE_N_Z = 'course_n_z',
   ENTREP_IDEA = 'entrep',
+  FINANCE = 'finance',
   HELP_WANTED = 'help',
   HOUSING = 'housing',
   MISCELL_BUY_SELL = 'buy_sell',
@@ -33,6 +34,7 @@ export class SearchListService {
     { name: 'Buy & Sell', value: SearchValues.MISCELL_BUY_SELL },
     { name: 'College Connections', value: SearchValues.COLLEGE_CONNECTION },
     { name: 'Entrepreneurial Opportunities', value: SearchValues.ENTREP_IDEA },
+    { name: 'Financial Opportunities', value: SearchValues.FINANCE },
     { name: 'Helping Hand', value: SearchValues.HELP_WANTED },
     { name: 'Housing', value: SearchValues.HOUSING },
     { name: 'Programs A-E', value: SearchValues.COURSE_A_E },
@@ -233,6 +235,14 @@ export class SearchListService {
           'Sports',
           'Travel',
           'Unique Ideas',
+        ];
+        break;
+      case SearchValues.FINANCE:
+        specificOptions = [
+          'Give Aways',
+          'Grants and Bursaries',
+          'Raffles',
+          'Trial Studies',
         ];
         break;
       case SearchValues.HELP_WANTED:

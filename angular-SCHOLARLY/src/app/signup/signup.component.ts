@@ -622,43 +622,43 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmitValidation(): any {
-    try {
-      this.isLoading = true;
-      this.userId = this.authService.getUserId();
-      this.authService.loginFirst(this.emailV.value, this.passwordV.value);
-      this.userIsAuthenticated = this.authService.getIsAuth();
-      this.authListenerSubs = this.authService
-        .getAuthStatusListener()
-        .subscribe((isAuthenticated: boolean) => {
-          // this.dialog.open(LoginPopUpComponent, { disableClose: true })
-          this.userIsAuthenticated = isAuthenticated;
-          this.userId = this.authService.getUserId();
-          // Added the if else
-          if (isAuthenticated) {
-            console.log(this.userIsAuthenticated);
-            this.snackBar.open('Welcome to the community', 'Thanks!', {
+    // try {
+    this.isLoading = true;
+    this.userId = this.authService.getUserId();
+    this.authService.loginFirst(this.emailV.value, this.passwordV.value);
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated: boolean) => {
+        // this.dialog.open(LoginPopUpComponent, { disableClose: true })
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
+        // Added the if else
+        if (isAuthenticated) {
+          console.log(this.userIsAuthenticated);
+          this.snackBar.open('Welcome to the community', 'Thanks!', {
+            duration: 3000,
+          });
+          this.selectedIndex = this.selectedIndex === 2 ? 3 : 2;
+        } else {
+          this.snackBar.open(
+            'Failed to login. Remember to authenticate your email',
+            'Ok!',
+            {
               duration: 3000,
-            });
-            this.selectedIndex = this.selectedIndex === 2 ? 3 : 2;
-          } else {
-            this.snackBar.open(
-              'Failed to login. Remember to authenticate your email',
-              'Ok!',
-              {
-                duration: 3000,
-              }
-            );
-          }
-        });
-    } catch {
-      this.snackBar.open(
-        'Failed to login. Remember to authenticate your email',
-        'Ok!',
-        {
-          duration: 3000,
+            }
+          );
         }
-      );
-    }
+      });
+    // } catch {
+    //   this.snackBar.open(
+    //     'Failed to login. Remember to authenticate your email',
+    //     'Ok!',
+    //     {
+    //       duration: 3000,
+    //     }
+    //   );
+    // }
   }
 
   onSubmit2(): any {

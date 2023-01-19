@@ -112,15 +112,15 @@ router.post("/signup", async (req, res, next) => {
                 https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}`,
                 html:`
                 <html fxLayout="column" fxLayoutAlign="center center">
-                <h2 style="font-family:'Cinzel'; 
+                <h2 style="font-family:'Cormorant Garamond'; 
                 font-size: large;
                 ">We are excited to welcome you ${user.username} to the community!</h2>
-                <div style="font-family:'Poppins';
+                <div style="font-family:'Cormorant Garamond';
                 font-size: medium;"> Please click the link below to verify your account. Then return to the original page and continue to login. </div>
              
                 <a href="https://www.skalarly.com/api/user/verify-email?token=${user.emailToken}">Verify Email</a>
                
-                <div style="font-family:'Poppins';
+                <div style="font-family:'Cormorant Garamond';
                 font-size: small;
                 ">If you have recieved this email by erorr, please disregard. </div>
                 </html>
@@ -256,10 +256,10 @@ router.post('/forgot', async (req, res) => {
         <h2 style="font-family:'Cinzel'; 
         font-size: large;
         ">Hello ${vertigo.username} we hear you forgot your password.</h2>
-        <div style="font-family:'Poppins';
+        <div style="font-family:'Cormorant Garamond';
         font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
         ${vertigo.password}
-        <div style="font-family:'Poppins';
+        <div style="font-family:'Cormorant Garamond';
         font-size: small;
         ">If you have recieved this email by erorr, please disregard. </div>
         </html>
@@ -327,13 +327,13 @@ router.post('/forgoted', async (req, res) => {
    `,
        html: `
        <html fxLayout="column" fxLayoutAlign="center center">
-   <h2 style="font-family:'Cinzel'; 
+   <h2 style="font-family:'Cormorant Garamond'; 
    font-size: large;
    ">Hello ${found.username} we hear you forgot your password.</h2>
-   <div style="font-family:'Poppins';
+   <div style="font-family:'Cormorant Garamond';
    font-size: medium;"> Here is your reset code. Copy this and keep it a secret! </div>
    ${found.password}
-   <div style="font-family:'Poppins';
+   <div style="font-family:'Cormorant Garamond';
    font-size: small;
    ">If you have recieved this email by erorr, please disregard. </div>
    </html>

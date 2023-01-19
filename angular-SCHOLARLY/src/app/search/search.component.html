@@ -66,6 +66,10 @@
           <i class="far fa-lightbulb"></i>
           Entrepreneurial Opportunities</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
+          (click)="onSearchSelection('finance')" (click)="displaySpecificSearch()">
+          <i class="fas fa-dollar-sign"></i>
+          Financial Opportunities</mat-chip-option>
+          <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('help')" (click)="displaySpecificSearch()">
           <i class="fas fa-hands-helping"></i>
           Helping Hand</mat-chip-option>
