@@ -92,8 +92,11 @@ router.get("/friends", async(req, res, next) => {
     await Follow.find({Follower:req.query.userId})
     .then(Following => {
         console.log('following', Following);
-        console.log('followingIds', Object.values(Following.FollowingId));
-        Post.find({Creator: Object.values(Following.FollowingId)})
+        let Ids =  Following.filter(obj => {
+            console.log('tits', obj)
+             obj.FollowingId })
+        console.log('followingIds', Ids);
+        Post.find({Creator: Ids})
         .then(FollowingPosts => {
             console.log('ryhmes', FollowingPosts )
         })
