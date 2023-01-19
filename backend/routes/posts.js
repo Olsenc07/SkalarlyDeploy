@@ -95,15 +95,18 @@ router.get("/friends", async(req, res, next) => {
         let first = [];
      let hey =   Following.forEach((e)=>{
         console.log('away', e.FollowingId)
-        nice = first.push(e.FollowingId);
-        console.log('awayhome', nice)
-          return  nice
+        return first.push(e.FollowingId);
 })
    
+        console.log('followingIds', first);
         console.log('followingIds', hey);
-        Post.find({Creator: Ids})
+
+        Post.find({Creator: first})
         .then(FollowingPosts => {
             console.log('ryhmes', FollowingPosts )
+            res.status(200).json({
+                message: 'Friends feed fetched succesfully!',
+                posts: FollowingPosts
         })
     })
     // search for this users friends then get those posts
