@@ -5,6 +5,8 @@ const showCase = require('/app/backend/models/showCases');
 const Subscription = require('/app/backend/models/subscription');
 const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
+const Shared = require('/app/backend/models/shared');
+
 const webpush = require('web-push');
 const cloudinary = require('cloudinary').v2
 const checkAuth = require('/app/backend/middleware/check-auth');
@@ -275,7 +277,54 @@ video.single('video'),
         });
     });
 });
-
+// Post additions
+router.post("/Shared", checkAuth,
+    async(req, res) => {
+    await UserInfo.findOne({Creator: req.query.userId })
+    .then(documents => {
+             var post = new Post({
+                Username: documents.username,
+                Name: documents.name,
+                ProfilePicPath: documents.ProfilePicPath,
+                Title: req.body.Title,
+                postDescription: req.body.postDescription,
+                postLocation: req.body.postLocation,
+                LocationEvent: req.body.LocationEvent,
+                time: req.body.time,
+                timeE: req.body.timeE,
+                // date: req.body.date,
+                // dateE: req.body.dateE,
+                gender: req.body.gender,
+                live: req.body.live,
+                paymentService: req.body.paymentService,
+                nopaymentService: req.body.nopaymentService,
+                virtual: req.body.virtual,
+                event: req.body.event,
+                ImagePath: '',
+                VideoPath: '',
+                cloudinary_id: '',
+                Creator: req.userData.userId
+            });
+            post.save().then(createdPost => {
+                res.status(201).json({
+                    message: 'Post added successfully',
+                    postId: {
+                        id: createdPost._id,
+                        ...createdPost
+                    } 
+                });
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Saving a post failed!'
+                });
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Creating a post failed!'
+            });
+        });
+});
 // Posts deleting
 router.delete("/:id", checkAuth, async(req, res, next ) => {
    await Post.findOne({_id: req.params.id})

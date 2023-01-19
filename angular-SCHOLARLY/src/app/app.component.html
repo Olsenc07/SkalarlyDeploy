@@ -172,7 +172,27 @@
                   </span>
                 </button>
               </div>
+              <div class="icon-btn-fit">
+                <button
+                  mat-icon-button
+                  type="button"
+                  (click)="postUnClickedBtn()"
+                  (click)="messagesUnClickedBtn()"
+                  routerLink="/recent"
+                  class="a_up"
+                >
+                  <span
+                    class="material-icons-sharp"
+                    [ngClass]="
+                      router?.url === '/recent' ? 'RecentOn' : 'recent'
+                    "
+                  >
+                  schedule
+                  </span>
+                </button>
+              </div>
 
+        
               <div class="icon-btn-fit">
                 <button
                   mat-icon-button

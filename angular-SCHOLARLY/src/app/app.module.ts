@@ -75,6 +75,7 @@ import {
   MainPagesComponent,
   SinglePageComponent,
   SinglePageTemplateComponent,
+  RecentComponent,
 } from './main-pages/main-pages.component';
 import {
   SignupComponent,
@@ -163,6 +164,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MainPagesComponent,
     SinglePageComponent,
     SinglePageTemplateComponent,
+    RecentComponent,
     SignupComponent,
     HomePageComponent,
     ExplainedComponent,

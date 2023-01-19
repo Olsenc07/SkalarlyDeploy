@@ -1552,7 +1552,7 @@ export class CardInfoFeedComponent implements OnInit {
   spreadWord(postId: string): void {
     console.log('for me baby', postId);
     console.log('for me baby 2', this.userId);
-
+    this.postService.addPostShared(this.userId, postId);
   }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);

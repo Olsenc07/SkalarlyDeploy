@@ -289,3 +289,12 @@ export class SinglePageTemplateComponent implements OnInit {
     console.log('bye good lookin');
   }
 }
+
+@Component({
+  selector: 'app-card-recent-feed ',
+  templateUrl: './recent-feed.component.html',
+  styleUrls: ['../reusable-card/reusable-card.component.scss'],
+})
+export class RecentComponent implements OnInit {
+  ngOnInit(): void {}
+}

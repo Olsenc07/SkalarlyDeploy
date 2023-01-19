@@ -37,6 +37,7 @@ import {
 import {
   MainPagesComponent,
   SinglePageComponent,
+  RecentComponent,
 } from './main-pages/main-pages.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { AuthGuard } from './signup/auth.guard';
@@ -79,6 +80,8 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
 
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
+  { path: 'recent', component: RecentComponent, canActivate: [AuthGuard] },
+
   {
     path: 'edit-profile/:userId',
     component: EditProfileComponent,

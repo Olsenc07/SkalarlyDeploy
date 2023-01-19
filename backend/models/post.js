@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 
 const postSchema = mongoose.Schema({
+    SharerUsername:  { type: String },
+    SharerName:  { type: String },
+    SharerProfilePicPath:  { type: String },
     Username:  { type: String },
     Name:  { type: String },
     ProfilePicPath:  { type: String },

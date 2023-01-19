@@ -493,6 +493,61 @@ export class PostService {
         },
       });
   }
+  // Adding shared
+  addPostShared(userId: string, postId: string): any {
+    console.log('some fun', userId);
+    console.log('some funner', postId);
+
+    const postData = new FormData();
+    postData.append('userId', userId);
+    postData.append('postId', postId);
+
+    this.http
+      .post<{ message: string; postId: Post }>(
+        'https://www.skalarly.com/api/posts/Shared',
+        postData
+      )
+      .subscribe({
+        next: (responseData) => {
+          // const postId: Post = {
+          //   id: responseData.postId.id,
+          //   // Test with these three
+          //   Username: responseData.postId.Username,
+          //   Name: responseData.postId.Name,
+          //   ProfilePicPath: responseData.postId.ProfilePicPath,
+          //   //
+          //   Title,
+          //   postDescription,
+          //   postLocation,
+          //   LocationEvent,
+          //   time,
+          //   timeE,
+          //   // date,
+          //   // dateE,
+          //   gender,
+          //   live,
+          //   paymentService,
+          //   nopaymentService,
+          //   virtual,
+          //   event,
+          //   upload,
+          //   video,
+          //   ImagePath: responseData.postId.ImagePath,
+          //   VideoPath: responseData.postId.VideoPath,
+          //   Creator,
+          // };
+
+          // this.posts.push(postId);
+          this.postsUpdated.next([...this.posts]);
+          location.reload();
+        },
+        error: (err) => {
+          this.snackBar.open('Post failed to add!', 'Try again', {
+            duration: 3000,
+          });
+        },
+      });
+  }
   deletePost(postId: string): any {
     // console.log('hey chase postId', postId);
     this.http
