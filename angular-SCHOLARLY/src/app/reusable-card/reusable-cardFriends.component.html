@@ -1,9 +1,12 @@
 <div class="spinner" *ngIf="isLoading">
     <mat-spinner ></mat-spinner>
   </div>
-  <mat-chip-list *ngIf="posts.length == 0" class="middle">
-    <mat-chip color="accent" selected class="centerR addPost needPost" (click)="navigateToPost()">Post Now</mat-chip>
-    </mat-chip-list>
+  <div class="middle">
+  <i class="fas fa-ghost ghost"></i>
+  <div class="noPosts">
+ No Posts 
+  </div>
+</div>
   <!-- Posts box which should be a scroll view -->
   <div class="infiniteContainer" id="topScroll">
     <div class="showMore" *ngIf="countVisibility >= 1">

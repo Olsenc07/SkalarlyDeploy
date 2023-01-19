@@ -232,14 +232,21 @@
           </mat-chip>
                       </mat-chip-list>
                   
-                      <mat-chip-list class="buttonsC">
-                        <mat-chip class="showCommentsBtn" matTooltip="Repost" (click)="spreadWord(post.id)">
+                      <mat-chip-list class="buttonsC" *ngIf="userId == post.Creator">
+                        <mat-chip class="showCommentsBtn" matTooltip="Repost" (click)="spreadWord(post.id)"  disabled>
                     Spread Word
                     <i class="fas fa-share-alt"></i>
                     <!-- {{shareds.length}} -->
                         </mat-chip>
                       </mat-chip-list>
 
+                      <mat-chip-list class="buttonsC" *ngIf="userId !== post.Creator">
+                        <mat-chip class="showCommentsBtn" matTooltip="Repost" (click)="spreadWord(post.id)" >
+                    Spread Word
+                    <i class="fas fa-share-alt"></i>
+                    <!-- {{shareds.length}} -->
+                        </mat-chip>
+                      </mat-chip-list>
 
         <mat-chip-list class="buttonsC">
         <mat-chip color="primary"
