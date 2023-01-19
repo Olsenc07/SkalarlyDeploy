@@ -211,7 +211,10 @@ font-size: large;
   // height: 100%;
   padding: 0% 1% 1% 1%;
 }
+.font{
+  font-family: 'Cormorant Garamond', serif;
 
+}
 .fit_ {
   display: flex;
 }
@@ -272,6 +275,11 @@ font-size: large;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+.repost{
+  display: flex;
+  justify-content: end;
+  // Move to top right corner
 }
 .scroll{
   max-height: 300px;

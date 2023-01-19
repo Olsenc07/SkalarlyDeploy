@@ -18,6 +18,41 @@
       <!-- Profile Pic -->
       <div class="columnTopLayer" *ngIf="hide">
         <div class="row">
+          <div class="repost">
+          <div class="font" *ngIf="post.SharerUsername">
+          Repost By: 
+          <div class="profilePic" >
+            <!-- need to get croppeded value -->
+            <img class="pic" src="{{post.ProfilePicPath}}">
+          </div>
+
+          <div class="column1">
+            <div class="linkN" *ngIf="post.Name">
+              {{ post.Name}}
+            </div>
+
+
+
+            <div class="nameTitle">
+              <!-- Button directs to that users profile -->
+              
+              <button mat-button *ngIf="userId !== post.Creator" >
+                <div class="userName  link"  id="userName" matTooltip="View Profile"
+                 (click)="navigateToPage(post.SharerUsername)">@{{post.SharerUsername}}
+                  </div>
+                </button>
+              <button mat-button *ngIf="userId == post.Creator" disabled>
+                  <div class="userName  link" id="userName">@{{post.SharerUsername}}</div>
+                  </button>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+          <mat-divider></mat-divider>
+        
           <div class="column">
             <div class="centerT" *ngIf="post.Title">
   

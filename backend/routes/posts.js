@@ -280,29 +280,36 @@ video.single('video'),
 // Post additions
 router.post("/Shared", checkAuth,
     async(req, res) => {
-    await UserInfo.findOne({Creator: req.query.userId })
+        console.log('1',req.body.postId );
+        console.log('2',req.body.userId );
+        await  Post.findOne({_id: req.body.postId}).
+        then(POST => {
+                 UserInfo.findOne({Creator: req.body.userId })
     .then(documents => {
              var post = new Post({
-                Username: documents.username,
-                Name: documents.name,
-                ProfilePicPath: documents.ProfilePicPath,
-                Title: req.body.Title,
-                postDescription: req.body.postDescription,
-                postLocation: req.body.postLocation,
-                LocationEvent: req.body.LocationEvent,
-                time: req.body.time,
-                timeE: req.body.timeE,
+                SharerUsername: documents.username,
+                SharerName: documents.name,
+                SharerProfilePicPath: documents.ProfilePicPath,
+                Username: POST.Username,
+                Name: POST.Name,
+                ProfilePicPath: POST.ProfilePicPath,
+                Title: POST.Title,
+                postDescription: POST.postDescription,
+                postLocation: POST.postLocation,
+                LocationEvent: POST.LocationEvent,
+                time: POST.time,
+                timeE: POST.timeE,
                 // date: req.body.date,
                 // dateE: req.body.dateE,
-                gender: req.body.gender,
-                live: req.body.live,
-                paymentService: req.body.paymentService,
-                nopaymentService: req.body.nopaymentService,
-                virtual: req.body.virtual,
-                event: req.body.event,
-                ImagePath: '',
-                VideoPath: '',
-                cloudinary_id: '',
+                gender: POST.gender,
+                live: POST.live,
+                paymentService: POST.paymentService,
+                nopaymentService: POST.nopaymentService,
+                virtual: POST.virtual,
+                event: POST.event,
+                ImagePath: POST.ImagePath,
+                VideoPath: POST.VideoPath,
+                cloudinary_id: POST.cloudinary_id,
                 Creator: req.userData.userId
             });
             post.save().then(createdPost => {
@@ -316,12 +323,18 @@ router.post("/Shared", checkAuth,
             })
             .catch(error => {
                 res.status(500).json({
-                    message: 'Saving a post failed!'
+                    message: 'Saving your post failed!'
                 });
             });
-        }).catch(error => {
+        }) .catch(error => {
             res.status(500).json({
-                message: 'Creating a post failed!'
+                message: 'Finding your post failed!'
+            });
+        });
+    })
+    .catch(error => {
+            res.status(500).json({
+                message: 'Creating your post failed!'
             });
         });
 });
