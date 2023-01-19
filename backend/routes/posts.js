@@ -312,11 +312,11 @@ video.single('video'),
 // Post additions
 router.post("/Shared", checkAuth,
     async(req, res) => {
-        console.log('1',req.body.postId );
-        console.log('2',req.body.userId );
-        await  Post.findOne({_id: req.body.postId}).
+        console.log('1',req.query.postId );
+        console.log('2',req.query.userId );
+        await  Post.findOne({_id: req.query.postId}).
         then(POST => {
-                 UserInfo.findOne({Creator: req.body.userId })
+                 UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
              var post = new Post({
                 SharerUsername: documents.username,

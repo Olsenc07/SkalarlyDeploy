@@ -573,7 +573,8 @@ export class PostService {
     this.http
       .post<{ message: string; postId: Post }>(
         'https://www.skalarly.com/api/posts/Shared',
-        postData
+        postData,
+        { params: { userId, postId } }
       )
       .subscribe({
         next: (responseData) => {
