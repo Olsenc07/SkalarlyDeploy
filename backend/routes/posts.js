@@ -111,7 +111,8 @@ router.get("/friends", async(req, res, next) => {
 // Posts trending
 router.get("/Trending", async(req, res, next) => {
     const counter = req.query.counter;
-    Post.find({}).sort({_id:-1}).skip(counter).limit(6)
+
+    Post.find({ OriginalPostId: { $ne: '' } })
     .then(Trending => {
         console.log('ryhmes', Trending )
 
@@ -120,13 +121,46 @@ router.get("/Trending", async(req, res, next) => {
       console.log('away', e.OriginalCreatorId)
        first.push(e.OriginalCreatorId);
               })
-              first.filter((v) => (v === value)).length;
+    console.log('packs', first)
+
         res.status(200).json({
             message: 'Thats whats trending!',
             posts: Trending
     })
 })
 });
+// Number of reposts
+router.get("/TrendingNumber", async(req, res, next) => {
+    function countOccurrences(first,n,x)
+    {
+        let res = 0;
+        for (let i=0; i<n; i++)
+        {
+            if (x == first[i])
+                res++;
+        }
+        return res;
+    }
+
+    let first = [];
+    Trending.forEach((e)=>{
+  console.log('away', e.OriginalCreatorId)
+   first.push(e.OriginalCreatorId);
+          })
+    let  n = first.length
+    let x = req.query.postId;
+     countOccurrences(first,n,x).then(
+        number => {
+            console.log('Reposts', number)
+            res.status(200).json({
+                message: 'Number of reposts returned!',
+                posts: number
+            });
+        }
+     )
+
+})
+
 // Post recieving personal
 router.get("/personal", async(req, res, next) => {
     const counter = req.query.counter;

@@ -1780,6 +1780,18 @@ export class CardFriendsComponent implements OnInit {
       return 'Dec';
     }
   }
+
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId !== '') {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      console.log('love wheel', OriginalPostId);
+    } else {
+      this.postService.getPostsTrendingNumber(postId);
+      console.log('love cycle', postId);
+    }
+  }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
     this.router.navigate(['/single/:'], { queryParams: { postId } });

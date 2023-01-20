@@ -44,7 +44,7 @@ export interface Post {
 export class PostService {
   private posts: Post[] = [];
   private postsUpdated = new ReplaySubject<Post[]>();
-
+  private trendNumber = new ReplaySubject();
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   private infos: AuthDataInfo[] = [];
@@ -321,6 +321,19 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
+      });
+  }
+  // Trending
+  // getting others posts for their profiles display
+  getPostsTrendingNumber(postId: string): any {
+    this.http
+      .get<{ message: string; posts: number }>(
+        'https://www.skalarly.com/api/posts/TrendingNumber',
+        { params: { postId } }
+      )
+      .subscribe((transformedPosts) => {
+        this.trendNumber.next(this.posts);
+        console.log('rope around my nob', transformedPosts);
       });
   }
   // getting main page posts
