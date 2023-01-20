@@ -23,6 +23,13 @@
           <div class="repostBox">
             <div class="repost" *ngIf="post.SharerUsername">
             <div class="font" *ngIf="post.SharerUsername">
+              <div matTooltip="To Original Post">
+                <button mat-icon-button (click)="navToPost(post.OriginalPostId)">
+                  <i class="fas fa-home"></i>
+                </button>
+              </div>
+            <div class="repostStuff">
+
               <div class="align">
             Repost By: 
             </div>
@@ -52,7 +59,7 @@
               </div>
             </div>
   
-  
+  </div>
   
           </div>
         </div>
@@ -217,12 +224,12 @@
                 <i class="far fa-comments"></i>
               </mat-chip>
                           </mat-chip-list>
-                          <mat-chip-list class="buttonsC">
-                            <mat-chip class="showCommentsBtn" matTooltip="Repost" (click)="spreadWord(post.id)">
-                        <i class="fas fa-share-alt"></i>
+                          <div class="buttonsC">
+                            <button mat-icon-button matTooltip="Repost" disabled>
+                              <i class="fas fa-share-alt"></i>
                         <!-- {{shareds.length}} -->
-                            </mat-chip>
-                          </mat-chip-list>
+                            </button>
+                          </div>
                           <mat-chip-list class="buttonsC">
                             <mat-chip color="primary" selected matTooltip="Add your comment" class="comment-form-buttton" (click)="CommentTrigger(post.id)"
                             type="submit" [disabled]="comment.value === '' " >
