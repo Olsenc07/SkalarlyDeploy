@@ -1785,12 +1785,12 @@ export class CardFriendsComponent implements OnInit {
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
     console.log('Hey babe I miss you more', postId);
     console.log('Hey babe I miss you more', OriginalPostId);
-    if (OriginalPostId !== '') {
-      this.postService.getPostsTrendingNumber(OriginalPostId);
-      console.log('love wheel', OriginalPostId);
-    } else {
+    if (OriginalPostId === undefined) {
       this.postService.getPostsTrendingNumber(postId);
       console.log('love cycle', postId);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      console.log('love wheel', OriginalPostId);
     }
     this.reposts = this.postService.getTrendNumber();
   }

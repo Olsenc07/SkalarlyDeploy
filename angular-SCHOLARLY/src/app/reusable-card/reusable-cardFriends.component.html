@@ -246,28 +246,27 @@
           </mat-chip>
                       </mat-chip-list>
                   
-                      <div class="buttonsC" *ngIf="userId == post.Creator">
+                      <div class="buttonsC" *ngIf="userId == post.Creator" [matBadge]="reposts">
                         <button mat-icon-button matTooltip="Repost" disabled>
                           <i class="fas fa-share-alt"></i>
                     <!-- {{shareds.length}} -->
                         </button>
                       </div>
-
-                      <div class="buttonsC" *ngIf="(userId !== post.Creator) || (userId !== post.OriginalCreatorId)">
-                        <button mat-icon-button  matTooltip="Repost" (click)="spreadWord(post.id)" (click)="getPostsTrendingNumber(post.OriginalPostId,post._id)">
+<div>
+  <button matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
+    Counter
+  </button>
+</div>
+                      <div class="buttonsC" *ngIf="(userId !== post.Creator) || (userId !== post.OriginalCreatorId)"
+                      [matBadge]="reposts">
+                        <button mat-icon-button  matTooltip="Repost" (click)="spreadWord(post.id)" >
               
                     <i class="fas fa-share-alt"></i>
                     <!-- {{shareds.length}} -->
                         </button>
                       </div>
                       {{reposts}}
-                      <div class="buttonsC" *ngIf="(userId == post.Creator) || (userId == post.OriginalCreatorId)">
-                        <button mat-icon-button  matTooltip="Repost" disabled (click)="getPostsTrendingNumber(post.OriginalPostId, post._id)">
-              
-                    <i class="fas fa-share-alt"></i>
-                    <!-- {{shareds.length}} -->
-                        </button>
-                      </div>
+                      
                       <!-- <button mat-icon-button class="showCommentsBtn" >
                         <mat-icon>bookmark</mat-icon>
                       </button> -->
