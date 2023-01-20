@@ -76,6 +76,7 @@ import {
   SinglePageComponent,
   SinglePageTemplateComponent,
   RecentComponent,
+  TrendingComponent,
 } from './main-pages/main-pages.component';
 import {
   SignupComponent,
@@ -105,6 +106,7 @@ import {
   ShowCaseComponent,
   ReusableCardComponent,
   CardInfoMainPageComponent,
+  TrendingFeedComponent,
 } from './reusable-card/reusable-card.component';
 
 import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
@@ -164,6 +166,7 @@ import { ErrorInterceptor } from './error-interceptor';
     FollowedTemplateComponent,
     GroupChatsComponent,
     MainPagesComponent,
+    TrendingComponent,
     SinglePageComponent,
     SinglePageTemplateComponent,
     RecentComponent,
@@ -180,6 +183,7 @@ import { ErrorInterceptor } from './error-interceptor';
     ReusableCardPersonalComponent,
     CardFriendsComponent,
     CardInfoMainPageComponent,
+    TrendingFeedComponent,
     ReusableCommentsComponent,
     ReusableCommentComponent,
     ReusableCommentFormComponent,

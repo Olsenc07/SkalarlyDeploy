@@ -1,0 +1,360 @@
+<div class="spinner" *ngIf="isLoading">
+    <mat-spinner ></mat-spinner>
+  </div>
+  <div class="middle" *ngIf="posts.length === 0">
+    <div class="column">
+  <i class="fas fa-ghost ghost"></i>
+  <div class="noPosts">
+ No Posts 
+  </div>
+  </div>
+</div>
+  <!-- Posts box which should be a scroll view -->
+  <div class="infiniteContainer" id="topScroll">
+    <div class="showMore" *ngIf="countVisibility >= 1">
+      <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Previous
+          <!-- <i class="fas fa-chevron-circle-down"></i> -->
+          <i class="fas fa-caret-up"></i>
+  
+      </mat-chip>
+      </div>
+  <div class="feed" *ngFor="let post of posts" >
+    <mat-card class="specifics-fill" *ngIf="!isLoading ">
+      <!-- Profile Pic -->
+      <div class="columnTopLayer" *ngIf="hide">
+        <div class="row">
+          <div class="repostBox">
+          <div class="repost" *ngIf="post.SharerUsername">
+          <div class="font" *ngIf="post.SharerUsername">
+            <div matTooltip="To Original Post">
+              <button mat-icon-button (click)="navToPost(post.OriginalPostId)">
+                <i class="fas fa-home"></i>
+              </button>
+            </div>
+            <div class="repostStuff">
+            <div class="align">
+          Reposted By: 
+          </div>
+          <div class="profilePic" >
+            <!-- need to get croppeded value -->
+            <img class="pic" src="{{post.SharerProfilePicPath}}">
+          </div>
+
+          <div class="column1">
+            <div class="linkN" *ngIf="post.SharerName">
+              {{ post.SharerName}}
+            </div>
+
+
+
+            <div class="nameTitle">
+              <!-- Button directs to that users profile -->
+              
+              <button mat-button *ngIf="userId !== post.Creator" >
+                <div class="userName  link"  id="userName" matTooltip="View Profile"
+                 (click)="navigateToPage(post.SharerUsername)">@{{post.SharerUsername}}
+                  </div>
+                </button>
+              <button mat-button *ngIf="userId == post.Creator" disabled>
+                  <div class="userName  link" id="userName">@{{post.SharerUsername}}</div>
+                  </button>
+            </div>
+          </div>
+
+
+        </div>
+        </div>
+      </div>
+          <mat-divider></mat-divider>
+        
+          <div class="column">
+            <div class="centerT" *ngIf="post.Title">
+  
+              <mat-card-title class="postTitle textSizeTit">
+                {{ post.Title}}
+              </mat-card-title>
+  
+              
+            
+  
+            </div>
+            <div class="row2">
+<!-- <app-post-info-feed></app-post-info-feed> -->
+
+               <div class="column"  >
+                <!-- *ngIf="posts.length > 0" -->
+                 <div class="row-" *ngIf="(post.Creator )">
+                  <div class="profilePic" >
+                    <!-- need to get croppeded value -->
+                    <img class="pic" src="{{post.ProfilePicPath}}">
+                  </div>
+  
+                  <div class="column1">
+                    <div class="linkN" *ngIf="post.Name">
+                      {{ post.Name}}
+                    </div>
+  
+  
+  
+                    <div class="nameTitle">
+                      <!-- Button directs to that users profile -->
+                      
+                      <!-- <button mat-button *ngIf="userId !== post.Creator" >
+                        <div class="userName  link"  id="userName" matTooltip="View Profile"
+                         (click)="navigateToPage(post.Username)">@{{post.Username}}
+                          </div>
+                        </button> -->
+                      <button mat-button disabled>
+                          <div class="userName  link" id="userName">@{{post.Username}}</div>
+                          </button>
+                    </div>
+                  </div>
+  
+  
+                </div> 
+
+  
+              </div> 
+  
+  
+  
+              <div class="row1">
+                <div class="column_">
+  
+  
+                  <!-- Idk If needed -->
+  
+                  <button mat-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
+                  (click)="navigateToMainPage(post.postLocation)" *ngIf="post.postLocation">
+                    <!-- Location -->
+                    {{post.postLocation}}
+                  </button>
+  
+                  <div class="textSize row1 t" *ngIf="post.LocationEvent">
+                   
+                    {{post.LocationEvent}}
+                  </div>
+                  <div class="row1"*ngIf=" post.time  || post.timeE">
+  
+                    <div class="postTime textSize column1">
+                      <div class=" displayT t" *ngIf="post.time">
+            
+                        <div > 
+                         Starts {{post.time  | date:'MMM d, y, h:mm a'}}
+                        </div>
+                        
+                      </div>
+                      <div *ngIf=" post.timeE" class="displayT_ t ">  
+                     
+                      Ends {{post.timeE | date:'MMM d, y, h:mm a'}} 
+                      </div>
+               
+                    </div>
+                  </div>
+  
+  
+  
+               
+                  <div class="row">
+                    <div class="booleans">
+  
+                      <div class="material-icons b" matTooltip="Everyone's welcome to join"
+                      *ngIf="post.gender == 'all' ">diversity_3</div>
+                      <div class="material-icons b" matTooltip="Females are welcome to join"
+                       *ngIf="post.gender == 'female' ">female</div>
+                      <div class="material-icons b" matTooltip="Males are welcome to join"
+                      *ngIf="post.gender == 'male'">male</div>
+                      <div class="material-icons b" matTooltip="LGBTQ2S+ members are welcome to join"
+                      *ngIf="post.gender == 'lgbtq2s+'">transgender</div>
+  
+                      <div class="material-icons b" matTooltip="This is a live event"  *ngIf="post.live">follow_the_signs</div>
+                      <div class="material-icons b" matTooltip="This event has a cost" *ngIf="post.paymentService ">attach_money</div>
+                      <div class="material-icons b" matTooltip="This event is free" *ngIf="post.nopaymentService ">money_off</div>
+
+                      <div class="material-icons b" matTooltip="This is a virtual event" 
+                      *ngIf="post.virtual">photo_camera_front</div>
+  
+                      <div class="material-icons b" matTooltip="This is a professional event"
+                      *ngIf="post.event == 'formal' ">work</div>
+                      <div class="material-icons b" matTooltip="This is a relaxed event"
+                       *ngIf="post.event == 'relaxed' ">nightlife
+                      </div>
+                    </div>
+                  </div>
+  
+  
+  
+  
+  
+                </div>
+              </div>
+  
+  
+            </div>
+  
+          </div>
+        </div>
+  
+  
+        <!---- Takes upload img/video from post page {{Upload}} -->
+        <!-- *ngFor="let show of showCases" -->
+        <div class="upload" *ngIf="post.ImagePath" >
+  
+          <input type="image" (click)="imgClick(post.ImagePath)" class="middle-card" src="{{post.ImagePath}}" id="myImg">
+        </div>
+        <!-- video -->
+        <video class="upload"  src="{{post.VideoPath}}" *ngIf="post.VideoPath" controls autoload>
+        </video>
+       
+  
+  
+        <!-- Description -->
+        <div class="description" *ngIf="post.postDescription">
+  
+          <div class="postText d">
+            {{post.postDescription}}
+          </div>
+  
+        </div>
+  
+  
+
+            <mat-divider></mat-divider>
+            <!-- <app-card-comments></app-card-comments> -->
+      
+            <!-- <button mat-icon-button type="button"  *ngIf="closed"
+             class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button> -->
+             <mat-form-field id="showEmojis">
+            <input matInput placeholder="Comment..." class="comment-form-textarea" id="selection-emoji"
+            maxlength="140" [formControl]="comment" >
+            <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
+        </mat-form-field>
+            <!-- {{submitLabel}}  -->
+            <div class="buttonsCWrapper">
+            <!-- <mat-chip-list *ngIf="open" class="buttonsC">
+           
+        <mat-chip  type="button" 
+        class="comment-form-button comment-form-cancel-button"
+        (click)="clearComments()">
+            Clear
+        </mat-chip>
+        </mat-chip-list> -->
+        <mat-chip-list class="buttonsC">  
+          <mat-chip class="showCommentsBtn"  matTooltip="Click to show comments" (click)="loadComments(post.id)">
+           Comments
+            <i class="far fa-comments"></i>
+          </mat-chip>
+                      </mat-chip-list>
+                  
+                      <div class="buttonsC" *ngIf="userId == post.Creator">
+                        <button mat-icon-button matTooltip="Repost" disabled>
+                          <i class="fas fa-share-alt"></i>
+                    <!-- {{shareds.length}} -->
+                        </button>
+                      </div>
+
+                      <div class="buttonsC" *ngIf="(userId !== post.Creator) || (userId !== post.OriginalCreatorId)">
+                        <button mat-icon-button  matTooltip="Repost" (click)="spreadWord(post.id)" >
+              
+                    <i class="fas fa-share-alt"></i>
+                    <!-- {{shareds.length}} -->
+                        </button>
+                      </div>
+                      <div class="buttonsC" *ngIf="(userId == post.Creator) || (userId == post.OriginalCreatorId)">
+                        <button mat-icon-button  matTooltip="Repost" disabled >
+              
+                    <i class="fas fa-share-alt"></i>
+                    <!-- {{shareds.length}} -->
+                        </button>
+                      </div>
+                      <!-- <button mat-icon-button class="showCommentsBtn" >
+                        <mat-icon>bookmark</mat-icon>
+                      </button> -->
+
+        <mat-chip-list class="buttonsC">
+        <mat-chip color="primary"
+          matTooltip="Add your comment"  class="comment-form-buttton" (click)="CommentTrigger(post.id)"
+        type="submit"  [disabled]="comment.value === '' " >
+        <!-- [disabled]="comment.value === '' " -->
+            Add Comment
+            <i class="far fa-comment-dots"></i>
+        </mat-chip>
+
+</mat-chip-list>
+</div>  
+      
+  
+<div  class="scroll">
+<div *ngFor="let comment of comments; let even = even; let odd = odd">
+  <!-- infinite-scroll -->
+  <!--  infiniteScroll  -->
+        <div *ngIf="post.id == comment.postId" [ngClass]="{ even: even, odd: odd }"
+         class="commentsDisplayWrapper" 
+         >
+         <div class="picTime">
+          <div class="rowComment">
+          <div class="profilePic">
+<img src="{{comment.ProfilePicPath}}" class="pic">
+</div>
+<div class="timeBox">
+{{comment.time}}
+<div class="timeUser">
+  <button mat-button *ngIf="userId == comment.Creator" disabled>
+  <div class="userName link"  id="userName">@{{comment.username}}
+  </div>
+  </button>
+  <button mat-button *ngIf="userId !== comment.Creator" >
+    <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
+      </div>
+    </button>
+          </div>
+        </div>
+
+        <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
+          <button  mat-icon-button matSuffix class="trashCan_"
+            (click)='onDeleteComment(comment.id)'>
+            <i class="far fa-times-circle"></i>
+            </button>
+            </div>
+</div> 
+<div class="Comment">
+  <div class="commentText"> {{comment.body}}
+  
+  </div>
+
+    
+      </div>
+</div>
+
+
+</div>
+      </div>
+</div>
+</div>
+      </div>
+                 <!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- The Close Button -->
+  <button mat-icon-button class="close" (click)="close()">
+    <i class="far fa-times-circle"></i>
+  </button>
+
+  <!-- Modal Content (The Image) -->
+  
+  <img class="modal-content" src='' id="img01">
+
+  <!-- Modal Caption (Image Text) -->
+  <div id="caption"></div>
+
+</div>
+    </mat-card>
+
+  </div>
+  <div class="showMore" *ngIf="posts.length == 6">
+    <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
+        <!-- <i class="fas fa-chevron-circle-down"></i> -->
+        <i class="fas fa-caret-down"></i>
+    </mat-chip>
+    </div>
+  </div>
