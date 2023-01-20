@@ -318,13 +318,11 @@ video.single('video'),
 // Post additions
 router.post("/Shared", checkAuth,
     async(req, res) => {
-        console.log('1',req.query.postId );
-        console.log('2',req.query.userId );
         await  Post.findOne({_id: req.query.postId}).
         then(POST => {
                  UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('ocs', documents);
+
              var post = new Post({
                 OriginalCreatorId: documents.Creator,
                 OriginalPostId: POST._id,
@@ -367,6 +365,7 @@ router.post("/Shared", checkAuth,
                     // Creator of post gets notified find them first...
                         Subscription.findOne({Creator: req.query.userId})
                         .then(checking => {
+                            console.log('checking', checking)
                             if((checking !== null) && (user.Creator.valueOf() !== req.body.userId)){
                                 Subscription.findOne({Creator: user.Creator})
                         .then(subscriber =>{
@@ -435,13 +434,7 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
         }else{
             console.log('No Video')
         }
-        Post.deleteMany({OriginalPostId: result.Creator})
-        .then(reposted => {
-            if (reposted){
-                console.log('Reposts deleted!');
-                } else {
-                    console.log('No reposted');
-                } 
+       
                 // delete repost comments
 Post.find({OriginalPostId: req.params.id})
 .then(postIds => {
@@ -460,7 +453,13 @@ Post.find({OriginalPostId: req.params.id})
                         } 
                 })
 })
-        })
+Post.deleteMany({OriginalPostId: result.Creator})
+.then(reposted => {
+    if (reposted){
+        console.log('Reposts deleted!');
+        } else {
+            console.log('No reposted');
+        } 
         Post.deleteOne({_id: req.params.id}).then(result => {
             if (result){
             console.log('Post deleted!');
@@ -483,6 +482,7 @@ Comment.deleteMany({postId: req.params.id})
     res.status(500).json({
         message: 'Deleting posts comments failed!'
     });
+})
 })
         res.status(200).json({message: 'Everything worked!'});
       
