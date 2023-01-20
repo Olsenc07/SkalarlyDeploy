@@ -367,7 +367,7 @@ router.post("/Shared", checkAuth,
                         .then(checking => {
                             console.log('checking', checking)
                             if((checking !== null) && (user.Creator.valueOf() !== req.body.userId)){
-                                Subscription.findOne({Creator: user.Creator})
+                                Subscription.findOne({Creator: user.Creator.valueOf()})
                         .then(subscriber =>{
                             const p256dh = subscriber.keys.p256dh
                             const auth = subscriber.keys.auth
@@ -574,7 +574,8 @@ if (req.body.userId){
             Post.findOne({id: req.body.postId})
             .then((user) => {
                 console.log('user 77', user)
-                Subscription.findOne({Creator: user.Creator})
+
+                Subscription.findOne({Creator: user.Creator.valueOf()})
                 .then(checking => {
                     if((checking !== null) && (user.Creator.valueOf() !== req.body.userId)){
                         Subscription.findOne({Creator: user.Creator})
