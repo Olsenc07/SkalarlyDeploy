@@ -260,8 +260,9 @@
                     <!-- {{shareds.length}} -->
                         </button>
                       </div>
+                      {{reposts}}
                       <div class="buttonsC" *ngIf="(userId == post.Creator) || (userId == post.OriginalCreatorId)">
-                        <button mat-icon-button  matTooltip="Repost" disabled onmouseover="getPostsTrendingNumber(post._id)">
+                        <button mat-icon-button  matTooltip="Repost" disabled onmouseover="getPostsTrendingNumber(post.OriginalPostId, post._id)">
               
                     <i class="fas fa-share-alt"></i>
                     <!-- {{shareds.length}} -->

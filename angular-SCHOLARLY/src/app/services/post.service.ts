@@ -44,12 +44,14 @@ export interface Post {
 export class PostService {
   private posts: Post[] = [];
   private postsUpdated = new ReplaySubject<Post[]>();
-  private trendNumber = new ReplaySubject();
+  private trendNumber: number;
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new Subject<AuthDataInfo[]>();
-
+  getTrendNumber(): number {
+    return this.trendNumber;
+  }
   getPosts(): any {
     this.http
       .get<{ message: string; posts: any }>(
@@ -332,7 +334,7 @@ export class PostService {
         { params: { postId } }
       )
       .subscribe((transformedPosts) => {
-        this.trendNumber.next(this.posts);
+        this.trendNumber = transformedPosts.posts;
         console.log('rope around my nob', transformedPosts);
       });
   }

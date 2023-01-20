@@ -1626,6 +1626,7 @@ export class TrendingFeedComponent implements OnInit {
 export class CardFriendsComponent implements OnInit {
   isLoading = false;
   open = true;
+  reposts: number;
   closed = true;
   hide = true;
   userId: string;
@@ -1791,6 +1792,7 @@ export class CardFriendsComponent implements OnInit {
       this.postService.getPostsTrendingNumber(postId);
       console.log('love cycle', postId);
     }
+    this.reposts = this.postService.getTrendNumber();
   }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
