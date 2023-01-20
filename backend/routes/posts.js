@@ -389,7 +389,7 @@ router.post("/Shared", checkAuth,
                       openUrl: '/activity-history'
                   }), options)
                   .then((_) => {
-                    console.log( 'Commented!');
+                    console.log( 'Shared!');
                 })
                   .catch( (err) => {
                       console.log('uh ooo',err)
@@ -438,20 +438,11 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
         Post.deleteMany({OriginalPostId: result.Creator})
         .then(reposted => {
             if (reposted){
-                res.status(200).json({message: 'Reposts deleted!'});
+                console.log('Reposts deleted!');
                 } else {
-                    res.status(401).json({message: 'No reposted'});
+                    console.log('No reposted');
                 } 
-        })
-      
-})
-.catch(error => {
-    res.status(500).json({
-        message: 'Finding post failed!'
-    });
-})
-
-// delete repost comments
+                // delete repost comments
 Post.find({OriginalPostId: req.params.id})
 .then(postIds => {
     console.log('nice', postIds)
@@ -463,41 +454,50 @@ Post.find({OriginalPostId: req.params.id})
                 Comment.deleteMany({postId: first}) 
                 .then(reposted => {
                     if (reposted){
-                        res.status(200).json({message: 'Reposts comments deleted!'});
+                        console.log('Reposts comments deleted!');
                         } else {
-                            res.status(401).json({message: 'No repost comments'});
+                            console.log('No repost comments');
                         } 
                 })
 })
-
-
-
-
- Post.deleteOne({_id: req.params.id}).then(result => {
-    if (result){
-    res.status(200).json({message: 'Post deleted!'});
-    } else {
-        res.status(401).json({message: 'Not authorized'});
-    } 
-})
-.catch(error => {
-    res.status(500).json({
-        message: 'Deleting post failed!'
-    });
-})
-
-// del comments inside reposted posts
-
- Comment.deleteMany({postId: req.params.id})
+        })
+        Post.deleteOne({_id: req.params.id}).then(result => {
+            if (result){
+            console.log('Post deleted!');
+            } else {
+                console.log('Not authorized');
+            } 
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Deleting post failed!'
+            });
+        })
+// 
+Comment.deleteMany({postId: req.params.id})
     .then(result => {
         console.log('comments deleted',result)
-        res.status(200).json({message: 'Comments deleted!'});
+        // res.status(200).json({message: 'Comments deleted!'});
 
 }).catch(error => {
     res.status(500).json({
         message: 'Deleting posts comments failed!'
     });
 })
+        res.status(200).json({message: 'Everything worked!'});
+      
+})
+.catch(error => {
+    res.status(500).json({
+        message: 'Finding post failed!'
+    });
+})
+
+
+
+// del comments inside reposted posts
+
+ 
 })
 
 // get Comment on post
@@ -595,7 +595,7 @@ if (req.body.userId){
           webpush.sendNotification(pushSubscription, JSON.stringify({
               title: 'Post Comment!',
               content: `${documents.username} has commented on your post.`,
-              openUrl: '/profile'
+              openUrl: '/activity-history'
           }), options)
           .then((_) => {
             console.log( 'Commented!');
