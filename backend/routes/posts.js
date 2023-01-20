@@ -419,6 +419,7 @@ router.post("/Shared", checkAuth,
             });
         });
 });
+    });
 // Posts deleting
 router.delete("/:id", checkAuth, async(req, res, next ) => {
    await Post.findOne({_id: req.params.id})
