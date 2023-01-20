@@ -247,15 +247,15 @@
                       </mat-chip-list>
                   
                       <div class="buttonsC">
-                        <button mat-icon-button >
-                          <i class="fas fa-share-alt-square"></i>
+                        <button mat-icon-button matTooltip="Repost" (click)="spreadWord(post.id)">
+                          <i class="fas fa-share-alt"></i>
                     <!-- {{shareds.length}} -->
                         </button>
                       </div>
 
-                      <button mat-icon-button class="showCommentsBtn" matTooltip="Repost" (click)="spreadWord(post.id)">
+                      <!-- <button mat-icon-button class="showCommentsBtn" >
                         <mat-icon>bookmark</mat-icon>
-                      </button>
+                      </button> -->
 
         <mat-chip-list class="buttonsC">
         <mat-chip color="primary"
