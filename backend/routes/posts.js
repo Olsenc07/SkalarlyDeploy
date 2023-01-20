@@ -605,7 +605,7 @@ router.get("/otherUsers", async(req, res) => {
 router.get("/mainPage", async(req, res) => {    
     const counter = req.query.counter;
     console.log('street crimes 3 ');
-         await Post.find({postLocation: req.query.category}).sort({_id:-1}).skip(counter).limit(6)
+         await Post.find({ $and: [ {postLocation: req.query.category}, { OriginalPostId: { $eq: '' } }]}).sort({_id:-1}).skip(counter).limit(6)
            .then(doc => {
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
