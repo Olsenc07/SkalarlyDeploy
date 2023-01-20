@@ -237,15 +237,15 @@
                       </mat-chip-list>
                   
                     
-                        <div class="buttonsC" *ngIf="userId == post.Creator">
-                          <button mat-icon-button matTooltip="Repost" (click)="spreadWord(post.id)">
-                            <i class="fas fa-share-alt"></i>
-                      <!-- {{shareds.length}} -->
-                          </button>
-                        </div>
-
-                      <div class="buttonsC" *ngIf="userId !== post.Creator">
-                        <button mat-icon-button  class="showCommentsBtn" matTooltip="Repost" (click)="spreadWord(post.id)" >
+                      <div class="buttonsC" *ngIf="(userId !== post.Creator) || (userId !== post.OriginalPostId)">
+                        <button mat-icon-button  matTooltip="Repost" (click)="spreadWord(post.id)" >
+              
+                    <i class="fas fa-share-alt"></i>
+                    <!-- {{shareds.length}} -->
+                        </button>
+                      </div>
+                      <div class="buttonsC" *ngIf="(userId == post.Creator) || (userId == post.OriginalPostId)">
+                        <button mat-icon-button  matTooltip="Repost" disabled >
               
                     <i class="fas fa-share-alt"></i>
                     <!-- {{shareds.length}} -->
