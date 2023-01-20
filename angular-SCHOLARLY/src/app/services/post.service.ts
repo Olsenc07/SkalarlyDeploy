@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Post {
   id: string;
+  OriginalPostId: string;
   SharerUsername: string;
   SharerName: string;
   SharerProfilePicPath: string;
@@ -460,6 +461,7 @@ export class PostService {
             SharerUsername: '',
             SharerName: '',
             SharerProfilePicPath: '',
+            OriginalPostId: '',
           };
           // const id_ = responseData.postId;
           // postData.id = id_;
@@ -551,6 +553,7 @@ export class PostService {
             SharerUsername: '',
             SharerName: '',
             SharerProfilePicPath: '',
+            OriginalPostId: '',
           };
           // const id_ = responseData.postId;
           // postData.id = id_;

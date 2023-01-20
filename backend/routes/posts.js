@@ -382,12 +382,22 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
     console.log('result',result)
     if(result.ImagePath) {
     cloudinary.uploader.destroy(result.cloudinary_id)
+    }else{
+        console.log('No Image')
     }
     if(result.VideoPath) {
         cloudinary.uploader.destroy(result.cloudinary_id)
+        }else{
+            console.log('No Video')
         }
 })
-await Post.deleteOne({_id: req.params.id}).then(result => {
+.catch(error => {
+    res.status(500).json({
+        message: 'Finding post failed!'
+    });
+})
+
+ Post.deleteOne({_id: req.params.id}).then(result => {
     if (result){
     res.status(200).json({message: 'Post deleted!'});
     } else {
@@ -400,7 +410,7 @@ await Post.deleteOne({_id: req.params.id}).then(result => {
     });
 })
 
-await Post.deleteOne({OriginalPostId: req.params.id})
+ Post.deleteOne({OriginalPostId: req.params.id})
 .then(repostsDel => {
     if (repostsDel){
         res.status(200).json({message: 'Post deleted!'});
@@ -414,7 +424,7 @@ await Post.deleteOne({OriginalPostId: req.params.id})
 })
 // del comments inside reposted posts
 
-await Comment.deleteMany({
+ Comment.deleteMany({
     postId: req.params.id}).then(result => {
         console.log('comments deleted',result)
 

@@ -344,14 +344,14 @@ export class RecentComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     // Posts
-    this.postService.getPostsFeed(0);
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-        console.log('posts personal', this.posts);
-      });
+    // this.postService.getPostsFeed(0);
+    // this.postsSub = this.postService
+    //   .getPostUpdateListener()
+    //   .subscribe((posts: Post[]) => {
+    //     this.posts = posts;
+    //     this.isLoading = false;
+    //     console.log('posts personal', this.posts);
+    //   });
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
