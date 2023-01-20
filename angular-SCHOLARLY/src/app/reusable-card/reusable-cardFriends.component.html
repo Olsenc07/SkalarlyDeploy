@@ -26,7 +26,14 @@
           <div class="repostBox">
           <div class="repost" *ngIf="post.SharerUsername">
           <div class="font" *ngIf="post.SharerUsername">
+            <div matTooltip="To Original Post">
+              <button (click)="navToPost(post.OriginalPostId)">
+                <i class="fas fa-home"></i>
+              </button>
+            </div>
+            <div class="align">
           Repost By: 
+          </div>
           <div class="profilePic" >
             <!-- need to get croppeded value -->
             <img class="pic" src="{{post.SharerProfilePicPath}}">
@@ -91,14 +98,14 @@
                     <div class="nameTitle">
                       <!-- Button directs to that users profile -->
                       
-                      <button mat-button *ngIf="userId == post.Creator" >
+                      <button mat-button *ngIf="userId !== post.Creator" >
                         <div class="userName  link"  id="userName" matTooltip="View Profile"
                          (click)="navigateToPage(post.Username)">@{{post.Username}}
                           </div>
                         </button>
-                      <!-- <button mat-button *ngIf="userId == post.Creator" disabled>
+                      <button mat-button *ngIf="userId == post.Creator" disabled>
                           <div class="userName  link" id="userName">@{{post.Username}}</div>
-                          </button> -->
+                          </button>
                     </div>
                   </div>
   

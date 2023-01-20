@@ -166,6 +166,10 @@ export class ReusableCardComponent implements OnInit {
   onDeleteComment(commentId: string): any {
     this.commentsService.deleteComment(commentId);
   }
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.route.navigate(['/single/:'], { queryParams: { postId } });
+  }
   constructor(
     private bottomSheet: MatBottomSheet,
     private authService: AuthService,
@@ -450,8 +454,12 @@ export class ReusableCardPersonalComponent implements OnInit {
     this.postService.deletePost(postId);
     // console.log('chaz whats up', postId);
   }
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
+  }
   constructor(
-    private bottomSheet: MatBottomSheet,
+    private router: Router,
     private authService: AuthService,
     public postService: PostService,
     private commentsService: CommentsService,
@@ -1474,7 +1482,10 @@ export class CardFriendsComponent implements OnInit {
       return 'Dec';
     }
   }
-
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
+  }
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
     const triggerEmoji = document.getElementById('triggerEmo');
