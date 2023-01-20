@@ -276,6 +276,53 @@ export class PostService {
         this.postsUpdated.next([...this.posts]);
       });
   }
+  // Trending
+  // getting others posts for their profiles display
+  getPostsTrending(counter: number): any {
+    this.http
+      .get<{ message: string; posts: any }>(
+        'https://www.skalarly.com/api/posts/Trending',
+        { params: { counter } }
+      )
+      .pipe(
+        map((postData) => {
+          return postData.posts.map((post) => {
+            return {
+              id: post._id,
+              OriginalCreatorId: post.OriginalCreatorId,
+              OriginalPostId: post.OriginalPostId,
+              SharerUsername: post.SharerUsername,
+              SharerName: post.SharerName,
+              SharerProfilePicPath: post.SharerProfilePicPath,
+              Username: post.Username,
+              Name: post.Name,
+              ProfilePicPath: post.ProfilePicPath,
+              Title: post.Title,
+              postDescription: post.postDescription,
+              postLocation: post.postLocation,
+              LocationEvent: post.LocationEvent,
+              time: post.time,
+              timeE: post.timeE,
+              // date: post.date,
+              // dateE: post.dateE,
+              gender: post.gender,
+              live: post.live,
+              paymentService: post.paymentService,
+              nopaymentService: post.nopaymentService,
+              virtual: post.virtual,
+              event: post.event,
+              ImagePath: post.ImagePath,
+              VideoPath: post.VideoPath,
+              Creator: post.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedPosts) => {
+        this.posts = transformedPosts;
+        this.postsUpdated.next([...this.posts]);
+      });
+  }
   // getting main page posts
   getPostsMainPage(category: string, counter: number): any {
     this.http

@@ -108,7 +108,18 @@ router.get("/friends", async(req, res, next) => {
     })
     })
 });
-
+// Posts trending
+router.get("/Trending", async(req, res, next) => {
+    const counter = req.query.counter;
+    Post.find({}).sort({_id:-1}).skip(counter).limit(6)
+    .then(Trending => {
+        console.log('ryhmes', Trending )
+        res.status(200).json({
+            message: 'Thats whats trending!',
+            posts: Trending
+    })
+})
+});
 // Post recieving personal
 router.get("/personal", async(req, res, next) => {
     const counter = req.query.counter;

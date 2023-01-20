@@ -573,14 +573,14 @@ export class TrendingComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     // Posts
-    // this.postService.getPostsFeed(0);
-    // this.postsSub = this.postService
-    //   .getPostUpdateListener()
-    //   .subscribe((posts: Post[]) => {
-    //     this.posts = posts;
-    //     this.isLoading = false;
-    //     console.log('posts personal', this.posts);
-    //   });
+    this.postService.getPostsTrending(0);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -686,7 +686,7 @@ export class TrendingComponent implements OnInit {
     console.log('howdy', this.countVisibility);
     const NextBtn = document.getElementById('topScroll');
     NextBtn.scrollIntoView();
-    this.postService.getPostsFeed(this.recomCounter);
+    this.postService.getPostsTrending(this.recomCounter);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -704,7 +704,7 @@ export class TrendingComponent implements OnInit {
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.postService.getPostsFeed(this.recomCounter);
+    this.postService.getPostsTrending(this.recomCounter);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
