@@ -361,12 +361,52 @@ router.post("/Shared", checkAuth,
                         ...createdPost
                     } 
                 });
-            })
-            .catch(error => {
+                try{
+                    // Match subscription to post creator then send it 
+                    // Or else when a subscriber comments on a non subscriber itll send a notif as if it was the subscribers post
+                    // Creator of post gets notified find them first...
+                        Subscription.findOne({Creator: req.query.userId})
+                        .then(checking => {
+                            if((checking !== null) && (user.Creator.valueOf() !== req.body.userId)){
+                                Subscription.findOne({Creator: user.Creator})
+                        .then(subscriber =>{
+                            const p256dh = subscriber.keys.p256dh
+                            const auth = subscriber.keys.auth
+                            const endpoint = subscriber.endpoint
+                            const pushSubscription = {
+                                keys: {
+                                 p256dh: p256dh,
+                                 auth: auth
+                                        },
+                                 endpoint: endpoint,
+                                };
+                      publicVapidKey = process.env.vapidPublic;
+                      privateVapidKey = process.env.vapidPrivate
+                  webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+                  webpush.sendNotification(pushSubscription, JSON.stringify({
+                      title: 'Post Shared!',
+                      content: `${documents.username} has shared your post.`,
+                      openUrl: '/activity-history'
+                  }), options)
+                  .then((_) => {
+                    console.log( 'Commented!');
+                })
+                  .catch( (err) => {
+                      console.log('uh ooo',err)
+                  });
+                             })
+                            }
+                })
+                .catch(error => {
+                    res.status(500).json({
+                        message: 'Saving post failed!'
+                    });
+                })
+            }catch(error) {
                 res.status(500).json({
                     message: 'Saving your post failed!'
                 });
-            });
+            };
         }) .catch(error => {
             res.status(500).json({
                 message: 'Finding your post failed!'
