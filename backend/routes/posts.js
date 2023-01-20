@@ -149,6 +149,7 @@ image.single('upload'),
              .then(result => {
             console.log('upload',result)
             var post = new Post({
+                OriginalCreatorId: '',
                 OriginalPostId: '',
                 SharerUsername: '',
                 SharerName: '',
@@ -193,6 +194,7 @@ image.single('upload'),
             })
                 }else{
              var post = new Post({
+                OriginalCreatorId: '',
                 OriginalPostId: '',
                 SharerUsername: '',
                 SharerName: '',
@@ -257,6 +259,7 @@ video.single('video'),
                 console.log('video',result)
 
            var post = new Post({
+            OriginalCreatorId: '',
                  OriginalPostId: '',
                 SharerUsername: '',
                 SharerName: '',
@@ -323,6 +326,7 @@ router.post("/Shared", checkAuth,
     .then(documents => {
         console.log('ocs', documents);
              var post = new Post({
+                OriginalCreatorId: documents.Creator,
                 OriginalPostId: POST._id,
                 SharerUsername: documents.username,
                 SharerName: documents.name,
@@ -390,6 +394,14 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
         }else{
             console.log('No Video')
         }
+        Post.deleteMany({OriginalPostId: result.Creator})
+        .then(reposted => {
+            if (reposted){
+                res.status(200).json({message: 'Reposts deleted!'});
+                } else {
+                    res.status(401).json({message: 'No reposted'});
+                } 
+        })
 })
 .catch(error => {
     res.status(500).json({

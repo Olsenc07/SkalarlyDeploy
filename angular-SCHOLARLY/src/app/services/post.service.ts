@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Post {
   id: string;
+  OriginalCreatorId: string;
   OriginalPostId: string;
   SharerUsername: string;
   SharerName: string;
@@ -59,6 +60,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
@@ -103,6 +105,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
@@ -148,6 +151,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
@@ -192,6 +196,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
@@ -237,6 +242,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
@@ -282,6 +288,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
@@ -462,6 +469,7 @@ export class PostService {
             SharerName: '',
             SharerProfilePicPath: '',
             OriginalPostId: '',
+            OriginalCreatorId: '',
           };
           // const id_ = responseData.postId;
           // postData.id = id_;
@@ -554,6 +562,7 @@ export class PostService {
             SharerName: '',
             SharerProfilePicPath: '',
             OriginalPostId: '',
+            OriginalCreatorId: '',
           };
           // const id_ = responseData.postId;
           // postData.id = id_;
