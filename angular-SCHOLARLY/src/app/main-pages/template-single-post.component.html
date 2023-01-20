@@ -183,7 +183,12 @@
           </mat-chip>
           
                       </mat-chip-list>
-                  
+                      <mat-chip-list class="buttonsC">
+                        <mat-chip class="showCommentsBtn" matTooltip="Repost" (click)="spreadWord(post.id)">
+                    <i class="fas fa-share-alt"></i>
+                    <!-- {{shareds.length}} -->
+                        </mat-chip>
+                      </mat-chip-list>
         <mat-chip-list class="buttonsC">
         <mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger()"
         type="submit" [disabled]="comment.value === '' " >
