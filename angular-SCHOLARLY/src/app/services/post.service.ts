@@ -58,6 +58,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
               SharerProfilePicPath: post.SharerProfilePicPath,
@@ -101,6 +102,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
               SharerProfilePicPath: post.SharerProfilePicPath,
@@ -145,6 +147,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
               SharerProfilePicPath: post.SharerProfilePicPath,
@@ -188,6 +191,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
               SharerProfilePicPath: post.SharerProfilePicPath,
@@ -232,6 +236,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
               SharerProfilePicPath: post.SharerProfilePicPath,
@@ -276,6 +281,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
               SharerName: post.SharerName,
               SharerProfilePicPath: post.SharerProfilePicPath,

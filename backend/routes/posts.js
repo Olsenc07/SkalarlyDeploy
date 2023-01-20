@@ -149,6 +149,7 @@ image.single('upload'),
              .then(result => {
             console.log('upload',result)
             var post = new Post({
+                OriginalPostId: '',
                 SharerUsername: '',
                 SharerName: '',
                 SharerProfilePicPath: '',
@@ -192,6 +193,7 @@ image.single('upload'),
             })
                 }else{
              var post = new Post({
+                OriginalPostId: '',
                 SharerUsername: '',
                 SharerName: '',
                 SharerProfilePicPath: '',
@@ -255,7 +257,8 @@ video.single('video'),
                 console.log('video',result)
 
            var post = new Post({
-            SharerUsername: '',
+                 OriginalPostId: '',
+                SharerUsername: '',
                 SharerName: '',
                 SharerProfilePicPath: '',
                Username: documents.username,
@@ -320,6 +323,7 @@ router.post("/Shared", checkAuth,
     .then(documents => {
         console.log('ocs', documents);
              var post = new Post({
+                OriginalPostId: POST._id,
                 SharerUsername: documents.username,
                 SharerName: documents.name,
                 SharerProfilePicPath: documents.ProfilePicPath,
@@ -375,6 +379,7 @@ router.post("/Shared", checkAuth,
 router.delete("/:id", checkAuth, async(req, res, next ) => {
    await Post.findOne({_id: req.params.id})
    .then(result => {
+    console.log('result',result)
     if(result.ImagePath) {
     cloudinary.uploader.destroy(result.cloudinary_id)
     }
@@ -382,7 +387,7 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
         cloudinary.uploader.destroy(result.cloudinary_id)
         }
 })
-Post.deleteOne({_id: req.params.id}).then(result => {
+await Post.deleteOne({_id: req.params.id}).then(result => {
     if (result){
     res.status(200).json({message: 'Post deleted!'});
     } else {
@@ -394,6 +399,20 @@ Post.deleteOne({_id: req.params.id}).then(result => {
         message: 'Deleting post failed!'
     });
 })
+
+await Post.deleteOne({OriginalPostId: req.params.id})
+.then(repostsDel => {
+    if (repostsDel){
+        res.status(200).json({message: 'Post deleted!'});
+        } else {
+            res.status(401).json({message: 'Not authorized'});
+        } 
+}).catch(error => {
+    res.status(500).json({
+        message: 'No reposts to delete!'
+    });
+})
+// del comments inside reposted posts
 
 await Comment.deleteMany({
     postId: req.params.id}).then(result => {
