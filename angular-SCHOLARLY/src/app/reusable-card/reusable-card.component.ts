@@ -1177,7 +1177,9 @@ export class CardFeedComponent implements OnInit {
       return 'Dec';
     }
   }
-
+  spreadWord(postId: string): void {
+    this.postService.addPostShared(this.userId, postId);
+  }
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
     const triggerEmoji = document.getElementById('triggerEmo');

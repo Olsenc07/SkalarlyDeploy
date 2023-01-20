@@ -73,7 +73,7 @@ router.get("", async(req, res, next) => {
 // Post recieving Feed
 router.get("/feed", async(req, res, next) => {
     const counter = req.query.counter
-   await Post.find().sort({_id:-1}).skip(counter).limit(6)
+   await Post.find({ OriginalPostId: { $eq: '' } }).sort({_id:-1}).skip(counter).limit(6)
     .then(docs => {
             res.status(200).json({
                 message: 'Posts feed fetched succesfully!',
