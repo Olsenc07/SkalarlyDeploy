@@ -360,6 +360,7 @@ router.post("/Shared", checkAuth,
                     } 
                 });
                 try{
+                    console.log('calling', req.query.userId)
                     // Match subscription to post creator then send it 
                     // Or else when a subscriber comments on a non subscriber itll send a notif as if it was the subscribers post
                     // Creator of post gets notified find them first...
@@ -447,13 +448,14 @@ Post.find({OriginalPostId: req.params.id})
                 Comment.deleteMany({postId: first}) 
                 .then(reposted => {
                     if (reposted){
-                        console.log('Reposts comments deleted!');
+                        console.log('Reposts comments deleted!',reposted);
                         } else {
                             console.log('No repost comments');
                         } 
                 })
 })
-Post.deleteMany({OriginalPostId: result.Creator})
+
+Post.deleteMany({OriginalPostId: result.Creator.valueOf()})
 .then(reposted => {
     if (reposted){
         console.log('Reposts deleted!');
