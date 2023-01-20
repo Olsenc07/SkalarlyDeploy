@@ -293,6 +293,9 @@ font-size: large;
   background-color: whitesmoke;
   // Move to top right corner
 }
+.repostStuff{
+  display: flex;
+}
 .scroll{
   max-height: 300px;
   overflow-y: scroll;

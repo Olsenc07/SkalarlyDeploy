@@ -27,10 +27,11 @@
           <div class="repost" *ngIf="post.SharerUsername">
           <div class="font" *ngIf="post.SharerUsername">
             <div matTooltip="To Original Post">
-              <button (click)="navToPost(post.OriginalPostId)">
+              <button mat-icon-button (click)="navToPost(post.OriginalPostId)">
                 <i class="fas fa-home"></i>
               </button>
             </div>
+            <div class="repostStuff">
             <div class="align">
           Repost By: 
           </div>
@@ -61,7 +62,7 @@
           </div>
 
 
-
+        </div>
         </div>
       </div>
           <mat-divider></mat-divider>
@@ -98,12 +99,12 @@
                     <div class="nameTitle">
                       <!-- Button directs to that users profile -->
                       
-                      <button mat-button *ngIf="userId !== post.Creator" >
+                      <!-- <button mat-button *ngIf="userId !== post.Creator" >
                         <div class="userName  link"  id="userName" matTooltip="View Profile"
                          (click)="navigateToPage(post.Username)">@{{post.Username}}
                           </div>
-                        </button>
-                      <button mat-button *ngIf="userId == post.Creator" disabled>
+                        </button> -->
+                      <button mat-button disabled>
                           <div class="userName  link" id="userName">@{{post.Username}}</div>
                           </button>
                     </div>
@@ -245,12 +246,12 @@
           </mat-chip>
                       </mat-chip-list>
                   
-                      <mat-chip-list class="buttonsC">
-                        <mat-chip class="showCommentsBtn" matTooltip="Repost" (click)="spreadWord(post.id)">
+                      <div class="buttonsC">
+                        <button mat-icon-button class="showCommentsBtn" matTooltip="Repost" (click)="spreadWord(post.id)">
                     <i class="fas fa-share-alt"></i>
                     <!-- {{shareds.length}} -->
-                        </mat-chip>
-                      </mat-chip-list>
+                        </button>
+                      </div>
 
 
         <mat-chip-list class="buttonsC">
