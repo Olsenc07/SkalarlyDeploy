@@ -402,12 +402,35 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
                     res.status(401).json({message: 'No reposted'});
                 } 
         })
+      
 })
 .catch(error => {
     res.status(500).json({
         message: 'Finding post failed!'
     });
 })
+
+// delete repost comments
+Post.find({OriginalPostId: req.params.id})
+.then(postIds => {
+    console.log('nice', postIds)
+    let first = [];
+    postIds.forEach((e)=>{
+        console.log('away', e._id)
+         first.push(e._id);
+                })
+                Comment.deleteMany({postId: first}) 
+                .then(reposted => {
+                    if (reposted){
+                        res.status(200).json({message: 'Reposts comments deleted!'});
+                        } else {
+                            res.status(401).json({message: 'No repost comments'});
+                        } 
+                })
+})
+
+
+
 
  Post.deleteOne({_id: req.params.id}).then(result => {
     if (result){
@@ -422,23 +445,12 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
     });
 })
 
- Post.deleteOne({OriginalPostId: req.params.id})
-.then(repostsDel => {
-    if (repostsDel){
-        res.status(200).json({message: 'Post deleted!'});
-        } else {
-            res.status(401).json({message: 'Not authorized'});
-        } 
-}).catch(error => {
-    res.status(500).json({
-        message: 'No reposts to delete!'
-    });
-})
 // del comments inside reposted posts
 
- Comment.deleteMany({
-    postId: req.params.id}).then(result => {
+ Comment.deleteMany({postId: req.params.id})
+    .then(result => {
         console.log('comments deleted',result)
+        res.status(200).json({message: 'Comments deleted!'});
 
 }).catch(error => {
     res.status(500).json({
