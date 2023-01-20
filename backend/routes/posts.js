@@ -114,6 +114,13 @@ router.get("/Trending", async(req, res, next) => {
     Post.find({}).sort({_id:-1}).skip(counter).limit(6)
     .then(Trending => {
         console.log('ryhmes', Trending )
+
+        let first = [];
+        Trending.forEach((e)=>{
+      console.log('away', e.OriginalCreatorId)
+       first.push(e.OriginalCreatorId);
+              })
+              first.filter((v) => (v === value)).length;
         res.status(200).json({
             message: 'Thats whats trending!',
             posts: Trending
@@ -371,11 +378,11 @@ router.post("/Shared", checkAuth,
                     } 
                 });
                 try{
-                    console.log('calling', documents.Creator)
+                    console.log('calling', documents.OriginalCreatorId)
                     // Match subscription to post creator then send it 
                     // Or else when a subscriber comments on a non subscriber itll send a notif as if it was the subscribers post
                     // Creator of post gets notified find them first...
-                        Subscription.findOne({Creator: documents.Creator})
+                        Subscription.findOne({Creator: documents.OriginalCreatorId})
                         .then(checking => {
                             console.log('checking', checking)
                             if((checking !== null) ){
