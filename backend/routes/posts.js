@@ -148,7 +148,7 @@ router.get("/TrendingNumber", async(req, res, next) => {
     Trending.forEach((e)=>{
   console.log('away_', e.OriginalCreatorId)
    first.push(e.OriginalCreatorId);
-
+})
           })
           .then(number => {
             let  n = first.length
@@ -162,7 +162,7 @@ router.get("/TrendingNumber", async(req, res, next) => {
             });
         })
    
-    })
+   
 })
 
 // Post recieving personal
