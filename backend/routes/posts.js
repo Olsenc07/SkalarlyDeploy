@@ -112,7 +112,7 @@ router.get("/friends", async(req, res, next) => {
 router.get("/Trending", async(req, res, next) => {
     const counter = req.query.counter;
 
-    Post.find({ OriginalPostId: { $ne: '' } })
+    Post.find({ OriginalPostId: { $eq: '' } })
     .then(Trending => {
         console.log('ryhmes', Trending )
 
@@ -141,7 +141,8 @@ router.get("/TrendingNumber", async(req, res, next) => {
         }
         return res;
     }
-
+    Post.find({ OriginalPostId: req.query.postId })
+    .then(Trending => {
     let first = [];
     Trending.forEach((e)=>{
   console.log('away', e.OriginalCreatorId)
@@ -158,7 +159,7 @@ router.get("/TrendingNumber", async(req, res, next) => {
             });
         }
      )
-
+    })
 })
 
 // Post recieving personal
