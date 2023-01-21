@@ -253,7 +253,7 @@
                         </button>
                       </div>
 
-                      <div class="buttonsC" *ngIf="(userId !== post.Creator) || (userId !== post.OriginalCreatorId)">
+                      <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId)">
                         <button mat-icon-button  matTooltip="Repost" (click)="spreadWord(post.id)" >
               
                     <i class="fas fa-share-alt"></i>
