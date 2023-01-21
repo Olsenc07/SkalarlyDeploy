@@ -112,7 +112,7 @@ router.get("/friends", async(req, res, next) => {
 router.get("/Trending", async(req, res, next) => {
     const counter = req.query.counter;
 
-    Post.find({ OriginalPostId: { $eq: '' } })
+    Post.find({ OriginalPostId: { $ne: '' } })
     .then(Trending => {
         console.log('ryhmes', Trending )
 
