@@ -160,7 +160,7 @@ router.get("/TrendingNumber", async(req, kristina, next) => {
 
   
           })
-          res.status(200).json({
+          kristina.status(200).json({
             message: 'Number of reposts returned!',
             posts: returnValue
         });
