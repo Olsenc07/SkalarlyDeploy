@@ -130,17 +130,17 @@ router.get("/Trending", async(req, res, next) => {
 })
 });
 // Number of reposts
-router.get("/TrendingNumber", async(req, res, next) => {
+router.get("/TrendingNumber", async(req, kristina, next) => {
     function countOccurrences(first,n,x)
     {
-        let res = 0;
+        let kristina = 0;
         for (let i=0; i<n; i++)
         {
             if (x == first[i])
-                res++;
+            kristina++;
         }
-        kristina = res
-        console.log('my girl', kristina)
+ 
+       
         return kristina;
     }
    await Post.find({ OriginalPostId: req.query.postId })
@@ -158,12 +158,12 @@ router.get("/TrendingNumber", async(req, res, next) => {
 
     console.log('tits', x)
 
-    res.status(200).json({
-        message: 'Number of reposts returned!',
-        posts: kristina
-    });
+  
           })
-         
+          res.status(200).json({
+            message: 'Number of reposts returned!',
+            posts: returnValue
+        });
         })
    
    
