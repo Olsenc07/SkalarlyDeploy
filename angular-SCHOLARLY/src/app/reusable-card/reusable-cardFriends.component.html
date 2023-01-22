@@ -254,12 +254,12 @@
                       </div>
 <div class="counterColor">
   <button mat-flat-button  matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
-    Counter
+    <i class="fas fa-hashtag"></i>
   </button>
 </div>
                       <div class="buttonsC" *ngIf="(userId !== post.Creator) || (userId !== post.OriginalCreatorId)"
                       [matBadge]="reposts">
-                        <button mat-icon-button  matTooltip="Repost" (click)="spreadWord(post.id)" >
+                        <button mat-flat-button  matTooltip="Repost" (click)="spreadWord(post.id)" >
               
                     <i class="fas fa-share-alt"></i>
                     <!-- {{shareds.length}} -->

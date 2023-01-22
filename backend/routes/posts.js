@@ -154,14 +154,11 @@ router.get("/TrendingNumber", async(req, kristina, next) => {
    let x = req.query.postId;
    var returnValue = countOccurrences(first,n,x) 
    console.log('tits', x)          
-    console.log('tits3', returnValue)
-    return returnValue
-
-
-
-  
+    console.log('tits3', returnValue)  
           })
-          console.log('finalValue', finalValue)
+          console.log('finalValue1', returnValue);
+
+          console.log('finalValue', finalValue);
           kristina.status(200).json({
             message: 'Number of reposts returned!',
             posts: finalValue
