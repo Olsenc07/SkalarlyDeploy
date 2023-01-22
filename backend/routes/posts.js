@@ -147,7 +147,7 @@ router.get("/TrendingNumber", async(req, kristina, next) => {
     .then(Trending => {
         
     let first = [];
-   let finalValue = Trending.forEach((e)=>{
+    Trending.forEach((e)=>{
   console.log('away_', e.OriginalCreatorId)
    firstLength = first.push(e.OriginalCreatorId);
    let  n = firstLength
@@ -155,14 +155,14 @@ router.get("/TrendingNumber", async(req, kristina, next) => {
    var returnValue = countOccurrences(first,n,x) 
    console.log('tits', x)          
     console.log('tits3', returnValue)  
+    kristina.status(200).json({
+      message: 'Number of reposts returned!',
+      posts: returnValue
+  });
           })
-          console.log('finalValue1', returnValue);
 
-          console.log('finalValue', finalValue);
-          kristina.status(200).json({
-            message: 'Number of reposts returned!',
-            posts: finalValue
-        });
+
+       
         })
    
    
