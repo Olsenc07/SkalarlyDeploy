@@ -152,7 +152,8 @@ router.get("/TrendingNumber", async(req, res, next) => {
    let x = req.query.postId;
    hey = countOccurrences(first,n,x)           
     console.log('tits', hey)
-    console.log('Reposts', number)
+    console.log('tits', x)
+
     res.status(200).json({
         message: 'Number of reposts returned!',
         posts: hey
