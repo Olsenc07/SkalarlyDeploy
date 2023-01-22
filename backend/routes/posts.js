@@ -139,7 +139,9 @@ router.get("/TrendingNumber", async(req, res, next) => {
             if (x == first[i])
                 res++;
         }
-        return res;
+        kristina = res
+        console.log('my girl', kristina)
+        return kristina;
     }
    await Post.find({ OriginalPostId: req.query.postId })
     .then(Trending => {
@@ -150,13 +152,15 @@ router.get("/TrendingNumber", async(req, res, next) => {
    firstLength = first.push(e.OriginalCreatorId);
    let  n = firstLength
    let x = req.query.postId;
-   hey = countOccurrences(first,n,x)           
-    console.log('tits', hey)
+   var returnValue = countOccurrences(first,n,x)           
+    console.log('tits3', returnValue)
+
+
     console.log('tits', x)
 
     res.status(200).json({
         message: 'Number of reposts returned!',
-        posts: hey
+        posts: kristina
     });
           })
          
