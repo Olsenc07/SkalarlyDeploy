@@ -147,19 +147,18 @@ router.get("/TrendingNumber", async(req, res, next) => {
     let first = [];
     Trending.forEach((e)=>{
   console.log('away_', e.OriginalCreatorId)
-   first.push(e.OriginalCreatorId);
-})
+   firstLength = first.push(e.OriginalCreatorId);
+   let  n = firstLength
+   let x = req.query.postId;
+   hey = countOccurrences(first,n,x)           
+    print('tits', hey)
+    console.log('Reposts', number)
+    res.status(200).json({
+        message: 'Number of reposts returned!',
+        posts: hey
+    });
           })
-          .then(number => {
-            let  n = first.length
-            let x = req.query.postId;
-            hey = countOccurrences(first,n,x)
-            print('tits', hey)
-            console.log('Reposts', number)
-            res.status(200).json({
-                message: 'Number of reposts returned!',
-                posts: hey
-            });
+         
         })
    
    
