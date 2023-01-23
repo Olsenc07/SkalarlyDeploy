@@ -242,7 +242,7 @@
                           <div *ngIf=" (valueChosen === post.Id) || (valueChosen === post.OriginalPostId)">
                             {{reposts}}
                                 </div>
-                      <i *ngIf="(reposts == '') && (valueChosen !== post.Id) && (valueChosen !== post.OriginalPostId) " class="fas fa-hashtag"></i>
+                      <i *ngIf="(reposts === '') && (valueChosen !== post.Id) && (valueChosen !== post.OriginalPostId) " class="fas fa-hashtag"></i>
                         </button>
                                             <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId)"
                                             >
