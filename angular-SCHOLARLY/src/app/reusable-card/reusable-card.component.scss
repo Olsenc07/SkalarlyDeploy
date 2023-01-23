@@ -69,14 +69,15 @@
   border-bottom-left-radius: 25px;
   border-top-left-radius: 25px;
   color: white !important;
-  background: linear-gradient(45deg, #000000a8, transparent);
+  background: linear-gradient(45deg,rgb(16 23 58),transparent);
+
 }
 .repostColor{
   background-color: powderblue !important;
   border-bottom-right-radius: 25px;
   border-top-right-radius: 25px;
   color: white !important;
-  background: linear-gradient(45deg, transparent, #000000a8);
+  background: linear-gradient(45deg,transparent,rgb(16 23 58));
 }
 .column {
   display: flex;
