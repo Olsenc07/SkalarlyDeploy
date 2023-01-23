@@ -232,27 +232,29 @@
             </mat-chip>
           </mat-chip-list>
 
-            <div class="buttonsC" *ngIf="userId == post.Creator">
-              <button mat-icon-button matTooltip="Repost" disabled>
-                <i class="fas fa-share-alt"></i>
-          <!-- {{shareds.length}} -->
-              </button>
-            </div>
-
-            <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId)">
-              <button mat-icon-button  matTooltip="Repost" (click)="spreadWord(post.id)" >
+          <div class="buttonCombo" >
+            <button class="counterColor" mat-flat-button  matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
+              <div *ngIf=" (valueChosen === postId) || (valueChosen === OriginalPostId)">
+                {{reposts}}
+                    </div>
+          <i *ngIf="(reposts == '') && (valueChosen !== postId) && (valueChosen !== OriginalPostId) " class="fas fa-hashtag"></i>
+            </button>
+                                <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId)"
+                                >
+                                  <button mat-flat-button  matTooltip="Repost" (click)="spreadWord(post.id)" class="repostColor">
+                        
+                              <i class="fas fa-share-alt"></i>
+                                  </button>
+                                </div>
+          
+                                <div class="buttonsC" *ngIf="(userId == post.Creator) || (userId == post.OriginalPostId)">
+                                  <button mat-flat-button  matTooltip="Repost" disabled class="repostColor">
+                        
+                              <i class="fas fa-share-alt"></i>
+                                  </button>
+                                </div>
+          </div> 
     
-          <i class="fas fa-share-alt"></i>
-          <!-- {{shareds.length}} -->
-              </button>
-            </div>
-            <div class="buttonsC" *ngIf="(userId == post.Creator) || (userId == post.OriginalCreatorId)">
-              <button mat-icon-button  matTooltip="Repost" disabled >
-    
-          <i class="fas fa-share-alt"></i>
-          <!-- {{shareds.length}} -->
-              </button>
-            </div>
                         <mat-chip-list class="buttonsC">
                           <mat-chip color="primary" selected matTooltip="Add your comment" class="comment-form-buttton" (click)="CommentTrigger(post.id)"
                           type="button"   >
@@ -261,10 +263,7 @@
                               <i class="far fa-comment-dots"></i>
                           </mat-chip>
                   </mat-chip-list>
-</div>
-
-
-
+            </div>
 
 <div  class="scroll">
 

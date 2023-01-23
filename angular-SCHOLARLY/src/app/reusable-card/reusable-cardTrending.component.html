@@ -245,11 +245,12 @@
             <i class="far fa-comments"></i>
           </mat-chip>
                       </mat-chip-list>
-                  
                       <div class="buttonCombo" >
                         <button class="counterColor" mat-flat-button  matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
-                      {{reposts}}
-                      <i *ngIf="reposts == '' " class="fas fa-hashtag"></i>
+                          <div *ngIf=" (valueChosen === postId) || (valueChosen === OriginalPostId)">
+                            {{reposts}}
+                                </div>
+                      <i *ngIf="(reposts == '') && (valueChosen !== postId) && (valueChosen !== OriginalPostId) " class="fas fa-hashtag"></i>
                         </button>
                                             <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId)"
                                             >
@@ -260,7 +261,7 @@
                                             </div>
                       
                                             <div class="buttonsC" *ngIf="(userId == post.Creator) || (userId == post.OriginalPostId)">
-                                              <button mat-icon-button  matTooltip="Repost" disabled >
+                                              <button mat-flat-button  matTooltip="Repost" disabled class="repostColor">
                                     
                                           <i class="fas fa-share-alt"></i>
                                               </button>
