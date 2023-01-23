@@ -39,6 +39,7 @@ export class ReusableCardComponent implements OnInit {
   isLoading = false;
   hide = true;
   reposts = '';
+  valueChosen = '';
   userId: string;
   user: string;
   open = true;
@@ -166,8 +167,12 @@ export class ReusableCardComponent implements OnInit {
     console.log('Hey babe I miss you more', OriginalPostId);
     if (OriginalPostId === undefined) {
       this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
       this.reposts = value;
@@ -351,6 +356,7 @@ export class ReusableCardPersonalComponent implements OnInit {
   hide = true;
   userId: string;
   reposts = '';
+  valueChosen = '';
   // Filling with Post info from post.service
   posts: Post[] = [];
   recomCounter = 0;
@@ -359,7 +365,6 @@ export class ReusableCardPersonalComponent implements OnInit {
   comments: string[] = [];
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
-  valueChosen = '';
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
   timeHourInitial = new Date().getHours();
@@ -459,9 +464,11 @@ export class ReusableCardPersonalComponent implements OnInit {
     if (OriginalPostId === undefined) {
       this.postService.getPostsTrendingNumber(postId);
       this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
       this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
       this.reposts = value;
@@ -1071,6 +1078,7 @@ export class CardFeedComponent implements OnInit {
   hide = true;
   userId: string;
   recomCounter = 0;
+  valueChosen = '';
   countVisibility = 0;
   posts: Post[] = [];
 
@@ -1226,8 +1234,12 @@ export class CardFeedComponent implements OnInit {
     console.log('Hey babe I miss you more', OriginalPostId);
     if (OriginalPostId === undefined) {
       this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
       this.reposts = value;
@@ -1380,6 +1392,7 @@ export class TrendingFeedComponent implements OnInit {
   open = true;
   closed = true;
   hide = true;
+  valueChosen = '';
   userId: string;
   recomCounter = 0;
   countVisibility = 0;
@@ -1537,8 +1550,12 @@ export class TrendingFeedComponent implements OnInit {
     console.log('Hey babe I miss you more', OriginalPostId);
     if (OriginalPostId === undefined) {
       this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
       this.reposts = value;
@@ -1692,6 +1709,7 @@ export class CardFriendsComponent implements OnInit {
   reposts = '';
   closed = true;
   hide = true;
+  valueChosen = '';
   userId: string;
   recomCounter = 0;
   countVisibility = 0;
@@ -1850,8 +1868,12 @@ export class CardFriendsComponent implements OnInit {
     console.log('Hey babe I miss you more', OriginalPostId);
     if (OriginalPostId === undefined) {
       this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
       this.reposts = value;
@@ -2008,6 +2030,8 @@ export class CardInfoFeedComponent implements OnInit {
   open = true;
   closed = true;
   userId: string;
+  valueChosen = '';
+  reposts = '';
   recomCounter = 0;
   countVisibility = 0;
   posts: Post[] = [];
@@ -2237,6 +2261,23 @@ export class CardInfoFeedComponent implements OnInit {
       console.log('onComment', postId);
     }
   }
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId === undefined) {
+      this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
+    });
+  }
   spreadWord(postId: string): void {
     console.log('for me baby', postId);
     console.log('for me baby 2', this.userId);
@@ -2265,6 +2306,8 @@ export class CardInfoMainPageComponent implements OnInit {
   isLoading = false;
   recomCounter = 0;
   countVisibility = 0;
+  valueChosen = '';
+  reposts = '';
   posts: Post[] = [];
   private postsSub: Subscription;
   comments: string[] = [];
@@ -2436,6 +2479,23 @@ export class CardInfoMainPageComponent implements OnInit {
       const msgs = selection.emoji;
       const msg = this.comment.value + msgs;
       this.comment.setValue(msg);
+    });
+  }
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId === undefined) {
+      this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
     });
   }
   emojiPreventClose($event: any): any {

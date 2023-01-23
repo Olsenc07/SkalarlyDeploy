@@ -19,7 +19,8 @@ import { ShowCaseService } from '../services/showCase.service';
 })
 export class MainPagesComponent implements OnInit {
   userId: string;
-
+  reposts = '';
+  valueChosen = '';
   category: string;
   specific: string;
   specificOptions: string;
@@ -59,6 +60,23 @@ export class MainPagesComponent implements OnInit {
       queryParams: { userId: this.userId },
     });
   }
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId === undefined) {
+      this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
+    });
+  }
   spreadWord(postId: string): void {
     console.log('for me baby', postId);
     console.log('for me baby 2', this.userId);
@@ -88,6 +106,8 @@ export class SinglePageComponent implements OnInit {
 export class SinglePageTemplateComponent implements OnInit {
   isLoading = false;
   hide = true;
+  reposts = '';
+  valueChosen = '';
   userId: string;
   posts: Post[] = [];
   postId: string;
@@ -272,7 +292,23 @@ export class SinglePageTemplateComponent implements OnInit {
       console.log('onComment', this.postId);
     }
   }
-
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId === undefined) {
+      this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
+    });
+  }
   loadComments(): void {
     this.commentsService.getComments(this.postId);
     this.commentsSub = this.commentsService
@@ -303,7 +339,8 @@ export class SinglePageTemplateComponent implements OnInit {
 })
 export class RecentComponent implements OnInit {
   isLoading = false;
-
+  reposts = '';
+  valueChosen = '';
   recomCounter = 0;
   countVisibility = 0;
   posts: Post[] = [];
@@ -512,7 +549,23 @@ export class RecentComponent implements OnInit {
       console.log('onComment', postId);
     }
   }
-
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId === undefined) {
+      this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
+    });
+  }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);
@@ -532,7 +585,8 @@ export class RecentComponent implements OnInit {
 })
 export class TrendingComponent implements OnInit {
   isLoading = false;
-
+  reposts = '';
+  valueChosen = '';
   recomCounter = 0;
   countVisibility = 0;
   posts: Post[] = [];
@@ -741,7 +795,23 @@ export class TrendingComponent implements OnInit {
       console.log('onComment', postId);
     }
   }
-
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId === undefined) {
+      this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
+      console.log('logic', this.valueChosen);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
+    });
+  }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);
