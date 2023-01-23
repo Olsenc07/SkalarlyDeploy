@@ -1626,7 +1626,7 @@ export class TrendingFeedComponent implements OnInit {
 export class CardFriendsComponent implements OnInit {
   isLoading = false;
   open = true;
-  reposts: number;
+  reposts = '';
   closed = true;
   hide = true;
   userId: string;

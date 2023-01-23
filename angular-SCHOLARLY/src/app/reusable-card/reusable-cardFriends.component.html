@@ -249,21 +249,19 @@
                       <div class="buttonsC" *ngIf="userId == post.Creator" [matBadge]="reposts">
                         <button mat-icon-button matTooltip="Repost" disabled>
                           <i class="fas fa-share-alt"></i>
-                    <!-- {{shareds.length}} -->
                         </button>
                       </div>
                    
 <div class="buttonCombo" >
   <button class="counterColor" mat-flat-button  matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
 {{reposts}}
-<i *ngIf="reposts == null" class="fas fa-hashtag"></i>
+<i *ngIf="reposts == '' " class="fas fa-hashtag"></i>
   </button>
                       <div class="buttonsC" *ngIf="(userId !== post.Creator) || (userId !== post.OriginalCreatorId)"
                       >
                         <button mat-flat-button  matTooltip="Repost" (click)="spreadWord(post.id)" class="repostColor">
               
                     <i class="fas fa-share-alt"></i>
-                    <!-- {{shareds.length}} -->
                         </button>
                       </div>
 </div> 
