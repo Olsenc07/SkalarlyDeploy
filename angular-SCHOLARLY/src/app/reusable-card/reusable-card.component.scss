@@ -60,6 +60,10 @@
   justify-content: center;
   flex-direction: row;
 }
+.buttonCombo{
+  display: flex;
+  flex-direction: row;
+}
 .counterColor{
   background-color: #10173a21 !important;
   border-bottom-left-radius: 25px;
