@@ -359,7 +359,7 @@ export class ReusableCardPersonalComponent implements OnInit {
   comments: string[] = [];
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
-
+  valueChosen = '';
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
   timeHourInitial = new Date().getHours();
@@ -458,8 +458,10 @@ export class ReusableCardPersonalComponent implements OnInit {
     console.log('Hey babe I miss you more', OriginalPostId);
     if (OriginalPostId === undefined) {
       this.postService.getPostsTrendingNumber(postId);
+      this.valueChosen = postId;
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = postId;
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
       this.reposts = value;
