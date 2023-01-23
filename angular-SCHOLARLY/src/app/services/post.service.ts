@@ -49,6 +49,8 @@ export class PostService {
 
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new Subject<AuthDataInfo[]>();
+  private countUpdated = new Subject();
+
   getTrendNumber(): number {
     return this.trendNumber;
   }
@@ -336,6 +338,8 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.trendNumber = transformedPosts.posts;
         console.log('rope around my nob', transformedPosts);
+        this.countUpdated.next(this.trendNumber);
+        console.log('hello', this.countUpdated);
       });
   }
   // getting main page posts
@@ -453,7 +457,9 @@ export class PostService {
   getPostUpdateListener(): any {
     return this.postsUpdated.asObservable();
   }
-
+  getCountUpdateListener(): any {
+    return this.countUpdated.asObservable();
+  }
   // Adding post
   addPost(
     userId: string,
