@@ -255,7 +255,8 @@
                       <div class="column">
 <div class="buttonCombo" >
   <button class="counterColor" mat-flat-button  matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
-    <i class="fas fa-hashtag"></i>
+{{reposts}}
+<i class="fas fa-hashtag"></i>
   </button>
                       <div class="buttonsC" *ngIf="(userId !== post.Creator) || (userId !== post.OriginalCreatorId)"
                       >
@@ -266,7 +267,6 @@
                         </button>
                       </div>
 </div> 
-{{10000}}
 
 </div>
 
