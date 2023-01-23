@@ -1786,13 +1786,14 @@ export class CardFriendsComponent implements OnInit {
     console.log('Hey babe I miss you more', postId);
     console.log('Hey babe I miss you more', OriginalPostId);
     if (OriginalPostId === undefined) {
-      this.postService.getPostsTrendingNumber(postId);
-      console.log('love cycle', postId);
+      this.postService.getPostsTrendingNumber(postId).then(() => {
+        this.reposts = this.postService.getTrendNumber();
+      });
     } else {
-      this.postService.getPostsTrendingNumber(OriginalPostId);
-      console.log('love wheel', OriginalPostId);
+      this.postService.getPostsTrendingNumber(OriginalPostId).then(() => {
+        this.reposts = this.postService.getTrendNumber();
+      });
     }
-    this.reposts = this.postService.getTrendNumber();
   }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
