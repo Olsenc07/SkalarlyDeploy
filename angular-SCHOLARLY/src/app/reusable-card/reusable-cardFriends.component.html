@@ -256,7 +256,7 @@
 <div class="buttonCombo" >
   <button class="counterColor" mat-flat-button  matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
 {{reposts}}
-<i *ngIf="reposts < 1" class="fas fa-hashtag"></i>
+<i *ngIf="reposts == null" class="fas fa-hashtag"></i>
   </button>
                       <div class="buttonsC" *ngIf="(userId !== post.Creator) || (userId !== post.OriginalCreatorId)"
                       >
