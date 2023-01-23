@@ -65,15 +65,18 @@
   flex-direction: row;
 }
 .counterColor{
-  background-color: darkblue !important;
+  background-color: teal !important;
   border-bottom-left-radius: 25px;
   border-top-left-radius: 25px;
   color: white !important;
+  background: linear-gradient(45deg, #000000a8, transparent);
 }
 .repostColor{
-  background-color: lightblue !important;
+  background-color: powderblue !important;
   border-bottom-right-radius: 25px;
   border-top-right-radius: 25px;
+  color: white !important;
+  background: linear-gradient(45deg, transparent, #000000a8);
 }
 .column {
   display: flex;
