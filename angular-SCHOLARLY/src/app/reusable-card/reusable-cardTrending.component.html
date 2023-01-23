@@ -246,20 +246,27 @@
           </mat-chip>
                       </mat-chip-list>
                   
-                      <div class="buttonsC" *ngIf="userId == post.Creator">
-                        <button mat-icon-button matTooltip="Repost" disabled>
-                          <i class="fas fa-share-alt"></i>
-                    <!-- {{shareds.length}} -->
+                      <div class="buttonCombo" >
+                        <button class="counterColor" mat-flat-button  matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
+                      {{reposts}}
+                      <i *ngIf="reposts == '' " class="fas fa-hashtag"></i>
                         </button>
-                      </div>
+                                            <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId)"
+                                            >
+                                              <button mat-flat-button  matTooltip="Repost" (click)="spreadWord(post.id)" class="repostColor">
+                                    
+                                          <i class="fas fa-share-alt"></i>
+                                              </button>
+                                            </div>
+                      
+                                            <div class="buttonsC" *ngIf="(userId == post.Creator) || (userId == post.OriginalPostId)">
+                                              <button mat-icon-button  matTooltip="Repost" disabled >
+                                    
+                                          <i class="fas fa-share-alt"></i>
+                                              </button>
+                                            </div>
+                      </div> 
 
-                      <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId)">
-                        <button mat-icon-button  matTooltip="Repost" (click)="spreadWord(post.id)" >
-              
-                    <i class="fas fa-share-alt"></i>
-                    <!-- {{shareds.length}} -->
-                        </button>
-                      </div>
                     
                       <!-- <button mat-icon-button class="showCommentsBtn" >
                         <mat-icon>bookmark</mat-icon>

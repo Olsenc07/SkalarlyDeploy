@@ -38,6 +38,7 @@ export enum ActiveCommentTypeEnum {
 export class ReusableCardComponent implements OnInit {
   isLoading = false;
   hide = true;
+  reposts = '';
   userId: string;
   user: string;
   open = true;
@@ -154,6 +155,24 @@ export class ReusableCardComponent implements OnInit {
   }
   emojiPreventClose($event: any): any {
     $event.stopPropagation();
+  }
+  spreadWord(postId: string): void {
+    console.log('for me baby', postId);
+    console.log('for me baby 2', this.userId);
+    this.postService.addPostShared(this.userId, postId);
+  }
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId === undefined) {
+      this.postService.getPostsTrendingNumber(postId);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
+    });
   }
   navigateToMainPage(value: string): void {
     this.route.navigate(['/main/:'], { queryParams: { category: value } });
@@ -331,6 +350,7 @@ export class ReusableCardPersonalComponent implements OnInit {
   isLoading = false;
   hide = true;
   userId: string;
+  reposts = '';
   // Filling with Post info from post.service
   posts: Post[] = [];
   recomCounter = 0;
@@ -431,6 +451,19 @@ export class ReusableCardPersonalComponent implements OnInit {
       const msgs = selection.emoji;
       const msg = this.comment.value + msgs;
       this.comment.setValue(msg);
+    });
+  }
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId === undefined) {
+      this.postService.getPostsTrendingNumber(postId);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
     });
   }
   emojiPreventClose($event: any): any {
@@ -1031,6 +1064,7 @@ export class ShowCaseComponent implements OnInit {
 export class CardFeedComponent implements OnInit {
   isLoading = false;
   open = true;
+  reposts = '';
   closed = true;
   hide = true;
   userId: string;
@@ -1185,6 +1219,19 @@ export class CardFeedComponent implements OnInit {
       return 'Dec';
     }
   }
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId === undefined) {
+      this.postService.getPostsTrendingNumber(postId);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
+    });
+  }
   spreadWord(postId: string): void {
     this.postService.addPostShared(this.userId, postId);
   }
@@ -1327,6 +1374,7 @@ export class CardFeedComponent implements OnInit {
 })
 export class TrendingFeedComponent implements OnInit {
   isLoading = false;
+  reposts = '';
   open = true;
   closed = true;
   hide = true;
@@ -1481,6 +1529,19 @@ export class TrendingFeedComponent implements OnInit {
     if (dateMonth === 11) {
       return 'Dec';
     }
+  }
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', OriginalPostId);
+    if (OriginalPostId === undefined) {
+      this.postService.getPostsTrendingNumber(postId);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
+    });
   }
   spreadWord(postId: string): void {
     this.postService.addPostShared(this.userId, postId);
@@ -1794,7 +1855,6 @@ export class CardFriendsComponent implements OnInit {
       this.reposts = value;
       console.log(' reposts', this.reposts);
     });
-    // this.reposts = this.postService.getTrendNumber();
   }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
