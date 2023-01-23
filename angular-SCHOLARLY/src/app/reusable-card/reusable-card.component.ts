@@ -1788,10 +1788,12 @@ export class CardFriendsComponent implements OnInit {
     if (OriginalPostId === undefined) {
       this.postService.getPostsTrendingNumber(postId).then(() => {
         this.reposts = this.postService.getTrendNumber();
+        console.log('number', this.reposts);
       });
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId).then(() => {
         this.reposts = this.postService.getTrendNumber();
+        console.log('number', this.reposts);
       });
     }
   }
