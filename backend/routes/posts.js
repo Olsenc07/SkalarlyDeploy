@@ -147,10 +147,11 @@ router.get("/TrendingNumber", async(req, kristina, next) => {
     .then(Trending => {
         
     let first = [];
-   Trending.filter((e)=>{
-    firstLength = first.push(e.OriginalCreatorId !== '');
+  let list = Trending.filter((e) => (e.OriginalCreatorId !== '')) 
+    firstLength = first.push(list);
     console.log('hey babe', first)
-          })
+    console.log('hey kristina', list)
+          
 
           console.log('length',firstLength)
           let  n = firstLength
