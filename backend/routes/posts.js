@@ -148,17 +148,14 @@ function getMostFrequent(OriginalIds, N, K) {
     console.log('list', list)
     topTwenty = []
     for (let i = 0; i < K; i++){
-        console.log('i', i )
         topTwenty.push(list[i][0])
-        console.log('topTwenty', topTwenty )
+    console.log('topTwenty', topTwenty )
 
     return topTwenty
       
 
     }
-    console.log('topTwenty2', topTwenty )
 
-    return topTwenty
 }
 
     Post.find({ OriginalPostId: { $ne: '' } })
