@@ -111,21 +111,29 @@ router.get("/friends", async(req, res, next) => {
 // Posts trending
 router.get("/Trending", async(req, res, next) => {
     const counter = req.query.counter;
+    function getMostFrequent(arr) {
+        const hashmap = arr.reduce( (acc, val) => {
+         acc[val] = (acc[val] || 0 ) + 1
+         return acc
+      },{})
+     return Object.keys(hashmap).reduce((a, b) => hashmap[a] > hashmap[b] ? a : b)
+     }
 
     Post.find({ OriginalPostId: { $eq: '' } })
     .then(Trending => {
         console.log('ryhmes', Trending )
-
-        let first = [];
-        Trending.forEach((e)=>{
-      console.log('away', e.OriginalCreatorId)
-       first.push(e.OriginalCreatorId);
-              })
-    console.log('packs', first)
-
+Trending.forEach(filter)
+ function filter(){
+ let OriginalIds = filter(word => word.OriginalPostId)
+ console.log('OriginalIds', OriginalIds)
+ return OriginalIds
+}
+      let Top =  getMostFrequent(Trending)
+console.log('Top', Top)
+console.log('OriginalIds', OriginalIds)
         res.status(200).json({
             message: 'Thats whats trending!',
-            posts: Trending
+            posts: OriginalIds
     })
 })
 });
