@@ -148,7 +148,7 @@ function SunAndMoon(OriginalIds, N, K) {
     console.log('list', list)
     topTwenty = []
     for (let i = 0; i < K; i++){
-        topTwenty.push(list[i][0])
+        topTwenty.push([...list[i][0]])
     console.log('topTwenty', topTwenty )
 
     return topTwenty
