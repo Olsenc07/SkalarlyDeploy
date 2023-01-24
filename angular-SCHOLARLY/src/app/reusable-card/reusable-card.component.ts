@@ -166,7 +166,7 @@ export class ReusableCardComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {
@@ -462,7 +462,7 @@ export class ReusableCardPersonalComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {
@@ -1233,7 +1233,7 @@ export class CardFeedComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {
@@ -1549,7 +1549,7 @@ export class TrendingFeedComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {
@@ -1867,7 +1867,7 @@ export class CardFriendsComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {
@@ -2265,7 +2265,7 @@ export class CardInfoFeedComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {
@@ -2485,7 +2485,7 @@ export class CardInfoMainPageComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {

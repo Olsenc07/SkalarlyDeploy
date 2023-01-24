@@ -150,6 +150,26 @@ console.log('love', list.length);
    
 })
 
+// Number of reposts
+router.get("/TrendingNumberOwn", async(req, kristina, next) => {
+  
+    await Post.find({ OriginalPostId: req.query.postId })
+     .then(Trending => {
+ console.log('love you1', Trending);
+ console.log('love1', Trending.length);
+ 
+ 
+           kristina.status(200).json({
+             message: 'Number of reposts returned!',
+             posts: Trending.length
+         });
+ 
+        
+         })
+    
+    
+ })
+
 // Post recieving personal
 router.get("/personal", async(req, res, next) => {
     const counter = req.query.counter;

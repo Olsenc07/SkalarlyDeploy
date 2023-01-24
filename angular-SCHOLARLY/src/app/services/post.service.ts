@@ -342,6 +342,21 @@ export class PostService {
         console.log('hello', this.countUpdated);
       });
   }
+  // Trending own
+  // getting others posts for their profiles display
+  getPostsTrendingNumberOwn(postId: string): any {
+    this.http
+      .get<{ message: string; posts: number }>(
+        'https://www.skalarly.com/api/posts/TrendingNumberOwn',
+        { params: { postId } }
+      )
+      .subscribe((transformedPosts) => {
+        this.trendNumber = transformedPosts.posts;
+        console.log('rope around my nob', transformedPosts);
+        this.countUpdated.next(this.trendNumber);
+        console.log('hello', this.countUpdated);
+      });
+  }
   // getting main page posts
   getPostsMainPage(category: string, counter: number): any {
     this.http

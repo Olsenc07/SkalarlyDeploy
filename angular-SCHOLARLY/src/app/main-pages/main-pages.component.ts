@@ -64,7 +64,7 @@ export class MainPagesComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {
@@ -296,7 +296,7 @@ export class SinglePageTemplateComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {
@@ -553,7 +553,7 @@ export class RecentComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {
@@ -799,7 +799,7 @@ export class TrendingComponent implements OnInit {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumber(postId);
+      this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
       console.log('logic1', this.valueChosen);
     } else {
