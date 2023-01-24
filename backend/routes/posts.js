@@ -114,7 +114,7 @@ router.get("/Trending", async(req, res, next) => {
    // JavaScript implementation to find
 // K elements with max occurrence.
  
-function getMostFrequent(OriginalIds, N, K) {
+function SunAndMoon(OriginalIds, N, K) {
  
     let mp = new Map();
  
@@ -164,7 +164,7 @@ function getMostFrequent(OriginalIds, N, K) {
  let OriginalIds = Trending.map(word => word.OriginalPostId)
  let N = OriginalIds.length;
  let K = 20;
- let Top =  getMostFrequent(OriginalIds, N, K)
+ let Top =  SunAndMoon(OriginalIds, N, K)
  console.log('Top', Top)
  Post.find({ _id: { $eq: Top } })
 .then(FinalTrending => {
