@@ -125,9 +125,9 @@ router.get("/Trending", async(req, res, next) => {
  let OriginalIds = Trending.map(word => word.OriginalPostId)
 
  let Top =  getMostFrequent(OriginalIds)
- console.log('Top', Top)
  console.log('OriginalIds', OriginalIds)
- Post.find({id: Top})
+ console.log('Top', Top)
+ Post.findById({ _id: { $eq: Top } })
 .then(FinalTrending => {
     console.log('love',FinalTrending )
     res.status(200).json({
