@@ -145,12 +145,16 @@ function getMostFrequent(OriginalIds, N, K) {
         else
             return o2[1] - o1[1];
     })
+    console.log('list', list)
     topTwenty = []
     for (let i = 0; i < K; i++){
         console.log('i', i )
-        topTwenty.push(i)
+        topTwenty.push(list[i][0])
         console.log('topTwenty', topTwenty )
-        return topTwenty
+
+    return topTwenty
+      
+
     }
     console.log('topTwenty2', topTwenty )
 
