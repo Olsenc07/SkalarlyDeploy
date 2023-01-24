@@ -147,9 +147,9 @@ function getMostFrequent(OriginalIds, N, K) {
     })
     topTwenty = []
     for (let i = 0; i < K; i++)
-    console.log('i', i )
-    topTwenty.push(i)
-    console.log('topTwenty', topTwenty )
+        console.log('i', i )
+        topTwenty.push(i)
+        console.log('topTwenty', topTwenty )
         return topTwenty
 }
 
