@@ -111,20 +111,53 @@ router.get("/friends", async(req, res, next) => {
 // Posts trending
 router.get("/Trending", async(req, res, next) => {
     const counter = req.query.counter;
-    function getMostFrequent(arr) {
-        const hashmap = arr.reduce( (acc, val) => {
-         acc[val] = (acc[val] || 0 ) + 1
-         return acc
-      },{})
-     return Object.keys(hashmap).reduce((a, b) => hashmap[a] > hashmap[b] ? a : b)
-     }
+   // JavaScript implementation to find
+// K elements with max occurrence.
+ 
+function getMostFrequent(OriginalIds, N, K) {
+ 
+    let mp = new Map();
+ 
+    // Put count of all the
+    // distinct elements in Map
+    // with element as the key &
+    // count as the value.
+    for (let i = 0; i < N; i++) {
+ 
+        // Get the count for the
+        // element if already present in the
+        // Map or get the default value which is 0.
+ 
+        if (mp.has(OriginalIds[i])) {
+            mp.set(OriginalIds[i], mp.get(OriginalIds[i]) + 1)
+        } else {
+            mp.set(OriginalIds[i], 1)
+        }
+    }
+ 
+    // Create a list from elements of HashMap
+    let list = [...mp];
+ 
+    // Sort the list
+    list.sort((o1, o2) => {
+        if (o1[1] == o2[1])
+            return o2[0] - o1[0];
+        else
+            return o2[1] - o1[1];
+    })
+ 
+    document.write(K + " numbers with most occurrences are: ");
+    for (let i = 0; i < K; i++)
+        document.write(list[i][0] + " ");
+}
 
     Post.find({ OriginalPostId: { $ne: '' } })
     .then(Trending => {
         console.log('ryhmes', Trending )
  let OriginalIds = Trending.map(word => word.OriginalPostId)
-
- let Top =  getMostFrequent(OriginalIds)
+ let N = OriginalIds.length;
+ let K = 20;
+ let Top =  getMostFrequent(OriginalIds, N, K)
  console.log('OriginalIds', OriginalIds)
  console.log('Top', Top)
  Post.find({ _id: { $eq: Top } })
