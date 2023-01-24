@@ -165,7 +165,6 @@ function getMostFrequent(OriginalIds, N, K) {
  let N = OriginalIds.length;
  let K = 20;
  let Top =  getMostFrequent(OriginalIds, N, K)
- console.log('OriginalIds', OriginalIds)
  console.log('Top', Top)
  Post.find({ _id: { $eq: Top } })
 .then(FinalTrending => {
