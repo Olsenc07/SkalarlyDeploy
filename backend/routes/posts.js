@@ -145,9 +145,9 @@ router.get("/TrendingNumber", async(req, kristina, next) => {
     }
    await Post.find({ OriginalPostId: req.query.postId })
     .then(Trending => {
-        
+        print('trending',Trending)
     let first = [];
-  let list = Trending.filter((e) => (e.OriginalPostId !== '')) 
+  let list = Trending.filter((e) => ((e.OriginalPostId !== '') )) 
     firstLength = first.push(list);
     console.log('hey kristina', list)
     finalList = list.map( list => list.OriginalPostId)
