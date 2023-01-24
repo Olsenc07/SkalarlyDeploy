@@ -163,12 +163,12 @@ export class ReusableCardComponent implements OnInit {
     this.postService.addPostShared(this.userId, postId);
   }
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
-    console.log('Hey babe I miss you more', postId);
-    console.log('Hey babe I miss you more', OriginalPostId);
-    if (OriginalPostId === undefined) {
+    console.log('Hey babe I miss you more', postId.length);
+    console.log('Hey babe I miss you ', OriginalPostId.length);
+    if (OriginalPostId.length === 0) {
       this.postService.getPostsTrendingNumber(postId);
       this.valueChosen = postId;
-      console.log('logic', this.valueChosen);
+      console.log('logic1', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
       this.valueChosen = OriginalPostId;
@@ -459,12 +459,12 @@ export class ReusableCardPersonalComponent implements OnInit {
     });
   }
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
-    console.log('Hey babe I miss you more', postId);
-    console.log('Hey babe I miss you more', OriginalPostId);
-    if (OriginalPostId === undefined) {
+    console.log('Hey babe I miss you more', postId.length);
+    console.log('Hey babe I miss you ', OriginalPostId.length);
+    if (OriginalPostId.length === 0) {
       this.postService.getPostsTrendingNumber(postId);
       this.valueChosen = postId;
-      console.log('logic', this.valueChosen);
+      console.log('logic1', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
       this.valueChosen = OriginalPostId;
@@ -1546,12 +1546,12 @@ export class TrendingFeedComponent implements OnInit {
     }
   }
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
-    console.log('Hey babe I miss you more', postId);
-    console.log('Hey babe I miss you more', OriginalPostId);
-    if (OriginalPostId === undefined) {
+    console.log('Hey babe I miss you more', postId.length);
+    console.log('Hey babe I miss you ', OriginalPostId.length);
+    if (OriginalPostId.length === 0) {
       this.postService.getPostsTrendingNumber(postId);
       this.valueChosen = postId;
-      console.log('logic', this.valueChosen);
+      console.log('logic1', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
       this.valueChosen = OriginalPostId;
@@ -2262,12 +2262,12 @@ export class CardInfoFeedComponent implements OnInit {
     }
   }
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
-    console.log('Hey babe I miss you more', postId);
-    console.log('Hey babe I miss you more', OriginalPostId);
-    if (OriginalPostId === undefined) {
+    console.log('Hey babe I miss you more', postId.length);
+    console.log('Hey babe I miss you ', OriginalPostId.length);
+    if (OriginalPostId.length === 0) {
       this.postService.getPostsTrendingNumber(postId);
       this.valueChosen = postId;
-      console.log('logic', this.valueChosen);
+      console.log('logic1', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
       this.valueChosen = OriginalPostId;
@@ -2482,12 +2482,12 @@ export class CardInfoMainPageComponent implements OnInit {
     });
   }
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
-    console.log('Hey babe I miss you more', postId);
-    console.log('Hey babe I miss you more', OriginalPostId);
-    if (OriginalPostId === undefined) {
+    console.log('Hey babe I miss you more', postId.length);
+    console.log('Hey babe I miss you ', OriginalPostId.length);
+    if (OriginalPostId.length === 0) {
       this.postService.getPostsTrendingNumber(postId);
       this.valueChosen = postId;
-      console.log('logic', this.valueChosen);
+      console.log('logic1', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
       this.valueChosen = OriginalPostId;
