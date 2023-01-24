@@ -340,7 +340,7 @@ export class SinglePageTemplateComponent implements OnInit {
 export class RecentComponent implements OnInit {
   isLoading = false;
   reposts = '';
-  valueChosen = '';
+  valueChosen = '7';
   recomCounter = 0;
   countVisibility = 0;
   posts: Post[] = [];
