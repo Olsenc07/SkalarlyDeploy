@@ -145,7 +145,9 @@ router.get("/TrendingNumber", async(req, kristina, next) => {
     }
    await Post.find({ OriginalPostId: req.query.postId })
     .then(Trending => {
-        print('trending',Trending)
+        console.log('trending',Trending)
+        console.log('trending',Trending.length)
+
     let first = [];
   let list = Trending.filter((e) => ((e.OriginalPostId !== '') )) 
     firstLength = first.push(list);
@@ -163,7 +165,7 @@ router.get("/TrendingNumber", async(req, kristina, next) => {
 
           kristina.status(200).json({
             message: 'Number of reposts returned!',
-            posts: returnValue
+            posts: Trending.length
         });
 
        
