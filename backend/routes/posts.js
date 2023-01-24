@@ -131,12 +131,12 @@ router.get("/Trending", async(req, res, next) => {
 });
 // Number of reposts
 router.get("/TrendingNumber", async(req, kristina, next) => {
-    function countOccurrences(first,n,x)
+    function countOccurrences(finalList,n,x)
     {
         let kristina = 0;
         for (let i=0; i<n; i++)
         {
-            if (x == first[i])
+            if (x == finalList[i])
             kristina++;
         }
  
@@ -149,14 +149,16 @@ router.get("/TrendingNumber", async(req, kristina, next) => {
     let first = [];
   let list = Trending.filter((e) => (e.OriginalPostId !== '')) 
     firstLength = first.push(list);
-    console.log('hey babe', first)
     console.log('hey kristina', list)
-          
+    finalList = list.map( list => list.OriginalPostId)
+
 
           console.log('length',firstLength)
+          console.log('finalList',finalList)
+
           let  n = firstLength
           let x = req.query.postId;
-          var returnValue = countOccurrences(first,n,x) 
+          var returnValue = countOccurrences(finalList,n,x) 
           console.log('return value',returnValue)
 
           kristina.status(200).json({
