@@ -1864,12 +1864,12 @@ export class CardFriendsComponent implements OnInit {
   }
 
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
-    console.log('Hey babe I miss you more', postId);
-    console.log('Hey babe I miss you more', OriginalPostId);
-    if (OriginalPostId === undefined) {
+    console.log('Hey babe I miss you more', postId.length);
+    console.log('Hey babe I miss you ', OriginalPostId.length);
+    if (OriginalPostId.length === 0) {
       this.postService.getPostsTrendingNumber(postId);
       this.valueChosen = postId;
-      console.log('logic', this.valueChosen);
+      console.log('logic1', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
       this.valueChosen = OriginalPostId;
