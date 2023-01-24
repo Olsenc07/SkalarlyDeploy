@@ -119,23 +119,26 @@ router.get("/Trending", async(req, res, next) => {
      return Object.keys(hashmap).reduce((a, b) => hashmap[a] > hashmap[b] ? a : b)
      }
 
-    Post.find({ OriginalPostId: { $eq: '' } })
+    Post.find({ OriginalPostId: { $ne: '' } })
     .then(Trending => {
         console.log('ryhmes', Trending )
-Trending.forEach(filter)
- function filter(){
- let OriginalIds = filter(word => word.OriginalPostId)
+ let OriginalIds = Trending.filter(word => word.OriginalPostId)
  console.log('OriginalIds', OriginalIds)
- return OriginalIds
-}
-      let Top =  getMostFrequent(Trending)
-console.log('Top', Top)
-console.log('OriginalIds', OriginalIds)
-        res.status(200).json({
-            message: 'Thats whats trending!',
-            posts: OriginalIds
-    })
+ let Top =  getMostFrequent(OriginalIds)
+ console.log('Top', Top)
+ console.log('OriginalIds', OriginalIds)
+ Post.find({id: Top})
+.then(FinalTrending => {
+    res.status(200).json({
+        message: 'Thats whats trending!',
+  posts: FinalTrending
+      
 })
+
+
+})
+     })
+
 });
 // Number of reposts
 router.get("/TrendingNumber", async(req, kristina, next) => {
