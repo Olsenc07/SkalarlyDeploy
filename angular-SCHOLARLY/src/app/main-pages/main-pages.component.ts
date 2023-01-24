@@ -69,7 +69,7 @@ export class MainPagesComponent implements OnInit {
       console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
@@ -301,7 +301,7 @@ export class SinglePageTemplateComponent implements OnInit {
       console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
@@ -550,15 +550,15 @@ export class RecentComponent implements OnInit {
     }
   }
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
-    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you', postId);
     console.log('Hey babe I miss you more', OriginalPostId);
     if (OriginalPostId === undefined) {
       this.postService.getPostsTrendingNumber(postId);
-      this.valueChosen = postId;
-      console.log('logic', this.valueChosen);
+      this.valueChosen = OriginalPostId;
+      console.log('logic1', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
@@ -804,7 +804,7 @@ export class TrendingComponent implements OnInit {
       console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {

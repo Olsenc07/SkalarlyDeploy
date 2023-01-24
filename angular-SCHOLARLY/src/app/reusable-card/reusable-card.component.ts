@@ -171,7 +171,7 @@ export class ReusableCardComponent implements OnInit {
       console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
@@ -467,7 +467,7 @@ export class ReusableCardPersonalComponent implements OnInit {
       console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
@@ -1238,7 +1238,7 @@ export class CardFeedComponent implements OnInit {
       console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
@@ -1554,7 +1554,7 @@ export class TrendingFeedComponent implements OnInit {
       console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
@@ -1872,7 +1872,7 @@ export class CardFriendsComponent implements OnInit {
       console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
@@ -2270,7 +2270,7 @@ export class CardInfoFeedComponent implements OnInit {
       console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
@@ -2490,7 +2490,7 @@ export class CardInfoMainPageComponent implements OnInit {
       console.log('logic', this.valueChosen);
     } else {
       this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = postId;
+      this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
     this.postService.getCountUpdateListener().subscribe((value) => {
