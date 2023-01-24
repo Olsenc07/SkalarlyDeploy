@@ -145,10 +145,12 @@ function getMostFrequent(OriginalIds, N, K) {
         else
             return o2[1] - o1[1];
     })
- 
-    document.write(K + " numbers with most occurrences are: ");
+    topTwenty = []
     for (let i = 0; i < K; i++)
-        document.write(list[i][0] + " ");
+    console.log('i', i )
+    topTwenty.push(i)
+    console.log('topTwenty', topTwenty )
+        return topTwenty
 }
 
     Post.find({ OriginalPostId: { $ne: '' } })
