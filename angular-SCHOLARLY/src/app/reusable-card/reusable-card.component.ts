@@ -39,7 +39,7 @@ export class ReusableCardComponent implements OnInit {
   isLoading = false;
   hide = true;
   reposts = '';
-  valueChosen = '';
+  valueChosen = '7';
   userId: string;
   user: string;
   open = true;
@@ -356,7 +356,7 @@ export class ReusableCardPersonalComponent implements OnInit {
   hide = true;
   userId: string;
   reposts = '';
-  valueChosen = '';
+  valueChosen = '7';
   // Filling with Post info from post.service
   posts: Post[] = [];
   recomCounter = 0;
@@ -1078,7 +1078,7 @@ export class CardFeedComponent implements OnInit {
   hide = true;
   userId: string;
   recomCounter = 0;
-  valueChosen = '';
+  valueChosen = '7';
   countVisibility = 0;
   posts: Post[] = [];
 
@@ -1392,7 +1392,7 @@ export class TrendingFeedComponent implements OnInit {
   open = true;
   closed = true;
   hide = true;
-  valueChosen = '';
+  valueChosen = '7';
   userId: string;
   recomCounter = 0;
   countVisibility = 0;
@@ -1709,7 +1709,7 @@ export class CardFriendsComponent implements OnInit {
   reposts = '';
   closed = true;
   hide = true;
-  valueChosen = '';
+  valueChosen = '7';
   userId: string;
   recomCounter = 0;
   countVisibility = 0;
@@ -2030,7 +2030,7 @@ export class CardInfoFeedComponent implements OnInit {
   open = true;
   closed = true;
   userId: string;
-  valueChosen = '';
+  valueChosen = '7';
   reposts = '';
   recomCounter = 0;
   countVisibility = 0;
@@ -2306,7 +2306,7 @@ export class CardInfoMainPageComponent implements OnInit {
   isLoading = false;
   recomCounter = 0;
   countVisibility = 0;
-  valueChosen = '';
+  valueChosen = '7';
   reposts = '';
   posts: Post[] = [];
   private postsSub: Subscription;

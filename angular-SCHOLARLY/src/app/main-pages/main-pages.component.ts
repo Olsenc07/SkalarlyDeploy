@@ -20,7 +20,7 @@ import { ShowCaseService } from '../services/showCase.service';
 export class MainPagesComponent implements OnInit {
   userId: string;
   reposts = '';
-  valueChosen = '';
+  valueChosen = '7';
   category: string;
   specific: string;
   specificOptions: string;
@@ -107,7 +107,7 @@ export class SinglePageTemplateComponent implements OnInit {
   isLoading = false;
   hide = true;
   reposts = '';
-  valueChosen = '';
+  valueChosen = '7';
   userId: string;
   posts: Post[] = [];
   postId: string;
@@ -586,7 +586,7 @@ export class RecentComponent implements OnInit {
 export class TrendingComponent implements OnInit {
   isLoading = false;
   reposts = '';
-  valueChosen = '';
+  valueChosen = '7';
   recomCounter = 0;
   countVisibility = 0;
   posts: Post[] = [];
