@@ -175,7 +175,7 @@ function SunAndMoon(OriginalIds, N, K) {
     {$addFields: {"__order": {$indexOfArray: [Top, "$name" ]}}},
     {$sort: {"__order": 1}}
    ];
-connsole.log('query', query);
+console.log('query', query);
 
  Post.find().sort({ _id:  Top })
 .then(FinalTrending => {
