@@ -153,10 +153,9 @@ function SunAndMoon(OriginalIds, N, K) {
         function popFunction(item ){  
             newest.push(item[0])
         console.log('newest', newest);
+        // need to give find _id one at a time so it actually stacks them properly
         return newest
         }
-    console.log('topTwenty', newest )
-
     return newest
       
 
@@ -166,7 +165,6 @@ function SunAndMoon(OriginalIds, N, K) {
 
     Post.find({ OriginalPostId: { $ne: '' } })
     .then(Trending => {
-        console.log('ryhmes', Trending )
  let OriginalIds = Trending.map(word => word.OriginalPostId)
  let N = OriginalIds.length;
  let K = 20;
