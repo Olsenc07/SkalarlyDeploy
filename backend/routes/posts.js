@@ -171,6 +171,13 @@ function SunAndMoon(OriginalIds, N, K) {
  let Top =  SunAndMoon(OriginalIds, N, K)
  console.log('Top', Top)
 
+ var query = [
+    {$match: {name: {$in: Top}}},
+    {$addFields: {"__order": {$indexOfArray: [Top, "$name" ]}}},
+    {$sort: {"__order": 1}}
+   ];
+connsole.log('query', query);
+
  Post.find().sort({ _id:  Top })
 .then(FinalTrending => {
     console.log('love',FinalTrending )
