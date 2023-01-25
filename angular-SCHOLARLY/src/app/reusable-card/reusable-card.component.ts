@@ -1707,6 +1707,7 @@ export class CardFriendsComponent implements OnInit {
   isLoading = false;
   open = true;
   reposts = '';
+  commentsValidator = '';
   closed = true;
   hide = true;
   valueChosen = '7';
@@ -1780,6 +1781,10 @@ export class CardFriendsComponent implements OnInit {
     //     this.infos = infos.reverse();
     //     this.isLoading = false;
     //   });
+  }
+  commentsValidatorFunc(postId: string): void {
+    this.commentsValidator = postId;
+    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {

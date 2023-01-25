@@ -226,7 +226,7 @@
              class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button> -->
              <mat-form-field id="showEmojis">
             <input matInput placeholder="Comment..." class="comment-form-textarea" id="selection-emoji"
-            maxlength="140" [formControl]="comment" >
+            maxlength="140" [formControl]="comment" (click)="commentsValidatorFunc(post.id)">
             <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
         </mat-form-field>
             <!-- {{submitLabel}}  -->
@@ -262,7 +262,7 @@
                         </button>
                       </div>
 
-                      <div class="buttonsC" *ngIf="(userId == post.Creator) || (userId == post.OriginalPostId) || (post.OriginalPostId.length)">
+                      <div class="buttonsC" *ngIf="(userId == post.Creator) || (userId == post.OriginalPostId)">
                         <button mat-icon-button  matTooltip="Repost" disabled >
               
                     <i class="fas fa-share-alt"></i>
@@ -281,7 +281,7 @@
         <mat-chip-list class="buttonsC">
         <mat-chip color="primary"
           matTooltip="Add your comment"  class="comment-form-buttton" (click)="CommentTrigger(post.id)"
-        type="submit"  [disabled]="comment.value === '' " >
+        type="submit"  [disabled]="(comment.value === '') || (commentsValidator !== post.id) " >
         <!-- [disabled]="comment.value === '' " -->
             Add Comment
             <i class="far fa-comment-dots"></i>
