@@ -25,12 +25,8 @@
         <div class="row">
           <div class="repostBox">
           <div class="repost" *ngIf="post.SharerUsername">
-          <div class="font" *ngIf="post.SharerUsername">
-            <div matTooltip="To Original Post">
-              <button mat-icon-button (click)="navToPost(post.OriginalPostId)">
-                <i class="fas fa-home"></i>
-              </button>
-            </div>
+          <div class="font" >
+          
             <div class="repostStuff">
             <div class="align">
           Reposted By: 
@@ -254,18 +250,18 @@
     </div>
 <i *ngIf="(valueChosen !== post.id) && (valueChosen !== post.OriginalPostId) " class="fas fa-hashtag"></i>
   </button>
-                      <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId)"
-                      >
-                        <button mat-flat-button  matTooltip="Repost" (click)="spreadWord(post.id)" class="repostColor">
-              
-                    <i class="fas fa-share-alt"></i>
-                        </button>
-                      </div>
 
-                      <div class="buttonsC" *ngIf="(userId == post.Creator) ||  (post.OriginalPostId !== '')">
-                        <button mat-icon-button  matTooltip="Repost" disabled >
-              
-                    <i class="fas fa-share-alt"></i>
+  <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId) && post.OriginalPostId !== '' "
+  >
+    <button mat-flat-button  matTooltip="Repost" (click)="spreadWord(post.id)" class="repostColor">
+
+<i class="fas fa-share-alt"></i>
+    </button>
+  </div>
+
+                      <div class="buttonsC" matTooltip="To Original Post" *ngIf="post.OriginalPostId == '' ">
+                        <button mat-icon-button (click)="navToPost(post.OriginalPostId)" class="repostColor">
+                          <i class="fas fa-home"></i>
                         </button>
                       </div>
 </div> 
