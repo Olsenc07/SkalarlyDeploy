@@ -251,7 +251,7 @@
 <i *ngIf="(valueChosen !== post.id) && (valueChosen !== post.OriginalPostId) " class="fas fa-hashtag"></i>
   </button>
 
-  <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId) && post.OriginalPostId !== '' "
+  <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId) && post.OriginalPostId == '' "
   >
     <button mat-flat-button  matTooltip="Repost" (click)="spreadWord(post.id)" class="repostColor">
 
@@ -259,8 +259,8 @@
     </button>
   </div>
 
-                      <div class="buttonsC" matTooltip="To Original Post" *ngIf="post.OriginalPostId == '' ">
-                        <button mat-icon-button (click)="navToPost(post.OriginalPostId)" class="repostColor">
+                      <div class="buttonsC" matTooltip="To Original Post" *ngIf="post.OriginalPostId !== '' ">
+                        <button mat-flat-button  (click)="navToPost(post.OriginalPostId)" class="repostColor">
                           <i class="fas fa-home"></i>
                         </button>
                       </div>
