@@ -1784,6 +1784,7 @@ export class CardFriendsComponent implements OnInit {
   }
   commentsValidatorFunc(postId: string): void {
     this.commentsValidator = postId;
+    this.comment.setValue('');
     console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
