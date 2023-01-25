@@ -146,18 +146,18 @@ function SunAndMoon(OriginalIds, N, K) {
             return o2[1] - o1[1];
     })
     console.log('list', list);
-   let topTwenty = [];
    let newest = []
     for (let i = 0; i < K; i++){
         console.log('i', i)
         list.forEach(popFunction)
         function popFunction(item ){  
             newest.push(item[0])
-            console.log('newest', newest);
+        console.log('newest', newest);
+        return newest
         }
-    console.log('topTwenty', topTwenty )
+    console.log('topTwenty', newest )
 
-    return topTwenty
+    return newest
       
 
     }
@@ -172,7 +172,7 @@ function SunAndMoon(OriginalIds, N, K) {
  let K = 20;
  let Top =  SunAndMoon(OriginalIds, N, K)
  console.log('Top', Top)
- Post.find({ _id: { $eq: Top } })
+ Post.find({ _id:  Top })
 .then(FinalTrending => {
     console.log('love',FinalTrending )
     res.status(200).json({
