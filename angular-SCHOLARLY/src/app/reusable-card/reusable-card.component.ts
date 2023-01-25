@@ -211,8 +211,7 @@ export class ReusableCardComponent implements OnInit {
     this.router.queryParams.subscribe((params) => {
       this.user = params.id;
       const id = this.user;
-
-      // Posts
+      // posts
       this.postService.getOthersPosts(id, 0);
       this.postsSub = this.postService
         .getPostUpdateListener()
