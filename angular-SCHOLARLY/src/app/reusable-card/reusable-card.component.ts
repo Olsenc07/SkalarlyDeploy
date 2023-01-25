@@ -220,6 +220,7 @@ export class ReusableCardComponent implements OnInit {
           this.isLoading = false;
         });
     });
+    console.log('user', this.user);
   }
   commentsValidatorFunc(postId: string): void {
     this.commentsValidator = postId;

@@ -244,7 +244,7 @@
               </button>
             </div>
           
-                                <div class="buttonsC" matTooltip="Original Post" *ngIf="post.OriginalPostId == user ">
+                                <div class="buttonsC" matTooltip="Original Post" *ngIf="post.Creator == user ">
                                   <button mat-flat-button  (click)="navToPost(post.OriginalPostId)" class="repostColor">
                                     <i class="fas fa-home"></i>
                                   </button>
