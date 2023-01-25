@@ -77,6 +77,7 @@ export class MainPagesComponent implements OnInit {
       console.log(' reposts', this.reposts);
     });
   }
+
   spreadWord(postId: string): void {
     console.log('for me baby', postId);
     console.log('for me baby 2', this.userId);
@@ -292,6 +293,7 @@ export class SinglePageTemplateComponent implements OnInit {
       console.log('onComment', this.postId);
     }
   }
+
   getPostsTrendingNumber(): any {
     console.log('Hey babe I miss you more', this.postId);
     this.postService.getPostsTrendingNumberOwn(this.postId);
@@ -333,6 +335,7 @@ export class SinglePageTemplateComponent implements OnInit {
 export class RecentComponent implements OnInit {
   isLoading = false;
   reposts = '';
+
   valueChosen = '7';
   recomCounter = 0;
   countVisibility = 0;
@@ -383,6 +386,7 @@ export class RecentComponent implements OnInit {
     //     console.log('posts personal', this.posts);
     //   });
   }
+
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
     if (timeHourInitial > 12) {
@@ -580,6 +584,7 @@ export class TrendingComponent implements OnInit {
   isLoading = false;
   reposts = '';
   valueChosen = '7';
+
   recomCounter = 0;
   countVisibility = 0;
   posts: Post[] = [];
@@ -629,6 +634,7 @@ export class TrendingComponent implements OnInit {
         console.log('posts personal', this.posts);
       });
   }
+
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
     if (timeHourInitial > 12) {

@@ -39,6 +39,7 @@ export class ReusableCardComponent implements OnInit {
   isLoading = false;
   hide = true;
   reposts = '';
+  commentsValidator = '';
   valueChosen = '7';
   userId: string;
   user: string;
@@ -221,6 +222,11 @@ export class ReusableCardComponent implements OnInit {
         });
     });
   }
+  commentsValidatorFunc(postId: string): void {
+    this.commentsValidator = postId;
+    this.comment.setValue('');
+    console.log('commentsValidator', this.commentsValidator);
+  }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
     if (timeHourInitial > 12) {
@@ -356,6 +362,7 @@ export class ReusableCardPersonalComponent implements OnInit {
   hide = true;
   userId: string;
   reposts = '';
+  commentsValidator = '';
   valueChosen = '7';
   // Filling with Post info from post.service
   posts: Post[] = [];
@@ -521,6 +528,11 @@ export class ReusableCardPersonalComponent implements OnInit {
         this.isLoading = false;
         console.log('posts', this.posts);
       });
+  }
+  commentsValidatorFunc(postId: string): void {
+    this.commentsValidator = postId;
+    this.comment.setValue('');
+    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -1074,6 +1086,7 @@ export class CardFeedComponent implements OnInit {
   isLoading = false;
   open = true;
   reposts = '';
+  commentsValidator = '';
   closed = true;
   hide = true;
   userId: string;
@@ -1147,6 +1160,11 @@ export class CardFeedComponent implements OnInit {
     //     this.infos = infos.reverse();
     //     this.isLoading = false;
     //   });
+  }
+  commentsValidatorFunc(postId: string): void {
+    this.commentsValidator = postId;
+    this.comment.setValue('');
+    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -1389,6 +1407,7 @@ export class CardFeedComponent implements OnInit {
 export class TrendingFeedComponent implements OnInit {
   isLoading = false;
   reposts = '';
+  commentsValidator = '';
   open = true;
   closed = true;
   hide = true;
@@ -1463,6 +1482,11 @@ export class TrendingFeedComponent implements OnInit {
     //     this.infos = infos.reverse();
     //     this.isLoading = false;
     //   });
+  }
+  commentsValidatorFunc(postId: string): void {
+    this.commentsValidator = postId;
+    this.comment.setValue('');
+    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -2037,6 +2061,7 @@ export class CardInfoFeedComponent implements OnInit {
   closed = true;
   userId: string;
   valueChosen = '7';
+  commentsValidator = '';
   reposts = '';
   recomCounter = 0;
   countVisibility = 0;
@@ -2099,6 +2124,11 @@ export class CardInfoFeedComponent implements OnInit {
         this.infos = infos;
         this.isLoading = false;
       });
+  }
+  commentsValidatorFunc(postId: string): void {
+    this.commentsValidator = postId;
+    this.comment.setValue('');
+    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -2314,6 +2344,7 @@ export class CardInfoMainPageComponent implements OnInit {
   countVisibility = 0;
   valueChosen = '7';
   reposts = '';
+  commentsValidator = '';
   posts: Post[] = [];
   private postsSub: Subscription;
   comments: string[] = [];
@@ -2371,6 +2402,11 @@ export class CardInfoMainPageComponent implements OnInit {
           this.isLoading = false;
         });
     });
+  }
+  commentsValidatorFunc(postId: string): void {
+    this.commentsValidator = postId;
+    this.comment.setValue('');
+    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {

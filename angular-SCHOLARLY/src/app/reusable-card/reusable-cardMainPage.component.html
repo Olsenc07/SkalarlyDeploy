@@ -194,7 +194,7 @@
             <mat-divider></mat-divider>
             <mat-form-field id="showEmojis">
             <input matInput placeholder="Comment..." class="comment-form-textarea"
-            maxlength="140" [formControl]="comment" >
+            maxlength="140" [formControl]="comment" (click)="commentsValidatorFunc(post.id)">
             <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
             </mat-form-field>
              

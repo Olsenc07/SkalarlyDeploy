@@ -145,10 +145,16 @@ function SunAndMoon(OriginalIds, N, K) {
         else
             return o2[1] - o1[1];
     })
-    console.log('list', list)
-    topTwenty = []
+    console.log('list', list);
+   let topTwenty = [];
+   let newest = []
     for (let i = 0; i < K; i++){
-        list[i][0].forEach(x => console.log('x',x))
+        console.log('i', i)
+        list.forEach(popFunction)
+        function popFunction(item ){  
+            newest.push(item[0])
+            console.log('newest', newest);
+        }
     console.log('topTwenty', topTwenty )
 
     return topTwenty
