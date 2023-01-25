@@ -170,7 +170,9 @@ function SunAndMoon(OriginalIds, N, K) {
  let K = 20;
  let Top =  SunAndMoon(OriginalIds, N, K)
  console.log('Top', Top)
- Post.find({ _id:  Top })
+ for (const x of Top){
+    console.log('x', x)
+ Post.find({ _id:  x })
 .then(FinalTrending => {
     console.log('love',FinalTrending )
     res.status(200).json({
@@ -181,6 +183,7 @@ function SunAndMoon(OriginalIds, N, K) {
 
 
 })
+ }
      })
 
 });
