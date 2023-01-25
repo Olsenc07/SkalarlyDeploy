@@ -172,7 +172,6 @@ function SunAndMoon(OriginalIds, N, K) {
  console.log('Top', Top)
 
  var query = [
-    {$match: {name: {$in: Top}}},
     {$addFields: {"__order": {$indexOfArray: [Top, "$name" ]}}},
     {$sort: {"__order": 1}}
    ];
