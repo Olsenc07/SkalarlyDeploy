@@ -256,12 +256,15 @@
                       <i class="fas fa-share-alt"></i>
                           </button>
                         </div>
+                        <!-- Your post -->
+                        <div class="buttonsC" *ngIf="(post.OriginalPostId !== '') || (userId == post.Creator)"
+                        >
+                          <button mat-flat-button  matTooltip="Repost" disbaled class="repostColor">
                       
-                                            <div class="buttonsC" matTooltip="Original Post" *ngIf="(post.OriginalPostId !== '') || (userId == post.Creator)">
-                                              <button mat-flat-button  (click)="navToPost(post.OriginalPostId)" class="repostColor">
-                                                <i class="fas fa-home"></i>
-                                              </button>
-                                            </div>
+                      <i class="fas fa-share-alt"></i>
+                          </button>
+                        </div>
+                                            
                       </div> 
 
                     
