@@ -174,6 +174,11 @@ function SunAndMoon(OriginalIds, N, K) {
  const obj = Object.assign({}, Top)
 
 console.log('query', obj);
+myGirl = []
+for (let i = 0; i < Top.length; i++) {
+    myGirl.push( i + ':' + Top[i]);
+  }
+console.log('myGirl', myGirl)
 
  Post.find().sort({ _id:  Top })
 .then(FinalTrending => {
