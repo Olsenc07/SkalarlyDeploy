@@ -171,11 +171,9 @@ function SunAndMoon(OriginalIds, N, K) {
  let Top =  SunAndMoon(OriginalIds, N, K)
  console.log('Top', Top)
 
- var query = [
-    {$addFields: {"__order": {$indexOfArray: [Top, "$name" ]}}},
-    {$sort: {"__order": 1}}
-   ];
-console.log('query', query);
+ const obj = Object.assign({}, Top)
+
+console.log('query', obj);
 
  Post.find().sort({ _id:  Top })
 .then(FinalTrending => {
