@@ -120,12 +120,13 @@ router.get("/Trending", async(req, res, next) => {
                 message: 'Thats whats trending!',
           posts: FinalTrending
             })  
-            .catch(error => {
-                res.status(500).json({
-                    message: 'Fetching top 20 posts failed!'
-                });
-            });
+          
         })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching top 20 posts failed!'
+            });
+        });
 //     const counter = req.query.counter;
 
  
