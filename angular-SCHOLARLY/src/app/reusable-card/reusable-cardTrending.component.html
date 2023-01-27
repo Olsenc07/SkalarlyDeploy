@@ -257,7 +257,7 @@
                           </button>
                         </div>
                         <!-- Your post -->
-                        <div class="buttonsC" *ngIf="(post.OriginalPostId !== '') || (userId == post.Creator)"
+                        <div class="buttonsC" *ngIf="(post.OriginalPostId !== '') || (userId == post.Creator.valueOf())"
                         >
                           <button mat-flat-button  matTooltip="Repost" disbaled class="repostColor">
                       

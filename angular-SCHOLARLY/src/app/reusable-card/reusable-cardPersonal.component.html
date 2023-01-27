@@ -228,7 +228,7 @@
                           <i *ngIf="(valueChosen !== post.id) && (valueChosen !== post.OriginalPostId) " class="fas fa-hashtag"></i>
                             </button>
                           
-                            <div class="buttonsC" *ngIf="(userId == post.Creator)  && (post.OriginalPostId == '') "
+                            <div class="buttonsC" *ngIf="(userId == post.Creator.valueOf())  && (post.OriginalPostId == '') "
                             >
                               <button mat-flat-button  matTooltip="Repost" disbaled class="repostColor">
                           

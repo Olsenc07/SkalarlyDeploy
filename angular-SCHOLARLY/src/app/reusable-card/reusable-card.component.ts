@@ -2403,6 +2403,10 @@ export class CardInfoMainPageComponent implements OnInit {
         });
     });
   }
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
+  }
   commentsValidatorFunc(postId: string): void {
     this.commentsValidator = postId;
     this.comment.setValue('');
