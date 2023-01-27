@@ -113,12 +113,12 @@ router.get("/Trending", async(req, res, next) => {
 
     await Post.find({ OriginalPostId: {$eq: ''}}).sort({Reposts: -1}).limit(20)
     .then(FinalTrending => {
-            console.log('lover',FinalTrending )
+            console.log('lover',FinalTrending.Reposts )
             console.log('lovers',FinalTrending.length )
 
             res.status(200).json({
                 message: 'Thats whats trending!',
-          posts: FinalTrending
+          posts: FinalTrending.Reposts
             })  
           
         })
@@ -459,8 +459,10 @@ video.single('video'),
 // Post additions
 router.post("/Shared", checkAuth,
     async(req, res) => {
-        await  Post.findOne({_id: req.query.postId}).updateOne( {$inc: {Reposts: 1}})
+        await  Post.findOne({_id: req.query.postId})
         .then(POST => {
+            Post.updateOne({Creator: Post.Creator}, {$inc: {Reposts: 1}})
+            .then(console.log('baby dragon', Post.Creator));
             console.log('Shared', Post.Reposts )
                  UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
