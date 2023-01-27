@@ -259,7 +259,7 @@
                         <!-- Your post -->
                         <div class="buttonsC" *ngIf="(post.OriginalPostId !== '') || (userId == post.Creator.valueOf())"
                         >
-                          <button mat-flat-button  matTooltip="Repost" disbaled class="repostColor">
+                        <button mat-flat-button  (click)="navToPost(post.OriginalPostId)" class="repostColor">
                       
                       <i class="fas fa-share-alt"></i>
                           </button>
