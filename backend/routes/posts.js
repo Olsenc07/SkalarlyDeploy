@@ -110,89 +110,99 @@ router.get("/friends", async(req, res, next) => {
 });
 // Posts trending
 router.get("/Trending", async(req, res, next) => {
-    const counter = req.query.counter;
-   // JavaScript implementation to find
-// K elements with max occurrence.
+
+    await Post.find({ OriginalPostId: {$eq: ''}}).sort({Reposts: -1}).limit(20)
+    .then(FinalTrending => {
+            console.log('lover',FinalTrending )
+            console.log('lovers',FinalTrending.length )
+
+            res.status(200).json({
+                message: 'Thats whats trending!',
+          posts: FinalTrending
+            })  
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Fetching top 20 posts failed!'
+                });
+            });
+        })
+//     const counter = req.query.counter;
+
  
-function SunAndMoon(OriginalIds, N, K) {
+// function SunAndMoon(OriginalIds, N, K) {
  
-    let mp = new Map();
+//     let mp = new Map();
  
-    // Put count of all the
-    // distinct elements in Map
-    // with element as the key &
-    // count as the value.
-    for (let i = 0; i < N; i++) {
+
+//     for (let i = 0; i < N; i++) {
  
-        // Get the count for the
-        // element if already present in the
-        // Map or get the default value which is 0.
+     
  
-        if (mp.has(OriginalIds[i])) {
-            mp.set(OriginalIds[i], mp.get(OriginalIds[i]) + 1)
-        } else {
-            mp.set(OriginalIds[i], 1)
-        }
-    }
+//         if (mp.has(OriginalIds[i])) {
+//             mp.set(OriginalIds[i], mp.get(OriginalIds[i]) + 1)
+//         } else {
+//             mp.set(OriginalIds[i], 1)
+//         }
+//     }
  
-    // Create a list from elements of HashMap
-    let list = [...mp];
+
+//     let list = [...mp];
  
-    // Sort the list
-    list.sort((o1, o2) => {
-        if (o1[1] == o2[1])
-            return o2[0] - o1[0];
-        else
-            return o2[1] - o1[1];
-    })
-    console.log('list', list);
-   let newest = []
-    for (let i = 0; i < K; i++){
-        console.log('i', i)
-        list.forEach(popFunction)
-        function popFunction(item ){  
-            newest.push(item[0])
-        console.log('newest', newest);
-        // need to give find _id one at a time so it actually stacks them properly
-        return newest
-        }
-    return newest
+
+//     list.sort((o1, o2) => {
+//         if (o1[1] == o2[1])
+//             return o2[0] - o1[0];
+//         else
+//             return o2[1] - o1[1];
+//     })
+//     console.log('list', list);
+//    let newest = []
+//     for (let i = 0; i < K; i++){
+//         console.log('i', i)
+//         list.forEach(popFunction)
+//         function popFunction(item ){  
+//             newest.push(item[0])
+//         console.log('newest', newest);
+
+//         return newest
+//         }
+//     return newest
       
 
-    }
+//     }
 
-}
+// }
 
-    Post.find({ OriginalPostId: { $ne: '' } })
-    .then(Trending => {
- let OriginalIds = Trending.map(word => word.OriginalPostId)
- let N = OriginalIds.length;
- let K = 20;
- let Top =  SunAndMoon(OriginalIds, N, K)
- console.log('Top', Top)
+//     Post.find({ OriginalPostId: { $ne: '' } })
+//     .then(Trending => {
+//  let OriginalIds = Trending.map(word => word.OriginalPostId)
+//  let N = OriginalIds.length;
+//  let K = 20;
+//  let Top =  SunAndMoon(OriginalIds, N, K)
+//  console.log('Top', Top)
 
- const obj = Object.assign({}, Top)
+//  const obj = Object.assign({}, Top)
 
-console.log('query', obj);
-myGirl = []
-for (let i = 0; i < Top.length; i++) {
-    myGirl.push( i + ':' + Top[i]);
-  }
-console.log('myGirl', myGirl)
+// console.log('query', obj);
+// myGirl = []
+// for (let i = 0; i < Top.length; i++) {
+//     myGirl.push( i + ':' + Top[i]);
+//   }
+// console.log('myGirl', myGirl)
 
- Post.find().sort({ _id:  Top })
-.then(FinalTrending => {
-    console.log('love',FinalTrending )
-    res.status(200).json({
-        message: 'Thats whats trending!',
-  posts: FinalTrending
+//  Post.find().sort({ rank:  1 })
+// .then(FinalTrending => {
+//     console.log('love',FinalTrending )
+//     res.status(200).json({
+//         message: 'Thats whats trending!',
+//   posts: FinalTrending
       
-})
+// })
 
 
-})
+// })
  
-     })
+//      })
 
 });
 // Number of reposts
@@ -276,6 +286,7 @@ image.single('upload'),
              .then(result => {
             console.log('upload',result)
             var post = new Post({
+                Reposts: 0,
                 OriginalCreatorId: '',
                 OriginalPostId: '',
                 SharerUsername: '',
@@ -321,6 +332,7 @@ image.single('upload'),
             })
                 }else{
              var post = new Post({
+                Reposts: 0,
                 OriginalCreatorId: '',
                 OriginalPostId: '',
                 SharerUsername: '',
@@ -386,7 +398,8 @@ video.single('video'),
                 console.log('video',result)
 
            var post = new Post({
-            OriginalCreatorId: '',
+                Reposts: 0,
+                OriginalCreatorId: '',
                  OriginalPostId: '',
                 SharerUsername: '',
                 SharerName: '',
@@ -445,12 +458,14 @@ video.single('video'),
 // Post additions
 router.post("/Shared", checkAuth,
     async(req, res) => {
-        await  Post.findOne({_id: req.query.postId}).
-        then(POST => {
+        await  Post.findOne({_id: req.query.postId}).updateOne( {$inc: {Reposts: 1}})
+        .then(POST => {
+            console.log('Shared', Post.Reposts )
                  UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
 
              var post = new Post({
+                Reposts: 0,
                 OriginalCreatorId: documents.Creator,
                 OriginalPostId: POST._id,
                 SharerUsername: documents.username,

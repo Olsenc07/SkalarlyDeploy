@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Post {
+  Reposts: number;
   id: string;
   OriginalCreatorId: string;
   OriginalPostId: string;
@@ -64,6 +65,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Reposts: post.Reposts,
               OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
@@ -109,6 +111,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Reposts: post.Reposts,
               OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
@@ -155,6 +158,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Reposts: post.Reposts,
               OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
@@ -200,6 +204,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Reposts: post.Reposts,
               OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
@@ -246,6 +251,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Reposts: post.Reposts,
               OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
@@ -293,6 +299,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Reposts: post.Reposts,
               OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
@@ -337,7 +344,7 @@ export class PostService {
       )
       .subscribe((transformedPosts) => {
         this.trendNumber = transformedPosts.posts;
-        console.log('rope around my nob', transformedPosts);
+        console.log('rope around my ...', transformedPosts);
         this.countUpdated.next(this.trendNumber);
         console.log('hello', this.countUpdated);
       });
@@ -352,7 +359,7 @@ export class PostService {
       )
       .subscribe((transformedPosts) => {
         this.trendNumber = transformedPosts.posts;
-        console.log('rope around my nob', transformedPosts);
+        console.log('rope around my ..', transformedPosts);
         this.countUpdated.next(this.trendNumber);
         console.log('hello', this.countUpdated);
       });
@@ -369,6 +376,7 @@ export class PostService {
           return postData.posts.map((post) => {
             return {
               id: post._id,
+              Reposts: post.Reposts,
               OriginalCreatorId: post.OriginalCreatorId,
               OriginalPostId: post.OriginalPostId,
               SharerUsername: post.SharerUsername,
@@ -553,6 +561,7 @@ export class PostService {
             SharerProfilePicPath: '',
             OriginalPostId: '',
             OriginalCreatorId: '',
+            Reposts: 0,
           };
           // const id_ = responseData.postId;
           // postData.id = id_;
@@ -646,6 +655,7 @@ export class PostService {
             SharerProfilePicPath: '',
             OriginalPostId: '',
             OriginalCreatorId: '',
+            Reposts: 0,
           };
           // const id_ = responseData.postId;
           // postData.id = id_;
