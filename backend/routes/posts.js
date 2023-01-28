@@ -460,9 +460,10 @@ router.post("/Shared", checkAuth,
         await  Post.findOne({_id: req.query.postId})
         .then(POST => {
             console.log('POST', POST)
-            Post.updateOne({Creator: Post.Creator}, {$inc: {Reposts: 1}})
-            .then(console.log('baby dragon', Post.Creator));
-            console.log('Shared', Post.Reposts )
+            Post.updateOne({id: Post.id}, {$inc: {Reposts: 1}})
+            .then(New => {
+                console.log('baby dragon', New.id);
+            console.log('Shared', New.Reposts )})
                  UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
 
