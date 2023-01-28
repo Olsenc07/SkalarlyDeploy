@@ -459,6 +459,7 @@ router.post("/Shared", checkAuth,
     async(req, res) => {
         await  Post.findOne({_id: req.query.postId})
         .then(POST => {
+            console.log('POST', POST)
             Post.updateOne({Creator: Post.Creator}, {$inc: {Reposts: 1}})
             .then(console.log('baby dragon', Post.Creator));
             console.log('Shared', Post.Reposts )
