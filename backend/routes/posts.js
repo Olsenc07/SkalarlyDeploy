@@ -463,6 +463,11 @@ router.post("/Shared", checkAuth,
             Post.updateOne({id: Post.id}, {$inc: {Reposts: 1}})
             .then(New => {
                 console.log('baby dragon', New);
+            }) .catch(error => {
+                res.status(500).json({
+                    message: 'Updating your post failed!'
+                });
+            });
                  UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
 
@@ -504,7 +509,7 @@ router.post("/Shared", checkAuth,
                     } 
                 });
                 try{
-                    console.log('calling', Post.Creator)
+                    console.log('calling', Post.Creator);
                     // Match subscription to post creator then send it 
                     // Or else when a subscriber comments on a non subscriber itll send a notif as if it was the subscribers post
                     // Creator of post gets notified find them first...
@@ -536,11 +541,11 @@ router.post("/Shared", checkAuth,
                     console.log( 'Shared!');
                 })
                   .catch( (err) => {
-                      console.log('uh ooo',err)
+                      console.log('uh ooo',err);
                   });
                              })
                             }else{
-                                console.log('no subscription')
+                                console.log('no subscription');
                             }
                 })
                 .catch(error => {
@@ -553,7 +558,8 @@ router.post("/Shared", checkAuth,
                     message: 'Saving your post failed!'
                 });
             };
-        }) .catch(error => {
+        }) 
+        .catch(error => {
             res.status(500).json({
                 message: 'Finding your post failed!'
             });
@@ -564,6 +570,10 @@ router.post("/Shared", checkAuth,
                 message: 'Creating your post failed!'
             });
         });
+}) .catch(error => {
+    res.status(500).json({
+        message: 'Uploading your post failed!'
+    });
 });
     });
 // Posts deleting
