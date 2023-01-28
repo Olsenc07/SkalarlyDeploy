@@ -287,12 +287,11 @@ export class PostService {
       });
   }
   // Trending
-  // getting others posts for their profiles display
-  getPostsTrending(counter: number): any {
+
+  getPostsTrending(): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'https://www.skalarly.com/api/posts/Trending',
-        { params: { counter } }
+        'https://www.skalarly.com/api/posts/Trending'
       )
       .pipe(
         map((postData) => {

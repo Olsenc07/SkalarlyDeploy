@@ -1466,7 +1466,7 @@ export class TrendingFeedComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     // Posts
-    this.postService.getPostsFeed(0);
+    this.postService.getPostsTrending();
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
