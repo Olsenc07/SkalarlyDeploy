@@ -625,14 +625,14 @@ export class TrendingComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     // Posts
-    this.postService.getPostsTrending(0);
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-        console.log('posts personal', this.posts);
-      });
+    // this.postService.getPostsTrending();
+    // this.postsSub = this.postService
+    //   .getPostUpdateListener()
+    //   .subscribe((posts: Post[]) => {
+    //     this.posts = posts;
+    //     this.isLoading = false;
+    //     console.log('posts personal', this.posts);
+    //   });
   }
 
   // Am Pm instead of 24hr clock
@@ -729,43 +729,7 @@ export class TrendingComponent implements OnInit {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
-  // Forward
-  onClickFeed(): any {
-    const count = 1;
-    this.countVisibility += count;
-    const counting = 6;
-    this.recomCounter += counting;
-    console.log('hey', this.recomCounter);
-    console.log('howdy', this.countVisibility);
-    const NextBtn = document.getElementById('topScroll');
-    NextBtn.scrollIntoView();
-    this.postService.getPostsTrending(this.recomCounter);
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-        console.log('posts personal', this.posts);
-      });
-  }
-  // Back
-  onClickFeedBack(): any {
-    const count = 1;
-    this.countVisibility -= count;
-    const counting = 6;
-    this.recomCounter -= counting;
-    console.log('hey back', this.recomCounter);
-    console.log('howdy', this.countVisibility);
 
-    this.postService.getPostsTrending(this.recomCounter);
-    this.postsSub = this.postService
-      .getPostUpdateListener()
-      .subscribe((posts: Post[]) => {
-        this.posts = posts;
-        this.isLoading = false;
-        console.log('posts personal', this.posts);
-      });
-  }
   onClickComments(postId: string): any {
     const count = 1;
     this.countVisibility += count;
