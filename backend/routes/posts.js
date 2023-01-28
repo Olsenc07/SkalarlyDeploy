@@ -115,10 +115,12 @@ router.get("/Trending", async(req, res, next) => {
     .then(FinalTrending => {
             console.log('lover',FinalTrending )
             console.log('lovers',FinalTrending.length )
+            console.log('loversss',FinalTrending.sort({Reposts: -1}) )
+        sorted = FinalTrending.sort({Reposts: -1})
 
             res.status(200).json({
                 message: 'Thats whats trending!',
-                posts: FinalTrending
+                posts: sorted
             })  
           
         })
