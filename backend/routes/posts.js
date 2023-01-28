@@ -508,16 +508,16 @@ router.post("/Shared", checkAuth,
                         ...createdPost
                     } 
                 });
-                try{
-                    console.log('calling', Post);
+              
+                    console.log('calling', POST);
                     // Match subscription to post creator then send it 
                     // Or else when a subscriber comments on a non subscriber itll send a notif as if it was the subscribers post
                     // Creator of post gets notified find them first...
-                        Subscription.findOne({Creator: Post.Creator})
+                        Subscription.findOne({Creator: POST.Creator})
                         .then(checking => {
                             console.log('checking', checking)
                             if((checking !== null) ){
-                                Subscription.findOne({Creator: Post.Creator})
+                                Subscription.findOne({Creator: POST.Creator})
                         .then(subscriber =>{
                             const p256dh = subscriber.keys.p256dh
                             const auth = subscriber.keys.auth
@@ -550,14 +550,10 @@ router.post("/Shared", checkAuth,
                 })
                 .catch(error => {
                     res.status(500).json({
-                        message: 'Saving post failed!'
+                        message: 'Notifiying post failed!'
                     });
                 })
-            }catch(error) {
-                res.status(500).json({
-                    message: 'Saving your post failed!'
-                });
-            };
+           
         }) 
         .catch(error => {
             res.status(500).json({
