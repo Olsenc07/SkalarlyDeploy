@@ -462,8 +462,7 @@ router.post("/Shared", checkAuth,
             console.log('POST', POST)
             Post.updateOne({id: Post.id}, {$inc: {Reposts: 1}})
             .then(New => {
-                console.log('baby dragon', New.id);
-            console.log('Shared', New.Reposts )})
+                console.log('baby dragon', New);
                  UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
 
@@ -505,15 +504,15 @@ router.post("/Shared", checkAuth,
                     } 
                 });
                 try{
-                    console.log('calling', documents.Creator)
+                    console.log('calling', Post.Creator)
                     // Match subscription to post creator then send it 
                     // Or else when a subscriber comments on a non subscriber itll send a notif as if it was the subscribers post
                     // Creator of post gets notified find them first...
-                        Subscription.findOne({Creator: documents.Creator})
+                        Subscription.findOne({Creator: Post.Creator})
                         .then(checking => {
                             console.log('checking', checking)
                             if((checking !== null) ){
-                                Subscription.findOne({Creator: documents.Creator})
+                                Subscription.findOne({Creator: Post.Creator})
                         .then(subscriber =>{
                             const p256dh = subscriber.keys.p256dh
                             const auth = subscriber.keys.auth
