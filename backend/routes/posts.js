@@ -509,7 +509,7 @@ router.post("/Shared", checkAuth,
                     } 
                 });
                 try{
-                    console.log('calling', Post.Creator);
+                    console.log('calling', Post);
                     // Match subscription to post creator then send it 
                     // Or else when a subscriber comments on a non subscriber itll send a notif as if it was the subscribers post
                     // Creator of post gets notified find them first...
