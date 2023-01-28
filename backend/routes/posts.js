@@ -111,12 +111,12 @@ router.get("/friends", async(req, res, next) => {
 // Posts trending
 router.get("/Trending", async(req, res, next) => {
 
-    await Post.find({ OriginalPostId: {$eq: ''}}).limit(20)
+    await Post.find({ OriginalPostId: {$eq: ''}}).sort({Reposts: 1 }).limit(20)
     .then(FinalTrending => {
-            console.log('lover',FinalTrending.sort({Reposts: -1}) )
+            console.log('lover',FinalTrending )
             res.status(200).json({
                 message: 'Thats whats trending!',
-                posts: FinalTrending.sort({Reposts: -1})
+                posts: FinalTrending
             })  
           
         })
