@@ -111,7 +111,7 @@ router.get("/friends", async(req, res, next) => {
 // Posts trending
 router.get("/Trending", async(req, res, next) => {
 
-    await Post.find({ OriginalPostId: {$eq: ''}}).sort({Reposts: -1 }).limit(20)
+    await Post.find({ OriginalPostId: {$eq: ''}}).sort({Reposts: 1 }).limit(20)
     .then(FinalTrending => {
             console.log('lover',FinalTrending )
             res.status(200).json({
@@ -457,7 +457,7 @@ video.single('video'),
 // Post additions
 router.post("/Shared", checkAuth,
     async(req, res) => {
-        await  Post.findOne({_id: req.query.postId})
+        await  Post.findOne({id: req.query.postId})
         .then(POST => {
             console.log('POST', POST)
             Post.updateOne({id: Post.id}, {$inc: {Reposts: 1}})

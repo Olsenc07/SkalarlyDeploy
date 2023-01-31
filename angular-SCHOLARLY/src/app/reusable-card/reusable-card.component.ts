@@ -1248,8 +1248,8 @@ export class CardFeedComponent implements OnInit {
     }
   }
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
-    console.log('Hey babe I miss you more', postId.length);
-    console.log('Hey babe I miss you ', OriginalPostId.length);
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you ', OriginalPostId);
     if (OriginalPostId.length === 0) {
       this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
