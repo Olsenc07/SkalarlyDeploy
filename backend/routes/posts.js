@@ -503,7 +503,7 @@ router.post("/Shared", checkAuth,
             post.save().then(createdPost => {
                 res.status(201).json({
                     message: 'Post added successfully',
-                    postId: {
+                    post: {
                         id: createdPost._id,
                         ...createdPost
                     } 

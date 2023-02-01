@@ -1587,7 +1587,12 @@ export class TrendingFeedComponent implements OnInit {
     });
   }
   spreadWord(postId: string): void {
+    console.log('mint', postId);
     this.postService.addPostShared(this.userId, postId);
+  }
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
   }
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');

@@ -681,7 +681,7 @@ export class PostService {
     postData.append('postId', postId);
 
     this.http
-      .post<{ message: string; postId: Post }>(
+      .post<{ message: string; post: Post }>(
         'https://www.skalarly.com/api/posts/Shared',
         postData,
         { params: { userId, postId } }
