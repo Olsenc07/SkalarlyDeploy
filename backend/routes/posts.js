@@ -458,10 +458,10 @@ video.single('video'),
 router.post("/Shared", checkAuth,
     async(req, res) => {
         console.log('help',req.query.postId)
-        await  Post.findOne({id: req.query.postId})
+        await  Post.findOne({_id: req.query.postId})
         .then(POST => {
             console.log('POST', POST)
-            Post.updateOne({id: POST.id}, {$inc: {Reposts: 1}})
+            Post.updateOne({_id: POST.id}, {$inc: {Reposts: 1}})
             .then(New => {
                 console.log('baby dragon', New);
             }) .catch(error => {
