@@ -460,7 +460,7 @@ router.post("/Shared", checkAuth,
         await  Post.findOne({id: req.query.postId})
         .then(POST => {
             console.log('POST', POST)
-            Post.updateOne({id: Post.id}, {$inc: {Reposts: 1}})
+            Post.updateOne({id: POST.id}, {$inc: {Reposts: 1}})
             .then(New => {
                 console.log('baby dragon', New);
             }) .catch(error => {
