@@ -1270,6 +1270,10 @@ export class CardFeedComponent implements OnInit {
       console.log(' reposts', this.reposts);
     });
   }
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
+  }
   spreadWord(postId: string): void {
     this.postService.addPostShared(postId);
   }
