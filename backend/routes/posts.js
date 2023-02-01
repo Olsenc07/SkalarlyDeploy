@@ -457,6 +457,7 @@ video.single('video'),
 // Post additions
 router.post("/Shared", checkAuth,
     async(req, res) => {
+        console.log('help',req.query.postId)
         await  Post.findOne({id: req.query.postId})
         .then(POST => {
             console.log('POST', POST)
