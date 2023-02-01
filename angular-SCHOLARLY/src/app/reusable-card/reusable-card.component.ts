@@ -2319,6 +2319,10 @@ export class CardInfoFeedComponent implements OnInit {
       console.log(' reposts', this.reposts);
     });
   }
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
+  }
   spreadWord(postId: string): void {
     console.log('for me baby', postId);
     console.log('for me baby 2', this.userId);

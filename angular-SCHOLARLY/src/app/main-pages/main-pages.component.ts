@@ -81,7 +81,7 @@ export class MainPagesComponent implements OnInit {
   spreadWord(postId: string): void {
     console.log('for me baby', postId);
     console.log('for me baby 2', this.userId);
-    this.postService.addPostShared(this.userId, postId);
+    this.postService.addPostShared(postId);
   }
   // Fills same way just for different reasons
   // Each button opens this page by there should be 4 different functions with each
