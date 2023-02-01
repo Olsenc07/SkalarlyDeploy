@@ -1161,6 +1161,12 @@ export class CardFeedComponent implements OnInit {
     //     this.isLoading = false;
     //   });
   }
+  navigateToPost(): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/post-page/:'], {
+      queryParams: { userId: this.userId },
+    });
+  }
   commentsValidatorFunc(postId: string): void {
     this.commentsValidator = postId;
     this.comment.setValue('');
