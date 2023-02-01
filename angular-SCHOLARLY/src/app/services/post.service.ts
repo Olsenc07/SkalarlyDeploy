@@ -672,18 +672,19 @@ export class PostService {
       });
   }
   // Adding shared
-  addPostShared(postId: string): any {
+  addPostShared(postId: string, userId: string): any {
     console.log('some funner', postId);
 
     const postData = new FormData();
-
     postData.append('postId', postId);
+
+    postData.append('userId', userId);
 
     this.http
       .post<{ message: string; post: Post }>(
         'https://www.skalarly.com/api/posts/Shared',
         postData,
-        { params: { postId } }
+        { params: { postId, userId } }
       )
       .subscribe({
         next: (responseData) => {

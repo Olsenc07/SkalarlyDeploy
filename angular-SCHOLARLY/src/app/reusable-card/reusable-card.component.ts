@@ -161,7 +161,7 @@ export class ReusableCardComponent implements OnInit {
   spreadWord(postId: string): void {
     console.log('for me baby', postId);
     console.log('for me baby 2', this.userId);
-    this.postService.addPostShared(postId);
+    this.postService.addPostShared(postId, this.userId);
   }
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
     console.log('Hey babe I miss you more', postId.length);
@@ -1275,7 +1275,7 @@ export class CardFeedComponent implements OnInit {
     this.router.navigate(['/single/:'], { queryParams: { postId } });
   }
   spreadWord(postId: string): void {
-    this.postService.addPostShared(postId);
+    this.postService.addPostShared(postId, this.userId);
   }
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
@@ -1598,7 +1598,7 @@ export class TrendingFeedComponent implements OnInit {
   }
   spreadWord(postId: string): void {
     console.log('mint', postId);
-    this.postService.addPostShared(postId);
+    this.postService.addPostShared(postId, this.userId);
   }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
@@ -2062,7 +2062,7 @@ export class CardFriendsComponent implements OnInit {
   spreadWord(postId: string): void {
     console.log('for me baby', postId);
     console.log('for me baby 2', this.userId);
-    this.postService.addPostShared(postId);
+    this.postService.addPostShared(postId, this.userId);
   }
 }
 @Component({
@@ -2336,7 +2336,7 @@ export class CardInfoFeedComponent implements OnInit {
   spreadWord(postId: string): void {
     console.log('for me baby', postId);
     console.log('for me baby 2', this.userId);
-    this.postService.addPostShared(postId);
+    this.postService.addPostShared(postId, this.userId);
   }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
