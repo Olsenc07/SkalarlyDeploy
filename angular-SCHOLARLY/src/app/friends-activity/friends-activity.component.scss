@@ -115,6 +115,10 @@
   width: 100%;
   position: fixed;
 }
+.column_1{
+  display: flex;
+  width: 100%;
+}
 .message {
   display: flex;
   margin: 1% 0%;
@@ -355,11 +359,7 @@
     overflow-y: scroll;
   }
 }
-@media (min-width: 1024px) {
-  mat-tab-group {
-    display: none;
-  }
-}
+
 @media (min-width: 1024px) {
   .middle {
     display: flex;
