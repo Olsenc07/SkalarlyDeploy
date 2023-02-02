@@ -42,8 +42,12 @@
                 </button>
                 </div>
           </div>
-              <button mat-stroked-button class="textFont"
-              (click)="navToPost(comment.postId)">Go to post</button>
+          <mat-chip-list class="buttonsC">
+          <mat-chip mat-stroked-button class="textFont"
+          (click)="navToPost(comment.postId)">Go to post</mat-chip>
+        </mat-chip-list>
+              <!-- <button mat-stroked-button class="textFont"
+              (click)="navToPost(comment.postId)">Go to post</button> -->
 
     </div> 
     <div class="Comment">
