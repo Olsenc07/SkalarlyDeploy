@@ -17,6 +17,14 @@ export interface Follow {
   nameFollowing: string;
   ProfilePicPathFollowing: string;
 }
+export interface Shared {
+  Title: string;
+  SharerProfilePicPath: string;
+
+  SharerName: string;
+  SharerUsername: string;
+  OriginalPostId: string;
+}
 @Component({
   selector: 'activity-history',
   templateUrl: './history.component.html',
@@ -213,8 +221,7 @@ export class FollowedTemplateComponent implements OnInit {
   styleUrls: ['../reusable-card/reusable-card.component.scss'],
 })
 export class SharedHistoryComponent implements OnInit {
+  shared: Shared[] = [];
 
-ngOnInit(): void {
-  
-}
+  ngOnInit(): void {}
 }
