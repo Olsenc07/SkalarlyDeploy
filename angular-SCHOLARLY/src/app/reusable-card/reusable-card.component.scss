@@ -316,6 +316,8 @@ font-size: large;
 }
 .repostStuff{
   display: flex;
+  width: 100%;
+  justify-content: end;
 }
 .scroll{
   max-height: 300px;
