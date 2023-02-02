@@ -13,12 +13,12 @@
      
         <div class="columnD columnM ">
           <div class="row yo">
-            <mat-tab label="Comments"   >
+            <mat-tab label="Comments on your posts"   >
             <div class="middle">
      
-                <div class="center friend_count">
+                <!-- <div class="center friend_count">
                   Comments on your posts:
-                </div>
+                </div> -->
               
           
  
@@ -35,13 +35,13 @@
               </div>
             </div>
   </mat-tab>
-  <mat-tab label="Followers"   >
+  <mat-tab label="Followed you"   >
   
             <!-- Right column -->
             <div class="right">
-                <div class="center friend_count">
+                <!-- <div class="center friend_count">
                     Followed you:
-                  </div>
+                  </div> -->
   
               <div class="following-box">
                 <div class="structure">
@@ -60,6 +60,26 @@
 
 
   <mat-tab label="Shared Posts"   >
+     <!-- Right column -->
+     <div class="right">
+      <!-- <div class="center friend_count">
+          Followed you:
+        </div> -->
+
+    <div class="following-box">
+      <div class="structure">
+        <!-- *ngIf="shared.length == 0" -->
+           <div class="basicColumn" 
+           >
+        <i class="fas fa-users-slash noFriends"></i>
+        <div class="title_">No one has shared a post of yours</div>
+      </div>
+      
+        <shared-history-template></shared-history-template>
+      </div>
+    </div>
+
+  </div>
 </mat-tab>
 
 

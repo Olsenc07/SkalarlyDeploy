@@ -207,3 +207,14 @@ export class FollowedTemplateComponent implements OnInit {
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
 }
+@Component({
+  selector: 'shared-history-template',
+  templateUrl: './shared-history.component.html',
+  styleUrls: ['../reusable-card/reusable-card.component.scss'],
+})
+export class SharedHistoryComponent implements OnInit {
+
+ngOnInit(): void {
+  
+}
+}
