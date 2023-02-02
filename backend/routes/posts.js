@@ -608,7 +608,7 @@ Post.find({OriginalPostId: req.params.id})
                 })
 })
 
-Post.deleteMany({OriginalPostId: result.Creator.valueOf()})
+Post.deleteMany({OriginalPostId: result.Creator})
 .then(reposted => {
     if (reposted){
         console.log('Reposts deleted!');
