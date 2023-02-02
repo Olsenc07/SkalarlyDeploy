@@ -18,6 +18,7 @@ export interface Follow {
   ProfilePicPathFollowing: string;
 }
 export interface Shared {
+  Time: string;
   Title: string;
   SharerProfilePicPath: string;
 

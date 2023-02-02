@@ -242,7 +242,7 @@
                       </div> 
         <mat-chip-list class="buttonsC">
         <mat-chip color="primary" selected class="comment-form-buttton" (click)="CommentTrigger(post.id)"
-        type="submit" [disabled]="comment.value === '' " >
+        type="submit" [disabled]="(comment.value === '') || (commentsValidator !== post.id) " >
         <!-- [disabled]="comment.value === '' " -->
            Add Comment
         <i class="far fa-paper-plane "></i>
