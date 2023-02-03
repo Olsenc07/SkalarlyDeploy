@@ -302,7 +302,7 @@ export class SearchListService {
           'Last Name: W',
           'Last Name: X',
           'Last Name: Y',
-          'Last Name:Z',
+          'Last Name: Z',
         ];
         break;
       case SearchValues.MISCELL_BUY_SELL:
