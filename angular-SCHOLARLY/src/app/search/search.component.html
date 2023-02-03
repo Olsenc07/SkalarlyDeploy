@@ -81,6 +81,10 @@
           <i class="fas fa-home"></i>
           Housing</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
+          (click)="onSearchSelection('instructor_rev')" (click)="displaySpecificSearch()">
+          <i class="fas fa-chalkboard-teacher"></i>
+          Instructor Review </mat-chip-option>
+          <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('course_a_e')" (click)="displaySpecificSearch()">
           <i class="fas fa-feather-alt"></i>
           Programs A-E</mat-chip-option>
@@ -93,9 +97,17 @@
           <i class="fas fa-feather-alt"></i>
           Programs N-Z</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('school_work')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('school_work_ae')" (click)="displaySpecificSearch()">
           <i class="fas fa-book-reader"></i>
-          School Work</mat-chip-option>
+          School Work A-E</mat-chip-option>
+          <mat-chip-option color="primary"  class="searchBtn"
+          (click)="onSearchSelection('school_work_fm')" (click)="displaySpecificSearch()">
+          <i class="fas fa-book-reader"></i>
+          School Work F-M</mat-chip-option>
+          <mat-chip-option color="primary"  class="searchBtn"
+          (click)="onSearchSelection('school_work_nz')" (click)="displaySpecificSearch()">
+          <i class="fas fa-book-reader"></i>
+          School Work N-Z</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('spiritituality')" (click)="displaySpecificSearch()">
           <i class="fas fa-praying-hands"></i>
