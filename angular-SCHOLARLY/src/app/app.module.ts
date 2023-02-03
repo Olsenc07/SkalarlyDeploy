@@ -125,6 +125,10 @@ import { ErrorComponent } from './error/error.component';
 import { SearchListService } from './services/search.service';
 import { PostService } from './services/post.service';
 import { ClassListService } from './services/class.service';
+import { ClassListServiceAE } from './services/classAE.service';
+import { ClassListServiceFM } from './services/classFM.service';
+import { ClassListServiceNZ } from './services/classNZ.service';
+
 import { AuthService } from './services/auth.service';
 import { AuthServiceEdit } from './services/edit.service';
 import { AuthServiceEditCourse } from './services/editCourse.service';
@@ -251,6 +255,9 @@ import { ErrorInterceptor } from './error-interceptor';
     PostService,
     FollowService,
     ClassListService,
+    ClassListServiceAE,
+    ClassListServiceFM,
+    ClassListServiceNZ,
     AuthService,
     AuthServiceEdit,
     AuthServiceEditCourse,
