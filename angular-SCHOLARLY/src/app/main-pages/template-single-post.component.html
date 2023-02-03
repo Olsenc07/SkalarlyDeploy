@@ -185,7 +185,7 @@
                       </mat-chip-list>
                       <div class="buttonCombo" >
                         <button class="counterColor" mat-flat-button  matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.id)">
-                          <div *ngIf=" (valueChosen === post.id) || (valueChosen === post.OriginalPostId)">
+                          <div *ngIf=" (valueChosen == post.id)">
                       {{reposts}}
                           </div>
                       <i *ngIf="(valueChosen !== post.id) && (valueChosen !== post.OriginalPostId) " class="fas fa-hashtag"></i>
