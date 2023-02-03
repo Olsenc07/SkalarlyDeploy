@@ -5,8 +5,8 @@
 }
 .buttonsC{
   display: flex;
-  // margin-right: 2%;
-  //   margin-bottom: 2%;
+  margin: 1%;
+  align-items: center;
 }
 .center {
   display: flex;
@@ -37,6 +37,7 @@
   justify-content: center;
   flex-direction: column;
   font-family: 'Cormorant Garamond',serif;
+  padding-left: 1%;
 }
 .center__ {
   color: cornflowerblue;

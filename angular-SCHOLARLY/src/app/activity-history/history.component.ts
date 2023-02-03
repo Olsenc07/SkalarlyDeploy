@@ -254,7 +254,10 @@ export class SharedHistoryComponent implements OnInit {
         console.log('shared', this.shared);
       });
   }
-
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
     this.router.navigate(['/single/:'], { queryParams: { postId } });
@@ -262,5 +265,6 @@ export class SharedHistoryComponent implements OnInit {
 
   delRePost(id: string): any {
     console.log('baby g', id);
+    this.postService.deletePost(id);
   }
 }
