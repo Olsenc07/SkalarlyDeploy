@@ -251,7 +251,7 @@
     
                         <mat-chip-list class="buttonsC">
                           <mat-chip color="primary" selected matTooltip="Add your comment" class="comment-form-buttton" (click)="CommentTrigger(post.id)"
-                          type="button"   >
+                          type="submit"  [disabled]="(comment.value === '') || (commentsValidator !== post.id) " >
                <!-- [disabled]="comment.value === '' " -->
                              Add Comment
                               <i class="far fa-comment-dots"></i>
