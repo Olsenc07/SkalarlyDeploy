@@ -50,9 +50,7 @@
                       <div class="userName  link"     id="userName">@{{post.Username}}</div>
                       </button>
                     </div>
-                    <div  matTooltip="All Time Reposts" *ngIf="post.OriginalPostId == '' ">
-                      {{post.Reposts}}
-                    </div>
+                   
                   </div>
   
   
@@ -64,6 +62,9 @@
   
   
               <div class="row1">
+                <div  matTooltip="All Time Reposts" *ngIf="post.OriginalPostId == '' ">
+                  {{post.Reposts}}
+                </div>
                 <div class="column_">
   
   
