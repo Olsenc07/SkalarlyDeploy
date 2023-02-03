@@ -79,6 +79,7 @@
   border-top-left-radius: 25px;
   color: white !important;
   background: linear-gradient(45deg,rgb(16 23 58),transparent);
+  font-size: large;
 
 }
 .repostColor{
@@ -87,7 +88,8 @@
   border-top-right-radius: 25px;
   color: white !important;
   background: linear-gradient(45deg,transparent,rgb(16 23 58));  
-  // background: linear-gradient(45deg,#255d6a,rgb(16 23 58));
+  font-size: large;
+
 }
 .display{
   display: flex;
@@ -251,6 +253,13 @@ margin-top: 1%;
     // font-family:  'Poppins', sans-serif;
     font-family: 'Cormorant Garamond',serif;
   }
+}
+.Title{
+  display: flex;
+    padding-top: 1%;
+    justify-content: center;
+    font-family: 'Cormorant Garamond',serif;
+
 }
 .userName {
   display: flex;
