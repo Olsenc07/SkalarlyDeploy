@@ -253,13 +253,7 @@
                           </button>
                         </div>
                       
-                                            <div class="buttonsC" *ngIf="(userId == post.Creator) && (post.OriginalPostId !== '')">
-                                              <button mat-flat-button  (click)="navToPost(post.OriginalPostId)" class="repostColor">
-                                                <i class="fas fa-home"></i>
-                                              </button>
-                                            </div>
-
-
+                                            
                                             <div class="buttonsC" *ngIf="(userId == post.Creator) && (post.OriginalPostId == '')">
                                               <button mat-flat-button  (click)="navToPost(post.id)" class="repostColor">
                                                 <i class="fas fa-home"></i>
