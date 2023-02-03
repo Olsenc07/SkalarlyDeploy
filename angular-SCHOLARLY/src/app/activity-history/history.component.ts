@@ -17,14 +17,7 @@ export interface Follow {
   nameFollowing: string;
   ProfilePicPathFollowing: string;
 }
-export interface Shared {
-  postDescription: string;
-  SharerProfilePicPath: string;
 
-  SharerName: string;
-  SharerUsername: string;
-  OriginalPostId: string;
-}
 @Component({
   selector: 'activity-history',
   templateUrl: './history.component.html',
@@ -35,7 +28,7 @@ export class ActivityHistoryComponent implements OnInit {
   userId: string;
   followers: Follow[] = [];
   private postsSub: Subscription;
-  shared: Shared[] = [];
+  shared: Post[] = [];
 
   private followSubFollowers: Subscription;
 
@@ -235,7 +228,7 @@ export class FollowedTemplateComponent implements OnInit {
 export class SharedHistoryComponent implements OnInit {
   userId: string;
 
-  shared: Shared[] = [];
+  shared: Post[] = [];
   private postsSub: Subscription;
 
   constructor(

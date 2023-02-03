@@ -63,6 +63,7 @@
 .buttonCombo{
   display: flex;
   flex-direction: row;
+  align-items: baseline;
 }
 .counterColor{
   background-color: teal !important;
@@ -70,13 +71,14 @@
   border-top-left-radius: 25px;
   color: white !important;
   background: linear-gradient(45deg,rgb(16 23 58),transparent);
-
+  font-size: large;
 }
 .repostColor{
   background-color: powderblue !important;
   border-bottom-right-radius: 25px;
   border-top-right-radius: 25px;
   color: white !important;
+  font-size: large;
   background: linear-gradient(45deg,transparent,rgb(16 23 58));  
   // background: linear-gradient(45deg,#255d6a,rgb(16 23 58));
 }

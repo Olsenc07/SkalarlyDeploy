@@ -35,19 +35,24 @@
               
     </div>
         
-            <div class="trashCan" matTooltip="Delete Comment">
-              <button  mat-icon-button matSuffix class="trashCan_"
-                (click)='onDeleteComment(comment.id)'>
-                <i class="far fa-times-circle"></i>
-                </button>
-                </div>
+           
           </div>
-          <mat-chip-list class="buttonsC">
-          <mat-chip mat-stroked-button class="textFont"
-          (click)="navToPost(comment.postId)">Go to post</mat-chip>
-        </mat-chip-list>
-              <!-- <button mat-stroked-button class="textFont"
-              (click)="navToPost(comment.postId)">Go to post</button> -->
+          <div class="buttonCombo" >
+
+
+            <button  mat-flat-button matSuffix class="counterColor"  matTooltip="Delete Comment"
+              (click)='onDeleteComment(comment.id)'>
+              <i class="far fa-times-circle"></i>
+              </button>
+
+
+        
+          <button mat-flat-button class="repostColor" matTooltip="Original Post"
+          (click)="navToPost(comment.postId)">
+      <i class="fas fa-home"></i>
+            </button>
+
+</div>
 
     </div> 
     <div class="Comment">

@@ -7,7 +7,9 @@
     </div> -->
 <mat-card class="row1_"  *ngFor="let info of shared">
     <div class="column" >
-       
+        <div *ngIf="info.Title">
+       {{info.Title}}
+    </div>
         <div class="rowSpace">
             <div class="column">
             <div class="display">
@@ -48,12 +50,11 @@
         <i class="far fa-times-circle"></i></button>
       
 
-        <div class="buttonsC"  matTooltip="Original Post">
-            <button mat-flat-button class="repostColor"
+            <button mat-flat-button class="repostColor" matTooltip="Original Post"
             (click)="navToPost(info.OriginalPostId)">
       <i class="fas fa-home"></i>
     </button>
-        </div>
+       
     </div> 
 
          
