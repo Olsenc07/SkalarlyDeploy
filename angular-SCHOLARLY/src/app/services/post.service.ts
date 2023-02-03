@@ -400,6 +400,7 @@ export class PostService {
   // Trending own
   // getting others posts for their profiles display
   getPostsTrendingNumberOwn(postId: string): any {
+    console.log('remember', postId);
     this.http
       .get<{ message: string; posts: number }>(
         'https://www.skalarly.com/api/posts/TrendingNumberOwn',

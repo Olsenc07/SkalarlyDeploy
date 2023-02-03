@@ -166,7 +166,7 @@ console.log('love', list.length);
 
 // Number of reposts
 router.get("/TrendingNumberOwn", async(req, kristina, next) => {
-  
+  console.log('heart beat',req.query.postId);
     await Post.find({ OriginalPostId: req.query.postId })
      .then(Trending => {
  console.log('love you1', Trending);
@@ -413,7 +413,7 @@ router.post("/Shared", checkAuth,
 
              var post = new Post({
                 Reposts: 0,
-                OriginalCreatorId: documents.Creator,
+                OriginalCreatorId: POST.Creator,
                 OriginalPostId: POST._id,
                 SharerUsername: documents.username,
                 SharerName: documents.name,

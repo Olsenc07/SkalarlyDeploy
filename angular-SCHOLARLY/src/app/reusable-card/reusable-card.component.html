@@ -49,7 +49,7 @@
               
               <button mat-button *ngIf="userId !== post.Creator" >
                 <div class="userName  link"  id="userName" matTooltip="View Profile"
-                 (click)="navigateToPage(post.SharerUsername)">@{{post.SharerUsername}}
+                 disabled>@{{post.SharerUsername}}
                   </div>
                 </button>
               <button mat-button *ngIf="userId == post.Creator" disabled>
@@ -101,7 +101,7 @@
                   <div class="nameTitle">
                     <!-- Button directs to that users profile -->
               
-                      <div class="userName  link"  id="userName" matTooltip="View Profile" >
+                      <div class="userName  link"  id="userName" >
                         <!-- Olsen07 -->
                         @{{post.Username}}
                       </div>
