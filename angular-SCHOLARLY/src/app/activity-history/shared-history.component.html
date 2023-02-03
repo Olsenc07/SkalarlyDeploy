@@ -40,23 +40,12 @@
             
 
     <div class="buttonCombo" >
-        <button class="counterColor" mat-flat-button  matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
-          <div *ngIf=" (valueChosen === post.id) || (valueChosen === post.OriginalPostId)">
-      {{reposts}}
-          </div>
-      <i *ngIf="(valueChosen !== post.id) && (valueChosen !== post.OriginalPostId) " class="fas fa-hashtag"></i>
-        </button>
-      
-       
-      
-                            
-     
-
-
+        
 
       <div class="counterColor" matTooltip="Delete Repost">
         <button mat-flat-button class="textFont"
-        (click)="delRePost(info.id)">Delete Repost</button>
+        (click)="delRePost(info.id)">
+        <i class="far fa-times-circle"></i></button>
       </div>
 
         <div class="repostColor" matTooltip="Original Post">
