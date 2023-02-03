@@ -294,20 +294,14 @@ export class SinglePageTemplateComponent implements OnInit {
     }
   }
 
-  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+  getPostsTrendingNumber(postId: string): any {
     console.log('Hey babe I miss you more', postId);
     // this.postService.getPostsTrendingNumberOwn(this.postId);
-    console.log('Hey babe I miss you more', postId.length);
-    console.log('Hey babe I miss you ', OriginalPostId.length);
-    if (OriginalPostId.length === 0) {
-      this.postService.getPostsTrendingNumberOwn(postId);
-      this.valueChosen = postId;
-      console.log('logic1', this.valueChosen);
-    } else {
-      this.postService.getPostsTrendingNumber(OriginalPostId);
-      this.valueChosen = OriginalPostId;
-      console.log('logic', this.valueChosen);
-    }
+
+    this.postService.getPostsTrendingNumberOwn(postId);
+    this.valueChosen = postId;
+    console.log('logic1', this.valueChosen);
+
     // this.valueChosen = this.postId;
 
     this.postService.getCountUpdateListener().subscribe((value) => {
