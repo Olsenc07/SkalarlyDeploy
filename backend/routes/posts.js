@@ -517,12 +517,12 @@ router.delete("/:id", checkAuth, async(req, res, next ) => {
    await Post.findOne({_id: req.params.id})
    .then(result => {
     console.log('result',result)
-    if(result.ImagePath) {
+    if(result.ImagePath && (result.OriginalPostId == '')) {
     cloudinary.uploader.destroy(result.cloudinary_id)
     }else{
         console.log('No Image')
     }
-    if(result.VideoPath) {
+    if(result.VideoPath && (result.OriginalPostId == '')) {
         cloudinary.uploader.destroy(result.cloudinary_id)
         }else{
             console.log('No Video')

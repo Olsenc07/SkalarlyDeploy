@@ -9,6 +9,7 @@
     <div class="column" >
        
         <div class="rowSpace">
+            <div>
             <div class="display">
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="info.SharerProfilePicPath">
@@ -32,9 +33,11 @@
            
             </div>
         </div>
-            <div class="center-Space"  *ngIf="info.postDescription">
-                {{info.postDescription}}
-        </div>
+        <div class="center-Space"  *ngIf="info.postDescription">
+            {{info.postDescription}}
+    </div>
+    </div>
+            
         <mat-chip-list class="buttonsC">
             <mat-chip mat-stroked-button class="textFont"
             (click)="navToPost(info.OriginalPostId)">Go to post</mat-chip>
