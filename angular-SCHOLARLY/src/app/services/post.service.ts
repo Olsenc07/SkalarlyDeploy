@@ -101,11 +101,11 @@ export class PostService {
       });
   }
   //  Shared posts
-  getSharedPosts(userId: string): any {
+  getSharedPosts(userId: string, counter: number): any {
     this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/sharedPosts',
-        { params: { userId } }
+        { params: { userId, counter } }
       )
       .pipe(
         map((postData) => {

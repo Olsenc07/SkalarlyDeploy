@@ -89,8 +89,9 @@ router.get("/feed", async(req, res, next) => {
 
 
 router.get("/sharedPosts", async(req, res) => {
+    const counter = req.query.counter;
     const userId = req.query.userId
-await Post.find({OriginalCreatorId: userId}) 
+await Post.find({OriginalCreatorId: userId}).sort({_id:-1}).skip(counter).limit(6)
 .then(docs => {
     res.status(200).json({
         message: 'Posts shared fetched succesfully!',

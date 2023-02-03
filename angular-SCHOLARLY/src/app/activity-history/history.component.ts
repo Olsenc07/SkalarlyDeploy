@@ -56,7 +56,7 @@ export class ActivityHistoryComponent implements OnInit {
       });
 
     // shared
-    this.postService.getSharedPosts(this.userId);
+    this.postService.getSharedPosts(this.userId, 0);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((shared: Post[]) => {
@@ -227,6 +227,8 @@ export class FollowedTemplateComponent implements OnInit {
 })
 export class SharedHistoryComponent implements OnInit {
   userId: string;
+  countVisibility = 0;
+  recomCounter = 0;
 
   shared: Post[] = [];
   private postsSub: Subscription;
@@ -239,7 +241,7 @@ export class SharedHistoryComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     // Posts
-    this.postService.getSharedPosts(this.userId);
+    this.postService.getSharedPosts(this.userId, 0);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((shared: Post[]) => {
@@ -259,5 +261,39 @@ export class SharedHistoryComponent implements OnInit {
   delRePost(id: string): any {
     console.log('baby g', id);
     this.postService.deletePost(id);
+  }
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.postService.getSharedPosts(this.userId, this.recomCounter);
+    this.postService
+      .getPostUpdateListener()
+      .subscribe((shared: Post[]) => {
+        this.shared = shared;
+        console.log('shared', this.shared);
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.postService.getSharedPosts(this.userId, this.recomCounter);
+    this.postService
+      .getPostUpdateListener()
+      .subscribe((shared: Post[]) => {
+        this.shared = shared;
+        console.log('shared', this.shared);
+      });
   }
 }

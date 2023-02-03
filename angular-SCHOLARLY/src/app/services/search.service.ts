@@ -282,8 +282,10 @@ export class SearchListService {
       case SearchValues.SPIRITUALITY:
         specificOptions = [
           'Church Times & Locations',
+          'Community Groups',
           'Faith Based Activities',
           'Fundraisers',
+          'Latter Day Saints',
           'Prayer Groups',
           'Prayer Requests',
         ];

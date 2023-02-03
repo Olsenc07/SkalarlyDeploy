@@ -1,10 +1,10 @@
-<!-- <div class="showMore" *ngIf="countVisibility >= 1">
+<div class="showMore" *ngIf="countVisibility >= 1">
     <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Previous
-       
+        <!-- <i class="fas fa-chevron-circle-down"></i> -->
         <i class="fas fa-caret-up"></i>
 
     </mat-chip>
-    </div> -->
+    </div>
 <mat-card class="row1_"  *ngFor="let info of shared">
     <div class="column" >
         <div *ngIf="info.Title" class="Title">
@@ -63,3 +63,9 @@
         
     </div>
 </mat-card>
+<div class="showMore" *ngIf="shared.length == 6">
+    <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
+        <!-- <i class="fas fa-chevron-circle-down"></i> -->
+        <i class="fas fa-caret-down"></i>
+    </mat-chip>
+    </div>

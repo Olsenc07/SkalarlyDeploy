@@ -242,7 +242,7 @@
           </mat-chip>
                       </mat-chip-list>
                       <div class="buttonCombo" >
-                        <button class="counterColor" mat-flat-button  matTooltip="Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
+                        <button class="counterColor" mat-flat-button  matTooltip="Current Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
                           <div *ngIf=" (valueChosen === post.id) || (valueChosen === post.OriginalPostId)">
                       {{reposts}}
                           </div>
