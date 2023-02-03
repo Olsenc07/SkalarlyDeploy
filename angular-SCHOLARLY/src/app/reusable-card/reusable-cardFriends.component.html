@@ -104,6 +104,9 @@
                           <div class="userName  link" id="userName">@{{post.Username}}</div>
                           </button>
                     </div>
+                    <div  matTooltip="All Time Reposts" *ngIf="post.OriginalPostId == '' ">
+                      {{post.Reposts}}
+                    </div>
                   </div>
   
   
