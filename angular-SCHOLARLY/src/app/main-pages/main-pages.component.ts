@@ -295,11 +295,11 @@ export class SinglePageTemplateComponent implements OnInit {
   }
 
   getPostsTrendingNumber(postId: string): any {
-    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you more', this.postId);
     // this.postService.getPostsTrendingNumberOwn(this.postId);
 
-    this.postService.getPostsTrendingNumberOwn(postId);
-    this.valueChosen = postId;
+    this.postService.getPostsTrendingNumberOwn(this.postId);
+    this.valueChosen = this.postId;
     console.log('logic1', this.valueChosen);
 
     // this.valueChosen = this.postId;

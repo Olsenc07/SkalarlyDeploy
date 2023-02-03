@@ -34,6 +34,9 @@ export class ActivityHistoryComponent implements OnInit {
   comments: string[] = [];
   userId: string;
   followers: Follow[] = [];
+  private postsSub: Subscription;
+  shared: Shared[] = [];
+
   private followSubFollowers: Subscription;
 
   constructor(
@@ -57,6 +60,15 @@ export class ActivityHistoryComponent implements OnInit {
       .getInfoFollowUpdateListener()
       .subscribe((followers: Follow[]) => {
         this.followers = followers;
+      });
+
+    // shared
+    this.postService.getSharedPosts(this.userId);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((shared: Post[]) => {
+        this.shared = shared;
+        console.log('shared', this.shared);
       });
   }
 }
@@ -218,7 +230,7 @@ export class FollowedTemplateComponent implements OnInit {
 @Component({
   selector: 'shared-history-template',
   templateUrl: './shared-history.component.html',
-  styleUrls: ['../reusable-card/reusable-card.component.scss'],
+  styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
 })
 export class SharedHistoryComponent implements OnInit {
   userId: string;

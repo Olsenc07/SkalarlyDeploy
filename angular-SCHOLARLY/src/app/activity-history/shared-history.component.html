@@ -22,10 +22,10 @@
                 </div>
                 <div class="display">
                     <!-- Directs to users profile -->
-                    <button mat-button class="center-"  (click)="navigateToPage(info.SharerUsername)">
+                    <button mat-button class="center-" *ngIf="userId !== info.Creator" (click)="navigateToPage(info.usernameFollower)">
                         @{{ info.SharerUsername }}
                     </button>
-                    <button mat-button *ngIf="userId == info.Follower" disabled>
+                    <button mat-button *ngIf="userId == info.Creator" disabled>
                     <div class="center-" >  @{{ info.SharerUsername }} </div>
                     </button>
                 </div>
@@ -35,9 +35,6 @@
             <div class="center-Space"  *ngIf="info.postDescription">
                 {{info.postDescription}}
         </div>
-
-        </div>
-
         <mat-chip-list class="buttonsC">
             <mat-chip mat-stroked-button class="textFont"
             (click)="navToPost(info.OriginalPostId)">Go to post</mat-chip>
@@ -48,5 +45,8 @@
             <mat-chip mat-stroked-button class="textFont"
             (click)="delRePost(info.id)">Delete Repost</mat-chip>
           </mat-chip-list>
+        </div>
+
+        
     </div>
 </mat-card>
