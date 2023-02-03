@@ -86,6 +86,23 @@ router.get("/feed", async(req, res, next) => {
         });
     });
 });
+
+
+router.get("/sharedPosts", async(req, res) => {
+    const userId = req.query.userId
+await Post.find({OriginalCreatorId: userId}) 
+.then(docs => {
+    res.status(200).json({
+        message: 'Posts shared fetched succesfully!',
+        posts: docs
+});
+})  
+.catch(error => {
+res.status(500).json({
+    message: 'Fetching shared posts failed!'
+});
+});
+})
 // Post recieving Feed
 router.get("/friends", async(req, res, next) => {
     const counter = req.query.counter;

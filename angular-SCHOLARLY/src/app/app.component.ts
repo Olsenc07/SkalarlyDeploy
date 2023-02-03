@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
-  public href: string = '';
+  public href = '';
   _url: URL;
   rawURL: string;
   _params: URLSearchParams;

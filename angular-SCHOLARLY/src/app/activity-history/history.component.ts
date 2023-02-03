@@ -18,7 +18,7 @@ export interface Follow {
   ProfilePicPathFollowing: string;
 }
 export interface Shared {
-  Title: string;
+  postDescription: string;
   SharerProfilePicPath: string;
 
   SharerName: string;
@@ -221,9 +221,27 @@ export class FollowedTemplateComponent implements OnInit {
   styleUrls: ['../reusable-card/reusable-card.component.scss'],
 })
 export class SharedHistoryComponent implements OnInit {
+  userId: string;
+
   shared: Shared[] = [];
-  constructor(private router: Router) {}
-  ngOnInit(): void {}
+  private postsSub: Subscription;
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    public postService: PostService
+  ) {}
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    // Posts
+    this.postService.getSharedPosts(this.userId);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((shared: Post[]) => {
+        this.shared = shared;
+        console.log('shared', this.shared);
+      });
+  }
 
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
