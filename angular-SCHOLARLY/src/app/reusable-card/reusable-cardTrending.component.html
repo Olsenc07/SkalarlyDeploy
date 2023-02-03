@@ -64,7 +64,6 @@
           <mat-divider></mat-divider>
         
           <div class="column">
-            {{post.Reposts}}
             <div class="centerT" *ngIf="post.Title">
   
               <mat-card-title class="postTitle textSizeTit">
@@ -105,6 +104,9 @@
                           <div class="userName  link" id="userName">@{{post.Username}}</div>
                           </button>
                     </div>
+                    <div  matTooltip="All Time Reposts">
+            {{post.Reposts}}
+          </div>
                   </div>
   
   
