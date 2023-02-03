@@ -33,7 +33,7 @@
                     <!-- *ngIf="comments.length == 0" -->
                   <div *ngIf="comments.length == 0" class="basicColumn" >
                     <i class="fas fa-comment-slash noFriends"></i>
-                    <div class="title_">
+                    <div class="title__">
                       No comments
                     </div>
                   </div>
@@ -61,7 +61,7 @@
                      <div class="basicColumn" 
                      *ngIf="followers.length == 0">
                   <i class="fas fa-users-slash noFriends"></i>
-                  <div class="title_">No current followers</div>
+                  <div class="title__">No current followers</div>
                 </div>
                 
                   <followed-history-template></followed-history-template>
@@ -91,7 +91,7 @@
            <div class="basicColumn" 
            >
         <i class="fas fa-users-slash noFriends"></i>
-        <div class="title_">No one has shared a post of yours</div>
+        <div class="title__">No one has shared a post of yours</div>
       </div>
       
         <shared-history-template></shared-history-template>

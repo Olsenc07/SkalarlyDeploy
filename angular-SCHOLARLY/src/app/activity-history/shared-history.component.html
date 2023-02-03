@@ -11,22 +11,22 @@
         <div class="rowSpace">
             <div class="display">
             <div class="row_">
-                <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPathFollower">
-                    <img class="fit" src="{{info.ProfilePicPathFollower}}">
+                <div mat-card-avatar class="profilePic" *ngIf="info.SharerProfilePicPath">
+                    <img class="fit" src="{{info.SharerProfilePicPath}}">
                 </div>
             </div>
             <div class="column_">
-                <div class="userName textSize" *ngIf="info.nameFollower">
+                <div class="userName textSize" *ngIf="info.SharerName">
     
-                    {{info.nameFollower}}
+                    {{info.SharerName}}
                 </div>
                 <div class="display">
                     <!-- Directs to users profile -->
-                    <button mat-button class="center-" *ngIf="userId !== info.Follower" (click)="navigateToPage(info.usernameFollower)">
-                        @{{ info.usernameFollower }}
+                    <button mat-button class="center-"  (click)="navigateToPage(info.SharerUsername)">
+                        @{{ info.SharerUsername }}
                     </button>
                     <button mat-button *ngIf="userId == info.Follower" disabled>
-                    <div class="center-" >  @{{ info.usernameFollower }} </div>
+                    <div class="center-" >  @{{ info.SharerUsername }} </div>
                     </button>
                 </div>
            
@@ -34,12 +34,19 @@
         </div>
             <div class="center-Space">
                 {{info.Title}}
-         {{info.Time}}
         </div>
 
         </div>
 
+        <mat-chip-list class="buttonsC">
+            <mat-chip mat-stroked-button class="textFont"
+            (click)="navToPost(info.OriginalPostId)">Go to post</mat-chip>
+          </mat-chip-list>
        
-       
+
+          <mat-chip-list class="buttonsC">
+            <mat-chip mat-stroked-button class="textFont"
+            (click)="delRePost(info.id)">Delete Repost</mat-chip>
+          </mat-chip-list>
     </div>
 </mat-card>

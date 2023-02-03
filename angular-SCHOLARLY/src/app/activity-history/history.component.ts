@@ -18,7 +18,6 @@ export interface Follow {
   ProfilePicPathFollowing: string;
 }
 export interface Shared {
-  Time: string;
   Title: string;
   SharerProfilePicPath: string;
 
@@ -223,6 +222,15 @@ export class FollowedTemplateComponent implements OnInit {
 })
 export class SharedHistoryComponent implements OnInit {
   shared: Shared[] = [];
-
+  constructor(private router: Router) {}
   ngOnInit(): void {}
+
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
+  }
+
+  delRePost(id: string): any {
+    console.log('baby g', id);
+  }
 }
