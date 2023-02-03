@@ -64,6 +64,7 @@
           <mat-divider></mat-divider>
         
           <div class="column">
+            {{post.Reposts}}
             <div class="centerT" *ngIf="post.Title">
   
               <mat-card-title class="postTitle textSizeTit">
@@ -242,7 +243,7 @@
           </mat-chip>
                       </mat-chip-list>
                       <div class="buttonCombo" >
-                        <button class="counterColor" mat-flat-button  matTooltip="Current Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
+                        <button class="counterColor" mat-flat-button  matTooltip="Live Repost Count" (click)="getPostsTrendingNumber(post.OriginalPostId, post.id)">
                           <div *ngIf=" (valueChosen === post.id) || (valueChosen === post.OriginalPostId)">
                       {{reposts}}
                           </div>
