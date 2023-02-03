@@ -71,7 +71,7 @@
                   <!-- Idk If needed -->
   
                   <button mat-button class="postLocation textSizeLocation t" (click)="navigateToMainPage(post.postLocation)"
-                   *ngIf="post.postLocation">
+                  matTooltip="Click to see more like this" *ngIf="post.postLocation">
                     <!-- Location -->
                     {{post.postLocation}}
                 </button>
