@@ -33,13 +33,13 @@
         </div>
 
             <!-- Mutual friends appear based of username following list comparison -->
-<div class="classes">
-            <div class="center_">
-                <button mat-icon-button class="center__" (click)='onMututal(info.Following)' matTooltip="Skalars Friends"><i class="material-icons">handshake</i></button>
+<div class="buttonCombo">
+            <div class="buttonsC">
+                <button mat-flat-button class="counterColor" (click)='onMututal(info.Following)' matTooltip="Skalars Friends"><i class="material-icons">handshake</i></button>
             </div>
 
-            <div>
-                <button mat-icon-button class="remove_friend" (click)='onDelete(info.id)'  matTooltip="Unfollow">  <i class="material-icons">person_remove</i></button>
+            <div class="buttonsC">
+                <button mat-flat-button class="repostColor" (click)='onDelete(info.id)'  matTooltip="Unfollow">  <i class="material-icons">person_remove</i></button>
             </div>
             
 </div>

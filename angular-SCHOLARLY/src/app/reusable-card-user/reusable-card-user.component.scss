@@ -5,7 +5,7 @@
 }
 .buttonsC{
   display: flex;
-  margin: 1%;
+  // margin: 1%;
   align-items: center;
 }
 .center {
@@ -72,6 +72,7 @@
 .buttonCombo{
   display: flex;
   flex-direction: row;
+  margin-right: 2%;
 }
 .counterColor{
   background-color: teal !important;
