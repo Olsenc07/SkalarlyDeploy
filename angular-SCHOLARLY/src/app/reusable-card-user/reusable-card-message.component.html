@@ -8,7 +8,7 @@
 <div  *ngFor="let info of messagesNotif; let even = even; let odd = odd">
 <mat-card class="row1" [ngClass]="{ even: even, odd: odd }" >
     <div class="column" >
-        <div class="row">
+        <div class="rowMessage">
             <!-- <div  class="profilePic" *ngIf="info.ProfilePicPath">
                 !-- <img src="{{id.cropImgPreview}}" alt=""> --
                 <img class="fit" src="{{info.ProfilePicPath}}">
@@ -83,7 +83,7 @@
 <div  *ngFor="let info of messagesNotif; let even = even; let odd = odd">
     <mat-card class="row1" [ngClass]="{ even: even, odd: odd }" *ngIf="userId !== info.you">
         <div class="column" >
-            <div class="row">
+            <div class="rowMessage">
                 <!-- <div  class="profilePic" *ngIf="info.ProfilePicPath">
                     !-- <img src="{{id.cropImgPreview}}" alt=""> --
                     <img class="fit" src="{{info.ProfilePicPath}}">

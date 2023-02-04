@@ -169,6 +169,14 @@
   margin: 1%;
   justify-content: center;
 }
+.rowMessage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1%;
+  justify-content: space-around;
+
+}
 .rowSpace {
   display: flex;
   flex-direction: row;
