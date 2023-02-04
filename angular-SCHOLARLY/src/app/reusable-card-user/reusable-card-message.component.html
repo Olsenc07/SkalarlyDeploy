@@ -107,24 +107,36 @@
     
     
     
+                <div class="buttonCombo" >
+
                 <!-- Card is removed from list when follow is clicked -->
                 <!-- Only appears if user isn't already following this mutual friend -->
-                <mat-chip-list class="center_" aria-label="FollowBtn">
+                <!-- <mat-chip-list class="center_" aria-label="FollowBtn"> -->
                     <!-- (click)="followClicked()" -->
-                    <mat-chip class="messageM" (click)="navigateToChat(info.username)" matTooltip="Display Messages">
-                        Message 
+                    <!-- <mat-chip class="messageM" > -->
+                        <div class="buttonsC">
+                        <button class="counterColor" mat-flat-button (click)="navigateToChat(info.username)" matTooltip="Display Messages">
+                        <!-- Message  -->
                         <!-- Or -->
                         <!-- <i class="far fa-envelope"></i> -->
                         <i class="fas fa-envelope-open-text iconSpace"></i>
-                    </mat-chip>
+                    </button>
+                </div>
+                    <!-- </mat-chip> -->
     
-                </mat-chip-list>
+                <!-- </mat-chip-list> -->
 
+                <div class="buttonsC">
+                    <button mat-flat-button (click)="deleteMsg(info.id)" matTooltip="Deletes For Both">
+                <i matSuffix class="far fa-times-circle delete" ></i>
+            </button>
+            </div>
+
+</div>
             </div>
     
         </div>
        
-        <i matSuffix class="far fa-times-circle delete" (click)="deleteMsg(info.id)" matTooltip="Deletes for both"></i>
 
     </mat-card>
     </div>
