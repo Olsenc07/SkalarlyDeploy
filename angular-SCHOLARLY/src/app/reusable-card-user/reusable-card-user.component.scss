@@ -82,6 +82,18 @@
   font-size: large;
 
 }
+.columnReposts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+  width: 100%;
+}
+.reposts{
+  display: flex;
+  justify-content: center;
+}
 .repostColor{
   background-color: powderblue !important;
   border-bottom-right-radius: 25px;
