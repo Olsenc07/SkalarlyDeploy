@@ -798,9 +798,18 @@ export class TrendingComponent implements OnInit {
   styleUrls: ['./main-pages.component.scss'],
 })
 export class SkalarsComponent implements OnInit {
+  category: FormControl = new FormControl('');
 
-ngOnInit(): void {
-  
-}
+  categories: string[] = [
+    'Major',
+    'Minor',
+    'Sport',
+    'Club',
+    'Year Of Graduation',
+  ];
+  ngOnInit(): void {}
 
+  submitFilter(category): any {
+    console.log('category', category);
+  }
 }

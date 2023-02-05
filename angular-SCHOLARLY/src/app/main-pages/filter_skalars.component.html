@@ -1,3 +1,15 @@
-<div>
-    Hey Chase
-</div>
+
+<mat-form-field class="smaller" >
+    <!-- <mat-label *ngIf="Category">{{Category}}</mat-label>
+    <mat-label *ngIf="!Category">Category</mat-label> -->
+
+    <input matInput type='text' [formControl]="category" [matAutocomplete]="auto_">
+    <mat-autocomplete #auto_="matAutocomplete">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{category}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+
+  <button (click)="submitFilter(category)">Search</button>
