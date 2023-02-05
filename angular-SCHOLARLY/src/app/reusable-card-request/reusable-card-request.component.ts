@@ -58,20 +58,9 @@ export class ReusableCardRecommendationComponent implements OnInit {
   recomCounter = 0;
   countVisibility = 0;
   infos: string[] = [];
-  // Trying to randomze the array for reco
-  // infos_: number;
-  // shuffle(infos: any): any {
-  //   this.infos_ = Math.floor(Math.random() * infos.length);
-  //   this.infos = infos[this.infos_];
-  //   console.log('random', this.infos);
-  // }
+
   // Creates a randoma array
   private infosSub: Subscription;
-
-  // onOtherUser(info): any{
-  // // this.authService.getOtherInfo();
-  // this.authService.getOtherInfo(info);
-  // }
 
   constructor(
     private authService: AuthService,

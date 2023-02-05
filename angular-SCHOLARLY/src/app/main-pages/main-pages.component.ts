@@ -791,13 +791,20 @@ export class TrendingComponent implements OnInit {
   }
 }
 
-// Trending
+// Filter friends
 @Component({
   selector: 'app-card-filter ',
   templateUrl: './filter_skalars.component.html',
   styleUrls: ['./main-pages.component.scss'],
 })
 export class SkalarsComponent implements OnInit {
+  userId: string;
+
+  isLoading = false;
+  recomCounter = 0;
+  countVisibility = 0;
+  infos: string[] = [];
+
   category: FormControl = new FormControl('');
 
   categories: string[] = [
@@ -807,9 +814,29 @@ export class SkalarsComponent implements OnInit {
     'Club',
     'Year Of Graduation',
   ];
-  ngOnInit(): void {}
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+  }
 
   submitFilter(category): any {
-    console.log('category', category);
+    console.log('category', category.value);
   }
+
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+}
+
+// Filter friends
+@Component({
+  selector: 'app-card-filter-reusable ',
+  templateUrl: './reusable-filter_skalars.component.html',
+  styleUrls: ['./main-pages.component.scss'],
+})
+export class SkalarsFilterComponent implements OnInit {
+  ngOnInit(): void {}
 }

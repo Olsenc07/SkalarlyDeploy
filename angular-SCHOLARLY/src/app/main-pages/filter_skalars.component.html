@@ -1,15 +1,35 @@
+  <div class="entire-page">
+    <div class="rightWall_">
 
-<mat-form-field class="smaller" >
-    <!-- <mat-label *ngIf="Category">{{Category}}</mat-label>
-    <mat-label *ngIf="!Category">Category</mat-label> -->
+    <!-- Recents text -->
+    <h1 class="top" >
+        <mat-form-field class="smaller" >
+            <!-- <mat-label *ngIf="Category">{{Category}}</mat-label>
+            <mat-label *ngIf="!Category">Category</mat-label> -->
+        
+            <input matInput type='text' [formControl]="category" [matAutocomplete]="auto_">
+            <mat-autocomplete #auto_="matAutocomplete">
+              <mat-option *ngFor="let category of categories" [value]="category">
+                {{category}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        
+          <mat-form-field class="example-full-width">
+            <mat-label></mat-label>
+            <input matInput placeholder="Ex. Pizza" value="Sushi">
+          </mat-form-field>
+          <button (click)="submitFilter(category)">Search</button>
+    </h1>
 
-    <input matInput type='text' [formControl]="category" [matAutocomplete]="auto_">
-    <mat-autocomplete #auto_="matAutocomplete">
-      <mat-option *ngFor="let category of categories" [value]="category">
-        {{category}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+ 
+    <div class="feed"  >
+
+    <app-card-filter-reusable class="fit"></app-card-filter-reusable>
 
 
-  <button (click)="submitFilter(category)">Search</button>
+    </div>
+  </div>
+  </div>
+
+
