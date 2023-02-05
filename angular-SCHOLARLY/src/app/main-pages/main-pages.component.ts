@@ -790,3 +790,17 @@ export class TrendingComponent implements OnInit {
       });
   }
 }
+
+// Trending
+@Component({
+  selector: 'app-card-filter ',
+  templateUrl: './filter_skalars.component.html',
+  styleUrls: ['./main-pages.component.scss'],
+})
+export class SkalarsComponent implements OnInit {
+
+ngOnInit(): void {
+  
+}
+
+}

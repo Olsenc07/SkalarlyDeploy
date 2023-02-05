@@ -39,6 +39,7 @@ import {
   SinglePageComponent,
   RecentComponent,
   TrendingComponent,
+  SkalarsComponent,
 } from './main-pages/main-pages.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { AuthGuard } from './signup/auth.guard';
@@ -83,6 +84,11 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: 'recent', component: RecentComponent, canActivate: [AuthGuard] },
   { path: 'trending', component: TrendingComponent, canActivate: [AuthGuard] },
+  {
+    path: 'filterSkalars',
+    component: SkalarsComponent,
+    canActivate: [AuthGuard],
+  },
 
   {
     path: 'edit-profile/:userId',

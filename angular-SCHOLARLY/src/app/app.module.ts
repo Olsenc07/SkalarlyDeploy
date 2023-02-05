@@ -78,6 +78,7 @@ import {
   SinglePageTemplateComponent,
   RecentComponent,
   TrendingComponent,
+  SkalarsComponent,
 } from './main-pages/main-pages.component';
 import {
   SignupComponent,
@@ -173,6 +174,7 @@ import { ErrorInterceptor } from './error-interceptor';
     GroupChatsComponent,
     MainPagesComponent,
     TrendingComponent,
+    SkalarsComponent,
     SinglePageComponent,
     SinglePageTemplateComponent,
     RecentComponent,
