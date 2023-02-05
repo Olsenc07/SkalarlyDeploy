@@ -805,6 +805,7 @@ export class SkalarsComponent implements OnInit {
   countVisibility = 0;
   infos: string[] = [];
 
+  search: FormControl = new FormControl('');
   category: FormControl = new FormControl('');
 
   categories: string[] = [
@@ -821,8 +822,9 @@ export class SkalarsComponent implements OnInit {
     this.userId = this.authService.getUserId();
   }
 
-  submitFilter(category): any {
+  submitFilter(category, search): any {
     console.log('category', category.value);
+    console.log('search', search.value);
   }
 
   navigateToPage(infoUser: string): any {
