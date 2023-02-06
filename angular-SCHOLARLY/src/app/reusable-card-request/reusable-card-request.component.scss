@@ -30,6 +30,10 @@
   display: flex;
   justify-content: center;
 }
+.centerItems{
+  display: flex;
+    align-items: center;
+}
 .center1 {
   display: flex;
   justify-content: center;
@@ -147,7 +151,7 @@
 .searchFilter{
   display: flex;
   align-items: center;
-
+  justify-content: center;
 }
 .searchFilter_{
   display: flex;

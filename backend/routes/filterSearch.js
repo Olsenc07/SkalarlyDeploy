@@ -119,5 +119,34 @@ router.get("/filterSearchClub", async(req, res) => {
     });
 
 });
+// userInfo by name and major
+router.get("/filterSearchNameMajor", async(req, res) => {
+    const name = req.query.name;
+    const major = req.query.major;
+    console.log('major', major);
+    console.log('name', name);
+
+    await UserInfo.find({ name: {
+        $regex: new RegExp('^' + name + '.*',
+            'i')
+    },
+    major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('club momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
 module.exports = router;
 
