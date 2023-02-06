@@ -799,6 +799,9 @@ export class TrendingComponent implements OnInit {
 })
 export class SkalarsComponent implements OnInit {
   userId: string;
+  private filtersSub: Subscription;
+
+  infos: string[] = [];
 
   isLoading = false;
   recomCounter = 0;
@@ -829,6 +832,11 @@ export class SkalarsComponent implements OnInit {
       searchSport.value,
       searchName.value
     );
+    this.filtersSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos) => {
+        this.infos = infos;
+      });
   }
 
   navigateToPage(infoUser: string): any {
