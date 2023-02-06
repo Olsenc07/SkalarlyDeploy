@@ -840,22 +840,28 @@ export class SkalarsComponent implements OnInit {
     // Name
     if (!major && !minor && !sport && !club) {
       this.filterSearchService.filterSearchName(name);
+
+      console.log('1');
     }
     // Major
     if (!name && !minor && !sport && !club) {
       this.filterSearchService.filterSearchMajor(major);
+      console.log('2');
     }
     // Minor
     if (!major && !name && !sport && !club) {
       this.filterSearchService.filterSearchMinor(minor);
+      console.log('3');
     }
     // Sport
     if (!major && !minor && !name && !club) {
       this.filterSearchService.filterSearchSport(sport);
+      console.log('4');
     }
     // Club
     if (!major && !minor && !sport && !name) {
       this.filterSearchService.filterSearchClub(club);
+      console.log('5');
     }
 
     this.filtersSub = this.filterSearchService
