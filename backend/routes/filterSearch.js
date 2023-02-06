@@ -135,7 +135,65 @@ router.get("/filterSearchNameMajor", async(req, res) => {
             'i')
     }
     })  .then(documents => {
-        console.log('club momma', documents)
+        console.log('major and name momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
+// userInfo by name and minor
+router.get("/filterSearchNameMinor", async(req, res) => {
+    const name = req.query.name;
+    const minor = req.query.minor;
+    console.log('minor', minor);
+    console.log('name', name);
+
+    await UserInfo.find({ name: {
+        $regex: new RegExp('^' + name + '.*',
+            'i')
+    },
+    minor: {
+        $regex: new RegExp('^' + minor + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('name and minor momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
+// userInfo by name and minor
+router.get("/filterSearchMajorSport", async(req, res) => {
+    const major = req.query.major;
+    const sport = req.query.sport;
+    console.log('major', major);
+    console.log('sport', sport);
+
+    await UserInfo.find({ major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    },
+    sport: {
+        $regex: new RegExp('^' + sport + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('major and sport momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
             infos: documents

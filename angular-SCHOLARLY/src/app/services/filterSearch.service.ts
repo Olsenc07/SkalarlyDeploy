@@ -175,13 +175,137 @@ export class FilterSearchService {
         this.infosUpdated.next([...this.infos]);
       });
   }
-  //   Club
+  //   name and major
   filterSearchNameMajor(name: string, major: string): any {
     this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameMajor',
         {
           params: { name, major },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //   name and minor
+  filterSearchNameMinor(name: string, minor: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchNameMinor',
+        {
+          params: { name, minor },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //   name and minor
+  filterSearchNameSport(name: string, sport: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchNameSport',
+        {
+          params: { name, sport },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //   name and minor
+  filterSearchNameClub(name: string, club: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchNameClub',
+        {
+          params: { name, club },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //   name and minor
+  filterSearchMajorSport(major: string, sport: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchMajorSport',
+        {
+          params: { major, sport },
         }
       )
       .pipe(
