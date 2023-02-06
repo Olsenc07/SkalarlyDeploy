@@ -1,5 +1,5 @@
 const express = require('express');
-const multer = require('multer');
+
 const router = express.Router();
 const UserInfo = require('/app/backend/models/userInfo');
 

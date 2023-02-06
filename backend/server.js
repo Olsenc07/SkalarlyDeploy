@@ -213,7 +213,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/follow", followRoutes);
-app.use("/api/filterSearch", filterSearchRoutes);
+app.use("/api/filter", filterSearchRoutes);
 
 app.use("/api/subscribe", subscribeRoutes);
 
