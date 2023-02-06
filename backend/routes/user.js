@@ -2254,7 +2254,7 @@ router.get("/filterSearch", async(req, res) => {
     console.log('club', club);
     console.log('sport', sport);
     console.log('name', name);
-
+// Just name
 if(!major, !minor, !club, !sport){
     await UserInfo.find({ name: {
         $regex: new RegExp('^' + name + '.*',
@@ -2273,7 +2273,105 @@ if(!major, !minor, !club, !sport){
         });
     });
 }
-
+// Just major
+if(!name, !minor, !club, !sport){
+    await UserInfo.find({ major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('docs yo momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+}
+// Just minor
+if(!major, !name, !club, !sport){
+    await UserInfo.find({ minor: {
+        $regex: new RegExp('^' + minor + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('docs yo momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+}
+// Just sport
+if(!major, !minor, !club, !name){
+    await UserInfo.find({ sport: {
+        $regex: new RegExp('^' + sport + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('docs yo momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+}
+// Just club
+if(!major, !minor, !name, !sport){
+    await UserInfo.find({ club: {
+        $regex: new RegExp('^' + club + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('docs yo momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+}
+// name and  major
+if( !minor, !club, !sport){
+    await UserInfo.find({ name: {
+        $regex: new RegExp('^' + name + '.*',
+            'i')
+    },
+    major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('docs yo momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+}
 });
 // Prfoile
 router.get("/infoProfile", async(req, res) => {
