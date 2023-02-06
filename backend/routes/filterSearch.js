@@ -135,12 +135,12 @@ router.get("/filterSearchNameMajor", async(req, res) => {
         name: {
         $regex: new RegExp('^' + name + '.*',
             'i')
-    },
-    major: {
+    }},
+   { major: {
         $regex: new RegExp('^' + major + '.*',
             'i')
-    }
- } ]}).limit(30)
+    }}
+ ]}).limit(30)
       .then(documents => {
         console.log('major and name momma', documents)
         res.status(200).json({
