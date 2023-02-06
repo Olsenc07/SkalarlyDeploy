@@ -706,5 +706,277 @@ router.get("/filterSearchMajorMinorClub", async(req, res) => {
     });
 
 });
+// userInfo by name,major,minor,sport
+router.get("/filterSearchNameMajorMinorSport", async(req, res) => {
+    const sport = req.query.sport;
+    const name = req.query.name;
+
+    const minor = req.query.minor;
+
+    const major = req.query.major;
+    console.log('major', major);
+    console.log('sport', sport);
+    console.log('name', name);
+
+    console.log('minor', minor);
+
+    await UserInfo.find({ sport: {
+        $regex: new RegExp('^' + sport + '.*',
+            'i')
+    },
+    major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    },
+    minor: {
+        $regex: new RegExp('^' + minor + '.*',
+            'i')
+    },
+    name: {
+        $regex: new RegExp('^' + name + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('name,major,minor,sport momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
+// userInfo by name,major,minor,sport
+router.get("/filterSearchMajorMinorSportClub", async(req, res) => {
+    const sport = req.query.sport;
+    const club = req.query.club;
+
+    const minor = req.query.minor;
+
+    const major = req.query.major;
+    console.log('major', major);
+    console.log('club', club);
+    console.log('sport', sport);
+
+    console.log('minor', minor);
+
+    await UserInfo.find({ sport: {
+        $regex: new RegExp('^' + sport + '.*',
+            'i')
+    },
+    major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    },
+    minor: {
+        $regex: new RegExp('^' + minor + '.*',
+            'i')
+    },
+    club: {
+        $regex: new RegExp('^' + club + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('club,major,minor,sport momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
+// userInfo by name,major,minor,sport
+router.get("/filterSearchNameMinorSportClub", async(req, res) => {
+    const sport = req.query.sport;
+    const club = req.query.club;
+
+    const minor = req.query.minor;
+
+    const name = req.query.name;
+    console.log('name', name);
+    console.log('club', club);
+    console.log('sport', sport);
+
+    console.log('minor', minor);
+
+    await UserInfo.find({ sport: {
+        $regex: new RegExp('^' + sport + '.*',
+            'i')
+    },
+    name: {
+        $regex: new RegExp('^' + name + '.*',
+            'i')
+    },
+    minor: {
+        $regex: new RegExp('^' + minor + '.*',
+            'i')
+    },
+    club: {
+        $regex: new RegExp('^' + club + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('name,minor,sport,club momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
+// userInfo by name,major,minor,major
+router.get("/filterSearchNameMajorMinorClub", async(req, res) => {
+    const major = req.query.major;
+    const club = req.query.club;
+
+    const minor = req.query.minor;
+
+    const name = req.query.name;
+    console.log('name', name);
+    console.log('club', club);
+    console.log('major', major);
+
+    console.log('minor', minor);
+
+    await UserInfo.find({ major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    },
+    name: {
+        $regex: new RegExp('^' + name + '.*',
+            'i')
+    },
+    minor: {
+        $regex: new RegExp('^' + minor + '.*',
+            'i')
+    },
+    club: {
+        $regex: new RegExp('^' + club + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('name,minor,major,club momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+});
+// userInfo by name,major,sport,major
+router.get("/filterSearchNameMajorSportClub", async(req, res) => {
+    const major = req.query.major;
+    const club = req.query.club;
+
+    const sport = req.query.sport;
+
+    const name = req.query.name;
+    console.log('name', name);
+    console.log('club', club);
+    console.log('sport', sport);
+
+    console.log('sport', sport);
+
+    await UserInfo.find({ major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    },
+    name: {
+        $regex: new RegExp('^' + name + '.*',
+            'i')
+    },
+    sport: {
+        $regex: new RegExp('^' + sport + '.*',
+            'i')
+    },
+    club: {
+        $regex: new RegExp('^' + club + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('name,minor,major,club momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
+// userInfo by name,major, minor,sport,major
+router.get("/filterSearchNameMajorMinorSportClub", async(req, res) => {
+    const major = req.query.major;
+    const minor = req.query.minor;
+
+    const club = req.query.club;
+
+    const sport = req.query.sport;
+
+    const name = req.query.name;
+    console.log('name', name);
+    console.log('major', major);
+    console.log('minor', minor);
+
+    console.log('club', club);
+    console.log('sport', sport);
+
+
+
+    await UserInfo.find({ major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    },
+    minor: {
+        $regex: new RegExp('^' + minor + '.*',
+            'i')
+    },
+    name: {
+        $regex: new RegExp('^' + name + '.*',
+            'i')
+    },
+    sport: {
+        $regex: new RegExp('^' + sport + '.*',
+            'i')
+    },
+    club: {
+        $regex: new RegExp('^' + club + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('name,minor,major,club momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
 module.exports = router;
 

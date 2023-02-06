@@ -964,6 +964,66 @@ export class SkalarsComponent implements OnInit {
       this.filterSearchService.filterSearchMajorMinorClub(major, minor, club);
       console.log('25');
     }
+    // major,minor,club,sport
+    if (!club) {
+      this.filterSearchService.filterSearchNameMajorMinorSport(
+        name,
+        major,
+        minor,
+        sport
+      );
+      console.log('26');
+    }
+    // major,minor,club,sport
+    if (!name) {
+      this.filterSearchService.filterSearchMajorMinorSportClub(
+        major,
+        minor,
+        sport,
+        club
+      );
+      console.log('27');
+    }
+    // name,minor,club,sport
+    if (!major) {
+      this.filterSearchService.filterSearchNameMinorSportClub(
+        name,
+        minor,
+        sport,
+        club
+      );
+      console.log('28');
+    }
+    // name,minor,club,major
+    if (!sport) {
+      this.filterSearchService.filterSearchNameMajorMinorClub(
+        name,
+        minor,
+        major,
+        club
+      );
+      console.log('29');
+    }
+    // name,minor,club,major
+    if (!minor) {
+      this.filterSearchService.filterSearchNameMajorSportClub(
+        name,
+        sport,
+        major,
+        club
+      );
+      console.log('30');
+    }
+    if (name && major && minor && sport && club) {
+      this.filterSearchService.filterSearchNameMajorMinorSportClub(
+        name,
+        major,
+        minor,
+        sport,
+        club
+      );
+      console.log('31');
+    }
 
     this.filtersSub = this.filterSearchService
       .getInfoUpdateListener()
