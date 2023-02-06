@@ -53,7 +53,7 @@ router.get("/filterSearchMajor", async(req, res) => {
 // userInfo by minor
 router.get("/filterSearchMinor", async(req, res) => {
     const minor = req.query.minor;
-    console.log('major', major);
+    console.log('minor', minor);
 
     await UserInfo.find({ minor: {
         $regex: new RegExp('^' + minor + '.*',
@@ -98,7 +98,7 @@ router.get("/filterSearchSport", async(req, res) => {
 });
 // userInfo by club
 router.get("/filterSearchClub", async(req, res) => {
-    const minor = req.query.club;
+    const club = req.query.club;
     console.log('club', club);
 
     await UserInfo.find({ club: {
