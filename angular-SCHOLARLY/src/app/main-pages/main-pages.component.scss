@@ -129,6 +129,10 @@
 .expandBtn {
   font-size: x-large;
 }
+.example-full-width{
+  display: flex;
+  width: 100%;
+}
 .left {
   display: flex;
   justify-content: center;
@@ -291,7 +295,7 @@
 }
 .searchFilter{
   display: flex;
-  
+  justify-content: center;
 }
 .text {
   justify-content: center;

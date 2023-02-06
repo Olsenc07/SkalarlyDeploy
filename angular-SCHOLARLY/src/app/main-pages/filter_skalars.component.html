@@ -15,7 +15,7 @@
                <div >Name</div>
              </ng-template>
         <mat-form-field class="example-full-width">
-            <mat-label >Name</mat-label>
+    
 
            
             <input matInput placeholder="Name " [formControl]="searchName" >
@@ -30,21 +30,21 @@
             </ng-template>
         <mat-form-field class="smaller" >
 
-            <mat-label >Major</mat-label>
+
         
             <input matInput type='text' [formControl]="searchMaj" placeholder="Major ">
 
           </mat-form-field>
         </mat-tab>
 
-        <mat-tab class="index" >
+        <mat-tab class="index"  >
             <ng-template mat-tab-label>
               <mat-icon> <i class="fas fa-star-half-alt"></i>
             </mat-icon>
               <div >Minor</div>
             </ng-template>
           <mat-form-field class="example-full-width">
-            <mat-label >Minor</mat-label>
+      
 
            
             <input matInput placeholder="Minor " [formControl]="searchMin" >
@@ -79,10 +79,10 @@
           </mat-form-field>
           </mat-tab>
           </mat-tab-group>
-          <mat-chip-list div="searchFilter">
+          <mat-chip-list class="searchFilter">
             <mat-chip (click)="submitFilter(searchMaj, searchMin, searchClub,
             searchSport,searchName)">
-            <span class="material-icons search-box__icon"> search </span>
+            <div class="material-icons"> search </div>
                 Search
             </mat-chip>
           </mat-chip-list>
