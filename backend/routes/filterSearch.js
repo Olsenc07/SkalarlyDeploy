@@ -177,7 +177,7 @@ router.get("/filterSearchNameMinor", async(req, res) => {
     });
 
 });
-// userInfo by name and minor
+// userInfo by major and sport
 router.get("/filterSearchMajorSport", async(req, res) => {
     const major = req.query.major;
     const sport = req.query.sport;
@@ -194,6 +194,63 @@ router.get("/filterSearchMajorSport", async(req, res) => {
     }
     })  .then(documents => {
         console.log('major and sport momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+});
+// userInfo by major and club
+router.get("/filterSearchMajorClub", async(req, res) => {
+    const major = req.query.major;
+    const club = req.query.club;
+    console.log('major', major);
+    console.log('club', club);
+
+    await UserInfo.find({ major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    },
+    club: {
+        $regex: new RegExp('^' + club + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('major and club momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
+// userInfo by major and club
+router.get("/filterSearchMinorClub", async(req, res) => {
+    const minor = req.query.minor;
+    const club = req.query.club;
+    console.log('minor', minor);
+    console.log('club', club);
+
+    await UserInfo.find({ minor: {
+        $regex: new RegExp('^' + minor + '.*',
+            'i')
+    },
+    club: {
+        $regex: new RegExp('^' + club + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('minor and club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
             infos: documents
