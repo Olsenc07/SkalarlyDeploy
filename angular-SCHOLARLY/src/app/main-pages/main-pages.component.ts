@@ -837,6 +837,10 @@ export class SkalarsComponent implements OnInit {
     console.log('Sport', searchSport.value);
     console.log('Club', searchClub.value);
     console.log('Name', searchName.value);
+    // nothing
+    if (!name && !major && !minor && !sport && !club) {
+      console.log('0');
+    }
     // Name
     if (!major && !minor && !sport && !club) {
       this.filterSearchService.filterSearchName(name);
