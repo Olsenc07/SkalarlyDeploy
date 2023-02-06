@@ -297,6 +297,16 @@
   display: flex;
   justify-content: center;
 }
+::ng-deep .mat-tab-label {
+  color: #7e7171;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 900;
+}
+::ng-deep .mat-tab-header {
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
+}
 .text {
   justify-content: center;
   display: flex;
