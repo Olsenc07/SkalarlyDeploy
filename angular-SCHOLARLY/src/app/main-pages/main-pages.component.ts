@@ -832,7 +832,7 @@ export class SkalarsComponent implements OnInit {
     const sport = searchSport.value;
     const club = searchClub.value;
 
-    console.log('Major', searchMaj.value);
+    console.log('Major', searchMaj.value.length);
     console.log('Minor', searchMin.value);
     console.log('Sport', searchSport.value);
     console.log('Club', searchClub.value);
@@ -908,6 +908,11 @@ export class SkalarsComponent implements OnInit {
     if (!name && !club && !major) {
       this.filterSearchService.filterSearchSportMinor(sport, minor);
       console.log('14');
+    }
+    // major and minor
+    if (!name && !club && !sport) {
+      this.filterSearchService.filterSearchMajorMinor(major, minor);
+      console.log('15');
     }
 
     this.filtersSub = this.filterSearchService
