@@ -864,108 +864,174 @@ export class SkalarsComponent implements OnInit {
       console.log('5');
     }
     // name and major
-    if (!minor && !sport && !club && (name.length !== 0) && (major.length !== 0)) {
+    if (!minor && !sport && !club && name.length !== 0 && major.length !== 0) {
       this.filterSearchService.filterSearchNameMajor(name, major);
       console.log('6');
     }
     // name and minor
-    if (!major && !sport && !club && (name.length !== 0) && (minor.length !== 0)) {
+    if (!major && !sport && !club && name.length !== 0 && minor.length !== 0) {
       this.filterSearchService.filterSearchNameMinor(name, minor);
       console.log('7');
     }
 
     // name and sport
-    if (!major && !minor && !club && (name.length !== 0) && (sport.length !== 0)) {
+    if (!major && !minor && !club && name.length !== 0 && sport.length !== 0) {
       this.filterSearchService.filterSearchNameSport(name, sport);
       console.log('8');
     }
     // name and club
-    if (!major && !sport && !minor && (name.length !== 0) && (club.length !== 0)) {
+    if (!major && !sport && !minor && name.length !== 0 && club.length !== 0) {
       this.filterSearchService.filterSearchNameClub(name, club);
       console.log('9');
     }
     // major and sport
-    if (!name && !club && !minor && (major.length !== 0) && (sport.length !== 0)) {
+    if (!name && !club && !minor && major.length !== 0 && sport.length !== 0) {
       this.filterSearchService.filterSearchMajorSport(major, sport);
       console.log('10');
     }
     // major and club
-    if (!name && !sport && !minor && (major.length !== 0) && (club.length !== 0)) {
+    if (!name && !sport && !minor && major.length !== 0 && club.length !== 0) {
       this.filterSearchService.filterSearchMajorClub(major, club);
       console.log('11');
     }
     // minor and club
-    if (!name && !sport && !major && (minor.length !== 0) && (club.length !== 0)) {
+    if (!name && !sport && !major && minor.length !== 0 && club.length !== 0) {
       this.filterSearchService.filterSearchMinorClub(minor, club);
       console.log('12');
     }
     // sport and club
-    if (!name && !minor && !major && (sport.length !== 0) && (club.length !== 0)) {
+    if (!name && !minor && !major && sport.length !== 0 && club.length !== 0) {
       this.filterSearchService.filterSearchSportClub(sport, club);
       console.log('13');
     }
     // sport and minor
-    if (!name && !club && !major && (sport.length !== 0) && (minor.length !== 0)) {
+    if (!name && !club && !major && sport.length !== 0 && minor.length !== 0) {
       this.filterSearchService.filterSearchSportMinor(sport, minor);
       console.log('14');
     }
     // major and minor
-    if (!name && !club && !sport && (major.length !== 0) && (minor.length !== 0)t) {
+    if (!name && !club && !sport && major.length !== 0 && minor.length !== 0) {
       this.filterSearchService.filterSearchMajorMinor(major, minor);
       console.log('15');
     }
     // name and major and minor
-    if (!club && !sport && (name.length !== 0) && (major.length !== 0) && (minor.length !== 0)) {
+    if (
+      !club &&
+      !sport &&
+      name.length !== 0 &&
+      major.length !== 0 &&
+      minor.length !== 0
+    ) {
       this.filterSearchService.filterSearchNameMajorMinor(name, major, minor);
       console.log('16');
     }
     // name and major and minor
-    if (!club && !name && (sport.length !== 0) && (major.length !== 0) && (minor.length !== 0)) {
+    if (
+      !club &&
+      !name &&
+      sport.length !== 0 &&
+      major.length !== 0 &&
+      minor.length !== 0
+    ) {
       this.filterSearchService.filterSearchSportMajorMinor(sport, major, minor);
       console.log('17');
     }
     // name and major and minor
-    if (!major && !name && (sport.length !== 0) && (club.length !== 0) && (minor.length !== 0)) {
+    if (
+      !major &&
+      !name &&
+      sport.length !== 0 &&
+      club.length !== 0 &&
+      minor.length !== 0
+    ) {
       this.filterSearchService.filterSearchSportClubMinor(sport, club, minor);
       console.log('18');
     }
     // club and major and name
-    if (!minor && !sport && (name.length !== 0) && (major.length !== 0) && (club.length !== 0)) {
+    if (
+      !minor &&
+      !sport &&
+      name.length !== 0 &&
+      major.length !== 0 &&
+      club.length !== 0
+    ) {
       this.filterSearchService.filterSearchMajorClubName(major, club, name);
       console.log('19');
     }
     // name,sport,club
-    if (!minor && !major && (sport.length !== 0) && (club.length !== 0) && (name.length !== 0)) {
+    if (
+      !minor &&
+      !major &&
+      sport.length !== 0 &&
+      club.length !== 0 &&
+      name.length !== 0
+    ) {
       this.filterSearchService.filterSearchSportClubName(sport, club, name);
       console.log('20');
     }
     // name,sport,major
-    if (!minor && !club && (sport.length !== 0) && (major.length !== 0) && (name.length !== 0)) {
+    if (
+      !minor &&
+      !club &&
+      sport.length !== 0 &&
+      major.length !== 0 &&
+      name.length !== 0
+    ) {
       this.filterSearchService.filterSearchSportMajorName(sport, major, name);
       console.log('21');
     }
     // name,sport,minor
-    if (!major && !club && (name.length !== 0) && (minor.length !== 0) && (sport.length !== 0)) {
+    if (
+      !major &&
+      !club &&
+      name.length !== 0 &&
+      minor.length !== 0 &&
+      sport.length !== 0
+    ) {
       this.filterSearchService.filterSearchSportMinorName(sport, minor, name);
       console.log('22');
     }
     // name,club,major
-    if (!major && !sport && (name.length !== 0) && (club.length !== 0) && (minor.length !== 0)) {
+    if (
+      !major &&
+      !sport &&
+      name.length !== 0 &&
+      club.length !== 0 &&
+      minor.length !== 0
+    ) {
       this.filterSearchService.filterSearchClubMinorName(club, minor, name);
       console.log('23');
     }
     // major,club,sport
-    if (!minor && !name && (major.length !== 0) && (sport.length !== 0) && (club.length !== 0)) {
+    if (
+      !minor &&
+      !name &&
+      major.length !== 0 &&
+      sport.length !== 0 &&
+      club.length !== 0
+    ) {
       this.filterSearchService.filterSearchMajorSportClub(major, sport, club);
       console.log('24');
     }
     // major,club,sport
-    if (!sport && !name && (major.length !== 0) && (minor.length !== 0) && (club.length !== 0)) {
+    if (
+      !sport &&
+      !name &&
+      major.length !== 0 &&
+      minor.length !== 0 &&
+      club.length !== 0
+    ) {
       this.filterSearchService.filterSearchMajorMinorClub(major, minor, club);
       console.log('25');
     }
     // major,minor,club,sport
-    if (!club && (name.length !== 0) && (major.length !== 0) && (minor.length !== 0) && (sport.length !== 0)) {
+    if (
+      !club &&
+      name.length !== 0 &&
+      major.length !== 0 &&
+      minor.length !== 0 &&
+      sport.length !== 0
+    ) {
       this.filterSearchService.filterSearchNameMajorMinorSport(
         name,
         major,
@@ -975,7 +1041,13 @@ export class SkalarsComponent implements OnInit {
       console.log('26');
     }
     // major,minor,club,sport
-    if (!name && (club.length !== 0) && (major.length !== 0) && (minor.length !== 0) && (sport.length !== 0)) {
+    if (
+      !name &&
+      club.length !== 0 &&
+      major.length !== 0 &&
+      minor.length !== 0 &&
+      sport.length !== 0
+    ) {
       this.filterSearchService.filterSearchMajorMinorSportClub(
         major,
         minor,
@@ -985,7 +1057,13 @@ export class SkalarsComponent implements OnInit {
       console.log('27');
     }
     // name,minor,club,sport
-    if (!major && (name.length !== 0) && (club.length !== 0) && (minor.length !== 0) && (sport.length !== 0)) {
+    if (
+      !major &&
+      name.length !== 0 &&
+      club.length !== 0 &&
+      minor.length !== 0 &&
+      sport.length !== 0
+    ) {
       this.filterSearchService.filterSearchNameMinorSportClub(
         name,
         minor,
@@ -995,7 +1073,13 @@ export class SkalarsComponent implements OnInit {
       console.log('28');
     }
     // name,minor,club,major
-    if (!sport && (name.length !== 0) && (major.length !== 0) && (minor.length !== 0) && (club.length !== 0)) {
+    if (
+      !sport &&
+      name.length !== 0 &&
+      major.length !== 0 &&
+      minor.length !== 0 &&
+      club.length !== 0
+    ) {
       this.filterSearchService.filterSearchNameMajorMinorClub(
         name,
         minor,
@@ -1005,7 +1089,13 @@ export class SkalarsComponent implements OnInit {
       console.log('29');
     }
     // name,minor,club,major
-    if (!minor && (name.length !== 0) && (major.length !== 0) && (club.length !== 0) && (sport.length !== 0)) {
+    if (
+      !minor &&
+      name.length !== 0 &&
+      major.length !== 0 &&
+      club.length !== 0 &&
+      sport.length !== 0
+    ) {
       this.filterSearchService.filterSearchNameMajorSportClub(
         name,
         sport,
