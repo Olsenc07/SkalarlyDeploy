@@ -133,9 +133,14 @@ Filter Skalars
                     <div class="gender textSize" *ngIf="info.name">
                         {{info.name}}
                 </div>
-                    <button mat-button type="button" 
+                    <button mat-button type="button" *ngIf="userId !== info.Creator"
                     class="userName link" id="userName" matTooltip="View Profile" 
                     (click)="navigateToPage(info.username)" >
+                        @{{ info.username}}
+                    </button>
+                    <button mat-button type="button" *ngIf="userId == info.Creator"
+                    class="userName link" id="userName" matTooltip="View Profile" 
+                    disabled >
                         @{{ info.username}}
                     </button>
                     </div>
