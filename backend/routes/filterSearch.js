@@ -13,7 +13,8 @@ router.get("/filterSearchName", async(req, res) => {
         $regex: new RegExp('^' + name + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -36,7 +37,8 @@ router.get("/filterSearchMajor", async(req, res) => {
         $regex: new RegExp('^' + major + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30) 
+     .then(documents => {
         console.log('major momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -59,7 +61,8 @@ router.get("/filterSearchMinor", async(req, res) => {
         $regex: new RegExp('^' + minor + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('minor momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -82,7 +85,8 @@ router.get("/filterSearchSport", async(req, res) => {
         $regex: new RegExp('^' + sport + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('sport momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -105,7 +109,8 @@ router.get("/filterSearchClub", async(req, res) => {
         $regex: new RegExp('^' + club + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -134,7 +139,8 @@ router.get("/filterSearchNameMajor", async(req, res) => {
         $regex: new RegExp('^' + major + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('major and name momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -163,7 +169,8 @@ router.get("/filterSearchNameMinor", async(req, res) => {
         $regex: new RegExp('^' + minor + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name and minor momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -192,7 +199,8 @@ router.get("/filterSearchMajorSport", async(req, res) => {
         $regex: new RegExp('^' + sport + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+     .then(documents => {
         console.log('major and sport momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -220,7 +228,8 @@ router.get("/filterSearchMajorClub", async(req, res) => {
         $regex: new RegExp('^' + club + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('major and club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -249,7 +258,8 @@ router.get("/filterSearchMinorClub", async(req, res) => {
         $regex: new RegExp('^' + club + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('minor and club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -278,7 +288,8 @@ router.get("/filterSearchMinorClub", async(req, res) => {
         $regex: new RegExp('^' + club + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('sport and club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -307,7 +318,8 @@ router.get("/filterSearchSportMinor", async(req, res) => {
         $regex: new RegExp('^' + club + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('sport and club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -336,7 +348,8 @@ router.get("/filterSearchMajorMinor", async(req, res) => {
         $regex: new RegExp('^' + major + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('sport and club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -371,7 +384,8 @@ router.get("/filterSearchNameMajorMinor", async(req, res) => {
         $regex: new RegExp('^' + name + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('major,minor,name momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -405,7 +419,8 @@ router.get("/filterSearchSportMajorMinor", async(req, res) => {
         $regex: new RegExp('^' + sport + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('sport,major,minor momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -440,7 +455,8 @@ router.get("/filterSearchSportClubMinor", async(req, res) => {
         $regex: new RegExp('^' + sport + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('sport,major,minor momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -475,7 +491,8 @@ router.get("/filterSearchMajorClubName", async(req, res) => {
         $regex: new RegExp('^' + name + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name,major,club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -512,7 +529,8 @@ router.get("/filterSearchSportClubName", async(req, res) => {
         $regex: new RegExp('^' + name + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name,major,club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -548,7 +566,8 @@ router.get("/filterSearchSportMajorName", async(req, res) => {
         $regex: new RegExp('^' + name + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name,major,sport momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -584,7 +603,8 @@ router.get("/filterSearchSportMinorName", async(req, res) => {
         $regex: new RegExp('^' + name + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name,minor,sport momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -620,7 +640,8 @@ router.get("/filterSearchClubMinorName", async(req, res) => {
         $regex: new RegExp('^' + name + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name,minor,club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -656,7 +677,8 @@ router.get("/filterSearchMajorSportClub", async(req, res) => {
         $regex: new RegExp('^' + sport + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('major,sport,club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -692,7 +714,8 @@ router.get("/filterSearchMajorMinorClub", async(req, res) => {
         $regex: new RegExp('^' + minor + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('major,sport,club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -736,7 +759,8 @@ router.get("/filterSearchNameMajorMinorSport", async(req, res) => {
         $regex: new RegExp('^' + name + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name,major,minor,sport momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -780,7 +804,8 @@ router.get("/filterSearchMajorMinorSportClub", async(req, res) => {
         $regex: new RegExp('^' + club + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('club,major,minor,sport momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -824,7 +849,8 @@ router.get("/filterSearchNameMinorSportClub", async(req, res) => {
         $regex: new RegExp('^' + club + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name,minor,sport,club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -868,7 +894,8 @@ router.get("/filterSearchNameMajorMinorClub", async(req, res) => {
         $regex: new RegExp('^' + club + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name,minor,major,club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -911,7 +938,8 @@ router.get("/filterSearchNameMajorSportClub", async(req, res) => {
         $regex: new RegExp('^' + club + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name,minor,major,club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
@@ -964,7 +992,8 @@ router.get("/filterSearchNameMajorMinorSportClub", async(req, res) => {
         $regex: new RegExp('^' + club + '.*',
             'i')
     }
-    })  .then(documents => {
+    }).limit(30)
+      .then(documents => {
         console.log('name,minor,major,club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
