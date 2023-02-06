@@ -2256,7 +2256,10 @@ router.get("/filterSearch", async(req, res) => {
     console.log('name', name);
 
 if(!major, !minor, !club, !sport){
-    await UserInfo.find({ name: name
+    await UserInfo.find({ name: {
+        $regex: new RegExp('^' + name + '.*',
+            'i')
+    }
     })  .then(documents => {
         console.log('docs yo momma', documents)
         res.status(200).json({
