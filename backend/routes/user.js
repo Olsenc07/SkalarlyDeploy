@@ -2255,9 +2255,8 @@ router.get("/filterSearch", async(req, res) => {
     console.log('sport', sport);
     console.log('name', name);
 
-
-    await UserInfo.find({major: major, minor: minor, club: club, 
-        sport: sport, name: name
+if(!major, !minor, !club, !sport){
+    await UserInfo.find({ name: name
     })  .then(documents => {
         console.log('docs yo momma', documents)
         res.status(200).json({
@@ -2270,6 +2269,8 @@ router.get("/filterSearch", async(req, res) => {
             message: 'Fetching users failed!'
         });
     });
+}
+
 });
 // Prfoile
 router.get("/infoProfile", async(req, res) => {
