@@ -214,6 +214,36 @@ router.get("/filterSearchNameSport", async(req, res) => {
     });
 
 });
+// userInfo by name and club
+router.get("/filterSearchNameClub", async(req, res) => {
+    const name = req.query.name;
+    const club = req.query.club;
+    console.log('club', club);
+    console.log('name', name);
+
+    await UserInfo.find({ name: {
+        $regex: new RegExp('^' + name + '.*',
+            'i')
+    },
+    club: {
+        $regex: new RegExp('^' + club + '.*',
+            'i')
+    }
+    }).limit(30)
+      .then(documents => {
+        console.log('name and sport momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
 // userInfo by major and sport
 router.get("/filterSearchMajorSport", async(req, res) => {
     const major = req.query.major;
