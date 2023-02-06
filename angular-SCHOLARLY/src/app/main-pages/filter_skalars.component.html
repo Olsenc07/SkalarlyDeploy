@@ -79,11 +79,13 @@
           </mat-form-field>
           </mat-tab>
           </mat-tab-group>
-          <button mat-raised-button (click)="submitFilter(searchMaj, searchMin, searchClub,
-          searchSport,searchName)">
-          <span class="material-icons search-box__icon"> search </span>
-          Search
-        </button>
+          <mat-chip-list div="searchFilter">
+            <mat-chip (click)="submitFilter(searchMaj, searchMin, searchClub,
+            searchSport,searchName)">
+            <span class="material-icons search-box__icon"> search </span>
+                Search
+            </mat-chip>
+          </mat-chip-list>
 
     </h1>
 </div>
