@@ -979,13 +979,13 @@ export class FilterSearchService {
         this.infosUpdated.next([...this.infos]);
       });
   }
-   //   name, major,minor,sport, club
-   filterSearchNameMajorMinorSportClub(
+  //   name, major,minor,sport, club
+  filterSearchNameMajorMinorSportClub(
     club: string,
     name: string,
     sport: string,
-    major: string
-    minor:string
+    major: string,
+    minor: string
   ): any {
     this.http
       .get<{ message: string; infos: any }>(
