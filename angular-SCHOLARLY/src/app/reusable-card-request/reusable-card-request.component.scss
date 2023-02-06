@@ -87,6 +87,10 @@
   width: 100%;
   height: auto;
 }
+.filterRestriction{
+  display: flex;
+  justify-content:center;
+}
 .gender {
   display: flex;
   justify-content: center;
@@ -127,6 +131,14 @@
   flex-direction: row;
   align-items: center;
 // margin-right: 1%;
+}
+.topFilter{
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  flex-direction: column;
+  // font-family: 'Cinzel',serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 .spinner {
   display: flex;

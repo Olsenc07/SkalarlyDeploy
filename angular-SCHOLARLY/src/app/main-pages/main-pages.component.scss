@@ -231,9 +231,7 @@
   flex-direction: column;
   align-items: center;
 }
-.filterRestriction{
-  display: flex;
-}
+
 .row {
   display: flex;
   flex-direction: row;
@@ -313,14 +311,7 @@
   // font-family: 'Cinzel',serif;
   font-family: 'Cormorant Garamond', serif;
 }
-.topFilter{
-  display: flex;
-  justify-content: center;
-  font-weight: 400;
-  flex-direction: column;
-  // font-family: 'Cinzel',serif;
-  font-family: 'Cormorant Garamond', serif;
-}
+
 .specificChoice {
   display: flex;
   justify-content: center;

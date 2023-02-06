@@ -795,7 +795,7 @@ export class TrendingComponent implements OnInit {
 @Component({
   selector: 'app-card-filter ',
   templateUrl: './filter_skalars.component.html',
-  styleUrls: ['./main-pages.component.scss'],
+  styleUrls: ['../reusable-card-request/reusable-card-request.component.scss'],
 })
 export class SkalarsComponent implements OnInit {
   userId: string;
