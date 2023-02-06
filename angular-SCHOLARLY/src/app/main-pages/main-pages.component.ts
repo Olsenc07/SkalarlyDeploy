@@ -836,32 +836,12 @@ export class SkalarsComponent implements OnInit {
       .getInfoUpdateListener()
       .subscribe((infos) => {
         this.infos = infos;
+        console.log('way meaner', this.infos);
       });
   }
 
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
-  }
-}
-
-// Filter friends
-@Component({
-  selector: 'app-card-filter-reusable ',
-  templateUrl: './reusable-filter_skalars.component.html',
-  styleUrls: ['./main-pages.component.scss'],
-})
-export class SkalarsFilterComponent implements OnInit {
-  private filtersSub: Subscription;
-  infos: string[] = [];
-
-  constructor(private authService: AuthService, private router: Router) {}
-
-  ngOnInit(): void {
-    this.filtersSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos) => {
-        this.infos = infos;
-      });
   }
 }
