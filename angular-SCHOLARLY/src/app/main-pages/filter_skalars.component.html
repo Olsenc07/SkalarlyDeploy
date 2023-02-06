@@ -3,25 +3,83 @@
 
     <!-- Recents text -->
     <h1 class="top" >
-        <mat-form-field class="smaller" >
-            <mat-label *ngIf="category">{{category}}</mat-label>
-            <mat-label *ngIf="!category">Category</mat-label>
-        
-            <input matInput type='text' [formControl]="category" [matAutocomplete]="auto_">
-            <mat-autocomplete #auto_="matAutocomplete">
-              <mat-option *ngFor="let category of categories" [value]="category">
-                {{category}}
-              </mat-option>
-            </mat-autocomplete>
-          </mat-form-field>
-        
-          <mat-form-field class="example-full-width">
 
-            <mat-label *ngIf="search">{{search}}</mat-label>
-            <mat-label *ngIf="!search">Category</mat-label>
-            <input matInput placeholder="Search " [formControl]="search" value="Sushi">
+
+        <mat-tab-group  mat-align-tabs="center" >
+            <mat-tab class="index" >
+             <ng-template mat-tab-label>
+               <mat-icon><span class="material-icons-two-tone">
+                 account_circle
+                 </span></mat-icon>
+               <div >Name</div>
+             </ng-template>
+        <mat-form-field class="example-full-width">
+            <mat-label >Name</mat-label>
+
+           
+            <input matInput placeholder="Name " [formControl]="searchName" >
           </mat-form-field>
-          <button mat-icon-button (click)="submitFilter(category, search)">
+
+          </mat-tab>
+          <mat-tab class="index" >
+            <ng-template mat-tab-label>
+              <mat-icon><i class="fas fa-star"> </i>
+            </mat-icon>
+              <div >Major</div>
+            </ng-template>
+        <mat-form-field class="smaller" >
+
+            <mat-label >Major</mat-label>
+        
+            <input matInput type='text' [formControl]="searchMaj" placeholder="Major ">
+
+          </mat-form-field>
+        </mat-tab>
+
+        <mat-tab class="index" >
+            <ng-template mat-tab-label>
+              <mat-icon> <i class="fas fa-star-half-alt"></i>
+            </mat-icon>
+              <div >Minor</div>
+            </ng-template>
+          <mat-form-field class="example-full-width">
+            <mat-label >Minor</mat-label>
+
+           
+            <input matInput placeholder="Minor " [formControl]="searchMin" >
+          </mat-form-field>
+          </mat-tab>
+
+          <mat-tab class="index" >
+            <ng-template mat-tab-label>
+              <mat-icon> <i class="fas fa-running"></i>
+            </mat-icon>
+              <div >Sport</div>
+            </ng-template>
+          <mat-form-field class="example-full-width">
+            <mat-label >Sport</mat-label>
+
+           
+            <input matInput placeholder="Sport " [formControl]="searchSport" >
+          </mat-form-field>
+          </mat-tab>
+
+          <mat-tab class="index" >
+            <ng-template mat-tab-label>
+              <mat-icon> <i class="fas fa-user-friends"></i>
+            </mat-icon>
+              <div >Club</div>
+            </ng-template>
+          <mat-form-field class="example-full-width">
+            <mat-label >Club</mat-label>
+
+           
+            <input matInput placeholder="Club " [formControl]="searchClub" >
+          </mat-form-field>
+          </mat-tab>
+          </mat-tab-group>
+          <button mat-icon-button (click)="submitFilter(searchMaj, searchMin, searchClub,
+          searchSport,searchName)">
           <span class="material-icons search-box__icon"> search </span>
         </button>
 

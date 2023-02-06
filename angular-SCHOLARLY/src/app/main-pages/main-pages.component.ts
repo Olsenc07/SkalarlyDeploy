@@ -805,8 +805,11 @@ export class SkalarsComponent implements OnInit {
   countVisibility = 0;
   infos: string[] = [];
 
-  search: FormControl = new FormControl('');
-  category: FormControl = new FormControl('');
+  searchMaj: FormControl = new FormControl('');
+  searchMin: FormControl = new FormControl('');
+  searchClub: FormControl = new FormControl('');
+  searchSport: FormControl = new FormControl('');
+  searchName: FormControl = new FormControl('');
 
   categories: string[] = [
     'Major',
@@ -822,9 +825,12 @@ export class SkalarsComponent implements OnInit {
     this.userId = this.authService.getUserId();
   }
 
-  submitFilter(category, search): any {
-    console.log('category', category.value);
-    console.log('search', search.value);
+  submitFilter(searchMaj, searchMin, searchClub, searchSport, searchName): any {
+    console.log('Major', searchMaj.value);
+    console.log('Minor', searchMin.value);
+    console.log('Sport', searchSport.value);
+    console.log('Club', searchClub.value);
+    console.log('Name', searchName.value);
   }
 
   navigateToPage(infoUser: string): any {
