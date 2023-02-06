@@ -83,7 +83,7 @@ Filter Skalars
           </mat-tab-group>
 
           <mat-chip-list class="searchFilter" >
-            <mat-chip [disabled]="searchClub || searchSport || searchMin || searchMaj || searchName " (click)="submitFilter(searchMaj, searchMin, searchClub,
+            <mat-chip [disabled]="searchClub.value || searchSport.value || searchMin.value || searchMaj.value || searchName.value " (click)="submitFilter(searchMaj, searchMin, searchClub,
             searchSport,searchName)" class="searchFilter_ centerItems" >
             <div class="align">
             <div class="material-icons "> search </div>
