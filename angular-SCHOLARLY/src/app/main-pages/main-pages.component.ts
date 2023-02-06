@@ -803,21 +803,12 @@ export class SkalarsComponent implements OnInit {
   isLoading = false;
   recomCounter = 0;
   countVisibility = 0;
-  infos: string[] = [];
 
   searchMaj: FormControl = new FormControl('');
   searchMin: FormControl = new FormControl('');
   searchClub: FormControl = new FormControl('');
   searchSport: FormControl = new FormControl('');
   searchName: FormControl = new FormControl('');
-
-  categories: string[] = [
-    'Major',
-    'Minor',
-    'Sport',
-    'Club',
-    'Year Of Graduation',
-  ];
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -853,5 +844,16 @@ export class SkalarsComponent implements OnInit {
   styleUrls: ['./main-pages.component.scss'],
 })
 export class SkalarsFilterComponent implements OnInit {
-  ngOnInit(): void {}
+  private filtersSub: Subscription;
+  infos: string[] = [];
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.filtersSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos) => {
+        this.infos = infos;
+      });
+  }
 }
