@@ -1,10 +1,12 @@
   <div class="entire-page">
     <div class="rightWall_">
-
+        <h1 class="top">
+Filter Skalars
+</h1>
         <div class="filterRestriction">
     <!-- Recents text -->
 
-
+<div class="center">
 
         <mat-tab-group  mat-align-tabs="center" >
             <mat-tab class="index" label="Name" >
@@ -66,11 +68,11 @@
           </mat-tab>
 
           <mat-tab class="index" label="Club">
-            <ng-template mat-tab-label>
+            <!-- <ng-template mat-tab-label>
               <mat-icon> <i class="fas fa-user-friends"></i>
             </mat-icon>
               <div >Club</div>
-            </ng-template>
+            </ng-template> -->
           <mat-form-field class="example-full-width">
 
 
@@ -82,12 +84,12 @@
 
           <mat-chip-list class="searchFilter">
             <mat-chip (click)="submitFilter(searchMaj, searchMin, searchClub,
-            searchSport,searchName)">
+            searchSport,searchName)" class="searchFilter_">
             <div class="material-icons"> search </div>
                 Search
             </mat-chip>
           </mat-chip-list>
-
+        </div>
 
 </div>
  

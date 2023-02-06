@@ -14,7 +14,7 @@ router.get("/filterSearchName", async(req, res) => {
             'i')
     }
     })  .then(documents => {
-        console.log('docs yo momma', documents)
+        console.log('name momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
             infos: documents
@@ -37,7 +37,7 @@ router.get("/filterSearchMajor", async(req, res) => {
             'i')
     }
     })  .then(documents => {
-        console.log('docs yo momma', documents)
+        console.log('major momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
             infos: documents
@@ -60,7 +60,7 @@ router.get("/filterSearchMinor", async(req, res) => {
             'i')
     }
     })  .then(documents => {
-        console.log('docs yo momma', documents)
+        console.log('minor momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
             infos: documents
@@ -83,7 +83,7 @@ router.get("/filterSearchSport", async(req, res) => {
             'i')
     }
     })  .then(documents => {
-        console.log('docs yo momma', documents)
+        console.log('sport momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
             infos: documents
@@ -106,7 +106,7 @@ router.get("/filterSearchClub", async(req, res) => {
             'i')
     }
     })  .then(documents => {
-        console.log('docs yo momma', documents)
+        console.log('club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
             infos: documents

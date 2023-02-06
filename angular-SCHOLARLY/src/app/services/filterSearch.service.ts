@@ -21,12 +21,12 @@ export class FilterSearchService {
     return this.infosUpdated.asObservable();
   }
 
-  filterSearchName(searchName: string): any {
+  filterSearchName(name: string): any {
     this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchName',
         {
-          params: { searchName },
+          params: { name },
         }
       )
       .pipe(
@@ -52,12 +52,12 @@ export class FilterSearchService {
       });
   }
   //   Major
-  filterSearchMajor(searchMajor: string): any {
+  filterSearchMajor(major: string): any {
     this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMajor',
         {
-          params: { searchMajor },
+          params: { major },
         }
       )
       .pipe(
@@ -83,12 +83,12 @@ export class FilterSearchService {
       });
   }
   //   Minor
-  filterSearchMinor(searchMinor: string): any {
+  filterSearchMinor(minor: string): any {
     this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMinor',
         {
-          params: { searchMinor },
+          params: { minor },
         }
       )
       .pipe(
@@ -114,12 +114,12 @@ export class FilterSearchService {
       });
   }
   //   Major
-  filterSearchSport(searchSport: string): any {
+  filterSearchSport(sport: string): any {
     this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchSport',
         {
-          params: { searchSport },
+          params: { sport },
         }
       )
       .pipe(
@@ -145,12 +145,12 @@ export class FilterSearchService {
       });
   }
   //   Club
-  filterSearchClub(searchClub: string): any {
+  filterSearchClub(club: string): any {
     this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchClub',
         {
-          params: { searchClub },
+          params: { club },
         }
       )
       .pipe(

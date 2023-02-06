@@ -131,7 +131,7 @@
 }
 .example-full-width{
   display: flex;
-  width: 100%;
+  width: 100% !important;
 }
 .left {
   display: flex;
@@ -295,7 +295,14 @@
 }
 .searchFilter{
   display: flex;
-  justify-content: center;
+  align-items: center;
+
+}
+.searchFilter_{
+  display: flex;
+  align-items: center;
+  background-color: #10173a!important;
+  color: white !important;
 }
 ::ng-deep .mat-tab-label {
   color: #7e7171;
