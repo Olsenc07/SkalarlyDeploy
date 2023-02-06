@@ -231,7 +231,7 @@ router.get("/filterSearchNameClub", async(req, res) => {
     }
     }).limit(30)
       .then(documents => {
-        console.log('name and sport momma', documents)
+        console.log('name and club momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
             infos: documents
