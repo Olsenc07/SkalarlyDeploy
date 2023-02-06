@@ -15,7 +15,7 @@ const https = require('http');
 const webpush = require('web-push');
 const payload = {
 notification: {
-  body: 'You will now recieve notifations',
+  body: 'You will now recieve notifications',
   icon: '/angular-SCHOLARLY/src/faviconH.ico',
   image: '../../assets/Pics/Skalarly jpeg 2 (hat & logo).png',
   vibrate: [100, 50, 100],
