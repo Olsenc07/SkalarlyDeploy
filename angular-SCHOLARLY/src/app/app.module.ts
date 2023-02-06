@@ -131,6 +131,7 @@ import { ClassListServiceFM } from './services/classFM.service';
 import { ClassListServiceNZ } from './services/classNZ.service';
 
 import { AuthService } from './services/auth.service';
+import { FilterSearchService } from './services/filterSearch.service';
 import { AuthServiceEdit } from './services/edit.service';
 import { AuthServiceEditCourse } from './services/editCourse.service';
 import { AuthServiceEditNext } from './services/editNextCourse.service';
@@ -261,6 +262,7 @@ import { ErrorInterceptor } from './error-interceptor';
     ClassListServiceFM,
     ClassListServiceNZ,
     AuthService,
+    FilterSearchService,
     AuthServiceEdit,
     AuthServiceEditCourse,
     AuthServiceEditNext,

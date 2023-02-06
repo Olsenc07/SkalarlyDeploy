@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Post, PostService } from '../services/post.service';
 import { AuthService } from '../services/auth.service';
+import { FilterSearchService } from '../services/filterSearch.service';
+
 import {
   MatBottomSheet,
   MatBottomSheetRef,
@@ -813,30 +815,36 @@ export class SkalarsComponent implements OnInit {
   searchSport: FormControl = new FormControl('');
   searchName: FormControl = new FormControl('');
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private filterSearchService: FilterSearchService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
   }
 
   submitFilter(searchMaj, searchMin, searchClub, searchSport, searchName): any {
+    const name = searchName.value;
+    const major = searchMaj.value;
+    const minor = searchMin.value;
+    const sport = searchSport.value;
+    const club = searchClub.value;
+
     console.log('Major', searchMaj.value);
     console.log('Minor', searchMin.value);
     console.log('Sport', searchSport.value);
     console.log('Club', searchClub.value);
     console.log('Name', searchName.value);
-    this.authService.filterSearch(
-      searchMaj.value,
-      searchMin.value,
-      searchClub.value,
-      searchSport.value,
-      searchName.value
-    );
-    this.filtersSub = this.authService
+    if (!major && !minor && !sport && !club) {
+      this.filterSearchService.filterSearchName(name);
+    }
+    this.filtersSub = this.filterSearchService
       .getInfoUpdateListener()
       .subscribe((infos) => {
         this.infos = infos;
-        console.log('way meaner', this.infos);
+        console.log('way nicer', this.infos);
       });
   }
 

@@ -48,6 +48,8 @@ const options = {
  const userRoutes = require('/app/backend/routes/user');
  const messageRoutes = require('/app/backend/routes/messages')
  const followRoutes = require('/app/backend/routes/follow')
+ const filterSearchRoutes = require('/app/backend/routes/filterSearch')
+
  const subscribeRoutes = require('/app/backend/routes/subscriptions')
 
  const UserInfo = require('/app/backend/models/userInfo');
@@ -211,6 +213,8 @@ app.use("/api/user", userRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/messages", messageRoutes);
 app.use("/api/follow", followRoutes);
+app.use("/api/filterSearch", filterSearchRoutes);
+
 app.use("/api/subscribe", subscribeRoutes);
 
 // app.use('/api/worker.js', serviceWorkerRegister);
