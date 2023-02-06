@@ -131,7 +131,8 @@ router.get("/filterSearchNameMajor", async(req, res) => {
     console.log('major', major);
     console.log('name', name);
 
-    await UserInfo.find({ name: {
+    await UserInfo.find({ $and:[{
+        name: {
         $regex: new RegExp('^' + name + '.*',
             'i')
     },
@@ -139,7 +140,7 @@ router.get("/filterSearchNameMajor", async(req, res) => {
         $regex: new RegExp('^' + major + '.*',
             'i')
     }
-    }).limit(30)
+ } ]}).limit(30)
       .then(documents => {
         console.log('major and name momma', documents)
         res.status(200).json({
