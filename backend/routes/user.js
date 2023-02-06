@@ -2249,10 +2249,17 @@ router.get("/filterSearch", async(req, res) => {
     const club = req.query.searchClub;
     const sport = req.query.searchSport;
     const name = req.query.searchName;
+    console.log('major', major);
+    console.log('minor', minor);
+    console.log('club', club);
+    console.log('sport', sport);
+    console.log('name', name);
+
 
     await UserInfo.find({major: major, minor: minor, club: club, 
         sport: sport, name: name
     })  .then(documents => {
+        console.log('docs yo momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
             infos: documents
