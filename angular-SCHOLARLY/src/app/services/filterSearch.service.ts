@@ -485,4 +485,318 @@ export class FilterSearchService {
         this.infosUpdated.next([...this.infos]);
       });
   }
+  //  name,major,minor
+  filterSearchNameMajorMinor(name: string, major: string, minor: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchNameMajorMinor',
+        {
+          params: { name, major, minor },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //  sport,major,minor
+  filterSearchSportMajorMinor(
+    sport: string,
+    major: string,
+    minor: string
+  ): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchSportMajorMinor',
+        {
+          params: { sport, major, minor },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //  sport,club,minor
+  filterSearchSportClubMinor(sport: string, club: string, minor: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchSportClubMinor',
+        {
+          params: { sport, club, minor },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //  sport,club,major
+  filterSearchMajorClubName(major: string, club: string, name: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchMajorClubName',
+        {
+          params: { major, club, name },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //  sport,club,name
+  filterSearchSportClubName(sport: string, club: string, name: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchSportClubName',
+        {
+          params: { sport, club, name },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //  sport,club,major
+  filterSearchSportMajorName(sport: string, major: string, name: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchSportMajorName',
+        {
+          params: { sport, major, name },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //  sport,club,minor
+  filterSearchSportMinorName(sport: string, minor: string, name: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchSportMinorName',
+        {
+          params: { sport, minor, name },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //  name,club,minor
+  filterSearchClubMinorName(club: string, minor: string, name: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchClubMinorName',
+        {
+          params: { club, minor, name },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //  major,sport,club
+  filterSearchMajorSportClub(major: string, sport: string, club: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchMajorSportClub',
+        {
+          params: { major, sport, club },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //  major,minor,club
+  filterSearchMajorMinorClub(major: string, minor: string, club: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchMajorMinorClub',
+        {
+          params: { major, minor, club },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
 }
