@@ -831,6 +831,13 @@ export class SkalarsComponent implements OnInit {
     console.log('Sport', searchSport.value);
     console.log('Club', searchClub.value);
     console.log('Name', searchName.value);
+    this.authService.filterSearch(
+      searchMaj.value,
+      searchMin.value,
+      searchClub.value,
+      searchSport.value,
+      searchName.value
+    );
   }
 
   navigateToPage(infoUser: string): any {

@@ -2241,6 +2241,29 @@ router.get("/info", async(req, res) => {
             });
         });
 });
+
+// userInfo recieving
+router.get("/filterSearch", async(req, res) => {
+    const major = req.query.searchMaj;
+    const minor = req.query.searchMin;
+    const club = req.query.searchClub;
+    const sport = req.query.searchSport;
+    const name = req.query.searchName;
+
+    await UserInfo.find({major: major, minor: minor, club: club, 
+        sport: sport, name: name
+    })  .then(documents => {
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+});
 // Prfoile
 router.get("/infoProfile", async(req, res) => {
     await UserInfo.find({Creator: req.query.userId})
