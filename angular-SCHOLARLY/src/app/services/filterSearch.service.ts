@@ -392,4 +392,66 @@ export class FilterSearchService {
         this.infosUpdated.next([...this.infos]);
       });
   }
+  //   sport and club
+  filterSearchSportClub(sport: string, club: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchSportClub',
+        {
+          params: { sport, club },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
+  //   sport and club
+  filterSearchSportMinor(sport: string, minor: string): any {
+    this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/filter/filterSearchSportMinor',
+        {
+          params: { sport, minor },
+        }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos.map((info) => {
+            return {
+              id: info._id,
+              username: info.username,
+              name: info.name,
+              major: info.major,
+              minor: info.minor,
+              sport: info.sport,
+              club: info.club,
+              ProfilePicPath: info.ProfilePicPath,
+              Creator: info.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdated.next([...this.infos]);
+      });
+  }
 }
