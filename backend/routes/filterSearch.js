@@ -321,5 +321,34 @@ router.get("/filterSearchSportMinor", async(req, res) => {
     });
 
 });
+// userInfo by major and minor
+router.get("/filterSearchMajorMinor", async(req, res) => {
+    const minor = req.query.minor;
+    const major = req.query.major;
+    console.log('minor', minor);
+    console.log('major', major);
+
+    await UserInfo.find({ minor: {
+        $regex: new RegExp('^' + minor + '.*',
+            'i')
+    },
+    major: {
+        $regex: new RegExp('^' + major + '.*',
+            'i')
+    }
+    })  .then(documents => {
+        console.log('sport and club momma', documents)
+        res.status(200).json({
+            message: 'Filter search fetched succesfully!',
+            infos: documents
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching users failed!'
+        });
+    });
+
+});
 module.exports = router;
 
