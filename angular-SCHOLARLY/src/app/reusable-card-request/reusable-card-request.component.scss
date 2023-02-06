@@ -1,4 +1,13 @@
-
+::ng-deep .mat-tab-label {
+  color: #7e7171;
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 900;
+}
+::ng-deep .mat-tab-header {
+  // font-family: 'Cinzel', serif;
+  font-family: 'Cormorant Garamond', serif;
+}
 .btn {
   display: flex;
   font-size: xx-large;
@@ -46,7 +55,10 @@
   display: flex;
   flex-direction: row;
 }
-
+.example-full-width{
+  display: flex;
+  width: 100% ;
+}
 .large {
   font-size: small;
   // font-family:  'Poppins', sans-serif;
@@ -132,6 +144,17 @@
   align-items: center;
 // margin-right: 1%;
 }
+.searchFilter{
+  display: flex;
+  align-items: center;
+
+}
+.searchFilter_{
+  display: flex;
+  align-items: center;
+  background-color: #10173a!important;
+  color: white !important;
+}
 .topFilter{
   display: flex;
   justify-content: center;
@@ -178,6 +201,17 @@ background-color: #10173a !important;
   color: #7e7171;
   text-align: center;
   // color: #7e7171;
+}
+.top {
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+  font-weight: 400;
+  flex-direction: row;
+  margin-bottom: 1%;
+  color: #7e7171;
+  // font-family: 'Cinzel',serif;
+  font-family: 'Cormorant Garamond', serif;
 }
 // }
 // @media (max-width: 500px) {

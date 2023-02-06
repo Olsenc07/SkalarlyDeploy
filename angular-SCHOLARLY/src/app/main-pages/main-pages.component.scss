@@ -129,10 +129,7 @@
 .expandBtn {
   font-size: x-large;
 }
-.example-full-width{
-  display: flex;
-  width: 100% !important;
-}
+
 .left {
   display: flex;
   justify-content: center;
@@ -293,27 +290,8 @@
     margin-top: 2%;
   }
 }
-.searchFilter{
-  display: flex;
-  align-items: center;
 
-}
-.searchFilter_{
-  display: flex;
-  align-items: center;
-  background-color: #10173a!important;
-  color: white !important;
-}
-::ng-deep .mat-tab-label {
-  color: #7e7171;
-  // font-family: 'Cinzel', serif;
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 900;
-}
-::ng-deep .mat-tab-header {
-  // font-family: 'Cinzel', serif;
-  font-family: 'Cormorant Garamond', serif;
-}
+
 .text {
   justify-content: center;
   display: flex;
