@@ -83,7 +83,7 @@ router.get("/filterSearchSport", async(req, res) => {
     console.log('sport', sport);
 
     await UserInfo.find({ sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     }
     }).limit(30)
