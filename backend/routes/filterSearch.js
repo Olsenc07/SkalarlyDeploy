@@ -10,7 +10,7 @@ router.get("/filterSearchName", async(req, res) => {
     console.log('name', name);
 // Just name
     await UserInfo.find({ name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     }
     })
@@ -35,7 +35,7 @@ router.get("/filterSearchMajor", async(req, res) => {
     console.log('major', major);
 // Just name
     await UserInfo.find({ major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     }
     }).limit(30) 
@@ -59,7 +59,7 @@ router.get("/filterSearchMinor", async(req, res) => {
     console.log('minor', minor);
 
     await UserInfo.find({ minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     }
     }).limit(30)
@@ -107,7 +107,7 @@ router.get("/filterSearchClub", async(req, res) => {
     console.log('club', club);
 
     await UserInfo.find({ club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
     }).limit(30)
@@ -135,7 +135,7 @@ router.get("/filterSearchNameMajor", async(req, res) => {
     await UserInfo.find({ 
         $and:[{
         name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     }},
    { major: {
@@ -167,11 +167,11 @@ router.get("/filterSearchNameMinor", async(req, res) => {
     await UserInfo.find({ 
         $and:[{
             name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     },
     minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     }
 }]
@@ -200,11 +200,11 @@ router.get("/filterSearchNameSport", async(req, res) => {
     await UserInfo.find({ 
         $and:[{
             name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     },
     sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     }
 }]  }).limit(30)
@@ -232,11 +232,11 @@ router.get("/filterSearchNameClub", async(req, res) => {
     await UserInfo.find({ 
         $and:[{
             name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
 }]
@@ -264,11 +264,11 @@ router.get("/filterSearchMajorSport", async(req, res) => {
 
     await UserInfo.find({
         $and:[{ major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     }
 }]
@@ -295,11 +295,11 @@ router.get("/filterSearchMajorClub", async(req, res) => {
 
     await UserInfo.find({
         $and:[{ major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
 }]
@@ -327,11 +327,11 @@ router.get("/filterSearchMinorClub", async(req, res) => {
 
     await UserInfo.find({
         $and:[{ minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
 }]
@@ -351,7 +351,7 @@ router.get("/filterSearchMinorClub", async(req, res) => {
 
 });
 // userInfo by sport and club
-router.get("/filterSearchMinorClub", async(req, res) => {
+router.get("/filterSearchSportClub", async(req, res) => {
     const sport = req.query.sport;
     const club = req.query.club;
     console.log('sport', sport);
@@ -359,11 +359,11 @@ router.get("/filterSearchMinorClub", async(req, res) => {
 
     await UserInfo.find({ 
         $and:[{ sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
 }]
@@ -391,11 +391,11 @@ router.get("/filterSearchSportMinor", async(req, res) => {
 
     await UserInfo.find({  $and:[{
          minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
 }]
@@ -423,11 +423,11 @@ router.get("/filterSearchMajorMinor", async(req, res) => {
 
     await UserInfo.find({ $and:[{
          minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     }
 }]
@@ -457,15 +457,15 @@ router.get("/filterSearchNameMajorMinor", async(req, res) => {
 
     await UserInfo.find({ $and:[{
          minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     }
 }]
@@ -494,15 +494,15 @@ router.get("/filterSearchSportMajorMinor", async(req, res) => {
 
     await UserInfo.find({ $and:[{
          minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     }
 }]
@@ -533,15 +533,15 @@ router.get("/filterSearchSportClubMinor", async(req, res) => {
 
 
     await UserInfo.find({ $and:[{ minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     },
     sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     }
 }]
@@ -570,15 +570,15 @@ router.get("/filterSearchMajorClubName", async(req, res) => {
     console.log('major', major);
 
     await UserInfo.find({ $and:[{ major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     }
 }]
@@ -609,15 +609,15 @@ router.get("/filterSearchSportClubName", async(req, res) => {
     console.log('name', name);
 
     await UserInfo.find({ $and:[{ sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     }
 }]
@@ -647,15 +647,15 @@ router.get("/filterSearchSportMajorName", async(req, res) => {
     console.log('name', name);
 
     await UserInfo.find({ $and:[{ sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     },
     major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     }
 }]
@@ -686,15 +686,15 @@ router.get("/filterSearchSportMinorName", async(req, res) => {
 
     await UserInfo.find({ $and:[{
          sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     },
     minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     }
 }]
@@ -724,15 +724,15 @@ router.get("/filterSearchClubMinorName", async(req, res) => {
     console.log('name', name);
 
     await UserInfo.find({ $and:[{ club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     },
     minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     }
 }]
@@ -762,15 +762,15 @@ router.get("/filterSearchMajorSportClub", async(req, res) => {
     console.log('sport', sport);
 
     await UserInfo.find({ $and:[{ club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     },
     major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     }
 }]
@@ -800,15 +800,15 @@ router.get("/filterSearchMajorMinorClub", async(req, res) => {
     console.log('minor', minor);
 
     await UserInfo.find({ $and:[{ club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     },
     major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     }
 }]
@@ -843,19 +843,19 @@ router.get("/filterSearchNameMajorMinorSport", async(req, res) => {
 
     await UserInfo.find({ $and:[{
          sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     },
     major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     }
 }]
@@ -889,19 +889,19 @@ router.get("/filterSearchMajorMinorSportClub", async(req, res) => {
     console.log('minor', minor);
 
     await UserInfo.find({ $and:[{ sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     },
     major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
 }]
@@ -935,19 +935,19 @@ router.get("/filterSearchNameMinorSportClub", async(req, res) => {
     console.log('minor', minor);
 
     await UserInfo.find({ $and:[{ sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     },
     minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
 }]
@@ -981,19 +981,19 @@ router.get("/filterSearchNameMajorMinorClub", async(req, res) => {
     console.log('minor', minor);
 
     await UserInfo.find({ $and:[{ major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     },
     minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
 }]
@@ -1026,19 +1026,19 @@ router.get("/filterSearchNameMajorSportClub", async(req, res) => {
     console.log('sport', sport);
 
     await UserInfo.find({ $and:[{ major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     },
     sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
 }]
@@ -1077,23 +1077,23 @@ router.get("/filterSearchNameMajorMinorSportClub", async(req, res) => {
 
 
     await UserInfo.find({ $and:[{ major: {
-        $regex: new RegExp('^' + major + '.*',
+        $regex: new RegExp('.*' + major + '.*',
             'i')
     },
     minor: {
-        $regex: new RegExp('^' + minor + '.*',
+        $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
     name: {
-        $regex: new RegExp('^' + name + '.*',
+        $regex: new RegExp('.*' + name + '.*',
             'i')
     },
     sport: {
-        $regex: new RegExp('^' + sport + '.*',
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     },
     club: {
-        $regex: new RegExp('^' + club + '.*',
+        $regex: new RegExp('.*' + club + '.*',
             'i')
     }
 }]
