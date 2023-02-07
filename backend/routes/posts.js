@@ -86,6 +86,46 @@ router.get("/feed", async(req, res, next) => {
         });
     });
 });
+// Hashtag Page
+router.get("/hashtagPage", async(req, res, next) => {
+    const counter = req.query.counter;
+    const hashtag = req.query.hashtag;
+    await Post.find({
+        $or:[{
+            Hashtag1: {
+           $regex: new RegExp('.*' + hashtag + '.*',
+               'i')
+       },
+       Hashtag2: {
+           $regex: new RegExp('.*' + hashtag + '.*',
+               'i')
+       },
+       Hashtag3: {
+        $regex: new RegExp('.*' + hashtag + '.*',
+            'i')
+    }, Hashtag4: {
+        $regex: new RegExp('.*' + hashtag + '.*',
+            'i')
+    }, Hashtag5: {
+        $regex: new RegExp('.*' + hashtag + '.*',
+            'i')
+    }
+   }]
+       }).sort({_id:-1}).skip(counter).limit(6)
+       .then(docs => {
+        res.status(200).json({
+            message: 'Hashtag feed fetched succesfully!',
+            posts: docs
+   });
+})  
+.catch(error => {
+    res.status(500).json({
+        message: 'Fetching feed posts failed!'
+    });
+});
+
+})
+
 
 
 router.get("/sharedPosts", async(req, res) => {

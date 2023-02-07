@@ -41,6 +41,7 @@ import {
   LargeFriendsFeedComponent,
   TrendingComponent,
   SkalarsComponent,
+  HashtagCardComponent,
 } from './main-pages/main-pages.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { AuthGuard } from './signup/auth.guard';
@@ -89,7 +90,11 @@ const routes: Routes = [
     component: LargeFriendsFeedComponent,
     canActivate: [AuthGuard],
   },
-
+  {
+    path: 'hashtag',
+    component: HashtagCardComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'trending', component: TrendingComponent, canActivate: [AuthGuard] },
   {
     path: 'filterSkalars',
