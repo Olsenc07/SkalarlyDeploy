@@ -863,28 +863,28 @@ export class SkalarsComponent implements OnInit {
       console.log('0');
     }
     // Name
-    if (!major && !minor && !sport && !club) {
+    if (!major && !minor && !sport && !club && name.length !== 0) {
       this.filterSearchService.filterSearchName(name);
 
       console.log('1');
     }
     // Major
-    if (!name && !minor && !sport && !club) {
+    if (!name && !minor && !sport && !club && major.length !== 0) {
       this.filterSearchService.filterSearchMajor(major);
       console.log('2');
     }
     // Minor
-    if (!major && !name && !sport && !club) {
+    if (!major && !name && !sport && !club && minor.length !== 0) {
       this.filterSearchService.filterSearchMinor(minor);
       console.log('3');
     }
     // Sport
-    if (!major && !minor && !name && !club) {
+    if (!major && !minor && !name && !club && sport.length !== 0) {
       this.filterSearchService.filterSearchSport(sport);
       console.log('4');
     }
     // Club
-    if (!major && !minor && !sport && !name) {
+    if (!major && !minor && !sport && !name && club.length !== 0) {
       this.filterSearchService.filterSearchClub(club);
       console.log('5');
     }
@@ -1160,7 +1160,5 @@ export class SkalarsComponent implements OnInit {
   styleUrls: ['./main-pages.component.scss'],
 })
 export class LargeFriendsFeedComponent implements OnInit {
-ngOnInit(): void {
-  
-}
+  ngOnInit(): void {}
 }
