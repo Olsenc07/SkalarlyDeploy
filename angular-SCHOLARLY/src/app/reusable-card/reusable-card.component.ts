@@ -222,6 +222,11 @@ export class ReusableCardComponent implements OnInit {
     });
     console.log('user', this.user);
   }
+
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+  }
+
   commentsValidatorFunc(postId: string): void {
     this.commentsValidator = postId;
     this.comment.setValue('');
