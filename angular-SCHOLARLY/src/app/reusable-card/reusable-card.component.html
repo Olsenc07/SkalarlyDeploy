@@ -211,17 +211,29 @@
           {{post.postDescription}}
         </div>
 <div class="HashTags" *ngIf="post.Hashtag1">
+  <button mat-button (click)="navToHashTag(post.Hashtag1)">
 {{post.Hashtag1}}
+</button>
 </div>
 <div class="HashTags" *ngIf="post.Hashtag2">
+  <button mat-button (click)="navToHashTag(post.Hashtag2)">
   {{post.Hashtag2}}
-  </div><div class="HashTags" *ngIf="post.Hashtag3">
+  </button>
+  </div>
+  <div class="HashTags" *ngIf="post.Hashtag3">
+  <button mat-button (click)="navToHashTag(post.Hashtag3)">
     {{post.Hashtag3}}
-    </div><div class="HashTags" *ngIf="post.Hashtag4">
+    </button>
+    </div>
+    <div class="HashTags" *ngIf="post.Hashtag4">
+  <button mat-button (click)="navToHashTag(post.Hashtag4)">
       {{post.Hashtag4}}
+      </button>
       </div>
       <div class="HashTags" *ngIf="post.Hashtag5">
+  <button mat-button (click)="navToHashTag(post.Hashtag5)">
         {{post.Hashtag5}}
+        </button>
         </div>
       </div>
 
