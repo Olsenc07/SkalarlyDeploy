@@ -1201,5 +1201,30 @@ export class HashtagComponent implements OnInit {
   styleUrls: ['./main-pages.component.scss'],
 })
 export class HashtagCardComponent implements OnInit {
-  ngOnInit() {}
+  hashtag: string;
+  posts: Post[] = [];
+  private postsSub: Subscription;
+  isLoading = false;
+
+  constructor(
+    private bottomSheet: MatBottomSheet,
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    public postService: PostService
+  ) {}
+  ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      console.log('params hashtag page', params);
+      this.hashtag = params?.hashtag;
+
+      this.postService.getPostsHashtagPage(this.hashtag, 0);
+      this.postsSub = this.postService
+        .getPostUpdateListener()
+        .subscribe((posts: Post[]) => {
+          this.posts = posts;
+          this.isLoading = false;
+        });
+    });
+  }
 }
