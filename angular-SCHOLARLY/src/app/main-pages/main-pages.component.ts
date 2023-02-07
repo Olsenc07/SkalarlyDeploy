@@ -1091,10 +1091,10 @@ export class SkalarsComponent implements OnInit {
       club.length !== 0
     ) {
       this.filterSearchService.filterSearchNameMajorMinorClub(
+        club,
         name,
         minor,
-        major,
-        club
+        major
       );
       console.log('29');
     }
@@ -1107,20 +1107,20 @@ export class SkalarsComponent implements OnInit {
       sport.length !== 0
     ) {
       this.filterSearchService.filterSearchNameMajorSportClub(
+        club,
         name,
         sport,
-        major,
-        club
+        major
       );
       console.log('30');
     }
     if (name && major && minor && sport && club) {
       this.filterSearchService.filterSearchNameMajorMinorSportClub(
+        club,
         name,
-        major,
-        minor,
         sport,
-        club
+        major,
+        minor
       );
       console.log('31');
     }
