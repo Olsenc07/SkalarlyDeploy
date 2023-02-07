@@ -127,8 +127,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   Hashtag4: FormControl = new FormControl('');
   Hashtag5: FormControl = new FormControl('');
 
-  date: FormControl = new FormControl('');
-  dateE: FormControl = new FormControl('');
+  // date: FormControl = new FormControl('');
+  // dateE: FormControl = new FormControl('');
   time: FormControl = new FormControl('');
   firstNumbers = this.time.value.split(':');
   firstNumber = Number(this.firstNumbers[0]);
