@@ -873,16 +873,16 @@ export class FilterSearchService {
   }
   //  major,minor,sport,club
   filterSearchNameMinorSportClub(
-    club: string,
     name: string,
     minor: string,
-    sport: string
+    sport: string,
+    club: string
   ): any {
     this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameMinorSportClub',
         {
-          params: { club, name, minor, sport },
+          params: { name, minor, sport, club },
         }
       )
       .pipe(
