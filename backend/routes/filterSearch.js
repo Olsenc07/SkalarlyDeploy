@@ -62,7 +62,7 @@ router.get("/filterSearchMinor", async(req, res) => {
         $regex: new RegExp('.*' + minor + '.*',
             'i')
     }
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('minor momma', documents)
         res.status(200).json({
@@ -86,7 +86,7 @@ router.get("/filterSearchSport", async(req, res) => {
         $regex: new RegExp('.*' + sport + '.*',
             'i')
     }
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('sport momma', documents)
         res.status(200).json({
@@ -110,7 +110,7 @@ router.get("/filterSearchClub", async(req, res) => {
         $regex: new RegExp('.*' + club + '.*',
             'i')
     }
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('club momma', documents)
         res.status(200).json({
@@ -142,7 +142,7 @@ router.get("/filterSearchNameMajor", async(req, res) => {
         $regex: new RegExp('^' + major + '.*',
             'i')
     }}
- ]}).limit(30)
+ ]}).limit(20)
       .then(documents => {
         console.log('major and name momma', documents)
         res.status(200).json({
@@ -175,7 +175,7 @@ router.get("/filterSearchNameMinor", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name and minor momma', documents)
         res.status(200).json({
@@ -207,7 +207,7 @@ router.get("/filterSearchNameSport", async(req, res) => {
         $regex: new RegExp('.*' + sport + '.*',
             'i')
     }
-}]  }).limit(30)
+}]  }).limit(20)
       .then(documents => {
         console.log('name and sport momma', documents)
         res.status(200).json({
@@ -240,7 +240,7 @@ router.get("/filterSearchNameClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name and club momma', documents)
         res.status(200).json({
@@ -272,7 +272,7 @@ router.get("/filterSearchMajorSport", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
      .then(documents => {
         console.log('major and sport momma', documents)
         res.status(200).json({
@@ -303,7 +303,7 @@ router.get("/filterSearchMajorClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('major and club momma', documents)
         res.status(200).json({
@@ -335,7 +335,7 @@ router.get("/filterSearchMinorClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('minor and club momma', documents)
         res.status(200).json({
@@ -367,7 +367,7 @@ router.get("/filterSearchSportClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('sport and club momma', documents)
         res.status(200).json({
@@ -399,7 +399,7 @@ router.get("/filterSearchSportMinor", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('sport and club momma', documents)
         res.status(200).json({
@@ -431,7 +431,7 @@ router.get("/filterSearchMajorMinor", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('sport and club momma', documents)
         res.status(200).json({
@@ -469,7 +469,7 @@ router.get("/filterSearchNameMajorMinor", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('major,minor,name momma', documents)
         res.status(200).json({
@@ -506,7 +506,7 @@ router.get("/filterSearchSportMajorMinor", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('sport,major,minor momma', documents)
         res.status(200).json({
@@ -545,7 +545,7 @@ router.get("/filterSearchSportClubMinor", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('sport,club,minor momma', documents)
         res.status(200).json({
@@ -582,7 +582,7 @@ router.get("/filterSearchMajorClubName", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name,major,club momma', documents)
         res.status(200).json({
@@ -621,7 +621,7 @@ router.get("/filterSearchSportClubName", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name,major,club momma', documents)
         res.status(200).json({
@@ -659,7 +659,7 @@ router.get("/filterSearchSportMajorName", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name,major,sport momma', documents)
         res.status(200).json({
@@ -698,7 +698,7 @@ router.get("/filterSearchSportMinorName", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name,minor,sport momma', documents)
         res.status(200).json({
@@ -736,7 +736,7 @@ router.get("/filterSearchClubMinorName", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name,minor,club momma', documents)
         res.status(200).json({
@@ -774,7 +774,7 @@ router.get("/filterSearchMajorSportClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('major,sport,club momma', documents)
         res.status(200).json({
@@ -812,7 +812,7 @@ router.get("/filterSearchMajorMinorClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('major,sport,club momma', documents)
         res.status(200).json({
@@ -859,7 +859,7 @@ router.get("/filterSearchNameMajorMinorSport", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name,major,minor,sport momma', documents)
         res.status(200).json({
@@ -905,7 +905,7 @@ router.get("/filterSearchMajorMinorSportClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('club,major,minor,sport momma', documents)
         res.status(200).json({
@@ -951,7 +951,7 @@ router.get("/filterSearchNameMinorSportClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name,minor,sport,club momma', documents)
         res.status(200).json({
@@ -997,7 +997,7 @@ router.get("/filterSearchNameMajorMinorClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name,minor,major,club momma', documents)
         res.status(200).json({
@@ -1042,7 +1042,7 @@ router.get("/filterSearchNameMajorSportClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name,minor,major,club momma', documents)
         res.status(200).json({
@@ -1097,7 +1097,7 @@ router.get("/filterSearchNameMajorMinorSportClub", async(req, res) => {
             'i')
     }
 }]
-    }).limit(30)
+    }).limit(20)
       .then(documents => {
         console.log('name,minor,major,club momma', documents)
         res.status(200).json({

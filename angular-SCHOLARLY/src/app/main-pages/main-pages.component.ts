@@ -825,6 +825,21 @@ export class SkalarsComponent implements OnInit {
     this.userId = this.authService.getUserId();
   }
 
+  clearName() {
+    this.searchName.setValue('');
+  }
+  clearMaj() {
+    this.searchMaj.setValue('');
+  }
+  clearMin() {
+    this.searchMin.setValue('');
+  }
+  clearSport() {
+    this.searchSport.setValue('');
+  }
+  clearClub() {
+    this.searchClub.setValue('');
+  }
   submitFilter(searchMaj, searchMin, searchClub, searchSport, searchName): any {
     const name = searchName.value;
     const major = searchMaj.value;

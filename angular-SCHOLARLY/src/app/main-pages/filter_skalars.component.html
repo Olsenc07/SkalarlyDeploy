@@ -21,6 +21,9 @@ Filter Skalars
 
            
             <input matInput placeholder="Name " [formControl]="searchName" >
+            <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear Value" type="button" (click)="clearName()">
+              <mat-icon class="asthetic-adds">close</mat-icon>
+            </button>
           </mat-form-field>
 
           </mat-tab>
@@ -35,7 +38,9 @@ Filter Skalars
 
         
             <input matInput type='text' [formControl]="searchMaj" placeholder="Major ">
-
+            <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear Value" type="button" (click)="clearMaj()">
+              <mat-icon class="asthetic-adds">close</mat-icon>
+            </button>
           </mat-form-field>
         </mat-tab>
 
@@ -50,6 +55,9 @@ Filter Skalars
 
            
             <input matInput placeholder="Minor " [formControl]="searchMin" >
+            <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear Value" type="button" (click)="clearMin()">
+              <mat-icon class="asthetic-adds">close</mat-icon>
+            </button>
           </mat-form-field>
           </mat-tab>
 
@@ -64,6 +72,9 @@ Filter Skalars
 
            
             <input matInput placeholder="Sport " [formControl]="searchSport" >
+            <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear Value" type="button" (click)="clearSport()">
+              <mat-icon class="asthetic-adds">close</mat-icon>
+            </button>
           </mat-form-field>
           </mat-tab>
 
@@ -78,6 +89,9 @@ Filter Skalars
 
            
             <input matInput placeholder="Club " [formControl]="searchClub" >
+            <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear Value" type="button" (click)="clearClub()">
+              <mat-icon class="asthetic-adds">close</mat-icon>
+            </button>
           </mat-form-field>
           </mat-tab>
           </mat-tab-group>
