@@ -28,6 +28,11 @@ export interface Post {
   nopaymentService: string;
   virtual: string;
   event: string;
+  Hashtag1: string;
+  Hashtag2: string;
+  Hashtag3: string;
+  Hashtag4: string;
+  Hashtag5: string;
   upload: File;
   video: File;
   ImagePath: string;
@@ -88,6 +93,11 @@ export class PostService {
               nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
+              Hashtag1: post.Hashtag1,
+              Hashtag2: post.Hashtag2,
+              Hashtag3: post.Hashtag3,
+              Hashtag4: post.Hashtag4,
+              Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               Creator: post.Creator,
@@ -135,6 +145,11 @@ export class PostService {
               nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
+              Hashtag1: post.Hashtag1,
+              Hashtag2: post.Hashtag2,
+              Hashtag3: post.Hashtag3,
+              Hashtag4: post.Hashtag4,
+              Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               Creator: post.Creator,
@@ -183,6 +198,11 @@ export class PostService {
               nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
+              Hashtag1: post.Hashtag1,
+              Hashtag2: post.Hashtag2,
+              Hashtag3: post.Hashtag3,
+              Hashtag4: post.Hashtag4,
+              Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               Creator: post.Creator,
@@ -230,6 +250,11 @@ export class PostService {
               nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
+              Hashtag1: post.Hashtag1,
+              Hashtag2: post.Hashtag2,
+              Hashtag3: post.Hashtag3,
+              Hashtag4: post.Hashtag4,
+              Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               Creator: post.Creator,
@@ -276,6 +301,11 @@ export class PostService {
               nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
+              Hashtag1: post.Hashtag1,
+              Hashtag2: post.Hashtag2,
+              Hashtag3: post.Hashtag3,
+              Hashtag4: post.Hashtag4,
+              Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               Creator: post.Creator,
@@ -323,6 +353,11 @@ export class PostService {
               nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
+              Hashtag1: post.Hashtag1,
+              Hashtag2: post.Hashtag2,
+              Hashtag3: post.Hashtag3,
+              Hashtag4: post.Hashtag4,
+              Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               Creator: post.Creator,
@@ -370,6 +405,11 @@ export class PostService {
               nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
+              Hashtag1: post.Hashtag1,
+              Hashtag2: post.Hashtag2,
+              Hashtag3: post.Hashtag3,
+              Hashtag4: post.Hashtag4,
+              Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               Creator: post.Creator,
@@ -448,6 +488,11 @@ export class PostService {
               nopaymentService: post.nopaymentService,
               virtual: post.virtual,
               event: post.event,
+              Hashtag1: post.Hashtag1,
+              Hashtag2: post.Hashtag2,
+              Hashtag3: post.Hashtag3,
+              Hashtag4: post.Hashtag4,
+              Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               Creator: post.Creator,
@@ -549,6 +594,11 @@ export class PostService {
     nopaymentService?: string,
     virtual?: string,
     event?: string,
+    Hashtag1?: string,
+    Hashtag2?: string,
+    Hashtag3?: string,
+    Hashtag4?: string,
+    Hashtag5?: string,
     upload?: File,
     video?: File,
     Creator?: string
@@ -568,6 +618,12 @@ export class PostService {
     postData.append('nopaymentService', nopaymentService);
     postData.append('virtual', virtual);
     postData.append('event', event);
+    postData.append('Hashtag1', Hashtag1);
+    postData.append('Hashtag2', Hashtag2);
+    postData.append('Hashtag3', Hashtag3);
+    postData.append('Hashtag4', Hashtag4);
+    postData.append('Hashtag5', Hashtag5);
+
     postData.append('upload', upload);
     postData.append('video', video);
     postData.append('Creator', Creator);
@@ -600,6 +656,11 @@ export class PostService {
             nopaymentService,
             virtual,
             event,
+            Hashtag1,
+            Hashtag2,
+            Hashtag3,
+            Hashtag4,
+            Hashtag5,
             upload,
             video,
             ImagePath: responseData.postId.ImagePath,
@@ -643,6 +704,11 @@ export class PostService {
     nopaymentService?: string,
     virtual?: string,
     event?: string,
+    Hashtag1?: string,
+    Hashtag2?: string,
+    Hashtag3?: string,
+    Hashtag4?: string,
+    Hashtag5?: string,
     upload?: File,
     video?: File,
     Creator?: string
@@ -662,6 +728,11 @@ export class PostService {
     postData.append('nopaymentService', nopaymentService);
     postData.append('virtual', virtual);
     postData.append('event', event);
+    postData.append('Hashtag1', Hashtag1);
+    postData.append('Hashtag2', Hashtag2);
+    postData.append('Hashtag3', Hashtag3);
+    postData.append('Hashtag4', Hashtag4);
+    postData.append('Hashtag5', Hashtag5);
     postData.append('upload', upload);
     postData.append('video', video);
     postData.append('Creator', Creator);
@@ -694,6 +765,11 @@ export class PostService {
             nopaymentService,
             virtual,
             event,
+            Hashtag1,
+            Hashtag2,
+            Hashtag3,
+            Hashtag4,
+            Hashtag5,
             upload,
             video,
             ImagePath: responseData.postId.ImagePath,

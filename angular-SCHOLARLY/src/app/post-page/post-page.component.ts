@@ -105,6 +105,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   // Title: FormControl = new FormControl('');
   public TitleLength = new BehaviorSubject(0);
   public LocationLength = new BehaviorSubject(0);
+  public HashTagLength = new BehaviorSubject(0);
 
   postLocationMain: FormControl = new FormControl('');
   postLocation: FormControl = new FormControl('');
@@ -120,6 +121,12 @@ export class PostPageComponent implements OnInit, OnDestroy {
   // });
 
   Title: FormControl = new FormControl('');
+  Hashtag1: FormControl = new FormControl('');
+  Hashtag2: FormControl = new FormControl('');
+  Hashtag3: FormControl = new FormControl('');
+  Hashtag4: FormControl = new FormControl('');
+  Hashtag5: FormControl = new FormControl('');
+
   date: FormControl = new FormControl('');
   dateE: FormControl = new FormControl('');
   time: FormControl = new FormControl('');
@@ -293,6 +300,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.searchOptions = this.searchListService.getSearchOptions();
     // Doesn't keep track of value
     this.Title.valueChanges.subscribe((v) => this.TitleLength.next(v.length));
+    this.Hashtag1.valueChanges.subscribe((v) =>
+      this.HashTagLength.next(v.length)
+    );
+
     this.LocationEvent.valueChanges.subscribe((v) =>
       this.LocationLength.next(v.length)
     );
@@ -391,9 +402,13 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.live.value,
       this.paymentService.value,
       this.nopaymentService.value,
-
       this.virtual.value,
       this.event.value,
+      this.Hashtag1.value,
+      this.Hashtag2.value,
+      this.Hashtag3.value,
+      this.Hashtag4.value,
+      this.Hashtag5.value,
       this.form.get('upload').value,
       this.form.get('video').value
     );

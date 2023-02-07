@@ -22,6 +22,12 @@ const postSchema = mongoose.Schema({
     nopaymentService: { type: String},
     virtual: { type: String},
     event: { type: String},
+    Hashtag1: { type: String},
+    Hashtag2: { type: String},
+    Hashtag3: { type: String},
+    Hashtag4: { type: String},
+    Hashtag5: { type: String},
+
     ImagePath: { type: String},
     VideoPath: { type: String},
     cloudinary_id: { type:String},
