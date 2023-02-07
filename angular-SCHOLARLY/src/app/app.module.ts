@@ -80,6 +80,8 @@ import {
   TrendingComponent,
   SkalarsComponent,
   LargeFriendsFeedComponent,
+  HashtagComponent,
+  HashtagCardComponent,
 } from './main-pages/main-pages.component';
 import {
   SignupComponent,
@@ -181,6 +183,8 @@ import { ErrorInterceptor } from './error-interceptor';
     SinglePageTemplateComponent,
     RecentComponent,
     LargeFriendsFeedComponent,
+    HashtagComponent,
+    HashtagCardComponent,
     SignupComponent,
     HomePageComponent,
     ExplainedComponent,

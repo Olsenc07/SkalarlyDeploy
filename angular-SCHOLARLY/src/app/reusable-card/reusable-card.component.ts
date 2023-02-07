@@ -1166,6 +1166,15 @@ export class CardFeedComponent implements OnInit {
     //     this.isLoading = false;
     //   });
   }
+
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { category: HashTag },
+    });
+  }
+
   navigateToPost(): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/post-page/:'], {
