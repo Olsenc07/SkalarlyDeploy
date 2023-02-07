@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   postClicked = false;
   commentClicked = false;
   userId: string;
-
+  Hashtag = false;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
   public href = '';
@@ -214,6 +214,12 @@ export class AppComponent implements OnInit {
     }
   }
 
+  hashTagSearch(): any {
+    this.Hashtag = true;
+  }
+  skalarSearch(): any {
+    this.Hashtag = false;
+  }
   // Post icon css changes
   postClickedBtn(): boolean {
     return (this.postClicked = true);
