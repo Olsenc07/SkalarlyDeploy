@@ -79,6 +79,7 @@ import {
   RecentComponent,
   TrendingComponent,
   SkalarsComponent,
+  LargeFriendsFeedComponent,
 } from './main-pages/main-pages.component';
 import {
   SignupComponent,
@@ -179,6 +180,7 @@ import { ErrorInterceptor } from './error-interceptor';
     SinglePageComponent,
     SinglePageTemplateComponent,
     RecentComponent,
+    LargeFriendsFeedComponent,
     SignupComponent,
     HomePageComponent,
     ExplainedComponent,

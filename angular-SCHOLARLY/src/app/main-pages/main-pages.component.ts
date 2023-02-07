@@ -1153,3 +1153,14 @@ export class SkalarsComponent implements OnInit {
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
 }
+
+@Component({
+  selector: 'app-card-large-friends ',
+  templateUrl: './large_friends_feed.component.html',
+  styleUrls: ['./main-pages.component.scss'],
+})
+export class LargeFriendsFeedComponent implements OnInit {
+ngOnInit(): void {
+  
+}
+}

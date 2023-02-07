@@ -38,6 +38,7 @@ import {
   MainPagesComponent,
   SinglePageComponent,
   RecentComponent,
+  LargeFriendsFeedComponent,
   TrendingComponent,
   SkalarsComponent,
 } from './main-pages/main-pages.component';
@@ -83,6 +84,12 @@ const routes: Routes = [
 
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: 'recent', component: RecentComponent, canActivate: [AuthGuard] },
+  {
+    path: 'friends',
+    component: LargeFriendsFeedComponent,
+    canActivate: [AuthGuard],
+  },
+
   { path: 'trending', component: TrendingComponent, canActivate: [AuthGuard] },
   {
     path: 'filterSkalars',
