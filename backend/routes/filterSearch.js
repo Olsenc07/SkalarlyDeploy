@@ -385,17 +385,17 @@ router.get("/filterSearchSportClub", async(req, res) => {
 // userInfo by sport and minor
 router.get("/filterSearchSportMinor", async(req, res) => {
     const minor = req.query.minor;
-    const club = req.query.club;
+    const sport = req.query.sport;
     console.log('minor', minor);
-    console.log('club', club);
+    console.log('sport', sport);
 
     await UserInfo.find({  $and:[{
          minor: {
         $regex: new RegExp('.*' + minor + '.*',
             'i')
     },
-    club: {
-        $regex: new RegExp('.*' + club + '.*',
+    sport: {
+        $regex: new RegExp('.*' + sport + '.*',
             'i')
     }
 }]
