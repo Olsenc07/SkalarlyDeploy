@@ -528,7 +528,9 @@ router.get("/filterSearchSportClubMinor", async(req, res) => {
 
     const club = req.query.club;
     console.log('minor', minor);
-    console.log('major', major);
+    console.log('sport', sport);
+    console.log('club', club);
+
 
     await UserInfo.find({ $and:[{ minor: {
         $regex: new RegExp('^' + minor + '.*',
@@ -545,7 +547,7 @@ router.get("/filterSearchSportClubMinor", async(req, res) => {
 }]
     }).limit(30)
       .then(documents => {
-        console.log('sport,major,minor momma', documents)
+        console.log('sport,club,minor momma', documents)
         res.status(200).json({
             message: 'Filter search fetched succesfully!',
             infos: documents
