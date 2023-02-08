@@ -1171,7 +1171,7 @@ export class CardFeedComponent implements OnInit {
     console.log('HashTag', HashTag);
     // Where the post was posted
     this.router.navigate(['/hashtag/:'], {
-      queryParams: { category: HashTag },
+      queryParams: { hashtag: HashTag },
     });
   }
 

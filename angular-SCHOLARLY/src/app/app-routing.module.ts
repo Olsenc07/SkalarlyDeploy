@@ -91,7 +91,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'hashtag',
+    path: 'hashtag/:hashtag',
     component: HashtagCardComponent,
     canActivate: [AuthGuard],
   },
