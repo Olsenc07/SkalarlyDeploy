@@ -1177,6 +1177,7 @@ export class HashtagComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public postService: PostService,
+    private authService: AuthService,
     private router: Router
   ) {}
   ngOnInit(): void {
