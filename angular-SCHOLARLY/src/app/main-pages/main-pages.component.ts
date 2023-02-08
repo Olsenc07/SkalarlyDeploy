@@ -1463,4 +1463,9 @@ export class HashtagCardComponent implements OnInit {
         console.log('posts personal', this.posts);
       });
   }
+  // Where the post was posted
+  navigateToMainPage(value: string): void {
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
+  }
 }
