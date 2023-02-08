@@ -27,6 +27,8 @@ export class AppComponent implements OnInit {
   _params: URLSearchParams;
   // filteredOptions: Observable<string[]>;
   hasQuery = false;
+  hasQueryHash = false;
+
   // socket.io
   public roomId: string;
   public messageText: string;
@@ -342,19 +344,19 @@ export class AppComponent implements OnInit {
   }
 
   // Hashtag search
-  sendDatahash(event: any): any {
+  sendDataHash(event: any): any {
     const query: string = event.target.value;
     // Will match if query is nothing or is only spaces
     const matchSpaces: any = query.match(/\s*/);
     if (matchSpaces[0] === query) {
       this.hashs = [];
-      this.hasQuery = false;
+      this.hasQueryHash = false;
       return;
     }
 
     this.postsService.searchHashs(query.trim()).subscribe((results) => {
       this.hashs = results;
-      this.hasQuery = true;
+      this.hasQueryHash = true;
       console.log('another log', this.hashs);
     });
   }

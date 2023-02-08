@@ -167,7 +167,7 @@
           [formControl]="searchHash"
         />
    
-          <div class="text" *ngIf="hashs.length < 1 && hasQuery && searchHash.value">Sorry no hashtag found 
+          <div class="text" *ngIf="hashs.length < 1 && hasQueryHash && searchHash.value">Sorry no hashtag found 
   
           </div>
           <!-- Hide -->
@@ -181,7 +181,7 @@
           (hashs.length >= 1 && searchHash.value)
             ? 'below_search showOptions'
             : 'hideSpace'" >
-                              <mat-select id="trigger" matTooltip="Click to see Hashtags" class="triggerContainer" placeholder="Fellow Skalar(s)">
+                              <mat-select id="trigger" matTooltip="Click to see Hashtags" class="triggerContainer" placeholder="Hashtags">
                                 <div class="title">Hashtags</div>
                                 <mat-divider></mat-divider>
                                 <div *ngFor="let hash of hashs;let even = even; let odd = odd" class="triggerContainer_">
