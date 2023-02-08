@@ -355,6 +355,7 @@ export class AppComponent implements OnInit {
     this.postsService.searchHashs(query.trim()).subscribe((results) => {
       this.hashs = results;
       this.hasQuery = true;
+      console.log('another log', this.hashs);
     });
   }
 

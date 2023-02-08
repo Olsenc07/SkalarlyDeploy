@@ -1220,7 +1220,7 @@ export class HashtagCardComponent implements OnInit {
 
   posts: Post[] = [];
   private postsSub: Subscription;
-  isLoading = false;
+  isLoading = true;
 
   constructor(
     private route: ActivatedRoute,
