@@ -983,21 +983,26 @@ router.delete("/showCases/:id", checkAuth, async(req, res, next ) => {
    .then(result => {
     console.log('meeee', result)
         cloudinary.uploader.destroy(result.cloudinary_id)
-        .then(console.log('it worked'));
-
-    })
-    showCase.deleteOne({_id: req.params.id}).then(result => {
-        if (result){
-        res.status(200);
-        } else {
-            res.status(401).json({message: 'Not authorized'});
-        }
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Fetching showCases failed!'
+        .then( docs => {
+            console.log('it worked')
+        showCase.deleteOne({_id: req.params.id}).then(result => {
+            if (result){
+            res.status(200).json({
+                message: 'Deleting a showCase worked!'
+            });
+            } else {
+                res.status(401).json({message: 'Not authorized'});
+            }
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching showCases failed!'
+            });
         });
-    });
+        console.log('docs', docs)
+    })
+    })
+ 
 });
 
 // Check Notifications 
