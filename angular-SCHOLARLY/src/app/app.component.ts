@@ -13,7 +13,7 @@ import { PostsService, UserNames } from './services/posts.service';
 })
 export class AppComponent implements OnInit {
   users: UserNames[] = [];
-  hashs = [];
+  hashs: [];
 
   postClicked = false;
   commentClicked = false;
@@ -346,6 +346,7 @@ export class AppComponent implements OnInit {
   // Hashtag search
   sendDataHash(event: any): any {
     const query: string = event.target.value;
+    console.log('query yo', query);
     // Will match if query is nothing or is only spaces
     const matchSpaces: any = query.match(/\s*/);
     if (matchSpaces[0] === query) {
