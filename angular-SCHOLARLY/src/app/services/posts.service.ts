@@ -33,6 +33,19 @@ export class PostsService {
       .pipe(map((data) => data.payload));
   }
 
+  // Hashtag search
+  searchHashs(query: string): any {
+    return this.http
+      .post<{ payload: Array<UserNames> }>(
+        '/api/user/gethashs',
+        { payload: query },
+        {
+          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+        }
+      )
+      .pipe(map((data) => data.payload));
+  }
+
   checkNotification(id: string): any {
     this.http
       .get<{ infos: any }>('https://www.skalarly.com/api/posts/checkNotif', {

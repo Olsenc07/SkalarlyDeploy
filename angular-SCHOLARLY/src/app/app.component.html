@@ -96,18 +96,6 @@
           <!--Icons autosize to sidenav  -->
           <div class="large-screen-icons">
             <!-- seaech fellow skalar-->
-
-         
-              <div class="rowToggle">
-              <mat-button-toggle  > <mat-icon class="material-icons">search</mat-icon></mat-button-toggle>
-              <mat-button-toggle   matTooltip="Search By Hashtag">
-                <mat-icon class="material-icons">tag</mat-icon>
-                </mat-button-toggle>
-              </div>
-
-           
-
-
             <div class="search-box" *ngIf="!Hashtag">
         <button mat-icon-button  matTooltip="Search By Hashtag" (click)="hashTagSearch()">
                 <span class="material-icons search-box__icon"> search </span>
@@ -173,30 +161,30 @@
           matInput
           type="search"
           name="search-box"
-          (keyup)="sendData($event)"
+          (keyup)="sendDataHash($event)"
           class="search-box__input"
           placeholder="Search By Hashtags"
-          [formControl]="search"
+          [formControl]="searchHash"
         />
    
-          <div class="text" *ngIf="users.length < 1 && hasQuery && search.value">Sorry no hashtag found 
+          <div class="text" *ngIf="hashs.length < 1 && hasQuery && searchHash.value">Sorry no hashtag found 
   
           </div>
           <!-- Hide -->
           <div class="showOptions showSpace" [ngClass]="
-          (users.length >= 1 && search.value)
+          (hashs.length >= 1 && searchHash.value)
             ? 'hideSpace'
             : '' " >
             </div>
           <!-- Show -->
           <div [ngClass]="
-          (users.length >= 1 && search.value)
+          (hashs.length >= 1 && searchHash.value)
             ? 'below_search showOptions'
             : 'hideSpace'" >
                               <mat-select id="trigger" matTooltip="Click to see Hashtags" class="triggerContainer" placeholder="Fellow Skalar(s)">
                                 <div class="title">Hashtags</div>
                                 <mat-divider></mat-divider>
-                                <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
+                                <div *ngFor="let user of hashs;let even = even; let odd = odd" class="triggerContainer_">
                                 <mat-option *ngIf="user.Creator !== userId" 
                                  [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
                                   <div  class="rowInfo" >

@@ -2478,7 +2478,37 @@ router.post('/getusers', async (req, res) => {
     res.send({ payload: search })
 });
 
+// Search hashtags
+router.post('/gethashs', async (req, res) => {
+    let payload = req.body.payload;
+    let search = await Post.find({ $or: [{
+        Hashtag1: {
+            $regex: new RegExp('.*' + payload + '.*',
+                'i')
+        },
+        Hashtag2: {
+            $regex: new RegExp('.*' + payload + '.*',
+                'i')
+        },
+        Hashtag3: {
+            $regex: new RegExp('.*' + payload + '.*',
+                'i')
+        },
+        Hashtag4: {
+            $regex: new RegExp('.*' + payload + '.*',
+                'i')
+        },
+        Hashtag5: {
+            $regex: new RegExp('.*' + payload + '.*',
+                'i')
+        }
+     }]
+    }).limit(7).exec();
 
+
+
+    res.send({ payload: search })
+});
 // Deleting account
 router.post('/delete', async(req, res) => {
       let username

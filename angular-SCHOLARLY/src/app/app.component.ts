@@ -13,6 +13,8 @@ import { PostsService, UserNames } from './services/posts.service';
 })
 export class AppComponent implements OnInit {
   users: UserNames[] = [];
+  hashs = [];
+
   postClicked = false;
   commentClicked = false;
   userId: string;
@@ -328,6 +330,23 @@ export class AppComponent implements OnInit {
 
     this.postsService.searchUsers(query.trim()).subscribe((results) => {
       this.users = results;
+      this.hasQuery = true;
+    });
+  }
+
+  // Hashtag search
+  sendDatahash(event: any): any {
+    const query: string = event.target.value;
+    // Will match if query is nothing or is only spaces
+    const matchSpaces: any = query.match(/\s*/);
+    if (matchSpaces[0] === query) {
+      this.hashs = [];
+      this.hasQuery = false;
+      return;
+    }
+
+    this.postsService.searchHashs(query.trim()).subscribe((results) => {
+      this.hashs = results;
       this.hasQuery = true;
     });
   }
