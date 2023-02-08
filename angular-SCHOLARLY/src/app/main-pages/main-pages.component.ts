@@ -1198,7 +1198,7 @@ export class HashtagComponent implements OnInit {
 @Component({
   selector: 'app-card-hashtags ',
   templateUrl: './reusable_hashtags.component.html',
-  styleUrls: ['./main-pages.component.scss'],
+  styleUrls: ['/src/app/reusable-card/reusable-card.component.scss'],
 })
 export class HashtagCardComponent implements OnInit {
   hashtag: string;

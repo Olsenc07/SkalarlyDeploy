@@ -192,7 +192,8 @@ margin-top: 2%;
 }
 .hashs{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-top: 1%;
 }
 .HashTags{
 display: flex;
@@ -484,7 +485,7 @@ margin-top: 1%;
   // justify-content: center;
   // border-color: #ececee;
   text-align: center;
-  margin-left: 2%;
+  // margin-left: 2%;
   margin-bottom: 1%;
   margin-top: 1%;
 }
