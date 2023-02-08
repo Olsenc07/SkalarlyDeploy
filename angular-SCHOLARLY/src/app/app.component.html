@@ -184,19 +184,14 @@
                               <mat-select id="trigger" matTooltip="Click to see Hashtags" class="triggerContainer" placeholder="Fellow Skalar(s)">
                                 <div class="title">Hashtags</div>
                                 <mat-divider></mat-divider>
-                                <div *ngFor="let user of hashs;let even = even; let odd = odd" class="triggerContainer_">
-                                <mat-option *ngIf="user.Creator !== userId" 
-                                 [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
+                                <div *ngFor="let hash of hashs;let even = even; let odd = odd" class="triggerContainer_">
+                                <mat-option 
+                                 [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navToHashTag(hash)" id="hashName" >
                                   <div  class="rowInfo" >
                                     <div class="profilePic">
-                                   <img class="profilePic_" src="{{user.ProfilePicPath}}"> 
+                                   {{hash}}
                                   </div> 
-                                  <div class="displayContents">
-                                  <div class="name">{{user.name}}</div>
-                                    <div class="username">@{{user.username}}</div>
                                   </div>
-                                  </div>
-                                  <mat-divider *ngIf="user"></mat-divider>
                                 </mat-option>
                               <!-- </mat-autocomplete> -->
                               </div>

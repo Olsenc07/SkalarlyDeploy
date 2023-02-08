@@ -75,6 +75,7 @@ export class AppComponent implements OnInit {
   allUsers: string[] = [''];
 
   search: FormControl = new FormControl('');
+  searchHash: FormControl = new FormControl('');
   filteredSearch: Observable<string[]>;
   searchForm = new FormGroup({
     search: this.search,
@@ -244,7 +245,13 @@ export class AppComponent implements OnInit {
       queryParams: { userId: this.userId },
     });
   }
-
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
   navigateToMessages(): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/messages/:'], {

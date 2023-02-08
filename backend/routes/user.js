@@ -2503,7 +2503,10 @@ router.post('/gethashs', async (req, res) => {
                 'i')
         }
      }]
-    }).limit(7).exec();
+    }).limit(10).exec()
+    .then(docs => {
+        console.log('results',docs)
+    })
 
 
 
