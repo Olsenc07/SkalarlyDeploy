@@ -97,10 +97,15 @@
           <div class="large-screen-icons">
             <!-- seaech fellow skalar-->
             <mat-button-toggle-group>
-              <mat-button-toggle matTooltip="Search By Username" (click)="skalarSearch()" > <mat-icon class="material-icons" >search</mat-icon></mat-button-toggle>
+              <div class="rowToggle">
+              <mat-button-toggle matTooltip="Search By Username" (click)="skalarSearch()" > <mat-icon  ><i class="fas fa-search"></i></mat-icon></mat-button-toggle>
               <mat-button-toggle  (click)="hashTagSearch()" matTooltip="Search By Hashtag">
-                <mat-icon class="material-icons" >tag</mat-icon>
+                <mat-icon ><i class="fas fa-hashtag"></i></mat-icon>
                 </mat-button-toggle>
+              </div>
+
+
+
             <div class="search-box" *ngIf="!Hashtag">
         <!-- <button mat-icon-button  matTooltip="Search By Hashtag"> -->
                 <span class="material-icons search-box__icon"> search </span>

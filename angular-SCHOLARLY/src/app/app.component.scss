@@ -106,6 +106,10 @@
   color: black;
   justify-content: space-around;
 }
+.rowToggle{
+  display: flex;
+  flex-direction: row;
+}
 .rowInfo{
   flex-direction: column;
   display: flex;
