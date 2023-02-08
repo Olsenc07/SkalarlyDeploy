@@ -1182,8 +1182,8 @@ export class HashtagComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      console.log('params hashtag page', params);
       this.hashtag = params?.hashtag;
+      console.log('params hashtag page', this.hashtag);
 
       this.postService.getPostsHashtagPage(this.hashtag, 0);
       this.postsSub = this.postService
@@ -1202,6 +1202,9 @@ export class HashtagComponent implements OnInit {
 })
 export class HashtagCardComponent implements OnInit {
   hashtag: string;
+  countVisibility = 0;
+  recomCounter = 0;
+
   posts: Post[] = [];
   private postsSub: Subscription;
   isLoading = false;
@@ -1215,8 +1218,8 @@ export class HashtagCardComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
-      console.log('params hashtag page', params);
       this.hashtag = params?.hashtag;
+      console.log('params hashtag page', this.hashtag);
 
       this.postService.getPostsHashtagPage(this.hashtag, 0);
       this.postsSub = this.postService
@@ -1226,5 +1229,43 @@ export class HashtagCardComponent implements OnInit {
           this.isLoading = false;
         });
     });
+  }
+
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    const NextBtn = document.getElementById('topScroll');
+    NextBtn.scrollIntoView();
+    this.postService.getPostsHashtagPage(this.hashtag, this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.postService.getPostsHashtagPage(this.hashtag, this.recomCounter);
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        console.log('posts personal', this.posts);
+      });
   }
 }
