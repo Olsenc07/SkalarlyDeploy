@@ -1214,17 +1214,23 @@ export class HashtagCardComponent implements OnInit {
   hashtag: string;
   countVisibility = 0;
   recomCounter = 0;
+  comment: FormControl = new FormControl('');
+  comments: string[] = [];
+  private commentsSub: Subscription;
 
   posts: Post[] = [];
   private postsSub: Subscription;
   isLoading = false;
 
-  constructor(private route: ActivatedRoute, public postService: PostService) {}
+  constructor(
+    private route: ActivatedRoute,
+    public postService: PostService,
+    private commentsService: CommentsService
+  ) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.hashtag = params?.hashtag;
       console.log('params hashtag page', this.hashtag);
-      console.log('params ', params);
 
       this.postService.getPostsHashtagPage(this.hashtag, 0);
       this.postsSub = this.postService
@@ -1236,7 +1242,15 @@ export class HashtagCardComponent implements OnInit {
         });
     });
   }
-
+  loadComments(postId: string): void {
+    console.log('hey logic fade away 7', postId);
+    this.commentsService.getComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        this.comments = comments.reverse();
+      });
+  }
   // Forward
   onClickFeed(): any {
     const count = 1;
