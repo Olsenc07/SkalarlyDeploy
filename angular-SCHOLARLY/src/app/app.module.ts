@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CloudinaryModule } from '@cloudinary/ng';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -228,6 +229,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MatIconModule,
     MatButtonModule,
     MatDatepickerModule,
+    MatButtonToggleModule,
     // CloudinaryModule,
     MatNativeDateModule,
     BrowserModule,
