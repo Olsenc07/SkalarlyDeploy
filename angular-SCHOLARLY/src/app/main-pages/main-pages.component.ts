@@ -1219,13 +1219,7 @@ export class HashtagCardComponent implements OnInit {
   private postsSub: Subscription;
   isLoading = false;
 
-  constructor(
-    private bottomSheet: MatBottomSheet,
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
-    public postService: PostService
-  ) {}
+  constructor(private route: ActivatedRoute, public postService: PostService) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.hashtag = params?.hashtag;
@@ -1237,10 +1231,10 @@ export class HashtagCardComponent implements OnInit {
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
           this.posts = posts;
+          console.log('testing 1,2,3', this.posts);
           this.isLoading = false;
         });
     });
-    console.log('hey chaz', this.hashtag);
   }
 
   // Forward
