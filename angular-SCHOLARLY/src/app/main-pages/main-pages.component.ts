@@ -1168,13 +1168,20 @@ export class LargeFriendsFeedComponent implements OnInit {
   styleUrls: ['./main-pages.component.scss'],
 })
 export class HashtagComponent implements OnInit {
+  userId: string;
   hashtag: string;
   posts: Post[] = [];
   private postsSub: Subscription;
   isLoading = false;
 
-  constructor(private route: ActivatedRoute, public postService: PostService) {}
+  constructor(
+    private route: ActivatedRoute,
+    public postService: PostService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+
     this.route.queryParams.subscribe((params) => {
       this.hashtag = params?.hashtag;
       console.log('params page', this.hashtag);
@@ -1187,6 +1194,13 @@ export class HashtagComponent implements OnInit {
           this.posts = posts;
           this.isLoading = false;
         });
+    });
+  }
+  // To post page with users id
+  navigateToPost(): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/post-page/:'], {
+      queryParams: { userId: this.userId },
     });
   }
 }

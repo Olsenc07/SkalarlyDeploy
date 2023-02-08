@@ -93,9 +93,9 @@ router.get("/hashtagPage", async(req, res, next) => {
     console.log('counter',counter);
     console.log('hashtag',hashtag);
 
-    await Post.find({
-        Hashtag1:hashtag, Hashtag2:hashtag, Hashtag3:hashtag, Hashtag4:hashtag, Hashtag5:hashtag 
-       }).sort({_id:-1}).skip(counter).limit(6)
+    await Post.find({ $or: [
+        {Hashtag1:hashtag}, {Hashtag2:hashtag}, {Hashtag3:hashtag}, {Hashtag4:hashtag}, {Hashtag5:hashtag} 
+       ]}).sort({_id:-1}).skip(counter).limit(6)
        .then(docs => {
         console.log('hash', docs)
         res.status(200).json({
