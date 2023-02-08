@@ -90,12 +90,11 @@ router.get("/feed", async(req, res, next) => {
 router.get("/hashtagPage", async(req, res, next) => {
     const counter = req.query.counter;
     const hashtag = req.query.hashtag;
-    console.log('testing',counter);
+    console.log('counter',counter);
     console.log('hashtag',hashtag);
 
     await Post.find({
-        $or:[ {Hashtag1:hashtag}, {Hashtag2:hashtag},{Hashtag3:hashtag},{Hashtag4:hashtag},{Hashtag5:hashtag}
-           ]
+        Hashtag1:hashtag, Hashtag2:hashtag, Hashtag3:hashtag, Hashtag4:hashtag, Hashtag5:hashtag 
        }).sort({_id:-1}).skip(counter).limit(6)
        .then(docs => {
         console.log('hash', docs)

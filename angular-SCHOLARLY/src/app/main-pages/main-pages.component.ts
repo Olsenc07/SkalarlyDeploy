@@ -1173,17 +1173,12 @@ export class HashtagComponent implements OnInit {
   private postsSub: Subscription;
   isLoading = false;
 
-  constructor(
-    private bottomSheet: MatBottomSheet,
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
-    public postService: PostService
-  ) {}
+  constructor(private route: ActivatedRoute, public postService: PostService) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.hashtag = params?.hashtag;
       console.log('params page', this.hashtag);
+      console.log('woo hoo', params);
 
       this.postService.getPostsHashtagPage(this.hashtag, 0);
       this.postsSub = this.postService
@@ -1230,6 +1225,7 @@ export class HashtagCardComponent implements OnInit {
           this.isLoading = false;
         });
     });
+    console.log('hey chaz', this.hashtag);
   }
 
   // Forward

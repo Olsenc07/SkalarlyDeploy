@@ -203,7 +203,7 @@
   
   
         <!-- Description -->
-        <div class="description" *ngIf="post.postDescription">
+        <div class="description" *ngIf="post.postDescription || post.Hashtag1">
   
           <div class="postText d">
             {{post.postDescription}}
@@ -219,7 +219,7 @@
               </button>
               </div>
               <div class="HashTags" *ngIf="post.Hashtag3">
-              <button mat-stroked-button (click)="navToHashTag(post.Hashtag3)" class="HashTagsBtn">
+              <button mat-raised-button (click)="navToHashTag(post.Hashtag3)" class="HashTagsBtn">
                 #{{post.Hashtag3}}
                 </button>
                 </div>
