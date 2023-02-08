@@ -97,7 +97,7 @@
           <div class="large-screen-icons">
             <!-- seaech fellow skalar-->
             <div class="search-box" *ngIf="!Hashtag">
-        <button mat-icon-button  matTooltip="Search By Hashtag" (click)="hashTagSearch()">
+        <button mat-icon-button  matTooltip="Click To Search By Hashtag" (click)="hashTagSearch()">
                 <span class="material-icons search-box__icon"> search </span>
               </button>
               <!-- </button> -->
@@ -125,7 +125,7 @@
                 (users.length >= 1 && search.value)
                   ? 'below_search showOptions'
                   : 'hideSpace'" >
-                                    <mat-select id="trigger" matTooltip="Click to see Skalars" class="triggerContainer" placeholder="Fellow Skalar(s)">
+                                    <mat-select id="trigger" matTooltip="Click To See Skalars" class="triggerContainer" placeholder="Fellow Skalar(s)">
                                       <div class="title">Fellow Skalars</div>
                                       <mat-divider></mat-divider>
                                       <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
@@ -153,7 +153,7 @@
 <!-- Show hashtag search -->
 
 <div class="search-box" *ngIf="Hashtag">
-  <button mat-icon-button matTooltip="Search By Username" (click)="skalarSearch()" >
+  <button mat-icon-button matTooltip="Click To Search By Username" (click)="skalarSearch()" >
           <span class="material-icons search-box__icon"> tag </span>
         </button>
         <!-- </button> -->
@@ -181,7 +181,7 @@
           (hashs.length >= 1 && searchHash.value)
             ? 'below_search showOptions'
             : 'hideSpace'" >
-                              <mat-select id="trigger" matTooltip="Click to see Hashtags" class="triggerContainer" placeholder="Hashtags">
+                              <mat-select id="trigger" matTooltip="Click To See Hashtags" class="triggerContainer" placeholder="Hashtags">
                                 <div class="title">Hashtags</div>
                                 <mat-divider></mat-divider>
                                 <div *ngFor="let hash of hashs;let even = even; let odd = odd" class="triggerContainer_">

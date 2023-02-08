@@ -1268,6 +1268,13 @@ export class HashtagCardComponent implements OnInit {
         });
     });
   }
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
     this.router.navigate(['/single/:'], { queryParams: { postId } });

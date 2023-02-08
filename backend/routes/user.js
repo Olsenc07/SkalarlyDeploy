@@ -2481,29 +2481,29 @@ router.post('/getusers', async (req, res) => {
 // Search hashtags
 router.post('/gethashs', async (req, res) => {
     let payload = req.body.payload;
-    console.log('payload',payload);
-    let search = await Post.find({ $or: [{
-        Hashtag1: {
+    console.log('Payload',payload);
+    let search = await Post.find({ $or: [
+       { Hashtag1: {
             $regex: new RegExp('.*' + payload + '.*',
                 'i')
-        },
-        Hashtag2: {
+        }},
+       { Hashtag2: {
             $regex: new RegExp('.*' + payload + '.*',
                 'i')
-        },
-        Hashtag3: {
+        }},
+        {Hashtag3: {
             $regex: new RegExp('.*' + payload + '.*',
                 'i')
-        },
-        Hashtag4: {
+        }},
+        {Hashtag4: {
             $regex: new RegExp('.*' + payload + '.*',
                 'i')
-        },
-        Hashtag5: {
+        }},
+        {Hashtag5: {
             $regex: new RegExp('.*' + payload + '.*',
                 'i')
-        }
-     }]
+        }}
+     ]
     }).limit(10).exec()
     .then(docs => {
         console.log('results',docs)
