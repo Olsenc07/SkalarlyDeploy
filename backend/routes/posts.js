@@ -90,6 +90,9 @@ router.get("/feed", async(req, res, next) => {
 router.get("/hashtagPage", async(req, res, next) => {
     const counter = req.query.counter;
     const hashtag = req.query.hashtag;
+    console.log('testing',counter);
+    console.log('hashtag',hashtag);
+
     await Post.find({
         $or:[{
             Hashtag1: {
@@ -113,6 +116,7 @@ router.get("/hashtagPage", async(req, res, next) => {
    }]
        }).sort({_id:-1}).skip(counter).limit(6)
        .then(docs => {
+        console.log('hash', docs)
         res.status(200).json({
             message: 'Hashtag feed fetched succesfully!',
             posts: docs
