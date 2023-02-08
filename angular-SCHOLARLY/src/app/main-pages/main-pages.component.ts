@@ -1221,6 +1221,7 @@ export class HashtagCardComponent implements OnInit {
   private commentsSub: Subscription;
   commentsValidator = '';
   valueChosen = '7';
+  reposts = '';
 
   timeHourInitial = new Date().getHours();
   timeHour = this.testNum(this.timeHourInitial);
