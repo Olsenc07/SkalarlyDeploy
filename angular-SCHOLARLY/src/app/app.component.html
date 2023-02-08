@@ -96,22 +96,22 @@
           <!--Icons autosize to sidenav  -->
           <div class="large-screen-icons">
             <!-- seaech fellow skalar-->
-            <div class="searchBox">
-            <mat-button-toggle-group>
+
+         
               <div class="rowToggle">
-              <mat-button-toggle matTooltip="Search By Username" (click)="skalarSearch()" > <mat-icon class="material-icons">search</mat-icon></mat-button-toggle>
-              <mat-button-toggle  (click)="hashTagSearch()" matTooltip="Search By Hashtag">
+              <mat-button-toggle  > <mat-icon class="material-icons">search</mat-icon></mat-button-toggle>
+              <mat-button-toggle   matTooltip="Search By Hashtag">
                 <mat-icon class="material-icons">tag</mat-icon>
                 </mat-button-toggle>
               </div>
 
-            </mat-button-toggle-group>
+           
 
 
             <div class="search-box" *ngIf="!Hashtag">
-        <!-- <button mat-icon-button  matTooltip="Search By Hashtag"> -->
+        <button mat-icon-button  matTooltip="Search By Hashtag" (click)="hashTagSearch()">
                 <span class="material-icons search-box__icon"> search </span>
-              <!-- </button> -->
+              </button>
               <!-- </button> -->
               <input
                 matInput
@@ -165,9 +165,9 @@
 <!-- Show hashtag search -->
 
 <div class="search-box" *ngIf="Hashtag">
-  <!-- <button mat-icon-button  > -->
+  <button mat-icon-button matTooltip="Search By Username" (click)="skalarSearch()" >
           <span class="material-icons search-box__icon"> tag </span>
-        <!-- </button> -->
+        </button>
         <!-- </button> -->
         <input
           matInput
@@ -216,7 +216,7 @@
                            <!-- </mat-form-field> -->
                               </div>
       </div>
-    </div>
+
             <!-- End -->
             <div class="icon-top">
               <div class="icon-btn-fit">
