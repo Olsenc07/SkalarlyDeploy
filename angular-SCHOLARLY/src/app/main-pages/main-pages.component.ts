@@ -1214,10 +1214,34 @@ export class HashtagCardComponent implements OnInit {
   hashtag: string;
   countVisibility = 0;
   recomCounter = 0;
+  hide = true;
+
   comment: FormControl = new FormControl('');
   comments: string[] = [];
   private commentsSub: Subscription;
+  commentsValidator = '';
+  valueChosen = '7';
 
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
+  timeMinute = new Date().getMinutes();
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
+
+  time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
+    '\xa0' +
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    '\xa0' +
+    this.text;
   posts: Post[] = [];
   private postsSub: Subscription;
   isLoading = true;
@@ -1225,7 +1249,8 @@ export class HashtagCardComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public postService: PostService,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
+    private router: Router
   ) {}
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
@@ -1242,6 +1267,148 @@ export class HashtagCardComponent implements OnInit {
         });
     });
   }
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
+  }
+  commentsValidatorFunc(postId: string): void {
+    this.commentsValidator = postId;
+    this.comment.setValue('');
+    console.log('commentsValidator', this.commentsValidator);
+  }
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
+  }
+
+  imgClick(imgPath): any {
+    document.getElementById('myModal').style.display = 'block';
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+    this.hide = false;
+    console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    this.hide = true;
+    console.log('bye good lookin');
+  }
+  // Adding emojis
+  openEmoji(): void {
+    const selectionContainer = document.getElementById('showEmojis');
+    const triggerEmoji = document.getElementById('triggerEmo');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.comment.value + msgs;
+      this.comment.setValue(msg);
+    });
+  }
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId.length);
+    console.log('Hey babe I miss you ', OriginalPostId.length);
+    if (OriginalPostId.length === 0) {
+      this.postService.getPostsTrendingNumberOwn(postId);
+      this.valueChosen = postId;
+      console.log('logic1', this.valueChosen);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = OriginalPostId;
+      console.log('logic', this.valueChosen);
+    }
+    this.postService.getCountUpdateListener().subscribe((value) => {
+      this.reposts = value;
+      console.log(' reposts', this.reposts);
+    });
+  }
+
   loadComments(postId: string): void {
     console.log('hey logic fade away 7', postId);
     this.commentsService.getComments(postId);
