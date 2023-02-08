@@ -979,7 +979,7 @@ router.post("/showCases/video",
 // showCase deleting
 router.delete("/showCases/:id", checkAuth, async(req, res, next ) => {
     console.log('cereal', req.params.id)
-   await showCase.findOne({id: req.params.id})
+   await showCase.findOne({_id: req.params.id})
    .then(result => {
     console.log('meeee', result)
         cloudinary.uploader.destroy(result.cloudinary_id)
