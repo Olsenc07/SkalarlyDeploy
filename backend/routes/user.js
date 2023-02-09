@@ -2583,12 +2583,21 @@ router.post('/gethashs', async (req, res) => {
             console.log('docs',docs)
             const regex = new RegExp('.*' + payload + '.*',
                 'i')
-                let matches =   docs.filter((e) => e.match(regex))
-                    console.log('matches',matches)
-                  
+                let matches1 = docs.filter((e) => e.Hashtag1.match(regex))
+                    console.log('matches1',matches1)
+                let matches2 = docs.filter((e) => e.Hashtag2.match(regex))
+                    console.log('matches2',matches2)
+                let matches3 = docs.filter((e) => e.Hashtag3.match(regex))
+                    console.log('matches3',matches3)
+                let matches4 = docs.filter((e) => e.Hashtag4.match(regex))
+                    console.log('matches4',matches4)
+                let matches5 = docs.filter((e) => e.Hashtag5.match(regex))
+                    console.log('matches5',matches5)  
     // do for other five and put results together
-          
-            res.send({ payload: matches })
+          matchesAll = []
+          matchesAll.append(matches1,matches2,matches3,matches4,matches5)
+          console.log('trying',matchesAll)
+            res.send({ payload: matchesAll })
 
           
            }
