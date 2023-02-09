@@ -18,10 +18,8 @@ export interface Message {
 })
 export class MessageNotificationService {
   private messagesNotif: Message[] = [];
-  private messagesNotifOnce: Message[] = [];
 
   private messagesInfoUpdated = new Subject<Message[]>();
-  private messagesNotifiedUpdated = new Subject<Message[]>();
 
   private messagesDel: Message[] = [];
   private messagesInfoDel = new Subject<Message[]>();
@@ -29,10 +27,6 @@ export class MessageNotificationService {
 
   getInfoUpdateListenerNotification(): any {
     return this.messagesInfoUpdated.asObservable();
-  }
-
-  getInfoUpdateListenerNotificationOnce(): any {
-    return this.messagesNotifiedUpdated.asObservable();
   }
 
   getMessageNotification(userId: string, username: string): any {
@@ -45,16 +39,17 @@ export class MessageNotificationService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.messages.map((data) => {
-            return {
-              id: data._id,
-              username: data.username,
-              message: data.message,
-              time: data.time,
-              otherUser: data.otherUser,
-              you: data.you,
-            };
-          });
+          return messageData.messages;
+          // .map((data) => {
+          // return {
+          //   id: data._id,
+          //   username: data.username,
+          //   message: data.message,
+          //   time: data.time,
+          //   otherUser: data.otherUser,
+          //   you: data.you,
+          // };
+          // });
         })
       )
       .subscribe((transformedMessage) => {

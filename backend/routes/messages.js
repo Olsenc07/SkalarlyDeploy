@@ -91,6 +91,7 @@ if(req.query.username === req.query.userId ){
         {otherUser: user.username}
     ).sort({time:-1})
     .then(documents => {
+        console.log('nonya', documents)
         res.status(200).json({
           message: 'Info messages fetched succesfully!',
              messages: documents
