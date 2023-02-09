@@ -2585,17 +2585,42 @@ router.post('/gethashs', async (req, res) => {
                 'i')
                 let matches1 = docs.filter((e) => e.Hashtag1.match(regex)  )
                     console.log('matches1',matches1.Hashtag1)
+                    useOne = []
+                    if(matches1.length){
+                        useOne.append(matches1.Hashtag1)
+                    }
+                    console.log('useOne',useOne)
                 let matches2 = docs.filter((e) => e.Hashtag2.match(regex))
                     console.log('matches2',matches2.Hashtag2)
+                    useTwo = []
+                    if(matches2.length){
+                        useTwo.append(matches2.Hashtag2)
+                    }
+                    console.log('useTwo',useTwo)
                 let matches3 = docs.filter((e) => e.Hashtag3.match(regex))
                     console.log('matches3',matches3.Hashtag3)
+                    useThree = []
+                    if(matches3.length){
+                        useThree.append(matches3.Hashtag3)
+                    }
+                    console.log('useThree',useThree)
                 let matches4 = docs.filter((e) => e.Hashtag4.match(regex))
                     console.log('matches4',matches4)
+                    useFour = []
+                    if(matches4.length){
+                        useFour.append(matches4.Hashtag4)
+                    }
+                    console.log('useFour',useFour)
                 let matches5 = docs.filter((e) => e.Hashtag5.match(regex))
                     console.log('matches5',matches5)  
+                    useFive = []
+                    if(matches5.length){
+                        useFive.append(matches5.Hashtag5)
+                    }
+                    console.log('useThree',useThree)
     // do for other five and put results together
           matchesAll = []
-          matchesAll.append(matches1.Hashtag1,matches2.Hashtag2,matches3.Hashtag3,matches4.Hashtag4,matches5.Hashtag5)
+          matchesAll.append(useOne,useTwo,useThree,useFour,useFive)
         //   then filter and cancel any repeats
         let finalMatches = [... new Set(matchesAll)]
           console.log('trying',matchesAll)
