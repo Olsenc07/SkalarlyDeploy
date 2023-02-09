@@ -2583,21 +2583,24 @@ router.post('/gethashs', async (req, res) => {
             console.log('docs',docs)
             const regex = new RegExp('.*' + payload + '.*',
                 'i')
-                let matches1 = docs.filter((e) => e.Hashtag1.match(regex))
-                    console.log('matches1',matches1)
+                let matches1 = docs.filter((e) => e.Hashtag1.match(regex)  )
+                    console.log('matches1',matches1.Hashtag1)
                 let matches2 = docs.filter((e) => e.Hashtag2.match(regex))
-                    console.log('matches2',matches2)
+                    console.log('matches2',matches2.Hashtag2)
                 let matches3 = docs.filter((e) => e.Hashtag3.match(regex))
-                    console.log('matches3',matches3)
+                    console.log('matches3',matches3.Hashtag3)
                 let matches4 = docs.filter((e) => e.Hashtag4.match(regex))
                     console.log('matches4',matches4)
                 let matches5 = docs.filter((e) => e.Hashtag5.match(regex))
                     console.log('matches5',matches5)  
     // do for other five and put results together
           matchesAll = []
-          matchesAll.append(matches1,matches2,matches3,matches4,matches5)
+          matchesAll.append(matches1.Hashtag1,matches2.Hashtag2,matches3.Hashtag3,matches4.Hashtag4,matches5.Hashtag5)
+        //   then filter and cancel any repeats
+        let finalMatches = [... new Set(matchesAll)]
           console.log('trying',matchesAll)
-            res.send({ payload: matchesAll })
+          console.log('filtered doubles',finalMatches);
+            res.send({ payload: finalMatches })
 
           
            }
