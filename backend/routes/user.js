@@ -2584,7 +2584,7 @@ router.post('/gethashs', async (req, res) => {
             const regex = new RegExp('.*' + payload + '.*',
                 'i')
             docs.forEach((e) =>{
-
+                    console.log('e',e)
                 matches.push(e.matchAll(regex))
                 console.log('boo ya', matches)
             res.send({ payload: matches })
