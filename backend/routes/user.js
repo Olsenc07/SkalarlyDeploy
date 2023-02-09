@@ -2579,11 +2579,19 @@ router.post('/gethashs', async (req, res) => {
      ]
     },{Hashtag1:1, Hashtag2:1,Hashtag3:1,Hashtag4:1,Hashtag5:1}).limit(10).exec()
     .then(docs => {
-            // docs.forEach((e) => {
-            //     matches.push(e.)
-            // })
+           if(docs){
+            matches = []
+            const regex = new RegExp('.*' + payload + '.*',
+                'i')
+            docs.forEach((e) =>{
+
+                matches.push(e.match(regex))
+                console.log('boo ya', matches)
+            res.send({ payload: matches })
+
+            })
+           }
         console.log('results',docs)
-    res.send({ payload: docs })
 
     })
 

@@ -171,7 +171,7 @@
   
           </div>
           <!-- Hide -->
-          <div class="showOptions showSpace" [ngClass]="
+          <div class="showOptions showSpace"  *ngIf="!(hashs.length < 1 && hasQueryHash && searchHash.value)" [ngClass]="
           (hashs.length >= 1 && searchHash.value)
             ? 'hideSpace'
             : '' " >
