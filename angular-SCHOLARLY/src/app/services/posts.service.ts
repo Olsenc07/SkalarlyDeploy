@@ -35,8 +35,9 @@ export class PostsService {
 
   // Hashtag search
   searchHashs(query: string): any {
+    console.log('my girl', query);
     return this.http
-      .post<{ payload: [] }>(
+      .post<{ payload: any }>(
         '/api/user/gethashs',
         { payload: query },
         {
