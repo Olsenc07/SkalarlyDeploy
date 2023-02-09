@@ -54,7 +54,7 @@ export class MessageNotificationService {
       )
       .subscribe((transformedMessage) => {
         this.messagesNotif = transformedMessage;
-        this.messagesInfoUpdated.next([...this.messagesNotif]);
+        this.messagesInfoUpdated.next(this.messagesNotif);
       });
   }
 
