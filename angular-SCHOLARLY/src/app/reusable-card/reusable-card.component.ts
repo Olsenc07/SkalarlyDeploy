@@ -1182,8 +1182,14 @@ export class CardFeedComponent implements OnInit {
     });
   }
   commentsValidatorFunc(postId: string): void {
+    console.log('one', postId);
+    console.log('two', this.commentsValidator);
+
+    if (postId !== this.commentsValidator) {
+      this.comment.setValue('');
+    }
     this.commentsValidator = postId;
-    this.comment.setValue('');
+
     console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
