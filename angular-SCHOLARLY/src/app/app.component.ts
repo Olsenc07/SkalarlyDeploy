@@ -13,7 +13,7 @@ import { PostsService, UserNames } from './services/posts.service';
 })
 export class AppComponent implements OnInit {
   users: UserNames[] = [];
-  hashs = [];
+  public hashs = [];
 
   postClicked = false;
   commentClicked = false;

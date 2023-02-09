@@ -34,12 +34,12 @@ export class PostsService {
   }
 
   // Hashtag search
-  searchHashs(query: string): any {
-    console.log('my girl', query);
+  searchHashs(queryHash: string): any {
+    console.log('my girl', queryHash);
     return this.http
       .post<{ payload: any }>(
         '/api/user/gethashs',
-        { payload: query },
+        { payload: queryHash },
         {
           headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
         }

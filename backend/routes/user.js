@@ -2507,11 +2507,13 @@ router.post('/gethashs', async (req, res) => {
     }).limit(10).exec()
     .then(docs => {
         console.log('results',docs)
+    res.send({ payload: docs })
+
     })
 
+    // search = search.slice(0, 10);
 
 
-    res.send({ payload: search })
 });
 // Deleting account
 router.post('/delete', async(req, res) => {
