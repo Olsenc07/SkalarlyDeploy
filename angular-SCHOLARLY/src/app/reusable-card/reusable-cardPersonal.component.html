@@ -208,8 +208,10 @@
         </div>
             <mat-divider></mat-divider>
             <mat-form-field id="showEmojis" *ngIf="hide">
-            <input matInput placeholder="Comment..." class="comment-form-textarea"
+            <input *ngIf="((commentsValidator == post.id) ||  (commentsValidator == '')) " matInput placeholder="Comment..." class="comment-form-textarea"
             maxlength="140"  [formControl]="comment" id="selection-emoji" (click)="commentsValidatorFunc(post.id)">
+            <input *ngIf="((commentsValidator !== post.id) && (commentsValidator !== ''))" matInput placeholder="Comment..." class="comment-form-textarea" 
+            (click)="commentsValidatorFunc(post.id)">
             <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
             </mat-form-field>
             
