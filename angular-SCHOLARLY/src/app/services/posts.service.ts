@@ -10,7 +10,14 @@ export interface UserNames {
   name: string;
   Creator: string;
 }
-
+export interface Hashtags {
+  _id: string;
+  Hashtag1: string;
+  Hashtag2: string;
+  Hashtag3: string;
+  Hashtag4: string;
+  Hashtag5: string;
+}
 @Injectable({
   providedIn: 'root',
 })

@@ -2481,37 +2481,113 @@ router.post('/getusers', async (req, res) => {
 // Search hashtags
 router.post('/gethashs', async (req, res) => {
     let payload = req.body.payload;
+    let matchesAll = [];
     console.log('Payload',payload);
-    let search = await Post.find({ $or: [
-       { Hashtag1: {
-            $regex: new RegExp('.*' + payload + '.*',
-                'i')
-        }},
-       { Hashtag2: {
-            $regex: new RegExp('.*' + payload + '.*',
-                'i')
-        }},
-        {Hashtag3: {
-            $regex: new RegExp('.*' + payload + '.*',
-                'i')
-        }},
-        {Hashtag4: {
-            $regex: new RegExp('.*' + payload + '.*',
-                'i')
-        }},
-        {Hashtag5: {
-            $regex: new RegExp('.*' + payload + '.*',
-                'i')
-        }}
-     ]
-    }).limit(10).exec()
-    .then(docs => {
-        console.log('results',docs)
-    res.send({ payload: docs })
 
-    })
+    let one = await Post.findOne({Hashtag1:
+        {
+                    $regex: new RegExp('.*' + payload + '.*',
+                        'i')
+                }})
+                .then(docs => {
+                        let matches = [];
+                            docs.forEach((e) => {
+                                matches.push(e.Hashtag1)
+                            })
+                            console.log('matches',matches)
+                        })
 
-    // search = search.slice(0, 10);
+console.log('one',one)
+
+let two = await Post.findOne({Hashtag2:
+    {
+                $regex: new RegExp('.*' + payload + '.*',
+                    'i')
+            }})
+            .then(docs => {
+                    let matches2 = [];
+                        docs.forEach((e) => {
+                            matches2.push(e.Hashtag2)
+                        })
+                        console.log('matches2',matches2)
+                    })
+
+console.log('two',two)
+let three = await Post.findOne({Hashtag3:
+    {
+                $regex: new RegExp('.*' + payload + '.*',
+                    'i')
+            }})
+            .then(docs => {
+                    let matches3 = [];
+                        docs.forEach((e) => {
+                            matches3.push(e.Hashtag3)
+                        })
+                        console.log('matches3',matches3)
+                    })
+
+console.log('three',three)
+ let four = await Post.findOne({Hashtag4:
+        {
+                    $regex: new RegExp('.*' + payload + '.*',
+                        'i')
+                }})
+                .then(docs => {
+                        let matches4 = [];
+                            docs.forEach((e) => {
+                                matches4.push(e.Hashtag4)
+                            })
+                            console.log('matches4',matches4)
+                        })
+
+console.log('one',one)
+let five = await Post.findOne({Hashtag5:
+    {
+                $regex: new RegExp('.*' + payload + '.*',
+                    'i')
+            }})
+            .then(docs => {
+                    let matches5 = [];
+                        docs.forEach((e) => {
+                            matches5.push(e.Hashtag5)
+                        })
+                        console.log('matches5',matches5)
+                    })
+
+console.log('five',five)
+    // let search = await Post.find({ $or: [
+    //    { Hashtag1: {
+    //         $regex: new RegExp('.*' + payload + '.*',
+    //             'i')
+    //     }},
+    //    { Hashtag2: {
+    //         $regex: new RegExp('.*' + payload + '.*',
+    //             'i')
+    //     }},
+    //     {Hashtag3: {
+    //         $regex: new RegExp('.*' + payload + '.*',
+    //             'i')
+    //     }},
+    //     {Hashtag4: {
+    //         $regex: new RegExp('.*' + payload + '.*',
+    //             'i')
+    //     }},
+    //     {Hashtag5: {
+    //         $regex: new RegExp('.*' + payload + '.*',
+    //             'i')
+    //     }}
+    //  ]
+    // }).limit(10).exec()
+    // .then(docs => {
+    //         docs.forEach((e) => {
+    //             matches.push(e.)
+    //         })
+    //     console.log('results',docs)
+    // res.send({ payload: docs })
+
+    // })
+
+
 
 
 });
