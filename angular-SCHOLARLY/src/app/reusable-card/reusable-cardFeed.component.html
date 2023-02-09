@@ -246,7 +246,7 @@
             <!-- <button mat-icon-button type="button"  *ngIf="closed"
              class="comment-form-tile" (click)="toggleComments()"><i class="far fa-comment"></i></button> -->
              <mat-form-field id="showEmojis">
-            <input matInput placeholder="Comment..." class="comment-form-textarea" id="selection-emoji"
+            <input *ngIf="((commentsValidator == post.id) ||  (commentsValidator == '')) " matInput placeholder="Comment..." class="comment-form-textarea" id="selection-emoji"
             maxlength="140" [formControl]="comment" (click)="commentsValidatorFunc(post.id)">
             <input *ngIf="commentsValidator !== post.id" matInput placeholder="Comment..." class="comment-form-textarea" 
              (click)="commentsValidatorFunc(post.id)">
