@@ -2584,14 +2584,11 @@ router.post('/gethashs', async (req, res) => {
             const regex = new RegExp('.*' + payload + '.*',
                 'i')
                 m1 = []
-                let matches1 = docs.forEach((e) => { 
+                 docs.forEach((e) => { 
                     console.log('match box', e.Hashtag1)
                     m1.push(e.Hashtag1) } )
                     console.log('m1', m1)
-                    // useOne = []
-                    // if(matches1.length){
-                    //     useOne.append(matches1)
-                    // }
+                    let matches1 = m1.filter((e) => e.match(regex))
                     console.log('matches1',matches1)
                 let matches2 = docs.filter((e) => e.Hashtag2.match(regex))
                     console.log('matches2',matches2.Hashtag2)
