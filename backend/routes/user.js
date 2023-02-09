@@ -2577,7 +2577,7 @@ router.post('/gethashs', async (req, res) => {
                 'i')
         }}
      ]
-    },{Hashtag1:1, Hashtag2:1,Hashtag3:1,Hashtag4:1,Hashtag5:1}).limit(10).exec()
+    },{_id:0,Hashtag1:1, Hashtag2:1,Hashtag3:1,Hashtag4:1,Hashtag5:1}).limit(10).exec()
     .then(docs => {
            if(docs){
             matches = []
