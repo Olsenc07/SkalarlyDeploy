@@ -57,13 +57,14 @@ res.status(200).json({
     })
 })
 })
+
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
 if(req.query.username === req.query.userId ){
     console.log('C.R.E.A.M')
     await User.findById({_id: req.query.userId})
     .then(user => {
-        Msg.find( {otherUser: user.username})
+        Msg.findOne( {otherUser: user.username}).sort({time:-1})
         .then(messagesNotif => {
             res.status(200).json({
               message: 'Info messages fetched succesfully!',
@@ -86,9 +87,9 @@ if(req.query.username === req.query.userId ){
     console.log('wanting notifications')
     await User.findById({_id: req.query.userId})
 .then(user => {
-    Msg.find( 
+    Msg.findOne( 
         {otherUser: user.username}
-    )
+    ).sort({time:-1})
     .then(documents => {
         res.status(200).json({
           message: 'Info messages fetched succesfully!',

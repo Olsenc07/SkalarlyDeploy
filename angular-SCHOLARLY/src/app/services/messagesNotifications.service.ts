@@ -18,7 +18,10 @@ export interface Message {
 })
 export class MessageNotificationService {
   private messagesNotif: Message[] = [];
+  private messagesNotifOnce: Message[] = [];
+
   private messagesInfoUpdated = new Subject<Message[]>();
+  private messagesNotifiedUpdated = new Subject<Message[]>();
 
   private messagesDel: Message[] = [];
   private messagesInfoDel = new Subject<Message[]>();
@@ -26,6 +29,10 @@ export class MessageNotificationService {
 
   getInfoUpdateListenerNotification(): any {
     return this.messagesInfoUpdated.asObservable();
+  }
+
+  getInfoUpdateListenerNotificationOnce(): any {
+    return this.messagesNotifiedUpdated.asObservable();
   }
 
   getMessageNotification(userId: string, username: string): any {
