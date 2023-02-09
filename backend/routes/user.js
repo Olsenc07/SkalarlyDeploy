@@ -2586,40 +2586,40 @@ router.post('/gethashs', async (req, res) => {
                 m1 = []
                  docs.forEach((e) => { 
                     m1.push(e.Hashtag1) } )
-                    console.log('m1', m1)
+                
                     let matches1 = m1.filter((e) => e.match(regex))
                     console.log('matches1', matches1)
                     // 2
                     m2 = []
                     docs.forEach((e) => { 
                        m2.push(e.Hashtag2) } )
-                       console.log('m2', m2)
+                  
                        let matches2 = m2.filter((e) => e.match(regex))
                        console.log('matches2', matches2)
                     //    3
                        m3 = []
                        docs.forEach((e) => { 
                           m3.push(e.Hashtag3) } )
-                          console.log('m3', m3)
+                      
                           let matches3 = m3.filter((e) => e.match(regex))
                           console.log('matches3',matches3)
                         //   4
                           m4 = []
                           docs.forEach((e) => { 
                              m4.push(e.Hashtag4) } )
-                             console.log('m4', m4)
+                             
                              let matches4 = m4.filter((e) => e.match(regex))
                              console.log('matches4',matches4)
                             //  5
                              m5 = []
                              docs.forEach((e) => { 
                                 m5.push(e.Hashtag5) } )
-                                console.log('m5', m5)
+                        
                                 let matches5 = m5.filter((e) => e.match(regex))
                                 console.log('matches5', matches5)
     // do for other five and put results together
           matchesAll = []
-          matchesAll.append(matches1,matches2,matches3,matches4,matches5)
+          matchesAll.push(...matches1,...matches2,...matches3,...matches4,...matches5)
         //   then filter and cancel any repeats
         let finalMatches = [... new Set(matchesAll)]
           console.log('trying', matchesAll)
