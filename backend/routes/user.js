@@ -2584,7 +2584,7 @@ router.post('/gethashs', async (req, res) => {
             const regex = new RegExp('.*' + payload + '.*',
                 'i')
                 let matches1 = docs.filter((e) => e.Hashtag1.match(regex)  )
-                    console.log('matches1',matches1.Hashtag1)
+                    console.log('matches1',matches1?.Hashtag1)
                     useOne = []
                     if(matches1.length){
                         useOne.append(matches1.Hashtag1)
@@ -2612,12 +2612,12 @@ router.post('/gethashs', async (req, res) => {
                     }
                     console.log('useFour',useFour)
                 let matches5 = docs.filter((e) => e.Hashtag5.match(regex))
-                    console.log('matches5',matches5)  
+                    console.log('matches5',matches5?.Hashtag5)  
                     useFive = []
                     if(matches5.length){
                         useFive.append(matches5.Hashtag5)
                     }
-                    console.log('useThree',useThree)
+                    console.log('useFive',useFive)
     // do for other five and put results together
           matchesAll = []
           matchesAll.append(useOne,useTwo,useThree,useFour,useFive)
