@@ -1297,10 +1297,9 @@ export class CardFeedComponent implements OnInit {
   spreadWord(postId: string): void {
     this.postService.addPostShared(postId, this.userId);
   }
-  openEmoji(emojiComment: string): void {
+  openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
     const triggerEmoji = document.getElementById('triggerEmo');
-    console.log('star through');
     const picker = createPopup(
       {},
       {
@@ -1314,13 +1313,9 @@ export class CardFeedComponent implements OnInit {
     picker.addEventListener('emoji:select', (selection) => {
       console.log('Selected emoji: ', selection.emoji);
       const msgs = selection.emoji;
-      console.log('eC', emojiComment);
-      console.log('cV', this.commentsValidator);
 
-      if (emojiComment === this.commentsValidator) {
-        const msg = this.comment.value + msgs;
-        this.comment.setValue(msg);
-      }
+      const msg = this.comment.value + msgs;
+      this.comment.setValue(msg);
     });
   }
   imgClick(imgPath): any {
