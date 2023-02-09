@@ -54,6 +54,7 @@ export class MessageNotificationService {
       )
       .subscribe((transformedMessage) => {
         this.messagesNotif = transformedMessage;
+        console.log('deep end', this.messagesNotif);
         this.messagesInfoUpdated.next(this.messagesNotif);
       });
   }
