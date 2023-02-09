@@ -2583,8 +2583,8 @@ router.post('/gethashs', async (req, res) => {
             console.log('docs',docs)
             const regex = new RegExp('.*' + payload + '.*',
                 'i')
-                let matches1 = docs.filter((e) => e.Hashtag1.match(regex)  )
-                    console.log('matches1',matches1?.Hashtag1)
+                let matches1 = docs.filter((e) => e.Hashtag1  )
+                    console.log('matches1',matches1)
                     useOne = []
                     if(matches1.length){
                         useOne.append(matches1.Hashtag1)
