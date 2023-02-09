@@ -248,7 +248,7 @@
              <mat-form-field id="showEmojis">
             <input *ngIf="((commentsValidator == post.id) ||  (commentsValidator == '')) " matInput placeholder="Comment..." class="comment-form-textarea" id="selection-emoji"
             maxlength="140" [formControl]="comment" (click)="commentsValidatorFunc(post.id)">
-            <input *ngIf="commentsValidator !== post.id" matInput placeholder="Comment..." class="comment-form-textarea" 
+            <input *ngIf="((commentsValidator !== post.id) && (commentsValidator !== ''))" matInput placeholder="Comment..." class="comment-form-textarea" 
              (click)="commentsValidatorFunc(post.id)">
             <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
         </mat-form-field>
