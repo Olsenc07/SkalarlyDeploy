@@ -112,7 +112,7 @@ for(let i in nonya){
              },
             { 
                 // doesnt take the multiple nonya maybe make a loop
-                $first: {username: i }
+                $first: {username: nonya[i] }
             },
             { $sort: { time: -1 } }
       ] )
@@ -132,10 +132,10 @@ for(let i in nonya){
   
 }
 console.log('twisted transistor', allMsgs)
-res.status(200).json({
-    message: 'Info messages fetched succesfully!',
-       messages: allMsgs
-    });
+// res.status(200).json({
+//     message: 'Info messages fetched succesfully!',
+//        messages: allMsgs
+//     });
 
 // filter matching username and take the larger time value
 
