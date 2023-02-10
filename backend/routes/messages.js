@@ -106,16 +106,21 @@ console.log('no repeats', nonyaOnce)
 allMsgs = []
 for(let i in nonyaOnce){
     console.log('i', nonyaOnce[i] );
-    Msg.aggregate([
-            {
-                $match: { otherUser: user.username }
-             },
-            { 
-                // doesnt take the multiple nonya maybe make a loop
-                $first: {username: nonyaOnce[i] }
-            },
-            { $sort: { time: -1 } }
-      ] )
+    // Msg.aggregate([
+    //         {
+    //             $match: { otherUser: user.username }
+    //          },
+    //         { 
+
+    //             $first: {username: nonyaOnce[i] }
+    //         },
+    //         { $sort: { time: -1 } }
+    //   ] )
+    Msg.findOne({ $and: [
+{otherUser: user.username},
+{username: nonyaOnce[i]}
+    ]
+    }).sort({time:-1})
       
       .then(finalDocs => {
         console.log('finaldocs', finalDocs)
@@ -132,10 +137,10 @@ for(let i in nonyaOnce){
   
 }
 console.log('twisted transistor', allMsgs)
-// res.status(200).json({
-//     message: 'Info messages fetched succesfully!',
-//        messages: allMsgs
-//     });
+res.status(200).json({
+    message: 'Info messages fetched succesfully!',
+       messages: allMsgs
+    });
 
 // filter matching username and take the larger time value
 
