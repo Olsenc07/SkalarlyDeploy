@@ -92,6 +92,14 @@ if(req.query.username === req.query.userId ){
     ).sort({time:-1})
     .then(documents => {
         console.log('nonya', documents)
+        nonya = [];
+        documents.forEach((e) => {
+            nonya.push(e.username)
+        })
+        console.log('nonya',nonya)
+        // matchesAll = []
+        // let finalMatches = [... new Set(matchesAll)]
+        // console.log('nothing', finalMatches);
         res.status(200).json({
           message: 'Info messages fetched succesfully!',
              messages: documents
