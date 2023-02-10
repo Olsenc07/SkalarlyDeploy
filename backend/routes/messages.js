@@ -106,6 +106,8 @@ router.get("/infoMessage", async(req, res, next) => {
 allMsgs = []
 for(let i = 0; nonya.length; i++){
     console.log('i', i);
+    console.log('non i', nonya[i]);
+
     Msg.aggregate([
             {
                 $match: { otherUser: user.username }
