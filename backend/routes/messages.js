@@ -97,36 +97,42 @@ if(req.query.username === req.query.userId ){
         documents.forEach((e) => {
             nonya.push(e.username)
         })
-        console.log('nonya',nonya[0])
+        console.log('nonya',nonya)
+        console.log('userId',req.query.userId)
 
 
 
 
-    // Msg.aggregate([
-    //         {
-    //             $match: { you: req.query.userId }
-    //          },
-    //         { 
-    //             // doesnt take the multiple nonya maybe make a loop
-    //             $first: {username: nonya[0] }
-    //         }
-    //   ] )
+allMsgs = []
+for(let i = 0; nonya.length; i++){
+    Msg.aggregate([
+            {
+                $match: { you: req.query.userId }
+             },
+            { 
+                // doesnt take the multiple nonya maybe make a loop
+                $first: {username: nonya[i] }
+            }
+      ] )
       
-      
-    //   .then(finalDocs => {
-    //     console.log('finaldocs', finalDocs)
-    //     res.status(200).json({
-    //         message: 'Info messages fetched succesfully!',
-    //            messages: finalDocs
-    //         });
-    //   })
-    //   .catch(err => {
-    //     return res.status(401).json({
-    //         message: "Message error 3!",
+      .then(finalDocs => {
+        console.log('finaldocs', finalDocs)
+       allMsgs.push(finalDocs);
+    console.log('freak on a leash', allMsgs)
+
+      })
+      .catch(err => {
+        return res.status(401).json({
+            message: "Message error 3!",
     
-    //     })
-    // })
-
+        })
+    })
+    console.log('twisted transistor', allMsgs)
+    res.status(200).json({
+        message: 'Info messages fetched succesfully!',
+           messages: allMsgs
+        });
+}
 
 // filter matching username and take the larger time value
 
