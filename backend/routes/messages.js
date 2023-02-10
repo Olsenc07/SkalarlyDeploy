@@ -93,17 +93,35 @@ if(req.query.username === req.query.userId ){
     .then(documents => {
         console.log('nonya', documents)
         nonya = [];
+
         documents.forEach((e) => {
             nonya.push(e.username)
         })
         console.log('nonya',nonya)
+        Msg.aggregate([{ $first: {username: nonya } 
+
+
+      }] ).then(finalDocs => {
+        console.log('finaldocs', finalDocs)
+        res.status(200).json({
+            message: 'Info messages fetched succesfully!',
+               messages: finalDocs
+            });
+      })
+      .catch(err => {
+        return res.status(401).json({
+            message: "Message error 3!",
+    
+        })
+    })
+
+
+// filter matching username and take the larger time value
+
         // matchesAll = []
         // let finalMatches = [... new Set(matchesAll)]
         // console.log('nothing', finalMatches);
-        res.status(200).json({
-          message: 'Info messages fetched succesfully!',
-             messages: documents
-          });
+       
     })
 })
 .catch(err => {
