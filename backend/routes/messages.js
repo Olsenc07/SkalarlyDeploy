@@ -113,6 +113,8 @@ for(let i in nonyaOnce){
     if(allMsgs.length == nonyaOnce.length){
     console.log('twisted transistor 2', allMsgs);
     console.log('twisted transistor 3', allMsgs.length);
+    console.log('twisted transistor 4', nonyaOnce.length);
+
 
 
     res.status(200).json({
