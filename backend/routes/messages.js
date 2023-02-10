@@ -104,18 +104,17 @@ router.get("/infoMessage", async(req, res, next) => {
 
 
 allMsgs = []
-for(let i = 0; nonya.length; i++){
+for(let i in nonya){
     console.log('i', i);
-    console.log('non i', nonya[i]);
-
     Msg.aggregate([
             {
                 $match: { otherUser: user.username }
              },
             { 
                 // doesnt take the multiple nonya maybe make a loop
-                $first: {username: nonya[i] }
-            }
+                $first: {username: i }
+            },
+            { $sort: { time: -1 } }
       ] )
       
       .then(finalDocs => {
