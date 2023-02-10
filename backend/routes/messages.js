@@ -127,12 +127,12 @@ for(let i = 0; nonya.length; i++){
     
         })
     })
-    console.log('twisted transistor', allMsgs)
     // res.status(200).json({
     //     message: 'Info messages fetched succesfully!',
     //        messages: allMsgs
     //     });
 }
+console.log('twisted transistor', allMsgs)
 
 // filter matching username and take the larger time value
 
