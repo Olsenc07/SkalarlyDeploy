@@ -102,7 +102,7 @@ if(req.query.username === req.query.userId ){
 
 
 
-        Msg.aggregate([
+      let hey = Msg.aggregate([
             {
                 $match: { you: req.query.userId }
              },
@@ -126,7 +126,7 @@ if(req.query.username === req.query.userId ){
     
         })
     })
-
+console.log('hey', hey)
 
 // filter matching username and take the larger time value
 
