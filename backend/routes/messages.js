@@ -100,9 +100,11 @@ if(req.query.username === req.query.userId ){
         console.log('nonya',nonya)
         Msg.aggregate([
             {
-                $match: { username: req.query.username }
+                $match: { you: req.query.userId }
              },
-            { $first: {username: nonya }}
+            { 
+                $first: {username: nonya }
+            }
       ] ).then(finalDocs => {
         console.log('finaldocs', finalDocs)
         res.status(200).json({
