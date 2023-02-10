@@ -190,7 +190,7 @@ export class ReusableCardMessageComponent implements OnInit {
     //    Info
 
     this.messageNotificationService
-      .getInfoUpdateListenerNotification()
+      .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
         this.messagesNotif = messagesNotif.reverse();

@@ -20,6 +20,7 @@ export class MessageNotificationService {
   private messagesNotif: Message[] = [];
 
   private messagesInfoUpdated = new Subject<Message[]>();
+  private messgesInfoUpdatedNotifs = new Subject<Message[]>();
 
   private messagesDel: Message[] = [];
   private messagesInfoDel = new Subject<Message[]>();
@@ -27,6 +28,10 @@ export class MessageNotificationService {
 
   getInfoUpdateListenerNotification(): any {
     return this.messagesInfoUpdated.asObservable();
+  }
+
+  getListenerNotification(): any {
+    return this.messgesInfoUpdatedNotifs.asObservable();
   }
 
   getMessageNotification(userId: string, username: string): any {
@@ -55,7 +60,7 @@ export class MessageNotificationService {
       .subscribe((transformedMessage) => {
         this.messagesNotif = transformedMessage;
         console.log('deep end', this.messagesNotif);
-        this.messagesInfoUpdated.next([...this.messagesNotif]);
+        this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
       });
   }
 
