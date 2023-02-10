@@ -89,7 +89,7 @@ router.get("/infoMessage", async(req, res, next) => {
 .then(user => {
     Msg.find( 
         {otherUser: user.username}
-    )
+    ).sort({_id:-1})
     .then(documents => {
         nonya = [];
 
