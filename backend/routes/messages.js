@@ -98,14 +98,22 @@ if(req.query.username === req.query.userId ){
             nonya.push(e.username)
         })
         console.log('nonya',nonya)
-        Msg.find([
+
+
+
+
+        Msg.aggregate([
             {
                 $match: { you: req.query.userId }
              },
             { 
-                $first: {username: nonya }
+                // doesnt take the multiple nonya maybe make a loop
+                $first: {username: nonya[0] }
             }
-      ] ).then(finalDocs => {
+      ] )
+      
+      
+      .then(finalDocs => {
         console.log('finaldocs', finalDocs)
         res.status(200).json({
             message: 'Info messages fetched succesfully!',
