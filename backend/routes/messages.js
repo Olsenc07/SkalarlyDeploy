@@ -98,7 +98,7 @@ if(req.query.username === req.query.userId ){
             nonya.push(e.username)
         })
         console.log('nonya',nonya)
-        Msg.aggregate([
+        Msg.find([
             {
                 $match: { you: req.query.userId }
              },
