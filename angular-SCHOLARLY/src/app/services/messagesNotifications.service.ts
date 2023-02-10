@@ -19,27 +19,27 @@ export interface Message {
 export class MessageNotificationService {
   private messagesNotif: Message[] = [];
 
-  private messagesInfoUpdated = new Subject<Message[]>();
+  // private messagesInfoUpdated = new Subject<Message[]>();
   private messgesInfoUpdatedNotifs = new Subject<Message[]>();
 
   private messagesDel: Message[] = [];
   private messagesInfoDel = new Subject<Message[]>();
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
-  getInfoUpdateListenerNotification(): any {
-    return this.messagesInfoUpdated.asObservable();
-  }
+  // getInfoUpdateListenerNotification(): any {
+  //   return this.messagesInfoUpdated.asObservable();
+  // }
 
   getListenerNotification(): any {
     return this.messgesInfoUpdatedNotifs.asObservable();
   }
 
-  getMessageNotification(userId: string, username: string): any {
+  getMessageNotification(userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/messages/infoMessage',
         {
-          params: { userId, username },
+          params: { userId },
         }
       )
       .pipe(
