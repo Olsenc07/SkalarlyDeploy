@@ -60,30 +60,30 @@ res.status(200).json({
 
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
-if(req.query.username === req.query.userId ){
-    console.log('C.R.E.A.M')
-    await User.findById({_id: req.query.userId})
-    .then(user => {
-        Msg.find( {otherUser: user.username}).sort({time:-1})
-        .then(messagesNotif => {
-            res.status(200).json({
-              message: 'Info messages fetched succesfully!',
-            messages: messagesNotif
-              });
-        }).catch(err => {
-            return res.status(401).json({
-                message: "Fetching message error!",
+// if(req.query.username === req.query.userId ){
+//     console.log('C.R.E.A.M')
+//     await User.findById({_id: req.query.userId})
+//     .then(user => {
+//         Msg.find( {otherUser: user.username}).sort({time:-1})
+//         .then(messagesNotif => {
+//             res.status(200).json({
+//               message: 'Info messages fetched succesfully!',
+//             messages: messagesNotif
+//               });
+//         }).catch(err => {
+//             return res.status(401).json({
+//                 message: "Fetching message error!",
         
-            })
-        })
-    })
-    .catch(err => {
-        return res.status(401).json({
-            message: "Message error!",
+//             })
+//         })
+//     })
+//     .catch(err => {
+//         return res.status(401).json({
+//             message: "Message error!",
     
-        })
-    })
-}else{
+//         })
+//     })
+// }else{
     console.log('wanting notifications')
     await User.findById({_id: req.query.userId})
 .then(user => {
@@ -97,7 +97,7 @@ if(req.query.username === req.query.userId ){
         documents.forEach((e) => {
             nonya.push(e.username)
         })
-        console.log('nonya',nonya)
+        console.log('nonya',nonya.length)
         console.log('otherUser', user.username)
 
 
@@ -105,6 +105,7 @@ if(req.query.username === req.query.userId ){
 
 allMsgs = []
 for(let i = 0; nonya.length; i++){
+    console.log('i', i);
     Msg.aggregate([
             {
                 $match: { otherUser: user.username }
@@ -149,7 +150,7 @@ res.status(200).json({
 
     })
 })
-}
+// }
 })
 
 
