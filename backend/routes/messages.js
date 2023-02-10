@@ -98,7 +98,7 @@ if(req.query.username === req.query.userId ){
             nonya.push(e.username)
         })
         console.log('nonya',nonya)
-        console.log('userId',req.query.userId)
+        console.log('otherUser', user.username)
 
 
 
@@ -107,7 +107,7 @@ allMsgs = []
 for(let i = 0; nonya.length; i++){
     Msg.aggregate([
             {
-                $match: { you: req.query.userId }
+                $match: { otherUser: user.username }
              },
             { 
                 // doesnt take the multiple nonya maybe make a loop
@@ -127,12 +127,13 @@ for(let i = 0; nonya.length; i++){
     
         })
     })
-    // res.status(200).json({
-    //     message: 'Info messages fetched succesfully!',
-    //        messages: allMsgs
-    //     });
+  
 }
 console.log('twisted transistor', allMsgs)
+res.status(200).json({
+    message: 'Info messages fetched succesfully!',
+       messages: allMsgs
+    });
 
 // filter matching username and take the larger time value
 
