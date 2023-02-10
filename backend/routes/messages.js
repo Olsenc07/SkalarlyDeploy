@@ -89,14 +89,15 @@ router.get("/infoMessage", async(req, res, next) => {
 .then(user => {
     Msg.find( 
         {otherUser: user.username}
-    ).sort({_id:-1})
+    ).sort({time:-1})
     .then(documents => {
+        console.log('timing', documents)
         nonya = [];
-
         documents.forEach((e) => {
             nonya.push(e.username)
-        })
-let nonyaOnce = [...new Set(nonya)]
+        });
+let nonyaOnce = [...new Set(nonya)];
+console.log('order', nonyaOnce);
 allMsgs = []
 for(let i in nonyaOnce){
     Msg.findOne({ $and: [
