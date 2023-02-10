@@ -193,7 +193,7 @@ export class ReusableCardMessageComponent implements OnInit {
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
-        this.messagesNotif = messagesNotif;
+        this.messagesNotif = messagesNotif.reverse();
       });
     // this.route.queryParams.subscribe((params) => {
     //   this.username = params?.username;
