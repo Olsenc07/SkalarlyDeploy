@@ -193,7 +193,7 @@ export class ReusableCardMessageComponent implements OnInit {
       .getInfoUpdateListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
-        this.messagesNotif = messagesNotif;
+        this.messagesNotif = messagesNotif.reverse();
       });
     this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
@@ -219,21 +219,21 @@ export class ReusableCardMessageComponent implements OnInit {
     location.reload();
   }
   // Back
-  onClickMsgBack(): any {
-    const count = 1;
-    this.countVisibility += count;
-    const counting = 5;
-    this.recomCounter += counting;
-    console.log('hey back', this.recomCounter);
-    console.log('howdy', this.countVisibility);
+  // onClickMsgBack(): any {
+  //   const count = 1;
+  //   this.countVisibility += count;
+  //   const counting = 5;
+  //   this.recomCounter += counting;
+  //   console.log('hey back', this.recomCounter);
+  //   console.log('howdy', this.countVisibility);
 
-    this.messageNotificationService
-      .getInfoUpdateListenerNotification()
-      .subscribe((messagesNotif: Message[]) => {
-        this.isLoading = false;
-        this.messagesNotif = messagesNotif.reverse();
-      });
-  }
+  //   this.messageNotificationService
+  //     .getInfoUpdateListenerNotification()
+  //     .subscribe((messagesNotif: Message[]) => {
+  //       this.isLoading = false;
+  //       this.messagesNotif = messagesNotif.reverse();
+  //     });
+  // }
 }
 
 @Component({
