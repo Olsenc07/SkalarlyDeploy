@@ -99,16 +99,6 @@ router.get("/infoMessage", async(req, res, next) => {
 let nonyaOnce = [...new Set(nonya)]
 allMsgs = []
 for(let i in nonyaOnce){
-    // Msg.aggregate([
-    //         {
-    //             $match: { otherUser: user.username }
-    //          },
-    //         { 
-
-    //             $first: {username: nonyaOnce[i] }
-    //         },
-    //         { $sort: { time: -1 } }
-    //   ] )
     Msg.findOne({ $and: [
 {otherUser: user.username},
 {username: nonyaOnce[i]}
@@ -119,27 +109,21 @@ for(let i in nonyaOnce){
         console.log('finaldocs', finalDocs)
        allMsgs.push(finalDocs);
     console.log('freak on a leash', allMsgs)
-    res.status(200).json({
-        message: 'Info messages fetched succesfully!',
-           messages: allMsgs
-        });
+   
       })
+
       .catch(err => {
         return res.status(401).json({
             message: "Message error 3!",
     
         })
     })
-  
-}
 console.log('twisted transistor', allMsgs)
-
-
-// filter matching username and take the larger time value
-
-        // matchesAll = []
-        // let finalMatches = [... new Set(matchesAll)]
-        // console.log('nothing', finalMatches);
+    res.status(200).json({
+        message: 'Info messages fetched succesfully!',
+           messages: allMsgs
+        });
+}
        
     })
 })
