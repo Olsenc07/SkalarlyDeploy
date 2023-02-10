@@ -64,7 +64,7 @@ if(req.query.username === req.query.userId ){
     console.log('C.R.E.A.M')
     await User.findById({_id: req.query.userId})
     .then(user => {
-        Msg.findOne( {otherUser: user.username}).sort({time:-1})
+        Msg.find( {otherUser: user.username}).sort({time:-1})
         .then(messagesNotif => {
             res.status(200).json({
               message: 'Info messages fetched succesfully!',
@@ -87,7 +87,7 @@ if(req.query.username === req.query.userId ){
     console.log('wanting notifications')
     await User.findById({_id: req.query.userId})
 .then(user => {
-    Msg.findOne( 
+    Msg.find( 
         {otherUser: user.username}
     ).sort({time:-1})
     .then(documents => {
