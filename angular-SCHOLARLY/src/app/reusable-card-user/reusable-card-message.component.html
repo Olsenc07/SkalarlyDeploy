@@ -39,11 +39,11 @@
 
                 </div>
             </div>
-            <div class="buttonCombo" >
+            <!-- <div class="buttonCombo" > -->
 
                 <div class="buttonsC">
 
-                <button class="counterColor" mat-flat-button (click)="navigateToChat(info.username)" matTooltip="Display Messages">
+                <mat-chip  class="messageBtn"  mat-flat-button (click)="navigateToChat(info.username)" matTooltip="Display Messages">
 
             <!-- Card is removed from list when follow is clicked -->
             <!-- Only appears if user isn't already following this mutual friend -->
@@ -55,19 +55,19 @@
                     <!-- Or -->
                     <!-- <i class="far fa-envelope"></i> -->
                     <i class="fas fa-envelope-open-text iconSpace"></i>
-                </button>
+                </mat-chip >
 
             <!-- </mat-chip-list> -->
             
 </div>
 
-<div class="buttonsC">
+<!-- <div class="buttonsC">
     <button mat-flat-button (click)="deleteMsg(info.id)" matTooltip="Deletes For Both " class="repostColor">
     <i class="fas fa-times-circle delete" ></i>
 </button>
-</div>
+</div> -->
 
-</div>
+<!-- </div> -->
         </div>
 
 
