@@ -84,28 +84,21 @@ router.get("/infoMessage", async(req, res, next) => {
 //         })
 //     })
 // }else{
-    console.log('wanting notifications')
+
     await User.findById({_id: req.query.userId})
 .then(user => {
     Msg.find( 
         {otherUser: user.username}
     ).sort({time:-1})
     .then(documents => {
-        console.log('nonya', documents)
         nonya = [];
 
         documents.forEach((e) => {
             nonya.push(e.username)
         })
-        console.log('nonya',nonya)
-        console.log('otherUser', user.username)
-
 let nonyaOnce = [...new Set(nonya)]
-console.log('no repeats', nonyaOnce)
-
 allMsgs = []
 for(let i in nonyaOnce){
-    console.log('i', nonyaOnce[i] );
     // Msg.aggregate([
     //         {
     //             $match: { otherUser: user.username }
@@ -126,7 +119,10 @@ for(let i in nonyaOnce){
         console.log('finaldocs', finalDocs)
        allMsgs.push(finalDocs);
     console.log('freak on a leash', allMsgs)
-
+    res.status(200).json({
+        message: 'Info messages fetched succesfully!',
+           messages: allMsgs
+        });
       })
       .catch(err => {
         return res.status(401).json({
@@ -137,10 +133,7 @@ for(let i in nonyaOnce){
   
 }
 console.log('twisted transistor', allMsgs)
-res.status(200).json({
-    message: 'Info messages fetched succesfully!',
-       messages: allMsgs
-    });
+
 
 // filter matching username and take the larger time value
 
