@@ -104,7 +104,7 @@ for(let i in nonyaOnce){
 {otherUser: user.username},
 {username: nonyaOnce[i]}
     ]
-    }).sort({time:-1})
+    }).sort({_id:-1})
       
       .then(finalDocs => {
         console.log('finaldocs', finalDocs)
