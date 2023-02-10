@@ -108,8 +108,18 @@ for(let i in nonyaOnce){
       .then(finalDocs => {
         console.log('finaldocs', finalDocs)
        allMsgs.push(finalDocs);
-    console.log('freak on a leash', allMsgs)
-   
+
+    console.log('twisted transistor', allMsgs)
+    if(allMsgs.length == nonyaOnce.length){
+    console.log('twisted transistor 2', allMsgs);
+    console.log('twisted transistor 3', allMsgs.length);
+
+
+    res.status(200).json({
+        message: 'Info messages fetched succesfully!',
+           messages: allMsgs
+        });
+    }
       })
 
       .catch(err => {
@@ -118,11 +128,7 @@ for(let i in nonyaOnce){
     
         })
     })
-console.log('twisted transistor', allMsgs)
-    res.status(200).json({
-        message: 'Info messages fetched succesfully!',
-           messages: allMsgs
-        });
+
 }
        
     })
