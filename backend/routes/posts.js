@@ -1025,10 +1025,32 @@ router.get("/checkNotif", async (req, res) => {
 // Delete conversation
 router.delete("/delConvo/:id", checkAuth, async(req, res, next ) => {
 
-    console.log('thankyou sir', req.params.id)
-    Msg.findOne({_id: req.params.id})
+    console.log('thankyou sir', req.params.postId)
+    Msg.findOne({_id: req.params.postId})
     .then((found) => {
         console.log('found', found);
+        Msg.deleteMany({ 
+            $and: [
+                {username: found.username},
+                {otherUser: found.otherUser}
+            ]
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Deleting Messages failed 1'
+            });
+        });
+        Msg.deleteMany({ 
+            $and: [
+                {username: found.otherUser},
+                {otherUser: found.username}
+            ]
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Deleting Messages failed 2'
+            });
+        });
     })
   
     })

@@ -88,7 +88,9 @@ export class MessageNotificationService {
 
   deleteMessage(msgId: string): any {
     this.http
-      .delete('https://www.skalarly.com/api/messages/deleteMsg/' + msgId)
+      .delete<{ message: any }>(
+        'https://www.skalarly.com/api/messages/deleteMsg/' + msgId
+      )
       .subscribe(() => {
         const updatedPosts = this.messagesDel.filter((msg) => msg.id !== msgId);
         this.messagesDel = updatedPosts;
