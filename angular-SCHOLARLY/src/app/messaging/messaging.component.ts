@@ -5,7 +5,7 @@ import { PostsService } from '../services/posts.service';
 
 import { io } from 'socket.io-client';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageNotificationService } from '../services/messagesNotifications.service';
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
@@ -70,6 +70,8 @@ export class MessagingComponent implements OnInit {
     private messageNotificationService: MessageNotificationService,
 
     private route: ActivatedRoute,
+    private router: Router,
+
     private postsService: PostsService
   ) {}
 
@@ -121,7 +123,10 @@ export class MessagingComponent implements OnInit {
         });
     }
   }
-
+  navigateToChat(username: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/messages/:'], { queryParams: { username } });
+  }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
     if (timeHourInitial > 12) {
