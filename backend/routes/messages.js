@@ -154,7 +154,7 @@ console.log('payload', payload);
             });
     let nonyaOnce = [...new Set(nonya)];
 // Regex here
-const regex = new RegExp(/^payload/,
+const regex = new RegExp('^' + payload,
 'i');
 let matches = nonyaOnce.filter((e) => 
 
@@ -172,12 +172,18 @@ console.log('matches', matches)
         }).sort({time:-1})    
           .then(finalDocs => {
            allMsgs.push(finalDocs);
-        if(allMsgs.length == matches.length){
+        if(matches.length == 0){
             res.status(200).json({
                 message: 'Info messages fetched succesfully!',
                    messages: matches
                 });
           }
+if(allMsgs.length == matches.length){
+    res.status(200).json({
+        message: 'Info messages fetched succesfully!',
+           messages: matches
+        });
+}
           })
     
           .catch(err => {

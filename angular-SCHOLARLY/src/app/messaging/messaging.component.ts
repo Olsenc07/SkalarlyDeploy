@@ -100,9 +100,13 @@ export class MessagingComponent implements OnInit {
     // Will match if query is nothing or is only spaces
     const matchSpaces: any = queryHash.match(/\s*/);
     if (matchSpaces[0] === queryHash) {
-      this.notifs = [];
-      // this.hasQueryHash = false;
-      return;
+      this.messageNotificationService.getMessageNotification(this.userId);
+      this.messageNotificationService
+        .getListenerNotification()
+        .subscribe((messagesNotif: Message[]) => {
+          this.isLoading = false;
+          this.messagesNotif = messagesNotif.reverse();
+        });
     } else {
       this.messageNotificationService.getMessageNotificationFilter(
         this.userId,
