@@ -154,7 +154,7 @@ console.log('payload', payload);
             });
     let nonyaOnce = [...new Set(nonya)];
 // Regex here
-const regex = new RegExp('.^' + payload,
+const regex = new RegExp(/.^payload/,
 'i');
 let matches = nonyaOnce.filter((e) => 
 
