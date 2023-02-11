@@ -225,6 +225,10 @@ export class ReusableCardComponent implements OnInit {
 
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.route.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
   }
 
   commentsValidatorFunc(postId: string): void {
@@ -534,6 +538,14 @@ export class ReusableCardPersonalComponent implements OnInit {
         console.log('posts', this.posts);
       });
   }
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
+
   commentsValidatorFunc(postId: string): void {
     this.commentsValidator = postId;
     this.comment.setValue('');
@@ -1513,6 +1525,14 @@ export class TrendingFeedComponent implements OnInit {
     //     this.isLoading = false;
     //   });
   }
+
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
   commentsValidatorFunc(postId: string): void {
     this.commentsValidator = postId;
     this.comment.setValue('');
@@ -1841,6 +1861,16 @@ export class CardFriendsComponent implements OnInit {
     //     this.isLoading = false;
     //   });
   }
+
+
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
+
   commentsValidatorFunc(postId: string): void {
     this.commentsValidator = postId;
     this.comment.setValue('');
@@ -2440,6 +2470,13 @@ export class CardInfoMainPageComponent implements OnInit {
           this.posts = posts;
           this.isLoading = false;
         });
+    });
+  }
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
     });
   }
   navToPost(postId: string): any {

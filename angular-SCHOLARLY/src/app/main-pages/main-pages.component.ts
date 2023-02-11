@@ -55,6 +55,13 @@ export class MainPagesComponent implements OnInit {
         });
     });
   }
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
   // To post page with users id
   navigateToPost(): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -164,6 +171,15 @@ export class SinglePageTemplateComponent implements OnInit {
         });
     });
   }
+
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
+
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
     if (timeHourInitial > 12) {
@@ -484,6 +500,13 @@ export class RecentComponent implements OnInit {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
@@ -731,6 +754,13 @@ export class TrendingComponent implements OnInit {
   navigateToMainPage(value: string): void {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
+  }
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -1196,6 +1226,18 @@ export class HashtagComponent implements OnInit {
           this.isLoading = false;
         });
     });
+  }
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
+  // Where the post was posted
+  navigateToMainPage(value: string): void {
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
   }
   // To post page with users id
   navigateToPost(): any {

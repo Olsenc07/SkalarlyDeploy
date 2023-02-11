@@ -153,28 +153,26 @@ router.get("/getNotifMsgs", async(req, res, next) => {
                 nonya.push(e.username)
             });
     let nonyaOnce = [...new Set(nonya)];
-    console.log('order', nonyaOnce);
+// Regex here
+const regex = new RegExp(payload + '.*',
+'i');
+let matches = nonyaOnce.forEach((e) => {
+    console.log('advantage', e);
+    e.match(regex);
+})
+console.log('order', nonyaOnce);
+console.log('matches', matches)
+
     allMsgs = []
-    for(let i in nonyaOnce){
+    for(let i in matches){
         Msg.findOne({ $and: [
     {otherUser: user.username},
-    {username: nonyaOnce[i]}
+    {username: matches[i]}
         ]
         }).sort({time:-1})    
           .then(finalDocs => {
            allMsgs.push(finalDocs);
-        if(allMsgs.length == nonyaOnce.length){
-            const regex = new RegExp(payload + '.*',
-            'i');
-            
-            let matches = allMsgs.forEach((e) => {
-                console.log('advantage', e);
-                console.log('pills', e.username);
-
-                e.username.match(regex)
-            })
-            console.log('matches', matches)
-
+        if(allMsgs.length == matches.length){
             res.status(200).json({
                 message: 'Info messages fetched succesfully!',
                    messages: matches
