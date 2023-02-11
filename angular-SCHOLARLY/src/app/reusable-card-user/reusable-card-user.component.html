@@ -2,7 +2,13 @@
     <mat-spinner ></mat-spinner>
   </div>
 
-  
+  <mat-form-field  
+  appearance="outline">
+  <input matInput
+   placeholder="Search Following" 
+  (keyup)="sendDataMututal($event)"
+  />
+ </mat-form-field>
 <mat-card class="row1" *ngFor="let info of follow">
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPathFollowing">

@@ -75,6 +75,24 @@ export class ReusableCardUserComponent implements OnInit {
         this.isLoading = false;
       });
   }
+
+  sendDataMututal(event: any): any {
+    const queryFollowing: string = event.target.value;
+    console.log('query yo', queryFollowing);
+    // Will match if query is nothing or is only spaces
+    const matchSpaces: any = queryFollowing.match(/\s*/);
+
+    if (matchSpaces[0] === queryFollowing) {
+      this.followService.getMessageNotification(this.userId);
+      this.followSub = this.followService
+        .getInfoUpdateListener()
+        .subscribe((follow: Follow[]) => {
+          this.follow = follow.reverse();
+          this.isLoading = false;
+        });
+    }
+  }
+
   navigateToPage(Following: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: Following } });
@@ -142,6 +160,7 @@ export class ReusableCardUserFollowerComponent implements OnInit {
         this.isLoading = false;
       });
   }
+
   navigateToPage(Following: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: Following } });
@@ -272,16 +291,6 @@ export class ReusableCardMutualComponent implements OnInit {
         this.mutual = mutual;
         this.isLoading = false;
       });
-  }
-
-  sendDataMututal(event: any): any {
-    const queryFollowing: string = event.target.value;
-    console.log('query yo', queryFollowing);
-    // Will match if query is nothing or is only spaces
-    const matchSpaces: any = queryFollowing.match(/\s*/);
-
-    if (matchSpaces[0] === queryFollowing) {
-    }
   }
 
   navigateToPage(infoUser: string): any {
