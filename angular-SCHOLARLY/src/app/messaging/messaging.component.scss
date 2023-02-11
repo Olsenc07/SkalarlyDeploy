@@ -12,6 +12,33 @@
   margin-right: 2%;
   margin-left: 2%;
 }
+.buttonsC{
+  display: flex;
+  // margin: 1%;
+  align-items: center;
+}
+.buttonCombo{
+  display: flex;
+  flex-direction: row;
+  margin-right: 2%;
+}
+.counterColor{
+  background-color: teal !important;
+  border-bottom-left-radius: 25px;
+  border-top-left-radius: 25px;
+  color: white !important;
+  background: linear-gradient(45deg,rgb(16 23 58),transparent);
+  font-size: large;
+}
+.repostColor{
+  background-color: powderblue !important;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+  color: white !important;
+  background: linear-gradient(45deg,transparent,rgb(16 23 58));  
+  font-size: large;
+
+}
 .chat-messages{
   // font-family:  'Poppins', serif;
   font-family: 'Cormorant Garamond', serif;

@@ -6,6 +6,7 @@ const Subscription = require('/app/backend/models/subscription');
 const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
 const Follow = require('/app/backend/models/follow')
+const Msg = require('/app/backend/models/messages')
 
 
 const webpush = require('web-push');
@@ -1023,7 +1024,12 @@ router.get("/checkNotif", async (req, res) => {
 })
 // Delete conversation
 router.delete("/delConvo/:id", checkAuth, async(req, res, next ) => {
+
     console.log('thankyou sir', req.params.id)
+    Msg.findOne({_id: req.params.id})
+    .then((found) => {
+        console.log('found', found);
+    })
   
     })
 // Delete Notification 
