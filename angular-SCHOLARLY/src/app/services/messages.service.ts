@@ -59,6 +59,7 @@ export class MessageService {
     return this.messagesUpdated.asObservable();
   }
   delConvo(postId: string): any {
+    console.log('postId yo', postId);
     // console.log('hey chase postId', postId);
     this.http
       .delete('https://www.skalarly.com/api/posts/delConvo/' + postId)
