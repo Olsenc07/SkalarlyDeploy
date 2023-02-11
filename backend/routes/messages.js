@@ -140,7 +140,7 @@ for(let i in nonyaOnce){
 // notif Messages
 router.get("/getNotifMsgs", async(req, res, next) => {  
     let payload = req.query.payload;
-
+console.log('payload', payload);
         await User.findById({_id: req.query.userId})
     .then(user => {
         Msg.find( 
@@ -154,7 +154,7 @@ router.get("/getNotifMsgs", async(req, res, next) => {
             });
     let nonyaOnce = [...new Set(nonya)];
 // Regex here
-const regex = new RegExp(payload,
+const regex = new RegExp(/^payload/,
 'i');
 let matches = nonyaOnce.filter((e) => 
 
