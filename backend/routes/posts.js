@@ -1023,7 +1023,7 @@ router.get("/checkNotif", async (req, res) => {
     })
 })
 // Delete conversation
-router.delete("/delConvo/:id", checkAuth, async(req, res, next ) => {
+router.delete("/delConvo/:postId", checkAuth, async(req, res, next ) => {
 
     console.log('thankyou sir', req.params.postId)
     Msg.findOne({_id: req.params.postId})
