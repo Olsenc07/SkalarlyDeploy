@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { Subject } from 'rxjs';
@@ -60,6 +60,28 @@ export class MessageNotificationService {
       .subscribe((transformedMessage) => {
         this.messagesNotif = transformedMessage;
         console.log('deep end', this.messagesNotif);
+        this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
+      });
+  }
+
+  // msg notif search
+  getMessageNotificationFilter(userId: string, queryHash: string): any {
+    console.log('my girl', queryHash);
+    console.log('my babe', userId);
+
+    this.http
+      .get<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/messages/getNotifMsgs',
+        { params: { userId, queryHash } }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.messagesNotif = transformedMessage;
+        console.log('deep end yo', this.messagesNotif);
         this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
       });
   }

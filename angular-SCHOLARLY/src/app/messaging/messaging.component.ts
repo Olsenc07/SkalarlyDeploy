@@ -103,13 +103,19 @@ export class MessagingComponent implements OnInit {
       this.notifs = [];
       // this.hasQueryHash = false;
       return;
-    }
+    } else {
+      this.messageNotificationService.getMessageNotificationFilter(
+        this.userId,
+        queryHash.trim()
+      );
 
-    this.postsService.searchNotifMsgs(queryHash.trim()).subscribe((results) => {
-      this.notifs = results;
-      // this.hasQueryHash = true;
-      console.log('another log', this.notifs);
-    });
+      this.messageNotificationService
+        .getListenerNotification()
+        .subscribe((messagesNotif: Message[]) => {
+          this.isLoading = false;
+          this.messagesNotif = messagesNotif.reverse();
+        });
+    }
   }
 
   // Am Pm instead of 24hr clock

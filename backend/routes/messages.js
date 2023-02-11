@@ -137,16 +137,68 @@ for(let i in nonyaOnce){
 })
 
 
+// notif Messages
+router.get("/getNotifMsgs", async(req, res, next) => {  
+    let payload = req.query.payload;
 
+        await User.findById({_id: req.query.userId})
+    .then(user => {
+        Msg.find( 
+            {otherUser: user.username}
+        ).sort({time:-1})
+        .then(documents => {
+            console.log('timing', documents)
+            nonya = [];
+            documents.forEach((e) => {
+                nonya.push(e.username)
+            });
+    let nonyaOnce = [...new Set(nonya)];
+    console.log('order', nonyaOnce);
+    allMsgs = []
+    for(let i in nonyaOnce){
+        Msg.findOne({ $and: [
+    {otherUser: user.username},
+    {username: nonyaOnce[i]}
+        ]
+        }).sort({time:-1})    
+          .then(finalDocs => {
+           allMsgs.push(finalDocs);
+        if(allMsgs.length == nonyaOnce.length){
+            const regex = new RegExp(payload + '.*',
+            'i');
+            
+            let matches = allMsgs.filter((e) => e.username.match(regex))
+            console.log('matches', matches)
 
-
-// listen for chat msg sending
-
-// router.get('/OnetoOneSend', async(req,res) => {
-//     console.log('made it')
-//     var io = req.app.get('socketio');
+        res.status(200).json({
+            message: 'Info messages fetched succesfully!',
+               messages: matches
+            });
+        }
+          })
     
-//                                     })
+          .catch(err => {
+            return res.status(401).json({
+                message: "Message error 3!",
+        
+            })
+        })
+    
+    }
+           
+        })
+    })
+    .catch(err => {
+        return res.status(401).json({
+            message: "Message error 2!",
+    
+        })
+    })
+    // }
+    })
+
+
+
 
 
 

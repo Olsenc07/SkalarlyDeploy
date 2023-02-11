@@ -54,19 +54,6 @@ export class PostsService {
       .pipe(map((data) => data.payload));
   }
 
-  // Hashtag search
-  searchNotifMsgs(queryHash: string): any {
-    console.log('my girl', queryHash);
-    return this.http
-      .post<{ payload: any }>(
-        '/api/user/getNotifMsgs',
-        { payload: queryHash },
-        {
-          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-        }
-      )
-      .pipe(map((data) => data.payload));
-  }
   checkNotification(id: string): any {
     this.http
       .get<{ infos: any }>('https://www.skalarly.com/api/posts/checkNotif', {

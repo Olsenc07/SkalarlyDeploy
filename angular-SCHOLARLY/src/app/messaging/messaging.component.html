@@ -7,9 +7,6 @@
 
     <div class="title">
 <div class="style">Messages</div>
-<!-- <button mat-icon-button>
-    <i class="material-icons new_message_icon">edit_note</i>
-</button> -->
 </div>
 <mat-divider></mat-divider>
 <div class="search-box">
@@ -29,7 +26,7 @@
   <mat-divider></mat-divider>
 <div class="list">
      
-<!-- Insert it here and share the same  [ ] -->
+
 <!-- Notification cards -->
         <div class="space" > 
           
@@ -44,14 +41,7 @@
         <mat-card class="row1" [ngClass]="{ even: even, odd: odd }" >
             <div class="column" >
                 <div class="rowMessage">
-                    <!-- <div  class="profilePic" *ngIf="info.ProfilePicPath">
-                        !-- <img src="{{id.cropImgPreview}}" alt=""> --
-                        <img class="fit" src="{{info.ProfilePicPath}}">
-                    </div> -->
-        
-                    <!-- <div class="profilePic" *ngIf="!info.ProfilePicPath">
-                        <img src="../../assets/Pics/Skalarly 1.jpeg" class="fit" />
-                    </div> -->
+      
                     <div class="row_">
                         <div class="messageText">
                             Message From
@@ -80,15 +70,7 @@
         
                         <mat-chip  class="messageBtn"  mat-flat-button (click)="navigateToChat(info.username)" matTooltip="Display Messages">
         Display Messages
-                    <!-- Card is removed from list when follow is clicked -->
-                    <!-- Only appears if user isn't already following this mutual friend -->
-                    <!-- <mat-chip-list class="center_" aria-label="FollowBtn"> -->
-                        <!-- (click)="followClicked()" -->
-                        <!-- <button class="messageM" (click)="navigateToChat(info.username)"
-                        > -->
-                            <!-- Message  -->
-                            <!-- Or -->
-                            <!-- <i class="far fa-envelope"></i> -->
+        
                             <i class="fas fa-envelope-open-text iconSpace"></i>
                         </mat-chip >
         
@@ -96,13 +78,6 @@
                     
         </div>
         
-        <!-- <div class="buttonsC">
-            <button mat-flat-button (click)="deleteMsg(info.id)" matTooltip="Deletes For Both " class="repostColor">
-            <i class="fas fa-times-circle delete" ></i>
-        </button>
-        </div> -->
-        
-        <!-- </div> -->
                 </div>
         
         
