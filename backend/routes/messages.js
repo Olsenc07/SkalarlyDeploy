@@ -167,7 +167,7 @@ router.get("/getNotifMsgs", async(req, res, next) => {
             const regex = new RegExp(payload + '.*',
             'i');
             
-            let matches = allMsgs.foreach((e) => {
+            let matches = allMsgs.forEach((e) => {
                 console.log('advantage', e);
                 console.log('pills', e.username);
 

@@ -193,7 +193,13 @@
   // box-shadow: 0 0 0 1px grey;
   margin: 1% 2% 1%;;
 }
-
+.rowMessage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1%;
+  justify-content: space-around;
+}
 .scroll {
   //   display: flex;
   //   flex-direction: column;

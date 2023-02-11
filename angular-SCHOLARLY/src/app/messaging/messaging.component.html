@@ -11,14 +11,14 @@
 <mat-divider></mat-divider>
 <div class="search-box">
     <i class="material-icons search-box__icon ">search</i>
-    <div matInput type="search" class="search-box__input" 
+    <div  type="search" class="search-box__input" 
      >
+     <mat-form-field appearance="outline">
      <input matInput
      type="search" placeholder="Message Notifications" 
      (keyup)="sendDataNotif($event)"
-
      />
-    
+    </mat-form-field>
     </div>
 
 
