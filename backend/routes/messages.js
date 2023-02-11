@@ -167,14 +167,19 @@ router.get("/getNotifMsgs", async(req, res, next) => {
             const regex = new RegExp(payload + '.*',
             'i');
             
-            let matches = allMsgs.filter((e) => e.username.match(regex))
+            let matches = allMsgs.foreach((e) => {
+                console.log('advantage', e);
+                console.log('pills', e.username);
+
+                e.username.match(regex)
             console.log('matches', matches)
 
         res.status(200).json({
             message: 'Info messages fetched succesfully!',
                messages: matches
             });
-        }
+            }
+          )}
           })
     
           .catch(err => {
