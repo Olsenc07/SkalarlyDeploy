@@ -10,6 +10,7 @@ import { MessageNotificationService } from '../services/messagesNotifications.se
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
 import { createPopup } from '@picmo/popup-picker';
+import { PostService } from '../services/post.service';
 
 export interface Message {
   id: string;
@@ -70,9 +71,7 @@ export class MessagingComponent implements OnInit {
     private messageNotificationService: MessageNotificationService,
 
     private route: ActivatedRoute,
-    private router: Router,
-
-    private postsService: PostsService
+    private router: Router
   ) {}
 
   ngOnInit(): any {
@@ -94,7 +93,10 @@ export class MessagingComponent implements OnInit {
     //   this.username = params?.username;
     this.messageNotificationService.getMessageNotification(this.userId);
   }
-
+  delConvo(postId: string): any {
+    console.log('pI', postId);
+    this.messagesService.delConvo(postId);
+  }
   // Search notifs
   sendDataNotif(event: any): any {
     const queryHash: string = event.target.value;

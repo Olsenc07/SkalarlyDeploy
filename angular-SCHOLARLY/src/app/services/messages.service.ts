@@ -58,7 +58,19 @@ export class MessageService {
   getInfoUpdateListener(): any {
     return this.messagesUpdated.asObservable();
   }
-
+  delConvo(postId: string): any {
+    // console.log('hey chase postId', postId);
+    this.http
+      .delete('https://www.skalarly.com/api/posts/delConvo/' + postId)
+      .subscribe((transformedMessage) => {
+        const updatedPosts = this.messages.filter((post) => post.id !== postId);
+        this.messages = updatedPosts;
+        this.messagesUpdated.next([...this.messages]);
+        this.snackBar.open('Post Deleted', '🗑', {
+          duration: 3000,
+        });
+      });
+  }
   // sentNotif(): any {
   //   this.snackBar.open('Message sent', '✅', {
   //     duration: 2000,

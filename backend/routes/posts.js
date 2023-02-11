@@ -1021,7 +1021,11 @@ router.get("/checkNotif", async (req, res) => {
       
     })
 })
-
+// Delete conversation
+router.delete("/delConvo/:id", checkAuth, async(req, res, next ) => {
+    console.log('thankyou sir', req.params.id)
+  
+    })
 // Delete Notification 
 router.delete("/deleteNotif/:id", checkAuth, async(req, res, next ) => {
     console.log('thank', req.params.id)

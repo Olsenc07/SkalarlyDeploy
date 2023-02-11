@@ -65,18 +65,26 @@
         
                         </div>
                     </div>
-                    <!-- <div class="buttonCombo" > -->
+                    <div class="buttonCombo" >
         
                         <div class="buttonsC">
         
-                        <mat-chip  class="messageBtn"  mat-flat-button (click)="navigateToChat(info.username)" matTooltip="Display Messages">
+                        <mat-chip  mat-flat-buttonclass="counterColor"  mat-flat-button (click)="navigateToChat(info.username)" matTooltip="Display Messages">
         Display Messages
         
                             <i class="fas fa-envelope-open-text iconSpace"></i>
                         </mat-chip >
-        
+        </div>
                     <!-- </mat-chip-list> -->
-                    
+               
+                    <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId) && post.OriginalPostId == '' "
+                    >
+                      <button mat-flat-button  matTooltip="Permanetly Delete Conversation"
+                       (click)="delConvo(post.id)" class="repostColor">
+                       <i class="far fa-times-circle"></i>
+
+                      </button>
+                    </div>
         </div>
         
                 </div>
