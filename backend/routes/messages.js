@@ -172,14 +172,14 @@ router.get("/getNotifMsgs", async(req, res, next) => {
                 console.log('pills', e.username);
 
                 e.username.match(regex)
+            })
             console.log('matches', matches)
 
-        res.status(200).json({
-            message: 'Info messages fetched succesfully!',
-               messages: matches
-            });
-            }
-          )}
+            res.status(200).json({
+                message: 'Info messages fetched succesfully!',
+                   messages: matches
+                });
+          }
           })
     
           .catch(err => {
