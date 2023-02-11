@@ -182,7 +182,7 @@ console.log('matches', matches)
 if(allMsgs.length == matches.length){
     res.status(200).json({
         message: 'Info messages fetched succesfully!',
-           messages: matches
+           messages: allMsgs
         });
 }
           })
