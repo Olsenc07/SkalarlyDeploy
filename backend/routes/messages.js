@@ -156,10 +156,10 @@ router.get("/getNotifMsgs", async(req, res, next) => {
 // Regex here
 const regex = new RegExp(payload,
 'i');
-let matches = nonyaOnce.forEach((e) => {
-    console.log('advantage', e);
-    e.match(regex);
-})
+let matches = nonyaOnce.filter((e) => 
+
+    e.match(regex)
+)
 console.log('order', nonyaOnce);
 console.log('matches', matches)
 
