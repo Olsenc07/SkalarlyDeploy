@@ -60,31 +60,6 @@ res.status(200).json({
 
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
-// if(req.query.username === req.query.userId ){
-//     console.log('C.R.E.A.M')
-//     await User.findById({_id: req.query.userId})
-//     .then(user => {
-//         Msg.find( {otherUser: user.username}).sort({time:-1})
-//         .then(messagesNotif => {
-//             res.status(200).json({
-//               message: 'Info messages fetched succesfully!',
-//             messages: messagesNotif
-//               });
-//         }).catch(err => {
-//             return res.status(401).json({
-//                 message: "Fetching message error!",
-        
-//             })
-//         })
-//     })
-//     .catch(err => {
-//         return res.status(401).json({
-//             message: "Message error!",
-    
-//         })
-//     })
-// }else{
-
     await User.findById({_id: req.query.userId})
 .then(user => {
     Msg.find( 
@@ -126,10 +101,16 @@ for(let i in nonyaOnce){
 }
        
     })
+    .catch(err => {
+        return res.status(401).json({
+            message: "Message error 2!",
+    
+        })
+    })
 })
 .catch(err => {
     return res.status(401).json({
-        message: "Message error 2!",
+        message: "Message error 1!",
 
     })
 })
