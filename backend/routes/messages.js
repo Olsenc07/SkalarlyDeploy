@@ -154,7 +154,7 @@ router.get("/getNotifMsgs", async(req, res, next) => {
             });
     let nonyaOnce = [...new Set(nonya)];
 // Regex here
-const regex = new RegExp(payload + '.*',
+const regex = new RegExp(payload,
 'i');
 let matches = nonyaOnce.forEach((e) => {
     console.log('advantage', e);
