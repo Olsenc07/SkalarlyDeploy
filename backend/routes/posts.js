@@ -1036,9 +1036,10 @@ router.delete("/delConvo/:postId", checkAuth, async(req, res, next ) => {
             ]
         })
         .catch(error => {
-            res.status(500).json({
-                message: 'Deleting Messages failed 1'
-            });
+            console.log('del messages failed')
+            // res.status(500).json({
+            //     message: 'Deleting Messages failed 1'
+            // });
         });
         Msg.deleteMany({ 
             $and: [
@@ -1047,9 +1048,13 @@ router.delete("/delConvo/:postId", checkAuth, async(req, res, next ) => {
             ]
         })
         .catch(error => {
-            res.status(500).json({
-                message: 'Deleting Messages failed 2'
-            });
+            console.log('del messages failed')
+            // res.status(500).json({
+            //     message: 'Deleting Messages failed 2'
+            // });
+        });
+        res.status(200).json({
+            message: 'Deleting Conversation worked'
         });
     })
   

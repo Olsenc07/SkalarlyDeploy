@@ -42,6 +42,7 @@ import {
   TrendingComponent,
   SkalarsComponent,
   HashtagComponent,
+  LargeNewSkalarsFeedComponent,
 } from './main-pages/main-pages.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { AuthGuard } from './signup/auth.guard';
@@ -88,6 +89,11 @@ const routes: Routes = [
   {
     path: 'friends',
     component: LargeFriendsFeedComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'newSkalars',
+    component: LargeNewSkalarsFeedComponent,
     canActivate: [AuthGuard],
   },
   {

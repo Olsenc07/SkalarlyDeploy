@@ -83,6 +83,7 @@ import {
   LargeFriendsFeedComponent,
   HashtagComponent,
   HashtagCardComponent,
+  LargeNewSkalarsFeedComponent
 } from './main-pages/main-pages.component';
 import {
   SignupComponent,
@@ -184,6 +185,7 @@ import { ErrorInterceptor } from './error-interceptor';
     SinglePageTemplateComponent,
     RecentComponent,
     LargeFriendsFeedComponent,
+    LargeNewSkalarsFeedComponent,
     HashtagComponent,
     HashtagCardComponent,
     SignupComponent,

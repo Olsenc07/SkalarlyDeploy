@@ -1193,6 +1193,14 @@ export class LargeFriendsFeedComponent implements OnInit {
   ngOnInit(): void {}
 }
 @Component({
+  selector: 'app-card-new-skalars ',
+  templateUrl: './large_newSkalars.component.html',
+  styleUrls: ['./main-pages.component.scss'],
+})
+export class LargeNewSkalarsFeedComponent implements OnInit {
+  ngOnInit(): void {}
+}
+@Component({
   selector: 'app-hashtags',
   templateUrl: './hashtags.component.html',
   styleUrls: ['./main-pages.component.scss'],
