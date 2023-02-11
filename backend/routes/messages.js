@@ -106,17 +106,9 @@ for(let i in nonyaOnce){
     ]
     }).sort({time:-1})    
       .then(finalDocs => {
-        console.log('finaldocs', finalDocs)
        allMsgs.push(finalDocs);
-
-    console.log('twisted transistor', allMsgs)
-    if(allMsgs.length == nonyaOnce.length){
-    console.log('twisted transistor 2', allMsgs);
- 
-        let allMsgsReverse = allMsgs.reverse()
-        console.log('twisted transistor 3', allMsgsReverse);
-
-
+    if(allMsgs.length == nonyaOnce.length){ 
+        let allMsgsReverse = allMsgs.reverse();
     res.status(200).json({
         message: 'Info messages fetched succesfully!',
            messages: allMsgsReverse

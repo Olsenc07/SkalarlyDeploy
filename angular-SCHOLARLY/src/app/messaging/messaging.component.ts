@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { PostsService } from '../services/posts.service';
 
 import { io } from 'socket.io-client';
 import { Subscription } from 'rxjs';
@@ -48,6 +49,8 @@ export class MessagingComponent implements OnInit {
   // Chat messaging
   chatForm = document.getElementById('send-container');
   socket = io();
+  public notifs = [];
+  messagesNotif: Message[] = [];
 
   // allUsers should filter through every user
   allUsers: string[] = [];
@@ -64,7 +67,10 @@ export class MessagingComponent implements OnInit {
   constructor(
     private authService: AuthService,
     public messagesService: MessageService,
-    private route: ActivatedRoute
+    private messageNotificationService: MessageNotificationService,
+
+    private route: ActivatedRoute,
+    private postsService: PostsService
   ) {}
 
   ngOnInit(): any {
@@ -75,7 +81,37 @@ export class MessagingComponent implements OnInit {
       this.username = params?.username;
       console.log('username', this.username);
     });
+
+    this.messageNotificationService
+      .getListenerNotification()
+      .subscribe((messagesNotif: Message[]) => {
+        this.isLoading = false;
+        this.messagesNotif = messagesNotif.reverse();
+      });
+    // this.route.queryParams.subscribe((params) => {
+    //   this.username = params?.username;
+    this.messageNotificationService.getMessageNotification(this.userId);
   }
+
+  // Search notifs
+  sendDataNotif(event: any): any {
+    const queryHash: string = event.target.value;
+    console.log('query yo', queryHash);
+    // Will match if query is nothing or is only spaces
+    const matchSpaces: any = queryHash.match(/\s*/);
+    if (matchSpaces[0] === queryHash) {
+      this.notifs = [];
+      // this.hasQueryHash = false;
+      return;
+    }
+
+    this.postsService.searchNotifMsgs(queryHash.trim()).subscribe((results) => {
+      this.notifs = results;
+      // this.hasQueryHash = true;
+      console.log('another log', this.notifs);
+    });
+  }
+
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
     if (timeHourInitial > 12) {
@@ -350,6 +386,7 @@ export class MessageCardComponent implements OnInit {
         });
     });
   }
+
   deleteMsg(msgId: string): any {
     this.messageNotificationService.deleteMessage(msgId);
     location.reload();

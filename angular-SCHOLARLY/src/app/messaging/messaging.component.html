@@ -15,18 +15,103 @@
 <div class="search-box">
     <i class="material-icons search-box__icon ">search</i>
     <div matInput type="search" class="search-box__input" 
-     >Message Notifications</div>
-    <!-- <cdk-virtual-scroll-viewport itemSize="10">
-      <mat-option *cdkVirtualFor="let user of filteredSearch | async" [value]="user">
-        {{user}}
-      </mat-option>
-    </cdk-virtual-scroll-viewport> -->
+     >
+     <input matInput
+     type="search" placeholder="Message Notifications" 
+     (keyup)="sendDataNotif($event)"
+
+     />
+    
+    </div>
+
+
   </div>
   <mat-divider></mat-divider>
 <div class="list">
      
-        <app-card-message class="space" >    
-       </app-card-message>
+<!-- Insert it here and share the same  [ ] -->
+<!-- Notification cards -->
+        <div class="space" > 
+          
+          <div class="spinner" *ngIf="isLoading">
+            <mat-spinner ></mat-spinner>
+          </div>
+        
+        <!-- Message notifications with messages -->
+        
+        <div *ngIf=" userId != username" >
+        <div  *ngFor="let info of messagesNotif; let even = even; let odd = odd">
+        <mat-card class="row1" [ngClass]="{ even: even, odd: odd }" >
+            <div class="column" >
+                <div class="rowMessage">
+                    <!-- <div  class="profilePic" *ngIf="info.ProfilePicPath">
+                        !-- <img src="{{id.cropImgPreview}}" alt=""> --
+                        <img class="fit" src="{{info.ProfilePicPath}}">
+                    </div> -->
+        
+                    <!-- <div class="profilePic" *ngIf="!info.ProfilePicPath">
+                        <img src="../../assets/Pics/Skalarly 1.jpeg" class="fit" />
+                    </div> -->
+                    <div class="row_">
+                        <div class="messageText">
+                            Message From
+                         </div> 
+                        <!-- <div class="column_"> -->
+                            <div class="column_">
+                                <!-- (click)="onOtherUser(info)" -->
+                      
+                        
+                        <button 
+                        mat-button (click)="navigateToPage(info.username)"
+                        class="userName textSize_" id="userName"  [value]=info.username  > 
+                            @{{ info.username}}
+        
+                        </button>
+                        </div>
+                     <div class="userName textSize" >
+                            <!-- {{ (profile | async)?.Pronouns}} -->
+                             {{ info.time }}
+        
+                        </div>
+                    </div>
+                    <!-- <div class="buttonCombo" > -->
+        
+                        <div class="buttonsC">
+        
+                        <mat-chip  class="messageBtn"  mat-flat-button (click)="navigateToChat(info.username)" matTooltip="Display Messages">
+        Display Messages
+                    <!-- Card is removed from list when follow is clicked -->
+                    <!-- Only appears if user isn't already following this mutual friend -->
+                    <!-- <mat-chip-list class="center_" aria-label="FollowBtn"> -->
+                        <!-- (click)="followClicked()" -->
+                        <!-- <button class="messageM" (click)="navigateToChat(info.username)"
+                        > -->
+                            <!-- Message  -->
+                            <!-- Or -->
+                            <!-- <i class="far fa-envelope"></i> -->
+                            <i class="fas fa-envelope-open-text iconSpace"></i>
+                        </mat-chip >
+        
+                    <!-- </mat-chip-list> -->
+                    
+        </div>
+        
+        <!-- <div class="buttonsC">
+            <button mat-flat-button (click)="deleteMsg(info.id)" matTooltip="Deletes For Both " class="repostColor">
+            <i class="fas fa-times-circle delete" ></i>
+        </button>
+        </div> -->
+        
+        <!-- </div> -->
+                </div>
+        
+        
+            </div>
+        
+        </mat-card>
+        </div>
+        </div>
+        </div>
 
 
 
