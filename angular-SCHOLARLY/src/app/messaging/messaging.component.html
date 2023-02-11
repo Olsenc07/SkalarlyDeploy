@@ -75,8 +75,7 @@
         </div>
                     <!-- </mat-chip-list> -->
                
-                    <div class="buttonsC" *ngIf="(userId !== post.Creator) && (userId !== post.OriginalCreatorId) && post.OriginalPostId == '' "
-                    >
+                    <div class="buttonsC" >
                       <button mat-flat-button  matTooltip="Permanetly Delete Conversation"
                        (click)="delConvo(post.id)" class="repostColor">
                        <i class="far fa-times-circle"></i>
