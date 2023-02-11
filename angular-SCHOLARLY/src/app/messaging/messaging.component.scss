@@ -24,6 +24,11 @@
   // height: 100%;
   overflow-y: scroll;
 }
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 .delete_{
   display: flex;
   justify-self: center;
@@ -72,6 +77,31 @@
     box-shadow: 0px 0px 11px grey;
   }
 }
+.messageText{
+  display: flex;
+    align-items: center;
+    font-family: 'Cormorant Garamond',serif;
+    text-align: center;
+    margin-left: 2%;
+}
+.messageBtn{
+  // background-color: #0c5590 !important;
+  background-color: #10173a!important;
+  // font-family: 'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+  color: white !important;
+}
+.odd{
+  background-color: #f2f0f0;
+  padding: 1%;
+}
+.even{
+  padding: 1%;
+
+}
+.iconSpace{
+  margin-left: 2%;
+}
 .message {
   display: flex;
   height: 100%;
@@ -104,6 +134,37 @@
 .post {
   resize: none;
 }
+@media (min-width: 1150px) {
+
+  .textSize {
+   font-size: small;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond',serif;
+    color: #7e7171;
+  }
+}
+@media (max-width: 1150px) {
+  .textSize {
+    font-size: small;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond',serif;
+    color: #7e7171;
+  }
+}
+@media (min-width: 1025px) {
+  .textSize_ {
+    font-size: medium;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond',serif;
+  }
+}
+@media (max-width: 1025px) {
+  .textSize_ {
+    font-size: small;
+    // font-family:  'Poppins', sans-serif;
+    font-family: 'Cormorant Garamond',serif;
+  }
+}
 .right {
   display: flex;
   flex-direction: column;
@@ -116,6 +177,16 @@
   display: flex;
   flex-direction: row;
 }
+.row1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 25px;
+  // box-shadow: 0 0 0 1px grey;
+  margin: 1% 2% 1%;;
+}
+
 .scroll {
   //   display: flex;
   //   flex-direction: column;
@@ -223,6 +294,13 @@
 .username{
   display: flex;
   color: pink;
+}
+.userName {
+  display: flex;
+  font-weight: 500;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
 }
 .upload_options {
   margin-right: 1%;
