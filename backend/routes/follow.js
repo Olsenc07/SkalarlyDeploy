@@ -164,9 +164,23 @@ router.get("/filterFollowing", async(req, res) => {
     console.log('payload 777', payload)
     await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
- Follow.find({usernameFollower: user.username})
+ Follow.find({ $and: [
+    {usernameFollower: user.username},
+    {
+        Following: {$regex: new RegExp('^' + payload,
+        'i')
+    }
+    }
+ ]})
 .then(follows => {
 console.log('follows777',follows);
+
+// nonya = [];
+// follows.forEach((e) => {
+//     nonya.push(e.Following)
+// });
+
+
     res.status(200).json({
         message: 'Follows fetched succesfully!',
         messages: follows
