@@ -9,6 +9,8 @@
   (keyup)="sendDataFollowers($event)"
   />
  </mat-form-field>
+ <mat-divider></mat-divider>
+
 <mat-card class="row1" *ngFor="let info of follower">
             <div class="row_">
                 <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPathFollower">
