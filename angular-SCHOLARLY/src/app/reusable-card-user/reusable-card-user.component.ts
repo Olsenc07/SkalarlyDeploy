@@ -93,7 +93,7 @@ export class ReusableCardUserComponent implements OnInit {
     } else {
       this.followService.filterFollowing(this.userId, queryFollowing.trim());
       this.followService
-        .getInfoUpdateListener()
+        .getInfoFollowingUpdateListener()
         .subscribe((follow: Follow[]) => {
           this.follow = follow.reverse();
           this.isLoading = false;
