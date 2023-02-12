@@ -233,9 +233,12 @@ export class FollowService {
       )
       .subscribe((transformedMessage) => {
         this.followingInfo = transformedMessage;
+        console.log('small feet', this.followingInfo);
+
         this.followingInfoPostUpdated.next([...this.followingInfo]);
       });
   }
+
   // skalars following
   mutualFollow(username: string, userId: string): any {
     this.http
