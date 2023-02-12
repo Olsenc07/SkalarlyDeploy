@@ -85,7 +85,7 @@ export class ReusableCardUserComponent implements OnInit {
     if (matchSpaces[0] === queryFollowing) {
       this.followService.getMessageNotification(this.userId);
       this.followSub = this.followService
-        .getInfoUpdateListener()
+        .getInfoFollowingUpdateListener()
         .subscribe((follow: Follow[]) => {
           this.follow = follow.reverse();
           this.isLoading = false;
@@ -185,6 +185,13 @@ export class ReusableCardUserFollowerComponent implements OnInit {
           this.isLoading = false;
         });
     } else {
+      this.followService.filterFollowers(this.userId, queryFollowing.trim());
+      this.followService
+        .getInfoFollowUpdateListener()
+        .subscribe((follower: Follow[]) => {
+          this.follower = follower.reverse();
+          this.isLoading = false;
+        });
     }
   }
 

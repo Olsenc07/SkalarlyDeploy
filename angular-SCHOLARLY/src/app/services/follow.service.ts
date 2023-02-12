@@ -267,6 +267,28 @@ export class FollowService {
         this.followingInfoPostUpdated.next([...this.followingInfo]);
       });
   }
+
+  //  // filter followers
+  filterFollowers(userId: string, queryFollowing: string): any {
+    console.log('my girl', queryFollowing);
+    console.log('mine', userId);
+
+    this.http
+      .get<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/follow/filterFollowers',
+        { params: { userId, queryFollowing } }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.followingInfo = transformedMessage;
+        console.log('deep end yo', this.followingInfo);
+        this.followingInfoPostUpdated.next([...this.followingInfo]);
+      });
+  }
   // skalars following
   mutualFollow(username: string, userId: string): any {
     this.http
