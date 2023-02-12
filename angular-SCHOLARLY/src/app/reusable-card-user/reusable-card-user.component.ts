@@ -91,6 +91,13 @@ export class ReusableCardUserComponent implements OnInit {
           this.isLoading = false;
         });
     } else {
+      this.followService.filterFollowing(this.userId, queryFollowing.trim());
+      this.followService
+        .getInfoUpdateListener()
+        .subscribe((follow: Follow[]) => {
+          this.follow = follow.reverse();
+          this.isLoading = false;
+        });
     }
   }
 

@@ -157,6 +157,29 @@ await userInfo.findOne({Creator: req.query.userId})
     })
 })
 })
+
+// filter following
+router.get("/filterFollowing", async(req, res) => {
+    payload = req.query.queryFollowing;
+    console.log('payload 777', payload)
+    await userInfo.findOne({Creator: req.query.userId})
+.then(user => {
+ Follow.find({usernameFollower: user.username})
+.then(follows => {
+console.log('follows777',follows);
+    res.status(200).json({
+        message: 'Follows fetched succesfully!',
+        messages: follows
+    });
+})
+})
+.catch(err => {
+    return res.status(401).json({
+        message: "Invalid following error!",
+
+    })
+})
+})
 // Get following other
 router.get("/followInfoOther", async(req, res, next) => {
      await Follow.find({usernameFollower: req.query.id})
