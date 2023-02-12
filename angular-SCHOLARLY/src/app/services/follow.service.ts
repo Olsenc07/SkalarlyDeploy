@@ -265,6 +265,7 @@ export class FollowService {
       )
       .subscribe((transformedMessage) => {
         this.mutualInfo = transformedMessage;
+        console.log('big feet', this.mutualInfo);
         this.mutualInfoPostUpdated.next([...this.mutualInfo]);
       });
   }
