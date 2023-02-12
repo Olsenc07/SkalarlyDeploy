@@ -76,7 +76,7 @@ export class ReusableCardUserComponent implements OnInit {
       });
   }
 
-  sendDataMututal(event: any): any {
+  sendDataFollowing(event: any): any {
     const queryFollowing: string = event.target.value;
     console.log('query yo', queryFollowing);
     // Will match if query is nothing or is only spaces
@@ -90,6 +90,7 @@ export class ReusableCardUserComponent implements OnInit {
           this.follow = follow.reverse();
           this.isLoading = false;
         });
+    } else {
     }
   }
 
@@ -159,6 +160,24 @@ export class ReusableCardUserFollowerComponent implements OnInit {
         this.follower = follower.reverse();
         this.isLoading = false;
       });
+  }
+
+  sendDataFollowers(event: any): any {
+    const queryFollowing: string = event.target.value;
+    console.log('query yo', queryFollowing);
+    // Will match if query is nothing or is only spaces
+    const matchSpaces: any = queryFollowing.match(/\s*/);
+
+    if (matchSpaces[0] === queryFollowing) {
+      this.followService.getMessageNotificationFollowed(this.userId);
+      this.followSub = this.followService
+        .getInfoFollowUpdateListener()
+        .subscribe((follower: Follow[]) => {
+          this.follower = follower.reverse();
+          this.isLoading = false;
+        });
+    } else {
+    }
   }
 
   navigateToPage(Following: string): any {
