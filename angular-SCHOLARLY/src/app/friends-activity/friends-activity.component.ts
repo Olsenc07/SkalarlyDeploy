@@ -38,10 +38,6 @@ export class FriendsActivityComponent implements OnInit {
   // infos: AuthDataInfo[] = [];
   // private infosSub: Subscription;
 
-  // Friend requests from the card...
-  accept: FormControl = new FormControl('');
-  decline: FormControl = new FormControl('');
-
   // Needs an observabel to adapt to changes.
   // Since this search is just filtering
   // filters members, not entirely neeeded...
