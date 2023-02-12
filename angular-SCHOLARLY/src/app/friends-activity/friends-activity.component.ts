@@ -29,7 +29,7 @@ export class FriendsActivityComponent implements OnInit {
   followers: Follow[] = [];
   mutual: Follow[] = [];
   private mutualSub: Subscription;
-
+  UserNames: string;
   mutuals: Follow[] = [];
   private mutualsSub: Subscription;
   private followSub: Subscription;
@@ -46,7 +46,12 @@ export class FriendsActivityComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private followService: FollowService
-  ) {}
+  ) {
+    this.followService.getsetUserNameUpdateListener().subscribe((username) => {
+      console.log('username yip', username);
+      this.UserNames = username;
+    });
+  }
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();

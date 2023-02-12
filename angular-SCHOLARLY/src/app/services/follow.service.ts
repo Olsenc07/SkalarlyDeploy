@@ -40,6 +40,8 @@ export class FollowService {
   private mutualsInfo: Follow[] = [];
   private mutualsInfoPostUpdated = new ReplaySubject<Follow[]>();
 
+  private SetNameUpdated = new ReplaySubject();
+
   private userId: string;
 
   constructor(
@@ -50,7 +52,9 @@ export class FollowService {
   getInfoUpdateListener(): any {
     return this.followPostUpdated.asObservable();
   }
-
+  getsetUserNameUpdateListener(): any {
+    return this.SetNameUpdated.asObservable();
+  }
   getInfoFollowingUpdateListener(): any {
     return this.followingInfoPostUpdated.asObservable();
   }
@@ -238,7 +242,10 @@ export class FollowService {
         this.followingInfoPostUpdated.next([...this.followingInfo]);
       });
   }
-
+  // setting name for friends activities
+  setUsername(username: string): any {
+    this.SetNameUpdated.next(username);
+  }
   // skalars following
   mutualFollow(username: string, userId: string): any {
     this.http

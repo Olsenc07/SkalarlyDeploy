@@ -107,6 +107,7 @@ export class ReusableCardUserComponent implements OnInit {
     console.log('chaz whats up homie k', username);
     this.followService.mutualFollow(username, this.userId);
     this.followService.mutualsFollow(username, this.userId);
+    this.followService.setUsername(username);
   }
 }
 @Component({
