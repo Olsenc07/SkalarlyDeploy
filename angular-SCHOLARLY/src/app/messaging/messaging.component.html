@@ -11,7 +11,7 @@
 <mat-divider></mat-divider>
 
     <div class="searchMsgs">
-     <mat-form-field   class="search-box__input" 
+     <mat-form-field   class="search-box__input" [disabled]="messagesNotif.length ==0"
      appearance="outline">
     <i matPrefix class="material-icons search-box__icon ">search</i>
 
