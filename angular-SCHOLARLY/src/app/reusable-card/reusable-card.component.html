@@ -205,33 +205,33 @@
       </video>
                    
       <!-- Description -->
-      <div class="description" *ngIf="post.postDescription">
+      <div class="description" *ngIf="post.postDescription || post.Hashtag1">
 
         <div class="postText d">
           {{post.postDescription}}
         </div>
 <div class="HashTags" *ngIf="post.Hashtag1">
-  <button mat-button (click)="navToHashTag(post.Hashtag1)">
+  <button mat-button (click)="navToHashTag(post.Hashtag1)" class="HashTagsBtn">
 #{{post.Hashtag1}}
 </button>
 </div>
 <div class="HashTags" *ngIf="post.Hashtag2">
-  <button mat-button (click)="navToHashTag(post.Hashtag2)">
+  <button mat-button (click)="navToHashTag(post.Hashtag2)" class="HashTagsBtn">
   #{{post.Hashtag2}}
   </button>
   </div>
   <div class="HashTags" *ngIf="post.Hashtag3">
-  <button mat-button (click)="navToHashTag(post.Hashtag3)">
+  <button mat-button (click)="navToHashTag(post.Hashtag3)" class="HashTagsBtn">
     #{{post.Hashtag3}}
     </button>
     </div>
     <div class="HashTags" *ngIf="post.Hashtag4">
-  <button mat-button (click)="navToHashTag(post.Hashtag4)">
+  <button mat-button (click)="navToHashTag(post.Hashtag4)" class="HashTagsBtn">
       #{{post.Hashtag4}}
       </button>
       </div>
       <div class="HashTags" *ngIf="post.Hashtag5">
-  <button mat-button (click)="navToHashTag(post.Hashtag5)">
+  <button mat-button (click)="navToHashTag(post.Hashtag5)" class="HashTagsBtn">
         #{{post.Hashtag5}}
         </button>
         </div>
