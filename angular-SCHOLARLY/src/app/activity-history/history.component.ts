@@ -29,7 +29,7 @@ export class ActivityHistoryComponent implements OnInit {
   followers: Follow[] = [];
   private postsSub: Subscription;
   shared: Post[] = [];
-  notif = '';
+  notif = [];
   private followSubFollowers: Subscription;
 
   constructor(
