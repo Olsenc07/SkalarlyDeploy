@@ -124,6 +124,12 @@ router.get("/getNotifMsgs", async(req, res, next) => {
 console.log('payload', payload);
         await User.findById({_id: req.query.userId})
     .then(user => {
+        //        Msg.find({ $and: [ 
+    //         {otherUser: user.username},
+    //         {username: {$regex: new RegExp('^' + payload,
+    //     'i')
+    // }}
+        //  ]}).sort({time:-1})
         Msg.find( 
             {otherUser: user.username}
         ).sort({time:-1})
