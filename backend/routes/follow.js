@@ -49,13 +49,11 @@ try{
      Subscription.findOne({Creator: otherUserId.id})
      .then((checking) => {
 if(checking !== null){
-        Subscription.findOne({Creator: otherUserId.id})
-        .then(subscriber => {
     // console.log('road is fuller', subscriber.keys);
     // console.log('road is full', subscriber.keys.p256dh);
-    const p256dh = subscriber.keys.p256dh
-    const auth = subscriber.keys.auth
-    const endpoint = subscriber.endpoint
+    const p256dh = checking.keys.p256dh
+    const auth = checking.keys.auth
+    const endpoint = checking.endpoint
     const pushSubscription = {
         keys: {
           p256dh: p256dh,
@@ -77,8 +75,6 @@ if(checking !== null){
     .catch(error => {
         console.error(error);
     })
-        })
-    
 } })
    } catch{
     console.log('User does not have a subscription for followers')
