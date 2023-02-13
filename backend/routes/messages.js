@@ -102,11 +102,11 @@ for(let i in nonyaOnce){
 
 }
 }else{
-    return res.status(401)
-    // .json({
-    //     message: "Message error 2!",
+    return res.status(200).json({
+        message: "No messages to retrieve",
+        messages: documents
 
-    // })
+    })
 }
     })
     .catch(err => {
