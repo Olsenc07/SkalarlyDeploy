@@ -272,12 +272,10 @@ export class SharedHistoryComponent implements OnInit {
     console.log('howdy', this.countVisibility);
 
     this.postService.getSharedPosts(this.userId, this.recomCounter);
-    this.postService
-      .getPostUpdateListener()
-      .subscribe((shared: Post[]) => {
-        this.shared = shared;
-        console.log('shared', this.shared);
-      });
+    this.postService.getPostUpdateListener().subscribe((shared: Post[]) => {
+      this.shared = shared;
+      console.log('shared', this.shared);
+    });
   }
   // Back
   onClickFeedBack(): any {
@@ -289,11 +287,17 @@ export class SharedHistoryComponent implements OnInit {
     console.log('howdy', this.countVisibility);
 
     this.postService.getSharedPosts(this.userId, this.recomCounter);
-    this.postService
-      .getPostUpdateListener()
-      .subscribe((shared: Post[]) => {
-        this.shared = shared;
-        console.log('shared', this.shared);
-      });
+    this.postService.getPostUpdateListener().subscribe((shared: Post[]) => {
+      this.shared = shared;
+      console.log('shared', this.shared);
+    });
   }
+}
+@Component({
+  selector: 'missed-notifications',
+  templateUrl: './missed-notifications.component.html',
+  styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
+})
+export class MissedNotificationsComponent implements OnInit {
+  ngOnInit(): void {}
 }

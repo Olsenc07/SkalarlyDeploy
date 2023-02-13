@@ -68,6 +68,7 @@ import {
   CommentHistoryComponent,
   FollowedTemplateComponent,
   SharedHistoryComponent,
+  MissedNotificationsComponent,
 } from './activity-history/history.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { MessagingComponent } from './messaging/messaging.component';
@@ -83,7 +84,7 @@ import {
   LargeFriendsFeedComponent,
   HashtagComponent,
   HashtagCardComponent,
-  LargeNewSkalarsFeedComponent
+  LargeNewSkalarsFeedComponent,
 } from './main-pages/main-pages.component';
 import {
   SignupComponent,
@@ -177,6 +178,7 @@ import { ErrorInterceptor } from './error-interceptor';
     CommentHistoryComponent,
     FollowedTemplateComponent,
     SharedHistoryComponent,
+    MissedNotificationsComponent,
     GroupChatsComponent,
     MainPagesComponent,
     TrendingComponent,
