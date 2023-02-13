@@ -196,10 +196,10 @@ console.log('follows777',follows);
 // filter followers
 router.get("/filterFollowers", async(req, res) => {
     payload = req.query.queryFollowing;
-    payload = req.query.userId;
+    userId = req.query.userId;
 
     console.log('payload 777', payload)
-    await userInfo.findOne({Creator: req.query.userId})
+    await userInfo.findOne({Creator: userId})
     .then(user => {
 
      Follow.find({ $and: [
