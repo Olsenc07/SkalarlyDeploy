@@ -75,6 +75,10 @@ export class FollowService {
   getInfoMutualsUpdateListener(): any {
     return this.mutualsInfoPostUpdated.asObservable();
   }
+
+  getfilterFollowers(): any {
+    return this.followersInfoPostUpdated.asObservable();
+  }
   postInfoFollow(userId: string, username: string, FollowingId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
@@ -288,7 +292,7 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         this.followingInfo = transformedMessage;
         console.log('deep end yo', this.followingInfo);
-        this.followersInfoPostUpdated.next([...this.followingInfo]);
+        this.followerPostUpdated.next([...this.followingInfo]);
       });
   }
   // skalars following
