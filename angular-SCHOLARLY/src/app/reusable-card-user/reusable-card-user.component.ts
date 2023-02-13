@@ -206,9 +206,9 @@ export class ReusableCardUserFollowerComponent implements OnInit {
     this.followService.getMessageNotificationFollowed(this.userId);
   }
   onMututal(username: string): any {
-    console.log('chaz whats up homie n', username);
     this.followService.mutualFollow(username, this.userId);
     this.followService.mutualsFollow(username, this.userId);
+    this.followService.setUsername(username);
   }
 }
 @Component({

@@ -67,7 +67,7 @@ router.get("/infoMessage", async(req, res, next) => {
         {otherUser: user.username}
     ).sort({time:-1})
     .then(documents => {
-        if(documents){
+        if(documents.length > 0){
         console.log('timing', documents)
         nonya = [];
         documents.forEach((e) => {
