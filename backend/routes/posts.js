@@ -504,11 +504,9 @@ router.post("/Shared", checkAuth,
                         .then(checking => {
                             console.log('checking', checking)
                             if((checking !== null) ){
-                                Subscription.findOne({Creator: POST.Creator})
-                        .then(subscriber =>{
-                            const p256dh = subscriber.keys.p256dh
-                            const auth = subscriber.keys.auth
-                            const endpoint = subscriber.endpoint
+                            const p256dh = checking.keys.p256dh
+                            const auth = checking.keys.auth
+                            const endpoint = checking.endpoint
                             const pushSubscription = {
                                 keys: {
                                  p256dh: p256dh,
@@ -530,7 +528,7 @@ router.post("/Shared", checkAuth,
                   .catch( (err) => {
                       console.log('uh ooo',err);
                   });
-                             })
+                             
                             }else{
                                 console.log('no subscription');
                             }
@@ -719,11 +717,9 @@ if (req.body.userId){
                 Subscription.findOne({Creator: user.Creator.valueOf()})
                 .then(checking => {
                     if((checking !== null) && (user.Creator.valueOf() !== req.body.userId)){
-                        Subscription.findOne({Creator: user.Creator})
-                .then(subscriber =>{
-                    const p256dh = subscriber.keys.p256dh
-                    const auth = subscriber.keys.auth
-                    const endpoint = subscriber.endpoint
+                    const p256dh = checking.keys.p256dh
+                    const auth = checking.keys.auth
+                    const endpoint = checking.endpoint
                     const pushSubscription = {
                         keys: {
                          p256dh: p256dh,
@@ -745,7 +741,7 @@ if (req.body.userId){
           .catch( (err) => {
               console.log('uh ooo',err)
           });
-                     })
+           
                     }
                     })
         })
