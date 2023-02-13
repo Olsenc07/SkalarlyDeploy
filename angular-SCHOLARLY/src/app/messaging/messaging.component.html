@@ -11,11 +11,11 @@
 <mat-divider></mat-divider>
 
     <div class="searchMsgs">
-     <mat-form-field   class="search-box__input" [disabled]="messagesNotif.length ==0"
+     <mat-form-field   class="search-box__input" 
      appearance="outline">
     <i matPrefix class="material-icons search-box__icon ">search</i>
 
-     <input matInput
+     <input matInput [disabled]="messagesNotif.length == 0"
       placeholder="Search Messages" 
      (keyup)="sendDataNotif($event)"
      />
