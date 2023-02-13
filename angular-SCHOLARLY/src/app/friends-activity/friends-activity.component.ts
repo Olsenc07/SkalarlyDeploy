@@ -65,7 +65,7 @@ export class FriendsActivityComponent implements OnInit {
 
     this.followService.getMessageNotification(this.userId);
     this.followSub = this.followService
-      .getInfoFollowingUpdateListener()
+      .getInfoUpdateListener()
       .subscribe((follow: Follow[]) => {
         this.follow = follow;
       });

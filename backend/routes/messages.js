@@ -62,10 +62,12 @@ res.status(200).json({
 router.get("/infoMessage", async(req, res, next) => {
     await User.findById({_id: req.query.userId})
 .then(user => {
+    console.log('user', user)
     Msg.find( 
         {otherUser: user.username}
     ).sort({time:-1})
     .then(documents => {
+        if(documents){
         console.log('timing', documents)
         nonya = [];
         documents.forEach((e) => {
@@ -99,7 +101,7 @@ for(let i in nonyaOnce){
     })
 
 }
-       
+}
     })
     .catch(err => {
         return res.status(401).json({
