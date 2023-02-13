@@ -151,7 +151,7 @@ export class FollowService {
       )
       .subscribe((transformedMessage) => {
         this.follow = transformedMessage;
-        this.followPostUpdated.next([...this.follow]);
+        this.followingInfoPostUpdated.next([...this.follow]);
       });
   }
   getMessageNotificationFollowed(userId: string): any {
