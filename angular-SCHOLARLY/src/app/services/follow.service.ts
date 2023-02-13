@@ -34,6 +34,8 @@ export class FollowService {
   private followingInfo: Follow[] = [];
   private followingInfoPostUpdated = new ReplaySubject<Follow[]>();
 
+  private followersInfoPostUpdated = new ReplaySubject<Follow[]>();
+
   private mutualInfo: Follow[] = [];
   private mutualInfoPostUpdated = new ReplaySubject<Follow[]>();
 
@@ -286,7 +288,7 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         this.followingInfo = transformedMessage;
         console.log('deep end yo', this.followingInfo);
-        this.followingInfoPostUpdated.next([...this.followingInfo]);
+        this.followersInfoPostUpdated.next([...this.followingInfo]);
       });
   }
   // skalars following

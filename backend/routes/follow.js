@@ -196,6 +196,8 @@ console.log('follows777',follows);
 // filter followers
 router.get("/filterFollowers", async(req, res) => {
     payload = req.query.queryFollowing;
+    payload = req.query.userId;
+
     console.log('payload 777', payload)
     await userInfo.findOne({Creator: req.query.userId})
     .then(user => {
@@ -210,6 +212,7 @@ router.get("/filterFollowers", async(req, res) => {
     }
      ]})
     .then(follows => {
+        console.log('pumpkin', follows)
         res.status(200).json({
             message: 'Follows fetched succesfully!',
             messages: follows
