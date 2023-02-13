@@ -739,7 +739,8 @@ if (req.body.userId){
             console.log( 'Commented!');
         })
           .catch( (err) => {
-              console.log('uh ooo',err)
+              console.log('uh ooo',err);
+            //   create missed notif save and all
           });
            
                     }

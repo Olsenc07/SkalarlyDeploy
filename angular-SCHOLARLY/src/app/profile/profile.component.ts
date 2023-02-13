@@ -116,7 +116,7 @@ export class ProfileComponent implements OnInit {
       .getNotifId()
       .subscribe((value) => {
         console.log('value', value);
-        if (value.Creator) {
+        if (value.length > 0) {
           this.notif = value.Creator;
           console.log('During the midday', this.notif);
         }
