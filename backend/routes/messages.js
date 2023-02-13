@@ -143,6 +143,8 @@ console.log('payload', payload);
         ).sort({time:-1})
         .then(documents => {
             console.log('timing', documents)
+        if(documents.length > 0){
+
             nonya = [];
             documents.forEach((e) => {
                 nonya.push(e.username)
@@ -191,6 +193,13 @@ if(allMsgs.length == matches.length){
     
     }
 }    
+        }else{
+            return res.status(200).json({
+                message: "No messages to retrieve",
+                messages: documents
+        
+            })
+        }
         })
     })
     .catch(err => {
