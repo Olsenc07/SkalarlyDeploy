@@ -136,7 +136,7 @@
     <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
 
           <button color="primary" matSuffix mat-icon-button aria-label="Clear" type="button"
-          (click)="clearMessage()">
+         *ngIf="message.value" (click)="clearMessage()">
           <mat-icon>close</mat-icon>
         </button>
    
