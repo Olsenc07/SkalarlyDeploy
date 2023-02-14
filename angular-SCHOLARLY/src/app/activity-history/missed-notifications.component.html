@@ -29,28 +29,38 @@
                     <button mat-button class="center-"  (click)="navigateToPage(info.username)">
                         @{{ info.username }} 
                     </button>
+                    <div>
                     Commented On Your Post
+                </div>
                 </div>
                     <div *ngIf="info.body && (info.time == '')">
                     <button mat-button class="center-"  (click)="navigateToPage(info.username)">
                         @{{ info.username }} 
                     </button>
+                    <div>
                     Shared Your Post
+                </div>
                 </div>
                     <div *ngIf="info.message">
                     <button mat-button class="center-"  (click)="navigateToPage(info.username)">
                         @{{ info.username }} 
                     </button>
+                    <div>
                     Messaged You
+                    </div>
                 </div>
                 </div>
 
                 <div class="display" *ngIf="info.Follower">
                     <!-- Directs to users profile -->
+                    <div>
                     <button mat-button class="center-"  (click)="navigateToPage(info.Follower)">
-                        @{{ info.Follower }} Followed You
+                        @{{ info.Follower }} 
                     </button>
-                    
+                    <div>
+                    Followed You
+                </div>
+                    </div>
                 </div>
            
             </div>
@@ -83,7 +93,12 @@
 <i class="fas fa-envelope-open-text"></i>
 </button>
 
-       
+<button mat-flat-button class="repostColor" matTooltip="Navigate To Friends" *ngIf="info.Follower" 
+(click)="navigateToFriends()">
+<i class="material-icons-sharp">groups</i>
+
+</button>       
+
     </div> 
 
          

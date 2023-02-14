@@ -380,6 +380,9 @@ export class MissedNotificationsComponent implements OnInit {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/messages/:'], { queryParams: { username } });
   }
+  navigateToFriends(): void {
+    this.router.navigate(['/friends-activity']);
+  }
   delNotif(postId: string): any {
     console.log('postId my balls', postId);
   }
