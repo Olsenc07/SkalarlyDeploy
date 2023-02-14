@@ -121,8 +121,8 @@ export class ProfileComponent implements OnInit {
       .subscribe((value) => {
         console.log('value', value);
         if (value != null) {
-          this.Notif = value.Creator;
-          console.log('During the midday', this.Notif);
+          this.notif = value.Creator;
+          console.log('During the midday', this.notif);
         }
       });
     this.authService.getInfoProfile(this.userId);
