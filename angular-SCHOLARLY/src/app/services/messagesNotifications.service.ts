@@ -18,6 +18,7 @@ export interface Message {
 })
 export class MessageNotificationService {
   private messagesNotif: Message[] = [];
+  private messages: Message[] = [];
 
   // private messagesInfoUpdated = new Subject<Message[]>();
   private messgesInfoUpdatedNotifs = new Subject<Message[]>();
@@ -98,6 +99,36 @@ export class MessageNotificationService {
         // this.snackBar.open('Message Deleted', '🗑', {
         //   duration: 2000,
         // });
+      });
+  }
+
+  delConvo(postId: string): any {
+    // console.log('hey chase postId', postId);
+    this.http
+      .delete<{ message: string; postId: Message }>(
+        'https://www.skalarly.com/api/posts/delConvo/' + postId
+      )
+      .subscribe({
+        next: (responseData) => {
+          const delConvo: Message = {
+            id: responseData.postId.id,
+            username: responseData.postId.username,
+            message: responseData.postId.message,
+            time: responseData.postId.time,
+            otherUser: responseData.postId.otherUser,
+            you: responseData.postId.you,
+          };
+          const updatedPosts = this.messages.filter(
+            (post) => post.id !== postId
+          );
+
+          this.messages.push(delConvo);
+          this.messages = updatedPosts;
+          this.messgesInfoUpdatedNotifs.next([...this.messages]);
+          this.snackBar.open('Conversation Deleted', '🗑', {
+            duration: 3000,
+          });
+        },
       });
   }
 }

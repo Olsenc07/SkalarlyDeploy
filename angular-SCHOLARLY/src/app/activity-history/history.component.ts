@@ -383,7 +383,7 @@ export class MissedNotificationsComponent implements OnInit {
   navigateToFriends(): void {
     this.router.navigate(['/friends-activity']);
   }
-  delNotif(postId: string): any {
-    console.log('postId my balls', postId);
+  delNotif(_id: string): any {
+    console.log('postId my balls', _id);
   }
 }

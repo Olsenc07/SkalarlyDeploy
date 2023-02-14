@@ -161,9 +161,9 @@ if(subscriber !== null){
 
                 console.error(error);
                 var missedNotif = new missedHistory({
-                  username: data.otherUser,
+                  username: username.username,
                   message: Message,
-                  time: data.time,
+                  time: data.time, 
                   body: '',
                   Follower: '',
                   postId: '',
