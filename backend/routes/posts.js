@@ -1068,24 +1068,31 @@ router.delete("/delConvo/:postId", checkAuth, async(req, res, next ) => {
                 ]
             }).then(done => {
                 res.status(200).json({
-                    message: 'Deleting Conversation worked'
+                    message: 'Deleting Conversation worked',
+                    postId: { 
+                        ...done
+                    }
                 });
             })
             .catch(error => {
                 console.log('del messages failed')
-                // res.status(500).json({
-                //     message: 'Deleting Messages failed 2'
-                // });
+                res.status(500).json({
+                    message: 'Deleting Messages failed 2'
+                });
             });
         })
         .catch(error => {
             console.log('del messages failed')
-            // res.status(500).json({
-            //     message: 'Deleting Messages failed 1'
-            // });
+            res.status(500).json({
+                message: 'Deleting Messages failed 1'
+            });
         });
        
       
+    }else{
+        res.status(200).json({
+            message: 'No Conversation To Delete'
+        });
     }
     })
   

@@ -230,6 +230,7 @@ router.delete("/deleteMsg/:id", checkAuth, (req, res, next ) => {
     .catch(error => {
         res.status(500).json({
             message: 'Fetching posts failed!'
+
         });
     });
 });
