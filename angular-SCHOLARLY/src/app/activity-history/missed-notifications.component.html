@@ -25,16 +25,24 @@
                 </div>
                 <div class="display" *ngIf="info.username">
                     <!-- Directs to users profile -->
-                    <button mat-button class="center-" *ngIf="info.body && info.time" (click)="navigateToPage(info.username)">
-                        @{{ info.username }} Commented On Your Post
+                    <div *ngIf="info.body && info.time">
+                    <button mat-button class="center-"  (click)="navigateToPage(info.username)">
+                        @{{ info.username }} 
                     </button>
-                    <button mat-button class="center-" *ngIf="info.body && (info.time == '')" (click)="navigateToPage(info.username)">
-                        @{{ info.username }} Shared Your Post
+                    Commented On Your Post
+                </div>
+                    <div *ngIf="info.body && (info.time == '')">
+                    <button mat-button class="center-"  (click)="navigateToPage(info.username)">
+                        @{{ info.username }} 
                     </button>
-                    <button mat-button class="center-" *ngIf="info.message" (click)="navigateToPage(info.username)">
-                        @{{ info.username }} Messaged You
+                    Shared Your Post
+                </div>
+                    <div *ngIf="info.message">
+                    <button mat-button class="center-"  (click)="navigateToPage(info.username)">
+                        @{{ info.username }} 
                     </button>
-                   
+                    Messaged You
+                </div>
                 </div>
 
                 <div class="display" *ngIf="info.Follower">
@@ -61,11 +69,11 @@
 
 
         <button mat-flat-button class="counterColor" matTooltip="Delete Notification"
-        (click)="delRePost(info.postId)">
+        (click)="delNotif(info.postId)">
         <i class="far fa-times-circle"></i></button>
       
 
-            <button mat-flat-button class="repostColor" matTooltip="Original Post"
+            <button mat-flat-button class="repostColor" matTooltip="Original Post" *ngIf="info.body" 
             (click)="navToPost(info.postId)">
       <i class="fas fa-home"></i>
     </button>

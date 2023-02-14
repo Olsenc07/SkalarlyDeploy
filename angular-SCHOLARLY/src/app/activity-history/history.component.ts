@@ -322,6 +322,7 @@ export class MissedNotificationsComponent implements OnInit {
   countVisibility = 0;
 
   constructor(
+    private router: Router,
     private authService: AuthService,
     private commentsService: CommentsService,
     public postService: PostService
@@ -339,7 +340,10 @@ export class MissedNotificationsComponent implements OnInit {
         console.log('jeez wiz', this.notif);
       });
   }
-
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
   // Forward
   onClickFeed(): any {
     const count = 1;
@@ -371,5 +375,9 @@ export class MissedNotificationsComponent implements OnInit {
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.notif = missedNotifs;
       });
+  }
+
+  delNotif(postId: string): any {
+    console.log('postId my balls', postId);
   }
 }
