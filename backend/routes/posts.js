@@ -731,9 +731,9 @@ if (req.body.userId){
             .then((user) => {
                 console.log('user 77', user)
 
-                Subscription.findOne({Creator: user.Creator.valueOf()})
+                Subscription.findOne({Creator: user.Creator})
                 .then(checking => {
-                    if((checking !== null) && (user.Creator.valueOf() !== req.body.userId)){
+                    if((checking !== null) && (user.Creator !== req.body.userId)){
                     const p256dh = checking.keys.p256dh
                     const auth = checking.keys.auth
                     const endpoint = checking.endpoint
@@ -781,7 +781,14 @@ if (req.body.userId){
         })
     }
                     
-                    })
+                    })  
+                    .catch(err => {
+                        console.log('mountains', user.Creator)
+                        console.log('mountains 2', req.body.userId)
+
+                return res.status(401).json({
+                    message: "Invalid comment error 7"})
+                        })
         })
                 } catch{
                         console.log('User does not have a subscription for followers')
