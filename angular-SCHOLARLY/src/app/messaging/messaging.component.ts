@@ -96,6 +96,12 @@ export class MessagingComponent implements OnInit {
   delConvo(postId: string): any {
     console.log('pI', postId);
     this.messageNotificationService.delConvo(postId);
+    this.messageNotificationService
+      .getListenerNotification()
+      .subscribe((messagesNotif: Message[]) => {
+        this.isLoading = false;
+        this.messagesNotif = messagesNotif.reverse();
+      });
   }
   // Search notifs
   sendDataNotif(event: any): any {
