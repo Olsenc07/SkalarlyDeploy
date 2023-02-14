@@ -376,7 +376,10 @@ export class MissedNotificationsComponent implements OnInit {
         this.notif = missedNotifs;
       });
   }
-
+  navigateToChat(username: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/messages/:'], { queryParams: { username } });
+  }
   delNotif(postId: string): any {
     console.log('postId my balls', postId);
   }

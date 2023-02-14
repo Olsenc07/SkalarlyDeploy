@@ -77,6 +77,12 @@
             (click)="navToPost(info.postId)">
       <i class="fas fa-home"></i>
     </button>
+
+    <button mat-flat-button class="repostColor" matTooltip="Navigate To Chat" *ngIf="info.message" 
+    (click)="navigateToChat(info.username)">
+<i class="fas fa-envelope-open-text"></i>
+</button>
+
        
     </div> 
 
