@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Post, PostService } from '../services/post.service';
 import { FollowService } from '../services/follow.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PostsService } from '../services/posts.service';
 
 export interface Follow {
   id: string;
@@ -46,7 +47,8 @@ export class ActivityHistoryComponent implements OnInit {
     public postService: PostService,
     private authService: AuthService,
     private followService: FollowService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private postsService: PostsService
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -83,6 +85,13 @@ export class ActivityHistoryComponent implements OnInit {
         this.notif = missedNotifs;
         console.log('notif lost', this.notif);
       });
+  }
+
+  // Turn off notifications
+  offNotifs(): void {
+    console.log('working 2', this.userId);
+    this.postsService.deleteNotif(this.userId);
+    this.postsService.clearMissedNotif(this.userId);
   }
 }
 
