@@ -82,7 +82,7 @@ if(checking !== null){
             body: '',
             Follower: user.username,
             postId: req.query.userId,
-            Creator: otherUserId.id
+            Creator: req.query.userId
 
           })
           missedNotif.save();

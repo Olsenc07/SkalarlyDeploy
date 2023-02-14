@@ -156,6 +156,9 @@ if(subscriber !== null){
               console.log( 'SENT Message');
           })
             .catch(error => {
+              User.findOne({username: data.otherUser})
+              .then(user => {
+
                 console.error(error);
                 var missedNotif = new missedHistory({
                   username: data.otherUser,
@@ -164,11 +167,12 @@ if(subscriber !== null){
                   body: '',
                   Follower: '',
                   postId: '',
-                  Creator: data.userId
+                  Creator: user._id
       
                 })
                 missedNotif.save();
                 console.log('missed followed saved and notified')
+              })
             })}) 
           }})
             .catch(err => {

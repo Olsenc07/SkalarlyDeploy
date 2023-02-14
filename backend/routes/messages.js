@@ -240,7 +240,8 @@ router.get("/missedNotifs", checkAuth, async(req, res) => {
     const counter = req.query.counter;
     const userId = req.query.userId;
 
-    await missedHistory.find({userId: userId}).sort({_id:-1}).skip(counter).limit(6)
+    await missedHistory.find({Creator: userId})
+    .sort({_id:-1}).skip(counter).limit(6)
     .then(missedNotifs => {
         console.log('missed notifs found', missedNotifs)
         res.status(200).json({

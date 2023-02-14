@@ -764,7 +764,7 @@ if (req.body.userId){
                 body: req.body.body,
                 Follower: '',
                 postId: req.body.postId,
-        Creator: req.body.userId
+                Creator: req.body.userId
 
               })
               missedNotif.save();
@@ -1053,12 +1053,30 @@ router.delete("/delConvo/:postId", checkAuth, async(req, res, next ) => {
     console.log('thankyou sir', req.params.postId)
     Msg.findOne({_id: req.params.postId})
     .then((found) => {
+        if (found != null){
         console.log('found', found);
         Msg.deleteMany({ 
             $and: [
                 {username: found.username},
                 {otherUser: found.otherUser}
             ]
+        }).then(flounder => {
+            Msg.deleteMany({ 
+                $and: [
+                    {username: found.otherUser},
+                    {otherUser: found.username}
+                ]
+            }).then(done => {
+                res.status(200).json({
+                    message: 'Deleting Conversation worked'
+                });
+            })
+            .catch(error => {
+                console.log('del messages failed')
+                // res.status(500).json({
+                //     message: 'Deleting Messages failed 2'
+                // });
+            });
         })
         .catch(error => {
             console.log('del messages failed')
@@ -1066,21 +1084,9 @@ router.delete("/delConvo/:postId", checkAuth, async(req, res, next ) => {
             //     message: 'Deleting Messages failed 1'
             // });
         });
-        Msg.deleteMany({ 
-            $and: [
-                {username: found.otherUser},
-                {otherUser: found.username}
-            ]
-        })
-        .catch(error => {
-            console.log('del messages failed')
-            // res.status(500).json({
-            //     message: 'Deleting Messages failed 2'
-            // });
-        });
-        res.status(200).json({
-            message: 'Deleting Conversation worked'
-        });
+       
+      
+    }
     })
   
     })

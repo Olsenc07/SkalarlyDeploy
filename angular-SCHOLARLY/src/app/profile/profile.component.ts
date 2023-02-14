@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { PostsService } from '../services/posts.service';
 import { MissedNotif } from '../activity-history/history.component';
 import { CommentsService } from '../services/comments.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 export interface Follow {
   id: string;
   Follower: string;
@@ -82,7 +84,8 @@ export class ProfileComponent implements OnInit {
     private showCaseService: ShowCaseService,
     private followService: FollowService,
     public dialog: MatDialog,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
+    private snackBar: MatSnackBar
   ) {
     // profile$$.profile$$.subscribe((profile) => {
     //   // this.profile$$ = profile;
@@ -163,6 +166,18 @@ export class ProfileComponent implements OnInit {
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.Notif = missedNotifs;
+        if (this.Notif.length > 0) {
+          this.snackBar
+            .open(
+              'Your notification connection has been lost. Please click the red bell to reset it.',
+              '😃'
+            )
+            .onAction()
+            .subscribe(() => {
+              this.offNotifs();
+              console.log('triggered  off notifcation');
+            });
+        }
       });
   }
   // Turn off notifications
