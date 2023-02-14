@@ -532,6 +532,18 @@ router.post("/Shared", checkAuth,
                 })
                   .catch( (err) => {
                       console.log('uh ooo',err);
+                      var missedNotif = new missedHistory({
+                        username: POST.Username,
+                        message: '',
+                        time: '',
+                        body: POST.postDescription,
+                        Follower: '',
+                        postId: req.body.postId,
+                        Creator: req.userData.userId
+        
+                      })
+                      missedNotif.save();
+                      console.log('missed shared saved and notified')
                   });
                              
                             }else{

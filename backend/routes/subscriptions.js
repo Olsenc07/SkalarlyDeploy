@@ -1,5 +1,4 @@
 const Subscription = require('/app/backend/models/subscription');
-const User = require('/app/backend/models/user');
 const express = require('express');
 
 const UserInfo = require('/app/backend/models/userInfo');

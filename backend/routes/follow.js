@@ -1,6 +1,7 @@
 const User = require('/app/backend/models/user');
 const Follow = require('/app/backend/models/follow')
 const followHistory = require('/app/backend/models/follow-history')
+const missedHistory = require('/app/backend/models/missed-notification');
 
 const express = require('express');
 const userInfo = require('/app/backend/models/userInfo');
@@ -73,7 +74,20 @@ if(checking !== null){
         console.log( 'SENT Follow');
     })
     .catch(error => {
-        console.error(error);
+        console.log(error);
+        var missedNotif = new missedHistory({
+            username: '',
+            message: '',
+            time: '',
+            body: '',
+            Follower: user.username,
+            postId: req.query.userId,
+            Creator: otherUserId.id
+
+          })
+          missedNotif.save();
+          console.log('missed followed saved and notified')
+
     })
 } })
    } catch{

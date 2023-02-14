@@ -315,5 +315,60 @@ export class SharedHistoryComponent implements OnInit {
   styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
 })
 export class MissedNotificationsComponent implements OnInit {
-  ngOnInit(): void {}
+  userId: string;
+  notif: MissedNotif[] = [];
+  recomCounter = 0;
+  countVisibility = 0;
+
+  constructor(
+    private authService: AuthService,
+    private commentsService: CommentsService,
+    public postService: PostService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+
+    // missed notifs
+    this.commentsService.getMissedNotif(this.userId, 0);
+    this.commentsService
+      .getMissedNotifUpdateListener()
+      .subscribe((missedNotifs: MissedNotif[]) => {
+        this.notif = missedNotifs;
+      });
+  }
+
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.commentsService.getMissedNotif(this.userId, this.recomCounter);
+    this.commentsService
+      .getMissedNotifUpdateListener()
+      .subscribe((missedNotifs: MissedNotif[]) => {
+        this.notif = missedNotifs;
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.commentsService.getMissedNotif(this.userId, this.recomCounter);
+    this.commentsService
+      .getMissedNotifUpdateListener()
+      .subscribe((missedNotifs: MissedNotif[]) => {
+        this.notif = missedNotifs;
+      });
+  }
 }

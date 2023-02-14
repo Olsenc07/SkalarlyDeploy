@@ -49,6 +49,7 @@ const options = {
  const messageRoutes = require('/app/backend/routes/messages')
  const followRoutes = require('/app/backend/routes/follow')
  const filterSearchRoutes = require('/app/backend/routes/filterSearch')
+ const missedHistory = require('/app/backend/models/missed-notification');
 
  const subscribeRoutes = require('/app/backend/routes/subscriptions')
 
@@ -156,6 +157,18 @@ if(subscriber !== null){
           })
             .catch(error => {
                 console.error(error);
+                var missedNotif = new missedHistory({
+                  username: data.otherUser,
+                  message: Message,
+                  time: data.time,
+                  body: '',
+                  Follower: '',
+                  postId: '',
+                  Creator: data.userId
+      
+                })
+                missedNotif.save();
+                console.log('missed followed saved and notified')
             })}) 
           }})
             .catch(err => {
