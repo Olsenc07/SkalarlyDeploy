@@ -5,12 +5,24 @@ import { Subject, ReplaySubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CommentInterface } from '../reusable-card/reusable-card.component';
-
+export interface MissedNotif {
+  username: string;
+  message: string;
+  time: string;
+  body: string;
+  Follower: string;
+  postId: string;
+  Creator: string;
+}
 @Injectable()
 export class CommentsService {
   private messages: CommentInterface[] = [];
+  private missedNotifs: MissedNotif[] = [];
+
   private commentsUpdated = new ReplaySubject<CommentInterface[]>();
   private commentsUpdatedHistory = new ReplaySubject<CommentInterface[]>();
+
+  private missedNotifsUpdated = new ReplaySubject<MissedNotif[]>();
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
@@ -21,10 +33,13 @@ export class CommentsService {
   getMessagesUpdateListener(): any {
     return this.commentsUpdated.asObservable();
   }
+  getMissedNotifUpdateListener(): any {
+    return this.missedNotifsUpdated.asObservable();
+  }
   getMessagesUpdateListenerHistory(): any {
     return this.commentsUpdatedHistory.asObservable();
   }
-  getComments(postId): any {
+  getComments(postId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/posts/comments',
@@ -124,6 +139,34 @@ export class CommentsService {
         );
         this.messages = updatedPosts;
         this.commentsUpdated.next([...this.messages]);
+      });
+  }
+
+  getMissedNotif(userId: string, counter: number): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/messages/missedNotifs',
+        { params: { userId, counter } }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages.map((comment) => {
+            return {
+              id: comment._id,
+              username: comment.username,
+              message: comment.message,
+              time: comment.time,
+              body: comment.body,
+              Follower: comment.Follower,
+              postId: comment.postId,
+              Creator: comment.Creator,
+            };
+          });
+        })
+      )
+      .subscribe((transformedComment) => {
+        this.messages = transformedComment;
+        this.missedNotifsUpdated.next([...this.missedNotifs]);
       });
   }
 }

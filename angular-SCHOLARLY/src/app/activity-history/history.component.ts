@@ -17,7 +17,15 @@ export interface Follow {
   nameFollowing: string;
   ProfilePicPathFollowing: string;
 }
-
+export interface MissedNotif {
+  username: string;
+  message: string;
+  time: string;
+  body: string;
+  Follower: string;
+  postId: string;
+  Creator: string;
+}
 @Component({
   selector: 'activity-history',
   templateUrl: './history.component.html',
@@ -29,7 +37,7 @@ export class ActivityHistoryComponent implements OnInit {
   followers: Follow[] = [];
   private postsSub: Subscription;
   shared: Post[] = [];
-  notif = [];
+  notif: MissedNotif[] = [];
   private followSubFollowers: Subscription;
 
   constructor(
@@ -40,7 +48,7 @@ export class ActivityHistoryComponent implements OnInit {
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-
+    // comments
     this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
@@ -62,6 +70,14 @@ export class ActivityHistoryComponent implements OnInit {
       .subscribe((shared: Post[]) => {
         this.shared = shared;
         console.log('shared', this.shared);
+      });
+
+    // missed notifs
+    this.commentsService.getMissedNotif(this.userId, 0);
+    this.commentsService
+      .getMissedNotifUpdateListener()
+      .subscribe((missedNotifs: MissedNotif[]) => {
+        this.notif = missedNotifs;
       });
   }
 }

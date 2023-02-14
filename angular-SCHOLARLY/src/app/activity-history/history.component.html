@@ -15,7 +15,8 @@
           <div class="row yo">
             <mat-tab label="Comments on your posts"   >
               <ng-template  mat-tab-label >
-                <mat-icon> <i class="far fa-comments"></i>
+                <mat-icon> 
+                  <i class="fas fa-comments"></i>
                  </mat-icon>
                  <div class="font">Comments on your posts</div>
                
@@ -95,7 +96,7 @@
 
   </div>
 </mat-tab>
-<mat-tab label="Missed Notifications"  >
+<mat-tab label="Missed Notifications"  *ngIf="notif.length == 0">
   <ng-template  mat-tab-label >
     <mat-icon>  
       <i class="fas fa-envelope"></i>
@@ -105,7 +106,7 @@
 
      <div class="structure">
       <!-- *ngIf="shared.length == 0" -->
-         <div class="basicColumn"  *ngIf="notif.length == 0"
+         <div class="basicColumn"  
          >
       <i class="far fa-bell-slash noFriends" ></i>
 

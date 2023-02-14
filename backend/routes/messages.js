@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-// Mongod
 const User = require('/app/backend/models/user');
 const Msg = require('/app/backend/models/messages')
 const checkAuth = require('/app/backend/middleware/check-auth');
-// consts
-// const botName = 'Skalar';
+const missedHistory = require('/app/backend/models/missed-notification');
+
+
 
 
 
@@ -233,5 +233,25 @@ router.delete("/deleteMsg/:id", checkAuth, (req, res, next ) => {
         });
     });
 });
-                                      
+     
+
+// missed notifs
+router.get("/missedNotifs", checkAuth, async(req, res) => {
+    const counter = req.query.counter;
+    const userId = req.query.userId;
+
+    await missedHistory.find({userId: userId}).sort({_id:-1}).skip(counter).limit(6)
+    .then(missedNotifs => {
+        console.log('missed notifs found', missedNotifs)
+        res.status(200).json({
+            message: 'missed notifications fetched succesfully!',
+            messages: missedNotifs
+            });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching missed notifications failed'
+        });
+    });
+})
 module.exports = router;

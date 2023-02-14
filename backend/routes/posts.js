@@ -7,6 +7,7 @@ const UserInfo = require('/app/backend/models/userInfo');
 const Comment = require('/app/backend/models/comment');
 const Follow = require('/app/backend/models/follow')
 const Msg = require('/app/backend/models/messages')
+const missedHistory = require('/app/backend/models/missed-notification');
 
 
 const webpush = require('web-push');
@@ -744,10 +745,21 @@ if (req.body.userId){
         })
           .catch( (err) => {
               console.log('uh ooo',err);
-            //   create missed notif save and all
-          });
-           
-                    }
+              var missedNotif = new missedHistory({
+                username: documents.username,
+                message: '',
+                time: req.body.time,
+                body: documents.body.body,
+                Follower: '',
+                postId: req.body.postId,
+        Creator: req.body.userId
+
+              })
+              missedNotif.save();
+              console.log('missed comment saved and notified')
+        })
+    }
+                    
                     })
         })
                 } catch{
