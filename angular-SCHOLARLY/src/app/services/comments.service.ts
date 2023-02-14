@@ -157,7 +157,8 @@ export class CommentsService {
         })
       )
       .subscribe((transformedComment) => {
-        this.messages = transformedComment;
+        this.missedNotifs = transformedComment;
+        console.log('wally', this.messages);
         this.missedNotifsUpdated.next([...this.missedNotifs]);
       });
   }
