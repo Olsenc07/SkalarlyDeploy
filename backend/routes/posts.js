@@ -729,6 +729,7 @@ if (req.body.userId){
             // Creator of post gets notified find them first...
             Post.findOne({_id: req.body.postId})
             .then((user) => {
+                console.log('post c', req.body.postId)
                 console.log('user 77', user)
 
                 Subscription.findOne({Creator: user.Creator})
