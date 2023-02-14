@@ -183,6 +183,7 @@ export class ProfileComponent implements OnInit {
   offNotifs(): void {
     console.log('working 2', this.userId);
     this.postsService.deleteNotif(this.userId);
+    this.postsService.clearMissedNotif(this.userId);
   }
   // Trigger Notifications
   Notifications(): any {

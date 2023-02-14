@@ -90,4 +90,14 @@ export class PostsService {
         });
       });
   }
+  clearMissedNotif(userId: string): any {
+    console.log('right here', userId);
+    this.http
+      .delete<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/posts/clearMissedNotif/' + userId
+      )
+      .subscribe((transformedInfos) => {
+        console.log('Missed notifications Cleared');
+      });
+  }
 }

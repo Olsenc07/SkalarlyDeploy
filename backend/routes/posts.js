@@ -1105,4 +1105,25 @@ router.delete("/deleteNotif/:id", checkAuth, async(req, res, next ) => {
             });
         });
     })
+    // Delete Notification 
+router.delete("/clearMissedNotif/:userId", checkAuth, async(req, res, next ) => {
+    console.log('thank', req.params.userId)
+    await missedHistory.deleteMany({Creator: req.params.userId})
+    .then((result) =>{
+        if(result != null){
+        res.status(200).json({
+            infos: result
+        });
+    }else{
+        res.status(200).json({
+            message: 'No missed notifications to delete'
+        });
+    }
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Deleting notifications failed!'
+            });
+        });
+    })
 module.exports = router;
