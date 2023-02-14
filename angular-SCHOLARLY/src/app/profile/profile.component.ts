@@ -170,14 +170,13 @@ export class ProfileComponent implements OnInit {
               {
                 duration: 7000,
               }
-            )
-            .onAction()
-            .subscribe(() => {
+            );
+          snackBarRef.afterDismissed().subscribe(() => {
               this.router.navigate(['/activity-history']);
             });
-        }
-      });
-  }
+          }
+        });
+      }
   // Turn off notifications
   offNotifs(): void {
     console.log('working 2', this.userId);

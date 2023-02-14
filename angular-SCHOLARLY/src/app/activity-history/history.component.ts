@@ -101,7 +101,6 @@ export class ActivityHistoryComponent implements OnInit {
       });
     // nav to profile
     this.router.navigate(['/profile']);
-    location.reload();
   }
 }
 
