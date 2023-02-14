@@ -78,6 +78,7 @@ export class ActivityHistoryComponent implements OnInit {
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.notif = missedNotifs;
+        console.log('notif lost', this.notif);
       });
   }
 }
