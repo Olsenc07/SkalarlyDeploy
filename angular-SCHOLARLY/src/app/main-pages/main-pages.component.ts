@@ -26,6 +26,7 @@ export class MainPagesComponent implements OnInit {
   category: string;
   specific: string;
   specificOptions: string;
+  commentsValidator = '';
 
   isLoading = false;
   posts: Post[] = [];
@@ -69,6 +70,7 @@ export class MainPagesComponent implements OnInit {
       queryParams: { userId: this.userId },
     });
   }
+
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
     console.log('Hey babe I miss you more', postId.length);
     console.log('Hey babe I miss you ', OriginalPostId.length);
@@ -1330,9 +1332,10 @@ export class HashtagCardComponent implements OnInit {
     this.router.navigate(['/single/:'], { queryParams: { postId } });
   }
   commentsValidatorFunc(postId: string): void {
+    if (this.commentsValidator !== postId) {
+      this.comment.setValue('');
+    }
     this.commentsValidator = postId;
-    this.comment.setValue('');
-    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {

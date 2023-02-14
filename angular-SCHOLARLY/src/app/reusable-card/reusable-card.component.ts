@@ -553,9 +553,10 @@ export class ReusableCardPersonalComponent implements OnInit {
   }
 
   commentsValidatorFunc(postId: string): void {
+    if (this.commentsValidator !== postId) {
+      this.comment.setValue('');
+    }
     this.commentsValidator = postId;
-    this.comment.setValue('');
-    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -1200,15 +1201,10 @@ export class CardFeedComponent implements OnInit {
     });
   }
   commentsValidatorFunc(postId: string): void {
-    console.log('one', postId);
-    console.log('two', this.commentsValidator);
-
-    if (postId !== this.commentsValidator) {
+    if (this.commentsValidator !== postId) {
       this.comment.setValue('');
     }
     this.commentsValidator = postId;
-
-    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -1540,9 +1536,10 @@ export class TrendingFeedComponent implements OnInit {
     });
   }
   commentsValidatorFunc(postId: string): void {
+    if (this.commentsValidator !== postId) {
+      this.comment.setValue('');
+    }
     this.commentsValidator = postId;
-    this.comment.setValue('');
-    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -1877,9 +1874,10 @@ export class CardFriendsComponent implements OnInit {
   }
 
   commentsValidatorFunc(postId: string): void {
+    if (this.commentsValidator !== postId) {
+      this.comment.setValue('');
+    }
     this.commentsValidator = postId;
-    this.comment.setValue('');
-    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -2489,9 +2487,10 @@ export class CardInfoMainPageComponent implements OnInit {
     this.router.navigate(['/single/:'], { queryParams: { postId } });
   }
   commentsValidatorFunc(postId: string): void {
+    if (this.commentsValidator !== postId) {
+      this.comment.setValue('');
+    }
     this.commentsValidator = postId;
-    this.comment.setValue('');
-    console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
