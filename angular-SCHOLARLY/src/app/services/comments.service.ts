@@ -180,7 +180,7 @@ export class CommentsService {
           };
           console.log('Missed notifications Cleared');
           const updatedNotifs = this.missedNotifs.filter(
-            (post) => post.Creator !== userId
+            (post) => post.Creator === userId
           );
           this.missedNotifs = updatedNotifs;
           this.missedNotifsUpdated.next([...this.missedNotifs]);
