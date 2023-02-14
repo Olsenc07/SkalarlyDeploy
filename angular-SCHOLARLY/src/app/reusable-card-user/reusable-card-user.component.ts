@@ -235,7 +235,14 @@ export class ReusableCardMessageComponent implements OnInit {
 
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    this.messageNotificationService
+      .getListenerNotification()
+      .subscribe((messagesNotif: Message[]) => {
+        this.messagesNotif = messagesNotif.reverse();
+        console.log('petes nuts');
+      });
+  }
 
   ngOnInit(): any {
     this.isLoading = true;
