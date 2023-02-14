@@ -538,7 +538,7 @@ router.post("/Shared", checkAuth,
                         time: '',
                         body: POST.postDescription,
                         Follower: '',
-                        postId: req.body.postId,
+                        postId: POST._id,
                         Creator: POST.Creator
         
                       })

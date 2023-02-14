@@ -357,37 +357,37 @@ export class MissedNotificationsComponent implements OnInit {
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
   // Forward
-  onClickFeed(): any {
-    const count = 1;
-    this.countVisibility += count;
-    const counting = 6;
-    this.recomCounter += counting;
-    console.log('hey', this.recomCounter);
-    console.log('howdy', this.countVisibility);
+  // onClickFeed(): any {
+  //   const count = 1;
+  //   this.countVisibility += count;
+  //   const counting = 6;
+  //   this.recomCounter += counting;
+  //   console.log('hey', this.recomCounter);
+  //   console.log('howdy', this.countVisibility);
 
-    this.commentsService.getMissedNotif(this.userId, this.recomCounter);
-    this.commentsService
-      .getMissedNotifUpdateListener()
-      .subscribe((missedNotifs: MissedNotif[]) => {
-        this.notif = missedNotifs;
-      });
-  }
+  //   this.commentsService.getMissedNotif(this.userId, this.recomCounter);
+  //   this.commentsService
+  //     .getMissedNotifUpdateListener()
+  //     .subscribe((missedNotifs: MissedNotif[]) => {
+  //       this.notif = missedNotifs;
+  //     });
+  // }
   // Back
-  onClickFeedBack(): any {
-    const count = 1;
-    this.countVisibility -= count;
-    const counting = 6;
-    this.recomCounter -= counting;
-    console.log('hey back', this.recomCounter);
-    console.log('howdy', this.countVisibility);
+  // onClickFeedBack(): any {
+  //   const count = 1;
+  //   this.countVisibility -= count;
+  //   const counting = 6;
+  //   this.recomCounter -= counting;
+  //   console.log('hey back', this.recomCounter);
+  //   console.log('howdy', this.countVisibility);
 
-    this.commentsService.getMissedNotif(this.userId, this.recomCounter);
-    this.commentsService
-      .getMissedNotifUpdateListener()
-      .subscribe((missedNotifs: MissedNotif[]) => {
-        this.notif = missedNotifs;
-      });
-  }
+  //   this.commentsService.getMissedNotif(this.userId, this.recomCounter);
+  //   this.commentsService
+  //     .getMissedNotifUpdateListener()
+  //     .subscribe((missedNotifs: MissedNotif[]) => {
+  //       this.notif = missedNotifs;
+  //     });
+  // }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
     this.router.navigate(['/single/:'], { queryParams: { postId } });

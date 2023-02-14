@@ -165,7 +165,10 @@ export class ProfileComponent implements OnInit {
           const snackBarRef = this.snackBar
             .open(
               'Your notification connection has been lost. Please click the red bell to reset it.',
-              'To see missed notifactions, click here first'
+              'To see missed notifactions, click here first',
+              {
+                duration: 7000,
+              }
             )
             .onAction()
             .subscribe(() => {
