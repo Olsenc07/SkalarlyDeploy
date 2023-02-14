@@ -5,6 +5,7 @@ import { CommentsService } from '../services/comments.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Post, PostService } from '../services/post.service';
 import { FollowService } from '../services/follow.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Follow {
   id: string;
@@ -44,10 +45,12 @@ export class ActivityHistoryComponent implements OnInit {
     private commentsService: CommentsService,
     public postService: PostService,
     private authService: AuthService,
-    private followService: FollowService
+    private followService: FollowService,
+    private snackBar: MatSnackBar
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
+    this.snackBar.dismiss();
     // comments
     this.commentsService
       .getMessagesUpdateListenerHistory()
@@ -375,6 +378,10 @@ export class MissedNotificationsComponent implements OnInit {
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.notif = missedNotifs;
       });
+  }
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
   }
   navigateToChat(username: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;

@@ -533,7 +533,7 @@ router.post("/Shared", checkAuth,
                   .catch( (err) => {
                       console.log('uh ooo',err);
                       var missedNotif = new missedHistory({
-                        username: POST.Username,
+                        username: documents.username,
                         message: '',
                         time: '',
                         body: POST.postDescription,
@@ -757,18 +757,27 @@ if (req.body.userId){
         })
           .catch( (err) => {
               console.log('uh ooo',err);
-              var missedNotif = new missedHistory({
+              Post.findOne({_id: req.body.postId})
+              .then(found => {
+                console.log('love day', found)
+               CreatorID = found.Creator
+               var missedNotif = new missedHistory({
                 username: documents.username,
                 message: '',
                 time: req.body.time,
                 body: req.body.body,
                 Follower: '',
                 postId: req.body.postId,
-                Creator: req.body.userId
+                Creator: CreatorID
 
               })
               missedNotif.save();
               console.log('missed comment saved and notified')
+              })
+              .catch(err => {
+                return res.status(401).json({
+                    message: "Invalid postId error!"})
+                        })
         })
     }
                     
