@@ -1127,6 +1127,7 @@ router.delete("/clearMissedNotif/:userId", checkAuth, async(req, res, next ) => 
     await missedHistory.deleteMany({Creator: req.params.userId})
     .then((result) =>{
         if(result != null){
+            console.log('thomas d', result)
         res.status(200).json({
             infos: result
         });

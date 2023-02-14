@@ -161,4 +161,27 @@ export class CommentsService {
         this.missedNotifsUpdated.next([...this.missedNotifs]);
       });
   }
+  clearMissedNotif(userId: string): any {
+    console.log('right here', userId);
+    this.http
+      .delete<{ message: string; infos: MissedNotif }>(
+        'https://www.skalarly.com/api/posts/clearMissedNotif/' + userId
+      )
+      .subscribe({
+        next: (transformedComment) => {
+          const clearMissedNotif: MissedNotif = {
+            username: transformedComment.infos.username,
+            message: transformedComment.infos.message,
+            time: transformedComment.infos.time,
+            body: transformedComment.infos.body,
+            Follower: transformedComment.infos.Follower,
+            postId: transformedComment.infos.postId,
+            Creator: transformedComment.infos.Creator,
+          };
+          console.log('Missed notifications Cleared');
+          this.missedNotifs.push(clearMissedNotif);
+          this.missedNotifsUpdated.next([...this.missedNotifs]);
+        },
+      });
+  }
 }

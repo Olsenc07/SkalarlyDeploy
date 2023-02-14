@@ -91,7 +91,13 @@ export class ActivityHistoryComponent implements OnInit {
   offNotifs(): void {
     console.log('working 2', this.userId);
     this.postsService.deleteNotif(this.userId);
-    this.postsService.clearMissedNotif(this.userId);
+    this.commentsService.clearMissedNotif(this.userId);
+    this.commentsService
+      .getMissedNotifUpdateListener()
+      .subscribe((missedNotifs: MissedNotif[]) => {
+        this.notif = missedNotifs;
+        console.log('notif lost', this.notif);
+      });
   }
 }
 
