@@ -48,7 +48,8 @@ export class ActivityHistoryComponent implements OnInit {
     private authService: AuthService,
     private followService: FollowService,
     private snackBar: MatSnackBar,
-    private postsService: PostsService
+    private postsService: PostsService,
+    private router: Router
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -98,6 +99,9 @@ export class ActivityHistoryComponent implements OnInit {
         this.notif = missedNotifs;
         console.log('notif lost', this.notif);
       });
+    // nav to profile
+    this.router.navigate(['/profile']);
+    location.reload();
   }
 }
 

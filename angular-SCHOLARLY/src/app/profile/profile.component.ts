@@ -162,7 +162,7 @@ export class ProfileComponent implements OnInit {
       .subscribe((missedNotifs: MissedNotif[]) => {
         console.log('missedNotifs', missedNotifs);
         this.Notif = missedNotifs;
-        if (this.Notif.length > 0 && this.notif !== this.userId) {
+        if (this.Notif.length > 0) {
           const snackBarRef = this.snackBar
             .open(
               'Your notification connection has been lost. Please click the red bell to reset it.',
