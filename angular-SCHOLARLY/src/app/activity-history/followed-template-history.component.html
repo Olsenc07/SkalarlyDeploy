@@ -5,8 +5,8 @@
 
     </mat-chip>
     </div>
-<mat-card class="row1_"  *ngFor="let info of mutuals">
-    <div class="column" >
+<mat-card class="row1_"  *ngFor="let info of mutuals; let even = even; let odd = odd">
+    <div class="column" [ngClass]="{ even: even, odd: odd }">
        
         <div class="rowSpace">
             <div class="display">

@@ -35,12 +35,10 @@
 
                 <div class="display" *ngIf="info.Follower">
                     <!-- Directs to users profile -->
-                    <button mat-button class="center-" *ngIf="userId !== info.Creator" (click)="navigateToPage(info.Follower)">
+                    <button mat-button class="center-"  (click)="navigateToPage(info.Follower)">
                         @{{ info.Follower }}
                     </button>
-                    <button mat-button *ngIf="userId == info.Creator" disabled>
-                    <div class="center-" >  @{{ info.Follower }} </div>
-                    </button>
+                    
                 </div>
            
             </div>
