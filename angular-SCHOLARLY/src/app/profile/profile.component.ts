@@ -86,12 +86,7 @@ export class ProfileComponent implements OnInit {
     public dialog: MatDialog,
     private commentsService: CommentsService,
     private snackBar: MatSnackBar
-  ) {
-    // profile$$.profile$$.subscribe((profile) => {
-    //   // this.profile$$ = profile;
-    //   // return name;
-    // })
-  }
+  ) {}
 
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
@@ -174,6 +169,7 @@ export class ProfileComponent implements OnInit {
             )
             .onAction()
             .subscribe(() => {
+              this.snackBar.dismiss();
               this.router.navigate(['/activity-history']);
             });
         }
