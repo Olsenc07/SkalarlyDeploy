@@ -232,8 +232,14 @@ export class ReusableCardComponent implements OnInit {
   }
 
   commentsValidatorFunc(postId: string): void {
+    console.log('validator', this.commentsValidator);
+    console.log('postId', postId);
+
+    if (this.commentsValidator !== postId) {
+      this.comment.setValue('');
+    }
     this.commentsValidator = postId;
-    this.comment.setValue('');
+
     console.log('commentsValidator', this.commentsValidator);
   }
   // Am Pm instead of 24hr clock
@@ -1861,7 +1867,6 @@ export class CardFriendsComponent implements OnInit {
     //     this.isLoading = false;
     //   });
   }
-
 
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
