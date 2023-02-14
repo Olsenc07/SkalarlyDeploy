@@ -3,17 +3,9 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Subject, ReplaySubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { MissedNotif } from '../activity-history/history.component';
 import { CommentInterface } from '../reusable-card/reusable-card.component';
-export interface MissedNotif {
-  username: string;
-  message: string;
-  time: string;
-  body: string;
-  Follower: string;
-  postId: string;
-  Creator: string;
-}
+
 @Injectable()
 export class CommentsService {
   private messages: CommentInterface[] = [];

@@ -143,8 +143,10 @@
 
         <div class="fName">
        
-          <div *ngIf="info.name" class="name">
+          <div  class="name">
+            <div *ngIf="info.name" class="name">
             {{ info.name}}
+          </div>
             <div >
               <button mat-icon-button (click)="Notifications()" *ngIf="((notif !== userId) && show == true  )" matTooltip="Turn Notifications On">
               <i class="far fa-bell bellC"  ></i>
@@ -154,6 +156,10 @@
             </button>
             <button mat-icon-button (click)="offNotifs()" *ngIf="(notif === userId ) " matTooltip="Turn Notifications Off">
               <i class="far fa-bell-slash bellC" ></i>
+            </button>
+            <!-- broken endpoint -->
+            <button mat-icon-button (click)="offNotifs()" *ngIf="(notif === userId ) && (Notif.length > 0) " matTooltip="Your subscription is broken and must be reset">
+              <i class="far fa-bell-slash bellC red" ></i>
             </button>
           </div>
           </div>

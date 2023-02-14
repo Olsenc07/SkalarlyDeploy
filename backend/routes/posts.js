@@ -761,7 +761,7 @@ if (req.body.userId){
                 username: documents.username,
                 message: '',
                 time: req.body.time,
-                body: documents.body.body,
+                body: req.body.body,
                 Follower: '',
                 postId: req.body.postId,
         Creator: req.body.userId

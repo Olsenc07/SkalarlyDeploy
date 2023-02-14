@@ -1,19 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {
-  MatBottomSheet,
-  MatBottomSheetRef,
-} from '@angular/material/bottom-sheet';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Post, PostService } from '../services/post.service';
 import { ShowCase } from '../services/showCase.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FollowService } from '../services/follow.service';
 import { MatDialog } from '@angular/material/dialog';
 import { PostsService } from '../services/posts.service';
-
+import { MissedNotif } from '../activity-history/history.component';
+import { CommentsService } from '../services/comments.service';
 export interface Follow {
   id: string;
   Follower: string;
@@ -36,6 +34,8 @@ export class ProfileComponent implements OnInit {
   ring = false;
   show = true;
   notif = '';
+  Notif: MissedNotif[] = [];
+
   recomCounter = 0;
   countVisibility = 0;
   isLoading = false;
@@ -81,7 +81,8 @@ export class ProfileComponent implements OnInit {
     private authService: AuthService,
     private showCaseService: ShowCaseService,
     private followService: FollowService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private commentsService: CommentsService
   ) {
     // profile$$.profile$$.subscribe((profile) => {
     //   // this.profile$$ = profile;
@@ -117,8 +118,8 @@ export class ProfileComponent implements OnInit {
       .subscribe((value) => {
         console.log('value', value);
         if (value != null) {
-          this.notif = value.Creator;
-          console.log('During the midday', this.notif);
+          this.Notif = value.Creator;
+          console.log('During the midday', this.Notif);
         }
       });
     this.authService.getInfoProfile(this.userId);
@@ -155,6 +156,13 @@ export class ProfileComponent implements OnInit {
       .getInfoFollowUpdateListener()
       .subscribe((followers: Follow[]) => {
         this.followers = followers;
+      });
+    // missed notifs
+    this.commentsService.getMissedNotif(this.userId, 0);
+    this.commentsService
+      .getMissedNotifUpdateListener()
+      .subscribe((missedNotifs: MissedNotif[]) => {
+        this.Notif = missedNotifs;
       });
   }
   // Turn off notifications
