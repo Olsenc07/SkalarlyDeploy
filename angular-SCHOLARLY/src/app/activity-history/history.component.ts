@@ -324,8 +324,7 @@ export class MissedNotificationsComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private commentsService: CommentsService,
-    public postService: PostService,
-    private router: Router
+    public postService: PostService
   ) {}
 
   ngOnInit(): void {
@@ -337,6 +336,7 @@ export class MissedNotificationsComponent implements OnInit {
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.notif = missedNotifs;
+        console.log('jeez wiz', this.notif);
       });
   }
 

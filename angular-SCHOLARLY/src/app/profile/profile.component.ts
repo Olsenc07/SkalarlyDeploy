@@ -170,12 +170,11 @@ export class ProfileComponent implements OnInit {
           this.snackBar
             .open(
               'Your notification connection has been lost. Please click the red bell to reset it.',
-              '😃'
+              'To see missed notifactions, click here first'
             )
             .onAction()
             .subscribe(() => {
-              this.offNotifs();
-              console.log('triggered  off notifcation');
+              this.router.navigate(['/activity-history']);
             });
         }
       });
