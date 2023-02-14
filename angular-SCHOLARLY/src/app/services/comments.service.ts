@@ -179,7 +179,10 @@ export class CommentsService {
             Creator: transformedComment.infos.Creator,
           };
           console.log('Missed notifications Cleared');
-          this.missedNotifs.push(clearMissedNotif);
+          const updatedNotifs = this.missedNotifs.filter(
+            (post) => post.Creator !== userId
+          );
+          this.missedNotifs = updatedNotifs;
           this.missedNotifsUpdated.next([...this.missedNotifs]);
         },
       });

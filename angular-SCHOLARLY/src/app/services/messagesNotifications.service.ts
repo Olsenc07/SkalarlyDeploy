@@ -122,7 +122,6 @@ export class MessageNotificationService {
             (post) => post.id !== postId
           );
 
-          this.messages.push(delConvo);
           this.messages = updatedPosts;
           this.messgesInfoUpdatedNotifs.next([...this.messages]);
           this.snackBar.open('Conversation Deleted', '🗑', {
