@@ -74,26 +74,26 @@
     </div>
             
 
-    <div class="buttonCombo" *ngIf="info.id">
+    <div class="buttonCombo" >
         
 
 
-        <button mat-flat-button class="counterColor" matTooltip="Delete Notification"
+        <!-- <button mat-flat-button class="counterColor" matTooltip="Delete Notification"
         (click)="delNotif(info.id)">
-        <i class="far fa-times-circle"></i></button>
+        <i class="far fa-times-circle"></i></button> -->
       
 
-            <button mat-flat-button class="repostColor" matTooltip="Original Post" *ngIf="info.body" 
+            <button mat-icon-button class="repostColor" matTooltip="Original Post" *ngIf="info.body" 
             (click)="navToPost(info.postId)">
       <i class="fas fa-home"></i>
     </button>
 
-    <button mat-flat-button class="repostColor" matTooltip="Navigate To Chat" *ngIf="info.message" 
+    <button mat-icon-button class="repostColor" matTooltip="Navigate To Chat" *ngIf="info.message" 
     (click)="navigateToChat(info.username)">
 <i class="fas fa-envelope-open-text"></i>
 </button>
 
-<button mat-flat-button class="repostColor" matTooltip="Navigate To Friends" *ngIf="info.Follower" 
+<button mat-icon-button class="repostColor" matTooltip="Navigate To Friends" *ngIf="info.Follower" 
 (click)="navigateToFriends()">
 <i class="material-icons-sharp">groups</i>
 

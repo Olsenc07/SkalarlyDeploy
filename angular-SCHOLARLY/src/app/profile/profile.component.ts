@@ -169,8 +169,9 @@ export class ProfileComponent implements OnInit {
             )
             .onAction()
             .subscribe(() => {
-              this.snackBar.dismiss();
-              this.router.navigate(['/activity-history']);
+              this.router.navigate(['/activity-history']).then(() => {
+                this.snackBar.dismiss();
+              });
             });
         }
       });
