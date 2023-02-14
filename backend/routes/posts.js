@@ -727,7 +727,7 @@ if (req.body.userId){
             // Match subscription to post creator then send it 
             // Or else when a subscriber comments on a non subscriber itll send a notif as if it was the subscribers post
             // Creator of post gets notified find them first...
-            Post.findOne({id: req.body.postId})
+            Post.findOne({_id: req.body.postId})
             .then((user) => {
                 console.log('user 77', user)
 
