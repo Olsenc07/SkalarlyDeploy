@@ -25,7 +25,7 @@
                 </div>
                 <div class="display" *ngIf="info.username">
                     <!-- Directs to users profile -->
-                    <div *ngIf="info.body && info.time" class="align">
+                    <div *ngIf="(info.body && info.time)" class="align">
                     <button mat-button class="center-"  (click)="navigateToPage(info.username)">
                         @{{ info.username }} 
                     </button>
@@ -33,7 +33,7 @@
                     Commented On Your Post
                 </div>
                 </div>
-                    <div *ngIf="info.body && (info.time == '')" class="align">
+                    <div *ngIf="(info.body && (info.time == ''))" class="align">
                     <button mat-button class="center-"  (click)="navigateToPage(info.username)">
                         @{{ info.username }} 
                     </button>

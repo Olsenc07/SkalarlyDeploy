@@ -539,7 +539,7 @@ router.post("/Shared", checkAuth,
                         body: POST.postDescription,
                         Follower: '',
                         postId: req.body.postId,
-                        Creator: req.userData.userId
+                        Creator: POST.Creator
         
                       })
                       missedNotif.save();

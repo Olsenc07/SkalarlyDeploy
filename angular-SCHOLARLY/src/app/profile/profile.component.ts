@@ -162,17 +162,14 @@ export class ProfileComponent implements OnInit {
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.Notif = missedNotifs;
         if (this.Notif.length > 0) {
-          this.snackBar
-            .open(
-              'Your notification connection has been lost. Please click the red bell to reset it.',
-              'To see missed notifactions, click here first'
-            )
-            .onAction()
-            .subscribe(() => {
-              this.router.navigate(['/activity-history']).then(() => {
-                this.snackBar.dismiss();
-              });
-            });
+          const snackBarRef = this.snackBar.open(
+            'Your notification connection has been lost. Please click the red bell to reset it.',
+            'To see missed notifactions, click here first'
+          );
+
+          snackBarRef.afterDismissed().subscribe(() => {
+            this.router.navigate(['/activity-history']);
+          });
         }
       });
   }
