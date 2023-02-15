@@ -255,7 +255,7 @@ export class ReusableCardMessageComponent implements OnInit {
         this.isLoading = false;
         this.messagesNotif = messagesNotif.reverse();
         this.messageNotificationService.viewedMessage(this.userId);
-        console.log('should be viewed now');
+        console.log('should be viewed now', this.messagesNotif);
       });
 
     // have now viewed these messages
