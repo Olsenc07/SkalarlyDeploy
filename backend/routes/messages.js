@@ -140,7 +140,21 @@ console.log('viewing message', req.query.otherUser);
     })
 .then(updates => {
     console.log('updates', updates)
+    res.status(200).json({
+        message: 'Clean update',
+        messages: updates
+    });
+}).catch(err => {
+    return res.status(401).json({
+        message: "Viewing message error 1!",
+
+    })
 })
+}).catch(err => {
+    return res.status(401).json({
+        message: "Viewing message error 2!",
+
+    })
 })
 })
 

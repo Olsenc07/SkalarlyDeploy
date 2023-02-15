@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
   users: UserNames[] = [];
   public hashs = [];
   notif: MissedNotif[] = [];
-  newMsg: Message[] = [];
+  newMsg = [];
+  newMessageCheck = [];
   postClicked = false;
   commentClicked = false;
   userId: string;
@@ -232,6 +233,15 @@ export class AppComponent implements OnInit {
         .subscribe((messagesNotif: Message[]) => {
           this.newMsg = messagesNotif.reverse();
           console.log('newMsg', this.newMsg);
+          const NEW = [];
+          this.newMsg.forEach((e) => {
+            console.log('new b', e);
+            NEW.push(e.viewed === false);
+          });
+          console.log('NEW', NEW);
+          this.newMessageCheck = NEW;
+          console.log('newMessageCheck', this.newMessageCheck);
+          console.log('newMessageCheck length', this.newMessageCheck.length);
         });
     }
     if (window.screen.height < 768) {
