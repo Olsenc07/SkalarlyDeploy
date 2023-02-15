@@ -145,7 +145,7 @@ export class MessageNotificationService {
       )
       .subscribe({
         next: (responseData) => {
-          const delConvo: Message = {
+          const DelConvo: Message = {
             id: responseData.postId.id,
             username: responseData.postId.username,
             message: responseData.postId.message,
@@ -154,7 +154,8 @@ export class MessageNotificationService {
             you: responseData.postId.you,
             viewed: responseData.postId.viewed,
           };
-          console.log('you were here', this.messagesNotif);
+          console.log('you were here', DelConvo);
+          console.log('pete', responseData);
 
           const updatedPosts = this.messagesNotif.filter(
             (post) => post.id !== postId
