@@ -90,6 +90,13 @@ export class MessagingComponent implements OnInit {
         this.messagesNotif = messagesNotif.reverse();
         this.messageNotificationService.viewedMessage(this.userId);
         console.log('should be viewed now', this.messagesNotif);
+        this.messageNotificationService
+          .getListenerNotification()
+          .subscribe((messagesNotifs: Message[]) => {
+            this.isLoading = false;
+            this.messagesNotif = messagesNotifs.reverse();
+            console.log('second pull');
+          });
       });
     // this.route.queryParams.subscribe((params) => {
     //   this.username = params?.username;
