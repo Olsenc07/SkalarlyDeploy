@@ -228,6 +228,7 @@ export class AppComponent implements OnInit {
           this.notif = missedNotifs;
           console.log('notif missed', this.notif);
         });
+      this.messageNotificationService.getMessageNotification(this.userId);
       this.messageNotificationService
         .getListenerNotification()
         .subscribe((messagesNotif: Message[]) => {
