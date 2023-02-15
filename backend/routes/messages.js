@@ -131,15 +131,15 @@ router.get("/viewedMessage", async(req, res, next) => {
 console.log('viewing message', req.query.userId);
     await User.findById({_id: req.query.userId})
     .then(user => {
-        console.log('user', user);
-        console.log('username', user.username);
+        console.log('user 7', user);
+        console.log('username7', user.username);
 
     Msg.updateMany(
          {otherUser: user.username},
         {viewed: true}
     )
 .then(updates => {
-    console.log('updates', updates)
+    console.log('updates7', updates)
     res.status(200).json({
         message: 'Clean update',
         messages: updates

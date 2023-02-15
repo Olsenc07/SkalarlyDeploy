@@ -67,6 +67,7 @@ export class MessageNotificationService {
   }
 
   viewedMessage(userId: string): any {
+    console.log('view me baby', userId);
     this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/messages/viewedMessage',
