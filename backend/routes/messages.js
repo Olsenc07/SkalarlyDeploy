@@ -128,8 +128,8 @@ for(let i in nonyaOnce){
 // viewed msgs
 // userInfo Messages
 router.get("/viewedMessage", async(req, res, next) => {
-console.log('viewing message', req.query.otherUser);
-    await User.findOne({username: req.query.otherUser})
+console.log('viewing message', req.query.userId);
+    await User.findOne({_id: req.query.userId})
     .then(user => {
         console.log('user', user);
         console.log('username', user.username);

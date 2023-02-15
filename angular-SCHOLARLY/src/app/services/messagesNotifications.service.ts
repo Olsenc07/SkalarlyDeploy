@@ -66,12 +66,12 @@ export class MessageNotificationService {
       });
   }
 
-  viewedMessage(otherUser: string): any {
+  viewedMessage(userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/messages/viewedMessage',
         {
-          params: { otherUser },
+          params: { userId },
         }
       )
       .pipe(
