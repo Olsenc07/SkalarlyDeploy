@@ -6,6 +6,8 @@ import { Observable, Subscription } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { PostsService, UserNames } from './services/posts.service';
+import { MissedNotif } from './activity-history/history.component';
+import { CommentsService } from './services/comments.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,6 +16,7 @@ import { PostsService, UserNames } from './services/posts.service';
 export class AppComponent implements OnInit {
   users: UserNames[] = [];
   public hashs = [];
+  notif: MissedNotif[] = [];
 
   postClicked = false;
   commentClicked = false;
@@ -86,7 +89,8 @@ export class AppComponent implements OnInit {
   constructor(
     private postsService: PostsService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private commentsService: CommentsService
   ) {
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) =>
@@ -208,6 +212,15 @@ export class AppComponent implements OnInit {
         this.userIsAuthenticated = isAuthenticated;
         // this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
+      });
+
+    // missedNotif badge
+    this.commentsService.getMissedNotif(this.userId, 0);
+    this.commentsService
+      .getMissedNotifUpdateListener()
+      .subscribe((missedNotifs: MissedNotif[]) => {
+        this.notif = missedNotifs;
+        console.log('notif missed', this.notif);
       });
 
     if (window.screen.height < 768) {
