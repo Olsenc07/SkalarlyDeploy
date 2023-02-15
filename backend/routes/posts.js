@@ -1084,11 +1084,10 @@ router.delete("/delConvo/:postId", checkAuth, async(req, res, next ) => {
                     {otherUser: found.username}
                 ]
             }).then(done => {
+                console.log('sucessful del', done);
                 res.status(200).json({
                     message: 'Deleting Conversation worked',
-                    postId: { 
-                        ...done
-                    }
+                    postId: done
                 });
             })
             .catch(error => {
