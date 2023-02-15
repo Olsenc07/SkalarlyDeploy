@@ -82,16 +82,17 @@ export class MessagingComponent implements OnInit {
       this.username = params?.username;
       console.log('username', this.username);
     });
-
+    this.messageNotificationService.getMessageNotification(this.userId);
     this.messageNotificationService
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
         this.messagesNotif = messagesNotif.reverse();
+        this.messageNotificationService.viewedMessage(this.userId);
+        console.log('should be viewed now', this.messagesNotif);
       });
     // this.route.queryParams.subscribe((params) => {
     //   this.username = params?.username;
-    this.messageNotificationService.getMessageNotification(this.userId);
   }
   delConvo(postId: string): any {
     console.log('pI', postId);
