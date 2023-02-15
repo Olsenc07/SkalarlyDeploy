@@ -107,6 +107,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     const url = new URL(window.location.href);
     const notSecure = url.protocol;
     if (notSecure === 'http:') {
