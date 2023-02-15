@@ -291,7 +291,7 @@
                   class="a_up"
                 >
                   <div
-                  matBadge="*" [matBadgeHidden]="newMessageCheck == 0" matBadgeColor="primary"
+                  matBadge="*" [matBadgeHidden]="newMessageCheck.length == 0" matBadgeColor="primary"
                     class="fas fa-comment-dots"
                     [ngClass]="
                       commentClicked == true ? 'MessageOn' : 'message'

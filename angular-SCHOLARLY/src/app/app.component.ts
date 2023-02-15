@@ -237,7 +237,9 @@ export class AppComponent implements OnInit {
           const NEW = [];
           this.newMsg.forEach((e) => {
             console.log('new b', e);
-            NEW.push(e.viewed === false);
+            console.log('new c', e.viewed);
+
+            NEW.push(e.viewed);
           });
           console.log('NEW', NEW);
           this.newMessageCheck = NEW;

@@ -94,6 +94,10 @@ export class MessagingComponent implements OnInit {
     // this.route.queryParams.subscribe((params) => {
     //   this.username = params?.username;
   }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
   delConvo(postId: string): any {
     console.log('pI', postId);
     this.messageNotificationService.delConvo(postId);

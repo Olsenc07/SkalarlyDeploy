@@ -1,6 +1,13 @@
 ::ng-deep .mat-menu-panel{
   display: contents;
 }
+.newIndicator{
+  border-radius: 25px;
+  box-shadow: 0 0 5px #393e5c;
+  padding: 8%;
+  color: white;
+  background: linear-gradient(45deg,rgb(16 23 58),#ff383800);
+}
 .assistance {
   display: flex;
   flex-direction: row;
@@ -105,7 +112,8 @@
     align-items: center;
     font-family: 'Cormorant Garamond',serif;
     text-align: center;
-    margin-left: 2%;
+    // margin-left: 2%;
+    color: grey;
 }
 .messageBtn{
   // background-color: #0c5590 !important;
