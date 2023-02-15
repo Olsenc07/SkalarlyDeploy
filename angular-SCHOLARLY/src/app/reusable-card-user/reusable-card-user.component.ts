@@ -258,8 +258,10 @@ export class ReusableCardMessageComponent implements OnInit {
     // this.route.queryParams.subscribe((params) => {
     //   this.username = params?.username;
     this.messageNotificationService.getMessageNotification(this.userId);
-
     // });
+
+    // have now viewed these messages
+    this.messageNotificationService.viewedMessage();
   }
 
   navigateToPage(infoUser: string): any {
