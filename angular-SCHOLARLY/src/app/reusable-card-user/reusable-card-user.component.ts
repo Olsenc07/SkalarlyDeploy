@@ -261,7 +261,7 @@ export class ReusableCardMessageComponent implements OnInit {
     // });
 
     // have now viewed these messages
-    this.messageNotificationService.viewedMessage();
+    // this.messageNotificationService.viewedMessage();
   }
 
   navigateToPage(infoUser: string): any {
