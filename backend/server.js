@@ -119,7 +119,8 @@ io.on('connection', (socket) => {
                                 message: Message,
                                 time: data.time,
                                 otherUser: data.otherUser,
-                                you: data.userId
+                                you: data.userId,
+                                viewed: false
                             })
         MESSAGE.save().then(createdMsg => {
             socket.emit('messageSnd', formatMessage(username.username, Message, data.time ));

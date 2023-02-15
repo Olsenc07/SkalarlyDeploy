@@ -11,6 +11,7 @@ export interface Message {
   time: string;
   otherUser: string;
   you: string;
+  viewed: boolean;
 }
 
 @Injectable({
@@ -45,6 +46,7 @@ export class MessageService {
               time: message.time,
               otherUser: message.otherUser,
               you: message.you,
+              viewed: message.viewed,
             };
           });
         })

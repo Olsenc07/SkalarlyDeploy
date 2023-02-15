@@ -11,6 +11,7 @@ export interface Message {
   time: string;
   otherUser: string;
   you: string;
+  viewed: boolean;
 }
 
 @Injectable({
@@ -117,6 +118,7 @@ export class MessageNotificationService {
             time: responseData.postId.time,
             otherUser: responseData.postId.otherUser,
             you: responseData.postId.you,
+            viewed: responseData.postId.viewed,
           };
           const updatedPosts = this.messages.filter(
             (post) => post.id !== postId

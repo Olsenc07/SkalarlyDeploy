@@ -5,8 +5,8 @@ const MessageSchema = mongoose.Schema({
     message: { type: String},
     time: { type: String},
     otherUser: {type: String},
-    you: {type: String}
-
+    you: {type: String},
+    viewed: {type: Boolean}
     // ProfilePicPath: { type: String},
     // Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
