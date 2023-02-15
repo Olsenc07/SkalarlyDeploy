@@ -154,7 +154,9 @@ export class MessageNotificationService {
             you: responseData.postId.you,
             viewed: responseData.postId.viewed,
           };
-          const updatedPosts = this.messages.filter(
+          console.log('you were here', this.messagesNotif);
+
+          const updatedPosts = this.messagesNotif.filter(
             (post) => post.id !== postId
           );
           console.log('interesting', updatedPosts);
