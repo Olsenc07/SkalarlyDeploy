@@ -66,6 +66,36 @@ export class MessageNotificationService {
       });
   }
 
+  viewedMessage(otherUser: string): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/messages/viewedMessage',
+        {
+          params: { otherUser },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+          // .map((data) => {
+          // return {
+          //   id: data._id,
+          //   username: data.username,
+          //   message: data.message,
+          //   time: data.time,
+          //   otherUser: data.otherUser,
+          //   you: data.you,
+          // };
+          // });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.messagesNotif = transformedMessage;
+        console.log('deep end', this.messagesNotif);
+        this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
+      });
+  }
+
   // msg notif search
   getMessageNotificationFilter(userId: string, queryHash: string): any {
     console.log('my girl', queryHash);

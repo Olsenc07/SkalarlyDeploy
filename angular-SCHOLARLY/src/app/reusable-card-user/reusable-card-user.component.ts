@@ -248,20 +248,16 @@ export class ReusableCardMessageComponent implements OnInit {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     //    Info
-
+    this.messageNotificationService.getMessageNotification(this.userId);
     this.messageNotificationService
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
         this.messagesNotif = messagesNotif.reverse();
       });
-    // this.route.queryParams.subscribe((params) => {
-    //   this.username = params?.username;
-    this.messageNotificationService.getMessageNotification(this.userId);
-    // });
 
     // have now viewed these messages
-    // this.messageNotificationService.viewedMessage();
+    this.messageNotificationService.viewedMessage(this.userId);
   }
 
   navigateToPage(infoUser: string): any {

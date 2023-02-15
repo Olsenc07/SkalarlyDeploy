@@ -125,6 +125,24 @@ for(let i in nonyaOnce){
 // }
 })
 
+// viewed msgs
+// userInfo Messages
+router.get("/viewedMessage", async(req, res, next) => {
+console.log('viewing message', req.query.otherUser);
+    await User.findOne({username: req.query.otherUser})
+    .then(user => {
+        console.log('user', user);
+        console.log('username', user.username);
+
+    Msg.findAndModify({
+        query: {otherUser: user.username},
+        update: {viewed: true}
+    })
+.then(updates => {
+    console.log('updates', updates)
+})
+})
+})
 
 // notif Messages
 router.get("/getNotifMsgs", async(req, res, next) => {  

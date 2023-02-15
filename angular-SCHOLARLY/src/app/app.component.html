@@ -291,6 +291,7 @@
                   class="a_up"
                 >
                   <span
+                  matBadge="*" [matBadgeHidden]="newMsg.length == 0" matBadgeColor="primary"
                     class="fas fa-comment-dots"
                     [ngClass]="
                       commentClicked == true ? 'MessageOn' : 'message'
@@ -363,7 +364,7 @@
         <span class="material-icons d_settings" style="color: #3b70f7" >
           history
         </span>
-        <div matBadge="!" [matBadgeHidden]="notif.length == 0" matBadgeColor="warn" matBadgeOverlap="false">
+        <div matBadge="!" [matBadgeHidden]="notif.length == 0" matBadgeColor="warn" >
         Activity History
       </div>
         </div>

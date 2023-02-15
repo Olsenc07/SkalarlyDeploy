@@ -8,6 +8,8 @@ import { AuthService } from './services/auth.service';
 import { PostsService, UserNames } from './services/posts.service';
 import { MissedNotif } from './activity-history/history.component';
 import { CommentsService } from './services/comments.service';
+import { Message } from './services/messages.service';
+import { MessageNotificationService } from './services/messagesNotifications.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,7 +19,7 @@ export class AppComponent implements OnInit {
   users: UserNames[] = [];
   public hashs = [];
   notif: MissedNotif[] = [];
-
+  newMsg: Message[] = [];
   postClicked = false;
   commentClicked = false;
   userId: string;
@@ -90,7 +92,8 @@ export class AppComponent implements OnInit {
     private postsService: PostsService,
     private router: Router,
     private authService: AuthService,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
+    private messageNotificationService: MessageNotificationService
   ) {
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) =>
@@ -223,6 +226,12 @@ export class AppComponent implements OnInit {
         .subscribe((missedNotifs: MissedNotif[]) => {
           this.notif = missedNotifs;
           console.log('notif missed', this.notif);
+        });
+      this.messageNotificationService
+        .getListenerNotification()
+        .subscribe((messagesNotif: Message[]) => {
+          this.newMsg = messagesNotif.reverse();
+          console.log('newMsg', this.newMsg);
         });
     }
     if (window.screen.height < 768) {
