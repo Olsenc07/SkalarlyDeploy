@@ -155,13 +155,13 @@ export class MessageNotificationService {
             viewed: responseData.postId.viewed,
           };
 
-          console.log('pete', responseData);
+          // console.log('pete', responseData);
 
-          const updatedPosts = this.messagesNotif.filter(
-            (post) => post.id !== postId
-          );
-          console.log('interesting', updatedPosts);
-          this.messagesNotif = updatedPosts;
+          // const updatedPosts = this.messagesNotif.filter(
+          //   (post) => post.id !== postId
+          // );
+          // console.log('interesting', updatedPosts);
+          // this.messagesNotif = updatedPosts;
           this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
           this.snackBar.open('Conversation Deleted', '🗑', {
             duration: 3000,
