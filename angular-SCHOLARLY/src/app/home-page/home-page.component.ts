@@ -60,7 +60,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     this.isLoading = true;
     this.authService.login(this.email.value, this.password.value);
-    location.reload();
   }
 
   openDialog(): void {
