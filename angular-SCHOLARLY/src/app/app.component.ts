@@ -238,8 +238,9 @@ export class AppComponent implements OnInit {
           this.newMsg.forEach((e) => {
             console.log('new b', e);
             console.log('new c', e.viewed);
-
-            NEW.push(e.viewed);
+            if (e.viewed === false) {
+              NEW.push(e.viewed);
+            }
           });
           console.log('NEW', NEW);
           this.newMessageCheck = NEW;
