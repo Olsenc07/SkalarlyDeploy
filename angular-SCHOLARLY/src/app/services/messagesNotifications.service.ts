@@ -157,9 +157,9 @@ export class MessageNotificationService {
           const updatedPosts = this.messages.filter(
             (post) => post.id !== postId
           );
-
-          this.messages = updatedPosts;
-          this.messgesInfoUpdatedNotifs.next([...this.messages]);
+          console.log('interesting', updatedPosts);
+          this.messagesNotif = updatedPosts;
+          this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
           this.snackBar.open('Conversation Deleted', '🗑', {
             duration: 3000,
           });
