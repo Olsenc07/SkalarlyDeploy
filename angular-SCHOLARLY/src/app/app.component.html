@@ -290,7 +290,7 @@
                   (click)="navigateToMessages()"
                   class="a_up"
                 >
-                  <mat-icon
+                  <div
                   matBadge="*" [matBadgeHidden]="newMessageCheck == 0" matBadgeColor="primary"
                     class="fas fa-comment-dots"
                     [ngClass]="
@@ -298,7 +298,7 @@
                     "
                   >
                     <!-- chat -->
-                  </mat-icon>
+              </div>
                   <!-- <i class="fal fa-comments" [ngClass]="router?.url === '/messages' 
                   ? 'MessageOn' : 'message' "></i> -->
                 </button>
