@@ -2087,7 +2087,6 @@ export class AuthService {
             );
 
             this.saveAuthData(token, expirationDate, this.userId);
-            location.reload();
           }
         },
         error: (error) => {
