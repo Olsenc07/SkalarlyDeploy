@@ -331,7 +331,7 @@
               [matMenuTriggerFor]="settingsMenu"
               type="button"
               class="b_up"
-              matBadge="!" [matBadgeHidden]="(notif.length > 0) "
+              matBadge="!" [matBadgeHidden]="(notif.length == 0) " matBadgeColor="warn"
             >
               <mat-icon class="settings">settings</mat-icon>
             </button>
@@ -360,10 +360,12 @@
         class="look-nice"
       >
       <div class="align"  >
-        <span class="material-icons d_settings" style="color: #3b70f7" matBadge="!" [matBadgeHidden]="notif.length == 0">
+        <span class="material-icons d_settings" style="color: #3b70f7" >
           history
         </span>
+        <div matBadge="!" [matBadgeHidden]="notif.length == 0" matBadgeColor="warn">
         Activity History
+      </div>
         </div>
       </button>
         <button
