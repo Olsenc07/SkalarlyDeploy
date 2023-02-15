@@ -254,12 +254,12 @@ export class ReusableCardMessageComponent implements OnInit {
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
         this.messagesNotif = messagesNotif.reverse();
+        this.messageNotificationService.viewedMessage(this.userId);
       });
 
     // have now viewed these messages
     // get triggered once pg is left
     // its not getting called
-    this.messageNotificationService.viewedMessage(this.userId);
   }
 
   navigateToPage(infoUser: string): any {
