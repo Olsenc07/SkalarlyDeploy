@@ -107,7 +107,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userId = this.authService.getUserId();
     const url = new URL(window.location.href);
     const notSecure = url.protocol;
     if (notSecure === 'http:') {
@@ -117,7 +116,8 @@ export class AppComponent implements OnInit {
       location.href = myURL.href;
     }
     this.authService.autoAuthUser();
-
+    this.userId = this.authService.getUserId();
+    console.log('user Id sloth', this.userId);
     document
       .getElementsByClassName('search-box__icon')[0]
       ?.addEventListener('click', this.activateSearch);
@@ -216,14 +216,15 @@ export class AppComponent implements OnInit {
       });
 
     // missedNotif badge
-    this.commentsService.getMissedNotif(this.userId, 0);
-    this.commentsService
-      .getMissedNotifUpdateListener()
-      .subscribe((missedNotifs: MissedNotif[]) => {
-        this.notif = missedNotifs;
-        console.log('notif missed', this.notif);
-      });
-
+    if (this.userId != null) {
+      this.commentsService.getMissedNotif(this.userId, 0);
+      this.commentsService
+        .getMissedNotifUpdateListener()
+        .subscribe((missedNotifs: MissedNotif[]) => {
+          this.notif = missedNotifs;
+          console.log('notif missed', this.notif);
+        });
+    }
     if (window.screen.height < 768) {
       this.minHeight = false;
     }
