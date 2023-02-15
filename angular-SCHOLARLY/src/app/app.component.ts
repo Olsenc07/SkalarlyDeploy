@@ -240,6 +240,8 @@ export class AppComponent implements OnInit {
             console.log('new c', e.viewed);
             if (e.viewed === false) {
               NEW.push(e.viewed);
+            } else {
+              console.log('no unread messages');
             }
           });
           console.log('NEW', NEW);
