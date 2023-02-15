@@ -257,6 +257,7 @@ export class ReusableCardMessageComponent implements OnInit {
       });
 
     // have now viewed these messages
+    // get triggered once pg is left
     this.messageNotificationService.viewedMessage(this.userId);
   }
 
