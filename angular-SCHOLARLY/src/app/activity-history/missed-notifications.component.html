@@ -1,12 +1,12 @@
-<div class="showMore" *ngIf="countVisibility >= 1">
+<!-- <div class="showMore" *ngIf="countVisibility >= 1">
     <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeedBack()">Previous
-        <!-- <i class="fas fa-chevron-circle-down"></i> -->
+        <-- <i class="fas fa-chevron-circle-down"></i> --
         <i class="fas fa-caret-up"></i>
 
     </mat-chip>
-    </div>
-<mat-card class="row1_"  *ngFor="let info of notif">
-    <div class="column" >
+    </div> -->
+<mat-card class="row1_"  *ngFor="let info of notif; let even = even; let odd = odd">
+    <div class="column" [ngClass]="{ even: even, odd: odd }">
         <!-- <div *ngIf="info.Title" class="Title">
        {{info.Title}}
     </div> -->
@@ -37,7 +37,7 @@
                     <button mat-button class="center-"  (click)="navigateToPage(info.username)">
                         @{{ info.username }} 
                     </button>
-                    <div>
+                    <div class="toned">
                     Shared Your Post
                 </div>
                 </div>
@@ -45,7 +45,7 @@
                     <button mat-button class="center-"  (click)="navigateToPage(info.username)">
                         @{{ info.username }} 
                     </button>
-                    <div>
+                    <div class="toned">
                     Messaged You
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <button mat-button class="center-"  (click)="navigateToPage(info.Follower)">
                         @{{ info.Follower }} 
                     </button>
-                    <div>
+                    <div class="toned">
                     Followed You
                 </div>
                     </div>
@@ -107,9 +107,9 @@
         
     </div>
 </mat-card>
-<div class="showMore" *ngIf="notif.length == 6">
+<!-- <div class="showMore" *ngIf="notif.length == 6">
     <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
-        <!-- <i class="fas fa-chevron-circle-down"></i> -->
+        <-- <i class="fas fa-chevron-circle-down"></i> --
         <i class="fas fa-caret-down"></i>
     </mat-chip>
-    </div>
+    </div> -->
