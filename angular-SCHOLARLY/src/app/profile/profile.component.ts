@@ -186,6 +186,7 @@ export class ProfileComponent implements OnInit {
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.Notif = missedNotifs;
       });
+    location.reload();
   }
   // Trigger Notifications
   Notifications(): any {
