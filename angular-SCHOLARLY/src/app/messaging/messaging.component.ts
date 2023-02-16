@@ -129,7 +129,7 @@ export class MessagingComponent implements OnInit {
     if (queryHash) {
       console.log('query yo', queryHash);
       // Will match if query is nothing or is only spaces
-      const matchSpaces: any = queryHash.match(/\s*/);
+      const matchSpaces: any = queryHash.match('[a-zA-Z0-9_]*');
       if (matchSpaces[0] === queryHash) {
         this.messageNotificationService.getMessageNotification(this.userId);
         this.messageNotificationService
