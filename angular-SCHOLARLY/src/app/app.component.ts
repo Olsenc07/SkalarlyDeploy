@@ -384,6 +384,8 @@ export class AppComponent implements OnInit {
           this.hasQuery = true;
         });
       }
+    } else {
+      console.log('logic ');
     }
   }
 
@@ -391,7 +393,7 @@ export class AppComponent implements OnInit {
   sendDataHash(event: any): any {
     const queryHash: string = event.target.value;
     console.log('query yo', queryHash);
-    if (queryHash) {
+    if (queryHash != null) {
       // Will match if query is nothing or is only spaces
       const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
       if (matchSpaces[0] !== queryHash) {
@@ -408,6 +410,8 @@ export class AppComponent implements OnInit {
           console.log('another log', this.hashs);
         });
       }
+    } else {
+      console.log('logic ');
     }
   }
 
