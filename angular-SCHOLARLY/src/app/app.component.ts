@@ -374,7 +374,7 @@ export class AppComponent implements OnInit {
       // const matchSpaces: any = query.match('^[a-zA-Z0-9]');
 
       this.users = [];
-      this.hasQuery = false;
+      this.hasQuery = true;
       console.log('he like');
       return;
     } else {
