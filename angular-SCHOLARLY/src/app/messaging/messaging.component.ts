@@ -149,17 +149,14 @@ export class MessagingComponent implements OnInit {
           .getListenerNotification()
           .subscribe((messagesNotif: Message[]) => {
             console.log('eminem', messagesNotif);
-            if (messagesNotif.length > 0) {
-              this.isLoading = false;
-              this.messagesNotif = messagesNotif.reverse();
-            } else {
-              this.messageNotificationService
-                .getListenerNoNotification()
-                .subscribe((messagesNoNotif: string) => {
-                  console.log('50 cent', messagesNoNotif);
-                  this.messagesNoNotif = messagesNoNotif;
-                });
-            }
+            this.isLoading = false;
+            this.messagesNotif = messagesNotif.reverse();
+          });
+        this.messageNotificationService
+          .getListenerNoNotification()
+          .subscribe((messagesNoNotif: string) => {
+            console.log('50 cent', messagesNoNotif);
+            this.messagesNoNotif = messagesNoNotif;
           });
       }
     } else {

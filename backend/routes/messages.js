@@ -65,7 +65,7 @@ router.get("/infoMessage", async(req, res, next) => {
     console.log('user ni ni', user)
     Msg.find( 
         {otherUser: user.username}
-    ).sort({time:-1, viewed: 1})
+    ).sort({time:-1, viewed: -1})
     .then(documents => {
         if(documents.length > 0){
         console.log('timing', documents)
@@ -81,7 +81,7 @@ for(let i in nonyaOnce){
 {otherUser: user.username},
 {username: nonyaOnce[i]}
     ]
-    }).sort({time:-1, viewed: 1})    
+    }).sort({time:-1, viewed: -1})    
       .then(finalDocs => {
         console.log('did we make it?', finalDocs)
        allMsgs.push(finalDocs);
@@ -151,7 +151,7 @@ if(updates.matchedCount > 0){
    Msg.find({ $and: [
     {otherUser: user.username},
     {username: req.query.username}
-   ]}).sort({viewed: 1})
+   ]}).sort({viewed: -1})
    .then(refreshed => {
     console.log('unread on top', refreshed)
     res.status(200).json({

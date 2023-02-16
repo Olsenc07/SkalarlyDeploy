@@ -20,7 +20,7 @@
      (keyup)="sendDataNotif($event)"
      [formControl]="msgFilter"
      />
-     <div class="noMatches" *ngIf="messagesNoNotif == '7'">
+     <div matSuffix class="noMatches" *ngIf="messagesNoNotif == '7'">
       No matches
      </div>
 
