@@ -138,8 +138,13 @@ export class MessagingComponent implements OnInit {
   navigateToChat(username: string): any {
     // view messages
     this.messageNotificationService.viewedMessage(this.userId, username);
+    this.messageNotificationService
+      .getListenerNotification()
+      .subscribe((messagesNotif: Message[]) => {
+        this.messagesNotif = messagesNotif.reverse();
+        this.router.navigate(['/messages/:'], { queryParams: { username } });
+      });
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
-    this.router.navigate(['/messages/:'], { queryParams: { username } });
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
