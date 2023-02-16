@@ -125,50 +125,63 @@ export class MessagingComponent implements OnInit {
   // Search notifs
   sendDataNotif(event: any): any {
     const queryHash: string = event.target.value;
+    this.messagesNoNotif = '';
     console.log('empties', queryHash);
-    if (queryHash.match('[a-zA-Z0-9]')) {
+    if (!queryHash.match('[a-zA-Z0-9]')) {
       console.log('query yo', queryHash);
       // Will match if query is nothing or is only spaces
-      const matchSpaces: any = queryHash.match('[a-zA-Z0-9]');
-      if (matchSpaces[0] !== queryHash) {
-        this.messageNotificationService.getMessageNotification(this.userId);
-        this.messageNotificationService
-          .getListenerNotification()
-          .subscribe((messagesNotif: Message[]) => {
-            console.log('g eazy', messagesNotif);
-            this.isLoading = false;
-            this.messagesNotif = messagesNotif.reverse();
-          });
-      } else {
-        this.messageNotificationService.getMessageNotificationFilter(
-          this.userId,
-          queryHash.trim()
-        );
-
-        this.messageNotificationService
-          .getListenerNotification()
-          .subscribe((messagesNotif: Message[]) => {
-            console.log('eminem', messagesNotif);
-            this.isLoading = false;
-            this.messagesNotif = messagesNotif.reverse();
-          });
-        this.messageNotificationService
-          .getListenerNoNotification()
-          .subscribe((messagesNoNotif: string) => {
-            console.log('50 cent', messagesNoNotif);
-            this.messagesNoNotif = messagesNoNotif;
-          });
-      }
-    } else {
-      this.messagesNoNotif = '';
-      console.log('tumblr girls');
+      // const matchSpaces: any = queryHash.match('[a-zA-Z0-9]');
+      // if (matchSpaces[0] !== queryHash) {
       this.messageNotificationService.getMessageNotification(this.userId);
       this.messageNotificationService
         .getListenerNotification()
         .subscribe((messagesNotif: Message[]) => {
+          console.log('g eazy', messagesNotif);
+          this.isLoading = false;
           this.messagesNotif = messagesNotif.reverse();
-          console.log(' be viewed now', this.messagesNotif);
         });
+
+      // } else {
+      //   this.messageNotificationService.getMessageNotificationFilter(
+      //     this.userId,
+      //     queryHash.trim()
+      //   );
+
+      // this.messageNotificationService
+      //     .getListenerNotification()
+      //     .subscribe((messagesNotif: Message[]) => {
+      //       console.log('eminem', messagesNotif);
+      //       this.isLoading = false;
+      //       this.messagesNotif = messagesNotif.reverse();
+      //     });
+
+      // }
+    } else {
+      this.messageNotificationService.getMessageNotificationFilter(
+        this.userId,
+        queryHash.trim()
+      );
+      this.messageNotificationService
+        .getListenerNotification()
+        .subscribe((messagesNotif: Message[]) => {
+          console.log('g eazy', messagesNotif);
+          this.isLoading = false;
+          this.messagesNotif = messagesNotif.reverse();
+        });
+      this.messageNotificationService
+        .getListenerNoNotification()
+        .subscribe((messagesNoNotif: string) => {
+          console.log('50 cent', messagesNoNotif);
+          this.messagesNoNotif = messagesNoNotif;
+        });
+      // console.log('tumblr girls');
+      // this.messageNotificationService.getMessageNotification(this.userId);
+      // this.messageNotificationService
+      //   .getListenerNotification()
+      //   .subscribe((messagesNotif: Message[]) => {
+      //     this.messagesNotif = messagesNotif.reverse();
+      //     console.log(' be viewed now', this.messagesNotif);
+      //   });
     }
   }
   navigateToChat(username: string): any {
