@@ -140,6 +140,11 @@ export class MessagingComponent implements OnInit {
     this.router.navigate(['/messages/:'], { queryParams: { username } });
     // view messages
     this.messageNotificationService.viewedMessage(this.userId, username);
+    this.messageNotificationService
+      .getListenerNotification()
+      .subscribe((messagesNotif: Message[]) => {
+        this.messagesNotif = messagesNotif.reverse();
+      });
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
