@@ -129,14 +129,19 @@ for(let i in nonyaOnce){
 // userInfo Messages
 router.get("/viewedMessage", async(req, res, next) => {
 console.log('viewing message', req.query.userId);
+console.log('viewing message username', req.query.username);
+
     await User.findById({_id: req.query.userId})
     .then(user => {
         console.log('user 7', user);
         console.log('username7', user.username);
 
-    Msg.updateMany(
+    Msg.updateMany({ $and: [
          {otherUser: user.username},
+         {username: req.query.username}
+        ]},
         {viewed: true}
+    
     )
 .then(updates => {
     console.log('updates7', updates)

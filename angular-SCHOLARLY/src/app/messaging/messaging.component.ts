@@ -88,15 +88,16 @@ export class MessagingComponent implements OnInit {
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
         this.messagesNotif = messagesNotif.reverse();
-        this.messageNotificationService.viewedMessage(this.userId);
         console.log('should be viewed now', this.messagesNotif);
       });
     // this.route.queryParams.subscribe((params) => {
     //   this.username = params?.username;
   }
+  enedMessaged(username: string): void {}
   navigateToPage(infoUser: string): any {
-    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+    // view messages
+    this.messageNotificationService.viewedMessage(this.userId, infoUser);
   }
   delConvo(postId: string): any {
     console.log('pI', postId);
