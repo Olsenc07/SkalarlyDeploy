@@ -81,7 +81,7 @@ for(let i in nonyaOnce){
 {otherUser: user.username},
 {username: nonyaOnce[i]}
     ]
-    }).sort({time:-1, viewed: 1})    
+    }).sort({time:-1})    
       .then(finalDocs => {
         console.log('did we make it?', finalDocs)
        allMsgs.push(finalDocs);
@@ -151,8 +151,9 @@ if(updates.matchedCount > 0){
    Msg.find({ $and: [
     {otherUser: user.username},
     {username: req.query.username}
-   ]})
+   ]}).sort({viewed: 1})
    .then(refreshed => {
+    console.log('unread on top', refreshed)
     res.status(200).json({
         message: 'Clean update',
         messages: refreshed
