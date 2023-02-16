@@ -165,7 +165,8 @@
 }
 .noMatches{
   font-family: 'Cormorant Garamond', serif;
-
+  display: flex;
+  align-items: center;
 }
 .page {
   display: flex;

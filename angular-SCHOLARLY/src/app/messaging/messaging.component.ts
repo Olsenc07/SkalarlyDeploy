@@ -73,12 +73,7 @@ export class MessagingComponent implements OnInit {
 
     private route: ActivatedRoute,
     private router: Router
-  ) {
-    if (this.msgFilter.value.length === 0) {
-      this.messagesNoNotif = '';
-      console.log('tumblr girls');
-    }
-  }
+  ) {}
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -165,7 +160,15 @@ export class MessagingComponent implements OnInit {
           });
       }
     } else {
-      console.log('sending nulls');
+      this.messagesNoNotif = '';
+      console.log('tumblr girls');
+      this.messageNotificationService.getMessageNotification(this.userId);
+      this.messageNotificationService
+        .getListenerNotification()
+        .subscribe((messagesNotif: Message[]) => {
+          this.messagesNotif = messagesNotif.reverse();
+          console.log(' be viewed now', this.messagesNotif);
+        });
     }
   }
   navigateToChat(username: string): any {
