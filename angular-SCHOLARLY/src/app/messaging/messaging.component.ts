@@ -52,7 +52,7 @@ export class MessagingComponent implements OnInit {
   socket = io();
   public notifs = [];
   messagesNotif: Message[] = [];
-
+  messagesNoNotif = '';
   // allUsers should filter through every user
   allUsers: string[] = [];
   // username: string;
@@ -107,6 +107,17 @@ export class MessagingComponent implements OnInit {
         this.messagesNotif = messagesNotif.reverse();
       });
   }
+  // resets search
+  clear(): void {
+    console.log('coffee time');
+    this.messageNotificationService.getMessageNotification(this.userId);
+    this.messageNotificationService
+      .getListenerNotification()
+      .subscribe((messagesNotif: Message[]) => {
+        this.messagesNotif = messagesNotif.reverse();
+        console.log('cleared now', this.messagesNotif);
+      });
+  }
   // Search notifs
   sendDataNotif(event: any): any {
     const queryHash: string = event.target.value;
@@ -120,6 +131,7 @@ export class MessagingComponent implements OnInit {
         this.messageNotificationService
           .getListenerNotification()
           .subscribe((messagesNotif: Message[]) => {
+            console.log('g eazy', messagesNotif);
             this.isLoading = false;
             this.messagesNotif = messagesNotif.reverse();
           });
@@ -132,8 +144,18 @@ export class MessagingComponent implements OnInit {
         this.messageNotificationService
           .getListenerNotification()
           .subscribe((messagesNotif: Message[]) => {
-            this.isLoading = false;
-            this.messagesNotif = messagesNotif.reverse();
+            console.log('eminem', messagesNotif);
+            if (messagesNotif.length > 0) {
+              this.isLoading = false;
+              this.messagesNotif = messagesNotif.reverse();
+            } else {
+              this.messageNotificationService
+                .getListenerNoNotification()
+                .subscribe((messagesNoNotif: string) => {
+                  console.log('50 cent', messagesNoNotif);
+                  this.messagesNoNotif = messagesNoNotif;
+                });
+            }
           });
       }
     } else {

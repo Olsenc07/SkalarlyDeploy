@@ -23,6 +23,8 @@ export class MessageNotificationService {
 
   // private messagesInfoUpdated = new Subject<Message[]>();
   private messgesInfoUpdatedNotifs = new Subject<Message[]>();
+  // no matches
+  private messgesInfoUpdatedNoMatches = new Subject<string>();
 
   private messagesDel: Message[] = [];
   private messagesInfoDel = new Subject<Message[]>();
@@ -34,6 +36,9 @@ export class MessageNotificationService {
 
   getListenerNotification(): any {
     return this.messgesInfoUpdatedNotifs.asObservable();
+  }
+  getListenerNoNotification(): any {
+    return this.messgesInfoUpdatedNoMatches.asObservable();
   }
 
   getMessageNotification(userId: string): any {
@@ -119,7 +124,11 @@ export class MessageNotificationService {
       .subscribe((transformedMessage) => {
         this.messagesNotif = transformedMessage;
         console.log('deep end yo', this.messagesNotif);
-        this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
+        if (this.messagesNotif.length > 0) {
+          this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
+        } else {
+          this.messgesInfoUpdatedNoMatches.next('7');
+        }
       });
   }
 

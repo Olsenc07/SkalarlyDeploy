@@ -19,6 +19,14 @@
       placeholder="Search Messages" 
      (keyup)="sendDataNotif($event)"
      />
+     <div class="noMatches" *ngIf="messagesNoNotif == '7'">
+      No matches
+     </div>
+
+<button mat-icon-button (click)="clear()">
+
+</button>
+
     </mat-form-field>
 
   </div>
