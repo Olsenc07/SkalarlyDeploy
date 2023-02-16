@@ -368,11 +368,14 @@ export class AppComponent implements OnInit {
   sendData(event: any): any {
     const query: string = event.target.value;
     // Will match if query is nothing or is only spaces
-    const matchSpaces: any = query.match(/\s*/);
+    // const matchSpaces: any = query.match(/\s*/);
+    const matchSpaces: any = query.match('[a-zA-Z0-9_]*');
     if (matchSpaces[0] === query) {
       this.users = [];
       this.hasQuery = false;
       return;
+    } else {
+      console.log('no pat');
     }
 
     this.postsService.searchUsers(query.trim()).subscribe((results) => {
@@ -386,11 +389,13 @@ export class AppComponent implements OnInit {
     const queryHash: string = event.target.value;
     console.log('query yo', queryHash);
     // Will match if query is nothing or is only spaces
-    const matchSpaces: any = queryHash.match(/\s*/);
+    const matchSpaces: any = queryHash.match('[a-zA-Z0-9_]*');
     if (matchSpaces[0] === queryHash) {
       this.hashs = [];
       this.hasQueryHash = false;
       return;
+    } else {
+      console.log('no keaton');
     }
 
     this.postsService.searchHashs(queryHash.trim()).subscribe((results) => {
