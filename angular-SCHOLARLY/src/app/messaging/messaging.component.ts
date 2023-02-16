@@ -110,34 +110,40 @@ export class MessagingComponent implements OnInit {
   // Search notifs
   sendDataNotif(event: any): any {
     const queryHash: string = event.target.value;
-    console.log('query yo', queryHash);
-    // Will match if query is nothing or is only spaces
-    const matchSpaces: any = queryHash.match(/\s*/);
-    if (matchSpaces[0] === queryHash) {
-      this.messageNotificationService.getMessageNotification(this.userId);
-      this.messageNotificationService
-        .getListenerNotification()
-        .subscribe((messagesNotif: Message[]) => {
-          this.isLoading = false;
-          this.messagesNotif = messagesNotif.reverse();
-        });
-    } else {
-      this.messageNotificationService.getMessageNotificationFilter(
-        this.userId,
-        queryHash.trim()
-      );
+    console.log('empties', queryHash);
+    if (queryHash) {
+      console.log('query yo', queryHash);
+      // Will match if query is nothing or is only spaces
+      const matchSpaces: any = queryHash.match(/\s*/);
+      if (matchSpaces[0] === queryHash) {
+        this.messageNotificationService.getMessageNotification(this.userId);
+        this.messageNotificationService
+          .getListenerNotification()
+          .subscribe((messagesNotif: Message[]) => {
+            this.isLoading = false;
+            this.messagesNotif = messagesNotif.reverse();
+          });
+      } else {
+        this.messageNotificationService.getMessageNotificationFilter(
+          this.userId,
+          queryHash.trim()
+        );
 
-      this.messageNotificationService
-        .getListenerNotification()
-        .subscribe((messagesNotif: Message[]) => {
-          this.isLoading = false;
-          this.messagesNotif = messagesNotif.reverse();
-        });
+        this.messageNotificationService
+          .getListenerNotification()
+          .subscribe((messagesNotif: Message[]) => {
+            this.isLoading = false;
+            this.messagesNotif = messagesNotif.reverse();
+          });
+      }
+    } else {
+      console.log('sending nulls');
     }
   }
   navigateToChat(username: string): any {
     // view messages
     this.messageNotificationService.viewedMessage(this.userId, username);
+    // sets the new pulled data to display envelop opening
     this.messageNotificationService.getMessageNotification(this.userId);
     this.messageNotificationService
       .getListenerNotification()
