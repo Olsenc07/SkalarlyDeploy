@@ -128,18 +128,19 @@ export class MessagingComponent implements OnInit {
     this.messagesNoNotif = '';
     console.log('empties', queryHash);
     if (!queryHash.match('[a-zA-Z0-9]')) {
-      console.log('query yo', queryHash);
+      console.log('query notta');
       // Will match if query is nothing or is only spaces
       // const matchSpaces: any = queryHash.match('[a-zA-Z0-9]');
       // if (matchSpaces[0] !== queryHash) {
-      this.messageNotificationService.getMessageNotification(this.userId);
-      this.messageNotificationService
-        .getListenerNotification()
-        .subscribe((messagesNotif: Message[]) => {
-          console.log('g eazy', messagesNotif);
-          this.isLoading = false;
-          this.messagesNotif = messagesNotif.reverse();
-        });
+
+      // this.messageNotificationService.getMessageNotification(this.userId);
+      // this.messageNotificationService
+      //   .getListenerNotification()
+      //   .subscribe((messagesNotif: Message[]) => {
+      //     console.log('g eazy', messagesNotif);
+      //     this.isLoading = false;
+      //     this.messagesNotif = messagesNotif.reverse();
+      //   });
 
       // } else {
       //   this.messageNotificationService.getMessageNotificationFilter(
