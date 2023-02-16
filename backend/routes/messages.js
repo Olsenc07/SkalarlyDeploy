@@ -62,7 +62,7 @@ res.status(200).json({
 router.get("/infoMessage", async(req, res, next) => {
     await User.findById({_id: req.query.userId})
 .then(user => {
-    console.log('user', user)
+    console.log('user ni ni', user)
     Msg.find( 
         {otherUser: user.username}
     ).sort({time:-1})
@@ -74,15 +74,16 @@ router.get("/infoMessage", async(req, res, next) => {
             nonya.push(e.username)
         });
 let nonyaOnce = [...new Set(nonya)];
-console.log('order', nonyaOnce);
+console.log('order german', nonyaOnce);
 allMsgs = []
 for(let i in nonyaOnce){
     Msg.findOne({ $and: [
 {otherUser: user.username},
 {username: nonyaOnce[i]}
     ]
-    }).sort({time:-1, viewed: true})    
+    }).sort({time:-1, viewed: -1})    
       .then(finalDocs => {
+        console.log('did we make it?', finalDocs)
        allMsgs.push(finalDocs);
     if(allMsgs.length == nonyaOnce.length){ 
         let allMsgsReverse = allMsgs.reverse();
@@ -194,7 +195,7 @@ console.log('payload', payload);
             {otherUser: user.username}
         ).sort({time:-1})
         .then(documents => {
-            console.log('timing', documents)
+            console.log('timing 777', documents)
         if(documents.length > 0){
 
             nonya = [];
