@@ -81,7 +81,7 @@ for(let i in nonyaOnce){
 {otherUser: user.username},
 {username: nonyaOnce[i]}
     ]
-    }).sort({time:-1, viewed: -1})    
+    }).sort({time:-1, viewed: 1})    
       .then(finalDocs => {
         console.log('did we make it?', finalDocs)
        allMsgs.push(finalDocs);
