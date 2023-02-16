@@ -2,13 +2,17 @@
   display: contents;
 }
 .newIndicator{
-  border-radius: 25px;
-  box-shadow: 0 0 5px #393e5c;
-  padding: 8%;
-  color: white;
+  // border-radius: 25px;
+  // box-shadow: 0 0 5px #393e5c;
+  // padding: 8%;
+  // color: white;
   // background: linear-gradient(45deg,rgb(16 23 58),#ff383800);
-
-  background: linear-gradient(45deg,rgb(16,23,58),#04adf6);
+  border-radius: 25px;
+  box-shadow: 0 0 0px #393e5c;
+  padding: 8%;
+  color: #fff;
+  background: linear-gradient(45deg,rgb(226 241 247),#04adf6);
+  // background: linear-gradient(45deg,rgb(16,23,58),#04adf6);
 }
 .assistance {
   display: flex;
