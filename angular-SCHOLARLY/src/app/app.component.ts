@@ -367,7 +367,8 @@ export class AppComponent implements OnInit {
   // searching users
   sendData(event: any): any {
     const query: string = event.target.value;
-    if (query) {
+    console.log('query ', query);
+    if (query != null) {
       // Will match if query is nothing or is only spaces
       // const matchSpaces: any = query.match(/\s*/);
       const matchSpaces: any = query.match('^[a-zA-Z0-9]');
