@@ -91,12 +91,13 @@ export class MessageNotificationService {
         })
       )
       .subscribe((transformedMessage) => {
+        console.log('shark', transformedMessage);
         this.messagesNotif = transformedMessage;
         console.log('deep end', this.messagesNotif);
-        if (this.messagesNotif.length > 0) {
-          console.log('whast the length', this.messagesNotif.length);
-          this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
-        }
+        // if (this.messagesNotif.length > 0) {
+        console.log('whast the length', this.messagesNotif.length);
+        this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
+        // }
       });
   }
 
