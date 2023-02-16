@@ -376,12 +376,11 @@ export class AppComponent implements OnInit {
       return;
     } else {
       console.log('no pat');
+      this.postsService.searchUsers(query.trim()).subscribe((results) => {
+        this.users = results;
+        this.hasQuery = true;
+      });
     }
-
-    this.postsService.searchUsers(query.trim()).subscribe((results) => {
-      this.users = results;
-      this.hasQuery = true;
-    });
   }
 
   // Hashtag search
@@ -396,13 +395,12 @@ export class AppComponent implements OnInit {
       return;
     } else {
       console.log('no keaton');
+      this.postsService.searchHashs(queryHash.trim()).subscribe((results) => {
+        this.hashs = results;
+        this.hasQueryHash = true;
+        console.log('another log', this.hashs);
+      });
     }
-
-    this.postsService.searchHashs(queryHash.trim()).subscribe((results) => {
-      this.hashs = results;
-      this.hasQueryHash = true;
-      console.log('another log', this.hashs);
-    });
   }
 
   navigateToPage(infoUser: string): any {
