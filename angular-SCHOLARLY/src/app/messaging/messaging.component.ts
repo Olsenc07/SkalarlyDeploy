@@ -126,7 +126,7 @@ export class MessagingComponent implements OnInit {
   sendDataNotif(event: any): any {
     const queryHash: string = event.target.value;
     console.log('empties', queryHash);
-    if (queryHash) {
+    if (queryHash.match('[a-zA-Z0-9]')) {
       console.log('query yo', queryHash);
       // Will match if query is nothing or is only spaces
       const matchSpaces: any = queryHash.match('[a-zA-Z0-9]');
