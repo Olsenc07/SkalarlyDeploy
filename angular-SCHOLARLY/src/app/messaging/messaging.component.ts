@@ -96,8 +96,6 @@ export class MessagingComponent implements OnInit {
   enedMessaged(username: string): void {}
   navigateToPage(infoUser: string): any {
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
-    // view messages
-    this.messageNotificationService.viewedMessage(this.userId, infoUser);
   }
   delConvo(postId: string): any {
     console.log('pI', postId);
@@ -140,6 +138,8 @@ export class MessagingComponent implements OnInit {
   navigateToChat(username: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/messages/:'], { queryParams: { username } });
+    // view messages
+    this.messageNotificationService.viewedMessage(this.userId, username);
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
