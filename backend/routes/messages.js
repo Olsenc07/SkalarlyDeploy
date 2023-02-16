@@ -145,10 +145,25 @@ console.log('viewing message username', req.query.username);
     )
 .then(updates => {
     console.log('updates7', updates)
+    console.log('updates7 matched count', updates.matchedCount)
+if(updates.matchedCount > 0){
+   Msg.find({ $and: [
+    {otherUser: user.username},
+    {username: req.query.username}
+   ]})
+   .then(refreshed => {
     res.status(200).json({
         message: 'Clean update',
+        messages: refreshed
+    });
+   })
+}else{
+    // no updates
+    res.status(200).json({
+        message: 'Clean update 2',
         messages: updates
     });
+}
 }).catch(err => {
     return res.status(401).json({
         message: "Viewing message error 1!",
