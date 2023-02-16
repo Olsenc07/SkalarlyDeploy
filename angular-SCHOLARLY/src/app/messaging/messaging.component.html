@@ -18,12 +18,13 @@
      <input matInput 
       placeholder="Search Messages" 
      (keyup)="sendDataNotif($event)"
+     [formControl]="msgFilter"
      />
      <div class="noMatches" *ngIf="messagesNoNotif == '7'">
       No matches
      </div>
 
-<button mat-icon-button (click)="clear()">
+<button matPrefix mat-icon-button (click)="clear()" *ngIf="msgFilter.value">
   <i class="far fa-times-circle"></i>
 </button>
 

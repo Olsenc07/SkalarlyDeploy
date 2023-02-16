@@ -35,6 +35,7 @@ export class MessagingComponent implements OnInit {
   dateDay = new Date().getDate();
   dateMonth = new Date().getMonth();
   dateMonthName = this.testMonth(this.dateMonth);
+  msgFilter: FormControl = new FormControl('');
   time =
     this.dateMonthName +
     '\xa0' +
@@ -105,6 +106,7 @@ export class MessagingComponent implements OnInit {
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
         this.messagesNotif = messagesNotif.reverse();
+        this.messagesNoNotif = '';
       });
   }
   // resets search
@@ -115,6 +117,7 @@ export class MessagingComponent implements OnInit {
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.messagesNotif = messagesNotif.reverse();
+        this.messagesNoNotif = '';
         console.log('cleared now', this.messagesNotif);
       });
   }

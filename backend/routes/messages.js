@@ -215,7 +215,11 @@ console.log('matches', matches)
 if(matches.length == 0){
     console.log('big boobs');
    
+    return res.status(200).json({
+        message: "No messages to retrieve 7",
+        messages: []
 
+    })
 
 }else{
     console.log('runners body');
