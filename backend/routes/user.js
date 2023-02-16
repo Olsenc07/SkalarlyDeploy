@@ -2468,7 +2468,7 @@ router.post('/getusers', async (req, res) => {
     let payload = req.body.payload;
     let search = await UserInfo.find({
         username: {
-            $regex: new RegExp('^' + payload ,
+            $regex: new RegExp('.^' + payload ,
                 'i')
         }
     }).limit(7).exec();
