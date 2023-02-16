@@ -69,10 +69,13 @@
                         </div>
                     </div>
                     <div class="buttonCombo" >
-        
-             
-        
-                        <button  mat-flat-button class="counterColor"  mat-flat-button (click)="navigateToChat(info.username)"
+        <!-- first viewing -->
+        <button  mat-flat-button class="counterColor" *ngIf="info.viewed === false" mat-flat-button (click)="navigateToChat(info.username)"
+        matTooltip="Display Messages">        
+             <i class="fas fa-envelope iconSpace"></i>
+         </button >
+        <!-- already opened -->
+                        <button  mat-flat-button class="counterColor" *ngIf="info.viewed === true"  mat-flat-button (click)="navigateToChat(info.username)"
                        matTooltip="Display Messages">        
                             <i class="fas fa-envelope-open-text iconSpace"></i>
                         </button >
