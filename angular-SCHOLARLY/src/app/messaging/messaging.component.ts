@@ -138,6 +138,7 @@ export class MessagingComponent implements OnInit {
   navigateToChat(username: string): any {
     // view messages
     this.messageNotificationService.viewedMessage(this.userId, username);
+    this.messageNotificationService.getMessageNotification(this.userId);
     this.messageNotificationService
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
