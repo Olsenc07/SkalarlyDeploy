@@ -111,6 +111,7 @@ export class MessagingComponent implements OnInit {
   }
   // resets search
   clear(): void {
+    this.msgFilter.setValue('');
     console.log('coffee time');
     this.messageNotificationService.getMessageNotification(this.userId);
     this.messageNotificationService

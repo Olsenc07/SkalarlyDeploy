@@ -124,10 +124,11 @@ export class MessageNotificationService {
       .subscribe((transformedMessage) => {
         this.messagesNotif = transformedMessage;
         console.log('deep end yo', this.messagesNotif);
-        if (this.messagesNotif.length > 0) {
-          this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
-        } else {
+        this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
+        if (this.messagesNotif.length === 0) {
           this.messgesInfoUpdatedNoMatches.next('7');
+        } else {
+          console.log('matches found');
         }
       });
   }
