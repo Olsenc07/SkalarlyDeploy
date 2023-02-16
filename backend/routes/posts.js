@@ -1074,14 +1074,15 @@ router.delete("/delConvo/:postId", checkAuth, async(req, res, next ) => {
         console.log('found', found);
         Msg.deleteMany({ 
             $and: [
-                {username: found.username},
-                {otherUser: found.otherUser}
+                {username: found.otherUser},
+                {otherUser: found.username}
             ]
         }).then(flounder => {
+        console.log('flounder', flounder);
             Msg.deleteMany({ 
                 $and: [
-                    {username: found.otherUser},
-                    {otherUser: found.username}
+                    {username: found.username},
+                    {otherUser: found.otherUser}
                 ]
             }).then(done => {
                 console.log('sucessful del', done);
