@@ -22,9 +22,12 @@
      />
      <div matSuffix class="noMatches" *ngIf="messagesNoNotif == '7'">
       No matches
+      <button matSuffix mat-icon-button (click)="clear()">
+        <i class="far fa-times-circle"></i>
+      </button>
      </div>
 
-<button matSuffix mat-icon-button (click)="clear()" *ngIf="msgFilter.value">
+<button matSuffix mat-icon-button (click)="clear()" *ngIf="msgFilter.value && messagesNoNotif != '7'">
   <i class="far fa-times-circle"></i>
 </button>
 

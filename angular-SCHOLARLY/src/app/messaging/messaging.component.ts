@@ -73,7 +73,12 @@ export class MessagingComponent implements OnInit {
 
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    if (this.msgFilter.value.length === 0) {
+      this.messagesNoNotif = '';
+      console.log('tumblr girls');
+    }
+  }
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
