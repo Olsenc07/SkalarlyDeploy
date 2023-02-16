@@ -81,7 +81,7 @@ for(let i in nonyaOnce){
 {otherUser: user.username},
 {username: nonyaOnce[i]}
     ]
-    }).sort({time:-1})    
+    }).sort({time:-1, viewed: false})    
       .then(finalDocs => {
        allMsgs.push(finalDocs);
     if(allMsgs.length == nonyaOnce.length){ 
@@ -211,14 +211,81 @@ let matches = nonyaOnce.filter((e) =>
 )
 console.log('order', nonyaOnce);
 console.log('matches', matches)
-
+if(matches.length == 0){
+    console.log('big boobs');
+     User.findById({_id: req.query.userId})
+    .then(user => {
+        console.log('user', user)
+        Msg.find( 
+            {otherUser: user.username}
+        ).sort({time:-1})
+        .then(documents => {
+            if(documents.length > 0){
+            console.log('timing', documents)
+            nonya = [];
+            documents.forEach((e) => {
+                nonya.push(e.username)
+            });
+    let nonyaOnce = [...new Set(nonya)];
+    console.log('order', nonyaOnce);
     allMsgs = []
-    if(matches.length == 0){
+    for(let i in nonyaOnce){
+        Msg.findOne({ $and: [
+    {otherUser: user.username},
+    {username: nonyaOnce[i]}
+        ]
+        }).sort({time:-1, viewed: false})    
+          .then(finalDocs => {
+           allMsgs.push(finalDocs);
+        if(allMsgs.length == nonyaOnce.length){ 
+            let allMsgsReverse = allMsgs.reverse();
         res.status(200).json({
             message: 'Info messages fetched succesfully!',
-               messages: matches
+               messages: allMsgsReverse
             });
+        }
+          })
+    
+          .catch(err => {
+            return res.status(401).json({
+                message: "Message error 3!",
+        
+            })
+        })
+    
+    }
     }else{
+        return res.status(200).json({
+            message: "No messages to retrieve",
+            messages: documents
+    
+        })
+    }
+        })
+        .catch(err => {
+            return res.status(401).json({
+                message: "Message error 2!",
+        
+            })
+        })
+    })
+    .catch(err => {
+        return res.status(401).json({
+            message: "Message error 1!",
+    
+        })
+    })
+
+
+}else{
+    console.log('runners body');
+    allMsgs = []
+    // if(matches.length == 0){
+    //     res.status(200).json({
+    //         message: 'Info messages fetched succesfully!',
+    //            messages: matches
+    //         });
+    // }else{
 
     for(let i in matches){
         Msg.findOne({ $and: [
@@ -244,6 +311,7 @@ if(allMsgs.length == matches.length){
         })
     
     }
+// }
 }    
         }else{
             return res.status(200).json({
