@@ -368,7 +368,7 @@ export class AppComponent implements OnInit {
   sendData(event: any): any {
     const query: string = event.target.value;
     console.log('query ', query);
-    if (query != null) {
+    if (query != null && query !== '0') {
       // Will match if query is nothing or is only spaces
       // const matchSpaces: any = query.match(/\s*/);
       const matchSpaces: any = query.match('^[a-zA-Z0-9]');
@@ -393,7 +393,7 @@ export class AppComponent implements OnInit {
   sendDataHash(event: any): any {
     const queryHash: string = event.target.value;
     console.log('query yo', queryHash);
-    if (queryHash != null) {
+    if (queryHash) {
       // Will match if query is nothing or is only spaces
       const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
       if (matchSpaces[0] !== queryHash) {
