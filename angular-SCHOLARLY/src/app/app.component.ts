@@ -368,21 +368,24 @@ export class AppComponent implements OnInit {
   sendData(event: any): any {
     const query: string = event.target.value;
     console.log('query ', query);
-    if (!query.match('^[a-zA-Z0-9]')) {
-      // Will match if query is nothing or is only spaces
-      // const matchSpaces: any = query.match(/\s*/);
-      // const matchSpaces: any = query.match('^[a-zA-Z0-9]');
+    if (!query) {
+      if (!query.match('^[a-zA-Z0-9]')) {
+        // Will match if query is nothing or is only spaces
+        // const matchSpaces: any = query.match(/\s*/);
+        // const matchSpaces: any = query.match('^[a-zA-Z0-9]');
 
-      this.users = [];
-      this.hasQuery = true;
-      console.log('he like');
-      return;
-    } else {
-      console.log('no pat');
-      this.postsService.searchUsers(query.trim()).subscribe((results) => {
-        this.users = results;
+        this.users = [];
         this.hasQuery = true;
-      });
+        console.log('he like');
+        return;
+      } else {
+        console.log('no pat');
+        this.postsService.searchUsers(query.trim()).subscribe((results) => {
+          this.users = results;
+          this.hasQuery = true;
+        });
+      }
+      this.hasQuery = false;
     }
   }
 
@@ -390,23 +393,26 @@ export class AppComponent implements OnInit {
   sendDataHash(event: any): any {
     const queryHash: string = event.target.value;
     console.log('query yo', queryHash);
-    if (!queryHash.match('^[a-zA-Z0-9]')) {
-      // Will match if query is nothing or is only spaces
-      // const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
-      // if (matchSpaces[0] !== queryHash) {
-      this.hashs = [];
-      this.hasQueryHash = false;
-      console.log('he like hash');
-
-      return;
-    } else {
-      console.log('logic ');
-      console.log('no keaton');
-      this.postsService.searchHashs(queryHash.trim()).subscribe((results) => {
-        this.hashs = results;
+    if (!queryHash) {
+      if (!queryHash.match('^[a-zA-Z0-9]')) {
+        // Will match if query is nothing or is only spaces
+        // const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
+        // if (matchSpaces[0] !== queryHash) {
+        this.hashs = [];
         this.hasQueryHash = true;
-        console.log('another log', this.hashs);
-      });
+        console.log('he like hash');
+
+        return;
+      } else {
+        console.log('logic ');
+        console.log('no keaton');
+        this.postsService.searchHashs(queryHash.trim()).subscribe((results) => {
+          this.hashs = results;
+          this.hasQueryHash = true;
+          console.log('another log', this.hashs);
+        });
+      }
+      this.hasQueryHash = false;
     }
   }
 
