@@ -369,10 +369,11 @@ export class AppComponent implements OnInit {
     const query: string = event.target.value;
     // Will match if query is nothing or is only spaces
     // const matchSpaces: any = query.match(/\s*/);
-    const matchSpaces: any = query.match('^[a-zA-Z0-9]*');
+    const matchSpaces: any = query.match('^[a-zA-Z0-9]');
     if (matchSpaces[0] === query) {
       this.users = [];
       this.hasQuery = false;
+      console.log('he like');
       return;
     } else {
       console.log('no pat');
@@ -392,6 +393,8 @@ export class AppComponent implements OnInit {
     if (matchSpaces[0] === queryHash) {
       this.hashs = [];
       this.hasQueryHash = false;
+      console.log('he like hash');
+
       return;
     } else {
       console.log('no keaton');
