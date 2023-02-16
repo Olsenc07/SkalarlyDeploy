@@ -369,7 +369,7 @@ export class AppComponent implements OnInit {
     const query: string = event.target.value;
     // Will match if query is nothing or is only spaces
     // const matchSpaces: any = query.match(/\s*/);
-    const matchSpaces: any = query.match('[a-zA-Z0-9_]*');
+    const matchSpaces: any = query.match('^[a-zA-Z0-9]*');
     if (matchSpaces[0] === query) {
       this.users = [];
       this.hasQuery = false;
@@ -389,7 +389,7 @@ export class AppComponent implements OnInit {
     const queryHash: string = event.target.value;
     console.log('query yo', queryHash);
     // Will match if query is nothing or is only spaces
-    const matchSpaces: any = queryHash.match('[a-zA-Z0-9_]*');
+    const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
     if (matchSpaces[0] === queryHash) {
       this.hashs = [];
       this.hasQueryHash = false;
