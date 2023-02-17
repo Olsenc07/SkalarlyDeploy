@@ -426,31 +426,21 @@ export class AppComponent implements OnInit {
 
       if (matches != null) {
         if (matches.length > 0) {
-          console.log('little bobby', query.match(regex));
           this.postsService.searchUsers(query.trim());
           this.postsService.getUserId().subscribe((results) => {
             this.users = results;
             console.log('results baby', results);
             console.log('results baby length', results.length);
-
-            if (results.length > 0) {
-              console.log('bring me home');
-
-              this.hasQuery = true;
-            } else {
-              console.log('you');
-              this.hasQuery = true;
-            }
           });
         } else {
           console.log('no pat');
           this.users = [];
           this.hasQuery = true;
           console.log('he like');
-          return;
         }
       }
-      console.log('tits');
+      this.hasQuery = true;
+    } else {
       this.hasQuery = false;
     }
   }
@@ -460,26 +450,29 @@ export class AppComponent implements OnInit {
     const queryHash: string = event.target.value;
     console.log('query yo', queryHash);
     if (queryHash) {
-      if (queryHash.match('^[A-Za-z0-9]*$')) {
-        // Will match if query is nothing or is only spaces
-        // const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
-        // if (matchSpaces[0] !== queryHash) {
-        this.hashs = [];
-        this.hasQueryHash = true;
-        console.log('he like hash');
-
-        return;
-      } else {
-        console.log('logic ');
-        console.log('no keaton');
-        this.postsService.searchHashs(queryHash.trim());
-        this.postsService.getHashs().subscribe((results) => {
-          this.hashs = results;
+      const regex = /^[A-Za-z0-9]*$/;
+      const matches = queryHash.match(regex);
+      console.log('matches', matches);
+      if (matches != null) {
+        if (matches.length > 0) {
+          // Will match if query is nothing or is only spaces
+          // const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
+          // if (matchSpaces[0] !== queryHash) {
+          this.postsService.searchHashs(queryHash.trim());
+          this.postsService.getHashs().subscribe((results) => {
+            this.hashs = results;
+            console.log('another log', this.hashs);
+          });
+          console.log('he like hash');
+        } else {
+          console.log('logic ');
+          this.hashs = [];
           this.hasQueryHash = true;
-          console.log('another log', this.hashs);
-        });
+        }
       }
-      this.hasQueryHash = false;
+      this.hasQueryHash = true;
+    } else {
+      this.hasQuery = false;
     }
   }
 

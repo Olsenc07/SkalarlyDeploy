@@ -261,8 +261,6 @@ export class SignupComponent implements OnInit {
     const matches4 = emailChazz.match(regex4);
     const matches5 = emailChazz.match(regex5);
     console.log('matches1', matches);
-    console.log('matches1_', matches.length);
-
     console.log('matches2', matches2);
     console.log('matches3', matches3);
     console.log('matches4', matches4);
