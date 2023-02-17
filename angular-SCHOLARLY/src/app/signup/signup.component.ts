@@ -249,24 +249,26 @@ export class SignupComponent implements OnInit {
   public pattern(control: AbstractControl): ValidationErrors | null {
     console.log('hey chaz', control.value as string);
     const emailChazz = control.value as string;
-    const regex = /@mail.utoronto*/;
-    const regex2 = /@utoronto*/;
-    const regex3 = /@uoftpharmacy*/;
-    const regex4 = /@utsc.utoronto*/;
-    const regex5 = /@rotman.utoronto*/;
+    const regex = /[a-zA-Z0-9]@mail.utoronto*/;
+    const regex2 = /[a-zA-Z0-9]@utoronto*/;
+    const regex3 = /[a-zA-Z0-9]@uoftpharmacy*/;
+    const regex4 = /[a-zA-Z0-9]@utsc.utoronto*/;
+    const regex5 = /[a-zA-Z0-9]@rotman.utoronto*/;
 
     const matches = emailChazz.match(regex);
     const matches2 = emailChazz.match(regex2);
     const matches3 = emailChazz.match(regex3);
     const matches4 = emailChazz.match(regex4);
     const matches5 = emailChazz.match(regex5);
-    console.log('matches', matches);
-    console.log('matches', matches2);
-    console.log('matches', matches3);
-    console.log('matches', matches4);
-    console.log('matches', matches5);
+    console.log('matches1', matches);
+    console.log('matches1_', matches.length);
 
-    if (matches || matches2 || matches3 || matches4 || matches5) {
+    console.log('matches2', matches2);
+    console.log('matches3', matches3);
+    console.log('matches4', matches4);
+    console.log('matches5', matches5);
+
+    if ((matches || matches2 || matches3 || matches4 || matches5).length > 0) {
       return { pattern: true };
     }
     return null;

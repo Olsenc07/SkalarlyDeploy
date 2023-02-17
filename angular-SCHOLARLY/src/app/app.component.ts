@@ -424,30 +424,31 @@ export class AppComponent implements OnInit {
       const matches = query.match(regex);
       console.log('matches', matches);
       console.log('matches length', matches.length);
+      if (matches != null) {
+        if (matches.length > 0) {
+          console.log('little bobby', query.match(regex));
+          this.postsService.searchUsers(query.trim());
+          this.postsService.getUserId().subscribe((results) => {
+            this.users = results;
+            console.log('results baby', results);
+            console.log('results baby length', results.length);
 
-      if (matches.length > 0) {
-        console.log('little bobby', query.match(regex));
-        this.postsService.searchUsers(query.trim());
-        this.postsService.getUserId().subscribe((results) => {
-          this.users = results;
-          console.log('results baby', results);
-          console.log('results baby length', results.length);
+            if (results.length > 0) {
+              console.log('bring me home');
 
-          if (results.length > 0) {
-            console.log('bring me home');
-
-            this.hasQuery = true;
-          } else {
-            console.log('you');
-            this.hasQuery = false;
-          }
-        });
-      } else {
-        console.log('no pat');
-        this.users = [];
-        this.hasQuery = true;
-        console.log('he like');
-        return;
+              this.hasQuery = true;
+            } else {
+              console.log('you');
+              this.hasQuery = false;
+            }
+          });
+        } else {
+          console.log('no pat');
+          this.users = [];
+          this.hasQuery = true;
+          console.log('he like');
+          return;
+        }
       }
       console.log('tits');
       this.hasQuery = false;
