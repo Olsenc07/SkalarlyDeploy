@@ -250,6 +250,12 @@ export class AppComponent implements OnInit {
           console.log('newMessageCheck length', this.newMessageCheck.length);
         });
     }
+
+    console.log('fox', this.isSearchScreen$);
+    if (this.isSearchScreen$) {
+      console.log('made it baby');
+    }
+
     if (window.screen.height < 768) {
       this.minHeight = false;
     }

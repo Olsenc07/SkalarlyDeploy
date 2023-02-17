@@ -2095,10 +2095,6 @@ export class AuthService {
           //     duration: 4000
           // });
         },
-        complete: () => {
-          console.log('we made it relaod time');
-          location.reload();
-        },
       });
   }
 
