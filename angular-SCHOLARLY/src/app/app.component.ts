@@ -375,17 +375,7 @@ export class AppComponent implements OnInit {
     const query: string = event.target.value;
     console.log('query ', query);
     if (!query) {
-      if (!query.match('^[a-zA-Z0-9]')) {
-        // Will match if query is nothing or is only spaces
-        // const matchSpaces: any = query.match(/\s*/);
-        // const matchSpaces: any = query.match('^[a-zA-Z0-9]');
-
-        this.users = [];
-        this.hasQuery = true;
-        console.log('he like');
-        return;
-      } else {
-        console.log('no pat');
+      if (query.match('^[a-zA-Z0-9]')) {
         this.postsService.searchUsers(query.trim()).subscribe((results) => {
           this.users = results;
           console.log('results baby', results);
@@ -398,6 +388,12 @@ export class AppComponent implements OnInit {
             this.hasQuery = false;
           }
         });
+      } else {
+        console.log('no pat');
+        this.users = [];
+        this.hasQuery = true;
+        console.log('he like');
+        return;
       }
       this.hasQuery = false;
     }
