@@ -420,7 +420,7 @@ export class AppComponent implements OnInit {
     const query: string = event.target.value;
     console.log('query ', query);
     if (query) {
-      const regex = /^[A-Za-z0-9]*$/;
+      const regex = /^[A-Za-z0-9]/;
       const matches = query.match(regex);
       console.log('matches', matches);
 
