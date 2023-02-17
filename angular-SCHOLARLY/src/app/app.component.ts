@@ -220,8 +220,9 @@ export class AppComponent implements OnInit {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
 
-    // update badges!
+    // update badges! on pg refresh
     if (this.userId != null) {
+      // broken subscription link
       this.commentsService.getMissedNotif(this.userId, 0);
       this.commentsService
         .getMissedNotifUpdateListener()
@@ -229,6 +230,7 @@ export class AppComponent implements OnInit {
           this.notif = missedNotifs;
           console.log('notif missed', this.notif);
         });
+      // msgs
       this.messageNotificationService.getMessageNotification(this.userId);
       this.messageNotificationService
         .getListenerNotification()
@@ -252,6 +254,7 @@ export class AppComponent implements OnInit {
         });
     }
 
+    // update badges! on login!!
     this.isSearchScreen$.subscribe((onSearchPg) => {
       console.log('happy boy', onSearchPg);
       if (onSearchPg === true) {
@@ -262,7 +265,15 @@ export class AppComponent implements OnInit {
           console.log(`Previously visited page URL: ${previousPageUrl}`);
           if (previousPageUrl === 'https://www.skalarly.com/search') {
             console.log('made it baby');
-
+            // broken subscription link
+            this.commentsService.getMissedNotif(this.userId, 0);
+            this.commentsService
+              .getMissedNotifUpdateListener()
+              .subscribe((missedNotifs: MissedNotif[]) => {
+                this.notif = missedNotifs;
+                console.log('notif missed', this.notif);
+              });
+            // msgs
             this.messageNotificationService.getMessageNotification(this.userId);
             this.messageNotificationService
               .getListenerNotification()
