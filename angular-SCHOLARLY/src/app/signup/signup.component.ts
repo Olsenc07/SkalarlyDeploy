@@ -111,10 +111,10 @@ export class SignupComponent implements OnInit {
   imgChangeEvent: any = '';
   // showCropper = false;
   showCasePreview: any = '';
-
+  pat = /\w/;
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [
-    Validators.pattern('^[A-Za-z0-9]*$'),
+    Validators.pattern(this.pat),
     this.noWhiteSpace,
   ]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
@@ -249,11 +249,11 @@ export class SignupComponent implements OnInit {
   public pattern(control: AbstractControl): ValidationErrors | null {
     console.log('hey chaz', control.value as string);
     const emailChazz = control.value as string;
-    const regex = /[a-zA-Z0-9]@mail.utoronto.ca/;
-    const regex2 = /[a-zA-Z0-9]@utoronto.ca/;
-    const regex3 = /[a-zA-Z0-9]@uoftpharmacy.com/;
-    const regex4 = /[a-zA-Z0-9]@utsc.utoronto.ca/;
-    const regex5 = /[a-zA-Z0-9]@rotman.utoronto.ca/;
+    const regex = /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/;
+    const regex2 = /^[a-zA-Z0-9._%+-]+@utoronto\.ca/;
+    const regex3 = /^[a-zA-Z0-9._%+-]+@uoftpharmacy\.com/;
+    const regex4 = /^[a-zA-Z0-9._%+-]+@utsc.utoronto\.ca/;
+    const regex5 = /^[a-zA-Z0-9._%+-]+@rotman.utoronto\.ca/;
 
     const matches = emailChazz.match(regex);
     const matches2 = emailChazz.match(regex2);
