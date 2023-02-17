@@ -254,34 +254,36 @@ export class AppComponent implements OnInit {
 
     this.isSearchScreen$.subscribe((onSearchPg) => {
       console.log('happy boy', onSearchPg);
-      if (this.userId != null) {
-        const previousPageUrl = document.referrer;
-        console.log(`Previously visited page URL: ${previousPageUrl}`);
-        if (previousPageUrl === 'https://www.skalarly.com/login') {
-          // onSearchPg = onSearchPg;
-          // if (this.onSearcPg === true) {
-          console.log('made it baby');
-          this.messageNotificationService.getMessageNotification(this.userId);
-          this.messageNotificationService
-            .getListenerNotification()
-            .subscribe((messagesNotif: Message[]) => {
-              this.newMsg = messagesNotif.reverse();
+      if (onSearchPg === true) {
+        if (this.userId != null) {
+          const previousPageUrl = document.referrer;
+          console.log(`Previously visited page URL: ${previousPageUrl}`);
+          if (previousPageUrl === 'https://www.skalarly.com/login') {
+            // onSearchPg = onSearchPg;
+            // if (this.onSearcPg === true) {
+            console.log('made it baby');
+            this.messageNotificationService.getMessageNotification(this.userId);
+            this.messageNotificationService
+              .getListenerNotification()
+              .subscribe((messagesNotif: Message[]) => {
+                this.newMsg = messagesNotif.reverse();
 
-              const NEW = [];
-              this.newMsg.forEach((e) => {
-                if (e.viewed === false) {
-                  NEW.push(e.viewed);
-                } else {
-                  console.log('no unread messages');
-                }
+                const NEW = [];
+                this.newMsg.forEach((e) => {
+                  if (e.viewed === false) {
+                    NEW.push(e.viewed);
+                  } else {
+                    console.log('no unread messages');
+                  }
+                });
+
+                this.newMessageCheck = NEW;
+                console.log('all the way');
               });
-
-              this.newMessageCheck = NEW;
-              console.log('all the way');
-            });
-          console.log('booty lucky');
-        } else {
-          console.log('search pg nah');
+            console.log('booty lucky');
+          } else {
+            console.log('search pg nah');
+          }
         }
       }
     });
