@@ -420,7 +420,8 @@ export class AppComponent implements OnInit {
     const query: string = event.target.value;
     console.log('query ', query);
     if (!query) {
-      if (query.match('[a-zA-Z0-9]')) {
+      const regex = new RegExp('[a - zA - Z0 - 9]', 'i');
+      if (query.match(regex)) {
         console.log('little bobby');
         this.postsService.searchUsers(query.trim());
         this.postsService.getUserId().subscribe((results) => {
@@ -444,6 +445,7 @@ export class AppComponent implements OnInit {
         console.log('he like');
         return;
       }
+      console.log('tits');
       this.hasQuery = false;
     }
   }
