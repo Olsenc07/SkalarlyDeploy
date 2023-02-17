@@ -2469,7 +2469,7 @@ router.get('/getusers', async (req, res) => {
     // let search =
      await UserInfo.find({
         username: {
-            $regex: new RegExp('^*' + payload ,
+            $regex: new RegExp('^' + payload ,
                 'i')
         }
     }).limit(7)

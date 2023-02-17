@@ -255,11 +255,18 @@ export class SignupComponent implements OnInit {
     const regex4 = /@utsc.utoronto*/;
     const regex5 = /@rotman.utoronto*/;
 
-    const matches = emailChazz.match(
-      regex || regex2 || regex3 || regex4 || regex5
-    );
+    const matches = emailChazz.match(regex);
+    const matches2 = emailChazz.match(regex2);
+    const matches3 = emailChazz.match(regex3);
+    const matches4 = emailChazz.match(regex4);
+    const matches5 = emailChazz.match(regex5);
     console.log('matches', matches);
-    if (matches) {
+    console.log('matches', matches2);
+    console.log('matches', matches3);
+    console.log('matches', matches4);
+    console.log('matches', matches5);
+
+    if (matches || matches2 || matches3 || matches4 || matches5) {
       return { pattern: true };
     }
     return null;
