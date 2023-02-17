@@ -440,6 +440,7 @@ export class AppComponent implements OnInit {
         }
       }
       this.hasQuery = true;
+      this.users = [];
     } else {
       this.hasQuery = false;
     }
