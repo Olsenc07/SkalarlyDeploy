@@ -421,7 +421,11 @@ export class AppComponent implements OnInit {
     console.log('query ', query);
     if (query) {
       const regex = new RegExp('[a - zA - Z0 - 9]', 'i');
-      if (query.match(regex) != null) {
+      const matches = query.match(regex);
+      console.log('matches', matches);
+      console.log('matches length', matches.length);
+
+      if (matches.length > 0) {
         console.log('little bobby', query.match(regex));
         this.postsService.searchUsers(query.trim());
         this.postsService.getUserId().subscribe((results) => {
@@ -454,8 +458,8 @@ export class AppComponent implements OnInit {
   sendDataHash(event: any): any {
     const queryHash: string = event.target.value;
     console.log('query yo', queryHash);
-    if (!queryHash) {
-      if (!queryHash.match('[a-zA-Z0-9]')) {
+    if (queryHash) {
+      if (queryHash.match('[a-zA-Z0-9]')) {
         // Will match if query is nothing or is only spaces
         // const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
         // if (matchSpaces[0] !== queryHash) {
@@ -467,7 +471,8 @@ export class AppComponent implements OnInit {
       } else {
         console.log('logic ');
         console.log('no keaton');
-        this.postsService.searchHashs(queryHash.trim()).subscribe((results) => {
+        this.postsService.searchHashs(queryHash.trim());
+        this.postsService.getHashs().subscribe((results) => {
           this.hashs = results;
           this.hasQueryHash = true;
           console.log('another log', this.hashs);

@@ -28,6 +28,9 @@ export class PostsService {
 
   private userUpdated = new ReplaySubject();
   private userId: string;
+
+  private hashUpdated = new ReplaySubject();
+  private hashId: string;
   getNotifId(): any {
     return this.notifUpdated.asObservable();
   }
@@ -35,7 +38,9 @@ export class PostsService {
   getUserId(): any {
     return this.userUpdated.asObservable();
   }
-
+  getHashs(): any {
+    return this.hashUpdated.asObservable();
+  }
   searchUsers(query: string): any {
     console.log('witch craft', query);
     this.http
@@ -63,15 +68,24 @@ export class PostsService {
   // Hashtag search
   searchHashs(queryHash: string): any {
     console.log('my girl', queryHash);
-    return this.http
-      .post<{ payload: any }>(
-        '/api/user/gethashs',
-        { payload: queryHash },
-        {
-          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-        }
+    this.http
+      .get<{ messages: string; payload: string }>(
+        'https://www.skalarly.com/api/user/gethashs',
+        { params: { queryHash } }
       )
-      .pipe(map((data) => data.payload));
+      .pipe(map((data) => data.payload))
+      .subscribe({
+        next: (response) => {
+          console.log('chlor 2', response);
+          this.hashId = response;
+          this.hashUpdated.next(this.hashId);
+        },
+        // console.log('trans', transformedInfos.Creator);
+
+        // this.notifId = transformedInfos.Creator;
+        // console.log('hello', this.notifId);
+        // this.notifUpdated.next(this.notifId);
+      });
   }
 
   checkNotification(id: string): any {

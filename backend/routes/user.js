@@ -2499,7 +2499,7 @@ router.get('/getusers', async (req, res) => {
 
 // Search hashtags
 router.post('/gethashs', async (req, res) => {
-    let payload = req.body.payload;
+    let payload = req.query.queryHash;
     let matchesAll = [];
     console.log('Payload',payload);
 
@@ -2572,11 +2572,24 @@ router.post('/gethashs', async (req, res) => {
         let finalMatches = [... new Set(matchesAll)]
           console.log('trying', matchesAll)
           console.log('filtered doubles', finalMatches);
-            res.send({ payload: finalMatches })
+          if(finalMatches){
+            res.status(200).json({
+                message: 'Matches returned!',
+                payload: finalMatches
+            });
+        }else{
+            res.status(200).json({
+                message: 'No matches returned!',
+                payload: []
+            }); 
+        }
+            // res.send({ payload: finalMatches })
 
           
+           }else{
+            console.log('mac miller')
            }
-        console.log('results',docs)
+      
 
     })
 
