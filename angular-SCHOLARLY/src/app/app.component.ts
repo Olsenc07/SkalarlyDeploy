@@ -97,7 +97,6 @@ export class AppComponent implements OnInit {
     private commentsService: CommentsService,
     private messageNotificationService: MessageNotificationService
   ) {
-    console.log('HOW OFTEN?');
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) =>
         user ? this._filter(user) : this.allUsers.slice()
@@ -253,43 +252,35 @@ export class AppComponent implements OnInit {
         });
     }
 
-    try {
-      this.isSearchScreen$ = this.router.events.pipe(
-        filter((event) => event instanceof NavigationEnd),
-        map(
-          (event: NavigationEnd) => event.url === '/' || event.url === '/search'
-        )
-      );
-    } catch (er) {
-      console.log('not on search pg');
-    }
-    this.isSearchScreen$.subscribe((onSearchPg) => {
-      console.log('happy boy', onSearchPg);
+    // this.isSearchScreen$.subscribe((onSearchPg) => {
+    //   console.log('happy boy', onSearchPg);
 
-      onSearchPg = onSearchPg;
-    });
-    if (this.onSearcPg === true) {
-      console.log('made it baby');
-      this.messageNotificationService.getMessageNotification(this.userId);
-      this.messageNotificationService
-        .getListenerNotification()
-        .subscribe((messagesNotif: Message[]) => {
-          this.newMsg = messagesNotif.reverse();
+    //   onSearchPg = onSearchPg;
+    //   if (this.onSearcPg === true) {
+    //     console.log('made it baby');
+    //     this.messageNotificationService.getMessageNotification(this.userId);
+    //     this.messageNotificationService
+    //       .getListenerNotification()
+    //       .subscribe((messagesNotif: Message[]) => {
+    //         this.newMsg = messagesNotif.reverse();
 
-          const NEW = [];
-          this.newMsg.forEach((e) => {
-            if (e.viewed === false) {
-              NEW.push(e.viewed);
-            } else {
-              console.log('no unread messages');
-            }
-          });
+    //         const NEW = [];
+    //         this.newMsg.forEach((e) => {
+    //           if (e.viewed === false) {
+    //             NEW.push(e.viewed);
+    //           } else {
+    //             console.log('no unread messages');
+    //           }
+    //         });
 
-          this.newMessageCheck = NEW;
-          console.log('all the way');
-        });
-      console.log('booty lucky');
-    }
+    //         this.newMessageCheck = NEW;
+    //         console.log('all the way');
+    //       });
+    //     console.log('booty lucky');
+    //   }else{
+    //     console.log('search pg nah');
+    //   }
+    // });
 
     if (window.screen.height < 768) {
       this.minHeight = false;
