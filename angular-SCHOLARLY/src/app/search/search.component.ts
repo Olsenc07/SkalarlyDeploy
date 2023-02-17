@@ -3,7 +3,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { SearchListService } from '../services/search.service';
-import { Post, PostService } from '../services/post.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
@@ -63,8 +62,7 @@ export class SearchComponent implements OnInit {
         this.isLoading = false;
       });
 
-    const previousPageUrl = document.referrer;
-    console.log(`Previously visited page URL: ${previousPageUrl}`);
+    // Fresh data update from logging in
   }
 
   onSearchSelection(value: string): void {
