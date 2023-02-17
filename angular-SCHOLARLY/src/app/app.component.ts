@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   Hashtag = false;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
+  onSearcPg: boolean;
   public href = '';
   _url: URL;
   rawURL: string;
@@ -96,6 +97,7 @@ export class AppComponent implements OnInit {
     private commentsService: CommentsService,
     private messageNotificationService: MessageNotificationService
   ) {
+    console.log('HOW OFTEN?');
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) =>
         user ? this._filter(user) : this.allUsers.slice()
@@ -251,28 +253,43 @@ export class AppComponent implements OnInit {
         });
     }
 
-    // console.log('fox', this.isSearchScreen$.subscribe());
-    // if (this.isSearchScreen$) {
-    //   console.log('made it baby');
-    //   this.messageNotificationService.getMessageNotification(this.userId);
-    //   this.messageNotificationService
-    //     .getListenerNotification()
-    //     .subscribe((messagesNotif: Message[]) => {
-    //       this.newMsg = messagesNotif.reverse();
+    try {
+      this.isSearchScreen$ = this.router.events.pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(
+          (event: NavigationEnd) => event.url === '/' || event.url === '/search'
+        )
+      );
+    } catch (er) {
+      console.log('not on search pg');
+    }
+    this.isSearchScreen$.subscribe((onSearchPg) => {
+      console.log('happy boy', onSearchPg);
 
-    //       const NEW = [];
-    //       this.newMsg.forEach((e) => {
-    //         if (e.viewed === false) {
-    //           NEW.push(e.viewed);
-    //         } else {
-    //           console.log('no unread messages');
-    //         }
-    //       });
+      onSearchPg = onSearchPg;
+    });
+    if (this.onSearcPg === true) {
+      console.log('made it baby');
+      this.messageNotificationService.getMessageNotification(this.userId);
+      this.messageNotificationService
+        .getListenerNotification()
+        .subscribe((messagesNotif: Message[]) => {
+          this.newMsg = messagesNotif.reverse();
 
-    //       this.newMessageCheck = NEW;
-    //       console.log('all the way');
-    //     });
-    // }
+          const NEW = [];
+          this.newMsg.forEach((e) => {
+            if (e.viewed === false) {
+              NEW.push(e.viewed);
+            } else {
+              console.log('no unread messages');
+            }
+          });
+
+          this.newMessageCheck = NEW;
+          console.log('all the way');
+        });
+      console.log('booty lucky');
+    }
 
     if (window.screen.height < 768) {
       this.minHeight = false;
