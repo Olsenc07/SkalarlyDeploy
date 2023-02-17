@@ -375,14 +375,22 @@ export class AppComponent implements OnInit {
         // const matchSpaces: any = query.match('^[a-zA-Z0-9]');
 
         this.users = [];
-        this.hasQuery = false;
+        this.hasQuery = true;
         console.log('he like');
         return;
       } else {
         console.log('no pat');
         this.postsService.searchUsers(query.trim()).subscribe((results) => {
           this.users = results;
-          this.hasQuery = true;
+          console.log('results baby', results);
+          if (results) {
+            console.log('bring me home');
+
+            this.hasQuery = true;
+          } else {
+            console.log('you');
+            this.hasQuery = false;
+          }
         });
       }
       this.hasQuery = false;
@@ -399,7 +407,7 @@ export class AppComponent implements OnInit {
         // const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
         // if (matchSpaces[0] !== queryHash) {
         this.hashs = [];
-        this.hasQueryHash = false;
+        this.hasQueryHash = true;
         console.log('he like hash');
 
         return;
