@@ -114,7 +114,7 @@ export class SignupComponent implements OnInit {
 
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [
-    Validators.pattern('[a-zA-Z0-9]'),
+    Validators.pattern('^[A-Za-z0-9]*$'),
     this.noWhiteSpace,
   ]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
