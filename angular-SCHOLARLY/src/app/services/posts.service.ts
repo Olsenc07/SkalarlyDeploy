@@ -25,19 +25,39 @@ export class PostsService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
   private notifUpdated = new ReplaySubject();
   private notifId: string;
+
+  private userUpdated = new ReplaySubject();
+  private userId: string;
   getNotifId(): any {
     return this.notifUpdated.asObservable();
   }
+
+  getUserId(): any {
+    return this.userUpdated.asObservable();
+  }
+
   searchUsers(query: string): any {
-    return this.http
-      .post<{ payload: Array<UserNames> }>(
-        '/api/user/getusers',
-        { payload: query },
+    console.log('witch craft', query);
+    this.http
+      .get<{ messages: string; payload: string }>(
+        'https://www.skalarly.com/api/user/getusers',
         {
-          headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+          params: { query },
         }
       )
-      .pipe(map((data) => data.payload));
+      .pipe(map((data) => data.payload))
+      .subscribe({
+        next: (response) => {
+          console.log('chlor', response);
+          this.userId = response;
+          this.userUpdated.next(this.userId);
+        },
+        // console.log('trans', transformedInfos.Creator);
+
+        // this.notifId = transformedInfos.Creator;
+        // console.log('hello', this.notifId);
+        // this.notifUpdated.next(this.notifId);
+      });
   }
 
   // Hashtag search

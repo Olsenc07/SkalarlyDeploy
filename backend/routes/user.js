@@ -2464,18 +2464,37 @@ if(userInfo){
 
 });
 // Search users
-router.post('/getusers', async (req, res) => {
-    let payload = req.body.payload;
-    let search = await UserInfo.find({
+router.get('/getusers', async (req, res) => {
+    let payload = req.query.query;
+    // let search =
+     await UserInfo.find({
         username: {
             $regex: new RegExp('^*' + payload ,
                 'i')
         }
-    }).limit(7).exec();
-    search = search.slice(0, 10);
+    }).limit(7)
+    .then((matches) => {
+        if(matches){
+        res.status(200).json({
+            message: 'Matches returned!',
+            payload: matches
+        });
+    }else{
+        res.status(200).json({
+            message: 'No matches returned!',
+            payload: []
+        }); 
+    }
+    }) .catch(err => {
+        return res.status(401).json({
+            message: "Can't find skalars!",
+
+        });
+    });
+    // search = search.slice(0, 10);
 
 
-    res.send({ payload: search })
+    // res.send({ payload: search })
 });
 
 // Search hashtags

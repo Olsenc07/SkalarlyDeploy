@@ -254,6 +254,24 @@ export class AppComponent implements OnInit {
     console.log('fox', this.isSearchScreen$);
     if (this.isSearchScreen$) {
       console.log('made it baby');
+      this.messageNotificationService.getMessageNotification(this.userId);
+      this.messageNotificationService
+        .getListenerNotification()
+        .subscribe((messagesNotif: Message[]) => {
+          this.newMsg = messagesNotif.reverse();
+
+          const NEW = [];
+          this.newMsg.forEach((e) => {
+            if (e.viewed === false) {
+              NEW.push(e.viewed);
+            } else {
+              console.log('no unread messages');
+            }
+          });
+
+          this.newMessageCheck = NEW;
+          console.log('all the way');
+        });
     }
 
     if (window.screen.height < 768) {
@@ -376,10 +394,13 @@ export class AppComponent implements OnInit {
     console.log('query ', query);
     if (!query) {
       if (query.match('^[a-zA-Z0-9]')) {
-        this.postsService.searchUsers(query.trim()).subscribe((results) => {
+        this.postsService.searchUsers(query.trim());
+        this.postsService.getUserId().subscribe((results) => {
           this.users = results;
           console.log('results baby', results);
-          if (results) {
+          console.log('results baby length', results.length);
+
+          if (results.length > 0) {
             console.log('bring me home');
 
             this.hasQuery = true;
