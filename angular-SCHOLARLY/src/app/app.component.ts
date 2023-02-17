@@ -421,7 +421,7 @@ export class AppComponent implements OnInit {
     console.log('query ', query);
     if (!query) {
       const regex = new RegExp('[a - zA - Z0 - 9]', 'i');
-      if (query.match(regex)) {
+      if (query.match(regex) != null) {
         console.log('little bobby');
         this.postsService.searchUsers(query.trim());
         this.postsService.getUserId().subscribe((results) => {
