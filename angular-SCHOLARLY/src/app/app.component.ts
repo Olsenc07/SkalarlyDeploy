@@ -375,7 +375,7 @@ export class AppComponent implements OnInit {
         // const matchSpaces: any = query.match('^[a-zA-Z0-9]');
 
         this.users = [];
-        this.hasQuery = true;
+        this.hasQuery = false;
         console.log('he like');
         return;
       } else {
@@ -399,7 +399,7 @@ export class AppComponent implements OnInit {
         // const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
         // if (matchSpaces[0] !== queryHash) {
         this.hashs = [];
-        this.hasQueryHash = true;
+        this.hasQueryHash = false;
         console.log('he like hash');
 
         return;
