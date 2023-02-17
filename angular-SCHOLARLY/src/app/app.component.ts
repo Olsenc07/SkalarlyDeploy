@@ -419,7 +419,7 @@ export class AppComponent implements OnInit {
   sendData(event: any): any {
     const query: string = event.target.value;
     console.log('query ', query);
-    if (!query) {
+    if (query) {
       const regex = new RegExp('[a - zA - Z0 - 9]', 'i');
       if (query.match(regex) != null) {
         console.log('little bobby');
