@@ -423,7 +423,7 @@ export class AppComponent implements OnInit {
       const regex = /^[A-Za-z0-9]*$/;
       const matches = query.match(regex);
       console.log('matches', matches);
-      console.log('matches length', matches.length);
+
       if (matches != null) {
         if (matches.length > 0) {
           console.log('little bobby', query.match(regex));
@@ -439,7 +439,7 @@ export class AppComponent implements OnInit {
               this.hasQuery = true;
             } else {
               console.log('you');
-              this.hasQuery = false;
+              this.hasQuery = true;
             }
           });
         } else {

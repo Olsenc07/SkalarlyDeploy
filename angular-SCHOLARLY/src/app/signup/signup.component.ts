@@ -268,7 +268,7 @@ export class SignupComponent implements OnInit {
     console.log('matches4', matches4);
     console.log('matches5', matches5);
 
-    if ((matches || matches2 || matches3 || matches4 || matches5).length > 0) {
+    if (matches || matches2 || matches3 || matches4 || matches5) {
       return { pattern: true };
     }
     return null;
