@@ -420,7 +420,7 @@ export class AppComponent implements OnInit {
     const query: string = event.target.value;
     console.log('query ', query);
     if (query) {
-      const regex = /\w/g;
+      const regex = /\w/;
       const matches = query.match(regex);
       console.log('matches', matches);
 
