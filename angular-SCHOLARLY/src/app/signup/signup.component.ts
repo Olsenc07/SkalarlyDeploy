@@ -258,7 +258,8 @@ export class SignupComponent implements OnInit {
     const matches = emailChazz.match(
       regex || regex2 || regex3 || regex4 || regex5
     );
-    if (matches.length > 0) {
+    console.log('matches', matches);
+    if (matches) {
       return { pattern: true };
     }
     return null;
