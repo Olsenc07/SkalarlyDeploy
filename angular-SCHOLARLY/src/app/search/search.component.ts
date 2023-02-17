@@ -62,6 +62,9 @@ export class SearchComponent implements OnInit {
         this.userIsAuthenticated = isAuthenticated;
         this.isLoading = false;
       });
+
+    const previousPageUrl = document.referrer;
+    console.log(`Previously visited page URL: ${previousPageUrl}`);
   }
 
   onSearchSelection(value: string): void {
