@@ -133,6 +133,7 @@ export class SignupComponent implements OnInit {
   email: FormControl = new FormControl('', [
     Validators.email,
     this.noWhiteSpace,
+    this.pattern,
   ]);
   emailV: FormControl = new FormControl('', [
     Validators.email,
@@ -242,6 +243,23 @@ export class SignupComponent implements OnInit {
   public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
     if ((control.value as string).indexOf(' ') >= 0) {
       return { noWhiteSpace: true };
+    }
+    return null;
+  }
+  public pattern(control: AbstractControl): ValidationErrors | null {
+    console.log('hey chaz', control.value as string);
+    const emailChazz = control.value as string;
+    const regex = /@mail.utoronto*/;
+    const regex2 = /@utoronto*/;
+    const regex3 = /@uoftpharmacy*/;
+    const regex4 = /@utsc.utoronto*/;
+    const regex5 = /@rotman.utoronto*/;
+
+    const matches = emailChazz.match(
+      regex || regex2 || regex3 || regex4 || regex5
+    );
+    if (matches.length > 0) {
+      return { pattern: true };
     }
     return null;
   }
