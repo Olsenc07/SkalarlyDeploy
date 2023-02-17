@@ -251,28 +251,28 @@ export class AppComponent implements OnInit {
         });
     }
 
-    console.log('fox', this.isSearchScreen$);
-    if (this.isSearchScreen$) {
-      console.log('made it baby');
-      this.messageNotificationService.getMessageNotification(this.userId);
-      this.messageNotificationService
-        .getListenerNotification()
-        .subscribe((messagesNotif: Message[]) => {
-          this.newMsg = messagesNotif.reverse();
+    // console.log('fox', this.isSearchScreen$.subscribe());
+    // if (this.isSearchScreen$) {
+    //   console.log('made it baby');
+    //   this.messageNotificationService.getMessageNotification(this.userId);
+    //   this.messageNotificationService
+    //     .getListenerNotification()
+    //     .subscribe((messagesNotif: Message[]) => {
+    //       this.newMsg = messagesNotif.reverse();
 
-          const NEW = [];
-          this.newMsg.forEach((e) => {
-            if (e.viewed === false) {
-              NEW.push(e.viewed);
-            } else {
-              console.log('no unread messages');
-            }
-          });
+    //       const NEW = [];
+    //       this.newMsg.forEach((e) => {
+    //         if (e.viewed === false) {
+    //           NEW.push(e.viewed);
+    //         } else {
+    //           console.log('no unread messages');
+    //         }
+    //       });
 
-          this.newMessageCheck = NEW;
-          console.log('all the way');
-        });
-    }
+    //       this.newMessageCheck = NEW;
+    //       console.log('all the way');
+    //     });
+    // }
 
     if (window.screen.height < 768) {
       this.minHeight = false;
@@ -281,6 +281,7 @@ export class AppComponent implements OnInit {
     if (window.screen.width < 1170) {
       this.minwidth = false;
     }
+    console.log('crystal meth');
   }
 
   hashTagSearch(): any {
