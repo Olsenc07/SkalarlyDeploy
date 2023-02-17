@@ -249,11 +249,11 @@ export class SignupComponent implements OnInit {
   public pattern(control: AbstractControl): ValidationErrors | null {
     console.log('hey chaz', control.value as string);
     const emailChazz = control.value as string;
-    const regex = /[a-zA-Z0-9]@mail.utoronto*/;
-    const regex2 = /[a-zA-Z0-9]@utoronto*/;
-    const regex3 = /[a-zA-Z0-9]@uoftpharmacy*/;
-    const regex4 = /[a-zA-Z0-9]@utsc.utoronto*/;
-    const regex5 = /[a-zA-Z0-9]@rotman.utoronto*/;
+    const regex = /[a-zA-Z0-9]@mail.utoronto.ca/;
+    const regex2 = /[a-zA-Z0-9]@utoronto.ca/;
+    const regex3 = /[a-zA-Z0-9]@uoftpharmacy.com/;
+    const regex4 = /[a-zA-Z0-9]@utsc.utoronto.ca/;
+    const regex5 = /[a-zA-Z0-9]@rotman.utoronto.ca/;
 
     const matches = emailChazz.match(regex);
     const matches2 = emailChazz.match(regex2);
@@ -265,8 +265,7 @@ export class SignupComponent implements OnInit {
     console.log('matches3', matches3);
     console.log('matches4', matches4);
     console.log('matches5', matches5);
-
-    if (matches || matches2 || matches3 || matches4 || matches5) {
+    if ((matches || matches2 || matches3 || matches4 || matches5) != null) {
       return { pattern: true };
     }
     return null;
