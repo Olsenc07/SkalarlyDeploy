@@ -112,9 +112,11 @@ export class SignupComponent implements OnInit {
   // showCropper = false;
   showCasePreview: any = '';
   pat = /\w/;
+  pat2 = /[^a-zA-Z0-9]/;
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [
     Validators.pattern(this.pat),
+    Validators.pattern(this.pat2),
     this.noWhiteSpace,
   ]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
@@ -266,6 +268,7 @@ export class SignupComponent implements OnInit {
     console.log('matches4', matches4);
     console.log('matches5', matches5);
     if ((matches || matches2 || matches3 || matches4 || matches5) != null) {
+      console.log('does it work now email pattern');
       return { pattern: true };
     }
     return null;
