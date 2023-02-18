@@ -427,24 +427,26 @@ export class AppComponent implements OnInit {
       const matches = noSpecialChars.match(regex);
       console.log('matches', matches);
 
-      if (matches != null) {
-        if (matches.length > 0) {
-          this.postsService.searchUsers(query.trim());
-          this.postsService.getUserId().subscribe((results) => {
-            this.users = results;
-            console.log('results baby', results);
-            console.log('results baby length', results.length);
-          });
-        } else {
-          console.log('no pat');
-          this.users = [];
-          this.hasQuery = true;
-          console.log('he like');
-        }
-      }
-      this.hasQuery = true;
-      this.users = [];
-    } else {
+      // if (matches != null) {
+      // if (matches.length > 0) {
+      this.postsService.searchUsers(noSpecialChars.trim());
+      this.postsService.getUserId().subscribe((results) => {
+        this.users = results;
+        console.log('results baby', results);
+        console.log('results baby length', results.length);
+      });
+      // }
+      // else {
+      // console.log('no pat');
+      // this.users = [];
+      // this.hasQuery = true;
+      // console.log('he like');
+    }
+    // }
+    // this.hasQuery = true;
+    // this.users = [];
+    // }
+    else {
       this.hasQuery = false;
     }
   }
@@ -455,6 +457,8 @@ export class AppComponent implements OnInit {
     console.log('query yo', queryHash);
     if (queryHash) {
       const regex = /\w/g;
+      const noSpecialChars = queryHash.replace(/[^a-zA-Z0-9 ]/g, '');
+      console.log('noSpecialChars', noSpecialChars);
       const matches = queryHash.match(regex);
       console.log('matches', matches);
       if (matches != null) {

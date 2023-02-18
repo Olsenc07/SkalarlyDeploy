@@ -128,6 +128,8 @@ export class MessagingComponent implements OnInit {
     this.messagesNoNotif = '';
     console.log('empties', queryHash);
     const regex = /\w/g;
+    const noSpecialChars = queryHash.replace(/[^a-zA-Z0-9 ]/g, '');
+    console.log('noSpecialChars', noSpecialChars);
     if (!queryHash.match(regex)) {
       console.log('query notta');
       // Will match if query is nothing or is only spaces
