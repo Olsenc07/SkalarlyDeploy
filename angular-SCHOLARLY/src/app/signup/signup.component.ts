@@ -115,9 +115,10 @@ export class SignupComponent implements OnInit {
   pat2 = /^[a-zA-Z0-9]*/;
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [
-    Validators.pattern(this.pat),
-    Validators.pattern(this.pat2),
+    // Validators.pattern(this.pat),
+    // Validators.pattern(this.pat2),
     this.noWhiteSpace,
+    this.noSpecialCharacters,
   ]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
   passwordV: FormControl = new FormControl('', this.noWhiteSpace);
@@ -131,13 +132,13 @@ export class SignupComponent implements OnInit {
   pronouns: FormControl = new FormControl('');
   birthday: FormControl = new FormControl();
   gender: FormControl = new FormControl('');
-
+  //   Validators.pattern(
+  //   /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/ ||
+  //   /^[a-zA-Z0-9._%+-]+@utoronto\.ca/
+  // ),
   email: FormControl = new FormControl('', [
     Validators.email,
-    Validators.pattern(
-      /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/ ||
-        /^[a-zA-Z0-9._%+-]+@utoronto\.ca/
-    ),
+
     this.noWhiteSpace,
   ]);
   emailV: FormControl = new FormControl('', [
@@ -248,6 +249,16 @@ export class SignupComponent implements OnInit {
   public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
     if ((control.value as string).indexOf(' ') >= 0) {
       return { noWhiteSpace: true };
+    }
+    return null;
+  }
+  public noSpecialCharacters(
+    control: AbstractControl
+  ): ValidationErrors | null {
+    console.log('is this working');
+    const working = control.value as string;
+    if (working) {
+      return { noSpecialCharacters: true };
     }
     return null;
   }
