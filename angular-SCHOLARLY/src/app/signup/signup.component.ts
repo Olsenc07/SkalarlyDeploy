@@ -112,7 +112,7 @@ export class SignupComponent implements OnInit {
   // showCropper = false;
   showCasePreview: any = '';
   pat = /\w/;
-  pat2 = /[a-zA-Z0-9]*/;
+  pat2 = /^[a-zA-Z0-9]*/;
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [
     Validators.pattern(this.pat),
@@ -134,8 +134,11 @@ export class SignupComponent implements OnInit {
 
   email: FormControl = new FormControl('', [
     Validators.email,
+    Validators.pattern(
+      /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/ ||
+        /^[a-zA-Z0-9._%+-]+@utoronto\.ca/
+    ),
     this.noWhiteSpace,
-    Validators.pattern(/^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/),
   ]);
   emailV: FormControl = new FormControl('', [
     Validators.email,
