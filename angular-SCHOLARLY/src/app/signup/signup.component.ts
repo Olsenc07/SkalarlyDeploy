@@ -257,6 +257,8 @@ export class SignupComponent implements OnInit {
   ): ValidationErrors | null {
     console.log('is this working');
     const working = control.value as string;
+    console.log('is this working 2', working);
+
     if (working) {
       return { noSpecialCharacters: true };
     }
