@@ -421,7 +421,10 @@ export class AppComponent implements OnInit {
     console.log('query ', query);
     if (query) {
       const regex = /\w/;
-      const matches = query.match(regex);
+      const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
+      console.log('noSpecialChars', noSpecialChars);
+
+      const matches = noSpecialChars.match(regex);
       console.log('matches', matches);
 
       if (matches != null) {
