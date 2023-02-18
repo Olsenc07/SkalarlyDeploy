@@ -2498,12 +2498,12 @@ router.get('/getusers', async (req, res) => {
 });
 
 // Search hashtags
-router.post('/gethashs', async (req, res) => {
+router.get('/gethashs', async (req, res) => {
     let payload = req.query.queryHash;
     let matchesAll = [];
     console.log('Payload',payload);
 
-    let search = await Post.find({ $or: [
+     await Post.find({ $or: [
        { Hashtag1: {
             $regex: new RegExp('.*' + payload + '.*',
                 'i')

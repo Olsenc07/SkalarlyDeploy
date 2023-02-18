@@ -435,18 +435,7 @@ export class AppComponent implements OnInit {
           this.users = [];
         }
       });
-      // }
-      // else {
-      // console.log('no pat');
-      // this.users = [];
-      // this.hasQuery = true;
-      // console.log('he like');
-    }
-    // }
-    // this.hasQuery = true;
-    // this.users = [];
-    // }
-    else {
+    } else {
       this.hasQuery = false;
     }
   }
