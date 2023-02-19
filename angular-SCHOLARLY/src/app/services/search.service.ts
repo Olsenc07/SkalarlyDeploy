@@ -13,10 +13,26 @@ enum SearchValues {
   HOUSING = 'housing',
   INSTRUCTOR_REV = 'instructor_rev',
   MISCELL_BUY_SELL = 'buy_sell',
-  SCHOOL_WORK_AE = 'school_work_ae',
-  SCHOOL_WORK_FM = 'school_work_fm',
-  SCHOOL_WORK_NZ = 'school_work_nz',
-
+  SCHOOL_WORK_A = 'school_work_a',
+  SCHOOL_WORK_B = 'school_work_b',
+  SCHOOL_WORK_C = 'school_work_c',
+  SCHOOL_WORK_D = 'school_work_d',
+  SCHOOL_WORK_E = 'school_work_e',
+  SCHOOL_WORK_F = 'school_work_f',
+  SCHOOL_WORK_G = 'school_work_g',
+  SCHOOL_WORK_H = 'school_work_h',
+  SCHOOL_WORK_I = 'school_work_i',
+  SCHOOL_WORK_J = 'school_work_j',
+  SCHOOL_WORK_L = 'school_work_l',
+  SCHOOL_WORK_M = 'school_work_m',
+  SCHOOL_WORK_N = 'school_work_n',
+  SCHOOL_WORK_P = 'school_work_p',
+  SCHOOL_WORK_R = 'school_work_r',
+  SCHOOL_WORK_S = 'school_work_s',
+  SCHOOL_WORK_T = 'school_work_t',
+  SCHOOL_WORK_U = 'school_work_u',
+  SCHOOL_WORK_V = 'school_work_v',
+  SCHOOL_WORK_W = 'school_work_w',
   SPIRITUALITY = 'spiritituality',
   U_OF_T_QS = 'questions',
   UPCOMING_EVENTS = 'upcoming_events',
@@ -42,13 +58,29 @@ export class SearchListService {
     { name: 'Helping Hand', value: SearchValues.HELP_WANTED },
     { name: 'Housing', value: SearchValues.HOUSING },
     { name: 'Instructor Review ', value: SearchValues.INSTRUCTOR_REV },
-
     { name: 'Programs A-E', value: SearchValues.COURSE_A_E },
     { name: 'Programs F-M', value: SearchValues.COURSE_F_M },
     { name: 'Programs N-Z', value: SearchValues.COURSE_N_Z },
-    { name: 'School Work A-E', value: SearchValues.SCHOOL_WORK_AE },
-    { name: 'School Work F-M', value: SearchValues.SCHOOL_WORK_FM },
-    { name: 'School Work N-Z', value: SearchValues.SCHOOL_WORK_NZ },
+    { name: 'School Work A', value: SearchValues.SCHOOL_WORK_A },
+    { name: 'School Work B', value: SearchValues.SCHOOL_WORK_B },
+    { name: 'School Work C', value: SearchValues.SCHOOL_WORK_C },
+    { name: 'School Work D', value: SearchValues.SCHOOL_WORK_D },
+    { name: 'School Work E', value: SearchValues.SCHOOL_WORK_E },
+    { name: 'School Work F', value: SearchValues.SCHOOL_WORK_F },
+    { name: 'School Work G', value: SearchValues.SCHOOL_WORK_G },
+    { name: 'School Work H', value: SearchValues.SCHOOL_WORK_H },
+    { name: 'School Work I', value: SearchValues.SCHOOL_WORK_I },
+    { name: 'School Work J', value: SearchValues.SCHOOL_WORK_J },
+    { name: 'School Work L', value: SearchValues.SCHOOL_WORK_L },
+    { name: 'School Work M', value: SearchValues.SCHOOL_WORK_M },
+    { name: 'School Work N', value: SearchValues.SCHOOL_WORK_N },
+    { name: 'School Work P', value: SearchValues.SCHOOL_WORK_P },
+    { name: 'School Work R', value: SearchValues.SCHOOL_WORK_R },
+    { name: 'School Work S', value: SearchValues.SCHOOL_WORK_S },
+    { name: 'School Work T', value: SearchValues.SCHOOL_WORK_T },
+    { name: 'School Work U', value: SearchValues.SCHOOL_WORK_U },
+    { name: 'School Work V', value: SearchValues.SCHOOL_WORK_V },
+    { name: 'School Work W', value: SearchValues.SCHOOL_WORK_W },
 
     { name: 'Spirituality', value: SearchValues.SPIRITUALITY },
     { name: 'Questions', value: SearchValues.U_OF_T_QS },
@@ -308,7 +340,7 @@ export class SearchListService {
       case SearchValues.MISCELL_BUY_SELL:
         specificOptions = [' School Supplies', 'Items for Sale', 'Textbooks '];
         break;
-      case SearchValues.SCHOOL_WORK_AE:
+      case SearchValues.SCHOOL_WORK_A:
         specificOptions = [
           'ABP100Y1',
           'ABP101Y1',
@@ -550,6 +582,10 @@ export class SearchListService {
           'AST430H1',
           'AST431H1',
           'AST431Y1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_B:
+        specificOptions = [
           'BCB330Y1',
           'BCB410H1',
           'BCB420H1',
@@ -637,6 +673,10 @@ export class SearchListService {
           'BPM432H1',
           'BPM433H1',
           'BPM438H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_C:
+        specificOptions = [
           'CAR120Y1',
           'CAR220H1',
           'CAR221H1',
@@ -1242,6 +1282,10 @@ export class SearchListService {
           'CTA398Y0',
           'CTA399Y1',
           'CTA495Y1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_D:
+        specificOptions = [
           'DHU235H1',
           'DHU236H1',
           'DHU335H1',
@@ -1334,6 +1378,10 @@ export class SearchListService {
           'DTS415H1',
           'DTS416H1',
           'DTS417H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_E:
+        specificOptions = [
           'EAS100Y1',
           'EAS101Y1',
           'EAS103H1',
@@ -1917,7 +1965,7 @@ export class SearchListService {
           'EUR498H1',
         ];
         break;
-      case SearchValues.SCHOOL_WORK_FM:
+      case SearchValues.SCHOOL_WORK_F:
         specificOptions = [
           'FAH101H1',
           'FAH102H1',
@@ -2161,6 +2209,10 @@ export class SearchListService {
           'FSL472H1',
           'FSL473H1',
           'FSL475H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_G:
+        specificOptions = [
           'GER100Y1',
           'GER101H1',
           'GER150H1',
@@ -2345,6 +2397,10 @@ export class SearchListService {
           'GRK451H1',
           'GRK452H1',
           'GRK453H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_H:
+        specificOptions = [
           'HIS100Y1',
           'HIS101Y1',
           'HIS102Y1',
@@ -2741,6 +2797,10 @@ export class SearchListService {
           'HUN455H1',
           'HUN497H1',
           'HUN498H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_I:
+        specificOptions = [
           'IFP100H1',
           'IFP100Y1',
           'IMC200H1',
@@ -2926,6 +2986,10 @@ export class SearchListService {
           'ITA490Y1',
           'ITA495H1',
           'ITA496H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_J:
+        specificOptions = [
           'JAH391H1',
           'JAH391Y0',
           'JAL328H1',
@@ -3010,6 +3074,10 @@ export class SearchListService {
           'JUM203H1',
           'JUM205H1',
           'JWE206H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_L:
+        specificOptions = [
           'LAS200H1',
           'LAS201H1',
           'LAS300H1',
@@ -3142,6 +3210,10 @@ export class SearchListService {
           'LMP440H1',
           'LMP450H1',
           'LMP460H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_M:
+        specificOptions = [
           'MAT133Y1',
           'MAT135H1',
           'MAT136H1',
@@ -3377,7 +3449,7 @@ export class SearchListService {
           'MUS408H1',
         ];
         break;
-      case SearchValues.SCHOOL_WORK_NZ:
+      case SearchValues.SCHOOL_WORK_N:
         specificOptions = [
           'NEW101H1',
           'NEW102H1',
@@ -3619,6 +3691,10 @@ export class SearchListService {
           'NUS398H0',
           'NUS401H0',
           'NUS402H0',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_P:
+        specificOptions = [
           'PCJ260Y1',
           'PCJ299Y1',
           'PCJ360H1',
@@ -4218,6 +4294,10 @@ export class SearchListService {
           'PSY495H1',
           'PSY496H1',
           'PSY497H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_R:
+        specificOptions = [
           'REN240Y0',
           'REN240Y1',
           'REN241H1',
@@ -4541,6 +4621,10 @@ export class SearchListService {
           'RSM495H1',
           'RSM496H1',
           'RSM498Y1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_S:
+        specificOptions = [
           'SAS114H1',
           'SAS318H1',
           'SAS390H1',
@@ -4976,6 +5060,10 @@ export class SearchListService {
           'SWE101H1',
           'SWK301H1',
           'SWK302H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_T:
+        specificOptions = [
           'TRN125Y1',
           'TRN135Y1',
           'TRN136Y1',
@@ -5041,6 +5129,10 @@ export class SearchListService {
           'TRN425Y1',
           'TRN477H1',
           'TRN478H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_U:
+        specificOptions = [
           'UNI101H1',
           'UNI102H1',
           'UNI103H1',
@@ -5076,6 +5168,10 @@ export class SearchListService {
           'URB438H1',
           'URB439H1',
           'UTP100H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_V:
+        specificOptions = [
           'VIC101H1',
           'VIC102H1',
           'VIC105H1',
@@ -5162,6 +5258,10 @@ export class SearchListService {
           'VIC491H1',
           'VIC491Y1',
           'VIC493H1',
+        ];
+        break;
+      case SearchValues.SCHOOL_WORK_W:
+        specificOptions = [
           'WDW151H1',
           'WDW152H1',
           'WDW196H1',
