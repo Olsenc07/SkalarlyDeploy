@@ -138,7 +138,7 @@ export class SignupComponent implements OnInit {
   // ),
   email: FormControl = new FormControl('', [
     Validators.email,
-
+    this.pattern,
     this.noWhiteSpace,
   ]);
   emailV: FormControl = new FormControl('', [
@@ -258,7 +258,7 @@ export class SignupComponent implements OnInit {
     console.log('is this working');
     const working = control.value as string;
     console.log('is this working 2', working);
-    const normalcharacter = /^[~`!@+#$%^&*()_-={}[|\/:;'"<>,.?]]*/;
+    const normalcharacter = /^[]-~`!@+#$%^&*()_={}[|\/:;'"<>,.?]*/;
     const betterNot = working.match(normalcharacter);
     if (betterNot) {
       console.log('hey boo ya');
@@ -291,7 +291,9 @@ export class SignupComponent implements OnInit {
       console.log('does it work now email pattern');
       return { pattern: true };
     }
-    return null;
+    // else{
+    // return null;
+    // }
   }
   // Adding emojis
   openEmojiBio(): void {
