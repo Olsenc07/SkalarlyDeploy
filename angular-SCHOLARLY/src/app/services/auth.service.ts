@@ -30,9 +30,15 @@ export class AuthService {
   private userNameUpdated = new ReplaySubject();
   private userNameId: string;
 
+  private emailUsedUpdated = new ReplaySubject();
+  private emailUsedId: string;
   // check if email exists for login
   getEmail(): any {
     return this.emailUpdated.asObservable();
+  }
+  // check if email exists for signup
+  getUsedEmail(): any {
+    return this.emailUsedUpdated.asObservable();
   }
   // check if username exists for signup
 
@@ -62,7 +68,25 @@ export class AuthService {
     return this.infosUpdated.asObservable();
   }
 
-  //  sing up validation
+  //  sign up validation
+  searchEmail(query: string): any {
+    console.log('my lady', query);
+    this.http
+      .get<{ message: string; payload: string }>(
+        'https://www.skalarly.com/api/user/getUnUsedEmail',
+        { params: { query } }
+      )
+      .pipe(map((data) => data.payload))
+      .subscribe({
+        next: (response) => {
+          console.log('chlor 2', response);
+          this.emailUsedId = response;
+          this.emailUsedUpdated.next(this.emailId);
+        },
+      });
+  }
+
+  //  sign up validation
   searchUsernames(query: string): any {
     console.log('my lady', query);
     this.http

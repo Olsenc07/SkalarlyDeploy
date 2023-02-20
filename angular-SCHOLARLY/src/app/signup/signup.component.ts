@@ -121,6 +121,7 @@ export class SignupComponent implements OnInit {
   // pat = /\w/;
   // pat2 = /^[a-zA-Z0-9]*/;
   userNameMatches = [];
+  EmailMatches = [];
 
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [
@@ -421,6 +422,33 @@ export class SignupComponent implements OnInit {
     this.visible = !this.visible;
   }
 
+  doesEmailExist(event: any): any {
+    const query: string = event.target.value;
+    console.log('query ', query);
+    this.authService.searchEmail(query.trim());
+  }
+
+  public noEmailMatches(control: AbstractControl): ValidationErrors | null {
+    const working = control.value as string;
+    console.log('self', working);
+    console.log('selfie', this.EmailMatches);
+
+    // this.authService.getUsedEmail().subscribe((results) => {
+    //   if (results.length > 0) {
+    //     console.log('results baby', results);
+    //     this.noEmailMatches = results;
+    //     return null;
+    //   } else {
+    //     console.log('nuts', results);
+    //     this.noEmailMatches = [];
+    //     return { noMatches: true };
+    //   }
+    // });
+    if (!this.EmailMatches) {
+      return { noEmailMatches: true };
+    }
+  }
+
   doesUsernameExist(event: any): any {
     const query: string = event.target.value;
     console.log('query ', query);
@@ -429,7 +457,9 @@ export class SignupComponent implements OnInit {
 
   public noMatches(control: AbstractControl): ValidationErrors | null {
     const working = control.value as string;
-    console.log('self', working);
+    console.log('self 2', working);
+    console.log('selfie 2', this.userNameMatches);
+
     // this.authService.getUserName().subscribe((results) => {
     //   if (results.length > 0) {
     //     console.log('results baby', results);
