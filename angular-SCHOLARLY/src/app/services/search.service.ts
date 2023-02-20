@@ -323,6 +323,7 @@ export class SearchListService {
           'Off-Campus Housing',
           'Quercus',
           'Residences',
+          'Student-Organization-Portal',
           'Student Services and Support',
           'U Of T Contacts',
         ];
