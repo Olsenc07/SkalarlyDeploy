@@ -258,9 +258,8 @@ export class SignupComponent implements OnInit {
     const working = control.value as string;
     console.log('is this working 2', working);
     const normalcharacter = /^[]-~`!@+#$%^&*()_={}[|\/:;'"<>,.?]*/;
-    const betterNot = normalcharacter.test(working);
-    console.log('hey', betterNot);
-    if (betterNot) {
+    console.log('hey', normalcharacter.test(working));
+    if (normalcharacter.test(working) === false) {
       console.log('hey boo ya');
       return null;
     }
@@ -289,11 +288,10 @@ export class SignupComponent implements OnInit {
     console.log('matches5', matches5);
     if ((matches || matches2 || matches3 || matches4 || matches5) === true) {
       console.log('does it work now email pattern');
+      return null;
+    } else {
       return { pattern: true };
     }
-    // else{
-    // return null;
-    // }
   }
   // Adding emojis
   openEmojiBio(): void {
