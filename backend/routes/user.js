@@ -2506,8 +2506,11 @@ router.get('/getEmails', async (req, res) => {
         }
     }).then((matches) => {
         console.log('macthes yo', matches)
+        console.log('macthes email', matches.email)
+
+        const payload_2 =  new RegExp( payload)
         if(matches){
-    const matchesPass = payload.test(matches);
+    const matchesPass = payload_2.test(matches.email);
     console.log('matchesPass',matchesPass)
 if(matchesPass === true){
     console.log('you did it')

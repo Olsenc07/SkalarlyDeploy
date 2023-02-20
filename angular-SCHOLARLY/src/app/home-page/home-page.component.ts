@@ -53,30 +53,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
       .subscribe((authStatus) => {
         this.isLoading = false;
       });
+  }
 
-    this.email.addValidators(this.matchingValidator);
-    this.email.updateValueAndValidity();
-    console.log('all setup');
-  }
-  matchingValidator(): ValidationErrors | null {
-    console.log('testing 123', this.emailMatches);
-    if (this.emailMatches) {
-      const check = this.authService.getEmail().subscribe((results) => {
-        if (results.length > 0) {
-          console.log('results baby', results);
-          this.emailMatches = results;
-          return null;
-        } else {
-          console.log('nuts', results);
-          this.emailMatches = [];
-          return { emailCheck: true };
-        }
-      });
-      console.log('interesting', check);
-    } else {
-      return { emailCheck: true };
-    }
-  }
   ngOnDestroy(): void {
     this.authStatusSub.unsubscribe();
   }
@@ -97,16 +75,35 @@ export class HomePageComponent implements OnInit, OnDestroy {
         if (results.length > 0) {
           console.log('results baby', results);
           this.emailMatches = results;
-          return;
         } else {
           console.log('nuts', results);
           this.emailMatches = [];
-          return;
         }
       });
+      this.email.addValidators(this.matchingValidator);
+      this.email.updateValueAndValidity();
+      console.log('all setup');
     }
   }
-
+  matchingValidator(): ValidationErrors | null {
+    console.log('testing 123', this.emailMatches);
+    if (this.emailMatches) {
+      const check = this.authService.getEmail().subscribe((results) => {
+        if (results.length > 0) {
+          console.log('results baby', results);
+          this.emailMatches = results;
+          return null;
+        } else {
+          console.log('nuts', results);
+          this.emailMatches = [];
+          return { emailCheck: true };
+        }
+      });
+      console.log('interesting', check);
+    } else {
+      return { emailCheck: true };
+    }
+  }
   // public noMatches(control: AbstractControl): ValidationErrors | null {
   //   const working = control.value as string;
   //   console.log('working', working);
