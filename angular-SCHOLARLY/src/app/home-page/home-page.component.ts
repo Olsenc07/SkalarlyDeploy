@@ -18,7 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
 
-  emailMatches = [];
+  emailMatches: string[];
   email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
@@ -53,6 +53,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
       .subscribe((authStatus) => {
         this.isLoading = false;
       });
+    this.email.addValidators(this.doesEmailExist);
+    this.email.updateValueAndValidity();
+    console.log('all setup');
   }
 
   ngOnDestroy(): void {
@@ -66,29 +69,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.email.setValue('');
   }
 
-  doesEmailExist(event: any): any {
+  doesEmailExist(event: any): ValidationErrors | null {
     const query: string = event.target.value;
     console.log('query ', query);
     if (query) {
       this.authService.searchEmails(query.trim());
       this.authService.getEmail().subscribe((results) => {
-        if (results.length > 0) {
-          console.log('results baby', results);
-          this.emailMatches = results;
-        } else {
-          console.log('nuts', results);
-          this.emailMatches = [];
-        }
-      });
-      this.email.addValidators(this.matchingValidator);
-      this.email.updateValueAndValidity();
-      console.log('all setup');
-    }
-  }
-  matchingValidator(): ValidationErrors | null {
-    console.log('testing 123', this.emailMatches);
-    if (this.emailMatches) {
-      const check = this.authService.getEmail().subscribe((results) => {
         if (results.length > 0) {
           console.log('results baby', results);
           this.emailMatches = results;
@@ -99,11 +85,29 @@ export class HomePageComponent implements OnInit, OnDestroy {
           return { emailCheck: true };
         }
       });
-      console.log('interesting', check);
     } else {
       return { emailCheck: true };
     }
   }
+  // matchingValidator(): ValidationErrors | null {
+  //   console.log('testing 123', this.emailMatches);
+  //   if (this.emailMatches) {
+  //     const check = this.authService.getEmail().subscribe((results) => {
+  //       if (results.length > 0) {
+  //         console.log('results baby', results);
+  //         this.emailMatches = results;
+  //         return null;
+  //       } else {
+  //         console.log('nuts', results);
+  //         this.emailMatches = [];
+  //         return { emailCheck: true };
+  //       }
+  //     });
+  //     console.log('interesting', check);
+  //   } else {
+  //     return { emailCheck: true };
+  //   }
+  // }
   // public noMatches(control: AbstractControl): ValidationErrors | null {
   //   const working = control.value as string;
   //   console.log('working', working);

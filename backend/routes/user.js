@@ -2510,11 +2510,8 @@ router.get('/getEmails', async (req, res) => {
 
         const payload_2 =  new RegExp(payload)
         if(matches){
-            goTime = []
-            matches.forEach((e) => {
-            goTime.push(e.email);
-            console.log('goTime',goTime);
-            const matchesPass = payload_2.test(goTime);
+            console.log('goTime');
+            const matchesPass = payload_2.test(matches.email);
             console.log('matchesPass', matchesPass)
             if(matchesPass === true){
                 console.log('you did it')
@@ -2530,7 +2527,7 @@ router.get('/getEmails', async (req, res) => {
                         payload: []
                     }); 
                 }
-            })
+        
     }else{
         console.log('not even close')
 
