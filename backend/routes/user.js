@@ -2502,16 +2502,30 @@ router.get('/getEmails', async (req, res) => {
     console.log('payload 7',payload)
   await User.findOne({
         email: {
-            $regex: new RegExp('^' + payload ,
-                'i')
+            $regex: new RegExp('^' + payload)
         }
     }).then((matches) => {
+        console.log('macthes yo', matches)
         if(matches){
+    const matchesPass = payload.test(matches);
+    console.log('matchesPass',matchesPass)
+if(matchesPass === true){
+    console.log('you did it')
         res.status(200).json({
             message: 'Match returned!',
             payload: matches
+        
         });
     }else{
+        console.log('almsot made it')
+        res.status(200).json({
+            message: 'No matches returned!',
+            payload: []
+        }); 
+    }
+    }else{
+        console.log('not even close')
+
         res.status(200).json({
             message: 'No matches returned!',
             payload: []
