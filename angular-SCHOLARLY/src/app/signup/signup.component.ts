@@ -151,6 +151,7 @@ export class SignupComponent implements OnInit {
     Validators.email,
     this.pattern,
     this.noWhiteSpace,
+    this.noEmailMatches,
   ]);
   emailV: FormControl = new FormControl('', [
     Validators.email,
