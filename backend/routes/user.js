@@ -2553,8 +2553,7 @@ router.get('/getUnUsedEmail', async (req, res) => {
             $regex: new RegExp('^' + payload)
         }
     }).then((matches) => {
-        console.log('macthes yo', matches)
-        console.log('macthes email', matches.email)
+      
 
         if(matches){
         const payload_2 =  new RegExp(matches.email)
@@ -2594,13 +2593,13 @@ router.get('/getUnUsedEmail', async (req, res) => {
 })
 // Search usernames
 router.get('/getUsernames', async (req, res) => {
-    let payload = req.query.queryHash;
+    let payload = req.query.query;
   await User.findOne({
         username: {
             $regex: new RegExp('^' + payload )
         }
     }).then((matches) => {
-        console.log('matches yo', matches)
+      
 
         if(matches){
         const payload_2 =  new RegExp(matches.username)
