@@ -33,6 +33,8 @@ enum SearchValues {
   SCHOOL_WORK_U = 'school_work_u',
   SCHOOL_WORK_V = 'school_work_v',
   SCHOOL_WORK_W = 'school_work_w',
+  IMPORTANT_LINKS = 'important_links',
+
   SPIRITUALITY = 'spiritituality',
   U_OF_T_QS = 'questions',
   UPCOMING_EVENTS = 'upcoming_events',
@@ -57,6 +59,7 @@ export class SearchListService {
     { name: 'Financial Opportunities', value: SearchValues.FINANCE },
     { name: 'Helping Hand', value: SearchValues.HELP_WANTED },
     { name: 'Housing', value: SearchValues.HOUSING },
+    { name: 'Important Links', value: SearchValues.IMPORTANT_LINKS },
     { name: 'Instructor Review ', value: SearchValues.INSTRUCTOR_REV },
     { name: 'Programs A-E', value: SearchValues.COURSE_A_E },
     { name: 'Programs F-M', value: SearchValues.COURSE_F_M },
@@ -305,6 +308,21 @@ export class SearchListService {
           'Questions & Advice',
           'Roommate Wanted',
           'Subleting',
+        ];
+        break;
+      case SearchValues.IMPORTANT_LINKS:
+        specificOptions = [
+          'Academic Advising and Support',
+          'Acorn',
+          'Campus Map',
+          'Crowdmark',
+          'Exam & Assessment Schedule',
+          'Financial Aid',
+          'Off-Campus Housing',
+          'Quercus',
+          'Residences',
+          'Student Services and Support',
+          'U Of T Contacts',
         ];
         break;
       case SearchValues.INSTRUCTOR_REV:

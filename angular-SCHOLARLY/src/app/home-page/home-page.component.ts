@@ -68,24 +68,24 @@ export class HomePageComponent implements OnInit, OnDestroy {
     const query: string = event.target.value;
     console.log('query ', query);
     this.authService.searchEmails(query.trim());
+    this.authService.getEmail().subscribe((results) => {
+      if (results.length > 0) {
+        console.log('results baby', results);
+        this.emailMatches = results;
+      } else {
+        console.log('nuts', results);
+        this.emailMatches = [];
+      }
+    });
   }
 
   public noMatches(control: AbstractControl): ValidationErrors | null {
     const working = control.value as string;
     console.log('working', working);
-    this.authService.getEmail().subscribe((results) => {
-      if (results.length > 0) {
-        console.log('results baby', results);
-        this.emailMatches = results;
-        return null;
-      } else {
-        console.log('nuts', results);
-        this.emailMatches = [];
-        return { noMatches: true };
-      }
-    });
     if (this.emailMatches.length === 0) {
       return { noMatches: true };
+    } else {
+      return null;
     }
   }
 
