@@ -54,21 +54,27 @@ export class HomePageComponent implements OnInit, OnDestroy {
         this.isLoading = false;
       });
 
-    this.email.setValidators([Validators.email, this.matchingValidator()]);
+    this.email.addValidators(this.matchingValidator);
+    this.email.updateValueAndValidity();
+    console.log('all setup');
   }
-  matchingValidator(): any {
-    const check = this.authService.getEmail().subscribe((results) => {
-      if (results.length > 0) {
-        console.log('results baby', results);
-        this.emailMatches = results;
-        return null;
-      } else {
-        console.log('nuts', results);
-        this.emailMatches = [];
-        return { emailCheck: true };
-      }
-    });
-    console.log('interesting', check);
+  matchingValidator(): ValidationErrors | null {
+    if (this.authService) {
+      const check = this.authService.getEmail().subscribe((results) => {
+        if (results.length > 0) {
+          console.log('results baby', results);
+          this.emailMatches = results;
+          return null;
+        } else {
+          console.log('nuts', results);
+          this.emailMatches = [];
+          return { emailCheck: true };
+        }
+      });
+      console.log('interesting', check);
+    } else {
+      return { emailCheck: true };
+    }
   }
   ngOnDestroy(): void {
     this.authStatusSub.unsubscribe();
@@ -90,9 +96,11 @@ export class HomePageComponent implements OnInit, OnDestroy {
         if (results.length > 0) {
           console.log('results baby', results);
           this.emailMatches = results;
+          return;
         } else {
           console.log('nuts', results);
           this.emailMatches = [];
+          return;
         }
       });
     }

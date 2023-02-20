@@ -2466,7 +2466,6 @@ if(userInfo){
 // Search users
 router.get('/getusers', async (req, res) => {
     let payload = req.query.query;
-    // let search =
      await UserInfo.find({
         username: {
             $regex: new RegExp('^' + payload ,
