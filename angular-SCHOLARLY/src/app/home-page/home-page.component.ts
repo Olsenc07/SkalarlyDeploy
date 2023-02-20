@@ -17,10 +17,10 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
+  emailMatches: Array<string>;
   email: FormControl = new FormControl('', [Validators.email, this.noMatches]);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
-  emailMatches: Array<string>;
   isLoading = false;
   public authStatusSub: Subscription;
 
