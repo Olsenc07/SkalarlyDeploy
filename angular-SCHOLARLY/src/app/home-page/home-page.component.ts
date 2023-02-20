@@ -83,8 +83,11 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   public emailCheck(): ValidationErrors | null {
-    if (this.emailMatches.length > 0) {
-      return null;
+    if (this.emailMatches) {
+      if (this.emailMatches.length > 0) {
+        return null;
+      }
+      return { noWhiteSpace: true };
     }
     return { noWhiteSpace: true };
   }
