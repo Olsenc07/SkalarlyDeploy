@@ -2508,24 +2508,29 @@ router.get('/getEmails', async (req, res) => {
         console.log('macthes yo', matches)
         console.log('macthes email', matches.email)
 
-        const payload_2 =  new RegExp( payload)
+        const payload_2 =  new RegExp(payload)
         if(matches){
-    const matchesPass = payload_2.test(matches.email);
-    console.log('matchesPass',matchesPass)
-if(matchesPass === true){
-    console.log('you did it')
-        res.status(200).json({
-            message: 'Match returned!',
-            payload: matches
-        
-        });
-    }else{
-        console.log('almsot made it')
-        res.status(200).json({
-            message: 'No matches returned!',
-            payload: []
-        }); 
-    }
+            goTime = []
+            matches.forEach((e) => {
+            goTime.push(e.email);
+            console.log('goTime',goTime);
+            const matchesPass = payload_2.test(goTime);
+            console.log('matchesPass', matchesPass)
+            if(matchesPass === true){
+                console.log('you did it')
+                    res.status(200).json({
+                        message: 'Match returned!',
+                        payload: matches
+                    
+                    });
+                }else{
+                    console.log('almsot made it')
+                    res.status(200).json({
+                        message: 'No matches returned!',
+                        payload: []
+                    }); 
+                }
+            })
     }else{
         console.log('not even close')
 
