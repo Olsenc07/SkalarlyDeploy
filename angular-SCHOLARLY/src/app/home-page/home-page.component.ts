@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements OnInit, OnDestroy {
+export class HomePageComponent implements OnInit, OnDestroy, DoCheck {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
 
   emailMatches: string[];
@@ -54,6 +54,14 @@ export class HomePageComponent implements OnInit, OnDestroy {
     });
   }
 
+  ngDoCheck(): void {
+    if (this.email) {
+      console.log('getting started');
+      this.email.addValidators(this.doesEmailExist);
+      this.email.updateValueAndValidity();
+      console.log('all setup');
+    }
+  }
   ngOnDestroy(): void {
     this.authStatusSub.unsubscribe();
   }
@@ -66,9 +74,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   doesEmailExist(event: any): ValidationErrors | null {
-    this.loginForm.get('email').addValidators(this.doesEmailExist);
-    this.loginForm.get('email').updateValueAndValidity();
-    console.log('all setup');
     const query: string = event.target.value;
     console.log('query ', query);
     if (query) {

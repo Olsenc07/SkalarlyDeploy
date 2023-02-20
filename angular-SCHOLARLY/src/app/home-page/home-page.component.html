@@ -17,9 +17,13 @@
          
           <div class="row_ ">
           <mat-form-field class="text-input" appearance="outline">
-            <mat-label> 
+            <mat-label *ngIf="email.invalid "> 
             <i matSuffix class="fas fa-user"></i>
                Academic Email</mat-label>
+               <!-- Verified email -->
+               <mat-label class="check_" *ngIf="email.valid "> 
+                <i matSuffix class="fas fa-user"></i>
+                   Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"
             (keyup)="doesEmailExist($event)"/>
              <!-- pattern="+@+utoronto\.ca" pattern="+@utoronto\.ca" pattern="+@uoftpharmacy\.com"
