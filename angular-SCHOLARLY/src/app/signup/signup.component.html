@@ -43,7 +43,7 @@
               <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <!-- <mat-error *ngIf="email.errors?.email && !email.errors?.noWhiteSpace">Please enter your academic email
               </mat-error> -->
-              <mat-error *ngIf="noEmailMatches === true"> This email is already used </mat-error>
+              <mat-hint *ngIf="noEmailMatches === true"> This email is already used </mat-hint>
 
 
               <!-- <button mat-button matSuffix mat-icon-button aria-label=" Clear" type="button" (click)="clearEmail()">
@@ -156,7 +156,7 @@
           <div class="existing-account-layout">
 
             <button type="button" (click)="onSubmit()" mat-stroked-button class="existing-account-style space_"
-              [disabled]="!requiredForm.valid">
+              [disabled]="!requiredForm.valid || (noEmailMatches === true) || (userNameMatches === true)">
               Submit
             </button>
 
