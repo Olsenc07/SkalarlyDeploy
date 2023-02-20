@@ -74,6 +74,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public selectedOption: string;
   public specificOptions: string[];
   public searchOptions: SearchOption[];
+  public searchOptionss: SearchOption[];
+
   isLoading = false;
 
   private authStatusSub: Subscription;
@@ -297,7 +299,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
       }),
     });
 
-    this.searchOptions = this.searchListService.getSearchOptions();
+    this.searchOptionss = this.searchListService.getSearchOptions();
+    this.searchOptions = this.searchOptionss.filter(
+      (e) => e.name !== 'Important Links'
+    );
     // Doesn't keep track of value
     this.Title.valueChanges.subscribe((v) => this.TitleLength.next(v.length));
     this.Hashtag1.valueChanges.subscribe((v) =>

@@ -106,12 +106,10 @@
               <mat-select [formControl]="postLocationMain"   >
                 <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions" [selected]="opt.name" [multiple]="false" 
                   [value]="opt.name" >
-                  <div *ngIf="opt.name !== 'Important Links'">
+                  <div >
                   {{  opt.name }}
                 </div>
-                <div *ngIf="opt.name == 'Important Links'" class="catHidden">
-                  Choose a category
-                </div>
+              
               </mat-option>
               </mat-select>
               
