@@ -21,17 +21,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
   emailMatches: string[];
   email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
+  loginForm: FormGroup;
 
   isLoading = false;
   public authStatusSub: Subscription;
 
   visible = true;
-  form: FormGroup;
-
-  loginForm = new FormGroup({
-    email: this.email,
-    password: this.password,
-  });
 
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
@@ -53,6 +48,10 @@ export class HomePageComponent implements OnInit, OnDestroy {
       .subscribe((authStatus) => {
         this.isLoading = false;
       });
+    this.loginForm = new FormGroup({
+      email: this.email,
+      password: this.password,
+    });
   }
 
   ngOnDestroy(): void {
@@ -67,8 +66,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   doesEmailExist(event: any): ValidationErrors | null {
-    this.email.addValidators(this.doesEmailExist);
-    this.email.updateValueAndValidity();
+    this.loginForm.get('email').addValidators(this.doesEmailExist);
+    this.loginForm.get('email').updateValueAndValidity();
     console.log('all setup');
     const query: string = event.target.value;
     console.log('query ', query);
