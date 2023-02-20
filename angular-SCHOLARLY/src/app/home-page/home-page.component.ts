@@ -1,5 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,9 +17,10 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
-  email: FormControl = new FormControl('', Validators.email);
+  email: FormControl = new FormControl('', [Validators.email, this.noMatches]);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
+  emailMatches = [];
   isLoading = false;
   public authStatusSub: Subscription;
 
@@ -55,6 +62,31 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   clearEmail(): void {
     this.email.setValue('');
+  }
+
+  doesEmailExist(event: any): any {
+    const query: string = event.target.value;
+    console.log('query ', query);
+    this.authService.searchEmails(query.trim());
+  }
+
+  public noMatches(control: AbstractControl): ValidationErrors | null {
+    const working = control.value as string;
+
+    this.authService.getEmail().subscribe((results) => {
+      if (results.length > 0) {
+        console.log('results baby', results);
+        this.emailMatches = results;
+        return null;
+      } else {
+        console.log('nuts', results);
+        this.emailMatches = [];
+        return { noSpecialCharacters: true };
+      }
+    });
+    if (!this.emailMatches) {
+      return { noSpecialCharacters: true };
+    }
   }
 
   onSubmit(): void {

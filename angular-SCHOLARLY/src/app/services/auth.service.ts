@@ -24,6 +24,13 @@ export class AuthService {
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
+  private emailUpdated = new ReplaySubject();
+  private emailId: string;
+
+  getEmail(): any {
+    return this.emailUpdated.asObservable();
+  }
+
   getToken(): string {
     return this.token;
   }
@@ -45,6 +52,23 @@ export class AuthService {
   // problem here so unsubscrbei somehow
   getInfoUpdateListener(): any {
     return this.infosUpdated.asObservable();
+  }
+
+  searchEmails(query: string): any {
+    console.log('my lady', query);
+    this.http
+      .get<{ message: string; payload: string }>(
+        'https://www.skalarly.com/api/user/getEmails',
+        { params: { query } }
+      )
+      .pipe(map((data) => data.payload))
+      .subscribe({
+        next: (response) => {
+          console.log('chlor 2', response);
+          this.emailId = response;
+          this.emailUpdated.next(this.emailId);
+        },
+      });
   }
 
   // User and their info

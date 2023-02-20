@@ -2497,6 +2497,34 @@ router.get('/getusers', async (req, res) => {
     // res.send({ payload: search })
 });
 
+// Search emails
+router.get('/getEmails', async (req, res) => {
+    let payload = req.query.queryHash;
+  await User.findOne({
+        email: {
+            $regex: new RegExp('^' + payload ,
+                'i')
+        }
+    }).then((matches) => {
+        if(matches){
+        res.status(200).json({
+            message: 'Match returned!',
+            payload: matches
+        });
+    }else{
+        res.status(200).json({
+            message: 'No matches returned!',
+            payload: []
+        }); 
+    }
+    }) .catch(err => {
+        return res.status(401).json({
+            message: "Can't find email!",
+
+        });
+    });
+})
+
 // Search hashtags
 router.get('/gethashs', async (req, res) => {
     let payload = req.query.queryHash;
