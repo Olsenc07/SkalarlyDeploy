@@ -317,6 +317,7 @@ export class SearchListService {
           'Acorn',
           'Campus Map',
           'Careers at U Of T',
+          'Colleges & Faculties',
           'Crowdmark',
           'Exam & Assessment Schedule',
           'Financial Aid',

@@ -283,6 +283,108 @@
             class="searchBtn"  >
             <a href="https://jobs.utoronto.ca" target="_blank" *ngIf="opt == 'Careers at U Of T'">Careers at U Of T</a>
             </mat-chip>
+            <mat-chip  [multiple]="false" [matMenuTriggerFor]="menu2"
+            class="searchBtn"  >
+            <a  target="_blank" *ngIf="opt == 'Colleges & Faculties'">Colleges & Faculties</a>
+            </mat-chip>
+       
+            <mat-menu #menu2="matMenu" class="font">
+              <button mat-menu-item href="https://www.engineering.utoronto.ca">
+                Applied Science & Engineering
+              </button>
+              <button mat-menu-item href="https://www.sgs.utoronto.ca/programs/architecture-landscape-and-design/">
+                Architecture, Landscape & Design
+              </button>
+              <button mat-menu-item href="https://www.artsci.utoronto.ca">
+                Arts & Science
+              </button>
+              <button mat-menu-item href="https://learn.utoronto.ca">
+                Continuing Studies
+              </button>
+              <button mat-menu-item href="https://www.dentistry.utoronto.ca">
+                Dentistry
+              </button>
+              <button mat-menu-item href="https://www.oise.utoronto.ca/home/">
+                Education
+              </button>
+              <button mat-menu-item href="https://emmanuel.utoronto.ca">
+                Emmanuel College
+              </button>
+              <button mat-menu-item href="https://ischool.utoronto.ca">
+                Information
+              </button>
+              <button mat-menu-item href="https://kpe.utoronto.ca">
+                Kinesiology & Physical Education
+              </button>
+              <button mat-menu-item href="https://knox.utoronto.ca">
+                Knox College
+              </button>
+              <button mat-menu-item href="https://www.law.utoronto.ca">
+                Law
+              </button>
+              <button mat-menu-item href="https://www.rotman.utoronto.ca">
+                Management
+              </button>
+              <button mat-menu-item href="https://applymd.utoronto.ca">
+                Medicine
+              </button>
+              <button mat-menu-item href="https://music.utoronto.ca">
+                Music
+              </button>
+              <button mat-menu-item href="https://www.newcollege.utoronto.ca">
+                New College
+              </button>
+              <button mat-menu-item href="https://bloomberg.nursing.utoronto.ca">
+                Nursing
+              </button>
+              <button mat-menu-item href="https://www.pharmacy.utoronto.ca">
+                Pharmacy
+              </button>
+              <button mat-menu-item href="https://www.dlsph.utoronto.ca">
+                Public Health
+              </button>
+              <button mat-menu-item href="https://regiscollege.ca">
+                Regis College
+              </button>
+              <button mat-menu-item href="https://socialwork.utoronto.ca">
+                Social Work
+              </button>
+              <button mat-menu-item href="https://stmikes.utoronto.ca">
+                St. Micheals College
+              </button>
+              <button mat-menu-item href="https://innis.utoronto.ca">
+                Innis College
+              </button>
+              <button mat-menu-item href="https://www.tst.edu">
+                Theology
+              </button>
+              <button mat-menu-item href="https://www.trinity.utoronto.ca/study-theology/">
+                Trinity College
+              </button>
+              <button mat-menu-item href="https://www.uc.utoronto.ca">
+                University College
+              </button>
+              <button mat-menu-item href="https://www.utm.utoronto.ca">
+                U Of T Mississauga
+              </button>
+              <button mat-menu-item href="https://www.utsc.utoronto.ca/home/">
+                U Of T Scarborough
+              </button>
+              <button mat-menu-item href="https://www.vic.utoronto.ca">
+                Victoria College
+              </button>
+              <button mat-menu-item href="https://wdw.utoronto.ca">
+                Woodsworth College
+              </button>
+              <button mat-menu-item href="https://www.wycliffecollege.ca">
+                Wycliffe College
+              </button>
+              </mat-menu>
+
+
+
+
+
             <mat-chip  [multiple]="false" 
             class="searchBtn"  >
             <a href="https://crowdmark.com" target="_blank" *ngIf="opt == 'Crowdmark'">Crowdmark</a>
