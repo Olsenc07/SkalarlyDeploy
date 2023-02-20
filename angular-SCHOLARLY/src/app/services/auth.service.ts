@@ -25,7 +25,7 @@ export class AuthService {
   private infosUpdated = new ReplaySubject<AuthDataInfo[]>();
 
   private emailUpdated = new ReplaySubject();
-  private emailId: string;
+  private emailId: boolean;
 
   private userNameUpdated = new ReplaySubject();
   private userNameId: string;
@@ -108,7 +108,7 @@ export class AuthService {
   searchEmails(query: string): any {
     console.log('my lady', query);
     this.http
-      .get<{ message: string; payload: string }>(
+      .get<{ message: string; payload: boolean }>(
         'https://www.skalarly.com/api/user/getEmails',
         { params: { query } }
       )

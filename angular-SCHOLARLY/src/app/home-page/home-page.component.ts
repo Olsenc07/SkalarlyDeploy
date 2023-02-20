@@ -18,7 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
 
-  emailMatches = [];
+  emailMatches: boolean;
   email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
   loginForm: FormGroup;
@@ -78,14 +78,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
     if (query) {
       this.authService.searchEmails(query.trim());
       this.authService.getEmail().subscribe((results) => {
-        if (results.length > 0) {
+        if (results === true) {
           console.log('results baby', results);
           this.emailMatches = results;
-          console.log('delorean', this.emailMatches.length);
         } else {
           console.log('nuts', results);
-          this.emailMatches = [];
-          console.log('del', this.emailMatches.length);
+          this.emailMatches = false;
         }
       });
     } else {

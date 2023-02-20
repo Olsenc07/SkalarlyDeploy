@@ -2518,14 +2518,14 @@ router.get('/getEmails', async (req, res) => {
                 console.log('you did it')
                     res.status(200).json({
                         message: 'Match returned!',
-                        payload: matches
+                        payload: matchesPass
                     
                     });
                 }else{
-                    console.log('almsot made it')
+                    console.log('almost made it')
                     res.status(200).json({
                         message: 'No matches returned!',
-                        payload: []
+                        payload: false
                     }); 
                 }
         
@@ -2534,7 +2534,7 @@ router.get('/getEmails', async (req, res) => {
 
         res.status(200).json({
             message: 'No matches returned!',
-            payload: []
+            payload: false
         }); 
     }
     }) .catch(err => {
