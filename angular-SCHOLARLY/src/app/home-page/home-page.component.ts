@@ -82,14 +82,18 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  public emailCheck(): ValidationErrors | null {
-    if (this.emailMatches) {
-      if (this.emailMatches.length > 0) {
+  public emailCheck(): any {
+    this.authService.getEmail().subscribe((results) => {
+      if (results.length > 0) {
+        console.log('results baby', results);
+        this.emailMatches = results;
         return null;
+      } else {
+        console.log('nuts', results);
+        this.emailMatches = [];
+        return { noWhiteSpace: true };
       }
-      return { noWhiteSpace: true };
-    }
-    return { noWhiteSpace: true };
+    });
   }
   // public noMatches(control: AbstractControl): ValidationErrors | null {
   //   const working = control.value as string;
