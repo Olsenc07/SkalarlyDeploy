@@ -25,7 +25,7 @@
                 <i matSuffix class="fas fa-user"></i>
                    Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"
-            (keyup)="doesEmailExist($event)"/>
+            (keyup)="doesEmailExist(email.value)"/>
              <!-- pattern="+@+utoronto\.ca" pattern="+@utoronto\.ca" pattern="+@uoftpharmacy\.com"
             pattern="+@utsc.utoronto\.ca" pattern="+@rotman.utoronto\.ca" pattern="+@skalarly\.com" -->
             <!-- pattern=".+@mail.utoronto\.ca" -->
