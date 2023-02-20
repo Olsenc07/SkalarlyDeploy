@@ -19,13 +19,14 @@ export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
 
   emailMatches = [];
-  email: FormControl = new FormControl('', [Validators.email, this.emailCheck]);
+  email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
   isLoading = false;
   public authStatusSub: Subscription;
 
   visible = true;
+  form: FormGroup;
 
   loginForm = new FormGroup({
     email: this.email,
@@ -52,8 +53,23 @@ export class HomePageComponent implements OnInit, OnDestroy {
       .subscribe((authStatus) => {
         this.isLoading = false;
       });
-  }
 
+    this.email.setValidators([Validators.email, this.matchingValidator()]);
+  }
+  matchingValidator(): any {
+    const check = this.authService.getEmail().subscribe((results) => {
+      if (results.length > 0) {
+        console.log('results baby', results);
+        this.emailMatches = results;
+        return null;
+      } else {
+        console.log('nuts', results);
+        this.emailMatches = [];
+        return { emailCheck: true };
+      }
+    });
+    console.log('interesting', check);
+  }
   ngOnDestroy(): void {
     this.authStatusSub.unsubscribe();
   }
@@ -82,19 +98,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  public emailCheck(): any {
-    this.authService.getEmail().subscribe((results) => {
-      if (results.length > 0) {
-        console.log('results baby', results);
-        this.emailMatches = results;
-        return null;
-      } else {
-        console.log('nuts', results);
-        this.emailMatches = [];
-        return { noWhiteSpace: true };
-      }
-    });
-  }
   // public noMatches(control: AbstractControl): ValidationErrors | null {
   //   const working = control.value as string;
   //   console.log('working', working);
