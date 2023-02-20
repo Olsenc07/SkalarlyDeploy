@@ -17,8 +17,9 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
-  emailMatches: Array<string>;
-  email: FormControl = new FormControl('', [Validators.email, this.noMatches]);
+
+  emailMatches = [];
+  email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
   isLoading = false;
@@ -81,27 +82,28 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  public noMatches(control: AbstractControl): ValidationErrors | null {
-    const working = control.value as string;
-    console.log('working', working);
-    console.log('Email Matches', this.emailMatches);
-    console.log('Email Matches Length', this.emailMatches.length);
+  // public noMatches(control: AbstractControl): ValidationErrors | null {
+  //   const working = control.value as string;
+  //   console.log('working', working);
 
-    this.authService.getEmail().subscribe((results) => {
-      if (results.length > 0) {
-        console.log('results baby', results);
-        this.emailMatches = results;
-      } else {
-        console.log('nuts', results);
-        this.emailMatches = [];
-      }
-    });
-    if (this.emailMatches.length === 0) {
-      return { noEmailMatches: true };
-    } else {
-      return null;
-    }
-  }
+  //   console.log('Email Matches', this.emailMatches);
+  //   console.log('Email Matches Length', this.emailMatches.length);
+
+  //   this.authService.getEmail().subscribe((results) => {
+  //     if (results.length > 0) {
+  //       console.log('results baby', results);
+  //       this.emailMatches = results;
+  //     } else {
+  //       console.log('nuts', results);
+  //       this.emailMatches = [];
+  //     }
+  //   });
+  //   if (this.emailMatches.length === 0) {
+  //     return { noEmailMatches: true };
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   onSubmit(): void {
     this.isLoading = true;
