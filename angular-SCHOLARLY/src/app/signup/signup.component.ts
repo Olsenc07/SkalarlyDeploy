@@ -57,6 +57,13 @@ export const MY_FORMATS = {
   ],
 })
 export class SignupComponent implements OnInit {
+  constructor(
+    public dialog: MatDialog,
+    public classListService: ClassListService,
+    public authService: AuthService,
+    public showCaseService: ShowCaseService,
+    private snackBar: MatSnackBar // public courses: Courses
+  ) {}
   startDate = new Date(1997, 0, 1);
   isLoading = false;
   userId: string;
@@ -422,18 +429,18 @@ export class SignupComponent implements OnInit {
 
   public noMatches(control: AbstractControl): ValidationErrors | null {
     const working = control.value as string;
-
-    this.authService.getUserName().subscribe((results) => {
-      if (results.length > 0) {
-        console.log('results baby', results);
-        this.userNameMatches = results;
-        return null;
-      } else {
-        console.log('nuts', results);
-        this.userNameMatches = [];
-        return { noMatches: true };
-      }
-    });
+    console.log('self', working);
+    // this.authService.getUserName().subscribe((results) => {
+    //   if (results.length > 0) {
+    //     console.log('results baby', results);
+    //     this.userNameMatches = results;
+    //     return null;
+    //   } else {
+    //     console.log('nuts', results);
+    //     this.userNameMatches = [];
+    //     return { noMatches: true };
+    //   }
+    // });
     if (!this.userNameMatches) {
       return { noMatches: true };
     }
@@ -491,29 +498,6 @@ export class SignupComponent implements OnInit {
       this.showCasePreview = Event.target.result;
     };
     reader.readAsDataURL(file); // read file as data url
-  }
-
-  constructor(
-    public dialog: MatDialog,
-    public classListService: ClassListService,
-    public authService: AuthService,
-    public showCaseService: ShowCaseService,
-    private snackBar: MatSnackBar // public courses: Courses
-  ) {
-    // this.filteredCodesP = this.CodePursuing.valueChanges.pipe(
-    //   startWith(null),
-    //   map((code: string | null) =>
-    //     code ? this._filter(code) : this.classListService.allClasses().slice()
-    //   )
-    // );
-    // this.filteredCodes = this.CodeCompleted.valueChanges.pipe(
-    //   startWith(null),
-    //   map((codeP: string | null) =>
-    //     codeP ? this._filter(codeP) : this.classListService.allClasses().slice()
-    //   )
-    // );
-    // this.filteredCodesP.subscribe((r) => this.CodePursuing);
-    // this.filteredCodes.subscribe((r) => this.CodeCompleted);
   }
 
   uploadFileP(): any {
