@@ -20,7 +20,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   email: FormControl = new FormControl('', [Validators.email, this.noMatches]);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
-  emailMatches = [];
+  emailMatches: Array<string>;
   isLoading = false;
   public authStatusSub: Subscription;
 
@@ -84,6 +84,18 @@ export class HomePageComponent implements OnInit, OnDestroy {
   public noMatches(control: AbstractControl): ValidationErrors | null {
     const working = control.value as string;
     console.log('working', working);
+    console.log('Email Matches', this.emailMatches);
+    console.log('Email Matches Length', this.emailMatches.length);
+
+    this.authService.getEmail().subscribe((results) => {
+      if (results.length > 0) {
+        console.log('results baby', results);
+        this.emailMatches = results;
+      } else {
+        console.log('nuts', results);
+        this.emailMatches = [];
+      }
+    });
     if (this.emailMatches.length === 0) {
       return { noEmailMatches: true };
     } else {
