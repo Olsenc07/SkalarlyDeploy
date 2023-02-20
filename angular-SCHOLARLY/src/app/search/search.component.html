@@ -245,15 +245,14 @@
           <mat-chip-list  class="mat-list-text"
            [multiple]="false" *ngFor="let opt of specificOptions" >
             <mat-chip  
-            *ngIf="opt !== importantLinks"
              [value]="opt" class="searchBtn" (click)="navigateToPage(opt)"  >
               {{ opt }}
             </mat-chip>
          
           </mat-chip-list>
                 <!--    hyperlinks -->
-                <div *ngFor="let opt of specificOptions">
-          <mat-chip-list  class="mat-list-text" *ngIf="opt == importantLinks"
+       
+          <mat-chip-list  class="mat-list-text"  *ngIf="opt == importantLinks"
           [multiple]="false"  >
             <mat-chip  [multiple]="false" 
             class="searchBtn"  >
@@ -426,7 +425,7 @@
             <a href="https://onesearch.library.utoronto.ca" target="_blank" >U Of T Libraries</a>
           </mat-chip>
            </mat-chip-list>
-          </div>
+   
         </div>
       </div>
     </div>
