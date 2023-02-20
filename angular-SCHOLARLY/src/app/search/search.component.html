@@ -254,6 +254,8 @@
             *ngIf="opt == importantLinks"
             [value]="opt" class="searchBtn" (click)="navigateToPage(opt)"  >
             <a href="https://www.artsci.utoronto.ca/current/academic-advising-and-support" target="_blank" *ngIf="opt == 'Academic Advising and Support'">Academic Advising and Support</a>
+            <a href="https://www.artsci.utoronto.ca/current/dates-deadlines/academic-dates" target="_blank" *ngIf="opt == 'Academic Dates & Deadlines'">Academic Dates & Deadlines</a>
+            <a href="https://artsci.calendar.utoronto.ca/sessional-dates" target="_blank" *ngIf="opt == 'Academic Calendar'">Academic Calendar</a>
             <a href="https://idpz.utorauth.utoronto.ca/idp/profile/SAML2/Redirect/SSO?execution=e2s1" target="_blank" *ngIf="opt == 'Acorn'">Acorn</a>
             <a href="https://map.utoronto.ca/?id=1809#!ct/45469?s/" target="_blank" *ngIf="opt == 'Campus Map'">Campus Map</a>
             <a href="https://crowdmark.com" target="_blank" *ngIf="opt == 'Crowdmark'">Crowdmark</a>

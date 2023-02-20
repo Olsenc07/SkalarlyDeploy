@@ -72,7 +72,7 @@ export class HomePageComponent implements OnInit, OnDestroy, DoCheck {
     this.email.setValue('');
   }
 
-  doesEmailExist(event: any): any {
+  doesEmailExist(event: string): any {
     this.email.updateValueAndValidity();
     // const query: string = event.target.value;
     const query = event;

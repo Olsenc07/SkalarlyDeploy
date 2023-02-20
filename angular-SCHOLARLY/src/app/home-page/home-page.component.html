@@ -21,11 +21,14 @@
             <i matSuffix class="fas fa-user"></i>
                Academic Email</mat-label>
                <!-- Verified email -->
-               <mat-label class="check_" *ngIf="email.valid "> 
-                <i matSuffix class="fas fa-user"></i>
+               <mat-label  *ngIf="email.valid "> 
+                <i matSuffix class="fas fa-user check_"></i>
                    Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"
-            (keyup)="doesEmailExist(email.value)"/>
+            />
+            <!-- 
+            (keyup)="doesEmailExist(email.value)"
+             -->
              <!-- pattern="+@+utoronto\.ca" pattern="+@utoronto\.ca" pattern="+@uoftpharmacy\.com"
             pattern="+@utsc.utoronto\.ca" pattern="+@rotman.utoronto\.ca" pattern="+@skalarly\.com" -->
             <!-- pattern=".+@mail.utoronto\.ca" -->

@@ -312,7 +312,9 @@ export class SearchListService {
         break;
       case SearchValues.IMPORTANT_LINKS:
         specificOptions = [
-          'Academic Advising and Support',
+          'Academic Advising & Support',
+          'Academic Calendar',
+          'Academic Dates & Deadlines',
           'Acorn',
           'Campus Map',
           'Crowdmark',
