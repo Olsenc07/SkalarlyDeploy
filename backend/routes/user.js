@@ -2544,25 +2544,86 @@ router.get('/getEmails', async (req, res) => {
         });
     });
 })
+// Search un used emails
+router.get('/getUnUsedEmail', async (req, res) => {
+    let payload = req.query.query;
+    console.log('payload 7',payload)
+  await User.findOne({
+        email: {
+            $regex: new RegExp('^' + payload)
+        }
+    }).then((matches) => {
+        console.log('macthes yo', matches)
+        console.log('macthes email', matches.email)
 
+        if(matches){
+        const payload_2 =  new RegExp(matches.email)
+
+            console.log('goTime');
+            const matchesPass = payload_2.test(payload);
+            console.log('matchesPass', matchesPass)
+            if(matchesPass === true){
+                console.log('you did it')
+                    res.status(200).json({
+                        message: 'Match returned!',
+                        payload: matchesPass
+                    
+                    });
+                }else{
+                    console.log('almost made it')
+                    res.status(200).json({
+                        message: 'No matches returned!',
+                        payload: false
+                    }); 
+                }
+        
+    }else{
+        console.log('not even close')
+
+        res.status(200).json({
+            message: 'No matches returned!',
+            payload: false
+        }); 
+    }
+    }) .catch(err => {
+        return res.status(401).json({
+            message: "Can't find email!",
+
+        });
+    });
+})
 // Search usernames
 router.get('/getUsernames', async (req, res) => {
     let payload = req.query.queryHash;
   await User.findOne({
         username: {
-            $regex: new RegExp('^' + payload ,
-                'i')
+            $regex: new RegExp('^' + payload )
         }
     }).then((matches) => {
+        console.log('macthes yo', matches)
+        console.log('macthes email', matches.username)
         if(matches){
+        const payload_2 =  new RegExp(matches.email)
+        console.log('goTime');
+        const matchesPass = payload_2.test(payload);
+        console.log('matchesPass', matchesPass)
+        if(matchesPass === true){
+            console.log('you did it')
         res.status(200).json({
             message: 'Match returned!',
-            payload: matches
+            payload: matchesPass
         });
+    }else{
+        console.log('almost made it')
+        res.status(200).json({
+            message: 'No matches returned!',
+            payload: false
+        }); 
+    }
     }else{
         res.status(200).json({
             message: 'No matches returned!',
-            payload: []
+            payload: false
         }); 
     }
     }) .catch(err => {

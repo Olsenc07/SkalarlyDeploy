@@ -27,6 +27,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { createPopup } from '@picmo/popup-picker';
+import { AnyCnameRecord } from 'dns';
 
 export const MY_FORMATS = {
   parse: {
@@ -73,7 +74,8 @@ export class SignupComponent implements OnInit {
   visible = true;
   selectable = true;
   removable = true;
-
+  userNameMatches = false;
+  noEmailMatches = false;
   // classes: string[] = [];
   // classesP: string[] = [];
   // @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
@@ -120,7 +122,6 @@ export class SignupComponent implements OnInit {
   showCasePreview: any = '';
   // pat = /\w/;
   // pat2 = /^[a-zA-Z0-9]*/;
-  userNameMatches = [];
   EmailMatches = [];
 
   containWithinAspectRatio = false;
@@ -129,7 +130,6 @@ export class SignupComponent implements OnInit {
     // Validators.pattern(this.pat2),
     this.noWhiteSpace,
     this.noSpecialCharacters,
-    this.noMatches,
   ]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
   passwordV: FormControl = new FormControl('', this.noWhiteSpace);
@@ -151,7 +151,6 @@ export class SignupComponent implements OnInit {
     Validators.email,
     this.pattern,
     this.noWhiteSpace,
-    this.noEmailMatches,
   ]);
   emailV: FormControl = new FormControl('', [
     Validators.email,
@@ -426,54 +425,38 @@ export class SignupComponent implements OnInit {
   doesEmailExist(event: any): any {
     const query: string = event.target.value;
     console.log('query ', query);
-    this.authService.searchEmail(query.trim());
-  }
-
-  public noEmailMatches(control: AbstractControl): ValidationErrors | null {
-    const working = control.value as string;
-    console.log('self', working);
-    console.log('selfie', this.EmailMatches);
-
-    // this.authService.getUsedEmail().subscribe((results) => {
-    //   if (results.length > 0) {
-    //     console.log('results baby', results);
-    //     this.noEmailMatches = results;
-    //     return null;
-    //   } else {
-    //     console.log('nuts', results);
-    //     this.noEmailMatches = [];
-    //     return { noMatches: true };
-    //   }
-    // });
-    if (!this.EmailMatches) {
-      return { noEmailMatches: true };
+    if (query) {
+      this.authService.searchEmail(query.trim());
+      this.authService.getUsedEmail().subscribe((results) => {
+        if (results === true) {
+          console.log('results baby', results);
+          this.noEmailMatches = results;
+        } else {
+          console.log('nuts', results);
+          this.noEmailMatches = false;
+        }
+      });
+    } else {
+      console.log('DeLorean');
     }
   }
 
   doesUsernameExist(event: any): any {
     const query: string = event.target.value;
     console.log('query ', query);
-    this.authService.searchUsernames(query.trim());
-  }
-
-  public noMatches(control: AbstractControl): ValidationErrors | null {
-    const working = control.value as string;
-    console.log('self 2', working);
-    console.log('selfie 2', this.userNameMatches);
-
-    // this.authService.getUserName().subscribe((results) => {
-    //   if (results.length > 0) {
-    //     console.log('results baby', results);
-    //     this.userNameMatches = results;
-    //     return null;
-    //   } else {
-    //     console.log('nuts', results);
-    //     this.userNameMatches = [];
-    //     return { noMatches: true };
-    //   }
-    // });
-    if (!this.userNameMatches) {
-      return { noMatches: true };
+    if (query) {
+      this.authService.searchUsernames(query.trim());
+      this.authService.getUserName().subscribe((results) => {
+        if (results === true) {
+          console.log('results baby', results);
+          this.userNameMatches = results;
+        } else {
+          console.log('nuts', results);
+          this.userNameMatches = false;
+        }
+      });
+    } else {
+      console.log('DeLorean');
     }
   }
 

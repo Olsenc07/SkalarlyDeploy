@@ -28,10 +28,10 @@ export class AuthService {
   private emailId: boolean;
 
   private userNameUpdated = new ReplaySubject();
-  private userNameId: string;
+  private userNameId: boolean;
 
   private emailUsedUpdated = new ReplaySubject();
-  private emailUsedId: string;
+  private emailUsedId: boolean;
   // check if email exists for login
   getEmail(): any {
     return this.emailUpdated.asObservable();
@@ -72,7 +72,7 @@ export class AuthService {
   searchEmail(query: string): any {
     console.log('my lady', query);
     this.http
-      .get<{ message: string; payload: string }>(
+      .get<{ message: string; payload: boolean }>(
         'https://www.skalarly.com/api/user/getUnUsedEmail',
         { params: { query } }
       )
@@ -81,7 +81,7 @@ export class AuthService {
         next: (response) => {
           console.log('chlor 2', response);
           this.emailUsedId = response;
-          this.emailUsedUpdated.next(this.emailId);
+          this.emailUsedUpdated.next(this.emailUsedId);
         },
       });
   }
@@ -90,7 +90,7 @@ export class AuthService {
   searchUsernames(query: string): any {
     console.log('my lady', query);
     this.http
-      .get<{ message: string; payload: string }>(
+      .get<{ message: string; payload: boolean }>(
         'https://www.skalarly.com/api/user/getUsernames',
         { params: { query } }
       )

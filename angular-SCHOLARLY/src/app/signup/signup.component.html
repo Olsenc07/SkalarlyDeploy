@@ -26,9 +26,9 @@
             @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca,
             @utsc.utoronto.ca, @uoftpharmacy.com ">
             <mat-label>
-              <i class="fas fa-graduation-cap" *ngIf="email.invalid">
+              <i class="fas fa-graduation-cap" *ngIf="email.invalid || noEmailMatches === true">
               </i>
-              <i class="fas fa-graduation-cap check_" *ngIf="email.valid">
+              <i class="fas fa-graduation-cap check_" *ngIf="email.valid && noEmailMatches === false">
               </i>
               Academic Email
             </mat-label>
@@ -43,7 +43,7 @@
               <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <!-- <mat-error *ngIf="email.errors?.email && !email.errors?.noWhiteSpace">Please enter your academic email
               </mat-error> -->
-              <mat-error *ngIf="email.errors?.noEmailMatches"> This email is already used </mat-error>
+              <mat-error *ngIf="noEmailMatches === true"> This email is already used </mat-error>
 
 
               <!-- <button mat-button matSuffix mat-icon-button aria-label=" Clear" type="button" (click)="clearEmail()">
@@ -58,10 +58,10 @@
            
             <mat-form-field>
             <mat-label>
-              <i class="fas fa-user-circle" *ngIf="username.invalid">
+              <i class="fas fa-user-circle" *ngIf="username.invalid || (userNameMatches === true)">
           
               </i>
-              <i class="fas fa-user-circle check_" *ngIf="username.valid">
+              <i class="fas fa-user-circle check_" *ngIf="username.valid && (userNameMatches === false)">
       
               </i>
               Username
@@ -71,7 +71,7 @@
               (keyup)="doesUsernameExist($event)"/>
               <mat-error *ngIf="username.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <mat-error *ngIf="username.errors?.noSpecialCharacters"> No special characters </mat-error>
-              <mat-error *ngIf="username.errors?.noMatches"> This username is taken </mat-error>
+              <mat-hint *ngIf="userNameMatches === true"> This username is taken </mat-hint>
 
               <!-- Once next is clicked and user name has been used -->
               <!-- <mat-error *ngIf="username.invalid && !username.errors?.noWhiteSpace">Please enter a unique username
