@@ -15,10 +15,10 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements OnInit, OnDestroy, DoCheck {
+export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
 
-  emailMatches: string[];
+  emailMatches = [];
   email: FormControl = new FormControl('', Validators.email);
   password: FormControl = new FormControl('', Validators.minLength(8));
   loginForm: FormGroup;
@@ -54,14 +54,13 @@ export class HomePageComponent implements OnInit, OnDestroy, DoCheck {
     });
   }
 
-  ngDoCheck(): void {
-    if (this.email) {
-      console.log('getting started', this.email.value);
-      this.email.addValidators(this.doesEmailExist(this.email.value));
-      this.email.updateValueAndValidity();
-      console.log('all setup');
-    }
-  }
+  // ngDoCheck(): void {
+  //   if (this.email) {
+  //     console.log('getting started', this.email.value);
+
+  //     console.log('all setup');
+  //   }
+  // }
   ngOnDestroy(): void {
     this.authStatusSub.unsubscribe();
   }
@@ -73,9 +72,8 @@ export class HomePageComponent implements OnInit, OnDestroy, DoCheck {
     this.email.setValue('');
   }
 
-  doesEmailExist(event: string): any {
-    // const query: string = event.target.value;
-    const query = event;
+  doesEmailExist(event: any): void {
+    const query: string = event.target.value;
     console.log('query ', query);
     if (query) {
       this.authService.searchEmails(query.trim());
@@ -83,16 +81,15 @@ export class HomePageComponent implements OnInit, OnDestroy, DoCheck {
         if (results.length > 0) {
           console.log('results baby', results);
           this.emailMatches = results;
-          return null;
+          console.log('delorean', this.emailMatches.length);
         } else {
           console.log('nuts', results);
           this.emailMatches = [];
-          return { emailCheck: true };
+          console.log('del', this.emailMatches.length);
         }
       });
     } else {
-      console.log('here I am');
-      return false;
+      console.log('DeLorean');
     }
   }
   // matchingValidator(): ValidationErrors | null {

@@ -328,6 +328,7 @@ export class SearchListService {
           'Student Services and Support',
           'U Of T Bookstore',
           'U Of T Contacts',
+          'U Of T Libraries',
         ];
         break;
       case SearchValues.INSTRUCTOR_REV:

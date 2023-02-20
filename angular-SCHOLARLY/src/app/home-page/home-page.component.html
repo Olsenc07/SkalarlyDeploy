@@ -17,24 +17,23 @@
          
           <div class="row_ ">
           <mat-form-field class="text-input" appearance="outline">
-            <mat-label *ngIf="email.invalid "> 
+            <mat-label *ngIf="email.invalid && emailMatches.length == 0"> 
             <i matSuffix class="fas fa-user"></i>
                Academic Email</mat-label>
                <!-- Verified email -->
-               <mat-label  *ngIf="email.valid "> 
+               <mat-label  *ngIf="email.valid && emailMatches.length > 0"> 
                 <i matSuffix class="fas fa-user check_"></i>
                    Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"
-            />
-            <!-- 
-            (keyup)="doesEmailExist(email.value)"
-             -->
+            (keyup)="doesEmailExist($event)"/>
+            
+            
              <!-- pattern="+@+utoronto\.ca" pattern="+@utoronto\.ca" pattern="+@uoftpharmacy\.com"
             pattern="+@utsc.utoronto\.ca" pattern="+@rotman.utoronto\.ca" pattern="+@skalarly\.com" -->
             <!-- pattern=".+@mail.utoronto\.ca" -->
             <!-- <mat-hint>@mail.utoronto.ca</mat-hint> -->
             <mat-error *ngIf="email.invalid">Please enter your academic email</mat-error>
-            <mat-error *ngIf="email.errors?.emailCheck">This email doesn't exist</mat-error>
+            <mat-error *ngIf="emailMatches.length == 0">This email doesn't exist</mat-error>
 
             <!-- <button color="primary" mat-button matSuffix mat-icon-button type="button"
               (click)="clearEmail()">
