@@ -2508,10 +2508,11 @@ router.get('/getEmails', async (req, res) => {
         console.log('macthes yo', matches)
         console.log('macthes email', matches.email)
 
-        const payload_2 =  new RegExp(payload)
         if(matches){
+        const payload_2 =  new RegExp(matches.email)
+
             console.log('goTime');
-            const matchesPass = payload_2.test(matches.email);
+            const matchesPass = payload_2.test(payload);
             console.log('matchesPass', matchesPass)
             if(matchesPass === true){
                 console.log('you did it')

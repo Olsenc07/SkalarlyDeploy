@@ -53,9 +53,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
       .subscribe((authStatus) => {
         this.isLoading = false;
       });
-    this.email.addValidators(this.doesEmailExist);
-    this.email.updateValueAndValidity();
-    console.log('all setup');
   }
 
   ngOnDestroy(): void {
@@ -70,6 +67,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   doesEmailExist(event: any): ValidationErrors | null {
+    this.email.addValidators(this.doesEmailExist);
+    this.email.updateValueAndValidity();
+    console.log('all setup');
     const query: string = event.target.value;
     console.log('query ', query);
     if (query) {
