@@ -2601,9 +2601,9 @@ router.get('/getUsernames', async (req, res) => {
         }
     }).then((matches) => {
         console.log('macthes yo', matches)
-        console.log('macthes email', matches.username)
+        console.log('macthes username', matches.username)
         if(matches){
-        const payload_2 =  new RegExp(matches.email)
+        const payload_2 =  new RegExp(matches.username)
         console.log('goTime');
         const matchesPass = payload_2.test(payload);
         console.log('matchesPass', matchesPass)
