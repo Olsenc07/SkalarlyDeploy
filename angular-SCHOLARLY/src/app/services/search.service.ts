@@ -2,6 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 
 enum SearchValues {
+  IMPORTANT_LINKS = 'important_links',
   COLLEGE_CONNECTION = 'college_connection',
   BLUE_CLUBS = 'blue_clubs',
   COURSE_A_E = 'course_a_e',
@@ -11,7 +12,6 @@ enum SearchValues {
   FINANCE = 'finance',
   HELP_WANTED = 'help',
   HOUSING = 'housing',
-  IMPORTANT_LINKS = 'important_links',
   INSTRUCTOR_REV = 'instructor_rev',
   MISCELL_BUY_SELL = 'buy_sell',
   SCHOOL_WORK_A = 'school_work_a',
