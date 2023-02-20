@@ -263,7 +263,10 @@ export class AppComponent implements OnInit {
         if (this.userId != null) {
           const previousPageUrl = document.referrer;
           console.log(`Previously visited page URL: ${previousPageUrl}`);
-          if (previousPageUrl === ('https://www.skalarly.com/search' || '')) {
+          if (
+            previousPageUrl === '' ||
+            previousPageUrl === 'https://www.skalarly.com/search'
+          ) {
             console.log('made it baby');
             // broken subscription link
             this.commentsService.getMissedNotif(this.userId, 0);

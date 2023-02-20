@@ -270,13 +270,13 @@ export class SignupComponent implements OnInit {
     console.log('is this working 2', working);
     const normalcharacter = /^[]-~`!@+#$%^&*()_={}[|\/:;'"<>,.?]*/;
     console.log('hey', normalcharacter.test(working));
-    if (normalcharacter.test(working) !== null) {
+    if (normalcharacter.test(working) == null) {
       console.log('hey boo ya');
       return null;
+    } else {
+      console.log('easy now');
+      return { noSpecialCharacters: true };
     }
-    console.log('easy now');
-
-    return { noSpecialCharacters: true };
   }
   public pattern(control: AbstractControl): ValidationErrors | null {
     console.log('hey chaz', control.value as string);
