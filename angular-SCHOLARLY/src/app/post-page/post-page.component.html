@@ -103,7 +103,7 @@
           <mat-selection-list #options [multiple]="false">
             <mat-form-field appearance="fill" >
               <mat-label> Main Categories</mat-label>
-              <mat-select [formControl]="postLocationMain">
+              <mat-select [formControl]="postLocationMain" *ngIf="specificOptions[0] !== 'important-links'">
                 <mat-option (click)="onSearchSelection(opt.value)" [selected]="opt.name" [multiple]="false" 
                   *ngFor="let opt of searchOptions" [value]="opt.name">
                   {{ opt.name }}</mat-option>
