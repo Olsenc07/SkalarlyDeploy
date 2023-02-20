@@ -67,6 +67,7 @@ export class SearchComponent implements OnInit {
 
   onSearchSelection(value: string): void {
     this.specificOptions = this.searchListService.onSearchSelection(value);
+    console.log('morning', this.specificOptions);
   }
 
   navigateToPage(value: string): void {
