@@ -64,13 +64,15 @@
               Username
 </mat-label>
 
-              <input matInput [formControl]="username" placeholder="Username" required maxlength="22"/>
+              <input matInput [formControl]="username" placeholder="Username" required maxlength="22"
+              (keyup)="doesUsernameExist($event)"/>
               <mat-error *ngIf="username.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <mat-error *ngIf="username.errors?.noSpecialCharacters"> No special characters </mat-error>
+              <mat-error *ngIf="username.errors?.noMatches"> This username is taken </mat-error>
 
               <!-- Once next is clicked and user name has been used -->
-              <mat-error *ngIf="username.invalid && !username.errors?.noWhiteSpace">Please enter a unique username
-              </mat-error>
+              <!-- <mat-error *ngIf="username.invalid && !username.errors?.noWhiteSpace">Please enter a unique username
+              </mat-error> -->
               <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearUsername()">
                 <mat-icon>close</mat-icon>
               </button> -->

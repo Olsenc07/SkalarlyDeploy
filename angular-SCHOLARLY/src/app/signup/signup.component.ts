@@ -111,14 +111,17 @@ export class SignupComponent implements OnInit {
   imgChangeEvent: any = '';
   // showCropper = false;
   showCasePreview: any = '';
-  pat = /\w/;
-  pat2 = /^[a-zA-Z0-9]*/;
+  // pat = /\w/;
+  // pat2 = /^[a-zA-Z0-9]*/;
+  userNameMatches = [];
+
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [
     // Validators.pattern(this.pat),
     // Validators.pattern(this.pat2),
     this.noWhiteSpace,
     this.noSpecialCharacters,
+    this.noMatches,
   ]);
   password: FormControl = new FormControl('', this.noWhiteSpace);
   passwordV: FormControl = new FormControl('', this.noWhiteSpace);
@@ -411,22 +414,30 @@ export class SignupComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  // public trimValidator: ValidatorFn = (email: FormControl) => {
-  //   if (email.value.startsWith(' ')) {
-  //     return {
-  //       trimError: { value: 'Input has leading whitespace' }
-  //     };
-  //   }
-  //   if (email.value.endsWith(' ')) {
-  //     return {
-  //       trimError: { value: 'Input has trailing whitespace' }
-  //     };
-  //   }
-  //   return null;
-  // }
-  // using oninput
+  doesUsernameExist(event: any): any {
+    const query: string = event.target.value;
+    console.log('query ', query);
+    this.authService.searchUsernames(query.trim());
+  }
 
-  // Passes value as base64 string of cropped area!! But where does form controller come into play?
+  public noMatches(control: AbstractControl): ValidationErrors | null {
+    const working = control.value as string;
+
+    this.authService.getUserName().subscribe((results) => {
+      if (results.length > 0) {
+        console.log('results baby', results);
+        this.userNameMatches = results;
+        return null;
+      } else {
+        console.log('nuts', results);
+        this.userNameMatches = [];
+        return { noMatches: true };
+      }
+    });
+    if (!this.userNameMatches) {
+      return { noMatches: true };
+    }
+  }
 
   imgLoad(): void {
     // this.showCropper = true;

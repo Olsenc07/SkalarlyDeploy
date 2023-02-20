@@ -2525,6 +2525,35 @@ router.get('/getEmails', async (req, res) => {
     });
 })
 
+// Search usernames
+router.get('/getUsernames', async (req, res) => {
+    let payload = req.query.queryHash;
+  await User.findOne({
+        username: {
+            $regex: new RegExp('^' + payload ,
+                'i')
+        }
+    }).then((matches) => {
+        if(matches){
+        res.status(200).json({
+            message: 'Match returned!',
+            payload: matches
+        });
+    }else{
+        res.status(200).json({
+            message: 'No matches returned!',
+            payload: []
+        }); 
+    }
+    }) .catch(err => {
+        return res.status(401).json({
+            message: "Can't find username!",
+
+        });
+    });
+})
+
+
 // Search hashtags
 router.get('/gethashs', async (req, res) => {
     let payload = req.query.queryHash;

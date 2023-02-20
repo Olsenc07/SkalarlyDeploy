@@ -72,7 +72,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   public noMatches(control: AbstractControl): ValidationErrors | null {
     const working = control.value as string;
-
+    console.log('working', working);
     this.authService.getEmail().subscribe((results) => {
       if (results.length > 0) {
         console.log('results baby', results);
@@ -81,11 +81,11 @@ export class HomePageComponent implements OnInit, OnDestroy {
       } else {
         console.log('nuts', results);
         this.emailMatches = [];
-        return { noSpecialCharacters: true };
+        return { noMatches: true };
       }
     });
     if (!this.emailMatches) {
-      return { noSpecialCharacters: true };
+      return { noMatches: true };
     }
   }
 
