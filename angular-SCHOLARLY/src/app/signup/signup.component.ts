@@ -255,11 +255,11 @@ export class SignupComponent implements OnInit {
   public noSpecialCharacters(
     control: AbstractControl
   ): ValidationErrors | null {
-    console.log('is this working');
     const working = control.value as string;
     console.log('is this working 2', working);
     const normalcharacter = /^[]-~`!@+#$%^&*()_={}[|\/:;'"<>,.?]*/;
-    const betterNot = working.match(normalcharacter);
+    const betterNot = normalcharacter.test(working);
+    console.log('hey', betterNot);
     if (betterNot) {
       console.log('hey boo ya');
       return null;
@@ -277,17 +277,17 @@ export class SignupComponent implements OnInit {
     const regex4 = /^[a-zA-Z0-9._%+-]+@utsc.utoronto\.ca/;
     const regex5 = /^[a-zA-Z0-9._%+-]+@rotman.utoronto\.ca/;
 
-    const matches = emailChazz.match(regex);
-    const matches2 = emailChazz.match(regex2);
-    const matches3 = emailChazz.match(regex3);
-    const matches4 = emailChazz.match(regex4);
-    const matches5 = emailChazz.match(regex5);
+    const matches = regex.test(emailChazz);
+    const matches2 = regex2.test(emailChazz);
+    const matches3 = regex3.test(emailChazz);
+    const matches4 = regex4.test(emailChazz);
+    const matches5 = regex5.test(emailChazz);
     console.log('matches1', matches);
     console.log('matches2', matches2);
     console.log('matches3', matches3);
     console.log('matches4', matches4);
     console.log('matches5', matches5);
-    if ((matches || matches2 || matches3 || matches4 || matches5) != null) {
+    if ((matches || matches2 || matches3 || matches4 || matches5) === true) {
       console.log('does it work now email pattern');
       return { pattern: true };
     }
