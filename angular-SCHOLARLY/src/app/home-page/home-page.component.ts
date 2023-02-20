@@ -56,9 +56,8 @@ export class HomePageComponent implements OnInit, OnDestroy, DoCheck {
 
   ngDoCheck(): void {
     if (this.email) {
-      console.log('getting started');
-      this.email.addValidators(this.doesEmailExist);
-      this.email.updateValueAndValidity();
+      console.log('getting started', this.email.value);
+      this.email.addValidators(this.doesEmailExist(this.email.value));
       console.log('all setup');
     }
   }
@@ -73,7 +72,8 @@ export class HomePageComponent implements OnInit, OnDestroy, DoCheck {
     this.email.setValue('');
   }
 
-  doesEmailExist(event: any): ValidationErrors | null {
+  doesEmailExist(event: any): any {
+    this.email.updateValueAndValidity();
     const query: string = event.target.value;
     console.log('query ', query);
     if (query) {
