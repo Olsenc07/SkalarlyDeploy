@@ -94,6 +94,10 @@
           <i class="fas fa-home"></i>
           Housing</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
+          (click)="onSearchSelection('important_links')" (click)="displaySpecificSearch()">
+          <i class="fas fa-star"></i>
+          Important Links </mat-chip-option>
+          <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('instructor_rev')" (click)="displaySpecificSearch()">
           <i class="fas fa-chalkboard-teacher"></i>
           Instructor Review </mat-chip-option>

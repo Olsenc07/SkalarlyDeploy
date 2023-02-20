@@ -11,6 +11,7 @@ enum SearchValues {
   FINANCE = 'finance',
   HELP_WANTED = 'help',
   HOUSING = 'housing',
+  IMPORTANT_LINKS = 'important_links',
   INSTRUCTOR_REV = 'instructor_rev',
   MISCELL_BUY_SELL = 'buy_sell',
   SCHOOL_WORK_A = 'school_work_a',
@@ -33,7 +34,6 @@ enum SearchValues {
   SCHOOL_WORK_U = 'school_work_u',
   SCHOOL_WORK_V = 'school_work_v',
   SCHOOL_WORK_W = 'school_work_w',
-  IMPORTANT_LINKS = 'important_links',
 
   SPIRITUALITY = 'spiritituality',
   U_OF_T_QS = 'questions',
