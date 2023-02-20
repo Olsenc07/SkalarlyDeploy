@@ -59,7 +59,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
     console.log('all setup');
   }
   matchingValidator(): ValidationErrors | null {
-    if (this.authService) {
+    console.log('testing 123', this.emailMatches);
+    if (this.emailMatches) {
       const check = this.authService.getEmail().subscribe((results) => {
         if (results.length > 0) {
           console.log('results baby', results);
