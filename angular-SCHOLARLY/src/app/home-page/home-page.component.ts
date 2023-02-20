@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
 
   emailMatches = [];
-  email: FormControl = new FormControl('', Validators.email);
+  email: FormControl = new FormControl('', [Validators.email, this.emailCheck]);
   password: FormControl = new FormControl('', Validators.minLength(8));
 
   isLoading = false;
@@ -31,6 +31,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
     email: this.email,
     password: this.password,
   });
+  public emailCheck(): ValidationErrors | null {
+    if (this.emailMatches.length > 0) {
+      return null;
+    }
+    return { noWhiteSpace: true };
+  }
 
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;

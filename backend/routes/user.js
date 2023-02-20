@@ -2499,7 +2499,8 @@ router.get('/getusers', async (req, res) => {
 
 // Search emails
 router.get('/getEmails', async (req, res) => {
-    let payload = req.query.queryHash;
+    let payload = req.query.query;
+    console.log('payload 7',payload)
   await User.findOne({
         email: {
             $regex: new RegExp('^' + payload ,

@@ -115,7 +115,7 @@ export class AuthService {
       .pipe(map((data) => data.payload))
       .subscribe({
         next: (response) => {
-          console.log('chlor 2', response);
+          console.log('chlor 3', response);
           this.emailId = response;
           this.emailUpdated.next(this.emailId);
         },
