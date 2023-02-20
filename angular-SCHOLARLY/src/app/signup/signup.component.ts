@@ -258,8 +258,8 @@ export class SignupComponent implements OnInit {
     const working = control.value as string;
     console.log('is this working 2', working);
     const normalcharacter = /^[]-~`!@+#$%^&*()_={}[|\/:;'"<>,.?]*/;
-    console.log('hey', normalcharacter.test(working));
-    if (normalcharacter.test(working) === false) {
+    console.log('hey', working.match(normalcharacter));
+    if (working.match(normalcharacter) != null) {
       console.log('hey boo ya');
       return null;
     }
