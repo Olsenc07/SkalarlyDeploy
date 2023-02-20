@@ -2600,8 +2600,8 @@ router.get('/getUsernames', async (req, res) => {
             $regex: new RegExp('^' + payload )
         }
     }).then((matches) => {
-        console.log('macthes yo', matches)
-        console.log('macthes username', matches.username)
+        console.log('matches yo', matches)
+
         if(matches){
         const payload_2 =  new RegExp(matches.username)
         console.log('goTime');
