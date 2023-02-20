@@ -110,19 +110,11 @@
           <i class="fas fa-feather-alt"></i>
           Programs N-Z</mat-chip-option>
 
-
-
-
-
-
-
-
-  (click)="onSearchSelection('school_work_ae')"
-   (click)="displaySpecificSearch()"
           <mat-chip-option color="primary"  class="searchBtn" [matMenuTriggerFor]="menu"
         >
           <i class="fas fa-book-reader"></i>
           School Work A-Z</mat-chip-option>
+          <div class="toScale">
 <mat-menu #menu="matMenu" class="font">
   <button mat-menu-item  (click)="onSearchSelection('school_work_a')"
   (click)="displaySpecificSearch()">
@@ -205,7 +197,7 @@
                                           W
                                           </button>
   </mat-menu>
-
+</div>
 
 
 
