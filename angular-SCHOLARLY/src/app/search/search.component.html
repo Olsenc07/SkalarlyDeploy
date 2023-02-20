@@ -242,7 +242,7 @@
 
         <div class="input-boxs_" *ngIf="opt >= 1">
           <div class="center_single">Step Two: Navigate to the specific page</div>
-          <div *ngIf="specificOptions !== ['important-links']" class="mat-list-text">
+          <div *ngIf="specificOptions[0] !== 'important-links'" class="mat-list-text">
           <mat-chip-list 
            [multiple]="false" *ngFor="let opt of specificOptions" >
             <mat-chip  
@@ -253,7 +253,7 @@
         </div>
                 <!--    hyperlinks -->
        
-          <mat-chip-list  class="mat-list-text"  *ngIf="specificOptions == ['important-links']"
+          <mat-chip-list  class="mat-list-text"  *ngIf="specificOptions[0] == 'important-links'"
           [multiple]="false"  >
             <mat-chip  [multiple]="false" 
             class="searchBtn"  >
