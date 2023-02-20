@@ -116,6 +116,29 @@ export class SearchListService {
   onSearchSelection(value: string): string[] {
     let specificOptions: string[];
     switch (value) {
+      case SearchValues.IMPORTANT_LINKS:
+        specificOptions = [
+          'important-links',
+          // 'Academic Advising & Support',
+          // 'Academic Calendar',
+          // 'Academic Dates & Deadlines',
+          // 'Acorn',
+          // 'Campus Map',
+          // 'Careers at U Of T',
+          // 'Colleges & Faculties',
+          // 'Crowdmark',
+          // 'Exam & Assessment Schedule',
+          // 'Financial Aid',
+          // 'Campus Housing',
+          // 'Quercus',
+          // 'Residences',
+          // 'Student-Organization-Portal',
+          // 'Student Services and Support',
+          // 'U Of T Bookstore',
+          // 'U Of T Contacts',
+          // 'U Of T Libraries',
+        ];
+        break;
       case SearchValues.COLLEGE_CONNECTION:
         specificOptions = [
           'Applied Science & Engineering',
@@ -309,29 +332,7 @@ export class SearchListService {
           'Subleting',
         ];
         break;
-      case SearchValues.IMPORTANT_LINKS:
-        specificOptions = [
-          'important-links',
-          // 'Academic Advising & Support',
-          // 'Academic Calendar',
-          // 'Academic Dates & Deadlines',
-          // 'Acorn',
-          // 'Campus Map',
-          // 'Careers at U Of T',
-          // 'Colleges & Faculties',
-          // 'Crowdmark',
-          // 'Exam & Assessment Schedule',
-          // 'Financial Aid',
-          // 'Campus Housing',
-          // 'Quercus',
-          // 'Residences',
-          // 'Student-Organization-Portal',
-          // 'Student Services and Support',
-          // 'U Of T Bookstore',
-          // 'U Of T Contacts',
-          // 'U Of T Libraries',
-        ];
-        break;
+
       case SearchValues.INSTRUCTOR_REV:
         specificOptions = [
           'Last Name: A',
