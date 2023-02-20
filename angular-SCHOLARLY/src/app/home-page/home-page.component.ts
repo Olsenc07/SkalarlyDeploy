@@ -31,12 +31,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
     email: this.email,
     password: this.password,
   });
-  public emailCheck(): ValidationErrors | null {
-    if (this.emailMatches.length > 0) {
-      return null;
-    }
-    return { noWhiteSpace: true };
-  }
 
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
@@ -88,6 +82,12 @@ export class HomePageComponent implements OnInit, OnDestroy {
     }
   }
 
+  public emailCheck(): ValidationErrors | null {
+    if (this.emailMatches.length > 0) {
+      return null;
+    }
+    return { noWhiteSpace: true };
+  }
   // public noMatches(control: AbstractControl): ValidationErrors | null {
   //   const working = control.value as string;
   //   console.log('working', working);

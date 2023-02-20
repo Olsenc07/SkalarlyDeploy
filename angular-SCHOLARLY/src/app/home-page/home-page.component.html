@@ -27,7 +27,7 @@
             <!-- pattern=".+@mail.utoronto\.ca" -->
             <!-- <mat-hint>@mail.utoronto.ca</mat-hint> -->
             <mat-error *ngIf="email.invalid">Please enter your academic email</mat-error>
-            <mat-error *ngIf="emailMatches.length > 0">This email doesn't exist</mat-error>
+            <mat-error *ngIf="email.errors?.emailCheck">This email doesn't exist</mat-error>
 
             <!-- <button color="primary" mat-button matSuffix mat-icon-button type="button"
               (click)="clearEmail()">
