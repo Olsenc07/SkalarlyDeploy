@@ -143,7 +143,6 @@ export class SearchListService {
           'Theology',
           'Trinity College',
           'University College',
-          // How would these work..
           'U Of T Mississauga',
           'U Of T Scarborough',
           'Victoria College',

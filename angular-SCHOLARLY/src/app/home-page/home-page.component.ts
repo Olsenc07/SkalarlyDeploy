@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
 
   emailMatches: boolean;
-  email: FormControl = new FormControl('', Validators.email);
+  email: FormControl = new FormControl('');
   password: FormControl = new FormControl('', Validators.minLength(8));
   loginForm: FormGroup;
 
