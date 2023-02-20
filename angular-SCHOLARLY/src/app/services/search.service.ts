@@ -317,14 +317,16 @@ export class SearchListService {
           'Academic Dates & Deadlines',
           'Acorn',
           'Campus Map',
+          'Careers at U Of T',
           'Crowdmark',
           'Exam & Assessment Schedule',
           'Financial Aid',
-          'Off-Campus Housing',
+          'Campus Housing',
           'Quercus',
           'Residences',
           'Student-Organization-Portal',
           'Student Services and Support',
+          'U Of T Bookstore',
           'U Of T Contacts',
         ];
         break;

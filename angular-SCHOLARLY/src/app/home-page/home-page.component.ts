@@ -91,7 +91,8 @@ export class HomePageComponent implements OnInit, OnDestroy, DoCheck {
         }
       });
     } else {
-      return { emailCheck: true };
+      console.log('here I am');
+      return false;
     }
   }
   // matchingValidator(): ValidationErrors | null {
