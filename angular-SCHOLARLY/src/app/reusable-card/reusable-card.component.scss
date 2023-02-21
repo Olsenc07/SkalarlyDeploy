@@ -193,7 +193,8 @@ margin-top: 2%;
 .hashs{
   display: flex;
   justify-content: space-around;
-  margin-top: 1%;
+  // margin-top: 1%;
+  margin-top: 3%;
 }
 .HashTags{
 display: flex;
@@ -201,7 +202,7 @@ justify-content: center;
 }
 .HashTagsBtn{
   font-family: 'Cormorant Garamond', serif;
-
+  padding: 0% 1%;
 }
 .hide {
   display: none;

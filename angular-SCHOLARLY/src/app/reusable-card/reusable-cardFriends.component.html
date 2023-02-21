@@ -215,17 +215,17 @@
             {{post.postDescription}}
             <div class="hashs" matTooltip="Hashtags">
               <div class="HashTags" *ngIf="post.Hashtag1">
-                <button mat-button (click)="navToHashTag(post.Hashtag1)" class="HashTagsBtn">
+                <button mat-raised-button (click)="navToHashTag(post.Hashtag1)" class="HashTagsBtn">
               #{{post.Hashtag1}}
               </button>
               </div>
               <div class="HashTags" *ngIf="post.Hashtag2">
-                <button mat-stroked-button (click)="navToHashTag(post.Hashtag2)" class="HashTagsBtn">
+                <button mat-raised-button (click)="navToHashTag(post.Hashtag2)" class="HashTagsBtn">
                 #{{post.Hashtag2}}
                 </button>
                 </div>
                 <div class="HashTags" *ngIf="post.Hashtag3">
-                <button mat-flat-button (click)="navToHashTag(post.Hashtag3)" class="HashTagsBtn">
+                <button mat-raised-button (click)="navToHashTag(post.Hashtag3)" class="HashTagsBtn">
                   #{{post.Hashtag3}}
                   </button>
                   </div>
@@ -235,7 +235,7 @@
                     </button>
                     </div>
                     <div class="HashTags" *ngIf="post.Hashtag5">
-                <button mat-raised-button color="primary" (click)="navToHashTag(post.Hashtag5)" class="HashTagsBtn">
+                <button mat-raised-button (click)="navToHashTag(post.Hashtag5)" class="HashTagsBtn">
                       #{{post.Hashtag5}}
                       </button>
                       </div>
