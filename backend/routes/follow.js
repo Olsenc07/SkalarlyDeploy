@@ -22,21 +22,29 @@ const options = {
     TTL: 60,
   };
 
-// blocked skalar
+// block skalar
 router.get("/blockSkalar", async(req, res) => {
 console.log('username', req.query.username);
+await User.findOne({username : req.query.username})
+.then( userId => {
+    console.log('userId blocked', userId._id);
+    const BlockedSkalar = new BlockSkalar({
+        blocked: userId._id
+    })
+    BlockedSkalar.save().then(blocked => {
+        console.log('blocked', blocked );
+        res.status(200).json({
+            message: 'Follow succesful!',
+            messages: blocked
+        });
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Blocking skalar failed!'
+        });
+     })
+})
 
 
-const BlockSkalar = new BlockSkalar({
-    username: req.query.username
-})
-BlockSkalar.save().then(blocked => {
-    console.log('blocked', blocked );
-    res.status(200).json({
-        message: 'Follow succesful!',
-        messages: blocked
-    });
-})
 })
 
 // unblock skalar
@@ -45,7 +53,7 @@ router.delete("/unblockSkalar", async(req, res) => {
     console.log('userId', req.query.userId);
      await BlockSkalar.deleteOne({
         $and: [
-            {username: req.query.username},
+            {blocked: req.query.username},
             {Creator: req.query.userId}
         ]
      })

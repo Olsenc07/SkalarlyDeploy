@@ -8,12 +8,13 @@ const Comment = require('/app/backend/models/comment');
 const Follow = require('/app/backend/models/follow')
 const Msg = require('/app/backend/models/messages')
 const missedHistory = require('/app/backend/models/missed-notification');
+const BlockSkalar = require('/app/backend/models/follow')
 
 
 const webpush = require('web-push');
 const cloudinary = require('cloudinary').v2
 const checkAuth = require('/app/backend/middleware/check-auth');
-const blockedUser = require('/app/backend/middleware/blocked-user');
+
 
 const router = express.Router();
 publicVapidKey = process.env.vapidPublic;
@@ -75,9 +76,16 @@ router.get("", async(req, res, next) => {
 });
 
 // Post recieving Feed
-router.get("/feed", blockedUser, async(req, res, next) => {
+router.get("/feed", async(req, res, next) => {
     const counter = req.query.counter
-   await Post.find({ OriginalPostId: { $eq: '' } }).sort({_id:-1}).skip(counter).limit(6)
+    const userId = req.query.userId
+console.log('userId',userId);
+await BlockSkalar.find({blocked: userId}).then(blocked => {
+    console.log('blocled heart', blocked);
+    if(blocked){
+    Post.find({ $and: [
+        {OriginalPostId: { $eq: '' }}, {Creator: {$ne: blocked.Creator}}
+    ] }).sort({_id:-1}).skip(counter).limit(6)
     .then(docs => {
             res.status(200).json({
                 message: 'Posts feed fetched succesfully!',
@@ -89,6 +97,26 @@ router.get("/feed", blockedUser, async(req, res, next) => {
             message: 'Fetching feed posts failed!'
         });
     });
+    }else{
+        Post.find({ OriginalPostId: { $eq: '' }}).sort({_id:-1}).skip(counter).limit(6)
+        .then(docs => {
+                res.status(200).json({
+                    message: 'Posts feed fetched succesfully!',
+                    posts: docs
+           });
+        })  
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching feed posts failed!'
+            });
+        });
+    }
+}) .catch(error => {
+    res.status(500).json({
+        message: 'Blocked feed posts failed!'
+    });
+});
+ 
 });
 // Hashtag Page
 router.get("/hashtagPage", async(req, res, next) => {

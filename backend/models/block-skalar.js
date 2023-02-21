@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const BlockedSchema = mongoose.Schema({
-    username: { type: String},
+    blocked: { type: String},
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 

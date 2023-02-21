@@ -684,12 +684,14 @@ export class ReusableCardPersonalComponent implements OnInit {
 export class ReusableCommentsComponent implements OnInit {
   @Input() currentUserId!: string;
   posts: Post[] = [];
+  userId: string;
   private postsSub: Subscription;
   comments: CommentInterface[] = [];
   activeComment: ActiveCommentInterface | null = null;
   constructor(
     private commentsService: CommentsService,
-    public postService: PostService
+    public postService: PostService,
+    public authService: AuthService
   ) {}
 
   timeHourInitial = new Date().getHours();
@@ -714,7 +716,9 @@ export class ReusableCommentsComponent implements OnInit {
     this.text;
 
   ngOnInit(): void {
-    this.postService.getPostsFeed(6);
+    this.userId = this.authService.getUserId();
+
+    this.postService.getPostsFeed(6, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -1168,7 +1172,7 @@ export class CardFeedComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     // Posts
-    this.postService.getPostsFeed(0);
+    this.postService.getPostsFeed(0, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -1376,7 +1380,7 @@ export class CardFeedComponent implements OnInit {
     console.log('howdy', this.countVisibility);
     const NextBtn = document.getElementById('topScroll');
     NextBtn.scrollIntoView();
-    this.postService.getPostsFeed(this.recomCounter);
+    this.postService.getPostsFeed(this.recomCounter, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -1394,7 +1398,7 @@ export class CardFeedComponent implements OnInit {
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.postService.getPostsFeed(this.recomCounter);
+    this.postService.getPostsFeed(this.recomCounter, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -1712,7 +1716,7 @@ export class TrendingFeedComponent implements OnInit {
     console.log('howdy', this.countVisibility);
     const NextBtn = document.getElementById('topScroll');
     NextBtn.scrollIntoView();
-    this.postService.getPostsFeed(this.recomCounter);
+    this.postService.getPostsFeed(this.recomCounter, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -1730,7 +1734,7 @@ export class TrendingFeedComponent implements OnInit {
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.postService.getPostsFeed(this.recomCounter);
+    this.postService.getPostsFeed(this.recomCounter, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -2176,7 +2180,7 @@ export class CardInfoFeedComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     // Posts
-    this.postService.getPostsFeed(0);
+    this.postService.getPostsFeed(0, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -2326,7 +2330,7 @@ export class CardInfoFeedComponent implements OnInit {
     console.log('hey', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.postService.getPostsFeed(this.recomCounter);
+    this.postService.getPostsFeed(this.recomCounter, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -2344,7 +2348,7 @@ export class CardInfoFeedComponent implements OnInit {
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.postService.getPostsFeed(this.recomCounter);
+    this.postService.getPostsFeed(this.recomCounter, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {

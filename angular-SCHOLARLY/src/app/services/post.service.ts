@@ -164,11 +164,11 @@ export class PostService {
   }
 
   // Feed
-  getPostsFeed(counter: number): any {
+  getPostsFeed(counter: number, userId: string): any {
     this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/feed',
-        { params: { counter } }
+        { params: { counter, userId } }
       )
       .pipe(
         map((postData) => {

@@ -550,7 +550,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   blockSkalar(userName: string): void {
     console.log('greatful', userName);
-    this.followService.blockSkalar(userName, this.userId);
+    this.followService.blockSkalar(userName);
   }
 
   imgClick(imgPath): any {
