@@ -13,6 +13,8 @@ const missedHistory = require('/app/backend/models/missed-notification');
 const webpush = require('web-push');
 const cloudinary = require('cloudinary').v2
 const checkAuth = require('/app/backend/middleware/check-auth');
+const blockedUser = require('/app/backend/middleware/blocked-user');
+
 const router = express.Router();
 publicVapidKey = process.env.vapidPublic;
 privateVapidKey = process.env.vapidPrivate
@@ -73,7 +75,7 @@ router.get("", async(req, res, next) => {
 });
 
 // Post recieving Feed
-router.get("/feed", async(req, res, next) => {
+router.get("/feed", blockedUser, async(req, res, next) => {
     const counter = req.query.counter
    await Post.find({ OriginalPostId: { $eq: '' } }).sort({_id:-1}).skip(counter).limit(6)
     .then(docs => {
@@ -369,8 +371,7 @@ video.single('video'),
     async(req, res) => {
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
-        console.log('home3 ',req.file.path)
-            console.log('wasted',req.file.path);
+        console.log('home3 ',req.file.path);
             cloudinary.uploader.upload(req.file.path, 
                 { resource_type: "video", folder:'Posts' }
           )
