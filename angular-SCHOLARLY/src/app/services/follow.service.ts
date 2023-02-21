@@ -18,6 +18,10 @@ export interface Follow {
   nameFollowing: string;
   ProfilePicPathFollowing: string;
 }
+export interface BlockUser {
+  userName: string;
+  userid: string;
+}
 @Injectable({ providedIn: 'root' })
 export class FollowService {
   private follow: Follow[] = [];
@@ -41,6 +45,9 @@ export class FollowService {
 
   private mutualsInfo: Follow[] = [];
   private mutualsInfoPostUpdated = new ReplaySubject<Follow[]>();
+
+  private blockedUser: BlockUser[] = [];
+  private blockedUserUpdated = new ReplaySubject<BlockUser[]>();
 
   private SetNameUpdated = new ReplaySubject();
 
@@ -72,10 +79,12 @@ export class FollowService {
   getInfoMutualUpdateListener(): any {
     return this.mutualInfoPostUpdated.asObservable();
   }
+  getBlockedSkalarsUpdateListener(): any {
+    return this.blockedUserUpdated.asObservable();
+  }
   getInfoMutualsUpdateListener(): any {
     return this.mutualsInfoPostUpdated.asObservable();
   }
-
   getfilterFollowers(): any {
     return this.followersInfoPostUpdated.asObservable();
   }
@@ -380,6 +389,26 @@ export class FollowService {
         );
         this.follower = updatedPosts;
         this.followerPostUpdated.next([...this.follower]);
+      });
+  }
+
+  blockSkalar(username: string): any {
+    this.http
+      .get<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/follow/blockSkalar',
+        {
+          params: { username },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
+      .subscribe((transformedMessage) => {
+        console.log('made it to subscribe', transformedMessage);
+        this.blockedUser = transformedMessage;
+        this.blockedUserUpdated.next([...this.blockedUser]);
       });
   }
 }

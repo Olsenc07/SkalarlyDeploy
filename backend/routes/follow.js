@@ -1,5 +1,7 @@
 const User = require('/app/backend/models/user');
 const Follow = require('/app/backend/models/follow')
+const BlockSkalar = require('/app/backend/models/follow')
+
 const followHistory = require('/app/backend/models/follow-history')
 const missedHistory = require('/app/backend/models/missed-notification');
 
@@ -19,6 +21,50 @@ const options = {
     },
     TTL: 60,
   };
+
+// blocked skalar
+router.get("/blockSkalar", async(req, res) => {
+console.log('username', req.query.username);
+
+
+const BlockSkalar = new BlockSkalar({
+    username: req.query.username
+})
+BlockSkalar.save().then(blocked => {
+    console.log('blocked', blocked );
+    res.status(200).json({
+        message: 'Follow succesful!',
+        messages: blocked
+    });
+})
+})
+
+// unblock skalar
+router.delete("/unblockSkalar", async(req, res) => {
+    console.log('username', req.query.username);
+    console.log('userId', req.query.userId);
+     await BlockSkalar.deleteOne({
+        $and: [
+            {username: req.query.username},
+            {Creator: req.query.userId}
+        ]
+     })
+     .then((result) => {
+        if (result){
+            res.status(200).json({message: 'unblocked!'});
+            } else {
+                res.status(401).json({message: 'Not unblocked'});
+            }
+     })
+      .catch(error => {
+        res.status(500).json({
+            message: 'unblocking skalar failed!'
+        });
+    });
+    
+
+    })
+
 // post
 router.get("/infoFollow", async(req, res, next) => {
     const subscription = req.body;

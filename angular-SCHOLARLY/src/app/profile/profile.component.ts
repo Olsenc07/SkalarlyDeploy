@@ -548,6 +548,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.followersSub.unsubscribe();
   }
 
+  blockSkalar(userName: string): void {
+    console.log('greatful', userName);
+    this.followService.blockSkalar(userName, this.userId);
+  }
+
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;

@@ -113,6 +113,13 @@
             {{follow.length}}
 
           </div>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item matTooltip="This skalar will no longer be able 
+            to view or interavt with your content " (click)="blockSkalar(info.username)">Block User</button>
+          </mat-menu>
         </div>
 
 
