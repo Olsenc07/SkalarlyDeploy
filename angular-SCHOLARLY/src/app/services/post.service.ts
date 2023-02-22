@@ -372,10 +372,11 @@ export class PostService {
   }
   // Trending
 
-  getPostsTrending(): any {
+  getPostsTrending(userId: string): any {
     this.http
       .get<{ message: string; posts: any }>(
-        'https://www.skalarly.com/api/posts/Trending'
+        'https://www.skalarly.com/api/posts/Trending',
+        { params: { userId } }
       )
       .pipe(
         map((postData) => {
