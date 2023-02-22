@@ -488,9 +488,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit(): any {
-    this.userId = this.authService.getUserId();
     this.isLoading = true;
     this.route.queryParams.subscribe((params) => {
+      this.userId = this.authService.getUserId();
       this.user = params.id;
       const id = this.user;
       // on blocked list?

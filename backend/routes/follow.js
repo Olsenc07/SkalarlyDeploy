@@ -25,7 +25,7 @@ const options = {
 // block skalar
 router.get("/blockSkalar", async(req, res) => {
 console.log('username', req.query.username);
-userId = req.query.userId
+userId = req.query.userId;
 username = req.query.username
 await User.findOne({username: username})
 .then( UserId => {
@@ -98,7 +98,7 @@ router.get("/getblockedListOne", async(req, res) => {
         })
         .catch(error => {
             res.status(500).json({
-                message: 'user blocklist failed idk!'
+                message: 'user blocklist failed!'
             });
         });
      
