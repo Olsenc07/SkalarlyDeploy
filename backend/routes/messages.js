@@ -73,10 +73,15 @@ console.log('blocked', blocked)
 
             User.findById({_id: req.query.userId})
             .then(user => {
-                console.log('user ni ni', user)
+                console.log('user ni ni 77', user)
+                blockedList = []
+                blocked.forEach((e) => {
+                    blockedList.push(e.Creator.valueOf())
+                })
+                console.log('blockedList',blockedList);
                 Msg.find( {$and: [
                     {otherUser: user.username},
-                    {you:{$nin: blocked.Creator }}
+                    {you:{$nin: blockedList }}
             ]}).sort({time:-1})
                 .then(documents => {
                     if(documents.length > 0){
