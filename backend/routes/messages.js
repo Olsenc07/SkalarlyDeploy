@@ -4,6 +4,7 @@ const User = require('/app/backend/models/user');
 const Msg = require('/app/backend/models/messages')
 const checkAuth = require('/app/backend/middleware/check-auth');
 const missedHistory = require('/app/backend/models/missed-notification');
+const BlockSkalar = require('/app/backend/models/block-skalar')
 
 
 
@@ -60,70 +61,162 @@ res.status(200).json({
 
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
+
+
     await User.findById({_id: req.query.userId})
 .then(user => {
     console.log('user ni ni', user)
-    Msg.find( 
-        {otherUser: user.username}
-    ).sort({time:-1})
-    .then(documents => {
-        if(documents.length > 0){
-        console.log('timing', documents)
-        nonya = [];
-        documents.forEach((e) => {
-            nonya.push(e.username)
-        });
-let nonyaOnce = [...new Set(nonya)];
-console.log('order german', nonyaOnce);
-allMsgs = []
-for(let i in nonyaOnce){
-    Msg.findOne({ $and: [
-{otherUser: user.username},
-{username: nonyaOnce[i]}
-    ]
-    }).sort({time:-1})    
-      .then(finalDocs => {
-        console.log('did we make it?', finalDocs)
-       allMsgs.push(finalDocs);
-    if(allMsgs.length == nonyaOnce.length){ 
-        let allMsgsReverse = allMsgs.reverse();
-    res.status(200).json({
-        message: 'Info messages fetched succesfully!',
-           messages: allMsgsReverse
-        });
-    }
-      })
+    BlockSkalar.find({blockedUsername:user.username})
+    .then(blocked => {
+        if(blocked){
+console.log('blocked', blocked)
 
-      .catch(err => {
-        return res.status(401).json({
-            message: "Message error 3!",
-    
-        })
-    })
+            User.findById({_id: req.query.userId})
+            .then(user => {
+                console.log('user ni ni', user)
+                Msg.find( {$and: [
+                    {otherUser: user.username},
+                    {you:{$nin: blocked.Creator }}
+            ]}).sort({time:-1})
+                .then(documents => {
+                    if(documents.length > 0){
+                    console.log('timing', documents)
+                    nonya = [];
+                    documents.forEach((e) => {
+                        nonya.push(e.username)
+                    });
+            let nonyaOnce = [...new Set(nonya)];
+            console.log('order german', nonyaOnce);
+            allMsgs = []
+            for(let i in nonyaOnce){
+                Msg.findOne({ $and: [
+            {otherUser: user.username},
+            {username: nonyaOnce[i]}
+                ]
+                }).sort({time:-1})    
+                  .then(finalDocs => {
+                    console.log('did we make it?', finalDocs)
+                   allMsgs.push(finalDocs);
+                if(allMsgs.length == nonyaOnce.length){ 
+                    let allMsgsReverse = allMsgs.reverse();
+                res.status(200).json({
+                    message: 'Info messages fetched succesfully!',
+                       messages: allMsgsReverse
+                    });
+                }
+                  })
+            
+                  .catch(err => {
+                    return res.status(401).json({
+                        message: "Message error 3!",
+                
+                    })
+                })
+            
+            }
+            }else{
+                return res.status(200).json({
+                    message: "No messages to retrieve",
+                    messages: documents
+            
+                })
+            }
+                })
+                .catch(err => {
+                    return res.status(401).json({
+                        message: "Message error 2!",
+                
+                    })
+                })
+            })
+            .catch(err => {
+                return res.status(401).json({
+                    message: "Message error 1!",
+            
+                })
+            })
 
-}
-}else{
-    return res.status(200).json({
-        message: "No messages to retrieve",
-        messages: documents
 
-    })
-}
-    })
-    .catch(err => {
-        return res.status(401).json({
-            message: "Message error 2!",
-    
-        })
+            
+        }else{
+
+            User.findById({_id: req.query.userId})
+            .then(user => {
+                console.log('user ni ni', user)
+                Msg.find( 
+                    {otherUser: user.username}
+                ).sort({time:-1})
+                .then(documents => {
+                    if(documents.length > 0){
+                    console.log('timing', documents)
+                    nonya = [];
+                    documents.forEach((e) => {
+                        nonya.push(e.username)
+                    });
+            let nonyaOnce = [...new Set(nonya)];
+            console.log('order german', nonyaOnce);
+            allMsgs = []
+            for(let i in nonyaOnce){
+                Msg.findOne({ $and: [
+            {otherUser: user.username},
+            {username: nonyaOnce[i]}
+                ]
+                }).sort({time:-1})    
+                  .then(finalDocs => {
+                    console.log('did we make it?', finalDocs)
+                   allMsgs.push(finalDocs);
+                if(allMsgs.length == nonyaOnce.length){ 
+                    let allMsgsReverse = allMsgs.reverse();
+                res.status(200).json({
+                    message: 'Info messages fetched succesfully!',
+                       messages: allMsgsReverse
+                    });
+                }
+                  })
+            
+                  .catch(err => {
+                    return res.status(401).json({
+                        message: "Message error 3!",
+                
+                    })
+                })
+            
+            }
+            }else{
+                return res.status(200).json({
+                    message: "No messages to retrieve",
+                    messages: documents
+            
+                })
+            }
+                })
+                .catch(err => {
+                    return res.status(401).json({
+                        message: "Message error 2!",
+                
+                    })
+                })
+            })
+            .catch(err => {
+                return res.status(401).json({
+                    message: "Message error 1!",
+            
+                })
+            })
+
+            
+        }
     })
 })
-.catch(err => {
-    return res.status(401).json({
-        message: "Message error 1!",
 
-    })
-})
-// }
+
+
+
+
+
+
+
+
 })
 
 // viewed msgs
