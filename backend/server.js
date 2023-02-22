@@ -113,7 +113,7 @@ io.on('connection', (socket) => {
 .then(userOne => {
     console.log('userOne username', userOne._id);
        BlockSkalar.find({Creator: userOne._id}).then(blocked => {
-          console.log('blocked heart', blocked.blockedUsername);
+          console.log('blocked heart', blocked);
           if(blocked){
               blockedList = []
               blocked.forEach((e) => {
@@ -123,9 +123,7 @@ io.on('connection', (socket) => {
               let blockedMatches = blockedList.filter(e => e.blockedUsername == data.username)
               console.log('blockedMatches', blockedMatches);
               if(blockedMatches.length > 0){
-                console.error('this user has blocked you');
-                console.log('this user has blocked you');
-                alert("Hello! I am an alert box!");
+                console.log('this skalar has blocked you');
               }else{
               console.log('not blocked');
               const Message = data.message
