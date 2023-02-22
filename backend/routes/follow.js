@@ -70,13 +70,16 @@ router.get("/getblockedListOne", async(req, res) => {
     console.log('userId', req.query.userId);
     console.log('username hey', req.query.id);
 
-    await User.findOne({username: req.query.id})
+    await User.findOne({username: {$eq: req.query.id}})
         .then(user => {
             conosle.log('user run run', user);
-            BlockSkalar.findOne({$and: [
+            BlockSkalar.findOne({
+                $and: [
                  {blocked: user._id},
                 {Creator: req.query.userId}
-            ]})
+            ]
+        
+        })
             .then(blocked => {
                 if(blocked){
                 console.log('blocked gum', blocked);
