@@ -5,4 +5,4 @@ const BlockedSchema = mongoose.Schema({
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 
-module.exports = mongoose.model('Comment', BlockedSchema);
+module.exports = mongoose.model('BlockedSkalar', BlockedSchema);
