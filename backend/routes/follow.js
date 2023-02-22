@@ -25,18 +25,37 @@ const options = {
 // block skalar
 router.get("/blockSkalar", async(req, res) => {
 console.log('username', req.query.username);
-await User.findOne({username : req.query.username})
-.then( userId => {
-    console.log('userId blocked', userId._id);
+userId = req.query.userId
+username = req.query.username
+await User.findOne({username: username})
+.then( UserId => {
+    console.log('userId blocked', UserId._id);
     const BlockedSkalar = new BlockSkalar({
-        blocked: userId._id
+        blocked: UserId._id
     })
     BlockedSkalar.save().then(blocked => {
         console.log('blocked', blocked );
-        res.status(200).json({
-            message: 'Follow succesful!',
-            messages: blocked
-        });
+
+// delete if they were following you
+        Follow.deleteOne({ $and: [
+            {usernameFollower: req.query.username},
+            {FollowingId: userId}
+        ]})
+        .then(deleted => {
+            if(deleted){
+            console.log('deleted', deleted);
+            }
+            res.status(200).json({
+                message: 'Skalar following you has beem removed!',
+                messages: blocked
+            });
+        }).catch(error => {
+            res.status(500).json({
+                message: 'deleting skalar failed!'
+            });
+         })
+
+       
     }).catch(error => {
         res.status(500).json({
             message: 'Blocking skalar failed!'
