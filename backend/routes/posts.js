@@ -81,7 +81,7 @@ router.get("/feed", async(req, res, next) => {
     const userId = req.query.userId
 console.log('userId',userId);
 await BlockSkalar.find({blocked: userId}).then(blocked => {
-    console.log('blocled heart', blocked);
+    console.log('blocked heart', blocked);
     if(blocked){
     Post.find({ $and: [
         {OriginalPostId: { $eq: '' }}, {Creator: {$ne: blocked.Creator}}
@@ -885,7 +885,7 @@ router.get("/mainPage", async(req, res) => {
     console.log('street crimes 3 ');
          await Post.find({ $and: [ {postLocation: req.query.category}, { OriginalPostId: { $eq: '' } }]}).sort({_id:-1}).skip(counter).limit(6)
            .then(doc => {
-            
+
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
                 posts: doc

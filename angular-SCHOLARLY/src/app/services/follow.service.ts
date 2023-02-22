@@ -148,11 +148,7 @@ export class FollowService {
           params: { id, userId },
         }
       )
-      .pipe(
-        map((messageData) => {
-          return messageData.messages;
-        })
-      )
+      .pipe(map((messageData) => messageData.messages))
       .subscribe((transformedMessage) => {
         console.log('where we at?');
         this.blockedUserListOne = transformedMessage;
