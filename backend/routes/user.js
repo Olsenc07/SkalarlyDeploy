@@ -2473,6 +2473,7 @@ router.get('/getusers', async (req, res) => {
         BlockSkalar.find({blockedUsername: yourself.username})
         .then((blockedlist) => {
             if(blockedlist){
+                console.log('blockedlist.blockedUsername',blockedlist.blockedUsername)
                 UserInfo.find({ $and: [
                    { username: {
                         $regex: new RegExp('^' + payload ,
@@ -2497,6 +2498,31 @@ router.get('/getusers', async (req, res) => {
             
                     });
                 });
+            }else{
+                UserInfo.find({ 
+                     username: {
+                         $regex: new RegExp('^' + payload ,
+                             'i')
+                     }
+                 }).limit(7)
+                 .then((matches) => {
+                     if(matches){
+                     res.status(200).json({
+                         message: 'Matches returned!',
+                         payload: matches
+                     });
+                 }else{
+                     res.status(200).json({
+                         message: 'No matches returned!',
+                         payload: []
+                     }); 
+                 }
+                 }) .catch(err => {
+                     return res.status(401).json({
+                         message: "Can't find skalars!",
+             
+                     });
+                 });
             }
 
         })
