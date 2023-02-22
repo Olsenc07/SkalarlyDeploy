@@ -53,6 +53,7 @@ const options = {
 
  const subscribeRoutes = require('/app/backend/routes/subscriptions')
 
+ const BlockSkalar = require('/app/backend/models/block-skalar')
  const UserInfo = require('/app/backend/models/userInfo');
  const Subscription = require('/app/backend/models/subscription');
  const Msg = require('/app/backend/models/messages')
@@ -105,90 +106,116 @@ io.on('connection', (socket) => {
 
     socket.on('chat-messageSnd', (data) => {
        
-        const Message = data.message
-          User.findById({_id: data.userId})
-        .then(user => {
-        User.findOne({username: user.username})
-        .then(username => {
-            console.log('Hey Message', Message)
-    
-        // saving msg
-        
-        if (data.otherUser !== undefined ) {
-        const MESSAGE = new Msg({username: username.username,
-                                message: Message,
-                                time: data.time,
-                                otherUser: data.otherUser,
-                                you: data.userId,
-                                viewed: false
-                            })
-        MESSAGE.save().then(createdMsg => {
-            socket.emit('messageSnd', formatMessage(username.username, Message, data.time ));
-            // Send notification to subscription
-            try{
-              UserInfo.findOne({username: data.otherUser })
-              .then((user) => { 
-            // console.log('road is open', user);
-                Subscription.findOne({Creator: user.Creator})
-                .then(subscriber =>{
-            // console.log('road is opener', subscriber);
-if(subscriber !== null){
-  Subscription.findOne({Creator: user.Creator})
-  .then(subscriber => {
-    const p256dh = subscriber.keys.p256dh
-    const auth = subscriber.keys.auth
-    const endpoint = subscriber.endpoint
-            const pushSubscription = {
-                keys: {
-                  auth: auth,
-                  p256dh: p256dh
-                },
-                endpoint: endpoint,
-              };
-              publicVapidKey = process.env.vapidPublic;
-              privateVapidKey = process.env.vapidPrivate
-            webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
-            webpush.sendNotification(pushSubscription, JSON.stringify({
-                title: 'New Message!',
-                content: ` ${data.otherUser} has messaged you.`,
-                openUrl: '/search'
-            }), options)
-            .then((_) => {
-              console.log( 'SENT Message');
-          })
-            .catch(error => {
-              User.findOne({username: data.otherUser})
-              .then(user => {
 
-                console.error(error);
-                var missedNotif = new missedHistory({
-                  username: username.username,
-                  message: Message,
-                  time: data.time, 
-                  body: '',
-                  Follower: '',
-                  postId: '',
-                  Creator: user._id
-      
-                })
-                missedNotif.save();
-                console.log('missed followed saved and notified')
+      const userId = data.userId
+      console.log('userId',userId);
+       BlockSkalar.find({blocked: userId}).then(blocked => {
+          console.log('blocked heart', blocked);
+          if(blocked){
+              blockedList = []
+              blocked.forEach((e) => {
+                  blockedList.push(e.Creator.valueOf())
               })
-            })}) 
-          }})
-            .catch(err => {
-              console.log('No subscription for messages', err)
+              console.log('blockedList',blockedList);
+              if(blocked.blockedUsername == data.otherUser){
+                console.error('this user has blocked you');
+                console.log('this user has blocked you');
+                alert("Hello! I am an alert box!");
+              }else{
+              console.log('not blocked');
+              const Message = data.message
+              User.findById({_id: data.userId})
+            .then(user => {
+            User.findOne({username: user.username})
+            .then(username => {
+                console.log('Hey Message', Message)
+        
+            // saving msg
+            
+            if (data.otherUser !== undefined ) {
+            const MESSAGE = new Msg({username: username.username,
+                                    message: Message,
+                                    time: data.time,
+                                    otherUser: data.otherUser,
+                                    you: data.userId,
+                                    viewed: false
+                                })
+            MESSAGE.save().then(createdMsg => {
+                socket.emit('messageSnd', formatMessage(username.username, Message, data.time ));
+                // Send notification to subscription
+                try{
+                  UserInfo.findOne({username: data.otherUser })
+                  .then((user) => { 
+                // console.log('road is open', user);
+                    Subscription.findOne({Creator: user.Creator})
+                    .then(subscriber =>{
+                // console.log('road is opener', subscriber);
+    if(subscriber !== null){
+      Subscription.findOne({Creator: user.Creator})
+      .then(subscriber => {
+        const p256dh = subscriber.keys.p256dh
+        const auth = subscriber.keys.auth
+        const endpoint = subscriber.endpoint
+                const pushSubscription = {
+                    keys: {
+                      auth: auth,
+                      p256dh: p256dh
+                    },
+                    endpoint: endpoint,
+                  };
+                  publicVapidKey = process.env.vapidPublic;
+                  privateVapidKey = process.env.vapidPrivate
+                webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+                webpush.sendNotification(pushSubscription, JSON.stringify({
+                    title: 'New Message!',
+                    content: ` ${data.otherUser} has messaged you.`,
+                    openUrl: '/search'
+                }), options)
+                .then((_) => {
+                  console.log( 'SENT Message');
+              })
+                .catch(error => {
+                  User.findOne({username: data.otherUser})
+                  .then(user => {
+    
+                    console.error(error);
+                    var missedNotif = new missedHistory({
+                      username: username.username,
+                      message: Message,
+                      time: data.time, 
+                      body: '',
+                      Follower: '',
+                      postId: '',
+                      Creator: user._id
+          
+                    })
+                    missedNotif.save();
+                    console.log('missed followed saved and notified')
+                  })
+                })}) 
+              }})
+                .catch(err => {
+                  console.log('No subscription for messages', err)
+                })
+                })
+                }catch{
+                  console.log('User does not have a subscription for messages')
+                      } }).catch(err => {
+                        return res.status(401).json({
+                            message: "Invalid messaging error!"})
+                                })
+                    }else{
+                      console.log('Message can not be saved or sent!')
+                    }   })   }) 
+              }
+            }
+          })
+
+         
+              }) 
+            
+            
             })
-            })
-            }catch{
-              console.log('User does not have a subscription for messages')
-                  } }).catch(err => {
-                    return res.status(401).json({
-                        message: "Invalid messaging error!"})
-                            })
-                }else{
-                  console.log('Message can not be saved or sent!')
-                }   })   })   }) })
                                           
 
 //  DataBase connection
