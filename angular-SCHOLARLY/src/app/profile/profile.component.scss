@@ -114,6 +114,11 @@ overflow-y: scroll;
   align-items: center;
   color: #7e7171;
 }
+.centerBlock{
+  display: flex;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+}
 .centerIcon{
   text-align: center;
   width: 100%;
