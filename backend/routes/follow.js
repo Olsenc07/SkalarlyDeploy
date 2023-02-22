@@ -71,7 +71,7 @@ router.get("/getblockedListOne", async(req, res) => {
 
     await User.findOne({username: req.query.username})
         .then(user => {
-            conosle.log('user', user);
+            conosle.log('user run run', user);
             BlockSkalar.findOne({$and: [
                  {blocked: user._id},
                 {Creator: req.query.userId}
@@ -85,7 +85,7 @@ router.get("/getblockedListOne", async(req, res) => {
                 });
                 }else{
                     res.status(200).json({
-                        message: 'Skalar has been blocked',
+                        message: 'Skalar has not been blocked',
                         messages: false
                     });
                 }
@@ -98,7 +98,7 @@ router.get("/getblockedListOne", async(req, res) => {
         })
         .catch(error => {
             res.status(500).json({
-                message: 'user blocklist failed!'
+                message: 'user blocklist failed idk!'
             });
         });
      
