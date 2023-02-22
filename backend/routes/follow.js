@@ -47,7 +47,7 @@ await userInfo.findOne({username: username})
             console.log('deleted', deleted);
             }
             res.status(200).json({
-                message: 'Skalar following you has beem removed!',
+                message: 'Skalar following you has been removed!',
                 messages: blocked
             });
         }).catch(error => {

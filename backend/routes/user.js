@@ -2505,9 +2505,6 @@ router.get('/getEmails', async (req, res) => {
             $regex: new RegExp('^' + payload)
         }
     }).then((matches) => {
-        console.log('macthes yo', matches)
-        console.log('macthes email', matches.email)
-
         if(matches){
         const payload_2 =  new RegExp(matches.email)
 
