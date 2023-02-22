@@ -32,7 +32,8 @@ await userInfo.findOne({username: username})
     console.log('userId blocked', UserId);
     var blockedskalar = new BlockSkalar({
         blockedName: UserId.name,
-        blockedUsername: UserId.username
+        blockedUsername: UserId.username,
+        Creator: req.userData.userId
     });
     blockedskalar.save().then(blocked => {
         console.log('blocked', blocked );
