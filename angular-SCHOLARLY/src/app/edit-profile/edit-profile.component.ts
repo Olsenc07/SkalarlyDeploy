@@ -649,7 +649,10 @@ export class EditProfileComp1Component implements OnInit {
     });
   }
   save(): any {
-    this.authService.editUserInfoComp(this.userId, this.CodeCompleted.value);
+    this.authService.editUserInfoComp(
+      this.userId,
+      this.CodeCompleted.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });

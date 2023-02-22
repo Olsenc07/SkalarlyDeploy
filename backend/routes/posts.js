@@ -885,6 +885,7 @@ router.get("/mainPage", async(req, res) => {
     console.log('street crimes 3 ');
          await Post.find({ $and: [ {postLocation: req.query.category}, { OriginalPostId: { $eq: '' } }]}).sort({_id:-1}).skip(counter).limit(6)
            .then(doc => {
+            
             res.status(200).json({
                 message: 'Infos fetched succesfully!',
                 posts: doc

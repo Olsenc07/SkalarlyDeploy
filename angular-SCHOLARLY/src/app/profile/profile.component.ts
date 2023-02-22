@@ -550,7 +550,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         });
     });
   }
-
+  // Where the post was posted
+  navigateToMainPage(value: string): void {
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
+  }
   ngOnDestroy(): any {
     this.infosSubShowCase.unsubscribe();
     this.followSub.unsubscribe();
