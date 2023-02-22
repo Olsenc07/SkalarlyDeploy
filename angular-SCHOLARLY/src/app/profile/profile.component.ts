@@ -570,6 +570,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.followService
       .getblockListOneListener()
       .subscribe((booleanYo: boolean) => {
+        console.log('booleanYo', booleanYo);
         if (booleanYo) {
           this.blockList = true;
         } else {
@@ -583,6 +584,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.followService
       .getblockListOneListener()
       .subscribe((booleanYo: boolean) => {
+        console.log('booleanYo', booleanYo);
         if (booleanYo) {
           this.blockList = true;
         } else {
