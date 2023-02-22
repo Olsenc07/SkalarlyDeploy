@@ -1,6 +1,6 @@
 const User = require('/app/backend/models/user');
 const Follow = require('/app/backend/models/follow')
-const BlockSkalar = require('/app/backend/models/follow')
+const BlockSkalar = require('/app/backend/models/block-skalar')
 
 const followHistory = require('/app/backend/models/follow-history')
 const missedHistory = require('/app/backend/models/missed-notification');
