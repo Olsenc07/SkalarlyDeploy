@@ -109,7 +109,10 @@ io.on('connection', (socket) => {
 
       const userId = data.userId
       console.log('userId',userId);
-       BlockSkalar.find({blocked: userId}).then(blocked => {
+      User.findById({_id: userId})
+.then(userOne => {
+    console.log('userOne username', userOne.username);
+       BlockSkalar.find({blockedUsername: userOne.username}).then(blocked => {
           console.log('blocked heart', blocked);
           if(blocked){
               blockedList = []
@@ -209,6 +212,7 @@ io.on('connection', (socket) => {
                     }   })   }) 
               }
             }
+          })
           })
 
          

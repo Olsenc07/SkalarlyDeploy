@@ -443,7 +443,7 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         console.log('made it to subscribe', transformedMessage);
         this.blockedUser = transformedMessage;
-        this.blockedUserUpdated.next([...this.blockedUser]);
+        this.blockedUserUpdated.next(this.blockedUser);
       });
   }
   // unblock skalar
@@ -463,7 +463,7 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         console.log('made it to subscribe', transformedMessage);
         this.blockedUser = transformedMessage;
-        this.blockedUserUpdated.next([...this.blockedUser]);
+        this.blockedUserUpdated.next(this.blockedUser);
       });
   }
 }

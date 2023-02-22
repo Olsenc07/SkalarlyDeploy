@@ -567,24 +567,28 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   blockSkalar(userName: string): void {
     console.log('greatful', userName);
     this.followService.blockSkalar(userName, this.userId);
-    this.followService.getblockListOneListener().subscribe((booleanYo) => {
-      if (booleanYo) {
-        this.blockList = true;
-      } else {
-        this.blockList = false;
-      }
-    });
+    this.followService
+      .getblockListOneListener()
+      .subscribe((booleanYo: boolean) => {
+        if (booleanYo) {
+          this.blockList = true;
+        } else {
+          this.blockList = false;
+        }
+      });
   }
   unblockSkalar(userName: string): void {
     console.log('greatful', userName);
     this.followService.unblockSkalar(userName, this.userId);
-    this.followService.getblockListOneListener().subscribe((booleanYo) => {
-      if (booleanYo) {
-        this.blockList = true;
-      } else {
-        this.blockList = false;
-      }
-    });
+    this.followService
+      .getblockListOneListener()
+      .subscribe((booleanYo: boolean) => {
+        if (booleanYo) {
+          this.blockList = true;
+        } else {
+          this.blockList = false;
+        }
+      });
   }
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
