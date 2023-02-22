@@ -66,8 +66,9 @@ await User.findOne({username: username})
 
 })
 router.get("/getblockedListOne", async(req, res) => {
-    console.log('username hey', req.query.id);
+    console.log('bed time hha not');
     console.log('userId', req.query.userId);
+    console.log('username hey', req.query.id);
 
     await User.findOne({username: req.query.id})
         .then(user => {
