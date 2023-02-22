@@ -29,10 +29,10 @@ userId = req.query.userId;
 username = req.query.username
 await userInfo.findOne({username: username})
 .then( UserId => {
-    console.log('userId blocked', UserId.Creator);
+    console.log('userId blocked', UserId);
     const BlockedSkalar = new BlockSkalar({
         blockedName: UserId.name,
-        blockedUsername: UserId.Creator
+        blockedUsername: UserId.username
     })
     BlockedSkalar.save().then(blocked => {
         console.log('blocked', blocked );

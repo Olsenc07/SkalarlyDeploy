@@ -113,29 +113,7 @@
             {{follow.length}}
 
           </div>
-          <!-- Not blocked -->
-          <div class="centerR">
-          <button *ngIf="blockList == false" mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>
-              <i class="fas fa-ellipsis-h"></i>
-            </mat-icon>
-          </button>
-          </div>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item matTooltip="This skalar will no longer be able 
-            to view or interavt with your content " (click)="blockSkalar(info.username)">Block User</button>
-          </mat-menu>
-<!-- blocked -->
-<div class="centerR">
-<button *ngIf="blockList == true" mat-icon-button [matMenuTriggerFor]="menu2" class="red">
-  <mat-icon>
-    <i class="fas fa-ellipsis-h"></i>
-  </mat-icon>
-</button>
-</div>
-<mat-menu #menu2="matMenu">
-  <button mat-menu-item matTooltip="Unblock Skalar " (click)="unblockSkalar(info.username)">Block User</button>
-</mat-menu>
+      
         </div>
 
 
@@ -166,7 +144,29 @@
                     </div>
               </div>
        
-
+    <!-- Not blocked -->
+    <div class="centerR">
+      <button *ngIf="blockList == false" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>
+          <i class="fas fa-ellipsis-h"></i>
+        </mat-icon>
+      </button>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item matTooltip="This skalar will no longer be able 
+        to view or interact with your content " (click)="blockSkalar(info.username)">Block Skalar</button>
+      </mat-menu>
+<!-- blocked -->
+<div class="centerR">
+<button *ngIf="blockList == true" mat-icon-button [matMenuTriggerFor]="menu2" class="red">
+<mat-icon>
+<i class="fas fa-ellipsis-h"></i>
+</mat-icon>
+</button>
+</div>
+<mat-menu #menu2="matMenu">
+<button mat-menu-item matTooltip="Unblock Skalar " (click)="unblockSkalar(info.username)">unBlock Skalar</button>
+</mat-menu>
                 <div class="center_" *ngIf="Following === false">
               <mat-chip-list  class="center_" 
                 aria-label="FollowBtn">
