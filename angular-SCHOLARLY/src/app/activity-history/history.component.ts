@@ -459,4 +459,8 @@ export class BlockedSkalarsComponent implements OnInit {
         console.log('notif lost', this.blocked);
       });
   }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
 }
