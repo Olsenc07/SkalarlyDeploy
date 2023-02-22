@@ -495,13 +495,15 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       const id = this.user;
       // on blocked list?
       this.followService.getBlockedListOne(id, this.userId);
-      this.followService.getblockListOneListener().subscribe((booleanYo) => {
-        if (booleanYo) {
-          this.blockList = true;
-        } else {
-          this.blockList = false;
-        }
-      });
+      this.followService
+        .getblockListOneListener()
+        .subscribe((booleanYo: boolean) => {
+          if (booleanYo) {
+            this.blockList = true;
+          } else {
+            this.blockList = false;
+          }
+        });
       // If following
       this.followService.getFollowingNotification(id, this.userId);
       this.followSub = this.followService

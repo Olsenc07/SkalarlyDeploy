@@ -56,11 +56,7 @@ export class FollowService {
 
   private userId: string;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private http: HttpClient) {}
   getInfoUpdateListener(): any {
     return this.followPostUpdated.asObservable();
   }
