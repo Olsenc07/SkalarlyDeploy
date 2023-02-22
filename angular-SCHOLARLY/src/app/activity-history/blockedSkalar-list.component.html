@@ -12,21 +12,21 @@
             <div class="display">
            
             <div class="column_">
-                <div class="userName textSize" *ngIf="info.name">
+                <div class="userName textSize" *ngIf="info.blockedName">
     
-                    {{info.name}}
+                    {{info.blockedName}}
                 </div>
                 <div class="display">
                     <!-- Directs to users profile -->
-                    <button mat-button class="center-" *ngIf="userId !== info.Follower" (click)="navigateToPage(info.username)">
-                        @{{ info.username }}
+                    <button mat-button class="center-"  (click)="navigateToPage(info.blockedUsername)">
+                        @{{ info.blockedUsername }}
                     </button>
                 </div>
            
             </div>
         </div>
 <div class="center-Space">
-    <button mat-button (click)="unblockSkalar(info.username)">
+    <button mat-button (click)="unblockSkalar(info.blockedUsername)">
         Unblock
     </button>
 </div>          
