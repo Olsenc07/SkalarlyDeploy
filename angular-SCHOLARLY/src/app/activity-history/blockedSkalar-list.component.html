@@ -26,9 +26,11 @@
             </div>
         </div>
 <div class="center-Space">
-    <button mat-button (click)="unblockSkalar(info.blockedUsername)">
+    <mat-chip-listbox>
+    <mat-chip-option (click)="unblockSkalar(info.blockedUsername)">
         Unblock
-    </button>
+    </mat-chip-option >
+</mat-chip-listbox>
 </div>          
 
         </div>
