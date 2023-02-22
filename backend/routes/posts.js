@@ -90,7 +90,7 @@ await BlockSkalar.find({blocked: userId}).then(blocked => {
 
         console.log('blockedList',blockedList.valueOf());
     Post.find({ $and: [
-        {OriginalPostId: { $eq: '' }}, {Creator: {$ne: blockedList.valueOf()}}
+        {OriginalPostId: { $eq: '' }}, {Creator: {$nin: blockedList.valueOf()}}
     ] }).sort({_id:-1}).skip(counter).limit(6)
     .then(docs => {
         // add filter
