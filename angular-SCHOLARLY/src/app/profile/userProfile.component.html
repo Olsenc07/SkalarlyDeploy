@@ -22,8 +22,8 @@
       <div class="center">
         <div class="hide-input">
           <!-- Not blocked -->
-    <div class="centerBlock">
-      <button *ngIf="blockList == false" mat-icon-button [matMenuTriggerFor]="menu">
+    <div class="centerBlock" *ngIf="blockList == false">
+      <button  mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>
           <i class="fas fa-ellipsis-h"></i>
         </mat-icon>
@@ -35,8 +35,8 @@
         <i class="fas fa-ban"></i>Block Skalar</button>
       </mat-menu>
 <!-- blocked -->
-<div class="centerBlock">
-<button *ngIf="blockList == true" mat-icon-button [matMenuTriggerFor]="menu2" class="red">
+<div class="centerBlock" *ngIf="blockList == true">
+<button  mat-icon-button [matMenuTriggerFor]="menu2" class="red">
 <mat-icon>
 <i class="fas fa-ellipsis-h"></i>
 </mat-icon>

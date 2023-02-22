@@ -88,11 +88,12 @@ await BlockSkalar.find({blocked: userId}).then(blocked => {
             blockedList.push(e.Creator)
         })
 
-        console.log('blockedList',blockedList)
+        console.log('blockedList',blockedList.valueOf());
     Post.find({ $and: [
-        {OriginalPostId: { $eq: '' }}, {Creator: {$ne: blockedList}}
+        {OriginalPostId: { $eq: '' }}, {Creator: {$ne: blockedList.valueOf()}}
     ] }).sort({_id:-1}).skip(counter).limit(6)
     .then(docs => {
+        // add filter
             res.status(200).json({
                 message: 'Posts feed fetched succesfully!',
                 posts: docs
