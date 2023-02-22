@@ -56,7 +56,7 @@ export class FollowService {
 
   private userId: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
   getInfoUpdateListener(): any {
     return this.followPostUpdated.asObservable();
   }
@@ -444,6 +444,9 @@ export class FollowService {
         console.log('made it to subscribe 1', transformedMessage);
         this.blockedUser = transformedMessage;
         this.blockedUserUpdated.next(this.blockedUser);
+        this.snackBar.open('Skalar has been blocked', '🚫', {
+          duration: 3000,
+        });
       });
   }
   // unblock skalar
@@ -464,6 +467,9 @@ export class FollowService {
         console.log('made it to subscribe', transformedMessage);
         this.blockedUser = transformedMessage;
         this.blockedUserUpdated.next(this.blockedUser);
+        this.snackBar.open('Skalar has been unblocked', '✅', {
+          duration: 3000,
+        });
       });
   }
 }
