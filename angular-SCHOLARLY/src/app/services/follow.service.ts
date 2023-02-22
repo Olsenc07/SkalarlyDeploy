@@ -49,6 +49,9 @@ export class FollowService {
   private blockedUser: BlockUser[] = [];
   private blockedUserUpdated = new ReplaySubject<BlockUser[]>();
 
+  private blockedUserListOneUpdated = new ReplaySubject();
+  private blockedUserListOne: boolean;
+
   private SetNameUpdated = new ReplaySubject();
 
   private userId: string;
@@ -60,6 +63,9 @@ export class FollowService {
   ) {}
   getInfoUpdateListener(): any {
     return this.followPostUpdated.asObservable();
+  }
+  getblockListOneListener(): any {
+    return this.blockedUserListOneUpdated.asObservable();
   }
   getsetUserNameUpdateListener(): any {
     return this.SetNameUpdated.asObservable();
@@ -132,7 +138,25 @@ export class FollowService {
         // });
       });
   }
-
+  // Blocked listone
+  getBlockedLisOne(username: string, userId: string): any {
+    this.http
+      .get<{ message: string; messages: boolean }>(
+        'https://www.skalarly.com/api/follow/getblockedListOne',
+        {
+          params: { username, userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.blockedUserListOne = transformedMessage;
+        this.blockedUserListOneUpdated.next(this.blockedUserListOne);
+      });
+  }
   getMessageNotification(userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(
@@ -391,11 +415,31 @@ export class FollowService {
         this.followerPostUpdated.next([...this.follower]);
       });
   }
-
+  // block skalar
   blockSkalar(username: string, userId): any {
     this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/blockSkalar',
+        {
+          params: { username, userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
+      .subscribe((transformedMessage) => {
+        console.log('made it to subscribe', transformedMessage);
+        this.blockedUser = transformedMessage;
+        this.blockedUserUpdated.next([...this.blockedUser]);
+      });
+  }
+  // unblock skalar
+  unblockSkalar(username: string, userId): any {
+    this.http
+      .delete<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/follow/unblockSkalar',
         {
           params: { username, userId },
         }

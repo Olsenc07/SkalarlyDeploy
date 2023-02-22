@@ -65,6 +65,44 @@ await User.findOne({username: username})
 
 
 })
+router.get("/getblockedListOne", async(req, res) => {
+    console.log('username', req.query.username);
+    console.log('userId', req.query.userId);
+
+    await User.findOne({username: req.query.username})
+        .then(user => {
+            conosle.log('user', user);
+            BlockSkalar.findOne({$and: [
+                 {blocked: user._id},
+                {Creator: req.query.userId}
+            ]})
+            .then(blocked => {
+                if(blocked){
+                console.log('blocked gum', blocked);
+                res.status(200).json({
+                    message: 'Skalar has been blocked',
+                    messages: true
+                });
+                }else{
+                    res.status(200).json({
+                        message: 'Skalar has been blocked',
+                        messages: false
+                    });
+                }
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'blocklist failed!'
+                });
+            });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'user blocklist failed!'
+            });
+        });
+     
+})
 
 // unblock skalar
 router.delete("/unblockSkalar", async(req, res) => {

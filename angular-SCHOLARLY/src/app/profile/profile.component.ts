@@ -352,6 +352,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ) {}
   isLoading = false;
   userId: string;
+  blockList: boolean;
   recomCounter = 0;
   countVisibility = 0;
   follow: Follow[] = [];
@@ -492,6 +493,15 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.route.queryParams.subscribe((params) => {
       this.user = params.id;
       const id = this.user;
+      // on blocked list?
+      this.followService.getBlockedLisOne(id, this.userId);
+      this.followService.getblockListOneListener().subscribe((booleanYo) => {
+        if (booleanYo) {
+          this.blockList = true;
+        } else {
+          this.blockList = false;
+        }
+      });
       // If following
       this.followService.getFollowingNotification(id, this.userId);
       this.followSub = this.followService
@@ -551,8 +561,25 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   blockSkalar(userName: string): void {
     console.log('greatful', userName);
     this.followService.blockSkalar(userName, this.userId);
+    this.followService.getblockListOneListener().subscribe((booleanYo) => {
+      if (booleanYo) {
+        this.blockList = true;
+      } else {
+        this.blockList = false;
+      }
+    });
   }
-
+  unblockSkalar(userName: string): void {
+    console.log('greatful', userName);
+    this.followService.unblockSkalar(userName, this.userId);
+    this.followService.getblockListOneListener().subscribe((booleanYo) => {
+      if (booleanYo) {
+        this.blockList = true;
+      } else {
+        this.blockList = false;
+      }
+    });
+  }
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;

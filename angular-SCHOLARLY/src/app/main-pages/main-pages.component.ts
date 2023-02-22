@@ -523,7 +523,7 @@ export class RecentComponent implements OnInit {
     console.log('howdy', this.countVisibility);
     const NextBtn = document.getElementById('topScroll');
     NextBtn.scrollIntoView();
-    this.postService.getPostsFeed(this.recomCounter);
+    this.postService.getPostsFeed(this.recomCounter, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -541,7 +541,7 @@ export class RecentComponent implements OnInit {
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.postService.getPostsFeed(this.recomCounter);
+    this.postService.getPostsFeed(this.recomCounter, this.userId);
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
