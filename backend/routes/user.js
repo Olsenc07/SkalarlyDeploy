@@ -13,7 +13,7 @@ const Post = require('/app/backend/models/post');
 const Comment = require('/app/backend/models/comment');
 const Msg = require('/app/backend/models/messages')
 const Follow = require('/app/backend/models/follow')
-
+const BlockSkalar = require('/app/backend/models/block-skalar')
 
 const cloudinary = require('cloudinary').v2
 // cloudinary
@@ -2466,34 +2466,45 @@ if(userInfo){
 // Search users
 router.get('/getusers', async (req, res) => {
     let payload = req.query.query;
-     await UserInfo.find({
-        username: {
-            $regex: new RegExp('^' + payload ,
-                'i')
-        }
-    }).limit(7)
-    .then((matches) => {
-        if(matches){
-        res.status(200).json({
-            message: 'Matches returned!',
-            payload: matches
-        });
-    }else{
-        res.status(200).json({
-            message: 'No matches returned!',
-            payload: []
-        }); 
-    }
-    }) .catch(err => {
-        return res.status(401).json({
-            message: "Can't find skalars!",
+    let userId = req.query.userId;
+ 
+  await UserInfo.findOne({Creator: userId})
+    .then(yourself => {
+        BlockSkalar.find({blockedUsername: yourself.username})
+        .then((blockedlist) => {
+            if(blockedlist){
+                UserInfo.find({ $and: [
+                   { username: {
+                        $regex: new RegExp('^' + payload ,
+                            'i')
+                    }},{username: {$ne: blockedlist.blockedUsername}}
+                ]}).limit(7)
+                .then((matches) => {
+                    if(matches){
+                    res.status(200).json({
+                        message: 'Matches returned!',
+                        payload: matches
+                    });
+                }else{
+                    res.status(200).json({
+                        message: 'No matches returned!',
+                        payload: []
+                    }); 
+                }
+                }) .catch(err => {
+                    return res.status(401).json({
+                        message: "Can't find skalars!",
+            
+                    });
+                });
+            }
 
-        });
-    });
-    // search = search.slice(0, 10);
+        })
+    })
 
 
-    // res.send({ payload: search })
+
+     
 });
 
 // Search emails
@@ -2591,7 +2602,11 @@ router.get('/getUnUsedEmail', async (req, res) => {
 // Search usernames
 router.get('/getUsernames', async (req, res) => {
     let payload = req.query.query;
-  await User.findOne({
+
+
+// cant search if you blocked by that user
+    
+  await User.findOne({ 
         username: {
             $regex: new RegExp('^' + payload )
         }

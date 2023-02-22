@@ -41,13 +41,15 @@ export class PostsService {
   getHashs(): any {
     return this.hashUpdated.asObservable();
   }
-  searchUsers(query: string): any {
+  searchUsers(query: string, userId: string): any {
     console.log('witch craft', query);
+    console.log('warlock craft', userId);
+
     this.http
       .get<{ messages: string; payload: string }>(
         'https://www.skalarly.com/api/user/getusers',
         {
-          params: { query },
+          params: { query, userId },
         }
       )
       .pipe(map((data) => data.payload))

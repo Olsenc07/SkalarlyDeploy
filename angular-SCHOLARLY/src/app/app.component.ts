@@ -429,7 +429,7 @@ export class AppComponent implements OnInit {
 
       // if (matches != null) {
       // if (matches.length > 0) {
-      this.postsService.searchUsers(noSpecialChars.trim());
+      this.postsService.searchUsers(noSpecialChars.trim(), this.userId);
       this.postsService.getUserId().subscribe((results) => {
         if (results.length > 0) {
           this.users = results;

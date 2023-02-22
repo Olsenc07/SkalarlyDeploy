@@ -8,7 +8,7 @@ const Comment = require('/app/backend/models/comment');
 const Follow = require('/app/backend/models/follow')
 const Msg = require('/app/backend/models/messages')
 const missedHistory = require('/app/backend/models/missed-notification');
-const BlockSkalar = require('/app/backend/models/follow')
+const BlockSkalar = require('/app/backend/models/block-skalar')
 
 
 const webpush = require('web-push');
