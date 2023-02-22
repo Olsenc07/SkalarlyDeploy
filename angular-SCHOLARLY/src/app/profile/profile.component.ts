@@ -566,11 +566,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   blockSkalar(userName: string): void {
     console.log('greatful', userName);
-    this.followService.blockSkalar(userName, this.userId);
     this.followService
-      .getblockListOneListener()
+      .blockSkalar(userName, this.userId)
       .subscribe((booleanYo: boolean) => {
-        console.log('booleanYo', booleanYo);
+        console.log('booleanYo 1', booleanYo);
         if (booleanYo) {
           this.blockList = true;
         } else {
@@ -580,9 +579,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
   unblockSkalar(userName: string): void {
     console.log('greatful', userName);
-    this.followService.unblockSkalar(userName, this.userId);
     this.followService
-      .getblockListOneListener()
+      .unblockSkalar(userName, this.userId)
       .subscribe((booleanYo: boolean) => {
         console.log('booleanYo', booleanYo);
         if (booleanYo) {

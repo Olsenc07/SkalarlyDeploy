@@ -441,7 +441,7 @@ export class FollowService {
         })
       )
       .subscribe((transformedMessage) => {
-        console.log('made it to subscribe', transformedMessage);
+        console.log('made it to subscribe 1', transformedMessage);
         this.blockedUser = transformedMessage;
         this.blockedUserUpdated.next(this.blockedUser);
       });
