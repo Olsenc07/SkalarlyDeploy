@@ -109,18 +109,20 @@ io.on('connection', (socket) => {
 
       const userId = data.userId
       console.log('userId',userId);
-      User.findById({_id: userId})
+      User.findOne({username: data.otherUser})
 .then(userOne => {
-    console.log('userOne username', userOne.username);
-       BlockSkalar.find({blockedUsername: userOne.username}).then(blocked => {
-          console.log('blocked heart', blocked);
+    console.log('userOne username', userOne._id);
+       BlockSkalar.find({Creator: userOne._id}).then(blocked => {
+          console.log('blocked heart', blocked.blockedUsername);
           if(blocked){
               blockedList = []
               blocked.forEach((e) => {
-                  blockedList.push(e.Creator.valueOf())
+                  blockedList.push(e.blockedUsername)
               })
               console.log('blockedList',blockedList);
-              if(blocked.blockedUsername == data.otherUser){
+              let blockedMatches = blockedList.filter(e => e.blockedUsername == data.username)
+              console.log('blockedMatches', blockedMatches);
+              if(blockedMatches.length > 0){
                 console.error('this user has blocked you');
                 console.log('this user has blocked you');
                 alert("Hello! I am an alert box!");
