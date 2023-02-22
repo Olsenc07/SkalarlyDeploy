@@ -2230,7 +2230,10 @@ router.get("/info", async(req, res) => {
     const userId = req.query.userId;
 
     console.log('userId',userId);
-    await BlockSkalar.find({blocked: userId}).then(blocked => {
+await User.findOne({Creator: userId})
+.then(userOne => {
+    console.log('userOne username', userOne.username);
+     BlockSkalar.find({blockedUsername: userOne.username}).then(blocked => {
         console.log('blocked heart', blocked);
         if(blocked){
             blockedList = []
@@ -2267,6 +2270,9 @@ router.get("/info", async(req, res) => {
         });
     }
 })
+})
+
+  
 });
 
 
