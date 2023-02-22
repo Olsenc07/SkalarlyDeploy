@@ -66,10 +66,10 @@ await User.findOne({username: username})
 
 })
 router.get("/getblockedListOne", async(req, res) => {
-    console.log('username', req.query.username);
+    console.log('username hey', req.query.id);
     console.log('userId', req.query.userId);
 
-    await User.findOne({username: req.query.username})
+    await User.findOne({username: req.query.id})
         .then(user => {
             conosle.log('user run run', user);
             BlockSkalar.findOne({$and: [

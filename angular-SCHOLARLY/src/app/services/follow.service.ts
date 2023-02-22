@@ -139,12 +139,13 @@ export class FollowService {
       });
   }
   // Blocked listone
-  getBlockedListOne(username: string, userId: string): any {
+  getBlockedListOne(id: string, userId: string): any {
+    console.log('give a f lol');
     this.http
       .get<{ message: string; messages: boolean }>(
         'https://www.skalarly.com/api/follow/getblockedListOne',
         {
-          params: { username, userId },
+          params: { id, userId },
         }
       )
       .pipe(
