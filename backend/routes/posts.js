@@ -83,6 +83,7 @@ console.log('userId',userId);
 await BlockSkalar.find({blocked: userId}).then(blocked => {
     console.log('blocked heart', blocked);
     if(blocked){
+        console.log('half empty', blocked.Creator)
     Post.find({ $and: [
         {OriginalPostId: { $eq: '' }}, {Creator: {$ne: blocked.Creator}}
     ] }).sort({_id:-1}).skip(counter).limit(6)
