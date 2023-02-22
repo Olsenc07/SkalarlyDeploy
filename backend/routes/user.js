@@ -2230,7 +2230,7 @@ router.get("/info", async(req, res) => {
     const userId = req.query.userId;
 
     console.log('userId',userId);
-await User.findOne({Creator: userId})
+await User.findById({_id: userId})
 .then(userOne => {
     console.log('userOne username', userOne.username);
      BlockSkalar.find({blockedUsername: userOne.username}).then(blocked => {
