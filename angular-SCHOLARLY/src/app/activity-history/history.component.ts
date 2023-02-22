@@ -19,6 +19,10 @@ export interface Follow {
   nameFollowing: string;
   ProfilePicPathFollowing: string;
 }
+export interface BlockUser {
+  userName: string;
+  userid: string;
+}
 export interface MissedNotif {
   username: string;
   message: string;
@@ -40,6 +44,7 @@ export class ActivityHistoryComponent implements OnInit {
   private postsSub: Subscription;
   shared: Post[] = [];
   notif: MissedNotif[] = [];
+  blocked: BlockUser[] = [];
   private followSubFollowers: Subscription;
 
   constructor(
@@ -85,6 +90,14 @@ export class ActivityHistoryComponent implements OnInit {
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.notif = missedNotifs;
         console.log('notif lost', this.notif);
+      });
+
+    this.followService.getBlockedList(this.userId);
+    this.followService
+      .getBlockedSkalarsUpdateListener()
+      .subscribe((blocked: BlockUser[]) => {
+        this.blocked = blocked;
+        console.log('notif lost', this.blocked);
       });
   }
 
@@ -407,5 +420,43 @@ export class MissedNotificationsComponent implements OnInit {
   }
   navigateToFriends(): void {
     this.router.navigate(['/friends-activity']);
+  }
+}
+
+@Component({
+  selector: 'blocked-skalars',
+  templateUrl: './blockedSkalar-list.component.html',
+  styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
+})
+export class BlockedSkalarsComponent implements OnInit {
+  userId: string;
+  blocked: BlockUser[] = [];
+  recomCounter = 0;
+  countVisibility = 0;
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private followService: FollowService
+  ) {}
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+    this.followService.getBlockedList(this.userId);
+    this.followService
+      .getBlockedSkalarsUpdateListener()
+      .subscribe((blocked: BlockUser[]) => {
+        this.blocked = blocked;
+        console.log('notif lost', this.blocked);
+      });
+  }
+  unblockSkalar(userName: string): void {
+    console.log('greatful', userName);
+    this.followService.unblockSkalar(userName, this.userId);
+    this.followService
+      .getBlockedSkalarsUpdateListener()
+      .subscribe((blocked) => {
+        this.blocked = blocked;
+        console.log('notif lost', this.blocked);
+      });
   }
 }

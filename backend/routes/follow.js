@@ -65,11 +65,31 @@ await User.findOne({username: username})
 
 
 })
-router.get("/getblockedListOne", async(req, res) => {
-    console.log('bed time hha not');
-    console.log('userId', req.query.userId);
-    console.log('username hey', req.query.id);
 
+// list of all blocked skalars
+router.get("/getblockedList", async(req, res) => {
+    await  BlockSkalar.find({Creator: req.query.userId})
+    .then(blocked => {
+        console.log('blocked list', blocked);
+        if (blocked){
+        res.status(200).json({
+            message: 'Skalars have been blocked',
+            messages: blocked
+        });
+    }else{
+        res.status(200).json({
+            message: 'No Skalars have been blocked',
+            messages: []
+        });
+    }
+    }) .catch(error => {
+        res.status(500).json({
+            message: 'all skalars blocklist failed!'
+        });
+    });
+});
+// Get blocked skalars on their profile
+router.get("/getblockedListOne", async(req, res) => {
     await User.findOne({username: {$eq: req.query.id}})
         .then(user => {
             console.log('user run run', user);
@@ -78,7 +98,6 @@ router.get("/getblockedListOne", async(req, res) => {
                  {blocked: user._id},
                 {Creator: req.query.userId}
             ]
-        
         })
             .then(blocked => {
                 if(blocked){
@@ -102,7 +121,7 @@ router.get("/getblockedListOne", async(req, res) => {
         })
         .catch(error => {
             res.status(500).json({
-                message: 'user blocklist failed!'
+                message: 'skalar blocklist failed!'
             });
         });
      

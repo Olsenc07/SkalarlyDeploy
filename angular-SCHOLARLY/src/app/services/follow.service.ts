@@ -151,6 +151,23 @@ export class FollowService {
         this.blockedUserListOneUpdated.next(this.blockedUserListOne);
       });
   }
+  // Blocked list all
+  getBlockedList(userId: string): any {
+    console.log('ace');
+    this.http
+      .get<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/follow/getblockedList',
+        {
+          params: { userId },
+        }
+      )
+      .pipe(map((messageData) => messageData.messages))
+      .subscribe((transformedMessage) => {
+        console.log('where we at yo?');
+        this.blockedUser = transformedMessage;
+        this.blockedUserUpdated.next([...this.blockedUser]);
+      });
+  }
   getMessageNotification(userId: string): any {
     this.http
       .get<{ message: string; messages: any }>(

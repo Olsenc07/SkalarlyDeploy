@@ -69,6 +69,7 @@ import {
   FollowedTemplateComponent,
   SharedHistoryComponent,
   MissedNotificationsComponent,
+  BlockedSkalarsComponent,
 } from './activity-history/history.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
 import { MessagingComponent } from './messaging/messaging.component';
@@ -179,6 +180,7 @@ import { ErrorInterceptor } from './error-interceptor';
     FollowedTemplateComponent,
     SharedHistoryComponent,
     MissedNotificationsComponent,
+    BlockedSkalarsComponent,
     GroupChatsComponent,
     MainPagesComponent,
     TrendingComponent,

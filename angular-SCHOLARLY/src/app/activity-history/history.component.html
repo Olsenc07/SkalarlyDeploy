@@ -124,6 +124,25 @@
 
   </div>
 </mat-tab>
+<mat-tab label="Blocked Skalars"  *ngIf="blocked.length != 0">
+  <ng-template  mat-tab-label >
+    <mat-icon>  
+      <i class="fas fa-ban"></i>
+     </mat-icon>
+     <div class="font">Blocked Skalars </div>
+   </ng-template>
+   <div class="standard">      
+    <div class="following-box">
+
+                 <div class="structure" >
+                  <!-- *ngIf="shared.length == 0" -->
+                 
+               <blocked-skalars></blocked-skalars>
+            
+                 </div>
+            </div>
+            </div>
+   </mat-tab>
 
           </div>
   
