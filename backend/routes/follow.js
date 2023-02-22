@@ -72,7 +72,7 @@ router.get("/getblockedListOne", async(req, res) => {
 
     await User.findOne({username: {$eq: req.query.id}})
         .then(user => {
-            conosle.log('user run run', user);
+            console.log('user run run', user);
             BlockSkalar.findOne({
                 $and: [
                  {blocked: user._id},
