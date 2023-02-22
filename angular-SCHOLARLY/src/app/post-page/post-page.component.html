@@ -444,7 +444,8 @@
 
                 <input matInput maxlength="11" [formControl]="Hashtag1" >
                 <mat-hint align="end"> {{ (HashTagLength | async) }} / 11</mat-hint>
-    
+                <mat-error *ngIf="Hashtag1.errors?.noWhiteSpace">White spaces aren't allowed </mat-error>
+                <mat-error *ngIf="Hashtag1.errors?.noSpecialCharacters"> No special characters </mat-error>
                
               </mat-form-field>
             </div>
@@ -453,6 +454,8 @@
               <mat-form-field class="text-input" appearance="fill">
                 <mat-label >Hashtag </mat-label>
                 <input matInput maxlength="11" [formControl]="Hashtag2" >
+                <mat-error *ngIf="Hashtag2.errors?.noWhiteSpace">White spaces aren't allowed </mat-error>
+                <mat-error *ngIf="Hashtag2.errors?.noSpecialCharacters"> No special characters </mat-error>
               </mat-form-field>
             </div>
           <!-- 3 -->
@@ -460,6 +463,8 @@
               <mat-form-field class="text-input" appearance="fill">
                 <mat-label >Hashtag </mat-label>
                 <input matInput maxlength="11" [formControl]="Hashtag3" >
+                <mat-error *ngIf="Hashtag3.errors?.noWhiteSpace">White spaces aren't allowed </mat-error>
+                <mat-error *ngIf="Hashtag3.errors?.noSpecialCharacters"> No special characters </mat-error>
               </mat-form-field>
             </div>
             <!-- 4 -->
@@ -468,6 +473,8 @@
               <mat-form-field class="text-input" appearance="fill">
                 <mat-label >Hashtag </mat-label>
                 <input matInput maxlength="11" [formControl]="Hashtag4" >
+                <mat-error *ngIf="Hashtag4.errors?.noWhiteSpace">White spaces aren't allowed </mat-error>
+                <mat-error *ngIf="Hashtag4.errors?.noSpecialCharacters"> No special characters </mat-error>
               </mat-form-field>
             </div>
             <!-- 5 -->
@@ -476,6 +483,8 @@
               <mat-form-field class="text-input" appearance="fill">
                 <mat-label >Hashtag </mat-label>
                 <input matInput maxlength="11" [formControl]="Hashtag5" >
+                <mat-error *ngIf="Hashtag5.errors?.noWhiteSpace">White spaces aren't allowed </mat-error>
+                <mat-error *ngIf="Hashtag5.errors?.noSpecialCharacters"> No special characters </mat-error>
               </mat-form-field>
             </div>
             <div>

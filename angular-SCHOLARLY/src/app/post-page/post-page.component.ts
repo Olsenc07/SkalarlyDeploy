@@ -10,6 +10,8 @@ import {
   FormGroup,
   FormBuilder,
   Validators,
+  AbstractControl,
+  ValidationErrors,
 } from '@angular/forms';
 import {
   MomentDateAdapter,
@@ -123,11 +125,26 @@ export class PostPageComponent implements OnInit, OnDestroy {
   // });
 
   Title: FormControl = new FormControl('');
-  Hashtag1: FormControl = new FormControl('');
-  Hashtag2: FormControl = new FormControl('');
-  Hashtag3: FormControl = new FormControl('');
-  Hashtag4: FormControl = new FormControl('');
-  Hashtag5: FormControl = new FormControl('');
+  Hashtag1: FormControl = new FormControl('', [
+    this.noWhiteSpace,
+    this.noSpecialCharacters,
+  ]);
+  Hashtag2: FormControl = new FormControl('', [
+    this.noWhiteSpace,
+    this.noSpecialCharacters,
+  ]);
+  Hashtag3: FormControl = new FormControl('', [
+    this.noWhiteSpace,
+    this.noSpecialCharacters,
+  ]);
+  Hashtag4: FormControl = new FormControl('', [
+    this.noWhiteSpace,
+    this.noSpecialCharacters,
+  ]);
+  Hashtag5: FormControl = new FormControl('', [
+    this.noWhiteSpace,
+    this.noSpecialCharacters,
+  ]);
 
   // date: FormControl = new FormControl('');
   // dateE: FormControl = new FormControl('');
@@ -391,7 +408,27 @@ export class PostPageComponent implements OnInit, OnDestroy {
     }
     return value;
   }
-
+  public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
+    if ((control.value as string).indexOf(' ') >= 0) {
+      return { noWhiteSpace: true };
+    }
+    return null;
+  }
+  public noSpecialCharacters(
+    control: AbstractControl
+  ): ValidationErrors | null {
+    const working = control.value as string;
+    console.log('is this working 2', working);
+    const normalcharacter = /^[]-~`!@+#$%^&*()_={}[|\/:;'"<>,.?]*/;
+    console.log('hey', normalcharacter.test(working));
+    if (normalcharacter.test(working) == null) {
+      console.log('hey boo ya');
+      return null;
+    } else {
+      console.log('easy now');
+      return { noSpecialCharacters: true };
+    }
+  }
   onFormSubmit(): any {
     this.postService.addPost(
       this.userId,
