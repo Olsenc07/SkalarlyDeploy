@@ -2473,7 +2473,7 @@ router.get('/getusers', async (req, res) => {
         BlockSkalar.find({blockedUsername: yourself.username})
         .then((blockedlist) => {
             if(blockedlist){
-                console.log('blockedlist.blockedUsername',blockedlist.blockedUsername)
+                console.log('blockedlist.blockedUsername', blockedlist.blockedUsername)
                 UserInfo.find({ $and: [
                    { username: {
                         $regex: new RegExp('^' + payload ,

@@ -83,9 +83,14 @@ console.log('userId',userId);
 await BlockSkalar.find({blocked: userId}).then(blocked => {
     console.log('blocked heart', blocked);
     if(blocked){
-        console.log('half empty', blocked.Creator)
+        blockedList = []
+        blocked.forEach((e) => {
+            blockedList.push(e.Creator)
+        })
+
+        console.log('blockedList',blockedList)
     Post.find({ $and: [
-        {OriginalPostId: { $eq: '' }}, {Creator: {$ne: blocked.Creator}}
+        {OriginalPostId: { $eq: '' }}, {Creator: {$ne: blockedList}}
     ] }).sort({_id:-1}).skip(counter).limit(6)
     .then(docs => {
             res.status(200).json({
