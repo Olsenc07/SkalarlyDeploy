@@ -19,8 +19,8 @@ export interface Follow {
   ProfilePicPathFollowing: string;
 }
 export interface BlockUser {
-  userName: string;
-  userid: string;
+  blockedName: string;
+  blockedUsername: string;
 }
 @Injectable({ providedIn: 'root' })
 export class FollowService {

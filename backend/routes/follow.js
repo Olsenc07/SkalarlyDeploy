@@ -27,18 +27,19 @@ router.get("/blockSkalar", async(req, res) => {
 console.log('username', req.query.username);
 userId = req.query.userId;
 username = req.query.username
-await User.findOne({username: username})
+await userInfo.findOne({username: username})
 .then( UserId => {
-    console.log('userId blocked', UserId._id);
+    console.log('userId blocked', UserId.Creator);
     const BlockedSkalar = new BlockSkalar({
-        blocked: UserId._id
+        blockedName: UserId.name,
+        blockedUsername: UserId.Creator
     })
     BlockedSkalar.save().then(blocked => {
         console.log('blocked', blocked );
 
 // delete if they were following you
         Follow.deleteOne({ $and: [
-            {usernameFollower: req.query.username},
+            {usernameFollower: username},
             {FollowingId: userId}
         ]})
         .then(deleted => {
@@ -95,7 +96,7 @@ router.get("/getblockedListOne", async(req, res) => {
             console.log('user run run', user);
             BlockSkalar.findOne({
                 $and: [
-                 {blocked: user._id},
+                 {blockedUsername: user._id},
                 {Creator: req.query.userId}
             ]
         })
@@ -133,7 +134,7 @@ router.delete("/unblockSkalar", async(req, res) => {
     console.log('userId', req.query.userId);
      await BlockSkalar.deleteOne({
         $and: [
-            {blocked: req.query.username},
+            {blockedUsername: req.query.username},
             {Creator: req.query.userId}
         ]
      })
