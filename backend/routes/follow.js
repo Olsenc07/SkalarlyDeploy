@@ -49,7 +49,7 @@ await userInfo.findOne({username: username})
             }
             res.status(200).json({
                 message: 'Skalar following you has been removed!',
-                messages: blocked
+                messages: true
             });
         }).catch(error => {
             res.status(500).json({
@@ -141,7 +141,7 @@ router.delete("/unblockSkalar", async(req, res) => {
      })
      .then((result) => {
         if (result){
-            res.status(200).json({message: 'unblocked!'});
+            res.status(200).json({message: 'unblocked!', messages: false});
             } else {
                 res.status(401).json({message: 'Not unblocked'});
             }
