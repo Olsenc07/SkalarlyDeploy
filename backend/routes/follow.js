@@ -25,22 +25,22 @@ const options = {
 // block skalar
 router.get("/blockSkalar", async(req, res) => {
 console.log('username', req.query.username);
-userId = req.query.userId;
+userIdYo = req.query.userId;
 username = req.query.username
 await userInfo.findOne({username: username})
 .then( UserId => {
     console.log('userId blocked', UserId);
-    const BlockedSkalar = new BlockSkalar({
+    var blockedskalar = new BlockSkalar({
         blockedName: UserId.name,
         blockedUsername: UserId.username
-    })
-    BlockedSkalar.save().then(blocked => {
+    });
+    blockedskalar.save().then(blocked => {
         console.log('blocked', blocked );
 
 // delete if they were following you
         Follow.deleteOne({ $and: [
             {usernameFollower: username},
-            {FollowingId: userId}
+            {FollowingId: userIdYo}
         ]})
         .then(deleted => {
             if(deleted){
