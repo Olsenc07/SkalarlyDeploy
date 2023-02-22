@@ -392,12 +392,12 @@ export class FollowService {
       });
   }
 
-  blockSkalar(username: string): any {
+  blockSkalar(username: string, userId): any {
     this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/blockSkalar',
         {
-          params: { username },
+          params: { username, userId },
         }
       )
       .pipe(
