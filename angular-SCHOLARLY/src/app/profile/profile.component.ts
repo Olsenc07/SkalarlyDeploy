@@ -688,7 +688,7 @@ export class BioComponent implements OnInit {
     // Verfiy
     this.userId = this.authService.getUserId();
     // Info
-    this.authService.getInfo(0);
+    this.authService.getInfo(this.userId, 0);
     this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {

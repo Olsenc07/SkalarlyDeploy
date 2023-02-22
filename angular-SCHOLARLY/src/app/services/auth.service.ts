@@ -1758,11 +1758,11 @@ export class AuthService {
       });
   }
   // Your info
-  getInfo(counter: number): any {
+  getInfo(userId: string, counter: number): any {
     this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/user/info',
-        { params: { counter } }
+        { params: { userId, counter } }
       )
       .pipe(
         map((infosData) => {

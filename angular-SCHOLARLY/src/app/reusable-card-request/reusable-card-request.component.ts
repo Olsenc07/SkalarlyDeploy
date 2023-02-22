@@ -27,14 +27,14 @@ export class ReusableCardRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.authService.getInfo(this.recomCounter);
+    this.userId = this.authService.getUserId();
+    this.authService.getInfo(this.userId, this.recomCounter);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: string[]) => {
         this.infos = infos;
         this.isLoading = false;
       });
-    this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
@@ -70,7 +70,8 @@ export class ReusableCardRecommendationComponent implements OnInit {
 
   ngOnInit(): any {
     this.isLoading = true;
-    this.authService.getInfo(0);
+    this.userId = this.authService.getUserId();
+    this.authService.getInfo(this.userId, 0);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: string[]) => {
@@ -78,7 +79,6 @@ export class ReusableCardRecommendationComponent implements OnInit {
         // this.infos = this.shuffle(infos);
         this.isLoading = false;
       });
-    this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
@@ -95,7 +95,7 @@ export class ReusableCardRecommendationComponent implements OnInit {
     this.recomCounter += counting;
     const NextBtn = document.getElementById('bigScroll');
     NextBtn.scrollIntoView();
-    this.authService.getInfo(this.recomCounter);
+    this.authService.getInfo(this.userId, this.recomCounter);
     this.authService.getInfoUpdateListener().subscribe((infos: string[]) => {
       this.infos = infos;
       // this.infos = this.shuffle(infos);
@@ -111,7 +111,7 @@ export class ReusableCardRecommendationComponent implements OnInit {
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.authService.getInfo(this.recomCounter);
+    this.authService.getInfo(this.userId, this.recomCounter);
     this.authService.getInfoUpdateListener().subscribe((infos: string[]) => {
       this.infos = infos;
       // this.infos = this.shuffle(infos);

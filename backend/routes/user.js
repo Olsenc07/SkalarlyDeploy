@@ -2227,7 +2227,18 @@ if(req.body.CodePursuing14){
 // userInfo recieving
 router.get("/info", async(req, res) => {
     const counter = req.query.counter;
-    await UserInfo.find().skip(counter).limit(6)
+    const userId = req.query.userId;
+
+    console.log('userId',userId);
+    await BlockSkalar.find({blocked: userId}).then(blocked => {
+        console.log('blocked heart', blocked);
+        if(blocked){
+            blockedList = []
+            blocked.forEach((e) => {
+                blockedList.push(e.Creator.valueOf())
+            })
+            console.log('blockedList',blockedList);
+     UserInfo.find({Creator: {$nin: blockedList}}).skip(counter).limit(6)
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
             res.status(200).json({
@@ -2240,6 +2251,22 @@ router.get("/info", async(req, res) => {
                 message: 'Fetching users failed!'
             });
         });
+    }else{
+        UserInfo.find().skip(counter).limit(6)
+        // .select('-password') if i was fetching user info, dont want password passed on front end
+        .then(documents => {
+            res.status(200).json({
+                message: 'Users fetched succesfully!',
+                infos: documents
+            });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching users failed!'
+            });
+        });
+    }
+})
 });
 
 
