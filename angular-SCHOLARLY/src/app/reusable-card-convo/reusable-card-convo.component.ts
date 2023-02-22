@@ -22,20 +22,20 @@ export class ReusableCardConvoComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.authService.getInfo(this.recomCounter);
+    this.userId = this.authService.getUserId();
+
+    this.authService.getInfo(this.userId, this.recomCounter);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
         this.isLoading = false;
       });
-    this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
-        this.userId = this.authService.getUserId();
       });
   }
 }
