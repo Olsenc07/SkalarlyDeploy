@@ -2189,7 +2189,7 @@ export class CardInfoFeedComponent implements OnInit {
         console.log('posts personal', this.posts);
       });
     // Info
-    this.authService.getInfo(this.recomCounter);
+    this.authService.getInfo(this.userId, this.recomCounter);
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
