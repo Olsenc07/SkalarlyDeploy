@@ -80,7 +80,9 @@ router.get("/feed", async(req, res, next) => {
     const counter = req.query.counter
     const userId = req.query.userId
 console.log('userId',userId);
-await BlockSkalar.find({blocked: userId}).then(blocked => {
+await User.findOne({_id: userId}).
+then(user => {
+ BlockSkalar.find({blockedUsername: user.username}).then(blocked => {
     console.log('blocked heart', blocked);
     if(blocked){
         blockedList = []
@@ -123,6 +125,7 @@ await BlockSkalar.find({blocked: userId}).then(blocked => {
         message: 'Blocked feed posts failed!'
     });
 });
+})
  
 });
 // Hashtag Page
