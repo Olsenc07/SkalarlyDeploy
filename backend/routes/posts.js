@@ -919,6 +919,8 @@ router.get("/otherUsers", async(req, res) => {
 // Get main page posts
 router.get("/mainPage", async(req, res) => {    
     const counter = req.query.counter;
+    const userId = req.query.userId;
+
     console.log('street crimes 3 ');
          await Post.find({ $and: [ {postLocation: req.query.category}, { OriginalPostId: { $eq: '' } }]}).sort({_id:-1}).skip(counter).limit(6)
            .then(doc => {

@@ -455,11 +455,11 @@ export class PostService {
       });
   }
   // getting main page posts
-  getPostsMainPage(category: string, counter: number): any {
+  getPostsMainPage(category: string, counter: number, userId: string): any {
     this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/mainPage',
-        { params: { category, counter } }
+        { params: { category, counter, userId } }
       )
       .pipe(
         map((postData) => {

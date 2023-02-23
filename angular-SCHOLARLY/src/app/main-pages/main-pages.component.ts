@@ -48,7 +48,7 @@ export class MainPagesComponent implements OnInit {
       console.log('params main page', params);
       this.category = params?.category;
 
-      this.postService.getPostsMainPage(this.category, 0);
+      this.postService.getPostsMainPage(this.category, 0, this.userId);
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
@@ -170,10 +170,10 @@ export class SinglePageTemplateComponent implements OnInit {
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
           if (posts.length === 0) {
-            window.history.back();
-            this.snackBar.open('This Skalar has blocked you', '🚫', {
-              duration: 3000,
-            });
+            this.router.navigate(['/search']),
+              this.snackBar.open('This Skalar has blocked you', '🚫', {
+                duration: 3000,
+              });
           } else {
             this.posts = posts;
             console.log('pats', this.posts);
