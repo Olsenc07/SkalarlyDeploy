@@ -503,72 +503,72 @@ export class UserProfileComponent implements OnInit {
           this.snackBar.open('This is not a valid account!', '🚫', {
             duration: 3000,
           });
-        }else{
-        if (BLOCKED === 'true') {
-          this.router.navigate(['/search']);
-          this.snackBar.open('This Skalar has blocked you', '🚫', {
-            duration: 3000,
-          });
         } else {
-          // on blocked list?
-          this.followService.getBlockedListOne(id, this.userId);
-          this.followService
-            .getblockListOneListener()
-            .subscribe((booleanYo: boolean) => {
-              if (booleanYo) {
-                this.blockList = true;
-              } else {
-                this.blockList = false;
-              }
+          if (BLOCKED === 'true') {
+            this.router.navigate(['/search']);
+            this.snackBar.open('This Skalar has blocked you', '🚫', {
+              duration: 3000,
             });
-          // If following
-          this.followService.getFollowingNotification(id, this.userId);
-          this.followSub = this.followService
-            .getInfoFollowUpdateListener()
-            .subscribe((following: Follow[]) => {
-              this.isLoading = false;
-              this.following = following;
-              if (this.following.length) {
-                this.Following = true;
-              } else {
-                this.Following = false;
-              }
-            });
+          } else {
+            // on blocked list?
+            this.followService.getBlockedListOne(id, this.userId);
+            this.followService
+              .getblockListOneListener()
+              .subscribe((booleanYo: boolean) => {
+                if (booleanYo) {
+                  this.blockList = true;
+                } else {
+                  this.blockList = false;
+                }
+              });
+            // If following
+            this.followService.getFollowingNotification(id, this.userId);
+            this.followSub = this.followService
+              .getInfoFollowUpdateListener()
+              .subscribe((following: Follow[]) => {
+                this.isLoading = false;
+                this.following = following;
+                if (this.following.length) {
+                  this.Following = true;
+                } else {
+                  this.Following = false;
+                }
+              });
 
-          // Following
-          this.followService.getMessageNotificationOther(id);
-          this.followSubs = this.followService
-            .getInfoUpdateListener()
-            .subscribe((follow: Follow[]) => {
-              this.follow = follow;
-              console.log('lucky you', this.follow);
-              console.log('lucky you', this.follow.length);
-            });
-          // Followers
-          this.followService.getMessageNotificationFollowedOther(id);
-          this.followersSub = this.followService
-            .getInfoFollowUpdateListener()
-            .subscribe((followers: Follow[]) => {
-              this.followers = followers;
-              console.log('lucky lucky you', this.followers);
-            });
-          // Infos
-          this.authService.getOtherInfo(id);
-          this.infosSub = this.authService
-            .getInfoUpdateListener()
-            .subscribe((infos: AuthDataInfo[]) => {
-              this.infos = infos;
-            });
-          this.showCaseService.getShowCase(id, 0);
-          this.infosSubShowCase = this.showCaseService
-            .getshowCaseUpdateListener()
-            .subscribe((showcases: ShowCase[]) => {
-              this.showCases = showcases;
-              console.log('showcases yo', this.showCases);
-              this.isLoading = false;
-            });
-        }=
-      }
+            // Following
+            this.followService.getMessageNotificationOther(id);
+            this.followSubs = this.followService
+              .getInfoUpdateListener()
+              .subscribe((follow: Follow[]) => {
+                this.follow = follow;
+                console.log('lucky you', this.follow);
+                console.log('lucky you', this.follow.length);
+              });
+            // Followers
+            this.followService.getMessageNotificationFollowedOther(id);
+            this.followersSub = this.followService
+              .getInfoFollowUpdateListener()
+              .subscribe((followers: Follow[]) => {
+                this.followers = followers;
+                console.log('lucky lucky you', this.followers);
+              });
+            // Infos
+            this.authService.getOtherInfo(id);
+            this.infosSub = this.authService
+              .getInfoUpdateListener()
+              .subscribe((infos: AuthDataInfo[]) => {
+                this.infos = infos;
+              });
+            this.showCaseService.getShowCase(id, 0);
+            this.infosSubShowCase = this.showCaseService
+              .getshowCaseUpdateListener()
+              .subscribe((showcases: ShowCase[]) => {
+                this.showCases = showcases;
+                console.log('showcases yo', this.showCases);
+                this.isLoading = false;
+              });
+          }
+        }
       });
     });
   }
