@@ -498,6 +498,12 @@ export class UserProfileComponent implements OnInit {
       this.authService.checkBlocked(this.userId, id);
       this.authService.getBlocked().subscribe((BLOCKED: string) => {
         console.log('is this skalar blocked?', BLOCKED);
+        if (BLOCKED === 'redirect') {
+          this.router.navigate(['/search']);
+          this.snackBar.open('This is not a valid account!', '🚫', {
+            duration: 3000,
+          });
+        }else{
         if (BLOCKED === 'true') {
           this.router.navigate(['/search']);
           this.snackBar.open('This Skalar has blocked you', '🚫', {
@@ -561,7 +567,8 @@ export class UserProfileComponent implements OnInit {
               console.log('showcases yo', this.showCases);
               this.isLoading = false;
             });
-        }
+        }=
+      }
       });
     });
   }
