@@ -500,7 +500,7 @@ export class UserProfileComponent implements OnInit {
         console.log('is this skalar blocked?', BLOCKED);
         if (BLOCKED === 'redirect') {
           window.history.back();
-          this.snackBar.open('This is not a valid account!', '🚫', {
+          this.snackBar.open('That is not a valid account!', '🚫', {
             duration: 3000,
           });
         } else {
