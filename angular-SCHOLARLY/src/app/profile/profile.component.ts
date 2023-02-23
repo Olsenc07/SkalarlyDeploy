@@ -525,13 +525,12 @@ export class UserProfileComponent implements OnInit {
             this.followSub = this.followService
               .getInfoFollowUpdateListener()
               .subscribe((following: Follow[]) => {
-                this.isLoading = false;
                 console.log('top off', following);
                 console.log('top off', following.length);
 
                 if (following.length > 0) {
                   this.Following = true;
-                  console.log('following');
+                  console.log('following', this.Following);
                 } else {
                   this.Following = false;
                   console.log('not following');
