@@ -53,7 +53,7 @@ const options = {
 
  const subscribeRoutes = require('/app/backend/routes/subscriptions')
 
- const BlockSkalar = require('/app/backend/models/block-skalar')
+ const BlockSkalar = require('/app/backend/models/block-skalar');
  const UserInfo = require('/app/backend/models/userInfo');
  const Subscription = require('/app/backend/models/subscription');
  const Msg = require('/app/backend/models/messages')

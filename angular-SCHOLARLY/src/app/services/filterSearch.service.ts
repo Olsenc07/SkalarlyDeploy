@@ -1,18 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthData, AuthDataInfo } from '../signup/auth-data.model';
-import { Subject, ReplaySubject } from 'rxjs';
+import { AuthDataInfo } from '../signup/auth-data.model';
+import { ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({ providedIn: 'root' })
 export class FilterSearchService {
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private http: HttpClient) {}
 
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new ReplaySubject<AuthDataInfo[]>();

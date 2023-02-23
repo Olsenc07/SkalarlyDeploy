@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import { CommentsService } from '../services/comments.service';
 import { createPopup } from '@picmo/popup-picker';
 import { ShowCaseService } from '../services/showCase.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-main-pages',
@@ -153,7 +154,8 @@ export class SinglePageTemplateComponent implements OnInit {
     public postService: PostService,
     private authService: AuthService,
     private router: Router,
-    private commentsService: CommentsService
+    private commentsService: CommentsService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -167,9 +169,16 @@ export class SinglePageTemplateComponent implements OnInit {
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
-          this.posts = posts;
-          console.log('pats', this.posts);
-          this.isLoading = false;
+          if (posts.length === 0) {
+            this.router.navigate(['/search']);
+            this.snackBar.open('This Skalar has blocked you', '🚫', {
+              duration: 3000,
+            });
+          } else {
+            this.posts = posts;
+            console.log('pats', this.posts);
+            this.isLoading = false;
+          }
         });
     });
   }

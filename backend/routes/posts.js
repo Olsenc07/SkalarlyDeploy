@@ -938,13 +938,46 @@ router.get("/mainPage", async(req, res) => {
 // Get single page post
 router.get("/singlePage", async(req, res) => {    
     console.log('love in the air 7 ',req.query.postId);
-         await Post.find({_id: req.query.postId})
+    console.log('love in the air 5 ',req.query.userId);
+
+
+         await Post.findOne({_id: req.query.postId})
            .then(doc => {
-            console.log('dogs', doc)
-            res.status(200).json({
-                message: 'Single post fetched succesfully!',
-                posts: doc
+            console.log('doc',doc);
+            User.findOne({_id:req.query.userId})
+            .then(you => {
+                console.log('you', you)
+                BlockSkalar.findOne({ $and: [
+                 {blockedUsername: you.username},
+                    { Creator: doc.Creator}
+                 ]})
+                 .then(blocked => {
+                    if(blocked){
+                        res.status(200).json({
+                            message: 'Single post fetched succesfully but your blocked!',
+                            posts: []
+                        });
+                    }else{
+                        console.log('dogs', doc)
+                        res.status(200).json({
+                            message: 'Single post fetched succesfully!',
+                            posts: doc
+                        });
+                    }
+                 }) 
+                  .catch(error => {
+                    res.status(500).json({
+                        message: 'Fetching single blocked skalar failed!'
+                    });
+                });
+            })  .catch(error => {
+                res.status(500).json({
+                    message: 'Fetching single skalar failed!'
+                });
             });
+       
+            
+           
            }) 
            .catch(error => {
             res.status(500).json({
