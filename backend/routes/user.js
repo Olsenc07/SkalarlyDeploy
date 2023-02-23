@@ -81,36 +81,50 @@ console.log('id', id);
 
 
 
-    await UserInfo.findOne({Creator: UserID})
+    await User.findOne({_id: UserID})
     .then(found => {
         console.log('user 69', found);
-        BlockSkalar.findOne({ $and:[
-            {Creator:id},{blockedUsername: found.username}
-        ]})
-        .then(blocked => {
-            if(blocked){
-                res.status(200).json({
-                    message: 'Blocked',
-                    payload: true
-                });
-            }else{
-                res.status(200).json({
-                    message: 'Not Blocked',
-                    payload: false
-                });
-            }
+
+        UserInfo.findOne({username: id})
+        .then(viewing => {
+            if(viewing){
+        console.log('viewing', viewing);
+            BlockSkalar.findOne({ $and:[
+                {Creator:viewing.Creator},{blockedUsername: found.username}
+            ]})
+            .then(blocked => {
+                if(blocked){
+                    res.status(200).json({
+                        message: 'Blocked',
+                        payload: true
+                    });
+                }else{
+                    res.status(200).json({
+                        message: 'Not Blocked',
+                        payload: false
+                    });
+                }
+            }).catch(err => {
+                return res.status(401).json({
+                    message: "Can't find blocked list",
+            
+                })
+            })
+        }else{
+            return res.status(401).json({
+                message: "This is not a valid account!",
+        
+            })
+        }
         }).catch(err => {
             return res.status(401).json({
-                message: "Can't find blocked list",
+                message: "Can't find skalar",
         
             })
         })
-    }).catch(err => {
-        return res.status(401).json({
-            message: "Can't find skalar",
-    
+
         })
-    })
+        
 })
 
 
