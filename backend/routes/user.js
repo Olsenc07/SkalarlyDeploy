@@ -73,15 +73,19 @@ const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
 // checked blocked on profile page
-router.get("/checkBlocked", async (req, res) => {
+router.get("/checkBlocked", async(req, res) => {
 let userId = req.query.userId;
-let id = req.query.id
+console.log('userId', userId);
+let id = req.query.id;
+console.log('id', id);
+
+
 
     await User.findOne({_id: userId})
-    .then(user => {
-        console.log('user 69', user)
+    .then(found => {
+        console.log('user 69', found)
         BlockSkalar.findOne({ $and:[
-            {Creator:id},{blockedUsername: user.username}
+            {Creator:id},{blockedUsername: found.username}
         ]})
         .then(blocked => {
             if(blocked){
@@ -97,7 +101,7 @@ let id = req.query.id
             }
         }).catch(err => {
             return res.status(401).json({
-                message: "Can't find blocked",
+                message: "Can't find blocked list",
         
             })
         })
@@ -107,10 +111,6 @@ let id = req.query.id
     
         })
     })
-    
-
-
-
 })
 
 

@@ -74,6 +74,8 @@ export class AuthService {
 
   checkBlocked(userId: string, id: string): any {
     console.log('my lady', userId);
+    console.log('my man', id);
+
     this.http
       .get<{ message: string; payload: boolean }>(
         'https://www.skalarly.com/api/user/checkBlocked',
