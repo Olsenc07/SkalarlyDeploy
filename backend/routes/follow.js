@@ -154,7 +154,43 @@ router.delete("/unblockSkalar", async(req, res) => {
     
 
     })
+// // unblock skalar from activity pg
+router.delete("/unblockSkalarActivity", async(req, res) => {
+    console.log('username', req.query.username);
+    console.log('userId', req.query.userId);
+     await BlockSkalar.deleteOne({
+        $and: [
+            {blockedUsername: req.query.username},
+            {Creator: req.query.userId}
+        ]
+     })
+     .then((result) => {
+        // get this users blocks list
+        if (result){
+            console.log('results', result);
+            BlockSkalar.find({Creator:req.query.userId})
+            .then(newList => {
+            console.log('newList', newList);
+                if(newList){
+                res.status(200).json({message: 'unblocked!', messages: newList});
+                }else{
+                res.status(200).json({message: 'unblocked all!', messages: []});
 
+                }
+            })
+
+            } else {
+                res.status(401).json({message: 'Not unblocked'});
+            }
+     })
+      .catch(error => {
+        res.status(500).json({
+            message: 'unblocking skalar failed!'
+        });
+    });
+    
+
+    })
 // post
 router.get("/infoFollow", async(req, res, next) => {
     const subscription = req.body;

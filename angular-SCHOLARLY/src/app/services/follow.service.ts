@@ -49,6 +49,9 @@ export class FollowService {
   private blockedUser: BlockUser[] = [];
   private blockedUserUpdated = new ReplaySubject<BlockUser[]>();
 
+  private blockedUser2: BlockUser[] = [];
+  private blockedUserUpdated2 = new ReplaySubject<BlockUser[]>();
+
   private blockedUserListOneUpdated = new ReplaySubject();
   private blockedUserListOne: boolean;
 
@@ -83,6 +86,9 @@ export class FollowService {
   }
   getBlockedSkalarsUpdateListener(): any {
     return this.blockedUserUpdated.asObservable();
+  }
+  getBlockedSkalarsUpdateListener2(): any {
+    return this.blockedUserUpdated2.asObservable();
   }
   getInfoMutualsUpdateListener(): any {
     return this.mutualsInfoPostUpdated.asObservable();
@@ -467,6 +473,29 @@ export class FollowService {
         console.log('made it to subscribe', transformedMessage);
         this.blockedUser = transformedMessage;
         this.blockedUserUpdated.next(this.blockedUser);
+        this.snackBar.open('Skalar has been unblocked', '✅', {
+          duration: 3000,
+        });
+      });
+  }
+  // unblock skalar from activity pg
+  unblockSkalarActivityPg(username: string, userId): any {
+    this.http
+      .delete<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/follow/unblockSkalarActivity',
+        {
+          params: { username, userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
+      .subscribe((transformedMessage) => {
+        console.log('made it to subscribe', transformedMessage);
+        this.blockedUser2 = transformedMessage;
+        this.blockedUserUpdated2.next([...this.blockedUser2]);
         this.snackBar.open('Skalar has been unblocked', '✅', {
           duration: 3000,
         });

@@ -451,12 +451,13 @@ export class BlockedSkalarsComponent implements OnInit {
   }
   unblockSkalar(userName: string): void {
     console.log('greatful', userName);
-    this.followService.unblockSkalar(userName, this.userId);
+    this.followService.unblockSkalarActivityPg(userName, this.userId);
     this.followService
-      .getBlockedSkalarsUpdateListener()
-      .subscribe((blocked) => {
+      .getBlockedSkalarsUpdateListener2()
+      .subscribe((blocked: BlockUser[]) => {
+        console.log('big blocked', blocked);
         this.blocked = blocked;
-        console.log('notif lost', this.blocked);
+        console.log('blocks gone', this.blocked);
       });
   }
   navigateToPage(infoUser: string): any {
