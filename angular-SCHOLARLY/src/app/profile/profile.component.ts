@@ -339,7 +339,7 @@ export class ProfileComponent implements OnInit {
   templateUrl: './userProfile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class UserProfileComponent implements OnInit, OnDestroy {
+export class UserProfileComponent implements OnInit {
   constructor(
     private bottomSheet: MatBottomSheet,
     public postService: PostService,
@@ -494,7 +494,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.userId = this.authService.getUserId();
       this.user = params.id;
       const id = this.user;
-      // check if user viewing has been blocked
+      // check if skalars viewing has been blocked
       this.authService.checkBlocked(this.userId, id);
       this.authService.getBlocked().subscribe((BLOCKED: string) => {
         console.log('is this skalar blocked?', BLOCKED);
@@ -570,12 +570,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
-  ngOnDestroy(): any {
-    this.infosSubShowCase.unsubscribe();
-    this.followSub.unsubscribe();
-    this.infosSub.unsubscribe();
-    this.followersSub.unsubscribe();
-  }
+  // ngOnDestroy(): any {
+  //   this.infosSubShowCase.unsubscribe();
+  //   this.followSub.unsubscribe();
+  //   this.infosSub.unsubscribe();
+  //   this.followersSub.unsubscribe();
+  // }
 
   blockSkalar(userName: string): void {
     console.log('greatful', userName);
