@@ -199,48 +199,52 @@ router.get("/Trending", async(req, res, next) => {
 
     const userId = req.query.userId
 console.log('userId',userId);
-await BlockSkalar.find({blocked: userId}).then(blocked => {
-    console.log('blocked heart', blocked);
-    if(blocked){
-        blockedList = []
-        blocked.forEach((e) => {
-            blockedList.push(e.Creator.valueOf())
-        })
-        console.log('blockedList',blockedList);
-     Post.find({ $and: [
-        {OriginalPostId: {$eq: ''}},
-        {Creator: {$nin: blockedList}}
-   ]}).sort({Reposts: -1 }).limit(20)
-    .then(FinalTrending => {
-            console.log('lover',FinalTrending )
-            res.status(200).json({
-                message: 'Thats whats trending!',
-                posts: FinalTrending
-            })  
-          
-        })
-        .catch(error => {
-            res.status(500).json({
-                message: 'Fetching top 20 posts failed!'
+await User.findOne({_id: userId}).
+then(user => {
+    BlockSkalar.find({blockedUsername: user.username}).then(blocked => {
+        console.log('blocked heart', blocked);
+        if(blocked){
+            blockedList = []
+            blocked.forEach((e) => {
+                blockedList.push(e.Creator.valueOf())
+            })
+            console.log('blockedList',blockedList);
+         Post.find({ $and: [
+            {OriginalPostId: {$eq: ''}},
+            {Creator: {$nin: blockedList}}
+       ]}).sort({Reposts: -1 }).limit(20)
+        .then(FinalTrending => {
+                console.log('lover',FinalTrending )
+                res.status(200).json({
+                    message: 'Thats whats trending!',
+                    posts: FinalTrending
+                })  
+              
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Fetching top 20 posts failed!'
+                });
             });
-        });
-    }else{
-        Post.find({ OriginalPostId: {$eq: ''}}).sort({Reposts: -1 }).limit(20)
-    .then(FinalTrending => {
-            console.log('lover',FinalTrending )
-            res.status(200).json({
-                message: 'Thats whats trending!',
-                posts: FinalTrending
-            })  
-          
-        })
-        .catch(error => {
-            res.status(500).json({
-                message: 'Fetching top 20 posts failed!'
+        }else{
+            Post.find({ OriginalPostId: {$eq: ''}}).sort({Reposts: -1 }).limit(20)
+        .then(FinalTrending => {
+                console.log('lover',FinalTrending )
+                res.status(200).json({
+                    message: 'Thats whats trending!',
+                    posts: FinalTrending
+                })  
+              
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Fetching top 20 posts failed!'
+                });
             });
-        });
-    }
+        }
+    })
 })
+
 });
 // Number of reposts
 router.get("/TrendingNumber", async(req, kristina, next) => {
