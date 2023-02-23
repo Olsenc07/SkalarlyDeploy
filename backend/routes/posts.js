@@ -944,7 +944,7 @@ router.get("/singlePage", async(req, res) => {
          await Post.findOne({_id: req.query.postId})
            .then(doc => {
             console.log('doc',doc);
-            User.findOne({_id:req.query.userId})
+            User.findOne({_id: req.query.userId})
             .then(you => {
                 console.log('you', you)
                 BlockSkalar.findOne({ $and: [

@@ -561,11 +561,11 @@ export class PostService {
   }
 
   // getting single page post
-  getPostSinglePage(postId: string): any {
+  getPostSinglePage(postId: string, userId: string): any {
     this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/singlePage',
-        { params: { postId } }
+        { params: { postId, userId } }
       )
       .pipe(
         map((postData) => {

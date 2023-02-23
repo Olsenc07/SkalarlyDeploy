@@ -165,7 +165,7 @@ export class SinglePageTemplateComponent implements OnInit {
       console.log('params single page', params);
       this.postId = params?.postId;
 
-      this.postService.getPostSinglePage(this.postId);
+      this.postService.getPostSinglePage(this.postId, this.userId);
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
