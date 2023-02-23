@@ -351,7 +351,7 @@ export class UserProfileComponent implements OnInit {
     public dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {}
-  isLoading = false;
+  isLoading = true;
   userId: string;
   blockList: boolean;
   recomCounter = 0;
@@ -489,7 +489,6 @@ export class UserProfileComponent implements OnInit {
     }
   }
   ngOnInit(): any {
-    this.isLoading = true;
     this.route.queryParams.subscribe((params) => {
       this.userId = this.authService.getUserId();
       this.user = params.id;

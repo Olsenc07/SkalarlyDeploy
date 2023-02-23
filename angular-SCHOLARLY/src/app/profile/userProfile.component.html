@@ -3,7 +3,7 @@
 </div>
 
 <div *ngFor="let info of infos" >
-  <div *ngIf="info.Creator !== userId" class="main-content"   >
+  <div *ngIf="(info.Creator !== userId) && (isLoading == false)" class="main-content"   >
     <!-- input pic & has this default pic before-->
     <div class="left-side" >
 
