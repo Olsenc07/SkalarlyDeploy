@@ -32,6 +32,8 @@ export class AuthService {
 
   private emailUsedUpdated = new ReplaySubject();
   private emailUsedId: boolean;
+
+  private blocked: boolean;
   // check if email exists for login
   getEmail(): any {
     return this.emailUpdated.asObservable();
@@ -48,7 +50,9 @@ export class AuthService {
   getToken(): string {
     return this.token;
   }
-
+  getBlocked(): boolean {
+    return this.blocked;
+  }
   getIsAuth(): boolean {
     return this.isAuthenticated;
   }
@@ -66,6 +70,22 @@ export class AuthService {
   // problem here so unsubscrbei somehow
   getInfoUpdateListener(): any {
     return this.infosUpdated.asObservable();
+  }
+
+  checkBlocked(userId: string, id: string): any {
+    console.log('my lady', userId);
+    this.http
+      .get<{ message: string; payload: boolean }>(
+        'https://www.skalarly.com/api/user/checkBlocked',
+        { params: { userId, id } }
+      )
+      .pipe(map((data) => data.payload))
+      .subscribe({
+        next: (response) => {
+          console.log('chlor 2', response);
+          this.blocked = response;
+        },
+      });
   }
 
   //  sign up validation

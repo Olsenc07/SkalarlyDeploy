@@ -72,7 +72,46 @@ const limits = { fileSize: 1000 * 1000 * 10 }; // limit to 10mb
 
 
 
+// checked blocked on profile page
+router.get("/checkBlocked", async (req, res) => {
+let userId = req.query.userId;
+let id = req.query.id
 
+    await User.findById({_id: userId})
+    .then(user => {
+        console.log('user 69', user)
+        BlockSkalar.findOne({ $and:[
+            {Creator:id},{blockedUsername: user.username}
+        ]})
+        .then(blocked => {
+            if(blocked){
+                res.status(200).json({
+                    message: 'Blocked',
+                    payload: true
+                });
+            }else{
+                res.status(200).json({
+                    message: 'Not Blocked',
+                    payload: false
+                });
+            }
+        }).catch(err => {
+            return res.status(401).json({
+                message: "Can't find blocked",
+        
+            })
+        })
+    }).catch(err => {
+        return res.status(401).json({
+            message: "Can't find skalar",
+    
+        })
+    })
+    
+
+
+
+})
 
 
 // Creating user
