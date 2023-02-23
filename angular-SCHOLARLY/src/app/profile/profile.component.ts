@@ -387,7 +387,6 @@ export class UserProfileComponent implements OnInit {
 
   showFiller = false;
   // TODO: initial following value would need to be loaded from database - for now, always start with false
-  Following: boolean;
   timeHourInitial = new Date().getHours();
   timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
@@ -527,12 +526,12 @@ export class UserProfileComponent implements OnInit {
               .subscribe((following: Follow[]) => {
                 console.log('top off', following);
                 console.log('top off', following.length);
-
+                let Following: boolean;
                 if (following.length > 0) {
-                  this.Following = true;
-                  console.log('following', this.Following);
+                  Following = true;
+                  console.log('following', Following);
                 } else {
-                  this.Following = false;
+                  Following = false;
                   console.log('not following');
                 }
               });
