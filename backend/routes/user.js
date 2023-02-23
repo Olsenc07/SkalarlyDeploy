@@ -77,7 +77,7 @@ router.get("/checkBlocked", async (req, res) => {
 let userId = req.query.userId;
 let id = req.query.id
 
-    await User.findById({_id: userId})
+    await User.findOne({_id: userId})
     .then(user => {
         console.log('user 69', user)
         BlockSkalar.findOne({ $and:[
