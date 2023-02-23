@@ -11,6 +11,7 @@ import { ShowCaseService, ShowCase } from '../services/showCase.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { createPopup } from '@picmo/popup-picker';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface CommentInterface {
   id: string;
@@ -1845,7 +1846,8 @@ export class CardFriendsComponent implements OnInit {
     private authService: AuthService,
     private commentsService: CommentsService,
     public postService: PostService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -1982,9 +1984,19 @@ export class CardFriendsComponent implements OnInit {
       console.log(' reposts', this.reposts);
     });
   }
-  navToPost(postId: string): any {
+  navToPost(postId: string, OriginalCreator: string): any {
     console.log('Hey babe I miss you', postId);
-    this.router.navigate(['/single/:'], { queryParams: { postId } });
+    // check if user should be redirected here or if they are blocked
+    this.authService.checkBlocked(this.userId, OriginalCreator);
+    this.authService.getBlocked().subscribe((BLOCKED: string) => {
+      if (BLOCKED === 'true') {
+        this.snackBar.open('This Skalar has blocked you', '🚫', {
+          duration: 3000,
+        });
+      } else {
+        this.router.navigate(['/single/:'], { queryParams: { postId } });
+      }
+    });
   }
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
