@@ -90,10 +90,12 @@ console.log('id', id);
         console.log('user 69', found);
         console.log('viewing', viewing);''
             BlockSkalar.findOne({ $and:[
-                {Creator:viewing.Creator},{blockedUsername: found.username}
+                {blockedUsername: found.username},
+                {Creator: viewing.Creator.valueOf()}
             ]})
             .then(blocked => {
                 if(blocked){
+                    console.log('blocked',blocked)
                     res.status(200).json({
                         message: 'Blocked',
                         payload: true

@@ -84,7 +84,7 @@ export class AuthService {
       .pipe(map((data) => data.payload))
       .subscribe({
         next: (response) => {
-          console.log('chlor 2', response);
+          console.log('chlor 7', response);
           this.blocked = response;
         },
       });
