@@ -169,7 +169,7 @@
               </div>
        
     
-                <div class="center_" *ngIf="Following === false">
+                <div class="center_" *ngIf="following === false">
               <mat-chip-list  class="center_" 
                 aria-label="FollowBtn">
                 <mat-chip color='warn' selected class="messageM" matTooltip="Follow"
@@ -179,7 +179,7 @@
                 </mat-chip-list>
               </div>
 
-              <div class="center_" *ngIf="Following === true">
+              <div class="center_" *ngIf="following === true">
                 <!--  -->
                 <mat-chip-list  class="center_"  *ngFor="let follow of following"
                 aria-label="FollowBtn">
