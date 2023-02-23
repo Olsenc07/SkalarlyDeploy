@@ -528,7 +528,7 @@ export class UserProfileComponent implements OnInit {
               .subscribe((following: Follow[]) => {
                 this.isLoading = false;
                 console.log('top off', following);
-                if (this.following.length) {
+                if (following.length) {
                   this.Following = true;
                 } else {
                   this.Following = false;
