@@ -354,6 +354,8 @@ export class UserProfileComponent implements OnInit {
   isLoading = true;
   userId: string;
   blockList: boolean;
+  FOLLOWING: boolean;
+
   recomCounter = 0;
   countVisibility = 0;
   follow: Follow[] = [];
@@ -526,12 +528,11 @@ export class UserProfileComponent implements OnInit {
               .subscribe((following: Follow[]) => {
                 console.log('top off', following);
                 console.log('top off', following.length);
-                let Following: boolean;
                 if (following.length > 0) {
-                  Following = true;
-                  console.log('following', Following);
+                  this.FOLLOWING = true;
+                  console.log('following', this.FOLLOWING);
                 } else {
-                  Following = false;
+                  this.FOLLOWING = false;
                   console.log('not following');
                 }
               });
@@ -610,7 +611,7 @@ export class UserProfileComponent implements OnInit {
     this.dialog.open(BioComponent);
   }
   followClicked(username: string): any {
-    this.Following = true;
+    this.FOLLOWING = true;
     this.route.queryParams.subscribe((params) => {
       this.user = params.id;
       const FollowingId = this.user;
@@ -624,7 +625,7 @@ export class UserProfileComponent implements OnInit {
     });
   }
   onUnfololow(followId: string): any {
-    this.Following = false;
+    this.FOLLOWING = false;
     this.followService.deleteFollow(followId);
     console.log('chaz whats up homie gg', followId);
   }
