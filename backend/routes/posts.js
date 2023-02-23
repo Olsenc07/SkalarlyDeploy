@@ -9,7 +9,7 @@ const Follow = require('/app/backend/models/follow')
 const Msg = require('/app/backend/models/messages')
 const missedHistory = require('/app/backend/models/missed-notification');
 const BlockSkalar = require('/app/backend/models/block-skalar')
-
+const User = require('/app/backend/models/user');
 
 const webpush = require('web-push');
 const cloudinary = require('cloudinary').v2

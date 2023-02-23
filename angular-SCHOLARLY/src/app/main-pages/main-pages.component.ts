@@ -170,7 +170,7 @@ export class SinglePageTemplateComponent implements OnInit {
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
           if (posts.length === 0) {
-            this.router.navigate(['/search']);
+            window.history.back();
             this.snackBar.open('This Skalar has blocked you', '🚫', {
               duration: 3000,
             });

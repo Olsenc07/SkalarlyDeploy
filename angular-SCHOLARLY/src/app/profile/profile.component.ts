@@ -499,13 +499,13 @@ export class UserProfileComponent implements OnInit {
       this.authService.getBlocked().subscribe((BLOCKED: string) => {
         console.log('is this skalar blocked?', BLOCKED);
         if (BLOCKED === 'redirect') {
-          this.router.navigate(['/search']);
+          window.history.back();
           this.snackBar.open('This is not a valid account!', '🚫', {
             duration: 3000,
           });
         } else {
           if (BLOCKED === 'true') {
-            this.router.navigate(['/search']);
+            window.history.back();
             this.snackBar.open('This Skalar has blocked you', '🚫', {
               duration: 3000,
             });
