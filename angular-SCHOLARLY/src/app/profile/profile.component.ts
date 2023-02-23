@@ -531,8 +531,10 @@ export class UserProfileComponent implements OnInit {
 
                 if (following.length > 0) {
                   this.Following = true;
+                  console.log('following');
                 } else {
                   this.Following = false;
+                  console.log('not following');
                 }
               });
 
