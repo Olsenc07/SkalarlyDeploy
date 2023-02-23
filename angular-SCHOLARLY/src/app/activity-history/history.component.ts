@@ -457,7 +457,10 @@ export class BlockedSkalarsComponent implements OnInit {
       .subscribe((blocked: BlockUser[]) => {
         console.log('big blocked', blocked);
         this.blocked = blocked;
-        console.log('blocks gone', this.blocked);
+        if (blocked.length === 0) {
+          console.log('blocks gone', this.blocked);
+          location.reload();
+        }
       });
   }
   navigateToPage(infoUser: string): any {
