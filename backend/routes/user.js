@@ -98,12 +98,12 @@ console.log('id', id);
                     console.log('blocked',blocked)
                     res.status(200).json({
                         message: 'Blocked',
-                        payload: true
+                        payload: 'true'
                     });
                 }else{
                     res.status(200).json({
                         message: 'Not Blocked',
-                        payload: false
+                        payload: 'false'
                     });
                 }
             }).catch(err => {

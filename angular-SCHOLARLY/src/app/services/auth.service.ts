@@ -33,7 +33,7 @@ export class AuthService {
   private emailUsedUpdated = new ReplaySubject();
   private emailUsedId: boolean;
 
-  private blocked: boolean;
+  private blocked = new ReplaySubject<string>();
   // check if email exists for login
   getEmail(): any {
     return this.emailUpdated.asObservable();
@@ -50,8 +50,8 @@ export class AuthService {
   getToken(): string {
     return this.token;
   }
-  getBlocked(): boolean {
-    return this.blocked;
+  getBlocked(): any {
+    return this.blocked.asObservable();
   }
   getIsAuth(): boolean {
     return this.isAuthenticated;
@@ -77,7 +77,7 @@ export class AuthService {
     console.log('my man', id);
 
     this.http
-      .get<{ message: string; payload: boolean }>(
+      .get<{ message: string; payload: string }>(
         'https://www.skalarly.com/api/user/checkBlocked',
         { params: { userId, id } }
       )
@@ -85,7 +85,7 @@ export class AuthService {
       .subscribe({
         next: (response) => {
           console.log('chlor 7', response);
-          return (this.blocked = response);
+          this.blocked.next(response);
         },
       });
   }
