@@ -83,12 +83,12 @@ console.log('id', id);
 
     await User.findOne({_id: UserID})
     .then(found => {
-        console.log('user 69', found);
 
         UserInfo.findOne({username: id})
         .then(viewing => {
             if(viewing){
-        console.log('viewing', viewing);
+        console.log('user 69', found);
+        console.log('viewing', viewing);''
             BlockSkalar.findOne({ $and:[
                 {Creator:viewing.Creator},{blockedUsername: found.username}
             ]})

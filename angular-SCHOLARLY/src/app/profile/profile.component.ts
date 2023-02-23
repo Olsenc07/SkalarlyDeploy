@@ -497,6 +497,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       // check if user viewing has been blocked
       this.authService.checkBlocked(this.userId, id);
       this.blocked = this.authService.getBlocked();
+      console.log('is this skalar blocked?', this.blocked);
       if (this.blocked === true) {
         this.router.navigate(['/search']);
         this.snackBar.open('This Skalar has blocked you', '🚫', {
