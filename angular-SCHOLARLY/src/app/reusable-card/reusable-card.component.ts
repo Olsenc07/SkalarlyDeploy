@@ -2470,7 +2470,7 @@ export class CardInfoMainPageComponent implements OnInit {
       console.log('params main page', params);
       this.category = params?.category;
 
-      this.postService.getPostsMainPage(this.category, 0);
+      this.postService.getPostsMainPage(this.category, 0, this.userId);
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
@@ -2641,7 +2641,11 @@ export class CardInfoMainPageComponent implements OnInit {
     console.log('howdy', this.countVisibility);
     const NextBtn = document.getElementById('topScroll');
     NextBtn.scrollIntoView();
-    this.postService.getPostsMainPage(this.category, this.recomCounter);
+    this.postService.getPostsMainPage(
+      this.category,
+      this.recomCounter,
+      this.userId
+    );
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
@@ -2658,7 +2662,11 @@ export class CardInfoMainPageComponent implements OnInit {
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
 
-    this.postService.getPostsMainPage(this.category, this.recomCounter);
+    this.postService.getPostsMainPage(
+      this.category,
+      this.recomCounter,
+      this.userId
+    );
     this.postsSub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
