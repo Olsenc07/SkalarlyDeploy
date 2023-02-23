@@ -460,7 +460,7 @@ export class BlockedSkalarsComponent implements OnInit {
         if (blocked.length === 0) {
           console.log('blocks gone', this.blocked);
           // redirect user off pg
-          this.router.navigate(['/search']);
+          this.router.navigate(['/activity-history']);
         }
       });
   }
