@@ -85,7 +85,7 @@ export class AuthService {
       .subscribe({
         next: (response) => {
           console.log('chlor 7', response);
-          this.blocked = response;
+          return (this.blocked = response);
         },
       });
   }
