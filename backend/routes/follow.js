@@ -592,13 +592,13 @@ router.get("/unFollowUserPg", async(req, res, next ) => {
 console.log('userName', userName);
 console.log('userId', person);
 
-   await Follow.deleteOne({ $and : [
+   await Follow.deleteOne({ $and: [
        {Follower: person},
        { Following: userName}
     ]}).then(result => {
 
         if (result){
-            console.log('it worked', esult);
+            console.log('it worked', result);
         res.status(200).json({message: 'unfollowed!'});
         } else {
             res.status(401).json({message: 'Not unfollowed'});
@@ -606,7 +606,7 @@ console.log('userId', person);
     })
     .catch(error => {
         res.status(500).json({
-            message: 'Fetching showCases failed!'
+            message: 'Unfollowing failed!'
         });
     });
 });
