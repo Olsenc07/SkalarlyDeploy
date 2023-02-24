@@ -582,9 +582,9 @@ router.delete("/unFollow/:id", (req, res, next ) => {
 });
 
 // following deleting form user profile pg
-router.delete("/unFollowUserPg/:userName/:userId", (req, res, next ) => {
-    userName = req.params.userName;
-    userId = req.params.userId;
+router.get("/unFollowUserPg", (req, res, next ) => {
+    userName = req.query.userName;
+    userId = req.query.userId;
 console.log('userName', userName);
 console.log('userId', userId);
 

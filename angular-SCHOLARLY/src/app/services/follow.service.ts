@@ -433,11 +433,9 @@ export class FollowService {
     console.log('hey chase followId', userName);
     console.log('hey chase followId', userId);
     this.http
-      .delete(
-        'https://www.skalarly.com/api/follow/unFollowUserPg/' +
-          userName +
-          userId
-      )
+      .get('https://www.skalarly.com/api/follow/unFollowUserPg/', {
+        params: { userName, userId },
+      })
       .subscribe(() => {
         const updatedPosts = this.follow.filter((post) => post.id !== userId);
         this.follow = updatedPosts;
