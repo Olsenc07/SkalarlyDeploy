@@ -533,7 +533,7 @@ router.get("/followingInfo", async(req, res, next) => {
         console.log('test 2', following)
         res.status(200).json({
             message: 'Follows fetched succesfully!',
-            messages: following
+            messages: 'true'
         });
     }else{
         console.log('test 7')

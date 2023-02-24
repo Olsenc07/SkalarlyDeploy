@@ -526,11 +526,11 @@ export class UserProfileComponent implements OnInit {
             this.followService.getFollowingNotification(id, this.userId);
             this.followService
               .getInfoFollowingBtnUpdateListener()
-              .subscribe((following: Follow[]) => {
+              .subscribe((following: string) => {
                 console.log('top off', following);
                 // if this even coming from the correct following person
                 // if (following.length > 0) {
-                this.FOLLOWingYo = 'true';
+                this.FOLLOWingYo = following;
                 console.log('following', this.FOLLOWingYo);
                 // } else {
                 //   this.FOLLOWingYo = 'false';
