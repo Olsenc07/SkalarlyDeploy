@@ -161,8 +161,10 @@
 
             <div class="fName">
 
-              <div *ngIf="info.name" class="name">
+              <div  class="name">
+                <div class="name" *ngIf="info.name">
                 {{ info.name}}
+                </div>
                 <div *ngIf="info.pronouns" class="pronouns"  matTooltip="Proper Pronouns">
                   ({{ info.pronouns}})
                     </div>
@@ -180,10 +182,10 @@
               </div>
 
               <div class="center_" *ngIf="FOLLOWingYo === 'true'">
-                <mat-chip-list  class="center_"  *ngFor="let follow of following"
+                <mat-chip-list  class="center_"  
                 aria-label="FollowBtn">
                 <mat-chip  selected class="followingColor" matTooltip="Unfollow"
-                 (click)="onUnfololow(follow._id)" >
+                 (click)="onUnfololow(info._id)" >
                  Following
                 </mat-chip>
               </mat-chip-list>
