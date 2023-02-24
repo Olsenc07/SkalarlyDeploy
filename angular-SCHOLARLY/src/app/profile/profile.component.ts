@@ -524,17 +524,18 @@ export class UserProfileComponent implements OnInit {
               });
             // If following
             this.followService.getFollowingNotification(id, this.userId);
-            this.followSub = this.followService
+            this.followService
               .getInfoFollowingBtnUpdateListener()
               .subscribe((following: Follow[]) => {
                 console.log('top off', following);
-                if (following.length > 0) {
-                  this.FOLLOWingYo = 'true';
-                  console.log('following', this.FOLLOWingYo);
-                } else {
-                  this.FOLLOWingYo = 'false';
-                  console.log('not following');
-                }
+                // if this even coming from the correct following person
+                // if (following.length > 0) {
+                this.FOLLOWingYo = 'true';
+                console.log('following', this.FOLLOWingYo);
+                // } else {
+                //   this.FOLLOWingYo = 'false';
+                //   console.log('not following');
+                // }
               });
 
             // Following
@@ -543,8 +544,6 @@ export class UserProfileComponent implements OnInit {
               .getInfoUpdateListener()
               .subscribe((follow: Follow[]) => {
                 this.follow = follow;
-                console.log('lucky you', this.follow);
-                console.log('lucky you', this.follow.length);
               });
             // Followers
             this.followService.getMessageNotificationFollowedOther(id);
