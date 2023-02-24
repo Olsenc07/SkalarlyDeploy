@@ -340,17 +340,6 @@ export class ProfileComponent implements OnInit {
   styleUrls: ['./profile.component.scss'],
 })
 export class UserProfileComponent implements OnInit {
-  constructor(
-    private bottomSheet: MatBottomSheet,
-    public postService: PostService,
-    private authService: AuthService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private showCaseService: ShowCaseService,
-    private followService: FollowService,
-    public dialog: MatDialog,
-    private snackBar: MatSnackBar
-  ) {}
   isLoading = true;
   userId: string;
   blockList: boolean;
@@ -408,6 +397,18 @@ export class UserProfileComponent implements OnInit {
     this.timeMinute +
     '\xa0' +
     this.text;
+  constructor(
+    private bottomSheet: MatBottomSheet,
+    public postService: PostService,
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private showCaseService: ShowCaseService,
+    private followService: FollowService,
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
+
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
     if (timeHourInitial > 12) {
