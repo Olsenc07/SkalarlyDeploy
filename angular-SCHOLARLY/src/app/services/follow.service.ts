@@ -301,7 +301,7 @@ export class FollowService {
         this.followingInfo = transformedMessage;
         console.log('small feet', this.followingInfo);
 
-        this.followingInfoPostUpdatedBtn.next([...this.followingInfo]);
+        this.followingInfoPostUpdatedBtn.next(this.followingInfo);
       });
   }
   // setting name for friends activities
