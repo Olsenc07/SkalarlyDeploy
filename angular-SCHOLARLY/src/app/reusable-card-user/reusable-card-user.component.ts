@@ -110,8 +110,12 @@ export class ReusableCardUserComponent implements OnInit {
     this.followService.deleteFollow(followId);
     console.log('chaz whats up homie g', followId);
     this.followService.getInfoUpdateListener().subscribe((follow: Follow[]) => {
-      this.follow = follow.reverse();
-      this.isLoading = false;
+      if (follow) {
+        this.follow = follow.reverse();
+        this.isLoading = false;
+      } else {
+        this.follow = [];
+      }
     });
   }
   onMututal(username: string): any {
