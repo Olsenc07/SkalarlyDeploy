@@ -526,11 +526,12 @@ router.get("/followerInfoOther", async(req, res, next) => {
     })
     // Get following notif
 router.get("/followingInfo", async(req, res, next) => {
+    console.log('da tities');
     await Follow.findOne({ and: [ {Following: req.query.id}, 
         {Follower: req.query.userId}]})
     .then(following => {
         if(following){
-        console.log('test 2', following)
+        console.log('test 69', following)
         res.status(200).json({
             message: 'Follows fetched succesfully!',
             messages: 'true'
@@ -582,17 +583,19 @@ router.delete("/unFollow/:id", (req, res, next ) => {
 });
 
 // following deleting form user profile pg
-router.get("/unFollowUserPg", (req, res, next ) => {
+router.get("/unFollowUserPg", async(req, res, next ) => {
     userName = req.query.userName;
-    userId = req.query.userId;
+    person = req.query.userId;
 console.log('userName', userName);
-console.log('userId', userId);
+console.log('userId', person);
 
-    Follow.deleteOne({ $and : [
-       {Follower: userId},
+   await Follow.deleteOne({ $and : [
+       {Follower: person},
        { Following: userName}
     ]}).then(result => {
+
         if (result){
+            console.log('it worked', esult);
         res.status(200).json({message: 'unfollowed!'});
         } else {
             res.status(401).json({message: 'Not unfollowed'});

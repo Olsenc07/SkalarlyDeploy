@@ -343,7 +343,7 @@ export class UserProfileComponent implements OnInit {
   isLoading = true;
   userId: string;
   blockList: boolean;
-  FOLLOWingYo = '';
+  FOLLOWingYo = 'false';
 
   recomCounter = 0;
   countVisibility = 0;
