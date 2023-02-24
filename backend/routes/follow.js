@@ -528,7 +528,7 @@ router.get("/followerInfoOther", async(req, res, next) => {
 router.get("/followingInfo", async(req, res, next) => {
     console.log('following', req.query.id )
     console.log('da tities', req.query.userId);
-    await Follow.findOne({ and: [   {Follower: req.query.userId},
+    await Follow.findOne({ $and: [  {Follower: req.query.userId},
         {Following: req.query.id}
       ]})
     .then(following => {
