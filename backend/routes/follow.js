@@ -526,10 +526,13 @@ router.get("/followerInfoOther", async(req, res, next) => {
     })
     // Get following notif
 router.get("/followingInfo", async(req, res, next) => {
-    console.log('da tities');
-    await Follow.findOne({ and: [ {Following: req.query.id}, 
-        {Follower: req.query.userId}]})
+    console.log('following', req.query.id )
+    console.log('da tities', req.query.userId);
+    await Follow.findOne({ and: [   {Follower: req.query.userId},
+        {Following: req.query.id}
+      ]})
     .then(following => {
+        console.log('following', following)
         if(following){
         console.log('test 69', following)
         res.status(200).json({
