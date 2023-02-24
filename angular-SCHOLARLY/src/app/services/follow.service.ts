@@ -416,12 +416,30 @@ export class FollowService {
         this.mutualsInfoPostUpdated.next([...this.mutualsInfo]);
       });
   }
+  // deleting from friends activity pg
+
   deleteFollow(followId: string): any {
     console.log('hey chase followId', followId);
     this.http
       .delete('https://www.skalarly.com/api/follow/unFollow/' + followId)
       .subscribe(() => {
         const updatedPosts = this.follow.filter((post) => post.id !== followId);
+        this.follow = updatedPosts;
+        this.followPostUpdated.next([...this.follow]);
+      });
+  }
+  // deleting from user profile
+  deleteFollowUserPg(userName: string, userId: string): any {
+    console.log('hey chase followId', userName);
+    console.log('hey chase followId', userId);
+    this.http
+      .delete(
+        'https://www.skalarly.com/api/follow/unFollowUserPg/' +
+          userName +
+          userId
+      )
+      .subscribe(() => {
+        const updatedPosts = this.follow.filter((post) => post.id !== userId);
         this.follow = updatedPosts;
         this.followPostUpdated.next([...this.follow]);
       });

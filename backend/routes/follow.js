@@ -581,7 +581,29 @@ router.delete("/unFollow/:id", (req, res, next ) => {
     });
 });
 
+// following deleting form user profile pg
+router.delete("/unFollowUserPg/:userName/:userId", (req, res, next ) => {
+    userName = req.params.userName;
+    userId = req.params.userId;
+console.log('userName', userName);
+console.log('userId', userId);
 
+    Follow.deleteOne({ $and : [
+       {Follower: userId},
+       { Following: userName}
+    ]}).then(result => {
+        if (result){
+        res.status(200).json({message: 'unfollowed!'});
+        } else {
+            res.status(401).json({message: 'Not unfollowed'});
+        }
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching showCases failed!'
+        });
+    });
+});
 
 
 

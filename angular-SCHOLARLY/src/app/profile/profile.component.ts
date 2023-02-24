@@ -623,10 +623,10 @@ export class UserProfileComponent implements OnInit {
       );
     });
   }
-  onUnfololow(followId: string): any {
+  onUnfololow(userName: string): any {
     this.FOLLOWingYo = 'false';
-    this.followService.deleteFollow(followId);
-    console.log('chaz whats up homie gg', followId);
+    this.followService.deleteFollowUserPg(userName, this.userId);
+    console.log('chaz whats up homie gg', userName);
   }
   skalarMsg(username: string): void {
     console.log('username', username);
