@@ -437,9 +437,10 @@ export class FollowService {
         params: { userName, userId },
       })
       .subscribe(() => {
-        const updatedPosts = this.follow.filter((post) => post.id !== userId);
-        this.follow = updatedPosts;
-        this.followPostUpdated.next([...this.follow]);
+        console.log('rog;er cleared here');
+        // const updatedPosts = this.follow.filter((post) => post.id !== userId);
+        // this.follow = updatedPosts;
+        // this.followPostUpdated.next([...this.follow]);
       });
   }
   deleteFollowers(followId: string): any {
