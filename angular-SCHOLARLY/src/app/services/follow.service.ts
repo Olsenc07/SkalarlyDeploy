@@ -38,6 +38,8 @@ export class FollowService {
   private followingInfo: Follow[] = [];
   private followingInfoPostUpdated = new ReplaySubject<Follow[]>();
 
+  private followingInfoPostUpdatedBtn = new ReplaySubject<Follow[]>();
+
   private followersInfoPostUpdated = new ReplaySubject<Follow[]>();
 
   private mutualInfo: Follow[] = [];
@@ -72,6 +74,10 @@ export class FollowService {
   getInfoFollowingUpdateListener(): any {
     return this.followingInfoPostUpdated.asObservable();
   }
+  getInfoFollowingBtnUpdateListener(): any {
+    return this.followingInfoPostUpdatedBtn.asObservable();
+  }
+
   getInfoFollowUpdateListener(): any {
     return this.followerPostUpdated.asObservable();
   }
@@ -295,7 +301,7 @@ export class FollowService {
         this.followingInfo = transformedMessage;
         console.log('small feet', this.followingInfo);
 
-        this.followingInfoPostUpdated.next([...this.followingInfo]);
+        this.followingInfoPostUpdatedBtn.next([...this.followingInfo]);
       });
   }
   // setting name for friends activities

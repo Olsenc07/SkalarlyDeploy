@@ -524,7 +524,7 @@ export class UserProfileComponent implements OnInit {
             // If following
             this.followService.getFollowingNotification(id, this.userId);
             this.followSub = this.followService
-              .getInfoFollowUpdateListener()
+              .getInfoFollowingBtnUpdateListener()
               .subscribe((following: Follow[]) => {
                 console.log('top off', following);
                 if (following.length > 0) {
