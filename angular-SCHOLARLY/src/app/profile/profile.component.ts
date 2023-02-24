@@ -354,7 +354,7 @@ export class UserProfileComponent implements OnInit {
   isLoading = true;
   userId: string;
   blockList: boolean;
-  FOLLOWingYo: string;
+  FOLLOWingYo = '';
 
   recomCounter = 0;
   countVisibility = 0;
