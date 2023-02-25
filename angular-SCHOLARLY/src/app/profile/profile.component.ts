@@ -493,7 +493,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit(): any {
-    const subscriptionDude = this.route.queryParams.subscribe((params) => {
+    this.subscriptionDude = this.route.queryParams.subscribe((params) => {
       this.userId = this.authService.getUserId();
       this.user = params.id;
       const id = this.user;
@@ -577,6 +577,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): any {
+    console.log('subscriptionDude', this.subscriptionDude);
     this.subscriptionDude.unsubscribe();
     console.log('u have been de stroyed');
   }
