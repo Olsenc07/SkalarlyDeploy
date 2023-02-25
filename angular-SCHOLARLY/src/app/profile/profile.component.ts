@@ -339,7 +339,7 @@ export class ProfileComponent implements OnInit {
   templateUrl: './userProfile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class UserProfileComponent implements OnInit {
+export class UserProfileComponent implements OnInit, OnDestroy {
   isLoading = true;
   userId: string;
   blockList: boolean;
@@ -351,6 +351,7 @@ export class UserProfileComponent implements OnInit {
   private followSub: Subscription;
   private followSubs: Subscription;
 
+  private subscriptionDude: Subscription;
   followers: Follow[] = [];
   private followersSub: Subscription;
 
@@ -366,6 +367,7 @@ export class UserProfileComponent implements OnInit {
 
   posts: Post[] = [];
   private postsSub: Subscription;
+  private;
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
@@ -491,7 +493,7 @@ export class UserProfileComponent implements OnInit {
     }
   }
   ngOnInit(): any {
-    this.route.queryParams.subscribe((params) => {
+    const subscriptionDude = this.route.queryParams.subscribe((params) => {
       this.userId = this.authService.getUserId();
       this.user = params.id;
       const id = this.user;
@@ -573,6 +575,12 @@ export class UserProfileComponent implements OnInit {
       });
     });
   }
+
+  ngOnDestroy(): any {
+    this.subscriptionDude.unsubscribe();
+    console.log('u have been de stroyed');
+  }
+
   // Where the post was posted
   navigateToMainPage(value: string): void {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
