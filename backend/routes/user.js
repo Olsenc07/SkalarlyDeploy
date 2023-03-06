@@ -2335,7 +2335,7 @@ await User.findById({_id: userId})
 
 // Prfoile
 router.get("/infoProfile", async(req, res) => {
-    await UserInfo.find({Creator: req.query.userId})
+    await UserInfo.findOne({Creator: req.query.userId})
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
             res.status(200).json({
@@ -2373,7 +2373,7 @@ router.get("/infoPersonal", async(req, res) => {
 // Get user
 router.get("/id", async(req, res) => {
     console.log('white dead', req.query.id);
- await UserInfo.findOne({username: {$eq: req.query.id}})
+ await UserInfo.findOne({username: req.query.id})
         .then(documents => {
          
             res.status(200).json({
