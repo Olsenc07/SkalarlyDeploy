@@ -529,11 +529,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             this.followService
               .getInfoFollowingBtnUpdateListener()
               .subscribe((following: string) => {
-                console.log('top off', following);
+                console.log('top off box', following);
                 // if this even coming from the correct following person
                 // if (following.length > 0) {
                 this.FOLLOWingYo = following;
-                console.log('following', this.FOLLOWingYo);
+                console.log('following box', this.FOLLOWingYo);
                 // } else {
                 //   this.FOLLOWingYo = 'false';
                 //   console.log('not following');

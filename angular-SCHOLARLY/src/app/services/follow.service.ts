@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ReplaySubject, AsyncSubject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -29,7 +29,7 @@ export class FollowService {
   private followPostUpdatedHistory = new ReplaySubject<Follow[]>();
 
   private follower: Follow[] = [];
-  private followerPostUpdated = new AsyncSubject<Follow[]>();
+  private followerPostUpdated = new Subject<Follow[]>();
   private followerPostUpdatedHistory = new ReplaySubject<Follow[]>();
 
   private following: Follow[] = [];
@@ -38,7 +38,7 @@ export class FollowService {
   private followingInfo: Follow[] = [];
   private followingInfoPostUpdated = new ReplaySubject<Follow[]>();
 
-  private followingInfoPostUpdatedBtn = new ReplaySubject<Follow[]>();
+  private followingInfoPostUpdatedBtn = new Subject<Follow[]>();
 
   private followersInfoPostUpdated = new ReplaySubject<Follow[]>();
 
