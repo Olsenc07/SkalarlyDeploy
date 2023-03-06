@@ -2372,7 +2372,7 @@ router.get("/infoPersonal", async(req, res) => {
 
 // Get user
 router.get("/id", async(req, res) => {
- await UserInfo.find({username: {$eq: req.query.id}})
+ await UserInfo.findOne({username: {$eq: req.query.id}})
         .then(documents => {
          
             res.status(200).json({
