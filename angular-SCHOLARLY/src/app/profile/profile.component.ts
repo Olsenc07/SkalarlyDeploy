@@ -367,7 +367,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   posts: Post[] = [];
   private postsSub: Subscription;
-  private;
 
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
@@ -560,6 +559,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             this.infosSub = this.authService
               .getInfoUpdateListener()
               .subscribe((infos: AuthDataInfo[]) => {
+                console.log('Gods close', infos);
+
                 this.infos = infos;
               });
             this.showCaseService.getShowCase(id, 0);
@@ -581,11 +582,13 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     console.log('followersSub', this.followersSub);
     console.log('infosSubShowCase', this.infosSubShowCase);
     console.log('followSubs', this.followSubs);
+    console.log('infosSub', this.infosSub);
 
     this.subscriptionDude.unsubscribe();
     this.followersSub.unsubscribe();
     this.infosSubShowCase.unsubscribe();
     this.followSubs.unsubscribe();
+    this.infosSub.unsubscribe();
     console.log('u have been de stroyed');
   }
 
