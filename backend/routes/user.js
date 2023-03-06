@@ -2353,7 +2353,7 @@ router.get("/infoProfile", async(req, res) => {
 // userInfo recieving
 router.get("/infoPersonal", async(req, res) => {
     console.log('log', req.query.userId)
-     await UserInfo.find({Creator: req.query.userId})
+     await UserInfo.findOne({Creator: req.query.userId})
     .then(infosData => {
     console.log('logs', infosData);
             res.status(200).json({
@@ -2372,6 +2372,7 @@ router.get("/infoPersonal", async(req, res) => {
 
 // Get user
 router.get("/id", async(req, res) => {
+    console.log('white dead', req.query.id);
  await UserInfo.findOne({username: {$eq: req.query.id}})
         .then(documents => {
          
