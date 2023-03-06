@@ -553,7 +553,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
               .getInfoFollowUpdateListener()
               .subscribe((followers: Follow[]) => {
                 this.followers = followers;
-                console.log('lucky lucky you', this.followers);
+                console.log('lucky lucky you 7', this.followers);
               });
             // Infos
             this.authService.getOtherInfo(id);
@@ -578,7 +578,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): any {
     console.log('subscriptionDude', this.subscriptionDude);
+    console.log('followersSub', this.followersSub);
+    console.log('infosSubShowCase', this.infosSubShowCase);
+    console.log('followSubs', this.followSubs);
+
     this.subscriptionDude.unsubscribe();
+    this.followersSub.unsubscribe();
+    this.infosSubShowCase.unsubscribe();
+    this.followSubs.unsubscribe();
     console.log('u have been de stroyed');
   }
 
