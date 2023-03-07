@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { ReplaySubject, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -18,10 +18,17 @@ export interface ShowCase {
 @Injectable({
   providedIn: 'root',
 })
-export class ShowCaseService {
+export class ShowCaseService implements OnDestroy {
   private showCases: ShowCase[] = [];
   private postsUpdated = new ReplaySubject<ShowCase[]>();
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
+
+  // unsubscribe
+  ngOnDestroy(): any {
+    this.postsUpdated.unsubscribe();
+    console.log('wallys calling');
+  }
+
   getshowCaseUpdateListener(): any {
     return this.postsUpdated.asObservable();
   }

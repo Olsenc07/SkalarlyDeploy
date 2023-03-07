@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { ReplaySubject, Subject } from 'rxjs';
@@ -23,7 +23,7 @@ export interface BlockUser {
   blockedUsername: string;
 }
 @Injectable({ providedIn: 'root' })
-export class FollowService {
+export class FollowService implements OnDestroy {
   private follow: Follow[] = [];
   private followPostUpdated = new ReplaySubject<Follow[]>();
   private followPostUpdatedHistory = new ReplaySubject<Follow[]>();
@@ -62,6 +62,13 @@ export class FollowService {
   private userId: string;
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
+
+  // unsubscribe
+  ngOnDestroy(): any {
+    this.followerPostUpdated.unsubscribe();
+    console.log('destroyed u have been');
+  }
+
   getInfoUpdateListener(): any {
     return this.followPostUpdated.asObservable();
   }

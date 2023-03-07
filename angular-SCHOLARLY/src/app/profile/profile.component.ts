@@ -31,7 +31,7 @@ export interface Follow {
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   notification = false;
   ring = false;
   show = true;
@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
   // storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;
-
+  private commentSub: Subscription;
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
@@ -157,7 +157,7 @@ export class ProfileComponent implements OnInit {
       });
     // missed notifs
     this.commentsService.getMissedNotif(this.userId, 0);
-    this.commentsService
+    this.commentSub = this.commentsService
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
         console.log('missedNotifs', missedNotifs);
@@ -176,6 +176,17 @@ export class ProfileComponent implements OnInit {
         }
       });
   }
+
+  ngOnDestroy(): any {
+    this.notifsListenerSubs.unsubscribe();
+    this.infosSub.unsubscribe();
+    this.authListenerSubs.unsubscribe();
+    this.postsSub.unsubscribe();
+    this.followSub.unsubscribe();
+    this.followersSub.unsubscribe();
+    this.commentSub.unsubscribe();
+  }
+
   // Turn off notifications
   offNotifs(): void {
     console.log('working 2', this.userId);
@@ -344,7 +355,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   userId: string;
   blockList: boolean;
   FOLLOWingYo = 'false';
-  idGrip = '';
 
   recomCounter = 0;
   countVisibility = 0;
