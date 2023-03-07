@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ReplaySubject, Subject } from 'rxjs';
+import { ReplaySubject, Subject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -23,7 +23,7 @@ export interface BlockUser {
   blockedUsername: string;
 }
 @Injectable({ providedIn: 'root' })
-export class FollowService implements OnDestroy {
+export class FollowService {
   private follow: Follow[] = [];
   private followPostUpdated = new ReplaySubject<Follow[]>();
   private followPostUpdatedHistory = new ReplaySubject<Follow[]>();
@@ -64,10 +64,10 @@ export class FollowService implements OnDestroy {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   // unsubscribe
-  ngOnDestroy(): any {
-    this.followerPostUpdated.unsubscribe();
-    console.log('destroyed u have been');
-  }
+  // ngOnDestroy(): any {
+  //   this.followerPostUpdated.unsubscribe();
+  //   console.log('destroyed u have been');
+  // }
 
   getInfoUpdateListener(): any {
     return this.followPostUpdated.asObservable();
@@ -270,10 +270,11 @@ export class FollowService implements OnDestroy {
       .subscribe((transformedMessage) => {
         this.follower = transformedMessage;
         this.followerPostUpdated.next([...this.follower]);
+        // this one
       });
   }
   getMessageNotificationOther(id: string): any {
-    this.http
+    const msgNotifOtherSub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/followInfoOther',
         {
@@ -287,8 +288,11 @@ export class FollowService implements OnDestroy {
       )
       .subscribe((transformedMessage) => {
         this.following = transformedMessage;
+
         this.followPostUpdated.next([...this.following]);
       });
+    msgNotifOtherSub.unsubscribe();
+    console.log('rich and famous');
   }
   // and maybe add userId
   getFollowingNotification(id: string, userId: string): any {
