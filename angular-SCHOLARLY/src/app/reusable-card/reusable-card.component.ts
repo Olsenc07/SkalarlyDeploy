@@ -71,7 +71,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
   dateDay = new Date().getDate();
   dateMonth = new Date().getMonth();
   dateMonthName = this.testMonth(this.dateMonth);
-
+  private subscriptionDude: Subscription;
   time =
     this.dateMonthName +
     '\xa0' +
@@ -215,7 +215,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     this.isLoading = true;
-    this.router.queryParams.subscribe((params) => {
+    this.subscriptionDude = this.router.queryParams.subscribe((params) => {
       this.user = params.id;
       const id = this.user;
       // posts
@@ -231,6 +231,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): any {
     this.postsSub.unsubscribe();
+    this.subscriptionDude.unsubscribe();
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
