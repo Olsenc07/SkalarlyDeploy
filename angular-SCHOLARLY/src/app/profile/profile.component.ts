@@ -560,7 +560,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
               .getInfoUpdateListener()
               .subscribe((infos: any) => {
                 console.log('Gods close', infos);
-
+                this.infos = [];
                 this.infos.push(infos);
               });
             this.showCaseService.getShowCase(id, 0);
