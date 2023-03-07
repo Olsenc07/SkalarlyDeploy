@@ -2080,7 +2080,7 @@ export class AuthService {
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
-        this.infosUpdated.next(this.infos);
+        this.infosUpdated.next([...this.infos]);
       });
   }
 
