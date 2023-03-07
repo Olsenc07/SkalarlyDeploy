@@ -558,10 +558,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             this.authService.getOtherInfo(id);
             this.infosSub = this.authService
               .getInfoUpdateListener()
-              .subscribe((infos: AuthDataInfo[]) => {
+              .subscribe((infos: any) => {
                 console.log('Gods close', infos);
 
-                this.infos = infos;
+                this.infos.push(infos);
               });
             this.showCaseService.getShowCase(id, 0);
             this.infosSubShowCase = this.showCaseService
