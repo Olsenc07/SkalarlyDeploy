@@ -370,7 +370,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   posts: Post[] = [];
   private postsSub: Subscription;
-
+  private followSubsBtn: Subscription;
+  private followSubsBlocked: Subscription;
   info: AuthDataInfo = {};
   private infosSub: Subscription;
   // img popup
@@ -521,7 +522,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
           } else {
             // on blocked list?
             this.followService.getBlockedListOne(id, this.userId);
-            this.followService
+            this.followSubsBlocked = this.followService
               .getblockListOneListener()
               .subscribe((booleanYo: boolean) => {
                 if (booleanYo) {
@@ -532,7 +533,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
               });
             // If following
             this.followService.getFollowingNotification(id, this.userId);
-            this.followService
+            this.followSubsBtn = this.followService
               .getInfoFollowingBtnUpdateListener()
               .subscribe((following: string) => {
                 console.log('top off box', following);
@@ -587,18 +588,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): any {
-    console.log('subscriptionDude', this.subscriptionDude);
-    console.log('followersSub', this.followersSub);
-    console.log('infosSubShowCase', this.infosSubShowCase);
-    console.log('followSubs', this.followSubs);
-    console.log('infosSub', this.infosSub);
-
     this.subscriptionDude.unsubscribe();
     this.blockedsubscriptionDude.unsubscribe();
     this.followersSub.unsubscribe();
     this.infosSubShowCase.unsubscribe();
     this.followSubs.unsubscribe();
     this.infosSub.unsubscribe();
+    this.followSubsBtn.unsubscribe();
+    this.followSubsBlocked.unsubscribe();
     console.log('u have been de stroyed');
   }
 
