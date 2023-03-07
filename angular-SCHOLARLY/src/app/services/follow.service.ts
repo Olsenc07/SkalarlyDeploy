@@ -255,7 +255,7 @@ export class FollowService {
       });
   }
   getMessageNotificationFollowedOther(id: string): any {
-    this.http
+    const notifFollowedOther = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/followerInfoOther',
         {
@@ -272,6 +272,8 @@ export class FollowService {
         this.followerPostUpdated.next([...this.follower]);
         // this one
       });
+    notifFollowedOther.unsubscribe();
+    console.log('rich and famous baby');
   }
   getMessageNotificationOther(id: string): any {
     const msgNotifOtherSub = this.http
