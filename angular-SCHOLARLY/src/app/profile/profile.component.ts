@@ -368,7 +368,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   private postsSub: Subscription;
 
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo[] = [];
   private infosSub: Subscription;
   // img popup
   img = document.getElementById('myImg');
@@ -561,7 +561,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
               .subscribe((infos: AuthDataInfo[]) => {
                 console.log('Gods close', infos);
 
-                this.infos = infos;
+                this.info = infos;
               });
             this.showCaseService.getShowCase(id, 0);
             this.infosSubShowCase = this.showCaseService

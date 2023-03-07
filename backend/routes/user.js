@@ -2375,8 +2375,7 @@ router.get("/id", async(req, res) => {
     console.log('white dead', req.query.id);
  await UserInfo.findOne({username: req.query.id})
         .then(documents => {
-         
-            res.status(200).json({
+            res.status(200).json({    
                 message: 'Infos fetched succesfully!',
                 infos: documents
             });
