@@ -344,6 +344,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   userId: string;
   blockList: boolean;
   FOLLOWingYo = 'false';
+  idGrip = '';
 
   recomCounter = 0;
   countVisibility = 0;
@@ -494,6 +495,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): any {
     this.subscriptionDude = this.route.queryParams.subscribe((params) => {
       this.userId = this.authService.getUserId();
+      console.log('params test', params.id);
+      this.idGrip = params.id;
       this.user = params.id;
       const id = this.user;
       // check if skalars viewing has been blocked
@@ -554,15 +557,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
                 this.followers = followers;
                 console.log('lucky lucky you 7', this.followers);
               });
-            // Infos
-            this.authService.getOtherInfo(id);
-            this.infosSub = this.authService
-              .getInfoUpdateListener()
-              .subscribe((infos: any) => {
-                console.log('Gods close', infos);
-                this.infos = [];
-                this.infos.push(infos);
-              });
+
             this.showCaseService.getShowCase(id, 0);
             this.infosSubShowCase = this.showCaseService
               .getshowCaseUpdateListener()
@@ -575,6 +570,18 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         }
       });
     });
+    // Infos
+    console.log('shouting voices', this.idGrip);
+    this.authService.getOtherInfo(this.idGrip);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: any) => {
+        console.log('Gods close', infos);
+        this.infos = [];
+        console.log('Gods close 2', this.infos);
+        this.infos = infos;
+        console.log('Gods close 3', this.infos);
+      });
   }
 
   ngOnDestroy(): any {

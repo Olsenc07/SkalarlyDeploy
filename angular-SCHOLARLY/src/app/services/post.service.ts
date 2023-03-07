@@ -49,7 +49,7 @@ export interface Post {
 })
 export class PostService {
   private posts: Post[] = [];
-  private postsUpdated = new ReplaySubject<Post[]>();
+  private postsUpdated = new Subject<Post[]>();
   private trendNumber: number;
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 

@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { OnInit } from '@angular/core';
 import { Post, PostService } from '../services/post.service';
@@ -36,7 +42,7 @@ export enum ActiveCommentTypeEnum {
   templateUrl: './reusable-card.component.html',
   styleUrls: ['./reusable-card.component.scss'],
 })
-export class ReusableCardComponent implements OnInit {
+export class ReusableCardComponent implements OnInit, OnDestroy {
   isLoading = false;
   hide = true;
   reposts = '';
@@ -223,7 +229,9 @@ export class ReusableCardComponent implements OnInit {
     });
     console.log('user', this.user);
   }
-
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
+  }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
     // Where the post was posted
