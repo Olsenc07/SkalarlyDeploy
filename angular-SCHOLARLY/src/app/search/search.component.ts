@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -15,7 +15,7 @@ interface SearchOption {
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -63,6 +63,10 @@ export class SearchComponent implements OnInit {
       });
 
     // Fresh data update from logging in
+  }
+
+  ngOnDestroy(): any {
+    this.authListenerSubs.unsubscribe();
   }
 
   onSearchSelection(value: string): void {
