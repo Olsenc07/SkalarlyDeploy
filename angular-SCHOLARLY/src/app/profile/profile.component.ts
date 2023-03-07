@@ -353,6 +353,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   private followSubs: Subscription;
 
   private subscriptionDude: Subscription;
+  private blockedsubscriptionDude: Subscription;
+
   followers: Follow[] = [];
   private followersSub: Subscription;
 
@@ -494,92 +496,94 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): any {
     this.subscriptionDude = this.route.queryParams.subscribe((params) => {
-      this.userId = this.authService.getUserId();
       this.user = params.id;
     });
+    console.log('call me when u land', this.user);
     const id = this.user;
+    this.userId = this.authService.getUserId();
     // check if skalars viewing has been blocked
     this.authService.checkBlocked(this.userId, id);
-    this.authService.getBlocked().subscribe((BLOCKED: string) => {
-      console.log('is this skalar blocked?', BLOCKED);
-      if (BLOCKED === 'redirect') {
-        this.router.navigate(['/search']),
-          this.snackBar.open('That is not a valid account!', '🚫', {
-            duration: 3000,
-          });
-      } else {
-        if (BLOCKED === 'true') {
+    this.blockedsubscriptionDude = this.authService
+      .getBlocked()
+      .subscribe((BLOCKED: string) => {
+        console.log('is this skalar blocked?', BLOCKED);
+        if (BLOCKED === 'redirect') {
           this.router.navigate(['/search']),
-            this.snackBar.open('This Skalar has blocked you', '🚫', {
+            this.snackBar.open('That is not a valid account!', '🚫', {
               duration: 3000,
             });
         } else {
-          // on blocked list?
-          this.followService.getBlockedListOne(id, this.userId);
-          this.followService
-            .getblockListOneListener()
-            .subscribe((booleanYo: boolean) => {
-              if (booleanYo) {
-                this.blockList = true;
-              } else {
-                this.blockList = false;
-              }
-            });
-          // If following
-          this.followService.getFollowingNotification(id, this.userId);
-          this.followService
-            .getInfoFollowingBtnUpdateListener()
-            .subscribe((following: string) => {
-              console.log('top off box', following);
-              // if this even coming from the correct following person
-              // if (following.length > 0) {
-              this.FOLLOWingYo = following;
-              console.log('following box', this.FOLLOWingYo);
-              // } else {
-              //   this.FOLLOWingYo = 'false';
-              //   console.log('not following');
-              // }
-            });
+          if (BLOCKED === 'true') {
+            this.router.navigate(['/search']),
+              this.snackBar.open('This Skalar has blocked you', '🚫', {
+                duration: 3000,
+              });
+          } else {
+            // on blocked list?
+            this.followService.getBlockedListOne(id, this.userId);
+            this.followService
+              .getblockListOneListener()
+              .subscribe((booleanYo: boolean) => {
+                if (booleanYo) {
+                  this.blockList = true;
+                } else {
+                  this.blockList = false;
+                }
+              });
+            // If following
+            this.followService.getFollowingNotification(id, this.userId);
+            this.followService
+              .getInfoFollowingBtnUpdateListener()
+              .subscribe((following: string) => {
+                console.log('top off box', following);
+                // if this even coming from the correct following person
+                // if (following.length > 0) {
+                this.FOLLOWingYo = following;
+                console.log('following box', this.FOLLOWingYo);
+                // } else {
+                //   this.FOLLOWingYo = 'false';
+                //   console.log('not following');
+                // }
+              });
 
-          // Following
-          this.followService.getMessageNotificationOther(id);
-          this.followSubs = this.followService
-            .getInfoUpdateListener()
-            .subscribe((follow: Follow[]) => {
-              this.follow = follow;
-            });
-          // Followers
-          this.followService.getMessageNotificationFollowedOther(id);
-          this.followersSub = this.followService
-            .getInfoFollowUpdateListener()
-            .subscribe((followers: Follow[]) => {
-              this.followers = followers;
-              console.log('lucky lucky you 7', this.followers);
-            });
+            // Following
+            this.followService.getMessageNotificationOther(id);
+            this.followSubs = this.followService
+              .getInfoUpdateListener()
+              .subscribe((follow: Follow[]) => {
+                this.follow = follow;
+              });
+            // Followers
+            this.followService.getMessageNotificationFollowedOther(id);
+            this.followersSub = this.followService
+              .getInfoFollowUpdateListener()
+              .subscribe((followers: Follow[]) => {
+                this.followers = followers;
+                console.log('lucky lucky you 7', this.followers);
+              });
 
-          this.showCaseService.getShowCase(id, 0);
-          this.infosSubShowCase = this.showCaseService
-            .getshowCaseUpdateListener()
-            .subscribe((showcases: ShowCase[]) => {
-              this.showCases = showcases;
-              console.log('showcases yo 777', this.showCases);
-              this.isLoading = false;
-            });
-          // Infos
-          console.log('shouting voices', id);
-          this.authService.getOtherInfo(id);
-          this.infosSub = this.authService
-            .getInfoUpdateListener()
-            .subscribe((infos: any) => {
-              console.log('Gods close', infos);
-              // this.infos = [];
-              // console.log('Gods close 2', this.infos);
-              this.info = infos;
-              console.log('Gods close 3', this.info);
-            });
+            this.showCaseService.getShowCase(id, 0);
+            this.infosSubShowCase = this.showCaseService
+              .getshowCaseUpdateListener()
+              .subscribe((showcases: ShowCase[]) => {
+                this.showCases = showcases;
+                console.log('showcases yo 777', this.showCases);
+                this.isLoading = false;
+              });
+            // Infos
+            console.log('shouting voices', id);
+            this.authService.getOtherInfo(id);
+            this.infosSub = this.authService
+              .getInfoUpdateListener()
+              .subscribe((infos: any) => {
+                console.log('Gods close', infos);
+                // this.infos = [];
+                // console.log('Gods close 2', this.infos);
+                this.info = infos;
+              });
+          }
         }
-      }
-    });
+      });
   }
 
   ngOnDestroy(): any {
@@ -590,6 +594,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     console.log('infosSub', this.infosSub);
 
     this.subscriptionDude.unsubscribe();
+    this.blockedsubscriptionDude.unsubscribe();
     this.followersSub.unsubscribe();
     this.infosSubShowCase.unsubscribe();
     this.followSubs.unsubscribe();
