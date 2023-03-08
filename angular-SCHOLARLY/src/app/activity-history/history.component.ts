@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { CommentsService } from '../services/comments.service';
@@ -37,15 +37,18 @@ export interface MissedNotif {
   templateUrl: './history.component.html',
   styleUrls: ['../friends-activity/friends-activity.component.scss'],
 })
-export class ActivityHistoryComponent implements OnInit {
+export class ActivityHistoryComponent implements OnInit, OnDestroy {
   comments: string[] = [];
   userId: string;
   followers: Follow[] = [];
   private postsSub: Subscription;
+  private commentSub: Subscription;
+  private missedNotifsSub: Subscription;
+  private followSub: Subscription;
+  private followSubFollowers: Subscription;
   shared: Post[] = [];
   notif: MissedNotif[] = [];
   blocked: BlockUser[] = [];
-  private followSubFollowers: Subscription;
 
   constructor(
     private commentsService: CommentsService,
@@ -60,11 +63,10 @@ export class ActivityHistoryComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.snackBar.dismiss();
     // comments
-    this.commentsService
+    this.commentSub = this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
         this.comments = comments;
-        console.log('kristina 1', this.comments);
       });
     // following info
     this.followService.getMessageNotificationFollowed(this.userId);
@@ -80,38 +82,42 @@ export class ActivityHistoryComponent implements OnInit {
       .getPostUpdateListener()
       .subscribe((shared: Post[]) => {
         this.shared = shared;
-        console.log('shared', this.shared);
       });
 
     // missed notifs
     this.commentsService.getMissedNotif(this.userId, 0);
-    this.commentsService
+    this.missedNotifsSub = this.commentsService
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.notif = missedNotifs;
-        console.log('notif lost', this.notif);
       });
 
     this.followService.getBlockedList(this.userId);
-    this.followService
+    this.followSub = this.followService
       .getBlockedSkalarsUpdateListener()
       .subscribe((blocked: BlockUser[]) => {
         this.blocked = blocked;
-        console.log('notif lost', this.blocked);
       });
+  }
+
+  ngOnDestroy(): any {
+    this.commentSub.unsubscribe();
+    this.followSubFollowers.unsubscribe();
+    this.postsSub.unsubscribe();
+    this.missedNotifsSub.unsubscribe();
+    this.followSub.unsubscribe();
   }
 
   // Turn off notifications
   offNotifs(): void {
-    console.log('working 2', this.userId);
     this.postsService.deleteNotif(this.userId);
     this.commentsService.clearMissedNotif(this.userId);
-    this.commentsService
+    const subNotif = this.commentsService
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.notif = missedNotifs;
-        console.log('notif lost', this.notif);
       });
+    subNotif.unsubscribe();
     // nav to profile
     this.router.navigate(['/profile']);
   }
@@ -122,7 +128,7 @@ export class ActivityHistoryComponent implements OnInit {
   templateUrl: './comment-history.component.html',
   styleUrls: ['../reusable-card/reusable-card.component.scss'],
 })
-export class CommentHistoryComponent implements OnInit {
+export class CommentHistoryComponent implements OnInit, OnDestroy {
   private commentsSub: Subscription;
   comments: string[] = [];
   userId: string;
@@ -141,14 +147,17 @@ export class CommentHistoryComponent implements OnInit {
     // this.commentsService.getComments(postId);
     this.userId = this.authService.getUserId();
     // Then track all posts under this Creator get _id then get Comments postId
-    console.log('chaz', this.userId);
+
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
         this.comments = comments;
-        console.log('kristina', this.comments);
       });
+  }
+
+  ngOnDestroy(): any {
+    this.commentsSub.unsubscribe();
   }
   // Forward
   onClickFeed(): any {
@@ -156,16 +165,14 @@ export class CommentHistoryComponent implements OnInit {
     this.countVisibility += count;
     const counting = 6;
     this.recomCounter += counting;
-    console.log('hey', this.recomCounter);
-    console.log('howdy', this.countVisibility);
 
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
-    this.commentsService
+    const sub1 = this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
-        console.log('posts personal', this.comments);
       });
+    sub1.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -173,20 +180,16 @@ export class CommentHistoryComponent implements OnInit {
     this.countVisibility -= count;
     const counting = 6;
     this.recomCounter -= counting;
-    console.log('hey back', this.recomCounter);
-    console.log('howdy', this.countVisibility);
 
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
-    this.commentsService
+    const sub2 = this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
-
-        console.log('comments', this.comments);
       });
+    sub2.unsubscribe();
   }
   navToPost(postId: string): any {
-    console.log('Hey babe I miss you', postId);
     this.router.navigate(['/single/:'], { queryParams: { postId } });
   }
   navigateToPage(infoUser: string): any {
@@ -200,12 +203,12 @@ export class CommentHistoryComponent implements OnInit {
   templateUrl: './followed-template-history.component.html',
   styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
 })
-export class FollowedTemplateComponent implements OnInit {
+export class FollowedTemplateComponent implements OnInit, OnDestroy {
   userId: string;
   mutuals: Follow[] = [];
   recomCounter = 0;
   countVisibility = 0;
-
+  private followSub: Subscription;
   constructor(
     private authService: AuthService,
     private followService: FollowService,
@@ -218,12 +221,15 @@ export class FollowedTemplateComponent implements OnInit {
       this.userId,
       this.recomCounter
     );
-    this.followService
+    this.followSub = this.followService
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
-        console.log('my secret', this.mutuals);
       });
+  }
+
+  ngOnDestroy(): any {
+    this.followSub.unsubscribe();
   }
   // Forward
   onClickFeed(): any {
@@ -231,19 +237,17 @@ export class FollowedTemplateComponent implements OnInit {
     this.countVisibility += count;
     const counting = 6;
     this.recomCounter += counting;
-    console.log('hey', this.recomCounter);
-    console.log('howdy', this.countVisibility);
 
     this.followService.getMessageNotificationFollowedHistory(
       this.userId,
       this.recomCounter
     );
-    this.followService
+    const sub1 = this.followService
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
-        console.log('posts personal', this.mutuals);
       });
+    sub1.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -251,20 +255,17 @@ export class FollowedTemplateComponent implements OnInit {
     this.countVisibility -= count;
     const counting = 6;
     this.recomCounter -= counting;
-    console.log('hey back', this.recomCounter);
-    console.log('howdy', this.countVisibility);
 
     this.followService.getMessageNotificationFollowedHistory(
       this.userId,
       this.recomCounter
     );
-    this.followService
+    const sub2 = this.followService
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
-
-        console.log('comments', this.mutuals);
       });
+    sub2.unsubscribe();
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -276,7 +277,7 @@ export class FollowedTemplateComponent implements OnInit {
   templateUrl: './shared-history.component.html',
   styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
 })
-export class SharedHistoryComponent implements OnInit {
+export class SharedHistoryComponent implements OnInit, OnDestroy {
   userId: string;
   countVisibility = 0;
   recomCounter = 0;
@@ -297,15 +298,17 @@ export class SharedHistoryComponent implements OnInit {
       .getPostUpdateListener()
       .subscribe((shared: Post[]) => {
         this.shared = shared;
-        console.log('shared', this.shared);
       });
+  }
+
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
   navToPost(postId: string): any {
-    console.log('Hey babe I miss you', postId);
     this.router.navigate(['/single/:'], { queryParams: { postId } });
   }
 
@@ -319,13 +322,10 @@ export class SharedHistoryComponent implements OnInit {
     this.countVisibility += count;
     const counting = 6;
     this.recomCounter += counting;
-    console.log('hey', this.recomCounter);
-    console.log('howdy', this.countVisibility);
 
     this.postService.getSharedPosts(this.userId, this.recomCounter);
     this.postService.getPostUpdateListener().subscribe((shared: Post[]) => {
       this.shared = shared;
-      console.log('shared', this.shared);
     });
   }
   // Back
@@ -334,8 +334,6 @@ export class SharedHistoryComponent implements OnInit {
     this.countVisibility -= count;
     const counting = 6;
     this.recomCounter -= counting;
-    console.log('hey back', this.recomCounter);
-    console.log('howdy', this.countVisibility);
 
     this.postService.getSharedPosts(this.userId, this.recomCounter);
     this.postService.getPostUpdateListener().subscribe((shared: Post[]) => {
@@ -349,12 +347,12 @@ export class SharedHistoryComponent implements OnInit {
   templateUrl: './missed-notifications.component.html',
   styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
 })
-export class MissedNotificationsComponent implements OnInit {
+export class MissedNotificationsComponent implements OnInit, OnDestroy {
   userId: string;
   notif: MissedNotif[] = [];
   recomCounter = 0;
   countVisibility = 0;
-
+  private commentsSub: Subscription;
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -367,12 +365,15 @@ export class MissedNotificationsComponent implements OnInit {
 
     // missed notifs
     this.commentsService.getMissedNotif(this.userId, 0);
-    this.commentsService
+    this.commentsSub = this.commentsService
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.notif = missedNotifs;
-        console.log('jeez wiz', this.notif);
       });
+  }
+
+  ngOnDestroy(): any {
+    this.commentsSub.unsubscribe();
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -428,12 +429,12 @@ export class MissedNotificationsComponent implements OnInit {
   templateUrl: './blockedSkalar-list.component.html',
   styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
 })
-export class BlockedSkalarsComponent implements OnInit {
+export class BlockedSkalarsComponent implements OnInit, OnDestroy {
   userId: string;
   blocked: BlockUser[] = [];
   recomCounter = 0;
   countVisibility = 0;
-
+  private followSub: Subscription;
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -442,17 +443,20 @@ export class BlockedSkalarsComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     this.followService.getBlockedList(this.userId);
-    this.followService
+    this.followSub = this.followService
       .getBlockedSkalarsUpdateListener()
       .subscribe((blocked: BlockUser[]) => {
         this.blocked = blocked;
         console.log('notif lost', this.blocked);
       });
   }
+  ngOnDestroy(): any {
+    this.followSub.unsubscribe();
+  }
   unblockSkalar(userName: string): void {
     console.log('greatful', userName);
     this.followService.unblockSkalarActivityPg(userName, this.userId);
-    this.followService
+    const blockSub = this.followService
       .getBlockedSkalarsUpdateListener2()
       .subscribe((blocked: BlockUser[]) => {
         console.log('big blocked', blocked);
@@ -463,6 +467,7 @@ export class BlockedSkalarsComponent implements OnInit {
           // this.router.navigate(['/search']);
         }
       });
+    blockSub.unsubscribe();
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
