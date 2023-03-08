@@ -82,10 +82,10 @@ export class AuthService {
       .subscribe({
         next: (response) => {
           this.blocked.next(response);
+          sub.unsubscribe();
+          console.log('rich and famous baby 1');
         },
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 1');
   }
 
   //  sign up validation
@@ -100,10 +100,10 @@ export class AuthService {
         next: (response) => {
           this.emailUsedId = response;
           this.emailUsedUpdated.next(this.emailUsedId);
+          sub.unsubscribe();
+          console.log('rich and famous baby 2');
         },
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 2');
   }
 
   //  sign up validation
@@ -118,10 +118,10 @@ export class AuthService {
         next: (response) => {
           this.userNameId = response;
           this.userNameUpdated.next(this.userNameId);
+          sub.unsubscribe();
+          console.log('rich and famous baby 3');
         },
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 3');
   }
 
   //  login validation
@@ -157,6 +157,8 @@ export class AuthService {
             'Check your email and junk mail to verify your account before logining in. This may take a minute. Do not refresh this page.',
             'Will do!'
           );
+          sub.unsubscribe();
+          console.log('rich and famous baby 5');
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -170,8 +172,6 @@ export class AuthService {
             });
         },
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 5');
   }
 
   // Create userinfo
@@ -397,13 +397,13 @@ export class AuthService {
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
           // this.snackBar.open('Sign in with your new account', 'Will do!!');
+          sub.unsubscribe();
+          console.log('love you 7');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 7');
   }
 
   // edit userinfo
@@ -423,13 +423,13 @@ export class AuthService {
             id: responseData.post.id,
             ProfilePicPath: responseData.post.ProfilePicPath,
           };
+          sub.unsubscribe();
+          console.log('love you 8');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 8');
   }
   // edit userinfo
   editUserInfoMajor(userId: string, major: string): any {
@@ -447,13 +447,13 @@ export class AuthService {
             id: responseData.post.id,
             major,
           };
+          sub.unsubscribe();
+          console.log('love you 9');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 9');
   }
   // edit userinfo
   editUserInfoMinor(userId: string, minor: string): any {
@@ -471,13 +471,13 @@ export class AuthService {
             id: responseData.post.id,
             minor,
           };
+          sub.unsubscribe();
+          console.log('love you 10');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 10');
   }
   // edit userinfo
   editUserInfoSport(userId: string, sport: string): any {
@@ -495,13 +495,13 @@ export class AuthService {
             id: responseData.post.id,
             sport,
           };
+          sub.unsubscribe();
+          console.log('love you 11');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 11');
   }
   // edit userinfo
   editUserInfoClub(userId: string, club: string): any {
@@ -519,13 +519,13 @@ export class AuthService {
             id: responseData.post.id,
             club,
           };
+          sub.unsubscribe();
+          console.log('love you 12');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 12');
   }
   // edit userinfo
   editUserInfoName(userId: string, name: string): any {
@@ -543,13 +543,13 @@ export class AuthService {
             id: responseData.post.id,
             name,
           };
+          sub.unsubscribe();
+          console.log('love you 13');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 13');
   }
   editUserInfoBirthday(userId: string, birthday: string): any {
     const sub = this.http
@@ -566,13 +566,13 @@ export class AuthService {
             id: responseData.post.id,
             birthday,
           };
+          sub.unsubscribe();
+          console.log('love you 14');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 14');
   }
   editUserInfoPronoun(userId: string, pronoun: string): any {
     const sub = this.http
@@ -584,12 +584,14 @@ export class AuthService {
         }
       )
       .subscribe({
+        next: (responseData) => {
+          sub.unsubscribe();
+          console.log('love you 15');
+        },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 15');
   }
   editUserInfoGender(userId: string, gender: string): any {
     const sub = this.http
@@ -606,13 +608,13 @@ export class AuthService {
             id: responseData.post.id,
             gender,
           };
+          sub.unsubscribe();
+          console.log('love you 16');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 16');
   }
   editUserInfoBio(userId: string, bio: string): any {
     const sub = this.http
@@ -629,13 +631,13 @@ export class AuthService {
             id: responseData.post.id,
             bio,
           };
+          sub.unsubscribe();
+          console.log('love you 17');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 17');
   }
   editUserInfoComp(userId: string, CodeCompleted: string): any {
     const sub = this.http
@@ -652,13 +654,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted,
           };
+          sub.unsubscribe();
+          console.log('love you 18');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 18');
   }
   editUserInfoComp2(userId: string, CodeCompleted2: string): any {
     const sub = this.http
@@ -675,13 +677,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted2,
           };
+          sub.unsubscribe();
+          console.log('love you 19');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 19');
   }
   editUserInfoComp3(userId: string, CodeCompleted3: string): any {
     const sub = this.http
@@ -698,13 +700,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted3,
           };
+          sub.unsubscribe();
+          console.log('love you 20');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 20');
   }
   editUserInfoComp4(userId: string, CodeCompleted4: string): any {
     const sub = this.http
@@ -721,13 +723,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted4,
           };
+          sub.unsubscribe();
+          console.log('love you 21');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 21');
   }
   editUserInfoComp5(userId: string, CodeCompleted5: string): any {
     const sub = this.http
@@ -744,13 +746,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted5,
           };
+          sub.unsubscribe();
+          console.log('love you 22');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 22');
   }
   editUserInfoComp6(userId: string, CodeCompleted6: string): any {
     const sub = this.http
@@ -767,13 +769,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted6,
           };
+          sub.unsubscribe();
+          console.log('love you 23');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 23');
   }
   editUserInfoComp7(userId: string, CodeCompleted7: string): any {
     const sub = this.http
@@ -790,13 +792,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted7,
           };
+          sub.unsubscribe();
+          console.log('love you 24');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 24');
   }
   editUserInfoComp8(userId: string, CodeCompleted8: string): any {
     const sub = this.http
@@ -813,13 +815,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted8,
           };
+          sub.unsubscribe();
+          console.log('love you 25');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 25');
   }
   editUserInfoComp9(userId: string, CodeCompleted9: string): any {
     const sub = this.http
@@ -836,13 +838,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted9,
           };
+          sub.unsubscribe();
+          console.log('love you 26');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 26');
   }
   editUserInfoComp10(userId: string, CodeCompleted10: string): any {
     const sub = this.http
@@ -859,13 +861,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted10,
           };
+          sub.unsubscribe();
+          console.log('love you 27');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 27');
   }
   // Edit comp 2
   editUserInfoComp11(userId: string, CodeCompleted11: string): any {
@@ -883,13 +885,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted11,
           };
+          sub.unsubscribe();
+          console.log('love you 28');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 28');
   }
   editUserInfoComp12(userId: string, CodeCompleted12: string): any {
     const sub = this.http
@@ -906,13 +908,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted12,
           };
+          sub.unsubscribe();
+          console.log('love you 29');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 29');
   }
   editUserInfoComp13(userId: string, CodeCompleted13: string): any {
     const sub = this.http
@@ -929,13 +931,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted13,
           };
+          sub.unsubscribe();
+          console.log('love you 30');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 30');
   }
   editUserInfoComp14(userId: string, CodeCompleted14: string): any {
     const sub = this.http
@@ -952,13 +954,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted14,
           };
+          sub.unsubscribe();
+          console.log('love you 31');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 31');
   }
   editUserInfoComp15(userId: string, CodeCompleted15: string): any {
     const sub = this.http
@@ -975,13 +977,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted15,
           };
+          sub.unsubscribe();
+          console.log('love you 32');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 32');
   }
   // Edit comp 2W
   editUserInfoComp16(userId: string, CodeCompleted16: string): any {
@@ -999,13 +1001,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted16,
           };
+          sub.unsubscribe();
+          console.log('love you 33');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 33');
   }
   editUserInfoComp17(userId: string, CodeCompleted17: string): any {
     const sub = this.http
@@ -1022,13 +1024,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted17,
           };
+          sub.unsubscribe();
+          console.log('love you 34');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 34');
   }
   editUserInfoComp18(userId: string, CodeCompleted18: string): any {
     const sub = this.http
@@ -1045,13 +1047,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted18,
           };
+          sub.unsubscribe();
+          console.log('love you 35');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 35');
   }
   editUserInfoComp19(userId: string, CodeCompleted19: string): any {
     const sub = this.http
@@ -1068,13 +1070,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted19,
           };
+          sub.unsubscribe();
+          console.log('love you 36');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 36');
   }
   editUserInfoComp20(userId: string, CodeCompleted20: string): any {
     const sub = this.http
@@ -1091,13 +1093,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted20,
           };
+          sub.unsubscribe();
+          console.log('love you 37');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 37');
   }
   // Edit comp 3
   editUserInfoComp21(userId: string, CodeCompleted21: string): any {
@@ -1115,13 +1117,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted21,
           };
+          sub.unsubscribe();
+          console.log('love you 38');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 38');
   }
   editUserInfoComp22(userId: string, CodeCompleted22: string): any {
     const sub = this.http
@@ -1138,13 +1140,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted22,
           };
+          sub.unsubscribe();
+          console.log('love you 39');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 39');
   }
   editUserInfoComp23(userId: string, CodeCompleted23: string): any {
     const sub = this.http
@@ -1161,13 +1163,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted23,
           };
+          sub.unsubscribe();
+          console.log('love you 40');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 40');
   }
   editUserInfoComp24(userId: string, CodeCompleted24: string): any {
     const sub = this.http
@@ -1184,13 +1186,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted24,
           };
+          sub.unsubscribe();
+          console.log('love you 41');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 41');
   }
   editUserInfoComp25(userId: string, CodeCompleted25: string): any {
     const sub = this.http
@@ -1207,13 +1209,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted25,
           };
+          sub.unsubscribe();
+          console.log('love you 42');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 42');
   }
   // Edit comp 3
   editUserInfoComp26(userId: string, CodeCompleted26: string): any {
@@ -1231,13 +1233,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted26,
           };
+          sub.unsubscribe();
+          console.log('love you 43');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 43');
   }
   editUserInfoComp27(userId: string, CodeCompleted27: string): any {
     const sub = this.http
@@ -1254,13 +1256,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted27,
           };
+          sub.unsubscribe();
+          console.log('love you 44');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 44');
   }
   editUserInfoComp28(userId: string, CodeCompleted28: string): any {
     const sub = this.http
@@ -1277,13 +1279,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted28,
           };
+          sub.unsubscribe();
+          console.log('love you 45');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 45');
   }
   editUserInfoComp29(userId: string, CodeCompleted29: string): any {
     const sub = this.http
@@ -1300,13 +1302,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted29,
           };
+          sub.unsubscribe();
+          console.log('love you 46');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 46');
   }
   editUserInfoComp30(userId: string, CodeCompleted30: string): any {
     const sub = this.http
@@ -1323,13 +1325,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted30,
           };
+          sub.unsubscribe();
+          console.log('love you 47');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 47');
   }
   // Edit comp 4
   editUserInfoComp31(userId: string, CodeCompleted31: string): any {
@@ -1347,13 +1349,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted31,
           };
+          sub.unsubscribe();
+          console.log('love you 48');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 48');
   }
   editUserInfoComp32(userId: string, CodeCompleted32: string): any {
     const sub = this.http
@@ -1370,13 +1372,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted32,
           };
+          sub.unsubscribe();
+          console.log('love you 49');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 49');
   }
   editUserInfoComp33(userId: string, CodeCompleted33: string): any {
     const sub = this.http
@@ -1393,13 +1395,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted33,
           };
+          sub.unsubscribe();
+          console.log('love you 50');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 50');
   }
   editUserInfoComp34(userId: string, CodeCompleted34: string): any {
     const sub = this.http
@@ -1416,13 +1418,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted34,
           };
+          sub.unsubscribe();
+          console.log('love you 51');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 51');
   }
   editUserInfoComp35(userId: string, CodeCompleted35: string): any {
     const sub = this.http
@@ -1439,13 +1441,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted35,
           };
+          sub.unsubscribe();
+          console.log('love you 52');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 52');
   }
   // Edit comp 4W
   editUserInfoComp36(userId: string, CodeCompleted36: string): any {
@@ -1463,13 +1465,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted36,
           };
+          sub.unsubscribe();
+          console.log('love you 53');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 53');
   }
   editUserInfoComp37(userId: string, CodeCompleted37: string): any {
     const sub = this.http
@@ -1486,13 +1488,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted37,
           };
+          sub.unsubscribe();
+          console.log('love you 54');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 54');
   }
   editUserInfoComp38(userId: string, CodeCompleted38: string): any {
     const sub = this.http
@@ -1509,13 +1511,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted38,
           };
+          sub.unsubscribe();
+          console.log('love you 55');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 55');
   }
   editUserInfoComp39(userId: string, CodeCompleted39: string): any {
     const sub = this.http
@@ -1532,13 +1534,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted39,
           };
+          sub.unsubscribe();
+          console.log('love you 56');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 56');
   }
   editUserInfoComp40(userId: string, CodeCompleted40: string): any {
     const sub = this.http
@@ -1555,13 +1557,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompleted40,
           };
+          sub.unsubscribe();
+          console.log('love you 57');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 57');
   }
   editUserInfoCompX(userId: string, CodeCompletedX: string): any {
     const sub = this.http
@@ -1578,13 +1580,13 @@ export class AuthService {
             id: responseData.post.id,
             CodeCompletedX,
           };
+          sub.unsubscribe();
+          console.log('love you 58');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 58');
   }
   // Edit Pursuing
   editUserInfoPur(userId: string, CodePursuing: string): any {
@@ -1602,13 +1604,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing,
           };
+          sub.unsubscribe();
+          console.log('love you 59');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 59');
   }
   // Edit Pursuing
   editUserInfoPur2(userId: string, CodePursuing2: string): any {
@@ -1626,13 +1628,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing2,
           };
+          sub.unsubscribe();
+          console.log('love you 60');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 60');
   }
   // Edit Pursuing
   editUserInfoPur3(userId: string, CodePursuing3: string): any {
@@ -1650,13 +1652,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing3,
           };
+          sub.unsubscribe();
+          console.log('love you 61');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 61');
   }
   // Edit Pursuing
   editUserInfoPur4(userId: string, CodePursuing4: string): any {
@@ -1674,13 +1676,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing4,
           };
+          sub.unsubscribe();
+          console.log('love you 62');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 62');
   }
   // Edit Pursuing
   editUserInfoPur5(userId: string, CodePursuing5: string): any {
@@ -1698,13 +1700,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing5,
           };
+          sub.unsubscribe();
+          console.log('love you 63');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 63');
   }
   // Edit Pursuing winter
   editUserInfoPurW6(userId: string, CodePursuing6: string): any {
@@ -1722,13 +1724,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing6,
           };
+          sub.unsubscribe();
+          console.log('love you 64');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 64');
   }
   // Edit Pursuing winter
   editUserInfoPurW7(userId: string, CodePursuing7: string): any {
@@ -1746,13 +1748,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing7,
           };
+          sub.unsubscribe();
+          console.log('love you 65');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 65');
   }
   // Edit Pursuing winter
   editUserInfoPurW8(userId: string, CodePursuing8: string): any {
@@ -1770,13 +1772,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing8,
           };
+          sub.unsubscribe();
+          console.log('love you 66');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 66');
   }
   // Edit Pursuing winter
   editUserInfoPurW9(userId: string, CodePursuing9: string): any {
@@ -1794,13 +1796,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing9,
           };
+          sub.unsubscribe();
+          console.log('love you 67');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 67');
   }
   // Edit Pursuing winter
   editUserInfoPurW10(userId: string, CodePursuing10: string): any {
@@ -1818,13 +1820,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing10,
           };
+          sub.unsubscribe();
+          console.log('love you 68');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 68');
   }
 
   // Edit Pursuing
@@ -1840,13 +1842,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing11,
           };
+          sub.unsubscribe();
+          console.log('love you 69');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 69');
   }
   // Edit Pursuing
   editUserInfoPurSp12(userId: string, CodePursuing12: string): any {
@@ -1861,13 +1863,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing12,
           };
+          sub.unsubscribe();
+          console.log('love you 70');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 70');
   }
   // Edit Pursuing
   editUserInfoPurSu13(userId: string, CodePursuing13: string): any {
@@ -1882,13 +1884,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing13,
           };
+          sub.unsubscribe();
+          console.log('love you 71');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 71');
   }
   // Edit Pursuing
   editUserInfoPurSu14(userId: string, CodePursuing14: string): any {
@@ -1903,13 +1905,13 @@ export class AuthService {
             id: responseData.post.id,
             CodePursuing14,
           };
+          sub.unsubscribe();
+          console.log('love you 72');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 72');
   }
   // Your info
   getInfo(userId: string, counter: number): any {
@@ -1999,9 +2001,9 @@ export class AuthService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 73');
       });
-    sub.unsubscribe();
-    console.log('love you 73');
   }
   // Your info profile
   getInfoProfile(userId: string): any {
@@ -2090,9 +2092,9 @@ export class AuthService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 74');
       });
-    sub.unsubscribe();
-    console.log('love you 74');
   }
   // Your info
   getInfoMessage(userId): any {
@@ -2183,9 +2185,9 @@ export class AuthService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 75');
       });
-    sub.unsubscribe();
-    console.log('love you 75');
   }
 
   // Your info
@@ -2203,9 +2205,9 @@ export class AuthService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 76');
       });
-    sub.unsubscribe();
-    console.log('love you 76');
   }
   getOtherInfo(id: string): any {
     const sub = this.http
@@ -2222,9 +2224,9 @@ export class AuthService {
         console.log('mario', transformedInfos);
         this.infos = transformedInfos;
         this.infosUpdated.next(this.infos);
+        sub.unsubscribe();
+        console.log('love you 77');
       });
-    sub.unsubscribe();
-    console.log('love you 77');
   }
 
   // Login
@@ -2255,6 +2257,8 @@ export class AuthService {
             );
 
             this.saveAuthData(token, expirationDate, this.userId);
+            sub.unsubscribe();
+            console.log('love you 78');
           }
         },
         error: (error) => {
@@ -2264,8 +2268,6 @@ export class AuthService {
           // });
         },
       });
-    sub.unsubscribe();
-    console.log('love you 78');
   }
 
   // Login first time
@@ -2291,6 +2293,8 @@ export class AuthService {
           );
 
           this.saveAuthData(this.token, expirationDate, this.userId);
+          sub.unsubscribe();
+          console.log('love you 79');
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -2303,8 +2307,6 @@ export class AuthService {
           );
         },
       });
-    sub.unsubscribe();
-    console.log('love you 79');
   }
 
   autoAuthUser(): any {
@@ -2402,13 +2404,13 @@ export class AuthService {
               duration: 2000,
             }
           );
+          sub.unsubscribe();
+          console.log('love you 80');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 80');
   }
   // Forgot Password
   forgotPassword(email: string): any {
@@ -2433,13 +2435,13 @@ export class AuthService {
               duration: 2000,
             }
           );
+          sub.unsubscribe();
+          console.log('love you 81');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 81');
   }
   // Update Password
   updatePassword(password: string, secretCode: string): any {
@@ -2458,6 +2460,8 @@ export class AuthService {
           snackBarRef.afterDismissed().subscribe(() => {
             this.router.navigate(['/login']);
           });
+          sub.unsubscribe();
+          console.log('love you 82');
         },
         error: (error) => {
           this.snackBar.open('Invalid reset code.', 'Check your email', {
@@ -2466,8 +2470,6 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 82');
   }
   // Get code
   getCode(emailDel: string, passwordDel: string): any {
@@ -2483,6 +2485,8 @@ export class AuthService {
               duration: 3000,
             }
           );
+          sub.unsubscribe();
+          console.log('love you 83');
         },
         error: (error) => {
           this.snackBar.open('Invalid credentials', 'Try again!', {
@@ -2491,8 +2495,6 @@ export class AuthService {
           // this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 83');
   }
   // Delete account
   deleteAccount(emailDel: string, passwordDel: string, code: string): any {
@@ -2511,6 +2513,8 @@ export class AuthService {
           snackBarRef.afterDismissed().subscribe(() => {
             this.router.navigate(['/login']);
           });
+          sub.unsubscribe();
+          console.log('love you 84');
         },
         error: (error) => {
           this.snackBar.open('Invalid username', 'Try again!', {
@@ -2519,8 +2523,6 @@ export class AuthService {
           // this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 84');
   }
   // Adding subscription to get notifcations
   addSubscription(data: any, userId: string): any {
@@ -2535,12 +2537,12 @@ export class AuthService {
           this.snackBar.open('You will now recieve notifications', '🔔', {
             duration: 3000,
           });
+          sub.unsubscribe();
+          console.log('love you 85');
         },
         error: (err) => {
           console.log('Unable to add subscription for notifications!', err);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 85');
   }
 }
