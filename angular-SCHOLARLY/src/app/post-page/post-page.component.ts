@@ -81,7 +81,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   isLoading = false;
 
   private authStatusSub: Subscription;
-
+  private titleSub: Subscription;
+  private HashSub: Subscription;
+  private locationSub: Subscription;
   userId: string;
 
   url: string;
@@ -321,12 +323,14 @@ export class PostPageComponent implements OnInit, OnDestroy {
       (e) => e.name !== 'Important Links'
     );
     // Doesn't keep track of value
-    this.Title.valueChanges.subscribe((v) => this.TitleLength.next(v.length));
-    this.Hashtag1.valueChanges.subscribe((v) =>
+    this.titleSub = this.Title.valueChanges.subscribe((v) =>
+      this.TitleLength.next(v.length)
+    );
+    this.HashSub = this.Hashtag1.valueChanges.subscribe((v) =>
       this.HashTagLength.next(v.length)
     );
 
-    this.LocationEvent.valueChanges.subscribe((v) =>
+    this.locationSub = this.LocationEvent.valueChanges.subscribe((v) =>
       this.LocationLength.next(v.length)
     );
 
@@ -338,6 +342,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): any {
     this.authStatusSub.unsubscribe();
+    this.locationSub.unsubscribe();
+    this.HashSub.unsubscribe();
+    this.titleSub.unsubscribe();
   }
   // Adding emojis
   openEmoji(): void {

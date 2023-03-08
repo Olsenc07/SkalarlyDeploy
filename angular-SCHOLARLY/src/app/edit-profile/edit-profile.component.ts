@@ -1,4 +1,10 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ElementRef,
+  ViewChild,
+  OnDestroy,
+} from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen';
 import { URLConfig } from '@cloudinary/url-gen';
@@ -43,7 +49,7 @@ import { createPopup } from '@picmo/popup-picker';
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComponent implements OnInit {
+export class EditProfileComponent implements OnInit, OnDestroy {
   startDate = new Date(1997, 0, 1);
   storedPosts: Post[] = [];
   posts: Post[] = [];
@@ -111,6 +117,7 @@ export class EditProfileComponent implements OnInit {
   birthday: FormControl = new FormControl('');
   gender: FormControl = new FormControl('');
   form: FormGroup;
+  private infoSub: Subscription;
   src = '';
   Name = '';
   Birthday = '';
@@ -380,7 +387,7 @@ export class EditProfileComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoPersonal(this.userId);
-    this.authService
+    this.infoSub = this.authService
       .getInfoUpdateListener()
       .subscribe((imp: AuthDataInfo[]) => {
         this.Name = imp[0].name;
@@ -409,6 +416,9 @@ export class EditProfileComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): any {
+    this.infoSub.unsubscribe();
+  }
   clearBio(): void {
     this.bio.setValue('');
     this.authServiceEdit.editUserBio(this.userId, this.bio.value);
@@ -561,7 +571,7 @@ export class EditProfileComponent implements OnInit {
   templateUrl: './edit-ProfileComp1.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComp1Component implements OnInit {
+export class EditProfileComp1Component implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   classes: string[] = [];
@@ -570,6 +580,7 @@ export class EditProfileComp1Component implements OnInit {
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  private codeSub: Subscription;
   // CodeCompleted 1-40X
   public CodeCompletedLength = new BehaviorSubject(0);
   CodeCompleted: FormControl = new FormControl('');
@@ -592,11 +603,14 @@ export class EditProfileComp1Component implements OnInit {
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
       });
-    this.CodeCompleted.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodeCompleted.valueChanges.subscribe((v) =>
       this.CodeCompletedLength.next(v.length)
     );
   }
-
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
+  }
   // clear course
   clearCode1(): void {
     this.CodeCompleted.setValue('');
@@ -713,7 +727,7 @@ export class EditProfileComp1Component implements OnInit {
   templateUrl: './edit-ProfileComp1W.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComp1WComponent implements OnInit {
+export class EditProfileComp1WComponent implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   classes: string[] = [];
@@ -722,6 +736,7 @@ export class EditProfileComp1WComponent implements OnInit {
   filteredCodes: Observable<string[]>;
   // FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  private codeSub: Subscription;
   // CodeCompleted 1-40X
   public CodeCompleted6Length = new BehaviorSubject(0);
   CodeCompleted6: FormControl = new FormControl('');
@@ -744,9 +759,14 @@ export class EditProfileComp1WComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
-    this.CodeCompleted6.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodeCompleted6.valueChanges.subscribe((v) =>
       this.CodeCompleted6Length.next(v.length)
     );
+  }
+
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   // clear course
 
@@ -863,12 +883,13 @@ export class EditProfileComp1WComponent implements OnInit {
   templateUrl: './edit-ProfileComp2.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComp2Component implements OnInit {
+export class EditProfileComp2Component implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  private codeSub: Subscription;
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
   public CodeCompleted11Length = new BehaviorSubject(0);
@@ -893,9 +914,13 @@ export class EditProfileComp2Component implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
-    this.CodeCompleted11.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodeCompleted11.valueChanges.subscribe((v) =>
       this.CodeCompleted11Length.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   clearCode11(): void {
     this.CodeCompleted11.setValue('');
@@ -1024,7 +1049,7 @@ export class EditProfileComp2Component implements OnInit {
   templateUrl: './edit-ProfileComp2W.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComp2WComponent implements OnInit {
+export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   filteredCodes: Observable<string[]>;
@@ -1033,6 +1058,7 @@ export class EditProfileComp2WComponent implements OnInit {
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
   private infosSub: Subscription;
+  private codeSub: Subscription;
   public CodeCompleted16Length = new BehaviorSubject(0);
   CodeCompleted16: FormControl = new FormControl('');
   CodeCompleted17: FormControl = new FormControl('');
@@ -1054,9 +1080,13 @@ export class EditProfileComp2WComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
-    this.CodeCompleted16.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodeCompleted16.valueChanges.subscribe((v) =>
       this.CodeCompleted16Length.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   clearCode16(): void {
     this.CodeCompleted16.setValue('');
@@ -1184,12 +1214,13 @@ export class EditProfileComp2WComponent implements OnInit {
   templateUrl: './edit-ProfileComp3.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComp3Component implements OnInit {
+export class EditProfileComp3Component implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  private codeSub: Subscription;
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
   public CodeCompleted21Length = new BehaviorSubject(0);
@@ -1214,9 +1245,13 @@ export class EditProfileComp3Component implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
-    this.CodeCompleted21.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodeCompleted21.valueChanges.subscribe((v) =>
       this.CodeCompleted21Length.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   clearCode21(): void {
     this.CodeCompleted21.setValue('');
@@ -1344,12 +1379,13 @@ export class EditProfileComp3Component implements OnInit {
   templateUrl: './edit-ProfileComp3W.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComp3WComponent implements OnInit {
+export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  private codeSub: Subscription;
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
   public CodeCompleted26Length = new BehaviorSubject(0);
@@ -1373,9 +1409,13 @@ export class EditProfileComp3WComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
-    this.CodeCompleted26.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodeCompleted26.valueChanges.subscribe((v) =>
       this.CodeCompleted26Length.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   clearCode26(): void {
     this.CodeCompleted26.setValue('');
@@ -1504,12 +1544,13 @@ export class EditProfileComp3WComponent implements OnInit {
   templateUrl: './edit-ProfileComp4.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComp4Component implements OnInit {
+export class EditProfileComp4Component implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  private codeSub: Subscription;
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
   public CodeCompleted31Length = new BehaviorSubject(0);
@@ -1534,9 +1575,13 @@ export class EditProfileComp4Component implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
-    this.CodeCompleted31.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodeCompleted31.valueChanges.subscribe((v) =>
       this.CodeCompleted31Length.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   clearCode31(): void {
     this.CodeCompleted31.setValue('');
@@ -1663,12 +1708,13 @@ export class EditProfileComp4Component implements OnInit {
   templateUrl: './edit-ProfileComp4W.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfileComp4WComponent implements OnInit {
+export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
+  private codeSub: Subscription;
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
   public CodeCompleted36Length = new BehaviorSubject(0);
@@ -1693,9 +1739,13 @@ export class EditProfileComp4WComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
-    this.CodeCompleted36.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodeCompleted36.valueChanges.subscribe((v) =>
       this.CodeCompleted36Length.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   clearCode36(): void {
     this.CodeCompleted36.setValue('');
@@ -1839,14 +1889,14 @@ export class EditProfileComp4WComponent implements OnInit {
   templateUrl: './edit-ProfilePurW.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfilePurWComponent implements OnInit {
+export class EditProfilePurWComponent implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
   private infosSub: Subscription;
-
+  private codeSub: Subscription;
   filteredCodesP: Observable<string[]>;
   FilteredCodesP: string[] = this.classListService.allClasses().slice();
   public CodePursuing6Length = new BehaviorSubject(0);
@@ -1871,9 +1921,13 @@ export class EditProfilePurWComponent implements OnInit {
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
       });
-    this.CodePursuing6.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodePursuing6.valueChanges.subscribe((v) =>
       this.CodePursuing6Length.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   clearNext6(): void {
     this.CodePursuing6.setValue('');
@@ -2000,14 +2054,14 @@ export class EditProfilePurWComponent implements OnInit {
   templateUrl: './edit-ProfilePurSpring.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfilePurSpringComponent implements OnInit {
+export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
   private infosSub: Subscription;
-
+  private codeSub: Subscription;
   filteredCodesP: Observable<string[]>;
   FilteredCodesP: string[] = this.classListService.allClasses().slice();
   public CodePursuing11Length = new BehaviorSubject(0);
@@ -2029,9 +2083,13 @@ export class EditProfilePurSpringComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
-    this.CodePursuing11.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodePursuing11.valueChanges.subscribe((v) =>
       this.CodePursuing11Length.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   clearNext11(): void {
     this.CodePursuing11.setValue('');
@@ -2103,14 +2161,14 @@ export class EditProfilePurSpringComponent implements OnInit {
   templateUrl: './edit-ProfilePurSummer.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfilePurSummerComponent implements OnInit {
+export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
   private infosSub: Subscription;
-
+  private codeSub: Subscription;
   filteredCodesP: Observable<string[]>;
   FilteredCodesP: string[] = this.classListService.allClasses().slice();
   public CodePursuing13Length = new BehaviorSubject(0);
@@ -2132,9 +2190,13 @@ export class EditProfilePurSummerComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
-    this.CodePursuing13.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodePursuing13.valueChanges.subscribe((v) =>
       this.CodePursuing13Length.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   clearNext13(): void {
     this.CodePursuing13.setValue('');
@@ -2206,14 +2268,14 @@ export class EditProfilePurSummerComponent implements OnInit {
   templateUrl: './edit-ProfilePur.component.html',
   styleUrls: ['./edit-profile.component.scss'],
 })
-export class EditProfilePurComponent implements OnInit {
+export class EditProfilePurComponent implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
   private infosSub: Subscription;
-
+  private codeSub: Subscription;
   filteredCodesP: Observable<string[]>;
   FilteredCodesP: string[] = this.classListService.allClasses().slice();
   public CodePursuingLength = new BehaviorSubject(0);
@@ -2238,9 +2300,13 @@ export class EditProfilePurComponent implements OnInit {
         this.infos = infos;
         console.log('infos', this.infos);
       });
-    this.CodePursuing.valueChanges.subscribe((v) =>
+    this.codeSub = this.CodePursuing.valueChanges.subscribe((v) =>
       this.CodePursuingLength.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.codeSub.unsubscribe();
   }
   clearNext(): void {
     this.CodePursuing.setValue('');

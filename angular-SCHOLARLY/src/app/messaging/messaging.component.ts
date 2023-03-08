@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { PostsService } from '../services/posts.service';
@@ -24,7 +24,7 @@ export interface Message {
   templateUrl: './messaging.component.html',
   styleUrls: ['./messaging.component.scss'],
 })
-export class MessagingComponent implements OnInit {
+export class MessagingComponent implements OnInit, OnDestroy {
   isLoading = false;
   userId: string;
   timeHourInitial = new Date().getHours();
@@ -65,6 +65,13 @@ export class MessagingComponent implements OnInit {
   photoUploadM: FormControl = new FormControl('');
 
   filteredSearch: Observable<string[]>;
+  private routeSub: Subscription;
+  private msgNotifSub: Subscription;
+  private msgNotifNoSub: Subscription;
+  private chatSub: Subscription;
+  private delSub: Subscription;
+  private clearSub: Subscription;
+  private msgNotif2Sub: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -78,13 +85,13 @@ export class MessagingComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     // this.messagesService.startMessages(this.userId);
-    this.route.queryParams.subscribe((params) => {
+    this.routeSub = this.route.queryParams.subscribe((params) => {
       console.log('params main page', params?.username);
       this.username = params?.username;
       console.log('username', this.username);
     });
     this.messageNotificationService.getMessageNotification(this.userId);
-    this.messageNotificationService
+    this.msgNotifSub = this.messageNotificationService
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
@@ -94,6 +101,10 @@ export class MessagingComponent implements OnInit {
     // this.route.queryParams.subscribe((params) => {
     //   this.username = params?.username;
   }
+  ngOnDestroy(): any {
+    this.routeSub.unsubscribe();
+    this.msgNotifSub.unsubscribe();
+  }
   enedMessaged(username: string): void {}
   navigateToPage(infoUser: string): any {
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
@@ -101,26 +112,28 @@ export class MessagingComponent implements OnInit {
   delConvo(postId: string): any {
     console.log('pI', postId);
     this.messageNotificationService.delConvo(postId);
-    this.messageNotificationService
+    this.delSub = this.messageNotificationService
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
         this.messagesNotif = messagesNotif.reverse();
         this.messagesNoNotif = '';
       });
+    this.delSub.unsubscribe();
   }
   // resets search
   clear(): void {
     this.msgFilter.setValue('');
     console.log('coffee time');
     this.messageNotificationService.getMessageNotification(this.userId);
-    this.messageNotificationService
+    this.clearSub = this.messageNotificationService
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.messagesNotif = messagesNotif.reverse();
         this.messagesNoNotif = '';
         console.log('cleared now', this.messagesNotif);
       });
+    this.clearSub.unsubscribe();
   }
   // Search notifs
   sendDataNotif(event: any): any {
@@ -166,19 +179,21 @@ export class MessagingComponent implements OnInit {
           this.userId,
           noSpecialChars.trim()
         );
-        this.messageNotificationService
+        this.msgNotif2Sub = this.messageNotificationService
           .getListenerNotification()
           .subscribe((messagesNotif: Message[]) => {
             console.log('g eazy', messagesNotif);
             this.isLoading = false;
             this.messagesNotif = messagesNotif.reverse();
           });
-        this.messageNotificationService
+        this.msgNotif2Sub.unsubscribe();
+        this.msgNotifNoSub = this.messageNotificationService
           .getListenerNoNotification()
           .subscribe((messagesNoNotif: string) => {
             console.log('50 cent', messagesNoNotif);
             this.messagesNoNotif = messagesNoNotif;
           });
+        this.msgNotifNoSub.unsubscribe();
         // console.log('tumblr girls');
         // this.messageNotificationService.getMessageNotification(this.userId);
         // this.messageNotificationService
@@ -195,12 +210,13 @@ export class MessagingComponent implements OnInit {
     this.messageNotificationService.viewedMessage(this.userId, username);
     // sets the new pulled data to display envelop opening
     this.messageNotificationService.getMessageNotification(this.userId);
-    this.messageNotificationService
+    this.chatSub = this.messageNotificationService
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.messagesNotif = messagesNotif.reverse();
         this.router.navigate(['/messages/:'], { queryParams: { username } });
       });
+    this.chatSub.unsubscribe();
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
   }
   // Am Pm instead of 24hr clock
@@ -451,12 +467,13 @@ export class MessagingComponent implements OnInit {
   templateUrl: './message-card.component.html',
   styleUrls: ['./messaging.component.scss'],
 })
-export class MessageCardComponent implements OnInit {
+export class MessageCardComponent implements OnInit, OnDestroy {
   userId: string;
   username: string;
 
   messages: Message[] = [];
   private datasSub: Subscription;
+  private routeSub: Subscription;
   constructor(
     private authService: AuthService,
     public messagesService: MessageService,
@@ -466,7 +483,7 @@ export class MessageCardComponent implements OnInit {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     // Pulls one to one msgs
-    this.route.queryParams.subscribe((params) => {
+    this.routeSub = this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
       this.messagesService.getMessages(this.userId, this.username);
       this.datasSub = this.messagesService
@@ -477,7 +494,10 @@ export class MessageCardComponent implements OnInit {
         });
     });
   }
-
+  ngOnDestroy(): any {
+    this.routeSub.unsubscribe();
+    this.datasSub.unsubscribe();
+  }
   deleteMsg(msgId: string): any {
     this.messageNotificationService.deleteMessage(msgId);
     location.reload();

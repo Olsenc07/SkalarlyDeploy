@@ -117,6 +117,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           console.log('posts personal forward', this.posts);
         });
+      this.postsSub.unsubscribe();
     });
   }
   // Back
@@ -138,6 +139,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           console.log('posts personal back', this.posts);
         });
+      this.postsSub.unsubscribe();
     });
   }
   // Adding emojis
@@ -372,6 +374,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
       });
+    this.commentsSub.unsubscribe();
   }
   // ngOnDestroy(): void {
   //   this.postsSub.unsubscribe();
@@ -382,7 +385,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
   templateUrl: './reusable-cardPersonal.component.html',
   styleUrls: ['./reusable-card.component.scss'],
 })
-export class ReusableCardPersonalComponent implements OnInit {
+export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
   isLoading = false;
   hide = true;
   userId: string;
@@ -449,6 +452,7 @@ export class ReusableCardPersonalComponent implements OnInit {
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -467,6 +471,7 @@ export class ReusableCardPersonalComponent implements OnInit {
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   // Adding emojis
   openEmoji(): void {
@@ -553,6 +558,9 @@ export class ReusableCardPersonalComponent implements OnInit {
         this.isLoading = false;
         console.log('posts', this.posts);
       });
+  }
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
@@ -682,6 +690,7 @@ export class ReusableCardPersonalComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
       });
+    this.postsSub.unsubscribe();
   }
 }
 
@@ -691,7 +700,7 @@ export class ReusableCardPersonalComponent implements OnInit {
   templateUrl: './comments.component.html',
   styleUrls: ['./reusable-card.component.scss'],
 })
-export class ReusableCommentsComponent implements OnInit {
+export class ReusableCommentsComponent implements OnInit, OnDestroy {
   @Input() currentUserId!: string;
   posts: Post[] = [];
   userId: string;
@@ -736,6 +745,9 @@ export class ReusableCommentsComponent implements OnInit {
 
         console.log('posts personal', this.posts);
       });
+  }
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
   }
   // Am Pm instead of 24hr clock
   testNum(timeHourInitial: any): number {
@@ -1075,7 +1087,7 @@ export class ReusableCommentFormComponent implements OnInit {
   templateUrl: './showCase.component.html',
   styleUrls: ['./reusable-card.component.scss'],
 })
-export class ShowCaseComponent implements OnInit {
+export class ShowCaseComponent implements OnInit, OnDestroy {
   userId: string;
   hide = true;
   showCases: ShowCase[] = [];
@@ -1097,7 +1109,10 @@ export class ShowCaseComponent implements OnInit {
         this.showCases = showcases;
       });
   }
-  imgClick(imgPath): any {
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
+  }
+  imgClick(imgPath: any): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
     this.hide = false;
@@ -1120,7 +1135,7 @@ export class ShowCaseComponent implements OnInit {
   templateUrl: './reusable-cardFeed.component.html',
   styleUrls: ['./reusable-card.component.scss'],
 })
-export class CardFeedComponent implements OnInit {
+export class CardFeedComponent implements OnInit, OnDestroy {
   isLoading = false;
   open = true;
   reposts = '';
@@ -1199,7 +1214,9 @@ export class CardFeedComponent implements OnInit {
     //     this.isLoading = false;
     //   });
   }
-
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
+  }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
     // Where the post was posted
@@ -1398,6 +1415,7 @@ export class CardFeedComponent implements OnInit {
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -1416,6 +1434,7 @@ export class CardFeedComponent implements OnInit {
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   onClickComments(postId: string): any {
     const count = 1;
@@ -1432,6 +1451,7 @@ export class CardFeedComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments;
       });
+    this.commentsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -1454,6 +1474,7 @@ export class CardFeedComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
       });
+    this.commentsSub.unsubscribe();
   }
 }
 // Trending
@@ -1462,7 +1483,7 @@ export class CardFeedComponent implements OnInit {
   templateUrl: './reusable-cardTrending.component.html',
   styleUrls: ['./reusable-card.component.scss'],
 })
-export class TrendingFeedComponent implements OnInit {
+export class TrendingFeedComponent implements OnInit, OnDestroy {
   isLoading = false;
   reposts = '';
   commentsValidator = '';
@@ -1483,7 +1504,7 @@ export class TrendingFeedComponent implements OnInit {
   span = document.getElementsByClassName('close')[0];
 
   private postsSub: Subscription;
-
+  private trendingSub: Subscription;
   // infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
@@ -1541,7 +1562,9 @@ export class TrendingFeedComponent implements OnInit {
     //     this.isLoading = false;
     //   });
   }
-
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
+  }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
     // Where the post was posted
@@ -1648,10 +1671,13 @@ export class TrendingFeedComponent implements OnInit {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.trendingSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+      });
+    this.trendingSub.unsubscribe();
   }
   spreadWord(postId: string): void {
     console.log('mint', postId);
@@ -1734,6 +1760,7 @@ export class TrendingFeedComponent implements OnInit {
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -1752,6 +1779,7 @@ export class TrendingFeedComponent implements OnInit {
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   onClickComments(postId: string): any {
     const count = 1;
@@ -1768,6 +1796,7 @@ export class TrendingFeedComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments;
       });
+    this.commentsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -1790,6 +1819,7 @@ export class TrendingFeedComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
       });
+    this.commentsSub.unsubscribe();
   }
 }
 
@@ -1799,7 +1829,7 @@ export class TrendingFeedComponent implements OnInit {
   templateUrl: './reusable-cardFriends.component.html',
   styleUrls: ['./reusable-card.component.scss'],
 })
-export class CardFriendsComponent implements OnInit {
+export class CardFriendsComponent implements OnInit, OnDestroy {
   isLoading = false;
   open = true;
   reposts = '';
@@ -1820,7 +1850,8 @@ export class CardFriendsComponent implements OnInit {
   span = document.getElementsByClassName('close')[0];
 
   private postsSub: Subscription;
-
+  private trendingSub: Subscription;
+  private blockedSub: Subscription;
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
 
@@ -1879,7 +1910,9 @@ export class CardFriendsComponent implements OnInit {
     //     this.isLoading = false;
     //   });
   }
-
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
+  }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
     // Where the post was posted
@@ -1988,24 +2021,30 @@ export class CardFriendsComponent implements OnInit {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.trendingSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+      });
+    this.trendingSub.unsubscribe();
   }
   navToPost(postId: string, OriginalCreator: string): any {
     console.log('Hey babe I miss you', postId);
     // check if user should be redirected here or if they are blocked
     this.authService.checkBlocked(this.userId, OriginalCreator);
-    this.authService.getBlocked().subscribe((BLOCKED: string) => {
-      if (BLOCKED === 'true') {
-        this.snackBar.open('This Skalar has blocked you', '🚫', {
-          duration: 3000,
-        });
-      } else {
-        this.router.navigate(['/single/:'], { queryParams: { postId } });
-      }
-    });
+    this.blockedSub = this.authService
+      .getBlocked()
+      .subscribe((BLOCKED: string) => {
+        if (BLOCKED === 'true') {
+          this.snackBar.open('This Skalar has blocked you', '🚫', {
+            duration: 3000,
+          });
+        } else {
+          this.router.navigate(['/single/:'], { queryParams: { postId } });
+        }
+      });
+    this.blockedSub.unsubscribe();
   }
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
@@ -2080,6 +2119,7 @@ export class CardFriendsComponent implements OnInit {
         this.isLoading = false;
         console.log('posts friends', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -2098,6 +2138,7 @@ export class CardFriendsComponent implements OnInit {
         this.isLoading = false;
         console.log('posts friends', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   onClickComments(postId: string): any {
     const count = 1;
@@ -2114,6 +2155,7 @@ export class CardFriendsComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments;
       });
+    this.commentsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -2136,6 +2178,7 @@ export class CardFriendsComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
       });
+    this.commentsSub.unsubscribe();
   }
   spreadWord(postId: string): void {
     console.log('for me baby', postId);
@@ -2148,7 +2191,7 @@ export class CardFriendsComponent implements OnInit {
   templateUrl: './reusable-cardFeed.component.html',
   styleUrls: ['./reusable-card.component.scss'],
 })
-export class CardInfoFeedComponent implements OnInit {
+export class CardInfoFeedComponent implements OnInit, OnDestroy {
   isLoading = false;
   open = true;
   closed = true;
@@ -2217,6 +2260,10 @@ export class CardInfoFeedComponent implements OnInit {
         this.infos = infos;
         this.isLoading = false;
       });
+  }
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
+    this.infosSub.unsubscribe();
   }
   commentsValidatorFunc(postId: string): void {
     this.commentsValidator = postId;
@@ -2359,6 +2406,7 @@ export class CardInfoFeedComponent implements OnInit {
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -2377,6 +2425,7 @@ export class CardInfoFeedComponent implements OnInit {
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -2424,6 +2473,7 @@ export class CardInfoFeedComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
       });
+    this.commentsSub.unsubscribe();
   }
 }
 
@@ -2432,7 +2482,7 @@ export class CardInfoFeedComponent implements OnInit {
   templateUrl: './reusable-cardMainPage.component.html',
   styleUrls: ['./reusable-card.component.scss'],
 })
-export class CardInfoMainPageComponent implements OnInit {
+export class CardInfoMainPageComponent implements OnInit, OnDestroy {
   category: string;
   userId: string;
   hide = true;
@@ -2444,6 +2494,8 @@ export class CardInfoMainPageComponent implements OnInit {
   commentsValidator = '';
   posts: Post[] = [];
   private postsSub: Subscription;
+  private routeSub: Subscription;
+  private trendingSub: Subscription;
   comments: string[] = [];
   // number of comments that load
   private commentsSub: Subscription;
@@ -2487,7 +2539,7 @@ export class CardInfoMainPageComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
 
-    this.route.queryParams.subscribe((params) => {
+    this.routeSub = this.route.queryParams.subscribe((params) => {
       console.log('params main page', params);
       this.category = params?.category;
 
@@ -2499,6 +2551,10 @@ export class CardInfoMainPageComponent implements OnInit {
           this.isLoading = false;
         });
     });
+  }
+  ngOnDestroy(): any {
+    this.routeSub.unsubscribe();
+    this.postsSub.unsubscribe();
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
@@ -2644,10 +2700,13 @@ export class CardInfoMainPageComponent implements OnInit {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.trendingSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+      });
+    this.trendingSub.unsubscribe();
   }
   emojiPreventClose($event: any): any {
     $event.stopPropagation();
@@ -2673,6 +2732,7 @@ export class CardInfoMainPageComponent implements OnInit {
         this.posts = posts;
         this.isLoading = false;
       });
+    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -2694,6 +2754,7 @@ export class CardInfoMainPageComponent implements OnInit {
         this.posts = posts;
         this.isLoading = false;
       });
+    this.postsSub.unsubscribe();
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -2724,5 +2785,6 @@ export class CardInfoMainPageComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
       });
+    this.commentsSub.unsubscribe();
   }
 }

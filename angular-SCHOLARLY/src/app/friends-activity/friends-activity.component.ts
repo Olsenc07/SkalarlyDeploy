@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { AuthDataInfo } from '../signup/auth-data.model';
 import { FollowService } from '../services/follow.service';
 export interface Follow {
   id: string;
@@ -21,7 +20,7 @@ export interface Follow {
   templateUrl: './friends-activity.component.html',
   styleUrls: ['./friends-activity.component.scss'],
 })
-export class FriendsActivityComponent implements OnInit {
+export class FriendsActivityComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -88,5 +87,12 @@ export class FriendsActivityComponent implements OnInit {
       .subscribe((mutuals: Follow[]) => {
         this.mutuals = mutuals;
       });
+  }
+  ngOnDestroy(): any {
+    this.authListenerSubs.unsubscribe();
+    this.mutualsSub.unsubscribe();
+    this.mutualSub.unsubscribe();
+    this.followSubFollowers.unsubscribe();
+    this.followSub.unsubscribe();
   }
 }

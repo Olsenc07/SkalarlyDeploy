@@ -1,10 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import {
-  MatBottomSheet,
-  MatBottomSheetRef,
-} from '@angular/material/bottom-sheet';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Post, PostService } from '../services/post.service';
 import { Subscription } from 'rxjs';
 
@@ -13,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './group-chats.component.html',
   styleUrls: ['./group-chats.component.scss'],
 })
-export class GroupChatsComponent implements OnInit {
+export class GroupChatsComponent implements OnInit, OnDestroy {
   storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -37,10 +34,10 @@ export class GroupChatsComponent implements OnInit {
   search: FormControl = new FormControl('');
 
   // Sends message
-  sendMsg() {}
+  sendMsg(): any {}
 
   constructor(
-    private _bottomSheet: MatBottomSheet,
+    private bottomSheet: MatBottomSheet,
     public postService: PostService
   ) {}
 
@@ -58,5 +55,8 @@ export class GroupChatsComponent implements OnInit {
       .subscribe((posts: Post[]) => {
         this.posts = posts;
       });
+  }
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
   }
 }

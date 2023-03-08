@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Post, PostService } from '../services/post.service';
 import { AuthService } from '../services/auth.service';
@@ -20,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './main-pages.component.html',
   styleUrls: ['./main-pages.component.scss'],
 })
-export class MainPagesComponent implements OnInit {
+export class MainPagesComponent implements OnInit, OnDestroy {
   userId: string;
   reposts = '';
   valueChosen = '7';
@@ -32,6 +32,7 @@ export class MainPagesComponent implements OnInit {
   isLoading = false;
   posts: Post[] = [];
   private postsSub: Subscription;
+  private routeSub: Subscription;
 
   constructor(
     private bottomSheet: MatBottomSheet,
@@ -44,7 +45,7 @@ export class MainPagesComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
 
-    this.route.queryParams.subscribe((params) => {
+    this.routeSub = this.route.queryParams.subscribe((params) => {
       console.log('params main page', params);
       this.category = params?.category;
 
@@ -56,6 +57,10 @@ export class MainPagesComponent implements OnInit {
           this.isLoading = false;
         });
     });
+  }
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
+    this.routeSub.unsubscribe();
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
@@ -116,7 +121,7 @@ export class SinglePageComponent implements OnInit {
   templateUrl: './template-single-post.component.html',
   styleUrls: ['../reusable-card/reusable-card.component.scss'],
 })
-export class SinglePageTemplateComponent implements OnInit {
+export class SinglePageTemplateComponent implements OnInit, OnDestroy {
   isLoading = false;
   hide = true;
   reposts = '';
@@ -148,6 +153,7 @@ export class SinglePageTemplateComponent implements OnInit {
     '\xa0' +
     this.text;
   private postsSub: Subscription;
+  private routeSub: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -161,7 +167,7 @@ export class SinglePageTemplateComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
 
-    this.route.queryParams.subscribe((params) => {
+    this.routeSub = this.route.queryParams.subscribe((params) => {
       console.log('params single page', params);
       this.postId = params?.postId;
 
@@ -181,6 +187,11 @@ export class SinglePageTemplateComponent implements OnInit {
           }
         });
     });
+  }
+
+  ngOnDestroy(): any {
+    this.routeSub.unsubscribe();
+    this.postsSub.unsubscribe();
   }
 
   navToHashTag(HashTag: string): any {
@@ -376,9 +387,12 @@ export class RecentComponent implements OnInit {
   posts: Post[] = [];
   userId: string;
   private postsSub: Subscription;
+  private posts2Sub: Subscription;
+
   comments: string[] = [];
   // number of comments that load
   private commentsSub: Subscription;
+  private countSub: Subscription;
   comment: FormControl = new FormControl('');
   timeHourInitial = new Date().getHours();
   timeHour = this.testNum(this.timeHourInitial);
@@ -540,6 +554,7 @@ export class RecentComponent implements OnInit {
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -551,13 +566,14 @@ export class RecentComponent implements OnInit {
     console.log('howdy', this.countVisibility);
 
     this.postService.getPostsFeed(this.recomCounter, this.userId);
-    this.postsSub = this.postService
+    this.posts2Sub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.posts2Sub.unsubscribe();
   }
   onClickComments(postId: string): any {
     const count = 1;
@@ -574,6 +590,7 @@ export class RecentComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments;
       });
+    this.commentsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -599,10 +616,13 @@ export class RecentComponent implements OnInit {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.countSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+      });
+    this.countSub.unsubscribe();
   }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
@@ -612,6 +632,7 @@ export class RecentComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
       });
+    this.commentsSub.unsubscribe();
   }
 }
 
@@ -634,6 +655,7 @@ export class TrendingComponent implements OnInit {
   comments: string[] = [];
   // number of comments that load
   private commentsSub: Subscription;
+  private trendingSub: Subscription;
   comment: FormControl = new FormControl('');
   timeHourInitial = new Date().getHours();
   timeHour = this.testNum(this.timeHourInitial);
@@ -793,6 +815,7 @@ export class TrendingComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments;
       });
+    this.commentsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -818,10 +841,13 @@ export class TrendingComponent implements OnInit {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.trendingSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+      });
+    this.trendingSub.unsubscribe();
   }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
@@ -1187,6 +1213,7 @@ export class SkalarsComponent implements OnInit {
         this.infos = infos;
         console.log('way nicer', this.infos);
       });
+    this.filtersSub.unsubscribe();
   }
 
   navigateToPage(infoUser: string): any {
@@ -1216,11 +1243,12 @@ export class LargeNewSkalarsFeedComponent implements OnInit {
   templateUrl: './hashtags.component.html',
   styleUrls: ['./main-pages.component.scss'],
 })
-export class HashtagComponent implements OnInit {
+export class HashtagComponent implements OnInit, OnDestroy {
   userId: string;
   hashtag: string;
   posts: Post[] = [];
   private postsSub: Subscription;
+  private routeSub: Subscription;
   isLoading = false;
 
   constructor(
@@ -1232,7 +1260,7 @@ export class HashtagComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
 
-    this.route.queryParams.subscribe((params) => {
+    this.routeSub = this.route.queryParams.subscribe((params) => {
       this.hashtag = params?.hashtag;
       console.log('params page', this.hashtag);
       console.log('woo hoo', params);
@@ -1245,6 +1273,10 @@ export class HashtagComponent implements OnInit {
           this.isLoading = false;
         });
     });
+  }
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
+    this.routeSub.unsubscribe();
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
@@ -1271,7 +1303,7 @@ export class HashtagComponent implements OnInit {
   templateUrl: './reusable_hashtags.component.html',
   styleUrls: ['../reusable-card/reusable-card.component.scss'],
 })
-export class HashtagCardComponent implements OnInit {
+export class HashtagCardComponent implements OnInit, OnDestroy {
   hashtag: string;
   countVisibility = 0;
   recomCounter = 0;
@@ -1280,6 +1312,8 @@ export class HashtagCardComponent implements OnInit {
   comment: FormControl = new FormControl('');
   comments: string[] = [];
   private commentsSub: Subscription;
+  private routeSub: Subscription;
+  private trendingSub: Subscription;
   commentsValidator = '';
   valueChosen = '7';
   reposts = '';
@@ -1306,6 +1340,8 @@ export class HashtagCardComponent implements OnInit {
     this.text;
   posts: Post[] = [];
   private postsSub: Subscription;
+  private posts2Sub: Subscription;
+
   isLoading = true;
 
   constructor(
@@ -1315,7 +1351,7 @@ export class HashtagCardComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
+    this.routeSub = this.route.queryParams.subscribe((params) => {
       this.hashtag = params?.hashtag;
       console.log('params hashtag page', this.hashtag);
 
@@ -1328,6 +1364,10 @@ export class HashtagCardComponent implements OnInit {
           this.isLoading = false;
         });
     });
+  }
+  ngOnDestroy(): any {
+    this.routeSub.unsubscribe();
+    this.postsSub.unsubscribe();
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
@@ -1473,10 +1513,13 @@ export class HashtagCardComponent implements OnInit {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.trendingSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+      });
+    this.trendingSub.unsubscribe();
   }
 
   loadComments(postId: string): void {
@@ -1487,6 +1530,7 @@ export class HashtagCardComponent implements OnInit {
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
       });
+    this.commentsSub.unsubscribe();
   }
   // Forward
   onClickFeed(): any {
@@ -1506,6 +1550,7 @@ export class HashtagCardComponent implements OnInit {
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -1517,13 +1562,14 @@ export class HashtagCardComponent implements OnInit {
     console.log('howdy', this.countVisibility);
 
     this.postService.getPostsHashtagPage(this.hashtag, this.recomCounter);
-    this.postsSub = this.postService
+    this.posts2Sub = this.postService
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
+    this.posts2Sub.unsubscribe();
   }
   // Where the post was posted
   navigateToMainPage(value: string): void {

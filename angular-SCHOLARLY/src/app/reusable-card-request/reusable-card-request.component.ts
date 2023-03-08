@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { FollowService } from '../services/follow.service';
@@ -9,7 +9,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
   templateUrl: './reusable-card-request.component.html',
   styleUrls: ['./reusable-card-request.component.scss'],
 })
-export class ReusableCardRequestComponent implements OnInit {
+export class ReusableCardRequestComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -43,6 +43,10 @@ export class ReusableCardRequestComponent implements OnInit {
         this.userId = this.authService.getUserId();
       });
   }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.authListenerSubs.unsubscribe();
+  }
 }
 
 @Component({
@@ -50,11 +54,12 @@ export class ReusableCardRequestComponent implements OnInit {
   templateUrl: './reusable-card-recommendation.component.html',
   styleUrls: ['./reusable-card-request.component.scss'],
 })
-export class ReusableCardRecommendationComponent implements OnInit {
+export class ReusableCardRecommendationComponent implements OnInit, OnDestroy {
   userId: string;
   isLoading = false;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
+  private postSub: Subscription;
   recomCounter = 0;
   countVisibility = 0;
   infos: string[] = [];
@@ -87,6 +92,10 @@ export class ReusableCardRecommendationComponent implements OnInit {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
   }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.authListenerSubs.unsubscribe();
+  }
   // Forward
   onClickRecom(): any {
     const count = 1;
@@ -96,11 +105,14 @@ export class ReusableCardRecommendationComponent implements OnInit {
     const NextBtn = document.getElementById('bigScroll');
     NextBtn.scrollIntoView();
     this.authService.getInfo(this.userId, this.recomCounter);
-    this.authService.getInfoUpdateListener().subscribe((infos: string[]) => {
-      this.infos = infos;
-      // this.infos = this.shuffle(infos);
-      this.isLoading = false;
-    });
+    this.postSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: string[]) => {
+        this.infos = infos;
+        // this.infos = this.shuffle(infos);
+        this.isLoading = false;
+      });
+    this.postSub.unsubscribe();
   }
   // Back
   onClickRecomBack(): any {
@@ -112,11 +124,14 @@ export class ReusableCardRecommendationComponent implements OnInit {
     console.log('howdy', this.countVisibility);
 
     this.authService.getInfo(this.userId, this.recomCounter);
-    this.authService.getInfoUpdateListener().subscribe((infos: string[]) => {
-      this.infos = infos;
-      // this.infos = this.shuffle(infos);
-      this.isLoading = false;
-    });
+    this.postSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: string[]) => {
+        this.infos = infos;
+        // this.infos = this.shuffle(infos);
+        this.isLoading = false;
+      });
+    this.postSub.unsubscribe();
   }
   // message user
   skalarMsg(username: string): void {

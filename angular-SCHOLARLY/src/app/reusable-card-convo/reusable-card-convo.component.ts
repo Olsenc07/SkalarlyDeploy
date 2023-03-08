@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
@@ -8,7 +8,7 @@ import { AuthDataInfo } from '../signup/auth-data.model';
   templateUrl: './reusable-card-convo.component.html',
   styleUrls: ['./reusable-card-convo.component.scss'],
 })
-export class ReusableCardConvoComponent implements OnInit {
+export class ReusableCardConvoComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -37,5 +37,9 @@ export class ReusableCardConvoComponent implements OnInit {
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
       });
+  }
+  ngOnDestroy(): any {
+    this.infosSub.unsubscribe();
+    this.authListenerSubs.unsubscribe();
   }
 }

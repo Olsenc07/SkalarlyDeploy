@@ -63,6 +63,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   // storedPosts: Post[] = [];
   posts: Post[] = [];
   private postsSub: Subscription;
+  private offNotifSub: Subscription;
   private commentSub: Subscription;
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
@@ -192,11 +193,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
     console.log('working 2', this.userId);
     this.postsService.deleteNotif(this.userId);
     this.commentsService.clearMissedNotif(this.userId);
-    this.commentsService
+    this.offNotifSub = this.commentsService
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
         this.Notif = missedNotifs;
       });
+    this.offNotifSub.unsubscribe();
     location.reload();
   }
   // Trigger Notifications
@@ -307,6 +309,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.showCases = showcases;
         this.isLoading = false;
       });
+    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -323,6 +326,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.showCases = showcases;
         this.isLoading = false;
       });
+    this.postsSub.unsubscribe();
   }
   // Get notifcation permission
   askForNotificationPermission(): any {
@@ -690,6 +694,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           console.log('posts personal back', this.posts);
         });
+      this.postsSub.unsubscribe();
     });
   }
   // Back
@@ -711,6 +716,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           console.log('posts personal back', this.posts);
         });
+      this.postsSub.unsubscribe();
     });
   }
   // ngOnDestroy(): any {
@@ -724,10 +730,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   templateUrl: './bio.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class BioComponent implements OnInit {
+export class BioComponent implements OnInit, OnDestroy {
   userId: string;
   infos: AuthDataInfo[] = [];
-
+  private infoSub: Subscription;
   constructor(private authService: AuthService) {}
 
   ngOnInit(): any {
@@ -735,10 +741,13 @@ export class BioComponent implements OnInit {
     this.userId = this.authService.getUserId();
     // Info
     this.authService.getInfo(this.userId, 0);
-    this.authService
+    this.infoSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
       });
+  }
+  ngOnDestroy(): any {
+    this.infoSub.unsubscribe();
   }
 }
