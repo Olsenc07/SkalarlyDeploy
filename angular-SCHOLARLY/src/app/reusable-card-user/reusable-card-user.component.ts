@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { AuthDataInfo } from '../signup/auth-data.model';
@@ -29,7 +29,7 @@ export interface Follow {
   templateUrl: './reusable-card-user.component.html',
   styleUrls: ['./reusable-card-user.component.scss'],
 })
-export class ReusableCardUserComponent implements OnInit {
+export class ReusableCardUserComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -41,6 +41,7 @@ export class ReusableCardUserComponent implements OnInit {
 
   follow: Follow[] = [];
   private followSub: Subscription;
+  private delSub: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -75,6 +76,10 @@ export class ReusableCardUserComponent implements OnInit {
         this.isLoading = false;
       });
   }
+  ngOnDestroy(): any {
+    this.authListenerSubs.unsubscribe();
+    this.followSub.unsubscribe();
+  }
 
   sendDataFollowing(event: any): any {
     const queryFollowing: string = event.target.value;
@@ -90,14 +95,16 @@ export class ReusableCardUserComponent implements OnInit {
           this.follow = follow.reverse();
           this.isLoading = false;
         });
+      this.followSub.unsubscribe();
     } else {
       this.followService.filterFollowing(this.userId, queryFollowing.trim());
-      this.followService
+      this.followSub = this.followService
         .getInfoFollowingUpdateListener()
         .subscribe((follow: Follow[]) => {
           this.follow = follow.reverse();
           this.isLoading = false;
         });
+      this.followSub.unsubscribe();
     }
   }
 
@@ -109,14 +116,17 @@ export class ReusableCardUserComponent implements OnInit {
   onDelete(followId: string): any {
     this.followService.deleteFollow(followId);
     console.log('chaz whats up homie g', followId);
-    this.followService.getInfoUpdateListener().subscribe((follow: Follow[]) => {
-      if (follow) {
-        this.follow = follow.reverse();
-        this.isLoading = false;
-      } else {
-        this.follow = [];
-      }
-    });
+    this.delSub = this.followService
+      .getInfoUpdateListener()
+      .subscribe((follow: Follow[]) => {
+        if (follow) {
+          this.follow = follow.reverse();
+          this.isLoading = false;
+        } else {
+          this.follow = [];
+        }
+      });
+    this.delSub.unsubscribe();
   }
   onMututal(username: string): any {
     console.log('chaz whats up homie k', username);
@@ -130,10 +140,11 @@ export class ReusableCardUserComponent implements OnInit {
   templateUrl: './reusable-card-user-follower.component.html',
   styleUrls: ['./reusable-card-user.component.scss'],
 })
-export class ReusableCardUserFollowerComponent implements OnInit {
+export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
+  private delSub: Subscription;
 
   isLoading = false;
 
@@ -177,6 +188,10 @@ export class ReusableCardUserFollowerComponent implements OnInit {
         this.isLoading = false;
       });
   }
+  ngOnDestroy(): any {
+    this.authListenerSubs.unsubscribe();
+    this.followSub.unsubscribe();
+  }
 
   sendDataFollowers(event: any): any {
     const queryFollowing: string = event.target.value;
@@ -192,14 +207,16 @@ export class ReusableCardUserFollowerComponent implements OnInit {
           this.follower = follower.reverse();
           this.isLoading = false;
         });
+      this.followSub.unsubscribe();
     } else {
       this.followService.filterFollowers(this.userId, queryFollowing.trim());
-      this.followService
+      this.followSub = this.followService
         .getInfoFollowUpdateListener()
         .subscribe((follower: Follow[]) => {
           this.follower = follower.reverse();
           this.isLoading = false;
         });
+      this.followSub.unsubscribe();
     }
   }
 
@@ -212,12 +229,13 @@ export class ReusableCardUserFollowerComponent implements OnInit {
     this.followService.deleteFollowers(followId);
     console.log('chaz whats up homie gunit', followId);
     this.followService.getMessageNotificationFollowed(this.userId);
-    this.followService
+    this.delSub = this.followService
       .getInfoFollowUpdateListener()
       .subscribe((follower: Follow[]) => {
         this.follower = follower.reverse();
         this.isLoading = false;
       });
+    this.delSub.unsubscribe();
   }
   onMututal(username: string): any {
     this.followService.mutualFollow(username, this.userId);
@@ -230,7 +248,7 @@ export class ReusableCardUserFollowerComponent implements OnInit {
   templateUrl: './reusable-card-message.component.html',
   styleUrls: ['./reusable-card-user.component.scss'],
 })
-export class ReusableCardMessageComponent implements OnInit {
+export class ReusableCardMessageComponent implements OnInit, OnDestroy {
   userId: string;
   username: string;
   recomCounter = 0;
@@ -242,6 +260,7 @@ export class ReusableCardMessageComponent implements OnInit {
 
   messagesNotif: Message[] = [];
   private datasSub: Subscription;
+  private msgNotifSub: Subscription;
   constructor(
     private authService: AuthService,
     private messageNotificationService: MessageNotificationService,
@@ -249,33 +268,27 @@ export class ReusableCardMessageComponent implements OnInit {
 
     private router: Router,
     private route: ActivatedRoute
-  ) {
-    this.messageNotificationService
-      .getListenerNotification()
-      .subscribe((messagesNotif: Message[]) => {
-        this.messagesNotif = messagesNotif.reverse();
-        console.log('petes nuts');
-      });
-  }
+  ) {}
 
   ngOnInit(): any {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     //    Info
     this.messageNotificationService.getMessageNotification(this.userId);
-    this.messageNotificationService
+    this.msgNotifSub = this.messageNotificationService
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
         this.messagesNotif = messagesNotif.reverse();
         console.log('should be viewed', this.messagesNotif);
       });
+    this.msgNotifSub.unsubscribe();
 
     // have now viewed these messages
     // get triggered once pg is left
     // its not getting called
   }
-
+  ngOnDestroy(): any {}
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
@@ -312,7 +325,7 @@ export class ReusableCardMessageComponent implements OnInit {
   templateUrl: './reusable-card-mutual.component.html',
   styleUrls: ['./reusable-card-user.component.scss'],
 })
-export class ReusableCardMutualComponent implements OnInit {
+export class ReusableCardMutualComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -347,7 +360,10 @@ export class ReusableCardMutualComponent implements OnInit {
         this.isLoading = false;
       });
   }
-
+  ngOnDestroy(): any {
+    this.authListenerSubs.unsubscribe();
+    this.mutualSub.unsubscribe();
+  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
@@ -358,7 +374,7 @@ export class ReusableCardMutualComponent implements OnInit {
   templateUrl: './reusable-card-mutuals.component.html',
   styleUrls: ['./reusable-card-user.component.scss'],
 })
-export class ReusableCardMutualsComponent implements OnInit {
+export class ReusableCardMutualsComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
@@ -391,6 +407,10 @@ export class ReusableCardMutualsComponent implements OnInit {
         this.mutuals = mutuals;
         this.isLoading = false;
       });
+  }
+  ngOnDestroy(): any {
+    this.authListenerSubs.unsubscribe();
+    this.mutualsSub.unsubscribe();
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;

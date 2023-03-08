@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
@@ -15,7 +15,7 @@ import { MessageNotificationService } from './services/messagesNotifications.ser
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   users: UserNames[] = [];
   public hashs = [];
   notif: MissedNotif[] = [];
@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
   userId: string;
   Hashtag = false;
   userIsAuthenticated = false;
-  private authListenerSubs: Subscription;
   onSearcPg: boolean;
   public href = '';
   _url: URL;
@@ -35,6 +34,12 @@ export class AppComponent implements OnInit {
   // filteredOptions: Observable<string[]>;
   hasQuery = false;
   hasQueryHash = false;
+  private msgNotifSub: Subscription;
+  private commentSub: Subscription;
+  private searchSub: Subscription;
+  private msgsSub: Subscription;
+  private comment2Sub: Subscription;
+  private authListenerSubs: Subscription;
 
   // socket.io
   public roomId: string;
@@ -224,7 +229,7 @@ export class AppComponent implements OnInit {
     if (this.userId != null) {
       // broken subscription link
       this.commentsService.getMissedNotif(this.userId, 0);
-      this.commentsService
+      this.comment2Sub = this.commentsService
         .getMissedNotifUpdateListener()
         .subscribe((missedNotifs: MissedNotif[]) => {
           this.notif = missedNotifs;
@@ -232,7 +237,7 @@ export class AppComponent implements OnInit {
         });
       // msgs
       this.messageNotificationService.getMessageNotification(this.userId);
-      this.messageNotificationService
+      this.msgsSub = this.messageNotificationService
         .getListenerNotification()
         .subscribe((messagesNotif: Message[]) => {
           this.newMsg = messagesNotif.reverse();
@@ -255,7 +260,7 @@ export class AppComponent implements OnInit {
     }
 
     // update badges! on login!!
-    this.isSearchScreen$.subscribe((onSearchPg) => {
+    this.searchSub = this.isSearchScreen$.subscribe((onSearchPg) => {
       console.log('happy boy', onSearchPg);
       if (onSearchPg === true) {
         this.userId = this.authService.getUserId();
@@ -270,7 +275,7 @@ export class AppComponent implements OnInit {
             console.log('made it baby');
             // broken subscription link
             this.commentsService.getMissedNotif(this.userId, 0);
-            this.commentsService
+            this.commentSub = this.commentsService
               .getMissedNotifUpdateListener()
               .subscribe((missedNotifs: MissedNotif[]) => {
                 this.notif = missedNotifs;
@@ -278,7 +283,7 @@ export class AppComponent implements OnInit {
               });
             // msgs
             this.messageNotificationService.getMessageNotification(this.userId);
-            this.messageNotificationService
+            this.msgNotifSub = this.messageNotificationService
               .getListenerNotification()
               .subscribe((messagesNotif: Message[]) => {
                 this.newMsg = messagesNotif.reverse();
@@ -312,7 +317,13 @@ export class AppComponent implements OnInit {
     }
     console.log('crystal meth');
   }
-
+  ngOnDestroy(): any {
+    this.msgNotifSub.unsubscribe();
+    this.commentSub.unsubscribe();
+    this.searchSub.unsubscribe();
+    this.msgsSub.unsubscribe();
+    this.comment2Sub.unsubscribe();
+  }
   hashTagSearch(): any {
     this.Hashtag = true;
   }

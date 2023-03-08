@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -57,7 +57,7 @@ export const MY_FORMATS = {
     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ],
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent implements OnInit, OnDestroy {
   constructor(
     public dialog: MatDialog,
     public classListService: ClassListService,
@@ -158,7 +158,8 @@ export class SignupComponent implements OnInit {
   ]);
   termsCheck: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
-
+  private usedEmailSub: Subscription;
+  private userNameSub: Subscription;
   // Code Completed 1-40
   filteredCodes: Observable<string[]>;
   CodeCompleted: FormControl = new FormControl('');
@@ -427,15 +428,18 @@ export class SignupComponent implements OnInit {
     console.log('query ', query);
     if (query) {
       this.authService.searchEmail(query.trim());
-      this.authService.getUsedEmail().subscribe((results) => {
-        if (results === true) {
-          console.log('results baby', results);
-          this.noEmailMatches = results;
-        } else {
-          console.log('nuts', results);
-          this.noEmailMatches = false;
-        }
-      });
+      this.usedEmailSub = this.authService
+        .getUsedEmail()
+        .subscribe((results) => {
+          if (results === true) {
+            console.log('results baby', results);
+            this.noEmailMatches = results;
+          } else {
+            console.log('nuts', results);
+            this.noEmailMatches = false;
+          }
+        });
+      this.usedEmailSub.unsubscribe();
     } else {
       console.log('DeLorean');
     }
@@ -446,7 +450,7 @@ export class SignupComponent implements OnInit {
     console.log('query ', query);
     if (query) {
       this.authService.searchUsernames(query.trim());
-      this.authService.getUserName().subscribe((results) => {
+      this.userNameSub = this.authService.getUserName().subscribe((results) => {
         if (results === true) {
           console.log('results baby', results);
           this.userNameMatches = results;
@@ -455,6 +459,7 @@ export class SignupComponent implements OnInit {
           this.userNameMatches = false;
         }
       });
+      this.userNameSub.unsubscribe();
     } else {
       console.log('DeLorean');
     }
@@ -701,6 +706,7 @@ export class SignupComponent implements OnInit {
           );
         }
       });
+    this.authListenerSubs.unsubscribe();
     // } catch {
     //   this.snackBar.open(
     //     'Failed to login. Remember to authenticate your email',
@@ -824,6 +830,9 @@ export class SignupComponent implements OnInit {
     this.CodePursuing.valueChanges.subscribe((v) =>
       this.CodePursuingLength.next(v.length)
     );
+  }
+  ngOnDestroy(): any {
+    this.authStatusSub.unsubscribe();
   }
 }
 @Component({
