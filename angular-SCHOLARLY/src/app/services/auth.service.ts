@@ -137,10 +137,10 @@ export class AuthService {
           console.log('chlor 3', response);
           this.emailId = response;
           this.emailUpdated.next(this.emailId);
+          sub.unsubscribe();
+          console.log('rich and famous baby 4');
         },
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 4');
   }
 
   // User and their info
