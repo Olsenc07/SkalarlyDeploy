@@ -43,9 +43,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 1');
       });
-    sub.unsubscribe();
-    console.log('love you 1');
   }
   //   Major
   filterSearchMajor(major: string): any {
@@ -76,9 +76,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 2');
       });
-    sub.unsubscribe();
-    console.log('love you 2');
   }
   //   Minor
   filterSearchMinor(minor: string): any {
@@ -109,9 +109,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 3');
       });
-    sub.unsubscribe();
-    console.log('love you 3');
   }
   //   Major
   filterSearchSport(sport: string): any {
@@ -142,9 +142,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 4');
       });
-    sub.unsubscribe();
-    console.log('love you 4');
   }
   //   Club
   filterSearchClub(club: string): any {
@@ -175,9 +175,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 5');
       });
-    sub.unsubscribe();
-    console.log('love you 5');
   }
   //   name and major
   filterSearchNameMajor(name: string, major: string): any {
@@ -208,9 +208,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 6');
       });
-    sub.unsubscribe();
-    console.log('love you 6');
   }
   //   name and minor
   filterSearchNameMinor(name: string, minor: string): any {
@@ -241,9 +241,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 7');
       });
-    sub.unsubscribe();
-    console.log('love you 7');
   }
   //   name and minor
   filterSearchNameSport(name: string, sport: string): any {
@@ -274,9 +274,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 8');
       });
-    sub.unsubscribe();
-    console.log('love you 8');
   }
   //   name and minor
   filterSearchNameClub(name: string, club: string): any {
@@ -307,9 +307,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 9');
       });
-    sub.unsubscribe();
-    console.log('love you 9');
   }
   //   major and sport
   filterSearchMajorSport(major: string, sport: string): any {
@@ -340,9 +340,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 10');
       });
-    sub.unsubscribe();
-    console.log('love you 10');
   }
   //   major and club
   filterSearchMajorClub(major: string, club: string): any {
@@ -373,9 +373,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 11');
       });
-    sub.unsubscribe();
-    console.log('love you 11');
   }
   //   minor and club
   filterSearchMinorClub(minor: string, club: string): any {
@@ -406,9 +406,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 12');
       });
-    sub.unsubscribe();
-    console.log('love you 12');
   }
   //   sport and club
   filterSearchSportClub(sport: string, club: string): any {
@@ -439,9 +439,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 13');
       });
-    sub.unsubscribe();
-    console.log('love you 13');
   }
   //   sport and minor
   filterSearchSportMinor(sport: string, minor: string): any {
@@ -472,9 +472,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 14');
       });
-    sub.unsubscribe();
-    console.log('love you 14');
   }
   //   sport and club
   filterSearchMajorMinor(major: string, minor: string): any {
@@ -505,9 +505,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 15');
       });
-    sub.unsubscribe();
-    console.log('love you 15');
   }
   //  name,major,minor
   filterSearchNameMajorMinor(name: string, major: string, minor: string): any {
@@ -538,9 +538,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 16');
       });
-    sub.unsubscribe();
-    console.log('love you 16');
   }
   //  sport,major,minor
   filterSearchSportMajorMinor(
@@ -575,9 +575,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 17');
       });
-    sub.unsubscribe();
-    console.log('love you 17');
   }
   //  sport,club,minor
   filterSearchSportClubMinor(sport: string, club: string, minor: string): any {
@@ -608,9 +608,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 18');
       });
-    sub.unsubscribe();
-    console.log('love you 18');
   }
   //  sport,club,major
   filterSearchMajorClubName(major: string, club: string, name: string): any {
@@ -641,9 +641,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 19');
       });
-    sub.unsubscribe();
-    console.log('love you 19');
   }
   //  sport,club,name
   filterSearchSportClubName(sport: string, club: string, name: string): any {
@@ -674,9 +674,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 20');
       });
-    sub.unsubscribe();
-    console.log('love you 20');
   }
   //  sport,club,major
   filterSearchSportMajorName(sport: string, major: string, name: string): any {
@@ -707,9 +707,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 21');
       });
-    sub.unsubscribe();
-    console.log('love you 21');
   }
   //  sport,club,minor
   filterSearchSportMinorName(sport: string, minor: string, name: string): any {
@@ -740,9 +740,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 22');
       });
-    sub.unsubscribe();
-    console.log('love you 22');
   }
   //  name,club,minor
   filterSearchClubMinorName(club: string, minor: string, name: string): any {
@@ -773,9 +773,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 23');
       });
-    sub.unsubscribe();
-    console.log('love you 23');
   }
   //  major,sport,club
   filterSearchMajorSportClub(major: string, sport: string, club: string): any {
@@ -806,9 +806,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 24');
       });
-    sub.unsubscribe();
-    console.log('love you 24');
   }
   //  major,minor,club
   filterSearchMajorMinorClub(major: string, minor: string, club: string): any {
@@ -839,9 +839,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 25');
       });
-    sub.unsubscribe();
-    console.log('love you 25');
   }
   //  name,major,minor,sport
   filterSearchNameMajorMinorSport(
@@ -877,9 +877,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 26');
       });
-    sub.unsubscribe();
-    console.log('love you 26');
   }
   //  major,minor,sport,club
   filterSearchMajorMinorSportClub(
@@ -915,9 +915,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 27');
       });
-    sub.unsubscribe();
-    console.log('love you 27');
   }
   //  major,minor,sport,club
   filterSearchNameMinorSportClub(
@@ -953,9 +953,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 28');
       });
-    sub.unsubscribe();
-    console.log('love you 28');
   }
   //   name, major,minor, club
   filterSearchNameMajorMinorClub(
@@ -991,9 +991,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 29');
       });
-    sub.unsubscribe();
-    console.log('love you 29');
   }
   //   name, major,sport, club
   filterSearchNameMajorSportClub(
@@ -1029,9 +1029,9 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 30');
       });
-    sub.unsubscribe();
-    console.log('love you 30');
   }
   //   name, major,minor,sport, club
   filterSearchNameMajorMinorSportClub(
@@ -1068,8 +1068,8 @@ export class FilterSearchService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
+        sub.unsubscribe();
+        console.log('love you 31');
       });
-    sub.unsubscribe();
-    console.log('love you 31');
   }
 }

@@ -32,7 +32,7 @@ export class CommentsService {
     return this.commentsUpdatedHistory.asObservable();
   }
   getComments(postId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/posts/comments',
         { params: { postId } }
@@ -55,11 +55,13 @@ export class CommentsService {
       .subscribe((transformedComment) => {
         this.messages = transformedComment;
         this.commentsUpdated.next([...this.messages]);
+        sub.unsubscribe();
+        console.log('love you 1');
       });
   }
   // Get all comments history
   getCommentsHistory(userId: string, counter: number): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/posts/commentsHistory',
         { params: { userId, counter } }
@@ -82,6 +84,8 @@ export class CommentsService {
       .subscribe((transformedComment) => {
         this.messages = transformedComment;
         this.commentsUpdatedHistory.next([...this.messages]);
+        sub.unsubscribe();
+        console.log('love you 2');
       });
   }
   createComment(
@@ -98,7 +102,7 @@ export class CommentsService {
       time,
       postId,
     };
-    this.http
+    const sub = this.http
       .post<{ message: string; messages: CommentInterface }>(
         'https://www.skalarly.com/api/posts/comments',
         messageOrg
@@ -116,6 +120,8 @@ export class CommentsService {
           this.snackBar.open('Your comment added!', 'Yay!', {
             duration: 3000,
           });
+          sub.unsubscribe();
+          console.log('love you 3');
         },
       });
   }
@@ -123,7 +129,7 @@ export class CommentsService {
   // Delete comment
   deleteComment(commentId: string): any {
     // console.log('hey chase postId', postId);
-    this.http
+    const sub = this.http
       .delete('https://www.skalarly.com/api/posts/comments/' + commentId)
       .subscribe(() => {
         const updatedPosts = this.messages.filter(
@@ -131,11 +137,13 @@ export class CommentsService {
         );
         this.messages = updatedPosts;
         this.commentsUpdated.next([...this.messages]);
+        sub.unsubscribe();
+        console.log('love you 4');
       });
   }
 
   getMissedNotif(userId: string, counter: number): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/messages/missedNotifs',
         { params: { userId, counter } }
@@ -159,11 +167,13 @@ export class CommentsService {
       .subscribe((transformedComment) => {
         this.missedNotifs = transformedComment;
         this.missedNotifsUpdated.next([...this.missedNotifs]);
+        sub.unsubscribe();
+        console.log('love you 5');
       });
   }
   clearMissedNotif(userId: string): any {
     console.log('right here', userId);
-    this.http
+    const sub = this.http
       .delete<{ message: string; infos: MissedNotif }>(
         'https://www.skalarly.com/api/posts/clearMissedNotif/' + userId
       )
@@ -184,6 +194,8 @@ export class CommentsService {
           );
           this.missedNotifs = updatedNotifs;
           this.missedNotifsUpdated.next([...this.missedNotifs]);
+          sub.unsubscribe();
+          console.log('love you 6');
         },
       });
   }

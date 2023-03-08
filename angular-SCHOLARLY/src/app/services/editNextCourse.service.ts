@@ -34,13 +34,13 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 1');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 1');
   }
   // Next
   editUserNext2(userId: string, CodePursuing2: string): any {
@@ -58,13 +58,13 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 2');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 2');
   }
   // Next
   editUserNext3(userId: string, CodePursuing3: string): any {
@@ -82,13 +82,13 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 3');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 3');
   }
   // Next
   editUserNext4(userId: string, CodePursuing4: string): any {
@@ -106,13 +106,13 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 4');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 4');
   }
   // Next
   editUserNext5(userId: string, CodePursuing5: string): any {
@@ -130,13 +130,13 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 5');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 5');
   }
   // Next
   editUserNext6(userId: string, CodePursuing6: string): any {
@@ -154,13 +154,13 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 6');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 6');
   }
   // Next
   editUserNext7(userId: string, CodePursuing7: string): any {
@@ -178,13 +178,13 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 7');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 7');
   }
   // Next
   editUserNext8(userId: string, CodePursuing8: string): any {
@@ -202,13 +202,13 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 8');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 8');
   }
   // Next
   editUserNext9(userId: string, CodePursuing9: string): any {
@@ -226,13 +226,14 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 9');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 9');
+
   }
   // Next
   editUserNext10(userId: string, CodePursuing10: string): any {
@@ -250,13 +251,14 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 10');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 10');
+
   }
   // Next
   editUserNext11(userId: string, CodePursuing11: string): any {
@@ -274,13 +276,14 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 11');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 11');
+
   }
   // Next
   editUserNext12(userId: string, CodePursuing12: string): any {
@@ -298,13 +301,14 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 12');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 12');
+
   }
   // Next
   editUserNext13(userId: string, CodePursuing13: string): any {
@@ -322,13 +326,14 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 13');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 13');
+
   }
   // Next
   editUserNext14(userId: string, CodePursuing14: string): any {
@@ -346,12 +351,13 @@ export class AuthServiceEditNext {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 14');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 14');
+
   }
 }

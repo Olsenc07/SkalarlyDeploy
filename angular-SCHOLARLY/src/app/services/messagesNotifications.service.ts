@@ -68,9 +68,9 @@ export class MessageNotificationService {
         this.messagesNotif = transformedMessage;
         console.log('deep end', this.messagesNotif);
         this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
+        sub.unsubscribe();
+        console.log('eazy 1');
       });
-    sub.unsubscribe();
-    console.log('eazy 1');
   }
 
   viewedMessage(userId: string, username: string): any {
@@ -105,9 +105,9 @@ export class MessageNotificationService {
           console.log('whast the length', this.messagesNotif.length);
           // this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
         }
+        sub.unsubscribe();
+        console.log('eazy 2');
       });
-    sub.unsubscribe();
-    console.log('eazy 2');
   }
 
   // msg notif search
@@ -134,9 +134,9 @@ export class MessageNotificationService {
           this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
           console.log('matches found');
         }
+        sub.unsubscribe();
+        console.log('eazy 3');
       });
-    sub.unsubscribe();
-    console.log('eazy 3');
   }
 
   deleteMessage(msgId: string): any {
@@ -151,9 +151,9 @@ export class MessageNotificationService {
         // this.snackBar.open('Message Deleted', '🗑', {
         //   duration: 2000,
         // });
+        sub.unsubscribe();
+        console.log('eazy 4');
       });
-    sub.unsubscribe();
-    console.log('eazy 4');
   }
 
   delConvo(postId: string): any {
@@ -185,9 +185,9 @@ export class MessageNotificationService {
           this.snackBar.open('Conversation Deleted', '🗑', {
             duration: 3000,
           });
+          sub.unsubscribe();
+          console.log('eazy 5');
         },
       });
-    sub.unsubscribe();
-    console.log('eazy 5');
   }
 }

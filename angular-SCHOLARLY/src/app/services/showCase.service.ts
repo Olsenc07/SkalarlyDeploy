@@ -53,9 +53,9 @@ export class ShowCaseService implements OnDestroy {
       .subscribe((transformedshowCases) => {
         this.showCases = transformedshowCases;
         this.postsUpdated.next([...this.showCases]);
+        sub.unsubscribe();
+        console.log('eazy 1');
       });
-    sub.unsubscribe();
-    console.log('eazy 1');
   }
   getShowCase(id: string, counter: number): any {
     const sub = this.http
@@ -78,9 +78,9 @@ export class ShowCaseService implements OnDestroy {
       .subscribe((transformedshowCases) => {
         this.showCases = transformedshowCases;
         this.postsUpdated.next([...this.showCases]);
+        sub.unsubscribe();
+        console.log('eazy 2');
       });
-    sub.unsubscribe();
-    console.log('eazy 2');
   }
 
   // Adding image
@@ -113,10 +113,10 @@ export class ShowCaseService implements OnDestroy {
           this.snackBar.open('Showcase added', 'Yay!', {
             duration: 3000,
           });
+          sub.unsubscribe();
+          console.log('eazy 3');
         },
       });
-    sub.unsubscribe();
-    console.log('eazy 3');
   }
   // Adding video
   addShowCaseVideo(showCase?: File, video?: File, Creator?: string): any {
@@ -148,11 +148,11 @@ export class ShowCaseService implements OnDestroy {
           this.snackBar.open('Showcase added', 'Yay!', {
             duration: 3000,
           });
+          sub.unsubscribe();
+          console.log('eazy 4');
           location.reload();
         },
       });
-    sub.unsubscribe();
-    console.log('eazy 4');
   }
   deleteShowCase(postId: string): any {
     console.log('hey chase postId', postId);
@@ -169,8 +169,8 @@ export class ShowCaseService implements OnDestroy {
         this.snackBar.open('Showcase deleted', '🗑', {
           duration: 3000,
         });
+        sub.unsubscribe();
+        console.log('eazy 5');
       });
-    sub.unsubscribe();
-    console.log('eazy 5');
   }
 }

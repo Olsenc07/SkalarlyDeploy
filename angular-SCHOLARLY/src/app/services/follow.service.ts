@@ -123,12 +123,13 @@ export class FollowService {
       .subscribe((transformedInfos) => {
         this.follow = transformedInfos;
         this.followPostUpdated.next(this.follow);
+        sub.unsubscribe();
+        console.log('rich and famous baby 7');
         // this.snackBar.open('Yay you made a new friend', 'Congrats!', {
         //   duration: 3000,
         // });
       });
-      sub.unsubscribe();
-      console.log('rich and famous baby 7');
+
   }
   // Followed history
   postInfoFollowHistory(
@@ -150,12 +151,13 @@ export class FollowService {
       .subscribe((transformedInfos) => {
         this.follow = transformedInfos;
         this.followerPostUpdatedHistory.next(this.follow);
+        sub.unsubscribe();
+        console.log('rich and famous baby 6');
         // this.snackBar.open('Yay you made a new friend', 'Congrats!', {
         //   duration: 3000,
         // });
       });
-      sub.unsubscribe();
-      console.log('rich and famous baby 6');
+
   }
   // Blocked listone
   getBlockedListOne(id: string, userId: string): any {
@@ -171,9 +173,10 @@ export class FollowService {
         console.log('where we at?');
         this.blockedUserListOne = transformedMessage;
         this.blockedUserListOneUpdated.next(this.blockedUserListOne);
+        sub.unsubscribe();
+        console.log('rich and famous baby 5');
       });
-      sub.unsubscribe();
-      console.log('rich and famous baby 5');
+
   }
   // Blocked list all
   getBlockedList(userId: string): any {
@@ -189,9 +192,10 @@ export class FollowService {
         console.log('where we at yo?');
         this.blockedUser = transformedMessage;
         this.blockedUserUpdated.next([...this.blockedUser]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 4');
       });
-      sub.unsubscribe();
-      console.log('rich and famous baby 4');
+
   }
   getMessageNotification(userId: string): any {
       const sub = this.http
@@ -221,9 +225,10 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         this.follow = transformedMessage;
         this.followingInfoPostUpdated.next([...this.follow]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 3');
       });
-      sub.unsubscribe();
-      console.log('rich and famous baby 3');
+
   }
   getMessageNotificationFollowed(userId: string): any {
       const sub = this.http
@@ -241,9 +246,10 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         this.follower = transformedMessage;
         this.followerPostUpdated.next([...this.follower]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 2');
       });
-      sub.unsubscribe();
-      console.log('rich and famous baby 2');
+
   }
   // Followed history
   getMessageNotificationFollowedHistory(userId: string, counter: number): any {
@@ -262,9 +268,10 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         this.follower = transformedMessage;
         this.followerPostUpdatedHistory.next([...this.follower]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 1');
       });
-      sub.unsubscribe();
-      console.log('rich and famous baby 1');
+
   }
   getMessageNotificationFollowedOther(id: string): any {
     const notifFollowedOther = this.http
@@ -283,9 +290,10 @@ export class FollowService {
         this.follower = transformedMessage;
         this.followerPostUpdated.next([...this.follower]);
         // this one
+        notifFollowedOther.unsubscribe();
+        console.log('rich and famous baby');
       });
-    notifFollowedOther.unsubscribe();
-    console.log('rich and famous baby');
+
   }
   getMessageNotificationOther(id: string): any {
     const msgNotifOtherSub = this.http
@@ -304,9 +312,10 @@ export class FollowService {
         this.following = transformedMessage;
 
         this.followPostUpdated.next([...this.following]);
+        msgNotifOtherSub.unsubscribe();
+        console.log('rich and famous');
       });
-    msgNotifOtherSub.unsubscribe();
-    console.log('rich and famous');
+
   }
   // and maybe add userId
   getFollowingNotification(id: string, userId: string): any {
@@ -327,9 +336,10 @@ export class FollowService {
         console.log('small feet', this.followingInfo);
 
         this.followingInfoPostUpdatedBtn.next(this.followingInfo);
+        sub.unsubscribe();
+        console.log('rich and famous baby 8');
       });
-      sub.unsubscribe();
-      console.log('rich and famous baby 8');
+
   }
   // setting name for friends activities
   setUsername(username: string): any {
@@ -354,9 +364,10 @@ export class FollowService {
         this.followingInfo = transformedMessage;
         console.log('deep end yo', this.followingInfo);
         this.followingInfoPostUpdated.next([...this.followingInfo]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 9');
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 9');
+
   }
 
   //  // filter followers
@@ -378,9 +389,10 @@ export class FollowService {
         this.followingInfo = transformedMessage;
         console.log('deep end yo', this.followingInfo);
         this.followerPostUpdated.next([...this.followingInfo]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 2');
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 2');
+
   }
   // skalars following
   mutualFollow(username: string, userId: string): any {
@@ -413,9 +425,10 @@ export class FollowService {
         this.mutualInfo = transformedMessage;
         console.log('big feet', this.mutualInfo);
         this.mutualInfoPostUpdated.next([...this.mutualInfo]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 10');
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 10');
+
   }
   // skalars followers
   mutualsFollow(username: string, userId: string): any {
@@ -447,9 +460,10 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         this.mutualsInfo = transformedMessage;
         this.mutualsInfoPostUpdated.next([...this.mutualsInfo]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 11');
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 11');
+
   }
   // deleting from friends activity pg
 
@@ -461,9 +475,10 @@ export class FollowService {
         const updatedPosts = this.follow.filter((post) => post.id !== followId);
         this.follow = updatedPosts;
         this.followPostUpdated.next([...this.follow]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 12');
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 12');
+
   }
   // deleting from user profile
   deleteFollowUserPg(userName: string, userId: string): any {
@@ -478,9 +493,10 @@ export class FollowService {
         // const updatedPosts = this.follow.filter((post) => post.id !== userId);
         // this.follow = updatedPosts;
         // this.followPostUpdated.next([...this.follow]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 2');
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 2');
+
   }
   deleteFollowers(followId: string): any {
     // console.log('hey chase postId', postId);
@@ -492,9 +508,10 @@ export class FollowService {
         );
         this.follower = updatedPosts;
         this.followerPostUpdated.next([...this.follower]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 13');
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 13');
+
   }
   // block skalar
   blockSkalar(username: string, userId): any {
@@ -517,9 +534,10 @@ export class FollowService {
         this.snackBar.open('Skalar has been blocked', '🚫', {
           duration: 3000,
         });
+        sub.unsubscribe();
+        console.log('rich and famous baby 14');
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 14');
+
   }
   // unblock skalar
   unblockSkalar(username: string, userId): any {
@@ -542,9 +560,10 @@ export class FollowService {
         this.snackBar.open('Skalar has been unblocked', '✅', {
           duration: 3000,
         });
+        sub.unsubscribe();
+        console.log('rich and famous baby 15');
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 15');
+
   }
   // unblock skalar from activity pg
   unblockSkalarActivityPg(username: string, userId): any {
@@ -567,8 +586,9 @@ export class FollowService {
         this.snackBar.open('Skalar has been unblocked', '✅', {
           duration: 3000,
         });
+        sub.unsubscribe();
+        console.log('rich and famous baby 16');
       });
-    sub.unsubscribe();
-    console.log('rich and famous baby 16');
+
   }
 }

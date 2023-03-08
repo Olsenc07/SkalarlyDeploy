@@ -42,9 +42,6 @@ export class PostsService {
     return this.hashUpdated.asObservable();
   }
   searchUsers(query: string, userId: string): any {
-    console.log('witch craft', query);
-    console.log('warlock craft', userId);
-
     const sub = this.http
       .get<{ messages: string; payload: string }>(
         'https://www.skalarly.com/api/user/getusers',
@@ -58,6 +55,8 @@ export class PostsService {
           console.log('chlor', response);
           this.userId = response;
           this.userUpdated.next(this.userId);
+          sub.unsubscribe();
+          console.log('eazy 1');
         },
         // console.log('trans', transformedInfos.Creator);
 
@@ -65,8 +64,7 @@ export class PostsService {
         // console.log('hello', this.notifId);
         // this.notifUpdated.next(this.notifId);
       });
-    sub.unsubscribe();
-    console.log('eazy 1');
+
   }
 
   // Hashtag search
@@ -83,6 +81,8 @@ export class PostsService {
           console.log('chlor 2', response);
           this.hashId = response;
           this.hashUpdated.next(this.hashId);
+          sub.unsubscribe();
+    console.log('eazy 2');
         },
         // console.log('trans', transformedInfos.Creator);
 
@@ -90,8 +90,7 @@ export class PostsService {
         // console.log('hello', this.notifId);
         // this.notifUpdated.next(this.notifId);
       });
-    sub.unsubscribe();
-    console.log('eazy 2');
+
   }
 
   checkNotification(id: string): any {
@@ -110,6 +109,8 @@ export class PostsService {
           console.log('chlor', response);
           this.notifId = response;
           this.notifUpdated.next(this.notifId);
+          sub.unsubscribe();
+    console.log('eazy 3');
         },
         // console.log('trans', transformedInfos.Creator);
 
@@ -117,8 +118,7 @@ export class PostsService {
         // console.log('hello', this.notifId);
         // this.notifUpdated.next(this.notifId);
       });
-    sub.unsubscribe();
-    console.log('eazy 3');
+
   }
   deleteNotif(id: string): any {
     console.log('right here', id);
@@ -130,8 +130,9 @@ export class PostsService {
         this.snackBar.open('Notifications Off', '🔕', {
           duration: 3000,
         });
+        sub.unsubscribe();
+        console.log('eazy 4');
       });
-    sub.unsubscribe();
-    console.log('eazy 4');
+
   }
 }

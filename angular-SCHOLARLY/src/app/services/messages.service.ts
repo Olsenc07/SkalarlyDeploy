@@ -54,9 +54,9 @@ export class MessageService {
       .subscribe((transformedMessage) => {
         this.messages = transformedMessage;
         this.messagesUpdated.next([...this.messages]);
+        sub.unsubscribe();
+        console.log('eazy 1');
       });
-    sub.unsubscribe();
-    console.log('eazy 1');
   }
 
   getInfoUpdateListener(): any {

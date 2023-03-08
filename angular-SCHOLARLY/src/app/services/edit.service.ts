@@ -32,13 +32,14 @@ export class AuthServiceEdit {
 
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 1');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 1');
+
   }
   editUserMinor(userId: string, minor: string): any {
     const sub = this.http
@@ -54,13 +55,14 @@ export class AuthServiceEdit {
           };
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 2');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 2');
+
   }
   editUserClub(userId: string, club: string): any {
     const sub = this.http
@@ -76,13 +78,14 @@ export class AuthServiceEdit {
           };
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 3');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 3');
+
   }
   editUserSport(userId: string, sport: string): any {
     const sub = this.http
@@ -98,13 +101,14 @@ export class AuthServiceEdit {
           };
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 4');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 4');
+
   }
   editUserBio(userId: string, bio: string): any {
     const sub = this.http
@@ -120,13 +124,14 @@ export class AuthServiceEdit {
           };
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 5');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 5');
+
   }
   editUserName(userId: string, name: string): any {
     const sub = this.http
@@ -142,12 +147,13 @@ export class AuthServiceEdit {
           };
           this.infos.push(post);
           this.infosUpdated.next([...this.infos]);
+          sub.unsubscribe();
+          console.log('love you 6');
         },
         error: (error) => {
           this.authStatusListener.next(false);
         },
       });
-    sub.unsubscribe();
-    console.log('love you 6');
+
   }
 }

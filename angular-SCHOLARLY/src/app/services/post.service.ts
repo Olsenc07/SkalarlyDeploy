@@ -108,9 +108,10 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
+        sub.unsubscribe();
+        console.log('eazy 16');
       });
-    sub.unsubscribe();
-    console.log('eazy 16');
+  
   }
   //  Shared posts
   getSharedPosts(userId: string, counter: number): any {
@@ -162,9 +163,10 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
-      });
-    sub.unsubscribe();
+        sub.unsubscribe();
     console.log('eazy 15');
+      });
+    
   }
 
   // Feed
@@ -217,9 +219,10 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
+        sub.unsubscribe();
+        console.log('eazy 14');
       });
-    sub.unsubscribe();
-    console.log('eazy 14');
+   
   }
   // Friends
   getPostsFriends(userId: string, counter: number): any {
@@ -271,9 +274,10 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
-      });
-    sub.unsubscribe();
+        sub.unsubscribe();
     console.log('eazy 13');
+      });
+    
   }
   getPostsPersonal(userId: string, counter: number): any {
     const sub = this.http
@@ -324,9 +328,10 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
-      });
-    sub.unsubscribe();
+        sub.unsubscribe();
     console.log('eazy 12');
+      });
+    
   }
   // getting others posts for their profiles display
   getOthersPosts(id: string, counter: number): any {
@@ -378,9 +383,10 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
+        sub.unsubscribe();
+        console.log('eazy 11');
       });
-    sub.unsubscribe();
-    console.log('eazy 11');
+   
   }
   // Trending
 
@@ -433,9 +439,10 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
-      });
-    sub.unsubscribe();
+        sub.unsubscribe();
     console.log('eazy 10');
+      });
+    
   }
   // Trending
   // getting others posts for their profiles display
@@ -450,6 +457,8 @@ export class PostService {
         console.log('rope around my ...', transformedPosts);
         this.countUpdated.next(this.trendNumber);
         console.log('hello', this.countUpdated);
+        sub.unsubscribe();
+    console.log('eazy 11');
       });
   }
   // Trending own
@@ -466,9 +475,10 @@ export class PostService {
         console.log('rope around my ..', transformedPosts);
         this.countUpdated.next(this.trendNumber);
         console.log('hello', this.countUpdated);
-      });
-    sub.unsubscribe();
+        sub.unsubscribe();
     console.log('eazy 9');
+      });
+    
   }
   // getting main page posts
   getPostsMainPage(category: string, counter: number, userId: string): any {
@@ -520,9 +530,10 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
+        sub.unsubscribe();
+        console.log('eazy 8');
       });
-    sub.unsubscribe();
-    console.log('eazy 8');
+  
   }
 
   // getting main page posts
@@ -575,9 +586,10 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
+        sub.unsubscribe();
+        console.log('eazy 7');
       });
-    sub.unsubscribe();
-    console.log('eazy 7');
+   
   }
 
   // getting single page post
@@ -619,9 +631,10 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next(this.posts);
+        sub.unsubscribe();
+        console.log('eazy 6');
       });
-    sub.unsubscribe();
-    console.log('eazy 6');
+   
   }
   getOtherInfo(id: string): any {
     const sub = this.http
@@ -645,9 +658,10 @@ export class PostService {
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
-      });
-    sub.unsubscribe();
+        sub.unsubscribe();
     console.log('eazy 5');
+      });
+    
   }
   getPostUpdateListener(): any {
     return this.postsUpdated.asObservable();
@@ -756,6 +770,8 @@ export class PostService {
 
           this.posts.push(postId);
           this.postsUpdated.next([...this.posts]);
+          sub.unsubscribe();
+    console.log('eazy 4');
           location.reload();
         },
         error: (err) => {
@@ -764,8 +780,7 @@ export class PostService {
           });
         },
       });
-    sub.unsubscribe();
-    console.log('eazy 4');
+    
   }
   // Adding post
   addPostVideo(
@@ -868,6 +883,8 @@ export class PostService {
           this.posts.push(postId);
           // this.posts.unshift(postId);
           this.postsUpdated.next([...this.posts]);
+          sub.unsubscribe();
+    console.log('eazy 3');
           location.reload();
         },
         error: (err) => {
@@ -876,8 +893,7 @@ export class PostService {
           });
         },
       });
-    sub.unsubscribe();
-    console.log('eazy 3');
+    
   }
   // Adding shared
   addPostShared(postId: string, userId: string): any {
@@ -929,6 +945,8 @@ export class PostService {
           this.snackBar.open('Post has been shared', '✅', {
             duration: 3000,
           });
+          sub.unsubscribe();
+    console.log('eazy 2');
           // location.reload();
         },
         error: (err) => {
@@ -937,8 +955,7 @@ export class PostService {
           });
         },
       });
-    sub.unsubscribe();
-    console.log('eazy 2');
+    
   }
   deletePost(postId: string): any {
     // console.log('hey chase postId', postId);
@@ -951,8 +968,9 @@ export class PostService {
         this.snackBar.open('Post Deleted', '🗑', {
           duration: 3000,
         });
+        sub.unsubscribe();
+        console.log('eazy 1');
       });
-    sub.unsubscribe();
-    console.log('eazy 1');
+   
   }
 }
