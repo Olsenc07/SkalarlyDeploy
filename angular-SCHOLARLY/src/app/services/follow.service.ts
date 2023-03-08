@@ -110,7 +110,7 @@ export class FollowService {
     return this.followersInfoPostUpdated.asObservable();
   }
   postInfoFollow(userId: string, username: string, FollowingId: string): any {
-    this.http
+      const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/infoFollow',
         { params: { userId, username, FollowingId } }
@@ -127,6 +127,8 @@ export class FollowService {
         //   duration: 3000,
         // });
       });
+      sub.unsubscribe();
+      console.log('rich and famous baby 7');
   }
   // Followed history
   postInfoFollowHistory(
@@ -135,7 +137,7 @@ export class FollowService {
     FollowingId: string,
     time: string
   ): any {
-    this.http
+      const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/infoFollowHistory',
         { params: { userId, username, FollowingId, time } }
@@ -152,11 +154,12 @@ export class FollowService {
         //   duration: 3000,
         // });
       });
+      sub.unsubscribe();
+      console.log('rich and famous baby 6');
   }
   // Blocked listone
   getBlockedListOne(id: string, userId: string): any {
-    console.log('give a f lol');
-    this.http
+      const sub = this.http
       .get<{ message: string; messages: boolean }>(
         'https://www.skalarly.com/api/follow/getblockedListOne',
         {
@@ -169,11 +172,12 @@ export class FollowService {
         this.blockedUserListOne = transformedMessage;
         this.blockedUserListOneUpdated.next(this.blockedUserListOne);
       });
+      sub.unsubscribe();
+      console.log('rich and famous baby 5');
   }
   // Blocked list all
   getBlockedList(userId: string): any {
-    console.log('ace');
-    this.http
+      const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/getblockedList',
         {
@@ -186,9 +190,11 @@ export class FollowService {
         this.blockedUser = transformedMessage;
         this.blockedUserUpdated.next([...this.blockedUser]);
       });
+      sub.unsubscribe();
+      console.log('rich and famous baby 4');
   }
   getMessageNotification(userId: string): any {
-    this.http
+      const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/followInfo',
         {
@@ -216,9 +222,11 @@ export class FollowService {
         this.follow = transformedMessage;
         this.followingInfoPostUpdated.next([...this.follow]);
       });
+      sub.unsubscribe();
+      console.log('rich and famous baby 3');
   }
   getMessageNotificationFollowed(userId: string): any {
-    this.http
+      const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/followerInfo',
         {
@@ -234,10 +242,12 @@ export class FollowService {
         this.follower = transformedMessage;
         this.followerPostUpdated.next([...this.follower]);
       });
+      sub.unsubscribe();
+      console.log('rich and famous baby 2');
   }
   // Followed history
   getMessageNotificationFollowedHistory(userId: string, counter: number): any {
-    this.http
+      const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/followerInfoHistory',
         {
@@ -253,6 +263,8 @@ export class FollowService {
         this.follower = transformedMessage;
         this.followerPostUpdatedHistory.next([...this.follower]);
       });
+      sub.unsubscribe();
+      console.log('rich and famous baby 1');
   }
   getMessageNotificationFollowedOther(id: string): any {
     const notifFollowedOther = this.http
@@ -298,7 +310,7 @@ export class FollowService {
   }
   // and maybe add userId
   getFollowingNotification(id: string, userId: string): any {
-    this.http
+      const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/followingInfo',
         {
@@ -316,6 +328,8 @@ export class FollowService {
 
         this.followingInfoPostUpdatedBtn.next(this.followingInfo);
       });
+      sub.unsubscribe();
+      console.log('rich and famous baby 8');
   }
   // setting name for friends activities
   setUsername(username: string): any {
@@ -326,7 +340,7 @@ export class FollowService {
     console.log('my girl', queryFollowing);
     console.log('mine', userId);
 
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/filterFollowing',
         { params: { userId, queryFollowing } }
@@ -341,6 +355,8 @@ export class FollowService {
         console.log('deep end yo', this.followingInfo);
         this.followingInfoPostUpdated.next([...this.followingInfo]);
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 9');
   }
 
   //  // filter followers
@@ -348,7 +364,7 @@ export class FollowService {
     console.log('my girl', queryFollowing);
     console.log('mine', userId);
 
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/filterFollowers',
         { params: { userId, queryFollowing } }
@@ -363,10 +379,12 @@ export class FollowService {
         console.log('deep end yo', this.followingInfo);
         this.followerPostUpdated.next([...this.followingInfo]);
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 2');
   }
   // skalars following
   mutualFollow(username: string, userId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/mutualFollow',
         {
@@ -396,10 +414,12 @@ export class FollowService {
         console.log('big feet', this.mutualInfo);
         this.mutualInfoPostUpdated.next([...this.mutualInfo]);
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 10');
   }
   // skalars followers
   mutualsFollow(username: string, userId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/mutualsFollow',
         {
@@ -428,24 +448,28 @@ export class FollowService {
         this.mutualsInfo = transformedMessage;
         this.mutualsInfoPostUpdated.next([...this.mutualsInfo]);
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 11');
   }
   // deleting from friends activity pg
 
   deleteFollow(followId: string): any {
     console.log('hey chase followId', followId);
-    this.http
+    const sub = this.http
       .delete('https://www.skalarly.com/api/follow/unFollow/' + followId)
       .subscribe(() => {
         const updatedPosts = this.follow.filter((post) => post.id !== followId);
         this.follow = updatedPosts;
         this.followPostUpdated.next([...this.follow]);
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 12');
   }
   // deleting from user profile
   deleteFollowUserPg(userName: string, userId: string): any {
     console.log('hey chase followId', userName);
     console.log('hey chase followId', userId);
-    this.http
+    const sub = this.http
       .get('https://www.skalarly.com/api/follow/unFollowUserPg/', {
         params: { userName, userId },
       })
@@ -455,10 +479,12 @@ export class FollowService {
         // this.follow = updatedPosts;
         // this.followPostUpdated.next([...this.follow]);
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 2');
   }
   deleteFollowers(followId: string): any {
     // console.log('hey chase postId', postId);
-    this.http
+    const sub = this.http
       .delete('https://www.skalarly.com/api/follow/unFollower/' + followId)
       .subscribe(() => {
         const updatedPosts = this.follower.filter(
@@ -467,10 +493,12 @@ export class FollowService {
         this.follower = updatedPosts;
         this.followerPostUpdated.next([...this.follower]);
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 13');
   }
   // block skalar
   blockSkalar(username: string, userId): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/blockSkalar',
         {
@@ -490,10 +518,12 @@ export class FollowService {
           duration: 3000,
         });
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 14');
   }
   // unblock skalar
   unblockSkalar(username: string, userId): any {
-    this.http
+    const sub = this.http
       .delete<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/unblockSkalar',
         {
@@ -513,10 +543,12 @@ export class FollowService {
           duration: 3000,
         });
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 15');
   }
   // unblock skalar from activity pg
   unblockSkalarActivityPg(username: string, userId): any {
-    this.http
+    const sub = this.http
       .delete<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/unblockSkalarActivity',
         {
@@ -536,5 +568,7 @@ export class FollowService {
           duration: 3000,
         });
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 16');
   }
 }

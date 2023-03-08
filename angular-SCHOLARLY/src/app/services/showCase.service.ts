@@ -33,7 +33,7 @@ export class ShowCaseService implements OnDestroy {
     return this.postsUpdated.asObservable();
   }
   getShowCasePersonal(userId: string, counter: number): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; showCases: any }>(
         'https://www.skalarly.com/api/posts/showCasesPersonal',
         { params: { userId, counter } }
@@ -54,9 +54,11 @@ export class ShowCaseService implements OnDestroy {
         this.showCases = transformedshowCases;
         this.postsUpdated.next([...this.showCases]);
       });
+    sub.unsubscribe();
+    console.log('eazy 1');
   }
   getShowCase(id: string, counter: number): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; showCases: any }>(
         'https://www.skalarly.com/api/posts/showCases',
         { params: { id, counter } }
@@ -77,6 +79,8 @@ export class ShowCaseService implements OnDestroy {
         this.showCases = transformedshowCases;
         this.postsUpdated.next([...this.showCases]);
       });
+    sub.unsubscribe();
+    console.log('eazy 2');
   }
 
   // Adding image
@@ -85,7 +89,7 @@ export class ShowCaseService implements OnDestroy {
     postData.append('showCase', showCase);
     postData.append('video', video);
     postData.append('Creator', Creator);
-    this.http
+    const sub = this.http
       .post<{ message: string; postId: ShowCase }>(
         'https://www.skalarly.com/api/posts/showCases',
         postData
@@ -111,6 +115,8 @@ export class ShowCaseService implements OnDestroy {
           });
         },
       });
+    sub.unsubscribe();
+    console.log('eazy 3');
   }
   // Adding video
   addShowCaseVideo(showCase?: File, video?: File, Creator?: string): any {
@@ -118,7 +124,7 @@ export class ShowCaseService implements OnDestroy {
     postData.append('showCase', showCase);
     postData.append('video', video);
     postData.append('Creator', Creator);
-    this.http
+    const sub = this.http
       .post<{ message: string; postId: ShowCase }>(
         'https://www.skalarly.com/api/posts/showCases/video',
         postData
@@ -145,10 +151,12 @@ export class ShowCaseService implements OnDestroy {
           location.reload();
         },
       });
+    sub.unsubscribe();
+    console.log('eazy 4');
   }
   deleteShowCase(postId: string): any {
     console.log('hey chase postId', postId);
-    this.http
+    const sub = this.http
       .delete<{ message: string }>(
         'https://www.skalarly.com/api/posts/showCases/' + postId
       )
@@ -162,5 +170,7 @@ export class ShowCaseService implements OnDestroy {
           duration: 3000,
         });
       });
+    sub.unsubscribe();
+    console.log('eazy 5');
   }
 }

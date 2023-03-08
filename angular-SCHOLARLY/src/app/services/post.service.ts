@@ -61,7 +61,7 @@ export class PostService {
     return this.trendNumber;
   }
   getPosts(): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts'
       )
@@ -109,10 +109,12 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
+    sub.unsubscribe();
+    console.log('eazy 16');
   }
   //  Shared posts
   getSharedPosts(userId: string, counter: number): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/sharedPosts',
         { params: { userId, counter } }
@@ -161,11 +163,13 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
+    sub.unsubscribe();
+    console.log('eazy 15');
   }
 
   // Feed
   getPostsFeed(counter: number, userId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/feed',
         { params: { counter, userId } }
@@ -214,10 +218,12 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
+    sub.unsubscribe();
+    console.log('eazy 14');
   }
   // Friends
   getPostsFriends(userId: string, counter: number): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/friends',
         { params: { userId, counter } }
@@ -266,9 +272,11 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
+    sub.unsubscribe();
+    console.log('eazy 13');
   }
   getPostsPersonal(userId: string, counter: number): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/personal',
         { params: { userId, counter } }
@@ -317,10 +325,12 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
+    sub.unsubscribe();
+    console.log('eazy 12');
   }
   // getting others posts for their profiles display
   getOthersPosts(id: string, counter: number): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/otherUsers',
         { params: { id, counter } }
@@ -369,11 +379,13 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
+    sub.unsubscribe();
+    console.log('eazy 11');
   }
   // Trending
 
   getPostsTrending(userId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/Trending',
         { params: { userId } }
@@ -422,11 +434,13 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
+    sub.unsubscribe();
+    console.log('eazy 10');
   }
   // Trending
   // getting others posts for their profiles display
   getPostsTrendingNumber(postId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: number }>(
         'https://www.skalarly.com/api/posts/TrendingNumber',
         { params: { postId } }
@@ -442,7 +456,7 @@ export class PostService {
   // getting others posts for their profiles display
   getPostsTrendingNumberOwn(postId: string): any {
     console.log('remember', postId);
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: number }>(
         'https://www.skalarly.com/api/posts/TrendingNumberOwn',
         { params: { postId } }
@@ -453,10 +467,12 @@ export class PostService {
         this.countUpdated.next(this.trendNumber);
         console.log('hello', this.countUpdated);
       });
+    sub.unsubscribe();
+    console.log('eazy 9');
   }
   // getting main page posts
   getPostsMainPage(category: string, counter: number, userId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/mainPage',
         { params: { category, counter, userId } }
@@ -505,11 +521,13 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
+    sub.unsubscribe();
+    console.log('eazy 8');
   }
 
   // getting main page posts
   getPostsHashtagPage(hashtag: string, counter: number): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/hashtagPage',
         { params: { hashtag, counter } }
@@ -558,11 +576,13 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
       });
+    sub.unsubscribe();
+    console.log('eazy 7');
   }
 
   // getting single page post
   getPostSinglePage(postId: string, userId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/singlePage',
         { params: { postId, userId } }
@@ -600,9 +620,11 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next(this.posts);
       });
+    sub.unsubscribe();
+    console.log('eazy 6');
   }
   getOtherInfo(id: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/posts/otherUsersInfos',
         { params: { id } }
@@ -624,6 +646,8 @@ export class PostService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('eazy 5');
   }
   getPostUpdateListener(): any {
     return this.postsUpdated.asObservable();
@@ -681,7 +705,7 @@ export class PostService {
     postData.append('upload', upload);
     postData.append('video', video);
     postData.append('Creator', Creator);
-    this.http
+    const sub = this.http
       .post<{ message: string; postId: Post }>(
         'https://www.skalarly.com/api/posts',
         postData,
@@ -740,6 +764,8 @@ export class PostService {
           });
         },
       });
+    sub.unsubscribe();
+    console.log('eazy 4');
   }
   // Adding post
   addPostVideo(
@@ -790,7 +816,7 @@ export class PostService {
     postData.append('upload', upload);
     postData.append('video', video);
     postData.append('Creator', Creator);
-    this.http
+    const sub = this.http
       .post<{ message: string; postId: Post }>(
         'https://www.skalarly.com/api/posts/videos',
         postData,
@@ -850,6 +876,8 @@ export class PostService {
           });
         },
       });
+    sub.unsubscribe();
+    console.log('eazy 3');
   }
   // Adding shared
   addPostShared(postId: string, userId: string): any {
@@ -860,7 +888,7 @@ export class PostService {
 
     postData.append('userId', userId);
 
-    this.http
+    const sub = this.http
       .post<{ message: string; post: Post }>(
         'https://www.skalarly.com/api/posts/Shared',
         postData,
@@ -909,10 +937,12 @@ export class PostService {
           });
         },
       });
+    sub.unsubscribe();
+    console.log('eazy 2');
   }
   deletePost(postId: string): any {
     // console.log('hey chase postId', postId);
-    this.http
+    const sub = this.http
       .delete('https://www.skalarly.com/api/posts/' + postId)
       .subscribe(() => {
         const updatedPosts = this.posts.filter((post) => post.id !== postId);
@@ -922,5 +952,7 @@ export class PostService {
           duration: 3000,
         });
       });
+    sub.unsubscribe();
+    console.log('eazy 1');
   }
 }

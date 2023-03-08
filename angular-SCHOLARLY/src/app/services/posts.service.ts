@@ -45,7 +45,7 @@ export class PostsService {
     console.log('witch craft', query);
     console.log('warlock craft', userId);
 
-    this.http
+    const sub = this.http
       .get<{ messages: string; payload: string }>(
         'https://www.skalarly.com/api/user/getusers',
         {
@@ -65,12 +65,14 @@ export class PostsService {
         // console.log('hello', this.notifId);
         // this.notifUpdated.next(this.notifId);
       });
+    sub.unsubscribe();
+    console.log('eazy 1');
   }
 
   // Hashtag search
   searchHashs(queryHash: string): any {
     console.log('my girl', queryHash);
-    this.http
+    const sub = this.http
       .get<{ messages: string; payload: string }>(
         'https://www.skalarly.com/api/user/gethashs',
         { params: { queryHash } }
@@ -88,10 +90,12 @@ export class PostsService {
         // console.log('hello', this.notifId);
         // this.notifUpdated.next(this.notifId);
       });
+    sub.unsubscribe();
+    console.log('eazy 2');
   }
 
   checkNotification(id: string): any {
-    this.http
+    const sub = this.http
       .get<{ infos: any }>('https://www.skalarly.com/api/posts/checkNotif', {
         params: { id },
       })
@@ -113,10 +117,12 @@ export class PostsService {
         // console.log('hello', this.notifId);
         // this.notifUpdated.next(this.notifId);
       });
+    sub.unsubscribe();
+    console.log('eazy 3');
   }
   deleteNotif(id: string): any {
     console.log('right here', id);
-    this.http
+    const sub = this.http
       .delete<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/posts/deleteNotif/' + id
       )
@@ -125,5 +131,7 @@ export class PostsService {
           duration: 3000,
         });
       });
+    sub.unsubscribe();
+    console.log('eazy 4');
   }
 }

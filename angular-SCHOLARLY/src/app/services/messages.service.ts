@@ -29,7 +29,7 @@ export class MessageService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   getMessages(userId: string, username: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/messages/OnetoOne',
         {
@@ -55,6 +55,8 @@ export class MessageService {
         this.messages = transformedMessage;
         this.messagesUpdated.next([...this.messages]);
       });
+    sub.unsubscribe();
+    console.log('eazy 1');
   }
 
   getInfoUpdateListener(): any {

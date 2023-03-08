@@ -20,7 +20,7 @@ export class AuthServiceEditCourse {
 
   // Completed
   editUserCourse(userId: string, CodeCompleted: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse',
         { userId, CodeCompleted }
@@ -39,10 +39,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 1');
   }
   // Completed2
   editUserCourse2(userId: string, CodeCompleted2: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse2',
         { userId, CodeCompleted2 }
@@ -61,10 +63,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 2');
   }
   // Completed3
   editUserCourse3(userId: string, CodeCompleted3: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse3',
         { userId, CodeCompleted3 }
@@ -83,10 +87,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 3');
   }
   // Completed4
   editUserCourse4(userId: string, CodeCompleted4: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse4',
         { userId, CodeCompleted4 }
@@ -105,10 +111,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 4');
   }
   // Completed 5
   editUserCourse5(userId: string, CodeCompleted5: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse5',
         { userId, CodeCompleted5 }
@@ -127,9 +135,11 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 5');
   } // Completed6
   editUserCourse6(userId: string, CodeCompleted6: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse6',
         { userId, CodeCompleted6 }
@@ -148,9 +158,11 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 6');
   } // Completed7
   editUserCourse7(userId: string, CodeCompleted7: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse7',
         { userId, CodeCompleted7 }
@@ -169,10 +181,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 7');
   }
   // Completed8
   editUserCourse8(userId: string, CodeCompleted8: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse8',
         { userId, CodeCompleted8 }
@@ -191,10 +205,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 8');
   }
   // Completed9
   editUserCourse9(userId: string, CodeCompleted9: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse9',
         { userId, CodeCompleted9 }
@@ -213,10 +229,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 9');
   }
   // Completed10
   editUserCourse10(userId: string, CodeCompleted10: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse10',
         { userId, CodeCompleted10 }
@@ -235,10 +253,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 10');
   }
   // Completed11
   editUserCourse11(userId: string, CodeCompleted11: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse11',
         { userId, CodeCompleted11 }
@@ -257,10 +277,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 11');
   }
   // Completed12
   editUserCourse12(userId: string, CodeCompleted12: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse12',
         { userId, CodeCompleted12 }
@@ -279,10 +301,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 13');
   }
   // Completed13
   editUserCourse13(userId: string, CodeCompleted13: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse13',
         { userId, CodeCompleted13 }
@@ -301,10 +325,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 14');
   }
   // Completed14
   editUserCourse14(userId: string, CodeCompleted14: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse14',
         { userId, CodeCompleted14 }
@@ -323,10 +349,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 15');
   }
   // Completed15
   editUserCourse15(userId: string, CodeCompleted15: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse15',
         { userId, CodeCompleted15 }
@@ -345,10 +373,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 16');
   }
   // Completed16
   editUserCourse16(userId: string, CodeCompleted16: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse16',
         { userId, CodeCompleted16 }
@@ -367,10 +397,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 17');
   }
   // Completed17
   editUserCourse17(userId: string, CodeCompleted17: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse17',
         { userId, CodeCompleted17 }
@@ -389,10 +421,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 18');
   }
   // Completed18
   editUserCourse18(userId: string, CodeCompleted18: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse18',
         { userId, CodeCompleted18 }
@@ -411,10 +445,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 19');
   }
   // Completed19
   editUserCourse19(userId: string, CodeCompleted19: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse19',
         { userId, CodeCompleted19 }
@@ -433,10 +469,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 20');
   }
   // Completed20
   editUserCourse20(userId: string, CodeCompleted20: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse20',
         { userId, CodeCompleted20 }
@@ -455,10 +493,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 21');
   }
   // Completed21
   editUserCourse21(userId: string, CodeCompleted21: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse21',
         { userId, CodeCompleted21 }
@@ -477,10 +517,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 22');
   }
   // Completed22
   editUserCourse22(userId: string, CodeCompleted22: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse22',
         { userId, CodeCompleted22 }
@@ -499,10 +541,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 23');
   }
   // Completed23
   editUserCourse23(userId: string, CodeCompleted23: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse23',
         { userId, CodeCompleted23 }
@@ -521,10 +565,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 24');
   }
   // Completed24
   editUserCourse24(userId: string, CodeCompleted24: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse24',
         { userId, CodeCompleted24 }
@@ -543,12 +589,14 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 25');
   }
   // Completed 25
   editUserCourse25(userId: string, CodeCompleted25: string): any {
     const userData = new FormData();
     userData.append('CodeCompleted25', CodeCompleted25);
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse25',
         { userId, CodeCompleted25 }
@@ -567,9 +615,11 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 26');
   } // Completed26
   editUserCourse26(userId: string, CodeCompleted26: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse26',
         { userId, CodeCompleted26 }
@@ -588,9 +638,11 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 27');
   } // Completed27
   editUserCourse27(userId: string, CodeCompleted27: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse27',
         { userId, CodeCompleted27 }
@@ -609,10 +661,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 28');
   }
   // Completed28
   editUserCourse28(userId: string, CodeCompleted28: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse28',
         { userId, CodeCompleted28 }
@@ -631,10 +685,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 29');
   }
   // Completed29
   editUserCourse29(userId: string, CodeCompleted29: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse29',
         { userId, CodeCompleted29 }
@@ -653,10 +709,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 30');
   }
   // Completed30
   editUserCourse30(userId: string, CodeCompleted30: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse30',
         { userId, CodeCompleted30 }
@@ -675,10 +733,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 31');
   }
   // Completed31
   editUserCourse31(userId: string, CodeCompleted31: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse31',
         { userId, CodeCompleted31 }
@@ -697,10 +757,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 32');
   }
   // Completed32
   editUserCourse32(userId: string, CodeCompleted32: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse32',
         { userId, CodeCompleted32 }
@@ -719,10 +781,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 33');
   }
   // Completed33
   editUserCourse33(userId: string, CodeCompleted33: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse33',
         { userId, CodeCompleted33 }
@@ -741,10 +805,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 34');
   }
   // Completed34
   editUserCourse34(userId: string, CodeCompleted34: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse34',
         { userId, CodeCompleted34 }
@@ -763,10 +829,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 35');
   }
   // Completed35
   editUserCourse35(userId: string, CodeCompleted35: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse35',
         { userId, CodeCompleted35 }
@@ -785,10 +853,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 36');
   }
   // Completed36
   editUserCourse36(userId: string, CodeCompleted36: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse36',
         { userId, CodeCompleted36 }
@@ -807,10 +877,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 37');
   }
   // Completed37
   editUserCourse37(userId: string, CodeCompleted37: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse37',
         { userId, CodeCompleted37 }
@@ -829,10 +901,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 38');
   }
   // Completed38
   editUserCourse38(userId: string, CodeCompleted38: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse38',
         { userId, CodeCompleted38 }
@@ -851,10 +925,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 39');
   }
   // Completed39
   editUserCourse39(userId: string, CodeCompleted39: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse39',
         { userId, CodeCompleted39 }
@@ -873,10 +949,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 40');
   }
   // Completed40
   editUserCourse40(userId: string, CodeCompleted40: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourse40',
         { userId, CodeCompleted40 }
@@ -895,10 +973,12 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 41');
   }
   // CompletedX
   editUserCourseX(userId: string, CodeCompletedX: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoCourseX',
         { userId, CodeCompletedX }
@@ -917,5 +997,7 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 42');
   }
 }

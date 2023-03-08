@@ -73,10 +73,7 @@ export class AuthService {
   }
 
   checkBlocked(userId: string, id: string): any {
-    console.log('my lady', userId);
-    console.log('my man', id);
-
-    this.http
+    const sub = this.http
       .get<{ message: string; payload: string }>(
         'https://www.skalarly.com/api/user/checkBlocked',
         { params: { userId, id } }
@@ -84,16 +81,16 @@ export class AuthService {
       .pipe(map((data) => data.payload))
       .subscribe({
         next: (response) => {
-          console.log('chlor 7', response);
           this.blocked.next(response);
         },
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 1');
   }
 
   //  sign up validation
   searchEmail(query: string): any {
-    console.log('my lady', query);
-    this.http
+    const sub = this.http
       .get<{ message: string; payload: boolean }>(
         'https://www.skalarly.com/api/user/getUnUsedEmail',
         { params: { query } }
@@ -101,17 +98,17 @@ export class AuthService {
       .pipe(map((data) => data.payload))
       .subscribe({
         next: (response) => {
-          console.log('chlor 2', response);
           this.emailUsedId = response;
           this.emailUsedUpdated.next(this.emailUsedId);
         },
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 2');
   }
 
   //  sign up validation
   searchUsernames(query: string): any {
-    console.log('my lady', query);
-    this.http
+    const sub = this.http
       .get<{ message: string; payload: boolean }>(
         'https://www.skalarly.com/api/user/getUsernames',
         { params: { query } }
@@ -119,17 +116,17 @@ export class AuthService {
       .pipe(map((data) => data.payload))
       .subscribe({
         next: (response) => {
-          console.log('chlor 2', response);
           this.userNameId = response;
           this.userNameUpdated.next(this.userNameId);
         },
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 3');
   }
 
   //  login validation
   searchEmails(query: string): any {
-    console.log('my lady', query);
-    this.http
+    const sub = this.http
       .get<{ message: string; payload: boolean }>(
         'https://www.skalarly.com/api/user/getEmails',
         { params: { query } }
@@ -142,12 +139,14 @@ export class AuthService {
           this.emailUpdated.next(this.emailId);
         },
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 4');
   }
 
   // User and their info
   createUser(email: string, username: string, password: string): any {
     const authData: AuthData = { email, username, password };
-    this.http
+    const sub = this.http
       .post<{ message: string; result: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/signup',
         authData
@@ -171,6 +170,8 @@ export class AuthService {
             });
         },
       });
+    sub.unsubscribe();
+    console.log('rich and famous baby 5');
   }
 
   // Create userinfo
@@ -244,7 +245,6 @@ export class AuthService {
     profilePic: File,
     Creator?: string
   ): any {
-    console.log('unicorns exist 2');
     const userData = new FormData();
     userData.append('username', username);
     userData.append('name', name);
@@ -314,7 +314,7 @@ export class AuthService {
     userData.append('CodePursuing14', CodePursuing14);
     userData.append('profilePic', profilePic);
     userData.append('Creator', Creator);
-    this.http
+    const sub = this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/info',
         userData
@@ -402,6 +402,8 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 7');
   }
 
   // edit userinfo
@@ -410,7 +412,7 @@ export class AuthService {
     userData.append('userId', userId);
     userData.append('profilePic', profilePic);
     console.log('up stairs', userData);
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdPic',
         userData
@@ -426,10 +428,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 8');
   }
   // edit userinfo
   editUserInfoMajor(userId: string, major: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdMajor',
         {
@@ -448,10 +452,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 9');
   }
   // edit userinfo
   editUserInfoMinor(userId: string, minor: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdMinor',
         {
@@ -470,10 +476,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 10');
   }
   // edit userinfo
   editUserInfoSport(userId: string, sport: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdSport',
         {
@@ -492,10 +500,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 11');
   }
   // edit userinfo
   editUserInfoClub(userId: string, club: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdClub',
         {
@@ -514,10 +524,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 12');
   }
   // edit userinfo
   editUserInfoName(userId: string, name: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdName',
         {
@@ -536,9 +548,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 13');
   }
   editUserInfoBirthday(userId: string, birthday: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdBirthday',
         {
@@ -557,9 +571,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 14');
   }
   editUserInfoPronoun(userId: string, pronoun: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdPronoun',
         {
@@ -572,9 +588,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 15');
   }
   editUserInfoGender(userId: string, gender: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdGender',
         {
@@ -593,9 +611,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 16');
   }
   editUserInfoBio(userId: string, bio: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdBio',
         {
@@ -614,9 +634,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 17');
   }
   editUserInfoComp(userId: string, CodeCompleted: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp1',
         {
@@ -635,9 +657,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 18');
   }
   editUserInfoComp2(userId: string, CodeCompleted2: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp2',
         {
@@ -656,9 +680,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 19');
   }
   editUserInfoComp3(userId: string, CodeCompleted3: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp3',
         {
@@ -677,9 +703,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 20');
   }
   editUserInfoComp4(userId: string, CodeCompleted4: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp4',
         {
@@ -698,9 +726,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 21');
   }
   editUserInfoComp5(userId: string, CodeCompleted5: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp5',
         {
@@ -719,9 +749,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 22');
   }
   editUserInfoComp6(userId: string, CodeCompleted6: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp6',
         {
@@ -740,9 +772,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 23');
   }
   editUserInfoComp7(userId: string, CodeCompleted7: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp7',
         {
@@ -761,9 +795,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 24');
   }
   editUserInfoComp8(userId: string, CodeCompleted8: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp8',
         {
@@ -782,9 +818,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 25');
   }
   editUserInfoComp9(userId: string, CodeCompleted9: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp9',
         {
@@ -803,9 +841,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 26');
   }
   editUserInfoComp10(userId: string, CodeCompleted10: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp10',
         {
@@ -824,10 +864,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 27');
   }
   // Edit comp 2
   editUserInfoComp11(userId: string, CodeCompleted11: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp11',
         {
@@ -846,9 +888,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 28');
   }
   editUserInfoComp12(userId: string, CodeCompleted12: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp12',
         {
@@ -867,9 +911,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 29');
   }
   editUserInfoComp13(userId: string, CodeCompleted13: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp13',
         {
@@ -888,9 +934,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 30');
   }
   editUserInfoComp14(userId: string, CodeCompleted14: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp14',
         {
@@ -909,9 +957,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 31');
   }
   editUserInfoComp15(userId: string, CodeCompleted15: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp15',
         {
@@ -930,10 +980,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 32');
   }
   // Edit comp 2W
   editUserInfoComp16(userId: string, CodeCompleted16: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp16',
         {
@@ -952,9 +1004,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 33');
   }
   editUserInfoComp17(userId: string, CodeCompleted17: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp17',
         {
@@ -973,9 +1027,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 34');
   }
   editUserInfoComp18(userId: string, CodeCompleted18: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp18',
         {
@@ -994,9 +1050,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 35');
   }
   editUserInfoComp19(userId: string, CodeCompleted19: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp19',
         {
@@ -1015,9 +1073,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 36');
   }
   editUserInfoComp20(userId: string, CodeCompleted20: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp20',
         {
@@ -1036,10 +1096,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 37');
   }
   // Edit comp 3
   editUserInfoComp21(userId: string, CodeCompleted21: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp21',
         {
@@ -1058,9 +1120,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 38');
   }
   editUserInfoComp22(userId: string, CodeCompleted22: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp22',
         {
@@ -1079,9 +1143,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 39');
   }
   editUserInfoComp23(userId: string, CodeCompleted23: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp23',
         {
@@ -1100,9 +1166,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 40');
   }
   editUserInfoComp24(userId: string, CodeCompleted24: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp24',
         {
@@ -1121,9 +1189,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 41');
   }
   editUserInfoComp25(userId: string, CodeCompleted25: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp25',
         {
@@ -1142,10 +1212,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 42');
   }
   // Edit comp 3
   editUserInfoComp26(userId: string, CodeCompleted26: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp26',
         {
@@ -1164,9 +1236,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 43');
   }
   editUserInfoComp27(userId: string, CodeCompleted27: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp27',
         {
@@ -1185,9 +1259,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 44');
   }
   editUserInfoComp28(userId: string, CodeCompleted28: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp28',
         {
@@ -1206,9 +1282,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 45');
   }
   editUserInfoComp29(userId: string, CodeCompleted29: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp29',
         {
@@ -1227,9 +1305,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 46');
   }
   editUserInfoComp30(userId: string, CodeCompleted30: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp30',
         {
@@ -1248,10 +1328,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 47');
   }
   // Edit comp 4
   editUserInfoComp31(userId: string, CodeCompleted31: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp31',
         {
@@ -1270,9 +1352,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 48');
   }
   editUserInfoComp32(userId: string, CodeCompleted32: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp32',
         {
@@ -1291,9 +1375,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 49');
   }
   editUserInfoComp33(userId: string, CodeCompleted33: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp33',
         {
@@ -1312,9 +1398,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 50');
   }
   editUserInfoComp34(userId: string, CodeCompleted34: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp34',
         {
@@ -1333,9 +1421,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 51');
   }
   editUserInfoComp35(userId: string, CodeCompleted35: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp35',
         {
@@ -1354,10 +1444,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 52');
   }
   // Edit comp 4W
   editUserInfoComp36(userId: string, CodeCompleted36: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp36',
         {
@@ -1376,9 +1468,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 53');
   }
   editUserInfoComp37(userId: string, CodeCompleted37: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp37',
         {
@@ -1397,9 +1491,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 54');
   }
   editUserInfoComp38(userId: string, CodeCompleted38: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp38',
         {
@@ -1418,9 +1514,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 55');
   }
   editUserInfoComp39(userId: string, CodeCompleted39: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp39',
         {
@@ -1439,9 +1537,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 56');
   }
   editUserInfoComp40(userId: string, CodeCompleted40: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdComp40',
         {
@@ -1460,9 +1560,11 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 57');
   }
   editUserInfoCompX(userId: string, CodeCompletedX: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: any }>(
         'https://www.skalarly.com/api/user/infoEdCompX',
         {
@@ -1481,10 +1583,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 58');
   }
   // Edit Pursuing
   editUserInfoPur(userId: string, CodePursuing: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPur',
         {
@@ -1503,10 +1607,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 59');
   }
   // Edit Pursuing
   editUserInfoPur2(userId: string, CodePursuing2: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPur2',
         {
@@ -1525,10 +1631,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 60');
   }
   // Edit Pursuing
   editUserInfoPur3(userId: string, CodePursuing3: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPur3',
         {
@@ -1547,10 +1655,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 61');
   }
   // Edit Pursuing
   editUserInfoPur4(userId: string, CodePursuing4: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPur4',
         {
@@ -1569,10 +1679,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 62');
   }
   // Edit Pursuing
   editUserInfoPur5(userId: string, CodePursuing5: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPur5',
         {
@@ -1591,10 +1703,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 63');
   }
   // Edit Pursuing winter
   editUserInfoPurW6(userId: string, CodePursuing6: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPurW6',
         {
@@ -1613,10 +1727,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 64');
   }
   // Edit Pursuing winter
   editUserInfoPurW7(userId: string, CodePursuing7: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPurW7',
         {
@@ -1635,10 +1751,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 65');
   }
   // Edit Pursuing winter
   editUserInfoPurW8(userId: string, CodePursuing8: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPurW8',
         {
@@ -1657,10 +1775,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 66');
   }
   // Edit Pursuing winter
   editUserInfoPurW9(userId: string, CodePursuing9: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPurW9',
         {
@@ -1679,10 +1799,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 67');
   }
   // Edit Pursuing winter
   editUserInfoPurW10(userId: string, CodePursuing10: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPurW10',
         {
@@ -1701,11 +1823,13 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 68');
   }
 
   // Edit Pursuing
   editUserInfoPurSp11(userId: string, CodePursuing11: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPurSpring11',
         { userId, CodePursuing11 }
@@ -1721,10 +1845,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 69');
   }
   // Edit Pursuing
   editUserInfoPurSp12(userId: string, CodePursuing12: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPurSpring12',
         { userId, CodePursuing12 }
@@ -1740,10 +1866,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 70');
   }
   // Edit Pursuing
   editUserInfoPurSu13(userId: string, CodePursuing13: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPurSummer13',
         { userId, CodePursuing13 }
@@ -1759,10 +1887,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 71');
   }
   // Edit Pursuing
   editUserInfoPurSu14(userId: string, CodePursuing14: string): any {
-    this.http
+    const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoEdPurSummer14',
         { userId, CodePursuing14 }
@@ -1778,10 +1908,12 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 72');
   }
   // Your info
   getInfo(userId: string, counter: number): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/user/info',
         { params: { userId, counter } }
@@ -1868,10 +2000,12 @@ export class AuthService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 73');
   }
   // Your info profile
   getInfoProfile(userId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/user/infoProfile',
         { params: { userId } }
@@ -1957,10 +2091,12 @@ export class AuthService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 74');
   }
   // Your info
   getInfoMessage(userId): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/user/infoMessage',
         {
@@ -2048,11 +2184,13 @@ export class AuthService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 75');
   }
 
   // Your info
   getInfoPersonal(userId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/user/infoPersonal',
         { params: { userId } }
@@ -2066,9 +2204,11 @@ export class AuthService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 76');
   }
   getOtherInfo(id: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/user/id',
         { params: { id } }
@@ -2083,12 +2223,14 @@ export class AuthService {
         this.infos = transformedInfos;
         this.infosUpdated.next(this.infos);
       });
+    sub.unsubscribe();
+    console.log('love you 77');
   }
 
   // Login
   login(email: string, password: string): any {
     const authData: AuthData = { email, password };
-    this.http
+    const sub = this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
         'https://www.skalarly.com/api/user/login',
         authData
@@ -2122,12 +2264,14 @@ export class AuthService {
           // });
         },
       });
+    sub.unsubscribe();
+    console.log('love you 78');
   }
 
   // Login first time
   loginFirst(emailV: string, passwordV: string): any {
     const authData = { emailV, passwordV };
-    this.http
+    const sub = this.http
       // expiresIn: number;
       .post<{ token: string; expiresIn: number; userId: string }>(
         'https://www.skalarly.com/api/user/login1',
@@ -2159,6 +2303,8 @@ export class AuthService {
           );
         },
       });
+    sub.unsubscribe();
+    console.log('love you 79');
   }
 
   autoAuthUser(): any {
@@ -2236,7 +2382,7 @@ export class AuthService {
   // Reset Password
   resetPassword(email: string, id: string): any {
     const authData: AuthData = { email, id };
-    this.http
+    const sub = this.http
       .post<{ message: string }>(
         'https://www.skalarly.com/api/user/forgot',
         authData
@@ -2261,11 +2407,13 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 80');
   }
   // Forgot Password
   forgotPassword(email: string): any {
     const authData: AuthData = { email };
-    this.http
+    const sub = this.http
       .post<{ message: string }>(
         'https://www.skalarly.com/api/user/forgoted',
         authData
@@ -2290,11 +2438,13 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 81');
   }
   // Update Password
   updatePassword(password: string, secretCode: string): any {
     const authData: AuthData = { password, secretCode };
-    this.http
+    const sub = this.http
       .post('https://www.skalarly.com/api/user/reset-password', authData)
       .subscribe({
         next: () => {
@@ -2316,56 +2466,66 @@ export class AuthService {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 82');
   }
   // Get code
   getCode(emailDel: string, passwordDel: string): any {
     const del = { emailDel, passwordDel };
-    this.http.post('https://www.skalarly.com/api/user/code', del).subscribe({
-      next: () => {
-        this.snackBar.open(
-          'Check your email to get your delete code',
-          'Will do',
-          {
+    const sub = this.http
+      .post('https://www.skalarly.com/api/user/code', del)
+      .subscribe({
+        next: () => {
+          this.snackBar.open(
+            'Check your email to get your delete code',
+            'Will do',
+            {
+              duration: 3000,
+            }
+          );
+        },
+        error: (error) => {
+          this.snackBar.open('Invalid credentials', 'Try again!', {
             duration: 3000,
-          }
-        );
-      },
-      error: (error) => {
-        this.snackBar.open('Invalid credentials', 'Try again!', {
-          duration: 3000,
-        });
-        // this.authStatusListener.next(false);
-      },
-    });
+          });
+          // this.authStatusListener.next(false);
+        },
+      });
+    sub.unsubscribe();
+    console.log('love you 83');
   }
   // Delete account
   deleteAccount(emailDel: string, passwordDel: string, code: string): any {
     const del = { emailDel, passwordDel, code };
-    this.http.post('https://www.skalarly.com/api/user/delete', del).subscribe({
-      next: () => {
-        const snackBarRef = this.snackBar.open(
-          'We wish you all the best',
-          'Skal friend!',
-          {
+    const sub = this.http
+      .post('https://www.skalarly.com/api/user/delete', del)
+      .subscribe({
+        next: () => {
+          const snackBarRef = this.snackBar.open(
+            'We wish you all the best',
+            'Skal friend!',
+            {
+              duration: 3000,
+            }
+          );
+          snackBarRef.afterDismissed().subscribe(() => {
+            this.router.navigate(['/login']);
+          });
+        },
+        error: (error) => {
+          this.snackBar.open('Invalid username', 'Try again!', {
             duration: 3000,
-          }
-        );
-        snackBarRef.afterDismissed().subscribe(() => {
-          this.router.navigate(['/login']);
-        });
-      },
-      error: (error) => {
-        this.snackBar.open('Invalid username', 'Try again!', {
-          duration: 3000,
-        });
-        // this.authStatusListener.next(false);
-      },
-    });
+          });
+          // this.authStatusListener.next(false);
+        },
+      });
+    sub.unsubscribe();
+    console.log('love you 84');
   }
   // Adding subscription to get notifcations
   addSubscription(data: any, userId: string): any {
     const authData = { data, userId };
-    this.http
+    const sub = this.http
       .post<{ message: string }>(
         'https://www.skalarly.com/api/subscribe/new',
         authData
@@ -2380,5 +2540,7 @@ export class AuthService {
           console.log('Unable to add subscription for notifications!', err);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 85');
   }
 }

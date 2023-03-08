@@ -16,7 +16,7 @@ export class FilterSearchService {
   }
 
   filterSearchName(name: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchName',
         {
@@ -44,10 +44,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 1');
   }
   //   Major
   filterSearchMajor(major: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMajor',
         {
@@ -75,10 +77,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 2');
   }
   //   Minor
   filterSearchMinor(minor: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMinor',
         {
@@ -106,10 +110,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 3');
   }
   //   Major
   filterSearchSport(sport: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchSport',
         {
@@ -137,10 +143,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 4');
   }
   //   Club
   filterSearchClub(club: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchClub',
         {
@@ -168,10 +176,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 5');
   }
   //   name and major
   filterSearchNameMajor(name: string, major: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameMajor',
         {
@@ -199,10 +209,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 6');
   }
   //   name and minor
   filterSearchNameMinor(name: string, minor: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameMinor',
         {
@@ -230,10 +242,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 7');
   }
   //   name and minor
   filterSearchNameSport(name: string, sport: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameSport',
         {
@@ -261,10 +275,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 8');
   }
   //   name and minor
   filterSearchNameClub(name: string, club: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameClub',
         {
@@ -292,10 +308,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 9');
   }
   //   major and sport
   filterSearchMajorSport(major: string, sport: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMajorSport',
         {
@@ -323,10 +341,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 10');
   }
   //   major and club
   filterSearchMajorClub(major: string, club: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMajorClub',
         {
@@ -354,10 +374,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 11');
   }
   //   minor and club
   filterSearchMinorClub(minor: string, club: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMinorClub',
         {
@@ -385,10 +407,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 12');
   }
   //   sport and club
   filterSearchSportClub(sport: string, club: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchSportClub',
         {
@@ -416,10 +440,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 13');
   }
   //   sport and minor
   filterSearchSportMinor(sport: string, minor: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchSportMinor',
         {
@@ -447,10 +473,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 14');
   }
   //   sport and club
   filterSearchMajorMinor(major: string, minor: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMajorMinor',
         {
@@ -478,10 +506,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 15');
   }
   //  name,major,minor
   filterSearchNameMajorMinor(name: string, major: string, minor: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameMajorMinor',
         {
@@ -509,6 +539,8 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 16');
   }
   //  sport,major,minor
   filterSearchSportMajorMinor(
@@ -516,7 +548,7 @@ export class FilterSearchService {
     major: string,
     minor: string
   ): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchSportMajorMinor',
         {
@@ -544,10 +576,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 17');
   }
   //  sport,club,minor
   filterSearchSportClubMinor(sport: string, club: string, minor: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchSportClubMinor',
         {
@@ -575,10 +609,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 18');
   }
   //  sport,club,major
   filterSearchMajorClubName(major: string, club: string, name: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMajorClubName',
         {
@@ -606,10 +642,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 19');
   }
   //  sport,club,name
   filterSearchSportClubName(sport: string, club: string, name: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchSportClubName',
         {
@@ -637,10 +675,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 20');
   }
   //  sport,club,major
   filterSearchSportMajorName(sport: string, major: string, name: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchSportMajorName',
         {
@@ -668,10 +708,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 21');
   }
   //  sport,club,minor
   filterSearchSportMinorName(sport: string, minor: string, name: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchSportMinorName',
         {
@@ -699,10 +741,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 22');
   }
   //  name,club,minor
   filterSearchClubMinorName(club: string, minor: string, name: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchClubMinorName',
         {
@@ -730,10 +774,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 23');
   }
   //  major,sport,club
   filterSearchMajorSportClub(major: string, sport: string, club: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMajorSportClub',
         {
@@ -761,10 +807,12 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 24');
   }
   //  major,minor,club
   filterSearchMajorMinorClub(major: string, minor: string, club: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMajorMinorClub',
         {
@@ -792,6 +840,8 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 25');
   }
   //  name,major,minor,sport
   filterSearchNameMajorMinorSport(
@@ -800,7 +850,7 @@ export class FilterSearchService {
     minor: string,
     sport: string
   ): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameMajorMinorSport',
         {
@@ -828,6 +878,8 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 26');
   }
   //  major,minor,sport,club
   filterSearchMajorMinorSportClub(
@@ -836,7 +888,7 @@ export class FilterSearchService {
     sport: string,
     club: string
   ): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchMajorMinorSportClub',
         {
@@ -864,6 +916,8 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 27');
   }
   //  major,minor,sport,club
   filterSearchNameMinorSportClub(
@@ -872,7 +926,7 @@ export class FilterSearchService {
     sport: string,
     club: string
   ): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameMinorSportClub',
         {
@@ -900,6 +954,8 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 28');
   }
   //   name, major,minor, club
   filterSearchNameMajorMinorClub(
@@ -908,7 +964,7 @@ export class FilterSearchService {
     minor: string,
     major: string
   ): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameMajorMinorClub',
         {
@@ -936,6 +992,8 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 29');
   }
   //   name, major,sport, club
   filterSearchNameMajorSportClub(
@@ -944,7 +1002,7 @@ export class FilterSearchService {
     sport: string,
     major: string
   ): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameMajorSportClub',
         {
@@ -972,6 +1030,8 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 30');
   }
   //   name, major,minor,sport, club
   filterSearchNameMajorMinorSportClub(
@@ -981,7 +1041,7 @@ export class FilterSearchService {
     major: string,
     minor: string
   ): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/filter/filterSearchNameMajorMinorSportClub',
         {
@@ -1009,5 +1069,7 @@ export class FilterSearchService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
       });
+    sub.unsubscribe();
+    console.log('love you 31');
   }
 }

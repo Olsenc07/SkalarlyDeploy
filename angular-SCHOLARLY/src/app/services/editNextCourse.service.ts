@@ -20,7 +20,7 @@ export class AuthServiceEditNext {
 
   // Next
   editUserNext(userId: string, CodePursuing: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext',
         { userId, CodePursuing }
@@ -39,10 +39,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 1');
   }
   // Next
   editUserNext2(userId: string, CodePursuing2: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext2',
         { userId, CodePursuing2 }
@@ -61,10 +63,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 2');
   }
   // Next
   editUserNext3(userId: string, CodePursuing3: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext3',
         { userId, CodePursuing3 }
@@ -83,10 +87,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 3');
   }
   // Next
   editUserNext4(userId: string, CodePursuing4: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext4',
         { userId, CodePursuing4 }
@@ -105,10 +111,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 4');
   }
   // Next
   editUserNext5(userId: string, CodePursuing5: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext5',
         { userId, CodePursuing5 }
@@ -127,10 +135,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 5');
   }
   // Next
   editUserNext6(userId: string, CodePursuing6: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext6',
         { userId, CodePursuing6 }
@@ -149,10 +159,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 6');
   }
   // Next
   editUserNext7(userId: string, CodePursuing7: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext7',
         { userId, CodePursuing7 }
@@ -171,10 +183,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 7');
   }
   // Next
   editUserNext8(userId: string, CodePursuing8: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext8',
         { userId, CodePursuing8 }
@@ -193,10 +207,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 8');
   }
   // Next
   editUserNext9(userId: string, CodePursuing9: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext9',
         { userId, CodePursuing9 }
@@ -215,10 +231,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 9');
   }
   // Next
   editUserNext10(userId: string, CodePursuing10: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext10',
         { userId, CodePursuing10 }
@@ -237,10 +255,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 10');
   }
   // Next
   editUserNext11(userId: string, CodePursuing11: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext11',
         { userId, CodePursuing11 }
@@ -259,10 +279,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 11');
   }
   // Next
   editUserNext12(userId: string, CodePursuing12: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext12',
         { userId, CodePursuing12 }
@@ -281,10 +303,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 12');
   }
   // Next
   editUserNext13(userId: string, CodePursuing13: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext13',
         { userId, CodePursuing13 }
@@ -303,10 +327,12 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 13');
   }
   // Next
   editUserNext14(userId: string, CodePursuing14: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoNext14',
         { userId, CodePursuing14 }
@@ -325,5 +351,7 @@ export class AuthServiceEditNext {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 14');
   }
 }

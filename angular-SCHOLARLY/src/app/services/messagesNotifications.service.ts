@@ -42,7 +42,7 @@ export class MessageNotificationService {
   }
 
   getMessageNotification(userId: string): any {
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/messages/infoMessage',
         {
@@ -69,11 +69,13 @@ export class MessageNotificationService {
         console.log('deep end', this.messagesNotif);
         this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
       });
+    sub.unsubscribe();
+    console.log('eazy 1');
   }
 
   viewedMessage(userId: string, username: string): any {
     console.log('view me baby', userId);
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/messages/viewedMessage',
         {
@@ -104,6 +106,8 @@ export class MessageNotificationService {
           // this.messgesInfoUpdatedNotifs.next([...this.messagesNotif]);
         }
       });
+    sub.unsubscribe();
+    console.log('eazy 2');
   }
 
   // msg notif search
@@ -111,7 +115,7 @@ export class MessageNotificationService {
     console.log('my girl', queryHash);
     console.log('my babe', userId);
 
-    this.http
+    const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/messages/getNotifMsgs',
         { params: { userId, queryHash } }
@@ -131,10 +135,12 @@ export class MessageNotificationService {
           console.log('matches found');
         }
       });
+    sub.unsubscribe();
+    console.log('eazy 3');
   }
 
   deleteMessage(msgId: string): any {
-    this.http
+    const sub = this.http
       .delete<{ message: any }>(
         'https://www.skalarly.com/api/messages/deleteMsg/' + msgId
       )
@@ -146,11 +152,13 @@ export class MessageNotificationService {
         //   duration: 2000,
         // });
       });
+    sub.unsubscribe();
+    console.log('eazy 4');
   }
 
   delConvo(postId: string): any {
     // console.log('hey chase postId', postId);
-    this.http
+    const sub = this.http
       .delete<{ message: string; postId: Message }>(
         'https://www.skalarly.com/api/posts/delConvo/' + postId
       )
@@ -179,5 +187,7 @@ export class MessageNotificationService {
           });
         },
       });
+    sub.unsubscribe();
+    console.log('eazy 5');
   }
 }

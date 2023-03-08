@@ -18,7 +18,7 @@ export class AuthServiceEdit {
   private authStatusListener = new ReplaySubject<boolean>();
   private infos: AuthDataInfo[] = [];
   editUserMajor(userId: string, major: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoMajor',
         { userId, major }
@@ -37,9 +37,11 @@ export class AuthServiceEdit {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 1');
   }
   editUserMinor(userId: string, minor: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoMinor',
         { userId, minor }
@@ -57,9 +59,11 @@ export class AuthServiceEdit {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 2');
   }
   editUserClub(userId: string, club: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoClub',
         { userId, club }
@@ -77,9 +81,11 @@ export class AuthServiceEdit {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 3');
   }
   editUserSport(userId: string, sport: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoSport',
         { userId, sport }
@@ -97,9 +103,11 @@ export class AuthServiceEdit {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 4');
   }
   editUserBio(userId: string, bio: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoBio',
         { userId, bio }
@@ -117,9 +125,11 @@ export class AuthServiceEdit {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 5');
   }
   editUserName(userId: string, name: string): any {
-    this.http
+    const sub = this.http
       .patch<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/infoName',
         { userId, name }
@@ -137,5 +147,7 @@ export class AuthServiceEdit {
           this.authStatusListener.next(false);
         },
       });
+    sub.unsubscribe();
+    console.log('love you 6');
   }
 }
