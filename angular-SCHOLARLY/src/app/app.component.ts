@@ -28,9 +28,9 @@ export class AppComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   onSearcPg: boolean;
   public href = '';
-  _url: URL;
+  url: URL;
   rawURL: string;
-  _params: URLSearchParams;
+  params: URLSearchParams;
   // filteredOptions: Observable<string[]>;
   hasQuery = false;
   hasQueryHash = false;

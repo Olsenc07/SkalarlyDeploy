@@ -111,7 +111,6 @@ export class PostService {
         sub.unsubscribe();
         console.log('eazy 16');
       });
-  
   }
   //  Shared posts
   getSharedPosts(userId: string, counter: number): any {
@@ -164,9 +163,8 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
         sub.unsubscribe();
-    console.log('eazy 15');
+        console.log('eazy 15');
       });
-    
   }
 
   // Feed
@@ -222,7 +220,6 @@ export class PostService {
         sub.unsubscribe();
         console.log('eazy 14');
       });
-   
   }
   // Friends
   getPostsFriends(userId: string, counter: number): any {
@@ -275,9 +272,8 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
         sub.unsubscribe();
-    console.log('eazy 13');
+        console.log('eazy 13');
       });
-    
   }
   getPostsPersonal(userId: string, counter: number): any {
     const sub = this.http
@@ -329,9 +325,8 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
         sub.unsubscribe();
-    console.log('eazy 12');
+        console.log('eazy 12');
       });
-    
   }
   // getting others posts for their profiles display
   getOthersPosts(id: string, counter: number): any {
@@ -386,7 +381,6 @@ export class PostService {
         sub.unsubscribe();
         console.log('eazy 11');
       });
-   
   }
   // Trending
 
@@ -440,9 +434,8 @@ export class PostService {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
         sub.unsubscribe();
-    console.log('eazy 10');
+        console.log('eazy 10');
       });
-    
   }
   // Trending
   // getting others posts for their profiles display
@@ -458,7 +451,7 @@ export class PostService {
         this.countUpdated.next(this.trendNumber);
         console.log('hello', this.countUpdated);
         sub.unsubscribe();
-    console.log('eazy 11');
+        console.log('eazy 11');
       });
   }
   // Trending own
@@ -476,9 +469,8 @@ export class PostService {
         this.countUpdated.next(this.trendNumber);
         console.log('hello', this.countUpdated);
         sub.unsubscribe();
-    console.log('eazy 9');
+        console.log('eazy 9');
       });
-    
   }
   // getting main page posts
   getPostsMainPage(category: string, counter: number, userId: string): any {
@@ -533,7 +525,6 @@ export class PostService {
         sub.unsubscribe();
         console.log('eazy 8');
       });
-  
   }
 
   // getting main page posts
@@ -589,7 +580,6 @@ export class PostService {
         sub.unsubscribe();
         console.log('eazy 7');
       });
-   
   }
 
   // getting single page post
@@ -634,7 +624,6 @@ export class PostService {
         sub.unsubscribe();
         console.log('eazy 6');
       });
-   
   }
   getOtherInfo(id: string): any {
     const sub = this.http
@@ -659,9 +648,8 @@ export class PostService {
         this.infos = transformedInfos;
         this.infosUpdated.next([...this.infos]);
         sub.unsubscribe();
-    console.log('eazy 5');
+        console.log('eazy 5');
       });
-    
   }
   getPostUpdateListener(): any {
     return this.postsUpdated.asObservable();
@@ -771,7 +759,7 @@ export class PostService {
           this.posts.push(postId);
           this.postsUpdated.next([...this.posts]);
           sub.unsubscribe();
-    console.log('eazy 4');
+          console.log('eazy 4');
           location.reload();
         },
         error: (err) => {
@@ -780,7 +768,6 @@ export class PostService {
           });
         },
       });
-    
   }
   // Adding post
   addPostVideo(
@@ -884,7 +871,7 @@ export class PostService {
           // this.posts.unshift(postId);
           this.postsUpdated.next([...this.posts]);
           sub.unsubscribe();
-    console.log('eazy 3');
+          console.log('eazy 3');
           location.reload();
         },
         error: (err) => {
@@ -893,7 +880,6 @@ export class PostService {
           });
         },
       });
-    
   }
   // Adding shared
   addPostShared(postId: string, userId: string): any {
@@ -946,7 +932,7 @@ export class PostService {
             duration: 3000,
           });
           sub.unsubscribe();
-    console.log('eazy 2');
+          console.log('eazy 2');
           // location.reload();
         },
         error: (err) => {
@@ -955,7 +941,6 @@ export class PostService {
           });
         },
       });
-    
   }
   deletePost(postId: string): any {
     // console.log('hey chase postId', postId);
@@ -971,6 +956,5 @@ export class PostService {
         sub.unsubscribe();
         console.log('eazy 1');
       });
-   
   }
 }

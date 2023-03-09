@@ -65,7 +65,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private postsSub: Subscription;
   private offNotifSub: Subscription;
   private commentSub: Subscription;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   private infosSub: Subscription;
 
   private showCases: ShowCase[] = [];
@@ -123,8 +123,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.authService.getInfoProfile(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
+      .subscribe((infos: any) => {
+        this.info = infos;
         console.log('boobs');
         this.isLoading = false;
         this.infosSub.unsubscribe();

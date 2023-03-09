@@ -64,7 +64,6 @@ export class PostsService {
         // console.log('hello', this.notifId);
         // this.notifUpdated.next(this.notifId);
       });
-
   }
 
   // Hashtag search
@@ -82,7 +81,7 @@ export class PostsService {
           this.hashId = response;
           this.hashUpdated.next(this.hashId);
           sub.unsubscribe();
-    console.log('eazy 2');
+          console.log('eazy 2');
         },
         // console.log('trans', transformedInfos.Creator);
 
@@ -90,7 +89,6 @@ export class PostsService {
         // console.log('hello', this.notifId);
         // this.notifUpdated.next(this.notifId);
       });
-
   }
 
   checkNotification(id: string): any {
@@ -110,7 +108,7 @@ export class PostsService {
           this.notifId = response;
           this.notifUpdated.next(this.notifId);
           sub.unsubscribe();
-    console.log('eazy 3');
+          console.log('eazy 3');
         },
         // console.log('trans', transformedInfos.Creator);
 
@@ -118,7 +116,6 @@ export class PostsService {
         // console.log('hello', this.notifId);
         // this.notifUpdated.next(this.notifId);
       });
-
   }
   deleteNotif(id: string): any {
     console.log('right here', id);
@@ -133,6 +130,5 @@ export class PostsService {
         sub.unsubscribe();
         console.log('eazy 4');
       });
-
   }
 }

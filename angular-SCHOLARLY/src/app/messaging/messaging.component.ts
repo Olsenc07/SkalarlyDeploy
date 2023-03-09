@@ -395,7 +395,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
       width: 100%;
 ">
       <div
-      class="chat-messages" id="container" style="background-color: #0056ba;padding: 0% 2%; 
+      class="chat-messages" id="container" style="background-color: #0056ba;padding: 0% 2%;
       margin-bottom:2%; border-radius:25px;
       width: fit-content;padding:0% 5% 0% 2%; display: flex; flex-direction:column" >
       <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
