@@ -69,7 +69,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private infosSub: Subscription;
 
   private showCases: ShowCase[] = [];
-  private infosSubShowCase: Subscription;
 
   // Sign up and edit profile connections
 
