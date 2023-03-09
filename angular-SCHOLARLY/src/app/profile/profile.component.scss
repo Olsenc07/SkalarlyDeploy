@@ -627,6 +627,7 @@ color: white !important;
   display: flex;
   // width: 100%;
   align-items: baseline;
+  width: max-content;
 }
 ::ng-deep .mat-tab-body-wrapper {
   display: flex;

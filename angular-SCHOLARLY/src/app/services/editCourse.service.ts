@@ -33,7 +33,7 @@ export class AuthServiceEditCourse {
           };
 
           this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
+          this.infosUpdated.next(this.infos);
           sub.unsubscribe();
           console.log('love you 1');
         },
@@ -903,7 +903,6 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
-
   }
   // Completed38
   editUserCourse38(userId: string, CodeCompleted38: string): any {
@@ -928,7 +927,6 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
-
   }
   // Completed39
   editUserCourse39(userId: string, CodeCompleted39: string): any {
@@ -953,7 +951,6 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
-
   }
   // Completed40
   editUserCourse40(userId: string, CodeCompleted40: string): any {
@@ -978,7 +975,6 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
-
   }
   // CompletedX
   editUserCourseX(userId: string, CodeCompletedX: string): any {
@@ -1003,6 +999,5 @@ export class AuthServiceEditCourse {
           this.authStatusListener.next(false);
         },
       });
-
   }
 }
