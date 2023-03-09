@@ -125,7 +125,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .getInfoUpdateListener()
       .subscribe((infos: AuthDataInfo[]) => {
         this.infos = infos;
+        console.log('boobs');
         this.isLoading = false;
+        this.infosSub.unsubscribe();
+        console.log('boobs awe ya!');
       });
     // Validation
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -595,6 +598,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
                 // this.infos = [];
                 // console.log('Gods close 2', this.infos);
                 this.info = infos;
+                this.infosSub.unsubscribe();
+                console.log('Gods close love you', infos);
               });
           }
         }
