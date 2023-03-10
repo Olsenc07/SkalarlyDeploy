@@ -12,11 +12,11 @@
   <div class="centerTitle">Fall Semester <div class="fas fa-leaf" style="color: saddlebrown;"></div> </div>
 
       <!-- 1 -->
-  <div *ngFor="let info of infos">
+  <div >
 
       <div class="input">
-        <i class="material-icons _icon" *ngIf="CodePursuing.value.length < 8">checklist</i>
-        <button mat-icon-button type="button" *ngIf="CodePursuing.value.length == 8" (click)="save()" matTooltip="Save Course">
+        <i class="material-icons _icon" *ngIf="CodePursuing.value?.length < 8">checklist</i>
+        <button mat-icon-button type="button" *ngIf="CodePursuing.value?.length == 8" (click)="save()" matTooltip="Save Course">
         <i class="material-icons check" >checklist</i>
 </button>
         <mat-form-field class="example-chip-list">
@@ -47,8 +47,8 @@
       </div>
 <!-- 2 -->
 <div class="input" >
-<i class="material-icons _icon" *ngIf="CodePursuing2.value.length < 8">checklist</i>
-<button mat-icon-button type="button" *ngIf="CodePursuing2.value.length == 8" (click)="save2()" matTooltip="Save Course">
+<i class="material-icons _icon" *ngIf="CodePursuing2.value?.length < 8">checklist</i>
+<button mat-icon-button type="button" *ngIf="CodePursuing2.value?.length == 8" (click)="save2()" matTooltip="Save Course">
 <i class="material-icons check">checklist</i>
 </button>
 
@@ -76,8 +76,8 @@
 </div>
 <!-- 3 -->
 <div class="input" >
-<i class="material-icons _icon" *ngIf="CodePursuing3.value.length < 8">checklist</i>
-<button mat-icon-button type="button" *ngIf="CodePursuing3.value.length == 8" (click)="save3()" matTooltip="Save Course">
+<i class="material-icons _icon" *ngIf="CodePursuing3.value?.length < 8">checklist</i>
+<button mat-icon-button type="button" *ngIf="CodePursuing3.value?.length == 8" (click)="save3()" matTooltip="Save Course">
 <i class="material-icons check" >checklist</i>
 </button>
 
@@ -105,8 +105,8 @@
 </div>
 <!-- 4 -->
 <div class="input" >
-<i class="material-icons _icon" *ngIf="CodePursuing4.value.length < 8">checklist</i>
-<button mat-icon-button type="button" *ngIf="CodePursuing4.value.length == 8" (click)="save4()" matTooltip="Save Course">
+<i class="material-icons _icon" *ngIf="CodePursuing4.value?.length < 8">checklist</i>
+<button mat-icon-button type="button" *ngIf="CodePursuing4.value?.length == 8" (click)="save4()" matTooltip="Save Course">
 <i class="material-icons check" >checklist</i>
 </button>
 
@@ -135,8 +135,8 @@
 
 <!-- 5 -->
 <div class="input" >
-  <i class="material-icons _icon" *ngIf="CodePursuing5.value.length < 8">checklist</i>
-  <button mat-icon-button type="button" *ngIf="CodePursuing5.value.length == 8" (click)="save5()" matTooltip="Save Course">
+  <i class="material-icons _icon" *ngIf="CodePursuing5.value?.length < 8">checklist</i>
+  <button mat-icon-button type="button" *ngIf="CodePursuing5.value?.length == 8" (click)="save5()" matTooltip="Save Course">
   <i class="material-icons check" >checklist</i>
 </button>
 

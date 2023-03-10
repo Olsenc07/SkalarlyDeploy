@@ -118,6 +118,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   gender: FormControl = new FormControl('');
   form: FormGroup;
   private infoSub: Subscription;
+  info: AuthDataInfo = {};
   src = '';
   Name = '';
   Birthday = '';
@@ -389,16 +390,17 @@ export class EditProfileComponent implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infoSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((imp: AuthDataInfo[]) => {
-        this.Name = imp[0].name;
-        this.Birthday = imp[0].birthday;
-        this.Pronouns = imp[0].pronouns;
-        this.Major = imp[0].major;
-        this.Minor = imp[0].minor;
-        this.Sport = imp[0].sport;
-        this.Club = imp[0].club;
-        this.Gender = imp[0].gender;
-        this.Bio = imp[0].bio;
+      .subscribe((imp: any) => {
+        this.info = imp;
+        // this.Name = imp[0].name;
+        // this.Birthday = imp[0].birthday;
+        // this.Pronouns = imp[0].pronouns;
+        // this.Major = imp[0].major;
+        // this.Minor = imp[0].minor;
+        // this.Sport = imp[0].sport;
+        // this.Club = imp[0].club;
+        // this.Gender = imp[0].gender;
+        // this.Bio = imp[0].bio;
       });
     this.form = new FormGroup({
       showCase: new FormControl(null, {
@@ -673,25 +675,37 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
     });
   }
   save2(): void {
-    this.authService.editUserInfoComp2(this.userId, this.CodeCompleted2.value);
+    this.authService.editUserInfoComp2(
+      this.userId,
+      this.CodeCompleted2.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save3(): void {
-    this.authService.editUserInfoComp3(this.userId, this.CodeCompleted3.value);
+    this.authService.editUserInfoComp3(
+      this.userId,
+      this.CodeCompleted3.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save4(): void {
-    this.authService.editUserInfoComp4(this.userId, this.CodeCompleted4.value);
+    this.authService.editUserInfoComp4(
+      this.userId,
+      this.CodeCompleted4.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save5(): void {
-    this.authService.editUserInfoComp5(this.userId, this.CodeCompleted5.value);
+    this.authService.editUserInfoComp5(
+      this.userId,
+      this.CodeCompleted5.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
@@ -730,7 +744,7 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
 })
 export class EditProfileComp1WComponent implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
@@ -756,9 +770,9 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
+      .subscribe((infos: any) => {
+        this.info = infos;
+        console.log('infos', this.info);
       });
     this.codeSub = this.CodeCompleted6.valueChanges.subscribe((v) =>
       this.CodeCompleted6Length.next(v.length)
@@ -775,7 +789,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
     this.CodeCompleted6.setValue('');
     this.authServiceEditCourse.editUserCourse6(
       this.userId,
-      this.CodeCompleted6.value
+      this.CodeCompleted6.value.toUpperCase()
     );
     this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
@@ -785,7 +799,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
     this.CodeCompleted7.setValue('');
     this.authServiceEditCourse.editUserCourse7(
       this.userId,
-      this.CodeCompleted7.value
+      this.CodeCompleted7.value.toUpperCase()
     );
     this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
@@ -795,7 +809,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
     this.CodeCompleted8.setValue('');
     this.authServiceEditCourse.editUserCourse8(
       this.userId,
-      this.CodeCompleted8.value
+      this.CodeCompleted8.value.toUpperCase()
     );
     this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
@@ -805,7 +819,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
     this.CodeCompleted9.setValue('');
     this.authServiceEditCourse.editUserCourse9(
       this.userId,
-      this.CodeCompleted9.value
+      this.CodeCompleted9.value.toUpperCase()
     );
     this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
@@ -815,7 +829,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
     this.CodeCompleted10.setValue('');
     this.authServiceEditCourse.editUserCourse10(
       this.userId,
-      this.CodeCompleted10.value
+      this.CodeCompleted10.value.toUpperCase()
     );
     this.snackBar.open('Course Cleared!', 'Nice!', {
       duration: 2000,
@@ -886,7 +900,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
 })
 export class EditProfileComp2Component implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
@@ -911,9 +925,9 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
+      .subscribe((infos: any) => {
+        this.info = infos;
+        console.log('infos', this.info);
       });
     this.codeSub = this.CodeCompleted11.valueChanges.subscribe((v) =>
       this.CodeCompleted11Length.next(v.length)
@@ -976,7 +990,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
   save11(): any {
     this.authService.editUserInfoComp11(
       this.userId,
-      this.CodeCompleted11.value
+      this.CodeCompleted11.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -985,7 +999,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
   save12(): void {
     this.authService.editUserInfoComp12(
       this.userId,
-      this.CodeCompleted12.value
+      this.CodeCompleted12.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -994,7 +1008,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
   save13(): void {
     this.authService.editUserInfoComp13(
       this.userId,
-      this.CodeCompleted13.value
+      this.CodeCompleted13.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1003,7 +1017,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
   save14(): void {
     this.authService.editUserInfoComp14(
       this.userId,
-      this.CodeCompleted14.value
+      this.CodeCompleted14.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1012,7 +1026,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
   save15(): void {
     this.authService.editUserInfoComp15(
       this.userId,
-      this.CodeCompleted15.value
+      this.CodeCompleted15.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1052,7 +1066,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
 })
 export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   classes: string[] = [];
@@ -1077,9 +1091,9 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
+      .subscribe((infos: any) => {
+        this.info = infos;
+        console.log('infos', this.info);
       });
     this.codeSub = this.CodeCompleted16.valueChanges.subscribe((v) =>
       this.CodeCompleted16Length.next(v.length)
@@ -1142,7 +1156,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   save16(): any {
     this.authService.editUserInfoComp16(
       this.userId,
-      this.CodeCompleted16.value
+      this.CodeCompleted16.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1151,7 +1165,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   save17(): void {
     this.authService.editUserInfoComp17(
       this.userId,
-      this.CodeCompleted17.value
+      this.CodeCompleted17.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1160,7 +1174,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   save18(): void {
     this.authService.editUserInfoComp18(
       this.userId,
-      this.CodeCompleted18.value
+      this.CodeCompleted18.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1169,7 +1183,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   save19(): void {
     this.authService.editUserInfoComp19(
       this.userId,
-      this.CodeCompleted19.value
+      this.CodeCompleted19.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1178,7 +1192,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   save20(): void {
     this.authService.editUserInfoComp20(
       this.userId,
-      this.CodeCompleted20.value
+      this.CodeCompleted20.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1217,7 +1231,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
 })
 export class EditProfileComp3Component implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
@@ -1242,9 +1256,9 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
+      .subscribe((infos: any) => {
+        this.info = infos;
+        console.log('infos', this.info);
       });
     this.codeSub = this.CodeCompleted21.valueChanges.subscribe((v) =>
       this.CodeCompleted21Length.next(v.length)
@@ -1307,7 +1321,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
   save21(): any {
     this.authService.editUserInfoComp21(
       this.userId,
-      this.CodeCompleted21.value
+      this.CodeCompleted21.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1316,7 +1330,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
   save22(): void {
     this.authService.editUserInfoComp22(
       this.userId,
-      this.CodeCompleted22.value
+      this.CodeCompleted22.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1325,7 +1339,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
   save23(): void {
     this.authService.editUserInfoComp23(
       this.userId,
-      this.CodeCompleted23.value
+      this.CodeCompleted23.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1334,7 +1348,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
   save24(): void {
     this.authService.editUserInfoComp24(
       this.userId,
-      this.CodeCompleted24.value
+      this.CodeCompleted24.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1343,7 +1357,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
   save25(): void {
     this.authService.editUserInfoComp25(
       this.userId,
-      this.CodeCompleted25.value
+      this.CodeCompleted25.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1382,7 +1396,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
 })
 export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
@@ -1406,9 +1420,9 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
+      .subscribe((infos: any) => {
+        this.info = infos;
+        console.log('infos', this.info);
       });
     this.codeSub = this.CodeCompleted26.valueChanges.subscribe((v) =>
       this.CodeCompleted26Length.next(v.length)
@@ -1471,7 +1485,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   save26(): any {
     this.authService.editUserInfoComp26(
       this.userId,
-      this.CodeCompleted26.value
+      this.CodeCompleted26.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1480,7 +1494,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   save27(): void {
     this.authService.editUserInfoComp27(
       this.userId,
-      this.CodeCompleted27.value
+      this.CodeCompleted27.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1489,7 +1503,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   save28(): void {
     this.authService.editUserInfoComp28(
       this.userId,
-      this.CodeCompleted28.value
+      this.CodeCompleted28.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1498,7 +1512,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   save29(): void {
     this.authService.editUserInfoComp29(
       this.userId,
-      this.CodeCompleted29.value
+      this.CodeCompleted29.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1507,7 +1521,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   save30(): void {
     this.authService.editUserInfoComp30(
       this.userId,
-      this.CodeCompleted30.value
+      this.CodeCompleted30.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1547,7 +1561,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
 })
 export class EditProfileComp4Component implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
@@ -1572,9 +1586,9 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
+      .subscribe((infos: any) => {
+        this.info = infos;
+        console.log('infos', this.info);
       });
     this.codeSub = this.CodeCompleted31.valueChanges.subscribe((v) =>
       this.CodeCompleted31Length.next(v.length)
@@ -1637,7 +1651,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
   save31(): any {
     this.authService.editUserInfoComp31(
       this.userId,
-      this.CodeCompleted31.value
+      this.CodeCompleted31.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1646,7 +1660,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
   save32(): void {
     this.authService.editUserInfoComp32(
       this.userId,
-      this.CodeCompleted32.value
+      this.CodeCompleted32.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1655,7 +1669,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
   save33(): void {
     this.authService.editUserInfoComp33(
       this.userId,
-      this.CodeCompleted33.value
+      this.CodeCompleted33.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1664,7 +1678,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
   save34(): void {
     this.authService.editUserInfoComp34(
       this.userId,
-      this.CodeCompleted34.value
+      this.CodeCompleted34.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1673,7 +1687,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
   save35(): void {
     this.authService.editUserInfoComp35(
       this.userId,
-      this.CodeCompleted35.value
+      this.CodeCompleted35.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1711,7 +1725,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
 })
 export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
@@ -1736,9 +1750,9 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
+      .subscribe((infos: any) => {
+        this.info = infos;
+        console.log('infos', this.info);
       });
     this.codeSub = this.CodeCompleted36.valueChanges.subscribe((v) =>
       this.CodeCompleted36Length.next(v.length)
@@ -1811,7 +1825,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   save36(): any {
     this.authService.editUserInfoComp36(
       this.userId,
-      this.CodeCompleted36.value
+      this.CodeCompleted36.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1820,7 +1834,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   save37(): void {
     this.authService.editUserInfoComp37(
       this.userId,
-      this.CodeCompleted37.value
+      this.CodeCompleted37.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1829,7 +1843,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   save38(): void {
     this.authService.editUserInfoComp38(
       this.userId,
-      this.CodeCompleted38.value
+      this.CodeCompleted38.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1838,7 +1852,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   save39(): void {
     this.authService.editUserInfoComp39(
       this.userId,
-      this.CodeCompleted39.value
+      this.CodeCompleted39.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -1847,14 +1861,17 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   save40(): void {
     this.authService.editUserInfoComp40(
       this.userId,
-      this.CodeCompleted40.value
+      this.CodeCompleted40.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   saveX(): void {
-    this.authService.editUserInfoCompX(this.userId, this.CodeCompletedX.value);
+    this.authService.editUserInfoCompX(
+      this.userId,
+      this.CodeCompletedX.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
@@ -1892,7 +1909,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
 })
 export class EditProfilePurWComponent implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
@@ -1919,8 +1936,8 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
+      .subscribe((infos: any) => {
+        this.info = infos;
       });
     this.codeSub = this.CodePursuing6.valueChanges.subscribe((v) =>
       this.CodePursuing6Length.next(v.length)
@@ -1981,31 +1998,46 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
     });
   }
   save6(): any {
-    this.authService.editUserInfoPurW6(this.userId, this.CodePursuing6.value);
+    this.authService.editUserInfoPurW6(
+      this.userId,
+      this.CodePursuing6.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save7(): void {
-    this.authService.editUserInfoPurW7(this.userId, this.CodePursuing7.value);
+    this.authService.editUserInfoPurW7(
+      this.userId,
+      this.CodePursuing7.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save8(): void {
-    this.authService.editUserInfoPurW8(this.userId, this.CodePursuing8.value);
+    this.authService.editUserInfoPurW8(
+      this.userId,
+      this.CodePursuing8.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save9(): void {
-    this.authService.editUserInfoPurW9(this.userId, this.CodePursuing9.value);
+    this.authService.editUserInfoPurW9(
+      this.userId,
+      this.CodePursuing9.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save10(): void {
-    this.authService.editUserInfoPurW10(this.userId, this.CodePursuing10.value);
+    this.authService.editUserInfoPurW10(
+      this.userId,
+      this.CodePursuing10.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
@@ -2057,7 +2089,7 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
 })
 export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
@@ -2080,9 +2112,9 @@ export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
+      .subscribe((infos: any) => {
+        this.info = infos;
+        console.log('infos', this.info);
       });
     this.codeSub = this.CodePursuing11.valueChanges.subscribe((v) =>
       this.CodePursuing11Length.next(v.length)
@@ -2115,7 +2147,7 @@ export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
   save11(): void {
     this.authService.editUserInfoPurSp11(
       this.userId,
-      this.CodePursuing11.value
+      this.CodePursuing11.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -2124,7 +2156,7 @@ export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
   save12(): void {
     this.authService.editUserInfoPurSp12(
       this.userId,
-      this.CodePursuing12.value
+      this.CodePursuing12.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -2164,7 +2196,7 @@ export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
 })
 export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
@@ -2187,9 +2219,9 @@ export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
+      .subscribe((infos: any) => {
+        this.info = infos;
+        console.log('infos', this.info);
       });
     this.codeSub = this.CodePursuing13.valueChanges.subscribe((v) =>
       this.CodePursuing13Length.next(v.length)
@@ -2222,7 +2254,7 @@ export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
   save13(): void {
     this.authService.editUserInfoPurSu13(
       this.userId,
-      this.CodePursuing13.value
+      this.CodePursuing13.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -2231,7 +2263,7 @@ export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
   save14(): void {
     this.authService.editUserInfoPurSu14(
       this.userId,
-      this.CodePursuing14.value
+      this.CodePursuing14.value.toUpperCase()
     );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
@@ -2271,7 +2303,7 @@ export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
 })
 export class EditProfilePurComponent implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
@@ -2297,9 +2329,9 @@ export class EditProfilePurComponent implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-        console.log('infos', this.infos);
+      .subscribe((infos: any) => {
+        this.info = infos;
+        console.log('infos', this.info);
       });
     this.codeSub = this.CodePursuing.valueChanges.subscribe((v) =>
       this.CodePursuingLength.next(v.length)
@@ -2357,31 +2389,46 @@ export class EditProfilePurComponent implements OnInit, OnDestroy {
     });
   }
   save(): any {
-    this.authService.editUserInfoPur(this.userId, this.CodePursuing.value);
+    this.authService.editUserInfoPur(
+      this.userId,
+      this.CodePursuing.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save2(): void {
-    this.authService.editUserInfoPur2(this.userId, this.CodePursuing2.value);
+    this.authService.editUserInfoPur2(
+      this.userId,
+      this.CodePursuing2.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save3(): void {
-    this.authService.editUserInfoPur3(this.userId, this.CodePursuing3.value);
+    this.authService.editUserInfoPur3(
+      this.userId,
+      this.CodePursuing3.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save4(): void {
-    this.authService.editUserInfoPur4(this.userId, this.CodePursuing4.value);
+    this.authService.editUserInfoPur4(
+      this.userId,
+      this.CodePursuing4.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });
   }
   save5(): void {
-    this.authService.editUserInfoPur5(this.userId, this.CodePursuing5.value);
+    this.authService.editUserInfoPur5(
+      this.userId,
+      this.CodePursuing5.value.toUpperCase()
+    );
     this.snackBar.open('Course Saved', 'Nice!', {
       duration: 2000,
     });

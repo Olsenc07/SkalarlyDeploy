@@ -13,10 +13,10 @@
   <div class="centerTitle">Spring Semester <div class="fas fa-seedling" style="color: cadetblue;"></div> </div>
 
       <!-- 1 -->
-  <div *ngFor="let info of infos">
+  <div >
 <div class="input" >
-    <i class="material-icons _icon" *ngIf="CodePursuing11.value.length < 8">checklist</i>
-  <button mat-icon-button type="button" *ngIf="CodePursuing11.value.length == 8" (click)="save11()" matTooltip="Save Course">
+    <i class="material-icons _icon" *ngIf="CodePursuing11.value?.length < 8">checklist</i>
+  <button mat-icon-button type="button" *ngIf="CodePursuing11.value?.length == 8" (click)="save11()" matTooltip="Save Course">
   <i class="material-icons check">checklist</i>
     </button>
 
@@ -46,8 +46,8 @@
     </div>
     <!-- 12 -->
     <div class="input" >
-    <i class="material-icons _icon" *ngIf="CodePursuing12.value.length < 8">checklist</i>
-  <button mat-icon-button type="button" *ngIf="CodePursuing12.value.length == 8" (click)="save12()" matTooltip="Save Course">
+    <i class="material-icons _icon" *ngIf="CodePursuing12.value?.length < 8">checklist</i>
+  <button mat-icon-button type="button" *ngIf="CodePursuing12.value?.length == 8" (click)="save12()" matTooltip="Save Course">
   <i class="material-icons check" >checklist</i>
     </button>
     <mat-form-field class="example-chip-list">

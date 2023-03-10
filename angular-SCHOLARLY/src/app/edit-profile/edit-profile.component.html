@@ -88,8 +88,8 @@
 
 <!-- appearance="outline" -->
             <mat-form-field >
-              <mat-label *ngIf="Name">{{Name}}</mat-label>
-              <mat-label *ngIf="!Name">Full name</mat-label>
+              <mat-label *ngIf="info.name">{{info.name}}</mat-label>
+              <mat-label *ngIf="!info.name">Full name</mat-label>
               <input matInput  maxlength="60" 
                [formControl]="name" type="text" placeholder="Full name" class="inputText"/>
               <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Reset Value" type="button" (click)="clearName()">
@@ -106,8 +106,8 @@
               <i class="material-icons check"  *ngIf="birthday.value">cake</i>
           </button>
               <mat-form-field >
-                <mat-label *ngIf="Birthday">{{Birthday|date:"longDate"}}</mat-label>
-              <mat-label *ngIf="!Birthday">When's your birthday?</mat-label>
+                <mat-label *ngIf="info.birthday">{{info.birthday|date:"longDate"}}</mat-label>
+              <mat-label *ngIf="!info.birthday">When's your birthday?</mat-label>
 
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-hint>MM/DD/YYYY</mat-hint>
@@ -127,8 +127,8 @@
                     <i class="material-icons check"  *ngIf="gender.value">transgender</i>
       </button>
         <mat-form-field class="smaller" >
-          <mat-label *ngIf="Gender">{{Gender}}</mat-label>
-          <mat-label *ngIf="!Gender">Gender</mat-label>
+          <mat-label *ngIf="info.gender">{{info.gender}}</mat-label>
+          <mat-label *ngIf="!info.gender">Gender</mat-label>
 
           <input matInput type='text' [formControl]="gender" [matAutocomplete]="auto_">
           <mat-autocomplete #auto_="matAutocomplete">
@@ -145,8 +145,8 @@
                         <i class="material-icons check"  *ngIf="pronouns.value">psychology</i>
           </button>
       <mat-form-field  class="smaller">
-        <mat-label *ngIf="Pronouns">{{Pronouns}}</mat-label>
-        <mat-label *ngIf="!Pronouns">Prefered Pronouns</mat-label>
+        <mat-label *ngIf="info.pronouns">{{info.pronouns}}</mat-label>
+        <mat-label *ngIf="!info.pronouns">Prefered Pronouns</mat-label>
 
         <input matInput type='text' [formControl]="pronouns" [matAutocomplete]="auto"/>
         <mat-autocomplete #auto="matAutocomplete">
@@ -166,8 +166,8 @@
 </button>
 
             <mat-form-field >
-              <mat-label *ngIf="Bio">{{Bio}}</mat-label>
-              <mat-label *ngIf="!Bio">Bio</mat-label>
+              <mat-label *ngIf="info.bio">{{info.bio}}</mat-label>
+              <mat-label *ngIf="!info.bio">Bio</mat-label>
 
             <input matInput class="selection-emoji"
                [formControl]="bio" type="text" placeholder="Bio" class="inputText"/>
@@ -213,8 +213,8 @@
     </span>
     </button>
     <mat-form-field id="showEmojisMajor">
-<mat-label *ngIf="Major">{{Major}}</mat-label>
-<mat-label *ngIf="!Major">Major(s)</mat-label>
+<mat-label *ngIf="info.major">{{info.major}}</mat-label>
+<mat-label *ngIf="!info.major">Major(s)</mat-label>
       <input class="major selection-emoji" maxlength="50" matInput placeholder="Major" [formControl]="major" />
       <button mat-icon-button matSuffix id="triggerEmoMajor" (click)="openEmojiMajor()">😃</button>
 
@@ -233,8 +233,8 @@
     </span>
     </button>
     <mat-form-field id="showEmojisMinor">
-<mat-label *ngIf="Minor">{{Minor}}</mat-label>
-<mat-label *ngIf="!Minor">Minor(s)</mat-label>
+<mat-label *ngIf="info.minor">{{info.minor}}</mat-label>
+<mat-label *ngIf="!info.minor">Minor(s)</mat-label>
       <input class="major selection-emoji" maxlength="50" matInput placeholder="Minor" [formControl]="minor" />
       <button mat-icon-button matSuffix id="triggerEmoMinor" (click)="openEmojiMinor()">😃</button>
 
@@ -256,8 +256,8 @@
   </span>
   </button>
   <mat-form-field id="showEmojisSport">
-<mat-label *ngIf="Sport">{{Sport}}</mat-label>
-<mat-label *ngIf="!Sport">Do you play a sport?</mat-label>
+<mat-label *ngIf="info.sport">{{info.sport}}</mat-label>
+<mat-label *ngIf="!info.sport">Do you play a sport?</mat-label>
     <input matInput  placeholder="Do you play a sport?" [formControl]="sport" class="major selection-emoji" />
     <button mat-icon-button matSuffix id="triggerEmoSport" (click)="openEmojiSport()">😃</button>
 
@@ -277,8 +277,8 @@
   </span>
   </button>
   <mat-form-field >
-<mat-label *ngIf="Club">{{Club}}</mat-label>
-<mat-label *ngIf="!Club">Are you apart of a club?</mat-label>
+<mat-label *ngIf="info.club">{{info.club}}</mat-label>
+<mat-label *ngIf="!info.club">Are you apart of a club?</mat-label>
     <input class="major selection-emoji"  matInput placeholder="Are you apart of a club?" [formControl]="club" />
     <button mat-icon-button matSuffix id="triggerEmoClub" (click)="openEmojiClub()">😃</button>
 

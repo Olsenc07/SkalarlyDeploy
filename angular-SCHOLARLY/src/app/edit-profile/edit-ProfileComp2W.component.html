@@ -9,14 +9,14 @@
       </ng-template>
   <div class="centerTitle">Winter Semester <div class="fas fa-snowflake" style="color: #88c4f9;"></div> </div>
 
-<div *ngFor="let info of infos">
+<div >
 <div class="input" >
-    <i class="material-icons _icon" *ngIf="CodeCompleted16.value.length < 8">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted16.value.length == 8" (click)="save16()" matTooltip="Save Course">
+    <i class="material-icons _icon" *ngIf="CodeCompleted16.value?.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted16.value?.length == 8" (click)="save16()" matTooltip="Save Course">
     <i class="material-icons check" >check</i>
     </button>
     <mat-form-field class="example-chip-list">
-      <mat-label *ngIf="info.CodeCompleted16.length == 0">Completed Course</mat-label>
+      <mat-label *ngIf="info.CodeCompleted16?.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted16}}</mat-label>
     
     <!-- <mat-select placeholder="Choose completed course 16" #codeInput [formControl]="CodeCompleted16" >
@@ -44,13 +44,13 @@
     
     <!-- 17 -->
     <div class="input" >
-    <i class="material-icons _icon" *ngIf="CodeCompleted17.value.length < 8">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted17.value.length == 8" (click)="save17()" matTooltip="Save Course">
+    <i class="material-icons _icon" *ngIf="CodeCompleted17.value?.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted17.value?.length == 8" (click)="save17()" matTooltip="Save Course">
     <i class="material-icons check" >check</i>
     </button>
 
     <mat-form-field class="example-chip-list">
-      <mat-label *ngIf="info.CodeCompleted17.length == 0">Completed Course</mat-label>
+      <mat-label *ngIf="info.CodeCompleted17?.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted17}}</mat-label>
     
     <!-- <mat-select placeholder="Choose completed course 17" #codeInput [formControl]="CodeCompleted17" >
@@ -77,13 +77,13 @@
     
     <!-- 18 -->
     <div class="input" >
-    <i class="material-icons _icon" *ngIf="CodeCompleted18.value.length < 8">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted18.value.length == 8" (click)="save18()" matTooltip="Save Course">
+    <i class="material-icons _icon" *ngIf="CodeCompleted18.value?.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted18.value?.length == 8" (click)="save18()" matTooltip="Save Course">
     <i class="material-icons check" >check</i>
     </button>
 
     <mat-form-field class="example-chip-list">
-      <mat-label *ngIf="info.CodeCompleted18.length == 0">Completed Course</mat-label>
+      <mat-label *ngIf="info.CodeCompleted18?.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted18}}</mat-label>
     
     <!-- <mat-select placeholder="Choose completed course 18" #codeInput [formControl]="CodeCompleted18" >
@@ -109,13 +109,13 @@
     
     <!-- 19 -->
     <div class="input" >
-    <i class="material-icons _icon" *ngIf="CodeCompleted19.value.length < 8">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted19.value.length == 8" (click)="save19()" matTooltip="Save Course">
+    <i class="material-icons _icon" *ngIf="CodeCompleted19.value?.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted19.value?.length == 8" (click)="save19()" matTooltip="Save Course">
     <i class="material-icons check" >check</i>
     </button>
 
     <mat-form-field class="example-chip-list">
-      <mat-label *ngIf="info.CodeCompleted19.length == 0">Completed Course</mat-label>
+      <mat-label *ngIf="info.CodeCompleted19?.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted19}}</mat-label>
     
     <!-- <mat-select placeholder="Choose completed course 19" #codeInput [formControl]="CodeCompleted19" >
@@ -141,13 +141,13 @@
     
     <!-- 20 -->
     <div class="input" >
-    <i class="material-icons _icon" *ngIf="CodeCompleted20.value.length < 8">check</i>
-  <button mat-icon-button type="button" *ngIf="CodeCompleted20.value.length == 8" (click)="save20()" matTooltip="Save Course">
+    <i class="material-icons _icon" *ngIf="CodeCompleted20.value?.length < 8">check</i>
+  <button mat-icon-button type="button" *ngIf="CodeCompleted20.value?.length == 8" (click)="save20()" matTooltip="Save Course">
     <i class="material-icons check" >check</i>
     </button>
 
     <mat-form-field class="example-chip-list">
-      <mat-label *ngIf="info.CodeCompleted20.length == 0">Completed Course</mat-label>
+      <mat-label *ngIf="info.CodeCompleted20?.length == 0">Completed Course</mat-label>
     <mat-label>{{info.CodeCompleted20}}</mat-label>
     
     <!-- <mat-select placeholder="Choose completed course 20" #codeInput [formControl]="CodeCompleted20" >
