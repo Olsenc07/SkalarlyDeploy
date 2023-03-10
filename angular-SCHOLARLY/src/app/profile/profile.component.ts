@@ -127,6 +127,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.info = infos;
         console.log('boobs');
         this.isLoading = false;
+        // do this for them all!
         this.infosSub.unsubscribe();
         console.log('boobs awe ya!');
       });
@@ -142,6 +143,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.postsSub = this.showCaseService
       .getshowCaseUpdateListener()
       .subscribe((showcases: ShowCase[]) => {
+        console.log('extra extra');
         this.showCases = showcases;
       });
     // Following

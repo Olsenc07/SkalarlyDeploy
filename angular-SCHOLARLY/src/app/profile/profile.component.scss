@@ -629,6 +629,12 @@ color: white !important;
   align-items: baseline;
   width: max-content;
 }
+.nameBox{
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  // width: max-content;
+}
 ::ng-deep .mat-tab-body-wrapper {
   display: flex;
   height: 100%;
