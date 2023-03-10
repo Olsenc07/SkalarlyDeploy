@@ -221,21 +221,25 @@
                     *ngIf="info.CodeCompleted || info.CodeCompleted2 || info.CodeCompleted3|| info.CodeCompleted4|| info.CodeCompleted5" style="color: saddlebrown; margin-top:4%">
                     </span>
                     <!-- disabled -->
-                    <mat-chip *ngIf="info.CodeCompleted" class="style fall"  selected >
+                    <mat-chip *ngIf="info.CodeCompleted" class="style fall"  selected 
+                    (click)="navigateToMainPage(info.CodeCompleted)">
                       <!-- {{list}} -->
                  
                       {{ info.CodeCompleted  }}
                     </mat-chip>
 
-                      <mat-chip *ngIf="info.CodeCompleted2" class="style fall" color="primary" selected >
+                      <mat-chip *ngIf="info.CodeCompleted2" class="style fall" color="primary" selected 
+                      (click)="navigateToMainPage(info.CodeCompleted2)">
                         {{ info.CodeCompleted2  }}
                     </mat-chip>
 
-                        <mat-chip *ngIf="info.CodeCompleted3" class="style fall" color="primary" selected >
+                        <mat-chip *ngIf="info.CodeCompleted3" class="style fall" color="primary" selected 
+                        (click)="navigateToMainPage(info.CodeCompleted3)">
                           {{ info.CodeCompleted3 }}
                     </mat-chip>
 
-                          <mat-chip *ngIf="info.CodeCompleted4" class="style fall" color="primary" selected >
+                          <mat-chip *ngIf="info.CodeCompleted4" class="style fall" color="primary" selected 
+                          (click)="navigateToMainPage(info.CodeCompleted4)">
                             {{ info.CodeCompleted4 }}
                     </mat-chip>
 
@@ -245,23 +249,28 @@
                     <span class="fas fa-snowflake centerIcon"  matTooltip="Second Semester"
                      *ngIf="info.CodeCompleted6 || info.CodeCompleted7 || info.CodeCompleted8|| info.CodeCompleted9|| info.CodeCompleted10" style="color: #88c4f9; margin-top:4%">
                     </span>
-                              <mat-chip *ngIf="info.CodeCompleted6" class="style winter" color="primary" selected >
+                              <mat-chip *ngIf="info.CodeCompleted6" class="style winter" color="primary" selected 
+                              (click)="navigateToMainPage(info.CodeCompleted6)">
                                 {{ info.CodeCompleted6 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted7" class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted7" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted7)">
                       {{ info.CodeCompleted7 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted8" class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted8" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted8)">
                       {{ info.CodeCompleted8 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted9" class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted9" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted9)">
                       {{ info.CodeCompleted9 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted10" class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted10" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted10)">
                       {{ info.CodeCompleted10 }}
                     </mat-chip>
                     <mat-divider *ngIf="info.CodeCompleted11 || info.CodeCompleted16 "></mat-divider>
@@ -278,44 +287,54 @@
                      *ngIf="info.CodeCompleted11 || info.CodeCompleted12 || info.CodeCompleted13|| info.CodeCompleted14|| info.CodeCompleted15" style="color: saddlebrown; margin-top:4%">
                     </span>
                     <div class="middleText">
-                    <mat-chip *ngIf="info.CodeCompleted11" class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted11" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted11)">
                       {{ info.CodeCompleted11 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted12" class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted12" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted12)">
                       {{ info.CodeCompleted12 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted13" class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted13" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted13)">
                       {{ info.CodeCompleted13 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted14" class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted14" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted14)">
                       {{ info.CodeCompleted14 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted15" class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted15" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted15)">
                       {{ info.CodeCompleted15 }}
                     </mat-chip>
                     <span class="fas fa-snowflake centerIcon"  matTooltip="Fourth Semester" *ngIf="info.CodeCompleted16 || info.CodeCompleted17 || info.CodeCompleted18|| info.CodeCompleted19|| info.CodeCompleted20"  style="color: #88c4f9; margin-top:4%">
                     </span>
-                    <mat-chip *ngIf="info.CodeCompleted16" class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted16" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted16)">
                       {{ info.CodeCompleted16 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted17" class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted17" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted17)">
                       {{ info.CodeCompleted17 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted18" class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted18" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted18)">
                       {{ info.CodeCompleted18  }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted19" class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted19" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted19)">
                       {{ info.CodeCompleted19 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted20" class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted20" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted20)">
                       {{ info.CodeCompleted20 }}
                     </mat-chip>
                   </div>
@@ -330,44 +349,54 @@
                     <span class="fas fa-leaf centerIcon"  matTooltip="Fifth Semester" *ngIf="info.CodeCompleted21 || info.CodeCompleted22 || info.CodeCompleted23 || info.CodeCompleted24 || info.CodeCompleted25" style="color: saddlebrown; margin-top:4%">
                     </span>
                     <div class="middleText">
-                    <mat-chip *ngIf="info.CodeCompleted21" class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted21" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted21)">
                       {{ info.CodeCompleted21 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted22"  class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted22"  class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted22)">
                       {{ info.CodeCompleted22 }}
                     </mat-chip>
 
-                    <mat-chip  *ngIf="info.CodeCompleted23" class="style fall" color="primary" selected >
+                    <mat-chip  *ngIf="info.CodeCompleted23" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted23)">
                       {{ info.CodeCompleted23 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted24"  class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted24"  class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted24)">
                       {{ info.CodeCompleted24 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted25" class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted25" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted25)">
                       {{ info.CodeCompleted25 }}
                     </mat-chip>
                     <span class="fas fa-snowflake centerIcon"  matTooltip="Sixth Semester" *ngIf="info.CodeCompleted26 || info.CodeCompleted27 || info.CodeCompleted28 || info.CodeCompleted29 || info.CodeCompleted30" style="color: #88c4f9; margin-top:4%">
                     </span>
-                    <mat-chip *ngIf="info.CodeCompleted26"  class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted26"  class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted26)">
                       {{ info.CodeCompleted26 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted27"  class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted27"  class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted27)">
                       {{ info.CodeCompleted27 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted28"  class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted28"  class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted28)">
                       {{ info.CodeCompleted28 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted29"  class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted29"  class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted29)">
                       {{ info.CodeCompleted29 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted30"  class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted30"  class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted30)">
                       {{ info.CodeCompleted30 }}
                     </mat-chip>
                   </div>
@@ -382,50 +411,61 @@
                   <span class="fas fa-leaf centerIcon"  matTooltip="Seventh Semester"
                   *ngIf="info.CodeCompleted31 || info.CodeCompleted32 || info.CodeCompleted33 || info.CodeCompleted34 || info.CodeCompleted35" style="color: saddlebrown; margin-top:4%">
                   </span>
-                    <mat-chip *ngIf="info.CodeCompleted31"  class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted31"  class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted31)">
                       {{ info.CodeCompleted31 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted32" class="style fall" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted32" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted32)">
                       {{ info.CodeCompleted32 }}
                     </mat-chip>
 
-                    <mat-chip  *ngIf="info.CodeCompleted33" class="style fall" color="primary" selected >
+                    <mat-chip  *ngIf="info.CodeCompleted33" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted33)">
                       {{ info.CodeCompleted33 }}
                     </mat-chip>
 
-                    <mat-chip  *ngIf="info.CodeCompleted34" class="style fall" color="primary" selected >
+                    <mat-chip  *ngIf="info.CodeCompleted34" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted34)">
                       {{ info.CodeCompleted34 }}
                     </mat-chip>
 
-                    <mat-chip  *ngIf="info.CodeCompleted35" class="style fall" color="primary" selected >
+                    <mat-chip  *ngIf="info.CodeCompleted35" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted35)">
                       {{ info.CodeCompleted35 }}
                     </mat-chip>
                     <span class="fas fa-snowflake centerIcon"  matTooltip="Eigth Semester"
                      *ngIf="info.CodeCompleted36 || info.CodeCompleted37 || info.CodeCompleted38 || info.CodeCompleted39 || info.CodeCompleted40 || info.CodeCompletedX" 
                     style="color: #88c4f9; margin-top:4%">
                     </span>
-                    <mat-chip *ngIf="info.CodeCompleted36"  class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted36"  class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted36)">
                       {{ info.CodeCompleted36 }}
                     </mat-chip>
 
-                    <mat-chip  *ngIf="info.CodeCompleted37"  class="style winter" color="primary" selected >
+                    <mat-chip  *ngIf="info.CodeCompleted37"  class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted37)">
                       {{ info.CodeCompleted37 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted38"   class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted38"   class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted38)">
                       {{ info.CodeCompleted38 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted39"   class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted39"   class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted39)">
                       {{ info.CodeCompleted39 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompleted40"   class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompleted40"   class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompleted40)">
                       {{ info.CodeCompleted40 }}
                     </mat-chip>
 
-                    <mat-chip *ngIf="info.CodeCompletedX"  class="style winter" color="primary" selected >
+                    <mat-chip *ngIf="info.CodeCompletedX"  class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodeCompletedX)">
                       {{ info.CodeCompletedX}}
                     </mat-chip>
                   </div>
@@ -462,20 +502,25 @@
                        style="color: saddlebrown;margin-top:4%">
                       </span>
                       <div class="centerIcon">
-                      <mat-chip *ngIf="info.CodePursuing" class="style fall" color="primary" selected >
-                      {{ info.CodePursuing | uppercase}}
+                      <mat-chip *ngIf="info.CodePursuing" class="style fall" color="primary" selected 
+                      (click)="navigateToMainPage(info.CodePursuing)">
+                      {{ info.CodePursuing }}
                     </mat-chip>
-                    <mat-chip *ngIf="info.CodePursuing2" class="style fall" color="primary" selected >
-                      {{ info.CodePursuing2 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing2" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing2)">
+                      {{ info.CodePursuing2 }}
                     </mat-chip>
-                    <mat-chip *ngIf="info.CodePursuing3" class="style fall" color="primary" selected >
-                      {{ info.CodePursuing3 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing3" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing3)">
+                      {{ info.CodePursuing3 }}
                     </mat-chip>
-                    <mat-chip *ngIf="info.CodePursuing4" class="style fall" color="primary" selected >
-                      {{ info.CodePursuing4 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing4" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing4)">
+                      {{ info.CodePursuing4 }}
                     </mat-chip>
-                    <mat-chip *ngIf="info.CodePursuing5" class="style fall" color="primary" selected >
-                      {{ info.CodePursuing5 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing5" class="style fall" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing5)">
+                      {{ info.CodePursuing5 }}
                     </mat-chip>
                   </div>
                   <mat-divider *ngIf="info.CodePursuing6  "></mat-divider>
@@ -486,20 +531,25 @@
                      style="color: #88c4f9; margin-top:4%">
                     </span>
                     <div class="centerIcon">
-                    <mat-chip *ngIf="info.CodePursuing6" class="style winter" color="primary" selected >
-                      {{ info.CodePursuing6 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing6" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing6)">
+                      {{ info.CodePursuing6 }}
                     </mat-chip>
-                    <mat-chip *ngIf="info.CodePursuing7" class="style winter" color="primary" selected >
-                      {{ info.CodePursuing7 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing7" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing7)">
+                      {{ info.CodePursuing7}}
                     </mat-chip>
-                    <mat-chip *ngIf="info.CodePursuing8" class="style winter" color="primary" selected >
-                      {{ info.CodePursuing8 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing8" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing8)">
+                      {{ info.CodePursuing8 }}
                     </mat-chip>
-                    <mat-chip *ngIf="info.CodePursuing9" class="style winter" color="primary" selected >
-                      {{ info.CodePursuing9 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing9" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing9)">
+                      {{ info.CodePursuing9 }}
                     </mat-chip>
-                    <mat-chip *ngIf="info.CodePursuing10" class="style winter" color="primary" selected >
-                      {{ info.CodePursuing10 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing10" class="style winter" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing10)">
+                      {{ info.CodePursuing10 }}
                     </mat-chip>
                   </div>
                   <mat-divider *ngIf="info.CodePursuing11 || info.CodePursuing12 "></mat-divider>
@@ -511,22 +561,26 @@
                     style="color: cadetblue; margin-top:4%">
                     </span>
                     <div class="centerIcon">
-                    <mat-chip *ngIf="info.CodePursuing11" class="style spring" color="primary" selected >
-                      {{ info.CodePursuing11 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing11" class="style spring" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing11)">
+                      {{ info.CodePursuing11 }}
                     </mat-chip>
-                    <mat-chip *ngIf="info.CodePursuing12" class="style spring" color="primary" selected >
-                      {{ info.CodePursuing12 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing12" class="style spring" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing12)">
+                      {{ info.CodePursuing12 }}
                     </mat-chip>
                     <mat-divider *ngIf="info.CodePursuing13 || info.CodePursuing14"></mat-divider>
                     <span class="fas fa-sun centerIcon"  matTooltip="Summer Semester"
                      *ngIf="info.CodePursuing13 || info.CodePursuing14" 
                     style="color: #d89163; margin-top:4%">
                     </span>
-                    <mat-chip *ngIf="info.CodePursuing13" class="style summer" color="primary" selected >
-                      {{ info.CodePursuing13 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing13" class="style summer" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing13)">
+                      {{ info.CodePursuing13 }}
                     </mat-chip>
-                    <mat-chip *ngIf="info.CodePursuing14" class="style summer" color="primary" selected >
-                      {{ info.CodePursuing14 | uppercase}}
+                    <mat-chip *ngIf="info.CodePursuing14" class="style summer" color="primary" selected 
+                    (click)="navigateToMainPage(info.CodePursuing14)">
+                      {{ info.CodePursuing14 }}
                     </mat-chip>
                   </div>
                   </div>

@@ -332,6 +332,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
       });
     this.postsSub.unsubscribe();
   }
+  // Where the post was posted
+  navigateToMainPage(value: string): void {
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+    console.log('hey chaz mataz', value);
+  }
   // Get notifcation permission
   askForNotificationPermission(): any {
     console.log('here I am z');
