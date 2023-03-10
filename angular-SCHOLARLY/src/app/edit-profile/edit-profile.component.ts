@@ -602,6 +602,7 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
       .getInfoUpdateListener()
       .subscribe((infos: any) => {
         this.info = infos;
+        console.log('never deplete', this.info);
       });
     this.codeSub = this.CodeCompleted.valueChanges.subscribe((v) =>
       this.CodeCompletedLength.next(v.length)
