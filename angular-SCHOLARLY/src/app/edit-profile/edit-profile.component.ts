@@ -573,7 +573,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
 })
 export class EditProfileComp1Component implements OnInit, OnDestroy {
   userId: string;
-  infos: AuthDataInfo[] = [];
+  info: AuthDataInfo = {};
   classes: string[] = [];
   // @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
@@ -600,8 +600,8 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
     this.authService.getInfoPersonal(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
+      .subscribe((infos: any) => {
+        this.info = infos;
       });
     this.codeSub = this.CodeCompleted.valueChanges.subscribe((v) =>
       this.CodeCompletedLength.next(v.length)
