@@ -129,7 +129,7 @@ export class AuthServiceEditCourse {
           };
 
           this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
+          this.infosUpdated.next(this.infos);
           sub.unsubscribe();
           console.log('love you 5');
         },
