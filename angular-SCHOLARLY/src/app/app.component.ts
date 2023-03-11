@@ -284,6 +284,7 @@ export class AppComponent implements OnInit, OnDestroy {
                 console.log('notif missed', this.notif);
               });
             this.commentSub.unsubscribe();
+            console.log('notif missed 2');
 
             // msgs
             this.messageNotificationService.getMessageNotification(this.userId);
