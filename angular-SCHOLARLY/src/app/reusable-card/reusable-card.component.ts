@@ -2181,8 +2181,6 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
     this.commentsSub.unsubscribe();
   }
   spreadWord(postId: string): void {
-    console.log('for me baby', postId);
-    console.log('for me baby 2', this.userId);
     this.postService.addPostShared(postId, this.userId);
   }
 }
