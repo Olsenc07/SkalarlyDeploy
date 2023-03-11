@@ -325,7 +325,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.commentSub.unsubscribe();
     this.searchSub.unsubscribe();
     this.msgsSub.unsubscribe();
-    this.comment2Sub.unsubscribe();
+    // this.comment2Sub.unsubscribe();
   }
   hashTagSearch(): any {
     this.Hashtag = true;
