@@ -10,6 +10,8 @@ import { MissedNotif } from './activity-history/history.component';
 import { CommentsService } from './services/comments.service';
 import { Message } from './services/messages.service';
 import { MessageNotificationService } from './services/messagesNotifications.service';
+import { FollowService } from './services/follow.service';
+import { Follow } from './reusable-card-user/reusable-card-user.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,6 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
   notif: MissedNotif[] = [];
   newMsg = [];
   newMessageCheck = [];
+  newfollowerCheck = [];
+  follower: Follow[] = [];
   postClicked = false;
   commentClicked = false;
   userId: string;
@@ -40,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private msgsSub: Subscription;
   private comment2Sub: Subscription;
   private authListenerSubs: Subscription;
-
+  private followSub: Subscription;
   // socket.io
   public roomId: string;
   public messageText: string;
@@ -100,7 +104,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthService,
     private commentsService: CommentsService,
-    private messageNotificationService: MessageNotificationService
+    private messageNotificationService: MessageNotificationService,
+    private followService: FollowService
   ) {
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) =>
@@ -241,7 +246,6 @@ export class AppComponent implements OnInit, OnDestroy {
         .getListenerNotification()
         .subscribe((messagesNotif: Message[]) => {
           this.newMsg = messagesNotif.reverse();
-          console.log('newMsg', this.newMsg);
           const NEW = [];
           this.newMsg.forEach((e) => {
             console.log('new b', e);
@@ -252,10 +256,25 @@ export class AppComponent implements OnInit, OnDestroy {
               console.log('no unread messages');
             }
           });
-          console.log('NEW', NEW);
           this.newMessageCheck = NEW;
-          console.log('newMessageCheck', this.newMessageCheck);
-          console.log('newMessageCheck length', this.newMessageCheck.length);
+        });
+      // new followers
+      this.followService.getMessageNotificationFollowed(this.userId);
+      this.followSub = this.followService
+        .getInfoFollowUpdateListener()
+        .subscribe((follower: Follow[]) => {
+          this.follower = follower.reverse();
+          const NEW2 = [];
+          this.follower.forEach((e) => {
+            console.log('new d', e);
+            console.log('new e', e.viewed);
+            if (e.viewed === false) {
+              NEW2.push(e.viewed);
+            } else {
+              console.log('no new followers');
+            }
+          });
+          this.newfollowerCheck = NEW2;
         });
     }
 
@@ -324,6 +343,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.searchSub.unsubscribe();
     this.msgsSub.unsubscribe();
     this.comment2Sub.unsubscribe();
+    this.followSub.unsubscribe();
   }
   hashTagSearch(): any {
     this.Hashtag = true;
