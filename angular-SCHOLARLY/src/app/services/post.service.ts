@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, Subject } from 'rxjs';
+import { ReplaySubject, Subject, BehaviorSubject } from 'rxjs';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -49,7 +49,7 @@ export interface Post {
 })
 export class PostService {
   private posts: Post[] = [];
-  private postsUpdated = new Subject<Post[]>();
+  private postsUpdated = new ReplaySubject<Post[]>();
   private trendNumber: number;
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
@@ -271,7 +271,7 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
-        // sub.unsubscribe();
+        sub.unsubscribe();
         console.log('eazy 13');
       });
   }
