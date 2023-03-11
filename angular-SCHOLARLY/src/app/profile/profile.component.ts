@@ -177,8 +177,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
             this.router.navigate(['/activity-history']);
           });
         }
-        this.commentSub.unsubscribe();
       });
+    this.commentSub.unsubscribe();
   }
 
   ngOnDestroy(): any {

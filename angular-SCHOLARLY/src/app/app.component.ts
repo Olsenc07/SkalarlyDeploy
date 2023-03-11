@@ -281,9 +281,10 @@ export class AppComponent implements OnInit, OnDestroy {
               .getMissedNotifUpdateListener()
               .subscribe((missedNotifs: MissedNotif[]) => {
                 this.notif = missedNotifs;
-                this.commentSub.unsubscribe();
                 console.log('notif missed', this.notif);
               });
+            this.commentSub.unsubscribe();
+
             // msgs
             this.messageNotificationService.getMessageNotification(this.userId);
             this.msgNotifSub = this.messageNotificationService
@@ -322,7 +323,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): any {
     this.msgNotifSub.unsubscribe();
-    this.commentSub.unsubscribe();
+    // this.commentSub.unsubscribe();
     this.searchSub.unsubscribe();
     this.msgsSub.unsubscribe();
     // this.comment2Sub.unsubscribe();
