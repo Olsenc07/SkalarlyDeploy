@@ -49,6 +49,8 @@ export class FollowService {
   private mutualsInfo: Follow[] = [];
   private mutualsInfoPostUpdated = new Subject<Follow[]>();
 
+  private acceptFollowCheck: boolean;
+
   private blockedUser: BlockUser[] = [];
   private blockedUserUpdated = new Subject<BlockUser[]>();
 
@@ -106,6 +108,9 @@ export class FollowService {
   }
   getInfoMutualsUpdateListener(): any {
     return this.mutualsInfoPostUpdated.asObservable();
+  }
+  getInfoAcceptFollowUpdateListener(): any {
+    return this.acceptFollowCheck;
   }
   getfilterFollowers(): any {
     return this.followersInfoPostUpdated.asObservable();
@@ -420,6 +425,30 @@ export class FollowService {
         console.log('rich and famous baby 10');
       });
   }
+
+  // accept follower
+  acceptFollow(followId: string): any {
+    const sub = this.http
+      .get<{ message: string; update: boolean }>(
+        'https://www.skalarly.com/api/follow/acceptFollow',
+        {
+          params: { followId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.update;
+        })
+      )
+      .subscribe((transformedMessage) => {
+        console.log('boolean check', transformedMessage);
+        this.acceptFollowCheck = transformedMessage;
+        // this.mutualsInfoPostUpdated.next([...this.mutualsInfo]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 11');
+      });
+  }
+
   // skalars followers
   mutualsFollow(username: string, userId: string): any {
     const sub = this.http
@@ -456,7 +485,6 @@ export class FollowService {
       });
   }
   // deleting from friends activity pg
-
   deleteFollow(followId: string): any {
     console.log('hey chase followId', followId);
     const sub = this.http

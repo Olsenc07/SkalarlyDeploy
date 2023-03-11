@@ -129,6 +129,21 @@ router.get("/getblockedListOne", async(req, res) => {
      
 })
 
+// accept follower
+router.get("/acceptFollow", async(req,res) => {
+    console.log('boolean logic', req.query.followId)
+    await Follow.updateOne({_id:req.query.followId}, {viewed: true})
+    .then(update => {
+        res.status(200).json({message: 'accepted follower!', 
+        update: true});
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Accepting follower failed!'
+        });
+    });
+})
+
+
 // unblock skalar
 router.delete("/unblockSkalar", async(req, res) => {
     console.log('username', req.query.username);

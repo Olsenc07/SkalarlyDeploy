@@ -113,6 +113,11 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
     this.router.navigate(['/skalars/:'], { queryParams: { id: Following } });
   }
 
+  onAccept(followId: string): any {
+    console.log('love race', followId);
+    this.followService.acceptFollow(followId);
+  }
+
   onDelete(followId: string): any {
     this.followService.deleteFollow(followId);
     console.log('chaz whats up homie g', followId);
