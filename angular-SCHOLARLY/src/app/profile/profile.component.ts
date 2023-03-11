@@ -177,6 +177,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             this.router.navigate(['/activity-history']);
           });
         }
+        this.commentSub.unsubscribe();
       });
   }
 
@@ -187,7 +188,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.postsSub.unsubscribe();
     this.followSub.unsubscribe();
     this.followersSub.unsubscribe();
-    this.commentSub.unsubscribe();
+    // this.commentSub.unsubscribe();
   }
 
   // Turn off notifications
