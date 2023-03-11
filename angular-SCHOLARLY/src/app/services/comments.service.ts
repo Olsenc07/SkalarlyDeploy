@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { Subject, ReplaySubject } from 'rxjs';
+import { map } from 'rxjs';
+import { Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MissedNotif } from '../activity-history/history.component';
 import { CommentInterface } from '../reusable-card/reusable-card.component';
@@ -11,8 +11,8 @@ export class CommentsService {
   private messages: CommentInterface[] = [];
   private missedNotifs: MissedNotif[] = [];
 
-  private commentsUpdated = new ReplaySubject<CommentInterface[]>();
-  private commentsUpdatedHistory = new ReplaySubject<CommentInterface[]>();
+  private commentsUpdated = new Subject<CommentInterface[]>();
+  private commentsUpdatedHistory = new Subject<CommentInterface[]>();
 
   private missedNotifsUpdated = new Subject<MissedNotif[]>();
 

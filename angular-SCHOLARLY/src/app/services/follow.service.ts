@@ -25,34 +25,34 @@ export interface BlockUser {
 @Injectable({ providedIn: 'root' })
 export class FollowService {
   private follow: Follow[] = [];
-  private followPostUpdated = new ReplaySubject<Follow[]>();
-  private followPostUpdatedHistory = new ReplaySubject<Follow[]>();
+  private followPostUpdated = new Subject<Follow[]>();
+  private followPostUpdatedHistory = new Subject<Follow[]>();
 
   private follower: Follow[] = [];
   private followerPostUpdated = new Subject<Follow[]>();
-  private followerPostUpdatedHistory = new ReplaySubject<Follow[]>();
+  private followerPostUpdatedHistory = new Subject<Follow[]>();
 
   private following: Follow[] = [];
-  private followingPostUpdated = new ReplaySubject<Follow[]>();
+  private followingPostUpdated = new Subject<Follow[]>();
 
   private followingInfo: Follow[] = [];
-  private followingInfoPostUpdated = new ReplaySubject<Follow[]>();
+  private followingInfoPostUpdated = new Subject<Follow[]>();
 
   private followingInfoPostUpdatedBtn = new Subject<Follow[]>();
 
-  private followersInfoPostUpdated = new ReplaySubject<Follow[]>();
+  private followersInfoPostUpdated = new Subject<Follow[]>();
 
   private mutualInfo: Follow[] = [];
-  private mutualInfoPostUpdated = new ReplaySubject<Follow[]>();
+  private mutualInfoPostUpdated = new Subject<Follow[]>();
 
   private mutualsInfo: Follow[] = [];
-  private mutualsInfoPostUpdated = new ReplaySubject<Follow[]>();
+  private mutualsInfoPostUpdated = new Subject<Follow[]>();
 
   private blockedUser: BlockUser[] = [];
-  private blockedUserUpdated = new ReplaySubject<BlockUser[]>();
+  private blockedUserUpdated = new Subject<BlockUser[]>();
 
   private blockedUser2: BlockUser[] = [];
-  private blockedUserUpdated2 = new ReplaySubject<BlockUser[]>();
+  private blockedUserUpdated2 = new Subject<BlockUser[]>();
 
   private blockedUserListOneUpdated = new ReplaySubject();
   private blockedUserListOne: boolean;

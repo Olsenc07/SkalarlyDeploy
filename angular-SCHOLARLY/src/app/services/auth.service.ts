@@ -19,21 +19,21 @@ export class AuthService {
   private userId: string;
   private postId: string;
 
-  private authStatusListener = new ReplaySubject<boolean>();
+  private authStatusListener = new Subject<boolean>();
 
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new Subject<AuthDataInfo[]>();
 
-  private emailUpdated = new ReplaySubject();
+  private emailUpdated = new Subject();
   private emailId: boolean;
 
-  private userNameUpdated = new ReplaySubject();
+  private userNameUpdated = new Subject();
   private userNameId: boolean;
 
   private emailUsedUpdated = new ReplaySubject();
   private emailUsedId: boolean;
 
-  private blocked = new ReplaySubject<string>();
+  private blocked = new Subject<string>();
   // check if email exists for login
   getEmail(): any {
     return this.emailUpdated.asObservable();

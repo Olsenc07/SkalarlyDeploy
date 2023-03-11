@@ -257,8 +257,6 @@ export class AppComponent implements OnInit, OnDestroy {
           console.log('newMessageCheck', this.newMessageCheck);
           console.log('newMessageCheck length', this.newMessageCheck.length);
         });
-      this.comment2Sub.unsubscribe();
-      console.log('notif missed 7');
     }
 
     // update badges! on login!!
@@ -283,8 +281,6 @@ export class AppComponent implements OnInit, OnDestroy {
                 this.notif = missedNotifs;
                 console.log('notif missed', this.notif);
               });
-            this.commentSub.unsubscribe();
-            console.log('notif missed 2');
 
             // msgs
             this.messageNotificationService.getMessageNotification(this.userId);
@@ -324,10 +320,10 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): any {
     this.msgNotifSub.unsubscribe();
-    // this.commentSub.unsubscribe();
+    this.commentSub.unsubscribe();
     this.searchSub.unsubscribe();
     this.msgsSub.unsubscribe();
-    // this.comment2Sub.unsubscribe();
+    this.comment2Sub.unsubscribe();
   }
   hashTagSearch(): any {
     this.Hashtag = true;
