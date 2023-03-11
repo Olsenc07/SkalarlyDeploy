@@ -79,6 +79,12 @@
   flex-direction: row;
   margin-right: 2%;
 }
+.buttonCombo_{
+  display: flex;
+  flex-direction: row;
+  margin-right: 2%;
+  align-items: center;
+}
 .counterColor{
   background-color: teal !important;
   border-bottom-left-radius: 25px;
