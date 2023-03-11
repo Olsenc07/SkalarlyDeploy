@@ -269,11 +269,12 @@ export class PostService {
         })
       )
       .subscribe((transformedPosts) => {
+        console.log('testing her brother just wait and see', transformedPosts);
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
+        sub.unsubscribe();
+        console.log('eazy 13');
       });
-    sub.unsubscribe();
-    console.log('eazy 13');
   }
   getPostsPersonal(userId: string, counter: number): any {
     const sub = this.http
