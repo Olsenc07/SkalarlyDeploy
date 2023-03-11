@@ -275,6 +275,7 @@ export class AppComponent implements OnInit, OnDestroy {
             }
           });
           this.newfollowerCheck = NEW2;
+          console.log('Followers baby 77', this.newfollowerCheck);
         });
     }
 
@@ -324,6 +325,25 @@ export class AppComponent implements OnInit, OnDestroy {
           } else {
             console.log('search pg nah');
           }
+          // new followers
+          this.followService.getMessageNotificationFollowed(this.userId);
+          this.followSub = this.followService
+            .getInfoFollowUpdateListener()
+            .subscribe((follower: Follow[]) => {
+              this.follower = follower.reverse();
+              const NEW2 = [];
+              this.follower.forEach((e) => {
+                console.log('new d', e);
+                console.log('new e', e.viewed);
+                if (e.viewed === false) {
+                  NEW2.push(e.viewed);
+                } else {
+                  console.log('no new followers');
+                }
+              });
+              this.newfollowerCheck = NEW2;
+              console.log('Followers baby', this.newfollowerCheck);
+            });
         }
       }
     });
