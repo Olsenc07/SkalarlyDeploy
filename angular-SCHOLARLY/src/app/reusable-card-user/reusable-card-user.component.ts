@@ -197,27 +197,27 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
     const queryFollowing: string = event.target.value;
     console.log('query yo', queryFollowing);
     // Will match if query is nothing or is only spaces
-    const matchSpaces: any = queryFollowing.match(/\s*/);
+    const matchSpaces = queryFollowing.replace(/[^a-zA-Z0-9 ]/g, '');
 
-    if (matchSpaces[0] === queryFollowing) {
-      this.followService.getMessageNotificationFollowed(this.userId);
-      this.followSub = this.followService
-        .getInfoFollowUpdateListener()
-        .subscribe((follower: Follow[]) => {
-          this.follower = follower.reverse();
-          this.isLoading = false;
-        });
-      this.followSub.unsubscribe();
-    } else {
-      this.followService.filterFollowers(this.userId, queryFollowing.trim());
-      this.followSub = this.followService
-        .getInfoFollowUpdateListener()
-        .subscribe((follower: Follow[]) => {
-          this.follower = follower.reverse();
-          this.isLoading = false;
-        });
-      this.followSub.unsubscribe();
-    }
+    // if (matchSpaces[0] === queryFollowing) {
+    //   this.followService.getMessageNotificationFollowed(this.userId);
+    //   this.followSub = this.followService
+    //     .getInfoFollowUpdateListener()
+    //     .subscribe((follower: Follow[]) => {
+    //       this.follower = follower.reverse();
+    //       this.isLoading = false;
+    //     });
+    //   this.followSub.unsubscribe();
+    // } else {
+    this.followService.filterFollowers(this.userId, matchSpaces.trim());
+    this.followSub = this.followService
+      .getInfoFollowUpdateListener()
+      .subscribe((follower: Follow[]) => {
+        this.follower = follower.reverse();
+        this.isLoading = false;
+      });
+    this.followSub.unsubscribe();
+    // }
   }
 
   navigateToPage(Following: string): any {

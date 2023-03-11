@@ -49,7 +49,7 @@ export interface Post {
 })
 export class PostService {
   private posts: Post[] = [];
-  private postsUpdated = new ReplaySubject<Post[]>();
+  private postsUpdated = new Subject<Post[]>();
   private trendNumber: number;
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
@@ -271,9 +271,9 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
-        sub.unsubscribe();
-        console.log('eazy 13');
       });
+    sub.unsubscribe();
+    console.log('eazy 13');
   }
   getPostsPersonal(userId: string, counter: number): any {
     const sub = this.http
