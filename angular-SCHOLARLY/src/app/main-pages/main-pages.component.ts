@@ -127,7 +127,7 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
   reposts = '';
   valueChosen = '7';
   userId: string;
-  posts: Post[] = [];
+  post = {};
   postId: string;
   comment: FormControl = new FormControl('');
   comments: string[] = [];
@@ -174,15 +174,15 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
       this.postService.getPostSinglePage(this.postId, this.userId);
       this.postsSub = this.postService
         .getPostUpdateListener()
-        .subscribe((posts: Post[]) => {
+        .subscribe((posts: any) => {
           if (posts.length === 0) {
             this.router.navigate(['/search']),
               this.snackBar.open('This Skalar has blocked you', '🚫', {
                 duration: 3000,
               });
           } else {
-            this.posts = posts;
-            console.log('pats', this.posts);
+            this.post = posts;
+            console.log('pats', this.post);
             this.isLoading = false;
           }
         });
