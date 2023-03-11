@@ -14,12 +14,13 @@ export class CommentsService {
   private commentsUpdated = new ReplaySubject<CommentInterface[]>();
   private commentsUpdatedHistory = new ReplaySubject<CommentInterface[]>();
 
-  private missedNotifsUpdated = new ReplaySubject<MissedNotif[]>();
+  private missedNotifsUpdated = new Subject<MissedNotif[]>();
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
   private authStatusListener = new Subject<boolean>();
   getAuthStatusListener(): any {
+    console.log('kayzo', this.authStatusListener.asObservable());
     return this.authStatusListener.asObservable();
   }
   getMessagesUpdateListener(): any {

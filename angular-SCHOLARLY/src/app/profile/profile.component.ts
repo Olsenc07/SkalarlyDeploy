@@ -178,7 +178,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
           });
         }
       });
-    this.commentSub.unsubscribe();
   }
 
   ngOnDestroy(): any {
@@ -188,7 +187,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.postsSub.unsubscribe();
     this.followSub.unsubscribe();
     this.followersSub.unsubscribe();
-    // this.commentSub.unsubscribe();
+    this.commentSub.unsubscribe();
   }
 
   // Turn off notifications
