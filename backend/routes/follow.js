@@ -209,7 +209,8 @@ await userInfo.findOne({Creator: req.query.userId})
                 FollowingId: otherUserId.id,
                 Following: req.query.username,  
                 nameFollowing: otherUser.name,
-                ProfilePicPathFollowing: otherUser.ProfilePicPath
+                ProfilePicPathFollowing: otherUser.ProfilePicPath,
+                viewed: false
             })
             FOLLOW.save().then(createdFollow => {
                 res.status(200).json({
