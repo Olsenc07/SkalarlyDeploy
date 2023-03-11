@@ -271,7 +271,7 @@ export class PostService {
       .subscribe((transformedPosts) => {
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
-        sub.unsubscribe();
+        // sub.unsubscribe();
         console.log('eazy 13');
       });
   }
