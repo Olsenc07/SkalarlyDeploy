@@ -37,6 +37,7 @@ export interface Post {
   video: File;
   ImagePath: string;
   VideoPath: string;
+  viewed: boolean;
   Creator: string;
   // User info
   Username: string;
@@ -100,6 +101,7 @@ export class PostService {
               Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
+              viewed: post.viewed,
               Creator: post.Creator,
             };
           });
@@ -154,6 +156,7 @@ export class PostService {
               Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
+              viewed: post.viewed,
               Creator: post.Creator,
             };
           });
@@ -209,6 +212,7 @@ export class PostService {
               Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
+              viewed: post.viewed,
               Creator: post.Creator,
             };
           });
@@ -263,6 +267,7 @@ export class PostService {
               Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
+              viewed: post.viewed,
               Creator: post.Creator,
             };
           });
@@ -317,6 +322,7 @@ export class PostService {
               Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
+              viewed: post.viewed,
               Creator: post.Creator,
             };
           });
@@ -371,6 +377,7 @@ export class PostService {
               Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
+              viewed: post.viewed,
               Creator: post.Creator,
             };
           });
@@ -426,6 +433,7 @@ export class PostService {
               Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
+              viewed: post.viewed,
               Creator: post.Creator,
             };
           });
@@ -515,6 +523,7 @@ export class PostService {
               Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
+              viewed: post.viewed,
               Creator: post.Creator,
             };
           });
@@ -570,6 +579,7 @@ export class PostService {
               Hashtag5: post.Hashtag5,
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
+              viewed: post.viewed,
               Creator: post.Creator,
             };
           });
@@ -746,6 +756,7 @@ export class PostService {
             video,
             ImagePath: responseData.postId.ImagePath,
             VideoPath: responseData.postId.VideoPath,
+            viewed: false,
             Creator,
             SharerUsername: '',
             SharerName: '',
@@ -857,6 +868,7 @@ export class PostService {
             video,
             ImagePath: responseData.postId.ImagePath,
             VideoPath: responseData.postId.VideoPath,
+            viewed: false,
             Creator,
             SharerUsername: '',
             SharerName: '',

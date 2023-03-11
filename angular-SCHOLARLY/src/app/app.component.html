@@ -327,15 +327,19 @@
                 </button>
               </div>
             </div>
-            <button
+            <button 
               mat-icon-button
               [matMenuTriggerFor]="settingsMenu"
               type="button"
               class="b_up"
               matBadge="!" [matBadgeHidden]="(notif.length == 0) " matBadgeColor="warn" 
             >
-              <mat-icon class="settings">settings</mat-icon>
+              <mat-icon *ngIf="sharedNew.length == 0" class="settings">settings</mat-icon>
+              <mat-icon *ngIf="sharedNew.length !== 0" class="settingsNew">settings</mat-icon>
+
             </button>
+
+            
           </div>
         </mat-toolbar>
       </ng-container>

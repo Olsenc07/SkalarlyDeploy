@@ -283,6 +283,7 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
   recomCounter = 0;
 
   shared: Post[] = [];
+  newShared = [];
   private postsSub: Subscription;
 
   constructor(
@@ -298,6 +299,16 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
       .getPostUpdateListener()
       .subscribe((shared: Post[]) => {
         this.shared = shared;
+        const NEW = [];
+        this.shared.forEach((e) => {
+          if (e.viewed === false) {
+            NEW.push(e.viewed);
+          } else {
+            console.log('no unread messages');
+          }
+        });
+        this.newShared = NEW;
+        console.log('new Gold', this.newShared);
       });
   }
 

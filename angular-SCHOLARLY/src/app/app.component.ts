@@ -12,6 +12,7 @@ import { Message } from './services/messages.service';
 import { MessageNotificationService } from './services/messagesNotifications.service';
 import { FollowService } from './services/follow.service';
 import { Follow } from './reusable-card-user/reusable-card-user.component';
+import { Post, PostService } from './services/post.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,9 +22,13 @@ export class AppComponent implements OnInit, OnDestroy {
   users: UserNames[] = [];
   public hashs = [];
   notif: MissedNotif[] = [];
+  sharedNew: Post[] = [];
+
   newMsg = [];
   newMessageCheck = [];
   newfollowerCheck = [];
+  newsharedCheck = [];
+
   follower: Follow[] = [];
   postClicked = false;
   commentClicked = false;
@@ -45,6 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private comment2Sub: Subscription;
   private authListenerSubs: Subscription;
   private followSub: Subscription;
+  private postsSub: Subscription;
   // socket.io
   public roomId: string;
   public messageText: string;
@@ -105,7 +111,8 @@ export class AppComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private commentsService: CommentsService,
     private messageNotificationService: MessageNotificationService,
-    private followService: FollowService
+    private followService: FollowService,
+    public postService: PostService
   ) {
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) =>
@@ -277,6 +284,25 @@ export class AppComponent implements OnInit, OnDestroy {
           this.newfollowerCheck = NEW2;
           console.log('Followers baby 77', this.newfollowerCheck);
         });
+      // new Shared posts
+      this.postService.getSharedPosts(this.userId, 0);
+      this.postsSub = this.postService
+        .getPostUpdateListener()
+        .subscribe((shared: Post[]) => {
+          this.sharedNew = shared;
+          const NEW3 = [];
+          this.sharedNew.forEach((e) => {
+            console.log('new f', e);
+            console.log('new g', e.viewed);
+            if (e.viewed === false) {
+              NEW3.push(e.viewed);
+            } else {
+              console.log('no new followers');
+            }
+          });
+          this.newsharedCheck = NEW3;
+          console.log('Followers baby 7777', this.newsharedCheck);
+        });
     }
 
     // update badges! on login!!
@@ -321,29 +347,49 @@ export class AppComponent implements OnInit, OnDestroy {
                 this.newMessageCheck = NEW;
                 console.log('all the way');
               });
+            // new shared Posts
+            this.postService.getSharedPosts(this.userId, 0);
+            this.postsSub = this.postService
+              .getPostUpdateListener()
+              .subscribe((shared: Post[]) => {
+                this.sharedNew = shared;
+                const NEW3 = [];
+                this.sharedNew.forEach((e) => {
+                  console.log('new f', e);
+                  console.log('new g', e.viewed);
+                  if (e.viewed === false) {
+                    NEW3.push(e.viewed);
+                  } else {
+                    console.log('no new followers');
+                  }
+                });
+                this.newsharedCheck = NEW3;
+                console.log('Followers baby 777787', this.newsharedCheck);
+
+                // new followers
+                this.followService.getMessageNotificationFollowed(this.userId);
+                this.followSub = this.followService
+                  .getInfoFollowUpdateListener()
+                  .subscribe((follower: Follow[]) => {
+                    this.follower = follower.reverse();
+                    const NEW2 = [];
+                    this.follower.forEach((e) => {
+                      console.log('new de', e);
+                      console.log('new ef', e.viewed);
+                      if (e.viewed === false) {
+                        NEW2.push(e.viewed);
+                      } else {
+                        console.log('no new followers');
+                      }
+                    });
+                    this.newfollowerCheck = NEW2;
+                    console.log('Followers baby', this.newfollowerCheck);
+                  });
+              });
             console.log('booty lucky');
           } else {
             console.log('search pg nah');
           }
-          // new followers
-          this.followService.getMessageNotificationFollowed(this.userId);
-          this.followSub = this.followService
-            .getInfoFollowUpdateListener()
-            .subscribe((follower: Follow[]) => {
-              this.follower = follower.reverse();
-              const NEW2 = [];
-              this.follower.forEach((e) => {
-                console.log('new d', e);
-                console.log('new e', e.viewed);
-                if (e.viewed === false) {
-                  NEW2.push(e.viewed);
-                } else {
-                  console.log('no new followers');
-                }
-              });
-              this.newfollowerCheck = NEW2;
-              console.log('Followers baby', this.newfollowerCheck);
-            });
         }
       }
     });
@@ -364,6 +410,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.msgsSub.unsubscribe();
     this.comment2Sub.unsubscribe();
     this.followSub.unsubscribe();
+    this.postsSub.unsubscribe();
   }
   hashTagSearch(): any {
     this.Hashtag = true;
