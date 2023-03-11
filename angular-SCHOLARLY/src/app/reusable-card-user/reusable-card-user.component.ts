@@ -228,6 +228,11 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
   onAccept(followId: string): any {
     console.log('love race', followId);
     this.followService.acceptFollow(followId);
+    this.followSub = this.followService
+      .getInfoFollowUpdateListener()
+      .subscribe((follower: Follow[]) => {
+        this.follower = follower.reverse();
+      });
   }
   onDelete(followId: string): any {
     this.followService.deleteFollowers(followId);
