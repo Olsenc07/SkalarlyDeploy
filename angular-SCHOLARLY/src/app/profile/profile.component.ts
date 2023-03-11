@@ -149,6 +149,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.followSub = this.followService
       .getInfoUpdateListener()
       .subscribe((follow: Follow[]) => {
+        console.log('follow grub', follow);
         this.follow = follow;
       });
     // Followers

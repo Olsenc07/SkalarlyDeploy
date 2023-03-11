@@ -226,6 +226,7 @@ export class FollowService {
         })
       )
       .subscribe((transformedMessage) => {
+        console.log('ganja', transformedMessage);
         this.follow = transformedMessage;
         this.followingInfoPostUpdated.next([...this.follow]);
         sub.unsubscribe();

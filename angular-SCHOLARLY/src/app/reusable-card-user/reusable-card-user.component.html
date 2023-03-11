@@ -40,7 +40,7 @@
         </div>
 
             <!-- Mutual friends appear based of username following list comparison -->
-<div class="buttonCombo" *ngIf="info.viewed == true">
+<div class="buttonCombo" >
             <div class="buttonsC">
                 <button mat-flat-button class="counterColor" (click)='onMututal(info.Following)' matTooltip="Skalars Friends"><i class="material-icons">handshake</i></button>
             </div>
@@ -50,14 +50,7 @@
             </div>
             
 </div>
-<div class="buttonCombo" *ngIf="info.viewed == false">
-    <button mat-icon-button (click)="onAccept(info.id)" matTooltip="Accept">
-    <i class="far fa-check-circle"></i>
-</button>
-<button mat-icon-button (click)='onDelete(info.id)' matTooltip="Reject">
-    <i class="far fa-times-circle"></i>
-</button>
-</div>
+
 
 
 

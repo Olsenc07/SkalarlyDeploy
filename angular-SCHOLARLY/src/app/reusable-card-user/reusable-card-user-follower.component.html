@@ -39,7 +39,7 @@
 </div>
             <!-- Mutual friends appear based of username following list comparison -->
             <!-- class="classes" -->
-<div class="buttonCombo">
+<div class="buttonCombo" *ngIf="info.viewed == true">
             <div class="buttonsC">
                 <!-- class="center__"  -->
                 <!-- class="reposts" -->
@@ -52,7 +52,14 @@
             </div>
             
 </div>
-
+<div class="buttonCombo" *ngIf="info.viewed == false">
+    <button mat-icon-button (click)="onAccept(info.id)" matTooltip="Accept">
+    <i class="far fa-check-circle"></i>
+</button>
+<button mat-icon-button (click)='onDelete(info.id)' matTooltip="Reject">
+    <i class="far fa-times-circle"></i>
+</button>
+</div>
 
 
             <!-- <div class="row1"><button mat-icon-button class="btn"><i class="far fa-check-circle green"></i></button>

@@ -336,12 +336,13 @@ await userInfo.findOne({Creator: req.query.userId})
 
 // Get following
 router.get("/followInfo", async(req, res, next) => {
+    console.log('ittl work out, ',req.query.userId)
 await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
-   
+    console.log('head to much 77', user)
  Follow.find({usernameFollower: user.username})
 .then(follows => {
-
+        console.log('head to much', follows)
     res.status(200).json({
         message: 'Follows fetched succesfully!',
         messages: follows
