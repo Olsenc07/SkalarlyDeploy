@@ -53,10 +53,10 @@
             
 </div>
 <div class="buttonCombo_" *ngIf="info.viewed == false">
-    <button mat-icon-button (click)="onAccept(info.id)" matTooltip="Accept" class="green">
+    <button mat-icon-button (click)="onAccept(info._id)" matTooltip="Accept" class="green">
     <i class="far fa-check-circle"></i>
 </button>
-<button mat-icon-button (click)='onDelete(info.id)' matTooltip="Reject" class="red">
+<button mat-icon-button (click)='onDelete(info._id)' matTooltip="Reject" class="red">
     <i class="far fa-times-circle"></i>
 </button>
 </div>
