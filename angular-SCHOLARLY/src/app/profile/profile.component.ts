@@ -128,8 +128,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         console.log('boobs');
         this.isLoading = false;
         // do this for them all!
-        this.infosSub.unsubscribe();
-        console.log('boobs awe ya!');
       });
     // Validation
     this.userIsAuthenticated = this.authService.getIsAuth();

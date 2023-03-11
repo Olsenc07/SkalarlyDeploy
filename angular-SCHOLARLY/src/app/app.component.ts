@@ -234,6 +234,8 @@ export class AppComponent implements OnInit, OnDestroy {
         .subscribe((missedNotifs: MissedNotif[]) => {
           this.notif = missedNotifs;
           console.log('notif missed', this.notif);
+          this.comment2Sub.unsubscribe();
+          console.log('notif missed 7');
         });
       // msgs
       this.messageNotificationService.getMessageNotification(this.userId);
