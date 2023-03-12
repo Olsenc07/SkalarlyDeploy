@@ -809,6 +809,7 @@ if (req.body.userId){
         time: req.body.time,
         postId: req.body.postId,
         ProfilePicPath: documents.ProfilePicPath,
+        viewed: false,
         Creator: req.body.userId
     })
     comment.save()

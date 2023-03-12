@@ -6,6 +6,7 @@ const CommentSchema = mongoose.Schema({
     time: { type: String},
     postId: { type: String},
     ProfilePicPath: { type: String},
+    viewed: {type: Boolean},
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 
