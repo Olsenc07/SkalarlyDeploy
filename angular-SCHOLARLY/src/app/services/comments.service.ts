@@ -48,6 +48,7 @@ export class CommentsService {
               time: comment.time,
               postId: comment.postId,
               ProfilePicPath: comment.ProfilePicPath,
+              viewed: comment.viewed,
               Creator: comment.Creator,
             };
           });
@@ -77,6 +78,7 @@ export class CommentsService {
               time: comment.time,
               postId: comment.postId,
               ProfilePicPath: comment.ProfilePicPath,
+              viewed: comment.viewed,
               Creator: comment.Creator,
             };
           });
@@ -160,6 +162,7 @@ export class CommentsService {
               body: comment.body,
               Follower: comment.Follower,
               postId: comment.postId,
+              viewed: comment.viewed,
               Creator: comment.Creator,
             };
           });
