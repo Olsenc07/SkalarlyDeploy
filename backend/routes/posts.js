@@ -135,7 +135,6 @@ router.get("/viewedSharedPost", async(req, res) => {
     console.log('viewed shared post', req.query.userId);
     await Post.updateMany({OriginalCreatorId: req.query.userId}, {viewed: true})
     .then(updated => {
-            console.log('hash', docs)
             res.status(200).json({
                 message: 'Shared Posts have been viewed!',
               
