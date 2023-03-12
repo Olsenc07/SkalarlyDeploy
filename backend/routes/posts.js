@@ -128,6 +128,26 @@ then(user => {
 })
  
 });
+
+
+// viewed Shared Posts
+router.get("/viewedSharedPost", async(req, res) => {
+    console.log('viewed shared post', req.query.userId);
+    await Post.updateMany({OriginalCreatorId: req.query.userId}, {viewed: true})
+    .then(updated => {
+            console.log('hash', docs)
+            res.status(200).json({
+                message: 'Shared Posts have been viewed!',
+              
+       });
+
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Shared Posts could not be viewed!'
+        });
+    });
+})
+
 // Hashtag Page
 router.get("/hashtagPage", async(req, res, next) => {
     const counter = req.query.counter;

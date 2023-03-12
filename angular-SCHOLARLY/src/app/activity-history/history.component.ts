@@ -310,12 +310,12 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
       .getPostUpdateListener()
       .subscribe((shared: Post[]) => {
         this.shared = shared;
-        
       });
   }
 
   ngOnDestroy(): any {
     this.postsSub.unsubscribe();
+    this.postService.updateSharedPosts(this.userId);
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;

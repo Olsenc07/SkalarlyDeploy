@@ -536,7 +536,38 @@ export class PostService {
         console.log('eazy 8');
       });
   }
+  // viewed shared post
+  updateSharedPosts(userId: string): any {
+    console.log('view me baby by the sky', userId);
+    const sub = this.http
+      .get<{ message: string }>(
+        'https://www.skalarly.com/api/posts/viewedSharedPost',
+        {
+          params: { userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.message;
+          // .map((data) => {
+          // return {
+          //   id: data._id,
+          //   username: data.username,
+          //   message: data.message,
+          //   time: data.time,
+          //   otherUser: data.otherUser,
+          //   you: data.you,
+          // };
+          // });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        console.log('shark', transformedMessage);
 
+        sub.unsubscribe();
+        console.log('eazy 2');
+      });
+  }
   // getting main page posts
   getPostsHashtagPage(hashtag: string, counter: number): any {
     const sub = this.http
