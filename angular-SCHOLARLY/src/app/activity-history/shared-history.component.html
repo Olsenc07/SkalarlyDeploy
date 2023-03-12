@@ -5,7 +5,7 @@
 
     </mat-chip>
     </div>
-<mat-card [ngClass]="info.viewed == false ? 'new row1_' : 'row1_'"   *ngFor="let info of shared">
+<mat-card [ngClass]="info.viewed == false ? 'row1_' : 'new row1_'"   *ngFor="let info of shared">
     <div class="column" >
         <div *ngIf="info.Title" class="Title">
        {{info.Title}}

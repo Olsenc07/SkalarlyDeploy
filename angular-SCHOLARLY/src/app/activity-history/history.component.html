@@ -98,9 +98,9 @@
 
   <mat-tab label="Shared Posts"  >
     <ng-template  mat-tab-label >
-      <mat-icon>  <i class="fas fa-share-alt"></i>
+      <mat-icon matBadge="*" matBadgeSize="large" [matBadgeHidden]="newShared.length == 0" matBadgeColor="primary">  <i class="fas fa-share-alt"></i>
        </mat-icon>
-       <div class="font" matBadge="*" [matBadgeHidden]="newShared.length == 0" matBadgeColor="primary" >Shared Posts</div>
+       <div class="font"  >Shared Posts</div>
      
      </ng-template>
      <!-- Right column -->
