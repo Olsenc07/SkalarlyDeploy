@@ -358,14 +358,14 @@
           Account Settings
           </div>
         </button>
-        <button [ngClass]="newsharedCheck.length !== 0 ? '' : 'blueActivity'"
+        <button 
         mat-menu-item
         type="button"
         routerLink="/activity-history"
         class="look-nice"
       >
       <div class="align"  >
-        <span class="material-icons d_settings" style="color: #3b70f7" >
+        <span class="material-icons d_settings" [ngClass]="newsharedCheck.length !== 0 ? 'greyActivity' : 'blueActivity'" >
           history
         </span>
         <div matBadge="!" [matBadgeHidden]="notif.length == 0" matBadgeColor="warn" >

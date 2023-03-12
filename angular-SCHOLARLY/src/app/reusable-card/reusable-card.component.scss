@@ -63,6 +63,9 @@
 .buttonCombo{
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: end;
+  align-items: center;
 }
 .counterColor{
   background-color: teal !important;
@@ -248,8 +251,9 @@ font-size: large;
 }
 .newIndicator{
   border-radius: 25px;
-  padding: 8%;
+  padding: 2%;
   color: #fff;
+  margin-right: 3%;
   background: linear-gradient(45deg,rgb(41,53,84),#04adf6);
 }
 .noPosts_{
