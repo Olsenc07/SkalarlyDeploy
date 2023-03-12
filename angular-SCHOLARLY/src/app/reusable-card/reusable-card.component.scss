@@ -246,6 +246,12 @@ justify-content: center;
   font-family: 'Cormorant Garamond', serif;
 font-size: large;
 }
+.newIndicator{
+  border-radius: 25px;
+  padding: 8%;
+  color: #fff;
+  background: linear-gradient(45deg,rgb(41,53,84),#04adf6);
+}
 .noPosts_{
   display: flex;
   flex-direction: column;
