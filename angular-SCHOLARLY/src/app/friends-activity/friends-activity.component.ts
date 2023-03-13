@@ -33,6 +33,7 @@ export class FriendsActivityComponent implements OnInit, OnDestroy {
   private mutualsSub: Subscription;
   private followSub: Subscription;
   private followSubFollowers: Subscription;
+  private userNameYo: Subscription;
 
   // infos: AuthDataInfo[] = [];
   // private infosSub: Subscription;
@@ -46,15 +47,18 @@ export class FriendsActivityComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private followService: FollowService
   ) {
-    this.followService.getsetUserNameUpdateListener().subscribe((username) => {
-      console.log('username yip', username);
-      this.UserNames = username;
-    });
+    this.userNameYo = this.followService
+      .getsetUserNameUpdateListener()
+      .subscribe((username: string) => {
+        console.log('username yip', username);
+        this.UserNames = username;
+      });
   }
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
-    // this.userIsAuthenticated = this.authService.getIsAuth();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    console.log('satisfied', this.userIsAuthenticated);
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe((isAuthenticated: boolean) => {
@@ -90,6 +94,7 @@ export class FriendsActivityComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy(): any {
+    console.log('0');
     this.authListenerSubs.unsubscribe();
     console.log('1');
     this.mutualsSub.unsubscribe();
@@ -100,5 +105,7 @@ export class FriendsActivityComponent implements OnInit, OnDestroy {
     console.log('4');
     this.followSub.unsubscribe();
     console.log('5');
+    this.userNameYo.unsubscribe();
+    console.log('6');
   }
 }
