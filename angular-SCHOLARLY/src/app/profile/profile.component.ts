@@ -41,10 +41,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   recomCounter = 0;
   countVisibility = 0;
   isLoading = false;
-  follow: Follow[] = [];
+  // follow: Follow[] = [];
   private followSub: Subscription;
 
-  followers: Follow[] = [];
+  // followers: Follow[] = [];
   private followersSub: Subscription;
 
   userId: string;
@@ -145,21 +145,21 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.showCases = showcases;
       });
     // Following
-    this.followService.getMessageNotification(this.userId);
-    this.followSub = this.followService
-      // .getInfoUpdateListener()
-      .getInfoFollowingUpdateListener()
-      .subscribe((follow: Follow[]) => {
-        console.log('follow grub', follow);
-        this.follow = follow;
-      });
+    // this.followService.getMessageNotification(this.userId);
+    // this.followSub = this.followService
+    //   // .getInfoUpdateListener()
+    //   .getInfoFollowingUpdateListener()
+    //   .subscribe((follow: Follow[]) => {
+    //     console.log('follow grub', follow);
+    //     this.follow = follow;
+    //   });
     // Followers
-    this.followService.getMessageNotificationFollowed(this.userId);
-    this.followersSub = this.followService
-      .getInfoFollowUpdateListener()
-      .subscribe((followers: Follow[]) => {
-        this.followers = followers;
-      });
+    // this.followService.getMessageNotificationFollowed(this.userId);
+    // this.followersSub = this.followService
+    //   .getInfoFollowUpdateListener()
+    //   .subscribe((followers: Follow[]) => {
+    //     this.followers = followers;
+    //   });
     // missed notifs
     this.commentsService.getMissedNotif(this.userId, 0);
     this.commentSub = this.commentsService
@@ -371,14 +371,14 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   recomCounter = 0;
   countVisibility = 0;
-  follow: Follow[] = [];
+  // follow: Follow[] = [];
   private followSub: Subscription;
   private followSubs: Subscription;
 
   private subscriptionDude: Subscription;
   private blockedsubscriptionDude: Subscription;
 
-  followers: Follow[] = [];
+  // followers: Follow[] = [];
   private followersSub: Subscription;
 
   user: string;
@@ -574,21 +574,21 @@ export class UserProfileComponent implements OnInit, OnDestroy {
               });
 
             // Following
-            this.followService.getMessageNotificationOther(id);
-            this.followSubs = this.followService
-              .getInfoUpdateListener()
-              .subscribe((follow: Follow[]) => {
-                this.follow = follow;
-              });
+            // this.followService.getMessageNotificationOther(id);
+            // this.followSubs = this.followService
+            //   .getInfoUpdateListener()
+            //   .subscribe((follow: Follow[]) => {
+            //     this.follow = follow;
+            //   });
             // Followers
-            this.followService.getMessageNotificationFollowedOther(id);
-            this.followersSub = this.followService
-              .getInfoFollowUpdateListener()
-              .subscribe((followers: Follow[]) => {
-                this.followers = followers;
-                // this one
-                console.log('lucky lucky you 7', this.followers);
-              });
+            // this.followService.getMessageNotificationFollowedOther(id);
+            // this.followersSub = this.followService
+            //   .getInfoFollowUpdateListener()
+            //   .subscribe((followers: Follow[]) => {
+            //     this.followers = followers;
+            //     // this one
+            //     console.log('lucky lucky you 7', this.followers);
+            //   });
 
             this.showCaseService.getShowCase(id, 0);
             this.infosSubShowCase = this.showCaseService
