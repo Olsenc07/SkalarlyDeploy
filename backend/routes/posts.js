@@ -180,9 +180,12 @@ router.get("/hashtagPage", async(req, res, next) => {
 
 router.get("/sharedPosts", async(req, res) => {
     const counter = req.query.counter;
-    const userId = req.query.userId
+    const userId = req.query.userId;
+    console.log('night and day', userId)
 await Post.find({OriginalCreatorId: userId}).sort({_id:-1}).skip(counter).limit(6)
 .then(docs => {
+    console.log('night and day 2.0', docs)
+
     res.status(200).json({
         message: 'Posts shared fetched succesfully!',
         posts: docs

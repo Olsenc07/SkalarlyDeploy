@@ -380,17 +380,18 @@ export class AppComponent implements OnInit, OnDestroy {
                   if (e.viewed === false) {
                     NEW3.push(e.viewed);
                   } else {
-                    console.log('no new followers');
+                    console.log('no new shared posts');
                   }
                 });
                 this.newsharedCheck = NEW3;
-                console.log('Followers baby 777787', this.newsharedCheck);
+                console.log('Shared posts baby 777787', this.newsharedCheck);
               });
             // new Comment
             this.commentsService.getCommentsHistory(this.userId, 0);
             this.commentSub = this.commentsService
               .getMessagesUpdateListenerHistory()
               .subscribe((comments: any) => {
+                console.log('fake love', comments);
                 this.comments = comments;
                 const NEW7 = [];
                 this.comments.forEach((e) => {
@@ -400,8 +401,9 @@ export class AppComponent implements OnInit, OnDestroy {
                     console.log('no unread comments');
                   }
                 });
-                this.newComment = NEW7;
                 console.log('new Gold', this.newComment);
+
+                this.newComment = NEW7;
               });
             // new followers
             this.followService.getMessageNotificationFollowed(this.userId);
