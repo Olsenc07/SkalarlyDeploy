@@ -2337,7 +2337,6 @@ export class AuthService {
     clearTimeout(this.tokenTimer);
     this.clearAuthData();
     this.router.navigate(['/login']);
-    location.reload();
   }
 
   private setAuthTimer(duration: number): any {
