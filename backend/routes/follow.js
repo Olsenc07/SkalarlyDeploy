@@ -589,35 +589,78 @@ router.get("/followingInfo", async(req, res, next) => {
         })
     })
     })
-// follower deleting
-router.delete("/unFollower/:id", (req, res, next ) => {
-    Follow.deleteOne({_id: req.params.id}).then(result => {
-        if (result){
-        res.status(200).json({message: 'unfollowed!'});
-        } else {
-            res.status(401).json({message: 'Not unfollowed'});
-        }
-    })
-    .catch(error => {
+// follower deleting 
+router.delete("/unFollower/:id", async(req, res, next ) => {
+await Follow.findOne({_id: req.params.id})
+.then(found => {
+    userInfo.updateOne({username: found.usernameFollower}, {$inc: {Following: -1}})
+    .then(updateFollowing => {
+        console.log('step one');
+    userInfo.updateOne({username: found.Following}, {$inc: {Followers: -1}})
+    .then(final => {
+        console.log('step two');
+        Follow.deleteOne({_id: req.params.id}).then(result => {
+            if (result){
+            res.status(200).json({message: 'unfollowed!'});
+            } else {
+                res.status(401).json({message: 'Not unfollowed'});
+            }
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Deleting follower failed!'
+            });
+        });
+    }) .catch(error => {
         res.status(500).json({
-            message: 'Fetching showCases failed!'
+            message: 'Updating Followers failed!'
+        });
+    });
+
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Updating Following failed!'
+        });
+    });
+})
+
+    
+});
+// following deleting add decreasing increments
+router.delete("/unFollow/:id", async(req, res, next ) => {
+    await Follow.findOne({_id: req.params.id})
+.then(found => {
+    userInfo.updateOne({username: found.usernameFollower}, {$inc: {Following: -1}})
+    .then(updateFollowing => {
+        console.log('step oneyo');
+    userInfo.updateOne({username: found.Following}, {$inc: {Followers: -1}})
+    .then(final => {
+        console.log('step twoyo');
+        Follow.deleteOne({_id: req.params.id}).then(result => {
+            if (result){
+            res.status(200).json({message: 'unfollowed!'});
+            } else {
+                res.status(401).json({message: 'Not unfollowed'});
+            }
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching showCases failed!'
+            });
+        });
+    }) .catch(error => {
+        res.status(500).json({
+            message: 'Updating Followers failed!'
+        });
+    });
+
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Updating Following failed!'
         });
     });
 });
-// following deleting
-router.delete("/unFollow/:id", (req, res, next ) => {
-    Follow.deleteOne({_id: req.params.id}).then(result => {
-        if (result){
-        res.status(200).json({message: 'unfollowed!'});
-        } else {
-            res.status(401).json({message: 'Not unfollowed'});
-        }
-    })
-    .catch(error => {
-        res.status(500).json({
-            message: 'Fetching showCases failed!'
-        });
-    });
+
 });
 
 // following deleting form user profile pg
