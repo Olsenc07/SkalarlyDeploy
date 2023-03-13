@@ -240,6 +240,9 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
   recomCounter = 0;
   countVisibility = 0;
   private followSub: Subscription;
+  private sub1: Subscription;
+  private sub2: Subscription;
+
   constructor(
     private authService: AuthService,
     private followService: FollowService,
@@ -261,6 +264,8 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): any {
     this.followSub.unsubscribe();
+    this.sub1.unsubscribe();
+    this.sub2.unsubscribe();
   }
   // Forward
   onClickFeed(): any {
@@ -273,12 +278,11 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
       this.userId,
       this.recomCounter
     );
-    const sub1 = this.followService
+    this.sub1 = this.followService
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
       });
-    sub1.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -291,12 +295,11 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
       this.userId,
       this.recomCounter
     );
-    const sub2 = this.followService
+    this.sub2 = this.followService
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
       });
-    sub2.unsubscribe();
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -316,7 +319,8 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
   shared: Post[] = [];
 
   private postsSub: Subscription;
-
+  private sub1: Subscription;
+  private sub2: Subscription;
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -336,6 +340,8 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.postsSub.unsubscribe();
     this.postService.updateSharedPosts(this.userId);
+    this.sub1.unsubscribe();
+    this.sub2.unsubscribe();
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -357,9 +363,11 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
     this.recomCounter += counting;
 
     this.postService.getSharedPosts(this.userId, this.recomCounter);
-    this.postService.getPostUpdateListener().subscribe((shared: Post[]) => {
-      this.shared = shared;
-    });
+    this.sub1 = this.postService
+      .getPostUpdateListener()
+      .subscribe((shared: Post[]) => {
+        this.shared = shared;
+      });
   }
   // Back
   onClickFeedBack(): any {
@@ -369,10 +377,12 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
     this.recomCounter -= counting;
 
     this.postService.getSharedPosts(this.userId, this.recomCounter);
-    this.postService.getPostUpdateListener().subscribe((shared: Post[]) => {
-      this.shared = shared;
-      console.log('shared', this.shared);
-    });
+    this.sub2 = this.postService
+      .getPostUpdateListener()
+      .subscribe((shared: Post[]) => {
+        this.shared = shared;
+        console.log('shared', this.shared);
+      });
   }
 }
 @Component({

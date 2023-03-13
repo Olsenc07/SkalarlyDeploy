@@ -209,7 +209,7 @@ router.delete("/unblockSkalarActivity", async(req, res) => {
 // post
 router.get("/infoFollow", async(req, res, next) => {
     const subscription = req.body;
-    console.log('follow occured',subscription)
+    console.log('follow occured', subscription)
 await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
     userInfo.findOne({username: req.query.username })
@@ -228,10 +228,19 @@ await userInfo.findOne({Creator: req.query.userId})
                 viewed: false
             })
             FOLLOW.save().then(createdFollow => {
-                res.status(200).json({
-                    message: 'Follow succesful!',
-                    messages: createdFollow
-                });
+                 //update follower count
+     userInfo.updateOne({username: req.query.username },{$inc: {Followers: 1}})
+     .then(updatedFollower => {
+        console.log('updatedFollower',updatedFollower)
+        res.status(200).json({
+            message: 'Follow succesful!',
+            messages: createdFollow
+        });
+     }).catch(err => {
+        return res.status(401).json({
+            message: "Invalid increment follower error!"})
+                })
+              
 // If user is subscribed then send notififaction S.W
 try{
     console.log('better off with her', otherUserId.id)
@@ -286,6 +295,7 @@ if(checking !== null){
     return res.status(401).json({
         message: "Invalid following error!"})
             })
+    
 })
 .catch(err => {
     return res.status(401).json({

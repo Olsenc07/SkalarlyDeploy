@@ -393,8 +393,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   posts: Post[] = [];
   private postsSub: Subscription;
+  private postsSub2: Subscription;
   private followSubsBtn: Subscription;
   private followSubsBlocked: Subscription;
+  private sub: Subscription;
+  private sub2: Subscription;
   info: AuthDataInfo = {};
   private infosSub: Subscription;
   // img popup
@@ -622,6 +625,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.infosSub.unsubscribe();
     this.followSubsBtn.unsubscribe();
     this.followSubsBlocked.unsubscribe();
+    this.sub.unsubscribe();
+    this.sub2.unsubscribe();
+    this.postsSub.unsubscribe();
+    this.postsSub2.unsubscribe();
     console.log('u have been de stroyed');
   }
 
@@ -694,7 +701,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.recomCounter += counting;
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
-    this.route.queryParams.subscribe((params) => {
+    this.sub = this.route.queryParams.subscribe((params) => {
       this.user = params.id;
       const id = this.user;
       this.showCaseService.getShowCase(id, this.recomCounter);
@@ -705,7 +712,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
           this.isLoading = false;
           console.log('posts personal back', this.posts);
         });
-      this.postsSub.unsubscribe();
     });
   }
   // Back
@@ -720,14 +726,13 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.user = params.id;
       const id = this.user;
       this.showCaseService.getShowCase(id, this.recomCounter);
-      this.postsSub = this.showCaseService
+      this.postsSub2 = this.showCaseService
         .getshowCaseUpdateListener()
         .subscribe((showcases: ShowCase[]) => {
           this.showCases = showcases;
           this.isLoading = false;
           console.log('posts personal back', this.posts);
         });
-      this.postsSub.unsubscribe();
     });
   }
   // ngOnDestroy(): any {
