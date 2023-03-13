@@ -507,7 +507,7 @@ export class FollowService {
         params: { userName, userId },
       })
       .subscribe(() => {
-        console.log('rog;er cleared here');
+        console.log('roger cleared here');
         // const updatedPosts = this.follow.filter((post) => post.id !== userId);
         // this.follow = updatedPosts;
         // this.followPostUpdated.next([...this.follow]);
@@ -519,13 +519,13 @@ export class FollowService {
     // console.log('hey chase postId', postId);
     const sub = this.http
       .delete('https://www.skalarly.com/api/follow/unFollower/' + followId)
-      .subscribe(() => {
-        console.log('not getting younger', this.follower);
-        const updatedPosts = this.follower.filter(
-          (post) => post.id !== followId
-        );
-        console.log('hollywood whore', updatedPosts);
-        this.follower = updatedPosts;
+      .subscribe((newList) => {
+        // console.log('not getting younger', this.follower);
+        // const updatedPosts = this.follower.filter(
+        //   (post) => post.id !== followId
+        // );
+        console.log('hollywood whore', newList);
+        this.follower = newList;
         this.followerPostUpdated.next([...this.follower]);
         sub.unsubscribe();
         console.log('rich and famous baby 13');

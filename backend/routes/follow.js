@@ -593,24 +593,33 @@ router.get("/followingInfo", async(req, res, next) => {
 router.delete("/unFollower/:id", async(req, res, next ) => {
 await Follow.findOne({_id: req.params.id})
 .then(found => {
+    console.log('next shit', found)
     userInfo.updateOne({username: found.usernameFollower}, {$inc: {Following: -1}})
     .then(updateFollowing => {
         console.log('step one');
     userInfo.updateOne({username: found.Following}, {$inc: {Followers: -1}})
     .then(final => {
-        console.log('step two');
-        Follow.deleteOne({_id: req.params.id}).then(result => {
-            if (result){
-            res.status(200).json({message: 'unfollowed!'});
-            } else {
-                res.status(401).json({message: 'Not unfollowed'});
-            }
-        })
-        .catch(error => {
-            res.status(500).json({
-                message: 'Deleting follower failed!'
+        Follow.find({Following: found.username})
+        .then(follows => {
+            Follow.deleteOne({_id: req.params.id}).then(result => {
+                if (result){
+                res.status(200).json({
+                    message: 'Follows fetched succesfully! and unfollowed',
+                    messages: follows
+                });
+                } else {
+                    res.status(401).json({message: 'Not unfollowed'});
+                }
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Deleting follower failed!'
+                });
             });
-        });
+          
+        })
+        console.log('step two');
+     
     }) .catch(error => {
         res.status(500).json({
             message: 'Updating Followers failed!'

@@ -94,18 +94,11 @@ export class FriendsActivityComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy(): any {
-    console.log('0');
     this.authListenerSubs.unsubscribe();
-    console.log('1');
     this.mutualsSub.unsubscribe();
-    console.log('2');
     this.mutualSub.unsubscribe();
-    console.log('3');
     this.followSubFollowers.unsubscribe();
-    console.log('4');
     this.followSub.unsubscribe();
-    console.log('5');
     this.userNameYo.unsubscribe();
-    console.log('6');
   }
 }
