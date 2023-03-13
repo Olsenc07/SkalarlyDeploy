@@ -148,9 +148,9 @@ router.get("/viewedSharedPost", async(req, res) => {
 })
 // viewed comments on  Posts
 router.get("/viewedCommentsPost", async(req, res) => {
-    console.log('viewed shared post', req.query.userId);
+    console.log('viewed shared comments', req.query.userId);
     // update comments that match ur post ids u made
-await Post.find({_id: req.query.userId}).
+await Post.find({Creator: req.query.userId}).
 then(postsMade => {
     console.log('postsMade', postsMade);
     let involvedPosts = [];
