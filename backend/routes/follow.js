@@ -46,11 +46,20 @@ await userInfo.findOne({username: username})
         .then(deleted => {
             if(deleted){
             console.log('deleted', deleted);
-            }
-            res.status(200).json({
-                message: 'Skalar following you has been removed!',
-                messages: true
-            });
+            // update increments
+            userInfo.updateOne({username: deleted.usernameFollower}, {$inc: {Following: -1}})
+            .then(updateFollowing => {
+                console.log('step one');
+            userInfo.updateOne({username: deleted.Following}, {$inc: {Followers: -1}})
+            .then(final => {
+                console.log('step two');
+            })
+        })    
+        }
+        res.status(200).json({
+            message: 'Skalar following you has been removed!',
+            messages: true
+        });
         }).catch(error => {
             res.status(500).json({
                 message: 'deleting skalar failed!'
