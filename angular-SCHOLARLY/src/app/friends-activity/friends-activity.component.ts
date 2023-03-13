@@ -54,10 +54,11 @@ export class FriendsActivityComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
-    this.userIsAuthenticated = this.authService.getIsAuth();
+    // this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
+      .subscribe((isAuthenticated: boolean) => {
+        console.log('authed hmm?', isAuthenticated);
         this.userIsAuthenticated = isAuthenticated;
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
@@ -90,9 +91,14 @@ export class FriendsActivityComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): any {
     this.authListenerSubs.unsubscribe();
+    console.log('1');
     this.mutualsSub.unsubscribe();
+    console.log('2');
     this.mutualSub.unsubscribe();
+    console.log('3');
     this.followSubFollowers.unsubscribe();
+    console.log('4');
     this.followSub.unsubscribe();
+    console.log('5');
   }
 }
