@@ -232,10 +232,20 @@ await userInfo.findOne({Creator: req.query.userId})
      userInfo.updateOne({username: req.query.username },{$inc: {Followers: 1}})
      .then(updatedFollower => {
         console.log('updatedFollower',updatedFollower)
-        res.status(200).json({
-            message: 'Follow succesful!',
-            messages: createdFollow
-        });
+        userInfo.updateOne({Creator: req.query.userId}, {$inc: {Following: 1}} )
+        .then(final => {
+        console.log('updatedFollowing',final)
+
+            res.status(200).json({
+                message: 'Follow succesful!',
+                messages: createdFollow
+            });
+        })
+        .catch(err => {
+            return res.status(401).json({
+                message: "Invalid increment following error!"})
+                    })
+      
      }).catch(err => {
         return res.status(401).json({
             message: "Invalid increment follower error!"})
@@ -624,7 +634,14 @@ console.log('userId', person);
 
         if (result){
             console.log('it worked', result);
-        res.status(200).json({message: 'unfollowed!'});
+            userInfo.updateOne({userName: userName}, {$inc: {Followers: -1}} )
+            .then(updateUrFollowing =>{
+                userInfo.updateOne({Creator: person}, {$inc: {Following: -1}} )
+                .then(final => {
+                    console.log('made it to New York')
+                    res.status(200).json({message: 'unfollowed!'});
+                })
+            })
         } else {
             res.status(401).json({message: 'Not unfollowed'});
         }
