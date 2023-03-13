@@ -146,7 +146,42 @@ router.get("/viewedSharedPost", async(req, res) => {
         });
     });
 })
+// viewed comments on  Posts
+router.get("/viewedCommentsPost", async(req, res) => {
+    console.log('viewed shared post', req.query.userId);
+    // update comments that match ur post ids u made
+await Post.find({_id: req.query.userId}).
+then(postsMade => {
+    console.log('postsMade', postsMade);
+    let involvedPosts = [];
+    postsMade.forEach((e) => {
+        console.log('away', e._id)
+        involvedPosts.push(e._id)
 
+    })
+    console.log('involved posts', involvedPosts);
+    // last step
+    Comment.updateMany({postId : involvedPosts}, {viewed: true})
+    .then(updated => {
+        console.log('updated on me', updated);
+            res.status(200).json({
+                message: 'Comments on Posts have been viewed!',
+              
+       });
+
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Comments on Posts could not be viewed!'
+        });
+    });
+}).catch(error => {
+    res.status(500).json({
+        message: 'Comments on posts could not be found'
+    });
+});
+
+    
+})
 // Hashtag Page
 router.get("/hashtagPage", async(req, res, next) => {
     const counter = req.query.counter;

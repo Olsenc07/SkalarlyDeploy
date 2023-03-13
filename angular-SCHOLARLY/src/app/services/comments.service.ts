@@ -91,6 +91,38 @@ export class CommentsService {
         console.log('love you 2');
       });
   }
+  // viewed comments on posts
+  updateCommentsPosts(userId: string): any {
+    console.log('view me baby by the sky with diamonds', userId);
+    const sub = this.http
+      .get<{ message: string }>(
+        'https://www.skalarly.com/api/posts/viewedCommentsPost',
+        {
+          params: { userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.message;
+          // .map((data) => {
+          // return {
+          //   id: data._id,
+          //   username: data.username,
+          //   message: data.message,
+          //   time: data.time,
+          //   otherUser: data.otherUser,
+          //   you: data.you,
+          // };
+          // });
+        })
+      )
+      .subscribe((transformedMessage) => {
+        console.log('shark tank', transformedMessage);
+
+        sub.unsubscribe();
+        console.log('eazy 27 g eazy');
+      });
+  }
   createComment(
     body: string,
     userId: string,

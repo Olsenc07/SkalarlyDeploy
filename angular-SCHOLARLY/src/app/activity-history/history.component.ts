@@ -194,7 +194,7 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): any {
     this.commentsSub.unsubscribe();
-    // this.commentsSub.updateCommentsPosts(this.userId);
+    this.commentsService.updateCommentsPosts(this.userId);
   }
   // Forward
   onClickFeed(): any {
