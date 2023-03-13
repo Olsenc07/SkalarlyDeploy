@@ -666,7 +666,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onLogout(): void {
-    location.reload();
     this.authService.logout();
   }
 
