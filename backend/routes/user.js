@@ -618,6 +618,8 @@ router.post("/info",
             CodePursuing12: req.body.CodePursuing12,
             CodePursuing13: req.body.CodePursuing13,
             CodePursuing14: req.body.CodePursuing14,
+            Followers: 0,
+            Following: 0,
             ProfilePicPath: result.secure_url,
             cloudinary_id: result.public_id,
             Creator: req.userData.userId

@@ -242,8 +242,6 @@ export class AuthService {
     CodePursuing12: string,
     CodePursuing13: string,
     CodePursuing14: string,
-    Followers: number,
-    Following: number,
     profilePic: File,
     Creator?: string
   ): any {
@@ -392,8 +390,6 @@ export class AuthService {
             CodePursuing13,
             CodePursuing14,
             profilePic,
-            Followers,
-            Following,
             ProfilePicPath: responseData.post.ProfilePicPath,
             Creator,
           };
