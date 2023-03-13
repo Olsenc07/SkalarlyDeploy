@@ -202,8 +202,8 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        sub1.unsubscribe();
       });
-    sub1.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -217,8 +217,8 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        sub2.unsubscribe();
       });
-    sub2.unsubscribe();
   }
   navToPost(postId: string): any {
     this.router.navigate(['/single/:'], { queryParams: { postId } });
@@ -264,8 +264,6 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): any {
     this.followSub.unsubscribe();
-    this.sub1.unsubscribe();
-    this.sub2.unsubscribe();
   }
   // Forward
   onClickFeed(): any {
@@ -282,6 +280,7 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
+        this.sub1.unsubscribe();
       });
   }
   // Back
@@ -299,6 +298,7 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
       .getInfoFollowUpdateListenerHistory()
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
+        this.sub2.unsubscribe();
       });
   }
   navigateToPage(infoUser: string): any {
@@ -340,8 +340,6 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.postsSub.unsubscribe();
     this.postService.updateSharedPosts(this.userId);
-    this.sub1.unsubscribe();
-    this.sub2.unsubscribe();
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -367,6 +365,7 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
       .getPostUpdateListener()
       .subscribe((shared: Post[]) => {
         this.shared = shared;
+        this.sub1.unsubscribe();
       });
   }
   // Back
@@ -381,6 +380,8 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
       .getPostUpdateListener()
       .subscribe((shared: Post[]) => {
         this.shared = shared;
+        this.sub2.unsubscribe();
+
         console.log('shared', this.shared);
       });
   }

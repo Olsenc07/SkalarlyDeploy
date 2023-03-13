@@ -678,32 +678,13 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       FollowingId,
       this.time
     );
-    this.authService.getOtherInfo(this.id);
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: any) => {
-        console.log('Gods close', infos);
-        // this.infos = [];
-        // console.log('Gods close 2', this.infos);
-        this.info = infos;
-        console.log('Gods close love you', infos);
-      });
+
     // });
   }
   onUnfololow(userName: string): any {
     this.FOLLOWingYo = 'false';
     this.followService.deleteFollowUserPg(userName, this.userId);
     console.log('chaz whats up homie gg', userName);
-    this.authService.getOtherInfo(this.id);
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: any) => {
-        console.log('Gods close', infos);
-        // this.infos = [];
-        // console.log('Gods close 2', this.infos);
-        this.info = infos;
-        console.log('Gods close love you', infos);
-      });
   }
   skalarMsg(username: string): void {
     console.log('username', username);
