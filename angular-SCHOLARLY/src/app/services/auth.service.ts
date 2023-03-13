@@ -30,7 +30,7 @@ export class AuthService {
   private userNameUpdated = new Subject();
   private userNameId: boolean;
 
-  private emailUsedUpdated = new ReplaySubject();
+  private emailUsedUpdated = new Subject();
   private emailUsedId: boolean;
 
   private blocked = new Subject<string>();

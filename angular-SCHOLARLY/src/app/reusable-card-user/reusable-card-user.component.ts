@@ -56,7 +56,7 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
+      .subscribe((isAuthenticated: boolean) => {
         this.userIsAuthenticated = isAuthenticated;
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
@@ -79,11 +79,10 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): any {
     console.log('breaking here?');
-    this.authListenerSubs.unsubscribe();
+    // this.authListenerSubs.unsubscribe();
     this.followSub.unsubscribe();
     this.delSub.unsubscribe();
     console.log('breaking here???');
-
   }
 
   sendDataFollowing(event: any): any {
@@ -202,7 +201,6 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
     this.followSub3.unsubscribe();
     this.delSub.unsubscribe();
     console.log('breaking here? yo hmm');
-
   }
 
   sendDataFollowers(event: any): any {
