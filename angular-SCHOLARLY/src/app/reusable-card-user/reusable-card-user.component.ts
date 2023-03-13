@@ -78,9 +78,12 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy(): any {
+    console.log('breaking here?');
     this.authListenerSubs.unsubscribe();
     this.followSub.unsubscribe();
     this.delSub.unsubscribe();
+    console.log('breaking here???');
+
   }
 
   sendDataFollowing(event: any): any {
@@ -192,11 +195,14 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy(): any {
+    console.log('breaking here? yo');
     this.authListenerSubs.unsubscribe();
     this.followSub.unsubscribe();
     this.followSub2.unsubscribe();
     this.followSub3.unsubscribe();
     this.delSub.unsubscribe();
+    console.log('breaking here? yo hmm');
+
   }
 
   sendDataFollowers(event: any): any {
