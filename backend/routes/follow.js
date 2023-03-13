@@ -47,10 +47,11 @@ await userInfo.findOne({username: username})
             if(deleted){
             console.log('deleted', deleted);
             // update increments
-            userInfo.updateOne({username: deleted.usernameFollower}, {$inc: {Following: -1}})
+            userInfo.updateOne({username: UserId.username}, {$inc: {Following: -1}})
             .then(updateFollowing => {
                 console.log('step one');
-            userInfo.updateOne({username: deleted.Following}, {$inc: {Followers: -1}})
+                // update ur followers increment -1
+            userInfo.updateOne({Creator: userIdYo}, {$inc: {Followers: -1}})
             .then(final => {
                 console.log('step two');
             })
