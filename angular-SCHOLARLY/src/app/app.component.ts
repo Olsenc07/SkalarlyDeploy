@@ -251,7 +251,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.comment2Sub = this.commentsService
         .getMissedNotifUpdateListener()
         .subscribe((missedNotifs: MissedNotif[]) => {
-          if (missedNotifs) {
+          if (missedNotifs.length > 0) {
             this.notif = missedNotifs;
             console.log('notif missed 678', this.notif);
           } else {
@@ -263,7 +263,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.msgsSub = this.messageNotificationService
         .getListenerNotification()
         .subscribe((messagesNotif: Message[]) => {
-          if (messagesNotif) {
+          if (messagesNotif.length > 0) {
             this.newMsg = messagesNotif.reverse();
             const NEW = [];
             this.newMsg.forEach((e) => {
@@ -285,7 +285,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.commentSub = this.commentsService
         .getMessagesUpdateListenerHistory()
         .subscribe((comments: any) => {
-          if (comments) {
+          if (comments.length > 0) {
             this.comments = comments;
             const NEW7 = [];
             this.comments.forEach((e) => {
@@ -306,7 +306,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.followSub = this.followService
         .getInfoFollowUpdateListener()
         .subscribe((follower: Follow[]) => {
-          if (follower) {
+          if (follower.length > 0) {
             this.follower = follower.reverse();
             const NEW2 = [];
             this.follower.forEach((e) => {
@@ -329,7 +329,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.postsSub = this.postService
         .getPostSharedUpdateListener()
         .subscribe((shared: Post[]) => {
-          if (shared) {
+          if (shared.length > 0) {
             this.sharedNew = shared;
             const NEW3 = [];
             this.sharedNew.forEach((e) => {
@@ -368,7 +368,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.commentSub2 = this.commentsService
               .getMissedNotifUpdateListener()
               .subscribe((missedNotifs: MissedNotif[]) => {
-                if (missedNotifs) {
+                if (missedNotifs.length > 0) {
                   this.notif = missedNotifs;
                   console.log('notif missed', this.notif);
                 } else {
@@ -381,7 +381,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.msgNotifSub = this.messageNotificationService
               .getListenerNotification()
               .subscribe((messagesNotif: Message[]) => {
-                if (messagesNotif) {
+                if (messagesNotif.length > 0) {
                   this.newMsg = messagesNotif.reverse();
                   const NEW = [];
                   this.newMsg.forEach((e) => {
