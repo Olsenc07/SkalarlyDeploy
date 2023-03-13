@@ -625,8 +625,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.infosSub.unsubscribe();
     this.followSubsBtn.unsubscribe();
     this.followSubsBlocked.unsubscribe();
-    this.postsSub.unsubscribe();
-    this.postsSub2.unsubscribe();
     console.log('u have been de stroyed');
   }
 
