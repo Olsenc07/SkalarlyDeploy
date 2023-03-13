@@ -518,7 +518,14 @@ export class FollowService {
   deleteFollowers(followId: string): any {
     // console.log('hey chase postId', postId);
     const sub = this.http
-      .delete('https://www.skalarly.com/api/follow/unFollower/' + followId)
+      .delete<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/follow/unFollower/' + followId
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
       .subscribe((newList) => {
         // console.log('not getting younger', this.follower);
         // const updatedPosts = this.follower.filter(
