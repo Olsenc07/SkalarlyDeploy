@@ -327,7 +327,7 @@ export class AppComponent implements OnInit, OnDestroy {
       // new Shared posts
       this.postService.getSharedPosts(this.userId, 0);
       this.postsSub = this.postService
-        .getPostUpdateListener()
+        .getPostSharedUpdateListener()
         .subscribe((shared: Post[]) => {
           if (shared) {
             this.sharedNew = shared;
@@ -400,9 +400,9 @@ export class AppComponent implements OnInit, OnDestroy {
             // new shared Posts
             this.postService.getSharedPosts(this.userId, 0);
             this.postsSub = this.postService
-              .getPostUpdateListener()
+              .getPostSharedUpdateListener()
               .subscribe((shared: Post[]) => {
-                if (shared) {
+                if (shared.length > 0) {
                   console.log('if shared', shared);
                   this.sharedNew = shared;
                   const NEW3 = [];
@@ -430,7 +430,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.commentSub = this.commentsService
               .getMessagesUpdateListenerHistory()
               .subscribe((comments: any) => {
-                if (comments) {
+                if (comments.length > 0) {
                   console.log('fake love', comments);
                   this.comments = comments;
                   const NEW7 = [];
@@ -453,7 +453,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.followSub2 = this.followService
               .getInfoFollowUpdateListener()
               .subscribe((follower: Follow[]) => {
-                if (follower) {
+                if (follower.length > 0) {
                   this.follower = follower.reverse();
                   const NEW2 = [];
                   this.follower.forEach((e) => {

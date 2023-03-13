@@ -51,6 +51,8 @@ export interface Post {
 export class PostService {
   private posts: Post[] = [];
   private postsUpdated = new Subject<Post[]>();
+  private postsSharedUpdated = new Subject<Post[]>();
+
   private trendNumber: number;
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
@@ -60,6 +62,15 @@ export class PostService {
 
   getTrendNumber(): number {
     return this.trendNumber;
+  }
+  getPostUpdateListener(): any {
+    return this.postsUpdated.asObservable();
+  }
+  getPostSharedUpdateListener(): any {
+    return this.postsSharedUpdated.asObservable();
+  }
+  getCountUpdateListener(): any {
+    return this.countUpdated.asObservable();
   }
   getPosts(): any {
     const sub = this.http
@@ -166,7 +177,7 @@ export class PostService {
       .subscribe((transformedPosts) => {
         console.log('love me better', transformedPosts);
         this.posts = transformedPosts;
-        this.postsUpdated.next([...this.posts]);
+        this.postsSharedUpdated.next([...this.posts]);
         sub.unsubscribe();
         console.log('eazy 15');
       });
@@ -695,12 +706,7 @@ export class PostService {
         console.log('eazy 5');
       });
   }
-  getPostUpdateListener(): any {
-    return this.postsUpdated.asObservable();
-  }
-  getCountUpdateListener(): any {
-    return this.countUpdated.asObservable();
-  }
+
   // Adding post
   addPost(
     userId: string,
