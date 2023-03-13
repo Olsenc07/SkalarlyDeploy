@@ -493,7 +493,7 @@ export class FollowService {
       .subscribe(() => {
         const updatedPosts = this.follow.filter((post) => post.id !== followId);
         this.follow = updatedPosts;
-        this.followPostUpdated.next([...this.follow]);
+        this.followingInfoPostUpdated.next([...this.follow]);
         sub.unsubscribe();
         console.log('rich and famous baby 12');
       });

@@ -83,7 +83,7 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
           if (e.viewed === false) {
             NEW2.push(e.viewed);
           } else {
-            console.log('no unread messages');
+            console.log('no unread comments');
           }
         });
         this.newComment = NEW2;

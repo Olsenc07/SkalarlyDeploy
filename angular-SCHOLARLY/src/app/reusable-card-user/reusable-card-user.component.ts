@@ -80,6 +80,7 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.authListenerSubs.unsubscribe();
     this.followSub.unsubscribe();
+    this.delSub.unsubscribe();
   }
 
   sendDataFollowing(event: any): any {
@@ -118,7 +119,7 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
     this.followService.deleteFollow(followId);
     console.log('chaz whats up homie g', followId);
     this.delSub = this.followService
-      .getInfoUpdateListener()
+      .getInfoFollowingUpdateListener()
       .subscribe((follow: Follow[]) => {
         if (follow) {
           this.follow = follow.reverse();
@@ -127,7 +128,6 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
           this.follow = [];
         }
       });
-    this.delSub.unsubscribe();
   }
   onMututal(username: string): any {
     console.log('chaz whats up homie k', username);
