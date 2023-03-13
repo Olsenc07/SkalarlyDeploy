@@ -332,7 +332,7 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
     // Posts
     this.postService.getSharedPosts(this.userId, 0);
     this.postsSub = this.postService
-      .getPostUpdateListener()
+      .getPostSharedUpdateListener()
       .subscribe((shared: Post[]) => {
         this.shared = shared;
       });
@@ -363,7 +363,7 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
 
     this.postService.getSharedPosts(this.userId, this.recomCounter);
     this.sub1 = this.postService
-      .getPostUpdateListener()
+      .getPostSharedUpdateListener()
       .subscribe((shared: Post[]) => {
         this.shared = shared;
         this.sub1.unsubscribe();
@@ -378,7 +378,7 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
 
     this.postService.getSharedPosts(this.userId, this.recomCounter);
     this.sub2 = this.postService
-      .getPostUpdateListener()
+      .getPostSharedUpdateListener()
       .subscribe((shared: Post[]) => {
         this.shared = shared;
         this.sub2.unsubscribe();
