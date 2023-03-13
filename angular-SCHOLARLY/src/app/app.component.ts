@@ -54,6 +54,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private comment2Sub: Subscription;
   private authListenerSubs: Subscription;
   private followSub: Subscription;
+  private followSub2: Subscription;
   private postsSub: Subscription;
   // socket.io
   public roomId: string;
@@ -388,7 +389,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
                 // new followers
                 this.followService.getMessageNotificationFollowed(this.userId);
-                this.followSub = this.followService
+                this.followSub2 = this.followService
                   .getInfoFollowUpdateListener()
                   .subscribe((follower: Follow[]) => {
                     this.follower = follower.reverse();
@@ -424,12 +425,14 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log('crystal meth');
   }
   ngOnDestroy(): any {
+    this.authListenerSubs.unsubscribe();
     this.msgNotifSub.unsubscribe();
     this.commentSub.unsubscribe();
     this.searchSub.unsubscribe();
     this.msgsSub.unsubscribe();
     this.comment2Sub.unsubscribe();
     this.followSub.unsubscribe();
+    this.followSub2.unsubscribe();
     this.postsSub.unsubscribe();
   }
   hashTagSearch(): any {

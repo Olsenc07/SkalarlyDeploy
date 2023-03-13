@@ -365,6 +365,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 })
 export class UserProfileComponent implements OnInit, OnDestroy {
   isLoading = true;
+  id: string;
   userId: string;
   blockList: boolean;
   FOLLOWingYo = 'false';
@@ -526,10 +527,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.user = params.id;
     });
     console.log('call me when u land', this.user);
-    const id = this.user;
+    this.id = this.user;
     this.userId = this.authService.getUserId();
     // check if skalars viewing has been blocked
-    this.authService.checkBlocked(this.userId, id);
+    this.authService.checkBlocked(this.userId, this.id);
     this.blockedsubscriptionDude = this.authService
       .getBlocked()
       .subscribe((BLOCKED: string) => {
@@ -547,7 +548,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
               });
           } else {
             // on blocked list?
-            this.followService.getBlockedListOne(id, this.userId);
+            this.followService.getBlockedListOne(this.id, this.userId);
             this.followSubsBlocked = this.followService
               .getblockListOneListener()
               .subscribe((booleanYo: boolean) => {
@@ -558,7 +559,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
                 }
               });
             // If following
-            this.followService.getFollowingNotification(id, this.userId);
+            this.followService.getFollowingNotification(this.id, this.userId);
             this.followSubsBtn = this.followService
               .getInfoFollowingBtnUpdateListener()
               .subscribe((following: string) => {
@@ -590,7 +591,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             //     console.log('lucky lucky you 7', this.followers);
             //   });
 
-            this.showCaseService.getShowCase(id, 0);
+            this.showCaseService.getShowCase(this.id, 0);
             this.infosSubShowCase = this.showCaseService
               .getshowCaseUpdateListener()
               .subscribe((showcases: ShowCase[]) => {
@@ -599,8 +600,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
                 this.isLoading = false;
               });
             // Infos
-            console.log('shouting voices', id);
-            this.authService.getOtherInfo(id);
+            console.log('shouting voices', this.id);
+            this.authService.getOtherInfo(this.id);
             this.infosSub = this.authService
               .getInfoUpdateListener()
               .subscribe((infos: any) => {
@@ -667,22 +668,42 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
   followClicked(username: string): any {
     this.FOLLOWingYo = 'true';
-    this.route.queryParams.subscribe((params) => {
-      this.user = params.id;
-      const FollowingId = this.user;
-      this.followService.postInfoFollow(this.userId, username, FollowingId);
-      this.followService.postInfoFollowHistory(
-        this.userId,
-        username,
-        FollowingId,
-        this.time
-      );
-    });
+    // this.route.queryParams.subscribe((params) => {
+
+    const FollowingId = this.id;
+    this.followService.postInfoFollow(this.userId, username, FollowingId);
+    this.followService.postInfoFollowHistory(
+      this.userId,
+      username,
+      FollowingId,
+      this.time
+    );
+    this.authService.getOtherInfo(this.id);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: any) => {
+        console.log('Gods close', infos);
+        // this.infos = [];
+        // console.log('Gods close 2', this.infos);
+        this.info = infos;
+        console.log('Gods close love you', infos);
+      });
+    // });
   }
   onUnfololow(userName: string): any {
     this.FOLLOWingYo = 'false';
     this.followService.deleteFollowUserPg(userName, this.userId);
     console.log('chaz whats up homie gg', userName);
+    this.authService.getOtherInfo(this.id);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: any) => {
+        console.log('Gods close', infos);
+        // this.infos = [];
+        // console.log('Gods close 2', this.infos);
+        this.info = infos;
+        console.log('Gods close love you', infos);
+      });
   }
   skalarMsg(username: string): void {
     console.log('username', username);
