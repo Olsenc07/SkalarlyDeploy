@@ -608,7 +608,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
                 // this.infos = [];
                 // console.log('Gods close 2', this.infos);
                 this.info = infos;
-                this.infosSub.unsubscribe();
                 console.log('Gods close love you', infos);
               });
           }

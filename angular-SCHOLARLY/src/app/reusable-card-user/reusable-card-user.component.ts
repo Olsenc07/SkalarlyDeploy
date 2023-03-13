@@ -79,9 +79,8 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): any {
     console.log('breaking here?');
-    // this.authListenerSubs.unsubscribe();
-    this.followSub.unsubscribe();
-    this.delSub.unsubscribe();
+    // keep hashed out or error occurs
+    this.authListenerSubs.unsubscribe();
     console.log('breaking here???');
   }
 
@@ -107,6 +106,7 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
       .subscribe((follow: Follow[]) => {
         this.follow = follow.reverse();
         this.isLoading = false;
+        this.followSub.unsubscribe();
       });
     // }
   }
@@ -125,8 +125,10 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
         if (follow) {
           this.follow = follow.reverse();
           this.isLoading = false;
+          this.delSub.unsubscribe();
         } else {
           this.follow = [];
+          this.delSub.unsubscribe();
         }
       });
   }
@@ -157,8 +159,6 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
   private followSub: Subscription;
   private followSub2: Subscription;
   private followSub3: Subscription;
-
-  private followSubFollowers: Subscription;
 
   constructor(
     private authService: AuthService,
