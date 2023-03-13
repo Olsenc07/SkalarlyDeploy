@@ -1,11 +1,10 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { ReplaySubject, Subject, Subscription } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AppRoutingModule } from '../app-routing.module';
 
 export interface Follow {
   id: string;

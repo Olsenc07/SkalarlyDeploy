@@ -194,10 +194,8 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
       });
   }
   ngOnDestroy(): any {
-    console.log('breaking here? yo');
     this.authListenerSubs.unsubscribe();
     this.followSub.unsubscribe();
-    console.log('breaking here? yo hmm');
   }
 
   sendDataFollowers(event: any): any {
@@ -240,7 +238,6 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
       .subscribe((follower: Follow[]) => {
         this.follower = follower.reverse();
         this.followSub3.unsubscribe();
-
         console.log('haha', this.follower);
       });
   }
@@ -252,8 +249,8 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
       .getInfoFollowUpdateListener()
       .subscribe((follower: Follow[]) => {
         this.follower = follower.reverse();
-        this.isLoading = false;
         this.delSub.unsubscribe();
+        console.log('haha 2.0', this.follower);
       });
   }
   onMututal(username: string): any {
