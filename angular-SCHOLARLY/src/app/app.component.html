@@ -334,8 +334,8 @@
               class="b_up"
               matBadge="!" [matBadgeHidden]="(notif.length == 0) " matBadgeColor="warn" 
             >
-              <mat-icon *ngIf="(newsharedCheck.length && newComment.length) == 0" class="settings">settings</mat-icon>
-              <mat-icon *ngIf="(newsharedCheck.length || newComment.length)!== 0" class="settingsNew">settings</mat-icon>
+              <!-- <mat-icon *ngIf="(newsharedCheck.length && newComment.length) == 0" class="settings">settings</mat-icon> -->
+              <mat-icon [ngClass]="(newsharedCheck.length || newComment.length)!== 0 ? 'settingsNew' : 'settings'" >settings</mat-icon>
 
             </button>
 

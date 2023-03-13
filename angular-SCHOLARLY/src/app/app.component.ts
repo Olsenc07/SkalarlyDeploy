@@ -52,9 +52,11 @@ export class AppComponent implements OnInit, OnDestroy {
   private searchSub: Subscription;
   private msgsSub: Subscription;
   private comment2Sub: Subscription;
+  private commentSub2: Subscription;
   private authListenerSubs: Subscription;
   private followSub: Subscription;
   private followSub2: Subscription;
+
   private postsSub: Subscription;
   // socket.io
   public roomId: string;
@@ -236,7 +238,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
+      .subscribe((isAuthenticated: boolean) => {
         this.userIsAuthenticated = isAuthenticated;
         // this.userId = this.authService.getUserId();
         // Can add *ngIf="userIsAuthenticated" to hide items
@@ -342,7 +344,7 @@ export class AppComponent implements OnInit, OnDestroy {
             console.log('made it baby');
             // broken subscription link
             this.commentsService.getMissedNotif(this.userId, 0);
-            this.commentSub = this.commentsService
+            this.commentSub2 = this.commentsService
               .getMissedNotifUpdateListener()
               .subscribe((missedNotifs: MissedNotif[]) => {
                 this.notif = missedNotifs;
@@ -428,6 +430,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authListenerSubs.unsubscribe();
     this.msgNotifSub.unsubscribe();
     this.commentSub.unsubscribe();
+    this.commentSub2.unsubscribe();
     this.searchSub.unsubscribe();
     this.msgsSub.unsubscribe();
     this.comment2Sub.unsubscribe();
