@@ -666,8 +666,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onLogout(): void {
-    this.authService.logout();
     location.reload();
+    this.authService.logout();
   }
 
   // Missing link to fix search icon movement i hope
