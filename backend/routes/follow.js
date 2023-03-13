@@ -599,7 +599,7 @@ await Follow.findOne({_id: req.params.id})
         console.log('step one');
     userInfo.updateOne({username: found.Following}, {$inc: {Followers: -1}})
     .then(final => {
-        Follow.find({Following: found.username})
+        Follow.find({Following: found.Following})
         .then(follows => {
             Follow.deleteOne({_id: req.params.id}).then(result => {
                 if (result){
