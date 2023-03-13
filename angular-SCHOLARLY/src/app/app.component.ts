@@ -251,77 +251,104 @@ export class AppComponent implements OnInit, OnDestroy {
       this.comment2Sub = this.commentsService
         .getMissedNotifUpdateListener()
         .subscribe((missedNotifs: MissedNotif[]) => {
-          this.notif = missedNotifs;
-          console.log('notif missed 678', this.notif);
+          if (missedNotifs) {
+            this.notif = missedNotifs;
+            console.log('notif missed 678', this.notif);
+          } else {
+            console.log(' no notif missed 678');
+          }
         });
       // msgs
       this.messageNotificationService.getMessageNotification(this.userId);
       this.msgsSub = this.messageNotificationService
         .getListenerNotification()
         .subscribe((messagesNotif: Message[]) => {
-          this.newMsg = messagesNotif.reverse();
-          const NEW = [];
-          this.newMsg.forEach((e) => {
-            console.log('new b', e);
-            console.log('new c', e.viewed);
-            if (e.viewed === false) {
-              NEW.push(e.viewed);
-            } else {
-              console.log('no unread messages');
-            }
-          });
-          this.newMessageCheck = NEW;
+          if (messagesNotif) {
+            this.newMsg = messagesNotif.reverse();
+            const NEW = [];
+            this.newMsg.forEach((e) => {
+              console.log('new b', e);
+              console.log('new c', e.viewed);
+              if (e.viewed === false) {
+                NEW.push(e.viewed);
+              } else {
+                console.log('no unread messages');
+              }
+            });
+            this.newMessageCheck = NEW;
+          } else {
+            console.log('no unread messages 2.0');
+          }
         });
       // new Comment
       this.commentsService.getCommentsHistory(this.userId, 0);
       this.commentSub = this.commentsService
         .getMessagesUpdateListenerHistory()
         .subscribe((comments: any) => {
-          this.comments = comments;
-          const NEW7 = [];
-          this.comments.forEach((e) => {
-            if (e.viewed === false) {
-              NEW7.push(e.viewed);
-            } else {
-              console.log('no unread comments');
-            }
-          });
-          this.newComment = NEW7;
-          console.log('new Gold', this.newComment);
+          console.log('comments keaton', comments);
+          if (comments) {
+            this.comments = comments;
+            const NEW7 = [];
+            this.comments.forEach((e) => {
+              if (e.viewed === false) {
+                NEW7.push(e.viewed);
+              } else {
+                console.log('no unread comments');
+              }
+            });
+            this.newComment = NEW7;
+            console.log('new Gold', this.newComment);
+          } else {
+            console.log('no unread comments 2.0');
+          }
         });
       // new followers
       this.followService.getMessageNotificationFollowed(this.userId);
       this.followSub = this.followService
         .getInfoFollowUpdateListener()
         .subscribe((follower: Follow[]) => {
-          this.follower = follower.reverse();
-          const NEW2 = [];
-          this.follower.forEach((e) => {
-            if (e.viewed === false) {
-              NEW2.push(e.viewed);
-            } else {
-              console.log('no new followers');
-            }
-          });
-          this.newfollowerCheck = NEW2;
-          console.log('Followers baby 77', this.newfollowerCheck);
+          console.log('follower keaton', follower);
+          if (follower) {
+            this.follower = follower.reverse();
+            const NEW2 = [];
+            this.follower.forEach((e) => {
+              if (e.viewed === false) {
+                NEW2.push(e.viewed);
+              } else {
+                console.log('no new followers');
+              }
+            });
+            console.log('Followers baby 76', NEW2);
+
+            this.newfollowerCheck = NEW2;
+            console.log('Followers baby 77', this.newfollowerCheck);
+          } else {
+            console.log('no new followers 2.0');
+          }
         });
       // new Shared posts
       this.postService.getSharedPosts(this.userId, 0);
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((shared: Post[]) => {
-          this.sharedNew = shared;
-          const NEW3 = [];
-          this.sharedNew.forEach((e) => {
-            if (e.viewed === false) {
-              NEW3.push(e.viewed);
-            } else {
-              console.log('no new followers');
-            }
-          });
-          this.newsharedCheck = NEW3;
-          console.log('Followers baby 7777', this.newsharedCheck);
+          console.log('angel', shared);
+          if (shared) {
+            this.sharedNew = shared;
+            const NEW3 = [];
+            this.sharedNew.forEach((e) => {
+              if (e.viewed === false) {
+                NEW3.push(e.viewed);
+              } else {
+                console.log('no new followers');
+              }
+            });
+            console.log('Followers baby 77890', NEW3);
+
+            this.newsharedCheck = NEW3;
+            console.log('Followers baby 7777', this.newsharedCheck);
+          } else {
+            console.log('no new followers 2.0');
+          }
         });
     }
 
@@ -344,8 +371,12 @@ export class AppComponent implements OnInit, OnDestroy {
             this.commentSub2 = this.commentsService
               .getMissedNotifUpdateListener()
               .subscribe((missedNotifs: MissedNotif[]) => {
-                this.notif = missedNotifs;
-                console.log('notif missed', this.notif);
+                if (missedNotifs) {
+                  this.notif = missedNotifs;
+                  console.log('notif missed', this.notif);
+                } else {
+                  console.log('nope notif missed');
+                }
               });
 
             // msgs
@@ -353,76 +384,96 @@ export class AppComponent implements OnInit, OnDestroy {
             this.msgNotifSub = this.messageNotificationService
               .getListenerNotification()
               .subscribe((messagesNotif: Message[]) => {
-                this.newMsg = messagesNotif.reverse();
-
-                const NEW = [];
-                this.newMsg.forEach((e) => {
-                  if (e.viewed === false) {
-                    NEW.push(e.viewed);
-                  } else {
-                    console.log('no unread messages');
-                  }
-                });
-
-                this.newMessageCheck = NEW;
-                console.log('all the way');
+                if (messagesNotif) {
+                  this.newMsg = messagesNotif.reverse();
+                  const NEW = [];
+                  this.newMsg.forEach((e) => {
+                    if (e.viewed === false) {
+                      NEW.push(e.viewed);
+                    } else {
+                      console.log('no unread messages');
+                    }
+                  });
+                  this.newMessageCheck = NEW;
+                  console.log('all the way', this.newMessageCheck);
+                } else {
+                  console.log('no unread messages 2.0');
+                }
               });
             // new shared Posts
             this.postService.getSharedPosts(this.userId, 0);
             this.postsSub = this.postService
               .getPostUpdateListener()
               .subscribe((shared: Post[]) => {
-                this.sharedNew = shared;
-                const NEW3 = [];
-                this.sharedNew.forEach((e) => {
-                  console.log('new f', e);
-                  console.log('new g', e.viewed);
-                  if (e.viewed === false) {
-                    NEW3.push(e.viewed);
-                  } else {
-                    console.log('no new shared posts');
-                  }
-                });
-                this.newsharedCheck = NEW3;
-                console.log('Shared posts baby 777787', this.newsharedCheck);
+                if (shared) {
+                  console.log('if shared', shared);
+                  this.sharedNew = shared;
+                  const NEW3 = [];
+                  this.sharedNew.forEach((e) => {
+                    console.log('new f', e);
+                    console.log('new g', e.viewed);
+                    if (e.viewed === false) {
+                      NEW3.push(e.viewed);
+                    } else {
+                      console.log('no new shared posts');
+                    }
+                  });
+                  console.log('Shared posts baby backed up', NEW3);
+                  this.newsharedCheck = NEW3;
+                  console.log(
+                    'Shared posts baby 777787325',
+                    this.newsharedCheck
+                  );
+                } else {
+                  console.log('no new shared posts 2.0');
+                }
               });
             // new Comment
             this.commentsService.getCommentsHistory(this.userId, 0);
             this.commentSub = this.commentsService
               .getMessagesUpdateListenerHistory()
               .subscribe((comments: any) => {
-                console.log('fake love', comments);
-                this.comments = comments;
-                const NEW7 = [];
-                this.comments.forEach((e) => {
-                  if (e.viewed === false) {
-                    NEW7.push(e.viewed);
-                  } else {
-                    console.log('no unread comments');
-                  }
-                });
-                console.log('new Gold', this.newComment);
-
-                this.newComment = NEW7;
+                if (comments) {
+                  console.log('fake love', comments);
+                  this.comments = comments;
+                  const NEW7 = [];
+                  this.comments.forEach((e) => {
+                    if (e.viewed === false) {
+                      NEW7.push(e.viewed);
+                    } else {
+                      console.log('no unread comments');
+                    }
+                  });
+                  console.log('new Gold', NEW7);
+                  this.newComment = NEW7;
+                  console.log('new Gold 2.0', this.newComment);
+                } else {
+                  console.log('no unread comments 2.0');
+                }
               });
             // new followers
             this.followService.getMessageNotificationFollowed(this.userId);
             this.followSub2 = this.followService
               .getInfoFollowUpdateListener()
               .subscribe((follower: Follow[]) => {
-                this.follower = follower.reverse();
-                const NEW2 = [];
-                this.follower.forEach((e) => {
-                  console.log('new de', e);
-                  console.log('new ef', e.viewed);
-                  if (e.viewed === false) {
-                    NEW2.push(e.viewed);
-                  } else {
-                    console.log('no new followers');
-                  }
-                });
-                this.newfollowerCheck = NEW2;
-                console.log('Followers baby', this.newfollowerCheck);
+                if (follower) {
+                  this.follower = follower.reverse();
+                  const NEW2 = [];
+                  this.follower.forEach((e) => {
+                    console.log('new de', e);
+                    console.log('new ef', e.viewed);
+                    if (e.viewed === false) {
+                      NEW2.push(e.viewed);
+                    } else {
+                      console.log('no new followers');
+                    }
+                  });
+                  console.log('Followers baby', NEW2);
+                  this.newfollowerCheck = NEW2;
+                  console.log('Followers baby 2.0', this.newfollowerCheck);
+                } else {
+                  console.log('no new followers 2.0');
+                }
               });
 
             console.log('booty lucky');
