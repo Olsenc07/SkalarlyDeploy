@@ -106,7 +106,6 @@ export class ReusableCardUserComponent implements OnInit, OnDestroy {
         this.follow = follow.reverse();
         this.isLoading = false;
       });
-    this.followSub.unsubscribe();
     // }
   }
 

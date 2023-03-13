@@ -74,6 +74,8 @@ export interface AuthDataInfo {
   CodePursuing12?: string;
   CodePursuing13?: string;
   CodePursuing14?: string;
+  Followers?: number;
+  Following?: number;
   profilePic?: File;
   ProfilePicPath?: string;
 }

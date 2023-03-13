@@ -242,6 +242,8 @@ export class AuthService {
     CodePursuing12: string,
     CodePursuing13: string,
     CodePursuing14: string,
+    Followers: number,
+    Following: number,
     profilePic: File,
     Creator?: string
   ): any {
@@ -390,6 +392,8 @@ export class AuthService {
             CodePursuing13,
             CodePursuing14,
             profilePic,
+            Followers,
+            Following,
             ProfilePicPath: responseData.post.ProfilePicPath,
             Creator,
           };
@@ -1992,6 +1996,8 @@ export class AuthService {
               CodePursuing13: info.CodePursuing13,
               CodePursuing14: info.CodePursuing14,
               ProfilePicPath: info.ProfilePicPath,
+              Followers: info.Followers,
+              Following: info.Following,
               // ShowCasePath: info.ShowCasePath,
               Creator: info.Creator,
             };
@@ -2176,6 +2182,8 @@ export class AuthService {
               CodePursuing12: info.CodePursuing12,
 
               ProfilePicPath: info.ProfilePicPath,
+              Followers: info.Followers,
+              Following: info.Following,
               // ShowCasePath: info.ShowCasePath,
               Creator: info.Creator,
             };
