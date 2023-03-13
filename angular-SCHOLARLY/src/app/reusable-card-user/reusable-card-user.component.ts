@@ -245,6 +245,7 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
     this.followService.deleteFollowers(followId);
     console.log('chaz whats up homie gunit', followId);
     this.followService.getMessageNotificationFollowed(this.userId);
+    console.log('heart shape');
     this.delSub = this.followService
       .getInfoFollowUpdateListener()
       .subscribe((follower: Follow[]) => {

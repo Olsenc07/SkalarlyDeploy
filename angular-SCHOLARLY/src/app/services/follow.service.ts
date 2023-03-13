@@ -247,6 +247,7 @@ export class FollowService {
       )
       .subscribe((transformedMessage) => {
         this.follower = transformedMessage;
+        console.log('delete nicely', this.follower);
         this.followerPostUpdated.next([...this.follower]);
         sub.unsubscribe();
         console.log('rich and famous baby 2');
@@ -519,9 +520,11 @@ export class FollowService {
     const sub = this.http
       .delete('https://www.skalarly.com/api/follow/unFollower/' + followId)
       .subscribe(() => {
+        console.log('not getting younger', this.follower);
         const updatedPosts = this.follower.filter(
           (post) => post.id !== followId
         );
+        console.log('hollywood whore', updatedPosts);
         this.follower = updatedPosts;
         this.followerPostUpdated.next([...this.follower]);
         sub.unsubscribe();
