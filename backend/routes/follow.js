@@ -287,7 +287,7 @@ if(checking !== null){
             message: '',
             time: '',
             body: '',
-            Follower: user.username,
+            Follower: req.query.username,
             postId: req.query.userId,
             Creator: req.query.userId
 
