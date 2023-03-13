@@ -101,19 +101,23 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
     // shared
     this.postService.getSharedPosts(this.userId, 0);
     this.postsSub = this.postService
-      .getPostUpdateListener()
+      .getPostSharedUpdateListener()
       .subscribe((shared: Post[]) => {
-        this.shared = shared;
-        const NEW = [];
-        this.shared.forEach((e) => {
-          if (e.viewed === false) {
-            NEW.push(e.viewed);
-          } else {
-            console.log('no unread messages');
-          }
-        });
-        this.newShared = NEW;
-        console.log('new Gold', this.newShared);
+        if (shared.length > 0) {
+          this.shared = shared;
+          const NEW = [];
+          this.shared.forEach((e) => {
+            if (e.viewed === false) {
+              NEW.push(e.viewed);
+            } else {
+              console.log('no unread messages');
+            }
+          });
+          this.newShared = NEW;
+          console.log('new Gold', this.newShared);
+        } else {
+          console.log('no unread messages 2.0');
+        }
       });
 
     // missed notifs
@@ -190,6 +194,7 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): any {
     this.commentsSub.unsubscribe();
+    // this.commentsSub.updateCommentsPosts(this.userId);
   }
   // Forward
   onClickFeed(): any {
@@ -334,6 +339,7 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
     this.postsSub = this.postService
       .getPostSharedUpdateListener()
       .subscribe((shared: Post[]) => {
+        console.log('whats going on', shared);
         this.shared = shared;
       });
   }
