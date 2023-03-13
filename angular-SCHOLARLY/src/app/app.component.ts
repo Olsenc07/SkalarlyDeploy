@@ -437,6 +437,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.followSub.unsubscribe();
     this.followSub2.unsubscribe();
     this.postsSub.unsubscribe();
+    console.log('your touch');
   }
   hashTagSearch(): any {
     this.Hashtag = true;
@@ -601,6 +602,17 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   onLogout(): void {
+    this.authListenerSubs.unsubscribe();
+    this.msgNotifSub.unsubscribe();
+    this.commentSub.unsubscribe();
+    this.commentSub2.unsubscribe();
+    this.searchSub.unsubscribe();
+    this.msgsSub.unsubscribe();
+    this.comment2Sub.unsubscribe();
+    this.followSub.unsubscribe();
+    this.followSub2.unsubscribe();
+    this.postsSub.unsubscribe();
+    console.log('understand now');
     this.authService.logout();
   }
 
