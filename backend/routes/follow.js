@@ -599,26 +599,33 @@ await Follow.findOne({_id: req.params.id})
         console.log('step one');
     userInfo.updateOne({username: found.Following}, {$inc: {Followers: -1}})
     .then(final => {
-        Follow.find({Following: found.Following})
-        .then(follows => {
+        console.log('step two');
+        
             Follow.deleteOne({_id: req.params.id}).then(result => {
                 if (result){
+                    Follow.find({Following: found.Following})
+        .then(follows => {
+            console.log('who u following', follows)
+
                 res.status(200).json({
                     message: 'Follows fetched succesfully! and unfollowed',
                     messages: follows
                 });
-                } else {
-                    res.status(401).json({message: 'Not unfollowed'});
-                }
+               
             })
             .catch(error => {
                 res.status(500).json({
                     message: 'Deleting follower failed!'
                 });
             });
-          
-        })
-        console.log('step two');
+        } else {
+            res.status(401).json({message: 'Not unfollowed'});
+        }
+        }).catch(error => {
+            res.status(500).json({
+                message: 'Finding new followers failed!'
+            });
+        });
      
     }) .catch(error => {
         res.status(500).json({
