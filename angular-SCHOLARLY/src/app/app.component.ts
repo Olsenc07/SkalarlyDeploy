@@ -252,7 +252,7 @@ export class AppComponent implements OnInit, OnDestroy {
         .getMissedNotifUpdateListener()
         .subscribe((missedNotifs: MissedNotif[]) => {
           this.notif = missedNotifs;
-          console.log('notif missed', this.notif);
+          console.log('notif missed 678', this.notif);
         });
       // msgs
       this.messageNotificationService.getMessageNotification(this.userId);
@@ -273,6 +273,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.newMessageCheck = NEW;
         });
       // new Comment
+      this.commentsService.getCommentsHistory(this.userId, 0);
       this.commentSub = this.commentsService
         .getMessagesUpdateListenerHistory()
         .subscribe((comments: any) => {
@@ -296,8 +297,6 @@ export class AppComponent implements OnInit, OnDestroy {
           this.follower = follower.reverse();
           const NEW2 = [];
           this.follower.forEach((e) => {
-            console.log('new d', e);
-            console.log('new e', e.viewed);
             if (e.viewed === false) {
               NEW2.push(e.viewed);
             } else {
@@ -315,8 +314,6 @@ export class AppComponent implements OnInit, OnDestroy {
           this.sharedNew = shared;
           const NEW3 = [];
           this.sharedNew.forEach((e) => {
-            console.log('new f', e);
-            console.log('new g', e.viewed);
             if (e.viewed === false) {
               NEW3.push(e.viewed);
             } else {
@@ -388,27 +385,44 @@ export class AppComponent implements OnInit, OnDestroy {
                 });
                 this.newsharedCheck = NEW3;
                 console.log('Followers baby 777787', this.newsharedCheck);
-
-                // new followers
-                this.followService.getMessageNotificationFollowed(this.userId);
-                this.followSub2 = this.followService
-                  .getInfoFollowUpdateListener()
-                  .subscribe((follower: Follow[]) => {
-                    this.follower = follower.reverse();
-                    const NEW2 = [];
-                    this.follower.forEach((e) => {
-                      console.log('new de', e);
-                      console.log('new ef', e.viewed);
-                      if (e.viewed === false) {
-                        NEW2.push(e.viewed);
-                      } else {
-                        console.log('no new followers');
-                      }
-                    });
-                    this.newfollowerCheck = NEW2;
-                    console.log('Followers baby', this.newfollowerCheck);
-                  });
               });
+            // new Comment
+            this.commentsService.getCommentsHistory(this.userId, 0);
+            this.commentSub = this.commentsService
+              .getMessagesUpdateListenerHistory()
+              .subscribe((comments: any) => {
+                this.comments = comments;
+                const NEW7 = [];
+                this.comments.forEach((e) => {
+                  if (e.viewed === false) {
+                    NEW7.push(e.viewed);
+                  } else {
+                    console.log('no unread comments');
+                  }
+                });
+                this.newComment = NEW7;
+                console.log('new Gold', this.newComment);
+              });
+            // new followers
+            this.followService.getMessageNotificationFollowed(this.userId);
+            this.followSub2 = this.followService
+              .getInfoFollowUpdateListener()
+              .subscribe((follower: Follow[]) => {
+                this.follower = follower.reverse();
+                const NEW2 = [];
+                this.follower.forEach((e) => {
+                  console.log('new de', e);
+                  console.log('new ef', e.viewed);
+                  if (e.viewed === false) {
+                    NEW2.push(e.viewed);
+                  } else {
+                    console.log('no new followers');
+                  }
+                });
+                this.newfollowerCheck = NEW2;
+                console.log('Followers baby', this.newfollowerCheck);
+              });
+
             console.log('booty lucky');
           } else {
             console.log('search pg nah');

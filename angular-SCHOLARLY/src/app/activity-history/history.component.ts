@@ -74,6 +74,7 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
     this.userId = this.authService.getUserId();
     this.snackBar.dismiss();
     // comments
+    this.commentsService.getCommentsHistory(this.userId, 0);
     this.commentSub = this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: any) => {
