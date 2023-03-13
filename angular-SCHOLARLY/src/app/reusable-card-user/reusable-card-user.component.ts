@@ -197,9 +197,6 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
     console.log('breaking here? yo');
     this.authListenerSubs.unsubscribe();
     this.followSub.unsubscribe();
-    this.followSub2.unsubscribe();
-    this.followSub3.unsubscribe();
-    this.delSub.unsubscribe();
     console.log('breaking here? yo hmm');
   }
 
@@ -225,6 +222,7 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
       .subscribe((follower: Follow[]) => {
         this.follower = follower.reverse();
         this.isLoading = false;
+        this.followSub2.unsubscribe();
       });
     // }
   }
@@ -241,6 +239,8 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
       .getInfoFollowUpdateListener()
       .subscribe((follower: Follow[]) => {
         this.follower = follower.reverse();
+        this.followSub3.unsubscribe();
+
         console.log('haha', this.follower);
       });
   }
@@ -253,6 +253,7 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
       .subscribe((follower: Follow[]) => {
         this.follower = follower.reverse();
         this.isLoading = false;
+        this.delSub.unsubscribe();
       });
   }
   onMututal(username: string): any {

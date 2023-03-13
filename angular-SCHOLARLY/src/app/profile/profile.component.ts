@@ -133,7 +133,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
+      .subscribe((isAuthenticated: boolean) => {
         this.userIsAuthenticated = isAuthenticated;
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
@@ -187,8 +187,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.infosSub.unsubscribe();
     this.authListenerSubs.unsubscribe();
     this.postsSub.unsubscribe();
-    this.followSub.unsubscribe();
-    this.followersSub.unsubscribe();
+    // this.followSub.unsubscribe();
+    // this.followersSub.unsubscribe();
     this.commentSub.unsubscribe();
   }
 
@@ -618,14 +618,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.subscriptionDude.unsubscribe();
     this.blockedsubscriptionDude.unsubscribe();
-    this.followersSub.unsubscribe();
+    // this.followersSub.unsubscribe();
     this.infosSubShowCase.unsubscribe();
-    this.followSubs.unsubscribe();
+    // this.followSubs.unsubscribe();
     this.infosSub.unsubscribe();
     this.followSubsBtn.unsubscribe();
     this.followSubsBlocked.unsubscribe();
-    this.sub.unsubscribe();
-    this.sub2.unsubscribe();
     this.postsSub.unsubscribe();
     this.postsSub2.unsubscribe();
     console.log('u have been de stroyed');
@@ -709,8 +707,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         .subscribe((showcases: ShowCase[]) => {
           this.showCases = showcases;
           this.isLoading = false;
+          this.postsSub.unsubscribe();
           console.log('posts personal back', this.posts);
         });
+      this.sub.unsubscribe();
     });
   }
   // Back
@@ -721,7 +721,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.recomCounter -= counting;
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
-    this.route.queryParams.subscribe((params) => {
+    this.sub2 = this.route.queryParams.subscribe((params) => {
       this.user = params.id;
       const id = this.user;
       this.showCaseService.getShowCase(id, this.recomCounter);
@@ -730,14 +730,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         .subscribe((showcases: ShowCase[]) => {
           this.showCases = showcases;
           this.isLoading = false;
+          this.postsSub2.unsubscribe();
           console.log('posts personal back', this.posts);
         });
+      this.sub2.unsubscribe();
     });
   }
-  // ngOnDestroy(): any {
-  //   this.postsSub.unsubscribe();
-  //   // this.authListenerSubs.unsubscribe();
-  // }
 }
 
 @Component({
