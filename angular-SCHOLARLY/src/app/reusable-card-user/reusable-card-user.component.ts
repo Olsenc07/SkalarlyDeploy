@@ -153,6 +153,9 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
 
   follower: Follow[] = [];
   private followSub: Subscription;
+  private followSub2: Subscription;
+  private followSub3: Subscription;
+
   private followSubFollowers: Subscription;
 
   constructor(
@@ -191,6 +194,9 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.authListenerSubs.unsubscribe();
     this.followSub.unsubscribe();
+    this.followSub2.unsubscribe();
+    this.followSub3.unsubscribe();
+    this.delSub.unsubscribe();
   }
 
   sendDataFollowers(event: any): any {
@@ -210,13 +216,12 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
     //   this.followSub.unsubscribe();
     // } else {
     this.followService.filterFollowers(this.userId, matchSpaces.trim());
-    this.followSub = this.followService
+    this.followSub2 = this.followService
       .getInfoFollowUpdateListener()
       .subscribe((follower: Follow[]) => {
         this.follower = follower.reverse();
         this.isLoading = false;
       });
-    this.followSub.unsubscribe();
     // }
   }
 
@@ -228,7 +233,7 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
     console.log('love race', followId);
     this.followService.acceptFollow(followId);
     this.followService.getMessageNotificationFollowed(this.userId);
-    this.followSub = this.followService
+    this.followSub3 = this.followService
       .getInfoFollowUpdateListener()
       .subscribe((follower: Follow[]) => {
         this.follower = follower.reverse();
@@ -245,7 +250,6 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
         this.follower = follower.reverse();
         this.isLoading = false;
       });
-    this.delSub.unsubscribe();
   }
   onMututal(username: string): any {
     this.followService.mutualFollow(username, this.userId);
@@ -269,7 +273,6 @@ export class ReusableCardMessageComponent implements OnInit, OnDestroy {
   isLoading = false;
 
   messagesNotif: Message[] = [];
-  private datasSub: Subscription;
   private msgNotifSub: Subscription;
   constructor(
     private authService: AuthService,
@@ -292,13 +295,14 @@ export class ReusableCardMessageComponent implements OnInit, OnDestroy {
         this.messagesNotif = messagesNotif.reverse();
         console.log('should be viewed', this.messagesNotif);
       });
-    this.msgNotifSub.unsubscribe();
 
     // have now viewed these messages
     // get triggered once pg is left
     // its not getting called
   }
-  ngOnDestroy(): any {}
+  ngOnDestroy(): any {
+    this.msgNotifSub.unsubscribe();
+  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
