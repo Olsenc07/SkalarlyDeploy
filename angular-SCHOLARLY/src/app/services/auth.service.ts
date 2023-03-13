@@ -19,7 +19,7 @@ export class AuthService {
   private userId: string;
   private postId: string;
 
-  private authStatusListener = new Subject<boolean>();
+  private authStatusListener = new ReplaySubject<boolean>();
 
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new Subject<AuthDataInfo[]>();
