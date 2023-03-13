@@ -6,7 +6,10 @@ import { Observable, Subscription } from 'rxjs';
 import { filter, map, tap } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { PostsService, UserNames } from './services/posts.service';
-import { MissedNotif } from './activity-history/history.component';
+import {
+  CommentInterface,
+  MissedNotif,
+} from './activity-history/history.component';
 import { CommentsService } from './services/comments.service';
 import { Message } from './services/messages.service';
 import { MessageNotificationService } from './services/messagesNotifications.service';
@@ -22,13 +25,14 @@ export class AppComponent implements OnInit, OnDestroy {
   users: UserNames[] = [];
   public hashs = [];
   notif: MissedNotif[] = [];
+  comments: CommentInterface[] = [];
   sharedNew: Post[] = [];
 
   newMsg = [];
   newMessageCheck = [];
   newfollowerCheck = [];
   newsharedCheck = [];
-
+  newComment = [];
   follower: Follow[] = [];
   postClicked = false;
   commentClicked = false;
@@ -264,6 +268,22 @@ export class AppComponent implements OnInit, OnDestroy {
             }
           });
           this.newMessageCheck = NEW;
+        });
+      // new Comment
+      this.commentSub = this.commentsService
+        .getMessagesUpdateListenerHistory()
+        .subscribe((comments: any) => {
+          this.comments = comments;
+          const NEW7 = [];
+          this.comments.forEach((e) => {
+            if (e.viewed === false) {
+              NEW7.push(e.viewed);
+            } else {
+              console.log('no unread comments');
+            }
+          });
+          this.newComment = NEW7;
+          console.log('new Gold', this.newComment);
         });
       // new followers
       this.followService.getMessageNotificationFollowed(this.userId);

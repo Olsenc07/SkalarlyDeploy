@@ -96,8 +96,6 @@ export class CommentsService {
     userId: string,
     time: string,
     postId: string
-
-    // parentId: null | string
   ): any {
     const messageOrg = {
       body,
@@ -116,7 +114,10 @@ export class CommentsService {
             id: responseData.messages.id,
             body,
             time,
-            // userId
+            postId,
+            ProfilePicPath: '',
+            viewed: false,
+            Creator: '',
           };
           this.messages.push(message);
           this.commentsUpdated.next([...this.messages]);

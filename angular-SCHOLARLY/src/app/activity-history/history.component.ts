@@ -32,16 +32,26 @@ export interface MissedNotif {
   postId: string;
   Creator: string;
 }
+export interface CommentInterface {
+  id: string;
+  body: string;
+  time: string;
+  postId: string;
+  ProfilePicPath: string;
+  viewed: boolean;
+  Creator: string;
+}
 @Component({
   selector: 'activity-history',
   templateUrl: './history.component.html',
   styleUrls: ['../friends-activity/friends-activity.component.scss'],
 })
 export class ActivityHistoryComponent implements OnInit, OnDestroy {
-  comments: string[] = [];
+  comments: CommentInterface[] = [];
   userId: string;
   followers: Follow[] = [];
   newShared = [];
+  newComment = [];
   private postsSub: Subscription;
   private commentSub: Subscription;
   private missedNotifsSub: Subscription;
@@ -66,8 +76,18 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
     // comments
     this.commentSub = this.commentsService
       .getMessagesUpdateListenerHistory()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         this.comments = comments;
+        const NEW2 = [];
+        this.comments.forEach((e) => {
+          if (e.viewed === false) {
+            NEW2.push(e.viewed);
+          } else {
+            console.log('no unread messages');
+          }
+        });
+        this.newComment = NEW2;
+        console.log('new Gold', this.newComment);
       });
     // following info
     this.followService.getMessageNotificationFollowed(this.userId);

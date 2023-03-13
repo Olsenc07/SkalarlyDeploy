@@ -43,7 +43,7 @@
 
             <mat-tab label="Comments on your posts"   >
               <ng-template  mat-tab-label >
-                <mat-icon> 
+                <mat-icon [ngClass]="newComment.length == 0 ? '' : 'fontBlue'"> 
                   <i class="fas fa-comments"></i>
                  </mat-icon>
                  <div class="font">Comments on your posts</div>

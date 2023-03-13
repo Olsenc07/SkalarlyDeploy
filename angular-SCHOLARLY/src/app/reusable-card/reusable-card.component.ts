@@ -23,9 +23,10 @@ export interface CommentInterface {
   id: string;
   body: string;
   time: string;
-  // userId: string;
-  // parentId: string | null;
-  // createdAt: string;
+  postId: string;
+  ProfilePicPath: string;
+  viewed: boolean;
+  Creator: string;
 }
 
 export interface ActiveCommentInterface {

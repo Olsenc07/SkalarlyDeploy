@@ -334,8 +334,8 @@
               class="b_up"
               matBadge="!" [matBadgeHidden]="(notif.length == 0) " matBadgeColor="warn" 
             >
-              <mat-icon *ngIf="newsharedCheck.length == 0" class="settings">settings</mat-icon>
-              <mat-icon *ngIf="newsharedCheck.length !== 0" class="settingsNew">settings</mat-icon>
+              <mat-icon *ngIf="(newsharedCheck.length && newComment.length) == 0" class="settings">settings</mat-icon>
+              <mat-icon *ngIf="(newsharedCheck.length || newComment.length)!== 0" class="settingsNew">settings</mat-icon>
 
             </button>
 
@@ -365,10 +365,10 @@
         class="look-nice"
       >
       <div class="align"  >
-        <span class="material-icons d_settings" [ngClass]="newsharedCheck.length !== 0 ? 'blueActivity' : 'greyActivity'" >
+        <span class="material-icons d_settings" [ngClass]="(newsharedCheck.length || newComment.length) !== 0 ? 'blueActivity' : 'greyActivity'" >
           history
         </span>
-        <div matBadge="!" [matBadgeHidden]="notif.length == 0" matBadgeColor="warn" >
+        <div matBadge="!" [ngClass]="(newsharedCheck.length || newComment.length) !== 0 ? 'blueActivity' : 'greyActivity'" [matBadgeHidden]="notif.length == 0" matBadgeColor="warn" >
         Activity History
       </div>
         </div>
