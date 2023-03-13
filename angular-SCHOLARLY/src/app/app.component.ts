@@ -285,7 +285,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.commentSub = this.commentsService
         .getMessagesUpdateListenerHistory()
         .subscribe((comments: any) => {
-          console.log('comments keaton', comments);
           if (comments) {
             this.comments = comments;
             const NEW7 = [];
@@ -307,7 +306,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.followSub = this.followService
         .getInfoFollowUpdateListener()
         .subscribe((follower: Follow[]) => {
-          console.log('follower keaton', follower);
           if (follower) {
             this.follower = follower.reverse();
             const NEW2 = [];
@@ -331,7 +329,6 @@ export class AppComponent implements OnInit, OnDestroy {
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((shared: Post[]) => {
-          console.log('angel', shared);
           if (shared) {
             this.sharedNew = shared;
             const NEW3 = [];

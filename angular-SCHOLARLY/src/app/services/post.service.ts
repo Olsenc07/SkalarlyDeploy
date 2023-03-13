@@ -123,46 +123,48 @@ export class PostService {
       )
       .pipe(
         map((postData) => {
-          return postData.posts.map((post) => {
-            return {
-              id: post._id,
-              Reposts: post.Reposts,
-              OriginalCreatorId: post.OriginalCreatorId,
-              OriginalPostId: post.OriginalPostId,
-              SharerUsername: post.SharerUsername,
-              SharerName: post.SharerName,
-              SharerProfilePicPath: post.SharerProfilePicPath,
-              Username: post.Username,
-              Name: post.Name,
-              ProfilePicPath: post.ProfilePicPath,
-              Title: post.Title,
-              postDescription: post.postDescription,
-              postLocation: post.postLocation,
-              LocationEvent: post.LocationEvent,
-              time: post.time,
-              timeE: post.timeE,
-              // date: post.date,
-              // dateE: post.dateE,
-              gender: post.gender,
-              live: post.live,
-              paymentService: post.paymentService,
-              nopaymentService: post.nopaymentService,
-              virtual: post.virtual,
-              event: post.event,
-              Hashtag1: post.Hashtag1,
-              Hashtag2: post.Hashtag2,
-              Hashtag3: post.Hashtag3,
-              Hashtag4: post.Hashtag4,
-              Hashtag5: post.Hashtag5,
-              ImagePath: post.ImagePath,
-              VideoPath: post.VideoPath,
-              viewed: post.viewed,
-              Creator: post.Creator,
-            };
-          });
+          return postData.posts;
+          // .map((post) => {
+          //   return {
+          //     id: post._id,
+          //     Reposts: post.Reposts,
+          //     OriginalCreatorId: post.OriginalCreatorId,
+          //     OriginalPostId: post.OriginalPostId,
+          //     SharerUsername: post.SharerUsername,
+          //     SharerName: post.SharerName,
+          //     SharerProfilePicPath: post.SharerProfilePicPath,
+          //     Username: post.Username,
+          //     Name: post.Name,
+          //     ProfilePicPath: post.ProfilePicPath,
+          //     Title: post.Title,
+          //     postDescription: post.postDescription,
+          //     postLocation: post.postLocation,
+          //     LocationEvent: post.LocationEvent,
+          //     time: post.time,
+          //     timeE: post.timeE,
+          //     // date: post.date,
+          //     // dateE: post.dateE,
+          //     gender: post.gender,
+          //     live: post.live,
+          //     paymentService: post.paymentService,
+          //     nopaymentService: post.nopaymentService,
+          //     virtual: post.virtual,
+          //     event: post.event,
+          //     Hashtag1: post.Hashtag1,
+          //     Hashtag2: post.Hashtag2,
+          //     Hashtag3: post.Hashtag3,
+          //     Hashtag4: post.Hashtag4,
+          //     Hashtag5: post.Hashtag5,
+          //     ImagePath: post.ImagePath,
+          //     VideoPath: post.VideoPath,
+          //     viewed: post.viewed,
+          //     Creator: post.Creator,
+          //   };
+          // });
         })
       )
       .subscribe((transformedPosts) => {
+        console.log('love me better', transformedPosts);
         this.posts = transformedPosts;
         this.postsUpdated.next([...this.posts]);
         sub.unsubscribe();
