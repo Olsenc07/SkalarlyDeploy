@@ -56,6 +56,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
   // Filling with Post info from post.service
   posts: Post[] = [];
   private postsSub: Subscription;
+  private countSub: Subscription;
   comments: string[] = [];
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
@@ -117,8 +118,8 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
           this.posts = posts;
           this.isLoading = false;
           console.log('posts personal forward', this.posts);
+          this.postsSub.unsubscribe();
         });
-      this.postsSub.unsubscribe();
     });
   }
   // Back
@@ -139,8 +140,8 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
           this.posts = posts;
           this.isLoading = false;
           console.log('posts personal back', this.posts);
+          this.postsSub.unsubscribe();
         });
-      this.postsSub.unsubscribe();
     });
   }
   // Adding emojis
@@ -185,10 +186,13 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.countSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value: string) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+        this.countSub.unsubscribe();
+      });
   }
   navigateToMainPage(value: string): void {
     this.route.navigate(['/main/:'], { queryParams: { category: value } });
@@ -374,8 +378,8 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
   // ngOnDestroy(): void {
   //   this.postsSub.unsubscribe();
@@ -398,6 +402,7 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
   recomCounter = 0;
   countVisibility = 0;
   private postsSub: Subscription;
+  private countSub: Subscription;
   comments: string[] = [];
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
@@ -452,8 +457,8 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -471,8 +476,8 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   // Adding emojis
   openEmoji(): void {
@@ -508,10 +513,13 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.countSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value: string) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+        this.countSub.unsubscribe();
+      });
   }
   emojiPreventClose($event: any): any {
     $event.stopPropagation();
@@ -690,8 +698,8 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
 }
 
@@ -706,6 +714,7 @@ export class ReusableCommentsComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   userId: string;
   private postsSub: Subscription;
+  private commentSubYo: Subscription;
   comments: CommentInterface[] = [];
   activeComment: ActiveCommentInterface | null = null;
   constructor(
@@ -845,11 +854,12 @@ export class ReusableCommentsComponent implements OnInit, OnDestroy {
     // parentId: null | string;
   }): void {
     console.log('addComment', postId);
-    this.commentsService
+    this.commentSubYo = this.commentsService
       .createComment(body, userId, time, postId)
       .subscribe((createdComment) => {
         this.comments = [...this.comments, createdComment];
         this.activeComment = null;
+        this.commentSubYo.unsubscribe();
       });
   }
 
@@ -1159,7 +1169,7 @@ export class CardFeedComponent implements OnInit, OnDestroy {
   private postsSub: Subscription;
 
   // infos: AuthDataInfo[] = [];
-  private infosSub: Subscription;
+  private countSub: Subscription;
 
   comments: string[] = [];
   // number of comments that load
@@ -1331,10 +1341,13 @@ export class CardFeedComponent implements OnInit, OnDestroy {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.countSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+        this.countSub.unsubscribe();
+      });
   }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
@@ -1415,8 +1428,8 @@ export class CardFeedComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -1434,8 +1447,8 @@ export class CardFeedComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   onClickComments(postId: string): any {
     const count = 1;
@@ -1451,8 +1464,8 @@ export class CardFeedComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments;
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -1474,8 +1487,8 @@ export class CardFeedComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
 }
 // Trending
@@ -1677,8 +1690,8 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
       .subscribe((value) => {
         this.reposts = value;
         console.log(' reposts', this.reposts);
+        this.trendingSub.unsubscribe();
       });
-    this.trendingSub.unsubscribe();
   }
   spreadWord(postId: string): void {
     console.log('mint', postId);
@@ -1760,8 +1773,8 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -1779,8 +1792,8 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   onClickComments(postId: string): any {
     const count = 1;
@@ -1796,8 +1809,8 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments;
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -1819,8 +1832,8 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
 }
 
@@ -2011,8 +2024,8 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   }
 
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
-    console.log('Hey babe I miss you more', postId.length);
-    console.log('Hey babe I miss you ', OriginalPostId.length);
+    console.log('Hey babe I miss you more', postId);
+    console.log('Hey babe I miss you ', OriginalPostId);
     if (OriginalPostId.length === 0) {
       this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
@@ -2027,8 +2040,8 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
       .subscribe((value) => {
         this.reposts = value;
         console.log(' reposts', this.reposts);
+        this.trendingSub.unsubscribe();
       });
-    this.trendingSub.unsubscribe();
   }
   navToPost(postId: string, OriginalCreator: string): any {
     console.log('Hey babe I miss you', postId);
@@ -2044,8 +2057,8 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         } else {
           this.router.navigate(['/single/:'], { queryParams: { postId } });
         }
+        this.blockedSub.unsubscribe();
       });
-    this.blockedSub.unsubscribe();
   }
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
@@ -2119,8 +2132,8 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts friends', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -2138,8 +2151,8 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts friends', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   onClickComments(postId: string): any {
     const count = 1;
@@ -2155,8 +2168,8 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments;
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -2178,8 +2191,8 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
   spreadWord(postId: string): void {
     this.postService.addPostShared(postId, this.userId);
@@ -2210,6 +2223,7 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
   comments: string[] = [];
   // number of comments that load
   private commentsSub: Subscription;
+  private countSub: Subscription;
   comment: FormControl = new FormControl('');
 
   timeHourInitial = new Date().getHours();
@@ -2404,8 +2418,8 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -2423,8 +2437,8 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -2450,10 +2464,13 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.countSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+        this.countSub.unsubscribe();
+      });
   }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
@@ -2471,8 +2488,8 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
 }
 
@@ -2704,8 +2721,8 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
       .subscribe((value) => {
         this.reposts = value;
         console.log(' reposts', this.reposts);
+        this.trendingSub.unsubscribe();
       });
-    this.trendingSub.unsubscribe();
   }
   emojiPreventClose($event: any): any {
     $event.stopPropagation();
@@ -2730,8 +2747,8 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
       .subscribe((posts: Post[]) => {
         this.posts = posts;
         this.isLoading = false;
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -2752,8 +2769,8 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
       .subscribe((posts: Post[]) => {
         this.posts = posts;
         this.isLoading = false;
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -2783,7 +2800,7 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
 }
