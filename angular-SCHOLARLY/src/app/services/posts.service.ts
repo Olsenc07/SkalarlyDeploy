@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { ReplaySubject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 export interface UserNames {
   _id: string;
@@ -18,6 +18,12 @@ export interface Hashtags {
   Hashtag4: string;
   Hashtag5: string;
 }
+
+export interface Fav {
+  userId: string;
+  category: string;
+  hashtag: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -25,6 +31,9 @@ export class PostsService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
   private notifUpdated = new ReplaySubject();
   private notifId: string;
+
+  private favsListener = new Subject<Fav[]>();
+  private favs: Fav[] = [];
 
   private userUpdated = new ReplaySubject();
   private userId: string;
@@ -34,7 +43,9 @@ export class PostsService {
   getNotifId(): any {
     return this.notifUpdated.asObservable();
   }
-
+  getFavsListener(): any {
+    return this.favsListener.asObservable();
+  }
   getUserId(): any {
     return this.userUpdated.asObservable();
   }
@@ -131,4 +142,53 @@ export class PostsService {
         console.log('eazy 4');
       });
   }
+
+  // Adding subscription to get notifcations
+  addFavsNew(userId: string, category: string, hashtag: string): any {
+    console.log('1', userId);
+    console.log('2', category);
+    console.log('3', hashtag);
+    const authData = { userId, category, hashtag };
+    const sub = this.http
+      .post<{ message: string; favs: any }>(
+        'https://www.skalarly.com/api/subscribe/favsNew',
+        authData
+      )
+      .subscribe({
+        next: (response) => {
+          this.favsListener.next([...response.favs]);
+          sub.unsubscribe();
+          console.log('love you 97');
+        },
+        error: (err) => {
+          console.log('Unable to add subscription for notifications!', err);
+        },
+      });
+  }
+
+  // for search screen
+  getFavsList(userId: string): any {
+    const sub = this.http
+      .get<{ message: string; favs: any }>(
+        'https://www.skalarly.com/api/subscribe/favsList',
+        {
+          params: { userId },
+        }
+      )
+      .pipe(
+        map((data) => {
+          return data.favs;
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log('chlor', response);
+          this.favs = response;
+          this.favsListener.next([...this.favs]);
+          sub.unsubscribe();
+          console.log('eazy 100');
+        },
+      });
+  }
+  //
 }

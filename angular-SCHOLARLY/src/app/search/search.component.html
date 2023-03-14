@@ -56,29 +56,32 @@
             <i class="far fa-bookmark"></i>
           </button>
           <mat-menu #menu="matMenu">
-            <div >
+            <div *ngFor="let main of mains">
+              <div *ngIf="main.category !== ''">
               <i class="fas fa-star"></i>
               <mat-form-field appearance="fill">
                 <mat-label>Main Category</mat-label>
                 <mat-select>
-                  <mat-option *ngFor="let main of mains" (click)="navigateToPage(main.category)">
+                  <mat-option  (click)="navigateToPage(main.category)">
                     {{main.category}}
                   </mat-option>
                   </mat-select>
                   </mat-form-field>
                 </div>
-            <button mat-button>
+
+              <div *ngIf="main.hashtag !== ''">
               <i class="fas fa-hashtag"></i>
               
               <mat-form-field appearance="fill">
                 <mat-label>Hashtags</mat-label>
                 <mat-select>
-                  <mat-option *ngFor="let hashtag of hashtags" (click)="navToHashTag(hashtag.category)">
-                    {{hashtag.category}}
+                  <mat-option  (click)="navToHashTag(main.hashtag)">
+                    {{main.hashtag}}
                   </mat-option>
                   </mat-select>
-                  </mat-form-field></button>
-
+                  </mat-form-field>
+                </div>
+</div>
           </mat-menu>
           Step One: Choose from the main categories</div>
 

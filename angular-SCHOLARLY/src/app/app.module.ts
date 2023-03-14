@@ -49,20 +49,22 @@ import {
   ProfileComponent,
   UserProfileComponent,
 } from './profile/profile.component';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import { EditProfileComp1Component } from './edit-profile/edit-profile.component';
-import { EditProfileComp1WComponent } from './edit-profile/edit-profile.component';
-import { EditProfileComp2Component } from './edit-profile/edit-profile.component';
-import { EditProfileComp2WComponent } from './edit-profile/edit-profile.component';
-import { EditProfileComp3Component } from './edit-profile/edit-profile.component';
-import { EditProfileComp3WComponent } from './edit-profile/edit-profile.component';
-import { EditProfileComp4Component } from './edit-profile/edit-profile.component';
-import { EditProfileComp4WComponent } from './edit-profile/edit-profile.component';
+import {
+  EditProfileComponent,
+  EditProfileComp1Component,
+  EditProfileComp1WComponent,
+  EditProfileComp2Component,
+  EditProfileComp2WComponent,
+  EditProfileComp3Component,
+  EditProfileComp3WComponent,
+  EditProfileComp4Component,
+  EditProfileComp4WComponent,
+  EditProfilePurComponent,
+  EditProfilePurWComponent,
+  EditProfilePurSummerComponent,
+  EditProfilePurSpringComponent,
+} from './edit-profile/edit-profile.component';
 
-import { EditProfilePurComponent } from './edit-profile/edit-profile.component';
-import { EditProfilePurWComponent } from './edit-profile/edit-profile.component';
-import { EditProfilePurSummerComponent } from './edit-profile/edit-profile.component';
-import { EditProfilePurSpringComponent } from './edit-profile/edit-profile.component';
 import {
   ActivityHistoryComponent,
   CommentHistoryComponent,
@@ -93,19 +95,21 @@ import {
 } from './signup/signup.component';
 import { TermsPopUpComponent } from './signup/signup.component';
 import { BioComponent } from './profile/profile.component';
-
-import { HomePageComponent } from './home-page/home-page.component';
-import { ExplainedComponent } from './home-page/home-page.component';
-
+import {
+  HomePageComponent,
+  ExplainedComponent,
+} from './home-page/home-page.component';
 import { FriendsActivityComponent } from './friends-activity/friends-activity.component';
-import { PostPageComponent } from './post-page/post-page.component';
-
-import { DialogElementsComponent } from './post-page/post-page.component';
-import { ServicesElementsComponent } from './post-page/post-page.component';
-
-import { ReusableCommentsComponent } from './reusable-card/reusable-card.component';
-import { ReusableCommentComponent } from './reusable-card/reusable-card.component';
-import { ReusableCommentFormComponent } from './reusable-card/reusable-card.component';
+import {
+  DialogElementsComponent,
+  ServicesElementsComponent,
+  PostPageComponent,
+} from './post-page/post-page.component';
+import {
+  ReusableCommentsComponent,
+  ReusableCommentComponent,
+  ReusableCommentFormComponent,
+} from './reusable-card/reusable-card.component';
 
 import {
   ReusableCardPersonalComponent,
@@ -120,13 +124,14 @@ import {
 
 import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
 import { ReusableCardRecommendationComponent } from './reusable-card-request/reusable-card-request.component';
-import { ReusableCardUserComponent } from './reusable-card-user/reusable-card-user.component';
-import { ReusableCardUserFollowerComponent } from './reusable-card-user/reusable-card-user.component';
+import {
+  ReusableCardMutualComponent,
+  ReusableCardUserComponent,
+  ReusableCardUserFollowerComponent,
+  ReusableCardMutualsComponent,
+  ReusableCardMessageComponent,
+} from './reusable-card-user/reusable-card-user.component';
 
-import { ReusableCardMutualComponent } from './reusable-card-user/reusable-card-user.component';
-import { ReusableCardMutualsComponent } from './reusable-card-user/reusable-card-user.component';
-
-import { ReusableCardMessageComponent } from './reusable-card-user/reusable-card-user.component';
 import { ReusableCardConvoComponent } from './reusable-card-convo/reusable-card-convo.component';
 import { ErrorComponent } from './error/error.component';
 

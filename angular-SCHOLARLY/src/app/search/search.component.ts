@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SearchListService } from '../services/search.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { PostsService, Fav } from '../services/posts.service';
 
 interface SearchOption {
   value: string;
@@ -19,9 +20,10 @@ export class SearchComponent implements OnInit, OnDestroy {
   userId: string;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
+  private favsSub: Subscription;
   isLoading = false;
-  mains = [];
-  hashtags = [];
+  mains: Fav[] = [];
+
   postLocationMain: FormControl = new FormControl('');
 
   search: FormControl = new FormControl('');
@@ -33,7 +35,6 @@ export class SearchComponent implements OnInit, OnDestroy {
   public selectedOption: string;
   public specificOptions: string[];
   public searchOptions: SearchOption[];
-  main = '';
 
   public opt = 0;
   displaySpecificSearch(): void {
@@ -45,7 +46,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     public searchListService: SearchListService,
     private router: Router,
     public route: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private postsService: PostsService
   ) {}
 
   ngOnInit(): any {
@@ -57,12 +59,15 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.userIsAuthenticated = this.authService.getIsAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
-      .subscribe((isAuthenticated) => {
+      .subscribe((isAuthenticated: boolean) => {
         this.userIsAuthenticated = isAuthenticated;
         this.isLoading = false;
       });
-
-    // Fresh data update from logging in
+    this.postsService.getFavsList(this.userId);
+    this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+      this.mains = favs;
+      this.favsSub.unsubscribe();
+    });
   }
 
   ngOnDestroy(): any {

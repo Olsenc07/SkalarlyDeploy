@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Post, PostService } from '../services/post.service';
+import { PostsService } from '../services/posts.service';
 import { AuthService } from '../services/auth.service';
 import { FilterSearchService } from '../services/filterSearch.service';
 
@@ -39,7 +40,8 @@ export class MainPagesComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    public postService: PostService
+    public postService: PostService,
+    public postsService: PostsService
   ) {}
 
   ngOnInit(): void {
@@ -64,6 +66,11 @@ export class MainPagesComponent implements OnInit, OnDestroy {
   }
   saveFavCat(category: string): void {
     console.log('sons trust up', category);
+    this.postsService.addFavsNew(this.userId, category, '');
+  }
+  saveFavHash(hastag: string): void {
+    console.log('sons trust up 2', hastag);
+    this.postsService.addFavsNew(this.userId, '', hastag);
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);

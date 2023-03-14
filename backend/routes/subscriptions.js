@@ -1,4 +1,6 @@
 const Subscription = require('/app/backend/models/subscription');
+const Favs = require('/app/backend/models/favourites');
+
 const express = require('express');
 
 const UserInfo = require('/app/backend/models/userInfo');
@@ -74,6 +76,60 @@ router.post("/new", (req, res, next) => {
             message: 'Registration error'
           });
         });
+})
+
+// gets triggered from main catgeory or hashtag pg
+router.post("/favsNew", (req, res, next) => {
+  if (req.query.category !== ''){
+var save = new Favs({
+  userId: req.query.userId,
+  category: req.query.category,
+  hashtag: ''
+})
+save.save()
+.then( subscriptionId => { 
+  res.status(201).json({
+    message: 'New Fav Category added successfully',
+    favs: subscriptionId
+})
+}).catch( (err) => {
+  res.status(500).json({
+    message: 'category error'
+  });
+});
+  }else{
+    var save2 = new Favs({
+      userId: req.query.userId,
+      category: '',
+      hashtag: req.query.hashtag
+    })
+    save2.save()
+.then( subscriptionId2 => { 
+  res.status(201).json({
+    message: 'New Fav Hashtag added successfully ',
+    favs: subscriptionId2
+})
+}).catch( (err) => {
+  res.status(500).json({
+    message: 'hashtag error'
+  });
+});
+  }
+})
+
+// get favs list
+router.get("/favsList", async(req, res) => {
+  await Favs.find({userId: req.query.userId})
+  .then(favs => {
+    res.status(201).json({
+      message: 'New Fav Category added successfully',
+      favs: favs
+  })
+  }).catch( (err) => {
+    res.status(500).json({
+      message: 'Fetching favourites error'
+    });
+  });
 })
 
 module.exports = router;
