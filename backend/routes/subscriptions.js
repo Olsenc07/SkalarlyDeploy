@@ -117,7 +117,7 @@ save.save()
   }
 })
 // Delete favs main 
-router.delete("/deleteFavs/:id", checkAuth, async(req, res, next ) => {
+router.delete("/deleteFavs/:id", async(req, res, next ) => {
   console.log('thanks next', req.params.id)
   await Favs.deleteOne({_id: req.params.id})
   .then((result) =>{
