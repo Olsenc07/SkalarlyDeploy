@@ -162,6 +162,7 @@ export class PostsService {
       )
       .subscribe({
         next: (response) => {
+          console.log('never miss', response);
           this.favsListenerSingle.next(response.favs);
           sub.unsubscribe();
           console.log('love you 97');

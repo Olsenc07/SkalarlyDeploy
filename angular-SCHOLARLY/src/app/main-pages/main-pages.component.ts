@@ -1324,7 +1324,7 @@ export class HashtagComponent implements OnInit, OnDestroy {
     this.favsSub.unsubscribe();
   }
 
-  saveFavHash(hashtag: string): void {
+  saveFavHashTag(hashtag: string): void {
     console.log('sons trust up 2', hashtag);
     this.postsService.addFavsNew(this.userId, '', hashtag);
   }
