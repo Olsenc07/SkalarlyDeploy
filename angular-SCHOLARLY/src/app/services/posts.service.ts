@@ -20,9 +20,9 @@ export interface Hashtags {
 }
 
 export interface Fav {
-  userId: string;
-  category: string;
-  hashtag: string;
+  userId?: string;
+  category?: string;
+  hashtag?: string;
 }
 @Injectable({
   providedIn: 'root',

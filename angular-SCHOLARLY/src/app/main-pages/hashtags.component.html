@@ -12,13 +12,13 @@
         <i class="fas fa-hashtag"></i>{{ hashtag }}
         <div>
           <button mat-icon-button (click)="saveFavHashTag(hashtag)" matTooltip="Save To Favourites " 
-          *ngIf="mains.length == 0">
+          *ngIf="mains.hashtag !== hashtag">
             <i class="far fa-bookmark"></i>
           </button>
         </div>
           <!-- if  already on list -->
-          <div *ngFor="let main of mains">
-          <button mat-icon-button matTooltip="Unsave From Favourites" (click)="unsaveFavHashTag(main._id)" *ngIf="main.hashtag == hashtag">
+          <div >
+          <button mat-icon-button matTooltip="Unsave From Favourites" (click)="unsaveFavHashTag(mains._id)" *ngIf="mains.hashtag === hashtag">
             <i class="fas fa-bookmark"></i>
           </button>
         </div>

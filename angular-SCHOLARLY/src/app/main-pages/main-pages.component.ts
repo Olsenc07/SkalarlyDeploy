@@ -26,7 +26,7 @@ export class MainPagesComponent implements OnInit, OnDestroy {
   specific: string;
   specificOptions: string;
   commentsValidator = '';
-  mains: Fav[] = [];
+  mains: Fav = {};
 
   isLoading = false;
   posts: Post[] = [];
@@ -52,6 +52,7 @@ export class MainPagesComponent implements OnInit, OnDestroy {
 
       this.postsService.getFavsListMain(this.userId, this.category);
       this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+        console.log('sorry erika', favs);
         this.mains = favs;
       });
       this.postService.getPostsMainPage(this.category, 0, this.userId);
@@ -1278,7 +1279,7 @@ export class HashtagComponent implements OnInit, OnDestroy {
   userId: string;
   hashtag: string;
   posts: Post[] = [];
-  mains: Fav[] = [];
+  mains: Fav = {};
   private postsSub: Subscription;
   private routeSub: Subscription;
   private favsSub: Subscription;
@@ -1301,6 +1302,7 @@ export class HashtagComponent implements OnInit, OnDestroy {
       console.log('woo hoo', params);
       this.postsService.getFavsListMain(this.userId, this.hashtag);
       this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+        console.log('fashion', favs);
         this.mains = favs;
       });
       this.postService.getPostsHashtagPage(this.hashtag, 0);
