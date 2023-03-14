@@ -102,6 +102,14 @@
   justify-content: center;
   font-family: 'Cormorant Garamond', serif;
 }
+.favsBox{
+  display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    z-index: 3;
+    position: absolute;
+    border-radius: 25px;
+}
 .fontSize {
   font-size: 65px;
   display: flex;

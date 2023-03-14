@@ -56,9 +56,9 @@
           <button mat-icon-button (click)="favsVisible()">
             <i class="far fa-bookmark"></i>
           </button>
-          <div *ngIf="FavsVisible">
-            <div *ngFor="let main of mains">
-              <h1 class="favs" >Favourites</h1>
+          <div *ngIf="FavsVisible" class="favsBox">
+            <div class="favs" >Favourites</div>
+            <div *ngFor="let main of mains" >
               <div *ngIf="main.category !== ''">
               <mat-form-field >
                 <mat-label>

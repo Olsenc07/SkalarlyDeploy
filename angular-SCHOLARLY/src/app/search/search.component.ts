@@ -75,7 +75,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.favsSub.unsubscribe();
   }
   favsVisible(): void {
-    this.FavsVisible = true;
+    this.FavsVisible = !this.FavsVisible;
   }
   onSearchSelection(value: string): void {
     this.specificOptions = this.searchListService.onSearchSelection(value);
