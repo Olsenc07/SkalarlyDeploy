@@ -58,6 +58,7 @@
           </button>
           <div *ngIf="FavsVisible" class="favsBox">
             <div class="favs" >Favourites</div>
+            <mat-divider></mat-divider>
             <div *ngFor="let main of mains" >
               <div *ngIf="main.category !== ''">
               <mat-form-field >
@@ -65,7 +66,7 @@
               <i matPrefix class="fas fa-star"></i>
               Main Category</mat-label>
                 <mat-select>
-                  <mat-option  (click)="navigateToPage(main.category)">
+                  <mat-option  (click)="navigateToPage(main.category)" class="font">
                     {{main.category}}
                   </mat-option>
                   </mat-select>
@@ -79,7 +80,7 @@
               <i matPrefix class="fas fa-hashtag"></i>
               Hashtags</mat-label>
                 <mat-select>
-                  <mat-option  (click)="navToHashTag(main.hashtag)">
+                  <mat-option  (click)="navToHashTag(main.hashtag)" class="font">
                     {{main.hashtag}}
                   </mat-option>
                   </mat-select>
