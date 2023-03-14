@@ -80,15 +80,15 @@ router.post("/new", (req, res, next) => {
 
 // gets triggered from main catgeory or hashtag pg
 router.post("/favsNew", (req, res) => {
-  console.log('a', req.query.userId);
-  console.log('b', req.query.category);
-  console.log('c', req.query.hashtag);
+  console.log('a', req.body.userId);
+  console.log('b', req.body.category);
+  console.log('c', req.body.hashtag);
 
   // if (req.query.category !== ''){
 var saveFavs = new Favs({
-  userId: req.query.userId,
-  category: req.query.category,
-  hashtag: req.query.hashtag
+  userId: req.body.userId,
+  category: req.body.category,
+  hashtag: req.body.hashtag
 });
 saveFavs.save()
 .then( subscriptionId => { 
