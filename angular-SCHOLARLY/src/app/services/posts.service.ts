@@ -162,12 +162,12 @@ export class PostsService {
       )
       .subscribe({
         next: (response) => {
-          this.favsListener.next([...response.favs]);
+          this.favsListenerSingle.next(response.favs);
           sub.unsubscribe();
           console.log('love you 97');
         },
         error: (err) => {
-          console.log('Unable to add subscription for notifications!', err);
+          console.log('Unable to add fav!');
         },
       });
   }

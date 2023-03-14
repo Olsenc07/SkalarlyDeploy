@@ -85,9 +85,10 @@ var save = new Favs({
   userId: req.query.userId,
   category: req.query.category,
   hashtag: ''
-})
+});
 save.save()
 .then( subscriptionId => { 
+  console.log('fav saved yo', subscriptionId)
   res.status(201).json({
     message: 'New Fav Category added successfully',
     favs: subscriptionId
@@ -148,9 +149,6 @@ router.get("/favsList", async(req, res) => {
 })
 // get favs main match
 router.get("/favsListMain", async(req, res) => {
-  console.log('pray', req.query.category);
-  console.log('pray2', req.query.userId);
-
   await Favs.findOne(
     { $and: [{userId: req.query.userId}, {category: req.query.category} ]}
     )
@@ -180,10 +178,17 @@ router.get("/favsListHashtag", async(req, res) => {
     { $and: [{userId: req.query.userId}, {hashtag: req.query.hashtag} ]}
     )
   .then(favs => {
+    if (favs){
     res.status(201).json({
       message: 'New Fav Category added successfully',
       favs: favs
   })
+}else{
+  res.status(201).json({
+    message: 'Got Empty Fav Category successfully',
+    favs: {}
+})
+}
   }).catch( (err) => {
     res.status(500).json({
       message: 'Fetching favourites error'
