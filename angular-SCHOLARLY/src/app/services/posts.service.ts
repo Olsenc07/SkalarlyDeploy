@@ -34,6 +34,9 @@ export class PostsService {
 
   private favsListener = new Subject<Fav[]>();
   private favs: Fav[] = [];
+  private favsListenerSingle = new Subject<Fav>();
+
+  private favsSingle: Fav = {};
 
   private userUpdated = new ReplaySubject();
   private userId: string;
@@ -45,6 +48,9 @@ export class PostsService {
   }
   getFavsListener(): any {
     return this.favsListener.asObservable();
+  }
+  getFavsListenerSingle(): any {
+    return this.favsListenerSingle.asObservable();
   }
   getUserId(): any {
     return this.userUpdated.asObservable();
@@ -225,8 +231,8 @@ export class PostsService {
       .subscribe({
         next: (response) => {
           console.log('chlor 54', response);
-          this.favs = response;
-          this.favsListener.next(this.favs);
+          this.favsSingle = response;
+          this.favsListenerSingle.next(this.favsSingle);
           sub.unsubscribe();
           console.log('eazy 1001');
         },

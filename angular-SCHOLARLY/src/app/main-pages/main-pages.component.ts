@@ -51,10 +51,12 @@ export class MainPagesComponent implements OnInit, OnDestroy {
       this.category = params?.category;
 
       this.postsService.getFavsListMain(this.userId, this.category);
-      this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
-        console.log('sorry erika', favs);
-        this.mains = favs;
-      });
+      this.favsSub = this.postsService
+        .getFavsListenerSingle()
+        .subscribe((favs) => {
+          console.log('sorry erika', favs);
+          this.mains = favs;
+        });
       this.postService.getPostsMainPage(this.category, 0, this.userId);
       this.postsSub = this.postService
         .getPostUpdateListener()
@@ -1301,10 +1303,12 @@ export class HashtagComponent implements OnInit, OnDestroy {
       console.log('params page', this.hashtag);
       console.log('woo hoo', params);
       this.postsService.getFavsListMain(this.userId, this.hashtag);
-      this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
-        console.log('fashion', favs);
-        this.mains = favs;
-      });
+      this.favsSub = this.postsService
+        .getFavsListenerSingle()
+        .subscribe((favs) => {
+          console.log('fashion', favs);
+          this.mains = favs;
+        });
       this.postService.getPostsHashtagPage(this.hashtag, 0);
       this.postsSub = this.postService
         .getPostUpdateListener()
