@@ -5,7 +5,6 @@ import { Fav, PostsService } from '../services/posts.service';
 import { AuthService } from '../services/auth.service';
 import { FilterSearchService } from '../services/filterSearch.service';
 
-import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommentsService } from '../services/comments.service';
@@ -22,7 +21,7 @@ export class MainPagesComponent implements OnInit, OnDestroy {
   userId: string;
   reposts = '';
   valueChosen = '7';
-  category: string;
+  Category: string;
   specific: string;
   specificOptions: string;
   commentsValidator = '';
@@ -48,16 +47,16 @@ export class MainPagesComponent implements OnInit, OnDestroy {
 
     this.routeSub = this.route.queryParams.subscribe((params) => {
       console.log('params main page', params);
-      this.category = params?.category;
+      this.Category = params?.category;
 
-      this.postsService.getFavsListMain(this.userId, this.category);
+      this.postsService.getFavsListMain(this.userId, this.Category);
       this.favsSub = this.postsService
         .getFavsListenerSingle()
         .subscribe((favs) => {
           console.log('sorry erika', favs);
           this.mains = favs;
         });
-      this.postService.getPostsMainPage(this.category, 0, this.userId);
+      this.postService.getPostsMainPage(this.Category, 0, this.userId);
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {

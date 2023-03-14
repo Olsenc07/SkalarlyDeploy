@@ -9,17 +9,17 @@
       <!-- General choice appears at top of feed and dissapears as user scrolls -->
       <h1 class="top">
 
-        {{ category }}
+        {{ Category }}
         <!-- if not already on list -->
-        <div>
-        <button mat-icon-button (click)="saveFavCat(category)" matTooltip="Save To Favourites " 
-        *ngIf="mains.category !== category">
+        <div  *ngIf="mains.category !== Category">
+        <button mat-icon-button (click)="saveFavCat(Category)" matTooltip="Save To Favourites " 
+       >
           <i class="far fa-bookmark"></i>
         </button>
       </div>
         <!-- if  already on list -->
-        <div >
-        <button mat-icon-button matTooltip="Unsave From Favourites" (click)="unsaveFavCat(main._id)" *ngIf="mains.category === category">
+        <div *ngIf="mains.category === Category">
+        <button mat-icon-button matTooltip="Unsave From Favourites" (click)="unsaveFavCat(mains._id)" >
           <i class="fas fa-bookmark"></i>
         </button>
       </div>
