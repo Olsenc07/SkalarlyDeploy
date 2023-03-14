@@ -11,13 +11,14 @@
 
         {{ category }}
         <!-- if not already on list -->
-        <button mat-icon-button (click)="saveFavCat(category)" matTooltip="Save To Favourites ">
+        <button mat-icon-button (click)="saveFavCat(category)" matTooltip="Save To Favourites " 
+        *ngIf="mains.length == 0">
           <i class="far fa-bookmark"></i>
         </button>
         <!-- if  already on list -->
-        <!-- <div matTooltip="Unsave From Favourites">
+        <button mat-icon-button matTooltip="Unsave From Favourites" (click)="unsaveFavCat(category)" *ngIf="mains.length > 0">
           <i class="fas fa-bookmark"></i>
-        </div> -->
+        </button>
       </h1>
       <div class="column_" *ngIf="posts.length == 0">
         <div class="row"> No Posts At The Moment</div>

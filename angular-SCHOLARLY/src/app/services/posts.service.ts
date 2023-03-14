@@ -190,5 +190,52 @@ export class PostsService {
         },
       });
   }
-  //
+  // for main pgs
+  getFavsListMain(userId: string, category: string): any {
+    const sub = this.http
+      .get<{ message: string; favs: any }>(
+        'https://www.skalarly.com/api/subscribe/favsListMain',
+        {
+          params: { userId, category },
+        }
+      )
+      .pipe(
+        map((data) => {
+          return data.favs;
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log('chlor 54', response);
+          this.favs = response;
+          this.favsListener.next([...this.favs]);
+          sub.unsubscribe();
+          console.log('eazy 1001');
+        },
+      });
+  }
+  // for main pgs
+  getFavsListHashtag(userId: string, hashtag: string): any {
+    const sub = this.http
+      .get<{ message: string; favs: any }>(
+        'https://www.skalarly.com/api/subscribe/favsListHashtag',
+        {
+          params: { userId, hashtag },
+        }
+      )
+      .pipe(
+        map((data) => {
+          return data.favs;
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log('chlor 76', response);
+          this.favs = response;
+          this.favsListener.next([...this.favs]);
+          sub.unsubscribe();
+          console.log('eazy 1010');
+        },
+      });
+  }
 }

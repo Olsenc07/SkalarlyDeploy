@@ -1,14 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Post, PostService } from '../services/post.service';
-import { PostsService } from '../services/posts.service';
+import { Fav, PostsService } from '../services/posts.service';
 import { AuthService } from '../services/auth.service';
 import { FilterSearchService } from '../services/filterSearch.service';
 
-import {
-  MatBottomSheet,
-  MatBottomSheetRef,
-} from '@angular/material/bottom-sheet';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommentsService } from '../services/comments.service';
@@ -29,14 +26,16 @@ export class MainPagesComponent implements OnInit, OnDestroy {
   specific: string;
   specificOptions: string;
   commentsValidator = '';
+  mains: Fav[] = [];
 
   isLoading = false;
   posts: Post[] = [];
   private postsSub: Subscription;
   private routeSub: Subscription;
+  private favsSub: Subscription;
+  private countSub: Subscription;
 
   constructor(
-    private bottomSheet: MatBottomSheet,
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
@@ -51,6 +50,10 @@ export class MainPagesComponent implements OnInit, OnDestroy {
       console.log('params main page', params);
       this.category = params?.category;
 
+      this.postsService.getFavsListMain(this.userId, this.category);
+      this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+        this.mains = favs;
+      });
       this.postService.getPostsMainPage(this.category, 0, this.userId);
       this.postsSub = this.postService
         .getPostUpdateListener()
@@ -63,10 +66,14 @@ export class MainPagesComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.postsSub.unsubscribe();
     this.routeSub.unsubscribe();
+    this.favsSub.unsubscribe();
   }
   saveFavCat(category: string): void {
     console.log('sons trust up', category);
     this.postsService.addFavsNew(this.userId, category, '');
+  }
+  unsaveFavCat(id: string): void {
+    this.postsService.unSaveFavs(id);
   }
   saveFavHash(hastag: string): void {
     console.log('sons trust up 2', hastag);
@@ -99,10 +106,13 @@ export class MainPagesComponent implements OnInit, OnDestroy {
       this.valueChosen = OriginalPostId;
       console.log('logic', this.valueChosen);
     }
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.countSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+        this.countSub.unsubscribe();
+      });
   }
 
   spreadWord(postId: string): void {
@@ -164,6 +174,7 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
     this.text;
   private postsSub: Subscription;
   private routeSub: Subscription;
+  private countSub: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -353,10 +364,13 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
 
     // this.valueChosen = this.postId;
 
-    this.postService.getCountUpdateListener().subscribe((value) => {
-      this.reposts = value;
-      console.log(' reposts', this.reposts);
-    });
+    this.countSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+        this.countSub.unsubscribe();
+      });
   }
   loadComments(): void {
     this.commentsService.getComments(this.postId);
@@ -364,6 +378,7 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
   }
   imgClick(imgPath): any {
@@ -562,8 +577,8 @@ export class RecentComponent implements OnInit {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -581,8 +596,8 @@ export class RecentComponent implements OnInit {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.posts2Sub.unsubscribe();
       });
-    this.posts2Sub.unsubscribe();
   }
   onClickComments(postId: string): any {
     const count = 1;
@@ -598,8 +613,8 @@ export class RecentComponent implements OnInit {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments;
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -630,8 +645,8 @@ export class RecentComponent implements OnInit {
       .subscribe((value) => {
         this.reposts = value;
         console.log(' reposts', this.reposts);
+        this.countSub.unsubscribe();
       });
-    this.countSub.unsubscribe();
   }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
@@ -640,8 +655,8 @@ export class RecentComponent implements OnInit {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
 }
 
@@ -823,8 +838,8 @@ export class TrendingComponent implements OnInit {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments;
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
   CommentTrigger(postId: string): void {
     if (this.comment.value) {
@@ -852,11 +867,11 @@ export class TrendingComponent implements OnInit {
     }
     this.trendingSub = this.postService
       .getCountUpdateListener()
-      .subscribe((value) => {
+      .subscribe((value: string) => {
         this.reposts = value;
         console.log(' reposts', this.reposts);
+        this.trendingSub.unsubscribe();
       });
-    this.trendingSub.unsubscribe();
   }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
@@ -865,6 +880,7 @@ export class TrendingComponent implements OnInit {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
   }
 }
@@ -1221,8 +1237,8 @@ export class SkalarsComponent implements OnInit {
       .subscribe((infos) => {
         this.infos = infos;
         console.log('way nicer', this.infos);
+        this.filtersSub.unsubscribe();
       });
-    this.filtersSub.unsubscribe();
   }
 
   navigateToPage(infoUser: string): any {
@@ -1256,13 +1272,17 @@ export class HashtagComponent implements OnInit, OnDestroy {
   userId: string;
   hashtag: string;
   posts: Post[] = [];
+  mains: Fav[] = [];
   private postsSub: Subscription;
   private routeSub: Subscription;
+  private favsSub: Subscription;
   isLoading = false;
 
   constructor(
     private route: ActivatedRoute,
     public postService: PostService,
+    public postsService: PostsService,
+
     private authService: AuthService,
     private router: Router
   ) {}
@@ -1273,7 +1293,10 @@ export class HashtagComponent implements OnInit, OnDestroy {
       this.hashtag = params?.hashtag;
       console.log('params page', this.hashtag);
       console.log('woo hoo', params);
-
+      this.postsService.getFavsListMain(this.userId, this.hashtag);
+      this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+        this.mains = favs;
+      });
       this.postService.getPostsHashtagPage(this.hashtag, 0);
       this.postsSub = this.postService
         .getPostUpdateListener()
@@ -1527,8 +1550,8 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
       .subscribe((value) => {
         this.reposts = value;
         console.log(' reposts', this.reposts);
+        this.trendingSub.unsubscribe();
       });
-    this.trendingSub.unsubscribe();
   }
 
   loadComments(postId: string): void {
@@ -1538,8 +1561,8 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
+        this.commentsSub.unsubscribe();
       });
-    this.commentsSub.unsubscribe();
   }
   // Forward
   onClickFeed(): any {
@@ -1558,8 +1581,8 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.postsSub.unsubscribe();
       });
-    this.postsSub.unsubscribe();
   }
   // Back
   onClickFeedBack(): any {
@@ -1577,8 +1600,8 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
         this.posts = posts;
         this.isLoading = false;
         console.log('posts personal', this.posts);
+        this.posts2Sub.unsubscribe();
       });
-    this.posts2Sub.unsubscribe();
   }
   // Where the post was posted
   navigateToMainPage(value: string): void {

@@ -66,12 +66,12 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.postsService.getFavsList(this.userId);
     this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
       this.mains = favs;
-      this.favsSub.unsubscribe();
     });
   }
 
   ngOnDestroy(): any {
     this.authListenerSubs.unsubscribe();
+    this.favsSub.unsubscribe();
   }
 
   onSearchSelection(value: string): void {

@@ -131,5 +131,36 @@ router.get("/favsList", async(req, res) => {
     });
   });
 })
-
+// get favs main match
+router.get("/favsListMain", async(req, res) => {
+  await Favs.findOne(
+    { $and: [{userId: req.query.userId}, {category: req.query.category} ]}
+    )
+  .then(favs => {
+    res.status(201).json({
+      message: 'New Fav Category added successfully',
+      favs: favs
+  })
+  }).catch( (err) => {
+    res.status(500).json({
+      message: 'Fetching favourites error'
+    });
+  });
+})
+// get favs hashtag match
+router.get("/favsListHashtag", async(req, res) => {
+  await Favs.findOne(
+    { $and: [{userId: req.query.userId}, {hashtag: req.query.hashtag} ]}
+    )
+  .then(favs => {
+    res.status(201).json({
+      message: 'New Fav Category added successfully',
+      favs: favs
+  })
+  }).catch( (err) => {
+    res.status(500).json({
+      message: 'Fetching favourites error'
+    });
+  });
+})
 module.exports = router;
