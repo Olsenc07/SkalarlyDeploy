@@ -2505,7 +2505,7 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
 
 
 // Login
-router.post("/login", verifyEmail, async (reg, res, next) => {
+router.post("/login", verifyEmail, async(reg, res, next) => {
     let fetchedUser;
 
     await User.findOne({ email: reg.body.email })

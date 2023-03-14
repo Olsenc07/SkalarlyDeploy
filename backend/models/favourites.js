@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 // const uniqueValidator = require('mongoose-unique-validator');
 
 const favsSchema = mongoose.Schema({
-   userId: { type: String, required: true},
+   userId: { type: String},
    category: { type: String },
    hashtag: { type: String },
 });

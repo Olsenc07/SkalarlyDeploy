@@ -79,12 +79,16 @@ router.post("/new", (req, res, next) => {
 })
 
 // gets triggered from main catgeory or hashtag pg
-router.post("/favsNew", (req, res, next) => {
-  if (req.query.category !== ''){
+router.post("/favsNew", (req, res) => {
+  console.log('a', req.query.userId);
+  console.log('b', req.query.category);
+  console.log('c', req.query.hashtag);
+
+  // if (req.query.category !== ''){
 var saveFavs = new Favs({
   userId: req.query.userId,
   category: req.query.category,
-  hashtag: ''
+  hashtag: req.query.hashtag
 });
 saveFavs.save()
 .then( subscriptionId => { 
@@ -98,24 +102,24 @@ saveFavs.save()
     message: 'category error'
   });
 });
-  }else{
-    var save2 = new Favs({
-      userId: req.query.userId,
-      category: '',
-      hashtag: req.query.hashtag
-    })
-    save2.save()
-.then( subscriptionId2 => { 
-  res.status(201).json({
-    message: 'New Fav Hashtag added successfully ',
-    favs: subscriptionId2
-})
-}).catch( (err) => {
-  res.status(500).json({
-    message: 'hashtag error'
-  });
-});
-  }
+//   }else{
+//     var save2 = new Favs({
+//       userId: req.query.userId,
+//       category: '',
+//       hashtag: req.query.hashtag
+//     });
+//     save2.save()
+// .then( subscriptionId2 => { 
+//   res.status(201).json({
+//     message: 'New Fav Hashtag added successfully',
+//     favs: subscriptionId2
+// })
+// }).catch( (err) => {
+//   res.status(500).json({
+//     message: 'hashtag error'
+//   });
+// });
+//   }
 })
 // Delete favs main 
 router.delete("/deleteFavs/:id", async(req, res, next ) => {
