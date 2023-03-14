@@ -10,6 +10,14 @@
       <h1 class="top">
 
         {{ category }}
+        <!-- if not already on list -->
+        <button mat-icon-button (click)="saveFavCat(category)" matTooltip="Save To Favourites ">
+          <i class="far fa-bookmark"></i>
+        </button>
+        <!-- if  already on list -->
+        <!-- <div matTooltip="Unsave From Favourites">
+          <i class="fas fa-bookmark"></i>
+        </div> -->
       </h1>
       <div class="column_" *ngIf="posts.length == 0">
         <div class="row"> No Posts At The Moment</div>

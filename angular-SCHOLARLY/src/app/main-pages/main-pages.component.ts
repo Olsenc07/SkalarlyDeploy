@@ -62,6 +62,9 @@ export class MainPagesComponent implements OnInit, OnDestroy {
     this.postsSub.unsubscribe();
     this.routeSub.unsubscribe();
   }
+  saveFavCat(category: string): void {
+    console.log('sons trust up', category);
+  }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
     // Where the post was posted
@@ -193,7 +196,6 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
     this.routeSub.unsubscribe();
     this.postsSub.unsubscribe();
   }
-
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
     // Where the post was posted
