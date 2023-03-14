@@ -226,7 +226,7 @@ export class PostsService {
         next: (response) => {
           console.log('chlor 54', response);
           this.favs = response;
-          this.favsListener.next([...this.favs]);
+          this.favsListener.next(this.favs);
           sub.unsubscribe();
           console.log('eazy 1001');
         },
