@@ -53,7 +53,7 @@
         <div class="center_single">
           <!-- *ngIf="quickSearch.length > 0" -->
           <div *ngIf="mains.length > 0">
-          <button mat-icon-button (click)="favsVisible()">
+          <button mat-icon-button (click)="favsVisible()" matTooltip="Favourites">
             <i class="far fa-bookmark"></i>
           </button>
           <div *ngIf="FavsVisible" class="favsBox">
