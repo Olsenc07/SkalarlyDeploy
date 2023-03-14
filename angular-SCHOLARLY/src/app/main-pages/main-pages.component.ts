@@ -1331,6 +1331,10 @@ export class HashtagComponent implements OnInit, OnDestroy {
   unsaveFavHashTag(id: string): void {
     console.log('sons trust up 7', id);
     this.postsService.unSaveFavs(id);
+    this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+      this.mains = favs;
+      this.favsSub.unsubscribe();
+    });
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);

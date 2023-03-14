@@ -59,9 +59,10 @@
           <mat-menu #menu="matMenu">
             <div *ngFor="let main of mains">
               <div *ngIf="main.category !== ''">
-              <i class="fas fa-star"></i>
               <mat-form-field appearance="fill">
-                <mat-label>Main Category</mat-label>
+                <mat-label>
+              <i matPrefix class="fas fa-star"></i>
+              Main Category</mat-label>
                 <mat-select>
                   <mat-option  (click)="navigateToPage(main.category)">
                     {{main.category}}
@@ -71,10 +72,11 @@
                 </div>
 
               <div *ngIf="main.hashtag !== ''">
-              <i class="fas fa-hashtag"></i>
               
               <mat-form-field appearance="fill">
-                <mat-label>Hashtags</mat-label>
+                <mat-label>
+              <i matPrefix class="fas fa-hashtag"></i>
+              Hashtags</mat-label>
                 <mat-select>
                   <mat-option  (click)="navToHashTag(main.hashtag)">
                     {{main.hashtag}}
