@@ -1315,6 +1315,7 @@ export class HashtagComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.postsSub.unsubscribe();
     this.routeSub.unsubscribe();
+    this.favsSub.unsubscribe();
   }
 
   saveFavHash(hashtag: string): void {

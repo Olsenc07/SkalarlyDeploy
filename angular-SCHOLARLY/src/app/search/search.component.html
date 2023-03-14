@@ -52,6 +52,7 @@
       <div class="input-boxs">
         <div class="center_single">
           <!-- *ngIf="quickSearch.length > 0" -->
+          <div *ngIf="mains.length > 0">
           <button mat-icon-button [matMenuTriggerFor]="menu">
             <i class="far fa-bookmark"></i>
           </button>
@@ -83,6 +84,7 @@
                 </div>
 </div>
           </mat-menu>
+        </div>
           Step One: Choose from the main categories</div>
 
       

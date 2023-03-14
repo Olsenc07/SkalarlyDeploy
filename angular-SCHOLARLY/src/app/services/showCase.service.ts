@@ -110,7 +110,7 @@ export class ShowCaseService implements OnDestroy {
           // postData.id = id_;
           this.showCases.push(postId);
           this.postsUpdated.next([...this.showCases]);
-          this.snackBar.open('Showcase added', 'Yay!', {
+          this.snackBar.open('Showcase Added', 'Yay!', {
             duration: 3000,
           });
           sub.unsubscribe();
@@ -166,7 +166,7 @@ export class ShowCaseService implements OnDestroy {
         );
         this.showCases = updatedPosts;
         this.postsUpdated.next([...this.showCases]);
-        this.snackBar.open('Showcase deleted', '🗑', {
+        this.snackBar.open('Showcase Deleted', '🗑', {
           duration: 3000,
         });
         sub.unsubscribe();

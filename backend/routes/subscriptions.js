@@ -120,7 +120,7 @@ save.save()
 router.delete("/deleteFavs/:id", async(req, res, next ) => {
   console.log('thanks next', req.params.id)
   await Favs.deleteOne({_id: req.params.id})
-  .then((result) =>{
+  .then((result) => {
     res.status(200).json({
       message: 'Finding favs and deleting old worked!',
       favs: []
