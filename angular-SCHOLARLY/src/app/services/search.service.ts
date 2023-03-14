@@ -5405,6 +5405,7 @@ export class SearchListService {
           'Fraternities & Sororities',
           'Fundraisers',
           'Happening Today',
+          'Hart House',
           'Intramural Sports',
           'Miscellaneous',
           'Parties & Clubs',

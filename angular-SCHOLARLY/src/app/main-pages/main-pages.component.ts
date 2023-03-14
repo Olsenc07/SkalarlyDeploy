@@ -71,14 +71,20 @@ export class MainPagesComponent implements OnInit, OnDestroy {
   saveFavCat(category: string): void {
     console.log('sons trust up', category);
     this.postsService.addFavsNew(this.userId, category, '');
+    this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+      this.mains = favs;
+      this.favsSub.unsubscribe();
+    });
   }
   unsaveFavCat(id: string): void {
+    console.log('id unsave', id);
     this.postsService.unSaveFavs(id);
+    this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+      this.mains = favs;
+      this.favsSub.unsubscribe();
+    });
   }
-  saveFavHash(hastag: string): void {
-    console.log('sons trust up 2', hastag);
-    this.postsService.addFavsNew(this.userId, '', hastag);
-  }
+
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
     // Where the post was posted
@@ -1309,6 +1315,15 @@ export class HashtagComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.postsSub.unsubscribe();
     this.routeSub.unsubscribe();
+  }
+
+  saveFavHash(hashtag: string): void {
+    console.log('sons trust up 2', hashtag);
+    this.postsService.addFavsNew(this.userId, '', hashtag);
+  }
+  unsaveFavHashTag(id: string): void {
+    console.log('sons trust up 7', id);
+    this.postsService.unSaveFavs(id);
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);

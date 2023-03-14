@@ -10,6 +10,18 @@
       <h1 class="top">
 
         <i class="fas fa-hashtag"></i>{{ hashtag }}
+        <div>
+          <button mat-icon-button (click)="saveFavHashTag(hashtag)" matTooltip="Save To Favourites " 
+          *ngIf="mains.length == 0">
+            <i class="far fa-bookmark"></i>
+          </button>
+        </div>
+          <!-- if  already on list -->
+          <div *ngFor="let main of mains">
+          <button mat-icon-button matTooltip="Unsave From Favourites" (click)="unsaveFavHashTag(main._id)" *ngIf="main.hashtag == hashtag">
+            <i class="fas fa-bookmark"></i>
+          </button>
+        </div>
       </h1>
       <div class="column_" *ngIf="posts.length == 0">
         <div class="row"> No Posts At The Moment</div>

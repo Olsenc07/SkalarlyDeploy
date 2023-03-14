@@ -165,7 +165,25 @@ export class PostsService {
         },
       });
   }
-
+  // delete fav main and hash
+  unSaveFavs(id: string): any {
+    const sub = this.http
+      .delete<{ message: string; favs: any }>(
+        'https://www.skalarly.com/api/subscribe/deleteFavs/' + id
+      )
+      .pipe(
+        map((data) => {
+          return data.favs;
+        })
+      )
+      .subscribe((response) => {
+        console.log('hey ya', response);
+        this.favs = response;
+        this.favsListener.next([...this.favs]);
+        sub.unsubscribe();
+        console.log('eazy 420');
+      });
+  }
   // for search screen
   getFavsList(userId: string): any {
     const sub = this.http
@@ -182,7 +200,7 @@ export class PostsService {
       )
       .subscribe({
         next: (response) => {
-          console.log('chlor', response);
+          console.log('chlor 1234567', response);
           this.favs = response;
           this.favsListener.next([...this.favs]);
           sub.unsubscribe();

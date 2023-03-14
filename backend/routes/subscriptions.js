@@ -116,7 +116,22 @@ save.save()
 });
   }
 })
-
+// Delete favs main 
+router.delete("/deleteFavs/:id", checkAuth, async(req, res, next ) => {
+  console.log('thanks next', req.params.id)
+  await Favs.deleteOne({_id: req.params.id})
+  .then((result) =>{
+    res.status(200).json({
+      message: 'Finding favs and deleting old worked!',
+      favs: []
+  });
+      })
+      .catch(error => {
+          res.status(500).json({
+              message: 'Deleting notifications failed!'
+          });
+      });
+  })
 // get favs list
 router.get("/favsList", async(req, res) => {
   await Favs.find({userId: req.query.userId})
