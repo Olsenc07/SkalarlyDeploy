@@ -48,12 +48,13 @@ export class MainPagesComponent implements OnInit, OnDestroy {
     this.routeSub = this.route.queryParams.subscribe((params) => {
       console.log('params main page', params);
       this.Category = params?.category;
+      console.log(' erika', this.Category);
 
       this.postsService.getFavsListMain(this.userId, this.Category);
       this.favsSub = this.postsService
         .getFavsListenerSingle()
         .subscribe((favs) => {
-          console.log('sorry erika', favs);
+          console.log(' erika 77 ', favs);
           this.mains = favs;
         });
       this.postService.getPostsMainPage(this.Category, 0, this.userId);
@@ -1301,7 +1302,7 @@ export class HashtagComponent implements OnInit, OnDestroy {
       this.hashtag = params?.hashtag;
       console.log('params page', this.hashtag);
       console.log('woo hoo', params);
-      this.postsService.getFavsListMain(this.userId, this.hashtag);
+      this.postsService.getFavsListHashtag(this.userId, this.hashtag);
       this.favsSub = this.postsService
         .getFavsListenerSingle()
         .subscribe((favs) => {

@@ -148,19 +148,31 @@ router.get("/favsList", async(req, res) => {
 })
 // get favs main match
 router.get("/favsListMain", async(req, res) => {
+  console.log('pray', req.query.category);
+  console.log('pray2', req.query.userId);
+
   await Favs.findOne(
     { $and: [{userId: req.query.userId}, {category: req.query.category} ]}
     )
   .then(favs => {
+    if (favs){
     res.status(201).json({
-      message: 'New Fav Category added successfully',
+      message: 'Got Fav Category successfully',
       favs: favs
   })
+}else{
+  res.status(201).json({
+    message: 'Got Empty Fav Category successfully',
+    favs: {}
+})
+}
   }).catch( (err) => {
     res.status(500).json({
       message: 'Fetching favourites error'
     });
   });
+
+
 })
 // get favs hashtag match
 router.get("/favsListHashtag", async(req, res) => {

@@ -216,6 +216,9 @@ export class PostsService {
   }
   // for main pgs
   getFavsListMain(userId: string, category: string): any {
+    console.log('cold as ice', userId);
+    console.log('cold as hot', category);
+
     const sub = this.http
       .get<{ message: string; favs: any }>(
         'https://www.skalarly.com/api/subscribe/favsListMain',
@@ -255,8 +258,8 @@ export class PostsService {
       .subscribe({
         next: (response) => {
           console.log('chlor 76', response);
-          this.favs = response;
-          this.favsListener.next([...this.favs]);
+          this.favsSingle = response;
+          this.favsListenerSingle.next(this.favsSingle);
           sub.unsubscribe();
           console.log('eazy 1010');
         },
