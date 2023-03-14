@@ -18,6 +18,7 @@ interface SearchOption {
 })
 export class SearchComponent implements OnInit, OnDestroy {
   userId: string;
+  FavsVisible = false;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
   private favsSub: Subscription;
@@ -73,7 +74,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.authListenerSubs.unsubscribe();
     this.favsSub.unsubscribe();
   }
-
+  favsVisible(): void {
+    this.FavsVisible = true;
+  }
   onSearchSelection(value: string): void {
     this.specificOptions = this.searchListService.onSearchSelection(value);
     console.log('morning', this.specificOptions);

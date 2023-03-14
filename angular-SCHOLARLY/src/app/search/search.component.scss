@@ -97,6 +97,11 @@
 .display {
   display: contents;
 }
+.favs{
+  display: flex;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+}
 .fontSize {
   font-size: 65px;
   display: flex;
