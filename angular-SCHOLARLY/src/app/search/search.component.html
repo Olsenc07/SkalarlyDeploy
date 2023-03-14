@@ -52,9 +52,17 @@
       <div class="input-boxs">
         <div class="center_single">
           <!-- *ngIf="quickSearch.length > 0" -->
-          <div >
+          <button mat-icon-button [matMenuTriggerFor]="menu">
             <i class="far fa-bookmark"></i>
-          </div>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-button>
+              <i class="fas fa-star"></i>Main Category</button>
+            <button mat-button>
+              <i class="fas fa-hashtag"></i>
+              Hashtags</button>
+
+          </mat-menu>
           Step One: Choose from the main categories</div>
 
       
