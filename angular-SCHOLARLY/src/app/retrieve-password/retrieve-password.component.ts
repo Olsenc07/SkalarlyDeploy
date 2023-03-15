@@ -22,6 +22,7 @@ export class RetrievePasswordComponent implements OnInit {
   visible = true;
   visible2 = true;
   emailMatches = false;
+  emailMatches2 = false;
 
   passwordDel: FormControl = new FormControl('', Validators.minLength(8));
   emailDel: FormControl = new FormControl('');
@@ -74,6 +75,24 @@ export class RetrievePasswordComponent implements OnInit {
         } else {
           console.log('nuts', results);
           this.emailMatches = false;
+        }
+      });
+    } else {
+      console.log('DeLorean');
+    }
+  }
+  doesEmailExist2(event: any): void {
+    const query: string = event.target.value;
+    console.log('query 7777 ', query);
+    if (query) {
+      this.authService.searchEmails(query.trim());
+      this.authService.getEmail().subscribe((results) => {
+        if (results === true) {
+          console.log('results baby', results);
+          this.emailMatches2 = results;
+        } else {
+          console.log('nuts', results);
+          this.emailMatches2 = false;
         }
       });
     } else {
