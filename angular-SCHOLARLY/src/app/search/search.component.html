@@ -54,7 +54,7 @@
           <!-- *ngIf="quickSearch.length > 0" -->
           <div *ngIf="mains.length > 0">
           <button mat-icon-button (click)="favsVisible()" matTooltip="Favourites">
-            <i class="far fa-bookmark"></i>
+            <i class="fas fa-bookmark"></i>
           </button>
           <div *ngIf="FavsVisible" class="favsBox">
             <div class="favs" >Favourites</div>
@@ -63,7 +63,7 @@
 
               <mat-form-field >
                 <mat-label>
-                  <i class="far fa-bookmark"></i>
+                  <i class="fas fa-bookmark"></i>
               Quick Search</mat-label>
                 <mat-select>
                   <mat-option *ngFor="let main of mains;let even = even; let odd = odd"  class="font" 
