@@ -273,8 +273,13 @@
         <mat-chip-list class="buttonsC">  
           <mat-chip class="showCommentsBtn"  matTooltip="Click to show comments" (click)="loadComments(post.id)">
           
-          <div >  Comments
+            <!-- before loaded comments -->
+          <div *ngIf="commentCount === number">  Comments
             <i class="far fa-comments"></i>
+          </div>
+          <!-- after loading comments -->
+          <div *ngIf="commentCount !== ''">  Comments
+       {{commentCount}}
           </div>
           </mat-chip>
                       </mat-chip-list>
