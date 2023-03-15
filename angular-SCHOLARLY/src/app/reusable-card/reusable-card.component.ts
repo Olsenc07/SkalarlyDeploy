@@ -2192,14 +2192,15 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        if (comments) {
-          console.log('i got more shit to say', comments);
-          this.commentCount = this.comments.length;
-          this.commentsCountValidator = postId;
-          this.comments = comments.reverse();
+        console.log('i got more shit to say', comments);
+        this.commentCount = null;
+        console.log('body ', this.commentCount);
 
-          console.log('we win', this.commentsCountValidator);
-        }
+        this.commentCount = this.comments.length;
+        this.commentsCountValidator = postId;
+        this.comments = comments.reverse();
+
+        console.log('we win', this.commentsCountValidator);
         this.commentsSub.unsubscribe();
       });
   }

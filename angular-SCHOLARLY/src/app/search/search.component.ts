@@ -81,7 +81,10 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.specificOptions = this.searchListService.onSearchSelection(value);
     console.log('morning', this.specificOptions);
   }
-
+  navigateToPage(value: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+  }
   navigateToFav(value: string): void {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
   }
