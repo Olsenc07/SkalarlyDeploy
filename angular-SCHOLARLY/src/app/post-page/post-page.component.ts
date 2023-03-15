@@ -39,7 +39,6 @@ import { mimeType } from './mime-type.validator';
 import { AuthService } from '../services/auth.service';
 import { createPopup } from '@picmo/popup-picker';
 import { PickerInteractionMode } from 'igniteui-angular';
-import { text } from 'stream/consumers';
 export const MY_FORMATS = {
   parse: {
     dateInput: 'LL',

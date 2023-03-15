@@ -79,7 +79,6 @@
     "postcss": "^8.4.21",
     "req-flash": "^0.0.3",
     "rxjs": "^7.8.0",
-    "sass-loader": "^13.2.0",
     "socket.io": "^4.6.1",
     "socket.io-client": "^4.6.1",
     "streamifier": "^0.1.1",

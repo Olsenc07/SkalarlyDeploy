@@ -27,7 +27,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { createPopup } from '@picmo/popup-picker';
-import { AnyCnameRecord } from 'dns';
 
 export const MY_FORMATS = {
   parse: {
