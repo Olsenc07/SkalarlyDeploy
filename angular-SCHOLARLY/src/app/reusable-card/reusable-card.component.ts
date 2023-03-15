@@ -1847,7 +1847,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   isLoading = false;
   open = true;
   reposts = '';
-  commentCount: number;
+  commentCount: any;
   commentsValidator = '';
   commentsCountValidator = '';
   closed = true;
