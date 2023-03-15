@@ -13,6 +13,12 @@
   align-items: center;
   text-align: center;
 }
+.alignRepost{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: grey;
+}
 .b {
   padding: 1%;
 }
@@ -205,6 +211,10 @@ margin-top: 2%;
   justify-content: space-around;
   // margin-top: 1%;
   margin-top: 3%;
+}
+.hashFit{
+  display: flex;
+  font-size: medium;
 }
 .HashTags{
 display: flex;
