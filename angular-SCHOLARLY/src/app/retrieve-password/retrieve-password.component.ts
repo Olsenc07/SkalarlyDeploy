@@ -21,6 +21,7 @@ export class RetrievePasswordComponent implements OnInit {
   isLoading = false;
   visible = true;
   visible2 = true;
+  emailMatches = false;
 
   passwordDel: FormControl = new FormControl('', Validators.minLength(8));
   emailDel: FormControl = new FormControl('');
@@ -61,7 +62,24 @@ export class RetrievePasswordComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
   }
-
+  doesEmailExist(event: any): void {
+    const query: string = event.target.value;
+    console.log('query 77 ', query);
+    if (query) {
+      this.authService.searchEmails(query.trim());
+      this.authService.getEmail().subscribe((results) => {
+        if (results === true) {
+          console.log('results baby', results);
+          this.emailMatches = results;
+        } else {
+          console.log('nuts', results);
+          this.emailMatches = false;
+        }
+      });
+    } else {
+      console.log('DeLorean');
+    }
+  }
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
 
