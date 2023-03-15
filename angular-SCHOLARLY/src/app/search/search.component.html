@@ -63,11 +63,12 @@
 
               <mat-form-field >
                 <mat-label>
-              <i matPrefix class="fas fa-star"></i>
-              Main Category</mat-label>
-                <mat-select >
-                  <mat-option *ngFor="let main of mains"  (click)="navigateToPage(main.category)" class="font">
+                  <i class="far fa-bookmark"></i>
+              Quick Search</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let main of mains" (click)="navigateToFav(main.category, main.hashtag)" class="font">
                     {{main.category}}
+                    {{main.hashtag}}
                   </mat-option>
                   </mat-select>
                   </mat-form-field>
@@ -75,16 +76,15 @@
 
         
               
-              <mat-form-field >
+              <!-- <mat-form-field >
                 <mat-label>
               <i matPrefix class="fas fa-hashtag"></i>
               Hashtags</mat-label>
                 <mat-select >
-                  <mat-option *ngFor="let main of mains" (click)="navToHashTag(main.hashtag)" class="font">
-                    {{main.hashtag}}
+                  <mat-option *ngFor="let main of mains" (click)="navToHashTag()" class="font">
                   </mat-option>
                   </mat-select>
-                  </mat-form-field>
+                  </mat-form-field> -->
 
 </div>
 </div>
