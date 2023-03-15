@@ -66,11 +66,12 @@
                   <i class="far fa-bookmark"></i>
               Quick Search</mat-label>
                 <mat-select>
-                  <mat-option *ngFor="let main of mains"  class="font">
+                  <mat-option *ngFor="let main of mains;let even = even; let odd = odd"  class="font" 
+                  [ngClass]="{ even: even, odd: odd }">
                    <div *ngIf="main.category !== ''" (click)="navigateToFav(main.category)"> 
-                    <i matPrefix class="fas fa-star"></i>{{main.category}}</div>
+                    <i matPrefix class="fas fa-star main"></i>{{main.category}}</div>
                    <div *ngIf="main.hashtag !== ''" (click)="navigateToFavHash(main.hashtag)"> 
-              <i matPrefix class="fas fa-hashtag"></i>
+              <i matPrefix class="fas fa-hashtag hash"></i>
               {{main.hashtag}}</div>
                   </mat-option>
                   </mat-select>

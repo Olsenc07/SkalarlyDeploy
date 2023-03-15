@@ -67,6 +67,9 @@
   flex-direction: column;
 
 }
+.hash{
+  color: #4e647c;
+}
 .pic {
   // border-radius: 25px;
   margin-top: 1%;
@@ -1006,8 +1009,8 @@ animation: animate 8s linear infinite;
       }
       }
 .options{
-  display: flex;
-    justify-content: center;
+    display: block;
+    // justify-content: center;
     width: 100%;
 }
 @media (max-width: 1025px) {
