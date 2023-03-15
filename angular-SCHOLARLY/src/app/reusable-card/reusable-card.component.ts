@@ -2189,12 +2189,12 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);
-    this.commentsCountValidator = postId;
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         console.log('i got more shit to say', comments);
-        this.commentCount = this.comments.length;
+        this.commentsCountValidator = postId;
+        this.commentCount = comments.length;
         this.comments = comments.reverse();
 
         console.log('we win', this.commentsCountValidator);
