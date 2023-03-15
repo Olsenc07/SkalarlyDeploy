@@ -67,8 +67,8 @@
               Quick Search</mat-label>
                 <mat-select>
                   <mat-option *ngFor="let main of mains" (click)="navigateToFav(main.category, main.hashtag)" class="font">
-                    {{main.category}}
-                    {{main.hashtag}}
+                   <div *ngIf="main.category !== ''"> {{main.category}}</div>
+                   <div *ngIf="main.hashtag !== ''"> {{main.hashtag}}</div>
                   </mat-option>
                   </mat-select>
                   </mat-form-field>
