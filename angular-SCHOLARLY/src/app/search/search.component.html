@@ -66,15 +66,17 @@
                   <i class="far fa-bookmark"></i>
               Quick Search</mat-label>
                 <mat-select class="centerText">
-                  <mat-option *ngFor="let main of mains"  class="font" 
+                  <mat-chip-listbox>
+                  <mat-chip-option *ngFor="let main of mains"  class="font" 
                   >
                    <div *ngIf="main.category !== ''" (click)="navigateToFav(main.category)" > 
-                    <i matPrefix class="fas fa-star main"></i>{{main.category}}</div>
+                    <i matPrefix class="fas fa-heart main"></i>{{main.category}}</div>
                    <div *ngIf="main.hashtag !== ''" (click)="navigateToFavHash(main.hashtag)" > 
               <i matPrefix class="fas fa-hashtag hash"></i>
               {{main.hashtag}}</div>
-              <mat-divider></mat-divider>
-                  </mat-option>
+              <!-- <mat-divider></mat-divider> -->
+                  </mat-chip-option>
+                  </mat-chip-listbox>
                   </mat-select>
                   </mat-form-field>
       
