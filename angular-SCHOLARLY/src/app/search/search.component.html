@@ -66,9 +66,12 @@
                   <i class="far fa-bookmark"></i>
               Quick Search</mat-label>
                 <mat-select>
-                  <mat-option *ngFor="let main of mains" (click)="navigateToFav(main.category, main.hashtag)" class="font">
-                   <div *ngIf="main.category !== ''"> {{main.category}}</div>
-                   <div *ngIf="main.hashtag !== ''"> {{main.hashtag}}</div>
+                  <mat-option *ngFor="let main of mains"  class="font">
+                   <div *ngIf="main.category !== ''" (click)="navigateToFav(main.category)"> 
+                    <i matPrefix class="fas fa-star"></i>{{main.category}}</div>
+                   <div *ngIf="main.hashtag !== ''" (click)="navigateToFavHash(main.hashtag)"> 
+              <i matPrefix class="fas fa-hashtag"></i>
+              {{main.hashtag}}</div>
                   </mat-option>
                   </mat-select>
                   </mat-form-field>
@@ -78,7 +81,6 @@
               
               <!-- <mat-form-field >
                 <mat-label>
-              <i matPrefix class="fas fa-hashtag"></i>
               Hashtags</mat-label>
                 <mat-select >
                   <mat-option *ngFor="let main of mains" (click)="navToHashTag()" class="font">

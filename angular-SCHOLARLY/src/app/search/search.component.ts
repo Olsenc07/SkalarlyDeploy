@@ -82,17 +82,13 @@ export class SearchComponent implements OnInit, OnDestroy {
     console.log('morning', this.specificOptions);
   }
 
-  navigateToFav(value: string, HashTag: string): void {
-    console.log('go hard', value);
-    console.log('go hard 2', HashTag);
-
-    if (value === '') {
-      this.router.navigate(['/main/:'], { queryParams: { category: value } });
-    } else {
-      this.router.navigate(['/hashtag/:'], {
-        queryParams: { hashtag: HashTag },
-      });
-    }
+  navigateToFav(value: string): void {
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+  }
+  navigateToFavHash(HashTag: string): void {
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
   }
   // To post page with users id
   navigateToPost(): any {
