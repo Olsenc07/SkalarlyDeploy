@@ -29,7 +29,7 @@
           
             <div class="repostStuff">
             <div class="align">
-          <i class="fas fa-retweet" matTooltip="Reposted"></i>
+          <i class="fas fa-retweet repostIcon" ></i>
 
           Reposted By: 
           </div>
@@ -272,8 +272,10 @@
         </mat-chip-list> -->
         <mat-chip-list class="buttonsC">  
           <mat-chip class="showCommentsBtn"  matTooltip="Click to show comments" (click)="loadComments(post.id)">
-           Comments
+          
+          <div >  Comments
             <i class="far fa-comments"></i>
+          </div>
           </mat-chip>
                       </mat-chip-list>
                   
