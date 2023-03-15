@@ -48,10 +48,14 @@
     "follow-redirects": "^1.15.2",
     "glob-parent": "^6.0.2",
     "hammerjs": "^2.0.8",
+    "http-cache-semantics": "^4.1.1",
     "igniteui-angular": "^15.0.6",
     "json-bigint": "^1.0.0",
+    "json5": "^2.2.3",
     "jsonwebtoken": "^8.5.1",
     "karma": "^6.4.1",
+    "loader-utils": "^3.2.1",
+    "luxon": "^3.3.0",
     "marked": "^4.2.3",
     "minimist": "^1.2.7",
     "moment": "^2.29.4",
@@ -78,9 +82,11 @@
     "streamifier": "^0.1.1",
     "tslib": "^2.4.1",
     "typescript": "^4.8.4",
+    "ua-parser-js": "^1.0.34",
     "url-parse": "^1.5.10",
     "uuid": "^9.0.0",
-    "web-push": "^3.5.0"
+    "web-push": "^3.5.0",
+    "webpack": "^5.76.1"
   },
   "repository": {
     "type": "git",
