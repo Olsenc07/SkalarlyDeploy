@@ -1849,6 +1849,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   reposts = '';
   commentCount: number;
   commentsValidator = '';
+  commentsCountValidator = '';
   closed = true;
   hide = true;
   valueChosen = '7';
@@ -2196,6 +2197,8 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
 
           this.comments = comments.reverse();
           this.commentCount = this.comments.length;
+          this.commentsCountValidator = postId;
+          console.log('we win', this.commentsCountValidator);
         }
         this.commentsSub.unsubscribe();
       });
