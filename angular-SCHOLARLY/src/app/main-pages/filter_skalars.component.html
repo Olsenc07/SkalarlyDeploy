@@ -19,8 +19,9 @@ Filter Skalars
         <mat-form-field class="example-full-width">
     
 
-          <i matPrefix class="fas fa-signature"></i>
+          <i matPrefix class="fas fa-signature">
             <input matInput placeholder="Name " [formControl]="searchName" >
+            </i>
             <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear Value" type="button" (click)="clearName()">
               <mat-icon class="asthetic-adds">close</mat-icon>
             </button>
@@ -36,8 +37,9 @@ Filter Skalars
         <mat-form-field class="example-full-width" >
 
 
-          <i matPrefix class="fas fa-star"></i>
+          <i matPrefix class="fas fa-star">
             <input matInput type='text' [formControl]="searchMaj" placeholder="Major ">
+            </i>
             <button  matSuffix mat-icon-button aria-label="Clear" matTooltip="Clear Value" type="button" (click)="clearMaj()">
               <mat-icon class="asthetic-adds">close</mat-icon>
             </button>
