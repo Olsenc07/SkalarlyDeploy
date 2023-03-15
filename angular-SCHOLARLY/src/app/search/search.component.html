@@ -59,33 +59,33 @@
           <div *ngIf="FavsVisible" class="favsBox">
             <div class="favs" >Favourites</div>
             <mat-divider></mat-divider>
-            <div *ngFor="let main of mains" >
-              <div *ngIf="main.category !== ''">
+            <div  >
+
               <mat-form-field >
                 <mat-label>
               <i matPrefix class="fas fa-star"></i>
               Main Category</mat-label>
-                <mat-select>
+                <mat-select *ngFor="let main of mains">
                   <mat-option  (click)="navigateToPage(main.category)" class="font">
                     {{main.category}}
                   </mat-option>
                   </mat-select>
                   </mat-form-field>
-                </div>
+      
 
-              <div *ngIf="main.hashtag !== ''">
+        
               
               <mat-form-field >
                 <mat-label>
               <i matPrefix class="fas fa-hashtag"></i>
               Hashtags</mat-label>
-                <mat-select>
+                <mat-select *ngFor="let main of mains">
                   <mat-option  (click)="navToHashTag(main.hashtag)" class="font">
                     {{main.hashtag}}
                   </mat-option>
                   </mat-select>
                   </mat-form-field>
-                </div>
+
 </div>
 </div>
         </div>
