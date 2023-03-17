@@ -186,7 +186,7 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
 
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     this.commentsSub = this.commentsService
-      .getMessagesUpdateListenerHistory()
+      .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         console.log('comments yo', comments);
         this.comments = comments;
@@ -206,7 +206,7 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
 
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     const sub1 = this.commentsService
-      .getMessagesUpdateListenerHistory()
+      .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
         sub1.unsubscribe();
@@ -221,7 +221,7 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
 
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     const sub2 = this.commentsService
-      .getMessagesUpdateListenerHistory()
+      .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.comments = comments.reverse();
         sub2.unsubscribe();
@@ -232,9 +232,9 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
     console.log('chaz whats up', commentId);
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     this.commentsSub = this.commentsService
-      .getMessagesUpdateListenerHistory()
+      .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments;
+        this.comments = comments.reverse();
         this.commentsSub.unsubscribe();
       });
     console.log('begging to have her kneck fucked');

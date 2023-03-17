@@ -15,7 +15,7 @@
           <div class="row yo">
             <mat-tab label="Missed Notifications"  *ngIf="notif.length != 0">
               <ng-template  mat-tab-label >
-                <mat-icon>  
+                <mat-icon class="titleFit">  
                   <i class="fas fa-envelope"></i>
                  </mat-icon>
                  <div class="font">Missed Notifications </div>
@@ -43,7 +43,7 @@
 
             <mat-tab label="Comments on your posts"   >
               <ng-template  mat-tab-label >
-                <mat-icon [ngClass]="newComment.length == 0 ? '' : 'fontBlue'"> 
+                <mat-icon class="titleFit" [ngClass]="newComment.length == 0 ? '' : 'fontBlue'"> 
                   <i class="fas fa-comments"></i>
                  </mat-icon>
                  <div class="font">Comments on your posts</div>
@@ -69,7 +69,7 @@
   </mat-tab>
   <mat-tab label="Followed you"   >
     <ng-template  mat-tab-label >
-      <mat-icon>  <i class="fas fa-user-friends"></i>
+      <mat-icon class="titleFit">  <i class="fas fa-user-friends"></i>
        </mat-icon>
        <div class="font">Followed you</div>
      
@@ -98,7 +98,7 @@
 
   <mat-tab label="Shared Posts"  >
     <ng-template  mat-tab-label >
-      <mat-icon [ngClass]="newShared.length == 0 ? '' : 'fontBlue'">  <i class="fas fa-share-alt"></i>
+      <mat-icon class="titleFit" [ngClass]="newShared.length == 0 ? '' : 'fontBlue'">  <i class="fas fa-share-alt"></i>
        </mat-icon>
        <div class="font"  >Shared Posts</div>
      
@@ -126,7 +126,7 @@
 </mat-tab>
 <mat-tab label="Blocked Skalars"  *ngIf="blocked.length != 0">
   <ng-template  mat-tab-label >
-    <mat-icon>  
+    <mat-icon class="titleFit">  
       <i class="fas fa-ban"></i>
      </mat-icon>
      <div class="font">Blocked Skalars </div>
