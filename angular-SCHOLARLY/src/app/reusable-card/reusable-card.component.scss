@@ -66,6 +66,9 @@
   justify-content: center;
   flex-direction: row;
 }
+.commentCount{
+  padding: 0% 3%;
+}
 .buttonCombo{
   display: flex;
   flex-direction: row;
@@ -87,6 +90,9 @@
   color: white !important;
   background: linear-gradient(45deg,rgb(16 23 58),transparent);
   font-size: large;
+}
+.display{
+  display: flex;
 }
 .repostColor{
   background-color: powderblue !important;

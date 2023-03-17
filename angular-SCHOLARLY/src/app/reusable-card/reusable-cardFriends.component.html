@@ -283,10 +283,13 @@
 
           </div>
           <!-- after loading comments -->
-          <div *ngIf="commentCount && (commentsCountValidator == post.id)">  
-       <div>Comments</div> 
-<div>
+          <div *ngIf="commentCount && (commentsCountValidator == post.id)" class="display" >  
+       Comments
+<div class="commentCount" *ngIf="commentCount !== 0">
        {{commentCount}}
+      </div>
+      <div class="commentCount" *ngIf="commentCount == 0"> 
+       {{0}}
       </div>
           </div>
           </mat-chip>
