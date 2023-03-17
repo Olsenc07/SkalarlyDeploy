@@ -2245,7 +2245,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         postId
       );
       this.comment.setValue('');
-      this.commentsService.getComments(postId);
+      // this.commentsService.getComments(postId);
       this.commentsSub = this.commentsService
         .getMessagesUpdateListener()
         .subscribe((comments: string[]) => {

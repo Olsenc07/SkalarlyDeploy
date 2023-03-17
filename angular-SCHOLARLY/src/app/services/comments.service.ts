@@ -136,29 +136,38 @@ export class CommentsService {
       postId,
     };
     const sub = this.http
-      .post<{ message: string; messages: CommentInterface }>(
+      .post<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/posts/comments',
         messageOrg
       )
-      .subscribe({
-        next: (responseData) => {
-          const message: CommentInterface = {
-            id: responseData.messages.id,
-            body,
-            time,
-            postId,
-            ProfilePicPath: '',
-            viewed: false,
-            Creator: '',
-          };
-          this.messages.push(message);
-          this.commentsUpdated.next([...this.messages]);
-          this.snackBar.open('Your comment added!', 'Yay!', {
-            duration: 3000,
-          });
-          sub.unsubscribe();
-          console.log('love you 3');
-        },
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
+      .subscribe((transformedComment) => {
+        console.log('grey 59', transformedComment);
+        // next: (responseData) => {
+        //   const message: CommentInterface = {
+        //     id: responseData.messages.id,
+        //     body,
+        //     time,
+        //     postId,
+        //     ProfilePicPath: '',
+        //     viewed: false,
+        //     Creator: '',
+        //   };
+        // this.messages.push(message);
+        // this.commentsUpdated.next([...this.messages]);
+        this.messages = transformedComment;
+        this.commentsUpdated.next([...this.messages]);
+
+        this.snackBar.open('Your comment added!', 'Yay!', {
+          duration: 3000,
+        });
+        sub.unsubscribe();
+        console.log('love you 3');
+        // },
       });
   }
 

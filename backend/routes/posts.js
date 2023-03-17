@@ -858,16 +858,26 @@ if (req.body.userId){
         // increment comment count
         Post.updateOne({_id: req.body.postId}, {$inc: {count: 1}})
         .then(updated => {
-        res.status(201).json({
-            message: 'Comment added successfully',
-            messages: {
-                id: createdComment._id,
-                ...createdComment
-            } 
-        });
+            Comment.find({postId: req.body.postId})
+            .then(allComments => {
+                console.log('private person', allComments);
+                res.status(201).json({
+                    message: 'Comment added successfully',
+                    messages: allComments
+                    // {
+                        // id: createdComment._id,
+                        // ...createdComment
+                    // } 
+                });
+            }) .catch(error => {
+                res.status(500).json({
+                    message: 'Finding all comments failed!'
+                });
+            });
+       
     })  .catch(error => {
         res.status(500).json({
-            message: 'pdating comment count failed!'
+            message: 'updating comment count failed!'
         });
     });
         try{
