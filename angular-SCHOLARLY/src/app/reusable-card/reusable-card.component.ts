@@ -2185,7 +2185,17 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   onDeleteComment(commentId: string, postId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
-    this.loadComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        console.log('i got more shit to say', comments.length);
+        this.commentsCountValidator = postId;
+        // this.commentCount = comments.length;
+        // console.log('type', this.commentCount);
+        this.comments = comments.reverse();
+
+        this.commentsSub.unsubscribe();
+      });
     console.log('in real time');
   }
   loadComments(postId: string): void {

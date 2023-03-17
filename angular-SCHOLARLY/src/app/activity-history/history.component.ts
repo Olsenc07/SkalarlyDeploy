@@ -226,6 +226,18 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
         sub2.unsubscribe();
       });
   }
+  onDeleteComment(commentId: string): any {
+    this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
+    this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListenerHistory()
+      .subscribe((comments: string[]) => {
+        this.comments = comments;
+        this.commentsSub.unsubscribe();
+      });
+    console.log('begging to have her kneck fucked');
+  }
   navToPost(postId: string): any {
     this.router.navigate(['/single/:'], { queryParams: { postId } });
   }
