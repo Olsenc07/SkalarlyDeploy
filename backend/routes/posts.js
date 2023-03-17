@@ -953,14 +953,17 @@ if (req.body.userId){
                 })
             }})
 // Comments deleting
-router.delete("/comments/:commentId", checkAuth, (req, res, next ) => {
+router.delete("/comments/:commentId/", checkAuth, (req, res, next ) => {
     console.log('k',req.params.commentId);
+   
     Comment.findOne({_id: req.params.commentId})
     .then(found => {
         Post.updateOne({_id: found.postId}, {$inc: {count: -1}} )
         .then(deleteTime => {
-            Comment.deleteOne({_id: req.params.id}).then(result => {
+            console.log('keep keeping on')
+            Comment.deleteOne({_id: req.params.commentId}).then(result => {
                 if (result){
+                    console.log('got deletion')
                 res.status(200).json({message: 'Comment deleted!!'});
                 } else {
                     res.status(401).json({message: 'Not authorized'});
