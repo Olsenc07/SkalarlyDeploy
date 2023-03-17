@@ -855,6 +855,9 @@ if (req.body.userId){
     })
     comment.save()
     .then(createdComment => {
+        // increment comment count
+        Post.updateOne({_id: req.body.postId}, {$inc: {count: 1}})
+        .then(updated => {
         res.status(201).json({
             message: 'Comment added successfully',
             messages: {
@@ -862,6 +865,11 @@ if (req.body.userId){
                 ...createdComment
             } 
         });
+    })  .catch(error => {
+        res.status(500).json({
+            message: 'pdating comment count failed!'
+        });
+    });
         try{
             // Match subscription to post creator then send it 
             // Or else when a subscriber comments on a non subscriber itll send a notif as if it was the subscribers post
@@ -946,18 +954,34 @@ if (req.body.userId){
             }})
 // Comments deleting
 router.delete("/comments/:id", checkAuth, (req, res, next ) => {
-    Comment.deleteOne({_id: req.params.id}).then(result => {
-        if (result){
-        res.status(200).json({message: 'Comment deleted!!'});
-        } else {
-            res.status(401).json({message: 'Not authorized'});
-        }
-    })
-    .catch(error => {
+    Comment.findOne({_id: req.params.id})
+    .then(found => {
+        Post.updateOne({_id: found.postId}, {$inc: {count: -1}} )
+        .then(deleteTime => {
+            Comment.deleteOne({_id: req.params.id}).then(result => {
+                if (result){
+                res.status(200).json({message: 'Comment deleted!!'});
+                } else {
+                    res.status(401).json({message: 'Not authorized'});
+                }
+            })
+            .catch(error => {
+                res.status(500).json({
+                    message: 'Fetching comment failed!'
+                });
+            });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Updating comment failed!'
+            });
+        });
+    }).catch(error => {
         res.status(500).json({
-            message: 'Fetching comment failed!'
+            message: 'Finding comment failed!'
         });
     });
+    
 });
 // Get others posts
 router.get("/otherUsers", async(req, res) => {
