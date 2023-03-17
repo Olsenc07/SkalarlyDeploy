@@ -953,8 +953,9 @@ if (req.body.userId){
                 })
             }})
 // Comments deleting
-router.delete("/comments/:id", checkAuth, (req, res, next ) => {
-    Comment.findOne({_id: req.params.id})
+router.delete("/comments/:commentId", checkAuth, (req, res, next ) => {
+    console.log('k',req.params.commentId);
+    Comment.findOne({_id: req.params.commentId})
     .then(found => {
         Post.updateOne({_id: found.postId}, {$inc: {count: -1}} )
         .then(deleteTime => {
