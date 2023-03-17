@@ -1847,7 +1847,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   isLoading = false;
   open = true;
   reposts = '';
-  commentCount: any;
+  commentCount: number;
   commentsValidator = '';
   commentsCountValidator = '';
   closed = true;
@@ -2194,15 +2194,10 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
       .subscribe((comments: string[]) => {
         console.log('i got more shit to say', comments.length);
         this.commentsCountValidator = postId;
-        if (comments.length == 0) {
-          this.commentCount = false;
+        this.commentCount = comments.length;
+        console.log('type', this.commentCount);
+        this.comments = comments.reverse();
 
-          console.log('type', this.commentCount);
-          this.comments = comments.reverse();
-        } else {
-          this.commentCount = comments.length;
-          console.log('type2', this.commentCount);
-        }
         this.commentsSub.unsubscribe();
       });
   }
