@@ -1915,6 +1915,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   // commentCount: number;
   commentsValidator = '';
   commentsCountValidator = '';
+  addCommentCount = 0;
   closed = true;
   hide = true;
   valueChosen = '7';
@@ -2245,6 +2246,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
       );
       this.comment.setValue('');
       this.loadComments(postId);
+      this.addCommentCount += 1;
       console.log('onComment', postId);
     }
   }
