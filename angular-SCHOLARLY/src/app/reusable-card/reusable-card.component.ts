@@ -2263,7 +2263,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
         this.comments = comments.reverse();
-
+        this.addCommentCount -= 1;
         this.commentsSub.unsubscribe();
       });
     console.log('in real time');
