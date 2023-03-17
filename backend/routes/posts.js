@@ -963,7 +963,7 @@ if (req.body.userId){
                 })
             }})
 // Comments deleting
-router.delete("/comments/:commentId/", checkAuth, (req, res, next ) => {
+router.delete("/comments/:commentId", checkAuth, (req, res, next ) => {
     console.log('k',req.params.commentId);
    
     Comment.findOne({_id: req.params.commentId})

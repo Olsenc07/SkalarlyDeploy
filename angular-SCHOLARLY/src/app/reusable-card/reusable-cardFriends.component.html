@@ -217,29 +217,29 @@
             {{post.postDescription}}
             <div class="hashs" matTooltip="Hashtags">
               <div class="HashTags" *ngIf="post.Hashtag1">
-                <button mat-raised-button (click)="navToHashTag(post.Hashtag1)" class="HashTagsBtn">
+                <button mat-stroked-button (click)="navToHashTag(post.Hashtag1)" class="HashTagsBtn">
            #{{post.Hashtag1}} 
               </button>
               </div>
               <div class="HashTags" *ngIf="post.Hashtag2">
-                <button mat-raised-button (click)="navToHashTag(post.Hashtag2)" class="HashTagsBtn">
+                <button mat-stroked-button (click)="navToHashTag(post.Hashtag2)" class="HashTagsBtn">
                   #{{post.Hashtag2}}
                 </button>
                 </div>
                 <div class="HashTags" *ngIf="post.Hashtag3">
-                <button mat-raised-button (click)="navToHashTag(post.Hashtag3)" class="HashTagsBtn">              
+                <button mat-stroked-button (click)="navToHashTag(post.Hashtag3)" class="HashTagsBtn">              
                   #{{post.Hashtag3}}
                   </button>
                   </div>
                   <div class="HashTags" *ngIf="post.Hashtag4">
-                <button mat-raised-button (click)="navToHashTag(post.Hashtag4)" class="HashTagsBtn">
+                <button mat-stroked-button (click)="navToHashTag(post.Hashtag4)" class="HashTagsBtn">
                  
                     
                   #{{post.Hashtag4}}
                     </button>
                     </div>
                     <div class="HashTags" *ngIf="post.Hashtag5">
-                <button mat-raised-button (click)="navToHashTag(post.Hashtag5)" class="HashTagsBtn">
+                <button mat-stroked-button (click)="navToHashTag(post.Hashtag5)" class="HashTagsBtn">
               
                       
                   #{{post.Hashtag5}}
@@ -371,7 +371,7 @@
 
         <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
           <button  mat-icon-button matSuffix class="trashCan_"
-            (click)='onDeleteComment(comment.id, post.id)'>
+            (click)='onDeleteComment(comment._id, post.id)'>
             <i class="far fa-times-circle"></i>
             </button>
             </div>
