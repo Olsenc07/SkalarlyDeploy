@@ -315,7 +315,7 @@
     <div class="timeBox">
       {{comment.time}}
 <div class="timeUser">
-  <div class="userName  link"  *ngIf="userId == comment.Creator"   id="userName">@{{comment.username}}</div>
+  <div class="userName  link"  *ngIf="(userId == comment.Creator) || userId == post.Creator"   id="userName">@{{comment.username}}</div>
   <button mat-button *ngIf="userId !== comment.Creator" >
     <div class="userName  link"  id="userName" (click)="navigateToPage(comment.username)">@{{comment.username}}
       </div>
@@ -323,7 +323,7 @@
 
       </div>
       </div>
-      <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
+      <div *ngIf="(userId == comment.Creator) || (userId == post.Creator)" class="trashCan" matTooltip="Delete Comment">
         <button  mat-icon-button matSuffix class="trashCan_"
           (click)='onDeleteComment(comment.id, post.id)'>
           <i class="far fa-times-circle"></i>

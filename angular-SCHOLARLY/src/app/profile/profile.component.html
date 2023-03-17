@@ -243,7 +243,8 @@
                             {{ info.CodeCompleted4 }}
                     </mat-chip>
 
-                            <mat-chip *ngIf="info.CodeCompleted5" class="style fall" color="primary" selected >
+                            <mat-chip *ngIf="info.CodeCompleted5" class="style fall" color="primary" selected 
+                            (click)="navigateToMainPage(info.CodeCompleted5)">
                               {{ info.CodeCompleted5 }}
                     </mat-chip>
                     <span class="fas fa-snowflake centerIcon"  matTooltip="Second Semester"
