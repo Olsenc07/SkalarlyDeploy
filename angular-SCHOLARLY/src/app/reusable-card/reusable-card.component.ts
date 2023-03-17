@@ -63,6 +63,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
   // number of comments that load
   recomCounter = 0;
   countVisibility = 0;
+  commentsCountValidator = '';
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
   timeHourInitial = new Date().getHours();
@@ -202,8 +203,23 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
   }
-  onDeleteComment(commentId: string): any {
+  onDeleteComment(commentId: string, postId: string): any {
     this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
+    console.log('chaz whats up 2', postId);
+
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        console.log('i got more shit to say', comments.length);
+        this.commentsCountValidator = postId;
+        // this.commentCount = comments.length;
+        // console.log('type', this.commentCount);
+        this.comments = comments.reverse();
+
+        this.commentsSub.unsubscribe();
+      });
+    console.log('in real time');
   }
   navToPost(postId: string): any {
     console.log('Hey babe I miss you', postId);
@@ -377,6 +393,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
+        this.commentsCountValidator = postId;
         this.comments = comments.reverse();
         this.commentsSub.unsubscribe();
       });
@@ -1151,6 +1168,7 @@ export class CardFeedComponent implements OnInit, OnDestroy {
   open = true;
   reposts = '';
   commentsValidator = '';
+  commentsCountValidator = '';
   closed = true;
   hide = true;
   userId: string;
@@ -1398,9 +1416,23 @@ export class CardFeedComponent implements OnInit, OnDestroy {
   }
 
   //
-  onDeleteComment(commentId: string): any {
+  onDeleteComment(commentId: string, postId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
+    console.log('chaz whats up 2', postId);
+
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        console.log('i got more shit to say', comments.length);
+        this.commentsCountValidator = postId;
+        // this.commentCount = comments.length;
+        // console.log('type', this.commentCount);
+        this.comments = comments.reverse();
+
+        this.commentsSub.unsubscribe();
+      });
+    console.log('in real time');
   }
   // Where the post was posted
   navigateToMainPage(value: string): void {
@@ -1486,6 +1518,7 @@ export class CardFeedComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
+        this.commentsCountValidator = postId;
         this.comments = comments.reverse();
         this.commentsSub.unsubscribe();
       });
