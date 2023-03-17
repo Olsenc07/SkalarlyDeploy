@@ -314,7 +314,7 @@
       </button>
   </div>
   </div>
-        <div *ngIf="userId == comment.Creator" class="trashCan">
+        <div *ngIf="userId == comment.Creator || (userId == post.Creator)" class="trashCan">
           <button  mat-icon-button matSuffix
             (click)='onDeleteComment(comment.id, post.id)'>
             <i class="far fa-times-circle"></i>
