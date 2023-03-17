@@ -1847,7 +1847,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   isLoading = false;
   open = true;
   reposts = '';
-  commentCount: any;
+  commentCount: number;
   commentsValidator = '';
   commentsCountValidator = '';
   closed = true;
@@ -2195,6 +2195,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         console.log('i got more shit to say', comments.length);
         this.commentsCountValidator = postId;
         this.commentCount = comments.length;
+        console.log('type', typeof this.commentCount);
         this.comments = comments.reverse();
 
         console.log('we win', this.commentsCountValidator);

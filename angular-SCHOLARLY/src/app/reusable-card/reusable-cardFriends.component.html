@@ -218,38 +218,31 @@
             <div class="hashs" matTooltip="Hashtags">
               <div class="HashTags" *ngIf="post.Hashtag1">
                 <button mat-raised-button (click)="navToHashTag(post.Hashtag1)" class="HashTagsBtn">
-                  <i  class="fas fa-hashtag hashFit"></i>
-                  <div>
-                  {{post.Hashtag1}}
-                  </div>
+           #{{post.Hashtag1}} 
               </button>
               </div>
               <div class="HashTags" *ngIf="post.Hashtag2">
                 <button mat-raised-button (click)="navToHashTag(post.Hashtag2)" class="HashTagsBtn">
-                  <i matPrefix class="fas fa-hashtag "></i>
-                
-                  {{post.Hashtag2}}
+                  #{{post.Hashtag2}}
                 </button>
                 </div>
                 <div class="HashTags" *ngIf="post.Hashtag3">
-                <button mat-raised-button (click)="navToHashTag(post.Hashtag3)" class="HashTagsBtn">
-                  <i matPrefix class="fas fa-hashtag"></i>
-                  
-                  {{post.Hashtag3}}
+                <button mat-raised-button (click)="navToHashTag(post.Hashtag3)" class="HashTagsBtn">              
+                  #{{post.Hashtag3}}
                   </button>
                   </div>
                   <div class="HashTags" *ngIf="post.Hashtag4">
                 <button mat-raised-button (click)="navToHashTag(post.Hashtag4)" class="HashTagsBtn">
-                  <i matPrefix class="fas fa-hashtag"></i>
+                 
                     
-                  {{post.Hashtag4}}
+                  #{{post.Hashtag4}}
                     </button>
                     </div>
                     <div class="HashTags" *ngIf="post.Hashtag5">
                 <button mat-raised-button (click)="navToHashTag(post.Hashtag5)" class="HashTagsBtn">
-                  <i matPrefix class="fas fa-hashtag"></i>
+              
                       
-                  {{post.Hashtag5}}
+                  #{{post.Hashtag5}}
                       </button>
                       </div>
                     </div>
@@ -291,9 +284,10 @@
           </div>
           <!-- after loading comments -->
           <div *ngIf="commentCount && (commentsCountValidator == post.id)">  
-        Comments
-
+       <div>Comments</div> 
+<div>
        {{commentCount}}
+      </div>
           </div>
           </mat-chip>
                       </mat-chip-list>
