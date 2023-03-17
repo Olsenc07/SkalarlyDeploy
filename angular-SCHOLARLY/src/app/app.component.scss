@@ -127,7 +127,15 @@
   color: black;
 align-items: center;
 }
-
+.rowInfo_{
+  flex-direction: row;
+  display: flex;
+  // font-family: 'Poppins',sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+  color: black;
+align-items: center;
+justify-content: center;
+}
 $box-shadow-color: rgba(0, 0, 0, 0.25);
 .sub_title{
   display: flex;

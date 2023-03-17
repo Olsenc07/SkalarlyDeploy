@@ -185,13 +185,15 @@
                                 <div class="title">Hashtags</div>
                                 <mat-divider></mat-divider>
                                 <div *ngFor="let hash of hashs;let even = even; let odd = odd" class="triggerContainer_">
-                                <mat-option 
+                                <mat-option *ngIf="hash !== ''"
                                  [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navToHashTag(hash)" id="hashName" >
-                                  <div  class="rowInfo" >
+                                  <div  class="rowInfo_" >
                                     <i matPrefix class="fas fa-hashtag hash"></i>
                                    {{hash}}
                               
                                   </div>
+                                  <mat-divider ></mat-divider>
+
                                 </mat-option>
                               <!-- </mat-autocomplete> -->
                               </div>
