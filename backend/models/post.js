@@ -32,6 +32,7 @@ const postSchema = mongoose.Schema({
     VideoPath: { type: String},
     cloudinary_id: { type:String},
     viewed: {type: Boolean},
+    count: {type: Number},
     Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true}
 });
 

@@ -38,6 +38,7 @@ export interface Post {
   ImagePath: string;
   VideoPath: string;
   viewed: boolean;
+  count: number;
   Creator: string;
   // User info
   Username: string;
@@ -113,6 +114,7 @@ export class PostService {
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               viewed: post.viewed,
+              count: post.count,
               Creator: post.Creator,
             };
           });
@@ -226,6 +228,7 @@ export class PostService {
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               viewed: post.viewed,
+              count: post.count,
               Creator: post.Creator,
             };
           });
@@ -281,6 +284,7 @@ export class PostService {
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               viewed: post.viewed,
+              count: post.count,
               Creator: post.Creator,
             };
           });
@@ -336,6 +340,7 @@ export class PostService {
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               viewed: post.viewed,
+              count: post.count,
               Creator: post.Creator,
             };
           });
@@ -391,6 +396,7 @@ export class PostService {
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               viewed: post.viewed,
+              count: post.count,
               Creator: post.Creator,
             };
           });
@@ -447,6 +453,7 @@ export class PostService {
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               viewed: post.viewed,
+              count: post.count,
               Creator: post.Creator,
             };
           });
@@ -537,6 +544,7 @@ export class PostService {
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               viewed: post.viewed,
+              count: post.count,
               Creator: post.Creator,
             };
           });
@@ -624,6 +632,7 @@ export class PostService {
               ImagePath: post.ImagePath,
               VideoPath: post.VideoPath,
               viewed: post.viewed,
+              count: post.count,
               Creator: post.Creator,
             };
           });
@@ -796,6 +805,7 @@ export class PostService {
             ImagePath: responseData.postId.ImagePath,
             VideoPath: responseData.postId.VideoPath,
             viewed: false,
+            count: 0,
             Creator,
             SharerUsername: '',
             SharerName: '',
@@ -908,6 +918,7 @@ export class PostService {
             ImagePath: responseData.postId.ImagePath,
             VideoPath: responseData.postId.VideoPath,
             viewed: false,
+            count: 0,
             Creator,
             SharerUsername: '',
             SharerName: '',

@@ -419,6 +419,7 @@ image.single('upload'),
                 VideoPath: '',
                 cloudinary_id: result.public_id,
                 viewed: false,
+                count: 0,
                 Creator: req.userData.userId
             });
             post.save().then(createdPost => {
@@ -471,6 +472,7 @@ image.single('upload'),
                 VideoPath: '',
                 cloudinary_id: '',
                 viewed: false,
+                count: 0,
                 Creator: req.userData.userId
             });
             post.save().then(createdPost => {
@@ -542,6 +544,7 @@ video.single('video'),
                VideoPath: result.secure_url,
                cloudinary_id: result.public_id,
                viewed: false,
+               count: 0,
                Creator: req.userData.userId
            });
            post.save().then(createdPost => {
@@ -624,6 +627,7 @@ router.post("/Shared", checkAuth,
                 VideoPath: POST.VideoPath,
                 cloudinary_id: POST.cloudinary_id,
                 viewed: false,
+                count: 0,
                 Creator: req.userData.userId
             });
             post.save().then(createdPost => {
