@@ -284,14 +284,14 @@
           </div> -->
           <!-- after loading comments -->
           <!-- *ngIf="commentCount && (commentsCountValidator == post.id)" -->
-          <div  class="display" *ngIf="(post.count + addCommentCount) !== 0" >  
+          <div  class="display" *ngIf="(post.count ) !== 0" >  
        Comments
 <div class="commentCount" >
-       {{post.count + addCommentCount}}
+       {{post.count }}
       </div>
      
           </div>
-          <div  class="display" *ngIf="(post.count + addCommentCount) == 0" >  
+          <div  class="display" *ngIf="(post.count) == 0" >  
            No Comments
           
                </div>

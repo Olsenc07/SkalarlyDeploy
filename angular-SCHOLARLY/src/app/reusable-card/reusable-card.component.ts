@@ -1915,7 +1915,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   // commentCount: number;
   commentsValidator = '';
   commentsCountValidator = '';
-  addCommentCount = 0;
+
   closed = true;
   hide = true;
   valueChosen = '7';
@@ -2245,8 +2245,19 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         postId
       );
       this.comment.setValue('');
-      this.loadComments(postId);
-      this.addCommentCount += 1;
+      this.commentsService.getComments(postId);
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby');
+          this.commentsCountValidator = postId;
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments.reverse();
+
+          this.commentsSub.unsubscribe();
+        });
+
       console.log('onComment', postId);
     }
   }
@@ -2263,7 +2274,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
         this.comments = comments.reverse();
-        this.addCommentCount -= 1;
+
         this.commentsSub.unsubscribe();
       });
     console.log('in real time');
