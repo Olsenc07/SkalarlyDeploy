@@ -413,6 +413,7 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
   userId: string;
   reposts = '';
   commentsValidator = '';
+  commentsCountValidator = '';
   valueChosen = '7';
   // Filling with Post info from post.service
   posts: Post[] = [];
@@ -551,9 +552,23 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
       queryParams: { userId: this.userId },
     });
   }
-  onDeleteComment(commentId: string): any {
+  onDeleteComment(commentId: string, postId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
+    console.log('chaz whats up 2', postId);
+
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        console.log('i got more shit to say', comments.length);
+        this.commentsCountValidator = postId;
+        // this.commentCount = comments.length;
+        // console.log('type', this.commentCount);
+        this.comments = comments.reverse();
+
+        this.commentsSub.unsubscribe();
+      });
+    console.log('in real time');
   }
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
@@ -714,6 +729,7 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
+        this.commentsCountValidator = postId;
         this.comments = comments.reverse();
         this.commentsSub.unsubscribe();
       });
@@ -1534,6 +1550,7 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
   isLoading = false;
   reposts = '';
   commentsValidator = '';
+  commentsCountValidator = '';
   open = true;
   closed = true;
   hide = true;
@@ -1776,9 +1793,23 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
   }
 
   //
-  onDeleteComment(commentId: string): any {
+  onDeleteComment(commentId: string, postId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
+    console.log('chaz whats up 2', postId);
+
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        console.log('i got more shit to say', comments.length);
+        this.commentsCountValidator = postId;
+        // this.commentCount = comments.length;
+        // console.log('type', this.commentCount);
+        this.comments = comments.reverse();
+
+        this.commentsSub.unsubscribe();
+      });
+    console.log('in real time');
   }
   // Where the post was posted
   navigateToMainPage(value: string): void {
@@ -1864,6 +1895,7 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
+        this.commentsCountValidator = postId;
         this.comments = comments.reverse();
         this.commentsSub.unsubscribe();
       });
@@ -2562,6 +2594,7 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
   valueChosen = '7';
   reposts = '';
   commentsValidator = '';
+  commentsCountValidator = '';
   posts: Post[] = [];
   private postsSub: Subscription;
   private routeSub: Subscription;
@@ -2830,9 +2863,23 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
   }
-  onDeleteComment(commentId: string): any {
+  onDeleteComment(commentId: string, postId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
+    console.log('chaz whats up 2', postId);
+
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        console.log('i got more shit to say', comments.length);
+        this.commentsCountValidator = postId;
+        // this.commentCount = comments.length;
+        // console.log('type', this.commentCount);
+        this.comments = comments.reverse();
+
+        this.commentsSub.unsubscribe();
+      });
+    console.log('in real time');
   }
   CommentTrigger(postId): void {
     if (this.comment.value) {
@@ -2853,6 +2900,7 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
+        this.commentsCountValidator = postId;
         this.comments = comments.reverse();
         this.commentsSub.unsubscribe();
       });
