@@ -2289,7 +2289,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
-        this.comments = comments.reverse();
+        this.comments = comments;
 
         this.commentsSub.unsubscribe();
       });
