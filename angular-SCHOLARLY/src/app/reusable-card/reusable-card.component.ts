@@ -2285,7 +2285,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        console.log('i got more shit to say', comments.length);
+        console.log('i got more shit to say', comments);
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
