@@ -154,6 +154,7 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
   isLoading = false;
   hide = true;
   reposts = '';
+  commentsCountValidator = '';
   valueChosen = '7';
   userId: string;
   post = {};
@@ -346,9 +347,23 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
   emojiPreventClose($event: any): any {
     $event.stopPropagation();
   }
-  onDeleteComment(commentId: string): any {
+  onDeleteComment(commentId: string, postId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
+    console.log('chaz whats up 2', postId);
+
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        console.log('i got more shit to say', comments.length);
+        this.commentsCountValidator = postId;
+        // this.commentCount = comments.length;
+        // console.log('type', this.commentCount);
+        this.comments = comments.reverse();
+
+        this.commentsSub.unsubscribe();
+      });
+    console.log('in real time');
   }
   CommentTrigger(): void {
     if (this.comment.value) {
@@ -381,11 +396,12 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
         this.countSub.unsubscribe();
       });
   }
-  loadComments(): void {
+  loadComments(postId: string): void {
     this.commentsService.getComments(this.postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
+        this.commentsCountValidator = postId;
         this.comments = comments.reverse();
         this.commentsSub.unsubscribe();
       });
@@ -1373,6 +1389,8 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
   private routeSub: Subscription;
   private trendingSub: Subscription;
   commentsValidator = '';
+  commentsCountValidator = '';
+
   valueChosen = '7';
   reposts = '';
 
@@ -1579,13 +1597,31 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
         this.trendingSub.unsubscribe();
       });
   }
+  onDeleteComment(commentId: string, postId: string): any {
+    this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
+    console.log('chaz whats up 2', postId);
 
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        console.log('i got more shit to say', comments.length);
+        this.commentsCountValidator = postId;
+        // this.commentCount = comments.length;
+        // console.log('type', this.commentCount);
+        this.comments = comments.reverse();
+
+        this.commentsSub.unsubscribe();
+      });
+    console.log('in real time');
+  }
   loadComments(postId: string): void {
     console.log('hey logic fade away 7', postId);
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
+        this.commentsCountValidator = postId;
         this.comments = comments.reverse();
         this.commentsSub.unsubscribe();
       });

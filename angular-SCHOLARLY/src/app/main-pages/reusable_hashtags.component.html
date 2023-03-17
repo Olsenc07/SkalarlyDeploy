@@ -263,8 +263,17 @@
         </mat-chip-list> -->
         <mat-chip-list class="buttonsC">  
           <mat-chip class="showCommentsBtn"  matTooltip="Click to show comments" (click)="loadComments(post.id)">
-           Comments
-            <i class="far fa-comments"></i>
+            <div  class="display" *ngIf="post.count !== 0" >  
+              Comments
+       <div class="commentCount" >
+              {{post.count}}
+             </div>
+            
+                 </div>
+                 <div  class="display" *ngIf="post.count == 0" >  
+                  No Comments
+                 
+                      </div>
           </mat-chip>
                       </mat-chip-list>
                   
@@ -334,7 +343,7 @@
 
         <div *ngIf="userId == comment.Creator" class="trashCan" matTooltip="Delete Comment">
           <button  mat-icon-button matSuffix class="trashCan_"
-            (click)='onDeleteComment(comment.id)'>
+            (click)='onDeleteComment(comment.id, post.id)'>
             <i class="far fa-times-circle"></i>
             </button>
             </div>

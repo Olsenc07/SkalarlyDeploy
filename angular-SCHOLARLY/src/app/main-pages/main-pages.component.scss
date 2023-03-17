@@ -53,7 +53,9 @@
   justify-content: center;
   width: fit-content;
 }
-
+.commentCount{
+  padding: 0% 3%;
+}
 .center {
   display: flex;
   justify-content: center;
@@ -125,6 +127,9 @@
   justify-content: center;
   margin-top: 2%;
   justify-content: center;
+}
+.display{
+  display: flex;
 }
 .expandBtn {
   font-size: x-large;
