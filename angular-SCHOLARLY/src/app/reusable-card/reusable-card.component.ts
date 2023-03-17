@@ -2104,10 +2104,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   }
 
   //
-  onDeleteComment(commentId: string): any {
-    this.commentsService.deleteComment(commentId);
-    console.log('chaz whats up', commentId);
-  }
+
   // Where the post was posted
   navigateToMainPage(value: string): void {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
@@ -2185,7 +2182,12 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
       console.log('onComment', postId);
     }
   }
-
+  onDeleteComment(commentId: string, postId: string): any {
+    this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
+    this.loadComments(postId);
+    console.log('in real time');
+  }
   loadComments(postId: string): void {
     console.log('hey logic fade away', postId);
     this.commentsService.getComments(postId);
