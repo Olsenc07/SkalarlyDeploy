@@ -164,7 +164,7 @@ export class CommentsService {
 
   // Delete comment
   deleteComment(commentId: string): any {
-    // console.log('hey chase postId', postId);
+    console.log('hey chase commentId', commentId);
     const sub = this.http
       .delete('https://www.skalarly.com/api/posts/comments/' + commentId)
       .subscribe(() => {

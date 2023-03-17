@@ -2185,6 +2185,8 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   onDeleteComment(commentId: string, postId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
+    console.log('chaz whats up 2', postId);
+
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
