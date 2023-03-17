@@ -2244,6 +2244,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         postId
       );
       this.comment.setValue('');
+      this.loadComments(postId);
       console.log('onComment', postId);
     }
   }
