@@ -76,7 +76,7 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
     // comments
     this.commentsService.getCommentsHistory(this.userId, 0);
     this.commentSub = this.commentsService
-      .getMessagesUpdateListenerHistory()
+      .getMessagesUpdateListener()
       .subscribe((comments: any) => {
         this.comments = comments;
         const NEW2 = [];
@@ -208,7 +208,7 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
     const sub1 = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments.reverse();
+        this.comments = comments;
         sub1.unsubscribe();
       });
   }
@@ -223,7 +223,7 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
     const sub2 = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments.reverse();
+        this.comments = comments;
         sub2.unsubscribe();
       });
   }
@@ -234,7 +234,7 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments.reverse();
+        this.comments = comments;
         this.commentsSub.unsubscribe();
       });
     console.log('begging to have her kneck fucked');
