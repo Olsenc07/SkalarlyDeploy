@@ -41,7 +41,7 @@
 <div *ngIf="comment.viewed == false" class="newIndicator"></div>
 
             <button  mat-flat-button matSuffix class="counterColor"  matTooltip="Delete Comment"
-              (click)='onDeleteComment(comment._id)'>
+              (click)='onDeleteComment(comment.id)'>
               <i class="far fa-times-circle"></i>
               </button>
 

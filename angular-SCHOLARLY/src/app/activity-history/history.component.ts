@@ -188,6 +188,7 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListenerHistory()
       .subscribe((comments: string[]) => {
+        console.log('comments yo', comments);
         this.comments = comments;
       });
   }
