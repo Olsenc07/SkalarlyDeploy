@@ -142,7 +142,18 @@ export class CommentsService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.messages;
+          return messageData.messages.map((comment) => {
+            return {
+              id: comment._id,
+              body: comment.body,
+              username: comment.username,
+              time: comment.time,
+              postId: comment.postId,
+              ProfilePicPath: comment.ProfilePicPath,
+              viewed: comment.viewed,
+              Creator: comment.Creator,
+            };
+          });
         })
       )
       .subscribe((transformedComment) => {
