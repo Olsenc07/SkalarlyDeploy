@@ -355,11 +355,11 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        console.log('i got more shit to say', comments.length);
+        console.log('i got more shit to say g59', comments.length);
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
-        this.comments = comments.reverse();
+        this.comments = comments;
 
         this.commentsSub.unsubscribe();
       });
@@ -374,6 +374,16 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
         this.postId
       );
       this.comment.setValue('');
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby baby');
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments;
+
+          this.commentsSub.unsubscribe();
+        });
       console.log('onComment', this.postId);
     }
   }
@@ -429,6 +439,7 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
 export class RecentComponent implements OnInit {
   isLoading = false;
   reposts = '';
+  commentsCountValidator = '';
 
   valueChosen = '7';
   recomCounter = 0;
@@ -650,6 +661,17 @@ export class RecentComponent implements OnInit {
         postId
       );
       this.comment.setValue('');
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby fixing that');
+          this.commentsCountValidator = postId;
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments;
+
+          this.commentsSub.unsubscribe();
+        });
       console.log('onComment', postId);
     }
   }
@@ -679,7 +701,7 @@ export class RecentComponent implements OnInit {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments.reverse();
+        this.comments = comments;
         this.commentsSub.unsubscribe();
       });
   }
@@ -828,10 +850,7 @@ export class TrendingComponent implements OnInit {
       return 'Dec';
     }
   }
-  onDeleteComment(commentId: string): any {
-    this.commentsService.deleteComment(commentId);
-    console.log('chaz whats up', commentId);
-  }
+
   // Where the post was posted
   navigateToMainPage(value: string): void {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
@@ -1382,6 +1401,7 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
   countVisibility = 0;
   recomCounter = 0;
   hide = true;
+  userId: string;
 
   comment: FormControl = new FormControl('');
   comments: string[] = [];
@@ -1424,9 +1444,12 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     public postService: PostService,
     private commentsService: CommentsService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+
     this.routeSub = this.route.queryParams.subscribe((params) => {
       this.hashtag = params?.hashtag;
       console.log('params hashtag page', this.hashtag);
@@ -1597,6 +1620,31 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
         this.trendingSub.unsubscribe();
       });
   }
+  CommentTrigger(postId: string): void {
+    if (this.comment.value) {
+      this.commentsService.createComment(
+        this.comment.value,
+        this.userId,
+        this.time,
+        postId
+      );
+      this.comment.setValue('');
+      // this.commentsService.getComments(postId);
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby');
+          this.commentsCountValidator = postId;
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments;
+
+          this.commentsSub.unsubscribe();
+        });
+
+      console.log('onComment', postId);
+    }
+  }
   onDeleteComment(commentId: string, postId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
@@ -1609,7 +1657,7 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
-        this.comments = comments.reverse();
+        this.comments = comments;
 
         this.commentsSub.unsubscribe();
       });
@@ -1622,7 +1670,7 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.commentsCountValidator = postId;
-        this.comments = comments.reverse();
+        this.comments = comments;
         this.commentsSub.unsubscribe();
       });
   }
