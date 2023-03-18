@@ -858,7 +858,7 @@ if (req.body.userId){
         // increment comment count
         Post.updateOne({_id: req.body.postId}, {$inc: {count: 1}})
         .then(updated => {
-            Comment.find({postId: req.body.postId})
+            Comment.find({postId: req.body.postId}).sort({_id:-1})
             .then(allComments => {
                 console.log('private person', allComments);
                 res.status(201).json({
