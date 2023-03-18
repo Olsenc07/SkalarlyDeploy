@@ -215,7 +215,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
-        this.comments = comments.reverse();
+        this.comments = comments;
 
         this.commentsSub.unsubscribe();
       });
@@ -383,6 +383,17 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
         postId
       );
       this.comment.setValue('');
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby 77');
+          this.commentsCountValidator = postId;
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments;
+
+          this.commentsSub.unsubscribe();
+        });
       console.log('onComment', postId);
     }
   }
@@ -394,7 +405,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.commentsCountValidator = postId;
-        this.comments = comments.reverse();
+        this.comments = comments;
         this.commentsSub.unsubscribe();
       });
   }
@@ -564,7 +575,7 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
-        this.comments = comments.reverse();
+        this.comments = comments;
 
         this.commentsSub.unsubscribe();
       });
@@ -719,6 +730,17 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
         postId
       );
       this.comment.setValue('');
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby 456');
+          this.commentsCountValidator = postId;
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments;
+
+          this.commentsSub.unsubscribe();
+        });
       console.log('onComment', postId);
     }
   }
@@ -730,7 +752,7 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.commentsCountValidator = postId;
-        this.comments = comments.reverse();
+        this.comments = comments;
         this.commentsSub.unsubscribe();
       });
   }
@@ -1444,7 +1466,7 @@ export class CardFeedComponent implements OnInit, OnDestroy {
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
-        this.comments = comments.reverse();
+        this.comments = comments;
 
         this.commentsSub.unsubscribe();
       });
@@ -1524,6 +1546,17 @@ export class CardFeedComponent implements OnInit, OnDestroy {
         postId
       );
       this.comment.setValue('');
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby');
+          this.commentsCountValidator = postId;
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments;
+
+          this.commentsSub.unsubscribe();
+        });
       console.log('onComment', postId);
     }
   }
@@ -1535,7 +1568,7 @@ export class CardFeedComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.commentsCountValidator = postId;
-        this.comments = comments.reverse();
+        this.comments = comments;
         this.commentsSub.unsubscribe();
       });
   }
@@ -1805,7 +1838,7 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
-        this.comments = comments.reverse();
+        this.comments = comments;
 
         this.commentsSub.unsubscribe();
       });
@@ -1885,6 +1918,17 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
         postId
       );
       this.comment.setValue('');
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby');
+          this.commentsCountValidator = postId;
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments;
+
+          this.commentsSub.unsubscribe();
+        });
       console.log('onComment', postId);
     }
   }
@@ -1896,7 +1940,7 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.commentsCountValidator = postId;
-        this.comments = comments.reverse();
+        this.comments = comments;
         this.commentsSub.unsubscribe();
       });
   }
@@ -2253,7 +2297,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
           this.commentsCountValidator = postId;
           // this.commentCount = comments.length;
           // console.log('type', this.commentCount);
-          this.comments = comments.reverse();
+          this.comments = comments;
 
           this.commentsSub.unsubscribe();
         });
@@ -2273,7 +2317,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
-        this.comments = comments.reverse();
+        this.comments = comments;
 
         this.commentsSub.unsubscribe();
       });
@@ -2310,6 +2354,7 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
   userId: string;
   valueChosen = '7';
   commentsValidator = '';
+  commentsCountValidator = '';
   reposts = '';
   recomCounter = 0;
   countVisibility = 0;
@@ -2549,6 +2594,17 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
         postId
       );
       this.comment.setValue('');
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby');
+          this.commentsCountValidator = postId;
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments;
+
+          this.commentsSub.unsubscribe();
+        });
       console.log('onComment', postId);
     }
   }
@@ -2587,7 +2643,7 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
-        this.comments = comments.reverse();
+        this.comments = comments;
         this.commentsSub.unsubscribe();
       });
   }
@@ -2889,7 +2945,7 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
-        this.comments = comments.reverse();
+        this.comments = comments;
 
         this.commentsSub.unsubscribe();
       });
@@ -2904,6 +2960,17 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
         postId
       );
       this.comment.setValue('');
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby');
+          this.commentsCountValidator = postId;
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments;
+
+          this.commentsSub.unsubscribe();
+        });
       console.log('onComment', postId);
     }
   }
@@ -2915,7 +2982,7 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
       .getMessagesUpdateListener()
       .subscribe((comments: string[]) => {
         this.commentsCountValidator = postId;
-        this.comments = comments.reverse();
+        this.comments = comments;
         this.commentsSub.unsubscribe();
       });
   }
