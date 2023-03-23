@@ -1638,7 +1638,6 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
           // this.commentCount = comments.length;
           // console.log('type', this.commentCount);
           this.comments = comments;
-
           this.commentsSub.unsubscribe();
         });
 
@@ -1658,7 +1657,6 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
         this.comments = comments;
-
         this.commentsSub.unsubscribe();
       });
     console.log('in real time');

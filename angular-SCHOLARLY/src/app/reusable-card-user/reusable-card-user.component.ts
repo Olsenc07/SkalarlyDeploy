@@ -311,6 +311,7 @@ export class ReusableCardMessageComponent implements OnInit, OnDestroy {
   navigateToChat(username: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/messages/:'], { queryParams: { username } });
+    console.log('pay role', username);
   }
   deleteMsg(msgId: string): any {
     console.log('xanyx', msgId);
