@@ -98,12 +98,14 @@ console.log('blocked', blocked)
             {otherUser: user.username},
             {username: nonyaOnce[i]}
                 ]
-                }).sort({time:-1, _id:-1})    
+                }).sort({ _id:-1})    
                   .then(finalDocs => {
                     console.log('did we make it?', finalDocs)
+                    // 
                    allMsgs.push(finalDocs);
                 if(allMsgs.length == nonyaOnce.length){ 
                     let allMsgsReverse = allMsgs.reverse();
+                    console.log('caterpillars',allMsgsReverse )
                 res.status(200).json({
                     message: 'Info messages fetched succesfully!',
                        messages: allMsgsReverse
