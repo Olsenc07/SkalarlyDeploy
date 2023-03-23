@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { PostsService } from '../services/posts.service';
 
 import { io } from 'socket.io-client';
 import { Subscription } from 'rxjs';
@@ -10,7 +9,6 @@ import { MessageNotificationService } from '../services/messagesNotifications.se
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
 import { createPopup } from '@picmo/popup-picker';
-import { PostService } from '../services/post.service';
 
 export interface Message {
   id: string;
@@ -118,8 +116,8 @@ export class MessagingComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.messagesNotif = messagesNotif.reverse();
         this.messagesNoNotif = '';
+        this.delSub.unsubscribe();
       });
-    this.delSub.unsubscribe();
   }
   // resets search
   clear(): void {
@@ -132,8 +130,8 @@ export class MessagingComponent implements OnInit, OnDestroy {
         this.messagesNotif = messagesNotif.reverse();
         this.messagesNoNotif = '';
         console.log('cleared now', this.messagesNotif);
+        this.clearSub.unsubscribe();
       });
-    this.clearSub.unsubscribe();
   }
   // Search notifs
   sendDataNotif(event: any): any {
@@ -185,15 +183,15 @@ export class MessagingComponent implements OnInit, OnDestroy {
             console.log('g eazy', messagesNotif);
             this.isLoading = false;
             this.messagesNotif = messagesNotif.reverse();
+            this.msgNotif2Sub.unsubscribe();
           });
-        this.msgNotif2Sub.unsubscribe();
         this.msgNotifNoSub = this.messageNotificationService
           .getListenerNoNotification()
           .subscribe((messagesNoNotif: string) => {
             console.log('50 cent', messagesNoNotif);
             this.messagesNoNotif = messagesNoNotif;
+            this.msgNotifNoSub.unsubscribe();
           });
-        this.msgNotifNoSub.unsubscribe();
         // console.log('tumblr girls');
         // this.messageNotificationService.getMessageNotification(this.userId);
         // this.messageNotificationService
@@ -215,8 +213,8 @@ export class MessagingComponent implements OnInit, OnDestroy {
       .subscribe((messagesNotif: Message[]) => {
         this.messagesNotif = messagesNotif.reverse();
         this.router.navigate(['/messages/:'], { queryParams: { username } });
+        this.chatSub.unsubscribe();
       });
-    this.chatSub.unsubscribe();
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
   }
   // Am Pm instead of 24hr clock
