@@ -82,7 +82,7 @@ console.log('blocked', blocked)
                 Msg.find( {$and: [
                     {otherUser: user.username},
                     {you:{$nin: blockedList }}
-            ]}).sort({ _id:1})  
+            ]}).sort({ time:-1})  
                 .then(documents => {
                     if(documents.length > 0){
                     console.log('timing', documents)
