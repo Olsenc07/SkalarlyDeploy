@@ -82,7 +82,7 @@ console.log('blocked', blocked)
                 Msg.find( {$and: [
                     {otherUser: user.username},
                     {you:{$nin: blockedList }}
-            ]}).sort({ time:-1})  
+            ]}) 
                 .then(documents => {
                     if(documents.length > 0){
                     console.log('timing', documents)
@@ -98,7 +98,7 @@ console.log('blocked', blocked)
             {otherUser: user.username},
             {username: nonyaOnce[i]}
                 ]
-                })  
+                }).sort({ time:-1}) 
                   .then(finalDocs => {
                     console.log('did we make it?', finalDocs)
                     // 
