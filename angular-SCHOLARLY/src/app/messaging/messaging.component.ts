@@ -93,7 +93,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
-        this.messagesNotif = messagesNotif.reverse();
+        this.messagesNotif = messagesNotif;
         console.log('should be viewed now', this.messagesNotif);
       });
     // this.route.queryParams.subscribe((params) => {

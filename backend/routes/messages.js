@@ -104,7 +104,7 @@ console.log('blocked', blocked)
                     // 
                    allMsgs.push(finalDocs);
                 if(allMsgs.length == nonyaOnce.length){ 
-                    let allMsgsReverse = allMsgs.reverse();
+                    let allMsgsReverse = allMsgs;
                     console.log('caterpillars',allMsgsReverse )
                 res.status(200).json({
                     message: 'Info messages fetched succesfully!',
