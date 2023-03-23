@@ -98,7 +98,7 @@ console.log('blocked', blocked)
             {otherUser: user.username},
             {username: nonyaOnce[i]}
                 ]
-                }).sort({time:-1})    
+                }).sort({time:-1, _id:-1})    
                   .then(finalDocs => {
                     console.log('did we make it?', finalDocs)
                    allMsgs.push(finalDocs);
