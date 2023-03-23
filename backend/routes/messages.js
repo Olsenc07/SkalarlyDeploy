@@ -110,7 +110,7 @@ console.log('blocked', blocked)
                     allMsgsReverse.sort((a,b) => {
                         let newest = new Date(a.time),
                             older = new Date(b.time);
-                            return newest - older
+                            return older - newest
                     })
                     console.log('final jess', allMsgsReverse)
                 res.status(200).json({
