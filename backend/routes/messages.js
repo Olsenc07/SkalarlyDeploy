@@ -105,7 +105,7 @@ console.log('blocked', blocked)
                    allMsgs.push(finalDocs);
                 if(allMsgs.length == nonyaOnce.length){ 
                     let allMsgsReverse = allMsgs;
-                    console.log('sooner syd',allMsgsReverse )
+                    console.log('sooner syd', allMsgsReverse );
                     // sort by new time ontop
                     allMsgsReverse.sort((a,b) => {
                         let newest = new Date(a.time),
@@ -180,7 +180,14 @@ console.log('blocked', blocked)
                     console.log('did we make it?', finalDocs)
                    allMsgs.push(finalDocs);
                 if(allMsgs.length == nonyaOnce.length){ 
-                    let allMsgsReverse = allMsgs.reverse();
+                    let allMsgsReverse = allMsgs;
+                    console.log('sooner syd 2', allMsgsReverse );
+                    allMsgsReverse.sort((a,b) => {
+                        let newest = new Date(a.time),
+                            older = new Date(b.time);
+                            return older - newest
+                    })
+                    console.log('final jess 2', allMsgsReverse)
                 res.status(200).json({
                     message: 'Info messages fetched succesfully!',
                        messages: allMsgsReverse

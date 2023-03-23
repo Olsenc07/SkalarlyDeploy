@@ -94,8 +94,9 @@ export class MessagingComponent implements OnInit, OnDestroy {
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
         this.messagesNotif = messagesNotif;
-        console.log('should be viewed now', this.messagesNotif);
+        console.log('should be viewed now 777', this.messagesNotif);
       });
+
     // this.route.queryParams.subscribe((params) => {
     //   this.username = params?.username;
   }

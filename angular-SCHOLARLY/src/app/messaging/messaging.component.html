@@ -184,7 +184,10 @@
 
 </div>  
 <div class="messageTitle" *ngIf="username !== userId">
-  Messaging {{username}}
+  Messaging
+  <div *ngIf="!username">No One</div>
+  
+  <div *ngIf="username">{{username}}</div>
 </div>
   
 <div class="send_btn whiteC">
