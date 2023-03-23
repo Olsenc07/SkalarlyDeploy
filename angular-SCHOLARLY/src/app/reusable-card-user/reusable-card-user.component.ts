@@ -293,8 +293,8 @@ export class ReusableCardMessageComponent implements OnInit, OnDestroy {
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
-        this.messagesNotif = messagesNotif.reverse();
-        console.log('should be viewed', this.messagesNotif);
+        this.messagesNotif = messagesNotif;
+        console.log('should be viewed miss my...', this.messagesNotif);
       });
 
     // have now viewed these messages
