@@ -102,7 +102,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
           const older = new Date(b.time).getTime();
           console.log('snake', newest);
           console.log('balloon', older);
-          return newest - older;
+          return older - newest;
         });
         console.log('coda', messagesNotif);
         this.messagesNotif = messagesNotif;
