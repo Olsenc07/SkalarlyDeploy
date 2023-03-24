@@ -95,11 +95,12 @@ export class MessagingComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         console.log('killa', this.messagesNotif);
         // means if its on blank pg which makes them display upside down
-        // messagesNotif.sort((a, b) => {
-        //   let newest = new Date(a.time),
-        //     older = new Date(b.time);
-        //   return older - newest;
-        // });
+        messagesNotif.sort((a, b) => {
+          const newest = a.time;
+          const older = b.time;
+          return older - newest;
+        });
+        console.log('city', this.messagesNotif);
         this.messagesNotif = messagesNotif;
 
         console.log('should be viewed now 777', this.messagesNotif);
