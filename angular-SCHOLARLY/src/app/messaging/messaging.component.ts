@@ -95,11 +95,8 @@ export class MessagingComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         console.log('killa', this.username);
         // means if its on blank pg which makes them display upside down
-        if (this.username === undefined || '') {
-          this.messagesNotif = messagesNotif.reverse();
-        } else {
-          this.messagesNotif = messagesNotif;
-        }
+        this.messagesNotif = messagesNotif;
+
         console.log('should be viewed now 777', this.messagesNotif);
       });
 
