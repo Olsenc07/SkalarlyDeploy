@@ -108,8 +108,8 @@ console.log('blocked', blocked)
                     console.log('sooner', allMsgsReverse );
                     // sort by new time ontop
                     allMsgsReverse.sort((a,b) => {
-                        let newest = new Date(a.time),
-                            older = new Date(b.time);
+                        let newest = new Date(a.time).getTime(),
+                            older = new Date(b.time).getTime();
                             return older - newest
                     })
                     console.log('final', allMsgsReverse)
