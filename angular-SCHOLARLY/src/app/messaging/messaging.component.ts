@@ -91,9 +91,14 @@ export class MessagingComponent implements OnInit, OnDestroy {
     this.messageNotificationService.getMessageNotification(this.userId);
     this.msgNotifSub = this.messageNotificationService
       .getListenerNotification()
-      .subscribe((messagesNotif: Message[]) => {
+      .subscribe((messagesNotif: any) => {
         this.isLoading = false;
-        this.messagesNotif = messagesNotif;
+        console.log('killa', this.username);
+        if (this.username) {
+          this.messagesNotif = messagesNotif;
+        } else {
+          this.messagesNotif = messagesNotif.reverse();
+        }
         console.log('should be viewed now 777', this.messagesNotif);
       });
 
