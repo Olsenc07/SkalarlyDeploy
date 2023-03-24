@@ -94,10 +94,11 @@ export class MessagingComponent implements OnInit, OnDestroy {
       .subscribe((messagesNotif: any) => {
         this.isLoading = false;
         console.log('killa', this.username);
-        if (this.username) {
-          this.messagesNotif = messagesNotif;
-        } else {
+        // means if its on blank pg which makes them display upside down
+        if (this.username === undefined || '') {
           this.messagesNotif = messagesNotif.reverse();
+        } else {
+          this.messagesNotif = messagesNotif;
         }
         console.log('should be viewed now 777', this.messagesNotif);
       });
