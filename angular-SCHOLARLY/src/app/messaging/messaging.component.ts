@@ -93,8 +93,13 @@ export class MessagingComponent implements OnInit, OnDestroy {
       .getListenerNotification()
       .subscribe((messagesNotif: any) => {
         this.isLoading = false;
-        console.log('killa', this.username);
+        console.log('killa', this.messagesNotif);
         // means if its on blank pg which makes them display upside down
+        // messagesNotif.sort((a, b) => {
+        //   let newest = new Date(a.time),
+        //     older = new Date(b.time);
+        //   return older - newest;
+        // });
         this.messagesNotif = messagesNotif;
 
         console.log('should be viewed now 777', this.messagesNotif);

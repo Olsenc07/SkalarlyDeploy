@@ -105,14 +105,14 @@ console.log('blocked', blocked)
                    allMsgs.push(finalDocs);
                 if(allMsgs.length == nonyaOnce.length){ 
                     let allMsgsReverse = allMsgs;
-                    console.log('sooner syd', allMsgsReverse );
+                    console.log('sooner', allMsgsReverse );
                     // sort by new time ontop
                     allMsgsReverse.sort((a,b) => {
                         let newest = new Date(a.time),
                             older = new Date(b.time);
                             return older - newest
                     })
-                    console.log('final jess', allMsgsReverse)
+                    console.log('final', allMsgsReverse)
                 res.status(200).json({
                     message: 'Info messages fetched succesfully!',
                        messages: allMsgsReverse
