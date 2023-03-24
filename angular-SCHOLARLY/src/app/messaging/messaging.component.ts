@@ -52,6 +52,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
   public notifs = [];
   messagesNotif: Message[] = [];
   messagesNoNotif = '';
+
   // allUsers should filter through every user
   allUsers: string[] = [];
   // username: string;
@@ -93,24 +94,17 @@ export class MessagingComponent implements OnInit, OnDestroy {
       .getListenerNotification()
       .subscribe((messagesNotif: any) => {
         this.isLoading = false;
-        console.log('killa', this.messagesNotif);
+        console.log('killa', messagesNotif);
         // means if its on blank pg which makes them display upside down
-        const mostRecentList = [];
         messagesNotif.sort((a, b) => {
-          console.log('snake', a.time);
-          console.log('balloon', b.time);
           // does this work for 3
-          const newest = new Date(a.time);
-          const older = new Date(b.time);
+          const newest = new Date(a.time).getTime();
+          const older = new Date(b.time).getTime();
           console.log('snake', newest);
           console.log('balloon', older);
-          // create a sorting array
-          if (newest > older) {
-            mostRecentList.push(newest);
-          }
-          console.log('yawwwn', mostRecentList);
+          return newest - older;
         });
-        console.log('city', this.messagesNotif);
+        console.log('coda', messagesNotif);
         this.messagesNotif = messagesNotif;
 
         console.log('should be viewed now 777', this.messagesNotif);
