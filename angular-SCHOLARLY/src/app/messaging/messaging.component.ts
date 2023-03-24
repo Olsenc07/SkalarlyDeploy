@@ -99,9 +99,10 @@ export class MessagingComponent implements OnInit, OnDestroy {
           console.log('snake', a.time);
           console.log('balloon', b.time);
           // does this work for 3
-          const newest = a.time;
-          const older = b.time;
-          return newest - older;
+          const newest = new Date(a.time);
+          const older = new Date(b.time);
+          // create a sorting array
+          return newest > older;
         });
         console.log('city', this.messagesNotif);
         this.messagesNotif = messagesNotif;
