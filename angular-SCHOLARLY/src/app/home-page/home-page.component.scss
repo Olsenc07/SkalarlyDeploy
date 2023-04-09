@@ -21,6 +21,11 @@
   width: 100%;
   font-family: 'Poppins';
 }
+.bigBackground{
+  z-index: -1;
+
+  position: absolute;
+}
 .bulletPoints{
   display: flex;
   // font-family:  'Poppins', sans-serif;
