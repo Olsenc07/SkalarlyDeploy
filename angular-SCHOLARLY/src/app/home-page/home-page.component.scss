@@ -4,11 +4,14 @@
   height: 100%;
   flex-direction: column;
   align-items: center;
-  background-image: url("../../assets/Pics/abstract-dark-blurred-background-smooth-gradient-texture-color-shiny-bright-website-pattern-banner-header-sidebar-graphic-art-image.jpg");
   
 }
 .badge_icon{
   font-size: 35px;
+}
+.background{
+  background-image: url("../../assets/Pics/abstract-dark-blurred-background-smooth-gradient-texture-color-shiny-bright-website-pattern-banner-header-sidebar-graphic-art-image.jpg");
+
 }
 .bodyPopUp{
   display: flex;
