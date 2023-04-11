@@ -353,6 +353,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       {
         referenceElement: selectionContainer,
         triggerElement: triggerEmoji,
+        position: 'top',
       }
     );
 
