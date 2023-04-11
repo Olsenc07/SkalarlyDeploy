@@ -446,6 +446,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');
     const triggerEmoji = document.getElementById('triggerEmo');
+    this.show = false;
     console.log('star through');
     const picker = createPopup(
       {},
@@ -462,7 +463,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
       const msgs = selection.emoji;
       const msg = this.postDescription.value + msgs;
       this.postDescription.setValue(msg);
-      this.show = false;
     });
     picker.addEventListener('picker:close', (event) => {
       console.log('lots of money boi');
