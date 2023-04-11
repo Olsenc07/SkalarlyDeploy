@@ -13,6 +13,8 @@ const postSchema = mongoose.Schema({
     Title:  { type: String },
     postDescription:  { type: String},
     postLocation: { type: String},
+    postLocationInstructor: { type: String},
+    instructorRating: { type: Number},
     LocationEvent:  { type: String},
     time:  { type: String},
     timeE:  { type: String},

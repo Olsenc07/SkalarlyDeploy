@@ -17,6 +17,7 @@ export interface Post {
   postDescription: string;
   postLocation: string;
   postLocationInstructor: string;
+  instructorRating: number;
   LocationEvent: string;
   time: string;
   timeE: string;
@@ -97,6 +98,7 @@ export class PostService {
               postDescription: post.postDescription,
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
+              instructorRating: post.instructorRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -212,6 +214,7 @@ export class PostService {
               postDescription: post.postDescription,
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
+              instructorRating: post.instructorRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -269,6 +272,7 @@ export class PostService {
               postDescription: post.postDescription,
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
+              instructorRating: post.instructorRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -326,6 +330,7 @@ export class PostService {
               postDescription: post.postDescription,
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
+              instructorRating: post.instructorRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -383,6 +388,7 @@ export class PostService {
               postDescription: post.postDescription,
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
+              instructorRating: post.instructorRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -441,6 +447,7 @@ export class PostService {
               postDescription: post.postDescription,
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
+              instructorRating: post.instructorRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -533,6 +540,7 @@ export class PostService {
               postDescription: post.postDescription,
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
+              instructorRating: post.instructorRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -622,6 +630,7 @@ export class PostService {
               postDescription: post.postDescription,
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
+              instructorRating: post.instructorRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -732,6 +741,7 @@ export class PostService {
     postDescription?: string,
     postLocation?: string,
     postLocationInstructor?: string,
+    instructorRating?: number,
     LocationEvent?: string,
     time?: string,
     timeE?: string,
@@ -780,7 +790,7 @@ export class PostService {
     const sub = this.http
       .post<{ message: string; postId: Post }>(
         'https://www.skalarly.com/api/posts',
-        postData,
+        [postData, instructorRating],
         { params: { userId } }
       )
       .subscribe({
@@ -796,6 +806,7 @@ export class PostService {
             postDescription,
             postLocation,
             postLocationInstructor,
+            instructorRating,
             LocationEvent,
             time,
             timeE,
@@ -849,6 +860,7 @@ export class PostService {
     postDescription?: string,
     postLocation?: string,
     postLocationInstructor?: string,
+    instructorRating?: number,
     LocationEvent?: string,
     time?: string,
     timeE?: string,
@@ -896,7 +908,7 @@ export class PostService {
     const sub = this.http
       .post<{ message: string; postId: Post }>(
         'https://www.skalarly.com/api/posts/videos',
-        postData,
+        [postData, instructorRating],
         { params: { userId } }
       )
       .subscribe({
@@ -912,6 +924,7 @@ export class PostService {
             postDescription,
             postLocation,
             postLocationInstructor,
+            instructorRating,
             LocationEvent,
             time,
             timeE,
