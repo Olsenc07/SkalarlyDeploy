@@ -124,9 +124,9 @@
 
 
 <!-- If instructor review -->
-<mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && postLocationMain.value == 'Instructor Review ' " disabled>
+<mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && (postLocationMain.value == 'Instructor Review ') " disabled>
   <!-- Step 2 -->
-  <mat-selection-list  #options2 class="second_selection" [multiple]="false"  [matMenuTriggerFor]="menuInstructors">
+  <mat-selection-list   class="second_selection" [multiple]="false"  [matMenuTriggerFor]="menuInstructors">
     <mat-form-field  class="shadow2"  id="nextBtn2">
       <mat-label> 
         <i class="fas fa-feather-alt"></i>
@@ -151,14 +151,14 @@
           <div class="center__">
           <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
           (click)="changeTabB()">Back</button>
-          <button *ngIf="postLocation1.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
+          <button *ngIf="this.postLocation1.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>
 
 
 <!-- If previous was not instructor review -->
-        <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && postLocationMain.value !== 'Instructor Review '" disabled>
+        <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && (postLocationMain.value !== 'Instructor Review ')" disabled>
   <!-- Step 2 -->
   <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
     <mat-form-field  class="shadow2"  id="nextBtn2">
@@ -195,7 +195,7 @@
  <div class="font" *ngIf="postLocation1.value">
  {{postLocation1.value}}: {{ postLocation2.value }} {{instructorRating.value}}
   </div>
-  <mat-slider [max]="max" [step]="step">
+  <mat-slider [max]="max" [step]="step" *ngIf="postLocation1.value">
     <input matSliderThumb  [formControl]="instructorRating">
   </mat-slider>
 </div>
