@@ -88,6 +88,18 @@
   background-color: #11173a;
   color: white;
 }
+.even{
+  // padding: 1%;
+  background-color: whitesmoke;
+display: flex;
+justify-content: center;
+}
+.odd{
+  // padding: 1%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
 .post_btn_top_right {
   // font-family: 'Cinzel', serif;
   font-family: 'Cormorant Garamond', serif;

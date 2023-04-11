@@ -149,10 +149,12 @@
         </mat-chip-option>
         <!-- Instructro review -->
         <mat-menu #menuInstructors="matMenu">
-<mat-form-field class="font" appearance="outline">
-  <mat-label>Program Of Instructor</mat-label>
+<mat-form-field class="font" >
+  <mat-label>Program of Instructor</mat-label>
   <mat-select>
+<mat-form-field class="font"     appearance="outline">
      <input matInput (keyup)="onKey($event.target.value)"> 
+     </mat-form-field>
     <mat-option *ngFor="let program of selectedProgram" [value]="program">{{program}}</mat-option>
   </mat-select>
 </mat-form-field>
