@@ -135,10 +135,10 @@
       <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
     </mat-form-field>
       <mat-option  [multiple]="false" *ngFor="let program of selectedProgram;let even = even; let odd = odd"
-      [selected]="program" [value]="program">
-      <div [ngClass]="{ even: even, odd: odd }">
+      [selected]="program" [value]="program" [ngClass]="{ even: even, odd: odd }">
+      
             {{ program }}
-            </div>
+     
       </mat-option>
     </mat-select>
     </mat-form-field>
@@ -162,10 +162,10 @@
     <mat-select  [formControl]="postLocation1" > 
       <!-- (click)="adjustView()" -->
       <mat-option  [multiple]="false" *ngFor="let opt of specificOptions;let even = even; let odd = odd"
-      [selected]="opt" [value]="opt">
-      <div [ngClass]="{ even: even, odd: odd }">
+      [selected]="opt" [value]="opt" [ngClass]="{ even: even, odd: odd }">
+
             {{ opt }}
-            </div>
+   
       </mat-option>
     </mat-select>
     </mat-form-field>
