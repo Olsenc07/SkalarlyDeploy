@@ -210,7 +210,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public HashTagLength = new BehaviorSubject(0);
 
   postLocationMain: FormControl = new FormControl('');
-  postLocation: FormControl = new FormControl('');
+  postLocation1: FormControl = new FormControl('');
+  postLocation: FormControl = new FormControl(this.postLocation1);
+
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
   value: FormControl = new FormControl('');
@@ -614,6 +616,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   changeTab(): void {
     this.selectedIndexPost = this.selectedIndexPost === 1 ? 0 : 1;
     console.log('math class', this.selectedIndexPost);
+    console.log('hey beautiful', this.postLocation.value);
   }
   changeTab_(): void {
     this.selectedIndexPost = this.selectedIndexPost === 0 ? 1 : 0;

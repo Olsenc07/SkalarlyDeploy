@@ -88,6 +88,11 @@
   background-color: #11173a;
   color: white;
 }
+.columnCenter{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .even{
   // padding: 1%;
   background-color: whitesmoke;

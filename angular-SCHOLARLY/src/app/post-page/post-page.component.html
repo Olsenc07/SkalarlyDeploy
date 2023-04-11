@@ -159,11 +159,13 @@
     <mat-form-field  class="shadow2"  id="nextBtn2">
       <mat-label> Specific Pages</mat-label>
     
-    <mat-select  [formControl]="postLocation" > 
+    <mat-select  [formControl]="postLocation1" > 
       <!-- (click)="adjustView()" -->
       <mat-option  [multiple]="false" *ngFor="let opt of specificOptions;let even = even; let odd = odd"
       [selected]="opt" [value]="opt">
+      <div [ngClass]="{ even: even, odd: odd }">
             {{ opt }}
+            </div>
       </mat-option>
     </mat-select>
     </mat-form-field>
@@ -171,11 +173,19 @@
           <div class="center__">
           <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
           (click)="changeTabB()">Back</button>
-          <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
+          <button *ngIf="postLocation1.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>
 <mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && postLocation.value" disabled>
+  <div class="columnCenter">
+  <mat-label class="font"> Instructors Name</mat-label>
+  <!-- Have previous names drop down as options -->
+  <input matInput [formControl]="postLocation">
+ <div class="font">
+ {{postLocation1}}: {{ postLocation }}
+  </div>
+</div>
   <div  class="center__">
     <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
     (click)="changeTab3()">Back</button>
