@@ -142,8 +142,9 @@
       [selected]="program" [value]="program" [ngClass]="{ even: even, odd: odd }">
       
             {{ program }}
-      </mat-option>
       <mat-divider></mat-divider>
+
+      </mat-option>
 
     </mat-select>
     </mat-form-field>
@@ -151,7 +152,7 @@
           <div class="center__">
           <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
           (click)="changeTabB()">Back</button>
-          <button *ngIf="this.postLocation1.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
+          <button *ngIf="program !== ''"  type="button" color="primary" class="final_step_btn" mat-raised-button 
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>
@@ -172,8 +173,9 @@
       [selected]="opt" [value]="opt" [ngClass]="{ even: even, odd: odd }">
 
             {{ opt }}
-      </mat-option>
    <mat-divider></mat-divider>
+
+      </mat-option>
 
     </mat-select>
     </mat-form-field>
