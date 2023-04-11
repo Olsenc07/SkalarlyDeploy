@@ -251,7 +251,7 @@
             maxlength="140" [formControl]="comment" (click)="commentsValidatorFunc(post.id)">
             <input *ngIf="((commentsValidator !== post.id) && (commentsValidator !== ''))" matInput placeholder="Comment..." class="comment-form-textarea" 
              (click)="commentsValidatorFunc(post.id)">
-            <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
+            <button mat-icon-button matSuffix id="triggerEmo" *ngIf="((commentsValidator == post.id) && (commentsValidator !== ''))" (click)="openEmoji()">😃</button>
         </mat-form-field>
             <!-- {{submitLabel}}  -->
             <div class="buttonsCWrapper">

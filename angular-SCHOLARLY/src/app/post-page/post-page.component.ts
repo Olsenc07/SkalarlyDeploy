@@ -85,10 +85,109 @@ export class PostPageComponent implements OnInit, OnDestroy {
 
   url: string;
   urlVideo: string;
-
+  // hiding text when picking emoji
+  show = true;
   selectedIndex = 0;
   selectedIndexPost = 0;
+  // Filter categories for instructor review
+  programs: string[] = [
+    'Academic Bridging Program',
+    'Acturial Science',
+    'American Studies',
+    'Anatomy',
+    'Anthropology',
+    'Archaeology',
+    'Architecture & Visual Studies',
+    'Art History',
+    'Astronomy & Astrophysics',
+    'Biochemistry',
+    'Biology',
+    'Cell & Systems Biology',
+    'Centre For Jewish Studies',
+    'Cinema Studies Institute',
+    'Computer Science',
+    'Contemporary Asian Studies',
+    'Criminology & Sociolegal Studies',
+    'Diaspora & Transnational Studies',
+    'Drama',
+    'Earth Sciences',
+    'East Asian Studies',
+    'Ecology & Evolutionary Studies',
+    'Economics',
+    'Environmental School',
+    'Estonian',
+    'Ethics',
+    'European Studies',
+    'Finnish',
+    'First-Year Foundations',
+    'Forest Conservation & Forest Biomaterials Science',
+    'French',
+    'Geography & Planning',
+    'German',
+    'History',
+    'History & Philosophy of Science & Technology',
+    'Human Biology',
+    'Hungarian',
+    'Immunology',
+    'Impact Culture',
+    'Indigenous Studies',
+    'Industrial Relations & Resources (Centre For)',
+    'Innis College',
+    'Italian',
+    'Laboratory Medicine & Pathobiology',
+    'Latin American Studies',
+    'Life Sciences',
+    'Linguistics',
+    'Material Science',
+    'Mathematics',
+    'Molecular Genetics & Microbiology',
+    'Munk One',
+    'Music',
+    'Near & Middle Eastern Civilizations',
+    'New College',
+    'Nutritional Sciences',
+    'Peace, Conflict & Justice',
+    'Pharmacology & Toxicology',
+    'Philosophy',
+    'Physiology',
+    'Physics',
+    'Planetary Science',
+    'Political Science',
+    'Portuguese',
+    'Psychology',
+    'Public Policy',
+    'Religion',
+    'Rotman Commerce',
+    'St.Michaels College',
+    'Sexual Diversity Studies',
+    'Slavic Languages & Literature',
+    'Sociology',
+    'South Asian Studies',
+    'Spanish',
+    'Statistical Sciences',
+    'Theatre & Performance Studies',
+    'Theoretical Astrophysics',
+    'Trinity College',
+    'University College',
+    'Victoria College',
+    'Women & Gender Studies',
+    'Woodsworth College',
+    'Yiddish Studies',
+  ];
+  selectedProgram = this.programs;
+  // Receive user input and send to search method**
+  onKey(value) {
+    this.selectedProgram = this.searchInstructor(value);
+  }
 
+  // Filter the states list and send back to populate the selectedStates**
+  searchInstructor(value: string) {
+    let filter = value.toLowerCase();
+    return this.programs.filter((option) =>
+      option.toLowerCase().includes(filter)
+    );
+  }
+  //
   visible = true;
   selectable = true;
   removable = true;
@@ -363,6 +462,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
       const msgs = selection.emoji;
       const msg = this.postDescription.value + msgs;
       this.postDescription.setValue(msg);
+      this.show = false;
+    });
+    picker.addEventListener('picker:close', (event) => {
+      console.log('lots of money boi');
+      this.show = true;
     });
   }
   onSearchSelection(value): any {

@@ -30,7 +30,7 @@
       </div>
  
     <!-- Description of Post -->
-    <div class="column_1"  >
+    <div class="column_1" *ngIf="show == true" >
 
       <!-- Upload pic/video -->
       <!-- <div class="column_"> -->
@@ -116,10 +116,39 @@
             </mat-form-field>
           </mat-selection-list>
           
-          <button *ngIf="postLocationMain.value"  type="button" color="primary"  mat-raised-button 
+          <button *ngIf="postLocationMain.value "  type="button" color="primary"  mat-raised-button 
           class="final_step_btn" (click)="changeTab1()">Next</button>
         </mat-tab>
-        <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value" disabled>
+
+
+<!-- If instructor review -->
+<mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && postLocationMain == instructor_rev" disabled>
+  <!-- Step 2 -->
+  <mat-selection-list  #options2 class="second_selection" [multiple]="false"  [matMenuTriggerFor]="menuInstructors">
+    <mat-form-field  class="shadow2"  id="nextBtn2">
+      <mat-label> Specific Pages</mat-label>
+    
+    <mat-select  [formControl]="postLocation" > 
+      <!-- (click)="adjustView()" -->
+      <input matInput (keyup)="onKey($event.target.value)"> 
+      <mat-option  [multiple]="false" *ngFor="let program of selectedProgram"
+      [selected]="program" [value]="program">
+            {{ program }}
+      </mat-option>
+    </mat-select>
+    </mat-form-field>
+          </mat-selection-list>
+          <div class="center__">
+          <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
+          (click)="changeTabB()">Back</button>
+          <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
+          (click)="changeTab2()">Next</button>
+        </div>
+</mat-tab>
+
+
+<!-- If previous was not instructor review -->
+        <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && postLocationMain !== instructor_rev" disabled>
   <!-- Step 2 -->
   <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
     <mat-form-field  class="shadow2"  id="nextBtn2">
