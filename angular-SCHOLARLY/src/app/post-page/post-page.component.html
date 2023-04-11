@@ -187,14 +187,17 @@
 </mat-tab>
 <mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && (postLocation.value || postLocation1.value)" disabled>
   <div class="columnCenter">
-  <mat-label class="font"> Instructors Name</mat-label>
+  <!-- <mat-label class="font"> </mat-label> -->
   <!-- Have previous names drop down as options -->
-  <mat-form-field>
-  <input matInput [formControl]="postLocation2">
+  <mat-form-field *ngIf="postLocation1.value">
+  <input matInput placeholder="Instructors Name" [formControl]="postLocation2" *ngIf="postLocation1.value">
 </mat-form-field>
- <div class="font">
- {{postLocation1.value}}: {{ postLocation2.value }}
+ <div class="font" *ngIf="postLocation1.value">
+ {{postLocation1.value}}: {{ postLocation2.value }} {{instructorRating.value}}
   </div>
+  <mat-slider [max]="max" [step]="step">
+    <input matSliderThumb  [formControl]="instructorRating">
+  </mat-slider>
 </div>
   <div  class="center__">
     <button  type="button" color="primary"  mat-raised-button class="final_step_btn"

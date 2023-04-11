@@ -16,6 +16,7 @@ export interface Post {
   Title: string;
   postDescription: string;
   postLocation: string;
+  postLocationInstructor: string;
   LocationEvent: string;
   time: string;
   timeE: string;
@@ -95,6 +96,7 @@ export class PostService {
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
+              postLocationInstructor: post.postLocationInstructor,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -209,6 +211,7 @@ export class PostService {
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
+              postLocationInstructor: post.postLocationInstructor,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -265,6 +268,7 @@ export class PostService {
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
+              postLocationInstructor: post.postLocationInstructor,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -321,6 +325,7 @@ export class PostService {
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
+              postLocationInstructor: post.postLocationInstructor,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -377,6 +382,7 @@ export class PostService {
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
+              postLocationInstructor: post.postLocationInstructor,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -434,6 +440,7 @@ export class PostService {
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
+              postLocationInstructor: post.postLocationInstructor,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -525,6 +532,7 @@ export class PostService {
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
+              postLocationInstructor: post.postLocationInstructor,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -613,6 +621,7 @@ export class PostService {
               Title: post.Title,
               postDescription: post.postDescription,
               postLocation: post.postLocation,
+              postLocationInstructor: post.postLocationInstructor,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -722,6 +731,7 @@ export class PostService {
     Title?: string,
     postDescription?: string,
     postLocation?: string,
+    postLocationInstructor?: string,
     LocationEvent?: string,
     time?: string,
     timeE?: string,
@@ -746,6 +756,7 @@ export class PostService {
     postData.append('Title', Title);
     postData.append('postDescription', postDescription);
     postData.append('postLocation', postLocation);
+    postData.append('postLocationInstructor', postLocationInstructor);
     postData.append('LocationEvent', LocationEvent);
     postData.append('time', time);
     postData.append('timeE', timeE);
@@ -784,6 +795,7 @@ export class PostService {
             Title,
             postDescription,
             postLocation,
+            postLocationInstructor,
             LocationEvent,
             time,
             timeE,
@@ -836,6 +848,7 @@ export class PostService {
     Title?: string,
     postDescription?: string,
     postLocation?: string,
+    postLocationInstructor?: string,
     LocationEvent?: string,
     time?: string,
     timeE?: string,
@@ -860,6 +873,7 @@ export class PostService {
     postData.append('Title', Title);
     postData.append('postDescription', postDescription);
     postData.append('postLocation', postLocation);
+    postData.append('postLocationInstructor', postLocationInstructor);
     postData.append('LocationEvent', LocationEvent);
     postData.append('time', time);
     postData.append('timeE', timeE);
@@ -897,6 +911,7 @@ export class PostService {
             Title,
             postDescription,
             postLocation,
+            postLocationInstructor,
             LocationEvent,
             time,
             timeE,

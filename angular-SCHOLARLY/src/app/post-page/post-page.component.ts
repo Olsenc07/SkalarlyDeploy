@@ -90,6 +90,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   selectedIndex = 0;
   selectedIndexPost = 0;
   // Filter categories for instructor review
+  max = 10;
+  step = 0.5;
   programs: string[] = [
     'Academic Bridging Program',
     'Acturial Science',
@@ -215,7 +217,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   postLocation: FormControl = new FormControl('');
 
   postLocationInstructor: FormControl = new FormControl(
-    this.postLocation1.value + ':' + this.postLocation1.value
+    this.postLocation1 + ':' + this.postLocation2.value
   );
 
   postDescription: FormControl = new FormControl('');
