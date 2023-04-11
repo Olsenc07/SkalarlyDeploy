@@ -48,7 +48,10 @@
   flex-direction: column;
   width: 100%;
 }
-
+.center{
+  display: flex;
+  justify-content: center;
+}
 @media (max-width: 500px) {
   .content {
     display: flex;
@@ -119,6 +122,7 @@
   font-family: 'Cormorant Garamond', serif;
   justify-content: center;
   display: flex;
+  font-size: xxx-large;
 }
 @keyframes dotPulseBefore {
   0% {
