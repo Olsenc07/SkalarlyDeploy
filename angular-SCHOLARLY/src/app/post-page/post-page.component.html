@@ -109,8 +109,9 @@
                 <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even = even; let odd = odd" [selected]="opt.name" [multiple]="false" 
                   [value]="opt.name" [ngClass]="{ even: even, odd: odd }" >
                   {{  opt.name }}
-              </mat-option>
               <mat-divider></mat-divider>
+
+              </mat-option>
 
               </mat-select>
               
@@ -128,10 +129,11 @@
   <mat-selection-list  #options2 class="second_selection" [multiple]="false"  [matMenuTriggerFor]="menuInstructors">
     <mat-form-field  class="shadow2"  id="nextBtn2">
       <mat-label> 
-        <i class="fas fa-sitemap fa-rotate-180"></i>
-        Specific Pages</mat-label>
+        <i class="fas fa-feather-alt"></i>
+        Program of Instructor</mat-label>
+      
     
-    <mat-select  [formControl]="postLocation" > 
+    <mat-select  [formControl]="postLocation1" > 
       <!-- (click)="adjustView()" -->
       <mat-form-field class="font" appearance="outline">
       <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
@@ -140,15 +142,16 @@
       [selected]="program" [value]="program" [ngClass]="{ even: even, odd: odd }">
       
             {{ program }}
-            <mat-divider></mat-divider>
       </mat-option>
+      <mat-divider></mat-divider>
+
     </mat-select>
     </mat-form-field>
           </mat-selection-list>
           <div class="center__">
           <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
           (click)="changeTabB()">Back</button>
-          <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
+          <button *ngIf="postLocation1.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>
@@ -160,32 +163,35 @@
   <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
     <mat-form-field  class="shadow2"  id="nextBtn2">
       <mat-label> 
-        <i class="fas fa-feather-alt"></i>
-        Program of Instructor</mat-label>
+        <i class="fas fa-sitemap fa-rotate-180"></i>
+        Specific Pages</mat-label>
     
-    <mat-select  [formControl]="postLocation1" > 
+    <mat-select  [formControl]="postLocation" > 
       <!-- (click)="adjustView()" -->
       <mat-option  [multiple]="false" *ngFor="let opt of specificOptions;let even = even; let odd = odd"
       [selected]="opt" [value]="opt" [ngClass]="{ even: even, odd: odd }">
 
             {{ opt }}
-   <mat-divider></mat-divider>
       </mat-option>
+   <mat-divider></mat-divider>
+
     </mat-select>
     </mat-form-field>
           </mat-selection-list>
           <div class="center__">
           <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
           (click)="changeTabB()">Back</button>
-          <button *ngIf="postLocation1.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
+          <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>
-<mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && postLocation1.value" disabled>
+<mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && (postLocation.value || postLocation1.value)" disabled>
   <div class="columnCenter">
   <mat-label class="font"> Instructors Name</mat-label>
   <!-- Have previous names drop down as options -->
+  <mat-form-field>
   <input matInput [formControl]="postLocation2">
+</mat-form-field>
  <div class="font">
  {{postLocation1.value}}: {{ postLocation2.value }}
   </div>
