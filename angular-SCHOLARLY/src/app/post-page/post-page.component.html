@@ -120,7 +120,7 @@
 
 
 <!-- If instructor review -->
-<mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && postLocationMain == 'instructor_rev' " disabled>
+<mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && postLocationMain.value == 'instructor_rev' " disabled>
   <!-- Step 2 -->
   <mat-selection-list  #options2 class="second_selection" [multiple]="false"  [matMenuTriggerFor]="menuInstructors">
     <mat-form-field  class="shadow2"  id="nextBtn2">
@@ -146,7 +146,7 @@
 
 
 <!-- If previous was not instructor review -->
-        <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && postLocationMain !== 'instructor_rev'" disabled>
+        <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && postLocationMain.value !== 'instructor_rev'" disabled>
   <!-- Step 2 -->
   <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
     <mat-form-field  class="shadow2"  id="nextBtn2">
