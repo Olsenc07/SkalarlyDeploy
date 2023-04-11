@@ -149,11 +149,10 @@
         </mat-chip-option>
         <!-- Instructro review -->
         <mat-menu #menuInstructors="matMenu">
-<mat-form-field>
+<mat-form-field class="font">
   <mat-label>Program Of Instructor</mat-label>
   <mat-select>
-     <input (keyup)="onKey($event.target.value)"> // **Send user input to TS**
-    <mat-option>None</mat-option>
+     <input matInput (keyup)="onKey($event.target.value)"> 
     <mat-option *ngFor="let program of selectedProgram" [value]="program">{{program}}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -184,123 +183,136 @@
   <button mat-menu-item  (click)="onSearchSelection('school_work_a')"
   (click)="displaySpecificSearch()" class="odd_">
     A
-  <mat-divider></mat-divider>
     </button>
+  <mat-divider></mat-divider>
+
     <button mat-menu-item  (click)="onSearchSelection('school_work_b')"
     (click)="displaySpecificSearch()">
       B
-  <mat-divider></mat-divider>
 
       </button>
+  <mat-divider></mat-divider>
       <button mat-menu-item  (click)="onSearchSelection('school_work_c')"
       (click)="displaySpecificSearch()" class="odd_">
-  <mat-divider></mat-divider>
+
         C
+        </button>
   <mat-divider></mat-divider>
 
-        </button>
         <button mat-menu-item  (click)="onSearchSelection('school_work_d')"
         (click)="displaySpecificSearch()">
           D
+          </button> 
   <mat-divider></mat-divider>
 
-          </button> 
           <button mat-menu-item  (click)="onSearchSelection('school_work_e')"
           (click)="displaySpecificSearch()" class="odd_">
             E
-  <mat-divider></mat-divider>
 
             </button>
+  <mat-divider></mat-divider>
+
             <button mat-menu-item  (click)="onSearchSelection('school_work_f')"
             (click)="displaySpecificSearch()">
               F
-  <mat-divider></mat-divider>
 
               </button> 
+  <mat-divider></mat-divider>
+
               <button mat-menu-item  (click)="onSearchSelection('school_work_g')"
               (click)="displaySpecificSearch()" class="odd_">
                 G
+                </button>
   <mat-divider></mat-divider>
 
-                </button>
                 <button mat-menu-item  (click)="onSearchSelection('school_work_h')"
                 (click)="displaySpecificSearch()">
                   H
+                  </button>
   <mat-divider></mat-divider>
 
-                  </button>
                   <button mat-menu-item  (click)="onSearchSelection('school_work_i')"
                   (click)="displaySpecificSearch()" class="odd_">
                     I
+                    </button>
   <mat-divider></mat-divider>
 
-                    </button>
                     <button mat-menu-item  (click)="onSearchSelection('school_work_j')"
                     (click)="displaySpecificSearch()">
                       J
+                      </button>
   <mat-divider></mat-divider>
 
-                      </button>
                       <button mat-menu-item  (click)="onSearchSelection('school_work_l')"
                       (click)="displaySpecificSearch()" class="odd_">
                         L
-  <mat-divider></mat-divider>
 
                         </button>
+  <mat-divider></mat-divider>
+
                         <button mat-menu-item  (click)="onSearchSelection('school_work_m')"
                         (click)="displaySpecificSearch()">
                           M
-  <mat-divider></mat-divider>
 
                           </button>
+  <mat-divider></mat-divider>
+
                           <button mat-menu-item  (click)="onSearchSelection('school_work_n')"
                           (click)="displaySpecificSearch()" class="odd_">
                             N
-  <mat-divider></mat-divider>
 
                             </button>
+  <mat-divider></mat-divider>
+
                             <button mat-menu-item  (click)="onSearchSelection('school_work_p')"
                             (click)="displaySpecificSearch()">
                               P
-  <mat-divider></mat-divider>
 
                               </button>
+  <mat-divider></mat-divider>
+
                               <button mat-menu-item  (click)="onSearchSelection('school_work_r')"
                               (click)="displaySpecificSearch()" class="odd_">
                                 R
-  <mat-divider></mat-divider>
 
                                 </button>
+  <mat-divider></mat-divider>
+
                                 <button mat-menu-item  (click)="onSearchSelection('school_work_s')"
                                 (click)="displaySpecificSearch()">
                                   S
-  <mat-divider></mat-divider>
 
                                   </button>
+  <mat-divider></mat-divider>
+
                                   <button mat-menu-item  (click)="onSearchSelection('school_work_t')"
                                   (click)="displaySpecificSearch()" class="odd_">
                                     T
-  <mat-divider></mat-divider>
 
                                     </button>
+  <mat-divider></mat-divider>
+
                                     <button mat-menu-item  (click)="onSearchSelection('school_work_u')"
                                     (click)="displaySpecificSearch()">
                                       U
-  <mat-divider></mat-divider>
 
                                       </button>
+  <mat-divider></mat-divider>
+
                                       <button mat-menu-item  (click)="onSearchSelection('school_work_v')"
                                       (click)="displaySpecificSearch()" class="odd_">
                                         V
-  <mat-divider></mat-divider>
 
                                         </button>
+  <mat-divider></mat-divider>
+
                                         <button mat-menu-item  (click)="onSearchSelection('school_work_w')"
                                         (click)="displaySpecificSearch()">
                                           W
-  <mat-divider></mat-divider>
 
                                           </button>
+  <mat-divider></mat-divider>
+
   </mat-menu>
 <!-- </div> -->
 
