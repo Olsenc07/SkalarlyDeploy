@@ -150,13 +150,18 @@
         <!-- Instructro review -->
         <mat-menu #menuInstructors="matMenu">
 <mat-form-field class="font" >
-  <mat-label>Program of Instructor</mat-label>
+  <mat-label>
+    <i class="fas fa-feather-alt"></i>
+    Program of Instructor</mat-label>
   <mat-select>
-<mat-form-field class="font"     appearance="outline">
-     <input matInput placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
+<mat-form-field class="font" appearance="outline">
+     <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
      </mat-form-field>
     <mat-option *ngFor="let program of selectedProgram;let even_ = even_; let odd_ = odd_" 
-    [ngClass]="{ even_: even_, odd_: odd_ }" [value]="program">{{program}}
+     [value]="program">
+     <div [ngClass]="{ even_: even_, odd_: odd_ }">
+     {{program}}
+    </div>
   </mat-option>
   <mat-divider></mat-divider>
 

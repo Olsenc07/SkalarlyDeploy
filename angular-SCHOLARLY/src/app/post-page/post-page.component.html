@@ -102,7 +102,9 @@
         <mat-tab label="Step 1: Choose from the main categories" disabled>
           <mat-selection-list #options [multiple]="false">
             <mat-form-field appearance="fill" >
-              <mat-label> Main Categories</mat-label>
+              <mat-label> 
+                <i class="fas fa-sitemap"></i>
+                Main Categories</mat-label>
               <mat-select [formControl]="postLocationMain"   >
                 <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even = even; let odd = odd" [selected]="opt.name" [multiple]="false" 
                   [value]="opt.name" [ngClass]="{ even: even, odd: odd }" >
@@ -129,10 +131,14 @@
     
     <mat-select  [formControl]="postLocation" > 
       <!-- (click)="adjustView()" -->
-      <input matInput (keyup)="onKey($event.target.value)"> 
+      <mat-form-field class="font" appearance="outline">
+      <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
+    </mat-form-field>
       <mat-option  [multiple]="false" *ngFor="let program of selectedProgram;let even = even; let odd = odd"
       [selected]="program" [value]="program">
+      <div [ngClass]="{ even: even, odd: odd }">
             {{ program }}
+            </div>
       </mat-option>
     </mat-select>
     </mat-form-field>
