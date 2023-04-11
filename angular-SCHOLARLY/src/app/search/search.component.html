@@ -157,13 +157,13 @@
 <mat-form-field class="font" appearance="outline">
      <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
      </mat-form-field>
-    <mat-option *ngFor="let program of selectedProgram;let even_ = even_; let odd_ = odd_" 
-     [value]="program" [ngClass]="{ even_: even_, odd_: odd_ }">
+    <mat-option *ngFor="let program of selectedProgram"
+     [value]="program" >
 
      {{program}}
 
   </mat-option>
-  <mat-divider></mat-divider>
+
 
   </mat-select>
 </mat-form-field>

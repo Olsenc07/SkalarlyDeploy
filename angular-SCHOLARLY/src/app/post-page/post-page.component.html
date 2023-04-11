@@ -127,7 +127,9 @@
   <!-- Step 2 -->
   <mat-selection-list  #options2 class="second_selection" [multiple]="false"  [matMenuTriggerFor]="menuInstructors">
     <mat-form-field  class="shadow2"  id="nextBtn2">
-      <mat-label> Specific Pages</mat-label>
+      <mat-label> 
+        <i class="fas fa-sitemap fa-rotate-180"></i>
+        Specific Pages</mat-label>
     
     <mat-select  [formControl]="postLocation" > 
       <!-- (click)="adjustView()" -->
@@ -138,7 +140,7 @@
       [selected]="program" [value]="program" [ngClass]="{ even: even, odd: odd }">
       
             {{ program }}
-     
+            <mat-divider></mat-divider>
       </mat-option>
     </mat-select>
     </mat-form-field>
@@ -157,7 +159,9 @@
   <!-- Step 2 -->
   <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
     <mat-form-field  class="shadow2"  id="nextBtn2">
-      <mat-label> Specific Pages</mat-label>
+      <mat-label> 
+        <i class="fas fa-feather-alt"></i>
+        Program of Instructor</mat-label>
     
     <mat-select  [formControl]="postLocation1" > 
       <!-- (click)="adjustView()" -->
@@ -165,7 +169,7 @@
       [selected]="opt" [value]="opt" [ngClass]="{ even: even, odd: odd }">
 
             {{ opt }}
-   
+   <mat-divider></mat-divider>
       </mat-option>
     </mat-select>
     </mat-form-field>
@@ -177,13 +181,13 @@
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>
-<mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && postLocation.value" disabled>
+<mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && postLocation1.value" disabled>
   <div class="columnCenter">
   <mat-label class="font"> Instructors Name</mat-label>
   <!-- Have previous names drop down as options -->
-  <input matInput [formControl]="postLocation">
+  <input matInput [formControl]="postLocation2">
  <div class="font">
- {{postLocation1}}: {{ postLocation }}
+ {{postLocation1.value}}: {{ postLocation2.value }}
   </div>
 </div>
   <div  class="center__">

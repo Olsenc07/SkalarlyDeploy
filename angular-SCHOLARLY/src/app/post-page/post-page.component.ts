@@ -211,7 +211,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
 
   postLocationMain: FormControl = new FormControl('');
   postLocation1: FormControl = new FormControl('');
-  postLocation: FormControl = new FormControl(this.postLocation1);
+  postLocation2: FormControl = new FormControl('');
+
+  postLocation: FormControl = new FormControl(
+    this.postLocation1.value + ':' + this.postLocation1.value
+  );
 
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
