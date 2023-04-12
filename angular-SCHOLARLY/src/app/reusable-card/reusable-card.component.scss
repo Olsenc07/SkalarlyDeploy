@@ -164,8 +164,8 @@ background-color: #10173a !important;
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100%;
-  justify-content: flex-end;
+  // height: 100%;
+  // justify-content: flex-end;
 }
 .columnAttend {
   display: flex;
@@ -196,6 +196,7 @@ background-color: #10173a !important;
   display: flex;
   justify-content: center;
   font-family: 'Cormorant Garamond', serif;
+  color: grey;
 }
 .fas {
   font-size: large;
@@ -452,14 +453,14 @@ margin-top: 1%;
 .topRow{
   display: flex;
   flex-direction: row;
-align-items: center;
-
+  align-items: center;
+  justify-content: space-between;  
 }
-.topRowWords{
-font-family: 'Cormorant Garamond', serif;
-align-items: center;
-justify-content: flex-end;
-}
+// .topRowWords{
+// font-family: 'Cormorant Garamond', serif;
+// align-items: center;
+// justify-content: flex-end;
+// }
 .linkN {
   color: #7e7171;
   display: flex;

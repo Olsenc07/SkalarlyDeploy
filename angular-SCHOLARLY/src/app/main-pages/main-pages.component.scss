@@ -53,6 +53,11 @@
   justify-content: center;
   width: fit-content;
 }
+.columnInstructor{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .commentCount{
   padding: 0% 3%;
 }
@@ -133,6 +138,10 @@
 }
 .expandBtn {
   font-size: x-large;
+}
+.fontGrade{
+  padding-left: 2%;
+  font-family: 'Cormorant Garamond', serif;
 }
 .fontRanking{
   display: flex;

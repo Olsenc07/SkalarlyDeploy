@@ -82,7 +82,8 @@ router.get("/feed", async(req, res, next) => {
 console.log('userId',userId);
 await User.findOne({_id: userId}).
 then(user => {
- BlockSkalar.find({blockedUsername: user.username}).then(blocked => {
+ BlockSkalar.find({blockedUsername: user.username})
+ .then(blocked => {
     console.log('blocked heart', blocked);
     if(blocked){
         blockedList = []
@@ -1086,10 +1087,24 @@ router.get("/instructorRanking", async(req, res) => {
             .then(doc => {
                 // for each and make a list and get length and values..
                 if(doc){
-                console.log('doc bro', doc)
+                    mean = []
+                    doc.forEach((rating) => {
+                        mean.push(rating.instructorRating)
+                    })
+                console.log('doc bro', mean)
+                meanSecondLast = mean.reduce((partialSum, a) => partialSum + a, 0)
+                console.log('doc bro2', meanSecondLast);
+                meanFinal = meanSecondLast/length(mean)
+                console.log('doc bro3', meanFinal)
                 res.status(200).json({
                     message: 'Infos fetched succesfully!',
-                    mean: 7
+                    mean: meanFinal
+                });
+               }else{
+                // Test this
+                res.status(200).json({
+                    message: 'Infos fetched succesfully!',
+                    mean: null
                 });
                }
             })

@@ -61,24 +61,24 @@
           <div class="column">
             <div class="topRow">
             <div   *ngIf="post.OriginalPostId == '' " class="reposts">
-              Reposts {{post.Reposts}}
+              Reposts: {{post.Reposts}}
             </div>
-            <div class="topRowWords" *ngIf="(post.postLocationInstructor == '')">
-            Specific Page 
+        
             <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
-            (click)="navigateToMainPage(post.postLocation)" >
+            (click)="navigateToMainPage(post.postLocation)" *ngIf="(post.postLocationInstructor == '')">
               <!-- Location -->
-             {{post.postLocation}}
+              Specific Page 
+              {{post.postLocation}}
             </button>
-          </div>
-          <div class="topRowWords" *ngIf="(post.postLocationInstructor !== '')">
-            Instructor Page
+    
+
+        
             <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
-            (click)="getPostsMainPageInstructor(post.postLocationInstructor)" >
+            (click)="getPostsMainPageInstructor(post.postLocationInstructor)" *ngIf="(post.postLocationInstructor !== '')">
               <!-- Location -->
-              {{post.postLocationInstructor}}
+              Instructor's Page: {{post.postLocationInstructor}}
             </button>
-            </div>
+           
           </div>
             <mat-divider></mat-divider>
             <div class="centerT" *ngIf="post.Title">

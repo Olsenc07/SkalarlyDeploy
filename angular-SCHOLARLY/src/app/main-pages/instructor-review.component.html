@@ -8,11 +8,31 @@
 
       <!-- General choice appears at top of feed and dissapears as user scrolls -->
       <h1 class="top">
-
+<div class="columnInstructor">
         Instructor: {{ Category }}
         <div class="fontRanking" *ngIf="instructorRatingMean !== null">
-{{instructorRatingMean}}/10
+{{instructorRatingMean}}/10 
+
+<div  *ngIf="instructorRatingMean !== null">  
+    Grade: {{instructorRating.value}}/10 
+    <div *ngIf="instructorRatingMean < 5 " class="fontGrade">
+   Inadequate
+    </div>
+    <div *ngIf="(6 > instructorRatingMean) &&  (instructorRatingMean >= 5) " class="fontGrade">
+     Marginal
+      </div>
+      <div *ngIf="(7 > instructorRatingMean) && (instructorRatingMean >= 6) " class="fontGrade">
+       Adequate
         </div>
+        <div *ngIf="(8 > instructorRatingMean) && (instructorRatingMean >= 7) " class="fontGrade">
+         Good
+          </div>
+          <div *ngIf=" (instructorRatingMean >= 8) " class="fontGrade">
+          Excellent
+            </div>
+     </div>
+        </div>
+    </div>
         <!-- if not already on list -->
         <div  *ngIf="mains.category !== Category" matTooltip="Save To Favourites " >
         <button mat-icon-button (click)="saveFavCat(Category)" 
