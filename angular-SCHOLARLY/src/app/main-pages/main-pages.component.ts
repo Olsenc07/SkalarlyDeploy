@@ -26,7 +26,7 @@ export class MainPagesComponent implements OnInit, OnDestroy {
   specificOptions: string;
   commentsValidator = '';
   mains: Fav = {};
-
+  instructorRatingMean = '';
   isLoading = false;
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -61,6 +61,7 @@ export class MainPagesComponent implements OnInit, OnDestroy {
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
+          console.log('anothers arms', posts);
           this.posts = posts;
           this.isLoading = false;
         });

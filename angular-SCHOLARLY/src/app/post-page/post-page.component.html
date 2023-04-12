@@ -211,7 +211,7 @@
   <mat-checkbox (click)="Grade()"
   ></mat-checkbox>
 </div>
- <div class="fontRanking" *ngIf="GradeBoolean == true">  
+ <div  *ngIf="GradeBoolean == true">  
  Grade: {{instructorRating.value}}/10 
  <div *ngIf="instructorRating.value < 5 && (GradeBoolean == true)" class="fontGrade">
 Inadequate

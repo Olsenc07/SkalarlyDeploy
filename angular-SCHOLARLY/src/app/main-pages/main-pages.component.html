@@ -10,6 +10,9 @@
       <h1 class="top">
 
         {{ Category }}
+        <div class="fontRanking" *ngIf="instructorRatingMean !== ''">
+{{instructorRatingMean}}/10
+        </div>
         <!-- if not already on list -->
         <div  *ngIf="mains.category !== Category" matTooltip="Save To Favourites " >
         <button mat-icon-button (click)="saveFavCat(Category)" 

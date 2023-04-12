@@ -119,18 +119,18 @@
                   <!-- Idk If needed -->
   
                   <button mat-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
-                  (click)="navigateToMainPage(post.postLocation)" *ngIf="post.postLocation && (post.postLocationInstructor == '')">
+                  (click)="navigateToMainPage(post.postLocation)" *ngIf=" (post.postLocationInstructor == '')">
                     <!-- Location -->
                     {{post.postLocation}}
                   </button>
 
                   <button mat-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
-                  (click)="navigateToMainPage(post.postLocationInstructor)" *ngIf="post.postLocation && (post.postLocationInstructor)">
+                  (click)="navigateToMainPage(post.postLocationInstructor)" *ngIf="(post.postLocationInstructor !== '')">
                     <!-- Location -->
                     {{post.postLocationInstructor}}
                   </button>
 <div class="fontRanking" *ngIf="post.postLocationInstructor && post.instructorRating">
-                 Grade: {{post.instructorRating}}/10
+                  {{post.instructorRating}}/10
                 </div>
                   <div class="textSize row1 t" *ngIf="post.LocationEvent">
                    
