@@ -218,11 +218,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public HashTagLength = new BehaviorSubject(0);
 
   postLocationMain: FormControl = new FormControl('');
-  postLocation1: FormControl = new FormControl('');
+  // postLocation1: FormControl = new FormControl('');
   postLocation2: FormControl = new FormControl('');
   postLocation: FormControl = new FormControl('');
 
-  postLocationInstructor = this.postLocation1 + ':' + this.postLocation2;
+  postLocationInstructor: FormControl = new FormControl('');
   instructorRating: FormControl = new FormControl('');
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
@@ -560,7 +560,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.Title.value,
       this.postDescription.value,
       this.postLocation.value,
-      this.postLocationInstructor,
+      this.postLocationInstructor.value,
       this.instructorRating.value,
       this.LocationEvent.value,
       this.time.value,
@@ -603,7 +603,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.Title.value,
       this.postDescription.value,
       this.postLocation.value,
-      this.postLocationInstructor,
+      this.postLocationInstructor.value,
       this.instructorRating.value,
       this.LocationEvent.value,
       this.time.value,
@@ -631,7 +631,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   changeTab(): void {
     this.selectedIndexPost = this.selectedIndexPost === 1 ? 0 : 1;
     console.log('math class', this.selectedIndexPost);
-    console.log('hey beautiful', this.postLocationInstructor);
+    console.log('hey beautiful', this.postLocationInstructor.value);
     console.log('blow at high dough', this.instructorRating.value);
   }
   changeTab_(): void {
@@ -644,7 +644,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   changeTabB(): void {
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
     this.postLocation.setValue('');
-    this.postLocation1.setValue('');
+    // this.postLocation1.setValue('');
   }
   changeTab2(): void {
     this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;

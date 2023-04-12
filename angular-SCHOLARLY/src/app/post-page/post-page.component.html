@@ -191,20 +191,21 @@
   <div class="columnCenter">
   <!-- <mat-label class="font"> </mat-label> -->
   <!-- Have previous names drop down as options -->
-  <mat-form-field *ngIf="postLocation1.value">
+  <mat-form-field *ngIf="postLocation.value">
     <!-- <i matPrefix class="fas fa-address-card"></i> -->
   <input matInput placeholder="Instructors Name" class="instructorsPadding" [formControl]="postLocation2" *ngIf="postLocation1.value">
 </mat-form-field>
 
 
 
- <div class="fontMain" *ngIf="postLocation1.value">
- {{postLocation1.value}}: 
+ <div class="fontMain" *ngIf="postLocation.value">
+  <input  [formControl]="postLocationInstructor" [value]=" postLocation2.value " >
+ {{postLocation.value}}: 
  <!-- <div class="font" *ngIf="!postLocation2.value"> Instructors Name</div> -->
  {{ postLocation2.value }}
 </div>
 <mat-divider></mat-divider>
-<div class="font" *ngIf="postLocation1.value && postLocation1.value">Grade Instructor
+<div class="font" *ngIf="postLocation.value && postLocation2.value">Grade Instructor
   <mat-checkbox (click)="Grade()"
   ></mat-checkbox>
 </div>
@@ -226,7 +227,7 @@ Inadequate
        Excellent
          </div>
   </div>
-  <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation1.value" class="sliderGrade">
+  <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
     <input matSliderThumb  [formControl]="instructorRating">
   </mat-slider>
 </div>
