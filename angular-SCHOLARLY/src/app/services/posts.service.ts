@@ -31,6 +31,8 @@ export class PostsService {
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
   private notifUpdated = new ReplaySubject();
   private notifId: string;
+  private meanRanking: number;
+  private rankingUpdated = new Subject();
 
   private favsListener = new Subject<Fav[]>();
   private favs: Fav[] = [];
@@ -57,6 +59,9 @@ export class PostsService {
   }
   getHashs(): any {
     return this.hashUpdated.asObservable();
+  }
+  getMeanRanking(): any {
+    return this.rankingUpdated.asObservable();
   }
   searchUsers(query: string, userId: string): any {
     const sub = this.http
@@ -264,6 +269,28 @@ export class PostsService {
           sub.unsubscribe();
           console.log('eazy 1010');
         },
+      });
+  }
+  // Instrctors mean ranking
+  // getting main page posts non instructro review
+  rankingMean(category: string): any {
+    const sub = this.http
+      .get<{ message: string; mean: number }>(
+        'https://www.skalarly.com/api/posts/instructorRanking',
+        { params: { category } }
+      )
+      .pipe(
+        map((postData) => {
+          return postData.mean;
+        })
+      )
+      .subscribe((transformedPosts: number) => {
+        console.log('all my sheep dead', transformedPosts);
+
+        this.meanRanking = transformedPosts;
+        this.rankingUpdated.next(this.meanRanking);
+        sub.unsubscribe();
+        console.log('eazy 8');
       });
   }
 }

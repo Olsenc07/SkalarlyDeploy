@@ -9,8 +9,8 @@
       <!-- General choice appears at top of feed and dissapears as user scrolls -->
       <h1 class="top">
 
-        {{ Category }}
-        <div class="fontRanking" *ngIf="instructorRatingMean !== ''">
+        Instructor {{ Category }}
+        <div class="fontRanking" *ngIf="instructorRatingMean !== null">
 {{instructorRatingMean}}/10
         </div>
         <!-- if not already on list -->

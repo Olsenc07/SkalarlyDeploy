@@ -62,6 +62,7 @@
             <div   *ngIf="post.OriginalPostId == '' " class="reposts">
               Reposts {{post.Reposts}}
             </div>
+            <mat-divider></mat-divider>
             <div class="centerT" *ngIf="post.Title">
   
               <mat-card-title class="postTitle textSizeTit">
@@ -120,13 +121,13 @@
   
                   <!-- Idk If needed -->
   
-                  <button mat-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
+                  <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
                   (click)="navigateToMainPage(post.postLocation)" *ngIf="(post.postLocationInstructor == '')">
                     <!-- Location -->
                     {{post.postLocation}}
                   </button>
 
-                  <button mat-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
+                  <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
                   (click)="getPostsMainPageInstructor(post.postLocationInstructor)" *ngIf="(post.postLocationInstructor !== '')">
                     <!-- Location -->
                     {{post.postLocationInstructor}}

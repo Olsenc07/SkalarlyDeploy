@@ -53,6 +53,7 @@ export interface Post {
 })
 export class PostService {
   private posts: Post[] = [];
+
   private postsUpdated = new Subject<Post[]>();
   private postsSharedUpdated = new Subject<Post[]>();
 
@@ -75,6 +76,7 @@ export class PostService {
   getCountUpdateListener(): any {
     return this.countUpdated.asObservable();
   }
+
   getPosts(): any {
     const sub = this.http
       .get<{ message: string; posts: any }>(
@@ -635,6 +637,7 @@ export class PostService {
         console.log('eazy 8');
       });
   }
+
   // viewed shared post
   updateSharedPosts(userId: string): any {
     console.log('view me baby by the sky', userId);
