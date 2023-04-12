@@ -9,6 +9,7 @@
       <!-- General choice appears at top of feed and dissapears as user scrolls -->
       <h1 class="top">
 <div class="columnInstructor">
+    <div class="rowReview">
         Instructor: {{ Category }}  <!-- if not already on list -->
         <div  *ngIf="mains.category !== Category" matTooltip="Save To Favourites " >
         <button mat-icon-button (click)="saveFavCat(Category)" 
@@ -22,7 +23,7 @@
           <i class="fas fa-bookmark"></i>
         </button>
       </div>
-       
+       </div>
 
 <div  *ngIf="instructorRatingMean !== null" class="fontRanking">  
     Grade: {{instructorRatingMean}}/10 

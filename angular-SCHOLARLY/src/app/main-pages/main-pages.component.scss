@@ -287,6 +287,11 @@ justify-content: center;
   flex-direction: row;
   width: 100%;
 }
+.rowReview{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 @media (min-width: 1024px) {
   .right-wall {
     display: flex;
