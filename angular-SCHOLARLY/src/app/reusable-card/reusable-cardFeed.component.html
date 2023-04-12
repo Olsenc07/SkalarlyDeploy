@@ -59,7 +59,7 @@
           <mat-divider></mat-divider>
         
           <div class="column">
-            <div [ngClass]="post.Reposts < 1 ? topRow_ : topRow " >
+            <div [ngClass]="post.Reposts < 1 ? topRow : topRow_ " >
             <div   *ngIf="(post.OriginalPostId == '')&&(post.Reposts >= 1)  " class="reposts">
               Reposts: {{post.Reposts}}
             </div>

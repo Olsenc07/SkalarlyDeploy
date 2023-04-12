@@ -9,12 +9,23 @@
       <!-- General choice appears at top of feed and dissapears as user scrolls -->
       <h1 class="top">
 <div class="columnInstructor">
-        Instructor: {{ Category }}
-        <div class="fontRanking" *ngIf="instructorRatingMean !== null">
-{{instructorRatingMean}}/10 
+        Instructor: {{ Category }}  <!-- if not already on list -->
+        <div  *ngIf="mains.category !== Category" matTooltip="Save To Favourites " >
+        <button mat-icon-button (click)="saveFavCat(Category)" 
+       >
+          <i class="far fa-bookmark"></i>
+        </button>
+      </div>
+        <!-- if  already on list -->
+        <div *ngIf="mains.category === Category" matTooltip="Unsave From Favourites">
+        <button mat-icon-button  (click)="unsaveFavCat(mains._id)" >
+          <i class="fas fa-bookmark"></i>
+        </button>
+      </div>
+       
 
-<div  *ngIf="instructorRatingMean !== null">  
-    Grade: {{instructorRating.value}}/10 
+<div  *ngIf="instructorRatingMean !== null" class="fontRanking">  
+    Grade: {{instructorRatingMean}}/10 
     <div *ngIf="instructorRatingMean < 5 " class="fontGrade">
    Inadequate
     </div>
@@ -31,21 +42,9 @@
           Excellent
             </div>
      </div>
-        </div>
+        
     </div>
-        <!-- if not already on list -->
-        <div  *ngIf="mains.category !== Category" matTooltip="Save To Favourites " >
-        <button mat-icon-button (click)="saveFavCat(Category)" 
-       >
-          <i class="far fa-bookmark"></i>
-        </button>
-      </div>
-        <!-- if  already on list -->
-        <div *ngIf="mains.category === Category" matTooltip="Unsave From Favourites">
-        <button mat-icon-button  (click)="unsaveFavCat(mains._id)" >
-          <i class="fas fa-bookmark"></i>
-        </button>
-      </div>
+       
       </h1>
       <div class="column_" *ngIf="posts.length == 0">
         <div class="row"> No Posts At The Moment</div>
