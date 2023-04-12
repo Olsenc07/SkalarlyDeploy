@@ -90,6 +90,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   selectedIndex = 0;
   selectedIndexPost = 0;
   // Filter categories for instructor review
+  GradeBoolean: boolean = false;
   max = 10;
   step = 0.5;
   programs: string[] = [
@@ -188,6 +189,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
     return this.programs.filter((option) =>
       option.toLowerCase().includes(filter)
     );
+  }
+  // Grading instructor
+  Grade() {
+    this.GradeBoolean != this.GradeBoolean;
   }
   //
   visible = true;

@@ -195,9 +195,31 @@
   <input matInput placeholder="Instructors Name" [formControl]="postLocation2" *ngIf="postLocation1.value">
 </mat-form-field>
  <div class="font" *ngIf="postLocation1.value">
- {{postLocation1.value}}: {{ postLocation2.value }} {{instructorRating.value}}
+ {{postLocation1.value}}: {{ postLocation2.value }}
+</div>
+<div>Grade Instructor
+  <mat-checkbox
+  [indeterminate]="Grade()"></mat-checkbox>
+</div>
+ <div class="fontRanking" >  
+ Grade: {{instructorRating.value}}/10 
+ <div *ngIf="instructorRating.value < 5" class="font">
+Inadequate
+ </div>
+ <div *ngIf="6 > instructorRating.value >= 5" class="font">
+  Marginal
+   </div>
+   <div *ngIf="7 > instructorRating.value >= 6" class="font">
+    Adequate
+     </div>
+     <div *ngIf="8 > instructorRating.value >= 7" class="font">
+      Good
+       </div>
+       <div *ngIf=" instructorRating.value >= 8" class="font">
+       Excellent
+         </div>
   </div>
-  <mat-slider [max]="max" [step]="step" *ngIf="postLocation1.value">
+  <mat-slider [max]="max" [step]="step" *ngIf="GradeBoolean == true">
     <input matSliderThumb  [formControl]="instructorRating">
   </mat-slider>
 </div>
