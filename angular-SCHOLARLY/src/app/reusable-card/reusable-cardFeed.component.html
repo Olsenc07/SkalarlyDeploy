@@ -59,20 +59,27 @@
           <mat-divider></mat-divider>
         
           <div class="column">
+            <div class="topRow">
             <div   *ngIf="post.OriginalPostId == '' " class="reposts">
               Reposts {{post.Reposts}}
             </div>
+            <div class="topRowWords" *ngIf="(post.postLocationInstructor == '')">
+            Specific Page 
             <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
-            (click)="navigateToMainPage(post.postLocation)" *ngIf="(post.postLocationInstructor == '')">
+            (click)="navigateToMainPage(post.postLocation)" >
               <!-- Location -->
-             Specific Page {{post.postLocation}}
+             {{post.postLocation}}
             </button>
-
+          </div>
+          <div class="topRowWords" *ngIf="(post.postLocationInstructor !== '')">
+            Instructor Page
             <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
-            (click)="getPostsMainPageInstructor(post.postLocationInstructor)" *ngIf="(post.postLocationInstructor !== '')">
+            (click)="getPostsMainPageInstructor(post.postLocationInstructor)" >
               <!-- Location -->
-             Instructor Page {{post.postLocationInstructor}}
+              {{post.postLocationInstructor}}
             </button>
+            </div>
+          </div>
             <mat-divider></mat-divider>
             <div class="centerT" *ngIf="post.Title">
   

@@ -1079,10 +1079,12 @@ router.get("/mainPageInstructor", async(req, res) => {
            
 });
 // Instructors rankings
-router.get("/mainPageInstructor", async(req, res) => {    
+router.get("/instructorRanking", async(req, res) => {    
         const instructor = req.query.category
+        console.log('instructor',instructor);
         await Post.find({postLocationInstructor: instructor})
             .then(doc => {
+                // for each and make a list and get length and values..
                 if(doc){
                 console.log('doc bro', doc)
                 res.status(200).json({
