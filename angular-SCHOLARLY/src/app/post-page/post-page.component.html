@@ -199,10 +199,12 @@
 
 
  <div class="fontMain" *ngIf="postLocation.value">
-  <input  [formControl]="postLocationInstructor" [value]=" postLocation2.value " >
+  <mat-form-field appearance="outline">
+  <input  matInput [formControl]="postLocationInstructor" [value]=" postLocation2.value " >
  {{postLocation.value}}: 
  <!-- <div class="font" *ngIf="!postLocation2.value"> Instructors Name</div> -->
  {{ postLocation2.value }}
+</mat-form-field>
 </div>
 <mat-divider></mat-divider>
 <div class="font" *ngIf="postLocation.value && postLocation2.value">Grade Instructor
