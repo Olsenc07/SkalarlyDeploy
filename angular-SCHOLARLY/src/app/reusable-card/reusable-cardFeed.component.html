@@ -59,6 +59,9 @@
           <mat-divider></mat-divider>
         
           <div class="column">
+            <div   *ngIf="post.OriginalPostId == '' " class="reposts">
+              Reposts {{post.Reposts}}
+            </div>
             <div class="centerT" *ngIf="post.Title">
   
               <mat-card-title class="postTitle textSizeTit">
@@ -111,9 +114,7 @@
   
               <div class="columnReposts">
                 <!-- matTooltip="All Time Reposts" -->
-                <div   *ngIf="post.OriginalPostId == '' " class="reposts">
-                  Reposts {{post.Reposts}}
-                </div>
+                
                 <div class="column_">
   
   
@@ -131,7 +132,7 @@
                     {{post.postLocationInstructor}}
                   </button>
 <div class="fontRanking" *ngIf="post.postLocationInstructor && post.instructorRating">
-                  {{post.instructorRating}}/10
+                 Instructor {{post.instructorRating}}/10
                 </div>
                   <div class="textSize row1 t" *ngIf="post.LocationEvent">
                    

@@ -113,7 +113,9 @@
                     <!-- Location -->
                     {{post.postLocationInstructor}}
                   </div>
-  
+                  <div class="fontRanking" *ngIf="post.postLocationInstructor && post.instructorRating">
+                    Instructor {{post.instructorRating}}/10
+                   </div>
                   <div class="textSize row1 t" *ngIf="post.LocationEvent">
                    
                     {{post.LocationEvent}}

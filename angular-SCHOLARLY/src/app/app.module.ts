@@ -121,6 +121,7 @@ import {
   ReusableCardComponent,
   CardInfoMainPageComponent,
   TrendingFeedComponent,
+  CardInfoInstructorReviewComponent,
 } from './reusable-card/reusable-card.component';
 
 import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
@@ -213,6 +214,7 @@ import { ErrorInterceptor } from './error-interceptor';
     CardFriendsComponent,
     CardInfoMainPageComponent,
     TrendingFeedComponent,
+    CardInfoInstructorReviewComponent,
     ReusableCommentsComponent,
     ReusableCommentComponent,
     ReusableCommentFormComponent,
