@@ -60,11 +60,11 @@
         
           <div class="column">
             <div class="topRow">
-            <div   *ngIf="post.OriginalPostId == '' " class="reposts">
+            <div   *ngIf="(post.OriginalPostId == '')&&(post.Reposts >= 1)  " class="reposts">
               Reposts: {{post.Reposts}}
             </div>
         
-            <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
+            <button mat-stroked-button class="postLocation textSizeLocation t " matTooltip="Click to see more like this"
             (click)="navigateToMainPage(post.postLocation)" *ngIf="(post.postLocationInstructor == '')">
               <!-- Location -->
               Specific Page 
