@@ -222,8 +222,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   postLocation2: FormControl = new FormControl('');
   postLocation: FormControl = new FormControl('');
 
-  postLocationInstructor =
-    this.postLocation1.value + ':' + this.postLocation2.value;
+  postLocationInstructor = this.postLocation1 + ':' + this.postLocation2;
   instructorRating: FormControl = new FormControl('');
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
@@ -604,6 +603,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.Title.value,
       this.postDescription.value,
       this.postLocation.value,
+      this.postLocationInstructor,
+      this.instructorRating.value,
       this.LocationEvent.value,
       this.time.value,
       this.timeE.value,

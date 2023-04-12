@@ -198,13 +198,13 @@
 
 
 
- <div class="font" *ngIf="postLocation1.value">
+ <div class="fontMain" *ngIf="postLocation1.value">
  {{postLocation1.value}}: 
  <!-- <div class="font" *ngIf="!postLocation2.value"> Instructors Name</div> -->
  {{ postLocation2.value }}
 </div>
 <mat-divider></mat-divider>
-<div class="font" *ngIf="postLocation1.value">Grade Instructor
+<div class="font" *ngIf="postLocation1.value && postLocation1.value">Grade Instructor
   <mat-checkbox (click)="Grade()"
   ></mat-checkbox>
 </div>
@@ -226,7 +226,7 @@ Inadequate
        Excellent
          </div>
   </div>
-  <mat-slider [max]="max" [step]="step" *ngIf="GradeBoolean == true" class="">
+  <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation1.value" class="sliderGrade">
     <input matSliderThumb  [formControl]="instructorRating">
   </mat-slider>
 </div>

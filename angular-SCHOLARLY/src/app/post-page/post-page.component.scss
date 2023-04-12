@@ -99,21 +99,7 @@
 display: flex;
 justify-content: center;
 }
-.font{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Cormorant Garamond', serif;
-}
-.fontRanking{
-  display: flex;
-  justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-}
-.fontGrade{
-  padding-left: 2%;
-  font-family: 'Cormorant Garamond', serif;
-}
+
 .odd{
   // padding: 1%;
   background-color: white;
@@ -276,6 +262,27 @@ justify-content: center;
   flex-direction: row;
   box-sizing: border-box;
   justify-content: center;
+}
+.font{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Cormorant Garamond', serif;
+}
+.fontMain{
+  display: flex;
+  align-items: center;
+  font-family: 'Cormorant Garamond', serif;
+  margin-bottom: 1%;
+}
+.fontRanking{
+  display: flex;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+}
+.fontGrade{
+  padding-left: 2%;
+  font-family: 'Cormorant Garamond', serif;
 }
 .final_step_btn {
   // color: #418bba;
