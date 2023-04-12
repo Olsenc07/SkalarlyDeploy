@@ -192,7 +192,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   // Grading instructor
   Grade() {
-    this.GradeBoolean != this.GradeBoolean;
+    console.log('grade', this.GradeBoolean);
+    this.GradeBoolean = !this.GradeBoolean;
   }
   //
   visible = true;
