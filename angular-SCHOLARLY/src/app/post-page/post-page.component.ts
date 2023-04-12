@@ -222,9 +222,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   postLocation2: FormControl = new FormControl('');
   postLocation: FormControl = new FormControl('');
 
-  postLocationInstructor: FormControl = new FormControl(
-    this.postLocation1 + ':' + this.postLocation2.value
-  );
+  postLocationInstructor =
+    this.postLocation1.value + ':' + this.postLocation2.value;
   instructorRating: FormControl = new FormControl('');
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
@@ -562,7 +561,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.Title.value,
       this.postDescription.value,
       this.postLocation.value,
-      this.postLocationInstructor.value,
+      this.postLocationInstructor,
       this.instructorRating.value,
       this.LocationEvent.value,
       this.time.value,
@@ -631,7 +630,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   changeTab(): void {
     this.selectedIndexPost = this.selectedIndexPost === 1 ? 0 : 1;
     console.log('math class', this.selectedIndexPost);
-    console.log('hey beautiful', this.postLocationInstructor.value);
+    console.log('hey beautiful', this.postLocationInstructor);
     console.log('blow at high dough', this.instructorRating.value);
   }
   changeTab_(): void {

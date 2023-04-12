@@ -97,7 +97,7 @@
 
     <div class="centerL" *ngIf="(postDescription.value || form.get('upload').value || form.get('video').value) && (show == true) ">Where do you want your post?
     </div>
-    <div class="selection_styles" *ngIf="postDescription.value || form.get('upload').value || form.get('video').value && (show == true)">
+    <div class="selection_styles" *ngIf="(postDescription.value || form.get('upload').value || form.get('video').value) && (show == true)">
       <mat-tab-group class="btmPad" [selectedIndex]="selectedIndex">
         <mat-tab label="Step 1: Choose from the main categories" disabled>
           <mat-selection-list #options [multiple]="false">
@@ -195,29 +195,31 @@
     <!-- <i matPrefix class="fas fa-address-card"></i> -->
   <input matInput placeholder="Instructors Name" class="instructorsPadding" [formControl]="postLocation2" *ngIf="postLocation1.value">
 </mat-form-field>
-<div class="font" *ngIf="postLocation1.value">Grade Instructor
-  <mat-checkbox (click)="Grade()"
-  ></mat-checkbox>
-  <mat-divider></mat-divider>
-</div>
+
+
+
  <div class="font" *ngIf="postLocation1.value">
  {{postLocation1.value}}: 
  <!-- <div class="font" *ngIf="!postLocation2.value"> Instructors Name</div> -->
  {{ postLocation2.value }}
 </div>
-
+<mat-divider></mat-divider>
+<div class="font" *ngIf="postLocation1.value">Grade Instructor
+  <mat-checkbox (click)="Grade()"
+  ></mat-checkbox>
+</div>
  <div class="fontRanking" *ngIf="GradeBoolean == true">  
  Grade: {{instructorRating.value}}/10 
  <div *ngIf="instructorRating.value < 5 && (GradeBoolean == true)" class="fontGrade">
 Inadequate
  </div>
- <div *ngIf="(6 > instructorRating.value >= 5) && (GradeBoolean == true)" class="fontGrade">
+ <div *ngIf="(6 > instructorRating.value) &&  (instructorRating.value >= 5) && (GradeBoolean == true)" class="fontGrade">
   Marginal
    </div>
-   <div *ngIf="(7 > instructorRating.value >= 6) && (GradeBoolean == true)" class="fontGrade">
+   <div *ngIf="(7 > instructorRating.value) && (instructorRating.value >= 6) && (GradeBoolean == true)" class="fontGrade">
     Adequate
      </div>
-     <div *ngIf="(8 > instructorRating.value >= 7) && (GradeBoolean == true)" class="fontGrade">
+     <div *ngIf="(8 > instructorRating.value) && (instructorRating.value >= 7) && (GradeBoolean == true)" class="fontGrade">
       Good
        </div>
        <div *ngIf=" (instructorRating.value >= 8) && (GradeBoolean == true)" class="fontGrade">
