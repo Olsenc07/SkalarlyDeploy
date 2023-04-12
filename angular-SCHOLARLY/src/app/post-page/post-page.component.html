@@ -95,7 +95,7 @@
 
 <!-- Step 1 -->
 
-    <div class="centerL" *ngIf="postDescription.value || form.get('upload').value || form.get('video').value && (show == true) ">Where do you want your post?
+    <div class="centerL" *ngIf="(postDescription.value || form.get('upload').value || form.get('video').value) && (show == true) ">Where do you want your post?
     </div>
     <div class="selection_styles" *ngIf="postDescription.value || form.get('upload').value || form.get('video').value && (show == true)">
       <mat-tab-group class="btmPad" [selectedIndex]="selectedIndex">
@@ -192,12 +192,13 @@
   <!-- <mat-label class="font"> </mat-label> -->
   <!-- Have previous names drop down as options -->
   <mat-form-field *ngIf="postLocation1.value">
-    <i matPrefix class="fas fa-address-card"></i>
-  <input matInput placeholder="Instructors Name" [formControl]="postLocation2" *ngIf="postLocation1.value">
+    <!-- <i matPrefix class="fas fa-address-card"></i> -->
+  <input matInput placeholder="Instructors Name" class="instructorsPadding" [formControl]="postLocation2" *ngIf="postLocation1.value">
 </mat-form-field>
-<div class="font">Grade Instructor
+<div class="font" *ngIf="postLocation1.value">Grade Instructor
   <mat-checkbox (click)="Grade()"
   ></mat-checkbox>
+  <mat-divider></mat-divider>
 </div>
  <div class="font" *ngIf="postLocation1.value">
  {{postLocation1.value}}: 
@@ -210,20 +211,20 @@
  <div *ngIf="instructorRating.value < 5 && (GradeBoolean == true)" class="fontGrade">
 Inadequate
  </div>
- <div *ngIf="6 > instructorRating.value >= 5 && (GradeBoolean == true)" class="fontGrade">
+ <div *ngIf="(6 > instructorRating.value >= 5) && (GradeBoolean == true)" class="fontGrade">
   Marginal
    </div>
-   <div *ngIf="7 > instructorRating.value >= 6 && (GradeBoolean == true)" class="fontGrade">
+   <div *ngIf="(7 > instructorRating.value >= 6) && (GradeBoolean == true)" class="fontGrade">
     Adequate
      </div>
-     <div *ngIf="8 > instructorRating.value >= 7 && (GradeBoolean == true)" class="fontGrade">
+     <div *ngIf="(8 > instructorRating.value >= 7) && (GradeBoolean == true)" class="fontGrade">
       Good
        </div>
-       <div *ngIf=" instructorRating.value >= 8 && (GradeBoolean == true)" class="fontGrade">
+       <div *ngIf=" (instructorRating.value >= 8) && (GradeBoolean == true)" class="fontGrade">
        Excellent
          </div>
   </div>
-  <mat-slider [max]="max" [step]="step" *ngIf="GradeBoolean == true">
+  <mat-slider [max]="max" [step]="step" *ngIf="GradeBoolean == true" class="">
     <input matSliderThumb  [formControl]="instructorRating">
   </mat-slider>
 </div>

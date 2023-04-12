@@ -632,6 +632,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.selectedIndexPost = this.selectedIndexPost === 1 ? 0 : 1;
     console.log('math class', this.selectedIndexPost);
     console.log('hey beautiful', this.postLocationInstructor.value);
+    console.log('blow at high dough', this.instructorRating.value);
   }
   changeTab_(): void {
     this.selectedIndexPost = this.selectedIndexPost === 0 ? 1 : 0;
@@ -643,6 +644,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   changeTabB(): void {
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
     this.postLocation.setValue('');
+    this.postLocation1.setValue('');
   }
   changeTab2(): void {
     this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
