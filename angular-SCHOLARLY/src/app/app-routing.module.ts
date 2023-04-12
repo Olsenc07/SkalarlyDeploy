@@ -43,6 +43,7 @@ import {
   SkalarsComponent,
   HashtagComponent,
   LargeNewSkalarsFeedComponent,
+  InstructorReviewComponent,
 } from './main-pages/main-pages.component';
 import { MessagingComponent } from './messaging/messaging.component';
 import { AuthGuard } from './signup/auth.guard';
@@ -190,6 +191,8 @@ const routes: Routes = [
   },
   { path: 'groups', component: GroupChatsComponent, canActivate: [AuthGuard] },
   { path: 'main/:category', component: MainPagesComponent },
+  { path: 'instructor-review/:category', component: InstructorReviewComponent },
+
   { path: 'single/:postId', component: SinglePageComponent },
 
   {

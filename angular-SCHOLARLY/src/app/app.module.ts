@@ -88,6 +88,7 @@ import {
   HashtagComponent,
   HashtagCardComponent,
   LargeNewSkalarsFeedComponent,
+  InstructorReviewComponent,
 } from './main-pages/main-pages.component';
 import {
   SignupComponent,
@@ -195,6 +196,7 @@ import { ErrorInterceptor } from './error-interceptor';
     RecentComponent,
     LargeFriendsFeedComponent,
     LargeNewSkalarsFeedComponent,
+    InstructorReviewComponent,
     HashtagComponent,
     HashtagCardComponent,
     SignupComponent,

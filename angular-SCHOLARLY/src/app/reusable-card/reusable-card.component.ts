@@ -199,7 +199,13 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
     this.route.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
-
+  // Where the post was posted
+  getPostsMainPageInstructor(value: string): void {
+    this.route.navigate(['/instructor-review/:'], {
+      queryParams: { category: value },
+    });
+    console.log('hey chaz mataz yo homie', value);
+  }
   onDelete(postId: string): any {
     this.postService.deletePost(postId);
   }
@@ -556,6 +562,13 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
   navigateToMainPage(value: string): void {
     this.route.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
+  }
+  // Where the post was posted
+  getPostsMainPageInstructor(value: string): void {
+    this.route.navigate(['/instructor-review/:'], {
+      queryParams: { category: value },
+    });
+    console.log('hey chaz mataz yo homie', value);
   }
   navigateToPost(): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -1477,6 +1490,13 @@ export class CardFeedComponent implements OnInit, OnDestroy {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
+  // Where the post was posted
+  getPostsMainPageInstructor(value: string): void {
+    this.router.navigate(['/instructor-review/:'], {
+      queryParams: { category: value },
+    });
+    console.log('hey chaz mataz yo homie', value);
+  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
@@ -1849,6 +1869,13 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
+   // Where the post was posted
+   getPostsMainPageInstructor(value: string): void {
+    this.router.navigate(['/instructor-review/:'], {
+      queryParams: { category: value },
+    });
+    console.log('hey chaz mataz yo homie', value);
+  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
@@ -2220,6 +2247,13 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
+   // Where the post was posted
+   getPostsMainPageInstructor(value: string): void {
+    this.router.navigate(['/instructor-review/:'], {
+      queryParams: { category: value },
+    });
+    console.log('hey chaz mataz yo homie', value);
+  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
@@ -2543,6 +2577,13 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
+  // Where the post was posted
+  getPostsMainPageInstructor(value: string): void {
+    this.router.navigate(['/instructor-review/:'], {
+      queryParams: { category: value },
+    });
+    console.log('hey chaz mataz yo homie', value);
+  }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
@@ -2717,6 +2758,349 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
       this.category = params?.category;
 
       this.postService.getPostsMainPage(this.category, 0, this.userId);
+      this.postsSub = this.postService
+        .getPostUpdateListener()
+        .subscribe((posts: Post[]) => {
+          this.posts = posts;
+          this.isLoading = false;
+        });
+    });
+  }
+  ngOnDestroy(): any {
+    this.routeSub.unsubscribe();
+    this.postsSub.unsubscribe();
+  }
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
+  navToPost(postId: string): any {
+    console.log('Hey babe I miss you', postId);
+    this.router.navigate(['/single/:'], { queryParams: { postId } });
+  }
+  commentsValidatorFunc(postId: string): void {
+    if (this.commentsValidator !== postId) {
+      this.comment.setValue('');
+    }
+    this.commentsValidator = postId;
+  }
+  // Am Pm instead of 24hr clock
+  testNum(timeHourInitial: any): number {
+    if (timeHourInitial > 12) {
+      if (timeHourInitial === 13) {
+        return 1;
+      }
+      if (timeHourInitial === 14) {
+        return 2;
+      }
+      if (timeHourInitial === 15) {
+        return 3;
+      }
+      if (timeHourInitial === 16) {
+        return 4;
+      }
+      if (timeHourInitial === 17) {
+        return 5;
+      }
+      if (timeHourInitial === 18) {
+        return 6;
+      }
+      if (timeHourInitial === 19) {
+        return 7;
+      }
+      if (timeHourInitial === 20) {
+        return 8;
+      }
+      if (timeHourInitial === 21) {
+        return 9;
+      }
+      if (timeHourInitial === 22) {
+        return 10;
+      }
+      if (timeHourInitial === 23) {
+        return 11;
+      }
+      if (timeHourInitial === 24) {
+        return 12;
+      }
+    } else {
+      return timeHourInitial;
+    }
+  }
+  testMonth(dateMonth: any): string {
+    if (dateMonth === 0) {
+      return 'Jan';
+    }
+    if (dateMonth === 1) {
+      return 'Feb';
+    }
+    if (dateMonth === 2) {
+      return 'Mar';
+    }
+    if (dateMonth === 3) {
+      return 'Apr';
+    }
+    if (dateMonth === 4) {
+      return 'May';
+    }
+    if (dateMonth === 5) {
+      return 'June';
+    }
+    if (dateMonth === 6) {
+      return 'July';
+    }
+    if (dateMonth === 7) {
+      return 'Aug';
+    }
+    if (dateMonth === 8) {
+      return 'Sept';
+    }
+    if (dateMonth === 9) {
+      return 'Oct';
+    }
+    if (dateMonth === 10) {
+      return 'Nov';
+    }
+    if (dateMonth === 11) {
+      return 'Dec';
+    }
+  }
+
+  imgClick(imgPath): any {
+    document.getElementById('myModal').style.display = 'block';
+    (document.getElementById('img01') as HTMLImageElement).src = imgPath;
+    this.hide = false;
+    console.log('hey good lookin');
+  }
+  close(): any {
+    document.getElementById('myModal').style.display = 'none';
+    this.hide = true;
+    console.log('bye good lookin');
+  }
+  // Adding emojis
+  openEmoji(): void {
+    const selectionContainer = document.getElementById('showEmojis');
+    const triggerEmoji = document.getElementById('triggerEmo');
+    console.log('star through');
+    const picker = createPopup(
+      {},
+      {
+        referenceElement: selectionContainer,
+        triggerElement: triggerEmoji,
+        position: 'top',
+      }
+    );
+
+    picker.toggle();
+    picker.addEventListener('emoji:select', (selection) => {
+      console.log('Selected emoji: ', selection.emoji);
+      const msgs = selection.emoji;
+      const msg = this.comment.value + msgs;
+      this.comment.setValue(msg);
+    });
+  }
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId.length);
+    console.log('Hey babe I miss you ', OriginalPostId.length);
+    if (OriginalPostId.length === 0) {
+      this.postService.getPostsTrendingNumberOwn(postId);
+      this.valueChosen = postId;
+      console.log('logic1', this.valueChosen);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = OriginalPostId;
+      console.log('logic', this.valueChosen);
+    }
+    this.trendingSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+        this.trendingSub.unsubscribe();
+      });
+  }
+  emojiPreventClose($event: any): any {
+    $event.stopPropagation();
+  }
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+    console.log('hey', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+    const NextBtn = document.getElementById('topScroll');
+    NextBtn.scrollIntoView();
+    this.postService.getPostsMainPage(
+      this.category,
+      this.recomCounter,
+      this.userId
+    );
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        this.postsSub.unsubscribe();
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+    console.log('hey back', this.recomCounter);
+    console.log('howdy', this.countVisibility);
+
+    this.postService.getPostsMainPage(
+      this.category,
+      this.recomCounter,
+      this.userId
+    );
+    this.postsSub = this.postService
+      .getPostUpdateListener()
+      .subscribe((posts: Post[]) => {
+        this.posts = posts;
+        this.isLoading = false;
+        this.postsSub.unsubscribe();
+      });
+  }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+  onDeleteComment(commentId: string, postId: string): any {
+    this.commentsService.deleteComment(commentId);
+    console.log('chaz whats up', commentId);
+    console.log('chaz whats up 2', postId);
+
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        console.log('i got more shit to say', comments.length);
+        this.commentsCountValidator = postId;
+        // this.commentCount = comments.length;
+        // console.log('type', this.commentCount);
+        this.comments = comments;
+
+        this.commentsSub.unsubscribe();
+      });
+    console.log('in real time');
+  }
+  CommentTrigger(postId): void {
+    if (this.comment.value) {
+      this.commentsService.createComment(
+        this.comment.value,
+        this.userId,
+        this.time,
+        postId
+      );
+      this.comment.setValue('');
+      this.commentsSub = this.commentsService
+        .getMessagesUpdateListener()
+        .subscribe((comments: string[]) => {
+          console.log('i got more shit to say baby');
+          this.commentsCountValidator = postId;
+          // this.commentCount = comments.length;
+          // console.log('type', this.commentCount);
+          this.comments = comments;
+
+          this.commentsSub.unsubscribe();
+        });
+      console.log('onComment', postId);
+    }
+  }
+
+  loadComments(postId: string): void {
+    console.log('hey logic fade away', postId);
+    this.commentsService.getComments(postId);
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: string[]) => {
+        this.commentsCountValidator = postId;
+        this.comments = comments;
+        this.commentsSub.unsubscribe();
+      });
+  }
+}
+// Instructor review
+@Component({
+  selector: 'app-card-main-instructor-review',
+  templateUrl: './reusable-cardMainPage.component.html',
+  styleUrls: ['./reusable-card.component.scss'],
+})
+export class CardInfoInstructorReviewComponent implements OnInit, OnDestroy {
+  category: string;
+  userId: string;
+  hide = true;
+  isLoading = false;
+  recomCounter = 0;
+  countVisibility = 0;
+  valueChosen = '7';
+  reposts = '';
+  commentsValidator = '';
+  commentsCountValidator = '';
+  posts: Post[] = [];
+  private postsSub: Subscription;
+  private routeSub: Subscription;
+  private trendingSub: Subscription;
+  comments: string[] = [];
+  // number of comments that load
+  private commentsSub: Subscription;
+  comment: FormControl = new FormControl('');
+
+  timeHourInitial = new Date().getHours();
+  timeHour = this.testNum(this.timeHourInitial);
+  timeMinute = new Date().getMinutes();
+  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
+  timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  dateDay = new Date().getDate();
+  dateMonth = new Date().getMonth();
+  dateMonthName = this.testMonth(this.dateMonth);
+
+  time =
+    this.dateMonthName +
+    '\xa0' +
+    this.dateDay +
+    '\xa0' +
+    this.timeHour +
+    ':' +
+    this.timeMinuteText +
+    this.timeMinute +
+    '\xa0' +
+    this.text;
+
+  // img popup
+  img = document.getElementById('myImg');
+  modalImg = document.getElementById('img01');
+  captionText = document.getElementById('caption');
+  // Get the <span> element that closes the modal
+  span = document.getElementsByClassName('close')[0];
+  constructor(
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private commentsService: CommentsService,
+    public postService: PostService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+
+    this.routeSub = this.route.queryParams.subscribe((params) => {
+      console.log('params main page', params);
+      this.category = params?.category;
+
+      this.postService.getPostsMainPageInstructor(
+        this.category,
+        0,
+        this.userId
+      );
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {

@@ -104,8 +104,13 @@
   // background: linear-gradient(45deg,#255d6a,rgb(16 23 58));
 }
 .reposts{
+  // display: flex;
+  // justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
+  font-size: x-large;
+  margin-right: 10%;
 }
 .column {
   display: flex;

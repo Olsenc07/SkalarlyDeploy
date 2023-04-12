@@ -26,7 +26,6 @@ export class MainPagesComponent implements OnInit, OnDestroy {
   specificOptions: string;
   commentsValidator = '';
   mains: Fav = {};
-  instructorRatingMean = '';
   isLoading = false;
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -58,6 +57,134 @@ export class MainPagesComponent implements OnInit, OnDestroy {
           this.mains = favs;
         });
       this.postService.getPostsMainPage(this.Category, 0, this.userId);
+      this.postsSub = this.postService
+        .getPostUpdateListener()
+        .subscribe((posts: Post[]) => {
+          console.log('anothers arms', posts);
+          this.posts = posts;
+          this.isLoading = false;
+        });
+    });
+  }
+  ngOnDestroy(): any {
+    this.postsSub.unsubscribe();
+    this.routeSub.unsubscribe();
+    this.favsSub.unsubscribe();
+  }
+  saveFavCat(category: string): void {
+    console.log('sons trust up', category);
+    this.postsService.addFavsNew(this.userId, category, '');
+    this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+      this.mains = favs;
+      this.favsSub.unsubscribe();
+    });
+  }
+  unsaveFavCat(id: string): void {
+    console.log('id unsave', id);
+    this.postsService.unSaveFavs(id);
+    this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+      this.mains = favs;
+      this.favsSub.unsubscribe();
+    });
+  }
+
+  navToHashTag(HashTag: string): any {
+    console.log('HashTag', HashTag);
+    // Where the post was posted
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
+  // To post page with users id
+  navigateToPost(): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/post-page/:'], {
+      queryParams: { userId: this.userId },
+    });
+  }
+
+  getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
+    console.log('Hey babe I miss you more', postId.length);
+    console.log('Hey babe I miss you ', OriginalPostId.length);
+    if (OriginalPostId.length === 0) {
+      this.postService.getPostsTrendingNumberOwn(postId);
+      this.valueChosen = postId;
+      console.log('logic1', this.valueChosen);
+    } else {
+      this.postService.getPostsTrendingNumber(OriginalPostId);
+      this.valueChosen = OriginalPostId;
+      console.log('logic', this.valueChosen);
+    }
+    this.countSub = this.postService
+      .getCountUpdateListener()
+      .subscribe((value) => {
+        this.reposts = value;
+        console.log(' reposts', this.reposts);
+        this.countSub.unsubscribe();
+      });
+  }
+
+  spreadWord(postId: string): void {
+    console.log('for me baby', postId);
+    console.log('for me baby 2', this.userId);
+    this.postService.addPostShared(postId, this.userId);
+  }
+  // Fills same way just for different reasons
+  // Each button opens this page by there should be 4 different functions with each
+  // sharin the open attendence comp, but each sends diff values/reasoning
+}
+
+// Instructor review
+@Component({
+  selector: 'app-instructor-reviews',
+  templateUrl: './instructor-review.component.html',
+  styleUrls: ['./main-pages.component.scss'],
+})
+export class InstructorReviewComponent implements OnInit, OnDestroy {
+  userId: string;
+  reposts = '';
+  valueChosen = '7';
+  Category: string;
+  specific: string;
+  specificOptions: string;
+  commentsValidator = '';
+  mains: Fav = {};
+  instructorRatingMean = '';
+  isLoading = false;
+  posts: Post[] = [];
+  private postsSub: Subscription;
+  private routeSub: Subscription;
+  private favsSub: Subscription;
+  private countSub: Subscription;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    public postService: PostService,
+    public postsService: PostsService
+  ) {}
+
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+
+    this.routeSub = this.route.queryParams.subscribe((params) => {
+      console.log('params main page', params);
+      this.Category = params?.category;
+      console.log(' erika777', this.Category);
+
+      this.postsService.getFavsListMain(this.userId, this.Category);
+      this.favsSub = this.postsService
+        .getFavsListenerSingle()
+        .subscribe((favs) => {
+          console.log(' erika 77 ', favs);
+          this.mains = favs;
+        });
+      this.postService.getPostsMainPageInstructor(
+        this.Category,
+        0,
+        this.userId
+      );
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
@@ -322,6 +449,13 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
   navigateToMainPage(value: string): void {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
+  }
+  // Where the post was posted
+  getPostsMainPageInstructor(value: string): void {
+    this.router.navigate(['/instructor-review/:'], {
+      queryParams: { category: value },
+    });
+    console.log('hey chaz mataz yo homie', value);
   }
   // Adding emojis
   openEmoji(): void {
@@ -1716,5 +1850,12 @@ export class HashtagCardComponent implements OnInit, OnDestroy {
   navigateToMainPage(value: string): void {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
+  }
+  // Where the post was posted
+  getPostsMainPageInstructor(value: string): void {
+    this.router.navigate(['/instructor-review/:'], {
+      queryParams: { category: value },
+    });
+    console.log('hey chaz mataz yo homie', value);
   }
 }

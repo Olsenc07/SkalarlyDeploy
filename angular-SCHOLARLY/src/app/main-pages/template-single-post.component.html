@@ -62,8 +62,9 @@
   
   
               <div class="columnReposts">
-                <div  matTooltip="All Time Reposts" *ngIf="post.OriginalPostId == '' " class="reposts">
-                  {{post.Reposts}}
+                <!--  matTooltip="All Time Reposts" -->
+                <div   *ngIf="post.OriginalPostId == '' " class="reposts">
+                  Reposts {{post.Reposts}}
                 </div>
                 <div class="column_">
   
@@ -71,10 +72,16 @@
                   <!-- Idk If needed -->
   
                   <button mat-button class="postLocation textSizeLocation t" (click)="navigateToMainPage(post.postLocation)"
-                  matTooltip="Click to see more like this" *ngIf="post.postLocation">
+                  matTooltip="Click to see more like this" *ngIf="(post.postLocationInstructor == '')">
                     <!-- Location -->
                     {{post.postLocation}}
                 </button>
+
+                <button mat-button class="postLocation textSizeLocation t" (click)="getPostsMainPageInstructor(post.postLocationInstructor)"
+                matTooltip="Click to see more like this" *ngIf="(post.postLocationInstructor !== '')">
+                  <!-- Location -->
+                  {{post.postLocationInstructor}}
+              </button>
   
                   <div class="textSize row1 t" *ngIf="post.LocationEvent">
                    
@@ -154,7 +161,9 @@
         <div class="description" *ngIf="post.postDescription">
   
           <div class="postText d">
-            {{post.postDescription}}
+            <div class="postTextWords">
+              {{post.postDescription}}
+            </div>
             <div class="hashs" matTooltip="Hashtags">
               <div class="HashTags" *ngIf="post.Hashtag1">
                 <button mat-stroked-button (click)="navToHashTag(post.Hashtag1)" class="HashTagsBtn">

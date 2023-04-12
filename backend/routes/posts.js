@@ -1057,6 +1057,27 @@ router.get("/mainPage", async(req, res) => {
         });
            
 });
+// Get main page posts
+router.get("/mainPageInstructor", async(req, res) => {    
+    const counter = req.query.counter;
+    const userId = req.query.userId;
+
+    console.log('street crimes 33 ');
+         await Post.find({ $and: [ {postLocationInstructor: req.query.category}, { OriginalPostId: { $eq: '' } }]}).sort({_id:-1}).skip(counter).limit(6)
+           .then(doc => {
+
+            res.status(200).json({
+                message: 'Infos fetched succesfully!',
+                posts: doc
+            });
+           }) 
+           .catch(error => {
+            res.status(500).json({
+                message: 'Fetching posts failed!'
+            });
+        });
+           
+});
 // Get single page post
 router.get("/singlePage", async(req, res) => {    
     console.log('love in the air 7 ',req.query.postId);
