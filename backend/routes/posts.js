@@ -1093,8 +1093,8 @@ router.get("/instructorRanking", async(req, res) => {
                     })
                 console.log('doc bro', mean)
                 meanSecondLast = mean.reduce((partialSum, a) => partialSum + a, 0)
-                console.log('doc bro2', typeof(meanSecondLast));
-                meanFinal = Number(meanSecondLast)/length(mean)
+                console.log('doc bro2', mean.length);
+                meanFinal = meanSecondLast/(mean.length)
                 console.log('doc bro3', meanFinal)
                 res.status(200).json({
                     message: 'Infos fetched succesfully!',

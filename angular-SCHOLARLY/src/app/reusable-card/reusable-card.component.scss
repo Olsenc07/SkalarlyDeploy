@@ -456,6 +456,12 @@ margin-top: 1%;
   align-items: center;
   justify-content: space-between;  
 }
+.topRow_{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;  
+}
 // .topRowWords{
 // font-family: 'Cormorant Garamond', serif;
 // align-items: center;

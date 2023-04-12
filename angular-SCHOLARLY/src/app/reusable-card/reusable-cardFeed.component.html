@@ -59,13 +59,14 @@
           <mat-divider></mat-divider>
         
           <div class="column">
-            <div class="topRow">
+            <div [ngClass]="post.Reposts < 1 ? topRow_ : topRow " >
             <div   *ngIf="(post.OriginalPostId == '')&&(post.Reposts >= 1)  " class="reposts">
               Reposts: {{post.Reposts}}
             </div>
         
             <button mat-stroked-button class="postLocation textSizeLocation t " matTooltip="Click to see more like this"
-            (click)="navigateToMainPage(post.postLocation)" *ngIf="(post.postLocationInstructor == '')">
+            (click)="navigateToMainPage(post.postLocation)" *ngIf="(post.postLocationInstructor == '')"
+            >
               <!-- Location -->
               Specific Page 
               {{post.postLocation}}
