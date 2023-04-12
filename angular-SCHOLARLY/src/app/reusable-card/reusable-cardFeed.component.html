@@ -119,11 +119,19 @@
                   <!-- Idk If needed -->
   
                   <button mat-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
-                  (click)="navigateToMainPage(post.postLocation)" *ngIf="post.postLocation">
+                  (click)="navigateToMainPage(post.postLocation)" *ngIf="post.postLocation && (post.postLocationInstructor == '')">
                     <!-- Location -->
                     {{post.postLocation}}
                   </button>
-  
+
+                  <button mat-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
+                  (click)="navigateToMainPage(post.postLocationInstructor)" *ngIf="post.postLocation && (post.postLocationInstructor)">
+                    <!-- Location -->
+                    {{post.postLocationInstructor}}
+                  </button>
+<div class="fontRanking" *ngIf="post.postLocationInstructor && post.instructorRating">
+                 Grade: {{post.instructorRating}}/10
+                </div>
                   <div class="textSize row1 t" *ngIf="post.LocationEvent">
                    
                     {{post.LocationEvent}}
@@ -207,6 +215,9 @@
         <div class="description" *ngIf="post.postDescription || post.Hashtag1">
   
           <div class="postText d">
+            <div class="postTextWords">
+
+            </div>
             {{post.postDescription}}
             <div class="hashs" matTooltip="Hashtags">
             <div class="HashTags" *ngIf="post.Hashtag1">

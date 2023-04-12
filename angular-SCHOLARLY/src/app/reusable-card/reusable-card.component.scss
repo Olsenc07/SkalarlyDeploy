@@ -204,6 +204,11 @@ background-color: #10173a !important;
   text-align: center;
 
 }
+.fontRanking{
+  display: flex;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+}
 .fas {
   font-size: large;
 }
@@ -526,7 +531,20 @@ margin-top: 1%;
   margin-bottom: 1%;
   margin-top: 1%;
 }
-
+.postTextWords{
+  display: flex;
+  width: 100%;
+  // border: ridge;
+  overflow-y: visible;
+  height: fit-content;
+  // justify-content: center;
+  // border-color: #ececee;
+  text-align: center;
+  // margin-left: 2%;
+  margin-bottom: 1%;
+  margin-top: 1%;
+  margin-left: 2%;
+}
 ::ng-deep .mat-radio-label {
   justify-content: center;
 }
