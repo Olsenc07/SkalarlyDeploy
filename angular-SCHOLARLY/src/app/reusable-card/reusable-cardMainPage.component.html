@@ -22,15 +22,15 @@
                 Reposts: {{post.Reposts}}
               </div>
 
-              <div class="postLocation textSizeLocation t" *ngIf=" (post.postLocationInstructor == '')">
+              <button mat-stroked-button disabled class="postLocation textSizeLocation t" *ngIf=" (post.postLocationInstructor == '')">
                 <!-- Location -->
                 Specific Page:  {{post.postLocation}}
-              </div>
+              </button>
 
-              <div class="postLocation textSizeLocation t" *ngIf="(post.postLocationInstructor !== '')">
+              <button mat-stroked-button disabled class="postLocation textSizeLocation t" *ngIf="(post.postLocationInstructor !== '')">
                 <!-- Location -->
                 Instructor's Page: {{post.postLocationInstructor}}
-              </div>
+              </button>
 
               </div>
               <mat-divider></mat-divider>
