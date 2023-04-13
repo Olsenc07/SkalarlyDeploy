@@ -110,15 +110,17 @@
                 Main Categories</mat-label>
               
               <mat-select [formControl]="postLocationMain"   >
-                <mat-card class="cardStyle" [ngClass]="{ even: even, odd: odd }">
-                  <mat-card-content>
+              
                 <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even = even; let odd = odd" [selected]="opt.name" [multiple]="false" 
-                  [value]="opt.name"  >
+                  [value]="opt.name" [ngClass]="{ even: even, odd: odd }" >
+                  <mat-card >
+                    <mat-card-content>
                   {{  opt.name }}
               <mat-divider></mat-divider>
-              </mat-option>
             </mat-card-content>
           </mat-card>
+              </mat-option>
+          
               </mat-select>
            
             </mat-form-field>
@@ -138,23 +140,23 @@
         <i class="fas fa-feather-alt"></i>
         Program of Instructor</mat-label>
       
-        <mat-card class="cardStyle" [ngClass]="{ even: even, odd: odd }">
-          <mat-card-content>
+       
     <mat-select  [formControl]="postLocation" > 
       <!-- (click)="adjustView()" -->
       <mat-form-field class="font" appearance="outline">
       <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
     </mat-form-field>
       <mat-option  [multiple]="false" *ngFor="let program of selectedProgram;let even = even; let odd = odd"
-      [selected]="program" [value]="program" >
-      
+      [selected]="program" [value]="program" [ngClass]="{ even: even, odd: odd }" >
+      <mat-card  >
+        <mat-card-content>
             {{ program }}
       <mat-divider></mat-divider>
-
+    </mat-card-content>
+  </mat-card>
       </mat-option>
     </mat-select>
-    </mat-card-content>
-    </mat-card>
+   
     </mat-form-field>
           </mat-selection-list>
           <div class="center__">
@@ -216,14 +218,16 @@
 <div class="fontSelect">Instructor(s)</div>
 <mat-divider></mat-divider>
 <div *ngFor="let instructor of instructors;let even = even; let odd = odd" >
-  <mat-card [ngClass]="{ even: even, odd: odd }">
-    <mat-card-content >
+ 
 <mat-option 
-(click)="setFormControlValue(instructor)">
+(click)="setFormControlValue(instructor)" [ngClass]="{ even: even, odd: odd }">
+<mat-card >
+  <mat-card-content >
   <div class="font">{{instructor}}</div>
-</mat-option>
 </mat-card-content>
 </mat-card>
+</mat-option>
+
   </div>
 
 </mat-select>
