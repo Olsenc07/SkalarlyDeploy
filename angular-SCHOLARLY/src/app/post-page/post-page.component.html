@@ -124,7 +124,7 @@
 
 
 <!-- If instructor review -->
-<mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && (postLocationMain.value == 'Instructor Review ') " disabled>
+<mat-tab label="Step 2: Select the specific page" *ngIf="(postLocationMain.value)  && (postLocationMain.value == 'Instructor Review ') " disabled>
   <!-- Step 2 -->
   <mat-selection-list   class="second_selection" [multiple]="false"  [matMenuTriggerFor]="menuInstructors">
     <mat-form-field  class="shadow2"  id="nextBtn2">
@@ -133,7 +133,7 @@
         Program of Instructor</mat-label>
       
     
-    <mat-select  [formControl]="postLocation1" > 
+    <mat-select  [formControl]="postLocation" > 
       <!-- (click)="adjustView()" -->
       <mat-form-field class="font" appearance="outline">
       <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
@@ -152,14 +152,14 @@
           <div class="center__">
           <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
           (click)="changeTabB()">Back</button>
-          <button *ngIf="postLocation1.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
+          <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>
 
 
 <!-- If previous was not instructor review -->
-        <mat-tab label="Step 2: Select the specific page" *ngIf="postLocationMain.value  && (postLocationMain.value !== 'Instructor Review ')" disabled>
+        <mat-tab label="Step 2: Select the specific page" *ngIf="(postLocationMain.value)  && (postLocationMain.value !== 'Instructor Review ')" disabled>
   <!-- Step 2 -->
   <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
     <mat-form-field  class="shadow2"  id="nextBtn2">
@@ -168,7 +168,7 @@
         Specific Pages</mat-label>
     
     <mat-select  [formControl]="postLocation" > 
-      <!-- (click)="adjustView()" -->
+
       <mat-option  [multiple]="false" *ngFor="let opt of specificOptions;let even = even; let odd = odd"
       [selected]="opt" [value]="opt" [ngClass]="{ even: even, odd: odd }">
 
@@ -187,15 +187,15 @@
           (click)="changeTab2()">Next</button>
         </div>
 </mat-tab>
-<mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && (postLocation.value || postLocation1.value)" disabled>
+<mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && (postLocation.value)" disabled>
   <div class="columnCenter">
   <!-- <mat-label class="font"> </mat-label> -->
   <!-- Have previous names drop down as options -->
   <mat-form-field *ngIf="postLocation.value">
     <!-- <i matPrefix class="fas fa-address-card"></i> -->
-  <input matInput placeholder="Instructors Name" class="instructorsPadding" [formControl]="postLocation2" *ngIf="postLocation1.value">
+  <input matInput placeholder="Instructors Name" class="instructorsPadding" [formControl]="postLocation2" *ngIf="postLocation.value">
 </mat-form-field>
-
+<!-- Key up searches data base like search user in app.component search bar-->
 
 
  <div class="fontMain" *ngIf="postLocation.value">
