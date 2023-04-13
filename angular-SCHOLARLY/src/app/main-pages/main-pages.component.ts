@@ -150,6 +150,7 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
   commentsValidator = '';
   mains: Fav = {};
   instructorRatingMean: number;
+  instructorRatingGraders: number;
   isLoading = false;
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -157,6 +158,7 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
   private favsSub: Subscription;
   private countSub: Subscription;
   private rankingSub: Subscription;
+  private rankingGraders: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -200,6 +202,12 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
           console.log(' chase 77 ', meanRanking);
           this.instructorRatingMean = meanRanking;
         });
+      this.rankingGraders = this.postsService
+        .getMeanGraders()
+        .subscribe((meanGraders: number) => {
+          console.log(' chase 77 ', meanGraders);
+          this.instructorRatingGraders = meanGraders;
+        });
     });
   }
   ngOnDestroy(): any {
@@ -207,6 +215,7 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
     this.routeSub.unsubscribe();
     this.favsSub.unsubscribe();
     this.rankingSub.unsubscribe();
+    this.rankingGraders.unsubscribe();
   }
   saveFavCat(category: string): void {
     console.log('sons trust up', category);

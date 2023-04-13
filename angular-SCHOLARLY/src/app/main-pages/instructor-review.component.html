@@ -25,8 +25,8 @@
       </div>
        </div>
 
-<div  *ngIf="instructorRatingMean !== null" class="fontRanking">  
-    Grade: {{instructorRatingMean}}/10 
+<div  *ngIf="instructorRatingGraders !== 0" class="fontRanking">  
+    Graded By {{instructorRatingGraders}} Students: {{instructorRatingMean}}/10 
     <div *ngIf="instructorRatingMean < 5 " class="fontGrade">
    Inadequate
     </div>

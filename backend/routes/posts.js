@@ -1091,20 +1091,22 @@ router.get("/instructorRanking", async(req, res) => {
                     doc.forEach((rating) => {
                         mean.push(rating.instructorRating)
                     })
-                console.log('doc bro', mean)
+                console.log('doc bro', doc)
                 meanSecondLast = mean.reduce((partialSum, a) => partialSum + a, 0)
                 console.log('doc bro2', mean.length);
                 meanFinal = meanSecondLast/(mean.length)
                 console.log('doc bro3', meanFinal)
                 res.status(200).json({
                     message: 'Infos fetched succesfully!',
-                    mean: meanFinal
+                    mean: meanFinal,
+                    graders: mean.length
                 });
                }else{
                 // Test this
                 res.status(200).json({
                     message: 'Infos fetched succesfully!',
-                    mean: null
+                    mean: 0,
+                    graders: 0
                 });
                }
             })

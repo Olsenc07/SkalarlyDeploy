@@ -32,7 +32,10 @@ export class PostsService {
   private notifUpdated = new ReplaySubject();
   private notifId: string;
   private meanRanking: number;
+  private meanGraders: number;
+
   private rankingUpdated = new Subject();
+  private rankingGraders = new Subject();
 
   private favsListener = new Subject<Fav[]>();
   private favs: Fav[] = [];
@@ -63,6 +66,10 @@ export class PostsService {
   getMeanRanking(): any {
     return this.rankingUpdated.asObservable();
   }
+  getMeanGraders(): any {
+    return this.rankingGraders.asObservable();
+  }
+
   searchUsers(query: string, userId: string): any {
     const sub = this.http
       .get<{ messages: string; payload: string }>(
@@ -275,19 +282,22 @@ export class PostsService {
   // getting main page posts non instructro review
   rankingMean(category: string): any {
     const sub = this.http
-      .get<{ message: string; mean: number }>(
+      .get<{ message: string; mean: number; graders: number }>(
         'https://www.skalarly.com/api/posts/instructorRanking',
         { params: { category } }
       )
       .pipe(
         map((postData) => {
-          return postData.mean;
+          // .mean;
+          return postData;
         })
       )
-      .subscribe((transformedPosts: number) => {
+      .subscribe((transformedPosts) => {
         console.log('all my sheep dead', transformedPosts);
+        this.meanGraders = transformedPosts.graders;
+        this.rankingGraders.next(this.meanGraders);
 
-        this.meanRanking = transformedPosts;
+        this.meanRanking = transformedPosts.mean;
         this.rankingUpdated.next(this.meanRanking);
         sub.unsubscribe();
         console.log('eazy 8');
