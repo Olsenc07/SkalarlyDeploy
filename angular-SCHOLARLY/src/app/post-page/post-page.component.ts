@@ -220,15 +220,13 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public HashTagLength = new BehaviorSubject(0);
 
   postLocationMain: FormControl = new FormControl('');
-  // postLocation1: FormControl = new FormControl('');
-  postLocation2: FormControl = new FormControl('');
   postLocation: FormControl = new FormControl('');
 
   postLocationInstructor: FormControl = new FormControl('');
   instructorRating: FormControl = new FormControl('');
   knowledgeRating: FormControl = new FormControl('');
   profesionalismRating: FormControl = new FormControl('');
-  overallRating = this.knowledgeRating.value + this.profesionalismRating.value;
+  overallRating = 7;
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
   value: FormControl = new FormControl('');
