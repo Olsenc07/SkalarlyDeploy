@@ -24,6 +24,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   private favsSub: Subscription;
   isLoading = false;
   mains: Fav[] = [];
+  insProgOptions: Array<string>;
   programs: string[] = [
     'Academic Bridging Program',
     'Acturial Science',
@@ -173,6 +174,31 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
   favsVisible(): void {
     this.FavsVisible = !this.FavsVisible;
+  }
+  // Searching instructors in program
+  onKeyTwo(event: any): any {
+    const query: string = event.target.value;
+    console.log('query ', query);
+    if (query) {
+      const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
+      console.log('noSpecialChars', noSpecialChars);
+
+      // this.postsService.searchInstructorsProg(
+      //   noSpecialChars.trim(),
+      //   this.instructorsProgram.value
+      // );
+      // this.postsService.getInsOptions().subscribe((results) => {
+      //   if (results.length > 0) {
+      //     this.insProgOptions = results;
+      //     console.log('results baby', results);
+      //   } else {
+      //     this.insProgOptions = [];
+      //   }
+      // });
+    } else {
+      console.log('nothing');
+      // this.hasQuery = false;
+    }
   }
   onSearchSelection(value: string): void {
     this.specificOptions = this.searchListService.onSearchSelection(value);

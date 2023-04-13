@@ -278,6 +278,15 @@ justify-content: center;
   align-items: center;
   font-family: 'Cormorant Garamond', serif;
 }
+.fontColumn{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Cormorant Garamond', serif;
+}
+.fontStart{
+  justify-content: flex-start;
+}
 .fontSelect{
   display: flex;
   justify-content: center;
@@ -295,6 +304,12 @@ justify-content: center;
 .fontRanking{
   display: flex;
   justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+}
+.fontRank{
+  display: flex;
+  justify-content: center;
+
   font-family: 'Cormorant Garamond', serif;
 }
 .fontGrade{

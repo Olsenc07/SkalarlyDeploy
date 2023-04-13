@@ -232,7 +232,7 @@
 </div>
  <div  *ngIf="GradeBoolean == true">  
   <mat-form-field appearance="outline">
-    <input matSliderThumb [formControl]="instructorRating" [value]="knowledgeRating + proffesionalismRating">
+    <input matSliderThumb [formControl]="instructorRating" [value]="overallRating">
 
 Overall Grade: {{instructorRating.value}}/10 
  <div *ngIf="instructorRating.value < 5 && (GradeBoolean == true)" class="fontGrade">
@@ -256,8 +256,10 @@ Inadequate
   <!-- <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
   </mat-slider> -->
   <!-- knowledge rating -->
-  <div class="font" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
+  <div class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
+    <div class="fontStart">
     Knowledge and Enthusiasm For Subject Matter
+    </div>
   <mat-slider [max]="max" [step]="step"  class="sliderGrade">
     <input matSliderThumb  [formControl]="knowledgeRating">
   </mat-slider>
@@ -268,14 +270,16 @@ Inadequate
 </div>
 <mat-divider *ngIf="postLocationInstructor.value && (GradeBoolean == true)"></mat-divider>
   <!-- Proffesionalism -->
-  <div class="font" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
-Proffesionalism and Approachability 
+  <div class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
+    <div class="fontStart">
+Profesionalism and Approachability 
+</div>
   <mat-slider [max]="max" [step]="step"  class="sliderGrade">
-    <input matSliderThumb  [formControl]="proffesionalismRating">
+    <input matSliderThumb  [formControl]="profesionalismRating">
   </mat-slider>
   <div class="rowRankings">
-  <div class="font">Dreadful</div>
-  <div class="font">Fantastic</div>
+  <div class="fontRank">Dreadful</div>
+  <div class="fontRank">Fantastic</div>
 </div>
 </div>
 

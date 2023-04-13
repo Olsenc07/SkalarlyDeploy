@@ -158,7 +158,7 @@
      <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
      </mat-form-field>
     <mat-option *ngFor="let program of selectedProgram"
-     [value]="program" [formControl]="instructorsProgram" [matMenuTriggerFor]="menuInstructorsNames">
+     [value]="program" [formControl]="instructorsProgram" (click)="openInstructorOptions()">
 
      {{program}}
 
@@ -169,9 +169,22 @@
 </mat-form-field>
         </mat-menu>
 <!-- Instructors names options -->
-<mat-menu #menuInstructorsNames="matMenu">
-<div class="font" >Dr. Chazz</div>
-</mat-menu>
+<mat-form-field>
+  <mat-label class="font">Instructors In {{program}}</mat-label>
+  <input mat Input placeholder="Quick Search" (keyup)="onKeyTwo($event.target.value)">
+<mat-autocomplete #auto="matAutocomplete" *ngIf="instructors.length !== 0">
+  <mat-option *ngFor="let instructor of instructors" [value]="instructor" class="font">
+    {{instructor}}
+  </mat-option>
+</mat-autocomplete>
+<mat-autocomplete #auto="matAutocomplete" *ngIf="instructors.length == 0">
+  <mat-option class="font">
+    No instructors in {{program}} have been rated yet
+  </mat-option>
+</mat-autocomplete>
+</mat-form-field>
+
+
 
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('course_a_e')" (click)="displaySpecificSearch()">
