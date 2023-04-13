@@ -142,6 +142,11 @@ justify-content: center;
   border-radius: 25px;
   background-color: #8080801f;
 }
+.cardStyle_{
+  background-color: #8080801f;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
 .center {
   display: flex;
   justify-content: center;
@@ -156,7 +161,11 @@ justify-content: center;
   justify-content: center;
   margin-top: 4%;
 }
-
+.centerOptions{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .centerD {
   display: flex;
   justify-content: center;

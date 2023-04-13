@@ -13,7 +13,7 @@
          </mat-icon>
          <div >Begin</div>
        </ng-template>
-       <mat-card class="cardStyle">
+       <mat-card class="cardStyle_">
         <mat-card-content>
       <div class="post-descriptionD">
         <div class="textB">
@@ -34,7 +34,8 @@
  </mat-card>
     <!-- Description of Post -->
     <div class="column_1" *ngIf="show == true" >
-
+      <mat-card class="cardStyle">
+        <mat-card-content>
       <!-- Upload pic/video -->
       <!-- <div class="column_"> -->
       <div class="centerD">
@@ -93,6 +94,8 @@
         class="imgBox" id="video-preview" [ngClass]="form.get('video').value ? 'show' : 'hide' "  >
         </video>
       </div>
+      </mat-card-content>
+      </mat-card>
     </div>
 
 
@@ -109,11 +112,11 @@
                 <i class="fas fa-sitemap"></i>
                 Main Categories</mat-label>
               
-              <mat-select [formControl]="postLocationMain"   >
+              <mat-select [formControl]="postLocationMain"  class="centerOptions" >
               
                 <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even = even; let odd = odd" [selected]="opt.name" [multiple]="false" 
-                  [value]="opt.name" [ngClass]="{ even: even, odd: odd }" >
-                  <mat-card >
+                  [value]="opt.name"  >
+                  <mat-card [ngClass]="{ even: even, odd: odd }">
                     <mat-card-content>
                   {{  opt.name }}
               <mat-divider></mat-divider>
@@ -279,9 +282,9 @@ Inadequate
     Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating.value}} /5
     </div>
  
-  <mat-slider max="5" step="0.5" discrete showTickMarks class="sliderGrade">
-    <input matSliderThumb  [formControl]="knowledgeRating">
-  </mat-slider>
+  <!-- <mat-slider  discrete showTickMarks > -->
+    <input type="range" max="5" step="0.5" [formControl]="knowledgeRating" class="sliderGrade">
+  <!-- </mat-slider> -->
   <div class="rowRankings">
     <div class="fontRank">0 Dreadful
       <i class="far fa-thumbs-down space2"></i>
@@ -301,9 +304,9 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
 </div>
 
 
-  <mat-slider max="5" step="0.5" discrete showTickMarks class="sliderGrade">
-    <input matSliderThumb  [formControl]="profesionalismRating">
-  </mat-slider>
+  <!-- <mat-slider max="5" step="0.5" discrete showTickMarks > -->
+    <input type="range" max="5" step="0.5"  [formControl]="profesionalismRating" class="sliderGrade">
+  <!-- </mat-slider> -->
   <div class="rowRankings">
   <div class="fontRank">0 Dreadful
     <i class="far fa-thumbs-down space2"></i>
@@ -347,7 +350,8 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
        </ng-template>
       
 <div class="threeBox">
-
+  <mat-card >
+    <mat-card-content>
       <div *ngIf="minwidth" class="staticBtn">
         <button mat-raised-button type="button" class="back_btn" 
       (click)="changeTab_()">
@@ -727,6 +731,8 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
   <span class="material-icons"> arrow_forward </span>
 </button>
 </div>
+</mat-card-content>
+</mat-card>
 </div>
 
     </mat-tab>
