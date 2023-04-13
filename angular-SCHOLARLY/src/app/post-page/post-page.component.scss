@@ -294,7 +294,7 @@ justify-content: center;
   justify-content: center;
   align-items: center;
   font-family: 'Cormorant Garamond', serif;
-  font-size: medium;
+  font-size: larger;
   padding: 1%;
 }
 .fontMain{
@@ -348,6 +348,9 @@ align-items: center;
   display: flex;
   width: 100%;
   justify-content: space-around;
+}
+.hidden{
+  display: none;
 }
 @media (min-width: 1024px) {
   .left {
@@ -755,8 +758,10 @@ p {
   justify-content: space-around;
 }
 .space2{
-  display: flex;
   margin-left: 2%;
+}
+.spaceUp{
+  margin-top: 2%;
 }
 .specifics-box {
   padding: 16px;

@@ -232,7 +232,8 @@
 </div>
  <div  *ngIf="GradeBoolean == true">  
   <mat-form-field appearance="outline">
-    <input [formControl]="instructorRating" [value]="overallRating">
+    <input [formControl]="instructorRating" [value]="overallRating" class="hidden">
+  </mat-form-field>
 
 Overall Grade: {{instructorRating.value}}/10 
  <div *ngIf="instructorRating.value < 5 && (GradeBoolean == true)" class="fontGrade">
@@ -250,7 +251,6 @@ Inadequate
        <div *ngIf=" (instructorRating.value >= 8) && (GradeBoolean == true)" class="fontGrade">
        Excellent
          </div>
-</mat-form-field>
   </div>
   <!-- overall grade -->
   <!-- <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
@@ -258,9 +258,9 @@ Inadequate
   <!-- knowledge rating -->
   <div class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
     <div class="fontStart">
-    Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating.value}}/5
+    Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating.value}} /5
     </div>
-  <mat-slider [max]="5" [step]="step"  class="sliderGrade">
+  <mat-slider max="5" [step]="step"  class="sliderGrade">
     <input matSliderThumb  [formControl]="knowledgeRating">
   </mat-slider>
   <div class="rowRankings">
@@ -272,13 +272,13 @@ Inadequate
     </div>
     </div>
 </div>
-<mat-divider *ngIf="postLocationInstructor.value && (GradeBoolean == true)"></mat-divider>
+<mat-divider *ngIf="postLocationInstructor.value && (GradeBoolean == true)" class="spaceUp"></mat-divider>
   <!-- Proffesionalism -->
   <div class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
     <div class="fontStart">
-Profesionalism and Approachability: {{profesionalismRating.value}}/5
+Profesionalism and Approachability: {{profesionalismRating.value}} /5
 </div>
-  <mat-slider [max]="5" [step]="step"  class="sliderGrade">
+  <mat-slider max="5" [step]="step"  class="sliderGrade">
     <input matSliderThumb  [formControl]="profesionalismRating">
   </mat-slider>
   <div class="rowRankings">

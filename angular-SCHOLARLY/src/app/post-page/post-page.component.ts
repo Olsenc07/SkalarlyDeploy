@@ -13,6 +13,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
+
 import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -593,7 +594,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.Title.value,
       this.postDescription.value,
       this.postLocation.value,
-      this.postLocationInstructor.value,
+      this.postLocationInstructor.value.trim(),
       this.instructorRating.value,
       this.LocationEvent.value,
       this.time.value,
@@ -636,7 +637,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.Title.value,
       this.postDescription.value,
       this.postLocation.value,
-      this.postLocationInstructor.value,
+      this.postLocationInstructor.value.trim(),
       this.instructorRating.value,
       this.LocationEvent.value,
       this.time.value,

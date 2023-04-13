@@ -172,7 +172,7 @@
 <mat-form-field *ngIf="opened == true">
   <mat-label class="font">Instructors In {{program}}</mat-label>
   <button mat-icon-button (click)="closeInstructorOptions()"> <i class="fas fa-arrow-left"></i> </button>
-  <input mat Input placeholder="Quick Search" (keyup)="onKeyTwo($event.target.value)">
+  <input matInput placeholder="Quick Search" (keyup)="onKeyTwo($event.target.value)">
 <mat-autocomplete #auto="matAutocomplete" *ngIf="insProgOptions.length !== 0">
   <mat-option *ngFor="let instructor of insProgOptions" [value]="instructor" class="font">
     {{instructor}}
