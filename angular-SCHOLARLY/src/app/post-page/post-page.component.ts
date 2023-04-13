@@ -93,8 +93,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   // Filter categories for instructor review
   instructors = [];
   GradeBoolean: boolean = false;
-  max = 10;
-  step = 0.5;
+
   programs: string[] = [
     'Academic Bridging Program',
     'Acturial Science',
@@ -229,9 +228,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   instructorRating: FormControl = new FormControl('');
   knowledgeRating: FormControl = new FormControl('');
   profesionalismRating: FormControl = new FormControl('');
-  overallRating =
-    Number(this.knowledgeRating.value) +
-    Number(this.profesionalismRating.value);
+  overallRating = this.knowledgeRating.value + this.profesionalismRating.value;
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
   value: FormControl = new FormControl('');
