@@ -2681,11 +2681,14 @@ router.get('/getInstructorsName', async (req, res) => {
     let payload = req.query.query;
    
 
-    console.log('payload 7',payload)
+    console.log('payload 7765',payload)
 
- await Post.find({postLocationInstructor: {
-    $regex: new RegExp('*' + payload, 'i')
- }})
+ await Post.find({postLocationInstructor:
+     {
+        // problem is with '*'
+        $regex: new RegExp( payload + '*', 'i')
+ }
+})
  .then(instructorReviews => {
     if(instructorReviews){
         instructors = []
