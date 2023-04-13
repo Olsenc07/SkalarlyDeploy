@@ -517,9 +517,6 @@ mat-chip .mat-list-text {
   display: flex;
   width: 100%;
 }
-.mat-slider{
-  margin: 0% 5%;
-}
 .mat-chip {
   background-color: rgb(65, 88, 165) !important;
   color: rgb(252, 252, 252) !important;
@@ -753,7 +750,9 @@ p {
   position: relative;
   width: 100%;
 }
-
+.sliderGrade{
+  margin: 0% 5%;
+}
 .space{
   display: flex;
   justify-content: space-around;
