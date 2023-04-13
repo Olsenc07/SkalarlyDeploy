@@ -169,15 +169,16 @@
 </mat-form-field>
         </mat-menu>
 <!-- Instructors names options -->
-<mat-form-field>
+<mat-form-field *ngIf="opened == true">
   <mat-label class="font">Instructors In {{program}}</mat-label>
+  <button mat-icon-button (click)="closeInstructorOptions()"> <i class="fas fa-arrow-left"></i> </button>
   <input mat Input placeholder="Quick Search" (keyup)="onKeyTwo($event.target.value)">
-<mat-autocomplete #auto="matAutocomplete" *ngIf="instructors.length !== 0">
-  <mat-option *ngFor="let instructor of instructors" [value]="instructor" class="font">
+<mat-autocomplete #auto="matAutocomplete" *ngIf="insProgOptions.length !== 0">
+  <mat-option *ngFor="let instructor of insProgOptions" [value]="instructor" class="font">
     {{instructor}}
   </mat-option>
 </mat-autocomplete>
-<mat-autocomplete #auto="matAutocomplete" *ngIf="instructors.length == 0">
+<mat-autocomplete #auto="matAutocomplete" *ngIf="insProgOptions.length == 0">
   <mat-option class="font">
     No instructors in {{program}} have been rated yet
   </mat-option>

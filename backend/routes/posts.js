@@ -1126,6 +1126,43 @@ router.get("/instructorRanking", async(req, res) => {
             });
 
 });
+// searching instructors program ranking page
+router.get("/instructorProgramSearch", async(req, res) => {  
+    console.log('love in the air 7654 ',req.query.payload);
+    console.log('love in the air 51 ',req.query.program);
+
+    await Post.find({$and: [ {postLocation:req.query.program },
+    { postLocationInstructor: {
+        $regex: new RegExp('^' + payload)
+    }}]
+    }).limit(10)
+    .then(matches => {
+        if(matches){
+            progsMatch = []
+            matches.forEach((pro) => {
+                progsMatch.push(pro.postLocationInstructor)
+            })
+            let matchesFinal = [...new Set(progsMatch)]
+            console.log('programs Matches', matchesFinal)
+        res.status(200).json({
+            message: 'matches fetched succesfully!',
+            options: matchesFinal
+        });
+    }else{
+        res.status(200).json({
+            message: ' no matches to fetch!',
+            options: []
+        });
+    }
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Fetching matches failed!'
+        });
+    });
+})
+
+
 // Get single page post
 router.get("/singlePage", async(req, res) => {    
     console.log('love in the air 7 ',req.query.postId);

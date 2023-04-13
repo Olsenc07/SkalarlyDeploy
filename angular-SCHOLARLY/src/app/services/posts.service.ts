@@ -39,6 +39,9 @@ export class PostsService {
   private rankingGraders = new Subject();
   private instructorsProgs = new Subject();
 
+  private instructorProgramsSearch: Array<string>;
+  private rankingUpdatedSearch = new Subject();
+
   private favsListener = new Subject<Fav[]>();
   private favs: Fav[] = [];
   private favsListenerSingle = new Subject<Fav>();
@@ -74,7 +77,9 @@ export class PostsService {
   getInstructorsPrograms(): any {
     return this.instructorsProgs.asObservable();
   }
-
+  getInstructorsProgramsSearch(): any {
+    return this.rankingUpdatedSearch.asObservable();
+  }
   searchUsers(query: string, userId: string): any {
     const sub = this.http
       .get<{ messages: string; payload: string }>(
@@ -311,6 +316,32 @@ export class PostsService {
 
         this.meanRanking = transformedPosts.mean;
         this.rankingUpdated.next(this.meanRanking);
+        sub.unsubscribe();
+        console.log('eazy 8');
+      });
+  }
+
+  // Instructors program rating search
+  // Instrctors mean ranking
+  // getting main page posts non instructro review
+  searchInstructorsProg(payload: string, program: string): any {
+    const sub = this.http
+      .get<{
+        message: string;
+        options: Array<string>;
+      }>('https://www.skalarly.com/api/posts/instructorProgramSearch', {
+        params: { payload, program },
+      })
+      .pipe(
+        map((postData) => {
+          return postData.options;
+        })
+      )
+      .subscribe((transformedPosts) => {
+        console.log('all my sheep dead except sally', transformedPosts);
+
+        this.instructorProgramsSearch = transformedPosts;
+        this.rankingUpdatedSearch.next(this.instructorProgramsSearch);
         sub.unsubscribe();
         console.log('eazy 8');
       });

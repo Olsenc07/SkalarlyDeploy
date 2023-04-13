@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   private authListenerSubs: Subscription;
   private favsSub: Subscription;
   isLoading = false;
+  opened = false;
   mains: Fav[] = [];
   insProgOptions: Array<string>;
   programs: string[] = [
@@ -183,18 +184,18 @@ export class SearchComponent implements OnInit, OnDestroy {
       const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
       console.log('noSpecialChars', noSpecialChars);
 
-      // this.postsService.searchInstructorsProg(
-      //   noSpecialChars.trim(),
-      //   this.instructorsProgram.value
-      // );
-      // this.postsService.getInsOptions().subscribe((results) => {
-      //   if (results.length > 0) {
-      //     this.insProgOptions = results;
-      //     console.log('results baby', results);
-      //   } else {
-      //     this.insProgOptions = [];
-      //   }
-      // });
+      this.postsService.searchInstructorsProg(
+        noSpecialChars.trim(),
+        this.instructorsProgram.value
+      );
+      this.postsService.getInstructorsProgramsSearch().subscribe((results) => {
+        if (results.length > 0) {
+          this.insProgOptions = results;
+          console.log('results baby', results);
+        } else {
+          this.insProgOptions = [];
+        }
+      });
     } else {
       console.log('nothing');
       // this.hasQuery = false;
@@ -203,6 +204,12 @@ export class SearchComponent implements OnInit, OnDestroy {
   onSearchSelection(value: string): void {
     this.specificOptions = this.searchListService.onSearchSelection(value);
     console.log('morning', this.specificOptions);
+  }
+  openInstructorOptions() {
+    this.opened = true;
+  }
+  closeInstructorOptions() {
+    this.opened = false;
   }
   navigateToPage(value: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
