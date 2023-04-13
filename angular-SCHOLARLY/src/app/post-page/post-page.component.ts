@@ -471,7 +471,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.authService.getInstructor().subscribe((results: Array<string>) => {
         if (results.length !== 0) {
           console.log('results baby', results);
-          // this.instructors.push(results);
+          this.instructors = results;
         } else {
           console.log('nuts');
           // this.emailMatches = false;
