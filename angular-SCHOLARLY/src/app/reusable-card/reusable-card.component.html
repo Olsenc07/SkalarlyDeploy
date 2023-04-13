@@ -72,6 +72,26 @@
               delete_forever
               </span></button>
             </div>
+
+            <div [ngClass]="post.Reposts < 1 ? 'topRow_' : 'topRow' " >
+            <div  matTooltip="All Time Reposts" *ngIf="(post.OriginalPostId == '')&&(post.Reposts >= 1)  " class="reposts">
+              Reposts: {{post.Reposts}}
+            </div>
+            <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
+            (click)="navigateToMainPage(post.postLocation)" *ngIf="(post.postLocationInstructor == '')">
+              <!-- Location -->
+              Specific Page: 
+              {{post.postLocation}}
+            </button>
+
+            <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
+            (click)="getPostsMainPageInstructor(post.postLocationInstructor)" *ngIf="(post.postLocationInstructor !== '')">
+              <!-- Location -->
+              Instructor's Page:
+              {{post.postLocationInstructor}}
+            </button>
+            </div>
+    <mat-divider></mat-divider>
           <div class="centerT" *ngIf="post.Title">
 
             <mat-card-title class="postTitle textSizeTit">
@@ -120,22 +140,16 @@
 
 
             <div class="columnReposts">
-              <div  matTooltip="All Time Reposts" *ngIf="post.OriginalPostId == '' " class="reposts">
-                {{post.Reposts}}
-              </div>
+              
               <div class="column_">
 
 
                 <!-- Idk If needed -->
 
-                <button mat-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
-                (click)="navigateToMainPage(post.postLocation)" *ngIf="post.postLocation">
-                  <!-- Location -->
-                  {{post.postLocation}}
-                </button>
+            
 
                 <div class="textSize row1 t"  *ngIf="post.LocationEvent">
-                 
+           
                   {{post.LocationEvent}}
                 </div>
                 <div class="row1"*ngIf=" post.time  || post.timeE">

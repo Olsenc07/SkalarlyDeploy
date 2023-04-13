@@ -67,6 +67,28 @@
                 (click)='onDelete(post.id)'> <i class="far fa-times-circle"></i>
               </button>
                 </div>
+
+                <div [ngClass]="post.Reposts < 1 ? 'topRow_' : 'topRow' " >
+                <div  *ngIf="(post.OriginalPostId == '')&&(post.Reposts >= 1) " class="reposts">
+                  Reposts: {{post.Reposts}}
+                </div>
+
+                <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
+                (click)="navigateToMainPage(post.postLocation)" *ngIf=" (post.postLocationInstructor == '')">
+                  <!-- Location -->
+                  Specific Page: 
+                  {{post.postLocation}}
+              </button>
+
+
+              <button mat-stroked-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
+              (click)="getPostsMainPageInstructor(post.postLocationInstructor)" *ngIf="(post.postLocationInstructor !== '')">
+                <!-- Location -->
+                Instructor's Page:
+                {{post.postLocationInstructor}}
+            </button>
+            </div>
+            <mat-divider></mat-divider>
             <div class="centerT" *ngIf="post.Title">
   
               <mat-card-title class="postTitle textSizeTit">
@@ -110,26 +132,13 @@
   
               <div class="columnReposts">
                 <!--  matTooltip="All Time Reposts" -->
-                <div  *ngIf="post.OriginalPostId == '' " class="reposts">
-                  Reposts {{post.Reposts}}
-                </div>
+                
                 <div class="column_">
   
   
                   <!-- Idk If needed -->
   
-                  <button mat-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
-                  (click)="navigateToMainPage(post.postLocation)" *ngIf=" (post.postLocationInstructor == '')">
-                    <!-- Location -->
-                    {{post.postLocation}}
-                </button>
-  
-
-                <button mat-button class="postLocation textSizeLocation t" matTooltip="Click to see more like this"
-                (click)="getPostsMainPageInstructor(post.postLocationInstructor)" *ngIf="(post.postLocationInstructor !== '')">
-                  <!-- Location -->
-                  {{post.postLocationInstructor}}
-              </button>
+               
               <div class="fontRanking" *ngIf="post.postLocationInstructor && post.instructorRating">
                 Instructor {{post.instructorRating}}/10
                </div>
