@@ -2698,9 +2698,20 @@ router.get('/getInstructorsName', async (req, res) => {
                     payload: instructorsFinal,
                    
                 });
+    }else{
+        res.status(200).json({
+            message: 'Instructors fetched succesfully!',
+            payload: [],
+           
+        }); 
     }
  })
+ .catch(err => {
+    return res.status(401).json({
+        message: "Can't find instructors!",
 
+    });
+});
 })
 
 
