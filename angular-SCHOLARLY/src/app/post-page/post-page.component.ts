@@ -457,7 +457,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.HashSub.unsubscribe();
     this.titleSub.unsubscribe();
   }
-
+  setFormControlValue(instructor: string): void {
+    this.postLocationInstructor.setValue(instructor);
+    console.log('my eyes have scene', this.postLocationInstructor.value);
+  }
   // Search instructors names
   instructorsName(event: any): void {
     const query: string = event.target.value;
