@@ -2686,11 +2686,12 @@ router.get('/getInstructorsName', async (req, res) => {
  await Post.find({postLocationInstructor:
      {
         // problem is with '*'
-        $regex: new RegExp('^' + payload, 'i')
+        $regex: new RegExp('^', payload, 'i')
  }
 })
  .then(instructorReviews => {
     if(instructorReviews){
+        console.log('cereal',instructorReviews);
         instructors = []
         instructorReviews.forEach((names) => {
             instructors.push(names.postLocationInstructor)
