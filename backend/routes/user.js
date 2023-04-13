@@ -2683,7 +2683,7 @@ router.get('/getInstructorsName', async (req, res) => {
 
     console.log('payload 7765',payload)
 
- await Post.find({postLocationInstructor:
+ await Post.findOne({postLocationInstructor:
      {
         // problem is with '*'
         $regex: new RegExp('^', payload, 'i')
