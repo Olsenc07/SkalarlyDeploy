@@ -468,12 +468,12 @@ export class PostPageComponent implements OnInit, OnDestroy {
     if (query) {
       const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
       this.authService.searchInstructorNames(noSpecialChars.trim());
-      this.authService.getInstructor().subscribe((results) => {
-        if (results === true) {
+      this.authService.getInstructor().subscribe((results: Array<string>) => {
+        if (results.length !== 0) {
           console.log('results baby', results);
           // this.instructors.push(results);
         } else {
-          console.log('nuts', results);
+          console.log('nuts');
           // this.emailMatches = false;
         }
       });
