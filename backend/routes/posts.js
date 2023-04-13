@@ -1096,17 +1096,26 @@ router.get("/instructorRanking", async(req, res) => {
                 console.log('doc bro2', mean.length);
                 meanFinal = meanSecondLast/(mean.length)
                 console.log('doc bro3', meanFinal)
+                // programs instructors in without repeats
+                progs = []
+                doc.forEach((pro) => {
+                    progs.push(pro.postLocation)
+                })
+                let progsFinal = [...new Set(progs)]
+                console.log('programs', progsFinal)
                 res.status(200).json({
                     message: 'Infos fetched succesfully!',
                     mean: meanFinal,
-                    graders: mean.length
+                    graders: mean.length,
+                    programs: progsFinal
                 });
                }else{
                 // Test this
                 res.status(200).json({
                     message: 'Infos fetched succesfully!',
                     mean: 0,
-                    graders: 0
+                    graders: 0,
+                    programs: []
                 });
                }
             })

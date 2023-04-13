@@ -33,9 +33,11 @@ export class PostsService {
   private notifId: string;
   private meanRanking: number;
   private meanGraders: number;
+  private instructorsPrograms: Array<string>;
 
   private rankingUpdated = new Subject();
   private rankingGraders = new Subject();
+  private instructorsProgs = new Subject();
 
   private favsListener = new Subject<Fav[]>();
   private favs: Fav[] = [];
@@ -68,6 +70,9 @@ export class PostsService {
   }
   getMeanGraders(): any {
     return this.rankingGraders.asObservable();
+  }
+  getInstructorsPrograms(): any {
+    return this.instructorsProgs.asObservable();
   }
 
   searchUsers(query: string, userId: string): any {
@@ -282,10 +287,14 @@ export class PostsService {
   // getting main page posts non instructro review
   rankingMean(category: string): any {
     const sub = this.http
-      .get<{ message: string; mean: number; graders: number }>(
-        'https://www.skalarly.com/api/posts/instructorRanking',
-        { params: { category } }
-      )
+      .get<{
+        message: string;
+        mean: number;
+        graders: number;
+        programs: Array<string>;
+      }>('https://www.skalarly.com/api/posts/instructorRanking', {
+        params: { category },
+      })
       .pipe(
         map((postData) => {
           // .mean;
@@ -296,6 +305,9 @@ export class PostsService {
         console.log('all my sheep dead', transformedPosts);
         this.meanGraders = transformedPosts.graders;
         this.rankingGraders.next(this.meanGraders);
+
+        this.instructorsPrograms = transformedPosts.programs;
+        this.instructorsProgs.next(this.instructorsPrograms);
 
         this.meanRanking = transformedPosts.mean;
         this.rankingUpdated.next(this.meanRanking);
