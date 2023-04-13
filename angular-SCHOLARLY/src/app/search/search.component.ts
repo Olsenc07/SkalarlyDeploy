@@ -25,7 +25,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   isLoading = false;
   opened = false;
   mains: Fav[] = [];
-  insProgOptions: Array<string>;
+  insProgOptions = [];
   programs: string[] = [
     'Academic Bridging Program',
     'Acturial Science',
@@ -112,7 +112,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   ];
   selectedProgram = this.programs;
   // Receive user input and send to search method**
-  onKey(value) {
+  onKey(value: string) {
     this.selectedProgram = this.searchInstructor(value);
   }
 

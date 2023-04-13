@@ -228,7 +228,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   instructorRating: FormControl = new FormControl('');
   knowledgeRating: FormControl = new FormControl('');
   profesionalismRating: FormControl = new FormControl('');
-  overallRating = this.knowledgeRating.value + this.profesionalismRating.value;
+  overallRating =
+    Number(this.knowledgeRating.value) +
+    Number(this.profesionalismRating.value);
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
   value: FormControl = new FormControl('');
