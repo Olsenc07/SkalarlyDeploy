@@ -259,13 +259,16 @@ Inadequate
   <!-- <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
   </mat-slider> -->
   <!-- knowledge rating -->
-  <mat-card>
+  <mat-card class="cardStyle">
   <mat-card-content class="fontColumn" *ngIf="(postLocationInstructor.value) && (GradeBoolean == true)">
     <div class="fontStart">
     Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating.value}} /5
     </div>
+    <mat-form-field appearance="outline" class="hidden">
+      <input [formControl]="knowledgeRating" >
+      </mat-form-field>
   <mat-slider max="5" step="0.5" discrete showTickMarks class="sliderGrade">
-    <input matSliderThumb  [formControl]="knowledgeRating">
+    <input matSliderThumb [value]="knowledgeRating.value" (change)="knowledgeRating.setValue($event.value)" >
   </mat-slider>
   <div class="rowRankings">
     <div class="fontRank">0 Dreadful
@@ -279,13 +282,17 @@ Inadequate
 </mat-card>
 <mat-divider *ngIf="(postLocationInstructor.value) && (GradeBoolean == true)" class="spaceUp"></mat-divider>
   <!-- Profesionalism -->
-  <mat-card>
+  <mat-card class="cardStyle">
   <mat-card-content class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
     <div class="fontStart">
 Profesionalism and Approachability: {{profesionalismRating.value}} /5
 </div>
+<mat-form-field appearance="outline" class="hidden">
+<input [formControl]="profesionalismRating" >
+</mat-form-field>
+
   <mat-slider max="5" step="0.5" discrete showTickMarks class="sliderGrade">
-    <input matSliderThumb  [formControl]="profesionalismRating">
+    <input matSliderThumb [value]="profesionalismRating.value" (change)="profesionalismRating.setValue($event.value)" >
   </mat-slider>
   <div class="rowRankings">
   <div class="fontRank">0 Dreadful
