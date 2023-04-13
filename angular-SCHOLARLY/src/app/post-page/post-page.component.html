@@ -231,6 +231,9 @@
   ></mat-checkbox>
 </div>
  <div  *ngIf="GradeBoolean == true">  
+  <mat-form-field appearance="outline">
+    <input matSliderThumb [formControl]="instructorRating" [value]="knowledgeRating + proffesionalismRating">
+
 Overall Grade: {{instructorRating.value}}/10 
  <div *ngIf="instructorRating.value < 5 && (GradeBoolean == true)" class="fontGrade">
 Inadequate
@@ -247,15 +250,15 @@ Inadequate
        <div *ngIf=" (instructorRating.value >= 8) && (GradeBoolean == true)" class="fontGrade">
        Excellent
          </div>
+</mat-form-field>
   </div>
   <!-- overall grade -->
-  <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
-    <input matSliderThumb  [formControl]="instructorRating" [value]="knowledgeRating + proffesionalismRating">
-  </mat-slider>
+  <!-- <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
+  </mat-slider> -->
   <!-- knowledge rating -->
-  <div class="font">
+  <div class="font" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
     Knowledge and Enthusiasm For Subject Matter
-  <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
+  <mat-slider [max]="max" [step]="step"  class="sliderGrade">
     <input matSliderThumb  [formControl]="knowledgeRating">
   </mat-slider>
   <div class="rowRankings">
@@ -263,11 +266,11 @@ Inadequate
     <div class="font">Fantastic</div>
     </div>
 </div>
-<mat-divider></mat-divider>
+<mat-divider *ngIf="postLocationInstructor.value && (GradeBoolean == true)"></mat-divider>
   <!-- Proffesionalism -->
-  <div class="font">
+  <div class="font" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
 Proffesionalism and Approachability 
-  <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
+  <mat-slider [max]="max" [step]="step"  class="sliderGrade">
     <input matSliderThumb  [formControl]="proffesionalismRating">
   </mat-slider>
   <div class="rowRankings">

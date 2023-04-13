@@ -158,7 +158,7 @@
      <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
      </mat-form-field>
     <mat-option *ngFor="let program of selectedProgram"
-     [value]="program" [formControl]="instructorsProgram">
+     [value]="program" [formControl]="instructorsProgram" [matMenuTriggerFor]="menuInstructorsNames">
 
      {{program}}
 
@@ -168,6 +168,11 @@
   </mat-select>
 </mat-form-field>
         </mat-menu>
+<!-- Instructors names options -->
+<mat-menu #menuInstructorsNames="matMenu">
+<div class="font" >Dr. Chazz</div>
+</mat-menu>
+
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('course_a_e')" (click)="displaySpecificSearch()">
           <i class="fas fa-feather-alt"></i>
