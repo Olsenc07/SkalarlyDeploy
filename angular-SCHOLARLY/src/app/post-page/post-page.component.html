@@ -200,16 +200,16 @@
 
 <!-- Key up searches data base like search user in app.component search bar-->
 <mat-form-field *ngIf="instructors.length !== 0">
-  <mat-label>Suggestions {{instructors.length}}</mat-label>
+  <mat-label class="font">Suggestions {{instructors.length}}</mat-label>
 
 <mat-select *ngIf="(postLocationMain.value == 'Instructor Review ')">
-<div class="font">Instructor(s)</div>
+<div class="fontSelect">Instructor(s)</div>
 <mat-divider></mat-divider>
 <div *ngFor="let instructor of instructors;let even = even; let odd = odd" >
 <mat-option [ngClass]="{ even: even, odd: odd }"
 (click)="setFormControlValue(instructor)">
 
-<div>{{instructor}}</div>
+<div class="font">{{instructor}}</div>
 </mat-option>
   </div>
 

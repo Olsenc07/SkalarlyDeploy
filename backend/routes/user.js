@@ -2688,7 +2688,7 @@ router.get('/getInstructorsName', async (req, res) => {
         // problem is with '*'
         $regex: new RegExp(payload + '*' )
  }
-}).limit(17)
+}).limit(20)
  .then(instructorReviews => {
     if(instructorReviews){
         console.log('cereal',instructorReviews);
