@@ -2686,7 +2686,7 @@ router.get('/getInstructorsName', async (req, res) => {
  await Post.find({postLocationInstructor:
      {
         // problem is with '*'
-        $regex: new RegExp(payload + '*' )
+        $regex: new RegExp('^', payload )
  }
 }).limit(20)
  .then(instructorReviews => {

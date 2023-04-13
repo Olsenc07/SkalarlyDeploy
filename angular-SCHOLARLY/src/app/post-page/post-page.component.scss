@@ -633,6 +633,11 @@ p {
   flex-direction: row;
   justify-content: center;
 }
+.rowRankings{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
 .rowP_ {
   display: flex;
   flex-direction: row;

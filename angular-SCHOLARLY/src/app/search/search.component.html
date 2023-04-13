@@ -158,7 +158,7 @@
      <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
      </mat-form-field>
     <mat-option *ngFor="let program of selectedProgram"
-     [value]="program" >
+     [value]="program" [formControl]="instructorsProgram">
 
      {{program}}
 

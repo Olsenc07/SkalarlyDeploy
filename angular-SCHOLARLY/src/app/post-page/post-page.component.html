@@ -225,13 +225,13 @@
  <!-- {{ postLocation2.value }} -->
 <!-- </mat-form-field> -->
 <!-- </div> -->
-<mat-divider></mat-divider>
+<mat-divider *ngIf="postLocationInstructor.value"></mat-divider>
 <div class="font" *ngIf="postLocation.value && postLocationInstructor.value && (postLocationMain.value == 'Instructor Review ')">Grade Instructor
   <mat-checkbox (click)="Grade()"
   ></mat-checkbox>
 </div>
  <div  *ngIf="GradeBoolean == true">  
- Grade: {{instructorRating.value}}/10 
+Overall Grade: {{instructorRating.value}}/10 
  <div *ngIf="instructorRating.value < 5 && (GradeBoolean == true)" class="fontGrade">
 Inadequate
  </div>
@@ -248,9 +248,34 @@ Inadequate
        Excellent
          </div>
   </div>
+  <!-- overall grade -->
   <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
-    <input matSliderThumb  [formControl]="instructorRating">
+    <input matSliderThumb  [formControl]="instructorRating" [value]="knowledgeRating + proffesionalismRating">
   </mat-slider>
+  <!-- knowledge rating -->
+  <div class="font">
+    Knowledge and Enthusiasm For Subject Matter
+  <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
+    <input matSliderThumb  [formControl]="knowledgeRating">
+  </mat-slider>
+  <div class="rowRankings">
+    <div class="font">Dreadful</div>
+    <div class="font">Fantastic</div>
+    </div>
+</div>
+<mat-divider></mat-divider>
+  <!-- Proffesionalism -->
+  <div class="font">
+Proffesionalism and Approachability 
+  <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
+    <input matSliderThumb  [formControl]="proffesionalismRating">
+  </mat-slider>
+  <div class="rowRankings">
+  <div class="font">Dreadful</div>
+  <div class="font">Fantastic</div>
+</div>
+</div>
+
 </div>
   <div  class="center__">
     <button  type="button" color="primary"  mat-raised-button class="final_step_btn"

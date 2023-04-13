@@ -123,7 +123,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   postLocationMain: FormControl = new FormControl('');
-
+  instructorsProgram: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
   searchForm = new FormGroup({
     search: this.search,
