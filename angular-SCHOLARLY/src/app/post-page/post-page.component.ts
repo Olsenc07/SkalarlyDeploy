@@ -90,6 +90,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   selectedIndex = 0;
   selectedIndexPost = 0;
   // Filter categories for instructor review
+  instructors = [];
   GradeBoolean: boolean = false;
   max = 10;
   step = 0.5;
@@ -194,6 +195,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   Grade() {
     console.log('grade', this.GradeBoolean);
     this.GradeBoolean = !this.GradeBoolean;
+    this.instructorRating.setValue('');
   }
   //
   visible = true;
@@ -455,6 +457,28 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.HashSub.unsubscribe();
     this.titleSub.unsubscribe();
   }
+
+  // Search instructors names
+  instructorsName(event: any): void {
+    const query: string = event.target.value;
+    console.log('query ', query);
+    if (query) {
+      const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
+      this.authService.searchInstructorNames(noSpecialChars.trim());
+      this.authService.getInstructor().subscribe((results) => {
+        if (results === true) {
+          console.log('results baby', results);
+          // this.instructors.push(results);
+        } else {
+          console.log('nuts', results);
+          // this.emailMatches = false;
+        }
+      });
+    } else {
+      console.log('DeLorean');
+    }
+  }
+
   // Adding emojis
   openEmoji(): void {
     const selectionContainer = document.getElementById('showEmojis');

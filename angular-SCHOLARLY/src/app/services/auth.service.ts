@@ -33,6 +33,9 @@ export class AuthService {
   private emailUsedUpdated = new Subject();
   private emailUsedId: boolean;
 
+  private instructorName = new Subject();
+  private potentialNames: Array<string>;
+
   private blocked = new Subject<string>();
   // check if email exists for login
   getEmail(): any {
@@ -41,6 +44,9 @@ export class AuthService {
   // check if email exists for signup
   getUsedEmail(): any {
     return this.emailUsedUpdated.asObservable();
+  }
+  getInstructor(): any {
+    return this.instructorName.asObservable();
   }
   // check if username exists for signup
 
@@ -102,6 +108,28 @@ export class AuthService {
           this.emailUsedUpdated.next(this.emailUsedId);
           sub.unsubscribe();
           console.log('rich and famous baby 2');
+        },
+      });
+  }
+  // Instructors look up
+  searchInstructorNames(query: string): any {
+    const sub = this.http
+      .get<{ message: string; payload: Array<string> }>(
+        'https://www.skalarly.com/api/user/getInstructorsName',
+        { params: { query } }
+      )
+      .pipe(
+        map((data) => {
+          return data.payload;
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          console.log('multi points', response);
+          this.potentialNames = response;
+          this.instructorName.next(this.potentialNames);
+          sub.unsubscribe();
+          console.log('rich and famous baby 27');
         },
       });
   }

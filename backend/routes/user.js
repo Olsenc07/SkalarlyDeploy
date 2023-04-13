@@ -2674,6 +2674,36 @@ router.get('/getEmails', async (req, res) => {
         });
     });
 })
+
+// Search Instructor
+// Search un used emails
+router.get('/getInstructorsName', async (req, res) => {
+    let payload = req.query.query;
+   
+
+    console.log('payload 7',payload)
+
+ await Post.find({postLocationInstructor: {
+    $regex: new RegExp('*' + payload, 'i')
+ }})
+ .then(instructorReviews => {
+    if(instructorReviews){
+        instructors = []
+        instructorReviews.forEach((names) => {
+            instructors.push(names.postLocationInstructor)
+        })
+        let instructorsFinal = [...new Set(instructors)]
+        res.status(200).json({
+                    message: 'Instructors fetched succesfully!',
+                    payload: instructorsFinal,
+                   
+                });
+    }
+ })
+
+})
+
+
 // Search un used emails
 router.get('/getUnUsedEmail', async (req, res) => {
     let payload = req.query.query;

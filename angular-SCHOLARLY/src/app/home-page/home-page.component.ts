@@ -71,7 +71,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
     const query: string = event.target.value;
     console.log('query ', query);
     if (query) {
-      this.authService.searchEmails(query.trim());
+      const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
+      this.authService.searchEmails(noSpecialChars.trim());
       this.authService.getEmail().subscribe((results) => {
         if (results === true) {
           console.log('results baby', results);
