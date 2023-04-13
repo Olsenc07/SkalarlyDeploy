@@ -191,7 +191,7 @@
   <div class="columnCenter">
   <!-- <mat-label class="font"> </mat-label> -->
   <!-- Have previous names drop down as options -->
-  <mat-form-field *ngIf="postLocation.value">
+  <mat-form-field *ngIf="postLocation.value && (postLocationMain.value == 'Instructor Review ')">
     <!-- <i matPrefix class="fas fa-address-card"></i> -->
   <input (keyup)="instructorsName($event)" matInput placeholder="Instructors Name" class="instructorsPadding" [formControl]="postLocationInstructor" 
   [value]="postLocationInstructor" *ngIf="postLocation.value">
@@ -200,7 +200,8 @@
 
 <!-- Key up searches data base like search user in app.component search bar-->
 
-<mat-select>
+<mat-select *ngIf="(postLocationMain.value == 'Instructor Review ')">
+  <mat-label>Suggestions {{instructors.length}}</mat-label>
 <div class="font">Instructor(s)</div>
 <mat-divider></mat-divider>
 <div *ngFor="let instructor of instructors;let even = even; let odd = odd" >
@@ -223,7 +224,7 @@
 <!-- </mat-form-field> -->
 <!-- </div> -->
 <mat-divider></mat-divider>
-<div class="font" *ngIf="postLocation.value && postLocationInstructor.value">Grade Instructor
+<div class="font" *ngIf="postLocation.value && postLocationInstructor.value && (postLocationMain.value == 'Instructor Review ')">Grade Instructor
   <mat-checkbox (click)="Grade()"
   ></mat-checkbox>
 </div>
