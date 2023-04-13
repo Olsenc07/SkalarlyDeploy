@@ -129,8 +129,10 @@
                                       <div class="title">Fellow Skalars</div>
                                       <mat-divider></mat-divider>
                                       <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
+                                        <mat-card [ngClass]="{ even: even, odd: odd }">
+                                          <mat-card-content>
                                       <mat-option *ngIf="user.Creator !== userId" 
-                                       [ngClass]="{ even: even, odd: odd }" class="options"  (click)="navigateToPage(user.username)" id="userName" >
+                                        class="options"  (click)="navigateToPage(user.username)" id="userName" >
                                         <div  class="rowInfo" >
                                           <div class="profilePic">
                                          <img class="profilePic_" src="{{user.ProfilePicPath}}"> 
@@ -142,6 +144,8 @@
                                         </div>
                                         <mat-divider *ngIf="user"></mat-divider>
                                       </mat-option>
+                                    </mat-card-content>
+                                    </mat-card>
                                     <!-- </mat-autocomplete> -->
                                     </div>
                                     </mat-select>
