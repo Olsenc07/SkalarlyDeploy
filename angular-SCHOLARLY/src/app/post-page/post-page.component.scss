@@ -311,8 +311,17 @@ justify-content: center;
 .fontRank{
   display: flex;
   justify-content: center;
+  align-items: center;
+  font-family: 'Cormorant Garamond', serif;
+  color: red;
+
+}
+.fontRank_{
+  display: flex;
+  justify-content: center;
 align-items: center;
   font-family: 'Cormorant Garamond', serif;
+  color: #11173a;
 }
 .fontGrade{
   padding-left: 2%;
@@ -744,6 +753,10 @@ p {
 .space{
   display: flex;
   justify-content: space-around;
+}
+.space2{
+  display: flex;
+  margin-left: 2%;
 }
 .specifics-box {
   padding: 16px;

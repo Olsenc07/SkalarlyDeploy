@@ -178,11 +178,11 @@
     {{instructor}}
   </mat-option>
 </mat-autocomplete>
-<mat-autocomplete #auto="matAutocomplete2" *ngIf="insProgOptions.length == 0">
-  <mat-option class="font">
+
+  <mat-option class="font" *ngIf="insProgOptions.length == 0">
     No instructors in {{program}} have been rated yet
   </mat-option>
-</mat-autocomplete>
+
 </mat-form-field>
 
 

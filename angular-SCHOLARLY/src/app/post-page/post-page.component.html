@@ -232,7 +232,7 @@
 </div>
  <div  *ngIf="GradeBoolean == true">  
   <mat-form-field appearance="outline">
-    <input matSliderThumb [formControl]="instructorRating" [value]="overallRating">
+    <input [formControl]="instructorRating" [value]="overallRating">
 
 Overall Grade: {{instructorRating.value}}/10 
  <div *ngIf="instructorRating.value < 5 && (GradeBoolean == true)" class="fontGrade">
@@ -258,17 +258,17 @@ Inadequate
   <!-- knowledge rating -->
   <div class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
     <div class="fontStart">
-    Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating.value}}/10
+    Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating.value}}/5
     </div>
   <mat-slider [max]="5" [step]="step"  class="sliderGrade">
     <input matSliderThumb  [formControl]="knowledgeRating">
   </mat-slider>
   <div class="rowRankings">
     <div class="fontRank">0 Dreadful
-      <i class="far fa-thumbs-down"></i>
+      <i class="far fa-thumbs-down space2"></i>
     </div>
-    <div class="fontRank">5 Fantastic
-      <i class="far fa-thumbs-up"></i>
+    <div class="fontRank_">5 Fantastic
+      <i class="far fa-thumbs-up space2"></i>
     </div>
     </div>
 </div>
@@ -276,17 +276,17 @@ Inadequate
   <!-- Proffesionalism -->
   <div class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
     <div class="fontStart">
-Profesionalism and Approachability: {{profesionalismRating.value}}/10
+Profesionalism and Approachability: {{profesionalismRating.value}}/5
 </div>
   <mat-slider [max]="5" [step]="step"  class="sliderGrade">
     <input matSliderThumb  [formControl]="profesionalismRating">
   </mat-slider>
   <div class="rowRankings">
   <div class="fontRank">0 Dreadful
-    <i class="far fa-thumbs-down"></i>
+    <i class="far fa-thumbs-down space2"></i>
   </div>
-  <div class="fontRank">5 Fantastic
-    <i class="far fa-thumbs-up"></i>
+  <div class="fontRank_">5 Fantastic
+    <i class="far fa-thumbs-up space2"></i>
   </div>
 </div>
 </div>

@@ -484,6 +484,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       });
     } else {
       console.log('DeLorean');
+      this.instructors = [];
     }
   }
 
