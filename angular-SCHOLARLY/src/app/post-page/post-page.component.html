@@ -231,8 +231,8 @@
   ></mat-checkbox>
 </div>
  <div  *ngIf="GradeBoolean == true">  
-  <mat-form-field appearance="outline">
-    <input [formControl]="instructorRating" [value]="overallRating" class="hidden">
+  <mat-form-field appearance="outline" class="hidden">
+    <input [formControl]="instructorRating" [value]="overallRating" >
   </mat-form-field>
 
 Overall Grade: {{instructorRating.value}}/10 
@@ -256,7 +256,7 @@ Inadequate
   <!-- <mat-slider [max]="max" [step]="step" *ngIf="(GradeBoolean == true) && postLocation.value" class="sliderGrade">
   </mat-slider> -->
   <!-- knowledge rating -->
-  <div class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
+  <mat-card-content> class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
     <div class="fontStart">
     Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating.value}} /5
     </div>
@@ -271,10 +271,10 @@ Inadequate
       <i class="far fa-thumbs-up space2"></i>
     </div>
     </div>
-</div>
+</mat-card-content>
 <mat-divider *ngIf="postLocationInstructor.value && (GradeBoolean == true)" class="spaceUp"></mat-divider>
   <!-- Proffesionalism -->
-  <div class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
+  <mat-card-content class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
     <div class="fontStart">
 Profesionalism and Approachability: {{profesionalismRating.value}} /5
 </div>
@@ -289,7 +289,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
     <i class="far fa-thumbs-up space2"></i>
   </div>
 </div>
-</div>
+</mat-card-content>
 
 </div>
   <div  class="center__">
