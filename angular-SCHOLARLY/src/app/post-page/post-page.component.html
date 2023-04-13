@@ -253,7 +253,7 @@ Inadequate
     <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
     (click)="changeTab3()">Back</button>
     <button id="nextBtn" mat-raised-button color="primary" type="button" class="final_step_btn" 
-     (click)="changeTab()" *ngIf="postLocation.value || postLocation2.value ">
+     (click)="changeTab()" *ngIf="(postLocationMain.value !== 'Instructor Review ') || postLocationInstructor.value ">
       Next Step
   </button>
     </div>
