@@ -105,16 +105,18 @@
               <mat-label> 
                 <i class="fas fa-sitemap"></i>
                 Main Categories</mat-label>
+                <mat-card class="cardStyle" [ngClass]="{ even: even, odd: odd }">
+                  <mat-card-content>
               <mat-select [formControl]="postLocationMain"   >
                 <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even = even; let odd = odd" [selected]="opt.name" [multiple]="false" 
-                  [value]="opt.name" [ngClass]="{ even: even, odd: odd }" >
+                  [value]="opt.name"  >
                   {{  opt.name }}
               <mat-divider></mat-divider>
 
               </mat-option>
-
               </mat-select>
-              
+              </mat-card-content>
+              </mat-card>
             </mat-form-field>
           </mat-selection-list>
           
@@ -132,21 +134,23 @@
         <i class="fas fa-feather-alt"></i>
         Program of Instructor</mat-label>
       
-    
+        <mat-card class="cardStyle" [ngClass]="{ even: even, odd: odd }">
+          <mat-card-content>
     <mat-select  [formControl]="postLocation" > 
       <!-- (click)="adjustView()" -->
       <mat-form-field class="font" appearance="outline">
       <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
     </mat-form-field>
       <mat-option  [multiple]="false" *ngFor="let program of selectedProgram;let even = even; let odd = odd"
-      [selected]="program" [value]="program" [ngClass]="{ even: even, odd: odd }">
+      [selected]="program" [value]="program" >
       
             {{ program }}
       <mat-divider></mat-divider>
 
       </mat-option>
-
     </mat-select>
+    </mat-card-content>
+    </mat-card>
     </mat-form-field>
           </mat-selection-list>
           <div class="center__">
@@ -206,9 +210,9 @@
 <div class="fontSelect">Instructor(s)</div>
 <mat-divider></mat-divider>
 <div *ngFor="let instructor of instructors;let even = even; let odd = odd" >
-<mat-option [ngClass]="{ even: even, odd: odd }"
+<mat-option 
 (click)="setFormControlValue(instructor)">
-<mat-card>
+<mat-card [ngClass]="{ even: even, odd: odd }">
 <mat-card-content >
   <div class="font">{{instructor}}</div>
 </mat-card-content>
@@ -265,10 +269,10 @@ Inadequate
     Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating.value}} /5
     </div>
     <mat-form-field appearance="outline" class="hidden">
-      <input [formControl]="knowledgeRating" >
+      <input matInput [formControl]="knowledgeRating" >
       </mat-form-field>
   <mat-slider max="5" step="0.5" discrete showTickMarks class="sliderGrade">
-    <input matSliderThumb [value]="knowledgeRating.value" (change)="knowledgeRating.setValue($event.value)" >
+    <input matSliderThumb  >
   </mat-slider>
   <div class="rowRankings">
     <div class="fontRank">0 Dreadful
@@ -288,11 +292,11 @@ Inadequate
 Profesionalism and Approachability: {{profesionalismRating.value}} /5
 </div>
 <mat-form-field appearance="outline" class="hidden">
-<input [formControl]="profesionalismRating" >
+<input matInput [formControl]="profesionalismRating" >
 </mat-form-field>
 
   <mat-slider max="5" step="0.5" discrete showTickMarks class="sliderGrade">
-    <input matSliderThumb [value]="profesionalismRating.value" (change)="profesionalismRating.setValue($event.value)" >
+    <input matSliderThumb  >
   </mat-slider>
   <div class="rowRankings">
   <div class="fontRank">0 Dreadful
