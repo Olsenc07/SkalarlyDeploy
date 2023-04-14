@@ -197,6 +197,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.GradeBoolean = !this.GradeBoolean;
     this.instructorRating.setValue('');
   }
+  upDateGrade(knowledgeRating) {
+    console.log('grade 1', knowledgeRating);
+    this.instructorRating.setValue(knowledgeRating);
+  }
   //
   visible = true;
   selectable = true;
@@ -225,9 +229,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   postLocationInstructor: FormControl = new FormControl('');
   knowledgeRating: FormControl = new FormControl('');
   profesionalismRating: FormControl = new FormControl('');
-  instructorRating: FormControl = new FormControl(
-    this.profesionalismRating.value + this.knowledgeRating.value
-  );
+  instructorRating: FormControl = new FormControl();
   // this.instructorRating.setValue()
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');

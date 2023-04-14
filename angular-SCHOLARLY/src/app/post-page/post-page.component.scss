@@ -94,6 +94,9 @@
   flex-direction: column;
   justify-content: center;
 }
+.datalist{
+  writing-mode: horizontal-tb; 
+}
 .even{
   padding: 1%;
   background-color: whitesmoke;
@@ -110,12 +113,12 @@ justify-content: center;
 
 .even_{
   background-color: whitesmoke;
-    margin: 1%;
+    // margin: 1%;
     text-align: center;
 }
 .odd_{
   background-color: rgb(109, 108, 108);
-    margin: 1%;
+    // margin: 1%;
     text-align: center;
     color: white;
 }
@@ -130,6 +133,10 @@ justify-content: center;
   box-shadow: 0px 2px grey;
   margin-bottom: 2%;
 
+}
+.optionsCenterStyle{
+display: block;
+margin: 1%;
 }
 .post_btn_top_right {
   // font-family: 'Cinzel', serif;
