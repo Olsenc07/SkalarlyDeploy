@@ -1139,7 +1139,9 @@ router.get("/instructorProgramSearch", async(req, res) => {
     }}]
     }).limit(10)
     .then(matches => {
-        if(matches){
+        if(matches.length > 0){
+            console.log(' Matches 77', matches)
+
             progsMatch = []
             matches.forEach((pro) => {
                 progsMatch.push(pro.postLocationInstructor)
@@ -1155,13 +1157,14 @@ router.get("/instructorProgramSearch", async(req, res) => {
         Post.find( {postLocation: Program }).limit(10)
     .then(matches_ => {
         if(matches_){
+            console.log(' Matches', matches_)
             progsMatch = []
             matches_.forEach((pro) => {
                 progsMatch.push(pro.postLocationInstructor)
             })
             let matchesFinal_ = [...new Set(progsMatch)]
         res.status(200).json({
-            message: ' no matches to fetch!',
+            message: 'matches to fetch!',
             options: matchesFinal_,
             backup: 2
         });

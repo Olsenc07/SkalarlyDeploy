@@ -28,6 +28,7 @@
 
 <div  *ngIf="instructorRatingGraders !== 0" class="fontRanking">  
     Graded By {{instructorRatingGraders}} Student(s)
+    <div class="row_">
     <div  class="fontRanking">
         {{instructorRatingMean}}/10 
     </div> 
@@ -46,6 +47,12 @@
           <div *ngIf=" (instructorRatingMean >= 8) " class="fontGrade">
           Excellent
             </div>
+          </div>
+
+          <!-- mean of both -->
+          <div class="fontGrade"> Knowledge and Enthusiasm For Subject Matter: /5</div>
+          <div class="fontGrade">Profesionalism and Approachability: /5</div>
+         
      </div>
         
     </div>

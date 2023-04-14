@@ -148,6 +148,9 @@
   justify-content: center;
   font-size: medium;
   font-family: 'Cormorant Garamond', serif;
+  flex-direction: column;
+    align-items: center;
+    margin-bottom: 1%;
 }
 .hashs{
   display: flex;
@@ -282,6 +285,11 @@ justify-content: center;
   color: #7e7171;
   // font-family:  'Poppins', sans-serif;
   font-family: 'Cormorant Garamond', serif;
+}
+.row_{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .rowActions {
   display: flex;
