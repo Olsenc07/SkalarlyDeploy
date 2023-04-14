@@ -149,26 +149,26 @@
         </mat-chip-option>
         <!-- Instructor review -->
         <mat-menu #menuInstructors="matMenu">
-    <mat-form-field class="font" appearance="outline">
+    <!-- <mat-form-field class="font" appearance="outline">
       
       <input matInput placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
-      </mat-form-field>
+      </mat-form-field> -->
 
       <mat-form-field class="font" appearance="fill">
         <mat-label>
           <i class="fas fa-feather-alt"></i>
           Program of Instructor</mat-label>
   <mat-select [formControl]="instructorsProgram">
-<mat-card>
-  <mat-card-content>
+
     <mat-option *ngFor="let program of selectedProgram" [value]="program"
       (click)="openInstructorOptions()">
-
+      <mat-card>
+        <mat-card-content>
      {{program}}
-
+    </mat-card-content>
+  </mat-card>
   </mat-option>
-</mat-card-content>
-</mat-card>
+
 
   </mat-select>
 </mat-form-field>
@@ -181,11 +181,15 @@
   <mat-label class="font">Instructors In {{program}}</mat-label>
   <button mat-icon-button (click)="closeInstructorOptions()"> <i class="fas fa-arrow-left"></i> </button>
   <input matInput placeholder="Quick Search" (keyup)="onKeyTwo($event.target.value)">
-<mat-autocomplete #auto="matAutocomplete" *ngIf="insProgOptions.length !== 0">
+<!-- <mat-autocomplete #auto="matAutocomplete" > -->
   <mat-option *ngFor="let instructor of insProgOptions" [value]="instructor" class="font">
-    {{instructor}}
+    <mat-card-content *ngIf="insProgOptions.length !== 0">
+      <mat-card>
+      {{instructor}}
+</mat-card>
+    </mat-card-content>
   </mat-option>
-</mat-autocomplete>
+<!-- </mat-autocomplete> -->
 </mat-form-field>
 
 <mat-form-field *ngIf="opened == true">

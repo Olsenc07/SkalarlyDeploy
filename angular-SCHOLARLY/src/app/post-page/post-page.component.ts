@@ -180,17 +180,17 @@ export class PostPageComponent implements OnInit, OnDestroy {
   ];
   selectedProgram = this.programs;
   // Receive user input and send to search method**
-  onKey(value) {
-    this.selectedProgram = this.searchInstructor(value);
-  }
+  // onKey(value) {
+  //   this.selectedProgram = this.searchInstructor(value);
+  // }
 
   // Filter the states list and send back to populate the selectedStates**
-  searchInstructor(value: string) {
-    let filter = value.toLowerCase();
-    return this.programs.filter((option) =>
-      option.toLowerCase().includes(filter)
-    );
-  }
+  // searchInstructor(value: string) {
+  //   let filter = value.toLowerCase();
+  //   return this.programs.filter((option) =>
+  //     option.toLowerCase().includes(filter)
+  //   );
+  // }
   // Grading instructor
   Grade() {
     console.log('grade', this.GradeBoolean);
@@ -223,12 +223,12 @@ export class PostPageComponent implements OnInit, OnDestroy {
   postLocation: FormControl = new FormControl('');
 
   postLocationInstructor: FormControl = new FormControl('');
-  instructorRating: FormControl = new FormControl('');
   knowledgeRating: FormControl = new FormControl('');
   profesionalismRating: FormControl = new FormControl('');
-  overallRating =
-    Number(this.knowledgeRating.value) +
-    Number(this.profesionalismRating.value);
+  instructorRating: FormControl = new FormControl(
+    this.profesionalismRating.value + this.knowledgeRating.value
+  );
+  // this.instructorRating.setValue()
   postDescription: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
   value: FormControl = new FormControl('');

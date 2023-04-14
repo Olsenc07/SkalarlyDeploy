@@ -132,7 +132,7 @@
                                         
                                       <mat-option *ngIf="user.Creator !== userId" 
                                         class="options"  (click)="navigateToPage(user.username)" id="userName" >
-                                        <mat-card [ngClass]="{ even: even_, odd: odd_ }">
+                                        <mat-card [ngClass]="{ even_: even, odd_: odd }">
                                           <mat-card-content>
                                         <div  class="rowInfo" >
                                           <div class="profilePic">
