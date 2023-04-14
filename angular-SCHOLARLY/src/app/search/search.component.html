@@ -149,15 +149,16 @@
         </mat-chip-option>
         <!-- Instructor review -->
         <mat-menu #menuInstructors="matMenu">
-    <mat-form-field class="font" appearance="fill">
+    <mat-form-field class="font" appearance="outline">
       <mat-label>
         <i class="fas fa-feather-alt"></i>
         Program of Instructor</mat-label>
+        <mat-select [formControl]="instructorsProgram">
+
       <input matInput   placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
-      </mat-form-field>
+      
 
       <mat-form-field class="font" appearance="fill">
-  <mat-select [formControl]="instructorsProgram">
 <mat-card>
   <mat-card-content>
     <mat-option *ngFor="let program of selectedProgram" [value]="program"
@@ -168,8 +169,8 @@
   </mat-option>
 </mat-card-content>
 </mat-card>
-
-  </mat-select>
+</mat-form-field>
+</mat-select>
 </mat-form-field>
 
         </mat-menu>

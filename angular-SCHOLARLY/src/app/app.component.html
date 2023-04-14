@@ -128,11 +128,11 @@
                                     <mat-select id="trigger" matTooltip="Click To See Skalars" class="triggerContainer" placeholder="Fellow Skalar(s)">
                                       <div class="title">Fellow Skalars</div>
                                       <mat-divider></mat-divider>
-                                      <div *ngFor="let user of users;let even_ = even_; let odd_ = odd_" class="triggerContainer_">
+                                      <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
                                         
                                       <mat-option *ngIf="user.Creator !== userId" 
                                         class="options"  (click)="navigateToPage(user.username)" id="userName" >
-                                        <mat-card [ngClass]="{ even_: even_, odd_: odd_ }">
+                                        <mat-card [ngClass]="{ even: even_, odd: odd_ }">
                                           <mat-card-content>
                                         <div  class="rowInfo" >
                                           <div class="profilePic">
