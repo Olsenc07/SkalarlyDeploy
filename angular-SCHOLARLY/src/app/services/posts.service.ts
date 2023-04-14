@@ -42,6 +42,9 @@ export class PostsService {
   private instructorProgramsSearch: Array<string>;
   private rankingUpdatedSearch = new Subject();
 
+  private instructorProgramsSearchNumber: Number;
+  private rankingUpdatedSearchNumber = new Subject();
+
   private favsListener = new Subject<Fav[]>();
   private favs: Fav[] = [];
   private favsListenerSingle = new Subject<Fav>();
@@ -79,6 +82,9 @@ export class PostsService {
   }
   getInstructorsProgramsSearch(): any {
     return this.rankingUpdatedSearch.asObservable();
+  }
+  getInstructorsProgramsSearchNumber(): any {
+    return this.rankingUpdatedSearchNumber.asObservable();
   }
   searchUsers(query: string, userId: string): any {
     const sub = this.http
@@ -329,19 +335,25 @@ export class PostsService {
       .get<{
         message: string;
         options: Array<string>;
+        backup: number;
       }>('https://www.skalarly.com/api/posts/instructorProgramSearch', {
         params: { payload, program },
       })
       .pipe(
         map((postData) => {
-          return postData.options;
+          return postData;
         })
       )
       .subscribe((transformedPosts) => {
-        console.log('all my sheep dead except sally', transformedPosts);
+        console.log('all my sheep dead except sally', transformedPosts.options);
 
-        this.instructorProgramsSearch = transformedPosts;
+        this.instructorProgramsSearch = transformedPosts.options;
         this.rankingUpdatedSearch.next(this.instructorProgramsSearch);
+
+        this.instructorProgramsSearchNumber = transformedPosts.backup;
+        this.rankingUpdatedSearchNumber.next(
+          this.instructorProgramsSearchNumber
+        );
         sub.unsubscribe();
         console.log('eazy 8');
       });

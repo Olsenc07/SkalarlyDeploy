@@ -2313,7 +2313,7 @@ await User.findById({_id: userId})
             });
         });
     }else{
-        UserInfo.find({Creator: {$nin: userId}}).skip(counter).limit(6)
+        UserInfo.find({Creator: {$ne: userId}}).skip(counter).limit(6)
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
             res.status(200).json({

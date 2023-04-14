@@ -26,6 +26,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   opened = false;
   mains: Fav[] = [];
   insProgOptions = [];
+  insProgOptionsNumber: number;
   programs: string[] = [
     'Academic Bridging Program',
     'Acturial Science',
@@ -196,6 +197,17 @@ export class SearchComponent implements OnInit, OnDestroy {
           this.insProgOptions = [];
         }
       });
+      // which kind of results
+      this.postsService
+        .getInstructorsProgramsSearchNumber()
+        .subscribe((type: number) => {
+          if (type) {
+            this.insProgOptionsNumber = type;
+            console.log('results baby', type);
+          } else {
+            this.insProgOptionsNumber = 0;
+          }
+        });
     } else {
       console.log('nothing');
       // this.hasQuery = false;

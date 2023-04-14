@@ -162,6 +162,7 @@
     <mat-label class="mainCats">
       <i class="fas fa-feather-alt mainCatsSpace"></i>
       Program of Instructor</mat-label>
+      <mat-divider></mat-divider>
     <mat-option *ngFor="let program of selectedProgram;let even = even; let odd = odd" [value]="program"
       (click)="openInstructorOptions()" class="optionsCenterStyle">
       <mat-card class="cardStyle" [ngClass]="{ even_: even, odd_: odd }">
@@ -378,12 +379,18 @@
 <!-- <mat-autocomplete #auto="matAutocomplete" > -->
   <mat-option *ngFor="let instructor of insProgOptions;let even = even; let odd = odd" [value]="instructor" class="font">
       <mat-card [ngClass]="{ even_: even, odd_: odd }">
-    <mat-card-content *ngIf="insProgOptions.length !== 0">
+    <mat-card-content *ngIf="insProgOptionsNumber == 1">
 
       {{instructor}}
     </mat-card-content>
-    <mat-card-content *ngIf="insProgOptions.length == 0">
-    No instructors in {{instructorsProgram.value}} have been rated yet
+<!-- no names match but heres 10 program rankings of teachers -->
+<mat-card-content *ngIf="insProgOptionsNumber == 2">
+  No matches. But here are some suggestions in {{instructorsProgram.value}}.
+  {{instructor}}
+</mat-card-content>
+    <!-- no rankings in program all all -->
+    <mat-card-content *ngIf="insProgOptionsNumber == 3">
+    No instructors in {{instructorsProgram.value}} have been rated yet.
 
 </mat-card-content>
     </mat-card>

@@ -1129,11 +1129,13 @@ router.get("/instructorRanking", async(req, res) => {
 // searching instructors program ranking page
 router.get("/instructorProgramSearch", async(req, res) => {  
     console.log('love in the air 7654 ',req.query.payload);
-    console.log('love in the air 51 ',req.query.program);
+    console.log('love in the air 51 ', req.query.program);
+    Payload = req.query.payload
+    Program = req.query.program
 
-    await Post.find({$and: [ {postLocation:req.query.program },
+    await Post.find({$and: [ {postLocation: Program },
     { postLocationInstructor: {
-        $regex: new RegExp('^' + payload)
+        $regex: new RegExp('^' + Payload)
     }}]
     }).limit(10)
     .then(matches => {
@@ -1146,18 +1148,40 @@ router.get("/instructorProgramSearch", async(req, res) => {
             console.log('programs Matches', matchesFinal)
         res.status(200).json({
             message: 'matches fetched succesfully!',
-            options: matchesFinal
+            options: matchesFinal,
+            backup: 1
+        });
+    }else{
+        Post.find( {postLocation: Program }).limit(10)
+    .then(matches_ => {
+        if(matches_){
+            progsMatch = []
+            matches_.forEach((pro) => {
+                progsMatch.push(pro.postLocationInstructor)
+            })
+            let matchesFinal_ = [...new Set(progsMatch)]
+        res.status(200).json({
+            message: ' no matches to fetch!',
+            options: matchesFinal_,
+            backup: 2
         });
     }else{
         res.status(200).json({
             message: ' no matches to fetch!',
-            options: []
+            options: [],
+            backup: 3
+        })
+    }
+    }) .catch(error => {
+        res.status(500).json({
+            message: 'Fetching matches failed!'
         });
+    });
     }
     })
     .catch(error => {
         res.status(500).json({
-            message: 'Fetching matches failed!'
+            message: 'Fetching matches failed 2!'
         });
     });
 })
