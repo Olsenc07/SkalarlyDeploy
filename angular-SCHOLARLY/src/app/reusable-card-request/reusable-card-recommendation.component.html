@@ -17,7 +17,7 @@
 <div id="infoRecomend" *ngFor="let info of infos; "  >
 <mat-card  class="row1" selected *ngIf="(userId !== info.Creator) && !isLoading"
  >
- <mat-card-content>
+
     <div class="column" >
         <div class="row_">
             <div mat-card-avatar class="profilePic" *ngIf="info.ProfilePicPath">
@@ -113,7 +113,7 @@
 
         </div>
     </div>
-</mat-card-content>
+
 </mat-card>
 </div>
 
