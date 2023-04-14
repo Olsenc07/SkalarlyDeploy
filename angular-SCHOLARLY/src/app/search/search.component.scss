@@ -49,6 +49,10 @@
 .a{
   color: white;
 }
+.backBtnInstructorReview{
+  font-family: 'Cormorant Garamond', serif;
+font-size: medium;
+}
 .category-box {
   padding: 16px;
   border: 1px solid gray;
@@ -203,6 +207,10 @@
 ::ng-deep .mat-option-text {
   text-align: center;
 }
+.optionsCenterStyle{
+  display: block;
+  margin: 1%;
+  }
 @media (min-width: 400px) {
   .label {
     display: contents;

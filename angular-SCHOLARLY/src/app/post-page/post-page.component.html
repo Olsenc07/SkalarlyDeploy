@@ -110,13 +110,15 @@
           <mat-selection-list #options [multiple]="false">
             <mat-form-field appearance="fill" >
               <mat-label> 
-                <i class="fas fa-sitemap"></i>
+                <i class="fas fa-sitemap" class="mainCatsSpace"></i>
                 Main Categories</mat-label>
               
               <mat-select [formControl]="postLocationMain"  class="centerOptions" >
-                <mat-label> 
+                <mat-label class="mainCats"> 
                   <i class="fas fa-sitemap"></i>
                   Main Categories</mat-label>
+          <mat-divider></mat-divider>
+
                 <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even = even; let odd = odd" [selected]="opt.name" [multiple]="false" 
                   [value]="opt.name" class="optionsCenterStyle" >
                   
@@ -157,7 +159,7 @@
       <input matInput  placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
     </mat-form-field>
       <mat-option  [multiple]="false" *ngFor="let program of selectedProgram;let even = even; let odd = odd"
-      [selected]="program" [value]="program"  >
+      [selected]="program" [value]="program" class="optionsCenterStyle" >
       <mat-card  [ngClass]="{ even_: even, odd_: odd }">
         <mat-card-content>
             {{ program }}
@@ -190,7 +192,7 @@
     <mat-select  [formControl]="postLocation" > 
 
       <mat-option  [multiple]="false" *ngFor="let opt of specificOptions;let even = even; let odd = odd"
-      [selected]="opt" [value]="opt" >
+      [selected]="opt" [value]="opt" class="optionsCenterStyle">
       <mat-card class="cardStyle" [ngClass]="{ even_: even, odd_: odd }">
         <mat-card-content>
             {{ opt }}
@@ -263,7 +265,7 @@
     <input [formControl]="instructorRating"  >
   </mat-form-field>
 
-Overall Grade: {{instructorRating.value}}/10 
+Overall Grade: {{instructorRatingView}}/10 
  <div *ngIf="instructorRating.value < 5 && (GradeBoolean == true)" class="fontGrade">
 Inadequate
  </div>

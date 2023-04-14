@@ -93,7 +93,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   // Filter categories for instructor review
   instructors = [];
   GradeBoolean: boolean = false;
-
+  instructorRatingView = 0.0;
   programs: string[] = [
     'Academic Bridging Program',
     'Acturial Science',
@@ -199,7 +199,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   upDateGrade(knowledgeRating) {
     console.log('grade 1', knowledgeRating);
-    this.instructorRating.setValue(knowledgeRating);
+    // this.instructorRating.setValue(knowledgeRating);
+    this.instructorRating.valueChanges.subscribe((values) => {
+      this.instructorRatingView = values;
+      // Then add the two
+    });
   }
   //
   visible = true;
