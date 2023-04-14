@@ -34,8 +34,8 @@
  </mat-card>
     <!-- Description of Post -->
     <div class="column_1" *ngIf="show == true" >
-      <mat-card class="cardStyle">
-        <mat-card-content>
+      <!-- <mat-card class="cardStyle">
+        <mat-card-content> -->
       <!-- Upload pic/video -->
       <!-- <div class="column_"> -->
       <div class="centerD">
@@ -94,8 +94,8 @@
         class="imgBox" id="video-preview" [ngClass]="form.get('video').value ? 'show' : 'hide' "  >
         </video>
       </div>
-      </mat-card-content>
-      </mat-card>
+      <!-- </mat-card-content>
+      </mat-card> -->
     </div>
 
 
@@ -116,7 +116,8 @@
               
                 <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even = even; let odd = odd" [selected]="opt.name" [multiple]="false" 
                   [value]="opt.name"  >
-                  <mat-card [ngClass]="{ even: even, odd: odd }">
+                  
+                  <mat-card class="cardOptions" [ngClass]="{ even: cardOptionsEven, odd: cardOptionsOdd }">
                     <mat-card-content>
                   {{  opt.name }}
               <mat-divider></mat-divider>

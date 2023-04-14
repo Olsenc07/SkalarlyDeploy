@@ -88,6 +88,17 @@
   background-color: #11173a;
   color: white;
 }
+.cardOptionsEven{
+  background-color: whitesmoke;
+    margin: 1%;
+    text-align: center;
+}
+.cardOptionsOdd{
+  background-color: rgb(109, 108, 108);
+    margin: 1%;
+    text-align: center;
+    color: white;
+}
 .columnCenter{
   display: flex;
   flex-direction: column;
