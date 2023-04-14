@@ -100,7 +100,8 @@
 
 
 <!-- Step 1 -->
-
+<mat-card class="cardStylePhoto">
+  <mat-card-content>
     <div class="centerL" *ngIf="(postDescription.value || form.get('upload').value || form.get('video').value) && (show == true) ">Where do you want your post?
     </div>
     <div class="selection_styles" *ngIf="(postDescription.value || form.get('upload').value || form.get('video').value) && (show == true)">
@@ -114,10 +115,10 @@
               
               <mat-select [formControl]="postLocationMain"  class="centerOptions" >
               
-                <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even = even; let odd = odd" [selected]="opt.name" [multiple]="false" 
+                <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even_ = even_; let odd_ = odd_" [selected]="opt.name" [multiple]="false" 
                   [value]="opt.name"  >
                   
-                  <mat-card class="cardOptions" [ngClass]="{ even: cardOptionsEven, odd: cardOptionsOdd }">
+                  <mat-card class="cardOptions" [ngClass]="{ even_: even_, odd_: odd_ }">
                     <mat-card-content>
                   {{  opt.name }}
               <mat-divider></mat-divider>
@@ -332,7 +333,8 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
       </mat-tab-group>
 
     </div>
-
+</mat-card-content>
+</mat-card>
     
 
     </mat-tab>
@@ -351,7 +353,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
        </ng-template>
       
 <div class="threeBox">
-  <mat-card class="cardStyle">
+  <mat-card class="cardStyleThree">
     <mat-card-content>
       <div *ngIf="minwidth" class="staticBtn">
         <button mat-raised-button type="button" class="back_btn" 

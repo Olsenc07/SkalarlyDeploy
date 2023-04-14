@@ -157,11 +157,11 @@
       </mat-form-field>
 
       <mat-form-field class="font" appearance="fill">
-  <mat-select>
+  <mat-select [formControl]="instructorsProgram">
 <mat-card>
   <mat-card-content>
     <mat-option *ngFor="let program of selectedProgram" [value]="program"
-     [formControl]="instructorsProgram" (click)="openInstructorOptions()">
+      (click)="openInstructorOptions()">
 
      {{program}}
 

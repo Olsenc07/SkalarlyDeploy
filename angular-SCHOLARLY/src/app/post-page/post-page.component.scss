@@ -88,17 +88,7 @@
   background-color: #11173a;
   color: white;
 }
-.cardOptionsEven{
-  background-color: whitesmoke;
-    margin: 1%;
-    text-align: center;
-}
-.cardOptionsOdd{
-  background-color: rgb(109, 108, 108);
-    margin: 1%;
-    text-align: center;
-    color: white;
-}
+
 .columnCenter{
   display: flex;
   flex-direction: column;
@@ -116,6 +106,18 @@ justify-content: center;
   background-color: white;
   display: flex;
   justify-content: center;
+}
+
+.even_{
+  background-color: whitesmoke;
+    margin: 1%;
+    text-align: center;
+}
+.odd_{
+  background-color: rgb(109, 108, 108);
+    margin: 1%;
+    text-align: center;
+    color: white;
 }
 .post_btn_top_right {
   // font-family: 'Cinzel', serif;
@@ -153,6 +155,13 @@ justify-content: center;
   border-radius: 25px;
   background-color: #8080801f;
 }
+.cardStyleThree{
+  border-radius: 25px;
+  background-color: #8080801f;
+margin: 2% 0%;
+
+}
+
 .cardStyle_{
   background-color: #8080801f;
     border-bottom-right-radius: 25px;
@@ -710,6 +719,9 @@ p {
 .row_ {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  font-family: 'Cormorant Garamond', serif;
+
 }
 .row__ {
   display: flex;
@@ -726,7 +738,7 @@ p {
   box-sizing: border-box;
   position: static;
   margin-bottom: 11%;
-  width: 50%;
+  // width: 50%;
 }
 
 .right-mid {
