@@ -193,7 +193,7 @@
                                 <div *ngFor="let hash of hashs;let even = even; let odd = odd" class="triggerContainer_">
                                 <mat-option *ngIf="hash !== ''"
                                  class="options"  (click)="navToHashTag(hash)" id="hashName" >
-                                 <mat-card [ngClass]="{ even_: even_, odd_: odd_ }">
+                                 <mat-card [ngClass]="{ even_: even, odd_: odd }">
                                   <mat-card-content>
                                   <div  class="rowInfo_" >
                                     <i matPrefix class="fas fa-hashtag hash"></i>
