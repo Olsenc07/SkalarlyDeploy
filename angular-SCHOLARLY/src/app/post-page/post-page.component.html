@@ -100,9 +100,9 @@
 
 
 <!-- Step 1 -->
-<mat-card class="cardStylePhoto2">
+<mat-card class="cardStylePhoto2" *ngIf="(postDescription.value || form.get('upload').value || form.get('video').value) && (show == true) ">
   <mat-card-content>
-    <div class="centerL" *ngIf="(postDescription.value || form.get('upload').value || form.get('video').value) && (show == true) ">Where do you want your post?
+    <div class="centerL" >Where do you want your post?
     </div>
     <div class="selection_styles" *ngIf="(postDescription.value || form.get('upload').value || form.get('video').value) && (show == true)">
       <mat-tab-group class="btmPad" [selectedIndex]="selectedIndex">
