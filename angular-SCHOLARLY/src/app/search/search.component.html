@@ -164,7 +164,7 @@
       Program of Instructor</mat-label>
     <mat-option *ngFor="let program of selectedProgram;let even = even; let odd = odd" [value]="program"
       (click)="openInstructorOptions()" class="optionsCenterStyle">
-      <mat-card [ngClass]="{ even_: even, odd_: odd }">
+      <mat-card class="cardStyle" [ngClass]="{ even_: even, odd_: odd }">
         <mat-card-content>
           
      {{program}}
@@ -371,10 +371,10 @@
 
           <!-- Instructors names options -->
 <mat-form-field *ngIf="opened == true">
-  <button mat-icon-button [matMenuTriggerFor]="menuInstructors" (click)="closeInstructorOptions()" class="backBtnInstructorReview"> <i class="fas fa-arrow-left"></i> Back </button>
+  <button matSuffix mat-icon-button [matMenuTriggerFor]="menuInstructors" (click)="closeInstructorOptions()" class="backBtnInstructorReview"> <i class="far fa-times-circle"></i> Close </button>
 
   <mat-label class="font">Instructors In {{instructorsProgram.value}}</mat-label>
-  <input matInput placeholder="Quick Search" (keyup)="onKeyTwo($event.target.value)">
+  <input matInput placeholder="Quick Search" (keyup)="onKeyTwo($event)">
 <!-- <mat-autocomplete #auto="matAutocomplete" > -->
   <mat-option *ngFor="let instructor of insProgOptions;let even = even; let odd = odd" [value]="instructor" class="font">
       <mat-card [ngClass]="{ even_: even, odd_: odd }">
