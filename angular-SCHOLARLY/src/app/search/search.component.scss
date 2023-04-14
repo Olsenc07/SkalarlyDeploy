@@ -62,7 +62,13 @@ align-items: center;
   border: 1px solid gray;
   border-radius: 16px;
 }
-
+.chipInstructor{
+  background-color: #393b48!important;
+}
+.chipInstructorBox{
+  display: flex;
+    justify-content: center;
+}
 .center {
   display: flex;
   justify-content: center;
@@ -87,13 +93,14 @@ align-items: center;
 .center_single {
   display: flex;
   justify-content: center;
-  margin: 2% 0%;
+  margin-bottom: 2% ;
   font-size: large;
   align-items: center;
   color: #7e7171;
   // font-family:  'Cinzel', sans-serif;
   font-family: 'Cormorant Garamond', serif;
   text-align: center;
+  background-color: #8080801f;
 }
 .center_ {
   display: flex;

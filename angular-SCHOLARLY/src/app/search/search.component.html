@@ -379,10 +379,12 @@
 </mat-form-field>
 
 <!-- <mat-autocomplete #auto="matAutocomplete" > -->
-  <mat-chip-listbox *ngFor="let instructor of insProgOptions;let even = even; let odd = odd" [value]="instructor" class="font">
+  <mat-chip-listbox *ngFor="let instructor of insProgOptions;let even = even; let odd = odd" 
+  [value]="instructor" class="chipInstructorBox">
       <!-- <mat-card [ngClass]="{ even_: even, odd_: odd }"> -->
     <!-- <mat-card-content *ngIf="insProgOptionsNumber == 1"> -->
-  <mat-chip-option *ngIf="insProgOptionsNumber == 1">
+  <mat-chip-option *ngIf="insProgOptionsNumber == 1"
+  (click)="getPostsMainPageInstructor(instructor)" class="chipInstructor">
       {{instructor}}
       </mat-chip-option>
     <!-- </mat-card-content> -->
@@ -391,7 +393,8 @@
 <div class="font">
   No matches. But here are some suggestions in {{instructorsProgram.value}}.
 </div>
-<mat-chip-option >
+
+<mat-chip-option class="chipInstructor" (click)="getPostsMainPageInstructor(instructor)">
   {{instructor}}
 </mat-chip-option>
 </div>

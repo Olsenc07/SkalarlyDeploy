@@ -222,6 +222,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
   closeInstructorOptions() {
     this.opened = false;
+    this.insProgOptions = [];
   }
   navigateToPage(value: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -242,7 +243,13 @@ export class SearchComponent implements OnInit, OnDestroy {
       queryParams: { userId: this.userId },
     });
   }
-
+  // Where the post was posted
+  getPostsMainPageInstructor(value: string): void {
+    this.router.navigate(['/instructor-review/:'], {
+      queryParams: { category: value },
+    });
+    console.log('hey chaz mataz yo homie', value);
+  }
   clearSearch(): void {
     this.search.setValue('');
   }
