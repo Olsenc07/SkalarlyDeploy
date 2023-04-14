@@ -197,7 +197,23 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.GradeBoolean = !this.GradeBoolean;
     this.instructorRating.setValue('');
   }
-
+  overallGrade() {
+    this.knowledgeRating.valueChanges.subscribe((values) => {
+      this.instructorRatingView =
+        values + Number(this.profesionalismRating.value);
+      console.log('dick yall', this.instructorRatingView);
+      this.instructorRating.setValue(this.instructorRatingView);
+      // Then add the two
+    });
+  }
+  overallGrade2() {
+    this.profesionalismRating.valueChanges.subscribe((values) => {
+      this.instructorRatingView = values + Number(this.knowledgeRating.value);
+      console.log('dick yall 2', this.instructorRatingView);
+      this.instructorRating.setValue(this.instructorRatingView);
+      // Then add the two
+    });
+  }
   //
   visible = true;
   selectable = true;
@@ -446,11 +462,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.locationSub = this.LocationEvent.valueChanges.subscribe((v) =>
       this.LocationLength.next(v.length)
     );
-    this.instructorRating.valueChanges.subscribe((values) => {
-      this.instructorRatingView = values;
-      console.log('dick yall', this.instructorRatingView);
-      // Then add the two
-    });
+
     //
     if (window.screen.width < 1025) {
       this.minwidth = false;

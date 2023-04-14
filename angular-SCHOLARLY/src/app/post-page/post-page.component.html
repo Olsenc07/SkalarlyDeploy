@@ -190,7 +190,10 @@
         Specific Pages</mat-label>
     
     <mat-select  [formControl]="postLocation" > 
-
+      <mat-label class="mainCats"> 
+        <i class="fas fa-sitemap fa-rotate-180 mainCatsSpace"></i>
+        Specific Pages</mat-label>
+<mat-divider></mat-divider>
       <mat-option  [multiple]="false" *ngFor="let opt of specificOptions;let even = even; let odd = odd"
       [selected]="opt" [value]="opt" class="optionsCenterStyle">
       <mat-card class="cardStyle" [ngClass]="{ even_: even, odd_: odd }">
@@ -229,12 +232,11 @@
 
 <mat-select *ngIf="(postLocationMain.value == 'Instructor Review ')">
 <mat-label class="mainCats">
-  <i class="fas fa-chalkboard-teacher mainCatsStyle"></i>
+  <i class="fas fa-chalkboard-teacher mainCatsSpace"></i>
   Instructor(s)</mat-label>
 <mat-divider></mat-divider>
-<div *ngFor="let instructor of instructors;let even = even; let odd = odd" >
  
-<mat-option 
+<mat-option class="optionsCenterStyle" *ngFor="let instructor of instructors;let even = even; let odd = odd"
 (click)="setFormControlValue(instructor)" >
 <mat-card class="cardStyle" [ngClass]="{ even_: even, odd_: odd }">
   <mat-card-content >
@@ -242,8 +244,6 @@
 </mat-card-content>
 </mat-card>
 </mat-option>
-
-  </div>
 
 </mat-select>
 </mat-form-field>
@@ -295,9 +295,9 @@ Inadequate
     </div>
  
   <!-- <mat-slider  discrete showTickMarks > -->
-    <input type="range" max="5" step="0.5" list="markers1" [formControl]="knowledgeRating"
+    <input type="range" max="5" step="0.5" list="markers1" (change)="overallGrade()" [formControl]="knowledgeRating"
      class="sliderGrade">
-    <datalist id="markers1">
+    <datalist id="markers1" class="datalist">
       <option value="1" label="1"></option>
       <option value="2" label="2"></option>
       <option value="3" label="3"></option>
@@ -325,8 +325,8 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
 
 
   <!-- <mat-slider max="5" step="0.5" discrete showTickMarks > -->
-    <input type="range" max="5" step="0.5" list="markers"  [formControl]="profesionalismRating" class="sliderGrade">
-    <datalist id="markers">
+    <input type="range" max="5" step="0.5" list="markers" (change)="overallGrade2() " [formControl]="profesionalismRating" class="sliderGrade">
+    <datalist id="markers" class="datalist">
       <option value="1" label="1"></option>
       <option value="2" label="2"></option>
       <option value="3" label="3"></option>
@@ -742,7 +742,8 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
   </mat-form-field>
   </div> -->
     </div>
-
+  </mat-card-content>
+</mat-card>
     <!-- Image -->
     <div class="staticBtn2" *ngIf="form.get('upload').value || postDescription.value">
     <button type="button" mat-raised-button color="primary" class="post_btn_top_right" 
@@ -759,8 +760,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
   <span class="material-icons"> arrow_forward </span>
 </button>
 </div>
-</mat-card-content>
-</mat-card>
+
 </div>
 
     </mat-tab>

@@ -94,7 +94,7 @@
   flex-direction: column;
   justify-content: center;
 }
-datalist{
+.datalist{
   writing-mode: horizontal-tb; 
 }
 .even{
@@ -341,7 +341,7 @@ margin: 1%;
 }
 .fontStart{
   display: flex;
-  margin-top: 4%;
+  margin: 2% 0%;
   justify-content: flex-start;
 }
 .fontSelect{
@@ -762,7 +762,7 @@ p {
   flex-direction: column;
   box-sizing: border-box;
   position: static;
-  margin-bottom: 11%;
+  margin-bottom: 3%;
   // width: 50%;
 }
 
@@ -973,6 +973,8 @@ p {
   display: flex;
   // width: 100%;
   justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+
 }
 .textT {
   color: #7e7171;

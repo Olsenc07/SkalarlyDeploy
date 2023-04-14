@@ -376,28 +376,38 @@
 
   <mat-label class="font">Instructors In {{instructorsProgram.value}}</mat-label>
   <input matInput placeholder="Quick Search" (keyup)="onKeyTwo($event)">
-<!-- <mat-autocomplete #auto="matAutocomplete" > -->
-  <mat-option *ngFor="let instructor of insProgOptions;let even = even; let odd = odd" [value]="instructor" class="font">
-      <mat-card [ngClass]="{ even_: even, odd_: odd }">
-    <mat-card-content *ngIf="insProgOptionsNumber == 1">
-
-      {{instructor}}
-    </mat-card-content>
-<!-- no names match but heres 10 program rankings of teachers -->
-<mat-card-content *ngIf="insProgOptionsNumber == 2">
-  No matches. But here are some suggestions in {{instructorsProgram.value}}.
-  {{instructor}}
-</mat-card-content>
-    <!-- no rankings in program all all -->
-    <mat-card-content *ngIf="insProgOptionsNumber == 3">
-    No instructors in {{instructorsProgram.value}} have been rated yet.
-
-</mat-card-content>
-    </mat-card>
-
-  </mat-option>
-<!-- </mat-autocomplete> -->
 </mat-form-field>
+
+<!-- <mat-autocomplete #auto="matAutocomplete" > -->
+  <mat-chip-listbox *ngFor="let instructor of insProgOptions;let even = even; let odd = odd" [value]="instructor" class="font">
+      <!-- <mat-card [ngClass]="{ even_: even, odd_: odd }"> -->
+    <!-- <mat-card-content *ngIf="insProgOptionsNumber == 1"> -->
+  <mat-chip-option *ngIf="insProgOptionsNumber == 1">
+      {{instructor}}
+      </mat-chip-option>
+    <!-- </mat-card-content> -->
+<!-- no names match but heres 10 program rankings of teachers -->
+<div *ngIf="insProgOptionsNumber == 2" class="columnInstructor">
+<div class="font">
+  No matches. But here are some suggestions in {{instructorsProgram.value}}.
+</div>
+<mat-chip-option >
+  {{instructor}}
+</mat-chip-option>
+</div>
+    <!-- no rankings in program all all -->
+<div *ngIf="insProgOptionsNumber == 3" class="columnInstructor">
+    <div class="font">
+    No instructors in {{instructorsProgram.value}} have been rated yet.
+    </div>
+    <mat-chip-option >
+</mat-chip-option>
+</div>
+    <!-- </mat-card> -->
+
+  </mat-chip-listbox>
+<!-- </mat-autocomplete> -->
+<!-- </mat-form-field> -->
         </div>
         </mat-chip-listbox>
 
