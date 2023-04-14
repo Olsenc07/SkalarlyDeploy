@@ -38,13 +38,14 @@
   padding: 1%;
   box-shadow: 0px 2px grey;
   margin-bottom: 2%;
+  text-align: center;
 
 }
 .odd_{
   padding: 1%;
   box-shadow: 0px 2px grey;
   margin-bottom: 2%;
-
+text-align: center;
 }
 .a{
   color: white;
@@ -134,7 +135,14 @@ font-size: medium;
 .display {
   display: contents;
 }
-
+.mainCats{
+  justify-content: center;
+  display: flex;
+  margin: 1%;
+}
+.mainCatsSpace{
+  margin-right: 2%;
+}
 .favs{
   display: flex;
   justify-content: center;

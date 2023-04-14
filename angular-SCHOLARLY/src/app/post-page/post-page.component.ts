@@ -197,14 +197,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.GradeBoolean = !this.GradeBoolean;
     this.instructorRating.setValue('');
   }
-  upDateGrade(knowledgeRating) {
-    console.log('grade 1', knowledgeRating);
-    // this.instructorRating.setValue(knowledgeRating);
-    this.instructorRating.valueChanges.subscribe((values) => {
-      this.instructorRatingView = values;
-      // Then add the two
-    });
-  }
+
   //
   visible = true;
   selectable = true;
@@ -453,7 +446,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.locationSub = this.LocationEvent.valueChanges.subscribe((v) =>
       this.LocationLength.next(v.length)
     );
-
+    this.instructorRating.valueChanges.subscribe((values) => {
+      this.instructorRatingView = values;
+      console.log('dick yall', this.instructorRatingView);
+      // Then add the two
+    });
     //
     if (window.screen.width < 1025) {
       this.minwidth = false;

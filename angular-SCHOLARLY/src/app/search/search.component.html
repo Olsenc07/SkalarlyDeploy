@@ -155,10 +155,12 @@
       </mat-form-field> -->
 
       <mat-form-field class="font" appearance="fill" >
-       
+        <mat-label>
+          <i class="fas fa-feather-alt"></i>
+          Program of Instructor</mat-label>
   <mat-select [formControl]="instructorsProgram">
-    <mat-label>
-      <i class="fas fa-feather-alt"></i>
+    <mat-label class="mainCats">
+      <i class="fas fa-feather-alt mainCatsSpace"></i>
       Program of Instructor</mat-label>
     <mat-option *ngFor="let program of selectedProgram;let even = even; let odd = odd" [value]="program"
       (click)="openInstructorOptions()" class="optionsCenterStyle">
