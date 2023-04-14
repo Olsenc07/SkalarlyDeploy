@@ -2293,7 +2293,7 @@ await User.findById({_id: userId})
     console.log('userOne username', userOne.username);
      BlockSkalar.find({blockedUsername: userOne.username}).then(blocked => {
         console.log('blocked heart', blocked);
-        if(blocked){
+        if(blocked.length !== 0){
             blockedList = []
             blocked.forEach((e) => {
                 blockedList.push(e.Creator.valueOf())
@@ -2315,10 +2315,11 @@ await User.findById({_id: userId})
     }else{
         UserInfo.find({Creator: {$ne: userId}}).skip(counter).limit(6)
         // .select('-password') if i was fetching user info, dont want password passed on front end
-        .then(documents => {
+        .then(documents2 => {
+            console.log('party', documents2)
             res.status(200).json({
                 message: 'Users fetched succesfully!',
-                infos: documents
+                infos: documents2
             });
         })
         .catch(error => {
@@ -2328,7 +2329,11 @@ await User.findById({_id: userId})
         });
     }
 })
-})
+}) .catch(error => {
+    res.status(500).json({
+        message: 'Fetching skalars info failed!'
+    });
+});
 
   
 });
