@@ -378,6 +378,7 @@ const video = multer({ storage: storage, limitsLarge})
 router.post("", checkAuth,
 image.single('upload'),
     async(req, res) => {
+        console.log('fuck school', req.body.knowledgeRating)
     await UserInfo.findOne({Creator: req.query.userId })
     .then(documents => {
          
@@ -402,6 +403,8 @@ image.single('upload'),
                 postLocation: req.body.postLocation,
                 postLocationInstructor: req.body.postLocationInstructor,
                 instructorRating: req.body.instructorRating,
+                knowledgeRating: req.body.knowledgeRating,
+                profesionalismRating: req.body.profesionalismRating,
                 LocationEvent: req.body.LocationEvent,
                 time: req.body.time,
                 timeE: req.body.timeE,
@@ -457,6 +460,8 @@ image.single('upload'),
                 postLocation: req.body.postLocation,
                 postLocationInstructor: req.body.postLocationInstructor,
                 instructorRating: req.body.instructorRating,
+                knowledgeRating: req.body.knowledgeRating,
+                profesionalismRating: req.body.profesionalismRating,
                 LocationEvent: req.body.LocationEvent,
                 time: req.body.time,
                 timeE: req.body.timeE,
@@ -531,6 +536,8 @@ video.single('video'),
                postDescription: req.body.postDescription,
                postLocationInstructor: req.body.postLocationInstructor,
                instructorRating: req.body.instructorRating,
+               knowledgeRating: req.body.knowledgeRating,
+               profesionalismRating: req.body.profesionalismRating,
                postLocation: req.body.postLocation,
                LocationEvent: req.body.LocationEvent,
                time: req.body.time,
@@ -617,6 +624,8 @@ router.post("/Shared", checkAuth,
                 postLocation: POST.postLocation,
                 postLocationInstructor: POST.postLocationInstructor,
                 instructorRating: POST.instructorRating,
+                knowledgeRating: POST.knowledgeRating,
+                profesionalismRating: POST.profesionalismRating,
                 LocationEvent: POST.LocationEvent,
                 time: POST.time,
                 timeE: POST.timeE,
@@ -1087,15 +1096,27 @@ router.get("/instructorRanking", async(req, res) => {
             .then(doc => {
                 // for each and make a list and get length and values..
                 if(doc){
+                    // overall grade
                     mean = []
                     doc.forEach((rating) => {
                         mean.push(rating.instructorRating)
                     })
-                console.log('doc bro', doc)
                 meanSecondLast = mean.reduce((partialSum, a) => partialSum + a, 0)
-                console.log('doc bro2', mean.length);
                 meanFinal = meanSecondLast/(mean.length)
-                console.log('doc bro3', meanFinal)
+                // knowledge and quality
+                meanKnowledge = []
+                doc.forEach((rating) => {
+                    meanKnowledge.push(rating.knowledgeRating)
+                })
+            meanSecondLastKnowledge = meanKnowledge.reduce((partialSum, a) => partialSum + a, 0)
+            meanFinalKnowledge = meanSecondLastKnowledge/(meanKnowledge.length)
+            // professionalism and difficulty
+            meanProf = []
+            doc.forEach((rating) => {
+                mean.push(rating.profesionalismRating)
+            })
+        meanSecondLastProf = meanProf.reduce((partialSum, a) => partialSum + a, 0)
+        meanFinalProf = meanSecondLastProf/(meanProf.length)
                 // programs instructors in without repeats
                 progs = []
                 doc.forEach((pro) => {
@@ -1107,6 +1128,9 @@ router.get("/instructorRanking", async(req, res) => {
                     message: 'Infos fetched succesfully!',
                     mean: meanFinal,
                     graders: mean.length,
+                    // calc mean
+                    knowlegde: meanFinalKnowledge,
+                    professionalism: meanFinalProf,
                     programs: progsFinal
                 });
                }else{
@@ -1115,6 +1139,8 @@ router.get("/instructorRanking", async(req, res) => {
                     message: 'Infos fetched succesfully!',
                     mean: 0,
                     graders: 0,
+                    knowlegde: 0,
+                    professionalism: 0,
                     programs: []
                 });
                }

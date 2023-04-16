@@ -33,11 +33,16 @@ export class PostsService {
   private notifId: string;
   private meanRanking: number;
   private meanGraders: number;
+  private meanProfessionalismGraders: number;
+  private meanKnowlegdeGraders: number;
+
   private instructorsPrograms: Array<string>;
 
   private rankingUpdated = new Subject();
   private rankingGraders = new Subject();
   private instructorsProgs = new Subject();
+  private rankingKnowlegdeGraders = new Subject();
+  private rankingProfGraders = new Subject();
 
   private instructorProgramsSearch: Array<string>;
   private rankingUpdatedSearch = new Subject();
@@ -76,6 +81,12 @@ export class PostsService {
   }
   getMeanGraders(): any {
     return this.rankingGraders.asObservable();
+  }
+  getKnowledgeGraders(): any {
+    return this.rankingKnowlegdeGraders.asObservable();
+  }
+  getProfGraders(): any {
+    return this.rankingProfGraders.asObservable();
   }
   getInstructorsPrograms(): any {
     return this.instructorsProgs.asObservable();
@@ -302,6 +313,10 @@ export class PostsService {
         message: string;
         mean: number;
         graders: number;
+        // knowledge and quality
+        knowlegde: number;
+        // professionalism and difficulty
+        professionalism: number;
         programs: Array<string>;
       }>('https://www.skalarly.com/api/posts/instructorRanking', {
         params: { category },
@@ -316,7 +331,13 @@ export class PostsService {
         console.log('all my sheep dead', transformedPosts);
         this.meanGraders = transformedPosts.graders;
         this.rankingGraders.next(this.meanGraders);
-
+        // knowlegde and quality
+        this.meanKnowlegdeGraders = transformedPosts.knowlegde;
+        this.rankingKnowlegdeGraders.next(this.meanKnowlegdeGraders);
+        //  professionalism and difficulty
+        this.meanProfessionalismGraders = transformedPosts.professionalism;
+        this.rankingProfGraders.next(this.meanProfessionalismGraders);
+        // programs
         this.instructorsPrograms = transformedPosts.programs;
         this.instructorsProgs.next(this.instructorsPrograms);
 

@@ -30,7 +30,7 @@
     Graded By {{instructorRatingGraders}} Student(s)
     <div class="row_">
     <div  class="fontRanking">
-        {{instructorRatingMean}}/10 
+       Overall {{instructorRatingMean}}/10 
     </div> 
     <div *ngIf="instructorRatingMean < 5 " class="fontGrade">
    Inadequate
@@ -50,8 +50,8 @@
           </div>
 
           <!-- mean of both -->
-          <div class="fontGrade"> Knowledge and Enthusiasm For Subject Matter: /5</div>
-          <div class="fontGrade">Profesionalism and Approachability: /5</div>
+          <div class="fontGrade"> Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating}} /5</div>
+          <div class="fontGrade">Profesionalism and Approachability: {{profesionalismRating}} /5</div>
          
      </div>
         

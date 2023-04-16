@@ -18,10 +18,11 @@ export interface Post {
   postLocation: string;
   postLocationInstructor: string;
   instructorRating: number;
+  knowledgeRating: number;
+  profesionalismRating: number;
   LocationEvent: string;
   time: string;
   timeE: string;
-
   // date: string;
   // dateE: string;
   gender: string;
@@ -101,6 +102,8 @@ export class PostService {
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
               instructorRating: post.instructorRating,
+              knowledgeRating: post.knowledgeRating,
+              profesionalismRating: post.profesionalismRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -217,6 +220,8 @@ export class PostService {
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
               instructorRating: post.instructorRating,
+              knowledgeRating: post.knowledgeRating,
+              profesionalismRating: post.profesionalismRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -275,6 +280,8 @@ export class PostService {
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
               instructorRating: post.instructorRating,
+              knowledgeRating: post.knowledgeRating,
+              profesionalismRating: post.profesionalismRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -333,6 +340,8 @@ export class PostService {
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
               instructorRating: post.instructorRating,
+              knowledgeRating: post.knowledgeRating,
+              profesionalismRating: post.profesionalismRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -391,6 +400,8 @@ export class PostService {
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
               instructorRating: post.instructorRating,
+              knowledgeRating: post.knowledgeRating,
+              profesionalismRating: post.profesionalismRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -450,6 +461,8 @@ export class PostService {
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
               instructorRating: post.instructorRating,
+              knowledgeRating: post.knowledgeRating,
+              profesionalismRating: post.profesionalismRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -543,6 +556,8 @@ export class PostService {
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
               instructorRating: post.instructorRating,
+              knowledgeRating: post.knowledgeRating,
+              profesionalismRating: post.profesionalismRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -605,6 +620,8 @@ export class PostService {
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
               instructorRating: post.instructorRating,
+              knowledgeRating: post.knowledgeRating,
+              profesionalismRating: post.profesionalismRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -696,6 +713,8 @@ export class PostService {
               postLocation: post.postLocation,
               postLocationInstructor: post.postLocationInstructor,
               instructorRating: post.instructorRating,
+              knowledgeRating: post.knowledgeRating,
+              profesionalismRating: post.profesionalismRating,
               LocationEvent: post.LocationEvent,
               time: post.time,
               timeE: post.timeE,
@@ -807,6 +826,9 @@ export class PostService {
     postLocation?: string,
     postLocationInstructor?: string,
     instructorRating?: number,
+    knowledgeRating?: number,
+    profesionalismRating?: number,
+
     LocationEvent?: string,
     time?: string,
     timeE?: string,
@@ -855,7 +877,7 @@ export class PostService {
     const sub = this.http
       .post<{ message: string; postId: Post }>(
         'https://www.skalarly.com/api/posts',
-        [postData, instructorRating],
+        [postData, instructorRating, knowledgeRating, profesionalismRating],
         { params: { userId } }
       )
       .subscribe({
@@ -872,6 +894,8 @@ export class PostService {
             postLocation,
             postLocationInstructor,
             instructorRating,
+            knowledgeRating,
+            profesionalismRating,
             LocationEvent,
             time,
             timeE,
@@ -926,6 +950,8 @@ export class PostService {
     postLocation?: string,
     postLocationInstructor?: string,
     instructorRating?: number,
+    knowledgeRating?: number,
+    profesionalismRating?: number,
     LocationEvent?: string,
     time?: string,
     timeE?: string,
@@ -973,7 +999,7 @@ export class PostService {
     const sub = this.http
       .post<{ message: string; postId: Post }>(
         'https://www.skalarly.com/api/posts/videos',
-        [postData, instructorRating],
+        [postData, instructorRating, knowledgeRating, profesionalismRating],
         { params: { userId } }
       )
       .subscribe({
@@ -990,6 +1016,8 @@ export class PostService {
             postLocation,
             postLocationInstructor,
             instructorRating,
+            knowledgeRating,
+            profesionalismRating,
             LocationEvent,
             time,
             timeE,

@@ -150,6 +150,8 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
   commentsValidator = '';
   mains: Fav = {};
   instructorRatingMean: number;
+  knowledgeRating: number;
+  profesionalismRating: number;
   instructorRatingGraders: number;
   instructorProgs: Array<string>;
   isLoading = false;
@@ -161,6 +163,8 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
   private rankingSub: Subscription;
   private rankingGraders: Subscription;
   private instructorsPrograms: Subscription;
+  private rankingKnowlede: Subscription;
+  private rankingProfessionalism: Subscription;
 
   constructor(
     private authService: AuthService,
@@ -190,6 +194,7 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
         0,
         this.userId
       );
+
       this.postsSub = this.postService
         .getPostUpdateListener()
         .subscribe((posts: Post[]) => {
@@ -204,11 +209,26 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
           console.log(' chase 77 ', meanRanking);
           this.instructorRatingMean = meanRanking;
         });
+      // Overall grading rank
       this.rankingGraders = this.postsService
         .getMeanGraders()
         .subscribe((meanGraders: number) => {
-          console.log(' chase 77 ', meanGraders);
           this.instructorRatingGraders = meanGraders;
+        });
+      // knowledge ranking/ // for course review this is course,
+      // course rating Quality
+      this.rankingKnowlede = this.postsService
+        .getKnowledgeGraders()
+        .subscribe((meanKnowledgeGraders: number) => {
+          console.log(' chase 77 ', meanKnowledgeGraders);
+          this.knowledgeRating = meanKnowledgeGraders;
+        });
+      // proff ranking/ difficulty
+      this.rankingProfessionalism = this.postsService
+        .getProfGraders()
+        .subscribe((meanProfGraders: number) => {
+          console.log(' chase 77 ', meanProfGraders);
+          this.profesionalismRating = meanProfGraders;
         });
       this.instructorsPrograms = this.postsService
         .getInstructorsPrograms()
@@ -225,6 +245,8 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
     this.rankingSub.unsubscribe();
     this.rankingGraders.unsubscribe();
     this.instructorsPrograms.unsubscribe();
+    this.rankingKnowlede.unsubscribe();
+    this.rankingProfessionalism.unsubscribe();
   }
   saveFavCat(category: string): void {
     console.log('sons trust up', category);

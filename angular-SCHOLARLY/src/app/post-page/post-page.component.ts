@@ -606,8 +606,13 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.Title.value,
       this.postDescription.value,
       this.postLocation.value,
+      // for course review this is course,
+      // course rating Quality and difficulty
       this.postLocationInstructor.value.trim(),
       this.instructorRating.value,
+      this.knowledgeRating.value,
+      this.profesionalismRating.value,
+      //
       this.LocationEvent.value,
       this.time.value,
       this.timeE.value,
