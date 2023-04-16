@@ -177,6 +177,23 @@ export class SearchComponent implements OnInit, OnDestroy {
   favsVisible(): void {
     this.FavsVisible = !this.FavsVisible;
   }
+  // Filter specific search
+  // Receive user input and send to search method**
+  onKeyThree(value: string) {
+    this.specificOptions = this.searchSpecific(value);
+  }
+
+  // Filter the states list and send back to populate the selectedStates**
+  searchSpecific(value: string) {
+    let filter = value.toLowerCase();
+    return this.specificOptions.filter((option) =>
+      option.toLowerCase().includes(filter)
+    );
+  }
+  // instructor review clicked
+  closeSpecifis() {
+    this.specificOptions = [];
+  }
   // Searching instructors in program
   onKeyTwo(event: any): any {
     const query: string = event.target.value;
@@ -213,6 +230,8 @@ export class SearchComponent implements OnInit, OnDestroy {
       // this.hasQuery = false;
     }
   }
+
+  // filter specific options
   onSearchSelection(value: string): void {
     this.specificOptions = this.searchListService.onSearchSelection(value);
     console.log('morning', this.specificOptions);

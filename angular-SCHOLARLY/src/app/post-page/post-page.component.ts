@@ -180,17 +180,17 @@ export class PostPageComponent implements OnInit, OnDestroy {
   ];
   selectedProgram = this.programs;
   // Receive user input and send to search method**
-  // onKey(value) {
-  //   this.selectedProgram = this.searchInstructor(value);
-  // }
+  onKey(value: string) {
+    this.selectedProgram = this.searchInstructor(value);
+  }
 
   // Filter the states list and send back to populate the selectedStates**
-  // searchInstructor(value: string) {
-  //   let filter = value.toLowerCase();
-  //   return this.programs.filter((option) =>
-  //     option.toLowerCase().includes(filter)
-  //   );
-  // }
+  searchInstructor(value: string) {
+    let filter = value.toLowerCase();
+    return this.programs.filter((option) =>
+      option.toLowerCase().includes(filter)
+    );
+  }
   // Grading instructor
   Grade() {
     console.log('grade', this.GradeBoolean);

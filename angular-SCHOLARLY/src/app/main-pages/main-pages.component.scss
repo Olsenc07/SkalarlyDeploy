@@ -139,8 +139,17 @@
 .expandBtn {
   font-size: x-large;
 }
+.font_{
+  font-family: 'Cormorant Garamond', serif;
+
+}
 .fontGrade{
   padding-left: 2%;
+  font-family: 'Cormorant Garamond', serif;
+}
+.fontGrade{
+  display: flex;
+  flex-direction: row;
   font-family: 'Cormorant Garamond', serif;
 }
 .fontRanking{
@@ -151,6 +160,58 @@
   flex-direction: column;
     align-items: center;
     margin-bottom: 1%;
+}
+.fontRanking_{
+  display: flex;
+  justify-content: center;
+  font-size: medium;
+  font-family: 'Cormorant Garamond', serif;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1%;
+}
+@media (min-width: 600px) {
+  .feed {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    box-sizing: border-box;
+    padding: 0% 30%;
+  }
+}
+
+@media (max-width: 600px) {
+  .feed {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+.fit {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 0.5% 0%;
+  flex-direction: column;
+}
+.fitSingle {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 15% 0% 0% 0%;
+  flex-direction: column;
+}
+.fill {
+  display: flex;
+  margin-top: 1%;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .hashs{
   display: flex;
@@ -233,49 +294,7 @@ justify-content: center;
   width: 100%;
   height: 50%;
 }
-@media (min-width: 600px) {
-  .feed {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    overflow-y: scroll;
-    box-sizing: border-box;
-    padding: 0% 30%;
-  }
-}
 
-@media (max-width: 600px) {
-  .feed {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-  }
-}
-.fit {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  margin: 0.5% 0%;
-  flex-direction: column;
-}
-.fitSingle {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  margin: 15% 0% 0% 0%;
-  flex-direction: column;
-}
-.fill {
-  display: flex;
-  margin-top: 1%;
-  height: 100%;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
 
 .row {
   display: flex;

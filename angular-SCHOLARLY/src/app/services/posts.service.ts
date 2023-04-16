@@ -37,10 +37,12 @@ export class PostsService {
   private meanKnowlegdeGraders: number;
 
   private instructorsPrograms: Array<string>;
+  private instructorsCourse: boolean;
 
   private rankingUpdated = new Subject();
   private rankingGraders = new Subject();
   private instructorsProgs = new Subject();
+  private instructorsCourses = new Subject();
   private rankingKnowlegdeGraders = new Subject();
   private rankingProfGraders = new Subject();
 
@@ -91,6 +93,10 @@ export class PostsService {
   getInstructorsPrograms(): any {
     return this.instructorsProgs.asObservable();
   }
+  getInstructorsCourse(): any {
+    return this.instructorsCourses.asObservable();
+  }
+
   getInstructorsProgramsSearch(): any {
     return this.rankingUpdatedSearch.asObservable();
   }
@@ -314,10 +320,11 @@ export class PostsService {
         mean: number;
         graders: number;
         // knowledge and quality
-        knowlegde: number;
+        knowledge: number;
         // professionalism and difficulty
         professionalism: number;
         programs: Array<string>;
+        course: boolean;
       }>('https://www.skalarly.com/api/posts/instructorRanking', {
         params: { category },
       })
@@ -332,7 +339,7 @@ export class PostsService {
         this.meanGraders = transformedPosts.graders;
         this.rankingGraders.next(this.meanGraders);
         // knowlegde and quality
-        this.meanKnowlegdeGraders = transformedPosts.knowlegde;
+        this.meanKnowlegdeGraders = transformedPosts.knowledge;
         this.rankingKnowlegdeGraders.next(this.meanKnowlegdeGraders);
         //  professionalism and difficulty
         this.meanProfessionalismGraders = transformedPosts.professionalism;
@@ -340,7 +347,10 @@ export class PostsService {
         // programs
         this.instructorsPrograms = transformedPosts.programs;
         this.instructorsProgs.next(this.instructorsPrograms);
-
+        // Course
+        this.instructorsCourse = transformedPosts.course;
+        this.instructorsCourses.next(this.instructorsCourse);
+        // overall grade
         this.meanRanking = transformedPosts.mean;
         this.rankingUpdated.next(this.meanRanking);
         sub.unsubscribe();

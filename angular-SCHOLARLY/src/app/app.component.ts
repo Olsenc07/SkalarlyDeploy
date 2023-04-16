@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Observable, Subscription } from 'rxjs';
-import { filter, map, tap } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { PostsService, UserNames } from './services/posts.service';
 import {

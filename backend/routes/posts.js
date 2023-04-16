@@ -1090,13 +1090,13 @@ router.get("/mainPageInstructor", async(req, res) => {
 });
 // Instructors rankings
 router.get("/instructorRanking", async(req, res) => {    
-        const instructor = req.query.category
-        console.log('instructor',instructor);
-        await Post.find({postLocationInstructor: instructor})
+        const instructorOrCourse = req.query.category
+        console.log('instructor',instructorOrCourse);
+        await Post.find({postLocationInstructor: instructorOrCourse})
             .then(doc => {
                 // for each and make a list and get length and values..
-                if(doc){
-                    // overall grade
+                if(doc.length !== 0 ){
+                    // overall grade and is an instructor review 
                     mean = []
                     doc.forEach((rating) => {
                         mean.push(rating.instructorRating)
@@ -1113,7 +1113,7 @@ router.get("/instructorRanking", async(req, res) => {
             // professionalism and difficulty
             meanProf = []
             doc.forEach((rating) => {
-                mean.push(rating.profesionalismRating)
+                meanProf.push(rating.profesionalismRating)
             })
         meanSecondLastProf = meanProf.reduce((partialSum, a) => partialSum + a, 0)
         meanFinalProf = meanSecondLastProf/(meanProf.length)
@@ -1129,29 +1129,80 @@ router.get("/instructorRanking", async(req, res) => {
                     mean: meanFinal,
                     graders: mean.length,
                     // calc mean
-                    knowlegde: meanFinalKnowledge,
+                    knowledge: meanFinalKnowledge,
                     professionalism: meanFinalProf,
-                    programs: progsFinal
+                    programs: progsFinal,
+                    course: false
                 });
                }else{
-                // Test this
+            //    Its a course
+            Post.find({postLocation: instructorOrCourse})
+            .then(doc => {
+                // for each and make a list and get length and values..
+                if(doc.length !== 0 ){
+                    // overall grade and is an instructor review 
+                    mean = []
+                    doc.forEach((rating) => {
+                        mean.push(rating.instructorRating)
+                    })
+                meanSecondLast = mean.reduce((partialSum, a) => partialSum + a, 0)
+                meanFinal = meanSecondLast/(mean.length)
+                // knowledge and quality
+                meanKnowledge = []
+                doc.forEach((rating) => {
+                    meanKnowledge.push(rating.knowledgeRating)
+                })
+            meanSecondLastKnowledge = meanKnowledge.reduce((partialSum, a) => partialSum + a, 0)
+            meanFinalKnowledge = meanSecondLastKnowledge/(meanKnowledge.length)
+            // professionalism and difficulty
+            meanProf = []
+            doc.forEach((rating) => {
+                meanProf.push(rating.profesionalismRating)
+            })
+        meanSecondLastProf = meanProf.reduce((partialSum, a) => partialSum + a, 0)
+        meanFinalProf = meanSecondLastProf/(meanProf.length)
+               
+                let progsFinal = [...new Set(progs)]
+                console.log('programs', progsFinal)
+                res.status(200).json({
+                    message: 'Infos fetched succesfully!',
+                    mean: meanFinal,
+                    graders: mean.length,
+                    // calc mean
+                    knowledge: meanFinalKnowledge,
+                    professionalism: meanFinalProf,
+                    programs: [],
+                    course: true
+                });
+                
+               }else{
                 res.status(200).json({
                     message: 'Infos fetched succesfully!',
                     mean: 0,
                     graders: 0,
-                    knowlegde: 0,
+                    // calc mean
+                    knowledge:0,
                     professionalism: 0,
-                    programs: []
+                    programs: 0,
+                    course: false
                 });
                }
             })
                .catch(error => {
                 res.status(500).json({
-                    message: 'Fetching posts failed!'
+                    message: 'Fetching course failed!'
                 });
             });
-
+        }
+})
+.catch(error => {
+    res.status(500).json({
+        message: 'Fetching instructor failed!'
+    });
 });
+})
+
+
 // searching instructors program ranking page
 router.get("/instructorProgramSearch", async(req, res) => {  
     console.log('love in the air 7654 ',req.query.payload);
@@ -1182,7 +1233,7 @@ router.get("/instructorProgramSearch", async(req, res) => {
     }else{
         Post.find( {postLocation: Program }).limit(10)
     .then(matches_ => {
-        if(matches_){
+        if(matches_.length > 0){
             console.log(' Matches', matches_)
             progsMatch = []
             matches_.forEach((pro) => {

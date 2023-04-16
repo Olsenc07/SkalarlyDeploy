@@ -122,6 +122,11 @@
           <i class="fas fa-university"></i>
           College Connections</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
+          (click)="onSearchSelection('course_review')" (click)="getPostsMainPageInstructor(course)">
+          <i class="fas fa-book"></i>
+          Course Review
+          </mat-chip-option>    
+          <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('entrep')" (click)="displaySpecificSearch()">
           <i class="far fa-lightbulb"></i>
           Entrepreneurial Opportunities</mat-chip-option>
@@ -142,7 +147,7 @@
           <i class="fas fa-star"></i>
           Important Links </mat-chip-option>
           <!-- (click)="onSearchSelection('instructor_rev')" (click)="displaySpecificSearch()"  -->
-          <mat-chip-option color="primary"  class="searchBtn"
+          <mat-chip-option color="primary"  class="searchBtn" (click)="closeSpecifis()"
           [matMenuTriggerFor]="menuInstructors">
           <i class="fas fa-chalkboard-teacher"></i>
           Instructor Review 
@@ -197,144 +202,233 @@
           <i class="fas fa-book-reader"></i>
           School Work A-Z</mat-chip-option>
           <!-- <div class="toScale"> -->
-<mat-menu #menu="matMenu" class="font">
-  <div class="courseCode">
+<mat-menu #menu="matMenu" >
+  <mat-label class="courseCode">
+    <i class="fas fa-book"></i>
     Course Code
-  </div>
+  </mat-label>
   <mat-divider></mat-divider>
+  <div class="optionsCenterStyle">
+    <mat-card class="even_">
+      <mat-card-content>
   <button mat-menu-item  (click)="onSearchSelection('school_work_a')"
-  (click)="displaySpecificSearch()" class="odd_">
+  (click)="displaySpecificSearch()" >
     A
     </button>
+    </mat-card-content>
+    </mat-card>
   <mat-divider></mat-divider>
-
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
     <button mat-menu-item  (click)="onSearchSelection('school_work_b')"
     (click)="displaySpecificSearch()">
       B
-
       </button>
   <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle">
+    <mat-card class="even_">
+      <mat-card-content>
       <button mat-menu-item  (click)="onSearchSelection('school_work_c')"
-      (click)="displaySpecificSearch()" class="odd_">
-
+      (click)="displaySpecificSearch()" >
         C
         </button>
   <mat-divider></mat-divider>
-
+</mat-card-content>
+</mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
         <button mat-menu-item  (click)="onSearchSelection('school_work_d')"
         (click)="displaySpecificSearch()">
           D
           </button> 
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
           <button mat-menu-item  (click)="onSearchSelection('school_work_e')"
-          (click)="displaySpecificSearch()" class="odd_">
+          (click)="displaySpecificSearch()" >
             E
-
             </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
             <button mat-menu-item  (click)="onSearchSelection('school_work_f')"
             (click)="displaySpecificSearch()">
               F
-
               </button> 
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
               <button mat-menu-item  (click)="onSearchSelection('school_work_g')"
-              (click)="displaySpecificSearch()" class="odd_">
+              (click)="displaySpecificSearch()" >
                 G
                 </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
                 <button mat-menu-item  (click)="onSearchSelection('school_work_h')"
                 (click)="displaySpecificSearch()">
                   H
                   </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
                   <button mat-menu-item  (click)="onSearchSelection('school_work_i')"
-                  (click)="displaySpecificSearch()" class="odd_">
+                  (click)="displaySpecificSearch()" >
                     I
                     </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
                     <button mat-menu-item  (click)="onSearchSelection('school_work_j')"
                     (click)="displaySpecificSearch()">
                       J
                       </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
                       <button mat-menu-item  (click)="onSearchSelection('school_work_l')"
-                      (click)="displaySpecificSearch()" class="odd_">
+                      (click)="displaySpecificSearch()" >
                         L
-
                         </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
                         <button mat-menu-item  (click)="onSearchSelection('school_work_m')"
                         (click)="displaySpecificSearch()">
                           M
-
                           </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
                           <button mat-menu-item  (click)="onSearchSelection('school_work_n')"
-                          (click)="displaySpecificSearch()" class="odd_">
+                          (click)="displaySpecificSearch()" >
                             N
-
                             </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+</div>
+<div  class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
                             <button mat-menu-item  (click)="onSearchSelection('school_work_p')"
                             (click)="displaySpecificSearch()">
                               P
-
                               </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
                               <button mat-menu-item  (click)="onSearchSelection('school_work_r')"
-                              (click)="displaySpecificSearch()" class="odd_">
+                              (click)="displaySpecificSearch()" >
                                 R
-
                                 </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="odd_">
+      <mat-card-content>
                                 <button mat-menu-item  (click)="onSearchSelection('school_work_s')"
                                 (click)="displaySpecificSearch()">
                                   S
-
                                   </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
                                   <button mat-menu-item  (click)="onSearchSelection('school_work_t')"
-                                  (click)="displaySpecificSearch()" class="odd_">
+                                  (click)="displaySpecificSearch()" >
                                     T
-
                                     </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
                                     <button mat-menu-item  (click)="onSearchSelection('school_work_u')"
                                     (click)="displaySpecificSearch()">
                                       U
-
                                       </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
                                       <button mat-menu-item  (click)="onSearchSelection('school_work_v')"
-                                      (click)="displaySpecificSearch()" class="odd_">
+                                      (click)="displaySpecificSearch()" >
                                         V
 
                                         </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
                                         <button mat-menu-item  (click)="onSearchSelection('school_work_w')"
                                         (click)="displaySpecificSearch()">
                                           W
-
                                           </button>
   <mat-divider></mat-divider>
-
+  </mat-card-content>
+  </mat-card>
+</div>
   </mat-menu>
 <!-- </div> -->
 
@@ -423,6 +517,9 @@
         <div class="input-boxs_" *ngIf="opt >= 1">
           <div class="center_single">Step Two: Navigate to the specific page</div>
           <div *ngIf="specificOptions[0] !== 'important-links'" class="mat-list-text">
+            <mat-form-field class="font" appearance="outline">
+            <input matInput  placeholder="Quick Search" (keyup)="onKeyThree($event.target.value)"> 
+          </mat-form-field>
           <mat-chip-list 
            [multiple]="false" *ngFor="let opt of specificOptions" >
             <mat-chip  

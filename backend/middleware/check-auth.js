@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+import { AuthService } from './services/auth.service';
 
 
 module.exports = (reg, res, next) => {
@@ -10,6 +10,9 @@ module.exports = (reg, res, next) => {
     next();
     } catch (error) {
        res.status(401).json({ message: "Your session has timed out. Please relogin!"});
-       location.reload();
+        location.reload();
+        // see if wokrs
+        AuthService.logout();
+      
     }
 };

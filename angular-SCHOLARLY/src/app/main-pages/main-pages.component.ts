@@ -149,6 +149,7 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
   specificOptions: string;
   commentsValidator = '';
   mains: Fav = {};
+  course: boolean;
   instructorRatingMean: number;
   knowledgeRating: number;
   profesionalismRating: number;
@@ -163,6 +164,7 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
   private rankingSub: Subscription;
   private rankingGraders: Subscription;
   private instructorsPrograms: Subscription;
+  private instructorsCourse: Subscription;
   private rankingKnowlede: Subscription;
   private rankingProfessionalism: Subscription;
 
@@ -236,6 +238,12 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
           console.log(' chase 77 ', programs);
           this.instructorProgs = programs;
         });
+      this.instructorsCourse = this.postsService
+        .getInstructorsCourse()
+        .subscribe((courseYo: boolean) => {
+          console.log(' chase 77 ', courseYo);
+          this.course = courseYo;
+        });
     });
   }
   ngOnDestroy(): any {
@@ -245,6 +253,7 @@ export class InstructorReviewComponent implements OnInit, OnDestroy {
     this.rankingSub.unsubscribe();
     this.rankingGraders.unsubscribe();
     this.instructorsPrograms.unsubscribe();
+    this.instructorsCourse.unsubscribe();
     this.rankingKnowlede.unsubscribe();
     this.rankingProfessionalism.unsubscribe();
   }

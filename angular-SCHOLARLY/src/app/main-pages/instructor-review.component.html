@@ -10,7 +10,12 @@
       <h1 class="top">
 <div class="columnInstructor">
     <div class="rowReview">
+      <div *ngIf="course == false" class="font_">
         Instructor: {{ Category }}  <!-- if not already on list -->
+      </div>
+      <div *ngIf="course == true" class="font_">
+        Course Code: {{ Category }}  <!-- if not already on list -->
+      </div>
         <div  *ngIf="mains.category !== Category" matTooltip="Save To Favourites " >
         <button mat-icon-button (click)="saveFavCat(Category)" 
        >
@@ -24,12 +29,12 @@
         </button>
       </div>
        </div>
-       <div class="fontRanking" > Programs: {{instructorProgs}}</div>
+       <div class="fontRanking" *ngIf="course == false"> Programs: {{instructorProgs}}</div>
 
 <div  *ngIf="instructorRatingGraders !== 0" class="fontRanking">  
     Graded By {{instructorRatingGraders}} Student(s)
     <div class="row_">
-    <div  class="fontRanking">
+    <div  class="fontRanking_">
        Overall {{instructorRatingMean}}/10 
     </div> 
     <div *ngIf="instructorRatingMean < 5 " class="fontGrade">
@@ -50,9 +55,11 @@
           </div>
 
           <!-- mean of both -->
-          <div class="fontGrade"> Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating}} /5</div>
-          <div class="fontGrade">Profesionalism and Approachability: {{profesionalismRating}} /5</div>
-         
+          <div class="fontGrade_" *ngIf="course == false"> Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating}}/5</div>
+          <div class="fontGrade_"  *ngIf="course == false">Profesionalism and Approachability: {{profesionalismRating}}/5</div>
+         <!-- course means -->
+         <div class="fontGrade_" *ngIf="course == true"> Quality of Material: {{knowledgeRating}}/5</div>
+         <div class="fontGrade_"  *ngIf="course == true">Difficulty of Course: {{profesionalismRating}}/5</div>
      </div>
         
     </div>
