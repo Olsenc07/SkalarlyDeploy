@@ -95,7 +95,7 @@ export class CommentsService {
   updateCommentsPosts(userId: string): any {
     console.log('view me baby by the sky with diamonds', userId);
     const sub = this.http
-      .get<{ message: string }>(
+      .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/posts/viewedCommentsPost',
         {
           params: { userId },
@@ -103,22 +103,24 @@ export class CommentsService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.message;
-          // .map((data) => {
-          // return {
-          //   id: data._id,
-          //   username: data.username,
-          //   message: data.message,
-          //   time: data.time,
-          //   otherUser: data.otherUser,
-          //   you: data.you,
-          // };
-          // });
+          return messageData.messages.map((comment) => {
+            return {
+              id: comment._id,
+              body: comment.body,
+              username: comment.username,
+              time: comment.time,
+              postId: comment.postId,
+              ProfilePicPath: comment.ProfilePicPath,
+              viewed: comment.viewed,
+              Creator: comment.Creator,
+            };
+          });
         })
       )
-      .subscribe((transformedMessage) => {
-        console.log('shark tank', transformedMessage);
-
+      .subscribe((transformedComment) => {
+        console.log('shark tank', transformedComment);
+        this.messages = transformedComment;
+        this.commentsUpdated.next([...this.messages]);
         sub.unsubscribe();
         console.log('eazy 27 g eazy');
       });
