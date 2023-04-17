@@ -371,6 +371,9 @@
          >
          <div class="picTime">
           <div class="rowComment">
+            <!-- delete button to far right -->
+            <div class="picAndtime">
+              <!--  -->
           <div class="profilePic">
 <img src="{{comment.ProfilePicPath}}" class="pic">
 </div>
@@ -387,6 +390,8 @@
     </button>
           </div>
         </div>
+</div>
+
 
         <div *ngIf="(userId == comment.Creator) " class="trashCan" matTooltip="Delete Comment">
           <button  mat-icon-button matSuffix class="trashCan_"

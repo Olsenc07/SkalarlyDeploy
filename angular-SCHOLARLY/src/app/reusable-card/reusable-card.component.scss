@@ -379,6 +379,7 @@ font-size: large;
   display: flex;
   flex-direction: row;
   align-items: center;
+  
 }
 .rowComment_{
   display: flex;
@@ -505,6 +506,9 @@ margin-top: 1%;
   display: flex;
   flex-direction: column;
 
+}
+.picAndtime{
+  display: flex;
 }
 .profilePic {
   display: flex;
