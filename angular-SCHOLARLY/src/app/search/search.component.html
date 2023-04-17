@@ -109,19 +109,23 @@
  
         <mat-chip-listbox aria-label="Option selection" class="center_step1 " >
           <div class="centerOptions">
-          <mat-chip-option  (click)="onSearchSelection('blue_clubs')" (click)="displaySpecificSearch()"
+          <mat-chip-option  (click)="onSearchSelection('blue_clubs')" (click)="closeInstructorOptions()"
+           (click)="displaySpecificSearch()"
             class="searchBtn">
            <i class="fas fa-cubes"></i>
            Blues Clubs</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('buy_sell')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('buy_sell')"
+          (click)="closeInstructorOptions()" (click)="displaySpecificSearch()">
           <i class="fas fa-comment-dollar"></i>
           Buy & Sell</mat-chip-option >
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('college_connection')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('college_connection')"
+          (click)="closeInstructorOptions()" (click)="displaySpecificSearch()">
           <i class="fas fa-university"></i>
           College Connections</mat-chip-option>
-          <mat-chip-option color="primary"  class="searchBtn"
+          <mat-chip-option color="primary"  class="searchBtn" (click)="closeInstructorOptions()"
+           (click)="closeSpecifis()"
            [matMenuTriggerFor]="menuCourse" >
           <i class="fas fa-book"></i>
           Course Review
@@ -355,23 +359,28 @@
           </div>
             </mat-menu>  
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('entrep')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('entrep')" (click)="closeInstructorOptions()"
+           (click)="displaySpecificSearch()">
           <i class="far fa-lightbulb"></i>
           Entrepreneurial Opportunities</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('finance')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('finance')" (click)="closeInstructorOptions()"
+          (click)="displaySpecificSearch()">
           <i class="fas fa-dollar-sign"></i>
           Financial Opportunities</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('help')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('help')" (click)="closeInstructorOptions()"
+           (click)="displaySpecificSearch()">
           <i class="fas fa-hands-helping"></i>
           Helping Hand</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('housing')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('housing')" (click)="closeInstructorOptions()"
+           (click)="displaySpecificSearch()">
           <i class="fas fa-home"></i>
           Housing</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn" matTooltip="These links will open up new tabs"
-          (click)="onSearchSelection('important_links')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('important_links')" (click)="closeInstructorOptions()"
+           (click)="displaySpecificSearch()">
           <i class="fas fa-star"></i>
           Important Links </mat-chip-option>
           <!-- (click)="onSearchSelection('instructor_rev')" (click)="displaySpecificSearch()"  -->
@@ -413,15 +422,18 @@
         </mat-menu>
 
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('course_a_e')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('course_a_e')" 
+          (click)="closeInstructorOptions()" (click)="displaySpecificSearch()">
           <i class="fas fa-feather-alt"></i>
           Programs A-E</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('course_f_m')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('course_f_m')" (click)="closeInstructorOptions()"
+           (click)="displaySpecificSearch()">
           <i class="fas fa-feather-alt"></i>
           Programs F-M</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('course_n_z')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('course_n_z')" (click)="closeInstructorOptions()"
+           (click)="displaySpecificSearch()">
           <i class="fas fa-feather-alt"></i>
           Programs N-Z</mat-chip-option>
 
@@ -677,15 +689,18 @@
           <i class="fas fa-book-reader"></i>
           School Work N-Z</mat-chip-option> -->
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('spiritituality')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('spiritituality')" (click)="closeInstructorOptions()"
+           (click)="displaySpecificSearch()">
           <i class="fas fa-praying-hands"></i>
           Spirituality</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('questions')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('questions')" (click)="closeInstructorOptions()"
+           (click)="displaySpecificSearch()">
           <i class="far fa-question-circle"></i>
           Questions</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('upcoming_events')" (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('upcoming_events')" (click)="closeInstructorOptions()"
+           (click)="displaySpecificSearch()">
           <i class="fas fa-calendar-day"></i>
           Upcoming Events</mat-chip-option>
           <!-- <mat-chip-option *ngFor="let opt of searchOptions" [value]="opt.name"
@@ -706,7 +721,7 @@
   [value]="instructor" class="chipInstructorBox">
       <!-- <mat-card [ngClass]="{ even_: even, odd_: odd }"> -->
     <!-- <mat-card-content *ngIf="insProgOptionsNumber == 1"> -->
-  <mat-chip-option *ngIf="insProgOptionsNumber == 1"
+  <mat-chip-option *ngIf="insProgOptionsNumber == 1 && (opened == true)"
   (click)="getPostsMainPageInstructor(instructor)" class="chipInstructor">
       {{instructor}}
       </mat-chip-option>
@@ -714,10 +729,10 @@
 
     <!-- </mat-card-content> -->
 <!-- no names match but heres 10 program rankings of teachers -->
-<div *ngIf="insProgOptionsNumber == 2" class="columnInstructor">
+<div *ngIf="insProgOptionsNumber == 2 && (opened == true)" class="columnInstructor">
 <div class="font">
   No matches. But here are some suggestions in 
-  <div> {{instructorsProgram.value}}. </div> 
+ {{instructorsProgram.value}}. 
 </div>
 <mat-chip-listbox *ngFor="let instructor of insProgOptions;let even = even; let odd = odd" 
   [value]="instructor" class="chipInstructorBox">
@@ -728,7 +743,7 @@
 
 </div>
     <!-- no rankings in program all all -->
-<div *ngIf="insProgOptionsNumber == 3" class="columnInstructor">
+<div *ngIf="(insProgOptionsNumber == 3) && (opened == true)" class="columnInstructor">
     <div class="font">
     No instructors in {{instructorsProgram.value}} have been rated yet.
     </div>
@@ -744,7 +759,7 @@
 
 
 
-        <div class="input-boxs_" *ngIf="opt >= 1">
+        <div class="input-boxs_" *ngIf="(opt >= 1) && specificOptions.length >= 1">
           <div class="center_single">Step Two: Navigate to the specific page</div>
           <div *ngIf="specificOptions[0] !== 'important-links'" class="mat-list-text">
             <mat-form-field class="font" appearance="outline">
