@@ -511,7 +511,8 @@ margin-top: 2%;
     height: 750px;
     margin-right: 2%;
     border-radius: 25px;
-    box-shadow: 0 5px 7px 3px grey;
+    // box-shadow: 0 5px 7px 3px grey;
+    box-shadow: 0 0 1px;
     border-top: groove;
   }
 }
@@ -523,7 +524,8 @@ margin-top: 2%;
     height: 100%;
     margin-right: 2%;
     border-radius: 25px;
-    box-shadow: 0 5px 7px 3px grey;
+    // box-shadow: 0 5px 7px 3px grey;
+    box-shadow: 0 0 1px;
     border-top: groove;
   }
 }
@@ -1031,8 +1033,9 @@ justify-content: center;
 // font-family: 'Cinzel',serif;
 font-family: 'Cormorant Garamond', serif;
 opacity: .5;
-margin-top: 3%;
+// margin-top: 3%;
 width: 100%;
+background-image: linear-gradient(#e5e5e5,white);
 }
 .titleC_{
 display: flex;
