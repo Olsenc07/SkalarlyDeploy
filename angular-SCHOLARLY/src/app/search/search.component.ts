@@ -135,6 +135,8 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public selectedOption: string;
   public specificOptions: string[];
+  public specificOptionsSafe: string[];
+
   public searchOptions: SearchOption[];
 
   public opt = 0;
@@ -180,11 +182,21 @@ export class SearchComponent implements OnInit, OnDestroy {
   // Filter specific search
   // Receive user input and send to search method**
   onKeyThree(value: string) {
-    this.specificOptions = this.searchSpecific(value);
+    // if nothing clicked or if no matches then don't
+    // close but show all options
+    // save the orignally searched array and re look at it
+    // but test it now
+    if (value.length >= 1) {
+      this.specificOptions = this.searchSpecific(value);
+    } else {
+      // resets to original search
+      this.specificOptions = this.specificOptionsSafe;
+    }
   }
 
   // Filter the states list and send back to populate the selectedStates**
   searchSpecific(value: string) {
+    this.specificOptions = this.specificOptionsSafe;
     let filter = value.toLowerCase();
     return this.specificOptions.filter((option) =>
       option.toLowerCase().includes(filter)
@@ -193,6 +205,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   // instructor review clicked
   closeSpecifis() {
     this.specificOptions = [];
+    this.specificOptionsSafe = [];
   }
   // Searching instructors in program
   onKeyTwo(event: any): any {
@@ -233,6 +246,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   // filter specific options
   onSearchSelection(value: string): void {
+    this.specificOptionsSafe = this.searchListService.onSearchSelection(value);
     this.specificOptions = this.searchListService.onSearchSelection(value);
     console.log('morning', this.specificOptions);
   }
