@@ -263,6 +263,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   closeInstructorOptions() {
     this.opened = false;
     this.insProgOptions = [];
+    this.insProgOptionsNumber = 0;
   }
   navigateToPage(value: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
