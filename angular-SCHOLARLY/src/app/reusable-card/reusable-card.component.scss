@@ -90,6 +90,14 @@
   justify-content: flex-end;
   // align-items: center;
 }
+.buttonCombo__{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 .counterColor{
   background-color: teal !important;
   border-bottom-left-radius: 25px;
@@ -274,9 +282,18 @@ justify-content: center;
   font-family: 'Cormorant Garamond', serif;
 font-size: large;
 }
+// .newIndicator{
+//   border-radius: 25px;
+//   padding: 2%;
+//   color: #fff;
+//   margin-right: 3%;
+//   background: linear-gradient(45deg,rgb(41,53,84),#04adf6);
+// }
 .newIndicator{
-  border-radius: 25px;
+  border-radius: 50%;
   padding: 2%;
+  height: 5px;
+  width: 5px;
   color: #fff;
   margin-right: 3%;
   background: linear-gradient(45deg,rgb(41,53,84),#04adf6);
