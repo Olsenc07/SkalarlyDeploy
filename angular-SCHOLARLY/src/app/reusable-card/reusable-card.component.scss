@@ -24,9 +24,9 @@
 }
 .backgroundFade{
   border-radius: 25px;
-    background-color: #8080801f;
-    box-shadow: 0px 0px 0px 0px grey;
-    padding: .5%;
+    // background-color: #8080801f;
+    // box-shadow: 0px 0px 0px 0px grey;
+    // padding: .5%;
     margin-bottom: 1%;
 }
 .booleans {
@@ -309,7 +309,7 @@ font-size: large;
   box-sizing: border-box;
   // border: ridge;
   border-radius: 25px;
-  box-shadow: 0 0 0 1px grey;
+  box-shadow: 0 0 0 0.5px grey;
   overflow: hidden;
 }
 .repostIcon{
@@ -393,7 +393,7 @@ font-size: large;
 .repost{
   display: flex;
   justify-content: flex-end;
-  background-color: whitesmoke;
+  // background-color: whitesmoke;
   // Move to top right corner
 }
 .repostStuff{
