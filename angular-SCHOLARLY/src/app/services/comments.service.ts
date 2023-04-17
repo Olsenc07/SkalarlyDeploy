@@ -86,7 +86,7 @@ export class CommentsService {
       )
       .subscribe((transformedComment) => {
         this.messages = transformedComment;
-        this.commentsUpdated.next([...this.messages]);
+        this.commentsUpdatedHistory.next([...this.messages]);
         sub.unsubscribe();
         console.log('love you 2');
       });

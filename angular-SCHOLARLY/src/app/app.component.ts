@@ -263,7 +263,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.msgsSub = this.messageNotificationService
         .getListenerNotification()
         .subscribe((messagesNotif: Message[]) => {
-          if (messagesNotif.length > 0) {
+          if (messagesNotif.length >= 1) {
             this.newMsg = messagesNotif.reverse();
             const NEW = [];
             this.newMsg.forEach((e) => {
@@ -285,6 +285,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.commentSub = this.commentsService
         .getMessagesUpdateListenerHistory()
         .subscribe((comments: any) => {
+          console.log('where my comments at', comments);
           if (comments.length >= 1) {
             this.comments = comments;
             const NEW7 = [];
