@@ -39,6 +39,7 @@
   box-shadow: 0px 2px grey;
   margin-bottom: 2%;
   text-align: center;
+    background-image: linear-gradient(whitesmoke,white);
 
 }
 .odd_{
@@ -46,6 +47,8 @@
   box-shadow: 0px 2px grey;
   margin-bottom: 2%;
 text-align: center;
+background-image: linear-gradient(whitesmoke,white);
+
 }
 .a{
   color: white;
@@ -146,6 +149,8 @@ align-items: center;
   padding: 1%;
   font-family: 'Cormorant Garamond',serif;
   font-size: large;
+  text-align: center;
+  background-image: linear-gradient(whitesmoke,white);
 }
 .display {
   display: contents;

@@ -393,6 +393,8 @@ font-size: large;
 .repost{
   display: flex;
   justify-content: flex-end;
+  background-image: linear-gradient(whitesmoke,white);
+    border-radius: 25px;
   // background-color: whitesmoke;
   // Move to top right corner
 }

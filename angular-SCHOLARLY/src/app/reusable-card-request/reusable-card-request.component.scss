@@ -169,6 +169,8 @@
 .row_ {
   display: flex;
   flex-direction: row;
+  background-image: linear-gradient(whitesmoke,white);
+    border-radius: 25px;
 }
 .row_icon{
   display: flex;
