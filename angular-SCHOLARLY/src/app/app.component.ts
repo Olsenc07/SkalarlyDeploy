@@ -283,7 +283,7 @@ export class AppComponent implements OnInit, OnDestroy {
       // new Comment
       this.commentsService.getCommentsHistory(this.userId, 0);
       this.commentSub = this.commentsService
-        .getMessagesUpdateListenerHistory()
+        .getMessagesUpdateListener()
         .subscribe((comments: any) => {
           console.log('where my comments at', comments);
           if (comments.length >= 1) {
@@ -429,7 +429,7 @@ export class AppComponent implements OnInit, OnDestroy {
             // new Comment
             this.commentsService.getCommentsHistory(this.userId, 0);
             this.commentSub = this.commentsService
-              .getMessagesUpdateListenerHistory()
+              .getMessagesUpdateListener()
               .subscribe((comments: any) => {
                 if (comments.length >= 1) {
                   console.log('fake love', comments);
