@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-import { AuthService } from './services/auth.service';
+const authService = require('/Users/chaseolsen/angular_scholarly_fs/angular-SCHOLARLY/src/app/services/auth.service');
+
 
 
 module.exports = (reg, res, next) => {
@@ -12,7 +13,7 @@ module.exports = (reg, res, next) => {
        res.status(401).json({ message: "Your session has timed out. Please relogin!"});
         location.reload();
         // see if wokrs
-        AuthService.logout();
+        authService.logout();
       
     }
 };
