@@ -58,7 +58,7 @@
     "ngx-image-zoom": "2.0.0",
     "ngx-material-timepicker": "^5.5.3",
     "node": "^18.15.0",
-    "npm": "^9.6.1",
+    "npm": "^9.6.4",
     "open": "8.4.2",
     "postinstall": "^0.8.0",
     "resize-observer-polyfill": "^1.5.1",
