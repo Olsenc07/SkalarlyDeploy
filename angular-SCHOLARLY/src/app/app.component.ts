@@ -285,11 +285,11 @@ export class AppComponent implements OnInit, OnDestroy {
       this.commentSub = this.commentsService
         .getMessagesUpdateListenerHistory()
         .subscribe((comments: any) => {
-          if (comments.length > 0) {
+          if (comments.length >= 1) {
             this.comments = comments;
             const NEW7 = [];
             this.comments.forEach((e) => {
-              if (e.viewed === false) {
+              if (e.viewed == false) {
                 NEW7.push(e.viewed);
               } else {
                 console.log('no unread comments');
@@ -329,11 +329,11 @@ export class AppComponent implements OnInit, OnDestroy {
       this.postsSub = this.postService
         .getPostSharedUpdateListener()
         .subscribe((shared: Post[]) => {
-          if (shared.length > 0) {
+          if (shared.length >= 1) {
             this.sharedNew = shared;
             const NEW3 = [];
             this.sharedNew.forEach((e) => {
-              if (e.viewed === false) {
+              if (e.viewed == false) {
                 NEW3.push(e.viewed);
               } else {
                 console.log('no new followers');
@@ -402,7 +402,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.postsSub = this.postService
               .getPostSharedUpdateListener()
               .subscribe((shared: Post[]) => {
-                if (shared.length > 0) {
+                if (shared.length >= 1) {
                   console.log('if shared', shared);
                   this.sharedNew = shared;
                   const NEW3 = [];
@@ -430,7 +430,7 @@ export class AppComponent implements OnInit, OnDestroy {
             this.commentSub = this.commentsService
               .getMessagesUpdateListenerHistory()
               .subscribe((comments: any) => {
-                if (comments.length > 0) {
+                if (comments.length >= 1) {
                   console.log('fake love', comments);
                   this.comments = comments;
                   const NEW7 = [];
