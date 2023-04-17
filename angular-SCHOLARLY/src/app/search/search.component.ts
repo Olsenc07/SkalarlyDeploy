@@ -198,9 +198,16 @@ export class SearchComponent implements OnInit, OnDestroy {
   searchSpecific(value: string) {
     this.specificOptions = this.specificOptionsSafe;
     let filter = value.toLowerCase();
-    return this.specificOptions.filter((option) =>
+    let found = this.specificOptions.filter((option) =>
       option.toLowerCase().includes(filter)
     );
+    if (found.length >= 1) {
+      console.log('ny wow', found);
+      return found;
+    } else {
+      console.log('cali parties', this.specificOptionsSafe);
+      return this.specificOptionsSafe;
+    }
   }
   // instructor review clicked
   closeSpecifis() {
