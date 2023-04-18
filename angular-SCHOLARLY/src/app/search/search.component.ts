@@ -274,6 +274,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.opened = false;
     this.insProgOptions = [];
     this.insProgOptionsNumber = 0;
+    this.textbooks = false;
   }
   navigateToPage(value: string): any {
     if (this.textbooks == false) {

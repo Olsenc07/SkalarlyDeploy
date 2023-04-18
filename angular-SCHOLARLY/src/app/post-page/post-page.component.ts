@@ -239,7 +239,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public LocationLength = new BehaviorSubject(0);
   public HashTagLength = new BehaviorSubject(0);
 
-  postLocationMain: FormControl = new FormControl('');
+  postLocationMain: string;
   postLocation: FormControl = new FormControl('');
 
   postLocationInstructor: FormControl = new FormControl('');
@@ -540,9 +540,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   onSearchSelection(value: string): any {
     console.log('fry', value);
-    this.postLocationMain.setValue(value);
+    this.postLocationMain = value;
     console.log('bender', this.postLocationMain);
-    console.log('lella', this.postLocationMain.value);
     this.specificOptions = this.searchListService.onSearchSelection(value);
     // const NextBtn2 = document.getElementById('nextBtn2');
     // NextBtn2.scrollIntoView();
