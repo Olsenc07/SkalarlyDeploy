@@ -761,18 +761,259 @@
 
         <div class="input-boxs_" *ngIf="(opt >= 1) && specificOptions.length >= 1">
           <div class="center_single">Step Two: Navigate to the specific page</div>
+          <div *ngIf="textbooks == true" class="font"> Textbooks For</div>
           <div *ngIf="specificOptions[0] !== 'important-links'" class="mat-list-text">
             <mat-form-field class="font" appearance="outline">
             <input matInput  placeholder="Quick Search" (keyup)="onKeyThree($event.target.value)"> 
           </mat-form-field>
           <mat-chip-list 
            [multiple]="false" *ngFor="let opt of specificOptions" >
-            <mat-chip  
+            <mat-chip  *ngIf="opt !== Textbooks"
              [value]="opt" class="searchBtn" (click)="navigateToPage(opt)"  >
+              {{ opt }}
+            </mat-chip>
+            <!-- Textbooks -->
+            <mat-chip  *ngIf="opt == Textbooks"
+             [value]="opt" class="searchBtn" [matMenuTriggerFor]="menuTextBooks" 
+             (click)="Textbooks()">
               {{ opt }}
             </mat-chip>
           </mat-chip-list>
         </div>
+
+<!-- Text books specific courses -->
+<mat-menu #menuTextBooks="matMenu" >
+  <mat-label class="courseCode">
+    <!-- <i class="fas fa-book mainCatsSpace"></i> -->
+    Course Code Search
+  </mat-label>
+  <mat-divider></mat-divider>
+  <div class="optionsCenterStyle">
+    <mat-card class="even_">
+      <mat-card-content>
+  <button mat-menu-item  (click)="onSearchSelection('course_review_a')"
+  (click)="displaySpecificSearch()" >
+    A
+    </button>
+  <mat-divider></mat-divider>
+    </mat-card-content>
+    </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
+    <button mat-menu-item  (click)="onSearchSelection('course_review_b')"
+    (click)="displaySpecificSearch()">
+      B
+      </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle">
+    <mat-card class="even_">
+      <mat-card-content>
+      <button mat-menu-item  (click)="onSearchSelection('course_review_c')"
+      (click)="displaySpecificSearch()" >
+        C
+        </button>
+  <mat-divider></mat-divider>
+</mat-card-content>
+</mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
+        <button mat-menu-item  (click)="onSearchSelection('course_review_d')"
+        (click)="displaySpecificSearch()">
+          D
+          </button> 
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
+          <button mat-menu-item  (click)="onSearchSelection('course_review_e')"
+          (click)="displaySpecificSearch()" >
+            E
+            </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
+            <button mat-menu-item  (click)="onSearchSelection('course_review_f')"
+            (click)="displaySpecificSearch()">
+              F
+              </button> 
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
+              <button mat-menu-item  (click)="onSearchSelection('course_review_g')"
+              (click)="displaySpecificSearch()" >
+                G
+                </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
+                <button mat-menu-item  (click)="onSearchSelection('course_review_h')"
+                (click)="displaySpecificSearch()">
+                  H
+                  </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
+                  <button mat-menu-item  (click)="onSearchSelection('course_review_i')"
+                  (click)="displaySpecificSearch()" >
+                    I
+                    </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
+                    <button mat-menu-item  (click)="onSearchSelection('course_review_j')"
+                    (click)="displaySpecificSearch()">
+                      J
+                      </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
+                      <button mat-menu-item  (click)="onSearchSelection('course_review_l')"
+                      (click)="displaySpecificSearch()" >
+                        L
+                        </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
+                        <button mat-menu-item  (click)="onSearchSelection('course_review_m')"
+                        (click)="displaySpecificSearch()">
+                          M
+                          </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
+                          <button mat-menu-item  (click)="onSearchSelection('course_review_n')"
+                          (click)="displaySpecificSearch()" >
+                            N
+                            </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+<div  class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
+                            <button mat-menu-item  (click)="onSearchSelection('course_review_p')"
+                            (click)="displaySpecificSearch()">
+                              P
+                              </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
+                              <button mat-menu-item  (click)="onSearchSelection('course_review_r')"
+                              (click)="displaySpecificSearch()" >
+                                R
+                                </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="odd_">
+      <mat-card-content>
+                                <button mat-menu-item  (click)="onSearchSelection('course_review_s')"
+                                (click)="displaySpecificSearch()">
+                                  S
+                                  </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
+                                  <button mat-menu-item  (click)="onSearchSelection('course_review_t')"
+                                  (click)="displaySpecificSearch()" >
+                                    T
+                                    </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
+                                    <button mat-menu-item  (click)="onSearchSelection('course_review_u')"
+                                    (click)="displaySpecificSearch()">
+                                      U
+                                      </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" >
+    <mat-card class="even_">
+      <mat-card-content>
+                                      <button mat-menu-item  (click)="onSearchSelection('course_review_v')"
+                                      (click)="displaySpecificSearch()" >
+                                        V
+
+                                        </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+<div class="optionsCenterStyle" >
+  <mat-card class="odd_">
+    <mat-card-content>
+                                        <button mat-menu-item  (click)="onSearchSelection('course_review_w')"
+                                        (click)="displaySpecificSearch()">
+                                          W
+                                          </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+  </mat-menu>  
+
+
+
+
                 <!--    hyperlinks -->
        
           <mat-chip-list  class="mat-list-text"  *ngIf="specificOptions[0] == 'important-links'"

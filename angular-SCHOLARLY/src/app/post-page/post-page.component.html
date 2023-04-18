@@ -149,16 +149,16 @@
            Blues Clubs</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('SearchValues.MISCELL_BUY_SELL')"
-         (click)="displaySpecificSearch()">
+          (click)="changeTab1()">
           <i class="fas fa-comment-dollar"></i>
           Buy & Sell</mat-chip-option >
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('SearchValues.COLLEGE_CONNECTION')"
-          (click)="closeInstructorOptions()" (click)="displaySpecificSearch()">
+          (click)="changeTab1()">
           <i class="fas fa-university"></i>
           College Connections</mat-chip-option>
-          <mat-chip-option color="primary"  class="searchBtn" (click)="closeInstructorOptions()"
-           (click)="closeSpecifis()"
+          <mat-chip-option color="primary"  class="searchBtn" 
+    
            [matMenuTriggerFor]="menuCourse" >
           <i class="fas fa-book"></i>
           Course Review
@@ -172,8 +172,9 @@
             <div class="optionsCenterStyle">
               <mat-card class="even_">
                 <mat-card-content>
-            <button mat-menu-item  (click)="onSearchSelection('course_review_a')"
-            (click)="displaySpecificSearch()" >
+            <button mat-menu-item  
+            (click)="onSearchSelection('course_review_a')"
+            (click)="changeTab1()" >
               A
               </button>
             <mat-divider></mat-divider>
@@ -183,8 +184,9 @@
           <div class="optionsCenterStyle" >
             <mat-card class="odd_">
               <mat-card-content>
-              <button mat-menu-item  (click)="onSearchSelection('course_review_b')"
-              (click)="displaySpecificSearch()">
+              <button mat-menu-item  
+              (click)="onSearchSelection('course_review_b')"
+              (click)="changeTab1()">
                 B
                 </button>
             <mat-divider></mat-divider>
@@ -194,8 +196,9 @@
             <div class="optionsCenterStyle">
               <mat-card class="even_">
                 <mat-card-content>
-                <button mat-menu-item  (click)="onSearchSelection('course_review_c')"
-                (click)="displaySpecificSearch()" >
+                <button mat-menu-item 
+                 (click)="onSearchSelection('course_review_c')"
+                 (click)="changeTab1()" >
                   C
                   </button>
             <mat-divider></mat-divider>
@@ -206,7 +209,7 @@
             <mat-card class="odd_">
               <mat-card-content>
                   <button mat-menu-item  (click)="onSearchSelection('course_review_d')"
-                  (click)="displaySpecificSearch()">
+                  (click)="changeTab1()">
                     D
                     </button> 
             <mat-divider></mat-divider>
@@ -216,8 +219,9 @@
             <div class="optionsCenterStyle" >
               <mat-card class="even_">
                 <mat-card-content>
-                    <button mat-menu-item  (click)="onSearchSelection('course_review_e')"
-                    (click)="displaySpecificSearch()" >
+                    <button mat-menu-item  
+                    (click)="onSearchSelection('course_review_e')"
+                    (click)="changeTab1()" >
                       E
                       </button>
             <mat-divider></mat-divider>
@@ -227,8 +231,9 @@
           <div class="optionsCenterStyle" >
             <mat-card class="odd_">
               <mat-card-content>
-                      <button mat-menu-item  (click)="onSearchSelection('course_review_f')"
-                      (click)="displaySpecificSearch()">
+                      <button mat-menu-item  
+                      (click)="onSearchSelection('course_review_f')"
+                      (click)="changeTab1()">
                         F
                         </button> 
             <mat-divider></mat-divider>
@@ -238,8 +243,9 @@
             <div class="optionsCenterStyle" >
               <mat-card class="even_">
                 <mat-card-content>
-                        <button mat-menu-item  (click)="onSearchSelection('course_review_g')"
-                        (click)="displaySpecificSearch()" >
+                        <button mat-menu-item 
+                         (click)="onSearchSelection('course_review_g')"
+                         (click)="changeTab1()" >
                           G
                           </button>
             <mat-divider></mat-divider>
@@ -249,8 +255,9 @@
           <div class="optionsCenterStyle" >
             <mat-card class="odd_">
               <mat-card-content>
-                          <button mat-menu-item  (click)="onSearchSelection('course_review_h')"
-                          (click)="displaySpecificSearch()">
+                          <button mat-menu-item  
+                          (click)="onSearchSelection('course_review_h')"
+                          (click)="changeTab1()">
                             H
                             </button>
             <mat-divider></mat-divider>
@@ -260,8 +267,9 @@
             <div class="optionsCenterStyle" >
               <mat-card class="even_">
                 <mat-card-content>
-                            <button mat-menu-item  (click)="onSearchSelection('course_review_i')"
-                            (click)="displaySpecificSearch()" >
+                            <button mat-menu-item  
+                            (click)="onSearchSelection('course_review_i')"
+                            (click)="changeTab1()" >
                               I
                               </button>
             <mat-divider></mat-divider>
@@ -271,8 +279,9 @@
           <div class="optionsCenterStyle" >
             <mat-card class="odd_">
               <mat-card-content>
-                              <button mat-menu-item  (click)="onSearchSelection('course_review_j')"
-                              (click)="displaySpecificSearch()">
+                              <button mat-menu-item  
+                              (click)="onSearchSelection('course_review_j')"
+                              (click)="changeTab1()">
                                 J
                                 </button>
             <mat-divider></mat-divider>
@@ -282,8 +291,9 @@
             <div class="optionsCenterStyle" >
               <mat-card class="even_">
                 <mat-card-content>
-                                <button mat-menu-item  (click)="onSearchSelection('course_review_l')"
-                                (click)="displaySpecificSearch()" >
+                                <button mat-menu-item 
+                                 (click)="onSearchSelection('course_review_l')"
+                                 (click)="changeTab1()" >
                                   L
                                   </button>
             <mat-divider></mat-divider>
@@ -293,8 +303,9 @@
           <div class="optionsCenterStyle" >
             <mat-card class="odd_">
               <mat-card-content>
-                                  <button mat-menu-item  (click)="onSearchSelection('course_review_m')"
-                                  (click)="displaySpecificSearch()">
+                                  <button mat-menu-item  
+                                  (click)="onSearchSelection('course_review_m')"
+                                  (click)="changeTab1()">
                                     M
                                     </button>
             <mat-divider></mat-divider>
@@ -304,8 +315,9 @@
             <div class="optionsCenterStyle" >
               <mat-card class="even_">
                 <mat-card-content>
-                                    <button mat-menu-item  (click)="onSearchSelection('course_review_n')"
-                                    (click)="displaySpecificSearch()" >
+                                    <button mat-menu-item  
+                                    (click)="onSearchSelection('course_review_n')"
+                                    (click)="changeTab1()" >
                                       N
                                       </button>
             <mat-divider></mat-divider>
@@ -316,7 +328,7 @@
             <mat-card class="odd_">
               <mat-card-content>
                                       <button mat-menu-item  (click)="onSearchSelection('course_review_p')"
-                                      (click)="displaySpecificSearch()">
+                                      (click)="changeTab1()">
                                         P
                                         </button>
             <mat-divider></mat-divider>
@@ -327,7 +339,7 @@
               <mat-card class="even_">
                 <mat-card-content>
                                         <button mat-menu-item  (click)="onSearchSelection('course_review_r')"
-                                        (click)="displaySpecificSearch()" >
+                                        (click)="changeTab1()" >
                                           R
                                           </button>
             <mat-divider></mat-divider>
@@ -338,7 +350,7 @@
               <mat-card class="odd_">
                 <mat-card-content>
                                           <button mat-menu-item  (click)="onSearchSelection('course_review_s')"
-                                          (click)="displaySpecificSearch()">
+                                          (click)="changeTab1()">
                                             S
                                             </button>
             <mat-divider></mat-divider>
@@ -349,7 +361,7 @@
               <mat-card class="even_">
                 <mat-card-content>
                                             <button mat-menu-item  (click)="onSearchSelection('course_review_t')"
-                                            (click)="displaySpecificSearch()" >
+                                            (click)="changeTab1()" >
                                               T
                                               </button>
             <mat-divider></mat-divider>
@@ -360,7 +372,7 @@
             <mat-card class="odd_">
               <mat-card-content>
                                               <button mat-menu-item  (click)="onSearchSelection('course_review_u')"
-                                              (click)="displaySpecificSearch()">
+                                              (click)="changeTab1()">
                                                 U
                                                 </button>
             <mat-divider></mat-divider>
@@ -371,7 +383,7 @@
               <mat-card class="even_">
                 <mat-card-content>
                                                 <button mat-menu-item  (click)="onSearchSelection('course_review_v')"
-                                                (click)="displaySpecificSearch()" >
+                                                (click)="changeTab1()" >
                                                   V
           
                                                   </button>
@@ -383,7 +395,7 @@
             <mat-card class="odd_">
               <mat-card-content>
                                                   <button mat-menu-item  (click)="onSearchSelection('course_review_w')"
-                                                  (click)="displaySpecificSearch()">
+                                                  (click)="changeTab1()">
                                                     W
                                                     </button>
             <mat-divider></mat-divider>
@@ -392,28 +404,28 @@
           </div>
             </mat-menu>  
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('entrep')" (click)="closeInstructorOptions()"
-           (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('entrep')" 
+          (click)="changeTab1()">
           <i class="far fa-lightbulb"></i>
           Entrepreneurial Opportunities</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('finance')" (click)="closeInstructorOptions()"
-          (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('finance')" 
+          (click)="changeTab1()">
           <i class="fas fa-dollar-sign"></i>
           Financial Opportunities</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('help')" (click)="closeInstructorOptions()"
-           (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('help')" 
+          (click)="changeTab1()">
           <i class="fas fa-hands-helping"></i>
           Helping Hand</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('housing')" (click)="closeInstructorOptions()"
-           (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('housing')" 
+          (click)="changeTab1()">
           <i class="fas fa-home"></i>
           Housing</mat-chip-option>
    
           <!-- (click)="onSearchSelection('instructor_rev')" (click)="displaySpecificSearch()"  -->
-          <mat-chip-option color="primary"  class="searchBtn" (click)="closeSpecifis()"
+          <mat-chip-option color="primary"  class="searchBtn" 
           [matMenuTriggerFor]="menuInstructors">
           <i class="fas fa-chalkboard-teacher"></i>
           Instructor Review 
@@ -452,17 +464,17 @@
 
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('course_a_e')" 
-          (click)="closeInstructorOptions()" (click)="displaySpecificSearch()">
+          (click)="changeTab1()">
           <i class="fas fa-feather-alt"></i>
           Programs A-E</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('course_f_m')" (click)="closeInstructorOptions()"
-           (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('course_f_m')" 
+          (click)="changeTab1()">
           <i class="fas fa-feather-alt"></i>
           Programs F-M</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('course_n_z')" (click)="closeInstructorOptions()"
-           (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('course_n_z')" 
+          (click)="changeTab1()">
           <i class="fas fa-feather-alt"></i>
           Programs N-Z</mat-chip-option>
 
@@ -481,7 +493,7 @@
     <mat-card class="even_">
       <mat-card-content>
   <button mat-menu-item  (click)="onSearchSelection('school_work_a')"
-  (click)="displaySpecificSearch()" >
+  (click)="changeTab1()" >
     A
     </button>
     <mat-divider></mat-divider>
@@ -493,7 +505,7 @@
   <mat-card class="odd_">
     <mat-card-content>
     <button mat-menu-item  (click)="onSearchSelection('school_work_b')"
-    (click)="displaySpecificSearch()">
+    (click)="changeTab1()">
       B
       </button>
   <mat-divider></mat-divider>
@@ -504,7 +516,7 @@
     <mat-card class="even_">
       <mat-card-content>
       <button mat-menu-item  (click)="onSearchSelection('school_work_c')"
-      (click)="displaySpecificSearch()" >
+      (click)="changeTab1()" >
         C
         </button>
   <mat-divider></mat-divider>
@@ -515,7 +527,7 @@
   <mat-card class="odd_">
     <mat-card-content>
         <button mat-menu-item  (click)="onSearchSelection('school_work_d')"
-        (click)="displaySpecificSearch()">
+        (click)="changeTab1()">
           D
           </button> 
   <mat-divider></mat-divider>
@@ -526,7 +538,7 @@
     <mat-card class="even_">
       <mat-card-content>
           <button mat-menu-item  (click)="onSearchSelection('school_work_e')"
-          (click)="displaySpecificSearch()" >
+          (click)="changeTab1()" >
             E
             </button>
   <mat-divider></mat-divider>
@@ -537,7 +549,7 @@
   <mat-card class="odd_">
     <mat-card-content>
             <button mat-menu-item  (click)="onSearchSelection('school_work_f')"
-            (click)="displaySpecificSearch()">
+            (click)="changeTab1()">
               F
               </button> 
   <mat-divider></mat-divider>
@@ -548,7 +560,7 @@
     <mat-card class="even_">
       <mat-card-content>
               <button mat-menu-item  (click)="onSearchSelection('school_work_g')"
-              (click)="displaySpecificSearch()" >
+              (click)="changeTab1()" >
                 G
                 </button>
   <mat-divider></mat-divider>
@@ -559,7 +571,7 @@
   <mat-card class="odd_">
     <mat-card-content>
                 <button mat-menu-item  (click)="onSearchSelection('school_work_h')"
-                (click)="displaySpecificSearch()">
+                (click)="changeTab1()">
                   H
                   </button>
   <mat-divider></mat-divider>
@@ -570,7 +582,7 @@
     <mat-card class="even_">
       <mat-card-content>
                   <button mat-menu-item  (click)="onSearchSelection('school_work_i')"
-                  (click)="displaySpecificSearch()" >
+                  (click)="changeTab1()" >
                     I
                     </button>
   <mat-divider></mat-divider>
@@ -581,7 +593,7 @@
   <mat-card class="odd_">
     <mat-card-content>
                     <button mat-menu-item  (click)="onSearchSelection('school_work_j')"
-                    (click)="displaySpecificSearch()">
+                    (click)="changeTab1()">
                       J
                       </button>
   <mat-divider></mat-divider>
@@ -592,7 +604,7 @@
     <mat-card class="even_">
       <mat-card-content>
                       <button mat-menu-item  (click)="onSearchSelection('school_work_l')"
-                      (click)="displaySpecificSearch()" >
+                      (click)="changeTab1()" >
                         L
                         </button>
   <mat-divider></mat-divider>
@@ -603,7 +615,7 @@
   <mat-card class="odd_">
     <mat-card-content>
                         <button mat-menu-item  (click)="onSearchSelection('school_work_m')"
-                        (click)="displaySpecificSearch()">
+                        (click)="changeTab1()">
                           M
                           </button>
   <mat-divider></mat-divider>
@@ -614,7 +626,7 @@
     <mat-card class="even_">
       <mat-card-content>
                           <button mat-menu-item  (click)="onSearchSelection('school_work_n')"
-                          (click)="displaySpecificSearch()" >
+                          (click)="changeTab1()" >
                             N
                             </button>
   <mat-divider></mat-divider>
@@ -625,7 +637,7 @@
   <mat-card class="odd_">
     <mat-card-content>
                             <button mat-menu-item  (click)="onSearchSelection('school_work_p')"
-                            (click)="displaySpecificSearch()">
+                            (click)="changeTab1()">
                               P
                               </button>
   <mat-divider></mat-divider>
@@ -636,7 +648,7 @@
     <mat-card class="even_">
       <mat-card-content>
                               <button mat-menu-item  (click)="onSearchSelection('school_work_r')"
-                              (click)="displaySpecificSearch()" >
+                              (click)="changeTab1()" >
                                 R
                                 </button>
   <mat-divider></mat-divider>
@@ -647,7 +659,7 @@
     <mat-card class="odd_">
       <mat-card-content>
                                 <button mat-menu-item  (click)="onSearchSelection('school_work_s')"
-                                (click)="displaySpecificSearch()">
+                                (click)="changeTab1()">
                                   S
                                   </button>
   <mat-divider></mat-divider>
@@ -658,7 +670,7 @@
     <mat-card class="even_">
       <mat-card-content>
                                   <button mat-menu-item  (click)="onSearchSelection('school_work_t')"
-                                  (click)="displaySpecificSearch()" >
+                                  (click)="changeTab1()" >
                                     T
                                     </button>
   <mat-divider></mat-divider>
@@ -669,7 +681,7 @@
   <mat-card class="odd_">
     <mat-card-content>
                                     <button mat-menu-item  (click)="onSearchSelection('school_work_u')"
-                                    (click)="displaySpecificSearch()">
+                                    (click)="changeTab1()">
                                       U
                                       </button>
   <mat-divider></mat-divider>
@@ -680,7 +692,7 @@
     <mat-card class="even_">
       <mat-card-content>
                                       <button mat-menu-item  (click)="onSearchSelection('school_work_v')"
-                                      (click)="displaySpecificSearch()" >
+                                      (click)="changeTab1()" >
                                         V
 
                                         </button>
@@ -692,7 +704,7 @@
   <mat-card class="odd_">
     <mat-card-content>
                                         <button mat-menu-item  (click)="onSearchSelection('school_work_w')"
-                                        (click)="displaySpecificSearch()">
+                                        (click)="changeTab1()">
                                           W
                                           </button>
   <mat-divider></mat-divider>
@@ -718,18 +730,18 @@
           <i class="fas fa-book-reader"></i>
           School Work N-Z</mat-chip-option> -->
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('spiritituality')" (click)="closeInstructorOptions()"
-           (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('spiritituality')" 
+          (click)="changeTab1()">
           <i class="fas fa-praying-hands"></i>
           Spirituality</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('questions')" (click)="closeInstructorOptions()"
-           (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('questions')" 
+          (click)="changeTab1()">
           <i class="far fa-question-circle"></i>
           Questions</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('upcoming_events')" (click)="closeInstructorOptions()"
-           (click)="displaySpecificSearch()">
+          (click)="onSearchSelection('upcoming_events')" 
+          (click)="changeTab1()">
           <i class="fas fa-calendar-day"></i>
           Upcoming Events</mat-chip-option>
           <!-- <mat-chip-option *ngFor="let opt of searchOptions" [value]="opt.name"

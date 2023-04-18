@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   isLoading = false;
   opened = false;
   mains: Fav[] = [];
+  textbooks = false;
   insProgOptions = [];
   insProgOptionsNumber: number;
   programs: string[] = [
@@ -209,10 +210,15 @@ export class SearchComponent implements OnInit, OnDestroy {
       return this.specificOptionsSafe;
     }
   }
+  // textbook specific search
+  Textbooks() {
+    this.textbooks = true;
+  }
   // instructor review clicked
   closeSpecifis() {
     this.specificOptions = [];
     this.specificOptionsSafe = [];
+    this.textbooks = false;
   }
   // Searching instructors in program
   onKeyTwo(event: any): any {
@@ -255,7 +261,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   onSearchSelection(value: string): void {
     this.specificOptionsSafe = this.searchListService.onSearchSelection(value);
     this.specificOptions = this.searchListService.onSearchSelection(value);
-    console.log('morning', this.specificOptions);
+    this.textbooks = false;
   }
   openInstructorOptions() {
     this.opened = true;
@@ -266,8 +272,17 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.insProgOptionsNumber = 0;
   }
   navigateToPage(value: string): any {
-    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
-    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+    if (this.textbooks == false) {
+      this.router.navigate(['/main/:'], { queryParams: { category: value } });
+    } else {
+      console.log('value', value);
+      let Book = 'Textbooks For';
+      let valueTextBook = Book.concat(' ', value);
+      console.log('valueTextBook', valueTextBook);
+      this.router.navigate(['/main/:'], {
+        queryParams: { category: valueTextBook },
+      });
+    }
   }
   navigateToFav(value: string): void {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });

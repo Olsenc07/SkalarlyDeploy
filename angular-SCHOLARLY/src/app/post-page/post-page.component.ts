@@ -93,6 +93,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   selectedIndex = 0;
   selectedIndexPost = 0;
   // Filter categories for instructor review
+  opened = false;
   instructors = [];
   GradeBoolean: boolean = false;
   instructorRatingView = 0.0;
@@ -484,6 +485,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   setFormControlValue(instructor: string): void {
     this.postLocationInstructor.setValue(instructor);
     console.log('my eyes have scene', this.postLocationInstructor.value);
+  }
+  openInstructorOptions() {
+    this.opened = true;
   }
   // Search instructors names
   instructorsName(event: any): void {
