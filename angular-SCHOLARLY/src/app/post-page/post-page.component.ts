@@ -73,6 +73,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
   minwidth = true;
   public selectedOption: string;
   public specificOptions: string[];
+  public specificOptionsSafe: string[];
+
   public searchOptions: SearchOption[];
   public searchOptionss: SearchOption[];
 
@@ -447,14 +449,14 @@ export class PostPageComponent implements OnInit, OnDestroy {
       }),
     });
 
-    this.searchOptionss = this.searchListService.getSearchOptions();
-    console.log('just gotta see it', this.searchOptionss);
+    // this.searchOptionss = this.searchListService.getSearchOptions();
+    // console.log('just gotta see it', this.searchOptionss);
     // do a bunch of edits then it makes new list with drop downs
 
     // add quick search also
-    this.searchOptions = this.searchOptionss.filter(
-      (e) => e.name !== 'Important Links'
-    );
+    // this.searchOptions = this.searchOptionss.filter(
+    //   (e) => e.name !== 'Important Links'
+    // );
     // Doesn't keep track of value
     this.titleSub = this.Title.valueChanges.subscribe((v) =>
       this.TitleLength.next(v.length)
@@ -541,7 +543,35 @@ export class PostPageComponent implements OnInit, OnDestroy {
     // const NextBtn2 = document.getElementById('nextBtn2');
     // NextBtn2.scrollIntoView();
   }
-
+  // Filter specific search
+  // Receive user input and send to search method**
+  onKeyThree(value: string) {
+    // if nothing clicked or if no matches then don't
+    // close but show all options
+    // save the orignally searched array and re look at it
+    // but test it now
+    if (value.length >= 1) {
+      this.specificOptions = this.searchSpecific(value);
+    } else {
+      // resets to original search
+      this.specificOptions = this.specificOptionsSafe;
+    }
+  }
+  // Filter the states list and send back to populate the selectedStates**
+  searchSpecific(value: string) {
+    this.specificOptions = this.specificOptionsSafe;
+    let filter = value.toLowerCase();
+    let found = this.specificOptions.filter((option) =>
+      option.toLowerCase().includes(filter)
+    );
+    if (found.length >= 1) {
+      console.log('ny wow', found);
+      return found;
+    } else {
+      console.log('cali parties', this.specificOptionsSafe);
+      return this.specificOptionsSafe;
+    }
+  }
   adjustView(): void {
     const NextBtn = document.getElementById('nextBtn');
     NextBtn.scrollIntoView();
