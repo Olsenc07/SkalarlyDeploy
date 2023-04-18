@@ -349,7 +349,12 @@ export class AppComponent implements OnInit, OnDestroy {
           }
         });
     }
-
+    // clear now read comments and shared posts
+    if (document.referrer == 'https://www.skalarly.com/activity-history') {
+      console.log('haha it worked wally', document.referrer);
+      this.newComment = [];
+      this.newsharedCheck = [];
+    }
     // update badges! on login!!
     this.searchSub = this.isSearchScreen$.subscribe((onSearchPg) => {
       console.log('happy boy', onSearchPg);
@@ -489,7 +494,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (window.screen.width < 1170) {
       this.minwidth = false;
     }
-    console.log('crystal meth');
+    console.log('crystal');
   }
   ngOnDestroy(): any {
     this.authListenerSubs.unsubscribe();
@@ -502,7 +507,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.followSub.unsubscribe();
     this.followSub2.unsubscribe();
     this.postsSub.unsubscribe();
-    console.log('your touch');
   }
   hashTagSearch(): any {
     this.Hashtag = true;

@@ -167,7 +167,7 @@ then(postsMade => {
         console.log('updated on me', updated);
             res.status(200).json({
                 message: 'Comments on Posts have been viewed!',
-              
+            
        });
 
     }).catch(error => {
