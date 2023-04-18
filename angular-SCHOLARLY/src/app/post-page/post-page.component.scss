@@ -88,11 +88,27 @@
   background-color: #11173a;
   color: white;
 }
-
+.center_step1{
+  text-align: center;
+}
+.centerOptions{
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  // padding: 1%;
+}
 .columnCenter{
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.courseCode{
+  justify-content: center;
+  display: flex;
+  padding: 1%;
+  font-family: 'Cormorant Garamond',serif;
+  font-size: large;
+  text-align: center;
+  // background-image: linear-gradient(whitesmoke,white);
 }
 .datalist{
   writing-mode: horizontal-tb; 
@@ -333,6 +349,9 @@ margin: 1%;
   align-items: center;
   font-family: 'Cormorant Garamond', serif;
 }
+.font_{
+  color: grey;
+}
 .fontColumn{
   display: flex;
   justify-content: center;
@@ -491,6 +510,10 @@ align-items: center;
 .mainCatsSpace{
   margin-right: 2%;
 }
+.optionsCenterStyle{
+  display: block;
+  margin: 1%;
+  }
 .image{
   max-width: 250px;
 }
@@ -786,6 +809,7 @@ p {
   width: 50%;
   position: relative;
 }
+
 @media (min-width: 500px) {
   .selection_styles {
     display: flex;
