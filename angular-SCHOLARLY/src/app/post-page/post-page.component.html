@@ -786,7 +786,8 @@
     </mat-form-field>
       <mat-option  [multiple]="false" *ngFor="let program of selectedProgram;let even = even; let odd = odd"
       [selected]="program" [value]="program" class="optionsCenterStyle" >
-      <mat-card class="cardStyle" [ngClass]="{ even_: even, odd_: odd }">
+      <mat-card class="cardStyle" [ngClass]="{ even_: even, odd_: odd }"
+      (click)="changeTab2()">
         <mat-card-content>
             {{ program }}
       <mat-divider></mat-divider>
@@ -800,8 +801,8 @@
           <div class="center__">
           <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
           (click)="changeTabB()">Back</button>
-          <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
-          (click)="changeTab2()">Next</button>
+          <!-- <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
+          (click)="changeTab2()">Next</button> -->
         </div>
 </mat-tab>
 
@@ -843,7 +844,7 @@
           </mat-form-field>
           <mat-chip-list 
            [multiple]="false" *ngFor="let opt of specificOptions" >
-            <mat-chip  
+            <mat-chip  (click)="changeTab2()"
              [value]="opt" class="searchBtn_"   >
               {{ opt }}
             </mat-chip>
@@ -853,8 +854,8 @@
           <div class="center__">
           <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
           (click)="changeTabB()">Back</button>
-          <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
-          (click)="changeTab2()">Next</button>
+          <!-- <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
+          (click)="changeTab2()">Next</button> -->
         </div>
 </mat-tab>
 <mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && (postLocation.value)" disabled>
