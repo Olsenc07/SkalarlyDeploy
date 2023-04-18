@@ -140,8 +140,8 @@
         </mat-tab> -->
 
         <mat-tab label="Step 1: Choose from the main categories" disabled>
-          <mat-form-field appearance="outline">
-        <mat-chip-listbox aria-label="Option selection" class="center_step1 " [formControl]="postLocationMain" >
+          <!-- <mat-form-field appearance="outline" [formControl]="postLocationMain"> -->
+        <mat-chip-listbox aria-label="Option selection" class="center_step1 "  >
           <div class="centerOptions">
           <mat-chip-option  (click)="onSearchSelection('SearchValues.BLUE_CLUBS')" 
             (click)="changeTab1()"
@@ -763,7 +763,7 @@
 <!-- </mat-form-field> -->
         </div>
         </mat-chip-listbox>
-        </mat-form-field>
+        <!-- </mat-form-field> -->
 </mat-tab>
 
 
