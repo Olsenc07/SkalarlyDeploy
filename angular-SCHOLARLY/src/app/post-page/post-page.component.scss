@@ -10,6 +10,11 @@
   // font-family:  'Poppins', sans-serif;
   font-family: 'Cormorant Garamond', serif;
 }
+::ng-deep .mat-mdc-menu-item.mdc-list-item {
+  align-items: center;
+  font-family: 'Cormorant Garamond', serif;
+  justify-content: center;
+}
 .amount-peopleD {
   display: flex;
   width: 100%;
