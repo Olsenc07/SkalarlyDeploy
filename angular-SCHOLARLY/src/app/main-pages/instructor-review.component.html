@@ -33,16 +33,24 @@
 
 <div  *ngIf="instructorRatingGraders !== 0" class="fontRanking">  
     Graded By {{instructorRatingGraders}} Student(s)
-    <div class="row_">
+    <div class="row_5" *ngIf="instructorRatingMean < 5 ">
     <div  class="fontRanking_">
        Overall {{instructorRatingMean}}/10 
     </div> 
-    <div *ngIf="instructorRatingMean < 5 " class="fontGrade">
+    <div  class="fontGrade">
    Inadequate
     </div>
-    <div *ngIf="(6 > instructorRatingMean) &&  (instructorRatingMean >= 5) " class="fontGrade">
+  </div>
+
+  <div class="row_4" *ngIf="(6 > instructorRatingMean) &&  (instructorRatingMean >= 5) ">
+    <div  class="fontRanking_">
+       Overall {{instructorRatingMean}}/10 
+    </div> 
+    <div  class="fontGrade">
      Marginal
       </div>
+</div>
+
       <div *ngIf="(7 > instructorRatingMean) && (instructorRatingMean >= 6) " class="fontGrade">
        Adequate
         </div>
@@ -52,7 +60,6 @@
           <div *ngIf=" (instructorRatingMean >= 8) " class="fontGrade">
           Excellent
             </div>
-          </div>
 
           <!-- mean of both -->
           <div class="fontGrade_" *ngIf="course == false"> Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating}}/5</div>
