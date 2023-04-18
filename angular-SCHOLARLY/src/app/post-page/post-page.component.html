@@ -140,7 +140,7 @@
         </mat-tab> -->
 
         <mat-tab label="Step 1: Choose from the main categories" disabled>
-          <mat-form-field appearance="outline" [formControl]="postLocationMain">
+          <!-- <mat-form-field appearance="outline" > -->
         <mat-chip-listbox aria-label="Option selection" class="center_step1 "  >
           <div class="centerOptions">
           <mat-chip-option  (click)="onSearchSelection('SearchValues.BLUE_CLUBS')" 
@@ -763,7 +763,7 @@
 <!-- </mat-form-field> -->
         </div>
         </mat-chip-listbox>
-        </mat-form-field>
+        <!-- </mat-form-field> -->
 </mat-tab>
 
 
@@ -837,7 +837,10 @@
     </mat-select>
     </mat-form-field>
           </mat-selection-list> -->
-          <div *ngIf="(opt >= 1) && specificOptions.length >= 1" class="mat-list-text">
+
+
+          <!-- new attempt -->
+          <!-- <div *ngIf="(opt >= 1) && specificOptions.length >= 1" class="mat-list-text">
             <mat-form-field class="font" appearance="outline">
             <input matInput [formControl]="postLocation"  placeholder="Quick Search" (keyup)="onKeyThree($event.target.value)"> 
           </mat-form-field>
@@ -848,7 +851,7 @@
               {{ opt }}
             </mat-chip>
           </mat-chip-list>
-        </div>
+        </div> -->
 
           <div class="center__">
           <button  type="button" color="primary"  mat-raised-button class="final_step_btn"

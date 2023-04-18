@@ -26,6 +26,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   opened = false;
   mains: Fav[] = [];
   textbooks = false;
+  textbooksCheck = false;
   insProgOptions = [];
   insProgOptionsNumber: number;
   programs: string[] = [
@@ -213,6 +214,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   // textbook specific search
   Textbooks() {
     this.textbooks = true;
+    this.textbooksCheck = true;
   }
   // instructor review clicked
   closeSpecifis() {
@@ -261,7 +263,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   onSearchSelection(value: string): void {
     this.specificOptionsSafe = this.searchListService.onSearchSelection(value);
     this.specificOptions = this.searchListService.onSearchSelection(value);
-    this.textbooks = false;
+    if (this.textbooksCheck == false) {
+      this.textbooks = false;
+    }
   }
   openInstructorOptions() {
     this.opened = true;
