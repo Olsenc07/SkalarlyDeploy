@@ -839,24 +839,25 @@
 
           <!-- new attempt -->
           <div *ngIf=" specificOptions.length >= 1" class="mat-list-text">
+            <div class="center__">
+              <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
+              (click)="changeTabB()"><i class="fas fa-arrow-left"></i></button>
+              <!-- <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
+              (click)="changeTab2()">Next</button> -->
+            </div>
             <mat-form-field class="font" appearance="outline">
             <input matInput [formControl]="postLocation"  placeholder="Quick Search" (keyup)="onKeyThree($event.target.value)"> 
           </mat-form-field>
           <mat-chip-list 
            [multiple]="false" *ngFor="let opt of specificOptions" >
-            <mat-chip  (click)="changeTab2()"
+            <mat-chip  (click)="changeTab2(opt)"
              [value]="opt" class="searchBtn_"   >
               {{ opt }}
             </mat-chip>
           </mat-chip-list>
         </div>
 
-          <div class="center__">
-          <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
-          (click)="changeTabB()">Back</button>
-          <!-- <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
-          (click)="changeTab2()">Next</button> -->
-        </div>
+         
 </mat-tab>
 <mat-tab label="Step 3: Style Post" *ngIf="((postDescription.value || form.get('upload').value) || form.get('video').value) && (postLocation.value)" disabled>
   <div class="columnCenter">
