@@ -27,6 +27,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   mains: Fav[] = [];
   textbooks = false;
   textbooksCheck = false;
+  Course = false;
+  CourseCheck = false;
   insProgOptions = [];
   insProgOptionsNumber: number;
   programs: string[] = [
@@ -211,6 +213,12 @@ export class SearchComponent implements OnInit, OnDestroy {
       return this.specificOptionsSafe;
     }
   }
+  // course review search{
+  CourseReview() {
+    this.Course = true;
+    this.CourseCheck = true;
+  }
+
   // textbook specific search
   Textbooks() {
     this.textbooks = true;
@@ -221,6 +229,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.specificOptions = [];
     this.specificOptionsSafe = [];
     this.textbooks = false;
+    this.CourseCheck = false;
   }
   // Searching instructors in program
   onKeyTwo(event: any): any {
@@ -266,6 +275,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (this.textbooksCheck == false) {
       this.textbooks = false;
     }
+    if (this.CourseCheck == false) {
+      this.Course = false;
+    }
   }
   openInstructorOptions() {
     this.opened = true;
@@ -277,15 +289,25 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.textbooks = false;
   }
   navigateToPage(value: string): any {
-    if (this.textbooks == false) {
+    if (this.textbooks == false && this.Course == false) {
       this.router.navigate(['/main/:'], { queryParams: { category: value } });
-    } else {
+    }
+    if (this.textbooks == true) {
       console.log('value', value);
       let Book = 'Textbooks For';
       let valueTextBook = Book.concat(' ', value);
       console.log('valueTextBook', valueTextBook);
       this.router.navigate(['/main/:'], {
         queryParams: { category: valueTextBook },
+      });
+    }
+    if (this.Course == true) {
+      console.log('value', value);
+      let courseYo = 'Course Review:';
+      let valueCourse = courseYo.concat(' ', value);
+      console.log('valueTextBook', valueCourse);
+      this.router.navigate(['/main/:'], {
+        queryParams: { category: valueCourse },
       });
     }
   }

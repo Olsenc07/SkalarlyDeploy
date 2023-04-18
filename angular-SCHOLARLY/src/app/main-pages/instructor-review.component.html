@@ -14,7 +14,8 @@
         Instructor: {{ Category }}  <!-- if not already on list -->
       </div>
       <div *ngIf="course == true" class="font_">
-        Course Code: {{ Category }}  <!-- if not already on list -->
+        <!-- Course Code:  -->
+        {{ Category }}  <!-- if not already on list -->
       </div>
         <div  *ngIf="mains.category !== Category" matTooltip="Save To Favourites " >
         <button mat-icon-button (click)="saveFavCat(Category)" 

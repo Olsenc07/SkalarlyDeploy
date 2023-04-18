@@ -12,9 +12,14 @@
   display: flex;
   justify-content: center;
 }
+.font{
+  font-family: 'Cormorant Garamond', serif;
+}
 .btn {
-  border: groove;
-  font-size: large;
+  // border: groove;
+  font-size: medium;
+  font-family: 'Cormorant Garamond', serif;
+  
 }
 .header {
   display: flex;

@@ -114,9 +114,7 @@
 .datalist{
   writing-mode: horizontal-tb; 
 }
-.display{
-  display: flex;
-}
+
 .even{
   padding: 1%;
   background-color: whitesmoke;
@@ -341,7 +339,9 @@ margin: 1%;
   justify-content: center;
   align-items: center;
 }
-
+.display_{
+  display: flex;
+}
 .entire-page {
   display: flex;
   position: relative;
