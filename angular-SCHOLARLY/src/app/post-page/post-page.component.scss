@@ -114,6 +114,9 @@
 .datalist{
   writing-mode: horizontal-tb; 
 }
+.display{
+  display: flex;
+}
 .even{
   padding: 1%;
   background-color: whitesmoke;

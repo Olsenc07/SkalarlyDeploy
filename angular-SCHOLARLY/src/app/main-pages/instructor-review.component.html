@@ -51,14 +51,31 @@
       </div>
 </div>
 
-      <div *ngIf="(7 > instructorRatingMean) && (instructorRatingMean >= 6) " class="fontGrade">
+<div class="row_3" *ngIf="(7 > instructorRatingMean) && (instructorRatingMean >= 6) ">
+  <div  class="fontRanking_">
+     Overall {{instructorRatingMean}}/10 
+  </div> 
+      <div  class="fontGrade">
        Adequate
         </div>
-        <div *ngIf="(8 > instructorRatingMean) && (instructorRatingMean >= 7) " class="fontGrade">
+        </div>
+
+        <div class="row_2" *ngIf="(8 > instructorRatingMean) && (instructorRatingMean >= 7) ">
+          <div  class="fontRanking_">
+             Overall {{instructorRatingMean}}/10 
+          </div> 
+        <div  class="fontGrade">
          Good
           </div>
-          <div *ngIf=" (instructorRatingMean >= 8) " class="fontGrade">
+          </div>
+
+          <div class="row_1" *ngIf=" (instructorRatingMean >= 8) ">
+            <div  class="fontRanking_">
+               Overall {{instructorRatingMean}}/10 
+            </div> 
+          <div  class="fontGrade">
           Excellent
+            </div>
             </div>
 
           <!-- mean of both -->
