@@ -837,7 +837,7 @@
 
 
           <!-- new attempt -->
-          <div *ngIf="(opt >= 1) && specificOptions.length >= 1" class="mat-list-text">
+          <div *ngIf=" specificOptions.length >= 1" class="mat-list-text">
             <mat-form-field class="font" appearance="outline">
             <input matInput [formControl]="postLocation"  placeholder="Quick Search" (keyup)="onKeyThree($event.target.value)"> 
           </mat-form-field>

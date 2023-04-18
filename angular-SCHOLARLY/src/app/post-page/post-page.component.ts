@@ -544,6 +544,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.postLocationMain = value;
     console.log('bender', this.postLocationMain);
     this.specificOptions = this.searchListService.onSearchSelection(value);
+    console.log('nibbler', this.specificOptions);
     // const NextBtn2 = document.getElementById('nextBtn2');
     // NextBtn2.scrollIntoView();
   }
@@ -733,6 +734,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   changeTabB(): void {
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
     this.postLocation.setValue('');
+    this.specificOptions = [''];
     // this.postLocation1.setValue('');
   }
   changeTab2(): void {
