@@ -504,6 +504,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.postsSub.unsubscribe();
   }
   // Checking for now read comments and shared posts
+  // Triggered when leaving a nav bar icon is clicked
   updateSettingsIcon() {
     console.log('haha it worked wally', document.referrer);
     this.userId = this.authService.getUserId();

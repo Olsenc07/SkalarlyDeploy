@@ -239,6 +239,7 @@
                   type="button"
                   (click)="postUnClickedBtn()"
                   (click)="messagesUnClickedBtn()"
+                  (click)="updateSettingsIcon()"
                   routerLink="/recent"
                   class="a_up"
                 >
@@ -260,6 +261,7 @@
                   type="button"
                   (click)="postUnClickedBtn()"
                   (click)="messagesUnClickedBtn()"
+                  (click)="updateSettingsIcon()"
                   routerLink="/friends-activity"
                   class="a_up"
                 >
@@ -282,6 +284,7 @@
                   (click)="postClickedBtn()"
                   (click)="navigateToPost()"
                   (click)="messagesUnClickedBtn()"
+                  (click)="updateSettingsIcon()"
                   class="a_up"
                 >
                   <span
@@ -300,6 +303,7 @@
                   (click)="postUnClickedBtn()"
                   (click)="messagesClickedBtn()"
                   (click)="navigateToMessages()"
+                  (click)="updateSettingsIcon()"
                   class="a_up"
                 >
                   <div
@@ -322,6 +326,7 @@
                   type="button"
                   (click)="messagesUnClickedBtn()"
                   (click)="postUnClickedBtn()"
+                  (click)="updateSettingsIcon()"
                   routerLink="/profile"
                   class="a_up"
                 >
@@ -345,6 +350,7 @@
               type="button"
               class="b_up"
               matBadge="!" [matBadgeHidden]="(notif.length == 0) " matBadgeColor="warn" 
+              (click)="updateSettingsIcon()"
             >
               <!-- <mat-icon *ngIf="(newsharedCheck.length && newComment.length) == 0" class="settings">settings</mat-icon> -->
               <mat-icon [ngClass]="(newsharedCheck.length || newComment.length) !== 0 ? 'settingsNew' : 'settings'" >settings</mat-icon>
