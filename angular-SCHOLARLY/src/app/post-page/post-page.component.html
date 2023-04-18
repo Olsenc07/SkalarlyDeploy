@@ -140,7 +140,7 @@
         </mat-tab> -->
 
         <mat-tab label="Step 1: Choose from the main categories" disabled>
-          <!-- <mat-form-field appearance="outline" [formControl]="postLocationMain"> -->
+          <mat-form-field appearance="outline" [formControl]="postLocationMain">
         <mat-chip-listbox aria-label="Option selection" class="center_step1 "  >
           <div class="centerOptions">
           <mat-chip-option  (click)="onSearchSelection('SearchValues.BLUE_CLUBS')" 
@@ -763,14 +763,14 @@
 <!-- </mat-form-field> -->
         </div>
         </mat-chip-listbox>
-        <!-- </mat-form-field> -->
+        </mat-form-field>
 </mat-tab>
 
 
 
 <!-- Step 2 start -->
 <!-- If instructor review -->
-<mat-tab label="Step 2: Select the specific page" *ngIf="(postLocationMain.value)  && (postLocationMain.value == 'Instructor Review ') " disabled>
+<mat-tab label="Step 2: Select the specific page" *ngIf="(postLocationMain.value)  && (postLocationMain.value == 'Instructor Review') " disabled>
   <!-- Step 2 -->
   <mat-selection-list   class="second_selection" [multiple]="false"  [matMenuTriggerFor]="menuInstructors">
     <mat-form-field  class="shadow2"  id="nextBtn2">
@@ -810,7 +810,7 @@
 
 
 <!-- If previous was not instructor review -->
-        <mat-tab label="Step 2: Select the specific page" *ngIf="(postLocationMain.value)  && (postLocationMain.value !== 'Instructor Review ')" disabled>
+        <mat-tab label="Step 2: Select the specific page" *ngIf="(postLocationMain.value)  && (postLocationMain.value !== 'Instructor Review')" disabled>
   <!-- Step 2 -->
   <!-- <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
     <mat-form-field  class="shadow2"  id="nextBtn2">
@@ -861,7 +861,7 @@
   <div class="columnCenter">
   <!-- <mat-label class="font"> </mat-label> -->
   <!-- Have previous names drop down as options -->
-  <mat-form-field *ngIf="postLocation.value && (postLocationMain.value == 'Instructor Review ')">
+  <mat-form-field *ngIf="postLocation.value && (postLocationMain.value == 'Instructor Review')">
     <!-- <i matPrefix class="fas fa-address-card"></i> -->
   <input (keyup)="instructorsName($event)" matInput placeholder="Instructors Name" class="instructorsPadding" [formControl]="postLocationInstructor" 
   [value]="postLocationInstructor" *ngIf="postLocation.value">
@@ -872,7 +872,7 @@
 <mat-form-field *ngIf="instructors.length !== 0">
   <mat-label class="font">Suggestions {{instructors.length}}</mat-label>
 
-<mat-select *ngIf="(postLocationMain.value == 'Instructor Review ')">
+<mat-select *ngIf="(postLocationMain.value == 'Instructor Review')">
 <mat-label class="mainCats">
   <i class="fas fa-chalkboard-teacher mainCatsSpace"></i>
   Instructor(s)</mat-label>

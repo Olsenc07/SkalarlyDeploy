@@ -104,7 +104,7 @@ export class SearchListService {
     { name: 'Helping Hand', value: SearchValues.HELP_WANTED },
     { name: 'Housing', value: SearchValues.HOUSING },
     { name: 'Important Links', value: SearchValues.IMPORTANT_LINKS },
-    { name: 'Instructor Review ', value: SearchValues.INSTRUCTOR_REV },
+    { name: 'Instructor Review', value: SearchValues.INSTRUCTOR_REV },
     { name: 'Programs A-E', value: SearchValues.COURSE_A_E },
     { name: 'Programs F-M', value: SearchValues.COURSE_F_M },
     { name: 'Programs N-Z', value: SearchValues.COURSE_N_Z },
@@ -474,7 +474,7 @@ export class SearchListService {
           'Living Supplies',
           'Miscellaneous Items for Sale',
           'School Supplies',
-          'Textbooks ',
+          'Textbooks',
         ];
         break;
       case SearchValues.SCHOOL_WORK_A:
