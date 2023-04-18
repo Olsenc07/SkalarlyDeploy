@@ -91,11 +91,7 @@
 .center_step1{
   text-align: center;
 }
-.centerOptions{
-  justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
-  // padding: 1%;
-}
+
 .columnCenter{
   display: flex;
   flex-direction: column;
@@ -228,9 +224,7 @@ margin: 1%;
   margin-top: 4%;
 }
 .centerOptions{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  font-family: 'Cormorant Garamond', serif;
 }
 .centerD {
   display: flex;
@@ -873,6 +867,11 @@ p {
   display: flex;
   overflow-y: scroll;
   height: 100%;
+}
+.searchBtn{
+  margin: 1%;
+  background-color: #393b48 !important;
+  cursor: pointer;
 }
 .show {
   display: flex;

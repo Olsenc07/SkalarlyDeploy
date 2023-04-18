@@ -558,6 +558,7 @@ export class SearchListService {
       case SearchValues.UPCOMING_EVENTS:
         specificOptions = [
           'Arts & Science',
+          'Club Events',
           'Club Sports',
           'Concerts',
           'Drop In Games',
