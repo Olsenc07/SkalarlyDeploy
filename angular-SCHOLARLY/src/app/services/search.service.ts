@@ -2426,7 +2426,7 @@ export class SearchListService {
     'FSL100H1',
     'FSL102H1',
     'FSL121Y1',
-    'FSL221T1',
+    'FSL221Y1',
     'FSL226H1',
     'FSL271H1',
     'FSL312H1',
