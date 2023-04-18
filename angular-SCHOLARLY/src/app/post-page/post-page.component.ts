@@ -534,10 +534,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.show = true;
     });
   }
-  onSearchSelection(value): any {
+  onSearchSelection(value: string): any {
     console.log(this.postLocationMain);
     console.log(this.postLocationMain.value);
-
+    this.postLocationMain.setValue(value);
     console.log(value);
     this.specificOptions = this.searchListService.onSearchSelection(value);
     // const NextBtn2 = document.getElementById('nextBtn2');

@@ -140,7 +140,7 @@
         </mat-tab> -->
 
         <mat-tab label="Step 1: Choose from the main categories" disabled>
-        <mat-chip-listbox aria-label="Option selection" class="center_step1 " >
+        <mat-chip-listbox aria-label="Option selection" class="center_step1 " [formControl]="postLocationMain" >
           <div class="centerOptions">
           <mat-chip-option  (click)="onSearchSelection('SearchValues.BLUE_CLUBS')" (click)="closeInstructorOptions()"
             (click)="changeTab1()"
@@ -148,7 +148,7 @@
            <i class="fas fa-cubes"></i>
            Blues Clubs</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('buy_sell')"
+          (click)="onSearchSelection('SearchValues.MISCELL_BUY_SELL')"
           (click)="closeInstructorOptions()" (click)="displaySpecificSearch()">
           <i class="fas fa-comment-dollar"></i>
           Buy & Sell</mat-chip-option >

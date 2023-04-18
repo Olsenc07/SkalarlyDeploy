@@ -468,7 +468,14 @@ export class SearchListService {
         ];
         break;
       case SearchValues.MISCELL_BUY_SELL:
-        specificOptions = [' School Supplies', 'Items for Sale', 'Textbooks '];
+        specificOptions = [
+          'Electronics',
+          'Furniture',
+          'Living Supplies',
+          'Miscellaneous Items for Sale',
+          'School Supplies',
+          'Textbooks ',
+        ];
         break;
       case SearchValues.SCHOOL_WORK_A:
         specificOptions = this.A;
