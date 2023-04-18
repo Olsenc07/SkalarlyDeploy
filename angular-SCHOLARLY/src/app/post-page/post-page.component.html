@@ -119,7 +119,8 @@
                   Main Categories</mat-label>
           <mat-divider></mat-divider>
 
-                <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even = even; let odd = odd" [selected]="opt.name" [multiple]="false" 
+                <mat-option (click)="onSearchSelection(opt.value)" *ngFor="let opt of searchOptions;let even = even; let odd = odd" 
+                [selected]="opt.name" [multiple]="false" 
                   [value]="opt.name" class="optionsCenterStyle" >
                   <!-- class="cardOptions" -->
                   <mat-card  class="cardStyle" [ngClass]="{ even_: even, odd_: odd }">

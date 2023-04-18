@@ -448,6 +448,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
     });
 
     this.searchOptionss = this.searchListService.getSearchOptions();
+    console.log('just gotta see it', this.searchOptionss);
+    // do a bunch of edits then it makes new list with drop downs
+
+    // add quick search also
     this.searchOptions = this.searchOptionss.filter(
       (e) => e.name !== 'Important Links'
     );
