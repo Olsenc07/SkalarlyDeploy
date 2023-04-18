@@ -142,18 +142,18 @@
         <mat-tab label="Step 1: Choose from the main categories" disabled>
         <mat-chip-listbox aria-label="Option selection" class="center_step1 " [formControl]="postLocationMain" >
           <div class="centerOptions">
-          <mat-chip-option  (click)="onSearchSelection('SearchValues.BLUE_CLUBS')" (click)="closeInstructorOptions()"
+          <mat-chip-option  (click)="onSearchSelection('SearchValues.BLUE_CLUBS')" 
             (click)="changeTab1()"
             class="searchBtn">
            <i class="fas fa-cubes"></i>
            Blues Clubs</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('SearchValues.MISCELL_BUY_SELL')"
-          (click)="closeInstructorOptions()" (click)="displaySpecificSearch()">
+         (click)="displaySpecificSearch()">
           <i class="fas fa-comment-dollar"></i>
           Buy & Sell</mat-chip-option >
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('college_connection')"
+          (click)="onSearchSelection('SearchValues.COLLEGE_CONNECTION')"
           (click)="closeInstructorOptions()" (click)="displaySpecificSearch()">
           <i class="fas fa-university"></i>
           College Connections</mat-chip-option>
