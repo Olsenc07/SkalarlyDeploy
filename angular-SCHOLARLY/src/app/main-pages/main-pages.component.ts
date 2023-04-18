@@ -1170,11 +1170,11 @@ export class SkalarsComponent implements OnInit {
     this.searchClub.setValue('');
   }
   submitFilter(searchMaj, searchMin, searchClub, searchSport, searchName): any {
-    const name = searchName.value;
-    const major = searchMaj.value;
-    const minor = searchMin.value;
-    const sport = searchSport.value;
-    const club = searchClub.value;
+    const name = searchName.value.trim();
+    const major = searchMaj.value.trim();
+    const minor = searchMin.value.trim();
+    const sport = searchSport.value.trim();
+    const club = searchClub.value.trim();
 
     console.log('Major', searchMaj.value.length);
     console.log('Minor', searchMin.value);

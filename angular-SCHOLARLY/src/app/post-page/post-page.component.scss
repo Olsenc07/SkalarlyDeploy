@@ -123,17 +123,22 @@ justify-content: center;
   justify-content: center;
 }
 
+
 .even_{
   padding: 1%;
   box-shadow: 0px 2px grey;
   margin-bottom: 2%;
   text-align: center;
+    background-image: linear-gradient(whitesmoke,white);
+
 }
 .odd_{
   padding: 1%;
   box-shadow: 0px 2px grey;
   margin-bottom: 2%;
-  text-align: center;
+text-align: center;
+background-image: linear-gradient(whitesmoke,white);
+
 }
 .even__{
   padding: 1%;
@@ -869,6 +874,11 @@ p {
   height: 100%;
 }
 .searchBtn{
+  // margin: 1%;
+  background-color: #393b48 !important;
+  cursor: pointer;
+}
+.searchBtn_{
   margin: 1%;
   background-color: #393b48 !important;
   cursor: pointer;

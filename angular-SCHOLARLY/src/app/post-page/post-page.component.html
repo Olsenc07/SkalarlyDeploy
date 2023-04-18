@@ -143,18 +143,18 @@
           <!-- <mat-form-field appearance="outline" > -->
         <mat-chip-listbox  class="center_step1"  >
           <div class="centerOptions">
-          <mat-chip-option  (click)="onSearchSelection('SearchValues.BLUE_CLUBS')" 
+          <mat-chip-option  (click)="onSearchSelection('blue_clubs')" 
             (click)="changeTab1()"
             class="searchBtn">
            <i class="fas fa-cubes"></i>
            Blues Clubs</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('SearchValues.MISCELL_BUY_SELL')"
+          (click)="onSearchSelection('buy_sell')"
           (click)="changeTab1()">
           <i class="fas fa-comment-dollar"></i>
           Buy & Sell</mat-chip-option >
           <mat-chip-option color="primary"  class="searchBtn"
-          (click)="onSearchSelection('SearchValues.COLLEGE_CONNECTION')"
+          (click)="onSearchSelection('college_connection')"
           (click)="changeTab1()">
           <i class="fas fa-university"></i>
           College Connections</mat-chip-option>
@@ -767,7 +767,7 @@
 
 <!-- Step 2 start -->
 <!-- If instructor review -->
-<mat-tab label="Step 2: Select the specific page" *ngIf="(postLocationMain.length >= 1)  && (postLocationMain == 'Instructor Review') " disabled>
+<mat-tab label="Step 2: Select the specific page" *ngIf="(specificOptions.length >= 1) && (postLocationMain.length >= 1)  && (postLocationMain == 'Instructor Review') " disabled>
   <!-- Step 2 -->
   <mat-selection-list   class="second_selection" [multiple]="false"  [matMenuTriggerFor]="menuInstructors">
     <mat-form-field  class="shadow2"  id="nextBtn2">
@@ -807,7 +807,7 @@
 
 
 <!-- If previous was not instructor review -->
-        <mat-tab label="Step 2: Select the specific page" *ngIf="(postLocationMain.length >= 1)  && (postLocationMain !== 'Instructor Review')" disabled>
+        <mat-tab label="Step 2: Select the specific page" *ngIf="(specificOptions.length >= 1) && (postLocationMain.length >= 1)  && (postLocationMain !== 'Instructor Review')" disabled>
   <!-- Step 2 -->
   <!-- <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
     <mat-form-field  class="shadow2"  id="nextBtn2">
@@ -844,7 +844,7 @@
           <mat-chip-list 
            [multiple]="false" *ngFor="let opt of specificOptions" >
             <mat-chip  
-             [value]="opt" class="searchBtn"   >
+             [value]="opt" class="searchBtn_"   >
               {{ opt }}
             </mat-chip>
           </mat-chip-list>
