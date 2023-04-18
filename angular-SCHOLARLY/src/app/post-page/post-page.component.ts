@@ -543,6 +543,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     console.log('fry', value);
     this.postLocationMain = value;
     console.log('bender', this.postLocationMain);
+    this.specificOptionsSafe = this.searchListService.onSearchSelection(value);
     this.specificOptions = this.searchListService.onSearchSelection(value);
     console.log('nibbler', this.specificOptions);
     // const NextBtn2 = document.getElementById('nextBtn2');
