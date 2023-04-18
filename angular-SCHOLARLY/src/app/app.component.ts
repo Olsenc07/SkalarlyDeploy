@@ -349,12 +349,7 @@ export class AppComponent implements OnInit, OnDestroy {
           }
         });
     }
-    // clear now read comments and shared posts
-    if (document.referrer == 'https://www.skalarly.com/activity-history') {
-      console.log('haha it worked wally', document.referrer);
-      this.newComment = [];
-      this.newsharedCheck = [];
-    }
+
     // update badges! on login!!
     this.searchSub = this.isSearchScreen$.subscribe((onSearchPg) => {
       console.log('happy boy', onSearchPg);
@@ -507,6 +502,63 @@ export class AppComponent implements OnInit, OnDestroy {
     this.followSub.unsubscribe();
     this.followSub2.unsubscribe();
     this.postsSub.unsubscribe();
+  }
+  // Checking for now read comments and shared posts
+  updateSettingsIcon() {
+    console.log('haha it worked wally', document.referrer);
+    this.userId = this.authService.getUserId();
+    console.log(' id please', this.userId);
+    // this.newComment = [];
+    // this.newsharedCheck = [];
+    // new Comment
+    this.commentsService.getCommentsHistory(this.userId, 0);
+    this.commentSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: any) => {
+        if (comments.length >= 1) {
+          console.log('fake love', comments);
+          this.comments = comments;
+          const NEW7 = [];
+          this.comments.forEach((e) => {
+            if (e.viewed === false) {
+              NEW7.push(e.viewed);
+            } else {
+              console.log('no unread comments');
+            }
+          });
+          console.log('new Gold', NEW7);
+          this.newComment = NEW7;
+          console.log('new Gold 2.0', this.newComment);
+        } else {
+          console.log('no unread comments 2.0');
+        }
+      });
+
+    //  // new shared Posts
+    this.postService.getSharedPosts(this.userId, 0);
+    this.postsSub = this.postService
+      .getPostSharedUpdateListener()
+      .subscribe((shared: Post[]) => {
+        if (shared.length >= 1) {
+          console.log('if shared', shared);
+          this.sharedNew = shared;
+          const NEW3 = [];
+          this.sharedNew.forEach((e) => {
+            console.log('new f', e);
+            console.log('new g', e.viewed);
+            if (e.viewed === false) {
+              NEW3.push(e.viewed);
+            } else {
+              console.log('no new shared posts');
+            }
+          });
+          console.log('Shared posts baby backed up', NEW3);
+          this.newsharedCheck = NEW3;
+          console.log('Shared posts baby 777787325', this.newsharedCheck);
+        } else {
+          console.log('no new shared posts 2.0');
+        }
+      });
   }
   hashTagSearch(): any {
     this.Hashtag = true;

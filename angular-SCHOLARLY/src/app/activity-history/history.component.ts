@@ -2,11 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { CommentsService } from '../services/comments.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Post, PostService } from '../services/post.service';
 import { FollowService } from '../services/follow.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PostsService } from '../services/posts.service';
+import { AppComponent } from '../app.component';
 
 export interface Follow {
   id: string;
@@ -68,7 +69,8 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
     private followService: FollowService,
     private snackBar: MatSnackBar,
     private postsService: PostsService,
-    private router: Router
+    private router: Router,
+    private appComponent: AppComponent
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -142,6 +144,7 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
     this.postsSub.unsubscribe();
     this.missedNotifsSub.unsubscribe();
     this.followSub.unsubscribe();
+    this.appComponent.updateSettingsIcon();
   }
 
   // Turn off notifications
