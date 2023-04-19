@@ -823,8 +823,6 @@ export class AppComponent implements OnInit, OnDestroy {
   checkFollowingSearch() {
     let followingList = [];
     for (const key in this.users) {
-      console.log('key1', this.users[key]);
-      console.log('key2', this.users[key].username);
       this.postsService.checkFollowing(this.userId, this.users[key].username);
       this.postsService
         .getUserFollowing()
@@ -833,19 +831,11 @@ export class AppComponent implements OnInit, OnDestroy {
           followingList.push(followingStatus);
           // this.users[key].following = followingStatus;
         });
-      console.log('final joyner', followingList);
     }
-
-    for (let index = 0; index < this.users.length; index++) {
+    console.log('final joyner', followingList);
+    for (let index = 0; index < followingList.length; index++) {
       this.users[index].following = followingList[index];
     }
-
-    // for (let i in followingList) {
-    //   for (const key in this.users) {
-    //     this.users[key].following = i;
-    //   }
-    // }
-
     console.log('final joyner 77', this.users);
   }
   // Hashtag search
