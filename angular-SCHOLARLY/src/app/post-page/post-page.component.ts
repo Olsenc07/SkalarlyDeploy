@@ -74,7 +74,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public selectedOption: string;
   public specificOptions: string[];
   public specificOptionsSafe: string[];
-
+  textBooks: boolean;
   public searchOptions: SearchOption[];
   public searchOptionss: SearchOption[];
 
@@ -539,6 +539,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.show = true;
     });
   }
+  Textbooks() {
+    this.textBooks = true;
+  }
   onSearchSelection(value: string): any {
     console.log('fry', value);
     this.postLocationMain = value;
@@ -737,6 +740,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
     this.postLocation.setValue('');
     this.specificOptions = null;
+    this.textBooks = false;
     // this.postLocation1.setValue('');
   }
   changeTab2(opt: string): void {
