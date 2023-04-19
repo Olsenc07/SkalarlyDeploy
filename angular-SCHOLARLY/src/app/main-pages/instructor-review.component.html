@@ -81,11 +81,19 @@
           <!-- mean of both -->
           <div class="fontRanking">
             Graded By {{instructorRatingGraders}} Student(s)
-          <div class="fontGrade_" *ngIf="course == false"> Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating}}/5</div>
-          <div class="fontGrade_"  *ngIf="course == false">Profesionalism and Approachability: {{profesionalismRating}}/5</div>
+          <div class="fontGrade_" *ngIf="course == false"> Knowledge and Enthusiasm For Subject Matter: <div> {{knowledgeRating}}/5
+            </div>
+          </div>
+          <div class="fontGrade_"  *ngIf="course == false">Profesionalism and Approachability: <div> {{profesionalismRating}}/5
+            </div>
+          </div>
          <!-- course means -->
-         <div class="fontGrade_" *ngIf="course == true"> Quality of Material: {{knowledgeRating}}/5</div>
-         <div class="fontGrade_"  *ngIf="course == true">Difficulty of Course: {{profesionalismRating}}/5</div>
+         <div class="fontGrade_" *ngIf="course == true"> Quality of Material: <div>{{knowledgeRating}}/5
+          </div>
+         </div>
+         <div class="fontGrade_"  *ngIf="course == true">Difficulty of Course:<div> {{profesionalismRating}}/5
+        </div>
+         </div>
         </div>
      </div>
         

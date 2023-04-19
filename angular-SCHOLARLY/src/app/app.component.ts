@@ -821,6 +821,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   checkFollowingSearch() {
+    let followingList = [];
     for (const key in this.users) {
       console.log('key1', this.users[key]);
       console.log('key2', this.users[key].username);
@@ -829,18 +830,23 @@ export class AppComponent implements OnInit, OnDestroy {
         .getUserFollowing()
         .subscribe((followingStatus: boolean) => {
           console.log('check boolean', followingStatus);
-          this.users[key].following = followingStatus;
-          console.log('final joyner', this.users);
+          followingList.push(followingStatus);
+          // this.users[key].following = followingStatus;
         });
+      console.log('final joyner', followingList);
     }
-    // for (const key in this.users) {
-    // this.postsService
-    //   .getUserFollowing()
-    //   .subscribe((followingStatus: boolean) => {
-    //     console.log('check boolean', followingStatus)
-    //     this.users[key].following = followingStatus;
-    //   });
+
+    for (let index = 0; index < this.users.length; index++) {
+      this.users[index].following = followingList[index];
+    }
+
+    // for (let i in followingList) {
+    //   for (const key in this.users) {
+    //     this.users[key].following = i;
+    //   }
     // }
+
+    console.log('final joyner 77', this.users);
   }
   // Hashtag search
   sendDataHash(event: any): any {
