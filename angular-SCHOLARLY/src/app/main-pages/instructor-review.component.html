@@ -33,7 +33,6 @@
        <div class="fontRanking" *ngIf="course == false"> Programs: {{instructorProgs}}</div>
 
 <div  *ngIf="instructorRatingGraders !== 0" class="fontRanking">  
-    Graded By {{instructorRatingGraders}} Student(s)
     <div class="row_5" *ngIf="instructorRatingMean < 5 ">
     <div  class="fontRanking_">
        Overall {{instructorRatingMean}}/10 
@@ -80,11 +79,14 @@
             </div>
 
           <!-- mean of both -->
+          <div class="fontRanking">
+            Graded By {{instructorRatingGraders}} Student(s)
           <div class="fontGrade_" *ngIf="course == false"> Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating}}/5</div>
           <div class="fontGrade_"  *ngIf="course == false">Profesionalism and Approachability: {{profesionalismRating}}/5</div>
          <!-- course means -->
          <div class="fontGrade_" *ngIf="course == true"> Quality of Material: {{knowledgeRating}}/5</div>
          <div class="fontGrade_"  *ngIf="course == true">Difficulty of Course: {{profesionalismRating}}/5</div>
+        </div>
      </div>
         
     </div>

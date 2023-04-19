@@ -137,15 +137,17 @@
                                             <div class="row_">
                                         <div  class="columnInfo" >
                                           <!-- button to profile -->
-                                          <button  mat-button (click)="navigateToPage(user.username)">
                                           <div class="profilePic">
                                          <img class="profilePic_" src="{{user.ProfilePicPath}}"> 
                                         </div> 
                                         <div class="displayContents">
                                         <div class="name">{{user.name}}</div>
-                                          <div class="username">@{{user.username}}</div>
-                                        </div>
+                                          <div class="username">
+                                          <button  mat-button (click)="navigateToPage(user.username)">                                            
+                                            @{{user.username}}
                                       </button>
+                                          </div>
+                                        </div>
                                       </div>
                                       <!-- follow -->
                                       <div class="center_" *ngIf="FOLLOWingYo !== 'true'">

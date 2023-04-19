@@ -75,6 +75,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public specificOptions: string[];
   public specificOptionsSafe: string[];
   textBooks: boolean;
+  courseReview: boolean;
   public searchOptions: SearchOption[];
   public searchOptionss: SearchOption[];
 
@@ -542,6 +543,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   Textbooks() {
     this.textBooks = true;
   }
+  CourseReview() {
+    this.courseReview = true;
+  }
   onSearchSelection(value: string): any {
     console.log('fry', value);
     this.postLocationMain = value;
@@ -741,11 +745,24 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.postLocation.setValue('');
     this.specificOptions = null;
     this.textBooks = false;
+    this.courseReview = false;
     // this.postLocation1.setValue('');
   }
   changeTab2(opt: string): void {
     this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
-    this.postLocation.setValue(opt);
+    if (this.textBooks == true) {
+      let Book = 'Textbooks:';
+      let valueTextBook = Book.concat(' ', opt);
+      this.postLocation.setValue(valueTextBook);
+    }
+    if (this.courseReview == true) {
+      let courseYo = 'Course Review:';
+      let valueCourse = courseYo.concat(' ', opt);
+      this.postLocation.setValue(valueCourse);
+    }
+    if ((this.textBooks && this.courseReview) == false) {
+      this.postLocation.setValue(opt);
+    }
     console.log('physics class', this.postLocation.value);
   }
   changeTab3(): void {
