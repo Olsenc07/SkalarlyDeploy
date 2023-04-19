@@ -298,6 +298,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
   openInstructorSearch() {
     this.openedSearch = true;
+    this.opened = false;
   }
   closeInstructorOptions() {
     this.opened = false;

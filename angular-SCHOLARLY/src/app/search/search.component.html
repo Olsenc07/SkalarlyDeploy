@@ -712,7 +712,7 @@
 <mat-form-field *ngIf="openedSearch == true">
   <button matSuffix mat-icon-button [matMenuTriggerFor]="menuInstructors" (click)="closeInstructorOptions()" class="backBtnInstructorReview"> <i class="far fa-times-circle"></i> Close </button>
 
-  <mat-label class="font">Instructors In {{instructorsProgram.value}}</mat-label>
+  <mat-label class="font">Search Instructors In {{instructorsProgram.value}}</mat-label>
   <input matInput placeholder="Quick Search" (keyup)="onKeyTwo($event)">
 </mat-form-field>
 
