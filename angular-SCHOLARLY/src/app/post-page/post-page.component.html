@@ -426,39 +426,13 @@
           Housing</mat-chip-option>
    
           <mat-chip-option color="primary"  class="searchBtn" 
-          [matMenuTriggerFor]="menuInstructors">
+          (click)="onSearchSelection('Instructor Review')" 
+          (click)="changeTab1()" >
           <i class="fas fa-chalkboard-teacher"></i>
           Instructor Review 
         </mat-chip-option>
         <!-- Instructor review -->
-        <mat-menu #menuInstructors="matMenu">
- 
-
-      <mat-form-field class="font" appearance="fill" >
-        <mat-label>
-          <i class="fas fa-feather-alt"></i>
-          Program of Instructor</mat-label>
-          <!-- [formControl]="instructorsProgram" -->
-  <mat-select >
-    <mat-label class="mainCats">
-      <i class="fas fa-feather-alt mainCatsSpace"></i>
-      Program of Instructor</mat-label>
-      <mat-divider></mat-divider>
-    <mat-option *ngFor="let program of selectedProgram;let even = even; let odd = odd" [value]="program"
-      (click)="openInstructorOptions()" class="optionsCenterStyle">
-      <mat-card class="cardStyle" [ngClass]="{ even_: even, odd_: odd }">
-        <mat-card-content>
-          
-     {{program}}
-    </mat-card-content>
-  </mat-card>
-  </mat-option>
-
-
-  </mat-select>
-</mat-form-field>
-
-        </mat-menu>
+     
 
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('course_a_e')" 
