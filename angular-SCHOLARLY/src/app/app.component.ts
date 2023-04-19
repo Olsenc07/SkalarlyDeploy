@@ -28,7 +28,6 @@ export class AppComponent implements OnInit, OnDestroy {
   comments: CommentInterface[] = [];
   sharedNew: Post[] = [];
   // follow from search bar
-  FOLLOWingYo = 'false';
   timeHourInitial = new Date().getHours();
   timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
@@ -662,10 +661,13 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       });
   }
+  // Checking following
+  checkFollowing() {
+    // check from sendData list and match names
+    console.log('welcome to my world', this.userId);
+  }
   // Follow skalar from search bar
   followClicked(username: string, id: string): any {
-    this.FOLLOWingYo = 'true';
-
     const FollowingId = id;
     // this.followService.postInfoFollow(this.userId, username, FollowingId);
     // this.followService.postInfoFollowHistory(
@@ -679,9 +681,12 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log('your id', this.userId);
     console.log('follow time', this.time);
   }
+  stopPropagation($event: any) {
+    $event.stopPropagation();
+    console.log('samuri wizard');
+  }
   // unfollow skalar from search bar
   onUnfololow(userName: string): any {
-    this.FOLLOWingYo = 'false';
     // this.followService.deleteFollowUserPg(userName, this.userId);
     console.log('chaz whats up homie gg unfollow', userName);
     console.log('chaz whats up unfollow', this.userId);
@@ -809,6 +814,7 @@ export class AppComponent implements OnInit, OnDestroy {
           console.log('results baby', results);
         } else {
           this.users = [];
+          console.log('BOP', this.users);
         }
       });
     } else {

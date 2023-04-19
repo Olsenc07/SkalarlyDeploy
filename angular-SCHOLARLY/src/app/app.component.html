@@ -125,7 +125,8 @@
                 (users.length >= 1 && search.value)
                   ? 'below_search showOptions'
                   : 'hideSpace'" >
-                                    <mat-select id="trigger" matTooltip="Click To See Skalars" class="triggerContainer" placeholder="Fellow Skalar(s)">
+                                    <mat-select id="trigger" matTooltip="Click To See Skalars"
+                                    (click)="checkFollowing()" class="triggerContainer" placeholder="Fellow Skalar(s)">
                                       <div class="title">Fellow Skalars</div>
                                       <mat-divider></mat-divider>
                                       <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
@@ -150,23 +151,25 @@
                                         </div>
                                       </div>
                                       <!-- follow -->
-                                      <div class="center_" *ngIf="FOLLOWingYo !== 'true'">
+                                      <!--  -->
+                                      <div class="center_" >
                                         <mat-chip-list class="center_">
-                                          <mat-chip selected class="followColor" (click)="followClicked(user.username, user.Creator)"
+                                          <mat-chip selected class="followColor"
+                                          (click)="stopPropagation($event)" (click)="followClicked(user.username, user.Creator)"
                                           matTooltip="Follow">
                                              Follow
                                           </mat-chip>
                                         </mat-chip-list>
                                       </div>
                                       <!-- following -->
-                                      <div class="center_" *ngIf="FOLLOWingYo === 'true'">
+                                      <!-- <div class="center_" *ngIf="user.following == false">
                                         <mat-chip-list class="center_">
-                                          <mat-chip selected (click)="onUnfololow(user.username, user.Creator)"
+                                          <mat-chip selected (click)="stopPropagation($event)" (click)="onUnfololow(user.username, user.Creator)"
                                           class="followingColor" matTooltip="Unfollow">
                                              Following
                                           </mat-chip>
                                         </mat-chip-list>
-                                      </div>
+                                      </div> -->
                                     </div>
                                         <!-- </div> -->
 
