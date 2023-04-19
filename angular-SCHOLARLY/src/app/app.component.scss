@@ -1193,7 +1193,11 @@ color: white;
   font-size: initial;
 }
 
-
+.usernameBtn{
+  margin-bottom: 3%;
+  font-size: initial;
+  font-family: 'Cormorant Garamond', serif;
+}
 // Search box style
 ::ng-deep .mat-select-panel-wrap {
   width: 500px;

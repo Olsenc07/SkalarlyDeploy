@@ -1353,7 +1353,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
               <mat-hint align="end"> {{ (LocationLength | async) }} / 30</mat-hint>
             </mat-form-field>
             <div>
-              <button type="button" mat-button matStepperNext>Next</button>
+              <button mat-button matStepperNext class="fontBtn">Next</button>
             </div>
           </form>
         </mat-step>
@@ -1411,8 +1411,8 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
             </div>
 
             <div>
-              <button type="button" mat-button matStepperPrevious>Back</button>
-              <button type="button" mat-button matStepperNext>Next</button>
+              <button mat-button matStepperPrevious class="fontBtn">Back</button>
+              <button mat-button matStepperNext class="fontBtn">Next</button>
             </div>
           </form>
         </mat-step>
@@ -1471,9 +1471,9 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
 
             </div>
             <div>
-              <button type="button" mat-button matStepperPrevious>Back</button>
-              <button type="button" mat-button matStepperNext>Next</button>
-              <button type="button" mat-button (click)="openOtherServices()">
+              <button mat-button matStepperPrevious class="fontBtn">Back</button>
+              <button mat-button matStepperNext class="fontBtn">Next</button>
+              <button  mat-button (click)="openOtherServices()">
                 <mat-icon>info</mat-icon>
               </button>
             </div>
@@ -1516,9 +1516,9 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
               </div>
             </mat-radio-group>
             <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-              <button type="button" mat-button (click)="openDialog()">
+              <button mat-button matStepperPrevious class="fontBtn">Back</button>
+              <button mat-button matStepperNext class="fontBtn">Next</button>
+              <button mat-button (click)="openDialog()">
                 <mat-icon>info</mat-icon>
               </button>
             </div>
@@ -1579,7 +1579,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
               </mat-form-field>
             </div>
             <div>
-              <button type="button" mat-button matStepperNext>Next</button>
+              <button mat-button matStepperNext class="fontBtn">Next</button>
             </div>
           </form>
         </mat-step>
@@ -1587,7 +1587,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
         <mat-step>
           <ng-template matStepLabel>Time To Post</ng-template>
           <div class="row_">
-            <button type="button" mat-button matStepperPrevious>Back</button>
+            <button  mat-button matStepperPrevious class="fontBtn">Back</button>
             <!-- Image -->
             <button mat-raised-button color="primary" class="text" routerLink="/profile"
               type="button" (click)="onFormSubmit()" *ngIf="form.get('upload').value || postDescription.value">Post

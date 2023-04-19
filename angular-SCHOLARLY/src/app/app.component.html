@@ -130,7 +130,7 @@
                                       <mat-divider></mat-divider>
                                       <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
                                         
-                                      <mat-option 
+                                      <mat-option (click)="navigateToPage(user.username)"
                                         class="options"   id="userName" >
                                         <mat-card [ngClass]="{ even_: even, odd_: odd }">
                                           <mat-card-content>
@@ -143,7 +143,7 @@
                                         <div class="displayContents">
                                         <div class="name">{{user.name}}</div>
                                           <div class="username">
-                                          <button  mat-button (click)="navigateToPage(user.username)">                                            
+                                          <button  mat-button (click)="navigateToPage(user.username)" class="usernameBtn">                                            
                                             @{{user.username}}
                                       </button>
                                           </div>
