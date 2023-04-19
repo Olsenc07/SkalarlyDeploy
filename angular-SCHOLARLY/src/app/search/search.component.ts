@@ -116,6 +116,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     'Yiddish Studies',
   ];
   selectedProgram = this.programs;
+  selectedProgramSafe = this.programs;
+
   // Receive user input and send to search method**
   onKey(value: string) {
     this.selectedProgram = this.searchInstructor(value);
@@ -124,9 +126,16 @@ export class SearchComponent implements OnInit, OnDestroy {
   // Filter the states list and send back to populate the selectedStates**
   searchInstructor(value: string) {
     let filter = value.toLowerCase();
-    return this.programs.filter((option) =>
+    let found = this.programs.filter((option) =>
       option.toLowerCase().includes(filter)
     );
+    if (found.length >= 1) {
+      console.log('ny wow', found);
+      return found;
+    } else {
+      console.log('cali parties', this.selectedProgramSafe);
+      return this.selectedProgramSafe;
+    }
   }
 
   postLocationMain: FormControl = new FormControl('');
@@ -213,12 +222,16 @@ export class SearchComponent implements OnInit, OnDestroy {
       return this.specificOptionsSafe;
     }
   }
+
   // course review search{
   CourseReview() {
     this.Course = true;
     this.CourseCheck = true;
   }
-
+  // Instructor program search
+  instructorsProgramTrigger(program: string) {
+    this.instructorsProgram.value.setValue(program);
+  }
   // textbook specific search
   Textbooks() {
     this.textbooks = true;

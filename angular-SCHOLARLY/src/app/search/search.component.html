@@ -385,7 +385,7 @@
           Important Links </mat-chip-option>
           <!-- (click)="onSearchSelection('instructor_rev')" (click)="displaySpecificSearch()"  -->
           <mat-chip-option color="primary"  class="searchBtn" (click)="closeSpecifis()"
-          [matMenuTriggerFor]="menuInstructors">
+          (click)="openInstructorOptions()">
           <i class="fas fa-chalkboard-teacher"></i>
           Instructor Review 
         </mat-chip-option>
@@ -406,7 +406,7 @@
       Program of Instructor</mat-label>
       <mat-divider></mat-divider>
     <mat-option *ngFor="let program of selectedProgram;let even = even; let odd = odd" [value]="program"
-      (click)="openInstructorOptions()" class="optionsCenterStyle">
+       class="optionsCenterStyle">
       <mat-card class="cardStyle" [ngClass]="{ even_: even, odd_: odd }">
         <mat-card-content>
           
@@ -749,6 +749,7 @@
     </div>
   
 </div>
+
     <!-- </mat-card> -->
 
 <!-- </mat-autocomplete> -->
@@ -756,9 +757,29 @@
         </div>
         </mat-chip-listbox>
 
+<!-- For instructors review -->
+<div class="input-boxs_" *ngIf="(opened == true)">
+  <div class="center_single">Step Two: Program of Instructor</div>
+ 
+  <div  class="mat-list-text">
+    <mat-form-field class="font" appearance="outline">
+    <input matInput placeholder="Quick Search" (keyup)="onKey($event.target.value)"> 
+  </mat-form-field>
+  <mat-chip-list 
+   [multiple]="false" *ngFor="let program of selectedProgram" >
+    <mat-chip  (click)="instructorsProgramTrigger(program)"
+     [value]="program" class="searchBtn"   >
+      {{ program }}
+    </mat-chip>
+  </mat-chip-list>
+</div>
+</div>
 
 
 
+
+
+<!--  -->
         <div class="input-boxs_" *ngIf="(opt >= 1) && specificOptions.length >= 1">
           <div class="center_single">Step Two: Navigate to the specific page</div>
           <div *ngIf="textbooks == true" class="font"> Textbooks For</div>
