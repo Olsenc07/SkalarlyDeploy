@@ -137,10 +137,7 @@
   color: black;
   justify-content: space-around;
 }
-.row_{
-  display: flex;
-  flex-direction: row;
-}
+
 .rowToggle{
   display: flex;
   flex-direction: row;
@@ -1148,7 +1145,8 @@ animation: animate 8s linear infinite;
   display: flex;
     opacity: 1;
     width: 425px;
-    background-color: #f2efef;
+    // background-color: #f2efef;
+    background-image: linear-gradient(whitesmoke,white);
     padding-right: 1%;
     // font-family: Cinzel;
     font-family: 'Cormorant Garamond', serif;

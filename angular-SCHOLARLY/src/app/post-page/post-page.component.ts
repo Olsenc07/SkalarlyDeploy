@@ -76,6 +76,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public specificOptionsSafe: string[];
   textBooks: boolean;
   courseReview: boolean;
+  instructorReview: boolean;
   public searchOptions: SearchOption[];
   public searchOptionss: SearchOption[];
 
@@ -540,6 +541,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.show = true;
     });
   }
+  Instructors() {
+    this.instructorReview = true;
+  }
   Textbooks() {
     this.textBooks = true;
   }
@@ -746,6 +750,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.specificOptions = null;
     this.textBooks = false;
     this.courseReview = false;
+    this.instructorReview = false;
     // this.postLocation1.setValue('');
   }
   changeTab2(opt: string): void {

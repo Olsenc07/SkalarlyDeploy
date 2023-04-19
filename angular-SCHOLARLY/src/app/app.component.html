@@ -130,11 +130,11 @@
                                       <mat-divider></mat-divider>
                                       <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
                                         
-                                      <mat-option (click)="navigateToPage(user.username)"
+                                      <mat-option 
                                         class="options"   id="userName" >
                                         <mat-card [ngClass]="{ even_: even, odd_: odd }">
                                           <mat-card-content>
-                                            <div class="row_">
+                                            <div >
                                         <div  class="columnInfo" >
                                           <!-- button to profile -->
                                           <div class="profilePic">
