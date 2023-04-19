@@ -313,7 +313,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (this.textbooks == false && this.Course == false) {
       this.router.navigate(['/main/:'], { queryParams: { category: value } });
     }
-    if (this.textbooks == true && this.Course == false) {
+    if (this.textbooks == true) {
       console.log('value', value);
       let Book = 'Textbooks:';
       let valueTextBook = Book.concat(' ', value);
