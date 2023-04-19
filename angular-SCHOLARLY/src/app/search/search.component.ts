@@ -240,11 +240,14 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.textbooks = true;
     this.textbooksCheck = true;
   }
+
   // instructor review clicked
   closeSpecifis() {
     this.specificOptions = [];
     this.specificOptionsSafe = [];
     this.textbooks = false;
+    this.textbooksCheck = false;
+    this.Course = false;
     this.CourseCheck = false;
   }
   // Searching instructors in program
@@ -308,6 +311,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.insProgOptions = [];
     this.insProgOptionsNumber = 0;
     this.textbooks = false;
+    this.textbooksCheck = false;
+    this.Course = false;
+    this.CourseCheck = false;
   }
   navigateToPage(value: string): any {
     if (this.textbooks == false && this.Course == false) {

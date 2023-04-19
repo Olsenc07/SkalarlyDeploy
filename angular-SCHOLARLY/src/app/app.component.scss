@@ -137,11 +137,15 @@
   color: black;
   justify-content: space-around;
 }
+.row_{
+  display: flex;
+  flex-direction: row;
+}
 .rowToggle{
   display: flex;
   flex-direction: row;
 }
-.rowInfo{
+.columnInfo{
   flex-direction: column;
   display: flex;
   // font-family: 'Poppins',sans-serif;
