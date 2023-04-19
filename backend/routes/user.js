@@ -2564,12 +2564,14 @@ if(userInfo){
 router.get('/checkFollowing', async (req, res) => {
     let othersUsername = req.query.othersUsername;
     let userId = req.query.userId;
+console.log('othersUsername',othersUsername);
+console.log('userId',userId);
 
     await Follow.findOne({ $and: [{Follower: userId}, {
-        Following:othersUsername}]})
+        Following: othersUsername}]})
         .then(followingStatus => {
             console.log('momma', followingStatus)
-            if(followingStatus.length >= 1){
+            if(followingStatus){
                 res.status(200).json({
                     message: 'Matches returned!',
                     following: true
