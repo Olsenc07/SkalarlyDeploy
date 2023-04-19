@@ -387,7 +387,7 @@
           Important Links </mat-chip-option>
           <!-- (click)="onSearchSelection('instructor_rev')" (click)="displaySpecificSearch()"  -->
           <mat-chip-option color="primary"  class="searchBtn" (click)="closeSpecifis()"
-          (click)="openInstructorOptions()" (click)="onSearchSelection('instructor_rev')">
+          (click)="openInstructorOptions()" >
           <i class="fas fa-chalkboard-teacher"></i>
           Instructor Review 
         </mat-chip-option>
@@ -761,7 +761,7 @@
         </mat-chip-listbox>
 
 <!-- For instructors review -->
-<div class="input-boxs_" *ngIf="(opened == true) && specificOptions[0] == 'instructor_rev'">
+<div class="input-boxs_" *ngIf="(opened == true)">
   <div class="center_single">Step Two: Program of Instructor</div>
  
   <div  class="mat-list-text">
