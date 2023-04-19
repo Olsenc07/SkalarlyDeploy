@@ -226,9 +226,13 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   // course review search{
   CourseReview() {
-    if (this.specificOptions[0] == 'buy_sell') {
+    if (this.specificOptions[0] == 'course_review') {
       this.Course = true;
       this.CourseCheck = true;
+    }
+    if (this.specificOptions[0] == 'buy_sell') {
+      this.textbooks = true;
+      this.textbooksCheck = true;
     }
   }
   // Instructor program search

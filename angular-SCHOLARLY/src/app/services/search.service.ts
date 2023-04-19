@@ -77,7 +77,7 @@ export class SearchListService {
     { name: 'Blues Clubs', value: SearchValues.BLUE_CLUBS },
     { name: 'Buy & Sell', value: SearchValues.MISCELL_BUY_SELL },
     { name: 'College Connections', value: SearchValues.COLLEGE_CONNECTION },
-    { name: 'College Connections', value: SearchValues.COURSE_REVIEW },
+    { name: 'Course Review', value: SearchValues.COURSE_REVIEW },
     { name: 'Course Review A', value: SearchValues.COURSE_REVIEW_A },
     { name: 'Course Review B', value: SearchValues.COURSE_REVIEW_B },
     { name: 'Course Review C', value: SearchValues.COURSE_REVIEW_C },
@@ -216,6 +216,9 @@ export class SearchListService {
           'Woodsworth College',
           'Wycliffe College',
         ];
+        break;
+      case SearchValues.COURSE_REVIEW:
+        specificOptions = [];
         break;
       case SearchValues.COURSE_REVIEW_A:
         specificOptions = this.A;
