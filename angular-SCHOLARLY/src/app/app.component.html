@@ -125,12 +125,12 @@
                 (users.length >= 1 && search.value)
                   ? 'below_search showOptions'
                   : 'hideSpace'" >
-                                    <mat-select id="trigger" matTooltip="Click To See Skalars" class="triggerContainer" placeholder="Fellow Skalar(s)">
+                                    <mat-expansion-panel id="trigger" matTooltip="Click To See Skalars" class="triggerContainer" placeholder="Fellow Skalar(s)">
                                       <div class="title">Fellow Skalars</div>
                                       <mat-divider></mat-divider>
                                       <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
                                         
-                                      <mat-option 
+                                      <div 
                                         class="options"   id="userName" >
                                         <mat-card [ngClass]="{ even_: even, odd_: odd }">
                                           <mat-card-content>
@@ -170,11 +170,11 @@
 
                                       </mat-card-content>
                                     </mat-card>
-                                      </mat-option>
+                                  </div>
                                   
                                     <!-- </mat-autocomplete> -->
                                     </div>
-                                    </mat-select>
+                                    </mat-expansion-panel>
                                  <!-- </mat-form-field> -->
                                     </div>
             </div>
