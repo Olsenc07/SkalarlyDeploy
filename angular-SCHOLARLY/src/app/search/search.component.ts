@@ -226,11 +226,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   // course review search{
   CourseReview() {
-    if (this.specificOptions[0] == 'course_review') {
+    if (this.specificOptions[0] !== 'buy_sell') {
       this.Course = true;
       this.CourseCheck = true;
-    }
-    if (this.specificOptions[0] == 'buy_sell') {
+    } else {
       this.textbooks = true;
       this.textbooksCheck = true;
     }

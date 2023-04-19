@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 
 enum SearchValues {
-  IMPORTANT_LINKS = 'important_links',
+  IMPORTANT_LINKS = 'important-links',
   COLLEGE_CONNECTION = 'college_connection',
   COURSE_REVIEW = 'course_review',
   // Course review
