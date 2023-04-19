@@ -8,6 +8,7 @@ export interface UserNames {
   username: string;
   major: string;
   name: string;
+  following: boolean;
   Creator: string;
 }
 export interface Hashtags {
@@ -61,6 +62,9 @@ export class PostsService {
   private userUpdated = new ReplaySubject();
   private userId: string;
 
+  private userFollowing = new Subject();
+  private following: boolean;
+
   private hashUpdated = new ReplaySubject();
   private hashId: string;
   getNotifId(): any {
@@ -74,6 +78,9 @@ export class PostsService {
   }
   getUserId(): any {
     return this.userUpdated.asObservable();
+  }
+  getUserFollowing(): any {
+    return this.userFollowing.asObservable();
   }
   getHashs(): any {
     return this.hashUpdated.asObservable();
@@ -127,7 +134,30 @@ export class PostsService {
         // this.notifUpdated.next(this.notifId);
       });
   }
+  checkFollowing(userId: string, othersUsername: string): any {
+    const sub = this.http
+      .get<{ messages: string; following: boolean }>(
+        'https://www.skalarly.com/api/user/checkFollowing',
+        {
+          params: { userId, othersUsername },
+        }
+      )
+      .pipe(map((data) => data.following))
+      .subscribe({
+        next: (response) => {
+          console.log('chlor', response);
+          this.following = response;
+          this.userFollowing.next(this.following);
+          sub.unsubscribe();
+          console.log('eazy 1');
+        },
+        // console.log('trans', transformedInfos.Creator);
 
+        // this.notifId = transformedInfos.Creator;
+        // console.log('hello', this.notifId);
+        // this.notifUpdated.next(this.notifId);
+      });
+  }
   // Hashtag search
   searchHashs(queryHash: string): any {
     console.log('my girl', queryHash);

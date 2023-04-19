@@ -152,7 +152,7 @@
                                       </div>
                                       <!-- follow -->
                                       <!--  -->
-                                      <div class="center_" >
+                                      <div class="center_" *ngIf="user.following == true">
                                         <mat-chip-list class="center_">
                                           <mat-chip selected class="followColor"
                                           (click)="stopPropagation($event)" (click)="followClicked(user.username, user.Creator)"
@@ -162,14 +162,14 @@
                                         </mat-chip-list>
                                       </div>
                                       <!-- following -->
-                                      <!-- <div class="center_" *ngIf="user.following == false">
+                                      <div class="center_" *ngIf="user.following == false">
                                         <mat-chip-list class="center_">
                                           <mat-chip selected (click)="stopPropagation($event)" (click)="onUnfololow(user.username, user.Creator)"
                                           class="followingColor" matTooltip="Unfollow">
                                              Following
                                           </mat-chip>
                                         </mat-chip-list>
-                                      </div> -->
+                                      </div>
                                     </div>
                                         <!-- </div> -->
 

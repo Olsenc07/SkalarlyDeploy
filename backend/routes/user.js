@@ -13,7 +13,8 @@ const Post = require('/app/backend/models/post');
 const Comment = require('/app/backend/models/comment');
 const Msg = require('/app/backend/models/messages')
 const Follow = require('/app/backend/models/follow')
-const BlockSkalar = require('/app/backend/models/block-skalar')
+const BlockSkalar = require('/app/backend/models/block-skalar');
+const { trusted } = require('mongoose');
 
 const cloudinary = require('cloudinary').v2
 // cloudinary
@@ -2559,6 +2560,35 @@ if(userInfo){
 })
 
 });
+// check following for search bar
+router.get('/checkFollowing', async (req, res) => {
+    let othersUsername = req.query.othersUsername;
+    let userId = req.query.userId;
+
+    await Follow.findOne({ $and: [{Follower: userId}, {
+        Following:othersUsername}]})
+        .then(followingStatus => {
+            console.log('momma', followingStatus)
+            if(followingStatus.length >= 1){
+                res.status(200).json({
+                    message: 'Matches returned!',
+                    following: true
+                });
+            }else{
+                res.status(200).json({
+                    message: 'No following',
+                    following: false
+                });
+            }
+        })
+        .catch(err => {
+            return res.status(401).json({
+                message: "Can't find skalars!",
+    
+            });
+        });
+
+})
 // Search users
 router.get('/getusers', async (req, res) => {
     let payload = req.query.query;

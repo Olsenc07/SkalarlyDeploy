@@ -810,11 +810,24 @@ export class AppComponent implements OnInit, OnDestroy {
       this.postsService.searchUsers(noSpecialChars.trim(), this.userId);
       this.postsService.getUserId().subscribe((results) => {
         if (results.length > 0) {
+          // add key value pair to see if following
           this.users = results;
-          console.log('results baby', results);
+          for (const key in this.users) {
+            console.log('key', this.users[key]);
+            console.log('key', this.users[key].username);
+            this.postsService.checkFollowing(
+              this.userId,
+              this.users[key].username
+            );
+            this.postsService
+              .getUserFollowing()
+              .subscribe((followingStatus: boolean) => {
+                this.users[key].following = followingStatus;
+              });
+          }
+          console.log('results baby final', this.users);
         } else {
           this.users = [];
-          console.log('BOP', this.users);
         }
       });
     } else {
