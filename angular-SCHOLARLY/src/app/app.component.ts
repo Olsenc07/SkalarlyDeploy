@@ -812,20 +812,6 @@ export class AppComponent implements OnInit, OnDestroy {
         if (results.length > 0) {
           // add key value pair to see if following
           this.users = results;
-          for (const key in this.users) {
-            console.log('key', this.users[key]);
-            console.log('key', this.users[key].username);
-            this.postsService.checkFollowing(
-              this.userId,
-              this.users[key].username
-            );
-            this.postsService
-              .getUserFollowing()
-              .subscribe((followingStatus: boolean) => {
-                this.users[key].following = followingStatus;
-              });
-          }
-          console.log('results baby final', this.users);
         } else {
           this.users = [];
         }
@@ -834,7 +820,28 @@ export class AppComponent implements OnInit, OnDestroy {
       this.hasQuery = false;
     }
   }
-
+  checkFollowingSearch() {
+    for (const key in this.users) {
+      console.log('key1', this.users[key]);
+      console.log('key2', this.users[key].username);
+      this.postsService.checkFollowing(this.userId, this.users[key].username);
+      this.postsService
+        .getUserFollowing()
+        .subscribe((followingStatus: boolean) => {
+          console.log('check boolean', followingStatus);
+          this.users[key].following = followingStatus;
+          console.log('final joyner', this.users);
+        });
+    }
+    // for (const key in this.users) {
+    // this.postsService
+    //   .getUserFollowing()
+    //   .subscribe((followingStatus: boolean) => {
+    //     console.log('check boolean', followingStatus)
+    //     this.users[key].following = followingStatus;
+    //   });
+    // }
+  }
   // Hashtag search
   sendDataHash(event: any): any {
     const queryHash: string = event.target.value;

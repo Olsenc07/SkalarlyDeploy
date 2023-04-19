@@ -2572,6 +2572,7 @@ console.log('userId',userId);
         .then(followingStatus => {
             console.log('momma', followingStatus)
             if(followingStatus){
+                
                 res.status(200).json({
                     message: 'Matches returned!',
                     following: true
