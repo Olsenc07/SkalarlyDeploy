@@ -24,6 +24,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   private favsSub: Subscription;
   isLoading = false;
   opened = false;
+  openedSearch = false;
   mains: Fav[] = [];
   textbooks = false;
   textbooksCheck = false;
@@ -230,7 +231,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
   // Instructor program search
   instructorsProgramTrigger(program: string) {
-    this.instructorsProgram.value.setValue(program);
+    this.instructorsProgram.setValue(program);
   }
   // textbook specific search
   Textbooks() {
@@ -295,8 +296,12 @@ export class SearchComponent implements OnInit, OnDestroy {
   openInstructorOptions() {
     this.opened = true;
   }
+  openInstructorSearch() {
+    this.openedSearch = true;
+  }
   closeInstructorOptions() {
     this.opened = false;
+    this.openedSearch = false;
     this.insProgOptions = [];
     this.insProgOptionsNumber = 0;
     this.textbooks = false;

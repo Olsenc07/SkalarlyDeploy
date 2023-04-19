@@ -742,7 +742,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   changeTab2(opt: string): void {
     this.selectedIndex = this.selectedIndex === 1 ? 2 : 1;
     this.postLocation.setValue(opt);
-    console.log('physics class', this.selectedIndex);
+    console.log('physics class', this.postLocation.value);
   }
   changeTab3(): void {
     this.selectedIndex = this.selectedIndex === 2 ? 1 : 2;

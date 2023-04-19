@@ -709,7 +709,7 @@
           </mat-chip-option> -->
 
           <!-- Instructors names options -->
-<mat-form-field *ngIf="opened == true">
+<mat-form-field *ngIf="openedSearch == true">
   <button matSuffix mat-icon-button [matMenuTriggerFor]="menuInstructors" (click)="closeInstructorOptions()" class="backBtnInstructorReview"> <i class="far fa-times-circle"></i> Close </button>
 
   <mat-label class="font">Instructors In {{instructorsProgram.value}}</mat-label>
@@ -721,7 +721,7 @@
   [value]="instructor" class="chipInstructorBox">
       <!-- <mat-card [ngClass]="{ even_: even, odd_: odd }"> -->
     <!-- <mat-card-content *ngIf="insProgOptionsNumber == 1"> -->
-  <mat-chip-option *ngIf="insProgOptionsNumber == 1 && (opened == true)"
+  <mat-chip-option *ngIf="insProgOptionsNumber == 1 && (openedSearch == true)"
   (click)="getPostsMainPageInstructor(instructor)" class="chipInstructor">
       {{instructor}}
       </mat-chip-option>
@@ -729,7 +729,7 @@
 
     <!-- </mat-card-content> -->
 <!-- no names match but heres 10 program rankings of teachers -->
-<div *ngIf="insProgOptionsNumber == 2 && (opened == true)" class="columnInstructor">
+<div *ngIf="insProgOptionsNumber == 2 && (openedSearch == true)" class="columnInstructor">
 <div class="font">
   No matches. But here are some suggestions in 
  {{instructorsProgram.value}}. 
@@ -743,7 +743,7 @@
 
 </div>
     <!-- no rankings in program all all -->
-<div *ngIf="(insProgOptionsNumber == 3) && (opened == true)" class="columnInstructor">
+<div *ngIf="(insProgOptionsNumber == 3) && (openedSearch == true)" class="columnInstructor">
     <div class="font">
     No instructors in {{instructorsProgram.value}} have been rated yet.
     </div>
@@ -768,6 +768,7 @@
   <mat-chip-list 
    [multiple]="false" *ngFor="let program of selectedProgram" >
     <mat-chip  (click)="instructorsProgramTrigger(program)"
+    (click)="openInstructorSearch()"
      [value]="program" class="searchBtn"   >
       {{ program }}
     </mat-chip>

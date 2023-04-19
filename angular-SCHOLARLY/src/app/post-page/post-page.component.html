@@ -824,7 +824,7 @@
           </mat-form-field>
           <mat-chip-list 
            [multiple]="false" *ngFor="let opt of specificOptions" >
-            <mat-chip  (click)="changeTab2(opt)"
+            <mat-chip  (click)="changeTab2(opt)" (click)="changeTab()"
              [value]="opt" class="searchBtn_"   >
               {{ opt }}
             </mat-chip>
