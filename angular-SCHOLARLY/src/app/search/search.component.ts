@@ -226,8 +226,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   // course review search{
   CourseReview() {
-    this.Course = true;
-    this.CourseCheck = true;
+    if (this.specificOptions[0] == 'buy_sell') {
+      this.Course = true;
+      this.CourseCheck = true;
+    }
   }
   // Instructor program search
   instructorsProgramTrigger(program: string) {
@@ -313,7 +315,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
     if (this.textbooks == true) {
       console.log('value', value);
-      let Book = 'Textbooks For';
+      let Book = 'Textbooks:';
       let valueTextBook = Book.concat(' ', value);
       console.log('valueTextBook', valueTextBook);
       this.router.navigate(['/main/:'], {
@@ -324,7 +326,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       console.log('value', value);
       let courseYo = 'Course Review:';
       let valueCourse = courseYo.concat(' ', value);
-      console.log('valueTextBook', valueCourse);
+      console.log('valueCourse', valueCourse);
       this.router.navigate(['/main/:'], {
         queryParams: { category: valueCourse },
       });

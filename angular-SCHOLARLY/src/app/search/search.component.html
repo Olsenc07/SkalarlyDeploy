@@ -717,6 +717,7 @@
 </mat-form-field>
 
 <!-- <mat-autocomplete #auto="matAutocomplete" > -->
+  <div class="columnInstructor">
   <mat-chip-listbox *ngFor="let instructor of insProgOptions;let even = even; let odd = odd" 
   [value]="instructor" class="chipInstructorBox">
       <!-- <mat-card [ngClass]="{ even_: even, odd_: odd }"> -->
@@ -726,7 +727,7 @@
       {{instructor}}
       </mat-chip-option>
   </mat-chip-listbox>
-
+</div>
     <!-- </mat-card-content> -->
 <!-- no names match but heres 10 program rankings of teachers -->
 <div *ngIf="insProgOptionsNumber == 2 && (openedSearch == true)" class="columnInstructor">
