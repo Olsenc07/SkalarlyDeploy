@@ -130,7 +130,7 @@
                                       <mat-divider></mat-divider>
                                       <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
                                         
-                                      <mat-option 
+                                      <div 
                                         class="options"   id="userName" >
                                         <mat-card [ngClass]="{ even_: even, odd_: odd }">
                                           <mat-card-content>
@@ -170,7 +170,7 @@
 
                                       </mat-card-content>
                                     </mat-card>
-                                      </mat-option>
+                                  </div>
                                   
                                     <!-- </mat-autocomplete> -->
                                     </div>
