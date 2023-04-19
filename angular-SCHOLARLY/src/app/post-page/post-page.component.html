@@ -853,6 +853,11 @@
             [value]="opt" class="searchBtn_" [matMenuTriggerFor]="menuCourseTextBook"   >
              {{ opt }}
            </mat-chip>
+           <!-- course review -->
+           <mat-chip *ngIf="courseReview == true" 
+           [value]="opt" class="searchBtn_" (click)="changeTab2(opt)"  >
+            {{ opt }}
+          </mat-chip>
           </mat-chip-list>
         </div>
         <!-- Textbooks mat menu  -->
