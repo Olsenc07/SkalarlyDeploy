@@ -317,7 +317,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (this.textbooks == false && this.Course == false) {
       this.router.navigate(['/main/:'], { queryParams: { category: value } });
     }
-    if (this.textbooks == true) {
+    if (this.textbooks == true && this.Course == false) {
       console.log('value', value);
       let Book = 'Textbooks:';
       let valueTextBook = Book.concat(' ', value);
@@ -326,7 +326,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         queryParams: { category: valueTextBook },
       });
     }
-    if (this.Course == true) {
+    if (this.Course == true && this.textbooks == false) {
       console.log('value', value);
       let courseYo = 'Course Review:';
       let valueCourse = courseYo.concat(' ', value);
