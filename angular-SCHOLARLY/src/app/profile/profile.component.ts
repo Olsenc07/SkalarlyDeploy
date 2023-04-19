@@ -563,15 +563,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             this.followSubsBtn = this.followService
               .getInfoFollowingBtnUpdateListener()
               .subscribe((following: string) => {
-                console.log('top off box', following);
-                // if this even coming from the correct following person
-                // if (following.length > 0) {
+                console.log('top off box search', following);
                 this.FOLLOWingYo = following;
-                console.log('following box', this.FOLLOWingYo);
-                // } else {
-                //   this.FOLLOWingYo = 'false';
-                //   console.log('not following');
-                // }
+                console.log('following box search', this.FOLLOWingYo);
               });
 
             // Following
@@ -666,7 +660,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
   followClicked(username: string): any {
     this.FOLLOWingYo = 'true';
-    // this.route.queryParams.subscribe((params) => {
 
     const FollowingId = this.id;
     this.followService.postInfoFollow(this.userId, username, FollowingId);
@@ -676,8 +669,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       FollowingId,
       this.time
     );
-
-    // });
   }
   onUnfololow(userName: string): any {
     this.FOLLOWingYo = 'false';

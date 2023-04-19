@@ -229,9 +229,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     if (this.specificOptions[0] !== 'buy_sell') {
       this.Course = true;
       this.CourseCheck = true;
-    } else {
-      this.textbooks = true;
-      this.textbooksCheck = true;
     }
   }
   // Instructor program search

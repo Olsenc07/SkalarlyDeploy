@@ -130,11 +130,13 @@
                                       <mat-divider></mat-divider>
                                       <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">
                                         
-                                      <mat-option *ngIf="user.Creator !== userId" 
-                                        class="options"  (click)="navigateToPage(user.username)" id="userName" >
+                                      <mat-option 
+                                        class="options"   id="userName" >
                                         <mat-card [ngClass]="{ even_: even, odd_: odd }">
                                           <mat-card-content>
                                         <div  class="rowInfo" >
+                                          <!-- button to profile -->
+                                          <button  mat-button (click)="navigateToPage(user.username)">
                                           <div class="profilePic">
                                          <img class="profilePic_" src="{{user.ProfilePicPath}}"> 
                                         </div> 
@@ -142,6 +144,25 @@
                                         <div class="name">{{user.name}}</div>
                                           <div class="username">@{{user.username}}</div>
                                         </div>
+                                      </button>
+                                      <!-- follow -->
+                                      <div class="center_" *ngIf="FOLLOWingYo !== 'true'">
+                                        <mat-chip-list class="center_">
+                                          <mat-chip selected class="followColor" (click)="followClicked(user.username, user.Creator)"
+                                          matTooltip="Follow">
+                                             Follow
+                                          </mat-chip>
+                                        </mat-chip-list>
+                                      </div>
+                                      <!-- following -->
+                                      <div class="center_" *ngIf="FOLLOWingYo === 'true'">
+                                        <mat-chip-list class="center_">
+                                          <mat-chip selected (click)="onUnfololow(user.username, user.Creator)"
+                                          class="followingColor" matTooltip="Unfollow">
+                                             Following
+                                          </mat-chip>
+                                        </mat-chip-list>
+                                      </div>
                                         </div>
                                         <!-- <mat-divider *ngIf="user"></mat-divider> -->
                                       </mat-card-content>

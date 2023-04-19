@@ -64,12 +64,31 @@
     align-items: center;
     justify-content: center;
 }
+.center_ {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+}
 .displayContents{
   display: flex;
   justify-content: center;
   flex-direction: column;
 
 }
+.followColor {
+  display: flex;
+  // font-family: 'Poppins',sans-serif; 
+  font-family: 'Cormorant Garamond', serif;
+  background-color: #10173a !important;
+  color: #fff;
+  font-size: large;
+}
+.followingColor{
+  background-color: #10173a !important;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: large;
+  }
 .hash{
   color: #4e647c;
 }

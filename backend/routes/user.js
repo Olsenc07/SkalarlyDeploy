@@ -2575,6 +2575,7 @@ router.get('/getusers', async (req, res) => {
                         $regex: new RegExp('^' + payload ,
                             'i')
                     }},{username: {$ne: blockedlist.blockedUsername}}
+                    ,{Creator: {$ne :userId}}
                 ]}).limit(7)
                 .then((matches) => {
                     if(matches){
