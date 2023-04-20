@@ -62,7 +62,7 @@ export class PostsService {
   private userUpdated = new ReplaySubject();
   private userId: string;
 
-  private userFollowing = [];
+  userFollowing = [];
   private following: string;
 
   private hashUpdated = new ReplaySubject();
