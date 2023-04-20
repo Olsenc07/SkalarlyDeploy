@@ -788,10 +788,10 @@
         </mat-form-field>
        
     <mat-chip-list  [multiple]="false" 
-    *ngFor="let program of selectedProgram"> 
-      <mat-chip class="searchBtn_" [value]="program"
-      (click)="changeTab2(program)">
-            {{ program }}
+    *ngFor="let opt of selectedProgram"> 
+      <mat-chip class="searchBtn_" [value]="opt"
+      (click)="changeTab2(opt)">
+            {{ opt }}
   </mat-chip>
     </mat-chip-list>
 </mat-tab>

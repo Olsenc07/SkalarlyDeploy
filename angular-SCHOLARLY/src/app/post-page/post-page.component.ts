@@ -776,6 +776,11 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.postLocation.setValue(valueCourse);
     }
     if (this.textBooks == false && this.courseReview == false) {
+      console.log('ice out hoe');
+      this.postLocation.setValue(opt);
+    }
+    if (this.instructorReview == true) {
+      console.log('ice out hoe 2');
       this.postLocation.setValue(opt);
     }
     console.log('physics class', this.postLocation.value);
