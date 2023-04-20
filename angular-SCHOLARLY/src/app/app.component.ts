@@ -838,9 +838,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
     // this.users[key].following = followingStatus;
     console.log('final joyner money', followingList.length);
-    let lengthYo = Object.keys(followingList);
-    console.log('final joyner', lengthYo.length);
-    for (let index = 0; index < lengthYo.length; index++) {
+
+    console.log('final joyner', Object.values(followingList).length);
+    for (let index = 0; index < Object.values(followingList).length; index++) {
       console.log('hey');
       this.users[index].following = followingList[index];
       console.log('hey there');

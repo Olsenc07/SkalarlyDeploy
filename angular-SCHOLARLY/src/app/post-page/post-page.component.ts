@@ -506,6 +506,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     console.log('query ', query);
     if (query) {
       const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
+      this.postLocationInstructor.setValue(noSpecialChars);
       this.authService.searchInstructorNames(noSpecialChars.trim());
       this.authService.getInstructor().subscribe((results: Array<string>) => {
         if (results.length !== 0) {

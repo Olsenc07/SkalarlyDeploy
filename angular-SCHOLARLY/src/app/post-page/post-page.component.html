@@ -1100,7 +1100,8 @@
   <!-- Have previous names drop down as options -->
   <mat-form-field *ngIf="postLocation.value && (postLocationMain == 'instructor_rev')">
     <!-- <i matPrefix class="fas fa-address-card"></i> -->
-  <input (keyup)="instructorsName($event)" matInput placeholder="Instructors Name" class="instructorsPadding" [formControl]="postLocationInstructor" 
+  <input (keyup)="instructorsName($event)" matInput placeholder="Instructors Name" class="instructorsPadding"
+   [formControl]="postLocationInstructor" 
   [value]="postLocationInstructor" *ngIf="postLocation.value">
 </mat-form-field>
 
