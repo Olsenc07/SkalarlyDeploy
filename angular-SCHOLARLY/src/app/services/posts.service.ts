@@ -62,7 +62,7 @@ export class PostsService {
   private userUpdated = new ReplaySubject();
   private userId: string;
 
-  private userFollowing = new Subject<Array<boolean>>();
+  private userFollowing: Array<boolean>;
   private following: boolean;
 
   private hashUpdated = new ReplaySubject();
@@ -80,7 +80,7 @@ export class PostsService {
     return this.userUpdated.asObservable();
   }
   getUserFollowing(): any {
-    return this.userFollowing.asObservable();
+    return this.userFollowing;
   }
   getHashs(): any {
     return this.hashUpdated.asObservable();
@@ -147,11 +147,7 @@ export class PostsService {
         next: (response) => {
           console.log('chlor', response);
           this.following = response;
-          this.userFollowing.pipe(
-            tap((currentList) => {
-              currentList.push(this.following);
-            })
-          );
+          this.userFollowing.push(this.following);
           console.log('gooosbeumps', this.userFollowing);
           sub.unsubscribe();
           console.log('eazy 1');
