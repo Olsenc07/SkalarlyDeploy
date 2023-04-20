@@ -62,7 +62,7 @@ export class PostsService {
   private userUpdated = new ReplaySubject();
   private userId: string;
 
-  private userFollowing: Array<boolean>;
+  private userFollowing = [];
   private following: boolean;
 
   private hashUpdated = new ReplaySubject();
@@ -80,6 +80,7 @@ export class PostsService {
     return this.userUpdated.asObservable();
   }
   getUserFollowing(): any {
+    console.log('lets see the truth list', this.userFollowing);
     return this.userFollowing;
   }
   getHashs(): any {

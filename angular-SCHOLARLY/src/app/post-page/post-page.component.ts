@@ -192,9 +192,16 @@ export class PostPageComponent implements OnInit, OnDestroy {
   // Filter the states list and send back to populate the selectedStates**
   searchInstructor(value: string) {
     let filter = value.toLowerCase();
-    return this.programs.filter((option) =>
+    let found = this.programs.filter((option) =>
       option.toLowerCase().includes(filter)
     );
+    if (found.length >= 1) {
+      console.log('ny wow', found);
+      return found;
+    } else {
+      console.log('cali parties', this.specificOptionsSafe);
+      return this.specificOptionsSafe;
+    }
   }
   // Grading instructor
   Grade() {
