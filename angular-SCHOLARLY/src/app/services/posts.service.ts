@@ -63,7 +63,6 @@ export class PostsService {
   private userId: string;
 
   userFollowing = [];
-  private following: string;
 
   private hashUpdated = new ReplaySubject();
   private hashId: string;
@@ -144,14 +143,12 @@ export class PostsService {
         }
       )
       .pipe(map((data) => data.following))
-      .subscribe({
-        next: (response) => {
-          console.log('chlor', response);
-          this.following = response;
-          this.userFollowing.push(this.following);
-          sub.unsubscribe();
-          console.log('eazy 1');
-        },
+      .subscribe((response) => {
+        console.log('chlor', response);
+        this.userFollowing.push(response);
+        sub.unsubscribe();
+        console.log('eazy 1');
+
         // console.log('trans', transformedInfos.Creator);
 
         // this.notifId = transformedInfos.Creator;
