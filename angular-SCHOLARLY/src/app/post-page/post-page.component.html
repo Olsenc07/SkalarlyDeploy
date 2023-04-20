@@ -1107,26 +1107,26 @@
 
 
 <!-- Key up searches data base like search user in app.component search bar-->
-<mat-form-field *ngIf="instructors.length !== 0">
+<div *ngIf="instructors.length !== 0">
   <mat-label class="font">Suggestions {{instructors.length}}</mat-label>
 
-<mat-select >
+<!-- <mat-select >
 <mat-label class="mainCats">
   <i class="fas fa-chalkboard-teacher mainCatsSpace"></i>
   Instructor(s)</mat-label>
-<mat-divider></mat-divider>
+<mat-divider></mat-divider> -->
  
-<mat-option class="optionsCenterStyle" *ngFor="let instructor of instructors;let even = even; let odd = odd"
+<mat-chip-list class="optionsCenterStyle" *ngFor="let instructor of instructors;let even = even; let odd = odd"
 (click)="setFormControlValue(instructor)" >
-<mat-card class="cardStyle" [ngClass]="{ even_: even, odd_: odd }">
-  <mat-card-content >
+<mat-chip class="searchBtn_"  >
+  <!-- <mat-card-content > -->
   {{instructor}}
-</mat-card-content>
-</mat-card>
-</mat-option>
+<!-- </mat-card-content> -->
+</mat-chip>
+</mat-chip-list >
 
-</mat-select>
-</mat-form-field>
+<!-- </mat-select> -->
+</div>
 
 
  <!-- <div class="fontMain" *ngIf="postLocation.value"> -->
