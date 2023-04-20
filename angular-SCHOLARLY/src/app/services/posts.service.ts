@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { ReplaySubject, Subject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 export interface UserNames {
@@ -62,7 +62,7 @@ export class PostsService {
   private userUpdated = new ReplaySubject();
   private userId: string;
 
-  private userFollowing = new Subject();
+  private userFollowing = new Subject<Array<boolean>>();
   private following: boolean;
 
   private hashUpdated = new ReplaySubject();
@@ -147,7 +147,12 @@ export class PostsService {
         next: (response) => {
           console.log('chlor', response);
           this.following = response;
-          this.userFollowing.next(this.following);
+          this.userFollowing.pipe(
+            tap((currentList) => {
+              currentList.push(this.following);
+            })
+          );
+          console.log('gooosbeumps', this.userFollowing);
           sub.unsubscribe();
           console.log('eazy 1');
         },
