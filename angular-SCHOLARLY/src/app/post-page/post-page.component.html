@@ -768,7 +768,7 @@
 
 <!-- Step 2 start -->
 <!-- If instructor review -->
-<mat-tab label="Step 2: Select The Program of Instructor" *ngIf="(instructorReview == true) && (postLocationMain.length >= 1)  && (postLocationMain == 'instructor_rev') " disabled>
+<mat-tab label="Step 2: Select The Program of Instructor" *ngIf="(instructorReview == true) && (postLocationMain == 'instructor_rev') " disabled>
   <!-- Step 2 -->
   <div class="display_">
     <button  type="button" color="primary"  mat-icon-button 
@@ -783,7 +783,7 @@
         <i class="fas fa-feather-alt "></i>
         Program of Instructor</mat-label> -->
         <mat-form-field class="font" appearance="outline">
-          <input matInput [formControl]="postLocation"  placeholder="Quick Search" 
+          <input matInput  placeholder="Quick Search" 
           (keyup)="onKey($event.target.value)"> 
         </mat-form-field>
        

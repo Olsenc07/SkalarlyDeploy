@@ -823,9 +823,13 @@ export class AppComponent implements OnInit, OnDestroy {
   checkFollowingSearch() {
     let followingList = [];
     // for (let i = 0; i < newList.length; i++)
-    for (let key of this.users) {
-      console.log('how many keys', key.username);
-      this.postsService.checkFollowing(this.userId, key.username);
+    let newList = [];
+    this.users.forEach((names) => {
+      newList.push(names.username);
+    });
+    for (let i in newList) {
+      console.log('how many keys', i);
+      this.postsService.checkFollowing(this.userId, i);
       this.postsService
         .getUserFollowing()
         .subscribe((followingStatus: boolean) => {
