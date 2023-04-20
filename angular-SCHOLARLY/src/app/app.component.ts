@@ -827,6 +827,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.users.forEach((names) => {
       newList.push(names.username);
     });
+    console.log('newList', newList);
     for (let i in newList) {
       console.log('how many keys', i);
       this.postsService.checkFollowing(this.userId, i);

@@ -453,7 +453,7 @@
           Housing</mat-chip-option>
    
           <mat-chip-option color="primary"  class="searchBtn" 
-          (click)="onSearchSelection('instructor_rev')" 
+      
           (click)="changeTab1()" (click)="Instructors()">
           <i class="fas fa-chalkboard-teacher"></i>
           Instructor Review 
@@ -768,7 +768,7 @@
 
 <!-- Step 2 start -->
 <!-- If instructor review -->
-<mat-tab label="Step 2: Select The Program of Instructor" *ngIf="(instructorReview == true) && (postLocationMain == 'instructor_rev') " disabled>
+<mat-tab label="Step 2: Select The Program of Instructor" *ngIf="(instructorReview == true)" disabled>
   <!-- Step 2 -->
   <div class="display_">
     <button  type="button" color="primary"  mat-icon-button 
