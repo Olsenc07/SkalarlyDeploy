@@ -148,7 +148,7 @@ export class PostsService {
         next: (response) => {
           console.log('chlor', response);
           this.following = response;
-          this.userFollowing.push({ follow: this.following });
+          this.userFollowing.push(this.following);
           console.log('gooosbeumps', this.userFollowing);
           sub.unsubscribe();
           console.log('eazy 1');
