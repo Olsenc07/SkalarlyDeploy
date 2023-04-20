@@ -1098,7 +1098,7 @@
   <div class="columnCenter">
   <!-- <mat-label class="font"> </mat-label> -->
   <!-- Have previous names drop down as options -->
-  <mat-form-field *ngIf="postLocation.value && (postLocationMain.value == 'Instructor Review')">
+  <mat-form-field *ngIf="postLocation.value && (postLocationMain.value == 'instructor_rev')">
     <!-- <i matPrefix class="fas fa-address-card"></i> -->
   <input (keyup)="instructorsName($event)" matInput placeholder="Instructors Name" class="instructorsPadding" [formControl]="postLocationInstructor" 
   [value]="postLocationInstructor" *ngIf="postLocation.value">
@@ -1109,7 +1109,7 @@
 <mat-form-field *ngIf="instructors.length !== 0">
   <mat-label class="font">Suggestions {{instructors.length}}</mat-label>
 
-<mat-select *ngIf="(postLocationMain.value == 'Instructor Review')">
+<mat-select *ngIf="(postLocationMain.value == 'instructor_rev')">
 <mat-label class="mainCats">
   <i class="fas fa-chalkboard-teacher mainCatsSpace"></i>
   Instructor(s)</mat-label>

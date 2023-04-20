@@ -184,6 +184,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     'Yiddish Studies',
   ];
   selectedProgram = this.programs;
+  specificOptionsSafe2 = this.programs;
   // Receive user input and send to search method**
   onKey(value: string) {
     this.selectedProgram = this.searchInstructor(value);
@@ -199,8 +200,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
       console.log('ny wow', found);
       return found;
     } else {
-      console.log('cali parties', this.specificOptionsSafe);
-      return this.specificOptionsSafe;
+      console.log('cali parties', this.specificOptionsSafe2);
+      return this.specificOptionsSafe2;
     }
   }
   // Grading instructor
