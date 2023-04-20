@@ -63,7 +63,7 @@ export class PostsService {
   private userId: string;
 
   private userFollowing = [];
-  private following: boolean;
+  private following: string;
 
   private hashUpdated = new ReplaySubject();
   private hashId: string;
@@ -137,7 +137,7 @@ export class PostsService {
   }
   checkFollowing(userId: string, othersUsername: string): any {
     const sub = this.http
-      .get<{ messages: string; following: boolean }>(
+      .get<{ messages: string; following: string }>(
         'https://www.skalarly.com/api/user/checkFollowing',
         {
           params: { userId, othersUsername },
@@ -149,7 +149,6 @@ export class PostsService {
           console.log('chlor', response);
           this.following = response;
           this.userFollowing.push(this.following);
-          console.log('gooosbeumps', this.userFollowing);
           sub.unsubscribe();
           console.log('eazy 1');
         },

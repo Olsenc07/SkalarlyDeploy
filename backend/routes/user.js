@@ -2575,12 +2575,12 @@ console.log('userId',userId);
                 
                 res.status(200).json({
                     message: 'Matches returned!',
-                    following: true
+                    following: 'true'
                 });
             }else{
                 res.status(200).json({
                     message: 'No following',
-                    following: false
+                    following: 'false'
                 });
             }
         })
