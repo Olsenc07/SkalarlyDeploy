@@ -837,12 +837,12 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log('check boolean list', typeof followingList);
 
     // this.users[key].following = followingStatus;
-    console.log('final joyner money', Object.entries(followingList).length);
+    console.log('final joyner money', newList.length);
     console.log('spicy', Object.keys(followingList).length);
     console.log('hot', followingList.length);
 
-    console.log('final joyner', Object.entries(followingList).length);
-    for (let index = 0; index < Object.entries(followingList).length; index++) {
+    console.log('final joyner', Object.values(followingList).length);
+    for (let index = 0; index < newList.length; index++) {
       console.log('hey');
       this.users[index].following = followingList[index];
       console.log('hey there');
