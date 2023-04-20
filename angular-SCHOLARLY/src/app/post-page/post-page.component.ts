@@ -250,6 +250,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   public HashTagLength = new BehaviorSubject(0);
 
   postLocationMain = '';
+  mainCat = '';
   postLocation: FormControl = new FormControl('');
 
   postLocationInstructor: FormControl = new FormControl('');
@@ -559,6 +560,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   CourseReview() {
     this.courseReview = true;
   }
+  mainCats(value: string) {
+    this.mainCat = value;
+  }
   onSearchSelection(value: string): any {
     console.log('fry', value);
     this.postLocationMain = value;
@@ -759,6 +763,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.selectedIndex = this.selectedIndex === 0 ? 1 : 0;
     this.postLocation.setValue('');
     this.specificOptions = null;
+    this.mainCat = '';
+    this.postLocationMain = '';
     this.textBooks = false;
     this.courseReview = false;
     this.instructorReview = false;

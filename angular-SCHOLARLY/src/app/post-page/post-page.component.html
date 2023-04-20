@@ -145,17 +145,20 @@
           <div class="centerOptions">
           <mat-chip-option  (click)="onSearchSelection('blue_clubs')" 
             (click)="changeTab1()"
+            (click)="mainCats('Blues Clubs')"
             class="searchBtn">
            <i class="fas fa-cubes"></i>
            Blues Clubs</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('buy_sell')"
           (click)="changeTab1()">
+          (click)="mainCats('Buy & Sell')"
           <i class="fas fa-comment-dollar"></i>
           Buy & Sell</mat-chip-option >
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('college_connection')"
           (click)="changeTab1()">
+          (click)="mainCats('College Connections')"
           <i class="fas fa-university"></i>
           College Connections</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn" 
@@ -433,22 +436,30 @@
             </mat-menu>  
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('entrep')" 
-          (click)="changeTab1()">
+          (click)="changeTab1()"
+          (click)="mainCats('Entrepreneurial Opportunities')"
+          >
           <i class="far fa-lightbulb"></i>
           Entrepreneurial Opportunities</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('finance')" 
-          (click)="changeTab1()">
+          (click)="changeTab1()"
+          (click)="mainCats('Financial Opportunities')"
+          >
           <i class="fas fa-dollar-sign"></i>
           Financial Opportunities</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('help')" 
-          (click)="changeTab1()">
+          (click)="changeTab1()"
+          (click)="mainCats('Helping Hand')"
+          >
           <i class="fas fa-hands-helping"></i>
           Helping Hand</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('housing')" 
-          (click)="changeTab1()">
+          (click)="changeTab1()"
+          (click)="mainCats('Housing')"
+          >
           <i class="fas fa-home"></i>
           Housing</mat-chip-option>
    
@@ -463,21 +474,28 @@
 
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('course_a_e')" 
-          (click)="changeTab1()">
+          (click)="changeTab1()"
+          (click)="mainCats('Programs A-E')"
+          >
           <i class="fas fa-feather-alt"></i>
           Programs A-E</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('course_f_m')" 
-          (click)="changeTab1()">
+          (click)="changeTab1()"
+          (click)="mainCats('Programs F-M')"
+          >
           <i class="fas fa-feather-alt"></i>
           Programs F-M</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('course_n_z')" 
-          (click)="changeTab1()">
+          (click)="changeTab1()"
+          (click)="mainCats('Programs N-Z')"
+          >
           <i class="fas fa-feather-alt"></i>
           Programs N-Z</mat-chip-option>
 
           <mat-chip-option color="primary"  class="searchBtn" [matMenuTriggerFor]="menu"
+          (click)="mainCats('School Work A-Z')"
         >
           <i class="fas fa-book-reader"></i>
           School Work A-Z</mat-chip-option>
@@ -730,17 +748,20 @@
           School Work N-Z</mat-chip-option> -->
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('spiritituality')" 
-          (click)="changeTab1()">
+          (click)="changeTab1()"
+          (click)="mainCats('Spirituality')">
           <i class="fas fa-praying-hands"></i>
           Spirituality</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('questions')" 
-          (click)="changeTab1()">
+          (click)="changeTab1()"
+          (click)="mainCats('Questions')">
           <i class="far fa-question-circle"></i>
           Questions</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('upcoming_events')" 
-          (click)="changeTab1()">
+          (click)="changeTab1()"
+          (click)="mainCats('Upcoming Events')">
           <i class="fas fa-calendar-day"></i>
           Upcoming Events</mat-chip-option>
           <!-- <mat-chip-option *ngFor="let opt of searchOptions" [value]="opt.name"
@@ -1138,7 +1159,7 @@
 <!-- </mat-form-field> -->
 <!-- </div> -->
 <mat-divider *ngIf="postLocationInstructor.value"></mat-divider>
-<div class="font" *ngIf="postLocation.value && postLocationInstructor.value && (postLocationMain.value == 'instructor_rev')">Grade Instructor
+<div class="font" *ngIf="postLocation.value && postLocationInstructor.value && (postLocationMain == 'instructor_rev')">Grade Instructor
   <mat-checkbox (click)="Grade()"
   ></mat-checkbox>
 </div>
@@ -1235,7 +1256,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
     <button  type="button" color="primary"  mat-raised-button class="final_step_btn"
     (click)="changeTab3()">Back</button>
     <button id="nextBtn" mat-raised-button color="primary" type="button" class="final_step_btn" 
-     (click)="changeTab()" *ngIf="(postLocationMain.value !== 'Instructor Review ') || postLocationInstructor.value ">
+     (click)="changeTab()" *ngIf="(postLocationMain !== 'instructor_rev') || postLocationInstructor.value ">
       Next Step
   </button>
     </div>
@@ -1302,6 +1323,13 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
       <!-- Step1 -->
       <mat-vertical-stepper [linear]="isLinear" #stepper>
   <mat-step  class="column_">
+    <div class="fontBtn" *ngIf="instructorReview == true">Instructor Review For {{postLocationInstructor}} In {{postLocation}} </div>
+    <div class="fontBtn" *ngIf="courseReview == true">Course Review For {{postLocation}} </div>
+    <div class="fontBtn" *ngIf="textBooks == true"> {{mainCat}} Textbooks For {{postLocation}} </div>
+    <div class="fontBtn" *ngIf="(textBooks && instructorReview && courseReview) == false"> {{mainCat}} For {{postLocation}} </div>
+
+
+
           <form >
             <ng-template matStepLabel>When & Where</ng-template>
             <div class="column_text_counter"> 
