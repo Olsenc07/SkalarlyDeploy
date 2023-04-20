@@ -834,9 +834,10 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     // pull all the booleans at once
     followingList = this.postsService.getUserFollowing();
-    console.log('check boolean list', followingList);
+    console.log('check boolean list', typeof followingList);
 
     // this.users[key].following = followingStatus;
+    console.log('final joyner money', followingList.length);
 
     console.log('final joyner', Object.keys(followingList).length);
     for (let index = 0; index < Object.keys(followingList).length; index++) {
