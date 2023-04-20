@@ -771,7 +771,7 @@
 <mat-tab label="Step 2: Select The Program of Instructor" *ngIf="(instructorReview == true) && (postLocationMain == 'instructor_rev') " disabled>
   <!-- Step 2 -->
   <div class="display_">
-    <button  type="button" color="primary"  mat-icon-button 
+    <button color="primary" mat-icon-button 
     (click)="changeTabB()"><i class="fas fa-arrow-left"></i></button>
 
     <div *ngIf="instructorReview == true" class="font">Program of Instructor</div>
@@ -783,11 +783,11 @@
         <i class="fas fa-feather-alt "></i>
         Program of Instructor</mat-label> -->
         <mat-form-field class="font" appearance="outline">
-          <input matInput  placeholder="Quick Search" 
+          <input matInput [formControl]="postLocation" placeholder="Quick Search" 
           (keyup)="onKey($event.target.value)"> 
         </mat-form-field>
        
-    <mat-chip-list  [formControl]="postLocation" [multiple]="false" 
+    <mat-chip-list  [multiple]="false" 
     *ngFor="let program of selectedProgram"> 
       <mat-chip class="searchBtn_" [value]="program"
       (click)="changeTab2(program)">
