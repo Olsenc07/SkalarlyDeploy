@@ -453,7 +453,7 @@
           Housing</mat-chip-option>
    
           <mat-chip-option color="primary"  class="searchBtn" 
-      
+          (click)="onSearchSelection('instructor_rev')" 
           (click)="changeTab1()" (click)="Instructors()">
           <i class="fas fa-chalkboard-teacher"></i>
           Instructor Review 
@@ -768,7 +768,7 @@
 
 <!-- Step 2 start -->
 <!-- If instructor review -->
-<mat-tab label="Step 2: Select The Program of Instructor" *ngIf="(instructorReview == true)" disabled>
+<mat-tab label="Step 2: Select The Program of Instructor" *ngIf="(instructorReview == true) && (postLocationMain == 'instructor_rev') " disabled>
   <!-- Step 2 -->
   <div class="display_">
     <button  type="button" color="primary"  mat-icon-button 
@@ -798,7 +798,7 @@
 
 
 <!-- If previous was not instructor review -->
-        <mat-tab label="Step 2: Select The Specific Page" *ngIf="(specificOptions) && (postLocationMain.length >= 1)  && (postLocationMain !== 'Instructor Review')" disabled>
+        <mat-tab label="Step 2: Select The Specific Page" *ngIf="(specificOptions) && (postLocationMain.length >= 1)  && (postLocationMain !== 'instructor_rev')" disabled>
   <!-- Step 2 -->
   <!-- <mat-selection-list  #options2 class="second_selection" [multiple]="false" >
     <mat-form-field  class="shadow2"  id="nextBtn2">
@@ -830,7 +830,7 @@
           <!-- new attempt -->
           <div *ngIf=" specificOptions.length >= 1" class="mat-list-text">
             <div class="display_">
-              <button  type="button" color="primary"  mat-icon-button 
+              <button color="primary"  mat-icon-button 
               (click)="changeTabB()"><i class="fas fa-arrow-left"></i></button>
               <!-- <button *ngIf="postLocation.value"  type="button" color="primary" class="final_step_btn" mat-raised-button 
               (click)="changeTab2()">Next</button> -->
