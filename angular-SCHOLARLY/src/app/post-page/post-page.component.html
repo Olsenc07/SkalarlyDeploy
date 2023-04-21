@@ -1160,8 +1160,13 @@
  <!-- {{ postLocation2.value }} -->
 <!-- </mat-form-field> -->
 <!-- </div> -->
-<mat-divider *ngIf="postLocationInstructor.value"></mat-divider>
+<mat-divider *ngIf="postLocationInstructor.value || postLocation.value"></mat-divider>
 <div class="font" *ngIf="postLocation.value && postLocationInstructor.value && (postLocationMain == 'instructor_rev')">Grade Instructor
+  <mat-checkbox (click)="Grade()"
+  ></mat-checkbox>
+</div>
+<!-- course -->
+<div class="font" *ngIf="postLocation.value ">Grade Course
   <mat-checkbox (click)="Grade()"
   ></mat-checkbox>
 </div>
@@ -1326,7 +1331,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
       <mat-vertical-stepper [linear]="isLinear" #stepper>
   <mat-step  class="column_">
     <div class="fontBtn" *ngIf="instructorReview == true">Instructor Review For {{postLocationInstructor.value}} In {{postLocation.value}} </div>
-    <div class="fontBtn" *ngIf="courseReview == true">Course Review For {{postLocation.value}} </div>
+    <div class="fontBtn" *ngIf="courseReview == true">{{postLocation.value}} </div>
     <div class="fontBtn" *ngIf="textBooks == true"> {{mainCat}} Textbooks For {{postLocation.value}} </div>
     <div class="fontBtn" *ngIf="(textBooks && instructorReview && courseReview ) !== true"> {{mainCat}} For {{postLocation.value}} </div>
 
