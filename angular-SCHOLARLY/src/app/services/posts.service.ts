@@ -80,7 +80,9 @@ export class PostsService {
   }
   getUserFollowing(): any {
     console.log('lets see the truth list', this.userFollowing);
-    return this.userFollowing;
+    let whatYouEant = this.userFollowing;
+    this.userFollowing = [];
+    return whatYouEant;
   }
   getHashs(): any {
     return this.hashUpdated.asObservable();

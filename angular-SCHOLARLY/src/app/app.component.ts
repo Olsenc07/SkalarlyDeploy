@@ -831,8 +831,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
       tracker++;
     }
-    console.log('tracker', tracker);
-
     if (tracker == newList.length) {
       followingList = this.postsService.getUserFollowing();
       console.log('check boolean list', followingList);

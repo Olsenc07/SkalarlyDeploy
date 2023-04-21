@@ -209,6 +209,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
     console.log('grade', this.GradeBoolean);
     this.GradeBoolean = !this.GradeBoolean;
     this.instructorRating.setValue('');
+    this.knowledgeRating.setValue('');
+    this.profesionalismRating.setValue('');
   }
   overallGrade() {
     this.knowledgeRating.valueChanges.subscribe((values) => {
