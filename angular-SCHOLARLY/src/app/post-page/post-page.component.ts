@@ -782,7 +782,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
       let valueCourse = courseYo.concat(' ', opt);
       this.postLocation.setValue(valueCourse);
     }
-    if (this.textBooks == false && this.courseReview == false) {
+    if (this.textBooks !== true && this.courseReview !== true) {
       console.log('ice out hoe');
       this.postLocation.setValue(opt);
     }
