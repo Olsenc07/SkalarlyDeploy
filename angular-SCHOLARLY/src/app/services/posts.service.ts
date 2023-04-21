@@ -62,7 +62,7 @@ export class PostsService {
   private userUpdated = new ReplaySubject();
   private userId: string;
 
-  userFollowing = [];
+  userFollowing: Array<string>;
 
   private hashUpdated = new ReplaySubject();
   private hashId: string;
@@ -82,6 +82,8 @@ export class PostsService {
     console.log('lets see the truth list', this.userFollowing);
     let whatYouEant = this.userFollowing;
     this.userFollowing = [];
+    console.log('lets see the truth list 2', this.userFollowing);
+
     return whatYouEant;
   }
   getHashs(): any {
@@ -150,12 +152,6 @@ export class PostsService {
         this.userFollowing.push(response);
         sub.unsubscribe();
         console.log('eazy 1');
-
-        // console.log('trans', transformedInfos.Creator);
-
-        // this.notifId = transformedInfos.Creator;
-        // console.log('hello', this.notifId);
-        // this.notifUpdated.next(this.notifId);
       });
   }
   // Hashtag search
