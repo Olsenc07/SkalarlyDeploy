@@ -151,14 +151,16 @@
            Blues Clubs</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('buy_sell')"
-          (click)="changeTab1()">
+          (click)="changeTab1()"
           (click)="mainCats('Buy & Sell')"
+          >
           <i class="fas fa-comment-dollar"></i>
           Buy & Sell</mat-chip-option >
           <mat-chip-option color="primary"  class="searchBtn"
           (click)="onSearchSelection('college_connection')"
-          (click)="changeTab1()">
+          (click)="changeTab1()"
           (click)="mainCats('College Connections')"
+          >
           <i class="fas fa-university"></i>
           College Connections</mat-chip-option>
           <mat-chip-option color="primary"  class="searchBtn" 
@@ -1326,7 +1328,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
     <div class="fontBtn" *ngIf="instructorReview == true">Instructor Review For {{postLocationInstructor}} In {{postLocation}} </div>
     <div class="fontBtn" *ngIf="courseReview == true">Course Review For {{postLocation}} </div>
     <div class="fontBtn" *ngIf="textBooks == true"> {{mainCat}} Textbooks For {{postLocation}} </div>
-    <div class="fontBtn" *ngIf="(textBooks && instructorReview && courseReview) == false"> {{mainCat}} For {{postLocation}} </div>
+    <div class="fontBtn" *ngIf="(textBooks && instructorReview && courseReview ) !== true"> {{mainCat}} For {{postLocation}} </div>
 
 
 

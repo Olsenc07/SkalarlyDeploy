@@ -828,11 +828,12 @@ export class AppComponent implements OnInit, OnDestroy {
       console.log('how many keys', i);
       this.postsService.checkFollowing(this.userId, i);
       let tracker = 0;
+      console.log('tracker', tracker);
       tracker++;
       if (tracker == newList.length) {
         followingList = this.postsService.getUserFollowing();
         console.log('check boolean list', followingList);
-        for (let index = 0; index < newList.length; index++) {
+        for (let index = 0; index < followingList.length; index++) {
           console.log('hey');
           this.users[index].following = followingList[index];
           console.log('hey there');
