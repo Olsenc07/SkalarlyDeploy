@@ -661,11 +661,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       });
   }
-  // Checking following
-  checkFollowing() {
-    // check from sendData list and match names
-    console.log('welcome to my world', this.userId);
-  }
+
   // Follow skalar from search bar
   followClicked(username: string, id: string): any {
     const FollowingId = id;
@@ -831,18 +827,17 @@ export class AppComponent implements OnInit, OnDestroy {
     for (let i of newList) {
       console.log('how many keys', i);
       this.postsService.checkFollowing(this.userId, i);
-    }
-    // pull all the booleans at once
-    followingList = this.postsService.getUserFollowing();
-    console.log('check boolean list', followingList[0]);
-
-    // this.users[key].following = followingStatus;
-    console.log('final joyner money', newList.length);
-
-    for (let index = 0; index < newList.length; index++) {
-      console.log('hey');
-      this.users[index].following = followingList[index];
-      console.log('hey there');
+      let tracker = 0;
+      tracker++;
+      if (tracker == newList.length) {
+        followingList = this.postsService.getUserFollowing();
+        console.log('check boolean list', followingList);
+        for (let index = 0; index < newList.length; index++) {
+          console.log('hey');
+          this.users[index].following = followingList[index];
+          console.log('hey there');
+        }
+      }
     }
     console.log('final joyner 77', this.users);
   }

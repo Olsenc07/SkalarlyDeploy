@@ -113,6 +113,9 @@
   animation: dotPulseAfter 1.5s infinite linear;
   animation-delay: .5s;
 }
+.hint{
+  color: grey;
+}
 .popUpBox{
   display: flex;
   flex-direction: column;
