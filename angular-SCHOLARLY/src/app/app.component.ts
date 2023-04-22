@@ -833,14 +833,22 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     if (tracker == newList.length) {
       followingList = this.postsService.getUserFollowing();
-      console.log('check boolean list 77', typeof followingList);
-      let List = Object.values(followingList);
-      console.log('check boolean list', List);
+      console.log('check boolean list 77', followingList);
+      // 1
       let followList = [];
       followingList.forEach((followEh) => {
+        console.log('what we looking at', followEh);
         followList.push(followEh.follow);
       });
       console.log('meet me at my service', followList);
+      // 2
+      let followList2 = [];
+      Object.values(followingList).forEach((followEh) => {
+        console.log('what we looking at 2', followEh);
+        followList2.push(followEh);
+      });
+      console.log('meet me at my service 2', followList2);
+
       for (let index = 0; index < followList.length; index++) {
         console.log('hey', index);
         this.users[index].following = followList[index];
