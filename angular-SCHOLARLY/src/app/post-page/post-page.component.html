@@ -866,7 +866,7 @@
           </mat-form-field>
           <mat-chip-list 
            [multiple]="false" *ngFor="let opt of specificOptions" >
-            <mat-chip *ngIf="opt !== 'Textbooks' " (click)="changeTab2(opt)" (click)="changeTab()"
+            <mat-chip *ngIf="(opt !== 'Textbooks') && (courseReview !== true)" (click)="changeTab2(opt)" (click)="changeTab()"
              [value]="opt" class="searchBtn_"   >
               {{ opt }}
             </mat-chip>
@@ -1330,6 +1330,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
       <!-- Step1 -->
       <mat-vertical-stepper [linear]="isLinear" #stepper>
   <mat-step  class="column_">
+    <div class="postingIn">Posting In</div>
     <div class="fontBtn" *ngIf="instructorReview == true">Instructor Review For {{postLocationInstructor.value}} In {{postLocation.value}} </div>
     <div class="fontBtn" *ngIf="courseReview == true">{{postLocation.value}} </div>
     <div class="fontBtn" *ngIf="textBooks == true"> {{mainCat}} Textbooks For {{postLocation.value}} </div>
