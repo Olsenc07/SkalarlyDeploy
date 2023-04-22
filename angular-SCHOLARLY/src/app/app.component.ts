@@ -840,6 +840,7 @@ export class AppComponent implements OnInit, OnDestroy {
       followingList.forEach((followEh) => {
         followList.push(followEh.follow);
       });
+      console.log('meet me at my service', followList);
       for (let index = 0; index < followList.length; index++) {
         console.log('hey', index);
         this.users[index].following = followList[index];
