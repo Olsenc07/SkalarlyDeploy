@@ -1166,7 +1166,7 @@
   ></mat-checkbox>
 </div>
 <!-- course -->
-<div class="font" *ngIf="postLocation.value ">Grade Course
+<div class="font" *ngIf="postLocation.value && (courseReview == true) ">Grade Course
   <mat-checkbox (click)="Grade()"
   ></mat-checkbox>
 </div>
