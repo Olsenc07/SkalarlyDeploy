@@ -834,13 +834,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (tracker == newList.length) {
       followingList = this.postsService.getUserFollowing();
       console.log('check boolean list 77', followingList);
-      // 2
-      let followList2 = [];
-      followingList.forEach((followEh) => {
-        console.log('what we looking at 2', followEh);
-        followList2.push(followEh.follow);
-      });
-      console.log('meet me at my service 2', followList2);
+
       // 1
       let followList = [];
       followingList.forEach((followEh) => {
@@ -849,9 +843,9 @@ export class AppComponent implements OnInit, OnDestroy {
       });
       console.log('meet me at my service', followList);
 
-      for (let index = 0; index < followList2.length; index++) {
+      for (let index = 0; index < followList.length; index++) {
         console.log('hey', index);
-        this.users[index].following = followList2[index];
+        this.users[index].following = followList[index];
         console.log('hey there');
       }
     }

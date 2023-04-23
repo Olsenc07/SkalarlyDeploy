@@ -148,7 +148,8 @@ export class PostsService {
       .pipe(map((data) => data.following))
       .subscribe((response) => {
         console.log('chlor', response);
-        let middleYo = { follow: response };
+        let middleYo = [response];
+
         this.userFollowing.push(middleYo);
         sub.unsubscribe();
         console.log('eazy 1');
