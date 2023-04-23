@@ -62,7 +62,7 @@ export class PostsService {
   private userUpdated = new ReplaySubject();
   private userId: string;
 
-  userFollowing = [];
+  userFollowing: Array<string> = [];
 
   private hashUpdated = new ReplaySubject();
   private hashId: string;
@@ -80,10 +80,13 @@ export class PostsService {
   }
   getUserFollowing(): any {
     console.log('lets see the truth list', this.userFollowing);
-    this.userFollowing;
+    let safeList = this.userFollowing;
+    console.log('safeList', safeList);
+
+    this.userFollowing = [];
     console.log('lets see the truth list 2', this.userFollowing);
 
-    return this.userFollowing;
+    return safeList;
   }
   getHashs(): any {
     return this.hashUpdated.asObservable();
@@ -148,7 +151,9 @@ export class PostsService {
       .pipe(map((data) => data.following))
       .subscribe((response) => {
         console.log('chlor', response);
-        console.log('userFollowing', this.userFollowing);
+        let testYourLady = [];
+        testYourLady.push(response);
+        console.log('ruby got a problem', testYourLady);
         this.userFollowing.push(response);
         sub.unsubscribe();
         console.log('eazy 1');
