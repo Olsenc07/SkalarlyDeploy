@@ -561,6 +561,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   CourseReview() {
     this.courseReview = true;
+    console.log('course review is true');
   }
   mainCats(value: string) {
     this.mainCat = value;

@@ -1197,7 +1197,7 @@ Inadequate
   </mat-slider> -->
   <!-- knowledge rating -->
   <mat-card class="cardStyle">
-  <mat-card-content class="fontColumn" *ngIf="(postLocationInstructor.value) && (GradeBoolean == true)">
+  <mat-card-content class="fontColumn" *ngIf="(postLocationInstructor.value || courseReview == true) && (GradeBoolean == true)">
     <div *ngIf="instructorReview == true" class="fontStart">
     Knowledge and Enthusiasm For Subject Matter: {{knowledgeRating.value}} /5
     </div>
