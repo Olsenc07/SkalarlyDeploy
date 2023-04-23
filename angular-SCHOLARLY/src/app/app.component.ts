@@ -835,17 +835,11 @@ export class AppComponent implements OnInit, OnDestroy {
       followingList = this.postsService.getUserFollowing();
       console.log('check boolean list 77', followingList);
 
-      // 1
-      let followList = [];
-      followingList.forEach((followEh) => {
-        console.log('what we looking at', followEh);
-        followList.push(followEh);
-      });
-      console.log('meet me at my service', followList);
+      console.log('meet me at my service', followingList);
 
-      for (let index = 0; index < followList.length; index++) {
+      for (let index = 0; index < followingList.length; index++) {
         console.log('hey', index);
-        this.users[index].following = followList[index];
+        this.users[index].following = followingList[index];
         console.log('hey there');
       }
     }
