@@ -819,6 +819,7 @@ export class AppComponent implements OnInit, OnDestroy {
   checkFollowingSearch() {
     // for (let i = 0; i < newList.length; i++)
     let newList = [];
+    let followingList1 = [];
     this.users.forEach((names) => {
       newList.push(names.username);
     });
@@ -831,14 +832,11 @@ export class AppComponent implements OnInit, OnDestroy {
       tracker++;
     }
     if (tracker == newList.length) {
-      let followingList1 = [];
-      this.postsService.getUserFollowing();
       followingList1 = this.postsService.getUserFollowing();
-
       console.log('hey there', followingList1);
-      // let followingList = [];
-      // followingList.push(followingList1);
-      // console.log('beautiful boy', followingList);
+      console.log('hey there 2', followingList1.length);
+    }
+    if (followingList1.length == newList.length) {
       for (let index = 0; index < followingList1.length; index++) {
         console.log('hey', index);
         this.users[index].following = followingList1[index];

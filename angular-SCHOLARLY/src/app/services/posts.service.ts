@@ -63,7 +63,6 @@ export class PostsService {
   private userId: string;
 
   userFollowing = [];
-  followingString: string;
 
   private hashUpdated = new ReplaySubject();
   private hashId: string;
@@ -80,7 +79,7 @@ export class PostsService {
     return this.userUpdated.asObservable();
   }
 
-  getUserFollowing(): any {
+  getUserFollowing(): Array<string> {
     // reset list
     // this.userFollowing = [];
     console.log('break the crust', this.userFollowing);
@@ -150,8 +149,7 @@ export class PostsService {
       .pipe(map((data) => data.following))
       .subscribe((response) => {
         console.log('chlor', response);
-        this.followingString = response;
-        this.userFollowing.push(this.followingString);
+        this.userFollowing.push(response);
         sub.unsubscribe();
         console.log('eazy 1');
       });
