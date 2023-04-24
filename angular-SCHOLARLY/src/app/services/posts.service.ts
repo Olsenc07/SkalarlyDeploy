@@ -63,6 +63,7 @@ export class PostsService {
   private userId: string;
 
   userFollowing: Array<string> = [];
+  private safeList = new Subject();
 
   private hashUpdated = new ReplaySubject();
   private hashId: string;
@@ -78,15 +79,14 @@ export class PostsService {
   getUserId(): any {
     return this.userUpdated.asObservable();
   }
+
   getUserFollowing(): any {
-    console.log('lets see the truth list', this.userFollowing);
-    let safeList = this.userFollowing;
-    console.log('safeList', safeList);
-
+    this.safeList.next(this.userFollowing);
+    // reset list
     this.userFollowing = [];
-    console.log('lets see the truth list 2', this.userFollowing);
-
-    return safeList;
+    console.log('break the crust', this.safeList);
+    console.log('break the crust 2', this.userFollowing);
+    return this.safeList.asObservable();
   }
   getHashs(): any {
     return this.hashUpdated.asObservable();

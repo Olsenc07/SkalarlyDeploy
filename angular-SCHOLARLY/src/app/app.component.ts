@@ -832,16 +832,16 @@ export class AppComponent implements OnInit, OnDestroy {
       tracker++;
     }
     if (tracker == newList.length) {
-      followingList = this.postsService.getUserFollowing();
-      console.log('check boolean list 77', followingList);
+      this.postsService.getUserFollowing().subscribe((followListFound) => {
+        console.log('howdy', typeof followListFound);
+        followingList = followListFound;
+        console.log('hey there', followingList);
 
-      console.log('meet me at my service', followingList);
-
-      for (let index = 0; index < followingList.length; index++) {
-        console.log('hey', index);
-        this.users[index].following = followingList[index];
-        console.log('hey there');
-      }
+        for (let index = 0; index < followingList.length; index++) {
+          console.log('hey', index);
+          this.users[index].following = followingList[index];
+        }
+      });
     }
     console.log('final joyner 77', this.users);
   }

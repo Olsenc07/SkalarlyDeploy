@@ -1229,7 +1229,7 @@ Inadequate
 <mat-divider *ngIf="(postLocationInstructor.value) && (GradeBoolean == true)" class="spaceUp"></mat-divider>
   <!-- Profesionalism -->
   <mat-card class="cardStyle">
-  <mat-card-content class="fontColumn" *ngIf="postLocationInstructor.value && (GradeBoolean == true)">
+  <mat-card-content class="fontColumn" *ngIf="(postLocationInstructor.value || courseReview == true)  && (GradeBoolean == true)">
     <div *ngIf="instructorReview == true" class="fontStart">
 Profesionalism and Approachability: {{profesionalismRating.value}} /5
 </div>
