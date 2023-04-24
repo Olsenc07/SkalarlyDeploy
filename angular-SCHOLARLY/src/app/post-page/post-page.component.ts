@@ -86,6 +86,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   private titleSub: Subscription;
   private HashSub: Subscription;
   private locationSub: Subscription;
+  private knowledgeSub: Subscription;
+  private profSub: Subscription;
+
   userId: string;
 
   url: string;
@@ -206,34 +209,49 @@ export class PostPageComponent implements OnInit, OnDestroy {
   }
   // Grading instructor
   Grade() {
-    console.log('grade', this.GradeBoolean);
     this.GradeBoolean = !this.GradeBoolean;
-    this.instructorRating.setValue(5);
-    this.knowledgeRating.setValue(2.5);
-    this.profesionalismRating.setValue(2.5);
-    this.knowledgeRating.valueChanges.subscribe((value) => {
-      console.log('value1', value);
-    });
-    this.profesionalismRating.valueChanges.subscribe((value) => {
-      console.log('value2', value);
-    });
+    console.log('grade', this.GradeBoolean);
+    if (this.GradeBoolean == false) {
+      this.instructorRating.setValue(5);
+      this.instructorRatingView = 5;
+      this.knowledgeRating.setValue(2.5);
+      this.profesionalismRating.setValue(2.5);
+      // this.knowledgeSub = this.knowledgeRating.valueChanges.subscribe(
+      //   (value) => {
+      //     console.log('value1', value);
+      //   }
+      // );
+      // this.profSub = this.profesionalismRating.valueChanges.subscribe(
+      //   (value) => {
+      //     console.log('value2', value);
+      //   }
+      // );
+    } else {
+      this.instructorRating.setValue('');
+      this.knowledgeRating.setValue('');
+      this.profesionalismRating.setValue('');
+    }
   }
   overallGrade() {
-    this.knowledgeRating.valueChanges.subscribe((values) => {
-      this.instructorRatingView =
-        values + Number(this.profesionalismRating.value);
-      console.log('dick yall', this.instructorRatingView);
-      this.instructorRating.setValue(this.instructorRatingView);
-      // Then add the two
-    });
+    this.knowledgeSub = this.knowledgeRating.valueChanges.subscribe(
+      (values) => {
+        this.instructorRatingView =
+          values + Number(this.profesionalismRating.value);
+        console.log('dick yall', this.instructorRatingView);
+        this.instructorRating.setValue(this.instructorRatingView);
+        // Then add the two
+      }
+    );
   }
   overallGrade2() {
-    this.profesionalismRating.valueChanges.subscribe((values) => {
-      this.instructorRatingView = values + Number(this.knowledgeRating.value);
-      console.log('dick yall 2', this.instructorRatingView);
-      this.instructorRating.setValue(this.instructorRatingView);
-      // Then add the two
-    });
+    this.profSub = this.profesionalismRating.valueChanges.subscribe(
+      (values) => {
+        this.instructorRatingView = values + Number(this.knowledgeRating.value);
+        console.log('dick yall 2', this.instructorRatingView);
+        this.instructorRating.setValue(this.instructorRatingView);
+        // Then add the two
+      }
+    );
   }
   //
   visible = true;
@@ -469,6 +487,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
         asyncValidators: [mimeType],
       }),
     });
+    this.overallGrade();
+    this.overallGrade2();
 
     // this.searchOptionss = this.searchListService.getSearchOptions();
     // console.log('just gotta see it', this.searchOptionss);
@@ -501,6 +521,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.locationSub.unsubscribe();
     this.HashSub.unsubscribe();
     this.titleSub.unsubscribe();
+    this.knowledgeSub.unsubscribe();
+    this.profSub.unsubscribe();
   }
   setFormControlValue(instructor: string): void {
     this.postLocationInstructor.setValue(instructor);
