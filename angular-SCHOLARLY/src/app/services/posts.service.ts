@@ -63,6 +63,7 @@ export class PostsService {
   private userId: string;
 
   userFollowing: Array<string>;
+  followingString: string;
 
   private hashUpdated = new ReplaySubject();
   private hashId: string;
@@ -149,10 +150,8 @@ export class PostsService {
       .pipe(map((data) => data.following))
       .subscribe((response) => {
         console.log('chlor', response);
-        let testYourLady = [];
-        testYourLady.push(response);
-        console.log('ruby got a problem', testYourLady);
-        this.userFollowing.push(response);
+        this.followingString = response;
+        this.userFollowing.push(this.followingString);
         sub.unsubscribe();
         console.log('eazy 1');
       });
