@@ -817,7 +817,6 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   checkFollowingSearch() {
-    let followingList = [];
     // for (let i = 0; i < newList.length; i++)
     let newList = [];
     this.users.forEach((names) => {
@@ -832,12 +831,15 @@ export class AppComponent implements OnInit, OnDestroy {
       tracker++;
     }
     if (tracker == newList.length) {
-      followingList = this.postsService.getUserFollowing();
-      console.log('hey there', followingList);
-
-      for (let index = 0; index < followingList.length; index++) {
+      let followingList1 = [];
+      followingList1 = this.postsService.getUserFollowing();
+      console.log('hey there', followingList1);
+      // let followingList = [];
+      // followingList.push(followingList1);
+      // console.log('beautiful boy', followingList);
+      for (let index = 0; index < followingList1.length; index++) {
         console.log('hey', index);
-        this.users[index].following = followingList[index];
+        this.users[index].following = followingList1[index];
       }
     }
     console.log('final joyner 77', this.users);

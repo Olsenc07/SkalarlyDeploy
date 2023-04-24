@@ -62,8 +62,7 @@ export class PostsService {
   private userUpdated = new ReplaySubject();
   private userId: string;
 
-  userFollowing: Array<string> = [];
-  private safeList = new Subject();
+  userFollowing: Array<string>;
 
   private hashUpdated = new ReplaySubject();
   private hashId: string;
@@ -81,11 +80,10 @@ export class PostsService {
   }
 
   getUserFollowing(): any {
-    this.safeList.next(this.userFollowing);
     // reset list
     // this.userFollowing = [];
-    console.log('break the crust', this.safeList);
-    console.log('break the crust 2', this.userFollowing);
+    console.log('break the crust', this.userFollowing);
+
     return this.userFollowing;
   }
   getHashs(): any {
