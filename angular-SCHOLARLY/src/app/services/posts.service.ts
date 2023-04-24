@@ -83,10 +83,10 @@ export class PostsService {
   getUserFollowing(): any {
     this.safeList.next(this.userFollowing);
     // reset list
-    this.userFollowing = [];
+    // this.userFollowing = [];
     console.log('break the crust', this.safeList);
     console.log('break the crust 2', this.userFollowing);
-    return this.safeList.asObservable();
+    return this.userFollowing;
   }
   getHashs(): any {
     return this.hashUpdated.asObservable();

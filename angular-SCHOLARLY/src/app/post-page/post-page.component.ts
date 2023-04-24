@@ -211,6 +211,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.instructorRating.setValue('');
     this.knowledgeRating.setValue('');
     this.profesionalismRating.setValue('');
+    this.knowledgeRating.valueChanges.subscribe();
+    this.profesionalismRating.valueChanges.subscribe();
   }
   overallGrade() {
     this.knowledgeRating.valueChanges.subscribe((values) => {
@@ -771,6 +773,8 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.textBooks = false;
     this.courseReview = false;
     this.instructorReview = false;
+    this.GradeBoolean = false;
+
     // this.postLocation1.setValue('');
   }
   changeTab2(opt: string): void {

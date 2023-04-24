@@ -1226,7 +1226,7 @@ Inadequate
     </div>
 </mat-card-content>
 </mat-card>
-<mat-divider *ngIf="(postLocationInstructor.value) && (GradeBoolean == true)" class="spaceUp"></mat-divider>
+<mat-divider *ngIf="(postLocationInstructor.value || courseReview == true) && (GradeBoolean == true)" class="spaceUp"></mat-divider>
   <!-- Profesionalism -->
   <mat-card class="cardStyle">
   <mat-card-content class="fontColumn" *ngIf="(postLocationInstructor.value || courseReview == true)  && (GradeBoolean == true)">
