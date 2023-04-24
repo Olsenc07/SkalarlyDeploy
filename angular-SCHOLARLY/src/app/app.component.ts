@@ -832,7 +832,9 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     if (tracker == newList.length) {
       let followingList1 = [];
+      this.postsService.getUserFollowing();
       followingList1 = this.postsService.getUserFollowing();
+
       console.log('hey there', followingList1);
       // let followingList = [];
       // followingList.push(followingList1);

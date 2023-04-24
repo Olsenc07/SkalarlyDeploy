@@ -86,8 +86,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
   private titleSub: Subscription;
   private HashSub: Subscription;
   private locationSub: Subscription;
-  private knowledgeSub: Subscription;
-  private profSub: Subscription;
 
   userId: string;
 
@@ -232,26 +230,20 @@ export class PostPageComponent implements OnInit, OnDestroy {
       this.profesionalismRating.setValue('');
     }
   }
-  overallGrade() {
-    this.knowledgeSub = this.knowledgeRating.valueChanges.subscribe(
-      (values) => {
-        this.instructorRatingView =
-          values + Number(this.profesionalismRating.value);
-        console.log('dick yall', this.instructorRatingView);
-        this.instructorRating.setValue(this.instructorRatingView);
-        // Then add the two
-      }
-    );
+  overallGrade(value) {
+    console.log('type of', typeof value);
+
+    this.instructorRatingView = value + Number(this.profesionalismRating.value);
+    console.log('dick yall', this.instructorRatingView);
+    this.instructorRating.setValue(this.instructorRatingView);
+    // Then add the two
   }
-  overallGrade2() {
-    this.profSub = this.profesionalismRating.valueChanges.subscribe(
-      (values) => {
-        this.instructorRatingView = values + Number(this.knowledgeRating.value);
-        console.log('dick yall 2', this.instructorRatingView);
-        this.instructorRating.setValue(this.instructorRatingView);
-        // Then add the two
-      }
-    );
+  overallGrade2(value) {
+    console.log('type of', typeof value);
+    this.instructorRatingView = value + Number(this.knowledgeRating.value);
+    console.log('dick yall 2', this.instructorRatingView);
+    this.instructorRating.setValue(this.instructorRatingView);
+    // Then add the two
   }
   //
   visible = true;
@@ -487,9 +479,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
         asyncValidators: [mimeType],
       }),
     });
-    this.overallGrade();
-    this.overallGrade2();
-
     // this.searchOptionss = this.searchListService.getSearchOptions();
     // console.log('just gotta see it', this.searchOptionss);
     // do a bunch of edits then it makes new list with drop downs
@@ -521,8 +510,6 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.locationSub.unsubscribe();
     this.HashSub.unsubscribe();
     this.titleSub.unsubscribe();
-    this.knowledgeSub.unsubscribe();
-    this.profSub.unsubscribe();
   }
   setFormControlValue(instructor: string): void {
     this.postLocationInstructor.setValue(instructor);
