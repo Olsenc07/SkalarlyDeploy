@@ -837,8 +837,8 @@ export class AppComponent implements OnInit, OnDestroy {
         if (followingList.length < newList.length) {
           followingList.push(toronto);
           console.log('toronto', followingList);
-          this.followSub7.unsubscribe();
         }
+        this.followSub7.unsubscribe();
 
         if (followingList.length == newList.length) {
           for (let index = 0; index < followingList.length; index++) {
