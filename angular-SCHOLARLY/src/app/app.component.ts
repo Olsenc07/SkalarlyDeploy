@@ -76,6 +76,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private authListenerSubs: Subscription;
   private followSub: Subscription;
   private followSub2: Subscription;
+  private followSub7: Subscription;
 
   private postsSub: Subscription;
   // socket.io
@@ -830,19 +831,22 @@ export class AppComponent implements OnInit, OnDestroy {
 
       // subscribe here and add to list;
     }
-    this.postsService.getfollowingList().subscribe((toronto) => {
-      if (followingList.length <= newList.length) {
-        followingList.push(toronto);
-        console.log('toronto', followingList);
-      }
-
-      if (followingList.length == newList.length) {
-        for (let index = 0; index < followingList.length; index++) {
-          console.log('hey', index);
-          this.users[index].following = followingList[index];
+    this.followSub7 = this.postsService
+      .getfollowingList()
+      .subscribe((toronto) => {
+        if (followingList.length <= newList.length) {
+          followingList.push(toronto);
+          console.log('toronto', followingList);
         }
-      }
-    });
+
+        if (followingList.length == newList.length) {
+          for (let index = 0; index < followingList.length; index++) {
+            console.log('hey', index);
+            this.users[index].following = followingList[index];
+          }
+          this.followSub7.unsubscribe();
+        }
+      });
 
     console.log('final joyner 77', this.users);
   }
