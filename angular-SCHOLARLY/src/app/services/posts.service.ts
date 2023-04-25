@@ -81,12 +81,13 @@ export class PostsService {
 
   getUserFollowing(): Array<string> {
     // reset list
-    // this.userFollowing = [];
+    let finalList = this.userFollowing;
     console.log('break the crust', this.userFollowing);
-    console.log('break the crust 2', this.userFollowing.length);
+    console.log('break the crust c', finalList);
+    console.log('break the crust 2', finalList.length);
 
-    if (this.userFollowing.length) {
-      return this.userFollowing;
+    if (finalList.length) {
+      return finalList;
     } else {
       this.getUserFollowing();
     }
