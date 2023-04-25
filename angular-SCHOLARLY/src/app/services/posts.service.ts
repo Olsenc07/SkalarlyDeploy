@@ -59,6 +59,8 @@ export class PostsService {
 
   private favsSingle: Fav = {};
 
+  private followingListFound = new Subject();
+
   private userUpdated = new ReplaySubject();
   private userId: string;
 
@@ -76,7 +78,9 @@ export class PostsService {
   getUserId(): any {
     return this.userUpdated.asObservable();
   }
-
+  getfollowingList(): any {
+    return this.followingListFound.asObservable();
+  }
   getHashs(): any {
     return this.hashUpdated.asObservable();
   }
@@ -140,8 +144,7 @@ export class PostsService {
       .pipe(map((data) => data.following))
       .subscribe((response) => {
         console.log('chlor', response);
-
-        return response;
+        this.followingListFound.next(response);
         sub.unsubscribe();
         console.log('eazy 1');
       });

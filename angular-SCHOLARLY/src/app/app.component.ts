@@ -826,7 +826,8 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log('newList', newList);
     for (let i of newList) {
       console.log('how many keys', i);
-      this.postsService.checkFollowing(this.userId, i).subscribe((toronto) => {
+      this.postsService.checkFollowing(this.userId, i);
+      this.postsService.getfollowingList().subscribe((toronto) => {
         followingList.push(toronto);
         console.log('toronto', followingList);
       });
