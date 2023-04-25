@@ -1207,7 +1207,7 @@ Inadequate
   </div>
   <!-- <mat-slider  discrete showTickMarks > -->
     <input type="range" max="5" step="0.5" list="markers1"
-    [value]="knowledgeRating" (change)="overallGrade(value)" [formControl]="knowledgeRating"
+    [value]="knowledgeRating.value" (change)="overallGrade(value)" [formControl]="knowledgeRating"
      class="sliderGrade">
     <datalist id="markers1" class="datalist">
       <option value="1" label="1"></option>
@@ -1239,7 +1239,7 @@ Profesionalism and Approachability: {{profesionalismRating.value}} /5
   </div>
 
   <!-- <mat-slider max="5" step="0.5" discrete showTickMarks > -->
-    <input type="range" max="5" step="0.5" list="markers" [value]="profesionalismRating" (change)="overallGrade2(value) " [formControl]="profesionalismRating" class="sliderGrade">
+    <input type="range" max="5" step="0.5" list="markers" [value]="profesionalismRating.value" (change)="overallGrade2(value) " [formControl]="profesionalismRating" class="sliderGrade">
     <datalist id="markers" class="datalist">
       <option value="1" label="1"></option>
       <option value="2" label="2"></option>

@@ -149,7 +149,10 @@ export class PostsService {
       .pipe(map((data) => data.following))
       .subscribe((response) => {
         console.log('chlor', response);
+        console.log('pop songs', this.userFollowing);
         this.userFollowing.push(response);
+        let tits = this.getUserFollowing();
+        console.log('tits', tits);
         sub.unsubscribe();
         console.log('eazy 1');
       });

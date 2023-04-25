@@ -210,10 +210,10 @@ export class PostPageComponent implements OnInit, OnDestroy {
     this.GradeBoolean = !this.GradeBoolean;
     console.log('grade', this.GradeBoolean);
     if (this.GradeBoolean == false) {
-      this.instructorRating.setValue(5);
+      // this.instructorRating.setValue(5);
       this.instructorRatingView = 5;
-      this.knowledgeRating.setValue(2.5);
-      this.profesionalismRating.setValue(2.5);
+      // this.knowledgeRating.setValue(2.5);
+      // this.profesionalismRating.setValue(2.5);
       // this.knowledgeSub = this.knowledgeRating.valueChanges.subscribe(
       //   (value) => {
       //     console.log('value1', value);
@@ -231,7 +231,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
     }
   }
   overallGrade(value) {
-    console.log('type of', typeof value);
+    console.log('type of', value);
 
     this.instructorRatingView = value + Number(this.profesionalismRating.value);
     console.log('dick yall', this.instructorRatingView);
@@ -272,9 +272,9 @@ export class PostPageComponent implements OnInit, OnDestroy {
   postLocation: FormControl = new FormControl('');
 
   postLocationInstructor: FormControl = new FormControl('');
-  knowledgeRating: FormControl = new FormControl('');
-  profesionalismRating: FormControl = new FormControl('');
-  instructorRating: FormControl = new FormControl();
+  knowledgeRating: FormControl = new FormControl(2.5);
+  profesionalismRating: FormControl = new FormControl(2.5);
+  instructorRating: FormControl = new FormControl(5);
   // instructorsProgram: FormControl = new FormControl();
   // this.instructorRating.setValue()
   postDescription: FormControl = new FormControl('');
