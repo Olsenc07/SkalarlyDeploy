@@ -243,8 +243,8 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   // instructor review clicked
   closeSpecifis() {
-    this.specificOptions = [];
-    this.specificOptionsSafe = [];
+    this.specificOptions = null;
+    this.specificOptionsSafe = null;
     this.textbooks = false;
     this.textbooksCheck = false;
     this.Course = false;

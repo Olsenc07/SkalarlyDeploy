@@ -1017,7 +1017,7 @@
 
 
 <!--  -->
-        <div class="input-boxs_" *ngIf=" specificOptions.length >= 1">
+        <div class="input-boxs_" *ngIf="(specificOptions)">
           <div class="center_single">Step Two: Navigate to the specific page</div>
           <div *ngIf="textbooks == true" class="font"> Textbooks For</div>
           <div *ngIf="specificOptions[0] !== 'important-links'" class="mat-list-text">
