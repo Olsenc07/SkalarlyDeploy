@@ -61,8 +61,6 @@ res.status(200).json({
 
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
-
-
     await User.findById({_id: req.query.userId})
 .then(user => {
     console.log('user ni ni', user)
@@ -111,7 +109,7 @@ console.log('blocked', blocked)
                         // .getTime()
                         let newest = new Date(a.time),
                             older = new Date(b.time);
-                            return older - newest
+                            return newest - older 
                     })
                     console.log('final', allMsgsReverse)
                 res.status(200).json({
@@ -186,7 +184,7 @@ console.log('blocked', blocked)
                     allMsgsReverse.sort((a,b) => {
                         let newest = new Date(a.time),
                             older = new Date(b.time);
-                            return older - newest
+                            return newest - older
                     })
                     console.log('final jess 2', allMsgsReverse)
                 res.status(200).json({

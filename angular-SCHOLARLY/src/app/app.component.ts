@@ -846,7 +846,6 @@ export class AppComponent implements OnInit, OnDestroy {
           }
         }
       });
-    this.followSub7.unsubscribe();
 
     console.log('final joyner 77', this.users);
   }
