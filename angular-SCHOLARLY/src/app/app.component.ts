@@ -819,28 +819,24 @@ export class AppComponent implements OnInit, OnDestroy {
   checkFollowingSearch() {
     // for (let i = 0; i < newList.length; i++)
     let newList = [];
-    let followingList1 = [];
+    let followingList = [];
     this.users.forEach((names) => {
       newList.push(names.username);
     });
     console.log('newList', newList);
-    let tracker = 0;
     for (let i of newList) {
       console.log('how many keys', i);
-      this.postsService.checkFollowing(this.userId, i);
-      tracker++;
-    }
-    if (tracker == newList.length) {
-      this.postsService.getUserFollowing().subscribe((results) => {
-        followingList1 = results;
+      this.postsService.checkFollowing(this.userId, i).subscribe((toronto) => {
+        followingList.push(toronto);
+        console.log('toronto', followingList);
       });
-      console.log('hey there', followingList1);
-      console.log('hey there 2', followingList1.length);
+      // subscribe here and add to list;
     }
-    if (followingList1.length == newList.length) {
-      for (let index = 0; index < followingList1.length; index++) {
+
+    if (followingList.length == newList.length) {
+      for (let index = 0; index < followingList.length; index++) {
         console.log('hey', index);
-        this.users[index].following = followingList1[index];
+        this.users[index].following = followingList[index];
       }
     }
     console.log('final joyner 77', this.users);
