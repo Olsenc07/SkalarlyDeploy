@@ -2570,8 +2570,8 @@ console.log('userId',userId);
     await Follow.findOne({ $and: [{Follower: userId}, {
         Following: othersUsername}]})
         .then(followingStatus => {
-            console.log('momma', followingStatus.following)
-            if(followingStatus.following){
+            console.log('momma', followingStatus)
+            if(followingStatus !== null){
                 res.status(200).json({
                     message: 'Matches returned!',
                     following: 'true'

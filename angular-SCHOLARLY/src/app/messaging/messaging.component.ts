@@ -92,9 +92,9 @@ export class MessagingComponent implements OnInit, OnDestroy {
     this.messageNotificationService.getMessageNotification(this.userId);
     this.msgNotifSub = this.messageNotificationService
       .getListenerNotification()
-      .subscribe((messagesNotif: any) => {
+      .subscribe((messagesNotifYo: any) => {
         this.isLoading = false;
-        console.log('killa', messagesNotif);
+        console.log('killa', messagesNotifYo);
         // means if its on blank pg which makes them display upside down
         // messagesNotif.sort((a, b) => {
 
@@ -104,8 +104,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
         //   console.log('balloon', older);
         //   return older - newest;
         // });
-        console.log('coda', messagesNotif);
-        this.messagesNotif = messagesNotif;
+        this.messagesNotif = messagesNotifYo;
 
         console.log('should be viewed now 777', this.messagesNotif);
       });
@@ -224,8 +223,10 @@ export class MessagingComponent implements OnInit, OnDestroy {
     this.messageNotificationService.getMessageNotification(this.userId);
     this.chatSub = this.messageNotificationService
       .getListenerNotification()
-      .subscribe((messagesNotif: Message[]) => {
-        this.messagesNotif = messagesNotif.reverse();
+      .subscribe((messagesNotifYo: Message[]) => {
+        // this.messagesNotif = messagesNotif.reverse();
+        this.messagesNotif = messagesNotifYo;
+
         this.router.navigate(['/messages/:'], { queryParams: { username } });
         this.chatSub.unsubscribe();
       });
