@@ -209,7 +209,7 @@ export class PostPageComponent implements OnInit, OnDestroy {
   Grade() {
     this.GradeBoolean = !this.GradeBoolean;
     console.log('grade', this.GradeBoolean);
-    if (this.GradeBoolean == false) {
+    if (this.GradeBoolean == true) {
       // this.instructorRating.setValue(5);
       this.instructorRatingView = 5;
       // this.knowledgeRating.setValue(2.5);
