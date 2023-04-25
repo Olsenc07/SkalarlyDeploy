@@ -296,8 +296,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     } else {
       this.specificOptionsSafe = ['important-links'];
       this.specificOptions = ['important-links'];
-      console.log('cinammon bun', this.specificOptions);
       console.log('cinammon bun 2', this.specificOptions[0]);
+      console.log('cinammon bun', this.specificOptions);
     }
 
     if (this.textbooksCheck == false) {

@@ -81,16 +81,8 @@ export class PostsService {
 
   getUserFollowing(): Array<string> {
     // reset list
-    let finalList = this.userFollowing;
     console.log('break the crust', this.userFollowing);
-    console.log('break the crust c', finalList);
-    console.log('break the crust 2', finalList.length);
-
-    if (finalList.length) {
-      return finalList;
-    } else {
-      this.getUserFollowing();
-    }
+    return this.userFollowing;
   }
   getHashs(): any {
     return this.hashUpdated.asObservable();
@@ -157,6 +149,9 @@ export class PostsService {
         console.log('chlor', response);
         console.log('pop songs', this.userFollowing);
         this.userFollowing.push(response);
+        if (this.userFollowing.length == 0) {
+          console.log('huhh', this.userFollowing);
+        }
         let tits = this.getUserFollowing();
         console.log('tits', tits);
         sub.unsubscribe();
