@@ -838,11 +838,14 @@ export class AppComponent implements OnInit, OnDestroy {
           followingList.push(toronto);
           console.log('toronto', followingList);
         }
-
         if (followingList.length == newList.length) {
           for (let index = 0; index < followingList.length; index++) {
             console.log('hey', index);
             this.users[index].following = followingList[index];
+            // rest list
+            followingList = [];
+            this.followSub7.unsubscribe();
+            console.log('word up', followingList);
           }
         }
       });
