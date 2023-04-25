@@ -834,9 +834,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.followSub7 = this.postsService
       .getfollowingList()
       .subscribe((toronto) => {
-        if (followingList.length <= newList.length) {
+        if (followingList.length < newList.length) {
           followingList.push(toronto);
           console.log('toronto', followingList);
+          this.followSub7.unsubscribe();
         }
 
         if (followingList.length == newList.length) {
@@ -844,7 +845,6 @@ export class AppComponent implements OnInit, OnDestroy {
             console.log('hey', index);
             this.users[index].following = followingList[index];
           }
-          this.followSub7.unsubscribe();
         }
       });
 
