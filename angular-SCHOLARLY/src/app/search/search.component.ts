@@ -294,8 +294,8 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.searchListService.onSearchSelection(value);
       this.specificOptions = this.searchListService.onSearchSelection(value);
     } else {
-      this.specificOptionsSafe = ['important-links'];
-      this.specificOptions = ['important-links'];
+      this.specificOptionsSafe.push('important-links');
+      this.specificOptions.push('important-links');
       console.log('cinammon bun 2', this.specificOptions[0]);
       console.log('cinammon bun', this.specificOptions);
     }
