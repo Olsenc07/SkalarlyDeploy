@@ -2517,17 +2517,16 @@ router.post("/login", verifyEmail, async(reg, res, next) => {
     await User.findOne({ email: reg.body.email })
     .then(test1 => {
         console.log('test1', test1)
-
         UserInfo.findOne({username: test1.username})
         .then( userInfo => {
             console.log('userInfo', userInfo)
-            // if (!userInfo ) {
-            //      User.findOneAndDelete( {email: reg.body.email})
-            //      .then(()=> {
-            //      res.status(401).json({
-            //         message: "Your account was not completed when it was made. Please make it again!"
-            //     });
-            // })}
+            if (!userInfo ) {
+                 User.findOneAndDelete( {email: reg.body.email})
+                 .then(()=> {
+                 res.status(401).json({
+                    message: "Your account was not completed when it was made. Please make it again!"
+                });
+            })}
 if(userInfo){
     User.findOne({ email: reg.body.email })
         .then(user => {

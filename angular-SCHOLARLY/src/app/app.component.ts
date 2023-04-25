@@ -838,7 +838,6 @@ export class AppComponent implements OnInit, OnDestroy {
           followingList.push(toronto);
           console.log('toronto', followingList);
         }
-        this.followSub7.unsubscribe();
 
         if (followingList.length == newList.length) {
           for (let index = 0; index < followingList.length; index++) {
@@ -847,6 +846,7 @@ export class AppComponent implements OnInit, OnDestroy {
           }
         }
       });
+    this.followSub7.unsubscribe();
 
     console.log('final joyner 77', this.users);
   }
