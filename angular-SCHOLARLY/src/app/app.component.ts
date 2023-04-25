@@ -826,7 +826,6 @@ export class AppComponent implements OnInit, OnDestroy {
     });
     console.log('newList', newList);
     for (let i of newList) {
-      console.log('how many keys', i);
       this.postsService.checkFollowing(this.userId, i);
 
       // subscribe here and add to list;
@@ -840,16 +839,14 @@ export class AppComponent implements OnInit, OnDestroy {
         }
         if (followingList.length == newList.length) {
           for (let index = 0; index < followingList.length; index++) {
-            console.log('hey', index);
             this.users[index].following = followingList[index];
-            // rest list
-            followingList = [];
-            this.followSub7.unsubscribe();
-            console.log('word up', followingList);
           }
         }
       });
-
+    this.followSub7.unsubscribe();
+    // rest list
+    followingList = [];
+    console.log('word up', followingList);
     console.log('final joyner 77', this.users);
   }
   // Hashtag search
