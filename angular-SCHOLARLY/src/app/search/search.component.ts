@@ -291,6 +291,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   onSearchSelection(value: string): void {
     this.specificOptionsSafe = this.searchListService.onSearchSelection(value);
     this.specificOptions = this.searchListService.onSearchSelection(value);
+    console.log('cinammon bun', this.specificOptions);
+    console.log('cinammon bun 2', this.specificOptions[0]);
+
     if (this.textbooksCheck == false) {
       this.textbooks = false;
     }

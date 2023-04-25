@@ -83,8 +83,13 @@ export class PostsService {
     // reset list
     // this.userFollowing = [];
     console.log('break the crust', this.userFollowing);
+    console.log('break the crust 2', this.userFollowing.length);
 
-    return this.userFollowing;
+    if (this.userFollowing.length) {
+      return this.userFollowing;
+    } else {
+      this.getUserFollowing();
+    }
   }
   getHashs(): any {
     return this.hashUpdated.asObservable();
