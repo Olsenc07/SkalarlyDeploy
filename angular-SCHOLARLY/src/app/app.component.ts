@@ -830,18 +830,19 @@ export class AppComponent implements OnInit, OnDestroy {
 
       // subscribe here and add to list;
     }
-    this.postsService.getfollowingList().subscribe((toronto) => {
-      if (followingList.length <= newList.length) {
+    if (followingList.length < newList.length) {
+      this.postsService.getfollowingList().subscribe((toronto) => {
         followingList.push(toronto);
-      }
-      console.log('toronto', followingList);
-      if (followingList.length == newList.length) {
-        for (let index = 0; index < followingList.length; index++) {
-          console.log('hey', index);
-          this.users[index].following = followingList[index];
+        console.log('toronto', followingList);
+
+        if (followingList.length == newList.length) {
+          for (let index = 0; index < followingList.length; index++) {
+            console.log('hey', index);
+            this.users[index].following = followingList[index];
+          }
         }
-      }
-    });
+      });
+    }
 
     console.log('final joyner 77', this.users);
   }
