@@ -398,6 +398,7 @@ export class SearchListService {
         break;
       case SearchValues.ENTREP_IDEA:
         specificOptions = [
+          // dont touch arts
           'Arts',
           'Contracting',
           'Enviromental & Conservation',

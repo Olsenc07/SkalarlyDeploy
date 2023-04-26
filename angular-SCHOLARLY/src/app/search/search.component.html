@@ -1029,6 +1029,32 @@
             <mat-chip  *ngIf="opt !== 'Textbooks'"
              [value]="opt" class="searchBtn" (click)="navigateToPage(opt)"  >
               {{ opt }}
+              <div *ngIf="specificOptions[0] == 'Arts'">
+<div class="acceleratorTitle">
+  Accelerators
+</div>
+<mat-divider></mat-divider>
+<div class="optionsCenterStyle" matTooltip="This link will open up a new tab">
+  <mat-card class="odd_">
+    <mat-card-content>
+<button mat-menu-item href="https://hatchery.engineering.utoronto.ca/" target="_blank" >
+  The Hatchery
+</button>
+<mat-divider></mat-divider>
+</mat-card-content>
+  </mat-card>
+  </div>
+  <div class="optionsCenterStyle" matTooltip="This link will open up a new tab">
+    <mat-card class="odd_">
+      <mat-card-content>
+  <button mat-menu-item href="https://www.marsdd.com/" target="_blank" >
+    MaRS Discovery District
+  </button>
+  <mat-divider></mat-divider>
+  </mat-card-content>
+    </mat-card>
+    </div>
+              </div>
             </mat-chip>
             <!-- Textbooks -->
             <mat-chip  *ngIf="opt == 'Textbooks'"
@@ -1077,135 +1103,321 @@
             </mat-chip>
        
             <mat-menu #menu2="matMenu" class="font">
-              <a mat-menu-item href="https://www.engineering.utoronto.ca" target="_blank" class="odd">
+              <mat-label class="courseCode">
+                <!-- <i class="fas fa-book mainCatsSpace"></i> -->
+                Colleges & Faculties
+              </mat-label>
+              <mat-divider></mat-divider>
+<div class="optionsCenterStyle" >
+              <mat-card class="odd_">
+                <mat-card-content>
+              <button mat-menu-item href="https://www.engineering.utoronto.ca" target="_blank" >
                 Applied Science & Engineering
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.sgs.utoronto.ca/programs/architecture-landscape-and-design/" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+<div class="optionsCenterStyle" >
+              <mat-card class="odd_">
+                <mat-card-content>
+              <button mat-menu-item href="https://www.sgs.utoronto.ca/programs/architecture-landscape-and-design/" target="_blank" >
                 Architecture, Landscape & Design
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.artsci.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.artsci.utoronto.ca" target="_blank">
                 Arts & Science
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://learn.utoronto.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://learn.utoronto.ca" target="_blank" >
                 Continuing Studies
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.dentistry.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.dentistry.utoronto.ca" target="_blank" >
                 Dentistry
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.oise.utoronto.ca/home/" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.oise.utoronto.ca/home/" target="_blank" >
                 Education
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://emmanuel.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://emmanuel.utoronto.ca" target="_blank" >
                 Emmanuel College
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://ischool.utoronto.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://ischool.utoronto.ca" target="_blank" >
                 Information
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://kpe.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+                </div>
+                <div class="optionsCenterStyle" >
+                  <mat-card class="odd_">
+                    <mat-card-content>
+              <button mat-menu-item href="https://kpe.utoronto.ca" target="_blank" >
                 Kinesiology & Physical Education
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://knox.utoronto.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://knox.utoronto.ca" target="_blank">
                 Knox College
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.law.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.law.utoronto.ca" target="_blank" >
                 Law
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.rotman.utoronto.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.rotman.utoronto.ca" target="_blank" >
                 Management
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://applymd.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://applymd.utoronto.ca" target="_blank" >
                 Medicine
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://music.utoronto.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://music.utoronto.ca" target="_blank" >
                 Music
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.newcollege.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.newcollege.utoronto.ca" target="_blank" >
                 New College
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://bloomberg.nursing.utoronto.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://bloomberg.nursing.utoronto.ca" target="_blank" >
                 Nursing
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.pharmacy.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.pharmacy.utoronto.ca" target="_blank" >
                 Pharmacy
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.dlsph.utoronto.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.dlsph.utoronto.ca" target="_blank" >
                 Public Health
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://regiscollege.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://regiscollege.ca" target="_blank" >
                 Regis College
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://socialwork.utoronto.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://socialwork.utoronto.ca" target="_blank" >
                 Social Work
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://studentlife.utoronto.ca" target="_blank" class="even">
-                Student Life
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://stmikes.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://stmikes.utoronto.ca" target="_blank" >
                 St. Micheals College
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.utsu.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.utsu.ca" target="_blank" >
                 Student Union
-                <mat-divider></mat-divider>
-              </a>
-              
-              <a mat-menu-item href="https://innis.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+                </mat-card>
+                </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://innis.utoronto.ca" target="_blank" >
                 Innis College
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.tst.edu" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.tst.edu" target="_blank" >
                 Theology
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.trinity.utoronto.ca/study-theology/" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.trinity.utoronto.ca/study-theology/" target="_blank" >
                 Trinity College
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.uc.utoronto.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.uc.utoronto.ca" target="_blank" >
                 University College
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.utm.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.utm.utoronto.ca" target="_blank" >
                 U Of T Mississauga
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.utsc.utoronto.ca/home/" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.utsc.utoronto.ca/home/" target="_blank" >
                 U Of T Scarborough
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.vic.utoronto.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.vic.utoronto.ca" target="_blank" >
                 Victoria College
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://wdw.utoronto.ca" target="_blank" class="even">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://wdw.utoronto.ca" target="_blank" >
                 Woodsworth College
-                <mat-divider></mat-divider>
-              </a>
-              <a mat-menu-item href="https://www.wycliffecollege.ca" target="_blank" class="odd">
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
+              <div class="optionsCenterStyle" >
+                <mat-card class="odd_">
+                  <mat-card-content>
+              <button mat-menu-item href="https://www.wycliffecollege.ca" target="_blank" >
                 Wycliffe College
-                <mat-divider></mat-divider>
-              </a>
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+              </mat-card>
+              </div>
               </mat-menu>
 
 
@@ -1231,6 +1443,13 @@
             <mat-chip  [multiple]="false" 
             class="searchBtn"  >
             <a href="https://starportal.utoronto.ca/StarRezPortalX/B7154BE0/13/120/The_Residences-The_Residences" target="_blank" class="a">Residences</a>
+            </mat-chip>
+            <mat-chip  [multiple]="false" 
+            class="searchBtn"  >
+            <a mat-menu-item href="https://studentlife.utoronto.ca" target="_blank" class="a">
+              Student Life
+              <mat-divider></mat-divider>
+            </a>
             </mat-chip>
             <mat-chip  [multiple]="false" 
             class="searchBtn"  >
