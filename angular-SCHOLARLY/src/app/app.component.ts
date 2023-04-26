@@ -809,8 +809,10 @@ export class AppComponent implements OnInit, OnDestroy {
         if (results.length > 0) {
           // add key value pair to see if following
           this.users = results;
+          this.searchCharacter = '';
         } else {
           this.users = [];
+          this.searchCharacter = '';
         }
       });
     } else {
@@ -822,7 +824,6 @@ export class AppComponent implements OnInit, OnDestroy {
   checkFollowingSearch(searchValue: string) {
     console.log('searchValue', searchValue);
     console.log('searchCharacter', this.searchCharacter);
-
     let newsearchCharacter = searchValue;
     if (this.searchCharacter !== newsearchCharacter) {
       this.searchCharacter = searchValue;

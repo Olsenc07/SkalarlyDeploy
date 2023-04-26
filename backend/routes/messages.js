@@ -228,7 +228,7 @@ router.get("/infoMessageSent", async(req, res, next) => {
     await User.findById({_id: req.query.userId})
 .then(user => {
     console.log('user ni ni', user)
-    BlockSkalar.find({blockedUsername:user.username})
+    BlockSkalar.find({blockedUsername: user.username})
     .then(blocked => {
         if(blocked){
 console.log('blocked', blocked)
@@ -373,9 +373,19 @@ console.log('blocked', blocked)
 
             
         }
+    })  .catch(err => {
+        return res.status(401).json({
+            message: "Message error 7!",
+    
+        })
+    })
+}).catch(err => {
+    return res.status(401).json({
+        message: "Message error 7!",
+
     })
 })
-})
+});
 
 
 // viewed msgs
