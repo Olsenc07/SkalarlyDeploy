@@ -145,7 +145,6 @@ export class PostsService {
       .subscribe((response) => {
         console.log('chlor', response);
         this.followingListFound.next(response);
-        this.followingListFound.complete();
         sub.unsubscribe();
         console.log('eazy 1');
       });

@@ -1029,33 +1029,33 @@
             <mat-chip  *ngIf="opt !== 'Textbooks'"
              [value]="opt" class="searchBtn" (click)="navigateToPage(opt)"  >
               {{ opt }}
-              <div *ngIf="specificOptions[0] == 'Arts'">
-<div class="acceleratorTitle">
-  Accelerators
-</div>
-<mat-divider></mat-divider>
-<div class="optionsCenterStyle" matTooltip="This link will open up a new tab">
-  <mat-card class="odd_">
-    <mat-card-content>
-<button mat-menu-item href="https://hatchery.engineering.utoronto.ca/" target="_blank" >
-  The Hatchery
-</button>
-<mat-divider></mat-divider>
-</mat-card-content>
-  </mat-card>
-  </div>
-  <div class="optionsCenterStyle" matTooltip="This link will open up a new tab">
-    <mat-card class="odd_">
-      <mat-card-content>
-  <button mat-menu-item href="https://www.marsdd.com/" target="_blank" >
-    MaRS Discovery District
-  </button>
-  <mat-divider></mat-divider>
-  </mat-card-content>
-    </mat-card>
-    </div>
-              </div>
             </mat-chip>
+            <div *ngIf="specificOptions[0] == 'Arts'">
+              <div class="acceleratorTitle">
+                Accelerators
+              </div>
+              <mat-divider></mat-divider>
+              
+                <mat-card class="searchBtn"  matTooltip="This link will open up a new tab">
+                  <mat-card-content>
+              <button mat-menu-item href="https://hatchery.engineering.utoronto.ca/" target="_blank" >
+                The Hatchery
+              </button>
+              <mat-divider></mat-divider>
+              </mat-card-content>
+                </mat-card>
+
+
+                  <mat-card class="searchBtn"  matTooltip="This link will open up a new tab">
+                    <mat-card-content>
+                <button mat-menu-item href="https://www.marsdd.com/" target="_blank" >
+                  MaRS Discovery District
+                </button>
+                <mat-divider></mat-divider>
+                </mat-card-content>
+                  </mat-card>
+  
+                            </div>
             <!-- Textbooks -->
             <mat-chip  *ngIf="opt == 'Textbooks'"
              [value]="opt" class="searchBtn" [matMenuTriggerFor]="menuCourseTextBook" >
