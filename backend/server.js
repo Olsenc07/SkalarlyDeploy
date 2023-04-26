@@ -109,9 +109,11 @@ io.on('connection', (socket) => {
 
       const userId = data.userId
       console.log('userId',userId);
+      console.log('data',userId);
+
       User.findOne({username: data.otherUser})
 .then(userOne => {
-    console.log('userOne username', userOne._id);
+    console.log('userOne username', userOne);
        BlockSkalar.find({Creator: userOne._id}).then(blocked => {
           console.log('blocked heart', blocked);
           if(blocked){

@@ -51,6 +51,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
   socket = io();
   public notifs = [];
   messagesNotif: Message[] = [];
+  messagesNotifSent: Message[] = [];
   messagesNoNotif = '';
 
   // allUsers should filter through every user
@@ -66,6 +67,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
   filteredSearch: Observable<string[]>;
   private routeSub: Subscription;
   private msgNotifSub: Subscription;
+  private msgNotifSubSent: Subscription;
   private msgNotifNoSub: Subscription;
   private chatSub: Subscription;
   private delSub: Subscription;
@@ -89,32 +91,35 @@ export class MessagingComponent implements OnInit, OnDestroy {
       this.username = params?.username;
       console.log('username', this.username);
     });
+    // recieving messages
     this.messageNotificationService.getMessageNotification(this.userId);
     this.msgNotifSub = this.messageNotificationService
       .getListenerNotification()
       .subscribe((messagesNotifYo: any) => {
         this.isLoading = false;
         console.log('killa', messagesNotifYo);
-        // means if its on blank pg which makes them display upside down
-        // messagesNotif.sort((a, b) => {
-
-        //   const newest = new Date(a.time).getTime();
-        //   const older = new Date(b.time).getTime();
-        //   console.log('snake', newest);
-        //   console.log('balloon', older);
-        //   return older - newest;
-        // });
         this.messagesNotif = messagesNotifYo;
-
+        // compare these times with sent message times
+        // and then add send value or not
         console.log('should be viewed now 777', this.messagesNotif);
       });
-
-    // this.route.queryParams.subscribe((params) => {
-    //   this.username = params?.username;
+    // sent messages
+    this.messageNotificationService.getMessageSent(this.userId);
+    this.msgNotifSubSent = this.messageNotificationService
+      .getListenerNotificationSent()
+      .subscribe((messagesNotifSent: any) => {
+        this.isLoading = false;
+        console.log('killa', messagesNotifSent);
+        this.messagesNotifSent = messagesNotifSent;
+        // compare these times with sent message times
+        // and then add send value or not
+        console.log('should be viewed now 77777', this.messagesNotifSent);
+      });
   }
   ngOnDestroy(): any {
     this.routeSub.unsubscribe();
     this.msgNotifSub.unsubscribe();
+    this.msgNotifSubSent.unsubscribe();
   }
   enedMessaged(username: string): void {}
   navigateToPage(infoUser: string): any {

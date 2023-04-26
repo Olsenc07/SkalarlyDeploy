@@ -820,6 +820,8 @@ export class AppComponent implements OnInit, OnDestroy {
   checkFollowingSearch() {
     // for (let i = 0; i < newList.length; i++)
     let newList = [];
+    let followingList = [];
+    this.users = [];
     this.users.forEach((names) => {
       newList.push(names.username);
     });
@@ -832,7 +834,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.followSub7 = this.postsService
       .getfollowingList()
       .subscribe((toronto) => {
-        let followingList = [];
         if (followingList.length < newList.length) {
           console.log('toronto1', followingList);
           console.log('toronto2', followingList.length);
