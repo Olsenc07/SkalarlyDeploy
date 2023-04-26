@@ -821,7 +821,6 @@ export class AppComponent implements OnInit, OnDestroy {
     // for (let i = 0; i < newList.length; i++)
     let newList = [];
     let followingList = [];
-    this.users = [];
     this.users.forEach((names) => {
       newList.push(names.username);
     });

@@ -16,6 +16,7 @@ export interface Message {
   message: string;
   time: string;
   you: string;
+  sent: string;
 }
 @Component({
   selector: 'app-messaging',
@@ -111,9 +112,11 @@ export class MessagingComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         console.log('killa', messagesNotifSent);
         this.messagesNotifSent = messagesNotifSent;
-        // compare these times with sent message times
-        // and then add send value or not
         console.log('should be viewed now 77777', this.messagesNotifSent);
+        for (let index = 0; index < this.messagesNotifSent.length; index++) {
+          this.messagesNotifSent[index].sent == 'true';
+          console.log('should be viewed now 77777', this.messagesNotifSent);
+        }
       });
   }
   ngOnDestroy(): any {
