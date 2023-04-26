@@ -126,7 +126,7 @@
                   ? 'below_search showOptions'
                   : 'hideSpace'" >
                                     <mat-select id="trigger" matTooltip="Click To See Skalars"
-                                    (click)="checkFollowingSearch()" class="triggerContainer" placeholder="Fellow Skalar(s)">
+                                    (click)="checkFollowingSearch(search.value)" class="triggerContainer" placeholder="Fellow Skalar(s)">
                                       <div class="title">Fellow Skalars</div>
                                       <mat-divider></mat-divider>
                                       <div *ngFor="let user of users;let even = even; let odd = odd" class="triggerContainer_">

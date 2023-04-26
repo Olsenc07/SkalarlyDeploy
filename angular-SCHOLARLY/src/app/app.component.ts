@@ -817,35 +817,43 @@ export class AppComponent implements OnInit, OnDestroy {
       this.hasQuery = false;
     }
   }
-  checkFollowingSearch() {
-    // for (let i = 0; i < newList.length; i++)
-    let newList = [];
-    let followingList = [];
-    this.users.forEach((names) => {
-      newList.push(names.username);
-    });
-    console.log('newList', newList);
-    for (let i of newList) {
-      this.postsService.checkFollowing(this.userId, i);
+  // search skalars
+  searchCharacter = '';
+  checkFollowingSearch(searchValue: string) {
+    console.log('searchValue', searchValue);
+    console.log('searchCharacter', this.searchCharacter);
 
-      // subscribe here and add to list;
-    }
-    this.followSub7 = this.postsService
-      .getfollowingList()
-      .subscribe((toronto) => {
-        if (followingList.length < newList.length) {
-          console.log('toronto1', followingList);
-          console.log('toronto2', followingList.length);
-          followingList.push(toronto);
-          console.log('toronto', followingList);
-        }
-        if (followingList.length == newList.length) {
-          for (let index = 0; index < followingList.length; index++) {
-            this.users[index].following = followingList[index];
-          }
-        }
+    let newsearchCharacter = searchValue;
+    if (this.searchCharacter !== newsearchCharacter) {
+      this.searchCharacter = searchValue;
+      let newList = [];
+      let followingList = [];
+      this.users.forEach((names) => {
+        newList.push(names.username);
       });
-    console.log('final joyner 77', this.users);
+      console.log('newList', newList);
+      for (let i of newList) {
+        this.postsService.checkFollowing(this.userId, i);
+
+        // subscribe here and add to list;
+      }
+      this.followSub7 = this.postsService
+        .getfollowingList()
+        .subscribe((toronto) => {
+          if (followingList.length < newList.length) {
+            console.log('toronto1', followingList);
+            console.log('toronto2', followingList.length);
+            followingList.push(toronto);
+            console.log('toronto', followingList);
+          }
+          if (followingList.length == newList.length) {
+            for (let index = 0; index < followingList.length; index++) {
+              this.users[index].following = followingList[index];
+            }
+          }
+        });
+      console.log('final joyner 77', this.users);
+    }
   }
   // Hashtag search
   sendDataHash(event: any): any {

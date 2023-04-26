@@ -54,7 +54,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
   messagesNotif: Message[] = [];
   messagesNotifSent: Message[] = [];
   messagesNoNotif = '';
-
+  matches = [];
   // allUsers should filter through every user
   allUsers: string[] = [];
   // username: string;
@@ -118,6 +118,11 @@ export class MessagingComponent implements OnInit, OnDestroy {
           console.log('should be viewed now 77777', this.messagesNotifSent);
         }
       });
+    this.messagesNotifSent.forEach((g) => {
+      this.matches.push(g.username);
+    });
+
+    console.log('the boys', this.matches);
   }
   ngOnDestroy(): any {
     this.routeSub.unsubscribe();
