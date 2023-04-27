@@ -28,9 +28,6 @@ export class MessageNotificationService {
   // no matches
   private messgesInfoUpdatedNoMatches = new Subject<string>();
 
-  // sent messages
-  private messagesInfoUpdatedSent = new Subject<Message[]>();
-
   private messagesDel: Message[] = [];
   private messagesInfoDel = new Subject<Message[]>();
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
@@ -45,10 +42,7 @@ export class MessageNotificationService {
   getListenerNoNotification(): any {
     return this.messgesInfoUpdatedNoMatches.asObservable();
   }
-  // sent messages
-  getListenerNotificationSent(): any {
-    return this.messagesInfoUpdatedSent.asObservable();
-  }
+
   // recieved messages
   getMessageNotification(userId: string): any {
     const sub = this.http
@@ -81,38 +75,7 @@ export class MessageNotificationService {
         console.log('eazy 1');
       });
   }
-  // sent messages
-  getMessageSent(userId: string): any {
-    const sub = this.http
-      .get<{ message: string; messages: any }>(
-        'https://www.skalarly.com/api/messages/infoMessageSent',
-        {
-          params: { userId },
-        }
-      )
-      .pipe(
-        map((messageData) => {
-          return messageData.messages;
-          // .map((data) => {
-          // return {
-          //   id: data._id,
-          //   username: data.username,
-          //   message: data.message,
-          //   time: data.time,
-          //   otherUser: data.otherUser,
-          //   you: data.you,
-          // };
-          // });
-        })
-      )
-      .subscribe((transformedMessage) => {
-        this.messagesNotifSent = transformedMessage;
-        console.log('deep end 777', this.messagesNotifSent);
-        this.messagesInfoUpdatedSent.next([...this.messagesNotifSent]);
-        sub.unsubscribe();
-        console.log('eazy 1');
-      });
-  }
+
   viewedMessage(userId: string, username: string): any {
     console.log('view me baby', userId);
     const sub = this.http

@@ -70,6 +70,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private msgNotifSub: Subscription;
   private commentSub: Subscription;
   private searchSub: Subscription;
+  private msgSub: Subscription;
+  private postSub: Subscription;
   private msgsSub: Subscription;
   private comment2Sub: Subscription;
   private commentSub2: Subscription;
@@ -451,6 +453,13 @@ export class AppComponent implements OnInit, OnDestroy {
         });
     }
 
+    this.postSub = this.isPostScreen$.subscribe((onPostPg) => {
+      this.postClicked = true;
+    });
+    this.msgSub = this.isMessagesScreen$.subscribe((onMsgPg) => {
+      this.commentClicked = true;
+    });
+
     // update badges! on login!!
     this.searchSub = this.isSearchScreen$.subscribe((onSearchPg) => {
       console.log('happy boy', onSearchPg);
@@ -599,6 +608,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.commentSub2.unsubscribe();
     this.searchSub.unsubscribe();
     this.msgsSub.unsubscribe();
+    this.msgSub.unsubscribe();
+    this.postSub.unsubscribe();
     this.comment2Sub.unsubscribe();
     this.followSub.unsubscribe();
     this.followSub2.unsubscribe();
@@ -835,24 +846,37 @@ export class AppComponent implements OnInit, OnDestroy {
       console.log('newList', newList);
       for (let i of newList) {
         this.postsService.checkFollowing(this.userId, i);
-
-        // subscribe here and add to list;
-      }
-      this.followSub7 = this.postsService
-        .getfollowingList()
-        .subscribe((toronto) => {
-          if (followingList.length < newList.length) {
-            console.log('toronto1', followingList);
-            console.log('toronto2', followingList.length);
-            followingList.push(toronto);
-            console.log('toronto', followingList);
-          }
-          if (followingList.length == newList.length) {
-            for (let index = 0; index < followingList.length; index++) {
-              this.users[index].following = followingList[index];
+        this.followSub7 = this.postsService
+          .getfollowingList()
+          .subscribe((toronto) => {
+            if (followingList.length < newList.length) {
+              console.log('toronto1', followingList);
+              console.log('toronto2', followingList.length);
+              followingList.push(toronto);
+              console.log('toronto', followingList);
             }
-          }
-        });
+            if (followingList.length == newList.length) {
+              for (let index = 0; index < followingList.length; index++) {
+                this.users[index].following = followingList[index];
+              }
+            }
+          });
+      }
+      // this.followSub7 = this.postsService
+      //   .getfollowingList()
+      //   .subscribe((toronto) => {
+      //     if (followingList.length < newList.length) {
+      //       console.log('toronto1', followingList);
+      //       console.log('toronto2', followingList.length);
+      //       followingList.push(toronto);
+      //       console.log('toronto', followingList);
+      //     }
+      //     if (followingList.length == newList.length) {
+      //       for (let index = 0; index < followingList.length; index++) {
+      //         this.users[index].following = followingList[index];
+      //       }
+      //     }
+      //   });
       console.log('final joyner 77', this.users);
     }
   }

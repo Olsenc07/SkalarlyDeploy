@@ -104,25 +104,8 @@ export class MessagingComponent implements OnInit, OnDestroy {
         // and then add send value or not
         console.log('should be viewed now 777', this.messagesNotif);
       });
-    // sent messages
-    this.messageNotificationService.getMessageSent(this.userId);
-    this.msgNotifSubSent = this.messageNotificationService
-      .getListenerNotificationSent()
-      .subscribe((messagesNotifSent: any) => {
-        console.log('killa 77', messagesNotifSent);
-        this.messagesNotifSent = messagesNotifSent;
-        console.log('should be viewed now 77777', this.messagesNotifSent);
-        for (let index = 0; index < this.messagesNotifSent.length; index++) {
-          this.messagesNotifSent[index].sent == 'true';
-          console.log('should be viewed now 77777', this.messagesNotifSent);
-        }
-      });
-    this.messagesNotifSent.forEach((g) => {
-      this.matches.push(g.username);
-    });
-
-    console.log('the boys', this.matches);
   }
+
   ngOnDestroy(): any {
     this.routeSub.unsubscribe();
     this.msgNotifSub.unsubscribe();
