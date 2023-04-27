@@ -23,6 +23,7 @@ import { Post, PostService } from './services/post.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   users: UserNames[] = [];
+  usersFinal = [];
   public hashs = [];
   notif: MissedNotif[] = [];
   comments: CommentInterface[] = [];
@@ -849,17 +850,25 @@ export class AppComponent implements OnInit, OnDestroy {
         this.followSub7 = this.postsService
           .getfollowingList()
           .subscribe((toronto) => {
-            if (followingList.length < newList.length) {
-              console.log('toronto1', followingList);
-              console.log('toronto2', followingList.length);
-              followingList.push(toronto);
-              console.log('toronto', followingList);
-            }
-            if (followingList.length == newList.length) {
-              for (let index = 0; index < followingList.length; index++) {
-                this.users[index].following = followingList[index];
+            console.log('toronto', toronto);
+            console.log('toronto0', toronto[0]);
+            console.log('toronto1', toronto[1]);
+            // if (followingList.length < newList.length) {
+            this.users.filter((e) => {
+              console.log('e', e);
+              if (e.username == toronto[0]) {
+                e.following = toronto[1];
               }
-            }
+            });
+
+            // followingList.push(toronto);
+            // console.log('toronto', followingList);
+            // }
+            // if (followingList.length == newList.length) {
+            //   for (let index = 0; index < followingList.length; index++) {
+            //     this.users[index].following = followingList[index];
+            //   }
+            // }
           });
       }
       // this.followSub7 = this.postsService

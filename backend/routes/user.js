@@ -2576,12 +2576,12 @@ console.log('userId',userId);
             if(followingStatus !== null){
                 res.status(200).json({
                     message: 'Matches returned!',
-                    following: 'true'
+                    following: [req.query.othersUsername, 'true']
                 });
             }else{
                 res.status(200).json({
                     message: 'No following',
-                    following: 'false'
+                    following: [req.query.othersUsername, 'false']
                 });
             }
         })

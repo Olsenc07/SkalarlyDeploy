@@ -135,7 +135,7 @@ export class PostsService {
   }
   checkFollowing(userId: string, othersUsername: string): any {
     const sub = this.http
-      .get<{ messages: string; following: string }>(
+      .get<{ messages: string; following: Array<string> }>(
         'https://www.skalarly.com/api/user/checkFollowing',
         {
           params: { userId, othersUsername },
