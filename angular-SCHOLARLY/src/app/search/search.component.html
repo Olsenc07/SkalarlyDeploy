@@ -1036,34 +1036,24 @@
               {{ opt }}
             </mat-chip>
           </mat-chip-list>
-        </div>
-        <!-- if entrep opportunnities -->
+           <!-- if entrep opportunnities -->
         <div *ngIf="specificOptions[0] == 'Arts'">
           <div class="acceleratorTitle">
             Accelerators
           </div>
           <mat-divider></mat-divider>
-          
-            <mat-card class="searchBtn"  matTooltip="This link will open up a new tab">
-              <mat-card-content>
-          <button mat-menu-item href="https://hatchery.engineering.utoronto.ca/" target="_blank" >
+            <mat-chip class="searchBtn"
+            href="https://hatchery.engineering.utoronto.ca/" target="_blank"  matTooltip="This link will open up a new tab">
             The Hatchery
-          </button>
-          <mat-divider></mat-divider>
-          </mat-card-content>
-            </mat-card>
+            </mat-chip>
 
-
-              <mat-card class="searchBtn"  matTooltip="This link will open up a new tab">
-                <mat-card-content>
-            <button mat-menu-item href="https://www.marsdd.com/" target="_blank" >
+              <mat-chip class="searchBtn" [multiple]="false" 
+              href="https://www.marsdd.com/" target="_blank"matTooltip="This link will open up a new tab">
               MaRS Discovery District
-            </button>
-            <mat-divider></mat-divider>
-            </mat-card-content>
-              </mat-card>
-
+              </mat-chip>
                         </div>
+        </div>
+       
 
                 <!--    hyperlinks -->
        

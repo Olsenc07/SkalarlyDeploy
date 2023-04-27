@@ -677,6 +677,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Follow skalar from search bar
   followClicked(username: string, id: string): any {
+    this.searchCharacter = '';
+    this.checkFollowingSearch(this.search.value);
     const FollowingId = id;
     // this.followService.postInfoFollow(this.userId, username, FollowingId);
     // this.followService.postInfoFollowHistory(
@@ -696,6 +698,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   // unfollow skalar from search bar
   onUnfololow(userName: string): any {
+    this.searchCharacter = '';
+    this.checkFollowingSearch(this.search.value);
+
     // this.followService.deleteFollowUserPg(userName, this.userId);
     console.log('chaz whats up homie gg unfollow', userName);
     console.log('chaz whats up unfollow', this.userId);
@@ -840,7 +845,6 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.searchCharacter !== newsearchCharacter) {
       this.searchCharacter = searchValue;
       let newList = [];
-      let followingList = [];
       this.users.forEach((names) => {
         newList.push(names.username);
       });
@@ -860,32 +864,8 @@ export class AppComponent implements OnInit, OnDestroy {
                 e.following = toronto[1];
               }
             });
-
-            // followingList.push(toronto);
-            // console.log('toronto', followingList);
-            // }
-            // if (followingList.length == newList.length) {
-            //   for (let index = 0; index < followingList.length; index++) {
-            //     this.users[index].following = followingList[index];
-            //   }
-            // }
           });
       }
-      // this.followSub7 = this.postsService
-      //   .getfollowingList()
-      //   .subscribe((toronto) => {
-      //     if (followingList.length < newList.length) {
-      //       console.log('toronto1', followingList);
-      //       console.log('toronto2', followingList.length);
-      //       followingList.push(toronto);
-      //       console.log('toronto', followingList);
-      //     }
-      //     if (followingList.length == newList.length) {
-      //       for (let index = 0; index < followingList.length; index++) {
-      //         this.users[index].following = followingList[index];
-      //       }
-      //     }
-      //   });
       console.log('final joyner 77', this.users);
     }
   }
