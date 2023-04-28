@@ -301,17 +301,19 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     //     console.log('added sent e sent ', allMsgsReverseSent);
 
                     // })
-                    sentAttached = []
-                    for(let index = 0; index < allMsgsReverseSent.length; index++){
-                        oneTime = (allMsgsReverseSent[index].sent = 'true')
-                        console.log('oneTime', oneTime);
-                        sentAttached.push(oneTime);
+                  
+                  
+                        allMsgsReverseSent.filter((e) => {
+                            // if(!e.sent){
+                            e.sent = 'sent'
+                            cosole.log('sent')
+                            // }
+                        })
+                     
 
-                    }
-
-                    console.log('final jess 2 sent with sent and recieved', sentAttached)
+                    console.log('final jess 2 sent with sent and recieved', allMsgsReverseSent)
                     console.log('starting up famous in the hills, should be here hottie')
-                    msgsWanted = allMsgsReverse.concat(sentAttached)
+                    msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
                     console.log('just might', msgsWanted);
                     // compare most recent of sent nd recived 
                     // instead of return have psh to new list then concat that with old list ish
@@ -339,7 +341,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                    }
 
                 })
-                getRecent(allMsgsReverse,sentAttached);
+                getRecent(allMsgsReverse,allMsgsReverseSent);
                 console.log('hye baby', updated)
     
                             updated.sort((c,e) => {
