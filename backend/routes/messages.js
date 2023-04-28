@@ -368,9 +368,9 @@ console.log('final jess 2 sent', allMsgsReverseSent)
 
                     console.log('last steps dont cry', e);
 
-                    if((a.username == b.otherUser) || (b.username == a.otherUser)){
-                        let newest = new Date(a.time),
-                            older = new Date(b.time);
+                    if((c.username == e.otherUser) || (e.username == c.otherUser)){
+                        let newest = new Date(c.time),
+                            older = new Date(e.time);
                             if (newest > older){
                                 console.log('hey im new');
                                 return newest
