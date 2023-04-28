@@ -296,7 +296,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     })
                     // add sent: 'true' to each
                    addedSent = allMsgsReverseSent.map((e) => {
-                        e.sent = 'true'
+                      return  e.sent = 'true'
                     })
                     console.log('final jess 2 sent with sent and recieved', addedSent)
                     console.log('starting up famous in the hills, should be here hottie')
