@@ -264,33 +264,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 //     });
                 }
                 console.log('final jess 2', allMsgsReverse)
-                  })
-            
-                  .catch(err => {
-                    return res.status(401).json({
-                        message: "Message error 37!",
-                
-                    })
-                })
-            
-            }
-            }
-            // else{
-            //     return res.status(200).json({
-            //         message: "No messages to retrieve",
-            //         messages: documents
-            
-            //     })
-            // }
-                })
-                .catch(err => {
-                    return res.status(401).json({
-                        message: "Message error 2!",
-                
-                    })
-                })
-                // now get sent messages
-                console.log('user ni sent on purpose', user.username)
+                // not to get sent msgs with recieved msgs
                 Msg.find( 
                     {username: user.username}
                 ).sort({time:-1})
@@ -333,8 +307,41 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 //        messages: allMsgsReverseSent
                 //     });
                 }
-                console.log('final jess 2 sent', allMsgsReverseSent)
-
+                console.log('final jess 2 sent with sent and recieved', allMsgsReverseSent)
+                console.log('starting up famous in the hills, should be here hottie')
+                console.log('final jess 277', allMsgsReverse)
+                console.log('final jess 2316 sent', allMsgsReverseSent)
+                msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
+                console.log('just might', msgsWanted);
+                // compare most recent of sent nd recived 
+                msgsWanted.sort((c,e) => {
+                    console.log('last steps dont cry 7', c);
+    
+                    console.log('last steps dont cry', e);
+    
+                    if((c.username == e.otherUser) || (e.username == c.otherUser)){
+                        let newest = new Date(c.time),
+                            older = new Date(e.time);
+                            if (newest > older){
+                                console.log('hey im new');
+                                return newest
+                            }else {
+                                console.log('hey im old');
+                                return older
+                            } 
+                             
+                    }
+                    console.log('hippy pippy', msgsWanted)
+                    msgsWanted.sort((a,b) => {
+                        let newest = new Date(a.time),
+                            older = new Date(b.time);
+                            return newest - older
+                    })
+                })
+                    res.status(200).json({
+                    message: 'Info messages fetched succesfully!',
+                       messages: msgsWanted
+                    });
                   })
             
                   .catch(err => {
@@ -362,9 +369,231 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 
                     })
                 })
+               
+                  })
+            
+                  .catch(err => {
+                    return res.status(401).json({
+                        message: "Message error 37!",
                 
-                console.log('starting up famous, should be here')
+                    })
+                })
+            
+            }
+            // no msgs recieved
+            }else{
+                // now get sent messages
+                console.log('user ni sent on purpose', user.username)
+                Msg.find( 
+                    {username: user.username}
+                ).sort({time:-1})
+                .then(documents => {
+                    if(documents.length > 0){
+                    console.log('timing 77', documents)
+                    nonyaSent = [];
+                    documents.forEach((e) => {
+                        console.log('desert and i saw the lights')
+                        nonyaSent.push(e.otherUser)
+                    });
+            let nonyaOnceSent = [...new Set(nonyaSent)];
+            console.log('order german', nonyaOnceSent);
+            allMsgsSent = []
+            for(let i in nonyaOnceSent){
+                Msg.findOne({ $and: [
+            {username: user.username},
+            {otherUser: nonyaOnceSent[i]}
+                ]
+                }).sort({time:-1})    
+                  .then(finalDocs7 => {
 
+                    console.log('did we make it sent?', finalDocs7)
+                    allMsgsSent.push(finalDocs7);
+                if(allMsgsSent.length == nonyaOnceSent.length){ 
+                     allMsgsReverseSent = allMsgsSent;
+                    console.log('soooner syd 2', allMsgsReverseSent );
+                    allMsgsReverseSent.sort((a,b) => {
+                        let newest = new Date(a.time),
+                            older = new Date(b.time);
+                            return newest - older
+                    })
+                    // add sent: 'true' to each
+                    allMsgsReverseSent.filter((e) => {
+                        console.log('eeeee777', e);
+                        e.sent = 'true'
+                    })
+                //  no recieved msgs but has sent msgs
+                console.log('starting up famous in the hills, should be here')
+                console.log('final jess 277', allMsgsReverse)
+                console.log('final jess 2316 sent', allMsgsReverseSent)
+                msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
+                console.log('just might', msgsWanted);
+                // compare most recent of sent nd recived 
+                msgsWanted.sort((c,e) => {
+                    console.log('last steps dont cry 7', c);
+    
+                    console.log('last steps dont cry', e);
+    
+                    if((c.username == e.otherUser) || (e.username == c.otherUser)){
+                        let newest = new Date(c.time),
+                            older = new Date(e.time);
+                            if (newest > older){
+                                console.log('hey im new');
+                                return newest
+                            }else {
+                                console.log('hey im old');
+                                return older
+                            } 
+                             
+                    }
+                    console.log('hippy pippy', msgsWanted)
+                    msgsWanted.sort((a,b) => {
+                        let newest = new Date(a.time),
+                            older = new Date(b.time);
+                            return newest - older
+                    })
+                })
+                    res.status(200).json({
+                    message: 'Info messages fetched succesfully!',
+                       messages: msgsWanted
+                    });
+                }
+                console.log('final jess 2 sent', allMsgsReverseSent)
+
+                  })
+            
+                  .catch(err => {
+                    return res.status(401).json({
+                        message: "Message error 33!",
+                
+                    })
+                })
+            
+            }
+
+
+            }
+            else{
+                return res.status(200).json({
+                    message: "No messages to retrieve",
+                    messages: []
+            
+                })
+            }
+                })
+                .catch(err => {
+                    return res.status(401).json({
+                        message: "Message error 2!",
+                
+                    })
+                })
+            }
+                })
+                .catch(err => {
+                    return res.status(401).json({
+                        message: "Message error 2!",
+                
+                    })
+                })
+                // now get sent messages
+            //     console.log('user ni sent on purpose', user.username)
+            //     Msg.find( 
+            //         {username: user.username}
+            //     ).sort({time:-1})
+            //     .then(documents => {
+            //         if(documents.length > 0){
+            //         console.log('timing 77', documents)
+            //         nonyaSent = [];
+            //         documents.forEach((e) => {
+            //             console.log('desert and i saw the lights')
+            //             nonyaSent.push(e.otherUser)
+            //         });
+            // let nonyaOnceSent = [...new Set(nonyaSent)];
+            // console.log('order german', nonyaOnceSent);
+            // allMsgsSent = []
+            // for(let i in nonyaOnceSent){
+            //     Msg.findOne({ $and: [
+            // {username: user.username},
+            // {otherUser: nonyaOnceSent[i]}
+            //     ]
+            //     }).sort({time:-1})    
+            //       .then(finalDocs7 => {
+
+            //         console.log('did we make it sent?', finalDocs7)
+            //         allMsgsSent.push(finalDocs7);
+            //     if(allMsgsSent.length == nonyaOnceSent.length){ 
+            //          allMsgsReverseSent = allMsgsSent;
+            //         console.log('soooner syd 2', allMsgsReverseSent );
+            //         allMsgsReverseSent.sort((a,b) => {
+            //             let newest = new Date(a.time),
+            //                 older = new Date(b.time);
+            //                 return newest - older
+            //         })
+                 
+            //         allMsgsReverseSent.filter((e) => {
+            //             console.log('eeeee777', e);
+            //             e.sent = 'true'
+            //         })
+              
+            //     console.log('final jess 2 sent', allMsgsReverseSent)
+
+            //       })
+            
+            //       .catch(err => {
+            //         return res.status(401).json({
+            //             message: "Message error 33!",
+                
+            //         })
+            //     })
+            
+            // }
+
+
+            // }
+           
+                // })
+                // .catch(err => {
+                //     return res.status(401).json({
+                //         message: "Message error 2!",
+                
+                //     })
+                // })
+                
+                // final set up but do i make a lot of ifs and such
+                // console.log('starting up famous, should be here')
+                // console.log('final jess 277', allMsgsReverse)
+                // console.log('final jess 2316 sent', allMsgsReverseSent)
+                // msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
+                // console.log('just might', msgsWanted);
+                // // compare most recent of sent nd recived 
+                // msgsWanted.sort((c,e) => {
+                //     console.log('last steps dont cry 7', c);
+    
+                //     console.log('last steps dont cry', e);
+    
+                //     if((c.username == e.otherUser) || (e.username == c.otherUser)){
+                //         let newest = new Date(c.time),
+                //             older = new Date(e.time);
+                //             if (newest > older){
+                //                 console.log('hey im new');
+                //                 return newest
+                //             }else {
+                //                 console.log('hey im old');
+                //                 return older
+                //             } 
+                             
+                //     }
+                //     console.log('hippy pippy', msgsWanted)
+                //     msgsWanted.sort((a,b) => {
+                //         let newest = new Date(a.time),
+                //             older = new Date(b.time);
+                //             return newest - older
+                //     })
+                // })
+                //     res.status(200).json({
+                //     message: 'Info messages fetched succesfully!',
+                //        messages: msgsWanted
+                //     });
+                
 
 
             })
@@ -376,39 +605,6 @@ console.log('final jess 2 sent', allMsgsReverseSent)
             })
             console.log('starting up')
             
-            console.log('final jess 277', allMsgsReverse)
-            console.log('final jess 2316 sent', allMsgsReverseSent)
-            msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
-            console.log('just might', msgsWanted);
-            // compare most recent of sent nd recived 
-            msgsWanted.sort((c,e) => {
-                console.log('last steps dont cry 7', c);
-
-                console.log('last steps dont cry', e);
-
-                if((c.username == e.otherUser) || (e.username == c.otherUser)){
-                    let newest = new Date(c.time),
-                        older = new Date(e.time);
-                        if (newest > older){
-                            console.log('hey im new');
-                            return newest
-                        }else {
-                            console.log('hey im old');
-                            return older
-                        } 
-                         
-                }
-                console.log('hippy pippy', msgsWanted)
-                msgsWanted.sort((a,b) => {
-                    let newest = new Date(a.time),
-                        older = new Date(b.time);
-                        return newest - older
-                })
-            })
-                res.status(200).json({
-                message: 'Info messages fetched succesfully!',
-                   messages: msgsWanted
-                });
             
         }
        
