@@ -328,7 +328,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     msgsWanted.sort((a,b) => {
                         let newest = new Date(a.time),
                             older = new Date(b.time);
-                            return  older - newest
+                            return  newest - older
                     })
                     console.log('hippy pippy send it', msgsWanted)
                         res.status(200).json({
