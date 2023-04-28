@@ -83,12 +83,12 @@
                     <div class="buttonCombo" >
                       <!-- sent messages -->
                       <!-- sent -->
-                      <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === false) && (info.sent == 'true')" mat-flat-button (click)="navigateToChat(info.username)"
+                      <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === false) && (info.sent == 'true')" mat-flat-button (click)="navigateToChat(info.otherUser)"
                       matTooltip="Display Messages">        
                            <i class="fas fa-reply iconSpace"></i>
                        </button >
                         <!-- sent and opened-->
-                      <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === true) && (info.sent == 'true')" mat-flat-button (click)="navigateToChat(info.username)"
+                      <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === true) && (info.sent == 'true')" mat-flat-button (click)="navigateToChat(info.otherUser)"
                       matTooltip="Display Messages">        
                            <i class="fal fa-reply iconSpace"></i>
                        </button >
