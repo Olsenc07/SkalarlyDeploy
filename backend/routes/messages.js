@@ -296,7 +296,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     })
                     // add sent: 'true' to each
                     allMsgsReverseSent.forEach((e) => {
-                        e.sent = 'true'
+                        e['sent'] = 'true';
                         console.log('added sent', allMsgsReverseSent)
                     })
                     console.log('final jess 2 sent with sent and recieved', allMsgsReverseSent)
@@ -305,7 +305,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     console.log('just might', msgsWanted);
                     // compare most recent of sent nd recived 
                     msgsWanted.sort(compareDates)
-                    compareDates((c,e) => {
+                    function compareDates(c,e)  {
                             console.log('c',c);
                             console.log('e',e);
                             if((c.username == e.otherUser) || (e.username == c.otherUser)){
@@ -319,7 +319,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                                         return older
                                     }         
                             }
-                        })
+                        }
                     
                     console.log('hippy pippy', msgsWanted)
                     msgsWanted.sort((a,b) => {
