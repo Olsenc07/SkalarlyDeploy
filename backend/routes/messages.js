@@ -345,6 +345,8 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 })
             
             }
+
+
             }
             // else{
             //     return res.status(200).json({
@@ -361,6 +363,10 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     })
                 })
                 
+                console.log('starting up famous, should be here')
+
+
+
             })
             .catch(err => {
                 return res.status(401).json({
@@ -368,42 +374,44 @@ console.log('final jess 2 sent', allMsgsReverseSent)
             
                 })
             })
+            console.log('starting up')
+            
+            console.log('final jess 277', allMsgsReverse)
+            console.log('final jess 2316 sent', allMsgsReverseSent)
+            msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
+            console.log('just might', msgsWanted);
+            // compare most recent of sent nd recived 
+            msgsWanted.sort((c,e) => {
+                console.log('last steps dont cry 7', c);
 
+                console.log('last steps dont cry', e);
+
+                if((c.username == e.otherUser) || (e.username == c.otherUser)){
+                    let newest = new Date(c.time),
+                        older = new Date(e.time);
+                        if (newest > older){
+                            console.log('hey im new');
+                            return newest
+                        }else {
+                            console.log('hey im old');
+                            return older
+                        } 
+                         
+                }
+                console.log('hippy pippy', msgsWanted)
+                msgsWanted.sort((a,b) => {
+                    let newest = new Date(a.time),
+                        older = new Date(b.time);
+                        return newest - older
+                })
+            })
+                res.status(200).json({
+                message: 'Info messages fetched succesfully!',
+                   messages: msgsWanted
+                });
             
         }
-        console.log('final jess 277', allMsgsReverse)
-                console.log('final jess 2316 sent', allMsgsReverseSent)
-                msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
-                console.log('just might', msgsWanted);
-                // compare most recent of sent nd recived 
-                msgsWanted.sort((c,e) => {
-                    console.log('last steps dont cry 7', c);
-
-                    console.log('last steps dont cry', e);
-
-                    if((c.username == e.otherUser) || (e.username == c.otherUser)){
-                        let newest = new Date(c.time),
-                            older = new Date(e.time);
-                            if (newest > older){
-                                console.log('hey im new');
-                                return newest
-                            }else {
-                                console.log('hey im old');
-                                return older
-                            } 
-                             
-                    }
-                    console.log('hippy pippy', msgsWanted)
-                    msgsWanted.sort((a,b) => {
-                        let newest = new Date(a.time),
-                            older = new Date(b.time);
-                            return newest - older
-                    })
-                })
-                    res.status(200).json({
-                    message: 'Info messages fetched succesfully!',
-                       messages: msgsWanted
-                    });
+       
     }).catch(err => {
         return res.status(401).json({
             message: "Message error blocked!",
