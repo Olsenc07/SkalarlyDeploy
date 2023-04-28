@@ -455,10 +455,14 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     this.postSub = this.isPostScreen$.subscribe((onPostPg) => {
-      this.postClicked = true;
+      if (onPostPg === true) {
+        this.postClicked = true;
+      }
     });
     this.msgSub = this.isMessagesScreen$.subscribe((onMsgPg) => {
-      this.commentClicked = true;
+      if (onMsgPg === true) {
+        this.commentClicked = true;
+      }
     });
 
     // update badges! on login!!
@@ -680,13 +684,13 @@ export class AppComponent implements OnInit, OnDestroy {
     this.searchCharacter = '';
     this.checkFollowingSearch(this.search.value);
     const FollowingId = id;
-    // this.followService.postInfoFollow(this.userId, username, FollowingId);
-    // this.followService.postInfoFollowHistory(
-    //   this.userId,
-    //   username,
-    //   FollowingId,
-    //   this.time
-    // );
+    this.followService.postInfoFollow(this.userId, username, FollowingId);
+    this.followService.postInfoFollowHistory(
+      this.userId,
+      username,
+      FollowingId,
+      this.time
+    );
     console.log('username follow', username);
     console.log('id follow', FollowingId);
     console.log('your id', this.userId);
@@ -701,7 +705,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.searchCharacter = '';
     this.checkFollowingSearch(this.search.value);
 
-    // this.followService.deleteFollowUserPg(userName, this.userId);
+    this.followService.deleteFollowUserPg(userName, this.userId);
     console.log('chaz whats up homie gg unfollow', userName);
     console.log('chaz whats up unfollow', this.userId);
   }

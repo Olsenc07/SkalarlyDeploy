@@ -61,6 +61,8 @@ res.status(200).json({
 
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
+    let allMsgsReverseSent = []
+    let allMsgsReverse = []
     await User.findById({_id: req.query.userId})
 .then(user => {
     console.log('user ni ni', user)
@@ -78,7 +80,7 @@ console.log('blocked', blocked)
                 Msg.find( {$and: [
                     {otherUser: user.username},
                     {you:{$nin: blockedList }}
-            ]}) 
+            ]}).sort({time:-1}) 
                 .then(documents => {
                     if(documents.length > 0){
                     console.log('timing', documents)
@@ -100,7 +102,7 @@ console.log('blocked', blocked)
                     // 
                    allMsgs.push(finalDocs);
                 if(allMsgs.length == nonyaOnce.length){ 
-                    let allMsgsReverse = allMsgs;
+                     allMsgsReverse = allMsgs;
                     console.log('sooner', allMsgsReverse );
                     // sort by new time ontop
                     allMsgsReverse.sort((a,b) => {
@@ -109,13 +111,14 @@ console.log('blocked', blocked)
                             older = new Date(b.time);
                             return newest - older 
                     })
-                    console.log('final', allMsgsReverse)
                     
-                res.status(200).json({
-                    message: 'Info messages fetched succesfully!',
-                    messages: allMsgsReverse,
-                    });
+                // res.status(200).json({
+                //     message: 'Info messages fetched succesfully!',
+                //     messages: allMsgsReverse,
+                //     });
                 }
+                console.log('final block 765', allMsgsReverse)
+
                   })
             
                   .catch(err => {
@@ -126,13 +129,14 @@ console.log('blocked', blocked)
                 })
             
             }
-            }else{
-                return res.status(200).json({
-                    message: "No messages to retrieve",
-                    messages: documents
-            
-                })
             }
+            // else{
+            //     return res.status(200).json({
+            //         message: "No messages to retrieve",
+            //         messages: documents
+            
+            //     })
+            // }
                 })
                 .catch(err => {
                     return res.status(401).json({
@@ -141,11 +145,85 @@ console.log('blocked', blocked)
                     })
                 })
             
+// now get sent messages blocked 
+// cant send if your blocked so cant retrieve this msg
+console.log('cant see msgs you sent to people you blocked')
+blockedListnames = []
+blocked.forEach((e) => {
+    blockedListnames.push(e.blockedUsername)
+})
+Msg.find( {$and: [
+    {username: user.username},
+    {otherUser: {$nin: blockedListnames }}
+        ]}).sort({time:-1})
+.then(documents => {
+    if(documents.length > 0){
+    console.log('timing', documents)
+    nonyaSent = [];
+    documents.forEach((e) => {
+        nonyaSent.push(e.username)
+    });
+let nonyaOnceSent = [...new Set(nonyaSent)];
+console.log('order german blocked', nonyaOnceSent);
+allMsgsSent = []
+for(let i in nonyaOnceSent){
+Msg.findOne({ $and: [
+{otherUser: nonyaOnceSent[i]},
+{username: user.username}
+]
+}).sort({time:-1})    
+  .then(finalDocs => {
+    console.log('did we make it sent blocked?', finalDocs)
+    allMsgsSent.push(finalDocs);
+if(allMsgsSent.length == nonyaOnceSent.length){ 
+     allMsgsReverseSent = allMsgsSent;
+    console.log('sooner syd 2', allMsgsReverseSent );
+    allMsgsReverseSent.sort((a,b) => {
+        let newest = new Date(a.time),
+            older = new Date(b.time);
+            return newest - older
+    })
+    // add sent: 'true' to each
+    allMsgsReverseSent.filter((e) => {
+        console.log('eeee7e', e);
+        e.sent = 'true'
+    })
+// res.status(200).json({
+//     message: 'Info messages fetched succesfully!',
+//        messages: allMsgsReverseSent
+//     });
+}
+console.log('final jess 2 sent', allMsgsReverseSent)
 
+  })
+
+  .catch(err => {
+    return res.status(401).json({
+        message: "Message error 3!",
+
+    })
+})
+
+}
+}
+// else{
+//     return res.status(200).json({
+//         message: "No messages to retrieve",
+//         messages: documents
+
+//     })
+// }
+})
+.catch(err => {
+    return res.status(401).json({
+        message: "Message error 2!",
+
+    })
+})
 
             
         }else{
-
+           
             User.findById({_id: req.query.userId})
             .then(user => {
                 console.log('user ni ni', user)
@@ -172,19 +250,20 @@ console.log('blocked', blocked)
                     console.log('did we make it?', finalDocs)
                    allMsgs.push(finalDocs);
                 if(allMsgs.length == nonyaOnce.length){ 
-                    let allMsgsReverse = allMsgs;
+                     allMsgsReverse = allMsgs;
                     console.log('sooner syd 2', allMsgsReverse );
                     allMsgsReverse.sort((a,b) => {
                         let newest = new Date(a.time),
                             older = new Date(b.time);
                             return newest - older
                     })
-                    console.log('final jess 2', allMsgsReverse)
-                res.status(200).json({
-                    message: 'Info messages fetched succesfully!',
-                       messages: allMsgsReverse
-                    });
+           
+                // res.status(200).json({
+                //     message: 'Info messages fetched succesfully!',
+                //        messages: allMsgsReverse
+                //     });
                 }
+                console.log('final jess 2', allMsgsReverse)
                   })
             
                   .catch(err => {
@@ -195,13 +274,14 @@ console.log('blocked', blocked)
                 })
             
             }
-            }else{
-                return res.status(200).json({
-                    message: "No messages to retrieve",
-                    messages: documents
-            
-                })
             }
+            // else{
+            //     return res.status(200).json({
+            //         message: "No messages to retrieve",
+            //         messages: documents
+            
+            //     })
+            // }
                 })
                 .catch(err => {
                     return res.status(401).json({
@@ -209,6 +289,108 @@ console.log('blocked', blocked)
                 
                     })
                 })
+                // now get sent messages
+                console.log('user ni sent on purpose')
+                Msg.find( 
+                    {username: user.username}
+                ).sort({time:-1})
+                .then(documents => {
+                    if(documents.length > 0){
+                    console.log('timing', documents)
+                    nonyaSent = [];
+                    documents.forEach((e) => {
+                        nonyaSent.push(e.username)
+                    });
+            let nonyaOnceSent = [...new Set(nonyaSent)];
+            console.log('order german', nonyaOnceSent);
+            allMsgsSent = []
+            for(let i in nonyaOnceSent){
+                Msg.findOne({ $and: [
+            {otherUser: nonyaOnceSent[i]},
+            {username: user.username}
+                ]
+                }).sort({time:-1})    
+                  .then(finalDocs => {
+                    console.log('did we make it sent?', finalDocs)
+                    allMsgsSent.push(finalDocs);
+                if(allMsgsSent.length == nonyaOnceSent.length){ 
+                     allMsgsReverseSent = allMsgsSent;
+                    console.log('soooner syd 2', allMsgsReverseSent );
+                    allMsgsReverseSent.sort((a,b) => {
+                        let newest = new Date(a.time),
+                            older = new Date(b.time);
+                            return newest - older
+                    })
+                    // add sent: 'true' to each
+                    allMsgsReverseSent.filter((e) => {
+                        console.log('eeeee', e);
+                        e.sent = 'true'
+                    })
+                // res.status(200).json({
+                //     message: 'Info messages fetched succesfully!',
+                //        messages: allMsgsReverseSent
+                //     });
+                }
+                console.log('final jess 2 sent', allMsgsReverseSent)
+
+                  })
+            
+                  .catch(err => {
+                    return res.status(401).json({
+                        message: "Message error 3!",
+                
+                    })
+                })
+            
+            }
+            }
+            // else{
+            //     return res.status(200).json({
+            //         message: "No messages to retrieve",
+            //         messages: documents
+            
+            //     })
+            // }
+                })
+                .catch(err => {
+                    return res.status(401).json({
+                        message: "Message error 2!",
+                
+                    })
+                })
+                console.log('final jess 277', allMsgsReverse)
+                console.log('final jess 2316 sent', allMsgsReverseSent)
+                msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
+                console.log('just might', msgsWanted);
+                // compare most recent of sent nd recived 
+                msgsWanted.sort((c,e) => {
+                    console.log('last steps dont cry 7', c);
+
+                    console.log('last steps dont cry', e);
+
+                    if((a.username == b.otherUser) || (b.username == a.otherUser)){
+                        let newest = new Date(a.time),
+                            older = new Date(b.time);
+                            if (newest > older){
+                                console.log('hey im new');
+                                return newest
+                            }else {
+                                console.log('hey im old');
+                                return older
+                            } 
+                             
+                    }
+                    console.log('hippy pippy', msgsWanted)
+                    msgsWanted.sort((a,b) => {
+                        let newest = new Date(a.time),
+                            older = new Date(b.time);
+                            return newest - older
+                    })
+                })
+                    res.status(200).json({
+                    message: 'Info messages fetched succesfully!',
+                       messages: msgsWanted
+                    });
             })
             .catch(err => {
                 return res.status(401).json({
@@ -221,6 +403,8 @@ console.log('blocked', blocked)
         }
     })
 })
+
+
 })
 
 
