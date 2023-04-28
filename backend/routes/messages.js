@@ -258,13 +258,10 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                             return newest - older
                     })
            
-                // res.status(200).json({
-                //     message: 'Info messages fetched succesfully!',
-                //        messages: allMsgsReverse
-                //     });
+            
                 }
                 console.log('final jess 2', allMsgsReverse)
-                // not to get sent msgs with recieved msgs
+                // now to get sent msgs with recieved msgs
                 Msg.find( 
                     {username: user.username}
                 ).sort({time:-1})
@@ -353,15 +350,42 @@ console.log('final jess 2 sent', allMsgsReverseSent)
             
             }
 
-
+// msgs recieved but non sent
             }
-            // else{
-            //     return res.status(200).json({
-            //         message: "No messages to retrieve",
-            //         messages: documents
-            
-            //     })
-            // }
+            else{
+                console.log('recieved but not sent')
+                msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
+                console.log('just might', msgsWanted);
+                // compare most recent of sent nd recived 
+                msgsWanted.sort((c,e) => {
+                    console.log('last steps dont cry 7', c);
+    
+                    console.log('last steps dont cry', e);
+    
+                    if((c.username == e.otherUser) || (e.username == c.otherUser)){
+                        let newest = new Date(c.time),
+                            older = new Date(e.time);
+                            if (newest > older){
+                                console.log('hey im new');
+                                return newest
+                            }else {
+                                console.log('hey im old');
+                                return older
+                            } 
+                             
+                    }
+                    console.log('hippy pippy', msgsWanted)
+                    msgsWanted.sort((a,b) => {
+                        let newest = new Date(a.time),
+                            older = new Date(b.time);
+                            return newest - older
+                    })
+                })
+                    res.status(200).json({
+                    message: 'Info messages fetched succesfully!',
+                       messages: msgsWanted
+                    });
+            }
                 })
                 .catch(err => {
                     return res.status(401).json({
