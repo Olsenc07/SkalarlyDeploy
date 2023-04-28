@@ -326,11 +326,11 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     let newest = new Date(a.time),
                     older = new Date(b.time);
                     if (newest > older){
-                        console.log('hey im new', newest);
-                        return updated.push(newest)
+                        console.log('hey im new', a);
+                        return updated.push(a)
                     }else {
-                        console.log('hey im old', older);
-                        return updated.push(older)
+                        console.log('hey im old', b);
+                        return updated.push(b)
                     }   
                     
                    }
