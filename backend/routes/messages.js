@@ -301,13 +301,14 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     //     console.log('added sent e sent ', allMsgsReverseSent);
 
                     // })
+                    sentAttached = []
                     for(let index = 0; index < allMsgsReverseSent.length; index++){
-                        allMsgsReverseSent[index].sent = 'true';
+                        sentAttached.push(allMsgsReverseSent[index].sent = 'true');
                     }
 
-                    console.log('final jess 2 sent with sent and recieved', allMsgsReverseSent)
+                    console.log('final jess 2 sent with sent and recieved', sentAttached)
                     console.log('starting up famous in the hills, should be here hottie')
-                    msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
+                    msgsWanted = allMsgsReverse.concat(sentAttached)
                     console.log('just might', msgsWanted);
                     // compare most recent of sent nd recived 
                     // instead of return have psh to new list then concat that with old list ish
@@ -315,25 +316,38 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     // compare two objects but what is needed is a filter to return one of them
                     // if condition is met,
                     // then sort
-                    msgsWanted.filter((a) => { 
-                        console.log('a',a)
-                        a.sort((c,e) => {
-                            console.log('c',c );
-                            console.log('e',e );
+                    let updated =  []
+                    getRecent((a,b) => {
+                        console.log('a', a);
+                        console.log('b', b);
 
-                            if((c.username == e.otherUser) && (e.username == c.otherUser)){
-                                let newest = new Date(c.time),
-                                    older = new Date(e.time);
-                                    if (newest > older){
-                                        console.log('hey im new');
-                                        return newest
-                                    }else {
-                                        console.log('hey im old');
-                                        return older
-                                    }         
-                            }
-                        })
-                        })
+                   if((a.username == b.otherUser) && (b.username == a.otherUser)){
+                    console.log('we have a match, duuhh')
+                    let newest = new Date(a.time),
+                    older = new Date(b.time);
+                    if (newest > older){
+                        console.log('hey im new', newest);
+                        return updated.push(newest)
+                    }else {
+                        console.log('hey im old', older);
+                        return updated.push(older)
+                    }   
+                    
+                   }
+
+                })
+                getRecent(allMsgsReverse,sentAttached);
+                console.log('hye baby', updated)
+    
+                            updated.sort((c,e) => {
+                                console.log('c',c);
+                                console.log('e',e);
+
+                                    
+                            
+                        });
+         
+            
                     
                     console.log('hippy pippy', msgsWanted)
                     msgsWanted.sort((a,b) => {
