@@ -290,15 +290,16 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     })
                 })
                 // now get sent messages
-                console.log('user ni sent on purpose')
+                console.log('user ni sent on purpose', user.username)
                 Msg.find( 
                     {username: user.username}
                 ).sort({time:-1})
                 .then(documents => {
                     if(documents.length > 0){
-                    console.log('timing', documents)
+                    console.log('timing 77', documents)
                     nonyaSent = [];
                     documents.forEach((e) => {
+                        console.log('desert and i saw the lights', e)
                         nonyaSent.push(e.username)
                     });
             let nonyaOnceSent = [...new Set(nonyaSent)];
