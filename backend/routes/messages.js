@@ -295,9 +295,11 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                             return newest - older
                     })
                     // add sent: 'true' to each
-                    allMsgsReverseSent.forEach((e) => {
-                        e['sent'] = 'true';
-                        console.log('added sent', allMsgsReverseSent)
+                    allMsgsReverseSent.filter((e) => {
+                        console.log('added sent e ', e);
+                        e.sent = 'true';
+                        console.log('added sent e sent ', e);
+
                     })
                     console.log('final jess 2 sent with sent and recieved', allMsgsReverseSent)
                     console.log('starting up famous in the hills, should be here hottie')
@@ -308,7 +310,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     function compareDates(c,e)  {
                             console.log('c',c);
                             console.log('e',e);
-                            if((c.username == e.otherUser) || (e.username == c.otherUser)){
+                            if((c.username == e.otherUser) && (e.username == c.otherUser)){
                                 let newest = new Date(c.time),
                                     older = new Date(e.time);
                                     if (newest > older){
