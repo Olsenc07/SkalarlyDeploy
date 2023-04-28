@@ -289,16 +289,16 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 if(allMsgsSent.length == nonyaOnceSent.length){ 
                      allMsgsReverseSent = allMsgsSent;
                     console.log('soooner syd 2', allMsgsReverseSent );
-                    allMsgsReverseSent.sort((a,b) => {
-                        let newest = new Date(a.time),
-                            older = new Date(b.time);
-                            return newest - older
-                    })
+                    // allMsgsReverseSent.sort((a,b) => {
+                    //     let newest = new Date(a.time),
+                    //         older = new Date(b.time);
+                    //         return newest - older
+                    // })
                     // add sent: 'true' to each
-                    allMsgsReverseSent.filter((e) => {
+                    allMsgsReverseSent.forEach((e) => {
                         console.log('added sent e ', e);
                         e.sent = 'true';
-                        console.log('added sent e sent ', e);
+                        console.log('added sent e sent ', allMsgsReverseSent);
 
                     })
                     console.log('final jess 2 sent with sent and recieved', allMsgsReverseSent)
@@ -306,7 +306,8 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
                     console.log('just might', msgsWanted);
                     // compare most recent of sent nd recived 
-                    msgsWanted.sort(compareDates)
+                    // instead of return have psh to new list then concat that with old list ish
+                    msgsWanted.filter(compareDates)
                     function compareDates(c,e)  {
                             console.log('c',c);
                             console.log('e',e);
