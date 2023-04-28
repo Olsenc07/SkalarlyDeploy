@@ -303,7 +303,9 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     // })
                     sentAttached = []
                     for(let index = 0; index < allMsgsReverseSent.length; index++){
-                        sentAttached.push(allMsgsReverseSent[index].sent = 'true');
+                        oneTime = (allMsgsReverseSent[index].sent = 'true')
+                        sentAttached.push(oneTime);
+
                     }
 
                     console.log('final jess 2 sent with sent and recieved', sentAttached)
