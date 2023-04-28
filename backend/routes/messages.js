@@ -295,9 +295,8 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                             return newest - older
                     })
                     // add sent: 'true' to each
-                   addedSent = allMsgsReverseSent.filter((e) => {
+                   addedSent = allMsgsReverseSent.map((e) => {
                         e.sent = 'true'
-                        console.log('sent added', e)
                     })
                     console.log('final jess 2 sent with sent and recieved', addedSent)
                     console.log('starting up famous in the hills, should be here hottie')
