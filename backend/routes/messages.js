@@ -161,7 +161,7 @@ Msg.find( {$and: [
     console.log('timing', documents)
     nonyaSent = [];
     documents.forEach((e) => {
-        nonyaSent.push(e.username)
+        nonyaSent.push(e.otherUser)
     });
 let nonyaOnceSent = [...new Set(nonyaSent)];
 console.log('order german blocked', nonyaOnceSent);
@@ -299,22 +299,22 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     console.log('timing 77', documents)
                     nonyaSent = [];
                     documents.forEach((e) => {
-                        console.log('desert and i saw the lights', e)
-                        nonyaSent.push(e.username)
+                        console.log('desert and i saw the lights')
+                        nonyaSent.push(e.otherUser)
                     });
             let nonyaOnceSent = [...new Set(nonyaSent)];
             console.log('order german', nonyaOnceSent);
             allMsgsSent = []
             for(let i in nonyaOnceSent){
                 Msg.findOne({ $and: [
-            {otherUser: nonyaOnceSent[i]},
-            {username: user.username}
+            {username: user.username},
+            {otherUser: nonyaOnceSent[i]}
                 ]
                 }).sort({time:-1})    
-                  .then(finalDocs => {
+                  .then(finalDocs7 => {
 
-                    console.log('did we make it sent?', finalDocs)
-                    allMsgsSent.push(finalDocs);
+                    console.log('did we make it sent?', finalDocs7)
+                    allMsgsSent.push(finalDocs7);
                 if(allMsgsSent.length == nonyaOnceSent.length){ 
                      allMsgsReverseSent = allMsgsSent;
                     console.log('soooner syd 2', allMsgsReverseSent );
