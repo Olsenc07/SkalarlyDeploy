@@ -68,7 +68,7 @@ router.get("/infoMessage", async(req, res, next) => {
     console.log('user ni ni', user)
     BlockSkalar.find({blockedUsername:user.username})
     .then(blocked => {
-        if(blocked){
+        if(blocked.length >= 1){
 console.log('blocked', blocked)
 
                 console.log('user ni ni 77', user)
@@ -268,7 +268,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
             
                   .catch(err => {
                     return res.status(401).json({
-                        message: "Message error 3!",
+                        message: "Message error 37!",
                 
                     })
                 })
@@ -311,6 +311,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 ]
                 }).sort({time:-1})    
                   .then(finalDocs => {
+
                     console.log('did we make it sent?', finalDocs)
                     allMsgsSent.push(finalDocs);
                 if(allMsgsSent.length == nonyaOnceSent.length){ 
@@ -337,7 +338,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
             
                   .catch(err => {
                     return res.status(401).json({
-                        message: "Message error 3!",
+                        message: "Message error 33!",
                 
                     })
                 })
@@ -401,6 +402,16 @@ console.log('final jess 2 sent', allMsgsReverseSent)
 
             
         }
+    }).catch(err => {
+        return res.status(401).json({
+            message: "Message error blocked!",
+    
+        })
+    })
+}).catch(err => {
+    return res.status(401).json({
+        message: "Message error own!",
+
     })
 })
 
@@ -533,7 +544,7 @@ if(allMsgs.length == matches.length){
     
           .catch(err => {
             return res.status(401).json({
-                message: "Message error 3!",
+                message: "Message error 333!",
         
             })
         })
