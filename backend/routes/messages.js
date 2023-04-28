@@ -61,8 +61,8 @@ res.status(200).json({
 
 // userInfo Messages
 router.get("/infoMessage", async(req, res, next) => {
-    let allMsgsReverseSent = []
-    let allMsgsReverse = []
+    var allMsgsReverseSent = []
+    var allMsgsReverse = []
     await User.findById({_id: req.query.userId})
 .then(user => {
     console.log('user ni ni', user)
@@ -325,7 +325,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     })
                     // add sent: 'true' to each
                     allMsgsReverseSent.filter((e) => {
-                        console.log('eeeee', e);
+                        console.log('eeeee777', e);
                         e.sent = 'true'
                     })
                 // res.status(200).json({
@@ -360,7 +360,18 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 
                     })
                 })
-                console.log('final jess 277', allMsgsReverse)
+                
+            })
+            .catch(err => {
+                return res.status(401).json({
+                    message: "Message error 1!",
+            
+                })
+            })
+
+            
+        }
+        console.log('final jess 277', allMsgsReverse)
                 console.log('final jess 2316 sent', allMsgsReverseSent)
                 msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
                 console.log('just might', msgsWanted);
@@ -393,16 +404,6 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     message: 'Info messages fetched succesfully!',
                        messages: msgsWanted
                     });
-            })
-            .catch(err => {
-                return res.status(401).json({
-                    message: "Message error 1!",
-            
-                })
-            })
-
-            
-        }
     }).catch(err => {
         return res.status(401).json({
             message: "Message error blocked!",
