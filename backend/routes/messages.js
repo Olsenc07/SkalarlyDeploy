@@ -295,12 +295,13 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                             return newest - older
                     })
                     // add sent: 'true' to each
-                   addedSent = allMsgsReverseSent.map((e) => {
-                      return  e.sent = 'true'
+                    allMsgsReverseSent.forEach((e) => {
+                        e.sent = 'true'
+                        console.log('added sent', allMsgsReverseSent)
                     })
-                    console.log('final jess 2 sent with sent and recieved', addedSent)
+                    console.log('final jess 2 sent with sent and recieved', allMsgsReverseSent)
                     console.log('starting up famous in the hills, should be here hottie')
-                    msgsWanted = allMsgsReverse.concat(addedSent)
+                    msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
                     console.log('just might', msgsWanted);
                     // compare most recent of sent nd recived 
                     msgsWanted.sort(compareDates)
