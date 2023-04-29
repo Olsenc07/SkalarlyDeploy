@@ -334,15 +334,19 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 }
                 getRecent(allMsgsReverse, allMsgsSent);
                 console.log('hye baby', updated)
-
+                // cancel repeats
                const filtered = msgsWanted.filter((c) => {
                 console.log('like  c', c)
 
                 return playOffs.some((e) => {
-                    console.log('like woo', e.id)
-                    console.log('like woo_', e._id)
+                    console.log('like woo', e)
 
-                    return e.id === c.id
+                    e.forEach((f) => {
+                        console.log('f', f);
+                        return f._id === c._id
+
+                    })
+
                 })
                })
                 console.log('filtered', filtered)
