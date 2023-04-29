@@ -284,8 +284,8 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 }).sort({time:-1}).lean() 
                   .then(finalDocs7 => {
           
-                    finalDocs7.sent ='true'
-                    console.log('we make it sent?', finalDocs7)
+                    // finalDocs7.sent ='true'
+                    // console.log('we make it sent?', finalDocs7)
                     allMsgsSent.push(finalDocs7);
                 if(allMsgsSent.length == nonyaOnceSent.length){ 
                     console.log('soooner syd 2', allMsgsSent );
