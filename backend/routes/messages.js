@@ -281,12 +281,12 @@ console.log('final jess 2 sent', allMsgsReverseSent)
             {username: user.username},
             {otherUser: nonyaOnceSent[i]}
                 ]
-                }).sort({time:-1})    
+                }).sort({time:-1}).lean() 
                   .then(finalDocs7 => {
-                    console.log('type of', typeof finalDocs7)
-                        const finalDocs77 = {...finalDocs7,sent: 'true' }
-                    console.log('we make it sent?', finalDocs77)
-                    allMsgsSent.push(finalDocs77);
+          
+                    finalDocs7.sent ='true'
+                    console.log('we make it sent?', finalDocs7)
+                    allMsgsSent.push(finalDocs7);
                 if(allMsgsSent.length == nonyaOnceSent.length){ 
                     console.log('soooner syd 2', allMsgsSent );
                     // allMsgsReverseSent.sort((a,b) => {
