@@ -303,7 +303,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     // })
                   
                   
-                        allMsgsReverseSent.filter((e) => {
+                        allMsgsReverseSent.forEach((e) => {
                             console.log('check boolean', e.hasOwnProperty(sent))
                             if(e.hasOwnProperty(sent) == false){
                             e.sent = 'sent'
