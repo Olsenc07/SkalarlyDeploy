@@ -338,14 +338,16 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                const filtered = msgsWanted.filter((c) => {
                 console.log('like  c', c)
 
-                return playOffs.some((e) => {
+                return playOffs.filter((e) => {
                     console.log('like woo', e)
-
-                    e.forEach((f) => {
+                    e.some((f) => {
                         console.log('f', f);
+                        console.log('c second', c);
+
                         return f._id === c._id
 
                     })
+    
 
                 })
                })

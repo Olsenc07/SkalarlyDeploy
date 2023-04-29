@@ -65,14 +65,20 @@
                         <!-- <div class="column_"> -->
                             <div class="column_">
                                 <!-- (click)="onOtherUser(info)" -->
-                      
-                        
+                      <!-- recieved messages -->
                         <button 
-                        mat-button (click)="navigateToPage(info.username)"
+                        mat-button (click)="navigateToPage(info.username)" *ngIf="(info.you !== userId)"
                         class="userName textSize_" id="userName"  [value]=info.username  > 
                             @{{ info.username}}
         
                         </button>
+                          <!-- sent messages -->
+                          <button 
+                          mat-button (click)="navigateToPage(info.otherUser)" *ngIf="(info.you == userId)"
+                          class="userName textSize_" id="otherUser"  [value]=info.otherUser  > 
+                              @{{ info.otherUser}}
+          
+                          </button>
                         </div>
                      <div class="userName textSize" >
                             <!-- {{ (profile | async)?.Pronouns}} -->
@@ -83,23 +89,23 @@
                     <div class="buttonCombo" >
                       <!-- sent messages -->
                       <!-- sent -->
-                      <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === false) && (info.sent == 'true')" mat-flat-button (click)="navigateToChat(info.otherUser)"
+                      <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === false) && (info.you == userId)" mat-flat-button (click)="navigateToChat(info.otherUser)"
                       matTooltip="Display Messages">        
                            <i class="fas fa-reply iconSpace"></i>
                        </button >
                         <!-- sent and opened-->
-                      <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === true) && (info.sent == 'true')" mat-flat-button (click)="navigateToChat(info.otherUser)"
+                      <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === true) && (info.you == userId)" mat-flat-button (click)="navigateToChat(info.otherUser)"
                       matTooltip="Display Messages">        
                            <i class="fal fa-reply iconSpace"></i>
                        </button >
                       <!-- recieving message -->
         <!-- first viewing -->
-        <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === false) " mat-flat-button (click)="navigateToChat(info.username)"
+        <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === false) && (info.you !== userId) " mat-flat-button (click)="navigateToChat(info.username)"
         matTooltip="Display Messages">        
              <i class="fas fa-envelope iconSpace"></i>
          </button >
         <!-- already opened -->
-                        <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === true) "  mat-flat-button (click)="navigateToChat(info.username)"
+                        <button  mat-flat-button class="counterColor" *ngIf="(info.viewed === true) && (info.you !== userId)"  mat-flat-button (click)="navigateToChat(info.username)"
                        matTooltip="Display Messages">        
                             <i class="fas fa-envelope-open-text iconSpace"></i>
                         </button >
