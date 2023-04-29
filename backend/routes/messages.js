@@ -308,13 +308,18 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                         console.log('b', b);
 
                    if((a.username == b.otherUser) && (b.username == a.otherUser)){
-                        playOffs = [a,b]
+                        playOffs = []
+                        playOffs.push(a,b)
                         console.log('playoffs', playOffs )
                         // then take away playoffs from msgswanted 
                         // then concat update list too msgsWanted
+                        // remove duplicates 
+                        // then concat updated
                     console.log('we have a match, duuhh')
                     let newest = new Date(a.time),
                     older = new Date(b.time);
+                    console.log('newest', newest);
+                    console.log('older', older);
                     if (newest > older){
                         console.log('hey im new', a);
                         return updated.push(a)
