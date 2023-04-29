@@ -304,10 +304,10 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                   
                   
                         allMsgsReverseSent.filter((e) => {
-                            // if(!e.sent){
+                            if(!e.hasOwnProperty(sent)){
                             e.sent = 'sent'
-                            cosole.log('sent')
-                            // }
+                            console.log('sent')
+                            }
                         })
                      
 
