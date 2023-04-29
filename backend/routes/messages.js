@@ -283,12 +283,11 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 ]
                 }).sort({time:-1})    
                   .then(finalDocs7 => {
-
+                        finalDocs7.sent = 'true'
                     console.log('did we make it sent?', finalDocs7)
                     allMsgsSent.push(finalDocs7);
                 if(allMsgsSent.length == nonyaOnceSent.length){ 
-                     allMsgsReverseSent = allMsgsSent;
-                    console.log('soooner syd 2', allMsgsReverseSent );
+                    console.log('soooner syd 2', allMsgsSent );
                     // allMsgsReverseSent.sort((a,b) => {
                     //     let newest = new Date(a.time),
                     //         older = new Date(b.time);
@@ -303,18 +302,18 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     // })
                   
                   
-                        allMsgsReverseSent.filter((e) => {
-                            console.log('check boolean', e.hasOwnProperty('sent'))
-                            if(e.hasOwnProperty('sent') == false){
-                            e['sent'] = 'true'
-                            console.log(e)
-                            }
-                        })
+                        // allMsgsReverseSent.filter((e) => {
+                        //     console.log('check boolean', e.hasOwnProperty('sent'))
+                        //     if(e.hasOwnProperty('sent') == false){
+                        //     e.sent = 'true'
+                        //     console.log(e)
+                        //     }
+                        // })
                      
 
-                    console.log('final jess 2 sent with sent and recieved', allMsgsReverseSent)
+                    console.log('final jess 2 sent with sent and recieved', allMsgsSent)
                     console.log('starting up famous in the hills, should be here hottie')
-                    msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
+                    msgsWanted = allMsgsReverse.concat(allMsgsSent)
                     console.log('just might', msgsWanted);
                     // compare most recent of sent nd recived 
                     // instead of return have psh to new list then concat that with old list ish
@@ -346,7 +345,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                    }
 
                 })
-                getRecent(allMsgsReverse,allMsgsReverseSent);
+                getRecent(allMsgsReverse, allMsgsSent);
                 console.log('hye baby', updated)
     
                             updated.sort((c,e) => {
