@@ -303,12 +303,13 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     // if condition is met,
                     // then sort
                     let updated =  []
+                    let playOffs = []
+
                    function getRecent(a,b) {
                         console.log('a', a);
                         console.log('b', b);
 
                    if((a.username == b.otherUser) && (b.username == a.otherUser)){
-                        playOffs = []
                         playOffs.push(a,b)
                         console.log('playoffs', playOffs )
                         // then take away playoffs from msgswanted 
@@ -333,8 +334,19 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 }
                 getRecent(allMsgsReverse, allMsgsSent);
                 console.log('hye baby', updated)
-    
-                            updated.sort((c,e) => {
+
+               const filtered = msgsWanted.filter((c) => {
+                console.log('like  c', c)
+
+                return playOffs.some((e) => {
+                    console.log('like woo', e)
+                    return e._id === c._id
+                })
+               })
+                console.log('filtered', filtered)
+                filteredFinal = filtered.concat(updated)
+                console.log('filteredFinal', filteredFinal)
+                            filteredFinal.sort((c,e) => {
                                 console.log('c',c);
                                 console.log('e',e);
 
