@@ -289,27 +289,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     allMsgsSent.push(finalDocs7);
                 if(allMsgsSent.length == nonyaOnceSent.length){ 
                     console.log('soooner syd 2', allMsgsSent );
-                    // allMsgsReverseSent.sort((a,b) => {
-                    //     let newest = new Date(a.time),
-                    //         older = new Date(b.time);
-                    //         return newest - older
-                    // })
-                    // add sent: 'true' to each
-                    // allMsgsReverseSent.forEach((e) => {
-                    //     console.log('added sent e ', e);
-                    //     e.sent = 'true';
-                    //     console.log('added sent e sent ', allMsgsReverseSent);
-
-                    // })
-                  
-                  
-                        // allMsgsReverseSent.filter((e) => {
-                        //     console.log('check boolean', e.hasOwnProperty('sent'))
-                        //     if(e.hasOwnProperty('sent') == false){
-                        //     e.sent = 'true'
-                        //     console.log(e)
-                        //     }
-                        // })
+                   
                      
 
                     console.log('final jess 2 sent with sent and recieved', allMsgsSent)
@@ -323,7 +303,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     // if condition is met,
                     // then sort
                     let updated =  []
-                    getRecent((a,b) => {
+                   function getRecent(a,b) {
                         console.log('a', a);
                         console.log('b', b);
 
@@ -345,7 +325,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     
                    }
 
-                })
+                }
                 getRecent(allMsgsReverse, allMsgsSent);
                 console.log('hye baby', updated)
     
