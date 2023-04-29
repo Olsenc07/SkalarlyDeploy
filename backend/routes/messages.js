@@ -321,7 +321,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     older = new Date(b.time);
                     console.log('newest', newest);
                     console.log('older', older);
-                    if (newest > older){
+                    if (newest < older){
                         console.log('hey im new', a);
                         return updated.push(a)
                     }else {
@@ -339,8 +339,10 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 console.log('like  c', c)
 
                 return playOffs.some((e) => {
-                    console.log('like woo', e)
-                    return e._id === c._id
+                    console.log('like woo', e.id)
+                    console.log('like woo_', e._id)
+
+                    return e.id === c.id
                 })
                })
                 console.log('filtered', filtered)
