@@ -303,11 +303,11 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     // })
                   
                   
-                        allMsgsReverseSent.forEach((e) => {
+                        allMsgsReverseSent.filter((e) => {
                             console.log('check boolean', e.hasOwnProperty('sent'))
                             if(e.hasOwnProperty('sent') == false){
-                            e.sent = 'sent'
-                            console.log('sent')
+                            e['sent'] = 'true'
+                            console.log(e)
                             }
                         })
                      
@@ -328,6 +328,10 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                         console.log('b', b);
 
                    if((a.username == b.otherUser) && (b.username == a.otherUser)){
+                        playOffs = [a,b]
+                        console.log('playoffs', playOffs )
+                        // then take away playoffs from msgswanted 
+                        // then concat update list too msgsWanted
                     console.log('we have a match, duuhh')
                     let newest = new Date(a.time),
                     older = new Date(b.time);
