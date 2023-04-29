@@ -283,8 +283,9 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 ]
                 }).sort({time:-1})    
                   .then(finalDocs7 => {
-                        finalDocs77 = Object.assign(finalDocs7,{sent: 'true'} )
-                    console.log('did we make it sent?', finalDocs77)
+
+                        const finalDocs77 = {...finalDocs7, sent: 'true'} 
+                    console.log('we make it sent?', finalDocs77)
                     allMsgsSent.push(finalDocs77);
                 if(allMsgsSent.length == nonyaOnceSent.length){ 
                     console.log('soooner syd 2', allMsgsSent );
