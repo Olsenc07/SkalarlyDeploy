@@ -306,35 +306,56 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     // if condition is met,
                     // then sort
                     let updatedNotwanted =  []
-                    let playOffs = []
+                    
 
                    function getRecent(a,b) {
-
-                        console.log('a', a);
-                        console.log('b', b);
-
-                   if((a.username == b.otherUser) && (b.username == a.otherUser)){
-                        // playOffs.push(a,b)
-                        console.log('a set', a.time );
-                        console.log('b set', b.time );
-
-                    console.log('we have a match, duuhh')
-                    let newest = new Date(a.time),
-                    older = new Date(b.time);
-                    console.log('newest', newest);
-                    console.log('older', older);
-                    if (newest < older){
-                        console.log('hey im new', newest);
-                        // not wanted list
-                        return updatedNotwanted.push(b)
-                    }else {
-                        console.log('hey im old', older);
-                        // not wanted list
-                        return updatedNotwanted.push(a)
-                    }   
+                        // need to filter through individual docs like filteredfinals i think
+                        // console.log('a', a);
+                        // console.log('b', b);
+                    a.forEach((match) => {
+                        b.forEach((bs) => { 
+                           if ((match.username == bs.otherUser) && (bs.username == match.otherUser)){
+                            console.log('a good', match.time );
+                            console.log('b good', bs.time );
+                            console.log('we have a match, duuhh 77')
+                            let newest = new Date(match.time),
+                            older = new Date(bs.time);
+                            console.log('newest', newest);
+                            console.log('older', older);
+                            if (newest < older){
+                                console.log('hey im new', newest);
+                                // not wanted list
+                                return updatedNotwanted.push(b)
+                            }else {
+                                console.log('hey im old', older);
+                                // not wanted list
+                                return updatedNotwanted.push(a)
+                            }   
+                           }
+                        })
+                    })
+                //    if((a.username == b.otherUser) && (b.username == a.otherUser)){
                     
-                   }
+                //         console.log('a set', a.time );
+                //         console.log('b set', b.time );
 
+                //     console.log('we have a match, duuhh')
+                //     let newest = new Date(a.time),
+                //     older = new Date(b.time);
+                //     console.log('newest', newest);
+                //     console.log('older', older);
+                //     if (newest < older){
+                //         console.log('hey im new', newest);
+                //         // not wanted list
+                //         return updatedNotwanted.push(b)
+                //     }else {
+                //         console.log('hey im old', older);
+                //         // not wanted list
+                //         return updatedNotwanted.push(a)
+                //     }   
+                    
+                //    }
+                
                 }
                 getRecent(allMsgsReverse, allMsgsSent);
                 console.log('hye baby', updatedNotwanted)
