@@ -340,7 +340,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 getRecent(allMsgsReverse, allMsgsSent);
                 console.log('hye baby', updatedNotwanted)
                 // cancel repeats
-                const filteredFinal = msgsWanted.filter(({_id: id1}) => !updatedNotwanted.some(({ value: id2 }) => id2 === id1))
+                const filteredFinal = msgsWanted.filter(({_id: id1}) => !updatedNotwanted.some(({ _id: id2 }) => id2 === id1))
               
             
 
