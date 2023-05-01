@@ -4,7 +4,8 @@ const User = require('/app/backend/models/user');
 const Msg = require('/app/backend/models/messages')
 const checkAuth = require('/app/backend/middleware/check-auth');
 const missedHistory = require('/app/backend/models/missed-notification');
-const BlockSkalar = require('/app/backend/models/block-skalar')
+const BlockSkalar = require('/app/backend/models/block-skalar');
+const { filter } = require('rxjs');
 
 
 
@@ -281,7 +282,8 @@ console.log('final jess 2 sent', allMsgsReverseSent)
             {username: user.username},
             {otherUser: nonyaOnceSent[i]}
                 ]
-                }).sort({time:-1}).lean() 
+                }).sort({time:-1})
+                // .lean() 
                   .then(finalDocs7 => {
           
                     // finalDocs7.sent ='true'
@@ -294,15 +296,16 @@ console.log('final jess 2 sent', allMsgsReverseSent)
 
                     console.log('final jess 2 sent with sent and recieved', allMsgsSent)
                     console.log('starting up famous in the hills, should be here hottie')
-                    msgsWanted = allMsgsReverse.concat(allMsgsSent)
-                    console.log('just might', msgsWanted);
+                    // maybe dont concat
+                    msgsWanted = allMsgsReverse.concat(allMsgsSent);
+                    // console.log('just might', msgsWanted);
                     // compare most recent of sent nd recived 
                     // instead of return have psh to new list then concat that with old list ish
 
                     // compare two objects but what is needed is a filter to return one of them
                     // if condition is met,
                     // then sort
-                    let updated =  []
+                    let updatedNotwanted =  []
                     let playOffs = []
 
                    function getRecent(a,b) {
@@ -310,7 +313,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                         console.log('b', b);
 
                    if((a.username == b.otherUser) && (b.username == a.otherUser)){
-                        playOffs.push(a,b)
+                        // playOffs.push(a,b)
                         console.log('playoffs', playOffs )
                         // then take away playoffs from msgswanted 
                         // then concat update list too msgsWanted
@@ -323,57 +326,38 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     console.log('older', older);
                     if (newest < older){
                         console.log('hey im new', a);
-                        return updated.push(a)
+                        // not wanted list
+                        return updatedNotwanted.push(b)
                     }else {
                         console.log('hey im old', b);
-                        return updated.push(b)
+                        // not wanted list
+                        return updatedNotwanted.push(a)
                     }   
                     
                    }
 
                 }
                 getRecent(allMsgsReverse, allMsgsSent);
-                console.log('hye baby', updated)
+                console.log('hye baby', updatedNotwanted)
                 // cancel repeats
-               const filtered = msgsWanted.filter((c) => {
-                console.log('like  c', c)
+                const filteredFinal = msgsWanted.filter(({_id: id1}) => !updatedNotwanted.some(({ value: id2 }) => id2 === id1))
+              
+            
 
-                return playOffs.filter((e) => {
-                    console.log('like woo', e)
-                    e.some((f) => {
-                        console.log('f', f);
-                        console.log('c second', c);
-
-                        return f._id === c._id
-
-                    })
-    
-
-                })
-               })
-                console.log('filtered', filtered)
-                filteredFinal = filtered.concat(updated)
-                console.log('filteredFinal', filteredFinal)
-                            filteredFinal.sort((c,e) => {
-                                console.log('c',c);
-                                console.log('e',e);
-
-                                    
-                            
-                        });
+             
          
             
                     
-                    console.log('hippy pippy', msgsWanted)
-                    msgsWanted.sort((a,b) => {
+                    console.log('hippy pippy', filteredFinal)
+                    filteredFinal.sort((a,b) => {
                         let newest = new Date(a.time),
                             older = new Date(b.time);
                             return  newest - older
                     })
-                    console.log('hippy pippy send it', msgsWanted)
+                    console.log('hippy pippy send it', filteredFinal)
                         res.status(200).json({
                         message: 'Info messages fetched succesfully!',
-                           messages: msgsWanted
+                           messages: filteredFinal
                         });
                 }
               
