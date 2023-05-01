@@ -309,27 +309,26 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     let playOffs = []
 
                    function getRecent(a,b) {
+
                         console.log('a', a);
                         console.log('b', b);
 
                    if((a.username == b.otherUser) && (b.username == a.otherUser)){
                         // playOffs.push(a,b)
-                        console.log('playoffs', playOffs )
-                        // then take away playoffs from msgswanted 
-                        // then concat update list too msgsWanted
-                        // remove duplicates 
-                        // then concat updated
+                        console.log('a set', a.time );
+                        console.log('b set', b.time );
+
                     console.log('we have a match, duuhh')
                     let newest = new Date(a.time),
                     older = new Date(b.time);
                     console.log('newest', newest);
                     console.log('older', older);
                     if (newest < older){
-                        console.log('hey im new', a);
+                        console.log('hey im new', newest);
                         // not wanted list
                         return updatedNotwanted.push(b)
                     }else {
-                        console.log('hey im old', b);
+                        console.log('hey im old', older);
                         // not wanted list
                         return updatedNotwanted.push(a)
                     }   
@@ -340,7 +339,8 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 getRecent(allMsgsReverse, allMsgsSent);
                 console.log('hye baby', updatedNotwanted)
                 // cancel repeats
-                const filteredFinal = msgsWanted.filter(({_id: id1}) => !updatedNotwanted.some(({ _id: id2 }) => id2 === id1))
+                const filteredFinal = msgsWanted.filter(
+                    ({_id: id1}) => !updatedNotwanted.some(({ _id: id2 }) => id2 === id1))
               
             
 
