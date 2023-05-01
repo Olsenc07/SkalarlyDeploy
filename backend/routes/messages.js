@@ -296,22 +296,14 @@ console.log('final jess 2 sent', allMsgsReverseSent)
 
                     console.log('final jess 2 sent with sent and recieved', allMsgsSent)
                     console.log('starting up famous in the hills, should be here hottie')
-                    // maybe dont concat
+                   
                     msgsWanted = allMsgsReverse.concat(allMsgsSent);
-                    // console.log('just might', msgsWanted);
-                    // compare most recent of sent nd recived 
-                    // instead of return have psh to new list then concat that with old list ish
-
-                    // compare two objects but what is needed is a filter to return one of them
-                    // if condition is met,
-                    // then sort
+                 
                     let updatedNotwanted =  []
                     
 
                    function getRecent(a,b) {
-                        // need to filter through individual docs like filteredfinals i think
-                        // console.log('a', a);
-                        // console.log('b', b);
+        
                     a.forEach((match) => {
                         b.forEach((bs) => { 
                            if ((match.username == bs.otherUser) && (bs.username == match.otherUser)){
@@ -339,19 +331,17 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 }
                 getRecent(allMsgsReverse, allMsgsSent);
                 console.log('hye baby', updatedNotwanted)
+                console.log('hye baby 2', msgsWanted)
+
                 // cancel repeats
                 const filteredFinal = msgsWanted.filter((elem) => {
+                    console.log('elem', elem);
                     return updatedNotwanted.some((ele) => {
-                       return elem._id === ele._id
+                    console.log('ele', ele);
+                       return elem._id !== ele._id
                     })
                         })
               
-            
-
-             
-         
-            
-                    
                     console.log('hippy pippy', filteredFinal)
                     filteredFinal.sort((a,b) => {
                         let newest = new Date(a.time),
