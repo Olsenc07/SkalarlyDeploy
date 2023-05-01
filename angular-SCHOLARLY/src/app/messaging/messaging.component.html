@@ -60,13 +60,13 @@
                           <div *ngIf="info.viewed === false" class="newIndicator">
                            <!-- cirlce -->
                         </div>
-                        <div *ngIf="(info.you !== userId)">
-                            Message From
-                          </div>
+                        <!-- <div *ngIf="(info.you !== userId)"> -->
+                            Messaging
+                          <!-- </div> -->
                             <!-- Sent too -->
-                            <div *ngIf="(info.you == userId)">
+                            <!-- <div *ngIf="(info.you == userId)">
                             Sent To
-                          </div>
+                          </div> -->
                          </div> 
                         <!-- <div class="column_"> -->
                             <div class="column_">
@@ -209,9 +209,9 @@
 </div>  
 <div class="messageTitle" *ngIf="username !== userId">
   Messaging
-  <div *ngIf="!username" class="fillInChase">No One</div>
+  <div *ngIf="!username" class="marginLeft">No One</div>
   
-  <div *ngIf="username">{{username}}</div>
+  <div *ngIf="username" class="marginLeft">{{username}}</div>
 </div>
   
 <div class="send_btn whiteC">

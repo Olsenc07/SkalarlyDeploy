@@ -334,34 +334,17 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                            }
                         })
                     })
-                //    if((a.username == b.otherUser) && (b.username == a.otherUser)){
-                    
-                //         console.log('a set', a.time );
-                //         console.log('b set', b.time );
-
-                //     console.log('we have a match, duuhh')
-                //     let newest = new Date(a.time),
-                //     older = new Date(b.time);
-                //     console.log('newest', newest);
-                //     console.log('older', older);
-                //     if (newest < older){
-                //         console.log('hey im new', newest);
-                //         // not wanted list
-                //         return updatedNotwanted.push(b)
-                //     }else {
-                //         console.log('hey im old', older);
-                //         // not wanted list
-                //         return updatedNotwanted.push(a)
-                //     }   
-                    
-                //    }
+               
                 
                 }
                 getRecent(allMsgsReverse, allMsgsSent);
                 console.log('hye baby', updatedNotwanted)
                 // cancel repeats
-                const filteredFinal = msgsWanted.filter(
-                    ({_id: id1}) => !updatedNotwanted.some(({ _id: id2 }) => id2 === id1))
+                const filteredFinal = msgsWanted.filter((elem) => {
+                    return updatedNotwanted.some((ele) => {
+                       return elem._id === ele._id
+                    })
+                        })
               
             
 
