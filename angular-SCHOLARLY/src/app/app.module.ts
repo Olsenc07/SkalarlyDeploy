@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CloudinaryModule } from '@cloudinary/ng';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
+import { NgPipesModule } from 'ngx-pipes';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AppRoutingModule } from './app-routing.module';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -244,7 +245,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MatIconModule,
     MatButtonModule,
     MatDatepickerModule,
-
+    NgPipesModule,
     // CloudinaryModule,
     MatNativeDateModule,
     BrowserModule,
