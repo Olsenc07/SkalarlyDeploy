@@ -342,10 +342,10 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     console.log('el', el);
                         if(elem._id !== el._id)
                         { console.log('the chosen one', el);
-                            return false
+                            return true
                         }else{
                             console.log('music in me baby', el);
-                            return true
+                            return false
                         }
             
                     })
