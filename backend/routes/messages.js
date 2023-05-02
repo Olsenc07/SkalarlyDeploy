@@ -338,9 +338,12 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                     console.log('elem', elem);
                     return updatedNotwanted.some((ele) => {
                     console.log('ele', ele);
-                    return ele.forEach((el) =>{
+                     ele.forEach((el) =>{
                     console.log('el', el);
-                       return elem._id !== el._id
+                        if(elem._id !== el._id)
+                        { console.log('the chosen one', el)
+                            return el
+                        }
                     })
                     })
                         })
