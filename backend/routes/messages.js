@@ -335,18 +335,23 @@ console.log('final jess 2 sent', allMsgsReverseSent)
 
                 // cancel repeats
                 const filteredFinal = msgsWanted.filter((elem) => {
-                    console.log('elem', elem);
+                   
                     return updatedNotwanted.some((ele) => {
                     console.log('ele', ele);
-                     ele.forEach((el) =>{
+                      return  ele.reduce((el) =>{
                     console.log('el', el);
                         if(elem._id !== el._id)
-                        { console.log('the chosen one', el)
-                            return el
+                        { console.log('the chosen one', el);
+                            return false
+                        }else{
+                            console.log('music in me baby', el);
+                            return true
                         }
+            
                     })
-                    })
-                        })
+                })
+            })
+                
               
                     console.log('hippy pippy', filteredFinal)
                     filteredFinal.sort((a,b) => {
