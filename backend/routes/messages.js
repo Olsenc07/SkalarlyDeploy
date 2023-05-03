@@ -336,9 +336,9 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 // cancel repeats
                 const filteredFinal = msgsWanted.filter((elem) => {
                    
-                     updatedNotwanted.some((ele) => {
+                    return updatedNotwanted.some((ele) => {
                     console.log('ele', ele);
-                        ele.every((el) =>{
+                       return ele.every((el) =>{
                     console.log('el', el);
                         if(elem._id !== el._id)
                         { console.log('the chosen one', el);
