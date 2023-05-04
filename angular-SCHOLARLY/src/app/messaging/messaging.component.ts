@@ -85,6 +85,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): any {
+    console.log('whats the date Mr.Shark', new Date());
     this.userId = this.authService.getUserId();
     // this.messagesService.startMessages(this.userId);
     this.routeSub = this.route.queryParams.subscribe((params) => {

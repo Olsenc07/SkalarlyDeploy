@@ -352,9 +352,6 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 })
             })
                 
-            console.log('hippy pippy best', msgsWanted)
-
-              
                     console.log('hippy pippy', filteredFinal)
                     filteredFinal.sort((a,b) => {
                         let newest = new Date(a.time),
