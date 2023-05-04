@@ -104,8 +104,8 @@ export class MessagingComponent implements OnInit, OnDestroy {
         messagesNotifYo.forEach((e) => {
           if (e.time) {
             console.log('e.time baby', e.time);
-            console.log('time now', new Date());
-            e.time = formatDistance(new Date(), e.time);
+            console.log('time now', new Date().toISOString());
+            e.time = formatDistance(new Date(), new Date(e.time));
             console.log('e.time baby 2', e.time);
           }
         });

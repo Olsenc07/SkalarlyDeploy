@@ -310,8 +310,8 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                             console.log('a good', match.time );
                             console.log('b good', bs.time );
                             console.log('we have a match, duuhh 77')
-                            let newest = new Date(match.time),
-                            older = new Date(bs.time);
+                            let newest = match.time,
+                            older = bs.time;
                             console.log('newest', newest);
                             console.log('older', older);
                             if (newest < older){
@@ -354,8 +354,8 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 
                     console.log('hippy pippy', filteredFinal)
                     filteredFinal.sort((a,b) => {
-                        let newest = new Date(a.time),
-                            older = new Date(b.time);
+                        let newest = a.time,
+                            older =  b.time;
                             return  newest - older
                     })
                     console.log('hippy pippy send it', filteredFinal)
