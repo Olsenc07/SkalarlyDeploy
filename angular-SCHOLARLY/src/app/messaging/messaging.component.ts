@@ -9,6 +9,7 @@ import { MessageNotificationService } from '../services/messagesNotifications.se
 import { AuthService } from '../services/auth.service';
 import { MessageService } from '../services/messages.service';
 import { createPopup } from '@picmo/popup-picker';
+import { formatDistance } from 'date-fns';
 
 export interface Message {
   id: string;
@@ -100,7 +101,17 @@ export class MessagingComponent implements OnInit, OnDestroy {
       .subscribe((messagesNotifYo: any) => {
         this.isLoading = false;
         console.log('killa', messagesNotifYo);
+        messagesNotifYo.forEach((e) => {
+          if (e.time) {
+            console.log('e.time baby', e.time);
+            console.log('time now', new Date());
+            e.time = formatDistance(new Date(), e.time);
+            console.log('e.time baby 2', e.time);
+          }
+        });
         this.messagesNotif = messagesNotifYo;
+
+        // moment().fromNow()
         // compare these times with sent message times
         // and then add send value or not
         console.log('should be viewed now 777', this.messagesNotif);
