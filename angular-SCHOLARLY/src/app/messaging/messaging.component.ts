@@ -36,17 +36,17 @@ export class MessagingComponent implements OnInit, OnDestroy {
   dateMonth = new Date().getMonth();
   dateMonthName = this.testMonth(this.dateMonth);
   msgFilter: FormControl = new FormControl('');
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
+  time = new Date();
+  // this.dateMonthName +
+  // '\xa0' +
+  // this.dateDay +
+  // '\xa0' +
+  // this.timeHour +
+  // ':' +
+  // this.timeMinuteText +
+  // this.timeMinute +
+  // '\xa0' +
+  // this.text;
 
   // Chat messaging
   chatForm = document.getElementById('send-container');
@@ -105,7 +105,9 @@ export class MessagingComponent implements OnInit, OnDestroy {
           if (e.time) {
             console.log('e.time baby', e.time);
             console.log('time now', new Date().toISOString());
-            e.time = formatDistance(new Date(), new Date(e.time));
+            e.time = formatDistance(new Date(), new Date(e.time), {
+              addSuffix: true,
+            });
             console.log('e.time baby 2', e.time);
           }
         });
@@ -389,6 +391,9 @@ export class MessagingComponent implements OnInit, OnDestroy {
   }
 
   outputMessage(data): void {
+    const Time = formatDistance(new Date(), new Date(data.time), {
+      addSuffix: true,
+    });
     const div = document.createElement('div');
     div.classList.add('data');
     if (this.userId === data.you) {
@@ -402,7 +407,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
      width: fit-content; border-radius:25px" >
     <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
    <div style="margin:2% 2% 0% 5%;font-size: small;color:#878581;" > @${data.username} </div>
-   <div style="font-size:small; color: #878581;margin-top: 2%; justify-content: space-between;">  ${data.time}  </div>
+   <div style="font-size:small; color: #878581;margin-top: 2%; justify-content: space-between;">  ${Time}  </div>
    </div>
    <div style=" margin-bottom: 2%;font-size: smaller; ">  ${data.message}  </div>
    </div>
@@ -420,7 +425,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
       width: fit-content;padding:0% 5% 0% 2%; display: flex; flex-direction:column" >
       <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
      <div style="margin:2% 5% 0% 2%;color: #b1acac;font-size: small;" > @${data.username} </div>
-     <div style="font-size:small; color: #878581;margin-top: 2%;">  ${data.time}  </div>
+     <div style="font-size:small; color: #878581;margin-top: 2%;">  ${Time}  </div>
      </div>
      <div style="display: flex; color:white;margin-bottom: 2%; justify-content: space-between; align-items: center; font-size: smaller;">  ${data.message}
      </div>

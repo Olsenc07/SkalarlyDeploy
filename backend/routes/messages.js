@@ -317,11 +317,11 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                             if (newest < older){
                                 console.log('hey im new', newest);
                                 // not wanted list
-                                return updatedNotwanted.push(b)
+                                return updatedNotwanted.push(a)
                             }else {
                                 console.log('hey im old', older);
                                 // not wanted list
-                                return updatedNotwanted.push(a)
+                                return updatedNotwanted.push(b)
                             }   
                            }
                         })
