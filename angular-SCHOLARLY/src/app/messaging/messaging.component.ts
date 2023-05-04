@@ -103,12 +103,9 @@ export class MessagingComponent implements OnInit, OnDestroy {
         console.log('killa', messagesNotifYo);
         messagesNotifYo.forEach((e) => {
           if (e.time) {
-            console.log('e.time baby', e.time);
-            console.log('time now', new Date());
             e.time = formatDistance(new Date(e.time), new Date(), {
               addSuffix: true,
             });
-            console.log('e.time baby 2', e.time);
           }
         });
         this.messagesNotif = messagesNotifYo;
@@ -514,6 +511,13 @@ export class MessageCardComponent implements OnInit, OnDestroy {
       this.datasSub = this.messagesService
         .getInfoUpdateListener()
         .subscribe((messages: Message[]) => {
+          messages.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
           this.messages = messages;
           console.log('datas pulled', this.messages);
         });

@@ -71,7 +71,6 @@ router.get("/infoMessage", async(req, res, next) => {
     .then(blocked => {
         if(blocked.length >= 1){
 console.log('blocked', blocked)
-
                 console.log('user ni ni 77', user)
                 blockedList = []
                 blocked.forEach((e) => {
@@ -84,13 +83,13 @@ console.log('blocked', blocked)
             ]}).sort({time:-1}) 
                 .then(documents => {
                     if(documents.length > 0){
-                    console.log('timing', documents)
+                    console.log('timing blocked', documents)
                     nonya = [];
                     documents.forEach((e) => {
                         nonya.push(e.username)
                     });
             let nonyaOnce = [...new Set(nonya)];
-            console.log('order german', nonyaOnce);
+            console.log('order german blocked', nonyaOnce);
             allMsgs = []
             for(let i in nonyaOnce){
                 Msg.findOne({ $and: [
@@ -99,56 +98,22 @@ console.log('blocked', blocked)
                 ]
                 }).sort({ time:-1}) 
                   .then(finalDocs => {
-                    console.log('did we make it?', finalDocs)
-                    // 
+                    console.log('did we make it blocked?', finalDocs)
                    allMsgs.push(finalDocs);
                 if(allMsgs.length == nonyaOnce.length){ 
                      allMsgsReverse = allMsgs;
                     console.log('sooner', allMsgsReverse );
                     // sort by new time ontop
                     allMsgsReverse.sort((a,b) => {
-                        // .getTime()
-                        let newest = new Date(a.time),
-                            older = new Date(b.time);
+                        let newest = a.time,
+                            older = b.time;
                             return newest - older 
                     })
-                    
-                // res.status(200).json({
-                //     message: 'Info messages fetched succesfully!',
-                //     messages: allMsgsReverse,
-                //     });
                 }
-                console.log('final block 765', allMsgsReverse)
-
-                  })
-            
-                  .catch(err => {
-                    return res.status(401).json({
-                        message: "Message error 3!",
-                
-                    })
-                })
-            
-            }
-            }
-            // else{
-            //     return res.status(200).json({
-            //         message: "No messages to retrieve",
-            //         messages: documents
-            
-            //     })
-            // }
-                })
-                .catch(err => {
-                    return res.status(401).json({
-                        message: "Message error 2!",
-                
-                    })
-                })
-            
+                console.log('get sent msgs with recieved msgs blocked');
 // now get sent messages blocked 
 // cant send if your blocked so cant retrieve this msg
-console.log('cant see msgs you sent to people you blocked')
+
 blockedListnames = []
 blocked.forEach((e) => {
     blockedListnames.push(e.blockedUsername)
@@ -177,52 +142,82 @@ Msg.findOne({ $and: [
     console.log('did we make it sent blocked?', finalDocs)
     allMsgsSent.push(finalDocs);
 if(allMsgsSent.length == nonyaOnceSent.length){ 
-     allMsgsReverseSent = allMsgsSent;
-    console.log('sooner syd 2', allMsgsReverseSent );
-    allMsgsReverseSent.sort((a,b) => {
-        let newest = new Date(a.time),
-            older = new Date(b.time);
-            return newest - older
+    msgsWanted = allMsgsReverse.concat(allMsgsSent);           
+    let updatedNotwanted =  []
+    function getRecent(a,b) {
+        
+        a.forEach((match) => {
+            b.forEach((bs) => { 
+               if ((match.username == bs.otherUser) && (bs.username == match.otherUser)){
+                console.log('a good', match.time );
+                console.log('b good', bs.time );
+                console.log('we have a match, duuhh 77')
+                let newest = match.time,
+                older = bs.time;
+                console.log('newest', newest);
+                console.log('older', older);
+                if (newest < older){
+                    console.log('hey im new', newest);
+                    // not wanted list
+                    return updatedNotwanted.push(a)
+                }else {
+                    console.log('hey im old', older);
+                    // not wanted list
+                    return updatedNotwanted.push(b)
+                }   
+               }
+            })
+        })
+   
+    
+    }
+    getRecent(allMsgsReverse, allMsgsSent);
+    console.log('hye baby blocked', updatedNotwanted)
+    console.log('hye baby 2 blocked', msgsWanted)
+    // cancel repeats
+    const filteredFinal = msgsWanted.filter((elem) => {
+                   
+        return updatedNotwanted.some((ele) => {
+        console.log('ele', ele);
+           return ele.every((el) =>{
+        console.log('el', el);
+            if(elem._id !== el._id)
+            { console.log('the chosen one blocked', el);
+                return true
+            }else{
+                console.log('music in me baby blocked', el);
+                return false
+            }
+
+        })
     })
-    // add sent: 'true' to each
-    allMsgsReverseSent.filter((e) => {
-        console.log('eeee7e', e);
-        e.sent = 'true'
-    })
-// res.status(200).json({
-//     message: 'Info messages fetched succesfully!',
-//        messages: allMsgsReverseSent
-//     });
+})
+console.log('hippy pippy', filteredFinal)
+filteredFinal.sort((a,b) => {
+    let newest = a.time,
+        older =  b.time;
+        return  newest - older
+})
+console.log('hippy pippy send it', filteredFinal)
+    res.status(200).json({
+    message: 'Info messages fetched succesfully!',
+       messages: filteredFinal
+    });
+
 }
-console.log('final jess 2 sent', allMsgsReverseSent)
+
 
   })
-
   .catch(err => {
-    return res.status(401).json({
-        message: "Message error 3!",
-
-    })
-})
-
-}
-}
-// else{
-//     return res.status(200).json({
-//         message: "No messages to retrieve",
-//         messages: documents
-
-//     })
-// }
-})
-.catch(err => {
     return res.status(401).json({
         message: "Message error 2!",
 
     })
 })
+ 
 
-            
+ }
+        
         }else{
            
             User.findById({_id: req.query.userId})
@@ -254,14 +249,14 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                      allMsgsReverse = allMsgs;
                     console.log('sooner syd 2', allMsgsReverse );
                     allMsgsReverse.sort((a,b) => {
-                        let newest = new Date(a.time),
-                            older = new Date(b.time);
+                        let newest = a.time,
+                            older = b.time;
                             return newest - older
                     })
            
             
                 }
-                console.log('final jess 2', allMsgsReverse)
+                console.log('get sent msgs with recieved msgs');
                 // now to get sent msgs with recieved msgs
                 Msg.find( 
                     {username: user.username}
@@ -285,23 +280,10 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 }).sort({time:-1})
                 // .lean() 
                   .then(finalDocs7 => {
-          
-                    // finalDocs7.sent ='true'
-                    // console.log('we make it sent?', finalDocs7)
                     allMsgsSent.push(finalDocs7);
                 if(allMsgsSent.length == nonyaOnceSent.length){ 
-                    console.log('soooner syd 2', allMsgsSent );
-                   
-                     
-
-                    console.log('final jess 2 sent with sent and recieved', allMsgsSent)
-                    console.log('starting up famous in the hills, should be here hottie')
-                   
                     msgsWanted = allMsgsReverse.concat(allMsgsSent);
-                 
                     let updatedNotwanted =  []
-                    
-
                    function getRecent(a,b) {
         
                     a.forEach((match) => {
@@ -544,105 +526,7 @@ console.log('final jess 2 sent', allMsgsReverseSent)
                 
                     })
                 })
-                // now get sent messages
-            //     console.log('user ni sent on purpose', user.username)
-            //     Msg.find( 
-            //         {username: user.username}
-            //     ).sort({time:-1})
-            //     .then(documents => {
-            //         if(documents.length > 0){
-            //         console.log('timing 77', documents)
-            //         nonyaSent = [];
-            //         documents.forEach((e) => {
-            //             console.log('desert and i saw the lights')
-            //             nonyaSent.push(e.otherUser)
-            //         });
-            // let nonyaOnceSent = [...new Set(nonyaSent)];
-            // console.log('order german', nonyaOnceSent);
-            // allMsgsSent = []
-            // for(let i in nonyaOnceSent){
-            //     Msg.findOne({ $and: [
-            // {username: user.username},
-            // {otherUser: nonyaOnceSent[i]}
-            //     ]
-            //     }).sort({time:-1})    
-            //       .then(finalDocs7 => {
-
-            //         console.log('did we make it sent?', finalDocs7)
-            //         allMsgsSent.push(finalDocs7);
-            //     if(allMsgsSent.length == nonyaOnceSent.length){ 
-            //          allMsgsReverseSent = allMsgsSent;
-            //         console.log('soooner syd 2', allMsgsReverseSent );
-            //         allMsgsReverseSent.sort((a,b) => {
-            //             let newest = new Date(a.time),
-            //                 older = new Date(b.time);
-            //                 return newest - older
-            //         })
-                 
-            //         allMsgsReverseSent.filter((e) => {
-            //             console.log('eeeee777', e);
-            //             e.sent = 'true'
-            //         })
-              
-            //     console.log('final jess 2 sent', allMsgsReverseSent)
-
-            //       })
-            
-            //       .catch(err => {
-            //         return res.status(401).json({
-            //             message: "Message error 33!",
-                
-            //         })
-            //     })
-            
-            // }
-
-
-            // }
-           
-                // })
-                // .catch(err => {
-                //     return res.status(401).json({
-                //         message: "Message error 2!",
-                
-                //     })
-                // })
-                
-                // final set up but do i make a lot of ifs and such
-                // console.log('starting up famous, should be here')
-                // console.log('final jess 277', allMsgsReverse)
-                // console.log('final jess 2316 sent', allMsgsReverseSent)
-                // msgsWanted = allMsgsReverse.concat(allMsgsReverseSent)
-                // console.log('just might', msgsWanted);
-                // // compare most recent of sent nd recived 
-                // msgsWanted.sort((c,e) => {
-                //     console.log('last steps dont cry 7', c);
-    
-                //     console.log('last steps dont cry', e);
-    
-                //     if((c.username == e.otherUser) || (e.username == c.otherUser)){
-                //         let newest = new Date(c.time),
-                //             older = new Date(e.time);
-                //             if (newest > older){
-                //                 console.log('hey im new');
-                //                 return newest
-                //             }else {
-                //                 console.log('hey im old');
-                //                 return older
-                //             } 
-                             
-                //     }
-                //     console.log('hippy pippy', msgsWanted)
-                //     msgsWanted.sort((a,b) => {
-                //         let newest = new Date(a.time),
-                //             older = new Date(b.time);
-                //             return newest - older
-                //     })
-                // })
-                //     res.status(200).json({
-                //     message: 'Info messages fetched succesfully!',
-                //        messages: msgsWanted
-                //     });
+        
                 
 
 
