@@ -214,9 +214,15 @@ console.log('hippy pippy send it', filteredFinal)
 
     })
 })
- 
-
- }
+} 
+    }else{
+        // fill in
+    }
+})
+                  })
+                  }
+                }
+                })
         
         }else{
            
@@ -542,38 +548,25 @@ console.log('hippy pippy send it', filteredFinal)
             
         }
        
-    }).catch(err => {
-        return res.status(401).json({
-            message: "Message error blocked!",
-    
-        })
-    })
+   
 }).catch(err => {
     return res.status(401).json({
-        message: "Message error own!",
+        message: "Message blocked error!",
 
     })
 })
             
-            }
-        }
-                    })
-        }
+    
     })
     .catch(err => {
         return res.status(401).json({
-            message: "Message blocked error!",
+            message: "Skalar not found error!",
     
         })
     })
 })
-.catch(err => {
-    return res.status(401).json({
-        message: "Message error!",
 
-    })
-})
-})
+
 
 
 // viewed msgs
