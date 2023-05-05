@@ -86,7 +86,6 @@ export class MessagingComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): any {
-    console.log('whats the date Mr.Shark', new Date());
     this.userId = this.authService.getUserId();
     // this.messagesService.startMessages(this.userId);
     this.routeSub = this.route.queryParams.subscribe((params) => {
@@ -103,6 +102,9 @@ export class MessagingComponent implements OnInit, OnDestroy {
         console.log('killa', messagesNotifYo);
         messagesNotifYo.forEach((e) => {
           if (e.time) {
+            console.log('time', e.time);
+            console.log('type of time', typeof e.time);
+
             e.time = formatDistance(new Date(e.time), new Date(), {
               addSuffix: true,
             });
@@ -120,7 +122,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.routeSub.unsubscribe();
     this.msgNotifSub.unsubscribe();
-    this.msgNotifSubSent.unsubscribe();
+    // this.msgNotifSubSent.unsubscribe();
   }
   enedMessaged(username: string): void {}
   navigateToPage(infoUser: string): any {
@@ -133,7 +135,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
         this.isLoading = false;
-        this.messagesNotif = messagesNotif.reverse();
+        this.messagesNotif = messagesNotif;
         this.messagesNoNotif = '';
         this.delSub.unsubscribe();
       });
@@ -146,7 +148,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
     this.clearSub = this.messageNotificationService
       .getListenerNotification()
       .subscribe((messagesNotif: Message[]) => {
-        this.messagesNotif = messagesNotif.reverse();
+        this.messagesNotif = messagesNotif;
         this.messagesNoNotif = '';
         console.log('cleared now', this.messagesNotif);
         this.clearSub.unsubscribe();
@@ -162,7 +164,16 @@ export class MessagingComponent implements OnInit, OnDestroy {
       const noSpecialChars = queryHash.replace(/[^a-zA-Z0-9 ]/g, '');
       console.log('noSpecialChars', noSpecialChars);
       if (!queryHash.match(regex)) {
-        console.log('query notta');
+        console.log('we have an empty input');
+        this.messageNotificationService.getMessageNotification(this.userId);
+        this.clearSub = this.messageNotificationService
+          .getListenerNotification()
+          .subscribe((messagesNotif: Message[]) => {
+            this.messagesNotif = messagesNotif;
+            this.messagesNoNotif = '';
+            console.log('cleared now from empty box', this.messagesNotif);
+            this.clearSub.unsubscribe();
+          });
         // Will match if query is nothing or is only spaces
         // const matchSpaces: any = queryHash.match('[a-zA-Z0-9]');
         // if (matchSpaces[0] !== queryHash) {
@@ -201,7 +212,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
           .subscribe((messagesNotif: Message[]) => {
             console.log('g eazy', messagesNotif);
             this.isLoading = false;
-            this.messagesNotif = messagesNotif.reverse();
+            this.messagesNotif = messagesNotif;
             this.msgNotif2Sub.unsubscribe();
           });
         this.msgNotifNoSub = this.messageNotificationService
@@ -400,11 +411,11 @@ export class MessagingComponent implements OnInit, OnDestroy {
       width: 100%;
 ">
       <div
-     class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%;padding: 0% 5% 0% 2%;
+     class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%;padding: 0% 5% 0% 3%;
      width: fit-content; border-radius:25px" >
     <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
    <div style="margin:2% 2% 0% 5%;font-size: small;color:#878581;" > @${data.username} </div>
-   <div style="font-size:small; color: #878581;margin-top: 2%; justify-content: space-between;">  ${Time}  </div>
+   <div style="font-size:small; color: #878581;margin-top: 2%; justify-content: space-between; white-space: nowrap;">  ${Time}  </div>
    </div>
    <div style=" margin-bottom: 2%;font-size: smaller; ">  ${data.message}  </div>
    </div>
@@ -419,10 +430,10 @@ export class MessagingComponent implements OnInit, OnDestroy {
       <div
       class="chat-messages" id="container" style="background-color: #0056ba;padding: 0% 2%;
       margin-bottom:2%; border-radius:25px;
-      width: fit-content;padding:0% 5% 0% 2%; display: flex; flex-direction:column" >
+      width: fit-content;padding:0% 5% 0% 3%; display: flex; flex-direction:column" >
       <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
      <div style="margin:2% 5% 0% 2%;color: #b1acac;font-size: small;" > @${data.username} </div>
-     <div style="font-size:small; color: #878581;margin-top: 2%;">  ${Time}  </div>
+     <div style="font-size:small; color: #878581;margin-top: 2%; white-space: nowrap;">  ${Time}  </div>
      </div>
      <div style="display: flex; color:white;margin-bottom: 2%; justify-content: space-between; align-items: center; font-size: smaller;">  ${data.message}
      </div>
@@ -510,15 +521,17 @@ export class MessageCardComponent implements OnInit, OnDestroy {
       this.messagesService.getMessages(this.userId, this.username);
       this.datasSub = this.messagesService
         .getInfoUpdateListener()
-        .subscribe((messages: Message[]) => {
-          messages.forEach((e) => {
+        .subscribe((messagesYo: any) => {
+          messagesYo.forEach((e) => {
             if (e.time) {
+              console.log('time 2', e.time);
+              console.log('type of time 2', typeof e.time);
               e.time = formatDistance(new Date(e.time), new Date(), {
                 addSuffix: true,
               });
             }
           });
-          this.messages = messages;
+          this.messages = messagesYo;
           console.log('datas pulled', this.messages);
         });
     });

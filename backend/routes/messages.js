@@ -217,6 +217,8 @@ console.log('hippy pippy send it', filteredFinal)
 } 
     }else{
         // fill in
+        // blocked list but no msgs recieved
+        // get sent msgs except those in blocked list
     }
 })
                   })
@@ -225,7 +227,7 @@ console.log('hippy pippy send it', filteredFinal)
                 })
         
         }else{
-           
+        //    no blocked list
             User.findById({_id: req.query.userId})
             .then(user => {
                 console.log('user ni ni', user)
@@ -349,7 +351,7 @@ console.log('hippy pippy send it', filteredFinal)
                     console.log('hippy pippy send it', filteredFinal)
                         res.status(200).json({
                         message: 'Info messages fetched succesfully!',
-                           messages: filteredFinal
+                           messages: filteredFinal.reverse()
                         });
                 }
               
