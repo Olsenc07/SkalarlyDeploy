@@ -546,11 +546,11 @@ export class MessageCardComponent implements OnInit, OnDestroy {
               this.messagesYoRecieved.push(e);
               this.messagesYoRecieved.filter((newestMsg) => {
                 if (Math.max(newestMsg.time)) {
-                  console.log('top it up we inside', newestMsg);
+                  console.log('top it up we inside recieved', newestMsg);
                   newestMsg.newestRecieved = 'true';
-                  console.log('top it up we inside 2', newestMsg);
+                  console.log('top it up we inside 2 recieved', newestMsg);
                 }
-                console.log('top it up');
+                console.log('top it up recieved');
               });
             } else {
               // sent
