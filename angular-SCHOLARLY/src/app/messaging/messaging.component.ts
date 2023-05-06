@@ -536,16 +536,13 @@ export class MessageCardComponent implements OnInit, OnDestroy {
         .getInfoUpdateListener()
         .subscribe((messagesYo: any) => {
           messagesYo.forEach((e) => {
-            console.log('time 2', e.time);
-            console.log('type of time 2', typeof e.time);
-            // e.time = formatDistance(new Date(e.time), new Date(), {
-            //   addSuffix: true,
-            // });
             // recieved
             if (e.you !== this.userId) {
               this.messagesYoRecieved.push(e);
               this.messagesYoRecieved.filter((newestMsg) => {
-                if (Math.max(newestMsg.time)) {
+                const maxTime = Math.max(newestMsg.time);
+                console.log('max time', maxTime);
+                if (newestMsg.time == maxTime) {
                   console.log('top it up we inside recieved', newestMsg);
                   newestMsg.newestRecieved = 'true';
                   console.log('top it up we inside 2 recieved', newestMsg);
@@ -556,7 +553,9 @@ export class MessageCardComponent implements OnInit, OnDestroy {
               // sent
               this.messagesYoSent.push(e);
               this.messagesYoSent.filter((newestMsg) => {
-                if (Math.max(newestMsg.time)) {
+                const maxTime = Math.max(newestMsg.time);
+                console.log('max time sent', maxTime);
+                if (newestMsg.time == maxTime) {
                   console.log('top it up we inside', newestMsg);
                   newestMsg.newestSent = 'true';
                   console.log('top it up we inside 2', newestMsg);
@@ -564,6 +563,11 @@ export class MessageCardComponent implements OnInit, OnDestroy {
                 console.log('top it up');
               });
             }
+            console.log('time 2', e.time);
+            console.log('type of time 2', typeof e.time);
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
           });
 
           const messagesYoCombined = this.messagesYoSent.concat(
