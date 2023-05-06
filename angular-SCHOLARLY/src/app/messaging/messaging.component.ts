@@ -104,6 +104,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
           if (e.time) {
             console.log('time', e.time);
             console.log('type of time', typeof e.time);
+            console.log('type of time22', typeof new Date(e.time));
 
             e.time = formatDistance(new Date(e.time), new Date(), {
               addSuffix: true,

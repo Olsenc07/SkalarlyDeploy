@@ -351,7 +351,7 @@ console.log('hippy pippy send it', filteredFinal)
                     console.log('hippy pippy send it', filteredFinal)
                         res.status(200).json({
                         message: 'Info messages fetched succesfully!',
-                           messages: filteredFinal.reverse()
+                           messages: filteredFinal
                         });
                 }
               
