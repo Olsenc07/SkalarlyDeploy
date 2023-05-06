@@ -539,32 +539,33 @@ export class MessageCardComponent implements OnInit, OnDestroy {
             // recieved
             if (e.you !== this.userId) {
               this.messagesYoRecieved.push(e);
-              this.messagesYoRecieved.filter((newestMsg) => {
-                console.log('cant rap', ...newestMsg.time);
-                const maxTime = Math.max(...newestMsg.time);
-                console.log('max time', maxTime);
+              const maxTime = this.messagesYoRecieved.reduce((prev, current) =>
+                prev.time > current.time ? prev : current
+              );
+              console.log('max time', maxTime);
+              this.messagesYoRecieved.forEach((newestMsg) => {
                 if (newestMsg.time == maxTime) {
                   console.log('top it up we inside recieved', newestMsg);
                   newestMsg.newestRecieved = 'true';
                   console.log('top it up we inside 2 recieved', newestMsg);
                 }
-                console.log('top it up recieved');
               });
+              console.log('top it up recieved');
             } else {
               // sent
               this.messagesYoSent.push(e);
-              this.messagesYoSent.filter((newestMsg) => {
-                console.log('cant rap sent', ...newestMsg.time);
-
-                const maxTime = Math.max(...newestMsg.time);
+              const maxTime = this.messagesYoSent.reduce((prev, current) =>
+                prev.time > current.time ? prev : current
+              );
+              this.messagesYoSent.forEach((newestMsg) => {
                 console.log('max time sent', maxTime);
                 if (newestMsg.time == maxTime) {
                   console.log('top it up we inside', newestMsg);
                   newestMsg.newestSent = 'true';
                   console.log('top it up we inside 2', newestMsg);
                 }
-                console.log('top it up');
               });
+              console.log('top it up');
             }
           });
 
