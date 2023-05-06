@@ -344,8 +344,8 @@ console.log('hippy pippy send it', filteredFinal)
                 
                     console.log('hippy pippy', filteredFinal)
                     filteredFinal.sort((a,b) => {
-                        let newest = a.time,
-                            older =  b.time;
+                        let newest = new Date(a.time),
+                            older =  new Date(b.time);
                             return  newest - older
                     })
                     console.log('hippy pippy send it', filteredFinal)

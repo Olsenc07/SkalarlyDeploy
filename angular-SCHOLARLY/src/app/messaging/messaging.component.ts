@@ -523,13 +523,22 @@ export class MessageCardComponent implements OnInit, OnDestroy {
       this.datasSub = this.messagesService
         .getInfoUpdateListener()
         .subscribe((messagesYo: any) => {
+          new Date(
+            Math.max.apply(
+              null,
+              messagesYo.map(function (e) {
+                console.log('run away', e);
+                e.newestRecieved = 'true';
+              })
+            )
+          );
           messagesYo.forEach((e) => {
             if (e.time) {
               console.log('time 2', e.time);
-              console.log('type of time 2', typeof e.time);
-              e.time = formatDistance(new Date(e.time), new Date(), {
-                addSuffix: true,
-              });
+              // console.log('type of time 2', typeof e.time);
+              // e.time = formatDistance(new Date(e.time), new Date(), {
+              //   addSuffix: true,
+              // });
             }
           });
           this.messages = messagesYo;
