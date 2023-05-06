@@ -540,7 +540,8 @@ export class MessageCardComponent implements OnInit, OnDestroy {
             if (e.you !== this.userId) {
               this.messagesYoRecieved.push(e);
               this.messagesYoRecieved.filter((newestMsg) => {
-                const maxTime = Math.max(newestMsg.time);
+                console.log('cant rap', newestMsg.time);
+                const maxTime = new Date(Math.max(newestMsg.time));
                 console.log('max time', maxTime);
                 if (newestMsg.time == maxTime) {
                   console.log('top it up we inside recieved', newestMsg);
@@ -553,7 +554,9 @@ export class MessageCardComponent implements OnInit, OnDestroy {
               // sent
               this.messagesYoSent.push(e);
               this.messagesYoSent.filter((newestMsg) => {
-                const maxTime = Math.max(newestMsg.time);
+                console.log('cant rap sent', newestMsg.time);
+
+                const maxTime = new Date(Math.max(newestMsg.time));
                 console.log('max time sent', maxTime);
                 if (newestMsg.time == maxTime) {
                   console.log('top it up we inside', newestMsg);
@@ -563,11 +566,6 @@ export class MessageCardComponent implements OnInit, OnDestroy {
                 console.log('top it up');
               });
             }
-            console.log('time 2', e.time);
-            console.log('type of time 2', typeof e.time);
-            e.time = formatDistance(new Date(e.time), new Date(), {
-              addSuffix: true,
-            });
           });
 
           const messagesYoCombined = this.messagesYoSent.concat(
@@ -581,6 +579,13 @@ export class MessageCardComponent implements OnInit, OnDestroy {
             return newest - older;
           });
           console.log('whats up cus sorted', messagesYoCombined);
+          messagesYoCombined.forEach((e) => {
+            console.log('time 2', e.time);
+            console.log('type of time 2', typeof e.time);
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          });
 
           this.messages = messagesYoCombined;
           console.log('datas pulled', this.messages);
