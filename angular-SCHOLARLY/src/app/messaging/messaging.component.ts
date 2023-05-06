@@ -232,6 +232,16 @@ export class MessagingComponent implements OnInit, OnDestroy {
         //     console.log(' be viewed now', this.messagesNotif);
         //   });
       }
+    } else {
+      this.messageNotificationService.getMessageNotification(this.userId);
+      this.clearSub = this.messageNotificationService
+        .getListenerNotification()
+        .subscribe((messagesNotif: Message[]) => {
+          this.messagesNotif = messagesNotif;
+          this.messagesNoNotif = '';
+          console.log(' empty box', this.messagesNotif);
+          this.clearSub.unsubscribe();
+        });
     }
   }
   navigateToChat(username: string): any {
@@ -504,6 +514,8 @@ export class MessagingComponent implements OnInit, OnDestroy {
 export class MessageCardComponent implements OnInit, OnDestroy {
   userId: string;
   username: string;
+  messagesYoSent = [];
+  messagesYoRecieved = [];
 
   messages: Message[] = [];
   private datasSub: Subscription;
@@ -523,25 +535,50 @@ export class MessageCardComponent implements OnInit, OnDestroy {
       this.datasSub = this.messagesService
         .getInfoUpdateListener()
         .subscribe((messagesYo: any) => {
-          new Date(
-            Math.max.apply(
-              null,
-              messagesYo.map(function (e) {
-                console.log('run away', e);
-                e.newestRecieved = 'true';
-              })
-            )
-          );
           messagesYo.forEach((e) => {
-            if (e.time) {
-              console.log('time 2', e.time);
-              // console.log('type of time 2', typeof e.time);
-              // e.time = formatDistance(new Date(e.time), new Date(), {
-              //   addSuffix: true,
-              // });
+            console.log('time 2', e.time);
+            console.log('type of time 2', typeof e.time);
+            // e.time = formatDistance(new Date(e.time), new Date(), {
+            //   addSuffix: true,
+            // });
+            // recieved
+            if (e.you !== this.userId) {
+              this.messagesYoRecieved.push(e);
+              this.messagesYoRecieved.filter((newestMsg) => {
+                if (Math.max(newestMsg.time)) {
+                  console.log('top it up we inside', newestMsg);
+                  newestMsg.newestRecieved = 'true';
+                  console.log('top it up we inside 2', newestMsg);
+                }
+                console.log('top it up');
+              });
+            } else {
+              // sent
+              this.messagesYoSent.push(e);
+              this.messagesYoSent.filter((newestMsg) => {
+                if (Math.max(newestMsg.time)) {
+                  console.log('top it up we inside', newestMsg);
+                  newestMsg.newestSent = 'true';
+                  console.log('top it up we inside 2', newestMsg);
+                }
+                console.log('top it up');
+              });
             }
           });
-          this.messages = messagesYo;
+
+          const messagesYoCombined = this.messagesYoSent.concat(
+            this.messagesYoRecieved
+          );
+          console.log('whats up cus', messagesYoCombined);
+          messagesYoCombined.sort((a, b) => {
+            console.log('aaaaaa', a);
+            let newest = a.time,
+              older = b.time;
+            return newest - older;
+          });
+          console.log('whats up cus sorted', messagesYoCombined);
+
+          this.messages = messagesYoCombined;
           console.log('datas pulled', this.messages);
         });
     });

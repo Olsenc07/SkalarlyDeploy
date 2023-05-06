@@ -184,6 +184,24 @@
 .post {
   resize: none;
 }
+// recieved
+.receivedNewest:before{
+  border-bottom-left-radius: 15px;
+  background-color: #95bec9;
+}
+.receivedNewest:after{
+  border-bottom-left-radius: 10px;
+  background-color: white;
+}
+// sent
+.sentNewest:before{
+  border-bottom-right-radius: 15px;
+  background-color: #2e7378;
+}
+.sentdNewest:after{
+  border-bottom-right-radius: 10px;
+  background-color: white;
+}
 @media (min-width: 1150px) {
 
   .textSize {
