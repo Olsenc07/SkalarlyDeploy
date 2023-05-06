@@ -550,31 +550,35 @@ export class MessageCardComponent implements OnInit, OnDestroy {
           }
         });
         // recieved
-        const maxTime = this.messagesYoRecieved.reduce(
-          (prev, current) => (prev.time > current.time ? prev : current),
-          null
-        );
-        console.log('max time', maxTime.time);
-        this.messagesYoRecieved.forEach((newestMsg) => {
-          if (newestMsg.time == maxTime.time) {
-            console.log('top it up we inside recieved', newestMsg);
-            newestMsg.newestRecieved = 'true';
-            console.log('top it up we inside 2 recieved', newestMsg);
-          }
-        });
+        if (this.messagesYoRecieved.length > 0) {
+          const maxTime = this.messagesYoRecieved.reduce(
+            (prev, current) => (prev.time > current.time ? prev : current),
+            null
+          );
+          console.log('max time', maxTime.time);
+          this.messagesYoRecieved.forEach((newestMsg) => {
+            if (newestMsg.time == maxTime.time) {
+              console.log('top it up we inside recieved', newestMsg);
+              newestMsg.newestRecieved = 'true';
+              console.log('top it up we inside 2 recieved', newestMsg);
+            }
+          });
+        }
         // sent
-        const maxTime2 = this.messagesYoSent.reduce(
-          (prev, current) => (prev.time > current.time ? prev : current),
-          null
-        );
-        this.messagesYoSent.forEach((newestMsg) => {
-          console.log('max time sent', maxTime2.time);
-          if (newestMsg.time == maxTime2.time) {
-            console.log('top it up we inside', newestMsg);
-            newestMsg.newestSent = 'true';
-            console.log('top it up we inside 2', newestMsg);
-          }
-        });
+        if (this.messagesYoSent.length > 0) {
+          const maxTime2 = this.messagesYoSent.reduce(
+            (prev, current) => (prev.time > current.time ? prev : current),
+            null
+          );
+          this.messagesYoSent.forEach((newestMsg) => {
+            console.log('max time sent', maxTime2.time);
+            if (newestMsg.time == maxTime2.time) {
+              console.log('top it up we inside', newestMsg);
+              newestMsg.newestSent = 'true';
+              console.log('top it up we inside 2', newestMsg);
+            }
+          });
+        }
         // combine
         const messagesYoCombined = this.messagesYoSent.concat(
           this.messagesYoRecieved
