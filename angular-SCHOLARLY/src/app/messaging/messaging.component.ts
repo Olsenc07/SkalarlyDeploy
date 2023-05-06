@@ -540,8 +540,8 @@ export class MessageCardComponent implements OnInit, OnDestroy {
             if (e.you !== this.userId) {
               this.messagesYoRecieved.push(e);
               this.messagesYoRecieved.filter((newestMsg) => {
-                console.log('cant rap', newestMsg.time);
-                const maxTime = new Date(Math.max(newestMsg.time));
+                console.log('cant rap', ...newestMsg.time);
+                const maxTime = Math.max(...newestMsg.time);
                 console.log('max time', maxTime);
                 if (newestMsg.time == maxTime) {
                   console.log('top it up we inside recieved', newestMsg);
@@ -554,9 +554,9 @@ export class MessageCardComponent implements OnInit, OnDestroy {
               // sent
               this.messagesYoSent.push(e);
               this.messagesYoSent.filter((newestMsg) => {
-                console.log('cant rap sent', newestMsg.time);
+                console.log('cant rap sent', ...newestMsg.time);
 
-                const maxTime = new Date(Math.max(newestMsg.time));
+                const maxTime = Math.max(...newestMsg.time);
                 console.log('max time sent', maxTime);
                 if (newestMsg.time == maxTime) {
                   console.log('top it up we inside', newestMsg);
@@ -574,8 +574,8 @@ export class MessageCardComponent implements OnInit, OnDestroy {
           console.log('whats up cus', messagesYoCombined);
           messagesYoCombined.sort((a, b) => {
             console.log('aaaaaa', a);
-            let newest = a.time,
-              older = b.time;
+            let newest = new Date(a.time).valueOf(),
+              older = new Date(b.time).valueOf();
             return newest - older;
           });
           console.log('whats up cus sorted', messagesYoCombined);
