@@ -185,23 +185,23 @@
   resize: none;
 }
 // recieved
-.receivedNewest:before{
+.receivedNewest{
   border-bottom-left-radius: 15px;
   background-color: #95bec9;
 }
-.receivedNewest:after{
-  border-bottom-left-radius: 10px;
-  background-color: white;
-}
+// .receivedNewest::after{
+//   border-bottom-left-radius: 10px;
+//   background-color: white;
+// }
 // sent
-.sentNewest:before{
+.sentNewest{
   border-bottom-right-radius: 15px;
   background-color: #2e7378;
 }
-.sentdNewest:after{
-  border-bottom-right-radius: 10px;
-  background-color: white;
-}
+// .sentdNewest:after{
+//   border-bottom-right-radius: 10px;
+//   background-color: white;
+// }
 @media (min-width: 1150px) {
 
   .textSize {

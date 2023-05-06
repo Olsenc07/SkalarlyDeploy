@@ -550,8 +550,9 @@ export class MessageCardComponent implements OnInit, OnDestroy {
           }
         });
         // recieved
-        const maxTime = this.messagesYoRecieved.reduce((prev, current) =>
-          prev.time > current.time ? prev : current
+        const maxTime = this.messagesYoRecieved.reduce(
+          (prev, current) => (prev.time > current.time ? prev : current),
+          null
         );
         console.log('max time', maxTime.time);
         this.messagesYoRecieved.forEach((newestMsg) => {
@@ -562,8 +563,9 @@ export class MessageCardComponent implements OnInit, OnDestroy {
           }
         });
         // sent
-        const maxTime2 = this.messagesYoSent.reduce((prev, current) =>
-          prev.time > current.time ? prev : current
+        const maxTime2 = this.messagesYoSent.reduce(
+          (prev, current) => (prev.time > current.time ? prev : current),
+          null
         );
         this.messagesYoSent.forEach((newestMsg) => {
           console.log('max time sent', maxTime2.time);
@@ -580,7 +582,6 @@ export class MessageCardComponent implements OnInit, OnDestroy {
         console.log('whats up cus', messagesYoCombined);
         if (messagesYo.length == messagesYoCombined.length) {
           messagesYoCombined.sort((a, b) => {
-            console.log('aaaaaa', a);
             let newest = new Date(a.time).valueOf(),
               older = new Date(b.time).valueOf();
             return newest - older;
