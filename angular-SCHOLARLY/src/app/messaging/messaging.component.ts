@@ -531,48 +531,52 @@ export class MessageCardComponent implements OnInit, OnDestroy {
     // Pulls one to one msgs
     this.routeSub = this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
-      this.messagesService.getMessages(this.userId, this.username);
-      this.datasSub = this.messagesService
-        .getInfoUpdateListener()
-        .subscribe((messagesYo: any) => {
-          messagesYo.forEach((e) => {
-            // recieved
-            if (e.you !== this.userId) {
-              this.messagesYoRecieved.push(e);
-              const maxTime = this.messagesYoRecieved.reduce((prev, current) =>
-                prev.time > current.time ? prev : current
-              );
-              console.log('max time', maxTime);
-              this.messagesYoRecieved.forEach((newestMsg) => {
-                if (newestMsg.time == maxTime) {
-                  console.log('top it up we inside recieved', newestMsg);
-                  newestMsg.newestRecieved = 'true';
-                  console.log('top it up we inside 2 recieved', newestMsg);
-                }
-              });
-              console.log('top it up recieved');
-            } else {
-              // sent
-              this.messagesYoSent.push(e);
-              const maxTime = this.messagesYoSent.reduce((prev, current) =>
-                prev.time > current.time ? prev : current
-              );
-              this.messagesYoSent.forEach((newestMsg) => {
-                console.log('max time sent', maxTime);
-                if (newestMsg.time == maxTime) {
-                  console.log('top it up we inside', newestMsg);
-                  newestMsg.newestSent = 'true';
-                  console.log('top it up we inside 2', newestMsg);
-                }
-              });
-              console.log('top it up');
-            }
-          });
+    });
 
-          const messagesYoCombined = this.messagesYoSent.concat(
-            this.messagesYoRecieved
-          );
-          console.log('whats up cus', messagesYoCombined);
+    this.messagesService.getMessages(this.userId, this.username);
+    this.datasSub = this.messagesService
+      .getInfoUpdateListener()
+      .subscribe((messagesYo: any) => {
+        console.log('length of original', messagesYo.length);
+        messagesYo.forEach((e) => {
+          // recieved
+          if (e.you !== this.userId) {
+            this.messagesYoRecieved.push(e);
+            const maxTime = this.messagesYoRecieved.reduce((prev, current) =>
+              prev.time > current.time ? prev : current
+            );
+            console.log('max time', maxTime);
+            this.messagesYoRecieved.forEach((newestMsg) => {
+              if (newestMsg.time == maxTime.time) {
+                console.log('top it up we inside recieved', newestMsg);
+                newestMsg.newestRecieved = 'true';
+                console.log('top it up we inside 2 recieved', newestMsg);
+              }
+            });
+            console.log('top it up recieved');
+          } else {
+            // sent
+            this.messagesYoSent.push(e);
+            const maxTime = this.messagesYoSent.reduce((prev, current) =>
+              prev.time > current.time ? prev : current
+            );
+            this.messagesYoSent.forEach((newestMsg) => {
+              console.log('max time sent', maxTime);
+              if (newestMsg.time == maxTime.time) {
+                console.log('top it up we inside', newestMsg);
+                newestMsg.newestSent = 'true';
+                console.log('top it up we inside 2', newestMsg);
+              }
+            });
+            console.log('top it up');
+          }
+        });
+
+        const messagesYoCombined = this.messagesYoSent.concat(
+          this.messagesYoRecieved
+        );
+        console.log('whats up cus', messagesYoCombined);
+        if (messagesYo.length == messagesYoCombined.length) {
           messagesYoCombined.sort((a, b) => {
             console.log('aaaaaa', a);
             let newest = new Date(a.time).valueOf(),
@@ -590,8 +594,8 @@ export class MessageCardComponent implements OnInit, OnDestroy {
 
           this.messages = messagesYoCombined;
           console.log('datas pulled', this.messages);
-        });
-    });
+        }
+      });
   }
   ngOnDestroy(): any {
     this.routeSub.unsubscribe();
