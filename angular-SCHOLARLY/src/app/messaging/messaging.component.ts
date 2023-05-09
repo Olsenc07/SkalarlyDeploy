@@ -533,6 +533,9 @@ export class MessageCardComponent implements OnInit, OnDestroy {
     this.routeSub = this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
       this.messagesService.getMessages(this.userId, this.username);
+      console.log('mortal');
+      this.routeSub.unsubscribe();
+      console.log('after');
     });
 
     this.datasSub = this.messagesService
@@ -602,8 +605,6 @@ export class MessageCardComponent implements OnInit, OnDestroy {
           console.log('datas pulled', this.messages);
         }
       });
-    this.datasSub.unsubscribe();
-    console.log('unsubed brah');
   }
   ngOnDestroy(): any {
     this.routeSub.unsubscribe();
