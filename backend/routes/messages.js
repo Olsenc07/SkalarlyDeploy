@@ -31,7 +31,7 @@ User.findOne({username: user.username})
          
     )        
     .then((result) => {
-
+console.log('msgs found', result);
 res.status(200).json({
     message: 'Messages fetched succesfully!',
     messages: result
