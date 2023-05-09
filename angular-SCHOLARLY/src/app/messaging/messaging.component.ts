@@ -531,9 +531,9 @@ export class MessageCardComponent implements OnInit, OnDestroy {
     // Pulls one to one msgs
     this.routeSub = this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
+      this.messagesService.getMessages(this.userId, this.username);
     });
 
-    this.messagesService.getMessages(this.userId, this.username);
     this.datasSub = this.messagesService
       .getInfoUpdateListener()
       .subscribe((messagesYo: any) => {
