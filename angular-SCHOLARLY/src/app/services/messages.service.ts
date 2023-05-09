@@ -53,8 +53,6 @@ export class MessageService {
       )
       .subscribe((transformedMessage) => {
         this.messages = transformedMessage;
-        this.messagesUpdated.next([]);
-        console.log('empty msg to clear');
         this.messagesUpdated.next([...this.messages]);
         console.log('msgs sent');
         sub.unsubscribe();
