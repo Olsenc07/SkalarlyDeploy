@@ -542,18 +542,17 @@ export class MessageCardComponent implements OnInit, OnDestroy {
           // recieved
           if (e.you !== this.userId) {
             this.messagesYoRecieved.push(e);
+            console.log('top it up recieved');
           } else {
             // sent
             this.messagesYoSent.push(e);
-
             console.log('top it up');
           }
         });
         // recieved
         if (this.messagesYoRecieved.length > 0) {
-          const maxTime = this.messagesYoRecieved.reduce(
-            (prev, current) => (prev.time > current.time ? prev : current),
-            null
+          const maxTime = this.messagesYoRecieved.reduce((prev, current) =>
+            prev.time > current.time ? prev : current
           );
           console.log('max time', maxTime.time);
           this.messagesYoRecieved.forEach((newestMsg) => {
@@ -566,9 +565,8 @@ export class MessageCardComponent implements OnInit, OnDestroy {
         }
         // sent
         if (this.messagesYoSent.length > 0) {
-          const maxTime2 = this.messagesYoSent.reduce(
-            (prev, current) => (prev.time > current.time ? prev : current),
-            null
+          const maxTime2 = this.messagesYoSent.reduce((prev, current) =>
+            prev.time > current.time ? prev : current
           );
           this.messagesYoSent.forEach((newestMsg) => {
             console.log('max time sent', maxTime2.time);
