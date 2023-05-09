@@ -187,19 +187,19 @@
 // recieved
 .receivedNewest{
   border-bottom-left-radius: 0px !important;
-  background-color: #95bec9 !important;
+  background-color: #a4d1d9 !important;
 }
-.receivedNewest::before{
-  border-bottom-right-radius: 10px !important;
+.receivedNewest:before{
+  border-radius: 50% !important;
   background-color: white !important;
 }
 // sent
 .sentNewest{
   border-bottom-right-radius: 0px !important;
-  background-color: #2e7378 !important;
+  background-color: #112645 !important;
 }
-.sentdNewest::before{
-  border-bottom-left-radius: 10px !important;
+.sentdNewest:after{
+  border-radius: 50% !important;
   background-color: white !important;
 }
 @media (min-width: 1150px) {
