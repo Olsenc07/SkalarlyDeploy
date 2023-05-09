@@ -533,75 +533,75 @@ export class MessageCardComponent implements OnInit, OnDestroy {
     this.routeSub = this.route.queryParams.subscribe((params) => {
       this.username = params?.username;
       this.messagesService.getMessages(this.userId, this.username);
-    });
-
-    this.datasSub = this.messagesService
-      .getInfoUpdateListener()
-      .subscribe((messagesYo: any) => {
-        console.log('length of original', messagesYo.length);
-        messagesYo.forEach((e) => {
+      console.log('new pulls');
+      this.datasSub = this.messagesService
+        .getInfoUpdateListener()
+        .subscribe((messagesYo: any) => {
+          console.log('length of original', messagesYo.length);
+          messagesYo.forEach((e) => {
+            // recieved
+            if (e.you !== this.userId) {
+              this.messagesYoRecieved.push(e);
+              console.log('top it up recieved');
+            } else {
+              // sent
+              this.messagesYoSent.push(e);
+              console.log('top it up');
+            }
+          });
           // recieved
-          if (e.you !== this.userId) {
-            this.messagesYoRecieved.push(e);
-            console.log('top it up recieved');
-          } else {
-            // sent
-            this.messagesYoSent.push(e);
-            console.log('top it up');
+          if (this.messagesYoRecieved.length > 0) {
+            const maxTime = this.messagesYoRecieved.reduce((prev, current) =>
+              prev.time > current.time ? prev : current
+            );
+            console.log('max time', maxTime.time);
+            this.messagesYoRecieved.forEach((newestMsg) => {
+              if (newestMsg.time == maxTime.time) {
+                console.log('top it up we inside recieved', newestMsg);
+                newestMsg.newestRecieved = 'true';
+                console.log('top it up we inside 2 recieved', newestMsg);
+              }
+            });
+          }
+          // sent
+          if (this.messagesYoSent.length > 0) {
+            const maxTime2 = this.messagesYoSent.reduce((prev, current) =>
+              prev.time > current.time ? prev : current
+            );
+            this.messagesYoSent.forEach((newestMsg) => {
+              console.log('max time sent', maxTime2.time);
+              if (newestMsg.time == maxTime2.time) {
+                console.log('top it up we inside', newestMsg);
+                newestMsg.newestSent = 'true';
+                console.log('top it up we inside 2', newestMsg);
+              }
+            });
+          }
+          // combine
+          const messagesYoCombined = this.messagesYoSent.concat(
+            this.messagesYoRecieved
+          );
+          console.log('whats up cus', messagesYoCombined);
+          if (messagesYo.length == messagesYoCombined.length) {
+            messagesYoCombined.sort((a, b) => {
+              let newest = new Date(a.time).valueOf(),
+                older = new Date(b.time).valueOf();
+              return newest - older;
+            });
+            console.log('whats up cus sorted', messagesYoCombined);
+            messagesYoCombined.forEach((e) => {
+              console.log('time 2', e.time);
+              console.log('type of time 2', typeof e.time);
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            });
+
+            this.messages = messagesYoCombined;
+            console.log('datas pulled', this.messages);
           }
         });
-        // recieved
-        if (this.messagesYoRecieved.length > 0) {
-          const maxTime = this.messagesYoRecieved.reduce((prev, current) =>
-            prev.time > current.time ? prev : current
-          );
-          console.log('max time', maxTime.time);
-          this.messagesYoRecieved.forEach((newestMsg) => {
-            if (newestMsg.time == maxTime.time) {
-              console.log('top it up we inside recieved', newestMsg);
-              newestMsg.newestRecieved = 'true';
-              console.log('top it up we inside 2 recieved', newestMsg);
-            }
-          });
-        }
-        // sent
-        if (this.messagesYoSent.length > 0) {
-          const maxTime2 = this.messagesYoSent.reduce((prev, current) =>
-            prev.time > current.time ? prev : current
-          );
-          this.messagesYoSent.forEach((newestMsg) => {
-            console.log('max time sent', maxTime2.time);
-            if (newestMsg.time == maxTime2.time) {
-              console.log('top it up we inside', newestMsg);
-              newestMsg.newestSent = 'true';
-              console.log('top it up we inside 2', newestMsg);
-            }
-          });
-        }
-        // combine
-        const messagesYoCombined = this.messagesYoSent.concat(
-          this.messagesYoRecieved
-        );
-        console.log('whats up cus', messagesYoCombined);
-        if (messagesYo.length == messagesYoCombined.length) {
-          messagesYoCombined.sort((a, b) => {
-            let newest = new Date(a.time).valueOf(),
-              older = new Date(b.time).valueOf();
-            return newest - older;
-          });
-          console.log('whats up cus sorted', messagesYoCombined);
-          messagesYoCombined.forEach((e) => {
-            console.log('time 2', e.time);
-            console.log('type of time 2', typeof e.time);
-            e.time = formatDistance(new Date(e.time), new Date(), {
-              addSuffix: true,
-            });
-          });
-
-          this.messages = messagesYoCombined;
-          console.log('datas pulled', this.messages);
-        }
-      });
+    });
   }
   ngOnDestroy(): any {
     this.routeSub.unsubscribe();

@@ -186,8 +186,8 @@
 }
 // recieved
 .receivedNewest{
-  border-bottom-left-radius: 15px;
-  background-color: #95bec9;
+  border-bottom-left-radius: 15px !important;
+  background-color: #95bec9 !important;
 }
 // .receivedNewest::after{
 //   border-bottom-left-radius: 10px;
@@ -195,8 +195,8 @@
 // }
 // sent
 .sentNewest{
-  border-bottom-right-radius: 15px;
-  background-color: #2e7378;
+  border-bottom-right-radius: 15px !important;
+  background-color: #2e7378 !important;
 }
 // .sentdNewest:after{
 //   border-bottom-right-radius: 10px;
