@@ -540,6 +540,9 @@ export class MessageCardComponent implements OnInit, OnDestroy {
       .getInfoUpdateListener()
       .subscribe((messagesYo: any) => {
         console.log('length of original', messagesYo.length);
+        console.log('original', messagesYo);
+        this.messagesYoRecieved = [];
+        this.messagesYoSent = [];
         messagesYo.forEach((e) => {
           // recieved
           if (e.you !== this.userId) {
