@@ -527,6 +527,7 @@ export class MessageCardComponent implements OnInit, OnDestroy {
     private messageNotificationService: MessageNotificationService
   ) {}
   ngOnInit(): any {
+    // this.messages = []
     this.userId = this.authService.getUserId();
     // Pulls one to one msgs
     this.routeSub = this.route.queryParams.subscribe((params) => {
@@ -600,6 +601,8 @@ export class MessageCardComponent implements OnInit, OnDestroy {
           this.messages = messagesYoCombined;
           console.log('datas pulled', this.messages);
         }
+        this.datasSub.unsubscribe();
+        console.log('unsubed brah');
       });
   }
   ngOnDestroy(): any {
