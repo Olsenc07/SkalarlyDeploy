@@ -601,9 +601,9 @@ export class MessageCardComponent implements OnInit, OnDestroy {
           this.messages = messagesYoCombined;
           console.log('datas pulled', this.messages);
         }
-        this.datasSub.unsubscribe();
-        console.log('unsubed brah');
       });
+    this.datasSub.unsubscribe();
+    console.log('unsubed brah');
   }
   ngOnDestroy(): any {
     this.routeSub.unsubscribe();
