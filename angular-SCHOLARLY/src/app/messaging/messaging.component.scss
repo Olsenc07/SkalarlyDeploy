@@ -186,22 +186,22 @@
 }
 // recieved
 .receivedNewest{
-  border-bottom-left-radius: 15px !important;
+  border-bottom-left-radius: 0px !important;
   background-color: #95bec9 !important;
 }
-// .receivedNewest::after{
-//   border-bottom-left-radius: 10px;
-//   background-color: white;
-// }
+.receivedNewest::before{
+  border-bottom-right-radius: 10px !important;
+  background-color: white !important;
+}
 // sent
 .sentNewest{
-  border-bottom-right-radius: 15px !important;
+  border-bottom-right-radius: 0px !important;
   background-color: #2e7378 !important;
 }
-// .sentdNewest:after{
-//   border-bottom-right-radius: 10px;
-//   background-color: white;
-// }
+.sentdNewest::before{
+  border-bottom-left-radius: 10px !important;
+  background-color: white !important;
+}
 @media (min-width: 1150px) {
 
   .textSize {
