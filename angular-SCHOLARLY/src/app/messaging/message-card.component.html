@@ -1,8 +1,8 @@
 <div  *ngFor="let data of messages"  >
     <div
     style="display: flex;
-width: 100%;
-" [ngClass]="{'receivedNewest': data.hasOwnProperty('newestRecieved')}">
+width: 100%;" >
+<div *ngIf="data.hasOwnProperty('newestRecieved')" class="receivedNewest"></div>
 <div *ngIf="userId !== data.you"
 class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; padding: 0% 5% 0% 3%;
  width: fit-content; border-radius:25px" 
@@ -18,8 +18,7 @@ class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bo
 
 <div  style="display: flex;
 justify-content: flex-end;
-width: 100%;
-" [ngClass]="{'sentNewest': data.hasOwnProperty('newestSent')}">
+width: 100%;">
     <div *ngIf="userId === data.you"
     class="chat-messages" id="container" style="background-color: #0056ba; margin-bottom:2%; border-radius:25px;
     width: fit-content;padding:0% 5% 0% 3%; display: flex; flex-direction:column"  >
@@ -35,5 +34,6 @@ width: 100%;
    
 
        </div>
+       <div *ngif="data.hasOwnProperty('newestSent')" class="sentNewest"></div>
     </div>
 </div>
