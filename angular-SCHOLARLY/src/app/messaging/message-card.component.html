@@ -2,10 +2,10 @@
     <div
     style="display: flex;
 width: 100%;
-">
+" [ngClass]="{'receivedNewest': data.hasOwnProperty('newestRecieved')}">
 <div *ngIf="userId !== data.you"
 class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; padding: 0% 5% 0% 3%;
- width: fit-content; border-radius:25px" [ngClass]="{'receivedNewest': data.hasOwnProperty('newestRecieved')}"
+ width: fit-content; border-radius:25px" 
 >
 <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
 <div style="margin:2% 5% 0% 2%;font-size: small;color: #878581;" > @{{data.username}} </div>
@@ -19,10 +19,10 @@ class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bo
 <div  style="display: flex;
 justify-content: flex-end;
 width: 100%;
-">
+" [ngClass]="{'sentNewest': data.hasOwnProperty('newestSent')}">
     <div *ngIf="userId === data.you"
     class="chat-messages" id="container" style="background-color: #0056ba; margin-bottom:2%; border-radius:25px;
-    width: fit-content;padding:0% 5% 0% 3%; display: flex; flex-direction:column" [ngClass]="{'sentNewest': data.hasOwnProperty('newestSent')}" >
+    width: fit-content;padding:0% 5% 0% 3%; display: flex; flex-direction:column"  >
     <div class="message_" id="message-container" style="display:flex; flex-direction:row;  ">
    <div style="margin:2% 5% 0% 2%;color: #b1acac;font-size: small; " > @{{data.username}} </div>
    <div style="font-size:small; color: #b1acac;margin-top: 2%;white-space: nowrap;">  {{data.time}}  </div>
