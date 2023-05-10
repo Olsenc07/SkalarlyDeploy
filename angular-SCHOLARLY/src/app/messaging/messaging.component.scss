@@ -185,16 +185,16 @@
   resize: none;
 }
 // recieved
-.receivedNewest:after{
-  border-bottom-left-radius: 0px !important;
+.receivedNewest{
+  border-radius: 50% !important;
   background-color: #a4d1d9 !important;
 }
 .receivedNewest:before{
-  border-radius: 50% !important;
+  border-bottom-left-radius: 0px !important;
   background-color: white !important;
 }
 // sent
-.sentNewest:before{
+.sentNewest{
   border-bottom-right-radius: 0px !important;
   background-color: #112645 !important;
 }
