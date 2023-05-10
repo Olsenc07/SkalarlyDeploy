@@ -185,7 +185,7 @@
   resize: none;
 }
 // recieved
-.receivedNewest{
+.receivedNewest:after{
   border-bottom-left-radius: 0px !important;
   background-color: #a4d1d9 !important;
 }
@@ -194,7 +194,7 @@
   background-color: white !important;
 }
 // sent
-.sentNewest{
+.sentNewest:before{
   border-bottom-right-radius: 0px !important;
   background-color: #112645 !important;
 }
