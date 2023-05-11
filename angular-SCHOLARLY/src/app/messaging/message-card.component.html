@@ -3,10 +3,11 @@
     style="display: flex;
 width: 100%;
 ">
-<div >
+<div style="display: flex;
+width: 100%;margin-bottom: 2%;">
     <div class="receivedNewest" *ngIf="data.hasOwnProperty('newestRecieved')"> </div>
 <div *ngIf="userId !== data.you"
-class="chat-messages" id="container" style="background-color: #e7e7e7; margin-bottom:2%; padding: 0% 5% 0% 3%;
+class="chat-messages" id="container" style="background-color: #e7e7e7; padding: 0% 5% 0% 3%;
  width: fit-content; border-radius:25px">
 <div class="message_" id="message-container" style="display:flex; flex-direction:row; ">
 <div style="margin:2% 5% 0% 2%;font-size: small;color: #878581;" > @{{data.username}} </div>
