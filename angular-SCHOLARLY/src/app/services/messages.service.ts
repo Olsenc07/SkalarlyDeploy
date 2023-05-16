@@ -21,6 +21,7 @@ export class MessageService {
   private messages: Message[] = [];
 
   private messagesUpdated = new Subject<Message[]>();
+  private messagesAutoFill = new Subject();
 
   private messageStart: Message[] = [];
   private messageStartUpdated = new Subject<Message[]>();
@@ -30,9 +31,8 @@ export class MessageService {
 
   autoFillAI(text: string): any {
     console.log('autofill text', text);
-    return this.http.post(
-      'https://typewise-ai.p.rapidapi.com/completion/complete',
-      {
+    const sub = this.http
+      .post('https://typewise-ai.p.rapidapi.com/completion/complete', {
         headers: {
           'content-type': 'application/json',
           'X-RapidAPI-Key':
@@ -44,8 +44,17 @@ export class MessageService {
           correctTypoInPartialWord: true,
           language: 'en',
         },
-      }
-    );
+      })
+      .subscribe((transformedMessage) => {
+        console.log('lets see it all', transformedMessage);
+        this.messagesAutoFill.next(transformedMessage);
+        sub.unsubscribe();
+        console.log('eazy 1');
+      });
+  }
+
+  getInfoAutoFill(): any {
+    return this.messagesAutoFill.asObservable();
   }
 
   getMessages(userId: string, username: string): any {
