@@ -41,7 +41,7 @@ export class MessageService {
         },
         data: {
           text: text,
-          correctTypoInPartialWord: false,
+          correctTypoInPartialWord: true,
           language: 'en',
         },
       }
