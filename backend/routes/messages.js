@@ -9,7 +9,13 @@ const { filter } = require('rxjs');
 
 
 
-
+router.get('/HiddenApiKey', async(req,res) => {   
+    res.status(200).json({
+        message: 'AutoFill fetched succesfully!',
+        messages: process.env.rapidApiKey
+        })
+    
+});
 
 
 // Wrap everything in here need to connect socket.io first
