@@ -395,7 +395,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
     console.log('text', text.value);
     this.messagesService.autoFillAI(text.value);
 
-    this.messagesService.getInfoAutoFill().then((autofill) => {
+    this.messagesService.getInfoAutoFill().subscribe((autofill) => {
       console.log('autofill', autofill);
       console.log('autofill predictions', autofill.predictions);
       this.message.setValue(autofill.predictions.description);

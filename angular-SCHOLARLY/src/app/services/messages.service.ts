@@ -37,8 +37,8 @@ export class MessageService {
         'https://www.skalarly.com/api/messages/HiddenApiKey'
       )
       .subscribe((transformedMessage) => {
-        console.log('gotron', transformedMessage);
-        const HiddenApiKey = transformedMessage;
+        console.log('gotron', transformedMessage.messages);
+        const HiddenApiKey = transformedMessage.messages;
         const sub = this.http
           .post('https://typewise-ai.p.rapidapi.com/completion/complete', {
             headers: {
