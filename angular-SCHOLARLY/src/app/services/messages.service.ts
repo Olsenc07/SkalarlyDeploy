@@ -28,6 +28,26 @@ export class MessageService {
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
+  autoFillAI(text: string): any {
+    console.log('autofill text', text);
+    return this.http.post(
+      'https://typewise-ai.p.rapidapi.com/completion/complete',
+      {
+        headers: {
+          'content-type': 'application/json',
+          'X-RapidAPI-Key':
+            'cb6d8e9885msh7c499b14a5d6575p1ed478jsn136cd6b056f4',
+          'X-RapidAPI-Host': 'typewise-ai.p.rapidapi.com',
+        },
+        data: {
+          text: text,
+          correctTypoInPartialWord: false,
+          language: 'en',
+        },
+      }
+    );
+  }
+
   getMessages(userId: string, username: string): any {
     const sub = this.http
       .get<{ message: string; messages: any }>(

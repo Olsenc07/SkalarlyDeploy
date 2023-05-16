@@ -390,6 +390,16 @@ export class MessagingComponent implements OnInit, OnDestroy {
     this.message.setValue('');
   }
 
+  // AI typewise
+  autoFill(text): void {
+    console.log('text', text);
+    this.messagesService.autoFillAI(text).then((autofill) => {
+      console.log('autofill', autofill);
+      console.log('autofill predictions', autofill.predictions);
+      this.message.setValue(autofill.predictions.description);
+    });
+  }
+
   trigger(MESSAGE): void {
     if (MESSAGE) {
       this.socket.emit('chat-messageSnd', {
