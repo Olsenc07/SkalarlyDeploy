@@ -57,8 +57,6 @@ export class MessageService {
 
         try {
           const response = await axios.request(options);
-          console.log('windy brains', response.data.predictions);
-          console.log('windy brains', response.data.predictions[0].text);
           this.messagesAutoFill.next(response.data.predictions[0].text);
         } catch (error) {
           console.error(error);

@@ -27,6 +27,7 @@ export interface Message {
 export class MessagingComponent implements OnInit, OnDestroy {
   isLoading = false;
   userId: string;
+  autofill: string;
   timeHourInitial = new Date().getHours();
   timeHour = this.testNum(this.timeHourInitial);
   timeMinute = new Date().getMinutes();
@@ -395,10 +396,13 @@ export class MessagingComponent implements OnInit, OnDestroy {
     console.log('text', text.value);
     this.messagesService.autoFillAI(text.value);
 
-    this.messagesService.getInfoAutoFill().subscribe((autofill) => {
-      console.log('autofill', autofill);
-      this.message.setValue(autofill);
+    this.messagesService.getInfoAutoFill().subscribe((AutoFill) => {
+      console.log('autofill', AutoFill);
+      this.autofill = AutoFill;
     });
+  }
+  fillInAutoFill(): void {
+    this.message.value.append(this.autofill);
   }
 
   trigger(MESSAGE): void {
