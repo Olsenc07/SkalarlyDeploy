@@ -44,7 +44,7 @@ export class MessageService {
         headers: {
           'content-type': 'application/json',
           'X-RapidAPI-Key':
-            'cb6d8e9885msh7c499b14a5d6575p1ed478jsn136cd6b056f4',
+            '3ac01901admsh99a9683c407b28ap1d39eajsnf9b1b4e2e51b',
           'X-RapidAPI-Host': 'typewise-ai.p.rapidapi.com',
         },
         data: {
