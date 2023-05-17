@@ -127,7 +127,7 @@ export class RetrievePasswordComponent implements OnInit {
   onSubmit(): void {
     console.log(this.loginForm.value);
     this.isLoading = true;
-    this.authService.login(this.email.value, this.password.value);
+    this.authService.login(this.email.value, this.password.value, false);
   }
 
   onResetPassword(): void {
@@ -225,7 +225,7 @@ export class ForgotPasswordComponent implements OnInit {
   onSubmit(): void {
     console.log(this.loginForm.value);
     this.isLoading = true;
-    this.authService.login(this.email.value, this.password.value);
+    this.authService.login(this.email.value, this.password.value, false);
   }
 
   onResetPassword(): void {
