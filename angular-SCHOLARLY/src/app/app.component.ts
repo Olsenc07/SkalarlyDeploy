@@ -456,12 +456,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.postSub = this.isPostScreen$.subscribe((onPostPg) => {
       if (onPostPg === true) {
-        this.postClicked = true;
+        return (this.postClicked = true);
       }
     });
     this.msgSub = this.isMessagesScreen$.subscribe((onMsgPg) => {
       if (onMsgPg === true) {
-        this.commentClicked = true;
+        return (this.commentClicked = true);
       }
     });
 

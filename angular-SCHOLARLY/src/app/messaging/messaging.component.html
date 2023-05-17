@@ -158,6 +158,10 @@
 <!-- Loads in new messages -->
 <div class="chat-messages" id="container" >
 <div class="message" id="message-container" #scrollMe [scrollTop]="scrollMe.scrollHeight" >
+  <div *ngIf="!username" class="selectMsgBox">
+    <i class="far fa-comments"></i>
+    <div class="selectMsg"> Select a message to read</div>
+  </div>
   <app-card-messaging >
   </app-card-messaging>
 
@@ -176,8 +180,8 @@
 <mat-form-field class="type_message_box" id="showEmojis">
   <div class="row">
         <input matInput class="post" placeholder="Write a message..." [formControl]="message"
-          type="text" id="selection-emoji" (keyup)="autoFill(message)" (keydown.Tab)="fillInAutoFill()"> 
-          <div class="autofill">{{autofill}}</div>
+          type="text" id="selection-emoji" value={{autofill}} (keyup)="autoFill(message)" (keydown.Tab)="fillInAutoFill()"> 
+          <!-- <div class="autofill">{{autofill}}</div> -->
         </div>
     <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
 
@@ -211,10 +215,10 @@
 
 </div>  
 <div class="messageTitle" *ngIf="username !== userId">
-  Messaging
-  <div *ngIf="!username" class="marginLeft">No One</div>
   
-  <div *ngIf="username" class="marginLeft">{{username}}</div>
+  <!-- <div *ngIf="!username" class="marginLeft"> Messaging No One</div> -->
+  
+  <div *ngIf="username" class="marginLeft">Messaging {{username}}</div>
 </div>
   
 <div class="send_btn whiteC">

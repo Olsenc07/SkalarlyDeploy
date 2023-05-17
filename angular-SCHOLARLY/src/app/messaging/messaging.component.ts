@@ -404,11 +404,11 @@ export class MessagingComponent implements OnInit, OnDestroy {
       const space = text.value.at(-1).match(/\s/);
       console.log('space', space);
       if (space === null) {
-        this.autofill = AutoFill;
-        console.log('auto bots1', this.autofill);
-      } else {
         this.autofill = AutoFill.slice(1);
         console.log('auto bots2', this.autofill);
+      } else {
+        this.autofill = AutoFill;
+        console.log('auto bots1', this.autofill);
       }
     });
   }
