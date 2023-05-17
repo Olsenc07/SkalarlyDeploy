@@ -78,7 +78,8 @@
           </mat-form-field>
         </div>
 <!-- Keep me logged in -->
-<mat-checkbox [formControl]="stayLoggedIn" (click)="check(stayLoggedIn.value)"  class="stayLoggedIn">Keep me logged in</mat-checkbox>
+<mat-checkbox [checked]="stayLoggedIn" (click)="check(!stayLoggedIn)"  class="stayLoggedIn">
+  Keep me logged in</mat-checkbox>
 
           <!-- <div class="loginBtn"> -->
          <div class="center">
