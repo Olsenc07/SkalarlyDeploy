@@ -398,11 +398,22 @@ export class MessagingComponent implements OnInit, OnDestroy {
 
     this.messagesService.getInfoAutoFill().subscribe((AutoFill) => {
       console.log('autofill', AutoFill);
-      this.autofill = AutoFill;
+      // Last character i text to match first character in autofill
+      // remove first character in autofill if it matches
+      // unless empty space
+      const space = text.value.at(-1).match(/\s/);
+      console.log('space', space);
+      if (space === null) {
+        this.autofill = AutoFill;
+        console.log('auto bots1', this.autofill);
+      } else {
+        this.autofill = AutoFill.slice(1);
+        console.log('auto bots2', this.autofill);
+      }
     });
   }
   fillInAutoFill(): void {
-    this.message.value.append(this.autofill);
+    this.message.setValue(this.message.value + this.autofill);
   }
 
   trigger(MESSAGE): void {
