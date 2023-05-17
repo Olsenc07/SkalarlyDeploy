@@ -89,11 +89,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     // this.messagesService.startMessages(this.userId);
-    this.routeSub = this.route.queryParams.subscribe((params) => {
-      console.log('params main page', params?.username);
-      this.username = params?.username;
-      console.log('username', this.username);
-    });
+
     // recieving messages
     this.messageNotificationService.getMessageNotification(this.userId);
     this.msgNotifSub = this.messageNotificationService
@@ -119,6 +115,11 @@ export class MessagingComponent implements OnInit, OnDestroy {
         // and then add send value or not
         console.log('should be viewed now 777', this.messagesNotif);
       });
+    this.routeSub = this.route.queryParams.subscribe((params) => {
+      console.log('params main page', params?.username);
+      this.username = params?.username;
+      console.log('username', this.username);
+    });
   }
 
   ngOnDestroy(): any {

@@ -157,9 +157,9 @@
 <!-- Message area -->
 <!-- Loads in new messages -->
 <div class="chat-messages" id="container" >
-<div class="message" id="message-container" #scrollMe [scrollTop]="scrollMe.scrollHeight" >
+<div  [ngClass]="!username ? 'messageNone message' : 'message' "  id="message-container" #scrollMe [scrollTop]="scrollMe.scrollHeight" >
   <div *ngIf="!username" class="selectMsgBox">
-    <i class="far fa-comments"></i>
+    <i class="far fa-comments messageNoneIcon"></i>
     <div class="selectMsg"> Select a message to read</div>
   </div>
   <app-card-messaging >
@@ -216,7 +216,7 @@
 </div>  
 <div class="messageTitle" *ngIf="username !== userId">
   
-  <!-- <div *ngIf="!username" class="marginLeft"> Messaging No One</div> -->
+  <div *ngIf="!username" class="marginLeft"> Messaging No One</div>
   
   <div *ngIf="username" class="marginLeft">Messaging {{username}}</div>
 </div>

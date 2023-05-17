@@ -460,6 +460,7 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
     this.msgSub = this.isMessagesScreen$.subscribe((onMsgPg) => {
+      console.log('msgs pg', onMsgPg);
       if (onMsgPg === true) {
         return (this.commentClicked = true);
       }
