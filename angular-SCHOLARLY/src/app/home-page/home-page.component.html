@@ -45,7 +45,9 @@
             <!-- pattern=".+@mail.utoronto\.ca" -->
             <!-- <mat-hint>@mail.utoronto.ca</mat-hint> -->
             <mat-hint *ngIf="emailMatches === false" class="hint">No account matches this email</mat-hint>
-            <mat-hint *ngIf="emailMatches === true" class="hint">Email found <i class="fas fa-user-graduate"></i></mat-hint>
+            <mat-hint *ngIf="emailMatches === true" class="hint">Email found 
+              <!-- <i class="fas fa-user-graduate"></i> -->
+            </mat-hint>
 
 
             <!-- <button color="primary" mat-button matSuffix mat-icon-button type="button"
@@ -75,6 +77,8 @@
             </button>
           </mat-form-field>
         </div>
+<!-- Keep me logged in -->
+<mat-checkbox [formControl]="stayLoggedIn" (click)="check(stayLoggedIn.value)"  class="stayLoggedIn">Keep me logged in</mat-checkbox>
 
           <!-- <div class="loginBtn"> -->
          <div class="center">

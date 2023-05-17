@@ -2471,11 +2471,12 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
                     const token = jwt.sign(
                         { email: fetchedUser.email, userId: fetchedUser._id },
                         process.env.love,
-                        { expiresIn: 25200 }
+                        { expiresIn: 2.88e+7 }
+                        // 8hrs
                     );
                     res.status(200).json({
                         token: token,
-                        expiresIn: 25200,
+                        expiresIn: 2.88e+7,
                         userId: fetchedUser._id,
                         
                     });
@@ -2507,12 +2508,36 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
 });
 
 
+// stayLoggedIn
+router.post("/stayLoggedIn",  async(reg, res, next) => {
+    User.findOne({ _id: reg.body.userId })
+    .then(user => {
+            fetchedUser = user;
+    const token = jwt.sign(
+        { email: fetchedUser.email, userId: fetchedUser._id },
+        process.env.love,
+        { expiresIn: 15000 }
+    );
+    res.status(200).json({
+        token: token,
+        expiresIn: 15000,
+        userId: fetchedUser._id
+    });
+})  .catch(err => {
+    return res.status(401).json({
+        message: "Invalid authentication credentials!",
 
+    });
+});
+});
 
 
 // Login
 router.post("/login", verifyEmail, async(reg, res, next) => {
     let fetchedUser;
+    console.log('login body', reg.body);
+    console.log('login body stayloggedin', reg.body.stayLoggedIn);
+
 
     await User.findOne({ email: reg.body.email })
     .then(test1 => {
@@ -2528,6 +2553,7 @@ router.post("/login", verifyEmail, async(reg, res, next) => {
                 });
             })}
 if(userInfo){
+    if(reg.body.stayLoggedIn == false){
     User.findOne({ email: reg.body.email })
         .then(user => {
                 fetchedUser = user;
@@ -2546,7 +2572,7 @@ if(userInfo){
             );
             res.status(200).json({
                 token: token,
-                expiresIn: 25200,
+                expiresIn: 15000,
                 userId: fetchedUser._id
             });
         })
@@ -2556,7 +2582,35 @@ if(userInfo){
 
             });
         });
-        
+    }else{
+        User.findOne({ email: reg.body.email })
+        .then(user => {
+                fetchedUser = user;
+                return bcrypt.compare(reg.body.password, user.password)
+        })   
+        .then(result => {
+            if (!result) {
+                return res.status(401).json({
+                    message: "Authentication failed"
+                });
+            }
+            const token = jwt.sign(
+                { email: fetchedUser.email, userId: fetchedUser._id },
+                process.env.love
+            );
+            res.status(200).json({
+                token: token,
+                expiresIn: 3.154e+10,
+                userId: fetchedUser._id
+            });
+        })
+        .catch(err => {
+            return res.status(401).json({
+                message: "Invalid authentication credentials!",
+
+            });
+        });
+    }
     }
 })
 })

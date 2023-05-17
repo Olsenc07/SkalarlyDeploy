@@ -1,11 +1,5 @@
-import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  Validators,
-  AbstractControl,
-  ValidationErrors,
-} from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -21,6 +15,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   emailMatches = false;
   email: FormControl = new FormControl('');
   password: FormControl = new FormControl('', Validators.minLength(8));
+  stayLoggedIn: FormControl = new FormControl('');
 
   isLoading = false;
   public authStatusSub: Subscription;
@@ -83,7 +78,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
         }
       });
     } else {
-      console.log('DeLorean');
+      this.emailMatches = false;
     }
   }
   // matchingValidator(): ValidationErrors | null {
@@ -127,10 +122,16 @@ export class HomePageComponent implements OnInit, OnDestroy {
   //     return null;
   //   }
   // }
-
+  check(loggedin: boolean) {
+    console.log('cool', loggedin);
+  }
   onSubmit(): void {
     this.isLoading = true;
-    this.authService.login(this.email.value, this.password.value);
+    this.authService.login(
+      this.email.value,
+      this.password.value,
+      this.stayLoggedIn.value
+    );
   }
 
   openDialog(): void {

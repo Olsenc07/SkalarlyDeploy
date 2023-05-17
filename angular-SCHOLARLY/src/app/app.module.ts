@@ -40,7 +40,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { routingComponents } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent, ReAuthorizeComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import {
   RetrievePasswordComponent,
@@ -165,6 +165,7 @@ import { ErrorInterceptor } from './error-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
+    ReAuthorizeComponent,
     routingComponents,
     RetrievePasswordComponent,
     ForgotPasswordComponent,

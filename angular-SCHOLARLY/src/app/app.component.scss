@@ -1211,3 +1211,30 @@ color: white;
   text-align: center;
 }
 
+// reauthorize
+.reauthBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+}
+.reauthButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.reauthTitle{
+  display: flex;
+  justify-content: center;
+}
+.reauthTimer{
+  display: flex;
+  justify-content: center;
+
+}
+.reauthLogout{
+  background-color: grey;
+}
+.reauthStayIn{
+  background-color: navy;
+}

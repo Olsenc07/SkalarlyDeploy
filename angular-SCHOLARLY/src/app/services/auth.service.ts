@@ -5,13 +5,15 @@ import { Subject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AppComponent } from '../app.component';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private appComponent: AppComponent
   ) {}
   private isAuthenticated = false;
   private token: string;
@@ -2262,12 +2264,13 @@ export class AuthService {
   }
 
   // Login
-  login(email: string, password: string): any {
+  login(email: string, password: string, stayLoggedIn: boolean): any {
     const authData: AuthData = { email, password };
+    console.log('stayLoggedIn', stayLoggedIn);
     const sub = this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
         'https://www.skalarly.com/api/user/login',
-        authData
+        { authData, stayLoggedIn }
       )
       .subscribe({
         next: (response) => {
@@ -2284,9 +2287,7 @@ export class AuthService {
             this.userId = response.userId;
             this.authStatusListener.next(true);
             const now = new Date();
-            const expirationDate = new Date(
-              now.getTime() + expiresInDuration * 1000
-            );
+            const expirationDate = new Date(now.getTime() + expiresInDuration);
 
             this.saveAuthData(token, expirationDate, this.userId);
             sub.unsubscribe();
@@ -2320,9 +2321,7 @@ export class AuthService {
           this.userId = response.userId;
           this.authStatusListener.next(true);
           const now = new Date();
-          const expirationDate = new Date(
-            now.getTime() + expiresInDuration * 1000
-          );
+          const expirationDate = new Date(now.getTime() + expiresInDuration);
 
           this.saveAuthData(this.token, expirationDate, this.userId);
           sub.unsubscribe();
@@ -2352,25 +2351,28 @@ export class AuthService {
       this.token = authInformation.token;
       this.isAuthenticated = true;
       this.userId = authInformation.userId;
-      this.setAuthTimer(expiresIn / 1000);
+      this.setAuthTimer(expiresIn);
       this.authStatusListener.next(true);
     }
   }
 
   logout(): any {
+    this.router.navigate(['/login']);
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     this.userId = null;
-    clearTimeout(this.tokenTimer);
+    // clearTimeout(this.tokenTimer);
     this.clearAuthData();
-    this.router.navigate(['/login']);
   }
 
   private setAuthTimer(duration: number): any {
     this.tokenTimer = setTimeout(() => {
-      this.logout();
-    }, duration * 1000);
+      // give option to increase duration time
+      // using pop screen reauthorize
+      this.appComponent.openReAuthorize();
+      // this.logout();
+    }, duration);
   }
 
   private saveAuthData(
@@ -2381,6 +2383,41 @@ export class AuthService {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('userId', userId);
+  }
+  // stay loggedin
+  stayLoggedIn(userId: string): any {
+    const sub = this.http
+      .post<{ token: string; expiresIn: number; userId: string }>(
+        'https://www.skalarly.com/api/user/stayLoggedIn',
+        userId
+      )
+      .subscribe({
+        next: (response) => {
+          const token = response.token;
+          this.token = token;
+          if (token) {
+            this.snackBar.open('Thanks for reauthorizing yourself', '✅ ', {
+              duration: 3000,
+            });
+            const expiresInDuration = response.expiresIn;
+            this.setAuthTimer(expiresInDuration);
+            this.isAuthenticated = true;
+            this.userId = response.userId;
+            this.authStatusListener.next(true);
+            const now = new Date();
+            const expirationDate = new Date(now.getTime() + expiresInDuration);
+            this.saveAuthData(token, expirationDate, this.userId);
+            sub.unsubscribe();
+            console.log('love you reauthorized');
+          }
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+          // this.snackBar.open('Failed to login, please try again', 'Will do!!', {
+          //     duration: 4000
+          // });
+        },
+      });
   }
 
   private clearAuthData(): any {

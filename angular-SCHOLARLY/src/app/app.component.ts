@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
-import { NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -138,12 +139,14 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private postsService: PostsService,
+    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
     private commentsService: CommentsService,
     private messageNotificationService: MessageNotificationService,
     private followService: FollowService,
-    public postService: PostService
+    public postService: PostService,
+    public dialog: MatDialog
   ) {
     this.filteredSearch = this.search.valueChanges.pipe(
       map((user: string | null) =>
@@ -250,7 +253,6 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     this.authService.autoAuthUser();
     this.userId = this.authService.getUserId();
-    console.log('user Id sloth', this.userId);
     document
       .getElementsByClassName('search-box__icon')[0]
       ?.addEventListener('click', this.activateSearch);
@@ -263,7 +265,31 @@ export class AppComponent implements OnInit, OnDestroy {
           event.url === '/' || event.url === '/post-page'
       )
     );
+    this.postSub = this.route.title.subscribe((params) => {
+      console.log('msgs title', params);
 
+      // if (onPostPg === true) {
+      //   return (this.postClicked = true);
+      // }
+    });
+    this.msgSub = this.route.url.subscribe((params) => {
+      console.log('msgs url', params);
+      // if (params?.) {
+      //   return (this.commentClicked = true);
+      // }
+    });
+    this.route.params.subscribe((params) => {
+      console.log('msgs params', params);
+      // if (params?.) {
+      //   return (this.commentClicked = true);
+      // }
+    });
+    this.route.fragment.subscribe((params) => {
+      console.log('msgs fragment', params);
+      // if (params?.) {
+      //   return (this.commentClicked = true);
+      // }
+    });
     this.isSearchScreen$ = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       map(
@@ -454,18 +480,6 @@ export class AppComponent implements OnInit, OnDestroy {
         });
     }
 
-    this.postSub = this.isPostScreen$.subscribe((onPostPg) => {
-      if (onPostPg === true) {
-        return (this.postClicked = true);
-      }
-    });
-    this.msgSub = this.isMessagesScreen$.subscribe((onMsgPg) => {
-      console.log('msgs pg', onMsgPg);
-      if (onMsgPg === true) {
-        return (this.commentClicked = true);
-      }
-    });
-
     // update badges! on login!!
     this.searchSub = this.isSearchScreen$.subscribe((onSearchPg) => {
       console.log('happy boy', onSearchPg);
@@ -621,6 +635,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.followSub2.unsubscribe();
     this.postsSub.unsubscribe();
   }
+
   // Checking for now read comments and shared posts
   // Triggered when leaving a nav bar icon is clicked
   updateSettingsIcon() {
@@ -930,5 +945,46 @@ export class AppComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     console.log(this.searchForm.value);
+  }
+  openReAuthorize(): void {
+    this.dialog.open(ReAuthorizeComponent, { disableClose: true });
+  }
+}
+
+@Component({
+  selector: 'app-reauthorize-page',
+  templateUrl: './reauthorize.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class ReAuthorizeComponent implements OnInit {
+  userId: string;
+  timeLeft = 30;
+  elem = document.getElementById('Timer');
+
+  timerId = setInterval(this.countdown, 1000);
+  constructor(
+    private authService: AuthService,
+    public dialogRef: MatDialogRef<ReAuthorizeComponent>
+  ) {}
+  ngOnInit(): void {
+    this.userId = this.authService.getUserId();
+  }
+
+  countdown() {
+    if (this.timeLeft == 0) {
+      clearTimeout(this.timerId);
+      this.authService.logout();
+    } else {
+      this.elem.innerHTML = this.timeLeft + ' seconds remaining';
+      this.timeLeft--;
+    }
+  }
+  logOut() {
+    this.authService.logout();
+    this.dialogRef.close();
+  }
+  reAuthorize() {
+    this.authService.stayLoggedIn(this.userId);
+    this.dialogRef.close();
   }
 }
