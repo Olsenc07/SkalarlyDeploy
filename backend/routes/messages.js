@@ -348,16 +348,16 @@ console.log('hippy pippy send it', filteredFinal)
                 })
             })
                 
-                    console.log('hippy pippy', filteredFinal)
-                    filteredFinal.sort((a,b) => {
+                    console.log('hippy pippy my boi', filteredFinal)
+                   const filteredFinalList = filteredFinal.sort((a,b) => {
                         let newest = new Date(a.time),
                             older =  new Date(b.time);
                             return  newest - older
                     })
-                    console.log('hippy pippy send it', filteredFinal)
+                        console.log('hippy pippy send it', filteredFinalList);
                         res.status(200).json({
                         message: 'Info messages fetched succesfully!',
-                           messages: filteredFinal
+                           messages: filteredFinalList
                         });
                 }
               
@@ -396,7 +396,7 @@ console.log('hippy pippy send it', filteredFinal)
                             } 
                              
                     }
-                    console.log('hippy pippy', msgsWanted)
+                    console.log('hippy pippy both', msgsWanted)
                     msgsWanted.sort((a,b) => {
                         let newest = new Date(a.time),
                             older = new Date(b.time);
