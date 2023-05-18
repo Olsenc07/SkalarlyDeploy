@@ -2266,12 +2266,12 @@ export class AuthService {
 
   // Login
   login(email: string, password: string, stayLoggedIn: boolean): any {
-    const authData: AuthData = { email, password };
+    const authData: AuthData = { email, password, stayLoggedIn };
     console.log('stayLoggedIn', stayLoggedIn);
     const sub = this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
         'https://www.skalarly.com/api/user/login',
-        { authData, stayLoggedIn }
+        authData
       )
       .subscribe({
         next: (response) => {
@@ -2371,6 +2371,7 @@ export class AuthService {
     this.tokenTimer = setTimeout(() => {
       // give option to increase duration time
       // using pop screen reauthorize
+      console.log('timeout');
       this.triggerReAuth.next('reAuth');
       // this.logout();
     }, duration);

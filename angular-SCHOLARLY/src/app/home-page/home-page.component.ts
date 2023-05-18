@@ -15,7 +15,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   emailMatches = false;
   email: FormControl = new FormControl('');
   password: FormControl = new FormControl('', Validators.minLength(8));
-  stayLoggedIn: FormControl = new FormControl('');
+  stayLoggedIn: boolean;
 
   isLoading = false;
   public authStatusSub: Subscription;
@@ -129,7 +129,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.authService.login(
       this.email.value,
       this.password.value,
-      this.stayLoggedIn.value
+      this.stayLoggedIn
     );
   }
 

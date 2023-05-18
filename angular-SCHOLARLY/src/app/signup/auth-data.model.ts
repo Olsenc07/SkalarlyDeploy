@@ -3,6 +3,7 @@ export interface AuthData {
   email?: string;
   username?: string;
   password?: string;
+  stayLoggedIn?: boolean;
   secretCode?: string;
 }
 
