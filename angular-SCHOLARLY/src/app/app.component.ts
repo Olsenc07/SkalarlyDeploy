@@ -265,31 +265,31 @@ export class AppComponent implements OnInit, OnDestroy {
           event.url === '/' || event.url === '/post-page'
       )
     );
-    this.route.title.subscribe((params) => {
-      console.log('msgs title', params);
+    // this.route.title.subscribe((params) => {
+    //   console.log('msgs title', params);
 
-      // if (onPostPg === true) {
-      //   return (this.postClicked = true);
-      // }
-    });
-    this.route.url.subscribe((params) => {
-      console.log('msgs url', params);
-      // if (params?.) {
-      //   return (this.commentClicked = true);
-      // }
-    });
-    this.route.params.subscribe((params) => {
-      console.log('msgs params', params);
-      // if (params?.) {
-      //   return (this.commentClicked = true);
-      // }
-    });
-    this.route.fragment.subscribe((params) => {
-      console.log('msgs fragment', params);
-      // if (params?.) {
-      //   return (this.commentClicked = true);
-      // }
-    });
+    //   // if (onPostPg === true) {
+    //   //   return (this.postClicked = true);
+    //   // }
+    // });
+    // this.route.url.subscribe((params) => {
+    //   console.log('msgs url', params);
+    //   // if (params?.) {
+    //   //   return (this.commentClicked = true);
+    //   // }
+    // });
+    // this.route.params.subscribe((params) => {
+    //   console.log('msgs params', params);
+    //   // if (params?.) {
+    //   //   return (this.commentClicked = true);
+    //   // }
+    // });
+    // this.route.fragment.subscribe((params) => {
+    //   console.log('msgs fragment', params);
+    //   // if (params?.) {
+    //   //   return (this.commentClicked = true);
+    //   // }
+    // });
     this.isSearchScreen$ = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       map(
@@ -960,9 +960,9 @@ export class ReAuthorizeComponent implements OnInit {
 
   timerId = setInterval(this.countdown, 1000);
   constructor(
-    private authService: AuthService
-  ) // public dialogRef: MatDialogRef<ReAuthorizeComponent>
-  {}
+    private authService: AuthService,
+    public dialogRef: MatDialogRef<ReAuthorizeComponent>
+  ) {}
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
   }
@@ -978,10 +978,10 @@ export class ReAuthorizeComponent implements OnInit {
   }
   logOut() {
     this.authService.logout();
-    // this.dialogRef.close();
+    this.dialogRef.close();
   }
   reAuthorize() {
     this.authService.stayLoggedIn(this.userId);
-    // this.dialogRef.close();
+    this.dialogRef.close();
   }
 }
