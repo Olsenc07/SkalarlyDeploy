@@ -75,8 +75,10 @@ import {
   BlockedSkalarsComponent,
 } from './activity-history/history.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
-import { MessagingComponent } from './messaging/messaging.component';
-import { MessageCardComponent } from './messaging/messaging.component';
+import {
+  MessageCardComponent,
+  MessagingComponent,
+} from './messaging/messaging.component';
 
 import {
   MainPagesComponent,
@@ -125,8 +127,10 @@ import {
   CardInfoInstructorReviewComponent,
 } from './reusable-card/reusable-card.component';
 
-import { ReusableCardRequestComponent } from './reusable-card-request/reusable-card-request.component';
-import { ReusableCardRecommendationComponent } from './reusable-card-request/reusable-card-request.component';
+import {
+  ReusableCardRecommendationComponent,
+  ReusableCardRequestComponent,
+} from './reusable-card-request/reusable-card-request.component';
 import {
   ReusableCardMutualComponent,
   ReusableCardUserComponent,
@@ -165,8 +169,8 @@ import { ErrorInterceptor } from './error-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
-    ReAuthorizeComponent,
     routingComponents,
+    ReAuthorizeComponent,
     RetrievePasswordComponent,
     ForgotPasswordComponent,
     ProfileComponent,

@@ -37,6 +37,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log('loading...?');
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe((authStatus) => {
@@ -122,9 +123,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   //     return null;
   //   }
   // }
-  check(loggedin: boolean) {
-    console.log('cool switch', loggedin);
-  }
+
   onSubmit(): void {
     this.isLoading = true;
     this.authService.login(

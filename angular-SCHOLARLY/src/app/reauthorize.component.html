@@ -4,8 +4,8 @@
 </div>
     <div class="reauthTimer" id="Timer"></div>
 
-    <div class="reauthButtons">
-        <button class="reauthLogout" mat-button mat-dialog-close (click)="logOut()">Logout</button>
-        <button class="reauthStayIn" mat-button mat-dialog-close (click)="reAuthorize()">Remain Loged In</button>
+    <div class="reauthButtons" mat-dialog-actions>
+        <button class="reauthLogout" mat-button  (click)="logOut()">Logout</button>
+        <button class="reauthStayIn" mat-button  (click)="reAuthorize()">Remain Loged In</button>
     </div>
 </div>
