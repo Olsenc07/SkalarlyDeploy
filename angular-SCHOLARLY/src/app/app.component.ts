@@ -265,14 +265,14 @@ export class AppComponent implements OnInit, OnDestroy {
           event.url === '/' || event.url === '/post-page'
       )
     );
-    this.postSub = this.route.title.subscribe((params) => {
+    this.route.title.subscribe((params) => {
       console.log('msgs title', params);
 
       // if (onPostPg === true) {
       //   return (this.postClicked = true);
       // }
     });
-    this.msgSub = this.route.url.subscribe((params) => {
+    this.route.url.subscribe((params) => {
       console.log('msgs url', params);
       // if (params?.) {
       //   return (this.commentClicked = true);
@@ -960,9 +960,9 @@ export class ReAuthorizeComponent implements OnInit {
 
   timerId = setInterval(this.countdown, 1000);
   constructor(
-    private authService: AuthService,
-    public dialogRef: MatDialogRef<ReAuthorizeComponent>
-  ) {}
+    private authService: AuthService
+  ) // public dialogRef: MatDialogRef<ReAuthorizeComponent>
+  {}
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
   }
@@ -978,10 +978,10 @@ export class ReAuthorizeComponent implements OnInit {
   }
   logOut() {
     this.authService.logout();
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
   reAuthorize() {
     this.authService.stayLoggedIn(this.userId);
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
 }
