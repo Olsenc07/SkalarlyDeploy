@@ -12,9 +12,8 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private snackBar: MatSnackBar
-  ) // private appComponent: AppComponent
-  {}
+    private snackBar: MatSnackBar // private appComponent: AppComponent
+  ) {}
   private isAuthenticated = false;
   private token: string;
   private tokenTimer: any;
@@ -39,6 +38,8 @@ export class AuthService {
   private potentialNames: Array<string>;
 
   private blocked = new Subject<string>();
+
+  triggerReAuth = new Subject<any>();
   // check if email exists for login
   getEmail(): any {
     return this.emailUpdated.asObservable();
@@ -2370,7 +2371,7 @@ export class AuthService {
     this.tokenTimer = setTimeout(() => {
       // give option to increase duration time
       // using pop screen reauthorize
-      // this.appComponent.openReAuthorize();
+      this.triggerReAuth.next('reAuth');
       // this.logout();
     }, duration);
   }

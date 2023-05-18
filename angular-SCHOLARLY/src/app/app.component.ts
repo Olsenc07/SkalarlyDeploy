@@ -252,6 +252,10 @@ export class AppComponent implements OnInit, OnDestroy {
       myURL.protocol = 'https:';
       location.href = myURL.href;
     }
+    this.authService.triggerReAuth.subscribe((param) => {
+      console.log('subjecy triggered', param);
+      this.dialog.open(ReAuthorizeComponent, { disableClose: true });
+    });
     this.authService.autoAuthUser();
     this.userId = this.authService.getUserId();
     document
@@ -942,10 +946,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   clearSearch(): void {
     this.search.reset();
-  }
-
-  openReAuthorize(): void {
-    this.dialog.open(ReAuthorizeComponent, { disableClose: true });
   }
 }
 
