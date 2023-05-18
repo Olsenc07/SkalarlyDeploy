@@ -962,7 +962,7 @@ export class ReAuthorizeComponent implements OnInit {
   timerId = setInterval(this.countdown, 1000);
   constructor(
     private authService: AuthService,
-    public dialogRef: MatDialogRef<ReAuthorizeComponent>
+    private dialogRef: MatDialogRef<ReAuthorizeComponent>
   ) {}
   ngOnInit(): void {
     console.log('reauth opened');

@@ -5,16 +5,16 @@ import { Subject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { AppComponent } from '../app.component';
+// import { AppComponent } from '../app.component';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private snackBar: MatSnackBar,
-    private appComponent: AppComponent
-  ) {}
+    private snackBar: MatSnackBar
+  ) // private appComponent: AppComponent
+  {}
   private isAuthenticated = false;
   private token: string;
   private tokenTimer: any;
@@ -2370,7 +2370,7 @@ export class AuthService {
     this.tokenTimer = setTimeout(() => {
       // give option to increase duration time
       // using pop screen reauthorize
-      this.appComponent.openReAuthorize();
+      // this.appComponent.openReAuthorize();
       // this.logout();
     }, duration);
   }
