@@ -943,9 +943,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.search.reset();
   }
 
-  onSubmit(): void {
-    console.log(this.searchForm.value);
-  }
   openReAuthorize(): void {
     this.dialog.open(ReAuthorizeComponent, { disableClose: true });
   }

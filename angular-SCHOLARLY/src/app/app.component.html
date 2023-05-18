@@ -16,7 +16,6 @@
 
 <div
   [formGroup]="searchForm"
-  (ngSubmit)="onSubmit()"
   [ngClass]="
     ((isHomeScreen$ | async) ||
       (isVerifiedScreen$ | async) ||
