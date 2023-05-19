@@ -1216,7 +1216,7 @@ color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 2%;
+  
 }
 .reauthButtons{
   display: flex;
@@ -1229,6 +1229,7 @@ color: white;
   display: flex;
   font-family: 'Cormorant Garamond', serif;
   justify-content: center;
+  align-items: baseline;
 }
 .reauthTimer{
   display: flex;
@@ -1236,7 +1237,9 @@ color: white;
   font-size: x-large;
 }
 .reauthHeader{
+  padding: 2% 2% 2%;
   background-color: #002D62;
+  color: white;
   font-family: 'Cormorant Garamond', serif;
 
 }
@@ -1244,6 +1247,7 @@ color: white;
   color: #002D62;
   background-color: white;
   border-color: #002D62;
+  border: solid;
 }
 .reauthStayIn{
   color: white;

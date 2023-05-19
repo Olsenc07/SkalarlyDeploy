@@ -2510,8 +2510,10 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
 
 // stayLoggedIn
 router.post("/stayLoggedIn",  async(reg, res, next) => {
-    console.log('got the jam', reg.body.userId)
-   await User.findOne({ _id: reg.body.userId })
+    console.log('got the jam', reg.body.userId);
+    console.log('got the jam 2', reg.params.userId);
+
+   await User.findOne({ _id: reg.params.userId })
     .then(user => {
             fetchedUser = user;
     const token = jwt.sign(
