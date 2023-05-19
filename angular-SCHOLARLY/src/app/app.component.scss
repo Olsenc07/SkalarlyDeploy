@@ -1216,15 +1216,17 @@ color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Cormorant Garamond', serif;
 }
 .reauthButtons{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  font-family: 'Cormorant Garamond', serif;
+
 }
 .reauthTitle{
   display: flex;
+  font-family: 'Cormorant Garamond', serif;
   justify-content: center;
 }
 .reauthTimer{
@@ -1233,8 +1235,11 @@ color: white;
 
 }
 .reauthLogout{
+  color: white;
+
   background-color: grey;
 }
 .reauthStayIn{
-  background-color: navy;
+  color: white;
+  background-color: 002D62;
 }

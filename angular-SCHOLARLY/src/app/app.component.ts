@@ -957,7 +957,7 @@ export class AppComponent implements OnInit, OnDestroy {
 export class ReAuthorizeComponent implements OnInit {
   userId: string;
   timeLeft = 30;
-  elem = document.getElementById('Timer');
+  elem = document.getElementById('Timer') as HTMLInputElement;
 
   timerId = setInterval(this.countdown, 1000);
   constructor(
@@ -965,7 +965,7 @@ export class ReAuthorizeComponent implements OnInit {
     private dialogRef: MatDialogRef<ReAuthorizeComponent>
   ) {}
   ngOnInit(): void {
-    console.log('reauth opened');
+    console.log('reauth opened', this.elem);
     this.userId = this.authService.getUserId();
   }
 
@@ -974,7 +974,7 @@ export class ReAuthorizeComponent implements OnInit {
       clearTimeout(this.timerId);
       this.authService.logout();
     } else {
-      this.elem.innerHTML = this.timeLeft + ' seconds remaining';
+      this.elem.value = this.timeLeft + ' seconds remaining';
       this.timeLeft--;
     }
   }
