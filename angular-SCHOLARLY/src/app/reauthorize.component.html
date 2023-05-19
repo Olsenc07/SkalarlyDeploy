@@ -1,13 +1,14 @@
 <div class="reauthBox">
-    <i class="fas fa-history reauthIcon"></i>
+    <header class="reauthHeader"> Session Timeout</header>
 <h2 class="reauthTitle" > 
+    <div class="reauthIcon"> <i class="fas fa-history "></i> </div>
     Your session is about to expire
 </h2>
-<div class="reauthText"> You will be logged out in</div>
+
     <div class="reauthTimer" id="Timer"></div>
 
     <div class="reauthButtons" mat-dialog-actions>
         <button class="reauthLogout" mat-raised-button  (click)="logOut()">Logout</button>
-        <button class="reauthStayIn" mat-rasied-button  (click)="reAuthorize()">Remain Loged In</button>
+        <button class="reauthStayIn" mat-rasied-button  (click)="reAuthorize()">Remain Logged In</button>
     </div>
 </div>

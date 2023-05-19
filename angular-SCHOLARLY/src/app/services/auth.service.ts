@@ -2388,6 +2388,7 @@ export class AuthService {
   }
   // stay loggedin
   stayLoggedIn(userId: string): any {
+    console.log('followed by userId', userId);
     const sub = this.http
       .post<{ token: string; expiresIn: number; userId: string }>(
         'https://www.skalarly.com/api/user/stayLoggedIn',

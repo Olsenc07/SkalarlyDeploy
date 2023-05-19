@@ -2510,6 +2510,7 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
 
 // stayLoggedIn
 router.post("/stayLoggedIn",  async(reg, res, next) => {
+    console.log('got the jam', reg.body.userId)
    await User.findOne({ _id: reg.body.userId })
     .then(user => {
             fetchedUser = user;
@@ -2524,7 +2525,7 @@ router.post("/stayLoggedIn",  async(reg, res, next) => {
         userId: fetchedUser._id
     });
 })  .catch(err => {
-    return res.status(401).json({
+     res.status(401).json({
         message: "Invalid authentication credentials!",
 
     });
