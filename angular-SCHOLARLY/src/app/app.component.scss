@@ -1228,13 +1228,16 @@ color: white;
 .reauthTitle{
   display: flex;
   font-family: 'Cormorant Garamond', serif;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: baseline;
+  padding-top: 2%;
 }
 .reauthTimer{
   display: flex;
   justify-content: center;
   font-size: x-large;
+  padding: 2%;
+  font-family: 'Cormorant Garamond', serif;
 }
 .reauthHeader{
   padding: 2% 2% 2%;

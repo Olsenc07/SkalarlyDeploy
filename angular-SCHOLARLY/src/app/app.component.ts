@@ -243,7 +243,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('chase olsen');
     const url = new URL(window.location.href);
     const notSecure = url.protocol;
     if (notSecure === 'http:') {
@@ -956,6 +955,7 @@ export class AppComponent implements OnInit, OnDestroy {
 })
 export class ReAuthorizeComponent implements OnInit {
   userId: string;
+  timeLeft = 30;
 
   timerId = setInterval(this.countdown, 1000);
   constructor(
@@ -968,14 +968,13 @@ export class ReAuthorizeComponent implements OnInit {
   }
 
   countdown() {
-    var timeLeft = 30;
     const elem = document.getElementById('Timer') as HTMLInputElement;
-    if (timeLeft == 0) {
+    if (this.timeLeft == 0) {
       clearTimeout(this.timerId);
       this.authService.logout();
     } else {
-      elem.innerHTML = timeLeft + ' seconds remaining';
-      timeLeft--;
+      elem.innerHTML = this.timeLeft + ' seconds remaining';
+      this.timeLeft--;
     }
   }
   logOut() {
