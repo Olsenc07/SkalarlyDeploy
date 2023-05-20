@@ -2515,7 +2515,7 @@ router.post("/stayLoggedIn",  async(reg, res, next) => {
     console.log('got the jam 2', reg.query.UserId);
 
 
-   await User.findOne({ _id: reg.query.userId })
+   await User.findOne({ _id: reg.query.UserId })
     .then(user => {
             fetchedUser = user;
     const token = jwt.sign(

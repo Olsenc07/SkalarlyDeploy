@@ -56,8 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
   newsharedCheck = [];
   newComment = [];
   follower: Follow[] = [];
-  postClicked = false;
-  commentClicked = false;
+
   userId: string;
   Hashtag = false;
   userIsAuthenticated = false;
@@ -711,21 +710,7 @@ export class AppComponent implements OnInit, OnDestroy {
   skalarSearch(): any {
     this.Hashtag = false;
   }
-  // Post icon css changes
-  postClickedBtn(): boolean {
-    return (this.postClicked = true);
-  }
-  postUnClickedBtn(): boolean {
-    return (this.postClicked = false);
-  }
 
-  // Message icon css changes
-  messagesClickedBtn(): boolean {
-    return (this.commentClicked = true);
-  }
-  messagesUnClickedBtn(): boolean {
-    return (this.commentClicked = false);
-  }
   // To post page with users id
   navigateToPost(): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -931,9 +916,9 @@ export class AppComponent implements OnInit, OnDestroy {
 })
 export class ReAuthorizeComponent implements OnInit {
   userId: string;
-  timeLeft = 30;
 
-  timerId = setInterval(this.countdown, 1000);
+  // timerId = setInterval(this.countdown, 1000);
+
   constructor(
     private authService: AuthService,
     private dialogRef: MatDialogRef<ReAuthorizeComponent>
@@ -941,13 +926,16 @@ export class ReAuthorizeComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     console.log('where you at', this.userId);
+    this.countdown();
+    console.log('countdown');
   }
 
   countdown() {
-    const elem = (document.getElementById('Timer').innerHTML =
-      --this.timeLeft + ' seconds remaining');
-    if (this.timeLeft == 0) {
-      clearTimeout(this.timerId);
+    // var timeLeft = 30;
+    for (var cc = 30; cc > 0; cc--) {
+      document.getElementById('Timer').innerHTML = cc + ' seconds remaining';
+    }
+    if (cc == 0) {
       this.authService.logout();
     }
   }
