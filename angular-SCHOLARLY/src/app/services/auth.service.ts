@@ -2340,6 +2340,43 @@ export class AuthService {
         },
       });
   }
+  // stay loggedin
+  stayLoggedIn(UserId: string): any {
+    const Id = { UserId };
+    console.log('followed by userId', Id);
+    const sub = this.http
+      .post<{ token: string; expiresIn: number; userId: string }>(
+        'https://www.skalarly.com/api/user/stayLoggedIn',
+        Id
+      )
+      .subscribe({
+        next: (response) => {
+          const token = response.token;
+          this.token = token;
+          if (token) {
+            this.snackBar.open('Thanks for reauthorizing yourself', '✅ ', {
+              duration: 3000,
+            });
+            const expiresInDuration = response.expiresIn;
+            this.setAuthTimer(expiresInDuration);
+            this.isAuthenticated = true;
+            this.userId = response.userId;
+            this.authStatusListener.next(true);
+            const now = new Date();
+            const expirationDate = new Date(now.getTime() + expiresInDuration);
+            this.saveAuthData(token, expirationDate, this.userId);
+            sub.unsubscribe();
+            console.log('love you reauthorized');
+          }
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+          // this.snackBar.open('Failed to login, please try again', 'Will do!!', {
+          //     duration: 4000
+          // });
+        },
+      });
+  }
 
   autoAuthUser(): any {
     const authInformation = this.getAuthData();
@@ -2385,43 +2422,6 @@ export class AuthService {
     localStorage.setItem('token', token);
     localStorage.setItem('expiration', expirationDate.toISOString());
     localStorage.setItem('userId', userId);
-  }
-  // stay loggedin
-  stayLoggedIn(UserId: string): any {
-    console.log('followed by userId', UserId);
-    const Id = { UserId };
-    const sub = this.http
-      .post<{ token: string; expiresIn: number; userId: string }>(
-        'https://www.skalarly.com/api/user/stayLoggedIn',
-        Id
-      )
-      .subscribe({
-        next: (response) => {
-          const token = response.token;
-          this.token = token;
-          if (token) {
-            this.snackBar.open('Thanks for reauthorizing yourself', '✅ ', {
-              duration: 3000,
-            });
-            const expiresInDuration = response.expiresIn;
-            this.setAuthTimer(expiresInDuration);
-            this.isAuthenticated = true;
-            this.userId = response.userId;
-            this.authStatusListener.next(true);
-            const now = new Date();
-            const expirationDate = new Date(now.getTime() + expiresInDuration);
-            this.saveAuthData(token, expirationDate, this.userId);
-            sub.unsubscribe();
-            console.log('love you reauthorized');
-          }
-        },
-        error: (error) => {
-          this.authStatusListener.next(false);
-          // this.snackBar.open('Failed to login, please try again', 'Will do!!', {
-          //     duration: 4000
-          // });
-        },
-      });
   }
 
   private clearAuthData(): any {

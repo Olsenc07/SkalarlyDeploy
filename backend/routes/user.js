@@ -2511,10 +2511,8 @@ router.post("/login1", verifyEmailV, async(req, res, next) => {
 // stayLoggedIn
 router.post("/stayLoggedIn",  async(reg, res, next) => {
     console.log('got the jam', reg.body.Id);
-    console.log('got the jam 2', reg.params.UserId);
-    console.log('got the jam 2', reg.query.UserId);
-
-
+    console.log('got the jam 2', reg.params.Id);
+    console.log('got the jam 2', reg.query.Id);
    await User.findOne({ _id: reg.body.Id })
     .then(user => {
             fetchedUser = user;

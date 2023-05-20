@@ -937,6 +937,7 @@ export class ReAuthorizeComponent implements OnInit {
       setTimeout(this.makeIteration, 1000); // 1 second waiting
     } else {
       this.authService.logout();
+      this.dialogRef.close();
     }
     this.timeLeft -= 1;
   };
