@@ -11,8 +11,10 @@ const UserInfo = require('/app/backend/models/userInfo');
 const showCase = require('/app/backend/models/showCases');
 const Post = require('/app/backend/models/post');
 const Comment = require('/app/backend/models/comment');
-const Msg = require('/app/backend/models/messages')
-const Follow = require('/app/backend/models/follow')
+const Msg = require('/app/backend/models/messages');
+const CourseCompleted = require('/app/backend/models/courses-completed');
+const CoursePursuing = require('/app/backend/models/courses-pursuing');
+const Follow = require('/app/backend/models/follow');
 const BlockSkalar = require('/app/backend/models/block-skalar');
 const { trusted } = require('mongoose');
 
@@ -563,6 +565,37 @@ router.post("/info",
             sport: req.body.sport,
             club: req.body.club,
             // pronouns: req.body.pronouns,
+            Followers: 0,
+            Following: 0,
+            ProfilePicPath: result.secure_url,
+            cloudinary_id: result.public_id,
+            Creator: req.userData.userId
+        });
+        info.save().then(result => {
+            res.status(201).json({
+                message: 'Yay a user added info',
+                post: {
+                    id: result._id,
+                    ...result
+                }
+            });
+        })
+            .catch(err => {
+                res.status(500).json({
+                    message: 'Unable to add information'
+                });
+            });
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Getting info failed!'
+        });
+    })
+    });
+
+    // Adding courses complete
+router.post("/coursesCompleted", 
+    (req, res) => {
+            var info = new CourseCompleted({
             CodeCompleted: req.body.CodeCompleted,
             CodeCompleted2: req.body.CodeCompleted2,
             CodeCompleted3: req.body.CodeCompleted3,
@@ -604,7 +637,32 @@ router.post("/info",
             CodeCompleted39: req.body.CodeCompleted39,
             CodeCompleted40: req.body.CodeCompleted40,
             CodeCompletedX: req.body.CodeCompletedX,
-          
+            Creator: req.userData.userId
+        });
+        info.save().then(result => {
+            res.status(201).json({
+                message: 'Yay a user added courses',
+                post: {
+                    id: result._id,
+                    ...result
+                }
+            });
+        })
+            .catch(err => {
+                res.status(500).json({
+                    message: 'Unable to add courses completed'
+                });
+            });
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Getting courses completed failed!'
+        });
+    })
+
+    // adding courses pursuing
+router.post("/coursesPursuing", 
+    (req, res) => {
+            var info = new CoursePursuing({      
             CodePursuing: req.body.CodePursuing,
             CodePursuing2: req.body.CodePursuing2,
             CodePursuing3: req.body.CodePursuing3,
@@ -619,15 +677,11 @@ router.post("/info",
             CodePursuing12: req.body.CodePursuing12,
             CodePursuing13: req.body.CodePursuing13,
             CodePursuing14: req.body.CodePursuing14,
-            Followers: 0,
-            Following: 0,
-            ProfilePicPath: result.secure_url,
-            cloudinary_id: result.public_id,
             Creator: req.userData.userId
         });
         info.save().then(result => {
             res.status(201).json({
-                message: 'Yay a user added info',
+                message: 'Yay a user added courses pursuing',
                 post: {
                     id: result._id,
                     ...result
@@ -636,15 +690,16 @@ router.post("/info",
         })
             .catch(err => {
                 res.status(500).json({
-                    message: 'Unable to add information'
+                    message: 'Unable to add courses pursuing information'
                 });
             });
     }).catch(error => {
         res.status(500).json({
-            message: 'Getting info failed!'
+            message: 'Getting courses pursuing failed!'
         });
-    })
     });
+
+
         // edit Name
 router.patch("/infoName", checkAuth,
 async(req, res, next) => {
@@ -1644,27 +1699,27 @@ async(req, res, next) => {
                     });
                 })
             }})
-router.put("/infoEdGender", checkAuth,
-async(req, res, next) => {              
-            if(req.body.gender){
-                await UserInfo.updateOne({Creator:req.body.userId },{gender: req.body.gender})
-                .then(update => {
-                    res.status(200).json({
-                        message: 'Clean update',
-                        post: update
-                    });
-                })}})
-router.put("/infoEdPronoun", checkAuth,
-async(req, res, next) => {   
+// router.put("/infoEdGender", checkAuth,
+// async(req, res, next) => {              
+//             if(req.body.gender){
+//                 await UserInfo.updateOne({Creator:req.body.userId },{gender: req.body.gender})
+//                 .then(update => {
+//                     res.status(200).json({
+//                         message: 'Clean update',
+//                         post: update
+//                     });
+//                 })}})
+// router.put("/infoEdPronoun", checkAuth,
+// async(req, res, next) => {   
 
-             if(req.body.pronoun){
-                await UserInfo.updateOne({Creator:req.body.userId },{pronouns: req.body.pronoun})
-                .then(update => {
-                    res.status(200).json({
-                        message: 'Clean update',
-                        post: update
-                    });
-                })}})
+//              if(req.body.pronoun){
+//                 await UserInfo.updateOne({Creator:req.body.userId },{pronouns: req.body.pronoun})
+//                 .then(update => {
+//                     res.status(200).json({
+//                         message: 'Clean update',
+//                         post: update
+//                     });
+//                 })}})
 router.put("/infoEdMajor", checkAuth,
 async(req, res, next) => {        
             if(req.body.major){
@@ -2341,9 +2396,41 @@ await User.findById({_id: userId})
 
 
 
-// Prfoile
+// Profile
 router.get("/infoProfile", async(req, res) => {
     await UserInfo.findOne({Creator: req.query.userId})
+        // .select('-password') if i was fetching user info, dont want password passed on front end
+        .then(documents => {
+            res.status(200).json({
+                message: 'Users fetched succesfully!',
+                infos: documents
+            });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching users failed!'
+            });
+        });
+});
+// Profile courses compl
+router.get("/infoProfileCoursesC", async(req, res) => {
+    await CourseCompleted.findOne({Creator: req.query.userId})
+        // .select('-password') if i was fetching user info, dont want password passed on front end
+        .then(documents => {
+            res.status(200).json({
+                message: 'Users fetched succesfully!',
+                infos: documents
+            });
+        })
+        .catch(error => {
+            res.status(500).json({
+                message: 'Fetching users failed!'
+            });
+        });
+});
+// Profile courses purs
+router.get("/infoProfileCoursesP", async(req, res) => {
+    await CoursePursuing.findOne({Creator: req.query.userId})
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
             res.status(200).json({

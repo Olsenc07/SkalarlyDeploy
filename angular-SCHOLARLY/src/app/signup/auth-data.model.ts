@@ -20,6 +20,13 @@ export interface AuthDataInfo {
   sport?: string;
   club?: string;
   pronouns?: string;
+  Followers?: number;
+  Following?: number;
+  profilePic?: File;
+  ProfilePicPath?: string;
+}
+
+export interface AuthDataInfoCoursesC {
   CodeCompleted?: string;
   CodeCompleted2?: string;
   CodeCompleted3?: string;
@@ -61,6 +68,10 @@ export interface AuthDataInfo {
   CodeCompleted39?: string;
   CodeCompleted40?: string;
   CodeCompletedX?: string;
+  Creator?: string;
+}
+
+export interface AuthDataInfoCoursesP {
   CodePursuing?: string;
   CodePursuing2?: string;
   CodePursuing3?: string;
@@ -75,8 +86,5 @@ export interface AuthDataInfo {
   CodePursuing12?: string;
   CodePursuing13?: string;
   CodePursuing14?: string;
-  Followers?: number;
-  Following?: number;
-  profilePic?: File;
-  ProfilePicPath?: string;
+  Creator?: string;
 }

@@ -691,7 +691,7 @@ export class SignupComponent implements OnInit, OnDestroy {
         // Added the if else
         if (isAuthenticated) {
           console.log(this.userIsAuthenticated);
-          this.snackBar.open('Welcome to the community', 'Thanks!', {
+          this.snackBar.open('Welcome to the community', '', {
             duration: 3000,
           });
           this.selectedIndex = this.selectedIndex === 2 ? 3 : 2;
@@ -730,6 +730,9 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.sport.value,
       this.club.value,
       // this.pronouns.value,
+      this.form.get('profilePic').value
+    );
+    this.authService.createUserCoursesC(
       this.CodeCompleted.value,
       this.CodeCompleted2.value,
       this.CodeCompleted3.value,
@@ -770,8 +773,9 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.CodeCompleted38.value,
       this.CodeCompleted39.value,
       this.CodeCompleted40.value,
-      this.CodeCompletedX.value,
-
+      this.CodeCompletedX.value
+    );
+    this.authService.createUserCoursesP(
       this.CodePursuing.value,
       this.CodePursuing2.value,
       this.CodePursuing3.value,
@@ -785,10 +789,8 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.CodePursuing11.value,
       this.CodePursuing12.value,
       this.CodePursuing13.value,
-      this.CodePursuing14.value,
-      this.form.get('profilePic').value
+      this.CodePursuing14.value
     );
-    console.log('unicorns exist 3', this.form.get('profilePic').value);
   }
 
   onSubmitShowCase(): any {

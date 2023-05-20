@@ -5,7 +5,11 @@ import { ShowCase } from '../services/showCase.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
-import { AuthDataInfo } from '../signup/auth-data.model';
+import {
+  AuthDataInfo,
+  AuthDataInfoCoursesC,
+  AuthDataInfoCoursesP,
+} from '../signup/auth-data.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FollowService } from '../services/follow.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -66,7 +70,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
   private offNotifSub: Subscription;
   private commentSub: Subscription;
   info: AuthDataInfo = {};
+  infoCoursesC: AuthDataInfoCoursesC = {};
+  infoCoursesP: AuthDataInfoCoursesP = {};
   private infosSub: Subscription;
+  private infosSubC: Subscription;
+  private infosSubP: Subscription;
 
   private showCases: ShowCase[] = [];
 
@@ -108,6 +116,14 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): any {
     this.authService.getAuthData();
     this.isLoading = true;
+    // Validation
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated: boolean) => {
+        this.userIsAuthenticated = isAuthenticated;
+        // Can add *ngIf="userIsAuthenticated" to hide items
+      });
     // Info
     this.userId = this.authService.getUserId();
     this.postsService.checkNotification(this.userId);
@@ -120,6 +136,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
           console.log('During the midday', this.notif);
         }
       });
+    // basic info
     this.authService.getInfoProfile(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
@@ -129,14 +146,27 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         // do this for them all!
       });
-    // Validation
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authListenerSubs = this.authService
-      .getAuthStatusListener()
-      .subscribe((isAuthenticated: boolean) => {
-        this.userIsAuthenticated = isAuthenticated;
-        // Can add *ngIf="userIsAuthenticated" to hide items
+    // courses completed
+    this.authService.getInfoProfileCoursesC(this.userId);
+    this.infosSubC = this.authService
+      .getInfoUpdateListenerCoursesC()
+      .subscribe((infosC: any) => {
+        this.infoCoursesC = infosC;
+        console.log('boobs C');
+        this.isLoading = false;
+        // do this for them all!
       });
+    // courses pursuing
+    this.authService.getInfoProfileCoursesP(this.userId);
+    this.infosSubP = this.authService
+      .getInfoUpdateListenerCoursesP()
+      .subscribe((infosP: any) => {
+        this.infoCoursesP = infosP;
+        console.log('boobs p');
+        this.isLoading = false;
+        // do this for them all!
+      });
+
     this.showCaseService.getShowCasePersonal(this.userId, 0);
     this.postsSub = this.showCaseService
       .getshowCaseUpdateListener()
@@ -185,6 +215,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.notifsListenerSubs.unsubscribe();
     this.infosSub.unsubscribe();
+    this.infosSubC.unsubscribe();
+    this.infosSubP.unsubscribe();
     this.authListenerSubs.unsubscribe();
     this.postsSub.unsubscribe();
     // this.followSub.unsubscribe();

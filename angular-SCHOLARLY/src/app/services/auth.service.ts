@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthData, AuthDataInfo } from '../signup/auth-data.model';
+import {
+  AuthData,
+  AuthDataInfo,
+  AuthDataInfoCoursesC,
+  AuthDataInfoCoursesP,
+} from '../signup/auth-data.model';
 import { Subject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -22,8 +27,17 @@ export class AuthService {
 
   private authStatusListener = new ReplaySubject<boolean>();
 
+  // basic info
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new Subject<AuthDataInfo[]>();
+
+  // courses c
+  private infosC: AuthDataInfoCoursesC[] = [];
+  private infosUpdatedCoursesC = new Subject<AuthDataInfoCoursesC[]>();
+
+  // courses p
+  private infosP: AuthDataInfoCoursesP[] = [];
+  private infosUpdatedCoursesP = new Subject<AuthDataInfoCoursesP[]>();
 
   private emailUpdated = new Subject();
   private emailId: boolean;
@@ -76,9 +90,14 @@ export class AuthService {
     return this.authStatusListener.asObservable();
   }
 
-  // problem here so unsubscrbei somehow
   getInfoUpdateListener(): any {
     return this.infosUpdated.asObservable();
+  }
+  getInfoUpdateListenerCoursesC(): any {
+    return this.infosUpdatedCoursesC.asObservable();
+  }
+  getInfoUpdateListenerCoursesP(): any {
+    return this.infosUpdatedCoursesP.asObservable();
   }
 
   checkBlocked(userId: string, id: string): any {
@@ -217,6 +236,60 @@ export class AuthService {
     sport: string,
     club: string,
     // pronouns: string,
+    profilePic: File,
+    Creator?: string
+  ): any {
+    const userData = new FormData();
+    userData.append('username', username);
+    userData.append('name', name);
+    userData.append('bio', bio);
+    // userData.append('gender', gender);
+    userData.append('birthday', birthday);
+    userData.append('major', major);
+    userData.append('minor', minor);
+    userData.append('sport', sport);
+    userData.append('club', club);
+    // userData.append('pronouns', pronouns);
+    userData.append('profilePic', profilePic);
+    userData.append('Creator', Creator);
+    const sub = this.http
+      .post<{ message: string; post: AuthDataInfo }>(
+        'https://www.skalarly.com/api/user/info',
+        userData
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfo = {
+            id: responseData.post.id,
+            username,
+            name,
+            bio,
+            // gender,
+            birthday,
+            major,
+            minor,
+            sport,
+            club,
+            // pronouns,
+            profilePic,
+            ProfilePicPath: responseData.post.ProfilePicPath,
+            Creator,
+          };
+          this.router.navigate(['/search']);
+          this.infos.push(post);
+          this.infosUpdated.next([...this.infos]);
+          // this.snackBar.open('Sign in with your new account', 'Will do!!');
+          sub.unsubscribe();
+          console.log('love you 7');
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+
+  // create courses completed
+  createUserCoursesC(
     CodeCompleted: string,
     CodeCompleted2: string,
     CodeCompleted3: string,
@@ -258,35 +331,9 @@ export class AuthService {
     CodeCompleted39: string,
     CodeCompleted40: string,
     CodeCompletedX: string,
-
-    CodePursuing: string,
-    CodePursuing2: string,
-    CodePursuing3: string,
-    CodePursuing4: string,
-    CodePursuing5: string,
-    CodePursuing6: string,
-    CodePursuing7: string,
-    CodePursuing8: string,
-    CodePursuing9: string,
-    CodePursuing10: string,
-    CodePursuing11: string,
-    CodePursuing12: string,
-    CodePursuing13: string,
-    CodePursuing14: string,
-    profilePic: File,
     Creator?: string
   ): any {
     const userData = new FormData();
-    userData.append('username', username);
-    userData.append('name', name);
-    userData.append('bio', bio);
-    // userData.append('gender', gender);
-    userData.append('birthday', birthday);
-    userData.append('major', major);
-    userData.append('minor', minor);
-    userData.append('sport', sport);
-    userData.append('club', club);
-    // userData.append('pronouns', pronouns);
     userData.append('CodeCompleted', CodeCompleted);
     userData.append('CodeCompleted2', CodeCompleted2);
     userData.append('CodeCompleted3', CodeCompleted3);
@@ -328,42 +375,15 @@ export class AuthService {
     userData.append('CodeCompleted39', CodeCompleted39);
     userData.append('CodeCompleted40', CodeCompleted40);
     userData.append('CodeCompletedX', CodeCompleted40);
-
-    userData.append('CodePursuing', CodePursuing);
-    userData.append('CodePursuing2', CodePursuing2);
-    userData.append('CodePursuing3', CodePursuing3);
-    userData.append('CodePursuing4', CodePursuing4);
-    userData.append('CodePursuing5', CodePursuing5);
-    userData.append('CodePursuing6', CodePursuing6);
-    userData.append('CodePursuing7', CodePursuing7);
-    userData.append('CodePursuing8', CodePursuing8);
-    userData.append('CodePursuing9', CodePursuing9);
-    userData.append('CodePursuing10', CodePursuing10);
-    userData.append('CodePursuing11', CodePursuing11);
-    userData.append('CodePursuing12', CodePursuing12);
-    userData.append('CodePursuing13', CodePursuing13);
-    userData.append('CodePursuing14', CodePursuing14);
-    userData.append('profilePic', profilePic);
     userData.append('Creator', Creator);
     const sub = this.http
-      .post<{ message: string; post: AuthDataInfo }>(
-        'https://www.skalarly.com/api/user/info',
+      .post<{ message: string; post: AuthDataInfoCoursesC }>(
+        'https://www.skalarly.com/api/user/coursesCompleted',
         userData
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            username,
-            name,
-            bio,
-            // gender,
-            birthday,
-            major,
-            minor,
-            sport,
-            club,
-            // pronouns,
+          const post: AuthDataInfoCoursesC = {
             CodeCompleted,
             CodeCompleted2,
             CodeCompleted3,
@@ -405,7 +425,60 @@ export class AuthService {
             CodeCompleted39,
             CodeCompleted40,
             CodeCompletedX,
+            Creator,
+          };
+          sub.unsubscribe();
+          console.log('love you 7');
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
 
+  // create courses pursuing
+  // Create userinfo
+  createUserCoursesP(
+    CodePursuing: string,
+    CodePursuing2: string,
+    CodePursuing3: string,
+    CodePursuing4: string,
+    CodePursuing5: string,
+    CodePursuing6: string,
+    CodePursuing7: string,
+    CodePursuing8: string,
+    CodePursuing9: string,
+    CodePursuing10: string,
+    CodePursuing11: string,
+    CodePursuing12: string,
+    CodePursuing13: string,
+    CodePursuing14: string,
+    Creator?: string
+  ): any {
+    const userData = new FormData();
+    userData.append('CodePursuing', CodePursuing);
+    userData.append('CodePursuing2', CodePursuing2);
+    userData.append('CodePursuing3', CodePursuing3);
+    userData.append('CodePursuing4', CodePursuing4);
+    userData.append('CodePursuing5', CodePursuing5);
+    userData.append('CodePursuing6', CodePursuing6);
+    userData.append('CodePursuing7', CodePursuing7);
+    userData.append('CodePursuing8', CodePursuing8);
+    userData.append('CodePursuing9', CodePursuing9);
+    userData.append('CodePursuing10', CodePursuing10);
+    userData.append('CodePursuing11', CodePursuing11);
+    userData.append('CodePursuing12', CodePursuing12);
+    userData.append('CodePursuing13', CodePursuing13);
+    userData.append('CodePursuing14', CodePursuing14);
+    userData.append('Creator', Creator);
+    const sub = this.http
+      .post<{ message: string; post: AuthDataInfoCoursesP }>(
+        'https://www.skalarly.com/api/user/coursesPursuing',
+        userData
+      )
+      .subscribe({
+        next: (responseData) => {
+          const post: AuthDataInfoCoursesP = {
             CodePursuing,
             CodePursuing2,
             CodePursuing3,
@@ -420,16 +493,10 @@ export class AuthService {
             CodePursuing12,
             CodePursuing13,
             CodePursuing14,
-            profilePic,
-            ProfilePicPath: responseData.post.ProfilePicPath,
             Creator,
           };
-          this.router.navigate(['/search']);
-          this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
-          // this.snackBar.open('Sign in with your new account', 'Will do!!');
           sub.unsubscribe();
-          console.log('love you 7');
+          console.log('love you 707');
         },
         error: (error) => {
           this.authStatusListener.next(false);
@@ -605,48 +672,48 @@ export class AuthService {
         },
       });
   }
-  editUserInfoPronoun(userId: string, pronoun: string): any {
-    const sub = this.http
-      .put<{ message: string; post: any }>(
-        'https://www.skalarly.com/api/user/infoEdPronoun',
-        {
-          pronoun,
-          userId,
-        }
-      )
-      .subscribe({
-        next: (responseData) => {
-          sub.unsubscribe();
-          console.log('love you 15');
-        },
-        error: (error) => {
-          this.authStatusListener.next(false);
-        },
-      });
-  }
-  editUserInfoGender(userId: string, gender: string): any {
-    const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
-        'https://www.skalarly.com/api/user/infoEdGender',
-        {
-          gender,
-          userId,
-        }
-      )
-      .subscribe({
-        next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            gender,
-          };
-          sub.unsubscribe();
-          console.log('love you 16');
-        },
-        error: (error) => {
-          this.authStatusListener.next(false);
-        },
-      });
-  }
+  // editUserInfoPronoun(userId: string, pronoun: string): any {
+  //   const sub = this.http
+  //     .put<{ message: string; post: any }>(
+  //       'https://www.skalarly.com/api/user/infoEdPronoun',
+  //       {
+  //         pronoun,
+  //         userId,
+  //       }
+  //     )
+  //     .subscribe({
+  //       next: (responseData) => {
+  //         sub.unsubscribe();
+  //         console.log('love you 15');
+  //       },
+  //       error: (error) => {
+  //         this.authStatusListener.next(false);
+  //       },
+  //     });
+  // }
+  // editUserInfoGender(userId: string, gender: string): any {
+  //   const sub = this.http
+  //     .put<{ message: string; post: AuthDataInfo }>(
+  //       'https://www.skalarly.com/api/user/infoEdGender',
+  //       {
+  //         gender,
+  //         userId,
+  //       }
+  //     )
+  //     .subscribe({
+  //       next: (responseData) => {
+  //         const post: AuthDataInfo = {
+  //           id: responseData.post.id,
+  //           gender,
+  //         };
+  //         sub.unsubscribe();
+  //         console.log('love you 16');
+  //       },
+  //       error: (error) => {
+  //         this.authStatusListener.next(false);
+  //       },
+  //     });
+  // }
   editUserInfoBio(userId: string, bio: string): any {
     const sub = this.http
       .put<{ message: string; post: AuthDataInfo }>(
@@ -2048,78 +2115,6 @@ export class AuthService {
       .pipe(
         map((infosData) => {
           return infosData.infos;
-          // .map((info) => {
-          //   return {
-          //     id: info._id,
-          //     username: info.username,
-          //     name: info.name,
-          //     bio: info.bio,
-          //     gender: info.gender,
-          //     birthday: info.birthday,
-          //     major: info.major,
-          //     minor: info.minor,
-          //     sport: info.sport,
-          //     club: info.club,
-          //     pronouns: info.pronouns,
-          //     CodeCompleted: info.CodeCompleted,
-          //     CodeCompleted2: info.CodeCompleted2,
-          //     CodeCompleted3: info.CodeCompleted3,
-          //     CodeCompleted4: info.CodeCompleted4,
-          //     CodeCompleted5: info.CodeCompleted5,
-          //     CodeCompleted6: info.CodeCompleted6,
-          //     CodeCompleted7: info.CodeCompleted7,
-          //     CodeCompleted8: info.CodeCompleted8,
-          //     CodeCompleted9: info.CodeCompleted9,
-          //     CodeCompleted10: info.CodeCompleted10,
-          //     CodeCompleted11: info.CodeCompleted11,
-          //     CodeCompleted12: info.CodeCompleted12,
-          //     CodeCompleted13: info.CodeCompleted13,
-          //     CodeCompleted14: info.CodeCompleted14,
-          //     CodeCompleted15: info.CodeCompleted15,
-          //     CodeCompleted16: info.CodeCompleted16,
-          //     CodeCompleted17: info.CodeCompleted17,
-          //     CodeCompleted18: info.CodeCompleted18,
-          //     CodeCompleted19: info.CodeCompleted19,
-          //     CodeCompleted20: info.CodeCompleted20,
-          //     CodeCompleted21: info.CodeCompleted21,
-          //     CodeCompleted22: info.CodeCompleted22,
-          //     CodeCompleted23: info.CodeCompleted23,
-          //     CodeCompleted24: info.CodeCompleted24,
-          //     CodeCompleted25: info.CodeCompleted25,
-          //     CodeCompleted26: info.CodeCompleted26,
-          //     CodeCompleted27: info.CodeCompleted27,
-          //     CodeCompleted28: info.CodeCompleted28,
-          //     CodeCompleted29: info.CodeCompleted29,
-          //     CodeCompleted30: info.CodeCompleted30,
-          //     CodeCompleted31: info.CodeCompleted31,
-          //     CodeCompleted32: info.CodeCompleted32,
-          //     CodeCompleted33: info.CodeCompleted33,
-          //     CodeCompleted34: info.CodeCompleted34,
-          //     CodeCompleted35: info.CodeCompleted35,
-          //     CodeCompleted36: info.CodeCompleted36,
-          //     CodeCompleted37: info.CodeCompleted37,
-          //     CodeCompleted38: info.CodeCompleted38,
-          //     CodeCompleted39: info.CodeCompleted39,
-          //     CodeCompleted40: info.CodeCompleted40,
-          //     CodeCompletedX: info.CodeCompletedX,
-          //     CodePursuing: info.CodePursuing,
-          //     CodePursuing2: info.CodePursuing2,
-          //     CodePursuing3: info.CodePursuing3,
-          //     CodePursuing4: info.CodePursuing4,
-          //     CodePursuing5: info.CodePursuing5,
-          //     CodePursuing6: info.CodePursuing6,
-          //     CodePursuing7: info.CodePursuing7,
-          //     CodePursuing8: info.CodePursuing8,
-          //     CodePursuing9: info.CodePursuing9,
-          //     CodePursuing10: info.CodePursuing10,
-          //     CodePursuing11: info.CodePursuing11,
-          //     CodePursuing12: info.CodePursuing12,
-          //     CodePursuing13: info.CodePursuing13,
-          //     CodePursuing14: info.CodePursuing14,
-          //     ProfilePicPath: info.ProfilePicPath,
-          //     Creator: info.Creator,
-          //   };
-          // });
         })
       )
       .subscribe((transformedInfos) => {
@@ -2127,6 +2122,44 @@ export class AuthService {
         this.infosUpdated.next(this.infos);
         sub.unsubscribe();
         console.log('love you 74');
+      });
+  }
+  // Your info profile courses completeted
+  getInfoProfileCoursesC(userId: string): any {
+    const sub = this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/user/infoProfileCoursesC',
+        { params: { userId } }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos;
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdatedCoursesC.next(this.infos);
+        sub.unsubscribe();
+        console.log('love you 747');
+      });
+  }
+  // Your info profile courses pursuing
+  getInfoProfileCoursesP(userId: string): any {
+    const sub = this.http
+      .get<{ message: string; infos: any }>(
+        'https://www.skalarly.com/api/user/infoProfileCoursesP',
+        { params: { userId } }
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.infos;
+        })
+      )
+      .subscribe((transformedInfos) => {
+        this.infos = transformedInfos;
+        this.infosUpdatedCoursesP.next(this.infos);
+        sub.unsubscribe();
+        console.log('love you 77');
       });
   }
   // Your info
