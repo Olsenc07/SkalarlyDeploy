@@ -6,14 +6,8 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen';
-import { URLConfig } from '@cloudinary/url-gen';
-import { CloudConfig } from '@cloudinary/url-gen';
-import { Transformation } from '@cloudinary/url-gen';
-import { thumbnail } from '@cloudinary/url-gen/actions/resize';
-import { fill } from '@cloudinary/url-gen/actions/resize';
-import { focusOn } from '@cloudinary/url-gen/qualifiers/gravity';
-import { FocusOn } from '@cloudinary/url-gen/qualifiers/focusOn';
+import { CloudinaryImage } from '@cloudinary/url-gen';
+
 import { MatDialog } from '@angular/material/dialog';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
@@ -75,24 +69,24 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   // separatorKeysCodes: number[] = [ENTER, COMMA];
   // These show inputs in real time but arn't whats stored
 
-  genders: string[] = [
-    'Female',
-    'Male',
-    'Transgender',
-    'Other',
-    'Agender',
-    'Bigender',
-    'Intersex',
-    'Gender Fluid',
-    'Gender Queer',
-    'Non-Binary',
-    'Pangender',
-    'Trans Male',
-    'Trans Female',
-    'Two Spirit',
-  ];
+  // genders: string[] = [
+  //   'Female',
+  //   'Male',
+  //   'Transgender',
+  //   'Other',
+  //   'Agender',
+  //   'Bigender',
+  //   'Intersex',
+  //   'Gender Fluid',
+  //   'Gender Queer',
+  //   'Non-Binary',
+  //   'Pangender',
+  //   'Trans Male',
+  //   'Trans Female',
+  //   'Two Spirit',
+  // ];
 
-  pronounS: string[] = ['She/Her', 'He/His', 'Ze/Hirs', 'Ze/Zirs', 'Xe/Xyr'];
+  // pronounS: string[] = ['She/Her', 'He/His', 'Ze/Hirs', 'Ze/Zirs', 'Xe/Xyr'];
 
   // @ViewChild('auto') matAutocomplete: MatAutocomplete;
   // @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
@@ -111,11 +105,11 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   bio: FormControl = new FormControl('');
   // public bioLength = new BehaviorSubject(0);
   name: FormControl = new FormControl('');
-  pronouns: FormControl = new FormControl('');
+  // pronouns: FormControl = new FormControl('');
   showCase: FormControl = new FormControl('');
   // removeShowCase: FormControl = new FormControl('');
   birthday: FormControl = new FormControl('');
-  gender: FormControl = new FormControl('');
+  // gender: FormControl = new FormControl('');
   form: FormGroup;
   private infoSub: Subscription;
   info: AuthDataInfo = {};
@@ -126,8 +120,8 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   Minor = '';
   Sport = '';
   Club = '';
-  Gender = '';
-  Pronouns = '';
+  // Gender = '';
+  // Pronouns = '';
   Bio = '';
 
   constructor(
@@ -509,18 +503,18 @@ export class EditProfileComponent implements OnInit, OnDestroy {
       duration: 2000,
     });
   }
-  savePronoun(): void {
-    this.authService.editUserInfoPronoun(this.userId, this.pronouns.value);
-    this.snackBar.open('Pronouns Saved!', 'Nice!', {
-      duration: 2000,
-    });
-  }
-  saveGender(): void {
-    this.authService.editUserInfoGender(this.userId, this.gender.value);
-    this.snackBar.open('Gender Saved!', 'Nice!', {
-      duration: 2000,
-    });
-  }
+  // savePronoun(): void {
+  //   this.authService.editUserInfoPronoun(this.userId, this.pronouns.value);
+  //   this.snackBar.open('Pronouns Saved!', 'Nice!', {
+  //     duration: 2000,
+  //   });
+  // }
+  // saveGender(): void {
+  //   this.authService.editUserInfoGender(this.userId, this.gender.value);
+  //   this.snackBar.open('Gender Saved!', 'Nice!', {
+  //     duration: 2000,
+  //   });
+  // }
   saveBio(): void {
     this.authService.editUserInfoBio(this.userId, this.bio.value);
     this.snackBar.open('Bio Saved!', 'Nice!', {

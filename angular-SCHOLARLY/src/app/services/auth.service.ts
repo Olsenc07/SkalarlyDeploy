@@ -210,13 +210,13 @@ export class AuthService {
     username: string,
     name: string,
     bio: string,
-    gender: string,
+    // gender: string,
     birthday: string,
     major: string,
     minor: string,
     sport: string,
     club: string,
-    pronouns: string,
+    // pronouns: string,
     CodeCompleted: string,
     CodeCompleted2: string,
     CodeCompleted3: string,
@@ -280,13 +280,13 @@ export class AuthService {
     userData.append('username', username);
     userData.append('name', name);
     userData.append('bio', bio);
-    userData.append('gender', gender);
+    // userData.append('gender', gender);
     userData.append('birthday', birthday);
     userData.append('major', major);
     userData.append('minor', minor);
     userData.append('sport', sport);
     userData.append('club', club);
-    userData.append('pronouns', pronouns);
+    // userData.append('pronouns', pronouns);
     userData.append('CodeCompleted', CodeCompleted);
     userData.append('CodeCompleted2', CodeCompleted2);
     userData.append('CodeCompleted3', CodeCompleted3);
@@ -357,13 +357,13 @@ export class AuthService {
             username,
             name,
             bio,
-            gender,
+            // gender,
             birthday,
             major,
             minor,
             sport,
             club,
-            pronouns,
+            // pronouns,
             CodeCompleted,
             CodeCompleted2,
             CodeCompleted3,
@@ -1959,13 +1959,13 @@ export class AuthService {
               username: info.username,
               name: info.name,
               bio: info.bio,
-              gender: info.gender,
+              // gender: info.gender,
               birthday: info.birthday,
               major: info.major,
               minor: info.minor,
               sport: info.sport,
               club: info.club,
-              pronouns: info.pronouns,
+              // pronouns: info.pronouns,
               CodeCompleted: info.CodeCompleted,
               CodeCompleted2: info.CodeCompleted2,
               CodeCompleted3: info.CodeCompleted3,
@@ -2130,7 +2130,7 @@ export class AuthService {
       });
   }
   // Your info
-  getInfoMessage(userId): any {
+  getInfoMessage(userId: string): any {
     const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/user/infoMessage',
@@ -2146,13 +2146,13 @@ export class AuthService {
               username: info.username,
               name: info.name,
               bio: info.bio,
-              gender: info.gender,
+              // gender: info.gender,
               birthday: info.birthday,
               major: info.major,
               minor: info.minor,
               sport: info.sport,
               club: info.club,
-              pronouns: info.pronouns,
+              // pronouns: info.pronouns,
               CodeCompleted: info.CodeCompleted,
               CodeCompleted2: info.CodeCompleted2,
               CodeCompleted3: info.CodeCompleted3,

@@ -83,32 +83,32 @@ export class SignupComponent implements OnInit, OnDestroy {
   // @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
 
   selectedIndex = 0;
-  genders: string[] = [
-    '',
-    'Female',
-    'Male',
-    'Transgender',
-    'Other',
-    'Agender',
-    'Bigender',
-    'Intersex',
-    'Gender Fluid',
-    'Gender Queer',
-    'Non-Binary',
-    'Pangender',
-    'Trans Male',
-    'Trans Female',
-    'Two Spirit',
-  ];
+  // genders: string[] = [
+  //   '',
+  //   'Female',
+  //   'Male',
+  //   'Transgender',
+  //   'Other',
+  //   'Agender',
+  //   'Bigender',
+  //   'Intersex',
+  //   'Gender Fluid',
+  //   'Gender Queer',
+  //   'Non-Binary',
+  //   'Pangender',
+  //   'Trans Male',
+  //   'Trans Female',
+  //   'Two Spirit',
+  // ];
 
-  pronounS: string[] = [
-    '',
-    'She/Her',
-    'He/His',
-    'Ze/Hirs',
-    'Ze/Zirs',
-    'Xe/Xyr',
-  ];
+  // pronounS: string[] = [
+  //   '',
+  //   'She/Her',
+  //   'He/His',
+  //   'Ze/Hirs',
+  //   'Ze/Zirs',
+  //   'Xe/Xyr',
+  // ];
 
   // profile Picture preview display
   url: string;
@@ -239,8 +239,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   personalizeForm = new FormGroup({
     name: this.name,
     username: this.username,
-    gender: this.gender,
-    pronouns: this.pronouns,
+    // gender: this.gender,
+    // pronouns: this.pronouns,
     birthday: this.birthday,
     bio: this.bio,
     // image: this.image,
@@ -723,13 +723,13 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.username.value,
       this.name.value,
       this.bio.value,
-      this.gender.value,
+      // this.gender.value,
       this.birthday.value,
       this.major.value,
       this.minor.value,
       this.sport.value,
       this.club.value,
-      this.pronouns.value,
+      // this.pronouns.value,
       this.CodeCompleted.value,
       this.CodeCompleted2.value,
       this.CodeCompleted3.value,

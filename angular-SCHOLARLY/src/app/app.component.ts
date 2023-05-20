@@ -932,19 +932,19 @@ export class ReAuthorizeComponent implements OnInit {
     if (this.timeLeft > 1) {
       document.getElementById('Timer').innerHTML =
         this.timeLeft + 'seconds remaining';
-      this.timeLeft -= 1;
       setTimeout(this.makeIteration, 1000); // 1 second waiting
     }
     if (this.timeLeft == 1) {
       document.getElementById('Timer').innerHTML =
         this.timeLeft + 'second remaining';
-      this.timeLeft -= 1;
       setTimeout(this.makeIteration, 1000); // 1 second waiting
     }
     if (this.timeLeft == 0) {
+      document.getElementById('Timer').innerHTML = '';
       this.authService.logout();
       this.dialogRef.close();
     }
+    this.timeLeft -= 1;
   };
 
   logOut() {

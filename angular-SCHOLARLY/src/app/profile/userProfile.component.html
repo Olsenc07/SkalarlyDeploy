@@ -66,11 +66,10 @@
 
 
           </div>
-          <div class="centerGD" *ngIf=" info.gender || info.birthday  ">
-            <div *ngIf="info.gender">
-              <!--  Male -->
+          <div class="centerGD" *ngIf="info.birthday">
+            <!-- <div *ngIf="info.gender">
               {{ info.gender}}
-            </div>
+            </div> -->
             <div *ngIf="info.birthday">
               <!-- Eventually just have the age calculated out...maybe -->
               {{ info.birthday|date:"longDate" }}
@@ -165,9 +164,9 @@
                 <div class="name" *ngIf="info.name">
                 {{ info.name}}
                 </div>
-                <div *ngIf="info.pronouns" class="pronouns"  matTooltip="Proper Pronouns">
+                <!-- <div *ngIf="info.pronouns" class="pronouns"  matTooltip="Proper Pronouns">
                   ({{ info.pronouns}})
-                    </div>
+                    </div> -->
               </div>
        
     
