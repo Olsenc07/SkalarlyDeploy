@@ -916,7 +916,6 @@ export class AppComponent implements OnInit, OnDestroy {
 })
 export class ReAuthorizeComponent implements OnInit {
   userId: string;
-
   timeLeft = 30;
 
   constructor(
@@ -930,7 +929,6 @@ export class ReAuthorizeComponent implements OnInit {
   }
 
   makeIteration = (): void => {
-    console.clear();
     if (this.timeLeft > 0) {
       document.getElementById('Timer').innerHTML =
         this.timeLeft + ' seconds remaining';
