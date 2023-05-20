@@ -432,7 +432,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   private sub: Subscription;
   private sub2: Subscription;
   info: AuthDataInfo = {};
+  infoCoursesC: AuthDataInfoCoursesC = {};
+  infoCoursesP: AuthDataInfoCoursesP = {};
   private infosSub: Subscription;
+  private infosSubC: Subscription;
+  private infosSubP: Subscription;
   // img popup
   img = document.getElementById('myImg');
   modalImg = document.getElementById('img01');
@@ -632,10 +636,27 @@ export class UserProfileComponent implements OnInit, OnDestroy {
               .getInfoUpdateListener()
               .subscribe((infos: any) => {
                 console.log('Gods close', infos);
-                // this.infos = [];
-                // console.log('Gods close 2', this.infos);
                 this.info = infos;
                 console.log('Gods close love you', infos);
+              });
+            // courses completed
+            this.authService.getInfoProfileCoursesC(this.userId);
+            this.infosSubC = this.authService
+              .getInfoUpdateListenerCoursesC()
+              .subscribe((infosC: any) => {
+                this.infoCoursesC = infosC;
+                console.log('boobs C');
+                this.isLoading = false;
+              });
+            // courses pursuing
+            this.authService.getInfoProfileCoursesP(this.userId);
+            this.infosSubP = this.authService
+              .getInfoUpdateListenerCoursesP()
+              .subscribe((infosP: any) => {
+                this.infoCoursesP = infosP;
+                console.log('boobs p');
+                this.isLoading = false;
+                // do this for them all!
               });
           }
         }
@@ -649,6 +670,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.infosSubShowCase.unsubscribe();
     // this.followSubs.unsubscribe();
     this.infosSub.unsubscribe();
+    this.infosSubC.unsubscribe();
+    this.infosSubP.unsubscribe();
     this.followSubsBtn.unsubscribe();
     this.followSubsBlocked.unsubscribe();
     console.log('u have been de stroyed');
