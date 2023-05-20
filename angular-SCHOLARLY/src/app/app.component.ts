@@ -917,7 +917,7 @@ export class AppComponent implements OnInit, OnDestroy {
 export class ReAuthorizeComponent implements OnInit {
   userId: string;
 
-  // timerId = setInterval(this.countdown, 1000);
+  timeLeft = 30;
 
   constructor(
     private authService: AuthService,
@@ -926,19 +926,21 @@ export class ReAuthorizeComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
     console.log('where you at', this.userId);
-    this.countdown();
-    console.log('countdown');
+    setTimeout(this.makeIteration);
   }
 
-  countdown() {
-    // var timeLeft = 30;
-    for (var cc = 30; cc > 0; cc--) {
-      document.getElementById('Timer').innerHTML = cc + ' seconds remaining';
-    }
-    if (cc == 0) {
+  makeIteration = (): void => {
+    console.clear();
+    if (this.timeLeft > 0) {
+      document.getElementById('Timer').innerHTML =
+        this.timeLeft + ' seconds remaining';
+      setTimeout(this.makeIteration, 1000); // 1 second waiting
+    } else {
       this.authService.logout();
     }
-  }
+    this.timeLeft -= 1;
+  };
+
   logOut() {
     this.authService.logout();
     this.dialogRef.close();
