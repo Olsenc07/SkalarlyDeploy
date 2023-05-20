@@ -929,15 +929,22 @@ export class ReAuthorizeComponent implements OnInit {
   }
 
   makeIteration = (): void => {
-    if (this.timeLeft > 0) {
+    if (this.timeLeft > 1) {
       document.getElementById('Timer').innerHTML =
-        this.timeLeft + ' seconds remaining';
+        this.timeLeft + 'seconds remaining';
+      this.timeLeft -= 1;
       setTimeout(this.makeIteration, 1000); // 1 second waiting
-    } else {
+    }
+    if (this.timeLeft == 1) {
+      document.getElementById('Timer').innerHTML =
+        this.timeLeft + 'second remaining';
+      this.timeLeft -= 1;
+      setTimeout(this.makeIteration, 1000); // 1 second waiting
+    }
+    if (this.timeLeft == 0) {
       this.authService.logout();
       this.dialogRef.close();
     }
-    this.timeLeft -= 1;
   };
 
   logOut() {
