@@ -269,31 +269,7 @@ export class AppComponent implements OnInit, OnDestroy {
           event.url === '/' || event.url === '/post-page'
       )
     );
-    this.route.title.subscribe((params) => {
-      console.log('msgs title', params);
 
-      // if (onPostPg === true) {
-      //   return (this.postClicked = true);
-      // }
-    });
-    this.route.url.subscribe((params) => {
-      console.log('msgs url', params);
-      // if (params?.) {
-      //   return (this.commentClicked = true);
-      // }
-    });
-    this.route.params.subscribe((params) => {
-      console.log('msgs params', params);
-      // if (params?.) {
-      //   return (this.commentClicked = true);
-      // }
-    });
-    this.route.fragment.subscribe((params) => {
-      console.log('msgs fragment', params);
-      // if (params?.) {
-      //   return (this.commentClicked = true);
-      // }
-    });
     this.isSearchScreen$ = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       map(
@@ -968,13 +944,11 @@ export class ReAuthorizeComponent implements OnInit {
   }
 
   countdown() {
-    const elem = document.getElementById('Timer') as HTMLInputElement;
+    const elem = (document.getElementById('Timer').innerHTML =
+      --this.timeLeft + ' seconds remaining');
     if (this.timeLeft == 0) {
       clearTimeout(this.timerId);
       this.authService.logout();
-    } else {
-      elem.innerHTML = this.timeLeft + ' seconds remaining';
-      this.timeLeft--;
     }
   }
   logOut() {

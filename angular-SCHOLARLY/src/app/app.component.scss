@@ -1240,10 +1240,13 @@ color: white;
   font-family: 'Cormorant Garamond', serif;
 }
 .reauthHeader{
-  padding: 2% 2% 2%;
-  background-color: #002D62;
-  color: white;
-  font-family: 'Cormorant Garamond', serif;
+  padding: 2%;
+    background-color: #002d62;
+    display: flex;
+    color: #fff;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Cormorant Garamond,serif;
 
 }
 .reauthLogout{
@@ -1259,5 +1262,5 @@ color: white;
 .reauthIcon{
   font-size: large;
   justify-content: center;
-  color: #002D62;
+  color: white;
 }

@@ -348,7 +348,7 @@ console.log('hippy pippy send it', filteredFinal)
                 })
             })
                 
-                    console.log('hippy pippy my boi', filteredFinal)
+                    console.log('hippy pippy my boi boogers', filteredFinal)
                    const filteredFinalList = filteredFinal.sort((a,b) => {
                         let newest = new Date(a.time),
                             older =  new Date(b.time);

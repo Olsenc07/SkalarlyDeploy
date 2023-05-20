@@ -317,7 +317,7 @@
                 >
                   <span
                     class="material-icons-sharp"
-                    [ngClass]="postClicked == true ? 'PostOn' : 'post'"
+                    [ngClass]="router?.url.includes('/post-page') ? 'PostOn' : 'post'"
                   >
                     add_circle_outline 
                   </span>
@@ -338,7 +338,7 @@
                   matBadge="*" [matBadgeHidden]="newMessageCheck.length == 0" matBadgeColor="primary"
                     class="material-icons-sharp"
                     [ngClass]="
-                      commentClicked == true ? 'MessageOn' : 'message'
+                    router?.url.includes('/messages') ? 'MessageOn' : 'message'
                     "
                   >
                     pending
