@@ -41,7 +41,12 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { routingComponents } from './app-routing.module';
 import { AppComponent, ReAuthorizeComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
+import {
+  SearchComponent,
+  SearchGeorgeComponent,
+  SearchScarboroughComponent,
+  SearchMississaugaComponent,
+} from './search/search.component';
 import {
   RetrievePasswordComponent,
   ForgotPasswordComponent,
@@ -212,6 +217,9 @@ import { ErrorInterceptor } from './error-interceptor';
     FriendsActivityComponent,
     PostPageComponent,
     SearchComponent,
+    SearchGeorgeComponent,
+    SearchScarboroughComponent,
+    SearchMississaugaComponent,
     DialogElementsComponent,
     TermsPopUpComponent,
     BioComponent,

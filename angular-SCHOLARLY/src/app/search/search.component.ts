@@ -17,8 +17,8 @@ interface SearchOption {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
+  mains: Fav[] = [];
   campus: string;
-
   userId: string;
   FavsVisible = false;
   userIsAuthenticated = false;
@@ -27,15 +27,83 @@ export class SearchComponent implements OnInit, OnDestroy {
   private infosSub: Subscription;
 
   isLoading = false;
-  opened = false;
-  openedSearch = false;
-  mains: Fav[] = [];
-  textbooks = false;
-  textbooksCheck = false;
-  Course = false;
-  CourseCheck = false;
-  insProgOptions = [];
-  insProgOptionsNumber: number;
+
+  postLocationMain: FormControl = new FormControl('');
+
+  constructor(
+    public dialog: MatDialog,
+    public searchListService: SearchListService,
+    private router: Router,
+    public route: ActivatedRoute,
+    private authService: AuthService,
+    private postsService: PostsService
+  ) {}
+
+  ngOnInit(): any {
+    this.isLoading = true;
+
+    // userId
+    this.userId = this.authService.getUserId();
+    this.userIsAuthenticated = this.authService.getIsAuth();
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated: boolean) => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.isLoading = false;
+      });
+    // default campus
+    this.authService.getInfoProfile(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: any) => {
+        console.log('default ', infos);
+        console.log('default campus', infos.campus);
+        this.campus = infos.campus;
+        console.log('boobs', this.campus);
+        this.isLoading = false;
+        // do this for them all!
+      });
+    this.postsService.getFavsList(this.userId);
+    this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+      this.mains = favs;
+    });
+  }
+
+  ngOnDestroy(): any {
+    this.authListenerSubs.unsubscribe();
+    this.favsSub.unsubscribe();
+    this.infosSub.unsubscribe();
+  }
+
+  favsVisible(): void {
+    this.FavsVisible = !this.FavsVisible;
+  }
+  campusMiss() {
+    this.campus = 'U of T Mississauga';
+  }
+  campusScar() {
+    this.campus = 'U of T Scarborough';
+  }
+  campusStGeorge() {
+    this.campus = 'U of T St.George';
+  }
+
+  navigateToFav(value: string): void {
+    this.router.navigate(['/main/:'], { queryParams: { category: value } });
+  }
+  navigateToFavHash(HashTag: string): void {
+    this.router.navigate(['/hashtag/:'], {
+      queryParams: { hashtag: HashTag },
+    });
+  }
+}
+@Component({
+  selector: 'app-search-george',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
+})
+export class SearchGeorgeComponent implements OnInit {
+  isLoading = false;
   programs: string[] = [
     'Academic Bridging Program',
     'Acturial Science',
@@ -143,7 +211,15 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
   }
 
-  postLocationMain: FormControl = new FormControl('');
+  opened = false;
+  openedSearch = false;
+  textbooks = false;
+  textbooksCheck = false;
+  Course = false;
+  CourseCheck = false;
+  insProgOptions = [];
+  insProgOptionsNumber: number;
+
   instructorsProgram: FormControl = new FormControl('');
   search: FormControl = new FormControl('');
   searchForm = new FormGroup({
@@ -161,72 +237,18 @@ export class SearchComponent implements OnInit, OnDestroy {
   displaySpecificSearch(): void {
     this.opt++;
   }
-
   constructor(
-    public dialog: MatDialog,
     public searchListService: SearchListService,
-    private router: Router,
-    public route: ActivatedRoute,
-    private authService: AuthService,
-    private postsService: PostsService
+    private postsService: PostsService,
+    private router: Router
   ) {}
 
   ngOnInit(): any {
-    this.isLoading = true;
     this.searchOptions = this.searchListService.getSearchOptions();
-
-    // userId
-    this.userId = this.authService.getUserId();
-    this.userIsAuthenticated = this.authService.getIsAuth();
-    this.authListenerSubs = this.authService
-      .getAuthStatusListener()
-      .subscribe((isAuthenticated: boolean) => {
-        this.userIsAuthenticated = isAuthenticated;
-        this.isLoading = false;
-      });
-    // default campus
-    this.authService.getInfoProfile(this.userId);
-    this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: any) => {
-        console.log('default ', infos);
-        console.log('default campus', infos.campus);
-        this.campus = infos.campus;
-        console.log('boobs', this.campus);
-        this.isLoading = false;
-        // do this for them all!
-      });
-    this.postsService.getFavsList(this.userId);
-    this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
-      this.mains = favs;
-    });
-  }
-
-  ngOnDestroy(): any {
-    this.authListenerSubs.unsubscribe();
-    this.favsSub.unsubscribe();
-    this.infosSub.unsubscribe();
-  }
-
-  favsVisible(): void {
-    this.FavsVisible = !this.FavsVisible;
-  }
-  campusMiss() {
-    this.campus = 'U of T Mississauga';
-  }
-  campusScar() {
-    this.campus = 'U of T Scarborough';
-  }
-  campusStGeorge() {
-    this.campus = 'U of T St.George';
   }
   // Filter specific search
   // Receive user input and send to search method**
   onKeyThree(value: string) {
-    // if nothing clicked or if no matches then don't
-    // close but show all options
-    // save the orignally searched array and re look at it
-    // but test it now
     if (value.length >= 1) {
       this.specificOptions = this.searchSpecific(value);
     } else {
@@ -234,7 +256,6 @@ export class SearchComponent implements OnInit, OnDestroy {
       this.specificOptions = this.specificOptionsSafe;
     }
   }
-
   // Filter the states list and send back to populate the selectedStates**
   searchSpecific(value: string) {
     this.specificOptions = this.specificOptionsSafe;
@@ -243,14 +264,11 @@ export class SearchComponent implements OnInit, OnDestroy {
       option.toLowerCase().includes(filter)
     );
     if (found.length >= 1) {
-      console.log('ny wow', found);
       return found;
     } else {
-      console.log('cali parties', this.specificOptionsSafe);
       return this.specificOptionsSafe;
     }
   }
-
   // course review search{
   CourseReview() {
     if (this.specificOptions[0] !== 'buy_sell') {
@@ -313,7 +331,6 @@ export class SearchComponent implements OnInit, OnDestroy {
       // this.hasQuery = false;
     }
   }
-
   // filter specific options
   onSearchSelection(value: string): void {
     if (value !== 'important-links') {
@@ -374,29 +391,35 @@ export class SearchComponent implements OnInit, OnDestroy {
       });
     }
   }
-  navigateToFav(value: string): void {
-    this.router.navigate(['/main/:'], { queryParams: { category: value } });
-  }
-  navigateToFavHash(HashTag: string): void {
-    this.router.navigate(['/hashtag/:'], {
-      queryParams: { hashtag: HashTag },
-    });
-  }
-  // To post page with users id
-  navigateToPost(): any {
-    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
-    this.router.navigate(['/post-page/:'], {
-      queryParams: { userId: this.userId },
-    });
-  }
-  // Where the post was posted
   getPostsMainPageInstructor(value: string): void {
     this.router.navigate(['/instructor-review/:'], {
       queryParams: { category: value },
     });
-    console.log('hey chaz mataz yo homie', value);
   }
   clearSearch(): void {
     this.search.setValue('');
   }
+}
+@Component({
+  selector: 'app-search-scarborough',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
+})
+export class SearchScarboroughComponent implements OnInit, OnDestroy {
+  isLoading = false;
+  ngOnInit(): any {}
+
+  ngOnDestroy(): void {}
+}
+
+@Component({
+  selector: 'app-search-mississauga',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss'],
+})
+export class SearchMississaugaComponent implements OnInit, OnDestroy {
+  isLoading = false;
+  ngOnInit(): any {}
+
+  ngOnDestroy(): void {}
 }

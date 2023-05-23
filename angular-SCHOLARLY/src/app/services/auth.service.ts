@@ -1800,6 +1800,7 @@ export class AuthService {
               username: info.username,
               name: info.name,
               bio: info.bio,
+              campus: info.campus,
               // gender: info.gender,
               birthday: info.birthday,
               major: info.major,
