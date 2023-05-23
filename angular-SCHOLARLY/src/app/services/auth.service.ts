@@ -1861,6 +1861,8 @@ export class AuthService {
         })
       )
       .subscribe((transformedInfos) => {
+        console.log('courses c', transformedInfos);
+
         this.infosC = transformedInfos;
         this.infosUpdatedCoursesC.next(this.infosC);
         sub.unsubscribe();
@@ -1869,6 +1871,8 @@ export class AuthService {
   }
   // Your info profile courses pursuing
   getInfoProfileCoursesP(userId: string): any {
+    console.log(' p', userId);
+
     const sub = this.http
       .get<{ message: string; infos: any }>(
         'https://www.skalarly.com/api/user/infoProfileCoursesP',

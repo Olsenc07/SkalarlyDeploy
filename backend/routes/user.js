@@ -2670,6 +2670,8 @@ router.get("/infoProfile", async(req, res) => {
 });
 // Profile courses compl
 router.get("/infoProfileCoursesC", async(req, res) => {
+    console.log('course c userId',req.query.userId);
+
     await CourseCompleted.findOne({Creator: req.query.userId})
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
@@ -2686,6 +2688,7 @@ router.get("/infoProfileCoursesC", async(req, res) => {
 });
 // Profile courses purs
 router.get("/infoProfileCoursesP", async(req, res) => {
+    console.log('course p userId',req.query.userId);
     await CoursePursuing.findOne({Creator: req.query.userId})
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
