@@ -654,7 +654,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
               .getInfoUpdateListenerCoursesP()
               .subscribe((infosP: any) => {
                 this.infoCoursesP = infosP;
-                console.log('boobs p');
+                console.log('boobs p', this.infoCoursesP);
                 this.isLoading = false;
                 // do this for them all!
               });

@@ -2689,6 +2689,7 @@ router.get("/infoProfileCoursesP", async(req, res) => {
     await CoursePursuing.findOne({Creator: req.query.userId})
         // .select('-password') if i was fetching user info, dont want password passed on front end
         .then(documents => {
+            console.log('back end pursing', documents);
             res.status(200).json({
                 message: 'Users fetched succesfully!',
                 infos: documents

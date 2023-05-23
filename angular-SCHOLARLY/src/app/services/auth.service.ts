@@ -1880,6 +1880,7 @@ export class AuthService {
         })
       )
       .subscribe((transformedInfos) => {
+        console.log('courses p', transformedInfos);
         this.infosP = transformedInfos;
         this.infosUpdatedCoursesP.next(this.infosP);
         sub.unsubscribe();
