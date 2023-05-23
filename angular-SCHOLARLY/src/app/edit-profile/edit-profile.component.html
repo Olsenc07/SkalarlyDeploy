@@ -116,7 +116,24 @@
               </mat-form-field>
 
             </div>
+             <!-- campus -->
+      <div class="gender_">
+        <!-- <i class="fas fa-school _icon" *ngIf="!campus.value"></i> -->
+        <button mat-icon-button  *ngIf="campus.value" (click)="saveCampus()" matTooltip="Save Campus">
+                    <i class="fas fa-school check"  *ngIf="campus.value"></i>
+      </button>
+        <mat-form-field class="smaller" >
+          <mat-label *ngIf="info.campus">{{info.campus}}</mat-label>
           
+
+          <input matInput type='text' [formControl]="campus" [matAutocomplete]="auto_">
+          <mat-autocomplete #auto_="matAutocomplete">
+            <mat-option *ngFor="let campus of campuses" [value]="campus">
+              {{campus}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
 
 
 

@@ -267,8 +267,9 @@
 
 
 <!-- disabled -->
-      <mat-tab class="sndPage" disabled >
-        <form [formGroup]="personalizeForm" enctype="multipart/form-data">
+      <mat-tab class="sndPage"  >
+        <!-- [formGroup]="personalizeForm" -->
+        <form  enctype="multipart/form-data">
           <ng-template mat-tab-label class="backColour">
             <mat-icon><span class="material-icons-two-tone">
                 badge
@@ -304,10 +305,12 @@
                         </div>
                       </button>
                       <form  enctype="multipart/form-data">
-                      <input #fileInputP id="profilePic"  class="hide" type="file" accept=".png, .jpg, .jpeg"
+                      <input #fileInputP id="profilePic"  class="hide" type="file" accept=".png, .jpg, .jpeg" 
                         (change)="imagePreviewP($event)" name="profilePic">
                       </form>
                     </div>
+                    <input>
+                    <mat-checkbox [checked]="useDefaultPic" (change)="defaultPic()" >Use Skalarly logo for now</mat-checkbox>
                   </div>
                   <!-- class="cropper" [ngClass]="profilePic.value ? 'show' : 'hide' " -->
 
@@ -384,10 +387,24 @@
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker class="bd_picker" #dp startView="year" [startAt]="startDate"></mat-datepicker>
+                <mat-hint>This field is required</mat-hint>
               </mat-form-field>
             </div>
 
-            <div class="inputP">
+            <div class="inputP" >
+              <mat-form-field  class="gender" matTooltip="This allows you to get content directed towards your needs and interests">
+                <mat-label>
+                  <i class="fas fa-school check_"  *ngIf="campus.value"></i>
+                  <i class="fas fa-school " *ngIf="!campus.value"></i>
+                  Campus</mat-label>
+
+                <input matInput type='text' [formControl]="campus" [matAutocomplete]="auto_" required>
+                <mat-autocomplete #auto_="matAutocomplete">
+                  <mat-option *ngFor="let campus of campuses" [value]="campus">
+                    {{campus}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field> 
               <!-- <div class="inputFine"> -->
                 <!-- <i class="material-icons check"  *ngIf="gender.value">transgender</i>
                 <i class="material-icons _icon" *ngIf="!gender.value">transgender</i> -->
@@ -459,7 +476,7 @@
             <!-- <div class="skip1">
               <button mat-raised-button class="cBtn" (click)="changeTab1()">Skip For Now</button>
             </div> -->
-            <button *ngIf="form.get('profilePic').value" type="button" color="primary"  mat-raised-button class="cBtn"
+            <button *ngIf="form.get('profilePic').value && campus.value " type="button" color="primary"  mat-raised-button class="cBtn"
               (click)="changeTab1()">Next</button>
           </div>
           <!-- <div class="skip2">

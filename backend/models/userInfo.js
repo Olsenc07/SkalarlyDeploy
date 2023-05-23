@@ -7,6 +7,7 @@ const userInfoSchema = mongoose.Schema({
     name: { type: String },
     bio: { type: String },
     // gender: { type: String },
+    campus: { type: String},
     birthday: { type: String},
     major: { type: String},
     minor: { type: String},

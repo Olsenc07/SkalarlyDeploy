@@ -17,11 +17,15 @@ interface SearchOption {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
+  campus: string;
+
   userId: string;
   FavsVisible = false;
   userIsAuthenticated = false;
   private authListenerSubs: Subscription;
   private favsSub: Subscription;
+  private infosSub: Subscription;
+
   isLoading = false;
   opened = false;
   openedSearch = false;
@@ -180,6 +184,18 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
         this.isLoading = false;
       });
+    // default campus
+    this.authService.getInfoProfile(this.userId);
+    this.infosSub = this.authService
+      .getInfoUpdateListener()
+      .subscribe((infos: any) => {
+        console.log('default ', infos);
+        console.log('default campus', infos.campus);
+        this.campus = infos.campus;
+        console.log('boobs', this.campus);
+        this.isLoading = false;
+        // do this for them all!
+      });
     this.postsService.getFavsList(this.userId);
     this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
       this.mains = favs;
@@ -189,9 +205,20 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.authListenerSubs.unsubscribe();
     this.favsSub.unsubscribe();
+    this.infosSub.unsubscribe();
   }
+
   favsVisible(): void {
     this.FavsVisible = !this.FavsVisible;
+  }
+  campusMiss() {
+    this.campus = 'U of T Mississauga';
+  }
+  campusScar() {
+    this.campus = 'U of T Scarborough';
+  }
+  campusStGeorge() {
+    this.campus = 'U of T St.George';
   }
   // Filter specific search
   // Receive user input and send to search method**

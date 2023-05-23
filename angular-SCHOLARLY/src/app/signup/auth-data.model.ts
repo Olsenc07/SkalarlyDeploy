@@ -13,13 +13,14 @@ export interface AuthDataInfo {
   id?: string;
   name?: string;
   bio?: string;
-  gender?: string;
+  campus?: string;
+  // gender?: string;
   birthday?: string;
   major?: string;
   minor?: string;
   sport?: string;
   club?: string;
-  pronouns?: string;
+  // pronouns?: string;
   Followers?: number;
   Following?: number;
   profilePic?: File;

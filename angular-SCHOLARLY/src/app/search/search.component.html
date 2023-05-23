@@ -45,8 +45,115 @@
             filter_list
           </div>
         </button>
+        <!-- St.George -->
+<div *ngIf="campus == 'U of T St.George'">
+  <mat-chip-option color="primary"  class="searchCampusBtn" 
+  [matMenuTriggerFor]="menuCampus" >
+ <i class="fas fa-school"></i>
+ St.George Campus
+ </mat-chip-option>  
+ <mat-menu #menuCampus="matMenu" >
+  <mat-label class="courseCode">
+    Campus Search
+  </mat-label>
+  <mat-divider></mat-divider>
+  <div class="optionsCenterStyle">
+    <mat-card class="even_">
+      <mat-card-content>
+  <button mat-menu-item (click)="campusMiss()"
+  >
+    Mississauga Campus
+    </button>
+  <mat-divider></mat-divider>
+    </mat-card-content>
+    </mat-card>
+</div>
+<div class="optionsCenterStyle">
+  <mat-card class="odd_">
+    <mat-card-content>
+<button mat-menu-item (click)="campusScar()"  
+>
+  Scarborough Campus
+  </button>
+<mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+</mat-menu>
+</div>
+<!-- Scarborough -->
+<div *ngIf="campus == 'U of T Scarborough'">
+  <mat-chip-option color="primary"  class="searchCampusBtn" 
+  [matMenuTriggerFor]="menuCampusScar" >
+ <i class="fas fa-school"></i>
+ Scarborough Campus
+ </mat-chip-option>  
+ <mat-menu #menuCampusScar="matMenu" >
+  <mat-label class="courseCode">
+    Campus Search
+  </mat-label>
+  <mat-divider></mat-divider>
+  <div class="optionsCenterStyle">
+    <mat-card class="even_">
+      <mat-card-content>
+  <button mat-menu-item (click)="campusMiss()"
+  >
+    Mississauga Campus
+    </button>
+  <mat-divider></mat-divider>
+    </mat-card-content>
+    </mat-card>
+</div>
+<div class="optionsCenterStyle">
+  <mat-card class="odd_">
+    <mat-card-content>
+<button mat-menu-item (click)="campusStGeorge()"  
+>
+St.George Campus
+  </button>
+<mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+</mat-menu>
+</div>
+<!-- Mississauga -->
+<div *ngIf="campus == 'U of T Mississauga'">
+  <mat-chip-option color="primary"  class="searchCampusBtn" 
+  [matMenuTriggerFor]="menuCampusMiss" >
+ <i class="fas fa-school"></i>
+ Mississauga Campus
+ </mat-chip-option>  
+ <mat-menu #menuCampusMiss="matMenu" >
+  <mat-label class="courseCode">
+    Campus Search
+  </mat-label>
+  <mat-divider></mat-divider>
+  <div class="optionsCenterStyle">
+    <mat-card class="even_">
+      <mat-card-content>
+  <button mat-menu-item (click)="campusScar()"
+  >
+  Scarborough Campus
+    </button>
+  <mat-divider></mat-divider>
+    </mat-card-content>
+    </mat-card>
+</div>
+<div class="optionsCenterStyle">
+  <mat-card class="odd_">
+    <mat-card-content>
+<button mat-menu-item (click)="campusStGeorge()"  
+>
+St.George Campus
+  </button>
+<mat-divider></mat-divider>
+  </mat-card-content>
+  </mat-card>
+</div>
+</mat-menu>
+</div>
 
-       
       </div>
       <!-- Category box -->
       <div class="input-boxs">
@@ -57,7 +164,10 @@
             <i class="far fa-bookmark"></i>
           </button>
           <div *ngIf="FavsVisible" class="favsBox">
-            <div class="favs" >Favourites</div>
+            <div class="favs" >Favourites
+
+              <button mat-icon-button (click)="favsVisible()"> <i class="far fa-times-circle"></i></button>
+            </div>
             <mat-divider></mat-divider>
             <div  >
 
@@ -68,11 +178,21 @@
                 <mat-select class="centerText">
                   <mat-option *ngFor="let main of mains"  class="font" 
                   >
+                  <!-- category -->
+                  <mat-card class="even__">
+                    <mat-card-content>
                    <div *ngIf="main.category !== ''" (click)="navigateToFav(main.category)" > 
                     <i matPrefix class="fas fa-heart main"></i>{{main.category}}</div>
+                    </mat-card-content>
+                    </mat-card>
+                    <!-- hashtag -->
+                    <mat-card class="even__">
+                      <mat-card-content>
                    <div *ngIf="main.hashtag !== ''" (click)="navigateToFavHash(main.hashtag)" > 
               <i matPrefix class="fas fa-hashtag hash"></i>
               {{main.hashtag}}</div>
+              </mat-card-content>
+              </mat-card>
               <mat-divider></mat-divider>
                   </mat-option>
 
@@ -95,19 +215,8 @@
 </div>
         </div>
           Step One: Choose from the main categories</div>
-
-      
-          <!-- <mat-form-field>
-          <mat-select [selected]="opt.name" 
-           class="center_step1" >
-            <mat-option class="horizontal_list" *ngFor="let opt of searchOptions" [value]="opt.name"
-            (click)="onSearchSelection(opt.value)" (click)="displaySpecificSearch()" >
-              {{ opt.name }}</mat-option>
-          </mat-select>
-        </mat-form-field> -->
-
- 
-        <mat-chip-listbox aria-label="Option selection" class="center_step1 " >
+ <!--St.George  -->
+        <mat-chip-listbox aria-label="Option selection" class="center_step1 "  *ngIf="campus == 'U of T St.George'">
           <div class="centerOptions">
           <mat-chip-option  (click)="onSearchSelection('blue_clubs')" (click)="closeInstructorOptions()"
            (click)="displaySpecificSearch()"
@@ -994,7 +1103,7 @@
         </mat-chip-listbox>
 
 <!-- For instructors review -->
-<div class="input-boxs_" *ngIf="(opened == true)">
+<div class="input-boxs_" *ngIf="(opened == true) && campus == 'U of T St.George'">
   <div class="center_single">Step Two: Program of Instructor</div>
  
   <div  class="mat-list-text">
@@ -1016,8 +1125,8 @@
 
 
 
-<!--  -->
-        <div class="input-boxs_" *ngIf="(specificOptions)">
+<!-- so far for st.george -->
+        <div class="input-boxs_" *ngIf="(specificOptions) && campus == 'U of T St.George'">
           <div class="center_single">Step Two: Navigate to the specific page</div>
           <div *ngIf="textbooks == true" class="font"> Textbooks For</div>
           <div *ngIf="specificOptions[0] !== 'important-links'" class="mat-list-text">
@@ -1060,9 +1169,8 @@
         </div>
        
 
-                <!--    hyperlinks -->
-       
-          <mat-chip-list  class="mat-list-text"  *ngIf="specificOptions[0] == 'important-links'"
+                <!--    hyperlinks st.george -->
+          <mat-chip-list  class="mat-list-text"  *ngIf="specificOptions[0] == 'important-links' && campus == 'U of T St.George' "
           [multiple]="false"  >
             <mat-chip  [multiple]="false" 
             class="searchBtn"  >
@@ -1441,7 +1549,7 @@
             </mat-chip>
             <mat-chip  [multiple]="false" 
             class="searchBtn"  >
-            <a mat-menu-item href="https://studentlife.utoronto.ca" target="_blank" class="a">
+            <a href="https://studentlife.utoronto.ca" target="_blank" class="a">
               Student Life
               <mat-divider></mat-divider>
             </a>
@@ -1469,6 +1577,36 @@
            </mat-chip-list>
    
         </div>
+
+<!-- miss campus -->
+<mat-chip-listbox aria-label="Option selection" class="center_step1 "  *ngIf="campus == 'U of T Mississauga'">
+  <div class="centerOptions">
+  <mat-chip-option  (click)="onSearchSelection('blue_clubs')" (click)="closeInstructorOptions()"
+   (click)="displaySpecificSearch()"
+    class="searchBtn">
+   <i class="fas fa-cubes"></i>
+   Blues Clubs</mat-chip-option>
+   </div>
+   </mat-chip-listbox>
+<div class="input-boxs_" *ngIf="(specificOptions) && campus == 'U of T Mississauga'">
+  <div class="center_single">Step Two: Navigate to the specific page</div>
+</div>
+
+<!-- scar campus -->
+<mat-chip-listbox aria-label="Option selection" class="center_step1 "  *ngIf="campus == 'U of T Scarborough'">
+  <div class="centerOptions">
+  <mat-chip-option  (click)="onSearchSelection('blue_clubs')" (click)="closeInstructorOptions()"
+   (click)="displaySpecificSearch()"
+    class="searchBtn">
+   <i class="fas fa-cubes"></i>
+   Blues Clubs</mat-chip-option>
+   </div>
+   </mat-chip-listbox>
+<div class="input-boxs_" *ngIf="(specificOptions) && campus == 'U of T Scarborough'">
+  <div class="center_single">Step Two: Navigate to the specific page</div>
+</div>
+
+
       </div>
     </div>
     <!-- right -->

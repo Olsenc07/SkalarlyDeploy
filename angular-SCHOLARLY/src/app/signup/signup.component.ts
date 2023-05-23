@@ -6,6 +6,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
+
 import {
   MomentDateAdapter,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -75,6 +76,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   removable = true;
   userNameMatches = false;
   noEmailMatches = false;
+  useDefaultPic: boolean = false;
   // classes: string[] = [];
   // classesP: string[] = [];
   // @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
@@ -83,6 +85,11 @@ export class SignupComponent implements OnInit, OnDestroy {
   // @ViewChild('autoP') matAutocompleteP: MatAutocomplete;
 
   selectedIndex = 0;
+  campuses: string[] = [
+    'U of T Mississauga',
+    'U of T Scarborough',
+    'U of T St.George',
+  ];
   // genders: string[] = [
   //   '',
   //   'Female',
@@ -139,9 +146,11 @@ export class SignupComponent implements OnInit, OnDestroy {
   sport: FormControl = new FormControl('');
   club: FormControl = new FormControl('');
   name: FormControl = new FormControl('');
-  pronouns: FormControl = new FormControl('');
+  campus: FormControl = new FormControl('');
+
+  // pronouns: FormControl = new FormControl('');
   birthday: FormControl = new FormControl();
-  gender: FormControl = new FormControl('');
+  // gender: FormControl = new FormControl('');
   //   Validators.pattern(
   //   /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/ ||
   //   /^[a-zA-Z0-9._%+-]+@utoronto\.ca/
@@ -236,26 +245,27 @@ export class SignupComponent implements OnInit, OnDestroy {
     termsCheck: this.termsCheck,
   });
 
-  personalizeForm = new FormGroup({
-    name: this.name,
-    username: this.username,
-    // gender: this.gender,
-    // pronouns: this.pronouns,
-    birthday: this.birthday,
-    bio: this.bio,
-    // image: this.image,
-  });
+  // personalizeForm = new FormGroup({
+  //   name: this.name,
+  //   username: this.username,
+  //   campus: this.campus,
+  //   // gender: this.gender,
+  //   // pronouns: this.pronouns,
+  //   birthday: this.birthday,
+  //   bio: this.bio,
+  //   // image: this.image,
+  // });
 
-  signupForm = new FormGroup({
-    CodePursuing: this.CodePursuing,
-    CodeCompleted: this.CodeCompleted,
-    sport: this.sport,
-    club: this.club,
-    major: this.major,
-    minor: this.minor,
-    requiredForm: this.requiredForm,
-    personalizeForm: this.personalizeForm,
-  });
+  // signupForm = new FormGroup({
+  //   CodePursuing: this.CodePursuing,
+  //   CodeCompleted: this.CodeCompleted,
+  //   sport: this.sport,
+  //   club: this.club,
+  //   major: this.major,
+  //   minor: this.minor,
+  //   requiredForm: this.requiredForm,
+  //   personalizeForm: this.personalizeForm,
+  // });
 
   public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
     if ((control.value as string).indexOf(' ') >= 0) {
@@ -474,11 +484,12 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
   // Profile Pic
   imagePreviewP(event: any): void {
+    this.useDefaultPic = false;
     this.imgChangeEvent = event;
     const file = (event.target as HTMLInputElement).files[0];
     this.form.patchValue({ profilePic: file });
     this.form.get('profilePic').updateValueAndValidity();
-
+    console.log('file pic', this.form.get('profilePic').value);
     // if (event.target.files && event.target.files[0]) {
     const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
@@ -716,13 +727,26 @@ export class SignupComponent implements OnInit, OnDestroy {
     //   );
     // }
   }
+  defaultPic() {
+    const defaultPicPath =
+      'https://res.cloudinary.com/skalarly/image/upload/c_scale,h_170,w_170/v1684875433/ProfilePics/Skalarly_1_t8jt5u.jpg';
+    this.useDefaultPic = !this.useDefaultPic;
 
+    if (this.useDefaultPic == true) {
+      this.form.patchValue({
+        profilePic: defaultPicPath,
+      });
+      console.log('boolean default pic', this.useDefaultPic);
+      console.log('file pic default', this.form.get('profilePic').value);
+    }
+  }
   onSubmit2(): any {
     this.isLoading = true;
     this.authService.createUserInfo(
       this.username.value,
       this.name.value,
       this.bio.value,
+      this.campus.value,
       // this.gender.value,
       this.birthday.value,
       this.major.value,

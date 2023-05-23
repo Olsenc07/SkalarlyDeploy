@@ -73,6 +73,11 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   // separatorKeysCodes: number[] = [ENTER, COMMA];
   // These show inputs in real time but arn't whats stored
 
+  campuses: string[] = [
+    'U of T Mississauga',
+    'U of T Scarborough',
+    'U of T St.George',
+  ];
   // genders: string[] = [
   //   'Female',
   //   'Male',
@@ -113,6 +118,7 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   showCase: FormControl = new FormControl('');
   // removeShowCase: FormControl = new FormControl('');
   birthday: FormControl = new FormControl('');
+  campus: FormControl = new FormControl('');
   // gender: FormControl = new FormControl('');
   form: FormGroup;
   private infoSub: Subscription;
@@ -504,6 +510,12 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   saveBirthday(): void {
     this.authService.editUserInfoBirthday(this.userId, this.birthday.value);
     this.snackBar.open('Birthday Saved!', 'Nice!', {
+      duration: 2000,
+    });
+  }
+  saveCampus(): void {
+    this.authService.editUserInfoCampus(this.userId, this.campus.value);
+    this.snackBar.open('Campus Saved!', 'Nice!', {
       duration: 2000,
     });
   }

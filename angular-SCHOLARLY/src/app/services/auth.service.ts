@@ -229,6 +229,7 @@ export class AuthService {
     username: string,
     name: string,
     bio: string,
+    campus: string,
     // gender: string,
     birthday: string,
     major: string,
@@ -243,6 +244,7 @@ export class AuthService {
     userData.append('username', username);
     userData.append('name', name);
     userData.append('bio', bio);
+    userData.append('campus', campus);
     // userData.append('gender', gender);
     userData.append('birthday', birthday);
     userData.append('major', major);
@@ -264,6 +266,7 @@ export class AuthService {
             username,
             name,
             bio,
+            campus,
             // gender,
             birthday,
             major,
@@ -517,10 +520,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            ProfilePicPath: responseData.post.ProfilePicPath,
-          };
           sub.unsubscribe();
           console.log('love you 8');
         },
@@ -541,10 +540,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            major,
-          };
           sub.unsubscribe();
           console.log('love you 9');
         },
@@ -565,10 +560,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            minor,
-          };
           sub.unsubscribe();
           console.log('love you 10');
         },
@@ -589,10 +580,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            sport,
-          };
           sub.unsubscribe();
           console.log('love you 11');
         },
@@ -613,10 +600,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            club,
-          };
           sub.unsubscribe();
           console.log('love you 12');
         },
@@ -637,10 +620,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            name,
-          };
           sub.unsubscribe();
           console.log('love you 13');
         },
@@ -660,10 +639,25 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            birthday,
-          };
+          sub.unsubscribe();
+          console.log('love you 14');
+        },
+        error: (error) => {
+          this.authStatusListener.next(false);
+        },
+      });
+  }
+  editUserInfoCampus(userId: string, campus: string): any {
+    const sub = this.http
+      .put<{ message: string; post: AuthDataInfo }>(
+        'https://www.skalarly.com/api/user/infoEdCampus',
+        {
+          campus,
+          userId,
+        }
+      )
+      .subscribe({
+        next: (responseData) => {
           sub.unsubscribe();
           console.log('love you 14');
         },

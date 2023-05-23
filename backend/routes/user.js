@@ -558,6 +558,7 @@ router.post("/info",
             username: req.body.username,
             name: req.body.name,
             bio: req.body.bio,
+            campus: req.body.campus,
             // gender: req.body.gender,
             birthday: req.body.birthday,
             major: req.body.major,
@@ -1607,6 +1608,8 @@ async(req, res, next) => {
 })
 
 // edit info
+// update all links that used this photo and then delete it, 
+// unless the previous photo was the default 
 const pic_ = multer({ storage: storage2, limits})
 router.put("/infoEdPic", checkAuth,
     pic_.single('profilePic'),
@@ -1673,7 +1676,7 @@ async(req, res, next) => {
                     })
                     .catch(error => {
                         res.status(500).json({
-                            message: 'Updating course failed!'
+                            message: 'Updating bio failed!'
                         });
                     })}})
 router.put("/infoEdBirthday", checkAuth,
@@ -1687,7 +1690,22 @@ async(req, res, next) => {
                     });
                 }).catch(error => {
                     res.status(500).json({
-                        message: 'Updating course failed!'
+                        message: 'Updating birthday failed!'
+                    });
+                })
+            }})
+            router.put("/infoEdCampus", checkAuth,
+async(req, res, next) => {
+            if(req.body.campus){
+                await UserInfo.updateOne({Creator:req.body.userId },{campus: req.body.campus})
+                .then(update => {
+                    res.status(200).json({
+                        message: 'Clean update',
+                        post: update
+                    });
+                }).catch(error => {
+                    res.status(500).json({
+                        message: 'Updating campus failed!'
                     });
                 })
             }})
