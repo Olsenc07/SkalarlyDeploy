@@ -2861,11 +2861,11 @@ router.post("/stayLoggedIn",  async(reg, res, next) => {
     const token = jwt.sign(
         { email: fetchedUser.email, userId: fetchedUser._id },
         process.env.love,
-        { expiresIn: 15000 }
+        { expiresIn: 2.88e+7 }
     );
     res.status(200).json({
         token: token,
-        expiresIn: 15000,
+        expiresIn: 2.88e+7,
         userId: fetchedUser._id
     });
 })  .catch(err => {
@@ -2913,11 +2913,11 @@ if(userInfo){
             const token = jwt.sign(
                 { email: fetchedUser.email, userId: fetchedUser._id },
                 process.env.love,
-                { expiresIn: 25200 }
+                { expiresIn: 2.88e+7 }
             );
             res.status(200).json({
                 token: token,
-                expiresIn: 15000,
+                expiresIn: 2.88e+7,
                 userId: fetchedUser._id
             });
         })
