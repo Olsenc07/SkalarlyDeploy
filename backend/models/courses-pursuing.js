@@ -20,4 +20,4 @@ CodePursuing14: { type: String},
 Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
 });
 
-module.exports = mongoose.model('UserInfoCoursePursuing', userInfoCoursePursuingSchema);
+module.exports = mongoose.model('coursepursuings', userInfoCoursePursuingSchema);

@@ -19,7 +19,11 @@ import { AuthService } from '../services/auth.service';
 import { AuthServiceEdit } from '../services/edit.service';
 import { AuthServiceEditCourse } from '../services/editCourse.service';
 import { Subscription } from 'rxjs';
-import { AuthDataInfo } from '../signup/auth-data.model';
+import {
+  AuthDataInfo,
+  AuthDataInfoCoursesC,
+  AuthDataInfoCoursesP,
+} from '../signup/auth-data.model';
 import { ShowCaseService } from '../services/showCase.service';
 import { mimeType } from '../post-page/mime-type.validator';
 import { Picker } from 'emoji-picker-element';
@@ -569,10 +573,10 @@ export class EditProfileComponent implements OnInit, OnDestroy {
 })
 export class EditProfileComp1Component implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesC = {};
   classes: string[] = [];
   // @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
-
+  // could add an autocomplete with the class list service
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
@@ -593,12 +597,11 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesC(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesC()
       .subscribe((infos: any) => {
         this.info = infos;
-        console.log('never deplete', this.info);
       });
     this.codeSub = this.CodeCompleted.valueChanges.subscribe((v) =>
       this.CodeCompletedLength.next(v.length)
@@ -615,7 +618,7 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -625,7 +628,7 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted2.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -635,7 +638,7 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted3.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -645,7 +648,7 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted4.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -655,7 +658,7 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted5.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -738,7 +741,7 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
 })
 export class EditProfileComp1WComponent implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesC = {};
   classes: string[] = [];
   @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
 
@@ -761,10 +764,10 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesC(this.userId);
     this.infosSub = this.authService
       .getInfoUpdateListener()
-      .subscribe((infos: any) => {
+      .getInfoUpdateListenerCoursesC((infos: any) => {
         this.info = infos;
         console.log('infos', this.info);
       });
@@ -785,7 +788,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted6.value.toUpperCase()
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -795,7 +798,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted7.value.toUpperCase()
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -805,7 +808,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted8.value.toUpperCase()
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -815,7 +818,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted9.value.toUpperCase()
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -825,7 +828,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted10.value.toUpperCase()
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -894,7 +897,7 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
 })
 export class EditProfileComp2Component implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
@@ -916,9 +919,9 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesC(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesC()
       .subscribe((infos: any) => {
         this.info = infos;
         console.log('infos', this.info);
@@ -937,7 +940,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted11.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -947,7 +950,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted12.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -957,7 +960,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted13.value
     );
-    this.snackBar.open('Course cleared!', 'Nice!', {
+    this.snackBar.open('Course cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -967,7 +970,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted14.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -977,7 +980,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted15.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1060,7 +1063,7 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
 })
 export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   classes: string[] = [];
@@ -1082,9 +1085,9 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesC(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesC()
       .subscribe((infos: any) => {
         this.info = infos;
         console.log('infos', this.info);
@@ -1103,7 +1106,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted16.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1113,7 +1116,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted17.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1123,7 +1126,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted18.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1133,7 +1136,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted19.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1143,7 +1146,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted20.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1225,7 +1228,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
 })
 export class EditProfileComp3Component implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
@@ -1247,12 +1250,11 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesC(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesC()
       .subscribe((infos: any) => {
         this.info = infos;
-        console.log('infos', this.info);
       });
     this.codeSub = this.CodeCompleted21.valueChanges.subscribe((v) =>
       this.CodeCompleted21Length.next(v.length)
@@ -1268,7 +1270,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted21.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1278,7 +1280,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted22.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1288,7 +1290,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted23.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1298,7 +1300,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted24.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1308,7 +1310,7 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted25.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1390,8 +1392,9 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
 })
 export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
+
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
   private codeSub: Subscription;
@@ -1411,9 +1414,9 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesC(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesC()
       .subscribe((infos: any) => {
         this.info = infos;
         console.log('infos', this.info);
@@ -1432,7 +1435,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted26.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1442,7 +1445,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted27.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1462,7 +1465,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted29.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1472,7 +1475,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted30.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1555,7 +1558,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
 })
 export class EditProfileComp4Component implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
@@ -1577,12 +1580,11 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesC(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesC()
       .subscribe((infos: any) => {
         this.info = infos;
-        console.log('infos', this.info);
       });
     this.codeSub = this.CodeCompleted31.valueChanges.subscribe((v) =>
       this.CodeCompleted31Length.next(v.length)
@@ -1598,7 +1600,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted31.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1608,7 +1610,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted32.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1618,7 +1620,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted33.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1628,7 +1630,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted34.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1638,7 +1640,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted35.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1719,7 +1721,7 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
 })
 export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
   FilteredCodes: string[] = this.classListService.allClasses().slice();
   private infosSub: Subscription;
@@ -1741,12 +1743,11 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesC(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesC()
       .subscribe((infos: any) => {
         this.info = infos;
-        console.log('infos', this.info);
       });
     this.codeSub = this.CodeCompleted36.valueChanges.subscribe((v) =>
       this.CodeCompleted36Length.next(v.length)
@@ -1762,7 +1763,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted36.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1772,7 +1773,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted37.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1782,7 +1783,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted38.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1792,7 +1793,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted39.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1802,7 +1803,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompleted40.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1812,7 +1813,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodeCompletedX.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1903,7 +1904,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
 })
 export class EditProfilePurWComponent implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesP = {};
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
@@ -1927,9 +1928,9 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesP(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesP()
       .subscribe((infos: any) => {
         this.info = infos;
       });
@@ -1947,7 +1948,7 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing6.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1957,7 +1958,7 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing7.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1967,7 +1968,7 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing8.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1977,7 +1978,7 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing9.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -1987,7 +1988,7 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing10.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2083,7 +2084,7 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
 })
 export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesP = {};
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
@@ -2103,12 +2104,11 @@ export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesP(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesP()
       .subscribe((infos: any) => {
         this.info = infos;
-        console.log('infos', this.info);
       });
     this.codeSub = this.CodePursuing11.valueChanges.subscribe((v) =>
       this.CodePursuing11Length.next(v.length)
@@ -2124,7 +2124,7 @@ export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing11.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2134,7 +2134,7 @@ export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing12.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2190,7 +2190,7 @@ export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
 })
 export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesP = {};
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
@@ -2210,9 +2210,9 @@ export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesP(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesP()
       .subscribe((infos: any) => {
         this.info = infos;
         console.log('infos', this.info);
@@ -2231,7 +2231,7 @@ export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing13.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2241,7 +2241,7 @@ export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing14.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2297,7 +2297,7 @@ export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
 })
 export class EditProfilePurComponent implements OnInit, OnDestroy {
   userId: string;
-  info: AuthDataInfo = {};
+  info: AuthDataInfoCoursesP = {};
   classesP: string[] = [];
   @ViewChild('codeInputP') codeInputP: ElementRef<HTMLInputElement>;
 
@@ -2320,9 +2320,9 @@ export class EditProfilePurComponent implements OnInit, OnDestroy {
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
-    this.authService.getInfoPersonal(this.userId);
+    this.authService.getInfoProfileCoursesP(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerCoursesP()
       .subscribe((infos: any) => {
         this.info = infos;
         console.log('infos', this.info);
@@ -2338,7 +2338,7 @@ export class EditProfilePurComponent implements OnInit, OnDestroy {
   clearNext(): void {
     this.CodePursuing.setValue('');
     this.authServiceEditNext.editUserNext(this.userId, this.CodePursuing.value);
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2348,7 +2348,7 @@ export class EditProfilePurComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing2.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2358,7 +2358,7 @@ export class EditProfilePurComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing3.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2368,7 +2368,7 @@ export class EditProfilePurComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing4.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }
@@ -2378,7 +2378,7 @@ export class EditProfilePurComponent implements OnInit, OnDestroy {
       this.userId,
       this.CodePursuing5.value
     );
-    this.snackBar.open('Course Cleared!', 'Nice!', {
+    this.snackBar.open('Course Cleared', 'Nice!', {
       duration: 2000,
     });
   }

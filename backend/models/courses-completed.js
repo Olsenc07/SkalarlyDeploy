@@ -47,4 +47,4 @@ CodeCompletedX: { type: String},
 Creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true},
 });
 
-module.exports = mongoose.model('UserInfoCourseCompleted', userInfoCourseCompletedSchema);
+module.exports = mongoose.model('coursecompletes', userInfoCourseCompletedSchema);

@@ -794,7 +794,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -806,10 +806,10 @@ async(req, res, next) => {
             });
         })
 })
-// edit Complete 1
+// edit Complete 
 router.patch("/infoCourse2", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted2: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted2: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -821,10 +821,10 @@ async(req, res, next) => {
             });
         })
 })
-// edit Complete 1
+// edit Complete 
 router.patch("/infoCourse3", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted3: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted3: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -839,7 +839,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse4", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted4: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted4: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -854,7 +854,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse5", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted5: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted5: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -869,7 +869,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse6", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted6: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted6: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -884,7 +884,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse7", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted7: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted7: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -899,7 +899,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse8", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted8: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted8: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -914,7 +914,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse9", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted9: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted9: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -929,7 +929,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse10", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted10: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted10: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -944,7 +944,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse11", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted11: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted11: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -959,7 +959,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse12", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted12: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted12: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -974,7 +974,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse13", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted13: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted13: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -989,7 +989,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse14", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted14: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1004,7 +1004,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse15", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted15: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted15: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1015,7 +1015,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse16", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted16: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted16: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1030,7 +1030,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse17", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted17: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted17: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1045,7 +1045,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse18", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted18: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted18: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1060,7 +1060,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse19", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted19: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted19: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1075,7 +1075,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse20", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted20: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted20: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1090,7 +1090,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse21", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted21: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted21: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1105,7 +1105,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse22", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted22: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted22: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1120,7 +1120,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse23", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted23: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted23: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1135,7 +1135,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse24", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted24: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted24: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1150,7 +1150,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse25", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted25: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted25: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1165,7 +1165,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse26", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted26: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted26: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1180,7 +1180,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse27", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted27: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted27: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1195,7 +1195,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse28", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted28: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted28: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1210,7 +1210,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse29", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted29: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted29: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1225,7 +1225,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse30", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted30: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted30: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1240,7 +1240,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse31", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted31: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted31: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1255,7 +1255,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse32", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted32: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted32: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1270,7 +1270,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse33", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted33: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted33: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1285,7 +1285,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse34", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted34: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted34: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1300,7 +1300,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse35", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted35: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted35: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1315,7 +1315,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse36", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted36: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted36: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1330,7 +1330,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse37", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted37: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted37: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1345,7 +1345,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse38", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted38: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted38: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1360,7 +1360,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse39", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted39: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted39: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1375,7 +1375,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourse40", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted40: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted40: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1390,7 +1390,7 @@ async(req, res, next) => {
 // edit Complete 1
 router.patch("/infoCourseX", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompletedX: ''})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompletedX: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1406,7 +1406,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1421,7 +1421,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext2", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing2: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing2: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1436,7 +1436,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext3", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing3: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing3: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1451,7 +1451,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext4", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing4: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing4: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1466,7 +1466,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext5", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing5: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing5: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1481,7 +1481,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext6", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing6: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing6: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1496,7 +1496,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext7", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing7: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing7: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1511,7 +1511,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext8", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing8: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing8: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1526,7 +1526,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext9", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing9: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing9: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1541,7 +1541,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext10", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing10: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing10: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1556,7 +1556,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext11", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing11: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing11: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1571,7 +1571,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext12", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing12: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing12: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1586,7 +1586,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext13", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing13: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing13: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1601,7 +1601,7 @@ async(req, res, next) => {
 // edit Next Course
 router.patch("/infoNext14", checkAuth,
 async(req, res, next) => {
-        await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing14: ''})
+        await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing14: ''})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
@@ -1765,543 +1765,802 @@ async(req, res, next) => {
   
     router.put("/infoEdComp1", 
     checkAuth,
-    (req, res, next) => {
+    async(req, res, next) => {
     if(req.body.CodeCompleted){
-         UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted: req.body.CodeCompleted})
+       await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted: req.body.CodeCompleted})
          .then(update => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
             });
-        })}})   
+        }).catch(error => {
+            res.status(500).json({
+                message: 'updating course failed'
+            });
+        });
+    }})   
         router.put("/infoEdComp2", 
         checkAuth,
-        (req, res, next) => {
+        async(req, res, next) => {
             if(req.body.CodeCompleted2){
-                 UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted2: req.body.CodeCompleted2})
+               await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted2: req.body.CodeCompleted2})
                  .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
                         post: update
                     });
-                })}})
+                }).catch(error => {
+                    res.status(500).json({
+                        message: 'updating course failed'
+                    });
+                });
+            }})
         router.put("/infoEdComp3", 
         checkAuth,
-        (req, res, next) => {
+        async(req, res, next) => {
         if(req.body.CodeCompleted3){
-                         UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted3: req.body.CodeCompleted3})
+          await  CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted3: req.body.CodeCompleted3})
                          .then(update => {
                             res.status(200).json({
                                 message: 'Clean update',
                                 post: update
                             });
-                            })}})
+                            }).catch(error => {
+                                res.status(500).json({
+                                    message: 'updating course failed'
+                                });
+                            });
+                        }})
            router.put("/infoEdComp4", 
         checkAuth,
-        (req, res, next) => {                   
+        async(req, res, next) => {                   
          if(req.body.CodeCompleted4){
-        UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted4: req.body.CodeCompleted4})
+            await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted4: req.body.CodeCompleted4})
          .then(update => {
                 res.status(200).json({
                                         message: 'Clean update',
                                         post: update
                                     });
-                                    })}})
+                                    }).catch(error => {
+                                        res.status(500).json({
+                                            message: 'updating course failed'
+                                        });
+                                    });
+                                }})
          router.put("/infoEdComp5", checkAuth,
-           (req, res, next) => {
+           async(req, res, next) => {
            if(req.body.CodeCompleted5){
-                                     UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted5: req.body.CodeCompleted5})
+            await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted5: req.body.CodeCompleted5})
                                      .then(update => {
                                         res.status(200).json({
                                             message: 'Clean update',
                                             post: update
                                         });
-                                            })}})  
+                                            }).catch(error => {
+                                                res.status(500).json({
+                                                    message: 'updating course failed'
+                                                });
+                                            });
+                                        }})  
                                                                                                                    
 router.put("/infoEdComp6", checkAuth,
     async(req, res, next) => {
         if(req.body.CodeCompleted6){
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted6: req.body.CodeCompleted6})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted6: req.body.CodeCompleted6})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
             });
-        })}})  
+        }).catch(error => {
+            res.status(500).json({
+                message: 'updating course failed'
+            });
+        });
+    }})  
        router.put("/infoEdComp7", checkAuth,
     async(req, res, next) => { 
                     if(req.body.CodeCompleted7){
-            await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted7: req.body.CodeCompleted7})
+            await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted7: req.body.CodeCompleted7})
             .then(update => {
                 res.status(200).json({
                     message: 'Clean update',
                     post: update
                 });
-            })}})    
+            }).catch(error => {
+                res.status(500).json({
+                    message: 'updating course failed'
+                });
+            });
+        }})    
             router.put("/infoEdComp8", checkAuth,
     async(req, res, next) => {    
                     if(req.body.CodeCompleted8){
-              await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted8: req.body.CodeCompleted8})
+              await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted8: req.body.CodeCompleted8})
               .then(update => {
                 res.status(200).json({
                     message: 'Clean update',
                     post: update
                 });
-            })}}) 
+            }).catch(error => {
+                res.status(500).json({
+                    message: 'updating course failed'
+                });
+            });
+        }}) 
                  router.put("/infoEdComp9", checkAuth,
     async(req, res, next) => {  
                               if(req.body.CodeCompleted9){
-                          await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted9: req.body.CodeCompleted9})
+                          await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted9: req.body.CodeCompleted9})
                           .then(update => {
                             res.status(200).json({
                                 message: 'Clean update',
                                 post: update
                             });
-                        })}})  
+                        }).catch(error => {
+                            res.status(500).json({
+                                message: 'updating course failed'
+                            });
+                        });
+                    }})  
        router.put("/infoEdComp10", checkAuth,
     async(req, res, next) => {             
         if(req.body.CodeCompleted10){
-      await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted10: req.body.CodeCompleted10})
+      await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted10: req.body.CodeCompleted10})
       .then(update => {
         res.status(200).json({
             message: 'Clean update',
             post: update
         });
-    })}})      
+    }).catch(error => {
+        res.status(500).json({
+            message: 'updating course failed'
+        });
+    });
+}})      
 
 router.put("/infoEdComp11", checkAuth,
  async(req, res, next) => {                                                   
  if(req.body.CodeCompleted11){
- await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted11: req.body.CodeCompleted11})
+ await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted11: req.body.CodeCompleted11})
  .then(update => {
     res.status(200).json({
         message: 'Clean update',
         post: update
     });
-})}})
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}})
 router.put("/infoEdComp12", checkAuth,
  async(req, res, next) => {                 
 if(req.body.CodeCompleted12){
- await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted12: req.body.CodeCompleted12})
+ await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted12: req.body.CodeCompleted12})
  .then(update => {
     res.status(200).json({
         message: 'Clean update',
         post: update
     });
-})}}) 
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}}) 
  router.put("/infoEdComp13", checkAuth,
  async(req, res, next) => {               
  if(req.body.CodeCompleted13){
- await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted13: req.body.CodeCompleted13})
+ await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted13: req.body.CodeCompleted13})
  .then(update => {
     res.status(200).json({
         message: 'Clean update',
         post: update
     });
-})}}) 
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+}); 
+}}) 
 router.put("/infoEdComp14", checkAuth,
  async(req, res, next) => {               
 if(req.body.CodeCompleted14){
-await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.CodeCompleted14})
+await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.CodeCompleted14})
 .then(update => {
     res.status(200).json({
         message: 'Clean update',
         post: update
     });
-})}}) 
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}}) 
 router.put("/infoEdComp15", checkAuth,
  async(req, res, next) => {              
  if(req.body.CodeCompleted15){
- await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted15: req.body.CodeCompleted15})
+ await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted15: req.body.CodeCompleted15})
  .then(update => {
     res.status(200).json({
         message: 'Clean update',
         post: update
     });
-})}});
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}});
 router.put("/infoEdComp16", checkAuth,
  async(req, res, next) => {      
     if(req.body.CodeCompleted16){
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted16: req.body.CodeCompleted16})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted16: req.body.CodeCompleted16})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
             });
-        })}});
+        }).catch(error => {
+            res.status(500).json({
+                message: 'updating course failed'
+            });
+        });
+    }});
 router.put("/infoEdComp17", checkAuth,
 async(req, res, next) => { 
     if(req.body.CodeCompleted17){
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted17: req.body.CodeCompleted17})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted17: req.body.CodeCompleted17})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
             });
-        })}});
+        }).catch(error => {
+            res.status(500).json({
+                message: 'updating course failed'
+            });
+        });
+    }});
 router.put("/infoEdComp18", checkAuth,
 async(req, res, next) => { 
     if(req.body.CodeCompleted18){
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted18: req.body.CodeCompleted18})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted18: req.body.CodeCompleted18})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
             });
-        })}}); 
+        }).catch(error => {
+            res.status(500).json({
+                message: 'updating course failed'
+            });
+        });
+    }}); 
         router.put("/infoEdComp19", checkAuth,
         async(req, res, next) => {                                                                                                                                          
             if(req.body.CodeCompleted19){
-                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted19: req.body.CodeCompleted19})
+                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted19: req.body.CodeCompleted19})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
                         post: update
                     });
-                })}});                                                                                                                                                 
+                }).catch(error => {
+                    res.status(500).json({
+                        message: 'updating course failed'
+                    });
+                });
+            }});                                                                                                                                                 
                 router.put("/infoEdComp20", checkAuth,
                 async(req, res, next) => {                                                                                                                                          
                     if(req.body.CodeCompleted20){
-                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted20: req.body.CodeCompleted20})
+                        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted20: req.body.CodeCompleted20})
                         .then(update => {
                             res.status(200).json({
                                 message: 'Clean update',
                                 post: update
                             });
-                        })}});                                                                                                                                                                
+                        }).catch(error => {
+                            res.status(500).json({
+                                message: 'updating course failed'
+                            });
+                        });
+                    }});                                                                                                                                                                
                         router.put("/infoEdComp21", checkAuth,
                         async(req, res, next) => {  
                             if(req.body.CodeCompleted21){
-                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted21: req.body.CodeCompleted21})
+                                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted21: req.body.CodeCompleted21})
                                 .then(update => {
                                     res.status(200).json({
                                         message: 'Clean update',
                                         post: update
                                     });
-                                })}});
+                                }).catch(error => {
+                                    res.status(500).json({
+                                        message: 'updating course failed'
+                                    });
+                                });
+                            }});
                         router.put("/infoEdComp22", checkAuth,
                                 async(req, res, next) => {  
                                     if(req.body.CodeCompleted22){
-                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted22: req.body.CodeCompleted22})
+                                        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted22: req.body.CodeCompleted22})
                                         .then(update => {
                                             res.status(200).json({
                                                 message: 'Clean update',
                                                 post: update
                                             });
-                                        })}}); 
+                                        }).catch(error => {
+                                            res.status(500).json({
+                                                message: 'updating course failed'
+                                            });
+                                        });
+                                    }}); 
                         router.put("/infoEdComp23", checkAuth,
                                 async(req, res, next) => {                                                                                                                                                
                                 if(req.body.CodeCompleted23){
-                                    await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted23: req.body.CodeCompleted23})
+                                    await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted23: req.body.CodeCompleted23})
                                          .then(update => {
                                          res.status(200).json({
                                                     message: 'Clean update',
                                                     post: update
                                                 });
-                                            })}});
+                                            }).catch(error => {
+                                                res.status(500).json({
+                                                    message: 'updating course failed'
+                                                });
+                                            });
+                                        }});
        router.put("/infoEdComp24", checkAuth,
             async(req, res, next) => {                                                                                                                                                                          if(req.body.CodeCompleted24){
-        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted24: req.body.CodeCompleted24})
+        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted24: req.body.CodeCompleted24})
         .then(update => {
             res.status(200).json({
                 message: 'Clean update',
                 post: update
             });
-        })}});
+        }).catch(error => {
+            res.status(500).json({
+                message: 'updating course failed'
+            });
+        });
+    }});
         router.put("/infoEdComp25", checkAuth,
             async(req, res, next) => {              
          if(req.body.CodeCompleted25){
-                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted25: req.body.CodeCompleted25})
+                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted25: req.body.CodeCompleted25})
                 .then(update => {
                     res.status(200).json({
                         message: 'Clean update',
                         post: update
                     });
-                })}});   
+                }).catch(error => {
+                    res.status(500).json({
+                        message: 'updating course failed'
+                    });
+                });
+            }});   
             
                 router.put("/infoEdComp26", checkAuth,
  async(req, res, next) => {  
                     if(req.body.CodeCompleted26){
-                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted26: req.body.CodeCompleted26})
+                        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted26: req.body.CodeCompleted26})
                         .then(update => {
                             res.status(200).json({
                                 message: 'Clean update',
                                 post: update
                             });
-                        })}});
+                        }).catch(error => {
+                            res.status(500).json({
+                                message: 'updating course failed'
+                            });
+                        });
+                    }});
                         router.put("/infoEdComp27", checkAuth,
                         async(req, res, next) => {
                                         if(req.body.CodeCompleted27){
-                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted27: req.body.CodeCompleted27})
+                                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted27: req.body.CodeCompleted27})
                                 .then(update => {
                                     res.status(200).json({
                                         message: 'Clean update',
                                         post: update
                                     });
-                                })}});                
+                                }).catch(error => {
+                                    res.status(500).json({
+                                        message: 'updating course failed'
+                                    });
+                                });
+                            }});                
                                 router.put("/infoEdComp28", checkAuth,
                                 async(req, res, next) => {
                                 if(req.body.CodeCompleted28){
-                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted28: req.body.CodeCompleted28})
+                                        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted28: req.body.CodeCompleted28})
                                         .then(update => {
                                             res.status(200).json({
                                                 message: 'Clean update',
                                                 post: update
                                             });
-                                        })}});
+                                        }).catch(error => {
+                                            res.status(500).json({
+                                                message: 'updating course failed'
+                                            });
+                                        });
+                                    }});
                                         router.put("/infoEdComp29", checkAuth,
                                         async(req, res, next) => {
                                                    if(req.body.CodeCompleted29){
-                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted29: req.body.CodeCompleted29})
+                                                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted29: req.body.CodeCompleted29})
                                                 .then(update => {
                                                     res.status(200).json({
                                                         message: 'Clean update',
                                                         post: update
                                                     });
-                                                })}});   
+                                                }).catch(error => {
+                                                    res.status(500).json({
+                                                        message: 'updating course failed'
+                                                    });
+                                                });
+                                            }});   
                                                 router.put("/infoEdComp30", checkAuth,
                                                 async(req, res, next) => {  
                                                 if(req.body.CodeCompleted30){
-                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted30: req.body.CodeCompleted30})
+                                                        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted30: req.body.CodeCompleted30})
                                                         .then(update => {
                                                             res.status(200).json({
                                                                 message: 'Clean update',
                                                                 post: update
                                                             });
-                                                        })}});   
+                                                        }).catch(error => {
+                                                            res.status(500).json({
+                                                                message: 'updating course failed'
+                                                            });
+                                                        });
+                                                    }});   
                                
 router.put("/infoEdComp31", checkAuth,
  async(req, res, next) => {  
 if(req.body.CodeCompleted31){
-                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted31: req.body.CodeCompleted31})
+                                                                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted31: req.body.CodeCompleted31})
                                                                 .then(update => {
                                                                     res.status(200).json({
                                                                         message: 'Clean update',
                                                                         post: update
                                                                     });
-                                                                })}});
+                                                                }).catch(error => {
+                                                                    res.status(500).json({
+                                                                        message: 'updating course failed'
+                                                                    });
+                                                                });
+                                                            }});
                                                                 router.put("/infoEdComp32", checkAuth,
  async(req, res, next) => {
                                                                                if(req.body.CodeCompleted32){
-                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted32: req.body.CodeCompleted32})
+                                                                        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted32: req.body.CodeCompleted32})
                                                                         .then(update => {
                                                                             res.status(200).json({
                                                                                 message: 'Clean update',
                                                                                 post: update
                                                                             });
-                                                                        })}});
+                                                                        }).catch(error => {
+                                                                            res.status(500).json({
+                                                                                message: 'updating course failed'
+                                                                            });
+                                                                        });
+                                                                    }});
                                                                         router.put("/infoEdComp33", checkAuth,
  async(req, res, next) => {
                                                                                        if(req.body.CodeCompleted33){
-                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted33: req.body.CodeCompleted33})
+                                                                                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted33: req.body.CodeCompleted33})
                                                                                 .then(update => {
                                                                                     res.status(200).json({
                                                                                         message: 'Clean update',
                                                                                         post: update
                                                                                     });
-                                                                                })}}); 
+                                                                                }).catch(error => {
+                                                                                    res.status(500).json({
+                                                                                        message: 'updating course failed'
+                                                                                    });
+                                                                                });
+                                                                            }}); 
                                                                                 router.put("/infoEdComp34", checkAuth,
  async(req, res, next) => {
                                                                                               if(req.body.CodeCompleted34){
-                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted34: req.body.CodeCompleted34})
+                                                                                        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted34: req.body.CodeCompleted34})
                                                                                         .then(update => {
                                                                                             res.status(200).json({
                                                                                                 message: 'Clean update',
                                                                                                 post: update
                                                                                             });
-                                                                                        })}});
+                                                                                        }).catch(error => {
+                                                                                            res.status(500).json({
+                                                                                                message: 'updating course failed'
+                                                                                            });
+                                                                                        });
+                                                                                    }});
                                                                                         router.put("/infoEdComp35", checkAuth,
  async(req, res, next) => {   
                                                                                             if(req.body.CodeCompleted35){
-                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted35: req.body.CodeCompleted35})
+                                                                                                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted35: req.body.CodeCompleted35})
                                                                                                 .then(update => {
                                                                                                     res.status(200).json({
                                                                                                         message: 'Clean update',
                                                                                                         post: update
                                                                                                     });
-                                                                                                })}});      
+                                                                                                }).catch(error => {
+                                                                                                    res.status(500).json({
+                                                                                                        message: 'updating course failed'
+                                                                                                    });
+                                                                                                });
+                                                                                            }});      
                                                                                                   
                                                                                    
                                                                                                 
                                                                                                 router.put("/infoEdComp36", checkAuth,
  async(req, res, next) => {  
                                                                                                     if(req.body.CodeCompleted36){
-                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted36: req.body.CodeCompleted36})
+                                                                                                        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted36: req.body.CodeCompleted36})
                                                                                                         .then(update => {
                                                                                                             res.status(200).json({
                                                                                                                 message: 'Clean update',
                                                                                                                 post: update
                                                                                                             });
-                                                                                                        })}}); 
+                                                                                                        }).catch(error => {
+                                                                                                            res.status(500).json({
+                                                                                                                message: 'updating course failed'
+                                                                                                            });
+                                                                                                        });
+                                                                                                    }}); 
                                                                                                         router.put("/infoEdComp37", checkAuth,
  async(req, res, next) => {            
                                                                                                           if(req.body.CodeCompleted37){
-                                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted37: req.body.CodeCompleted37})
+                                                                                                                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted37: req.body.CodeCompleted37})
                                                                                                                 .then(update => {
                                                                                                                     res.status(200).json({
                                                                                                                         message: 'Clean update',
                                                                                                                         post: update
                                                                                                                     });
-                                                                                                                })}});
+                                                                                                                }).catch(error => {
+                                                                                                                    res.status(500).json({
+                                                                                                                        message: 'updating course failed'
+                                                                                                                    });
+                                                                                                                });
+                                                                                                            }});
                                                                                                                 router.put("/infoEdComp38", checkAuth,
  async(req, res, next) => {               
                                                                                                                 if(req.body.CodeCompleted38){
-                                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted38: req.body.CodeCompleted38})
+                                                                                                                        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted38: req.body.CodeCompleted38})
                                                                                                                         .then(update => {
                                                                                                                             res.status(200).json({
                                                                                                                                 message: 'Clean update',
                                                                                                                                 post: update
                                                                                                                             });
-                                                                                                                        })}});
+                                                                                                                        }).catch(error => {
+                                                                                                                            res.status(500).json({
+                                                                                                                                message: 'updating course failed'
+                                                                                                                            });
+                                                                                                                        });
+                                                                                                                    }});
                                                                                                                         router.put("/infoEdComp39", checkAuth,
  async(req, res, next) => {
                                                                                                                         if(req.body.CodeCompleted39){
-                                                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted39: req.body.CodeCompleted39})
+                                                                                                                                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted39: req.body.CodeCompleted39})
                                                                                                                                 .then(update => {
                                                                                                                                     res.status(200).json({
                                                                                                                                         message: 'Clean update',
                                                                                                                                         post: update
                                                                                                                                     });
-                                                                                                                                })}});
+                                                                                                                                }).catch(error => {
+                                                                                                                                    res.status(500).json({
+                                                                                                                                        message: 'updating course failed'
+                                                                                                                                    });
+                                                                                                                                });
+                                                                                                                            }});
                                                                                                                                 router.put("/infoEdComp40", checkAuth,
  async(req, res, next) => {   
                                                                                                                                     if(req.body.CodeCompleted40){
-                                                                                                                                        await UserInfo.updateOne({Creator:req.body.userId },{CodeCompleted40: req.body.CodeCompleted40})
+                                                                                                                                        await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted40: req.body.CodeCompleted40})
                                                                                                                                         .then(update => {
                                                                                                                                             res.status(200).json({
                                                                                                                                                 message: 'Clean update',
                                                                                                                                                 post: update
                                                                                                                                             });
-                                                                                                                                        })}});               
+                                                                                                                                        }).catch(error => {
+                                                                                                                                            res.status(500).json({
+                                                                                                                                                message: 'updating course failed'
+                                                                                                                                            });
+                                                                                                                                        });
+                                                                                                                                    }});               
                                                                                                                                         router.put("/infoEdCompX", checkAuth,
  async(req, res, next) => {
                                                                                                                                         if(req.body.CodeCompletedX){
-                                                                                                                                                await UserInfo.updateOne({Creator:req.body.userId },{CodeCompletedX: req.body.CodeCompletedX})
+                                                                                                                                                await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompletedX: req.body.CodeCompletedX})
                                                                                                                                                 .then(update => {
                                                                                                                                                     res.status(200).json({
                                                                                                                                                         message: 'Clean update',
                                                                                                                                                         post: update
                                                                                                                                                     });
-                                                                                                                                                })}}); 
+                                                                                                                                                }).catch(error => {
+                                                                                                                                                    res.status(500).json({
+                                                                                                                                                        message: 'updating course failed'
+                                                                                                                                                    });
+                                                                                                                                                });
+                                                                                                                                            }}); 
                                                                                                                                                
                                                                                                                                             
 
 router.put("/infoEdPur", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing){
-await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing})
+await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing})
 .then(update => {
 res.status(200).json({
 message: 'Clean update',
  post: update
 });
-})}});   
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}});   
 router.put("/infoEdPur2", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing2){
-await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing2: req.body.CodePursuing2})
+await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing2: req.body.CodePursuing2})
 .then(update => {
 res.status(200).json({
 message: 'Clean update',
  post: update
 });
-})}});                                                                                                                                                                                                                                                                                
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}});                                                                                                                                                                                                                                                                                
 router.put("/infoEdPur3", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing3){
-await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing3: req.body.CodePursuing3})
+await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing3: req.body.CodePursuing3})
 .then(update => {
 res.status(200).json({
 message: 'Clean update',
  post: update
 });
-})}});  
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}});  
 router.put("/infoEdPur4", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing4){
-await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing4: req.body.CodePursuing4})
+await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing4: req.body.CodePursuing4})
 .then(update => {
 res.status(200).json({
 message: 'Clean update',
  post: update
 });
-})}});  
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}});  
 router.put("/infoEdPur5", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing5){
-await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing5: req.body.CodePursuing5})
+await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing5: req.body.CodePursuing5})
 .then(update => {
 res.status(200).json({
 message: 'Clean update',
  post: update
 });
-})}});                                                                                                                                                                      
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}});                                                                                                                                                                      
 router.put("/infoEdPurW6", checkAuth,
-(req, res, next) => {                                                          
+async(req, res, next) => {                                                          
 if(req.body.CodePursuing6){
-UserInfo.updateOne({Creator:req.body.userId },{CodePursuing6: req.body.CodePursuing6})
+await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing6: req.body.CodePursuing6})
 .then(update => {
 res.status(200).json({
 message: 'Clean update',
 post: update });
-})}});     
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}});     
 router.put("/infoEdPurW7", checkAuth,
-(req, res, next) => {       
+async(req, res, next) => {       
 if(req.body.CodePursuing7){
-    UserInfo.updateOne({Creator:req.body.userId },{CodePursuing7: req.body.CodePursuing7})
+await  CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing7: req.body.CodePursuing7})
    .then(update => {
        res.status(200).json({
            message: 'Clean update',
            post: update
        });
-   })}}) 
+   }).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}}) 
    router.put("/infoEdPurW8", checkAuth,
-(req, res, next) => {                                                                                                                                                                                           
+async(req, res, next) => {                                                                                                                                                                                           
    if(req.body.CodePursuing8){
-    UserInfo.updateOne({Creator:req.body.userId },{CodePursuing8: req.body.CodePursuing8})
+    CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing8: req.body.CodePursuing8})
    .then(update => {
        res.status(200).json({
            message: 'Clean update',
            post: update
        });
-   })}})    
+   }).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}})    
    router.put("/infoEdPurW9", checkAuth,
-   (req, res, next) => {                                                                                                                                                                                                   
+   async(req, res, next) => {                                                                                                                                                                                                   
     if(req.body.CodePursuing9){
-        UserInfo.updateOne({Creator:req.body.userId },{CodePursuing9: req.body.CodePursuing9})                                                                                                                                                                                              
+await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing9: req.body.CodePursuing9})                                                                                                                                                                                              
      .then(update => {
          res.status(200).json({
              message: 'Clean update',
              post: update
          });
-     })}})
+     }).catch(error => {
+        res.status(500).json({
+            message: 'updating course failed'
+        });
+    });
+    }})
      router.put("/infoEdPurW10", checkAuth,
-     (req, res, next) => {                                                                                                                                                                                                   
+async(req, res, next) => {                                                                                                                                                                                                   
       if(req.body.CodePursuing10){
-          UserInfo.updateOne({Creator:req.body.userId },{CodePursuing10: req.body.CodePursuing10})                                                                                                                                                                                              
+         await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing10: req.body.CodePursuing10})                                                                                                                                                                                              
        .then(update => {
            res.status(200).json({
                message: 'Clean update',
                post: update
            });
-       })}})                                                                                                                                                                                                                    
+       }).catch(error => {
+        res.status(500).json({
+            message: 'updating course failed'
+        });
+    });
+    }})                                                                                                                                                                                                                    
        router.put("/infoEdPurSpring11", checkAuth,
        async(req, res, next) => {  
 
            if(req.body.CodePursuing11){
-               await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing11: req.body.CodePursuing11})
+               await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing11: req.body.CodePursuing11})
                .then(update => {
                    res.status(200).json({
                        message: 'Clean update',
                        post: update
                    });
-               })
+               }).catch(error => {
+                res.status(500).json({
+                    message: 'updating course failed'
+                });
+            });
                    }})                                                                                                                                                                                                        
     router.put("/infoEdPurSpring12", checkAuth,
        async(req, res, next) => {  
 
            if(req.body.CodePursuing12){
-               await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing12: req.body.CodePursuing12})
+               await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing12: req.body.CodePursuing12})
                .then(update => {
                    res.status(200).json({
                        message: 'Clean update',
@@ -2316,7 +2575,7 @@ if(req.body.CodePursuing7){
 router.put("/infoEdPurSummer13", checkAuth,
   async(req, res, next) => { 
 if(req.body.CodePursuing13){                                                                                                                                                                                                                    
-await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing13: req.body.CodePursuing13})     
+await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing13: req.body.CodePursuing13})     
  .then(update => {
     res.status(200).json({
         message: 'Clean update',
@@ -2331,13 +2590,18 @@ await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing13: req.body.Co
 router.put("/infoEdPurSummer14", checkAuth,
   async(req, res, next) => {        
 if(req.body.CodePursuing14){
- await UserInfo.updateOne({Creator:req.body.userId },{CodePursuing14: req.body.CodePursuing14})
+ await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing14: req.body.CodePursuing14})
  .then(update => {
     res.status(200).json({
         message: 'Clean update',
         post: update
     });
-})}})    
+}).catch(error => {
+    res.status(500).json({
+        message: 'updating course failed'
+    });
+});
+}})    
 // userInfo recieving
 router.get("/info", async(req, res) => {
     const counter = req.query.counter;
@@ -2424,7 +2688,7 @@ router.get("/infoProfileCoursesC", async(req, res) => {
         })
         .catch(error => {
             res.status(500).json({
-                message: 'Fetching users failed!'
+                message: 'updating course failed'
             });
         });
 });
@@ -2440,7 +2704,7 @@ router.get("/infoProfileCoursesP", async(req, res) => {
         })
         .catch(error => {
             res.status(500).json({
-                message: 'Fetching users failed!'
+                message: 'updating course failed'
             });
         });
 });

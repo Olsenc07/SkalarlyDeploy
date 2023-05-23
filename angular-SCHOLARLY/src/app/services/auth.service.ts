@@ -739,7 +739,7 @@ export class AuthService {
   }
   editUserInfoComp(userId: string, CodeCompleted: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp1',
         {
           userId,
@@ -748,10 +748,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted,
-          };
           sub.unsubscribe();
           console.log('love you 18');
         },
@@ -762,7 +758,7 @@ export class AuthService {
   }
   editUserInfoComp2(userId: string, CodeCompleted2: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp2',
         {
           userId,
@@ -771,10 +767,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted2,
-          };
           sub.unsubscribe();
           console.log('love you 19');
         },
@@ -785,7 +777,7 @@ export class AuthService {
   }
   editUserInfoComp3(userId: string, CodeCompleted3: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp3',
         {
           userId,
@@ -794,10 +786,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted3,
-          };
           sub.unsubscribe();
           console.log('love you 20');
         },
@@ -808,7 +796,7 @@ export class AuthService {
   }
   editUserInfoComp4(userId: string, CodeCompleted4: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp4',
         {
           userId,
@@ -817,10 +805,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted4,
-          };
           sub.unsubscribe();
           console.log('love you 21');
         },
@@ -831,7 +815,7 @@ export class AuthService {
   }
   editUserInfoComp5(userId: string, CodeCompleted5: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp5',
         {
           userId,
@@ -840,10 +824,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted5,
-          };
           sub.unsubscribe();
           console.log('love you 22');
         },
@@ -854,7 +834,7 @@ export class AuthService {
   }
   editUserInfoComp6(userId: string, CodeCompleted6: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp6',
         {
           userId,
@@ -863,10 +843,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted6,
-          };
           sub.unsubscribe();
           console.log('love you 23');
         },
@@ -877,7 +853,7 @@ export class AuthService {
   }
   editUserInfoComp7(userId: string, CodeCompleted7: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp7',
         {
           userId,
@@ -886,10 +862,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted7,
-          };
           sub.unsubscribe();
           console.log('love you 24');
         },
@@ -900,7 +872,7 @@ export class AuthService {
   }
   editUserInfoComp8(userId: string, CodeCompleted8: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp8',
         {
           userId,
@@ -909,10 +881,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted8,
-          };
           sub.unsubscribe();
           console.log('love you 25');
         },
@@ -923,7 +891,7 @@ export class AuthService {
   }
   editUserInfoComp9(userId: string, CodeCompleted9: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp9',
         {
           userId,
@@ -932,10 +900,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted9,
-          };
           sub.unsubscribe();
           console.log('love you 26');
         },
@@ -946,7 +910,7 @@ export class AuthService {
   }
   editUserInfoComp10(userId: string, CodeCompleted10: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp10',
         {
           userId,
@@ -955,10 +919,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted10,
-          };
           sub.unsubscribe();
           console.log('love you 27');
         },
@@ -970,7 +930,7 @@ export class AuthService {
   // Edit comp 2
   editUserInfoComp11(userId: string, CodeCompleted11: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp11',
         {
           userId,
@@ -979,10 +939,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted11,
-          };
           sub.unsubscribe();
           console.log('love you 28');
         },
@@ -993,7 +949,7 @@ export class AuthService {
   }
   editUserInfoComp12(userId: string, CodeCompleted12: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp12',
         {
           userId,
@@ -1002,10 +958,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted12,
-          };
           sub.unsubscribe();
           console.log('love you 29');
         },
@@ -1016,7 +968,7 @@ export class AuthService {
   }
   editUserInfoComp13(userId: string, CodeCompleted13: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp13',
         {
           userId,
@@ -1025,10 +977,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted13,
-          };
           sub.unsubscribe();
           console.log('love you 30');
         },
@@ -1039,7 +987,7 @@ export class AuthService {
   }
   editUserInfoComp14(userId: string, CodeCompleted14: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp14',
         {
           userId,
@@ -1048,10 +996,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted14,
-          };
           sub.unsubscribe();
           console.log('love you 31');
         },
@@ -1062,7 +1006,7 @@ export class AuthService {
   }
   editUserInfoComp15(userId: string, CodeCompleted15: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp15',
         {
           userId,
@@ -1071,10 +1015,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted15,
-          };
           sub.unsubscribe();
           console.log('love you 32');
         },
@@ -1086,7 +1026,7 @@ export class AuthService {
   // Edit comp 2W
   editUserInfoComp16(userId: string, CodeCompleted16: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp16',
         {
           userId,
@@ -1095,10 +1035,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted16,
-          };
           sub.unsubscribe();
           console.log('love you 33');
         },
@@ -1109,7 +1045,7 @@ export class AuthService {
   }
   editUserInfoComp17(userId: string, CodeCompleted17: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp17',
         {
           userId,
@@ -1118,10 +1054,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted17,
-          };
           sub.unsubscribe();
           console.log('love you 34');
         },
@@ -1132,7 +1064,7 @@ export class AuthService {
   }
   editUserInfoComp18(userId: string, CodeCompleted18: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp18',
         {
           userId,
@@ -1141,10 +1073,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted18,
-          };
           sub.unsubscribe();
           console.log('love you 35');
         },
@@ -1155,7 +1083,7 @@ export class AuthService {
   }
   editUserInfoComp19(userId: string, CodeCompleted19: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp19',
         {
           userId,
@@ -1164,10 +1092,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted19,
-          };
           sub.unsubscribe();
           console.log('love you 36');
         },
@@ -1178,7 +1102,7 @@ export class AuthService {
   }
   editUserInfoComp20(userId: string, CodeCompleted20: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp20',
         {
           userId,
@@ -1187,10 +1111,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted20,
-          };
           sub.unsubscribe();
           console.log('love you 37');
         },
@@ -1202,7 +1122,7 @@ export class AuthService {
   // Edit comp 3
   editUserInfoComp21(userId: string, CodeCompleted21: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp21',
         {
           userId,
@@ -1211,10 +1131,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted21,
-          };
           sub.unsubscribe();
           console.log('love you 38');
         },
@@ -1225,7 +1141,7 @@ export class AuthService {
   }
   editUserInfoComp22(userId: string, CodeCompleted22: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp22',
         {
           userId,
@@ -1234,10 +1150,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted22,
-          };
           sub.unsubscribe();
           console.log('love you 39');
         },
@@ -1248,7 +1160,7 @@ export class AuthService {
   }
   editUserInfoComp23(userId: string, CodeCompleted23: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp23',
         {
           userId,
@@ -1257,10 +1169,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted23,
-          };
           sub.unsubscribe();
           console.log('love you 40');
         },
@@ -1271,7 +1179,7 @@ export class AuthService {
   }
   editUserInfoComp24(userId: string, CodeCompleted24: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp24',
         {
           userId,
@@ -1280,10 +1188,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted24,
-          };
           sub.unsubscribe();
           console.log('love you 41');
         },
@@ -1294,7 +1198,7 @@ export class AuthService {
   }
   editUserInfoComp25(userId: string, CodeCompleted25: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp25',
         {
           userId,
@@ -1303,10 +1207,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted25,
-          };
           sub.unsubscribe();
           console.log('love you 42');
         },
@@ -1318,7 +1218,7 @@ export class AuthService {
   // Edit comp 3
   editUserInfoComp26(userId: string, CodeCompleted26: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp26',
         {
           userId,
@@ -1327,10 +1227,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted26,
-          };
           sub.unsubscribe();
           console.log('love you 43');
         },
@@ -1341,7 +1237,7 @@ export class AuthService {
   }
   editUserInfoComp27(userId: string, CodeCompleted27: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp27',
         {
           userId,
@@ -1350,10 +1246,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted27,
-          };
           sub.unsubscribe();
           console.log('love you 44');
         },
@@ -1364,7 +1256,7 @@ export class AuthService {
   }
   editUserInfoComp28(userId: string, CodeCompleted28: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp28',
         {
           userId,
@@ -1373,10 +1265,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted28,
-          };
           sub.unsubscribe();
           console.log('love you 45');
         },
@@ -1387,7 +1275,7 @@ export class AuthService {
   }
   editUserInfoComp29(userId: string, CodeCompleted29: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp29',
         {
           userId,
@@ -1396,10 +1284,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted29,
-          };
           sub.unsubscribe();
           console.log('love you 46');
         },
@@ -1410,7 +1294,7 @@ export class AuthService {
   }
   editUserInfoComp30(userId: string, CodeCompleted30: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp30',
         {
           userId,
@@ -1419,10 +1303,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted30,
-          };
           sub.unsubscribe();
           console.log('love you 47');
         },
@@ -1434,7 +1314,7 @@ export class AuthService {
   // Edit comp 4
   editUserInfoComp31(userId: string, CodeCompleted31: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp31',
         {
           userId,
@@ -1443,10 +1323,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted31,
-          };
           sub.unsubscribe();
           console.log('love you 48');
         },
@@ -1457,7 +1333,7 @@ export class AuthService {
   }
   editUserInfoComp32(userId: string, CodeCompleted32: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp32',
         {
           userId,
@@ -1466,10 +1342,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted32,
-          };
           sub.unsubscribe();
           console.log('love you 49');
         },
@@ -1480,7 +1352,7 @@ export class AuthService {
   }
   editUserInfoComp33(userId: string, CodeCompleted33: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp33',
         {
           userId,
@@ -1489,10 +1361,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted33,
-          };
           sub.unsubscribe();
           console.log('love you 50');
         },
@@ -1503,7 +1371,7 @@ export class AuthService {
   }
   editUserInfoComp34(userId: string, CodeCompleted34: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp34',
         {
           userId,
@@ -1512,10 +1380,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted34,
-          };
           sub.unsubscribe();
           console.log('love you 51');
         },
@@ -1526,7 +1390,7 @@ export class AuthService {
   }
   editUserInfoComp35(userId: string, CodeCompleted35: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp35',
         {
           userId,
@@ -1535,10 +1399,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted35,
-          };
           sub.unsubscribe();
           console.log('love you 52');
         },
@@ -1550,7 +1410,7 @@ export class AuthService {
   // Edit comp 4W
   editUserInfoComp36(userId: string, CodeCompleted36: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp36',
         {
           userId,
@@ -1559,10 +1419,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted36,
-          };
           sub.unsubscribe();
           console.log('love you 53');
         },
@@ -1573,7 +1429,7 @@ export class AuthService {
   }
   editUserInfoComp37(userId: string, CodeCompleted37: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp37',
         {
           userId,
@@ -1582,10 +1438,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted37,
-          };
           sub.unsubscribe();
           console.log('love you 54');
         },
@@ -1596,7 +1448,7 @@ export class AuthService {
   }
   editUserInfoComp38(userId: string, CodeCompleted38: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp38',
         {
           userId,
@@ -1605,10 +1457,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted38,
-          };
           sub.unsubscribe();
           console.log('love you 55');
         },
@@ -1619,7 +1467,7 @@ export class AuthService {
   }
   editUserInfoComp39(userId: string, CodeCompleted39: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp39',
         {
           userId,
@@ -1628,10 +1476,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted39,
-          };
           sub.unsubscribe();
           console.log('love you 56');
         },
@@ -1642,7 +1486,7 @@ export class AuthService {
   }
   editUserInfoComp40(userId: string, CodeCompleted40: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdComp40',
         {
           userId,
@@ -1651,10 +1495,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompleted40,
-          };
           sub.unsubscribe();
           console.log('love you 57');
         },
@@ -1665,7 +1505,7 @@ export class AuthService {
   }
   editUserInfoCompX(userId: string, CodeCompletedX: string): any {
     const sub = this.http
-      .put<{ message: string; post: any }>(
+      .put<{ message: string; post: AuthDataInfoCoursesC }>(
         'https://www.skalarly.com/api/user/infoEdCompX',
         {
           userId,
@@ -1674,10 +1514,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: any = {
-            id: responseData.post.id,
-            CodeCompletedX,
-          };
           sub.unsubscribe();
           console.log('love you 58');
         },
@@ -1689,7 +1525,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPur(userId: string, CodePursuing: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPur',
         {
           userId,
@@ -1698,10 +1534,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing,
-          };
           sub.unsubscribe();
           console.log('love you 59');
         },
@@ -1713,7 +1545,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPur2(userId: string, CodePursuing2: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPur2',
         {
           userId,
@@ -1722,10 +1554,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing2,
-          };
           sub.unsubscribe();
           console.log('love you 60');
         },
@@ -1737,7 +1565,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPur3(userId: string, CodePursuing3: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPur3',
         {
           userId,
@@ -1746,10 +1574,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing3,
-          };
           sub.unsubscribe();
           console.log('love you 61');
         },
@@ -1761,7 +1585,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPur4(userId: string, CodePursuing4: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPur4',
         {
           userId,
@@ -1770,10 +1594,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing4,
-          };
           sub.unsubscribe();
           console.log('love you 62');
         },
@@ -1785,7 +1605,7 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPur5(userId: string, CodePursuing5: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPur5',
         {
           userId,
@@ -1794,10 +1614,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing5,
-          };
           sub.unsubscribe();
           console.log('love you 63');
         },
@@ -1809,7 +1625,7 @@ export class AuthService {
   // Edit Pursuing winter
   editUserInfoPurW6(userId: string, CodePursuing6: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPurW6',
         {
           userId,
@@ -1818,10 +1634,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing6,
-          };
           sub.unsubscribe();
           console.log('love you 64');
         },
@@ -1833,7 +1645,7 @@ export class AuthService {
   // Edit Pursuing winter
   editUserInfoPurW7(userId: string, CodePursuing7: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPurW7',
         {
           userId,
@@ -1842,10 +1654,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing7,
-          };
           sub.unsubscribe();
           console.log('love you 65');
         },
@@ -1857,7 +1665,7 @@ export class AuthService {
   // Edit Pursuing winter
   editUserInfoPurW8(userId: string, CodePursuing8: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPurW8',
         {
           userId,
@@ -1866,10 +1674,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing8,
-          };
           sub.unsubscribe();
           console.log('love you 66');
         },
@@ -1881,7 +1685,7 @@ export class AuthService {
   // Edit Pursuing winter
   editUserInfoPurW9(userId: string, CodePursuing9: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPurW9',
         {
           userId,
@@ -1890,10 +1694,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing9,
-          };
           sub.unsubscribe();
           console.log('love you 67');
         },
@@ -1905,7 +1705,7 @@ export class AuthService {
   // Edit Pursuing winter
   editUserInfoPurW10(userId: string, CodePursuing10: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPurW10',
         {
           userId,
@@ -1914,10 +1714,6 @@ export class AuthService {
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing10,
-          };
           sub.unsubscribe();
           console.log('love you 68');
         },
@@ -1930,16 +1726,12 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPurSp11(userId: string, CodePursuing11: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPurSpring11',
         { userId, CodePursuing11 }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing11,
-          };
           sub.unsubscribe();
           console.log('love you 69');
         },
@@ -1951,16 +1743,12 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPurSp12(userId: string, CodePursuing12: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPurSpring12',
         { userId, CodePursuing12 }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing12,
-          };
           sub.unsubscribe();
           console.log('love you 70');
         },
@@ -1972,16 +1760,12 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPurSu13(userId: string, CodePursuing13: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPurSummer13',
         { userId, CodePursuing13 }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing13,
-          };
           sub.unsubscribe();
           console.log('love you 71');
         },
@@ -1993,16 +1777,12 @@ export class AuthService {
   // Edit Pursuing
   editUserInfoPurSu14(userId: string, CodePursuing14: string): any {
     const sub = this.http
-      .put<{ message: string; post: AuthDataInfo }>(
+      .put<{ message: string; post: AuthDataInfoCoursesP }>(
         'https://www.skalarly.com/api/user/infoEdPurSummer14',
         { userId, CodePursuing14 }
       )
       .subscribe({
         next: (responseData) => {
-          const post: AuthDataInfo = {
-            id: responseData.post.id,
-            CodePursuing14,
-          };
           sub.unsubscribe();
           console.log('love you 72');
         },
@@ -2033,62 +1813,6 @@ export class AuthService {
               sport: info.sport,
               club: info.club,
               // pronouns: info.pronouns,
-              CodeCompleted: info.CodeCompleted,
-              CodeCompleted2: info.CodeCompleted2,
-              CodeCompleted3: info.CodeCompleted3,
-              CodeCompleted4: info.CodeCompleted4,
-              CodeCompleted5: info.CodeCompleted5,
-              CodeCompleted6: info.CodeCompleted6,
-              CodeCompleted7: info.CodeCompleted7,
-              CodeCompleted8: info.CodeCompleted8,
-              CodeCompleted9: info.CodeCompleted9,
-              CodeCompleted10: info.CodeCompleted10,
-              CodeCompleted11: info.CodeCompleted11,
-              CodeCompleted12: info.CodeCompleted12,
-              CodeCompleted13: info.CodeCompleted13,
-              CodeCompleted14: info.CodeCompleted14,
-              CodeCompleted15: info.CodeCompleted15,
-              CodeCompleted16: info.CodeCompleted16,
-              CodeCompleted17: info.CodeCompleted17,
-              CodeCompleted18: info.CodeCompleted18,
-              CodeCompleted19: info.CodeCompleted19,
-              CodeCompleted20: info.CodeCompleted20,
-              CodeCompleted21: info.CodeCompleted21,
-              CodeCompleted22: info.CodeCompleted22,
-              CodeCompleted23: info.CodeCompleted23,
-              CodeCompleted24: info.CodeCompleted24,
-              CodeCompleted25: info.CodeCompleted25,
-              CodeCompleted26: info.CodeCompleted26,
-              CodeCompleted27: info.CodeCompleted27,
-              CodeCompleted28: info.CodeCompleted28,
-              CodeCompleted29: info.CodeCompleted29,
-              CodeCompleted30: info.CodeCompleted30,
-              CodeCompleted31: info.CodeCompleted31,
-              CodeCompleted32: info.CodeCompleted32,
-              CodeCompleted33: info.CodeCompleted33,
-              CodeCompleted34: info.CodeCompleted34,
-              CodeCompleted35: info.CodeCompleted35,
-              CodeCompleted36: info.CodeCompleted36,
-              CodeCompleted37: info.CodeCompleted37,
-              CodeCompleted38: info.CodeCompleted38,
-              CodeCompleted39: info.CodeCompleted39,
-              CodeCompleted40: info.CodeCompleted40,
-              CodeCompletedX: info.CodeCompletedX,
-
-              CodePursuing: info.CodePursuing,
-              CodePursuing2: info.CodePursuing2,
-              CodePursuing3: info.CodePursuing3,
-              CodePursuing4: info.CodePursuing4,
-              CodePursuing5: info.CodePursuing5,
-              CodePursuing6: info.CodePursuing6,
-              CodePursuing7: info.CodePursuing7,
-              CodePursuing8: info.CodePursuing8,
-              CodePursuing9: info.CodePursuing9,
-              CodePursuing10: info.CodePursuing10,
-              CodePursuing11: info.CodePursuing11,
-              CodePursuing12: info.CodePursuing12,
-              CodePursuing13: info.CodePursuing13,
-              CodePursuing14: info.CodePursuing14,
               ProfilePicPath: info.ProfilePicPath,
               Followers: info.Followers,
               Following: info.Following,
@@ -2137,8 +1861,8 @@ export class AuthService {
         })
       )
       .subscribe((transformedInfos) => {
-        this.infos = transformedInfos;
-        this.infosUpdatedCoursesC.next(this.infos);
+        this.infosC = transformedInfos;
+        this.infosUpdatedCoursesC.next(this.infosC);
         sub.unsubscribe();
         console.log('love you 747');
       });
@@ -2156,8 +1880,8 @@ export class AuthService {
         })
       )
       .subscribe((transformedInfos) => {
-        this.infos = transformedInfos;
-        this.infosUpdatedCoursesP.next(this.infos);
+        this.infosP = transformedInfos;
+        this.infosUpdatedCoursesP.next(this.infosP);
         sub.unsubscribe();
         console.log('love you 77');
       });
@@ -2186,61 +1910,6 @@ export class AuthService {
               sport: info.sport,
               club: info.club,
               // pronouns: info.pronouns,
-              CodeCompleted: info.CodeCompleted,
-              CodeCompleted2: info.CodeCompleted2,
-              CodeCompleted3: info.CodeCompleted3,
-              CodeCompleted4: info.CodeCompleted4,
-              CodeCompleted5: info.CodeCompleted5,
-              CodeCompleted6: info.CodeCompleted6,
-              CodeCompleted7: info.CodeCompleted7,
-              CodeCompleted8: info.CodeCompleted8,
-              CodeCompleted9: info.CodeCompleted9,
-              CodeCompleted10: info.CodeCompleted10,
-              CodeCompleted11: info.CodeCompleted11,
-              CodeCompleted12: info.CodeCompleted12,
-              CodeCompleted13: info.CodeCompleted13,
-              CodeCompleted14: info.CodeCompleted14,
-              CodeCompleted15: info.CodeCompleted15,
-              CodeCompleted16: info.CodeCompleted16,
-              CodeCompleted17: info.CodeCompleted17,
-              CodeCompleted18: info.CodeCompleted18,
-              CodeCompleted19: info.CodeCompleted19,
-              CodeCompleted20: info.CodeCompleted20,
-              CodeCompleted21: info.CodeCompleted21,
-              CodeCompleted22: info.CodeCompleted22,
-              CodeCompleted23: info.CodeCompleted23,
-              CodeCompleted24: info.CodeCompleted24,
-              CodeCompleted25: info.CodeCompleted25,
-              CodeCompleted26: info.CodeCompleted26,
-              CodeCompleted27: info.CodeCompleted27,
-              CodeCompleted28: info.CodeCompleted28,
-              CodeCompleted29: info.CodeCompleted29,
-              CodeCompleted30: info.CodeCompleted30,
-              CodeCompleted31: info.CodeCompleted31,
-              CodeCompleted32: info.CodeCompleted32,
-              CodeCompleted33: info.CodeCompleted33,
-              CodeCompleted34: info.CodeCompleted34,
-              CodeCompleted35: info.CodeCompleted35,
-              CodeCompleted36: info.CodeCompleted36,
-              CodeCompleted37: info.CodeCompleted37,
-              CodeCompleted38: info.CodeCompleted38,
-              CodeCompleted39: info.CodeCompleted39,
-              CodeCompleted40: info.CodeCompleted40,
-              CodeCompletedX: info.CodeCompletedX,
-
-              CodePursuing: info.CodePursuing,
-              CodePursuing2: info.CodePursuing2,
-              CodePursuing3: info.CodePursuing3,
-              CodePursuing4: info.CodePursuing4,
-              CodePursuing5: info.CodePursuing5,
-              CodePursuing6: info.CodePursuing6,
-              CodePursuing7: info.CodePursuing7,
-              CodePursuing8: info.CodePursuing8,
-              CodePursuing9: info.CodePursuing9,
-              CodePursuing10: info.CodePursuing10,
-              CodePursuing11: info.CodePursuing11,
-              CodePursuing12: info.CodePursuing12,
-
               ProfilePicPath: info.ProfilePicPath,
               Followers: info.Followers,
               Following: info.Following,
