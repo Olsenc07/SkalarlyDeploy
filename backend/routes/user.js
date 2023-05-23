@@ -653,10 +653,6 @@ router.post("/coursesCompleted",
                     message: 'Unable to add courses completed'
                 });
             });
-    }).catch(error => {
-        res.status(500).json({
-            message: 'Getting courses completed failed!'
-        });
     })
 
     // adding courses pursuing
@@ -693,11 +689,7 @@ router.post("/coursesPursuing",
                     message: 'Unable to add courses pursuing information'
                 });
             });
-    }).catch(error => {
-        res.status(500).json({
-            message: 'Getting courses pursuing failed!'
-        });
-    });
+    })
 
 
         // edit Name
