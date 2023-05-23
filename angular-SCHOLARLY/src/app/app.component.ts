@@ -932,12 +932,12 @@ export class ReAuthorizeComponent implements OnInit {
   makeIteration = (): void => {
     if (this.timeLeft > 1 && this.timer == true) {
       document.getElementById('Timer').innerHTML =
-        this.timeLeft + '' + 'seconds remaining';
+        this.timeLeft + '\xa0' + 'seconds remaining';
       setTimeout(this.makeIteration, 1000); // 1 second waiting
     }
     if (this.timeLeft == 1 && this.timer == true) {
       document.getElementById('Timer').innerHTML =
-        this.timeLeft + '' + 'second remaining';
+        this.timeLeft + '\xa0' + 'second remaining';
       setTimeout(this.makeIteration, 1000); // 1 second waiting
     }
     if (this.timeLeft == 0 && this.timer == true) {
