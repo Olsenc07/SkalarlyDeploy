@@ -917,6 +917,7 @@ export class AppComponent implements OnInit, OnDestroy {
 export class ReAuthorizeComponent implements OnInit {
   userId: string;
   timeLeft = 30;
+  timer = true;
 
   constructor(
     private authService: AuthService,
@@ -929,17 +930,17 @@ export class ReAuthorizeComponent implements OnInit {
   }
 
   makeIteration = (): void => {
-    if (this.timeLeft > 1) {
+    if (this.timeLeft > 1 && this.timer == true) {
       document.getElementById('Timer').innerHTML =
-        this.timeLeft + 'seconds remaining';
+        this.timeLeft + '' + 'seconds remaining';
       setTimeout(this.makeIteration, 1000); // 1 second waiting
     }
-    if (this.timeLeft == 1) {
+    if (this.timeLeft == 1 && this.timer == true) {
       document.getElementById('Timer').innerHTML =
-        this.timeLeft + 'second remaining';
+        this.timeLeft + '' + 'second remaining';
       setTimeout(this.makeIteration, 1000); // 1 second waiting
     }
-    if (this.timeLeft == 0) {
+    if (this.timeLeft == 0 && this.timer == true) {
       document.getElementById('Timer').innerHTML = '';
       this.authService.logout();
       this.dialogRef.close();
@@ -948,10 +949,12 @@ export class ReAuthorizeComponent implements OnInit {
   };
 
   logOut() {
+    this.timer = false;
     this.authService.logout();
     this.dialogRef.close();
   }
   reAuthorize() {
+    this.timer = false;
     this.authService.stayLoggedIn(this.userId);
     this.dialogRef.close();
   }
