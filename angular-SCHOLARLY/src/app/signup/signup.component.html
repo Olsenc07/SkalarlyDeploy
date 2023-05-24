@@ -293,7 +293,7 @@
                         <div class="required">Required</div> 
                       </div>
                       <button  matTooltip="Clear Image" 
-                      mat-icon-button *ngIf="form.get('profilePic').value " (click)="clearProfilePic()">
+                      mat-icon-button *ngIf="(form.get('profilePic').value && showPreview == true)" (click)="clearProfilePic()">
                         <i class="far fa-times-circle"></i>
                       </button>
                     </div>
@@ -328,7 +328,8 @@
 
               <div class="personalizeLarge" [ngClass]="(form.get('profilePic').value && showPreview == true)? 'show_' : 'hide' ">
                 <div class="rowP">
-                  We will crop your photo to look perfect <i class="far fa-smile smile"></i>
+                  We will crop your photo to look perfect 
+                  <!-- <i class="far fa-smile smile"></i> -->
                   <!-- <span class="material-icons-outlined _icon2">
                     arrow_right_alt
                     </span> -->
@@ -337,7 +338,7 @@
 
               <div class="personalizeLarge" [ngClass]="(form.get('profilePic').value && showPreview == true) ? 'show_' : 'hide' ">
                 <div class="PreviewPic">
-                  <h2 class="Preview">Image Preview</h2>
+                  <div class="Preview">Image Preview</div>
                   <div class="Previewsmall">Before being cropped</div>
                   <div class="profilePic">
                     <!-- [src]="cropImgPreview" -->
