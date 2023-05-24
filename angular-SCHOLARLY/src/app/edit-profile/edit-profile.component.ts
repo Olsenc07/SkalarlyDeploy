@@ -778,8 +778,8 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
     this.userId = this.authService.getUserId();
     this.authService.getInfoProfileCoursesC(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
-      .getInfoUpdateListenerCoursesC((infos: any) => {
+      .getInfoUpdateListenerCoursesC()
+      .subscribe((infos: any) => {
         this.info = infos;
         console.log('infos', this.info);
       });

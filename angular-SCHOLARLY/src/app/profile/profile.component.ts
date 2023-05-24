@@ -139,7 +139,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     // basic info
     this.authService.getInfoProfile(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerProfile()
       .subscribe((infos: any) => {
         this.info = infos;
         console.log('boobs');
@@ -633,7 +633,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             console.log('shouting voices', this.id);
             this.authService.getOtherInfo(this.id);
             this.infosSub = this.authService
-              .getInfoUpdateListener()
+              .getInfoUpdateListenerOther()
               .subscribe((infos: any) => {
                 console.log('Gods close', infos);
                 this.info = infos;

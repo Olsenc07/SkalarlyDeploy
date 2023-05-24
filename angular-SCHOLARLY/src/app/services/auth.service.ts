@@ -30,6 +30,8 @@ export class AuthService {
   // basic info
   private infos: AuthDataInfo[] = [];
   private infosUpdated = new Subject<AuthDataInfo[]>();
+  private infosUpdatedProfile = new Subject<AuthDataInfo[]>();
+  private infosUpdatedOther = new Subject<AuthDataInfo[]>();
 
   // courses c
   private infosC: AuthDataInfoCoursesC[] = [];
@@ -92,6 +94,12 @@ export class AuthService {
 
   getInfoUpdateListener(): any {
     return this.infosUpdated.asObservable();
+  }
+  getInfoUpdateListenerOther(): any {
+    return this.infosUpdatedOther.asObservable();
+  }
+  getInfoUpdateListenerProfile(): any {
+    return this.infosUpdatedProfile.asObservable();
   }
   getInfoUpdateListenerCoursesC(): any {
     return this.infosUpdatedCoursesC.asObservable();
@@ -1838,7 +1846,7 @@ export class AuthService {
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
-        this.infosUpdated.next(this.infos);
+        this.infosUpdatedProfile.next(this.infos);
         sub.unsubscribe();
         console.log('love you 74');
       });
@@ -1903,6 +1911,7 @@ export class AuthService {
               username: info.username,
               name: info.name,
               bio: info.bio,
+              campus: info.campus,
               // gender: info.gender,
               birthday: info.birthday,
               major: info.major,
@@ -1960,7 +1969,7 @@ export class AuthService {
       .subscribe((transformedInfos) => {
         console.log('mario', transformedInfos);
         this.infos = transformedInfos;
-        this.infosUpdated.next(this.infos);
+        this.infosUpdatedOther.next(this.infos);
         sub.unsubscribe();
         console.log('love you 77');
       });

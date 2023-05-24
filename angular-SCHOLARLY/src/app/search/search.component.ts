@@ -28,8 +28,6 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   isLoading = false;
 
-  postLocationMain: FormControl = new FormControl('');
-
   constructor(
     public dialog: MatDialog,
     public searchListService: SearchListService,
@@ -41,7 +39,6 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnInit(): any {
     this.isLoading = true;
-
     // userId
     this.userId = this.authService.getUserId();
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -54,7 +51,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     // default campus
     this.authService.getInfoProfile(this.userId);
     this.infosSub = this.authService
-      .getInfoUpdateListener()
+      .getInfoUpdateListenerProfile()
       .subscribe((infos: any) => {
         console.log('default ', infos);
         console.log('default campus', infos.campus);
