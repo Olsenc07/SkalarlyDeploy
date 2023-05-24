@@ -97,7 +97,7 @@
             <!-- seaech fellow skalar-->
             <div class="search-box" *ngIf="!Hashtag">
         <button mat-icon-button  matTooltip="Click To Search By Hashtag" (click)="hashTagSearch()">
-                <span class="material-icons search-box__icon"> search <i class="fas fa-sort-down"></i> </span>
+                <span class="material-icons search-box__icon"> search <i class="fas fas fa-caret-right"></i> </span>
               </button>
               <!-- </button> -->
               <input
@@ -188,7 +188,7 @@
 
 <div class="search-box" *ngIf="Hashtag">
   <button mat-icon-button matTooltip="Click To Search By Username" (click)="skalarSearch()" >
-          <span class="material-icons search-box__icon"> tag <i class="fas fa-sort-down"></i></span>
+          <span class="material-icons search-box__icon"> tag <i class="fas fa-caret-right"></i></span>
         </button>
         <!-- </button> -->
         <input

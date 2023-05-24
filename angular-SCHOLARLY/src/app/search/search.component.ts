@@ -53,8 +53,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.infosSub = this.authService
       .getInfoUpdateListenerProfile()
       .subscribe((infos: any) => {
-        console.log('default ', infos);
-        console.log('default campus', infos.campus);
         this.campus = infos.campus;
         console.log('boobs', this.campus);
         this.isLoading = false;

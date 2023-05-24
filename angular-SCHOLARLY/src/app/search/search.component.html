@@ -179,16 +179,16 @@ St.George Campus
                   <mat-option *ngFor="let main of mains"  class="font" 
                   >
                   <!-- category -->
-                  <mat-card class="even__">
+                  <mat-card class="even__" *ngIf="main.category !== ''" >
                     <mat-card-content>
-                   <div *ngIf="main.category !== ''" (click)="navigateToFav(main.category)" > 
+                   <div (click)="navigateToFav(main.category)" > 
                     <i matPrefix class="fas fa-heart main"></i>{{main.category}}</div>
                     </mat-card-content>
                     </mat-card>
                     <!-- hashtag -->
-                    <mat-card class="even__">
+                    <mat-card class="even__" *ngIf="main.hashtag !== ''">
                       <mat-card-content>
-                   <div *ngIf="main.hashtag !== ''" (click)="navigateToFavHash(main.hashtag)" > 
+                   <div  (click)="navigateToFavHash(main.hashtag)" > 
               <i matPrefix class="fas fa-hashtag hash"></i>
               {{main.hashtag}}</div>
               </mat-card-content>
