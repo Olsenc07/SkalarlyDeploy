@@ -58,7 +58,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
       console.log('length?', favs);
       console.log('length? 2', favs.length);
-
       this.mains = favs;
     });
   }
@@ -93,7 +92,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 }
 @Component({
   selector: 'app-search-george',
-  templateUrl: './search.component.html',
+  templateUrl: './george.component.html',
   styleUrls: ['./search.component.scss'],
 })
 export class SearchGeorgeComponent implements OnInit {
@@ -238,7 +237,9 @@ export class SearchGeorgeComponent implements OnInit {
   ) {}
 
   ngOnInit(): any {
+    console.log('st.george');
     this.searchOptions = this.searchListService.getSearchOptions();
+    console.log('st.george2');
   }
   // Filter specific search
   // Receive user input and send to search method**
@@ -396,7 +397,7 @@ export class SearchGeorgeComponent implements OnInit {
 }
 @Component({
   selector: 'app-search-scarborough',
-  templateUrl: './search.component.html',
+  templateUrl: './scarborough.component.html',
   styleUrls: ['./search.component.scss'],
 })
 export class SearchScarboroughComponent implements OnInit, OnDestroy {
@@ -408,7 +409,7 @@ export class SearchScarboroughComponent implements OnInit, OnDestroy {
 
 @Component({
   selector: 'app-search-mississauga',
-  templateUrl: './search.component.html',
+  templateUrl: './mississauga.component.html',
   styleUrls: ['./search.component.scss'],
 })
 export class SearchMississaugaComponent implements OnInit, OnDestroy {

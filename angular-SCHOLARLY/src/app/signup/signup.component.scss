@@ -38,7 +38,8 @@
   font-size: large;
 }
 .background_colour{
-  background-color: #0c46b8a1;
+  // background-color: #0c46b8a1;
+  background-image: linear-gradient(to right,#002D62,black);
 }
 
 .cameraIcon {
@@ -742,6 +743,7 @@
   // font-family:  'Poppins', sans-serif;
   font-family: 'Cormorant Garamond', serif;
   justify-content: center;
+  font-size: larger;
   flex-direction: column;
   margin-bottom: 1%;
 }

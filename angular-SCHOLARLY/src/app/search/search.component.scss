@@ -130,6 +130,21 @@ align-items: center;
   line-height: normal;
   align-items: center;
 }
+
+.center_top{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.center_middle {
+  display: flex;
+  justify-content: center;
+  padding: 0% 0% 1% 0%;
+  text-align: center;
+  line-height: normal;
+  align-items: center;
+  flex-direction: column ;
+}
 .center_step1{
   text-align: center;
 }
