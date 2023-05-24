@@ -164,10 +164,13 @@ St.George Campus
             <i class="far fa-bookmark"></i>
           </button>
           <div *ngIf="FavsVisible" class="favsBox">
+            <div class="favsX">
             <div class="favs" >Favourites
-
-              <button mat-icon-button (click)="favsVisible()"> <i class="far fa-times-circle"></i></button>
             </div>
+            <div class="favsXEnd">
+            <button mat-icon-button (click)="favsVisible()"> <i class="far fa-times-circle"></i></button>
+          </div>
+          </div>
             <mat-divider></mat-divider>
             <div  >
 
