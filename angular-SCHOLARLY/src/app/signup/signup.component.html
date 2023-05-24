@@ -309,7 +309,6 @@
                         (change)="imagePreviewP($event)" name="profilePic">
                       </form>
                     </div>
-                    <input>
                     <mat-checkbox [checked]="useDefaultPic" (change)="defaultPic()" >Use Skalarly logo for now</mat-checkbox>
                   </div>
                   <!-- class="cropper" [ngClass]="profilePic.value ? 'show' : 'hide' " -->
@@ -327,18 +326,19 @@
                 </div>
               </div>
 
-              <div class="personalizeLarge" [ngClass]="form.get('profilePic').value ? 'show_' : 'hide' ">
+              <div class="personalizeLarge" [ngClass]="(form.get('profilePic').value && showPreview == true)? 'show_' : 'hide' ">
                 <div class="rowP">
-                  We will crop your image for you
+                  We will crop your photo to look perfect <i class="far fa-smile smile"></i>
                   <!-- <span class="material-icons-outlined _icon2">
                     arrow_right_alt
                     </span> -->
                 </div>
               </div>
 
-              <div class="personalizeLarge" [ngClass]="form.get('profilePic').value ? 'show_' : 'hide' ">
+              <div class="personalizeLarge" [ngClass]="(form.get('profilePic').value && showPreview == true) ? 'show_' : 'hide' ">
                 <div class="PreviewPic">
                   <h2 class="Preview">Image Preview</h2>
+                  <div class="Previewsmall">Before being cropped</div>
                   <div class="profilePic">
                     <!-- [src]="cropImgPreview" -->
                     <img class="fit" [src]="url" id='fileInputP'/>
@@ -387,11 +387,11 @@
                 <input matInput [matDatepicker]="dp" [formControl]="birthday">
                 <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
                 <mat-datepicker class="bd_picker" #dp startView="year" [startAt]="startDate"></mat-datepicker>
-                <mat-hint>This field is required</mat-hint>
               </mat-form-field>
             </div>
 
             <div class="inputP" >
+              <div class="inputFine">
               <mat-form-field  class="gender" matTooltip="This allows you to get content directed towards your needs and interests">
                 <mat-label>
                   <i class="fas fa-school check_"  *ngIf="campus.value"></i>
@@ -404,7 +404,9 @@
                     {{campus}}
                   </mat-option>
                 </mat-autocomplete>
+                <mat-hint>This field is required</mat-hint>
               </mat-form-field> 
+              </div>
               <!-- <div class="inputFine"> -->
                 <!-- <i class="material-icons check"  *ngIf="gender.value">transgender</i>
                 <i class="material-icons _icon" *ngIf="!gender.value">transgender</i> -->

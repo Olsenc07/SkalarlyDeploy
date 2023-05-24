@@ -533,6 +533,13 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: large;
 }
+.Previewsmall {
+  display: flex;
+  justify-content: center;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: medium;
+}
 .pP {
   display: flex;
   height: 100%;
@@ -662,7 +669,11 @@
   display: flex;
   justify-content: space-around;
   flex-direction: row;
+  flex-direction: column;
   margin: 2% 0%;
+  align-items: center;
+    text-align: center;
+    font-size: larger;
   // font-family:  'Poppins', sans-serif;
   font-family: 'Cormorant Garamond', serif;
 }
@@ -692,8 +703,11 @@
 .rowP_ {
   display: flex;
   justify-content: center;
-  margin: 0% 1%;
+  margin: 0% 1% 2%;
   // color: #418bba;
+}
+.smile{
+  font-size: larger;
 }
 .text {
   display: flex;

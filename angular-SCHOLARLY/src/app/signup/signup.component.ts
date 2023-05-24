@@ -77,6 +77,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   userNameMatches = false;
   noEmailMatches = false;
   useDefaultPic: boolean = false;
+  showPreview: boolean = false;
   // classes: string[] = [];
   // classesP: string[] = [];
   // @ViewChild('codeInput') codeInput: ElementRef<HTMLInputElement>;
@@ -484,6 +485,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
   // Profile Pic
   imagePreviewP(event: any): void {
+    this.showPreview = true;
     this.useDefaultPic = false;
     this.imgChangeEvent = event;
     const file = (event.target as HTMLInputElement).files[0];
@@ -733,6 +735,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.useDefaultPic = !this.useDefaultPic;
 
     if (this.useDefaultPic == true) {
+      this.showPreview = false;
       this.form.patchValue({
         profilePic: defaultPicPath,
       });
