@@ -80,6 +80,7 @@ export class ReusableCardRecommendationComponent implements OnInit, OnDestroy {
     this.infosSub = this.authService
       .getInfoUpdateListener()
       .subscribe((infos: string[]) => {
+        console.log('2 other accounts', infos);
         this.infos = infos;
         // this.infos = this.shuffle(infos);
         this.isLoading = false;

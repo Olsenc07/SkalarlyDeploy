@@ -60,6 +60,9 @@ export class SearchComponent implements OnInit, OnDestroy {
       });
     this.postsService.getFavsList(this.userId);
     this.favsSub = this.postsService.getFavsListener().subscribe((favs) => {
+      console.log('length?', favs);
+      console.log('length? 2', favs.length);
+
       this.mains = favs;
     });
   }
