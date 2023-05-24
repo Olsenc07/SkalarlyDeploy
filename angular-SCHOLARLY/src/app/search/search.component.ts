@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { SearchListService } from '../services/search.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
@@ -29,10 +28,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   isLoading = false;
 
   constructor(
-    public dialog: MatDialog,
-    public searchListService: SearchListService,
     private router: Router,
-    public route: ActivatedRoute,
     private authService: AuthService,
     private postsService: PostsService
   ) {}

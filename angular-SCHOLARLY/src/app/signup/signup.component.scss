@@ -665,15 +665,22 @@
 // }
 
 // @media (min-width: 1024px) {
-.rowP {
+.rowPP {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
-  flex-direction: column;
   margin: 2% 0%;
   align-items: center;
     text-align: center;
     font-size: larger;
+  // font-family:  'Poppins', sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+}
+.rowP {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: 2% 0%;
   // font-family:  'Poppins', sans-serif;
   font-family: 'Cormorant Garamond', serif;
 }
@@ -701,6 +708,12 @@
 // }}
 
 .rowP_ {
+  display: flex;
+  justify-content: center;
+  margin: 0% 1% ;
+  // color: #418bba;
+}
+.rowP__ {
   display: flex;
   justify-content: center;
   margin: 0% 1% 2%;
