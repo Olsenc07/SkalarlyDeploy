@@ -18,11 +18,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { createPopup } from '@picmo/popup-picker';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { formatDistance } from 'date-fns';
 
 export interface CommentInterface {
   id: string;
   body: string;
-  time: string;
+  time: Date;
   postId: string;
   ProfilePicPath: string;
   viewed: boolean;
@@ -66,27 +67,26 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
   commentsCountValidator = '';
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
-  timeHourInitial = new Date().getHours();
-  timeHour = this.testNum(this.timeHourInitial);
-  timeMinute = new Date().getMinutes();
-  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
-  timeMinuteText = this.timeMinute < 10 ? '0' : '';
-  dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth();
-  dateMonthName = this.testMonth(this.dateMonth);
+  // timeHourInitial = new Date().getHours();
+  // timeHour = this.testNum(this.timeHourInitial);
+  // timeMinute = new Date().getMinutes();
+  // text = this.timeHourInitial >= 12 ? 'pm' : 'am';
+  // timeMinuteText = this.timeMinute < 10 ? '0' : '';
+  // dateDay = new Date().getDate();
+  // dateMonth = new Date().getMonth();
+  // dateMonthName = this.testMonth(this.dateMonth);
   private subscriptionDude: Subscription;
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
-
+  time = new Date();
+  // this.dateMonthName +
+  // '\xa0' +
+  // this.dateDay +
+  // ',' +
+  // '\xa0' +
+  // this.timeHour +
+  // ':' +
+  // this.timeMinuteText +
+  // this.timeMinute +
+  // this.text;
   // img popup
   img = document.getElementById('myImg');
   modalImg = document.getElementById('img01');
@@ -216,11 +216,18 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
 
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         console.log('i got more shit to say', comments.length);
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
 
         this.commentsSub.unsubscribe();
@@ -281,87 +288,7 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
 
     console.log('commentsValidator', this.commentsValidator);
   }
-  // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
-    if (timeHourInitial > 12) {
-      if (timeHourInitial === 13) {
-        return 1;
-      }
-      if (timeHourInitial === 14) {
-        return 2;
-      }
-      if (timeHourInitial === 15) {
-        return 3;
-      }
-      if (timeHourInitial === 16) {
-        return 4;
-      }
-      if (timeHourInitial === 17) {
-        return 5;
-      }
-      if (timeHourInitial === 18) {
-        return 6;
-      }
-      if (timeHourInitial === 19) {
-        return 7;
-      }
-      if (timeHourInitial === 20) {
-        return 8;
-      }
-      if (timeHourInitial === 21) {
-        return 9;
-      }
-      if (timeHourInitial === 22) {
-        return 10;
-      }
-      if (timeHourInitial === 23) {
-        return 11;
-      }
-      if (timeHourInitial === 24) {
-        return 12;
-      }
-    } else {
-      return timeHourInitial;
-    }
-  }
-  testMonth(dateMonth: any): string {
-    if (dateMonth === 0) {
-      return 'Jan';
-    }
-    if (dateMonth === 1) {
-      return 'Feb';
-    }
-    if (dateMonth === 2) {
-      return 'Mar';
-    }
-    if (dateMonth === 3) {
-      return 'Apr';
-    }
-    if (dateMonth === 4) {
-      return 'May';
-    }
-    if (dateMonth === 5) {
-      return 'June';
-    }
-    if (dateMonth === 6) {
-      return 'July';
-    }
-    if (dateMonth === 7) {
-      return 'Aug';
-    }
-    if (dateMonth === 8) {
-      return 'Sept';
-    }
-    if (dateMonth === 9) {
-      return 'Oct';
-    }
-    if (dateMonth === 10) {
-      return 'Nov';
-    }
-    if (dateMonth === 11) {
-      return 'Dec';
-    }
-  }
+
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
@@ -391,16 +318,21 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
       this.comment.setValue('');
       this.commentsSub = this.commentsService
         .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
+        .subscribe((comments: any) => {
           console.log('i got more shit to say baby 77');
           this.commentsCountValidator = postId;
           // this.commentCount = comments.length;
           // console.log('type', this.commentCount);
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
           this.comments = comments;
-
           this.commentsSub.unsubscribe();
         });
-      console.log('onComment', postId);
     }
   }
 
@@ -409,8 +341,15 @@ export class ReusableCardComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         this.commentsCountValidator = postId;
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });
@@ -443,26 +382,7 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
   comment: FormControl = new FormControl('');
   infos: AuthDataInfo[] = [];
   private infosSub: Subscription;
-  timeHourInitial = new Date().getHours();
-  timeHour = this.testNum(this.timeHourInitial);
-  timeMinute = new Date().getMinutes();
-  text = this.timeHour >= 12 ? 'pm' : 'am';
-  timeMinuteText = this.timeMinute < 10 ? '0' : '';
-  dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth();
-  dateMonthName = this.testMonth(this.dateMonth);
-
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
+  time = new Date();
 
   // img popup
   img = document.getElementById('myImg');
@@ -583,11 +503,18 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
 
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         console.log('i got more shit to say', comments.length);
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
 
         this.commentsSub.unsubscribe();
@@ -641,87 +568,7 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
     }
     this.commentsValidator = postId;
   }
-  // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
-    if (timeHourInitial > 12) {
-      if (timeHourInitial === 13) {
-        return 1;
-      }
-      if (timeHourInitial === 14) {
-        return 2;
-      }
-      if (timeHourInitial === 15) {
-        return 3;
-      }
-      if (timeHourInitial === 16) {
-        return 4;
-      }
-      if (timeHourInitial === 17) {
-        return 5;
-      }
-      if (timeHourInitial === 18) {
-        return 6;
-      }
-      if (timeHourInitial === 19) {
-        return 7;
-      }
-      if (timeHourInitial === 20) {
-        return 8;
-      }
-      if (timeHourInitial === 21) {
-        return 9;
-      }
-      if (timeHourInitial === 22) {
-        return 10;
-      }
-      if (timeHourInitial === 23) {
-        return 11;
-      }
-      if (timeHourInitial === 24) {
-        return 12;
-      }
-    } else {
-      return timeHourInitial;
-    }
-  }
-  testMonth(dateMonth: any): string {
-    if (dateMonth === 0) {
-      return 'Jan';
-    }
-    if (dateMonth === 1) {
-      return 'Feb';
-    }
-    if (dateMonth === 2) {
-      return 'Mar';
-    }
-    if (dateMonth === 3) {
-      return 'Apr';
-    }
-    if (dateMonth === 4) {
-      return 'May';
-    }
-    if (dateMonth === 5) {
-      return 'June';
-    }
-    if (dateMonth === 6) {
-      return 'July';
-    }
-    if (dateMonth === 7) {
-      return 'Aug';
-    }
-    if (dateMonth === 8) {
-      return 'Sept';
-    }
-    if (dateMonth === 9) {
-      return 'Oct';
-    }
-    if (dateMonth === 10) {
-      return 'Nov';
-    }
-    if (dateMonth === 11) {
-      return 'Dec';
-    }
-  }
+
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
     (document.getElementById('img01') as HTMLImageElement).src = imgPath;
@@ -745,11 +592,18 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
       this.comment.setValue('');
       this.commentsSub = this.commentsService
         .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
+        .subscribe((comments: any) => {
           console.log('i got more shit to say baby 456');
           this.commentsCountValidator = postId;
           // this.commentCount = comments.length;
           // console.log('type', this.commentCount);
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
           this.comments = comments;
 
           this.commentsSub.unsubscribe();
@@ -763,8 +617,15 @@ export class ReusableCardPersonalComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         this.commentsCountValidator = postId;
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });
@@ -791,26 +652,7 @@ export class ReusableCommentsComponent implements OnInit, OnDestroy {
     public authService: AuthService
   ) {}
 
-  timeHourInitial = new Date().getHours();
-  timeHour = this.testNum(this.timeHourInitial);
-  timeMinute = new Date().getMinutes();
-  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
-  timeMinuteText = this.timeMinute < 10 ? '0' : '';
-  dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth();
-  dateMonthName = this.testMonth(this.dateMonth);
-
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
+  time = new Date();
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
@@ -827,87 +669,87 @@ export class ReusableCommentsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.postsSub.unsubscribe();
   }
-  // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
-    if (timeHourInitial > 12) {
-      if (timeHourInitial === 13) {
-        return 1;
-      }
-      if (timeHourInitial === 14) {
-        return 2;
-      }
-      if (timeHourInitial === 15) {
-        return 3;
-      }
-      if (timeHourInitial === 16) {
-        return 4;
-      }
-      if (timeHourInitial === 17) {
-        return 5;
-      }
-      if (timeHourInitial === 18) {
-        return 6;
-      }
-      if (timeHourInitial === 19) {
-        return 7;
-      }
-      if (timeHourInitial === 20) {
-        return 8;
-      }
-      if (timeHourInitial === 21) {
-        return 9;
-      }
-      if (timeHourInitial === 22) {
-        return 10;
-      }
-      if (timeHourInitial === 23) {
-        return 11;
-      }
-      if (timeHourInitial === 24) {
-        return 12;
-      }
-    } else {
-      return timeHourInitial;
-    }
-  }
-  testMonth(dateMonth: any): string {
-    if (dateMonth === 0) {
-      return 'Jan';
-    }
-    if (dateMonth === 1) {
-      return 'Feb';
-    }
-    if (dateMonth === 2) {
-      return 'Mar';
-    }
-    if (dateMonth === 3) {
-      return 'Apr';
-    }
-    if (dateMonth === 4) {
-      return 'May';
-    }
-    if (dateMonth === 5) {
-      return 'June';
-    }
-    if (dateMonth === 6) {
-      return 'July';
-    }
-    if (dateMonth === 7) {
-      return 'Aug';
-    }
-    if (dateMonth === 8) {
-      return 'Sept';
-    }
-    if (dateMonth === 9) {
-      return 'Oct';
-    }
-    if (dateMonth === 10) {
-      return 'Nov';
-    }
-    if (dateMonth === 11) {
-      return 'Dec';
-    }
-  }
+  // // Am Pm instead of 24hr clock
+  // testNum(timeHourInitial: any): number {
+  //   if (timeHourInitial > 12) {
+  //     if (timeHourInitial === 13) {
+  //       return 1;
+  //     }
+  //     if (timeHourInitial === 14) {
+  //       return 2;
+  //     }
+  //     if (timeHourInitial === 15) {
+  //       return 3;
+  //     }
+  //     if (timeHourInitial === 16) {
+  //       return 4;
+  //     }
+  //     if (timeHourInitial === 17) {
+  //       return 5;
+  //     }
+  //     if (timeHourInitial === 18) {
+  //       return 6;
+  //     }
+  //     if (timeHourInitial === 19) {
+  //       return 7;
+  //     }
+  //     if (timeHourInitial === 20) {
+  //       return 8;
+  //     }
+  //     if (timeHourInitial === 21) {
+  //       return 9;
+  //     }
+  //     if (timeHourInitial === 22) {
+  //       return 10;
+  //     }
+  //     if (timeHourInitial === 23) {
+  //       return 11;
+  //     }
+  //     if (timeHourInitial === 24) {
+  //       return 12;
+  //     }
+  //   } else {
+  //     return timeHourInitial;
+  //   }
+  // }
+  // testMonth(dateMonth: any): string {
+  //   if (dateMonth === 0) {
+  //     return 'Jan';
+  //   }
+  //   if (dateMonth === 1) {
+  //     return 'Feb';
+  //   }
+  //   if (dateMonth === 2) {
+  //     return 'Mar';
+  //   }
+  //   if (dateMonth === 3) {
+  //     return 'Apr';
+  //   }
+  //   if (dateMonth === 4) {
+  //     return 'May';
+  //   }
+  //   if (dateMonth === 5) {
+  //     return 'June';
+  //   }
+  //   if (dateMonth === 6) {
+  //     return 'July';
+  //   }
+  //   if (dateMonth === 7) {
+  //     return 'Aug';
+  //   }
+  //   if (dateMonth === 8) {
+  //     return 'Sept';
+  //   }
+  //   if (dateMonth === 9) {
+  //     return 'Oct';
+  //   }
+  //   if (dateMonth === 10) {
+  //     return 'Nov';
+  //   }
+  //   if (dateMonth === 11) {
+  //     return 'Dec';
+  //   }
+  // }
   addComment({
     body,
     userId,
@@ -917,7 +759,7 @@ export class ReusableCommentsComponent implements OnInit, OnDestroy {
   {
     body: string;
     userId: string;
-    time: string;
+    time: Date;
     postId: string;
     // parentId: null | string;
   }): void {
@@ -1020,26 +862,8 @@ export class ReusableCommentFormComponent implements OnInit {
   Comments = new FormGroup({
     comment: this.comment,
   });
-  timeHourInitial = new Date().getHours();
-  timeHour = this.testNum(this.timeHourInitial);
-  timeMinute = new Date().getMinutes();
-  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
-  timeMinuteText = this.timeMinute < 10 ? '0' : '';
-  dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth();
-  dateMonthName = this.testMonth(this.dateMonth);
 
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
+  time = new Date();
 
   constructor(
     private fb: FormBuilder,
@@ -1053,87 +877,7 @@ export class ReusableCommentFormComponent implements OnInit {
 
     // Post
   }
-  // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
-    if (timeHourInitial > 12) {
-      if (timeHourInitial === 13) {
-        return 1;
-      }
-      if (timeHourInitial === 14) {
-        return 2;
-      }
-      if (timeHourInitial === 15) {
-        return 3;
-      }
-      if (timeHourInitial === 16) {
-        return 4;
-      }
-      if (timeHourInitial === 17) {
-        return 5;
-      }
-      if (timeHourInitial === 18) {
-        return 6;
-      }
-      if (timeHourInitial === 19) {
-        return 7;
-      }
-      if (timeHourInitial === 20) {
-        return 8;
-      }
-      if (timeHourInitial === 21) {
-        return 9;
-      }
-      if (timeHourInitial === 22) {
-        return 10;
-      }
-      if (timeHourInitial === 23) {
-        return 11;
-      }
-      if (timeHourInitial === 24) {
-        return 12;
-      }
-    } else {
-      return timeHourInitial;
-    }
-  }
-  testMonth(dateMonth: any): string {
-    if (dateMonth === 0) {
-      return 'Jan';
-    }
-    if (dateMonth === 1) {
-      return 'Feb';
-    }
-    if (dateMonth === 2) {
-      return 'Mar';
-    }
-    if (dateMonth === 3) {
-      return 'Apr';
-    }
-    if (dateMonth === 4) {
-      return 'May';
-    }
-    if (dateMonth === 5) {
-      return 'June';
-    }
-    if (dateMonth === 6) {
-      return 'July';
-    }
-    if (dateMonth === 7) {
-      return 'Aug';
-    }
-    if (dateMonth === 8) {
-      return 'Sept';
-    }
-    if (dateMonth === 9) {
-      return 'Oct';
-    }
-    if (dateMonth === 10) {
-      return 'Nov';
-    }
-    if (dateMonth === 11) {
-      return 'Dec';
-    }
-  }
+
   // onSubmit(): void {
   //   console.log('onSubmit', this.form.value);
   //   this.handleSubmit.emit(this.form.value.title);
@@ -1244,27 +988,7 @@ export class CardFeedComponent implements OnInit, OnDestroy {
   // number of comments that load
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
-
-  timeHourInitial = new Date().getHours();
-  timeHour = this.testNum(this.timeHourInitial);
-  timeMinute = new Date().getMinutes();
-  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
-  timeMinuteText = this.timeMinute < 10 ? '0' : '';
-  dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth();
-  dateMonthName = this.testMonth(this.dateMonth);
-
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
+  time = new Date();
 
   constructor(
     public showCaseService: ShowCaseService,
@@ -1317,87 +1041,7 @@ export class CardFeedComponent implements OnInit, OnDestroy {
     }
     this.commentsValidator = postId;
   }
-  // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
-    if (timeHourInitial > 12) {
-      if (timeHourInitial === 13) {
-        return 1;
-      }
-      if (timeHourInitial === 14) {
-        return 2;
-      }
-      if (timeHourInitial === 15) {
-        return 3;
-      }
-      if (timeHourInitial === 16) {
-        return 4;
-      }
-      if (timeHourInitial === 17) {
-        return 5;
-      }
-      if (timeHourInitial === 18) {
-        return 6;
-      }
-      if (timeHourInitial === 19) {
-        return 7;
-      }
-      if (timeHourInitial === 20) {
-        return 8;
-      }
-      if (timeHourInitial === 21) {
-        return 9;
-      }
-      if (timeHourInitial === 22) {
-        return 10;
-      }
-      if (timeHourInitial === 23) {
-        return 11;
-      }
-      if (timeHourInitial === 24) {
-        return 12;
-      }
-    } else {
-      return timeHourInitial;
-    }
-  }
-  testMonth(dateMonth: any): string {
-    if (dateMonth === 0) {
-      return 'Jan';
-    }
-    if (dateMonth === 1) {
-      return 'Feb';
-    }
-    if (dateMonth === 2) {
-      return 'Mar';
-    }
-    if (dateMonth === 3) {
-      return 'Apr';
-    }
-    if (dateMonth === 4) {
-      return 'May';
-    }
-    if (dateMonth === 5) {
-      return 'June';
-    }
-    if (dateMonth === 6) {
-      return 'July';
-    }
-    if (dateMonth === 7) {
-      return 'Aug';
-    }
-    if (dateMonth === 8) {
-      return 'Sept';
-    }
-    if (dateMonth === 9) {
-      return 'Oct';
-    }
-    if (dateMonth === 10) {
-      return 'Nov';
-    }
-    if (dateMonth === 11) {
-      return 'Dec';
-    }
-  }
+
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
     console.log('Hey babe I miss you more', postId);
     console.log('Hey babe I miss you ', OriginalPostId);
@@ -1474,11 +1118,18 @@ export class CardFeedComponent implements OnInit, OnDestroy {
 
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         console.log('i got more shit to say', comments.length);
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
 
         this.commentsSub.unsubscribe();
@@ -1552,7 +1203,14 @@ export class CardFeedComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });
@@ -1568,13 +1226,19 @@ export class CardFeedComponent implements OnInit, OnDestroy {
       this.comment.setValue('');
       this.commentsSub = this.commentsService
         .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
+        .subscribe((comments: any) => {
           console.log('i got more shit to say baby');
           this.commentsCountValidator = postId;
           // this.commentCount = comments.length;
           // console.log('type', this.commentCount);
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
           this.comments = comments;
-
           this.commentsSub.unsubscribe();
         });
       console.log('onComment', postId);
@@ -1586,8 +1250,15 @@ export class CardFeedComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         this.commentsCountValidator = postId;
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });
@@ -1629,27 +1300,7 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
   // number of comments that load
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
-
-  timeHourInitial = new Date().getHours();
-  timeHour = this.testNum(this.timeHourInitial);
-  timeMinute = new Date().getMinutes();
-  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
-  timeMinuteText = this.timeMinute < 10 ? '0' : '';
-  dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth();
-  dateMonthName = this.testMonth(this.dateMonth);
-
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
+  time = new Date();
 
   constructor(
     public showCaseService: ShowCaseService,
@@ -1695,90 +1346,8 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
     }
     this.commentsValidator = postId;
   }
-  // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
-    if (timeHourInitial > 12) {
-      if (timeHourInitial === 13) {
-        return 1;
-      }
-      if (timeHourInitial === 14) {
-        return 2;
-      }
-      if (timeHourInitial === 15) {
-        return 3;
-      }
-      if (timeHourInitial === 16) {
-        return 4;
-      }
-      if (timeHourInitial === 17) {
-        return 5;
-      }
-      if (timeHourInitial === 18) {
-        return 6;
-      }
-      if (timeHourInitial === 19) {
-        return 7;
-      }
-      if (timeHourInitial === 20) {
-        return 8;
-      }
-      if (timeHourInitial === 21) {
-        return 9;
-      }
-      if (timeHourInitial === 22) {
-        return 10;
-      }
-      if (timeHourInitial === 23) {
-        return 11;
-      }
-      if (timeHourInitial === 24) {
-        return 12;
-      }
-    } else {
-      return timeHourInitial;
-    }
-  }
-  testMonth(dateMonth: any): string {
-    if (dateMonth === 0) {
-      return 'Jan';
-    }
-    if (dateMonth === 1) {
-      return 'Feb';
-    }
-    if (dateMonth === 2) {
-      return 'Mar';
-    }
-    if (dateMonth === 3) {
-      return 'Apr';
-    }
-    if (dateMonth === 4) {
-      return 'May';
-    }
-    if (dateMonth === 5) {
-      return 'June';
-    }
-    if (dateMonth === 6) {
-      return 'July';
-    }
-    if (dateMonth === 7) {
-      return 'Aug';
-    }
-    if (dateMonth === 8) {
-      return 'Sept';
-    }
-    if (dateMonth === 9) {
-      return 'Oct';
-    }
-    if (dateMonth === 10) {
-      return 'Nov';
-    }
-    if (dateMonth === 11) {
-      return 'Dec';
-    }
-  }
+
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
-    console.log('Hey babe I miss you more', postId.length);
-    console.log('Hey babe I miss you ', OriginalPostId.length);
     if (OriginalPostId.length === 0) {
       this.postService.getPostsTrendingNumberOwn(postId);
       this.valueChosen = postId;
@@ -1853,11 +1422,18 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
 
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         console.log('i got more shit to say', comments.length);
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
 
         this.commentsSub.unsubscribe();
@@ -1869,8 +1445,8 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
-   // Where the post was posted
-   getPostsMainPageInstructor(value: string): void {
+  // Where the post was posted
+  getPostsMainPageInstructor(value: string): void {
     this.router.navigate(['/instructor-review/:'], {
       queryParams: { category: value },
     });
@@ -1931,7 +1507,14 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });
@@ -1947,13 +1530,19 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
       this.comment.setValue('');
       this.commentsSub = this.commentsService
         .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
+        .subscribe((comments: any) => {
           console.log('i got more shit to say baby');
           this.commentsCountValidator = postId;
           // this.commentCount = comments.length;
           // console.log('type', this.commentCount);
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
           this.comments = comments;
-
           this.commentsSub.unsubscribe();
         });
       console.log('onComment', postId);
@@ -1965,8 +1554,15 @@ export class TrendingFeedComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         this.commentsCountValidator = postId;
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });
@@ -2012,27 +1608,7 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
   // number of comments that load
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
-
-  timeHourInitial = new Date().getHours();
-  timeHour = this.testNum(this.timeHourInitial);
-  timeMinute = new Date().getMinutes();
-  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
-  timeMinuteText = this.timeMinute < 10 ? '0' : '';
-  dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth();
-  dateMonthName = this.testMonth(this.dateMonth);
-
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
+  time = new Date();
 
   constructor(
     public showCaseService: ShowCaseService,
@@ -2079,87 +1655,6 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
       this.comment.setValue('');
     }
     this.commentsValidator = postId;
-  }
-  // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
-    if (timeHourInitial > 12) {
-      if (timeHourInitial === 13) {
-        return 1;
-      }
-      if (timeHourInitial === 14) {
-        return 2;
-      }
-      if (timeHourInitial === 15) {
-        return 3;
-      }
-      if (timeHourInitial === 16) {
-        return 4;
-      }
-      if (timeHourInitial === 17) {
-        return 5;
-      }
-      if (timeHourInitial === 18) {
-        return 6;
-      }
-      if (timeHourInitial === 19) {
-        return 7;
-      }
-      if (timeHourInitial === 20) {
-        return 8;
-      }
-      if (timeHourInitial === 21) {
-        return 9;
-      }
-      if (timeHourInitial === 22) {
-        return 10;
-      }
-      if (timeHourInitial === 23) {
-        return 11;
-      }
-      if (timeHourInitial === 24) {
-        return 12;
-      }
-    } else {
-      return timeHourInitial;
-    }
-  }
-  testMonth(dateMonth: any): string {
-    if (dateMonth === 0) {
-      return 'Jan';
-    }
-    if (dateMonth === 1) {
-      return 'Feb';
-    }
-    if (dateMonth === 2) {
-      return 'Mar';
-    }
-    if (dateMonth === 3) {
-      return 'Apr';
-    }
-    if (dateMonth === 4) {
-      return 'May';
-    }
-    if (dateMonth === 5) {
-      return 'June';
-    }
-    if (dateMonth === 6) {
-      return 'July';
-    }
-    if (dateMonth === 7) {
-      return 'Aug';
-    }
-    if (dateMonth === 8) {
-      return 'Sept';
-    }
-    if (dateMonth === 9) {
-      return 'Oct';
-    }
-    if (dateMonth === 10) {
-      return 'Nov';
-    }
-    if (dateMonth === 11) {
-      return 'Dec';
-    }
   }
 
   getPostsTrendingNumber(OriginalPostId: string, postId: string): any {
@@ -2247,8 +1742,8 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
     this.router.navigate(['/main/:'], { queryParams: { category: value } });
     console.log('hey chaz mataz', value);
   }
-   // Where the post was posted
-   getPostsMainPageInstructor(value: string): void {
+  // Where the post was posted
+  getPostsMainPageInstructor(value: string): void {
     this.router.navigate(['/instructor-review/:'], {
       queryParams: { category: value },
     });
@@ -2309,7 +1804,14 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });
@@ -2326,13 +1828,19 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
       // this.commentsService.getComments(postId);
       this.commentsSub = this.commentsService
         .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
+        .subscribe((comments: any) => {
           console.log('i got more shit to say baby');
           this.commentsCountValidator = postId;
           // this.commentCount = comments.length;
           // console.log('type', this.commentCount);
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
           this.comments = comments;
-
           this.commentsSub.unsubscribe();
         });
 
@@ -2346,11 +1854,17 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
 
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
-        console.log('i got more shit to say', comments.length);
+      .subscribe((comments: any) => {
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
 
         this.commentsSub.unsubscribe();
@@ -2362,11 +1876,18 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         console.log('i got more shit to say', comments);
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
 
         this.commentsSub.unsubscribe();
@@ -2404,27 +1925,7 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
   private commentsSub: Subscription;
   private countSub: Subscription;
   comment: FormControl = new FormControl('');
-
-  timeHourInitial = new Date().getHours();
-  timeHour = this.testNum(this.timeHourInitial);
-  timeMinute = new Date().getMinutes();
-  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
-  timeMinuteText = this.timeMinute < 10 ? '0' : '';
-  dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth();
-  dateMonthName = this.testMonth(this.dateMonth);
-
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
+  time = new Date();
 
   constructor(
     public showCaseService: ShowCaseService,
@@ -2637,11 +2138,18 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
       this.comment.setValue('');
       this.commentsSub = this.commentsService
         .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
+        .subscribe((comments: any) => {
           console.log('i got more shit to say baby');
           this.commentsCountValidator = postId;
           // this.commentCount = comments.length;
           // console.log('type', this.commentCount);
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
           this.comments = comments;
 
           this.commentsSub.unsubscribe();
@@ -2683,7 +2191,14 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });
@@ -2714,27 +2229,7 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
   // number of comments that load
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
-
-  timeHourInitial = new Date().getHours();
-  timeHour = this.testNum(this.timeHourInitial);
-  timeMinute = new Date().getMinutes();
-  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
-  timeMinuteText = this.timeMinute < 10 ? '0' : '';
-  dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth();
-  dateMonthName = this.testMonth(this.dateMonth);
-
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
+  time = new Date();
 
   // img popup
   img = document.getElementById('myImg');
@@ -2786,87 +2281,6 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
       this.comment.setValue('');
     }
     this.commentsValidator = postId;
-  }
-  // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
-    if (timeHourInitial > 12) {
-      if (timeHourInitial === 13) {
-        return 1;
-      }
-      if (timeHourInitial === 14) {
-        return 2;
-      }
-      if (timeHourInitial === 15) {
-        return 3;
-      }
-      if (timeHourInitial === 16) {
-        return 4;
-      }
-      if (timeHourInitial === 17) {
-        return 5;
-      }
-      if (timeHourInitial === 18) {
-        return 6;
-      }
-      if (timeHourInitial === 19) {
-        return 7;
-      }
-      if (timeHourInitial === 20) {
-        return 8;
-      }
-      if (timeHourInitial === 21) {
-        return 9;
-      }
-      if (timeHourInitial === 22) {
-        return 10;
-      }
-      if (timeHourInitial === 23) {
-        return 11;
-      }
-      if (timeHourInitial === 24) {
-        return 12;
-      }
-    } else {
-      return timeHourInitial;
-    }
-  }
-  testMonth(dateMonth: any): string {
-    if (dateMonth === 0) {
-      return 'Jan';
-    }
-    if (dateMonth === 1) {
-      return 'Feb';
-    }
-    if (dateMonth === 2) {
-      return 'Mar';
-    }
-    if (dateMonth === 3) {
-      return 'Apr';
-    }
-    if (dateMonth === 4) {
-      return 'May';
-    }
-    if (dateMonth === 5) {
-      return 'June';
-    }
-    if (dateMonth === 6) {
-      return 'July';
-    }
-    if (dateMonth === 7) {
-      return 'Aug';
-    }
-    if (dateMonth === 8) {
-      return 'Sept';
-    }
-    if (dateMonth === 9) {
-      return 'Oct';
-    }
-    if (dateMonth === 10) {
-      return 'Nov';
-    }
-    if (dateMonth === 11) {
-      return 'Dec';
-    }
   }
 
   imgClick(imgPath): any {
@@ -2981,11 +2395,18 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
 
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         console.log('i got more shit to say', comments.length);
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
 
         this.commentsSub.unsubscribe();
@@ -3003,13 +2424,19 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
       this.comment.setValue('');
       this.commentsSub = this.commentsService
         .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
+        .subscribe((comments: any) => {
           console.log('i got more shit to say baby');
           this.commentsCountValidator = postId;
           // this.commentCount = comments.length;
           // console.log('type', this.commentCount);
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
           this.comments = comments;
-
           this.commentsSub.unsubscribe();
         });
       console.log('onComment', postId);
@@ -3021,8 +2448,15 @@ export class CardInfoMainPageComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         this.commentsCountValidator = postId;
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });
@@ -3053,27 +2487,7 @@ export class CardInfoInstructorReviewComponent implements OnInit, OnDestroy {
   // number of comments that load
   private commentsSub: Subscription;
   comment: FormControl = new FormControl('');
-
-  timeHourInitial = new Date().getHours();
-  timeHour = this.testNum(this.timeHourInitial);
-  timeMinute = new Date().getMinutes();
-  text = this.timeHourInitial >= 12 ? 'pm' : 'am';
-  timeMinuteText = this.timeMinute < 10 ? '0' : '';
-  dateDay = new Date().getDate();
-  dateMonth = new Date().getMonth();
-  dateMonthName = this.testMonth(this.dateMonth);
-
-  time =
-    this.dateMonthName +
-    '\xa0' +
-    this.dateDay +
-    '\xa0' +
-    this.timeHour +
-    ':' +
-    this.timeMinuteText +
-    this.timeMinute +
-    '\xa0' +
-    this.text;
+  time = new Date();
 
   // img popup
   img = document.getElementById('myImg');
@@ -3130,87 +2544,6 @@ export class CardInfoInstructorReviewComponent implements OnInit, OnDestroy {
     }
     this.commentsValidator = postId;
   }
-  // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
-    if (timeHourInitial > 12) {
-      if (timeHourInitial === 13) {
-        return 1;
-      }
-      if (timeHourInitial === 14) {
-        return 2;
-      }
-      if (timeHourInitial === 15) {
-        return 3;
-      }
-      if (timeHourInitial === 16) {
-        return 4;
-      }
-      if (timeHourInitial === 17) {
-        return 5;
-      }
-      if (timeHourInitial === 18) {
-        return 6;
-      }
-      if (timeHourInitial === 19) {
-        return 7;
-      }
-      if (timeHourInitial === 20) {
-        return 8;
-      }
-      if (timeHourInitial === 21) {
-        return 9;
-      }
-      if (timeHourInitial === 22) {
-        return 10;
-      }
-      if (timeHourInitial === 23) {
-        return 11;
-      }
-      if (timeHourInitial === 24) {
-        return 12;
-      }
-    } else {
-      return timeHourInitial;
-    }
-  }
-  testMonth(dateMonth: any): string {
-    if (dateMonth === 0) {
-      return 'Jan';
-    }
-    if (dateMonth === 1) {
-      return 'Feb';
-    }
-    if (dateMonth === 2) {
-      return 'Mar';
-    }
-    if (dateMonth === 3) {
-      return 'Apr';
-    }
-    if (dateMonth === 4) {
-      return 'May';
-    }
-    if (dateMonth === 5) {
-      return 'June';
-    }
-    if (dateMonth === 6) {
-      return 'July';
-    }
-    if (dateMonth === 7) {
-      return 'Aug';
-    }
-    if (dateMonth === 8) {
-      return 'Sept';
-    }
-    if (dateMonth === 9) {
-      return 'Oct';
-    }
-    if (dateMonth === 10) {
-      return 'Nov';
-    }
-    if (dateMonth === 11) {
-      return 'Dec';
-    }
-  }
 
   imgClick(imgPath): any {
     document.getElementById('myModal').style.display = 'block';
@@ -3324,13 +2657,19 @@ export class CardInfoInstructorReviewComponent implements OnInit, OnDestroy {
 
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         console.log('i got more shit to say', comments.length);
         this.commentsCountValidator = postId;
         // this.commentCount = comments.length;
         // console.log('type', this.commentCount);
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
-
         this.commentsSub.unsubscribe();
       });
     console.log('in real time');
@@ -3346,11 +2685,18 @@ export class CardInfoInstructorReviewComponent implements OnInit, OnDestroy {
       this.comment.setValue('');
       this.commentsSub = this.commentsService
         .getMessagesUpdateListener()
-        .subscribe((comments: string[]) => {
+        .subscribe((comments: any) => {
           console.log('i got more shit to say baby');
           this.commentsCountValidator = postId;
           // this.commentCount = comments.length;
           // console.log('type', this.commentCount);
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
           this.comments = comments;
 
           this.commentsSub.unsubscribe();
@@ -3364,8 +2710,15 @@ export class CardInfoInstructorReviewComponent implements OnInit, OnDestroy {
     this.commentsService.getComments(postId);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
         this.commentsCountValidator = postId;
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });

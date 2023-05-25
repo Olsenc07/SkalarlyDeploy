@@ -12,11 +12,12 @@ export interface Follow {
   nameFollower: string;
   usernameFollower: string;
   ProfilePicPathFollower: string;
+
   FollowingId: string;
   Following: string;
   nameFollowing: string;
   ProfilePicPathFollowing: string;
-  viewed: boolean;
+  viewed: Boolean;
 }
 export interface BlockUser {
   blockedName: string;
@@ -139,13 +140,12 @@ export class FollowService {
   postInfoFollowHistory(
     userId: string,
     username: string,
-    FollowingId: string,
-    time: string
+    FollowingId: string
   ): any {
     const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/infoFollowHistory',
-        { params: { userId, username, FollowingId, time } }
+        { params: { userId, username, FollowingId } }
       )
       .pipe(
         map((infosData) => {
@@ -409,7 +409,6 @@ export class FollowService {
               usernameFollower: data.usernameFollower,
               ProfilePicPathFollower: data.ProfilePicPathFollower,
               FollowingId: data.FollowingId,
-
               Following: data.Following,
               nameFollowing: data.nameFollowing,
               ProfilePicPathFollowing: data.ProfilePicPathFollowing,
@@ -428,12 +427,24 @@ export class FollowService {
   }
 
   // accept follower
-  acceptFollow(followId: string): any {
+  acceptFollow(
+    userIdYou: string,
+    followId: string,
+    userIdFollowed: string,
+    username: string,
+    followingPhoto: string
+  ): any {
     const sub = this.http
       .get<{ message: string; update: boolean }>(
         'https://www.skalarly.com/api/follow/acceptFollow',
         {
-          params: { followId },
+          params: {
+            userIdYou,
+            followId,
+            userIdFollowed,
+            username,
+            followingPhoto,
+          },
         }
       )
       .pipe(

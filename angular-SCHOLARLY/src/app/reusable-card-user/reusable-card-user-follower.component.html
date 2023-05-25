@@ -53,7 +53,7 @@
             
 </div>
 <div class="buttonCombo_" *ngIf="info.viewed == false">
-    <button mat-icon-button (click)="onAccept(info._id)" matTooltip="Accept" class="green">
+    <button mat-icon-button (click)="onAccept(info._id, info.Follower, info.usernameFollower, info.ProfilePicPathFollower)" matTooltip="Accept" class="green">
     <i class="far fa-check-circle"></i>
 </button>
 <button mat-icon-button (click)='onDelete(info._id)' matTooltip="Reject" class="red">

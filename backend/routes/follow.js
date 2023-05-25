@@ -3,6 +3,8 @@ const Follow = require('/app/backend/models/follow')
 const BlockSkalar = require('/app/backend/models/block-skalar')
 
 const followHistory = require('/app/backend/models/follow-history')
+const followAccepted = require('/app/backend/models/follow-accepted')
+
 const missedHistory = require('/app/backend/models/missed-notification');
 
 const express = require('express');
@@ -141,11 +143,82 @@ router.get("/getblockedListOne", async(req, res) => {
 
 // accept follower
 router.get("/acceptFollow", async(req,res) => {
-    console.log('boolean logic', req.query.followId)
+    console.log('boolean logic you', req.query.userIdYou);
+    console.log('boolean logic', req.query.followId);
+    console.log('accepted userId', req.query.userIdFollowed);
+    console.log('accepted username', req.query.username);
+    console.log('photo', req.query.followingPhoto);
+
     await Follow.updateOne({_id:req.query.followId}, {viewed: true})
     .then(update => {
+        // send push notif to user and save it in activity history
+
+        // If user is subscribed then send notififaction 
+try{
+// need to pass the skalar who is recieving this notif id through acceptFollow
+     Subscription.findOne({Creator: req.query.userId})
+     .then((checking) => {
+if(checking !== null){
+    // console.log('road is fuller', subscriber.keys);
+    // console.log('road is full', subscriber.keys.p256dh);
+    const p256dh = checking.keys.p256dh
+    const auth = checking.keys.auth
+    const endpoint = checking.endpoint
+    const pushSubscription = {
+        keys: {
+          p256dh: p256dh,
+          auth: auth
+        },
+        endpoint: endpoint,
+      };
+      publicVapidKey = process.env.vapidPublic;
+      privateVapidKey = process.env.vapidPrivate
+      webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
+      webpush.sendNotification(pushSubscription, JSON.stringify({
+        title: 'Accepted Request!',
+        content: `${req.query.username} has accepted your friend request.`,
+        // go to that skalars profile
+        openUrl: `/skalars/:${req.query.userId}`
+    }), options)
+    .then((_) => {
+        console.log( 'SENT Follow');
+    })
+    .catch(error => {
+        console.log(error);
+        // var missedNotif = new missedHistory({
+        //     username: '',
+        //     message: '',
+        //     time: '',
+        //     body: '',
+        //     Follower: user.username,
+        //     postId: req.query.userId,
+        //     Creator: req.query.userId
+
+        //   })
+        //   missedNotif.save();
+        //   console.log('missed followed saved and notified')
+
+    })
+} })
+   } catch{
+    console.log('User does not have a subscription for followers')
+}
+const FOLLOWAccepted = new followAccepted({
+    you: req.query.userIdYou,
+    FollowingId: req.query.userIdFollowed,
+    Following: req.query.username,  
+    ProfilePicPathFollowing:  req.query.followingPhoto,
+    Time: new date(),
+    viewed: false
+})
+FOLLOWAccepted.save().then(createdFollow => {
         res.status(200).json({message: 'accepted follower!', 
         update: true});
+}).catch(error => {
+    res.status(500).json({
+        message: 'Saving accepting follower history failed!'
+    });
+});
     }).catch(error => {
         res.status(500).json({
             message: 'Accepting follower failed!'
@@ -285,7 +358,8 @@ if(checking !== null){
       webpush.sendNotification(pushSubscription, JSON.stringify({
         title: 'New Follower!',
         content: `${user.name} has connected with you.`,
-        openUrl: '/friends-activity'
+        // go to that skalars profile
+        openUrl: `/skalars/:${req.query.userId}`
     }), options)
     .then((_) => {
         console.log( 'SENT Follow');
@@ -326,7 +400,6 @@ if(checking !== null){
 })
 // Followed history
 router.get("/infoFollowHistory", async(req, res, next) => {
-
 await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
     userInfo.findOne({username: req.query.username })
@@ -335,14 +408,15 @@ await userInfo.findOne({Creator: req.query.userId})
         .then( otherUserId => {
             const FOLLOW = new followHistory({
                 Follower: req.query.userId,
-                nameFollower: user.name,
+                // nameFollower: user.name,
                 usernameFollower: user.username,
                 ProfilePicPathFollower: user.ProfilePicPath,
                 FollowingId: otherUserId.id,
                 Following: req.query.username,  
-                nameFollowing: otherUser.name,
+                // nameFollowing: otherUser.name,
                 ProfilePicPathFollowing: otherUser.ProfilePicPath,
-                Time: req.query.time
+                Time: new Date(),
+                viewed: false,
             })
             FOLLOW.save().then(createdFollow => {
                 res.status(200).json({

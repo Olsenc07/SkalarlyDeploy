@@ -123,12 +123,7 @@ export class CommentsService {
         console.log('eazy 27 g eazy');
       });
   }
-  createComment(
-    body: string,
-    userId: string,
-    time: string,
-    postId: string
-  ): any {
+  createComment(body: string, userId: string, time: Date, postId: string): any {
     const messageOrg = {
       body,
       userId,

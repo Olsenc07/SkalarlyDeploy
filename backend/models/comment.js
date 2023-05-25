@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const CommentSchema = mongoose.Schema({
     body: { type: String},
     username: { type: String},
-    time: { type: String},
+    time: { type: Date},
     postId: { type: String},
     ProfilePicPath: { type: String},
     viewed: {type: Boolean},

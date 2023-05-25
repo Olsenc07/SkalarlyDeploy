@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const MessageSchema = mongoose.Schema({
     username: { type: String},
     message: { type: String},
-    time: { type: String},
+    // time may need to be of type Date not string
+    time: { type: Date},
     otherUser: {type: String},
     you: {type: String},
     viewed: {type: Boolean}

@@ -13,6 +13,7 @@ export interface Follow {
   Following: string;
   nameFollowing: string;
   ProfilePicPathFollowing: string;
+  viewed: boolean;
 }
 
 @Component({

@@ -8,6 +8,7 @@ import { FollowService } from '../services/follow.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PostsService } from '../services/posts.service';
 import { AppComponent } from '../app.component';
+import { formatDistance } from 'date-fns';
 
 export interface Follow {
   id: string;
@@ -16,9 +17,12 @@ export interface Follow {
   usernameFollower: string;
   ProfilePicPathFollower: string;
 
+  FollowingId: string;
   Following: string;
   nameFollowing: string;
   ProfilePicPathFollowing: string;
+  Time: Date;
+  viewed: Boolean;
 }
 export interface BlockUser {
   userName: string;
@@ -282,9 +286,37 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
       .subscribe((followers: Follow[]) => {
         this.mutuals = followers;
       });
+    // get accepted following list
+
+    // but how to get recomCounter ..
+    // do we allow to load more if 6 -> 12 length
+
+    // combine history and accepted list and sort in order of time
+    this.messagesYoCombined.sort((a, b) => {
+      let newest = new Date(a.time).valueOf(),
+        older = new Date(b.time).valueOf();
+      return newest - older;
+    });
+    // convert time to
+
+    console.log('whats up cus sorted', this.messagesYoCombined);
+    this.messagesYoCombined.forEach((e) => {
+      console.log('time 2', e.time);
+      console.log('type of time 2', typeof e.time);
+      e.time = formatDistance(new Date(e.time), new Date(), {
+        addSuffix: true,
+      });
+    });
   }
 
   ngOnDestroy(): any {
+    if (newfollowHistory.length != 0) {
+      this.followService.updateFollowHistory(this.userId);
+    }
+    if (newfollowAccepted.length != 0) {
+      this.followService.updateFollowAccepted(this.userId);
+    }
+
     this.followSub.unsubscribe();
   }
   // Forward

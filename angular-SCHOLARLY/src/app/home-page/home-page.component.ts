@@ -37,7 +37,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('loading...?');
+    console.log('loading...?', new Date());
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe((authStatus) => {

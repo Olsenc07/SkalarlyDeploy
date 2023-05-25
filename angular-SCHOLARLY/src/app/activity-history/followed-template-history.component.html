@@ -16,10 +16,10 @@
                 </div>
             </div>
             <div class="column_">
-                <div class="userName textSize" *ngIf="info.nameFollower">
+                <!-- <div class="userName textSize" *ngIf="info.nameFollower">
     
                     {{info.nameFollower}}
-                </div>
+                </div> -->
                 <div class="display">
                     <!-- Directs to users profile -->
                     <button mat-button class="center-" *ngIf="userId !== info.Follower" (click)="navigateToPage(info.usernameFollower)">
@@ -37,37 +37,7 @@
         </div>
 
         </div>
-
-        <!-- <div class="row">
-            <div [ngClass]="info.sport || info.club ? 'center' : 'centerEmpty' "
-                *ngIf=" info.major || info.minor ">
-                <div class=" center1" *ngIf="info.major">
-
-                    <i class="fas fa-star large">{{info.major}}</i>
-
-                </div>
-                <div class="center1" *ngIf="info.minor">
-
-                    <i class="far fa-star large">{{info.minor}}</i>
-
-                </div>
-            </div> -->
-
-
-            <!-- <div [ngClass]="info.major || info.minor ? 'center' : 'centerEmpty' "
-                *ngIf="info.sport || info.club ">
-                <div class="center1" *ngIf="info.sport">
-
-                    {{info.sport}}
-                </div>
-                <div class="center1" *ngIf="info.club">
-              
-                    {{info.club}}
-                </div>
-            </div> -->
-
-        <!-- </div> -->
-       
+ 
     </div>
 </mat-card>
 <div class="showMore" *ngIf="mutuals.length == 6">

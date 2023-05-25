@@ -226,12 +226,22 @@ export class ReusableCardUserFollowerComponent implements OnInit, OnDestroy {
   }
 
   navigateToPage(Following: string): any {
-    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
     this.router.navigate(['/skalars/:'], { queryParams: { id: Following } });
   }
-  onAccept(followId: string): any {
+  onAccept(
+    followId: string,
+    userIdFollowed: string,
+    username: string,
+    followingPhoto: string
+  ): any {
     console.log('love race', followId);
-    this.followService.acceptFollow(followId);
+    this.followService.acceptFollow(
+      this.userId,
+      followId,
+      userIdFollowed,
+      username,
+      followingPhoto
+    );
     this.followService.getMessageNotificationFollowed(this.userId);
     this.followSub3 = this.followService
       .getInfoFollowUpdateListener()

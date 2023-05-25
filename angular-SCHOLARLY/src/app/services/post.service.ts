@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, Subject, BehaviorSubject } from 'rxjs';
+import {  Subject } from 'rxjs';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';

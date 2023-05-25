@@ -237,8 +237,17 @@ res.status(500).json({
 router.get("/friends", async(req, res, next) => {
     const counter = req.query.counter;
     await Follow.find({Follower:req.query.userId})
-    .then(Following => {
-        console.log('following', Following);
+    .then(FollowingFirst => {
+        console.log('following', FollowingFirst);
+// if accepted request
+let Following = [];
+FollowingFirst.forEach((e)=>{
+console.log('did I accept your request', e.viewed)
+    if(e.viewed == true){
+Following.push(e);
+    }
+console.log('accepted requests', Following);
+      })
         let first = [];
           Following.forEach((e)=>{
         console.log('away', e.FollowingId)
@@ -252,8 +261,16 @@ router.get("/friends", async(req, res, next) => {
                 message: 'Friends feed fetched succesfully!',
                 posts: FollowingPosts
         })
-    })
-    })
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Fetching Skalars you follow posts failed'
+        });
+        });
+    }).catch(error => {
+        res.status(500).json({
+            message: 'Fetching Skalars you follow failed'
+        });
+        });
 });
 // Posts trending
 router.get("/Trending", async(req, res, next) => {
