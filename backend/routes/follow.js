@@ -33,7 +33,7 @@ await userInfo.findOne({username: username})
 .then( UserId => {
     console.log('userId blocked', UserId);
     var blockedskalar = new BlockSkalar({
-        blockedName: UserId.name,
+        // blockedName: UserId.name,
         blockedUsername: UserId.username,
         Creator: req.query.userId
     });
@@ -142,21 +142,21 @@ router.get("/getblockedListOne", async(req, res) => {
 })
 
 // accept follower
-router.get("/acceptFollow", async(req,res) => {
-    console.log('boolean logic you', req.query.userIdYou);
-    console.log('boolean logic', req.query.followId);
-    console.log('accepted userId', req.query.userIdFollowed);
-    console.log('accepted username', req.query.username);
-    console.log('photo', req.query.followingPhoto);
+router.post("/acceptFollow", async(req,res) => {
+    console.log('boolean logic you', req.body.userIdYou);
+    console.log('boolean logic', req.body.followId);
+    console.log('accepted userId', req.body.userIdFollowed);
+    console.log('accepted username', req.body.username);
+    console.log('photo', req.body.followingPhoto);
 
-    await Follow.updateOne({_id:req.query.followId}, {viewed: true})
+    await Follow.updateOne({_id:body.followId}, {viewed: true})
     .then(update => {
         // send push notif to user and save it in activity history
 
         // If user is subscribed then send notififaction 
 try{
 // need to pass the skalar who is recieving this notif id through acceptFollow
-     Subscription.findOne({Creator: req.query.userId})
+     Subscription.findOne({Creator: req.body.userId})
      .then((checking) => {
 if(checking !== null){
     // console.log('road is fuller', subscriber.keys);
@@ -176,9 +176,9 @@ if(checking !== null){
       webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
       webpush.sendNotification(pushSubscription, JSON.stringify({
         title: 'Accepted Request!',
-        content: `${req.query.username} has accepted your friend request.`,
+        content: `${req.body.username} has accepted your friend request.`,
         // go to that skalars profile
-        openUrl: `/skalars/:${req.query.userId}`
+        openUrl: `/skalars/:${req.body.username}`
     }), options)
     .then((_) => {
         console.log( 'SENT Follow');
@@ -204,16 +204,16 @@ if(checking !== null){
     console.log('User does not have a subscription for followers')
 }
 const FOLLOWAccepted = new followAccepted({
-    you: req.query.userIdYou,
-    FollowingId: req.query.userIdFollowed,
-    Following: req.query.username,  
-    ProfilePicPathFollowing:  req.query.followingPhoto,
+    you: req.body.userIdYou,
+    FollowingId: req.body.userIdFollowed,
+    Following: req.body.username,  
+    ProfilePicPathFollowing:  req.body.followingPhoto,
     Time: new date(),
     viewed: false
 })
-FOLLOWAccepted.save().then(createdFollow => {
-        res.status(200).json({message: 'accepted follower!', 
-        update: true});
+FOLLOWAccepted.save()
+.then(createdFollow => {
+        res.status(200).json({message: 'accepted follower!'});
 }).catch(error => {
     res.status(500).json({
         message: 'Saving accepting follower history failed!'
@@ -226,6 +226,36 @@ FOLLOWAccepted.save().then(createdFollow => {
     });
 })
 
+// follow accepted history
+router.get("/followAccepted", async (req, res) => {
+    const counter = req.query.counter
+     await followAccepted.find({you: req.query.userId}).sort({_id:-1}).skip(counter).limit(6)
+    .then(acceptedFollow => {
+        res.status(200).json({
+            message: 'Accepted follows fetched succesfully!',
+            messages: acceptedFollow
+        });
+    })
+    .catch(err => {
+        return res.status(401).json({
+            message: "Invalid accepted following error!",
+    
+        })
+    })
+})
+
+
+// update accept follower
+router.post("/updateAcceptFollow", async(req,res) => {
+await followAccepted.updateMany({userIdYou : req.body.userId}, {viewed: true})
+.then(createdFollow => {
+    res.status(200).json({message: 'accepted follower history!'});
+}).catch(error => {
+res.status(500).json({
+    message: 'Updating accepting follower history failed!'
+});
+})
+})
 
 // unblock skalar
 router.delete("/unblockSkalar", async(req, res) => {
@@ -357,9 +387,9 @@ if(checking !== null){
       webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
       webpush.sendNotification(pushSubscription, JSON.stringify({
         title: 'New Follower!',
-        content: `${user.name} has connected with you.`,
+        content: `${user.name} has requested to follow you.`,
         // go to that skalars profile
-        openUrl: `/skalars/:${req.query.userId}`
+        openUrl: `/skalars/:${user.name}`
     }), options)
     .then((_) => {
         console.log( 'SENT Follow');
@@ -402,21 +432,20 @@ if(checking !== null){
 router.get("/infoFollowHistory", async(req, res, next) => {
 await userInfo.findOne({Creator: req.query.userId})
 .then(user => {
-    userInfo.findOne({username: req.query.username })
-    .then( otherUser => {
-    User.findOne({username: req.query.FollowingId })
-        .then( otherUserId => {
+    // userInfo.findOne({username: req.query.username })
+    // .then( otherUser => {
+    // User.findOne({username: req.query.FollowingId })
+    //     .then( otherUserId => {
             const FOLLOW = new followHistory({
                 Follower: req.query.userId,
                 // nameFollower: user.name,
                 usernameFollower: user.username,
                 ProfilePicPathFollower: user.ProfilePicPath,
-                FollowingId: otherUserId.id,
+                // FollowingId: otherUserId.id,
                 Following: req.query.username,  
                 // nameFollowing: otherUser.name,
-                ProfilePicPathFollowing: otherUser.ProfilePicPath,
+                // ProfilePicPathFollowing: otherUser.ProfilePicPath,
                 Time: new Date(),
-                viewed: false,
             })
             FOLLOW.save().then(createdFollow => {
                 res.status(200).json({
@@ -428,12 +457,12 @@ await userInfo.findOne({Creator: req.query.userId})
     return res.status(401).json({
         message: "Invalid following error!"})
             })
-})
-.catch(err => {
-    return res.status(401).json({
-        message: "Invalid follow error!"})
-            })
-         })
+// })
+// .catch(err => {
+//     return res.status(401).json({
+//         message: "Invalid follow error!"})
+//             })
+//          })
     })
 })
 

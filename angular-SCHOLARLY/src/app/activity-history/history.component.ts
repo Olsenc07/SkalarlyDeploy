@@ -10,19 +10,12 @@ import { PostsService } from '../services/posts.service';
 import { AppComponent } from '../app.component';
 import { formatDistance } from 'date-fns';
 
-export interface Follow {
-  id: string;
+export interface FollowHistory {
   Follower: string;
-  nameFollower: string;
   usernameFollower: string;
   ProfilePicPathFollower: string;
-
-  FollowingId: string;
   Following: string;
-  nameFollowing: string;
-  ProfilePicPathFollowing: string;
   Time: Date;
-  viewed: Boolean;
 }
 export interface BlockUser {
   userName: string;
@@ -54,11 +47,17 @@ export interface CommentInterface {
 export class ActivityHistoryComponent implements OnInit, OnDestroy {
   comments: CommentInterface[] = [];
   userId: string;
-  followers: Follow[] = [];
+  followers: FollowHistory[] = [];
+  followersAccepted = [];
   newShared = [];
   newComment = [];
+
+  newAccepted = [];
+
   private postsSub: Subscription;
   private commentSub: Subscription;
+  private followSubHistory: Subscription;
+  private followSubAccepted: Subscription;
   private missedNotifsSub: Subscription;
   private followSub: Subscription;
   private followSubFollowers: Subscription;
@@ -84,25 +83,63 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
     this.commentSub = this.commentsService
       .getMessagesUpdateListener()
       .subscribe((comments: any) => {
-        this.comments = comments;
-        const NEW2 = [];
-        this.comments.forEach((e) => {
-          if (e.viewed === false) {
-            NEW2.push(e.viewed);
-          } else {
-            console.log('no unread comments');
-          }
-        });
-        this.newComment = NEW2;
-        console.log('new Gold', this.newComment);
+        if (comments.length >= 1) {
+          this.comments = comments;
+          const NEW2 = [];
+          this.comments.forEach((e) => {
+            if (e.viewed === false) {
+              NEW2.push(e.viewed);
+            } else {
+              console.log('no unread comments');
+            }
+          });
+          this.newComment = NEW2;
+          console.log('new Gold', this.newComment);
+        }
+      });
+    // history of followers
+    this.followService.getMessageNotificationFollowedHistory(this.userId, 0);
+    this.followSubHistory = this.followService
+      .getInfoFollowUpdateListenerHistory()
+      .subscribe((followers: FollowHistory[]) => {
+        if (followers.length >= 1) {
+          this.followers = followers;
+        }
+      });
+    // accepted follow requests
+    this.followService.getMessageNotificationFollowedAccepted(this.userId, 0);
+    this.followSubAccepted = this.followService
+      .getInfoFollowUpdateListenerAccepted()
+      .subscribe((accepted: any) => {
+        if (accepted.length >= 1) {
+          this.followersAccepted = accepted;
+          const NEW2 = [];
+          this.followersAccepted.forEach((e) => {
+            if (e.viewed === false) {
+              NEW2.push(e.viewed);
+            } else {
+              console.log('no new following history');
+            }
+          });
+          this.newAccepted = NEW2;
+        }
       });
     // following info
-    this.followService.getMessageNotificationFollowed(this.userId);
-    this.followSubFollowers = this.followService
-      .getInfoFollowUpdateListener()
-      .subscribe((followers: Follow[]) => {
-        this.followers = followers;
-      });
+    // this.followService.getMessageNotificationFollowed(this.userId);
+    // this.followSubFollowers = this.followService
+    //   .getInfoFollowUpdateListener()
+    //   .subscribe((followers: FollowHistory[]) => {
+    //     this.followers = followers;
+    //     const NEW2 = [];
+    //     this.followers.forEach((e) => {
+    //       if (e.viewed === false) {
+    //         NEW2.push(e.viewed);
+    //       } else {
+    //         console.log('no unread comments');
+    //       }
+    //     });
+    //     this.newFollower = NEW2;
+    //   });
 
     // shared
     this.postService.getSharedPosts(this.userId, 0);
@@ -131,24 +168,39 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
     this.missedNotifsSub = this.commentsService
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
-        this.notif = missedNotifs;
+        if (missedNotifs.length >= 1) {
+          this.notif = missedNotifs;
+        }
       });
 
     this.followService.getBlockedList(this.userId);
     this.followSub = this.followService
       .getBlockedSkalarsUpdateListener()
       .subscribe((blocked: BlockUser[]) => {
-        this.blocked = blocked;
+        if (blocked.length >= 1) {
+          this.blocked = blocked;
+        }
       });
   }
 
   ngOnDestroy(): any {
     this.commentSub.unsubscribe();
+    this.followSubHistory.unsubscribe();
     this.followSubFollowers.unsubscribe();
     this.postsSub.unsubscribe();
     this.missedNotifsSub.unsubscribe();
     this.followSub.unsubscribe();
+    this.followSubAccepted.unsubscribe();
     this.appComponent.updateSettingsIcon();
+    if (this.newComment.length !== 0) {
+      this.commentsService.updateCommentsPosts(this.userId);
+    }
+    if (this.newAccepted.length !== 0) {
+      this.followService.updateFollowAccepted(this.userId);
+    }
+    if (this.newShared.length !== 0) {
+      this.postService.updateSharedPosts(this.userId);
+    }
   }
 
   // Turn off notifications
@@ -158,7 +210,9 @@ export class ActivityHistoryComponent implements OnInit, OnDestroy {
     const subNotif = this.commentsService
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
-        this.notif = missedNotifs;
+        if (missedNotifs.length >= 1) {
+          this.notif = missedNotifs;
+        }
       });
     subNotif.unsubscribe();
     // nav to profile
@@ -194,14 +248,22 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
-        console.log('comments yo', comments);
+      .subscribe((comments: any) => {
+        if (comments.length >= 1) {
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+          console.log('comments yo', comments);
+        }
         this.comments = comments;
       });
   }
 
   ngOnDestroy(): any {
-    this.commentsService.updateCommentsPosts(this.userId);
     this.commentsSub.unsubscribe();
   }
   // Forward
@@ -214,7 +276,16 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     const sub1 = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
+        if (comments.length >= 1) {
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+        }
         this.comments = comments;
         sub1.unsubscribe();
       });
@@ -229,7 +300,16 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     const sub2 = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
+        if (comments.length >= 1) {
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+        }
         this.comments = comments;
         sub2.unsubscribe();
       });
@@ -240,7 +320,16 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
     this.commentsService.getCommentsHistory(this.userId, this.recomCounter);
     this.commentsSub = this.commentsService
       .getMessagesUpdateListener()
-      .subscribe((comments: string[]) => {
+      .subscribe((comments: any) => {
+        if (comments.length >= 1) {
+          comments.forEach((e) => {
+            if (e.time) {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+        }
         this.comments = comments;
         this.commentsSub.unsubscribe();
       });
@@ -262,7 +351,7 @@ export class CommentHistoryComponent implements OnInit, OnDestroy {
 })
 export class FollowedTemplateComponent implements OnInit, OnDestroy {
   userId: string;
-  mutuals: Follow[] = [];
+  history: FollowHistory[] = [];
   recomCounter = 0;
   countVisibility = 0;
   private followSub: Subscription;
@@ -283,40 +372,21 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
     );
     this.followSub = this.followService
       .getInfoFollowUpdateListenerHistory()
-      .subscribe((followers: Follow[]) => {
-        this.mutuals = followers;
+      .subscribe((followers: any) => {
+        if (followers.length >= 1) {
+          followers.forEach((e) => {
+            if (e.Time) {
+              e.Time = formatDistance(new Date(e.Time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+        }
+        this.history = followers;
       });
-    // get accepted following list
-
-    // but how to get recomCounter ..
-    // do we allow to load more if 6 -> 12 length
-
-    // combine history and accepted list and sort in order of time
-    this.messagesYoCombined.sort((a, b) => {
-      let newest = new Date(a.time).valueOf(),
-        older = new Date(b.time).valueOf();
-      return newest - older;
-    });
-    // convert time to
-
-    console.log('whats up cus sorted', this.messagesYoCombined);
-    this.messagesYoCombined.forEach((e) => {
-      console.log('time 2', e.time);
-      console.log('type of time 2', typeof e.time);
-      e.time = formatDistance(new Date(e.time), new Date(), {
-        addSuffix: true,
-      });
-    });
   }
 
   ngOnDestroy(): any {
-    if (newfollowHistory.length != 0) {
-      this.followService.updateFollowHistory(this.userId);
-    }
-    if (newfollowAccepted.length != 0) {
-      this.followService.updateFollowAccepted(this.userId);
-    }
-
     this.followSub.unsubscribe();
   }
   // Forward
@@ -332,8 +402,17 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
     );
     this.sub1 = this.followService
       .getInfoFollowUpdateListenerHistory()
-      .subscribe((followers: Follow[]) => {
-        this.mutuals = followers;
+      .subscribe((followers: any) => {
+        if (followers.length >= 1) {
+          followers.forEach((e) => {
+            if (e.Time) {
+              e.Time = formatDistance(new Date(e.Time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+        }
+        this.history = followers;
         this.sub1.unsubscribe();
       });
   }
@@ -350,8 +429,119 @@ export class FollowedTemplateComponent implements OnInit, OnDestroy {
     );
     this.sub2 = this.followService
       .getInfoFollowUpdateListenerHistory()
-      .subscribe((followers: Follow[]) => {
-        this.mutuals = followers;
+      .subscribe((followers: any) => {
+        if (followers.length >= 1) {
+          followers.forEach((e) => {
+            if (e.Time) {
+              e.Time = formatDistance(new Date(e.Time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+        }
+        this.history = followers;
+        this.sub2.unsubscribe();
+      });
+  }
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
+}
+@Component({
+  selector: 'followed-accepted-history',
+  templateUrl: './followed-accepted-history.component.html',
+  styleUrls: ['../reusable-card-user/reusable-card-user.component.scss'],
+})
+export class FollowedAcceptedComponent implements OnInit, OnDestroy {
+  userId: string;
+  accepted = [];
+  recomCounter = 0;
+  countVisibility = 0;
+  private followAccepted: Subscription;
+  private sub1: Subscription;
+  private sub2: Subscription;
+
+  constructor(
+    private authService: AuthService,
+    private followService: FollowService,
+    private router: Router
+  ) {}
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+    // accepted info
+    this.followService.getMessageNotificationFollowedAccepted(this.userId, 0);
+    this.followAccepted = this.followService
+      .getInfoFollowUpdateListenerAccepted()
+      .subscribe((accept: any) => {
+        if (accept.length >= 1) {
+          const NEW2 = [];
+          accept.forEach((e) => {
+            if (e.Time) {
+              e.Time = formatDistance(new Date(e.Time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+        }
+        this.accepted = accept;
+      });
+  }
+
+  ngOnDestroy(): any {
+    this.followAccepted.unsubscribe();
+  }
+  // Forward
+  onClickFeed(): any {
+    const count = 1;
+    this.countVisibility += count;
+    const counting = 6;
+    this.recomCounter += counting;
+
+    this.followService.getMessageNotificationFollowedAccepted(
+      this.userId,
+      this.recomCounter
+    );
+    this.sub1 = this.followService
+      .getInfoFollowUpdateListenerAccepted()
+      .subscribe((accept: any) => {
+        if (accept.length >= 1) {
+          accept.forEach((e) => {
+            if (e.Time) {
+              e.Time = formatDistance(new Date(e.Time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+        }
+        this.accepted = accept;
+        this.sub1.unsubscribe();
+      });
+  }
+  // Back
+  onClickFeedBack(): any {
+    const count = 1;
+    this.countVisibility -= count;
+    const counting = 6;
+    this.recomCounter -= counting;
+
+    this.followService.getMessageNotificationFollowedAccepted(
+      this.userId,
+      this.recomCounter
+    );
+    this.sub2 = this.followService
+      .getInfoFollowUpdateListenerAccepted()
+      .subscribe((accept: any) => {
+        if (accept.length >= 1) {
+          accept.forEach((e) => {
+            if (e.Time) {
+              e.Time = formatDistance(new Date(e.Time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+        }
+        this.accepted = accept;
         this.sub2.unsubscribe();
       });
   }
@@ -388,13 +578,13 @@ export class SharedHistoryComponent implements OnInit, OnDestroy {
       .getPostSharedUpdateListener()
       .subscribe((shared: Post[]) => {
         console.log('whats going on', shared);
+        // if time added then change to the nice way of looking with foreach like others
         this.shared = shared;
       });
   }
 
   ngOnDestroy(): any {
     this.postsSub.unsubscribe();
-    this.postService.updateSharedPosts(this.userId);
   }
   navigateToPage(infoUser: string): any {
     // const ID = (document.getElementById('userName') as HTMLInputElement).value;
@@ -467,6 +657,15 @@ export class MissedNotificationsComponent implements OnInit, OnDestroy {
     this.commentsSub = this.commentsService
       .getMissedNotifUpdateListener()
       .subscribe((missedNotifs: MissedNotif[]) => {
+        if (missedNotifs.length >= 1) {
+          missedNotifs.forEach((e) => {
+            if (e.time !== '') {
+              e.time = formatDistance(new Date(e.time), new Date(), {
+                addSuffix: true,
+              });
+            }
+          });
+        }
         this.notif = missedNotifs;
       });
   }

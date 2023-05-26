@@ -622,8 +622,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.followService.postInfoFollow(this.userId, username, FollowingId);
     this.followService.postInfoFollowHistory(
       this.userId,
-      username,
-      FollowingId
+      username
     );
   }
   onUnfololow(userName: string): any {

@@ -67,11 +67,13 @@
               </div>
             </div>
   </mat-tab>
+
+  <!-- attempted to follow you -->
   <mat-tab label="Followed you"   >
     <ng-template  mat-tab-label >
-      <mat-icon class="titleFit_">  <i class="fas fa-user-friends"></i>
+      <mat-icon class="titleFit_" [ngClass]="newFollower.length == 0 ? '' : 'fontBlue'">  <i class="fas fa-user-friends"></i>
        </mat-icon>
-       <div class="font">Following History</div>
+       <div class="font">Followed You</div>
      
      </ng-template>
             <!-- Right column -->
@@ -95,12 +97,40 @@
             </div>
   </mat-tab>
 
+  <!-- accepted follow request -->
+  <mat-tab label="Accepted Follow Request"   >
+    <ng-template  mat-tab-label >
+      <mat-icon class="titleFit_" [ngClass]="newAccepted.length == 0 ? '' : 'fontBlue'">  <i class="fas fa-user-check"></i>
+       </mat-icon>
+       <div class="font">Accepted Follow Requests</div>
+     
+     </ng-template>
+            <!-- Right column -->
+            <div class="standard">
+                <!-- <div class="center friend_count">
+                    Followed you:
+                  </div> -->
+  
+              <div class="following-box">
+                <div class="structure">
+                     <div class="basicColumn" 
+                     *ngIf="followersAccepted.length == 0">
+                  <i class="fas fa-users-slash noFriends"></i>
+                  <div class="title__">No current accepted follow requests</div>
+                </div>
+                
+                  <followed-accepted-history></followed-accepted-history>
+                </div>
+              </div>
+  
+            </div>
+  </mat-tab>
 
   <mat-tab label="Shared Posts"  >
     <ng-template  mat-tab-label >
       <mat-icon class="titleFit" [ngClass]="newShared.length == 0 ? '' : 'fontBlue'">  <i class="fas fa-share-alt"></i>
        </mat-icon>
-       <div class="font"  >Shared Posts</div>
+       <div class="font">Shared Posts</div>
      
      </ng-template>
      <!-- Right column -->

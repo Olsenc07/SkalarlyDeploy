@@ -1963,87 +1963,6 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
     this.comment.setValue('');
     console.log('commentsValidator', this.commentsValidator);
   }
-  // Am Pm instead of 24hr clock
-  testNum(timeHourInitial: any): number {
-    if (timeHourInitial > 12) {
-      if (timeHourInitial === 13) {
-        return 1;
-      }
-      if (timeHourInitial === 14) {
-        return 2;
-      }
-      if (timeHourInitial === 15) {
-        return 3;
-      }
-      if (timeHourInitial === 16) {
-        return 4;
-      }
-      if (timeHourInitial === 17) {
-        return 5;
-      }
-      if (timeHourInitial === 18) {
-        return 6;
-      }
-      if (timeHourInitial === 19) {
-        return 7;
-      }
-      if (timeHourInitial === 20) {
-        return 8;
-      }
-      if (timeHourInitial === 21) {
-        return 9;
-      }
-      if (timeHourInitial === 22) {
-        return 10;
-      }
-      if (timeHourInitial === 23) {
-        return 11;
-      }
-      if (timeHourInitial === 24) {
-        return 12;
-      }
-    } else {
-      return timeHourInitial;
-    }
-  }
-  testMonth(dateMonth: any): string {
-    if (dateMonth === 0) {
-      return 'Jan';
-    }
-    if (dateMonth === 1) {
-      return 'Feb';
-    }
-    if (dateMonth === 2) {
-      return 'Mar';
-    }
-    if (dateMonth === 3) {
-      return 'Apr';
-    }
-    if (dateMonth === 4) {
-      return 'May';
-    }
-    if (dateMonth === 5) {
-      return 'June';
-    }
-    if (dateMonth === 6) {
-      return 'July';
-    }
-    if (dateMonth === 7) {
-      return 'Aug';
-    }
-    if (dateMonth === 8) {
-      return 'Sept';
-    }
-    if (dateMonth === 9) {
-      return 'Oct';
-    }
-    if (dateMonth === 10) {
-      return 'Nov';
-    }
-    if (dateMonth === 11) {
-      return 'Dec';
-    }
-  }
 
   // Adding emojis
   openEmoji(): void {
@@ -2068,10 +1987,29 @@ export class CardInfoFeedComponent implements OnInit, OnDestroy {
     });
   }
 
-  //
-  onDeleteComment(commentId: string): any {
+  onDeleteComment(commentId: string, postId: string): any {
     this.commentsService.deleteComment(commentId);
     console.log('chaz whats up', commentId);
+    console.log('chaz whats up 2', postId);
+
+    this.commentsSub = this.commentsService
+      .getMessagesUpdateListener()
+      .subscribe((comments: any) => {
+        this.commentsCountValidator = postId;
+        // this.commentCount = comments.length;
+        // console.log('type', this.commentCount);
+        comments.forEach((e) => {
+          if (e.time) {
+            e.time = formatDistance(new Date(e.time), new Date(), {
+              addSuffix: true,
+            });
+          }
+        });
+        this.comments = comments;
+
+        this.commentsSub.unsubscribe();
+      });
+    console.log('in real time');
   }
   // Where the post was posted
   navigateToMainPage(value: string): void {

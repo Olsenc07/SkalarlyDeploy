@@ -174,8 +174,8 @@ io.on('connection', (socket) => {
                 webpush.setVapidDetails('mailto:admin@skalarly.com', publicVapidKey, privateVapidKey);
                 webpush.sendNotification(pushSubscription, JSON.stringify({
                     title: 'New Message!',
-                    content: ` ${data.otherUser} has messaged you.`,
-                    openUrl: '/search'
+                    content: ` ${username.username} has messaged you.`,
+                    openUrl: `/messages/:${username.username}`
                 }), options)
                 .then((_) => {
                   console.log( 'SENT Message');

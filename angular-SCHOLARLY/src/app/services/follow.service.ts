@@ -31,7 +31,10 @@ export class FollowService {
 
   private follower: Follow[] = [];
   private followerPostUpdated = new Subject<Follow[]>();
-  private followerPostUpdatedHistory = new Subject<Follow[]>();
+  private followerPostUpdatedHistory = new Subject();
+
+  private followAccepted = [];
+  private followPostUpdatedAccepted = new Subject();
 
   private following: Follow[] = [];
   private followingPostUpdated = new Subject<Follow[]>();
@@ -94,6 +97,9 @@ export class FollowService {
   getInfoFollowUpdateListenerHistory(): any {
     return this.followerPostUpdatedHistory.asObservable();
   }
+  getInfoFollowUpdateListenerAccepted(): any {
+    return this.followPostUpdatedAccepted.asObservable();
+  }
   getFollowingUpdateListener(): any {
     return this.followingPostUpdated.asObservable();
   }
@@ -137,15 +143,11 @@ export class FollowService {
       });
   }
   // Followed history
-  postInfoFollowHistory(
-    userId: string,
-    username: string,
-    FollowingId: string
-  ): any {
+  postInfoFollowHistory(userId: string, username: string): any {
     const sub = this.http
       .get<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/infoFollowHistory',
-        { params: { userId, username, FollowingId } }
+        { params: { userId, username } }
       )
       .pipe(
         map((infosData) => {
@@ -270,6 +272,27 @@ export class FollowService {
       .subscribe((transformedMessage) => {
         this.follower = transformedMessage;
         this.followerPostUpdatedHistory.next([...this.follower]);
+        sub.unsubscribe();
+        console.log('rich and famous baby 1');
+      });
+  }
+  // Followed accepted
+  getMessageNotificationFollowedAccepted(userId: string, counter: number): any {
+    const sub = this.http
+      .get<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/follow/followAccepted',
+        {
+          params: { userId, counter },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
+      .subscribe((transformedMessage) => {
+        this.followAccepted = transformedMessage;
+        this.followPostUpdatedAccepted.next([...this.followAccepted]);
         sub.unsubscribe();
         console.log('rich and famous baby 1');
       });
@@ -427,6 +450,7 @@ export class FollowService {
   }
 
   // accept follower
+  // change to post
   acceptFollow(
     userIdYou: string,
     followId: string,
@@ -434,27 +458,36 @@ export class FollowService {
     username: string,
     followingPhoto: string
   ): any {
+    const authData = {
+      userIdYou,
+      followId,
+      userIdFollowed,
+      username,
+      followingPhoto,
+    };
+
     const sub = this.http
-      .get<{ message: string; update: boolean }>(
+      .post<{ message: string }>(
         'https://www.skalarly.com/api/follow/acceptFollow',
-        {
-          params: {
-            userIdYou,
-            followId,
-            userIdFollowed,
-            username,
-            followingPhoto,
-          },
-        }
-      )
-      .pipe(
-        map((messageData) => {
-          return messageData.update;
-        })
+        authData
       )
       .subscribe((transformedMessage) => {
-        console.log('boolean check', transformedMessage);
-        this.acceptFollowCheck = transformedMessage;
+        console.log('accepted follow', transformedMessage);
+
+        sub.unsubscribe();
+        console.log('rich and famous baby 11');
+      });
+  }
+  updateFollowAccepted(userId: string): any {
+    const authData = { userId };
+    const sub = this.http
+      .post<{ message: string }>(
+        'https://www.skalarly.com/api/follow/updateAcceptFollow',
+        authData
+      )
+      .subscribe((transformedMessage) => {
+        console.log('updated follow accepted', transformedMessage);
+        // this.acceptFollowCheck = transformedMessage;
         // this.mutualsInfoPostUpdated.next([...this.mutualsInfo]);
         sub.unsubscribe();
         console.log('rich and famous baby 11');

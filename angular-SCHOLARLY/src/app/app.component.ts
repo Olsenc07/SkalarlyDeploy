@@ -33,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
   newMsg = [];
   newMessageCheck = [];
   newfollowerCheck = [];
+  newAccepted = [];
   newsharedCheck = [];
   newComment = [];
   follower: Follow[] = [];
@@ -50,6 +51,7 @@ export class AppComponent implements OnInit, OnDestroy {
   hasQueryHash = false;
   private msgNotifSub: Subscription;
   private commentSub: Subscription;
+  private followSubAccepted: Subscription;
   private searchSub: Subscription;
   private msgSub: Subscription;
   private postSub: Subscription;
@@ -273,7 +275,7 @@ export class AppComponent implements OnInit, OnDestroy {
         .getListenerNotification()
         .subscribe((messagesNotif: Message[]) => {
           if (messagesNotif.length >= 1) {
-            this.newMsg = messagesNotif.reverse();
+            this.newMsg = messagesNotif;
             const NEW = [];
             this.newMsg.forEach((e) => {
               console.log('new b', e);
@@ -309,6 +311,23 @@ export class AppComponent implements OnInit, OnDestroy {
             console.log('new Gold', this.newComment);
           } else {
             console.log('no unread comments 2.0');
+          }
+        });
+      // accepted follow
+      this.followService.getMessageNotificationFollowedAccepted(this.userId, 0);
+      this.followSubAccepted = this.followService
+        .getInfoFollowUpdateListenerAccepted()
+        .subscribe((accepted: any) => {
+          if (accepted.length >= 1) {
+            const NEW2 = [];
+            accepted.forEach((e) => {
+              if (e.viewed === false) {
+                NEW2.push(e.viewed);
+              } else {
+                console.log('no new accepted following');
+              }
+            });
+            this.newAccepted = NEW2;
           }
         });
       // new followers
@@ -458,6 +477,26 @@ export class AppComponent implements OnInit, OnDestroy {
                   console.log('no unread comments 2.0');
                 }
               });
+            // accepted follow
+            this.followService.getMessageNotificationFollowedAccepted(
+              this.userId,
+              0
+            );
+            this.followSubAccepted = this.followService
+              .getInfoFollowUpdateListenerAccepted()
+              .subscribe((accepted: any) => {
+                if (accepted.length >= 1) {
+                  const NEW2 = [];
+                  accepted.forEach((e) => {
+                    if (e.viewed === false) {
+                      NEW2.push(e.viewed);
+                    } else {
+                      console.log('no new accepted following');
+                    }
+                  });
+                  this.newAccepted = NEW2;
+                }
+              });
             // new followers
             this.followService.getMessageNotificationFollowed(this.userId);
             this.followSub2 = this.followService
@@ -504,6 +543,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authListenerSubs.unsubscribe();
     this.msgNotifSub.unsubscribe();
     this.commentSub.unsubscribe();
+    this.followSubAccepted.unsubscribe();
     this.commentSub2.unsubscribe();
     this.searchSub.unsubscribe();
     this.msgsSub.unsubscribe();
@@ -546,7 +586,23 @@ export class AppComponent implements OnInit, OnDestroy {
           console.log('no unread comments 2.0');
         }
       });
-
+    // accepted follow
+    this.followService.getMessageNotificationFollowedAccepted(this.userId, 0);
+    this.followSubAccepted = this.followService
+      .getInfoFollowUpdateListenerAccepted()
+      .subscribe((accepted: any) => {
+        if (accepted.length >= 1) {
+          const NEW2 = [];
+          accepted.forEach((e) => {
+            if (e.viewed === false) {
+              NEW2.push(e.viewed);
+            } else {
+              console.log('no new accepted following');
+            }
+          });
+          this.newAccepted = NEW2;
+        }
+      });
     //  // new shared Posts
     this.postService.getSharedPosts(this.userId, 0);
     this.postsSub = this.postService
@@ -580,11 +636,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.checkFollowingSearch(this.search.value);
     const FollowingId = id;
     this.followService.postInfoFollow(this.userId, username, FollowingId);
-    this.followService.postInfoFollowHistory(
-      this.userId,
-      username,
-      FollowingId
-    );
+    this.followService.postInfoFollowHistory(this.userId, username);
     console.log('username follow', username);
     console.log('id follow', FollowingId);
     console.log('your id', this.userId);

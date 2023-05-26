@@ -5,7 +5,7 @@
 
     </mat-chip>
     </div>
-<mat-card class="row1_"  *ngFor="let info of history; let even = even; let odd = odd">
+<mat-card class="row1_"  *ngFor="let info of accepted; let even = even; let odd = odd">
     <div class="column" [ngClass]="{ even: even, odd: odd }">
        
         <div class="rowSpace">
@@ -22,12 +22,10 @@
                 </div> -->
                 <div class="display">
                     <!-- Directs to users profile -->
-                    <button mat-button class="center-"  (click)="navigateToPage(info.Following)">
-                        @{{ info.Following }}
+                    <button mat-button class="center-"  (click)="navigateToPage(info.usernameFollower)">
+                        @{{ info.usernameFollower }}
                     </button>
-                    <!-- <button mat-button *ngIf="userId == info.Follower" disabled>
-                    <div class="center-" >  @{{ info.usernameFollower }} </div>
-                    </button> -->
+                   
                 </div>
            
             </div>
@@ -35,13 +33,13 @@
             <div class="center-Space">
          {{info.Time}}
         </div>
-
+        <!-- fix placement of this   -->
+        <div *ngIf="info.viewed == false" class="newIndicator"></div>
         </div>
-
  
     </div>
 </mat-card>
-<div class="showMore" *ngIf="history.length == 6">
+<div class="showMore" *ngIf="accepted.length == 6">
     <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="onClickFeed()">Show More
         <!-- <i class="fas fa-chevron-circle-down"></i> -->
         <i class="fas fa-caret-down"></i>
