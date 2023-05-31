@@ -46,9 +46,10 @@
            <div *ngIf="info.campus">
             {{ info.campus}}
           </div>
-          <div *ngIf="info.birthday">
-            <!-- Eventually just have the age calculated out...maybe -->
+          <div *ngIf="info.birthday" class="birthday">
             {{ info.birthday|date:"longDate" }}
+            <!-- add fireworks later maybe -->
+            <i *ngIf="birthday == true" class="fas fa-birthday-cake bCake"></i>
           </div>
 
           <!-- <div *ngIf="date equals bd input"> <i class="material-icons icon">cake</i>

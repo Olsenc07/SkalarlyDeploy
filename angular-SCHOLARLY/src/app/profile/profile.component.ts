@@ -43,7 +43,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   show = true;
   notif = '';
   Notif: MissedNotif[] = [];
-
+  date = new Date();
+  birthday = false;
   recomCounter = 0;
   countVisibility = 0;
   isLoading = false;
@@ -144,6 +145,16 @@ export class ProfileComponent implements OnInit, OnDestroy {
       .getInfoUpdateListenerProfile()
       .subscribe((infos: any) => {
         this.info = infos;
+        if (this.info.birthday != '') {
+          const birthday = new Date(this.info.birthday);
+          const day1 = birthday.getDay();
+          const month1 = birthday.getMonth();
+          console.log('day of bd', day1);
+          console.log('month of bd', month1);
+          if (day1 == new Date().getDay() && month1 == new Date().getMonth()) {
+            this.birthday == true;
+          }
+        }
         console.log('boobs');
         this.isLoading = false;
         // do this for them all!
@@ -620,10 +631,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
     const FollowingId = this.id;
     this.followService.postInfoFollow(this.userId, username, FollowingId);
-    this.followService.postInfoFollowHistory(
-      this.userId,
-      username
-    );
+    this.followService.postInfoFollowHistory(this.userId, username);
   }
   onUnfololow(userName: string): any {
     this.FOLLOWingYo = 'false';

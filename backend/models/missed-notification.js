@@ -6,7 +6,7 @@ const MissedHistorySchema = mongoose.Schema({
     // 1-1 message
     message: { type: String},
     // comments, followed, messages
-    time: { type: String},
+    time: { type: Date},
     // comment
     body: { type: String},
     // follower
