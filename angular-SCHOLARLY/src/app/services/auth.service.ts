@@ -244,24 +244,25 @@ export class AuthService {
     minor: string,
     sport: string,
     club: string,
+    publicAccount: boolean,
     // pronouns: string,
     profilePic: File,
     Creator?: string
   ): any {
-    const userData = new FormData();
-    userData.append('username', username);
-    userData.append('name', name);
-    userData.append('bio', bio);
-    userData.append('campus', campus);
-    // userData.append('gender', gender);
-    userData.append('birthday', birthday);
-    userData.append('major', major);
-    userData.append('minor', minor);
-    userData.append('sport', sport);
-    userData.append('club', club);
-    // userData.append('pronouns', pronouns);
-    userData.append('profilePic', profilePic);
-    userData.append('Creator', Creator);
+    const userData: AuthDataInfo = {
+      username,
+      name,
+      bio,
+      campus,
+      birthday,
+      major,
+      minor,
+      sport,
+      club,
+      publicAccount,
+      profilePic,
+      Creator,
+    };
     const sub = this.http
       .post<{ message: string; post: AuthDataInfo }>(
         'https://www.skalarly.com/api/user/info',
@@ -281,6 +282,7 @@ export class AuthService {
             minor,
             sport,
             club,
+            publicAccount,
             // pronouns,
             profilePic,
             ProfilePicPath: responseData.post.ProfilePicPath,
@@ -1918,6 +1920,7 @@ export class AuthService {
               minor: info.minor,
               sport: info.sport,
               club: info.club,
+              publicAccount: info.publicAccount,
               // pronouns: info.pronouns,
               ProfilePicPath: info.ProfilePicPath,
               Followers: info.Followers,

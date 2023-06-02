@@ -39,7 +39,7 @@ export class FollowService {
   private following: Follow[] = [];
   private followingPostUpdated = new Subject<Follow[]>();
 
-  private followingInfo: Follow[] = [];
+  private followingInfo = [];
   private followingInfoPostUpdated = new Subject<Follow[]>();
 
   private followingInfoPostUpdatedBtn = new Subject<Follow[]>();

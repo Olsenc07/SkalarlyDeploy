@@ -682,11 +682,20 @@ router.get("/followingInfo", async(req, res, next) => {
     .then(following => {
         console.log('following', following)
         if(following){
-        console.log('test 69', following)
+            if(following.viewed == true){
+        console.log('test 69', following.viewed)
         res.status(200).json({
             message: 'Follows fetched succesfully!',
-            messages: 'true'
+            messages: 'true1',
+        
         });
+    }else{
+        res.status(200).json({
+            message: 'Follows fetched succesfully!',
+            // friends requested but not accepted
+            messages: 'true2',
+        });
+    }
     }else{
         console.log('test 7')
 

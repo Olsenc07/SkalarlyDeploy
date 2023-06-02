@@ -146,6 +146,10 @@ export class SignupComponent implements OnInit, OnDestroy {
   minor: FormControl = new FormControl('');
   sport: FormControl = new FormControl('');
   club: FormControl = new FormControl('');
+  publicAccount: FormControl = new FormControl('');
+  checkAccounType() {
+    console.log('account type', this.publicAccount.value);
+  }
   name: FormControl = new FormControl('');
   campus: FormControl = new FormControl('');
 
@@ -244,6 +248,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     username: this.username,
     password: this.password,
     termsCheck: this.termsCheck,
+    publicAccount: this.publicAccount,
   });
 
   // personalizeForm = new FormGroup({
@@ -756,6 +761,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.minor.value,
       this.sport.value,
       this.club.value,
+      this.publicAccount.value,
       // this.pronouns.value,
       this.form.get('profilePic').value
     );

@@ -114,32 +114,32 @@
             </div>
 
           </div>
-          <!-- <div class="accounts">
-            <mat-radio-group aria-label="Select an option" formControlName="accountType" class="Accounts" required>
+          <div class="accounts">
+            <mat-radio-group aria-label="Select an option"  [formControl]="publicAccount" class="Accounts" required>
 
-              <div class="layout">
+              <div class="layout" matTooltip="Only Followers can view your profile">
                 Private Account
                 <div class="center_">
-                  <mat-radio-button [disableRipple]="true" value="private"></mat-radio-button>
+                  <mat-radio-button (click)="checkAccounType()" value=false></mat-radio-button>
                 </div>
 
               </div>
-              <div class="tooltip">
+              <!-- <div class="tooltip">
                 <button mat-button (click)="openDialogAccount()">
                   <span class="material-icons material-icons_info "> info </span>
                 </button>
-              </div>
+              </div> -->
 
 
-              <div class="layout">
+              <div class="layout" matTooltip="Profile is accessible for all Skalars">
                 Public Account
                 <div class="center_">
-                  <mat-radio-button [disableRipple]="true" value="public"></mat-radio-button>
+                  <mat-radio-button (click)="checkAccounType()" value=true></mat-radio-button>
                 </div>
               </div>
 
             </mat-radio-group>
-          </div> -->
+          </div>
 
 
 

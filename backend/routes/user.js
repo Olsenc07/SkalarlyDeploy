@@ -565,6 +565,7 @@ router.post("/info",
             minor: req.body.minor,
             sport: req.body.sport,
             club: req.body.club,
+            publicAccount: req.body.publicAccount,
             // pronouns: req.body.pronouns,
             Followers: 0,
             Following: 0,
@@ -2994,10 +2995,18 @@ console.log('userId',userId);
         .then(followingStatus => {
             console.log('momma', followingStatus)
             if(followingStatus !== null){
+                if(followingStatus.viewed == true){
                 res.status(200).json({
                     message: 'Matches returned!',
-                    following: [req.query.othersUsername, 'true']
+                    following: [req.query.othersUsername, 'true1']
                 });
+            }else{
+                res.status(200).json({
+                    message: 'Matches returned!',
+                    // frineds but request not accepted 
+                    following: [req.query.othersUsername, 'true2']
+                });
+            }
             }else{
                 res.status(200).json({
                     message: 'No following',

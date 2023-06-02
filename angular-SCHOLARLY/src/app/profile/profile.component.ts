@@ -514,6 +514,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
               .subscribe((following: string) => {
                 console.log('top off box search', following);
                 this.FOLLOWingYo = following;
+                // then check if acted or still pending
+                // view true or false
                 console.log('following box search', this.FOLLOWingYo);
               });
 

@@ -20,6 +20,7 @@ export interface AuthDataInfo {
   minor?: string;
   sport?: string;
   club?: string;
+  publicAccount?: boolean;
   // pronouns?: string;
   Followers?: number;
   Following?: number;
