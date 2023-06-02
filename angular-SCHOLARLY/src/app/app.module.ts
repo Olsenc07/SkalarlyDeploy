@@ -50,6 +50,7 @@ import {
 import {
   RetrievePasswordComponent,
   ForgotPasswordComponent,
+  AlumTransferComponent,
 } from './retrieve-password/retrieve-password.component';
 import {
   ProfileComponent,
@@ -179,6 +180,7 @@ import { ErrorInterceptor } from './error-interceptor';
     ReAuthorizeComponent,
     RetrievePasswordComponent,
     ForgotPasswordComponent,
+    AlumTransferComponent,
     ProfileComponent,
     UserProfileComponent,
     EditProfileComponent,

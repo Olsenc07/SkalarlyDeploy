@@ -147,7 +147,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   sport: FormControl = new FormControl('');
   club: FormControl = new FormControl('');
   publicAccount: FormControl = new FormControl('');
-  checkAccounType() {
+  checkAccounType(type: boolean) {
+    this.publicAccount.setValue(type);
     console.log('account type', this.publicAccount.value);
   }
   name: FormControl = new FormControl('');
@@ -297,12 +298,15 @@ export class SignupComponent implements OnInit, OnDestroy {
   public pattern(control: AbstractControl): ValidationErrors | null {
     console.log('hey chaz', control.value as string);
     const emailChazz = control.value as string;
+
+    const regex0 = /^[a-zA-Z0-9._%+-]+@alum.utoronto\.ca/;
     const regex = /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/;
     const regex2 = /^[a-zA-Z0-9._%+-]+@utoronto\.ca/;
     const regex3 = /^[a-zA-Z0-9._%+-]+@uoftpharmacy\.com/;
     const regex4 = /^[a-zA-Z0-9._%+-]+@utsc.utoronto\.ca/;
     const regex5 = /^[a-zA-Z0-9._%+-]+@rotman.utoronto\.ca/;
 
+    const matches0 = regex.test(emailChazz);
     const matches = regex.test(emailChazz);
     const matches2 = regex2.test(emailChazz);
     const matches3 = regex3.test(emailChazz);
@@ -313,7 +317,10 @@ export class SignupComponent implements OnInit, OnDestroy {
     console.log('matches3', matches3);
     console.log('matches4', matches4);
     console.log('matches5', matches5);
-    if ((matches || matches2 || matches3 || matches4 || matches5) === true) {
+    if (
+      (matches0 || matches || matches2 || matches3 || matches4 || matches5) ===
+      true
+    ) {
       console.log('does it work now email pattern');
       return null;
     } else {

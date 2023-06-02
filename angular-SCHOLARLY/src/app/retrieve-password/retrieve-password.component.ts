@@ -174,10 +174,11 @@ export class RetrievePasswordComponent implements OnInit {
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./retrieve-password.component.scss'],
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ForgotPasswordComponent {
   isLoading = false;
   visible = true;
   visible2 = true;
+  emailMatches = false;
 
   password: FormControl = new FormControl('', Validators.minLength(8));
   passwordNew: FormControl = new FormControl('');
@@ -207,18 +208,29 @@ export class ForgotPasswordComponent implements OnInit {
     this.location.back();
   }
 
-  constructor(
-    private postsService: PostsService,
-    public authService: AuthService,
-    private snackBar: MatSnackBar,
-    private location: Location
-  ) {}
+  constructor(public authService: AuthService, private location: Location) {}
 
-  ngOnInit(): void {}
   clearPassword(): void {
     this.password.setValue('');
   }
-
+  doesEmailExist(event: any): void {
+    const query: string = event.target.value;
+    console.log('query 77 ', query);
+    if (query) {
+      this.authService.searchEmails(query.trim());
+      this.authService.getEmail().subscribe((results) => {
+        if (results === true) {
+          console.log('results baby', results);
+          this.emailMatches = results;
+        } else {
+          console.log('nuts', results);
+          this.emailMatches = false;
+        }
+      });
+    } else {
+      console.log('DeLorean');
+    }
+  }
   clearEmail1(): void {
     this.email.setValue('');
   }
@@ -248,5 +260,46 @@ export class ForgotPasswordComponent implements OnInit {
 
     c.type = 'password';
     this.visible2 = !this.visible2;
+  }
+}
+
+@Component({
+  selector: 'app-alumni-transfer',
+  templateUrl: './alumni-transfer.component.html',
+  styleUrls: ['./retrieve-password.component.scss'],
+})
+export class AlumTransferComponent {
+  emailMatches = false;
+
+  email: FormControl = new FormControl('', Validators.email);
+  emailForm = new FormGroup({
+    email: this.email,
+  });
+  backButton(): void {
+    this.location.back();
+  }
+
+  constructor(public authService: AuthService, private location: Location) {}
+  doesEmailExist(event: any): void {
+    const query: string = event.target.value;
+    console.log('query 77 ', query);
+    if (query) {
+      this.authService.searchEmails(query.trim());
+      this.authService.getEmail().subscribe((results) => {
+        if (results === true) {
+          console.log('results baby', results);
+          this.emailMatches = results;
+        } else {
+          console.log('nuts', results);
+          this.emailMatches = false;
+        }
+      });
+    } else {
+      console.log('DeLorean');
+    }
+  }
+
+  alumTransfer(){
+    // Send email and start steps in changin email saved to the new alumni one
   }
 }

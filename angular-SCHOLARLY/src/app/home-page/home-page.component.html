@@ -54,8 +54,8 @@
               (click)="clearEmail()">
               <mat-icon>close</mat-icon>
             </button> -->
-            <mat-icon matSuffix class="material-icons-sharp" style="font-size: large; color: gray;" matTooltip="You must use one of these email extensions.
-          @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca,
+            <mat-icon matSuffix class="material-icons-sharp infoLogin"  matTooltip="You must use one of these email extensions.
+            @alum.utoronto.ca, @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca,
           @utsc.utoronto.ca, @uoftpharmacy.com ">info</mat-icon>
           </mat-form-field>
           
@@ -84,7 +84,7 @@
           <!-- <div class="loginBtn"> -->
          <div class="center">
   <!-- pattern=".+@utoronto\.ca"  pattern=".+@mail.utoronto\.ca"  pattern=".+@skalarly\.com" pattern=".+@rotman.utoronto\.ca" -->
-          <button mat-button type="button" mat-raised-button (click)="onSubmit()" [disabled]="(emailMatches === false) || !password.valid"
+          <button mat-button  mat-raised-button (click)="onSubmit()" [disabled]="(emailMatches === false) || !password.valid"
            
           color="primary" class="action-button top login" *ngIf="!isLoading" routerLink="/search" >
             Log In
@@ -99,7 +99,7 @@
 
 
 
-          <button type="button" mat-button disableRipple class="forgot-password" routerLink="/forgot-password">
+          <button  mat-button disableRipple class="forgot-password" routerLink="/forgot-password">
             Forgot Password?
           </button>
           <button mat-button (click)="openDialog()" class="skalarly">
@@ -109,10 +109,14 @@
           <p class="tag">Or</p>        
           </div>
           <!-- mat-raised-button -->
-          <button type="button" mat-raised-button routerLink="/sign-up" color="primary" class="action-button newaccount">
+          <button  mat-raised-button routerLink="/sign-up" color="primary" class="action-button newaccount">
             Create New Account
           </button>
-          
+<div class="gradBtn">
+  <button mat-button routerLink="/alum" matTooltip="Transition to your alumni email extension">
+Recently Graduated?
+  </button>
+</div>
        </div>
         </div>
     

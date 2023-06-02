@@ -23,7 +23,7 @@
           <div class="inputTop">
      
             <mat-form-field matTooltip="You must use one of these email extensions.
-            @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca,
+           @alum.utoronto.ca, @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca,
             @utsc.utoronto.ca, @uoftpharmacy.com ">
             <mat-label>
               <i class="fas fa-graduation-cap" *ngIf="email.invalid || noEmailMatches === true">
@@ -72,6 +72,8 @@
               <mat-error *ngIf="username.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <mat-error *ngIf="username.errors?.noSpecialCharacters"> No special characters </mat-error>
               <mat-hint *ngIf="userNameMatches === true"> This username is taken </mat-hint>
+              <mat-hint > Usernames can not be changed. Choose wisely </mat-hint>
+
 
               <!-- Once next is clicked and user name has been used -->
               <!-- <mat-error *ngIf="username.invalid && !username.errors?.noWhiteSpace">Please enter a unique username
@@ -117,10 +119,10 @@
           <div class="accounts">
             <mat-radio-group aria-label="Select an option"  [formControl]="publicAccount" class="Accounts" required>
 
-              <div class="layout" matTooltip="Only Followers can view your profile">
+              <div class="layout" matTooltip="Only Followers can view your profile. Can change later in edit profile">
                 Private Account
                 <div class="center_">
-                  <mat-radio-button (click)="checkAccounType()" value=false></mat-radio-button>
+                  <mat-radio-button (click)="checkAccounType(false)" ></mat-radio-button>
                 </div>
 
               </div>
@@ -131,10 +133,10 @@
               </div> -->
 
 
-              <div class="layout" matTooltip="Profile is accessible for all Skalars">
+              <div class="layout" matTooltip="Profile is accessible for all Skalars. Can change later in edit profile">
                 Public Account
                 <div class="center_">
-                  <mat-radio-button (click)="checkAccounType()" value=true></mat-radio-button>
+                  <mat-radio-button (click)="checkAccounType(true)" ></mat-radio-button>
                 </div>
               </div>
 

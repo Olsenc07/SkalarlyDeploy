@@ -113,6 +113,11 @@
   animation: dotPulseAfter 1.5s infinite linear;
   animation-delay: .5s;
 }
+.gradBtn{
+  display: flex;
+  justify-content: flex-end;
+  font-family: 'Cormorant Garamond', serif;
+}
 .hint{
   color: grey;
 }
@@ -128,6 +133,10 @@
   display: flex;
   font-size: xxx-large;
 
+}
+.inffoLogin{
+  font-size: large; 
+  color: gray;
 }
 @keyframes dotPulseBefore {
   0% {
