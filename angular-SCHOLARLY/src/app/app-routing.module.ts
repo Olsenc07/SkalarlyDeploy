@@ -28,6 +28,7 @@ import {
 import {
   RetrievePasswordComponent,
   ForgotPasswordComponent,
+  AlumTransferComponent,
 } from './retrieve-password/retrieve-password.component';
 import { SearchComponent } from './search/search.component';
 import {
@@ -84,6 +85,7 @@ const routes: Routes = [
   },
   { path: 'retrieve-password', component: RetrievePasswordComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'alum', component: AlumTransferComponent },
 
   { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: 'recent', component: RecentComponent, canActivate: [AuthGuard] },

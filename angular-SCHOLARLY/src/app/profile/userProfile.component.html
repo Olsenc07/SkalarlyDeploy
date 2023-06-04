@@ -2,7 +2,7 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<div *ngIf="authenticatedToView !== false">
+<div >
   <div *ngIf="(info.Creator !== userId) && (isLoading == false)" class="main-content"   >
     <!-- input pic & has this default pic before-->
     <div class="left-side" >
@@ -154,7 +154,7 @@
 
 
     <!-- Middle -->
-    <div class="middle hide" >
+    <div class="middle hide" *ngIf="authenticatedToView !== false">
 
       <!-- User-Name -->
       <div class="top-middle">
@@ -731,38 +731,38 @@
           </div>
         </div>
       </div>
-
+<!-- private account and not friends yet -->
+<div *ngIf="authenticatedToView === false"  class="middle hide">
+  <h2 class="private">Private Account</h2>
+  <div class="privateIcon"><i class="fas fa-user-lock"></i></div>
+  <div class="center_" *ngIf="FOLLOWingYo == 'noMatch'">
+    <mat-chip-list  class="center_" 
+      aria-label="FollowBtn">
+      <mat-chip color='warn' selected class="messageM" matTooltip="Follow"
+       (click)="followClicked(info.username)"  >
+       Follow
+      </mat-chip>
+      </mat-chip-list>
+    </div>
+  
+  
+    <div class="center_" *ngIf="FOLLOWingYo === 'true2' ">
+      <mat-chip-list  class="center_"  
+      aria-label="FollowBtn">
+      <mat-chip  selected class="pendingColor" matTooltip="Unfollow"
+       (click)="onUnfololow(info.username)" >
+      Pending
+      </mat-chip>
+    </mat-chip-list>
+    </div>
+    
+  </div>
     </div>
   </div>
 </div>
 
 
-<!-- private account and not friends yet -->
-<div *ngIf="authenticatedToView === false"  class="main-content">
-<h2 class="private">Private Account</h2>
-<div class="privateIcon"><i class="fas fa-user-lock"></i></div>
-<div class="center_" *ngIf="FOLLOWingYo == 'noMatch'">
-  <mat-chip-list  class="center_" 
-    aria-label="FollowBtn">
-    <mat-chip color='warn' selected class="messageM" matTooltip="Follow"
-     (click)="followClicked(info.username)"  >
-     Follow
-    </mat-chip>
-    </mat-chip-list>
-  </div>
 
-
-  <div class="center_" *ngIf="FOLLOWingYo === 'true2' ">
-    <mat-chip-list  class="center_"  
-    aria-label="FollowBtn">
-    <mat-chip  selected class="pendingColor" matTooltip="Unfollow"
-     (click)="onUnfololow(info.username)" >
-    Pending
-    </mat-chip>
-  </mat-chip-list>
-  </div>
-  
-</div>
 
 
 
