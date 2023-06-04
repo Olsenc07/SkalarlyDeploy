@@ -105,6 +105,7 @@
                 type="search"
                 name="search-box"
                 (keyup)="sendData($event)"
+                (click)="clearBtn()"
                 class="search-box__input"
                 placeholder="Search Fellow Skalars"
                 [formControl]="search"

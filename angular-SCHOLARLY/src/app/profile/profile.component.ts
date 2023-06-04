@@ -413,29 +413,19 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   id: string;
   userId: string;
   blockList: boolean;
-  FOLLOWingYo = 'false';
+  authenticatedToView = true;
+  FOLLOWingYo: string;
 
   recomCounter = 0;
   countVisibility = 0;
-  // follow: Follow[] = [];
-  private followSub: Subscription;
-  private followSubs: Subscription;
-
   private subscriptionDude: Subscription;
   private blockedsubscriptionDude: Subscription;
-
-  // followers: Follow[] = [];
-  private followersSub: Subscription;
 
   user: string;
   following: Follow[] = [];
 
   private showCases: ShowCase[] = [];
   private infosSubShowCase: Subscription;
-  // userId: string;
-  // userIsAuthenticated = false;
-
-  // private authListenerSubs: Subscription;
 
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -456,9 +446,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   captionText = document.getElementById('caption');
   // Get the <span> element that closes the modal
   span = document.getElementsByClassName('close')[0];
-  // May 28, 2009, at 5:11 am
-  showFiller = false;
-  // TODO: initial following value would need to be loaded from database - for now, always start with false
 
   constructor(
     public postService: PostService,
@@ -507,18 +494,71 @@ export class UserProfileComponent implements OnInit, OnDestroy {
                   this.blockList = false;
                 }
               });
-            // If following
-            this.followService.getFollowingNotification(this.id, this.userId);
-            this.followSubsBtn = this.followService
-              .getInfoFollowingBtnUpdateListener()
-              .subscribe((following: string) => {
-                console.log('top off box search', following);
-                this.FOLLOWingYo = following;
-                // then check if acted or still pending
-                // view true or false
-                console.log('following box search', this.FOLLOWingYo);
+            // Infos
+            this.authService.getOtherInfo(this.id);
+            this.infosSub = this.authService
+              .getInfoUpdateListenerOther()
+              .subscribe((infos: any) => {
+                this.info = infos;
+                console.log('private account?', this.info.publicAccount);
+                if (this.info.publicAccount == false) {
+                  // If following
+                  this.followService.getFollowingNotification(
+                    this.id,
+                    this.userId
+                  );
+                  this.followSubsBtn = this.followService
+                    .getInfoFollowingBtnUpdateListener()
+                    .subscribe((following: string) => {
+                      console.log('top off box search', following);
+                      this.FOLLOWingYo = following;
+                      console.log('following box search', this.FOLLOWingYo);
+                      if (this.FOLLOWingYo == 'true2') {
+                        this.authenticatedToView = false;
+                      }
+                      if (this.FOLLOWingYo == 'noMatch') {
+                        this.authenticatedToView = false;
+                      }
+                    });
+                } else {
+                  this.followSubsBtn = this.followService
+                    .getInfoFollowingBtnUpdateListener()
+                    .subscribe((following: string) => {
+                      console.log('top off box search', following);
+                      this.FOLLOWingYo = following;
+                    });
+                }
               });
+            if (this.authenticatedToView !== false) {
+              this.showCaseService.getShowCase(this.id, 0);
+              this.infosSubShowCase = this.showCaseService
+                .getshowCaseUpdateListener()
+                .subscribe((showcases: ShowCase[]) => {
+                  this.showCases = showcases;
+                  console.log('showcases yo 777', this.showCases);
+                  this.isLoading = false;
+                });
 
+              // courses completed
+              this.authService.getInfoProfileCoursesC(this.userId);
+              this.infosSubC = this.authService
+                .getInfoUpdateListenerCoursesC()
+                .subscribe((infosC: any) => {
+                  this.infoCoursesC = infosC;
+                  console.log('boobs C');
+                  this.isLoading = false;
+                });
+              // courses pursuing
+              this.authService.getInfoProfileCoursesP(this.userId);
+              this.infosSubP = this.authService
+                .getInfoUpdateListenerCoursesP()
+                .subscribe((infosP: any) => {
+                  this.infoCoursesP = infosP;
+                  console.log('boobs p', this.infoCoursesP);
+                  this.isLoading = false;
+                  // do this for them all!
+                });
+            }
             // Following
             // this.followService.getMessageNotificationOther(id);
             // this.followSubs = this.followService
@@ -535,44 +575,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             //     // this one
             //     console.log('lucky lucky you 7', this.followers);
             //   });
-
-            this.showCaseService.getShowCase(this.id, 0);
-            this.infosSubShowCase = this.showCaseService
-              .getshowCaseUpdateListener()
-              .subscribe((showcases: ShowCase[]) => {
-                this.showCases = showcases;
-                console.log('showcases yo 777', this.showCases);
-                this.isLoading = false;
-              });
-            // Infos
-            console.log('shouting voices', this.id);
-            this.authService.getOtherInfo(this.id);
-            this.infosSub = this.authService
-              .getInfoUpdateListenerOther()
-              .subscribe((infos: any) => {
-                console.log('Gods close', infos);
-                this.info = infos;
-                console.log('Gods close love you', infos);
-              });
-            // courses completed
-            this.authService.getInfoProfileCoursesC(this.userId);
-            this.infosSubC = this.authService
-              .getInfoUpdateListenerCoursesC()
-              .subscribe((infosC: any) => {
-                this.infoCoursesC = infosC;
-                console.log('boobs C');
-                this.isLoading = false;
-              });
-            // courses pursuing
-            this.authService.getInfoProfileCoursesP(this.userId);
-            this.infosSubP = this.authService
-              .getInfoUpdateListenerCoursesP()
-              .subscribe((infosP: any) => {
-                this.infoCoursesP = infosP;
-                console.log('boobs p', this.infoCoursesP);
-                this.isLoading = false;
-                // do this for them all!
-              });
           }
         }
       });
@@ -582,11 +584,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.subscriptionDude.unsubscribe();
     this.blockedsubscriptionDude.unsubscribe();
     // this.followersSub.unsubscribe();
-    this.infosSubShowCase.unsubscribe();
-    // this.followSubs.unsubscribe();
     this.infosSub.unsubscribe();
-    this.infosSubC.unsubscribe();
-    this.infosSubP.unsubscribe();
+    if (this.authenticatedToView !== false) {
+      this.infosSubShowCase.unsubscribe();
+      this.infosSubC.unsubscribe();
+      this.infosSubP.unsubscribe();
+    }
     this.followSubsBtn.unsubscribe();
     this.followSubsBlocked.unsubscribe();
     console.log('u have been de stroyed');

@@ -29,7 +29,9 @@ export class AppComponent implements OnInit, OnDestroy {
   notif: MissedNotif[] = [];
   comments: CommentInterface[] = [];
   sharedNew: Post[] = [];
-
+  searched: boolean;
+  searchMadeHash: boolean;
+  searchMade: boolean;
   newMsg = [];
   newMessageCheck = [];
   newfollowerCheck = [];
@@ -62,7 +64,8 @@ export class AppComponent implements OnInit, OnDestroy {
   private followSub: Subscription;
   private followSub2: Subscription;
   private followSub7: Subscription;
-
+  private searchFollowSub: Subscription;
+  private searchHashSub: Subscription;
   private postsSub: Subscription;
   // socket.io
   public roomId: string;
@@ -757,18 +760,44 @@ export class AppComponent implements OnInit, OnDestroy {
       // if (matches != null) {
       // if (matches.length > 0) {
       this.postsService.searchUsers(noSpecialChars.trim(), this.userId);
-      this.postsService.getUserId().subscribe((results) => {
-        if (results.length > 0) {
-          // add key value pair to see if following
-          this.users = results;
-          this.searchCharacter = '';
-        } else {
-          this.users = [];
-          this.searchCharacter = '';
-        }
-      });
+      this.searchFollowSub = this.postsService
+        .getUserId()
+        .subscribe((results) => {
+          this.searchMade = true;
+          if (results.length > 0) {
+            // add key value pair to see if following
+            this.users = results;
+            this.searchCharacter = '';
+          } else {
+            this.users = [];
+            this.searchCharacter = '';
+          }
+        });
     } else {
       this.hasQuery = false;
+      // cleans up check following search
+      if ((this.searchMade = true)) {
+        this.searchFollowSub.unsubscribe();
+        this.searchMade = false;
+      }
+      if (this.searched === true) {
+        this.followSub7.unsubscribe();
+        this.searched = false;
+
+        console.log('clean check following search');
+      }
+    }
+  }
+  clearBtn() {
+    console.log('search value', this.search.value);
+    if (this.searchMade === true && this.search.value == '') {
+      this.searchFollowSub.unsubscribe();
+      this.searchMade = false;
+    }
+    // clear btn clicked on search
+    if (this.searched === true && this.search.value == '') {
+      this.followSub7.unsubscribe();
+      this.searched = false;
     }
   }
   // search skalars
@@ -789,6 +818,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.followSub7 = this.postsService
           .getfollowingList()
           .subscribe((toronto) => {
+            this.searched = true;
             console.log('toronto', toronto);
             console.log('toronto0', toronto[0]);
             console.log('toronto1', toronto[1]);
@@ -817,7 +847,8 @@ export class AppComponent implements OnInit, OnDestroy {
       // const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
       // if (matchSpaces[0] !== queryHash) {
       this.postsService.searchHashs(noSpecialChars.trim());
-      this.postsService.getHashs().subscribe((results) => {
+      this.searchHashSub = this.postsService.getHashs().subscribe((results) => {
+        this.searchMadeHash = true;
         if (results.length > 0) {
           this.hashs = results;
           console.log('another log', this.hashs);
@@ -828,6 +859,11 @@ export class AppComponent implements OnInit, OnDestroy {
       });
     } else {
       this.hasQuery = false;
+      // cleans up check hashtag search
+      if ((this.searchMadeHash = true)) {
+        this.searchHashSub.unsubscribe();
+        this.searchMadeHash = false;
+      }
     }
   }
 

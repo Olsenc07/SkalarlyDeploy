@@ -2,7 +2,7 @@
   <mat-spinner></mat-spinner>
 </div>
 
-<div >
+<div *ngIf="authenticatedToView !== false">
   <div *ngIf="(info.Creator !== userId) && (isLoading == false)" class="main-content"   >
     <!-- input pic & has this default pic before-->
     <div class="left-side" >
@@ -17,9 +17,13 @@
         <img src="../../assets/Pics/Skalarly 1.jpeg" class="pic" />
       </div>
 
+<!-- If private and arent friends yet -->
 
 
-      <div class="center">
+
+<!--  -->
+
+      <div class="center" >
         <div class="hide-input">
           <!-- Not blocked -->
     <div class="centerBlock" *ngIf="blockList === false">
@@ -66,7 +70,7 @@
 
 
           </div>
-          <div class="centerGD" *ngIf="info.birthday">
+          <div class="centerGD" *ngIf="info.birthday" >
             <!-- <div *ngIf="info.gender">
               {{ info.gender}}
             </div> -->
@@ -150,7 +154,7 @@
 
 
     <!-- Middle -->
-    <div class="middle hide">
+    <div class="middle hide" >
 
       <!-- User-Name -->
       <div class="top-middle">
@@ -173,7 +177,7 @@
               </div>
        
     
-                <div class="center_" *ngIf="FOLLOWingYo !== 'true'">
+                <div class="center_" *ngIf="FOLLOWingYo == 'noMatch'">
               <mat-chip-list  class="center_" 
                 aria-label="FollowBtn">
                 <mat-chip color='warn' selected class="messageM" matTooltip="Follow"
@@ -192,8 +196,6 @@
                 Pending
                 </mat-chip>
               </mat-chip-list>
-
-        
               </div>
 
               <div class="center_" *ngIf="FOLLOWingYo === 'true1'">
@@ -720,6 +722,7 @@
   </button>
 
   <!-- Modal Content (The Image) -->
+  <!-- Should make background black to only see image/video -->
   <img class="modal-content" src='' id="img01">
 </div>
                 </div>
@@ -734,8 +737,32 @@
 </div>
 
 
+<!-- private account and not friends yet -->
+<div *ngIf="authenticatedToView === false"  class="main-content">
+<h2 class="private">Private Account</h2>
+<div class="privateIcon"><i class="fas fa-user-lock"></i></div>
+<div class="center_" *ngIf="FOLLOWingYo == 'noMatch'">
+  <mat-chip-list  class="center_" 
+    aria-label="FollowBtn">
+    <mat-chip color='warn' selected class="messageM" matTooltip="Follow"
+     (click)="followClicked(info.username)"  >
+     Follow
+    </mat-chip>
+    </mat-chip-list>
+  </div>
 
 
+  <div class="center_" *ngIf="FOLLOWingYo === 'true2' ">
+    <mat-chip-list  class="center_"  
+    aria-label="FollowBtn">
+    <mat-chip  selected class="pendingColor" matTooltip="Unfollow"
+     (click)="onUnfololow(info.username)" >
+    Pending
+    </mat-chip>
+  </mat-chip-list>
+  </div>
+  
+</div>
 
 
 

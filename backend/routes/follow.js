@@ -700,7 +700,13 @@ router.get("/followingInfo", async(req, res, next) => {
         console.log('test 7')
 
         res.status(200).json({
-            message: 'Not Following fetched succesfully!'
+            message: 'Not Following fetched succesfully!',
+            // check this no match doesnt screw something up like if some condition
+            // is waiting for following to be nll like in profile.ts
+            // then look at private and public clikc in sign up
+            // add to edit profike abd the routes to change db
+            messages: 'noMatch',
+
         });
     }
     })

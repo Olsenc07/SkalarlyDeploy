@@ -116,6 +116,9 @@
 .gradBtn{
   display: flex;
   justify-content: flex-end;
+  width: 100%;
+}
+.grad{
   font-family: 'Cormorant Garamond', serif;
 }
 .hint{
@@ -134,7 +137,7 @@
   font-size: xxx-large;
 
 }
-.inffoLogin{
+.infoLogin{
   font-size: large; 
   color: gray;
 }
