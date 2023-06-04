@@ -17,6 +17,7 @@ import { PostsService } from '../services/posts.service';
 import { MissedNotif } from '../activity-history/history.component';
 import { CommentsService } from '../services/comments.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { formatDistance } from 'date-fns';
 
 export interface Follow {
   id: string;
@@ -415,6 +416,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   blockList: boolean;
   authenticatedToView = true;
   FOLLOWingYo: string;
+  pendingLength: string;
 
   recomCounter = 0;
   countVisibility = 0;
@@ -434,6 +436,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   private followSubsBlocked: Subscription;
   private sub: Subscription;
   private sub2: Subscription;
+  private followPending: Subscription;
   info: AuthDataInfo = {};
   infoCoursesC: AuthDataInfoCoursesC = {};
   infoCoursesP: AuthDataInfoCoursesP = {};
@@ -515,6 +518,15 @@ export class UserProfileComponent implements OnInit, OnDestroy {
                       console.log('following box search', this.FOLLOWingYo);
                       if (this.FOLLOWingYo == 'true2') {
                         this.authenticatedToView = false;
+                        // see how long been pending for
+                        this.followPending = this.followService
+                          .getFollowingPending()
+                          .subscribe((pendingTime: Date) => {
+                            this.pendingLength = formatDistance(
+                              new Date(pendingTime),
+                              new Date()
+                            );
+                          });
                       }
                       if (this.FOLLOWingYo == 'noMatch') {
                         this.authenticatedToView = false;
@@ -589,6 +601,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       this.infosSubShowCase.unsubscribe();
       this.infosSubC.unsubscribe();
       this.infosSubP.unsubscribe();
+    }
+    if (this.pendingLength.length) {
+      this.followPending.unsubscribe();
     }
     this.followSubsBtn.unsubscribe();
     this.followSubsBlocked.unsubscribe();

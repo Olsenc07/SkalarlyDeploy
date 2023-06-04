@@ -143,7 +143,12 @@
             {{info.Following}}
 
           </div>
-      
+         <!-- move below following and follwer counts -->
+         <div class="bio overflowy" *ngIf="info.bio " >
+           
+          <div>{{info.bio}}
+          </div> 
+          </div> 
         </div>
 
 
@@ -193,7 +198,9 @@
                 aria-label="FollowBtn">
                 <mat-chip  selected class="pendingColor" matTooltip="Unfollow"
                  (click)="onUnfololow(info.username)" >
-                Pending
+                Pending 
+                <!-- would be nice to show how long this has been requested but then need to pass date request was made -->
+                {{pendingLength}}
                 </mat-chip>
               </mat-chip-list>
               </div>
@@ -215,13 +222,11 @@
 
                 <i class="far fa-heart"></i>
               </button> -->
-              <div class="bio" *ngIf="info.bio " >
            
-                <div>{{info.bio}}
-                </div> 
-                </div> 
-
-
+<!-- Freindship made -->
+<div *ngIf="FOLLOWingYo === 'true1'" class="bioUserName">
+Friends since {{info.friendShip | date: 'mediumDate'}}
+</div>
             </div>
 
           </div>

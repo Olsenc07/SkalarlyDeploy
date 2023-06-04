@@ -149,7 +149,7 @@ router.post("/acceptFollow", async(req,res) => {
     console.log('accepted username', req.body.username);
     console.log('photo', req.body.followingPhoto);
 
-    await Follow.updateOne({_id:body.followId}, {viewed: true})
+    await Follow.updateOne({_id:body.followId}, { $set:  {viewed: true, friendShip: new Date()}})
     .then(update => {
         // send push notif to user and save it in activity history
 
@@ -338,7 +338,8 @@ await userInfo.findOne({Creator: req.query.userId})
                 Following: req.query.username,  
                 nameFollowing: otherUser.name,
                 ProfilePicPathFollowing: otherUser.ProfilePicPath,
-                viewed: false
+                viewed: false,
+                friendShip: new Date(),
             })
             FOLLOW.save().then(createdFollow => {
                  //update follower count
@@ -694,6 +695,8 @@ router.get("/followingInfo", async(req, res, next) => {
             message: 'Follows fetched succesfully!',
             // friends requested but not accepted
             messages: 'true2',
+            // pending since when
+            pending: following.friendShip
         });
     }
     }else{

@@ -17,6 +17,8 @@ import { MessageNotificationService } from './services/messagesNotifications.ser
 import { FollowService } from './services/follow.service';
 import { Follow } from './reusable-card-user/reusable-card-user.component';
 import { Post, PostService } from './services/post.service';
+import { formatDistance } from 'date-fns';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -827,6 +829,9 @@ export class AppComponent implements OnInit, OnDestroy {
               console.log('e', e);
               if (e.username == toronto[0]) {
                 e.following = toronto[1];
+                if (toronto[1] == 'true2') {
+                  e.pending = formatDistance(new Date(toronto[2]), new Date());
+                }
               }
             });
           });

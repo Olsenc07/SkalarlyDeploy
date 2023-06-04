@@ -9,7 +9,8 @@ const FollowSchema = mongoose.Schema({
     Following: { type: String},
     nameFollowing: { type: String},
     ProfilePicPathFollowing: { type: String},
-    viewed: {type: Boolean}
+    viewed: {type: Boolean},
+    friendShip: {type: Date}
 });
 
 module.exports = mongoose.model('follow', FollowSchema);

@@ -18,6 +18,7 @@ export interface Follow {
   nameFollowing: string;
   ProfilePicPathFollowing: string;
   viewed: Boolean;
+  friendShip: Date;
 }
 export interface BlockUser {
   blockedName: string;
@@ -43,6 +44,8 @@ export class FollowService {
   private followingInfoPostUpdated = new Subject<Follow[]>();
 
   private followingInfoPostUpdatedBtn = new Subject<Follow[]>();
+  private followingPendingDate: Date;
+  private followingPending = new Subject();
 
   private followersInfoPostUpdated = new Subject<Follow[]>();
 
@@ -90,7 +93,9 @@ export class FollowService {
   getInfoFollowingBtnUpdateListener(): any {
     return this.followingInfoPostUpdatedBtn.asObservable();
   }
-
+  getFollowingPending(): any {
+    return this.followingPending.asObservable();
+  }
   getInfoFollowUpdateListener(): any {
     return this.followerPostUpdated.asObservable();
   }
@@ -222,6 +227,7 @@ export class FollowService {
               nameFollowing: data.nameFollowing,
               ProfilePicPathFollowing: data.ProfilePicPathFollowing,
               viewed: data.viewed,
+              friendShip: data.friendShip,
             };
           });
         })
@@ -342,7 +348,7 @@ export class FollowService {
   // and maybe add userId
   getFollowingNotification(id: string, userId: string): any {
     const sub = this.http
-      .get<{ message: string; messages: any }>(
+      .get<{ message: string; messages: any; pending: any }>(
         'https://www.skalarly.com/api/follow/followingInfo',
         {
           params: { id, userId },
@@ -350,14 +356,18 @@ export class FollowService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.messages;
+          return messageData;
         })
       )
       .subscribe((transformedMessage) => {
-        this.followingInfo = transformedMessage;
+        this.followingInfo = transformedMessage.messages;
+        this.followingPendingDate = transformedMessage.pending;
+
         console.log('small feet', this.followingInfo);
 
         this.followingInfoPostUpdatedBtn.next(this.followingInfo);
+        // pending length
+        this.followingPending.next(this.followingPendingDate);
         sub.unsubscribe();
         console.log('rich and famous baby 8');
       });
@@ -436,6 +446,7 @@ export class FollowService {
               nameFollowing: data.nameFollowing,
               ProfilePicPathFollowing: data.ProfilePicPathFollowing,
               viewed: data.viewed,
+              friendShip: data.friendShip,
             };
           });
         })
@@ -518,6 +529,7 @@ export class FollowService {
               nameFollowing: data.nameFollowing,
               ProfilePicPathFollowing: data.ProfilePicPathFollowing,
               viewed: data.viewed,
+              friendShip: data.friendShip,
             };
           });
         })

@@ -166,7 +166,7 @@
                                         <mat-chip-list class="center_">
                                           <mat-chip selected (click)="stopPropagation($event)" (click)="onUnfololow(user.username, user.Creator)"
                                           class="pendingColor" matTooltip="Unrequest">
-                                             Pending
+                                             Pending {{user.pending}}
                                           </mat-chip>
                                         </mat-chip-list>
                                       </div>

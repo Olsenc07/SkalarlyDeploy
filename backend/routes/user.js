@@ -3004,7 +3004,7 @@ console.log('userId',userId);
                 res.status(200).json({
                     message: 'Matches returned!',
                     // frineds but request not accepted 
-                    following: [req.query.othersUsername, 'true2']
+                    following: [req.query.othersUsername, 'true2', followingStatus.friendShip],
                 });
             }
             }else{
