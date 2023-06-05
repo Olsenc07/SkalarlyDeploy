@@ -228,10 +228,23 @@
 .login{
   // background-image: linear-gradient(to right,#616fb5,#009cff);
   background-image: linear-gradient(to right,#002D62,black);
+  transition-duration: .75s;
 }
+.login:hover {
+  border-radius: 25px;
+  background-image: linear-gradient(to right,black, #002D62);
+
+ }
 .newaccount{
   // background-image: linear-gradient(to right, #009cff , #616fb5);
   background-image: linear-gradient(to right,black,#002D62);
+  transition-duration: .75s;
+
+}
+.newaccount:hover{
+  // background-image: linear-gradient(to right, #009cff , #616fb5);
+  border-radius: 25px;
+  background-image: linear-gradient(to right,#002D62, black);
 }
 
 @media (min-width: 700px) {
@@ -290,7 +303,6 @@
   // background-color: white;
   // color: gray;
   box-shadow: 0px 0px 11px;
-  transition-duration: .75s;
 }
 
 .action-button:hover {
