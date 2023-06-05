@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { Post, PostService } from '../services/post.service';
 import { ShowCase } from '../services/showCase.service';
@@ -12,9 +12,9 @@ import {
 } from '../signup/auth-data.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FollowService } from '../services/follow.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PostsService } from '../services/posts.service';
-import { MissedNotif } from '../activity-history/history.component';
+import { MissedNotif, BlockUser } from '../activity-history/history.component';
 import { CommentsService } from '../services/comments.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { formatDistance } from 'date-fns';
@@ -50,10 +50,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   countVisibility = 0;
   isLoading = false;
   // follow: Follow[] = [];
-  private followSub: Subscription;
-
-  // followers: Follow[] = [];
-  private followersSub: Subscription;
 
   userId: string;
   userIsAuthenticated = false;
@@ -627,6 +623,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.followService.blockSkalar(userName, this.userId);
     this.blockList = true;
   }
+
   unblockSkalar(userName: string): void {
     console.log('greatful', userName);
     this.followService.unblockSkalar(userName, this.userId);
@@ -664,6 +661,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
       queryParams: { username },
     });
   }
+  showFriends(friendType: string, number: number) {
+    this.dialog.open(FriendsPopUpComponent, {
+      data: { type: friendType, count: number, username: this.user },
+    });
+  }
   // Forward
   onClickFeed(): any {
     const count = 1;
@@ -672,20 +674,16 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.recomCounter += counting;
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
-    this.sub = this.route.queryParams.subscribe((params) => {
-      this.user = params.id;
-      const id = this.user;
-      this.showCaseService.getShowCase(id, this.recomCounter);
-      this.postsSub = this.showCaseService
-        .getshowCaseUpdateListener()
-        .subscribe((showcases: ShowCase[]) => {
-          this.showCases = showcases;
-          this.isLoading = false;
-          this.postsSub.unsubscribe();
-          console.log('posts personal back', this.posts);
-        });
-      this.sub.unsubscribe();
-    });
+    const id = this.user;
+    this.showCaseService.getShowCase(id, this.recomCounter);
+    this.postsSub = this.showCaseService
+      .getshowCaseUpdateListener()
+      .subscribe((showcases: ShowCase[]) => {
+        this.showCases = showcases;
+        this.isLoading = false;
+        this.postsSub.unsubscribe();
+        console.log('posts personal back', this.posts);
+      });
   }
   // Back
   onClickFeedBack(): any {
@@ -695,20 +693,16 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.recomCounter -= counting;
     console.log('hey back', this.recomCounter);
     console.log('howdy', this.countVisibility);
-    this.sub2 = this.route.queryParams.subscribe((params) => {
-      this.user = params.id;
-      const id = this.user;
-      this.showCaseService.getShowCase(id, this.recomCounter);
-      this.postsSub2 = this.showCaseService
-        .getshowCaseUpdateListener()
-        .subscribe((showcases: ShowCase[]) => {
-          this.showCases = showcases;
-          this.isLoading = false;
-          this.postsSub2.unsubscribe();
-          console.log('posts personal back', this.posts);
-        });
-      this.sub2.unsubscribe();
-    });
+    const id = this.user;
+    this.showCaseService.getShowCase(id, this.recomCounter);
+    this.postsSub2 = this.showCaseService
+      .getshowCaseUpdateListener()
+      .subscribe((showcases: ShowCase[]) => {
+        this.showCases = showcases;
+        this.isLoading = false;
+        this.postsSub2.unsubscribe();
+        console.log('posts personal back', this.posts);
+      });
   }
 }
 
@@ -736,5 +730,110 @@ export class BioComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): any {
     this.infoSub.unsubscribe();
+  }
+}
+
+@Component({
+  selector: 'app-freinds-popup',
+  templateUrl: './friendsPopUp.component.html',
+  styleUrls: ['./profile.component.scss'],
+})
+export class FriendsPopUpComponent implements OnInit, OnDestroy {
+  page: string;
+  count: number;
+  userName: string;
+  userId: string;
+  skipFollowed = 0;
+  skipFollowing = 0;
+
+  follower = [];
+  following = [];
+
+  private followersSub: Subscription;
+  private followingSub: Subscription;
+  private followerSub: Subscription;
+
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data: { type: string; count: number; username: string },
+    private followService: FollowService,
+    private authService: AuthService,
+    private postsService: PostsService
+  ) {}
+  ngOnInit(): any {
+    this.userId = this.authService.getUserId();
+
+    this.count = this.data.count;
+    this.page = this.data.type;
+    this.userName = this.data.username;
+    console.log('type of friend');
+
+    if (this.page === 'followers') {
+      // pull followers
+      // following info
+      this.followService.getMessageNotificationFollowedPopUp(this.userName, 0);
+      this.followersSub = this.followService
+        .getInfoFollowUpdatePopUp()
+        .subscribe((follower: Follow[]) => {
+          this.follower = follower;
+        });
+
+      // get the followers of this skalar
+      // then call checkFollowing of these usernames and you
+      let newList = [];
+      this.follower.forEach((e) => {
+        newList.push(e.username);
+      });
+      for (let i of newList) {
+        this.postsService.checkFollowing(this.userId, i);
+        this.followerSub = this.postsService
+          .getfollowingList()
+          .subscribe((toronto) => {
+            console.log('toronto', toronto);
+            console.log('toronto0', toronto[0]);
+            console.log('toronto1', toronto[1]);
+            // if (followingList.length < newList.length) {
+            this.follower.filter((e) => {
+              console.log('e', e);
+              if (e.username == toronto[0]) {
+                e.following = toronto[1];
+                if (toronto[1] == 'true2') {
+                  e.pending = formatDistance(new Date(toronto[2]), new Date());
+                }
+              }
+            });
+          });
+      }
+    }
+    if (this.page === 'following') {
+      // pull following
+    }
+  }
+
+  showMoreFollowed() {
+    const counting = 25;
+    this.skipFollowed += counting;
+    this.followService.getMessageNotificationFollowedPopUp(
+      this.userName,
+      this.skipFollowed
+    );
+    this.followersSub = this.followService
+      .getInfoFollowUpdateListener()
+      .subscribe((follower: Follow[]) => {
+        // follower manipulation to get frineds status
+        this.follower = this.follower.concat(follower);
+      });
+  }
+
+  ngOnDestroy(): any {
+    if (this.page === 'followers') {
+      // pull followers
+      this.followersSub.unsubscribe();
+      this.followerSub.unsubscribe();
+    }
+    if (this.page === 'following') {
+      // pull following
+      this.followingSub.unsubscribe();
+    }
   }
 }

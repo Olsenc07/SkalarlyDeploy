@@ -55,6 +55,7 @@ import {
 import {
   ProfileComponent,
   UserProfileComponent,
+  FriendsPopUpComponent,
 } from './profile/profile.component';
 import {
   EditProfileComponent,
@@ -183,6 +184,7 @@ import { ErrorInterceptor } from './error-interceptor';
     AlumTransferComponent,
     ProfileComponent,
     UserProfileComponent,
+    FriendsPopUpComponent,
     EditProfileComponent,
     EditProfileComp1Component,
     EditProfileComp1WComponent,

@@ -1,0 +1,62 @@
+<!-- followers -->
+<div *ngIf="this.page === 'followers'">
+    <h2 *ngIf="this.page === 'followers'">Followers {{this.count}}</h2>
+    
+<div *ngFor="let info of follower">
+    <mat-card>
+        <mat-card-content>
+            <img mat-card-avatar class="ppPopUp" src="{{info.ProfilePicPathFollower}}">
+            <mat-card-header>
+                <button mat-button matTooltip="View Profile"  (click)="navigateToPage(info.username)"></button>
+                @{{info.usernameFollower}}
+            </mat-card-header>
+            <mat-card-subtitle>{{info.nameFollower}}</mat-card-subtitle>
+                <div>
+
+                    <div class="msgContainer">
+                        <mat-chip  (click)="skalarMsg(info.usernameFollower)" class="messageBtn"  matTooltip="Message Skalar" selected > Message 
+                            <!-- <i class="far fa-paper-plane "></i> -->
+                            <i class="fas fa-reply"></i> 
+                        </mat-chip>
+                    </div>
+                    <!-- following status -->
+                    <div class="center_" *ngIf="info.following == 'false'">
+                        <mat-chip-list  class="center_" 
+                          aria-label="FollowBtn">
+                          <mat-chip color='warn' selected class="messageM" matTooltip="Follow"
+                           (click)="followClicked(info.usernameFollower)"  >
+                           Follow
+                          </mat-chip>
+                          </mat-chip-list>
+                        </div>
+          
+          
+                        <div class="center_" *ngIf="info.following === 'true2' ">
+                          <mat-chip-list  class="center_"  
+                          aria-label="FollowBtn">
+                          <mat-chip  selected class="pendingColor" matTooltip="Unfollow"
+                           (click)="onUnfololow(info.usernameFollower)" >
+                          Pending 
+                          <!-- would be nice to show how long this has been requested but then need to pass date request was made -->
+                          {{info.pending}}
+                          </mat-chip>
+                        </mat-chip-list>
+                        </div>
+          
+                        <div class="center_" *ngIf="info.following === 'true1'">
+                          <mat-chip-list  class="center_"  
+                          aria-label="FollowBtn">
+                          <mat-chip  selected class="followingColor" matTooltip="Unfollow"
+                           (click)="onUnfololow(info.usernameFollower)" >
+                           Following
+                          </mat-chip>
+                        </mat-chip-list>
+                        </div>
+                        <!--  -->
+                </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+</div>
+<!-- following -->
+<h2 *ngIf="this.page === 'following'">Following {{this.count}}</h2>

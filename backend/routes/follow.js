@@ -618,6 +618,7 @@ router.get("/followerInfo", async(req, res, next) => {
     .then(user => {
 
      Follow.find({Following: user.username})
+    //  .skip(req.query.skip).limit(25)
     .then(follows => {
         res.status(200).json({
             message: 'Follows fetched succesfully!',
@@ -632,6 +633,57 @@ router.get("/followerInfo", async(req, res, next) => {
         })
     })
     })
+    // follower popup
+    router.get("/skalarsFollowers", async(req, res, next) => {
+        await Follow.find({Following: req.query.userName})
+        .skip(req.query.skip).limit(25)
+        .then(follows => {
+            res.status(200).json({
+                message: 'Follows fetched succesfully!',
+                messages: follows
+            });
+        }) .catch(err => {
+            return res.status(401).json({
+                message: "Invalid following error!",
+        
+            })
+        })
+    
+       
+        })
+    
+    // Get follower count
+router.get("/followerInfoCount", async(req, res, next) => {
+    await userInfo.findOne({Creator: req.query.userId})
+    .then(user => {
+        res.status(200).json({
+            message: 'Follows fetched succesfully!',
+            messages: user.Followers
+        });
+    }) .catch(err => {
+        return res.status(401).json({
+            message: "Invalid following error!",
+    
+        })
+    })
+    })
+    // Get following count
+router.get("/followInfoCount", async(req, res, next) => {
+    await userInfo.findOne({Creator: req.query.userId})
+    .then(user => {
+        res.status(200).json({
+            message: 'Follows fetched succesfully!',
+            messages: user.Following
+        });
+    }) .catch(err => {
+        return res.status(401).json({
+            message: "Invalid following error!",
+    
+        })
+    })
+    })
+
+    
     // Get follower history
 router.get("/followerInfoHistory", async(req, res, next) => {
     const counter = req.query.counter

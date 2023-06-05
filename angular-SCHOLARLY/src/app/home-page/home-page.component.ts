@@ -18,7 +18,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
   stayLoggedIn: boolean = false;
 
   isLoading = false;
-  public authStatusSub: Subscription;
 
   visible = true;
 
@@ -38,11 +37,6 @@ export class HomePageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('loading...?', new Date());
-    this.authStatusSub = this.authService
-      .getAuthStatusListener()
-      .subscribe((authStatus) => {
-        this.isLoading = false;
-      });
   }
 
   // ngDoCheck(): void {
@@ -52,9 +46,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   //     console.log('all setup');
   //   }
   // }
-  ngOnDestroy(): void {
-    this.authStatusSub.unsubscribe();
-  }
+  ngOnDestroy(): void {}
   clearPassword(): void {
     this.password.setValue('');
   }

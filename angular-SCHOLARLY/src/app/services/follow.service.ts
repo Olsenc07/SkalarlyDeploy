@@ -27,10 +27,12 @@ export interface BlockUser {
 @Injectable({ providedIn: 'root' })
 export class FollowService {
   private follow: Follow[] = [];
+  private followCount: number;
   private followPostUpdated = new Subject<Follow[]>();
   private followPostUpdatedHistory = new Subject<Follow[]>();
 
   private follower: Follow[] = [];
+  private followerCount: number;
   private followerPostUpdated = new Subject<Follow[]>();
   private followerPostUpdatedHistory = new Subject();
 
@@ -42,6 +44,12 @@ export class FollowService {
 
   private followingInfo = [];
   private followingInfoPostUpdated = new Subject<Follow[]>();
+
+  // popup on skalars page
+  private followingListFound = new Subject<Follow[]>();
+
+  private followingInfoCount = new Subject();
+  private followerInfoCount = new Subject();
 
   private followingInfoPostUpdatedBtn = new Subject<Follow[]>();
   private followingPendingDate: Date;
@@ -90,6 +98,19 @@ export class FollowService {
   getInfoFollowingUpdateListener(): any {
     return this.followingInfoPostUpdated.asObservable();
   }
+  getInfoFollowingUpdateCount(): any {
+    return this.followingInfoCount.asObservable();
+  }
+
+  getInfoFollowUpdateCount(): any {
+    return this.followerInfoCount.asObservable();
+  }
+
+  // popup
+  getInfoFollowUpdatePopUp(): any {
+    return this.followingListFound.asObservable();
+  }
+
   getInfoFollowingBtnUpdateListener(): any {
     return this.followingInfoPostUpdatedBtn.asObservable();
   }
@@ -205,6 +226,64 @@ export class FollowService {
         console.log('rich and famous baby 4');
       });
   }
+  getMessageNotificationFollowingCount(userId: string): any {
+    const sub = this.http
+      .get<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/follow/followInfoCount',
+        {
+          params: { userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
+      .subscribe((transformedMessage) => {
+        console.log('ganja', transformedMessage);
+        this.followCount = transformedMessage;
+        this.followingInfoCount.next(this.followCount);
+        sub.unsubscribe();
+        console.log('rich and famous baby 3');
+      });
+  }
+  getMessageNotificationFollowedCount(userId: string): any {
+    const sub = this.http
+      .get<{ message: string; messages: any }>(
+        'https://www.skalarly.com/api/follow/followerInfoCount',
+        {
+          params: { userId },
+        }
+      )
+      .pipe(
+        map((messageData) => {
+          return messageData.messages;
+        })
+      )
+      .subscribe((transformedMessage) => {
+        console.log('ganja', transformedMessage);
+        this.followCount = transformedMessage;
+        this.followerInfoCount.next(this.followerCount);
+        sub.unsubscribe();
+        console.log('rich and famous baby 3');
+      });
+  }
+  getMessageNotificationFollowedPopUp(userName: string, skip: number): any {
+    const sub = this.http
+      .get<{ messages: string; following: Array<any> }>(
+        'https://www.skalarly.com/api/follow/skalarsFollowers',
+        {
+          params: { userName, skip },
+        }
+      )
+      .pipe(map((data) => data.following))
+      .subscribe((response) => {
+        console.log('chlor', response);
+        this.followingListFound.next([...response]);
+        sub.unsubscribe();
+        console.log('eazy 1');
+      });
+  }
   getMessageNotification(userId: string): any {
     const sub = this.http
       .get<{ message: string; messages: any }>(
@@ -215,21 +294,7 @@ export class FollowService {
       )
       .pipe(
         map((messageData) => {
-          return messageData.messages.map((data) => {
-            return {
-              id: data._id,
-              Follower: data.Follower,
-              nameFollower: data.nameFollower,
-              usernameFollower: data.usernameFollower,
-              ProfilePicPathFollower: data.ProfilePicPathFollower,
-              FollowingId: data.FollowingId,
-              Following: data.Following,
-              nameFollowing: data.nameFollowing,
-              ProfilePicPathFollowing: data.ProfilePicPathFollowing,
-              viewed: data.viewed,
-              friendShip: data.friendShip,
-            };
-          });
+          return messageData.messages;
         })
       )
       .subscribe((transformedMessage) => {
@@ -240,6 +305,7 @@ export class FollowService {
         console.log('rich and famous baby 3');
       });
   }
+
   getMessageNotificationFollowed(userId: string): any {
     const sub = this.http
       .get<{ message: string; messages: any }>(

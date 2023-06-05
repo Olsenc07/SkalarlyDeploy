@@ -29,16 +29,18 @@ export class AuthGuard implements CanActivate {
     const isAuth = this.authService.getIsAuth();
     if (!isAuth) {
       this.router.navigate(['/login']);
-      let snackBarRef = this.snackBar.open(
-        'Unathorized to view this content',
-        'Create an account to see what your missing',
-        {
-          duration: 3000,
-        }
-      );
-      snackBarRef.onAction().subscribe(() => {
-        this.router.navigate(['/sign-up']);
-      });
+      if (window.location.href !== 'https://www.skalarly.com/login') {
+        let snackBarRef = this.snackBar.open(
+          'Unathorized to view this content',
+          'Create an account to see what your missing',
+          {
+            duration: 3000,
+          }
+        );
+        snackBarRef.onAction().subscribe(() => {
+          this.router.navigate(['/sign-up']);
+        });
+      }
     }
     return isAuth;
   }

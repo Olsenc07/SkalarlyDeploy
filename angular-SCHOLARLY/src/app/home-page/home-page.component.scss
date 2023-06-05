@@ -231,10 +231,18 @@
   transition-duration: 2s;
 }
 .login:hover {
-  border-radius: 25px;
-  background-image: linear-gradient(to right,black, #002D62);
-
+  animation-name: loginClick;
+  animation-duration: 2s;
  }
+ @keyframes loginClick {
+  from {  
+    background-image: linear-gradient(to right,#002D62,black);
+
+  }
+  to { background-image: linear-gradient(to right,black, #002D62);
+    border-radius: 25px;}
+  }
+  
 .newaccount{
   // background-image: linear-gradient(to right, #009cff , #616fb5);
   background-image: linear-gradient(to right,black,#002D62);
@@ -243,8 +251,16 @@
 }
 .newaccount:hover{
   // background-image: linear-gradient(to right, #009cff , #616fb5);
-  border-radius: 25px;
-  background-image: linear-gradient(to right,#002D62, black);
+  animation-name: newAccountClick;
+  animation-duration: 2s;
+}
+@keyframes newAccountClick {
+  from {  
+  background-image: linear-gradient(to right,black,#002D62);
+
+  }
+  to { background-image: linear-gradient(to right,#002D62, black); border-radius: 25px;
+  }
 }
 
 @media (min-width: 700px) {

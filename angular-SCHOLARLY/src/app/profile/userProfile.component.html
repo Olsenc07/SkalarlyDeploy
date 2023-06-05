@@ -27,17 +27,7 @@
         <div class="hide-input">
           <!-- Not blocked -->
     <div class="centerBlock" *ngIf="blockList === false">
-      <button  mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>
-          <i class="fas fa-ellipsis-h"></i>
-        </mat-icon>
-      </button>
-      </div>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item matTooltip="This skalar will no longer be able 
-        to view or interact with your content " (click)="blockSkalar(info.username)" class="centerBlock">
-        <i class="fas fa-ban"></i>Block Skalar</button>
-      </mat-menu>
+    
 <!-- blocked -->
 <div class="centerBlock" *ngIf="blockList === true">
 <button  mat-icon-button [matMenuTriggerFor]="menu2" class="red">
@@ -131,18 +121,18 @@
         <!-- [ngClass]="sport.value & club.value  ? 'hiden' : 'margin' " -->
         <mat-divider class="margin" *ngIf="info.sport  || info.club"></mat-divider>
         <div class="friendsCount" >
-          <div class="centerR">
+          <button mat-button (click)="showFriends('followers', info.Followers)" class="centerR">
             Followers
             <!-- Counter -->
             {{info.Followers}}
             
-          </div>
-          <div class="centerR">
+          </button>
+          <button mat-button (click)="showFriends('following', info.Following)" class="centerR">
             Following
             <!-- Counter -->
             {{info.Following}}
 
-          </div>
+          </button>
          <!-- move below following and follwer counts -->
          <div class="bio overflowy" *ngIf="info.bio " >
            
@@ -227,6 +217,17 @@
 <div *ngIf="FOLLOWingYo === 'true1'" class="bioUserName">
 Friends since {{info.friendShip | date: 'mediumDate'}}
 </div>
+  <button  mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>
+          <i class="fas fa-ellipsis-h"></i>
+        </mat-icon>
+      </button>
+      </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item matTooltip="This skalar will no longer be able 
+        to view or interact with your content " (click)="blockSkalar(info.username)" class="centerBlock">
+        <i class="fas fa-ban"></i>Block Skalar</button>
+      </mat-menu>
             </div>
 
           </div>
@@ -760,7 +761,22 @@ Friends since {{info.friendShip | date: 'mediumDate'}}
       </mat-chip>
     </mat-chip-list>
     </div>
-    
+    <!-- able to block skalar -->
+    <button  mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>
+        <i class="fas fa-ellipsis-h"></i>
+      </mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item matTooltip=' {{info.username}} will no longer be able 
+      to view or interact with your content' (click)="blockSkalar(info.username)"
+      *ngIf="this.blockList === false" class="centerBlock">
+      <i class="fas fa-ban"></i>Block Skalar</button>
+      <!-- unblock -->
+      <button mat-menu-item matTooltip="Unblock {{info.username}} " (click)="unblockSkalar(info.username)"
+      *ngIf="this.blockList === true" class="centerBlock">
+     Unblock</button>
+    </mat-menu>
   </div>
     </div>
   </div>

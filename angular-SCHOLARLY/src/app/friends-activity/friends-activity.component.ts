@@ -68,16 +68,16 @@ export class FriendsActivityComponent implements OnInit, OnDestroy {
         // Can add *ngIf="userIsAuthenticated" to hide items
       });
 
-    this.followService.getMessageNotification(this.userId);
+    this.followService.getMessageNotificationFollowingCount(this.userId);
     this.followSub = this.followService
-      .getInfoFollowingUpdateListener()
+      .getInfoFollowingUpdateCount()
       .subscribe((follow: Follow[]) => {
         this.follow = follow;
       });
     // following info
-    this.followService.getMessageNotificationFollowed(this.userId);
+    this.followService.getMessageNotificationFollowedCount(this.userId);
     this.followSubFollowers = this.followService
-      .getInfoFollowUpdateListener()
+      .getInfoFollowUpdateCount()
       .subscribe((followers: Follow[]) => {
         this.followers = followers;
       });
