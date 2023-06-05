@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { AuthDataInfo } from '../signup/auth-data.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -749,7 +749,7 @@ export class PostService {
   }
 
   // getting single page post
-  getPostSinglePage(postId: string, userId: string): any {
+  getPostSinglePage(postId: string, userId: any): any {
     const sub = this.http
       .get<{ message: string; posts: any }>(
         'https://www.skalarly.com/api/posts/singlePage',

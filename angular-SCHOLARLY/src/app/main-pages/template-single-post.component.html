@@ -72,7 +72,11 @@
                     </div>
                    
                   </div>
-  
+  <div class="clipBoardIcon">
+    <button mat-icon-button (click)="copyUrl()" matTooltip="Copy posts link">
+    <i class="far fa-copy"></i>
+    </button>
+  </div>
   
                 </div>
             </div>
@@ -200,14 +204,14 @@
   
       
             <mat-divider></mat-divider>
-            <mat-form-field id="showEmojis">
+            <mat-form-field id="showEmojis" *ngIf="this.userId.length > 0">
             <input matInput placeholder="Comment..." class="comment-form-textarea"
             maxlength="140" [formControl]="comment" >
             <button mat-icon-button matSuffix id="triggerEmo" (click)="openEmoji()">😃</button>
             </mat-form-field>
              
             <!-- {{submitLabel}}  -->
-            <div class="buttonsCWrapper">
+            <div class="buttonsCWrapper" *ngIf="this.userId.length > 0">
             <!-- <mat-chip-list *ngIf="open" class="buttonsC">
            
         <mat-chip  type="button" 

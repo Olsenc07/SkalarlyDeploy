@@ -192,8 +192,16 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   { path: 'groups', component: GroupChatsComponent, canActivate: [AuthGuard] },
-  { path: 'main/:category', component: MainPagesComponent },
-  { path: 'instructor-review/:category', component: InstructorReviewComponent },
+  {
+    path: 'main/:category',
+    component: MainPagesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'instructor-review/:category',
+    component: InstructorReviewComponent,
+    canActivate: [AuthGuard],
+  },
 
   { path: 'single/:postId', component: SinglePageComponent },
 

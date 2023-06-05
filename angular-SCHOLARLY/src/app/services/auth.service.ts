@@ -221,11 +221,10 @@ export class AuthService {
         error: (error) => {
           this.authStatusListener.next(false);
           this.snackBar
-            .open('Click Here', 'Retry')
+            .open('Unable to create account', 'Retry')
             .afterDismissed()
             .subscribe(() => {
-              // window.location.reload();
-              // Could make this a bit better but belllow just goes to homepage anyways
+              // Could make this a bit better but belllow just goes to signupapage anyways
               location.replace('https://www.skalarly.com/sign-up');
             });
         },

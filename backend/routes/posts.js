@@ -1286,13 +1286,10 @@ router.get("/instructorProgramSearch", async(req, res) => {
 
 // Get single page post
 router.get("/singlePage", async(req, res) => {    
-    console.log('love in the air 7 ',req.query.postId);
-    console.log('love in the air 5 ',req.query.userId);
-
-
          await Post.findOne({_id: req.query.postId})
            .then(doc => {
             console.log('doc',doc);
+            if(req.query.userId){
             User.findOne({_id: req.query.userId})
             .then(you => {
                 console.log('you', you)
@@ -1319,12 +1316,19 @@ router.get("/singlePage", async(req, res) => {
                         message: 'Fetching single blocked skalar failed!'
                     });
                 });
-            })  .catch(error => {
+            
+            }).catch(error => {
                 res.status(500).json({
                     message: 'Fetching single skalar failed!'
                 });
             });
-       
+        }else{
+            console.log('cats!', doc)
+            res.status(200).json({
+                message: 'Single post fetched succesfully from unlogged in account!',
+                posts: doc
+            });
+        }
             
            
            }) 

@@ -4,6 +4,7 @@ import { Post, PostService } from '../services/post.service';
 import { Fav, PostsService } from '../services/posts.service';
 import { AuthService } from '../services/auth.service';
 import { FilterSearchService } from '../services/filterSearch.service';
+import { Location } from '@angular/common';
 
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -362,7 +363,8 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private router: Router,
     private commentsService: CommentsService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -377,10 +379,11 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
         .getPostUpdateListener()
         .subscribe((posts: any) => {
           if (posts.length === 0) {
-            this.router.navigate(['/search']),
-              this.snackBar.open('This Skalar has blocked you', '🚫', {
-                duration: 3000,
-              });
+            // this.router.navigate(['/search']),
+            this.location.back();
+            this.snackBar.open('This Skalar has blocked you', '🚫', {
+              duration: 3000,
+            });
           } else {
             this.post = posts;
             console.log('pats', this.post);
@@ -393,6 +396,11 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
   ngOnDestroy(): any {
     this.routeSub.unsubscribe();
     this.postsSub.unsubscribe();
+  }
+
+  copyUrl() {
+    const url = navigator.clipboard.writeText(window.location.href);
+    alert('Copied post link: ' + url);
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);
