@@ -289,9 +289,13 @@
   font-size: larger;
   // background-color: white;
   // color: gray;
-  box-shadow: 0px 0px 11px
+  box-shadow: 0px 0px 11px;
+  transition-duration: .75s;
 }
 
+.action-button:hover {
+ border-radius: 25px;
+}
 .tag {
   color: #000000;
   // font-family:  'Poppins', sans-serif;
