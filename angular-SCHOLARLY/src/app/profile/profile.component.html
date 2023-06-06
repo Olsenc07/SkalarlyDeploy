@@ -22,9 +22,60 @@
 
     <div class="center">
       <div class="hide-input">
+
+<!-- turn on notifs -->
+<div class="centerBlock" matTooltip="Notification settings" *ngIf="(notif !== userId)" >
+  <button  mat-icon-button [matMenuTriggerFor]="menu2" >
+  <mat-icon>
+  <i class="fas fa-ellipsis-h"></i>
+  </mat-icon>
+  </button>
+  </div>
+  <mat-menu #menu2="matMenu">
+    <button mat-menu-item *ngIf="((notif !== userId) && show == true  )" (click)="Notifications()" (click)="stopPropagation($event)" matTooltip="Notifications will be sent to this browser and device." class="centerBlock"> 
+      <mat-icon class="far fa-bell " ></mat-icon>
+      <span class="large">Turn notifications on</span>
+    </button>
+    <!-- clicked on -->
+    <button mat-menu-item disabled *ngIf="((notif !== userId) && (show == false )) ">
+      <mat-icon class="far fa-bell " [ngClass]="ring === true ? 'bell' : '' "></mat-icon>
+      <span class="large">Notifications on</span>
+    </button>
+    </mat-menu>
+          <!-- turn notifs off -->
+          <div class="centerBlock" matTooltip="Notification settings" *ngIf="(notif === userId ) && (Notif.length == 0)" >
+            <button  mat-icon-button [matMenuTriggerFor]="menu" >
+            <mat-icon>
+            <i class="fas fa-ellipsis-h"></i>
+            </mat-icon>
+            </button>
+            </div>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="offNotifs()">
+      <mat-icon class="far fa-bell-slash " ></mat-icon>
+      <span class="large">Turn notifications off</span>
+    </button>
+</mat-menu>
+        <!-- broken endpoint -->
+        <div class="centerBlock" matTooltip="Notification settings" *ngIf="(notif === userId ) && (Notif.length > 0) " >
+          <button  mat-icon-button [matMenuTriggerFor]="menu3" >
+          <mat-icon>
+          <i class="fas fa-ellipsis-h red"></i>
+          </mat-icon>
+          </button>
+          </div>
+<mat-menu #menu3="matMenu">
+  <button mat-menu-item (click)="offNotifs()" matTooltip="The notification link has been broken">
+    <mat-icon class="far fa-bell-slash bellC" ></mat-icon>
+    <span class="large">Clear broken link</span>
+  </button>
+</mat-menu>
+        
+    
+
+
         <div class="uNameMsg">
 
-          
 
           <div class="centerR_" >
             <!-- This is hard coded once user signs up -->
@@ -146,25 +197,11 @@
 
         <div class="fName">
        
-          <div  class="nameBox">
-            <div *ngIf="info.name" class="name">
+          <div class="nameBox" *ngIf="info.name">
+            <div  class="name">
             {{ info.name}}
           </div>
-            <div >
-              <button mat-icon-button (click)="Notifications()" *ngIf="((notif !== userId) && show == true  )" matTooltip="Turn Notifications On">
-              <i class="far fa-bell bellC"  ></i>
-            </button>
-            <button mat-icon-button disabled *ngIf="((notif !== userId) && (show == false )) " matTooltip= "Notifications On">
-              <i class="far fa-bell bellC" [ngClass]="ring === true ? 'bell' : '' " ></i>
-            </button>
-            <button mat-icon-button (click)="offNotifs()" *ngIf="(notif === userId ) && (Notif.length == 0)" matTooltip="Turn Notifications Off">
-              <i class="far fa-bell-slash bellC" ></i>
-            </button>
-            <!-- broken endpoint -->
-            <button mat-icon-button (click)="offNotifs()" *ngIf="(notif === userId ) && (Notif.length > 0) " matTooltip="Click here to turn off notifications">
-              <i class="far fa-bell-slash bellC red" ></i>
-            </button>
-          </div>
+           
           </div>
 
        

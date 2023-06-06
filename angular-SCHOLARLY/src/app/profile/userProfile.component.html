@@ -26,7 +26,6 @@
       <div class="center" >
         <div class="hide-input">
           <!-- Not blocked -->
-    <div class="centerBlock" *ngIf="blockList === false">
     
 <!-- blocked -->
 <div class="centerBlock" *ngIf="blockList === true">
@@ -37,12 +36,27 @@
 </button>
 </div>
 <mat-menu #menu2="matMenu">
-<button mat-menu-item matTooltip="Unblock Skalar " (click)="unblockSkalar(info.username)" class="centerBlock">Unblock Skalar</button>
+<button mat-menu-item  (click)="unblockSkalar(info.username)" >
+  <mat-icon class="fas fa-unlock-alt"></mat-icon>
+  <span class="large"> Unblock {{info.username}} </span>
+</button>
+</mat-menu>
+<!-- can block -->
+<div class="centerBlock" *ngIf="blockList === false">
+<button  mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>
+    <i class="fas fa-ellipsis-h"></i>
+  </mat-icon>
+</button>
+</div>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item matTooltip="{{info.username}} will no longer be able 
+  to view or interact with your content" (click)="blockSkalar(info.username)" >
+  <mat-icon class="fas fa-ban"></mat-icon>
+  <span class="large"> Block {{info.username}}  </span>
+</button>
 </mat-menu>
           <div class="uNameMsg">
-
-
-
             <div class="centerR_" *ngIf="info.username">
               <!-- This is hard coded once user signs up -->
               @{{info.username}}
@@ -162,8 +176,8 @@
 
             <div class="fName">
 
-              <div  class="nameBox">
-                <div class="name" *ngIf="info.name">
+              <div class="nameBox" *ngIf="info.name">
+                <div class="name" >
                 {{ info.name}}
                 </div>
                 <!-- <div *ngIf="info.pronouns" class="pronouns"  matTooltip="Proper Pronouns">
@@ -217,17 +231,7 @@
 <div *ngIf="FOLLOWingYo === 'true1'" class="bioUserName">
 Friends since {{info.friendShip | date: 'mediumDate'}}
 </div>
-  <button  mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>
-          <i class="fas fa-ellipsis-h"></i>
-        </mat-icon>
-      </button>
-      </div>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item matTooltip="This skalar will no longer be able 
-        to view or interact with your content " (click)="blockSkalar(info.username)" class="centerBlock">
-        <i class="fas fa-ban"></i>Block Skalar</button>
-      </mat-menu>
+ 
             </div>
 
           </div>

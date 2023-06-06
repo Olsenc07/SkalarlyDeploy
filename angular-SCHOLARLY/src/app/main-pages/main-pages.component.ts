@@ -381,9 +381,13 @@ export class SinglePageTemplateComponent implements OnInit, OnDestroy {
           if (posts.length === 0) {
             // this.router.navigate(['/search']),
             this.location.back();
-            this.snackBar.open('This Skalar has blocked you', '🚫', {
-              duration: 3000,
-            });
+            this.snackBar.open(
+              'This Skalar has blocked you from viewing their content',
+              '🚫',
+              {
+                duration: 3000,
+              }
+            );
           } else {
             this.post = posts;
             console.log('pats', this.post);

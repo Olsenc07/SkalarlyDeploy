@@ -53,6 +53,7 @@ export class AuthService {
   private instructorName = new Subject();
   private potentialNames: Array<string>;
 
+  private vapidKeyHere = new Subject();
   private blocked = new Subject<string>();
 
   triggerReAuth = new Subject<any>();
@@ -67,8 +68,11 @@ export class AuthService {
   getInstructor(): any {
     return this.instructorName.asObservable();
   }
+  // get public vapid key
+  getVapidKey(): any {
+    return this.vapidKeyHere.asObservable();
+  }
   // check if username exists for signup
-
   getUserName(): any {
     return this.userNameUpdated.asObservable();
   }
@@ -2310,6 +2314,25 @@ export class AuthService {
         },
       });
   }
+
+  // creating push notifcation connection
+  getVapid() {
+    const sub = this.http
+      .get<{ vapidKey: string }>(
+        'https://www.skalarly.com/api/subscribe/getVapidKey'
+      )
+      .pipe(
+        map((infosData) => {
+          return infosData.vapidKey;
+        })
+      )
+      .subscribe((vapidKeyFound) => {
+        this.vapidKeyHere.next(vapidKeyFound);
+        sub.unsubscribe();
+        console.log('love you 76');
+      });
+  }
+
   // Adding subscription to get notifcations
   addSubscription(data: any, userId: string): any {
     const authData = { data, userId };

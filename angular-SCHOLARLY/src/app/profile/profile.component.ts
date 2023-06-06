@@ -63,6 +63,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   // private authStatusSubs: Subscription;
   private authListenerSubs: Subscription;
   private notifsListenerSubs: Subscription;
+  private vapidKeySub: Subscription;
 
   // storedPosts: Post[] = [];
   posts: Post[] = [];
@@ -90,7 +91,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     public postService: PostService,
     private authService: AuthService,
     private showCaseService: ShowCaseService,
-    private followService: FollowService,
     public dialog: MatDialog,
     private commentsService: CommentsService,
     private snackBar: MatSnackBar
@@ -209,8 +209,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
         this.Notif = missedNotifs;
         if (this.Notif.length > 0) {
           const snackBarRef = this.snackBar.open(
-            'Your notification connection has been lost. Please click the red bell to reset it.',
-            'To see missed notifactions, click here first',
+            'Your notification connection has been lost. Please click the red dots to reset it.',
+            'To see missed notifications, click here first',
             {
               duration: 7000,
             }
@@ -238,14 +238,27 @@ export class ProfileComponent implements OnInit, OnDestroy {
   offNotifs(): void {
     console.log('working 2', this.userId);
     this.postsService.deleteNotif(this.userId);
-    this.commentsService.clearMissedNotif(this.userId);
-    this.offNotifSub = this.commentsService
-      .getMissedNotifUpdateListener()
-      .subscribe((missedNotifs: MissedNotif[]) => {
-        this.Notif = missedNotifs;
+    this.notif = '';
+    if (this.Notif.length > 0) {
+      this.commentsService.clearMissedNotif(this.userId);
+      this.offNotifSub = this.commentsService
+        .getMissedNotifUpdateListener()
+        .subscribe((missedNotifs: MissedNotif[]) => {
+          this.Notif = missedNotifs;
+        });
+      this.offNotifSub.unsubscribe();
+      const snackBarRef = this.snackBar.open(
+        'You can now turn your notifcations back on',
+        'Reconnect notifications, click here',
+        {
+          duration: 3000,
+        }
+      );
+      snackBarRef.onAction().subscribe(() => {
+        this.Notifications();
       });
-    this.offNotifSub.unsubscribe();
-    location.reload();
+    }
+    // location.reload();
   }
   // Trigger Notifications
   Notifications(): any {
@@ -268,7 +281,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
       console.log('here I am 2');
     }
   }
-
+  stopPropagation($event: any) {
+    $event.stopPropagation();
+    console.log('samuri wizard show bell jingle');
+  }
   navigateToEditProfile(): any {
     this.router.navigate(['/edit-profile/:'], {
       queryParams: { userId: this.userId },
@@ -313,28 +329,28 @@ export class ProfileComponent implements OnInit, OnDestroy {
         console.log('simp', sub);
         // if (sub === null) {
         // Create a new subscription
-        const convertedVapidPublicKey = this.urlBase64ToUint8Array(
-          'BDNe3_EmHJwCDbzfy6BgJbboqVWt2yjqCbdKCfsao7LQ9clrK8383DMRtX5_RJI-99aqPq5N2pRBRRDMvcuWsBs'
+        // get this string from back end call? keep it hidden
+        Authservice.getVapid();
+        this.vapidKeySub = Authservice.getVapidKey().subscribe(
+          (key: string) => {
+            const convertedVapidPublicKey = this.urlBase64ToUint8Array(key);
+            req.pushManager
+              .subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: convertedVapidPublicKey,
+              })
+              .then((newSub: any) => {
+                Authservice.addSubscription(newSub, Id);
+              })
+              .catch((err) => {
+                console.log(
+                  'failed final step of creating notif connection',
+                  err
+                );
+              });
+            this.vapidKeySub.unsubscribe();
+          }
         );
-        req.pushManager
-          .subscribe({
-            userVisibleOnly: true,
-            applicationServerKey: convertedVapidPublicKey,
-          })
-          .then((newSub: any) => {
-            Authservice.addSubscription(newSub, Id);
-            // return fetch('https://www.skalarly.com/api/subscribe/follow', {
-            //   method: 'POST',
-            //   headers: {
-            //     'Content-Type': 'application/json',
-            //   },
-            //   body: JSON.stringify(newSub),
-            // });
-          });
-        // } else {
-        // We have a subscription
-        // console.log('We have a subscription');
-        // }
       })
       .catch((err) => {
         console.log(err);
