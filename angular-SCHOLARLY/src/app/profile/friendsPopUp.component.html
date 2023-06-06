@@ -1,11 +1,24 @@
 <!-- followers -->
-<div *ngIf="this.page === 'followers'">
-    <h2 *ngIf="this.page === 'followers'">Followers {{this.count}}</h2>
-    
-<div *ngFor="let info of follower">
-    <mat-card>
+<div *ngIf="this.page === 'followers'" class="columnFriendsPopUp">
+    <h2 class="popupTitle">Followers {{this.count}}  <button mat-icon-button mat-dialog-close matTooltip="Close">
+        <i class="far fa-times-circle"></i></button></h2>
+ 
+    <div *ngIf="searchFollowers === true" >
+<div *ngFor="let info of followerSearch">
+  
+        <!-- search skalars -->
+        <mat-form-field class="matPadding" 
+        appearance="outline">
+        <input matInput
+         placeholder="Search Followers" 
+        (keyup)="searchSkalarFollowed($event)"
+        />
+       </mat-form-field>
+    <mat-card class="popUpCard">
         <mat-card-content>
-            <img mat-card-avatar class="ppPopUp" src="{{info.ProfilePicPathFollower}}">
+            <div class="profilePic">
+            <img mat-card-avatar class="profilePic_" src="{{info.ProfilePicPathFollower}}">
+            </div>
             <mat-card-header>
                 <button mat-button matTooltip="View Profile"  (click)="navigateToPage(info.username)"></button>
                 @{{info.usernameFollower}}
@@ -14,7 +27,7 @@
                 <div>
 
                     <div class="msgContainer">
-                        <mat-chip  (click)="skalarMsg(info.usernameFollower)" class="messageBtn"  matTooltip="Message Skalar" selected > Message 
+                        <mat-chip  (click)="skalarMsg(info.usernameFollower)" class="messageBtn"  matTooltip='Message {{info.usernameFollower}}' selected > Message 
                             <!-- <i class="far fa-paper-plane "></i> -->
                             <i class="fas fa-reply"></i> 
                         </mat-chip>
@@ -57,6 +70,226 @@
         </mat-card-content>
       </mat-card>
     </div>
+   
 </div>
+<div *ngIf="searchFollowers === false">
+<div *ngFor="let info of follower">
+    <div class="showMore" *ngIf="countVisibilityFollowed >= 1">
+        <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="showpreviousFollowed()">Previous
+            <!-- <i class="fas fa-chevron-circle-down"></i> -->
+            <i class="fas fa-caret-up"></i>
+    
+        </mat-chip>
+        </div>
+    <mat-card>
+        <mat-card-content>
+            <img mat-card-avatar class="ppPopUp" src="{{info.ProfilePicPathFollower}}">
+            <mat-card-header>
+                <button mat-button matTooltip="View Profile"  (click)="navigateToPage(info.username)"></button>
+                @{{info.usernameFollower}}
+            </mat-card-header>
+            <mat-card-subtitle>{{info.nameFollower}}</mat-card-subtitle>
+                <div>
+
+                    <div class="msgContainer">
+                        <mat-chip  (click)="skalarMsg(info.usernameFollower)" class="messageBtn"  matTooltip='Message {{info.usernameFollower}}' selected > Message 
+                            <!-- <i class="far fa-paper-plane "></i> -->
+                            <i class="fas fa-reply"></i> 
+                        </mat-chip>
+                    </div>
+                    <!-- following status -->
+                    <div class="center_" *ngIf="info.following == 'false'">
+                        <mat-chip-list  class="center_" 
+                          aria-label="FollowBtn">
+                          <mat-chip color='warn' selected class="messageM" matTooltip="Follow"
+                           (click)="followClicked(info.usernameFollower)"  >
+                           Follow
+                          </mat-chip>
+                          </mat-chip-list>
+                        </div>
+          
+          
+                        <div class="center_" *ngIf="info.following === 'true2' ">
+                          <mat-chip-list  class="center_"  
+                          aria-label="FollowBtn">
+                          <mat-chip  selected class="pendingColor" matTooltip="Unfollow"
+                           (click)="onUnfololow(info.usernameFollower)" >
+                          Pending 
+                          <!-- would be nice to show how long this has been requested but then need to pass date request was made -->
+                          {{info.pending}}
+                          </mat-chip>
+                        </mat-chip-list>
+                        </div>
+          
+                        <div class="center_" *ngIf="info.following === 'true1'">
+                          <mat-chip-list  class="center_"  
+                          aria-label="FollowBtn">
+                          <mat-chip  selected class="followingColor" matTooltip="Unfollow"
+                           (click)="onUnfololow(info.usernameFollower)" >
+                           Following
+                          </mat-chip>
+                        </mat-chip-list>
+                        </div>
+                        <!--  -->
+                </div>
+        </mat-card-content>
+      </mat-card>
+      <div class="showMore" *ngIf="follower.length == 25">
+        <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="showMoreFollowed()">Show More
+            <!-- <i class="fas fa-chevron-circle-down"></i> -->
+            <i class="fas fa-caret-down"></i>
+        </mat-chip>
+        </div>
+    </div>
+</div>
+</div>
+
 <!-- following -->
-<h2 *ngIf="this.page === 'following'">Following {{this.count}}</h2>
+<div *ngIf="this.page === 'following'" class="columnFriendsPopUp">
+
+<h2 class="popupTitle">Following {{this.count}}
+    <button mat-icon-button mat-dialog-close matTooltip="Close">
+        <i class="far fa-times-circle"></i></button>
+</h2>
+<div *ngIf="searchFollowing === true" >
+    <div *ngFor="let info of followingSearch">
+      
+            <!-- search skalars -->
+            <mat-form-field class="matPadding" 
+            appearance="outline">
+            <input matInput
+             placeholder="Search Following" 
+            (keyup)="searchSkalarFollowing($event)"
+            />
+           </mat-form-field>
+        <mat-card class="popUpCard">
+            <mat-card-content>
+                <div class="profilePic">
+                <img mat-card-avatar class="profilePic_" src="{{info.ProfilePicPathFollowing}}">
+                </div>
+                <mat-card-header>
+                    <button mat-button matTooltip="View Profile"  (click)="navigateToPage(info.username)"></button>
+                    @{{info.Following}}
+                </mat-card-header>
+                <mat-card-subtitle *ngIf="info.nameFollowing">{{info.nameFollowing}}</mat-card-subtitle>
+                    <div>
+    
+                        <div class="msgContainer">
+                            <mat-chip  (click)="skalarMsg(info.Following)" class="messageBtn"  matTooltip="Message {{info.Following}}" selected > Message 
+                                <!-- <i class="far fa-paper-plane "></i> -->
+                                <i class="fas fa-reply"></i> 
+                            </mat-chip>
+                        </div>
+                        <!-- following status -->
+                        <div class="center_" *ngIf="info.following == 'false'">
+                            <mat-chip-list  class="center_" 
+                              aria-label="FollowBtn">
+                              <mat-chip color='warn' selected class="messageM" matTooltip="Follow"
+                               (click)="followClicked(info.Following)"  >
+                               Follow
+                              </mat-chip>
+                              </mat-chip-list>
+                            </div>
+              
+              
+                            <div class="center_" *ngIf="info.following === 'true2' ">
+                              <mat-chip-list  class="center_"  
+                              aria-label="FollowBtn">
+                              <mat-chip  selected class="pendingColor" matTooltip="Unfollow"
+                               (click)="onUnfololow(info.Following)" >
+                              Pending 
+                              <!-- would be nice to show how long this has been requested but then need to pass date request was made -->
+                              {{info.pending}}
+                              </mat-chip>
+                            </mat-chip-list>
+                            </div>
+              
+                            <div class="center_" *ngIf="info.following === 'true1'">
+                              <mat-chip-list  class="center_"  
+                              aria-label="FollowBtn">
+                              <mat-chip  selected class="followingColor" matTooltip="Unfollow"
+                               (click)="onUnfololow(info.Following)" >
+                               Following
+                              </mat-chip>
+                            </mat-chip-list>
+                            </div>
+                            <!--  -->
+                    </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+       
+    </div>
+    <div *ngIf="searchFollowing === false">
+        <div *ngFor="let info of following">
+            <div class="showMore" *ngIf="countVisibilityFollowing >= 1">
+                <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="showpreviousFollowing()">Previous
+                    <!-- <i class="fas fa-chevron-circle-down"></i> -->
+                    <i class="fas fa-caret-up"></i>
+            
+                </mat-chip>
+                </div>
+            <mat-card>
+                <mat-card-content>
+                    <img mat-card-avatar class="ppPopUp" src="{{info.ProfilePicPathFollowing}}">
+                    <mat-card-header>
+                        <button mat-button matTooltip="View Profile"  (click)="navigateToPage(info.username)"></button>
+                        @{{info.Following}}
+                    </mat-card-header>
+                    <mat-card-subtitle *ngIf="info.nameFollowing">{{info.nameFollowing}}</mat-card-subtitle>
+                        <div>
+        
+                            <div class="msgContainer">
+                                <mat-chip  (click)="skalarMsg(info.Following)" class="messageBtn"  matTooltip='Message {{info.Following}}' selected > Message 
+                                    <!-- <i class="far fa-paper-plane "></i> -->
+                                    <i class="fas fa-reply"></i> 
+                                </mat-chip>
+                            </div>
+                            <!-- following status -->
+                            <div class="center_" *ngIf="info.following == 'false'">
+                                <mat-chip-list  class="center_" 
+                                  aria-label="FollowBtn">
+                                  <mat-chip color='warn' selected class="messageM" matTooltip="Follow"
+                                   (click)="followClicked(info.Following)"  >
+                                   Follow
+                                  </mat-chip>
+                                  </mat-chip-list>
+                                </div>
+                  
+                  
+                                <div class="center_" *ngIf="info.following === 'true2' ">
+                                  <mat-chip-list  class="center_"  
+                                  aria-label="FollowBtn">
+                                  <mat-chip  selected class="pendingColor" matTooltip="Unfollow"
+                                   (click)="onUnfololow(info.Following)" >
+                                  Pending 
+                                  <!-- would be nice to show how long this has been requested but then need to pass date request was made -->
+                                  {{info.pending}}
+                                  </mat-chip>
+                                </mat-chip-list>
+                                </div>
+                  
+                                <div class="center_" *ngIf="info.following === 'true1'">
+                                  <mat-chip-list  class="center_"  
+                                  aria-label="FollowBtn">
+                                  <mat-chip  selected class="followingColor" matTooltip="Unfollow"
+                                   (click)="onUnfololow(info.Following)" >
+                                   Following
+                                  </mat-chip>
+                                </mat-chip-list>
+                                </div>
+                                <!--  -->
+                        </div>
+                </mat-card-content>
+              </mat-card>
+              <div class="showMore" *ngIf="following.length == 25">
+                <mat-chip color="warn" selected class="showMoreBtn" matTooltip="Display More" (click)="showMoreFollowing()">Show More
+                    <!-- <i class="fas fa-chevron-circle-down"></i> -->
+                    <i class="fas fa-caret-down"></i>
+                </mat-chip>
+                </div>
+            </div>
+        </div>
+
+
+</div>

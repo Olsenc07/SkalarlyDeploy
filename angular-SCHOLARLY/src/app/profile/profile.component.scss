@@ -239,6 +239,40 @@ overflow-y: scroll;
     box-sizing: border-box;
   }
 }
+// friend popup
+.columnFriendsPopUp{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.popUpCard{
+  padding: 1%;
+  box-shadow: 0px 2px grey;
+  margin-bottom: 2%;
+}
+.popupTitle{
+  display: flex;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+}
+.profilePic{
+  margin-top: 1%;
+  box-shadow: 0 2px 3px;
+  // margin-left: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profilePic_{
+  width: 100%;
+  height: auto;
+}
+// 
 .column_ {
   // margin-right: 2%;
   display: flex;
@@ -335,6 +369,8 @@ width: 100%;
 .current {
   margin-left: 15%;
 }
+
+
 .fas {
   font-size: large;
 }
@@ -410,6 +446,10 @@ font-size: large;
     font-family: 'Cormorant Garamond', serif;
     margin: 1% 0%;
   }
+}
+.matPadding{
+  display: flex;
+  padding: 2% 2% 0% 2%;
 }
 .gender {
   display: flex;
@@ -783,6 +823,7 @@ mat-tab-group {
   display: flex;
   height: 100%;
 }
+
 @media (min-width: 1024px) {
   .profile-pic {
     display: flex;

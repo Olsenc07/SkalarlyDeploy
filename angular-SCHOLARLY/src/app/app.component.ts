@@ -89,6 +89,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   isHomeScreen$: Observable<boolean>;
 
+  isAlumniTransferScreen$: Observable<boolean>;
+
   isPostScreen$: Observable<boolean>;
 
   isSearchScreen$: Observable<boolean>;
@@ -227,6 +229,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.isHomeScreen$ = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
       map((event: NavigationEnd) => event.url === '/' || event.url === '/login')
+    );
+    this.isAlumniTransferScreen$ = this.router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map((event: NavigationEnd) => event.url === '/' || event.url === '/alum')
     );
     this.isRetrievePScreen$ = this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd),
@@ -755,26 +761,29 @@ export class AppComponent implements OnInit, OnDestroy {
     const query: string = event.target.value;
     console.log('query ', query);
     if (query) {
-      const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
-      console.log('noSpecialChars', noSpecialChars);
-      this.hasQuery = true;
+      setTimeout(sendDataSkalar, 2000);
+      function sendDataSkalar() {
+        const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
+        console.log('noSpecialChars', noSpecialChars);
+        this.hasQuery = true;
 
-      // if (matches != null) {
-      // if (matches.length > 0) {
-      this.postsService.searchUsers(noSpecialChars.trim(), this.userId);
-      this.searchFollowSub = this.postsService
-        .getUserId()
-        .subscribe((results) => {
-          this.searchMade = true;
-          if (results.length > 0) {
-            // add key value pair to see if following
-            this.users = results;
-            this.searchCharacter = '';
-          } else {
-            this.users = [];
-            this.searchCharacter = '';
-          }
-        });
+        // if (matches != null) {
+        // if (matches.length > 0) {
+        this.postsService.searchUsers(noSpecialChars.trim(), this.userId);
+        this.searchFollowSub = this.postsService
+          .getUserId()
+          .subscribe((results) => {
+            this.searchMade = true;
+            if (results.length > 0) {
+              // add key value pair to see if following
+              this.users = results;
+              this.searchCharacter = '';
+            } else {
+              this.users = [];
+              this.searchCharacter = '';
+            }
+          });
+      }
     } else {
       this.hasQuery = false;
       // cleans up check following search
@@ -845,23 +854,28 @@ export class AppComponent implements OnInit, OnDestroy {
     console.log('query yo', queryHash);
     if (queryHash) {
       // const regex = /\w/g;
-      const noSpecialChars = queryHash.replace(/[^a-zA-Z0-9 ]/g, '');
-      console.log('noSpecialChars', noSpecialChars);
-      this.hasQueryHash = true;
-      // Will match if query is nothing or is only spaces
-      // const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
-      // if (matchSpaces[0] !== queryHash) {
-      this.postsService.searchHashs(noSpecialChars.trim());
-      this.searchHashSub = this.postsService.getHashs().subscribe((results) => {
-        this.searchMadeHash = true;
-        if (results.length > 0) {
-          this.hashs = results;
-          console.log('another log', this.hashs);
-        } else {
-          console.log('logic ');
-          this.hashs = [];
-        }
-      });
+      setTimeout(sendDataHash, 2000);
+      function sendDataHash() {
+        const noSpecialChars = queryHash.replace(/[^a-zA-Z0-9 ]/g, '');
+        console.log('noSpecialChars', noSpecialChars);
+        this.hasQueryHash = true;
+        // Will match if query is nothing or is only spaces
+        // const matchSpaces: any = queryHash.match('^[a-zA-Z0-9]');
+        // if (matchSpaces[0] !== queryHash) {
+        this.postsService.searchHashs(noSpecialChars.trim());
+        this.searchHashSub = this.postsService
+          .getHashs()
+          .subscribe((results) => {
+            this.searchMadeHash = true;
+            if (results.length > 0) {
+              this.hashs = results;
+              console.log('another log', this.hashs);
+            } else {
+              console.log('logic ');
+              this.hashs = [];
+            }
+          });
+      }
     } else {
       this.hasQuery = false;
       // cleans up check hashtag search

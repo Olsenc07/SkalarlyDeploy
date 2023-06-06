@@ -47,6 +47,10 @@ export class FollowService {
 
   // popup on skalars page
   private followingListFound = new Subject<Follow[]>();
+  private followingPopUpSearch = new Subject<Follow[]>();
+
+  private followedListFound = new Subject<Follow[]>();
+  private followedPopUpSearch = new Subject<Follow[]>();
 
   private followingInfoCount = new Subject();
   private followerInfoCount = new Subject();
@@ -107,10 +111,19 @@ export class FollowService {
   }
 
   // popup
-  getInfoFollowUpdatePopUp(): any {
+  getInfoFollowedUpdatePopUp(): any {
+    return this.followedListFound.asObservable();
+  }
+  getSearchFollowedPopUpListener(): any {
+    return this.followedPopUpSearch.asObservable();
+  }
+  getInfoFollowingUpdatePopUp(): any {
     return this.followingListFound.asObservable();
   }
-
+  getSearchFollowingPopUpListener(): any {
+    return this.followingPopUpSearch.asObservable();
+  }
+  //
   getInfoFollowingBtnUpdateListener(): any {
     return this.followingInfoPostUpdatedBtn.asObservable();
   }
@@ -268,10 +281,43 @@ export class FollowService {
         console.log('rich and famous baby 3');
       });
   }
+  // followed
   getMessageNotificationFollowedPopUp(userName: string, skip: number): any {
     const sub = this.http
-      .get<{ messages: string; following: Array<any> }>(
-        'https://www.skalarly.com/api/follow/skalarsFollowers',
+      .get<{ message: string; followed: Array<any> }>(
+        'https://www.skalarly.com/api/follow/skalarsFollowed',
+        {
+          params: { userName, skip },
+        }
+      )
+      .pipe(map((data) => data.followed))
+      .subscribe((response) => {
+        console.log('chlor', response);
+        this.followedListFound.next([...response]);
+        sub.unsubscribe();
+        console.log('eazy 1');
+      });
+  }
+  getSearchFollowedPopUp(payload: string, username: string): any {
+    const sub = this.http
+      .get<{ message: string; followed: any }>(
+        'https://www.skalarly.com/api/follow/skalarsFollowedSearch',
+        { params: { payload, username } }
+      )
+      .pipe(map((data) => data.followed))
+      .subscribe({
+        next: (response) => {
+          this.followedPopUpSearch.next([...response]);
+          sub.unsubscribe();
+          console.log('rich and famous baby 2');
+        },
+      });
+  }
+  // following
+  getMessageNotificationFollowingPopUp(userName: string, skip: number): any {
+    const sub = this.http
+      .get<{ message: string; following: Array<any> }>(
+        'https://www.skalarly.com/api/follow/skalarsFollowing',
         {
           params: { userName, skip },
         }
@@ -282,6 +328,21 @@ export class FollowService {
         this.followingListFound.next([...response]);
         sub.unsubscribe();
         console.log('eazy 1');
+      });
+  }
+  getSearchFollowingPopUp(payload: string, username: string): any {
+    const sub = this.http
+      .get<{ message: string; following: any }>(
+        'https://www.skalarly.com/api/follow/skalarsFollowingSearch',
+        { params: { payload, username } }
+      )
+      .pipe(map((data) => data.following))
+      .subscribe({
+        next: (response) => {
+          this.followingPopUpSearch.next([...response]);
+          sub.unsubscribe();
+          console.log('rich and famous baby 2');
+        },
       });
   }
   getMessageNotification(userId: string): any {

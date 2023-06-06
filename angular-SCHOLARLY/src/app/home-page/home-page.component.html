@@ -38,7 +38,8 @@
                    Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"
             (keyup)="doesEmailExist($event)"/>
-            
+            <mat-error *ngIf="email.errors?.pattern">Only U Of T emails are valid</mat-error>
+            <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
             
              <!-- pattern="+@+utoronto\.ca" pattern="+@utoronto\.ca" pattern="+@uoftpharmacy\.com"
             pattern="+@utsc.utoronto\.ca" pattern="+@rotman.utoronto\.ca" pattern="+@skalarly\.com" -->
@@ -77,9 +78,16 @@
             </button>
           </mat-form-field>
         </div>
+        <div class="actionsSpaced">
 <!-- Keep me logged in -->
 <mat-checkbox [checked]="stayLoggedIn" (change)="stayIn()" class="stayLoggedIn">
   Keep me logged in (for one month)</mat-checkbox>
+  <div class="gradBtn">
+    <button mat-button class="grad" routerLink="/alum" matTooltip="Transition to your alumni email extension">
+  Recently Graduated?
+    </button>
+  </div>
+</div>
 
           <!-- <div class="loginBtn"> -->
          <div class="center">
@@ -114,11 +122,7 @@
           </button>
 
        </div>
-       <div class="gradBtn">
-        <button mat-button class="grad" routerLink="/alum" matTooltip="Transition to your alumni email extension">
-      Recently Graduated?
-        </button>
-      </div>
+      
         </div>
        
      

@@ -130,7 +130,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   // pat = /\w/;
   // pat2 = /^[a-zA-Z0-9]*/;
   EmailMatches = [];
-
+  patternCheck: boolean;
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [
     // Validators.pattern(this.pat),
@@ -306,24 +306,22 @@ export class SignupComponent implements OnInit, OnDestroy {
     const regex4 = /^[a-zA-Z0-9._%+-]+@utsc.utoronto\.ca/;
     const regex5 = /^[a-zA-Z0-9._%+-]+@rotman.utoronto\.ca/;
 
-    const matches0 = regex.test(emailChazz);
+    const matches0 = regex0.test(emailChazz);
     const matches = regex.test(emailChazz);
     const matches2 = regex2.test(emailChazz);
     const matches3 = regex3.test(emailChazz);
     const matches4 = regex4.test(emailChazz);
     const matches5 = regex5.test(emailChazz);
-    console.log('matches1', matches);
-    console.log('matches2', matches2);
-    console.log('matches3', matches3);
-    console.log('matches4', matches4);
-    console.log('matches5', matches5);
+
     if (
       (matches0 || matches || matches2 || matches3 || matches4 || matches5) ===
       true
     ) {
       console.log('does it work now email pattern');
+      this.patternCheck = false;
       return null;
     } else {
+      this.patternCheck = true;
       return { pattern: true };
     }
   }
@@ -448,7 +446,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   doesEmailExist(event: any): any {
     const query: string = event.target.value;
     console.log('query ', query);
-    if (query) {
+    if (query && this.patternCheck === true) {
       this.authService.searchEmail(query.trim());
       this.usedEmailSub = this.authService
         .getUsedEmail()
@@ -461,6 +459,7 @@ export class SignupComponent implements OnInit, OnDestroy {
             this.noEmailMatches = false;
           }
         });
+
       this.usedEmailSub.unsubscribe();
     } else {
       console.log('DeLorean');
@@ -471,17 +470,23 @@ export class SignupComponent implements OnInit, OnDestroy {
     const query: string = event.target.value;
     console.log('query ', query);
     if (query) {
-      this.authService.searchUsernames(query.trim());
-      this.userNameSub = this.authService.getUserName().subscribe((results) => {
-        if (results === true) {
-          console.log('results baby', results);
-          this.userNameMatches = results;
-        } else {
-          console.log('nuts', results);
-          this.userNameMatches = false;
-        }
-      });
-      this.userNameSub.unsubscribe();
+      setTimeout(sendData, 2000);
+      function sendData() {
+        console.log('data sent');
+        this.authService.searchUsernames(query.trim());
+        this.userNameSub = this.authService
+          .getUserName()
+          .subscribe((results) => {
+            if (results === true) {
+              console.log('results baby', results);
+              this.userNameMatches = results;
+            } else {
+              console.log('nuts', results);
+              this.userNameMatches = false;
+            }
+          });
+        this.userNameSub.unsubscribe();
+      }
     } else {
       console.log('DeLorean');
     }

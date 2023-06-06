@@ -1,7 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {
+  FormControl,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -11,16 +15,50 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
-
+  patternCheck: boolean;
   emailMatches = false;
-  email: FormControl = new FormControl('');
+  email: FormControl = new FormControl('', [this.noWhiteSpace, this.pattern]);
   password: FormControl = new FormControl('', Validators.minLength(8));
   stayLoggedIn: boolean = false;
 
   isLoading = false;
 
   visible = true;
+  public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
+    if ((control.value as string).indexOf(' ') >= 0) {
+      return { noWhiteSpace: true };
+    }
+    return null;
+  }
+  public pattern(control: AbstractControl): ValidationErrors | null {
+    console.log('hey chaz', control.value as string);
+    const emailChazz = control.value as string;
 
+    const regex0 = /^[a-zA-Z0-9._%+-]+@alum.utoronto\.ca/;
+    const regex = /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/;
+    const regex2 = /^[a-zA-Z0-9._%+-]+@utoronto\.ca/;
+    const regex3 = /^[a-zA-Z0-9._%+-]+@uoftpharmacy\.com/;
+    const regex4 = /^[a-zA-Z0-9._%+-]+@utsc.utoronto\.ca/;
+    const regex5 = /^[a-zA-Z0-9._%+-]+@rotman.utoronto\.ca/;
+
+    const matches0 = regex0.test(emailChazz);
+    const matches = regex.test(emailChazz);
+    const matches2 = regex2.test(emailChazz);
+    const matches3 = regex3.test(emailChazz);
+    const matches4 = regex4.test(emailChazz);
+    const matches5 = regex5.test(emailChazz);
+
+    if (
+      (matches0 || matches || matches2 || matches3 || matches4 || matches5) ===
+      true
+    ) {
+      this.patternCheck = false;
+      return null;
+    } else {
+      this.patternCheck = true;
+      return { pattern: true };
+    }
+  }
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
 
@@ -58,7 +96,8 @@ export class HomePageComponent implements OnInit, OnDestroy {
   doesEmailExist(event: any): void {
     const query: string = event.target.value;
     console.log('query ', query);
-    if (query) {
+    if (query && this.patternCheck === true) {
+      console.log('triggered when done typing.');
       const noSpecialChars = query.replace(/[^a-zA-Z0-9.@ ]/g, '');
       this.authService.searchEmails(noSpecialChars.trim());
       this.authService.getEmail().subscribe((results) => {

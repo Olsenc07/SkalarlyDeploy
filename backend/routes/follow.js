@@ -634,13 +634,13 @@ router.get("/followerInfo", async(req, res, next) => {
     })
     })
     // follower popup
-    router.get("/skalarsFollowers", async(req, res, next) => {
+    router.get("/skalarsFollowed", async(req, res, next) => {
         await Follow.find({Following: req.query.userName})
         .skip(req.query.skip).limit(25)
         .then(follows => {
             res.status(200).json({
                 message: 'Follows fetched succesfully!',
-                messages: follows
+                followed: follows
             });
         }) .catch(err => {
             return res.status(401).json({
@@ -648,10 +648,66 @@ router.get("/followerInfo", async(req, res, next) => {
         
             })
         })
-    
-       
         })
-    
+    // follower popup search
+    router.get("/skalarsFollowedSearch", async(req, res, next) => {
+        await Follow.find({ $and: [
+            {Following: req.query.username},
+            {usernameFollower: {
+                $regex: new RegExp('^' + req.query.payload,
+                'i') }
+    }]})
+        .limit(25)
+        .then(follows => {
+            res.status(200).json({
+                message: 'Follows fetched succesfully!',
+                followed: follows
+            });
+        }) .catch(err => {
+            return res.status(401).json({
+                message: "Invalid following error!",
+        
+            })
+        })
+        })
+      // following popup
+      router.get("/skalarsFollowing", async(req, res, next) => {
+        await Follow.find({usernameFollower: req.query.userName})
+        .skip(req.query.skip).limit(25)
+        .then(follows => {
+            res.status(200).json({
+                messages: 'Follows fetched succesfully!',
+                following: follows
+            });
+        }) .catch(err => {
+            return res.status(401).json({
+                messages: "Invalid following error!",
+        
+            })
+        })
+        })
+    // following popup search
+    router.get("/skalarsFollowingSearch", async(req, res, next) => {
+        await Follow.find({ $and: [
+            {usernameFollower: req.query.username},
+            {Following: {
+                $regex: new RegExp('^' + req.query.payload,
+                'i') }
+            }]})
+        .limit(25)
+        .then(follows => {
+            res.status(200).json({
+                message: 'Follows fetched succesfully!',
+                following: follows
+            });
+        }) .catch(err => {
+            return res.status(401).json({
+                message: "Invalid following error!",
+        
+            })
+        })
+        })
+
     // Get follower count
 router.get("/followerInfoCount", async(req, res, next) => {
     await userInfo.findOne({Creator: req.query.userId})

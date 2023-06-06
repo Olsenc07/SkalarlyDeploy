@@ -747,18 +747,32 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
   skipFollowing = 0;
 
   follower = [];
+  followerSearch = [];
+  searchFollowers = false;
+
   following = [];
+  followingSearch = [];
+  searchFollowing = false;
+
+  countVisibilityFollowed = 0;
+  countVisibilityFollowing = 0;
 
   private followersSub: Subscription;
-  private followingSub: Subscription;
   private followerSub: Subscription;
+  private followedSubSearch: Subscription;
+  private followerSubSearch: Subscription;
 
+  private followingSub: Subscription;
+  private followinSub: Subscription;
+  private followingSubSearch: Subscription;
+  private followinSubSearch: Subscription;
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: { type: string; count: number; username: string },
     private followService: FollowService,
     private authService: AuthService,
-    private postsService: PostsService
+    private postsService: PostsService,
+    private router: Router
   ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -770,47 +784,146 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
 
     if (this.page === 'followers') {
       // pull followers
-      // following info
+      // followers info
       this.followService.getMessageNotificationFollowedPopUp(this.userName, 0);
       this.followersSub = this.followService
-        .getInfoFollowUpdatePopUp()
+        .getInfoFollowedUpdatePopUp()
         .subscribe((follower: Follow[]) => {
           this.follower = follower;
-        });
-
-      // get the followers of this skalar
-      // then call checkFollowing of these usernames and you
-      let newList = [];
-      this.follower.forEach((e) => {
-        newList.push(e.username);
-      });
-      for (let i of newList) {
-        this.postsService.checkFollowing(this.userId, i);
-        this.followerSub = this.postsService
-          .getfollowingList()
-          .subscribe((toronto) => {
-            console.log('toronto', toronto);
-            console.log('toronto0', toronto[0]);
-            console.log('toronto1', toronto[1]);
-            // if (followingList.length < newList.length) {
-            this.follower.filter((e) => {
-              console.log('e', e);
-              if (e.username == toronto[0]) {
-                e.following = toronto[1];
-                if (toronto[1] == 'true2') {
-                  e.pending = formatDistance(new Date(toronto[2]), new Date());
-                }
-              }
-            });
+          // get the followers of this skalar
+          // then call checkFollowing of these usernames and you
+          let newList = [];
+          this.follower.forEach((e) => {
+            newList.push(e.username);
           });
-      }
+          for (let i of newList) {
+            this.postsService.checkFollowing(this.userId, i);
+            this.followerSub = this.postsService
+              .getfollowingList()
+              .subscribe((toronto) => {
+                console.log('toronto', toronto);
+                console.log('toronto0', toronto[0]);
+                console.log('toronto1', toronto[1]);
+                // if (followingList.length < newList.length) {
+                this.follower.filter((e) => {
+                  console.log('e', e);
+                  if (e.username == toronto[0]) {
+                    e.following = toronto[1];
+                    if (toronto[1] == 'true2') {
+                      e.pending = formatDistance(
+                        new Date(toronto[2]),
+                        new Date()
+                      );
+                    }
+                  }
+                });
+              });
+          }
+        });
     }
     if (this.page === 'following') {
       // pull following
+      // following info
+      this.followService.getMessageNotificationFollowingPopUp(this.userName, 0);
+      this.followingSub = this.followService
+        .getInfoFollowingUpdatePopUp()
+        .subscribe((follower: Follow[]) => {
+          this.following = follower;
+          // get the followers of this skalar
+          // then call checkFollowing of these usernames and you
+          let newList = [];
+          this.following.forEach((e) => {
+            newList.push(e.username);
+          });
+          for (let i of newList) {
+            this.postsService.checkFollowing(this.userId, i);
+            this.followinSub = this.postsService
+              .getfollowingList()
+              .subscribe((toronto) => {
+                console.log('toronto', toronto);
+                console.log('toronto0', toronto[0]);
+                console.log('toronto1', toronto[1]);
+                // if (followingList.length < newList.length) {
+                this.following.filter((e) => {
+                  console.log('e', e);
+                  if (e.username == toronto[0]) {
+                    e.following = toronto[1];
+                    if (toronto[1] == 'true2') {
+                      e.pending = formatDistance(
+                        new Date(toronto[2]),
+                        new Date()
+                      );
+                    }
+                  }
+                });
+              });
+          }
+        });
+    }
+  }
+
+  // followers
+  // searching specific skalar
+  searchSkalarFollowed(event: any) {
+    const query: string = event.target.value;
+    if (query) {
+      // trigger when done typing
+      setTimeout(sendData, 2000);
+      function sendData() {
+        const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
+        this.searchFollowers = true;
+        // when cleared or no search, goes back to the last 25 you were viewing
+        this.followService.getSearchFollowedPopUp(
+          noSpecialChars.trim(),
+          this.userName
+        );
+        this.followedSubSearch = this.followService
+          .getSearchFollowedPopUpListener()
+          .subscribe((follower: Follow[]) => {
+            this.followerSearch = follower;
+            // get the followers of this skalar
+            // then call checkFollowing of these usernames and you
+            let newList = [];
+            this.followerSearch.forEach((e) => {
+              newList.push(e.username);
+            });
+            for (let i of newList) {
+              this.postsService.checkFollowing(this.userId, i);
+              this.followerSubSearch = this.postsService
+                .getfollowingList()
+                .subscribe((toronto) => {
+                  console.log('toronto', toronto);
+                  console.log('toronto0', toronto[0]);
+                  console.log('toronto1', toronto[1]);
+                  // if (followingList.length < newList.length) {
+                  this.followerSearch.filter((e) => {
+                    console.log('e', e);
+                    if (e.username == toronto[0]) {
+                      e.following = toronto[1];
+                      if (toronto[1] == 'true2') {
+                        e.pending = formatDistance(
+                          new Date(toronto[2]),
+                          new Date()
+                        );
+                      }
+                    }
+                  });
+                });
+            }
+          });
+      }
+    } else {
+      if (this.searchFollowers === true) {
+        this.followedSubSearch.unsubscribe();
+        this.followerSubSearch.unsubscribe();
+      }
+      this.searchFollowers = false;
     }
   }
 
   showMoreFollowed() {
+    const count = 1;
+    this.countVisibilityFollowed += count;
     const counting = 25;
     this.skipFollowed += counting;
     this.followService.getMessageNotificationFollowedPopUp(
@@ -820,11 +933,254 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
     this.followersSub = this.followService
       .getInfoFollowUpdateListener()
       .subscribe((follower: Follow[]) => {
-        // follower manipulation to get frineds status
-        this.follower = this.follower.concat(follower);
+        this.follower = follower;
+        // get the followers of this skalar
+        // then call checkFollowing of these usernames and you
+        let newList = [];
+        this.follower.forEach((e) => {
+          newList.push(e.username);
+        });
+        for (let i of newList) {
+          this.postsService.checkFollowing(this.userId, i);
+          this.followerSub = this.postsService
+            .getfollowingList()
+            .subscribe((toronto) => {
+              console.log('toronto', toronto);
+              console.log('toronto0', toronto[0]);
+              console.log('toronto1', toronto[1]);
+              // if (followingList.length < newList.length) {
+              this.follower.filter((e) => {
+                console.log('e', e);
+                if (e.username == toronto[0]) {
+                  e.following = toronto[1];
+                  if (toronto[1] == 'true2') {
+                    e.pending = formatDistance(
+                      new Date(toronto[2]),
+                      new Date()
+                    );
+                  }
+                }
+              });
+            });
+        }
+      });
+  }
+  // Show previous 25
+  showpreviousFollowed() {
+    const count = 1;
+    this.countVisibilityFollowed -= count;
+    const counting = 25;
+    this.skipFollowed -= counting;
+    this.followService.getMessageNotificationFollowedPopUp(
+      this.userName,
+      this.skipFollowed
+    );
+    this.followersSub = this.followService
+      .getInfoFollowUpdateListener()
+      .subscribe((follower: Follow[]) => {
+        this.follower = follower;
+        // get the followers of this skalar
+        // then call checkFollowing of these usernames and you
+        let newList = [];
+        this.follower.forEach((e) => {
+          newList.push(e.username);
+        });
+        for (let i of newList) {
+          this.postsService.checkFollowing(this.userId, i);
+          this.followerSub = this.postsService
+            .getfollowingList()
+            .subscribe((toronto) => {
+              console.log('toronto', toronto);
+              console.log('toronto0', toronto[0]);
+              console.log('toronto1', toronto[1]);
+              // if (followingList.length < newList.length) {
+              this.follower.filter((e) => {
+                console.log('e', e);
+                if (e.username == toronto[0]) {
+                  e.following = toronto[1];
+                  if (toronto[1] == 'true2') {
+                    e.pending = formatDistance(
+                      new Date(toronto[2]),
+                      new Date()
+                    );
+                  }
+                }
+              });
+            });
+        }
       });
   }
 
+  // following
+  showMoreFollowing() {
+    const count = 1;
+    this.countVisibilityFollowing += count;
+    const counting = 25;
+    this.skipFollowed += counting;
+    this.followService.getMessageNotificationFollowingPopUp(
+      this.userName,
+      this.skipFollowed
+    );
+    this.followingSub = this.followService
+      .getInfoFollowingUpdateListener()
+      .subscribe((follower: Follow[]) => {
+        this.follower = follower;
+        // get the followers of this skalar
+        // then call checkFollowing of these usernames and you
+        let newList = [];
+        this.follower.forEach((e) => {
+          newList.push(e.username);
+        });
+        for (let i of newList) {
+          this.postsService.checkFollowing(this.userId, i);
+          this.followinSub = this.postsService
+            .getfollowingList()
+            .subscribe((toronto) => {
+              console.log('toronto', toronto);
+              console.log('toronto0', toronto[0]);
+              console.log('toronto1', toronto[1]);
+              // if (followingList.length < newList.length) {
+              this.follower.filter((e) => {
+                console.log('e', e);
+                if (e.username == toronto[0]) {
+                  e.following = toronto[1];
+                  if (toronto[1] == 'true2') {
+                    e.pending = formatDistance(
+                      new Date(toronto[2]),
+                      new Date()
+                    );
+                  }
+                }
+              });
+            });
+        }
+      });
+  }
+  // Show previous 25
+  showpreviousFollowing() {
+    const count = 1;
+    this.countVisibilityFollowing -= count;
+    const counting = 25;
+    this.skipFollowed -= counting;
+    this.followService.getMessageNotificationFollowingPopUp(
+      this.userName,
+      this.skipFollowed
+    );
+    this.followingSub = this.followService
+      .getInfoFollowingUpdateListener()
+      .subscribe((follower: Follow[]) => {
+        this.follower = follower;
+        // get the followers of this skalar
+        // then call checkFollowing of these usernames and you
+        let newList = [];
+        this.follower.forEach((e) => {
+          newList.push(e.username);
+        });
+        for (let i of newList) {
+          this.postsService.checkFollowing(this.userId, i);
+          this.followinSub = this.postsService
+            .getfollowingList()
+            .subscribe((toronto) => {
+              console.log('toronto', toronto);
+              console.log('toronto0', toronto[0]);
+              console.log('toronto1', toronto[1]);
+              // if (followingList.length < newList.length) {
+              this.follower.filter((e) => {
+                console.log('e', e);
+                if (e.username == toronto[0]) {
+                  e.following = toronto[1];
+                  if (toronto[1] == 'true2') {
+                    e.pending = formatDistance(
+                      new Date(toronto[2]),
+                      new Date()
+                    );
+                  }
+                }
+              });
+            });
+        }
+      });
+  }
+  //  Following
+  // searching specific skalar
+  searchSkalarFollowing(event: any) {
+    const query: string = event.target.value;
+    if (query) {
+      // trigger when done typing
+      setTimeout(sendData, 2000);
+      function sendData() {
+        const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
+        this.searchFollowing = true;
+        // when cleared or no search, goes back to the last 25 you were viewing
+        this.followService.getSearchFollowedPopUp(
+          noSpecialChars.trim(),
+          this.userName
+        );
+        this.followingSubSearch = this.followService
+          .getSearchFollowedPopUpListener()
+          .subscribe((follower: Follow[]) => {
+            this.followerSearch = follower;
+            // get the followers of this skalar
+            // then call checkFollowing of these usernames and you
+            let newList = [];
+            this.followerSearch.forEach((e) => {
+              newList.push(e.username);
+            });
+            for (let i of newList) {
+              this.postsService.checkFollowing(this.userId, i);
+              this.followinSubSearch = this.postsService
+                .getfollowingList()
+                .subscribe((toronto) => {
+                  console.log('toronto', toronto);
+                  console.log('toronto0', toronto[0]);
+                  console.log('toronto1', toronto[1]);
+                  // if (followingList.length < newList.length) {
+                  this.followerSearch.filter((e) => {
+                    console.log('e', e);
+                    if (e.username == toronto[0]) {
+                      e.following = toronto[1];
+                      if (toronto[1] == 'true2') {
+                        e.pending = formatDistance(
+                          new Date(toronto[2]),
+                          new Date()
+                        );
+                      }
+                    }
+                  });
+                });
+            }
+          });
+      }
+    } else {
+      if (this.searchFollowing === true) {
+        this.followingSubSearch.unsubscribe();
+        this.followinSubSearch.unsubscribe();
+      }
+      this.searchFollowing = false;
+    }
+  }
+  followClicked(username: string): any {
+    const FollowingId = this.userName;
+    this.followService.postInfoFollow(this.userId, username, FollowingId);
+    this.followService.postInfoFollowHistory(this.userId, username);
+  }
+  onUnfololow(userName: string): any {
+    this.followService.deleteFollowUserPg(userName, this.userId);
+    console.log('chaz whats up homie gg', userName);
+  }
+  skalarMsg(username: string): void {
+    console.log('username', username);
+    // able to have another popup that creates a message and send to this skalar
+    // instead of getting naviagted to them that page!
+    this.router.navigate(['/messages/:'], {
+      queryParams: { username },
+    });
+  }
+  // go to profile
+  navigateToPage(infoUser: string): any {
+    // const ID = (document.getElementById('userName') as HTMLInputElement).value;
+    this.router.navigate(['/skalars/:'], { queryParams: { id: infoUser } });
+  }
   ngOnDestroy(): any {
     if (this.page === 'followers') {
       // pull followers
@@ -834,6 +1190,7 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
     if (this.page === 'following') {
       // pull following
       this.followingSub.unsubscribe();
+      this.followinSub.unsubscribe();
     }
   }
 }
