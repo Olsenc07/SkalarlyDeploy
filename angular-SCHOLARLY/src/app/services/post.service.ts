@@ -47,6 +47,7 @@ export interface Post {
   Username: string;
   Name: string;
   ProfilePicPath: string;
+  longDescription?: boolean;
 }
 
 @Injectable({

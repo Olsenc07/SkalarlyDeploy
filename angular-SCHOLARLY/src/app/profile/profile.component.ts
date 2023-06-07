@@ -494,9 +494,13 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         } else {
           if (BLOCKED === 'true') {
             this.router.navigate(['/search']),
-              this.snackBar.open('This Skalar has blocked you', '🚫', {
-                duration: 3000,
-              });
+              this.snackBar.open(
+                `${this.info.username} has blocked you`,
+                '🚫',
+                {
+                  duration: 3000,
+                }
+              );
           } else {
             // on blocked list?
             this.followService.getBlockedListOne(this.id, this.userId);
@@ -638,6 +642,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     console.log('greatful', userName);
     this.followService.blockSkalar(userName, this.userId);
     this.blockList = true;
+    // then can follow
+    this.FOLLOWingYo = 'noMatch';
   }
 
   unblockSkalar(userName: string): void {
@@ -750,7 +756,7 @@ export class BioComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  selector: 'app-freinds-popup',
+  selector: 'app-friends-popup',
   templateUrl: './friendsPopUp.component.html',
   styleUrls: ['./profile.component.scss'],
 })
@@ -801,7 +807,11 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
     if (this.page === 'followers') {
       // pull followers
       // followers info
-      this.followService.getMessageNotificationFollowedPopUp(this.userName, 0);
+      this.followService.getMessageNotificationFollowedPopUp(
+        this.userName,
+        0,
+        this.userId
+      );
       this.followersSub = this.followService
         .getInfoFollowedUpdatePopUp()
         .subscribe((follower: Follow[]) => {
@@ -840,11 +850,15 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
     if (this.page === 'following') {
       // pull following
       // following info
-      this.followService.getMessageNotificationFollowingPopUp(this.userName, 0);
+      this.followService.getMessageNotificationFollowingPopUp(
+        this.userName,
+        0,
+        this.userId
+      );
       this.followingSub = this.followService
         .getInfoFollowingUpdatePopUp()
-        .subscribe((follower: Follow[]) => {
-          this.following = follower;
+        .subscribe((following: Follow[]) => {
+          this.following = following;
           // get the followers of this skalar
           // then call checkFollowing of these usernames and you
           let newList = [];
@@ -891,7 +905,8 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
         // when cleared or no search, goes back to the last 25 you were viewing
         this.followService.getSearchFollowedPopUp(
           noSpecialChars.trim(),
-          this.userName
+          this.userName,
+          this.userId
         );
         this.followedSubSearch = this.followService
           .getSearchFollowedPopUpListener()
@@ -944,10 +959,11 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
     this.skipFollowed += counting;
     this.followService.getMessageNotificationFollowedPopUp(
       this.userName,
-      this.skipFollowed
+      this.skipFollowed,
+      this.userId
     );
     this.followersSub = this.followService
-      .getInfoFollowUpdateListener()
+      .getInfoFollowedUpdatePopUp()
       .subscribe((follower: Follow[]) => {
         this.follower = follower;
         // get the followers of this skalar
@@ -989,10 +1005,11 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
     this.skipFollowed -= counting;
     this.followService.getMessageNotificationFollowedPopUp(
       this.userName,
-      this.skipFollowed
+      this.skipFollowed,
+      this.userId
     );
     this.followersSub = this.followService
-      .getInfoFollowUpdateListener()
+      .getInfoFollowedUpdatePopUp()
       .subscribe((follower: Follow[]) => {
         this.follower = follower;
         // get the followers of this skalar
@@ -1035,16 +1052,17 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
     this.skipFollowed += counting;
     this.followService.getMessageNotificationFollowingPopUp(
       this.userName,
-      this.skipFollowed
+      this.skipFollowed,
+      this.userId
     );
     this.followingSub = this.followService
-      .getInfoFollowingUpdateListener()
-      .subscribe((follower: Follow[]) => {
-        this.follower = follower;
+      .getInfoFollowingUpdatePopUp()
+      .subscribe((following: Follow[]) => {
+        this.following = following;
         // get the followers of this skalar
         // then call checkFollowing of these usernames and you
         let newList = [];
-        this.follower.forEach((e) => {
+        this.following.forEach((e) => {
           newList.push(e.username);
         });
         for (let i of newList) {
@@ -1056,7 +1074,7 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
               console.log('toronto0', toronto[0]);
               console.log('toronto1', toronto[1]);
               // if (followingList.length < newList.length) {
-              this.follower.filter((e) => {
+              this.following.filter((e) => {
                 console.log('e', e);
                 if (e.username == toronto[0]) {
                   e.following = toronto[1];
@@ -1080,16 +1098,17 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
     this.skipFollowed -= counting;
     this.followService.getMessageNotificationFollowingPopUp(
       this.userName,
-      this.skipFollowed
+      this.skipFollowed,
+      this.userId
     );
     this.followingSub = this.followService
-      .getInfoFollowingUpdateListener()
-      .subscribe((follower: Follow[]) => {
-        this.follower = follower;
+      .getInfoFollowingUpdatePopUp()
+      .subscribe((following: Follow[]) => {
+        this.following = following;
         // get the followers of this skalar
         // then call checkFollowing of these usernames and you
         let newList = [];
-        this.follower.forEach((e) => {
+        this.following.forEach((e) => {
           newList.push(e.username);
         });
         for (let i of newList) {
@@ -1101,7 +1120,7 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
               console.log('toronto0', toronto[0]);
               console.log('toronto1', toronto[1]);
               // if (followingList.length < newList.length) {
-              this.follower.filter((e) => {
+              this.following.filter((e) => {
                 console.log('e', e);
                 if (e.username == toronto[0]) {
                   e.following = toronto[1];
@@ -1128,18 +1147,19 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
         const noSpecialChars = query.replace(/[^a-zA-Z0-9 ]/g, '');
         this.searchFollowing = true;
         // when cleared or no search, goes back to the last 25 you were viewing
-        this.followService.getSearchFollowedPopUp(
+        this.followService.getSearchFollowingPopUp(
           noSpecialChars.trim(),
-          this.userName
+          this.userName,
+          this.userId
         );
         this.followingSubSearch = this.followService
-          .getSearchFollowedPopUpListener()
-          .subscribe((follower: Follow[]) => {
-            this.followerSearch = follower;
+          .getSearchFollowingPopUpListener()
+          .subscribe((following: Follow[]) => {
+            this.followingSearch = following;
             // get the followers of this skalar
             // then call checkFollowing of these usernames and you
             let newList = [];
-            this.followerSearch.forEach((e) => {
+            this.followingSearch.forEach((e) => {
               newList.push(e.username);
             });
             for (let i of newList) {
@@ -1151,7 +1171,7 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
                   console.log('toronto0', toronto[0]);
                   console.log('toronto1', toronto[1]);
                   // if (followingList.length < newList.length) {
-                  this.followerSearch.filter((e) => {
+                  this.followingSearch.filter((e) => {
                     console.log('e', e);
                     if (e.username == toronto[0]) {
                       e.following = toronto[1];
@@ -1183,6 +1203,11 @@ export class FriendsPopUpComponent implements OnInit, OnDestroy {
   onUnfololow(userName: string): any {
     this.followService.deleteFollowUserPg(userName, this.userId);
     console.log('chaz whats up homie gg', userName);
+  }
+  unblockSkalar(userName: string): void {
+    console.log('greatful', userName);
+    this.followService.unblockSkalar(userName, this.userId);
+    // now change info.following to ...
   }
   skalarMsg(username: string): void {
     console.log('username', username);

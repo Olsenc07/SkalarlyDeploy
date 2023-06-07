@@ -67,7 +67,7 @@
               Username
 </mat-label>
 
-              <input matInput [formControl]="username" placeholder="Username" required maxlength="22"
+              <input matInput [formControl]="username" placeholder="Username" required maxlength="30"
               (keyup)="doesUsernameExist($event)"/>
               <mat-error *ngIf="username.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <mat-error *ngIf="username.errors?.noSpecialCharacters"> No special characters </mat-error>
@@ -368,7 +368,7 @@
                   <i class="fas fa-address-card check_" *ngIf="name.value"></i>
                   Full Name
                 </mat-label>
-                <input matInput placeholder="Full Name" maxlength="60" [formControl]="name" />
+                <input matInput placeholder="Full Name" maxlength="70" [formControl]="name" />
                 <mat-error *ngIf="name.invalid">Please enter your name</mat-error>
                 <!-- <button mat-button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="clearName()">
                   <mat-icon class="asthetic-adds">close</mat-icon>

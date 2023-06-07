@@ -1627,6 +1627,17 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
       .getPostUpdateListener()
       .subscribe((posts: Post[]) => {
         this.posts = posts;
+        // designate lengths of descriptions to each post
+        this.posts.forEach((e) => {
+          var divHeight = document.getElementById(e.id).clientHeight;
+          // normal fontsize is 16px if not defined and line height is this *1.2
+          var lineHeight = 19.2;
+          var lineCount = divHeight / lineHeight;
+          if (lineCount > 3) {
+            e.longDescription = true;
+          }
+        });
+
         this.isLoading = false;
         console.log('posts personal', this.posts);
       });
@@ -1639,8 +1650,17 @@ export class CardFriendsComponent implements OnInit, OnDestroy {
     //     this.isLoading = false;
     //   });
   }
+
   ngOnDestroy(): any {
     this.postsSub.unsubscribe();
+  }
+
+  toggleLines(documentId: string) {
+    this.posts.forEach((obj) => {
+      if (obj.id === documentId) {
+        obj.longDescription = !obj.longDescription;
+      }
+    });
   }
   navToHashTag(HashTag: string): any {
     console.log('HashTag', HashTag);

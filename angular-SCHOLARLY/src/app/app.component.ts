@@ -644,13 +644,13 @@ export class AppComponent implements OnInit, OnDestroy {
   // Follow skalar from search bar
   followClicked(username: string, id: string): any {
     this.searchCharacter = '';
-    this.checkFollowingSearch(this.search.value);
     const FollowingId = id;
     this.followService.postInfoFollow(this.userId, username, FollowingId);
     this.followService.postInfoFollowHistory(this.userId, username);
     console.log('username follow', username);
     console.log('id follow', FollowingId);
     console.log('your id', this.userId);
+    this.checkFollowingSearch(this.search.value);
   }
   stopPropagation($event: any) {
     $event.stopPropagation();
@@ -659,11 +659,15 @@ export class AppComponent implements OnInit, OnDestroy {
   // unfollow skalar from search bar
   onUnfololow(userName: string): any {
     this.searchCharacter = '';
-    this.checkFollowingSearch(this.search.value);
-
     this.followService.deleteFollowUserPg(userName, this.userId);
     console.log('chaz whats up homie gg unfollow', userName);
     console.log('chaz whats up unfollow', this.userId);
+    this.checkFollowingSearch(this.search.value);
+  }
+  unblockSkalar(userName: string): void {
+    console.log('greatful', userName);
+    this.followService.unblockSkalar(userName, this.userId);
+    this.checkFollowingSearch(this.search.value);
   }
   hashTagSearch(): any {
     this.Hashtag = true;

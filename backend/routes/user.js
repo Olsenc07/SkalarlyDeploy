@@ -2989,6 +2989,8 @@ router.get('/checkFollowing', async (req, res) => {
     let userId = req.query.userId;
 console.log('othersUsername',othersUsername);
 console.log('userId',userId);
+// need to add if user is blocking you or vise versa!
+
 
     await Follow.findOne({ $and: [{Follower: userId}, {
         Following: othersUsername}]})
@@ -3008,10 +3010,31 @@ console.log('userId',userId);
                 });
             }
             }else{
-                res.status(200).json({
-                    message: 'No following',
-                    following: [req.query.othersUsername, 'false']
+                // check for blockings
+                BlockSkalar.findOne({
+                    $and: [
+                     {blockedUsername: othersUsername},
+                    {Creator: userId}
+                ]
+                }).then(blocked => {
+                    if(blocked !== null){
+                    res.status(200).json({
+                        message: 'Blocking returned!',
+                        following: [req.query.othersUsername, 'true3']
+                    });
+                }else{
+                    res.status(200).json({
+                        message: 'No following',
+                        following: [req.query.othersUsername, 'false']
+                    });
+                }
+                }) .catch(err => {
+                    return res.status(401).json({
+                        message: "Can't find blocking!",
+            
+                    });
                 });
+               
             }
         })
         .catch(err => {
@@ -3038,7 +3061,7 @@ router.get('/getusers', async (req, res) => {
                         $regex: new RegExp('^' + payload ,
                             'i')
                     }},{username: {$ne: blockedlist.blockedUsername}}
-                    ,{Creator: {$ne :userId}}
+                    ,{Creator: {$ne: userId}}
                 ]}).limit(7)
                 .then((matches) => {
                     if(matches){
@@ -3059,12 +3082,12 @@ router.get('/getusers', async (req, res) => {
                     });
                 });
             }else{
-                UserInfo.find({ 
+                UserInfo.find({ $and: [{ 
                      username: {
                          $regex: new RegExp('^' + payload ,
                              'i')
                      }
-                 }).limit(7)
+                 },{Creator: {$ne: userId}}]}).limit(7)
                  .then((matches) => {
                      if(matches){
                      res.status(200).json({

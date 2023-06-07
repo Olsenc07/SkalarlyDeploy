@@ -265,6 +265,7 @@ export class MessagingComponent implements OnInit, OnDestroy {
     picker.addEventListener('emoji:select', (selection) => {
       console.log('Selected emoji: ', selection.emoji);
       const msgs = selection.emoji;
+      // add emoji in proper spot
       const msg = this.message.value + msgs;
       this.message.setValue(msg);
     });

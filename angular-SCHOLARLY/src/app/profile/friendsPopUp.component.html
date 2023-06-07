@@ -20,14 +20,15 @@
             <img mat-card-avatar class="profilePic_" src="{{info.ProfilePicPathFollower}}">
             </div>
             <mat-card-header>
-                <button mat-button matTooltip="View Profile"  (click)="navigateToPage(info.username)"></button>
+                <button mat-button matTooltip="View Profile" class="fontFit" (click)="navigateToPage(info.username)"></button>
                 @{{info.usernameFollower}}
             </mat-card-header>
-            <mat-card-subtitle>{{info.nameFollower}}</mat-card-subtitle>
+            <mat-card-subtitle class="fontFit" *ngIf="info.nameFollower">{{info.nameFollower}}</mat-card-subtitle>
                 <div>
 
                     <div class="msgContainer">
-                        <mat-chip  (click)="skalarMsg(info.usernameFollower)" class="messageBtn"  matTooltip='Message {{info.usernameFollower}}' selected > Message 
+                        <mat-chip *ngIf="info.following !== 'true3'" (click)="skalarMsg(info.usernameFollower)" class="messageBtn" 
+                         matTooltip='Message {{info.usernameFollower}}' selected > Message 
                             <!-- <i class="far fa-paper-plane "></i> -->
                             <i class="fas fa-reply"></i> 
                         </mat-chip>
@@ -65,7 +66,16 @@
                           </mat-chip>
                         </mat-chip-list>
                         </div>
-                        <!--  -->
+                        <!--blocking  -->
+                        <div class="center_" *ngIf="info.following === 'true3'">
+                            <mat-chip-list  class="center_"  
+                            aria-label="FollowBtn">
+                            <mat-chip  selected class="blockingColor" matTooltip="Unblock"
+                             (click)="unblockSkalar(info.usernameFollower)" >
+                             Blocking
+                            </mat-chip>
+                          </mat-chip-list>
+                          </div>
                 </div>
         </mat-card-content>
       </mat-card>
@@ -85,10 +95,10 @@
         <mat-card-content>
             <img mat-card-avatar class="ppPopUp" src="{{info.ProfilePicPathFollower}}">
             <mat-card-header>
-                <button mat-button matTooltip="View Profile"  (click)="navigateToPage(info.username)"></button>
+                <button mat-button matTooltip="View Profile" class="fontFit" (click)="navigateToPage(info.username)"></button>
                 @{{info.usernameFollower}}
             </mat-card-header>
-            <mat-card-subtitle>{{info.nameFollower}}</mat-card-subtitle>
+            <mat-card-subtitle *ngIf="info.nameFollower" class="fontFit">{{info.nameFollower}}</mat-card-subtitle>
                 <div>
 
                     <div class="msgContainer">
@@ -168,10 +178,10 @@
                 <img mat-card-avatar class="profilePic_" src="{{info.ProfilePicPathFollowing}}">
                 </div>
                 <mat-card-header>
-                    <button mat-button matTooltip="View Profile"  (click)="navigateToPage(info.username)"></button>
+                    <button mat-button matTooltip="View Profile" class="fontFit" (click)="navigateToPage(info.username)"></button>
                     @{{info.Following}}
                 </mat-card-header>
-                <mat-card-subtitle *ngIf="info.nameFollowing">{{info.nameFollowing}}</mat-card-subtitle>
+                <mat-card-subtitle *ngIf="info.nameFollowing" class="fontFit">{{info.nameFollowing}}</mat-card-subtitle>
                     <div>
     
                         <div class="msgContainer">
@@ -233,10 +243,10 @@
                 <mat-card-content>
                     <img mat-card-avatar class="ppPopUp" src="{{info.ProfilePicPathFollowing}}">
                     <mat-card-header>
-                        <button mat-button matTooltip="View Profile"  (click)="navigateToPage(info.username)"></button>
+                        <button mat-button matTooltip="View Profile" class="fontFit" (click)="navigateToPage(info.username)"></button>
                         @{{info.Following}}
                     </mat-card-header>
-                    <mat-card-subtitle *ngIf="info.nameFollowing">{{info.nameFollowing}}</mat-card-subtitle>
+                    <mat-card-subtitle *ngIf="info.nameFollowing" class="fontFit">{{info.nameFollowing}}</mat-card-subtitle>
                         <div>
         
                             <div class="msgContainer">

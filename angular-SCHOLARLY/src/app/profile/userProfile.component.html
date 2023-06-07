@@ -217,10 +217,18 @@
                  Following
                 </mat-chip>
               </mat-chip-list>
-
-        
               </div>
 
+              <!-- blocking -->
+              <div class="center_" *ngIf="blockList === true">
+                <mat-chip-list  class="center_"  
+                aria-label="FollowBtn">
+                <mat-chip  selected class="blockingColor" matTooltip="Unblock"
+                 (click)="unblockSkalar(info.username)" >
+                 Blocking
+                </mat-chip>
+              </mat-chip-list>
+              </div>
 <!-- fix up -->
             <!-- <button *ngIf="info.bio.length > 50 " mat-icon-button class='bioHeart bio' (click)="onBio()"  matTooltip="Display Bio">
 

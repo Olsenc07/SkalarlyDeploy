@@ -282,12 +282,16 @@ export class FollowService {
       });
   }
   // followed
-  getMessageNotificationFollowedPopUp(userName: string, skip: number): any {
+  getMessageNotificationFollowedPopUp(
+    userName: string,
+    skip: number,
+    userId: string
+  ): any {
     const sub = this.http
       .get<{ message: string; followed: Array<any> }>(
         'https://www.skalarly.com/api/follow/skalarsFollowed',
         {
-          params: { userName, skip },
+          params: { userName, skip, userId },
         }
       )
       .pipe(map((data) => data.followed))
@@ -298,11 +302,15 @@ export class FollowService {
         console.log('eazy 1');
       });
   }
-  getSearchFollowedPopUp(payload: string, username: string): any {
+  getSearchFollowedPopUp(
+    payload: string,
+    username: string,
+    userId: string
+  ): any {
     const sub = this.http
       .get<{ message: string; followed: any }>(
         'https://www.skalarly.com/api/follow/skalarsFollowedSearch',
-        { params: { payload, username } }
+        { params: { payload, username, userId } }
       )
       .pipe(map((data) => data.followed))
       .subscribe({
@@ -314,12 +322,16 @@ export class FollowService {
       });
   }
   // following
-  getMessageNotificationFollowingPopUp(userName: string, skip: number): any {
+  getMessageNotificationFollowingPopUp(
+    userName: string,
+    skip: number,
+    userId: string
+  ): any {
     const sub = this.http
       .get<{ message: string; following: Array<any> }>(
         'https://www.skalarly.com/api/follow/skalarsFollowing',
         {
-          params: { userName, skip },
+          params: { userName, skip, userId },
         }
       )
       .pipe(map((data) => data.following))
@@ -330,11 +342,15 @@ export class FollowService {
         console.log('eazy 1');
       });
   }
-  getSearchFollowingPopUp(payload: string, username: string): any {
+  getSearchFollowingPopUp(
+    payload: string,
+    username: string,
+    userId: string
+  ): any {
     const sub = this.http
       .get<{ message: string; following: any }>(
         'https://www.skalarly.com/api/follow/skalarsFollowingSearch',
-        { params: { payload, username } }
+        { params: { payload, username, userId } }
       )
       .pipe(map((data) => data.following))
       .subscribe({
@@ -747,7 +763,7 @@ export class FollowService {
       });
   }
   // unblock skalar
-  unblockSkalar(username: string, userId): any {
+  unblockSkalar(username: string, userId: string): any {
     const sub = this.http
       .delete<{ message: string; messages: any }>(
         'https://www.skalarly.com/api/follow/unblockSkalar',

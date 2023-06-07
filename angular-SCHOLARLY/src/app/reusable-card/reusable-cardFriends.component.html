@@ -231,8 +231,16 @@
         <div class="description" *ngIf="post.postDescription || post.Hashtag1">
   
           <div class="postText d">
-            <div class="postTextWords">
+            <div class="postDescriptionColumn"  *ngIf="post.postDescription">
+              <div id={{post.id}} class="postTextWords"  [ngClass]="{'showMore4': post.longDescription === true}">
               {{post.postDescription}}
+              </div>
+              <!-- Show more or less -->
+              <div *ngIf="post.longDescription" class="readMoreSpace">
+                <!-- could make to look like chips? -->
+              <button *ngIf="(post.longDescription === true)" mat-button (click)="toggleLines(post.id)" class="readMore">Read more</button>
+              <button *ngif="(post.longDescription === false)" mat-button (click)="toggleLines(post.id)" class="readMore">Read less</button>
+            </div>
             </div>
             <div class="hashs" matTooltip="Hashtags">
               <div class="HashTags" *ngIf="post.Hashtag1">

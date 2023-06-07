@@ -167,7 +167,7 @@
                                       <!-- pending  -->
                                       <div class="center_" *ngIf="user.following == 'true2' ">
                                         <mat-chip-list class="center_">
-                                          <mat-chip selected (click)="stopPropagation($event)" (click)="onUnfololow(user.username, user.Creator)"
+                                          <mat-chip selected (click)="stopPropagation($event)" (click)="onUnfololow(user.username)"
                                           class="pendingColor" matTooltip="Unrequest">
                                              Pending {{user.pending}}
                                           </mat-chip>
@@ -176,13 +176,22 @@
                                       <!-- following -->
                                       <div class="center_" *ngIf="user.following == 'true1' ">
                                         <mat-chip-list class="center_">
-                                          <mat-chip selected (click)="stopPropagation($event)" (click)="onUnfololow(user.username, user.Creator)"
+                                          <mat-chip selected (click)="stopPropagation($event)" (click)="onUnfololow(user.username)"
                                           class="followingColor" matTooltip="Unfollow">
                                              Following
                                           </mat-chip>
                                         </mat-chip-list>
                                       </div>
-                                      
+                                      <!-- blocking -->
+                                      <div class="center_" *ngIf="user.following == 'true3' ">
+                                        <mat-chip-list class="center_">
+                                          <mat-chip selected (click)="stopPropagation($event)" (click)="unblockSkalar(user.username)"
+                                          class="blockingColor" matTooltip="Unblock">
+                                             Blocking
+                                          </mat-chip>
+                                        </mat-chip-list>
+                                      </div>
+                                      <!-- cant look up skalars who have blocked you -->
                                     </div>
                                         <!-- </div> -->
 
@@ -237,7 +246,7 @@
                                  class="options"  (click)="navToHashTag(hash)" id="hashName" >
                                  <mat-card [ngClass]="{ even_: even, odd_: odd }">
                                   <mat-card-content>
-                                  <div  class="rowInfo_" >
+                                  <div  class="rowInfo_ hash" >
                                     <i matPrefix class="fas fa-hashtag hash"></i>
                                    {{hash}}
                               

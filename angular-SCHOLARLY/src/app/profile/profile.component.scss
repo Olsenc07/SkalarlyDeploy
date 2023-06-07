@@ -3,7 +3,10 @@
   border-top-right-radius: 25px !important;
   border-top-left-radius: 25px !important;
 }
-
+.fontFit{
+font-family: 'Cormorant Garamond', serif;
+line-clamp: 2;
+}
 @media (min-width: 1025px) {
   .main-content {
     display: flex;
@@ -62,10 +65,7 @@
   margin-left: 2%;
 
 }
-.bioHeart{
-  margin-right: 45%;
-  font-size: large;
-}
+
 .bioHeader{
   // font-family: 'Cinzel',serif;
   font-family: 'Cormorant Garamond', serif;
@@ -163,6 +163,7 @@ overflow-y: scroll;
   margin: 2.8% 0%;
   text-align: center;
   align-items: center;
+  line-clamp: 2;
 }
 
 .centerGD {
@@ -186,6 +187,7 @@ overflow-y: scroll;
   // font-family:  'Poppins', sans-serif;
   font-family: 'Cormorant Garamond', serif;
     height: 100%;
+    line-clamp: 2;
   }
 }
 @media (max-width: 450px) {
@@ -198,6 +200,7 @@ overflow-y: scroll;
   // font-family:  'Poppins', sans-serif;
   font-family: 'Cormorant Garamond', serif;
     height: 100%;
+    line-clamp: 2;
   }
 }
 
@@ -386,6 +389,11 @@ background-color: green !important;
 font-family: 'Cormorant Garamond', serif;
 font-size: large;
 }
+.blockingColor{
+  background-color: brown !important;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: large;
+  }
 .fit_ {
   display: flex;
   margin: 0% 1%;
@@ -687,6 +695,7 @@ color: white !important;
   // width: 100%;
   align-items: baseline;
   width: max-content;
+  line-clamp: 2;
 }
 .nameBox{
   display: flex;

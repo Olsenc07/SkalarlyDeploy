@@ -104,12 +104,9 @@ router.get("/getblockedList", async(req, res) => {
 });
 // Get blocked skalars on their profile
 router.get("/getblockedListOne", async(req, res) => {
-    await User.findOne({username: {$eq: req.query.id}})
-        .then(user => {
-            console.log('user run run', user);
-            BlockSkalar.findOne({
+           await BlockSkalar.findOne({
                 $and: [
-                 {blockedUsername: user.username},
+                 {blockedUsername: req.query.id},
                 {Creator: req.query.userId}
             ]
         })
@@ -132,12 +129,7 @@ router.get("/getblockedListOne", async(req, res) => {
                     message: 'blocklist failed!'
                 });
             });
-        })
-        .catch(error => {
-            res.status(500).json({
-                message: 'skalar blocklist failed!'
-            });
-        });
+       
      
 })
 
@@ -635,7 +627,8 @@ router.get("/followerInfo", async(req, res, next) => {
     })
     // follower popup
     router.get("/skalarsFollowed", async(req, res, next) => {
-        await Follow.find({Following: req.query.userName})
+        await Follow.find({$and: [{Following: req.query.userName},
+            { Follower: {$ne: req.query.userId}}]})
         .skip(req.query.skip).limit(25)
         .then(follows => {
             res.status(200).json({
@@ -656,7 +649,8 @@ router.get("/followerInfo", async(req, res, next) => {
             {usernameFollower: {
                 $regex: new RegExp('^' + req.query.payload,
                 'i') }
-    }]})
+    },
+    { Follower: {$ne: req.query.userId}}]})
         .limit(25)
         .then(follows => {
             res.status(200).json({
@@ -672,7 +666,8 @@ router.get("/followerInfo", async(req, res, next) => {
         })
       // following popup
       router.get("/skalarsFollowing", async(req, res, next) => {
-        await Follow.find({usernameFollower: req.query.userName})
+        await Follow.find({$and: [{usernameFollower: req.query.userName},
+           { FollowingId: {$ne: req.query.userId}}]})
         .skip(req.query.skip).limit(25)
         .then(follows => {
             res.status(200).json({
@@ -693,7 +688,8 @@ router.get("/followerInfo", async(req, res, next) => {
             {Following: {
                 $regex: new RegExp('^' + req.query.payload,
                 'i') }
-            }]})
+            },
+            { FollowingId: {$ne: req.query.userId}}]})
         .limit(25)
         .then(follows => {
             res.status(200).json({
