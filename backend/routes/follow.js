@@ -627,6 +627,9 @@ router.get("/followerInfo", async(req, res, next) => {
     })
     // follower popup
     router.get("/skalarsFollowed", async(req, res, next) => {
+        // skalars that block you shouldnt be found
+        finish all four below
+        await BlockSkalar.find({blockedUserId: req.query.userId})
         await Follow.find({$and: [{Following: req.query.userName},
             { Follower: {$ne: req.query.userId}}]})
         .skip(req.query.skip).limit(25)
@@ -644,6 +647,7 @@ router.get("/followerInfo", async(req, res, next) => {
         })
     // follower popup search
     router.get("/skalarsFollowedSearch", async(req, res, next) => {
+        // skalars that block you shouldnt be found
         await Follow.find({ $and: [
             {Following: req.query.username},
             {usernameFollower: {
@@ -666,6 +670,7 @@ router.get("/followerInfo", async(req, res, next) => {
         })
       // following popup
       router.get("/skalarsFollowing", async(req, res, next) => {
+        // skalars that block you shouldnt be found
         await Follow.find({$and: [{usernameFollower: req.query.userName},
            { FollowingId: {$ne: req.query.userId}}]})
         .skip(req.query.skip).limit(25)
@@ -683,6 +688,7 @@ router.get("/followerInfo", async(req, res, next) => {
         })
     // following popup search
     router.get("/skalarsFollowingSearch", async(req, res, next) => {
+        // skalars that block you shouldnt be found
         await Follow.find({ $and: [
             {usernameFollower: req.query.username},
             {Following: {

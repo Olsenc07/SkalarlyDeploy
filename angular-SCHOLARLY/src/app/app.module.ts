@@ -106,7 +106,6 @@ import {
   VerifiedPopUpComponent,
 } from './signup/signup.component';
 import { TermsPopUpComponent } from './signup/signup.component';
-import { BioComponent } from './profile/profile.component';
 import {
   HomePageComponent,
   ExplainedComponent,
@@ -228,7 +227,6 @@ import { ErrorInterceptor } from './error-interceptor';
     SearchMississaugaComponent,
     DialogElementsComponent,
     TermsPopUpComponent,
-    BioComponent,
     ReusableCardComponent,
     ReusableCardPersonalComponent,
     CardFriendsComponent,

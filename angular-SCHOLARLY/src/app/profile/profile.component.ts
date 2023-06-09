@@ -105,9 +105,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
     document.getElementById('myModal').style.display = 'none';
     console.log('bye good lookin');
   }
-  onBio(): void {
-    this.dialog.open(BioComponent);
-  }
 
   followClicked(): void {
     this.following = !this.following;
@@ -661,10 +658,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     document.getElementById('myModal').style.display = 'none';
     console.log('bye good lookin');
   }
-  // Bio
-  onBio(): void {
-    this.dialog.open(BioComponent);
-  }
+
   followClicked(username: string): any {
     this.FOLLOWingYo = 'true';
 
@@ -725,33 +719,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         this.postsSub2.unsubscribe();
         console.log('posts personal back', this.posts);
       });
-  }
-}
-
-@Component({
-  selector: 'app-bio',
-  templateUrl: './bio.component.html',
-  styleUrls: ['./profile.component.scss'],
-})
-export class BioComponent implements OnInit, OnDestroy {
-  userId: string;
-  infos: AuthDataInfo[] = [];
-  private infoSub: Subscription;
-  constructor(private authService: AuthService) {}
-
-  ngOnInit(): any {
-    // Verfiy
-    this.userId = this.authService.getUserId();
-    // Info
-    this.authService.getInfo(this.userId, 0);
-    this.infoSub = this.authService
-      .getInfoUpdateListener()
-      .subscribe((infos: AuthDataInfo[]) => {
-        this.infos = infos;
-      });
-  }
-  ngOnDestroy(): any {
-    this.infoSub.unsubscribe();
   }
 }
 

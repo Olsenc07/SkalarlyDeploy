@@ -2989,9 +2989,8 @@ router.get('/checkFollowing', async (req, res) => {
     let userId = req.query.userId;
 console.log('othersUsername',othersUsername);
 console.log('userId',userId);
-// need to add if user is blocking you or vise versa!
-
-
+// checks if your blocking skalar but skalars that block you
+// wont be supplied to this search. 
     await Follow.findOne({ $and: [{Follower: userId}, {
         Following: othersUsername}]})
         .then(followingStatus => {
@@ -3005,7 +3004,7 @@ console.log('userId',userId);
             }else{
                 res.status(200).json({
                     message: 'Matches returned!',
-                    // frineds but request not accepted 
+                    // friends but request not accepted 
                     following: [req.query.othersUsername, 'true2', followingStatus.friendShip],
                 });
             }
