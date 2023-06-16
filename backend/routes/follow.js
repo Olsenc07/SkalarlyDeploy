@@ -628,7 +628,6 @@ router.get("/followerInfo", async(req, res, next) => {
     // follower popup
     router.get("/skalarsFollowed", async(req, res, next) => {
         // skalars that block you shouldnt be found
-        finish all four below
         await BlockSkalar.find({blockedUserId: req.query.userId})
         .then(blocked => { 
             if(blocked !== null){
@@ -681,13 +680,20 @@ router.get("/followerInfo", async(req, res, next) => {
     // follower popup search
     router.get("/skalarsFollowedSearch", async(req, res, next) => {
         // skalars that block you shouldnt be found
-        await Follow.find({ $and: [
+         await BlockSkalar.find({blockedUserId: req.query.userId})
+        .then(blocked => { 
+            if(blocked !== null){
+         Follow.find({ $and: [
             {Following: req.query.username},
             {usernameFollower: {
                 $regex: new RegExp('^' + req.query.payload,
                 'i') }
     },
-    { Follower: {$ne: req.query.userId}}]})
+    {$and: [
+        {Follower: {$ne: req.query.userId}}, 
+        {Follower: {$nin: blocked.Creator}}
+       ]},
+]})
         .limit(25)
         .then(follows => {
             res.status(200).json({
@@ -696,16 +702,49 @@ router.get("/followerInfo", async(req, res, next) => {
             });
         }) .catch(err => {
             return res.status(401).json({
-                message: "Invalid following error!",
+                message: "Invalid followed error!",
         
             })
         })
+        }else{
+            Follow.find({ $and: [
+                {Following: req.query.username},
+                {usernameFollower: {
+                    $regex: new RegExp('^' + req.query.payload,
+                    'i') }
+        },
+        { Follower: {$ne: req.query.userId}}]})
+            .limit(25)
+            .then(follows => {
+                res.status(200).json({
+                    message: 'Follows fetched succesfully!',
+                    followed: follows
+                });
+            }) .catch(err => {
+                return res.status(401).json({
+                    message: "Invalid followed error!",
+            
+                })
+            })  
+        }
+    }).catch(err => {
+            return res.status(401).json({
+                message: "Invalid followed blocked error!",
+        
+            })
         })
+    });
       // following popup
       router.get("/skalarsFollowing", async(req, res, next) => {
         // skalars that block you shouldnt be found
-        await Follow.find({$and: [{usernameFollower: req.query.userName},
-           { FollowingId: {$ne: req.query.userId}}]})
+        await BlockSkalar.find({blockedUserId: req.query.userId})
+        .then(blocked => { 
+            if(blocked !== null){
+         Follow.find({$and: [{usernameFollower: req.query.userName},
+            {$and: [
+           { FollowingId: {$ne: req.query.userId}},
+           {FollowingId: {$nin: blocked.Creator}}
+            ]}]})
         .skip(req.query.skip).limit(25)
         .then(follows => {
             res.status(200).json({
@@ -714,21 +753,49 @@ router.get("/followerInfo", async(req, res, next) => {
             });
         }) .catch(err => {
             return res.status(401).json({
-                messages: "Invalid following error!",
+                messages: "Invalid following blocked error!",
         
             })
         })
+        }else{
+            Follow.find({$and: [{usernameFollower: req.query.userName},
+                { FollowingId: {$ne: req.query.userId}}]})
+             .skip(req.query.skip).limit(25)
+             .then(follows => {
+                 res.status(200).json({
+                     messages: 'Follows fetched succesfully!',
+                     following: follows
+                 });
+             }) .catch(err => {
+                 return res.status(401).json({
+                     messages: "Invalid following error!",
+             
+                 })
+             })
+        }
+    }).catch(err => {
+        return res.status(401).json({
+            messages: "Invalid blocked error!",
+    
         })
+    })
+});
     // following popup search
     router.get("/skalarsFollowingSearch", async(req, res, next) => {
         // skalars that block you shouldnt be found
-        await Follow.find({ $and: [
+        await BlockSkalar.find({blockedUserId: req.query.userId})
+        .then(blocked => { 
+            if(blocked !== null){
+         Follow.find({ $and: [
             {usernameFollower: req.query.username},
             {Following: {
                 $regex: new RegExp('^' + req.query.payload,
                 'i') }
             },
-            { FollowingId: {$ne: req.query.userId}}]})
+            {$and: [
+            {FollowingId: {$ne: req.query.userId}},
+            {FollowingId: {$nin: blocked.Creator}}]}
+        ]})
         .limit(25)
         .then(follows => {
             res.status(200).json({
@@ -741,7 +808,34 @@ router.get("/followerInfo", async(req, res, next) => {
         
             })
         })
+        }else{
+            Follow.find({ $and: [
+                {usernameFollower: req.query.username},
+                {Following: {
+                    $regex: new RegExp('^' + req.query.payload,
+                    'i') }
+                },
+                { FollowingId: {$ne: req.query.userId}}]})
+            .limit(25)
+            .then(follows => {
+                res.status(200).json({
+                    message: 'Follows fetched succesfully!',
+                    following: follows
+                });
+            }) .catch(err => {
+                return res.status(401).json({
+                    message: "Invalid following error!",
+            
+                })
+            })
+        }
+    }).catch(err => {
+        return res.status(401).json({
+            message: "Invalid blocked error!",
+    
         })
+    })
+})
 
     // Get follower count
 router.get("/followerInfoCount", async(req, res, next) => {
