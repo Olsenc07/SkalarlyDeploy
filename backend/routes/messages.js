@@ -73,7 +73,7 @@ router.get("/infoMessage", async(req, res, next) => {
     await User.findById({_id: req.query.userId})
 .then(user => {
     console.log('user ni ni', user)
-    BlockSkalar.find({blockedUsername:user.username})
+    BlockSkalar.find({blockedUsername: user.username})
     .then(blocked => {
         if(blocked.length >= 1){
 console.log('blocked', blocked)

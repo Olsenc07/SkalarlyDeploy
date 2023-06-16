@@ -33,7 +33,7 @@ await userInfo.findOne({username: username})
 .then( UserId => {
     console.log('userId blocked', UserId);
     var blockedskalar = new BlockSkalar({
-        // blockedName: UserId.name,
+        blockedUserId: UserId.Creator,
         blockedUsername: UserId.username,
         Creator: req.query.userId
     });
@@ -288,7 +288,7 @@ router.delete("/unblockSkalarActivity", async(req, res) => {
         // get this users blocks list
         if (result){
             console.log('results', result);
-            BlockSkalar.find({Creator:req.query.userId})
+            BlockSkalar.find({Creator: req.query.userId})
             .then(newList => {
             console.log('newList', newList);
                 if(newList){
@@ -519,10 +519,10 @@ console.log('follows777',follows);
 // filter followers
 router.get("/filterFollowers", async(req, res) => {
     payload = req.query.queryFollowing;
-    userId = req.query.userId;
+    UserId = req.query.userId;
 
     console.log('payload 777', payload)
-    await userInfo.findOne({Creator: userId})
+    await userInfo.findOne({Creator: UserId})
     .then(user => {
 
      Follow.find({ $and: [
@@ -630,7 +630,33 @@ router.get("/followerInfo", async(req, res, next) => {
         // skalars that block you shouldnt be found
         finish all four below
         await BlockSkalar.find({blockedUserId: req.query.userId})
-        await Follow.find({$and: [{Following: req.query.userName},
+        .then(blocked => { 
+            if(blocked !== null){
+         Follow.find({$and: [{Following: req.query.userName},
+            {$and: [
+             {Follower: {$ne: req.query.userId}}, 
+             {Follower: {$nin: blocked.Creator}}
+            ]},
+            { Following: {$nin: blocked.blockedUsername}},
+            // actually accepted the friendship or shouldnt be on the list
+            {viewed: true},
+        ]})
+        .skip(req.query.skip).limit(25)
+        .then(follows => {
+            res.status(200).json({
+                message: 'Follows fetched succesfully!',
+                followed: follows
+            });
+        }) .catch(err => {
+            return res.status(401).json({
+                message: "Invalid following error!",
+        
+            })
+        })
+    }else{
+        // Not blocked by anyone
+        Follow.find({$and: [{Following: req.query.userName},
+            {viewed: true},
             { Follower: {$ne: req.query.userId}}]})
         .skip(req.query.skip).limit(25)
         .then(follows => {
@@ -644,6 +670,13 @@ router.get("/followerInfo", async(req, res, next) => {
         
             })
         })
+    }
+    }).catch(err => {
+        return res.status(401).json({
+            message: "Invalid blocked error!",
+    
+        })
+    })
         })
     // follower popup search
     router.get("/skalarsFollowedSearch", async(req, res, next) => {
