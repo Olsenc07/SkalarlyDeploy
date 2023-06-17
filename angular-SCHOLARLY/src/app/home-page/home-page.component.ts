@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HomePageComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
-  patternCheck: boolean;
+  patternCheck: boolean = false;
   emailMatches = false;
   email: FormControl = new FormControl('', [this.noWhiteSpace, this.pattern]);
   password: FormControl = new FormControl('', Validators.minLength(8));
@@ -33,6 +33,9 @@ export class HomePageComponent implements OnInit, OnDestroy {
   public pattern(control: AbstractControl): ValidationErrors | null {
     console.log('hey chaz', control.value as string);
     const emailChazz = control.value as string;
+
+    // if checked u of t for school
+    // if(){}
 
     const regex0 = /^[a-zA-Z0-9._%+-]+@alum.utoronto\.ca/;
     const regex = /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/;
