@@ -57,7 +57,7 @@
     "karma-jasmine-html-reporter": "2.1.0",
     "ngx-image-zoom": "2.1.0",
     "ngx-material-timepicker": "^13.1.0",
-    "node": "20.2.0",
+    "node": "^20.2.0",
     "npm": "^9.7.1",
     "open": "9.1.0",
     "postinstall": "^0.8.0",
@@ -72,6 +72,7 @@
     "uuid": "^9.0.0",
     "web-animations-js": "^2.3.2",
     "webpack": "^5.87.0",
+    "zone": "^0.3.4",
     "zone.js": "0.13.1"
   },
   "devDependencies": {

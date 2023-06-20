@@ -315,6 +315,6 @@ import { ErrorInterceptor } from './error-interceptor';
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorComponent],
+  // entryComponents: [ErrorComponent],
 })
 export class AppModule {}
