@@ -15,18 +15,6 @@
     },
     {
       "path": "./e2e/tsconfig.json"
-    },
-    {
-      "path": "./projects/HomePage/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/HomePage/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/search/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/search/tsconfig.spec.json"
     }
   ],
 }
