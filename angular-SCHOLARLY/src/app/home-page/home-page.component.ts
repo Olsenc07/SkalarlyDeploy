@@ -13,17 +13,16 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
-export class HomePageComponent implements OnInit, OnDestroy {
+export class HomePageComponent implements OnInit {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
-  patternCheck: boolean = false;
+  patternCheck: boolean;
   emailMatches = false;
   email: FormControl = new FormControl('', [this.noWhiteSpace, this.pattern]);
   password: FormControl = new FormControl('', Validators.minLength(8));
   stayLoggedIn: boolean = false;
-
   isLoading = false;
-
   visible = true;
+
   public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
     if ((control.value as string).indexOf(' ') >= 0) {
       return { noWhiteSpace: true };
@@ -87,7 +86,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
   //     console.log('all setup');
   //   }
   // }
-  ngOnDestroy(): void {}
+  // ngOnDestroy(): void {}
   clearPassword(): void {
     this.password.setValue('');
   }

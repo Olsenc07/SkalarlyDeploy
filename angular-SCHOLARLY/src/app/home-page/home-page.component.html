@@ -38,7 +38,7 @@
                    Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"
             (keyup)="doesEmailExist($event)"/>
-            <mat-error *ngIf="email.errors?.pattern">Only U Of T emails are valid</mat-error>
+            <!-- <mat-error *ngIf="email.errors?.pattern">Only U Of T emails are valid</mat-error> -->
             <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
             
              <!-- pattern="+@+utoronto\.ca" pattern="+@utoronto\.ca" pattern="+@uoftpharmacy\.com"
@@ -70,10 +70,10 @@
               Password</mat-label>
             <input matInput [formControl]="password" type="password" id='passwordType' required/>
             <mat-error *ngIf="password.invalid">Please enter a valid password</mat-error>
-            <button matSuffix mat-icon-button type="button"  *ngIf="visible" (click)="toggleVisibilty()" matTooltip="Show Password" >
+            <button matSuffix mat-icon-button   *ngIf="visible" (click)="toggleVisibilty()" matTooltip="Show Password" >
               <mat-icon class="material-symbols-sharp" >visibility</mat-icon>
             </button>
-            <button matSuffix mat-icon-button type="button"  *ngIf="!visible" (click)="toggleVisibilty_()" matTooltip="Hide Password">
+            <button matSuffix mat-icon-button   *ngIf="!visible" (click)="toggleVisibilty_()" matTooltip="Hide Password">
               <mat-icon class="material-symbols-sharp" >visibility_off</mat-icon>
             </button>
           </mat-form-field>
@@ -92,7 +92,7 @@
           <!-- <div class="loginBtn"> -->
          <div class="center">
   <!-- pattern=".+@utoronto\.ca"  pattern=".+@mail.utoronto\.ca"  pattern=".+@skalarly\.com" pattern=".+@rotman.utoronto\.ca" -->
-          <button mat-button  mat-raised-button (click)="onSubmit()" [disabled]="(emailMatches === false) || !password.valid"
+          <button  mat-raised-button (click)="onSubmit()" [disabled]="(emailMatches === false) || !password.valid"
            
           color="primary" class="action-button top login" *ngIf="!isLoading" routerLink="/search" >
             Log In
