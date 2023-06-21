@@ -38,7 +38,7 @@
                    Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"
             (keyup)="doesEmailExist($event)"/>
-            <!-- <mat-error *ngIf="email.errors?.pattern">Only U Of T emails are valid</mat-error> -->
+            <mat-error *ngIf="email.errors?.pattern">Only U Of T emails are valid</mat-error>
             <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
             
              <!-- pattern="+@+utoronto\.ca" pattern="+@utoronto\.ca" pattern="+@uoftpharmacy\.com"

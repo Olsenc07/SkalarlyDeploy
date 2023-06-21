@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
   Validators,
@@ -14,7 +14,6 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(public authService: AuthService, public dialog: MatDialog) {}
   patternCheck: boolean;
   emailMatches = false;
   email: FormControl = new FormControl('', [this.noWhiteSpace, this.pattern]);
@@ -22,6 +21,7 @@ export class HomePageComponent implements OnInit {
   stayLoggedIn: boolean = false;
   isLoading = false;
   visible = true;
+  constructor(public authService: AuthService, public dialog: MatDialog) {}
 
   public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
     if ((control.value as string).indexOf(' ') >= 0) {
@@ -96,6 +96,7 @@ export class HomePageComponent implements OnInit {
   }
 
   doesEmailExist(event: any): void {
+    console.log('will hunting ');
     const query: string = event.target.value;
     console.log('query ', query);
     if (query && this.patternCheck === true) {

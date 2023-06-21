@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { from } from 'rxjs';
 import { AppComponent } from './app.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { EditProfileComp1WComponent } from './edit-profile/edit-profile.component';
