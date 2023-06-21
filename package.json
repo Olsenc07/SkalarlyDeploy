@@ -55,7 +55,7 @@
     "glob-parent": "^6.0.2",
     "hammerjs": "^2.0.8",
     "http-cache-semantics": "^4.1.1",
-    "igniteui-angular": "^15.0.16",
+    "igniteui-angular": "^16.0.6",
     "json-bigint": "^1.0.0",
     "json5": "^2.2.3",
     "jsonwebtoken": "^9.0.0",
