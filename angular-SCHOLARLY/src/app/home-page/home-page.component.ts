@@ -31,6 +31,7 @@ export class HomePageComponent implements OnInit {
   }
   public pattern(control: AbstractControl): ValidationErrors | null {
     console.log('hey chaz', control.value as string);
+    console.log('type', this.patternCheck);
     const emailChazz = control.value as string;
 
     // if checked u of t for school
@@ -54,11 +55,11 @@ export class HomePageComponent implements OnInit {
       (matches0 || matches || matches2 || matches3 || matches4 || matches5) ===
       true
     ) {
-      this.patternCheck = false;
-      return null;
-    } else {
       this.patternCheck = true;
       return { pattern: true };
+    } else {
+      this.patternCheck = false;
+      return null;
     }
   }
   toggleVisibilty(): any {
