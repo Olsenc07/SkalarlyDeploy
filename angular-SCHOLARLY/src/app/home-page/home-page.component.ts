@@ -30,7 +30,6 @@ export class HomePageComponent implements OnInit {
     return null;
   }
   public pattern(control: AbstractControl): ValidationErrors | null {
-    console.log('hey chaz', control.value as string);
     console.log('type', this.patternCheck);
     const emailChazz = control.value as string;
 
