@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  patternCheck: boolean;
+  // patternCheck: boolean;
   emailMatches = false;
   email: FormControl = new FormControl('', [this.noWhiteSpace, this.pattern]);
   password: FormControl = new FormControl('', Validators.minLength(8));
@@ -30,7 +30,7 @@ export class HomePageComponent implements OnInit {
     return null;
   }
   public pattern(control: AbstractControl): ValidationErrors | null {
-    console.log('type', this.patternCheck);
+    // console.log('type', this.patternCheck);
     const emailChazz = control.value as string;
 
     // if checked u of t for school
@@ -54,11 +54,11 @@ export class HomePageComponent implements OnInit {
       (matches0 || matches || matches2 || matches3 || matches4 || matches5) ===
       true
     ) {
-      this.patternCheck = true;
-      return { pattern: true };
-    } else {
-      this.patternCheck = false;
+      // this.patternCheck = false;
       return null;
+    } else {
+      // this.patternCheck = true;
+      return { pattern: true };
     }
   }
   toggleVisibilty(): any {
@@ -99,7 +99,7 @@ export class HomePageComponent implements OnInit {
     console.log('will hunting ');
     const query: string = event.target.value;
     console.log('query ', query);
-    if (query && this.patternCheck === true) {
+    if (query && this.email.valid) {
       console.log('triggered when done typing.');
       const noSpecialChars = query.replace(/[^a-zA-Z0-9.@ ]/g, '');
       this.authService.searchEmails(noSpecialChars.trim());
