@@ -42,7 +42,7 @@ export class HomePageComponent implements OnInit {
     const regex3 = /^[a-zA-Z0-9._%+-]+@uoftpharmacy\.com/;
     const regex4 = /^[a-zA-Z0-9._%+-]+@utsc.utoronto\.ca/;
     const regex5 = /^[a-zA-Z0-9._%+-]+@rotman.utoronto\.ca/;
-    const regex6 = /^[a-zA-Z0-9._%+-]+@rskalarly\.com/;
+    const regex6 = /^[a-zA-Z0-9._%+-]+@skalarly\.com/;
     const regex7 = /^[a-zA-Z0-9._%+-]+@outlook\.com/;
     // add outlook and skalarly.com
     // fix webscoekt error in console
