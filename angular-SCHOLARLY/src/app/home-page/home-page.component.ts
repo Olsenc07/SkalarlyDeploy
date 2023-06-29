@@ -42,6 +42,10 @@ export class HomePageComponent implements OnInit {
     const regex3 = /^[a-zA-Z0-9._%+-]+@uoftpharmacy\.com/;
     const regex4 = /^[a-zA-Z0-9._%+-]+@utsc.utoronto\.ca/;
     const regex5 = /^[a-zA-Z0-9._%+-]+@rotman.utoronto\.ca/;
+    const regex6 = /^[a-zA-Z0-9._%+-]+@rskalarly\.com/;
+    const regex7 = /^[a-zA-Z0-9._%+-]+@outlook\.com/;
+    // add outlook and skalarly.com
+    // fix webscoekt error in console
 
     const matches0 = regex0.test(emailChazz);
     const matches1 = regex1.test(emailChazz);
@@ -49,10 +53,18 @@ export class HomePageComponent implements OnInit {
     const matches3 = regex3.test(emailChazz);
     const matches4 = regex4.test(emailChazz);
     const matches5 = regex5.test(emailChazz);
+    const matches6 = regex6.test(emailChazz);
+    const matches7 = regex7.test(emailChazz);
 
     if (
-      (matches0 || matches1 || matches2 || matches3 || matches4 || matches5) ===
-      true
+      (matches0 ||
+        matches1 ||
+        matches2 ||
+        matches3 ||
+        matches4 ||
+        matches5 ||
+        matches6 ||
+        matches7) === true
     ) {
       // this.patternCheck = false;
       return null;

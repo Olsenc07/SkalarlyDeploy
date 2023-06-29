@@ -1,5 +1,10 @@
 self.addEventListener('install', event => {
     console.log("Service Worker installing.", event);
+    // event.waitUntil(
+    //   addResourcesToCache([
+    //    '',
+    //   ])
+    // );
   });
   
   self.addEventListener('activate', event => {
@@ -7,9 +12,17 @@ self.addEventListener('install', event => {
     return self.clients.claim();
   });
 
+  // fetch cached content or any requests
   self.addEventListener('fetch', event => {
     console.log("Service Worker fetching.", event);
-    event.respondWith(fetch(event.request));
+    event.respondWith(fetch(event.request)).then(
+      (result) => {
+        console.log(result);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
   });
 
 

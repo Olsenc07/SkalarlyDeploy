@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
-import { NavigationEnd, Router, ActivatedRoute } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
@@ -127,7 +127,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private postsService: PostsService,
-    private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
     private commentsService: CommentsService,
