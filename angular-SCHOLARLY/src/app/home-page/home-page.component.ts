@@ -37,21 +37,21 @@ export class HomePageComponent implements OnInit {
     // if(){}
 
     const regex0 = /^[a-zA-Z0-9._%+-]+@alum.utoronto\.ca/;
-    const regex = /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/;
+    const regex1 = /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/;
     const regex2 = /^[a-zA-Z0-9._%+-]+@utoronto\.ca/;
     const regex3 = /^[a-zA-Z0-9._%+-]+@uoftpharmacy\.com/;
     const regex4 = /^[a-zA-Z0-9._%+-]+@utsc.utoronto\.ca/;
     const regex5 = /^[a-zA-Z0-9._%+-]+@rotman.utoronto\.ca/;
 
     const matches0 = regex0.test(emailChazz);
-    const matches = regex.test(emailChazz);
+    const matches1 = regex1.test(emailChazz);
     const matches2 = regex2.test(emailChazz);
     const matches3 = regex3.test(emailChazz);
     const matches4 = regex4.test(emailChazz);
     const matches5 = regex5.test(emailChazz);
 
     if (
-      (matches0 || matches || matches2 || matches3 || matches4 || matches5) ===
+      (matches0 || matches1 || matches2 || matches3 || matches4 || matches5) ===
       true
     ) {
       // this.patternCheck = false;

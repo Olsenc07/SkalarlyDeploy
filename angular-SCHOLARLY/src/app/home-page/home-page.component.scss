@@ -1,3 +1,13 @@
+.actionBtn{
+  display: flex;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+}
+dialog::backdrop {
+  background-color: black;
+}
+
+
 .box {
   display: flex;
   width: 100%;
@@ -18,6 +28,7 @@
   // font-family: 'Poppins',sans-serif;
   font-family: 'Cormorant Garamond', serif;
   padding: 1%;
+  margin: 0% 20%;
   text-align: center;
 }
 .bodyBox{
@@ -25,10 +36,10 @@
   flex-direction: column;
   width: 100%;
   font-family: 'Poppins';
+  animation: 2s slide-up;
 }
 .bigBackground{
   z-index: -1;
-
   position: absolute;
 }
 .bulletPoints{
@@ -37,6 +48,24 @@
   font-family: 'Cormorant Garamond', serif;
   align-items: center;
   flex-direction: column;
+  animation: 2s slide-up;
+  transition-delay: 2s;
+  margin-top:0%;
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes slide-up {
+  from {
+    margin-top: 100%;
+    height: 300%; 
+  }
+
+  to {
+    margin-top: 0%;
+    height: 100%;
+  }
 }
 .center{
   display: flex;
@@ -116,7 +145,6 @@
 .gradBtn{
   display: flex;
   justify-content: flex-end;
-  width: 100%;
 }
 .grad{
   font-family: 'Cormorant Garamond', serif;
@@ -128,7 +156,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #f2f2f2;
+  // background-color: #f2f2f2;
+  background-image: linear-gradient(15deg,#0000ff2e,whitesmoke);
 }
 .Skalarly{
   font-family: 'Cormorant Garamond', serif;
@@ -373,6 +402,7 @@
   font-family: 'Cormorant Garamond', serif;
 display: flex;
 justify-content: center;
+animation: 2s fadeIn;
 }
 
 @media (min-width: 902px) {

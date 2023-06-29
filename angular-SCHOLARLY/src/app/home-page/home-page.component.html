@@ -11,8 +11,7 @@
           <img Src="../../assets/Pics/Skalar_Hat_Icon.png" class="pic">
     
     </div>
-        <div class="Skalarly">
-          
+        <div class="Skalarly">       
           Skalarly</div>
        
         <span class="main-text ">
@@ -20,7 +19,7 @@
             
             Enhance Your University Experience</a>
         <!-- <a styel="font-family: 'Cinzel'" > 🎉Happy Birthday Dad! 🎉</a> -->
-          <a class="university">U Of T</a>
+          <!-- <a class="university">U Of T</a> -->
         </span>
         <!-- Container holding the log in form -->
       
@@ -38,7 +37,7 @@
                    Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"
             (keyup)="doesEmailExist($event)"/>
-            <mat-error *ngIf="email.errors?.pattern">Only U Of T emails are valid</mat-error>
+            <mat-error *ngIf="email.errors?.pattern">Only Canadian University emails are valid</mat-error>
             <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
             
              <!-- pattern="+@+utoronto\.ca" pattern="+@utoronto\.ca" pattern="+@uoftpharmacy\.com"
