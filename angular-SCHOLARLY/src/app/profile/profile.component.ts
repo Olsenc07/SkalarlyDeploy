@@ -436,7 +436,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   following: Follow[] = [];
 
   private showCases: ShowCase[] = [];
+  online: boolean;
   private infosSubShowCase: Subscription;
+  private activityStatusSub: Subscription;
 
   posts: Post[] = [];
   private postsSub: Subscription;
@@ -555,6 +557,13 @@ export class UserProfileComponent implements OnInit, OnDestroy {
                 }
               });
             if (this.authenticatedToView !== false) {
+              // skalar online status
+              this.authService.checkingSkalarActivity(this.id);
+              this.activityStatusSub = this.authService
+                .getcheckingActivity()
+                .subscribe((status: boolean) => {
+                  this.online = status;
+                });
               this.showCaseService.getShowCase(this.id, 0);
               this.infosSubShowCase = this.showCaseService
                 .getshowCaseUpdateListener()
@@ -611,6 +620,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     // this.followersSub.unsubscribe();
     this.infosSub.unsubscribe();
     if (this.authenticatedToView !== false) {
+      this.activityStatusSub.unsubscribe();
       this.infosSubShowCase.unsubscribe();
       this.infosSubC.unsubscribe();
       this.infosSubP.unsubscribe();

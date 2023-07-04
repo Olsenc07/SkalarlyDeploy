@@ -178,7 +178,9 @@
 
               <div class="nameBox" *ngIf="info.name">
                 <div class="name" >
-                {{ info.name}}
+                {{ info.name}} 
+                <div *ngIf="online === true" matTooltip=` ${ info.name} is Online`> <i class="fas fa-circle" style="color: #1ca037;"></i></div>
+                <div *ngIf="online === false" matTooltip=`${ info.name} is Offline`> <i class="fas fa-circle" style="color: #ed1e07;"></i></div>
                 </div>
                 <!-- <div *ngIf="info.pronouns" class="pronouns"  matTooltip="Proper Pronouns">
                   ({{ info.pronouns}})

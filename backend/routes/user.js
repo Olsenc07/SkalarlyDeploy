@@ -14,6 +14,7 @@ const Comment = require('/app/backend/models/comment');
 const Msg = require('/app/backend/models/messages');
 const CourseCompleted = require('/app/backend/models/courses-completed');
 const CoursePursuing = require('/app/backend/models/courses-pursuing');
+const Activity = require('/app/backend/models/activity-skalar');
 const Follow = require('/app/backend/models/follow');
 const BlockSkalar = require('/app/backend/models/block-skalar');
 const { trusted } = require('mongoose');
@@ -1612,7 +1613,7 @@ async(req, res, next) => {
 // update all links that used this photo and then delete it, 
 // unless the previous photo was the default 
 const pic_ = multer({ storage: storage2, limits})
-router.put("/infoEdPic", checkAuth,
+router.patch("/infoEdPic", checkAuth,
     pic_.single('profilePic'),
     async(req, res, next) => {
                 if(req.file){
@@ -1650,7 +1651,7 @@ router.put("/infoEdPic", checkAuth,
                             message: 'Broken update',
                         })
                     }});
-router.put("/infoEdName", checkAuth,
+router.patch("/infoEdName", checkAuth,
 async(req, res, next) => {    
              if(req.body.name){
                 await UserInfo.updateOne({Creator: req.body.userId },{name: req.body.name})
@@ -1665,7 +1666,7 @@ async(req, res, next) => {
                         message: 'Updating name failed!'
                     });
                 })}})
-router.put("/infoEdBio", checkAuth,
+router.patch("/infoEdBio", checkAuth,
 async(req, res, next) => { 
                  if(req.body.bio){
                     await  UserInfo.updateOne({Creator:req.body.userId },{bio: req.body.bio})
@@ -1680,7 +1681,7 @@ async(req, res, next) => {
                             message: 'Updating bio failed!'
                         });
                     })}})
-router.put("/infoEdBirthday", checkAuth,
+router.patch("/infoEdBirthday", checkAuth,
 async(req, res, next) => {
             if(req.body.birthday){
                 await UserInfo.updateOne({Creator:req.body.userId },{birthday: req.body.birthday})
@@ -1695,7 +1696,7 @@ async(req, res, next) => {
                     });
                 })
             }})
-            router.put("/infoEdCampus", checkAuth,
+            router.patch("/infoEdCampus", checkAuth,
 async(req, res, next) => {
             if(req.body.campus){
                 await UserInfo.updateOne({Creator:req.body.userId },{campus: req.body.campus})
@@ -1731,7 +1732,7 @@ async(req, res, next) => {
 //                         post: update
 //                     });
 //                 })}})
-router.put("/infoEdMajor", checkAuth,
+router.patch("/infoEdMajor", checkAuth,
 async(req, res, next) => {        
             if(req.body.major){
                 await UserInfo.updateOne({Creator:req.body.userId },{major: req.body.major})
@@ -1741,7 +1742,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}}) 
-router.put("/infoEdMinor", checkAuth,
+router.patch("/infoEdMinor", checkAuth,
 async(req, res, next) => {   
              if(req.body.minor){
                 await UserInfo.updateOne({Creator:req.body.userId },{minor: req.body.minor})
@@ -1751,7 +1752,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}})
-router.put("/infoEdSport", checkAuth,
+router.patch("/infoEdSport", checkAuth,
 async(req, res, next) => {    
              if(req.body.sport){
                 await UserInfo.updateOne({Creator:req.body.userId },{sport: req.body.sport})
@@ -1761,7 +1762,7 @@ async(req, res, next) => {
                         post: update
                     });
                 })}})
-router.put("/infoEdClub", checkAuth,
+router.patch("/infoEdClub", checkAuth,
 async(req, res, next) => {     
             if(req.body.club){
                 await UserInfo.updateOne({Creator:req.body.userId },{club: req.body.club})
@@ -1774,7 +1775,7 @@ async(req, res, next) => {
                        
             
   
-    router.put("/infoEdComp1", 
+    router.patch("/infoEdComp1", 
     checkAuth,
     async(req, res, next) => {
     if(req.body.CodeCompleted){
@@ -1790,7 +1791,7 @@ async(req, res, next) => {
             });
         });
     }})   
-        router.put("/infoEdComp2", 
+        router.patch("/infoEdComp2", 
         checkAuth,
         async(req, res, next) => {
             if(req.body.CodeCompleted2){
@@ -1806,7 +1807,7 @@ async(req, res, next) => {
                     });
                 });
             }})
-        router.put("/infoEdComp3", 
+        router.patch("/infoEdComp3", 
         checkAuth,
         async(req, res, next) => {
         if(req.body.CodeCompleted3){
@@ -1822,7 +1823,7 @@ async(req, res, next) => {
                                 });
                             });
                         }})
-           router.put("/infoEdComp4", 
+           router.patch("/infoEdComp4", 
         checkAuth,
         async(req, res, next) => {                   
          if(req.body.CodeCompleted4){
@@ -1838,7 +1839,7 @@ async(req, res, next) => {
                                         });
                                     });
                                 }})
-         router.put("/infoEdComp5", checkAuth,
+         router.patch("/infoEdComp5", checkAuth,
            async(req, res, next) => {
            if(req.body.CodeCompleted5){
             await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted5: req.body.CodeCompleted5})
@@ -1854,7 +1855,7 @@ async(req, res, next) => {
                                             });
                                         }})  
                                                                                                                    
-router.put("/infoEdComp6", checkAuth,
+router.patch("/infoEdComp6", checkAuth,
     async(req, res, next) => {
         if(req.body.CodeCompleted6){
         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted6: req.body.CodeCompleted6})
@@ -1869,7 +1870,7 @@ router.put("/infoEdComp6", checkAuth,
             });
         });
     }})  
-       router.put("/infoEdComp7", checkAuth,
+       router.patch("/infoEdComp7", checkAuth,
     async(req, res, next) => { 
                     if(req.body.CodeCompleted7){
             await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted7: req.body.CodeCompleted7})
@@ -1884,7 +1885,7 @@ router.put("/infoEdComp6", checkAuth,
                 });
             });
         }})    
-            router.put("/infoEdComp8", checkAuth,
+            router.patch("/infoEdComp8", checkAuth,
     async(req, res, next) => {    
                     if(req.body.CodeCompleted8){
               await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted8: req.body.CodeCompleted8})
@@ -1899,7 +1900,7 @@ router.put("/infoEdComp6", checkAuth,
                 });
             });
         }}) 
-                 router.put("/infoEdComp9", checkAuth,
+                 router.patch("/infoEdComp9", checkAuth,
     async(req, res, next) => {  
                               if(req.body.CodeCompleted9){
                           await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted9: req.body.CodeCompleted9})
@@ -1914,7 +1915,7 @@ router.put("/infoEdComp6", checkAuth,
                             });
                         });
                     }})  
-       router.put("/infoEdComp10", checkAuth,
+       router.patch("/infoEdComp10", checkAuth,
     async(req, res, next) => {             
         if(req.body.CodeCompleted10){
       await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted10: req.body.CodeCompleted10})
@@ -1930,7 +1931,7 @@ router.put("/infoEdComp6", checkAuth,
     });
 }})      
 
-router.put("/infoEdComp11", checkAuth,
+router.patch("/infoEdComp11", checkAuth,
  async(req, res, next) => {                                                   
  if(req.body.CodeCompleted11){
  await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted11: req.body.CodeCompleted11})
@@ -1945,7 +1946,7 @@ router.put("/infoEdComp11", checkAuth,
     });
 });
 }})
-router.put("/infoEdComp12", checkAuth,
+router.patch("/infoEdComp12", checkAuth,
  async(req, res, next) => {                 
 if(req.body.CodeCompleted12){
  await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted12: req.body.CodeCompleted12})
@@ -1960,7 +1961,7 @@ if(req.body.CodeCompleted12){
     });
 });
 }}) 
- router.put("/infoEdComp13", checkAuth,
+ router.patch("/infoEdComp13", checkAuth,
  async(req, res, next) => {               
  if(req.body.CodeCompleted13){
  await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted13: req.body.CodeCompleted13})
@@ -1975,7 +1976,7 @@ if(req.body.CodeCompleted12){
     });
 }); 
 }}) 
-router.put("/infoEdComp14", checkAuth,
+router.patch("/infoEdComp14", checkAuth,
  async(req, res, next) => {               
 if(req.body.CodeCompleted14){
 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted14: req.body.CodeCompleted14})
@@ -1990,7 +1991,7 @@ await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted14: req
     });
 });
 }}) 
-router.put("/infoEdComp15", checkAuth,
+router.patch("/infoEdComp15", checkAuth,
  async(req, res, next) => {              
  if(req.body.CodeCompleted15){
  await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted15: req.body.CodeCompleted15})
@@ -2005,7 +2006,7 @@ router.put("/infoEdComp15", checkAuth,
     });
 });
 }});
-router.put("/infoEdComp16", checkAuth,
+router.patch("/infoEdComp16", checkAuth,
  async(req, res, next) => {      
     if(req.body.CodeCompleted16){
         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted16: req.body.CodeCompleted16})
@@ -2020,7 +2021,7 @@ router.put("/infoEdComp16", checkAuth,
             });
         });
     }});
-router.put("/infoEdComp17", checkAuth,
+router.patch("/infoEdComp17", checkAuth,
 async(req, res, next) => { 
     if(req.body.CodeCompleted17){
         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted17: req.body.CodeCompleted17})
@@ -2035,7 +2036,7 @@ async(req, res, next) => {
             });
         });
     }});
-router.put("/infoEdComp18", checkAuth,
+router.patch("/infoEdComp18", checkAuth,
 async(req, res, next) => { 
     if(req.body.CodeCompleted18){
         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted18: req.body.CodeCompleted18})
@@ -2050,7 +2051,7 @@ async(req, res, next) => {
             });
         });
     }}); 
-        router.put("/infoEdComp19", checkAuth,
+        router.patch("/infoEdComp19", checkAuth,
         async(req, res, next) => {                                                                                                                                          
             if(req.body.CodeCompleted19){
                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted19: req.body.CodeCompleted19})
@@ -2065,7 +2066,7 @@ async(req, res, next) => {
                     });
                 });
             }});                                                                                                                                                 
-                router.put("/infoEdComp20", checkAuth,
+                router.patch("/infoEdComp20", checkAuth,
                 async(req, res, next) => {                                                                                                                                          
                     if(req.body.CodeCompleted20){
                         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted20: req.body.CodeCompleted20})
@@ -2080,7 +2081,7 @@ async(req, res, next) => {
                             });
                         });
                     }});                                                                                                                                                                
-                        router.put("/infoEdComp21", checkAuth,
+                        router.patch("/infoEdComp21", checkAuth,
                         async(req, res, next) => {  
                             if(req.body.CodeCompleted21){
                                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted21: req.body.CodeCompleted21})
@@ -2095,7 +2096,7 @@ async(req, res, next) => {
                                     });
                                 });
                             }});
-                        router.put("/infoEdComp22", checkAuth,
+                        router.patch("/infoEdComp22", checkAuth,
                                 async(req, res, next) => {  
                                     if(req.body.CodeCompleted22){
                                         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted22: req.body.CodeCompleted22})
@@ -2110,7 +2111,7 @@ async(req, res, next) => {
                                             });
                                         });
                                     }}); 
-                        router.put("/infoEdComp23", checkAuth,
+                        router.patch("/infoEdComp23", checkAuth,
                                 async(req, res, next) => {                                                                                                                                                
                                 if(req.body.CodeCompleted23){
                                     await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted23: req.body.CodeCompleted23})
@@ -2125,7 +2126,7 @@ async(req, res, next) => {
                                                 });
                                             });
                                         }});
-       router.put("/infoEdComp24", checkAuth,
+       router.patch("/infoEdComp24", checkAuth,
             async(req, res, next) => {                                                                                                                                                                          if(req.body.CodeCompleted24){
         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted24: req.body.CodeCompleted24})
         .then(update => {
@@ -2139,7 +2140,7 @@ async(req, res, next) => {
             });
         });
     }});
-        router.put("/infoEdComp25", checkAuth,
+        router.patch("/infoEdComp25", checkAuth,
             async(req, res, next) => {              
          if(req.body.CodeCompleted25){
                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted25: req.body.CodeCompleted25})
@@ -2155,7 +2156,7 @@ async(req, res, next) => {
                 });
             }});   
             
-                router.put("/infoEdComp26", checkAuth,
+                router.patch("/infoEdComp26", checkAuth,
  async(req, res, next) => {  
                     if(req.body.CodeCompleted26){
                         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted26: req.body.CodeCompleted26})
@@ -2170,7 +2171,7 @@ async(req, res, next) => {
                             });
                         });
                     }});
-                        router.put("/infoEdComp27", checkAuth,
+                        router.patch("/infoEdComp27", checkAuth,
                         async(req, res, next) => {
                                         if(req.body.CodeCompleted27){
                                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted27: req.body.CodeCompleted27})
@@ -2185,7 +2186,7 @@ async(req, res, next) => {
                                     });
                                 });
                             }});                
-                                router.put("/infoEdComp28", checkAuth,
+                                router.patch("/infoEdComp28", checkAuth,
                                 async(req, res, next) => {
                                 if(req.body.CodeCompleted28){
                                         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted28: req.body.CodeCompleted28})
@@ -2200,7 +2201,7 @@ async(req, res, next) => {
                                             });
                                         });
                                     }});
-                                        router.put("/infoEdComp29", checkAuth,
+                                        router.patch("/infoEdComp29", checkAuth,
                                         async(req, res, next) => {
                                                    if(req.body.CodeCompleted29){
                                                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted29: req.body.CodeCompleted29})
@@ -2215,7 +2216,7 @@ async(req, res, next) => {
                                                     });
                                                 });
                                             }});   
-                                                router.put("/infoEdComp30", checkAuth,
+                                                router.patch("/infoEdComp30", checkAuth,
                                                 async(req, res, next) => {  
                                                 if(req.body.CodeCompleted30){
                                                         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted30: req.body.CodeCompleted30})
@@ -2231,7 +2232,7 @@ async(req, res, next) => {
                                                         });
                                                     }});   
                                
-router.put("/infoEdComp31", checkAuth,
+router.patch("/infoEdComp31", checkAuth,
  async(req, res, next) => {  
 if(req.body.CodeCompleted31){
                                                                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted31: req.body.CodeCompleted31})
@@ -2246,7 +2247,7 @@ if(req.body.CodeCompleted31){
                                                                     });
                                                                 });
                                                             }});
-                                                                router.put("/infoEdComp32", checkAuth,
+                                                                router.patch("/infoEdComp32", checkAuth,
  async(req, res, next) => {
                                                                                if(req.body.CodeCompleted32){
                                                                         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted32: req.body.CodeCompleted32})
@@ -2261,7 +2262,7 @@ if(req.body.CodeCompleted31){
                                                                             });
                                                                         });
                                                                     }});
-                                                                        router.put("/infoEdComp33", checkAuth,
+                                                                        router.patch("/infoEdComp33", checkAuth,
  async(req, res, next) => {
                                                                                        if(req.body.CodeCompleted33){
                                                                                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted33: req.body.CodeCompleted33})
@@ -2276,7 +2277,7 @@ if(req.body.CodeCompleted31){
                                                                                     });
                                                                                 });
                                                                             }}); 
-                                                                                router.put("/infoEdComp34", checkAuth,
+                                                                                router.patch("/infoEdComp34", checkAuth,
  async(req, res, next) => {
                                                                                               if(req.body.CodeCompleted34){
                                                                                         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted34: req.body.CodeCompleted34})
@@ -2291,7 +2292,7 @@ if(req.body.CodeCompleted31){
                                                                                             });
                                                                                         });
                                                                                     }});
-                                                                                        router.put("/infoEdComp35", checkAuth,
+                                                                                        router.patch("/infoEdComp35", checkAuth,
  async(req, res, next) => {   
                                                                                             if(req.body.CodeCompleted35){
                                                                                                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted35: req.body.CodeCompleted35})
@@ -2309,7 +2310,7 @@ if(req.body.CodeCompleted31){
                                                                                                   
                                                                                    
                                                                                                 
-                                                                                                router.put("/infoEdComp36", checkAuth,
+                                                                                                router.patch("/infoEdComp36", checkAuth,
  async(req, res, next) => {  
                                                                                                     if(req.body.CodeCompleted36){
                                                                                                         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted36: req.body.CodeCompleted36})
@@ -2324,7 +2325,7 @@ if(req.body.CodeCompleted31){
                                                                                                             });
                                                                                                         });
                                                                                                     }}); 
-                                                                                                        router.put("/infoEdComp37", checkAuth,
+                                                                                                        router.patch("/infoEdComp37", checkAuth,
  async(req, res, next) => {            
                                                                                                           if(req.body.CodeCompleted37){
                                                                                                                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted37: req.body.CodeCompleted37})
@@ -2339,7 +2340,7 @@ if(req.body.CodeCompleted31){
                                                                                                                     });
                                                                                                                 });
                                                                                                             }});
-                                                                                                                router.put("/infoEdComp38", checkAuth,
+                                                                                                                router.patch("/infoEdComp38", checkAuth,
  async(req, res, next) => {               
                                                                                                                 if(req.body.CodeCompleted38){
                                                                                                                         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted38: req.body.CodeCompleted38})
@@ -2354,7 +2355,7 @@ if(req.body.CodeCompleted31){
                                                                                                                             });
                                                                                                                         });
                                                                                                                     }});
-                                                                                                                        router.put("/infoEdComp39", checkAuth,
+                                                                                                                        router.patch("/infoEdComp39", checkAuth,
  async(req, res, next) => {
                                                                                                                         if(req.body.CodeCompleted39){
                                                                                                                                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted39: req.body.CodeCompleted39})
@@ -2369,7 +2370,7 @@ if(req.body.CodeCompleted31){
                                                                                                                                     });
                                                                                                                                 });
                                                                                                                             }});
-                                                                                                                                router.put("/infoEdComp40", checkAuth,
+                                                                                                                                router.patch("/infoEdComp40", checkAuth,
  async(req, res, next) => {   
                                                                                                                                     if(req.body.CodeCompleted40){
                                                                                                                                         await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompleted40: req.body.CodeCompleted40})
@@ -2384,7 +2385,7 @@ if(req.body.CodeCompleted31){
                                                                                                                                             });
                                                                                                                                         });
                                                                                                                                     }});               
-                                                                                                                                        router.put("/infoEdCompX", checkAuth,
+                                                                                                                                        router.patch("/infoEdCompX", checkAuth,
  async(req, res, next) => {
                                                                                                                                         if(req.body.CodeCompletedX){
                                                                                                                                                 await CourseCompleted.updateOne({Creator:req.body.userId },{CodeCompletedX: req.body.CodeCompletedX})
@@ -2402,7 +2403,7 @@ if(req.body.CodeCompleted31){
                                                                                                                                                
                                                                                                                                             
 
-router.put("/infoEdPur", checkAuth,
+router.patch("/infoEdPur", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing){
 await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing: req.body.CodePursuing})
@@ -2417,7 +2418,7 @@ message: 'Clean update',
     });
 });
 }});   
-router.put("/infoEdPur2", checkAuth,
+router.patch("/infoEdPur2", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing2){
 await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing2: req.body.CodePursuing2})
@@ -2432,7 +2433,7 @@ message: 'Clean update',
     });
 });
 }});                                                                                                                                                                                                                                                                                
-router.put("/infoEdPur3", checkAuth,
+router.patch("/infoEdPur3", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing3){
 await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing3: req.body.CodePursuing3})
@@ -2447,7 +2448,7 @@ message: 'Clean update',
     });
 });
 }});  
-router.put("/infoEdPur4", checkAuth,
+router.patch("/infoEdPur4", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing4){
 await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing4: req.body.CodePursuing4})
@@ -2462,7 +2463,7 @@ message: 'Clean update',
     });
 });
 }});  
-router.put("/infoEdPur5", checkAuth,
+router.patch("/infoEdPur5", checkAuth,
  async(req, res, next) => {                                                                                                                                                   
 if(req.body.CodePursuing5){
 await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing5: req.body.CodePursuing5})
@@ -2477,7 +2478,7 @@ message: 'Clean update',
     });
 });
 }});                                                                                                                                                                      
-router.put("/infoEdPurW6", checkAuth,
+router.patch("/infoEdPurW6", checkAuth,
 async(req, res, next) => {                                                          
 if(req.body.CodePursuing6){
 await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing6: req.body.CodePursuing6})
@@ -2491,7 +2492,7 @@ post: update });
     });
 });
 }});     
-router.put("/infoEdPurW7", checkAuth,
+router.patch("/infoEdPurW7", checkAuth,
 async(req, res, next) => {       
 if(req.body.CodePursuing7){
 await  CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing7: req.body.CodePursuing7})
@@ -2506,7 +2507,7 @@ await  CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing7: req.b
     });
 });
 }}) 
-   router.put("/infoEdPurW8", checkAuth,
+   router.patch("/infoEdPurW8", checkAuth,
 async(req, res, next) => {                                                                                                                                                                                           
    if(req.body.CodePursuing8){
     CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing8: req.body.CodePursuing8})
@@ -2521,7 +2522,7 @@ async(req, res, next) => {
     });
 });
 }})    
-   router.put("/infoEdPurW9", checkAuth,
+   router.patch("/infoEdPurW9", checkAuth,
    async(req, res, next) => {                                                                                                                                                                                                   
     if(req.body.CodePursuing9){
 await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing9: req.body.CodePursuing9})                                                                                                                                                                                              
@@ -2536,7 +2537,7 @@ await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing9: req.bo
         });
     });
     }})
-     router.put("/infoEdPurW10", checkAuth,
+     router.patch("/infoEdPurW10", checkAuth,
 async(req, res, next) => {                                                                                                                                                                                                   
       if(req.body.CodePursuing10){
          await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing10: req.body.CodePursuing10})                                                                                                                                                                                              
@@ -2551,7 +2552,7 @@ async(req, res, next) => {
         });
     });
     }})                                                                                                                                                                                                                    
-       router.put("/infoEdPurSpring11", checkAuth,
+       router.patch("/infoEdPurSpring11", checkAuth,
        async(req, res, next) => {  
 
            if(req.body.CodePursuing11){
@@ -2567,7 +2568,7 @@ async(req, res, next) => {
                 });
             });
                    }})                                                                                                                                                                                                        
-    router.put("/infoEdPurSpring12", checkAuth,
+    router.patch("/infoEdPurSpring12", checkAuth,
        async(req, res, next) => {  
 
            if(req.body.CodePursuing12){
@@ -2583,7 +2584,7 @@ async(req, res, next) => {
                 });
             })}})                                                                                                                                                                                                             
                                                                                                                                                                                                                        
-router.put("/infoEdPurSummer13", checkAuth,
+router.patch("/infoEdPurSummer13", checkAuth,
   async(req, res, next) => { 
 if(req.body.CodePursuing13){                                                                                                                                                                                                                    
 await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing13: req.body.CodePursuing13})     
@@ -2598,7 +2599,7 @@ await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing13: req.b
     });
 })
 }}) 
-router.put("/infoEdPurSummer14", checkAuth,
+router.patch("/infoEdPurSummer14", checkAuth,
   async(req, res, next) => {        
 if(req.body.CodePursuing14){
  await CoursePursuing.updateOne({Creator:req.body.userId },{CodePursuing14: req.body.CodePursuing14})
@@ -2743,7 +2744,112 @@ router.get("/infoPersonal", async(req, res) => {
         });
     });
 }); 
+// skalar Activity
+router.post("/skalarActivity", async(req, res) => {
+    console.log('location', req.body.location);
+    console.log('deviceType', req.body.deviceType);
+    console.log('online', req.body.online);
+    console.log('userId', req.body.userId);
+    // console.log('activeOnline', req.body.activeOnline);
+    var activity = new Activity({
+location: req.body.location,
+deviceType: req.body.deviceType,
+online: req.body.online,
+activeOnline: true,
+time: new Date(),
+Creator: req.body.userId
+        });
+        activity.save().then(save => {
+            console.log('saved activity', save);
+            res.status(201).json({
+                message: 'Yay a user added courses',
+                result: save
+            });
+        })
+            .catch(err => {
+                res.status(500).json({
+                    message: 'Unable to add courses completed'
+                });
+            });
+});
+// update activity
+router.patch("/activity", async (req, res) => {
+    console.log('userId', req.body.userId);
+    console.log('activity', req.body.activity);
+    // get most recent login time and update that one
+    // old login times just keep track of past devices
+    await Activity.updateOne({Creator: req.body.userId },{activeOnline: req.body.activeOnline})
+    .sort({"time": -1})
+    .then(status => {
+        console.log('status of update');
+        res.status(200).json({    
+            message: 'Activity fetched succesfully!',
+            activityStatus: req.body.activeOnline
+        });
+    })
+    .catch(error => {
+        res.status(500).json({
+            message: 'Updating activity failed!'
+        });
+    });
+});
+// is skalar online?
+router.get("/checkingskalarActivity", async (req, res) => {
+    await Activity.findOne({Creator: req.body.userId })
+    .project({activeOnline})
+    .sort({"time": -1})
+    .then(isOnline => {
+console.log('isOnline?', isOnline);
+console.log('isOnline?', isOnline[0]);
+    res.status(200).json({    
+        message: 'Activity fetched succesfully!',
+        activityStatus: isOnline[0]
+    });
+})
+.catch(error => {
+    res.status(500).json({
+        message: 'Fetching activity failed!'
+    });
+});
+    })
+// get media devices to track suspicious activity
+router.get("/deviceHistory", async (req, res) => {
+    console.log('userId devices', req.body.userId);
+    await Activity.find({Creator: req.body.userId })
+    .project({deviceType: 1, location: 1 }).sort({"time": -1})
+    .then(devicesUsed => {
+        // first returned should be device just logged in with
+        console.log('devicesUsed one', devicesUsed);
+        console.log('devicesUsed one', devicesUsed.deviceType);
+        console.log('devicesUsed one', devicesUsed[0]);
+        matchesAll = []
+        matchesAll.push(...devicesUsed);
+        duplicates = []
+        for (const [key, value] of Object.entries(matchesAll)){
+            const elem = duplicates.find(x => x.deviceType === value.deviceType);
+            if (elem) {
+                elem.count = elem.count + 1;
+            }else{
+                const add = { deviceType: value.deviceType, count: 1 };
+                duplicates.push(add);
+            }
+        }
+        const sortArray = duplicates.sort((a, b) => b.count - a.count);
+        console.log('top one', sortArray[0]);
+        if(sortArray.length > 1){
+        console.log('top two', sortArray[1]);
+        if(devicesUsed[0] !== (sortArray[0] || sortArray[1])  ){
+            console.log('send msg of suspicious log in');
+            
+        }
+        }
+        console.log('how we looking?');
+        console.log('devicesUsed one', devicesUsed.location);
 
+        // only have unique devices
+        // let finalMatches = [... new Set(matchesAll)]
+    })
+})
 // Get user
 router.get("/id", async(req, res) => {
     console.log('white dead', req.query.id);

@@ -69,6 +69,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private searchFollowSub: Subscription;
   private searchHashSub: Subscription;
   private postsSub: Subscription;
+  private activeOnline: Subscription;
   // socket.io
   public roomId: string;
   public messageText: string;
@@ -78,6 +79,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public selectedUser;
 
   public userList = [];
+  activityStatus = true;
 
   minHeight = true;
   minwidth = true;
@@ -120,7 +122,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   search: FormControl = new FormControl('');
   searchHash: FormControl = new FormControl('');
-  filteredSearch: Observable<string[]>;
+  // filteredSearch: Observable<string[]>;
   searchForm = new FormGroup({
     search: this.search,
   });
@@ -135,11 +137,11 @@ export class AppComponent implements OnInit, OnDestroy {
     public postService: PostService,
     public dialog: MatDialog
   ) {
-    this.filteredSearch = this.search.valueChanges.pipe(
-      map((user: string | null) =>
-        user ? this._filter(user) : this.allUsers.slice()
-      )
-    );
+    // this.filteredSearch = this.search.valueChanges.pipe(
+    //   map((user: string | null) =>
+    //     user ? this._filter(user) : this.allUsers.slice()
+    //   )
+    // );
   }
 
   private _filter(value: string): string[] {
@@ -537,6 +539,41 @@ export class AppComponent implements OnInit, OnDestroy {
             console.log('search pg nah');
           }
         }
+      }
+    });
+    // on page change
+    // on login
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        //if skalar is interacting with the browser
+        // every 5min
+        setInterval(checkSkalarActivity, 300);
+        function checkSkalarActivity() {
+          // var timeOne = 0;
+          // const counter = 1;
+          const activeOnline = navigator.userActivation.isActive;
+          console.log('activeOnline', activeOnline);
+          console.log('activeStatus', this.activeStatus);
+          // this.activityStatus = true;
+          if (this.activityStatus !== activeOnline) {
+            // this.timeOne += this.counter;
+            // if skalar has a activity document
+            // should be created when loggedin account
+            this.authService.upDataActivity(this.userId, activeOnline);
+            this.activityStatus = activeOnline;
+            console.log('times around', this.activityStatus);
+          } else {
+            console.log('they match');
+            // this.timeOne += this.counter;
+            // change skalars activity in db
+            // authService.checkingActivity();
+          }
+
+          console.log('actively online', activeOnline);
+        }
+        // trigger one page change
+        const activeOnlinePageLoad = navigator.userActivation.hasBeenActive;
+        console.log('activity since page load', activeOnlinePageLoad);
       }
     });
 

@@ -16,6 +16,7 @@ interface SearchOption {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
+  devices = [];
   mains: Fav[] = [];
   campus: string;
   userId: string;
@@ -60,6 +61,51 @@ export class SearchComponent implements OnInit, OnDestroy {
       console.log('length? 2', favs.length);
       this.mains = favs;
     });
+    // if just logged in
+    // detecting connection such as bandwidth
+    const previousPageUrl = document.referrer;
+    if (
+      previousPageUrl === '' ||
+      previousPageUrl === 'https://www.skalarly.com/search' ||
+      previousPageUrl === 'https://www.skalarly.com/sign-up'
+    ) {
+      // location
+      const skalarLocation = navigator.geolocation
+      console.log('location', skalarLocation);
+      // type of device
+      const device = navigator.mediaDevices;
+      console.log('device', device);
+      // skalar online activity boolean
+      const online = navigator.onLine;
+      console.log('online', online);
+      // save skalar activity
+      this.authService.skalarActivity(skalarLocation, device, online, this.userId );
+
+      // check top 3 devices
+      this.authService.findsPreviousDevices(this.userId);
+      // the 3 top devices found and save array as devices
+      this.authService.getDeviceHistory().subscribe((devicesFound) => {
+        this.devices = devicesFound;
+      })
+      if(this.devices.includes(device)){
+        console.log('identified device');
+      }else{
+        console.log('unidentified device');
+        // send warning
+      }
+
+
+
+      // helps identify which browser 
+      // is being used, what version, and on which operating system
+      const userAgent = navigator.userAgent
+      console.log('userAgent', userAgent);
+
+      
+     
+    // tracking type of device so can warn skalar about suspicious log in
+    // https://userstack.com
+    // https://deviceatlas.com/products/web
   }
 
   ngOnDestroy(): any {
