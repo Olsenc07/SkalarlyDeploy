@@ -88,6 +88,7 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('url', document.URL);
     console.log('loading...?', new Date());
   }
 

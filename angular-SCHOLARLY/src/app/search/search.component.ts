@@ -16,7 +16,6 @@ interface SearchOption {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
-  devices = [];
   mains: Fav[] = [];
   campus: string;
   userId: string;
@@ -70,7 +69,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       previousPageUrl === 'https://www.skalarly.com/sign-up'
     ) {
       // location
-      const skalarLocation = navigator.geolocation
+      const skalarLocation = navigator.geolocation;
       console.log('location', skalarLocation);
       // type of device
       const device = navigator.mediaDevices;
@@ -79,35 +78,43 @@ export class SearchComponent implements OnInit, OnDestroy {
       const online = navigator.onLine;
       console.log('online', online);
       // save skalar activity
-      this.authService.skalarActivity(skalarLocation, device, online, this.userId );
+      this.authService.skalarActivity(
+        skalarLocation,
+        device,
+        online,
+        this.userId
+      );
 
-      // check top 3 devices
-      this.authService.findsPreviousDevices(this.userId);
-      // the 3 top devices found and save array as devices
-      this.authService.getDeviceHistory().subscribe((devicesFound) => {
-        this.devices = devicesFound;
-      })
-      if(this.devices.includes(device)){
-        console.log('identified device');
-      }else{
-        console.log('unidentified device');
-        // send warning
+      // check top 2 devices
+      if (
+        previousPageUrl === '' ||
+        previousPageUrl === 'https://www.skalarly.com/search'
+      ) {
+        this.authService.findsPreviousDevices(this.userId);
       }
+      // the 3 top devices found and save array as devices
+      // this.authService.getDeviceHistory().subscribe((devicesFound) => {
+      //   console.log('previous devices', devicesFound);
+      //   this.devices = devicesFound;
+      // })
+      // done on back end
+      // if(this.devices.includes(device)){
+      //   console.log('identified device');
+      // }else{
+      //   console.log('unidentified device');
+      //   // send warning
+      // }
 
-
-
-      // helps identify which browser 
+      // helps identify which browser
       // is being used, what version, and on which operating system
-      const userAgent = navigator.userAgent
+      const userAgent = navigator.userAgent;
       console.log('userAgent', userAgent);
 
-      
-     
-    // tracking type of device so can warn skalar about suspicious log in
-    // https://userstack.com
-    // https://deviceatlas.com/products/web
+      // tracking type of device so can warn skalar about suspicious log in
+      // https://userstack.com
+      // https://deviceatlas.com/products/web
+    }
   }
-
   ngOnDestroy(): any {
     this.authListenerSubs.unsubscribe();
     this.favsSub.unsubscribe();

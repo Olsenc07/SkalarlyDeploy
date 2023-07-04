@@ -8,12 +8,13 @@ import {
 } from '../signup/auth-data.model';
 import { Subject, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 // import { AppComponent } from '../app.component';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+  currentRoute: string;
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -27,7 +28,7 @@ export class AuthService {
 
   private authStatusListener = new ReplaySubject<boolean>();
   private activityStatusListener = new Subject<boolean>();
-  private devices = new Subject<Array<MediaDevices>>();
+  // private devices = new Subject();
 
   // basic info
   private infos: AuthDataInfo[] = [];
@@ -62,9 +63,9 @@ export class AuthService {
   private blocked = new Subject<string>();
 
   triggerReAuth = new Subject<any>();
-  getDeviceHistory(): any {
-    return this.devices.asObservable();
-  }
+  // getDeviceHistory(): any {
+  //   return this.devices.asObservable();
+  // }
   // check if email exists for login
   getEmail(): any {
     return this.emailUpdated.asObservable();
@@ -183,14 +184,14 @@ export class AuthService {
   // suspicious log ins!
   findsPreviousDevices(userId: string) {
     const sub = this.http
-      .get<{ message: string; payload: Array<MediaDevices> }>(
+      .get<{ message: string }>(
         'https://www.skalarly.com/api/user/deviceHistory',
         { params: { userId } }
       )
-      .pipe(map((data) => data.payload))
+      // .pipe(map((data) => data.message))
       .subscribe({
         next: (response) => {
-          this.devices.next(response);
+          // this.devices.next(response);
           sub.unsubscribe();
           console.log('rich and famous baby 1');
         },
@@ -2196,11 +2197,17 @@ export class AuthService {
   }
 
   logout(): any {
-    this.router.navigate(['/login']);
+    this.currentRoute = document.URL;
+    console.log('url', this.currentRoute);
+    if (this.currentRoute != 'https://www.skalarly.com/login') {
+      this.router.navigate(['/login']);
+    }
     this.token = null;
     this.isAuthenticated = false;
     this.authStatusListener.next(false);
     this.userId = null;
+    // change activity status to false
+
     // clearTimeout(this.tokenTimer);
     this.clearAuthData();
   }

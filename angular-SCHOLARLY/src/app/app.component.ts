@@ -25,6 +25,7 @@ import { formatDistance } from 'date-fns';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  logInScreen: boolean;
   users: UserNames[] = [];
   usersFinal = [];
   public hashs = [];
@@ -544,10 +545,30 @@ export class AppComponent implements OnInit, OnDestroy {
     // on page change
     // on login
     this.router.events.subscribe((event) => {
+      console.log('event sub?', event);
       if (event instanceof NavigationEnd) {
+        this.isHomeScreen$.subscribe((boolean) => {
+          this.logInScreen = boolean;
+        });
+        // measn they didnt log out but rather clicked back to login screen
+        // so log them out so cant just forward back online
+        if (this.logInScreen == true && this.userIsAuthenticated === true) {
+          this.authService.logout();
+          this.authService.upDataActivity(this.userId, false);
+          // then will clear interval once this router event is triggered again
+        }
+        console.log('event yo?', event);
         //if skalar is interacting with the browser
         // every 5min
-        setInterval(checkSkalarActivity, 300);
+
+        let activityInterval = setInterval(checkSkalarActivity, 300);
+        // skalar has logged off
+        if (this.userIsAuthenticated === false) {
+          clearInterval(activityInterval);
+          // so set activity to false
+          this.authService.upDataActivity(this.userId, false);
+        }
+
         function checkSkalarActivity() {
           // var timeOne = 0;
           // const counter = 1;
