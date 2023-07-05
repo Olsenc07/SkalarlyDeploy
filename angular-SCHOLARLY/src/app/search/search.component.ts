@@ -5,6 +5,7 @@ import { SearchListService } from '../services/search.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { PostsService, Fav } from '../services/posts.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface SearchOption {
   value: string;
@@ -16,6 +17,7 @@ interface SearchOption {
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
+  skalarLocation = [];
   mains: Fav[] = [];
   campus: string;
   userId: string;
@@ -30,7 +32,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private postsService: PostsService
+    private postsService: PostsService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): any {
@@ -69,8 +72,57 @@ export class SearchComponent implements OnInit, OnDestroy {
       previousPageUrl === 'https://www.skalarly.com/sign-up'
     ) {
       // location
-      const skalarLocation = navigator.geolocation;
-      console.log('location', skalarLocation);
+      const successCallback = (position) => {
+        console.log(position);
+        console.log(position.GeoLocationCoordinates.longitude);
+        console.log(position.GeoLocationCoordinates.latitude);
+        this.skalarLocation.push(
+          position.GeoLocationCoordinates.longitude,
+          position.GeoLocationCoordinates.latitude
+        );
+        console.log('push it', this.skalarLocation);
+      };
+
+      const errorCallback = (error) => {
+        console.log(error);
+      };
+      // Show user's position on a map
+      // Get up-to-date local information
+      // Show local Points-of-interest (POI) near the user
+      // Enable Turn-by-turn navigation (GPS)
+      // Track a fleet or delivery vehicle
+      // Tag photographs with a location
+      navigator.permissions
+        .query({ name: 'geolocation' })
+        .then((permissionStatus) => {
+          console.log(
+            `geolocation permission state is ${permissionStatus.state}`
+          );
+          this.snackBar.open(
+            'Location access allow us to better track suspicious login attempts ',
+            '📍',
+            {
+              duration: 5000,
+            }
+          );
+          if (permissionStatus.state !== 'granted') {
+            navigator.geolocation.getCurrentPosition(
+              successCallback,
+              errorCallback
+            );
+          }
+          permissionStatus.onchange = () => {
+            console.log(
+              `geolocation permission status has changed to ${permissionStatus.state}`
+            );
+          };
+        });
+
+      console.log('location', successCallback);
+      // track position
+      // const id = navigator.geolocation.watchPosition(successCallback, errorCallback);
+      // stop tracking
+      // navigator.geolocation.clearWatch(id);
       // type of device
       const device = navigator.mediaDevices;
       console.log('device', device);
@@ -79,7 +131,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       console.log('online', online);
       // save skalar activity
       this.authService.skalarActivity(
-        skalarLocation,
+        this.skalarLocation,
         device,
         online,
         this.userId

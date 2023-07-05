@@ -126,7 +126,7 @@ export class AuthService {
 
   // triggered on account creation and each login
   skalarActivity(
-    location: Geolocation,
+    location: Array<Number>,
     deviceType: MediaDevices,
     online: boolean,
     userId: string

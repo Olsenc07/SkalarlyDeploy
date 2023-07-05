@@ -2752,7 +2752,8 @@ router.post("/skalarActivity", async(req, res) => {
     console.log('userId', req.body.userId);
     // console.log('activeOnline', req.body.activeOnline);
     var activity = new Activity({
-location: req.body.location,
+location: {"type": "Point",
+"coordinates": [req.body.location]},
 deviceType: req.body.deviceType,
 online: req.body.online,
 activeOnline: true,
