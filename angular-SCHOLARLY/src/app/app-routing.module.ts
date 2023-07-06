@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
@@ -74,132 +74,152 @@ const routes: Routes = [
   {
     path: 'post-page/:userId',
     component: PostPageComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [inject(AuthGuard).canActivate()],
+  },
   {
     path: 'skalars/:id',
     component: UserProfileComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   { path: 'retrieve-password', component: RetrievePasswordComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'alum', component: AlumTransferComponent },
 
-  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
-  { path: 'recent', component: RecentComponent, canActivate: [AuthGuard] },
+  {
+    path: 'search',
+    component: SearchComponent,
+    canActivate: [inject(AuthGuard).canActivate()],
+  },
+  {
+    path: 'recent',
+    component: RecentComponent,
+    canActivate: [inject(AuthGuard).canActivate()],
+  },
   {
     path: 'friends',
     component: LargeFriendsFeedComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'newSkalars',
     component: LargeNewSkalarsFeedComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'hashtag/:hashtag',
     component: HashtagComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
-  { path: 'trending', component: TrendingComponent, canActivate: [AuthGuard] },
+  {
+    path: 'trending',
+    component: TrendingComponent,
+    canActivate: [inject(AuthGuard).canActivate()],
+  },
   {
     path: 'filterSkalars',
     component: SkalarsComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
 
   {
     path: 'edit-profile/:userId',
     component: EditProfileComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp/:userId',
     component: EditProfileComp1Component,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileCompW/:userId',
     component: EditProfileComp1WComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp2/:userId',
     component: EditProfileComp2Component,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp2W/:userId',
     component: EditProfileComp2WComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp3/:userId',
     component: EditProfileComp3Component,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp3W/:userId',
     component: EditProfileComp3WComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp4/:userId',
     component: EditProfileComp4Component,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp4W/:userId',
     component: EditProfileComp4WComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profilePur/:userId',
     component: EditProfilePurComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profilePurW/:userId',
     component: EditProfilePurWComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profilePurSu/:userId',
     component: EditProfilePurSummerComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profilePurSp/:userId',
     component: EditProfilePurSpringComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profilePur/:userId',
     component: EditProfilePurComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'friends-activity',
     component: FriendsActivityComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'activity-history',
     component: ActivityHistoryComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
-  { path: 'groups', component: GroupChatsComponent, canActivate: [AuthGuard] },
+  {
+    path: 'groups',
+    component: GroupChatsComponent,
+    canActivate: [inject(AuthGuard).canActivate()],
+  },
   {
     path: 'main/:category',
     component: MainPagesComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   {
     path: 'instructor-review/:category',
     component: InstructorReviewComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
 
   { path: 'single/:postId', component: SinglePageComponent },
@@ -207,7 +227,7 @@ const routes: Routes = [
   {
     path: 'messages/:username',
     component: MessagingComponent,
-    canActivate: [AuthGuard],
+    canActivate: [inject(AuthGuard).canActivate()],
   },
   // Directs to search page if user is logged in.
   // Directs to log in page if user isn't logged in.

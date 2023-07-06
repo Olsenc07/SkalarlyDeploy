@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
-  CanActivate,
   Router,
   RouterStateSnapshot,
   UrlTree,
@@ -11,21 +10,21 @@ import { AuthService } from '../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AuthGuard {
   constructor(
     private authService: AuthService,
     private router: Router,
     private snackBar: MatSnackBar
   ) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | boolean
+  canActivate(): // route: ActivatedRouteSnapshot,
+  // state: RouterStateSnapshot
+
+  | boolean
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
+    console.log('we getting protection?');
     const isAuth = this.authService.getIsAuth();
     if (!isAuth) {
       this.router.navigate(['/login']);
