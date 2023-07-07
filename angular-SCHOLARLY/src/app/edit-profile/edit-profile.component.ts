@@ -584,6 +584,12 @@ export class EditProfileComponent implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComp1Component implements OnInit, OnDestroy {
+  constructor(
+    private snackBar: MatSnackBar,
+    public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesC = {};
   classes: string[] = [];
@@ -601,12 +607,6 @@ export class EditProfileComp1Component implements OnInit, OnDestroy {
   CodeCompleted4: FormControl = new FormControl('');
   CodeCompleted5: FormControl = new FormControl('');
 
-  constructor(
-    private snackBar: MatSnackBar,
-    public authService: AuthService,
-    public authServiceEditCourse: AuthServiceEditCourse,
-    public classListService: ClassListService
-  ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoProfileCoursesC(this.userId);
@@ -908,6 +908,12 @@ export class EditProfileComp1WComponent implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComp2Component implements OnInit, OnDestroy {
+  constructor(
+    private snackBar: MatSnackBar,
+    public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
@@ -923,12 +929,6 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
   CodeCompleted14: FormControl = new FormControl('');
   CodeCompleted15: FormControl = new FormControl('');
 
-  constructor(
-    private snackBar: MatSnackBar,
-    public authService: AuthService,
-    public authServiceEditCourse: AuthServiceEditCourse,
-    public classListService: ClassListService
-  ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoProfileCoursesC(this.userId);
@@ -1074,6 +1074,12 @@ export class EditProfileComp2Component implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComp2WComponent implements OnInit, OnDestroy {
+  constructor(
+    private snackBar: MatSnackBar,
+    public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
@@ -1089,12 +1095,7 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   CodeCompleted18: FormControl = new FormControl('');
   CodeCompleted19: FormControl = new FormControl('');
   CodeCompleted20: FormControl = new FormControl('');
-  constructor(
-    private snackBar: MatSnackBar,
-    public authService: AuthService,
-    public authServiceEditCourse: AuthServiceEditCourse,
-    public classListService: ClassListService
-  ) {}
+
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoProfileCoursesC(this.userId);
@@ -1239,6 +1240,12 @@ export class EditProfileComp2WComponent implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComp3Component implements OnInit, OnDestroy {
+  constructor(
+    private snackBar: MatSnackBar,
+    public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
@@ -1254,12 +1261,6 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
   CodeCompleted24: FormControl = new FormControl('');
   CodeCompleted25: FormControl = new FormControl('');
 
-  constructor(
-    private snackBar: MatSnackBar,
-    public authService: AuthService,
-    public authServiceEditCourse: AuthServiceEditCourse,
-    public classListService: ClassListService
-  ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoProfileCoursesC(this.userId);
@@ -1403,6 +1404,12 @@ export class EditProfileComp3Component implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComp3WComponent implements OnInit, OnDestroy {
+  constructor(
+    private snackBar: MatSnackBar,
+    public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
@@ -1418,12 +1425,7 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   CodeCompleted28: FormControl = new FormControl('');
   CodeCompleted29: FormControl = new FormControl('');
   CodeCompleted30: FormControl = new FormControl('');
-  constructor(
-    private snackBar: MatSnackBar,
-    public authService: AuthService,
-    public authServiceEditCourse: AuthServiceEditCourse,
-    public classListService: ClassListService
-  ) {}
+
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoProfileCoursesC(this.userId);
@@ -1569,6 +1571,12 @@ export class EditProfileComp3WComponent implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComp4Component implements OnInit, OnDestroy {
+  constructor(
+    private snackBar: MatSnackBar,
+    public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
@@ -1584,12 +1592,6 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
   CodeCompleted34: FormControl = new FormControl('');
   CodeCompleted35: FormControl = new FormControl('');
 
-  constructor(
-    private snackBar: MatSnackBar,
-    public authService: AuthService,
-    public authServiceEditCourse: AuthServiceEditCourse,
-    public classListService: ClassListService
-  ) {}
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoProfileCoursesC(this.userId);
@@ -1732,6 +1734,12 @@ export class EditProfileComp4Component implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfileComp4WComponent implements OnInit, OnDestroy {
+  constructor(
+    private snackBar: MatSnackBar,
+    public authService: AuthService,
+    public authServiceEditCourse: AuthServiceEditCourse,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesC = {};
   filteredCodes: Observable<string[]>;
@@ -1747,12 +1755,7 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   CodeCompleted39: FormControl = new FormControl('');
   CodeCompleted40: FormControl = new FormControl('');
   CodeCompletedX: FormControl = new FormControl('');
-  constructor(
-    private snackBar: MatSnackBar,
-    public authService: AuthService,
-    public authServiceEditCourse: AuthServiceEditCourse,
-    public classListService: ClassListService
-  ) {}
+
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
     this.authService.getInfoProfileCoursesC(this.userId);
@@ -1915,6 +1918,12 @@ export class EditProfileComp4WComponent implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfilePurWComponent implements OnInit, OnDestroy {
+  constructor(
+    public authService: AuthService,
+    public authServiceEditNext: AuthServiceEditNext,
+    private snackBar: MatSnackBar,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesP = {};
   classesP: string[] = [];
@@ -1930,13 +1939,6 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
   CodePursuing8: FormControl = new FormControl('');
   CodePursuing9: FormControl = new FormControl('');
   CodePursuing10: FormControl = new FormControl('');
-
-  constructor(
-    public authService: AuthService,
-    public authServiceEditNext: AuthServiceEditNext,
-    private snackBar: MatSnackBar,
-    public classListService: ClassListService
-  ) {}
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -2095,6 +2097,12 @@ export class EditProfilePurWComponent implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
+  constructor(
+    public authService: AuthService,
+    public authServiceEditNext: AuthServiceEditNext,
+    private snackBar: MatSnackBar,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesP = {};
   classesP: string[] = [];
@@ -2107,12 +2115,6 @@ export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
   public CodePursuing11Length = new BehaviorSubject(0);
   CodePursuing11: FormControl = new FormControl('');
   CodePursuing12: FormControl = new FormControl('');
-  constructor(
-    public authService: AuthService,
-    public authServiceEditNext: AuthServiceEditNext,
-    private snackBar: MatSnackBar,
-    public classListService: ClassListService
-  ) {}
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -2201,6 +2203,12 @@ export class EditProfilePurSpringComponent implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
+  constructor(
+    public authService: AuthService,
+    public authServiceEditNext: AuthServiceEditNext,
+    private snackBar: MatSnackBar,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesP = {};
   classesP: string[] = [];
@@ -2213,12 +2221,6 @@ export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
   public CodePursuing13Length = new BehaviorSubject(0);
   CodePursuing13: FormControl = new FormControl('');
   CodePursuing14: FormControl = new FormControl('');
-  constructor(
-    public authService: AuthService,
-    public authServiceEditNext: AuthServiceEditNext,
-    private snackBar: MatSnackBar,
-    public classListService: ClassListService
-  ) {}
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
@@ -2308,6 +2310,12 @@ export class EditProfilePurSummerComponent implements OnInit, OnDestroy {
   styleUrls: ['./edit-profile.component.scss'],
 })
 export class EditProfilePurComponent implements OnInit, OnDestroy {
+  constructor(
+    public authService: AuthService,
+    public authServiceEditNext: AuthServiceEditNext,
+    private snackBar: MatSnackBar,
+    public classListService: ClassListService
+  ) {}
   userId: string;
   info: AuthDataInfoCoursesP = {};
   classesP: string[] = [];
@@ -2323,12 +2331,6 @@ export class EditProfilePurComponent implements OnInit, OnDestroy {
   CodePursuing3: FormControl = new FormControl('');
   CodePursuing4: FormControl = new FormControl('');
   CodePursuing5: FormControl = new FormControl('');
-  constructor(
-    public authService: AuthService,
-    public authServiceEditNext: AuthServiceEditNext,
-    private snackBar: MatSnackBar,
-    public classListService: ClassListService
-  ) {}
 
   ngOnInit(): any {
     this.userId = this.authService.getUserId();
