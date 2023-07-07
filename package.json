@@ -4,7 +4,7 @@
   "description": "connection",
   "engines": {
     "node": "20.2.0",
-    "npm": "9.7.1"
+    "npm": "9.8.0"
   },
   "main": "/app/backend/server.js",
   "scripts": {

@@ -15,15 +15,6 @@ self.addEventListener('install', event => {
   // fetch cached content or any requests
   self.addEventListener('fetch', event => {
     console.log("Service Worker fetching.", event);
-    // event.respondWith(fetch(event.request))
-    // .then(
-    //   (result) => {
-    //     console.log(result);
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // )
   });
 
 
