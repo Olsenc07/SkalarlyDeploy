@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormControl,
   Validators,
@@ -7,7 +7,14 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
-
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  // ...
+} from '@angular/animations';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -193,5 +200,33 @@ export class HomePageComponent implements OnInit {
   selector: 'app-explained-page',
   templateUrl: './skalarly-explained.component.html',
   styleUrls: ['./home-page.component.scss'],
+  animations: [
+    trigger('openClose', [
+      // fade dialog in and out
+      state(
+        'open',
+        style({
+          height: '50%',
+          opacity: 1,
+        })
+      ),
+      state(
+        'closed',
+        style({
+          height: '0',
+          opacity: 0.5,
+        })
+      ),
+      transition('open => closed', [animate('1s')]),
+      transition('closed => open', [animate('1s')]),
+    ]),
+  ],
 })
-export class ExplainedComponent {}
+export class ExplainedComponent implements OnDestroy {
+  isOpen = true;
+
+  ngOnDestroy(): void {
+    console.log('closing page');
+    this.isOpen = !this.isOpen;
+  }
+}
