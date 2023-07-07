@@ -125,16 +125,11 @@ export class AuthService {
   }
 
   // triggered on account creation and each login
-  skalarActivity(
-    location: Array<Number>,
-    deviceType: MediaDevices,
-    online: boolean,
-    userId: string
-  ) {
+  skalarActivity(location: Array<Number>, online: boolean, userId: string) {
     const sub = this.http
       .post<{ message: string; result: any }>(
         'https://www.skalarly.com/api/user/skalarActivity',
-        { location, deviceType, online, userId }
+        { location, online, userId }
       )
       .subscribe({
         next: () => {

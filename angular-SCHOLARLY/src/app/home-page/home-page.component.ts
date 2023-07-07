@@ -16,6 +16,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class HomePageComponent implements OnInit {
   // patternCheck: boolean;
   emailMatches = false;
+  // add <type> and '' is its initialization
+  // { updateOn: 'blur' }
   email: FormControl = new FormControl('', [this.noWhiteSpace, this.pattern]);
   password: FormControl = new FormControl('', Validators.minLength(8));
   stayLoggedIn: boolean = false;

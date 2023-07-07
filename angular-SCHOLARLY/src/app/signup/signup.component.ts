@@ -429,6 +429,11 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.club.setValue(msg);
     });
   }
+  // access camera for profile picuture
+  // accessCamera(): any {
+  //   // ask for permission to access camera
+  //   const camera = navigator.mediaDevices.getUserMedia();
+  // }
 
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;

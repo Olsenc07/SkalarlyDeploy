@@ -123,19 +123,12 @@ export class SearchComponent implements OnInit, OnDestroy {
       // const id = navigator.geolocation.watchPosition(successCallback, errorCallback);
       // stop tracking
       // navigator.geolocation.clearWatch(id);
-      // type of device
-      const device = navigator.mediaDevices;
-      console.log('device', device);
+
       // skalar online activity boolean
       const online = navigator.onLine;
       console.log('online', online);
       // save skalar activity
-      this.authService.skalarActivity(
-        this.skalarLocation,
-        device,
-        online,
-        this.userId
-      );
+      this.authService.skalarActivity(this.skalarLocation, online, this.userId);
 
       // check top 2 devices
       if (

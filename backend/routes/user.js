@@ -2747,14 +2747,12 @@ router.get("/infoPersonal", async(req, res) => {
 // skalar Activity
 router.post("/skalarActivity", async(req, res) => {
     console.log('location', req.body.location);
-    console.log('deviceType', req.body.deviceType);
     console.log('online', req.body.online);
     console.log('userId', req.body.userId);
     // console.log('activeOnline', req.body.activeOnline);
     var activity = new Activity({
 location: {"type": "Point",
 "coordinates": [req.body.location]},
-deviceType: req.body.deviceType,
 online: req.body.online,
 activeOnline: true,
 time: new Date(),

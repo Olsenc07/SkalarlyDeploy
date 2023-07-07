@@ -12,7 +12,7 @@ const ActivitySchema = mongoose.Schema({
           required: true
         }
       },
-    deviceType: { type: MediaDevices},
+    // deviceType: { type: MediaDevices},
     online: { type: Boolean},
     activeOnline: { type: Boolean},
     time: { type: Date},
