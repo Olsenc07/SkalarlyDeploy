@@ -14,7 +14,7 @@ self.addEventListener('install', event => {
 
   // fetch cached content or any requests
   self.addEventListener('fetch', event => {
-    console.log("Service Worker fetching.", event);
+    console.log("Service Worker fetching. Sand Cat", event);
   });
 
 
