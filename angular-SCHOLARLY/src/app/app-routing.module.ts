@@ -74,17 +74,17 @@ const routes: Routes = [
   {
     path: 'post-page/:userId',
     component: PostPageComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'skalars/:id',
     component: UserProfileComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   { path: 'retrieve-password', component: RetrievePasswordComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
@@ -93,53 +93,53 @@ const routes: Routes = [
   {
     path: 'search',
     component: SearchComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'recent',
     component: RecentComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'friends',
     component: LargeFriendsFeedComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'newSkalars',
     component: LargeNewSkalarsFeedComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'hashtag/:hashtag',
     component: HashtagComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'trending',
     component: TrendingComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'filterSkalars',
     component: SkalarsComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
 
   {
     path: 'edit-profile/:userId',
     component: EditProfileComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp/:userId',
     component: EditProfileComp1Component,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileCompW/:userId',
     component: EditProfileComp1WComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp2/:userId',
@@ -149,77 +149,77 @@ const routes: Routes = [
   {
     path: 'edit-profileComp2W/:userId',
     component: EditProfileComp2WComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp3/:userId',
     component: EditProfileComp3Component,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp3W/:userId',
     component: EditProfileComp3WComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp4/:userId',
     component: EditProfileComp4Component,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp4W/:userId',
     component: EditProfileComp4WComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profilePur/:userId',
     component: EditProfilePurComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profilePurW/:userId',
     component: EditProfilePurWComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profilePurSu/:userId',
     component: EditProfilePurSummerComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profilePurSp/:userId',
     component: EditProfilePurSpringComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profilePur/:userId',
     component: EditProfilePurComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'friends-activity',
     component: FriendsActivityComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'activity-history',
     component: ActivityHistoryComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'groups',
     component: GroupChatsComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'main/:category',
     component: MainPagesComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'instructor-review/:category',
     component: InstructorReviewComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
 
   { path: 'single/:postId', component: SinglePageComponent },
@@ -227,7 +227,7 @@ const routes: Routes = [
   {
     path: 'messages/:username',
     component: MessagingComponent,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   // Directs to search page if user is logged in.
   // Directs to log in page if user isn't logged in.
