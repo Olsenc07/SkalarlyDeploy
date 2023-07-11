@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppRoutingModule } from '../app-routing.module';
 
 @Injectable({
-  providedIn: AppRoutingModule,
+  providedIn: 'root',
 })
 export class AuthGuard {
   constructor(
