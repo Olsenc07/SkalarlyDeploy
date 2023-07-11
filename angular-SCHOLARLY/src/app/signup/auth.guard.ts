@@ -8,8 +8,11 @@ import {
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AppRoutingModule } from '../app-routing.module';
 
-@Injectable()
+@Injectable({
+  providedIn: AppRoutingModule,
+})
 export class AuthGuard {
   constructor(
     private authService: AuthService,

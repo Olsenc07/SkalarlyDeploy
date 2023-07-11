@@ -240,4 +240,6 @@ const routes: Routes = [
   bootstrap: [AppComponent],
   providers: [AuthGuard],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  // constructor(private injection: inject) {}
+}
