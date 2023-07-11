@@ -235,11 +235,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  providers: [AuthGuard],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   bootstrap: [AppComponent],
-  providers: [AuthGuard],
 })
-export class AppRoutingModule {
-  // constructor(private injection: inject) {}
-}
+export class AppRoutingModule {}
