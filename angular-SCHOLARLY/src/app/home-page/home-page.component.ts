@@ -208,6 +208,7 @@ export class HomePageComponent implements OnInit {
         style({
           height: '50%',
           opacity: 1,
+          display: 'contents',
         })
       ),
       state(

@@ -153,11 +153,12 @@ dialog::backdrop {
   color: grey;
 }
 .popUpBox{
-  display: flex;
+  // display: flex;
+  background: #fafafa;
   flex-direction: column;
   justify-content: center;
   // background-color: #f2f2f2;
-  background-image: linear-gradient(15deg,#0000ff2e,whitesmoke);
+  // background-image: linear-gradient(15deg,#0000ff2e,whitesmoke);
 }
 .Skalarly{
   font-family: 'Cormorant Garamond', serif;
@@ -438,14 +439,7 @@ animation: 2s fadeIn;
   font-family: 'Cormorant Garamond', serif;
 }
 
-// modal fade in
-.modal.fade .modal-dialog {
-  transform: translate3d(0, 100%, 0);
-}
 
-.modal.in .modal-dialog {
-  transform: translate3d(0, 0, 0);
-}
 // Birthday
 // $particles: 50;
 // $width: 500;
