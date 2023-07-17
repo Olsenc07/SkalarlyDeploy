@@ -144,7 +144,7 @@ const routes: Routes = [
   {
     path: 'edit-profileComp2/:userId',
     component: EditProfileComp2Component,
-    canActivate: [inject(AuthGuard).canActivate()],
+    canActivate: [() => inject(AuthGuard).canActivate()],
   },
   {
     path: 'edit-profileComp2W/:userId',
@@ -240,4 +240,8 @@ const routes: Routes = [
   exports: [RouterModule],
   bootstrap: [AppComponent],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  constructor() {
+    AuthGuard;
+  }
+}
