@@ -275,7 +275,7 @@ export class ForgotPasswordComponent {
   templateUrl: './alumni-transfer.component.html',
   styleUrls: ['./retrieve-password.component.scss'],
   animations: [
-    trigger('levelup', [
+    trigger('staggerAnimation', [
       // display icons left to right fade in
       query(
         'i',
@@ -287,7 +287,6 @@ export class ForgotPasswordComponent {
   ],
 })
 export class AlumTransferComponent {
-  levelup = true;
   emailMatches = false;
   email: FormControl = new FormControl('', Validators.email);
   emailForm = new FormGroup({

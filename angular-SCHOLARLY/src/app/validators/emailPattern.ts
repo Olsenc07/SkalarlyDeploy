@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
-export function pattern(control: AbstractControl): boolean | null {
+export function pattern(control: AbstractControl): ValidationErrors | null {
   // console.log('type', this.patternCheck);
   const emailChazz = control.value as string;
 
@@ -39,7 +39,7 @@ export function pattern(control: AbstractControl): boolean | null {
     return null;
   } else {
     // this.patternCheck = true;
-    return true;
+    return { pattern: true };
   }
 }
 export function noWhiteSpace(

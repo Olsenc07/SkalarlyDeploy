@@ -28,17 +28,21 @@ export class HomePageComponent implements OnInit {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
   // patternCheck: boolean;
   emailMatches = false;
-  patternPass: boolean;
+  patternPass: ValidationErrors;
   // add <type> and '' is its initialization
   // { updateOn: 'blur' }
-  private whiteSpaceCheck = (control: AbstractControl) => {
+  private whiteSpaceCheck = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
     return noWhiteSpace(control.value);
   };
-  private doesEmailExistCheck = (control: AbstractControl) => {
+  private doesEmailExistCheck = (
+    control: AbstractControl
+  ): ValidationErrors | null => {
     return this.doesEmailExist(control.value);
   };
 
-  email: FormControl = new FormControl([
+  email: FormControl = new FormControl('', [
     this.whiteSpaceCheck,
     this.doesEmailExistCheck,
   ]);
@@ -46,13 +50,6 @@ export class HomePageComponent implements OnInit {
   stayLoggedIn: boolean = false;
   isLoading = false;
   visible = true;
-
-  public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
-    if ((control.value as string).indexOf(' ') >= 0) {
-      return { noWhiteSpace: true };
-    }
-    return null;
-  }
 
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
@@ -81,7 +78,7 @@ export class HomePageComponent implements OnInit {
     this.email.setValue('');
   }
 
-  doesEmailExist(event: any): boolean {
+  doesEmailExist(event: any): any {
     console.log('will hunting ');
     const query: string = event.target.value;
     this.patternPass = pattern(event.target.value);
@@ -202,7 +199,6 @@ export class HomePageComponent implements OnInit {
 })
 export class ExplainedComponent {
   isOpen = true;
-  start = true;
   onClose() {
     console.log('closing page');
     this.isOpen = !this.isOpen;
