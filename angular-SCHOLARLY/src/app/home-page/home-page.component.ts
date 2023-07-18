@@ -13,6 +13,8 @@ import {
   style,
   animate,
   transition,
+  query,
+  stagger,
   // ...
 } from '@angular/animations';
 import { EmailPatternService } from '../services/emailPattern.service';
@@ -177,14 +179,22 @@ export class HomePageComponent implements OnInit {
           opacity: 0.5,
         })
       ),
-      transition('open => closed', [animate('1s')]),
-      transition('closed => open', [animate('1s')]),
+      transition('open <=> closed', [animate('1s')]),
+    ]),
+    trigger('fadeUp', [
+      // fade bullet points in one by one
+      query(
+        'li',
+        stagger(100, [
+          animate(1000, style({ transform: 'translateY(100%)', opacity: 1 })),
+        ])
+      ),
     ]),
   ],
 })
 export class ExplainedComponent {
   isOpen = true;
-
+  start = true;
   onClose() {
     console.log('closing page');
     this.isOpen = !this.isOpen;

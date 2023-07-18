@@ -11,7 +11,14 @@ import { AuthService } from '../services/auth.service';
 import { Location } from '@angular/common';
 import { PostsService } from '../services/posts.service';
 import { EmailPatternService } from '../services/emailPattern.service';
-
+import {
+  trigger,
+  transition,
+  style,
+  animate,
+  query,
+  stagger,
+} from '@angular/animations';
 @Component({
   selector: 'app-retrieve-password',
   templateUrl: './retrieve-password.component.html',
@@ -276,10 +283,21 @@ export class ForgotPasswordComponent {
   selector: 'app-alumni-transfer',
   templateUrl: './alumni-transfer.component.html',
   styleUrls: ['./retrieve-password.component.scss'],
+  animations: [
+    trigger('levelup', [
+      // display icons left to right fade in
+      query(
+        'i',
+        stagger(100, [
+          animate(1000, style({ transform: 'translateX(100%)', opacity: 1 })),
+        ])
+      ),
+    ]),
+  ],
 })
 export class AlumTransferComponent {
+  levelup = true;
   emailMatches = false;
-
   email: FormControl = new FormControl('', Validators.email);
   emailForm = new FormGroup({
     email: this.email,
