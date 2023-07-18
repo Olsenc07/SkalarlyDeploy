@@ -1,6 +1,6 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
-export function pattern(control: AbstractControl): ValidationErrors | null {
+export function pattern(control: AbstractControl) {
   // console.log('type', this.patternCheck);
   const emailChazz = control.value as string;
 
@@ -45,6 +45,7 @@ export function pattern(control: AbstractControl): ValidationErrors | null {
 export function noWhiteSpace(
   control: AbstractControl
 ): ValidationErrors | null {
+  console.log('eminem', control.value);
   if ((control.value as string).indexOf(' ') >= 0) {
     return { noWhiteSpace: true };
   }

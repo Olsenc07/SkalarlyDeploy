@@ -34,11 +34,13 @@ export class HomePageComponent implements OnInit {
   private whiteSpaceCheck = (
     control: AbstractControl
   ): ValidationErrors | null => {
+    console.log('key inspirations', control.value);
     return noWhiteSpace(control.value);
   };
   private doesEmailExistCheck = (
     control: AbstractControl
   ): ValidationErrors | null => {
+    console.log('key inspirations 2', control.value);
     return this.doesEmailExist(control.value);
   };
 
