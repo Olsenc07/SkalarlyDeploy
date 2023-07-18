@@ -1,5 +1,5 @@
 <!-- <mat-tab-group> -->
-  
+<!DOCTYPE html>
     <div class="entire-page">
         <!-- logo -->
         <!-- <mat-tab label="Password"> -->
@@ -15,17 +15,15 @@
       
           <!-- Text -->
           <div class="plain-text">
-            <!-- <i class="fas fa-sync"></i> -->
-            <div class="text">
-                To continue in having access to your account.
-                 We will send you an email where you can follow the steps to change your email
-                 to your newly assigned admin email extension. This will ensure your account doesn't get deleted
-                 when your email is given to a new student. As well as making sure Skalarly sends messages to
-                 the correct email when resetting your password.
-            </div>
-            <!-- <div class="deletetext">
-            Reset Password 
-          </div> -->
+            <h3 class="text">
+             Congragulations on graduating 
+             <tr>
+              <!-- animate fade in left to right -->
+              <i class="fa-solid fa-chalkboard-user"></i>
+              <i class="fa-solid fa-arrow-right"></i>
+              <i class="fa-solid fa-user-graduate"></i>
+             </tr>
+            </h3>
           </div>
         </div>
           <!-- Email input -->
@@ -36,7 +34,8 @@
                 <i matSuffix class="fas fa-user"></i>
                   Academic Email</mat-label>
                 <!-- pattern=".+@mail.utoronto\.ca" -->
-                <input matInput type="email"  placeholder="Academic email" [formControl]="email" required />
+                <input matInput type="email"
+                (keyup)="doesEmailExist($event)"  placeholder="Academic email" [formControl]="email" required />
                 <!-- <mat-error >Only U Of T emails are valid</mat-error> -->
                 <mat-error *ngIf="(emailMatches == false)">Email not found</mat-error>
   
@@ -58,5 +57,23 @@
       
           </div>
           </form>
+          <div class="resetTitle">
+      
+            <!-- Text -->
+            <div class="plain-text">
+              <div class="text">
+                <mat-card>
+                <mat-card-content>
+                  To continue in having access to your account.
+                   We will send you an email where you can follow the steps to change your email
+                   to your newly assigned alumni email extension. This will ensure your account doesn't get deleted
+                   when your email is given to a new student. As well as making sure Skalarly sends messages to
+                   the correct email when resetting your password.
+                   </mat-card-content>
+                   </mat-card>
+              </div>
+            </div>
+          </div>
+
           </div>
           </div>

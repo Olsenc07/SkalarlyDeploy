@@ -172,6 +172,7 @@ import { ShowCaseService } from './services/showCase.service';
 
 import { AuthInterceptor } from './signup/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
+import { EmailPatternService } from './services/emailPattern.service';
 
 @NgModule({
   declarations: [
@@ -311,6 +312,7 @@ import { ErrorInterceptor } from './error-interceptor';
     MessageService,
     MessageNotificationService,
     ShowCaseService,
+    EmailPatternService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],

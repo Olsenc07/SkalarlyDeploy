@@ -240,8 +240,4 @@ const routes: Routes = [
   exports: [RouterModule],
   bootstrap: [AppComponent],
 })
-export class AppRoutingModule {
-  // constructor() {
-  //   AuthGuard;
-  // }
-}
+export class AppRoutingModule {}

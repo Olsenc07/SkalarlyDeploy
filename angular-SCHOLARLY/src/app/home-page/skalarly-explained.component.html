@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <div class="popUpBox" [@openClose]="isOpen ? 'open' : 'closed'">
-<h3 class="titlePopUp">
+<!-- <h3 class="titlePopUp">
 Skalarly
-</h3>
+</h3> -->
 <mat-card-subtitle class="titlePopUp">
     Get to know us and our values
 </mat-card-subtitle>
@@ -16,13 +16,13 @@ Skalarly
 <mat-card class="bodyPopUp">
 <mat-card-content>
     Skalarly is designed to unite Canadian University students by creating a playform
-    that is specialized for their University. Enhance your University and share academic information and events 
-    at your school and all across
-    Canada.
+    that is specialized for their University. Enhance your University experience and share academic information and events 
+    at your school and all across Canada.
+    <mat-dialog-actions  >
+        <button mat-raised-button mat-dialog-close (click)="onClose()" class="actionBtn" >Now you know</button>
+        </mat-dialog-actions>
 </mat-card-content>
 </mat-card>
-<mat-dialog-actions  class="actionBtn">
-<button mat-raised-button mat-dialog-close >Now you know</button>
-</mat-dialog-actions>
+
 </div>
 </div>

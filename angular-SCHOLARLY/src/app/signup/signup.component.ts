@@ -28,6 +28,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { createPopup } from '@picmo/popup-picker';
+import { EmailPatternService } from '../services/emailPattern.service';
 
 export const MY_FORMATS = {
   parse: {
@@ -63,6 +64,7 @@ export class SignupComponent implements OnInit, OnDestroy {
     public classListService: ClassListService,
     public authService: AuthService,
     public showCaseService: ShowCaseService,
+    public emailPatternService: EmailPatternService,
     private snackBar: MatSnackBar // public courses: Courses
   ) {}
   startDate = new Date(1997, 0, 1);
@@ -75,7 +77,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   selectable = true;
   removable = true;
   userNameMatches = false;
-  noEmailMatches = false;
+  EmailMatches: Boolean;
   useDefaultPic: boolean = false;
   showPreview: boolean = false;
   // classes: string[] = [];
@@ -129,17 +131,21 @@ export class SignupComponent implements OnInit, OnDestroy {
   showCasePreview: any = '';
   // pat = /\w/;
   // pat2 = /^[a-zA-Z0-9]*/;
-  EmailMatches = [];
-  patternCheck: boolean;
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [
     // Validators.pattern(this.pat),
     // Validators.pattern(this.pat2),
-    this.noWhiteSpace,
+    this.emailPatternService.noWhiteSpace,
     this.noSpecialCharacters,
   ]);
-  password: FormControl = new FormControl('', this.noWhiteSpace);
-  passwordV: FormControl = new FormControl('', this.noWhiteSpace);
+  password: FormControl = new FormControl(
+    '',
+    this.emailPatternService.noWhiteSpace
+  );
+  passwordV: FormControl = new FormControl(
+    '',
+    this.emailPatternService.noWhiteSpace
+  );
   public CodeCompletedLength = new BehaviorSubject(0);
   public CodePursuingLength = new BehaviorSubject(0);
   major: FormControl = new FormControl('');
@@ -163,12 +169,12 @@ export class SignupComponent implements OnInit, OnDestroy {
   // ),
   email: FormControl = new FormControl('', [
     Validators.email,
-    this.pattern,
-    this.noWhiteSpace,
+    this.emailPatternService.pattern,
+    this.emailPatternService.noWhiteSpace,
   ]);
   emailV: FormControl = new FormControl('', [
     Validators.email,
-    this.noWhiteSpace,
+    this.emailPatternService.noWhiteSpace,
   ]);
   termsCheck: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
@@ -274,12 +280,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   //   personalizeForm: this.personalizeForm,
   // });
 
-  public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
-    if ((control.value as string).indexOf(' ') >= 0) {
-      return { noWhiteSpace: true };
-    }
-    return null;
-  }
   public noSpecialCharacters(
     control: AbstractControl
   ): ValidationErrors | null {
@@ -295,36 +295,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       return { noSpecialCharacters: true };
     }
   }
-  public pattern(control: AbstractControl): ValidationErrors | null {
-    console.log('hey chaz', control.value as string);
-    const emailChazz = control.value as string;
 
-    const regex0 = /^[a-zA-Z0-9._%+-]+@alum.utoronto\.ca/;
-    const regex = /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/;
-    const regex2 = /^[a-zA-Z0-9._%+-]+@utoronto\.ca/;
-    const regex3 = /^[a-zA-Z0-9._%+-]+@uoftpharmacy\.com/;
-    const regex4 = /^[a-zA-Z0-9._%+-]+@utsc.utoronto\.ca/;
-    const regex5 = /^[a-zA-Z0-9._%+-]+@rotman.utoronto\.ca/;
-
-    const matches0 = regex0.test(emailChazz);
-    const matches = regex.test(emailChazz);
-    const matches2 = regex2.test(emailChazz);
-    const matches3 = regex3.test(emailChazz);
-    const matches4 = regex4.test(emailChazz);
-    const matches5 = regex5.test(emailChazz);
-
-    if (
-      (matches0 || matches || matches2 || matches3 || matches4 || matches5) ===
-      true
-    ) {
-      console.log('does it work now email pattern');
-      this.patternCheck = false;
-      return null;
-    } else {
-      this.patternCheck = true;
-      return { pattern: true };
-    }
-  }
   // Adding emojis
   openEmojiBio(): void {
     const selectionContainer = document.getElementById('showEmojisBio');
@@ -450,22 +421,25 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   doesEmailExist(event: any): any {
     const query: string = event.target.value;
-    console.log('query ', query);
-    if (query && this.patternCheck === true) {
-      this.authService.searchEmail(query.trim());
-      this.usedEmailSub = this.authService
-        .getUsedEmail()
-        .subscribe((results) => {
-          if (results === true) {
-            console.log('results baby', results);
-            this.noEmailMatches = results;
-          } else {
-            console.log('nuts', results);
-            this.noEmailMatches = false;
-          }
-        });
-
-      this.usedEmailSub.unsubscribe();
+    const patternPass = this.emailPatternService.pattern(event.target.value);
+    console.log('patternPass ', patternPass);
+    if (query && patternPass) {
+      setTimeout(sendData, 2000);
+      function sendData() {
+        this.authService.searchEmail(query.trim());
+        this.usedEmailSub = this.authService
+          .getUsedEmail()
+          .subscribe((results) => {
+            if (results === true) {
+              console.log('results baby', results);
+              this.EmailMatches = results;
+            } else {
+              console.log('nuts', results);
+              this.EmailMatches = false;
+            }
+          });
+        this.usedEmailSub.unsubscribe();
+      }
     } else {
       console.log('DeLorean');
     }

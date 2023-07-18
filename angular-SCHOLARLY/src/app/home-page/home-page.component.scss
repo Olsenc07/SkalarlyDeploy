@@ -1,12 +1,8 @@
-.actionBtn{
+.actionBtn {
   display: flex;
   justify-content: center;
   font-family: 'Cormorant Garamond', serif;
 }
-dialog::backdrop {
-  background-color: black;
-}
-
 
 .box {
   display: flex;
@@ -52,6 +48,16 @@ dialog::backdrop {
   transition-delay: 2s;
   margin-top:0%;
 }
+.titlePopUp{
+  // font-family: 'Cinzel',sans-serif;
+  font-family: 'Cormorant Garamond', serif;
+display: flex;
+margin: 2% 0%;
+font-size: larger;
+justify-content: center;
+font-weight: 700;
+animation: 2s fadeIn;
+}
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
@@ -59,7 +65,7 @@ dialog::backdrop {
 @keyframes slide-up {
   from {
     margin-top: 100%;
-    height: 300%; 
+    height: 0%; 
   }
 
   to {
@@ -398,13 +404,7 @@ dialog::backdrop {
   font-family: 'Cormorant Garamond', serif;
   line-height: 25px;
 }
-.titlePopUp{
-  // font-family: 'Cinzel',sans-serif;
-  font-family: 'Cormorant Garamond', serif;
-display: flex;
-justify-content: center;
-animation: 2s fadeIn;
-}
+
 
 @media (min-width: 902px) {
   .row {

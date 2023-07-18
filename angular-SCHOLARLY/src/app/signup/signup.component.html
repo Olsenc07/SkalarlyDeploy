@@ -26,9 +26,9 @@
            @alum.utoronto.ca, @utoronto.ca, @mail.utoronto.ca, @rotman.utoronto.ca,
             @utsc.utoronto.ca, @uoftpharmacy.com ">
             <mat-label>
-              <i class="fas fa-graduation-cap" *ngIf="email.invalid || noEmailMatches === true">
+              <i class="fas fa-graduation-cap" *ngIf="email.invalid || EmailMatches === true">
               </i>
-              <i class="fas fa-graduation-cap check_" *ngIf="email.valid && noEmailMatches === false">
+              <i class="fas fa-graduation-cap check_" *ngIf="email.valid && EmailMatches === false">
               </i>
               Academic Email
             </mat-label>
@@ -38,12 +38,11 @@
              <!-- pattern="/@mail.utoronto*/" pattern="/@utoronto*/" pattern="/@uoftpharmacy*/"
               pattern="/@utsc.utoronto*/" pattern="/@rotman.utoronto*/" pattern="/@skalarly*/" pattern="/@outlook*/" -->
               <!-- <mat-hint>@mail.utoronto.ca</mat-hint> -->
-
-              <mat-error *ngIf="email.errors?.pattern">Only U Of T emails are valid</mat-error>
+              <mat-hint *ngIf="EmailMatches === true"> This email is already used </mat-hint>
+              <mat-error *ngIf="email.errors?.pattern">Only Canadian University emails are valid</mat-error>
               <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
               <!-- <mat-error *ngIf="email.errors?.email && !email.errors?.noWhiteSpace">Please enter your academic email
               </mat-error> -->
-              <mat-hint *ngIf="noEmailMatches === true"> This email is already used </mat-hint>
 
 
               <!-- <button mat-button matSuffix mat-icon-button aria-label=" Clear" type="button" (click)="clearEmail()">
@@ -158,7 +157,7 @@
           <div class="existing-account-layout">
 
             <button type="button" (click)="onSubmit()" mat-stroked-button class="existing-account-style space_"
-              [disabled]="!requiredForm.valid || (noEmailMatches === true) || (userNameMatches === true)">
+              [disabled]="!requiredForm.valid || (EmailMatches === true) || (userNameMatches === true)">
               Submit
             </button>
 

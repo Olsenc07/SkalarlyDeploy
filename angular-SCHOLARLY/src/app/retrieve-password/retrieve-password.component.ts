@@ -10,6 +10,7 @@ import {
 import { AuthService } from '../services/auth.service';
 import { Location } from '@angular/common';
 import { PostsService } from '../services/posts.service';
+import { EmailPatternService } from '../services/emailPattern.service';
 
 @Component({
   selector: 'app-retrieve-password',
@@ -17,6 +18,13 @@ import { PostsService } from '../services/posts.service';
   styleUrls: ['./retrieve-password.component.scss'],
 })
 export class RetrievePasswordComponent implements OnInit {
+  constructor(
+    private postsService: PostsService,
+    public authService: AuthService,
+    private snackBar: MatSnackBar,
+    private location: Location,
+    private emailPatternService: EmailPatternService
+  ) {}
   userId: string;
   isLoading = false;
   visible = true;
@@ -35,7 +43,11 @@ export class RetrievePasswordComponent implements OnInit {
   passwordNew: FormControl = new FormControl('');
   secretCode: FormControl = new FormControl('');
   // passwordRetrieval: FormControl = new FormControl('', Validators.email);
-  email: FormControl = new FormControl('', Validators.email);
+  email: FormControl = new FormControl('', [
+    Validators.email,
+    this.emailPatternService.pattern,
+    this.emailPatternService.noWhiteSpace,
+  ]);
   emailForm = new FormGroup({
     email: this.email,
     passwordNew: this.passwordNew,
@@ -47,54 +59,50 @@ export class RetrievePasswordComponent implements OnInit {
     email: this.email,
     password: this.password,
   });
-  public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
-    if ((control.value as string).indexOf(' ') >= 0) {
-      return { noWhiteSpace: true };
-    }
-    return null;
-  }
-  constructor(
-    private postsService: PostsService,
-    public authService: AuthService,
-    private snackBar: MatSnackBar,
-    private location: Location
-  ) {}
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
   }
   doesEmailExist(event: any): void {
     const query: string = event.target.value;
-    console.log('query 77 ', query);
-    if (query) {
-      this.authService.searchEmails(query.trim());
-      this.authService.getEmail().subscribe((results) => {
-        if (results === true) {
-          console.log('results baby', results);
-          this.emailMatches = results;
-        } else {
-          console.log('nuts', results);
-          this.emailMatches = false;
-        }
-      });
+    const patternPass = this.emailPatternService.pattern(event.target.value);
+    console.log('patternPass ', patternPass);
+    if (query && patternPass) {
+      setTimeout(sendData, 2000);
+      function sendData() {
+        this.authService.searchEmails(query.trim());
+        this.authService.getEmail().subscribe((results) => {
+          if (results === true) {
+            console.log('results baby', results);
+            this.emailMatches = results;
+          } else {
+            console.log('nuts', results);
+            this.emailMatches = false;
+          }
+        });
+      }
     } else {
       console.log('DeLorean');
     }
   }
   doesEmailExist2(event: any): void {
     const query: string = event.target.value;
-    console.log('query 7777 ', query);
-    if (query) {
-      this.authService.searchEmails(query.trim());
-      this.authService.getEmail().subscribe((results) => {
-        if (results === true) {
-          console.log('results baby', results);
-          this.emailMatches2 = results;
-        } else {
-          console.log('nuts', results);
-          this.emailMatches2 = false;
-        }
-      });
+    const patternPass = this.emailPatternService.pattern(event.target.value);
+    console.log('patternPass ', patternPass);
+    if (query && patternPass) {
+      setTimeout(sendData, 2000);
+      function sendData() {
+        this.authService.searchEmails(query.trim());
+        this.authService.getEmail().subscribe((results) => {
+          if (results === true) {
+            console.log('results baby', results);
+            this.emailMatches2 = results;
+          } else {
+            console.log('nuts', results);
+            this.emailMatches2 = false;
+          }
+        });
+      }
     } else {
       console.log('DeLorean');
     }
@@ -197,36 +205,37 @@ export class ForgotPasswordComponent {
     password: this.password,
   });
 
-  public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
-    if ((control.value as string).indexOf(' ') >= 0) {
-      return { noWhiteSpace: true };
-    }
-    return null;
-  }
-
   backButton(): void {
     this.location.back();
   }
 
-  constructor(public authService: AuthService, private location: Location) {}
+  constructor(
+    public authService: AuthService,
+    private location: Location,
+    public emailPatternService: EmailPatternService
+  ) {}
 
   clearPassword(): void {
     this.password.setValue('');
   }
   doesEmailExist(event: any): void {
     const query: string = event.target.value;
-    console.log('query 77 ', query);
-    if (query) {
-      this.authService.searchEmails(query.trim());
-      this.authService.getEmail().subscribe((results) => {
-        if (results === true) {
-          console.log('results baby', results);
-          this.emailMatches = results;
-        } else {
-          console.log('nuts', results);
-          this.emailMatches = false;
-        }
-      });
+    const patternPass = this.emailPatternService.pattern(event.target.value);
+    console.log('patternPass ', patternPass);
+    if (query && patternPass) {
+      setTimeout(sendData, 2000);
+      function sendData() {
+        this.authService.searchEmails(query.trim());
+        this.authService.getEmail().subscribe((results) => {
+          if (results === true) {
+            console.log('results baby', results);
+            this.emailMatches = results;
+          } else {
+            console.log('nuts', results);
+            this.emailMatches = false;
+          }
+        });
+      }
     } else {
       console.log('DeLorean');
     }
@@ -279,11 +288,17 @@ export class AlumTransferComponent {
     this.location.back();
   }
 
-  constructor(public authService: AuthService, private location: Location) {}
+  constructor(
+    public authService: AuthService,
+    private location: Location,
+    public emailPatternService: EmailPatternService,
+    private snackBar: MatSnackBar
+  ) {}
   doesEmailExist(event: any): void {
     const query: string = event.target.value;
-    console.log('query 77 ', query);
-    if (query) {
+    const patternPass = this.emailPatternService.pattern(event.target.value);
+    console.log('patternPass ', patternPass);
+    if (query && patternPass) {
       this.authService.searchEmails(query.trim());
       this.authService.getEmail().subscribe((results) => {
         if (results === true) {
@@ -299,7 +314,10 @@ export class AlumTransferComponent {
     }
   }
 
-  alumTransfer(){
+  alumTransfer() {
     // Send email and start steps in changin email saved to the new alumni one
+    this.snackBar.open('Email has been sent.', '✅', {
+      duration: 3000,
+    });
   }
 }

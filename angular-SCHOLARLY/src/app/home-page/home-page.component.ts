@@ -15,22 +15,30 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { EmailPatternService } from '../services/emailPattern.service';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
+  constructor(
+    public authService: AuthService,
+    public dialog: MatDialog,
+    public emailPatternService: EmailPatternService
+  ) {}
   // patternCheck: boolean;
   emailMatches = false;
   // add <type> and '' is its initialization
   // { updateOn: 'blur' }
-  email: FormControl = new FormControl('', [this.noWhiteSpace, this.pattern]);
+  email: FormControl = new FormControl('', [
+    this.noWhiteSpace,
+    this.emailPatternService.pattern,
+  ]);
   password: FormControl = new FormControl('', Validators.minLength(8));
   stayLoggedIn: boolean = false;
   isLoading = false;
   visible = true;
-  constructor(public authService: AuthService, public dialog: MatDialog) {}
 
   public noWhiteSpace(control: AbstractControl): ValidationErrors | null {
     if ((control.value as string).indexOf(' ') >= 0) {
@@ -38,50 +46,7 @@ export class HomePageComponent implements OnInit {
     }
     return null;
   }
-  public pattern(control: AbstractControl): ValidationErrors | null {
-    // console.log('type', this.patternCheck);
-    const emailChazz = control.value as string;
 
-    // if checked u of t for school
-    // if(){}
-
-    const regex0 = /^[a-zA-Z0-9._%+-]+@alum.utoronto\.ca/;
-    const regex1 = /^[a-zA-Z0-9._%+-]+@mail.utoronto\.ca/;
-    const regex2 = /^[a-zA-Z0-9._%+-]+@utoronto\.ca/;
-    const regex3 = /^[a-zA-Z0-9._%+-]+@uoftpharmacy\.com/;
-    const regex4 = /^[a-zA-Z0-9._%+-]+@utsc.utoronto\.ca/;
-    const regex5 = /^[a-zA-Z0-9._%+-]+@rotman.utoronto\.ca/;
-    const regex6 = /^[a-zA-Z0-9._%+-]+@skalarly\.com/;
-    const regex7 = /^[a-zA-Z0-9._%+-]+@outlook\.com/;
-    // add outlook and skalarly.com
-    // fix webscoekt error in console
-
-    const matches0 = regex0.test(emailChazz);
-    const matches1 = regex1.test(emailChazz);
-    const matches2 = regex2.test(emailChazz);
-    const matches3 = regex3.test(emailChazz);
-    const matches4 = regex4.test(emailChazz);
-    const matches5 = regex5.test(emailChazz);
-    const matches6 = regex6.test(emailChazz);
-    const matches7 = regex7.test(emailChazz);
-
-    if (
-      (matches0 ||
-        matches1 ||
-        matches2 ||
-        matches3 ||
-        matches4 ||
-        matches5 ||
-        matches6 ||
-        matches7) === true
-    ) {
-      // this.patternCheck = false;
-      return null;
-    } else {
-      // this.patternCheck = true;
-      return { pattern: true };
-    }
-  }
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
 
@@ -101,14 +66,6 @@ export class HomePageComponent implements OnInit {
     console.log('loading...?', new Date());
   }
 
-  // ngDoCheck(): void {
-  //   if (this.email) {
-  //     console.log('getting started', this.email.value);
-
-  //     console.log('all setup');
-  //   }
-  // }
-  // ngOnDestroy(): void {}
   clearPassword(): void {
     this.password.setValue('');
   }
@@ -120,20 +77,23 @@ export class HomePageComponent implements OnInit {
   doesEmailExist(event: any): void {
     console.log('will hunting ');
     const query: string = event.target.value;
+    const patternPass = this.emailPatternService.pattern(event.target.value);
+    console.log('patternPass ', patternPass);
     console.log('query ', query);
-    if (query && this.email.valid) {
-      console.log('triggered when done typing.');
-      const noSpecialChars = query.replace(/[^a-zA-Z0-9.@ ]/g, '');
-      this.authService.searchEmails(noSpecialChars.trim());
-      this.authService.getEmail().subscribe((results) => {
-        if (results === true) {
-          console.log('results baby', results);
-          this.emailMatches = results;
-        } else {
-          console.log('nuts', results);
-          this.emailMatches = false;
-        }
-      });
+    if (query && patternPass) {
+      setTimeout(sendData, 2000);
+      function sendData() {
+        this.authService.searchEmails(query.trim());
+        this.authService.getEmail().subscribe((results) => {
+          if (results === true) {
+            console.log('results baby', results);
+            this.emailMatches = results;
+          } else {
+            console.log('nuts', results);
+            this.emailMatches = false;
+          }
+        });
+      }
     } else {
       this.emailMatches = false;
     }
@@ -208,7 +168,6 @@ export class HomePageComponent implements OnInit {
         style({
           height: '50%',
           opacity: 1,
-          display: 'contents',
         })
       ),
       state(
@@ -223,10 +182,10 @@ export class HomePageComponent implements OnInit {
     ]),
   ],
 })
-export class ExplainedComponent implements OnDestroy {
+export class ExplainedComponent {
   isOpen = true;
 
-  ngOnDestroy(): void {
+  onClose() {
     console.log('closing page');
     this.isOpen = !this.isOpen;
   }
