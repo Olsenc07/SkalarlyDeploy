@@ -28,7 +28,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../services/auth.service';
 import { ShowCaseService } from '../services/showCase.service';
 import { createPopup } from '@picmo/popup-picker';
-import { EmailPatternService } from '../services/emailPattern.service';
 
 export const MY_FORMATS = {
   parse: {
@@ -64,7 +63,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     public classListService: ClassListService,
     public authService: AuthService,
     public showCaseService: ShowCaseService,
-    public emailPatternService: EmailPatternService,
     private snackBar: MatSnackBar // public courses: Courses
   ) {}
   startDate = new Date(1997, 0, 1);
@@ -133,18 +131,16 @@ export class SignupComponent implements OnInit, OnDestroy {
   // pat2 = /^[a-zA-Z0-9]*/;
   containWithinAspectRatio = false;
   username: FormControl = new FormControl('', [
-    // Validators.pattern(this.pat),
-    // Validators.pattern(this.pat2),
-    this.emailPatternService.noWhiteSpace,
+    // this.emailPatternService.noWhiteSpace,
     this.noSpecialCharacters,
   ]);
   password: FormControl = new FormControl(
-    '',
-    this.emailPatternService.noWhiteSpace
+    ''
+    // this.emailPatternService.noWhiteSpace
   );
   passwordV: FormControl = new FormControl(
-    '',
-    this.emailPatternService.noWhiteSpace
+    ''
+    // this.emailPatternService.noWhiteSpace
   );
   public CodeCompletedLength = new BehaviorSubject(0);
   public CodePursuingLength = new BehaviorSubject(0);
@@ -169,12 +165,12 @@ export class SignupComponent implements OnInit, OnDestroy {
   // ),
   email: FormControl = new FormControl('', [
     Validators.email,
-    this.emailPatternService.pattern,
-    this.emailPatternService.noWhiteSpace,
+    // this.emailPatternService.pattern,
+    // this.emailPatternService.noWhiteSpace,
   ]);
   emailV: FormControl = new FormControl('', [
     Validators.email,
-    this.emailPatternService.noWhiteSpace,
+    // this.emailPatternService.noWhiteSpace,
   ]);
   termsCheck: FormControl = new FormControl('');
   // PP isn't connected properly i dont think, since image is being cropped then returned as a base 64 value
@@ -421,7 +417,8 @@ export class SignupComponent implements OnInit, OnDestroy {
 
   doesEmailExist(event: any): any {
     const query: string = event.target.value;
-    const patternPass = this.emailPatternService.pattern(event.target.value);
+    const patternPass = 'hey';
+    // this.emailPatternService.pattern(event.target.value);
     console.log('patternPass ', patternPass);
     if (query && patternPass) {
       setTimeout(sendData, 2000);

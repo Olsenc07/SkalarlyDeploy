@@ -17,25 +17,30 @@ import {
   stagger,
   // ...
 } from '@angular/animations';
-import { EmailPatternService } from '../services/emailPattern.service';
+import { pattern, noWhiteSpace } from '../validators/emailPattern';
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  constructor(
-    public authService: AuthService,
-    public dialog: MatDialog,
-    public emailPatternService: EmailPatternService
-  ) {}
+  constructor(public authService: AuthService, public dialog: MatDialog) {}
   // patternCheck: boolean;
   emailMatches = false;
+  patternPass: boolean;
   // add <type> and '' is its initialization
   // { updateOn: 'blur' }
-  email: FormControl = new FormControl('', [
-    this.noWhiteSpace,
-    this.emailPatternService.pattern,
+  private whiteSpaceCheck = (control: AbstractControl) => {
+    return noWhiteSpace(control.value);
+  };
+  private doesEmailExistCheck = (control: AbstractControl) => {
+    return this.doesEmailExist(control.value);
+  };
+
+  email: FormControl = new FormControl([
+    this.whiteSpaceCheck,
+    this.doesEmailExistCheck,
   ]);
   password: FormControl = new FormControl('', Validators.minLength(8));
   stayLoggedIn: boolean = false;
@@ -76,13 +81,13 @@ export class HomePageComponent implements OnInit {
     this.email.setValue('');
   }
 
-  doesEmailExist(event: any): void {
+  doesEmailExist(event: any): boolean {
     console.log('will hunting ');
     const query: string = event.target.value;
-    const patternPass = this.emailPatternService.pattern(event.target.value);
-    console.log('patternPass ', patternPass);
+    this.patternPass = pattern(event.target.value);
+    console.log('patternPass ', this.patternPass);
     console.log('query ', query);
-    if (query && patternPass) {
+    if (query && this.patternPass) {
       setTimeout(sendData, 2000);
       function sendData() {
         this.authService.searchEmails(query.trim());
@@ -90,14 +95,17 @@ export class HomePageComponent implements OnInit {
           if (results === true) {
             console.log('results baby', results);
             this.emailMatches = results;
+            return true;
           } else {
             console.log('nuts', results);
             this.emailMatches = false;
+            return false;
           }
         });
       }
     } else {
       this.emailMatches = false;
+      return false;
     }
   }
   // matchingValidator(): ValidationErrors | null {

@@ -10,15 +10,9 @@ import {
 import { AuthService } from '../services/auth.service';
 import { Location } from '@angular/common';
 import { PostsService } from '../services/posts.service';
-import { EmailPatternService } from '../services/emailPattern.service';
-import {
-  trigger,
-  transition,
-  style,
-  animate,
-  query,
-  stagger,
-} from '@angular/animations';
+import { pattern, noWhiteSpace } from '../validators/emailPattern';
+
+import { trigger, style, animate, query, stagger } from '@angular/animations';
 @Component({
   selector: 'app-retrieve-password',
   templateUrl: './retrieve-password.component.html',
@@ -29,8 +23,7 @@ export class RetrievePasswordComponent implements OnInit {
     private postsService: PostsService,
     public authService: AuthService,
     private snackBar: MatSnackBar,
-    private location: Location,
-    private emailPatternService: EmailPatternService
+    private location: Location
   ) {}
   userId: string;
   isLoading = false;
@@ -52,8 +45,8 @@ export class RetrievePasswordComponent implements OnInit {
   // passwordRetrieval: FormControl = new FormControl('', Validators.email);
   email: FormControl = new FormControl('', [
     Validators.email,
-    this.emailPatternService.pattern,
-    this.emailPatternService.noWhiteSpace,
+    // this.emailPatternService.pattern,
+    // this.emailPatternService.noWhiteSpace,
   ]);
   emailForm = new FormGroup({
     email: this.email,
@@ -72,7 +65,8 @@ export class RetrievePasswordComponent implements OnInit {
   }
   doesEmailExist(event: any): void {
     const query: string = event.target.value;
-    const patternPass = this.emailPatternService.pattern(event.target.value);
+    const patternPass = 'hey';
+    // this.emailPatternService.pattern(event.target.value);
     console.log('patternPass ', patternPass);
     if (query && patternPass) {
       setTimeout(sendData, 2000);
@@ -94,7 +88,8 @@ export class RetrievePasswordComponent implements OnInit {
   }
   doesEmailExist2(event: any): void {
     const query: string = event.target.value;
-    const patternPass = this.emailPatternService.pattern(event.target.value);
+    const patternPass = 'hey';
+    // this.emailPatternService.pattern(event.target.value);
     console.log('patternPass ', patternPass);
     if (query && patternPass) {
       setTimeout(sendData, 2000);
@@ -216,18 +211,14 @@ export class ForgotPasswordComponent {
     this.location.back();
   }
 
-  constructor(
-    public authService: AuthService,
-    private location: Location,
-    public emailPatternService: EmailPatternService
-  ) {}
+  constructor(public authService: AuthService, private location: Location) {}
 
   clearPassword(): void {
     this.password.setValue('');
   }
   doesEmailExist(event: any): void {
     const query: string = event.target.value;
-    const patternPass = this.emailPatternService.pattern(event.target.value);
+    const patternPass = pattern(event.target.value);
     console.log('patternPass ', patternPass);
     if (query && patternPass) {
       setTimeout(sendData, 2000);
@@ -309,12 +300,12 @@ export class AlumTransferComponent {
   constructor(
     public authService: AuthService,
     private location: Location,
-    public emailPatternService: EmailPatternService,
     private snackBar: MatSnackBar
   ) {}
   doesEmailExist(event: any): void {
     const query: string = event.target.value;
-    const patternPass = this.emailPatternService.pattern(event.target.value);
+    const patternPass = 'hey';
+    // this.emailPatternService.pattern(event.target.value);
     console.log('patternPass ', patternPass);
     if (query && patternPass) {
       this.authService.searchEmails(query.trim());
