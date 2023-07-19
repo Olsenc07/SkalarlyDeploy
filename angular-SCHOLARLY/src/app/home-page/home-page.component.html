@@ -32,7 +32,7 @@
             <i matSuffix class="fas fa-user"></i>
                Academic Email</mat-label>
                <!-- Verified email -->
-               <mat-label  *ngIf="(email.valid)"> 
+               <mat-label  *ngIf="emailMatches"> 
                 <i matSuffix class="fas fa-user check_"></i>
                    Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"

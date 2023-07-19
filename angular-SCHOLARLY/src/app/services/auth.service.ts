@@ -225,6 +225,24 @@ export class AuthService {
         },
       });
   }
+  //  login validation
+  searchEmails(query: string): any {
+    const sub = this.http
+      .get<{ message: string; payload: boolean }>(
+        'https://www.skalarly.com/api/user/getEmails',
+        { params: { query } }
+      )
+      .pipe(map((data) => data.payload))
+      .subscribe({
+        next: (response) => {
+          console.log('chlor 3', response);
+          this.emailId = response;
+          this.emailUpdated.next(this.emailId);
+          sub.unsubscribe();
+          console.log('rich and famous baby 4');
+        },
+      });
+  }
   // Instructors look up
   searchInstructorNames(query: string): any {
     const sub = this.http
@@ -262,25 +280,6 @@ export class AuthService {
           this.userNameUpdated.next(this.userNameId);
           sub.unsubscribe();
           console.log('rich and famous baby 3');
-        },
-      });
-  }
-
-  //  login validation
-  searchEmails(query: string): any {
-    const sub = this.http
-      .get<{ message: string; payload: boolean }>(
-        'https://www.skalarly.com/api/user/getEmails',
-        { params: { query } }
-      )
-      .pipe(map((data) => data.payload))
-      .subscribe({
-        next: (response) => {
-          console.log('chlor 3', response);
-          this.emailId = response;
-          this.emailUpdated.next(this.emailId);
-          sub.unsubscribe();
-          console.log('rich and famous baby 4');
         },
       });
   }

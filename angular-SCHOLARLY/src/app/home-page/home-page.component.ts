@@ -42,7 +42,10 @@ import { pattern } from '../validators/emailPattern.validator';
   // ],
 })
 export class HomePageComponent implements OnInit {
-  constructor(public authService: AuthService, public dialog: MatDialog) {}
+  constructor(public authService: AuthService, public dialog: MatDialog) {
+    this.onChanges();
+    console.log('storm');
+  }
   emailMatches: boolean;
 
   // add <type> and '' is its initialization
@@ -54,11 +57,6 @@ export class HomePageComponent implements OnInit {
   isLoading = false;
   visible = true;
 
-  // click = true;
-
-  // hover() {
-  //   this.click = !this.click;
-  // }
   toggleVisibilty(): any {
     const c = document.getElementById('passwordType') as HTMLInputElement;
 
@@ -75,8 +73,6 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     // formcontrol validation check
-    this.onChanges();
-    console.log('storm');
   }
 
   clearPassword(): void {
@@ -93,20 +89,20 @@ export class HomePageComponent implements OnInit {
       if (Event === 'VALID') {
         const query: string = this.email.value;
         // this.patternPass = pattern(this.email.value);
-        console.log('query ', query);
-        setTimeout(sendData, 2000);
-        function sendData() {
-          this.authService.searchEmails(query.trim());
-          this.authService.getEmail().subscribe((results) => {
-            if (results === true) {
-              console.log('results baby', results);
-              this.emailMatches = results;
-            } else {
-              console.log('nuts', results);
-              this.emailMatches = false;
-            }
-          });
-        }
+        console.log('query ', query.trim());
+        // setTimeout(sendData, 2000);
+        // function sendData() {
+        this.authService.searchEmails(query.trim());
+        this.authService.getEmail().subscribe((results) => {
+          if (results === true) {
+            console.log('results baby', results);
+            this.emailMatches = results;
+          } else {
+            console.log('nuts', results);
+            this.emailMatches = false;
+          }
+        });
+        // }
       }
     });
   }
