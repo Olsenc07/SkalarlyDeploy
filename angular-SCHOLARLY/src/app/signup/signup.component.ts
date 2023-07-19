@@ -22,7 +22,7 @@ import { ClassListService } from '../services/class.service';
 
 import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 
-import { mimeType } from '../post-page/mime-type.validator';
+import { mimeType } from '../validators/mime-type.validator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../services/auth.service';

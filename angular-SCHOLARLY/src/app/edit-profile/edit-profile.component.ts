@@ -25,7 +25,7 @@ import {
   AuthDataInfoCoursesP,
 } from '../signup/auth-data.model';
 import { ShowCaseService } from '../services/showCase.service';
-import { mimeType } from '../post-page/mime-type.validator';
+import { mimeType } from '../validators/mime-type.validator';
 import { Picker } from 'emoji-picker-element';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthServiceEditNext } from '../services/editNextCourse.service';

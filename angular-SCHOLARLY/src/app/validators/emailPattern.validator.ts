@@ -1,7 +1,6 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
-export function pattern(control: AbstractControl) {
-  // console.log('type', this.patternCheck);
+export function pattern(control: AbstractControl): ValidationErrors | null {
   const emailChazz = control.value as string;
 
   // if checked u of t for school

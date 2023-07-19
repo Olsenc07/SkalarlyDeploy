@@ -10,7 +10,7 @@ import {
 import { AuthService } from '../services/auth.service';
 import { Location } from '@angular/common';
 import { PostsService } from '../services/posts.service';
-import { pattern, noWhiteSpace } from '../validators/emailPattern';
+import { pattern, noWhiteSpace } from '../validators/emailPattern.validator';
 
 import { trigger, style, animate, query, stagger } from '@angular/animations';
 @Component({

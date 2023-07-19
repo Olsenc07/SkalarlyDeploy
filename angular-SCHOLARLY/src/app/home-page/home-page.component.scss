@@ -274,10 +274,10 @@ animation: 2s fadeIn;
   transition-property: all;
  }
  @keyframes loginClick {
-  // from {  
-  //   background-image: linear-gradient(to right,#002D62,black);
+  from {  
+    background-image: linear-gradient(to right,#002D62,black);
 
-  // }
+  }
   to { background-image: linear-gradient(to right,black, #002D62);
     border-radius: 25px;}
   }
@@ -296,10 +296,10 @@ animation: 2s fadeIn;
 
 }
 @keyframes newAccountClick {
-  // from {  
-  // background-image: linear-gradient(to right,black,#002D62);
+  from {  
+  background-image: linear-gradient(to right,black,#002D62);
 
-  // }
+  }
   to { background-image: linear-gradient(to right,#002D62, black); border-radius: 25px;
   }
 }

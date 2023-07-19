@@ -42,9 +42,8 @@
 
              -->
             <mat-error *ngIf="email.errors?.pattern">Only Canadian University emails are valid</mat-error>
-            <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
-            <mat-hint *ngIf="email.invalid" class="hint">No account matches this email</mat-hint>
-            <mat-hint *ngIf="email.valid" class="hint">Email found </mat-hint>
+            <mat-hint *ngIf="!emailMatches" class="hint">No account matches this email</mat-hint>
+            <mat-hint *ngIf="emailMatches" class="hint">Email found </mat-hint>
 
 
             <!-- <button color="primary" mat-button matSuffix mat-icon-button type="button"
@@ -90,8 +89,8 @@
           <!-- <div class="loginBtn"> -->
          <div class="center">
   <!-- pattern=".+@utoronto\.ca"  pattern=".+@mail.utoronto\.ca"  pattern=".+@skalarly\.com" pattern=".+@rotman.utoronto\.ca" -->
-          <button  mat-raised-button (click)="onSubmit()" [disabled]="(emailMatches === false) || !password.valid"
-           
+          <button  mat-raised-button (click)="onSubmit()" 
+           [disabled]="(!emailMatches) || password.invalid"
           color="primary" class="action-button top login" *ngIf="!isLoading" routerLink="/search" >
             Log In
           </button>
