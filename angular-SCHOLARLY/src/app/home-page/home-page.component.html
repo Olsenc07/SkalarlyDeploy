@@ -28,11 +28,11 @@
          
           <div class="row_ ">
           <mat-form-field class="text-input" appearance="outline">
-            <mat-label *ngIf="(emailMatches === false)"> 
+            <mat-label *ngIf="(email.invalid)"> 
             <i matSuffix class="fas fa-user"></i>
                Academic Email</mat-label>
                <!-- Verified email -->
-               <mat-label  *ngIf="(emailMatches === true)"> 
+               <mat-label  *ngIf="(email.valid)"> 
                 <i matSuffix class="fas fa-user check_"></i>
                    Academic Email</mat-label>
             <input matInput  [formControl]="email" required type="email"
@@ -41,10 +41,10 @@
             (keyup)="doesEmailExist($event)"
 
              -->
-            <mat-error *ngIf="patternPass">Only Canadian University emails are valid</mat-error>
+            <mat-error *ngIf="email.errors?.pattern">Only Canadian University emails are valid</mat-error>
             <mat-error *ngIf="email.errors?.noWhiteSpace"> Please remove white space </mat-error>
-            <mat-hint *ngIf="emailMatches === false" class="hint">No account matches this email</mat-hint>
-            <mat-hint *ngIf="emailMatches === true" class="hint">Email found </mat-hint>
+            <mat-hint *ngIf="email.invalid" class="hint">No account matches this email</mat-hint>
+            <mat-hint *ngIf="email.valid" class="hint">Email found </mat-hint>
 
 
             <!-- <button color="primary" mat-button matSuffix mat-icon-button type="button"

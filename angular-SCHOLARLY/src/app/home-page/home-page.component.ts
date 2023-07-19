@@ -17,7 +17,7 @@ import {
   stagger,
   // ...
 } from '@angular/animations';
-import { pattern, noWhiteSpace } from '../validators/emailPattern';
+import { noWhiteSpace, pattern } from '../validators/emailPattern';
 
 @Component({
   selector: 'app-home-page',
@@ -27,27 +27,11 @@ import { pattern, noWhiteSpace } from '../validators/emailPattern';
 export class HomePageComponent implements OnInit {
   constructor(public authService: AuthService, public dialog: MatDialog) {}
   // patternCheck: boolean;
-  emailMatches = false;
-  patternPass: ValidationErrors;
+
   // add <type> and '' is its initialization
   // { updateOn: 'blur' }
-  private whiteSpaceCheck = (
-    control: AbstractControl
-  ): ValidationErrors | null => {
-    console.log('key inspirations', control.value);
-    return noWhiteSpace(control.value);
-  };
-  private doesEmailExistCheck = (
-    control: AbstractControl
-  ): ValidationErrors | null => {
-    console.log('key inspirations 2', control.value);
-    return this.doesEmailExist(control.value);
-  };
 
-  email: FormControl = new FormControl('', [
-    this.whiteSpaceCheck,
-    this.doesEmailExistCheck,
-  ]);
+  email: FormControl = new FormControl('', [noWhiteSpace, pattern]);
   password: FormControl = new FormControl('', Validators.minLength(8));
   stayLoggedIn: boolean = false;
   isLoading = false;
@@ -68,8 +52,9 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('url', document.URL);
-    console.log('loading...?', new Date());
+    // formcontrol validation check
+    this.onChanges();
+    console.log('storm');
   }
 
   clearPassword(): void {
@@ -80,32 +65,28 @@ export class HomePageComponent implements OnInit {
     this.email.setValue('');
   }
 
-  doesEmailExist(event: any): any {
-    console.log('will hunting ');
-    const query: string = event.target.value;
-    this.patternPass = pattern(event.target.value);
-    console.log('patternPass ', this.patternPass);
-    console.log('query ', query);
-    if (query && this.patternPass) {
-      setTimeout(sendData, 2000);
-      function sendData() {
-        this.authService.searchEmails(query.trim());
-        this.authService.getEmail().subscribe((results) => {
-          if (results === true) {
-            console.log('results baby', results);
-            this.emailMatches = results;
-            return true;
-          } else {
-            console.log('nuts', results);
-            this.emailMatches = false;
-            return false;
-          }
-        });
+  onChanges(): void {
+    this.email.statusChanges.subscribe((Event) => {
+      console.log('will hunting ', Event);
+      if (Event === 'VALID') {
+        const query: string = this.email.value;
+        // this.patternPass = pattern(this.email.value);
+        console.log('query ', query);
+        setTimeout(sendData, 2000);
+        function sendData() {
+          this.authService.searchEmails(query.trim());
+          this.authService.getEmail().subscribe((results) => {
+            if (results === true) {
+              console.log('results baby', results);
+              this.emailMatches = results;
+            } else {
+              console.log('nuts', results);
+              this.emailMatches = false;
+            }
+          });
+        }
       }
-    } else {
-      this.emailMatches = false;
-      return false;
-    }
+    });
   }
   // matchingValidator(): ValidationErrors | null {
   //   console.log('testing 123', this.emailMatches);

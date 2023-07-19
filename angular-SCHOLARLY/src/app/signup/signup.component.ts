@@ -275,7 +275,33 @@ export class SignupComponent implements OnInit, OnDestroy {
   //   requiredForm: this.requiredForm,
   //   personalizeForm: this.personalizeForm,
   // });
-
+  ngOnInit(): void {
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe((authStatus) => {
+        this.isLoading = false;
+      });
+    this.form = new FormGroup({
+      profilePic: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+      showCase: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+      video: new FormControl(null, {
+        validators: [Validators.required],
+        asyncValidators: [mimeType],
+      }),
+    });
+    this.CodeCompleted.valueChanges.subscribe((v) =>
+      this.CodeCompletedLength.next(v.length)
+    );
+    this.CodePursuing.valueChanges.subscribe((v) =>
+      this.CodePursuingLength.next(v.length)
+    );
+  }
   public noSpecialCharacters(
     control: AbstractControl
   ): ValidationErrors | null {
@@ -826,33 +852,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       this.form.get('video').value
     );
   }
-  ngOnInit(): void {
-    this.authStatusSub = this.authService
-      .getAuthStatusListener()
-      .subscribe((authStatus) => {
-        this.isLoading = false;
-      });
-    this.form = new FormGroup({
-      profilePic: new FormControl(null, {
-        validators: [Validators.required],
-        asyncValidators: [mimeType],
-      }),
-      showCase: new FormControl(null, {
-        validators: [Validators.required],
-        asyncValidators: [mimeType],
-      }),
-      video: new FormControl(null, {
-        validators: [Validators.required],
-        asyncValidators: [mimeType],
-      }),
-    });
-    this.CodeCompleted.valueChanges.subscribe((v) =>
-      this.CodeCompletedLength.next(v.length)
-    );
-    this.CodePursuing.valueChanges.subscribe((v) =>
-      this.CodePursuingLength.next(v.length)
-    );
-  }
+
   ngOnDestroy(): any {
     this.authStatusSub.unsubscribe();
   }
