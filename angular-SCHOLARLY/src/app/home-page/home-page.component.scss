@@ -266,19 +266,23 @@ animation: 2s fadeIn;
 .login{
   // background-image: linear-gradient(to right,#616fb5,#009cff);
   background-image: linear-gradient(to right,#002D62,black);
-  transition-duration: 2s;
+  transition-duration: 1.25s;
 }
 .login:hover {
   animation-name: loginClick;
-  animation-duration: 1.25s;
-  transition-property: all;
+  // animation-duration: 1.25s;
+  transition: all;
  }
  @keyframes loginClick {
-  from {  
+  0% {  
     background-image: linear-gradient(to right,#002D62,black);
 
   }
-  to { background-image: linear-gradient(to right,black, #002D62);
+  50% {  
+    background-image: linear-gradient(to right,black,#002D62,black);
+    border-radius: 12.5px;
+  }
+  100% { background-image: linear-gradient(to right,black, #002D62);
     border-radius: 25px;}
   }
   
@@ -291,16 +295,20 @@ animation: 2s fadeIn;
 .newaccount:hover{
   // background-image: linear-gradient(to right, #009cff , #616fb5);
   animation-name: newAccountClick;
-  animation-duration: 2s;
+  // animation-duration: 2s;
   transition-property: all;
 
 }
 @keyframes newAccountClick {
-  from {  
+  0%{  
   background-image: linear-gradient(to right,black,#002D62);
 
   }
-  to { background-image: linear-gradient(to right,#002D62, black); border-radius: 25px;
+  50% {  
+    background-image: linear-gradient(to right,#002D62,black,#002D62);
+    border-radius: 12.5px;
+  }
+  100%{ background-image: linear-gradient(to right,#002D62, black); border-radius: 25px;
   }
 }
 

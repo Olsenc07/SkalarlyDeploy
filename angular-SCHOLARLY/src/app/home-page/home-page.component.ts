@@ -41,10 +41,9 @@ import { pattern } from '../validators/emailPattern.validator';
   //   ])
   // ],
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent {
   constructor(public authService: AuthService, public dialog: MatDialog) {
-    this.onChanges();
-    console.log('storm');
+    this.emailTest();
   }
   emailMatches: boolean;
 
@@ -71,10 +70,6 @@ export class HomePageComponent implements OnInit {
     this.visible = !this.visible;
   }
 
-  ngOnInit(): void {
-    // formcontrol validation check
-  }
-
   clearPassword(): void {
     this.password.setValue('');
   }
@@ -83,7 +78,7 @@ export class HomePageComponent implements OnInit {
     this.email.setValue('');
   }
 
-  onChanges(): void {
+  emailTest() {
     this.email.statusChanges.subscribe((Event) => {
       console.log('will hunting ', Event);
       if (Event === 'VALID') {
