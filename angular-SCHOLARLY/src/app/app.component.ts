@@ -124,9 +124,6 @@ export class AppComponent implements OnInit, OnDestroy {
   search: FormControl = new FormControl('');
   searchHash: FormControl = new FormControl('');
   // filteredSearch: Observable<string[]>;
-  searchForm = new FormGroup({
-    search: this.search,
-  });
 
   constructor(
     private postsService: PostsService,

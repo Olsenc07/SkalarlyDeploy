@@ -11,33 +11,12 @@
 <!-- <script src="/__/firebase/init.js"></script>
 </body> -->
 
-<!-- ||
-      (isRetrievePScreen$ | async) -->
 
-<div
-  [formGroup]="searchForm"
-  [ngClass]="
-    ((isHomeScreen$ | async) ||
-      (isVerifiedScreen$ | async) ||
-      (isSignUpScreen$ | async) ||
-      (isResetPScreen$ | async) ||
-      (isRetrievePScreen$ | async) ||
-      (isForgotPasswordScreen$ | async) ||
-      (isAlumniTransferScreen$ | async))
-      === true
-      ? 'background'
-      : ''
-  "
->
+
+<!-- limited screen size atm -->
   <ng-container *ngIf="minHeight && minwidth">
-    <div class="root-container">
-      <router-outlet>
-      
-         </router-outlet>
-    </div>
-
-    <div class="root-container">
-      
+   <!-- navigation bar -->
+    <nav class="root-container">
       <ng-container
         *ngIf="
           ((isHomeScreen$ | async) ||
@@ -833,13 +812,15 @@ Next Courses
           </div>
         </mat-toolbar>
       </ng-container>
+    </nav>
+<!-- body -->
+    <div class="root-container">
+      <router-outlet>
+      
+         </router-outlet>
     </div>
-
-    <ng-container *ngIf="(isHomeScreen$ | async) === false">
-      <div class="main-content"></div>
-    </ng-container>
   </ng-container>
-
+<!-- Unrenderable screen size -->
   <ng-container *ngIf="!minHeight || !minwidth" class="allBox">
     <div class="Text1box">
       <mat-card-title class="Text1_">
@@ -857,4 +838,4 @@ Next Courses
       </mat-card-title>
     </div>
   </ng-container>
-</div>
+

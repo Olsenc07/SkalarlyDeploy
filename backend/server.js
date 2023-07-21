@@ -252,8 +252,6 @@ app.use('/showCase', express.static('/app/backend/showCase'));
 
 
 // Connecting to backend images for display
-
-
 app.use((req, res, next) => {
    res.setHeader( "Access-Control-Allow-Origin", "*");
    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type: 'multipart/form-data', Accept, Authorization");

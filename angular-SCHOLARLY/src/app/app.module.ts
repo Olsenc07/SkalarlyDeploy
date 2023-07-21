@@ -106,10 +106,7 @@ import {
   VerifiedPopUpComponent,
 } from './signup/signup.component';
 import { TermsPopUpComponent } from './signup/signup.component';
-import {
-  HomePageComponent,
-  ExplainedComponent,
-} from './home-page/home-page.component';
+import { ExplainedComponent } from './home-page/home-page.component';
 import { FriendsActivityComponent } from './friends-activity/friends-activity.component';
 import {
   DialogElementsComponent,
@@ -218,7 +215,6 @@ import { ErrorInterceptor } from './error-interceptor';
     HashtagComponent,
     HashtagCardComponent,
     SignupComponent,
-    HomePageComponent,
     ExplainedComponent,
     FriendsActivityComponent,
     PostPageComponent,

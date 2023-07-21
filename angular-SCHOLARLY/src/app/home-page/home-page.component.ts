@@ -1,9 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormControl,
   Validators,
   AbstractControl,
   ValidationErrors,
+  ReactiveFormsModule,
 } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,11 +19,15 @@ import {
   // ...
 } from '@angular/animations';
 import { pattern } from '../validators/emailPattern.validator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
+  standalone: true,
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
+  imports: [MatFormFieldModule, ReactiveFormsModule, MatCheckboxModule],
   // animations: [
   //   trigger('clickable', [
   //     // fade dialog in and out
@@ -154,9 +159,9 @@ export class HomePageComponent {
   ],
 })
 export class ExplainedComponent {
-  isOpen = true;
+  isOpen = 'open';
   onClose() {
     console.log('closing page');
-    this.isOpen = !this.isOpen;
+    this.isOpen = 'closed';
   }
 }

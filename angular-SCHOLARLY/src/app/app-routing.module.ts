@@ -18,7 +18,6 @@ import { EditProfilePurSummerComponent } from './edit-profile/edit-profile.compo
 import { ActivityHistoryComponent } from './activity-history/history.component';
 import { FriendsActivityComponent } from './friends-activity/friends-activity.component';
 import { GroupChatsComponent } from './group-chats/group-chats.component';
-import { HomePageComponent } from './home-page/home-page.component';
 import { PostPageComponent } from './post-page/post-page.component';
 import {
   ProfileComponent,
@@ -46,10 +45,9 @@ import {
   InstructorReviewComponent,
 } from './main-pages/main-pages.component';
 import { MessagingComponent } from './messaging/messaging.component';
-import { AuthGuard } from './signup/auth.guard';
+import { AuthGuard } from './router-guards/auth.guard';
 
 export const routingComponents = [
-  HomePageComponent,
   SignupComponent,
   PostPageComponent,
   ProfileComponent,
@@ -67,8 +65,16 @@ export const routingComponents = [
   UserProfileComponent,
 ];
 
+// stand alone and lazy load and then preload search pg and maybe create pg?
+
 const routes: Routes = [
-  { path: 'login', component: HomePageComponent },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./home-page/home-page.component').then(
+        (mod) => mod.HomePageComponent
+      ),
+  },
   { path: 'sign-up', component: SignupComponent },
   { path: 'verified', component: VerifiedPopUpComponent },
   {

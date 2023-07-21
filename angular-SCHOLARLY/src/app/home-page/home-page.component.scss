@@ -270,7 +270,7 @@ animation: 2s fadeIn;
 }
 .login:hover {
   animation-name: loginClick;
-  // animation-duration: 1.25s;
+  animation-duration: 1.25s;
   transition: all;
  }
  @keyframes loginClick {
@@ -295,7 +295,7 @@ animation: 2s fadeIn;
 .newaccount:hover{
   // background-image: linear-gradient(to right, #009cff , #616fb5);
   animation-name: newAccountClick;
-  // animation-duration: 2s;
+  animation-duration: 1.25s;
   transition-property: all;
 
 }
