@@ -1,13 +1,7 @@
 import { Component } from '@angular/core';
-import {
-  FormControl,
-  Validators,
-  AbstractControl,
-  ValidationErrors,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import {
   trigger,
   state,
@@ -16,35 +10,28 @@ import {
   transition,
   query,
   stagger,
-  // ...
 } from '@angular/animations';
 import { pattern } from '../validators/emailPattern.validator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   standalone: true,
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
-  imports: [MatFormFieldModule, ReactiveFormsModule, MatCheckboxModule],
-  // animations: [
-  //   trigger('clickable', [
-  //     // fade dialog in and out
-  //     state(
-  //       'one',
-  //       style({background-image: linear-gradient(to right,black, #002D62)})
-  //     ),
-  //     state(
-  //       'two',
-  //       style({
-  //         height: '0',
-  //         opacity: 0.5,
-  //       })
-  //     ),
-  //     transition('one <=> two', [animate('.75s')]),
-  //   ])
-  // ],
+  imports: [
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    NgIf,
+    MatInputModule,
+  ],
 })
 export class HomePageComponent {
   constructor(public authService: AuthService, public dialog: MatDialog) {
@@ -125,9 +112,11 @@ export class HomePageComponent {
   }
 }
 @Component({
+  standalone: true,
   selector: 'app-explained-page',
   templateUrl: './skalarly-explained.component.html',
   styleUrls: ['./home-page.component.scss'],
+  imports: [MatButtonModule, MatDialogModule, MatCardModule],
   animations: [
     trigger('openClose', [
       // fade dialog in and out
