@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SearchListService } from '../services/search.service';
-import { Subscription } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 import { PostsService, Fav } from '../services/posts.service';
 import { MatSnackBar } from '@angular/material/snack-bar';

@@ -6,6 +6,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
+import { debounceTime, distinctUntilChanged, fromEvent, map } from 'rxjs';
 
 import {
   MomentDateAdapter,
@@ -447,22 +448,28 @@ export class SignupComponent implements OnInit, OnDestroy {
     // this.emailPatternService.pattern(event.target.value);
     console.log('patternPass ', patternPass);
     if (query && patternPass) {
-      setTimeout(sendData, 2000);
-      function sendData() {
-        this.authService.searchEmail(query.trim());
-        this.usedEmailSub = this.authService
-          .getUsedEmail()
-          .subscribe((results) => {
-            if (results === true) {
-              console.log('results baby', results);
-              this.EmailMatches = results;
-            } else {
-              console.log('nuts', results);
-              this.EmailMatches = false;
-            }
-          });
-        this.usedEmailSub.unsubscribe();
-      }
+      // use this rxjs set up instead of timeout
+      // map need map(event => event.target.value)
+      // test this and change it for all others
+      this.email.valueChanges
+        .pipe(debounceTime(500), distinctUntilChanged())
+        .subscribe({
+          next: (emailValue) => {
+            console.log('we are in the sub woot woot');
+            this.authService.searchEmail(emailValue.trim());
+            this.usedEmailSub = this.authService
+              .getUsedEmail()
+              .subscribe((results) => {
+                if (results === true) {
+                  console.log('results baby', results);
+                  this.EmailMatches = results;
+                } else {
+                  console.log('nuts', results);
+                  this.EmailMatches = false;
+                }
+              });
+          },
+        });
     } else {
       console.log('DeLorean');
     }
@@ -697,6 +704,8 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): any {
+    // checking if previous email wa sin use
+    this.usedEmailSub.unsubscribe();
     //  Email validation to continue
     this.isLoading = true;
     this.authService.createUser(

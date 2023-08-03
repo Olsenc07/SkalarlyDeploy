@@ -11,6 +11,7 @@ import {
   query,
   stagger,
 } from '@angular/animations';
+import { MatIconModule } from '@angular/material/icon';
 import { pattern } from '../validators/emailPattern.validator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -18,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { NgIf } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
+import { map } from 'rxjs';
 
 @Component({
   standalone: true,
@@ -31,10 +33,11 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     NgIf,
     MatInputModule,
+    MatIconModule,
   ],
 })
 export class HomePageComponent {
-  constructor(public authService: AuthService, public dialog: MatDialog) {
+  constructor(private authService: AuthService, private dialog: MatDialog) {
     this.emailTest();
   }
   emailMatches: boolean;
@@ -77,18 +80,23 @@ export class HomePageComponent {
         const query: string = this.email.value;
         // this.patternPass = pattern(this.email.value);
         console.log('query ', query.trim());
-        // setTimeout(sendData, 2000);
-        // function sendData() {
+
         this.authService.searchEmails(query.trim());
-        this.authService.getEmail().subscribe((results) => {
-          if (results === true) {
-            console.log('results baby', results);
-            this.emailMatches = results;
-          } else {
-            console.log('nuts', results);
-            this.emailMatches = false;
-          }
-        });
+        this.authService
+          .getEmail()
+          // .pipe(map((testing) => {}))
+          // filter using operators
+          // test subjects here and needing to
+          .subscribe((results) => {
+            if (results === true) {
+              console.log('results baby', results);
+              // this shou;ld be with an async pipe and not called with each function
+              this.emailMatches = results;
+            } else {
+              console.log('nuts', results);
+              this.emailMatches = false;
+            }
+          });
         // }
       }
     });

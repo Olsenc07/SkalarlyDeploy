@@ -26,18 +26,18 @@ export class AuthService {
   private userId: string;
   private postId: string;
 
-  private authStatusListener = new ReplaySubject<boolean>();
-  private activityStatusListener = new Subject<boolean>();
+  private authStatusListener$ = new ReplaySubject<boolean>();
+  private activityStatusListener$ = new Subject<boolean>();
   // private devices = new Subject();
 
   // basic info
   private infos: AuthDataInfo[] = [];
-  private infosUpdated = new Subject<AuthDataInfo[]>();
-  private infosUpdatedProfile = new Subject<AuthDataInfo[]>();
-  private infosUpdatedOther = new Subject<AuthDataInfo[]>();
+  private infosUpdated$ = new Subject<AuthDataInfo[]>();
+  private infosUpdatedProfile$ = new Subject<AuthDataInfo[]>();
+  private infosUpdatedOther$ = new Subject<AuthDataInfo[]>();
 
   // skalar activity
-  private activity = new Subject();
+  private activity$ = new Subject();
 
   // courses c
   private infosC: AuthDataInfoCoursesC[] = [];
@@ -47,43 +47,43 @@ export class AuthService {
   private infosP: AuthDataInfoCoursesP[] = [];
   private infosUpdatedCoursesP = new Subject<AuthDataInfoCoursesP[]>();
 
-  private emailUpdated = new Subject();
+  private emailUpdated$ = new Subject();
   private emailId: boolean;
 
-  private userNameUpdated = new Subject();
+  private userNameUpdated$ = new Subject();
   private userNameId: boolean;
 
-  private emailUsedUpdated = new Subject();
+  private emailUsedUpdated$ = new Subject();
   private emailUsedId: boolean;
 
-  private instructorName = new Subject();
+  private instructorName$ = new Subject();
   private potentialNames: Array<string>;
 
-  private vapidKeyHere = new Subject();
+  private vapidKeyHere$ = new Subject();
   private blocked = new Subject<string>();
 
-  triggerReAuth = new Subject<any>();
+  triggerReAuth$ = new Subject<any>();
   // getDeviceHistory(): any {
   //   return this.devices.asObservable();
   // }
   // check if email exists for login
   getEmail(): any {
-    return this.emailUpdated.asObservable();
+    return this.emailUpdated$.asObservable();
   }
   // check if email exists for signup
   getUsedEmail(): any {
-    return this.emailUsedUpdated.asObservable();
+    return this.emailUsedUpdated$.asObservable();
   }
   getInstructor(): any {
-    return this.instructorName.asObservable();
+    return this.instructorName$.asObservable();
   }
   // get public vapid key
   getVapidKey(): any {
-    return this.vapidKeyHere.asObservable();
+    return this.vapidKeyHere$.asObservable();
   }
   // check if username exists for signup
   getUserName(): any {
-    return this.userNameUpdated.asObservable();
+    return this.userNameUpdated$.asObservable();
   }
   getToken(): string {
     return this.token;
@@ -102,17 +102,17 @@ export class AuthService {
   }
 
   getAuthStatusListener(): any {
-    return this.authStatusListener.asObservable();
+    return this.authStatusListener$.asObservable();
   }
 
   getInfoUpdateListener(): any {
-    return this.infosUpdated.asObservable();
+    return this.infosUpdated$.asObservable();
   }
   getInfoUpdateListenerOther(): any {
-    return this.infosUpdatedOther.asObservable();
+    return this.infosUpdatedOther$.asObservable();
   }
   getInfoUpdateListenerProfile(): any {
-    return this.infosUpdatedProfile.asObservable();
+    return this.infosUpdatedProfile$.asObservable();
   }
   getInfoUpdateListenerCoursesC(): any {
     return this.infosUpdatedCoursesC.asObservable();
@@ -121,7 +121,7 @@ export class AuthService {
     return this.infosUpdatedCoursesP.asObservable();
   }
   getcheckingActivity(): any {
-    return this.activity.asObservable();
+    return this.activity$.asObservable();
   }
 
   // triggered on account creation and each login
@@ -136,7 +136,7 @@ export class AuthService {
           sub.unsubscribe();
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -154,7 +154,7 @@ export class AuthService {
           console.log('love you 8', responseData);
         },
         error: (error) => {
-          this.activityStatusListener.next(false);
+          this.activityStatusListener$.next(false);
         },
       });
   }
@@ -168,7 +168,7 @@ export class AuthService {
       .pipe(map((data) => data.activityStatus))
       .subscribe({
         next: (responseData) => {
-          this.activity.next(responseData);
+          this.activity$.next(responseData);
           sub.unsubscribe();
           console.log('rich and famous baby 767');
         },
@@ -219,7 +219,7 @@ export class AuthService {
       .subscribe({
         next: (response) => {
           this.emailUsedId = response;
-          this.emailUsedUpdated.next(this.emailUsedId);
+          this.emailUsedUpdated$.next(this.emailUsedId);
           sub.unsubscribe();
           console.log('rich and famous baby 2');
         },
@@ -237,7 +237,7 @@ export class AuthService {
         next: (response) => {
           console.log('chlor 3', response);
           this.emailId = response;
-          this.emailUpdated.next(this.emailId);
+          this.emailUpdated$.next(this.emailId);
           sub.unsubscribe();
           console.log('rich and famous baby 4');
         },
@@ -259,7 +259,7 @@ export class AuthService {
         next: (response) => {
           console.log('multi points', response);
           this.potentialNames = response;
-          this.instructorName.next(this.potentialNames);
+          this.instructorName$.next(this.potentialNames);
           sub.unsubscribe();
           console.log('rich and famous baby 27');
         },
@@ -277,7 +277,7 @@ export class AuthService {
       .subscribe({
         next: (response) => {
           this.userNameId = response;
-          this.userNameUpdated.next(this.userNameId);
+          this.userNameUpdated$.next(this.userNameId);
           sub.unsubscribe();
           console.log('rich and famous baby 3');
         },
@@ -302,7 +302,7 @@ export class AuthService {
           console.log('rich and famous baby 5');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
           this.snackBar
             .open('Unable to create account', 'Retry')
             .afterDismissed()
@@ -372,13 +372,13 @@ export class AuthService {
           };
           this.router.navigate(['/search']);
           this.infos.push(post);
-          this.infosUpdated.next([...this.infos]);
+          this.infosUpdated$.next([...this.infos]);
           // this.snackBar.open('Sign in with your new account', 'Will do!!');
           sub.unsubscribe();
           console.log('love you 7');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -526,7 +526,7 @@ export class AuthService {
           console.log('love you 7');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -594,7 +594,7 @@ export class AuthService {
           console.log('love you 707');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -616,7 +616,7 @@ export class AuthService {
           console.log('love you 8');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -636,7 +636,7 @@ export class AuthService {
           console.log('love you 9');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -656,7 +656,7 @@ export class AuthService {
           console.log('love you 10');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -676,7 +676,7 @@ export class AuthService {
           console.log('love you 11');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -696,7 +696,7 @@ export class AuthService {
           console.log('love you 12');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -716,7 +716,7 @@ export class AuthService {
           console.log('love you 13');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -735,7 +735,7 @@ export class AuthService {
           console.log('love you 14');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -754,7 +754,7 @@ export class AuthService {
           console.log('love you 14');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -819,7 +819,7 @@ export class AuthService {
           console.log('love you 17');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -838,7 +838,7 @@ export class AuthService {
           console.log('love you 18');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -857,7 +857,7 @@ export class AuthService {
           console.log('love you 19');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -876,7 +876,7 @@ export class AuthService {
           console.log('love you 20');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -895,7 +895,7 @@ export class AuthService {
           console.log('love you 21');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -914,7 +914,7 @@ export class AuthService {
           console.log('love you 22');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -933,7 +933,7 @@ export class AuthService {
           console.log('love you 23');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -952,7 +952,7 @@ export class AuthService {
           console.log('love you 24');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -971,7 +971,7 @@ export class AuthService {
           console.log('love you 25');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -990,7 +990,7 @@ export class AuthService {
           console.log('love you 26');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1009,7 +1009,7 @@ export class AuthService {
           console.log('love you 27');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1029,7 +1029,7 @@ export class AuthService {
           console.log('love you 28');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1048,7 +1048,7 @@ export class AuthService {
           console.log('love you 29');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1067,7 +1067,7 @@ export class AuthService {
           console.log('love you 30');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1086,7 +1086,7 @@ export class AuthService {
           console.log('love you 31');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1105,7 +1105,7 @@ export class AuthService {
           console.log('love you 32');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1125,7 +1125,7 @@ export class AuthService {
           console.log('love you 33');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1144,7 +1144,7 @@ export class AuthService {
           console.log('love you 34');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1163,7 +1163,7 @@ export class AuthService {
           console.log('love you 35');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1182,7 +1182,7 @@ export class AuthService {
           console.log('love you 36');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1201,7 +1201,7 @@ export class AuthService {
           console.log('love you 37');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1221,7 +1221,7 @@ export class AuthService {
           console.log('love you 38');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1240,7 +1240,7 @@ export class AuthService {
           console.log('love you 39');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1259,7 +1259,7 @@ export class AuthService {
           console.log('love you 40');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1278,7 +1278,7 @@ export class AuthService {
           console.log('love you 41');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1297,7 +1297,7 @@ export class AuthService {
           console.log('love you 42');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1317,7 +1317,7 @@ export class AuthService {
           console.log('love you 43');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1336,7 +1336,7 @@ export class AuthService {
           console.log('love you 44');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1355,7 +1355,7 @@ export class AuthService {
           console.log('love you 45');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1374,7 +1374,7 @@ export class AuthService {
           console.log('love you 46');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1393,7 +1393,7 @@ export class AuthService {
           console.log('love you 47');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1413,7 +1413,7 @@ export class AuthService {
           console.log('love you 48');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1432,7 +1432,7 @@ export class AuthService {
           console.log('love you 49');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1451,7 +1451,7 @@ export class AuthService {
           console.log('love you 50');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1470,7 +1470,7 @@ export class AuthService {
           console.log('love you 51');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1489,7 +1489,7 @@ export class AuthService {
           console.log('love you 52');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1509,7 +1509,7 @@ export class AuthService {
           console.log('love you 53');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1528,7 +1528,7 @@ export class AuthService {
           console.log('love you 54');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1547,7 +1547,7 @@ export class AuthService {
           console.log('love you 55');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1566,7 +1566,7 @@ export class AuthService {
           console.log('love you 56');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1585,7 +1585,7 @@ export class AuthService {
           console.log('love you 57');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1604,7 +1604,7 @@ export class AuthService {
           console.log('love you 58');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1624,7 +1624,7 @@ export class AuthService {
           console.log('love you 59');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1644,7 +1644,7 @@ export class AuthService {
           console.log('love you 60');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1664,7 +1664,7 @@ export class AuthService {
           console.log('love you 61');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1684,7 +1684,7 @@ export class AuthService {
           console.log('love you 62');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1704,7 +1704,7 @@ export class AuthService {
           console.log('love you 63');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1724,7 +1724,7 @@ export class AuthService {
           console.log('love you 64');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1744,7 +1744,7 @@ export class AuthService {
           console.log('love you 65');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1764,7 +1764,7 @@ export class AuthService {
           console.log('love you 66');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1784,7 +1784,7 @@ export class AuthService {
           console.log('love you 67');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1804,7 +1804,7 @@ export class AuthService {
           console.log('love you 68');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1822,7 +1822,7 @@ export class AuthService {
           console.log('love you 69');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1839,7 +1839,7 @@ export class AuthService {
           console.log('love you 70');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1856,7 +1856,7 @@ export class AuthService {
           console.log('love you 71');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1873,7 +1873,7 @@ export class AuthService {
           console.log('love you 72');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -1911,7 +1911,7 @@ export class AuthService {
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
-        this.infosUpdated.next([...this.infos]);
+        this.infosUpdated$.next([...this.infos]);
         sub.unsubscribe();
         console.log('love you 73');
       });
@@ -1930,7 +1930,7 @@ export class AuthService {
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
-        this.infosUpdatedProfile.next(this.infos);
+        this.infosUpdatedProfile$.next(this.infos);
         sub.unsubscribe();
         console.log('love you 74');
       });
@@ -2015,7 +2015,7 @@ export class AuthService {
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
-        this.infosUpdated.next([...this.infos]);
+        this.infosUpdated$.next([...this.infos]);
         sub.unsubscribe();
         console.log('love you 75');
       });
@@ -2035,7 +2035,7 @@ export class AuthService {
       )
       .subscribe((transformedInfos) => {
         this.infos = transformedInfos;
-        this.infosUpdated.next(this.infos);
+        this.infosUpdated$.next(this.infos);
         sub.unsubscribe();
         console.log('love you 76');
       });
@@ -2054,7 +2054,7 @@ export class AuthService {
       .subscribe((transformedInfos) => {
         console.log('mario', transformedInfos);
         this.infos = transformedInfos;
-        this.infosUpdatedOther.next(this.infos);
+        this.infosUpdatedOther$.next(this.infos);
         sub.unsubscribe();
         console.log('love you 77');
       });
@@ -2082,7 +2082,7 @@ export class AuthService {
             this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;
             this.userId = response.userId;
-            this.authStatusListener.next(true);
+            this.authStatusListener$.next(true);
             const now = new Date();
             const expirationDate = new Date(now.getTime() + expiresInDuration);
 
@@ -2092,7 +2092,7 @@ export class AuthService {
           }
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
           // this.snackBar.open('Failed to login, please try again', 'Will do!!', {
           //     duration: 4000
           // });
@@ -2116,7 +2116,7 @@ export class AuthService {
           const expiresInDuration = response.expiresIn;
           this.setAuthTimer(expiresInDuration);
           this.userId = response.userId;
-          this.authStatusListener.next(true);
+          this.authStatusListener$.next(true);
           const now = new Date();
           const expirationDate = new Date(now.getTime() + expiresInDuration);
 
@@ -2125,7 +2125,7 @@ export class AuthService {
           console.log('love you 79');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
           this.snackBar.open(
             'Failed to login, make sure you verified yor email!',
             'Will do!',
@@ -2157,7 +2157,7 @@ export class AuthService {
             this.setAuthTimer(expiresInDuration);
             this.isAuthenticated = true;
             this.userId = response.userId;
-            this.authStatusListener.next(true);
+            this.authStatusListener$.next(true);
             const now = new Date();
             const expirationDate = new Date(now.getTime() + expiresInDuration);
             this.saveAuthData(token, expirationDate, this.userId);
@@ -2166,7 +2166,7 @@ export class AuthService {
           }
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
           // this.snackBar.open('Failed to login, please try again', 'Will do!!', {
           //     duration: 4000
           // });
@@ -2186,7 +2186,7 @@ export class AuthService {
       this.isAuthenticated = true;
       this.userId = authInformation.userId;
       this.setAuthTimer(expiresIn);
-      this.authStatusListener.next(true);
+      this.authStatusListener$.next(true);
     }
   }
 
@@ -2198,7 +2198,7 @@ export class AuthService {
     }
     this.token = null;
     this.isAuthenticated = false;
-    this.authStatusListener.next(false);
+    this.authStatusListener$.next(false);
     this.userId = null;
     // change activity status to false
 
@@ -2211,7 +2211,7 @@ export class AuthService {
       // give option to increase duration time
       // using pop screen reauthorize
       console.log('timeout');
-      this.triggerReAuth.next('reAuth');
+      this.triggerReAuth$.next('reAuth');
       // this.logout();
     }, duration);
   }
@@ -2283,7 +2283,7 @@ export class AuthService {
           console.log('love you 80');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -2314,7 +2314,7 @@ export class AuthService {
           console.log('love you 81');
         },
         error: (error) => {
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -2342,7 +2342,7 @@ export class AuthService {
           this.snackBar.open('Invalid reset code.', 'Check your email', {
             duration: 3000,
           });
-          this.authStatusListener.next(false);
+          this.authStatusListener$.next(false);
         },
       });
   }
@@ -2412,7 +2412,7 @@ export class AuthService {
         })
       )
       .subscribe((vapidKeyFound) => {
-        this.vapidKeyHere.next(vapidKeyFound);
+        this.vapidKeyHere$.next(vapidKeyFound);
         sub.unsubscribe();
         console.log('love you 76');
       });

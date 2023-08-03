@@ -158,7 +158,7 @@ export class AppComponent implements OnInit, OnDestroy {
       myURL.protocol = 'https:';
       location.href = myURL.href;
     }
-    this.authService.triggerReAuth.subscribe((param) => {
+    this.authService.triggerReAuth$.subscribe((param) => {
       console.log('subjecy triggered', param);
       this.dialog.open(ReAuthorizeComponent, { disableClose: true });
     });
