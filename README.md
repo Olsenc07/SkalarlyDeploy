@@ -1,0 +1,5 @@
+This project was my initial effort to learn M.E.A.N stack and deploy with Heroku. It currently is not deployed on www.skalarly.com, but I still own that domain name.
+This project currently has some errors as it was used more for creating a rough framework for future capabilities. This framework is now being constructed in skalarly-fs, which follows proper practices and industry standards. 
+This repository displays years of learning, which is why some files may look elementary, or fall short of proper practices. Where as other files/code will display my efforts after I acquired more knowledge on the given topic.
+Instead of going back and restructuing the entire project and updating to the capabilities of Angular 16 and soon 17. I decided it would be more efficent to restart the project with all standalone components and follow reusable coding techniques. 
+I will continue to transfer the code in this repository to the new skalarly-fs, but will modify it to the standards and efficency that I am now aware of. 
